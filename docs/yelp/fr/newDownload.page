@@ -19,24 +19,24 @@
 
 <terms>
     <item>
-      <title>URL du média</title>
-      <p>L’URL du média à télécharger. Il doit s’agir d’un lien http ou https valide (i.e.e syntaxiquement correct).</p>
-      <note>
+        <title>URL du média</title>
+        <p>L’URL du média à télécharger. Il doit s’agir d’un lien http ou https valide (i.e.e syntaxiquement correct).</p>
+        <note>
             <p>Si une URL valide est trouvée dans le presse-papiers au moment de l’ouverture de la fenêtre de dialogue Ajouter, elle sera automatiquement collée dans le champ de saisie.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>S’identifier</title>
-      <p>Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
+        <title>S’identifier</title>
+        <p>Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
         <p>Si des identifiants sont trouvés dans le trousseau, l’utilisateur pourra choisir parmi une liste d’identifiants, ou entrer manuellement un identifiant</p>
-		<note style="advanced">
-			<p>Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
-            <p>Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
-		</note>
+            <note style="advanced">
+                <p>Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
+                <p>Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
+            </note>
     </item>
     <item>
-		<title>Type de fichier</title>
-		<p>Le type de fichier sous lequel enregistrer le média.</p>
+        <title>Type de fichier</title>
+        <p>Le type de fichier sous lequel enregistrer le média.</p>
         <note>
             <p>Le type de fichier sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p>
         </note>
@@ -45,24 +45,25 @@
         </note>
     </item>
     <item>
-		<title>Qualité</title>
-		<p>Si le type de fichier est une vidéo, la liste des qualités sera celle des résolutions disponibles pour le média.</p>
-        <p>Si le type de fichier est un audio, la liste des qualités sera celle des débits binaires audio disponibles pour le média.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>La qualité utilisée précédemment sera mémorisée et présélectionnée pour le prochain téléchargement.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Langue de l’audio</title>
-		<p>Langue dans laquelle utiliser la partie audio d’un média téléchargé.</p>
-        <p>Si aucune langue additionnelle n’est disponible<code>Par défaut</code> sera la seule option.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Sous-titres</title>
-		<p>La liste des sous-titres disponibles pour le média et pouvant être sélectionnés pour téléchargement par l’utilisateur. D’autres paramètres de sous-titres peuvent être configurés dans les <link xref="downloads">Préférences</link>.</p>
+        <title>Sous-titres</title>
+        <p>La liste des sous-titres disponibles pour le média et pouvant être sélectionnés pour téléchargement par l’utilisateur. D’autres paramètres de sous-titres peuvent être configurés dans les <link xref="downloads">Préférences</link>.</p>
         <note>
             <p>Les sous-titres sélectionnés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
@@ -75,39 +76,39 @@
         </note>
     </item>
     <item>
-		<title>Limiter la vitesse de téléchargement</title>
-		<p>Si cette option est activée, Parabolic limitera la vitesse de téléchargement selon la vitesse indiquée dans <link xref="downloader">Préférences</link>.</p>
+        <title>Limiter la vitesse de téléchargement</title>
+        <p>Si cette option est activée, Parabolic limitera la vitesse de téléchargement selon la vitesse indiquée dans <link xref="downloader">Préférences</link>.</p>
         <note>
             <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>Si cette option est activée, Parabolic exportera la description du média vers un fichier <code>.description</code> en même temps que le fichier téléchargé.</p>
+        <title>Export Description</title>
+        <p>Si cette option est activée, Parabolic exportera la description du média vers un fichier <code>.description</code> en même temps que le fichier téléchargé.</p>
         <note>
             <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
-		<title>Séquence</title>
-		<p>Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour télécharger une partie spécifique du média.</p>
+        <title>Séquence</title>
+        <p>Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour télécharger une partie spécifique du média.</p>
         <note style="advanced">
-			<p>Par défaut : la longueur totale du média</p>
-		</note>
+            <p>Par défaut : la longueur totale du média</p>
+        </note>
     </item>
     <item>
-		<title>Dossier d’enregistrement</title>
-		<p>Le dossier dans lequel enregistrer le téléchargement.</p>
+        <title>Dossier d’enregistrement</title>
+        <p>Le dossier dans lequel enregistrer le téléchargement.</p>
         <note>
             <p>Le dossier sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
-		<title>Nom du fichier</title>
+        <title>Nom du fichier</title>
         <p>Le nom du fichier à utiliser lors de l’enregistrement du téléchargement.</p>
-		<note style="advanced">
-			<p>Par défaut : le titre du média</p>
-		</note>
+        <note style="advanced">
+            <p>Par défaut : le titre du média</p>
+        </note>
     </item>
 </terms>
 </page>

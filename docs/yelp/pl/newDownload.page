@@ -25,24 +25,24 @@
 
 <terms>
     <item>
-      <title>Adres URL</title>
-      <p>Adres URL multimediów do pobrania. Musi być poprawnym linkiem http lub https.</p>
-      <note>
+        <title>Adres URL</title>
+        <p>Adres URL multimediów do pobrania. Musi być poprawnym linkiem http lub https.</p>
+        <note>
             <p>Jeśli poprawny adres URL zostanie znaleziony w schowku po włączeniu okna nowego pobierania, adres URL zostanie automatycznie wklejony w odpowiednie miejsce.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Uwierzytelnij</title>
-      <p>Po włączeniu, użytkownik zostanie poproszony o podanie nazwy użytkownika i/lub hasła, które zostanie przekazane yt-dlp.</p>
+        <title>Uwierzytelnij</title>
+        <p>Po włączeniu, użytkownik zostanie poproszony o podanie nazwy użytkownika i/lub hasła, które zostanie przekazane yt-dlp.</p>
         <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
-		<note style="advanced">
-			<p>Nie wszystkie strony wspierają przesyłanie nazw użytkownika i haseł przez yt-dlp. Na przykład, YouTube NIE wspiera tej funkcji.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
-		</note>
+            <note style="advanced">
+                <p>Nie wszystkie strony wspierają przesyłanie nazw użytkownika i haseł przez yt-dlp. Na przykład, YouTube NIE wspiera tej funkcji.</p>
+                <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+            </note>
     </item>
     <item>
-		<title>Typ pliku</title>
-		<p>Typ pliku, do którego multimedia mają zostać pobrane.</p>
+        <title>Typ pliku</title>
+        <p>Typ pliku, do którego multimedia mają zostać pobrane.</p>
         <note>
             <p>Poprzednio użyty typ pliku zostanie zapamiętany i wybrany dla następnego procesu pobierania.</p>
         </note>
@@ -51,24 +51,25 @@
         </note>
     </item>
     <item>
-		<title>Jakość</title>
-		<p>Jeśli typ pliku jest typem wideo, w polu "jakość" pojawią się dostępne rozdzielczości multimediów.</p>
-        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>Poprzednio użyta jakość zostanie zapamiętana i wybrana dla następnego procesu pobierania.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Subtitles</title>
-		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <title>Subtitles</title>
+        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
             <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
@@ -81,39 +82,39 @@
         </note>
     </item>
     <item>
-		<title>Limit Download Speed</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <title>Limit Download Speed</title>
+        <p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>Export Description</title>
+        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <title>Time Frame</title>
+        <p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
-		</note>
+            <p>Default: The whole media length</p>
+        </note>
     </item>
     <item>
-		<title>Folder docelowy</title>
-		<p>Folder, w którym ma zostać zapisany pobrany plik.</p>
+        <title>Folder docelowy</title>
+        <p>Folder, w którym ma zostać zapisany pobrany plik.</p>
         <note>
             <p>Poprzednio użyty folder zostanie zapamiętany i wybrany dla następnego procesu pobierania.</p>
         </note>
     </item>
     <item>
-		<title>Nazwa pliku</title>
+        <title>Nazwa pliku</title>
         <p>Nazwa pliku, która ma zostać użyta do zapisania pobranego pliku.</p>
-		<note style="advanced">
-			<p>Domyślnie: Tytuł multimediów</p>
-		</note>
+        <note style="advanced">
+            <p>Domyślnie: Tytuł multimediów</p>
+        </note>
     </item>
 </terms>
 </page>

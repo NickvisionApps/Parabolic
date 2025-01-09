@@ -19,24 +19,24 @@
 
 <terms>
     <item>
-      <title>मीडिया URL</title>
-      <p>डाउनलोड करने के लिए मीडिया का URL. एक मान्य ("मान्य" अर्थ वाक्य रचना की दृष्टि से सही) http या https लिंक होना चाहिए।</p>
-      <note>
+        <title>मीडिया URL</title>
+        <p>डाउनलोड करने के लिए मीडिया का URL. एक मान्य ("मान्य" अर्थ वाक्य रचना की दृष्टि से सही) http या https लिंक होना चाहिए।</p>
+        <note>
             <p>यदि डाउनलोड जोड़ें संवाद खोलने पर क्लिपबोर्ड के अंदर एक वैध URL पाया जाता है, तो URL स्वचालित रूप से URL प्रविष्टि पंक्ति में चिपकाया जाएगा।</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>प्रमाणित करें</title>
-      <p>यदि सक्षम किया गया है, तो डाउनलोड करते समय उपयोगकर्ता को yt-dlp को पास करने के लिए एक उपयोगकर्ता नाम और/या पासवर्ड प्रदान करने के लिए कहा जाएगा।</p>
+        <title>प्रमाणित करें</title>
+        <p>यदि सक्षम किया गया है, तो डाउनलोड करते समय उपयोगकर्ता को yt-dlp को पास करने के लिए एक उपयोगकर्ता नाम और/या पासवर्ड प्रदान करने के लिए कहा जाएगा।</p>
         <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
-		<note style="advanced">
-			<p>सभी वेबसाइटें yt-dlp पर उपयोगकर्ता नाम और पासवर्ड भेजने का समर्थन नहीं करती हैं। उदाहरण के लिए, YouTube इस सुविधा का समर्थन नहीं करता है।</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
-		</note>
+            <note style="advanced">
+                <p>सभी वेबसाइटें yt-dlp पर उपयोगकर्ता नाम और पासवर्ड भेजने का समर्थन नहीं करती हैं। उदाहरण के लिए, YouTube इस सुविधा का समर्थन नहीं करता है।</p>
+                <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+            </note>
     </item>
     <item>
-		<title>फाइल प्रकार</title>
-		<p>वह फाइल प्रकार जिसके रूप में मीडिया को डाउनलोड करना है।</p>
+        <title>फाइल प्रकार</title>
+        <p>वह फाइल प्रकार जिसके रूप में मीडिया को डाउनलोड करना है।</p>
         <note>
             <p>पहले उपयोग की गई फाइल प्रकार को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
         </note>
@@ -45,24 +45,25 @@
         </note>
     </item>
     <item>
-		<title>गुणवत्ता</title>
-		<p>यदि फाइल प्रकार एक वीडियो प्रकार है, तो सूचीबद्ध गुण उपलब्ध मीडिया के रिज़ॉल्यूशन होंगे।</p>
-        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>पहले उपयोग की गई गुणवत्ता को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>पहले उपयोग की गई स्थिति को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Subtitles</title>
-		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <title>Subtitles</title>
+        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
             <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
@@ -75,39 +76,39 @@
         </note>
     </item>
     <item>
-		<title>Limit Download Speed</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <title>Limit Download Speed</title>
+        <p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
         <note>
             <p>पहले उपयोग की गई स्थिति को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>Export Description</title>
+        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
             <p>पहले उपयोग की गई स्थिति को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
         </note>
     </item>
     <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <title>Time Frame</title>
+        <p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
-		</note>
+            <p>Default: The whole media length</p>
+        </note>
     </item>
     <item>
-		<title>फोल्डर सहेजें</title>
-		<p>वह फोल्डर जिसमें डाउनलोड को सहेजना है।</p>
+        <title>फोल्डर सहेजें</title>
+        <p>वह फोल्डर जिसमें डाउनलोड को सहेजना है।</p>
         <note>
             <p>पहले उपयोग किए गए फोल्डर को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
         </note>
     </item>
     <item>
-		<title>फाइल नाम</title>
+        <title>फाइल नाम</title>
         <p>डाउनलोड को सहेजते समय उपयोग किया जाने वाला फाइल नाम।</p>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: मीडिया का शीर्षक</p>
-		</note>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: मीडिया का शीर्षक</p>
+        </note>
     </item>
 </terms>
 </page>

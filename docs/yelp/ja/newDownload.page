@@ -25,24 +25,24 @@
 
 <terms>
     <item>
-      <title>メディアの URL</title>
-      <p>メディアのダウンロード元の URL。有効な（正しい URL の構文である）http または https リンクである必要があります。</p>
-      <note>
+        <title>メディアの URL</title>
+        <p>メディアのダウンロード元の URL。有効な（正しい URL の構文である）http または https リンクである必要があります。</p>
+        <note>
             <p>"ダウンロードを追加"のダイアログが開いた際に、クリップボードに有効な URL が見つかると、URL は自動的に URL 入力欄にペーストされます。</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>認証</title>
-      <p>有効であれば、ダウンロード時に yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
+        <title>認証</title>
+        <p>有効であれば、ダウンロード時に yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
         <p>資格情報がキーリング内で見つかると、ユーザーは使いたい資格情報をリスト内から選択することができます（手動で資格情報を入力することもできます）</p>
-		<note style="advanced">
-			<p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能にサポートしていません。</p>
-            <p>これらのサイトでは資格情報の受け渡しに対応していません。代わりに設定でクッキーを使うブラウザを選択することをお勧めします。</p>
-		</note>
+            <note style="advanced">
+                <p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能にサポートしていません。</p>
+                <p>これらのサイトでは資格情報の受け渡しに対応していません。代わりに設定でクッキーを使うブラウザを選択することをお勧めします。</p>
+            </note>
     </item>
     <item>
-		<title>ファイルの種類</title>
-		<p>ダウンロードするメディアのファイルのタイプ。</p>
+        <title>ファイルの種類</title>
+        <p>ダウンロードするメディアのファイルのタイプ。</p>
         <note>
             <p>最後に使用したファイルの種類は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
@@ -51,24 +51,25 @@
         </note>
     </item>
     <item>
-		<title>品質</title>
-		<p>ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
-        <p>ファイルの種類が音声の場合、表示される品質はメディアが利用できる音声ビットレートです。</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>最後に使用した品質は、次回のダウンロードのために記憶・事前選択されます。</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>音声の言語</title>
-		<p>メディアダウンロードの音声部分で使用する言語。</p>
-        <p>他の言語が利用できない場合、<code>デフォルト</code> が唯一の選択肢になります。</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>字幕</title>
-		<p>ユーザーがダウンロードのために選択できる、メディアが利用できる字幕の一覧。字幕の細かな設定は <link xref="downloads">設定</link> にて変更できます。</p>
+        <title>字幕</title>
+        <p>ユーザーがダウンロードのために選択できる、メディアが利用できる字幕の一覧。字幕の細かな設定は <link xref="downloads">設定</link> にて変更できます。</p>
         <note>
             <p>最後に使用した字幕は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
@@ -81,39 +82,39 @@
         </note>
     </item>
     <item>
-		<title>Limit Download Speed</title>
-		<p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
+        <title>Limit Download Speed</title>
+        <p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
         <note>
             <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>Export Description</title>
+        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
             <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
-		<title>タイムフレーム</title>
-		<p>ダウンロードメディアの開始と終わりのタイムフレームを入力することで、メディアの特定部分をダウンロードできるようになります。</p>
+        <title>タイムフレーム</title>
+        <p>ダウンロードメディアの開始と終わりのタイムフレームを入力することで、メディアの特定部分をダウンロードできるようになります。</p>
         <note style="advanced">
-			<p>デフォルト: メディア全体の(時間の)長さ</p>
-		</note>
+            <p>デフォルト: メディア全体の(時間の)長さ</p>
+        </note>
     </item>
     <item>
-		<title>保存フォルダー</title>
-		<p>ダウンロードを保存フォルダー。</p>
+        <title>保存フォルダー</title>
+        <p>ダウンロードを保存フォルダー。</p>
         <note>
             <p>最後に使用したフォルダーは、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
-		<title>ファイル名</title>
+        <title>ファイル名</title>
         <p>ダウンロードを保存する際に使用するファイル名。</p>
-		<note style="advanced">
-			<p>デフォルト: メディアのタイトル</p>
-		</note>
+        <note style="advanced">
+            <p>デフォルト: メディアのタイトル</p>
+        </note>
     </item>
 </terms>
 </page>

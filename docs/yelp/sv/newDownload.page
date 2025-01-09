@@ -19,24 +19,24 @@
 
 <terms>
     <item>
-      <title>Media URL</title>
-      <p>URL:en till mediet som ska laddas ner. Måste vara en giltig (”giltig” vilket betyder syntaktisk korrekt) http- eller https-länk.</p>
-      <note>
+        <title>Media URL</title>
+        <p>URL:en till mediet som ska laddas ner. Måste vara en giltig (”giltig” vilket betyder syntaktisk korrekt) http- eller https-länk.</p>
+        <note>
             <p>Om en giltig URL hittas i urklippet när dialogrutan "Lägg till nedladdning" öppnas, kommer URL:en automatiskt att klistras in i URL-inmatningsraden.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Autentisera</title>
-      <p>Om det är aktiverat kommer användaren att bli ombedd att ange ett användarnamn och/eller lösenord för att skicka till yt-dlp vid nedladdning.</p>
+        <title>Autentisera</title>
+        <p>Om det är aktiverat kommer användaren att bli ombedd att ange ett användarnamn och/eller lösenord för att skicka till yt-dlp vid nedladdning.</p>
         <p>Om inloggningsuppgifter hittas i nyckelringen kan användaren istället välja från en lista med namngivna inloggningsuppgifter att använda (eller fortsätta att manuellt ange inloggningsuppgifter)</p>
-		<note style="advanced">
-			<p>Alla webbplatser stöder inte att skicka användarnamn och lösenord till yt-dlp. Till exempel stöder YouTube INTE den här funktionen.</p>
-            <p>För webbplatser som inte stöder överföring av inloggningsinformation, rekommenderas det att ladda upp en Cookies fil i Inställningar istället.</p>
-		</note>
+            <note style="advanced">
+                <p>Alla webbplatser stöder inte att skicka användarnamn och lösenord till yt-dlp. Till exempel stöder YouTube INTE den här funktionen.</p>
+                <p>För webbplatser som inte stöder överföring av inloggningsinformation, rekommenderas det att ladda upp en Cookies fil i Inställningar istället.</p>
+            </note>
     </item>
     <item>
-		<title>Filtyp</title>
-		<p>Den filtyp som mediet ska laddas ner som.</p>
+        <title>Filtyp</title>
+        <p>Den filtyp som mediet ska laddas ner som.</p>
         <note>
             <p>Den tidigare använda filtypen kommer att kommas ihåg och blir förvald för nästa nedladdning.</p>
         </note>
@@ -45,24 +45,25 @@
         </note>
     </item>
     <item>
-		<title>Kvalitet</title>
-		<p>Om filtypen är en videotyp kommer de listade kvaliteterna att vara upplösningarna för det tillgängliga mediet.</p>
-        <p>Om filtypen är en ljudtyp kommer de listade kvaliteterna att vara ljudbithastigheterna för det tillgängliga mediet.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>Den tidigare använda kvaliteten kommer att kommas ihåg och blir förvald för nästa nedladdning.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Ljudspråk</title>
-		<p>Språket som ska användas från ljuddelen av en medianerladdning.</p>
-        <p>Om inga ytterligare språk är tillgängliga är <code>Standard</code> det enda alternativet.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>Det tidigare använda tillståndet kommer att kommas ihåg och blir förvalt för nästa nedladdning.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Undertexter</title>
-		<p>Listan över undertexter tillgängliga av media som kan väljas för nedladdning av användaren. Ytterligare undertextinställningar kan konfigureras i <link xref="downloads">inställningarna</link>.</p>
+        <title>Undertexter</title>
+        <p>Listan över undertexter tillgängliga av media som kan väljas för nedladdning av användaren. Ytterligare undertextinställningar kan konfigureras i <link xref="downloads">inställningarna</link>.</p>
         <note>
             <p>De tidigare valda undertexterna kommer att kommas ihåg och vara förvalda för nästa nedladdning.</p>
         </note>
@@ -75,39 +76,39 @@
         </note>
     </item>
     <item>
-		<title>Begränsa nedladdningshastigheten</title>
-		<p>Om aktiverat, kommer Parabolic att begränsa nedladdningshastigheten med hastigheten konfigurerad i <link xref="Nedladdare">Inställningar</link>.</p>
+        <title>Begränsa nedladdningshastigheten</title>
+        <p>Om aktiverat, kommer Parabolic att begränsa nedladdningshastigheten med hastigheten konfigurerad i <link xref="Nedladdare">Inställningar</link>.</p>
         <note>
             <p>Det tidigare använda tillståndet kommer att kommas ihåg och blir förvalt för nästa nedladdning.</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>Om aktiverat kommer Parabolic att exportera mediabeskrivningen till en <code>.description</code>-fil bredvid den nedladdade filen.</p>
+        <title>Export Description</title>
+        <p>Om aktiverat kommer Parabolic att exportera mediabeskrivningen till en <code>.description</code>-fil bredvid den nedladdade filen.</p>
         <note>
             <p>Det tidigare använda tillståndet kommer att kommas ihåg och blir förvalt för nästa nedladdning.</p>
         </note>
     </item>
     <item>
-		<title>Tidsram</title>
-		<p>Användaren kan ange en starttid och en sluttid för att ladda ner en specifik del av media.</p>
+        <title>Tidsram</title>
+        <p>Användaren kan ange en starttid och en sluttid för att ladda ner en specifik del av media.</p>
         <note style="advanced">
-			<p>Standard: Hela medialängden</p>
-		</note>
+            <p>Standard: Hela medialängden</p>
+        </note>
     </item>
     <item>
-		<title>Lagringsmapp</title>
-		<p>Mappen där nedladdningen ska sparas.</p>
+        <title>Lagringsmapp</title>
+        <p>Mappen där nedladdningen ska sparas.</p>
         <note>
             <p>Den tidigare använda mappen kommer att kommas ihåg och blir förvald för nästa nedladdning.</p>
         </note>
     </item>
     <item>
-		<title>Filnamn</title>
+        <title>Filnamn</title>
         <p>Filnamnet som ska användas när nedladdningen sparas.</p>
-		<note style="advanced">
-			<p>Standard: Mediets titel</p>
-		</note>
+        <note style="advanced">
+            <p>Standard: Mediets titel</p>
+        </note>
     </item>
 </terms>
 </page>

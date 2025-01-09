@@ -25,24 +25,24 @@
 
 <terms>
     <item>
-      <title>URL adresa média</title>
-      <p>Adresa URL média, ktoré sa má stiahnuť. Musí to byť platný („platný“ znamená syntakticky správny) http alebo https odkaz.</p>
-      <note>
+        <title>URL adresa média</title>
+        <p>Adresa URL média, ktoré sa má stiahnuť. Musí to byť platný („platný“ znamená syntakticky správny) http alebo https odkaz.</p>
+        <note>
             <p>Ak sa po otvorení dialógového okna Pridať stiahnutie nájde v schránke platná adresa URL, automaticky sa vloží do riadku pre zadanie adresy URL.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Overiť</title>
-      <p>Ak je táto možnosť zapnutá, používateľ bude požiadaný o zadanie používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri sťahovaní.</p>
+        <title>Overiť</title>
+        <p>Ak je táto možnosť zapnutá, používateľ bude požiadaný o zadanie používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri sťahovaní.</p>
         <p>Ak sa poverenia nachádzajú v zväzku kľúčov, používateľ si namiesto toho môže vybrať zo zoznamu pomenovaných poverení, ktoré chce použiť (alebo pokračovať v ručnom zadávaní poverenia)</p>
-		<note style="advanced">
-			<p>Nie všetky webové stránky podporujú odovzdávanie používateľských mien a hesiel do yt-dlp. Napríklad YouTube túto funkciu NEpodporuje.</p>
-            <p>V prípade týchto webových stránok, ktoré nepodporujú odovzdávanie poverovacích údajov, sa odporúča namiesto toho vybrať prehliadač, z ktorého sa majú súbory cookie používať, v časti Nastavenia.</p>
-		</note>
+            <note style="advanced">
+                <p>Nie všetky webové stránky podporujú odovzdávanie používateľských mien a hesiel do yt-dlp. Napríklad YouTube túto funkciu NEpodporuje.</p>
+                <p>V prípade týchto webových stránok, ktoré nepodporujú odovzdávanie poverovacích údajov, sa odporúča namiesto toho vybrať prehliadač, z ktorého sa majú súbory cookie používať, v časti Nastavenia.</p>
+            </note>
     </item>
     <item>
-		<title>Typ súboru</title>
-		<p>Formát súboru, v ktorom sa má médium stiahnuť.</p>
+        <title>Typ súboru</title>
+        <p>Formát súboru, v ktorom sa má médium stiahnuť.</p>
         <note>
             <p>Predtým vybraný formát súboru sa uloží a automaticky sa predvolí pre ďalšie sťahovanie.</p>
         </note>
@@ -51,24 +51,25 @@
         </note>
     </item>
     <item>
-		<title>Kvalita</title>
-		<p>Ak je typom súboru video, uvedené kvality budú predstavovať rozlíšenia dostupného obrazového média.</p>
-        <p>Ak je typom súboru audio, uvedené kvality budú predstavovať bitové rýchlosti dostupného zvukového média.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>Predtým zvolená kvalita sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Jazyk zvuku</title>
-		<p>Jazyk, ktorý sa má použiť zo zvukovej časti stiahnutého média.</p>
-        <p>Ak nie sú k dispozícii žiadne ďalšie jazyky, jedinou možnosťou bude <code>Predvolená</code>.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>Predtým použitý stav sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Titulky</title>
-		<p>Zoznam titulkov v médiách, ktoré má používateľ k dispozícii na stiahnutie. Ďalšie konfigurácie titulkov nájdete v <link xref="downloads">nastaveniach</link>.</p>
+        <title>Titulky</title>
+        <p>Zoznam titulkov v médiách, ktoré má používateľ k dispozícii na stiahnutie. Ďalšie konfigurácie titulkov nájdete v <link xref="downloads">nastaveniach</link>.</p>
         <note>
             <p>Predtým vybrané titulky sa uložia a automaticky sa predvolia pri ďalšom sťahovaní.</p>
         </note>
@@ -81,39 +82,39 @@
         </note>
     </item>
     <item>
-		<title>Obmedzenie rýchlosti sťahovania</title>
-		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <link xref="downloader">nastaveniach</link>.</p>
+        <title>Obmedzenie rýchlosti sťahovania</title>
+        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <link xref="downloader">nastaveniach</link>.</p>
         <note>
             <p>Predtým použitý stav sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
-		<title>Popis exportu</title>
-		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <code>.description</code> vedľa stiahnutého súboru.</p>
+        <title>Popis exportu</title>
+        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <code>.description</code> vedľa stiahnutého súboru.</p>
         <note>
             <p>Predtým použitý stav sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
-		<title>Časový rozsah</title>
-		<p>Používateľ môže zadať časový rozsah začiatku a konca sťahovania konkrétnej časti média.</p>
+        <title>Časový rozsah</title>
+        <p>Používateľ môže zadať časový rozsah začiatku a konca sťahovania konkrétnej časti média.</p>
         <note style="advanced">
-			<p>Predvolené: Celá dĺžka média</p>
-		</note>
+            <p>Predvolené: Celá dĺžka média</p>
+        </note>
     </item>
     <item>
-		<title>Priečinok na uloženie</title>
-		<p>Priečinok, do ktorého sa má stiahnutie uložiť.</p>
+        <title>Priečinok na uloženie</title>
+        <p>Priečinok, do ktorého sa má stiahnutie uložiť.</p>
         <note>
             <p>Predtým vybratý priečinok sa uloží a automaticky sa predvolí pre ďalšie sťahovanie.</p>
         </note>
     </item>
     <item>
-		<title>Názov súboru</title>
+        <title>Názov súboru</title>
         <p>Názov súboru, ktorý sa má použiť pri ukladaní sťahovania.</p>
-		<note style="advanced">
-			<p>Predvolené: Názov média</p>
-		</note>
+        <note style="advanced">
+            <p>Predvolené: Názov média</p>
+        </note>
     </item>
 </terms>
 </page>

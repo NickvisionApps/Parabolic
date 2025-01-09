@@ -25,24 +25,24 @@
 
 <terms>
     <item>
-      <title>URL média</title>
-      <p>Adresa URL média ke stažení. Musí se jednat o platný („platný“ znamená syntakticky správný) odkaz http nebo https.</p>
-      <note>
+        <title>URL média</title>
+        <p>Adresa URL média ke stažení. Musí se jednat o platný („platný“ znamená syntakticky správný) odkaz http nebo https.</p>
+        <note>
             <p>Při nalezení platné adresy URL ve schránce při otevření dialogu Přidat stahování bude adresa URL automaticky vložena do pole zadávání adresy.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Přihlášení</title>
-      <p>Pokud je tato funkce povolena, bude uživatel vyzván k zadání uživatelského jména a/nebo hesla, které bude předáno službě yt-dlp při stahování.</p>
+        <title>Přihlášení</title>
+        <p>Pokud je tato funkce povolena, bude uživatel vyzván k zadání uživatelského jména a/nebo hesla, které bude předáno službě yt-dlp při stahování.</p>
         <p>Při nalezení údajů v klíčence si může uživatel namísto toho vybrat ze seznamu pojmenovaných údajů k použití (nebo pokračovat k ručnímu zadání údaje)</p>
-		<note style="advanced">
-			<p>Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do yt-dlp. Například YouTube tuto funkci NEpodporuje.</p>
-            <p>U těchto webů, které nepodporují předávání přihlašovacích údajů, je doporučeno v předvolbách vybrat prohlížeč, ze kterého mají být použity soubory cookie.</p>
-		</note>
+            <note style="advanced">
+                <p>Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do yt-dlp. Například YouTube tuto funkci NEpodporuje.</p>
+                <p>U těchto webů, které nepodporují předávání přihlašovacích údajů, je doporučeno v předvolbách vybrat prohlížeč, ze kterého mají být použity soubory cookie.</p>
+            </note>
     </item>
     <item>
-		<title>Typ souboru</title>
-		<p>Typ souboru, jako který se má médium stáhnout.</p>
+        <title>Typ souboru</title>
+        <p>Typ souboru, jako který se má médium stáhnout.</p>
         <note>
             <p>Dříve použitý typ souboru bude zapamatován a předvolen pro další stahování.</p>
         </note>
@@ -51,24 +51,25 @@
         </note>
     </item>
     <item>
-		<title>Kvalita</title>
-		<p>Pokud je typem souboru typ videa, budou uvedené kvality odpovídat rozlišení dostupných médií.</p>
-        <p>Pokud je typem souboru typ zvuku, budou uvedené kvality odpovídat datovým tokům dostupných médií.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>Dříve použitá kvalita bude zapamatována a předvolena pro další stahování.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Jazyk zvuku</title>
-		<p>Jazyk, ze kterého použít zvuk pro stahování multimédií.</p>
-        <p>Pokud nejsou dostupné žádné další jazyky, bude <code>výchozí</code> jedinou možností.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Titulky</title>
-		<p>Seznam titulků v médiu dostupných ke stažení uživatelem. Další nastavení titulků najdete v <link xref="downloads">předvolbách</link>.</p>
+        <title>Titulky</title>
+        <p>Seznam titulků v médiu dostupných ke stažení uživatelem. Další nastavení titulků najdete v <link xref="downloads">předvolbách</link>.</p>
         <note>
             <p>Dříve vybrané titulky budou zapamatovány a předem zvoleny pro další stahování.</p>
         </note>
@@ -81,39 +82,39 @@
         </note>
     </item>
     <item>
-		<title>Omezit rychlost stahování</title>
-		<p>Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <link xref="downloader">předvolbách</link>.</p>
+        <title>Omezit rychlost stahování</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <link xref="downloader">předvolbách</link>.</p>
         <note>
             <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
         </note>
     </item>
     <item>
-		<title>Popis exportu</title>
-		<p>Pokud je tato funkce povolena, aplikace Parabolic automaticky exportuje popis média do souboru <code>.description</code> vedle staženého souboru.</p>
+        <title>Popis exportu</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic automaticky exportuje popis média do souboru <code>.description</code> vedle staženého souboru.</p>
         <note>
             <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
         </note>
     </item>
     <item>
-		<title>Časový rámec</title>
-		<p>Uživatel může zadat počáteční časový rámec a konečný časový rámec pro stažení určité části média.</p>
+        <title>Časový rámec</title>
+        <p>Uživatel může zadat počáteční časový rámec a konečný časový rámec pro stažení určité části média.</p>
         <note style="advanced">
-			<p>Výchozí: celá délka média</p>
-		</note>
+            <p>Výchozí: celá délka média</p>
+        </note>
     </item>
     <item>
-		<title>Složka k uložení</title>
-		<p>Složka, do které budou ukládány stažené soubory.</p>
+        <title>Složka k uložení</title>
+        <p>Složka, do které budou ukládány stažené soubory.</p>
         <note>
             <p>Dříve použitá složka bude zapamatována a předem vybrána pro další stahování.</p>
         </note>
     </item>
     <item>
-		<title>Název souboru</title>
+        <title>Název souboru</title>
         <p>Název souboru, který se použije při ukládání stahování.</p>
-		<note style="advanced">
-			<p>Výchozí: název média</p>
-		</note>
+        <note style="advanced">
+            <p>Výchozí: název média</p>
+        </note>
     </item>
 </terms>
 </page>

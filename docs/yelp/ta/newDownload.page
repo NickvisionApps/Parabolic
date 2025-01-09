@@ -25,24 +25,24 @@
 
 <terms>
     <item>
-      <title>ஊடகத்தின் URL</title>
-      <p>பதிவிறக்குவதற்கான மீடியாவின் URL. செல்லுபடியாகும் ("செல்லுபடியாகும்" அதாவது தொடரியல் ரீதியாக சரியானது) http அல்லது https இணைப்பாக இருக்க வேண்டும்.</p>
-      <note>
+        <title>ஊடகத்தின் URL</title>
+        <p>பதிவிறக்குவதற்கான மீடியாவின் URL. செல்லுபடியாகும் ("செல்லுபடியாகும்" அதாவது தொடரியல் ரீதியாக சரியானது) http அல்லது https இணைப்பாக இருக்க வேண்டும்.</p>
+        <note>
             <p>பதிவிறக்கத்தைச் சேர் என்ற உரையாடலைத் திறந்தவுடன் கிளிப்போர்டுக்குள் சரியான URL கண்டறியப்பட்டால், URL நுழைவு வரிசையில் தானாகவே URL ஒட்டப்படும்.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>அங்கீகரிக்கவும்</title>
-      <p>இயக்கப்பட்டால், பதிவிறக்கும் போது yt-dlp க்கு அனுப்ப பயனர் பெயர் மற்றும்/அல்லது கடவுச்சொல்லை வழங்குமாறு பயனர் கேட்கப்படுவார்.</p>
+        <title>அங்கீகரிக்கவும்</title>
+        <p>இயக்கப்பட்டால், பதிவிறக்கும் போது yt-dlp க்கு அனுப்ப பயனர் பெயர் மற்றும்/அல்லது கடவுச்சொல்லை வழங்குமாறு பயனர் கேட்கப்படுவார்.</p>
         <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
-		<note style="advanced">
-			<p>அனைத்து இணையதளங்களும் yt-dlp க்கு பயனர்பெயர்கள் மற்றும் கடவுச்சொற்களை அனுப்புவதை ஆதரிக்காது. எடுத்துக்காட்டாக, YouTube இந்த அம்சத்தை ஆதரிக்காது.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
-		</note>
+            <note style="advanced">
+                <p>அனைத்து இணையதளங்களும் yt-dlp க்கு பயனர்பெயர்கள் மற்றும் கடவுச்சொற்களை அனுப்புவதை ஆதரிக்காது. எடுத்துக்காட்டாக, YouTube இந்த அம்சத்தை ஆதரிக்காது.</p>
+                <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+            </note>
     </item>
     <item>
-		<title>கோப்பு வகை</title>
-		<p>மீடியாவைப் பதிவிறக்க வேண்டிய கோப்பு வகை.</p>
+        <title>கோப்பு வகை</title>
+        <p>மீடியாவைப் பதிவிறக்க வேண்டிய கோப்பு வகை.</p>
         <note>
             <p>முன்பு பயன்படுத்தப்பட்ட கோப்பு வகை நினைவில் வைக்கப்படும் மற்றும் அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
@@ -51,24 +51,25 @@
         </note>
     </item>
     <item>
-		<title>தரம்</title>
-		<p>கோப்பு வகை வீடியோ வகையாக இருந்தால், பட்டியலிடப்பட்ட குணங்கள் மீடியாவின் தீர்மானங்களாக இருக்கும்.</p>
-        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>முன்பு பயன்படுத்தப்பட்ட தரம் நினைவில் வைக்கப்படும் மற்றும் அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Subtitles</title>
-		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <title>Subtitles</title>
+        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
             <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
@@ -81,39 +82,39 @@
         </note>
     </item>
     <item>
-		<title>Limit Download Speed</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <title>Limit Download Speed</title>
+        <p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>Export Description</title>
+        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <title>Time Frame</title>
+        <p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
-		</note>
+            <p>Default: The whole media length</p>
+        </note>
     </item>
     <item>
-		<title>கோப்புறையை சேமி</title>
-		<p>பதிவிறக்கத்தைச் சேமிக்க வேண்டிய கோப்புறை.</p>
+        <title>கோப்புறையை சேமி</title>
+        <p>பதிவிறக்கத்தைச் சேமிக்க வேண்டிய கோப்புறை.</p>
         <note>
             <p>முன்பு பயன்படுத்திய கோப்புறை நினைவில் வைக்கப்படும் மற்றும் அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
     </item>
     <item>
-		<title>கோப்பு பெயர்</title>
+        <title>கோப்பு பெயர்</title>
         <p>பதிவிறக்கத்தைச் சேமிக்கும்போது பயன்படுத்த வேண்டிய கோப்பு பெயர்.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஊடகத்தின் தலைப்பு</p>
-		</note>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஊடகத்தின் தலைப்பு</p>
+        </note>
     </item>
 </terms>
 </page>

@@ -19,24 +19,24 @@
 
 <terms>
     <item>
-      <title>URL da média</title>
-      <p>O URL da multimédia para download. Deve ser um link http ou https válido ("válido" significa sintaticamente correto).</p>
-      <note>
+        <title>URL da média</title>
+        <p>O URL da multimédia para download. Deve ser um link http ou https válido ("válido" significa sintaticamente correto).</p>
+        <note>
             <p>Se um URL válido for encontrado na área de transferência ao abrir a caixa de diálogo Adicionar Download, o URL será automaticamente colado na linha de entrada do URL.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Autenticar</title>
-      <p>Se ativado, o utilizador será solicitado a fornecer um nome de utilizador e/ou senha para passar ao yt-dlp durante o download.</p>
+        <title>Autenticar</title>
+        <p>Se ativado, o utilizador será solicitado a fornecer um nome de utilizador e/ou senha para passar ao yt-dlp durante o download.</p>
         <p>Se forem encontradas credenciais no keyring, o utilizador pode escolher entre uma lista de credenciais nomeadas para usar (ou continuar a inserir manualmente uma credencial)</p>
-		<note style="advanced">
-			<p>Nem todos os sites suportam passar nomes de utilizadores e senhas para yt-dlp. Por exemplo, o YouTube NÃO suporta esse recurso.</p>
-            <p>Para esses sites que não suportam a passagem de credenciais, é recomendável selecionar um navegador para usar cookies nas Preferências.</p>
-		</note>
+            <note style="advanced">
+                <p>Nem todos os sites suportam passar nomes de utilizadores e senhas para yt-dlp. Por exemplo, o YouTube NÃO suporta esse recurso.</p>
+                <p>Para esses sites que não suportam a passagem de credenciais, é recomendável selecionar um navegador para usar cookies nas Preferências.</p>
+            </note>
     </item>
     <item>
-		<title>Tipo de Ficheiro</title>
-		<p>O tipo de ficheiro no qual a multimédia será descarregada.</p>
+        <title>Tipo de Ficheiro</title>
+        <p>O tipo de ficheiro no qual a multimédia será descarregada.</p>
         <note>
             <p>O tipo de ficheiro usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
@@ -45,24 +45,25 @@
         </note>
     </item>
     <item>
-		<title>Qualidade</title>
-		<p>Se o tipo de ficheiro for um tipo de vídeo, as qualidades listadas serão as resoluções da multimédia disponível.</p>
-        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>A qualidade usada anteriormente será lembrada e pré-selecionada para o próximo download.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Idioma do Áudio</title>
-		<p>O idioma a ser usado na parte de áudio de um download de multimédia.</p>
-        <p>Se não houver idiomas adicionais disponíveis, <code>Padrãot</code> será a única opção.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Subtitles</title>
-		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <title>Subtitles</title>
+        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
             <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
@@ -75,39 +76,39 @@
         </note>
     </item>
     <item>
-		<title>Limit Download Speed</title>
-		<p>Se ativado, o Parabolic limitará a velocidade do download com a velocidade configurada nas<link xref="downloader"> Preferências</link> .</p>
+        <title>Limit Download Speed</title>
+        <p>Se ativado, o Parabolic limitará a velocidade do download com a velocidade configurada nas<link xref="downloader"> Preferências</link> .</p>
         <note>
             <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>Export Description</title>
+        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
             <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
-		<title>Período de Tempo</title>
-		<p>O utilizador pode inserir um período de início e um período de término para descarregar uma secção específica da multimédia.</p>
+        <title>Período de Tempo</title>
+        <p>O utilizador pode inserir um período de início e um período de término para descarregar uma secção específica da multimédia.</p>
         <note style="advanced">
-			<p>Padrão: O comprimento total da multimédia</p>
-		</note>
+            <p>Padrão: O comprimento total da multimédia</p>
+        </note>
     </item>
     <item>
-		<title>Pasta de Destino</title>
-		<p>A pasta onde o download será salvo.</p>
+        <title>Pasta de Destino</title>
+        <p>A pasta onde o download será salvo.</p>
         <note>
             <p>A pasta usada anteriormente será lembrada e pré-selecionada para o próximo download.</p>
         </note>
     </item>
     <item>
-		<title>Nome do Ficheiro</title>
+        <title>Nome do Ficheiro</title>
         <p>O nome do ficheiro a ser usado ao salvar o download.</p>
-		<note style="advanced">
-			<p>Padrão: O título da multimédia</p>
-		</note>
+        <note style="advanced">
+            <p>Padrão: O título da multimédia</p>
+        </note>
     </item>
 </terms>
 </page>

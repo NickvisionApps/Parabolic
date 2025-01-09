@@ -25,24 +25,24 @@
 
 <terms>
     <item>
-      <title>Nettadresse</title>
-      <p>Nettadressen til innholdet som skal lastes ned. Må være en gyldig HTTP- eller HTTPS-lenke.</p>
-      <note>
+        <title>Nettadresse</title>
+        <p>Nettadressen til innholdet som skal lastes ned. Må være en gyldig HTTP- eller HTTPS-lenke.</p>
+        <note>
             <p>Hvis det er en gyldig nettadresse på utklippstavlen når en nedlasting skal legges til, vil den limes inn automatisk.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Autentisering</title>
-      <p>Hvis dette er på, vil det kunne oppgis brukernavn og passord til nedlastingen.</p>
+        <title>Autentisering</title>
+        <p>Hvis dette er på, vil det kunne oppgis brukernavn og passord til nedlastingen.</p>
         <p>Hvis nøkkelringen inneholder lagrede innlogginger, er det mulig å velge fra disse i stedet for å oppgi informasjon manuelt.</p>
-		<note style="advanced">
-			<p>Autentisering på denne måten fungerer ikke med alle nettsteder. For eksempel kan ikke Parabolic sende innloggingsinformasjon til YouTube.</p>
-            <p>I tilfeller hvor nettsteder ikke støtter direkte autentisering, kan det brukes informasjonskapsler fra en nettleser i stedet. Gå til Innstillinger for å sette opp dette.</p>
-		</note>
+            <note style="advanced">
+                <p>Autentisering på denne måten fungerer ikke med alle nettsteder. For eksempel kan ikke Parabolic sende innloggingsinformasjon til YouTube.</p>
+                <p>I tilfeller hvor nettsteder ikke støtter direkte autentisering, kan det brukes informasjonskapsler fra en nettleser i stedet. Gå til Innstillinger for å sette opp dette.</p>
+            </note>
     </item>
     <item>
-		<title>Filtype</title>
-		<p>Filtypen innholdet skal lastes ned som.</p>
+        <title>Filtype</title>
+        <p>Filtypen innholdet skal lastes ned som.</p>
         <note>
             <p>Den sist brukte filtypen vil huskes og forhåndsvelges ved neste nedlasting.</p>
         </note>
@@ -51,24 +51,25 @@
         </note>
     </item>
     <item>
-		<title>Oppløsning</title>
-		<p>Hvis filen er en video, vil de tilgjengelige oppløsningene på videoen listes opp.</p>
-        <p>Hvis filen er et lydklipp, vil de tilgjengelige lydkvalitetene på klippet listes opp.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>Den sist brukte oppløsningen vil huskes og forhåndsvelges ved neste nedlasting.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Språk</title>
-		<p>Språket på lydsporet til innholdet som lastes ned.</p>
-        <p>Hvis ikke flere språk er tilgjengelig, vil det eneste alternativet være «Standard».</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>Det sist brukte valget vil huskes og forhåndsvelges ved neste nedlasting.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Undertekster</title>
-		<p>Listen over undertekster til innholdet som kan lastes ned. Flere innstillinger for undertekster kan endres i <link xref="downloads">innstillingene</link>.</p>
+        <title>Undertekster</title>
+        <p>Listen over undertekster til innholdet som kan lastes ned. Flere innstillinger for undertekster kan endres i <link xref="downloads">innstillingene</link>.</p>
         <note>
             <p>De sist valgte undertekstene vil huskes og velges automatisk ved neste nedlasting.</p>
         </note>
@@ -81,39 +82,39 @@
         </note>
     </item>
     <item>
-		<title>Hastighetsgrense</title>
-		<p>Hvis dette er på, vil Parabolic begrense nedlastingshastigheten til det som er angitt i <link xref="downloader">innstillingene</link>.</p>
+        <title>Hastighetsgrense</title>
+        <p>Hvis dette er på, vil Parabolic begrense nedlastingshastigheten til det som er angitt i <link xref="downloader">innstillingene</link>.</p>
         <note>
             <p>Det sist brukte valget vil huskes og forhåndsvelges ved neste nedlasting.</p>
         </note>
     </item>
     <item>
-		<title>Eksporter beskrivelse</title>
-		<p>Hvis denne innstillingen er på, vil Parabolic eksportere innholdets beskrivelse til en egen fil ved siden av det nedlastede innholdet.</p>
+        <title>Eksporter beskrivelse</title>
+        <p>Hvis denne innstillingen er på, vil Parabolic eksportere innholdets beskrivelse til en egen fil ved siden av det nedlastede innholdet.</p>
         <note>
             <p>Det sist brukte valget vil huskes og forhåndsvelges ved neste nedlasting.</p>
         </note>
     </item>
     <item>
-		<title>Tidsrom</title>
-		<p>Det er mulig å oppgi en start- og sluttid for å laste ned en spesifikk del av innholdet.</p>
+        <title>Tidsrom</title>
+        <p>Det er mulig å oppgi en start- og sluttid for å laste ned en spesifikk del av innholdet.</p>
         <note style="advanced">
-			<p>Standard: den fulle lengden på innholdet</p>
-		</note>
+            <p>Standard: den fulle lengden på innholdet</p>
+        </note>
     </item>
     <item>
-		<title>Lagringsmappe</title>
-		<p>Mappen nedlastingen skal lagres til.</p>
+        <title>Lagringsmappe</title>
+        <p>Mappen nedlastingen skal lagres til.</p>
         <note>
             <p>Den sist brukte mappen vil huskes og forhåndsvelges ved neste nedlasting.</p>
         </note>
     </item>
     <item>
-		<title>Filnavn</title>
+        <title>Filnavn</title>
         <p>Navnet den nedlastede filen skal lagres med.</p>
-		<note style="advanced">
-			<p>Standard: tittelen på innholdet</p>
-		</note>
+        <note style="advanced">
+            <p>Standard: tittelen på innholdet</p>
+        </note>
     </item>
 </terms>
 </page>

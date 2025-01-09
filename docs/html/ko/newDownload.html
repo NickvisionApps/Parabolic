@@ -84,30 +84,31 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p"><span class="code">Video (Generic)</span> 또는 <span class="code">Audio (Generic)</span> 파일 형식을 선택하면, Parabolic은 미디어의 원본 파일 형식으로 미디어를 다운로드하며, 변환을 수행하지 않습니다.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">품질</dt>
+<dt class="terms">Video Format</dt>
 <dd class="terms">
-<p class="p">파일 형식이 비디오일 경우, 나열된 품질은 사용 가능한 미디어의 해상도입니다.</p>
-<p class="p">파일 형식이 오디오인 경우, 나열된 품질은 사용 가능한 미디어의 오디오 비트레이트입니다.</p>
+<p class="p">The list of video formats available for download, sorted by resolution and bitrate.</p>
+<p class="p">Each format is the form: <span class="code">resolution | bitrate | codec (id)</span>.</p>
+<p class="p">If the file type is an audio type, this option will not be available.</p>
 <div class="note" title="알림">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">이전에 사용한 품질은 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used video format will be remembered and pre-selected for the next download.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">오디오 언어</dt>
+<dt class="terms">Audio Format</dt>
 <dd class="terms">
-<p class="p">미디어 다운로드에서 오디오 부분에 사용할 언어입니다.</p>
-<p class="p">추가 언어가 없으면, <span class="code">기본값</span>만 선택할 수 있는 옵션이 됩니다.</p>
+<p class="p">The list of audio formats available for download, sorted by bitrate.</p>
+<p class="p">Each format is the form: <span class="code">bitrate | language (id)</span>.</p>
 <div class="note" title="알림">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">이전에 사용한 상태는 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used audio format will be remembered and pre-selected for the next download.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">자막</dt>

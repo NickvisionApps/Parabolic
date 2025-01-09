@@ -25,24 +25,24 @@
 
 <terms>
     <item>
-      <title>URL del multimedia</title>
-      <p>La URL del medio a descargar. Debe ser un enlace http o https válido ("válido" significa sintácticamente correcto).</p>
-      <note>
+        <title>URL del multimedia</title>
+        <p>La URL del medio a descargar. Debe ser un enlace http o https válido ("válido" significa sintácticamente correcto).</p>
+        <note>
             <p>Si se encuentra una URL válida en el portapapeles al abrir el cuadro de diálogo Añadir descarga, la URL se pegará automáticamente en la fila de entrada de URL.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Autenticar</title>
-      <p>Si se activa, se pedirá al usuario que proporcione un nombre de usuario y/o una contraseña para pasárselos a yt-dlp al descargar.</p>
+        <title>Autenticar</title>
+        <p>Si se activa, se pedirá al usuario que proporcione un nombre de usuario y/o una contraseña para pasárselos a yt-dlp al descargar.</p>
         <p>Si las credenciales se encuentran en el llavero, el usuario puede elegir entre una lista de credenciales con nombre para usarlas (o continuar introduciendo manualmente una credencial)</p>
-		<note style="advanced">
-			<p>No todos los sitios web admiten la transmisión de nombres de usuario y contraseñas a yt-dlp. Por ejemplo, YouTube NO admite esta función.</p>
-            <p>Para estos sitios que no admiten la transmisión de credenciales, se recomienda seleccionar un navegador desde el que usar las cookies en Preferencias.</p>
-		</note>
+            <note style="advanced">
+                <p>No todos los sitios web admiten la transmisión de nombres de usuario y contraseñas a yt-dlp. Por ejemplo, YouTube NO admite esta función.</p>
+                <p>Para estos sitios que no admiten la transmisión de credenciales, se recomienda seleccionar un navegador desde el que usar las cookies en Preferencias.</p>
+            </note>
     </item>
     <item>
-		<title>Tipo de archivo</title>
-		<p>El tipo de archivo con el que se descargarán los archivos multimedia.</p>
+        <title>Tipo de archivo</title>
+        <p>El tipo de archivo con el que se descargarán los archivos multimedia.</p>
         <note>
             <p>El tipo de archivo usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
         </note>
@@ -51,24 +51,25 @@
         </note>
     </item>
     <item>
-		<title>Calidad</title>
-		<p>Si el tipo de archivo es de vídeo, las calidades indicadas serán las resoluciones de los medios disponibles.</p>
-        <p>Si el tipo de archivo es de audio, las calidades indicadas serán las tasas de bits de audio de los medios disponibles.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>La calidad usada anteriormente será recordada y preseleccionada para la siguiente descarga.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Idioma del audio</title>
-		<p>El idioma que se usará en la parte de audio de una descarga multimedia.</p>
-        <p>Si no hay idiomas adicionales disponibles, <code>Predeterminado</code> será la única opción.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Subtítulos</title>
-		<p>Lista de subtítulos disponibles en el medio que el usuario puede seleccionar para descargar. Se pueden configurar más ajustes de subtítulos en <link xref="downloads"> preferencias </link> .</p>
+        <title>Subtítulos</title>
+        <p>Lista de subtítulos disponibles en el medio que el usuario puede seleccionar para descargar. Se pueden configurar más ajustes de subtítulos en <link xref="downloads"> preferencias </link> .</p>
         <note>
             <p>Los subtítulos previamente seleccionados serán recordados y preseleccionados para la próxima descarga.</p>
         </note>
@@ -81,39 +82,39 @@
         </note>
     </item>
     <item>
-		<title>Limitar la velocidad de descarga</title>
-		<p>Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en <link xref="downloader">Preferencias</link>.</p>
+        <title>Limitar la velocidad de descarga</title>
+        <p>Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en <link xref="downloader">Preferencias</link>.</p>
         <note>
             <p>El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>Si está habilitado, Parabolic exportará la descripción del medio a un archivo <code> .description </code> junto con el archivo descargado.</p>
+        <title>Export Description</title>
+        <p>Si está habilitado, Parabolic exportará la descripción del medio a un archivo <code> .description </code> junto con el archivo descargado.</p>
         <note>
             <p>El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
         </note>
     </item>
     <item>
-		<title>Duración</title>
-		<p>El usuario puede introducir una franja horaria de inicio y otra de finalización para descargar una sección específica del multimedia.</p>
+        <title>Duración</title>
+        <p>El usuario puede introducir una franja horaria de inicio y otra de finalización para descargar una sección específica del multimedia.</p>
         <note style="advanced">
-			<p>Predeterminado: Toda la longitud del multimedia</p>
-		</note>
+            <p>Predeterminado: Toda la longitud del multimedia</p>
+        </note>
     </item>
     <item>
-		<title>Guardar carpeta</title>
-		<p>La carpeta en la que guardar la descarga.</p>
+        <title>Guardar carpeta</title>
+        <p>La carpeta en la que guardar la descarga.</p>
         <note>
             <p>La carpeta usada anteriormente será recordada y preseleccionada para la siguiente descarga.</p>
         </note>
     </item>
     <item>
-		<title>Nombre del archivo</title>
+        <title>Nombre del archivo</title>
         <p>El nombre de archivo que se usará al guardar la descarga.</p>
-		<note style="advanced">
-			<p>Predeterminado: El título del medio</p>
-		</note>
+        <note style="advanced">
+            <p>Predeterminado: El título del medio</p>
+        </note>
     </item>
 </terms>
 </page>

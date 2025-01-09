@@ -84,30 +84,31 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p"><span class="code">動画 (全般)</span> または <span class="code">音声 (全般)</span> のファイル形式を選択すると、Parabolic はメディアのオリジナルのファイル形式で、何のファイル変換も行わずにメディアをダウンロードします。</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">品質</dt>
+<dt class="terms">Video Format</dt>
 <dd class="terms">
-<p class="p">ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
-<p class="p">ファイルの種類が音声の場合、表示される品質はメディアが利用できる音声ビットレートです。</p>
+<p class="p">The list of video formats available for download, sorted by resolution and bitrate.</p>
+<p class="p">Each format is the form: <span class="code">resolution | bitrate | codec (id)</span>.</p>
+<p class="p">If the file type is an audio type, this option will not be available.</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した品質は、次回のダウンロードのために記憶・事前選択されます。</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used video format will be remembered and pre-selected for the next download.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">音声の言語</dt>
+<dt class="terms">Audio Format</dt>
 <dd class="terms">
-<p class="p">メディアダウンロードの音声部分で使用する言語。</p>
-<p class="p">他の言語が利用できない場合、<span class="code">デフォルト</span> が唯一の選択肢になります。</p>
+<p class="p">The list of audio formats available for download, sorted by bitrate.</p>
+<p class="p">Each format is the form: <span class="code">bitrate | language (id)</span>.</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used audio format will be remembered and pre-selected for the next download.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">字幕</dt>

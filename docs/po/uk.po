@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-12-27 12:06-0500\n"
+"POT-Creation-Date: 2025-01-09 16:24-0500\n"
 "PO-Revision-Date: 2024-12-20 21:00+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -964,72 +964,73 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:51
-msgid "Quality"
-msgstr "Якість"
+#, fuzzy
+msgid "Video Format"
+msgstr "Відеокодек"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:52
 msgid ""
-"If the file type is a video type, the listed qualities will be the "
-"resolutions of the media available."
+"The list of video formats available for download, sorted by resolution and "
+"bitrate."
 msgstr ""
-"Якщо тип файлу - відео, перелічені якості будуть відповідати роздільній "
-"здатності доступного носія."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:53
 msgid ""
-"If the file type is an audio type, the listed qualities will be the audio "
-"bitrates of the media available."
+"Each format is the form: <code>resolution | bitrate | codec (id)</code>."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:54
+#, fuzzy
+msgid "If the file type is an audio type, this option will not be available."
 msgstr ""
 "Якщо тип файлу є аудіоформатом, вказані якості будуть відповідати бітрейтам "
 "аудіо, доступним для медіа."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:55
+#: docs/yelp/C/newDownload.page:56
+#, fuzzy
 msgid ""
-"The previously used quality will be remembered and pre-selected for the next "
-"download."
+"The previously used video format will be remembered and pre-selected for the "
+"next download."
 msgstr ""
-"Раніше використана якість буде запам'ятовуватися і попередньо вибиратися для "
+"Раніше використана тека буде запам'ятовуватися і попередньо вибиратися для "
 "наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:59
-msgid "Audio Language"
-msgstr "Мова аудіо"
-
-#. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:60
-msgid "The language of which to use from the audio part of a media download."
-msgstr "Мова, яку слід використовувати з аудіо частини медіа-завантаження."
+msgid "Audio Format"
+msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:61
-msgid ""
-"If no additional languages are available, <code>Default</code> will be the "
-"only option."
+msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
-"Якщо додаткові мови недоступні, єдиним варіантом буде <code> За "
-"замовчуванням</code>."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:62
+msgid "Each format is the form: <code>bitrate | language (id)</code>."
+msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:63 docs/yelp/C/newDownload.page:77
-#: docs/yelp/C/newDownload.page:84 docs/yelp/C/newDownload.page:91
+#: docs/yelp/C/newDownload.page:64
+#, fuzzy
 msgid ""
-"The previously used state will be remembered and pre-selected for the next "
-"download."
+"The previously used audio format will be remembered and pre-selected for the "
+"next download."
 msgstr ""
-"Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься "
-"для наступного завантаження."
+"Раніше використана тека буде запам'ятовуватися і попередньо вибиратися для "
+"наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:67
+#: docs/yelp/C/newDownload.page:68
 msgid "Subtitles"
 msgstr "Субтитри"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:69
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1040,7 +1041,7 @@ msgstr ""
 "xref=\"downloads\">налаштуваннях</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:70
+#: docs/yelp/C/newDownload.page:71
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1049,12 +1050,12 @@ msgstr ""
 "наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:74
+#: docs/yelp/C/newDownload.page:75
 msgid "Split Chapters"
 msgstr "Розділити глави"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:76
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1062,13 +1063,23 @@ msgstr ""
 "Якщо увімкнено, Parabolic розділить завантаження відео на кілька менших "
 "файлів, грунтуючись на його розділах."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:78 docs/yelp/C/newDownload.page:85
+#: docs/yelp/C/newDownload.page:92
+msgid ""
+"The previously used state will be remembered and pre-selected for the next "
+"download."
+msgstr ""
+"Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься "
+"для наступного завантаження."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:82
 msgid "Limit Download Speed"
 msgstr "Обмежити швидкість завантаження"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:83
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1077,12 +1088,12 @@ msgstr ""
 "швидкості, налаштованої в <link xref=\"downloader\">Параметрах</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:89
 msgid "Export Description"
 msgstr "Експорт опису"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:90
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1091,12 +1102,12 @@ msgstr ""
 "description</code> разом з завантаженим файлом."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:96
 msgid "Time Frame"
 msgstr "Часовий проміжок"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:97
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1105,22 +1116,22 @@ msgstr ""
 "завантаження конкретної частини медіа."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:98
+#: docs/yelp/C/newDownload.page:99
 msgid "Default: The whole media length"
 msgstr "За замовчуванням: вся довжина медіа"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:103
 msgid "Save Folder"
 msgstr "Зберегти теку"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:104
 msgid "The folder at which to save the download to."
 msgstr "Тека, в яку буде збережено завантаження."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:105
+#: docs/yelp/C/newDownload.page:106
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1129,19 +1140,50 @@ msgstr ""
 "наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:110
 msgid "File Name"
 msgstr "Ім'я файлу"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:111
 msgid "The file name to use when saving the download."
 msgstr "Ім'я файлу, яке буде використано при збереженні завантаження."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:112
+#: docs/yelp/C/newDownload.page:113
 msgid "Default: The title of the media"
 msgstr "За замовчуванням: назва медіа"
+
+#~ msgid "Quality"
+#~ msgstr "Якість"
+
+#~ msgid ""
+#~ "If the file type is a video type, the listed qualities will be the "
+#~ "resolutions of the media available."
+#~ msgstr ""
+#~ "Якщо тип файлу - відео, перелічені якості будуть відповідати роздільній "
+#~ "здатності доступного носія."
+
+#~ msgid ""
+#~ "The previously used quality will be remembered and pre-selected for the "
+#~ "next download."
+#~ msgstr ""
+#~ "Раніше використана якість буде запам'ятовуватися і попередньо вибиратися "
+#~ "для наступного завантаження."
+
+#~ msgid "Audio Language"
+#~ msgstr "Мова аудіо"
+
+#~ msgid ""
+#~ "The language of which to use from the audio part of a media download."
+#~ msgstr "Мова, яку слід використовувати з аудіо частини медіа-завантаження."
+
+#~ msgid ""
+#~ "If no additional languages are available, <code>Default</code> will be "
+#~ "the only option."
+#~ msgstr ""
+#~ "Якщо додаткові мови недоступні, єдиним варіантом буде <code> За "
+#~ "замовчуванням</code>."
 
 #~ msgid ""
 #~ "If <code>Disallow Conversions</code> is enabled, the only options will be "
@@ -1166,9 +1208,6 @@ msgstr "За замовчуванням: назва медіа"
 
 #~ msgid "Available in the <code>Advanced Options</code> section."
 #~ msgstr "Доступно в розділі <code>Додаткові параметри</code>."
-
-#~ msgid "Video Codec"
-#~ msgstr "Відеокодек"
 
 #~ msgid "The video codec to prefer when downloading a video."
 #~ msgstr "Відеокодек, який слід надавати перевагу при завантаженні відео."

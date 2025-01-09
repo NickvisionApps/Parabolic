@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-12-27 12:06-0500\n"
+"POT-Creation-Date: 2025-01-09 16:24-0500\n"
 "PO-Revision-Date: 2024-12-18 14:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -969,73 +969,73 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:51
-msgid "Quality"
-msgstr "Calidad"
+#, fuzzy
+msgid "Video Format"
+msgstr "Códec de vídeo"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:52
 msgid ""
-"If the file type is a video type, the listed qualities will be the "
-"resolutions of the media available."
+"The list of video formats available for download, sorted by resolution and "
+"bitrate."
 msgstr ""
-"Si el tipo de archivo es de vídeo, las calidades indicadas serán las "
-"resoluciones de los medios disponibles."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:53
 msgid ""
-"If the file type is an audio type, the listed qualities will be the audio "
-"bitrates of the media available."
+"Each format is the form: <code>resolution | bitrate | codec (id)</code>."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:54
+#, fuzzy
+msgid "If the file type is an audio type, this option will not be available."
 msgstr ""
 "Si el tipo de archivo es de audio, las calidades indicadas serán las tasas "
 "de bits de audio de los medios disponibles."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:55
+#: docs/yelp/C/newDownload.page:56
+#, fuzzy
 msgid ""
-"The previously used quality will be remembered and pre-selected for the next "
-"download."
+"The previously used video format will be remembered and pre-selected for the "
+"next download."
 msgstr ""
-"La calidad usada anteriormente será recordada y preseleccionada para la "
+"La carpeta usada anteriormente será recordada y preseleccionada para la "
 "siguiente descarga."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:59
-msgid "Audio Language"
-msgstr "Idioma del audio"
-
-#. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:60
-msgid "The language of which to use from the audio part of a media download."
+msgid "Audio Format"
 msgstr ""
-"El idioma que se usará en la parte de audio de una descarga multimedia."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:61
-msgid ""
-"If no additional languages are available, <code>Default</code> will be the "
-"only option."
+msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
-"Si no hay idiomas adicionales disponibles, <code>Predeterminado</code> será "
-"la única opción."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:62
+msgid "Each format is the form: <code>bitrate | language (id)</code>."
+msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:63 docs/yelp/C/newDownload.page:77
-#: docs/yelp/C/newDownload.page:84 docs/yelp/C/newDownload.page:91
+#: docs/yelp/C/newDownload.page:64
+#, fuzzy
 msgid ""
-"The previously used state will be remembered and pre-selected for the next "
-"download."
+"The previously used audio format will be remembered and pre-selected for the "
+"next download."
 msgstr ""
-"El estado usado anteriormente será recordado y preseleccionado para la "
+"La carpeta usada anteriormente será recordada y preseleccionada para la "
 "siguiente descarga."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:67
+#: docs/yelp/C/newDownload.page:68
 msgid "Subtitles"
 msgstr "Subtítulos"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:69
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1046,7 +1046,7 @@ msgstr ""
 "xref=\"downloads\"> preferencias </link> ."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:70
+#: docs/yelp/C/newDownload.page:71
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1055,12 +1055,12 @@ msgstr ""
 "para la próxima descarga."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:74
+#: docs/yelp/C/newDownload.page:75
 msgid "Split Chapters"
 msgstr "Separar los capítulos"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:76
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1068,13 +1068,23 @@ msgstr ""
 "Si está activada, Parabolic dividirá una descarga de vídeo en varios "
 "archivos más pequeños en función de sus capítulos."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:78 docs/yelp/C/newDownload.page:85
+#: docs/yelp/C/newDownload.page:92
+msgid ""
+"The previously used state will be remembered and pre-selected for the next "
+"download."
+msgstr ""
+"El estado usado anteriormente será recordado y preseleccionado para la "
+"siguiente descarga."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:82
 msgid "Limit Download Speed"
 msgstr "Limitar la velocidad de descarga"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:83
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1083,12 +1093,12 @@ msgstr ""
 "velocidad configurada en <link xref=\"downloader\">Preferencias</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:89
 msgid "Export Description"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:90
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1097,12 +1107,12 @@ msgstr ""
 "archivo <code> .description </code> junto con el archivo descargado."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:96
 msgid "Time Frame"
 msgstr "Duración"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:97
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1111,22 +1121,22 @@ msgstr ""
 "finalización para descargar una sección específica del multimedia."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:98
+#: docs/yelp/C/newDownload.page:99
 msgid "Default: The whole media length"
 msgstr "Predeterminado: Toda la longitud del multimedia"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:103
 msgid "Save Folder"
 msgstr "Guardar carpeta"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:104
 msgid "The folder at which to save the download to."
 msgstr "La carpeta en la que guardar la descarga."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:105
+#: docs/yelp/C/newDownload.page:106
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1135,19 +1145,51 @@ msgstr ""
 "siguiente descarga."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:110
 msgid "File Name"
 msgstr "Nombre del archivo"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:111
 msgid "The file name to use when saving the download."
 msgstr "El nombre de archivo que se usará al guardar la descarga."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:112
+#: docs/yelp/C/newDownload.page:113
 msgid "Default: The title of the media"
 msgstr "Predeterminado: El título del medio"
+
+#~ msgid "Quality"
+#~ msgstr "Calidad"
+
+#~ msgid ""
+#~ "If the file type is a video type, the listed qualities will be the "
+#~ "resolutions of the media available."
+#~ msgstr ""
+#~ "Si el tipo de archivo es de vídeo, las calidades indicadas serán las "
+#~ "resoluciones de los medios disponibles."
+
+#~ msgid ""
+#~ "The previously used quality will be remembered and pre-selected for the "
+#~ "next download."
+#~ msgstr ""
+#~ "La calidad usada anteriormente será recordada y preseleccionada para la "
+#~ "siguiente descarga."
+
+#~ msgid "Audio Language"
+#~ msgstr "Idioma del audio"
+
+#~ msgid ""
+#~ "The language of which to use from the audio part of a media download."
+#~ msgstr ""
+#~ "El idioma que se usará en la parte de audio de una descarga multimedia."
+
+#~ msgid ""
+#~ "If no additional languages are available, <code>Default</code> will be "
+#~ "the only option."
+#~ msgstr ""
+#~ "Si no hay idiomas adicionales disponibles, <code>Predeterminado</code> "
+#~ "será la única opción."
 
 #~ msgid ""
 #~ "If <code>Disallow Conversions</code> is enabled, the only options will be "
@@ -1172,9 +1214,6 @@ msgstr "Predeterminado: El título del medio"
 
 #~ msgid "Available in the <code>Advanced Options</code> section."
 #~ msgstr "Disponible en la sección <code>Opciones avanzadas</code>."
-
-#~ msgid "Video Codec"
-#~ msgstr "Códec de vídeo"
 
 #~ msgid "The video codec to prefer when downloading a video."
 #~ msgstr "El códec de vídeo preferido para descargar un vídeo."

@@ -19,24 +19,24 @@
 
 <terms>
     <item>
-      <title>Medien-URL</title>
-      <p>Die URL des herunterzuladenden Mediums. Muss ein gültiger ("gültig" bedeutet syntaktisch korrekt) http- oder https-Link sein.</p>
-      <note>
+        <title>Medien-URL</title>
+        <p>Die URL des herunterzuladenden Mediums. Muss ein gültiger ("gültig" bedeutet syntaktisch korrekt) http- oder https-Link sein.</p>
+        <note>
             <p>Wenn beim Öffnen des Dialogs "Download hinzufügen" eine gültige URL in der Zwischenablage gefunden wird, wird diese automatisch in die URL-Eingabezeile eingefügt.</p>
-      </note>
+        </note>
     </item>
     <item>
-      <title>Anmelden</title>
-      <p>Wenn diese Option aktiviert ist, wird der Benutzer aufgefordert, einen Benutzernamen und/oder ein Passwort einzugeben, die beim Herunterladen an yt-dlp weitergegeben werden.</p>
+        <title>Anmelden</title>
+        <p>Wenn diese Option aktiviert ist, wird der Benutzer aufgefordert, einen Benutzernamen und/oder ein Passwort einzugeben, die beim Herunterladen an yt-dlp weitergegeben werden.</p>
         <p>Wenn Anmeldedaten im Schlüsselbund gefunden werden, kann der Benutzer stattdessen aus einer Liste von benannten Anmeldedaten auswählen (oder weiterhin manuell Anmeldedaten eingeben)</p>
-		<note style="advanced">
-			<p>Nicht alle Webseiten unstützen die Übergabe von Benutzernamen und Passwörtern an yt-dlp. YouTube zum Beispiel unterstützt diese Funktion NICHT.</p>
-            <p>Für diese Websites, die die Weitergabe von Anmeldedaten nicht unterstützen, wird empfohlen, stattdessen in den Einstellungen einen Browser auszuwählen, der Cookies verwendet.</p>
-		</note>
+            <note style="advanced">
+                <p>Nicht alle Webseiten unstützen die Übergabe von Benutzernamen und Passwörtern an yt-dlp. YouTube zum Beispiel unterstützt diese Funktion NICHT.</p>
+                <p>Für diese Websites, die die Weitergabe von Anmeldedaten nicht unterstützen, wird empfohlen, stattdessen in den Einstellungen einen Browser auszuwählen, der Cookies verwendet.</p>
+            </note>
     </item>
     <item>
-		<title>Dateityp</title>
-		<p>Der Dateityp, in dem die Medien heruntergeladen werden sollen.</p>
+        <title>Dateityp</title>
+        <p>Der Dateityp, in dem die Medien heruntergeladen werden sollen.</p>
         <note>
             <p>Der zuvor verwendete Dateityp wird gespeichert und für den nächsten Download vorausgewählt.</p>
         </note>
@@ -45,24 +45,25 @@
         </note>
     </item>
     <item>
-		<title>Qualität</title>
-		<p>Handelt es sich bei dem Dateityp um einen Videotyp, werden die verfügbaren Auflösungen aufgelistet.</p>
-        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+        <title>Video Format</title>
+        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
+        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
+        <p>If the file type is an audio type, this option will not be available.</p>
         <note>
-            <p>Die zuvor verwendete Qualität wird gespeichert und für den nächsten Download vorausgewählt.</p>
+            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Audiosprache</title>
-		<p>Die Sprache, die aus dem Audioteil eines Mediendownloads verwendet werden soll.</p>
-        <p>Wenn keine weiteren Sprachen verfügbar sind, ist die <code>Voreinstellung</code> die einzige Option.</p>
+        <title>Audio Format</title>
+        <p>The list of audio formats available for download, sorted by bitrate.</p>
+        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
-            <p>Der zuvor verwendete Status wird gespeichert und für den nächsten Download vorausgewählt.</p>
+            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Untertitel</title>
-		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <title>Untertitel</title>
+        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
             <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
@@ -75,39 +76,39 @@
         </note>
     </item>
     <item>
-		<title>Herunterladegeschwindigkeit begrenzen</title>
-		<p>Wenn aktiviert, begrenzt Parabolic die Geschwindigkeit des Downloads mit der in den <link xref="downloader">Einstellungen</link> konfigurierten Geschwindigkeit.</p>
+        <title>Herunterladegeschwindigkeit begrenzen</title>
+        <p>Wenn aktiviert, begrenzt Parabolic die Geschwindigkeit des Downloads mit der in den <link xref="downloader">Einstellungen</link> konfigurierten Geschwindigkeit.</p>
         <note>
             <p>Der zuvor verwendete Status wird gespeichert und für den nächsten Download vorausgewählt.</p>
         </note>
     </item>
     <item>
-		<title>Export Description</title>
-		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>Export Description</title>
+        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
             <p>Der zuvor verwendete Status wird gespeichert und für den nächsten Download vorausgewählt.</p>
         </note>
     </item>
     <item>
-		<title>Zeitrahmen</title>
-		<p>Der Benutzer kann einen Start- und einen Endzeitpunkt für das Herunterladen eines bestimmten Abschnitts der Medien eingeben.</p>
+        <title>Zeitrahmen</title>
+        <p>Der Benutzer kann einen Start- und einen Endzeitpunkt für das Herunterladen eines bestimmten Abschnitts der Medien eingeben.</p>
         <note style="advanced">
-			<p>Standardeinstellung: Die gesamte Medienlänge</p>
-		</note>
+            <p>Standardeinstellung: Die gesamte Medienlänge</p>
+        </note>
     </item>
     <item>
-		<title>Speicherordner</title>
-		<p>Der Ordner in dem die heruntergeladene Datei gespeichert werden soll.</p>
+        <title>Speicherordner</title>
+        <p>Der Ordner in dem die heruntergeladene Datei gespeichert werden soll.</p>
         <note>
             <p>Der zuvor verwendete Ordner wird gespeichert und für den nächsten Download vorausgewählt.</p>
         </note>
     </item>
     <item>
-		<title>Dateiname</title>
+        <title>Dateiname</title>
         <p>Der Dateiname, der beim Speichern des Downloads verwendet werden soll.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Der Titel des Mediums</p>
-		</note>
+        <note style="advanced">
+            <p>Standardeinstellung: Der Titel des Mediums</p>
+        </note>
     </item>
 </terms>
 </page>
