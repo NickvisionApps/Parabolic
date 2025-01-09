@@ -106,16 +106,19 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_process->exited() += [this](const ProcessExitedEventArgs& args) { onProcessExit(args); };
         m_process->start();
         m_status = DownloadStatus::Running;
-        std::thread watcher{ &Download::watch, this };
-        watcher.detach();
         lock.unlock();
         if(m_options.getTimeFrame())
         {
             m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using ffmpeg to download. Progress will not be shown.") });
         }
-        if(downloaderOptions.getUseAria())
+        else if(downloaderOptions.getUseAria())
         {
             m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using aria2 to download. Progress will not be shown.") });
+        }
+        else
+        {
+            std::thread watcher{ &Download::watch, this };
+            watcher.detach();
         }
     }
 
@@ -128,6 +131,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(m_process->kill())
         {
+            m_process->waitForExit();
             m_status = DownloadStatus::Stopped;
         }
     }
@@ -157,9 +161,11 @@ namespace Nickvision::TubeConverter::Shared::Models
                 if(progress[1] == "finished" || progress[1] == "processing")
                 {
                     m_progressChanged.invoke({ m_id, std::nan(""), 0.0, log });
-                    return;
                 }
-                m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0)), (progress[5] != "NA" ? std::stod(progress[5]) : 0.0), log });
+                else
+                {
+                    m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0)), (progress[5] != "NA" ? std::stod(progress[5]) : 0.0), log });
+                }
                 break;
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -177,7 +183,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(m_status == DownloadStatus::Success)
         {
             std::vector<std::string> logLines{ StringHelpers::split(args.getOutput(), "\n") };
-            m_path = logLines[logLines.size() - 1];
+            try
+            {
+                m_path = logLines[logLines.size() - 1];
+            }
+            catch(...) { }
         }
         lock.unlock();
         m_progressChanged.invoke({ m_id, 1.0, 0.0, args.getOutput() });

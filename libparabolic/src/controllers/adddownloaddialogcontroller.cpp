@@ -59,21 +59,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     bool AddDownloadDialogController::isUrlValid() const
     {
-        return m_urlInfo.has_value() && m_urlInfo->count() > 0;
+        return m_urlInfo && m_urlInfo->count() > 0;
     }
 
     bool AddDownloadDialogController::isUrlPlaylist() const
     {
-        return m_urlInfo.has_value() && m_urlInfo->isPlaylist();
+        return m_urlInfo && m_urlInfo->isPlaylist();
     }
 
     size_t AddDownloadDialogController::getMediaCount() const
     {
-        if(!m_urlInfo)
-        {
-            return 0;
-        }
-        return m_urlInfo->count();
+        return !m_urlInfo ? 0 : m_urlInfo->count();
     }
 
     std::vector<std::string> AddDownloadDialogController::getFileTypeStrings() const
@@ -120,75 +116,62 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return fileTypes;
     }
 
-    std::vector<std::string> AddDownloadDialogController::getQualityStrings(size_t fileTypeIndex) const
+    std::vector<std::string> AddDownloadDialogController::getVideoFormatStrings(size_t* previousIndex) const
     {
-        std::vector<std::string> qualities;
-        m_qualityFormatMap.clear();
+        std::vector<std::string> formats;
+        m_videoFormatMap.clear();
         if(!m_urlInfo)
         {
-            return qualities;
+            return formats;
         }
-        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
-        qualities.push_back(_("Best"));
+        formats.push_back(_("Best"));
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
-            if(media.getType() == MediaType::Audio)
+            for(size_t i = 0; i < media.getFormats().size(); i++)
             {
-                fileTypeIndex += MediaFileType::getVideoFileTypeCount();
-                type = static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex);
-            }
-            for(const Format& format : media.getFormats())
-            {
-                if(type.isAudio() && format.getAudioBitrate() && std::find(qualities.begin(), qualities.end(), std::to_string(format.getAudioBitrate().value())) == qualities.end())
+                const Format& format{ media.getFormats()[i] };
+                if(format.getType() == MediaType::Video)
                 {
-                    m_qualityFormatMap.emplace(qualities.size(), format);
-                    qualities.push_back(std::to_string(format.getAudioBitrate().value()));
-                }
-                else if(type.isVideo() && format.getVideoResolution() && std::find(qualities.begin(), qualities.end(), format.getVideoResolution().value().str()) == qualities.end())
-                {
-                    m_qualityFormatMap.emplace(qualities.size(), format);
-                    qualities.push_back(format.getVideoResolution().value().str());
+                    m_videoFormatMap[formats.size()] = i;
+                    if(previousIndex && format.getId() == m_previousOptions.getVideoFormatId())
+                    {
+                        *previousIndex = formats.size();
+                    }
+                    formats.push_back(format.str());
                 }
             }
         }
-        return qualities;
+        return formats;
     }
 
-    std::vector<std::string> AddDownloadDialogController::getAudioLanguageStrings() const
+    std::vector<std::string> AddDownloadDialogController::getAudioFormatStrings(size_t* previousIndex) const
     {
-        std::vector<std::string> languages;
-        m_audioLanguageFormatMap.clear();
+        std::vector<std::string> formats;
+        m_audioFormatMap.clear();
         if(!m_urlInfo)
         {
-            return languages;
+            return formats;
         }
-        languages.push_back(_("Default"));
+        formats.push_back(_("Best"));
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
-            for(const Format& format : media.getFormats())
+            for(size_t i = 0; i < media.getFormats().size(); i++)
             {
-                if(format.getAudioLanguage())
+                const Format& format{ media.getFormats()[i] };
+                if(format.getType() == MediaType::Audio)
                 {
-                    std::string language;
-                    if(format.hasAudioDescription())
+                    m_audioFormatMap[formats.size()] = i;
+                    if(previousIndex && format.getId() == m_previousOptions.getAudioFormatId())
                     {
-                        language = std::format("{} ({})", format.getAudioLanguage().value(), _("Audio Description"));
+                        *previousIndex = formats.size();
                     }
-                    else
-                    {
-                        language = format.getAudioLanguage().value();
-                    }
-                    if(std::find(languages.begin(), languages.end(), language) == languages.end())
-                    {
-                        m_audioLanguageFormatMap.emplace(languages.size(), format);
-                        languages.push_back(language);
-                    }
+                    formats.push_back(format.str());
                 }
             }
         }
-        return languages;
+        return formats;
     }
 
     std::vector<std::string> AddDownloadDialogController::getSubtitleLanguageStrings() const
@@ -287,7 +270,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime)
+    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };
         //Get Subtitle Languages
@@ -308,20 +291,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         options.setAvailableFormats(m_urlInfo->get(0).getFormats());
         options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
         options.setSaveFilename(!filename.empty() ? StringHelpers::normalizeForFilename(filename, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
-        if(qualityIndex != 0)
+        if(videoFormatIndex != 0)
         {
-            if(options.getFileType().isVideo())
-            {
-                options.setVideoFormat(m_qualityFormatMap.at(qualityIndex));
-            }
-            else
-            {
-                options.setAudioFormat(m_qualityFormatMap.at(qualityIndex));
-            }
+            options.setVideoFormat(media.getFormats()[m_videoFormatMap[videoFormatIndex]]);
         }
-        if(audioLanguageIndex != 0)
+        if(audioFormatIndex != 0)
         {
-            options.setAudioFormat(m_audioLanguageFormatMap.at(audioLanguageIndex));
+            options.setAudioFormat(media.getFormats()[m_audioFormatMap[audioFormatIndex]]);
         }
         options.setSubtitleLanguages(subtitles);
         options.setSplitChapters(splitChapters);
@@ -335,13 +311,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Save Previous Options
         m_previousOptions.setSaveFolder(options.getSaveFolder());
         m_previousOptions.setFileType(options.getFileType());
-        if(qualityIndex != 0)
+        if(options.getVideoFormat())
         {
-            m_previousOptions.setQuality(options.getFileType().isVideo() ? m_qualityFormatMap.at(qualityIndex).getVideoResolution().value().str() : std::to_string(m_qualityFormatMap.at(qualityIndex).getAudioBitrate().value()));
+            m_previousOptions.setVideoFormatId(options.getVideoFormat()->getId());
         }
-        else
+        if(options.getAudioFormat())
         {
-            m_previousOptions.setQuality(_("Best"));
+            m_previousOptions.setAudioFormatId(options.getAudioFormat()->getId());
         }
         m_previousOptions.setSplitChapters(options.getSplitChapters());
         m_previousOptions.setLimitSpeed(options.getLimitSpeed());

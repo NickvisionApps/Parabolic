@@ -23,10 +23,12 @@ jobs:
         with:
           submodules: recursive
       - name: "Setup Environment"
+        shell: pwsh
         run: |
+          $ProgressPreference = 'SilentlyContinue'
           mkdir build
-          powershell -command "Invoke-WebRequest https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.21-v1.16/gettext0.21-iconv1.16-shared-64.zip -OutFile gettext.zip"
-          powershell -command "Expand-Archive -Force 'gettext.zip'"
+          Invoke-WebRequest https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.21-v1.16/gettext0.21-iconv1.16-shared-64.zip -OutFile gettext.zip
+          Expand-Archive -Force 'gettext.zip'
           move gettext\bin\* C:\Windows\System32
           choco install innosetup
       - name: "Vcpkg"
@@ -35,7 +37,7 @@ jobs:
         with:
           pkgs: boost-date-time libnick qtbase qtsvg qttools
           triplet: x64-windows
-          revision: 80d54ff62d528339c626a6fbc3489a7f25956ade
+          revision: 9b93d255be4be2eda2f9b139afd7f4e8c1026a55
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
@@ -45,17 +47,19 @@ jobs:
           cmake --build . --config Release
       - name: "Create Installer"
         working-directory: ${{github.workspace}}/inno
+        shell: pwsh
         run: |
-          powershell -command "Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile vc_redist.x64.exe"
-          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.12.23/yt-dlp.exe -OutFile yt-dlp.exe"
-          powershell -command "Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip"
-          powershell -command "Invoke-WebRequest https://github.com/GyanD/codexffmpeg/releases/download/7.1/ffmpeg-7.1-full_build.zip -OutFile ffmpeg.zip"
-          powershell -command "Expand-Archive -Force 'aria2.zip'"
-          powershell -command "Expand-Archive -Force 'ffmpeg.zip'"
+          $ProgressPreference = 'SilentlyContinue'
+          Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile vc_redist.x64.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.12.23/yt-dlp.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip
+          Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip -OutFile ffmpeg.zip
+          Expand-Archive -Force 'aria2.zip'
+          Expand-Archive -Force 'ffmpeg.zip'
           move aria2\aria2-1.37.0-win-64bit-build1\aria2c.exe aria2c.exe
-          move ffmpeg\ffmpeg-7.1-full_build\bin\ffmpeg.exe ffmpeg.exe
-          move ffmpeg\ffmpeg-7.1-full_build\bin\ffprobe.exe ffprobe.exe
-          move ffmpeg\ffmpeg-7.1-full_build\bin\ffplay.exe ffplay.exe
+          move ffmpeg\ffmpeg-n7.1-latest-win64-gpl-7.1\bin\ffmpeg.exe ffmpeg.exe
+          move ffmpeg\ffmpeg-n7.1-latest-win64-gpl-7.1\bin\ffprobe.exe ffprobe.exe
+          move ffmpeg\ffmpeg-n7.1-latest-win64-gpl-7.1\bin\ffplay.exe ffplay.exe
           iscc setup.iss
       - name: Upload
         uses: actions/upload-artifact@v4

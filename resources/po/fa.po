@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-27 12:06-0500\n"
+"POT-Creation-Date: 2025-01-09 14:11-0500\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,83 +19,75 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.4-dev\n"
 
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:87
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:103
+msgid "Video (Generic)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:104
+msgid "MP4 (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:89
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
+msgid "WEBM (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:90
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:106
+msgid "MKV (Video)"
+msgstr ""
+
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
-msgid "Video (Generic)"
+msgid "MOV (Video)"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:92
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:108
-msgid "MP4 (Video)"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:109
-msgid "WEBM (Video)"
+msgid "AVI (Video)"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:94
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:110
-msgid "MKV (Video)"
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:109
+msgid "Audio (Generic)"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:95
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
-msgid "MOV (Video)"
-msgstr ""
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:110
+#, fuzzy
+msgid "MP3 (Audio)"
+msgstr "صوت"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:96
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#, fuzzy
+msgid "M4A (Audio)"
+msgstr "صوت"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:97
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
-msgid "AVI (Video)"
+msgid "OPUS (Audio)"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
-msgid "Audio (Generic)"
+msgid "FLAC (Audio)"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:99
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
 #, fuzzy
-msgid "MP3 (Audio)"
-msgstr "صوت"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:100
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:115
-#, fuzzy
-msgid "M4A (Audio)"
-msgstr "صوت"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:101
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:116
-msgid "OPUS (Audio)"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:102
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
-msgid "FLAC (Audio)"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:103
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:118
-#, fuzzy
 msgid "WAV (Audio)"
 msgstr "صوت"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:132
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:344
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:127
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:156
 #: libparabolic/src/models/videoresolution.cpp:33
 #: libparabolic/src/models/videoresolution.cpp:75
 msgid "Best"
 msgstr "بهترین"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:166
-msgid "Default"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:177
-msgid "Audio Description"
-msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:44
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
@@ -128,7 +120,7 @@ msgid "translator-credits"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:266
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "بدون بارگیری در صف"
@@ -148,7 +140,7 @@ msgid "Download Finished"
 msgstr "اتمام بارگیری"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:378
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" بارگیری به پایان رسید."
 
@@ -157,7 +149,7 @@ msgid "Download Finished With Error"
 msgstr "بارگیری با خطا تمام شد"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:382
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" با یک خطا به پایان رسید!"
 
@@ -172,34 +164,38 @@ msgid "All downloads have finished"
 msgstr "همه دانلودها به پایان رسیده است."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
+
+#: libparabolic/src/models/format.cpp:175
+msgid "Audio Description"
+msgstr ""
 
 #: libparabolic/src/models/download.cpp:99
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr ""
 
-#: libparabolic/src/models/download.cpp:114
+#: libparabolic/src/models/download.cpp:112
 msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
 msgstr ""
 
-#: libparabolic/src/models/download.cpp:118
+#: libparabolic/src/models/download.cpp:116
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
 msgstr ""
 
@@ -286,13 +282,13 @@ msgstr "نوع فایل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:108
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:43
-msgid "Quality"
-msgstr "کیفیت"
+msgid "Video Format"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:112
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:44
-msgid "Audio Language"
-msgstr "زبان صوتی"
+msgid "Audio Format"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:116
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:41
@@ -313,12 +309,12 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:146
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:303
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:286
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:345
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:295
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:354
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:53
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:72
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:328
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:337
 msgid "Select Save Folder"
 msgstr ""
 
@@ -329,9 +325,9 @@ msgid "File Name"
 msgstr "نام فایل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:161
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:226
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:229
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:249
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:252
 msgid "Revert to Title"
 msgstr ""
 
@@ -1088,17 +1084,19 @@ msgstr ""
 msgid "Close"
 msgstr "بستن"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:197
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:200
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:58
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "بروز رسانی جدیدی در دسترس قرار گرفته است."
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1224,6 +1222,7 @@ msgid "Changelog:"
 msgstr "تغییرات"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1274,7 +1273,7 @@ msgid "Enter file name here"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:248
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:251
 msgid "Revert"
 msgstr ""
 
@@ -1293,12 +1292,14 @@ msgid ""
 "authentication used, and the selected browser for cookies in settings."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:237
+#, c++-format
 msgid "Items ({})"
 msgstr ""
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1416,6 +1417,12 @@ msgstr "محدودیت سرعت"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr ""
+
+#~ msgid "Quality"
+#~ msgstr "کیفیت"
+
+#~ msgid "Audio Language"
+#~ msgstr "زبان صوتی"
 
 #, fuzzy
 #~ msgid "File"

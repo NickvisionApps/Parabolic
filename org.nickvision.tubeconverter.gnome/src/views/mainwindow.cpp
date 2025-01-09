@@ -453,7 +453,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_debug_info(dialog, m_controller->getDebugInformation(extraDebug).c_str());
         adw_about_dialog_set_comments(dialog, m_controller->getAppInfo().getDescription().c_str());
         adw_about_dialog_set_license_type(dialog, GTK_LICENSE_GPL_3_0);
-        adw_about_dialog_set_copyright(dialog, "© Nickvision 2021-2024");
+        adw_about_dialog_set_copyright(dialog, "© Nickvision 2021-2025");
         adw_about_dialog_set_website(dialog, "https://nickvision.org/");
         adw_about_dialog_set_issue_url(dialog, m_controller->getAppInfo().getIssueTracker().c_str());
         adw_about_dialog_set_support_url(dialog, m_controller->getAppInfo().getSupportUrl().c_str());

@@ -60,6 +60,7 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/__qt.h" "${CMAKE_CURRENT_
 
 if(WIN32)
     add_custom_command(TARGET qt_commands POST_BUILD COMMAND Qt6::windeployqt ARGS $<TARGET_FILE:${OUTPUT_NAME}> --no-quick-import --no-translations --no-compiler-runtime)
+    add_custom_command(TARGET qt_commands POST_BUILD COMMAND "mt.exe" -manifest "${CMAKE_SOURCE_DIR}/resources/windows/${PROJECT_NAME}.manifest" -inputresource:\"$<TARGET_FILE:${OUTPUT_NAME}>\"\;\#1 -outputresource:\"$<TARGET_FILE:${OUTPUT_NAME}>\"\;\#1)
 endif()
 
 if(HAS_GETTEXT)

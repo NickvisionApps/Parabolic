@@ -1,4 +1,7 @@
 #include "models/format.h"
+#include <cmath>
+#include <sstream>
+#include <libnick/localization/gettext.h>
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -10,8 +13,13 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_id = json["format_id"].is_string() ? json["format_id"].as_string() : "";
             m_protocol = json["protocol"].is_string() ? json["protocol"].as_string() : "";
             m_extension = json["ext"].is_string() ? json["ext"].as_string() : "";
+            double bitrate{ json["tbr"].is_double() ? json["tbr"].as_double() : 0.0 };
             std::string note{ json["format_note"].is_string() ? json["format_note"].as_string() : "" };
             std::string resolution{ json["resolution"].is_string() ? json["resolution"].as_string() : "" };
+            if(bitrate > 0)
+            {
+                m_bitrate = bitrate;
+            }
             if(resolution == "audio only")
             {
                 m_type = MediaType::Audio;
@@ -24,15 +32,11 @@ namespace Nickvision::TubeConverter::Shared::Models
                         m_hasAudioDescription = true;
                     }
                 }
-                double abr{ json["abr"].is_double() ? json["abr"].as_double() : 0.0 };
-                if(abr > 0.0)
-                {
-                    m_audioBitrate = abr;
-                }
             }
             else if(note == "storyboard")
             {
                 m_type = MediaType::Image;
+                m_videoResolution = VideoResolution::parse(resolution);
             }
             else
             {
@@ -40,7 +44,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 std::string vcodec{ json["vcodec"].is_string() ? json["vcodec"].as_string() : "" };
                 if(!vcodec.empty())
                 {
-                    if(vcodec.find("vp09") != std::string::npos)
+                    if(vcodec.find("vp09") != std::string::npos || vcodec.find("vp9") != std::string::npos)
                     {
                         m_videoCodec = VideoCodec::VP9;
                     }
@@ -62,6 +66,10 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_protocol = json["Protocol"].is_string() ? json["Protocol"].as_string() : "";
             m_extension = json["Extension"].is_string() ? json["Extension"].as_string() : "";
             m_type = json["Type"].is_int64() ? static_cast<MediaType>(json["Type"].as_int64()) : MediaType::Video;
+            if(json["Bitrate"].is_double())
+            {
+                m_bitrate = json["Bitrate"].as_double();
+            }
             if(json["AudioLanguage"].is_string())
             {
                 m_audioLanguage = json["AudioLanguage"].as_string();
@@ -74,10 +82,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(json["VideoResolution"].is_object())
             {
                 m_videoResolution = VideoResolution(json["VideoResolution"].as_object());
-            }
-            if(json["AudioBitrate"].is_double())
-            {
-                m_audioBitrate = json["AudioBitrate"].as_double();
             }
         }
     }
@@ -102,6 +106,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_type;
     }
 
+    const std::optional<double>& Format::getBitrate() const
+    {
+        return m_bitrate;
+    }
+
     const std::optional<std::string>& Format::getAudioLanguage() const
     {
         return m_audioLanguage;
@@ -122,9 +131,69 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_videoResolution;
     }
 
-    const std::optional<double>& Format::getAudioBitrate() const
+    std::string Format::str() const
     {
-        return m_audioBitrate;
+        std::stringstream builder;
+        std::string separator{ " | " };
+        if(m_type == MediaType::Video)
+        {
+            if(m_videoResolution)
+            {
+                builder << separator << m_videoResolution->str();
+            }
+            if(m_bitrate)
+            {
+                builder << separator << std::round(*m_bitrate) << "k";
+            }
+            if(m_videoCodec)
+            {
+                switch(*m_videoCodec)
+                {
+                case VideoCodec::VP9:
+                    builder << separator << "VP9";
+                    break;
+                case VideoCodec::AV01:
+                    builder << separator << "AV01";
+                    break;
+                case VideoCodec::H264:
+                    builder << separator << "H.264";
+                    break;
+                }
+            }
+        }
+        else if(m_type == MediaType::Audio)
+        {
+            if(m_bitrate)
+            {
+                builder << separator << std::round(*m_bitrate) << "k";
+            }
+            if(m_audioLanguage)
+            {
+                builder << separator << *m_audioLanguage;
+                if(m_hasAudioDescription)
+                {
+                    builder << " (" << _("Audio Description") << ")";
+                }
+            }
+        }
+        else if(m_type == MediaType::Image)
+        {
+            if(m_videoResolution)
+            {
+                builder << separator << m_videoResolution->str();
+            }
+        }
+        builder << " (" << m_id << ")";
+        std::string str{ builder.str() };
+        if(str[1] == '|')
+        {
+            return str.substr(3);
+        }
+        else if(str[0] == ' ')
+        {
+            return str.substr(1);
+        }
+        return str;
     }
 
     boost::json::object Format::toJson() const
@@ -134,23 +203,98 @@ namespace Nickvision::TubeConverter::Shared::Models
         json["Protocol"] = m_protocol;
         json["Extension"] = m_extension;
         json["Type"] = static_cast<int>(m_type);
+        if(m_bitrate)
+        {
+            json["Bitrate"] = *m_bitrate;
+        }
         if(m_audioLanguage)
         {
-            json["AudioLanguage"] = m_audioLanguage.value();
+            json["AudioLanguage"] = *m_audioLanguage;
         }
         json["HasAudioDescription"] = m_hasAudioDescription;
         if(m_videoCodec)
         {
-            json["VideoCodec"] = static_cast<int>(m_videoCodec.value());
+            json["VideoCodec"] = static_cast<int>(*m_videoCodec);
         }
         if(m_videoResolution)
         {
-            json["VideoResolution"] = m_videoResolution.value().toJson();
-        }
-        if(m_audioBitrate)
-        {
-            json["AudioBitrate"] = m_audioBitrate.value();
+            json["VideoResolution"] = m_videoResolution->toJson();
         }
         return json;
+    }
+
+    bool Format::operator==(const Format& format) const
+    {
+        return m_id == format.m_id;
+    }
+
+    bool Format::operator!=(const Format& format) const
+    {
+        return !(operator==(format));
+    }
+
+    bool Format::operator<(const Format& format) const
+    {
+        if(m_type == MediaType::Video && format.m_type == MediaType::Audio)
+        {
+            return true;
+        }
+        else if(m_type == MediaType::Audio && format.m_type == MediaType::Video)
+        {
+            return false;
+        }
+        else
+        {
+            if(m_type == MediaType::Video)
+            {
+                if(m_videoResolution && format.m_videoResolution)
+                {
+                    return *m_videoResolution < *format.m_videoResolution;
+                }
+                else if(m_videoResolution && !format.m_videoResolution)
+                {
+                    return true;
+                }
+                else if(!m_videoResolution && format.m_videoResolution)
+                {
+                    return false;
+                }
+                if(m_bitrate && format.m_bitrate)
+                {
+                    return *m_bitrate < *format.m_bitrate;
+                }
+                else if(m_bitrate && !format.m_bitrate)
+                {
+                    return true;
+                }
+                else if(!m_bitrate && format.m_bitrate)
+                {
+                    return false;
+                }
+                return m_id < format.m_id;
+            }
+            else if(m_type == MediaType::Audio)
+            {
+                if(m_bitrate && format.m_bitrate)
+                {
+                    return *m_bitrate < *format.m_bitrate;
+                }
+                else if(m_bitrate && !format.m_bitrate)
+                {
+                    return true;
+                }
+                else if(!m_bitrate && format.m_bitrate)
+                {
+                    return false;
+                }
+                return m_id < format.m_id;
+            }
+        }
+        return m_id < format.m_id;
+    }
+
+    bool Format::operator>(const Format& format) const
+    {
+        return operator!=(format) && !(operator<(format));
     }
 }
