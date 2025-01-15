@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="interface" its:version="2.0" xml:lang="zh-HANT">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">使用者介面 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Chung-Wei Chung</mal:name>
+      <mal:email>webb790709@proton.me</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
+  </info>
+
+<title>使用者介面</title>
+<p>此頁面解釋 <app>Parabolic</app> 的偏好設定中所有調整使用者介面的選項。</p>
+
+<terms>
+    <item>
+        <title>主題</title>
+        <p>使用者介面主題。</p>
+        <note style="advanced">
+            <p>預設值：跟隨系統</p>
+        </note>
+    </item>
+    <item>
+        <title>觸發完成訊息</title>
+        <p>當應用程式不在前景，顯示下載完成訊息時觸發。</p>
+        <note style="advanced">
+            <p>預設值：每個下載項目</p>
+        </note>
+    </item>
+    <item>
+        <title>Prevent Suspend</title>
+        <p>啟用後當 Parabolic 執行中，系統會避免休眠。</p>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
+    </item>
+    <item>
+        <title>恢復損毀的下載</title>
+        <p>啟用後如果應用程式損毀後重啟，Parabolic 會追蹤下載中和佇列中的項目並在必要時重新下載。</p>
+        <note style="advanced">
+            <p>預設值：開啟</p>
+        </note>
+    </item>
+    <item>
+        <title>驗證後馬上下載</title>
+		<p>在新增下載項目對話框略過下載選項，直接下載驗證通過的項目並使用前次設定值。</p>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
+    </item>
+    <item>
+        <title>下載歷史記錄長度</title>
+        <p>要保留多少時間的下載歷史記錄。</p>
+        <note style="advanced">
+            <p>預設：一星期</p>
+        </note>
+    </item>
+</terms>
+</page>

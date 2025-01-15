@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="zh-HANT">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">下載器 🛠️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Chung-Wei Chung</mal:name>
+      <mal:email>webb790709@proton.me</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
+  </info>
+
+<title>下載器</title>
+<p>此頁面解釋 <app>Parabolic</app> 的偏好設定中下載區塊的選項。</p>
+
+<terms>
+    <item>
+        <title>冗餘記錄</title>
+        <p>啟用後每個下載會有更多 <code>yt-dlp</code> 提供的冗餘記錄。</p>
+        <note style="advanced">
+            <p>預設值：開啟</p>
+        </note>
+    </item>
+    <item>
+        <title>YouTube 使用 SponsorBlock</title>
+        <p>啟用後 Parabolic 將會對 YouTube 下載啟用 SponsorBlock 附加元件。</p>
+        <note>
+            <p>SponsorBlock 只會運作於 YouTube 影片。然而保留這個選項啟用不會影響其他下載 (也就是說不會造成下載失敗)。</p>
+        </note>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
+    </item>
+    <item>
+        <title>Speed Limit</title>
+        <p>限制在多少 Ki/s，只會在有 <code>速度限制</code> 這個進階選項的下載項目套用。必須是 512 到 10240 之間的整數。</p>
+		<note style="advanced">
+			<p>預設值：1024</p>
+		</note>
+    </item>
+    <item>
+        <title>代理 URL</title>
+        <p>代理伺服器使用的 URL。</p>
+        <note style="advanced">
+			<p>預設值：沒有 URL</p>
+		</note>
+    </item>
+    <item>
+        <title>瀏覽器的 Cookies</title>
+        <p>瀏覽器讀取的 Cookies 並傳遞給 yt-dlp 下載引擎。</p>
+        <p>下載媒體需要登入時，例如私人 YouTube 影片，這個選項會很實用。</p>
+        <p>這個選項只有在非沙盒環境下可用。</p>
+		<note style="advanced">
+			<p>預設值：無</p>
+		</note>
+    </item>
+    <item>
+        <title>Cookies 檔案</title>
+        <p>傳遞給 yt-dlp 下載引擎的 .txt cookies 資訊檔案。</p>
+        <p>下載媒體需要登入時，例如私人 YouTube 影片，這個選項會很實用。</p>
+        <p>使用以下其中一個擴充元件來取得瀏覽器的 cookies 檔案：</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>使用這些擴充元件請自行負擔風險。</p>
+        </note>
+		<note style="advanced">
+			<p>預設值：沒有選擇任何檔案</p>
+		</note>
+    </item>
+</terms>
+</page>

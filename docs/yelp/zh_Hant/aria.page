@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="zh-HANT">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">aria2 🛠️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Chung-Wei Chung</mal:name>
+      <mal:email>webb790709@proton.me</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
+  </info>
+
+<title>aria2</title>
+<p>此頁面解釋 <app>Parabolic</app> 的偏好設定中所有調整 aria2 的選項。</p>
+
+<terms>
+    <item>
+        <title>使用 aria2</title>
+        <p>當啟動時，Parabolic 會使用 aria2c 來下載媒體。</p>
+        <p>雖然使用 aira2c 會增加下載速度，但使用者介面將不會顯示下載進度。</p>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
+    </item>
+    <item>
+        <title>每個伺服器的最大連接數量</title>
+        <p>這個選項只有在 aria2 啟用時有用。等同於在 aria2c 中新增 <code>-x</code> 參數。</p>
+        <p>最大連接數量可以為每臺伺服器個別設定。必須為 1 到 32 的整數。</p>
+        <note style="advanced">
+            <p>預設值：16</p>
+        </note>
+    </item>
+    <item>
+        <title>最低分割大小</title>
+        <p>這個選項只有在 aria2 啟用時有用。等同於在 aria2c 中新增 <code>-k</code> 參數。</p>
+        <p>最小在多少 MiB 的時候分割檔案。必須為 1 到 1024 之間的整數。</p>
+        <note style="advanced">
+            <p>預設值：20</p>
+        </note>
+    </item>
+</terms>
+</page>
