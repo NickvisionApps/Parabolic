@@ -156,7 +156,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_dialog_set_can_close(m_dialog, true);
         if(!m_controller->isUrlPlaylist()) //Single Download
         {
-            size_t previous;
+            size_t previous{ 0 };
             //Load Options
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single");
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings());
