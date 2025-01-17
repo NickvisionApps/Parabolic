@@ -188,7 +188,7 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->viewStack->setCurrentIndex(2);
             m_ui->tabsSingle->setCurrentIndex(0);
             //Load Options
-            size_t previous;
+            size_t previous{ 0 };
             QtHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypeSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
             QtHelpers::setComboBoxItems(m_ui->cmbVideoFormatSingle, m_controller->getVideoFormatStrings(&previous));

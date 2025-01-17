@@ -310,17 +310,11 @@ namespace Nickvision::TubeConverter::Shared::Models
             default:
                 break;
             }
-            //Neeeded for yt-dlp 2025.01.12 (see https://github.com/yt-dlp/yt-dlp/issues/12085)
-            arguments.push_back("--extractor-args");
-            arguments.push_back("youtube:player_client=default,-web_creator");
         }
         else if(std::filesystem::exists(downloaderOptions.getCookiesPath()))
         {
             arguments.push_back("--cookies");
             arguments.push_back(downloaderOptions.getCookiesPath().string());
-            //Neeeded for yt-dlp 2025.01.12 (see https://github.com/yt-dlp/yt-dlp/issues/12085)
-            arguments.push_back("--extractor-args");
-            arguments.push_back("youtube:player_client=default,-web_creator");
         }
         if(downloaderOptions.getYouTubeSponsorBlock())
         {
