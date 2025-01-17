@@ -51,7 +51,7 @@ jobs:
         run: |
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile vc_redist.x64.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.01.12/yt-dlp.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.01.15/yt-dlp.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip
           Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip -OutFile ffmpeg.zip
           Expand-Archive -Force 'aria2.zip'
