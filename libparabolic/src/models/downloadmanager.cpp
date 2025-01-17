@@ -241,7 +241,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--password");
             arguments.push_back(credential->getPassword());
         }
-        if(m_options.getCookiesBrowser() != Browser::None)
+        if(m_options.getCookiesBrowser() != Browser::None && Environment::getDeploymentMode() == DeploymentMode::Local)
         {
             arguments.push_back("--cookies-from-browser");
             switch(m_options.getCookiesBrowser())
@@ -273,6 +273,11 @@ namespace Nickvision::TubeConverter::Shared::Models
             default:
                 break;
             }
+        }
+        else if(std::filesystem::exists(m_options.getCookiesPath()))
+        {
+            arguments.push_back("--cookies");
+            arguments.push_back(m_options.getCookiesPath().string());
         }
         arguments.push_back(url);
         Process process{ Environment::findDependency("yt-dlp"), arguments };
