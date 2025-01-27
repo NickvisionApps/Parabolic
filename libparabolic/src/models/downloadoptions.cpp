@@ -271,7 +271,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--downloader");
             arguments.push_back(Environment::findDependency("aria2c").string());
             arguments.push_back("--downloader-args");
-            arguments.push_back("aria2c:-x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
+            arguments.push_back("aria2c:--enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
         }
         if(!downloaderOptions.getProxyUrl().empty())
         {
@@ -495,7 +495,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--force-keyframes-at-cuts");
         }
         arguments.push_back("--postprocessor-args");
-        arguments.push_back("-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
+        arguments.push_back("ffmpeg:-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
         arguments.push_back("--print");
         arguments.push_back("after_move:filepath");
         return arguments;
@@ -595,7 +595,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     bool DownloadOptions::shouldDownloadResume() const
     {
         //Check for part files
-        if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".part")))
+        if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".part")) || std::filesystem::exists(m_saveFolder / (m_saveFilename + ".part.aria2")))
         {
             return true;
         }

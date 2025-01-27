@@ -366,7 +366,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         DownloadRow* row{ static_cast<DownloadRow*>(list->itemWidget(item)) };
         m_ui->dockLog->show();
-        m_ui->lblLog->setText(QString::fromStdString(m_controller->getDownloadManager().getDownloadCommand(row->getId())) + "\n" + row->getLog());
+        m_ui->lblLog->setText(QString::fromStdString(m_controller->getDownloadManager().getDownloadCommand(row->getId())) + "\n" + QString::fromStdString(m_controller->getDownloadManager().getDownloadLog(row->getId())));
     }
 
     void MainWindow::onDockLogClosed(QObject* obj)

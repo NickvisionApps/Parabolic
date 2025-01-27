@@ -14,6 +14,30 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     static int s_downloadIdCounter{ 0 };
 
+    static double getAriaSizeAsB(const std::string& size)
+    {
+        static constexpr double pow2{ 1024 * 1024 };
+        static constexpr double pow3{ 1024 * 1024 * 1024 };
+        size_t index;
+        if((index = size.find("B")) != std::string::npos)
+        {
+            return std::stod(size.substr(0, index));
+        }
+        else if((index = size.find("KiB")) != std::string::npos)
+        {
+            return std::stod(size.substr(0, index)) * 1024;
+        }
+        else if((index = size.find("MiB")) != std::string::npos)
+        {
+            return std::stod(size.substr(0, index)) * pow2;
+        }
+        else if((index = size.find("GiB")) != std::string::npos)
+        {
+            return std::stod(size.substr(0, index)) * pow3;
+        }
+        return 0.0;
+    }
+
     Download::Download(const DownloadOptions& options)
         : m_id{ ++s_downloadIdCounter }, 
         m_options{ options },
@@ -107,19 +131,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_process->start();
         m_status = DownloadStatus::Running;
         lock.unlock();
-        if(m_options.getTimeFrame())
-        {
-            m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using ffmpeg to download. Progress will not be shown.") });
-        }
-        else if(downloaderOptions.getUseAria())
-        {
-            m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using aria2 to download. Progress will not be shown.") });
-        }
-        else
-        {
-            std::thread watcher{ &Download::watch, this };
-            watcher.detach();
-        }
+        std::thread watcher{ &Download::watch, this };
+        watcher.detach();
     }
 
     void Download::stop()
@@ -131,7 +144,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(m_process->kill())
         {
-            m_process->waitForExit();
             m_status = DownloadStatus::Stopped;
         }
     }
@@ -142,32 +154,60 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return;
         }
+        double oldProgress{ std::nan("") };
+        double oldSpeed{ 0 };
+        std::string oldLog{ _("Starting download...") };
         while(m_process->isRunning())
         {
-            std::string log{ m_process->getOutput() };
-            std::vector<std::string> logLines{ StringHelpers::split(log, "\n") };
-            for(size_t i = logLines.size(); i > 0; i--)
+            if(m_process->getOutput() != oldLog)
             {
-                const std::string& line{ logLines[i - 1] };
-                if(line.find("PROGRESS;") == std::string::npos || line.find("[debug]") != std::string::npos)
+                oldLog = m_process->getOutput();
+                std::vector<std::string> logLines{ StringHelpers::split(oldLog, "\n") };
+                for(size_t i = logLines.size(); i > 0; i--)
                 {
-                    continue;
+                    const std::string& line{ logLines[i - 1] };
+                    if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug]") != std::string::npos)
+                    {
+                        continue;
+                    }
+                    if(line.find("[#") != std::string::npos) //aria2c progress
+                    {
+                        std::vector<std::string> progress{ StringHelpers::split(line, " ") };
+                        if(progress.size() != 5)
+                        {
+                            continue;
+                        }
+                        std::vector<std::string> progressSizes{ StringHelpers::split(progress[1], "/") };
+                        if(progressSizes.size() != 2)
+                        {
+                            continue;
+                        }
+                        oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
+                        oldSpeed = getAriaSizeAsB(progress[3].substr(3));
+                        break;
+                    }
+                    else
+                    {
+                        std::vector<std::string> progress{ StringHelpers::split(line, ";") };
+                        if(progress.size() != 6 || progress[1] == "NA")
+                        {
+                            continue;
+                        }
+                        if(progress[1] == "finished" || progress[1] == "processing")
+                        {
+                            oldProgress = std::nan("");
+                            oldSpeed = 0.0;
+                        }
+                        else
+                        {
+                            oldProgress = (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0));
+                            oldSpeed = progress[5] != "NA" ? std::stod(progress[5]) : 0.0;
+                        }
+                        break;
+                    }
                 }
-                std::vector<std::string> progress{ StringHelpers::split(line, ";") };
-                if(progress.size() != 6 || progress[1] == "NA")
-                {
-                    continue;
-                }
-                if(progress[1] == "finished" || progress[1] == "processing")
-                {
-                    m_progressChanged.invoke({ m_id, std::nan(""), 0.0, log });
-                }
-                else
-                {
-                    m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0)), (progress[5] != "NA" ? std::stod(progress[5]) : 0.0), log });
-                }
-                break;
             }
+            m_progressChanged.invoke({ m_id, oldProgress, oldSpeed, oldLog });
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }

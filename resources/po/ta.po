@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-26 23:38-0500\n"
+"POT-Creation-Date: 2025-01-27 15:20-0500\n"
 "PO-Revision-Date: 2025-01-20 09:15+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -180,17 +180,13 @@ msgstr "{:.2f} b/s"
 msgid "Audio Description"
 msgstr "ஆடியோ விளக்கம்"
 
-#: libparabolic/src/models/download.cpp:99
+#: libparabolic/src/models/download.cpp:123
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "பிழை: கோப்பு ஏற்கனவே உள்ளது மற்றும் மேலெழுதும் முடக்கப்பட்டுள்ளது."
 
-#: libparabolic/src/models/download.cpp:112
-msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
-msgstr "எச்சரிக்கை: பதிவிறக்கம் செய்ய FFMPEG ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
-
-#: libparabolic/src/models/download.cpp:116
-msgid "WARNING: Using aria2 to download. Progress will not be shown."
-msgstr "எச்சரிக்கை: பதிவிறக்கம் செய்ய ARIA2 ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
+#: libparabolic/src/models/download.cpp:159
+msgid "Starting download..."
+msgstr "பதிவிறக்கத் தொடங்குகிறது ..."
 
 #: libparabolic/src/models/subtitlelanguage.cpp:38
 msgid "Auto-generated"
@@ -198,10 +194,10 @@ msgstr "தானாக உருவாக்கிய"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:221
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:288
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:344
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:400
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:224
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:291
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:347
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:28
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
@@ -405,32 +401,32 @@ msgstr "பதிவைக் காண்க"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
 msgid "Stop"
 msgstr "நிறுத்து"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
 msgid "Play"
 msgstr "தொடங்கு"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:217
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:66
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:422
 msgid "Open"
 msgstr "திற"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:67
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
 msgid "Retry"
 msgstr "மீண்டும் முயற்சிக்கவும்"
 
@@ -533,47 +529,47 @@ msgstr "பதிவிறக்கங்கள்"
 msgid "Downloading"
 msgstr "பதிவிறக்குகிறது"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Queued"
 msgstr "வரிசையில் நிற்கிறது"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Completed"
 msgstr "முடிக்கப்பட்டது"
 
 #. Localize Home Page
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:217
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:220
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:79
 msgid "Download Media"
 msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:221
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:246
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:249
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:84
 msgid "No history available"
 msgstr "வரலாறு எதுவும் கிடைக்கவில்லை"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:259
 msgid "Past Downloads"
 msgstr "கடந்த பதிவிறக்கங்கள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:260
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:263
 msgid "Clear History"
 msgstr "வரலாற்றை அழிக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:264
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:370
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:430
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:267
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:433
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:104
@@ -581,45 +577,45 @@ msgid "Clear"
 msgstr "தெளிவாக்கு"
 
 #. Localize Downloading Page
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:285
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:288
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:87
 msgid "No Downloads Running"
 msgstr "பதிவிறக்கங்கள் இயங்கவில்லை"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:309
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:312
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:91
 msgid "Stop All Downloads"
 msgstr "அனைத்து பதிவிறக்கங்களையும் நிறுத்து"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:314
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:317
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:90
 msgid "Stop All"
 msgstr "அனைத்தையும் நிறுத்து"
 
 #. Localize Queued Page
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:341
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:344
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
 msgid "No Downloads Queued"
 msgstr "பதிவிறக்கங்கள் இல்லை"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:365
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:368
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
 msgid "Clear Queued Downloads"
 msgstr "வரிசைப்படுத்தப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
 #. Localize Completed Page
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:397
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:400
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:99
 msgid "No Downloads Completed"
 msgstr "பதிவிறக்கங்கள் எதுவும் இல்லை"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:425
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:428
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:105
 msgid "Clear Completed Downloads"
 msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:438
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:441
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
 msgid "Retry Failed Downloads"
@@ -969,37 +965,32 @@ msgstr "பயன்பாடு"
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:17
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:19
-msgid "Starting download..."
-msgstr "பதிவிறக்கத் தொடங்குகிறது ..."
-
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:30
 msgid "Starting"
 msgstr "தொடங்குகிறது"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:35
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:43
 msgid "Unknown"
 msgstr "தெரியவில்லை"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:80
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:104
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:78
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:97
 msgid "Processing"
 msgstr "செயலாக்கம்"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:92
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:142
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:84
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:103
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:140
 msgid "Running"
 msgstr "இயங்கும்"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:111
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:105
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:124
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:116
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:182
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
@@ -1010,13 +1001,13 @@ msgstr "இயங்கும்"
 msgid "Error"
 msgstr "பிழை"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:119
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:130
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:113
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:122
 msgid "Success"
 msgstr "வெற்றி"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:131
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:124
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:132
 msgid "Stopped"
 msgstr "நிறுத்தப்பட்டது"
 
@@ -1392,6 +1383,13 @@ msgstr "வேக வரம்பு"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "பதிலாள் முகவரி ஐ இங்கே உள்ளிடவும்"
+
+#~ msgid "WARNING: Using aria2 to download. Progress will not be shown."
+#~ msgstr "எச்சரிக்கை: பதிவிறக்கம் செய்ய ARIA2 ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
+
+#~ msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
+#~ msgstr ""
+#~ "எச்சரிக்கை: பதிவிறக்கம் செய்ய FFMPEG ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
 
 #~ msgid "Quality"
 #~ msgstr "தரம்"
