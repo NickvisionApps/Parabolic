@@ -34,10 +34,10 @@
     <item>
         <title>அங்கீகரிக்கவும்</title>
         <p>இயக்கப்பட்டால், பதிவிறக்கும் போது yt-dlp க்கு அனுப்ப பயனர் பெயர் மற்றும்/அல்லது கடவுச்சொல்லை வழங்குமாறு பயனர் கேட்கப்படுவார்.</p>
-        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+        <p>கெய்ரிங்கில் நற்சான்றிதழ்கள் காணப்பட்டால், பயனர் பயன்படுத்த பெயரிடப்பட்ட நற்சான்றிதழ்களின் பட்டியலிலிருந்து தேர்வு செய்யலாம் (அல்லது தொடர்ந்து நற்சான்றிதழை கைமுறையாக உள்ளிடவும்)</p>
             <note style="advanced">
                 <p>அனைத்து இணையதளங்களும் yt-dlp க்கு பயனர்பெயர்கள் மற்றும் கடவுச்சொற்களை அனுப்புவதை ஆதரிக்காது. எடுத்துக்காட்டாக, YouTube இந்த அம்சத்தை ஆதரிக்காது.</p>
-                <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+                <p>கடந்து செல்லும் நற்சான்றிதழ்களை ஆதரிக்காத இந்த தளங்களுக்கு, அதற்கு பதிலாக குக்கீகளை விருப்பங்களிலிருந்து பயன்படுத்த உலாவியைத் தேர்ந்தெடுக்க பரிந்துரைக்கப்படுகிறது.</p>
             </note>
     </item>
     <item>
@@ -47,59 +47,59 @@
             <p>முன்பு பயன்படுத்தப்பட்ட கோப்பு வகை நினைவில் வைக்கப்படும் மற்றும் அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
         <note style="advanced">
-            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
+            <p><code> வீடியோ (பொதுவான) </code> அல்லது <code> ஆடியோ (பொதுவான) </code> கோப்பு வகைகளைத் தேர்ந்தெடுப்பது எந்தவொரு மாற்றங்களையும் செய்யாமல் மீடியாவின் அசல் கோப்பு வகைகளில் ஊடகத்தை பதிவிறக்கம் செய்ய பரபோலிக் ஏற்படுத்தும்.</p>
         </note>
     </item>
     <item>
-        <title>Video Format</title>
-        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
-        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
-        <p>If the file type is an audio type, this option will not be available.</p>
+        <title>வீடியோ வடிவம்</title>
+        <p>பதிவிறக்கத்திற்கு கிடைக்கும் வீடியோ வடிவங்களின் பட்டியல், தீர்மானம் மற்றும் பிட்ரேட் ஆகியவற்றால் வரிசைப்படுத்தப்பட்டது.</p>
+        <p>ஒவ்வொரு வடிவமும் படிவம்: <code> தீர்மானம் | பிட்ரேட் | கோடெக் (ஐடி) </code>.</p>
+        <p>கோப்பு வகை ஆடியோ வகை என்றால், இந்த விருப்பம் கிடைக்காது.</p>
         <note>
-            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
+            <p>முன்னர் பயன்படுத்தப்பட்ட வீடியோ வடிவம் நினைவில் வைத்து அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
     </item>
     <item>
-        <title>Audio Format</title>
-        <p>The list of audio formats available for download, sorted by bitrate.</p>
-        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
+        <title>ஆடியோ வடிவம்</title>
+        <p>பிட்ரேட்டால் வரிசைப்படுத்தப்பட்ட பதிவிறக்கத்திற்கு கிடைக்கும் ஆடியோ வடிவங்களின் பட்டியல்.</p>
+        <p>ஒவ்வொரு வடிவமும் படிவம்: <code> பிட்ரேட் | மொழி (ஐடி) </code>.</p>
         <note>
-            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
+            <p>முன்னர் பயன்படுத்தப்பட்ட ஆடியோ வடிவம் நினைவில் வைத்து அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
     </item>
     <item>
-        <title>Subtitles</title>
-        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <title>வசன வரிகள்</title>
+        <p>பயனரால் பதிவிறக்கம் செய்ய தேர்ந்தெடுக்கக்கூடிய ஊடகங்களால் கிடைக்கும் வசன வரிகள் பட்டியல். மேலும் வசன அமைப்புகளை <இணைப்பு XREF="பதிவிறக்கங்கள்"> விருப்பத்தேர்வுகள் </இணைப்பு> இல் கட்டமைக்க முடியும்.</p>
         <note>
-            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
+            <p>முன்னர் தேர்ந்தெடுக்கப்பட்ட வசன வரிகள் நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
     </item>
     <item>
         <title>அத்தியாயங்களைப் பிரிக்கவும்</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <p>இயக்கப்பட்டால், பரபோலிக் ஒரு வீடியோ பதிவிறக்கத்தை அதன் அத்தியாயங்களின் அடிப்படையில் பல சிறிய கோப்புகளாக பிரிக்கும்.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>முன்னர் பயன்படுத்தப்பட்ட நிலை நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
     </item>
     <item>
-        <title>Limit Download Speed</title>
-        <p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <title>பதிவிறக்க வேகத்தை கட்டுப்படுத்துங்கள்</title>
+        <p>இயக்கப்பட்டால், <இணைப்பு xref="downloader"> விருப்பத்தேர்வுகள் </இணைப்பு> இல் கட்டமைக்கப்பட்ட வேகத்துடன் பதிவிறக்கத்தின் வேகத்தை பரபோலிக் கட்டுப்படுத்தும்.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>முன்னர் பயன்படுத்தப்பட்ட நிலை நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
     </item>
     <item>
-        <title>Export Description</title>
-        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>ஏற்றுமதி விளக்கம்</title>
+        <p>இயக்கப்பட்டால், பரபோலிக் ஊடகத்தின் விளக்கத்தை <code> க்கு ஏற்றுமதி செய்யும். விளக்கப்படம் </code> கோப்புடன் பதிவிறக்கம் செய்யப்பட்ட கோப்புடன்.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>முன்னர் பயன்படுத்தப்பட்ட நிலை நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p>
         </note>
     </item>
     <item>
-        <title>Time Frame</title>
-        <p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <title>கால அளவு</title>
+        <p>மீடியாவின் ஒரு குறிப்பிட்ட பகுதியைப் பதிவிறக்க பயனர் தொடக்க கால காலநீடிப்பு மற்றும் இறுதி கால கட்டத்தை உள்ளிடலாம்.</p>
         <note style="advanced">
-            <p>Default: The whole media length</p>
+            <p>இயல்புநிலை: முழு ஊடக நீளம்</p>
         </note>
     </item>
     <item>

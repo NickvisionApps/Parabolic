@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 09:18-0500\n"
+"POT-Creation-Date: 2025-01-26 23:38-0500\n"
 "PO-Revision-Date: 2025-01-20 09:15+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
-"Language-Team: Tamil <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/ta/>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,6 +116,7 @@ msgid "translator-credits"
 msgstr "K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2023"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:266
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "மீட்டெடுக்கப்பட்டது {} பதிவிறக்கம்"
@@ -134,6 +135,7 @@ msgid "Download Finished"
 msgstr "பதிவிறக்கம் முடிந்தது"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "{the பதிவிறக்குவதை முடித்துவிட்டது"
 
@@ -142,6 +144,7 @@ msgid "Download Finished With Error"
 msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:382
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} பிழையுடன் முடித்துவிட்டது"
 
@@ -154,18 +157,22 @@ msgid "All downloads have finished"
 msgstr "எல்லா பதிவிறக்கங்களும் முடிந்துவிட்டன"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} கிப்/கள்"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} mib/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} kib/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} b/s"
 
@@ -179,13 +186,11 @@ msgstr "பிழை: கோப்பு ஏற்கனவே உள்ளத�
 
 #: libparabolic/src/models/download.cpp:112
 msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
-msgstr ""
-"எச்சரிக்கை: பதிவிறக்கம் செய்ய FFMPEG ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
+msgstr "எச்சரிக்கை: பதிவிறக்கம் செய்ய FFMPEG ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
 
 #: libparabolic/src/models/download.cpp:116
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
-msgstr ""
-"எச்சரிக்கை: பதிவிறக்கம் செய்ய ARIA2 ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
+msgstr "எச்சரிக்கை: பதிவிறக்கம் செய்ய ARIA2 ஐப் பயன்படுத்துதல். முன்னேற்றம் காட்டப்படாது."
 
 #: libparabolic/src/models/subtitlelanguage.cpp:38
 msgid "Auto-generated"
@@ -1039,8 +1044,8 @@ msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in preferences."
 msgstr ""
-"வழங்கப்பட்ட முகவரி தவறானது அல்லது அடைய முடியவில்லை. விருப்பங்களில் குக்கீகளுக்கான முகவரி"
-", பயன்படுத்தப்பட்ட ஏற்பு மற்றும் தேர்ந்தெடுக்கப்பட்ட உலாவியை சரிபார்க்கவும்."
+"வழங்கப்பட்ட முகவரி தவறானது அல்லது அடைய முடியவில்லை. விருப்பங்களில் குக்கீகளுக்கான "
+"முகவரி, பயன்படுத்தப்பட்ட ஏற்பு மற்றும் தேர்ந்தெடுக்கப்பட்ட உலாவியை சரிபார்க்கவும்."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
@@ -1054,10 +1059,12 @@ msgid "No Subtitles Available"
 msgstr "வசன வரிகள் எதுவும் கிடைக்கவில்லை"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "}} உருப்படிகள்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, fuzzy, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1163,8 +1170,7 @@ msgstr "வெளியேற?"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 msgid "There are downloads in progress. Are you sure you want to exit?"
-msgstr ""
-"பதிவிறக்கங்கள் முன்னேற்றத்தில் உள்ளன. நீங்கள் வெளியேற விரும்புகிறீர்களா?"
+msgstr "பதிவிறக்கங்கள் முன்னேற்றத்தில் உள்ளன. நீங்கள் வெளியேற விரும்புகிறீர்களா?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:303
 msgid "Download Again"
@@ -1184,6 +1190,7 @@ msgid "Changelog:"
 msgstr "சேஞ்ச்லாக்:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1257,15 +1264,17 @@ msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in settings."
 msgstr ""
-"வழங்கப்பட்ட முகவரி தவறானது அல்லது அடைய முடியவில்லை. அமைப்புகளில் குக்கீகளுக்கான முகவரி"
-", பயன்படுத்தப்பட்ட ஏற்பு மற்றும் தேர்ந்தெடுக்கப்பட்ட உலாவியை சரிபார்க்கவும்."
+"வழங்கப்பட்ட முகவரி தவறானது அல்லது அடைய முடியவில்லை. அமைப்புகளில் குக்கீகளுக்கான "
+"முகவரி, பயன்படுத்தப்பட்ட ஏற்பு மற்றும் தேர்ந்தெடுக்கப்பட்ட உலாவியை சரிபார்க்கவும்."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:237
+#, c++-format
 msgid "Items ({})"
 msgstr "உருப்படிகள் ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, fuzzy, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{bownload பதிவிறக்கம் செய்ய ஒரு நற்சான்றிதழ் தேவை. பயன்படுத்த ஒன்றைத் தேர்ந்தெடுக்கவும் "

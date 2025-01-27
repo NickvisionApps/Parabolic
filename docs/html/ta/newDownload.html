@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">அங்கீகரிக்கவும்</dt>
 <dd class="terms">
 <p class="p">இயக்கப்பட்டால், பதிவிறக்கும் போது yt-dlp க்கு அனுப்ப பயனர் பெயர் மற்றும்/அல்லது கடவுச்சொல்லை வழங்குமாறு பயனர் கேட்கப்படுவார்.</p>
-<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+<p class="p">கெய்ரிங்கில் நற்சான்றிதழ்கள் காணப்பட்டால், பயனர் பயன்படுத்த பெயரிடப்பட்ட நற்சான்றிதழ்களின் பட்டியலிலிருந்து தேர்வு செய்யலாம் (அல்லது தொடர்ந்து நற்சான்றிதழை கைமுறையாக உள்ளிடவும்)</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">அனைத்து இணையதளங்களும் yt-dlp க்கு பயனர்பெயர்கள் மற்றும் கடவுச்சொற்களை அனுப்புவதை ஆதரிக்காது. எடுத்துக்காட்டாக, YouTube இந்த அம்சத்தை ஆதரிக்காது.</p>
-<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+<p class="p">கடந்து செல்லும் நற்சான்றிதழ்களை ஆதரிக்காத இந்த தளங்களுக்கு, அதற்கு பதிலாக குக்கீகளை விருப்பங்களிலிருந்து பயன்படுத்த உலாவியைத் தேர்ந்தெடுக்க பரிந்துரைக்கப்படுகிறது.</p>
 </div></div></div>
 </div>
 </dd>
@@ -81,87 +81,87 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Selecting the <span class="code">Video (Generic)</span> or <span class="code">Audio (Generic)</span> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p"><span class="code"> வீடியோ (பொதுவான) </span> அல்லது <span class="code"> ஆடியோ (பொதுவான) </span> கோப்பு வகைகளைத் தேர்ந்தெடுப்பது எந்தவொரு மாற்றங்களையும் செய்யாமல் மீடியாவின் அசல் கோப்பு வகைகளில் ஊடகத்தை பதிவிறக்கம் செய்ய பரபோலிக் ஏற்படுத்தும்.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Video Format</dt>
+<dt class="terms">வீடியோ வடிவம்</dt>
 <dd class="terms">
-<p class="p">The list of video formats available for download, sorted by resolution and bitrate.</p>
-<p class="p">Each format is the form: <span class="code">resolution | bitrate | codec (id)</span>.</p>
-<p class="p">If the file type is an audio type, this option will not be available.</p>
+<p class="p">பதிவிறக்கத்திற்கு கிடைக்கும் வீடியோ வடிவங்களின் பட்டியல், தீர்மானம் மற்றும் பிட்ரேட் ஆகியவற்றால் வரிசைப்படுத்தப்பட்டது.</p>
+<p class="p">ஒவ்வொரு வடிவமும் படிவம்: <span class="code"> தீர்மானம் | பிட்ரேட் | கோடெக் (ஐடி) </span>.</p>
+<p class="p">கோப்பு வகை ஆடியோ வகை என்றால், இந்த விருப்பம் கிடைக்காது.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used video format will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">முன்னர் பயன்படுத்தப்பட்ட வீடியோ வடிவம் நினைவில் வைத்து அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Audio Format</dt>
+<dt class="terms">ஆடியோ வடிவம்</dt>
 <dd class="terms">
-<p class="p">The list of audio formats available for download, sorted by bitrate.</p>
-<p class="p">Each format is the form: <span class="code">bitrate | language (id)</span>.</p>
+<p class="p">பிட்ரேட்டால் வரிசைப்படுத்தப்பட்ட பதிவிறக்கத்திற்கு கிடைக்கும் ஆடியோ வடிவங்களின் பட்டியல்.</p>
+<p class="p">ஒவ்வொரு வடிவமும் படிவம்: <span class="code"> பிட்ரேட் | மொழி (ஐடி) </span>.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used audio format will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">முன்னர் பயன்படுத்தப்பட்ட ஆடியோ வடிவம் நினைவில் வைத்து அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Subtitles</dt>
+<dt class="terms">வசன வரிகள்</dt>
 <dd class="terms">
-<p class="p">The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <span class="link"><a href="downloads.html" title="Downloads">preferences</a></span>.</p>
+<p class="p">பயனரால் பதிவிறக்கம் செய்ய தேர்ந்தெடுக்கக்கூடிய ஊடகங்களால் கிடைக்கும் வசன வரிகள் பட்டியல். மேலும் வசன அமைப்புகளை  விருப்பத்தேர்வுகள்  இல் கட்டமைக்க முடியும்.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously selected subtitles will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">முன்னர் தேர்ந்தெடுக்கப்பட்ட வசன வரிகள் நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">அத்தியாயங்களைப் பிரிக்கவும்</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+<p class="p">இயக்கப்பட்டால், பரபோலிக் ஒரு வீடியோ பதிவிறக்கத்தை அதன் அத்தியாயங்களின் அடிப்படையில் பல சிறிய கோப்புகளாக பிரிக்கும்.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">முன்னர் பயன்படுத்தப்பட்ட நிலை நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Limit Download Speed</dt>
+<dt class="terms">பதிவிறக்க வேகத்தை கட்டுப்படுத்துங்கள்</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will limit the download's speed with the speed configured in <span class="link"><a href="downloader.html" title="பதிவிறக்குபவர்">Preferences</a></span>.</p>
+<p class="p">இயக்கப்பட்டால்,  விருப்பத்தேர்வுகள்  இல் கட்டமைக்கப்பட்ட வேகத்துடன் பதிவிறக்கத்தின் வேகத்தை பரபோலிக் கட்டுப்படுத்தும்.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">முன்னர் பயன்படுத்தப்பட்ட நிலை நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Export Description</dt>
+<dt class="terms">ஏற்றுமதி விளக்கம்</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will export the media's description to a <span class="code">.description</span> file alongside the downloaded file.</p>
+<p class="p">இயக்கப்பட்டால், பரபோலிக் ஊடகத்தின் விளக்கத்தை <span class="code"> க்கு ஏற்றுமதி செய்யும். விளக்கப்படம் </span> கோப்புடன் பதிவிறக்கம் செய்யப்பட்ட கோப்புடன்.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">முன்னர் பயன்படுத்தப்பட்ட நிலை நினைவில் வைக்கப்பட்டு அடுத்த பதிவிறக்கத்திற்கு முன்பே தேர்ந்தெடுக்கப்படும்.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">கால அளவு</dt>
 <dd class="terms">
-<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<p class="p">மீடியாவின் ஒரு குறிப்பிட்ட பகுதியைப் பதிவிறக்க பயனர் தொடக்க கால காலநீடிப்பு மற்றும் இறுதி கால கட்டத்தை உள்ளிடலாம்.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: முழு ஊடக நீளம்</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">கோப்புறையை சேமி</dt>
