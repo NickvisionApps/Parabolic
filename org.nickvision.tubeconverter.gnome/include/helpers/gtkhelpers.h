@@ -40,12 +40,9 @@ namespace Nickvision::TubeConverter::GNOME::Helpers::GtkHelpers
      * @param row The combo row
      * @param strs The strings to set
      * @param selected An option string that should be selected
+     * @param allowEllipse Whether or not to allow ellipses in the combo row
      */
-    void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const std::string& selected = "");
-
-    // TODO docstring
-    GtkListItemFactory* newNoEllipsesItemFactory(GtkStringList *list);
-
+    void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const std::string& selected = "", bool allowEllipse = true);
 }
 
 #endif //GTKHELPERS_H

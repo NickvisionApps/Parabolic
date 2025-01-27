@@ -9,7 +9,6 @@ if(NOT WIN32)
         "src/helpers/builder.cpp"
         "src/helpers/dialogbase.cpp"
         "src/helpers/gtkhelpers.cpp"
-        "src/helpers/listitemfactory.cpp"
         "src/views/adddownloaddialog.cpp"
         "src/views/credentialdialog.cpp"
         "src/views/keyringpage.cpp"

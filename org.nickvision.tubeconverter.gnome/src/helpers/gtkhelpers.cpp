@@ -1,6 +1,4 @@
 #include "helpers/gtkhelpers.h"
-#include "helpers/listitemfactory.h"
-#include <adwaita.h>
 
 namespace Nickvision::TubeConverter::GNOME::Helpers
 {
@@ -49,7 +47,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         gtk_application_set_accels_for_action(app, action, accels);
     }
 
-    void GtkHelpers::setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const std::string& selected)
+    void GtkHelpers::setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const std::string& selected, bool allowEllipse)
     {
         size_t selectedIndex{ 0 };
         GtkStringList* list{ gtk_string_list_new(nullptr) };
@@ -62,22 +60,25 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
                 selectedIndex = i;
             }
         }
-
-        GtkListItemFactory* factory = newNoEllipsesItemFactory(list);
-
-
-        adw_combo_row_set_factory(row, factory);
+        if(!allowEllipse)
+        {
+            GtkListItemFactory* factory{ gtk_signal_list_item_factory_new() };
+            g_signal_connect(factory, "setup", G_CALLBACK(+[](GtkListItemFactory* factory, GtkListItem* item, gpointer data)
+            {
+                GtkLabel* lbl{ GTK_LABEL(gtk_label_new(nullptr)) };
+                gtk_widget_set_halign(GTK_WIDGET(lbl), GTK_ALIGN_START);
+                gtk_label_set_ellipsize(lbl, PANGO_ELLIPSIZE_NONE);
+                gtk_list_item_set_child(item, GTK_WIDGET(lbl));
+            }), nullptr);
+            g_signal_connect(factory, "bind", G_CALLBACK(+[](GtkListItemFactory* factory, GtkListItem* item, gpointer data)
+            {
+                GtkStringList* list{ GTK_STRING_LIST(data) };
+                GtkLabel* lbl{ GTK_LABEL(gtk_list_item_get_child(item)) };
+                gtk_label_set_label(lbl, gtk_string_list_get_string(list, gtk_list_item_get_position(item)));
+            }), list);
+            adw_combo_row_set_factory(row, factory);
+        }
         adw_combo_row_set_model(row, G_LIST_MODEL(list));
         adw_combo_row_set_selected(row, selectedIndex);
-    }
-
-    GtkListItemFactory* GtkHelpers::newNoEllipsesItemFactory(GtkStringList *list)
-    {
-        GtkListItemFactory *factory = gtk_signal_list_item_factory_new();
-
-        g_signal_connect(factory, "setup", G_CALLBACK(setup_listitem_cb), NULL);
-        g_signal_connect(factory, "bind", G_CALLBACK(bind_listitem_cb), list);
-
-        return factory;
     }
 }
