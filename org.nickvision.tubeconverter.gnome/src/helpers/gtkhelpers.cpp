@@ -1,4 +1,5 @@
 #include "helpers/gtkhelpers.h"
+#include "helpers/listitemfactory.h"
 #include <adwaita.h>
 
 namespace Nickvision::TubeConverter::GNOME::Helpers
@@ -61,7 +62,22 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
                 selectedIndex = i;
             }
         }
+
+        GtkListItemFactory* factory = newNoEllipsesItemFactory(list);
+
+
+        adw_combo_row_set_factory(row, factory);
         adw_combo_row_set_model(row, G_LIST_MODEL(list));
         adw_combo_row_set_selected(row, selectedIndex);
+    }
+
+    GtkListItemFactory* GtkHelpers::newNoEllipsesItemFactory(GtkStringList *list)
+    {
+        GtkListItemFactory *factory = gtk_signal_list_item_factory_new();
+
+        g_signal_connect(factory, "setup", G_CALLBACK(setup_listitem_cb), NULL);
+        g_signal_connect(factory, "bind", G_CALLBACK(bind_listitem_cb), list);
+
+        return factory;
     }
 }

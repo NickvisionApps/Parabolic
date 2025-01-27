@@ -42,6 +42,10 @@ namespace Nickvision::TubeConverter::GNOME::Helpers::GtkHelpers
      * @param selected An option string that should be selected
      */
     void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const std::string& selected = "");
+
+    // TODO docstring
+    GtkListItemFactory* newNoEllipsesItemFactory(GtkStringList *list);
+
 }
 
 #endif //GTKHELPERS_H
