@@ -88,32 +88,26 @@
         "python3-modules.json",
         {
             "name": "ffmpeg",
-            "config-opts": [
-                "--disable-debug",
-                "--disable-doc",
-                "--disable-static",
-                "--enable-gpl",
-                "--enable-shared",
-                "--disable-ffplay",
-                "--disable-devices",
-                "--enable-gnutls",
-                "--enable-libmp3lame",
-                "--enable-libopus",
-                "--enable-libvorbis"
-            ],
-            "cleanup": [
-                "/share/ffmpeg"
+            "buildsystem": "simple",
+            "build-commands": [
+                "mv bin/* /app/bin/"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz",
-                    "sha256": "40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6",
-                    "x-checker-data": {
-                        "type": "html",
-                        "url": "https://ffmpeg.org/releases/",
-                        "pattern": ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
-                    }
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-01-27-14-15/ffmpeg-n7.1-184-gdc07f98934-linux64-gpl-7.1.tar.xz",
+                    "sha256": "1ce51162bfb3b0067e7bfcb834437c480e07ceb2d2aeacaa377949e1a5f09a06",
+                    "only-arches": [
+                        "x86_64"
+                    ]
+                },
+                {
+                    "type": "archive",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-01-27-14-15/ffmpeg-n7.1-184-gdc07f98934-linuxarm64-gpl-7.1.tar.xz",
+                    "sha256": "4c5402e71452b5e70eacf89c4cf452d4a671bd684b8974542b96aaa4be52aebe",
+                    "only-arches": [
+                        "aarch64"
+                    ]
                 }
             ]
         },
