@@ -170,6 +170,17 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setTimeFrame(const std::optional<TimeFrame>& timeFrame);
         /**
+         * @brief Gets the playlist position of the download.
+         * @return The playlist position of the download
+         * @return -1 if the download is not part of a playlist
+         */
+        int getPlaylistPosition() const;
+        /**
+         * @brief Sets the playlist position of the download.
+         * @param position The playlist position of the download
+         */
+        void setPlaylistPosition(int position);
+        /**
          * @brief Converts the DownloadOptions to a vector of yt-dlp arguments.
          * @param downloaderOptions The DownloaderOptions to include in the arguments
          * @return The vector of yt-dlp arguments
@@ -207,6 +218,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool m_limitSpeed;
         bool m_exportDescription;
         std::optional<TimeFrame> m_timeFrame;
+        int m_playlistPosition;
     };
 }
 

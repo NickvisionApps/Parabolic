@@ -343,6 +343,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             options.setSplitChapters(splitChapters);
             options.setLimitSpeed(limitSpeed);
             options.setExportDescription(exportDescription);
+            options.setPlaylistPosition(media.getPlaylistPosition());
             //Add Download
             m_downloadManager.addDownload(options);
         }

@@ -19,7 +19,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_fileType{ MediaFileType::MP4 },
         m_splitChapters{ false },
         m_limitSpeed{ false },
-        m_exportDescription{ false }
+        m_exportDescription{ false },
+        m_playlistPosition{ -1 }
     {
 
     }
@@ -29,7 +30,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType{ MediaFileType::MP4 },
         m_splitChapters{ false },
         m_limitSpeed{ false },
-        m_exportDescription{ false }
+        m_exportDescription{ false },
+        m_playlistPosition{ -1 }
     {
 
     }
@@ -41,7 +43,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_saveFilename{ json["SaveFilename"].is_string() ? json["SaveFilename"].as_string().c_str() : "" },
         m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false },
         m_limitSpeed{ json["LimitSpeed"].is_bool() ? json["LimitSpeed"].as_bool() : false },
-        m_exportDescription{ json["ExportDescription"].is_bool() ? json["ExportDescription"].as_bool() : false }
+        m_exportDescription{ json["ExportDescription"].is_bool() ? json["ExportDescription"].as_bool() : false },
+        m_playlistPosition{ json["PlaylistPosition"].is_int64() ? json["PlaylistPosition"].as_int64() : false }
     {
         if(json["Credential"].is_object())
         {
@@ -221,6 +224,20 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_timeFrame = timeFrame;
     }
 
+    int DownloadOptions::getPlaylistPosition() const
+    {
+        return m_playlistPosition;
+    }
+
+    void DownloadOptions::setPlaylistPosition(int position)
+    {
+        if(position <= 0)
+        {
+            position = -1;
+        }
+        m_playlistPosition = position;
+    }
+
     std::vector<std::string> DownloadOptions::toArgumentVector(const DownloaderOptions& downloaderOptions) const
     {
         std::vector<std::string> arguments;
@@ -342,7 +359,18 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(downloaderOptions.getRemoveSourceData())
             {
                 arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_comment>):(?P<meta_description>):(?P<meta_synopsis>):(?P<meta_purl>)");
+                arguments.push_back(":(?P<meta_comment>)");
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(":(?P<meta_description>)");
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(":(?P<meta_synopsis>)");
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(":(?P<meta_purl>)");
+            }
+            if(m_playlistPosition != -1)
+            {
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
             }
         }
         if(downloaderOptions.getEmbedChapters())
@@ -549,6 +577,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             json["TimeFrame"] = m_timeFrame->toJson();
         }
+        json["PlaylistPosition"] = m_playlistPosition;
         return json;
     }
 
