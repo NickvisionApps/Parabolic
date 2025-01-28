@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-28 10:48-0500\n"
+"POT-Creation-Date: 2025-01-28 14:51-0500\n"
 "PO-Revision-Date: 2024-12-28 11:32+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -79,8 +79,8 @@ msgstr "FLAC (Аудио)"
 msgid "WAV (Audio)"
 msgstr "WAV (Аудио)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:127
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:156
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:158
 #: libparabolic/src/models/videoresolution.cpp:33
 #: libparabolic/src/models/videoresolution.cpp:75
 msgid "Best"
@@ -116,6 +116,7 @@ msgid "translator-credits"
 msgstr "twlvnn <kraft_werk@tutanota.com>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:266
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Беше възстановено {} изтегляне"
@@ -134,6 +135,7 @@ msgid "Download Finished"
 msgstr "Изтеглянето приключи"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} се изтегли"
 
@@ -142,6 +144,7 @@ msgid "Download Finished With Error"
 msgstr "Изтеглянето приключи с грешка"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:382
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} приключи с грешка"
 
@@ -154,18 +157,22 @@ msgid "All downloads have finished"
 msgstr "Всичко изтегляния приключиха"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:.2f} ГБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:.2f} МБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:.2f} КБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:.2f} Б/с"
 
@@ -1046,10 +1053,12 @@ msgid "No Subtitles Available"
 msgstr "Няма налични субтитри"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} елемента"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1177,6 +1186,7 @@ msgid "Changelog:"
 msgstr "Дневник на промените:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1255,11 +1265,13 @@ msgstr ""
 "настройките."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:237
+#, c++-format
 msgid "Items ({})"
 msgstr "Елементи ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "За {} са необходими данни за идентификация за изтегляне. Изберете или "

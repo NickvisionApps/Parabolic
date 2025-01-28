@@ -40,10 +40,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.1.3" });
+        m_appInfo.setVersion({ "2025.1.4-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Improved progress and log reporting of downloads\n- Fixed an issue where removing source data from metadata was not working\n- Fixed an issue where a media's track number was not included in its metadata for playlist downloads\n- Fixed an issue where downloading media with a specified time frame did not work on Flatpak\n- Fixed an issue where the postprocessing threads setting had no effect on Flatpak\n- Fixed an issue where the video and audio format comboboxes were ellipsed on GNOME\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Fixed an issue where the incorrect previous video and/or audio format was selected\n- Fixed an issue where video and audio formats were not selectable on GNOME");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
