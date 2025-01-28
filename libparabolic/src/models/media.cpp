@@ -13,7 +13,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(info.contains("is_part_of_playlist"))
         {
             m_url = info.contains("url") ? (info["url"].is_string() ? info["url"].as_string() : "") : (info["webpage_url"].is_string() ? info["webpage_url"].as_string().c_str() : "");
-            m_playlistPosition = info["playlist_position"].is_int64() ? info["playlist_position"].as_int64() : -1;
+            m_playlistPosition = info["playlist_position"].is_int64() ? static_cast<int>(info["playlist_position"].as_int64()) : -1;
         }
         else
         {

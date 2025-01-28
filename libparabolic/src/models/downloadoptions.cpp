@@ -44,7 +44,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false },
         m_limitSpeed{ json["LimitSpeed"].is_bool() ? json["LimitSpeed"].as_bool() : false },
         m_exportDescription{ json["ExportDescription"].is_bool() ? json["ExportDescription"].as_bool() : false },
-        m_playlistPosition{ json["PlaylistPosition"].is_int64() ? json["PlaylistPosition"].as_int64() : false }
+        m_playlistPosition{ json["PlaylistPosition"].is_int64() ? static_cast<int>(json["PlaylistPosition"].as_int64()) : -1 }
     {
         if(json["Credential"].is_object())
         {
