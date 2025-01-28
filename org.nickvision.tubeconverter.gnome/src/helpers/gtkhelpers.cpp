@@ -62,21 +62,12 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         }
         if(!allowEllipse)
         {
-            GtkListItemFactory* factory{ gtk_signal_list_item_factory_new() };
-            g_signal_connect(factory, "setup", G_CALLBACK(+[](GtkListItemFactory* factory, GtkListItem* item, gpointer data)
+            g_signal_connect_after(adw_combo_row_get_factory(row), "setup", G_CALLBACK(+[](GtkListItemFactory* factory, GtkListItem* item, gpointer data)
             {
-                GtkLabel* lbl{ GTK_LABEL(gtk_label_new(nullptr)) };
-                gtk_widget_set_halign(GTK_WIDGET(lbl), GTK_ALIGN_START);
+                GtkWidget* box{ gtk_list_item_get_child(item) };
+                GtkLabel* lbl{ GTK_LABEL(gtk_widget_get_first_child(box)) };
                 gtk_label_set_ellipsize(lbl, PANGO_ELLIPSIZE_NONE);
-                gtk_list_item_set_child(item, GTK_WIDGET(lbl));
             }), nullptr);
-            g_signal_connect(factory, "bind", G_CALLBACK(+[](GtkListItemFactory* factory, GtkListItem* item, gpointer data)
-            {
-                GtkStringList* list{ GTK_STRING_LIST(data) };
-                GtkLabel* lbl{ GTK_LABEL(gtk_list_item_get_child(item)) };
-                gtk_label_set_label(lbl, gtk_string_list_get_string(list, gtk_list_item_get_position(item)));
-            }), list);
-            adw_combo_row_set_factory(row, factory);
         }
         adw_combo_row_set_model(row, G_LIST_MODEL(list));
         adw_combo_row_set_selected(row, selectedIndex);
