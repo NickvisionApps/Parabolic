@@ -120,6 +120,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::vector<std::string> formats;
         m_videoFormatMap.clear();
+        *previousIndex = 0;
         if(!m_urlInfo)
         {
             return formats;
@@ -149,6 +150,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::vector<std::string> formats;
         m_audioFormatMap.clear();
+        *previousIndex = 0;
         if(!m_urlInfo)
         {
             return formats;
