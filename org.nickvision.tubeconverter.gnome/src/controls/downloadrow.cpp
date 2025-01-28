@@ -14,9 +14,8 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     DownloadRow::DownloadRow(const DownloadAddedEventArgs& args, GtkWindow* parent)
         : ControlBase{ parent, "download_row" },
         m_id{ args.getId() },
-        m_log{ _("Starting download...") },
-        m_path{ args.getPath() },
-        m_pulseBar{ false }
+        m_log{ "" },
+        m_path{ args.getPath() }
     {
         //Load
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
@@ -76,30 +75,25 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "running");
         if(std::isnan(args.getProgress()))
         {
-            m_pulseBar = true;
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Processing"));
-            g_timeout_add(30, +[](gpointer data) -> int
-            {
-                DownloadRow* row{ reinterpret_cast<DownloadRow*>(data) };
-                gtk_progress_bar_pulse(row->m_builder.get<GtkProgressBar>("progBar"));
-                return row->m_pulseBar ? G_SOURCE_CONTINUE : G_SOURCE_REMOVE;
-            }, this);
+            gtk_progress_bar_pulse(m_builder.get<GtkProgressBar>("progBar"));
         }
         else
         {
-            m_pulseBar = false;
             gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), args.getProgress());
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), std::vformat("{} | {}", std::make_format_args(CodeHelpers::unmove(_("Running")), args.getSpeedStr())).c_str());
         }
-        m_log = args.getLog();
-        gtk_text_buffer_set_text(gtk_text_view_get_buffer(m_builder.get<GtkTextView>("logView")), m_log.c_str(), m_log.size());
-        GtkAdjustment* vadjustment{ gtk_scrollable_get_vadjustment(m_builder.get<GtkScrollable>("logView")) };
-        gtk_adjustment_set_value(vadjustment, gtk_adjustment_get_upper(vadjustment) - gtk_adjustment_get_page_size(vadjustment));
+        if(args.getLog() != m_log)
+        {
+            m_log = args.getLog();
+            gtk_text_buffer_set_text(gtk_text_view_get_buffer(m_builder.get<GtkTextView>("logView")), m_log.c_str(), m_log.size());
+            GtkAdjustment* vadjustment{ gtk_scrolled_window_get_vadjustment(m_builder.get<GtkScrolledWindow>("logScroll")) };
+            gtk_adjustment_set_value(vadjustment, gtk_adjustment_get_upper(vadjustment));
+        }
     }
 
     void DownloadRow::setCompleteState(const DownloadCompletedEventArgs& args)
     {
-        m_pulseBar = false;
         m_path = args.getPath();
         gtk_label_set_text(m_builder.get<GtkLabel>("fileNameLabel"), m_path.filename().string().c_str());
         gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 1.0);
@@ -125,7 +119,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
 
     void DownloadRow::setStopState()
     {
-        m_pulseBar = false;
         gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 1.0);
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "media-playback-stop-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Stopped"));
@@ -136,7 +129,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
 
     void DownloadRow::setStartFromQueueState()
     {
-        m_pulseBar = false;
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "folder-download-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));

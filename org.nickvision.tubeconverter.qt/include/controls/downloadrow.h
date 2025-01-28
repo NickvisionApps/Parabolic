@@ -41,11 +41,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
          */
         int getId() const;
         /**
-         * @brief Gets the log of the download.
-         * @return The log of the download
-         */
-        const QString& getLog() const;
-        /**
          * @brief Updates the row with the new download progress.
          * @param args DownloadProgressChangedEventArgs
          */
@@ -89,7 +84,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
     private:
         Ui::DownloadRow* m_ui;
         int m_id;
-        QString m_log;
         std::filesystem::path m_path;
     };
 }

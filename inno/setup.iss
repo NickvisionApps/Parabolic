@@ -3,7 +3,7 @@
 
 #define MyAppName "Nickvision Parabolic"
 #define MyAppShortName "Parabolic"
-#define MyAppVersion "2025.1.2"
+#define MyAppVersion "2025.1.3"
 #define MyAppPublisher "Nickvision"
 #define MyAppURL "https://nickvision.org"
 #define MyAppExeName "org.nickvision.tubeconverter.qt.exe"
@@ -60,7 +60,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "..\resources\chrome_cookies_unlock.py"; DestDir: "{app}\Release\yt-dlp-plugins\yt-dlp-ChromeCookieUnlock\yt_dlp_plugins\postprocessor"; Flags: ignoreversion
+Source: "..\resources\yt-dlp-plugins\*"; DestDir: "{app}\Release\yt-dlp-plugins\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion

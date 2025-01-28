@@ -99,7 +99,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         Events::Event<Events::ParamEventArgs<int>> m_stopped;
         Events::Event<Events::ParamEventArgs<int>> m_retried;
         Events::Event<Events::ParamEventArgs<int>> m_commandToClipboardRequested;
-        bool m_pulseBar;
     };
 }
 

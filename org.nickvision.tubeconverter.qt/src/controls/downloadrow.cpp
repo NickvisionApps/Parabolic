@@ -16,7 +16,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
         : QWidget{ parent },
         m_ui{ new Ui::DownloadRow() },
         m_id{ args.getId() },
-        m_log{ _("Starting download...") },
         m_path{ args.getPath() }
     {
         m_ui->setupUi(this);
@@ -56,7 +55,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
         : QWidget{ row.parentWidget() },
         m_ui{ new Ui::DownloadRow() },
         m_id{ row.m_id },
-        m_log{ row.m_log },
         m_path{ row.m_path }
     {
         m_ui->setupUi(this);
@@ -90,11 +88,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
         return m_id;
     }
 
-    const QString& DownloadRow::getLog() const
-    {
-        return m_log;
-    }
-
     void DownloadRow::setProgressState(const DownloadProgressChangedEventArgs& args)
     {
         if(std::isnan(args.getProgress()))
@@ -109,7 +102,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
             m_ui->progressBar->setValue(args.getProgress() * 100);
             m_ui->lblStatus->setText(QString::fromStdString(std::vformat("{} | {}", std::make_format_args(CodeHelpers::unmove(_("Running")), args.getSpeedStr()))));
         }
-        m_log = QString::fromStdString(args.getLog());
     }
 
     void DownloadRow::setCompleteState(const DownloadCompletedEventArgs& args)

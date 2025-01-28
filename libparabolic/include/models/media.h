@@ -39,6 +39,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getTitle() const;
         /**
+         * @brief Gets the playlist position of the media.
+         * @return The playlist position of the media
+         * @return -1 if the media is not part of a playlist
+         */
+        int getPlaylistPosition() const;
+        /**
          * @brief Gets the type of the media.
          * @return The type of the media
          */
@@ -62,6 +68,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     private:
         std::string m_url;
         std::string m_title;
+        int m_playlistPosition;
         MediaType m_type;
         TimeFrame m_timeFrame;
         std::vector<Format> m_formats;

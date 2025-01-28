@@ -55,11 +55,14 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2025.1.2" date="2025-01-17">
+    <release version="2025.1.3-next" date="2025-01-17">
       <description translate="no">
-        <p>- Fixed an issue where the cookies file was not used when validating media URLs</p>
-        <p>- Fixed an issue where the Qt version of the app did not select the Best format when the previously used format was not available</p>
-        <p>- Fixed an issue where the update button on the Windows app did not work</p>
+        <p>- Improved progress and log reporting of downloads</p>
+        <p>- Fixed an issue where removing source data from metadata was not working</p>
+        <p>- Fixed an issue where a media's track number was not included in its metadata for playlist downloads</p>
+        <p>- Fixed an issue where downloading media with a specified time frame did not work on Flatpak</p>
+        <p>- Fixed an issue where the postprocessing threads setting had no effect on Flatpak</p>
+        <p>- Fixed an issue where the video and audio format comboboxes were ellipsed on GNOME</p>
         <p>- Updated yt-dlp</p>
       </description>
     </release>

@@ -37,7 +37,7 @@ if(NOT WIN32)
     if(BLUEPRINT_COMPILER_EXECUTABLE)
         add_custom_command(TARGET gnome_commands PRE_BUILD COMMAND "${BLUEPRINT_COMPILER_EXECUTABLE}" batch-compile "${CMAKE_CURRENT_BINARY_DIR}/ui" "${CMAKE_CURRENT_SOURCE_DIR}/blueprints" "${CMAKE_CURRENT_SOURCE_DIR}/blueprints/*.blp")
     else()
-        message(ERROR "blueprint-compiler not found, UI will not be compiled")
+        message(FATAL_ERROR "blueprint-compiler not found, UI will not be compiled")
     endif()
 
     if(HAS_GETTEXT)
