@@ -88,7 +88,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
             m_log = args.getLog();
             gtk_text_buffer_set_text(gtk_text_view_get_buffer(m_builder.get<GtkTextView>("logView")), m_log.c_str(), m_log.size());
             GtkAdjustment* vadjustment{ gtk_scrolled_window_get_vadjustment(m_builder.get<GtkScrolledWindow>("logScroll")) };
-            gtk_adjustment_set_value(vadjustment, gtk_adjustment_get_upper(vadjustment) - gtk_adjustment_get_page_size(vadjustment));
+            gtk_adjustment_set_value(vadjustment, gtk_adjustment_get_upper(vadjustment));
         }
     }
 
