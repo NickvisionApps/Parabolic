@@ -250,6 +250,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--progress-template");
         arguments.push_back("[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s");
         arguments.push_back("--no-mtime");
+        arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
         if(downloaderOptions.getOverwriteExistingFiles() && !shouldDownloadResume())
@@ -373,9 +374,13 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
             }
         }
-        if(downloaderOptions.getEmbedChapters())
+        if(downloaderOptions.getEmbedChapters() && !m_splitChapters && !m_timeFrame)
         {
             arguments.push_back("--embed-chapters");
+        }
+        else
+        {
+            arguments.push_back("--no-embed-chapters");
         }
         //Force preferred video codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
@@ -516,7 +521,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--write-description");
         }
-        if(m_timeFrame.has_value())
+        if(m_timeFrame)
         {
             arguments.push_back("--download-sections");
             arguments.push_back("*" + m_timeFrame->str());
