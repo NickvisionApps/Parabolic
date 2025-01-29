@@ -374,7 +374,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
             }
         }
-        if(downloaderOptions.getEmbedChapters() && !m_splitChapters && !m_timeFrame)
+        if(downloaderOptions.getEmbedChapters())
         {
             arguments.push_back("--embed-chapters");
         }
@@ -510,7 +510,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(m_splitChapters)
         {
+            std::string args{ "SplitChapters:-map_metadata 0 -map_chapters -1" };
+            if(m_fileType == MediaFileType::FLAC)
+            {
+                args += " -c:a flac";
+            }
             arguments.push_back("--split-chapters");
+            arguments.push_back("--postprocessor-args");
+            arguments.push_back(args);
         }
         if(m_limitSpeed)
         {
