@@ -89,6 +89,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void downloadSingle();
         /**
+         * @brief Handles when the playlist file type combobox is changed.
+         */
+        void onFileTypePlaylistChanged();
+        /**
          * @brief Prompts the user to select a folder to save a playlist download.
          */
         void selectSaveFolderPlaylist();

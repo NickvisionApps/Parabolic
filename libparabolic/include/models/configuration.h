@@ -103,6 +103,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setShowDisclaimerOnStartup(bool showDisclaimerOnStartup);
         /**
+         * @brief Gets whether or not to show the generic disclaimer.
+         * @return True to show the disclaimer, else false
+         */
+        bool getShowGenericDisclaimer() const;
+        /**
+         * @brief Sets whether or not to show the generic disclaimer.
+         * @param showDisclaimer True to show the disclaimer, else false
+         */
+        void setShowGenericDisclaimer(bool showDisclaimer);
+        /**
          * @brief Gets whether or not to download immediately after validation.
          * @return True to download immediately after validation, else false
          */

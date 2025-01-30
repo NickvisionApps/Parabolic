@@ -10,6 +10,7 @@
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
+#include "models/configuration.h"
 #include "models/downloadmanager.h"
 #include "models/format.h"
 #include "models/timeframe.h"
@@ -51,6 +52,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The list of credential names in the keyring
          */
         std::vector<std::string> getKeyringCredentialNames() const;
+        /**
+         * @brief Gets whether or not to show the generic disclaimer.
+         * @return True to show disclaimer, else false
+         */
+        bool getShowGenericDisclaimer() const;
+        /**
+         * @brief Sets whether or not to show the generic disclaimer.
+         * @param showDisclaimer True to show disclaimer, else false
+         */
+        void setShowGenericDisclaimer(bool showDisclaimer);
         /**
          * @brief Gets whether or not to download immediately after validation.
          * @return True to download immediately after validation, else false
@@ -168,11 +179,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     private:
         Models::DownloadManager& m_downloadManager;
+        Models::Configuration& m_configuration;
         Models::PreviousDownloadOptions& m_previousOptions;
         Keyring::Keyring& m_keyring;
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;
-        bool m_downloadImmediatelyAfterValidation;
         mutable std::unordered_map<size_t, size_t> m_videoFormatMap;
         mutable std::unordered_map<size_t, size_t> m_audioFormatMap;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_urlValidated;
