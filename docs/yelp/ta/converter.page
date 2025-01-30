@@ -24,43 +24,55 @@
 <p><app>பரபோலிக்</app> இல் உள்ள விருப்பங்களில் மாற்றியை உள்ளமைப்பதற்கான அனைத்து விருப்பங்களையும் இந்தப் பக்கம் விளக்குகிறது.</p>
 
 <terms>
-	<item>
-		<title>மெட்டாடேட்டாவை உட்பொதிக்கவும்</title>
-		<p>இயக்கப்பட்டால், பரபோலிக் ஒரு மீடியாவை அதன் தொடர்புடைய தகவல்களுடன் (தலைப்பு, வகை, முதலியன...) மற்றும் சிறுபடம் இருந்தால் குறியிடும்.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆன்</p>
-		</note>
-    </item>
     <item>
-		<title>அத்தியாயங்களை உட்பொதிக்கவும்</title>
-		<p>இயக்கப்பட்டால், பரபோலிக் கிடைத்தால் அத்தியாயத் தகவலுடன் ஒரு ஊடகத்தைக் குறிக்கும்.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆஃப்</p>
-		</note>
-	</item>
-    <item>
-        <title>உட்பொதிக்கப்பட்ட வசன வரிகள்</title>
-        <p>முடக்கப்பட்டால் அல்லது உட்பொதித்தல் தோல்வியுற்றால், பதிவிறக்கம் செய்யப்பட்ட வசனங்கள் ஒரு தனி கோப்பில் சேமிக்கப்படும்.</p>
+        <title>மெட்டாடேட்டாவை உட்பொதிக்கவும்</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>இயல்புநிலை: ஆன்</p>
         </note>
     </item>
     <item>
-		<title>ஒலி அமைப்பு சிறுபடங்களை செதுக்கு</title>
-		<p>இயக்கப்பட்டால், ஆடியோ கோப்புகள் ஒரு சதுர தெளிவுத்திறனாக இருக்கும் என்று பரபோலிக் சிறு உருவங்களை பயிர் செய்யும்.</p>
-        <p><code> உட்பொதிக்கப்பட்ட மேனிலை தரவு </code> இயக்கத்தில் இருந்தால் மட்டுமே இந்த விருப்பம் கட்டமைக்கப்படுகிறது.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆஃப்</p>
-		</note>
+        <title>மூலத் தரவை அகற்று</title>
+        <p>இயக்கப்பட்டால், URL மற்றும் மீடியா மூலத்தின் பிற அடையாளம் காணும் தகவலைக் கொண்ட மெட்டாடேட்டா புலங்களை பாரபோலிக் அழிக்கும்.</p>
+        <p>அழிக்கப்பட்ட புலங்கள்: <code>கருத்து</code>, <code>விளக்கம்</code>, <code>சுருக்கம்</code>, <code>purl</code> மற்றும் <code>handler_name</code> ஒவ்வொரு நீரோடையில்.</p>
+        <note>
+            <p><code> உட்பொதிக்கப்பட்ட மேனிலை தரவு </code> இயக்கத்தில் இருந்தால் மட்டுமே இந்த விருப்பம் கட்டமைக்கப்படுகிறது.</p>
+        </note>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆஃப்</p>
+        </note>
     </item>
     <item>
-		<title>மூலத் தரவை அகற்று</title>
-		<p>இயக்கப்பட்டால், URL மற்றும் மீடியா மூலத்தின் பிற அடையாளம் காணும் தகவலைக் கொண்ட மெட்டாடேட்டா புலங்களை பாரபோலிக் அழிக்கும்.</p>
-        <p>அழிக்கப்பட்ட புலங்கள்: <code>கருத்து</code>, <code>விளக்கம்</code>, <code>சுருக்கம்</code>, <code>purl</code> மற்றும் <code>handler_name</code> ஒவ்வொரு நீரோடையில்.</p>
-        <p><code> உட்பொதிக்கப்பட்ட மேனிலை தரவு </code> இயக்கத்தில் இருந்தால் மட்டுமே இந்த விருப்பம் கட்டமைக்கப்படுகிறது.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆஃப்</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆன்</p>
+        </note>
+    </item>
+    <item>
+        <title>ஒலி அமைப்பு சிறுபடங்களை செதுக்கு</title>
+        <p>இயக்கப்பட்டால், ஆடியோ கோப்புகள் ஒரு சதுர தெளிவுத்திறனாக இருக்கும் என்று பரபோலிக் சிறு உருவங்களை பயிர் செய்யும்.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆஃப்</p>
+        </note>
+    </item>
+    <item>
+        <title>அத்தியாயங்களை உட்பொதிக்கவும்</title>
+        <p>இயக்கப்பட்டால், பரபோலிக் கிடைத்தால் அத்தியாயத் தகவலுடன் ஒரு ஊடகத்தைக் குறிக்கும்.</p>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆஃப்</p>
+        </note>
+    </item>
+    <item>
+        <title>உட்பொதிக்கப்பட்ட வசன வரிகள்</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆன்</p>
+        </note>
     </item>
     <item>
         <title>போச்ட்ரோசெசிங் நூல்கள்</title>

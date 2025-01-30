@@ -63,6 +63,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("revertStartTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertStartTimeSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("revertEndTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertEndTimeSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("downloadSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("fileTypePlaylistRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onFileTypePlaylistChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectSaveFolderPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("itemsPlaylistRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
@@ -275,6 +276,20 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("videoFormatSingleRow"), !type.isAudio());
+        if(type.isGeneric() && m_controller->getShowGenericDisclaimer())
+        {
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Warning"), _("Generic file types do not support embedding thumbnails and subtitles. Please select a specific file type that supports embedding to prevent separate image and subtitle files from being written to disk."))) };
+            adw_alert_dialog_set_extra_child(dialog, gtk_check_button_new_with_label(_("Don't show this message again")));
+            adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
+            adw_alert_dialog_set_default_response(dialog, "close");
+            adw_alert_dialog_set_close_response(dialog, "close");
+            g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
+            {
+                AddDownloadDialog* addDownloadDialog{ reinterpret_cast<AddDownloadDialog*>(data) };
+                addDownloadDialog->m_controller->setShowGenericDisclaimer(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
+            }), this);
+            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_dialog));
+        }
     }
 
     void AddDownloadDialog::subtitlesSingle()
@@ -346,6 +361,30 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         m_controller->addSingleDownload(adw_action_row_get_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("filenameSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("videoFormatSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioFormatSingleRow")), subtitles, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("splitChaptersSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("limitSpeedSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("exportDescriptionSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("startTimeSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("endTimeSingleRow")));
         adw_dialog_close(m_dialog);
+    }
+
+    void AddDownloadDialog::onFileTypePlaylistChanged()
+    {
+        int fileTypeIndex{ adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow")) };
+        if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
+        {
+            fileTypeIndex += MediaFileType::getVideoFileTypeCount();
+        }
+        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
+        if(type.isGeneric() && m_controller->getShowGenericDisclaimer())
+        {
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Warning"), _("Generic file types do not support embedding thumbnails and subtitles. Please select a specific file type that supports embedding to prevent separate image and subtitle files from being written to disk."))) };
+            adw_alert_dialog_set_extra_child(dialog, gtk_check_button_new_with_label(_("Don't show this message again")));
+            adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
+            adw_alert_dialog_set_default_response(dialog, "close");
+            adw_alert_dialog_set_close_response(dialog, "close");
+            g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
+            {
+                AddDownloadDialog* addDownloadDialog{ reinterpret_cast<AddDownloadDialog*>(data) };
+                addDownloadDialog->m_controller->setShowGenericDisclaimer(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
+            }), this);
+            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_dialog));
+        }
     }
 
     void AddDownloadDialog::selectSaveFolderPlaylist()

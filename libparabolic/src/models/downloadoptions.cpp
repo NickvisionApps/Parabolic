@@ -132,6 +132,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setVideoFormat(const std::optional<Format>& videoFormat)
     {
         m_videoFormat = videoFormat;
+        if(m_fileType.isGeneric() && m_videoFormat)
+        {
+            std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_videoFormat->getExtension()) };
+            if(newFileType)
+            {
+                m_fileType = *newFileType;
+            }
+        }
     }
 
     const std::optional<Format>& DownloadOptions::getAudioFormat() const
@@ -142,6 +150,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setAudioFormat(const std::optional<Format>& audioFormat)
     {
         m_audioFormat = audioFormat;
+        std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_audioFormat->getExtension()) };
+        if(newFileType)
+        {
+            m_fileType = *newFileType;
+        }
     }
 
     const std::filesystem::path& DownloadOptions::getSaveFolder() const
@@ -250,6 +263,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--progress-template");
         arguments.push_back("[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s");
         arguments.push_back("--no-mtime");
+        arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
         if(downloaderOptions.getOverwriteExistingFiles() && !shouldDownloadResume())
@@ -341,21 +355,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(downloaderOptions.getEmbedMetadata())
         {
             arguments.push_back("--embed-metadata");
-            if(m_fileType.supportsThumbnails())
-            {
-                arguments.push_back("--embed-thumbnail");
-            }
-            else
-            {
-                arguments.push_back("--write-thumbnail");
-            }
-            arguments.push_back("--convert-thumbnails");
-            arguments.push_back("jpg");
-            if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
-            {
-                arguments.push_back("--postprocessor-args");
-                arguments.push_back("ThumbnailsConvertor:-vf crop=ih:ih");
-            }
             if(downloaderOptions.getRemoveSourceData())
             {
                 arguments.push_back("--parse-metadata");
@@ -373,9 +372,31 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
             }
         }
+        if(downloaderOptions.getEmbedThumbnails())
+        {
+            if(m_fileType.supportsThumbnails())
+            {
+                arguments.push_back("--embed-thumbnail");
+            }
+            else
+            {
+                arguments.push_back("--write-thumbnail");
+            }
+            arguments.push_back("--convert-thumbnails");
+            arguments.push_back("jpg");
+            if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
+            {
+                arguments.push_back("--postprocessor-args");
+                arguments.push_back("ThumbnailsConvertor:-vf crop=ih:ih");
+            }
+        }
         if(downloaderOptions.getEmbedChapters())
         {
             arguments.push_back("--embed-chapters");
+        }
+        else
+        {
+            arguments.push_back("--no-embed-chapters");
         }
         //Force preferred video codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
@@ -505,7 +526,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(m_splitChapters)
         {
+            std::string args{ "SplitChapters:-map_metadata 0 -map_chapters -1" };
+            if(m_fileType == MediaFileType::FLAC)
+            {
+                args += " -c:a flac";
+            }
             arguments.push_back("--split-chapters");
+            arguments.push_back("--postprocessor-args");
+            arguments.push_back(args);
         }
         if(m_limitSpeed)
         {
@@ -516,7 +544,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--write-description");
         }
-        if(m_timeFrame.has_value())
+        if(m_timeFrame)
         {
             arguments.push_back("--download-sections");
             arguments.push_back("*" + m_timeFrame->str());

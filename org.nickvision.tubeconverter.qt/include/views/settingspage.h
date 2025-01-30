@@ -54,6 +54,11 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @param checked The new state of the checkbox
          */
         void onEmbedMetadataChanged(bool checked);
+        /**
+         * @brief Handles when the embed thumbnails checkbox is toggled.
+         * @param checked The new state of the checkbox
+         */
+        void onEmbedThumbnailsChanged(bool checked);
 
     private:
         Ui::SettingsPage* m_ui;

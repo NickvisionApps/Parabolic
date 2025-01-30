@@ -24,43 +24,55 @@
 <p>Na tejto stránke sú vysvetlené všetky možnosti konfigurácie konvertora v časti Nastavenia v aplikácii <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Vložiť metaúdaje</title>
-		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic priradí médiám príslušné informácie (názov, žáner atď.) a miniatúru, ak sú k dispozícii.</p>
-		<note style="advanced">
-			<p>Predvolené: Zapnuté</p>
-		</note>
-    </item>
     <item>
-		<title>Vložiť kapitoly</title>
-		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic priradí médiám informácie o kapitolách, ak sú k dispozícii.</p>
-		<note style="advanced">
-			<p>Predvolené: Vypnuté</p>
-		</note>
-	</item>
-    <item>
-        <title>Vložiť titulky</title>
-        <p>Ak je táto možnosť vypnutá alebo ak sa vloženie nepodarí, stiahnuté titulky sa uložia do samostatného súboru.</p>
+        <title>Vložiť metaúdaje</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
-		<title>Orezať obrázkové náhľady zvuku</title>
-		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic oreže miniatúry obrázkov zvukových súborov tak, aby mali štvorcové rozlíšenie.</p>
-        <p>Táto možnosť je konfigurovateľná iba pri zapnutom nastavení <code>Vložiť metaúdaje</code>.</p>
-		<note style="advanced">
-			<p>Predvolené: Vypnuté</p>
-		</note>
+        <title>Odstrániť zdrojové údaje</title>
+        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic odstráni polia metadát obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média.</p>
+        <p>Polia, ktoré budú odstránené: <code>komentár</code>, <code>popis</code>, <code>súhrn</code>, <code>odkaz</code> a <code>spracovateľ</code> v každom dátovom toku.</p>
+        <note>
+            <p>Táto možnosť je konfigurovateľná iba pri zapnutom nastavení <code>Vložiť metaúdaje</code>.</p>
+        </note>
+        <note style="advanced">
+            <p>Predvolené: Vypnuté</p>
+        </note>
     </item>
     <item>
-		<title>Odstrániť zdrojové údaje</title>
-		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic odstráni polia metadát obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média.</p>
-        <p>Polia, ktoré budú odstránené: <code>komentár</code>, <code>popis</code>, <code>súhrn</code>, <code>odkaz</code> a <code>spracovateľ</code> v každom dátovom toku.</p>
-        <p>Táto možnosť je konfigurovateľná iba pri zapnutom nastavení <code>Vložiť metaúdaje</code>.</p>
-		<note style="advanced">
-			<p>Predvolené: Vypnuté</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Predvolené: Zapnuté</p>
+        </note>
+    </item>
+    <item>
+        <title>Orezať obrázkové náhľady zvuku</title>
+        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic oreže miniatúry obrázkov zvukových súborov tak, aby mali štvorcové rozlíšenie.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Predvolené: Vypnuté</p>
+        </note>
+    </item>
+    <item>
+        <title>Vložiť kapitoly</title>
+        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic priradí médiám informácie o kapitolách, ak sú k dispozícii.</p>
+        <note style="advanced">
+            <p>Predvolené: Vypnuté</p>
+        </note>
+    </item>
+    <item>
+        <title>Vložiť titulky</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Predvolené: Zapnuté</p>
+        </note>
     </item>
     <item>
         <title>Spracovávanie vlákien</title>

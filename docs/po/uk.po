@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-01-28 10:48-0500\n"
+"POT-Creation-Date: 2025-01-30 13:03-0500\n"
 "PO-Revision-Date: 2025-01-10 12:15+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -72,8 +72,8 @@ msgstr ""
 "завантаження не відображатиметься в інтерфейсі."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
-#: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
+#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
+#: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
 #: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
@@ -162,76 +162,29 @@ msgstr "Вставити метадані"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:26
+#, fuzzy
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
-"genre, etc...) and thumbnail if available."
+"genre, etc...) if available."
 msgstr ""
 "Якщо ввімкнено, Parabolic позначатиме медіа відповідною інформацією (назва, "
 "жанр тощо) та мініатюрою, якщо вона доступна."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:41
-#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
-#: docs/yelp/C/interface.page:49
+#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
+#: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
+#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
+#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "За замовчуванням: Ввімк"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:32
-msgid "Embed Chapters"
-msgstr "Вставити розділи"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:33
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така "
-"доступна."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:39
-msgid "Embed Subtitles"
-msgstr "Вбудовані субтитри"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:40
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
-msgstr ""
-"Якщо цю функцію вимкнено або якщо вбудовування не вдасться, завантажені "
-"субтитри буде збережено в окремому файлі."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:46
-msgid "Crop Audio Thumbnails"
-msgstr "Обрізати мініатюри аудіо"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:47
-msgid ""
-"If enabled, Parabolic will crop thumbnails for audio files to be a square "
-"resolution."
-msgstr ""
-"Якщо ввімкнено, Parabolic обрізає ескізи для аудіофайлів до квадратної "
-"роздільної здатності."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
-msgid "This option is only configurable if <code>Embed Metadata</code> is on."
-msgstr ""
-"Цей параметр можна налаштувати лише, якщо увімкнено <code>Вбудовувати "
-"метадані</code>."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "Вилучити вихідні дані"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:55
+#: docs/yelp/C/converter.page:33
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
@@ -240,7 +193,7 @@ msgstr ""
 "ідентифікаційну інформацію джерела медіа."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:56
+#: docs/yelp/C/converter.page:34
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
@@ -249,13 +202,96 @@ msgstr ""
 "Очищені поля: <code> коментар</code>, <code>опис</code>, <code>синопсис</"
 "code>, <code>purl</code> і <code>handler_name</code> в кожному стримі."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:36
+msgid "This option is only configurable if <code>Embed Metadata</code> is on."
+msgstr ""
+"Цей параметр можна налаштувати лише, якщо увімкнено <code>Вбудовувати "
+"метадані</code>."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:63
+#: docs/yelp/C/converter.page:43
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "Вбудовані субтитри"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:44
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will embed a media with its thumbnail if available."
+msgstr ""
+"Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така "
+"доступна."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:45
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Якщо цю функцію вимкнено або якщо вбудовування не вдасться, завантажені "
+"субтитри буде збережено в окремому файлі."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:51
+msgid "Crop Audio Thumbnails"
+msgstr "Обрізати мініатюри аудіо"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:52
+msgid ""
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
+msgstr ""
+"Якщо ввімкнено, Parabolic обрізає ескізи для аудіофайлів до квадратної "
+"роздільної здатності."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:54
+#, fuzzy
+msgid ""
+"This option is only configurable if <code>Embed Thumbnails</code> is on."
+msgstr ""
+"Цей параметр можна налаштувати лише, якщо увімкнено <code>Вбудовувати "
+"метадані</code>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:61
+msgid "Embed Chapters"
+msgstr "Вставити розділи"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:62
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така "
+"доступна."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:68
+msgid "Embed Subtitles"
+msgstr "Вбудовані субтитри"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:69
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to a separate file."
+msgstr ""
+"Якщо цю функцію вимкнено або якщо вбудовування не вдасться, завантажені "
+"субтитри буде збережено в окремому файлі."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:75
 msgid "Postprocessing Threads"
 msgstr "Потоки постобробки"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:64
+#: docs/yelp/C/converter.page:76
 msgid ""
 "The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
 "use for each download."
@@ -264,7 +300,7 @@ msgstr ""
 "використовувати для кожного завантаження."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:66
+#: docs/yelp/C/converter.page:78
 msgid "Default: The max number of threads available on the system"
 msgstr "За замовчуванням: максимальна кількість потоків, доступна в системі."
 

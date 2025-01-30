@@ -18,43 +18,55 @@
 <p>Den här sidan förklarar alla alternativ för att konfigurera Konverteraren i Inställningar i <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Bädda in metadata</title>
-		<p>Om aktiverat kommer Parabolic att tagga ett media med dess relevanta information (titel, genre, etc...) och miniatyrbild om tillgänglig.</p>
-		<note style="advanced">
-			<p>Standard: På</p>
-		</note>
-    </item>
     <item>
-		<title>Bädda in kapitel</title>
-		<p>Om aktiverat kommer Parabolic att tagga ett media med kapitelinformation om tillgängligt.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
-	</item>
-    <item>
-        <title>Bädda in undertexter</title>
-        <p>Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade undertexter att sparas i separata filer.</p>
+        <title>Bädda in metadata</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Standard: På</p>
         </note>
     </item>
     <item>
-		<title>Beskär ljudminiatyrbilder</title>
-		<p>Om aktiverat kommer Parabolic att beskära miniatyrbilder för ljudfiler till en kvadratisk upplösning.</p>
-        <p>Det här alternativet är bara konfigurerbart om <code>Bädda in metadata</code> är aktiverat.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
+        <title>Ta bort källinformation</title>
+        <p>Om aktiverat kommer Parabolic att rensa metadatafält som innehåller URL och annan identifierande information om mediekällan.</p>
+        <p>Fält som rensas: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> och <code>handler_name</code> i varje stream.</p>
+        <note>
+            <p>Det här alternativet är bara konfigurerbart om <code>Bädda in metadata</code> är aktiverat.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: Av</p>
+        </note>
     </item>
     <item>
-		<title>Ta bort källinformation</title>
-		<p>Om aktiverat kommer Parabolic att rensa metadatafält som innehåller URL och annan identifierande information om mediekällan.</p>
-        <p>Fält som rensas: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> och <code>handler_name</code> i varje stream.</p>
-        <p>Det här alternativet är bara konfigurerbart om <code>Bädda in metadata</code> är aktiverat.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Standard: På</p>
+        </note>
+    </item>
+    <item>
+        <title>Beskär ljudminiatyrbilder</title>
+        <p>Om aktiverat kommer Parabolic att beskära miniatyrbilder för ljudfiler till en kvadratisk upplösning.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: Av</p>
+        </note>
+    </item>
+    <item>
+        <title>Bädda in kapitel</title>
+        <p>Om aktiverat kommer Parabolic att tagga ett media med kapitelinformation om tillgängligt.</p>
+        <note style="advanced">
+            <p>Standard: Av</p>
+        </note>
+    </item>
+    <item>
+        <title>Bädda in undertexter</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Standard: På</p>
+        </note>
     </item>
     <item>
         <title>Efterbearbetning av trådar</title>

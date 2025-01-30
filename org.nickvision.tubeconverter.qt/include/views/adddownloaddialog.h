@@ -74,6 +74,11 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void downloadSingle();
         /**
+         * @brief Handles when the cmbFileTypePlaylist's index has changed.
+         * @param index The new index
+         */
+        void onCmbFileTypePlaylistChanged(int index);
+        /**
          * @brief Prompts the user to select a save folder for a playlist download.
          */
         void selectSaveFolderPlaylist();

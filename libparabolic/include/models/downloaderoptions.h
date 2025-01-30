@@ -206,16 +206,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setEmbedMetadata(bool embedMetadata);
         /**
-         * @brief Gets whether or not to crop thumbnails as square for audio files.
-         * @return True to crop audio thumbnails, else false
-         */
-        bool getCropAudioThumbnails() const;
-        /**
-         * @brief Sets whether or not to crop thumbnails as square for audio files.
-         * @param cropAudioThumbnails True to crop audio thumbnails, else false
-         */
-        void setCropAudioThumbnails(bool cropAudioThumbnails);
-        /**
          * @brief Gets whether or not to remove source data from metadata.
          * @return True to remove source data, else false
          */
@@ -225,6 +215,26 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param removeSourceData True to remove source data, else false
          */
         void setRemoveSourceData(bool removeSourceData);
+        /**
+         * @brief Gets whether or not to embed thumbnails.
+         * @return True to embed thumbnails, else false
+         */
+        bool getEmbedThumbnails() const;
+        /**
+         * @brief Sets whether or not to embed thumbnails.
+         * @param embedThumbnails True to embed thumbnails, else false
+         */
+        void setEmbedThumbnails(bool embedThumbnails);
+        /**
+         * @brief Gets whether or not to crop thumbnails as square for audio files.
+         * @return True to crop audio thumbnails, else false
+         */
+        bool getCropAudioThumbnails() const;
+        /**
+         * @brief Sets whether or not to crop thumbnails as square for audio files.
+         * @param cropAudioThumbnails True to crop audio thumbnails, else false
+         */
+        void setCropAudioThumbnails(bool cropAudioThumbnails);
         /**
          * @brief Gets whether or not to embed chapters.
          * @return True to embed chapters, else false
@@ -274,8 +284,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::filesystem::path m_cookiesPath;
         bool m_youTubeSponsorBlock;
         bool m_embedMetadata;
-        bool m_cropAudioThumbnails;
         bool m_removeSourceData;
+        bool m_embedThumbnails;
+        bool m_cropAudioThumbnails;
         bool m_embedChapters;
         bool m_embedSubtitles;
         int m_postprocessingThreads;

@@ -24,43 +24,55 @@
 <p>Denne seksjonen tar for seg alle innstillingene for konvertering i <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Bygg inn metadata</title>
-		<p>Hvis dette er på, vil Parabolic forsøke å legge ved relevante data (tittel, sjanger, miniatyrbilde, osv.) i filen.</p>
-		<note style="advanced">
-			<p>Standard: på</p>
-		</note>
-    </item>
     <item>
-		<title>Bygg inn kapitler</title>
-		<p>Hvis dette er på, vil Parabolic forsøke å legge ved informasjon om kapitler i videoen.</p>
-		<note style="advanced">
-			<p>Standard: av</p>
-		</note>
-	</item>
-    <item>
-        <title>Bygg inn undertekster</title>
-        <p>Hvis dette er av eller innebyggingen mislykkes, vil nedlastede undertekster lagres som en egen fil.</p>
+        <title>Bygg inn metadata</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Standard: på</p>
         </note>
     </item>
     <item>
-		<title>Kvadratiske miniatyrbilder</title>
-		<p>Hvis dette er på, vil Parabolic beskjære miniatyrbilder slik at de blir kvadratiske.</p>
-        <p>Denne innstillingen kan bare endres hvis «Bygg inn metadata» er på.</p>
-		<note style="advanced">
-			<p>Standard: av</p>
-		</note>
+        <title>Fjern kildedata</title>
+        <p>Hvis dette er på, vil Parabolic fjerne alle metadata om kilden til videoen, for eksempel nettadresser.</p>
+        <p>Felter som fjernes:<code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> og <code>handler_name</code> på hver nedlasting.</p>
+        <note>
+            <p>Denne innstillingen kan bare endres hvis «Bygg inn metadata» er på.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: av</p>
+        </note>
     </item>
     <item>
-		<title>Fjern kildedata</title>
-		<p>Hvis dette er på, vil Parabolic fjerne alle metadata om kilden til videoen, for eksempel nettadresser.</p>
-        <p>Felter som fjernes:<code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> og <code>handler_name</code> på hver nedlasting.</p>
-        <p>Denne innstillingen kan bare endres hvis «Bygg inn metadata» er på.</p>
-		<note style="advanced">
-			<p>Standard: av</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Standard: på</p>
+        </note>
+    </item>
+    <item>
+        <title>Kvadratiske miniatyrbilder</title>
+        <p>Hvis dette er på, vil Parabolic beskjære miniatyrbilder slik at de blir kvadratiske.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: av</p>
+        </note>
+    </item>
+    <item>
+        <title>Bygg inn kapitler</title>
+        <p>Hvis dette er på, vil Parabolic forsøke å legge ved informasjon om kapitler i videoen.</p>
+        <note style="advanced">
+            <p>Standard: av</p>
+        </note>
+    </item>
+    <item>
+        <title>Bygg inn undertekster</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Standard: på</p>
+        </note>
     </item>
     <item>
         <title>Behandlingstråder</title>

@@ -90,14 +90,19 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->btnSelectCookiesFile->setText(_("Select Cookies File"));
         m_ui->btnClearCookiesFile->setText(_("Clear Cookies File"));
         m_ui->lblEmbedMetadata->setText(_("Embed Metadata"));
-        m_ui->lblEmbedSubtitles->setText(_("Embed Subtitles"));
-        m_ui->lblEmbedChapters->setText(_("Embed Chapters"));
-        m_ui->lblCropAudioThumbnails->setText(_("Crop Audio Thumbnails"));
-        m_ui->lblCropAudioThumbnails->setToolTip(_("If enabled, Parabolic will crop the thumbnails of audio files to squares."));
-        m_ui->chkCropAudioThumbnails->setToolTip(_("If enabled, Parabolic will crop the thumbnails of audio files to squares."));
         m_ui->lblRemoveSourceData->setText(_("Remove Source Data"));
         m_ui->lblRemoveSourceData->setToolTip(_("If enabled, Parabolic will clear metadata fields containing identifying download information."));
         m_ui->chkRemoveSourceData->setToolTip(_("If enabled, Parabolic will clear metadata fields containing identifying download information."));
+        m_ui->lblEmbedThumbnails->setText(_("Embed Thumbnails"));
+        m_ui->lblEmbedThumbnails->setToolTip(_("If the file type does not support embedding, the thumbnail will be written to a separate image file."));
+        m_ui->chkEmbedThumbnails->setToolTip(_("If the file type does not support embedding, the thumbnail will be written to a separate image file."));
+        m_ui->lblCropAudioThumbnails->setText(_("Crop Audio Thumbnails"));
+        m_ui->lblCropAudioThumbnails->setToolTip(_("If enabled, Parabolic will crop the thumbnails of audio files to squares."));
+        m_ui->chkCropAudioThumbnails->setToolTip(_("If enabled, Parabolic will crop the thumbnails of audio files to squares."));
+        m_ui->lblEmbedChapters->setText(_("Embed Chapters"));
+        m_ui->lblEmbedSubtitles->setText(_("Embed Subtitles"));
+        m_ui->lblEmbedSubtitles->setToolTip(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file."));
+        m_ui->chkEmbedSubtitles->setToolTip(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file."));
         m_ui->lblPostprocessingThreads->setText(_("Postprocessing Threads"));
         for(int i = 1; i <= m_controller->getMaxPostprocessingThreads(); i++)
         {
@@ -132,14 +137,15 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->txtCookiesFile->setText(QString::fromStdString(options.getCookiesPath().filename().string()));
         m_ui->txtCookiesFile->setToolTip(QString::fromStdString(options.getCookiesPath().string()));
         m_ui->chkEmbedMetadata->setChecked(options.getEmbedMetadata());
-        m_ui->chkEmbedSubtitles->setChecked(options.getEmbedSubtitles());
-        m_ui->chkEmbedChapters->setChecked(options.getEmbedChapters());
-        m_ui->lblCropAudioThumbnails->setEnabled(options.getEmbedMetadata());
-        m_ui->chkCropAudioThumbnails->setEnabled(options.getEmbedMetadata());
-        m_ui->chkCropAudioThumbnails->setChecked(options.getCropAudioThumbnails());
+        m_ui->chkRemoveSourceData->setChecked(options.getRemoveSourceData());
         m_ui->lblRemoveSourceData->setEnabled(options.getEmbedMetadata());
         m_ui->chkRemoveSourceData->setEnabled(options.getEmbedMetadata());
-        m_ui->chkRemoveSourceData->setChecked(options.getRemoveSourceData());
+        m_ui->chkEmbedThumbnails->setChecked(options.getEmbedThumbnails());
+        m_ui->chkCropAudioThumbnails->setChecked(options.getCropAudioThumbnails());
+        m_ui->lblCropAudioThumbnails->setEnabled(options.getEmbedThumbnails());
+        m_ui->chkCropAudioThumbnails->setEnabled(options.getEmbedThumbnails());
+        m_ui->chkEmbedChapters->setChecked(options.getEmbedChapters());
+        m_ui->chkEmbedSubtitles->setChecked(options.getEmbedSubtitles());
         m_ui->cmbPostprocessingThreads->setCurrentIndex(options.getPostprocessingThreads() - 1);
         m_ui->chkUseAria->setChecked(options.getUseAria());
         m_ui->numAriaMaxConnectionsPerServer->setValue(options.getAriaMaxConnectionsPerServer());
@@ -159,6 +165,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsPage::selectCookiesFile);
         connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsPage::clearCookiesFile);
         connect(m_ui->chkEmbedMetadata, &QCheckBox::toggled, this, &SettingsPage::onEmbedMetadataChanged);
+        connect(m_ui->chkEmbedThumbnails, &QCheckBox::toggled, this, &SettingsPage::onEmbedThumbnailsChanged);
         m_ui->tabs->setCurrentIndex(0);
     }
     
@@ -207,10 +214,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         options.setCookiesBrowser(static_cast<Browser>(m_ui->cmbCookiesBrowser->currentIndex()));
         options.setCookiesPath(m_ui->txtCookiesFile->toolTip().toStdString());
         options.setEmbedMetadata(m_ui->chkEmbedMetadata->isChecked());
-        options.setEmbedSubtitles(m_ui->chkEmbedSubtitles->isChecked());
-        options.setEmbedChapters(m_ui->chkEmbedChapters->isChecked());
-        options.setCropAudioThumbnails(m_ui->chkCropAudioThumbnails->isChecked());
         options.setRemoveSourceData(m_ui->chkRemoveSourceData->isChecked());
+        options.setEmbedThumbnails(m_ui->chkEmbedThumbnails->isChecked());
+        options.setCropAudioThumbnails(m_ui->chkCropAudioThumbnails->isChecked());
+        options.setEmbedChapters(m_ui->chkEmbedChapters->isChecked());
+        options.setEmbedSubtitles(m_ui->chkEmbedSubtitles->isChecked());
         options.setPostprocessingThreads(m_ui->cmbPostprocessingThreads->currentIndex() + 1);
         options.setUseAria(m_ui->chkUseAria->isChecked());
         options.setAriaMaxConnectionsPerServer(m_ui->numAriaMaxConnectionsPerServer->value());
@@ -239,9 +247,13 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void SettingsPage::onEmbedMetadataChanged(bool checked)
     {
-        m_ui->lblCropAudioThumbnails->setEnabled(checked);
-        m_ui->chkCropAudioThumbnails->setEnabled(checked);
         m_ui->lblRemoveSourceData->setEnabled(checked);
         m_ui->chkRemoveSourceData->setEnabled(checked);
+    }
+
+    void SettingsPage::onEmbedThumbnailsChanged(bool checked)
+    {
+        m_ui->lblCropAudioThumbnails->setEnabled(checked);
+        m_ui->chkCropAudioThumbnails->setEnabled(checked);
     }
 }

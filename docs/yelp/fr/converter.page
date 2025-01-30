@@ -18,43 +18,55 @@
 <p>Cette page explique toutes les options permettant de configurer le convertisseur dans les préférences de <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Inclure les métadonnées</title>
-		<p>Si cette option est activée, Parabolic inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…) et sa vignette, si disponibles.</p>
-		<note style="advanced">
-			<p>Par défaut : Activée</p>
-		</note>
-    </item>
     <item>
-		<title>Inclure les chapitres</title>
-		<p>Si cette option est activée, Parabolic inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
-	</item>
-    <item>
-        <title>Inclure les sous-titres</title>
-        <p>Si cette option est désactivée ou si l’inclusion échoue, les sous-titres téléchargés seront enregistrés dans un fichier séparé.</p>
+        <title>Inclure les métadonnées</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
     </item>
     <item>
-		<title>Rogner les vignettes des fichiers audio</title>
-		<p>Si cette option est activée, Parabolic découpera la vignette des fichiers audio pour obtenir une résolution carrée.</p>
-        <p>Cette option est configurable uniquement si l’<code>inclusion des métadonnées</code> est activée.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
+        <title>Retirer les données sur la source</title>
+        <p>Si cette option est activée, Parabolic effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
+        <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
+        <note>
+            <p>Cette option est configurable uniquement si l’<code>inclusion des métadonnées</code> est activée.</p>
+        </note>
+        <note style="advanced">
+            <p>Par défaut : Désactivée</p>
+        </note>
     </item>
     <item>
-		<title>Retirer les données sur la source</title>
-		<p>Si cette option est activée, Parabolic effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
-        <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
-        <p>Cette option est configurable uniquement si l’<code>inclusion des métadonnées</code> est activée.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Par défaut : Activée</p>
+        </note>
+    </item>
+    <item>
+        <title>Rogner les vignettes des fichiers audio</title>
+        <p>Si cette option est activée, Parabolic découpera la vignette des fichiers audio pour obtenir une résolution carrée.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Par défaut : Désactivée</p>
+        </note>
+    </item>
+    <item>
+        <title>Inclure les chapitres</title>
+        <p>Si cette option est activée, Parabolic inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
+        <note style="advanced">
+            <p>Par défaut : Désactivée</p>
+        </note>
+    </item>
+    <item>
+        <title>Inclure les sous-titres</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Par défaut : Activée</p>
+        </note>
     </item>
     <item>
         <title>Fils de post-traitement</title>

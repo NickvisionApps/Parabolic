@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-01-28 10:48-0500\n"
+"POT-Creation-Date: 2025-01-30 13:03-0500\n"
 "PO-Revision-Date: 2024-12-25 15:35+0000\n"
 "Last-Translator: Hultru <fgg-97@bk.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -73,8 +73,8 @@ msgstr ""
 "загрузки не будет отображаться в пользовательском интерфейсе."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
-#: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
+#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
+#: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
 #: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
@@ -161,74 +161,29 @@ msgstr "Встраивать метаданные"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:26
+#, fuzzy
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
-"genre, etc...) and thumbnail if available."
+"genre, etc...) if available."
 msgstr ""
 "Если включено, Parabolic будет встраивать теги в медиа файл (заголовок, "
 "жанр, и т.д.), а также миниатюру, если она доступна."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:41
-#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
-#: docs/yelp/C/interface.page:49
+#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
+#: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
+#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
+#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "По умолчанию: Включено"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:32
-msgid "Embed Chapters"
-msgstr "Встраивать главы"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:33
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"Если включено и доступны данные о метках глав, Parabolic будет добавлять их "
-"в файл."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:39
-msgid "Embed Subtitles"
-msgstr "Встраивать субтитры"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:40
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
-msgstr ""
-"Если выключено, или если встраивание не удастся, загруженные субтитры будут "
-"сохранены отдельными файлами."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:46
-msgid "Crop Audio Thumbnails"
-msgstr "Обрезать миниатюры для аудио"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:47
-msgid ""
-"If enabled, Parabolic will crop thumbnails for audio files to be a square "
-"resolution."
-msgstr ""
-"Если этот параметр включен, Parabolic будет обрезать миниатюры аудиофайлов "
-"до квадратного разрешения."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
-msgid "This option is only configurable if <code>Embed Metadata</code> is on."
-msgstr "Доступно только если <code>Встраивание метаданных</code> включено."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "Удалить метаданные об источнике"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:55
+#: docs/yelp/C/converter.page:33
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
@@ -237,7 +192,7 @@ msgstr ""
 "информацию, по которой можно отследить источник файла."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:56
+#: docs/yelp/C/converter.page:34
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
@@ -247,13 +202,92 @@ msgstr ""
 "code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> "
 "в каждой дорожке."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:36
+msgid "This option is only configurable if <code>Embed Metadata</code> is on."
+msgstr "Доступно только если <code>Встраивание метаданных</code> включено."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:63
+#: docs/yelp/C/converter.page:43
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "Встраивать субтитры"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:44
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will embed a media with its thumbnail if available."
+msgstr ""
+"Если включено и доступны данные о метках глав, Parabolic будет добавлять их "
+"в файл."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:45
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Если выключено, или если встраивание не удастся, загруженные субтитры будут "
+"сохранены отдельными файлами."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:51
+msgid "Crop Audio Thumbnails"
+msgstr "Обрезать миниатюры для аудио"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:52
+msgid ""
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
+msgstr ""
+"Если этот параметр включен, Parabolic будет обрезать миниатюры аудиофайлов "
+"до квадратного разрешения."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:54
+#, fuzzy
+msgid ""
+"This option is only configurable if <code>Embed Thumbnails</code> is on."
+msgstr "Доступно только если <code>Встраивание метаданных</code> включено."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:61
+msgid "Embed Chapters"
+msgstr "Встраивать главы"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:62
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"Если включено и доступны данные о метках глав, Parabolic будет добавлять их "
+"в файл."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:68
+msgid "Embed Subtitles"
+msgstr "Встраивать субтитры"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:69
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to a separate file."
+msgstr ""
+"Если выключено, или если встраивание не удастся, загруженные субтитры будут "
+"сохранены отдельными файлами."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:75
 msgid "Postprocessing Threads"
 msgstr "Потоки постобработки"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:64
+#: docs/yelp/C/converter.page:76
 msgid ""
 "The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
 "use for each download."
@@ -262,7 +296,7 @@ msgstr ""
 "использовать для каждой загрузки."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:66
+#: docs/yelp/C/converter.page:78
 msgid "Default: The max number of threads available on the system"
 msgstr "По умолчанию: максимальное количество потоков, доступных в системе"
 

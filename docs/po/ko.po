@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-01-28 10:48-0500\n"
+"POT-Creation-Date: 2025-01-30 13:03-0500\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -70,8 +70,8 @@ msgstr ""
 "에 표시되지 않습니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
-#: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
+#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
+#: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
 #: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
@@ -159,73 +159,29 @@ msgstr "메타데이터 삽입"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:26
+#, fuzzy
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
-"genre, etc...) and thumbnail if available."
+"genre, etc...) if available."
 msgstr ""
 "활성화되면, Parabolic은 미디어에 관련 정보를 (제목, 장르 등)과 사용 가능한 경"
 "우 썸네일을 태그합니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:41
-#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
-#: docs/yelp/C/interface.page:49
+#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
+#: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
+#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
+#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "기본값: 켬"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:32
-msgid "Embed Chapters"
-msgstr "챕터 포함"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:33
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"활성화되면, Parabolic은 사용 가능한 경우 미디어에 챕터 정보를 태그합니다."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:39
-msgid "Embed Subtitles"
-msgstr "자막 삽입"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:40
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
-msgstr ""
-"비활성화되거나 포함에 실패하면, 다운로드한 자막은 별도의 파일로 저장됩니다."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:46
-msgid "Crop Audio Thumbnails"
-msgstr "오디오 썸네일 자르기"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:47
-msgid ""
-"If enabled, Parabolic will crop thumbnails for audio files to be a square "
-"resolution."
-msgstr ""
-"활성화되면, Parabolic은 오디오 파일의 썸네일을 정사각형 해상도로 자릅니다."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
-msgid "This option is only configurable if <code>Embed Metadata</code> is on."
-msgstr ""
-"이 옵션은 <code>메타데이터 포함</code>이 활성화된 경우에만 설정할 수 있습니"
-"다."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "원본 데이터 제거"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:55
+#: docs/yelp/C/converter.page:33
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
@@ -234,7 +190,7 @@ msgstr ""
 "이터 필드를 지웁니다."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:56
+#: docs/yelp/C/converter.page:34
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
@@ -243,13 +199,91 @@ msgstr ""
 "지워지는 필드: 각 스트림에서 <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> 및 <code>handler_name</code>입니다."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:36
+msgid "This option is only configurable if <code>Embed Metadata</code> is on."
+msgstr ""
+"이 옵션은 <code>메타데이터 포함</code>이 활성화된 경우에만 설정할 수 있습니"
+"다."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:63
+#: docs/yelp/C/converter.page:43
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "자막 삽입"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:44
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will embed a media with its thumbnail if available."
+msgstr ""
+"활성화되면, Parabolic은 사용 가능한 경우 미디어에 챕터 정보를 태그합니다."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:45
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"비활성화되거나 포함에 실패하면, 다운로드한 자막은 별도의 파일로 저장됩니다."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:51
+msgid "Crop Audio Thumbnails"
+msgstr "오디오 썸네일 자르기"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:52
+msgid ""
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
+msgstr ""
+"활성화되면, Parabolic은 오디오 파일의 썸네일을 정사각형 해상도로 자릅니다."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:54
+#, fuzzy
+msgid ""
+"This option is only configurable if <code>Embed Thumbnails</code> is on."
+msgstr ""
+"이 옵션은 <code>메타데이터 포함</code>이 활성화된 경우에만 설정할 수 있습니"
+"다."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:61
+msgid "Embed Chapters"
+msgstr "챕터 포함"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:62
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"활성화되면, Parabolic은 사용 가능한 경우 미디어에 챕터 정보를 태그합니다."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:68
+msgid "Embed Subtitles"
+msgstr "자막 삽입"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:69
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to a separate file."
+msgstr ""
+"비활성화되거나 포함에 실패하면, 다운로드한 자막은 별도의 파일로 저장됩니다."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:75
 msgid "Postprocessing Threads"
 msgstr "후처리 스레드"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:64
+#: docs/yelp/C/converter.page:76
 msgid ""
 "The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
 "use for each download."
@@ -258,7 +292,7 @@ msgstr ""
 "니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:66
+#: docs/yelp/C/converter.page:78
 msgid "Default: The max number of threads available on the system"
 msgstr "기본값: 시스템에서 사용 가능한 최대 스레드 수"
 

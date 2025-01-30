@@ -55,15 +55,14 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2025.1.3" date="2025-01-28">
+    <release version="2025.1.4-next" date="2025-01-29">
       <description translate="no">
-        <p>- Improved progress and log reporting of downloads</p>
-        <p>- Fixed an issue where removing source data from metadata was not working</p>
-        <p>- Fixed an issue where a media's track number was not included in its metadata for playlist downloads</p>
-        <p>- Fixed an issue where downloading media with a specified time frame did not work on Flatpak</p>
-        <p>- Fixed an issue where the postprocessing threads setting had no effect on Flatpak</p>
-        <p>- Fixed an issue where the video and audio format comboboxes were ellipsed on GNOME</p>
-        <p>- Updated yt-dlp</p>
+        <p>- Added a new Embed Thumbnails option in Preferences to enable/disable Parabolic's downloading of thumbnails separate from metadata</p>
+        <p>- Added a disclaimer about embedding thumbnails/subtitles when using generic file types</p>
+        <p>- Fixed an issue where the incorrect previous video and/or audio format was selected</p>
+        <p>- Fixed an issue where chapters were embedded even if the option was disabled</p>
+        <p>- Fixed an issue where splitting media by chapters would result in incorrect media lengths in the split files</p>
+        <p>- Fixed an issue where video and audio formats were not selectable on GNOME</p>
       </description>
     </release>
   </releases>

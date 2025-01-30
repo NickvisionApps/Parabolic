@@ -18,18 +18,19 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 {
     AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, DataFileManager& dataFileManager, Keyring::Keyring& keyring)
         : m_downloadManager{ downloadManager },
+        m_configuration{ dataFileManager.get<Configuration>("config") },
         m_previousOptions{ dataFileManager.get<PreviousDownloadOptions>("prev") },
         m_keyring{ keyring },
         m_urlInfo{ std::nullopt },
-        m_credential{ std::nullopt },
-        m_downloadImmediatelyAfterValidation{ dataFileManager.get<Configuration>("config").getDownloadImmediatelyAfterValidation() }
+        m_credential{ std::nullopt }
     {
         
     }
 
     AddDownloadDialogController::~AddDownloadDialogController()
     {
-        m_previousOptions.save();   
+        m_configuration.save();
+        m_previousOptions.save();
     }
 
     Event<ParamEventArgs<bool>>& AddDownloadDialogController::urlValidated()
@@ -52,9 +53,19 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return names;
     }
 
+    bool AddDownloadDialogController::getShowGenericDisclaimer() const
+    {
+        return m_configuration.getShowGenericDisclaimer();
+    }
+
+    void AddDownloadDialogController::setShowGenericDisclaimer(bool showDisclaimer)
+    {
+        m_configuration.setShowGenericDisclaimer(showDisclaimer);
+    }
+
     bool AddDownloadDialogController::getDownloadImmediatelyAfterValidation() const
     {
-        return m_downloadImmediatelyAfterValidation;
+        return m_configuration.getDownloadImmediatelyAfterValidation();
     }
 
     bool AddDownloadDialogController::isUrlValid() const
@@ -120,6 +131,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::vector<std::string> formats;
         m_videoFormatMap.clear();
+        if(previousIndex)
+        {
+            *previousIndex = 0;
+        }
         if(!m_urlInfo)
         {
             return formats;
@@ -149,6 +164,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::vector<std::string> formats;
         m_audioFormatMap.clear();
+        if(previousIndex)
+        {
+            *previousIndex = 0;
+        }
         if(!m_urlInfo)
         {
             return formats;

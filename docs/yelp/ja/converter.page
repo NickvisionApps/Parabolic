@@ -24,43 +24,55 @@
 <p>このページでは <app>Parabolic</app> でコンバーターを設定するためのすべてオプションについて説明します。</p>
 
 <terms>
-	<item>
-		<title>メタデータを埋め込む</title>
-		<p>有効であれば、Parabolic はメディアについての情報（タイトル、ジャンルなど）とサムネイルをファイルにタグ付けします。</p>
-		<note style="advanced">
-			<p>デフォルト: オン</p>
-		</note>
-    </item>
     <item>
-		<title>チャプター（章）を埋め込む</title>
-		<p>有効であれば、利用可能であれば、Parabolic はメディアにチャプター（章）をタグ付けします。</p>
-		<note style="advanced">
-			<p>デフォルト: オフ</p>
-		</note>
-	</item>
-    <item>
-        <title>字幕を埋め込む</title>
-        <p>無効化されていたり、埋め込みに失敗したら、ダウンロードされた字幕は、別のファイルに保存されます。</p>
+        <title>メタデータを埋め込む</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
     </item>
     <item>
-		<title>オーディオサムネイルを整形</title>
-		<p>有効であれば、Parabolic はオーディオファイルのサムネイル画像を正方形に切り抜きます。</p>
-        <p>このオプションは <code>メタデータを埋め込む</code> が有効な場合のみ設定可能です。</p>
-		<note style="advanced">
-			<p>デフォルト: オフ</p>
-		</note>
+        <title>ダウンロード元のデータを削除</title>
+        <p>有効であれば、Parabolic はメディアのソースを特定できる URL などのメタデータを削除します。</p>
+        <p>これらのメタデータ欄: <code>comment</code>、<code>description</code>、<code>synopsis</code>、<code>purl</code>、<code>handler_name</code> は初めから埋め込まれません。</p>
+        <note>
+            <p>このオプションは <code>メタデータを埋め込む</code> が有効な場合のみ設定可能です。</p>
+        </note>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
     </item>
     <item>
-		<title>ダウンロード元のデータを削除</title>
-		<p>有効であれば、Parabolic はメディアのソースを特定できる URL などのメタデータを削除します。</p>
-        <p>これらのメタデータ欄: <code>comment</code>、<code>description</code>、<code>synopsis</code>、<code>purl</code>、<code>handler_name</code> は初めから埋め込まれません。</p>
-        <p>このオプションは <code>メタデータを埋め込む</code> が有効な場合のみ設定可能です。</p>
-		<note style="advanced">
-			<p>デフォルト: オフ</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>デフォルト: オン</p>
+        </note>
+    </item>
+    <item>
+        <title>オーディオサムネイルを整形</title>
+        <p>有効であれば、Parabolic はオーディオファイルのサムネイル画像を正方形に切り抜きます。</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
+    </item>
+    <item>
+        <title>チャプター（章）を埋め込む</title>
+        <p>有効であれば、利用可能であれば、Parabolic はメディアにチャプター（章）をタグ付けします。</p>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
+    </item>
+    <item>
+        <title>字幕を埋め込む</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>デフォルト: オン</p>
+        </note>
     </item>
     <item>
         <title>ポストプロセッサのスレッド</title>
