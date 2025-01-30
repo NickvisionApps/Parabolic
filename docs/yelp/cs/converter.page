@@ -24,43 +24,55 @@
 <p>Na této stránce najdete vysvětlení všech možností konfigurace konvertoru v předvolbách v aplikaci <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Vložit metadata</title>
-		<p>Pokud je tato funkce povolena, aplikace Parabolic označí médium příslušnými informacemi (název, žánr atd.) a miniaturou, pokud je k dispozici.</p>
-		<note style="advanced">
-			<p>Výchozí: zapnuto</p>
-		</note>
-    </item>
     <item>
-		<title>Vložit kapitoly</title>
-		<p>Pokud je tato funkce povolena, aplikace Parabolic označí média informacemi o kapitolách, pokud jsou dostupné.</p>
-		<note style="advanced">
-			<p>Výchozí: vypnuto</p>
-		</note>
-	</item>
-    <item>
-        <title>Vložit titulky</title>
-        <p>Pokud je zakázáno nebo vložení selže, budou stažené titulky uloženy do odděleného souboru.</p>
+        <title>Vložit metadata</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
         </note>
     </item>
     <item>
-		<title>Oříznout miniatury zvuku</title>
-		<p>Pokud je tato funkce povolena, aplikace Parabolic ořízne miniatury zvukových souborů tak, aby měly čtvercové rozlišení.</p>
-        <p>Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vložit metadata</code>.</p>
-		<note style="advanced">
-			<p>Výchozí: vypnuto</p>
-		</note>
+        <title>Odebrat zdrojová data</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic vymaže pole s metadaty obsahující URL a další identifikující informace o zdroji média.</p>
+        <p>Pole, která budou vymazána: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> a <code>handler_name</code> v každém streamu.</p>
+        <note>
+            <p>Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vložit metadata</code>.</p>
+        </note>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
     </item>
     <item>
-		<title>Odebrat zdrojová data</title>
-		<p>Pokud je tato funkce povolena, aplikace Parabolic vymaže pole s metadaty obsahující URL a další identifikující informace o zdroji média.</p>
-        <p>Pole, která budou vymazána: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> a <code>handler_name</code> v každém streamu.</p>
-        <p>Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vložit metadata</code>.</p>
-		<note style="advanced">
-			<p>Výchozí: vypnuto</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Oříznout miniatury zvuku</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic ořízne miniatury zvukových souborů tak, aby měly čtvercové rozlišení.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Vložit kapitoly</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic označí média informacemi o kapitolách, pokud jsou dostupné.</p>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Vložit titulky</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
     </item>
     <item>
         <title>Zpracovávání vláken</title>

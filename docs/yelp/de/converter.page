@@ -18,43 +18,55 @@
 <p>Diese Seite erklärt alle Optionen zur Konfiguration des Konverters in den Einstellungen in <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Metadaten einbetten</title>
-		<p>Wenn diese Option aktiviert ist, markiert Parabolic Medien mit relevanten Informationen (Titel, Genre, etc...) und einem Thumbnail, falls vorhanden.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Ein</p>
-		</note>
-    </item>
     <item>
-		<title>Kapitel einbetten</title>
-		<p>Wenn aktiviert, versieht Parabolic ein Medium mit Kapitelinformationen, falls vorhanden.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Aus</p>
-		</note>
-	</item>
-    <item>
-        <title>Untertitel einbetten</title>
-        <p>Wenn deaktiviert oder wenn das Einbetten fehlschlägt, werden die heruntergeladenen Untertitel in einer separaten Datei gespeichert.</p>
+        <title>Metadaten einbetten</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Standardeinstellung: Ein</p>
         </note>
     </item>
     <item>
-		<title>Audio-Miniaturbilder zuschneiden</title>
-		<p>Wenn aktiviert, beschneidet Parabolic die Miniaturansichten für Audiodateien auf eine quadratische Auflösung.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Aus</p>
-		</note>
+        <title>Quelldaten entfernen</title>
+        <p>Wenn aktiviert, löscht Parabolic Metadatenfelder, die die URL und andere identifizierende Informationen der Medienquelle enthalten.</p>
+        <p>Felder, die gelöscht werden: <code>Kommentar</code>, <code>Beschreibung</code>, <code>Synopse</code>, <code>Purl</code> und <code>handler_name</code> in jedem Stream.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
     </item>
     <item>
-		<title>Quelldaten entfernen</title>
-		<p>Wenn aktiviert, löscht Parabolic Metadatenfelder, die die URL und andere identifizierende Informationen der Medienquelle enthalten.</p>
-        <p>Felder, die gelöscht werden: <code>Kommentar</code>, <code>Beschreibung</code>, <code>Synopse</code>, <code>Purl</code> und <code>handler_name</code> in jedem Stream.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Aus</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Ein</p>
+        </note>
+    </item>
+    <item>
+        <title>Audio-Miniaturbilder zuschneiden</title>
+        <p>Wenn aktiviert, beschneidet Parabolic die Miniaturansichten für Audiodateien auf eine quadratische Auflösung.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
+    </item>
+    <item>
+        <title>Kapitel einbetten</title>
+        <p>Wenn aktiviert, versieht Parabolic ein Medium mit Kapitelinformationen, falls vorhanden.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
+    </item>
+    <item>
+        <title>Untertitel einbetten</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Ein</p>
+        </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>

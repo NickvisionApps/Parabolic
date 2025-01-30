@@ -109,8 +109,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setCookiesPath(m_json["CookiesPath"].is_string() ? m_json["CookiesPath"].as_string().c_str() : "");
         options.setYouTubeSponsorBlock(m_json["YouTubeSponsorBlock"].is_bool() ? m_json["YouTubeSponsorBlock"].as_bool() : false);
         options.setEmbedMetadata(m_json["EmbedMetadata"].is_bool() ? m_json["EmbedMetadata"].as_bool() : true);
-        options.setCropAudioThumbnails(m_json["CropAudioThumbnails"].is_bool() ? m_json["CropAudioThumbnails"].as_bool() : false);
         options.setRemoveSourceData(m_json["RemoveSourceData"].is_bool() ? m_json["RemoveSourceData"].as_bool() : false);
+        options.setEmbedThumbnails(m_json["EmbedThumbnails"].is_bool() ? m_json["EmbedThumbnails"].as_bool() : true);
+        options.setCropAudioThumbnails(m_json["CropAudioThumbnails"].is_bool() ? m_json["CropAudioThumbnails"].as_bool() : false);
         options.setEmbedChapters(m_json["EmbedChapters"].is_bool() ? m_json["EmbedChapters"].as_bool() : false);
         options.setEmbedSubtitles(m_json["EmbedSubtitle"].is_bool() ? m_json["EmbedSubtitle"].as_bool() : true);
         options.setPostprocessingThreads(m_json["PostprocessingThreads"].is_int64() ? static_cast<int>(m_json["PostprocessingThreads"].as_int64()) : static_cast<int>(std::thread::hardware_concurrency()));
@@ -136,8 +137,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["CookiesPath"] = downloaderOptions.getCookiesPath().string();
         m_json["YouTubeSponsorBlock"] = downloaderOptions.getYouTubeSponsorBlock();
         m_json["EmbedMetadata"] = downloaderOptions.getEmbedMetadata();
-        m_json["CropAudioThumbnails"] = downloaderOptions.getCropAudioThumbnails();
         m_json["RemoveSourceData"] = downloaderOptions.getRemoveSourceData();
+        m_json["EmbedThumbnails"] = downloaderOptions.getEmbedThumbnails();
+        m_json["CropAudioThumbnails"] = downloaderOptions.getCropAudioThumbnails();
         m_json["EmbedChapters"] = downloaderOptions.getEmbedChapters();
         m_json["EmbedSubtitle"] = downloaderOptions.getEmbedSubtitles();
         m_json["PostprocessingThreads"] = downloaderOptions.getPostprocessingThreads();

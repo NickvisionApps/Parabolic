@@ -18,43 +18,55 @@
 <p>העמוד הזה מסביר את כל האפשרויות להגדרת הממיר בהעדפות של <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>הטמעת נתוני על</title>
-		<p>אם האפשרות פעילה, Parabolic יתייג מדיה עם הפרטים המתאימים (כותרת, סגנון וכו׳) ויוסיף תמונות ממוזערות אם יש.</p>
-		<note style="advanced">
-			<p>ברירת מחדל: פעיל</p>
-		</note>
-    </item>
     <item>
-		<title>הטמעת פרקים</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
-	</item>
-    <item>
-        <title>הטמעת כתוביות</title>
-        <p>אם האפשרות מושבתת או שההטמעה נכשלה, הורדת הכתוביות תישמר לקובץ נפרד.</p>
+        <title>הטמעת נתוני על</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>ברירת מחדל: פעיל</p>
         </note>
     </item>
     <item>
-		<title>חיתוך תמונה ממוזערה לשמע</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
+        <title>הסרת נתוני מקור</title>
+        <p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Default: Off</p>
+        </note>
     </item>
     <item>
-		<title>הסרת נתוני מקור</title>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>ברירת מחדל: פעיל</p>
+        </note>
+    </item>
+    <item>
+        <title>חיתוך תמונה ממוזערה לשמע</title>
+        <p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Default: Off</p>
+        </note>
+    </item>
+    <item>
+        <title>הטמעת פרקים</title>
+        <p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+        <note style="advanced">
+            <p>Default: Off</p>
+        </note>
+    </item>
+    <item>
+        <title>הטמעת כתוביות</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>ברירת מחדל: פעיל</p>
+        </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>

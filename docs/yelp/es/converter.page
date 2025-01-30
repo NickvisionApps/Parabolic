@@ -24,43 +24,55 @@
 <p>Esta página explica todas las opciones para configurar el Converter en las Preferencias de <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Incrustar metadatos</title>
-		<p>Si está activada, Parabolic etiquetará un medio con su información relevante (título, género, etc...) y una miniatura si está disponible.</p>
-		<note style="advanced">
-			<p>Predeterminado: Encendido</p>
-		</note>
-    </item>
     <item>
-		<title>Incrustar capítulos</title>
-		<p>Si está activada, Parabolic etiquetará un multimedia con la información del capítulo si está disponible.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
-	</item>
-    <item>
-        <title>Incrustar los subtítulos</title>
-        <p>Si se desactiva o si falla la incrustación, los subtítulos descargados se guardarán en un archivo aparte.</p>
+        <title>Incrustar metadatos</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
-		<title>Recortar miniaturas de audio</title>
-		<p>Si está activada, Parabolic recortará las miniaturas de los archivos de audio para que tengan una resolución cuadrada.</p>
-        <p>Esta opción solo es configurable si <code> Incrustar metadatos </code> está activado.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
+        <title>Eliminar los datos de origen</title>
+        <p>Si se activa, Parabolic borrará los campos de los metadatos que contienen una dirección URL y otra información de identificación de la fuente multimedia.</p>
+        <p>Campos que se borran: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> y <code>handler_name</code> en cada transmisión.</p>
+        <note>
+            <p>Esta opción solo es configurable si <code> Incrustar metadatos </code> está activado.</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: Apagado</p>
+        </note>
     </item>
     <item>
-		<title>Eliminar los datos de origen</title>
-		<p>Si se activa, Parabolic borrará los campos de los metadatos que contienen una dirección URL y otra información de identificación de la fuente multimedia.</p>
-        <p>Campos que se borran: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> y <code>handler_name</code> en cada transmisión.</p>
-        <p>Esta opción solo es configurable si <code> Incrustar metadatos </code> está activado.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
+    </item>
+    <item>
+        <title>Recortar miniaturas de audio</title>
+        <p>Si está activada, Parabolic recortará las miniaturas de los archivos de audio para que tengan una resolución cuadrada.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: Apagado</p>
+        </note>
+    </item>
+    <item>
+        <title>Incrustar capítulos</title>
+        <p>Si está activada, Parabolic etiquetará un multimedia con la información del capítulo si está disponible.</p>
+        <note style="advanced">
+            <p>Predeterminado: Apagado</p>
+        </note>
+    </item>
+    <item>
+        <title>Incrustar los subtítulos</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
     </item>
     <item>
         <title>Hilos de postprocesamiento</title>

@@ -37,11 +37,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"), static_cast<unsigned int>(options.getCookiesBrowser()));
         adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), options.getCookiesPath().filename().string().c_str());
         gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow"), options.getCookiesPath().string().c_str());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("embedMetadataRow"), options.getEmbedMetadata());
+        adw_expander_row_set_enable_expansion(m_builder.get<AdwExpanderRow>("embedMetadataRow"), options.getEmbedMetadata());
+        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("removeSourceDataRow"), options.getRemoveSourceData());
+        adw_expander_row_set_enable_expansion(m_builder.get<AdwExpanderRow>("embedThumbnailsRow"), options.getEmbedThumbnails());
+        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("cropAudioThumbnailRow"), options.getCropAudioThumbnails());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("embedChaptersRow"), options.getEmbedChapters());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("embedSubtitlesRow"), options.getEmbedSubtitles());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("cropAudioThumbnailRow"), options.getCropAudioThumbnails());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("removeSourceDataRow"), options.getRemoveSourceData());
         std::vector<std::string> postprocessingThreads;
         for(int i = 1; i <= m_controller->getMaxPostprocessingThreads(); i++)
         {
@@ -84,11 +85,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setProxyUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("proxyUrlRow")));
         options.setCookiesBrowser(static_cast<Browser>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"))));
         options.setCookiesPath(gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) ? gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) : "");
-        options.setEmbedMetadata(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedMetadataRow")));
+        options.setEmbedMetadata(adw_expander_row_get_enable_expansion(m_builder.get<AdwExpanderRow>("embedMetadataRow")));
+        options.setRemoveSourceData(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("removeSourceDataRow")));
+        options.setEmbedThumbnails(adw_expander_row_get_enable_expansion(m_builder.get<AdwExpanderRow>("embedThumbnailsRow")));
+        options.setCropAudioThumbnails(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("cropAudioThumbnailRow")));
         options.setEmbedChapters(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedChaptersRow")));
         options.setEmbedSubtitles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedSubtitlesRow")));
-        options.setCropAudioThumbnails(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("cropAudioThumbnailRow")));
-        options.setRemoveSourceData(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("removeSourceDataRow")));
         options.setPostprocessingThreads(static_cast<int>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("postprocessingThreadsRow"))) + 1);
         options.setUseAria(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("useAriaRow")));
         options.setAriaMaxConnectionsPerServer(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("ariaMaxConnectionsPerServerRow"))));

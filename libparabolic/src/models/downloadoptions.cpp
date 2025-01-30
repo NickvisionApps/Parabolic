@@ -132,6 +132,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setVideoFormat(const std::optional<Format>& videoFormat)
     {
         m_videoFormat = videoFormat;
+        if(m_fileType.isGeneric() && m_videoFormat)
+        {
+            std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_videoFormat->getExtension()) };
+            if(newFileType)
+            {
+                m_fileType = *newFileType;
+            }
+        }
     }
 
     const std::optional<Format>& DownloadOptions::getAudioFormat() const
@@ -142,6 +150,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setAudioFormat(const std::optional<Format>& audioFormat)
     {
         m_audioFormat = audioFormat;
+        std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_audioFormat->getExtension()) };
+        if(newFileType)
+        {
+            m_fileType = *newFileType;
+        }
     }
 
     const std::filesystem::path& DownloadOptions::getSaveFolder() const
@@ -342,21 +355,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(downloaderOptions.getEmbedMetadata())
         {
             arguments.push_back("--embed-metadata");
-            if(m_fileType.supportsThumbnails())
-            {
-                arguments.push_back("--embed-thumbnail");
-            }
-            else
-            {
-                arguments.push_back("--write-thumbnail");
-            }
-            arguments.push_back("--convert-thumbnails");
-            arguments.push_back("jpg");
-            if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
-            {
-                arguments.push_back("--postprocessor-args");
-                arguments.push_back("ThumbnailsConvertor:-vf crop=ih:ih");
-            }
             if(downloaderOptions.getRemoveSourceData())
             {
                 arguments.push_back("--parse-metadata");
@@ -372,6 +370,24 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 arguments.push_back("--parse-metadata");
                 arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
+            }
+        }
+        if(downloaderOptions.getEmbedThumbnails())
+        {
+            if(m_fileType.supportsThumbnails())
+            {
+                arguments.push_back("--embed-thumbnail");
+            }
+            else
+            {
+                arguments.push_back("--write-thumbnail");
+            }
+            arguments.push_back("--convert-thumbnails");
+            arguments.push_back("jpg");
+            if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
+            {
+                arguments.push_back("--postprocessor-args");
+                arguments.push_back("ThumbnailsConvertor:-vf crop=ih:ih");
             }
         }
         if(downloaderOptions.getEmbedChapters())

@@ -24,43 +24,55 @@
 <p>Эта страница поясняет все опции по настройке Конвертера в параметрах <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Встраивать метаданные</title>
-		<p>Если включено, Parabolic будет встраивать теги в медиа файл (заголовок, жанр, и т.д.), а также миниатюру, если она доступна.</p>
-		<note style="advanced">
-			<p>По умолчанию: Включено</p>
-		</note>
-    </item>
     <item>
-		<title>Встраивать главы</title>
-		<p>Если включено и доступны данные о метках глав, Parabolic будет добавлять их в файл.</p>
-		<note style="advanced">
-			<p>По умолчанию: Выключено</p>
-		</note>
-	</item>
-    <item>
-        <title>Встраивать субтитры</title>
-        <p>Если выключено, или если встраивание не удастся, загруженные субтитры будут сохранены отдельными файлами.</p>
+        <title>Встраивать метаданные</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>По умолчанию: Включено</p>
         </note>
     </item>
     <item>
-		<title>Обрезать миниатюры для аудио</title>
-		<p>Если этот параметр включен, Parabolic будет обрезать миниатюры аудиофайлов до квадратного разрешения.</p>
-        <p>Доступно только если <code>Встраивание метаданных</code> включено.</p>
-		<note style="advanced">
-			<p>По умолчанию: Выключено</p>
-		</note>
+        <title>Удалить метаданные об источнике</title>
+        <p>Если включено, Parabolic будет очищать метаданные, содержащие URL и другую информацию, по которой можно отследить источник файла.</p>
+        <p>Следующие поля будут удалены: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> в каждой дорожке.</p>
+        <note>
+            <p>Доступно только если <code>Встраивание метаданных</code> включено.</p>
+        </note>
+        <note style="advanced">
+            <p>По умолчанию: Выключено</p>
+        </note>
     </item>
     <item>
-		<title>Удалить метаданные об источнике</title>
-		<p>Если включено, Parabolic будет очищать метаданные, содержащие URL и другую информацию, по которой можно отследить источник файла.</p>
-        <p>Следующие поля будут удалены: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> в каждой дорожке.</p>
-        <p>Доступно только если <code>Встраивание метаданных</code> включено.</p>
-		<note style="advanced">
-			<p>По умолчанию: Выключено</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>По умолчанию: Включено</p>
+        </note>
+    </item>
+    <item>
+        <title>Обрезать миниатюры для аудио</title>
+        <p>Если этот параметр включен, Parabolic будет обрезать миниатюры аудиофайлов до квадратного разрешения.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>По умолчанию: Выключено</p>
+        </note>
+    </item>
+    <item>
+        <title>Встраивать главы</title>
+        <p>Если включено и доступны данные о метках глав, Parabolic будет добавлять их в файл.</p>
+        <note style="advanced">
+            <p>По умолчанию: Выключено</p>
+        </note>
+    </item>
+    <item>
+        <title>Встраивать субтитры</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>По умолчанию: Включено</p>
+        </note>
     </item>
     <item>
         <title>Потоки постобработки</title>

@@ -24,43 +24,55 @@
 <p>Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Konwersja w preferencjach w <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Zapisuj metadane w plikach</title>
-		<p>Po włączeniu, Parabolic będzie oznaczać multimedia odpowiednimi informacjami (tytułem, gatunkiem, itd.) i miniaturą, jeśli jest dostępna.</p>
-		<note style="advanced">
-			<p>Domyślnie: włączone</p>
-		</note>
-    </item>
     <item>
-		<title>Zapisuj rozdziały w plikach</title>
-		<p>Po włączeniu, Parabolic będzie oznaczać multimedia informacjami o rozdziałach, jeśli są dostępne.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
-	</item>
-    <item>
-        <title>Wbudowane napisy</title>
-        <p>Jeśli funkcja jest wyłączona lub osadzanie się nie powiedzie, pobrane napisy będą zapisane w osobnym pliku.</p>
+        <title>Zapisuj metadane w plikach</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
     <item>
-		<title>Przycinaj miniatury plików audio</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
+        <title>Usuń dane źródłowe</title>
+        <p>Po włączeniu tej opcji, Parabolic usunie pola metadanych zawierające adres URL i inne informacje identyfikujące źródło multimediów.</p>
+        <p>Pola, które są czyszczone: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> oraz <code>handler_name</code> w każdym strumieniu.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Domyślnie: wyłączone</p>
+        </note>
     </item>
     <item>
-		<title>Usuń dane źródłowe</title>
-		<p>Po włączeniu tej opcji, Parabolic usunie pola metadanych zawierające adres URL i inne informacje identyfikujące źródło multimediów.</p>
-        <p>Pola, które są czyszczone: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> oraz <code>handler_name</code> w każdym strumieniu.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Domyślnie: włączone</p>
+        </note>
+    </item>
+    <item>
+        <title>Przycinaj miniatury plików audio</title>
+        <p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Domyślnie: wyłączone</p>
+        </note>
+    </item>
+    <item>
+        <title>Zapisuj rozdziały w plikach</title>
+        <p>Po włączeniu, Parabolic będzie oznaczać multimedia informacjami o rozdziałach, jeśli są dostępne.</p>
+        <note style="advanced">
+            <p>Domyślnie: wyłączone</p>
+        </note>
+    </item>
+    <item>
+        <title>Wbudowane napisy</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Domyślnie: włączone</p>
+        </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>

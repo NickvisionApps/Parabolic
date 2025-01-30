@@ -18,43 +18,55 @@
 <p>Esta páxina explica todas as opcións para configurar o conversor nas Preferencias de <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Incorporar metadatos</title>
-		<p>Se está activado, Parabolic etiqueta un recurso con información relevante (título, xénero, etc.), así como unha miniatura se a houber.</p>
-		<note style="advanced">
-			<p>Predeterminado: Activado</p>
-		</note>
-    </item>
     <item>
-		<title>Incorporar capítulos</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
-		<note style="advanced">
-			<p>Predeterminado: Desactivado</p>
-		</note>
-	</item>
-    <item>
-        <title>Incorporar subtítulos</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <title>Incorporar metadatos</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Predeterminado: Activado</p>
         </note>
     </item>
     <item>
-		<title>Recortar miniaturas de son</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Predeterminado: Desactivado</p>
-		</note>
+        <title>Retirar datos da fonte</title>
+        <p>Se está activado, Parabolic limpa os campos de metadatos que conteñen o URL e outra información identificativa do recurso multimedia.</p>
+        <p>Campos que se limpan: <code>comentario</code>, <code>descrición</code>, <code>sinopse</code>, <code>purl</code> e <code>nome_do_xestor</code> de cada fluxo.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: Desactivado</p>
+        </note>
     </item>
     <item>
-		<title>Retirar datos da fonte</title>
-		<p>Se está activado, Parabolic limpa os campos de metadatos que conteñen o URL e outra información identificativa do recurso multimedia.</p>
-        <p>Campos que se limpan: <code>comentario</code>, <code>descrición</code>, <code>sinopse</code>, <code>purl</code> e <code>nome_do_xestor</code> de cada fluxo.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Predeterminado: Desactivado</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Predeterminado: Activado</p>
+        </note>
+    </item>
+    <item>
+        <title>Recortar miniaturas de son</title>
+        <p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: Desactivado</p>
+        </note>
+    </item>
+    <item>
+        <title>Incorporar capítulos</title>
+        <p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+        <note style="advanced">
+            <p>Predeterminado: Desactivado</p>
+        </note>
+    </item>
+    <item>
+        <title>Incorporar subtítulos</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Predeterminado: Activado</p>
+        </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>

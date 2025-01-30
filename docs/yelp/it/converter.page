@@ -18,43 +18,55 @@
 <p>Questa pagina spiega tutte le opzioni per configurare il convertitore nelle Preferenze in <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Incorpora metadati</title>
-		<p>Se abilitato, Parabolic taggherà un media con le sue informazioni rilevanti (titolo, genere, ecc...) e la miniatura se disponibile.</p>
-		<note style="advanced">
-			<p>Predefinito: attivato</p>
-		</note>
-    </item>
     <item>
-		<title>Includi i capitoli</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
-		<note style="advanced">
-			<p>Predefinito: Disattivato</p>
-		</note>
-	</item>
-    <item>
-        <title>Embed Subtitles</title>
-        <p>Se disabilitato o se l'incorporamento fallisce, i sottotitoli scaricati verranno salvati in un file separato.</p>
+        <title>Incorpora metadati</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Predefinito: attivato</p>
         </note>
     </item>
     <item>
-		<title>Ritaglia miniature audio</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Predefinito: Disattivato</p>
-		</note>
+        <title>Rimuovi i dati della sorgente</title>
+        <p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Predefinito: Disattivato</p>
+        </note>
     </item>
     <item>
-		<title>Rimuovi i dati della sorgente</title>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>Predefinito: Disattivato</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Predefinito: attivato</p>
+        </note>
+    </item>
+    <item>
+        <title>Ritaglia miniature audio</title>
+        <p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Predefinito: Disattivato</p>
+        </note>
+    </item>
+    <item>
+        <title>Includi i capitoli</title>
+        <p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+        <note style="advanced">
+            <p>Predefinito: Disattivato</p>
+        </note>
+    </item>
+    <item>
+        <title>Embed Subtitles</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Predefinito: attivato</p>
+        </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>

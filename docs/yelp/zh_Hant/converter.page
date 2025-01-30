@@ -24,43 +24,55 @@
 <p>此頁面解釋 <app>Parabolic</app> 的偏好設定中所有調整轉換器的選項。</p>
 
 <terms>
-	<item>
-		<title>嵌入後設資料</title>
-		<p>啟用後 Parabolic 會將媒體的相關資訊 (標題、類別、等等...) 和縮圖盡可能標註起來。</p>
-		<note style="advanced">
-			<p>預設值：開啟</p>
-		</note>
-    </item>
     <item>
-		<title>嵌入章節</title>
-		<p>啟用後 Parabolic 將會把章節資訊盡可能標註起來。</p>
-		<note style="advanced">
-			<p>預設值：關閉</p>
-		</note>
-	</item>
-    <item>
-        <title>嵌入字幕</title>
-        <p>如果關閉或是嵌入失敗，字幕會另存新檔。</p>
+        <title>嵌入後設資料</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>預設值：開啟</p>
         </note>
     </item>
     <item>
-		<title>剪裁音訊縮圖</title>
-		<p>啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。</p>
-        <p>當 <code>嵌入後設資料</code> 選項啟用後，此選項才可以使用。</p>
-		<note style="advanced">
-			<p>預設值：關閉</p>
-		</note>
+        <title>移除來源資訊</title>
+        <p>啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。</p>
+        <p>每個串流來源會移除：<code>附註</code>、<code>描述</code>、<code>摘要</code>、<code>purl</code> 和<code>名字</code>。</p>
+        <note>
+            <p>當 <code>嵌入後設資料</code> 選項啟用後，此選項才可以使用。</p>
+        </note>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
     </item>
     <item>
-		<title>移除來源資訊</title>
-		<p>啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。</p>
-        <p>每個串流來源會移除：<code>附註</code>、<code>描述</code>、<code>摘要</code>、<code>purl</code> 和<code>名字</code>。</p>
-        <p>當 <code>嵌入後設資料</code> 選項啟用後，此選項才可以使用。</p>
-		<note style="advanced">
-			<p>預設值：關閉</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>預設值：開啟</p>
+        </note>
+    </item>
+    <item>
+        <title>剪裁音訊縮圖</title>
+        <p>啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
+    </item>
+    <item>
+        <title>嵌入章節</title>
+        <p>啟用後 Parabolic 將會把章節資訊盡可能標註起來。</p>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
+    </item>
+    <item>
+        <title>嵌入字幕</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>預設值：開啟</p>
+        </note>
     </item>
     <item>
         <title>後製使用的核心數</title>

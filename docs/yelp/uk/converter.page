@@ -24,43 +24,55 @@
 <p>Ця сторінка пояснює всі опції для налаштування конвертера в Параметрах <app>Parabolic</app>.</p>
 
 <terms>
-	<item>
-		<title>Вставити метадані</title>
-		<p>Якщо ввімкнено, Parabolic позначатиме медіа відповідною інформацією (назва, жанр тощо) та мініатюрою, якщо вона доступна.</p>
-		<note style="advanced">
-			<p>За замовчуванням: Ввімк</p>
-		</note>
-    </item>
     <item>
-		<title>Вставити розділи</title>
-		<p>Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така доступна.</p>
-		<note style="advanced">
-			<p>За замовчуванням: Вимк</p>
-		</note>
-	</item>
-    <item>
-        <title>Вбудовані субтитри</title>
-        <p>Якщо цю функцію вимкнено або якщо вбудовування не вдасться, завантажені субтитри буде збережено в окремому файлі.</p>
+        <title>Вставити метадані</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>За замовчуванням: Ввімк</p>
         </note>
     </item>
     <item>
-		<title>Обрізати мініатюри аудіо</title>
-		<p>Якщо ввімкнено, Parabolic обрізає ескізи для аудіофайлів до квадратної роздільної здатності.</p>
-        <p>Цей параметр можна налаштувати лише, якщо увімкнено <code>Вбудовувати метадані</code>.</p>
-		<note style="advanced">
-			<p>За замовчуванням: Вимк</p>
-		</note>
+        <title>Вилучити вихідні дані</title>
+        <p>Якщо ввімкнено, Parabolic очистить поля метаданих, що містять URL та іншу ідентифікаційну інформацію джерела медіа.</p>
+        <p>Очищені поля: <code> коментар</code>, <code>опис</code>, <code>синопсис</code>, <code>purl</code> і <code>handler_name</code> в кожному стримі.</p>
+        <note>
+            <p>Цей параметр можна налаштувати лише, якщо увімкнено <code>Вбудовувати метадані</code>.</p>
+        </note>
+        <note style="advanced">
+            <p>За замовчуванням: Вимк</p>
+        </note>
     </item>
     <item>
-		<title>Вилучити вихідні дані</title>
-		<p>Якщо ввімкнено, Parabolic очистить поля метаданих, що містять URL та іншу ідентифікаційну інформацію джерела медіа.</p>
-        <p>Очищені поля: <code> коментар</code>, <code>опис</code>, <code>синопсис</code>, <code>purl</code> і <code>handler_name</code> в кожному стримі.</p>
-        <p>Цей параметр можна налаштувати лише, якщо увімкнено <code>Вбудовувати метадані</code>.</p>
-		<note style="advanced">
-			<p>За замовчуванням: Вимк</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Ввімк</p>
+        </note>
+    </item>
+    <item>
+        <title>Обрізати мініатюри аудіо</title>
+        <p>Якщо ввімкнено, Parabolic обрізає ескізи для аудіофайлів до квадратної роздільної здатності.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>За замовчуванням: Вимк</p>
+        </note>
+    </item>
+    <item>
+        <title>Вставити розділи</title>
+        <p>Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така доступна.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Вимк</p>
+        </note>
+    </item>
+    <item>
+        <title>Вбудовані субтитри</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Ввімк</p>
+        </note>
     </item>
     <item>
         <title>Потоки постобробки</title>

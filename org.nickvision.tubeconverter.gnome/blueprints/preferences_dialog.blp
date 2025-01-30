@@ -249,12 +249,46 @@ Adw.PreferencesDialog root {
     Adw.PreferencesGroup {
       title: _("Converter");
 
-      Adw.SwitchRow embedMetadataRow {
+      Adw.ExpanderRow embedMetadataRow {
         title: _("Embed Metadata");
+        show-enable-switch: true;
+        expanded: bind embedMetadataRow.enable-expansion;
 
         [prefix]
         Gtk.Image {
           icon-name: "tag-outline-symbolic";
+        }
+
+        Adw.SwitchRow removeSourceDataRow  {
+          title: _("Remove Source Data");
+          subtitle: _("If enabled, Parabolic will clear metadata fields containing identifying download information.");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "larger-brush-symbolic";
+          }
+        }
+      }
+
+      Adw.ExpanderRow embedThumbnailsRow {
+        title: _("Embed Thumbnails");
+        subtitle: _("If the file type does not support embedding, the thumbnail will be written to a separate image file.");
+        show-enable-switch: true;
+        expanded: bind embedThumbnailsRow.enable-expansion;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "image-x-generic-symbolic";
+        }
+
+        Adw.SwitchRow cropAudioThumbnailRow  {
+          title: _("Crop Audio Thumbnails");
+          subtitle: _("If enabled, Parabolic will crop the thumbnails of audio files to squares.");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "dotted-box-symbolic";
+          }
         }
       }
 
@@ -269,32 +303,11 @@ Adw.PreferencesDialog root {
 
       Adw.SwitchRow embedSubtitlesRow {
         title: _("Embed Subtitles");
+        subtitle: _("If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.");
 
         [prefix]
         Gtk.Image {
           icon-name: "subtitles-symbolic";
-        }
-      }
-
-      Adw.SwitchRow cropAudioThumbnailRow  {
-        title: _("Crop Audio Thumbnails");
-        subtitle: _("If enabled, Parabolic will crop the thumbnails of audio files to squares.");
-        sensitive: bind embedMetadataRow.active;
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "dotted-box-symbolic";
-        }
-      }
-
-      Adw.SwitchRow removeSourceDataRow  {
-        title: _("Remove Source Data");
-        subtitle: _("If enabled, Parabolic will clear metadata fields containing identifying download information.");
-        sensitive: bind embedMetadataRow.active;
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "larger-brush-symbolic";
         }
       }
 

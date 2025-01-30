@@ -18,43 +18,55 @@
 <p>Esta página explica todas as opções para configurar o Conversor nas Preferências do <app>Parabolic</app> .</p>
 
 <terms>
-	<item>
-		<title>Incorporar Meta-dados</title>
-		<p>Se ativado, o Parabolic marcará a multimédia com informações relevantes (título, género, etc...) e miniatura, se disponível.</p>
-		<note style="advanced">
-			<p>Padrão: Ativado</p>
-		</note>
-    </item>
     <item>
-		<title>Incorporar Capítulos</title>
-		<p>Se ativado, o Parabolic marcará a multimédia com informações do capítulo, se disponíveis.</p>
-		<note style="advanced">
-			<p>Padrão: Desligado</p>
-		</note>
-	</item>
-    <item>
-        <title>Incorporar Legendas</title>
-        <p>Se desativado ou se a incorporação falhar, as legendas descarregadas serão guardadas num ficheiro separado.</p>
+        <title>Incorporar Meta-dados</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
-		<title>Cortar Miniaturas para Áudio</title>
-		<p>Se ativado, o Parabolic cortará as miniaturas dos ficheiros de áudio para uma resolução quadrada.</p>
-        <p>Esta opção é configurável apenas se <code>Embeber Metadados</code> estiver ligada.</p>
-		<note style="advanced">
-			<p>Padrão: Desligado</p>
-		</note>
+        <title>Remover Dados de Origem</title>
+        <p>Se ativado, o Parabolic limpará os campos de meta-dados que contêm a URL e outras informações de identificação da fonte de multimédia.</p>
+        <p>Campos que são limpos: <code>comment</code> , <code>description</code> , <code>synopsis</code> , <code>purl</code> e <code>handler_name</code> em cada stream.</p>
+        <note>
+            <p>Esta opção é configurável apenas se <code>Embeber Metadados</code> estiver ligada.</p>
+        </note>
+        <note style="advanced">
+            <p>Padrão: Desligado</p>
+        </note>
     </item>
     <item>
-		<title>Remover Dados de Origem</title>
-		<p>Se ativado, o Parabolic limpará os campos de meta-dados que contêm a URL e outras informações de identificação da fonte de multimédia.</p>
-        <p>Campos que são limpos: <code>comment</code> , <code>description</code> , <code>synopsis</code> , <code>purl</code> e <code>handler_name</code> em cada stream.</p>
-        <p>Esta opção é configurável apenas se <code>Embeber Metadados</code> estiver ligada.</p>
-		<note style="advanced">
-			<p>Padrão: Desligado</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>Padrão: Ativado</p>
+        </note>
+    </item>
+    <item>
+        <title>Cortar Miniaturas para Áudio</title>
+        <p>Se ativado, o Parabolic cortará as miniaturas dos ficheiros de áudio para uma resolução quadrada.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>Padrão: Desligado</p>
+        </note>
+    </item>
+    <item>
+        <title>Incorporar Capítulos</title>
+        <p>Se ativado, o Parabolic marcará a multimédia com informações do capítulo, se disponíveis.</p>
+        <note style="advanced">
+            <p>Padrão: Desligado</p>
+        </note>
+    </item>
+    <item>
+        <title>Incorporar Legendas</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Padrão: Ativado</p>
+        </note>
     </item>
     <item>
         <title>A pós-processar Threads</title>

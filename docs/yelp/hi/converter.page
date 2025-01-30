@@ -18,43 +18,55 @@
 <p>यह पृष्ठ <app>Parabolic</app> में प्राथमिकताओं में परिवर्तक को कॉन्फ़िगर करने के लिए सभी विकल्पों की व्याख्या करता है।</p>
 
 <terms>
-	<item>
-		<title>मेटाडेटा सन्निहित करें</title>
-		<p>यदि सक्षम किया गया है, तो Parabolic किसी मीडिया को उसकी प्रासंगिक जानकारी (शीर्षक, शैली, आदि...) और यदि उपलब्ध हो तो थंबनेल के साथ टैग करेगा।</p>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: चालू</p>
-		</note>
-    </item>
     <item>
-		<title>अध्याय सन्निहित करें</title>
-		<p>यदि सक्षम किया गया है, तो Parabolic उपलब्ध होने पर अध्याय की जानकारी के साथ मीडिया को टैग करेगा।</p>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: बंद</p>
-		</note>
-	</item>
-    <item>
-        <title>उपशीर्षक सन्निहित करें</title>
-        <p>यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए उपशीर्षक एक अलग फाइल में सहेजे जाएंगे।</p>
+        <title>मेटाडेटा सन्निहित करें</title>
+        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
     <item>
-		<title>ऑडियो थंबनेल काटें</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: बंद</p>
-		</note>
+        <title>स्रोत डेटा हटाएं</title>
+        <p>यदि सक्षम किया गया है, तो Parabolic URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा फ़ील्ड को साफ़ कर देगा।</p>
+        <p>साफ़ किए गए फ़ील्ड: <code>टिप्पणी</code>, <code>विवरण</code>, <code>सारांश</code>, <code>पर्ल</code> और <code>हैंडलर_नाम</code> प्रत्येक धारा।</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: बंद</p>
+        </note>
     </item>
     <item>
-		<title>स्रोत डेटा हटाएं</title>
-		<p>यदि सक्षम किया गया है, तो Parabolic URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा फ़ील्ड को साफ़ कर देगा।</p>
-        <p>साफ़ किए गए फ़ील्ड: <code>टिप्पणी</code>, <code>विवरण</code>, <code>सारांश</code>, <code>पर्ल</code> और <code>हैंडलर_नाम</code> प्रत्येक धारा।</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: बंद</p>
-		</note>
+        <title>Embed Thumbnails</title>
+        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: चालू</p>
+        </note>
+    </item>
+    <item>
+        <title>ऑडियो थंबनेल काटें</title>
+        <p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <note>
+            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+        </note>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: बंद</p>
+        </note>
+    </item>
+    <item>
+        <title>अध्याय सन्निहित करें</title>
+        <p>यदि सक्षम किया गया है, तो Parabolic उपलब्ध होने पर अध्याय की जानकारी के साथ मीडिया को टैग करेगा।</p>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: बंद</p>
+        </note>
+    </item>
+    <item>
+        <title>उपशीर्षक सन्निहित करें</title>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: चालू</p>
+        </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>

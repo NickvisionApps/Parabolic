@@ -23,8 +23,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_cookiesBrowser{ Browser::None },
         m_youTubeSponsorBlock{ false },
         m_embedMetadata{ true },
-        m_cropAudioThumbnails{ false },
         m_removeSourceData{ false },
+        m_embedThumbnails{ true },
+        m_cropAudioThumbnails{ false },        
         m_embedChapters{ false },
         m_embedSubtitles{ true },
         m_postprocessingThreads{ static_cast<int>(std::thread::hardware_concurrency()) }
@@ -218,16 +219,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_embedMetadata = embedMetadata;
     }
 
-    bool DownloaderOptions::getCropAudioThumbnails() const
-    {
-        return m_cropAudioThumbnails;
-    }
-
-    void DownloaderOptions::setCropAudioThumbnails(bool cropAudioThumbnails)
-    {
-        m_cropAudioThumbnails = cropAudioThumbnails;
-    }
-
     bool DownloaderOptions::getRemoveSourceData() const
     {
         return m_removeSourceData;
@@ -236,6 +227,26 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloaderOptions::setRemoveSourceData(bool removeSourceData)
     {
         m_removeSourceData = removeSourceData;
+    }
+
+    bool DownloaderOptions::getEmbedThumbnails() const
+    {
+        return m_embedThumbnails;
+    }
+
+    void DownloaderOptions::setEmbedThumbnails(bool embedThumbnails)
+    {
+        m_embedThumbnails = embedThumbnails;
+    }
+
+    bool DownloaderOptions::getCropAudioThumbnails() const
+    {
+        return m_cropAudioThumbnails;
+    }
+
+    void DownloaderOptions::setCropAudioThumbnails(bool cropAudioThumbnails)
+    {
+        m_cropAudioThumbnails = cropAudioThumbnails;
     }
 
     bool DownloaderOptions::getEmbedChapters() const

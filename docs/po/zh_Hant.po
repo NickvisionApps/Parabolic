@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-01-28 10:48-0500\n"
+"POT-Creation-Date: 2025-01-30 13:03-0500\n"
 "PO-Revision-Date: 2025-01-15 07:03+0000\n"
 "Last-Translator: Chung-Wei Chung <webb790709@proton.me>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -69,8 +69,8 @@ msgid ""
 msgstr "雖然使用 aira2c 會增加下載速度，但使用者介面將不會顯示下載進度。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
-#: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
+#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
+#: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
 #: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
@@ -153,75 +153,36 @@ msgstr "嵌入後設資料"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:26
+#, fuzzy
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
-"genre, etc...) and thumbnail if available."
+"genre, etc...) if available."
 msgstr ""
 "啟用後 Parabolic 會將媒體的相關資訊 (標題、類別、等等...) 和縮圖盡可能標註起"
 "來。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:41
-#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
-#: docs/yelp/C/interface.page:49
+#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
+#: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
+#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
+#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "預設值：開啟"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:32
-msgid "Embed Chapters"
-msgstr "嵌入章節"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:33
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr "啟用後 Parabolic 將會把章節資訊盡可能標註起來。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:39
-msgid "Embed Subtitles"
-msgstr "嵌入字幕"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:40
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
-msgstr "如果關閉或是嵌入失敗，字幕會另存新檔。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:46
-msgid "Crop Audio Thumbnails"
-msgstr "剪裁音訊縮圖"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:47
-msgid ""
-"If enabled, Parabolic will crop thumbnails for audio files to be a square "
-"resolution."
-msgstr "啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
-msgid "This option is only configurable if <code>Embed Metadata</code> is on."
-msgstr "當 <code>嵌入後設資料</code> 選項啟用後，此選項才可以使用。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "移除來源資訊"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:55
+#: docs/yelp/C/converter.page:33
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
 msgstr "啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:56
+#: docs/yelp/C/converter.page:34
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
@@ -230,20 +191,89 @@ msgstr ""
 "每個串流來源會移除：<code>附註</code>、<code>描述</code>、<code>摘要</code>、"
 "<code>purl</code> 和<code>名字</code>。"
 
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:36
+msgid "This option is only configurable if <code>Embed Metadata</code> is on."
+msgstr "當 <code>嵌入後設資料</code> 選項啟用後，此選項才可以使用。"
+
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:63
+#: docs/yelp/C/converter.page:43
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "嵌入字幕"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:44
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will embed a media with its thumbnail if available."
+msgstr "啟用後 Parabolic 將會把章節資訊盡可能標註起來。"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:45
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr "如果關閉或是嵌入失敗，字幕會另存新檔。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:51
+msgid "Crop Audio Thumbnails"
+msgstr "剪裁音訊縮圖"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:52
+msgid ""
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
+msgstr "啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:54
+#, fuzzy
+msgid ""
+"This option is only configurable if <code>Embed Thumbnails</code> is on."
+msgstr "當 <code>嵌入後設資料</code> 選項啟用後，此選項才可以使用。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:61
+msgid "Embed Chapters"
+msgstr "嵌入章節"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:62
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr "啟用後 Parabolic 將會把章節資訊盡可能標註起來。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:68
+msgid "Embed Subtitles"
+msgstr "嵌入字幕"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:69
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to a separate file."
+msgstr "如果關閉或是嵌入失敗，字幕會另存新檔。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:75
 msgid "Postprocessing Threads"
 msgstr "後製使用的核心數"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:64
+#: docs/yelp/C/converter.page:76
 msgid ""
 "The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
 "use for each download."
 msgstr "允許後製引擎 (<code>FFmpeg</code>) 使用的核心數量。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:66
+#: docs/yelp/C/converter.page:78
 msgid "Default: The max number of threads available on the system"
 msgstr "預設值：系統可用的最大核心數"
 
