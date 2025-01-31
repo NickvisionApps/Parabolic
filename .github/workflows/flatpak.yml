@@ -43,7 +43,7 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
-      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
+      - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
         with:
           bundle: org.nickvision.tubeconverter.qt.flatpak
           manifest-path: flatpak/org.nickvision.tubeconverter.qt.json
