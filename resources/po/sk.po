@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-30 16:11-0500\n"
-"PO-Revision-Date: 2025-01-11 19:00+0000\n"
+"PO-Revision-Date: 2025-01-31 19:23+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -129,7 +129,7 @@ msgstr "K dispozícii je nová aktualizácia"
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:318
 msgid ""
 "The update is downloading in the background and will start once it finishes"
-msgstr ""
+msgstr "Aktualizácia sa sťahuje na pozadí a spustí sa keď bude dokončená"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "Unable to download and install update"
@@ -903,9 +903,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:96
-#, fuzzy
 msgid "Embed Thumbnails"
-msgstr "Vložiť titulky"
+msgstr "Vložiť miniatúry"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:97
@@ -914,11 +913,13 @@ msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
+"Ak formát súboru nepodporuje vloženie, miniatúra bude uložená do "
+"samostatného obrázkového súboru."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:99
 msgid "Crop Audio Thumbnails"
-msgstr "Orezať obrázkové náhľady zvuku"
+msgstr "Orezať miniatúry zvuku"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:100
@@ -926,8 +927,8 @@ msgstr "Orezať obrázkové náhľady zvuku"
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
 msgstr ""
-"Ak je táto možnosť zapnutá, aplikácia Parabolic oreže obrázkové náhľady "
-"zvukových súborov na štvorec."
+"Ak je táto možnosť zapnutá, aplikácia Parabolic oreže miniatúry zvukových "
+"súborov na štvorec."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:102
@@ -946,6 +947,8 @@ msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
 msgstr ""
+"Ak je táto možnosť vypnutá alebo ak vloženie nie je podporované, stiahnuté "
+"titulky budú uložené do samostatného súboru."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:106
@@ -1094,6 +1097,9 @@ msgid ""
 "select a specific file type that supports embedding to prevent separate "
 "image and subtitle files from being written to disk."
 msgstr ""
+"Niektoré formáty súborov nepodporujú vloženie miniatúr a titulkov. Vyberte "
+"taký typ súboru, ktorý túto možnosť podporuje, aby sa predišlo ukladaniu "
+"samostatných obrázkových a titulkových súborov."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:282
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:377
