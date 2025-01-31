@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.user.login != 'weblate' }}
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-46
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-47
       options: --privileged
     strategy:
       matrix:
@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
-      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
+      - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
         with:
           bundle: org.nickvision.tubeconverter.gnome.flatpak
           manifest-path: flatpak/org.nickvision.tubeconverter.gnome.json
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.user.login != 'weblate' }}
     container:
-      image: bilelmoussaoui/flatpak-github-actions:kde-6.7
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
       options: --privileged
     strategy:
       matrix:
