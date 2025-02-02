@@ -39,10 +39,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.1.4" });
+        m_appInfo.setVersion({ "2025.2.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added a new Embed Thumbnails option in Preferences to enable/disable Parabolic's downloading of thumbnails separate from metadata\n- Added a disclaimer about embedding thumbnails/subtitles when using generic file types\n- Fixed an issue where the incorrect previous video and/or audio format was selected\n- Fixed an issue where chapters were embedded even if the option was disabled\n- Fixed an issue where splitting media by chapters would result in incorrect media lengths in the split files\n- Fixed an issue where video and audio formats were not selectable on GNOME");
+        m_appInfo.setChangelog("-");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
