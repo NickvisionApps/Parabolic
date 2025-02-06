@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-01-30 16:11-0500\n"
-"PO-Revision-Date: 2025-01-22 08:01+0000\n"
+"PO-Revision-Date: 2025-02-03 19:02+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
-"Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/et/>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,16 +47,20 @@ msgid ""
 "This page explains all options for configuring aria2 in Preferences in "
 "<app>Parabolic</app>."
 msgstr ""
+"See leht selgitab kõiki võimalusi aria2 seadistamisel <app>Parabolic</app>u "
+"eelistustest."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:25
 msgid "Use aria2"
-msgstr ""
+msgstr "Kasuta aria2 teenust"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
 msgid "If enabled, Parabolic will use aria2c to download media."
 msgstr ""
+"Kui eelistus on kasutusel, siis Parabolic kasutab allalaadimiseks aria2c "
+"teenust."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:27
@@ -64,6 +68,8 @@ msgid ""
 "Although using aria2c can improve download speed, download progress will not "
 "be displayed in the UI."
 msgstr ""
+"Kuigi aria2c ilmselt parandab allalaadimise kiirust, ei ole sel puhul "
+"kasutajaliideses võimalik edenemist näidata."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
@@ -71,7 +77,7 @@ msgstr ""
 #: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
-msgstr ""
+msgstr "Vakimisi: pole kasutusel"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:33
@@ -130,7 +136,7 @@ msgstr ""
 #. (itstool) path: page/title
 #: docs/yelp/C/converter.page:20
 msgid "Converter"
-msgstr ""
+msgstr "Meediakonverter"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/converter.page:21
@@ -142,7 +148,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
 msgid "Embed Metadata"
-msgstr ""
+msgstr "Kaasa faili metainfo"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:26
@@ -162,7 +168,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:32
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Eemalda kõik lähteinfo andmed"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:33
@@ -186,9 +192,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:43
-#, fuzzy
 msgid "Embed Thumbnails"
-msgstr "Kadreeri helifailide pisipildid"
+msgstr "Lõimitud pisipildid"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:44
@@ -202,6 +207,8 @@ msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
+"Kui failivorming ei toeta lõimitud pilte, siis salvestame selle eraldi "
+"pildifaili."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:51
@@ -224,7 +231,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:61
 msgid "Embed Chapters"
-msgstr ""
+msgstr "Kaasa faili peatükid"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:62
@@ -235,7 +242,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:68
 msgid "Embed Subtitles"
-msgstr ""
+msgstr "Kaasa faili subtiitrid"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:69
@@ -243,11 +250,13 @@ msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
 msgstr ""
+"Kui eelistus pole kasutusel või lõimitud subtiitrite tugi puudub, siis "
+"salvestame allalaaditud subtiitrid eraldi faili."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:75
 msgid "Postprocessing Threads"
-msgstr ""
+msgstr "Protsessorilõimesid järeltöötlusel"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:76
@@ -270,7 +279,7 @@ msgstr ""
 #. (itstool) path: page/title
 #: docs/yelp/C/downloader.page:20
 msgid "Downloader"
-msgstr ""
+msgstr "Allalaadija"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/downloader.page:21
@@ -294,7 +303,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
 msgid "Use SponsorBlock for YouTube"
-msgstr ""
+msgstr "Kasuta YouTube'i jaoks SponsorBlockki"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:33
@@ -331,7 +340,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:49
 msgid "Proxy URL"
-msgstr ""
+msgstr "Proksiserveri aadress"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:50
@@ -346,7 +355,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:56
 msgid "Cookies from Browser"
-msgstr ""
+msgstr "Brauseri küpsised"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:57
@@ -482,12 +491,12 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:45
 msgid "Limit Filename Characters"
-msgstr ""
+msgstr "Piira failinimedes kasutatavaid tähemärke"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:46
 msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr ""
+msgstr "Kasuta vaid sellised tähemärke, mida Windows oskab lugeda."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:47
@@ -521,7 +530,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:67
 msgid "Preferred Video Codec"
-msgstr ""
+msgstr "Eelistatud videokoodek"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:68
@@ -538,7 +547,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:74
 msgid "Preferred Subtitle Format"
-msgstr ""
+msgstr "Eelistatud subtiitrivorming"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:75
@@ -612,7 +621,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:25
 msgid "Theme"
-msgstr ""
+msgstr "Kujundus"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:26
@@ -644,7 +653,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:39
 msgid "Prevent Suspend"
-msgstr ""
+msgstr "Keela arvuti uinumine"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:40
@@ -656,7 +665,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:46
 msgid "Recover Crashed Downloads"
-msgstr ""
+msgstr "Taasta kokkujooksnud allalaadimised"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:47
@@ -680,7 +689,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:60
 msgid "Download History Length"
-msgstr ""
+msgstr "Kirjete vanus allalaadimisete ajaloos"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:61
@@ -896,7 +905,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:60
 msgid "Audio Format"
-msgstr ""
+msgstr "Helivorming"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:61
