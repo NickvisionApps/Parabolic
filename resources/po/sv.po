@@ -8,11 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-30 16:11-0500\n"
-"PO-Revision-Date: 2025-01-10 12:15+0000\n"
-"Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
-"org>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/sv/>\n"
+"PO-Revision-Date: 2025-02-06 19:22+0000\n"
+"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -130,6 +129,7 @@ msgstr "Ny uppdatering tillgänglig"
 msgid ""
 "The update is downloading in the background and will start once it finishes"
 msgstr ""
+"Uppdateringen laddas ner i bakgrunden och kommer att starta när den är klar"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "Unable to download and install update"
@@ -903,9 +903,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:96
-#, fuzzy
 msgid "Embed Thumbnails"
-msgstr "Bädda in undertexter"
+msgstr "Bädda in tumnaglar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:97
@@ -914,6 +913,8 @@ msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
+"Om filtypen inte stöder inbäddning skrivs miniatyrbilden till en separat "
+"bildfil."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:99
@@ -942,13 +943,12 @@ msgstr "Bädda in undertexter"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:104
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:105
-#, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
 msgstr ""
-"Om den är inaktiverad eller om inbäddningen misslyckas, kommer nedladdade "
-"undertexter att sparas i separata filer istället"
+"Om det är inaktiverad eller om inbäddning inte stöds, kommer nedladdade "
+"undertexter att sparas i en separat fil."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:106
@@ -1098,6 +1098,9 @@ msgid ""
 "select a specific file type that supports embedding to prevent separate "
 "image and subtitle files from being written to disk."
 msgstr ""
+"Generiska filtyper stöder inte inbäddning av miniatyrer och undertexter. "
+"Välj en specifik filtyp som stöder inbäddning för att förhindra att separata "
+"bild och undertextfiler skrivs till disken."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:282
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:377
