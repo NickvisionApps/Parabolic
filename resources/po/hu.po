@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2025-02-03 19:02+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -496,7 +496,7 @@ msgid "Help"
 msgstr "Súgó"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "Névjegy"
 
@@ -1232,30 +1232,45 @@ msgstr "Letöltés ismét"
 msgid "GitHub Repo"
 msgstr "GitHub tároló"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "Névjegy"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "Kiadási jegyzék:"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+msgid "Credits"
+msgstr "Készítők"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "Hibakeresési napló másolása"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
-msgid "Changelog:"
-msgstr "Kiadási jegyzék:"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"Kód:\n"
-"{}\n"
-"Tervezés:\n"
-"{}\n"
-"Grafika:\n"
-"{}"
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
+#, fuzzy
+msgid "Notification"
+msgstr "Alkalmazás"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 msgid "Enter media url here"
@@ -1394,10 +1409,6 @@ msgstr "Hiba jelentése"
 msgid "Discussions"
 msgstr "Kibeszélés"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "Névjegy"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1438,6 +1449,26 @@ msgstr "Sávszélesség korlátozása"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "Proxy átjáró megadása"
+
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "Alkalmazás"
+
+#, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "Kód:\n"
+#~ "{}\n"
+#~ "Tervezés:\n"
+#~ "{}\n"
+#~ "Grafika:\n"
+#~ "{}"
 
 #~ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 #~ msgstr "FIGYELEM: aria2 használatban. A folyamat állapota nem lesz látható."
@@ -1485,10 +1516,6 @@ msgstr "Proxy átjáró megadása"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "Letöltés helye"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "Alkalmazás"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Hozzáadás (Ctrl+N)"
@@ -1557,9 +1584,6 @@ msgstr "Proxy átjáró megadása"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "Információ a süti fájlról"
-
-#~ msgid "Credits"
-#~ msgstr "Készítők"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Borítókép igazítása"

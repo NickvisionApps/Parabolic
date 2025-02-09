@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2025-02-02 05:02+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -501,7 +501,7 @@ msgid "Help"
 msgstr "Допомога"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "Про Parabolic"
 
@@ -1236,30 +1236,45 @@ msgstr "Завантажити знову"
 msgid "GitHub Repo"
 msgstr "Репозиторій GitHub"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "Про додаток"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "Журнал змін:"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+msgid "Credits"
+msgstr "Спільнота"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "Копіювати інформацію для налагодження"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
-msgid "Changelog:"
-msgstr "Журнал змін:"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"Розробники:\n"
-"{}\n"
-"Дизайнери:\n"
-"{}\n"
-"Художники:\n"
-"{}"
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
+#, fuzzy
+msgid "Notification"
+msgstr "Застосунок"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 msgid "Enter media url here"
@@ -1400,10 +1415,6 @@ msgstr "Повідомити про помилку"
 msgid "Discussions"
 msgstr "Обговорення"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "Про додаток"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1444,6 +1455,26 @@ msgstr "Обмеження швидкості"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "Введіть URL-адресу проксі"
+
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "Застосунок"
+
+#, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "Розробники:\n"
+#~ "{}\n"
+#~ "Дизайнери:\n"
+#~ "{}\n"
+#~ "Художники:\n"
+#~ "{}"
 
 #~ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 #~ msgstr ""
@@ -1504,10 +1535,6 @@ msgstr "Введіть URL-адресу проксі"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "Зберегти теку"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "Застосунок"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Додати завантаження (Ctrl+N)"
@@ -1577,9 +1604,6 @@ msgstr "Введіть URL-адресу проксі"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "Інформація про файл cookie"
-
-#~ msgid "Credits"
-#~ msgstr "Спільнота"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Обрізати мініатюру"

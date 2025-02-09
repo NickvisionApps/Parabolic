@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2025-01-31 19:23+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -496,7 +496,7 @@ msgid "Help"
 msgstr "Pomoc"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "O aplikácii Parabolic"
 
@@ -1231,30 +1231,46 @@ msgstr "Stiahnuť znova"
 msgid "GitHub Repo"
 msgstr "GitHub repozitár"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "O aplikácii"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "Zoznam zmien:"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+#, fuzzy
+msgid "Credits"
+msgstr "Poverenia"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "Kopírovať informácie o ladení"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
-msgid "Changelog:"
-msgstr "Zoznam zmien:"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"Vývojári:\n"
-"{}\n"
-"Dizajnéri:\n"
-"{}\n"
-"Umelci:\n"
-"{}"
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
+#, fuzzy
+msgid "Notification"
+msgstr "Aplikácia"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 msgid "Enter media url here"
@@ -1395,10 +1411,6 @@ msgstr "Nahlásiť chybu"
 msgid "Discussions"
 msgstr "Diskusie"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "O aplikácii"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1439,6 +1451,26 @@ msgstr "Obmedzenie rýchlosti"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "Sem zadajte url adresu proxy servera"
+
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "Aplikácia"
+
+#, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "Vývojári:\n"
+#~ "{}\n"
+#~ "Dizajnéri:\n"
+#~ "{}\n"
+#~ "Umelci:\n"
+#~ "{}"
 
 #~ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 #~ msgstr "VAROVANIE: Používa sa aria2 na sťahovanie. Priebeh sa nezobrazí."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -523,7 +523,7 @@ msgid "Help"
 msgstr "सहायता"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "पैराबोलिक के बारे में"
 
@@ -1276,36 +1276,45 @@ msgstr "पुनः डाउनलोड करें"
 msgid "GitHub Repo"
 msgstr "गिटहब रेपो"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "परिचय"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "चेंजलॉग"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+msgid "Credits"
+msgstr "श्रेय"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "डिबग जानकारी कॉपी करें"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
 #, fuzzy
-msgid "Changelog:"
-msgstr "चेंजलॉग"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"डेवलपर्स:\n"
-"{0}\n"
-"\n"
-"डिज़ाइनर:\n"
-"{1}\n"
-"\n"
-"कलाकार की:\n"
-"{2}\n"
-"\n"
-"अनुवादक:\n"
-"{3}"
+msgid "Notification"
+msgstr "अनुप्रयोग"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 #, fuzzy
@@ -1455,10 +1464,6 @@ msgstr "खराबी की जानकारी दें"
 msgid "Discussions"
 msgstr "विचार विमर्श"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "परिचय"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1504,6 +1509,31 @@ msgstr "गति सीमा"
 msgid "Enter proxy url here"
 msgstr "यहां प्रॉक्सी URL दर्ज करें"
 
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "अनुप्रयोग"
+
+#, fuzzy, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "डेवलपर्स:\n"
+#~ "{0}\n"
+#~ "\n"
+#~ "डिज़ाइनर:\n"
+#~ "{1}\n"
+#~ "\n"
+#~ "कलाकार की:\n"
+#~ "{2}\n"
+#~ "\n"
+#~ "अनुवादक:\n"
+#~ "{3}"
+
 #~ msgid "Quality"
 #~ msgstr "गुणवत्ता"
 
@@ -1538,10 +1568,6 @@ msgstr "यहां प्रॉक्सी URL दर्ज करें"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "फोल्डर सहेजें"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "अनुप्रयोग"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "डाउनलोड जोड़ें (Ctrl+N)"
@@ -1607,9 +1633,6 @@ msgstr "यहां प्रॉक्सी URL दर्ज करें"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "कुकीज़ फाइल जानकारी"
-
-#~ msgid "Credits"
-#~ msgstr "श्रेय"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "थंबनेल काटें"

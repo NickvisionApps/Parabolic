@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -524,7 +524,7 @@ msgid "Help"
 msgstr "帮助"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "关于 Parabolic"
 
@@ -1272,36 +1272,45 @@ msgstr "重新下载"
 msgid "GitHub Repo"
 msgstr "GitHub 仓库"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "关于"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "更新日志"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+msgid "Credits"
+msgstr "感谢"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "复制调试信息"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
 #, fuzzy
-msgid "Changelog:"
-msgstr "更新日志"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"开发者:\n"
-"{0}\n"
-"\n"
-"设计师:\n"
-"{1}\n"
-"\n"
-"艺术家:\n"
-"{2}\n"
-"\n"
-"翻译者:\n"
-"{3}"
+msgid "Notification"
+msgstr "应用程序"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 #, fuzzy
@@ -1451,10 +1460,6 @@ msgstr "报告问题"
 msgid "Discussions"
 msgstr "讨论"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "关于"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1500,6 +1505,31 @@ msgstr "速度限制"
 msgid "Enter proxy url here"
 msgstr "在此处输入代理 URL"
 
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "应用程序"
+
+#, fuzzy, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "开发者:\n"
+#~ "{0}\n"
+#~ "\n"
+#~ "设计师:\n"
+#~ "{1}\n"
+#~ "\n"
+#~ "艺术家:\n"
+#~ "{2}\n"
+#~ "\n"
+#~ "翻译者:\n"
+#~ "{3}"
+
 #~ msgid "Quality"
 #~ msgstr "质量"
 
@@ -1534,10 +1564,6 @@ msgstr "在此处输入代理 URL"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "保存文件夹"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "应用程序"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "添加下载（Ctrl+N）"
@@ -1601,9 +1627,6 @@ msgstr "在此处输入代理 URL"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "Cookies 文件信息"
-
-#~ msgid "Credits"
-#~ msgstr "感谢"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "裁剪缩略图"

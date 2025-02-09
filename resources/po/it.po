@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2025-01-17 18:25+0000\n"
 "Last-Translator: Nick Logozzo <nlogozzo225@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -498,7 +498,7 @@ msgid "Help"
 msgstr "Aiuto"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "Informazioni su Parabolic"
 
@@ -1230,30 +1230,45 @@ msgstr "Scarica di nuovo"
 msgid "GitHub Repo"
 msgstr "Repository GitHub"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "Informazioni"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "Novità:"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+msgid "Credits"
+msgstr "Crediti"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "Copia le informazioni di debug"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
-msgid "Changelog:"
-msgstr "Novità:"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"Sviluppatori:\n"
-"{}\n"
-"Progettisti:\n"
-"{}\n"
-"Artisti:\n"
-"{}"
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
+#, fuzzy
+msgid "Notification"
+msgstr "Applicazione"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 msgid "Enter media url here"
@@ -1396,10 +1411,6 @@ msgstr "Segnala un problema"
 msgid "Discussions"
 msgstr "Discussioni"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "Informazioni"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1440,6 +1451,26 @@ msgstr "Limite di velocità"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "Inserisci qui l'URL del proxy"
+
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "Applicazione"
+
+#, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "Sviluppatori:\n"
+#~ "{}\n"
+#~ "Progettisti:\n"
+#~ "{}\n"
+#~ "Artisti:\n"
+#~ "{}"
 
 #, fuzzy
 #~ msgid ""
@@ -1499,10 +1530,6 @@ msgstr "Inserisci qui l'URL del proxy"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "Cartella di salvataggio"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "Applicazione"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Aggiunge uno scaricamento (Ctrl+N)"
@@ -1571,9 +1598,6 @@ msgstr "Inserisci qui l'URL del proxy"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "Informazioni sui file dei cookie"
-
-#~ msgid "Credits"
-#~ msgstr "Crediti"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Ritaglia miniatura"

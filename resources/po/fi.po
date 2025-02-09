@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2025-02-03 19:02+0000\n"
 "Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -501,7 +501,7 @@ msgid "Help"
 msgstr "Ohje"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "Tietoja - Parabolic"
 
@@ -1234,30 +1234,46 @@ msgstr "Lataa uudelleen"
 msgid "GitHub Repo"
 msgstr "GitHub-tietovarasto"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "Tietoja"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "Muutoskirjaukset:"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+#, fuzzy
+msgid "Credits"
+msgstr "Kirjautumistiedot"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "Kopioi virheenkorjaustiedot"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
-msgid "Changelog:"
-msgstr "Muutoskirjaukset:"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"Kehittäjät:\n"
-"{}\n"
-"Suunnittelijat:\n"
-"{}\n"
-"Taiteilijat:\n"
-"{}"
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
+#, fuzzy
+msgid "Notification"
+msgstr "Sovellus"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 msgid "Enter media url here"
@@ -1398,10 +1414,6 @@ msgstr "Ilmoita ongelmasta"
 msgid "Discussions"
 msgstr "Keskustelut"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "Tietoja"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1446,6 +1458,26 @@ msgstr "Nopeusrajoitus"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "Syötä välityspalvelimen URL-osoite tähän"
+
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "Sovellus"
+
+#, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "Kehittäjät:\n"
+#~ "{}\n"
+#~ "Suunnittelijat:\n"
+#~ "{}\n"
+#~ "Taiteilijat:\n"
+#~ "{}"
 
 #~ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 #~ msgstr ""
@@ -1498,10 +1530,6 @@ msgstr "Syötä välityspalvelimen URL-osoite tähän"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "Tallennuskansio"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "Sovellus"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Lisää lataus (Ctrl+N)"

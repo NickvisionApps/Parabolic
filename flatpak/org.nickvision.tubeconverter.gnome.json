@@ -127,7 +127,9 @@
             "name": "libxmlplusplus",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dmaintainer-mode=false"
+                "-Dmaintainer-mode=false",
+                "-Dbuild-examples=false",
+                "-Dbuild-tests=false"
             ],
             "sources": [
                 {

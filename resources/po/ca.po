@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-06 14:24-0500\n"
+"POT-Creation-Date: 2025-02-07 21:08-0500\n"
 "PO-Revision-Date: 2024-10-20 01:16+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -500,7 +500,7 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:32
 msgid "About Parabolic"
 msgstr "Quant al Parabolic"
 
@@ -1237,35 +1237,46 @@ msgstr "Baixa novament"
 msgid "GitHub Repo"
 msgstr "Dipòsit al GitHub"
 
+#. Load
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+#, fuzzy
+msgid "About"
+msgstr "Sobre {0}"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:35
+#, fuzzy
+msgid "Changelog"
+msgstr "Novetats:"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:36
+msgid "Credits"
+msgstr "Crèdits"
+
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
+msgid "Debugging"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:44
+msgid "Developers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:46
+msgid "Designers"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:48
+msgid "Artists"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:50
 msgid "Copy Debug Information"
 msgstr "Copia informació de depuració"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
-msgid "Changelog:"
-msgstr "Novetats:"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"Desenvolupadors:\n"
-"{0}\n"
-"\n"
-"Dissenyadors:\n"
-"{1}\n"
-"\n"
-"Artistes:\n"
-"{2}\n"
-"\n"
-"Traductors:\n"
-"{3}"
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:14
+#, fuzzy
+msgid "Notification"
+msgstr "Aplicació"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 #, fuzzy
@@ -1407,11 +1418,6 @@ msgstr "Informar d'un error"
 msgid "Discussions"
 msgstr "Debats"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-#, fuzzy
-msgid "About"
-msgstr "Sobre {0}"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1457,6 +1463,31 @@ msgstr "Límit de velocitat"
 msgid "Enter proxy url here"
 msgstr "Introduïu l’URL del servidor intermediari ací"
 
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "Aplicació"
+
+#, fuzzy, c++-format
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "Desenvolupadors:\n"
+#~ "{0}\n"
+#~ "\n"
+#~ "Dissenyadors:\n"
+#~ "{1}\n"
+#~ "\n"
+#~ "Artistes:\n"
+#~ "{2}\n"
+#~ "\n"
+#~ "Traductors:\n"
+#~ "{3}"
+
 #~ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 #~ msgstr ""
 #~ "AVÍS: com que s’està usant l’aria2 per a baixar, el progrés no es mostra."
@@ -1501,10 +1532,6 @@ msgstr "Introduïu l’URL del servidor intermediari ací"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "Desa la carpeta"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "Aplicació"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Afegir descàrrega (Ctrl+N)"
@@ -1572,9 +1599,6 @@ msgstr "Introduïu l’URL del servidor intermediari ací"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "Informació del fitxer de galetes"
-
-#~ msgid "Credits"
-#~ msgstr "Crèdits"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Retallar miniatura"
