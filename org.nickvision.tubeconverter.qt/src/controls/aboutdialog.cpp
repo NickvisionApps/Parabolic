@@ -24,25 +24,42 @@ namespace Nickvision::TubeConverter::Qt::Controls
     }
 
     AboutDialog::AboutDialog(const AppInfo& appInfo, const std::string& debugInformation, QWidget* parent)
-        : QDialog{ parent }, 
-        m_ui{ new Ui::AboutDialog() }
+        : QDialog{ parent },
+        m_ui{ new Ui::AboutDialog() },
+        m_debugInformation{ QString::fromStdString(debugInformation) }
     {
         m_ui->setupUi(this);
         setWindowTitle(_("About Parabolic"));
         //Load
-        m_ui->lblIcon->setPixmap({ appInfo.getVersion().getVersionType() == VersionType::Stable ? ":/resources/org.nickvision.tubeconverter.svg" : ":/resources/org.nickvision.tubeconverter-devel.svg" });
+        m_ui->tabWidget->setTabText(0, _("About"));
+        m_ui->tabWidget->setTabText(1, _("Changelog"));
+        m_ui->tabWidget->setTabText(2, _("Credits"));
+        m_ui->tabWidget->setTabText(3, _("Debugging"));
+        m_ui->tabWidget->setCurrentIndex(0);
+        m_ui->lblAppIcon->setPixmap({ appInfo.getVersion().getVersionType() == VersionType::Stable ? ":/resources/org.nickvision.tubeconverter.svg" : ":/resources/org.nickvision.tubeconverter-devel.svg" });
         m_ui->lblAppName->setText(QString::fromStdString(appInfo.getShortName()));
         m_ui->lblAppDescription->setText(QString::fromStdString(appInfo.getDescription()));
-        m_ui->btnAppVersion->setText(QString::fromStdString(appInfo.getVersion().str()));
-        m_ui->btnAppVersion->setToolTip(QString::fromStdString(_("Copy Debug Information")));
-        m_ui->lblChangelog->setText(_("Changelog:") + QString::fromStdString("\n" + appInfo.getChangelog()));
-        m_ui->lblCredits->setText(QString::fromStdString(std::vformat(_("Developers:\n{}\nDesigners:\n{}\nArtists:\n{}"), std::make_format_args(CodeHelpers::unmove(StringHelpers::join(keys(appInfo.getDevelopers()), "\n", true)), CodeHelpers::unmove(StringHelpers::join(keys(appInfo.getDesigners()), "\n", true)), CodeHelpers::unmove(StringHelpers::join(keys(appInfo.getArtists()), "\n"))))));
+        m_ui->lblAppVersion->setText(QString::fromStdString(appInfo.getVersion().str()));
+        m_ui->lblChangelog->setText(QString::fromStdString(appInfo.getChangelog()));
+        m_ui->groupDevelopers->setTitle(_("Developers"));
+        m_ui->lblDevelopers->setText(QString::fromStdString(StringHelpers::join(keys(appInfo.getDevelopers()), "\n")));
+        m_ui->groupDesigners->setTitle(_("Designers"));
+        m_ui->lblDesigners->setText(QString::fromStdString(StringHelpers::join(keys(appInfo.getDesigners()), "\n")));
+        m_ui->groupArtists->setTitle(_("Artists"));
+        m_ui->lblArtists->setText(QString::fromStdString(StringHelpers::join(keys(appInfo.getArtists()), "\n")));
+        m_ui->btnCopyDebugInformation->setText(QString::fromStdString(_("Copy Debug Information")));
+        m_ui->lblDebug->setText(m_debugInformation);
         //Signals
-        connect(m_ui->btnAppVersion, &QPushButton::clicked, [debugInformation](){ QApplication::clipboard()->setText(QString::fromStdString(debugInformation)); });
+        connect(m_ui->btnCopyDebugInformation, &QPushButton::clicked, this, &AboutDialog::copyDebugInformation);
     }
 
     AboutDialog::~AboutDialog()
     {
         delete m_ui;
+    }
+
+    void AboutDialog::copyDebugInformation()
+    {
+        QApplication::clipboard()->setText(m_debugInformation);
     }
 }

@@ -151,13 +151,10 @@ namespace Nickvision::TubeConverter::Qt::Views
 #else
         const StartupInformation& info{ m_controller->startup() };
 #endif
+        setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         if(info.getWindowGeometry().isMaximized())
         {
             showMaximized();
-        }
-        else
-        {
-            setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         }
         m_navigationBar->selectItem("home");
         m_ui->btnHomeAddDownload->setEnabled(info.canDownload());
@@ -415,7 +412,6 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void MainWindow::onShellNotificationSent(const ShellNotificationSentEventArgs& args)
     {
-        m_controller->log(Logging::LogLevel::Info, "ShellNotification sent. (" + args.getMessage() + ")");
 #ifdef _WIN32
         ShellNotification::send(args, reinterpret_cast<HWND>(winId()));
 #elif defined(__linux__)
