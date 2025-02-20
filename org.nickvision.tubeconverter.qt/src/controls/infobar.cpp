@@ -1,8 +1,44 @@
 #include "controls/infobar.h"
-#include "ui_infobar.h"
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
 #include <libnick/localization/gettext.h>
+#include <oclero/qlementine/widgets/StatusBadgeWidget.hpp>
+#include "helpers/qthelpers.h"
 
 using namespace Nickvision::Notifications;
+using namespace oclero::qlementine;
+
+namespace Ui
+{
+    class InfoBar
+    {
+    public:
+        void setupUi(Nickvision::TubeConverter::Qt::Controls::InfoBar* parent)
+        {
+            QFont boldFont;
+            boldFont.setBold(true);
+            //Main Widgets
+            sbwIcon = new StatusBadgeWidget(parent);
+            lblMessage = new QLabel(parent);
+            lblMessage->setFont(boldFont);
+            btnAction = new QPushButton(parent);
+            //Main Layout
+            QWidget* mainWidget{ new QWidget(parent) };
+            QHBoxLayout* layout{ new QHBoxLayout(parent) };
+            layout->addWidget(sbwIcon);
+            layout->addWidget(lblMessage);
+            layout->addStretch();
+            layout->addWidget(btnAction);
+            mainWidget->setLayout(layout);
+            parent->setWidget(mainWidget);
+        }
+
+        StatusBadgeWidget* sbwIcon;
+        QLabel* lblMessage;
+        QPushButton* btnAction;
+    };
+}
 
 namespace Nickvision::TubeConverter::Qt::Controls
 {
@@ -10,10 +46,16 @@ namespace Nickvision::TubeConverter::Qt::Controls
         : QDockWidget{ parent },
         m_ui{ new Ui::InfoBar() }
     {
-        m_ui->setupUi(this);
+        //Window Settings
         setWindowTitle(_("Notification"));
-        connect(m_ui->btnAction, &QPushButton::clicked, this, &InfoBar::action);
+        setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        setFeatures(QDockWidget::DockWidgetFeature::DockWidgetClosable);
+        setAllowedAreas(::Qt::DockWidgetArea::BottomDockWidgetArea | ::Qt::DockWidgetArea::TopDockWidgetArea);
         hide();
+        //Load Ui
+        m_ui->setupUi(this);
+        //Signals
+        connect(m_ui->btnAction, &QPushButton::clicked, this, &InfoBar::action);
     }
 
     InfoBar::~InfoBar()
@@ -29,9 +71,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
 
     void InfoBar::show(const NotificationSentEventArgs& args, const QString& actionButtonText, const std::function<void()>& callback)
     {
-        static QPixmap info{ QIcon::fromTheme(QIcon::ThemeIcon::DialogInformation).pixmap(16, 16) };
-        static QPixmap warning{ QIcon::fromTheme(QIcon::ThemeIcon::DialogWarning).pixmap(16, 16) };
-        static QPixmap error{ QIcon::fromTheme(QIcon::ThemeIcon::DialogError).pixmap(16, 16) };
         QDockWidget::show();
         if(!actionButtonText.isEmpty() && callback)
         {
@@ -48,14 +87,16 @@ namespace Nickvision::TubeConverter::Qt::Controls
         switch(args.getSeverity())
         {
         case NotificationSeverity::Informational:
+            m_ui->sbwIcon->setBadge(StatusBadge::Info);
+            break;
         case NotificationSeverity::Success:
-            m_ui->lblIcon->setPixmap(info);
+            m_ui->sbwIcon->setBadge(StatusBadge::Success);
             break;
         case NotificationSeverity::Warning:
-            m_ui->lblIcon->setPixmap(warning);
+            m_ui->sbwIcon->setBadge(StatusBadge::Warning);
             break;
         case NotificationSeverity::Error:
-            m_ui->lblIcon->setPixmap(error);
+            m_ui->sbwIcon->setBadge(StatusBadge::Error);
             break;
         }
     }

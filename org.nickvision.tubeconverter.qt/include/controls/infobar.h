@@ -15,7 +15,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
      */
     class InfoBar : public QDockWidget
     {
-        Q_OBJECT
+    Q_OBJECT
 
     public:
         /**

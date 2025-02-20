@@ -14,7 +14,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
      */
     class AboutDialog : public QDialog
     {
-        Q_OBJECT
+    Q_OBJECT
 
     public:
         /**
