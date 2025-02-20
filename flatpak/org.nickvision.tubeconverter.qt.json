@@ -127,6 +127,34 @@
             ]
         },
         {
+            "name": "qlementine",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DQLEMENTINE_SANDBOX=OFF",
+                "-DQLEMENTINE_SHOWCASE=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/oclero/qlementine",
+                    "commit": "a3b350f3a425f539bd718e2dfb26dea4603df9b1"
+                }
+            ]
+        },
+        {
+            "name": "qlementine-icons",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/oclero/qlementine-icons",
+                    "commit": "bc9dd5e6d270321b799e43ae3600acf86125bb4b"
+                }
+            ]
+        },
+        {
             "name": "org.nickvision.tubeconverter",
             "buildsystem": "cmake-ninja",
             "builddir": true,
