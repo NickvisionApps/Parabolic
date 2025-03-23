@@ -7,7 +7,6 @@
 #include <QMimeData>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
-#include <libnick/notifications/shellnotification.h>
 #include "controls/aboutdialog.h"
 #include "controls/historyrow.h"
 #include "helpers/qthelpers.h"
@@ -125,7 +124,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_dockLogCloseEventFilter, &CloseEventFilter::closed, this, &MainWindow::onDockLogClosed);
         //Events
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
-        m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QtHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadCredentialNeeded() += [&](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
@@ -409,17 +407,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
 #endif
         msgBox.exec();
-    }
-
-    void MainWindow::onShellNotificationSent(const ShellNotificationSentEventArgs& args)
-    {
-#ifdef _WIN32
-        ShellNotification::send(args, reinterpret_cast<HWND>(winId()));
-#elif defined(__linux__)
-        ShellNotification::send(args, m_controller->getAppInfo().getId(), _("Open"));
-#else
-        ShellNotification::send(args);
-#endif
     }
 
     void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)

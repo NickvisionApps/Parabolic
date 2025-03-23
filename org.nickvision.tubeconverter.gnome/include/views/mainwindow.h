@@ -53,11 +53,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
         /**
-         * @brief Handles when a shell notification is sent to the window.
-         * @param args ShellNotificationSentEventArgs
-         */
-        void onShellNotificationSent(const Notifications::ShellNotificationSentEventArgs& args);
-        /**
          * @brief Handles when a navigation item is selected.
          * @param box The listNavItems box
          * @param row The selected row

@@ -7,11 +7,12 @@
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
+#include <libnick/notifications/appnotification.h>
+#include <libnick/notifications/shellnotification.h>
 #include <libnick/system/environment.h>
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
 #include "models/downloadrecoveryqueue.h"
-#include "models/previousdownloadoptions.h"
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -97,12 +98,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     Event<NotificationSentEventArgs>& MainWindowController::notificationSent()
     {
-        return m_notificationSent;
-    }
-
-    Event<ShellNotificationSentEventArgs>& MainWindowController::shellNotificationSent()
-    {
-        return m_shellNotificationSent;
+        return AppNotification::sent();
     }
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
@@ -220,7 +216,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
         if(recoveredDownloads > 0)
         {
-            m_notificationSent.invoke({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
+            AppNotification::send({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
         }
         m_started = true;
         return info;
@@ -247,7 +243,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             {
                 if(latest > m_appInfo.getVersion())
                 {
-                    m_notificationSent.invoke({ _("New update available"), NotificationSeverity::Success, "update" });
+                    AppNotification::send({ _("New update available"), NotificationSeverity::Success, "update" });
                 }
             }
         } };
@@ -261,12 +257,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return;
         }
-        m_notificationSent.invoke({ _("The update is downloading in the background and will start once it finishes"), NotificationSeverity::Informational });
+        AppNotification::send({ _("The update is downloading in the background and will start once it finishes"), NotificationSeverity::Informational });
         std::thread worker{ [this]()
         {
             if(!m_updater->windowsUpdate(VersionType::Stable))
             {
-                m_notificationSent.invoke({ _("Unable to download and install update"), NotificationSeverity::Error, "error" });
+                AppNotification::send({ _("Unable to download and install update"), NotificationSeverity::Error, "error" });
             }
         } };
         worker.detach();
@@ -297,16 +293,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             if(args.getStatus() == DownloadStatus::Success)
             {
-                m_shellNotificationSent.invoke({ _("Download Finished"), std::vformat(_("{} has finished downloading"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Success });
+                ShellNotification::send({ _("Download Finished"), std::vformat(_("{} has finished downloading"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Success }, m_appInfo, _("Open"));
             }
             else
             {
-                m_shellNotificationSent.invoke({ _("Download Finished With Error"), std::vformat(_("{} has finished with an error"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Error });
+                ShellNotification::send({ _("Download Finished With Error"), std::vformat(_("{} has finished with an error"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Error }, m_appInfo, _("Open"));
             }
         }
         else if(preference == CompletedNotificationPreference::AllCompleted && m_downloadManager.getRemainingDownloadsCount() == 0)
         {
-            m_shellNotificationSent.invoke({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational });
+            ShellNotification::send({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational }, m_appInfo, _("Open"));
         }
     }
 }

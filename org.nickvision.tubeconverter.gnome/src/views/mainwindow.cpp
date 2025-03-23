@@ -4,7 +4,6 @@
 #include <thread>
 #include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
-#include <libnick/notifications/shellnotification.h>
 #include <libnick/localization/gettext.h>
 #include "helpers/builder.h"
 #include "helpers/dialogptr.h"
@@ -60,7 +59,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("listNavItems"), "row-activated", G_CALLBACK(+[](GtkListBox*, GtkListBoxRow*, gpointer data) { adw_navigation_split_view_set_show_content(reinterpret_cast<MainWindow*>(data)->m_builder.get<AdwNavigationSplitView>("navView"), true); }), this);
         g_signal_connect(m_builder.get<GObject>("listNavItems"), "row-selected", G_CALLBACK(+[](GtkListBox* self, GtkListBoxRow* row, gpointer data) { reinterpret_cast<MainWindow*>(data)->onNavItemSelected(self, row); }), this);
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onNotificationSent(args); }); };
-        m_controller->shellNotificationSent() += [this](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [this](const DownloadAddedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadAdded(args); }); };
@@ -208,15 +206,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         AdwToast* toast{ adw_toast_new(args.getMessage().c_str()) };
         adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
-    }
-
-    void MainWindow::onShellNotificationSent(const ShellNotificationSentEventArgs& args)
-    {
-#ifdef __linux__
-        ShellNotification::send(args, m_controller->getAppInfo().getId(), _("Open"));
-#else
-        ShellNotification::send(args);
-#endif
     }
 
     void MainWindow::onNavItemSelected(GtkListBox* box, GtkListBoxRow* row)

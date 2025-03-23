@@ -53,11 +53,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs>& notificationSent();
         /**
-         * @brief Gets the event for when a shell notification is sent.
-         * @return The shell notification sent event
-         */
-        Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs>& shellNotificationSent();
-        /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
          */
@@ -170,8 +165,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Keyring::Keyring m_keyring;
         Models::DownloadManager m_downloadManager;
         bool m_isWindowActive;
-        Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
-        Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
     };
 }
 
