@@ -115,7 +115,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            std::string ytdlpVersion{ Environment::exec(Environment::findDependency("yt-dlp").string() + " --version") };
+            std::string ytdlpVersion{ Environment::exec("\"" + Environment::findDependency("yt-dlp").string() + "\"" + " --version") };
             builder << "yt-dlp version " << ytdlpVersion;
         }
         //ffmpeg
@@ -125,7 +125,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
+            std::string ffmpegVersion{ Environment::exec("\"" + Environment::findDependency("ffmpeg").string() + "\"" + " -version") };
             builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
         }
         //aria2c
@@ -135,7 +135,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            std::string aria2cVersion{ Environment::exec(Environment::findDependency("aria2c").string() + " --version") };
+            std::string aria2cVersion{ Environment::exec("\"" + Environment::findDependency("aria2c").string() + "\"" + " --version") };
             builder << aria2cVersion.substr(0, aria2cVersion.find('\n')) << std::endl;
         }
         //Extra

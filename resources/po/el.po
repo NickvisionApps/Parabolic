@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 18:29-0500\n"
+"POT-Creation-Date: 2025-03-22 21:10-0400\n"
 "PO-Revision-Date: 2023-08-23 16:26+0000\n"
 "Last-Translator: MOUSTAFA ALIOGLOU <moystafaa@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -120,7 +120,7 @@ msgid "translator-credits"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:223
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Προσθήκη λήψης"
@@ -145,7 +145,7 @@ msgid "Download Finished"
 msgstr "Η λήψη ολοκληρώθηκε με σφάλμα"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "ολοκληρώθηκε η λήψη του \"{0}\"."
 
@@ -154,7 +154,7 @@ msgid "Download Finished With Error"
 msgstr "Η λήψη ολοκληρώθηκε με σφάλμα"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:304
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "Το \"{0}\" τελείωσε με σφάλμα!"
 
@@ -169,18 +169,22 @@ msgid "All downloads have finished"
 msgstr "Όλες οι λήψεις έχουν ολοκληρωθεί."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr ""
 
@@ -1084,7 +1088,7 @@ msgid "No Subtitles Available"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} από {1} στοιχείο"
 
@@ -1116,6 +1120,7 @@ msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1322,12 +1327,13 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:238
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} από {1} στοιχείο"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 

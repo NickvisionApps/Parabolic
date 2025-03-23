@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 18:29-0500\n"
+"POT-Creation-Date: 2025-03-22 21:10-0400\n"
 "PO-Revision-Date: 2024-12-18 14:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -118,6 +118,7 @@ msgstr ""
 "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:223
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} descarga restaurada"
@@ -141,7 +142,7 @@ msgid "Download Finished"
 msgstr "Descarga finalizada"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" ha terminado de descargarse."
 
@@ -150,7 +151,7 @@ msgid "Download Finished With Error"
 msgstr "Descarga finalizada con error"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:304
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "¡\"{0}\" se completó con un error!"
 
@@ -164,18 +165,22 @@ msgid "All downloads have finished"
 msgstr "Todas las descargas han finalizado."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -1085,6 +1090,7 @@ msgid "No Subtitles Available"
 msgstr "Sin subtítulos disponibles"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
+#, c++-format
 msgid "{} items"
 msgstr "{} elementos"
 
@@ -1116,6 +1122,7 @@ msgid "Don't show this message again"
 msgstr "No volver a mostrar este mensaje"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1331,11 +1338,13 @@ msgstr ""
 "la configuración."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:238
+#, c++-format
 msgid "Items ({})"
 msgstr "Elementos ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} necesita una credencial para descargar. Por favor, seleccione o "
@@ -1953,8 +1962,7 @@ msgstr "Introduzca aquí la url del proxy"
 #~ msgstr "Descargas restantes: {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr ""
-#~ "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;Descargador;Conversor;"
+#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;Descargador;Conversor;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Una interfaz básica de yt-dlp"
