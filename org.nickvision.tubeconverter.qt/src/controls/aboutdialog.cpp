@@ -39,7 +39,7 @@ namespace Ui
             lblAppVersion = new QLabel(parent);
             lblAppVersion->setAlignment(Qt::AlignmentFlag::AlignCenter);
             QWidget* tabAbout{ new QWidget(parent) };
-            QVBoxLayout* layoutAbout{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutAbout{ new QVBoxLayout() };
             layoutAbout->setSpacing(12);
             layoutAbout->addStretch();
             layoutAbout->addWidget(lblAppIcon);
@@ -54,7 +54,7 @@ namespace Ui
             lblChangelog->setWordWrap(true);
             lblChangelog->setTextInteractionFlags(Qt::TextInteractionFlag::LinksAccessibleByMouse | Qt::TextInteractionFlag::TextSelectableByMouse);
             QWidget* tabChangelog{ new QWidget(parent) };
-            QVBoxLayout* layoutChangelog{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutChangelog{ new QVBoxLayout() };
             layoutChangelog->addWidget(lblChangelog);
             tabChangelog->setLayout(layoutChangelog);
             //Credits Tab
@@ -65,22 +65,22 @@ namespace Ui
             lblArtists = new QLabel(parent);
             lblArtists->setAlignment(Qt::AlignmentFlag::AlignLeading | Qt::AlignmentFlag::AlignLeft | Qt::AlignmentFlag::AlignTop);
             QGroupBox* groupDevelopers{ new QGroupBox(parent) };
-            QVBoxLayout* layoutDevelopers{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutDevelopers{ new QVBoxLayout() };
             groupDevelopers->setTitle(_("Developers"));
             layoutDevelopers->addWidget(lblDevelopers);
             groupDevelopers->setLayout(layoutDevelopers);
             QGroupBox* groupDesigners{ new QGroupBox(parent) };
-            QVBoxLayout* layoutDesigners{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutDesigners{ new QVBoxLayout() };
             groupDesigners->setTitle(_("Designers"));
             layoutDesigners->addWidget(lblDesigners);
             groupDesigners->setLayout(layoutDesigners);
             QGroupBox* groupArtists{ new QGroupBox(parent) };
-            QVBoxLayout* layoutArtists{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutArtists{ new QVBoxLayout() };
             groupArtists->setTitle(_("Artists"));
             layoutArtists->addWidget(lblArtists);
             groupArtists->setLayout(layoutArtists);
             QWidget* tabCredits{ new QWidget(parent) };
-            QVBoxLayout* layoutCredits{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutCredits{ new QVBoxLayout() };
             layoutCredits->addWidget(groupDevelopers);
             layoutCredits->addWidget(groupDesigners);
             layoutCredits->addWidget(groupArtists);
@@ -98,12 +98,12 @@ namespace Ui
             QScrollArea* scrollDebug{ new QScrollArea(parent) };
             scrollDebug->setWidgetResizable(true);
             scrollDebug->setWidget(lblDebug);
-            QVBoxLayout* layoutDebug{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutDebug{ new QVBoxLayout() };
             layoutDebug->addWidget(btnCopyDebugInformation);
             layoutDebug->addWidget(scrollDebug);
             tabDebug->setLayout(layoutDebug);
             //Main Layout
-            QVBoxLayout* layoutMain{ new QVBoxLayout(parent) };
+            QVBoxLayout* layoutMain{ new QVBoxLayout() };
             QTabWidget* tabWidget{ new QTabWidget(parent) };
             tabWidget->addTab(tabAbout, QLEMENTINE_ICON(Misc_Info), _("About"));
             tabWidget->addTab(tabChangelog, QLEMENTINE_ICON(Misc_ItemsList), _("Changelog"));

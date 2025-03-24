@@ -25,7 +25,7 @@ namespace Ui
             btnAction = new QPushButton(parent);
             //Main Layout
             QWidget* mainWidget{ new QWidget(parent) };
-            QHBoxLayout* layout{ new QHBoxLayout(parent) };
+            QHBoxLayout* layout{ new QHBoxLayout() };
             layout->addWidget(sbwIcon);
             layout->addWidget(lblMessage);
             layout->addStretch();
