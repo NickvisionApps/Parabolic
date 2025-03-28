@@ -2,9 +2,14 @@
     "name": "python3-yt-dlp",
     "buildsystem": "simple",
     "build-commands": [
-        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"yt-dlp[curl-cffi,default]\" --no-build-isolation"
+        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"yt-dlp[default,curl-cffi]\" --no-build-isolation"
     ],
     "sources": [
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/2f/c2/f9e977608bdf958650638c3f1e28f85a1b075f075ebbe77db8555463787b/Brotli-1.1.0.tar.gz",
+            "sha256": "81de08ac11bcb85841e440c13611c00b67d3bf82698314928d0b676362546724"
+        },
         {
             "type": "file",
             "url": "https://files.pythonhosted.org/packages/38/fc/bce832fd4fd99766c04d1ee0eead6b0ec6486fb100ae5e74c1d91292b982/certifi-2025.1.31-py3-none-any.whl",
@@ -62,8 +67,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/88/33/67b8be5e72f730ee142c6f6b0481738c21b482e84068cac7efd68c072088/yt_dlp-2025.3.26-py3-none-any.whl",
-            "sha256": "5e3c6464bf7ab61739a7238fe42c922515795350533eff1335eab78b4f624375"
+            "url": "https://files.pythonhosted.org/packages/9d/8a/d4a533d5bb37e6459fbbf3f801a5f8bffafe78e364a9981ab571a7038db8/yt_dlp-2025.3.27-py3-none-any.whl",
+            "sha256": "bef4105af0f25c13c1a505daf46142af45d9312dc2c3553651db083e6860e641"
         }
     ]
 }

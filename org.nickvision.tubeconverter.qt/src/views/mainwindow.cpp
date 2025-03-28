@@ -13,7 +13,7 @@
 #include "views/adddownloaddialog.h"
 #include "views/credentialdialog.h"
 #include "views/keyringpage.h"
-#include "views/settingspage.h"
+#include "views/settingsdialog.h"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
@@ -213,15 +213,6 @@ namespace Nickvision::TubeConverter::Qt::Views
             }
         }
         m_ui->viewStack->insertWidget(Page::Keyring, new KeyringPage(m_controller->createKeyringDialogController(), this));
-        //Save and ensure new SettingsPage
-        if(m_ui->viewStack->widget(Page::Settings))
-        {
-            SettingsPage* oldSettings{ qobject_cast<SettingsPage*>(m_ui->viewStack->widget(Page::Settings)) };
-            oldSettings->close();
-            m_ui->viewStack->removeWidget(oldSettings);
-            delete oldSettings;
-        }
-        m_ui->viewStack->insertWidget(Page::Settings, new SettingsPage(m_controller->createPreferencesViewController(), m_themeManager, this));
         //Navigate to new page
         if(id == "home")
         {
@@ -252,7 +243,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         else if(id == "settings")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Settings);
+            SettingsDialog dialog{ m_controller->createPreferencesViewController(), m_themeManager, this };
+            dialog.exec();
         }
     }
 
