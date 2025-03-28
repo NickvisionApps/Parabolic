@@ -1,7 +1,7 @@
 {
     "app-id" : "org.nickvision.tubeconverter",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "47",
+    "runtime-version" : "48",
     "sdk" : "org.gnome.Sdk",
     "command" : "org.nickvision.tubeconverter",
     "finish-args":[
@@ -18,6 +18,8 @@
     ],
     "cleanup":[
         "/include",
+        "/lib/cmake",
+        "/lib/debug",
         "/lib/pkgconfig",
         "*.a"
     ],
@@ -48,7 +50,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/progsource/maddy",
-                    "tag": "1.3.0"
+                    "tag": "1.4.0"
                 }
             ]
         },
@@ -64,7 +66,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2025.1.0"
+                    "tag": "2025.3.6"
                 }
             ]
         },
@@ -78,16 +80,16 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-01-27-14-15/ffmpeg-n7.1-184-gdc07f98934-linux64-gpl-7.1.tar.xz",
-                    "sha256": "1ce51162bfb3b0067e7bfcb834437c480e07ceb2d2aeacaa377949e1a5f09a06",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-03-22-14-15/ffmpeg-n7.1.1-5-g276bd388f3-linux64-gpl-7.1.tar.xz",
+                    "sha256": "5516134d5320e6ef44837d1d98a00dba979be0ac8da7eba62978b2b6d954ddbb",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-01-27-14-15/ffmpeg-n7.1-184-gdc07f98934-linuxarm64-gpl-7.1.tar.xz",
-                    "sha256": "4c5402e71452b5e70eacf89c4cf452d4a671bd684b8974542b96aaa4be52aebe",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-03-22-14-15/ffmpeg-n7.1.1-5-g276bd388f3-linuxarm64-gpl-7.1.tar.xz",
+                    "sha256": "bf295abcec37e47ded41c95f832105e1ffcb8405b52ae5c50958312458b8afbf",
                     "only-arches": [
                         "aarch64"
                     ]
@@ -125,7 +127,9 @@
             "name": "libxmlplusplus",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dmaintainer-mode=false"
+                "-Dmaintainer-mode=false",
+                "-Dbuild-examples=false",
+                "-Dbuild-tests=false"
             ],
             "sources": [
                 {

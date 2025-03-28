@@ -15,7 +15,6 @@
 #include <libnick/app/windowgeometry.h>
 #include <libnick/events/event.h>
 #include <libnick/keyring/keyring.h>
-#include <libnick/logging/logger.h>
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
 #include <libnick/system/suspendinhibitor.h>
@@ -53,11 +52,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The notification sent event
          */
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs>& notificationSent();
-        /**
-         * @brief Gets the event for when a shell notification is sent.
-         * @return The shell notification sent event
-         */
-        Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs>& shellNotificationSent();
         /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
@@ -150,13 +144,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void windowsUpdate();
 #endif
-        /**
-         * @brief Logs a system message.
-         * @param level The severity level of the message
-         * @param message The message to log
-         * @param source The source location of the log message
-         */
-        void log(Logging::LogLevel level, const std::string& message, const std::source_location& source = std::source_location::current());
 
     private:
         /**
@@ -172,15 +159,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::vector<std::string> m_args;
         Nickvision::App::AppInfo m_appInfo;
         Nickvision::App::DataFileManager m_dataFileManager;
-        Nickvision::Logging::Logger m_logger;
         std::shared_ptr<Nickvision::Update::Updater> m_updater;
         Nickvision::Taskbar::TaskbarItem m_taskbar;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         Nickvision::Keyring::Keyring m_keyring;
         Models::DownloadManager m_downloadManager;
         bool m_isWindowActive;
-        Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
-        Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
     };
 }
 

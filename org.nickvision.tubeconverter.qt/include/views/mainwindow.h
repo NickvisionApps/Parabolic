@@ -7,6 +7,7 @@
 #include <QDropEvent>
 #include <QListWidget>
 #include <QMainWindow>
+#include <oclero/qlementine/style/ThemeManager.hpp>
 #include "controllers/mainwindowcontroller.h"
 #include "controls/downloadrow.h"
 #include "controls/navigationbar.h"
@@ -27,9 +28,10 @@ namespace Nickvision::TubeConverter::Qt::Views
         /**
          * @brief Constructs a MainWindow.
          * @param controller The MainWindowController
+         * @param themeManager The ThemeManager
          * @param parent The parent widget
          */
-        MainWindow(const std::shared_ptr<Shared::Controllers::MainWindowController>& controller, QWidget* parent = nullptr);
+        MainWindow(const std::shared_ptr<Shared::Controllers::MainWindowController>& controller, oclero::qlementine::ThemeManager* themeManager, QWidget* parent = nullptr);
         /**
          * @brief Destructs a MainWindow.
          */
@@ -127,11 +129,6 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
         /**
-         * @brief Handles when a shell notification is sent.
-         * @param args The ShellNotificationSentEventArgs
-         */
-        void onShellNotificationSent(const Notifications::ShellNotificationSentEventArgs& args);
-        /**
          * @brief Handles when the download history is changed.
          * @param args The ParamEventArgs<std::vector<Models::HistoricDownload>>
          */
@@ -182,6 +179,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         Controls::NavigationBar* m_navigationBar;
         Helpers::CloseEventFilter* m_dockLogCloseEventFilter;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
+        oclero::qlementine::ThemeManager* m_themeManager;
         std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
     };
 }

@@ -1,5 +1,5 @@
 ﻿if(WIN32)
-	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
 add_library(libparabolic
@@ -37,6 +37,12 @@ else()
     target_compile_options(libparabolic PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 
+if(WIN32)
+    if(USING_VCPKG)
+        find_package(unofficial-wintoast CONFIG REQUIRED)
+        target_link_libraries(libparabolic PRIVATE unofficial::wintoast::wintoast)
+    endif()
+endif()
 find_package(libnick CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS date_time)
 target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time)
