@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-27 06:31-0400\n"
-"PO-Revision-Date: 2025-01-31 03:29+0000\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2025-01-30 16:11-0500\n"
+"PO-Revision-Date: 2025-03-29 14:01+0000\n"
+"Last-Translator: burns <ahoradocafezinho@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/app/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
@@ -119,58 +119,48 @@ msgstr ""
 "Murilo Monte <murilomonte086@gmail.com>\n"
 "Rafael Fontenelle <rafaelff@gnome.org>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:266
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} download recuperado"
 msgstr[1] "{} downloads recuperados"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:246
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "New update available"
 msgstr "Nova atualização disponível"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:260
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:318
 msgid ""
 "The update is downloading in the background and will start once it finishes"
 msgstr ""
 "A atualização está sendo baixada em plano de fundo e será iniciada assim que "
 "concluir"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "Unable to download and install update"
 msgstr "Não foi possível baixar e instalar a atualização"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:379
 msgid "Download Finished"
 msgstr "Download finalizado"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:379
 msgid "{} has finished downloading"
 msgstr "{} acabou de ser baixado"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-msgid "Open"
-msgstr "Abrir"
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:383
 msgid "Download Finished With Error"
 msgstr "Download finalizado com erro"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:383
 msgid "{} has finished with an error"
 msgstr "{} finalizou com um erro"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:388
 msgid "Downloads Finished"
 msgstr "Downloads concluídos"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:388
 msgid "All downloads have finished"
 msgstr "Todos os downloads foram finalizados"
 
@@ -422,12 +412,21 @@ msgstr "Parar"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
 msgid "Play"
 msgstr "Reproduzir"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:217
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:422
+msgid "Open"
+msgstr "Abrir"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
@@ -494,9 +493,8 @@ msgstr "Atalhos do teclado"
 msgid "Help"
 msgstr "Ajuda"
 
-#. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
 msgid "About Parabolic"
 msgstr "Sobre Parabólica"
 
@@ -505,19 +503,19 @@ msgid "Main Menu"
 msgstr "Menu principal"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Home"
 msgstr "Início"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:234
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Keyring"
 msgstr "Chaveiro"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "History"
 msgstr "Histórico"
@@ -525,26 +523,26 @@ msgstr "Histórico"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:79
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:25
 msgid "Downloads"
 msgstr "Downloads"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "Downloading"
 msgstr "Baixando"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Queued"
 msgstr "Em fila"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Completed"
 msgstr "Concluído"
@@ -629,12 +627,12 @@ msgstr "Repetir downloads com falha"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:24
 msgid "User Interface"
 msgstr "Interface do usuário"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:29
 msgid "Theme"
 msgstr "Tema"
 
@@ -654,134 +652,134 @@ msgid "System"
 msgstr "Sistema"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:34
 msgid "Completed Notification Trigger"
 msgstr "Notificação de conclusão do download"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:35
 msgid "For each download"
 msgstr "Para cada download"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:36
 msgid "When all downloads finish"
 msgstr "Quando todos terminarem"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:38
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:42
 msgid "Never"
 msgstr "Nunca"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:38
 msgid "Prevent Suspend"
 msgstr "Impedir suspensão da tela"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:39
 msgid "Recover Crashed Downloads"
 msgstr "Recuperar downloads com falha"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:57
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:40
 msgid "Download Immediately After Validation"
 msgstr "Baixar imediatamente após a validação"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:66
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:41
 msgid "Download History Length"
 msgstr "Tamanho do histórico de downloads"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:43
 msgid "One Day"
 msgstr "Um dia"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:44
 msgid "One Week"
 msgstr "Uma semana"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:45
 msgid "One Month"
 msgstr "Um mês"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:46
 msgid "Three Months"
 msgstr "Três meses"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:47
 msgid "Forever"
 msgstr "Sempre"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:82
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:49
 msgid "Max Number of Active Downloads"
 msgstr "Número máximo de downloads ativos"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:48
 msgid "Overwrite Existing Files"
 msgstr "Sobrescrever arquivos existentes"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:54
 msgid "Limit Filename Characters"
 msgstr "Limitar caracteres do nome do arquivo"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:55
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:57
 msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr ""
 "Restringe os caracteres dos nomes de arquivos a apenas aqueles suportados "
 "pelo Windows."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:57
 msgid "Include Media Id in Title After Validation"
 msgstr "Incluir o ID da mídia no título após a validação"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:58
 msgid "Include Auto-Generated Subtitles"
 msgstr "Incluir legendas geradas automaticamente"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:59
 msgid "Preferred Video Codec"
 msgstr "Codec de vídeo preferido"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:65
 msgid "Any"
 msgstr "Qualquer"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:64
 msgid "Preferred Subtitle Format"
 msgstr "Formato de legenda preferido"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:26
 msgid "Downloader"
 msgstr "Gerenciador de downloads"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:71
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:70
 msgid "Verbose Logging"
 msgstr "Registro detalhado"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:72
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:71
 msgid "Use SponsorBlock for YouTube"
 msgstr "Usar SponsorBlock para o YouTube"
 
@@ -790,8 +788,8 @@ msgid "Speed Limit (KiB/s)"
 msgstr "Limite de velocidade (KiB/s)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:182
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:73
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:74
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:75
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
 "speed."
@@ -799,107 +797,107 @@ msgstr ""
 "Esse limite é aplicado aos downloads que têm o limite de velocidade ativo."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:198
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:75
 msgid "Proxy URL"
 msgstr "URL da Proxy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:207
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:78
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:77
 msgid "Cookies from Browser"
 msgstr "Cookies do navegador"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:96
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:79
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:78
 msgid "None"
 msgstr "Nenhum"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:79
 msgid "Brave"
 msgstr "Brave"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:80
 msgid "Chrome"
 msgstr "Chrome"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:82
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:81
 msgid "Chromium"
 msgstr "Chromium"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:82
 msgid "Edge"
 msgstr "Edge"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:83
 msgid "Firefox"
 msgstr "Firefox"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:84
 msgid "Opera"
 msgstr "Opera"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:86
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:85
 msgid "Safari"
 msgstr "Safari"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:86
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:88
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:87
 msgid "Whale"
 msgstr "Whale"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:88
 msgid "Cookies File"
 msgstr "Aquivo de cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:144
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:89
 msgid "No file selected"
 msgstr "Nenhum arquivo selecionado"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:91
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:233
 msgid "Select Cookies File"
 msgstr "Selecione o arquivo de cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:240
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:92
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:91
 msgid "Clear Cookies File"
 msgstr "Limpar arquivo de cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:27
 msgid "Converter"
 msgstr "Conversor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:253
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:92
 msgid "Embed Metadata"
 msgstr "Incorporar metadados"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:93
 msgid "Remove Source Data"
 msgstr "Remover dados de origem"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:95
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:96
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
@@ -908,13 +906,13 @@ msgstr ""
 "informações de identificação de download."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:96
 msgid "Embed Thumbnails"
 msgstr "Incorporar miniaturas"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:97
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:98
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:99
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
@@ -923,13 +921,13 @@ msgstr ""
 "em um arquivo de imagem separado."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:99
 msgid "Crop Audio Thumbnails"
 msgstr "Cortar miniaturas para áudio"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:100
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:101
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:102
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
 msgstr ""
@@ -937,18 +935,18 @@ msgstr ""
 "quadrados."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:103
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:102
 msgid "Embed Chapters"
 msgstr "Incorporar capítulos"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:305
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:104
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:103
 msgid "Embed Subtitles"
 msgstr "Incorporar Legendas"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:104
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:105
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:106
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
@@ -957,33 +955,33 @@ msgstr ""
 "serão salvas em um arquivo separado."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:106
 msgid "Postprocessing Threads"
 msgstr "Pós-processamento de threads"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:325
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:28
 msgid "aria2"
 msgstr "aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:112
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:111
 msgid "Use aria2"
 msgstr "Usar aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:337
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:113
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:112
 msgid "Max Connections Per Server (-x)"
 msgstr "Máximo de conexões por servidor (-x)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:354
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:114
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:113
 msgid "Minimum Split Size (-k)"
 msgstr "Tamanho mínimo da divisão (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:355
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:114
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:115
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:116
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "O tamanho mínimo para dividir um arquivo (em MiB)."
 
@@ -1057,7 +1055,7 @@ msgstr "Selecionar arquivo de lote"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:130
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:233
 msgid "TXT Files (*.txt)"
 msgstr "Arquivos TXT (*.txt)"
 
@@ -1074,7 +1072,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:283
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:378
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
 msgid "Close"
 msgstr "Fechar"
 
@@ -1111,10 +1109,10 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:282
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:377
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:355
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 msgid "Don't show this message again"
 msgstr "Não mostrar esta mensagem novamente"
 
@@ -1142,7 +1140,7 @@ msgid "Edit"
 msgstr "Editar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:318
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 msgid "Delete"
@@ -1163,12 +1161,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr "Tem certeza que deseja apagar essa credencial?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Yes"
 msgstr "Sim"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "No"
 msgstr "Não"
 
@@ -1196,13 +1194,13 @@ msgstr "Nome (Existe)"
 msgid "Credential (Database Error)"
 msgstr "Credencial (Erro de banco de dados)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:165
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid "Disclaimer"
 msgstr "Aviso Legal"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:165
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1213,64 +1211,47 @@ msgstr ""
 "direitos autorais/DMCA. Os usuários usam este aplicativo por sua conta e "
 "risco."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 msgid "Exit?"
 msgstr "Sair?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:182
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Há downloads em andamento. Tem certeza de que deseja sair?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:291
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:303
 msgid "Download Again"
 msgstr "Baixar novamente"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:448
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:460
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "GitHub Repo"
 msgstr "Repositório do GitHub"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:69
-msgid "Developers"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:74
-msgid "Designers"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:79
-msgid "Artists"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:90
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:161
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
 msgid "Copy Debug Information"
 msgstr "Copiar informação de depuração"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:108
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-msgid "About"
-msgstr "Sobre"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:109
-#, fuzzy
-msgid "Changelog"
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
+msgid "Changelog:"
 msgstr "Histórico de mudanças:"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:110
-msgid "Credits"
-msgstr "Créditos"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:111
-msgid "Debugging"
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+msgid ""
+"Developers:\n"
+"{}\n"
+"Designers:\n"
+"{}\n"
+"Artists:\n"
+"{}"
 msgstr ""
-
-#. Window Settings
-#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:50
-#, fuzzy
-msgid "Notification"
-msgstr "Programa"
+"Desenvolvedores:\n"
+"{}\n"
+"Designers:\n"
+"{}\n"
+"Artistas:\n"
+"{}"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:31
 msgid "Enter media url here"
@@ -1410,6 +1391,10 @@ msgstr "Reportar um Bug"
 msgid "Discussions"
 msgstr "Discussões"
 
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "Sobre"
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Settings"
@@ -1423,52 +1408,33 @@ msgstr "Tentativa falhou"
 msgid "Log"
 msgstr "Registro"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:397
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:409
 msgid "Update"
 msgstr "Atualizar"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:30
 msgid "Light"
 msgstr "Claro"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:31
 msgid "Dark"
 msgstr "Escuro"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:32
 msgid "System"
 msgstr "Sistema"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:33
 msgid "Automatically Check for Updates"
 msgstr "Verificar automaticamente se há atualizações"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:72
 msgid "Speed Limit"
 msgstr "Limite de velocidade"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:77
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "Insira a URL do proxy aqui"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "Programa"
-
-#~ msgid ""
-#~ "Developers:\n"
-#~ "{}\n"
-#~ "Designers:\n"
-#~ "{}\n"
-#~ "Artists:\n"
-#~ "{}"
-#~ msgstr ""
-#~ "Desenvolvedores:\n"
-#~ "{}\n"
-#~ "Designers:\n"
-#~ "{}\n"
-#~ "Artistas:\n"
-#~ "{}"
 
 #~ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 #~ msgstr ""
@@ -1519,6 +1485,10 @@ msgstr "Insira a URL do proxy aqui"
 #, fuzzy
 #~ msgid "Close Folder"
 #~ msgstr "Pasta de destino"
+
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "Programa"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Adicionar download (Ctrl+N)"
@@ -1590,6 +1560,9 @@ msgstr "Insira a URL do proxy aqui"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "Informações sobre arquivo de cookies"
+
+#~ msgid "Credits"
+#~ msgstr "Créditos"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Cortar miniatura"
