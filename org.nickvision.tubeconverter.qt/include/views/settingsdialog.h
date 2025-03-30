@@ -43,6 +43,24 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Handles when the theme combobox changes.
          */
         void onThemeChanged();
+        /**
+         * @brief Prompts the user to select a cookies file.
+         */
+        void selectCookiesFile();
+        /**
+         * @brief Clears the cookies file.
+         */
+        void clearCookiesFile();
+        /**
+         * @brief Handles when the embed metadata checkbox is toggled.
+         * @param checked The new state of the checkbox
+         */
+        void onEmbedMetadataChanged(bool checked);
+        /**
+         * @brief Handles when the embed thumbnails checkbox is toggled.
+         * @param checked The new state of the checkbox
+         */
+        void onEmbedThumbnailsChanged(bool checked);
 
     private:
         Ui::SettingsDialog* m_ui;

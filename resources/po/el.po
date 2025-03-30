@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-27 06:31-0400\n"
+"POT-Creation-Date: 2025-03-30 14:49-0400\n"
 "PO-Revision-Date: 2023-08-23 16:26+0000\n"
 "Last-Translator: MOUSTAFA ALIOGLOU <moystafaa@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -120,7 +120,7 @@ msgid "translator-credits"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Προσθήκη λήψης"
@@ -145,7 +145,7 @@ msgid "Download Finished"
 msgstr "Η λήψη ολοκληρώθηκε με σφάλμα"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "ολοκληρώθηκε η λήψη του \"{0}\"."
 
@@ -164,7 +164,7 @@ msgid "Download Finished With Error"
 msgstr "Η λήψη ολοκληρώθηκε με σφάλμα"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "Το \"{0}\" τελείωσε με σφάλμα!"
 
@@ -179,18 +179,22 @@ msgid "All downloads have finished"
 msgstr "Όλες οι λήψεις έχουν ολοκληρωθεί."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr ""
 
@@ -530,7 +534,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:79
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
 #, fuzzy
 msgid "Downloads"
 msgstr "Προσθήκη λήψης"
@@ -636,14 +640,13 @@ msgstr ""
 msgid "Retry Failed Downloads"
 msgstr ""
 
-#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:253
 msgid "User Interface"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:34
 msgid "Theme"
 msgstr ""
 
@@ -663,136 +666,136 @@ msgid "System"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:43
 msgid "Completed Notification Trigger"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:45
 #, fuzzy
 msgid "For each download"
 msgstr "Προσθήκη λήψης"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:46
 #, fuzzy
 msgid "When all downloads finish"
 msgstr "Όλες οι λήψεις έχουν ολοκληρωθεί."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:38
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:60
 msgid "Never"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
 msgid "Prevent Suspend"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
 #, fuzzy
 msgid "Recover Crashed Downloads"
 msgstr "Προσθήκη λήψης"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:57
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:55
 msgid "Download Immediately After Validation"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:66
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 #, fuzzy
 msgid "Download History Length"
 msgstr "Η λήψη ολοκληρώθηκε"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
 msgid "One Day"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
 msgid "One Week"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
 msgid "One Month"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:64
 msgid "Three Months"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:65
 msgid "Forever"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:82
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:79
 msgid "Max Number of Active Downloads"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:84
 msgid "Overwrite Existing Files"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
 msgid "Limit Filename Characters"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:90
 msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
 msgid "Include Media Id in Title After Validation"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:95
 msgid "Include Auto-Generated Subtitles"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:98
 msgid "Preferred Video Codec"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:107
 msgid "Any"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:105
 msgid "Preferred Subtitle Format"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:255
 msgid "Downloader"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:71
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:125
 msgid "Verbose Logging"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:72
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:128
 msgid "Use SponsorBlock for YouTube"
 msgstr ""
 
@@ -801,193 +804,193 @@ msgid "Speed Limit (KiB/s)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:182
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:74
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:75
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:132
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:134
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
 "speed."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:198
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:139
 msgid "Proxy URL"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:207
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:78
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:143
 msgid "Cookies from Browser"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:96
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:79
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:145
 msgid "None"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
 msgid "Brave"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:147
 msgid "Chrome"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:82
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:148
 msgid "Chromium"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
 msgid "Edge"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:150
 msgid "Firefox"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
 msgid "Opera"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:86
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
 msgid "Safari"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
 msgid "Vivaldi"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:88
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:154
 msgid "Whale"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:156
 msgid "Cookies File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:144
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:159
 msgid "No file selected"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:91
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:440
 msgid "Select Cookies File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:240
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:92
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
 msgid "Clear Cookies File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
 msgid "Converter"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:253
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:184
 msgid "Embed Metadata"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:94
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:187
 msgid "Remove Source Data"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:95
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:96
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:188
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:192
 #, fuzzy
 msgid "Embed Thumbnails"
 msgstr "Η λήψη ολοκληρώθηκε"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:98
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:193
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:195
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:197
 msgid "Crop Audio Thumbnails"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:101
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:102
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:200
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:103
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:202
 msgid "Embed Chapters"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:305
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:104
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:205
 #, fuzzy
 msgid "Embed Subtitles"
 msgstr "Η λήψη ολοκληρώθηκε"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:105
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:206
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:208
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:210
 msgid "Postprocessing Threads"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:325
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 msgid "aria2"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:112
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:227
 msgid "Use aria2"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:337
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:113
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:230
 msgid "Max Connections Per Server (-x)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:354
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:114
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
 msgid "Minimum Split Size (-k)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:355
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:115
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:116
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:238
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr ""
 
@@ -1061,7 +1064,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:130
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:440
 msgid "TXT Files (*.txt)"
 msgstr ""
 
@@ -1085,7 +1088,7 @@ msgid "No Subtitles Available"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} από {1} στοιχείο"
 
@@ -1117,6 +1120,7 @@ msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1323,12 +1327,13 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:238
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} από {1} στοιχείο"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1395,8 +1400,10 @@ msgstr ""
 msgid "Discussions"
 msgstr ""
 
+#. Dialog Settings
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:317
 msgid "Settings"
 msgstr ""
 
@@ -1412,27 +1419,27 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:36
 msgid "Light"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:37
 msgid "Dark"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:38
 msgid "System"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:40
 msgid "Automatically Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:131
 msgid "Speed Limit"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:77
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:141
 msgid "Enter proxy url here"
 msgstr ""
 
