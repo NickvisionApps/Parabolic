@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Handles when the cmbAuthenticate's index has changed.
          * @param index The new index
          */
-        void onCmbAuthenticateChanged(int index);
+        void onCmbCredentialChanged(int index);
         /**
          * @brief Validates the media url.
          */

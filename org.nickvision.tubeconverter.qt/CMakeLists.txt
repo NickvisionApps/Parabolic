@@ -40,7 +40,6 @@ qt_add_executable(${OUTPUT_NAME}
     "src/controls/statuspage.cpp"
     "src/helpers/closeeventfilter.cpp"
     "src/helpers/qthelpers.cpp"
-    "src/views/adddownloaddialog.ui"
     "src/views/adddownloaddialog.cpp"
     "src/views/credentialdialog.ui"
     "src/views/credentialdialog.cpp"
