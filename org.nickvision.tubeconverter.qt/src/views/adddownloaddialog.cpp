@@ -1,21 +1,276 @@
 #include "views/adddownloaddialog.h"
-#include "ui_adddownloaddialog.h"
 #include <functional>
 #include <QApplication>
+#include <QCheckBox>
 #include <QClipboard>
+#include <QComboBox>
 #include <QFileDialog>
+#include <QFormLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QListWidget>
 #include <QMessageBox>
+#include <QPushButton>
+#include <QStackedWidget>
+#include <QTabWidget>
+#include <QVBoxLayout>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include <oclero/qlementine/widgets/LoadingSpinner.hpp>
+#include <oclero/qlementine/widgets/LineEdit.hpp>
+#include <oclero/qlementine/widgets/Switch.hpp>
+#include "controls/statuspage.h"
 #include "helpers/qthelpers.h"
 
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
+using namespace Nickvision::TubeConverter::Qt::Controls;
 using namespace Nickvision::TubeConverter::Qt::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
+using namespace oclero::qlementine;
+
+enum AddDownloadDialogPage
+{
+    Validate = 0,
+    Loading,
+    Single,
+    Playlist
+};
+
+enum AddDownloadDialogSubtitlesSinglePage
+{
+    None = 0,
+    Some
+};
+
+namespace Ui
+{
+    class AddDownloadDialog
+    {
+    public:
+        void setupUi(Nickvision::TubeConverter::Qt::Views::AddDownloadDialog* parent)
+        {
+            viewStack = new QStackedWidget(parent);
+            //Validation Page
+            QLabel* lblMediaUrl{ new QLabel(parent) };
+            lblMediaUrl->setText(_("Media URL"));
+            txtMediaUrl = new LineEdit(parent);
+            txtMediaUrl->setPlaceholderText(_("Enter media url here"));
+            btnUseBatchFile = new QPushButton(parent);
+            btnUseBatchFile->setAutoDefault(false);
+            btnUseBatchFile->setDefault(false);
+            btnUseBatchFile->setIcon(QLEMENTINE_ICON(Document_Open));
+            btnUseBatchFile->setText(_("Use Batch File"));
+            QFormLayout* layoutMedia{ new QFormLayout() };
+            layoutMedia->addRow(lblMediaUrl, txtMediaUrl);
+            layoutMedia->addRow(nullptr, btnUseBatchFile);
+            QWidget* mediaPage{ new QWidget(parent) };
+            mediaPage->setLayout(layoutMedia);
+            QLabel* lblCredential{ new QLabel(parent) };
+            lblCredential->setText(_("Credential"));
+            cmbCredential = new QComboBox(parent);
+            QLabel* lblUsername{ new QLabel(parent) };
+            lblUsername->setText(_("Username"));
+            txtUsername = new LineEdit(parent);
+            txtUsername->setPlaceholderText(_("Enter username here"));
+            QLabel* lblPassword{ new QLabel(parent) };
+            lblPassword->setText(_("Password"));
+            txtPassword = new LineEdit(parent);
+            txtPassword->setPlaceholderText(_("Enter password here"));
+            QFormLayout* layoutAuthenticate{ new QFormLayout() };
+            layoutAuthenticate->addRow(lblCredential, cmbCredential);
+            layoutAuthenticate->addRow(lblUsername, txtUsername);
+            layoutAuthenticate->addRow(lblPassword, txtPassword);
+            QWidget* authenticatePage{ new QWidget(parent) };
+            authenticatePage->setLayout(layoutAuthenticate);
+            QTabWidget* tabsValidation{ new QTabWidget(parent) };
+            tabsValidation->addTab(mediaPage, _("Media"));
+            tabsValidation->addTab(authenticatePage, _("Authentication"));
+            tabsValidation->setCurrentIndex(0);
+            btnValidate = new QPushButton(parent);
+            btnValidate->setAutoDefault(true);
+            btnValidate->setDefault(true);
+            btnValidate->setEnabled(false);
+            btnValidate->setIcon(QLEMENTINE_ICON(Navigation_Search));
+            btnValidate->setText(_("Validate"));
+            QVBoxLayout* layoutValidation{ new QVBoxLayout() };
+            layoutValidation->addWidget(tabsValidation);
+            layoutValidation->addWidget(btnValidate);
+            QWidget* validationPage{ new QWidget(parent) };
+            validationPage->setLayout(layoutValidation);
+            viewStack->addWidget(validationPage);
+            //Loading Page
+            LoadingSpinner* spinner{ new LoadingSpinner(parent) };
+            spinner->setMinimumSize(32, 32);
+            spinner->setMaximumSize(32, 32);
+            spinner->setSpinning(true);
+            QVBoxLayout* layoutSpinner{ new QVBoxLayout() };
+            layoutSpinner->addStretch();
+            layoutSpinner->addWidget(spinner);
+            layoutSpinner->addStretch();
+            QHBoxLayout* layoutLoading{ new QHBoxLayout() };
+            layoutLoading->addStretch();
+            layoutLoading->addLayout(layoutSpinner);
+            layoutLoading->addStretch();
+            QWidget* loadingPage{ new QWidget(parent) };
+            loadingPage->setLayout(layoutLoading);
+            viewStack->addWidget(loadingPage);
+            //Single Download Page
+            QLabel* lblFileTypeSingle{ new QLabel(parent) };
+            lblFileTypeSingle->setText(_("File Type"));
+            cmbFileTypeSingle = new QComboBox(parent);
+            QLabel* lblVideoFormatSingle{ new QLabel(parent) };
+            lblVideoFormatSingle->setText(_("Video Format"));
+            cmbVideoFormatSingle = new QComboBox(parent);
+            QLabel* lblAudioFormatSingle{ new QLabel(parent) };
+            lblAudioFormatSingle->setText(_("Audio Format"));
+            cmbAudioFormatSingle = new QComboBox(parent);
+            QLabel* lblSaveFolderSingle{ new QLabel(parent) };
+            lblSaveFolderSingle->setText(_("Save Folder"));
+            txtSaveFolderSingle = new LineEdit(parent);
+            txtSaveFolderSingle->setReadOnly(false);
+            txtSaveFolderSingle->setPlaceholderText(_("No save folder selected"));
+            btnSelectSaveFolderSingle = new QPushButton(parent);
+            btnSelectSaveFolderSingle->setAutoDefault(false);
+            btnSelectSaveFolderSingle->setDefault(false);
+            btnSelectSaveFolderSingle->setIcon(QLEMENTINE_ICON(File_FolderOpen));
+            btnSelectSaveFolderSingle->setToolTip(_("Select Save Folder"));
+            QLabel* lblFilenameSingle{ new QLabel(parent) };
+            lblFilenameSingle->setText(_("File Name"));
+            txtFilenameSingle = new LineEdit(parent);
+            txtFilenameSingle->setPlaceholderText(_("Enter file name here"));
+            btnRevertFilenameSingle = new QPushButton(parent);
+            btnRevertFilenameSingle->setAutoDefault(false);
+            btnRevertFilenameSingle->setDefault(false);
+            btnRevertFilenameSingle->setIcon(QLEMENTINE_ICON(Action_Undo));
+            btnRevertFilenameSingle->setToolTip(_("Revert to Title"));
+            QHBoxLayout* layoutSaveFolderSingle{ new QHBoxLayout() };
+            layoutSaveFolderSingle->addWidget(txtSaveFolderSingle);
+            layoutSaveFolderSingle->addWidget(btnSelectSaveFolderSingle);
+            QHBoxLayout* layoutFilenameSingle{ new QHBoxLayout() };
+            layoutFilenameSingle->addWidget(txtFilenameSingle);
+            layoutFilenameSingle->addWidget(btnRevertFilenameSingle);
+            QFormLayout* layoutGeneralSingle{ new QFormLayout() };
+            layoutGeneralSingle->addRow(lblFileTypeSingle, cmbFileTypeSingle);
+            layoutGeneralSingle->addRow(lblVideoFormatSingle, cmbVideoFormatSingle);
+            layoutGeneralSingle->addRow(lblAudioFormatSingle, cmbAudioFormatSingle);
+            layoutGeneralSingle->addRow(lblSaveFolderSingle, layoutSaveFolderSingle);
+            layoutGeneralSingle->addRow(lblFilenameSingle, layoutFilenameSingle);
+            QWidget* generalSinglePage{ new QWidget(parent) };
+            generalSinglePage->setLayout(layoutGeneralSingle);
+            QLabel* lblSplitChaptersSingle{ new QLabel(parent) };
+            lblSplitChaptersSingle->setText(_("Split Video by Chapters"));
+            chkSplitChaptersSingle = new Switch(parent);
+            QLabel* lblLimitSpeedSingle{ new QLabel(parent) };
+            lblLimitSpeedSingle->setText(_("Limit Download Speed"));
+            chkLimitSpeedSingle = new Switch(parent);
+            QLabel* lblExportDescriptionSingle{ new QLabel(parent) };
+            lblExportDescriptionSingle->setText(_("Export Description"));
+            chkExportDescriptionSingle = new Switch(parent);
+            QLabel* lblTimeFrameStartSingle{ new QLabel(parent) };
+            lblTimeFrameStartSingle->setText(_("Start Time"));
+            txtTimeFrameStartSingle = new LineEdit(parent);
+            txtTimeFrameStartSingle->setPlaceholderText(_("Enter start time here"));
+            QLabel* lblTimeFrameEndSingle{ new QLabel(parent) };
+            lblTimeFrameEndSingle->setText(_("End Time"));
+            txtTimeFrameEndSingle = new LineEdit(parent);
+            txtTimeFrameEndSingle->setPlaceholderText(_("Enter end time here"));
+            QFormLayout* layoutAdvancedSingle{ new QFormLayout() };
+            layoutAdvancedSingle->addRow(lblSplitChaptersSingle, chkSplitChaptersSingle);
+            layoutAdvancedSingle->addRow(lblLimitSpeedSingle, chkLimitSpeedSingle);
+            layoutAdvancedSingle->addRow(lblExportDescriptionSingle, chkExportDescriptionSingle);
+            layoutAdvancedSingle->addRow(lblTimeFrameStartSingle, txtTimeFrameStartSingle);
+            layoutAdvancedSingle->addRow(lblTimeFrameEndSingle, txtTimeFrameEndSingle);
+            QWidget* advancedSinglePage{ new QWidget(parent) };
+            advancedSinglePage->setLayout(layoutAdvancedSingle);
+            Nickvision::TubeConverter::Qt::Controls::StatusPage* statusSubtitlesSingle{ new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent) };
+            statusSubtitlesSingle->setIcon(QLEMENTINE_ICON(Misc_Unavailable));
+            statusSubtitlesSingle->setTitle(_("No Subtitles Available"));
+            btnSelectAllSubtitlesSingle = new QPushButton(parent);
+            btnSelectAllSubtitlesSingle->setAutoDefault(false);
+            btnSelectAllSubtitlesSingle->setDefault(false);
+            btnSelectAllSubtitlesSingle->setIcon(QLEMENTINE_ICON(Action_SelectAll));
+            btnSelectAllSubtitlesSingle->setText(_("Select All"));
+            btnDeselectAllSubtitlesSingle = new QPushButton(parent);
+            btnDeselectAllSubtitlesSingle->setAutoDefault(false);
+            btnDeselectAllSubtitlesSingle->setDefault(false);
+            btnDeselectAllSubtitlesSingle->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
+            btnDeselectAllSubtitlesSingle->setText(_("Deselect All"));
+            QHBoxLayout* layoutButtonsSubtitlesSingle{ new QHBoxLayout() };
+            layoutButtonsSubtitlesSingle->addWidget(btnSelectAllSubtitlesSingle);
+            layoutButtonsSubtitlesSingle->addWidget(btnDeselectAllSubtitlesSingle);
+            listSubtitlesSingle = new QListWidget(parent);
+            listSubtitlesSingle->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
+            QVBoxLayout* layoutSomeSubtitlesSingle{ new QVBoxLayout() };
+            layoutSomeSubtitlesSingle->setContentsMargins(0, 0, 0, 0);
+            layoutSomeSubtitlesSingle->addLayout(layoutButtonsSubtitlesSingle);
+            layoutSomeSubtitlesSingle->addWidget(listSubtitlesSingle);
+            QWidget* someSubtitlesPageSingle{ new QWidget(parent) };
+            someSubtitlesPageSingle->setLayout(layoutSomeSubtitlesSingle);
+            viewStackSubtitlesSingle = new QStackedWidget(parent);
+            viewStackSubtitlesSingle->addWidget(statusSubtitlesSingle);
+            viewStackSubtitlesSingle->addWidget(someSubtitlesPageSingle);
+            QVBoxLayout* layoutSubtitlesSingle{ new QVBoxLayout() };
+            layoutSubtitlesSingle->addWidget(viewStackSubtitlesSingle);
+            QWidget* subtitlesSinglePage{ new QWidget(parent) };
+            subtitlesSinglePage->setLayout(layoutSubtitlesSingle);
+            QTabWidget* tabsSingle{ new QTabWidget(parent) };
+            tabsSingle->addTab(generalSinglePage, _("General"));
+            tabsSingle->addTab(advancedSinglePage, _("Advanced"));
+            tabsSingle->addTab(subtitlesSinglePage, _("Subtitles"));
+            tabsSingle->setCurrentIndex(0);
+            lblUrlSingle = new QLabel(parent);
+            btnDownloadSingle = new QPushButton(parent);
+            btnDownloadSingle->setAutoDefault(true);
+            btnDownloadSingle->setIcon(QLEMENTINE_ICON(Action_Download));
+            btnDownloadSingle->setText(_("Download"));
+            QVBoxLayout* layoutSingle{ new QVBoxLayout() };
+            layoutSingle->addWidget(tabsSingle);
+            layoutSingle->addWidget(lblUrlSingle);
+            layoutSingle->addWidget(btnDownloadSingle);
+            QWidget* singlePage{ new QWidget(parent) };
+            singlePage->setLayout(layoutSingle);
+            viewStack->addWidget(singlePage);
+            //Playlist Download Page
+            QWidget* playlistPage{ new QWidget(parent) };
+            viewStack->addWidget(playlistPage);
+            //Main Layout
+            QVBoxLayout* layout{ new QVBoxLayout() };
+            layout->setContentsMargins(0, 0, 0, 0);
+            layout->addWidget(viewStack);
+            parent->setLayout(layout);
+        }
+
+        QStackedWidget* viewStack;
+        LineEdit* txtMediaUrl;
+        QPushButton* btnUseBatchFile;
+        QComboBox* cmbCredential;
+        LineEdit* txtUsername;
+        LineEdit* txtPassword;
+        QPushButton* btnValidate;
+        QLabel* lblUrlSingle;
+        QComboBox* cmbFileTypeSingle;
+        QComboBox* cmbVideoFormatSingle;
+        QComboBox* cmbAudioFormatSingle;
+        LineEdit* txtSaveFolderSingle;
+        QPushButton* btnSelectSaveFolderSingle;
+        LineEdit* txtFilenameSingle;
+        QPushButton* btnRevertFilenameSingle;
+        Switch* chkSplitChaptersSingle;
+        Switch* chkLimitSpeedSingle;
+        Switch* chkExportDescriptionSingle;
+        LineEdit* txtTimeFrameStartSingle;
+        LineEdit* txtTimeFrameEndSingle;
+        QStackedWidget* viewStackSubtitlesSingle;
+        QPushButton* btnSelectAllSubtitlesSingle;
+        QPushButton* btnDeselectAllSubtitlesSingle;
+        QListWidget* listSubtitlesSingle;
+        QPushButton* btnDownloadSingle;
+    };
+}
 
 namespace Nickvision::TubeConverter::Qt::Views
 {
@@ -24,42 +279,14 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui{ new Ui::AddDownloadDialog() },
         m_controller{ controller }
     {
-        m_ui->setupUi(this);
+        //Dialog Settigns
         setWindowTitle(_("Add Download"));
+        setMinimumSize(400, 400);
+        setModal(true);
+        //Load Ui
+        m_ui->setupUi(this);
         //Localize Strings
-        m_ui->lblMediaUrl->setText(_("Media URL"));
-        m_ui->txtMediaUrl->setPlaceholderText(_("Enter media url here"));
-        m_ui->btnUseBatchFile->setText(_("Open"));
-        m_ui->btnUseBatchFile->setToolTip(_("Use Batch File"));
-        m_ui->lblAuthenticate->setText(_("Authenticate"));
-        m_ui->lblUsername->setText(_("Username"));
-        m_ui->txtUsername->setPlaceholderText(_("Enter username here"));
-        m_ui->lblPassword->setText(_("Password"));
-        m_ui->txtPassword->setPlaceholderText(_("Enter password here"));
-        m_ui->btnValidate->setText(_("Validate"));
-        m_ui->tabsSingle->setTabText(0, _("General"));
-        m_ui->tabsSingle->setTabText(1, _("Subtitles"));
-        m_ui->lblFileTypeSingle->setText(_("File Type"));
-        m_ui->lblVideoFormatSingle->setText(_("Video Format"));
-        m_ui->lblAudioFormatSingle->setText(_("Audio Format"));
-        m_ui->lblSplitChaptersSingle->setText(_("Split Video by Chapters"));
-        m_ui->lblLimitSpeedSingle->setText(_("Limit Download Speed"));
-        m_ui->lblExportDescriptionSingle->setText(_("Export Description"));
-        m_ui->lblTimeFrameStartSingle->setText(_("Start Time"));
-        m_ui->lblTimeFrameEndSingle->setText(_("End Time"));
-        m_ui->lblSaveFolderSingle->setText(_("Save Folder"));
-        m_ui->txtSaveFolderSingle->setPlaceholderText(_("Select save folder"));
-        m_ui->btnSelectSaveFolderSingle->setText(_("Select"));
-        m_ui->btnSelectSaveFolderSingle->setToolTip(_("Select Save Folder"));
-        m_ui->lblFilenameSingle->setText(_("File Name"));
-        m_ui->txtFilenameSingle->setPlaceholderText(_("Enter file name here"));
-        m_ui->btnRevertFilenameSingle->setText(_("Revert"));
-        m_ui->btnRevertFilenameSingle->setToolTip(_("Revert to Title"));
-        m_ui->lblNoSubtitlesSingle->setText(_("No Subtitles Available"));
-        m_ui->btnSelectAllSubtitlesSingle->setText(_("Select All"));
-        m_ui->btnDeselectAllSubtitlesSingle->setText(_("Deselect All"));
-        m_ui->tblSubtitlesSingle->setHorizontalHeaderLabels({ _("Download"), _("Language") });
-        m_ui->btnDownloadSingle->setText(_("Download"));
+        /*
         m_ui->tabsPlaylist->setTabText(0, _("General"));
         m_ui->tabsPlaylist->setTabText(1, _("Items"));
         m_ui->lblFileTypePlaylist->setText(_("File Type"));
@@ -75,12 +302,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->btnDeselectAllPlaylist->setText(_("Deselect All"));
         m_ui->tblItemsPlaylist->setHorizontalHeaderLabels({ _("Download"), _("File Name"), "" });
         m_ui->btnDownloadPlaylist->setText(_("Download"));
+        */
         //Load Validate Page
-        m_ui->viewStack->setCurrentIndex(0);
-        m_ui->lblUsername->hide();
-        m_ui->txtUsername->hide();
-        m_ui->lblPassword->hide();
-        m_ui->txtPassword->hide();
+        m_ui->viewStack->setCurrentIndex(AddDownloadDialogPage::Validate);
+        m_ui->txtUsername->setEnabled(false);
+        m_ui->txtPassword->setEnabled(false);
         if(StringHelpers::isValidUrl(url))
         {
             m_ui->txtMediaUrl->setText(QString::fromStdString(url));
@@ -94,11 +320,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
         credentialNames.insert(credentialNames.begin(), _("None"));
-        QtHelpers::setComboBoxItems(m_ui->cmbAuthenticate, credentialNames);
+        QtHelpers::setComboBoxItems(m_ui->cmbCredential, credentialNames);
         //Signals
         connect(m_ui->txtMediaUrl, &QLineEdit::textChanged, this, &AddDownloadDialog::onTxtUrlChanged);
         connect(m_ui->btnUseBatchFile, &QPushButton::clicked, this, &AddDownloadDialog::useBatchFile);
-        connect(m_ui->cmbAuthenticate, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbAuthenticateChanged);
+        connect(m_ui->cmbCredential, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbCredentialChanged);
         connect(m_ui->btnValidate, &QPushButton::clicked, this, &AddDownloadDialog::validateUrl);
         connect(m_ui->cmbFileTypeSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbFileTypeSingleChanged);
         connect(m_ui->btnSelectSaveFolderSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderSingle);
@@ -106,12 +332,14 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->btnSelectAllSubtitlesSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectAllSubtitlesSingle);
         connect(m_ui->btnDeselectAllSubtitlesSingle, &QPushButton::clicked, this, &AddDownloadDialog::deselectAllSubtitlesSingle);
         connect(m_ui->btnDownloadSingle, &QPushButton::clicked, this, &AddDownloadDialog::downloadSingle);
+        /*
         connect(m_ui->cmbFileTypePlaylist, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbFileTypePlaylistChanged);
         connect(m_ui->btnSelectSaveFolderPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderPlaylist);
         connect(m_ui->chkNumberTitlesPlaylist, &QCheckBox::stateChanged, this, &AddDownloadDialog::onNumberTitlesPlaylistChanged);
         connect(m_ui->btnSelectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectAllPlaylist);
         connect(m_ui->btnDeselectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::deselectAllPlaylist);
         connect(m_ui->btnDownloadPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::downloadPlaylist);
+        */
         m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QtHelpers::dispatchToMainThread([this]() { onUrlValidated(); }); };
     }
 
@@ -130,49 +358,47 @@ namespace Nickvision::TubeConverter::Qt::Views
         QString file{ QFileDialog::getOpenFileName(this, _("Select Batch File"), {}, _("TXT Files (*.txt)")) };
         if(!file.isEmpty())
         {
-            m_ui->viewStack->setCurrentIndex(1);
+            m_ui->viewStack->setCurrentIndex(AddDownloadDialogPage::Loading);
             std::optional<Credential> credential{ std::nullopt };
-            if(m_ui->cmbAuthenticate->currentIndex() == 1)
+            if(m_ui->cmbCredential->currentIndex() == 1)
             {
                 credential = Credential{ "", "", m_ui->txtUsername->text().toStdString(), m_ui->txtPassword->text().toStdString() };
             }
-            if(m_ui->cmbAuthenticate->currentIndex() < 2)
+            if(m_ui->cmbCredential->currentIndex() < 2)
             {
                 m_controller->validateBatchFile(file.toStdString(), credential);
             }
             else
             {
-                m_controller->validateBatchFile(file.toStdString(), m_ui->cmbAuthenticate->currentIndex() - 2);
+                m_controller->validateBatchFile(file.toStdString(), m_ui->cmbCredential->currentIndex() - 2);
             }
         }
     }
 
-    void AddDownloadDialog::onCmbAuthenticateChanged(int index)
+    void AddDownloadDialog::onCmbCredentialChanged(int index)
     {
-        bool show{ index == 1 };
-        m_ui->lblUsername->setVisible(show);
-        m_ui->txtUsername->setVisible(show);
+        bool enabled{ index == 1 };
+        m_ui->txtUsername->setEnabled(enabled);
         m_ui->txtUsername->clear();
-        m_ui->lblPassword->setVisible(show);
-        m_ui->txtPassword->setVisible(show);
+        m_ui->txtPassword->setEnabled(enabled);
         m_ui->txtPassword->clear();
     }
 
     void AddDownloadDialog::validateUrl()
     {
-        m_ui->viewStack->setCurrentIndex(1);
+        m_ui->viewStack->setCurrentIndex(AddDownloadDialogPage::Loading);
         std::optional<Credential> credential{ std::nullopt };
-        if(m_ui->cmbAuthenticate->currentIndex() == 1)
+        if(m_ui->cmbCredential->currentIndex() == 1)
         {
             credential = Credential{ "", "", m_ui->txtUsername->text().toStdString(), m_ui->txtPassword->text().toStdString() };
         }
-        if(m_ui->cmbAuthenticate->currentIndex() < 2)
+        if(m_ui->cmbCredential->currentIndex() < 2)
         {
             m_controller->validateUrl(m_ui->txtMediaUrl->text().toStdString(), credential);
         }
         else
         {
-            m_controller->validateUrl(m_ui->txtMediaUrl->text().toStdString(), m_ui->cmbAuthenticate->currentIndex() - 2);
+            m_controller->validateUrl(m_ui->txtMediaUrl->text().toStdString(), m_ui->cmbCredential->currentIndex() - 2);
         }
     }
 
@@ -184,10 +410,12 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->viewStack->setCurrentIndex(0);
             return;
         }
+        m_ui->btnValidate->setDefault(false);
         if(!m_controller->isUrlPlaylist()) //Single Download
         {
-            m_ui->viewStack->setCurrentIndex(2);
-            m_ui->tabsSingle->setCurrentIndex(0);
+            m_ui->viewStack->setCurrentIndex(AddDownloadDialogPage::Single);
+            m_ui->lblUrlSingle->setText(QString::fromStdString(m_controller->getMediaUrl(0)));
+            m_ui->btnDownloadSingle->setDefault(true);
             //Load Options
             size_t previous{ 0 };
             QtHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
@@ -206,31 +434,27 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->txtTimeFrameEndSingle->setText(QString::fromStdString(m_controller->getMediaTimeFrame(0).endStr()));
             m_ui->txtTimeFrameEndSingle->setPlaceholderText(QString::fromStdString(m_controller->getMediaTimeFrame(0).endStr()));
             //Load Subtitles
-            std::vector<std::string> subtitles{ m_controller->getSubtitleLanguageStrings() };
             std::vector<SubtitleLanguage> previousSubtitles{ m_controller->getPreviousDownloadOptions().getSubtitleLanguages() };
-            for(size_t i = 0; i < subtitles.size(); i++)
+            m_ui->viewStackSubtitlesSingle->setCurrentIndex(AddDownloadDialogSubtitlesSinglePage::None);
+            for(const std::string& subtitle : m_controller->getSubtitleLanguageStrings())
             {
                 bool wasPreviouslySelected{ false };
                 for(const SubtitleLanguage& language : previousSubtitles)
                 {
-                    if(subtitles[i] == language.str())
+                    if(subtitle == language.str())
                     {
                         wasPreviouslySelected = true;
                         break;
                     }
                 }
-                QCheckBox* chk{ new QCheckBox(m_ui->tblSubtitlesSingle) };
-                chk->setChecked(wasPreviouslySelected);
-                QTableWidgetItem* item{ new QTableWidgetItem(QString::fromStdString(subtitles[i])) };
-                item->setFlags(item->flags() ^ ::Qt::ItemIsEditable);
-                m_ui->tblSubtitlesSingle->insertRow(static_cast<int>(i));
-                m_ui->tblSubtitlesSingle->setCellWidget(static_cast<int>(i), 0, chk);
-                m_ui->tblSubtitlesSingle->setItem(static_cast<int>(i), 1, item);
+                QListWidgetItem* item{ new QListWidgetItem(QString::fromStdString(subtitle)) };
+                item->setFlags(item->flags() | ::Qt::ItemIsUserCheckable);
+                item->setCheckState(wasPreviouslySelected ? ::Qt::CheckState::Checked : ::Qt::CheckState::Unchecked);
+                m_ui->listSubtitlesSingle->addItem(item);
+                m_ui->viewStackSubtitlesSingle->setCurrentIndex(AddDownloadDialogSubtitlesSinglePage::Some);
             }
-            m_ui->tblSubtitlesSingle->resizeColumnToContents(0);
-            m_ui->tblSubtitlesSingle->setColumnWidth(1, m_ui->tblItemsPlaylist->width() - m_ui->tblItemsPlaylist->columnWidth(0) - 40);
-            m_ui->viewStackSubtitlesSingle->setCurrentIndex(subtitles.empty() ? 0 : 1);
         }
+        /*
         else //Playlist Download
         {
             m_ui->viewStack->setCurrentIndex(3);
@@ -261,7 +485,7 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->tblItemsPlaylist->resizeColumnToContents(2);
             m_ui->tblItemsPlaylist->setColumnWidth(1, m_ui->tblItemsPlaylist->width() - m_ui->tblItemsPlaylist->columnWidth(0) - m_ui->tblItemsPlaylist->columnWidth(2) - 40);
         }
-        adjustSize();
+        */
         if(m_controller->getDownloadImmediatelyAfterValidation())
         {
             if(m_controller->isUrlPlaylist())
@@ -310,31 +534,29 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void AddDownloadDialog::selectAllSubtitlesSingle()
     {
-        for(int i = 0; i < m_ui->tblSubtitlesSingle->rowCount(); i++)
+        for(int i = 0; i < m_ui->listSubtitlesSingle->count(); i++)
         {
-            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblSubtitlesSingle->cellWidget(i, 0)) };
-            chk->setChecked(true);
+            m_ui->listSubtitlesSingle->item(i)->setCheckState(::Qt::CheckState::Checked);
         }
     }
 
     void AddDownloadDialog::deselectAllSubtitlesSingle()
     {
-        for(int i = 0; i < m_ui->tblSubtitlesSingle->rowCount(); i++)
+        for(int i = 0; i < m_ui->listSubtitlesSingle->count(); i++)
         {
-            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblSubtitlesSingle->cellWidget(i, 0)) };
-            chk->setChecked(false);
+            m_ui->listSubtitlesSingle->item(i)->setCheckState(::Qt::CheckState::Unchecked);
         }
     }
     
     void AddDownloadDialog::downloadSingle()
     {
         std::vector<std::string> subtitles;
-        for(int i = 0; i < m_ui->tblSubtitlesSingle->rowCount(); i++)
+        for(int i = 0; i < m_ui->listSubtitlesSingle->count(); i++)
         {
-            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblSubtitlesSingle->cellWidget(i, 0)) };
-            if(chk->isChecked())
+            QListWidgetItem* item{ m_ui->listSubtitlesSingle->item(i) };
+            if(item->checkState() == ::Qt::CheckState::Checked)
             {
-                subtitles.push_back(m_ui->tblSubtitlesSingle->item(i, 1)->text().toStdString());
+                subtitles.push_back(item->text().toStdString());
             }
         }
         m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbVideoFormatSingle->currentIndex(), m_ui->cmbAudioFormatSingle->currentIndex(), subtitles, m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->chkExportDescriptionSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
@@ -343,6 +565,7 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void AddDownloadDialog::onCmbFileTypePlaylistChanged(int index)
     {
+        /*
         int fileTypeIndex{ m_ui->cmbFileTypePlaylist->currentIndex() };
         if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
         {
@@ -357,45 +580,55 @@ namespace Nickvision::TubeConverter::Qt::Views
             msgBox.exec();
             m_controller->setShowGenericDisclaimer(!checkBox->isChecked());
         }
+        */
     }
 
     void AddDownloadDialog::selectSaveFolderPlaylist()
     {
+        /*
         QString path{ QFileDialog::getExistingDirectory(this, _("Select Save Folder")) };
         if(!path.isEmpty())
         {
             m_ui->txtSaveFolderPlaylist->setText(path);
         }
+        */
     }
 
     void AddDownloadDialog::onNumberTitlesPlaylistChanged(int state)
     {
+        /*
         for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
         {
             m_ui->tblItemsPlaylist->item(i, 1)->setText(QString::fromStdString(m_controller->getMediaTitle(i, state == ::Qt::Checked)));
         }
+        */
     }
 
     void AddDownloadDialog::selectAllPlaylist()
     {
+        /*
         for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
         {
             QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblItemsPlaylist->cellWidget(i, 0)) };
             chk->setChecked(true);
         }
+        */
     }
 
     void AddDownloadDialog::deselectAllPlaylist()
     {
+        /*
         for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
         {
             QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblItemsPlaylist->cellWidget(i, 0)) };
             chk->setChecked(false);
         }
+        */
     }
 
     void AddDownloadDialog::downloadPlaylist()
     {
+        /*
         std::unordered_map<size_t, std::string> filenames;
         for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
         {
@@ -407,5 +640,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkLimitSpeedPlaylist->isChecked(), m_ui->chkExportDescriptionPlaylist->isChecked());
         accept();
+        */
     }
 }

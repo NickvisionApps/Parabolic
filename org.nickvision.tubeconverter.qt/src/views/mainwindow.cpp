@@ -7,14 +7,13 @@
 #include <QMimeData>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
-#include <libnick/notifications/shellnotification.h>
 #include "controls/aboutdialog.h"
 #include "controls/historyrow.h"
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
 #include "views/credentialdialog.h"
 #include "views/keyringpage.h"
-#include "views/settingspage.h"
+#include "views/settingsdialog.h"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
@@ -44,11 +43,12 @@ namespace Nickvision::TubeConverter::Qt::Views
         Settings
     };
 
-    MainWindow::MainWindow(const std::shared_ptr<MainWindowController>& controller, QWidget* parent) 
+    MainWindow::MainWindow(const std::shared_ptr<MainWindowController>& controller, oclero::qlementine::ThemeManager* themeManager, QWidget* parent) 
         : QMainWindow{ parent },
         m_ui{ new Ui::MainWindow() },
         m_navigationBar{ new NavigationBar(this) },
-        m_controller{ controller }
+        m_controller{ controller },
+        m_themeManager{ themeManager }
     {
         m_ui->setupUi(this);
         m_ui->mainLayout->insertLayout(0, m_navigationBar);
@@ -124,7 +124,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_dockLogCloseEventFilter, &CloseEventFilter::closed, this, &MainWindow::onDockLogClosed);
         //Events
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
-        m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QtHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadCredentialNeeded() += [&](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
@@ -151,13 +150,10 @@ namespace Nickvision::TubeConverter::Qt::Views
 #else
         const StartupInformation& info{ m_controller->startup() };
 #endif
+        setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         if(info.getWindowGeometry().isMaximized())
         {
             showMaximized();
-        }
-        else
-        {
-            setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         }
         m_navigationBar->selectItem("home");
         m_ui->btnHomeAddDownload->setEnabled(info.canDownload());
@@ -217,15 +213,6 @@ namespace Nickvision::TubeConverter::Qt::Views
             }
         }
         m_ui->viewStack->insertWidget(Page::Keyring, new KeyringPage(m_controller->createKeyringDialogController(), this));
-        //Save and ensure new SettingsPage
-        if(m_ui->viewStack->widget(Page::Settings))
-        {
-            SettingsPage* oldSettings{ qobject_cast<SettingsPage*>(m_ui->viewStack->widget(Page::Settings)) };
-            oldSettings->close();
-            m_ui->viewStack->removeWidget(oldSettings);
-            delete oldSettings;
-        }
-        m_ui->viewStack->insertWidget(Page::Settings, new SettingsPage(m_controller->createPreferencesViewController(), this));
         //Navigate to new page
         if(id == "home")
         {
@@ -256,7 +243,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         else if(id == "settings")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Settings);
+            SettingsDialog dialog{ m_controller->createPreferencesViewController(), m_themeManager, this };
+            dialog.exec();
         }
     }
 
@@ -411,18 +399,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
 #endif
         msgBox.exec();
-    }
-
-    void MainWindow::onShellNotificationSent(const ShellNotificationSentEventArgs& args)
-    {
-        m_controller->log(Logging::LogLevel::Info, "ShellNotification sent. (" + args.getMessage() + ")");
-#ifdef _WIN32
-        ShellNotification::send(args, reinterpret_cast<HWND>(winId()));
-#elif defined(__linux__)
-        ShellNotification::send(args, m_controller->getAppInfo().getId(), _("Open"));
-#else
-        ShellNotification::send(args);
-#endif
     }
 
     void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
