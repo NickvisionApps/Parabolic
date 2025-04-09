@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-31 21:19-0400\n"
+"POT-Creation-Date: 2025-04-09 19:32-0400\n"
 "PO-Revision-Date: 2025-02-04 11:59+0000\n"
 "Last-Translator: Compact / Naomi <webmaster@compactbunker.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -216,7 +216,7 @@ msgstr "Ауто-генерисано"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:347
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:283
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:95
@@ -281,6 +281,7 @@ msgstr "Потврди"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:278
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:239
 msgid "File Type"
 msgstr "Тип датотеке"
 
@@ -306,6 +307,7 @@ msgstr "Напредне опције"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:139
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:296
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:132
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:251
 msgid "Save Folder"
 msgstr "Сачувај фасциклу"
 
@@ -314,7 +316,9 @@ msgstr "Сачувај фасциклу"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:310
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:393
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:523
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:259
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:646
 msgid "Select Save Folder"
 msgstr "Изабери фасциклу за сачување"
 
@@ -326,6 +330,7 @@ msgstr "Име датотеке"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:160
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:293
 msgid "Revert to Title"
 msgstr "Врати на наслов"
 
@@ -333,18 +338,21 @@ msgstr "Врати на наслов"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:324
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:18
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:229
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:314
 msgid "Download"
 msgstr "Преузми"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:192
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:353
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:278
 msgid "Select All"
 msgstr "Изабери све"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:199
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:360
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:201
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:283
 msgid "Deselect All"
 msgstr "Поништи избор свега"
 
@@ -356,12 +364,14 @@ msgstr "Подели видео снимке по поглављима"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:286
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:168
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
 msgid "Limit Download Speed"
 msgstr "Ограничи брзину преузимања"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:235
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:290
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:171
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:248
 msgid "Export Description"
 msgstr "Извези опис"
 
@@ -386,6 +396,7 @@ msgid "Playlist Items"
 msgstr "Листе ствари"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
 #, fuzzy
 msgid "Number Titles"
 msgstr "Број наслова"
@@ -805,7 +816,7 @@ msgid "Cookies from Browser"
 msgstr "Колачићи из Претраживача"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:322
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:397
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:145
 msgid "None"
 msgstr "Ниједан"
@@ -1020,7 +1031,7 @@ msgstr "Управљање"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:116
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:409
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:483
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:133
@@ -1042,20 +1053,20 @@ msgstr "Заустављено"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:21
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:321
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:396
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:32
 #, fuzzy
 msgid "Use manual credential"
 msgstr "Користи ручне податке улоговања"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:358
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:432
 msgid "Select Batch File"
 msgstr "Изабери Batch датотеку"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:358
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:432
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:440
 msgid "TXT Files (*.txt)"
 msgstr "Текст датотеке (*.txt)"
@@ -1088,14 +1099,16 @@ msgstr "{} ствари"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:281
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:636
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:62
 msgid "Warning"
 msgstr "Упозорење"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:281
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:636
 msgid ""
 "Generic file types do not support embedding thumbnails and subtitles. Please "
 "select a specific file type that supports embedding to prevent separate "
@@ -1108,7 +1121,8 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:282
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:377
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:514
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:574
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:637
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:166
 msgid "Don't show this message again"
 msgstr "Не показуј ову поруку опет"
@@ -1299,6 +1313,7 @@ msgid "Authentication"
 msgstr "Аутентикација"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:135
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:254
 #, fuzzy
 msgid "No save folder selected"
 msgstr "Датотека није изабрана"
@@ -1308,6 +1323,7 @@ msgid "Enter file name here"
 msgstr "Унеси име датотеке овде"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:165
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:242
 msgid "Split Video by Chapters"
 msgstr "Подели видео по поглављима"
 
@@ -1322,6 +1338,7 @@ msgid "Enter end time here"
 msgstr "Унесите име овде"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:221
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:308
 msgid "General"
 msgstr "Генерално"
 
@@ -1330,7 +1347,11 @@ msgstr "Генерално"
 msgid "Advanced"
 msgstr "Напредне опције"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:409
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:309
+msgid "Items"
+msgstr "Ствари"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:483
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in settings."
@@ -1457,22 +1478,18 @@ msgstr "Ограничење брзине"
 msgid "Enter proxy url here"
 msgstr "Унеси УРЛ проксија овде"
 
+#~ msgid "Revert"
+#~ msgstr "Врати"
+
 #~ msgid "Select"
 #~ msgstr "Изабери"
 
 #~ msgid "Select save folder"
 #~ msgstr "Изабери фасциклу за сачување"
 
-#~ msgid "Revert"
-#~ msgstr "Врати"
-
 #~ msgid "Language"
 #~ msgstr "Језик"
 
-#~ msgid "Items"
-#~ msgstr "Ствари"
-
-#, c++-format
 #~ msgid "Items ({})"
 #~ msgstr "Ствари ({})"
 
