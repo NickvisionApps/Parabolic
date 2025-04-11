@@ -12,7 +12,7 @@
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
 #include "views/credentialdialog.h"
-#include "views/keyringpage.h"
+#include "views/keyringdialog.h"
 #include "views/settingsdialog.h"
 
 using namespace Nickvision::App;
@@ -32,15 +32,13 @@ namespace Nickvision::TubeConverter::Qt::Views
     enum Page
     {
         Home = 0,
-        Keyring,
         History,
         Downloading,
         Queued,
         Completed,
         NoDownloading,
         NoQueued,
-        NoCompleted,
-        Settings
+        NoCompleted
     };
 
     MainWindow::MainWindow(const std::shared_ptr<MainWindowController>& controller, oclero::qlementine::ThemeManager* themeManager, QWidget* parent) 
@@ -202,17 +200,6 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void MainWindow::onNavigationItemSelected(const QString& id)
     {
-        //Ensure new KeyringPage
-        if(m_ui->viewStack->widget(Page::Keyring))
-        {
-            KeyringPage* oldKeyring{ qobject_cast<KeyringPage*>(m_ui->viewStack->widget(Page::Keyring)) };
-            if(oldKeyring)
-            {
-                m_ui->viewStack->removeWidget(oldKeyring);
-                delete oldKeyring;
-            }
-        }
-        m_ui->viewStack->insertWidget(Page::Keyring, new KeyringPage(m_controller->createKeyringDialogController(), this));
         //Navigate to new page
         if(id == "home")
         {
@@ -220,7 +207,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         else if(id == "keyring")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Keyring);
+            KeyringDialog dialog{ m_controller->createKeyringDialogController(), this };
+            dialog.exec();
         }
         else if(id == "history")
         {

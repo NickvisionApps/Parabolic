@@ -1,0 +1,160 @@
+#include "views/keyringdialog.h"
+#include <QFont>
+#include <QFormLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QStackedWidget>
+#include <QVBoxLayout>
+#include <libnick/localization/gettext.h>
+#include "controls/statuspage.h"
+#include "helpers/qthelpers.h"
+
+using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::TubeConverter::Shared::Models;
+using namespace Nickvision::TubeConverter::Qt::Controls;
+using namespace Nickvision::TubeConverter::Qt::Helpers;
+
+enum KeyringDialogPage
+{
+    NoCredentials = 0,
+    Credentials
+};
+
+namespace Ui
+{
+    class KeyringDialog
+    {
+    public:
+        void setupUi(Nickvision::TubeConverter::Qt::Views::KeyringDialog* parent)
+        {
+            viewStack = new QStackedWidget(parent);
+            QFont boldFont;
+            boldFont.setBold(true);
+            QLabel* lblCredentials{ new QLabel(parent) };
+            lblCredentials->setText(_("Credentials"));
+            lblCredentials->setFont(boldFont);
+            QLabel* lblDescription{ new QLabel(parent) };
+            lblDescription->setText(_("Add, delete, and modify credentials for validating websites"));
+            btnAddCredential = new QPushButton(parent);
+            btnAddCredential->setAutoDefault(true);
+            btnAddCredential->setDefault(true);
+            btnAddCredential->setIcon(QLEMENTINE_ICON(Action_Plus));
+            btnAddCredential->setText(_("Add"));
+            btnAddCredential->setToolTip(_("Add Credential"));
+            QVBoxLayout* layoutLabels{ new QVBoxLayout() };
+            layoutLabels->addWidget(lblCredentials);
+            layoutLabels->addWidget(lblDescription);
+            QHBoxLayout* layoutHeader{ new QHBoxLayout() };
+            layoutHeader->addLayout(layoutLabels);
+            layoutHeader->addStretch();
+            layoutHeader->addWidget(btnAddCredential);
+            QFrame* lineMain{ new QFrame(parent) };
+            lineMain->setFrameShape(QFrame::HLine);
+            lineMain->setFrameShadow(QFrame::Sunken);
+            statNoCredentials = new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent);
+            statNoCredentials->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
+            statNoCredentials->setTitle(_("No Credentials"));
+            statNoCredentials->setDescription(_("Add a credential to get started"));
+            viewStack->addWidget(statNoCredentials);
+            QVBoxLayout* layoutMain{ new QVBoxLayout() };
+            layoutMain->addLayout(layoutHeader);
+            layoutMain->addWidget(lineMain);
+            layoutMain->addWidget(viewStack);
+            parent->setLayout(layoutMain);
+        }
+
+        QPushButton* btnAddCredential;
+        QStackedWidget* viewStack;
+        Nickvision::TubeConverter::Qt::Controls::StatusPage* statNoCredentials;
+    };
+}
+
+namespace Nickvision::TubeConverter::Qt::Views
+{
+    KeyringDialog::KeyringDialog(const std::shared_ptr<KeyringDialogController>& controller, QWidget* parent)
+        : QDialog{ parent },
+        m_ui{ new Ui::KeyringDialog() },
+        m_controller{ controller }
+    {
+        //Dialog Settigns
+        setWindowTitle(_("Keyring"));
+        setMinimumSize(500, 400);
+        setModal(true);
+        //Load Ui
+        m_ui->setupUi(this);
+        //Signals
+        connect(m_ui->btnAddCredential, &QPushButton::clicked, this, &KeyringDialog::addCredential);
+    }
+
+    KeyringDialog::~KeyringDialog()
+    {
+        delete m_ui;
+    }
+
+    void KeyringDialog::addCredential()
+    {
+        //Make Dialog
+        QDialog* dialog{ new QDialog(this) };
+        dialog->setMinimumSize(300, 360);
+        dialog->setWindowTitle(_("New Credential"));
+        QLabel* lblName{ new QLabel(dialog) };
+        lblName->setText(_("Name"));
+        QLineEdit* txtName{ new QLineEdit(dialog) };
+        txtName->setPlaceholderText("Enter name here");
+        QLabel* lblUrl{ new QLabel(dialog) };
+        lblUrl->setText(_("URL"));
+        QLineEdit* txtUrl{ new QLineEdit(dialog) };
+        txtUrl->setPlaceholderText("Enter url here");
+        QLabel* lblUsername{ new QLabel(dialog) };
+        lblUsername->setText(_("Username"));
+        QLineEdit* txtUsername{ new QLineEdit(dialog) };
+        txtUsername->setPlaceholderText("Enter username here");
+        QLabel* lblPassword{ new QLabel(dialog) };
+        lblPassword->setText(_("Password"));
+        QLineEdit* txtPassword{ new QLineEdit(dialog) };
+        txtPassword->setPlaceholderText("Enter password here");
+        QPushButton* btnAdd{ new QPushButton(dialog) };
+        btnAdd->setAutoDefault(true);
+        btnAdd->setDefault(true);
+        btnAdd->setIcon(QLEMENTINE_ICON(Action_Plus));
+        btnAdd->setText(_("Add"));
+        QFormLayout* layoutForm{ new QFormLayout() };
+        layoutForm->addRow(lblName, txtName);
+        layoutForm->addRow(lblUrl, txtUrl);
+        layoutForm->addRow(lblUsername, txtUsername);
+        layoutForm->addRow(lblPassword, txtPassword);
+        QVBoxLayout* layout{ new QVBoxLayout() };
+        layout->addLayout(layoutForm);
+        layout->addWidget(btnAdd);
+        dialog->setLayout(layout);
+        connect(btnAdd, &QPushButton::clicked, [&]()
+        {
+            CredentialCheckStatus status{ m_controller->addCredential(txtName->text().toStdString(), txtUrl->text().toStdString(), txtUsername->text().toStdString(), txtPassword->text().toStdString()) };
+            switch(status)
+            {
+            case CredentialCheckStatus::EmptyName:
+                QMessageBox::critical(this, _("Error"), _("The credential name cannot be empty."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::EmptyUsernamePassword:
+                QMessageBox::critical(this, _("Error"), _("Both the username and password cannot be empty."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::InvalidUri:
+                QMessageBox::critical(this, _("Error"), _("The provided url is invalid."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::ExistingName:
+                QMessageBox::critical(this, _("Error"), _("A credential with this name already exists."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::DatabaseError:
+                QMessageBox::critical(this, _("Error"), _("There was an unknown error adding the credential to the keyring."), QMessageBox::Ok);
+                break;
+            default:
+                dialog->close();
+            }
+        });
+        dialog->exec();
+        //reloadCredentials();
+    }
+}
