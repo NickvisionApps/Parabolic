@@ -33,8 +33,17 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Prompts the user to add a new credential.
          */
         void addCredential();
+		/**
+         * @brief Prompts the user to edit a credential.
+         * @param name The name of the credential to edit
+         */
+        void editCredential(const QString& name);
 
     private:
+		/**
+         * @brief Reloads the credentials to show on the page.
+         */
+        void reloadCredentials();
         Ui::KeyringDialog* m_ui;
         std::shared_ptr<Shared::Controllers::KeyringDialogController> m_controller;
     };
