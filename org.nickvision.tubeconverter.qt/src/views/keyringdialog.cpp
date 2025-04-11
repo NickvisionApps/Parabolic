@@ -85,6 +85,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         setModal(true);
         //Load Ui
         m_ui->setupUi(this);
+		reloadCredentials();
         //Signals
         connect(m_ui->btnAddCredential, &QPushButton::clicked, this, &KeyringDialog::addCredential);
     }
@@ -96,7 +97,7 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void KeyringDialog::addCredential()
     {
-        //Make Dialog
+		//Add Credential Dialog
         QDialog* dialog{ new QDialog(this) };
         dialog->setMinimumSize(300, 360);
         dialog->setWindowTitle(_("New Credential"));
@@ -155,6 +156,98 @@ namespace Nickvision::TubeConverter::Qt::Views
             }
         });
         dialog->exec();
-        //reloadCredentials();
+        reloadCredentials();
     }
+	
+	void KeyringDialog::editCredential(const QString& name)
+	{
+		std::optional<Credential> credential{ m_controller->getCredential(name.toStdString()) };
+        if(!credential)
+        {
+            return;
+        }
+		//Edit Credential Dialog
+        QDialog* dialog{ new QDialog(this) };
+        dialog->setMinimumSize(300, 360);
+        dialog->setWindowTitle(_("Edit Credential"));
+        QLabel* lblName{ new QLabel(dialog) };
+        lblName->setText(_("Name"));
+        QLineEdit* txtName{ new QLineEdit(dialog) };
+        txtName->setPlaceholderText("Enter name here");
+		txtName->setText(QString::fromStdString(credential->getName()));
+		txtName->setEnabled(false);
+        QLabel* lblUrl{ new QLabel(dialog) };
+        lblUrl->setText(_("URL"));
+        QLineEdit* txtUrl{ new QLineEdit(dialog) };
+        txtUrl->setPlaceholderText("Enter url here");
+		txtUrl->setText(QString::fromStdString(credential->getUri()));
+        QLabel* lblUsername{ new QLabel(dialog) };
+        lblUsername->setText(_("Username"));
+        QLineEdit* txtUsername{ new QLineEdit(dialog) };
+        txtUsername->setPlaceholderText("Enter username here");
+		txtUsername->setText(QString::fromStdString(credential->getUsername()));
+        QLabel* lblPassword{ new QLabel(dialog) };
+        lblPassword->setText(_("Password"));
+        QLineEdit* txtPassword{ new QLineEdit(dialog) };
+        txtPassword->setPlaceholderText("Enter password here");
+		txtPassword->setText(QString::fromStdString(credential->getPassword()));
+        QPushButton* btnSave{ new QPushButton(dialog) };
+        btnSave->setAutoDefault(true);
+        btnSave->setDefault(true);
+        btnSave->setIcon(QLEMENTINE_ICON(Action_Save));
+        btnSave->setText(_("Save"));
+		QPushButton* btnDelete{ new QPushButton(dialog) };
+		btnDelete->setAutoDefault(false);
+		btnDelete->setDefault(false);
+		btnDelete->setIcon(QLEMENTINE_ICON(Action_Delete));
+		btnDelete->setText(_("Delete"));
+        QFormLayout* layoutForm{ new QFormLayout() };
+        layoutForm->addRow(lblName, txtName);
+        layoutForm->addRow(lblUrl, txtUrl);
+        layoutForm->addRow(lblUsername, txtUsername);
+        layoutForm->addRow(lblPassword, txtPassword);
+        QVBoxLayout* layout{ new QVBoxLayout() };
+        layout->addLayout(layoutForm);
+        layout->addWidget(btnSave);
+        dialog->setLayout(layout);
+        connect(btnSave, &QPushButton::clicked, [&]()
+        {
+            CredentialCheckStatus status{ m_controller->editCredential(txtName->text().toStdString(), txtUrl->text().toStdString(), txtUsername->text().toStdString(), txtPassword->text().toStdString()) };
+            switch(status)
+            {
+            case CredentialCheckStatus::EmptyName:
+                QMessageBox::critical(this, _("Error"), _("The credential name cannot be empty."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::EmptyUsernamePassword:
+                QMessageBox::critical(this, _("Error"), _("Both the username and password cannot be empty."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::InvalidUri:
+                QMessageBox::critical(this, _("Error"), _("The provided url is invalid."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::ExistingName:
+                QMessageBox::critical(this, _("Error"), _("A credential with this name already exists."), QMessageBox::Ok);
+                break;
+            case CredentialCheckStatus::DatabaseError:
+                QMessageBox::critical(this, _("Error"), _("There was an unknown error adding the credential to the keyring."), QMessageBox::Ok);
+                break;
+            default:
+                dialog->close();
+            }
+        });
+		connect(btnDelete, &QPushButton::clicked, [&]()
+		{
+			QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Credential?"), _("Are you sure you want to delete this credential?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+			if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+			{
+				m_controller->deleteCredential(txtName->text().toStdString());
+			}
+			dialog->close();
+		});
+        dialog->exec();
+        reloadCredentials();
+	}
+	
+	void KeyringDialog::reloadCredentials)
+	{
+		
 }
