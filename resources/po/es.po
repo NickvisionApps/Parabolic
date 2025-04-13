@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 22:16-0400\n"
+"POT-Creation-Date: 2025-04-12 20:09-0400\n"
 "PO-Revision-Date: 2025-03-02 15:36+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -259,7 +259,8 @@ msgstr "Credencial"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:112
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:196
 msgid "Username"
 msgstr "Nombre de usuario"
 
@@ -269,7 +270,8 @@ msgstr "Nombre de usuario"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:80
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:116
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:201
 msgid "Password"
 msgstr "Contraseña"
 
@@ -449,31 +451,33 @@ msgstr "No hay credenciales"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
 msgid "Add Credential"
 msgstr "Añadir credencial"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:31
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:39
 msgid "Credentials"
 msgstr "Credenciales"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:45
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
 msgid "Add"
 msgstr "Añadir"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:104
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:185
 msgid "Name"
 msgstr "Nombre"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:191
 msgid "URL"
 msgstr "URL"
 
@@ -513,7 +517,7 @@ msgstr "Inicio"
 #. Dialog Settigns
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:88
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
 msgid "Keyring"
 msgstr "Llavero"
@@ -1028,11 +1032,16 @@ msgstr "Ejecutando"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:116
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:483
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:139
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:142
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:145
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:148
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
 msgid "Error"
 msgstr "Error"
 
@@ -1096,6 +1105,7 @@ msgstr "{} elementos"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:573
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:636
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:96
 msgid "Warning"
 msgstr "Advertencia"
 
@@ -1133,7 +1143,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
 msgid "Both the username and password cannot be empty."
 msgstr "Tanto el nombre de usuario como la contraseña no pueden estar vacíos."
 
@@ -1150,6 +1161,7 @@ msgstr "Editar"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -1158,10 +1170,12 @@ msgid "Modify"
 msgstr "Modificar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
 msgid "Delete Credential?"
 msgstr "¿Borrar credencial?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
 msgid "Are you sure you want to delete this credential?"
 msgstr "¿Está seguro de que desea eliminar esta credencial?"
 
@@ -1354,42 +1368,62 @@ msgstr ""
 "{} necesita una credencial para descargar. Por favor, seleccione o "
 "introduzca una para utilizarla."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:42
 #, fuzzy
 msgid "Add, delete, and modify credentials for validating websites"
 msgstr ""
 "Cree, guarde y gestione sus credenciales para sitios web de multimedia."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:61
 #, fuzzy
 msgid "No Credentials"
 msgstr "Credenciales"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:62
 #, fuzzy
 msgid "Add a credential to get started"
 msgstr "Añada un nombre de usuario para empezar."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:102
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:96
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+"El llavero no guarda los cambios en el disco. Cualquier cambio realizado se "
+"perderá cuando se cierre la aplicación."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
 msgid "New Credential"
 msgstr "Nueva credencial"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
 msgid "The credential name cannot be empty."
 msgstr "El nombre de la credencial no puede estar vacío."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:145
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 msgid "The provided url is invalid."
 msgstr "La url proporcionada no es válida."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 msgid "A credential with this name already exists."
 msgstr "Ya existe una credencial con este nombre."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 "Se ha producido un error desconocido al añadir la credencial al llavero."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:183
+msgid "Edit Credential"
+msgstr "Editar credencial"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:210
+msgid "Save"
+msgstr "Guardar"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "Parabolic (Preview)"
@@ -1462,19 +1496,6 @@ msgstr "Introduzca aquí la url del proxy"
 
 #~ msgid "Enter url here"
 #~ msgstr "Introduzca aquí la url"
-
-#~ msgid "Save"
-#~ msgstr "Guardar"
-
-#~ msgid ""
-#~ "The keyring is not saving changes to disk. Any changes made will be lost "
-#~ "when the application closes."
-#~ msgstr ""
-#~ "El llavero no guarda los cambios en el disco. Cualquier cambio realizado "
-#~ "se perderá cuando se cierre la aplicación."
-
-#~ msgid "Edit Credential"
-#~ msgstr "Editar credencial"
 
 #~ msgid "Revert"
 #~ msgstr "Revertir"

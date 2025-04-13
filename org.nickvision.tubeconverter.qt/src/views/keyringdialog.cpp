@@ -4,6 +4,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
+#include <QListWidget>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QStackedWidget>
@@ -12,6 +13,7 @@
 #include "controls/statuspage.h"
 #include "helpers/qthelpers.h"
 
+using namespace Nickvision::Keyring;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::TubeConverter::Qt::Controls;
@@ -59,6 +61,8 @@ namespace Ui
             statNoCredentials->setTitle(_("No Credentials"));
             statNoCredentials->setDescription(_("Add a credential to get started"));
             viewStack->addWidget(statNoCredentials);
+            listCredentials = new QListWidget(parent);
+            viewStack->addWidget(listCredentials);
             QVBoxLayout* layoutMain{ new QVBoxLayout() };
             layoutMain->addLayout(layoutHeader);
             layoutMain->addWidget(lineMain);
@@ -69,6 +73,7 @@ namespace Ui
         QPushButton* btnAddCredential;
         QStackedWidget* viewStack;
         Nickvision::TubeConverter::Qt::Controls::StatusPage* statNoCredentials;
+        QListWidget* listCredentials;
     };
 }
 
@@ -86,8 +91,13 @@ namespace Nickvision::TubeConverter::Qt::Views
         //Load Ui
         m_ui->setupUi(this);
 		reloadCredentials();
+        if(!m_controller->isSavingToDisk())
+        {
+            QMessageBox::warning(this, _("Warning"), _("The keyring is not saving changes to disk. Any changes made will be lost when the application closes."), QMessageBox::Ok);
+        }
         //Signals
         connect(m_ui->btnAddCredential, &QPushButton::clicked, this, &KeyringDialog::addCredential);
+        connect(m_ui->listCredentials, &QListWidget::itemDoubleClicked, this, &KeyringDialog::onCredentialDoubleClicked);
     }
 
     KeyringDialog::~KeyringDialog()
@@ -97,7 +107,7 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void KeyringDialog::addCredential()
     {
-		//Add Credential Dialog
+        //Add Credential Dialog
         QDialog* dialog{ new QDialog(this) };
         dialog->setMinimumSize(300, 360);
         dialog->setWindowTitle(_("New Credential"));
@@ -117,6 +127,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         lblPassword->setText(_("Password"));
         QLineEdit* txtPassword{ new QLineEdit(dialog) };
         txtPassword->setPlaceholderText("Enter password here");
+        txtPassword->setEchoMode(QLineEdit::Password);
         QPushButton* btnAdd{ new QPushButton(dialog) };
         btnAdd->setAutoDefault(true);
         btnAdd->setDefault(true);
@@ -159,14 +170,14 @@ namespace Nickvision::TubeConverter::Qt::Views
         reloadCredentials();
     }
 	
-	void KeyringDialog::editCredential(const QString& name)
-	{
-		std::optional<Credential> credential{ m_controller->getCredential(name.toStdString()) };
+    void KeyringDialog::editCredential(const QString& name)
+    {
+        std::optional<Credential> credential{ m_controller->getCredential(name.toStdString()) };
         if(!credential)
         {
             return;
         }
-		//Edit Credential Dialog
+        //Edit Credential Dialog
         QDialog* dialog{ new QDialog(this) };
         dialog->setMinimumSize(300, 360);
         dialog->setWindowTitle(_("Edit Credential"));
@@ -174,45 +185,49 @@ namespace Nickvision::TubeConverter::Qt::Views
         lblName->setText(_("Name"));
         QLineEdit* txtName{ new QLineEdit(dialog) };
         txtName->setPlaceholderText("Enter name here");
-		txtName->setText(QString::fromStdString(credential->getName()));
-		txtName->setEnabled(false);
+        txtName->setText(QString::fromStdString(credential->getName()));
+        txtName->setEnabled(false);
         QLabel* lblUrl{ new QLabel(dialog) };
         lblUrl->setText(_("URL"));
         QLineEdit* txtUrl{ new QLineEdit(dialog) };
         txtUrl->setPlaceholderText("Enter url here");
-		txtUrl->setText(QString::fromStdString(credential->getUri()));
+        txtUrl->setText(QString::fromStdString(credential->getUri()));
         QLabel* lblUsername{ new QLabel(dialog) };
         lblUsername->setText(_("Username"));
         QLineEdit* txtUsername{ new QLineEdit(dialog) };
         txtUsername->setPlaceholderText("Enter username here");
-		txtUsername->setText(QString::fromStdString(credential->getUsername()));
+        txtUsername->setText(QString::fromStdString(credential->getUsername()));
         QLabel* lblPassword{ new QLabel(dialog) };
         lblPassword->setText(_("Password"));
         QLineEdit* txtPassword{ new QLineEdit(dialog) };
         txtPassword->setPlaceholderText("Enter password here");
-		txtPassword->setText(QString::fromStdString(credential->getPassword()));
+        txtPassword->setEchoMode(QLineEdit::Password);
+        txtPassword->setText(QString::fromStdString(credential->getPassword()));
         QPushButton* btnSave{ new QPushButton(dialog) };
         btnSave->setAutoDefault(true);
         btnSave->setDefault(true);
         btnSave->setIcon(QLEMENTINE_ICON(Action_Save));
         btnSave->setText(_("Save"));
-		QPushButton* btnDelete{ new QPushButton(dialog) };
-		btnDelete->setAutoDefault(false);
-		btnDelete->setDefault(false);
-		btnDelete->setIcon(QLEMENTINE_ICON(Action_Delete));
-		btnDelete->setText(_("Delete"));
+        QPushButton* btnDelete{ new QPushButton(dialog) };
+        btnDelete->setAutoDefault(false);
+        btnDelete->setDefault(false);
+        btnDelete->setIcon(QLEMENTINE_ICON(Action_Trash));
+        btnDelete->setText(_("Delete"));
         QFormLayout* layoutForm{ new QFormLayout() };
         layoutForm->addRow(lblName, txtName);
         layoutForm->addRow(lblUrl, txtUrl);
         layoutForm->addRow(lblUsername, txtUsername);
         layoutForm->addRow(lblPassword, txtPassword);
+        QHBoxLayout* layoutButtons{ new QHBoxLayout() };
+        layoutButtons->addWidget(btnDelete);
+        layoutButtons->addWidget(btnSave);
         QVBoxLayout* layout{ new QVBoxLayout() };
         layout->addLayout(layoutForm);
-        layout->addWidget(btnSave);
+        layout->addLayout(layoutButtons);
         dialog->setLayout(layout);
         connect(btnSave, &QPushButton::clicked, [&]()
         {
-            CredentialCheckStatus status{ m_controller->editCredential(txtName->text().toStdString(), txtUrl->text().toStdString(), txtUsername->text().toStdString(), txtPassword->text().toStdString()) };
+            CredentialCheckStatus status{ m_controller->updateCredential(txtName->text().toStdString(), txtUrl->text().toStdString(), txtUsername->text().toStdString(), txtPassword->text().toStdString()) };
             switch(status)
             {
             case CredentialCheckStatus::EmptyName:
@@ -234,20 +249,33 @@ namespace Nickvision::TubeConverter::Qt::Views
                 dialog->close();
             }
         });
-		connect(btnDelete, &QPushButton::clicked, [&]()
-		{
-			QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Credential?"), _("Are you sure you want to delete this credential?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
-			if(msgBox.exec() == QMessageBox::StandardButton::Yes)
-			{
-				m_controller->deleteCredential(txtName->text().toStdString());
-			}
-			dialog->close();
-		});
+        connect(btnDelete, &QPushButton::clicked, [&]()
+        {
+            QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Credential?"), _("Are you sure you want to delete this credential?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+            if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+            {
+                m_controller->deleteCredential(txtName->text().toStdString());
+                dialog->close();
+            }
+        });
         dialog->exec();
         reloadCredentials();
-	}
-	
-	void KeyringDialog::reloadCredentials)
-	{
-		
+    }
+
+    void KeyringDialog::onCredentialDoubleClicked(QListWidgetItem* item)
+    {
+        editCredential(item->text());
+    }
+
+    void KeyringDialog::reloadCredentials()
+    {
+        m_ui->listCredentials->clear();
+        std::vector<Credential> credentials{ m_controller->getCredentials() };
+        for(const Credential& credential : credentials)
+        {
+            QListWidgetItem* item{ new QListWidgetItem(QString::fromStdString(credential.getName()), m_ui->listCredentials) };
+            m_ui->listCredentials->addItem(item);
+        }
+        m_ui->viewStack->setCurrentIndex(credentials.size() > 0 ? KeyringDialogPage::Credentials : KeyringDialogPage::NoCredentials);
+    }
 }

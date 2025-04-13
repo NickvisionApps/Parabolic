@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 22:16-0400\n"
+"POT-Creation-Date: 2025-04-12 20:09-0400\n"
 "PO-Revision-Date: 2025-02-23 19:17+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -256,7 +256,8 @@ msgstr "Poverenie"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:112
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:196
 msgid "Username"
 msgstr "Meno používateľa"
 
@@ -266,7 +267,8 @@ msgstr "Meno používateľa"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:80
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:116
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:201
 msgid "Password"
 msgstr "Heslo"
 
@@ -446,31 +448,33 @@ msgstr "Nenašli sa žiadne poverenia"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
 msgid "Add Credential"
 msgstr "Pridať poverenie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:31
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:39
 msgid "Credentials"
 msgstr "Poverenia"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:45
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
 msgid "Add"
 msgstr "Pridať"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:104
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:185
 msgid "Name"
 msgstr "Názov"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:191
 msgid "URL"
 msgstr "URL adresa"
 
@@ -510,7 +514,7 @@ msgstr "Domov"
 #. Dialog Settigns
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:88
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
 msgid "Keyring"
 msgstr "Zväzok kľúčov"
@@ -1023,11 +1027,16 @@ msgstr "Prebieha"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:116
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:483
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:139
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:142
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:145
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:148
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
 msgid "Error"
 msgstr "Chyba"
 
@@ -1090,6 +1099,7 @@ msgstr "{} položiek"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:573
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:636
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:96
 msgid "Warning"
 msgstr "Upozornenie"
 
@@ -1126,7 +1136,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
 msgid "Both the username and password cannot be empty."
 msgstr "Používateľské meno ani heslo nemôžu byť prázdne."
 
@@ -1143,6 +1154,7 @@ msgstr "Upraviť"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
 msgstr "Vymazať"
 
@@ -1151,10 +1163,12 @@ msgid "Modify"
 msgstr "Zmeniť"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
 msgid "Delete Credential?"
 msgstr "Odstrániť poverenie?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
 msgid "Are you sure you want to delete this credential?"
 msgstr "Ste si istí, že chcete odstrániť toto poverenie?"
 
@@ -1347,41 +1361,61 @@ msgstr ""
 "{} potrebuje poverenie na stiahnutie. Prosím, vyberte alebo zadajte také, "
 "ktoré chcete použiť."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:42
 #, fuzzy
 msgid "Add, delete, and modify credentials for validating websites"
 msgstr ""
 "Vytvárajte, ukladajte a spravujte svoje poverenia pre mediálne webové "
 "lokality."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:61
 #, fuzzy
 msgid "No Credentials"
 msgstr "Poverenia"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:62
 msgid "Add a credential to get started"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:102
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:96
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+"Zväzok kľúčov neukladá zmeny na disk. Všetky vykonané zmeny sa po zatvorení "
+"aplikácie stratia."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
 msgid "New Credential"
 msgstr "Nové poverenie"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
 msgid "The credential name cannot be empty."
 msgstr "Názov poverenia nemôže byť prázdny."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:145
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 msgid "The provided url is invalid."
 msgstr "Zadaná url adresa nie je platná."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 msgid "A credential with this name already exists."
 msgstr "Poverenie s týmto názvom už existuje."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr "Pri pridávaní poverenia do zväzku kľúčov došlo k neznámej chybe."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:183
+msgid "Edit Credential"
+msgstr "Upraviť poverenie"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:210
+msgid "Save"
+msgstr "Uložiť"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "Parabolic (Preview)"
@@ -1451,19 +1485,6 @@ msgstr "Sem zadajte url adresu proxy servera"
 
 #~ msgid "Enter url here"
 #~ msgstr "Tu zadajte adresu url"
-
-#~ msgid "Save"
-#~ msgstr "Uložiť"
-
-#~ msgid ""
-#~ "The keyring is not saving changes to disk. Any changes made will be lost "
-#~ "when the application closes."
-#~ msgstr ""
-#~ "Zväzok kľúčov neukladá zmeny na disk. Všetky vykonané zmeny sa po "
-#~ "zatvorení aplikácie stratia."
-
-#~ msgid "Edit Credential"
-#~ msgstr "Upraviť poverenie"
 
 #~ msgid "Revert"
 #~ msgstr "Vrátiť"

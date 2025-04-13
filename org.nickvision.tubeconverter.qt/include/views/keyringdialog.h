@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <QDialog>
+#include <QListWidgetItem>
 #include "controllers/keyringdialogcontroller.h"
 
 namespace Ui { class KeyringDialog; }
@@ -33,14 +34,19 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Prompts the user to add a new credential.
          */
         void addCredential();
-		/**
+        /**
          * @brief Prompts the user to edit a credential.
          * @param name The name of the credential to edit
          */
         void editCredential(const QString& name);
+        /**
+         * @brief Handles when a credential in the list was double clicked.
+         * @param item The item that was double clicked
+         */
+        void onCredentialDoubleClicked(QListWidgetItem* item);
 
     private:
-		/**
+        /**
          * @brief Reloads the credentials to show on the page.
          */
         void reloadCredentials();
