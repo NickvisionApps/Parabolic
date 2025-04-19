@@ -1,0 +1,55 @@
+#include "controls/historypane.h"
+#include <QStackedWidget>
+#include <libnick/localization/gettext.h>
+#include "controls/statuspage.h"
+#include "helpers/qthelpers.h"
+
+using namespace Nickvision::TubeConverter::Shared::Models;
+using namespace Nickvision::TubeConverter::Qt::Helpers;
+
+namespace Ui
+{
+    class HistoryPane
+    {
+    public:
+        void setupUi(Nickvision::TubeConverter::Qt::Controls::HistoryPane* parent)
+        {
+            viewStack = new QStackedWidget(parent);
+            //No History Page
+            statusNoHistory = new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent);
+            statusNoHistory->setTitle(_("No History"));
+            statusNoHistory->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
+            viewStack->addWidget(statusNoHistory);
+            //History Page
+
+            //Main Layout
+            parent->setWidget(viewStack);
+        }
+
+        QStackedWidget* viewStack;
+        Nickvision::TubeConverter::Qt::Controls::StatusPage* statusNoHistory;
+    };
+}
+
+namespace Nickvision::TubeConverter::Qt::Controls
+{
+    HistoryPane::HistoryPane(QWidget* parent)
+        : QDockWidget(_("History"), parent),
+        m_ui{ new Ui::HistoryPane() }
+    {
+        setMinimumWidth(320);
+        setFloating(false);
+        //Load Ui
+        m_ui->setupUi(this);
+    }
+
+    HistoryPane::~HistoryPane()
+    {
+        delete m_ui;
+    }
+
+    void HistoryPane::update(const std::vector<HistoricDownload>& history)
+    {
+
+    }
+}

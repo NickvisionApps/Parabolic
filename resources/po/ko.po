@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 20:09-0400\n"
+"POT-Creation-Date: 2025-04-19 10:48-0400\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -87,7 +87,7 @@ msgid "Best"
 msgstr "최고"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:204
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -213,11 +213,8 @@ msgstr "자동 생성됨"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:347
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:376
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:79
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:87
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:377
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Add Download"
 msgstr "다운로드 추가"
 
@@ -278,7 +275,7 @@ msgstr "유효성 검사"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:278
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:123
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:240
 msgid "File Type"
 msgstr "파일 유형"
 
@@ -304,7 +301,7 @@ msgstr "고급 옵션"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:139
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:296
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:132
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:251
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:252
 msgid "Save Folder"
 msgstr "저장 폴더"
 
@@ -313,9 +310,9 @@ msgstr "저장 폴더"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:310
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:393
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:259
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:583
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:646
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:260
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:647
 msgid "Select Save Folder"
 msgstr "저장 폴더 선택"
 
@@ -327,29 +324,28 @@ msgstr "파일 이름"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:160
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:149
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:293
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:294
 msgid "Revert to Title"
 msgstr "제목으로 되돌리기"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:169
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:324
-#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:229
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:314
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:230
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:315
 msgid "Download"
 msgstr "다운로드"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:192
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:353
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:196
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:278
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:279
 msgid "Select All"
 msgstr "모두 선택"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:199
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:360
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:201
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:283
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:284
 msgid "Deselect All"
 msgstr "모두 선택 해제"
 
@@ -361,14 +357,14 @@ msgstr "비디오를 챕터별로 분할"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:286
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:168
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:246
 msgid "Limit Download Speed"
 msgstr "다운로드 속도 제한"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:235
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:290
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:171
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:248
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:249
 msgid "Export Description"
 msgstr "설명 내보내기"
 
@@ -392,7 +388,7 @@ msgid "Playlist Items"
 msgstr "재생목록 항목"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:273
 msgid "Number Titles"
 msgstr "제목에 번호 매기기"
 
@@ -417,12 +413,10 @@ msgstr "로그 보기"
 msgid "Stop"
 msgstr "중지"
 
-#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
-#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
 msgid "Play"
 msgstr "재생"
 
@@ -489,13 +483,14 @@ msgstr "키보드 단축키"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:123
 msgid "Help"
 msgstr "도움말"
 
 #. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:95
 msgid "About Parabolic"
 msgstr "Parabolic에 대하여"
 
@@ -505,7 +500,7 @@ msgstr "메인 메뉴"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:167
 msgid "Home"
 msgstr "홈"
 
@@ -513,13 +508,14 @@ msgstr "홈"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:88
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "Keyring"
 msgstr "암호 저장소"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "History"
 msgstr "기록"
 
@@ -532,7 +528,7 @@ msgstr "다운로드"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:168
 msgid "Downloading"
 msgstr "다운로드 중"
 
@@ -540,29 +536,27 @@ msgstr "다운로드 중"
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid "Queued"
 msgstr "대기 중"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 msgid "Completed"
 msgstr "완료됨"
 
-#. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:220
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:156
 msgid "Download Media"
 msgstr "미디어 다운로드"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:221
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:78
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:157
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "다운로드를 시작하려면 비디오, 오디오 또는 재생 목록 URL을 추가하세요"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:249
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:82
 msgid "No history available"
 msgstr "기록이 없습니다"
 
@@ -577,54 +571,44 @@ msgstr "기록 지우기"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:267
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:433
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:83
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:102
 msgid "Clear"
 msgstr "지우기"
 
-#. Localize Downloading Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:288
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
 msgid "No Downloads Running"
 msgstr "다운로드가 진행 중이지 않음"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:312
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Stop All Downloads"
 msgstr "모든 다운로드 중지"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:317
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:88
 msgid "Stop All"
 msgstr "모두 중지"
 
-#. Localize Queued Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:344
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:91
 msgid "No Downloads Queued"
 msgstr "대기 중인 다운로드 없음"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:368
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
 msgid "Clear Queued Downloads"
 msgstr "대기 중인 다운로드 지우기"
 
-#. Localize Completed Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:400
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
 msgid "No Downloads Completed"
 msgstr "완료된 다운로드 없음"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:428
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
 msgid "Clear Completed Downloads"
 msgstr "완료된 다운로드 지우기"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:441
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:101
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 msgid "Retry Failed Downloads"
 msgstr "실패한 다운로드 다시 시도"
 
@@ -769,6 +753,7 @@ msgid "Preferred Subtitle Format"
 msgstr "선호하는 자막 형식"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:116
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:255
 msgid "Downloader"
 msgstr "다운로더"
@@ -806,7 +791,7 @@ msgid "Cookies from Browser"
 msgstr "브라우저에서 쿠키"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:397
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:398
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:145
 msgid "None"
 msgstr "없음"
@@ -1014,7 +999,7 @@ msgstr "실행 중"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:116
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:483
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
@@ -1041,19 +1026,19 @@ msgstr "중지됨"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:21
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:396
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:397
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:32
 msgid "Use manual credential"
 msgstr "수동 자격 증명 사용"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:432
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:433
 msgid "Select Batch File"
 msgstr "배치 파일 선택"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:432
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:433
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:440
 msgid "TXT Files (*.txt)"
 msgstr "TXT 파일 (*.txt)"
@@ -1086,16 +1071,16 @@ msgstr "{} 항목"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:281
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:573
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:636
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:574
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:637
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:96
 msgid "Warning"
 msgstr "경고"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:281
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:573
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:636
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:574
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:637
 msgid ""
 "Generic file types do not support embedding thumbnails and subtitles. Please "
 "select a specific file type that supports embedding to prevent separate "
@@ -1105,9 +1090,8 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:282
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:377
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:574
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:637
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:575
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:638
 msgid "Don't show this message again"
 msgstr "이 메시지를 다시 표시하지 않음"
 
@@ -1133,12 +1117,12 @@ msgstr "키링이 디스크에 저장되지 않았습니다. 변경 사항은 �
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:108
 msgid "Edit"
 msgstr "편집"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
-#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
@@ -1193,12 +1177,10 @@ msgid "Credential (Database Error)"
 msgstr "자격 증명 (데이터베이스 오류)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:163
 msgid "Disclaimer"
 msgstr "면책 조항"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:163
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1213,7 +1195,7 @@ msgid "Exit?"
 msgstr "종료하시겠습니까?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:248
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "다운로드가 진행 중입니다. 정말로 종료하시겠습니까?"
 
@@ -1222,7 +1204,7 @@ msgid "Download Again"
 msgstr "다시 다운로드"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:448
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:86
 msgid "GitHub Repo"
 msgstr "GitHub 저장소"
 
@@ -1244,7 +1226,6 @@ msgid "Copy Debug Information"
 msgstr "디버그 정보 복사"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:108
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "About"
 msgstr "정보"
 
@@ -1261,6 +1242,11 @@ msgstr "자격 증명"
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:111
 msgid "Debugging"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:20
+#, fuzzy
+msgid "No History"
+msgstr "기록"
 
 #. Window Settings
 #: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:50
@@ -1293,7 +1279,7 @@ msgid "Authentication"
 msgstr "인증"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:135
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:255
 #, fuzzy
 msgid "No save folder selected"
 msgstr "선택된 파일 없음"
@@ -1303,7 +1289,7 @@ msgid "Enter file name here"
 msgstr "여기에 파일 이름을 입력하세요"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:165
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:242
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:243
 msgid "Split Video by Chapters"
 msgstr "챕터별로 비디오 분할"
 
@@ -1318,7 +1304,7 @@ msgid "Enter end time here"
 msgstr "여기에 이름을 입력하세요"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:221
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:308
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:309
 msgid "General"
 msgstr "일반"
 
@@ -1327,11 +1313,11 @@ msgstr "일반"
 msgid "Advanced"
 msgstr "고급 옵션"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:309
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:310
 msgid "Items"
 msgstr "항목"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:483
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in settings."
@@ -1400,42 +1386,44 @@ msgstr "자격 증명 편집"
 msgid "Save"
 msgstr "저장"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
-msgid "Parabolic (Preview)"
-msgstr "Parabolic (미리보기)"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
-msgid "Check for Updates"
-msgstr "업데이트 확인"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
-msgid "Documentation"
-msgstr "문서"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
-msgid "Report a Bug"
-msgstr "버그 보고"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
-msgid "Discussions"
-msgstr "토론"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
+#, fuzzy
+msgid "Exit"
+msgstr "종료하시겠습니까?"
 
 #. Dialog Settings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:72
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:317
 msgid "Settings"
 msgstr "설정"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:100
-msgid "Retry Failed"
-msgstr "실패한 항목 다시 시도"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:83
+msgid "Check for Updates"
+msgstr "업데이트 확인"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:107
-msgid "Log"
-msgstr "로그"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
+msgid "Report a Bug"
+msgstr "버그 보고"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:385
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:92
+msgid "Discussions"
+msgstr "토론"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
+#, fuzzy
+msgid "File"
+msgstr "파일 유형"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:113
+#, fuzzy
+msgid "View"
+msgstr "로그 보기"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:204
+msgid "Parabolic (Preview)"
+msgstr "Parabolic (미리보기)"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:314
 msgid "Update"
 msgstr "업데이트"
 
@@ -1462,6 +1450,15 @@ msgstr "속도 제한"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:141
 msgid "Enter proxy url here"
 msgstr "여기에 프록시 URL을 입력하세요"
+
+#~ msgid "Documentation"
+#~ msgstr "문서"
+
+#~ msgid "Retry Failed"
+#~ msgstr "실패한 항목 다시 시도"
+
+#~ msgid "Log"
+#~ msgstr "로그"
 
 #~ msgid "Enter name here"
 #~ msgstr "여기에 이름을 입력하세요"

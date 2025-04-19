@@ -223,6 +223,7 @@ namespace Ui
             tabsSingle->addTab(subtitlesSinglePage, _("Subtitles"));
             tabsSingle->setCurrentIndex(0);
             lblUrlSingle = new QLabel(parent);
+            lblUrlSingle->setTextInteractionFlags(Qt::TextInteractionFlag::TextSelectableByMouse);
             btnDownloadSingle = new QPushButton(parent);
             btnDownloadSingle->setAutoDefault(true);
             btnDownloadSingle->setIcon(QLEMENTINE_ICON(Action_Download));
