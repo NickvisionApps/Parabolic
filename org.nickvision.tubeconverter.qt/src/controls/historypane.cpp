@@ -17,7 +17,7 @@ namespace Ui
             viewStack = new QStackedWidget(parent);
             //No History Page
             statusNoHistory = new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent);
-            statusNoHistory->setTitle(_("No History"));
+            statusNoHistory->setTitle(_("No Download History"));
             statusNoHistory->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
             viewStack->addWidget(statusNoHistory);
             //History Page
@@ -39,6 +39,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
     {
         setMinimumWidth(320);
         setFloating(false);
+        setAllowedAreas(::Qt::DockWidgetArea::LeftDockWidgetArea | ::Qt::DockWidgetArea::RightDockWidgetArea);
         //Load Ui
         m_ui->setupUi(this);
     }

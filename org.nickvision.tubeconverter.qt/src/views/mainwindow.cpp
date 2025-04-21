@@ -35,6 +35,12 @@ using namespace Nickvision::Notifications;
 using namespace Nickvision::Update;
 using namespace oclero::qlementine;
 
+enum DownloadPage
+{
+    None = 0,
+    Has
+};
+
 namespace Ui
 {
     class MainWindow
@@ -157,17 +163,50 @@ namespace Ui
             homePage->setDescription(_("Add a video, audio, or playlist URL to start downloading"));
             homePage->addWidget(btnHomeAddDownload);
             //Downloading Page
-            QWidget* downloadingPage{ new QWidget(parent) };
+            ActionButton* btnDownloadingAddDownload{ new ActionButton(parent) };
+            btnDownloadingAddDownload->setAutoDefault(true);
+            btnDownloadingAddDownload->setDefault(true);
+            btnDownloadingAddDownload->setAction(actionAddDownload);
+            Nickvision::TubeConverter::Qt::Controls::StatusPage* noDownloadingPage{ new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent) };
+            noDownloadingPage->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
+            noDownloadingPage->setTitle(_("No Downloads Running"));
+            noDownloadingPage->setDescription(_("Add a video, audio, or playlist URL to start downloading"));
+            noDownloadingPage->addWidget(btnDownloadingAddDownload);
+            downloadingViewStack = new QStackedWidget(parent);
+            downloadingViewStack->addWidget(noDownloadingPage);
+            downloadingViewStack->setCurrentIndex(DownloadPage::None);
             //Queued Page
-            QWidget* queuedPage{ new QWidget(parent) };
+            ActionButton* btnQueuedAddDownload{ new ActionButton(parent) };
+            btnQueuedAddDownload->setAutoDefault(true);
+            btnQueuedAddDownload->setDefault(true);
+            btnQueuedAddDownload->setAction(actionAddDownload);
+            Nickvision::TubeConverter::Qt::Controls::StatusPage* noQueuedPage{ new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent) };
+            noQueuedPage->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
+            noQueuedPage->setTitle(_("No Downloads Queued"));
+            noQueuedPage->setDescription(_("Add a video, audio, or playlist URL to start downloading"));
+            noQueuedPage->addWidget(btnQueuedAddDownload);
+            queuedViewStack = new QStackedWidget(parent);
+            queuedViewStack->addWidget(noQueuedPage);
+            queuedViewStack->setCurrentIndex(DownloadPage::None);
             //Completed Page
-            QWidget* completedPage{ new QWidget(parent) };
+            ActionButton* btnCompletedAddDownload{ new ActionButton(parent) };
+            btnCompletedAddDownload->setAutoDefault(true);
+            btnCompletedAddDownload->setDefault(true);
+            btnCompletedAddDownload->setAction(actionAddDownload);
+            Nickvision::TubeConverter::Qt::Controls::StatusPage* noCompletedPage{ new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent) };
+            noCompletedPage->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
+            noCompletedPage->setTitle(_("No Downloads Completed"));
+            noCompletedPage->setDescription(_("Add a video, audio, or playlist URL to start downloading"));
+            noCompletedPage->addWidget(btnCompletedAddDownload);
+            completedViewStack = new QStackedWidget(parent);
+            completedViewStack->addWidget(noCompletedPage);
+            completedViewStack->setCurrentIndex(DownloadPage::None);
             //Tabs
             QTabWidget* tabs{ new QTabWidget(parent) };
             tabs->addTab(homePage, QLEMENTINE_ICON(Navigation_Home), _("Home"));
-            tabs->addTab(downloadingPage, QLEMENTINE_ICON(Action_Save), _("Downloading"));
-            tabs->addTab(queuedPage, QLEMENTINE_ICON(Misc_Hourglass), _("Queued"));
-            tabs->addTab(completedPage, QLEMENTINE_ICON(Shape_CheckTick), _("Completed"));
+            tabs->addTab(downloadingViewStack, QLEMENTINE_ICON(Action_Save), _("Downloading"));
+            tabs->addTab(queuedViewStack, QLEMENTINE_ICON(Misc_Hourglass), _("Queued"));
+            tabs->addTab(completedViewStack, QLEMENTINE_ICON(Shape_CheckTick), _("Completed"));
             tabs->setCurrentIndex(0);
             parent->setCentralWidget(tabs);
         }
@@ -188,6 +227,9 @@ namespace Ui
         QAction* actionAbout;
         Nickvision::TubeConverter::Qt::Controls::InfoBar* infoBar;
         Nickvision::TubeConverter::Qt::Controls::HistoryPane* historyPane;
+        QStackedWidget* downloadingViewStack;
+        QStackedWidget* queuedViewStack;
+        QStackedWidget* completedViewStack;
     };
 }
 

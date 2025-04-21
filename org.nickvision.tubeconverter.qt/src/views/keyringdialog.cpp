@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
+#include <QMenu>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QStackedWidget>
@@ -62,6 +63,7 @@ namespace Ui
             statNoCredentials->setDescription(_("Add a credential to get started"));
             viewStack->addWidget(statNoCredentials);
             listCredentials = new QListWidget(parent);
+            listCredentials->setContextMenuPolicy(::Qt::ContextMenuPolicy::CustomContextMenu);
             viewStack->addWidget(listCredentials);
             QVBoxLayout* layoutMain{ new QVBoxLayout() };
             layoutMain->addLayout(layoutHeader);
@@ -97,6 +99,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         //Signals
         connect(m_ui->btnAddCredential, &QPushButton::clicked, this, &KeyringDialog::addCredential);
+        connect(m_ui->listCredentials, &QListWidget::customContextMenuRequested, this, &KeyringDialog::onListCredentialsContextMenu);
         connect(m_ui->listCredentials, &QListWidget::itemDoubleClicked, this, &KeyringDialog::onCredentialDoubleClicked);
     }
 
@@ -260,6 +263,30 @@ namespace Nickvision::TubeConverter::Qt::Views
         });
         dialog->exec();
         reloadCredentials();
+    }
+
+    void KeyringDialog::onListCredentialsContextMenu(const QPoint& pos)
+    {
+        QListWidgetItem* selected;
+        if((selected = m_ui->listCredentials->itemAt(pos)))
+        {
+
+            QMenu menu{ this };
+            menu.addAction(QLEMENTINE_ICON(Misc_Pen), _("Edit Credential"), [this, selected]()
+            {
+                editCredential(selected->text());
+            });
+            menu.addAction(QLEMENTINE_ICON(Action_Trash), _("Delete Credential"), [this, selected]()
+            {
+                QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Credential?"), _("Are you sure you want to delete this credential?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+                if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+                {
+                    m_controller->deleteCredential(selected->text().toStdString());
+                    reloadCredentials();
+                }
+            });
+            menu.exec(mapToGlobal(pos));
+        }
     }
 
     void KeyringDialog::onCredentialDoubleClicked(QListWidgetItem* item)

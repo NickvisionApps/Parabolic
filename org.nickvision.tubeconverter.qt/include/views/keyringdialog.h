@@ -40,6 +40,11 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void editCredential(const QString& name);
         /**
+         * @brief Handles showing a context menu on the credentials list.
+         * @param pos QPoint
+         */
+        void onListCredentialsContextMenu(const QPoint& pos);
+        /**
          * @brief Handles when a credential in the list was double clicked.
          * @param item The item that was double clicked
          */
