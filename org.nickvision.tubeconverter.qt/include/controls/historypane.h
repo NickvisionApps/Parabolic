@@ -14,6 +14,8 @@ namespace Nickvision::TubeConverter::Qt::Controls
      */
     class HistoryPane : public QDockWidget
     {
+    Q_OBJECT
+
     public:
         /**
          * @brief Constructs a HistoryPane.
@@ -25,7 +27,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
          */
         ~HistoryPane();
         /**
-         * @brief Updates the history in the pane.
+         * @brief Updates the history shown in the pane.
          * @param history The new history
          */
         void update(const std::vector<Shared::Models::HistoricDownload>& history);

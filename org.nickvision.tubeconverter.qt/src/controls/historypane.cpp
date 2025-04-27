@@ -7,6 +7,12 @@
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::TubeConverter::Qt::Helpers;
 
+enum HistoryPage
+{
+    None = 0,
+    Has
+};
+
 namespace Ui
 {
     class HistoryPane
@@ -16,25 +22,24 @@ namespace Ui
         {
             viewStack = new QStackedWidget(parent);
             //No History Page
-            statusNoHistory = new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent);
+            Nickvision::TubeConverter::Qt::Controls::StatusPage* statusNoHistory{ new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent) };
             statusNoHistory->setTitle(_("No Download History"));
             statusNoHistory->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
             viewStack->addWidget(statusNoHistory);
             //History Page
-
+            //TODO
             //Main Layout
             parent->setWidget(viewStack);
         }
 
         QStackedWidget* viewStack;
-        Nickvision::TubeConverter::Qt::Controls::StatusPage* statusNoHistory;
     };
 }
 
 namespace Nickvision::TubeConverter::Qt::Controls
 {
     HistoryPane::HistoryPane(QWidget* parent)
-        : QDockWidget(_("History"), parent),
+        : QDockWidget{ _("History"), parent },
         m_ui{ new Ui::HistoryPane() }
     {
         setMinimumWidth(320);
@@ -51,6 +56,6 @@ namespace Nickvision::TubeConverter::Qt::Controls
 
     void HistoryPane::update(const std::vector<HistoricDownload>& history)
     {
-
+        //TODO
     }
 }

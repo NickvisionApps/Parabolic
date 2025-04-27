@@ -8,6 +8,7 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QScrollArea>
 #include <QStackedWidget>
 #include <QTabWidget>
 #include <QToolBar>
@@ -18,6 +19,7 @@
 #include "controls/aboutdialog.h"
 #include "controls/historypane.h"
 #include "controls/infobar.h"
+#include "controls/logpane.h"
 #include "controls/statuspage.h"
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
@@ -28,6 +30,7 @@ using namespace Nickvision::App;
 using namespace Nickvision::TubeConverter::Qt::Controls;
 using namespace Nickvision::TubeConverter::Qt::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
@@ -35,11 +38,20 @@ using namespace Nickvision::Notifications;
 using namespace Nickvision::Update;
 using namespace oclero::qlementine;
 
+enum MainWindowPage
+{
+    Home = 0,
+    Downloading,
+    Queued,
+    Completed
+};
+
 enum DownloadPage
 {
     None = 0,
     Has
 };
+
 
 namespace Ui
 {
@@ -50,8 +62,12 @@ namespace Ui
         {
             //HistoryPane
             historyPane = new Nickvision::TubeConverter::Qt::Controls::HistoryPane(parent);
-            parent->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, historyPane);
             historyPane->hide();
+            parent->addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, historyPane);
+            //LogPane
+            logPane = new Nickvision::TubeConverter::Qt::Controls::LogPane(parent);
+            logPane->hide();
+            parent->addDockWidget(Qt::DockWidgetArea::BottomDockWidgetArea, logPane);
             //Actions
             actionAddDownload = new QAction(parent);
             actionAddDownload->setText(_("Add Download"));
@@ -73,6 +89,10 @@ namespace Ui
             actionHistory->setText(_("History"));
             actionHistory->setIcon(QLEMENTINE_ICON(Misc_Clock));
             actionHistory->setShortcut(Qt::CTRL | Qt::Key_H);
+            actionLog = logPane->toggleViewAction();
+            actionLog->setText(_("Log"));
+            actionLog->setIcon(QLEMENTINE_ICON(File_FileScript));
+            actionLog->setShortcut(QKeyCombination(Qt::ControlModifier | Qt::ShiftModifier, Qt::Key_L));
             actionStopAllDownloads = new QAction(parent);
             actionStopAllDownloads->setText(_("Stop All Downloads"));
             actionStopAllDownloads->setIcon(QLEMENTINE_ICON(Media_Stop));
@@ -118,6 +138,8 @@ namespace Ui
             QMenu* menuView{ new QMenu(parent) };
             menuView->setTitle(_("View"));
             menuView->addAction(actionHistory);
+            menuView->addSeparator();
+            menuView->addAction(actionLog);
             QMenu* menuDownloader{ new QMenu(parent) };
             menuDownloader->setTitle(_("Downloader"));
             menuDownloader->addAction(actionStopAllDownloads);
@@ -172,8 +194,19 @@ namespace Ui
             noDownloadingPage->setTitle(_("No Downloads Running"));
             noDownloadingPage->setDescription(_("Add a video, audio, or playlist URL to start downloading"));
             noDownloadingPage->addWidget(btnDownloadingAddDownload);
+            listDownloading = new QVBoxLayout();
+            listDownloading->setContentsMargins(0, 0, 0, 0);
+            listDownloading->addStretch();
+            QWidget* widgetDownloading{ new QWidget(parent) };
+            widgetDownloading->setLayout(listDownloading);
+            QScrollArea* scrollDownloading{ new QScrollArea(parent) };
+            scrollDownloading->setWidgetResizable(true);
+            scrollDownloading->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+            scrollDownloading->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+            scrollDownloading->setWidget(widgetDownloading);
             downloadingViewStack = new QStackedWidget(parent);
             downloadingViewStack->addWidget(noDownloadingPage);
+            downloadingViewStack->addWidget(scrollDownloading);
             downloadingViewStack->setCurrentIndex(DownloadPage::None);
             //Queued Page
             ActionButton* btnQueuedAddDownload{ new ActionButton(parent) };
@@ -185,8 +218,19 @@ namespace Ui
             noQueuedPage->setTitle(_("No Downloads Queued"));
             noQueuedPage->setDescription(_("Add a video, audio, or playlist URL to start downloading"));
             noQueuedPage->addWidget(btnQueuedAddDownload);
+            listQueued = new QVBoxLayout();
+            listQueued->setContentsMargins(0, 0, 0, 0);
+            listQueued->addStretch();
+            QWidget* widgetQueued{ new QWidget(parent) };
+            widgetQueued->setLayout(listQueued);
+            QScrollArea* scrollQueued{ new QScrollArea(parent) };
+            scrollQueued->setWidgetResizable(true);
+            scrollQueued->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+            scrollQueued->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+            scrollQueued->setWidget(widgetQueued);
             queuedViewStack = new QStackedWidget(parent);
             queuedViewStack->addWidget(noQueuedPage);
+            queuedViewStack->addWidget(scrollQueued);
             queuedViewStack->setCurrentIndex(DownloadPage::None);
             //Completed Page
             ActionButton* btnCompletedAddDownload{ new ActionButton(parent) };
@@ -198,11 +242,22 @@ namespace Ui
             noCompletedPage->setTitle(_("No Downloads Completed"));
             noCompletedPage->setDescription(_("Add a video, audio, or playlist URL to start downloading"));
             noCompletedPage->addWidget(btnCompletedAddDownload);
+            listCompleted = new QVBoxLayout();
+            listCompleted->setContentsMargins(0, 0, 0, 0);
+            listCompleted->addStretch();
+            QWidget* widgetCompleted{ new QWidget(parent) };
+            widgetCompleted->setLayout(listCompleted);
+            QScrollArea* scrollCompleted{ new QScrollArea(parent) };
+            scrollCompleted->setWidgetResizable(true);
+            scrollCompleted->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+            scrollCompleted->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+            scrollCompleted->setWidget(widgetCompleted);
             completedViewStack = new QStackedWidget(parent);
             completedViewStack->addWidget(noCompletedPage);
+            completedViewStack->addWidget(scrollCompleted);
             completedViewStack->setCurrentIndex(DownloadPage::None);
             //Tabs
-            QTabWidget* tabs{ new QTabWidget(parent) };
+            tabs = new QTabWidget(parent);
             tabs->addTab(homePage, QLEMENTINE_ICON(Navigation_Home), _("Home"));
             tabs->addTab(downloadingViewStack, QLEMENTINE_ICON(Action_Save), _("Downloading"));
             tabs->addTab(queuedViewStack, QLEMENTINE_ICON(Misc_Hourglass), _("Queued"));
@@ -216,6 +271,7 @@ namespace Ui
         QAction* actionKeyring;
         QAction* actionSettings;
         QAction* actionHistory;
+        QAction* actionLog;
         QAction* actionStopAllDownloads;
         QAction* actionRetryFailedDownloads;
         QAction* actionClearQueuedDownloads;
@@ -227,9 +283,14 @@ namespace Ui
         QAction* actionAbout;
         Nickvision::TubeConverter::Qt::Controls::InfoBar* infoBar;
         Nickvision::TubeConverter::Qt::Controls::HistoryPane* historyPane;
+        Nickvision::TubeConverter::Qt::Controls::LogPane* logPane;
         QStackedWidget* downloadingViewStack;
+        QVBoxLayout* listDownloading;
         QStackedWidget* queuedViewStack;
+        QVBoxLayout* listQueued;
         QStackedWidget* completedViewStack;
+        QVBoxLayout* listCompleted;
+        QTabWidget* tabs;
     };
 }
 
@@ -252,12 +313,22 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->actionExit, &QAction::triggered, this, &MainWindow::close);
         connect(m_ui->actionKeyring, &QAction::triggered, this, &MainWindow::keyring);
         connect(m_ui->actionSettings, &QAction::triggered, this, &MainWindow::settings);
+        connect(m_ui->actionStopAllDownloads, &QAction::triggered, this, &MainWindow::stopAllDownloads);
+        connect(m_ui->actionRetryFailedDownloads, &QAction::triggered, this, &MainWindow::retryFailedDownloads);
+        connect(m_ui->actionClearQueuedDownloads, &QAction::triggered, this, &MainWindow::clearQueuedDownloads);
+        connect(m_ui->actionClearCompletedDownloads, &QAction::triggered, this, &MainWindow::clearCompletedDownloads);
         connect(m_ui->actionCheckForUpdates, &QAction::triggered, this, &MainWindow::checkForUpdates);
         connect(m_ui->actionGitHubRepo, &QAction::triggered, this, &MainWindow::gitHubRepo);
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
         connect(m_ui->actionDiscussions, &QAction::triggered, this, &MainWindow::discussions);
         connect(m_ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
+        m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
+        m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
+        m_controller->getDownloadManager().downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
+        m_controller->getDownloadManager().downloadStopped() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadStopped(args); }); };
+        m_controller->getDownloadManager().downloadRetried() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadRetried(args); }); };
+        m_controller->getDownloadManager().downloadStartedFromQueue() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadStartedFromQueue(args); }); };
     }
 
     MainWindow::~MainWindow()
@@ -299,6 +370,15 @@ namespace Nickvision::TubeConverter::Qt::Views
         event->accept();
     }
 
+    void MainWindow::changeEvent(QEvent* event)
+    {
+        if(event->type() == QEvent::WindowStateChange || event->type() == QEvent::ActivationChange || event->type() == QEvent::WindowActivate)
+        {
+            m_controller->setIsWindowActive(isActiveWindow());
+        }
+        QMainWindow::changeEvent(event);
+    }
+
     void MainWindow::keyring()
     {
         KeyringDialog dialog{ m_controller->createKeyringDialogController(), this };
@@ -309,6 +389,26 @@ namespace Nickvision::TubeConverter::Qt::Views
     {
         SettingsDialog dialog{ m_controller->createPreferencesViewController(), m_themeManager, this };
         dialog.exec();
+    }
+
+    void MainWindow::stopAllDownloads()
+    {
+        m_controller->getDownloadManager().stopAllDownloads();
+    }
+
+    void MainWindow::retryFailedDownloads()
+    {
+        m_controller->getDownloadManager().retryFailedDownloads();
+    }
+
+    void MainWindow::clearQueuedDownloads()
+    {
+        //TODO
+    }
+
+    void MainWindow::clearCompletedDownloads()
+    {
+        //TODO
     }
 
     void MainWindow::checkForUpdates()
@@ -364,5 +464,85 @@ namespace Nickvision::TubeConverter::Qt::Views
     {
         AddDownloadDialog dialog{ m_controller->createAddDownloadDialogController(), url, this };
         dialog.exec();
+    }
+
+    void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
+    {
+        DownloadRow* row{ new DownloadRow(args, this) };
+        connect(row, &DownloadRow::showLog, [this](int id)
+        {
+            m_ui->logPane->setId(id);
+            m_ui->logPane->update(QString::fromStdString(m_controller->getDownloadManager().getDownloadLog(id)));
+            m_ui->logPane->show();
+        });
+        connect(row, &DownloadRow::stop, [this](int id) { m_controller->getDownloadManager().stopDownload(id); });
+        connect(row, &DownloadRow::retry, [this](int id) { m_controller->getDownloadManager().retryDownload(id); });
+        m_downloadRows[args.getId()] = row;
+        if(args.getStatus() == DownloadStatus::Queued)
+        {
+            m_ui->listQueued->insertWidget(0, row);
+            m_ui->queuedViewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+            if(m_ui->tabs->currentIndex() == MainWindowPage::Home)
+            {
+                m_ui->tabs->setCurrentIndex(MainWindowPage::Queued);
+            }
+        }
+        else
+        {
+            m_ui->listDownloading->insertWidget(0, row);
+            m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+            if(m_ui->tabs->currentIndex() == MainWindowPage::Home)
+            {
+                m_ui->tabs->setCurrentIndex(MainWindowPage::Downloading);
+            }
+        }
+    }
+
+    void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
+    {
+        DownloadRow* row{ m_downloadRows[args.getId()] };
+        row->setCompleteState(args);
+        m_ui->listDownloading->removeWidget(row);
+        m_ui->listCompleted->insertWidget(0, row);
+        m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+    }
+
+    void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
+    {
+        m_downloadRows[args.getId()]->setProgressState(args);
+        if(m_ui->logPane->id() == args.getId())
+        {
+            m_ui->logPane->update(QString::fromStdString(args.getLog()));
+        }
+    }
+
+    void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
+    {
+        DownloadRow* row{ m_downloadRows[*args] };
+        row->setStopState();
+        m_ui->listDownloading->removeWidget(row);
+        m_ui->listCompleted->insertWidget(0, row);
+        m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+    }
+
+    void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
+    {
+        DownloadRow* row{ m_downloadRows[*args] };
+        m_ui->listCompleted->removeWidget(row);
+        m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_downloadRows.erase(*args);
+        delete row;
+    }
+
+    void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
+    {
+        DownloadRow* row{ m_downloadRows[*args] };
+        row->setStartFromQueueState();
+        m_ui->listQueued->removeWidget(row);
+        m_ui->listDownloading->insertWidget(0, row);
+        m_ui->queuedViewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
     }
 }

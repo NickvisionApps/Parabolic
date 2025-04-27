@@ -225,7 +225,11 @@ namespace Nickvision::TubeConverter::Shared::Models
             std::vector<std::string> logLines{ StringHelpers::split(args.getOutput(), "\n") };
             try
             {
-                m_path = logLines[logLines.size() - 1];
+                std::filesystem::path finalPath{ logLines[logLines.size() - 1] };
+                if(std::filesystem::exists(finalPath))
+                {
+                    m_path = finalPath;
+                }
             }
             catch(...) { }
         }

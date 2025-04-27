@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-20 22:27-0400\n"
+"POT-Creation-Date: 2025-04-27 13:20-0400\n"
 "PO-Revision-Date: 2025-02-02 05:02+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -87,7 +87,7 @@ msgid "Best"
 msgstr "Nejlepší"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:246
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:307
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -149,8 +149,7 @@ msgstr "Soubor „{}“ byl stažen"
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:305
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:73
 msgid "Open"
 msgstr "Otevřít"
 
@@ -216,7 +215,7 @@ msgstr "Automaticky generovaný"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:377
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
 msgid "Add Download"
 msgstr "Přidat stahování"
 
@@ -408,23 +407,19 @@ msgstr "Použít"
 msgid "View Log"
 msgstr "Zobrazit protokol"
 
-#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:57
 msgid "Stop"
 msgstr "Zastavit"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
 msgid "Play"
 msgstr "Přehrát"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
 msgid "Retry"
 msgstr "Zkusit znovu"
 
@@ -485,14 +480,14 @@ msgstr "Klávesové zkratky"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:151
 msgid "Help"
 msgstr "Nápověda"
 
 #. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:101
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:121
 msgid "About Parabolic"
 msgstr "O aplikaci Parabolic"
 
@@ -502,7 +497,7 @@ msgstr "Hlavní nabídka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:206
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:261
 msgid "Home"
 msgstr "Domů"
 
@@ -510,14 +505,14 @@ msgstr "Domů"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 msgid "Keyring"
 msgstr "Klíčenka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
-#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:37
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
 msgid "History"
 msgstr "Historie"
 
@@ -530,34 +525,34 @@ msgstr "Stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:207
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:262
 msgid "Downloading"
 msgstr "Stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:208
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:263
 msgid "Queued"
 msgstr "Ve frontě"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:264
 msgid "Completed"
 msgstr "Dokončeno"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:220
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:162
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:184
 msgid "Download Media"
 msgstr "Stáhnout média"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:221
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:173
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:185
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:195
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:219
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:243
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Pro spuštění stahování přidejte adresu URL videa, zvuku nebo playlistu"
 
@@ -580,13 +575,13 @@ msgid "Clear"
 msgstr "Vymazat"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:288
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:172
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:194
 msgid "No Downloads Running"
 msgstr "Žádná probíhající stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:312
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
 msgid "Stop All Downloads"
 msgstr "Zastavit všechna stahování"
 
@@ -595,28 +590,28 @@ msgid "Stop All"
 msgstr "Zastavit vše"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:344
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:185
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:218
 msgid "No Downloads Queued"
 msgstr "Žádná stahování ve frontě"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:368
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
 msgid "Clear Queued Downloads"
 msgstr "Vymazat stahování ve frontě"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:400
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:242
 msgid "No Downloads Completed"
 msgstr "Žádná dokončená stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:428
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:86
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:106
 msgid "Clear Completed Downloads"
 msgstr "Vymazat dokončená stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:441
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:100
 msgid "Retry Failed Downloads"
 msgstr "Opakovat selhaná stahování"
 
@@ -762,7 +757,7 @@ msgid "Preferred Subtitle Format"
 msgstr "Preferovaný formát titulků"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:144
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:255
 msgid "Downloader"
 msgstr "Služba stahování"
@@ -994,27 +989,27 @@ msgid "Starting"
 msgstr "Spouštění"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:164
 msgid "Unknown"
 msgstr "Neznámý"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:78
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:97
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:220
 msgid "Processing"
 msgstr "Zpracovává se"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:84
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:103
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:159
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:226
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
 msgid "Running"
 msgstr "Běží"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:105
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:116
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
@@ -1031,12 +1026,12 @@ msgid "Error"
 msgstr "Chyba"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:113
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:122
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:247
 msgid "Success"
 msgstr "Úspěch"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:124
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:132
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:255
 msgid "Stopped"
 msgstr "Zastaveno"
 
@@ -1135,14 +1130,12 @@ msgid "Keyring is not saving to disk. Changes will be lost."
 msgstr "Klíčenka není ukládána na disk. Změny budou ztraceny."
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:114
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:134
 msgid "Edit"
 msgstr "Upravit"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:218
 msgid "Delete"
 msgstr "Odstranit"
@@ -1216,7 +1209,7 @@ msgid "Exit?"
 msgstr "Ukončit?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:290
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:361
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Probíhá stahování. Opravdu chcete aplikaci ukončit?"
 
@@ -1225,7 +1218,7 @@ msgid "Download Again"
 msgstr "Stáhnout znovu"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:448
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:92
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:112
 msgid "GitHub Repo"
 msgstr "Repozitář GitHub"
 
@@ -1263,7 +1256,27 @@ msgstr "Zásluhy"
 msgid "Debugging"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:20
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:51
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
+msgid "Log"
+msgstr "Protokol"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
+#, fuzzy
+msgid "Show Log"
+msgstr "Zobrazit okno"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
+#, fuzzy
+msgid "Open Containing Folder"
+msgstr "Otevřít složku"
+
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:26
 #, fuzzy
 msgid "No Download History"
 msgstr "Délka historie stahování"
@@ -1273,6 +1286,11 @@ msgstr "Délka historie stahování"
 #, fuzzy
 msgid "Notification"
 msgstr "Aplikace"
+
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:28
+#, fuzzy
+msgid "No Download Log"
+msgstr "Délka historie stahování"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 msgid "Enter media url here"
@@ -1412,41 +1430,41 @@ msgstr "Uložit"
 msgid "Delete Credential"
 msgstr "Odstranit údaje?"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
 msgid "Exit"
 msgstr "Ukončit"
 
 #. Dialog Settings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:317
 msgid "Settings"
 msgstr "Nastavení"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
 msgid "Check for Updates"
 msgstr "Zkontrolovat aktualizace"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:115
 msgid "Report a Bug"
 msgstr "Nahlásit chybu"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:118
 msgid "Discussions"
 msgstr "Diskuze"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:129
 msgid "File"
 msgstr "Soubor"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:139
 msgid "View"
 msgstr "Zobrazit"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:246
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:307
 msgid "Parabolic (Preview)"
 msgstr "Parabolic (náhled)"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:356
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:456
 msgid "Update"
 msgstr "Aktualizovat"
 
@@ -1483,9 +1501,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "Retry Failed"
 #~ msgstr "Opakovat neúspěšné"
-
-#~ msgid "Log"
-#~ msgstr "Protokol"
 
 #~ msgid "Cancel"
 #~ msgstr "Zrušit"
@@ -1803,9 +1818,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "On"
 #~ msgstr "Zapnuto"
 
-#~ msgid "Open Folder"
-#~ msgstr "Otevřít složku"
-
 #~ msgid "Please wait..."
 #~ msgstr "Čekejte prosím..."
 
@@ -1841,9 +1853,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Vyberte položky ke stažení nebo změňte názvy souborů."
-
-#~ msgid "Show Window"
-#~ msgstr "Zobrazit okno"
 
 #~ msgid ""
 #~ "Some downloads are still in progress.\n"

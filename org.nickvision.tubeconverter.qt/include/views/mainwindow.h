@@ -3,11 +3,11 @@
 
 #include <memory>
 #include <QCloseEvent>
-#include <QDragEnterEvent>
-#include <QDropEvent>
+#include <QEvent>
 #include <QMainWindow>
 #include <oclero/qlementine/style/ThemeManager.hpp>
 #include "controllers/mainwindowcontroller.h"
+#include "controls/downloadrow.h"
 
 namespace Ui { class MainWindow; }
 
@@ -43,6 +43,11 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @param event QCloseEvent
          */
         void closeEvent(QCloseEvent* event) override;
+        /**
+         * @brief Handles when the widget changes.
+         * @param event QEvent
+         */
+        void changeEvent(QEvent* event) override;
 
     private Q_SLOTS:
         /**
@@ -53,6 +58,22 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Opens the application's settings dialog.
          */
         void settings();
+        /**
+         * @brief Stops all downloads that are queued or in progress.
+         */
+        void stopAllDownloads();
+        /**
+         * @brief Retries all downloads that have failed.
+         */
+        void retryFailedDownloads();
+        /**
+         * @brief Clears all downloads that are queued.
+         */
+        void clearQueuedDownloads();
+        /**
+         * @brief Clears all downloads that have failed.
+         */
+        void clearCompletedDownloads();
         /**
          * @brief Checks for application updates.
          */
@@ -87,6 +108,36 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
         /**
+         * @brief Handles when a download is added.
+         * @param args The DownloadAddedEventArgs
+         */
+        void onDownloadAdded(const Shared::Events::DownloadAddedEventArgs& args);
+        /**
+         * @brief Handles when a download is completed.
+         * @param args The DownloadCompletedEventArgs
+         */
+        void onDownloadCompleted(const Shared::Events::DownloadCompletedEventArgs& args);
+        /**
+         * @brief Handles when a download's progress is changed.
+         * @param args The DownloadProgressChangedEventArgs
+         */
+        void onDownloadProgressChanged(const Shared::Events::DownloadProgressChangedEventArgs& args);
+        /**
+         * @brief Handles when a download is stopped.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadStopped(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is retried.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadRetried(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is started from the queue.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
+        /**
          * @brief Prompts the user to add a download.
          * @param url A url to fill in the dialog with
          */
@@ -94,6 +145,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         Ui::MainWindow* m_ui;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         oclero::qlementine::ThemeManager* m_themeManager;
+        std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
     };
 }
 
