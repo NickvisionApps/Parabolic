@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-27 13:44-0400\n"
+"POT-Creation-Date: 2025-04-27 14:02-0400\n"
 "PO-Revision-Date: 2025-03-06 00:34+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -242,7 +242,7 @@ msgstr "Autentimine on vajalik"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:21
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:27
 msgid "Credential"
 msgstr "Tuvastusandmed"
 
@@ -251,7 +251,7 @@ msgstr "Tuvastusandmed"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:30
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:196
 msgid "Username"
@@ -262,7 +262,7 @@ msgstr "Kasutajanimi"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:80
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:34
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:201
 msgid "Password"
@@ -394,12 +394,12 @@ msgid "Number Titles"
 msgstr "Nummerda pealkirju"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:67
 msgid "Credential Needed"
 msgstr "Pead ennast autentima"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:39
 msgid "Use"
 msgstr "Kasuta"
 
@@ -1009,7 +1009,7 @@ msgstr "Töös"
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:100
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
@@ -1036,7 +1036,7 @@ msgstr "Peatatud"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:397
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:74
 msgid "Use manual credential"
 msgstr "Lisa tuvastusandmed käsitsi"
 
@@ -1118,7 +1118,7 @@ msgstr ""
 "Palun vali mõni olemasolevatest või lisa uued tuvastusandmed."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:100
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
 msgid "Both the username and password cannot be empty."
@@ -1296,12 +1296,12 @@ msgid "Enter media url here"
 msgstr "Sisesta siia meedia võrguaadress"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:78
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:32
 msgid "Enter username here"
 msgstr "Sisesta siia kasutajanimi"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:82
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:36
 msgid "Enter password here"
 msgstr "Sisesta siia salasõna"
 
@@ -1363,8 +1363,7 @@ msgstr ""
 "võrguaadressi õigsust, autentimiseks vajalike andmete korrektsust ja "
 "võrguküpsiste laadimiseks vajaliku brauserit."
 
-#. Localize Strings
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
 #, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
