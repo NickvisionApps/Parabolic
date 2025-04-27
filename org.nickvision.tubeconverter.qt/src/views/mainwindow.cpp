@@ -259,10 +259,10 @@ namespace Ui
             //Tabs
             tabs = new QTabWidget(parent);
             tabs->addTab(homePage, QLEMENTINE_ICON(Navigation_Home), _("Home"));
-            tabs->addTab(downloadingViewStack, QLEMENTINE_ICON(Action_Save), _("Downloading"));
-            tabs->addTab(queuedViewStack, QLEMENTINE_ICON(Misc_Hourglass), _("Queued"));
-            tabs->addTab(completedViewStack, QLEMENTINE_ICON(Shape_CheckTick), _("Completed"));
-            tabs->setCurrentIndex(0);
+            tabs->addTab(downloadingViewStack, QLEMENTINE_ICON(Action_Save), _("Downloading (0)"));
+            tabs->addTab(queuedViewStack, QLEMENTINE_ICON(Misc_Hourglass), _("Queued (0)"));
+            tabs->addTab(completedViewStack, QLEMENTINE_ICON(Shape_CheckTick), _("Completed (0)"));
+            tabs->setCurrentIndex(MainWindowPage::Home);
             parent->setCentralWidget(tabs);
         }
 
@@ -295,7 +295,7 @@ namespace Ui
 }
 
 namespace Nickvision::TubeConverter::Qt::Views
-{
+{    
     MainWindow::MainWindow(const std::shared_ptr<MainWindowController>& controller, oclero::qlementine::ThemeManager* themeManager, QWidget* parent)
         : QMainWindow{ parent },
         m_ui{ new Ui::MainWindow() },
@@ -403,12 +403,36 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void MainWindow::clearQueuedDownloads()
     {
-        //TODO
+        for(int id : m_controller->getDownloadManager().clearQueuedDownloads())
+        {
+            DownloadRow* row{ m_downloadRows[id] };
+            QFrame* line{ m_downloadLines[id] };
+            m_ui->listQueued->removeWidget(row);
+            m_ui->listQueued->removeWidget(line);
+            m_downloadRows.erase(id);
+            m_downloadLines.erase(id);
+            delete row;
+            delete line;
+        }
+        m_ui->queuedViewStack->setCurrentIndex(DownloadPage::None);
+        m_ui->tabs->setTabText(MainWindowPage::Queued, _("Queued (0)"));
     }
 
     void MainWindow::clearCompletedDownloads()
     {
-        //TODO
+        for(int id : m_controller->getDownloadManager().clearCompletedDownloads())
+        {
+            DownloadRow* row{ m_downloadRows[id] };
+            QFrame* line{ m_downloadLines[id] };
+            m_ui->listCompleted->removeWidget(row);
+            m_ui->listCompleted->removeWidget(line);
+            m_downloadRows.erase(id);
+            m_downloadLines.erase(id);
+            delete row;
+            delete line;
+        }
+        m_ui->completedViewStack->setCurrentIndex(DownloadPage::None);
+        m_ui->tabs->setTabText(MainWindowPage::Completed, _("Completed (0)"));
     }
 
     void MainWindow::checkForUpdates()
@@ -469,6 +493,7 @@ namespace Nickvision::TubeConverter::Qt::Views
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
     {
         DownloadRow* row{ new DownloadRow(args, this) };
+        QFrame* line{ QtHelpers::createHLine(this) };
         connect(row, &DownloadRow::showLog, [this](int id)
         {
             m_ui->logPane->setId(id);
@@ -478,34 +503,44 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(row, &DownloadRow::stop, [this](int id) { m_controller->getDownloadManager().stopDownload(id); });
         connect(row, &DownloadRow::retry, [this](int id) { m_controller->getDownloadManager().retryDownload(id); });
         m_downloadRows[args.getId()] = row;
+        m_downloadLines[args.getId()] = line;
         if(args.getStatus() == DownloadStatus::Queued)
         {
             m_ui->listQueued->insertWidget(0, row);
+            m_ui->listQueued->insertWidget(1, line);
             m_ui->queuedViewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
             if(m_ui->tabs->currentIndex() == MainWindowPage::Home)
             {
                 m_ui->tabs->setCurrentIndex(MainWindowPage::Queued);
             }
+            m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(std::vformat(_("Queued ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getQueuedCount())))));
         }
         else
         {
             m_ui->listDownloading->insertWidget(0, row);
+            m_ui->listDownloading->insertWidget(1, line);
             m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
             if(m_ui->tabs->currentIndex() == MainWindowPage::Home)
             {
                 m_ui->tabs->setCurrentIndex(MainWindowPage::Downloading);
             }
+            m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
         }
     }
 
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
         DownloadRow* row{ m_downloadRows[args.getId()] };
+        QFrame* line{ m_downloadLines[args.getId()] };
         row->setCompleteState(args);
         m_ui->listDownloading->removeWidget(row);
+        m_ui->listDownloading->removeWidget(line);
         m_ui->listCompleted->insertWidget(0, row);
+        m_ui->listCompleted->insertWidget(1, line);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
+        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(std::vformat(_("Completed ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getCompletedCount())))));
     }
 
     void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
@@ -520,29 +555,44 @@ namespace Nickvision::TubeConverter::Qt::Views
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
         DownloadRow* row{ m_downloadRows[*args] };
+        QFrame* line{ m_downloadLines[*args] };
         row->setStopState();
         m_ui->listDownloading->removeWidget(row);
+        m_ui->listDownloading->removeWidget(line);
         m_ui->listCompleted->insertWidget(0, row);
+        m_ui->listCompleted->insertWidget(1, line);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
+        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(std::vformat(_("Completed ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getCompletedCount())))));
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
     {
         DownloadRow* row{ m_downloadRows[*args] };
+        QFrame* line{ m_downloadLines[*args] };
         m_ui->listCompleted->removeWidget(row);
+        m_ui->listCompleted->removeWidget(line);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
         m_downloadRows.erase(*args);
+        m_downloadLines.erase(*args);
         delete row;
+        delete line;
     }
 
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
         DownloadRow* row{ m_downloadRows[*args] };
+        QFrame* line{ m_downloadLines[*args] };
         row->setStartFromQueueState();
         m_ui->listQueued->removeWidget(row);
+        m_ui->listQueued->removeWidget(line);
         m_ui->listDownloading->insertWidget(0, row);
+        m_ui->listDownloading->insertWidget(1, line);
         m_ui->queuedViewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(std::vformat(_("Queued ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getQueuedCount())))));
+        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(std::vformat(_("Completed ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getCompletedCount())))));
     }
 }

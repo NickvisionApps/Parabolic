@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-27 13:20-0400\n"
+"POT-Creation-Date: 2025-04-27 13:44-0400\n"
 "PO-Revision-Date: 2025-02-06 19:22+0000\n"
 "Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -252,8 +252,8 @@ msgstr "Inloggningsuppgifter"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:196
 msgid "Username"
 msgstr "Användarnamn"
 
@@ -263,8 +263,8 @@ msgstr "Användarnamn"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:80
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:130
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:204
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:201
 msgid "Password"
 msgstr "Lösenord"
 
@@ -449,21 +449,21 @@ msgstr "Inloggningsuppgifter"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:138
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
 msgid "Add"
 msgstr "Lägg till"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:118
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:188
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:185
 msgid "Name"
 msgstr "Namn"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:191
 msgid "URL"
 msgstr "URL"
 
@@ -504,7 +504,7 @@ msgstr "Hem"
 #. Dialog Settigns
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 msgid "Keyring"
 msgstr "Nyckelring"
@@ -525,7 +525,6 @@ msgstr "Nedladdningar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:262
 msgid "Downloading"
 msgstr "Laddar ned"
 
@@ -533,13 +532,11 @@ msgstr "Laddar ned"
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:263
 msgid "Queued"
 msgstr "I kö"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:264
 msgid "Completed"
 msgstr "Slutförda"
 
@@ -1013,16 +1010,16 @@ msgstr "Körs"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:166
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:249
 msgid "Error"
 msgstr "Fel"
 
@@ -1086,7 +1083,7 @@ msgstr "{} objekt"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:574
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:637
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Warning"
 msgstr "Varning"
 
@@ -1122,8 +1119,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
 msgid "Both the username and password cannot be empty."
 msgstr "Både användarnamn och lösenord får inte vara tomma."
 
@@ -1138,7 +1135,7 @@ msgstr "Redigera"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:218
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
 msgstr "Radera"
 
@@ -1147,14 +1144,14 @@ msgid "Modify"
 msgstr "Ändra"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:281
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:278
 msgid "Delete Credential?"
 msgstr "Ta bort inloggningsuppgifter?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:281
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:278
 msgid "Are you sure you want to delete this credential?"
 msgstr "Är du säker på att du vill ta bort den här inloggningsuppgiften?"
 
@@ -1380,17 +1377,17 @@ msgid "Add, delete, and modify credentials for validating websites"
 msgstr ""
 "Skapa, spara och hantera dina Inloggningsuppgifter för mediewebbplatser."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
 #, fuzzy
 msgid "No Credentials"
 msgstr "Inloggningsuppgifter"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
 #, fuzzy
 msgid "Add a credential to get started"
 msgstr "Lägg till en inloggning för att komma igång."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
@@ -1398,42 +1395,42 @@ msgstr ""
 "Nyckelringen sparar inte ändringar på disken. Alla ändringar som görs kommer "
 "att gå förlorade när applikationen stängs."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:116
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
 msgid "New Credential"
 msgstr "Nya inloggningsuppgifter"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
 msgid "The credential name cannot be empty."
 msgstr "Inloggningsuppgifterna får inte vara tomt."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 msgid "The provided url is invalid."
 msgstr "Den angivna webbadressen är ogiltig."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 msgid "A credential with this name already exists."
 msgstr "Inloggningsuppgifter med detta namn finns redan."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:166
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:249
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 "Det uppstod ett okänt fel när inloggningsuppgifterna skulle läggas till "
 "nyckelringen."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:275
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
 msgid "Edit Credential"
 msgstr "Redigera inloggningsuppgifter"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:213
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:210
 msgid "Save"
 msgstr "Spara"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:279
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:276
 #, fuzzy
 msgid "Delete Credential"
 msgstr "Ta bort inloggningsuppgifter?"
@@ -1468,13 +1465,51 @@ msgstr "Fil"
 msgid "View"
 msgstr "Visa"
 
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:262
+#, fuzzy
+msgid "Downloading (0)"
+msgstr "Laddar ned"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:418
+#, fuzzy
+msgid "Queued (0)"
+msgstr "I kö"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:264
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:435
+#, fuzzy
+msgid "Completed (0)"
+msgstr "Slutförda"
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:307
 msgid "Parabolic (Preview)"
 msgstr "Parabolic (Förhandsvisning)"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:456
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:480
 msgid "Update"
 msgstr "Uppdatera"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:516
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:595
+#, fuzzy, c++-format
+msgid "Queued ({})"
+msgstr "I kö"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:527
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:542
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
+#, fuzzy, c++-format
+msgid "Downloading ({})"
+msgstr "Laddar ned"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:596
+#, fuzzy, c++-format
+msgid "Completed ({})"
+msgstr "Slutförda"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:36
 msgid "Light"

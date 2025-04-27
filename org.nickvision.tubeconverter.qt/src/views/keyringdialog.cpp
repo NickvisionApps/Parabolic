@@ -54,9 +54,6 @@ namespace Ui
             layoutHeader->addLayout(layoutLabels);
             layoutHeader->addStretch();
             layoutHeader->addWidget(btnAddCredential);
-            QFrame* lineMain{ new QFrame(parent) };
-            lineMain->setFrameShape(QFrame::HLine);
-            lineMain->setFrameShadow(QFrame::Sunken);
             statNoCredentials = new Nickvision::TubeConverter::Qt::Controls::StatusPage(parent);
             statNoCredentials->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
             statNoCredentials->setTitle(_("No Credentials"));
@@ -67,7 +64,7 @@ namespace Ui
             viewStack->addWidget(listCredentials);
             QVBoxLayout* layoutMain{ new QVBoxLayout() };
             layoutMain->addLayout(layoutHeader);
-            layoutMain->addWidget(lineMain);
+            layoutMain->addWidget(QtHelpers::createHLine(parent));
             layoutMain->addWidget(viewStack);
             parent->setLayout(layoutMain);
         }

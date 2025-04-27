@@ -40,4 +40,20 @@ namespace Nickvision::TubeConverter::Qt::Helpers
     {
         return QIcon(iconPath(icon));
     }
+
+    QFrame* QtHelpers::createHLine(QWidget* parent)
+    {
+        QFrame* f{ new QFrame(parent) };
+        f->setFrameShape(QFrame::HLine);
+        f->setFrameShadow(QFrame::Sunken);
+        return f;
+    }
+
+    QFrame* QtHelpers::createVLine(QWidget* parent)
+    {
+        QFrame* f{ new QFrame(parent) };
+        f->setFrameShape(QFrame::VLine);
+        f->setFrameShadow(QFrame::Sunken);
+        return f;
+    }
 }

@@ -5,7 +5,9 @@
 #include <string>
 #include <vector>
 #include <QComboBox>
+#include <QFrame>
 #include <QIcon>
+#include <QWidget>
 #include <oclero/qlementine/icons/Icons16.hpp>
 
 #define QLEMENTINE_ICON(NAME) ::Nickvision::TubeConverter::Qt::Helpers::QtHelpers::getIcon(oclero::qlementine::icons::Icons16::NAME)
@@ -30,6 +32,18 @@ namespace Nickvision::TubeConverter::Qt::Helpers::QtHelpers
      * @return The QIcon
      */
     QIcon getIcon(oclero::qlementine::icons::Icons16 icon);
+    /**
+     * @brief Creates a horizontal line widget.
+     * @param parent The parent widget
+     * @return QFrame*
+     */
+    QFrame* createHLine(QWidget* parent = nullptr);
+    /**
+     * @brief Creates a vertical line widget.
+     * @param parent The parent widget
+     * @return QFrame*
+     */
+    QFrame* createVLine(QWidget* parent = nullptr);
 }
 
 #endif //QTHELPERS_H

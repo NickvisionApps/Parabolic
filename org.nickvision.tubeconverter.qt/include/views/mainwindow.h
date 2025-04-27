@@ -4,6 +4,7 @@
 #include <memory>
 #include <QCloseEvent>
 #include <QEvent>
+#include <QFrame>
 #include <QMainWindow>
 #include <oclero/qlementine/style/ThemeManager.hpp>
 #include "controllers/mainwindowcontroller.h"
@@ -146,6 +147,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         oclero::qlementine::ThemeManager* m_themeManager;
         std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
+        std::unordered_map<int, QFrame*> m_downloadLines;
     };
 }
 

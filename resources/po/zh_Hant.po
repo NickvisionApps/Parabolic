@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-27 13:20-0400\n"
+"POT-Creation-Date: 2025-04-27 13:44-0400\n"
 "PO-Revision-Date: 2025-03-17 12:11+0000\n"
 "Last-Translator: Chung-Wei Chung <webb790709@proton.me>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -250,8 +250,8 @@ msgstr "驗證資訊"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:196
 msgid "Username"
 msgstr "使用者名稱"
 
@@ -261,8 +261,8 @@ msgstr "使用者名稱"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:80
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:130
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:204
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:201
 msgid "Password"
 msgstr "密碼"
 
@@ -447,21 +447,21 @@ msgstr "身份驗證"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:138
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
 msgid "Add"
 msgstr "增加"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:118
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:188
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:185
 msgid "Name"
 msgstr "名稱"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:191
 msgid "URL"
 msgstr "URL"
 
@@ -502,7 +502,7 @@ msgstr "首頁"
 #. Dialog Settigns
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 msgid "Keyring"
 msgstr "金鑰環"
@@ -523,7 +523,6 @@ msgstr "下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:262
 msgid "Downloading"
 msgstr "下載中"
 
@@ -531,13 +530,11 @@ msgstr "下載中"
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:263
 msgid "Queued"
 msgstr "佇列"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:264
 msgid "Completed"
 msgstr "已完成"
 
@@ -999,16 +996,16 @@ msgstr "執行中"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:166
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:249
 msgid "Error"
 msgstr "錯誤"
 
@@ -1071,7 +1068,7 @@ msgstr "{} 項目"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:574
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:637
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Warning"
 msgstr "警告"
 
@@ -1106,8 +1103,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
 msgid "Both the username and password cannot be empty."
 msgstr "使用者名稱和密碼不能空白。"
 
@@ -1122,7 +1119,7 @@ msgstr "編輯"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:218
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
 msgstr "刪除"
 
@@ -1131,14 +1128,14 @@ msgid "Modify"
 msgstr "修改"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:281
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:278
 msgid "Delete Credential?"
 msgstr "刪除身份驗證？"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:281
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:278
 msgid "Are you sure you want to delete this credential?"
 msgstr "您確定要刪除身份驗證嗎？"
 
@@ -1358,55 +1355,55 @@ msgstr "{} 需要身份驗證才能下載。請選擇或輸入一個驗證。"
 msgid "Add, delete, and modify credentials for validating websites"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
 #, fuzzy
 msgid "No Credentials"
 msgstr "身份驗證"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
 msgid "Add a credential to get started"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
 msgstr "金鑰圈沒有儲存變更到硬碟。當程式關閉所有更動都會遺失。"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:116
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
 msgid "New Credential"
 msgstr "新身份驗證"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
 msgid "The credential name cannot be empty."
 msgstr "身份驗證名稱不能為空白"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 msgid "The provided url is invalid."
 msgstr "提供的 URL 無效"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 msgid "A credential with this name already exists."
 msgstr "此名稱的身份驗證已經存在"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:166
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:249
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr "新增身份驗證至金鑰圈時發生不明錯誤"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:275
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
 msgid "Edit Credential"
 msgstr "編輯身份驗證"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:213
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:210
 msgid "Save"
 msgstr "儲存"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:279
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:276
 #, fuzzy
 msgid "Delete Credential"
 msgstr "刪除身份驗證？"
@@ -1444,13 +1441,51 @@ msgstr "檔案類型"
 msgid "View"
 msgstr "檢視記錄檔"
 
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:262
+#, fuzzy
+msgid "Downloading (0)"
+msgstr "下載中"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:418
+#, fuzzy
+msgid "Queued (0)"
+msgstr "佇列"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:264
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:435
+#, fuzzy
+msgid "Completed (0)"
+msgstr "已完成"
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:307
 msgid "Parabolic (Preview)"
 msgstr "Parabolic (預覽版)"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:456
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:480
 msgid "Update"
 msgstr "更新"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:516
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:595
+#, fuzzy, c++-format
+msgid "Queued ({})"
+msgstr "佇列"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:527
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:542
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
+#, fuzzy, c++-format
+msgid "Downloading ({})"
+msgstr "下載中"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:596
+#, fuzzy, c++-format
+msgid "Completed ({})"
+msgstr "已完成"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:36
 msgid "Light"
