@@ -1,5 +1,7 @@
 #include "controls/historypane.h"
 #include <QStackedWidget>
+#include <QScrollArea>
+#include <QVBoxLayout>
 #include <libnick/localization/gettext.h>
 #include "controls/statuspage.h"
 #include "helpers/qthelpers.h"
@@ -27,12 +29,23 @@ namespace Ui
             statusNoHistory->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
             viewStack->addWidget(statusNoHistory);
             //History Page
-            //TODO
+            listHistory = new QVBoxLayout();
+            listHistory->setContentsMargins(0, 0, 0, 0);
+            listHistory->addStretch();
+            QWidget* widgetHistory{ new QWidget(parent) };
+            widgetHistory->setLayout(listHistory);
+            QScrollArea* scrollHistory{ new QScrollArea(parent) };
+            scrollHistory->setWidgetResizable(true);
+            scrollHistory->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+            scrollHistory->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+            scrollHistory->setWidget(widgetHistory);
+            viewStack->addWidget(scrollHistory);
             //Main Layout
             parent->setWidget(viewStack);
         }
 
         QStackedWidget* viewStack;
+        QVBoxLayout* listHistory;
     };
 }
 
@@ -56,6 +69,35 @@ namespace Nickvision::TubeConverter::Qt::Controls
 
     void HistoryPane::update(const std::vector<HistoricDownload>& history)
     {
-        //TODO
+        clear();
+        for(const HistoricDownload& download : history)
+        {
+            HistoryRow* row{ new HistoryRow(download, this) };
+            QFrame* line{ QtHelpers::createHLine(this) };
+            connect(row, &HistoryRow::downloadAgain, [this](const std::string& url){ Q_EMIT downloadAgain(url); });
+            connect(row, &HistoryRow::deleteItem, [this](const HistoricDownload& download){ Q_EMIT deleteItem(download); });
+            m_ui->viewStack->setCurrentIndex(HistoryPage::Has);
+            m_ui->listHistory->insertWidget(0, row);
+            m_ui->listHistory->insertWidget(1, line);
+            m_rows.push_back(row);
+            m_lines.push_back(line);
+        }
+    }
+
+    void HistoryPane::clear()
+    {
+        m_ui->viewStack->setCurrentIndex(HistoryPage::None);
+        for(HistoryRow* row : m_rows)
+        {
+            m_ui->listHistory->removeWidget(row);
+            delete row;
+        }
+        for(QFrame* line : m_lines)
+        {
+            m_ui->listHistory->removeWidget(line);
+            delete line;
+        }
+        m_rows.clear();
+        m_lines.clear();
     }
 }

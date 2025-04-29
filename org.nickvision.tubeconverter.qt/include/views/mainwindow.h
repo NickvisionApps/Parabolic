@@ -109,6 +109,16 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
         /**
+         * @brief Handles when the download history is changed.
+         * @param args The ParamEventArgs<std::vector<Models::HistoricDownload>>
+         */
+        void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
+        /**
+         * @brief Handles when a recovered download needs a credential.
+         * @param args The DownloadCredentialNeededEventArgs
+         */
+        void onDownloadCredentialNeeded(const Shared::Events::DownloadCredentialNeededEventArgs& args);
+        /**
          * @brief Handles when a download is added.
          * @param args The DownloadAddedEventArgs
          */

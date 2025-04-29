@@ -23,6 +23,7 @@
 #include "controls/statuspage.h"
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
+#include "views/credentialdialog.h"
 #include "views/keyringdialog.h"
 #include "views/settingsdialog.h"
 
@@ -322,7 +323,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
         connect(m_ui->actionDiscussions, &QAction::triggered, this, &MainWindow::discussions);
         connect(m_ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
+        connect(m_ui->historyPane, &HistoryPane::downloadAgain, [this](const std::string& url){ addDownload(url); });
+        connect(m_ui->historyPane, &HistoryPane::deleteItem, [this](const HistoricDownload& download){ m_controller->getDownloadManager().removeHistoricDownload(download); });
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
+        m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QtHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
+        m_controller->getDownloadManager().downloadCredentialNeeded() += [&](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
         m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
         m_controller->getDownloadManager().downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
@@ -484,9 +489,14 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->infoBar->show(args, actionText, actionCallback);
     }
 
-    void MainWindow::addDownload(const std::string& url)
+    void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
     {
-        AddDownloadDialog dialog{ m_controller->createAddDownloadDialogController(), url, this };
+        m_ui->historyPane->update(*args);
+    }
+
+    void MainWindow::onDownloadCredentialNeeded(const DownloadCredentialNeededEventArgs& args)
+    {
+        CredentialDialog dialog{ m_controller->createCredentialDialogController(args), this };
         dialog.exec();
     }
 
@@ -594,5 +604,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(std::vformat(_("Queued ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getQueuedCount())))));
         m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(std::vformat(_("Completed ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getCompletedCount())))));
+    }
+
+    void MainWindow::addDownload(const std::string& url)
+    {
+        AddDownloadDialog dialog{ m_controller->createAddDownloadDialogController(), url, this };
+        dialog.exec();
     }
 }

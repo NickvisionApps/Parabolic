@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <QDockWidget>
+#include <QFrame>
+#include <QWidget>
+#include "controls/historyrow.h"
 #include "models/historicdownload.h"
 
 namespace Ui { class HistoryPane; }
@@ -32,8 +35,26 @@ namespace Nickvision::TubeConverter::Qt::Controls
          */
         void update(const std::vector<Shared::Models::HistoricDownload>& history);
 
+    Q_SIGNALS:
+        /**
+         * @brief Emitted when the download button on a history row is clicked.
+         * @param url THe url of the historic download
+         */
+        void downloadAgain(const std::string& url);
+        /**
+         * @brief Emitted when the delete button on a history row is clicked.
+         * @param download The historic download
+         */
+        void deleteItem(const Shared::Models::HistoricDownload& download);
+
     private:
+        /**
+         * @brief Clears the history from the pane.
+         */
+        void clear();
         Ui::HistoryPane* m_ui;
+        std::vector<HistoryRow*> m_rows;
+        std::vector<QFrame*> m_lines;
     };
 }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-27 14:02-0400\n"
+"POT-Creation-Date: 2025-04-27 14:55-0400\n"
 "PO-Revision-Date: 2025-02-23 06:07+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -87,7 +87,7 @@ msgid "Best"
 msgstr "最高"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:307
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:308
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -215,7 +215,7 @@ msgstr "自動生成"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:377
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 msgid "Add Download"
 msgstr "ダウンロードを追加"
 
@@ -331,6 +331,7 @@ msgstr "タイトルを元に戻す"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:169
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:324
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:315
 msgid "Download"
@@ -415,6 +416,7 @@ msgstr "一時停止"
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "再生"
 
@@ -480,14 +482,14 @@ msgstr "キーボードショートカット"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:152
 msgid "Help"
 msgstr "ヘルプ"
 
 #. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:121
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:122
 msgid "About Parabolic"
 msgstr "Parabolic について"
 
@@ -497,7 +499,7 @@ msgstr "メインメニュー"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:261
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:262
 msgid "Home"
 msgstr "ホーム"
 
@@ -505,14 +507,14 @@ msgstr "ホーム"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:82
 msgid "Keyring"
 msgstr "キーリング"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
-#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:90
 msgid "History"
 msgstr "履歴"
 
@@ -541,15 +543,15 @@ msgid "Completed"
 msgstr "完了済"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:220
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:184
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:185
 msgid "Download Media"
 msgstr "メディアをダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:221
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:185
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:195
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:219
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:220
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:244
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "動画、音声、再生リストの URL を追加してダウンロードを始めます"
 
@@ -572,13 +574,13 @@ msgid "Clear"
 msgstr "クリア"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:288
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:195
 msgid "No Downloads Running"
 msgstr "進行中のダウンロードはありません"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:312
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:98
 msgid "Stop All Downloads"
 msgstr "すべてのダウンロードを停止"
 
@@ -587,28 +589,28 @@ msgid "Stop All"
 msgstr "すべて停止"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:344
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:218
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:219
 msgid "No Downloads Queued"
 msgstr "一時停止中のダウンロードはありません"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:368
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:104
 msgid "Clear Queued Downloads"
 msgstr "一時停止中のダウンロードをクリア"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:400
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:242
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:243
 msgid "No Downloads Completed"
 msgstr "完了済のダウンロードはありません"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:428
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:107
 msgid "Clear Completed Downloads"
 msgstr "完了したダウンロードをクリア"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:441
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:101
 msgid "Retry Failed Downloads"
 msgstr "失敗したダウンロードを再試行"
 
@@ -753,7 +755,7 @@ msgid "Preferred Subtitle Format"
 msgstr "優先する字幕のフォーマット"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:145
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:255
 msgid "Downloader"
 msgstr "ダウンローダー"
@@ -1125,12 +1127,13 @@ msgid "Keyring is not saving to disk. Changes will be lost."
 msgstr "キーリングはディスクに保存されていません。変更は失われます。"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:134
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:135
 msgid "Edit"
 msgstr "編集"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
 msgstr "削除"
@@ -1204,7 +1207,7 @@ msgid "Exit?"
 msgstr "終了しますか？"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:361
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:366
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "進行中のダウンロードがあります。本当に終了しますか？"
 
@@ -1213,7 +1216,7 @@ msgid "Download Again"
 msgstr "もう一度ダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:448
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:113
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
 
@@ -1255,7 +1258,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:60
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
 msgid "Log"
 msgstr "ログ"
 
@@ -1271,7 +1274,7 @@ msgstr "ウィンドウを表示"
 msgid "Open Containing Folder"
 msgstr "フォルダーを開く"
 
-#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:26
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:28
 #, fuzzy
 msgid "No Download History"
 msgstr "ダウンロード履歴の保存量"
@@ -1426,78 +1429,78 @@ msgstr "保存"
 msgid "Delete Credential"
 msgstr "資格情報を削除しますか？"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:78
 msgid "Exit"
 msgstr "終了"
 
 #. Dialog Settings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:86
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:317
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:110
 msgid "Check for Updates"
 msgstr "アップデートをチェック"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:115
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:116
 msgid "Report a Bug"
 msgstr "バグを報告"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:118
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:119
 msgid "Discussions"
 msgstr "ディスカッション"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:130
 msgid "File"
 msgstr "ファイル"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:140
 msgid "View"
 msgstr "表示"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:262
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:263
 #, fuzzy
 msgid "Downloading (0)"
 msgstr "ダウンロード中"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:263
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:418
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:264
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:423
 #, fuzzy
 msgid "Queued (0)"
 msgstr "停止中"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:264
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:435
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:265
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:440
 #, fuzzy
 msgid "Completed (0)"
 msgstr "完了済"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:307
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:308
 msgid "Parabolic (Preview)"
 msgstr "Parabolic (プレビュー版)"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:480
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:485
 msgid "Update"
 msgstr "アップデート"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:516
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:595
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:526
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
 #, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "停止中"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:527
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:542
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:537
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:552
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:587
 #, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "ダウンロード中"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:543
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:596
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:553
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
 #, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "完了済"
