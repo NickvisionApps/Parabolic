@@ -51,7 +51,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         /**
          * @brief Clears the history from the pane.
          */
-        void clear();
+        void clearList();
         Ui::HistoryPane* m_ui;
         std::vector<HistoryRow*> m_rows;
         std::vector<QFrame*> m_lines;

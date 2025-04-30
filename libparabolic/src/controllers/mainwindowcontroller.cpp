@@ -293,7 +293,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             if(args.getStatus() == DownloadStatus::Success)
             {
-                ShellNotification::send({ _("Download Finished"), std::vformat(_("{} has finished downloading"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Success }, m_appInfo, _("Open"));
+                ShellNotification::send({ _("Download Finished"), std::vformat(_("{} has finished downloading"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Success, "open", args.getPath().string() }, m_appInfo, _("Open"));
             }
             else
             {

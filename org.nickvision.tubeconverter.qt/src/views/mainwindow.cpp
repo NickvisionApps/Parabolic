@@ -106,6 +106,9 @@ namespace Ui
             actionClearCompletedDownloads = new QAction(parent);
             actionClearCompletedDownloads->setText(_("Clear Completed Downloads"));
             actionClearCompletedDownloads->setIcon(QLEMENTINE_ICON(Action_Trash));
+            actionClearHistory = new QAction(parent);
+            actionClearHistory->setText(_("Clear History"));
+            actionClearHistory->setIcon(QLEMENTINE_ICON(Action_Trash));
             actionCheckForUpdates = new QAction(parent);
             actionCheckForUpdates->setText(_("Check for Updates"));
             actionCheckForUpdates->setIcon(QLEMENTINE_ICON(Action_Update));
@@ -148,6 +151,8 @@ namespace Ui
             menuDownloader->addSeparator();
             menuDownloader->addAction(actionClearQueuedDownloads);
             menuDownloader->addAction(actionClearCompletedDownloads);
+            menuDownloader->addSeparator();
+            menuDownloader->addAction(actionClearHistory);
             QMenu* menuHelp{ new QMenu(parent) };
             menuHelp->setTitle(_("Help"));
             menuHelp->addAction(actionCheckForUpdates);
@@ -277,6 +282,7 @@ namespace Ui
         QAction* actionRetryFailedDownloads;
         QAction* actionClearQueuedDownloads;
         QAction* actionClearCompletedDownloads;
+        QAction* actionClearHistory;
         QAction* actionCheckForUpdates;
         QAction* actionGitHubRepo;
         QAction* actionReportABug;
@@ -318,6 +324,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->actionRetryFailedDownloads, &QAction::triggered, this, &MainWindow::retryFailedDownloads);
         connect(m_ui->actionClearQueuedDownloads, &QAction::triggered, this, &MainWindow::clearQueuedDownloads);
         connect(m_ui->actionClearCompletedDownloads, &QAction::triggered, this, &MainWindow::clearCompletedDownloads);
+        connect(m_ui->actionClearHistory, &QAction::triggered, this, &MainWindow::clearHistory);
         connect(m_ui->actionCheckForUpdates, &QAction::triggered, this, &MainWindow::checkForUpdates);
         connect(m_ui->actionGitHubRepo, &QAction::triggered, this, &MainWindow::gitHubRepo);
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
@@ -438,6 +445,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         m_ui->completedViewStack->setCurrentIndex(DownloadPage::None);
         m_ui->tabs->setTabText(MainWindowPage::Completed, _("Completed (0)"));
+    }
+
+    void MainWindow::clearHistory()
+    {
+        m_controller->getDownloadManager().clearHistory();
     }
 
     void MainWindow::checkForUpdates()

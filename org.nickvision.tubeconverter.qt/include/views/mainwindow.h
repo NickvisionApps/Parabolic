@@ -76,6 +76,10 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void clearCompletedDownloads();
         /**
+         * @brief Clears all download history.
+         */
+        void clearHistory();
+        /**
          * @brief Checks for application updates.
          */
         void checkForUpdates();

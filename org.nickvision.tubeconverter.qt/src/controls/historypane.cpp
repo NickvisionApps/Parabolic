@@ -69,7 +69,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
 
     void HistoryPane::update(const std::vector<HistoricDownload>& history)
     {
-        clear();
+        clearList();
         for(const HistoricDownload& download : history)
         {
             HistoryRow* row{ new HistoryRow(download, this) };
@@ -84,7 +84,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         }
     }
 
-    void HistoryPane::clear()
+    void HistoryPane::clearList()
     {
         m_ui->viewStack->setCurrentIndex(HistoryPage::None);
         for(HistoryRow* row : m_rows)
