@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-27 14:55-0400\n"
+"POT-Creation-Date: 2025-04-30 05:54-0400\n"
 "PO-Revision-Date: 2025-02-06 19:22+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -116,7 +116,6 @@ msgid "translator-credits"
 msgstr "Irénée Thirion"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} téléchargement récupéré"
@@ -142,7 +141,6 @@ msgid "Download Finished"
 msgstr "Téléchargement terminé"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} a été téléchargé"
 
@@ -159,7 +157,6 @@ msgid "Download Finished With Error"
 msgstr "Téléchargement terminé avec une erreur"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} s’est terminé avec une erreur"
 
@@ -172,22 +169,18 @@ msgid "All downloads have finished"
 msgstr "Tous les téléchargements sont terminés"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -432,6 +425,7 @@ msgid "Copy Command to Clipboard"
 msgstr "Copier la commande vers le presse-papiers"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:147
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:41
 msgid "Copy Log to Clipboard"
 msgstr "Copier le journal dans le presse-papier"
 
@@ -1081,7 +1075,6 @@ msgid "No Subtitles Available"
 msgstr "Aucun sous-titre disponible"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
-#, c++-format
 msgid "{} items"
 msgstr "{} éléments"
 
@@ -1116,7 +1109,6 @@ msgid "Don't show this message again"
 msgstr "Ne plus afficher ce message"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1268,7 +1260,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:51
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:60
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
 msgid "Log"
 msgstr "Journal"
@@ -1296,10 +1288,14 @@ msgstr "Longueur de l'historique de téléchargement"
 msgid "Notification"
 msgstr "Application"
 
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:28
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:32
 #, fuzzy
 msgid "No Download Log"
 msgstr "Longueur de l'historique de téléchargement"
+
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:40
+msgid "Copy"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 msgid "Enter media url here"
@@ -1374,7 +1370,6 @@ msgstr ""
 "les Préférences."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} nécessite un identifiant pour télécharger. Veuillez en sélectionner ou en "
@@ -1501,7 +1496,7 @@ msgstr "Mettre à jour"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:526
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Queued ({})"
 msgstr "En attente"
 
@@ -1509,14 +1504,14 @@ msgstr "En attente"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:552
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:576
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:587
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Downloading ({})"
 msgstr "Téléchargement"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:553
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Completed ({})"
 msgstr "Terminé"
 
@@ -2049,7 +2044,9 @@ msgstr "Entrez l’URL du proxy ici"
 #~ msgstr "Téléchargements restants : {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;Converter;convertisseur;"
+#~ msgstr ""
+#~ "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;"
+#~ "Converter;convertisseur;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Une interface basique pour yt-dlp"

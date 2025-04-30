@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-27 14:55-0400\n"
+"POT-Creation-Date: 2025-04-30 05:54-0400\n"
 "PO-Revision-Date: 2024-12-29 12:01+0000\n"
 "Last-Translator: Brage Fuglseth <brage.fuglseth@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -116,7 +116,6 @@ msgid "translator-credits"
 msgstr "Brage Fuglseth https://bragefuglseth.dev"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Gjenopprettet {} nedlasting"
@@ -140,7 +139,6 @@ msgid "Download Finished"
 msgstr "Nedlasting fullført"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#, c++-format
 msgid "{} has finished downloading"
 msgstr "Nedlasting av {} fullført"
 
@@ -157,7 +155,6 @@ msgid "Download Finished With Error"
 msgstr "Nedlasting fullført med feil"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} fullført med feil"
 
@@ -170,22 +167,18 @@ msgid "All downloads have finished"
 msgstr "Alle nedlastinger fullført"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -429,6 +422,7 @@ msgid "Copy Command to Clipboard"
 msgstr "Kopier kommando"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:147
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:41
 msgid "Copy Log to Clipboard"
 msgstr "Kopier teknisk logg"
 
@@ -1067,7 +1061,6 @@ msgid "No Subtitles Available"
 msgstr "Ingen undertekster tilgjengelig"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
-#, c++-format
 msgid "{} items"
 msgstr "{} elementer"
 
@@ -1098,7 +1091,6 @@ msgid "Don't show this message again"
 msgstr "Ikke vis dette igjen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1250,7 +1242,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:51
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:60
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
 msgid "Log"
 msgstr "Logg"
@@ -1278,10 +1270,14 @@ msgstr "Varighet på nedlastingslogg"
 msgid "Notification"
 msgstr "Program"
 
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:28
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:32
 #, fuzzy
 msgid "No Download Log"
 msgstr "Varighet på nedlastingslogg"
+
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:40
+msgid "Copy"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 msgid "Enter media url here"
@@ -1355,7 +1351,6 @@ msgstr ""
 "innloggingen og informasjonskapslene angitt i innstillingene."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} krever innlogging for å lastes ned.\n"
@@ -1481,7 +1476,7 @@ msgstr "Oppdater"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:526
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Queued ({})"
 msgstr "Ventende"
 
@@ -1489,14 +1484,14 @@ msgstr "Ventende"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:552
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:576
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:587
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Downloading ({})"
 msgstr "Aktive"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:553
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Completed ({})"
 msgstr "Fullført"
 

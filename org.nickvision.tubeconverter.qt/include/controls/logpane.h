@@ -48,6 +48,10 @@ namespace Nickvision::TubeConverter::Qt::Controls
          * @param visible Whether or not the pane is visible
          */
         void onVisibilityChanged(bool visible);
+        /**
+         * @brief Copies the log to the clipboard.
+         */
+        void copyLog();
 
     private:
         Ui::LogPane* m_ui;

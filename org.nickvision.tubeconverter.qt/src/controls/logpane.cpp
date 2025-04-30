@@ -1,8 +1,12 @@
 #include "controls/logpane.h"
+#include <QApplication>
+#include <QClipboard>
 #include <QLabel>
+#include <QPushButton>
 #include <QStackedWidget>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QVBoxLayout>
 #include <libnick/localization/gettext.h>
 #include "controls/statuspage.h"
 #include "helpers/qthelpers.h"
@@ -29,6 +33,12 @@ namespace Ui
             statusNoLog->setIcon(QLEMENTINE_ICON(Misc_EmptySlot));
             viewStack->addWidget(statusNoLog);
             //Log Page
+            btnCopy = new QPushButton(parent);
+            btnCopy->setAutoDefault(false);
+            btnCopy->setDefault(false);
+            btnCopy->setIcon(QLEMENTINE_ICON(Action_Copy));
+            btnCopy->setText(_("Copy"));
+            btnCopy->setToolTip(_("Copy Log to Clipboard"));
             lblLog = new QLabel(parent);
             lblLog->setMargin(6);
             lblLog->setAlignment(Qt::AlignTop);
@@ -43,13 +53,19 @@ namespace Ui
             {
                 scrollLog->verticalScrollBar()->setValue(max);
             });
-            viewStack->addWidget(scrollLog);
+            QVBoxLayout* layoutLog{ new QVBoxLayout() };
+            layoutLog->addWidget(btnCopy);
+            layoutLog->addWidget(scrollLog);
+            QWidget* pageLog{ new QWidget(parent) };
+            pageLog->setLayout(layoutLog);
+            viewStack->addWidget(pageLog);
             //Main Layout
             viewStack->setCurrentIndex(LogPage::None);
             parent->setWidget(viewStack);
         }
 
         QStackedWidget* viewStack;
+        QPushButton* btnCopy;
         QLabel* lblLog;
     };
 }
@@ -61,13 +77,14 @@ namespace Nickvision::TubeConverter::Qt::Controls
         m_ui{ new Ui::LogPane() },
         m_id{ -1 }
     {
-        setMinimumHeight(240);
-        setMaximumHeight(240);
+        setMinimumHeight(260);
+        setMaximumHeight(260);
         setFloating(false);
         setAllowedAreas(::Qt::DockWidgetArea::TopDockWidgetArea | ::Qt::DockWidgetArea::BottomDockWidgetArea);
         //Load Ui
         m_ui->setupUi(this);
         connect(this, &QDockWidget::visibilityChanged, this, &LogPane::onVisibilityChanged);
+        connect(m_ui->btnCopy, &QPushButton::clicked, this, &LogPane::copyLog);
     }
 
     LogPane::~LogPane()
@@ -92,6 +109,11 @@ namespace Nickvision::TubeConverter::Qt::Controls
             m_id = -1;
             update("");
         }
+    }
+
+    void LogPane::copyLog()
+    {
+        QApplication::clipboard()->setText(m_ui->lblLog->text());
     }
 
     void LogPane::update(const QString& log)

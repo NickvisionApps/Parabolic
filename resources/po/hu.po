@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-27 14:55-0400\n"
+"POT-Creation-Date: 2025-04-30 05:54-0400\n"
 "PO-Revision-Date: 2025-04-02 22:05+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -116,7 +116,6 @@ msgid "translator-credits"
 msgstr "ViBE <vibe@protonmail.com>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} letöltés helyreállítva"
@@ -141,7 +140,6 @@ msgid "Download Finished"
 msgstr "Letöltés befejeződött"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#, c++-format
 msgid "{} has finished downloading"
 msgstr "A(z) „{}” letöltése befejeződött"
 
@@ -158,7 +156,6 @@ msgid "Download Finished With Error"
 msgstr "Hiba történt letöltés közben"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, c++-format
 msgid "{} has finished with an error"
 msgstr "A(z) „{}” letöltése során hiba történt"
 
@@ -171,22 +168,18 @@ msgid "All downloads have finished"
 msgstr "Minden letöltés befejeződött"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/mp"
 
@@ -430,6 +423,7 @@ msgid "Copy Command to Clipboard"
 msgstr "Paraméterek másolása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:147
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:41
 msgid "Copy Log to Clipboard"
 msgstr "Napló másolása"
 
@@ -1075,7 +1069,6 @@ msgid "No Subtitles Available"
 msgstr "Nincs felirat"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
-#, c++-format
 msgid "{} items"
 msgstr "{} elem"
 
@@ -1110,7 +1103,6 @@ msgid "Don't show this message again"
 msgstr "Ne mutassa újra"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1261,7 +1253,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:51
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:60
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
 msgid "Log"
 msgstr "Napló"
@@ -1289,10 +1281,14 @@ msgstr "Letöltési előzmények tárolása"
 msgid "Notification"
 msgstr "Alkalmazás"
 
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:28
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:32
 #, fuzzy
 msgid "No Download Log"
 msgstr "Letöltési előzmények tárolása"
+
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:40
+msgid "Copy"
+msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 msgid "Enter media url here"
@@ -1366,7 +1362,6 @@ msgstr ""
 "vagy a bejelentkezési adatokat, valamint sütikre vonatkozó beállításokat!"
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "A(z) {} letöltéséhez bejelentkezés szükséges. Kérem, jelentkezzen be, vagy "
@@ -1489,7 +1484,7 @@ msgstr "Frissítés"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:526
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Queued ({})"
 msgstr "Sorban áll"
 
@@ -1497,14 +1492,14 @@ msgstr "Sorban áll"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:552
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:576
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:587
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Downloading ({})"
 msgstr "Letöltés"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:553
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Completed ({})"
 msgstr "Befejezett"
 
@@ -2020,7 +2015,9 @@ msgstr "Proxy-átjáró megadása"
 #~ msgstr "Hátralévő letöltések: {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;vimeo;videa;letöltés;letöltő;"
+#~ msgstr ""
+#~ "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;vimeo;videa;letöltés;"
+#~ "letöltő;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Egyszerű grafikus felület yt-dlp letöltőhöz"
