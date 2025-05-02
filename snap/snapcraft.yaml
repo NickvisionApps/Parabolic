@@ -34,7 +34,7 @@ parts:
     plugin: python
     source: .
     python-packages:
-      - yt-dlp==2025.03.31
+      - yt-dlp==2025.04.30
     stage:
       - -bin/activate*
       - -bin/Activate.ps1
@@ -52,7 +52,7 @@ parts:
 
   maddy:
     source: https://github.com/progsource/maddy.git
-    source-tag: '1.4.0'
+    source-tag: '1.5.0'
     plugin: dump
     source-depth: 1
     override-prime: '' 
@@ -60,7 +60,7 @@ parts:
   libnick:
     after: [maddy]
     source: https://github.com/nickvisionapps/libnick.git
-    source-tag: "2025.3.6"
+    source-tag: "2025.5.0"
     source-depth: 1
     plugin: cmake
     cmake-parameters:
