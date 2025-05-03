@@ -645,7 +645,15 @@ namespace Nickvision::TubeConverter::Shared::Models
 #endif
         if((m_saveFolder / m_saveFilename).string().size() + maxExtensionLength > maxPathLength)
         {
-            m_saveFilename = m_saveFilename.substr(0, maxPathLength - m_saveFolder.string().size() - maxExtensionLength);
+            int newFileNameLength{ static_cast<int>(maxPathLength) - static_cast<int>(m_saveFolder.string().size()) - static_cast<int>(maxExtensionLength) };
+            if(newFileNameLength > 0)
+            {
+                m_saveFilename = m_saveFilename.substr(0, static_cast<size_t>(newFileNameLength));
+            }
+            else
+            {
+                m_saveFolder = m_saveFolder.string().substr(0, maxPathLength - m_saveFilename.size() - maxExtensionLength);
+            }
         }
     }
 
