@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 06:30-0400\n"
+"POT-Creation-Date: 2025-05-03 13:56-0400\n"
 "PO-Revision-Date: 2025-03-17 12:11+0000\n"
 "Last-Translator: Chung-Wei Chung <webb790709@proton.me>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -116,6 +116,7 @@ msgid "translator-credits"
 msgstr "Chung-Wei Chung <webb790709@proton.me>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "已還原 {} 個下載"
@@ -138,12 +139,11 @@ msgid "Download Finished"
 msgstr "下載完成"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} 已下載完成"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:73
 msgid "Open"
@@ -154,6 +154,7 @@ msgid "Download Finished With Error"
 msgstr "下載完成但有錯誤"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} 下載完成但有錯誤"
 
@@ -166,18 +167,22 @@ msgid "All downloads have finished"
 msgstr "所有下載均已完成"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -1057,6 +1062,7 @@ msgid "No Subtitles Available"
 msgstr "沒有可提供的字幕"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
+#, c++-format
 msgid "{} items"
 msgstr "{} 項目"
 
@@ -1089,6 +1095,7 @@ msgid "Don't show this message again"
 msgstr "不要再顯示這個訊息"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1346,6 +1353,7 @@ msgstr ""
 "裡面的 cookies。"
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr "{} 需要身份驗證才能下載。請選擇或輸入一個驗證。"
 
@@ -1466,7 +1474,7 @@ msgstr "更新"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:538
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:617
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "佇列"
 
@@ -1474,14 +1482,14 @@ msgstr "佇列"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:564
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:588
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:599
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "下載中"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:565
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:589
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:618
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "已完成"
 

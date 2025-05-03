@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 06:30-0400\n"
+"POT-Creation-Date: 2025-05-03 13:56-0400\n"
 "PO-Revision-Date: 2025-02-23 19:17+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -116,6 +116,7 @@ msgid "translator-credits"
 msgstr "Jozef Gaál <preklady@mayday.sk>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Obnovené {} stiahnutie"
@@ -140,12 +141,11 @@ msgid "Download Finished"
 msgstr "Stiahnutie dokončené"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "Súbor „{}“ bol stiahnutý"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:73
 msgid "Open"
@@ -156,6 +156,7 @@ msgid "Download Finished With Error"
 msgstr "Sťahovanie neprebehlo úspešne"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "Sťahovanie súboru „{}“ nebolo úspešné"
 
@@ -168,18 +169,22 @@ msgid "All downloads have finished"
 msgstr "Všetky sťahovania sú dokončené"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -1071,6 +1076,7 @@ msgid "No Subtitles Available"
 msgstr "Titulky nie sú k dispozícii"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
+#, c++-format
 msgid "{} items"
 msgstr "{} položiek"
 
@@ -1104,6 +1110,7 @@ msgid "Don't show this message again"
 msgstr "Túto správu už nezobrazovať"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1362,6 +1369,7 @@ msgstr ""
 "použité overenie a prehliadač vybraný pre súbory cookie v nastaveniach."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} potrebuje poverenie na stiahnutie. Prosím, vyberte alebo zadajte také, "
@@ -1486,7 +1494,7 @@ msgstr "Aktualizovať"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:538
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:617
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "V poradí"
 
@@ -1494,14 +1502,14 @@ msgstr "V poradí"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:564
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:588
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:599
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Sťahovanie"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:565
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:589
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:618
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Dokončené"
 

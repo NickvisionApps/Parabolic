@@ -297,12 +297,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             else
             {
-                ShellNotification::send({ _("Download Finished With Error"), std::vformat(_("{} has finished with an error"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Error }, m_appInfo, _("Open"));
+                ShellNotification::send({ _("Download Finished With Error"), std::vformat(_("{} has finished with an error"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Error }, m_appInfo);
             }
         }
         else if(preference == CompletedNotificationPreference::AllCompleted && m_downloadManager.getRemainingDownloadsCount() == 0)
         {
-            ShellNotification::send({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational }, m_appInfo, _("Open"));
+            ShellNotification::send({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational }, m_appInfo);
         }
     }
 }
