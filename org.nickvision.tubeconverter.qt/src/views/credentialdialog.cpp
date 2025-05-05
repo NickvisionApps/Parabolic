@@ -1,12 +1,62 @@
 #include "views/credentialdialog.h"
-#include "ui_credentialdialog.h"
 #include <format>
+#include <QComboBox>
+#include <QFormLayout>
+#include <QLabel>
 #include <QMessageBox>
+#include <QPushButton>
+#include <QVBoxLayout>
 #include <libnick/localization/gettext.h>
+#include <oclero/qlementine/widgets/LineEdit.hpp>
 #include "helpers/qthelpers.h"
 
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Qt::Helpers;
+using namespace oclero::qlementine;
+
+namespace Ui
+{
+    class CredentialDialog
+    {
+    public:
+        void setupUi(Nickvision::TubeConverter::Qt::Views::CredentialDialog* parent, const std::string& url)
+        {
+            QLabel* lblMessage{ new QLabel(parent) };
+            lblMessage->setText(QString::fromStdString(std::vformat(_("{} needs a credential to download. Please select or enter one to use."), std::make_format_args(url))));
+            QLabel* lblCredential{ new QLabel(parent) };
+            lblCredential->setText(_("Credential"));
+            cmbCredential = new QComboBox(parent);
+            lblUsername = new QLabel(parent);
+            lblUsername->setText(_("Username"));
+            txtUsername = new LineEdit(parent);
+            txtUsername->setPlaceholderText(_("Enter username here"));
+            lblPassword = new QLabel(parent);
+            lblPassword->setText(_("Password"));
+            txtPassword = new LineEdit(parent);
+            txtPassword->setPlaceholderText(_("Enter password here"));
+            btnUse = new QPushButton(parent);
+            btnUse->setIcon(QLEMENTINE_ICON(Shape_CheckTick));
+            btnUse->setText(_("Use"));
+            QFormLayout* form{ new QFormLayout() };
+            form->addRow(lblCredential, cmbCredential);
+            form->addRow(lblUsername, txtUsername);
+            form->addRow(lblPassword, txtPassword);
+            QVBoxLayout* layout{ new QVBoxLayout() };
+            layout->addWidget(lblMessage);
+            layout->addLayout(form);
+            layout->addStretch();
+            layout->addWidget(btnUse);
+            parent->setLayout(layout);
+        }
+
+        QComboBox* cmbCredential;
+        QLabel* lblUsername;
+        LineEdit* txtUsername;
+        QLabel* lblPassword;
+        LineEdit* txtPassword;
+        QPushButton* btnUse;
+    };
+}
 
 namespace Nickvision::TubeConverter::Qt::Views
 {
@@ -14,16 +64,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         : m_controller{ controller },
         m_ui{ new Ui::CredentialDialog() }
     {
-        m_ui->setupUi(this);
         setWindowTitle(_("Credential Needed"));
-        //Localize Strings
-        m_ui->lblMessage->setText(QString::fromStdString(std::vformat(_("{} needs a credential to download. Please select or enter one to use."), std::make_format_args(m_controller->getUrl()))));
-        m_ui->lblCredential->setText(_("Credential"));
-        m_ui->lblUsername->setText(_("Username"));
-        m_ui->txtUsername->setPlaceholderText(_("Enter username here"));
-        m_ui->lblPassword->setText(_("Password"));
-        m_ui->txtPassword->setPlaceholderText(_("Enter password here"));
-        m_ui->btnUse->setText(_("Use"));
+        m_ui->setupUi(this, m_controller->getUrl());
         //Signals
         connect(m_ui->cmbCredential, &QComboBox::currentIndexChanged, this, &CredentialDialog::onCmbCredentialChanged);
         connect(m_ui->btnUse, &QPushButton::clicked, this, &CredentialDialog::use);

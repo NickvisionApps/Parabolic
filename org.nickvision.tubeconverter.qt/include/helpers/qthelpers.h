@@ -5,6 +5,12 @@
 #include <string>
 #include <vector>
 #include <QComboBox>
+#include <QFrame>
+#include <QIcon>
+#include <QWidget>
+#include <oclero/qlementine/icons/Icons16.hpp>
+
+#define QLEMENTINE_ICON(NAME) ::Nickvision::TubeConverter::Qt::Helpers::QtHelpers::getIcon(oclero::qlementine::icons::Icons16::NAME)
 
 namespace Nickvision::TubeConverter::Qt::Helpers::QtHelpers
 {
@@ -20,6 +26,24 @@ namespace Nickvision::TubeConverter::Qt::Helpers::QtHelpers
      * @param selected An option string that should be selected
      */
     void setComboBoxItems(QComboBox* comboBox, const std::vector<std::string>& items, const std::string& selected = "");
+    /**
+     * @brief Gets a QIcon from a qlementine icon.
+     * @param icon The qlementine icon
+     * @return The QIcon
+     */
+    QIcon getIcon(oclero::qlementine::icons::Icons16 icon);
+    /**
+     * @brief Creates a horizontal line widget.
+     * @param parent The parent widget
+     * @return QFrame*
+     */
+    QFrame* createHLine(QWidget* parent = nullptr);
+    /**
+     * @brief Creates a vertical line widget.
+     * @param parent The parent widget
+     * @return QFrame*
+     */
+    QFrame* createVLine(QWidget* parent = nullptr);
 }
 
 #endif //QTHELPERS_H

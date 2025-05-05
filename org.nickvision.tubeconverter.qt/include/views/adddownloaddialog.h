@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Handles when the cmbAuthenticate's index has changed.
          * @param index The new index
          */
-        void onCmbAuthenticateChanged(int index);
+        void onCmbCredentialChanged(int index);
         /**
          * @brief Validates the media url.
          */
@@ -84,9 +84,9 @@ namespace Nickvision::TubeConverter::Qt::Views
         void selectSaveFolderPlaylist();
         /**
          * @brief Handles when the chkNumberTitlesPlaylist's state has changed.
-         * @param state The new state
+         * @param checked Whether or not the switch is checked
          */
-        void onNumberTitlesPlaylistChanged(int state);
+        void onNumberTitlesPlaylistChanged(bool checked);
         /**
          * @brief Selects all items for a playlist download.
          */
@@ -95,6 +95,10 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Deselects all items for a playlist download.
          */
         void deselectAllPlaylist();
+        /**
+         * @brief Reverts the selected playlist item's filename to its original title.
+         */
+        void revertToTitlePlaylist();
         /**
          * @brief Downloads a playlist.
          */

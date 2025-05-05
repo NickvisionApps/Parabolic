@@ -61,6 +61,11 @@ namespace Nickvision::TubeConverter::Qt::Controls
 
     Q_SIGNALS:
         /**
+         * @brief Emitted when the show log button is clicked.
+         * @param id The id of the download
+         */
+        void showLog(int id);
+        /**
          * @brief Emitted when the stop button is clicked.
          * @param id The id of the download
          */

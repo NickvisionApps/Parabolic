@@ -222,15 +222,19 @@ namespace Nickvision::TubeConverter::Shared::Models
         //Get final path (last line of log)
         if(m_status == DownloadStatus::Success)
         {
-            std::vector<std::string> logLines{ StringHelpers::split(args.getOutput(), "\n") };
+            std::vector<std::string> logLines{ StringHelpers::split(m_process->getOutput(), "\n") };
             try
             {
-                m_path = logLines[logLines.size() - 1];
+                std::filesystem::path finalPath{ logLines[logLines.size() - 1] };
+                if(std::filesystem::exists(finalPath))
+                {
+                    m_path = finalPath;
+                }
             }
             catch(...) { }
         }
         lock.unlock();
-        m_progressChanged.invoke({ m_id, 1.0, 0.0, args.getOutput() });
+        m_progressChanged.invoke({ m_id, 1.0, 0.0, m_process->getOutput() });
         m_completed.invoke({ m_id, m_status, m_path, true });
     }
 }

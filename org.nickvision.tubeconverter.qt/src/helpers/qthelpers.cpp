@@ -3,6 +3,8 @@
 #include <QString>
 #include <QTimer>
 
+using namespace oclero::qlementine::icons;
+
 namespace Nickvision::TubeConverter::Qt::Helpers
 {
     void QtHelpers::dispatchToMainThread(const std::function<void()>& function)
@@ -32,5 +34,26 @@ namespace Nickvision::TubeConverter::Qt::Helpers
             }
         }
         comboBox->setCurrentIndex(selectedIndex);
+    }
+
+    QIcon QtHelpers::getIcon(Icons16 icon)
+    {
+        return QIcon(iconPath(icon));
+    }
+
+    QFrame* QtHelpers::createHLine(QWidget* parent)
+    {
+        QFrame* f{ new QFrame(parent) };
+        f->setFrameShape(QFrame::HLine);
+        f->setFrameShadow(QFrame::Sunken);
+        return f;
+    }
+
+    QFrame* QtHelpers::createVLine(QWidget* parent)
+    {
+        QFrame* f{ new QFrame(parent) };
+        f->setFrameShape(QFrame::VLine);
+        f->setFrameShadow(QFrame::Sunken);
+        return f;
     }
 }

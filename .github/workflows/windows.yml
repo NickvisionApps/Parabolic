@@ -35,9 +35,9 @@ jobs:
         uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
-          pkgs: boost-date-time libnick qtbase qtsvg qttools
+          pkgs: boost-date-time libnick qtbase qtsvg qttools qlementine qlementine-icons
           triplet: x64-windows
-          revision: 9b93d255be4be2eda2f9b139afd7f4e8c1026a55
+          revision: 69e3d824b1a0f1d5f88a2908daa43763f84c2b9a
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
@@ -51,7 +51,7 @@ jobs:
         run: |
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile vc_redist.x64.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.01.26/yt-dlp.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.04.30/yt-dlp.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip
           Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip -OutFile ffmpeg.zip
           Expand-Archive -Force 'aria2.zip'

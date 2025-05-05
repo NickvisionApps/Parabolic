@@ -9,7 +9,7 @@ namespace Ui { class HistoryRow; }
 namespace Nickvision::TubeConverter::Qt::Controls
 {
     /**
-     * @brief A row that displays and manages a historic download.
+     * @brief A row widget for displaying a historic download.
      */
     class HistoryRow : public QWidget
     {
@@ -17,8 +17,8 @@ namespace Nickvision::TubeConverter::Qt::Controls
 
     public:
         /**
-         * @brief Constructs a HistoryRow.
-         * @param download HistoricDownload
+         * @brief HistoryRow Constructs a HistoryRow.
+         * @param download The historic download
          * @param parent The parent widget
          */
         HistoryRow(const Shared::Models::HistoricDownload& download, QWidget* parent = nullptr);
@@ -30,24 +30,17 @@ namespace Nickvision::TubeConverter::Qt::Controls
     Q_SIGNALS:
         /**
          * @brief Emitted when the download button is clicked.
-         * @param url The URL of the download
+         * @param url THe url of the historic download
          */
         void downloadAgain(const std::string& url);
         /**
          * @brief Emitted when the delete button is clicked.
-         * @param download The download to delete
+         * @param download The historic download
          */
         void deleteItem(const Shared::Models::HistoricDownload& download);
 
-    private Q_SLOTS:
-        /**
-         * @brief Opens the download in a media player.
-         */
-        void play();
-
     private:
         Ui::HistoryRow* m_ui;
-        Shared::Models::HistoricDownload m_download;
     };
 }
 

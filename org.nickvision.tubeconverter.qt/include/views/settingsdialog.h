@@ -1,46 +1,48 @@
-#ifndef SETTINGSPAGE_H
-#define SETTINGSPAGE_H
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
 
 #include <memory>
 #include <QCloseEvent>
-#include <QWidget>
+#include <QDialog>
+#include <oclero/qlementine/style/ThemeManager.hpp>
 #include "controllers/preferencesviewcontroller.h"
 
-namespace Ui { class SettingsPage; }
+namespace Ui { class SettingsDialog; }
 
 namespace Nickvision::TubeConverter::Qt::Views
 {
     /**
-     * @brief The settings page for the application.
+     * @brief The settings dialog for the application.
      */
-    class SettingsPage : public QWidget
+    class SettingsDialog : public QDialog
     {
-    Q_OBJECT
+        Q_OBJECT
 
     public:
         /**
-         * @brief Constructs a SettingsPage.
+         * @brief Constructs a SettingsDialog.
          * @param controller The PreferencesViewController
+         * @param themeManager The ThemeManager
          * @param parent The parent widget
          */
-        SettingsPage(const std::shared_ptr<Shared::Controllers::PreferencesViewController>& controller, QWidget* parent = nullptr);
+        SettingsDialog(const std::shared_ptr<Shared::Controllers::PreferencesViewController>& controller, oclero::qlementine::ThemeManager* themeManager, QWidget* parent = nullptr);
         /**
-         * @brief Destructs a SettingsPage.
+         * @brief Destructs a SettingsDialog.
          */
-        ~SettingsPage();
+        ~SettingsDialog();
 
     protected:
-       /**
+        /**
          * @brief Handles when the dialog is closed.
          * @param event QCloseEvent
          */
         void closeEvent(QCloseEvent* event) override;
 
-    private Q_SLOT:
+    private Q_SLOTS:
         /**
-         * @brief Handles when the theme is changed.
+         * @brief Handles when the theme combobox changes.
          */
-        void onThemeChanged(int index);
+        void onThemeChanged();
         /**
          * @brief Prompts the user to select a cookies file.
          */
@@ -61,9 +63,10 @@ namespace Nickvision::TubeConverter::Qt::Views
         void onEmbedThumbnailsChanged(bool checked);
 
     private:
-        Ui::SettingsPage* m_ui;
+        Ui::SettingsDialog* m_ui;
         std::shared_ptr<Shared::Controllers::PreferencesViewController> m_controller;
+        oclero::qlementine::ThemeManager* m_themeManager;
     };
 }
 
-#endif //SETTINGSPAGE_H
+#endif //SETTINGSDIALOG_H

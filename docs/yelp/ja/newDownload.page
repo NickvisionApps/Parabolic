@@ -36,7 +36,7 @@
         <p>有効であれば、ダウンロード時に yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
         <p>資格情報がキーリング内で見つかると、ユーザーは使いたい資格情報をリスト内から選択することができます（手動で資格情報を入力することもできます）</p>
             <note style="advanced">
-                <p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能にサポートしていません。</p>
+                <p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能をサポートしていません。</p>
                 <p>これらのサイトでは資格情報の受け渡しに対応していません。代わりに設定でクッキーを使うブラウザを選択することをお勧めします。</p>
             </note>
     </item>
@@ -51,20 +51,20 @@
         </note>
     </item>
     <item>
-        <title>Video Format</title>
-        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
-        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
-        <p>If the file type is an audio type, this option will not be available.</p>
+        <title>動画のファイル形式</title>
+        <p>ダウンロードで利用可能な動画形式の一覧、解像度とビットレートで整列されています。</p>
+        <p>各フォーマットは次のようなフォームになります: <code>解像度 | ビットレート | コーデック (id)</code>。</p>
+        <p>ファイルの種類が音声の場合、このオプションは利用できません。</p>
         <note>
-            <p>The previously used video format will be remembered and pre-selected for the next download.</p>
+            <p>最後に使用した動画形式は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
-        <title>Audio Format</title>
-        <p>The list of audio formats available for download, sorted by bitrate.</p>
-        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
+        <title>音声のファイル形式</title>
+        <p>ダウンロードの際に利用可能な音声形式、ビットレート順で表示されます。</p>
+        <p>各フォーマットは次のようなフォームになります: <code>ビットレート | 言語 (id)</code>。</p>
         <note>
-            <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
+            <p>最後に音声形式は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
@@ -76,21 +76,21 @@
     </item>
     <item>
         <title>チャプター（章）で分ける</title>
-        <p>有効であれば、Parabolic はダウンロードする動画を、動画のチャプターごとに複数のファイルに分割します。</p>
+        <p>有効であれば、Parabolic は、ダウンロードする動画を、動画のチャプターごとに複数のファイルに分割します。</p>
         <note>
             <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
-        <title>Limit Download Speed</title>
+        <title>ダウンロード速度を制限</title>
         <p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
         <note>
             <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
-        <title>Export Description</title>
-        <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <title>概要をエクスポート</title>
+        <p>有効であれば、Parabolic は、ダウンロードされたファイルと一緒に、メディアの概要を <code>.description</code> ファイルにエクスポートします。</p>
         <note>
             <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>

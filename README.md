@@ -33,7 +33,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 </details>
 
 <details>
- <summary>QT</summary>
+ <summary>Qt</summary>
 
  ![Home Page](org.nickvision.tubeconverter.qt/screenshots/home.png)
  ![Downloading](org.nickvision.tubeconverter.qt/screenshots/downloading.png)
@@ -58,7 +58,7 @@ A C++20 compiler is also required to build Parabolic.
 #### Linux (GNOME)
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
 1. Run `vcpkg install boost-date-time gtest libnick libxmlpp`
-#### Linux (QT)
+#### Linux (Qt)
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
 1. Run `vcpkg install boost-date-time gtest libnick qtbase qtsvg qttools`
 
@@ -74,7 +74,7 @@ A C++20 compiler is also required to build Parabolic.
 1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release -DUI_PLATFORM=gnome`.
 1. From the `build` folder, run `cmake --build .`.
 1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.gnome` folder of the `build` folder.
-#### Linux (QT)
+#### Linux (Qt)
 1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release -DUI_PLATFORM=qt`.
 1. From the `build` folder, run `cmake --build .`.
 1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.qt` folder of the `build` folder.

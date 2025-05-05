@@ -3,14 +3,12 @@
 
 #include <memory>
 #include <QCloseEvent>
-#include <QDragEnterEvent>
-#include <QDropEvent>
-#include <QListWidget>
+#include <QEvent>
+#include <QFrame>
 #include <QMainWindow>
+#include <oclero/qlementine/style/ThemeManager.hpp>
 #include "controllers/mainwindowcontroller.h"
 #include "controls/downloadrow.h"
-#include "controls/navigationbar.h"
-#include "helpers/closeeventfilter.h"
 
 namespace Ui { class MainWindow; }
 
@@ -21,15 +19,16 @@ namespace Nickvision::TubeConverter::Qt::Views
      */
     class MainWindow : public QMainWindow
     {
-    Q_OBJECT
+        Q_OBJECT
 
     public:
         /**
          * @brief Constructs a MainWindow.
          * @param controller The MainWindowController
+         * @param themeManager The ThemeManager
          * @param parent The parent widget
          */
-        MainWindow(const std::shared_ptr<Shared::Controllers::MainWindowController>& controller, QWidget* parent = nullptr);
+        MainWindow(const std::shared_ptr<Shared::Controllers::MainWindowController>& controller, oclero::qlementine::ThemeManager* themeManager, QWidget* parent = nullptr);
         /**
          * @brief Destructs a MainWindow.
          */
@@ -53,9 +52,33 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     private Q_SLOTS:
         /**
-         * @brief Handles when a navigation item is selected.
+         * @brief Opens the application's keyring dialog.
          */
-        void onNavigationItemSelected(const QString& id);
+        void keyring();
+        /**
+         * @brief Opens the application's settings dialog.
+         */
+        void settings();
+        /**
+         * @brief Stops all downloads that are queued or in progress.
+         */
+        void stopAllDownloads();
+        /**
+         * @brief Retries all downloads that have failed.
+         */
+        void retryFailedDownloads();
+        /**
+         * @brief Clears all downloads that are queued.
+         */
+        void clearQueuedDownloads();
+        /**
+         * @brief Clears all downloads that have failed.
+         */
+        void clearCompletedDownloads();
+        /**
+         * @brief Clears all download history.
+         */
+        void clearHistory();
         /**
          * @brief Checks for application updates.
          */
@@ -66,10 +89,6 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void windowsUpdate();
 #endif
-        /**
-         * @brief Opens the application's documentation in the browser.
-         */
-        void documentation();
         /**
          * @brief Opens the application's GitHub repo in the browser.
          */
@@ -86,58 +105,20 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Displays the about dialog.
          */
         void about();
-        /**
-         * @brief Clears the download history.
-         */
-        void clearHistory();
-        /**
-         * @brief Stops all downloads that are queued or in progress.
-         */
-        void stopAllDownloads();
-        /**
-         * @brief Clears all downloads that are queued.
-         */
-        void clearQueuedDownloads();
-        /**
-         * @brief Retries all downloads that have failed.
-         */
-        void retryFailedDownloads();
-        /**
-         * @brief Clears all downloads that have failed.
-         */
-        void clearCompletedDownloads();
-        /**
-         * @brief Handles when a download list's selection is changed.
-         */
-        void onDownloadListSelectionChanged();
-        /**
-         * @brief Handles when the log dock is closed.
-         */
-        void onDockLogClosed(QObject* obj);
 
     private:
-        /**
-         * @brief Prompts the user to add a download.
-         * @param url url An optional url to start download validation with
-         */
-        void addDownload(const std::string& url = "");
         /**
          * @brief Handles when a notification is sent.
          * @param args The NotificationSentEventArgs
          */
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
         /**
-         * @brief Handles when a shell notification is sent.
-         * @param args The ShellNotificationSentEventArgs
-         */
-        void onShellNotificationSent(const Notifications::ShellNotificationSentEventArgs& args);
-        /**
          * @brief Handles when the download history is changed.
          * @param args The ParamEventArgs<std::vector<Models::HistoricDownload>>
          */
         void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
         /**
-         * @brief Handles when a recovered download needs a credential. 
+         * @brief Handles when a recovered download needs a credential.
          * @param args The DownloadCredentialNeededEventArgs
          */
         void onDownloadCredentialNeeded(const Shared::Events::DownloadCredentialNeededEventArgs& args);
@@ -172,17 +153,15 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
         /**
-         * @brief Moves a download row from one list to another.
-         * @param id The id of the download
-         * @param from The list to move from
-         * @param to The list to move to
+         * @brief Prompts the user to add a download.
+         * @param url A url to fill in the dialog with
          */
-        void moveDownloadRow(int id, QListWidget* from, QListWidget* to);
+        void addDownload(const std::string& url = "");
         Ui::MainWindow* m_ui;
-        Controls::NavigationBar* m_navigationBar;
-        Helpers::CloseEventFilter* m_dockLogCloseEventFilter;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
+        oclero::qlementine::ThemeManager* m_themeManager;
         std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
+        std::unordered_map<int, QFrame*> m_downloadLines;
     };
 }
 
