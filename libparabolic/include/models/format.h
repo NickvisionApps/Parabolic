@@ -107,6 +107,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_id;
         std::string m_protocol;
         std::string m_extension;
+        unsigned long long m_bytes;
         MediaType m_type;
         std::optional<double> m_bitrate;
         std::optional<std::string> m_audioLanguage;

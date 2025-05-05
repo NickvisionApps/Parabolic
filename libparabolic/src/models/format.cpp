@@ -1,18 +1,24 @@
 #include "models/format.h"
 #include <cmath>
+#include <format>
 #include <sstream>
+#include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
+
+using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
     Format::Format(boost::json::object json, bool isYtdlpJson)
-        : m_hasAudioDescription{ false }
+        : m_bytes{ 0 },
+        m_hasAudioDescription{ false }
     {
         if(isYtdlpJson)
         {
             m_id = json["format_id"].is_string() ? json["format_id"].as_string() : "";
             m_protocol = json["protocol"].is_string() ? json["protocol"].as_string() : "";
             m_extension = json["ext"].is_string() ? json["ext"].as_string() : "";
+            m_bytes = json["filesize"].is_int64() ? static_cast<unsigned long long>(json["filesize"].as_int64()) : 0;
             double bitrate{ json["tbr"].is_double() ? json["tbr"].as_double() : 0.0 };
             std::string note{ json["format_note"].is_string() ? json["format_note"].as_string() : "" };
             std::string resolution{ json["resolution"].is_string() ? json["resolution"].as_string() : "" };
@@ -65,6 +71,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_id = json["Id"].is_string() ? json["Id"].as_string() : "";
             m_protocol = json["Protocol"].is_string() ? json["Protocol"].as_string() : "";
             m_extension = json["Extension"].is_string() ? json["Extension"].as_string() : "";
+            m_bytes = json["Bytes"].is_uint64() ? json["Bytes"].as_uint64() : 0;
             m_type = json["Type"].is_int64() ? static_cast<MediaType>(json["Type"].as_int64()) : MediaType::Video;
             if(json["Bitrate"].is_double())
             {
@@ -183,6 +190,28 @@ namespace Nickvision::TubeConverter::Shared::Models
                 builder << separator << m_videoResolution->str();
             }
         }
+        if(m_bytes > 0)
+        {
+            static constexpr double pow2{ 1024 * 1024 };
+            static constexpr double pow3{ 1024 * 1024 * 1024 };
+            builder << separator;
+            if(m_bytes > pow3)
+            {
+                builder << std::vformat(_("{:.2f} GiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / pow3)));
+            }
+            else if(m_bytes > pow2)
+            {
+                builder << std::vformat(_("{:.2f} MiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / pow2)));
+            }
+            else if(m_bytes > 1024)
+            {
+                builder << std::vformat(_("{:.2f} KiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / 1024)));
+            }
+            else
+            {
+                builder << std::vformat(_("{:.2f} B"), std::make_format_args(m_bytes));
+            }
+        }
         builder << " (" << m_id << ")";
         std::string str{ builder.str() };
         if(str[1] == '|')
@@ -202,6 +231,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         json["Id"] = m_id;
         json["Protocol"] = m_protocol;
         json["Extension"] = m_extension;
+        json["Bytes"] = m_bytes;
         json["Type"] = static_cast<int>(m_type);
         if(m_bitrate)
         {
