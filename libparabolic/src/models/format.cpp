@@ -205,7 +205,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             }
             else if(m_bytes > 1024)
             {
-                builder << std::vformat(_("{:.2f} KiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / 1024)));
+                builder << std::vformat(_("{:.2f} KiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / 1024.0)));
             }
             else
             {

@@ -26,7 +26,7 @@ namespace Nickvision::TubeConverter::Shared::Events
         }
         else if(m_speed > 1024)
         {
-            m_speedStr = std::vformat(_("{:.2f} KiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / 1024)));
+            m_speedStr = std::vformat(_("{:.2f} KiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / 1024.0)));
         }
         else
         {
