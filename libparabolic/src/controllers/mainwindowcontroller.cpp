@@ -40,7 +40,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.5.0-next" });
+        m_appInfo.setVersion({ "2025.5.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added the display of the file size of a format if it is available\n- Fixed an issue where file paths were not truncated correctly\n- Redesigned the Qt app for a more modern desktop experience\n- Updated yt-dlp to fix some website validation issues");
