@@ -373,7 +373,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui{ new Ui::AddDownloadDialog() },
         m_controller{ controller }
     {
-        //Dialog Settigns
+        //Dialog Settings
         setWindowTitle(_("Add Download"));
         setMinimumSize(400, 400);
         setModal(true);

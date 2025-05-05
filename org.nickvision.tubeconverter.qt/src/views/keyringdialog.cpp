@@ -83,7 +83,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui{ new Ui::KeyringDialog() },
         m_controller{ controller }
     {
-        //Dialog Settigns
+        //Dialog Settings
         setWindowTitle(_("Keyring"));
         setMinimumSize(500, 400);
         setModal(true);
