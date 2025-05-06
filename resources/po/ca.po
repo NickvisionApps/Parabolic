@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 05:52-0400\n"
+"POT-Creation-Date: 2025-05-05 21:30-0400\n"
 "PO-Revision-Date: 2025-05-03 08:01+0000\n"
 "Last-Translator: Roger VC <rogervilarasau@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -118,6 +118,7 @@ msgstr ""
 "Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2024"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} Descàrrega recuperada"
@@ -143,12 +144,13 @@ msgid "Download Finished"
 msgstr "Descàrrega finalitzada"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} ha acabat de descarregar-se"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
 msgid "Open"
 msgstr "Obre"
 
@@ -157,6 +159,7 @@ msgid "Download Finished With Error"
 msgstr "La descàrrega ha Acabat amb Error"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} ha acabat amb un error"
 
@@ -169,18 +172,22 @@ msgid "All downloads have finished"
 msgstr "Totes les descàrregues han finalitzat"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -189,22 +196,22 @@ msgid "Audio Description"
 msgstr "Descripció de l’àudio"
 
 #: libparabolic/src/models/format.cpp:200
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:204
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:208
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:212
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -423,19 +430,19 @@ msgid "View Log"
 msgstr "Mostra el registre"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:59
 msgid "Stop"
 msgstr "Atura"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "Reprodueix"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
 msgid "Retry"
 msgstr "Torna a provar"
 
@@ -548,7 +555,7 @@ msgstr "Descarregant"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:154
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:157
 msgid "Queued"
 msgstr "En cua"
 
@@ -1007,27 +1014,27 @@ msgid "Starting"
 msgstr "Arrencant"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:164
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:167
 msgid "Unknown"
 msgstr "Desconegut"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:78
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:220
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:223
 msgid "Processing"
 msgstr "Processant"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:84
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:159
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:226
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:162
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:229
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:266
 msgid "Running"
 msgstr "En execució"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:105
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:244
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:100
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
@@ -1044,12 +1051,12 @@ msgid "Error"
 msgstr "Error"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:113
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:247
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:250
 msgid "Success"
 msgstr "Èxit"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:124
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:255
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
 msgid "Stopped"
 msgstr "Aturat"
 
@@ -1094,6 +1101,7 @@ msgid "No Subtitles Available"
 msgstr "No hi ha cap subtítol disponible"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
+#, c++-format
 msgid "{} items"
 msgstr "{} elements"
 
@@ -1128,6 +1136,7 @@ msgid "Don't show this message again"
 msgstr "No mostris aquest missatge de nou"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1274,22 +1283,22 @@ msgstr "Crèdits"
 msgid "Debugging"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:51
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
 msgid "Log"
 msgstr "Registre"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
 #, fuzzy
 msgid "Show Log"
 msgstr "Mostra la finestra"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 #, fuzzy
 msgid "Open Containing Folder"
 msgstr "Obrir Carpeta"
@@ -1386,6 +1395,7 @@ msgstr ""
 "utilitzada i el navegador seleccionat per a les galetes en les opcions."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} es necessiten credencials per descarregar. Si us plau, selecciona o "
@@ -1509,7 +1519,7 @@ msgstr "Actualitzar"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:538
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:617
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "En cua"
 
@@ -1517,14 +1527,14 @@ msgstr "En cua"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:564
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:588
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:599
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Descarregant"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:565
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:589
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:618
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Completat"
 
@@ -1713,8 +1723,8 @@ msgstr "Introduïu l’URL del servidor intermediari ací"
 #~ msgstr ""
 #~ "Llocs diferents poden utilitzar formats de codi de llengua diferents per "
 #~ "la mateixa llengua. Podeu trobar un dels següents tres tipus: de dues "
-#~ "lletres, de dues lletres amb regió, o de tres lletres. Per exemple, \"en"
-#~ "\", \"en-EUA\" i \"eng\" son tot usats per a l'anglès.\n"
+#~ "lletres, de dues lletres amb regió, o de tres lletres. Per exemple, "
+#~ "\"en\", \"en-EUA\" i \"eng\" son tot usats per a l'anglès.\n"
 #~ "Si us plau, especifiqueu tot codis vàlids per a les vostres llengües per "
 #~ "a obtenir els millors resultats. Cotxe-els subtítols generats també seran "
 #~ "descarregats si disponible.\n"

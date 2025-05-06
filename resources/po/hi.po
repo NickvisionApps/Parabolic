@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 05:52-0400\n"
+"POT-Creation-Date: 2025-05-05 21:30-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -124,7 +124,7 @@ msgid "translator-credits"
 msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "विफल डाउनलोड पुनः प्रयास करें"
@@ -150,13 +150,13 @@ msgid "Download Finished"
 msgstr "डाउनलोड समाप्त"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" का डाउनलोड समाप्त हो गया है।"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
 #, fuzzy
 msgid "Open"
 msgstr "फाइल खोलें"
@@ -166,7 +166,7 @@ msgid "Download Finished With Error"
 msgstr "डाउनलोड त्रुटि के साथ समाप्त हुआ"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" एक त्रुटि के साथ समाप्त हो गया है!"
 
@@ -180,22 +180,22 @@ msgid "All downloads have finished"
 msgstr "सभी डाउनलोड समाप्त हो गए हैं।"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -204,22 +204,22 @@ msgid "Audio Description"
 msgstr ""
 
 #: libparabolic/src/models/format.cpp:200
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/models/format.cpp:204
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/models/format.cpp:208
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/models/format.cpp:212
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{0:f1} B/s"
 
@@ -448,20 +448,20 @@ msgid "View Log"
 msgstr "लॉग देखें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:59
 #, fuzzy
 msgid "Stop"
 msgstr "रुका हुआ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "चलाएं"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
 msgid "Retry"
 msgstr ""
 
@@ -579,7 +579,7 @@ msgstr "डाउनलोड हो रहा है"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:154
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:157
 msgid "Queued"
 msgstr "कतारबद्ध"
 
@@ -1054,28 +1054,28 @@ msgid "Starting"
 msgstr "सेटिंग्स"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:164
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:167
 msgid "Unknown"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:78
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:220
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:223
 #, fuzzy
 msgid "Processing"
 msgstr "प्रसंस्करण…"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:84
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:159
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:226
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:162
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:229
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:266
 msgid "Running"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:105
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:244
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:100
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
@@ -1092,12 +1092,12 @@ msgid "Error"
 msgstr "त्रुटि"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:113
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:247
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:250
 msgid "Success"
 msgstr "सफलता"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:124
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:255
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
 msgid "Stopped"
 msgstr "रुका हुआ"
 
@@ -1142,7 +1142,7 @@ msgid "No Subtitles Available"
 msgstr "नया अपडेट उपलब्ध है।"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{1} में से {0} आइटम"
 
@@ -1173,6 +1173,7 @@ msgid "Don't show this message again"
 msgstr "यह संदेश दोबारा न दिखाएं"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1321,22 +1322,22 @@ msgstr "श्रेय"
 msgid "Debugging"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:51
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
 msgid "Log"
 msgstr "लॉग"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
 #, fuzzy
 msgid "Show Log"
 msgstr "विंडो दिखाएं"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 #, fuzzy
 msgid "Open Containing Folder"
 msgstr "फोल्डर खोलें"
@@ -1436,6 +1437,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1560,7 +1562,7 @@ msgstr "अपडेट"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:538
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:617
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "कतारबद्ध"
 
@@ -1568,14 +1570,14 @@ msgstr "कतारबद्ध"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:564
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:588
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:599
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "डाउनलोड हो रहा है"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:565
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:589
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:618
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "पूर्ण"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 05:52-0400\n"
+"POT-Creation-Date: 2025-05-05 21:30-0400\n"
 "PO-Revision-Date: 2024-12-25 15:35+0000\n"
 "Last-Translator: Hultru <fgg-97@bk.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.10-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
@@ -117,7 +117,7 @@ msgid "translator-credits"
 msgstr "Фёдор Соболев https://github.com/fsobolev"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Перезапустить неудавшуюся загрузку"
@@ -142,12 +142,13 @@ msgid "Download Finished"
 msgstr "Загрузка завершена"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" загружено"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
 msgid "Open"
 msgstr "Открыть"
 
@@ -156,6 +157,7 @@ msgid "Download Finished With Error"
 msgstr "Загрузка завершилась с ошибкой"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" завершилось с ошибкой"
 
@@ -168,18 +170,22 @@ msgid "All downloads have finished"
 msgstr "Все загрузки завершены"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} ГиБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} МиБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} КиБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} Б/с"
 
@@ -188,22 +194,22 @@ msgid "Audio Description"
 msgstr "Описание аудио"
 
 #: libparabolic/src/models/format.cpp:200
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} ГиБ/с"
 
 #: libparabolic/src/models/format.cpp:204
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} МиБ/с"
 
 #: libparabolic/src/models/format.cpp:208
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} КиБ/с"
 
 #: libparabolic/src/models/format.cpp:212
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} Б/с"
 
@@ -423,19 +429,19 @@ msgid "View Log"
 msgstr "Открыть журнал"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:59
 msgid "Stop"
 msgstr "Остановлена"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "Играть"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
 msgid "Retry"
 msgstr "Повторить"
 
@@ -548,7 +554,7 @@ msgstr "Загружается"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:154
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:157
 msgid "Queued"
 msgstr "В очереди"
 
@@ -1004,27 +1010,27 @@ msgid "Starting"
 msgstr "Начало"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:164
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:167
 msgid "Unknown"
 msgstr "Неизвестно"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:78
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:220
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:223
 msgid "Processing"
 msgstr "Обработка"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:84
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:159
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:226
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:162
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:229
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:266
 msgid "Running"
 msgstr "В работе"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:105
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:244
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:484
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:100
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
@@ -1041,12 +1047,12 @@ msgid "Error"
 msgstr "Ошибка"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:113
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:247
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:250
 msgid "Success"
 msgstr "Успешно"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:124
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:255
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
 msgid "Stopped"
 msgstr "Остановлено"
 
@@ -1091,6 +1097,7 @@ msgid "No Subtitles Available"
 msgstr "Субтитры недоступны"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:220
+#, c++-format
 msgid "{} items"
 msgstr "{} элементов"
 
@@ -1121,6 +1128,7 @@ msgid "Don't show this message again"
 msgstr "Больше не показывать это сообщение"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1267,22 +1275,22 @@ msgstr "Авторы"
 msgid "Debugging"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:51
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:62
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:94
 msgid "Log"
 msgstr "Журнал"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
 #, fuzzy
 msgid "Show Log"
 msgstr "Показать окно"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 #, fuzzy
 msgid "Open Containing Folder"
 msgstr "Открыть папку"
@@ -1379,6 +1387,7 @@ msgstr ""
 "аутентификвторизации и параметры куки в настройках."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} требуются учетные данные для загрузки. Пожалуйста, выберите или введите "
@@ -1503,7 +1512,7 @@ msgstr "Обновить"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:538
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:617
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "В очереди"
 
@@ -1511,14 +1520,14 @@ msgstr "В очереди"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:564
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:588
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:599
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Загружается"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:565
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:589
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:618
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Завершено"
 

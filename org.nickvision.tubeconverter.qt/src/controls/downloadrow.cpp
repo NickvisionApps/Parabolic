@@ -40,6 +40,8 @@ namespace Ui
             buttonStack = new QStackedWidget(parent);
             icon = new IconWidget(parent);
             lblTitle = new QLabel(parent);
+            lblTitle->setMinimumWidth(200);
+            lblTitle->setMaximumWidth(500);
             lblTitle->setFont(boldFont);
             lblTitle->setSizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Preferred);
             lblStatus = new QLabel(parent);
@@ -116,6 +118,7 @@ namespace Ui
             layoutMain->setSpacing(12);
             layoutMain->addWidget(icon);
             layoutMain->addLayout(layoutInfo);
+            layoutMain->addStretch();
             layoutMain->addLayout(layoutButtons);
             parent->setLayout(layoutMain);
         }
@@ -182,7 +185,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         m_id{ row.m_id },
         m_path{ row.m_path }
     {
-        setSizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
+        setSizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
         setMaximumHeight(MAXIMUM_HEIGHT);
         m_ui->setupUi(this);
         //Copy UI
