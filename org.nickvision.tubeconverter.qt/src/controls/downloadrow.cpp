@@ -40,8 +40,8 @@ namespace Ui
             buttonStack = new QStackedWidget(parent);
             icon = new IconWidget(parent);
             lblTitle = new QLabel(parent);
-            lblTitle->setMinimumWidth(200);
-            lblTitle->setMaximumWidth(500);
+            lblTitle->setMinimumWidth(460);
+            lblTitle->setMaximumWidth(460);
             lblTitle->setFont(boldFont);
             lblTitle->setSizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Preferred);
             lblStatus = new QLabel(parent);
