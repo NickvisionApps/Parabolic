@@ -150,10 +150,13 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setAudioFormat(const std::optional<Format>& audioFormat)
     {
         m_audioFormat = audioFormat;
-        std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_audioFormat->getExtension()) };
-        if(newFileType)
+        if(m_fileType.isGeneric() && m_audioFormat)
         {
-            m_fileType = *newFileType;
+            std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_audioFormat->getExtension()) };
+            if(newFileType)
+            {
+                m_fileType = *newFileType;
+            }
         }
     }
 
