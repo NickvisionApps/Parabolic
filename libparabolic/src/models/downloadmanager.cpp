@@ -52,6 +52,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_downloadStopped;
     }
 
+    Event<ParamEventArgs<int>>& DownloadManager::downloadPaused()
+    {
+        return m_downloadPaused;
+    }
+
+    Event<ParamEventArgs<int>>& DownloadManager::downloadResumed()
+    {
+        return m_downloadResumed;
+    }
+
     Event<ParamEventArgs<int>>& DownloadManager::downloadRetried()
     {
         return m_downloadRetried;
@@ -379,6 +389,16 @@ namespace Nickvision::TubeConverter::Shared::Models
             lock.unlock();
             m_downloadStopped.invoke(id);
         }
+    }
+
+    void DownloadManager::pauseDownload(int id)
+    {
+        //TODO
+    }
+
+    void DownloadManager::resumeDownload(int id)
+    {
+        //TODO
     }
 
     void DownloadManager::retryDownload(int id)

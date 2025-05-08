@@ -112,7 +112,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void Download::start(const DownloaderOptions& downloaderOptions)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        if(m_status == DownloadStatus::Running)
+        if(m_status == DownloadStatus::Running || m_status == DownloadStatus::Paused)
         {
             return;
         }
@@ -148,6 +148,32 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
+    void Download::pause()
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        if(m_status != DownloadStatus::Running)
+        {
+            return;
+        }
+        if(m_process->pause())
+        {
+            m_status = DownloadStatus::Paused;
+        }
+    }
+
+    void Download::resume()
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        if(m_status != DownloadStatus::Paused)
+        {
+            return;
+        }
+        if(m_process->resume())
+        {
+            m_status = DownloadStatus::Running;
+        }
+    }
+
     void Download::watch()
     {
         if(!m_process)
@@ -157,9 +183,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         double oldProgress{ std::nan("") };
         double oldSpeed{ 0 };
         std::string oldLog{ _("Starting download...") };
-        while(m_process->getState() == ProcessState::Running)
+        while(m_process->getState() == ProcessState::Running || m_process->getState() == ProcessState::Paused)
         {
-            if(m_process->getOutput() != oldLog)
+            if(m_process->getState() != ProcessState::Paused && m_process->getOutput() != oldLog)
             {
                 oldLog = m_process->getOutput();
                 std::vector<std::string> logLines{ StringHelpers::split(oldLog, "\n") };
