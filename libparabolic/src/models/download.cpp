@@ -157,7 +157,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         double oldProgress{ std::nan("") };
         double oldSpeed{ 0 };
         std::string oldLog{ _("Starting download...") };
-        while(m_process->isRunning())
+        while(m_process->getState() == ProcessState::Running)
         {
             if(m_process->getOutput() != oldLog)
             {

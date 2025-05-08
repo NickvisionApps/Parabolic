@@ -132,7 +132,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setVideoFormat(const std::optional<Format>& videoFormat)
     {
         m_videoFormat = videoFormat;
-        if(m_fileType.isGeneric() && m_videoFormat)
+        if(m_videoFormat && m_fileType.isGeneric() && m_fileType.isVideo())
         {
             std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_videoFormat->getExtension()) };
             if(newFileType)
@@ -150,7 +150,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setAudioFormat(const std::optional<Format>& audioFormat)
     {
         m_audioFormat = audioFormat;
-        if(m_fileType.isGeneric() && m_audioFormat)
+        if(m_audioFormat && m_fileType.isGeneric() && m_fileType.isAudio())
         {
             std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_audioFormat->getExtension()) };
             if(newFileType)
@@ -435,14 +435,17 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back(m_audioFormat->getId());
             }
         }
-        else if(m_fileType.isVideo() && !m_fileType.isGeneric())
+        else if(m_fileType.isVideo())
         {
-            arguments.push_back("--remux-video");
-            arguments.push_back(StringHelpers::lower(m_fileType.str()));
-            if(m_fileType == MediaFileType::WEBM)
+            if(!m_fileType.isGeneric())
             {
-                arguments.push_back("--recode-video");
+                arguments.push_back("--remux-video");
                 arguments.push_back(StringHelpers::lower(m_fileType.str()));
+                if(m_fileType == MediaFileType::WEBM)
+                {
+                    arguments.push_back("--recode-video");
+                    arguments.push_back(StringHelpers::lower(m_fileType.str()));
+                }
             }
             if(m_videoFormat && m_audioFormat)
             {
