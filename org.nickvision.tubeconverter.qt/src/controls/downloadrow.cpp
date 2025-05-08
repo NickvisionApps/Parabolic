@@ -226,7 +226,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         }
         else
         {
-            m_ui->lblStatus->setText(QString::fromStdString(std::vformat("{} | {}", std::make_format_args(CodeHelpers::unmove(_("Running")), args.getSpeedStr()))));
+            m_ui->lblStatus->setText(QString::fromStdString(std::format("{} | {}", _("Running"), args.getSpeedStr())));
             m_ui->progBar->setRange(0, 100);
             m_ui->progBar->setValue(args.getProgress() * 100);
         }

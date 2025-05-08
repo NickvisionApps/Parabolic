@@ -1,12 +1,9 @@
 #include "views/adddownloaddialog.h"
-#include <format>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "helpers/gtkhelpers.h"
 
 using namespace Nickvision::Events;
-using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
@@ -217,7 +214,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("limitSpeedPlaylistRow"), m_controller->getPreviousDownloadOptions().getLimitSpeed());
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("exportDescriptionPlaylistRow"), m_controller->getPreviousDownloadOptions().getExportDescription());
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
-            adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("itemsPlaylistRow"), std::vformat(_("{} items"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount()))).c_str());
+            adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("itemsPlaylistRow"), _f("{} items", m_controller->getMediaCount()).c_str());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
                 GtkCheckButton* chk{ GTK_CHECK_BUTTON(gtk_check_button_new()) };

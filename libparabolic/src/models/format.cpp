@@ -1,11 +1,7 @@
 #include "models/format.h"
 #include <cmath>
-#include <format>
 #include <sstream>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
-
-using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -197,19 +193,19 @@ namespace Nickvision::TubeConverter::Shared::Models
             builder << separator;
             if(m_bytes > pow3)
             {
-                builder << std::vformat(_("{:.2f} GiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / pow3)));
+                builder << _f("{:.2f} GiB", m_bytes / pow3);
             }
             else if(m_bytes > pow2)
             {
-                builder << std::vformat(_("{:.2f} MiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / pow2)));
+                builder << _f("{:.2f} MiB", m_bytes / pow2);
             }
             else if(m_bytes > 1024)
             {
-                builder << std::vformat(_("{:.2f} KiB"), std::make_format_args(CodeHelpers::unmove(m_bytes / 1024.0)));
+                builder << _f("{:.2f} KiB", m_bytes / 1024.0);
             }
             else
             {
-                builder << std::vformat(_("{:.2f} B"), std::make_format_args(m_bytes));
+                builder << _f("{:.2f} B", m_bytes);
             }
         }
         builder << " (" << m_id << ")";

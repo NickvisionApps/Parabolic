@@ -1,5 +1,4 @@
 #include "views/credentialdialog.h"
-#include <format>
 #include <QComboBox>
 #include <QFormLayout>
 #include <QLabel>
@@ -22,7 +21,7 @@ namespace Ui
         void setupUi(Nickvision::TubeConverter::Qt::Views::CredentialDialog* parent, const std::string& url)
         {
             QLabel* lblMessage{ new QLabel(parent) };
-            lblMessage->setText(QString::fromStdString(std::vformat(_("{} needs a credential to download. Please select or enter one to use."), std::make_format_args(url))));
+            lblMessage->setText(QString::fromStdString(_f("{} needs a credential to download. Please select or enter one to use.", url)));
             QLabel* lblCredential{ new QLabel(parent) };
             lblCredential->setText(_("Credential"));
             cmbCredential = new QComboBox(parent);

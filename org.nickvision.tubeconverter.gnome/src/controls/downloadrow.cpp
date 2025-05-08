@@ -1,11 +1,9 @@
 #include "controls/downloadrow.h"
 #include <cmath>
 #include <format>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
 
 using namespace Nickvision::Events;
-using namespace Nickvision::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -81,7 +79,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         else
         {
             gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), args.getProgress());
-            gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), std::vformat("{} | {}", std::make_format_args(CodeHelpers::unmove(_("Running")), args.getSpeedStr())).c_str());
+            gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), std::format("{} | {}", _("Running"), args.getSpeedStr()).c_str());
         }
         if(args.getLog() != m_log)
         {

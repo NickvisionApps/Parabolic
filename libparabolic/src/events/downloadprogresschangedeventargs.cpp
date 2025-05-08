@@ -1,10 +1,6 @@
 #include "events/downloadprogresschangedeventargs.h"
 #include <cmath>
-#include <format>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
-
-using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Events
 {
@@ -18,19 +14,19 @@ namespace Nickvision::TubeConverter::Shared::Events
         static constexpr double pow3{ 1024 * 1024 * 1024 };
         if(m_speed > pow3)
         {
-            m_speedStr = std::vformat(_("{:.2f} GiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / pow3)));
+            m_speedStr = _f("{:.2f} GiB/s", m_speed / pow3);
         }
         else if(m_speed > pow2)
         {
-            m_speedStr = std::vformat(_("{:.2f} MiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / pow2)));
+            m_speedStr = _f("{:.2f} MiB/s", m_speed / pow2);
         }
         else if(m_speed > 1024)
         {
-            m_speedStr = std::vformat(_("{:.2f} KiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / 1024.0)));
+            m_speedStr = _f("{:.2f} KiB/s", m_speed / 1024.0);
         }
         else
         {
-            m_speedStr = std::vformat(_("{:.2f} B/s"), std::make_format_args(m_speed));
+            m_speedStr = _f("{:.2f} B/s", m_speed);
         }
     }
 

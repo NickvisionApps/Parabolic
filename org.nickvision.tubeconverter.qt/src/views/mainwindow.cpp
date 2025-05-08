@@ -13,7 +13,6 @@
 #include <QTabWidget>
 #include <QToolBar>
 #include <QVBoxLayout>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
 #include <oclero/qlementine/widgets/ActionButton.hpp>
 #include "controls/aboutdialog.h"
@@ -34,7 +33,6 @@ using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Events;
-using namespace Nickvision::Helpers;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::Update;
 using namespace oclero::qlementine;
@@ -535,7 +533,7 @@ namespace Nickvision::TubeConverter::Qt::Views
             {
                 m_ui->tabs->setCurrentIndex(MainWindowPage::Queued);
             }
-            m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(std::vformat(_("Queued ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getQueuedCount())))));
+            m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(_f("Queued ({})", m_controller->getDownloadManager().getQueuedCount())));
         }
         else
         {
@@ -546,7 +544,7 @@ namespace Nickvision::TubeConverter::Qt::Views
             {
                 m_ui->tabs->setCurrentIndex(MainWindowPage::Downloading);
             }
-            m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
+            m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(_f("Downloading ({})", m_controller->getDownloadManager().getDownloadingCount())));
         }
     }
 
@@ -561,8 +559,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->listCompleted->insertWidget(1, line);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
-        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
-        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(std::vformat(_("Completed ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getCompletedCount())))));
+        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(_f("Downloading ({})", m_controller->getDownloadManager().getDownloadingCount())));
+        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(_f("Completed ({})", m_controller->getDownloadManager().getCompletedCount())));
     }
 
     void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
@@ -585,8 +583,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->listCompleted->insertWidget(1, line);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
-        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
-        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(std::vformat(_("Completed ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getCompletedCount())))));
+        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(_f("Downloading ({})", m_controller->getDownloadManager().getDownloadingCount())));
+        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(_f("Completed ({})", m_controller->getDownloadManager().getCompletedCount())));
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
@@ -596,7 +594,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->listCompleted->removeWidget(row);
         m_ui->listCompleted->removeWidget(line);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
-        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(std::vformat(_("Downloading ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getDownloadingCount())))));
+        m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(_f("Downloading ({})", m_controller->getDownloadManager().getDownloadingCount())));
         m_downloadRows.erase(*args);
         m_downloadLines.erase(*args);
         delete row;
@@ -614,8 +612,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->listDownloading->insertWidget(1, line);
         m_ui->queuedViewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
-        m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(std::vformat(_("Queued ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getQueuedCount())))));
-        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(std::vformat(_("Completed ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getDownloadManager().getCompletedCount())))));
+        m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(_f("Queued ({})", m_controller->getDownloadManager().getQueuedCount())));
+        m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(_f("Completed ({})", m_controller->getDownloadManager().getCompletedCount())));
     }
 
     void MainWindow::addDownload(const std::string& url)
