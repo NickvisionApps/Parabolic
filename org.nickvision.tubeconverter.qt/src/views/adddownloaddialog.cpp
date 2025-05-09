@@ -14,7 +14,6 @@
 #include <QStackedWidget>
 #include <QTabWidget>
 #include <QVBoxLayout>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include <oclero/qlementine/widgets/LoadingSpinner.hpp>
