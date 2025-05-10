@@ -15,16 +15,22 @@ namespace Nickvision::TubeConverter::Shared::Events
         /**
          * @brief Constructs a DownloadProgressChangedEventArgs.
          * @param id The Id of the download
+         * @param log The log of the download
          * @param progress The progress of the download (between 0 and 1, or nan for indeterminate)
          * @param speed The speed of the download (in byes per second)
-         * @param log The log of the download
+         * @param eta The eta of the download (in seconds)
          */
-        DownloadProgressChangedEventArgs(int id, double progress, double speed, const std::string& log);
+        DownloadProgressChangedEventArgs(int id, const std::string& log, double progress = 1.0, double speed = 0.0, int eta = 0);
         /**
          * @brief Gets the Id of the download.
          * @return The Id of the download
          */
         int getId() const;
+        /**
+         * @brief Gets the log of the download.
+         * @return The log of the download
+         */
+        const std::string& getLog() const;
         /**
          * @brief Gets the progress of the download.
          * @brief The progress either be between 0 and 1, or nan for indeterminate.
@@ -42,17 +48,24 @@ namespace Nickvision::TubeConverter::Shared::Events
          */
         const std::string& getSpeedStr() const;
         /**
-         * @brief Gets the log of the download.
-         * @return The log of the download
+         * @brief Gets the eta of the download (in seconds).
+         * @return The eta of the download (in seconds)
          */
-        const std::string& getLog() const;
+        int getEta() const;
+        /**
+         * @brief Gets the string representation of the eta.
+         * @return The eta string representation
+         */
+        const std::string& getEtaStr() const;
 
     private:
         int m_id;
+        std::string m_log;
         double m_progress;
         double m_speed;
         std::string m_speedStr;
-        std::string m_log;
+        int m_eta;
+        std::string m_etaStr;
     };
 }
 

@@ -1,6 +1,5 @@
 #include "controls/downloadrow.h"
 #include <cmath>
-#include <format>
 #include <QDesktopServices>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -238,7 +237,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         }
         else
         {
-            m_ui->lblStatus->setText(QString::fromStdString(std::format("{} | {}", _("Running"), args.getSpeedStr())));
+            m_ui->lblStatus->setText(_f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr()));
             m_ui->progBar->setRange(0, 100);
             m_ui->progBar->setValue(args.getProgress() * 100);
         }

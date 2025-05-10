@@ -120,7 +120,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_status = DownloadStatus::Error;
             lock.unlock();
-            m_progressChanged.invoke({ m_id, 1.0, 0.0, _("ERROR: The file already exists and overwriting is disabled.") });
+            m_progressChanged.invoke({ m_id, _("ERROR: The file already exists and overwriting is disabled.") });
             m_completed.invoke({ m_id, m_status, m_path, false });
             return;
         }
@@ -182,6 +182,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         double oldProgress{ std::nan("") };
         double oldSpeed{ 0 };
+        int oldEta{ 0 };
         std::string oldLog{ _("Starting download...") };
         while(m_process->getState() == ProcessState::Running || m_process->getState() == ProcessState::Paused)
         {
@@ -200,8 +201,8 @@ namespace Nickvision::TubeConverter::Shared::Models
                         }
                         if(line.find("[#") != std::string::npos) //aria2c progress
                         {
-                            std::vector<std::string> progress{ StringHelpers::split(line, " ") };
-                            if(progress.size() != 5)
+                            std::vector<std::string> progress{ StringHelpers::split(line, " ", false) };
+                            if(progress.size() != 4)
                             {
                                 continue;
                             }
@@ -212,12 +213,13 @@ namespace Nickvision::TubeConverter::Shared::Models
                             }
                             oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
                             oldSpeed = getAriaSizeAsB(progress[3].substr(3));
+                            oldEta = -1;
                             break;
                         }
                         else
                         {
-                            std::vector<std::string> progress{ StringHelpers::split(line, ";") };
-                            if(progress.size() != 6 || progress[1] == "NA")
+                            std::vector<std::string> progress{ StringHelpers::split(line, ";", false) };
+                            if(progress.size() != 7 || progress[1] == "NA")
                             {
                                 continue;
                             }
@@ -225,17 +227,19 @@ namespace Nickvision::TubeConverter::Shared::Models
                             {
                                 oldProgress = std::nan("");
                                 oldSpeed = 0.0;
+                                oldEta = 0;
                             }
                             else
                             {
                                 oldProgress = (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0));
                                 oldSpeed = progress[5] != "NA" ? std::stod(progress[5]) : 0.0;
+                                oldEta = progress[6] == "NA" || progress[6] == "Unknown" ? -1 : std::stoi(progress[6]);
                             }
                             break;
                         }
                     }
                 }
-                m_progressChanged.invoke({ m_id, oldProgress, oldSpeed, oldLog });
+                m_progressChanged.invoke({ m_id, oldLog, oldProgress, oldSpeed, oldEta });
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
@@ -263,7 +267,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             catch(...) { }
         }
         lock.unlock();
-        m_progressChanged.invoke({ m_id, 1.0, 0.0, m_process->getOutput() });
+        m_progressChanged.invoke({ m_id, m_process->getOutput() });
         m_completed.invoke({ m_id, m_status, m_path, true });
     }
 }

@@ -264,7 +264,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--progress");
         arguments.push_back("--newline");;
         arguments.push_back("--progress-template");
-        arguments.push_back("[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s");
+        arguments.push_back("[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s");
         arguments.push_back("--no-mtime");
         arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");

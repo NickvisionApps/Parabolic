@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-10 13:21-0400\n"
+"POT-Creation-Date: 2025-05-10 14:15-0400\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -145,7 +145,7 @@ msgstr "{}의 다운로드가 완료되었습니다"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:294
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
 msgid "Open"
 msgstr "열기"
 
@@ -166,25 +166,29 @@ msgstr "다운로드가 완료되었습니다"
 msgid "All downloads have finished"
 msgstr "모든 다운로드가 완료되었습니다"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:17
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 #, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/초"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
 #, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/초"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
 #, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/초"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
 #, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/초"
+
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+msgid "N/A"
+msgstr ""
 
 #: libparabolic/src/models/format.cpp:178
 msgid "Audio Description"
@@ -214,7 +218,7 @@ msgstr "{:.2f} B/초"
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "오류: 파일이 이미 존재하며 덮어쓰기가 비활성화되어 있습니다."
 
-#: libparabolic/src/models/download.cpp:185
+#: libparabolic/src/models/download.cpp:186
 msgid "Starting download..."
 msgstr "다운로드 시작 중..."
 
@@ -425,26 +429,26 @@ msgid "View Log"
 msgstr "로그 보기"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:151
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:59
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:296
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:155
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:58
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:295
 msgid "Pause"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
 msgid "Stop"
 msgstr "중지"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:272
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "재생"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:92
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:91
 msgid "Retry"
 msgstr "다시 시도"
 
@@ -555,9 +559,9 @@ msgid "Downloading"
 msgstr "다운로드 중"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:164
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:163
 msgid "Queued"
 msgstr "대기 중"
 
@@ -1000,32 +1004,38 @@ msgstr "애플리케이션"
 msgid "Quit"
 msgstr "종료"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:29
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:28
 msgid "Starting"
 msgstr "시작 중"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:34
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:174
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:173
 msgid "Unknown"
 msgstr "알 수 없음"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:235
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:234
 msgid "Processing"
 msgstr "처리 중"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:94
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:158
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:169
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:301
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:168
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:300
 msgid "Running"
 msgstr "실행 중"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
+msgid "{} | {} | ETA: {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:487
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
@@ -1041,23 +1051,23 @@ msgstr "실행 중"
 msgid "Error"
 msgstr "오류"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:264
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
 msgid "Success"
 msgstr "성공"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:272
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:271
 msgid "Stopped"
 msgstr "중지됨"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:143
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:282
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:281
 msgid "Paused"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:145
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:290
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:289
 msgid "Resume"
 msgstr ""
 
@@ -1281,22 +1291,22 @@ msgstr "자격 증명"
 msgid "Debugging"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:69
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:86
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:92
 msgid "Log"
 msgstr "로그"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:54
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:86
 #, fuzzy
 msgid "Show Log"
 msgstr "로그 보기"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
 msgid "Open Containing Folder"
 msgstr ""
 
