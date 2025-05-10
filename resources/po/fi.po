@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-06 06:29-0400\n"
-"PO-Revision-Date: 2025-02-03 19:02+0000\n"
-"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/fi/>\n"
+"PO-Revision-Date: 2025-05-10 11:02+0000\n"
+"Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
@@ -52,7 +52,7 @@ msgstr "AVI (Video)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:120
 msgid "Audio (Generic)"
-msgstr ""
+msgstr "Ääni (yleinen)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:106
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:121
@@ -116,11 +116,10 @@ msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "Yritä ladata uudelleen epäonnistuneet lataukset"
-msgstr[1] "Yritä ladata uudelleen epäonnistuneet lataukset"
+msgstr[0] "Palautettiin {} lataus"
+msgstr[1] "Palautettiin {} latausta"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:246
 msgid "New update available"
@@ -129,7 +128,7 @@ msgstr "Uusi päivitys saatavilla"
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:260
 msgid ""
 "The update is downloading in the background and will start once it finishes"
-msgstr ""
+msgstr "Päivitys latautuu taustalla ja käynnistyy sen valmistuttua"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid "Unable to download and install update"
@@ -140,9 +139,8 @@ msgid "Download Finished"
 msgstr "Lataus valmistui"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
-#, fuzzy
 msgid "{} has finished downloading"
-msgstr "\"{0}\" on ladattu."
+msgstr "{} on ladattu"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
@@ -151,9 +149,8 @@ msgid "Open"
 msgstr "Avaa"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
-#, fuzzy
 msgid "Download Finished With Error"
-msgstr "Lataus valmistui"
+msgstr "Lataus päättyi virheen kanssa"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:300
 msgid "{} has finished with an error"
@@ -164,9 +161,8 @@ msgid "Downloads Finished"
 msgstr "Lataukset valmistuivat"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:305
-#, fuzzy
 msgid "All downloads have finished"
-msgstr "Kaikki lataukset ovat valmistuneet."
+msgstr "Kaikki lataukset ovat valmistuneet"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
 msgid "{:.2f} GiB/s"
@@ -189,24 +185,20 @@ msgid "Audio Description"
 msgstr "Ääniraidan kuvaus"
 
 #: libparabolic/src/models/format.cpp:200
-#, fuzzy
 msgid "{:.2f} GiB"
-msgstr "{:.2f} GiB/s"
+msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:204
-#, fuzzy
 msgid "{:.2f} MiB"
-msgstr "{:.2f} MiB/s"
+msgstr "{:.2f} MiB"
 
 #: libparabolic/src/models/format.cpp:208
-#, fuzzy
 msgid "{:.2f} KiB"
-msgstr "{:.2f} KiB/s"
+msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:212
-#, fuzzy
 msgid "{:.2f} B"
-msgstr "{:.2f} t/s"
+msgstr "{:.2f} T"
 
 #: libparabolic/src/models/download.cpp:123
 msgid "ERROR: The file already exists and overwriting is disabled."
@@ -247,7 +239,7 @@ msgstr "Median URL-osoite"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:58
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
 msgid "Use Batch File"
-msgstr ""
+msgstr "Käytä komentojonotiedostoa"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
 msgid "Authenticate"
@@ -299,12 +291,12 @@ msgstr "Tiedoston tyyppi"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:130
 msgid "Video Format"
-msgstr ""
+msgstr "Videon muoto"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:133
 msgid "Audio Format"
-msgstr ""
+msgstr "Äänen muoto"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:115
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:227
@@ -383,9 +375,8 @@ msgstr "Rajoita latausnopeutta"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:290
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:175
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:253
-#, fuzzy
 msgid "Export Description"
-msgstr "Ääniraidan kuvaus"
+msgstr "Vientikuvaus"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:239
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:178
@@ -413,14 +404,13 @@ msgstr "Numerointi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:67
-#, fuzzy
 msgid "Credential Needed"
-msgstr "Tunnistetieto"
+msgstr "Kirjautumistiedot vaaditaan"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:39
 msgid "Use"
-msgstr ""
+msgstr "Käytä"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
@@ -688,9 +678,8 @@ msgstr "Estä valmiustila"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
-#, fuzzy
 msgid "Recover Crashed Downloads"
-msgstr "Yritä ladata uudelleen epäonnistuneet lataukset"
+msgstr "Elvytä epäonnistuneet latausyritykset"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:57
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:55
@@ -750,9 +739,8 @@ msgstr "Rajoita tiedostonimien merkit vain Windowsin tukemiin merkkeihin."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
-#, fuzzy
 msgid "Include Media Id in Title After Validation"
-msgstr "Lataa välittömästi kuittaamisen jälkeen"
+msgstr "Aseta nimeen mediatunniste vahvistuksen jälkeen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:95
@@ -773,9 +761,8 @@ msgstr "Mikä vain"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:105
-#, fuzzy
 msgid "Preferred Subtitle Format"
-msgstr "Haluttu pakkauksenhallinta videoille"
+msgstr "Haluttu tekstitystiedoston muoto"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:148
@@ -786,7 +773,7 @@ msgstr "Lataaja"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:125
 msgid "Verbose Logging"
-msgstr ""
+msgstr "Selonteon tuottava kirjautuminen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:128
@@ -918,9 +905,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:192
-#, fuzzy
 msgid "Embed Thumbnails"
-msgstr "Upota tekstitykset"
+msgstr "Upota pikkukuvat"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:193
@@ -929,6 +915,8 @@ msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
+"Mikäli tiedostotyyppi ei tue upottamista, asetetaan pikkukuva erilliseen "
+"kuvatiedostoon."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:197
@@ -955,19 +943,17 @@ msgstr "Upota tekstitykset"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:206
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:208
-#, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
 msgstr ""
-"Jos pois käytöstä tai upottaminen epäonnistuu, ladattu tekstitys "
-"tallennetaan erilliseen tiedostoon"
+"Mikäli asetettu käytöstä pois, tai upottaminen ei ole tuettuna, tallennetaan "
+"ladatut tekstitykset erilliseen tiedostoon."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:210
-#, fuzzy
 msgid "Postprocessing Threads"
-msgstr "Käsitellään"
+msgstr "Jälkikäsittely käynnissä"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:325
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
@@ -1005,9 +991,8 @@ msgid "Quit"
 msgstr "Lopeta"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:30
-#, fuzzy
 msgid "Starting"
-msgstr "Asetukset"
+msgstr "Aloitetaan"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:35
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:167
@@ -1065,9 +1050,8 @@ msgstr "Syötä tunnistetiedot itse käsin"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:437
-#, fuzzy
 msgid "Select Batch File"
-msgstr "Valitse tallennuskansio"
+msgstr "Valitse komentotiedosto"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
@@ -1118,6 +1102,9 @@ msgid ""
 "select a specific file type that supports embedding to prevent separate "
 "image and subtitle files from being written to disk."
 msgstr ""
+"Yleiset tiedostotyypit eivät tue pikkukuvien ja tekstitysten upottamista. "
+"Valitse tietty tiedostotyyppi, joka tukee upottamista estääksesi erillisten "
+"kuva -ja tekstitystiedostojen kirjoittamisen levylle."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:282
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:377
@@ -1132,6 +1119,8 @@ msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
 msgstr ""
+"{} vaatii kirjautumisen ennen lataamista.\n"
+"Valitse tai syötä käytettävä kirjautuminen."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:100
@@ -1241,15 +1230,15 @@ msgstr "GitHub-tietovarasto"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:69
 msgid "Developers"
-msgstr ""
+msgstr "Kehittäjät"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:74
 msgid "Designers"
-msgstr ""
+msgstr "Suunnittelijat"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:79
 msgid "Artists"
-msgstr ""
+msgstr "Taiteilijat"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:90
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:161
@@ -1261,18 +1250,16 @@ msgid "About"
 msgstr "Tietoja"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:109
-#, fuzzy
 msgid "Changelog"
-msgstr "Muutoskirjaukset:"
+msgstr "Muutoskirjaukset"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:110
-#, fuzzy
 msgid "Credits"
-msgstr "Kirjautumistiedot"
+msgstr "Tekijätiedot"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:111
 msgid "Debugging"
-msgstr ""
+msgstr "Virheenjäljitys"
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
@@ -1285,34 +1272,29 @@ msgstr "Loki"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:54
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
-#, fuzzy
 msgid "Show Log"
-msgstr "Näytä ikkuna"
+msgstr "Näytä kirjaukset"
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
-#, fuzzy
 msgid "Open Containing Folder"
-msgstr "Avaa kansio"
+msgstr "Avaa tiedoston sisältävä kansio"
 
 #: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:28
-#, fuzzy
 msgid "No Download History"
-msgstr "Menneiden latausten säilytyksen kattavuus"
+msgstr "Ei lataushistoriaa"
 
 #. Window Settings
 #: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:50
-#, fuzzy
 msgid "Notification"
-msgstr "Sovellus"
+msgstr "Ilmoite"
 
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:32
-#, fuzzy
 msgid "No Download Log"
-msgstr "Menneiden latausten säilytyksen kattavuus"
+msgstr "Ei latauslokia"
 
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:40
 msgid "Copy"
-msgstr ""
+msgstr "Kopioi"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 msgid "Enter media url here"
@@ -1329,24 +1311,21 @@ msgid "Enter password here"
 msgstr "Kirjoita salasana tähän"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:90
-#, fuzzy
 msgid "Media"
-msgstr "Median URL-osoite"
+msgstr "Media"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:91
-#, fuzzy
 msgid "Authentication"
-msgstr "Tunnistaudu"
+msgstr "Todentaminen"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:111
 msgid "This may take some time..."
-msgstr ""
+msgstr "Tässä vierähtää kotvanen aikaa..."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:139
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:259
-#, fuzzy
 msgid "No save folder selected"
-msgstr "Ei valittua tiedostoa"
+msgstr "Tallennuskansiota ei ole valittu"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:148
 msgid "Enter file name here"
@@ -1358,14 +1337,12 @@ msgid "Split Video by Chapters"
 msgstr "Jaottele video kappaleisiin"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:180
-#, fuzzy
 msgid "Enter start time here"
-msgstr "Syötä nimi tähän"
+msgstr "Syötä aloitusaika tähän"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:184
-#, fuzzy
 msgid "Enter end time here"
-msgstr "Syötä nimi tähän"
+msgstr "Syötä lopetusaika tähän"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:313
@@ -1373,9 +1350,8 @@ msgid "General"
 msgstr "Yleinen"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:226
-#, fuzzy
 msgid "Advanced"
-msgstr "Lisävalinnat"
+msgstr "Edistyneet asetukset"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:314
 msgid "Items"
@@ -1392,21 +1368,22 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
+"{} vaatii kirjautumista ennen lataamista. Valitse tai syötä käytettävä "
+"kirjautuminen."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:43
-#, fuzzy
 msgid "Add, delete, and modify credentials for validating websites"
-msgstr "Luo, tallenna, ja hallinnoi tunnistetietojasi mediasivustoille."
+msgstr ""
+"Lisää, poista, ja muokkaa kirjautumistietoja eri verkkosivujen latausten "
+"valtuuttamiseksi"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
-#, fuzzy
 msgid "No Credentials"
-msgstr "Kirjautumistiedot"
+msgstr "Ei kirjautumistietoja"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
-#, fuzzy
 msgid "Add a credential to get started"
-msgstr "Lisää kirjautumistiedot aloittaaksesi."
+msgstr "Lisää kirjautumistiedot aloittaaksesi"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid ""
@@ -1417,9 +1394,8 @@ msgstr ""
 "menetetään kun sovellus suljetaan."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
-#, fuzzy
 msgid "New Credential"
-msgstr "Tunnistetieto"
+msgstr "Uusi kirjautuminen"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:234
@@ -1443,18 +1419,16 @@ msgstr "Tuntematon virhe lisättäessä tunnistetietoa avainrenkaaseen."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:183
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
-#, fuzzy
 msgid "Edit Credential"
-msgstr "Lisää kirjautumistiedot"
+msgstr "Muokkaa kirjautumistietoa"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:210
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:276
-#, fuzzy
 msgid "Delete Credential"
-msgstr "Poistetaanko kirjautumistieto?"
+msgstr "Poista kirjautuminen"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:78
 msgid "Exit"
@@ -1487,21 +1461,18 @@ msgid "View"
 msgstr "Näytä"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:268
-#, fuzzy
 msgid "Downloading (0)"
-msgstr "Ladataan"
+msgstr "Ladataan (0)"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:269
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:430
-#, fuzzy
 msgid "Queued (0)"
-msgstr "Jonossa"
+msgstr "Jonossa (0)"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:447
-#, fuzzy
 msgid "Completed (0)"
-msgstr "Valmistunut"
+msgstr "Valmistunut (0)"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:314
 msgid "Parabolic (Preview)"
@@ -1513,37 +1484,31 @@ msgstr "Päivitä"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:538
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:617
-#, fuzzy
 msgid "Queued ({})"
-msgstr "Jonossa"
+msgstr "Jonossa ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:549
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:564
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:588
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:599
-#, fuzzy
 msgid "Downloading ({})"
-msgstr "Ladataan"
+msgstr "Ladataan ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:565
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:589
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:618
-#, fuzzy
 msgid "Completed ({})"
-msgstr "Valmistunut"
+msgstr "Valmistunut ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:36
-#, fuzzy
 msgid "Light"
-msgstr "Vaalea"
+msgstr "Kirkas"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:37
-#, fuzzy
 msgid "Dark"
 msgstr "Tumma"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:38
-#, fuzzy
 msgid "System"
 msgstr "Järjestelmä"
 
