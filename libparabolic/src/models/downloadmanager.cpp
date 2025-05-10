@@ -393,12 +393,22 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::pauseDownload(int id)
     {
-        //TODO
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        if(m_downloading.contains(id))
+        {
+            m_downloading.at(id)->pause();
+            m_downloadPaused.invoke(id);
+        }
     }
 
     void DownloadManager::resumeDownload(int id)
     {
-        //TODO
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        if(m_downloading.contains(id))
+        {
+            m_downloading.at(id)->resume();
+            m_downloadResumed.invoke(id);
+        }
     }
 
     void DownloadManager::retryDownload(int id)

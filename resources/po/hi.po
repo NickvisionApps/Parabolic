@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-10 10:19-0400\n"
+"POT-Creation-Date: 2025-05-10 13:21-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -155,8 +155,8 @@ msgid "{} has finished downloading"
 msgstr "\"{0}\" का डाउनलोड समाप्त हो गया है।"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:294
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
 #, fuzzy
 msgid "Open"
 msgstr "फाइल खोलें"
@@ -447,30 +447,37 @@ msgstr ""
 msgid "View Log"
 msgstr "लॉग देखें"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:59
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:296
+msgid "Pause"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
 #, fuzzy
 msgid "Stop"
 msgstr "रुका हुआ"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:272
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "चलाएं"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:92
 msgid "Retry"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:140
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:153
 #, fuzzy
 msgid "Copy Command to Clipboard"
 msgstr "क्लिपबोर्ड पर कॉपी करें"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:147
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:160
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:41
 #, fuzzy
 msgid "Copy Log to Clipboard"
@@ -544,21 +551,21 @@ msgid "Main Menu"
 msgstr "मुख्य मेनू"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:218
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:265
 msgid "Home"
 msgstr "गृह"
 
 #. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:224
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
 msgid "Keyring"
 msgstr "कीरिंग"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:230
 #: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:55
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:88
 msgid "History"
@@ -572,19 +579,19 @@ msgid "Downloads"
 msgstr "डाउनलोड"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 msgid "Downloading"
 msgstr "डाउनलोड हो रहा है"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:157
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:164
 msgid "Queued"
 msgstr "कतारबद्ध"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
 msgid "Completed"
 msgstr "पूर्ण"
 
@@ -1048,34 +1055,34 @@ msgstr "अनुप्रयोग"
 msgid "Quit"
 msgstr "बाहर निकलें"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:28
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:29
 #, fuzzy
 msgid "Starting"
 msgstr "सेटिंग्स"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:167
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:174
 msgid "Unknown"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:76
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:223
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:235
 #, fuzzy
 msgid "Processing"
 msgstr "प्रसंस्करण…"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:132
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:162
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:229
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:94
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:158
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:169
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:301
 msgid "Running"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:103
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:244
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:487
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
@@ -1091,15 +1098,25 @@ msgstr ""
 msgid "Error"
 msgstr "त्रुटि"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:111
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:250
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:264
 msgid "Success"
 msgstr "सफलता"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:122
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:272
 msgid "Stopped"
 msgstr "रुका हुआ"
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:143
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:282
+msgid "Paused"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:145
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:290
+msgid "Resume"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
@@ -1131,7 +1148,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:281
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
 msgid "Close"
 msgstr "बंद करे"
 
@@ -1166,7 +1183,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:280
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:375
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:578
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:641
 msgid "Don't show this message again"
@@ -1196,7 +1213,7 @@ msgid "Edit"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:308
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
@@ -1219,12 +1236,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Yes"
 msgstr "हां"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "No"
 msgstr "नहीं"
 
@@ -1254,11 +1271,11 @@ msgstr "नाम (खाली)"
 msgid "Credential (Database Error)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid "Disclaimer"
 msgstr "अस्वीकरण"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1268,22 +1285,22 @@ msgstr ""
 "नहीं हैं जो स्थानीय कॉपीराइट/DMCA कानूनों का उल्लंघन कर सकता है। उपयोगकर्ता इस अनुप्रयोग "
 "का उपयोग अपने जोखिम पर करते हैं।"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 #, fuzzy
 msgid "Exit?"
 msgstr "बाहर निकलें"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:371
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:373
 #, fuzzy
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "यह क्रिया अपरिवर्तनीय है। क्या आप इसे मिटाना चाहते हैं?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:291
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
 msgid "Download Again"
 msgstr "पुनः डाउनलोड करें"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:448
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:462
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:114
 msgid "GitHub Repo"
 msgstr "गिटहब रेपो"
@@ -1323,21 +1340,21 @@ msgid "Debugging"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:86
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:92
 msgid "Log"
 msgstr "लॉग"
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:54
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
 #, fuzzy
 msgid "Show Log"
 msgstr "विंडो दिखाएं"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
 #, fuzzy
 msgid "Open Containing Folder"
 msgstr "फोल्डर खोलें"
@@ -1544,13 +1561,13 @@ msgid "Downloading (0)"
 msgstr "डाउनलोड हो रहा है"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:267
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:428
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:430
 #, fuzzy
 msgid "Queued (0)"
 msgstr "कतारबद्ध"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:445
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:447
 #, fuzzy
 msgid "Completed (0)"
 msgstr "पूर्ण"
@@ -1560,27 +1577,27 @@ msgstr "पूर्ण"
 msgid "Parabolic (Preview)"
 msgstr "पैराबोलिक"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:495
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:497
 msgid "Update"
 msgstr "अपडेट"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:536
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:540
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:629
 #, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "कतारबद्ध"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:547
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:562
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:586
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:590
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "डाउनलोड हो रहा है"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:563
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:587
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:616
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:591
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:630
 #, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "पूर्ण"

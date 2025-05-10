@@ -337,6 +337,8 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
         m_controller->getDownloadManager().downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
         m_controller->getDownloadManager().downloadStopped() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadStopped(args); }); };
+        m_controller->getDownloadManager().downloadPaused() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadPaused(args); }); };
+        m_controller->getDownloadManager().downloadResumed() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadResumed(args); }); };
         m_controller->getDownloadManager().downloadRetried() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadRetried(args); }); };
         m_controller->getDownloadManager().downloadStartedFromQueue() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadStartedFromQueue(args); }); };
     }
@@ -521,6 +523,8 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->logPane->show();
         });
         connect(row, &DownloadRow::stop, [this](int id) { m_controller->getDownloadManager().stopDownload(id); });
+        connect(row, &DownloadRow::pause, [this](int id) { m_controller->getDownloadManager().pauseDownload(id); });
+        connect(row, &DownloadRow::resume, [this](int id) { m_controller->getDownloadManager().resumeDownload(id); });
         connect(row, &DownloadRow::retry, [this](int id) { m_controller->getDownloadManager().retryDownload(id); });
         m_downloadRows[args.getId()] = row;
         m_downloadLines[args.getId()] = line;
@@ -585,6 +589,16 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(_f("Downloading ({})", m_controller->getDownloadManager().getDownloadingCount())));
         m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(_f("Completed ({})", m_controller->getDownloadManager().getCompletedCount())));
+    }
+
+    void MainWindow::onDownloadPaused(const ParamEventArgs<int>& args)
+    {
+        m_downloadRows[*args]->setPauseState();
+    }
+
+    void MainWindow::onDownloadResumed(const ParamEventArgs<int>& args)
+    {
+        m_downloadRows[*args]->setResumeState();
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)

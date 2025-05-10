@@ -143,6 +143,16 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onDownloadStopped(const Events::ParamEventArgs<int>& args);
         /**
+         * @brief Handles when a download is paused.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadPaused(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is resumed.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadResumed(const Events::ParamEventArgs<int>& args);
+        /**
          * @brief Handles when a download is retried.
          * @param args The ParamEventArgs<int>
          */

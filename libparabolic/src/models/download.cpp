@@ -185,55 +185,58 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string oldLog{ _("Starting download...") };
         while(m_process->getState() == ProcessState::Running || m_process->getState() == ProcessState::Paused)
         {
-            if(m_process->getState() != ProcessState::Paused && m_process->getOutput() != oldLog)
+            if(m_process->getState() == ProcessState::Running)
             {
-                oldLog = m_process->getOutput();
-                std::vector<std::string> logLines{ StringHelpers::split(oldLog, "\n") };
-                for(size_t i = logLines.size(); i > 0; i--)
+                if(m_process->getOutput() != oldLog)
                 {
-                    const std::string& line{ logLines[i - 1] };
-                    if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug]") != std::string::npos)
+                    oldLog = m_process->getOutput();
+                    std::vector<std::string> logLines{ StringHelpers::split(oldLog, "\n") };
+                    for(size_t i = logLines.size(); i > 0; i--)
                     {
-                        continue;
-                    }
-                    if(line.find("[#") != std::string::npos) //aria2c progress
-                    {
-                        std::vector<std::string> progress{ StringHelpers::split(line, " ") };
-                        if(progress.size() != 5)
+                        const std::string& line{ logLines[i - 1] };
+                        if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug]") != std::string::npos)
                         {
                             continue;
                         }
-                        std::vector<std::string> progressSizes{ StringHelpers::split(progress[1], "/") };
-                        if(progressSizes.size() != 2)
+                        if(line.find("[#") != std::string::npos) //aria2c progress
                         {
-                            continue;
-                        }
-                        oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
-                        oldSpeed = getAriaSizeAsB(progress[3].substr(3));
-                        break;
-                    }
-                    else
-                    {
-                        std::vector<std::string> progress{ StringHelpers::split(line, ";") };
-                        if(progress.size() != 6 || progress[1] == "NA")
-                        {
-                            continue;
-                        }
-                        if(progress[1] == "finished" || progress[1] == "processing")
-                        {
-                            oldProgress = std::nan("");
-                            oldSpeed = 0.0;
+                            std::vector<std::string> progress{ StringHelpers::split(line, " ") };
+                            if(progress.size() != 5)
+                            {
+                                continue;
+                            }
+                            std::vector<std::string> progressSizes{ StringHelpers::split(progress[1], "/") };
+                            if(progressSizes.size() != 2)
+                            {
+                                continue;
+                            }
+                            oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
+                            oldSpeed = getAriaSizeAsB(progress[3].substr(3));
+                            break;
                         }
                         else
                         {
-                            oldProgress = (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0));
-                            oldSpeed = progress[5] != "NA" ? std::stod(progress[5]) : 0.0;
+                            std::vector<std::string> progress{ StringHelpers::split(line, ";") };
+                            if(progress.size() != 6 || progress[1] == "NA")
+                            {
+                                continue;
+                            }
+                            if(progress[1] == "finished" || progress[1] == "processing")
+                            {
+                                oldProgress = std::nan("");
+                                oldSpeed = 0.0;
+                            }
+                            else
+                            {
+                                oldProgress = (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0));
+                                oldSpeed = progress[5] != "NA" ? std::stod(progress[5]) : 0.0;
+                            }
+                            break;
                         }
-                        break;
                     }
                 }
+                m_progressChanged.invoke({ m_id, oldProgress, oldSpeed, oldLog });
             }
-            m_progressChanged.invoke({ m_id, oldProgress, oldSpeed, oldLog });
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }

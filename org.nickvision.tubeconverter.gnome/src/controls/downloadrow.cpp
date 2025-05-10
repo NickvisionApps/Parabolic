@@ -13,7 +13,8 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         : ControlBase{ parent, "download_row" },
         m_id{ args.getId() },
         m_log{ "" },
-        m_path{ args.getPath() }
+        m_path{ args.getPath() },
+        m_isPaused{ false }
     {
         //Load
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
@@ -35,6 +36,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "downloading");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "running");
         //Signals
+        g_signal_connect(m_builder.get<GObject>("pauseResumeButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->pauseResume(); }), this);
         g_signal_connect(m_builder.get<GObject>("stopButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->stop(); }), this);
         g_signal_connect(m_builder.get<GObject>("playButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->play(); }), this);
         g_signal_connect(m_builder.get<GObject>("openButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->openFolder(); }), this);
@@ -58,6 +60,16 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         return m_stopped;
     }
 
+    Event<ParamEventArgs<int>>& DownloadRow::paused()
+    {
+        return m_paused;
+    }
+
+    Event<ParamEventArgs<int>>& DownloadRow::resumed()
+    {
+        return m_resumed;
+    }
+
     Event<ParamEventArgs<int>>& DownloadRow::retried()
     {
         return m_retried;
@@ -70,6 +82,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
 
     void DownloadRow::setProgressState(const DownloadProgressChangedEventArgs& args)
     {
+        gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "folder-download-symbolic");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "running");
         if(std::isnan(args.getProgress()))
         {
@@ -125,12 +138,39 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         gtk_level_bar_set_value(m_builder.get<GtkLevelBar>("levelBar"), 0.0);
     }
 
+    void DownloadRow::setPauseState()
+    {
+        gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "media-playback-pause-symbolic");
+        gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Paused"));
+        gtk_button_set_icon_name(m_builder.get<GtkButton>("pauseResumeButton"), "media-playback-start-symbolic");
+        gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("pauseResumeButton"), _("Resume"));
+    }
+
+    void DownloadRow::setResumeState()
+    {
+        gtk_button_set_icon_name(m_builder.get<GtkButton>("pauseResumeButton"), "media-playback-pause-symbolic");
+        gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("pauseResumeButton"), _("Pause"));
+    }
+
     void DownloadRow::setStartFromQueueState()
     {
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "folder-download-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("cmdToClipboardButton"), true);
+    }
+
+    void DownloadRow::pauseResume()
+    {
+        if(m_isPaused)
+        {
+            m_resumed.invoke({ m_id });
+        }
+        else
+        {
+            m_paused.invoke({ m_id });
+        }
+        m_isPaused = !m_isPaused;
     }
 
     void DownloadRow::stop()

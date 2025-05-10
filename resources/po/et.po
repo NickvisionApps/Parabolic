@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-10 10:19-0400\n"
+"POT-Creation-Date: 2025-05-10 13:21-0400\n"
 "PO-Revision-Date: 2025-03-06 00:34+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -146,8 +146,8 @@ msgid "{} has finished downloading"
 msgstr "{} allalaadimine on lõppenud"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:294
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
 msgid "Open"
 msgstr "Ava"
 
@@ -426,28 +426,35 @@ msgstr "Kasuta"
 msgid "View Log"
 msgstr "Vaata logisse"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:59
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:296
+msgid "Pause"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
 msgid "Stop"
 msgstr "Peata"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:270
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:272
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "Esita"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:92
 msgid "Retry"
 msgstr "Proovi uuesti"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:140
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:153
 msgid "Copy Command to Clipboard"
 msgstr "Kopeeri käsk lõikelauale"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:147
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:160
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:41
 msgid "Copy Log to Clipboard"
 msgstr "Kopeeri logi lõikelauale"
@@ -517,21 +524,21 @@ msgid "Main Menu"
 msgstr "Põhimenüü"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:218
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:265
 msgid "Home"
 msgstr "Avavaade"
 
 #. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:224
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
 msgid "Keyring"
 msgstr "Võtmerõngas"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:230
 #: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:55
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:88
 msgid "History"
@@ -545,19 +552,19 @@ msgid "Downloads"
 msgstr "Allalaadimised"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 msgid "Downloading"
 msgstr "Laadime alla"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:157
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:164
 msgid "Queued"
 msgstr "Lisatud järjekorda"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
 msgid "Completed"
 msgstr "Valmis"
 
@@ -1004,32 +1011,32 @@ msgstr "Rakendus"
 msgid "Quit"
 msgstr "Välju"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:28
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:29
 msgid "Starting"
 msgstr "Alustame"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:167
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:174
 msgid "Unknown"
 msgstr "Teadmata"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:76
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:223
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:235
 msgid "Processing"
 msgstr "Töötlemisel"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:132
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:162
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:229
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:94
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:158
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:169
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:301
 msgid "Running"
 msgstr "Töös"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:103
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:244
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:487
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
@@ -1045,15 +1052,25 @@ msgstr "Töös"
 msgid "Error"
 msgstr "Viga"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:111
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:250
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:264
 msgid "Success"
 msgstr "Õnnestus"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:122
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:258
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:134
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:272
 msgid "Stopped"
 msgstr "Peatatud"
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:143
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:282
+msgid "Paused"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:145
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:290
+msgid "Resume"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
@@ -1087,7 +1104,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:281
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
 msgid "Close"
 msgstr "Sulge"
 
@@ -1124,7 +1141,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:280
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:375
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:578
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:641
 msgid "Don't show this message again"
@@ -1156,7 +1173,7 @@ msgid "Edit"
 msgstr "Muuda"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:308
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
@@ -1179,12 +1196,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr "Kas oled kindel, et soovid need tuvastusandmed kustutada?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Yes"
 msgstr "Jah"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "No"
 msgstr "Ei"
 
@@ -1212,11 +1229,11 @@ msgstr "Nimi (on olemas)"
 msgid "Credential (Database Error)"
 msgstr "Tuvastusandmed (andmebaasi viga)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid "Disclaimer"
 msgstr "Lahtiütlus vastutusest"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1226,20 +1243,20 @@ msgstr ""
 "väärkasutuste ja neist johtuvate autoriõiguste rikkumiste eest. Kasutajad "
 "kasutavad seda rakendust omal vastutusel."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 msgid "Exit?"
 msgstr "Kas väljume?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:371
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:373
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Allalaadimised on pooleli. Kas sa oled kindel, et soovid väljuda?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:291
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
 msgid "Download Again"
 msgstr "Laadi uuesti alla"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:448
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:462
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:114
 msgid "GitHub Repo"
 msgstr "Lähtekoodi hoidla GitHubis"
@@ -1280,21 +1297,21 @@ msgid "Debugging"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:86
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:92
 msgid "Log"
 msgstr "Logid"
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:54
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:87
 #, fuzzy
 msgid "Show Log"
 msgstr "Vaata logisse"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:81
 msgid "Open Containing Folder"
 msgstr ""
 
@@ -1499,13 +1516,13 @@ msgid "Downloading (0)"
 msgstr "Laadime alla"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:267
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:428
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:430
 #, fuzzy
 msgid "Queued (0)"
 msgstr "Lisatud järjekorda"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:445
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:447
 #, fuzzy
 msgid "Completed (0)"
 msgstr "Valmis"
@@ -1514,27 +1531,27 @@ msgstr "Valmis"
 msgid "Parabolic (Preview)"
 msgstr "Parabolic (eelversioon)"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:495
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:497
 msgid "Update"
 msgstr "Uuenda"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:536
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:540
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:629
 #, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "Lisatud järjekorda"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:547
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:562
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:586
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:590
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Laadime alla"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:563
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:587
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:616
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:591
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:630
 #, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Valmis"
