@@ -1,9 +1,7 @@
 ﻿#include "controllers/mainwindowcontroller.h"
-#include <format>
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
@@ -216,7 +214,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
         if(recoveredDownloads > 0)
         {
-            AppNotification::send({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
+            AppNotification::send({ _fn("Recovered {} download", "Recovered {} downloads", recoveredDownloads, recoveredDownloads), NotificationSeverity::Informational });
         }
         m_started = true;
         return info;

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-08 06:47-0400\n"
+"POT-Creation-Date: 2025-05-10 10:19-0400\n"
 "PO-Revision-Date: 2025-04-02 22:05+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -86,98 +86,105 @@ msgstr "WAV (hang)"
 msgid "Best"
 msgstr "Legmagasabb"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:312
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
 msgid "Download web video and audio"
 msgstr "Internetes médiatartalmak letöltése"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
 msgid "Matrix Chat"
 msgstr "Matrix csatorna"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "Contributors on GitHub"
 msgstr "Közreműködők GitHub-bon"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:58
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
 msgid "translator-credits"
 msgstr "ViBE <vibe@protonmail.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} letöltés helyreállítva"
 msgstr[1] "{} letöltés helyreállítva"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:246
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:244
 msgid "New update available"
 msgstr "Elérhető frissítés"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:260
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
 msgid ""
 "The update is downloading in the background and will start once it finishes"
 msgstr ""
 "A frissítés letöltése a háttérben zajlik és automatikusan alkalmazásra kerül"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:263
 msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:294
 msgid "Download Finished"
 msgstr "Letöltés befejeződött"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:294
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "A(z) „{}” letöltése befejeződött"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:294
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:75
 msgid "Open"
 msgstr "Megnyitás"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
 msgid "Download Finished With Error"
 msgstr "Hiba történt letöltés közben"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "A(z) „{}” letöltése során hiba történt"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:303
 msgid "Downloads Finished"
 msgstr "Letöltés befejeződött"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:303
 msgid "All downloads have finished"
 msgstr "Minden letöltés befejeződött"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:17
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/mp"
 
@@ -186,22 +193,22 @@ msgid "Audio Description"
 msgstr "Hangos leírás"
 
 #: libparabolic/src/models/format.cpp:196
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/mp"
 
 #: libparabolic/src/models/format.cpp:200
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/mp"
 
 #: libparabolic/src/models/format.cpp:204
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/mp"
 
 #: libparabolic/src/models/format.cpp:208
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/mp"
 
@@ -225,7 +232,7 @@ msgstr "Automatikusan létrehozott"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:347
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:381
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:380
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:72
 msgid "Add Download"
 msgstr "Hozzáadás"
@@ -235,12 +242,12 @@ msgid "Back"
 msgstr "Vissza"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:58
 msgid "Media URL"
 msgstr "Hivatkozás"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:58
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
 msgid "Use Batch File"
 msgstr "Letöltési lista megnyitása"
 
@@ -252,7 +259,7 @@ msgstr "Bejelentkezés"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:72
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Credential"
 msgstr "Bejelentkezés"
@@ -261,7 +268,7 @@ msgstr "Bejelentkezés"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:75
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:29
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:196
@@ -272,7 +279,7 @@ msgstr "Felhasználónév"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:79
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:33
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:201
@@ -280,29 +287,29 @@ msgid "Password"
 msgstr "Jelszó"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:84
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:97
 msgid "Validate"
 msgstr "Elemzés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:278
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:127
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:126
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:243
 msgid "File Type"
 msgstr "Fájltípus"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:130
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:129
 msgid "Video Format"
 msgstr "Felbontás/minőség"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:133
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:132
 msgid "Audio Format"
 msgstr "Hangsáv"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:115
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:226
 msgid "Subtitles"
 msgstr "Feliratok"
 
@@ -312,53 +319,53 @@ msgstr "Haladó beállítások"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:139
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:296
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:136
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:256
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:135
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:255
 msgid "Save Folder"
 msgstr "Letöltés helye"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:145
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:302
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:307
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:390
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:144
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:264
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:588
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:651
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:308
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:391
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:143
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:263
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:650
 msgid "Select Save Folder"
 msgstr "Letöltés helyének kiválasztása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:145
 msgid "File Name"
 msgstr "Fájlnév"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:160
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:227
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:298
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:228
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:152
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:297
 msgid "Revert to Title"
 msgstr "Visszavonás"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:169
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:324
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:319
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:233
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:318
 msgid "Download"
 msgstr "Letöltés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:192
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:353
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:200
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:283
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:282
 msgid "Select All"
 msgstr "Összes kijelölése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:199
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:360
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:205
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:288
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:204
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:287
 msgid "Deselect All"
 msgstr "Kijelölés törlése"
 
@@ -369,20 +376,20 @@ msgstr "Fejezetekre darabolás"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:286
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:172
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:250
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:171
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:249
 msgid "Limit Download Speed"
 msgstr "Letöltési sebesség korlátozása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:235
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:290
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:253
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:174
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:252
 msgid "Export Description"
 msgstr "Hangos leírás mentése fájlba"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:239
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:178
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:177
 msgid "Start Time"
 msgstr "Részlet kezdete"
 
@@ -392,7 +399,7 @@ msgid "Revert to Original"
 msgstr "Visszavonás"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:252
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:182
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:181
 msgid "End Time"
 msgstr "Részlet vége"
 
@@ -401,7 +408,7 @@ msgid "Playlist Items"
 msgstr "Lejátszási lista"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:277
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:276
 msgid "Number Titles"
 msgstr "Elemek számozása"
 
@@ -810,7 +817,7 @@ msgid "Cookies from Browser"
 msgstr "Sütik betöltése böngészőből"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:402
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:401
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:145
 msgid "None"
 msgstr "Nincs"
@@ -1019,10 +1026,10 @@ msgid "Running"
 msgstr "Fut"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:103
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:145
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:244
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:488
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:487
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
@@ -1047,26 +1054,26 @@ msgstr "Letöltés befejeződött"
 msgid "Stopped"
 msgstr "Letöltés megszakítva"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:45
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:401
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:400
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:73
 msgid "Use manual credential"
 msgstr "Bejelentkezés másként"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:82
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:437
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:436
 msgid "Select Batch File"
 msgstr "Letöltési lista kiválasztása"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:84
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:437
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:436
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:440
 msgid "TXT Files (*.txt)"
 msgstr "Szöveges dokumentum (*.txt)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:145
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in preferences."
@@ -1074,35 +1081,36 @@ msgstr ""
 "A megadott hivatkozás hibás vagy nem elérhető. Ellenőrizze a hivatkozást "
 "vagy a bejelentkezési adatokat, valamint sütikre vonatkozó beállításokat!"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:280
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:375
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:281
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:376
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid "Close"
 msgstr "Bezárás"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:198
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
 msgid "No Subtitles Available"
 msgstr "Nincs felirat"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:217
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
+#, c++-format
 msgid "{} items"
 msgstr "{} elem"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:278
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:373
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:578
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:641
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:279
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:374
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:577
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:640
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Warning"
 msgstr "Figyelmeztetés"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:278
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:373
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:578
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:641
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:279
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:374
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:577
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:640
 msgid ""
 "Generic file types do not support embedding thumbnails and subtitles. Please "
 "select a specific file type that supports embedding to prevent separate "
@@ -1113,15 +1121,16 @@ msgstr ""
 "támogatja ezt. Ellenkező esetben a borítóképek külön fájlként kerülnek "
 "letöltésre."
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:279
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:374
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:280
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:375
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:579
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:642
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:641
 msgid "Don't show this message again"
 msgstr "Ne mutassa újra"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1309,74 +1318,74 @@ msgstr "Letöltési előzmények tárolása"
 msgid "Copy"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:60
 msgid "Enter media url here"
 msgstr "Hivatkozás beillesztése"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:78
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:77
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:31
 msgid "Enter username here"
 msgstr "Felhasználónév megadása"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:82
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:81
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:35
 msgid "Enter password here"
 msgstr "Jelszó megadása"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:89
 #, fuzzy
 msgid "Media"
 msgstr "Hivatkozás"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:90
 #, fuzzy
 msgid "Authentication"
 msgstr "Bejelentkezés"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:111
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:110
 msgid "This may take some time..."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:139
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:259
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:138
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:258
 #, fuzzy
 msgid "No save folder selected"
 msgstr "Nincs fájl kiválasztva"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:147
 msgid "Enter file name here"
 msgstr "Fájlnév megadása"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:169
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:168
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:246
 msgid "Split Video by Chapters"
 msgstr "Fejezetek darabolása"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:179
 #, fuzzy
 msgid "Enter start time here"
 msgstr "Részlet kezdete"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:184
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:183
 #, fuzzy
 msgid "Enter end time here"
 msgstr "Részlet vége"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:313
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:224
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:312
 msgid "General"
 msgstr "Általános"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:226
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
 #, fuzzy
 msgid "Advanced"
 msgstr "Haladó beállítások"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:314
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:313
 msgid "Items"
 msgstr "elem"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:488
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:487
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in settings."
@@ -1385,6 +1394,7 @@ msgstr ""
 "vagy a bejelentkezési adatokat, valamint sütikre vonatkozó beállításokat!"
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "A(z) {} letöltéséhez bejelentkezés szükséges. Kérem, jelentkezzen be, vagy "
@@ -1507,7 +1517,7 @@ msgstr "Frissítés"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:536
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:615
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "Sorban áll"
 
@@ -1515,14 +1525,14 @@ msgstr "Sorban áll"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:562
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:586
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:597
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Letöltés"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:563
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:587
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:616
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Befejezett"
 
@@ -2038,9 +2048,7 @@ msgstr "Proxy-átjáró megadása"
 #~ msgstr "Hátralévő letöltések: {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr ""
-#~ "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;vimeo;videa;letöltés;"
-#~ "letöltő;"
+#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;vimeo;videa;letöltés;letöltő;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Egyszerű grafikus felület yt-dlp letöltőhöz"
