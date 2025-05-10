@@ -52,6 +52,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_downloadStopped;
     }
 
+    Event<ParamEventArgs<int>>& DownloadManager::downloadPaused()
+    {
+        return m_downloadPaused;
+    }
+
+    Event<ParamEventArgs<int>>& DownloadManager::downloadResumed()
+    {
+        return m_downloadResumed;
+    }
+
     Event<ParamEventArgs<int>>& DownloadManager::downloadRetried()
     {
         return m_downloadRetried;
@@ -378,6 +388,26 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_recoveryQueue.removeDownload(id);
             lock.unlock();
             m_downloadStopped.invoke(id);
+        }
+    }
+
+    void DownloadManager::pauseDownload(int id)
+    {
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        if(m_downloading.contains(id))
+        {
+            m_downloading.at(id)->pause();
+            m_downloadPaused.invoke(id);
+        }
+    }
+
+    void DownloadManager::resumeDownload(int id)
+    {
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        if(m_downloading.contains(id))
+        {
+            m_downloading.at(id)->resume();
+            m_downloadResumed.invoke(id);
         }
     }
 

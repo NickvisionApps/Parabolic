@@ -64,6 +64,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStopped();
         /**
+         * @brief Gets the event for when a download is paused.
+         * @return The download paused event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadPaused();
+        /**
+         * @brief Gets the event for when a download is resumed.
+         * @return The download resumed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadResumed();
+        /**
          * @brief Gets the event for when a download is retried.
          * @return The download retried event
          */
@@ -173,6 +183,18 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void stopDownload(int id);
         /**
+         * @brief Requests that a download be paused.
+         * @brief This will invoke the downloadPaused event if stopped successfully.
+         * @param id The id of the download to pause
+         */
+        void pauseDownload(int id);
+        /**
+         * @brief Requests that a download be resumed.
+         * @brief This will invoke the downloadResumed event if stopped successfully.
+         * @param id The id of the download to resume
+         */
+        void resumeDownload(int id);
+        /**
          * @brief Requests that a download be retried.
          * @brief This will invoke the downloadRetried event if retried successfully.
          * @param id The id of the download to retry
@@ -228,6 +250,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         Nickvision::Events::Event<Events::DownloadCompletedEventArgs> m_downloadCompleted;
         Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs> m_downloadProgressChanged;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStopped;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadPaused;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadResumed;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadRetried;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStartedFromQueue;
         Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs> m_downloadCredentialNeeded;

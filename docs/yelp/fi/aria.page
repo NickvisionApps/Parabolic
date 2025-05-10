@@ -15,19 +15,19 @@
 </info>
 
 <title>aria2</title>
-<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+<p>Tämä sivusto selventää kaikki tavat aria2:n säätämiseksi <app>Parabolic:in</app> Asetuksissa.</p>
 
 <terms>
     <item>
         <title>Käytä aria2:ta</title>
-        <p>If enabled, Parabolic will use aria2c to download media.</p>
-        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Mikäli kytketty, Parabolic käyttää aria2c -käytäntöä median lataukseen.</p>
+        <p>Vaikkakin aria2c:n käyttö voi parantaa latausnopeutta, latauksen edistyminen ei näy käyttöliittymässä.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Vakio: pois päältä</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
+        <title>Yhteyksien enimmäismäärä palvelinta kohti</title>
         <p>
             This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
         </p>

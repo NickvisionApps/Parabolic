@@ -85,6 +85,14 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Stops the download.
          */
         void stop();
+        /**
+         * @brief Pauses the download.
+         */
+        void pause();
+        /**
+         * @brief Resumes the download.
+         */
+        void resume();
 
     private:
         /**

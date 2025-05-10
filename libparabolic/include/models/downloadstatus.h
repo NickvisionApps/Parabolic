@@ -10,6 +10,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         Queued,
         Running,
+        Paused,
         Stopped,
         Error,
         Success

@@ -112,7 +112,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void Download::start(const DownloaderOptions& downloaderOptions)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        if(m_status == DownloadStatus::Running)
+        if(m_status == DownloadStatus::Running || m_status == DownloadStatus::Paused)
         {
             return;
         }
@@ -120,7 +120,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_status = DownloadStatus::Error;
             lock.unlock();
-            m_progressChanged.invoke({ m_id, 1.0, 0.0, _("ERROR: The file already exists and overwriting is disabled.") });
+            m_progressChanged.invoke({ m_id, _("ERROR: The file already exists and overwriting is disabled.") });
             m_completed.invoke({ m_id, m_status, m_path, false });
             return;
         }
@@ -148,6 +148,32 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
+    void Download::pause()
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        if(m_status != DownloadStatus::Running)
+        {
+            return;
+        }
+        if(m_process->pause())
+        {
+            m_status = DownloadStatus::Paused;
+        }
+    }
+
+    void Download::resume()
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        if(m_status != DownloadStatus::Paused)
+        {
+            return;
+        }
+        if(m_process->resume())
+        {
+            m_status = DownloadStatus::Running;
+        }
+    }
+
     void Download::watch()
     {
         if(!m_process)
@@ -156,58 +182,65 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         double oldProgress{ std::nan("") };
         double oldSpeed{ 0 };
+        int oldEta{ 0 };
         std::string oldLog{ _("Starting download...") };
-        while(m_process->isRunning())
+        while(m_process->getState() == ProcessState::Running || m_process->getState() == ProcessState::Paused)
         {
-            if(m_process->getOutput() != oldLog)
+            if(m_process->getState() == ProcessState::Running)
             {
-                oldLog = m_process->getOutput();
-                std::vector<std::string> logLines{ StringHelpers::split(oldLog, "\n") };
-                for(size_t i = logLines.size(); i > 0; i--)
+                if(m_process->getOutput() != oldLog)
                 {
-                    const std::string& line{ logLines[i - 1] };
-                    if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug]") != std::string::npos)
+                    oldLog = m_process->getOutput();
+                    std::vector<std::string> logLines{ StringHelpers::split(oldLog, "\n") };
+                    for(size_t i = logLines.size(); i > 0; i--)
                     {
-                        continue;
-                    }
-                    if(line.find("[#") != std::string::npos) //aria2c progress
-                    {
-                        std::vector<std::string> progress{ StringHelpers::split(line, " ") };
-                        if(progress.size() != 5)
+                        const std::string& line{ logLines[i - 1] };
+                        if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug]") != std::string::npos)
                         {
                             continue;
                         }
-                        std::vector<std::string> progressSizes{ StringHelpers::split(progress[1], "/") };
-                        if(progressSizes.size() != 2)
+                        if(line.find("[#") != std::string::npos) //aria2c progress
                         {
-                            continue;
-                        }
-                        oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
-                        oldSpeed = getAriaSizeAsB(progress[3].substr(3));
-                        break;
-                    }
-                    else
-                    {
-                        std::vector<std::string> progress{ StringHelpers::split(line, ";") };
-                        if(progress.size() != 6 || progress[1] == "NA")
-                        {
-                            continue;
-                        }
-                        if(progress[1] == "finished" || progress[1] == "processing")
-                        {
-                            oldProgress = std::nan("");
-                            oldSpeed = 0.0;
+                            std::vector<std::string> progress{ StringHelpers::split(line, " ", false) };
+                            if(progress.size() != 4)
+                            {
+                                continue;
+                            }
+                            std::vector<std::string> progressSizes{ StringHelpers::split(progress[1], "/") };
+                            if(progressSizes.size() != 2)
+                            {
+                                continue;
+                            }
+                            oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
+                            oldSpeed = getAriaSizeAsB(progress[3].substr(3));
+                            oldEta = -1;
+                            break;
                         }
                         else
                         {
-                            oldProgress = (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0));
-                            oldSpeed = progress[5] != "NA" ? std::stod(progress[5]) : 0.0;
+                            std::vector<std::string> progress{ StringHelpers::split(line, ";", false) };
+                            if(progress.size() != 7 || progress[1] == "NA")
+                            {
+                                continue;
+                            }
+                            if(progress[1] == "finished" || progress[1] == "processing")
+                            {
+                                oldProgress = std::nan("");
+                                oldSpeed = 0.0;
+                                oldEta = 0;
+                            }
+                            else
+                            {
+                                oldProgress = (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0));
+                                oldSpeed = progress[5] != "NA" ? std::stod(progress[5]) : 0.0;
+                                oldEta = progress[6] == "NA" || progress[6] == "Unknown" ? -1 : std::stoi(progress[6]);
+                            }
+                            break;
                         }
-                        break;
                     }
                 }
+                m_progressChanged.invoke({ m_id, oldLog, oldProgress, oldSpeed, oldEta });
             }
-            m_progressChanged.invoke({ m_id, oldProgress, oldSpeed, oldLog });
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }
@@ -234,7 +267,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             catch(...) { }
         }
         lock.unlock();
-        m_progressChanged.invoke({ m_id, 1.0, 0.0, m_process->getOutput() });
+        m_progressChanged.invoke({ m_id, m_process->getOutput() });
         m_completed.invoke({ m_id, m_status, m_path, true });
     }
 }

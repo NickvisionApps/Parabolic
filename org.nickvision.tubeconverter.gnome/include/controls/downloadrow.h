@@ -41,6 +41,16 @@ namespace Nickvision::TubeConverter::GNOME::Controls
          */
         Events::Event<Events::ParamEventArgs<int>>& stopped();
         /**
+         * @brief Gets the event for when the download is paused.
+         * @return The paused event
+         */
+        Events::Event<Events::ParamEventArgs<int>>& paused();
+        /**
+         * @brief Gets the event for when the download is resumed.
+         * @return The resumed event
+         */
+        Events::Event<Events::ParamEventArgs<int>>& resumed();
+        /**
          * @brief Gets the event for when the download is retried.
          * @return The retried event
          */
@@ -64,11 +74,23 @@ namespace Nickvision::TubeConverter::GNOME::Controls
          */
         void setStopState();
         /**
+         * @brief Updates the row with the paused download state.
+         */
+        void setPauseState();
+        /**
+         * @brief Updates the row with the resumed download state.
+         */
+        void setResumeState();
+        /**
          * @brief Updates the row with the started from queue state.
          */
         void setStartFromQueueState();
 
     private:
+        /**
+         * @brief Pauses or resumes the download.
+         */
+        void pauseResume();
         /**
          * @brief Stops the download.
          */
@@ -96,7 +118,10 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         int m_id;
         std::string m_log;
         std::filesystem::path m_path;
+        bool m_isPaused;
         Events::Event<Events::ParamEventArgs<int>> m_stopped;
+        Events::Event<Events::ParamEventArgs<int>> m_paused;
+        Events::Event<Events::ParamEventArgs<int>> m_resumed;
         Events::Event<Events::ParamEventArgs<int>> m_retried;
         Events::Event<Events::ParamEventArgs<int>> m_commandToClipboardRequested;
     };

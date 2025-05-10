@@ -89,6 +89,16 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onDownloadStopped(const Events::ParamEventArgs<int>& args);
         /**
+         * @brief Handles when a download is paused.
+         * @param args ParamEventArgs<int>
+         */
+        void onDownloadPaused(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is resumed.
+         * @param args ParamEventArgs<int>
+         */
+        void onDownloadResumed(const Events::ParamEventArgs<int>& args);
+        /**
          * @brief Handles when a download is retried.
          * @param args ParamEventArgs<int>
          */
