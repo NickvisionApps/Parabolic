@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Neuer Download 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -26,13 +26,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Batch File Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Anmelden</title>
         <p>Wenn diese Option aktiviert ist, wird der Benutzer aufgefordert, einen Benutzernamen und/oder ein Passwort einzugeben, die beim Herunterladen an yt-dlp weitergegeben werden.</p>
         <p>Wenn Anmeldedaten im Schlüsselbund gefunden werden, kann der Benutzer stattdessen aus einer Liste von benannten Anmeldedaten auswählen (oder weiterhin manuell Anmeldedaten eingeben)</p>
-            <note style="advanced">
-                <p>Nicht alle Webseiten unstützen die Übergabe von Benutzernamen und Passwörtern an yt-dlp. YouTube zum Beispiel unterstützt diese Funktion NICHT.</p>
-                <p>Für diese Websites, die die Weitergabe von Anmeldedaten nicht unterstützen, wird empfohlen, stattdessen in den Einstellungen einen Browser auszuwählen, der Cookies verwendet.</p>
-            </note>
+         <note style="advanced">
+            <p>Nicht alle Webseiten unstützen die Übergabe von Benutzernamen und Passwörtern an yt-dlp. YouTube zum Beispiel unterstützt diese Funktion NICHT.</p>
+            <p>Für diese Websites, die die Weitergabe von Anmeldedaten nicht unterstützen, wird empfohlen, stattdessen in den Einstellungen einen Browser auszuwählen, der Cookies verwendet.</p>
+        </note>
     </item>
     <item>
         <title>Dateityp</title>
@@ -88,6 +101,10 @@
         <note>
             <p>Der zuvor verwendete Status wird gespeichert und für den nächsten Download vorausgewählt.</p>
         </note>
+    </item>
+    <item>
+        <title>Exclude from History</title>
+        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
         <title>Zeitrahmen</title>

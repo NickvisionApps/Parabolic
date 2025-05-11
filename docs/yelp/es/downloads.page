@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Descargas 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -26,12 +26,12 @@
 
 <terms>
     <item>
-		<title>Máximo número de descargas activas</title>
-		<p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
+        <title>Máximo número de descargas activas</title>
+        <p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
         <p>Si se alcanza el número máximo de descargas activas, Parabolic colocará las descargas nuevas en una cola hasta que se puedan ejecutar más descargas.</p>
-		<note style="advanced">
-			<p>Predeterminado: 5</p>
-		</note>
+        <note style="advanced">
+            <p>Predeterminado: 5</p>
+        </note>
     </item>
     <item>
         <title>Sobreescribir archivos existentes</title>
@@ -45,12 +45,12 @@
         </note>
     </item>
     <item>
-		<title>Limitar los caracteres del nombre del archivo</title>
-		<p>Restringe los caracteres de los nombres de los archivos al soportado por Windows.</p>
+        <title>Limitar los caracteres del nombre del archivo</title>
+        <p>Restringe los caracteres de los nombres de los archivos al soportado por Windows.</p>
         <p>Esta opción solo está disponible en Linux.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
+        <note style="advanced">
+            <p>Predeterminado: Apagado</p>
+        </note>
     </item>
     <item>
         <title>Incluir el ID del medio en el título después de la validación</title>
@@ -68,7 +68,20 @@
     </item>
     <item>
         <title>Códec de vídeo preferido</title>
-        <p>El códec de vídeo que Parabolic debe usar al seleccionar los formatos multimedia para descargar.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>Por defecto: Cualquiera</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>Por defecto: Cualquiera</p>
         </note>

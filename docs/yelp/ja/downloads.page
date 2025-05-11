@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">ダウンロード 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -26,12 +26,12 @@
 
 <terms>
     <item>
-		<title>アクティブダウンロードの最大数</title>
-		<p>平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があります。</p>
+        <title>アクティブダウンロードの最大数</title>
+        <p>平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があります。</p>
         <p>アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダウンロードが可能になるまでキューに入れます。</p>
-		<note style="advanced">
-			<p>デフォルト: 5</p>
-		</note>
+        <note style="advanced">
+            <p>デフォルト: 5</p>
+        </note>
     </item>
     <item>
         <title>存在するファイルを上書きする</title>
@@ -45,12 +45,12 @@
         </note>
     </item>
     <item>
-		<title>ファイル名の文字を制限</title>
-		<p>ファイル名の文字を Windows がサポートする文字のみに制限する。</p>
+        <title>ファイル名の文字を制限</title>
+        <p>ファイル名の文字を Windows がサポートする文字のみに制限する。</p>
         <p>このオプションは Linux でのみ利用できます。</p>
-		<note style="advanced">
-			<p>デフォルト: オフ</p>
-		</note>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
     </item>
     <item>
         <title>検証完了後のタイトルにメディア ID を含める</title>
@@ -68,7 +68,20 @@
     </item>
     <item>
         <title>優先するビデオコーデック</title>
-        <p>ダウンロードするメディアのフォーマットの選択時に、Parabolic が使用するビデオコーデック。</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>デフォルト: すべて</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>デフォルト: すべて</p>
         </note>

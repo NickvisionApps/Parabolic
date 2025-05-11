@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Nové stiahnutie 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Batch File Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Overiť</title>
         <p>Ak je táto možnosť zapnutá, používateľ bude požiadaný o zadanie používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri sťahovaní.</p>
         <p>Ak sa poverenia nachádzajú v zväzku kľúčov, používateľ si namiesto toho môže vybrať zo zoznamu pomenovaných poverení, ktoré chce použiť (alebo pokračovať v ručnom zadávaní poverenia)</p>
-            <note style="advanced">
-                <p>Nie všetky webové stránky podporujú odovzdávanie používateľských mien a hesiel do yt-dlp. Napríklad YouTube túto funkciu NEpodporuje.</p>
-                <p>V prípade týchto webových stránok, ktoré nepodporujú odovzdávanie poverovacích údajov, sa odporúča namiesto toho vybrať prehliadač, z ktorého sa majú súbory cookie používať, v časti Nastavenia.</p>
-            </note>
+         <note style="advanced">
+            <p>Nie všetky webové stránky podporujú odovzdávanie používateľských mien a hesiel do yt-dlp. Napríklad YouTube túto funkciu NEpodporuje.</p>
+            <p>V prípade týchto webových stránok, ktoré nepodporujú odovzdávanie poverovacích údajov, sa odporúča namiesto toho vybrať prehliadač, z ktorého sa majú súbory cookie používať, v časti Nastavenia.</p>
+        </note>
     </item>
     <item>
         <title>Typ súboru</title>
@@ -94,6 +107,10 @@
         <note>
             <p>Predtým použitý stav sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
         </note>
+    </item>
+    <item>
+        <title>Exclude from History</title>
+        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
         <title>Časový rozsah</title>

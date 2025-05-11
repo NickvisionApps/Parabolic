@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-04-26 23:41-0400\n"
+"POT-Creation-Date: 2025-05-10 23:06-0400\n"
 "PO-Revision-Date: 2025-01-20 09:15+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -92,7 +92,7 @@ msgstr ""
 "க்கு அனுப்பப்பட்ட <code>-x</code> கொடி போன்றதே."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/aria.page:37
+#: docs/yelp/C/aria.page:35
 msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
@@ -101,17 +101,17 @@ msgstr ""
 "முழு எண் மதிப்பு இருக்க வேண்டும்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:39
+#: docs/yelp/C/aria.page:37
 msgid "Default: 16"
 msgstr "இயல்புநிலை: 16"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/aria.page:43
+#: docs/yelp/C/aria.page:41
 msgid "Minimum Split Size"
 msgstr "குறைந்தபட்ச பிளவு அளவு"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/aria.page:44
+#: docs/yelp/C/aria.page:42
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
@@ -120,7 +120,7 @@ msgstr ""
 "க்கு அனுப்பப்பட்ட <code>-k</code> கொடி போன்றதே."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/aria.page:47
+#: docs/yelp/C/aria.page:43
 msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
@@ -129,7 +129,7 @@ msgstr ""
 "முழு எண் மதிப்பு இருக்க வேண்டும்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:49
+#: docs/yelp/C/aria.page:45
 msgid "Default: 20"
 msgstr "இயல்புநிலை: 20"
 
@@ -597,25 +597,57 @@ msgstr "விருப்பமான வீடியோ கோடெக்"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:68
+#, fuzzy
 msgid ""
-"The video codec Parabolic should prefer when selecting media formats to "
+"The video codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
 "பதிவிறக்கம் செய்ய ஊடக வடிவங்களைத் தேர்ந்தெடுக்கும்போது வீடியோ கோடெக் பரபோலிக் விரும்ப "
 "வேண்டும்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:70 docs/yelp/C/downloads.page:77
+#: docs/yelp/C/downloads.page:70
+msgid ""
+"If Parabolic cannot find any formats with the selected preferred codec, no "
+"video formats will be available for download."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:73 docs/yelp/C/downloads.page:83
+#: docs/yelp/C/downloads.page:90
 msgid "Default: Any"
 msgstr "இயல்புநிலை: ஏதேனும்"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:74
+#: docs/yelp/C/downloads.page:77
+#, fuzzy
+msgid "Preferred Audio Codec"
+msgstr "விருப்பமான வீடியோ கோடெக்"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:78
+#, fuzzy
+msgid ""
+"The audio codec Parabolic should prefer when parsing media formats to "
+"download."
+msgstr ""
+"பதிவிறக்கம் செய்ய ஊடக வடிவங்களைத் தேர்ந்தெடுக்கும்போது வீடியோ கோடெக் பரபோலிக் விரும்ப "
+"வேண்டும்."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:80
+msgid ""
+"If Parabolic cannot find any formats with the selected preferred codec, no "
+"audio formats will be available for download."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:87
 msgid "Preferred Subtitle Format"
 msgstr "விருப்பமான வசன வடிவமைப்பு"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:75
+#: docs/yelp/C/downloads.page:88
 msgid ""
 "The file format Parabolic should ensure all downloaded subtitles are "
 "downloaded as."
@@ -802,17 +834,17 @@ msgstr ""
 "இந்தப் பக்கம் விளக்குகிறது."
 
 #. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:23
+#: docs/yelp/C/keyring.page:24
 msgid "Backend"
 msgstr "பின்தளம்"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:24
+#: docs/yelp/C/keyring.page:25
 msgid "The Keyring feature is backed by the <code>libnick</code> library."
 msgstr "கீரிங் நற்பொருத்தம் <code> லிப்னிக் </code> நூலகத்தால் ஆதரிக்கப்படுகிறது."
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:25
+#: docs/yelp/C/keyring.page:26
 msgid ""
 "This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
@@ -821,7 +853,7 @@ msgstr ""
 "பாதுகாப்பாகச் சேமிக்கிறது."
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:26
+#: docs/yelp/C/keyring.page:27
 msgid ""
 "The library will use your system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
@@ -831,27 +863,27 @@ msgstr ""
 "(அதாவது லினக்ச் மற்றும் சாளரங்களில் சாளரங்கள் நற்சான்றிதழ் மேலாளர்) பயன்படுத்தும்."
 
 #. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:29
+#: docs/yelp/C/keyring.page:31
 msgid "Storing a Credential"
 msgstr "ஒரு நற்சான்றிதழை சேமித்தல்"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:30
+#: docs/yelp/C/keyring.page:32
 msgid "Here are the fields that can be stored in a credential:"
 msgstr "நற்சான்றிதழில் சேமிக்கக்கூடிய புலங்கள் இங்கே உள்ளன:"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:31
+#: docs/yelp/C/keyring.page:33
 msgid "<code>Name</code>: The name of the credential"
 msgstr "<code>பெயர்</code>: நற்சான்றிதழின் பெயர்"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:32
+#: docs/yelp/C/keyring.page:34
 msgid "<code>URL</code> (optional): The URL of the credential"
 msgstr "<code>URL</code> (விரும்பினால்): நற்சான்றிதழின் URL"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:33
+#: docs/yelp/C/keyring.page:35
 msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
@@ -860,7 +892,7 @@ msgstr ""
 "பயனர்பெயர்"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:34
+#: docs/yelp/C/keyring.page:36
 msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
@@ -913,11 +945,61 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:32
+msgid "Use Batch File"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:33
+msgid "Select a batch text file that contains a list of URLs to validate."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:34
+msgid ""
+"Each URL can be accompanied by an optional save folder to save said URL's "
+"media to."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:35
+msgid ""
+"All of the URLs and their media will be grouped and treated as one single "
+"playlist by Parabolic."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:37
+#, fuzzy
+msgid "Batch File Format:"
+msgstr "வீடியோ வடிவம்"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:38
+msgid "<code>URL1</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:39
+msgid "<code>URL2 ; \"Folder1\"</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:40
+msgid "<code>URL3;\"Folder2\"</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:41
+msgid "<code>\"URL4\"</code>"
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:45
 msgid "Authenticate"
 msgstr "அங்கீகரிக்கவும்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:33
+#: docs/yelp/C/newDownload.page:46
 msgid ""
 "If enabled, the user will be asked to provide a username and/or password to "
 "pass to yt-dlp when downloading."
@@ -926,7 +1008,7 @@ msgstr ""
 "கடவுச்சொல்லை வழங்குமாறு பயனர் கேட்கப்படுவார்."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:34
+#: docs/yelp/C/newDownload.page:47
 msgid ""
 "If credentials are found in the keyring, the user can instead chose from a "
 "list of named credentials to use (or continue to manually enter a credential)"
@@ -935,7 +1017,7 @@ msgstr ""
 "பட்டியலிலிருந்து தேர்வு செய்யலாம் (அல்லது தொடர்ந்து நற்சான்றிதழை கைமுறையாக உள்ளிடவும்)"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:36
+#: docs/yelp/C/newDownload.page:49
 msgid ""
 "Not all websites support passing usernames and passwords to yt-dlp. For "
 "example, YouTube does NOT support this feature."
@@ -944,7 +1026,7 @@ msgstr ""
 "ஆதரிக்காது. எடுத்துக்காட்டாக, YouTube இந்த அம்சத்தை ஆதரிக்காது."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:37
+#: docs/yelp/C/newDownload.page:50
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
 "select a browser to use cookies from in Preferences instead."
@@ -953,17 +1035,17 @@ msgstr ""
 "விருப்பங்களிலிருந்து பயன்படுத்த உலாவியைத் தேர்ந்தெடுக்க பரிந்துரைக்கப்படுகிறது."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:41
+#: docs/yelp/C/newDownload.page:54
 msgid "File Type"
 msgstr "கோப்பு வகை"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:42
+#: docs/yelp/C/newDownload.page:55
 msgid "The file type of which to download the media as."
 msgstr "மீடியாவைப் பதிவிறக்க வேண்டிய கோப்பு வகை."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:44
+#: docs/yelp/C/newDownload.page:57
 msgid ""
 "The previously used file type will be remembered and pre-selected for the "
 "next download."
@@ -972,7 +1054,7 @@ msgstr ""
 "முன்பே தேர்ந்தெடுக்கப்படும்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:47
+#: docs/yelp/C/newDownload.page:60
 msgid ""
 "Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> "
 "file types will cause Parabolic to download the media in the original file "
@@ -983,12 +1065,12 @@ msgstr ""
 "ஊடகத்தை பதிவிறக்கம் செய்ய பரபோலிக் ஏற்படுத்தும்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:51
+#: docs/yelp/C/newDownload.page:64
 msgid "Video Format"
 msgstr "வீடியோ வடிவம்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:52
+#: docs/yelp/C/newDownload.page:65
 msgid ""
 "The list of video formats available for download, sorted by resolution and "
 "bitrate."
@@ -997,18 +1079,18 @@ msgstr ""
 "ஆகியவற்றால் வரிசைப்படுத்தப்பட்டது."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:53
+#: docs/yelp/C/newDownload.page:66
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr "ஒவ்வொரு வடிவமும் படிவம்: <code> தீர்மானம் | பிட்ரேட் | கோடெக் (ஐடி) </code>."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:54
+#: docs/yelp/C/newDownload.page:67
 msgid "If the file type is an audio type, this option will not be available."
 msgstr "கோப்பு வகை ஆடியோ வகை என்றால், இந்த விருப்பம் கிடைக்காது."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:56
+#: docs/yelp/C/newDownload.page:69
 msgid ""
 "The previously used video format will be remembered and pre-selected for the "
 "next download."
@@ -1017,23 +1099,23 @@ msgstr ""
 "தேர்ந்தெடுக்கப்படும்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:60
+#: docs/yelp/C/newDownload.page:73
 msgid "Audio Format"
 msgstr "ஆடியோ வடிவம்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:61
+#: docs/yelp/C/newDownload.page:74
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 "பிட்ரேட்டால் வரிசைப்படுத்தப்பட்ட பதிவிறக்கத்திற்கு கிடைக்கும் ஆடியோ வடிவங்களின் பட்டியல்."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:62
+#: docs/yelp/C/newDownload.page:75
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr "ஒவ்வொரு வடிவமும் படிவம்: <code> பிட்ரேட் | மொழி (ஐடி) </code>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:64
+#: docs/yelp/C/newDownload.page:77
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
@@ -1042,12 +1124,12 @@ msgstr ""
 "தேர்ந்தெடுக்கப்படும்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:81
 msgid "Subtitles"
 msgstr "வசன வரிகள்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:69
+#: docs/yelp/C/newDownload.page:82
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1058,7 +1140,7 @@ msgstr ""
 "இல் கட்டமைக்க முடியும்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:71
+#: docs/yelp/C/newDownload.page:84
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1067,12 +1149,12 @@ msgstr ""
 "தேர்ந்தெடுக்கப்படும்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:88
 msgid "Split Chapters"
 msgstr "அத்தியாயங்களைப் பிரிக்கவும்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:76
+#: docs/yelp/C/newDownload.page:89
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1081,8 +1163,8 @@ msgstr ""
 "சிறிய கோப்புகளாக பிரிக்கும்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:78 docs/yelp/C/newDownload.page:85
-#: docs/yelp/C/newDownload.page:92
+#: docs/yelp/C/newDownload.page:91 docs/yelp/C/newDownload.page:98
+#: docs/yelp/C/newDownload.page:105
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1091,12 +1173,12 @@ msgstr ""
 "தேர்ந்தெடுக்கப்படும்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:95
 msgid "Limit Download Speed"
 msgstr "பதிவிறக்க வேகத்தை கட்டுப்படுத்துங்கள்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:83
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1105,12 +1187,12 @@ msgstr ""
 "கட்டமைக்கப்பட்ட வேகத்துடன் பதிவிறக்கத்தின் வேகத்தை பரபோலிக் கட்டுப்படுத்தும்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:102
 msgid "Export Description"
 msgstr "ஏற்றுமதி விளக்கம்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:90
+#: docs/yelp/C/newDownload.page:103
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1119,12 +1201,26 @@ msgstr ""
 "code> கோப்புடன் பதிவிறக்கம் செய்யப்பட்ட கோப்புடன்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:109
+msgid "Exclude from History"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:110
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will exclude the download from the list of historic "
+"downloads."
+msgstr ""
+"இயக்கப்பட்டால், YouTube பதிவிறக்கங்களுக்கு பரபோலிக் SponsorBlock நீட்டிப்பைப் பயன்படுத்தும்."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:113
 msgid "Time Frame"
 msgstr "கால அளவு"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:97
+#: docs/yelp/C/newDownload.page:114
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1133,22 +1229,22 @@ msgstr ""
 "இறுதி கால கட்டத்தை உள்ளிடலாம்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:99
+#: docs/yelp/C/newDownload.page:116
 msgid "Default: The whole media length"
 msgstr "இயல்புநிலை: முழு ஊடக நீளம்"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:120
 msgid "Save Folder"
 msgstr "கோப்புறையை சேமி"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:104
+#: docs/yelp/C/newDownload.page:121
 msgid "The folder at which to save the download to."
 msgstr "பதிவிறக்கத்தைச் சேமிக்க வேண்டிய கோப்புறை."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
+#: docs/yelp/C/newDownload.page:123
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1157,19 +1253,23 @@ msgstr ""
 "தேர்ந்தெடுக்கப்படும்."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:127
 msgid "File Name"
 msgstr "கோப்பு பெயர்"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:128
 msgid "The file name to use when saving the download."
 msgstr "பதிவிறக்கத்தைச் சேமிக்கும்போது பயன்படுத்த வேண்டிய கோப்பு பெயர்."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:130
 msgid "Default: The title of the media"
 msgstr "இயல்புநிலை: ஊடகத்தின் தலைப்பு"
+
+#, fuzzy
+#~ msgid "Format:"
+#~ msgstr "வீடியோ வடிவம்"
 
 #~ msgid "Quality"
 #~ msgstr "தரம்"

@@ -14,7 +14,6 @@
 #include <QStackedWidget>
 #include <QTabWidget>
 #include <QVBoxLayout>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include <oclero/qlementine/widgets/LoadingSpinner.hpp>
@@ -174,6 +173,9 @@ namespace Ui
             QLabel* lblExportDescriptionSingle{ new QLabel(parent) };
             lblExportDescriptionSingle->setText(_("Export Description"));
             chkExportDescriptionSingle = new Switch(parent);
+            QLabel* lblExcludeHistorySingle{ new QLabel(parent) };
+            lblExcludeHistorySingle->setText(_("Exclude from History"));
+            chkExcludeHistorySingle = new Switch(parent);
             QLabel* lblTimeFrameStartSingle{ new QLabel(parent) };
             lblTimeFrameStartSingle->setText(_("Start Time"));
             txtTimeFrameStartSingle = new LineEdit(parent);
@@ -186,6 +188,7 @@ namespace Ui
             layoutAdvancedSingle->addRow(lblSplitChaptersSingle, chkSplitChaptersSingle);
             layoutAdvancedSingle->addRow(lblLimitSpeedSingle, chkLimitSpeedSingle);
             layoutAdvancedSingle->addRow(lblExportDescriptionSingle, chkExportDescriptionSingle);
+            layoutAdvancedSingle->addRow(lblExcludeHistorySingle, chkExcludeHistorySingle);
             layoutAdvancedSingle->addRow(lblTimeFrameStartSingle, txtTimeFrameStartSingle);
             layoutAdvancedSingle->addRow(lblTimeFrameEndSingle, txtTimeFrameEndSingle);
             QWidget* advancedSinglePage{ new QWidget(parent) };
@@ -252,6 +255,9 @@ namespace Ui
             QLabel* lblExportDescriptionPlaylist{ new QLabel(parent) };
             lblExportDescriptionPlaylist->setText(_("Export Description"));
             chkExportDescriptionPlaylist = new Switch(parent);
+            QLabel* lblExcludeHistoryPlaylist{ new QLabel(parent) };
+            lblExcludeHistoryPlaylist->setText(_("Exclude from History"));
+            chkExcludeHistoryPlaylist = new Switch(parent);
             QLabel* lblSaveFolderPlaylist{ new QLabel(parent) };
             lblSaveFolderPlaylist->setText(_("Save Folder"));
             txtSaveFolderPlaylist = new LineEdit(parent);
@@ -262,6 +268,10 @@ namespace Ui
             btnSelectSaveFolderPlaylist->setDefault(false);
             btnSelectSaveFolderPlaylist->setIcon(QLEMENTINE_ICON(File_FolderOpen));
             btnSelectSaveFolderPlaylist->setToolTip(_("Select Save Folder"));
+            QLabel* lblIgnoreSaveFolderPlaylist{ new QLabel(parent) };
+            lblIgnoreSaveFolderPlaylist->setWordWrap(true);
+            lblIgnoreSaveFolderPlaylist->setSizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
+            lblIgnoreSaveFolderPlaylist->setText(_("Will be ignored for media in batch files that provide save folder paths."));
             QHBoxLayout* layoutSaveFolderPlaylist{ new QHBoxLayout() };
             layoutSaveFolderPlaylist->addWidget(txtSaveFolderPlaylist);
             layoutSaveFolderPlaylist->addWidget(btnSelectSaveFolderPlaylist);
@@ -270,7 +280,9 @@ namespace Ui
             layoutGeneralPlaylist->addRow(lblSplitChaptersPlaylist, chkSplitChaptersPlaylist);
             layoutGeneralPlaylist->addRow(lblLimitSpeedPlaylist, chkLimitSpeedPlaylist);
             layoutGeneralPlaylist->addRow(lblExportDescriptionPlaylist, chkExportDescriptionPlaylist);
+            layoutGeneralPlaylist->addRow(lblExcludeHistoryPlaylist, chkExcludeHistoryPlaylist);
             layoutGeneralPlaylist->addRow(lblSaveFolderPlaylist, layoutSaveFolderPlaylist);
+            layoutGeneralPlaylist->addRow(nullptr, lblIgnoreSaveFolderPlaylist);
             QWidget* generalPagePlaylist{ new QWidget(parent) };
             generalPagePlaylist->setLayout(layoutGeneralPlaylist);
             QLabel* lblNumberTitlesPlaylist{ new QLabel(parent) };
@@ -347,6 +359,7 @@ namespace Ui
         Switch* chkSplitChaptersSingle;
         Switch* chkLimitSpeedSingle;
         Switch* chkExportDescriptionSingle;
+        Switch* chkExcludeHistorySingle;
         LineEdit* txtTimeFrameStartSingle;
         LineEdit* txtTimeFrameEndSingle;
         QStackedWidget* viewStackSubtitlesSingle;
@@ -359,6 +372,7 @@ namespace Ui
         Switch* chkSplitChaptersPlaylist;
         Switch* chkLimitSpeedPlaylist;
         Switch* chkExportDescriptionPlaylist;
+        Switch* chkExcludeHistoryPlaylist;
         LineEdit* txtSaveFolderPlaylist;
         QPushButton* btnSelectSaveFolderPlaylist;
         Switch* chkNumberTitlesPlaylist;
@@ -425,6 +439,16 @@ namespace Nickvision::TubeConverter::Qt::Views
     AddDownloadDialog::~AddDownloadDialog()
     {
         delete m_ui;
+    }
+
+    void AddDownloadDialog::closeEvent(QCloseEvent* event)
+    {
+        if(m_ui->viewStack->currentIndex() == AddDownloadDialogPage::Loading)
+        {
+            event->ignore();
+            return;
+        }
+        event->accept();
     }
 
     void AddDownloadDialog::onTxtUrlChanged(const QString& text)
@@ -624,7 +648,7 @@ namespace Nickvision::TubeConverter::Qt::Views
                 subtitles.push_back(item->text().toStdString());
             }
         }
-        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbVideoFormatSingle->currentIndex(), m_ui->cmbAudioFormatSingle->currentIndex(), subtitles, m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->chkExportDescriptionSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
+        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbVideoFormatSingle->currentIndex(), m_ui->cmbAudioFormatSingle->currentIndex(), subtitles, m_ui->chkExcludeHistorySingle->isChecked(), m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->chkExportDescriptionSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
         accept();
     }
 
@@ -696,7 +720,7 @@ namespace Nickvision::TubeConverter::Qt::Views
                 filenames.emplace(static_cast<size_t>(i), item->text().toStdString());
             }
         }
-        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkLimitSpeedPlaylist->isChecked(), m_ui->chkExportDescriptionPlaylist->isChecked());
+        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkExcludeHistoryPlaylist->isChecked(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkLimitSpeedPlaylist->isChecked(), m_ui->chkExportDescriptionPlaylist->isChecked());
         accept();
     }
 }

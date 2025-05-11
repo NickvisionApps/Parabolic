@@ -37,7 +37,7 @@ jobs:
         with:
           pkgs: boost-date-time libnick qtbase qtsvg qttools qlementine qlementine-icons
           triplet: x64-windows
-          revision: 69e3d824b1a0f1d5f88a2908daa43763f84c2b9a
+          revision: a68ff2cb7feb5983035d7caaf373a7feabc950b0
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"

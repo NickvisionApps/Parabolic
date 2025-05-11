@@ -58,12 +58,25 @@ Adw.Bin root {
 
         Adw.ViewStackPage {
           name: "downloading";
-          child: Gtk.Button stopButton {
-            valign: center;
-            icon-name: "media-playback-stop-symbolic";
-            tooltip-text: _("Stop");
+          child: Gtk.Box {
+            orientation: horizontal;
+            spacing: 6;
 
-            styles [ "circular" ]
+            Gtk.Button pauseResumeButton {
+              valign: center;
+              icon-name: "media-playback-pause-symbolic";
+              tooltip-text: _("Pause");
+
+              styles [ "circular" ]
+            }
+
+            Gtk.Button stopButton {
+              valign: center;
+              icon-name: "media-playback-stop-symbolic";
+              tooltip-text: _("Stop");
+
+              styles [ "circular" ]
+            }
           };
         }
 

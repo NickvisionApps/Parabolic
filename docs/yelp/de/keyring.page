@@ -4,24 +4,26 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Keyring 🔑</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
 <title>Schlüsselring</title>
 <p>Diese Seite erklärt alle Optionen zur Verwendung des Keyrings in <app>Parabolic</app>.</p>
+
 <section>
     <title>Backend</title>
     <p>Die Schlüsselbundfunktion wird von der Bibliothek <code>libnick</code> bereitgestellt.</p>
     <p>Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
     <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
+
 <section>
     <title>Speichern von Anmeldedaten</title>
     <p>Die folgenden Felder können in einem Anmeldedatensatz gespeichert werden:</p>

@@ -55,6 +55,14 @@ namespace Nickvision::TubeConverter::Qt::Controls
          */
         void setStopState();
         /**
+         * @brief Updates the row with the paused download state.
+         */
+        void setPauseState();
+        /**
+         * @brief Updates the row with the resumed download state.
+         */
+        void setResumeState();
+        /**
          * @brief Updates the row with the started from queue state.
          */
         void setStartFromQueueState();
@@ -71,12 +79,26 @@ namespace Nickvision::TubeConverter::Qt::Controls
          */
         void stop(int id);
         /**
+         * @brief Emitted when the pause button is clicked.
+         * @param id The id of the download
+         */
+        void pause(int id);
+        /**
+         * @brief Emitted when the resume button is clicked.
+         * @param id The id of the download
+         */
+        void resume(int id);
+        /**
          * @brief Emitted when the retry button is clicked.
          * @param id The id of the download
          */
         void retry(int id);
 
     private Q_SLOTS:
+        /**
+         * @brief Pauses or resumes the download.
+         */
+        void pauseResume();
         /**
          * @brief Opens the download in a media player.
          */
@@ -90,6 +112,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         Ui::DownloadRow* m_ui;
         int m_id;
         std::filesystem::path m_path;
+        bool m_isPaused;
     };
 }
 

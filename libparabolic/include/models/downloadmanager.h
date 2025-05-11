@@ -64,6 +64,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStopped();
         /**
+         * @brief Gets the event for when a download is paused.
+         * @return The download paused event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadPaused();
+        /**
+         * @brief Gets the event for when a download is resumed.
+         * @return The download resumed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadResumed();
+        /**
          * @brief Gets the event for when a download is retried.
          * @return The download retried event
          */
@@ -149,29 +159,43 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Fetches information about a URL.
          * @param url The URL to fetch information for
          * @param credential An optional credential to use for authentication
+         * @param suggestedSaveFolder An option save folder to save the url's media to
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(const std::string& url, const std::optional<Keyring::Credential>& credential) const;
+        std::optional<UrlInfo> fetchUrlInfo(const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
         /**
          * @brief Fetches information about a set of URLs from a batch file.
          * @param batchFile The batch file with listed URLs
          * @param credential An optional credential to use for authentication
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfoFromBatchFile(const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
+        std::optional<UrlInfo> fetchUrlInfo(const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.
          * @param options The options for the download
+         * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param recovered Whether or not the download was previously recovered
          */
-        void addDownload(const DownloadOptions& options, bool recovered = false);
+        void addDownload(const DownloadOptions& options, bool excludeFromHistory, bool recovered = false);
         /**
          * @brief Requests that a download be stopped.
          * @brief This will invoke the downloadStopped event if stopped successfully.
          * @param id The id of the download to stop
          */
         void stopDownload(int id);
+        /**
+         * @brief Requests that a download be paused.
+         * @brief This will invoke the downloadPaused event if stopped successfully.
+         * @param id The id of the download to pause
+         */
+        void pauseDownload(int id);
+        /**
+         * @brief Requests that a download be resumed.
+         * @brief This will invoke the downloadResumed event if stopped successfully.
+         * @param id The id of the download to resume
+         */
+        void resumeDownload(int id);
         /**
          * @brief Requests that a download be retried.
          * @brief This will invoke the downloadRetried event if retried successfully.
@@ -203,9 +227,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         /**
          * @brief Adds a download to the queue.
          * @param download The download to add
+         * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param recovered Whether or not the download was previously recovered
          */
-        void addDownload(const std::shared_ptr<Download>& download, bool recovered = false);
+        void addDownload(const std::shared_ptr<Download>& download, bool excludeFromHistory, bool recovered = false);
         /**
          * @brief Handles when a download's progress is changed.
          * @param args Events::DownloadProgressChangedEventArgs
@@ -228,6 +253,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         Nickvision::Events::Event<Events::DownloadCompletedEventArgs> m_downloadCompleted;
         Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs> m_downloadProgressChanged;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStopped;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadPaused;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadResumed;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadRetried;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStartedFromQueue;
         Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs> m_downloadCredentialNeeded;

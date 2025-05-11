@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Nøkkelring</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -22,12 +22,14 @@
 
 <title>Nøkkelring</title>
 <p>Denne seksjonen tar for seg alle innstillingene til nøkkelring-funksjonaliteten i <app>Parabolic</app>.</p>
+
 <section>
     <title>Tjeneste</title>
     <p>Nøkkelringen er bygget med rammeverket <code>libnick</code>.</p>
     <p>Dette rammeverket bruker SQLCipher til sikker og plattformuavhengig lagring av innlogginger.</p>
     <p>Rammeverket vil bruke systemets innloggingstjeneste, som DBus-innloggingstjenesten på Linux og Windows Credential Manager på Windows, til å lagre innloggingsdataene.</p>
 </section>
+
 <section>
     <title>Lagring av innlogginger</title>
     <p>Her er informasjonen en innlogging kan bestå av:</p>

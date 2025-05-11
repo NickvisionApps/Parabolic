@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Behandling av nedlastinger</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -26,12 +26,12 @@
 
 <terms>
     <item>
-		<title>Høyeste antall aktive nedlastinger</title>
-		<p>Det høyeste antallet nedlastinger som kan gjennomføres samtidig. Må være et tall mellom 1 og 10.</p>
+        <title>Høyeste antall aktive nedlastinger</title>
+        <p>Det høyeste antallet nedlastinger som kan gjennomføres samtidig. Må være et tall mellom 1 og 10.</p>
         <p>Hvis det høyeste antallet aktive nedlastinger nås, vil Parabolic sette resten i en kø til flere nedlastinger kan gjennomføres.</p>
-		<note style="advanced">
-			<p>Standard: 5</p>
-		</note>
+        <note style="advanced">
+            <p>Standard: 5</p>
+        </note>
     </item>
     <item>
         <title>Erstatt eksisterende filer</title>
@@ -45,12 +45,12 @@
         </note>
     </item>
     <item>
-		<title>Begrens lengde på filnavn</title>
-		<p>Begrenser tegn i filnavn til de som støttes av Windows.</p>
+        <title>Begrens lengde på filnavn</title>
+        <p>Begrenser tegn i filnavn til de som støttes av Windows.</p>
         <p>Denne innstillingen er bare tilgjengelig på Linux.</p>
-		<note style="advanced">
-			<p>Standard: av</p>
-		</note>
+        <note style="advanced">
+            <p>Standard: av</p>
+        </note>
     </item>
     <item>
         <title>Inkluder ID i tittel etter kontroll</title>
@@ -68,7 +68,20 @@
     </item>
     <item>
         <title>Foretrukken videokodek</title>
-        <p>Videokodeken som skal foretrekkes ved nedlasting av videoer.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: hvilken som helst</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>Standard: hvilken som helst</p>
         </note>

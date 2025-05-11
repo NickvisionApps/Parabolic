@@ -1,5 +1,4 @@
 #include "views/credentialdialog.h"
-#include <format>
 #include <libnick/localization/gettext.h>
 #include "helpers/gtkhelpers.h"
 
@@ -12,7 +11,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         : DialogBase{ parent, "credential_dialog" },
         m_controller{ controller }
     {
-        gtk_label_set_text(m_builder.get<GtkLabel>("messageLabel"), std::vformat(_("{} needs a credential to download.\nPlease select or enter one to use."), std::make_format_args(m_controller->getUrl())).c_str());
+        gtk_label_set_text(m_builder.get<GtkLabel>("messageLabel"), _f("{} needs a credential to download.\nPlease select or enter one to use.", m_controller->getUrl()));
         //Signals
         g_signal_connect(m_builder.get<GObject>("credentialRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec*, gpointer data){ reinterpret_cast<CredentialDialog*>(data)->onCmbCredentialChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("useButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<CredentialDialog*>(data)->use(); }), this);

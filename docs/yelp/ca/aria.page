@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">aria2 🛠️</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -21,22 +21,20 @@
   </info>
 
 <title>aria2</title>
-<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+<p>Aquesta pàgina explica tot opcions per configurar aria2 en Preferències dins <app>Parabòlic</app>.</p>
 
 <terms>
     <item>
         <title>Utilitza l’aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media.</p>
-        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Si està activat, Parabolic utilitzarà aria2c per descarregar els mitjans.</p>
+        <p>Encara que l'ús d'ària2c pot millorar la velocitat de descàrrega, no es mostrarà el progrés de descàrrega a la interfície d'usuari.</p>
         <note style="advanced">
             <p>Valor per defecte: desactivat</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
+        <title>Connexions màximes Per Servidor</title>
+        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
         <note style="advanced">
             <p>Valor per defecte: 16</p>
@@ -44,9 +42,7 @@
     </item>
     <item>
         <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
+        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
         <note style="advanced">
             <p>Valor per defecte: 20</p>

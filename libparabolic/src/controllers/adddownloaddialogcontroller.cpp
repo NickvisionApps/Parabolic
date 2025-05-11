@@ -1,5 +1,4 @@
 #include "controllers/adddownloaddialogcontroller.h"
-#include <algorithm>
 #include <format>
 #include <thread>
 #include <libnick/helpers/stringhelpers.h>
@@ -271,7 +270,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::thread worker{ [this, batchFile, credential]()
         {
             m_credential = credential;
-            m_urlInfo = m_downloadManager.fetchUrlInfoFromBatchFile(batchFile, m_credential);
+            m_urlInfo = m_downloadManager.fetchUrlInfo(batchFile, m_credential);
             m_urlValidated.invoke({ isUrlValid() });
         } };
         worker.detach();
@@ -289,7 +288,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime)
+    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };
         //Get Subtitle Languages
@@ -337,10 +336,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_previousOptions.setExportDescription(exportDescription);
         m_previousOptions.setSubtitleLanguages(options.getSubtitleLanguages());
         //Add Download
-        m_downloadManager.addDownload(options);
+        m_downloadManager.addDownload(options, excludeFromHistory);
     }
 
-    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed, bool exportDescription)
+    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription)
     {
         //Save Previous Options
         m_previousOptions.setSaveFolder(saveFolder);
@@ -357,14 +356,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             DownloadOptions options{ media.getUrl() };
             options.setCredential(m_credential);
             options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
-            options.setSaveFolder(playlistSaveFolder);
+            options.setSaveFolder(media.getSuggestedSaveFolder().empty() ? playlistSaveFolder : media.getSuggestedSaveFolder());
             options.setSaveFilename(!pair.second.empty() ? StringHelpers::normalizeForFilename(pair.second, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
             options.setSplitChapters(splitChapters);
             options.setLimitSpeed(limitSpeed);
             options.setExportDescription(exportDescription);
             options.setPlaylistPosition(media.getPlaylistPosition());
             //Add Download
-            m_downloadManager.addDownload(options);
+            m_downloadManager.addDownload(options, excludeFromHistory);
         }
     }
 }

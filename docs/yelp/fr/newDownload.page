@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Nouveau téléchargement 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -26,13 +26,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Batch File Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>S’identifier</title>
         <p>Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
         <p>Si des identifiants sont trouvés dans le trousseau, l’utilisateur pourra choisir parmi une liste d’identifiants, ou entrer manuellement un identifiant</p>
-            <note style="advanced">
-                <p>Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
-                <p>Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
-            </note>
+         <note style="advanced">
+            <p>Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
+            <p>Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
+        </note>
     </item>
     <item>
         <title>Type de fichier</title>
@@ -88,6 +101,10 @@
         <note>
             <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
+    </item>
+    <item>
+        <title>Exclude from History</title>
+        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
         <title>Séquence</title>

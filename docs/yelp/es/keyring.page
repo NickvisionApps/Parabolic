@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Llavero 🔑</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -22,12 +22,14 @@
 
 <title>Llavero</title>
 <p>En esta página se explican todas las opciones de uso del llavero en <app>Parabolic</app>.</p>
+
 <section>
     <title>Lado del servidor</title>
     <p>La función Llavero está respaldada por la biblioteca <code>libnick</code>.</p>
     <p>Esta biblioteca usa SQLCipher para almacenar las credenciales de forma segura e independiente de la plataforma.</p>
     <p>La biblioteca utilizará el gestor de credenciales de su sistema (es decir, el servicio DBus en Linux y el gestor de credenciales de Windows en Windows) para proteger el archivo de base de datos del Llavero.</p>
 </section>
+
 <section>
     <title>Almacenamiento de una credencial</title>
     <p>Estos son los campos que pueden almacenarse en una credencial:</p>

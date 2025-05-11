@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Нове завантаження 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Batch File Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Автентифікація</title>
         <p>Якщо ввімкнено, користувачеві буде запропоновано ввести ім'я користувача та/або пароль для входу до yt-dlp під час завантаження.</p>
         <p>Якщо облікові дані знайдено в Keyring, користувач може вибрати зі списку названих облікових даних для використання (або продовжити вводити облікові дані вручну)</p>
-            <note style="advanced">
-                <p>Не всі вебсайти підтримують передачу імен користувачів і паролів до yt-dlp. Наприклад, YouTube НЕ підтримує цю функцію.</p>
-                <p>Для сайтів, які не підтримують передачу облікових даних, рекомендується вибрати браузер для використання файлів cookie у Налаштуваннях.</p>
-            </note>
+         <note style="advanced">
+            <p>Не всі вебсайти підтримують передачу імен користувачів і паролів до yt-dlp. Наприклад, YouTube НЕ підтримує цю функцію.</p>
+            <p>Для сайтів, які не підтримують передачу облікових даних, рекомендується вибрати браузер для використання файлів cookie у Налаштуваннях.</p>
+        </note>
     </item>
     <item>
         <title>Тип файлу</title>
@@ -94,6 +107,10 @@
         <note>
             <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
         </note>
+    </item>
+    <item>
+        <title>Exclude from History</title>
+        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
         <title>Часовий проміжок</title>

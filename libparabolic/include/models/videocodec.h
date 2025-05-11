@@ -11,7 +11,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         Any = 0,
         VP9,
         AV01,
-        H264
+        H264,
+        H265
     };
 }
 

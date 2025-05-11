@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Klíčenka 🔑</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -22,12 +22,14 @@
 
 <title>Klíčenka</title>
 <p>Na této stránce najdete vysvětlení všech možností konfigurace klíčenky v předvolbách v aplikaci <app>Parabolic</app>.</p>
+
 <section>
     <title>Backend</title>
     <p>Funkce klíčenky je provozována pomocí knihovny <code>libnick</code>.</p>
     <p>Tato knihovna používá SQLCipher pro bezpečné ukládání údajů způsobem nezávislým na platformě.</p>
     <p>Knihovna použije správce pověření vašeho systému (tj. službu DBus secret v systému Linux a Správce přihlašovacích údajů Windows v systému Windows) pro zabezpečení souboru databáze klíčenky.</p>
 </section>
+
 <section>
     <title>Ukládání údajů</title>
     <p>Pole, která lze uložit do údaje:</p>

@@ -235,6 +235,10 @@ Adw.Dialog root {
               title: _("Export Description");
             }
 
+            Adw.SwitchRow excludeHistorySingleRow {
+              title: _("Exclude from History");
+            }
+
             Adw.EntryRow startTimeSingleRow {
               title: _("Start Time");
 
@@ -289,6 +293,10 @@ Adw.Dialog root {
             Adw.SwitchRow exportDescriptionPlaylistRow {
               title: _("Export Description");
             }
+
+            Adw.SwitchRow excludeHistoryPlaylistRow {
+              title: _("Exclude from History");
+            }
           }
 
           Adw.PreferencesGroup {
@@ -300,6 +308,21 @@ Adw.Dialog root {
                 valign: center;
                 icon-name: "folder-open-symbolic";
                 tooltip-text: _("Select Save Folder");
+
+                styles ["flat"]
+              }
+
+              [suffix]
+              Gtk.MenuButton {
+                valign: center;
+                icon-name: "dialog-warning-symbolic";
+                popover: Gtk.Popover {
+                  child: Gtk.Label {
+                    label: _("Will be ignored for media in batch files that provide save folder paths.");
+                    wrap: true;
+                    wrap-mode: word;
+                  };
+                };
 
                 styles ["flat"]
               }

@@ -1,9 +1,7 @@
 ﻿#include "controllers/mainwindowcontroller.h"
-#include <format>
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
@@ -40,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.5.1" });
+        m_appInfo.setVersion({ "2025.5.2" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where the app crashed when validating certain videos\n- Fixed an issue where the wrong file type was sometimes downloaded");
+        m_appInfo.setChangelog("- Added the ability to pause/resume running downloads\n- Added the ability to specify save folder paths in a batch file\n- Added the ability to exclude a download from history in advanced download options\n- Added a Preferred Audio Codec option to downloads preferences\n- Added audio codec information to audio formats\n- Added an ETA to downloads' progress\n- Fixed an issue where generic videos would not download correctly");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -216,7 +214,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
         if(recoveredDownloads > 0)
         {
-            AppNotification::send({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
+            AppNotification::send({ _fn("Recovered {} download", "Recovered {} downloads", recoveredDownloads, recoveredDownloads), NotificationSeverity::Informational });
         }
         m_started = true;
         return info;
@@ -293,11 +291,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             if(args.getStatus() == DownloadStatus::Success)
             {
-                ShellNotification::send({ _("Download Finished"), std::vformat(_("{} has finished downloading"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Success, "open", args.getPath().string() }, m_appInfo, _("Open"));
+                ShellNotification::send({ _("Download Finished"), _f("{} has finished downloading", args.getPath().filename().string()), NotificationSeverity::Success, "open", args.getPath().string() }, m_appInfo, _("Open"));
             }
             else
             {
-                ShellNotification::send({ _("Download Finished With Error"), std::vformat(_("{} has finished with an error"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Error }, m_appInfo);
+                ShellNotification::send({ _("Download Finished With Error"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
             }
         }
         else if(preference == CompletedNotificationPreference::AllCompleted && m_downloadManager.getRemainingDownloadsCount() == 0)

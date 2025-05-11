@@ -1,6 +1,5 @@
 #include "controls/downloadrow.h"
 #include <cmath>
-#include <format>
 #include <QDesktopServices>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -52,6 +51,11 @@ namespace Ui
             btnRunningShowLog->setIcon(QLEMENTINE_ICON(Software_CommandLine));
             btnRunningShowLog->setText(_("Log"));
             btnRunningShowLog->setToolTip(_("Show Log"));
+            btnPauseResume = new QPushButton(parent);
+            btnPauseResume->setAutoDefault(false);
+            btnPauseResume->setDefault(false);
+            btnPauseResume->setIcon(QLEMENTINE_ICON(Media_Pause));
+            btnPauseResume->setText(_("Pause"));
             btnStop = new QPushButton(parent);
             btnStop->setAutoDefault(false);
             btnStop->setDefault(false);
@@ -87,6 +91,7 @@ namespace Ui
             btnRetry->setText(_("Retry"));
             QHBoxLayout* layoutButtonsRunning{ new QHBoxLayout() };
             layoutButtonsRunning->addWidget(btnRunningShowLog);
+            layoutButtonsRunning->addWidget(btnPauseResume);
             layoutButtonsRunning->addWidget(btnStop);
             QWidget* wdgButtonsRunning{ new QWidget(parent) };
             wdgButtonsRunning->setLayout(layoutButtonsRunning);
@@ -118,7 +123,6 @@ namespace Ui
             layoutMain->setSpacing(12);
             layoutMain->addWidget(icon);
             layoutMain->addLayout(layoutInfo);
-            layoutMain->addStretch();
             layoutMain->addLayout(layoutButtons);
             parent->setLayout(layoutMain);
         }
@@ -129,6 +133,7 @@ namespace Ui
         QProgressBar* progBar;
         QStackedWidget* buttonStack;
         QPushButton* btnRunningShowLog;
+        QPushButton* btnPauseResume;
         QPushButton* btnStop;
         QPushButton* btnDoneShowLog;
         QPushButton* btnPlay;
@@ -144,7 +149,8 @@ namespace Nickvision::TubeConverter::Qt::Controls
         : QWidget{ parent },
         m_ui{ new Ui::DownloadRow() },
         m_id{ args.getId() },
-        m_path{ args.getPath() }
+        m_path{ args.getPath() },
+        m_isPaused{ false }
     {
         setSizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
         setMaximumHeight(MAXIMUM_HEIGHT);
@@ -171,6 +177,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         m_ui->buttonStack->setCurrentIndex(ButtonStackPage::Running);
         //Signals
         connect(m_ui->btnRunningShowLog, &QPushButton::clicked, [this]() { Q_EMIT showLog(m_id); });
+        connect(m_ui->btnPauseResume, &QPushButton::clicked, this, &DownloadRow::pauseResume);
         connect(m_ui->btnStop, &QPushButton::clicked, [this]() { Q_EMIT stop(m_id); });
         connect(m_ui->btnDoneShowLog, &QPushButton::clicked, [this]() { Q_EMIT showLog(m_id); });
         connect(m_ui->btnPlay, &QPushButton::clicked, this, &DownloadRow::play);
@@ -183,7 +190,8 @@ namespace Nickvision::TubeConverter::Qt::Controls
         : QWidget{ row.parentWidget() },
         m_ui{ new Ui::DownloadRow() },
         m_id{ row.m_id },
-        m_path{ row.m_path }
+        m_path{ row.m_path },
+        m_isPaused{ row.m_isPaused }
     {
         setSizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
         setMaximumHeight(MAXIMUM_HEIGHT);
@@ -195,8 +203,11 @@ namespace Nickvision::TubeConverter::Qt::Controls
         m_ui->progBar->setRange(row.m_ui->progBar->minimum(), row.m_ui->progBar->maximum());
         m_ui->progBar->setValue(row.m_ui->progBar->value());
         m_ui->buttonStack->setCurrentIndex(row.m_ui->buttonStack->currentIndex());
+        m_ui->btnPauseResume->setIcon(row.m_ui->btnPauseResume->icon());
+        m_ui->btnPauseResume->setText(row.m_ui->btnPauseResume->text());
         //Signals
         connect(m_ui->btnRunningShowLog, &QPushButton::clicked, [this]() { Q_EMIT showLog(m_id); });
+        connect(m_ui->btnPauseResume, &QPushButton::clicked, this, &DownloadRow::pauseResume);
         connect(m_ui->btnStop, &QPushButton::clicked, [this]() { Q_EMIT stop(m_id); });
         connect(m_ui->btnDoneShowLog, &QPushButton::clicked, [this]() { Q_EMIT showLog(m_id); });
         connect(m_ui->btnPlay, &QPushButton::clicked, this, &DownloadRow::play);
@@ -226,10 +237,11 @@ namespace Nickvision::TubeConverter::Qt::Controls
         }
         else
         {
-            m_ui->lblStatus->setText(QString::fromStdString(std::vformat("{} | {}", std::make_format_args(CodeHelpers::unmove(_("Running")), args.getSpeedStr()))));
+            m_ui->lblStatus->setText(_f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr()));
             m_ui->progBar->setRange(0, 100);
             m_ui->progBar->setValue(args.getProgress() * 100);
         }
+        m_ui->progBar->setTextVisible(true);
     }
 
     void DownloadRow::setCompleteState(const DownloadCompletedEventArgs& args)
@@ -238,6 +250,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         m_ui->lblTitle->setText(QString::fromStdString(m_path.filename().string()));
         m_ui->progBar->setRange(0, 1);
         m_ui->progBar->setValue(1);
+        m_ui->progBar->setTextVisible(true);
         if(args.getStatus() == DownloadStatus::Error)
         {
             m_ui->icon->setIcon(QLEMENTINE_ICON(Action_Clear));
@@ -258,7 +271,28 @@ namespace Nickvision::TubeConverter::Qt::Controls
         m_ui->lblStatus->setText(_("Stopped"));
         m_ui->progBar->setRange(0, 1);
         m_ui->progBar->setValue(1);
+        m_ui->progBar->setTextVisible(false);
         m_ui->buttonStack->setCurrentIndex(ButtonStackPage::Error);
+    }
+
+    void DownloadRow::setPauseState()
+    {
+        m_ui->icon->setIcon(QLEMENTINE_ICON(Media_Pause));
+        m_ui->lblStatus->setText(_("Paused"));
+        if(m_ui->progBar->value() == 0)
+        {
+            m_ui->progBar->setRange(0, 1);
+            m_ui->progBar->setValue(0);
+            m_ui->progBar->setTextVisible(false);
+        }
+        m_ui->btnPauseResume->setIcon(QLEMENTINE_ICON(Media_Play));
+        m_ui->btnPauseResume->setText(_("Resume"));
+    }
+
+    void DownloadRow::setResumeState()
+    {
+        m_ui->btnPauseResume->setIcon(QLEMENTINE_ICON(Media_Pause));
+        m_ui->btnPauseResume->setText(_("Pause"));
     }
 
     void DownloadRow::setStartFromQueueState()
@@ -266,6 +300,19 @@ namespace Nickvision::TubeConverter::Qt::Controls
         m_ui->lblStatus->setText(_("Running"));
         m_ui->progBar->setRange(0, 0);
         m_ui->progBar->setValue(0);
+    }
+
+    void DownloadRow::pauseResume()
+    {
+        if(m_isPaused)
+        {
+            Q_EMIT resume(m_id);
+        }
+        else
+        {
+            Q_EMIT pause(m_id);
+        }
+        m_isPaused = !m_isPaused;
     }
 
     void DownloadRow::play()

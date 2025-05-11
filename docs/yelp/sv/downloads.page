@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Nedladdningar 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -20,12 +20,12 @@
 
 <terms>
     <item>
-		<title>Maximalt antal aktiva nedladdningar</title>
-		<p>Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett heltalsvärde mellan 1 och 10.</p>
+        <title>Maximalt antal aktiva nedladdningar</title>
+        <p>Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett heltalsvärde mellan 1 och 10.</p>
         <p>Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att placera nya nedladdningar i en kö tills fler nedladdningar kan köras.</p>
-		<note style="advanced">
-			<p>Standard: 5</p>
-		</note>
+        <note style="advanced">
+            <p>Standard: 5</p>
+        </note>
     </item>
     <item>
         <title>Skriv över existerande filer</title>
@@ -39,12 +39,12 @@
         </note>
     </item>
     <item>
-		<title>Begränsa tecken för filnamn</title>
-		<p>Begränsar tecken i filnamn till endast de som stöds av Windows.</p>
+        <title>Begränsa tecken för filnamn</title>
+        <p>Begränsar tecken i filnamn till endast de som stöds av Windows.</p>
         <p>Det här alternativet är endast tillgängligt på Linux.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
+        <note style="advanced">
+            <p>Standard: Av</p>
+        </note>
     </item>
     <item>
         <title>Inkluderat media-ID i titeln efter validering</title>
@@ -62,7 +62,20 @@
     </item>
     <item>
         <title>Föredragen videocodec</title>
-        <p>Videocodeken Parabolic ska föredra när du väljer mediaformat att ladda ner.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: Vilken som helst</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>Standard: Vilken som helst</p>
         </note>

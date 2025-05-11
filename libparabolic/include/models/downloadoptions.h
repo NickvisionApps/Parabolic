@@ -12,8 +12,6 @@
 #include "mediafiletype.h"
 #include "subtitlelanguage.h"
 #include "timeframe.h"
-#include "videocodec.h"
-#include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {

@@ -132,7 +132,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setVideoFormat(const std::optional<Format>& videoFormat)
     {
         m_videoFormat = videoFormat;
-        if(m_fileType.isGeneric() && m_videoFormat)
+        if(m_videoFormat && m_fileType.isGeneric() && m_fileType.isVideo())
         {
             std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_videoFormat->getExtension()) };
             if(newFileType)
@@ -150,7 +150,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setAudioFormat(const std::optional<Format>& audioFormat)
     {
         m_audioFormat = audioFormat;
-        if(m_fileType.isGeneric() && m_audioFormat)
+        if(m_audioFormat && m_fileType.isGeneric() && m_fileType.isAudio())
         {
             std::optional<MediaFileType> newFileType{ MediaFileType::parse(m_audioFormat->getExtension()) };
             if(newFileType)
@@ -264,7 +264,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--progress");
         arguments.push_back("--newline");;
         arguments.push_back("--progress-template");
-        arguments.push_back("[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s");
+        arguments.push_back("[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s");
         arguments.push_back("--no-mtime");
         arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
@@ -401,6 +401,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--no-embed-chapters");
         }
+        std::string formatSort;
         //Force preferred video codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
@@ -416,9 +417,47 @@ namespace Nickvision::TubeConverter::Shared::Models
             case VideoCodec::H264:
                 vcodec += "h264";
                 break;
+            case VideoCodec::H265:
+                vcodec += "h265";
+                break;
             }
+            formatSort += vcodec;
+        }
+        //Force preferred audio codec sorting for playlist downloads to use as format selection is not available
+        if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
+        {
+            std::string acodec{ "acodec:" };
+            switch (downloaderOptions.getPreferredAudioCodec())
+            {
+            case AudioCodec::FLAC:
+                acodec += "flac";
+                break;
+            case AudioCodec::WAV:
+                acodec += "wav";
+                break;
+            case AudioCodec::OPUS:
+                acodec += "opus";
+                break;
+            case AudioCodec::AAC:
+                acodec += "aac";
+                break;
+            case AudioCodec::MP4A:
+                acodec += "mp4a";
+                break;
+            case AudioCodec::MP3:
+                acodec += "mp3";
+                break;
+            }
+            if(!formatSort.empty())
+            {
+                formatSort += ",";
+            }
+            formatSort += acodec;
+        }
+        if(!formatSort.empty())
+        {
             arguments.push_back("--format-sort");
-            arguments.push_back(vcodec);
+            arguments.push_back(formatSort);
             arguments.push_back("--format-sort-force");
         }
         if(m_fileType.isAudio())
@@ -435,14 +474,17 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back(m_audioFormat->getId());
             }
         }
-        else if(m_fileType.isVideo() && !m_fileType.isGeneric())
+        else if(m_fileType.isVideo())
         {
-            arguments.push_back("--remux-video");
-            arguments.push_back(StringHelpers::lower(m_fileType.str()));
-            if(m_fileType == MediaFileType::WEBM)
+            if(!m_fileType.isGeneric())
             {
-                arguments.push_back("--recode-video");
+                arguments.push_back("--remux-video");
                 arguments.push_back(StringHelpers::lower(m_fileType.str()));
+                if(m_fileType == MediaFileType::WEBM)
+                {
+                    arguments.push_back("--recode-video");
+                    arguments.push_back(StringHelpers::lower(m_fileType.str()));
+                }
             }
             if(m_videoFormat && m_audioFormat)
             {

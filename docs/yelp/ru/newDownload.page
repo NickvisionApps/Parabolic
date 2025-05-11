@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Новая загрузка 🆕</title>
 	<credit type="author copyright">
-		<name>Николас Логоццо</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Николас Логоццо</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Николас Логоццо</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Николас Логоццо</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Batch File Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Аутентификация</title>
         <p>Если включено, пользователь сможет предоставить имя пользователя и/или пароль для передачи yt-dlp при загрузке.</p>
         <p>Если учетные данные найдены в связке ключей, пользователь может выбрать учётные данные из списка (или продолжить ввод учетных данных вручную)</p>
-            <note style="advanced">
-                <p>Не все сайты поддерживают аутентификацию по имени пользователя и паролю. Например, YouTube НЕ поддерживает эту функцию.</p>
-                <p>Для сайтов, которые не поддерживают передачу учетных данных, рекомендуется выбрать браузер для использования файлов cookie в приложениях.</p>
-            </note>
+         <note style="advanced">
+            <p>Не все сайты поддерживают аутентификацию по имени пользователя и паролю. Например, YouTube НЕ поддерживает эту функцию.</p>
+            <p>Для сайтов, которые не поддерживают передачу учетных данных, рекомендуется выбрать браузер для использования файлов cookie в приложениях.</p>
+        </note>
     </item>
     <item>
         <title>Тип файла</title>
@@ -94,6 +107,10 @@
         <note>
             <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
         </note>
+    </item>
+    <item>
+        <title>Exclude from History</title>
+        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
         <title>Временные рамки</title>

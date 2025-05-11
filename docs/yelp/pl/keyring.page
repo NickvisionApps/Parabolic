@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Lista kluczy 🔑</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -22,12 +22,14 @@
 
 <title>Lista kluczy</title>
 <p>Na tej stronie wyjaśniono wszystkie opcje potrzebne do używania Listy kluczy w <app>Parabolic</app>.</p>
+
 <section>
     <title>Backend</title>
     <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
     <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
     <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
+
 <section>
     <title>Przechowywanie danych logowania</title>
     <p>Oto pola, które mogą być przechowywane w danych logowania:</p>

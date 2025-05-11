@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Sťahovanie 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -26,12 +26,12 @@
 
 <terms>
     <item>
-		<title>Maximálny počet aktívnych stiahnutí</title>
-		<p>Počet aktívnych sťahovaní, ktoré môžu prebiehať súčasne. Musí to byť celočíselná hodnota od 1 do 10.</p>
+        <title>Maximálny počet aktívnych stiahnutí</title>
+        <p>Počet aktívnych sťahovaní, ktoré môžu prebiehať súčasne. Musí to byť celočíselná hodnota od 1 do 10.</p>
         <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, aplikácia Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
-		<note style="advanced">
-			<p>Predvolené: 5</p>
-		</note>
+        <note style="advanced">
+            <p>Predvolené: 5</p>
+        </note>
     </item>
     <item>
         <title>Prepísať existujúce súbory</title>
@@ -45,12 +45,12 @@
         </note>
     </item>
     <item>
-		<title>Limit znakov v názve súboru</title>
-		<p>Obmedzí znaky v názvoch súborov iba na znaky podporované systémom Windows.</p>
+        <title>Obmedziť znaky názvu súboru</title>
+        <p>Obmedzí znaky v názvoch súborov iba na znaky podporované systémom Windows.</p>
         <p>Táto možnosť je dostupná iba na systéme Linux.</p>
-		<note style="advanced">
-			<p>Predvolené: Vypnuté</p>
-		</note>
+        <note style="advanced">
+            <p>Predvolené: Vypnuté</p>
+        </note>
     </item>
     <item>
         <title>Pridanie ID média do názvu po overení</title>
@@ -68,7 +68,20 @@
     </item>
     <item>
         <title>Uprednostňovaný video kodek</title>
-        <p>Kodek videa, ktorý by mala aplikácia Parabolic preferovať pri výbere formátov médií na stiahnutie.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>Predvolené: Akýkoľvek</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>Predvolené: Akýkoľvek</p>
         </note>

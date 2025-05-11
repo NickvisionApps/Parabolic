@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">नया डाउनलोड 🆕</title>
 	<credit type="author copyright">
-		<name>निकोलस लोगोज़ो</name>
-		<years its:translate="no">2023-2024</years>
+            <name>निकोलस लोगोज़ो</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>निकोलस लोगोज़ो</name>
-		<years its:translate="no">2023-2024</years>
+            <name>निकोलस लोगोज़ो</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -26,13 +26,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Batch File Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>प्रमाणित करें</title>
         <p>यदि सक्षम किया गया है, तो डाउनलोड करते समय उपयोगकर्ता को yt-dlp को पास करने के लिए एक उपयोगकर्ता नाम और/या पासवर्ड प्रदान करने के लिए कहा जाएगा।</p>
         <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
-            <note style="advanced">
-                <p>सभी वेबसाइटें yt-dlp पर उपयोगकर्ता नाम और पासवर्ड भेजने का समर्थन नहीं करती हैं। उदाहरण के लिए, YouTube इस सुविधा का समर्थन नहीं करता है।</p>
-                <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
-            </note>
+         <note style="advanced">
+            <p>सभी वेबसाइटें yt-dlp पर उपयोगकर्ता नाम और पासवर्ड भेजने का समर्थन नहीं करती हैं। उदाहरण के लिए, YouTube इस सुविधा का समर्थन नहीं करता है।</p>
+            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+        </note>
     </item>
     <item>
         <title>फाइल प्रकार</title>
@@ -88,6 +101,10 @@
         <note>
             <p>पहले उपयोग की गई स्थिति को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
         </note>
+    </item>
+    <item>
+        <title>Exclude from History</title>
+        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
         <title>Time Frame</title>

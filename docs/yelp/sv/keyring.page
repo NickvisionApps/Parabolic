@@ -4,24 +4,26 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Nyckelring 🔑</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
 <title>Nyckelring</title>
 <p>Den här sidan förklarar alla alternativ för att använda nyckelringen i <app>Parabolic</app>.</p>
+
 <section>
     <title>Backend</title>
     <p>Nyckelringsfunktionen stöds av <code>libnick</code>- biblioteket.</p>
     <p>Det här biblioteket använder SQLCipher för att säkert lagra referenser på ett plattformsoberoende sätt.</p>
     <p>Biblioteket kommer att använda ditt systems behörighetshanterare (dvs. DBus secret service på Linux och Windows Credential Manager på Windows) för att säkra nyckelringdatabasfilen.</p>
 </section>
+
 <section>
     <title>Lagra inloggningsinformation</title>
     <p>Här är fälten som kan lagras i inloggningsinformationen:</p>

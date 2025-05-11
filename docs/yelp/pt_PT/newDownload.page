@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Novo Download 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -26,13 +26,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Batch File Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Autenticar</title>
         <p>Se ativado, o utilizador será solicitado a fornecer um nome de utilizador e/ou senha para passar ao yt-dlp durante o download.</p>
         <p>Se forem encontradas credenciais no keyring, o utilizador pode escolher entre uma lista de credenciais nomeadas para usar (ou continuar a inserir manualmente uma credencial)</p>
-            <note style="advanced">
-                <p>Nem todos os sites suportam passar nomes de utilizadores e senhas para yt-dlp. Por exemplo, o YouTube NÃO suporta esse recurso.</p>
-                <p>Para esses sites que não suportam a passagem de credenciais, é recomendável selecionar um navegador para usar cookies nas Preferências.</p>
-            </note>
+         <note style="advanced">
+            <p>Nem todos os sites suportam passar nomes de utilizadores e senhas para yt-dlp. Por exemplo, o YouTube NÃO suporta esse recurso.</p>
+            <p>Para esses sites que não suportam a passagem de credenciais, é recomendável selecionar um navegador para usar cookies nas Preferências.</p>
+        </note>
     </item>
     <item>
         <title>Tipo de Ficheiro</title>
@@ -88,6 +101,10 @@
         <note>
             <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
+    </item>
+    <item>
+        <title>Exclude from History</title>
+        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
         <title>Período de Tempo</title>

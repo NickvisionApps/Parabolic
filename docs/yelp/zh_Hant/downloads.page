@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">下載 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -26,12 +26,12 @@
 
 <terms>
     <item>
-		<title>同時最大下載數</title>
-		<p>同一時間最多有幾個項目正在下載。必須為 1 到 10 之間的整數。</p>
+        <title>同時最大下載數</title>
+        <p>同一時間最多有幾個項目正在下載。必須為 1 到 10 之間的整數。</p>
         <p>如果達到最大數量，Parabolic 將會把新的下載項目放到佇列區直到可以開始下載。</p>
-		<note style="advanced">
-			<p>預設值：5</p>
-		</note>
+        <note style="advanced">
+            <p>預設值：5</p>
+        </note>
     </item>
     <item>
         <title>取代現有檔案</title>
@@ -45,12 +45,12 @@
         </note>
     </item>
     <item>
-		<title>限制檔案名稱字元</title>
-		<p>限制只能使用支援 Windows 的檔案字元。</p>
+        <title>限制檔案名稱字元</title>
+        <p>限制只能使用支援 Windows 的檔案字元。</p>
         <p>這個選項只在 Linux 有提供。</p>
-		<note style="advanced">
-			<p>預設值：關閉</p>
-		</note>
+        <note style="advanced">
+            <p>預設值：關閉</p>
+        </note>
     </item>
     <item>
         <title>在驗證完畢後標題包含媒體 Id</title>
@@ -68,7 +68,20 @@
     </item>
     <item>
         <title>偏好的影片編碼</title>
-        <p>Parabolic 應該在下載的時候自動選擇哪一個影片編碼。</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>預設值：任意</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>預設值：任意</p>
         </note>

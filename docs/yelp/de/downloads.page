@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Downloads 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -20,12 +20,12 @@
 
 <terms>
     <item>
-		<title>Maximale Anzahl aktiver Downloads</title>
-		<p>Die Anzahl der aktiven Downloads, die gleichzeitig ausgeführt werden dürfen. Muss ein ganzzahliger Wert zwischen 1 und 10 sein.</p>
+        <title>Maximale Anzahl aktiver Downloads</title>
+        <p>Die Anzahl der aktiven Downloads, die gleichzeitig ausgeführt werden dürfen. Muss ein ganzzahliger Wert zwischen 1 und 10 sein.</p>
         <p>Wenn die maximale Anzahl aktiver Downloads erreicht ist, platziert Parabolic neue Downloads in einer Warteschlange, bis weitere Downloads ausgeführt werden können.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: 5</p>
-		</note>
+        <note style="advanced">
+            <p>Standardeinstellung: 5</p>
+        </note>
     </item>
     <item>
         <title>Vorhandene Dateien überschreiben</title>
@@ -39,12 +39,12 @@
         </note>
     </item>
     <item>
-		<title>Dateinamenzeichen begrenzen</title>
-		<p>Schränkt die Zeichen in Dateinamen auf die von Windows unterstützten Zeichen ein.</p>
+        <title>Dateinamenzeichen begrenzen</title>
+        <p>Schränkt die Zeichen in Dateinamen auf die von Windows unterstützten Zeichen ein.</p>
         <p>Diese Option ist nur unter Linux verfügbar.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Aus</p>
-		</note>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
     </item>
     <item>
         <title>Included Media Id in Title After Validation</title>
@@ -62,7 +62,20 @@
     </item>
     <item>
         <title>Bevorzugter Videocodec</title>
-        <p>Der Videocodec, den Parabolic bei der Auswahl der herunterzuladenden Medienformate bevorzugen soll.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>Default: Any</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>Default: Any</p>
         </note>
