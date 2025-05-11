@@ -62,7 +62,20 @@
     </item>
     <item>
         <title>Codec vidéo préféré</title>
-        <p>Le codec vidéo que Parabolic devrait préférer lors de la sélection de formats de médias à télécharger.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>Par défaut : N’importe lequel</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>Par défaut : N’importe lequel</p>
         </note>

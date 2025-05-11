@@ -50,6 +50,15 @@ namespace Nickvision::TubeConverter::Shared::Models
                     {
                         continue;
                     }
+                    AudioCodec preferredAudioCodec{ AudioCodec::Any };
+                    if(info["preferred_audio_codec"].is_int64())
+                    {
+                        preferredAudioCodec = static_cast<AudioCodec>(info["preferred_audio_codec"].as_int64());
+                    }
+                    if(f.getAudioCodec() && preferredAudioCodec != AudioCodec::Any && f.getAudioCodec().value() != preferredAudioCodec)
+                    {
+                        continue;
+                    }
                     m_formats.push_back(f);
                 }
             }

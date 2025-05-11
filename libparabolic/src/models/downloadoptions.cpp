@@ -401,6 +401,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--no-embed-chapters");
         }
+        std::string formatSort;
         //Force preferred video codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
@@ -416,9 +417,47 @@ namespace Nickvision::TubeConverter::Shared::Models
             case VideoCodec::H264:
                 vcodec += "h264";
                 break;
+            case VideoCodec::H265:
+                vcodec += "h265";
+                break;
             }
+            formatSort += vcodec;
+        }
+        //Force preferred audio codec sorting for playlist downloads to use as format selection is not available
+        if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
+        {
+            std::string acodec{ "acodec:" };
+            switch (downloaderOptions.getPreferredAudioCodec())
+            {
+            case AudioCodec::FLAC:
+                acodec += "flac";
+                break;
+            case AudioCodec::WAV:
+                acodec += "wav";
+                break;
+            case AudioCodec::OPUS:
+                acodec += "opus";
+                break;
+            case AudioCodec::AAC:
+                acodec += "aac";
+                break;
+            case AudioCodec::MP4A:
+                acodec += "mp4a";
+                break;
+            case AudioCodec::MP3:
+                acodec += "mp3";
+                break;
+            }
+            if(!formatSort.empty())
+            {
+                formatSort += ",";
+            }
+            formatSort += acodec;
+        }
+        if(!formatSort.empty())
+        {
             arguments.push_back("--format-sort");
-            arguments.push_back(vcodec);
+            arguments.push_back(formatSort);
             arguments.push_back("--format-sort-force");
         }
         if(m_fileType.isAudio())

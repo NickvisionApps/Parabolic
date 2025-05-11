@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-10 21:35-0400\n"
+"POT-Creation-Date: 2025-05-10 22:26-0400\n"
 "PO-Revision-Date: 2025-02-02 05:02+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -201,26 +201,26 @@ msgstr "{:.2f} Б/с"
 msgid "N/A"
 msgstr ""
 
-#: libparabolic/src/models/format.cpp:178
+#: libparabolic/src/models/format.cpp:222
 msgid "Audio Description"
 msgstr "Аудіоопис"
 
-#: libparabolic/src/models/format.cpp:196
+#: libparabolic/src/models/format.cpp:264
 #, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} ГіБ/с"
 
-#: libparabolic/src/models/format.cpp:200
+#: libparabolic/src/models/format.cpp:268
 #, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} МіБ/с"
 
-#: libparabolic/src/models/format.cpp:204
+#: libparabolic/src/models/format.cpp:272
 #, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} КіБ/с"
 
-#: libparabolic/src/models/format.cpp:208
+#: libparabolic/src/models/format.cpp:276
 #, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} Б/с"
@@ -361,7 +361,7 @@ msgid "Revert to Title"
 msgstr "Повернути до заголовка"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:169
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:337
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:339
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:233
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:323
@@ -369,14 +369,14 @@ msgid "Download"
 msgstr "Завантаження"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:192
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:366
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:368
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:287
 msgid "Select All"
 msgstr "Вибрати все"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:199
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:373
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:375
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:204
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:292
 msgid "Deselect All"
@@ -422,11 +422,11 @@ msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:324
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:326
 msgid "Playlist Items"
 msgstr "Елементи плейлиста"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:355
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:357
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
 msgid "Number Titles"
 msgstr "Пронумерувати заголовки"
@@ -566,7 +566,7 @@ msgstr "Історія"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:79
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:266
 msgid "Downloads"
 msgstr "Завантаження"
 
@@ -663,7 +663,7 @@ msgid "Retry Failed Downloads"
 msgstr "Повторити невдалу спробу завантаження"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:253
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:265
 msgid "User Interface"
 msgstr "Інтерфейс користувача"
 
@@ -792,39 +792,69 @@ msgstr "Переважний відеокодек"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:161
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:100
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:118
 msgid "Any"
 msgstr "Будь-який"
 
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
+msgid "H.264 (AVC)"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
+msgid "H.265 (HEVC)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:105
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:106
+#, fuzzy
+msgid "Preferred Audio Codec"
+msgstr "Переважний відеокодек"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:109
+#, fuzzy
+msgid "FLAC (ALAC)"
+msgstr "FLAC (Аудіо)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:110
+#, fuzzy
+msgid "WAV (AIFF)"
+msgstr "WAV (Аудіо)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:159
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:116
 msgid "Preferred Subtitle Format"
 msgstr "Бажаний формат субтитрів"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:255
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:267
 msgid "Downloader"
 msgstr "Завантажувач"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:125
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:137
 msgid "Verbose Logging"
 msgstr "Детальне журналювання"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:128
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:184
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:140
 msgid "Use SponsorBlock for YouTube"
 msgstr "Використовувати SponsorBlock для YouTube"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
 msgid "Speed Limit (KiB/s)"
 msgstr "Обмеження швидкості (КіБ/с)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:182
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:132
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:134
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:194
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
 "speed."
@@ -832,108 +862,108 @@ msgstr ""
 "Це обмеження застосовується лише до завантажень, для яких увімкнено "
 "обмеження швидкості завантаження."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:198
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:139
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:210
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
 msgid "Proxy URL"
 msgstr "Проксі URL"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:207
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:143
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:155
 msgid "Cookies from Browser"
 msgstr "Файли cookie з браузера"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:406
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:145
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:157
 msgid "None"
 msgstr "Немає"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
 msgid "Brave"
 msgstr "Brave"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:147
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:159
 msgid "Chrome"
 msgstr "Chrome"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:148
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:160
 msgid "Chromium"
 msgstr "Chromium"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:161
 msgid "Edge"
 msgstr "Edge"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:150
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:162
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:163
 msgid "Opera"
 msgstr "Opera"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:164
 msgid "Safari"
 msgstr "Safari"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:165
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:154
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:166
 msgid "Whale"
 msgstr "Whale"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:156
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:168
 msgid "Cookies File"
 msgstr "Файл cookie"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:144
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:159
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:232
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
 msgid "No file selected"
 msgstr "Файл не вибрано"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:164
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:440
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:243
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:176
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:455
 msgid "Select Cookies File"
 msgstr "Виберіть файл cookies"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:240
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:252
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:181
 msgid "Clear Cookies File"
 msgstr "Очистити файл cookie"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:268
 msgid "Converter"
 msgstr "Конвертер"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:253
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:184
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:265
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:196
 msgid "Embed Metadata"
 msgstr "Вставити метадані"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:187
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:199
 msgid "Remove Source Data"
 msgstr "Вилучити вихідні дані"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:188
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:276
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:200
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:202
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
@@ -941,14 +971,14 @@ msgstr ""
 "Якщо увімкнено, Parabolic очистить поля метаданих, що містять інформацію, "
 "яка ідентифікує завантаження."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:192
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:204
 msgid "Embed Thumbnails"
 msgstr "Вбудовані ескізи"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:193
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:195
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:205
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:207
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
@@ -956,32 +986,32 @@ msgstr ""
 "Якщо тип файлу не підтримує вбудовування, ескіз буде збережено окремим "
 "зображенням."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:197
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:297
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:209
 msgid "Crop Audio Thumbnails"
 msgstr "Обрізати мініатюри аудіо"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:198
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:200
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:298
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:210
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:212
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
 msgstr ""
 "Якщо увімкнено, Parabolic обрізає ескізи аудіофайлів до квадратної форми."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:202
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:308
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:214
 msgid "Embed Chapters"
 msgstr "Вставити розділи"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:305
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:205
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:217
 msgid "Embed Subtitles"
 msgstr "Вбудовані субтитри"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:206
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:208
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:318
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:218
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:220
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
@@ -989,34 +1019,34 @@ msgstr ""
 "Якщо вимкнено або вбудовування не підтримується, завантажені субтитри "
 "зберігатимуться окремим файлом."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:210
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:222
 msgid "Postprocessing Threads"
 msgstr "Потоки постобробки"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:325
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:337
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:269
 msgid "aria2"
 msgstr "aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:227
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:340
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:239
 msgid "Use aria2"
 msgstr "Використовувати aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:337
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:230
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:242
 msgid "Max Connections Per Server (-x)"
 msgstr "Максимальна кількість з'єднань на сервер (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:354
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:366
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:247
 msgid "Minimum Split Size (-k)"
 msgstr "Мінімальний розмір розділення (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:355
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:236
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:238
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:367
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:248
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:250
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Мінімальний розмір, на який потрібно розділити файл (у MiB)."
 
@@ -1109,9 +1139,9 @@ msgid "Select Batch File"
 msgstr "Вибрати пакетний файл"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:126
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:451
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:440
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:455
 msgid "TXT Files (*.txt)"
 msgstr "TXT файли (*.txt)"
 
@@ -1509,7 +1539,7 @@ msgstr "Вийти"
 
 #. Dialog Settings
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:317
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:330
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -1595,11 +1625,11 @@ msgstr "Системна"
 msgid "Automatically Check for Updates"
 msgstr "Автоматично перевіряти оновлення"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:143
 msgid "Speed Limit"
 msgstr "Обмеження швидкості"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:141
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
 msgid "Enter proxy url here"
 msgstr "Введіть URL-адресу проксі"
 

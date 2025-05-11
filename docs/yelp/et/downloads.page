@@ -62,7 +62,20 @@
     </item>
     <item>
         <title>Eelistatud videokoodek</title>
-        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>Default: Any</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>Default: Any</p>
         </note>

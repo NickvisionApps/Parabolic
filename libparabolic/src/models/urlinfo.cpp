@@ -25,6 +25,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 obj["include_media_id_in_title"] = info["include_media_id_in_title"];
                 obj["include_auto_generated_subtitles"] = info["include_auto_generated_subtitles"];
                 obj["preferred_video_codec"] = info["preferred_video_codec"];
+                obj["preferred_audio_codec"] = info["preferred_audio_codec"];
                 obj["suggested_save_folder"] = info["suggested_save_folder"];
                 obj["is_part_of_playlist"] = true;
                 obj["playlist_position"] = ++pos;

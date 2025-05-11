@@ -62,7 +62,20 @@
     </item>
     <item>
         <title>선호하는 비디오 코덱</title>
-        <p>미디어 형식을 다운로드할 때 Parabolic이 선호해야 하는 비디오 코덱입니다.</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>기본값: 아무거나</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>기본값: 아무거나</p>
         </note>

@@ -68,7 +68,20 @@
     </item>
     <item>
         <title>偏好的影片編碼</title>
-        <p>Parabolic 應該在下載的時候自動選擇哪一個影片編碼。</p>
+        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+        </note>
+        <note style="advanced">
+            <p>預設值：任意</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferred Audio Codec</title>
+        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <note>
+            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+        </note>
         <note style="advanced">
             <p>預設值：任意</p>
         </note>

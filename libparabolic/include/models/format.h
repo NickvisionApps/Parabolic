@@ -4,6 +4,7 @@
 #include <optional>
 #include <string>
 #include <boost/json.hpp>
+#include "audiocodec.h"
 #include "mediatype.h"
 #include "videocodec.h"
 #include "videoresolution.h"
@@ -63,6 +64,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::optional<VideoCodec>& getVideoCodec() const;
         /**
+         * @brief Gets the audio codec of the format.
+         * @return The audio codec of the format
+         */
+        const std::optional<AudioCodec>& getAudioCodec() const;
+        /**
          * @brief Gets the video resolution of the format.
          * @return The video resolution of the format
          */
@@ -113,6 +119,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::optional<std::string> m_audioLanguage;
         bool m_hasAudioDescription;
         std::optional<VideoCodec> m_videoCodec;
+        std::optional<AudioCodec> m_audioCodec;
         std::optional<VideoResolution> m_videoResolution;
     };
 }
