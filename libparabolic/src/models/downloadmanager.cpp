@@ -397,7 +397,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return UrlInfo{ batchFile.string(), batchFile.filename().stem().string(), urlInfos };
     }
 
-    void DownloadManager::addDownload(const DownloadOptions& options, bool recovered)
+    void DownloadManager::addDownload(const DownloadOptions& options, bool excludeFromHistory, bool recovered)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         //Build a Download object
@@ -406,7 +406,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         download->completed() += [this](const DownloadCompletedEventArgs& args){ onDownloadCompleted(args); };
         lock.unlock();
         //Add the download
-        addDownload(download, recovered);
+        addDownload(download, excludeFromHistory, recovered);
     }
 
     void DownloadManager::stopDownload(int id)
@@ -463,7 +463,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_completed.erase(id);
             lock.unlock();
             m_downloadRetried.invoke(id);
-            addDownload(download);
+            addDownload(download, true);
         }
     }
 
@@ -533,7 +533,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return cleared;
     }
 
-    void DownloadManager::addDownload(const std::shared_ptr<Download>& download, bool recovered)
+    void DownloadManager::addDownload(const std::shared_ptr<Download>& download, bool excludeFromHistory, bool recovered)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         if(!recovered)
@@ -553,7 +553,10 @@ namespace Nickvision::TubeConverter::Shared::Models
             lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getUrl(), download->getStatus() });
         }
-        m_history.addDownload({ download->getUrl(), download->getPath().filename().stem().string(), download->getPath() });
+        if(!excludeFromHistory)
+        {
+            m_history.addDownload({ download->getUrl(), download->getPath().filename().stem().string(), download->getPath() });
+        }
     }
 
     void DownloadManager::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
