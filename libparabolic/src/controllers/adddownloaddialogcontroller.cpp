@@ -1,5 +1,4 @@
 #include "controllers/adddownloaddialogcontroller.h"
-#include <algorithm>
 #include <format>
 #include <thread>
 #include <libnick/helpers/stringhelpers.h>
@@ -271,7 +270,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::thread worker{ [this, batchFile, credential]()
         {
             m_credential = credential;
-            m_urlInfo = m_downloadManager.fetchUrlInfoFromBatchFile(batchFile, m_credential);
+            m_urlInfo = m_downloadManager.fetchUrlInfo(batchFile, m_credential);
             m_urlValidated.invoke({ isUrlValid() });
         } };
         worker.detach();
