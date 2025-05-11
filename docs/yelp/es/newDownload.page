@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Descarga nueva 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-202</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Autenticar</title>
         <p>Si se activa, se pedirá al usuario que proporcione un nombre de usuario y/o una contraseña para pasárselos a yt-dlp al descargar.</p>
         <p>Si las credenciales se encuentran en el llavero, el usuario puede elegir entre una lista de credenciales con nombre para usarlas (o continuar introduciendo manualmente una credencial)</p>
-            <note style="advanced">
-                <p>No todos los sitios web admiten la transmisión de nombres de usuario y contraseñas a yt-dlp. Por ejemplo, YouTube NO admite esta función.</p>
-                <p>Para estos sitios que no admiten la transmisión de credenciales, se recomienda seleccionar un navegador desde el que usar las cookies en Preferencias.</p>
-            </note>
+         <note style="advanced">
+            <p>No todos los sitios web admiten la transmisión de nombres de usuario y contraseñas a yt-dlp. Por ejemplo, YouTube NO admite esta función.</p>
+            <p>Para estos sitios que no admiten la transmisión de credenciales, se recomienda seleccionar un navegador desde el que usar las cookies en Preferencias.</p>
+        </note>
     </item>
     <item>
         <title>Tipo de archivo</title>

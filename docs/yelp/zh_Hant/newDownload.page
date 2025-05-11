@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">新的下載 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-202</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>驗證</title>
         <p>開啟後，下載時使用者將被索取使用者名稱和 (或) 密碼並傳遞給 yt-dlp。</p>
         <p>在金鑰圈裡面找到身份驗證資訊時，使用者可以從已被命名的身份驗證選擇使用 (或是繼續手動輸入)</p>
-            <note style="advanced">
-                <p>不是所有網站都支援傳遞使用者帳號和密碼到 yt-dlp。像是 YouTube 就不支援這個功能。</p>
-                <p>對那些不支援傳遞身份驗證的網站，可以改由偏好設定裡面選擇瀏覽器來使用 cookies。</p>
-            </note>
+         <note style="advanced">
+            <p>不是所有網站都支援傳遞使用者帳號和密碼到 yt-dlp。像是 YouTube 就不支援這個功能。</p>
+            <p>對那些不支援傳遞身份驗證的網站，可以改由偏好設定裡面選擇瀏覽器來使用 cookies。</p>
+        </note>
     </item>
     <item>
         <title>檔案類型</title>

@@ -4,24 +4,26 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Chaveiro</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
 <title>Chaveiro</title>
 <p>Esta páxina explica todas as opcións para empregar o Chaveiro no <app>Parabolic</app>.</p>
+
 <section>
     <title>Infraestrutura</title>
     <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
     <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
     <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
+
 <section>
     <title>Storing a Credential</title>
     <p>Here are the fields that can be stored in a credential:</p>

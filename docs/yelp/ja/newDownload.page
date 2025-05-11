@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">新規ダウンロード 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-202</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>認証</title>
         <p>有効であれば、ダウンロード時に yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
         <p>資格情報がキーリング内で見つかると、ユーザーは使いたい資格情報をリスト内から選択することができます（手動で資格情報を入力することもできます）</p>
-            <note style="advanced">
-                <p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能をサポートしていません。</p>
-                <p>これらのサイトでは資格情報の受け渡しに対応していません。代わりに設定でクッキーを使うブラウザを選択することをお勧めします。</p>
-            </note>
+         <note style="advanced">
+            <p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能をサポートしていません。</p>
+            <p>これらのサイトでは資格情報の受け渡しに対応していません。代わりに設定でクッキーを使うブラウザを選択することをお勧めします。</p>
+        </note>
     </item>
     <item>
         <title>ファイルの種類</title>

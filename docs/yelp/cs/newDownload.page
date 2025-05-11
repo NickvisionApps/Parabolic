@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Nové stahování 🆕</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-202</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Přihlášení</title>
         <p>Pokud je tato funkce povolena, bude uživatel vyzván k zadání uživatelského jména a/nebo hesla, které bude předáno službě yt-dlp při stahování.</p>
         <p>Při nalezení údajů v klíčence si může uživatel namísto toho vybrat ze seznamu pojmenovaných údajů k použití (nebo pokračovat k ručnímu zadání údaje)</p>
-            <note style="advanced">
-                <p>Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do yt-dlp. Například YouTube tuto funkci NEpodporuje.</p>
-                <p>U těchto webů, které nepodporují předávání přihlašovacích údajů, je doporučeno v předvolbách vybrat prohlížeč, ze kterého mají být použity soubory cookie.</p>
-            </note>
+         <note style="advanced">
+            <p>Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do yt-dlp. Například YouTube tuto funkci NEpodporuje.</p>
+            <p>U těchto webů, které nepodporují předávání přihlašovacích údajů, je doporučeno v předvolbách vybrat prohlížeč, ze kterého mají být použity soubory cookie.</p>
+        </note>
     </item>
     <item>
         <title>Typ souboru</title>

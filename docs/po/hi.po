@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-04-26 23:41-0400\n"
+"POT-Creation-Date: 2025-05-10 21:10-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -97,7 +97,7 @@ msgstr ""
 "दिए गए <code>-x</code> ध्वज के समान है।"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/aria.page:37
+#: docs/yelp/C/aria.page:35
 msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
@@ -106,17 +106,17 @@ msgstr ""
 "मान होना चाहिए।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:39
+#: docs/yelp/C/aria.page:37
 msgid "Default: 16"
 msgstr "डिफ़ॉल्ट: 16"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/aria.page:43
+#: docs/yelp/C/aria.page:41
 msgid "Minimum Split Size"
 msgstr "न्यूनतम विभाजन आकार"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/aria.page:44
+#: docs/yelp/C/aria.page:42
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
@@ -125,7 +125,7 @@ msgstr ""
 "दिए गए <code>-k</code> ध्वज के समान है।"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/aria.page:47
+#: docs/yelp/C/aria.page:43
 msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
@@ -134,7 +134,7 @@ msgstr ""
 "मान होना चाहिए।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/aria.page:49
+#: docs/yelp/C/aria.page:45
 msgid "Default: 20"
 msgstr "डिफ़ॉल्ट: 20"
 
@@ -802,18 +802,18 @@ msgstr ""
 "है।"
 
 #. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:23
+#: docs/yelp/C/keyring.page:24
 msgid "Backend"
 msgstr "Backend"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:24
+#: docs/yelp/C/keyring.page:25
 #, fuzzy
 msgid "The Keyring feature is backed by the <code>libnick</code> library."
 msgstr "कीरिंग सुविधा <code>Nickvision.Aura</code> लाइब्रेरी द्वारा समर्थित है।"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:25
+#: docs/yelp/C/keyring.page:26
 msgid ""
 "This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
@@ -822,7 +822,7 @@ msgstr ""
 "SQLCipher का उपयोग करती है।"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:26
+#: docs/yelp/C/keyring.page:27
 #, fuzzy
 msgid ""
 "The library will use your system's credential manager (i.e. DBus secret "
@@ -833,27 +833,27 @@ msgstr ""
 "DBus गुप्त सेवा और Windows पर Windows क्रेडेंशियल मैनेजर) का उपयोग करेगी।"
 
 #. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:29
+#: docs/yelp/C/keyring.page:31
 msgid "Storing a Credential"
 msgstr "क्रेडेंशियल संग्रहीत किया जा रहा है"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:30
+#: docs/yelp/C/keyring.page:32
 msgid "Here are the fields that can be stored in a credential:"
 msgstr "यहां वे फ़ील्ड हैं जिन्हें क्रेडेंशियल में संग्रहीत किया जा सकता है:"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:31
+#: docs/yelp/C/keyring.page:33
 msgid "<code>Name</code>: The name of the credential"
 msgstr "<code>नाम</code>: क्रेडेंशियल का नाम"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:32
+#: docs/yelp/C/keyring.page:34
 msgid "<code>URL</code> (optional): The URL of the credential"
 msgstr "<code>URL</code> (वैकल्पिक): क्रेडेंशियल का URL"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:33
+#: docs/yelp/C/keyring.page:35
 msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
@@ -862,7 +862,7 @@ msgstr ""
 "उपयोगकर्ता नाम"
 
 #. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:34
+#: docs/yelp/C/keyring.page:36
 msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
@@ -915,11 +915,60 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:32
+msgid "Use Batch File"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:33
+msgid "Select a batch text file that contains a list of URLs to validate."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:34
+msgid ""
+"Each URL can be accompanied by an optional save folder to save said URL's "
+"media to."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:35
+msgid ""
+"All of the URLs and their media will be grouped and treated as one single "
+"playlist by Parabolic."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:37
+msgid "Format:"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:38
+msgid "<code>URL1</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:39
+msgid "<code>URL2 ; \"Folder1\"</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:40
+msgid "<code>URL3;\"Folder2\"</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:41
+msgid "<code>\"URL4\"</code>"
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:45
 msgid "Authenticate"
 msgstr "प्रमाणित करें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:33
+#: docs/yelp/C/newDownload.page:46
 msgid ""
 "If enabled, the user will be asked to provide a username and/or password to "
 "pass to yt-dlp when downloading."
@@ -928,7 +977,7 @@ msgstr ""
 "एक उपयोगकर्ता नाम और/या पासवर्ड प्रदान करने के लिए कहा जाएगा।"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:34
+#: docs/yelp/C/newDownload.page:47
 #, fuzzy
 msgid ""
 "If credentials are found in the keyring, the user can instead chose from a "
@@ -939,7 +988,7 @@ msgstr ""
 "सकता है।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:36
+#: docs/yelp/C/newDownload.page:49
 msgid ""
 "Not all websites support passing usernames and passwords to yt-dlp. For "
 "example, YouTube does NOT support this feature."
@@ -948,7 +997,7 @@ msgstr ""
 "के लिए, YouTube इस सुविधा का समर्थन नहीं करता है।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:37
+#: docs/yelp/C/newDownload.page:50
 #, fuzzy
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
@@ -958,17 +1007,17 @@ msgstr ""
 "कुकीज़ फाइल अपलोड करने की अनुशंसा की जाती है।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:41
+#: docs/yelp/C/newDownload.page:54
 msgid "File Type"
 msgstr "फाइल प्रकार"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:42
+#: docs/yelp/C/newDownload.page:55
 msgid "The file type of which to download the media as."
 msgstr "वह फाइल प्रकार जिसके रूप में मीडिया को डाउनलोड करना है।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:44
+#: docs/yelp/C/newDownload.page:57
 msgid ""
 "The previously used file type will be remembered and pre-selected for the "
 "next download."
@@ -977,7 +1026,7 @@ msgstr ""
 "किया जाएगा।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:47
+#: docs/yelp/C/newDownload.page:60
 msgid ""
 "Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> "
 "file types will cause Parabolic to download the media in the original file "
@@ -985,32 +1034,32 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:51
+#: docs/yelp/C/newDownload.page:64
 msgid "Video Format"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:52
+#: docs/yelp/C/newDownload.page:65
 msgid ""
 "The list of video formats available for download, sorted by resolution and "
 "bitrate."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:53
+#: docs/yelp/C/newDownload.page:66
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:54
+#: docs/yelp/C/newDownload.page:67
 #, fuzzy
 msgid "If the file type is an audio type, this option will not be available."
 msgstr ""
 "यदि फाइल प्रकार एक वीडियो प्रकार है, तो सूचीबद्ध गुण उपलब्ध मीडिया के रिज़ॉल्यूशन होंगे।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:56
+#: docs/yelp/C/newDownload.page:69
 #, fuzzy
 msgid ""
 "The previously used video format will be remembered and pre-selected for the "
@@ -1020,22 +1069,22 @@ msgstr ""
 "जाएगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:60
+#: docs/yelp/C/newDownload.page:73
 msgid "Audio Format"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:61
+#: docs/yelp/C/newDownload.page:74
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:62
+#: docs/yelp/C/newDownload.page:75
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:64
+#: docs/yelp/C/newDownload.page:77
 #, fuzzy
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
@@ -1045,13 +1094,13 @@ msgstr ""
 "जाएगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:81
 #, fuzzy
 msgid "Subtitles"
 msgstr "उपशीर्षक सन्निहित करें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:69
+#: docs/yelp/C/newDownload.page:82
 #, fuzzy
 msgid ""
 "The list of subtitles available by the media that can be selected for "
@@ -1063,7 +1112,7 @@ msgstr ""
 "है।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:71
+#: docs/yelp/C/newDownload.page:84
 #, fuzzy
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
@@ -1073,12 +1122,12 @@ msgstr ""
 "जाएगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:88
 msgid "Split Chapters"
 msgstr "अध्याय विभाजित करें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:76
+#: docs/yelp/C/newDownload.page:89
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
@@ -1088,8 +1137,8 @@ msgstr ""
 "हिस्सों में विभाजित कर देगा।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:78 docs/yelp/C/newDownload.page:85
-#: docs/yelp/C/newDownload.page:92
+#: docs/yelp/C/newDownload.page:91 docs/yelp/C/newDownload.page:98
+#: docs/yelp/C/newDownload.page:105
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1098,13 +1147,13 @@ msgstr ""
 "जाएगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:95
 #, fuzzy
 msgid "Limit Download Speed"
 msgstr "डाउनलोडर"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:83
+#: docs/yelp/C/newDownload.page:96
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
@@ -1114,12 +1163,12 @@ msgstr ""
 "डाउनलोड की गति को सीमित कर देगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:102
 msgid "Export Description"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:90
+#: docs/yelp/C/newDownload.page:103
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
@@ -1129,12 +1178,12 @@ msgstr ""
 "<code>थंबनेल काटें</code> चालू कर देगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:109
 msgid "Time Frame"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:97
+#: docs/yelp/C/newDownload.page:110
 #, fuzzy
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
@@ -1144,23 +1193,23 @@ msgstr ""
 "प्रारंभ समय सीमा और समाप्ति समय सीमा दर्ज करने में सक्षम होगा।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:99
+#: docs/yelp/C/newDownload.page:112
 #, fuzzy
 msgid "Default: The whole media length"
 msgstr "डिफ़ॉल्ट: मीडिया का शीर्षक"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:116
 msgid "Save Folder"
 msgstr "फोल्डर सहेजें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:104
+#: docs/yelp/C/newDownload.page:117
 msgid "The folder at which to save the download to."
 msgstr "वह फोल्डर जिसमें डाउनलोड को सहेजना है।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
+#: docs/yelp/C/newDownload.page:119
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1169,17 +1218,17 @@ msgstr ""
 "जाएगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:123
 msgid "File Name"
 msgstr "फाइल नाम"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:124
 msgid "The file name to use when saving the download."
 msgstr "डाउनलोड को सहेजते समय उपयोग किया जाने वाला फाइल नाम।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:126
 msgid "Default: The title of the media"
 msgstr "डिफ़ॉल्ट: मीडिया का शीर्षक"
 

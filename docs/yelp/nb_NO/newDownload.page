@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Ny nedlasting</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+            <name>Nicholas Logozzo</name>
+            <years its:translate="no">2023-202</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -32,13 +32,26 @@
         </note>
     </item>
     <item>
+        <title>Use Batch File</title>
+        <p>Select a batch text file that contains a list of URLs to validate.</p>
+        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
+        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <note style="advanced">
+            <p>Format:</p>
+            <p><code>URL1</code></p>
+            <p><code>URL2 ; "Folder1"</code></p>
+            <p><code>URL3;"Folder2"</code></p>
+            <p><code>"URL4"</code></p>
+        </note>
+    </item>
+    <item>
         <title>Autentisering</title>
         <p>Hvis dette er på, vil det kunne oppgis brukernavn og passord til nedlastingen.</p>
         <p>Hvis nøkkelringen inneholder lagrede innlogginger, er det mulig å velge fra disse i stedet for å oppgi informasjon manuelt.</p>
-            <note style="advanced">
-                <p>Autentisering på denne måten fungerer ikke med alle nettsteder. For eksempel kan ikke Parabolic sende innloggingsinformasjon til YouTube.</p>
-                <p>I tilfeller hvor nettsteder ikke støtter direkte autentisering, kan det brukes informasjonskapsler fra en nettleser i stedet. Gå til Innstillinger for å sette opp dette.</p>
-            </note>
+         <note style="advanced">
+            <p>Autentisering på denne måten fungerer ikke med alle nettsteder. For eksempel kan ikke Parabolic sende innloggingsinformasjon til YouTube.</p>
+            <p>I tilfeller hvor nettsteder ikke støtter direkte autentisering, kan det brukes informasjonskapsler fra en nettleser i stedet. Gå til Innstillinger for å sette opp dette.</p>
+        </note>
     </item>
     <item>
         <title>Filtype</title>

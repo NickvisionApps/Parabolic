@@ -347,21 +347,29 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(line.find(';') != std::string::npos)
             {
                 std::vector<std::string> fields{ StringHelpers::split(line, ';', false) };
-                if(fields.size() != 2)
+                if(fields.size() != 1 && fields.size() != 2)
                 {
                     continue;
                 }
                 fields[0] = StringHelpers::trim(fields[0]);
-                fields[1] = StringHelpers::trim(fields[1]);
-                fields[1] = StringHelpers::trim(fields[1], '"');
+                fields[0] = StringHelpers::trim(fields[0], '"');
+                fields[0] = StringHelpers::trim(fields[0]);
+                if(fields.size() == 2)
+                {
+                    fields[1] = StringHelpers::trim(fields[1]);
+                    fields[1] = StringHelpers::trim(fields[1], '"');
+                    fields[1] = StringHelpers::trim(fields[1]);
+                }
                 if(!StringHelpers::isValidUrl(fields[0]))
                 {
                     continue;
                 }
-                urls.push_back({ fields[0], fields[1] });
+                urls.push_back({ fields[0], fields.size() == 2 ? fields[1] : "" });
             }
             else
             {
+                line = StringHelpers::trim(line);
+                line = StringHelpers::trim(line, '"');
                 line = StringHelpers::trim(line);
                 if(!StringHelpers::isValidUrl(line))
                 {

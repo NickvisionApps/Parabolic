@@ -4,12 +4,12 @@
 	<link type="guide" xref="index"/>
 	<title type="link">キーリング 🔑</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023-2024</years>
+	    <name>Nicholas Logozzo</name>
+	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -22,12 +22,14 @@
 
 <title>キーリング</title>
 <p>このページでは <app>Parabolic</app> でキーリングを使う際のすべてのオプションについて説明します。</p>
+
 <section>
     <title>バックエンド</title>
     <p>キーリング機能には、<code>libnick</code> ライブラリが使用されています。</p>
     <p>このライブラリには、資格情報を安全に保管するために隔離されたSQLCipherデータベースを使っています。</p>
     <p>このライブラリでは、システムの資格情報管理機能( Linux は DBus secret service、Windows では Windows Credential Manager 等)を使ってキーリングのデータベースファイルを保護しています。</p>
 </section>
+
 <section>
     <title>資格情報を保管する</title>
     <p>これらの情報が資格情報の中に保存されます：</p>
