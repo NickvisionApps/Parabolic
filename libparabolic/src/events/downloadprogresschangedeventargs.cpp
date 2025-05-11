@@ -14,7 +14,11 @@ namespace Nickvision::TubeConverter::Shared::Events
     {
         static constexpr double pow2{ 1024 * 1024 };
         static constexpr double pow3{ 1024 * 1024 * 1024 };
-        if(m_speed > pow3)
+        if(m_speed == 0)
+        {
+            m_speedStr = _("0 B/s");
+        }
+        else if(m_speed > pow3)
         {
             m_speedStr = _f("{:.2f} GiB/s", m_speed / pow3);
         }

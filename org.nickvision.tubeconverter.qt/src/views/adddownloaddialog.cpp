@@ -261,6 +261,10 @@ namespace Ui
             btnSelectSaveFolderPlaylist->setDefault(false);
             btnSelectSaveFolderPlaylist->setIcon(QLEMENTINE_ICON(File_FolderOpen));
             btnSelectSaveFolderPlaylist->setToolTip(_("Select Save Folder"));
+            QLabel* lblIgnoreSaveFolderPlaylist{ new QLabel(parent) };
+            lblIgnoreSaveFolderPlaylist->setWordWrap(true);
+            lblIgnoreSaveFolderPlaylist->setSizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Preferred);
+            lblIgnoreSaveFolderPlaylist->setText(_("Will be ignored for media in batch files that provide save folder paths."));
             QHBoxLayout* layoutSaveFolderPlaylist{ new QHBoxLayout() };
             layoutSaveFolderPlaylist->addWidget(txtSaveFolderPlaylist);
             layoutSaveFolderPlaylist->addWidget(btnSelectSaveFolderPlaylist);
@@ -270,6 +274,7 @@ namespace Ui
             layoutGeneralPlaylist->addRow(lblLimitSpeedPlaylist, chkLimitSpeedPlaylist);
             layoutGeneralPlaylist->addRow(lblExportDescriptionPlaylist, chkExportDescriptionPlaylist);
             layoutGeneralPlaylist->addRow(lblSaveFolderPlaylist, layoutSaveFolderPlaylist);
+            layoutGeneralPlaylist->addRow(nullptr, lblIgnoreSaveFolderPlaylist);
             QWidget* generalPagePlaylist{ new QWidget(parent) };
             generalPagePlaylist->setLayout(layoutGeneralPlaylist);
             QLabel* lblNumberTitlesPlaylist{ new QLabel(parent) };

@@ -304,6 +304,21 @@ Adw.Dialog root {
                 styles ["flat"]
               }
 
+              [suffix]
+              Gtk.MenuButton {
+                valign: center;
+                icon-name: "dialog-warning-symbolic";
+                popover: Gtk.Popover {
+                  child: Gtk.Label {
+                    label: _("Will be ignored for media in batch files that provide save folder paths.");
+                    wrap: true;
+                    wrap-mode: word;
+                  };
+                };
+
+                styles ["flat"]
+              }
+
               styles ["property"]
             }
 
