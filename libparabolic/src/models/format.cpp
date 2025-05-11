@@ -312,7 +312,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(m_audioCodec)
         {
-            json["AudioCodec"] = static_cast<int>(*m_videoCodec);
+            json["AudioCodec"] = static_cast<int>(*m_audioCodec);
         }
         if(m_videoResolution)
         {
