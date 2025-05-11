@@ -426,6 +426,16 @@ namespace Nickvision::TubeConverter::Qt::Views
         delete m_ui;
     }
 
+    void AddDownloadDialog::closeEvent(QCloseEvent* event)
+    {
+        if(m_ui->viewStack->currentIndex() == AddDownloadDialogPage::Loading)
+        {
+            event->ignore();
+            return;
+        }
+        event->accept();
+    }
+
     void AddDownloadDialog::onTxtUrlChanged(const QString& text)
     {
         m_ui->btnValidate->setEnabled(StringHelpers::isValidUrl(text.toStdString()));

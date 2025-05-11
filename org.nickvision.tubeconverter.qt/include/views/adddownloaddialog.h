@@ -2,6 +2,7 @@
 #define ADDDOWNLOADDIALOG_H
 
 #include <memory>
+#include <QCloseEvent>
 #include <QDialog>
 #include "controllers/adddownloaddialogcontroller.h"
 
@@ -28,6 +29,13 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Destructs an AddDownloadDialog.
          */
         ~AddDownloadDialog();
+
+    protected:
+        /**
+         * @brief Handles when the window is closed.
+         * @param event QCloseEvent
+         */
+        void closeEvent(QCloseEvent* event) override;
 
     private Q_SLOTS:
         /**
