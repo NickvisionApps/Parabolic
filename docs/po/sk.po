@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-05-10 23:06-0400\n"
-"PO-Revision-Date: 2025-05-08 17:01+0000\n"
-"Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/sk/>\n"
+"PO-Revision-Date: 2025-05-12 19:03+0000\n"
+"Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,7 +16,7 @@ msgstr ""
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Jozef Gaal <preklady@mayday.sk>, 2024"
+msgstr "Jozef Gaal <preklady@mayday.sk>, 2024, 2025"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/aria.page:8
@@ -605,12 +605,11 @@ msgstr "Uprednostňovaný video kodek"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:68
-#, fuzzy
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
-"Kodek videa, ktorý by mala aplikácia Parabolic preferovať pri výbere "
+"Kodek videa, ktorý by mala aplikácia Parabolic uprednostniť pri analýze "
 "formátov médií na stiahnutie."
 
 #. (itstool) path: note/p
@@ -619,6 +618,8 @@ msgid ""
 "If Parabolic cannot find any formats with the selected preferred codec, no "
 "video formats will be available for download."
 msgstr ""
+"Ak aplikácia Parabolic nenájde žiadne formáty s vybraným uprednostňovaným "
+"kodekom, nebudú k dispozícii žiadne formáty videa na stiahnutie."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:73 docs/yelp/C/downloads.page:83
@@ -628,18 +629,16 @@ msgstr "Predvolené: Akýkoľvek"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:77
-#, fuzzy
 msgid "Preferred Audio Codec"
-msgstr "Uprednostňovaný video kodek"
+msgstr "Uprednostňovaný audio kodek"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:78
-#, fuzzy
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
-"Kodek videa, ktorý by mala aplikácia Parabolic preferovať pri výbere "
+"Zvukový kodek, ktorý by mala aplikácia Parabolic uprednostniť pri analýze "
 "formátov médií na stiahnutie."
 
 #. (itstool) path: note/p
@@ -648,6 +647,8 @@ msgid ""
 "If Parabolic cannot find any formats with the selected preferred codec, no "
 "audio formats will be available for download."
 msgstr ""
+"Ak aplikácia Parabolic nenájde žiadne formáty s vybraným uprednostňovaným "
+"kodekom, nebudú k dispozícii žiadne zvukové formáty na stiahnutie."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:87
@@ -958,12 +959,13 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:32
 msgid "Use Batch File"
-msgstr ""
+msgstr "Použiť dávkový súbor"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:33
 msgid "Select a batch text file that contains a list of URLs to validate."
 msgstr ""
+"Vyberte dávkový textový súbor, ktorý obsahuje zoznam URL adries na overenie."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
@@ -971,6 +973,8 @@ msgid ""
 "Each URL can be accompanied by an optional save folder to save said URL's "
 "media to."
 msgstr ""
+"Ku každej adrese URL môže byť pripojený voliteľný priečinok na uloženie "
+"médií z uvedenej URL adresy."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:35
@@ -978,32 +982,33 @@ msgid ""
 "All of the URLs and their media will be grouped and treated as one single "
 "playlist by Parabolic."
 msgstr ""
+"Všetky URL adresy a ich médiá budú zoskupené a spracované ako jeden zoznam "
+"skladieb v aplikácii Parabolic."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:37
-#, fuzzy
 msgid "Batch File Format:"
-msgstr "Formát videa"
+msgstr "Formát dávkového súboru:"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:38
 msgid "<code>URL1</code>"
-msgstr ""
+msgstr "<code>URL1</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:39
 msgid "<code>URL2 ; \"Folder1\"</code>"
-msgstr ""
+msgstr "<code>URL2 ; \"Priečinok1\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:40
 msgid "<code>URL3;\"Folder2\"</code>"
-msgstr ""
+msgstr "<code>URL3;\"Priečinok2\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:41
 msgid "<code>\"URL4\"</code>"
-msgstr ""
+msgstr "<code>\"URL4\"</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:45
@@ -1222,17 +1227,16 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:109
 msgid "Exclude from History"
-msgstr ""
+msgstr "Vylúčiť z histórie"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:110
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
 "downloads."
 msgstr ""
-"Ak je táto možnosť zapnutá, aplikácia Parabolic použije rozšírenie "
-"SponsorBlock na sťahovanie z YouTube."
+"Ak je táto možnosť zapnutá, Parabolic vylúči sťahovanie zo zoznamu minulých "
+"stiahnutí."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:113
