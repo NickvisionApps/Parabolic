@@ -386,7 +386,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back("--write-thumbnail");
             }
             arguments.push_back("--convert-thumbnails");
-            arguments.push_back("jpg");
+            arguments.push_back("png>png/jpg");
             if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
             {
                 arguments.push_back("--postprocessor-args");
