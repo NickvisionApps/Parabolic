@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-14 06:24-0400\n"
-"PO-Revision-Date: 2025-05-08 17:01+0000\n"
+"POT-Creation-Date: 2025-05-10 23:06-0400\n"
+"PO-Revision-Date: 2025-05-14 21:02+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -117,7 +117,6 @@ msgid "translator-credits"
 msgstr "حقوق-المترجم"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "تم إسترداد كل الملفات"
@@ -172,7 +171,7 @@ msgstr "إكتملت التنزيلات"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
-msgstr ""
+msgstr "0 بايت/ثانية"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
 msgid "{:.2f} GiB/s"
@@ -192,7 +191,7 @@ msgstr "{:.2f} بايت/ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:37
 msgid "N/A"
-msgstr ""
+msgstr "غير معروف"
 
 #: libparabolic/src/models/format.cpp:222
 msgid "Audio Description"
@@ -214,11 +213,11 @@ msgstr "{:.2f} كيلوبايت"
 msgid "{:.2f} B"
 msgstr "{:.2f} بايت"
 
-#: libparabolic/src/models/download.cpp:146
+#: libparabolic/src/models/download.cpp:123
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "خلل: الملف موجود بالفعل والكتابة وخاصية الكتابة فوقه معطلة."
 
-#: libparabolic/src/models/download.cpp:209
+#: libparabolic/src/models/download.cpp:186
 msgid "Starting download..."
 msgstr "جاري بدء التنزيل..."
 
@@ -394,9 +393,8 @@ msgstr "صدّر وصف المقطع"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:298
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:177
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:259
-#, fuzzy
 msgid "Exclude from History"
-msgstr "مسح السجل"
+msgstr "يُستثنى من السجل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:180
@@ -417,7 +415,7 @@ msgstr "وقت النهاية"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:274
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
-msgstr ""
+msgstr "سيُتجاهل للمرئيات الموجودة بملفات الدفعة المتضمنة لمناطق الحفظ بالمجلد."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:334
 msgid "Playlist Items"
@@ -447,7 +445,7 @@ msgstr "عرض السجل"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:58
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:295
 msgid "Pause"
-msgstr ""
+msgstr "إيقاف مؤقت"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
@@ -768,8 +766,7 @@ msgstr "الحد من أحرف اسم المِلَفّ"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:88
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:90
 msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr ""
-"يقتصر استخدام الأحرف في أسماء الملفات على تلك المدعومة من قبل ويندوز فقط."
+msgstr "يقتصر استخدام الأحرف في أسماء الملفات على ماتدعمه ويندوز فقط."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
@@ -798,28 +795,25 @@ msgstr "أي"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
 msgid "H.264 (AVC)"
-msgstr ""
+msgstr "ترميز H.264"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
 msgid "H.265 (HEVC)"
-msgstr ""
+msgstr "ترميز H.265"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:106
-#, fuzzy
 msgid "Preferred Audio Codec"
-msgstr "ترميز الفيديو المفضل"
+msgstr "ترميز الصوت المفضل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:109
-#, fuzzy
 msgid "FLAC (ALAC)"
 msgstr "FLAC (صوت)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:110
-#, fuzzy
 msgid "WAV (AIFF)"
 msgstr "WAV (صوت)"
 
@@ -837,7 +831,7 @@ msgstr "المحمّل"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:137
 msgid "Verbose Logging"
-msgstr "التسجيل المفصل"
+msgstr "تسجيل الإطناب"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:184
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:140
@@ -1073,7 +1067,7 @@ msgstr "جاري التشغيل"
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
 msgid "{} | {} | ETA: {}"
-msgstr ""
+msgstr "{} | {} | الوقت المُقدّر: {}"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
@@ -1107,12 +1101,12 @@ msgstr "تم التوقف"
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:281
 msgid "Paused"
-msgstr ""
+msgstr "تم الإيقاف بشكل مؤقت"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:289
 msgid "Resume"
-msgstr ""
+msgstr "إستأنف"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
@@ -1176,7 +1170,7 @@ msgid ""
 "image and subtitle files from being written to disk."
 msgstr ""
 "أنواع الملفات العامة لاتدعم دمج صور العرض والترجمات. \n"
-"رجاءً إختر نوع ملف داعم للدمج لتجنب حفظ ملفات الترجمة والصور بشكل مستقل "
+"يرجى إختيار نوع ملف داعم للدمج لتجنب حفظ ملفات الترجمة والصور بشكل مستقل "
 "بالتخزين."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:280
@@ -1322,9 +1316,8 @@ msgid "About"
 msgstr "حول"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:109
-#, fuzzy
 msgid "Changelog"
-msgstr "سجل التغييرات:"
+msgstr "سجل التغييرات"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:110
 msgid "Credits"
@@ -1388,7 +1381,6 @@ msgid "Media"
 msgstr "مرئيات"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:90
-#, fuzzy
 msgid "Authentication"
 msgstr "مصادقة/توثيق"
 
@@ -1424,9 +1416,8 @@ msgid "General"
 msgstr "عام"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:229
-#, fuzzy
 msgid "Advanced"
-msgstr "خيارات متقدمة"
+msgstr "إختيارات متقدمة"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:326
 msgid "Items"
@@ -1499,9 +1490,8 @@ msgid "Save"
 msgstr "احفظ"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:276
-#, fuzzy
 msgid "Delete Credential"
-msgstr "حذف بيانات الاعتماد؟"
+msgstr "حذف بيانات الاعتماد"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
 msgid "Exit"
