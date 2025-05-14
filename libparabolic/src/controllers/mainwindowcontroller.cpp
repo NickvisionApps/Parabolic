@@ -41,7 +41,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2025.5.4-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where thumbnail conversion failed for some videos");
+        m_appInfo.setChangelog("- Fixed an issue where thumbnail conversion failed for some videos\n- Fixed an issue where progress of downloads using aria2c was not displayed correctly");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
