@@ -61,6 +61,31 @@ namespace Nickvision::TubeConverter::Shared::Models
         return hours + minutes + seconds;
     }
 
+    static bool processAriaLine(const std::string& line, double& progress, double& speed, int& eta)
+    {
+        if(line.find("[download]") != std::string::npos)
+        {
+            progress = std::nan("");
+            speed = 0.0;
+            eta = 0;
+            return true;
+        }
+        std::vector<std::string> fields{ StringHelpers::split(line, " ", false) };
+        if(fields.size() != 5)
+        {
+            return false;
+        }
+        std::vector<std::string> sizes{ StringHelpers::split(fields[1], "/") };
+        if(sizes.size() != 2)
+        {
+            return false;
+        }
+        progress = getAriaSizeAsB(sizes[0]) / getAriaSizeAsB(sizes[1]);
+        speed = getAriaSizeAsB(fields[3].substr(3));
+        eta = getAriaEtaAsSeconds(fields[4].substr(4, fields[4].size() - 4 - 1));
+        return true;
+    }
+
     Download::Download(const DownloadOptions& options)
         : m_id{ ++s_downloadIdCounter }, 
         m_options{ options },
@@ -222,36 +247,27 @@ namespace Nickvision::TubeConverter::Shared::Models
                         {
                             continue;
                         }
-                        if(line.find("[#") != std::string::npos) //aria2c progress
+                        //aria2c progress
+                        if(line.find("[#") != std::string::npos)
                         {
+#ifdef _WIN32
                             std::vector<std::string> ariaLines{ StringHelpers::split(line, '\r', false) };
                             for(size_t j = ariaLines.size(); j > 0; j--)
                             {
-                                const std::string& ariaLine{ ariaLines[j - 1] };
-                                if(ariaLine.find("[download]") != std::string::npos) //aria2c download finished
+                                if(processAriaLine(ariaLines[j - 1], oldProgress, oldSpeed, oldEta))
                                 {
-                                    oldProgress = std::nan("");
-                                    oldSpeed = 0.0;
-                                    oldEta = 0;
                                     break;
                                 }
-                                std::vector<std::string> progress{ StringHelpers::split(ariaLine, " ", false) };
-                                if(progress.size() != 5)
-                                {
-                                    continue;
-                                }
-                                std::vector<std::string> progressSizes{ StringHelpers::split(progress[1], "/") };
-                                if(progressSizes.size() != 2)
-                                {
-                                    continue;
-                                }
-                                oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
-                                oldSpeed = getAriaSizeAsB(progress[3].substr(3));
-                                oldEta = getAriaEtaAsSeconds(progress[4].substr(4, progress[4].size() - 4 - 1));
-                                break;
                             }
                             break;
+#else
+                            if(processAriaLine(line, oldProgress, oldSpeed, oldEta))
+                            {
+                                break;
+                            }
+#endif
                         }
+                        //yt-dlp progress
                         else
                         {
                             std::vector<std::string> progress{ StringHelpers::split(line, ";", false) };
