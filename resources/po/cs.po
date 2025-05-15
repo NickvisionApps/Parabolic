@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-14 06:24-0400\n"
+"POT-Creation-Date: 2025-05-14 20:00-0400\n"
 "PO-Revision-Date: 2025-05-12 19:03+0000\n"
 "Last-Translator: Fjuro <git@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -116,6 +116,7 @@ msgid "translator-credits"
 msgstr "Jonáš Loskot <osobni@jonasloskot.cz>, 2023"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Obnoveno {} stahování"
@@ -140,6 +141,7 @@ msgid "Download Finished"
 msgstr "Stahování dokončeno"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:294
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "Soubor „{}“ byl stažen"
 
@@ -154,6 +156,7 @@ msgid "Download Finished With Error"
 msgstr "Stahování skončilo s chybou"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "Stahování souboru „{}“ skončilo s chybou"
 
@@ -170,18 +173,22 @@ msgid "0 B/s"
 msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -194,18 +201,22 @@ msgid "Audio Description"
 msgstr "Popis zvuku"
 
 #: libparabolic/src/models/format.cpp:264
+#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB"
 
 #: libparabolic/src/models/format.cpp:268
+#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB"
 
 #: libparabolic/src/models/format.cpp:272
+#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:276
+#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B"
 
@@ -1073,6 +1084,7 @@ msgstr "Běží"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Zbývá: {}"
 
@@ -1156,6 +1168,7 @@ msgid "No Subtitles Available"
 msgstr "Nejsou dostupné žádné titulky"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
+#, c++-format
 msgid "{} items"
 msgstr "{} položek"
 
@@ -1189,6 +1202,7 @@ msgid "Don't show this message again"
 msgstr "Tuto zprávu již nezobrazovat"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1439,6 +1453,7 @@ msgstr ""
 "použité přihlašování a zvolený prohlížeč pro cookies v nastavení."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr "{} potřebuje údaj ke stahování. Vyberte jej nebo jej zadejte."
 
@@ -1553,6 +1568,7 @@ msgstr "Aktualizovat"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:540
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:629
+#, c++-format
 msgid "Queued ({})"
 msgstr "Ve frontě ({})"
 
@@ -1560,12 +1576,14 @@ msgstr "Ve frontě ({})"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:590
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
+#, c++-format
 msgid "Downloading ({})"
 msgstr "Stahování ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:591
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:630
+#, c++-format
 msgid "Completed ({})"
 msgstr "Dokončeno ({})"
 

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-10 23:06-0400\n"
+"POT-Creation-Date: 2025-05-14 20:00-0400\n"
 "PO-Revision-Date: 2025-05-14 21:02+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -117,6 +117,7 @@ msgid "translator-credits"
 msgstr "حقوق-المترجم"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "تم إسترداد كل الملفات"
@@ -144,6 +145,7 @@ msgid "Download Finished"
 msgstr "اكتمل التنزيل"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:294
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "انتهى تنزيل {}"
 
@@ -158,6 +160,7 @@ msgid "Download Finished With Error"
 msgstr "اكتمل التنزيل مع وجود خطأ"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "انتهى التحميل مع خطأ {}"
 
@@ -174,18 +177,22 @@ msgid "0 B/s"
 msgstr "0 بايت/ثانية"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} جيجابايت/ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} ميغابايت/ثانية"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} كيلوبايت/ثانية"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} بايت/ث"
 
@@ -198,26 +205,30 @@ msgid "Audio Description"
 msgstr "وصف صوتي"
 
 #: libparabolic/src/models/format.cpp:264
+#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} جيجابايت"
 
 #: libparabolic/src/models/format.cpp:268
+#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} ميغابايت"
 
 #: libparabolic/src/models/format.cpp:272
+#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} كيلوبايت"
 
 #: libparabolic/src/models/format.cpp:276
+#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} بايت"
 
-#: libparabolic/src/models/download.cpp:123
+#: libparabolic/src/models/download.cpp:146
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "خلل: الملف موجود بالفعل والكتابة وخاصية الكتابة فوقه معطلة."
 
-#: libparabolic/src/models/download.cpp:186
+#: libparabolic/src/models/download.cpp:209
 msgid "Starting download..."
 msgstr "جاري بدء التنزيل..."
 
@@ -1066,6 +1077,7 @@ msgstr "جاري التشغيل"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | الوقت المُقدّر: {}"
 
@@ -1149,6 +1161,7 @@ msgid "No Subtitles Available"
 msgstr "لا توجد ترجمة متوفرة"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
+#, c++-format
 msgid "{} items"
 msgstr "{} عناصر"
 
@@ -1182,6 +1195,7 @@ msgid "Don't show this message again"
 msgstr "لا تعرض هذه الرسالة مجدداً"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1432,6 +1446,7 @@ msgstr ""
 "المستخدم، والمتصفح المُسْتَخدم لبيانات تعريف الإرتباط في الإعدادات."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} يحتاج إلى بيانات اعتماد للتنزيل. يرجى تحديد أو إدخال واحد للاستخدام."
@@ -1547,6 +1562,7 @@ msgstr "تحديث"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:540
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:629
+#, c++-format
 msgid "Queued ({})"
 msgstr "في قائمة الانتظار ({})"
 
@@ -1554,12 +1570,14 @@ msgstr "في قائمة الانتظار ({})"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:590
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
+#, c++-format
 msgid "Downloading ({})"
 msgstr "جارٍ التنزيل ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:591
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:630
+#, c++-format
 msgid "Completed ({})"
 msgstr "مكتمل ({})"
 
