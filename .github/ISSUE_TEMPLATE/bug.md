@@ -20,7 +20,6 @@ If applicable, paste the URL of the video/audio you were trying to download.
 If applicable, list the download options you selected, as well as the options you have configured in the app's preferences/settings for all downloads.
 
 **App Version**
-**App Version**
 - [ ] GNOME on Linux
     - [ ] Flatpak
     - [ ] Snap
