@@ -21,8 +21,16 @@ If applicable, list the download options you selected, as well as the options yo
 
 **App Version**
 - [ ] GNOME on Linux
+    - [ ] Flatpak
+    - [ ] Snap
+    - [ ] Source (Including AUR)
 - [ ] Qt on Linux
+    - [ ] Flatpak
+    - [ ] Snap
+    - [ ] Source (Including AUR)
 - [ ] Qt on Windows
+    - [ ] Installer
+    - [ ] Portable
 
 Version Number: 
 
