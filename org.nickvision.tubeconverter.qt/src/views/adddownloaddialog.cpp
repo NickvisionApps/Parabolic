@@ -389,7 +389,8 @@ namespace Nickvision::TubeConverter::Qt::Views
     AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, const std::string& url, QWidget* parent)
         : QDialog{ parent },
         m_ui{ new Ui::AddDownloadDialog() },
-        m_controller{ controller }
+        m_controller{ controller },
+        m_showedGenericDisclaimer{ false }
     {
         //Dialog Settings
         setWindowTitle(_("Add Download"));
@@ -420,13 +421,13 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->btnUseBatchFile, &QPushButton::clicked, this, &AddDownloadDialog::useBatchFile);
         connect(m_ui->cmbCredential, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbCredentialChanged);
         connect(m_ui->btnValidate, &QPushButton::clicked, this, &AddDownloadDialog::validateUrl);
-        connect(m_ui->cmbFileTypeSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbFileTypeSingleChanged);
+        connect(m_ui->cmbFileTypeSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbFileTypeChanged);
         connect(m_ui->btnSelectSaveFolderSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderSingle);
         connect(m_ui->btnRevertFilenameSingle, &QPushButton::clicked, this, &AddDownloadDialog::revertFilenameSingle);
         connect(m_ui->btnSelectAllSubtitlesSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectAllSubtitlesSingle);
         connect(m_ui->btnDeselectAllSubtitlesSingle, &QPushButton::clicked, this, &AddDownloadDialog::deselectAllSubtitlesSingle);
         connect(m_ui->btnDownloadSingle, &QPushButton::clicked, this, &AddDownloadDialog::downloadSingle);
-        connect(m_ui->cmbFileTypePlaylist, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbFileTypePlaylistChanged);
+        connect(m_ui->cmbFileTypePlaylist, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbFileTypeChanged);
         connect(m_ui->btnSelectSaveFolderPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderPlaylist);
         connect(m_ui->chkNumberTitlesPlaylist, &Switch::clicked, this, &AddDownloadDialog::onNumberTitlesPlaylistChanged);
         connect(m_ui->btnSelectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectAllPlaylist);
@@ -588,22 +589,22 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
     }
 
-    void AddDownloadDialog::onCmbFileTypeSingleChanged(int index)
+    void AddDownloadDialog::onCmbFileTypeChanged(int index)
     {
-        int fileTypeIndex{ m_ui->cmbFileTypeSingle->currentIndex() };
+        int fileTypeIndex{ index };
         if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
         }
         MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
-        m_ui->cmbVideoFormatSingle->setEnabled(!type.isAudio());
-        if(type.isGeneric() && m_controller->getShowGenericDisclaimer())
+        if(type.isGeneric() && m_controller->getShowGenericDisclaimer() && !m_showedGenericDisclaimer)
         {
             QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Warning"),  _("Generic file types do not support embedding thumbnails and subtitles. Please select a specific file type that supports embedding to prevent separate image and subtitle files from being written to disk."), QMessageBox::StandardButton::Ok, this };
             QCheckBox* checkBox{ new QCheckBox(_("Don't show this message again"), &msgBox) };
             msgBox.setCheckBox(checkBox);
             msgBox.exec();
             m_controller->setShowGenericDisclaimer(!checkBox->isChecked());
+            m_showedGenericDisclaimer = true;
         }
     }
 
@@ -650,24 +651,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
         m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbVideoFormatSingle->currentIndex(), m_ui->cmbAudioFormatSingle->currentIndex(), subtitles, m_ui->chkExcludeHistorySingle->isChecked(), m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->chkExportDescriptionSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
         accept();
-    }
-
-    void AddDownloadDialog::onCmbFileTypePlaylistChanged(int index)
-    {
-        int fileTypeIndex{ m_ui->cmbFileTypePlaylist->currentIndex() };
-        if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
-        {
-            fileTypeIndex += MediaFileType::getVideoFileTypeCount();
-        }
-        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
-        if(type.isGeneric() && m_controller->getShowGenericDisclaimer())
-        {
-            QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Warning"),  _("Generic file types do not support embedding thumbnails and subtitles. Please select a specific file type that supports embedding to prevent separate image and subtitle files from being written to disk."), QMessageBox::StandardButton::Ok, this };
-            QCheckBox* checkBox{ new QCheckBox(_("Don't show this message again"), &msgBox) };
-            msgBox.setCheckBox(checkBox);
-            msgBox.exec();
-            m_controller->setShowGenericDisclaimer(!checkBox->isChecked());
-        }
     }
 
     void AddDownloadDialog::selectSaveFolderPlaylist()

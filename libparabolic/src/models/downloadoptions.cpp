@@ -468,11 +468,6 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back("--audio-format");
                 arguments.push_back(StringHelpers::lower(m_fileType.str()));   
             }
-            if(m_audioFormat)
-            {
-                arguments.push_back("--format");
-                arguments.push_back(m_audioFormat->getId());
-            }
         }
         else if(m_fileType.isVideo())
         {
@@ -486,21 +481,24 @@ namespace Nickvision::TubeConverter::Shared::Models
                     arguments.push_back(StringHelpers::lower(m_fileType.str()));
                 }
             }
-            if(m_videoFormat && m_audioFormat)
+        }
+        std::string formatString;
+        if(m_videoFormat && !m_videoFormat->isFormatValue(FormatValue::None))
+        {
+            formatString += m_videoFormat->isFormatValue(FormatValue::Best) ? "bv" : m_videoFormat->getId();
+        }
+        if(m_audioFormat && !m_audioFormat->isFormatValue(FormatValue::None))
+        {
+            if(!formatString.empty())
             {
-                arguments.push_back("--format");
-                arguments.push_back(m_videoFormat->getId() + "+" + m_audioFormat->getId());
+                formatString += "+";
             }
-            else if(m_videoFormat)
-            {
-                arguments.push_back("--format");
-                arguments.push_back(m_videoFormat->getId() + "+ba/b");
-            }
-            else if(m_audioFormat)
-            {
-                arguments.push_back("--format");
-                arguments.push_back("bv+" + m_audioFormat->getId());
-            }
+            formatString += m_audioFormat->isFormatValue(FormatValue::Best) ? "ba" : m_audioFormat->getId();
+        }
+        if(!formatString.empty())
+        {
+            arguments.push_back("--format");
+            arguments.push_back(formatString);
         }
         if(!std::filesystem::exists(m_saveFolder))
         {
