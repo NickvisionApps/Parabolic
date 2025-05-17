@@ -305,7 +305,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--downloader");
             arguments.push_back(Environment::findDependency("aria2c").string());
             arguments.push_back("--downloader-args");
-            arguments.push_back("aria2c:--enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
+            arguments.push_back("aria2c:--summary-interval=" + std::string(Environment::getOperatingSystem() == OperatingSystem::Windows ? "0" : "1") + " --enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
         }
         if(!downloaderOptions.getProxyUrl().empty())
         {
@@ -386,7 +386,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back("--write-thumbnail");
             }
             arguments.push_back("--convert-thumbnails");
-            arguments.push_back("jpg");
+            arguments.push_back("png>png/jpg");
             if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
             {
                 arguments.push_back("--postprocessor-args");

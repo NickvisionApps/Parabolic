@@ -19,23 +19,71 @@ namespace Nickvision::TubeConverter::Shared::Models
         static constexpr double pow2{ 1024 * 1024 };
         static constexpr double pow3{ 1024 * 1024 * 1024 };
         size_t index;
-        if((index = size.find("B")) != std::string::npos)
+        if((index = size.find("GiB")) != std::string::npos)
         {
-            return std::stod(size.substr(0, index));
-        }
-        else if((index = size.find("KiB")) != std::string::npos)
-        {
-            return std::stod(size.substr(0, index)) * 1024;
+            return std::stod(size.substr(0, index)) * pow3;
         }
         else if((index = size.find("MiB")) != std::string::npos)
         {
             return std::stod(size.substr(0, index)) * pow2;
         }
-        else if((index = size.find("GiB")) != std::string::npos)
+        else if((index = size.find("KiB")) != std::string::npos)
         {
-            return std::stod(size.substr(0, index)) * pow3;
+            return std::stod(size.substr(0, index)) * 1024;
+        }
+        else if((index = size.find("B")) != std::string::npos)
+        {
+            return std::stod(size.substr(0, index));
         }
         return 0.0;
+    }
+
+    static int getAriaEtaAsSeconds(std::string eta)
+    {
+        int hours{ 0 };
+        int minutes{ 0 };
+        int seconds{ 0 };
+        size_t index;
+        if((index = eta.find("h")) != std::string::npos)
+        {
+            hours = std::stoi(eta.substr(0, index)) * 3600;
+            eta = eta.substr(index + 1);
+        }
+        if((index = eta.find("m")) != std::string::npos)
+        {
+            minutes = std::stoi(eta.substr(0, index)) * 60;
+            eta = eta.substr(index + 1);
+        }
+        if((index = eta.find("s")) != std::string::npos)
+        {
+            seconds = std::stoi(eta.substr(0, index));
+        }
+        return hours + minutes + seconds;
+    }
+
+    static bool processAriaLine(const std::string& line, double& progress, double& speed, int& eta)
+    {
+        if(line.find("[download]") != std::string::npos)
+        {
+            progress = std::nan("");
+            speed = 0.0;
+            eta = 0;
+            return true;
+        }
+        std::vector<std::string> fields{ StringHelpers::split(line, " ", false) };
+        if(fields.size() != 5)
+        {
+            return false;
+        }
+        std::vector<std::string> sizes{ StringHelpers::split(fields[1], "/") };
+        if(sizes.size() != 2)
+        {
+            return false;
+        }
+        progress = getAriaSizeAsB(sizes[0]) / getAriaSizeAsB(sizes[1]);
+        speed = getAriaSizeAsB(fields[3].substr(3));
+        eta = getAriaEtaAsSeconds(fields[4].substr(4, fields[4].size() - 4 - 1));
+        return true;
     }
 
     Download::Download(const DownloadOptions& options)
@@ -191,31 +239,35 @@ namespace Nickvision::TubeConverter::Shared::Models
                 if(m_process->getOutput() != oldLog)
                 {
                     oldLog = m_process->getOutput();
-                    std::vector<std::string> logLines{ StringHelpers::split(oldLog, "\n") };
+                    std::vector<std::string> logLines{ StringHelpers::split(oldLog, '\n', false) };
                     for(size_t i = logLines.size(); i > 0; i--)
                     {
                         const std::string& line{ logLines[i - 1] };
-                        if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug]") != std::string::npos)
+                        if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug") != std::string::npos)
                         {
                             continue;
                         }
-                        if(line.find("[#") != std::string::npos) //aria2c progress
+                        //aria2c progress
+                        if(line.find("[#") != std::string::npos)
                         {
-                            std::vector<std::string> progress{ StringHelpers::split(line, " ", false) };
-                            if(progress.size() != 4)
+#ifdef _WIN32
+                            std::vector<std::string> ariaLines{ StringHelpers::split(line, '\r', false) };
+                            for(size_t j = ariaLines.size(); j > 0; j--)
                             {
-                                continue;
+                                if(processAriaLine(ariaLines[j - 1], oldProgress, oldSpeed, oldEta))
+                                {
+                                    break;
+                                }
                             }
-                            std::vector<std::string> progressSizes{ StringHelpers::split(progress[1], "/") };
-                            if(progressSizes.size() != 2)
-                            {
-                                continue;
-                            }
-                            oldProgress = getAriaSizeAsB(progressSizes[0]) / getAriaSizeAsB(progressSizes[1]);
-                            oldSpeed = getAriaSizeAsB(progress[3].substr(3));
-                            oldEta = -1;
                             break;
+#else
+                            if(processAriaLine(line, oldProgress, oldSpeed, oldEta))
+                            {
+                                break;
+                            }
+#endif
                         }
+                        //yt-dlp progress
                         else
                         {
                             std::vector<std::string> progress{ StringHelpers::split(line, ";", false) };

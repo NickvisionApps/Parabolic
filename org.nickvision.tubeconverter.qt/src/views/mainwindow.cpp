@@ -583,11 +583,15 @@ namespace Nickvision::TubeConverter::Qt::Views
         row->setStopState();
         m_ui->listDownloading->removeWidget(row);
         m_ui->listDownloading->removeWidget(line);
+        m_ui->listQueued->removeWidget(row);
+        m_ui->listQueued->removeWidget(line);
         m_ui->listCompleted->insertWidget(0, row);
         m_ui->listCompleted->insertWidget(1, line);
         m_ui->downloadingViewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? DownloadPage::Has : DownloadPage::None);
+        m_ui->queuedViewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->completedViewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? DownloadPage::Has : DownloadPage::None);
         m_ui->tabs->setTabText(MainWindowPage::Downloading, QString::fromStdString(_f("Downloading ({})", m_controller->getDownloadManager().getDownloadingCount())));
+        m_ui->tabs->setTabText(MainWindowPage::Queued, QString::fromStdString(_f("Queued ({})", m_controller->getDownloadManager().getQueuedCount())));
         m_ui->tabs->setTabText(MainWindowPage::Completed, QString::fromStdString(_f("Completed ({})", m_controller->getDownloadManager().getCompletedCount())));
     }
 

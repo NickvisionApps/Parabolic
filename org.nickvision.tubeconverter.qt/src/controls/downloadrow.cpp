@@ -237,7 +237,7 @@ namespace Nickvision::TubeConverter::Qt::Controls
         }
         else
         {
-            m_ui->lblStatus->setText(_f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr()));
+            m_ui->lblStatus->setText(QString::fromStdString(_f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr())));
             m_ui->progBar->setRange(0, 100);
             m_ui->progBar->setValue(args.getProgress() * 100);
         }
