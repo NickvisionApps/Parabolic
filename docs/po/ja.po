@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-10 23:06-0400\n"
+"POT-Creation-Date: 2025-05-17 19:51-0400\n"
 "PO-Revision-Date: 2025-03-13 05:02+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1098,37 +1098,69 @@ msgid ""
 msgstr ""
 "最後に使用した動画形式は、次回のダウンロードのために記憶・事前選択されます。"
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:72 docs/yelp/C/newDownload.page:86
+msgid ""
+"The following are special formats used by Parabolic to match <code>yt-dlp</"
+"code> behaviors:"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:73 docs/yelp/C/newDownload.page:87
+msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:74
+msgid "- <code>Best</code> = <code>bv*</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:75
+msgid "- <code>Worst</code> = <code>wv*</code>"
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:73
+#: docs/yelp/C/newDownload.page:79
 msgid "Audio Format"
 msgstr "音声のファイル形式"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:74
+#: docs/yelp/C/newDownload.page:80
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr "ダウンロードの際に利用可能な音声形式、ビットレート順で表示されます。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:81
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr ""
 "各フォーマットは次のようなフォームになります: <code>ビットレート | 言語 "
 "(id)</code>。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:77
+#: docs/yelp/C/newDownload.page:83
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
 msgstr "最後に音声形式は、次回のダウンロードのために記憶・事前選択されます。"
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:88
+msgid "- <code>Best</code> = <code>ba</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:89
+msgid "- <code>Worst</code> = <code>wa</code>"
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:93
 msgid "Subtitles"
 msgstr "字幕"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:94
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1138,7 +1170,7 @@ msgstr ""
 "幕の細かな設定は <link xref=\"downloads\">設定</link> にて変更できます。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:84
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1146,12 +1178,12 @@ msgstr ""
 "最後に使用した字幕は、今後のダウンロードのために記憶・事前選択されます。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:100
 msgid "Split Chapters"
 msgstr "チャプター（章）で分ける"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:101
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1160,8 +1192,8 @@ msgstr ""
 "数のファイルに分割します。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:91 docs/yelp/C/newDownload.page:98
-#: docs/yelp/C/newDownload.page:105
+#: docs/yelp/C/newDownload.page:103 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1169,12 +1201,12 @@ msgstr ""
 "最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:107
 msgid "Limit Download Speed"
 msgstr "ダウンロード速度を制限"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:108
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1183,12 +1215,12 @@ msgstr ""
 "た速度でダウンロードの速度を制限します。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:114
 msgid "Export Description"
 msgstr "概要をエクスポート"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:115
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1197,12 +1229,12 @@ msgstr ""
 "要を <code>.description</code> ファイルにエクスポートします。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:121
 msgid "Exclude from History"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:122
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
@@ -1212,12 +1244,12 @@ msgstr ""
 "有効にします。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:125
 msgid "Time Frame"
 msgstr "タイムフレーム"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:114
+#: docs/yelp/C/newDownload.page:126
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1226,22 +1258,22 @@ msgstr ""
 "の特定部分をダウンロードできるようになります。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:128
 msgid "Default: The whole media length"
 msgstr "デフォルト: メディア全体の(時間の)長さ"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:120
+#: docs/yelp/C/newDownload.page:132
 msgid "Save Folder"
 msgstr "保存フォルダー"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:121
+#: docs/yelp/C/newDownload.page:133
 msgid "The folder at which to save the download to."
 msgstr "ダウンロードを保存フォルダー。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:123
+#: docs/yelp/C/newDownload.page:135
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1250,17 +1282,17 @@ msgstr ""
 "す。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:139
 msgid "File Name"
 msgstr "ファイル名"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:128
+#: docs/yelp/C/newDownload.page:140
 msgid "The file name to use when saving the download."
 msgstr "ダウンロードを保存する際に使用するファイル名。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:130
+#: docs/yelp/C/newDownload.page:142
 msgid "Default: The title of the media"
 msgstr "デフォルト: メディアのタイトル"
 

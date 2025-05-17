@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-10 23:06-0400\n"
+"POT-Creation-Date: 2025-05-17 19:51-0400\n"
 "PO-Revision-Date: 2025-05-13 21:01+0000\n"
 "Last-Translator: NIICKTCHUNS <niicktchuns7@proton.me>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -454,8 +454,8 @@ msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 msgstr ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/"
-"get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:70
@@ -463,8 +463,8 @@ msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
 msgstr ""
-"Firefox: <code>https://addons.mozilla.org/pt-BR/firefox/addon/cookies-txt/"
-"</code>"
+"Firefox: <code>https://addons.mozilla.org/pt-BR/firefox/addon/cookies-txt/</"
+"code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:72
@@ -699,11 +699,10 @@ msgid ""
 "Parabolic/discussions\">discussions</link> on Github, or <link "
 "href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
-"Para obter suporte, use <link href="
-"\"https://github.com/NickvisionApps/Parabolic/issues\">problemas</link> ou "
-"<link href=\"https://github.com/NickvisionApps/Parabolic/discussions\""
-">discussões</link> no GitHub, ou <link href=\"https://bit.ly/3GrfEid\">junte-"
-"se ao nosso canal no Matrix</link>."
+"Para obter suporte, use <link href=\"https://github.com/NickvisionApps/"
+"Parabolic/issues\">problemas</link> ou <link href=\"https://github.com/"
+"NickvisionApps/Parabolic/discussions\">discussões</link> no GitHub, ou <link "
+"href=\"https://bit.ly/3GrfEid\">junte-se ao nosso canal no Matrix</link>."
 
 #. (itstool) path: page/p
 #: docs/yelp/C/index.page:23
@@ -841,8 +840,8 @@ msgstr "Chaveiro"
 msgid ""
 "This page explains all options for using the Keyring in <app>Parabolic</app>."
 msgstr ""
-"Esta página explica todas as opções para usar o Chaveiro no "
-"<app>Parabolic</app>."
+"Esta página explica todas as opções para usar o Chaveiro no <app>Parabolic</"
+"app>."
 
 #. (itstool) path: section/title
 #: docs/yelp/C/keyring.page:24
@@ -1079,23 +1078,45 @@ msgstr ""
 "O formato de vídeo usado anteriormente será relembrado e pré-selecionado no "
 "próximo download."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:72 docs/yelp/C/newDownload.page:86
+msgid ""
+"The following are special formats used by Parabolic to match <code>yt-dlp</"
+"code> behaviors:"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:73 docs/yelp/C/newDownload.page:87
+msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:74
+msgid "- <code>Best</code> = <code>bv*</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:75
+msgid "- <code>Worst</code> = <code>wv*</code>"
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:73
+#: docs/yelp/C/newDownload.page:79
 msgid "Audio Format"
 msgstr "Formato de áudio"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:74
+#: docs/yelp/C/newDownload.page:80
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:81
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:77
+#: docs/yelp/C/newDownload.page:83
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
@@ -1103,13 +1124,23 @@ msgstr ""
 "O formato de áudio usado anteriormente será relembrado e pré-selecionado no "
 "próximo download."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:88
+msgid "- <code>Best</code> = <code>ba</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:89
+msgid "- <code>Worst</code> = <code>wa</code>"
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:93
 msgid "Subtitles"
 msgstr "Legendas"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:94
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1117,7 +1148,7 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:84
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1126,44 +1157,44 @@ msgstr ""
 "no próximo download."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:100
 msgid "Split Chapters"
 msgstr "Dividir capítulos"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:101
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:91 docs/yelp/C/newDownload.page:98
-#: docs/yelp/C/newDownload.page:105
+#: docs/yelp/C/newDownload.page:103 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:107
 msgid "Limit Download Speed"
 msgstr "Limitar velocidade de download"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:108
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:114
 msgid "Export Description"
 msgstr "Exportar descrição"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:115
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1172,12 +1203,12 @@ msgstr ""
 "<code>.description</code> ao lado do arquivo baixado."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:121
 msgid "Exclude from History"
 msgstr "Apagar do histórico"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:122
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
 "downloads."
@@ -1186,51 +1217,51 @@ msgstr ""
 "downloads."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:125
 msgid "Time Frame"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:114
+#: docs/yelp/C/newDownload.page:126
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:128
 msgid "Default: The whole media length"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:120
+#: docs/yelp/C/newDownload.page:132
 msgid "Save Folder"
 msgstr "Pasta de destino"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:121
+#: docs/yelp/C/newDownload.page:133
 msgid "The folder at which to save the download to."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:123
+#: docs/yelp/C/newDownload.page:135
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:139
 msgid "File Name"
 msgstr "Nome do arquivo"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:128
+#: docs/yelp/C/newDownload.page:140
 msgid "The file name to use when saving the download."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:130
+#: docs/yelp/C/newDownload.page:142
 msgid "Default: The title of the media"
 msgstr ""
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-10 23:06-0400\n"
+"POT-Creation-Date: 2025-05-17 19:51-0400\n"
 "PO-Revision-Date: 2025-02-02 05:02+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -1108,25 +1108,47 @@ msgstr ""
 "Раніше використаний формат відео буде запам'ятований і вибраний за "
 "замовчуванням для наступного завантаження."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:72 docs/yelp/C/newDownload.page:86
+msgid ""
+"The following are special formats used by Parabolic to match <code>yt-dlp</"
+"code> behaviors:"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:73 docs/yelp/C/newDownload.page:87
+msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:74
+msgid "- <code>Best</code> = <code>bv*</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:75
+msgid "- <code>Worst</code> = <code>wv*</code>"
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:73
+#: docs/yelp/C/newDownload.page:79
 msgid "Audio Format"
 msgstr "Формат аудіо"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:74
+#: docs/yelp/C/newDownload.page:80
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 "Список форматів аудіо, доступних для завантаження, відсортований за "
 "бітрейтом."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:81
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr "Кожен формат має вигляд: <code>бітрейт | мова (id)</code>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:77
+#: docs/yelp/C/newDownload.page:83
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
@@ -1134,13 +1156,23 @@ msgstr ""
 "Раніше використаний формат аудіо буде запам'ятований і вибраний за "
 "замовчуванням для наступного завантаження."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:88
+msgid "- <code>Best</code> = <code>ba</code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:89
+msgid "- <code>Worst</code> = <code>wa</code>"
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:93
 msgid "Subtitles"
 msgstr "Субтитри"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:94
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1151,7 +1183,7 @@ msgstr ""
 "xref=\"downloads\">налаштуваннях</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:84
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1160,12 +1192,12 @@ msgstr ""
 "наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:100
 msgid "Split Chapters"
 msgstr "Розділити глави"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:101
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1174,8 +1206,8 @@ msgstr ""
 "файлів, грунтуючись на його розділах."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:91 docs/yelp/C/newDownload.page:98
-#: docs/yelp/C/newDownload.page:105
+#: docs/yelp/C/newDownload.page:103 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1184,12 +1216,12 @@ msgstr ""
 "для наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:107
 msgid "Limit Download Speed"
 msgstr "Обмежити швидкість завантаження"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:108
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1198,12 +1230,12 @@ msgstr ""
 "швидкості, налаштованої в <link xref=\"downloader\">Параметрах</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:114
 msgid "Export Description"
 msgstr "Експорт опису"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:115
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1212,12 +1244,12 @@ msgstr ""
 "description</code> разом з завантаженим файлом."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:121
 msgid "Exclude from History"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/newDownload.page:122
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
@@ -1227,12 +1259,12 @@ msgstr ""
 "YouTube."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:125
 msgid "Time Frame"
 msgstr "Часовий проміжок"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:114
+#: docs/yelp/C/newDownload.page:126
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1241,22 +1273,22 @@ msgstr ""
 "завантаження конкретної частини медіа."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:128
 msgid "Default: The whole media length"
 msgstr "За замовчуванням: вся довжина медіа"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:120
+#: docs/yelp/C/newDownload.page:132
 msgid "Save Folder"
 msgstr "Зберегти теку"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:121
+#: docs/yelp/C/newDownload.page:133
 msgid "The folder at which to save the download to."
 msgstr "Тека, в яку буде збережено завантаження."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:123
+#: docs/yelp/C/newDownload.page:135
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1265,17 +1297,17 @@ msgstr ""
 "наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:139
 msgid "File Name"
 msgstr "Ім'я файлу"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:128
+#: docs/yelp/C/newDownload.page:140
 msgid "The file name to use when saving the download."
 msgstr "Ім'я файлу, яке буде використано при збереженні завантаження."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:130
+#: docs/yelp/C/newDownload.page:142
 msgid "Default: The title of the media"
 msgstr "За замовчуванням: назва медіа"
 
