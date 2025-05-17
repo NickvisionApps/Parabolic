@@ -6,6 +6,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     enum class FormatValue
     {
         Best,
+        Worst,
         None
     };
 }

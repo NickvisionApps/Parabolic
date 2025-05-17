@@ -16,6 +16,10 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_id = _("Best");
             m_protocol = "Best";
             break;
+        case FormatValue::Worst:
+            m_id = _("Worst");
+            m_protocol = "Worst";
+            break;
         case FormatValue::None:
             m_id = _("None");
             m_protocol = "None";
@@ -199,6 +203,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
         case FormatValue::Best:
             return m_id == _("Best") && m_protocol == "Best";
+        case FormatValue::Worst:
+            return m_id == _("Worst") && m_protocol == "Worst";
         case FormatValue::None:
             return m_id == _("None") && m_protocol == "None";
         }

@@ -149,7 +149,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                     m_videoFormatMap[formats.size()] = i;
                     if(previousIndex && format.getId() == m_previousOptions.getVideoFormatId())
                     {
-                        *previousIndex = formats.size() - 1;
+                        *previousIndex = formats.size();
                     }
                     formats.push_back(format.str());
                 }
@@ -181,7 +181,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                     m_audioFormatMap[formats.size()] = i;
                     if(previousIndex && format.getId() == m_previousOptions.getAudioFormatId())
                     {
-                        *previousIndex = formats.size() - 1;
+                        *previousIndex = formats.size();
                     }
                     formats.push_back(format.str());
                 }

@@ -402,7 +402,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--no-embed-chapters");
         }
         std::string formatSort;
-        //Force preferred video codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
             std::string vcodec{ "vcodec:" };
@@ -423,7 +422,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             }
             formatSort += vcodec;
         }
-        //Force preferred audio codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
         {
             std::string acodec{ "acodec:" };
@@ -485,7 +483,18 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string formatString;
         if(m_videoFormat && !m_videoFormat->isFormatValue(FormatValue::None))
         {
-            formatString += m_videoFormat->isFormatValue(FormatValue::Best) ? "bv" : m_videoFormat->getId();
+            if(m_videoFormat->isFormatValue(FormatValue::Best))
+            {
+                formatString += "bv*";
+            }
+            else if(m_videoFormat->isFormatValue(FormatValue::Worst))
+            {
+                formatString += "wv*";
+            }
+            else
+            {
+                formatString += m_videoFormat->getId();
+            }
         }
         if(m_audioFormat && !m_audioFormat->isFormatValue(FormatValue::None))
         {
@@ -493,7 +502,34 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 formatString += "+";
             }
-            formatString += m_audioFormat->isFormatValue(FormatValue::Best) ? "ba" : m_audioFormat->getId();
+            if(m_audioFormat->isFormatValue(FormatValue::Best))
+            {
+                formatString += "ba";
+            }
+            else if(m_audioFormat->isFormatValue(FormatValue::Worst))
+            {
+                formatString += "wa";
+            }
+            else
+            {
+                formatString += m_audioFormat->getId();
+            }
+        }
+        if(formatString == "bv*+ba")
+        {
+            formatString += "/b";
+        }
+        else if(formatString == "wv*+wa")
+        {
+            formatString += "/w";
+        }
+        else if(formatString == "bv*" && m_fileType.isAudio())
+        {
+            formatString = "+ba/b";
+        }
+        else if(formatString == "wv*" && m_fileType.isAudio())
+        {
+            formatString = "+wa/w";
         }
         if(!formatString.empty())
         {

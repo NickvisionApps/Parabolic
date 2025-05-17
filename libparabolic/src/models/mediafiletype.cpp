@@ -207,6 +207,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         return static_cast<unsigned int>(m_value);
     }
 
+    MediaFileType::operator size_t() const
+    {
+        return static_cast<size_t>(m_value);
+    }
+
     bool MediaFileType::operator==(const MediaFileType& other) const
     {
         return m_value == other.m_value;

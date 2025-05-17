@@ -86,12 +86,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::sort(m_subtitles.begin(), m_subtitles.end());
         //Type
         m_type = MediaType::Audio;
+        m_formats.insert(m_formats.begin(), { FormatValue::Worst, MediaType::Audio });
         m_formats.insert(m_formats.begin(), { FormatValue::Best, MediaType::Audio });
         for(const Format& format : m_formats)
         {
             if(format.getType() == MediaType::Video)
             {
                 m_type = MediaType::Video;
+                m_formats.insert(m_formats.begin(), { FormatValue::Worst, MediaType::Video });
                 m_formats.insert(m_formats.begin(), { FormatValue::Best, MediaType::Video });
                 break;
             }

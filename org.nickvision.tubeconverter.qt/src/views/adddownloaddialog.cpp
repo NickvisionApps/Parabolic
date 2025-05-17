@@ -521,9 +521,9 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->lblUrlSingle->setText(QString::fromStdString(m_controller->getMediaUrl(0)));
             m_ui->btnDownloadSingle->setDefault(true);
             //Load Options
-            size_t previous{ 0 };
+            size_t previous{ static_cast<size_t>(m_controller->getPreviousDownloadOptions().getFileType()) };
             QtHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
-            m_ui->cmbFileTypeSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
+            m_ui->cmbFileTypeSingle->setCurrentIndex(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount() ? previous - MediaFileType::getVideoFileTypeCount() : previous);
             QtHelpers::setComboBoxItems(m_ui->cmbVideoFormatSingle, m_controller->getVideoFormatStrings(&previous));
             m_ui->cmbVideoFormatSingle->setCurrentIndex(previous);
             QtHelpers::setComboBoxItems(m_ui->cmbAudioFormatSingle, m_controller->getAudioFormatStrings(&previous));
