@@ -228,18 +228,19 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return;
         }
-        double oldProgress{ std::nan("") };
-        double oldSpeed{ 0 };
-        int oldEta{ 0 };
-        std::string oldLog{ _("Starting download...") };
+        double progress{ std::nan("") };
+        double speed{ 0 };
+        int eta{ 0 };
+        size_t logSize{ 0 };
+        m_progressChanged.invoke({ m_id, _("Starting download..."), progress, speed, eta });
         while(m_process->getState() == ProcessState::Running || m_process->getState() == ProcessState::Paused)
         {
             if(m_process->getState() == ProcessState::Running)
             {
-                if(m_process->getOutput() != oldLog)
+                if(m_process->getOutput().size() > logSize)
                 {
-                    oldLog = m_process->getOutput();
-                    std::vector<std::string> logLines{ StringHelpers::split(oldLog, '\n', false) };
+                    logSize = m_process->getOutput().size();
+                    std::vector<std::string> logLines{ StringHelpers::split(m_process->getOutput(), '\n', false) };
                     for(size_t i = logLines.size(); i > 0; i--)
                     {
                         const std::string& line{ logLines[i - 1] };
@@ -254,14 +255,14 @@ namespace Nickvision::TubeConverter::Shared::Models
                             std::vector<std::string> ariaLines{ StringHelpers::split(line, '\r', false) };
                             for(size_t j = ariaLines.size(); j > 0; j--)
                             {
-                                if(processAriaLine(ariaLines[j - 1], oldProgress, oldSpeed, oldEta))
+                                if(processAriaLine(ariaLines[j - 1], progress, speed, eta))
                                 {
                                     break;
                                 }
                             }
                             break;
 #else
-                            if(processAriaLine(line, oldProgress, oldSpeed, oldEta))
+                            if(processAriaLine(line, progress, speed, eta))
                             {
                                 break;
                             }
@@ -270,28 +271,28 @@ namespace Nickvision::TubeConverter::Shared::Models
                         //yt-dlp progress
                         else
                         {
-                            std::vector<std::string> progress{ StringHelpers::split(line, ";", false) };
-                            if(progress.size() != 7 || progress[1] == "NA")
+                            std::vector<std::string> fields{ StringHelpers::split(line, ";", false) };
+                            if(fields.size() != 7 || fields[1] == "NA")
                             {
                                 continue;
                             }
-                            if(progress[1] == "finished" || progress[1] == "processing")
+                            if(fields[1] == "finished" || fields[1] == "processing")
                             {
-                                oldProgress = std::nan("");
-                                oldSpeed = 0.0;
-                                oldEta = 0;
+                                progress = std::nan("");
+                                speed = 0.0;
+                                eta = 0;
                             }
                             else
                             {
-                                oldProgress = (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0));
-                                oldSpeed = progress[5] != "NA" ? std::stod(progress[5]) : 0.0;
-                                oldEta = progress[6] == "NA" || progress[6] == "Unknown" ? -1 : std::stoi(progress[6]);
+                                progress = (fields[2] != "NA" ? std::stod(fields[2]) : 0.0) / (fields[3] != "NA" ? std::stod(fields[3]) : (fields[4] != "NA" ? std::stod(fields[4]) : 0.0));
+                                speed = fields[5] != "NA" ? std::stod(fields[5]) : 0.0;
+                                eta = fields[6] == "NA" || fields[6] == "Unknown" ? -1 : std::stoi(fields[6]);
                             }
                             break;
                         }
                     }
                 }
-                m_progressChanged.invoke({ m_id, oldLog, oldProgress, oldSpeed, oldEta });
+                m_progressChanged.invoke({ m_id, m_process->getOutput(), progress, speed, eta });
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }

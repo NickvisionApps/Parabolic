@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.5.4-next" });
+        m_appInfo.setVersion({ "2025.5.4-beta1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added the ability to use video formats for audio file downloads\n- Added the ability to specify Worst for a video/audio format\n- Added the ability to specify None for a video/audio format\n- Fixed an issue where thumbnail conversion failed for some videos\n- Fixed an issue where progress of downloads using aria2c was not displayed correctly\n- Fixed an issue where playlist downloads caused the app to crash on Windows");
