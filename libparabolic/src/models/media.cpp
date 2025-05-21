@@ -30,6 +30,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_timeFrame = { std::chrono::seconds(0), std::chrono::seconds{ info["duration"].is_double() ? static_cast<int>(info["duration"].as_double()) : (info["duration"].is_int64() ? static_cast<int>(info["duration"].as_int64()) : 0) } };
         }
         //Parse formats
+        bool hasVideoFormat{ false };
+        bool hasAudioFormat{ false };
         if(info.contains("formats") && info["formats"].is_array())
         {
             for(const boost::json::value& format : info["formats"].as_array())
@@ -59,6 +61,14 @@ namespace Nickvision::TubeConverter::Shared::Models
                     {
                         continue;
                     }
+                    if(f.getType() == MediaType::Video)
+                    {
+                        hasVideoFormat = true;
+                    }
+                    else if(f.getType() == MediaType::Audio)
+                    {
+                        hasAudioFormat = true;
+                    }
                     m_formats.push_back(f);
                 }
             }
@@ -85,21 +95,24 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         std::sort(m_subtitles.begin(), m_subtitles.end());
         //Type
-        m_type = MediaType::Audio;
-        m_formats.insert(m_formats.begin(), { FormatValue::Worst, MediaType::Audio });
-        m_formats.insert(m_formats.begin(), { FormatValue::Best, MediaType::Audio });
-        for(const Format& format : m_formats)
+        if(hasVideoFormat && hasAudioFormat)
         {
-            if(format.getType() == MediaType::Video)
-            {
-                m_type = MediaType::Video;
-                m_formats.insert(m_formats.begin(), { FormatValue::Worst, MediaType::Video });
-                m_formats.insert(m_formats.begin(), { FormatValue::Best, MediaType::Video });
-                break;
-            }
+            m_type = MediaType::Video;
+            m_formats.insert(m_formats.begin(), { FormatValue::Worst, MediaType::Audio });
+            m_formats.insert(m_formats.begin(), { FormatValue::Best, MediaType::Audio });
         }
-        m_formats.insert(m_formats.begin(), { FormatValue::None, MediaType::Audio });
+        else if(hasVideoFormat)
+        {
+            m_type = MediaType::Video;
+        }
+        else
+        {
+            m_type = MediaType::Audio;
+        }
+        m_formats.insert(m_formats.begin(), { FormatValue::Worst, m_type });
+        m_formats.insert(m_formats.begin(), { FormatValue::Best, m_type });
         m_formats.insert(m_formats.begin(), { FormatValue::None, MediaType::Video });
+        m_formats.insert(m_formats.begin(), { FormatValue::None, MediaType::Audio });
         //Suggested save folder
         if(info["suggested_save_folder"].is_string())
         {
