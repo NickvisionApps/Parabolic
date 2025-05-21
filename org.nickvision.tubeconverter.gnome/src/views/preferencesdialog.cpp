@@ -32,6 +32,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredAudioCodecRow"), static_cast<unsigned int>(options.getPreferredAudioCodec()));
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"), static_cast<unsigned int>(options.getPreferredSubtitleFormat()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("verboseLoggingRow"), options.getVerboseLogging());
+        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("usePartFilesRow"), options.getUsePartFiles());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow"), options.getYouTubeSponsorBlock());
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("speedLimitRow"), static_cast<double>(options.getSpeedLimit()));
         gtk_editable_set_text(m_builder.get<GtkEditable>("proxyUrlRow"), options.getProxyUrl().c_str());
@@ -82,6 +83,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setPreferredAudioCodec(static_cast<AudioCodec>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredAudioCodecRow"))));
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"))));
         options.setVerboseLogging(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("verboseLoggingRow")));
+        options.setUsePartFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("usePartFilesRow")));
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow")));
         options.setSpeedLimit(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("speedLimitRow"))));
         options.setProxyUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("proxyUrlRow")));

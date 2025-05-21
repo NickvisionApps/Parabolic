@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-17 19:51-0400\n"
+"POT-Creation-Date: 2025-05-20 21:30-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -77,7 +77,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
-#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
 msgstr "डिफ़ॉल्ट: बंद"
@@ -176,8 +176,9 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
 #: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
-#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
-#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
+#: docs/yelp/C/downloader.page:35 docs/yelp/C/downloads.page:41
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "डिफ़ॉल्ट: चालू"
 
@@ -338,18 +339,34 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
+#, fuzzy
+msgid "Use Part Files"
+msgstr "aria2 का प्रयोग करें"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:33
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will use <code>.part</code> files instead of writing "
+"directly into the output file."
+msgstr ""
+"सक्षम होने पर, Parabolic ऑडियो डाउनलोड के लिए स्वचालित रूप से उन्नत विकल्प "
+"<code>थंबनेल काटें</code> चालू कर देगा।"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:39
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:33
+#: docs/yelp/C/downloader.page:40
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
 msgstr "सक्षम होने पर, Parabolic YouTube डाउनलोड पर स्पॉन्सरब्लॉक एक्सटेंशन लागू करेगा।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:35
+#: docs/yelp/C/downloader.page:42
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -358,12 +375,12 @@ msgstr ""
 "अन्य साइटों से डाउनलोड प्रभावित नहीं होंगे (अर्थात वे विफल नहीं होंगे)।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:42
+#: docs/yelp/C/downloader.page:49
 msgid "Speed Limit"
 msgstr "गति सीमा"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:43
+#: docs/yelp/C/downloader.page:50
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -373,39 +390,39 @@ msgstr ""
 "<code>स्पीड लिमिट</code> सक्षम हो। 512 और 10240 के बीच एक पूर्णांक मान होना चाहिए।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloader.page:52
 msgid "Default: 1024"
 msgstr "डिफ़ॉल्ट: 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:49
+#: docs/yelp/C/downloader.page:56
 msgid "Proxy URL"
 msgstr "प्रॉक्सी URL"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:50
+#: docs/yelp/C/downloader.page:57
 msgid "The url of the proxy server to use."
 msgstr "उपयोग करने के लिए प्रॉक्सी सर्वर का URL।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:59
 #, fuzzy
 msgid "Default: No URL"
 msgstr "डिफ़ॉल्ट: चालू"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
+#: docs/yelp/C/downloader.page:63
 msgid "Cookies from Browser"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:64
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
+#: docs/yelp/C/downloader.page:65 docs/yelp/C/downloader.page:74
 #, fuzzy
 msgid ""
 "This may be useful when downloading media that requires a login, for "
@@ -416,28 +433,28 @@ msgstr ""
 "के लिए: निजी YouTube वीडियो।"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:59
+#: docs/yelp/C/downloader.page:66
 msgid "This option is on available on non sandboxed platforms."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:61
+#: docs/yelp/C/downloader.page:68
 #, fuzzy
 msgid "Default: None"
 msgstr "डिफ़ॉल्ट: चालू"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:65
+#: docs/yelp/C/downloader.page:72
 msgid "Cookies File"
 msgstr "कुकीज़ फाइल"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:66
+#: docs/yelp/C/downloader.page:73
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:75
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
@@ -446,7 +463,7 @@ msgstr ""
 "करें:"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:69
+#: docs/yelp/C/downloader.page:76
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -455,7 +472,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:77
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -464,12 +481,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:72
+#: docs/yelp/C/downloader.page:79
 msgid "Use these extensions at your own risk."
 msgstr "इन एक्सटेंशन का उपयोग अपने जोखिम पर करें।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:75
+#: docs/yelp/C/downloader.page:82
 msgid "Default: No File Selected"
 msgstr "डिफ़ॉल्ट: कोई फाइल चयनित नहीं"
 

@@ -257,6 +257,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     std::vector<std::string> DownloadOptions::toArgumentVector(const DownloaderOptions& downloaderOptions) const
     {
         std::vector<std::string> arguments;
+        //Basic Options
         arguments.push_back(m_url);
         arguments.push_back("--xff");
         arguments.push_back("default");
@@ -269,6 +270,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
+        //Downloader Options
         if(downloaderOptions.getOverwriteExistingFiles() && !shouldDownloadResume())
         {
             arguments.push_back("--force-overwrites");
@@ -280,126 +282,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(downloaderOptions.getLimitCharacters())
         {
             arguments.push_back("--windows-filenames");
-        }
-        if(downloaderOptions.getVerboseLogging())
-        {
-            arguments.push_back("--verbose");
-        }
-        if(m_credential)
-        {
-            if(!m_credential->getUsername().empty() && !m_credential->getPassword().empty())
-            {
-                arguments.push_back("--username");
-                arguments.push_back(m_credential->getUsername());
-                arguments.push_back("--password");
-                arguments.push_back(m_credential->getPassword());
-            }
-            else if(!m_credential->getPassword().empty())
-            {
-                arguments.push_back("--video-password");
-                arguments.push_back(m_credential->getPassword());
-            }
-        }
-        if(downloaderOptions.getUseAria())
-        {
-            arguments.push_back("--downloader");
-            arguments.push_back(Environment::findDependency("aria2c").string());
-            arguments.push_back("--downloader-args");
-            arguments.push_back("aria2c:--summary-interval=" + std::string(Environment::getOperatingSystem() == OperatingSystem::Windows ? "0" : "1") + " --enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
-        }
-        if(!downloaderOptions.getProxyUrl().empty())
-        {
-            arguments.push_back("--proxy");
-            arguments.push_back(downloaderOptions.getProxyUrl());
-        }
-        if(downloaderOptions.getCookiesBrowser() != Browser::None && Environment::getDeploymentMode() == DeploymentMode::Local)
-        {
-            arguments.push_back("--cookies-from-browser");
-            switch(downloaderOptions.getCookiesBrowser())
-            {
-            case Browser::Brave:
-                arguments.push_back("brave");
-                break;
-            case Browser::Chrome:
-                arguments.push_back("chrome");
-                break;
-            case Browser::Chromium:
-                arguments.push_back("chromium");
-                break;
-            case Browser::Edge:
-                arguments.push_back("edge");
-                break;
-            case Browser::Firefox:
-                arguments.push_back("firefox");
-                break;
-            case Browser::Opera:
-                arguments.push_back("opera");
-                break;
-            case Browser::Vivaldi:
-                arguments.push_back("vivaldi");
-                break;
-            case Browser::Whale:
-                arguments.push_back("whale");
-                break;
-            default:
-                break;
-            }
-        }
-        else if(std::filesystem::exists(downloaderOptions.getCookiesPath()))
-        {
-            arguments.push_back("--cookies");
-            arguments.push_back(downloaderOptions.getCookiesPath().string());
-        }
-        if(downloaderOptions.getYouTubeSponsorBlock())
-        {
-            arguments.push_back("--sponsorblock-remove");
-            arguments.push_back("default");
-        }
-        if(downloaderOptions.getEmbedMetadata())
-        {
-            arguments.push_back("--embed-metadata");
-            if(downloaderOptions.getRemoveSourceData())
-            {
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_comment>)");
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_description>)");
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_synopsis>)");
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_purl>)");
-            }
-            if(m_playlistPosition != -1)
-            {
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
-            }
-        }
-        if(downloaderOptions.getEmbedThumbnails())
-        {
-            if(m_fileType.supportsThumbnails())
-            {
-                arguments.push_back("--embed-thumbnail");
-            }
-            else
-            {
-                arguments.push_back("--write-thumbnail");
-            }
-            arguments.push_back("--convert-thumbnails");
-            arguments.push_back("png>png/jpg");
-            if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
-            {
-                arguments.push_back("--postprocessor-args");
-                arguments.push_back("ThumbnailsConvertor:-vf crop=ih:ih");
-            }
-        }
-        if(downloaderOptions.getEmbedChapters())
-        {
-            arguments.push_back("--embed-chapters");
-        }
-        else
-        {
-            arguments.push_back("--no-embed-chapters");
         }
         std::string formatSort;
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
@@ -457,6 +339,131 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--format-sort");
             arguments.push_back(formatSort);
             arguments.push_back("--format-sort-force");
+        }
+        if(downloaderOptions.getVerboseLogging())
+        {
+            arguments.push_back("--verbose");
+        }
+        if(!downloaderOptions.getUsePartFiles())
+        {
+            arguments.push_back("--no-part");
+        }
+        if(downloaderOptions.getYouTubeSponsorBlock())
+        {
+            arguments.push_back("--sponsorblock-remove");
+            arguments.push_back("default");
+        }
+        if(!downloaderOptions.getProxyUrl().empty())
+        {
+            arguments.push_back("--proxy");
+            arguments.push_back(downloaderOptions.getProxyUrl());
+        }
+        if(downloaderOptions.getCookiesBrowser() != Browser::None && Environment::getDeploymentMode() == DeploymentMode::Local)
+        {
+            arguments.push_back("--cookies-from-browser");
+            switch(downloaderOptions.getCookiesBrowser())
+            {
+            case Browser::Brave:
+                arguments.push_back("brave");
+                break;
+            case Browser::Chrome:
+                arguments.push_back("chrome");
+                break;
+            case Browser::Chromium:
+                arguments.push_back("chromium");
+                break;
+            case Browser::Edge:
+                arguments.push_back("edge");
+                break;
+            case Browser::Firefox:
+                arguments.push_back("firefox");
+                break;
+            case Browser::Opera:
+                arguments.push_back("opera");
+                break;
+            case Browser::Vivaldi:
+                arguments.push_back("vivaldi");
+                break;
+            case Browser::Whale:
+                arguments.push_back("whale");
+                break;
+            default:
+                break;
+            }
+        }
+        else if(std::filesystem::exists(downloaderOptions.getCookiesPath()))
+        {
+            arguments.push_back("--cookies");
+            arguments.push_back(downloaderOptions.getCookiesPath().string());
+        }
+        if(downloaderOptions.getEmbedMetadata())
+        {
+            arguments.push_back("--embed-metadata");
+            if(downloaderOptions.getRemoveSourceData())
+            {
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(":(?P<meta_comment>)");
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(":(?P<meta_description>)");
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(":(?P<meta_synopsis>)");
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(":(?P<meta_purl>)");
+            }
+            if(m_playlistPosition != -1)
+            {
+                arguments.push_back("--parse-metadata");
+                arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
+            }
+        }
+        if(downloaderOptions.getEmbedThumbnails())
+        {
+            if(m_fileType.supportsThumbnails())
+            {
+                arguments.push_back("--embed-thumbnail");
+            }
+            else
+            {
+                arguments.push_back("--write-thumbnail");
+            }
+            arguments.push_back("--convert-thumbnails");
+            arguments.push_back("png>png/jpg");
+            if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
+            {
+                arguments.push_back("--postprocessor-args");
+                arguments.push_back("ThumbnailsConvertor:-vf crop=ih:ih");
+            }
+        }
+        if(downloaderOptions.getEmbedChapters())
+        {
+            arguments.push_back("--embed-chapters");
+        }
+        else
+        {
+            arguments.push_back("--no-embed-chapters");
+        }
+        if(downloaderOptions.getUseAria())
+        {
+            arguments.push_back("--downloader");
+            arguments.push_back(Environment::findDependency("aria2c").string());
+            arguments.push_back("--downloader-args");
+            arguments.push_back("aria2c:--summary-interval=" + std::string(Environment::getOperatingSystem() == OperatingSystem::Windows ? "0" : "1") + " --enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
+        }
+        //Download Options
+        if(m_credential)
+        {
+            if(!m_credential->getUsername().empty() && !m_credential->getPassword().empty())
+            {
+                arguments.push_back("--username");
+                arguments.push_back(m_credential->getUsername());
+                arguments.push_back("--password");
+                arguments.push_back(m_credential->getPassword());
+            }
+            else if(!m_credential->getPassword().empty())
+            {
+                arguments.push_back("--video-password");
+                arguments.push_back(m_credential->getPassword());
+            }
         }
         if(m_fileType.isAudio())
         {

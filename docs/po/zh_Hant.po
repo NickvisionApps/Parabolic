@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-17 19:51-0400\n"
+"POT-Creation-Date: 2025-05-20 21:30-0400\n"
 "PO-Revision-Date: 2025-05-05 17:36+0000\n"
 "Last-Translator: YC Tsai <ataiwanaton@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -70,7 +70,7 @@ msgstr "雖然使用 aira2c 會增加下載速度，但使用者介面將不會�
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
-#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
 msgstr "預設值：關閉"
@@ -163,8 +163,9 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
 #: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
-#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
-#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
+#: docs/yelp/C/downloader.page:35 docs/yelp/C/downloads.page:41
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "預設值：開啟"
 
@@ -305,18 +306,32 @@ msgstr "啟用後每個下載會有更多 <code>yt-dlp</code> 提供的冗餘記
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
+#, fuzzy
+msgid "Use Part Files"
+msgstr "使用 aria2"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:33
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will use <code>.part</code> files instead of writing "
+"directly into the output file."
+msgstr "啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:39
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube 使用 SponsorBlock"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:33
+#: docs/yelp/C/downloader.page:40
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
 msgstr "啟用後 Parabolic 將會對 YouTube 下載啟用 SponsorBlock 附加元件。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:35
+#: docs/yelp/C/downloader.page:42
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -325,12 +340,12 @@ msgstr ""
 "(也就是說不會造成下載失敗)。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:42
+#: docs/yelp/C/downloader.page:49
 msgid "Speed Limit"
 msgstr "速度限制"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:43
+#: docs/yelp/C/downloader.page:50
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -340,72 +355,72 @@ msgstr ""
 "必須是 512 到 10240 之間的整數。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloader.page:52
 msgid "Default: 1024"
 msgstr "預設值：1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:49
+#: docs/yelp/C/downloader.page:56
 msgid "Proxy URL"
 msgstr "代理 URL"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:50
+#: docs/yelp/C/downloader.page:57
 msgid "The url of the proxy server to use."
 msgstr "代理伺服器使用的 URL。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:59
 msgid "Default: No URL"
 msgstr "預設值：沒有 URL"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
+#: docs/yelp/C/downloader.page:63
 msgid "Cookies from Browser"
 msgstr "瀏覽器的 Cookies"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:64
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr "瀏覽器讀取的 Cookies 並傳遞給 yt-dlp 下載引擎。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
+#: docs/yelp/C/downloader.page:65 docs/yelp/C/downloader.page:74
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
 msgstr "下載媒體需要登入時，例如私人 YouTube 影片，這個選項會很實用。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:59
+#: docs/yelp/C/downloader.page:66
 msgid "This option is on available on non sandboxed platforms."
 msgstr "這個選項只有在非沙盒環境下可用。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:61
+#: docs/yelp/C/downloader.page:68
 msgid "Default: None"
 msgstr "預設值：無"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:65
+#: docs/yelp/C/downloader.page:72
 msgid "Cookies File"
 msgstr "Cookies 檔案"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:66
+#: docs/yelp/C/downloader.page:73
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr "傳遞給 yt-dlp 下載引擎的 .txt cookies 資訊檔案。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:75
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr "使用以下其中一個擴充元件來取得瀏覽器的 cookies 檔案："
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:69
+#: docs/yelp/C/downloader.page:76
 #, fuzzy
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
@@ -415,7 +430,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:77
 #, fuzzy
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
@@ -425,12 +440,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:72
+#: docs/yelp/C/downloader.page:79
 msgid "Use these extensions at your own risk."
 msgstr "使用這些擴充元件請自行負擔風險。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:75
+#: docs/yelp/C/downloader.page:82
 msgid "Default: No File Selected"
 msgstr "預設值：沒有選擇任何檔案"
 

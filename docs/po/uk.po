@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-17 19:51-0400\n"
+"POT-Creation-Date: 2025-05-20 21:30-0400\n"
 "PO-Revision-Date: 2025-02-02 05:02+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -74,7 +74,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
-#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
 msgstr "За замовчуванням: Вимк"
@@ -172,8 +172,9 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
 #: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
-#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
-#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
+#: docs/yelp/C/downloader.page:35 docs/yelp/C/downloads.page:41
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "За замовчуванням: Ввімк"
 
@@ -332,11 +333,27 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
+#, fuzzy
+msgid "Use Part Files"
+msgstr "Використовувати aria2"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:33
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will use <code>.part</code> files instead of writing "
+"directly into the output file."
+msgstr ""
+"Якщо увімкнено, Parabolic експортуватиме опис медіа у файл <code>."
+"description</code> разом з завантаженим файлом."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:39
 msgid "Use SponsorBlock for YouTube"
 msgstr "Використовувати SponsorBlock для YouTube"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:33
+#: docs/yelp/C/downloader.page:40
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
@@ -345,7 +362,7 @@ msgstr ""
 "YouTube."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:35
+#: docs/yelp/C/downloader.page:42
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -355,12 +372,12 @@ msgstr ""
 "призведе до їх невдачі)."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:42
+#: docs/yelp/C/downloader.page:49
 msgid "Speed Limit"
 msgstr "Обмеження швидкості"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:43
+#: docs/yelp/C/downloader.page:50
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -371,32 +388,32 @@ msgstr ""
 "цілим числом від 512 до 10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloader.page:52
 msgid "Default: 1024"
 msgstr "За замовчуванням: 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:49
+#: docs/yelp/C/downloader.page:56
 msgid "Proxy URL"
 msgstr "Проксі URL"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:50
+#: docs/yelp/C/downloader.page:57
 msgid "The url of the proxy server to use."
 msgstr "URL-адреса проксі-сервера для використання."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:59
 msgid "Default: No URL"
 msgstr "За замовчуванням: Немає URL-адреси"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
+#: docs/yelp/C/downloader.page:63
 msgid "Cookies from Browser"
 msgstr "Файли cookie з браузера"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:64
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
@@ -404,7 +421,7 @@ msgstr ""
 "движок yt-dlp."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
+#: docs/yelp/C/downloader.page:65 docs/yelp/C/downloader.page:74
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
@@ -413,29 +430,29 @@ msgstr ""
 "систему, наприклад: приватних відео з YouTube."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:59
+#: docs/yelp/C/downloader.page:66
 msgid "This option is on available on non sandboxed platforms."
 msgstr "Цей параметр доступний лише на платформах без пісочниці (sandboxed)."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:61
+#: docs/yelp/C/downloader.page:68
 msgid "Default: None"
 msgstr "За замовчуванням: Відсутній"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:65
+#: docs/yelp/C/downloader.page:72
 msgid "Cookies File"
 msgstr "Файл cookie"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:66
+#: docs/yelp/C/downloader.page:73
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr ""
 "Файл .txt з файлами cookie, який передається yt-dlp під час роботи "
 "завантажувача."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:75
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
@@ -444,7 +461,7 @@ msgstr ""
 "вашого браузера:"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:69
+#: docs/yelp/C/downloader.page:76
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -453,7 +470,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:77
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -462,12 +479,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:72
+#: docs/yelp/C/downloader.page:79
 msgid "Use these extensions at your own risk."
 msgstr "Використовуйте ці розширення на свій страх і ризик."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:75
+#: docs/yelp/C/downloader.page:82
 msgid "Default: No File Selected"
 msgstr "За замовчуванням: Файл не вибрано"
 

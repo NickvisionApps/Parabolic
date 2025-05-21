@@ -22,16 +22,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         DownloaderOptions();
         /**
-         * @brief Gets whether or not to overwrite existing files.
-         * @return True to overwrite existing files, else false
-         */
-        bool getOverwriteExistingFiles() const;
-        /**
-         * @brief Sets whether or not to overwrite existing files.
-         * @param overwrite True to overwrite existing files, else false
-         */
-        void setOverwriteExistingFiles(bool overwrite);
-        /**
          * @brief Gets the maximum number of active downloads.
          * @brief Should be between 1 and 10.
          * @return The maximum number of active downloads
@@ -42,6 +32,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param max The new maximum number of active downloads
          */
         void setMaxNumberOfActiveDownloads(int max);
+        /**
+         * @brief Gets whether or not to overwrite existing files.
+         * @return True to overwrite existing files, else false
+         */
+        bool getOverwriteExistingFiles() const;
+        /**
+         * @brief Sets whether or not to overwrite existing files.
+         * @param overwrite True to overwrite existing files, else false
+         */
+        void setOverwriteExistingFiles(bool overwrite);
         /**
          * @brief Gets whether or not to limit character to those supported by Windows only.
          * @return True to limit characters, else false
@@ -103,46 +103,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setPreferredSubtitleFormat(SubtitleFormat format);
         /**
-         * @brief Gets whether or not to use aria2 for downloading.
-         * @return True to use aria2, else false
-         */
-        bool getUseAria() const;
-        /**
-         * @brief Sets whether or not to use aria2 for downloading.
-         * @param useAria True to use aria2, else false
-         */
-        void setUseAria(bool useAria);
-        /**
-         * @brief Gets the maximum number of connections per server for each aria2 download.
-         * @brief This is equivalent to the -x flag in aria2.
-         * @brief Should be between 1 and 16.
-         * @return The maximum number of connections per server
-         */
-        int getAriaMaxConnectionsPerServer() const;
-        /**
-         * @brief Sets the maximum number of connections per server for each aria2 download.
-         * @brief This is equivalent to the -x flag in aria2.
-         * @brief Should be between 1 and 16.
-         * @param maxConnections The new maximum number of connections per server
-         */
-        void setAriaMaxConnectionsPerServer(int maxConnections);
-        /**
-         * @brief Gets the minimum split size for each aria2 download.
-         * @brief This is equivalent to the -k flag in aria2.
-         * @brief Should be in MiB/s.
-         * @brief Should be between 1 and 1024.
-         * @return The minimum split size
-         */
-        int getAriaMinSplitSize() const;
-        /**
-         * @brief Sets the minimum split size for each aria2 download.
-         * @brief This is equivalent to the -k flag in aria2.
-         * @brief Should be in MiB/s.
-         * @brief Should be between 1 and 1024.
-         * @param minSplitSize The new minimum split size
-         */
-        void setAriaMinSplitSize(int minSplitSize);
-        /**
          * @brief Gets whether or not to log verbose output.
          * @return True to log verbose output, else false
          */
@@ -152,6 +112,26 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param verbose True to log verbose output, else false
          */
         void setVerboseLogging(bool verbose);
+        /**
+         * @brief Gets whether or not to use the YouTube SponsorBlock extension.
+         * @return True to use SponsorBlock, else false
+         */
+        bool getYouTubeSponsorBlock() const;
+        /**
+         * @brief Sets whether or not to use the YouTube SponsorBlock extension.
+         * @param sponsorBlock True to use SponsorBlock, else false
+         */
+        void setYouTubeSponsorBlock(bool sponsorBlock);
+        /**
+         * @brief Gets whether or not to use part files when downloading.
+         * @return True to use part files, else false
+         */
+        bool getUsePartFiles() const;
+        /**
+         * @brief Sets whether or not to use part files when downloading.
+         * @param part True to use part files, else false
+         */
+        void setUsePartFiles(bool part);
         /**
          * @brief Gets the speed limit for each download.
          * @brief Should be in KiB/s.
@@ -196,16 +176,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param path The new path to the cookies file
          */
         void setCookiesPath(const std::filesystem::path& path);
-        /**
-         * @brief Gets whether or not to use the YouTube SponsorBlock extension.
-         * @return True to use SponsorBlock, else false
-         */
-        bool getYouTubeSponsorBlock() const;
-        /**
-         * @brief Sets whether or not to use the YouTube SponsorBlock extension.
-         * @param sponsorBlock True to use SponsorBlock, else false
-         */
-        void setYouTubeSponsorBlock(bool sponsorBlock);
         /**
          * @brief Gets whether or not to embed metadata.
          * @return True to embed metadata, else false
@@ -276,25 +246,66 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param threads The new number of threads to use for postprocessing operations
          */
         void setPostprocessingThreads(int threads);
+        /**
+         * @brief Gets whether or not to use aria2 for downloading.
+         * @return True to use aria2, else false
+         */
+        bool getUseAria() const;
+        /**
+         * @brief Sets whether or not to use aria2 for downloading.
+         * @param useAria True to use aria2, else false
+         */
+        void setUseAria(bool useAria);
+        /**
+         * @brief Gets the maximum number of connections per server for each aria2 download.
+         * @brief This is equivalent to the -x flag in aria2.
+         * @brief Should be between 1 and 16.
+         * @return The maximum number of connections per server
+         */
+        int getAriaMaxConnectionsPerServer() const;
+        /**
+         * @brief Sets the maximum number of connections per server for each aria2 download.
+         * @brief This is equivalent to the -x flag in aria2.
+         * @brief Should be between 1 and 16.
+         * @param maxConnections The new maximum number of connections per server
+         */
+        void setAriaMaxConnectionsPerServer(int maxConnections);
+        /**
+         * @brief Gets the minimum split size for each aria2 download.
+         * @brief This is equivalent to the -k flag in aria2.
+         * @brief Should be in MiB/s.
+         * @brief Should be between 1 and 1024.
+         * @return The minimum split size
+         */
+        int getAriaMinSplitSize() const;
+        /**
+         * @brief Sets the minimum split size for each aria2 download.
+         * @brief This is equivalent to the -k flag in aria2.
+         * @brief Should be in MiB/s.
+         * @brief Should be between 1 and 1024.
+         * @param minSplitSize The new minimum split size
+         */
+        void setAriaMinSplitSize(int minSplitSize);
 
     private:
-        bool m_overwriteExistingFiles;
+        //Downloads
         int m_maxNumberOfActiveDownloads;
+        bool m_overwriteExistingFiles;
         bool m_limitCharacters;
         bool m_includeMediaIdInTitle;
         bool m_includeAutoGeneratedSubtitles;
         VideoCodec m_preferredVideoCodec;
         AudioCodec m_preferredAudioCodec;
         SubtitleFormat m_preferredSubtitleFormat;
-        bool m_useAria;
-        int m_ariaMaxConnectionsPerServer;
-        int m_ariaMinSplitSize;
+        //Downloader
         bool m_verboseLogging;
+        bool m_usePartFiles;
+        bool m_youTubeSponsorBlock;
         int m_speedLimit;
         std::string m_proxyUrl;
         Browser m_cookiesBrowser;
         std::filesystem::path m_cookiesPath;
-        bool m_youTubeSponsorBlock;
+        //Converter
         bool m_embedMetadata;
         bool m_removeSourceData;
         bool m_embedThumbnails;
@@ -302,6 +313,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool m_embedChapters;
         bool m_embedSubtitles;
         int m_postprocessingThreads;
+        //aria2
+        bool m_useAria;
+        int m_ariaMaxConnectionsPerServer;
+        int m_ariaMinSplitSize;
     };
 }
 

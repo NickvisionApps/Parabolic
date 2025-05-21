@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-20 20:51-0400\n"
+"POT-Creation-Date: 2025-05-20 21:30-0400\n"
 "PO-Revision-Date: 2025-05-15 22:01+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -73,7 +73,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
-#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
 #: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
 msgstr "الافتراضي: إيقاف"
@@ -171,8 +171,9 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
 #: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
-#: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
-#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:49
+#: docs/yelp/C/downloader.page:35 docs/yelp/C/downloads.page:41
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "الإفتراضي: مفعل"
 
@@ -325,11 +326,27 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
+#, fuzzy
+msgid "Use Part Files"
+msgstr "إستخدم آريا٢"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:33
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will use <code>.part</code> files instead of writing "
+"directly into the output file."
+msgstr ""
+"عند التفعيل، بارابولِك سيتم مسح حقول البيانات الوصفية التي تحتوي على عنوان "
+"URL والمعلومات التعريفية الأخرى للوسائط."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:39
 msgid "Use SponsorBlock for YouTube"
 msgstr "استخدم \"مانع الإعلان لليوتيوب\""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:33
+#: docs/yelp/C/downloader.page:40
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
@@ -338,7 +355,7 @@ msgstr ""
 "YouTube."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:35
+#: docs/yelp/C/downloader.page:42
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -347,12 +364,12 @@ msgstr ""
 "مفعلاً لن يؤثر على التنزيلات من المواقع الأخرى (أي لن يتسبب في فشلها)."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:42
+#: docs/yelp/C/downloader.page:49
 msgid "Speed Limit"
 msgstr "حدُّ السرعة"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:43
+#: docs/yelp/C/downloader.page:50
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -362,32 +379,32 @@ msgstr ""
 "<code>حد السرعة</code> مفعلاً. يجب أن تكون القيمة عددًا صحيحًا بين 512 و10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloader.page:52
 msgid "Default: 1024"
 msgstr "افتراضي:1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:49
+#: docs/yelp/C/downloader.page:56
 msgid "Proxy URL"
 msgstr "رابط الوكيل"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:50
+#: docs/yelp/C/downloader.page:57
 msgid "The url of the proxy server to use."
 msgstr "عنوان URL الخاص بخادم الوكيل لاستخدامه."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:59
 msgid "Default: No URL"
 msgstr "الافتراضي: بلا رابط"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
+#: docs/yelp/C/downloader.page:63
 msgid "Cookies from Browser"
 msgstr "معرّفات الإرتباط من المتصفح"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:64
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
@@ -395,7 +412,7 @@ msgstr ""
 "التنزيل الخاص بـ <code>yt-dlp</code>."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
+#: docs/yelp/C/downloader.page:65 docs/yelp/C/downloader.page:74
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
@@ -404,36 +421,36 @@ msgstr ""
 "الخاصة"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:59
+#: docs/yelp/C/downloader.page:66
 msgid "This option is on available on non sandboxed platforms."
 msgstr "هذا الخيار متاح فقط على الأنظمة غير المعزولة (non-sandboxed)."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:61
+#: docs/yelp/C/downloader.page:68
 msgid "Default: None"
 msgstr "الافتراضي: لا شيء"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:65
+#: docs/yelp/C/downloader.page:72
 msgid "Cookies File"
 msgstr "مِلَفّ تعريف الارتباط"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:66
+#: docs/yelp/C/downloader.page:73
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr ""
 "ملف نصي يحتوي على ملفات تعريف الارتباط لتمريرها إلى yt-dlp عند تشغيل محرك "
 "التنزيل."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:75
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr "استخدم أحد الامتدادات التالية للحصول على ملف تعريف الارتباط من متصفحك:"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:69
+#: docs/yelp/C/downloader.page:76
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -442,7 +459,7 @@ msgstr ""
 "cclelndahbckbenkjhflpdbgdldlbecc"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:77
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -451,12 +468,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:72
+#: docs/yelp/C/downloader.page:79
 msgid "Use these extensions at your own risk."
 msgstr "استخدم هذه الإضافات على مسؤوليتك الخاصة."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:75
+#: docs/yelp/C/downloader.page:82
 msgid "Default: No File Selected"
 msgstr "الافتراضي: لم يتم تحديد ملف"
 

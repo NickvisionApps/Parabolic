@@ -136,6 +136,9 @@ namespace Ui
             QLabel* lblVerboseLogging{ new QLabel(parent) };
             lblVerboseLogging->setText(_("Verbose Logging"));
             chkVerboseLogging = new Switch(parent);
+            QLabel* lblUsePartFiles{ new QLabel(parent) };
+            lblUsePartFiles->setText(_("Use Part Files"));
+            chkUsePartFiles = new Switch(parent);
             QLabel* lblSponsorBlock{ new QLabel(parent) };
             lblSponsorBlock->setText(_("Use SponsorBlock for YouTube"));
             chkSponsorBlock = new Switch(parent);
@@ -181,6 +184,7 @@ namespace Ui
             btnClearCookiesFile->setText(_("Clear Cookies File"));
             QFormLayout* layoutDownloader{ new QFormLayout() };
             layoutDownloader->addRow(lblVerboseLogging, chkVerboseLogging);
+            layoutDownloader->addRow(lblUsePartFiles, chkUsePartFiles);
             layoutDownloader->addRow(lblSponsorBlock, chkSponsorBlock);
             layoutDownloader->addRow(lblSpeedLimit, spnSpeedLimit);
             layoutDownloader->addRow(lblProxyUrl, txtProxyUrl);
@@ -297,6 +301,7 @@ namespace Ui
         QComboBox* cmbPreferredAudioCodec;
         QComboBox* cmbPreferredSubtitleFormat;
         Switch* chkVerboseLogging;
+        Switch* chkUsePartFiles;
         Switch* chkSponsorBlock;
         QSpinBox* spnSpeedLimit;
         LineEdit* txtProxyUrl;
@@ -349,6 +354,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->cmbPreferredAudioCodec->setCurrentIndex(static_cast<int>(options.getPreferredAudioCodec()));
         m_ui->cmbPreferredSubtitleFormat->setCurrentIndex(static_cast<int>(options.getPreferredSubtitleFormat()));
         m_ui->chkVerboseLogging->setChecked(options.getVerboseLogging());
+        m_ui->chkUsePartFiles->setChecked(options.getUsePartFiles());
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
         m_ui->spnSpeedLimit->setValue(options.getSpeedLimit());
         m_ui->txtProxyUrl->setText(QString::fromStdString(options.getProxyUrl()));
@@ -411,6 +417,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         options.setPreferredAudioCodec(static_cast<AudioCodec>(m_ui->cmbPreferredAudioCodec->currentIndex()));
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(m_ui->cmbPreferredSubtitleFormat->currentIndex()));
         options.setVerboseLogging(m_ui->chkVerboseLogging->isChecked());
+        options.setUsePartFiles(m_ui->chkUsePartFiles->isChecked());
         options.setYouTubeSponsorBlock(m_ui->chkSponsorBlock->isChecked());
         options.setSpeedLimit(m_ui->spnSpeedLimit->value());
         options.setProxyUrl(m_ui->txtProxyUrl->text().toStdString());
