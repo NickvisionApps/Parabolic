@@ -286,21 +286,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return;
         }
-        CompletedNotificationPreference preference{ m_dataFileManager.get<Configuration>("config").getCompletedNotificationPreference() };
-        if(preference == CompletedNotificationPreference::ForEach)
+        if(args.getStatus() == DownloadStatus::Success)
         {
-            if(args.getStatus() == DownloadStatus::Success)
-            {
-                ShellNotification::send({ _("Download Finished"), _f("{} has finished downloading", args.getPath().filename().string()), NotificationSeverity::Success, "open", args.getPath().string() }, m_appInfo, _("Open"));
-            }
-            else
-            {
-                ShellNotification::send({ _("Download Finished With Error"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
-            }
+            ShellNotification::send({ _("Download Finished"), _f("{} has finished downloading", args.getPath().filename().string()), NotificationSeverity::Success, "open", args.getPath().string() }, m_appInfo, _("Open"));
         }
-        else if(preference == CompletedNotificationPreference::AllCompleted && m_downloadManager.getRemainingDownloadsCount() == 0)
+        else
         {
-            ShellNotification::send({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational }, m_appInfo);
+            ShellNotification::send({ _("Download Finished With Error"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
         }
     }
 }

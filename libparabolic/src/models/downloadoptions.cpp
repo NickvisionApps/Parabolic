@@ -259,6 +259,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::vector<std::string> arguments;
         //Basic Options
         arguments.push_back(m_url);
+        arguments.push_back("--verbose");
         arguments.push_back("--xff");
         arguments.push_back("default");
         arguments.push_back("--no-warnings");
@@ -339,10 +340,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--format-sort");
             arguments.push_back(formatSort);
             arguments.push_back("--format-sort-force");
-        }
-        if(downloaderOptions.getVerboseLogging())
-        {
-            arguments.push_back("--verbose");
         }
         if(!downloaderOptions.getUsePartFiles())
         {

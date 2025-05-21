@@ -4,7 +4,6 @@
 #include <string>
 #include <libnick/app/datafilebase.h>
 #include <libnick/app/windowgeometry.h>
-#include "completednotificationpreference.h"
 #include "downloaderoptions.h"
 #include "theme.h"
 
@@ -52,16 +51,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param check Whether or not to automatically check for updates
          */
         void setAutomaticallyCheckForUpdates(bool check);
-        /**
-         * @brief Gets the completed notification preference for downloads.
-         * @return The completed notification preference
-         */
-        CompletedNotificationPreference getCompletedNotificationPreference() const;
-        /**
-         * @brief Sets the completed notification preference for downloads.
-         * @param preference The new completed notification preference
-         */
-        void setCompletedNotificationPreference(CompletedNotificationPreference preference);
         /**
          * @brief Gets whether or not to prevent the system from suspending while Parabolic is running.
          * @return True to prevent the system from suspending, else false

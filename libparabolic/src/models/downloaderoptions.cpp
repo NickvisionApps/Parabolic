@@ -15,7 +15,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_preferredVideoCodec{ VideoCodec::Any },
         m_preferredAudioCodec{ AudioCodec::Any },
         m_preferredSubtitleFormat{ SubtitleFormat::Any },
-        m_verboseLogging{ true },
         m_usePartFiles{ true },
         m_youTubeSponsorBlock{ false },
         m_speedLimit{ 1024 },
@@ -116,16 +115,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloaderOptions::setPreferredSubtitleFormat(SubtitleFormat format)
     {
         m_preferredSubtitleFormat = format;
-    }
-
-    bool DownloaderOptions::getVerboseLogging() const
-    {
-        return m_verboseLogging;
-    }
-
-    void DownloaderOptions::setVerboseLogging(bool verbose)
-    {
-        m_verboseLogging = verbose;
     }
 
     bool DownloaderOptions::getUsePartFiles() const

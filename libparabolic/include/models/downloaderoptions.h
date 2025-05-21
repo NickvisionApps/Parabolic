@@ -103,15 +103,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setPreferredSubtitleFormat(SubtitleFormat format);
         /**
-         * @brief Gets whether or not to log verbose output.
-         * @return True to log verbose output, else false
+         * @brief Gets whether or not to use part files when downloading.
+         * @return True to use part files, else false
          */
-        bool getVerboseLogging() const;
+        bool getUsePartFiles() const;
         /**
-         * @brief Sets whether or not to log verbose output.
-         * @param verbose True to log verbose output, else false
+         * @brief Sets whether or not to use part files when downloading.
+         * @param part True to use part files, else false
          */
-        void setVerboseLogging(bool verbose);
+        void setUsePartFiles(bool part);
         /**
          * @brief Gets whether or not to use the YouTube SponsorBlock extension.
          * @return True to use SponsorBlock, else false
@@ -122,16 +122,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param sponsorBlock True to use SponsorBlock, else false
          */
         void setYouTubeSponsorBlock(bool sponsorBlock);
-        /**
-         * @brief Gets whether or not to use part files when downloading.
-         * @return True to use part files, else false
-         */
-        bool getUsePartFiles() const;
-        /**
-         * @brief Sets whether or not to use part files when downloading.
-         * @param part True to use part files, else false
-         */
-        void setUsePartFiles(bool part);
         /**
          * @brief Gets the speed limit for each download.
          * @brief Should be in KiB/s.
@@ -298,7 +288,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         AudioCodec m_preferredAudioCodec;
         SubtitleFormat m_preferredSubtitleFormat;
         //Downloader
-        bool m_verboseLogging;
         bool m_usePartFiles;
         bool m_youTubeSponsorBlock;
         int m_speedLimit;

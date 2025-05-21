@@ -37,16 +37,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_configuration.setAutomaticallyCheckForUpdates(check);
     }
 
-    CompletedNotificationPreference PreferencesViewController::getCompletedNotificationPreference() const
-    {
-        return m_configuration.getCompletedNotificationPreference();
-    }
-
-    void PreferencesViewController::setCompletedNotificationPreference(CompletedNotificationPreference preference)
-    {
-        m_configuration.setCompletedNotificationPreference(preference);
-    }
-
     bool PreferencesViewController::getPreventSuspend() const
     {
         return m_configuration.getPreventSuspend();

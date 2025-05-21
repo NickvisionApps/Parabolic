@@ -39,12 +39,6 @@ namespace Ui
             QLabel* lblUpdates{ new QLabel(parent) };
             lblUpdates->setText(_("Automatically Check for Updates"));
             chkUpdates = new Switch(parent);
-            QLabel* lblCompletedNotificationTrigger{ new QLabel(parent) };
-            lblCompletedNotificationTrigger->setText(_("Completed Notification Trigger"));
-            cmbCompletedNotificationTrigger = new QComboBox(parent);
-            cmbCompletedNotificationTrigger->addItem(_("For each download"));
-            cmbCompletedNotificationTrigger->addItem(_("When all downloads finish"));
-            cmbCompletedNotificationTrigger->addItem(_("Never"));
             QLabel* lblPreventSuspend{ new QLabel(parent) };
             lblPreventSuspend->setText(_("Prevent Suspend"));
             chkPreventSuspend = new Switch(parent);
@@ -66,7 +60,6 @@ namespace Ui
             QFormLayout* layoutUserInterface{ new QFormLayout() };
             layoutUserInterface->addRow(lblTheme, cmbTheme);
             layoutUserInterface->addRow(lblUpdates, chkUpdates);
-            layoutUserInterface->addRow(lblCompletedNotificationTrigger, cmbCompletedNotificationTrigger);
             layoutUserInterface->addRow(lblPreventSuspend, chkPreventSuspend);
             layoutUserInterface->addRow(lblRecoverCrashedDownloads, chkRecoverCrashedDownloads);
             layoutUserInterface->addRow(lblDownloadImmediately, chkDownloadImmediately);
@@ -133,9 +126,6 @@ namespace Ui
             downloadsPage->setLayout(layoutDownloads);
             viewStack->addWidget(downloadsPage);
             //Downloader Page
-            QLabel* lblVerboseLogging{ new QLabel(parent) };
-            lblVerboseLogging->setText(_("Verbose Logging"));
-            chkVerboseLogging = new Switch(parent);
             QLabel* lblUsePartFiles{ new QLabel(parent) };
             lblUsePartFiles->setText(_("Use Part Files"));
             chkUsePartFiles = new Switch(parent);
@@ -183,7 +173,6 @@ namespace Ui
             btnClearCookiesFile->setIcon(QLEMENTINE_ICON(Action_Close));
             btnClearCookiesFile->setText(_("Clear Cookies File"));
             QFormLayout* layoutDownloader{ new QFormLayout() };
-            layoutDownloader->addRow(lblVerboseLogging, chkVerboseLogging);
             layoutDownloader->addRow(lblUsePartFiles, chkUsePartFiles);
             layoutDownloader->addRow(lblSponsorBlock, chkSponsorBlock);
             layoutDownloader->addRow(lblSpeedLimit, spnSpeedLimit);
@@ -286,7 +275,6 @@ namespace Ui
         QStackedWidget* viewStack;
         QComboBox* cmbTheme;
         Switch* chkUpdates;
-        QComboBox* cmbCompletedNotificationTrigger;
         Switch* chkPreventSuspend;
         Switch* chkRecoverCrashedDownloads;
         Switch* chkDownloadImmediately;
@@ -300,7 +288,6 @@ namespace Ui
         QComboBox* cmbPreferredVideoCodec;
         QComboBox* cmbPreferredAudioCodec;
         QComboBox* cmbPreferredSubtitleFormat;
-        Switch* chkVerboseLogging;
         Switch* chkUsePartFiles;
         Switch* chkSponsorBlock;
         QSpinBox* spnSpeedLimit;
@@ -340,7 +327,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_ui->cmbTheme->setCurrentIndex(static_cast<int>(m_controller->getTheme()));
         m_ui->chkUpdates->setChecked(m_controller->getAutomaticallyCheckForUpdates());
-        m_ui->cmbCompletedNotificationTrigger->setCurrentIndex(static_cast<int>(m_controller->getCompletedNotificationPreference()));
         m_ui->chkPreventSuspend->setChecked(m_controller->getPreventSuspend());
         m_ui->chkRecoverCrashedDownloads->setChecked(m_controller->getRecoverCrashedDownloads());
         m_ui->chkDownloadImmediately->setChecked(m_controller->getDownloadImmediatelyAfterValidation());
@@ -353,7 +339,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->cmbPreferredVideoCodec->setCurrentIndex(static_cast<int>(options.getPreferredVideoCodec()));
         m_ui->cmbPreferredAudioCodec->setCurrentIndex(static_cast<int>(options.getPreferredAudioCodec()));
         m_ui->cmbPreferredSubtitleFormat->setCurrentIndex(static_cast<int>(options.getPreferredSubtitleFormat()));
-        m_ui->chkVerboseLogging->setChecked(options.getVerboseLogging());
         m_ui->chkUsePartFiles->setChecked(options.getUsePartFiles());
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
         m_ui->spnSpeedLimit->setValue(options.getSpeedLimit());
@@ -402,7 +387,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setTheme(static_cast<Shared::Models::Theme>(m_ui->cmbTheme->currentIndex()));
         m_controller->setAutomaticallyCheckForUpdates(m_ui->chkUpdates->isChecked());
-        m_controller->setCompletedNotificationPreference(static_cast<CompletedNotificationPreference>(m_ui->cmbCompletedNotificationTrigger->currentIndex()));
         m_controller->setPreventSuspend(m_ui->chkPreventSuspend->isChecked());
         m_controller->setRecoverCrashedDownloads(m_ui->chkRecoverCrashedDownloads->isChecked());
         m_controller->setDownloadImmediatelyAfterValidation(m_ui->chkDownloadImmediately->isChecked());
@@ -416,7 +400,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         options.setPreferredVideoCodec(static_cast<VideoCodec>(m_ui->cmbPreferredVideoCodec->currentIndex()));
         options.setPreferredAudioCodec(static_cast<AudioCodec>(m_ui->cmbPreferredAudioCodec->currentIndex()));
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(m_ui->cmbPreferredSubtitleFormat->currentIndex()));
-        options.setVerboseLogging(m_ui->chkVerboseLogging->isChecked());
         options.setUsePartFiles(m_ui->chkUsePartFiles->isChecked());
         options.setYouTubeSponsorBlock(m_ui->chkSponsorBlock->isChecked());
         options.setSpeedLimit(m_ui->spnSpeedLimit->value());

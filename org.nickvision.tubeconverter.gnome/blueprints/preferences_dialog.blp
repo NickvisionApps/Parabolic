@@ -23,18 +23,6 @@ Adw.PreferencesDialog root {
         }
       }
 
-      Adw.ComboRow completedNotificationTriggerRow {
-        title: _("Completed Notification Trigger");
-        model: Gtk.StringList {
-          strings [_("For each download"), _("When all downloads finish"), _("Never")]
-        };
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "preferences-system-notifications-symbolic";
-        }
-      }
-
       Adw.SwitchRow preventSuspendRow {
         title: _("Prevent Suspend");
 
@@ -170,15 +158,6 @@ Adw.PreferencesDialog root {
 
     Adw.PreferencesGroup {
       title: _("Downloader");
-
-      Adw.SwitchRow verboseLoggingRow {
-        title: _("Verbose Logging");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "document-text-symbolic";
-        }
-      }
 
       Adw.SwitchRow usePartFilesRow {
         title: _("Use Part Files");

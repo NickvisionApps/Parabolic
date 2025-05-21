@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-20 21:30-0400\n"
+"POT-Creation-Date: 2025-05-21 06:27-0400\n"
 "PO-Revision-Date: 2025-05-12 19:03+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -109,7 +109,6 @@ msgid "translator-credits"
 msgstr "Jozef Gaál <preklady@mayday.sk>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
-#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Obnovené {} stiahnutie"
@@ -129,59 +128,45 @@ msgstr "Aktualizácia sa sťahuje na pozadí a spustí sa keď bude dokončená"
 msgid "Unable to download and install update"
 msgstr "Nie je možné stiahnuť a nainštalovať aktualizáciu"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:294
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:291
 msgid "Download Finished"
 msgstr "Stiahnutie dokončené"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:294
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:291
 msgid "{} has finished downloading"
 msgstr "Súbor „{}“ bol stiahnutý"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:294
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:291
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
 msgid "Open"
 msgstr "Otvoriť"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "Download Finished With Error"
 msgstr "Sťahovanie neprebehlo úspešne"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "{} has finished with an error"
 msgstr "Sťahovanie súboru „{}“ nebolo úspešné"
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:303
-msgid "Downloads Finished"
-msgstr "Sťahovania dokončené"
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:303
-msgid "All downloads have finished"
-msgstr "Všetky sťahovania sú dokončené"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
 msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -200,9 +185,9 @@ msgid "Worst"
 msgstr ""
 
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:209
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:417
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:150
 msgid "None"
 msgstr "Žiadne"
 
@@ -211,22 +196,18 @@ msgid "Audio Description"
 msgstr "Popis zvuku"
 
 #: libparabolic/src/models/format.cpp:299
-#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB"
 
 #: libparabolic/src/models/format.cpp:303
-#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB"
 
 #: libparabolic/src/models/format.cpp:307
-#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:311
-#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B"
 
@@ -575,9 +556,9 @@ msgid "History"
 msgstr "História"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:67
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:270
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:259
 msgid "Downloads"
 msgstr "Stiahnutia"
 
@@ -673,7 +654,7 @@ msgid "Retry Failed Downloads"
 msgstr "Opakovať neúspešné stiahnutia"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:269
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:258
 msgid "User Interface"
 msgstr "Používateľské rozhranie"
 
@@ -699,176 +680,154 @@ msgstr "Systémová"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:43
-msgid "Completed Notification Trigger"
-msgstr "Oznámenie o dokončení"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:45
-msgid "For each download"
-msgstr "Pre každé stiahnutie"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:46
-msgid "When all downloads finish"
-msgstr "Po dokončení všetkých sťahovaní"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:47
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:60
-msgid "Never"
-msgstr "Nikdy"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
 msgid "Prevent Suspend"
 msgstr "Zabrániť uspatiu"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:36
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:46
 msgid "Recover Crashed Downloads"
 msgstr "Obnoviť zlyhané stiahnutia"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:57
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:55
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:45
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
 msgid "Download Immediately After Validation"
 msgstr "Stiahnuť ihneď po overení"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:66
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:54
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
 msgid "Download History Length"
 msgstr "Dĺžka histórie stiahnutých súborov"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:54
+msgid "Never"
+msgstr "Nikdy"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:55
 msgid "One Day"
 msgstr "Jeden deň"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:56
 msgid "One Week"
 msgstr "Jeden týždeň"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
 msgid "One Month"
 msgstr "Jeden mesiac"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:64
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 msgid "Three Months"
 msgstr "Tri mesiace"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:65
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
 msgid "Forever"
 msgstr "Navždy"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:82
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:70
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:72
 msgid "Max Number of Active Downloads"
 msgstr "Maximálny počet aktívnych stiahnutí"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:84
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:86
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:77
 msgid "Overwrite Existing Files"
 msgstr "Prepísať existujúce súbory"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:95
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:80
 msgid "Limit Filename Characters"
 msgstr "Obmedziť znaky názvu súboru"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:88
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:90
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:96
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:83
 msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr ""
 "Obmedzí znaky v názvoch súborov iba na znaky podporované systémom Windows."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:105
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:85
 msgid "Include Media Id in Title After Validation"
 msgstr "Po overení pridať k názvu ID média"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:95
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:114
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:88
 msgid "Include Auto-Generated Subtitles"
 msgstr "Zahrnúť automaticky generované titulky"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:98
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:123
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:91
 msgid "Preferred Video Codec"
 msgstr "Uprednostňovaný video kodek"
 
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:125
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:161
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:100
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:108
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:118
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:101
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:111
 msgid "Any"
 msgstr "Akýkoľvek"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:125
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:96
 msgid "H.264 (AVC)"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:125
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:97
 msgid "H.265 (HEVC)"
 msgstr "H.265 (HEVC)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:106
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:99
 msgid "Preferred Audio Codec"
 msgstr "Uprednostňovaný audio kodek"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:109
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:102
 msgid "FLAC (ALAC)"
 msgstr "FLAC (ALAC)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:110
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
 msgid "WAV (AIFF)"
 msgstr "WAV (AIFF)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:159
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:116
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:109
 msgid "Preferred Subtitle Format"
 msgstr "Uprednostňovaný formát tituliek"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:260
 msgid "Downloader"
 msgstr "Sťahovač"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:137
-msgid "Verbose Logging"
-msgstr "Podrobné zaznamenávanie"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:184
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:140
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:130
 #, fuzzy
 msgid "Use Part Files"
 msgstr "Použiť dávkový súbor"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:143
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:133
 msgid "Use SponsorBlock for YouTube"
 msgstr "Použiť SponsorBlock pre YouTube"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
 msgid "Speed Limit (KiB/s)"
 msgstr "Obmedzenie rýchlosti (KiB/s)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:203
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:147
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:182
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:137
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:139
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
 "speed."
@@ -876,102 +835,102 @@ msgstr ""
 "Toto obmedzenie sa uplatňuje len na sťahovanie, pri ktorom je povolené "
 "obmedzenie rýchlosti sťahovania."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:154
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:198
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:144
 msgid "Proxy URL"
 msgstr "URL adresa proxy servera"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:228
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:207
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:148
 msgid "Cookies from Browser"
 msgstr "Súbory cookie z prehliadača"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:161
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
 msgid "Brave"
 msgstr "Brave"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:162
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
 msgid "Chrome"
 msgstr "Chrome"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:163
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
 msgid "Chromium"
 msgstr "Chromium"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:164
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:154
 msgid "Edge"
 msgstr "Edge"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:165
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:155
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:166
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:156
 msgid "Opera"
 msgstr "Opera"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:167
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:157
 msgid "Safari"
 msgstr "Safari"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:168
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:159
 msgid "Whale"
 msgstr "Whale"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:240
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:161
 msgid "Cookies File"
 msgstr "Súbor s cookie"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:174
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:164
 msgid "No file selected"
 msgstr "Nebol vybraný súbor"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:252
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:126
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:179
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:462
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:445
 msgid "Select Cookies File"
 msgstr "Vybrať súbor Cookie"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:184
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:240
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:174
 msgid "Clear Cookies File"
 msgstr "Vyčistiť súbor Cookie"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:272
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
 msgid "Converter"
 msgstr "Konvertor"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:200
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:253
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:189
 msgid "Embed Metadata"
 msgstr "Vložiť metaúdaje"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:203
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:192
 msgid "Remove Source Data"
 msgstr "Odstrániť zdrojové údaje"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:206
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:193
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:195
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
@@ -979,14 +938,14 @@ msgstr ""
 "Ak je táto možnosť zapnutá, aplikácia Parabolic odstráni polia metadát "
 "obsahujúce identifikačné informácie o sťahovaní."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:295
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:208
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:197
 msgid "Embed Thumbnails"
 msgstr "Vložiť miniatúry"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:209
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:200
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
@@ -994,33 +953,33 @@ msgstr ""
 "Ak formát súboru nepodporuje vloženie, miniatúra bude uložená do "
 "samostatného obrázkového súboru."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:213
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:285
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:202
 msgid "Crop Audio Thumbnails"
 msgstr "Orezať miniatúry zvuku"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:307
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:214
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:216
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:203
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:205
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
 msgstr ""
 "Ak je táto možnosť zapnutá, aplikácia Parabolic oreže miniatúry zvukových "
 "súborov na štvorec."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:218
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:207
 msgid "Embed Chapters"
 msgstr "Vložiť kapitoly"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:326
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:221
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:305
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:210
 msgid "Embed Subtitles"
 msgstr "Vložiť titulky"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:222
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:224
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:213
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to a separate file."
@@ -1028,34 +987,34 @@ msgstr ""
 "Ak je táto možnosť vypnutá alebo ak vloženie nie je podporované, stiahnuté "
 "titulky budú uložené do samostatného súboru."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:336
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:226
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:215
 msgid "Postprocessing Threads"
 msgstr "Spracovanie vlákien"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:346
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:273
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:325
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:262
 msgid "aria2"
 msgstr "aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:243
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:232
 msgid "Use aria2"
 msgstr "Použiť aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:358
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:246
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:337
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
 msgid "Max Connections Per Server (-x)"
 msgstr "Maximálny počet pripojení na server (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:375
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:251
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:354
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
 msgid "Minimum Split Size (-k)"
 msgstr "Minimálna veľkosť rozdelenia (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:376
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:252
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:355
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:243
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Minimálna veľkosť, pri ktorej sa má súbor rozdeliť (v MiB)."
 
@@ -1092,7 +1051,6 @@ msgstr "Prebieha"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
-#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Zostávajúci čas: {}"
 
@@ -1148,9 +1106,9 @@ msgid "Select Batch File"
 msgstr "Vybrať dávkový súbor"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:86
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:462
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:462
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:445
 msgid "TXT Files (*.txt)"
 msgstr "TXT súbory (*.txt)"
 
@@ -1176,7 +1134,6 @@ msgid "No Subtitles Available"
 msgstr "Titulky nie sú k dispozícii"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
-#, c++-format
 msgid "{} items"
 msgstr "{} položiek"
 
@@ -1207,7 +1164,6 @@ msgid "Don't show this message again"
 msgstr "Túto správu už nezobrazovať"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1457,7 +1413,6 @@ msgstr ""
 "použité overenie a prehliadač vybraný pre súbory cookie v nastaveniach."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} potrebuje poverenie na stiahnutie. Prosím, vyberte alebo zadajte také, "
@@ -1525,7 +1480,7 @@ msgid "Exit"
 msgstr "Ukončiť"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:335
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:322
 msgid "Settings"
 msgstr "Nastavenia"
 
@@ -1574,7 +1529,6 @@ msgstr "Aktualizovať"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:540
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:594
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:633
-#, c++-format
 msgid "Queued ({})"
 msgstr "V poradí ({})"
 
@@ -1582,14 +1536,12 @@ msgstr "V poradí ({})"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:593
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:615
-#, c++-format
 msgid "Downloading ({})"
 msgstr "Sťahuje sa ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:595
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:634
-#, c++-format
 msgid "Completed ({})"
 msgstr "Dokončené ({})"
 
@@ -1609,13 +1561,31 @@ msgstr "Systémová"
 msgid "Automatically Check for Updates"
 msgstr "Automatická kontrola aktualizácií"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:136
 msgid "Speed Limit"
 msgstr "Obmedzenie rýchlosti"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
 msgid "Enter proxy url here"
 msgstr "Sem zadajte url adresu proxy servera"
+
+#~ msgid "Downloads Finished"
+#~ msgstr "Sťahovania dokončené"
+
+#~ msgid "All downloads have finished"
+#~ msgstr "Všetky sťahovania sú dokončené"
+
+#~ msgid "Completed Notification Trigger"
+#~ msgstr "Oznámenie o dokončení"
+
+#~ msgid "For each download"
+#~ msgstr "Pre každé stiahnutie"
+
+#~ msgid "When all downloads finish"
+#~ msgstr "Po dokončení všetkých sťahovaní"
+
+#~ msgid "Verbose Logging"
+#~ msgstr "Podrobné zaznamenávanie"
 
 #, fuzzy
 #~ msgid "No History"

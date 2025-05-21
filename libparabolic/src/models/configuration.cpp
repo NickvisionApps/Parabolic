@@ -59,16 +59,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["AutomaticallyCheckForUpdates"] = check;
     }
 
-    CompletedNotificationPreference Configuration::getCompletedNotificationPreference() const
-    {
-        return m_json["CompletedNotificationPreference"].is_int64() ? static_cast<CompletedNotificationPreference>(m_json["CompletedNotificationPreference"].as_int64()) : CompletedNotificationPreference::ForEach;
-    }
-
-    void Configuration::setCompletedNotificationPreference(CompletedNotificationPreference preference)
-    {
-        m_json["CompletedNotificationPreference"] = static_cast<int>(preference);
-    }
-
     bool Configuration::getPreventSuspend() const
     {
         return m_json["PreventSuspend"].is_bool() ? m_json["PreventSuspend"].as_bool() : false;
@@ -100,7 +90,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setPreferredVideoCodec(m_json["PreferredVideoCodec"].is_int64() ? static_cast<VideoCodec>(m_json["PreferredVideoCodec"].as_int64()) : VideoCodec::Any);
         options.setPreferredAudioCodec(m_json["PreferredAudioCodec"].is_int64() ? static_cast<AudioCodec>(m_json["PreferredAudioCodec"].as_int64()) : AudioCodec::Any);
         options.setPreferredSubtitleFormat(m_json["PreferredSubtitleFormat"].is_int64() ? static_cast<SubtitleFormat>(m_json["PreferredSubtitleFormat"].as_int64()) : SubtitleFormat::Any);
-        options.setVerboseLogging(m_json["VerboseLogging"].is_bool() ? m_json["VerboseLogging"].as_bool() : true);
         options.setUsePartFiles(m_json["UsePartFiles"].is_bool() ? m_json["UsePartFiles"].as_bool() : true);
         options.setYouTubeSponsorBlock(m_json["YouTubeSponsorBlock"].is_bool() ? m_json["YouTubeSponsorBlock"].as_bool() : false);
         options.setSpeedLimit(m_json["SpeedLimit"].is_int64() ? static_cast<int>(m_json["SpeedLimit"].as_int64()) : 1024);
@@ -130,7 +119,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["PreferredVideoCodec"] = static_cast<int>(downloaderOptions.getPreferredVideoCodec());
         m_json["PreferredAudioCodec"] = static_cast<int>(downloaderOptions.getPreferredAudioCodec());
         m_json["PreferredSubtitleFormat"] = static_cast<int>(downloaderOptions.getPreferredSubtitleFormat());
-        m_json["VerboseLogging"] = downloaderOptions.getVerboseLogging();
         m_json["UsePartFiles"] = downloaderOptions.getUsePartFiles();
         m_json["YouTubeSponsorBlock"] = downloaderOptions.getYouTubeSponsorBlock();
         m_json["SpeedLimit"] = downloaderOptions.getSpeedLimit();

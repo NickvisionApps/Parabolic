@@ -18,7 +18,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         //Load
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("themeRow"), static_cast<unsigned int>(m_controller->getTheme()));
-        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("completedNotificationTriggerRow"), static_cast<unsigned int>(m_controller->getCompletedNotificationPreference()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("preventSuspendRow"), m_controller->getPreventSuspend());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("recoverCrashedDownloadsRow"), m_controller->getRecoverCrashedDownloads());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow"), m_controller->getDownloadImmediatelyAfterValidation());
@@ -31,7 +30,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredVideoCodecRow"), static_cast<unsigned int>(options.getPreferredVideoCodec()));
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredAudioCodecRow"), static_cast<unsigned int>(options.getPreferredAudioCodec()));
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"), static_cast<unsigned int>(options.getPreferredSubtitleFormat()));
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("verboseLoggingRow"), options.getVerboseLogging());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("usePartFilesRow"), options.getUsePartFiles());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow"), options.getYouTubeSponsorBlock());
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("speedLimitRow"), static_cast<double>(options.getSpeedLimit()));
@@ -69,7 +67,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void PreferencesDialog::onClosed()
     {
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
-        m_controller->setCompletedNotificationPreference(static_cast<CompletedNotificationPreference>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("completedNotificationTriggerRow"))));
         m_controller->setPreventSuspend(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("preventSuspendRow")));
         m_controller->setRecoverCrashedDownloads(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("recoverCrashedDownloadsRow")));
         m_controller->setDownloadImmediatelyAfterValidation(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow")));
@@ -82,7 +79,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setPreferredVideoCodec(static_cast<VideoCodec>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredVideoCodecRow"))));
         options.setPreferredAudioCodec(static_cast<AudioCodec>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredAudioCodecRow"))));
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"))));
-        options.setVerboseLogging(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("verboseLoggingRow")));
         options.setUsePartFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("usePartFilesRow")));
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow")));
         options.setSpeedLimit(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("speedLimitRow"))));
