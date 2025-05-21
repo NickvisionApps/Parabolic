@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-19 05:59-0400\n"
+"POT-Creation-Date: 2025-05-20 20:51-0400\n"
 "PO-Revision-Date: 2025-05-18 16:01+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -109,6 +109,7 @@ msgid "translator-credits"
 msgstr "Priit Jõerüüt"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Taastasime {} allalaadimise"
@@ -133,6 +134,7 @@ msgid "Download Finished"
 msgstr "Allalaadimine lõppes"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:294
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} allalaadimine on lõppenud"
 
@@ -147,6 +149,7 @@ msgid "Download Finished With Error"
 msgstr "Allalaadimine lõppes veaga"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} allalaadimine lõppes veaga"
 
@@ -163,18 +166,22 @@ msgid "0 B/s"
 msgstr "0 B/sek"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -204,18 +211,22 @@ msgid "Audio Description"
 msgstr "Heliriba kirjeldus"
 
 #: libparabolic/src/models/format.cpp:299
+#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB"
 
 #: libparabolic/src/models/format.cpp:303
+#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB"
 
 #: libparabolic/src/models/format.cpp:307
+#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:311
+#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B"
 
@@ -231,7 +242,6 @@ msgstr "Alustame allalaadimist…"
 msgid "Auto-generated"
 msgstr "Loodud automaatselt"
 
-#. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:224
@@ -534,7 +544,6 @@ msgstr "Klaviatuuri kiirklahvid"
 msgid "Help"
 msgstr "Abiteave"
 
-#. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:123
@@ -551,7 +560,6 @@ msgstr "Põhimenüü"
 msgid "Home"
 msgstr "Avavaade"
 
-#. Dialog Settings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:224
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
@@ -1078,6 +1086,7 @@ msgstr "Töös"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Kohal: {}"
 
@@ -1162,6 +1171,7 @@ msgid "No Subtitles Available"
 msgstr "Subtiitreid ei leidu"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} objekti"
 
@@ -1192,6 +1202,7 @@ msgid "Don't show this message again"
 msgstr "Ära näita seda sõnumit uuesti"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1359,7 +1370,6 @@ msgstr "Ava sisalduv kaust"
 msgid "No Download History"
 msgstr "Allalaadimisete ajalugu on tühi"
 
-#. Window Settings
 #: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:50
 msgid "Notification"
 msgstr "Teavitus"
@@ -1443,6 +1453,7 @@ msgstr ""
 "võrguküpsiste laadimiseks vajaliku brauserit."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} eeldab allalaadimiseks sinu tuvastamist. Palun vali mõni olemasolevatest "
@@ -1511,7 +1522,6 @@ msgstr "Kustuta salasõna/kasutajanimi"
 msgid "Exit"
 msgstr "Välju"
 
-#. Dialog Settings
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:84
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:330
 msgid "Settings"
@@ -1562,6 +1572,7 @@ msgstr "Uuenda"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:540
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:594
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:633
+#, c++-format
 msgid "Queued ({})"
 msgstr "Lisatud järjekorda ({})"
 
@@ -1569,12 +1580,14 @@ msgstr "Lisatud järjekorda ({})"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:566
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:593
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:615
+#, c++-format
 msgid "Downloading ({})"
 msgstr "Allalaadimisel ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:595
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:634
+#, c++-format
 msgid "Completed ({})"
 msgstr "Valmis ({})"
 
