@@ -110,6 +110,9 @@ namespace Ui
             actionCheckForUpdates = new QAction(parent);
             actionCheckForUpdates->setText(_("Check for Updates"));
             actionCheckForUpdates->setIcon(QLEMENTINE_ICON(Action_Update));
+            actionDocumentation = new QAction(parent);
+            actionDocumentation->setText(_("Documentation"));
+            actionDocumentation->setIcon(QLEMENTINE_ICON(Misc_Library));
             actionGitHubRepo = new QAction(parent);
             actionGitHubRepo->setText(_("GitHub Repo"));
             actionGitHubRepo->setIcon(QLEMENTINE_ICON(Software_VersionControl));
@@ -155,6 +158,7 @@ namespace Ui
             menuHelp->setTitle(_("Help"));
             menuHelp->addAction(actionCheckForUpdates);
             menuHelp->addSeparator();
+            menuHelp->addAction(actionDocumentation);
             menuHelp->addAction(actionGitHubRepo);
             menuHelp->addAction(actionReportABug);
             menuHelp->addAction(actionDiscussions);
@@ -282,6 +286,7 @@ namespace Ui
         QAction* actionClearCompletedDownloads;
         QAction* actionClearHistory;
         QAction* actionCheckForUpdates;
+        QAction* actionDocumentation;
         QAction* actionGitHubRepo;
         QAction* actionReportABug;
         QAction* actionDiscussions;
@@ -324,6 +329,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->actionClearCompletedDownloads, &QAction::triggered, this, &MainWindow::clearCompletedDownloads);
         connect(m_ui->actionClearHistory, &QAction::triggered, this, &MainWindow::clearHistory);
         connect(m_ui->actionCheckForUpdates, &QAction::triggered, this, &MainWindow::checkForUpdates);
+        connect(m_ui->actionDocumentation, &QAction::triggered, this, &MainWindow::documentation);
         connect(m_ui->actionGitHubRepo, &QAction::triggered, this, &MainWindow::gitHubRepo);
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
         connect(m_ui->actionDiscussions, &QAction::triggered, this, &MainWindow::discussions);
@@ -463,6 +469,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_controller->windowsUpdate();
     }
 #endif
+
+    void MainWindow::documentation()
+    {
+        QDesktopServices::openUrl(QString::fromStdString(m_controller->getHelpUrl()));
+    }
 
     void MainWindow::gitHubRepo()
     {
