@@ -12,13 +12,7 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Jonáš Loskot</mal:name>
-      <mal:email>osobni@jonasloskot.cz</mal:email>
-      <mal:years>2023, 2024</mal:years>
-    </mal:credit>
-  </info>
+</info>
 
 <title>Služba stahování</title>
 <p>Na této stránce najdete vysvětlení všech možností konfigurace stahování v předvolbách v aplikaci <app>Parabolic</app>.</p>
@@ -27,6 +21,13 @@
     <item>
         <title>Podrobné protokolování</title>
         <p>Pokud je tato funkce povolena, budou programem <code>yt-dlp</code> poskytnuty podrobnější protokoly.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Use Part Files</title>
+        <p>If enabled, Parabolic will use <code>.part</code> files instead of writing directly into the output file.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
         </note>

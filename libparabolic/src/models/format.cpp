@@ -5,6 +5,28 @@
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
+    Format::Format(FormatValue value, MediaType type)
+        : m_bytes{ 0 },
+        m_type{ type },
+        m_hasAudioDescription{ false }
+    {
+        switch(value)
+        {
+        case FormatValue::Best:
+            m_id = _("Best");
+            m_protocol = "Best";
+            break;
+        case FormatValue::Worst:
+            m_id = _("Worst");
+            m_protocol = "Worst";
+            break;
+        case FormatValue::None:
+            m_id = _("None");
+            m_protocol = "None";
+            break;
+        }
+    }
+
     Format::Format(boost::json::object json, bool isYtdlpJson)
         : m_bytes{ 0 },
         m_hasAudioDescription{ false }
@@ -175,6 +197,19 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_videoResolution;
     }
 
+    bool Format::isFormatValue(FormatValue value) const
+    {
+        switch(value)
+        {
+        case FormatValue::Best:
+            return m_id == _("Best") && m_protocol == "Best";
+        case FormatValue::Worst:
+            return m_id == _("Worst") && m_protocol == "Worst";
+        case FormatValue::None:
+            return m_id == _("None") && m_protocol == "None";
+        }
+    }
+
     std::string Format::str() const
     {
         std::stringstream builder;
@@ -284,6 +319,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         else if(str[0] == ' ')
         {
+            if(str[1] == '(' && str[str.size() - 1] == ')')
+            {
+                return str.substr(2, str.size() - 3);
+            }
             return str.substr(1);
         }
         return str;

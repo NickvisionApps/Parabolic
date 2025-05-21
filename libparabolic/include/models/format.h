@@ -5,6 +5,7 @@
 #include <string>
 #include <boost/json.hpp>
 #include "audiocodec.h"
+#include "formatvalue.h"
 #include "mediatype.h"
 #include "videocodec.h"
 #include "videoresolution.h"
@@ -17,6 +18,12 @@ namespace Nickvision::TubeConverter::Shared::Models
     class Format
     {
     public:
+        /**
+         * @brief Constructs a Fromat.
+         * @param value The predetermined format value
+         * @param type The type of media the format applies to
+         */
+        Format(FormatValue value, MediaType type);
         /**
          * @brief Constructs a Format.
          * @param json The JSON object to construct the Format from
@@ -73,6 +80,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The video resolution of the format
          */
         const std::optional<VideoResolution>& getVideoResolution() const;
+        /**
+         * @brief Gets whether or not this format represents a format value.
+         * @param value The format value to test
+         * @return True if this format represents the format value
+         * @return False if this format does not represent the format value
+         */
+        bool isFormatValue(FormatValue value) const;
         /**
          * @brief Gets the string representation of the format.
          * @return The string representation of the format

@@ -138,7 +138,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return formats;
         }
-        formats.push_back(_("Best"));
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
@@ -171,7 +170,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return formats;
         }
-        formats.push_back(_("Best"));
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
@@ -309,14 +307,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         options.setAvailableFormats(m_urlInfo->get(0).getFormats());
         options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
         options.setSaveFilename(!filename.empty() ? StringHelpers::normalizeForFilename(filename, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
-        if(videoFormatIndex != 0)
-        {
-            options.setVideoFormat(media.getFormats()[m_videoFormatMap[videoFormatIndex]]);
-        }
-        if(audioFormatIndex != 0)
-        {
-            options.setAudioFormat(media.getFormats()[m_audioFormatMap[audioFormatIndex]]);
-        }
+        options.setVideoFormat(media.getFormats()[m_videoFormatMap[videoFormatIndex]]);
+        options.setAudioFormat(media.getFormats()[m_audioFormatMap[audioFormatIndex]]);
         options.setSubtitleLanguages(subtitles);
         options.setSplitChapters(splitChapters);
         options.setLimitSpeed(limitSpeed);

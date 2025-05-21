@@ -4,7 +4,6 @@
 #include <filesystem>
 #include <string>
 #include "models/configuration.h"
-#include "models/completednotificationpreference.h"
 #include "models/downloaderoptions.h"
 #include "models/downloadhistory.h"
 #include "models/theme.h"
@@ -48,16 +47,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param check Whether or not to automatically check for updates
          */
         void setAutomaticallyCheckForUpdates(bool check);
-        /**
-         * @brief Gets the completed notification preference for downloads.
-         * @return The completed notification preference
-         */
-        Models::CompletedNotificationPreference getCompletedNotificationPreference() const;
-        /**
-         * @brief Sets the completed notification preference for downloads.
-         * @param preference The new completed notification preference
-         */
-        void setCompletedNotificationPreference(Models::CompletedNotificationPreference preference);
         /**
          * @brief Gets whether or not to prevent the system from suspending while Parabolic is running.
          * @return True to prevent the system from suspending, else false

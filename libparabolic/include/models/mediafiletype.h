@@ -102,6 +102,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         operator unsigned int() const;
         /**
+         * @brief Gets the media file type value as a size_t.
+         * @return The media file type value as an size_t
+         */
+        operator size_t() const;
+        /**
          * @brief Compares two MediaFileTypes via ==.
          * @param other The other MediaFileType
          * @return True if this == other, else false
