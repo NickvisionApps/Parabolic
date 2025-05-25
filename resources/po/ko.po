@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 09:17-0400\n"
+"POT-Creation-Date: 2025-05-25 09:35-0400\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -79,8 +79,14 @@ msgstr "FLAC (오디오)"
 msgid "WAV (Audio)"
 msgstr "WAV (오디오)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:339
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:257
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:287
+#, c++-format
+msgid "Error attempting to validate download: {}"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:353
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:387
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -1129,9 +1135,12 @@ msgid "TXT Files (*.txt)"
 msgstr "TXT 파일 (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences."
+"authentication used, and the selected browser for cookies in preferences. "
+"Note that YouTube may have blocked your IP or the video may be geo-"
+"restricted."
 msgstr ""
 "제공된 URL이 유효하지 않거나 접근할 수 없습니다. URL, 사용된 인증 정보, 환경 "
 "설정에서 선택한 브라우저의 쿠키를 확인하세요."
@@ -1436,9 +1445,11 @@ msgid "Items"
 msgstr "항목"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings."
+"authentication used, and the selected browser for cookies in settings. Note "
+"that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
 "제공된 URL이 유효하지 않거나 접근할 수 없습니다. URL, 사용된 인증 정보, 설정"
 "에서 선택한 브라우저의 쿠키를 확인하세요."

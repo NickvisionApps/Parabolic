@@ -144,7 +144,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         if(!m_controller->isUrlValid())
         {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, and the selected browser for cookies in preferences."))) };
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, and the selected browser for cookies in preferences. Note that YouTube may have blocked your IP or the video may be geo-restricted."))) };
             adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
             adw_alert_dialog_set_close_response(dialog, "close");
             adw_alert_dialog_set_default_response(dialog, "close");

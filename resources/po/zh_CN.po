@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 09:17-0400\n"
+"POT-Creation-Date: 2025-05-25 09:35-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -87,8 +87,14 @@ msgstr ""
 msgid "WAV (Audio)"
 msgstr "音频"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:339
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:257
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:287
+#, c++-format
+msgid "Error attempting to validate download: {}"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:353
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:387
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -1182,7 +1188,9 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences."
+"authentication used, and the selected browser for cookies in preferences. "
+"Note that YouTube may have blocked your IP or the video may be geo-"
+"restricted."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
@@ -1494,7 +1502,8 @@ msgstr "{1} 项目中的 {0} 个"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings."
+"authentication used, and the selected browser for cookies in settings. Note "
+"that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24

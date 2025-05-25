@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 09:17-0400\n"
+"POT-Creation-Date: 2025-05-25 09:35-0400\n"
 "PO-Revision-Date: 2025-05-18 16:01+0000\n"
 "Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -79,8 +79,14 @@ msgstr "FLAC (Ääni)"
 msgid "WAV (Audio)"
 msgstr "WAV (Ääni)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:339
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:257
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:287
+#, c++-format
+msgid "Error attempting to validate download: {}"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:353
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:387
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -1135,9 +1141,12 @@ msgid "TXT Files (*.txt)"
 msgstr "TXT-tiedostot (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences."
+"authentication used, and the selected browser for cookies in preferences. "
+"Note that YouTube may have blocked your IP or the video may be geo-"
+"restricted."
 msgstr ""
 "Annettu URL-osoite on epäkelpo tai siihen ei saada yhteyttä. Tarkista "
 "osoite, mitä todennusta käytetään, ja valitun selaimen evästeasetukset."
@@ -1434,9 +1443,11 @@ msgid "Items"
 msgstr "Kohteet"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings."
+"authentication used, and the selected browser for cookies in settings. Note "
+"that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
 "Annettu URL-osoite on epäkelpo tai siihen ei saada yhteyttä. Tarkista "
 "osoite, mitä todennusta käytetään, ja kyseisen selaimen evästeasetukset."

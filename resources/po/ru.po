@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 09:17-0400\n"
+"POT-Creation-Date: 2025-05-25 09:35-0400\n"
 "PO-Revision-Date: 2024-12-25 15:35+0000\n"
 "Last-Translator: Hultru <fgg-97@bk.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -80,8 +80,14 @@ msgstr "FLAC (аудио)"
 msgid "WAV (Audio)"
 msgstr "WAV (аудио)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:339
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:257
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:287
+#, c++-format
+msgid "Error attempting to validate download: {}"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:353
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:387
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -1141,9 +1147,12 @@ msgid "TXT Files (*.txt)"
 msgstr "Текстовые файлы (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences."
+"authentication used, and the selected browser for cookies in preferences. "
+"Note that YouTube may have blocked your IP or the video may be geo-"
+"restricted."
 msgstr ""
 "Указанная ссылка невалидна или недоступна. Проверьте ссылку, данные "
 "авторизации и параметры куки в настройках."
@@ -1449,9 +1458,11 @@ msgid "Items"
 msgstr "Элементы"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings."
+"authentication used, and the selected browser for cookies in settings. Note "
+"that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
 "Указанная ссылка невалидна или недоступна. Проверьте ссылку, данные "
 "аутентификвторизации и параметры куки в настройках."

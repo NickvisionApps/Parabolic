@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 09:17-0400\n"
+"POT-Creation-Date: 2025-05-25 09:35-0400\n"
 "PO-Revision-Date: 2025-05-14 21:02+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -80,8 +80,14 @@ msgstr "FLAC (صوت)"
 msgid "WAV (Audio)"
 msgstr "WAV (صوت)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:339
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:257
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:287
+#, c++-format
+msgid "Error attempting to validate download: {}"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:353
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:387
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -1130,9 +1136,12 @@ msgid "TXT Files (*.txt)"
 msgstr "ملفات نصية (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences."
+"authentication used, and the selected browser for cookies in preferences. "
+"Note that YouTube may have blocked your IP or the video may be geo-"
+"restricted."
 msgstr ""
 "رابط الـ URL المقدم غير صالح أو لا يمكن الوصول إليه. تحقق من الرابط، وطرق "
 "المصادقة المستخدمة، والمتصفح المحدد لملفات تعريف الارتباط في التفضيلات."
@@ -1428,9 +1437,11 @@ msgid "Items"
 msgstr "عناصر"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings."
+"authentication used, and the selected browser for cookies in settings. Note "
+"that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
 "الرابط الذي أدخلته غير صحيح أو لا يمكن الوصول إليه. تحقق من الرابط، والتوثيق "
 "المستخدم، والمتصفح المُسْتَخدم لبيانات تعريف الإرتباط في الإعدادات."

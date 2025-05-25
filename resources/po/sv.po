@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 09:17-0400\n"
+"POT-Creation-Date: 2025-05-25 09:35-0400\n"
 "PO-Revision-Date: 2025-02-06 19:22+0000\n"
 "Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -79,8 +79,14 @@ msgstr "FLAC (Ljud)"
 msgid "WAV (Audio)"
 msgstr "WAV (Ljud)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:339
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:257
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:287
+#, c++-format
+msgid "Error attempting to validate download: {}"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:353
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:387
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -1140,9 +1146,12 @@ msgid "TXT Files (*.txt)"
 msgstr "TXT-filer (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences."
+"authentication used, and the selected browser for cookies in preferences. "
+"Note that YouTube may have blocked your IP or the video may be geo-"
+"restricted."
 msgstr ""
 "Den angivna webbadressen är ogiltig eller går inte att nå. Kontrollera "
 "webbadressen, den använda autentiseringen och den valda webbläsaren för "
@@ -1451,9 +1460,11 @@ msgid "Items"
 msgstr "Objekt"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
+#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings."
+"authentication used, and the selected browser for cookies in settings. Note "
+"that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
 "Den angivna webbadressen är ogiltig eller går inte att nå. Kontrollera "
 "webbadressen, den använda autentiseringen och den valda webbläsaren för "

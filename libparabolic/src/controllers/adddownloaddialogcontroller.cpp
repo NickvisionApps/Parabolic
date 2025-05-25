@@ -246,9 +246,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::thread worker{ [this, url, credential]()
         {
-            m_credential = credential;
-            m_urlInfo = m_downloadManager.fetchUrlInfo(url, m_credential);
-            m_urlValidated.invoke({ isUrlValid() });
+            try
+            {
+                m_credential = credential;
+                m_urlInfo = m_downloadManager.fetchUrlInfo(url, m_credential);
+                m_urlValidated.invoke({ isUrlValid() });
+            }
+            catch(const std::exception& e)
+            {
+                AppNotification::send({ _f("Error attempting to validate download: {}", e.what()), NotificationSeverity::Error, "error" });
+            }
         } };
         worker.detach();
     }
@@ -269,9 +276,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::thread worker{ [this, batchFile, credential]()
         {
-            m_credential = credential;
-            m_urlInfo = m_downloadManager.fetchUrlInfo(batchFile, m_credential);
-            m_urlValidated.invoke({ isUrlValid() });
+            try
+            {
+                m_credential = credential;
+                m_urlInfo = m_downloadManager.fetchUrlInfo(batchFile, m_credential);
+                m_urlValidated.invoke({ isUrlValid() });
+            }
+            catch(const std::exception& e)
+            {
+                AppNotification::send({ _f("Error attempting to validate download: {}", e.what()), NotificationSeverity::Error, "error" });
+            }
         } };
         worker.detach();
     }
