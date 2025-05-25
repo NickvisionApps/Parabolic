@@ -113,6 +113,34 @@ namespace Nickvision::TubeConverter::Shared::Models
                         m_videoCodec = VideoCodec::H265;
                     }
                 }
+                std::string acodec{ json["acodec"].is_string() ? json["acodec"].as_string() : "" };
+                if(!acodec.empty() && acodec != "none")
+                {
+                    if(acodec.find("flac") != std::string::npos || acodec.find("alac") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::FLAC;
+                    }
+                    else if(acodec.find("wav") != std::string::npos || acodec.find("aiff") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::WAV;
+                    }
+                    else if(acodec.find("opus") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::OPUS;
+                    }
+                    else if(acodec.find("aac") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::AAC;
+                    }
+                    else if(acodec.find("mp4a") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::MP4A;
+                    }
+                    else if(acodec.find("mp3") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::MP3;
+                    }
+                }
                 m_videoResolution = VideoResolution::parse(resolution);
             }
         }
@@ -239,6 +267,30 @@ namespace Nickvision::TubeConverter::Shared::Models
                     break;
                 case VideoCodec::H265:
                     builder << separator << "H.265";
+                    break;
+                }
+            }
+            if(m_audioCodec)
+            {
+                switch(*m_audioCodec)
+                {
+                case AudioCodec::FLAC:
+                    builder << separator << "FLAC";
+                    break;
+                case AudioCodec::WAV:
+                    builder << separator << "WAV";
+                    break;
+                case AudioCodec::OPUS:
+                    builder << separator << "OPUS";
+                    break;
+                case AudioCodec::AAC:
+                    builder << separator << "AAC";
+                    break;
+                case AudioCodec::MP4A:
+                    builder << separator << "MP4A";
+                    break;
+                case AudioCodec::MP3:
+                    builder << separator << "MP3";
                     break;
                 }
             }
