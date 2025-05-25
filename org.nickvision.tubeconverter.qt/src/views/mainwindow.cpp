@@ -502,8 +502,13 @@ namespace Nickvision::TubeConverter::Qt::Views
     {
         QString actionText;
         std::function<void()> actionCallback;
+        if(args.getAction() == "error")
+        {
+            QMessageBox::critical(this, _("Error"), QString::fromStdString(args.getMessage()));
+            return;
+        }
 #ifdef _WIN32
-        if(args.getAction() == "update")
+        else if(args.getAction() == "update")
         {
             actionText = _("Update");
             actionCallback = [this]() { windowsUpdate(); };

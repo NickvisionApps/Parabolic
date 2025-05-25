@@ -243,52 +243,59 @@ namespace Nickvision::TubeConverter::Shared::Models
                     std::vector<std::string> logLines{ StringHelpers::split(m_process->getOutput(), '\n', false) };
                     for(size_t i = logLines.size(); i > 0; i--)
                     {
-                        const std::string& line{ logLines[i - 1] };
-                        if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug") != std::string::npos)
+                        try
                         {
-                            continue;
-                        }
-                        //aria2c progress
-                        if(line.find("[#") != std::string::npos)
-                        {
-#ifdef _WIN32
-                            std::vector<std::string> ariaLines{ StringHelpers::split(line, '\r', false) };
-                            for(size_t j = ariaLines.size(); j > 0; j--)
-                            {
-                                if(processAriaLine(ariaLines[j - 1], progress, speed, eta))
-                                {
-                                    break;
-                                }
-                            }
-                            break;
-#else
-                            if(processAriaLine(line, progress, speed, eta))
-                            {
-                                break;
-                            }
-#endif
-                        }
-                        //yt-dlp progress
-                        else
-                        {
-                            std::vector<std::string> fields{ StringHelpers::split(line, ";", false) };
-                            if(fields.size() != 7 || fields[1] == "NA")
+                            const std::string& line{ logLines[i - 1] };
+                            if((line.find("PROGRESS;") == std::string::npos && line.find("[#") == std::string::npos) || line.find("[debug") != std::string::npos)
                             {
                                 continue;
                             }
-                            if(fields[1] == "finished" || fields[1] == "processing")
+                            //aria2c progress
+                            if(line.find("[#") != std::string::npos)
                             {
-                                progress = std::nan("");
-                                speed = 0.0;
-                                eta = 0;
+#ifdef _WIN32
+                                std::vector<std::string> ariaLines{ StringHelpers::split(line, '\r', false) };
+                                for(size_t j = ariaLines.size(); j > 0; j--)
+                                {
+                                    if(processAriaLine(ariaLines[j - 1], progress, speed, eta))
+                                    {
+                                        break;
+                                    }
+                                }
+                                break;
+#else
+                                if(processAriaLine(line, progress, speed, eta))
+                                {
+                                    break;
+                                }
+#endif
                             }
+                            //yt-dlp progress
                             else
                             {
-                                progress = (fields[2] != "NA" ? std::stod(fields[2]) : 0.0) / (fields[3] != "NA" ? std::stod(fields[3]) : (fields[4] != "NA" ? std::stod(fields[4]) : 0.0));
-                                speed = fields[5] != "NA" ? std::stod(fields[5]) : 0.0;
-                                eta = fields[6] == "NA" || fields[6] == "Unknown" ? -1 : std::stoi(fields[6]);
+                                std::vector<std::string> fields{ StringHelpers::split(line, ";", false) };
+                                if(fields.size() != 7 || fields[1] == "NA")
+                                {
+                                    continue;
+                                }
+                                if(fields[1] == "finished" || fields[1] == "processing")
+                                {
+                                    progress = std::nan("");
+                                    speed = 0.0;
+                                    eta = 0;
+                                }
+                                else
+                                {
+                                    progress = (fields[2] != "NA" ? std::stod(fields[2]) : 0.0) / (fields[3] != "NA" ? std::stod(fields[3]) : (fields[4] != "NA" ? std::stod(fields[4]) : 0.0));
+                                    speed = fields[5] != "NA" ? std::stod(fields[5]) : 0.0;
+                                    eta = fields[6] == "NA" || fields[6] == "Unknown" ? -1 : std::stoi(fields[6]);
+                                }
+                                break;
                             }
-                            break;
+                        }
+                        catch(...)
+                        {
+                            continue;
                         }
                     }
                 }

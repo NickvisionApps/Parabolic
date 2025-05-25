@@ -3,6 +3,7 @@
 #include <thread>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include <libnick/notifications/appnotification.h>
 #include "models/configuration.h"
 #include "models/downloadoptions.h"
 #include "models/urlinfo.h"
@@ -11,6 +12,7 @@ using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
+using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
@@ -328,7 +330,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_previousOptions.setExportDescription(exportDescription);
         m_previousOptions.setSubtitleLanguages(options.getSubtitleLanguages());
         //Add Download
-        m_downloadManager.addDownload(options, excludeFromHistory);
+        try
+        {
+            m_downloadManager.addDownload(options, excludeFromHistory);
+        }
+        catch(const std::exception& e)
+        {
+            AppNotification::send({ _f("Error attempting to add download: {}", e.what()), NotificationSeverity::Error, "error" });
+        }
     }
 
     void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription)
@@ -355,7 +364,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             options.setExportDescription(exportDescription);
             options.setPlaylistPosition(media.getPlaylistPosition());
             //Add Download
-            m_downloadManager.addDownload(options, excludeFromHistory);
+            try
+            {
+                m_downloadManager.addDownload(options, excludeFromHistory);
+            }
+            catch(const std::exception& e)
+            {
+                AppNotification::send({ _f("Error attempting to add download: {}", e.what()), NotificationSeverity::Error, "error" });
+            }
         }
     }
 }

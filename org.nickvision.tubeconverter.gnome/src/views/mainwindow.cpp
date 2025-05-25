@@ -206,6 +206,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::onNotificationSent(const NotificationSentEventArgs& args)
     {
+        if(args.getAction() == "error")
+        {
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), args.getMessage().c_str())) };
+            adw_alert_dialog_add_responses(dialog, "ok", _("Ok"), nullptr);
+            adw_alert_dialog_set_default_response(dialog, "ok");
+            adw_alert_dialog_set_close_response(dialog, "ok");
+            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+            return;
+        }
         AdwToast* toast{ adw_toast_new(args.getMessage().c_str()) };
         adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
     }

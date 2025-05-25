@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 08:54-0400\n"
+"POT-Creation-Date: 2025-05-25 09:17-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -20,72 +20,78 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Weblate 5.4-dev\n"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:97
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
-msgid "Video (Generic)"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
-#, fuzzy
-msgid "MP4 (Video)"
-msgstr "视频"
-
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:99
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:115
-msgid "WEBM (Video)"
+msgid "Video (Generic)"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:100
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:116
 #, fuzzy
-msgid "MKV (Video)"
+msgid "MP4 (Video)"
 msgstr "视频"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:101
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
-#, fuzzy
-msgid "MOV (Video)"
-msgstr "视频"
+msgid "WEBM (Video)"
+msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:102
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:118
 #, fuzzy
-msgid "AVI (Video)"
+msgid "MKV (Video)"
+msgstr "视频"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:103
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:119
+#, fuzzy
+msgid "MOV (Video)"
 msgstr "视频"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:104
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:119
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:120
+#, fuzzy
+msgid "AVI (Video)"
+msgstr "视频"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:106
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:121
 msgid "Audio (Generic)"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:120
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:122
 #, fuzzy
 msgid "MP3 (Audio)"
 msgstr "音频"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:106
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:121
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:108
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:123
 #, fuzzy
 msgid "M4A (Audio)"
 msgstr "音频"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:122
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:109
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:124
 msgid "OPUS (Audio)"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:108
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:123
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:110
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:125
 msgid "FLAC (Audio)"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:109
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:124
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:126
 #, fuzzy
 msgid "WAV (Audio)"
 msgstr "音频"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:339
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#, c++-format
+msgid "Error attempting to add download: {}"
+msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:317
@@ -117,49 +123,54 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "感谢翻译者"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:219
 #, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "重试失败的下载"
 msgstr[1] "重试失败的下载"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:244
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:224
+#, c++-format
+msgid "Error attempting to recover downloads: {}"
+msgstr ""
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:251
 #, fuzzy
 msgid "New update available"
 msgstr "有新的版本可更新"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid ""
 "The update is downloading in the background and will start once it finishes"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:263
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:270
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "无法下载和安装更新."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:291
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
 msgid "Download Finished"
 msgstr "下载完成"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:291
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
 #, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" 已完成下载."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:291
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
 #, fuzzy
 msgid "Open"
 msgstr "打开文件"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:302
 msgid "Download Finished With Error"
 msgstr "下载完成, 但有错误"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:302
 #, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" 已完成下载, 但出现错误!"
@@ -484,7 +495,7 @@ msgid "Stop"
 msgstr "已停止"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:272
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:281
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
@@ -573,20 +584,20 @@ msgid "Main Menu"
 msgstr "主菜单"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:218
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:227
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:269
 msgid "Home"
 msgstr "主页"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:224
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
 msgid "Keyring"
 msgstr "密钥环"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:230
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:239
 #: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:55
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:88
 msgid "History"
@@ -600,19 +611,19 @@ msgid "Downloads"
 msgstr "下载"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:244
 msgid "Downloading"
 msgstr "下载中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:163
 msgid "Queued"
 msgstr "已加入队列"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:254
 msgid "Completed"
 msgstr "已完成"
 
@@ -1110,6 +1121,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:211
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:513
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
@@ -1123,6 +1135,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:507
 msgid "Error"
 msgstr "错误"
 
@@ -1238,7 +1251,7 @@ msgid "Edit"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:308
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:317
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
@@ -1320,11 +1333,15 @@ msgstr "退出"
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "这种行为是不可逆转的. 你确定要删除它吗?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:212
+msgid "Ok"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:302
 msgid "Download Again"
 msgstr "重新下载"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:462
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:471
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:117
 msgid "GitHub Repo"
 msgstr "GitHub 仓库"
@@ -1603,28 +1620,28 @@ msgstr "已完成"
 msgid "Parabolic (Preview)"
 msgstr "Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:508
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:513
 msgid "Update"
 msgstr "更新"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:644
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:556
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:610
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:649
 #, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "已加入队列"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:562
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:604
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:626
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:582
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:609
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:631
 #, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "下载中"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:578
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:645
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:650
 #, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "已完成"
