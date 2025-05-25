@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-21 06:40-0400\n"
+"POT-Creation-Date: 2025-05-25 08:54-0400\n"
 "PO-Revision-Date: 2025-03-23 12:40+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -109,6 +109,7 @@ msgid "translator-credits"
 msgstr "twlvnn <kraft_werk@tutanota.com>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Беше възстановено {} изтегляне"
@@ -132,6 +133,7 @@ msgid "Download Finished"
 msgstr "Изтеглянето приключи"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:291
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} се изтегли"
 
@@ -146,6 +148,7 @@ msgid "Download Finished With Error"
 msgstr "Изтеглянето приключи с грешка"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:295
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} приключи с грешка"
 
@@ -154,18 +157,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:.2f} ГБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:.2f} МБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:.2f} КБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:.2f} Б/с"
 
@@ -195,22 +202,22 @@ msgid "Audio Description"
 msgstr "Описание на аудиото"
 
 #: libparabolic/src/models/format.cpp:299
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{0:.2f} ГБ/с"
 
 #: libparabolic/src/models/format.cpp:303
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{0:.2f} МБ/с"
 
 #: libparabolic/src/models/format.cpp:307
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{0:.2f} КБ/с"
 
 #: libparabolic/src/models/format.cpp:311
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{0:.2f} Б/с"
 
@@ -1058,6 +1065,7 @@ msgstr "Изпълняващи"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1141,6 +1149,7 @@ msgid "No Subtitles Available"
 msgstr "Няма налични субтитри"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} елемента"
 
@@ -1171,6 +1180,7 @@ msgid "Don't show this message again"
 msgstr "Това съобщение да не се показва повече"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1435,6 +1445,7 @@ msgstr ""
 "настройките."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "За {} са необходими данни за идентификация за изтегляне. Изберете или "
@@ -1565,7 +1576,7 @@ msgstr "Обновяване"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:644
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "В опашката"
 
@@ -1573,14 +1584,14 @@ msgstr "В опашката"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:604
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:626
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Изтегляне"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:578
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:645
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Завършено"
 

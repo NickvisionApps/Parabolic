@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-21 06:40-0400\n"
+"POT-Creation-Date: 2025-05-25 08:54-0400\n"
 "PO-Revision-Date: 2025-01-04 12:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -109,7 +109,7 @@ msgid "translator-credits"
 msgstr "Philip Goto https://philipgoto.nl/"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Mislukte downloads opnieuw proberen"
@@ -133,7 +133,7 @@ msgid "Download Finished"
 msgstr "Download voltooid"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:291
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "‘{0}’ is klaar met downloaden"
 
@@ -148,7 +148,7 @@ msgid "Download Finished With Error"
 msgstr "Download voltooid met fouten"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:295
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "‘{0}’ is voltooid met een fout!"
 
@@ -157,18 +157,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -198,22 +202,22 @@ msgid "Audio Description"
 msgstr "Audio­beschrĳving"
 
 #: libparabolic/src/models/format.cpp:299
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:303
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:307
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:311
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1062,6 +1066,7 @@ msgstr "Bezig"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1144,6 +1149,7 @@ msgid "No Subtitles Available"
 msgstr "Geen onder­titels beschikbaar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} items"
 
@@ -1171,6 +1177,7 @@ msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1434,6 +1441,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1557,7 +1565,7 @@ msgstr "Bij­werken"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:644
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "In wachtrij"
 
@@ -1565,14 +1573,14 @@ msgstr "In wachtrij"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:604
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:626
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Downloaden"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:578
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:645
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Voltooid"
 

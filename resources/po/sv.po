@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-21 06:40-0400\n"
+"POT-Creation-Date: 2025-05-25 08:54-0400\n"
 "PO-Revision-Date: 2025-02-06 19:22+0000\n"
 "Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -109,6 +109,7 @@ msgid "translator-credits"
 msgstr "översättningskrediter"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Återställd {} nedladdning"
@@ -133,6 +134,7 @@ msgid "Download Finished"
 msgstr "Nedladdning klar"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:291
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} har slutfört nedladdningen"
 
@@ -147,6 +149,7 @@ msgid "Download Finished With Error"
 msgstr "Nedladdningen slutfördes med fel"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:295
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} har avslutat med ett fel"
 
@@ -155,18 +158,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -196,22 +203,22 @@ msgid "Audio Description"
 msgstr "Ljudbeskrivning"
 
 #: libparabolic/src/models/format.cpp:299
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:303
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:307
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:311
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1057,6 +1064,7 @@ msgstr "Körs"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1141,6 +1149,7 @@ msgid "No Subtitles Available"
 msgstr "Inga undertexter tillgängliga"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} objekt"
 
@@ -1171,6 +1180,7 @@ msgid "Don't show this message again"
 msgstr "Visa inte det här meddelandet igen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1433,6 +1443,7 @@ msgstr ""
 "cookies i inställningarna."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} behöver inloggningsuppgift för att ladda ned. Välj eller ange en att "
@@ -1563,7 +1574,7 @@ msgstr "Uppdatera"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:644
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "I kö"
 
@@ -1571,14 +1582,14 @@ msgstr "I kö"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:604
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:626
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Laddar ned"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:578
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:645
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Slutförda"
 

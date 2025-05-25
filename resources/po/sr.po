@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-21 06:40-0400\n"
+"POT-Creation-Date: 2025-05-25 08:54-0400\n"
 "PO-Revision-Date: 2025-02-04 11:59+0000\n"
 "Last-Translator: Compact / Naomi <webmaster@compactbunker.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.10-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:97
@@ -110,6 +110,7 @@ msgid "translator-credits"
 msgstr "Compact <webmaster@compactbunker.org>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Опорављено {} преузимање"
@@ -134,6 +135,7 @@ msgid "Download Finished"
 msgstr "Преузимање успешно"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:291
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} је успешно скинуто"
 
@@ -148,6 +150,7 @@ msgid "Download Finished With Error"
 msgstr "Преузимање је успело са грешком"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:295
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} је завршило са грешком"
 
@@ -156,18 +159,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -197,22 +204,22 @@ msgid "Audio Description"
 msgstr "Аудио опис"
 
 #: libparabolic/src/models/format.cpp:299
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:303
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:307
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:311
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1067,6 +1074,7 @@ msgstr "Управљање"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1151,7 +1159,7 @@ msgid "No Subtitles Available"
 msgstr "Нема доступних титлова"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{} ствари"
 
@@ -1182,7 +1190,7 @@ msgid "Don't show this message again"
 msgstr "Не показуј ову поруку опет"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1448,7 +1456,7 @@ msgstr ""
 "искоришћену и изабран претраживач за колачиће."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} требају подаци улоговања за преузимање. Молимо изаберите или унесите "
@@ -1580,7 +1588,7 @@ msgstr "Ажурирај"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:644
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "Следеће"
 
@@ -1588,14 +1596,14 @@ msgstr "Следеће"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:604
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:626
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Преузимања"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:578
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:645
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Завршено"
 

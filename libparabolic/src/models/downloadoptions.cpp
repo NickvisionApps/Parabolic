@@ -259,6 +259,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::vector<std::string> arguments;
         //Basic Options
         arguments.push_back(m_url);
+        arguments.push_back("--ignore-config");
         arguments.push_back("--verbose");
         arguments.push_back("--xff");
         arguments.push_back("default");

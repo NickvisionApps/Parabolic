@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-21 06:40-0400\n"
+"POT-Creation-Date: 2025-05-25 08:54-0400\n"
 "PO-Revision-Date: 2024-11-03 12:00+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -111,6 +111,7 @@ msgstr ""
 "Anonim Weblate Çevirmenleri"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:217
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} indirme kurtarıldı"
@@ -134,7 +135,7 @@ msgid "Download Finished"
 msgstr "İndirme Tamamlandı"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:291
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" indirmeyi tamamladı."
 
@@ -149,7 +150,7 @@ msgid "Download Finished With Error"
 msgstr "İndirme Hata İle Tamamlandı"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:295
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" bir hatayla tamamlandı!"
 
@@ -158,18 +159,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -199,22 +204,22 @@ msgid "Audio Description"
 msgstr "Ses Açıklaması"
 
 #: libparabolic/src/models/format.cpp:299
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:303
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:307
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:311
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1063,6 +1068,7 @@ msgstr "Çalışıyor"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1146,6 +1152,7 @@ msgid "No Subtitles Available"
 msgstr "Alt Yazı Yok"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} öge"
 
@@ -1173,6 +1180,7 @@ msgid "Don't show this message again"
 msgstr "Bu iletiyi tekrar gösterme"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1435,6 +1443,7 @@ msgstr ""
 "doğrulamasını ve ayarlarda çerezler için seçilen tarayıcıyı denetleyin."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} indirmek için kimlik bilgisi gerekli. Lütfen kullanmak için bir tane "
@@ -1565,7 +1574,7 @@ msgstr "Güncelle"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:605
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:644
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "Kuyrukta"
 
@@ -1573,14 +1582,14 @@ msgstr "Kuyrukta"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:604
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:626
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "İndiriliyor"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:578
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:606
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:645
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Tamamlandı"
 
@@ -1789,8 +1798,8 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgstr ""
 #~ "Farklı siteler aynı dil için farklı dil kodu biçimini kullanabilir. "
 #~ "Aşağıdaki üç türden biriyle karşılaşabilirsiniz: iki harfli, bölgeli iki "
-#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve \"eng"
-#~ "\" kelimelerinin tümü kullanılır.\n"
+#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve "
+#~ "\"eng\" kelimelerinin tümü kullanılır.\n"
 #~ "En iyi sonuçları elde etmek için lütfen dilleriniz için geçerli tüm "
 #~ "kodları belirtin. Varsa, otomatik oluşturulan alt yazılar da "
 #~ "indirilecektir.\n"
@@ -2118,8 +2127,7 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgstr "Kalan İndirme: {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr ""
-#~ "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;Dönüştürücü;İndirici;"
+#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;Dönüştürücü;İndirici;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Basit bir yt-dlp ön ucu"

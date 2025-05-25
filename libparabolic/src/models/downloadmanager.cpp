@@ -220,7 +220,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     std::optional<UrlInfo> DownloadManager::fetchUrlInfo(const std::string& url, const std::optional<Credential>& credential, const std::filesystem::path& suggestedSaveFolder) const
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        std::vector<std::string> arguments{ "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
+        std::vector<std::string> arguments{ "--ignore-config", "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
         if(url.find("soundcloud.com") == std::string::npos)
         {
             arguments.push_back("--flat-playlist");
