@@ -121,7 +121,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         std::vector<GtkCheckButton*> m_singleSubtitleCheckButtons;
         std::vector<AdwEntryRow*> m_playlistItemRows;
         std::vector<GtkCheckButton*> m_playlistItemCheckButtons;
-        bool m_showedGenericDisclaimer;
     };
 }
 

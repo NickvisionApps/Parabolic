@@ -62,6 +62,10 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onCmbFileTypeChanged(int index);
         /**
+         * @brief Shows the generic file type disclaimer.
+         */
+        void genericFileTypeDisclaimer();
+        /**
          * @brief Prompts the user to select a save folder for a single download.
          */
         void selectSaveFolderSingle();
@@ -114,7 +118,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         void onUrlValidated();
         Ui::AddDownloadDialog* m_ui;
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
-        bool m_showedGenericDisclaimer;
     };
 }
 
