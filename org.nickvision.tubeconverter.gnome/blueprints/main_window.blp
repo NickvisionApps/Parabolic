@@ -206,7 +206,62 @@ Adw.ApplicationWindow root {
 
       child: Adw.ToolbarView {
         [top]
-        Adw.HeaderBar {}
+        Adw.HeaderBar {
+          [end]
+          Gtk.Button clearHistoryButton {
+            visible: false;
+            tooltip-text: _("Clear History");
+            action-name: "win.clearHistory";
+
+            Adw.ButtonContent {
+              icon-name: "user-trash-symbolic";
+              label: _("Clear");
+            }
+          }
+
+          [end]
+          Gtk.Button stopAllDownloadsButton {
+            visible: false;
+            tooltip-text: _("Stop All Downloads");
+            action-name: "win.stopAllDownloads";
+
+            Adw.ButtonContent {
+              icon-name: "media-playback-stop-symbolic";
+              label: _("Stop All");
+            }
+          }
+
+          [end]
+          Gtk.Button clearQueuedDownloadsButton {
+            visible: false;
+            tooltip-text: _("Clear Queued Downloads");
+            action-name: "win.clearQueuedDownloads";
+
+            Adw.ButtonContent {
+              icon-name: "user-trash-symbolic";
+              label: _("Clear");
+            }
+          }
+
+          [end]
+          Gtk.Button retryFailedDownloadsButton {
+            icon-name: "view-refresh-symbolic";
+            tooltip-text: _("Retry Failed Downloads");
+            action-name: "win.retryFailedDownloads";
+          }
+
+          [end]
+          Gtk.Button clearCompletedDownloadsButton {
+            visible: false;
+            tooltip-text: _("Clear Completed Downloads");
+            action-name: "win.clearCompletedDownloads";
+
+            Adw.ButtonContent {
+              icon-name: "user-trash-symbolic";
+              label: _("Clear");
+            }
+          }
+        }
 
         content: Adw.ToastOverlay toastOverlay {
           child: Adw.ViewStack viewStack {
@@ -246,30 +301,17 @@ Adw.ApplicationWindow root {
                   name: "no-history";
                   child: Adw.StatusPage {
                       icon-name: "snapshots-alt-symbolic";
-                      title: _("No history available");
+                      title: _("No History Available");
                   };
                 }
 
                 Adw.ViewStackPage {
                   name: "history";
                   child: Gtk.ScrolledWindow {
+                    margin-top: 6;
                     child: Adw.Clamp {
                       maximum-size: 600;
-                      child: Adw.PreferencesGroup historyGroup {
-                        title: _("Past Downloads");
-                        header-suffix: Gtk.Button {
-                          valign: center;
-                          action-name: "win.clearHistory";
-                          tooltip-text: _("Clear History");
-    
-                          Adw.ButtonContent {
-                            icon-name: "user-trash-symbolic";
-                            label: _("Clear");
-                          }
-
-                          styles ["flat"]
-                        };
-                      };
+                      child: Adw.PreferencesGroup historyGroup { };
                     };
                   };
                 }
@@ -299,32 +341,16 @@ Adw.ApplicationWindow root {
                   Adw.ViewStackPage {
                     name: "downloading";
                     child: Gtk.ScrolledWindow {
-                      child: Gtk.Box {
+                      child: Gtk.Box listDownloading {
                         orientation: vertical;
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
+                        margin-top: 6;
                         margin-end: 12;
                         spacing: 6;
 
-                        Gtk.Button {
-                          halign: end;
-                          tooltip-text: _("Stop All Downloads");
-                          action-name: "win.stopAllDownloads";
-
-                          Adw.ButtonContent {
-                            icon-name: "media-playback-stop-symbolic";
-                            label: _("Stop All");
-                          }
-
-                          styles [ "flat" ]
-                        }
-
-                        Gtk.Box listDownloading {
-                          orientation: vertical;
-
-                          styles [ "card" ]
-                        }
+                        styles [ "card" ]
                       };
                     };
                   }
@@ -355,32 +381,16 @@ Adw.ApplicationWindow root {
                   Adw.ViewStackPage {
                     name: "queued";
                     child: Gtk.ScrolledWindow {
-                      child: Gtk.Box {
+                      child: Gtk.Box listQueued {
                         orientation: vertical;
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
+                        margin-top: 6;
                         margin-end: 12;
                         spacing: 6;
 
-                        Gtk.Button {
-                          halign: end;
-                          tooltip-text: _("Clear Queued Downloads");
-                          action-name: "win.clearQueuedDownloads";
-
-                          Adw.ButtonContent {
-                            icon-name: "user-trash-symbolic";
-                            label: _("Clear");
-                          }
-
-                          styles [ "flat" ]
-                        }
-
-                        Gtk.Box listQueued {
-                          orientation: vertical;
-
-                          styles [ "card" ]
-                        }
+                        styles [ "card" ]
                       };
                     };
                   }
@@ -411,45 +421,16 @@ Adw.ApplicationWindow root {
                   Adw.ViewStackPage {
                     name: "completed";
                     child: Gtk.ScrolledWindow {
-                      child: Gtk.Box {
+                      child: Gtk.Box listCompleted {
                         orientation: vertical;
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
+                        margin-top: 6;
                         margin-end: 12;
                         spacing: 6;
 
-                        Gtk.Box {
-                          halign: end;
-                          orientation: horizontal;
-                          spacing: 6;
-
-                          Gtk.Button {
-                            tooltip-text: _("Clear Completed Downloads");
-                            action-name: "win.clearCompletedDownloads";
-
-                            Adw.ButtonContent {
-                              icon-name: "user-trash-symbolic";
-                              label: _("Clear");
-                            }
-
-                            styles [ "flat" ]
-                          }
-
-                          Gtk.Button btnRetryFailedDownloads {
-                            icon-name: "view-refresh-symbolic";
-                            tooltip-text: _("Retry Failed Downloads");
-                            action-name: "win.retryFailedDownloads";
-
-                            styles [ "flat" ]
-                          }
-                        }
-
-                        Gtk.Box listCompleted {
-                          orientation: vertical;
-
-                          styles [ "card" ]
-                        }
+                        styles [ "card" ]
                       };
                     };
                   }

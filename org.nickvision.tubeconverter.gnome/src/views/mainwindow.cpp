@@ -222,6 +222,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onNavItemSelected(GtkListBox* box, GtkListBoxRow* row)
     {
         adw_navigation_split_view_set_show_content(m_builder.get<AdwNavigationSplitView>("navView"), true);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("clearHistoryButton"), false);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("stopAllDownloadsButton"), false);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("clearQueuedDownloadsButton"), false);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("clearCompletedDownloadsButton"), false);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("retryFailedDownloadsButton"), false);
         if(row == gtk_list_box_get_row_at_index(box, Pages::Home))
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Home"));
@@ -238,21 +243,26 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("History"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "history");
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("clearHistoryButton"), true);
         }
         else if(row == gtk_list_box_get_row_at_index(box, Pages::Downloading))
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Downloading"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "downloading");
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("stopAllDownloadsButton"), true);
         }
         else if(row == gtk_list_box_get_row_at_index(box, Pages::Queued))
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Queued"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "queued");
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("clearQueuedDownloadsButton"), true);
         }
         else if(row == gtk_list_box_get_row_at_index(box, Pages::Completed))
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Completed"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "completed");
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("clearCompletedDownloadsButton"), true);
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("retryFailedDownloadsButton"), true);
         }
     }
 
@@ -271,6 +281,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), download.getTitle().c_str());
             adw_action_row_set_subtitle(row, download.getUrl().c_str());
+            adw_action_row_set_subtitle_lines(row, 3);
             adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("historyGroup"), GTK_WIDGET(row));
             m_historyRows.push_back(row);
             //Play button
