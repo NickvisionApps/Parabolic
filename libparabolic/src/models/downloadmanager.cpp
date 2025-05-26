@@ -1,4 +1,5 @@
 #include "models/downloadmanager.h"
+#include <filesystem>
 #include <fstream>
 #include <utility>
 #include <libnick/helpers/stringhelpers.h>
@@ -362,6 +363,10 @@ namespace Nickvision::TubeConverter::Shared::Models
                     fields[1] = StringHelpers::trim(fields[1]);
                     fields[1] = StringHelpers::trim(fields[1], '"');
                     fields[1] = StringHelpers::trim(fields[1]);
+                    if(!std::filesystem::path(fields[1]).is_absolute())
+                    {
+                        fields.erase(fields.begin() + 1);
+                    }
                 }
                 if(!StringHelpers::isValidUrl(fields[0]))
                 {
