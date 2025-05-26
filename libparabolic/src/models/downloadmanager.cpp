@@ -11,6 +11,8 @@ using namespace Nickvision::Keyring;
 using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Events;
 
+#define BATCH_FOLDER_PATH_DELIM '|'
+
 namespace Nickvision::TubeConverter::Shared::Models
 {
     static std::string s_empty{};
@@ -345,9 +347,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string line;
         while(std::getline(file, line))
         {
-            if(line.find(';') != std::string::npos)
+            if(line.find(BATCH_FOLDER_PATH_DELIM) != std::string::npos)
             {
-                std::vector<std::string> fields{ StringHelpers::split(line, ';', false) };
+                std::vector<std::string> fields{ StringHelpers::split(line, BATCH_FOLDER_PATH_DELIM, false) };
                 if(fields.size() != 1 && fields.size() != 2)
                 {
                     continue;

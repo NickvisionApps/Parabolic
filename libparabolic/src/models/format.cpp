@@ -236,6 +236,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         case FormatValue::None:
             return m_id == _("None") && m_protocol == "None";
         }
+        return false;
     }
 
     std::string Format::str() const
