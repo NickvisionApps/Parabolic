@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="ru">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">aria2 🛠️</title>
+        <title type="link">aria2c 🛠️</title>
 	<credit type="author copyright">
             <name>Николас Логоццо</name>
             <years its:translate="no">2023-2025</years>
@@ -20,21 +20,20 @@
     </mal:credit>
   </info>
 
-<title>aria2</title>
-<p>Эта страница объясняет все опции по настройке загрузчика aria2 в параметрах <app>Parabolic</app>.</p>
+<title>aria2c</title>
+<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Использовать aria2</title>
-        <p>Если этот параметр включен, Parabolic будет использовать aria2c для загрузки мультимедиа.</p>
-        <p>Хотя использование aria2c может повысить скорость загрузки, прогресс загрузки не будет отображаться в пользовательском интерфейсе.</p>
+        <title>Use aria2c</title>
+        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
         <note style="advanced">
             <p>По умолчанию: Выключено</p>
         </note>
     </item>
     <item>
         <title>Максимум подключений к серверу</title>
-        <p>Эта опция применяется при включении использования aria2. Эта опция эквивалентна использованию флага <code>-x</code> у aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>Максимальное число соединений с сервером. Целое число от 1 до 32.</p>
         <note style="advanced">
             <p>По умолчанию: 16</p>
@@ -42,7 +41,7 @@
     </item>
     <item>
         <title>Минимальный размер фрагмента</title>
-        <p>Эта опция применяется при включении использования aria2. Эта опция эквивалентна использованию флага <code>-k</code> у aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>Минимальный размер, в МиБ, на который разбивать файл при загрузке. Целое число от 1 до 1024.</p>
         <note style="advanced">
             <p>По умолчанию: 20</p>

@@ -26,14 +26,14 @@
 <terms>
     <item>
         <title>Incrustar metadatos</title>
-        <p>Si se activa, Parabolic etiquetará un medio con su información relevante (título, género, etc...) si está disponible.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
         <title>Eliminar los datos de origen</title>
-        <p>Si se activa, Parabolic borrará los campos de los metadatos que contienen una dirección URL y otra información de identificación de la fuente multimedia.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Campos que se borran: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> y <code>handler_name</code> en cada transmisión.</p>
         <note>
             <p>Esta opción solo es configurable si <code> Incrustar metadatos </code> está activado.</p>
@@ -44,7 +44,7 @@
     </item>
     <item>
         <title>Incrustar miniaturas</title>
-        <p>Si está activada, Parabolic incrustará un medio con su miniatura si está disponible.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Si el tipo de archivo no admite la incrustación, la miniatura se escribirá en un archivo de imagen independiente.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
@@ -52,7 +52,7 @@
     </item>
     <item>
         <title>Recortar miniaturas de audio</title>
-        <p>Si está activada, Parabolic recortará las miniaturas de los archivos de audio para que tengan una resolución cuadrada.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>Esta opción solo es configurable si <code>Incrustar miniaturas</code> está activada.</p>
         </note>
@@ -62,21 +62,21 @@
     </item>
     <item>
         <title>Incrustar capítulos</title>
-        <p>Si está activada, Parabolic etiquetará un multimedia con la información del capítulo si está disponible.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Predeterminado: Apagado</p>
         </note>
     </item>
     <item>
         <title>Incrustar los subtítulos</title>
-        <p>Si se desactiva o si no se admite la incrustación, los subtítulos descargados se guardarán en un archivo independiente.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
         <title>Hilos de postprocesamiento</title>
-        <p>El número de hilos que el postprocesador (<code>FFmpeg</code>) puede utilizar para cada descarga.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Por defecto: El número máximo de hilos disponibles en el sistema</p>
         </note>

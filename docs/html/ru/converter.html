@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Встраивать метаданные</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+<p class="p">Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Удалить метаданные об источнике</dt>
 <dd class="terms">
-<p class="p">Если включено, Parabolic будет очищать метаданные, содержащие URL и другую информацию, по которой можно отследить источник файла.</p>
+<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
 <p class="p">Следующие поля будут удалены: <span class="code">comment</span>, <span class="code">description</span>, <span class="code">synopsis</span>, <span class="code">purl</span> и <span class="code">handler_name</span> в каждой дорожке.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Embed Thumbnails</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+<p class="p">Parabolic will embed a media with its thumbnail if available.</p>
 <p class="p">If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Обрезать миниатюры для аудио</dt>
 <dd class="terms">
-<p class="p">Если этот параметр включен, Parabolic будет обрезать миниатюры аудиофайлов до квадратного разрешения.</p>
+<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Встраивать главы</dt>
 <dd class="terms">
-<p class="p">Если включено и доступны данные о метках глав, Parabolic будет добавлять их в файл.</p>
+<p class="p">Parabolic will tag a media with its chapter information if available.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Встраивать субтитры</dt>
 <dd class="terms">
-<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Потоки постобработки</dt>
 <dd class="terms">
-<p class="p">Количество потоков, которое постпроцессор (<span class="code">FFmpeg</span>) может использовать для каждой загрузки.</p>
+<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>

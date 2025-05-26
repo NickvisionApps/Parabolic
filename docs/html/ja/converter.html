@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">メタデータを埋め込む</dt>
 <dd class="terms">
-<p class="p">有効であれば、Parabolic は可能な場合、メディアに関連する情報（タイトル、ジャンルなど）とサムネイルをファイルにタグ付けします。</p>
+<p class="p">Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">ダウンロード元のデータを削除</dt>
 <dd class="terms">
-<p class="p">有効であれば、Parabolic はメディアのソースを特定できる URL などのメタデータを削除します。</p>
+<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
 <p class="p">これらのメタデータ欄: <span class="code">comment</span>、<span class="code">description</span>、<span class="code">synopsis</span>、<span class="code">purl</span>、<span class="code">handler_name</span> は初めから埋め込まれません。</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">字幕を埋め込む</dt>
 <dd class="terms">
-<p class="p">有効であれば、Parabolic は利用可能な場合、メディアにサムネイルを埋め込みます。</p>
+<p class="p">Parabolic will embed a media with its thumbnail if available.</p>
 <p class="p">ファイル形式が埋め込みに対応していない場合は、サムネイルは独立した画像ファイルとして保存されます。</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">オーディオサムネイルを整形</dt>
 <dd class="terms">
-<p class="p">有効であれば、Parabolic はオーディオファイルのサムネイル画像を正方形に切り抜きます。</p>
+<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">チャプター（章）を埋め込む</dt>
 <dd class="terms">
-<p class="p">有効であれば、利用可能であれば、Parabolic はメディアにチャプター（章）をタグ付けします。</p>
+<p class="p">Parabolic will tag a media with its chapter information if available.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">字幕を埋め込む</dt>
 <dd class="terms">
-<p class="p">無効化されていたり、埋め込みが対応されていない場合は、ダウンロードされた字幕は独立したファイルに保存されます。</p>
+<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">ポストプロセッサのスレッド</dt>
 <dd class="terms">
-<p class="p">各ダウンロードで使用するポストプロセッサ (<span class="code">FFmpeg</span>) に許可するスレッドの数。</p>
+<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>

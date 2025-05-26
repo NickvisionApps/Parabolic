@@ -20,14 +20,14 @@
 <terms>
     <item>
         <title>Vložit metadata</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic označí médium příslušnými informacemi (název, žánr atd.), pokud jsou k dispozici.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
         </note>
     </item>
     <item>
         <title>Odebrat zdrojová data</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic vymaže pole s metadaty obsahující URL a další identifikující informace o zdroji média.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Pole, která budou vymazána: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> a <code>handler_name</code> v každém streamu.</p>
         <note>
             <p>Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vložit metadata</code>.</p>
@@ -38,7 +38,7 @@
     </item>
     <item>
         <title>Vkládat miniatury</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic vloží do média jeho miniaturu, pokud jsou dostupná.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Pokud typ souboru nepodporuje vkládání, bude miniatura uložena do samostatného souboru.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Oříznout miniatury zvuku</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic ořízne miniatury zvukových souborů tak, aby měly čtvercové rozlišení.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vkládat miniatury</code>.</p>
         </note>
@@ -56,21 +56,21 @@
     </item>
     <item>
         <title>Vložit kapitoly</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic označí média informacemi o kapitolách, pokud jsou dostupné.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Výchozí: vypnuto</p>
         </note>
     </item>
     <item>
         <title>Vložit titulky</title>
-        <p>Pokud je vložení zakázáno nebo selže, budou stažené titulky uloženy do samostatného souboru.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
         </note>
     </item>
     <item>
         <title>Zpracovávání vláken</title>
-        <p>Počet vláken, která má postprocesor (<code>FFmpeg</code>) použít pro každé stahování.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Výchozí: maximální počet vláken dostupných v systému</p>
         </note>

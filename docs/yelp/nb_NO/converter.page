@@ -26,14 +26,14 @@
 <terms>
     <item>
         <title>Bygg inn metadata</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Standard: på</p>
         </note>
     </item>
     <item>
         <title>Fjern kildedata</title>
-        <p>Hvis dette er på, vil Parabolic fjerne alle metadata om kilden til videoen, for eksempel nettadresser.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Felter som fjernes:<code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> og <code>handler_name</code> på hver nedlasting.</p>
         <note>
             <p>Denne innstillingen kan bare endres hvis «Bygg inn metadata» er på.</p>
@@ -44,7 +44,7 @@
     </item>
     <item>
         <title>Embed Thumbnails</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
         <note style="advanced">
             <p>Standard: på</p>
@@ -52,7 +52,7 @@
     </item>
     <item>
         <title>Kvadratiske miniatyrbilder</title>
-        <p>Hvis dette er på, vil Parabolic beskjære miniatyrbilder slik at de blir kvadratiske.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
         </note>
@@ -62,21 +62,21 @@
     </item>
     <item>
         <title>Bygg inn kapitler</title>
-        <p>Hvis dette er på, vil Parabolic forsøke å legge ved informasjon om kapitler i videoen.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Standard: av</p>
         </note>
     </item>
     <item>
         <title>Bygg inn undertekster</title>
-        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Standard: på</p>
         </note>
     </item>
     <item>
         <title>Behandlingstråder</title>
-        <p>Antall tråder som kan brukes til etterbehandling av hver nedlasting (med FFmpeg).</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Standard: Det maksimale antallet tråder som er tilgjengelig på systemet</p>
         </note>

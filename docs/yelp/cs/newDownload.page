@@ -28,13 +28,14 @@
     <item>
         <title>Použít hromadný soubor</title>
         <p>Vyberte hromadný textový soubor, který obsahuje adresy k ověření.</p>
-        <p>Ke každé adrese může být zároveň přiřazena volitelná složka k uložení daného média.</p>
-        <p>Všechny adresy a jejich média budou seskupeny a budou aplikací Parabolic považovány za jeden playlist.</p>
+        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
+        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
+        <p>The optional save folder must be an absolute path.</p>
         <note style="advanced">
             <p>Formát hromadného souboru:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 ; "Složka1"</code></p>
-            <p><code>URL3;"Složka2"</code></p>
+            <p><code>URL2 | "Folder1"</code></p>
+            <p><code>"URL3"|"Folder2"</code></p>
             <p><code>"URL4"</code></p>
         </note>
     </item>

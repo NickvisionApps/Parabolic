@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">同時最大下載數</dt>
 <dd class="terms">
-<p class="p">同一時間最多有幾個項目正在下載。必須為 1 到 10 之間的整數。</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">如果達到最大數量，Parabolic 將會把新的下載項目放到佇列區直到可以開始下載。</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">取代現有檔案</dt>
 <dd class="terms">
-<p class="p">一旦開啟，Parabolic 將會取代現有檔案。</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">如果有一個檔案叫做 <span class="code">movie.mp4</span> 在下載資料夾，然後有一個下載項目叫做 <span class="code">movie</span>，<span class="code">movie.mp4</span> 會被取代成新的內容。</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">限制檔案名稱字元</dt>
 <dd class="terms">
-<p class="p">限制只能使用支援 Windows 的檔案字元。</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">這個選項只在 Linux 有提供。</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">在驗證完畢後標題包含媒體 Id</dt>
 <dd class="terms">
-<p class="p">當驗證完成後無論有沒有都加入媒體 Id 。</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">包含自動生成字幕</dt>
 <dd class="terms">
-<p class="p">無論有沒有都加入自動生成的字幕，去滿足選擇的字幕語言。</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">偏好的字幕格式</dt>
 <dd class="terms">
-<p class="p">Parabolic 應該要確保所有下載的字幕都是這個格式。</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
  <g>

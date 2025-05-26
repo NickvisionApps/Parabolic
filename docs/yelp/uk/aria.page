@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="uk">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">aria2 🛠️</title>
+        <title type="link">aria2c 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -20,21 +20,20 @@
     </mal:credit>
   </info>
 
-<title>aria2</title>
-<p>На цій сторінці пояснюються всі параметри для налаштування aria2 у розділі «Параметри» в <app>Parabolic</app>.</p>
+<title>aria2c</title>
+<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Використовувати aria2</title>
-        <p>Якщо ввімкнено, Parabolic використовуватиме aria2c для завантаження медіа.</p>
-        <p>Хоча використання aria2c може підвищити швидкість завантаження, прогрес завантаження не відображатиметься в інтерфейсі.</p>
+        <title>Use aria2c</title>
+        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
         <note style="advanced">
             <p>За замовчуванням: Вимк</p>
         </note>
     </item>
     <item>
         <title>Максимальна кількість з'єднань на сервер</title>
-        <p>Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. Цей параметр є аналогом прапорця <code>-x</code>, переданого до aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>Максимальна кількість з'єднань, яку можна використовувати для одного сервера. Має бути цілим числом від 1 до 32.</p>
         <note style="advanced">
             <p>За замовчуванням: 16</p>
@@ -42,7 +41,7 @@
     </item>
     <item>
         <title>Мінімальний розмір розділення</title>
-        <p>Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. Цей параметр є аналогом прапорця <code>-k</code>, переданого до aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>Мінімальний розмір, у МБ, на який можна розбити файл. Має бути цілим числом від 1 до 1024.</p>
         <note style="advanced">
             <p>За замовчуванням: 20</p>

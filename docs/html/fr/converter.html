@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Inclure les métadonnées</dt>
 <dd class="terms">
-<p class="p">Si cette option est activée, Parabolic inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…), si disponibles.</p>
+<p class="p">Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Retirer les données sur la source</dt>
 <dd class="terms">
-<p class="p">Si cette option est activée, Parabolic effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
+<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
 <p class="p">Champs effacés : <span class="code">commentaires</span>, <span class="code">description</span>, <span class="code">synopsis</span>, <span class="code">purl</span> et <span class="code">nom_du_service</span> dans chaque flux.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inclure les vignettes</dt>
 <dd class="terms">
-<p class="p">Si cette option est activée, Parabolic inclura dans un média sa vignette, si disponible.</p>
+<p class="p">Parabolic will embed a media with its thumbnail if available.</p>
 <p class="p">Si le type de fichier ne prend pas en charge l’inclusion d’une vignette, celle-ci sera exportée vers un fichier d’image séparé.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Rogner les vignettes des fichiers audio</dt>
 <dd class="terms">
-<p class="p">Si cette option est activée, Parabolic découpera la vignette des fichiers audio pour obtenir une résolution carrée.</p>
+<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inclure les chapitres</dt>
 <dd class="terms">
-<p class="p">Si cette option est activée, Parabolic inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
+<p class="p">Parabolic will tag a media with its chapter information if available.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inclure les sous-titres</dt>
 <dd class="terms">
-<p class="p">Si cette option est désactivée ou si l’inclusion n’est pas prise en charge, les sous-titres téléchargés seront enregistrés dans un fichier séparé.</p>
+<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Fils de post-traitement</dt>
 <dd class="terms">
-<p class="p">Le nombre de fils que le postprocesseur (<span class="code">FFmpeg</span>) peut utiliser pour chaque téléchargement.</p>
+<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>

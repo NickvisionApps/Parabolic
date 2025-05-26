@@ -25,22 +25,15 @@
 
 <terms>
     <item>
-        <title>Full logging</title>
-        <p>Hvis denne innstillingen er på, vil yt-dlp gi mer utfyllende informasjon om hver nedlasting.</p>
-        <note style="advanced">
-            <p>Standard: på</p>
-        </note>
-    </item>
-    <item>
         <title>Use Part Files</title>
-        <p>If enabled, Parabolic will use <code>.part</code> files instead of writing directly into the output file.</p>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>Standard: på</p>
         </note>
     </item>
     <item>
         <title>Bruk SponsorBlock på Youtube</title>
-        <p>Hvis dette er på, vil Parabolic bruke SponsorBlock-utvidelsen til å kutte ut betalte segmenter fra YouTube-videoer.</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>SponsorBlock fungerer bare på YouTube. Å ha denne innstillingen på vil ikke påvirke andre nedlastinger på noen som helst måte.</p>
         </note>
@@ -50,7 +43,7 @@
     </item>
     <item>
         <title>Hastighetsgrense</title>
-        <p>En øvre grense for nedlastningsfart i KiB/s, som brukes hvis hastighetsgrense også er slått på for den enkelte nedlastingen.</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>Standard: 1024</p>
         </note>

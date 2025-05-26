@@ -26,14 +26,14 @@
 <terms>
     <item>
         <title>Zapisuj metadane w plikach</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
     <item>
         <title>Usuń dane źródłowe</title>
-        <p>Po włączeniu tej opcji, Parabolic usunie pola metadanych zawierające adres URL i inne informacje identyfikujące źródło multimediów.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Pola, które są czyszczone: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> oraz <code>handler_name</code> w każdym strumieniu.</p>
         <note>
             <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
@@ -44,7 +44,7 @@
     </item>
     <item>
         <title>Embed Thumbnails</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
@@ -52,7 +52,7 @@
     </item>
     <item>
         <title>Przycinaj miniatury plików audio</title>
-        <p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
         </note>
@@ -62,21 +62,21 @@
     </item>
     <item>
         <title>Zapisuj rozdziały w plikach</title>
-        <p>Po włączeniu, Parabolic będzie oznaczać multimedia informacjami o rozdziałach, jeśli są dostępne.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Domyślnie: wyłączone</p>
         </note>
     </item>
     <item>
         <title>Wbudowane napisy</title>
-        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Default: The max number of threads available on the system</p>
         </note>

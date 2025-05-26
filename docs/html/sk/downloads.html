@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Maximálny počet aktívnych stiahnutí</dt>
 <dd class="terms">
-<p class="p">Počet aktívnych sťahovaní, ktoré môžu prebiehať súčasne. Musí to byť celočíselná hodnota od 1 do 10.</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">Ak sa dosiahne maximálny počet aktívnych sťahovaní, aplikácia Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Prepísať existujúce súbory</dt>
 <dd class="terms">
-<p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic prepíše existujúce súbory.</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">Napríklad, ak súbor s názvom <span class="code">movie.mp4</span> existuje v priečinku na stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <span class="code">movie</span>, <span class="code">movie.mp4</span> bude prepísaný s novým obsahom sťahovania.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Obmedziť znaky názvu súboru</dt>
 <dd class="terms">
-<p class="p">Obmedzí znaky v názvoch súborov iba na znaky podporované systémom Windows.</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">Táto možnosť je dostupná iba na systéme Linux.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Pridanie ID média do názvu po overení</dt>
 <dd class="terms">
-<p class="p">Či sa má alebo nemá zahrnúť ID média do názvu (názov súboru) pri overení.</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Zahrnúť automaticky generované titulky</dt>
 <dd class="terms">
-<p class="p">Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby zodpovedali požadovanému jazyku tituliek, alebo nie.</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Uprednostňovaný formát tituliek</dt>
 <dd class="terms">
-<p class="p">Formát súboru, v ktorom majú byť stiahnuté titulky v aplikácii Parabolic.</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>

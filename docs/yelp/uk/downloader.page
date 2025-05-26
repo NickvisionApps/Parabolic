@@ -25,22 +25,15 @@
 
 <terms>
     <item>
-        <title>Детальне журналювання</title>
-        <p>Якщо увімкнено, для кожного завантаження буде надано більш детальні журнали від <code>yt-dlp</code>.</p>
-        <note style="advanced">
-            <p>За замовчуванням: Ввімк</p>
-        </note>
-    </item>
-    <item>
         <title>Use Part Files</title>
-        <p>If enabled, Parabolic will use <code>.part</code> files instead of writing directly into the output file.</p>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>За замовчуванням: Ввімк</p>
         </note>
     </item>
     <item>
         <title>Використовувати SponsorBlock для YouTube</title>
-        <p>Якщо ввімкнено, Parabolic застосує розширення SponsorBlock до завантажень YouTube.</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>SponsorBlock працює лише на відео YouTube. Однак залишення цього налаштування ввімкненим не вплине на завантаження з інших сайтів (тобто не призведе до їх невдачі).</p>
         </note>
@@ -50,7 +43,7 @@
     </item>
     <item>
         <title>Обмеження швидкості</title>
-        <p>Обмеження в кб/с, яке застосовується до завантажень, тільки якщо для них ввімкнено додаткову опцію <code>Обмеження швидкості</code>. Повинно бути цілим числом від 512 до 10240.</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>За замовчуванням: 1024</p>
         </note>

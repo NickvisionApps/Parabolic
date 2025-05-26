@@ -35,8 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Use Batch File</dt>
 <dd class="terms">
 <p class="p">Select a batch text file that contains a list of URLs to validate.</p>
-<p class="p">Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
-<p class="p">All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+<p class="p">Each URL can be accompanied by an optional save folder (delimited by <span class="code">|</span>) in which to save each media of the URL to.</p>
+<p class="p">All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
+<p class="p">The optional save folder must be an absolute path.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -54,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Batch File Format:</p>
 <p class="p"><span class="code">URL1</span></p>
-<p class="p"><span class="code">URL2 ; "Folder1"</span></p>
-<p class="p"><span class="code">URL3;"Folder2"</span></p>
+<p class="p"><span class="code">URL2 | "Folder1"</span></p>
+<p class="p"><span class="code">"URL3"|"Folder2"</span></p>
 <p class="p"><span class="code">"URL4"</span></p>
 </div></div></div>
 </div>

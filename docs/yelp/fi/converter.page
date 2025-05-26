@@ -20,14 +20,14 @@
 <terms>
     <item>
         <title>Upota metatiedot</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Default: On</p>
         </note>
     </item>
     <item>
         <title>Poista lähdetiedot</title>
-        <p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
         <note>
             <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
@@ -38,7 +38,7 @@
     </item>
     <item>
         <title>Upota pikkukuvat</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Mikäli tiedostotyyppi ei tue upottamista, asetetaan pikkukuva erilliseen kuvatiedostoon.</p>
         <note style="advanced">
             <p>Default: On</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Rajaa äänen pikkukuvat</title>
-        <p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
         </note>
@@ -56,21 +56,21 @@
     </item>
     <item>
         <title>Upota kappaleet</title>
-        <p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Vakio: pois päältä</p>
         </note>
     </item>
     <item>
         <title>Upota tekstitykset</title>
-        <p>Mikäli asetettu käytöstä pois, tai upottaminen ei ole tuettuna, tallennetaan ladatut tekstitykset erilliseen tiedostoon.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Default: On</p>
         </note>
     </item>
     <item>
         <title>Jälkikäsittely käynnissä</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Default: The max number of threads available on the system</p>
         </note>

@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="pt-BR">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">aria2 🛠️</title>
+        <title type="link">aria2c 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -14,21 +14,20 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>aria2</title>
-<p>Esta página explica todas as opções para configurar o aria2 em Preferências no <app>Parabolic</app>.</p>
+<title>aria2c</title>
+<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Usar aria2</title>
-        <p>Se habilitado, o Parabolic usará aria2c para baixar mídia.</p>
-        <p>Embora usar aria2c possa melhorar a velocidade de download, o progresso do download não será exibido na UI.</p>
+        <title>Use aria2c</title>
+        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
         <title>Máximo de conexões por servidor</title>
-        <p>Esta opção se aplica apenas ao usar o ARIA2 está ativado. Esta opção é a mesma que o sinalizador <code> -x </code> passou para ARIA2C.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>O número máximo de conexões que podem ser usadas por servidor. Deve ser um valor inteiro entre 1 e 32.</p>
         <note style="advanced">
             <p>Padrão: 16</p>
@@ -36,7 +35,7 @@
     </item>
     <item>
         <title>Tamanho mínimo de divisão</title>
-        <p>Esta opção só se aplica quando o uso de aria2 está habilitado. Esta opção é o mesmo que o sinalizador <code>-k</code> passado para aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>O tamanho mínimo, em MiB, para dividir um arquivo. Deve ser um valor inteiro entre 1 e 1024.</p>
         <note style="advanced">
             <p>Padrão: 20</p>

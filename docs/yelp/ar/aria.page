@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="ar">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">aria2 🛠️</title>
+        <title type="link">aria2c 🛠️</title>
 	<credit type="author copyright">
             <name>نيكولاس لوجوزو</name>
             <years its:translate="no">2023-2025</years>
@@ -14,21 +14,20 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>aria2</title>
-<p>توضح هذه الصفحة جميع الخيارات لتكوين aria2 في التفضيلات في <app>Parabolic</app>.</p>
+<title>aria2c</title>
+<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>إستخدم آريا٢</title>
-        <p>إذا تم التفعيل، سيستخدم Parabolic aria2c لتنزيل الوسائط.</p>
-        <p>على الرغم من أن استخدام aria2c يمكن أن يحسن سرعة التنزيل، إلا أن تقدم التنزيل لن يتم عرضه في واجهة المستخدم.</p>
+        <title>Use aria2c</title>
+        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
         <note style="advanced">
             <p>الافتراضي: إيقاف</p>
         </note>
     </item>
     <item>
         <title>أقصى عدد من الاتصالات لكل خادم</title>
-        <p>ينطبق هذا الخيار فقط عندما يكون استخدام aria2 مفعلًا. هذا الخيار هو نفسه العلم <code>-x</code> المرسل إلى aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>أقصى عدد من الاتصالات التي يمكن استخدامها لكل خادم. يجب أن يكون قيمة عددية صحيحة بين 1 و 32.</p>
         <note style="advanced">
             <p>الافتراضي: 16</p>
@@ -36,7 +35,7 @@
     </item>
     <item>
         <title>أقل حجم للتقسيم</title>
-        <p>ينطبق هذا الخيار فقط عندما يكون استخدام aria2 مفعلًا. هذا الخيار هو نفسه العلم <code>-k</code> المرسل إلى aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>أقل حجم، بوحدات ميجابايت (MiB)، الذي يتم تقسيم الملف عليه. يجب أن يكون قيمة عددية صحيحة بين 1 و 1024.</p>
         <note style="advanced">
             <p>الافتراضي: 20</p>

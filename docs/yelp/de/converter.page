@@ -20,14 +20,14 @@
 <terms>
     <item>
         <title>Metadaten einbetten</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Standardeinstellung: Ein</p>
         </note>
     </item>
     <item>
         <title>Quelldaten entfernen</title>
-        <p>Wenn aktiviert, löscht Parabolic Metadatenfelder, die die URL und andere identifizierende Informationen der Medienquelle enthalten.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Felder, die gelöscht werden: <code>Kommentar</code>, <code>Beschreibung</code>, <code>Synopse</code>, <code>Purl</code> und <code>handler_name</code> in jedem Stream.</p>
         <note>
             <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
@@ -38,7 +38,7 @@
     </item>
     <item>
         <title>Vorschaubilder einbetten</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Wenn der Dateityp Einbetten nicht unterstützt, wird das Vorschaubild in einer separaten Bilddatei abgespeichert.</p>
         <note style="advanced">
             <p>Standardeinstellung: Ein</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Audio-Miniaturbilder zuschneiden</title>
-        <p>Wenn aktiviert, beschneidet Parabolic die Miniaturansichten für Audiodateien auf eine quadratische Auflösung.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
         </note>
@@ -56,21 +56,21 @@
     </item>
     <item>
         <title>Kapitel einbetten</title>
-        <p>Wenn aktiviert, versieht Parabolic ein Medium mit Kapitelinformationen, falls vorhanden.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Standardeinstellung: Aus</p>
         </note>
     </item>
     <item>
         <title>Untertitel einbetten</title>
-        <p>Wenn die Option deaktiviert ist oder das Einbetten nicht unterstützt wird, werden die heruntergeladenen Untertitel in einer separaten Datei gespeichert.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Standardeinstellung: Ein</p>
         </note>
     </item>
     <item>
         <title>Postprocessing Threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Default: The max number of threads available on the system</p>
         </note>

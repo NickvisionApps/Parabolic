@@ -21,7 +21,7 @@
 <terms>
     <item>
         <title>Número Máximo de Downloads Ativos</title>
-        <p>O número de downloads ativos permitidos para execução por vez. Deve ser um valor inteiro entre 1 e 10.</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads em uma fila até que mais downloads possam ser executados.</p>
         <note style="advanced">
             <p>Padrão: 5</p>
@@ -29,7 +29,7 @@
     </item>
     <item>
         <title>Sobrescrever arquivos existentes</title>
-        <p>Se ativado, o Parabolic substituirá os arquivos existentes.</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>Por exemplo, se um arquivo chamado <code>movie.mp4</code> existir na pasta de download e um novo download for criado chamado <code>movie</code>, <code>movie.mp4</code> será substituído pelo conteúdo do novo download.</p>
         <note>
             <p>O Parabolic irá detectar downloads que devem ser retomados e evitará essa configuração ao recuperar ou ao tentar novamente downloads com falha</p>
@@ -40,7 +40,7 @@
     </item>
     <item>
         <title>Limite de caracteres no nome do arquivo</title>
-        <p>Restringe os caracteres dos nomes de arquivos a apenas aqueles suportados pelo Windows.</p>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
         <p>Esta opção só está disponível no Linux.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
@@ -48,14 +48,14 @@
     </item>
     <item>
         <title>Incluir ID da mídia no título após validação</title>
-        <p>Se o ID da mídia deve ou não ser incluído no título (nome do arquivo) quando validado.</p>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Legendas Geradas Automaticamente Incluídas</title>
-        <p>Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
@@ -82,7 +82,7 @@
     </item>
     <item>
         <title>Formato de legenda preferido</title>
-        <p>O formato de arquivo que o Parabolic deve garantir que todas as legendas baixadas sejam.</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Padrão: Qualquer</p>
         </note>

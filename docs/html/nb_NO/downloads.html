@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Høyeste antall aktive nedlastinger</dt>
 <dd class="terms">
-<p class="p">Det høyeste antallet nedlastinger som kan gjennomføres samtidig. Må være et tall mellom 1 og 10.</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">Hvis det høyeste antallet aktive nedlastinger nås, vil Parabolic sette resten i en kø til flere nedlastinger kan gjennomføres.</p>
 <div class="note note-advanced" title="Avansert">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Erstatt eksisterende filer</dt>
 <dd class="terms">
-<p class="p">Hvis dette er på, vil Parabolic kunne erstatte eksisterende filer ved navnekollisjoner.</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">Hvis en fil som heter <span class="code">video.mp4</span> ligger i nedlastingsmappen, og en ny nedlasting ved navn <span class="code">video</span> blir lagt til, vil <span class="code">video.mp4</span> erstattes med den nye filen.</p>
 <div class="note" title="Merknad">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Begrens lengde på filnavn</dt>
 <dd class="terms">
-<p class="p">Begrenser tegn i filnavn til de som støttes av Windows.</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">Denne innstillingen er bare tilgjengelig på Linux.</p>
 <div class="note note-advanced" title="Avansert">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inkluder ID i tittel etter kontroll</dt>
 <dd class="terms">
-<p class="p">Om innholdets ID skal inkluderes i tittelen (filnavnet) ved kontroll.</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="Avansert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inkluder automatiske undertekster</dt>
 <dd class="terms">
-<p class="p">Om automatisk genererte undertekster som samsvarer med det valgte språket skal inkluderes i nedlastingen.</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="Avansert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Foretrukket undertekstformat</dt>
 <dd class="terms">
-<p class="p">Filtypen Parabolic skal sørge for at alle undertekster lastes ned som.</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="Avansert">
 <svg height="24" width="24" version="1.1">
  <g>

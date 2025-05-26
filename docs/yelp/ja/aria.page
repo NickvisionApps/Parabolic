@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="ja">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">aria2 🛠️</title>
+        <title type="link">aria2c 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -20,21 +20,20 @@
     </mal:credit>
   </info>
 
-<title>aria2</title>
-<p>このページでは <app>Parabolic</app> で aria2 を設定するためのすべてオプションについて説明します。</p>
+<title>aria2c</title>
+<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>aria2 を使用</title>
-        <p>有効であれば、Parabolic は aria2 をメディアのダウンロードに使用します。</p>
-        <p>aria2c を使用するとダウンロード速度は向上しますが、UI にダウンロード進捗は表示されません。</p>
+        <title>Use aria2c</title>
+        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
         <note style="advanced">
             <p>デフォルト: オフ</p>
         </note>
     </item>
     <item>
         <title>サーバーごとの最大接続数</title>
-        <p>このオプションは、aria2 の使用が有効な場合のみ適用されます。このオプションは、aria2c に <code>-x</code>のフラグを指定するのと同じです。</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>サーバーごとに使用できる最大接続数。1から32の整数値である必要があります。</p>
         <note style="advanced">
             <p>デフォルト: 16</p>
@@ -42,7 +41,7 @@
     </item>
     <item>
         <title>最小分割サイズ</title>
-        <p>このオプションは、aria2 が有効な場合のみ適用されます。このオプションは、aria2c に <code>-k</code>のフラグを指定するのと同じです。</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>1ファイルを分割する最小サイズ（MiB 単位）。1から1024の整数である必要があります。</p>
         <note style="advanced">
             <p>デフォルト: 20</p>

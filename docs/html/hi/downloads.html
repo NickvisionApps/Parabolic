@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">सक्रिय डाउनलोड की अधिकतम संख्या</dt>
 <dd class="terms">
-<p class="p">एक समय में चलने की अनुमति वाले सक्रिय डाउनलोड की संख्या। 1 और 10 के बीच पूर्णांक मान होना चाहिए।</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">यदि सक्रिय डाउनलोड की अधिकतम संख्या पहुंच जाती है, तो Parabolic नए डाउनलोड को एक कतार में रखेगा जब तक कि अधिक डाउनलोड चलाने में सक्षम न हो जाएं।</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">मौजूदा फाइलें अधिलेखित करें</dt>
 <dd class="terms">
-<p class="p">यदि सक्षम किया गया है, तो Parabolic मौजूदा फाइलों को अधिलेखित कर देगा।</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">उदाहरण के लिए, यदि <span class="code">movie.mp4</span> नामक फाइल डाउनलोड फोल्डर में मौजूद है, और <span class="code">movie</span> नामक एक नया डाउनलोड बनाया जाता है, तो <span class="code">movie.mp4</span> होगा नए डाउनलोड की सामग्री के साथ अधिलेखित किया जाए।</p>
 <div class="note" title="टिप्पणी">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Limit Filename Characters</dt>
 <dd class="terms">
-<p class="p">Restricts characters in filenames to only those supported by Windows.</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">This option is only available on Linux.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Included Media Id in Title After Validation</dt>
 <dd class="terms">
-<p class="p">Whether or not to included the media's id in the title (file name) when validated.</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">ऑटो-निर्मित उपशीर्षक शामिल हैं</dt>
 <dd class="terms">
-<p class="p">क्या उन उपशीर्षकों को शामिल किया जाना चाहिए जो अनुरोधित उपशीर्षक भाषाओं में फिट होने के लिए स्वचालित रूप से अनुवादित हैं।</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Preferred Subtitle Format</dt>
 <dd class="terms">
-<p class="p">The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
  <g>

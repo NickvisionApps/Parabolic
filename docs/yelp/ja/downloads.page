@@ -27,7 +27,7 @@
 <terms>
     <item>
         <title>アクティブダウンロードの最大数</title>
-        <p>平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があります。</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダウンロードが可能になるまでキューに入れます。</p>
         <note style="advanced">
             <p>デフォルト: 5</p>
@@ -35,7 +35,7 @@
     </item>
     <item>
         <title>存在するファイルを上書きする</title>
-        <p>有効であれば、Parabolic は存在するファイルを上書きします。</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>例えば、<code>movie.mp4</code>という名前のファイルがダウンロードフォルダーに存在し、<code>movie</code>という名前のダウンロードが作成されると、<code>movie.mp4</code>は新しいダウンロードの内容で上書きされます。</p>
         <note>
             <p>Parabolic は、再開する必要のあるダウンロードを検知し、失敗したダウンロードの再開時または再試行時にこの設定を無視します</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>ファイル名の文字を制限</title>
-        <p>ファイル名の文字を Windows がサポートする文字のみに制限する。</p>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
         <p>このオプションは Linux でのみ利用できます。</p>
         <note style="advanced">
             <p>デフォルト: オフ</p>
@@ -54,14 +54,14 @@
     </item>
     <item>
         <title>検証完了後のタイトルにメディア ID を含める</title>
-        <p>検証後にメディアのタイトル（ファイル名）にメディアの ID を含めるかどうか。</p>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
     </item>
     <item>
         <title>自動生成された字幕を含める</title>
-        <p>要求された字幕の言語の自動翻訳された字幕を含むかどうか。</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
@@ -88,7 +88,7 @@
     </item>
     <item>
         <title>優先する字幕のフォーマット</title>
-        <p>Parabolic がダウンロードするすべての字幕のファイル形式。</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
             <p>デフォルト: すべて</p>
         </note>

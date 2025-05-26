@@ -19,22 +19,15 @@
 
 <terms>
     <item>
-        <title>تسجيل الإطناب</title>
-        <p>إذا تم التفعيل، سيتم توفير سجلات أكثر تفصيلاً بواسطة <code>yt-dlp</code> لكل عملية تنزيل.</p>
-        <note style="advanced">
-            <p>الإفتراضي: مفعل</p>
-        </note>
-    </item>
-    <item>
         <title>Use Part Files</title>
-        <p>If enabled, Parabolic will use <code>.part</code> files instead of writing directly into the output file.</p>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>الإفتراضي: مفعل</p>
         </note>
     </item>
     <item>
         <title>استخدم "مانع الإعلان لليوتيوب"</title>
-        <p>إذا تم التفعيل، سيقوم تطبيق Parabolic بتطبيق إضافة SponsorBlock على تنزيلات YouTube.</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>ميزة SponsorBlock تعمل فقط على مقاطع فيديو YouTube. ومع ذلك، ترك هذا الإعداد مفعلاً لن يؤثر على التنزيلات من المواقع الأخرى (أي لن يتسبب في فشلها).</p>
         </note>
@@ -44,7 +37,7 @@
     </item>
     <item>
         <title>حدُّ السرعة</title>
-        <p>حد السرعة، بوحدة Ki/s، يُطبّق على التنزيلات فقط إذا كان الخيار المتقدم <code>حد السرعة</code> مفعلاً. يجب أن تكون القيمة عددًا صحيحًا بين 512 و10240.</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>افتراضي:1024</p>
         </note>

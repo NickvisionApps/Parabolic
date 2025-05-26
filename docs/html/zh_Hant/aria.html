@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>aria2</title>
+<title>aria2c</title>
 <link rel="stylesheet" type="text/css" href="zh-HANT.css">
 <script type="text/javascript" src="highlight.pack.js"></script><script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,15 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 <body lang="zh-HANT" dir="ltr"><main><div class="page">
 <header><div class="inner pagewide"><div class="trails" role="navigation"><div class="trail">
-<a class="trail" href="index.html" title="Parabolic 說明文件">Parabolic 說明文件</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">aria2</span></h1></div>
+<a class="trail" href="index.html" title="Parabolic 說明文件">Parabolic 說明文件</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">aria2c</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">此頁面解釋 <span class="app">Parabolic</span> 的偏好設定中所有調整 aria2 的選項。</p>
+<p class="p">This page explains all options for configuring aria2c in Preferences in <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">使用 aria2</dt>
+<dt class="terms">Use aria2c</dt>
 <dd class="terms">
-<p class="p">當啟動時，Parabolic 會使用 aria2c 來下載媒體。</p>
-<p class="p">雖然使用 aira2c 會增加下載速度，但使用者介面將不會顯示下載進度。</p>
+<p class="p">Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -43,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">每個伺服器的最大連接數量</dt>
 <dd class="terms">
-<p class="p">這個選項只有在 aria2 啟用時有用。等同於在 aria2c 中新增 <span class="code">-x</span> 參數。</p>
+<p class="p">This option only applies when using aria2c is enabled. This option is the same as the <span class="code">-x</span> flag passed to aria2c.</p>
 <p class="p">最大連接數量可以為每臺伺服器個別設定。必須為 1 到 32 的整數。</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">最低分割大小</dt>
 <dd class="terms">
-<p class="p">這個選項只有在 aria2 啟用時有用。等同於在 aria2c 中新增 <span class="code">-k</span> 參數。</p>
+<p class="p">This option only applies when using aria2c is enabled. This option is the same as the <span class="code">-k</span> flag passed to aria2c.</p>
 <p class="p">最小在多少 MiB 的時候分割檔案。必須為 1 到 1024 之間的整數。</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">

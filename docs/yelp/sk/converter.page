@@ -26,14 +26,14 @@
 <terms>
     <item>
         <title>Vložiť metaúdaje</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic priradí médiám príslušné informácie (názov, žáner atď.), ak sú k dispozícii.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
         <title>Odstrániť zdrojové údaje</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic odstráni polia metadát obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Polia, ktoré budú odstránené: <code>komentár</code>, <code>popis</code>, <code>súhrn</code>, <code>odkaz</code> a <code>spracovateľ</code> v každom dátovom toku.</p>
         <note>
             <p>Táto možnosť je konfigurovateľná iba pri zapnutom nastavení <code>Vložiť metaúdaje</code>.</p>
@@ -44,7 +44,7 @@
     </item>
     <item>
         <title>Vložiť miniatúry</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic vloží do média miniatúru, ak je k dispozícii.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Ak formát súboru nepodporuje vloženie, miniatúra bude uložená do samostatného obrázkového súboru.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
@@ -52,7 +52,7 @@
     </item>
     <item>
         <title>Orezať miniatúry zvuku</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic oreže miniatúry obrázkov zvukových súborov tak, aby mali štvorcové rozlíšenie.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>Táto možnosť je konfigurovateľná iba pri zapnutom nastavení <code>Vložiť miniatúry</code>.</p>
         </note>
@@ -62,21 +62,21 @@
     </item>
     <item>
         <title>Vložiť kapitoly</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic priradí médiám informácie o kapitolách, ak sú k dispozícii.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Predvolené: Vypnuté</p>
         </note>
     </item>
     <item>
         <title>Vložiť titulky</title>
-        <p>Ak je táto možnosť vypnutá alebo ak vloženie nie je podporované, stiahnuté titulky budú uložené do samostatného súboru.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
         <title>Spracovávanie vlákien</title>
-        <p>Počet vlákien, ktoré má postprocesor (<code>FFmpeg</code>) použiť pre každé sťahovanie.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Predvolené: Maximálny počet vlákien k dispozícii v systéme</p>
         </note>

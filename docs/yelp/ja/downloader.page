@@ -25,22 +25,15 @@
 
 <terms>
     <item>
-        <title>詳細なログ (Verbose)</title>
-        <p>有効であれば、各ダウンロードで、より詳細なログが <code>yt-dlp</code> から出力されます。</p>
-        <note style="advanced">
-            <p>デフォルト: オン</p>
-        </note>
-    </item>
-    <item>
         <title>Use Part Files</title>
-        <p>If enabled, Parabolic will use <code>.part</code> files instead of writing directly into the output file.</p>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
     </item>
     <item>
         <title>YouTube のダウンロードで SponsorBlock を使用</title>
-        <p>有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで有効にします。</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>SponsorBlock は、YouTube の動画のみに動作します。しかし、この設定をオンにしても、他のサイトからのダウンロードには影響しません（つまり、このオプションが原因で失敗することはありません）。</p>
         </note>
@@ -50,7 +43,7 @@
     </item>
     <item>
         <title>スピード制限</title>
-        <p>制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウンロードにのみ適用されます。数値は512から10240の整数である必要があります。</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>デフォルト: 1024</p>
         </note>
