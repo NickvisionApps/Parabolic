@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-26 21:27-0400\n"
+"POT-Creation-Date: 2025-05-26 22:02-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -88,11 +88,13 @@ msgstr "Audio"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:247
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:277
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:343
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:377
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -127,12 +129,13 @@ msgid "translator-credits"
 msgstr "Kinten Le <kinten108101@protonmail.com>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Thử lại các lượt tải xuống thất bại"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:224
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -156,7 +159,7 @@ msgid "Download Finished"
 msgstr "Đã tải xong"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" đã tải xong."
 
@@ -172,7 +175,7 @@ msgid "Download Finished With Error"
 msgstr "Đã tải xong kèm lỗi"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:302
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" đã tải xong kèm lỗi!"
 
@@ -181,22 +184,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -227,22 +230,22 @@ msgid "Audio Description"
 msgstr ""
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{0:f1} B/s"
 
@@ -1229,6 +1232,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1314,11 +1318,12 @@ msgid "No Subtitles Available"
 msgstr "Đã ra bản cập nhật mới."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} trên {1} lượt"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1603,6 +1608,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1731,7 +1737,7 @@ msgstr "Cập nhật"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:556
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:610
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:649
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "Đã đem vào hàng đợi"
 
@@ -1739,14 +1745,14 @@ msgstr "Đã đem vào hàng đợi"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:582
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:609
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:631
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Đang tải"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:583
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:650
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Hoàn tất"
 
