@@ -51,9 +51,9 @@ namespace Ui
             chkRecoverCrashedDownloads->setToolTip(_("Parabolic will recover downloads that were in progress when the app crashed."));
             QLabel* lblDownloadImmediately{ new QLabel(parent) };
             lblDownloadImmediately->setText(_("Download Immediately After Validation"));
-            lblDownloadImmediately->setToolTip(_("Parabolic will immediatly download media after validation, without presenting configuration options to the user."));
+            lblDownloadImmediately->setToolTip(_("Parabolic will immediately download media after validation, without presenting configuration options to the user."));
             chkDownloadImmediately = new Switch(parent);
-            chkDownloadImmediately->setToolTip(_("Parabolic will immediatly download media after validation, without presenting configuration options to the user."));
+            chkDownloadImmediately->setToolTip(_("Parabolic will immediately download media after validation, without presenting configuration options to the user."));
             QLabel* lblHistoryLength{ new QLabel(parent) };
             lblHistoryLength->setText(_("Download History Length"));
             lblHistoryLength->setToolTip(_("The amount of time to keep past downloads in the app's history."));

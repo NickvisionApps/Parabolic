@@ -19,7 +19,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
     public:
         /**
-         * @brief Constructs a Fromat.
+         * @brief Constructs a Format.
          * @param value The predetermined format value
          * @param type The type of media the format applies to
          */
