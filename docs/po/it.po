@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-05-26 21:27-0400\n"
-"PO-Revision-Date: 2025-02-16 13:33+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/it/>\n"
+"PO-Revision-Date: 2025-05-27 06:12+0000\n"
+"Last-Translator: Nick Logozzo <nlogozzo225@gmail.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -20,10 +20,9 @@ msgstr "Albano Battistella <albanobattistella@gmail.com> 2023"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/aria.page:8
-#, fuzzy
 msgctxt "link"
 msgid "aria2c 🛠️"
-msgstr "aria2 🛠️"
+msgstr "aria2c 🛠️"
 
 #. (itstool) path: credit/name
 #: docs/yelp/C/aria.page:10 docs/yelp/C/aria.page:14
@@ -39,31 +38,27 @@ msgstr "Nicholas Logozzo"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/aria.page:20
-#, fuzzy
 msgid "aria2c"
-msgstr "Usa aria2"
+msgstr "aria2c"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/aria.page:21
-#, fuzzy
 msgid ""
 "This page explains all options for configuring aria2c in Preferences in "
 "<app>Parabolic</app>."
 msgstr ""
-"Questa pagina spiega tutte le opzioni per configurare aria2 negli "
+"Questa pagina spiega tutte le opzioni per configurare aria2c negli "
 "impostazioni di <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:25
-#, fuzzy
 msgid "Use aria2c"
-msgstr "Usa aria2"
+msgstr "Usa aria2c"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
-#, fuzzy
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
-msgstr "Se abilitato, Parabolic userà aria2c per scaricare i materiali."
+msgstr "Parabolic userà aria2c al posto del downloader nativo yt-dlp."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
@@ -80,12 +75,11 @@ msgstr "Numero Massimo di Connessioni Per Server"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:33
-#, fuzzy
 msgid ""
 "This option only applies when using aria2c is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
 msgstr ""
-"Questa opzione si applica solo quando è abilitato l'utilizzo di aria2. "
+"Questa opzione si applica solo quando è abilitato l'utilizzo di aria2c. "
 "Questa opzione è la stessa del flag <code>-x</code> passato ad aria2c."
 
 #. (itstool) path: item/p
@@ -109,12 +103,11 @@ msgstr "Dimensione minima divisa"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:41
-#, fuzzy
 msgid ""
 "This option only applies when using aria2c is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
-"Questa opzione è applicabile solo quando l'utilizzo di aria2 è abilitato. "
+"Questa opzione è applicabile solo quando l'utilizzo di aria2c è abilitato. "
 "L'opzione è la stessa del flag <code>k</code> passato ad aria2c."
 
 #. (itstool) path: item/p
@@ -158,13 +151,12 @@ msgstr "Incorpora metadati"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:26
-#, fuzzy
 msgid ""
 "Parabolic will tag a media with its relevant information (title, genre, "
 "etc...) if available."
 msgstr ""
-"Se abilitato, Parabolic taggherà un media con le sue informazioni rilevanti "
-"(titolo, genere, ecc...) e la miniatura se disponibile."
+"Parabolic taggherà un materiale con le sue informazioni rilevanti (titolo, "
+"genere, ecc...) se disponibile."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
@@ -181,23 +173,19 @@ msgstr "Rimuovi i dati della sorgente"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:33
-#, fuzzy
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
-msgstr ""
-"Se abilitato, Parabolic taggherà un supporto con le informazioni sul "
-"capitolo, se disponibili"
+msgstr "Parabolic cancellerà le informazioni identificative dai metadati."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:34
-#, fuzzy
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
-"Campi cancellati: <code>commento</code>, <code>descrizione</code>, "
+"Informazioni cancellate: <code>commento</code>, <code>descrizione</code>, "
 "<code>sinossi</code>, <code>rovescio</code> e <code>handler_name</code> in "
 "ogni flusso."
 
@@ -205,6 +193,8 @@ msgstr ""
 #: docs/yelp/C/converter.page:36
 msgid "This option is only configurable if <code>Embed Metadata</code> is on."
 msgstr ""
+"L'opzione è configurabile solo se abilitato l'opzione <code>Embed "
+"Metadata</code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:43
@@ -213,11 +203,8 @@ msgstr "Incorpora miniature"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:44
-#, fuzzy
 msgid "Parabolic will embed a media with its thumbnail if available."
-msgstr ""
-"Se abilitato, Parabolic taggherà un supporto con le informazioni sul "
-"capitolo, se disponibili"
+msgstr "Parabolic taggherà un materiale con la sua anteprima se disponibili"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:45
