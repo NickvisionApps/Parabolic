@@ -21,7 +21,7 @@
 <terms>
     <item>
         <title>सक्रिय डाउनलोड की अधिकतम संख्या</title>
-        <p>एक समय में चलने की अनुमति वाले सक्रिय डाउनलोड की संख्या। 1 और 10 के बीच पूर्णांक मान होना चाहिए।</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>यदि सक्रिय डाउनलोड की अधिकतम संख्या पहुंच जाती है, तो Parabolic नए डाउनलोड को एक कतार में रखेगा जब तक कि अधिक डाउनलोड चलाने में सक्षम न हो जाएं।</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: 5</p>
@@ -29,7 +29,7 @@
     </item>
     <item>
         <title>मौजूदा फाइलें अधिलेखित करें</title>
-        <p>यदि सक्षम किया गया है, तो Parabolic मौजूदा फाइलों को अधिलेखित कर देगा।</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>उदाहरण के लिए, यदि <code>movie.mp4</code> नामक फाइल डाउनलोड फोल्डर में मौजूद है, और <code>movie</code> नामक एक नया डाउनलोड बनाया जाता है, तो <code>movie.mp4</code> होगा नए डाउनलोड की सामग्री के साथ अधिलेखित किया जाए।</p>
         <note>
             <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
@@ -40,7 +40,7 @@
     </item>
     <item>
         <title>Limit Filename Characters</title>
-        <p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
         <p>This option is only available on Linux.</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: बंद</p>
@@ -48,14 +48,14 @@
     </item>
     <item>
         <title>Included Media Id in Title After Validation</title>
-        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
     <item>
         <title>ऑटो-निर्मित उपशीर्षक शामिल हैं</title>
-        <p>क्या उन उपशीर्षकों को शामिल किया जाना चाहिए जो अनुरोधित उपशीर्षक भाषाओं में फिट होने के लिए स्वचालित रूप से अनुवादित हैं।</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: चालू</p>
         </note>
@@ -82,7 +82,7 @@
     </item>
     <item>
         <title>Preferred Subtitle Format</title>
-        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
         </note>

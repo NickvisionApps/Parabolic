@@ -1,4 +1,5 @@
 #include "models/downloadmanager.h"
+#include <filesystem>
 #include <fstream>
 #include <utility>
 #include <libnick/helpers/stringhelpers.h>
@@ -10,6 +11,8 @@ using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Events;
+
+#define BATCH_FOLDER_PATH_DELIM '|'
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -220,7 +223,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     std::optional<UrlInfo> DownloadManager::fetchUrlInfo(const std::string& url, const std::optional<Credential>& credential, const std::filesystem::path& suggestedSaveFolder) const
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        std::vector<std::string> arguments{ "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
+        std::vector<std::string> arguments{ "--ignore-config", "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
         if(url.find("soundcloud.com") == std::string::npos)
         {
             arguments.push_back("--flat-playlist");
@@ -345,9 +348,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string line;
         while(std::getline(file, line))
         {
-            if(line.find(';') != std::string::npos)
+            if(line.find(BATCH_FOLDER_PATH_DELIM) != std::string::npos)
             {
-                std::vector<std::string> fields{ StringHelpers::split(line, ';', false) };
+                std::vector<std::string> fields{ StringHelpers::split(line, BATCH_FOLDER_PATH_DELIM, false) };
                 if(fields.size() != 1 && fields.size() != 2)
                 {
                     continue;
@@ -360,6 +363,10 @@ namespace Nickvision::TubeConverter::Shared::Models
                     fields[1] = StringHelpers::trim(fields[1]);
                     fields[1] = StringHelpers::trim(fields[1], '"');
                     fields[1] = StringHelpers::trim(fields[1]);
+                    if(!std::filesystem::path(fields[1]).is_absolute())
+                    {
+                        fields.erase(fields.begin() + 1);
+                    }
                 }
                 if(!StringHelpers::isValidUrl(fields[0]))
                 {

@@ -14,14 +14,14 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Downloads</title>
+<title>التنزيلات</title>
 <p>توضح هذه الصفحة جميع الخيارات لإعداد التنزيلات في التفضيلات داخل تطبيق <app>Parabolic</app>.</p>
 
 
 <terms>
     <item>
         <title>الحد الأقصى لعدد التنزيلات النشطة</title>
-        <p>عدد التحميلات اللي تقدر تشتغل بنفس الوقت. لازم يكون رقم صحيح بين 1 و10.</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>إذا وصل عدد التحميلات النشطة للحد الأقصى، بيحط تطبيق Parabolic التحميلات الجديدة في قائمة الانتظار لين يصير فيه مجال لتحميلات جديدة تشتغل.</p>
         <note style="advanced">
             <p>الأفتراضي: 5</p>
@@ -29,7 +29,7 @@
     </item>
     <item>
         <title>أُكتُب فوق الملفات الموجودة</title>
-        <p>عند التفعيل،parabolic سيقوم بأستبدال الملفات الموجودة.</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
         <note>
             <p>تطبيق Parabolic بيكشف التحميلات اللي لازم تُستأنف، وبيتجاوز هالإعداد إذا كان يسترجع أو يحاول يعيد تحميلات فشلت</p>
@@ -40,38 +40,38 @@
     </item>
     <item>
         <title>تحديد عدد أحرف اسم الملف</title>
-        <p>يقصر الأحرف الموجودة في أسماء الملفات على تلك التي يدعمها Windows فقط.</p>
-        <p>هذا الخيار متوفر لِأنظمة اللينكس حصرًا</p>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
+        <p>هذا الخيار متوفر فقط لنسخة لينكس.</p>
         <note style="advanced">
             <p>الافتراضي: إيقاف</p>
         </note>
     </item>
     <item>
         <title>معرف الوسائط مضمن في العنوان بعد التحقق</title>
-        <p>ما إذا كان سيتم تضمين معرف الوسائط في العنوان (اسم الملف) عند التحقق أم لا.</p>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>الإفتراضي: مفعل</p>
         </note>
     </item>
     <item>
         <title>يتضمن ترجمة تم انشائها تلقائياً</title>
-        <p>ما إذا كان سيتم تضمين الترجمات الفرعية المترجمة تلقائيًا لتتناسب مع لغات الترجمة المطلوبة أم لا.</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>الإفتراضي: مفعل</p>
         </note>
     </item>
     <item>
         <title>تفضيل ترميز المقطع</title>
-        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <p>يجب على برنامج Parabolic تفضيل ترميز الفيديو عند تحليل صيَغ الوسائط للتنزيل.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+            <p>إن لم يجد بارابوليك أي صيغة بالترميز المحدد الذي إخترتَه، لن يكون هناك صيغة مقطع متوفرة للتنزيل.</p>
         </note>
         <note style="advanced">
             <p>القيمة الافتراضية: أي شيء</p>
         </note>
     </item>
     <item>
-        <title>Preferred Audio Codec</title>
+        <title>ترميز الصوت المفضل</title>
         <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
         <note>
             <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
@@ -82,7 +82,7 @@
     </item>
     <item>
         <title>Preferred Subtitle Format</title>
-        <p>صيغة الملف التي يجب على Parabolic ضمان تنزيل جميع الترجمات بها.</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
             <p>القيمة الافتراضية: أي شيء</p>
         </note>

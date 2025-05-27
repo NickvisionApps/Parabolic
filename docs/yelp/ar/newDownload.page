@@ -19,7 +19,7 @@
 
 <terms>
     <item>
-        <title>رابط الملف المراد تحميله</title>
+        <title>رابط الوسائط</title>
         <p>The URL of the media to download. Must be a valid ("valid" meaning syntactically correct) http or https link.</p>
         <note>
             <p>If a valid URL is found inside the clipboard upon opening the Add Download dialog, the URL will be automatically pasted in the URL entry row.</p>
@@ -28,18 +28,19 @@
     <item>
         <title>Use Batch File</title>
         <p>Select a batch text file that contains a list of URLs to validate.</p>
-        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
-        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
+        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
+        <p>The optional save folder must be an absolute path.</p>
         <note style="advanced">
             <p>Batch File Format:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 ; "Folder1"</code></p>
-            <p><code>URL3;"Folder2"</code></p>
+            <p><code>URL2 | "Folder1"</code></p>
+            <p><code>"URL3"|"Folder2"</code></p>
             <p><code>"URL4"</code></p>
         </note>
     </item>
     <item>
-        <title>توثيق</title>
+        <title>مصادقة/توثيق</title>
         <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
         <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
          <note style="advanced">
@@ -58,12 +59,18 @@
         </note>
     </item>
     <item>
-        <title>Video Format</title>
+        <title>صيغة المقطع</title>
         <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
         <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
         <p>If the file type is an audio type, this option will not be available.</p>
         <note>
             <p>The previously used video format will be remembered and pre-selected for the next download.</p>
+        </note>
+        <note style="advanced">
+            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
+            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
+            <p>- <code>Best</code> = <code>bv*</code></p>
+            <p>- <code>Worst</code> = <code>wv*</code></p>
         </note>
     </item>
     <item>
@@ -72,6 +79,12 @@
         <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
             <p>The previously used audio format will be remembered and pre-selected for the next download.</p>
+        </note>
+        <note style="advanced">
+            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
+            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
+            <p>- <code>Best</code> = <code>ba</code></p>
+            <p>- <code>Worst</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
@@ -103,7 +116,7 @@
         </note>
     </item>
     <item>
-        <title>Exclude from History</title>
+        <title>يُستثنى من السجل</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>

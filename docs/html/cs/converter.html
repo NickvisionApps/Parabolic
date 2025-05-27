@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Vložit metadata</dt>
 <dd class="terms">
-<p class="p">Pokud je tato funkce povolena, aplikace Parabolic označí médium příslušnými informacemi (název, žánr atd.), pokud jsou k dispozici.</p>
+<p class="p">Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Odebrat zdrojová data</dt>
 <dd class="terms">
-<p class="p">Pokud je tato funkce povolena, aplikace Parabolic vymaže pole s metadaty obsahující URL a další identifikující informace o zdroji média.</p>
+<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
 <p class="p">Pole, která budou vymazána: <span class="code">comment</span>, <span class="code">description</span>, <span class="code">synopsis</span>, <span class="code">purl</span> a <span class="code">handler_name</span> v každém streamu.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Vkládat miniatury</dt>
 <dd class="terms">
-<p class="p">Pokud je tato funkce povolena, aplikace Parabolic vloží do média jeho miniaturu, pokud jsou dostupná.</p>
+<p class="p">Parabolic will embed a media with its thumbnail if available.</p>
 <p class="p">Pokud typ souboru nepodporuje vkládání, bude miniatura uložena do samostatného souboru.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Oříznout miniatury zvuku</dt>
 <dd class="terms">
-<p class="p">Pokud je tato funkce povolena, aplikace Parabolic ořízne miniatury zvukových souborů tak, aby měly čtvercové rozlišení.</p>
+<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Vložit kapitoly</dt>
 <dd class="terms">
-<p class="p">Pokud je tato funkce povolena, aplikace Parabolic označí média informacemi o kapitolách, pokud jsou dostupné.</p>
+<p class="p">Parabolic will tag a media with its chapter information if available.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Vložit titulky</dt>
 <dd class="terms">
-<p class="p">Pokud je vložení zakázáno nebo selže, budou stažené titulky uloženy do samostatného souboru.</p>
+<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Zpracovávání vláken</dt>
 <dd class="terms">
-<p class="p">Počet vláken, která má postprocesor (<span class="code">FFmpeg</span>) použít pro každé stahování.</p>
+<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -196,16 +196,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="copyrights">
 <div class="copyright">© 2023-2025 Nicholas Logozzo</div>
 <div class="copyright">© 2023-2025 Nicholas Logozzo</div>
-<div class="copyright">© 2023, 2024 Jonáš Loskot</div>
 </div>
 <div class="credits">
 <div class="credits-authors">
 <div class="title"><span class="title">Napsali</span></div>
 <ul class="credits"><li>Nicholas Logozzo</li></ul>
-</div>
-<div class="credits-translators">
-<div class="title"><span class="title">Přeložili</span></div>
-<ul class="credits"><li>Jonáš Loskot</li></ul>
 </div>
 <div class="credits-publishers">
 <div class="title"><span class="title">Vydali</span></div>

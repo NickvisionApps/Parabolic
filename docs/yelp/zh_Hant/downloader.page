@@ -25,15 +25,15 @@
 
 <terms>
     <item>
-        <title>冗餘記錄</title>
-        <p>啟用後每個下載會有更多 <code>yt-dlp</code> 提供的冗餘記錄。</p>
+        <title>Use Part Files</title>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>預設值：開啟</p>
         </note>
     </item>
     <item>
         <title>YouTube 使用 SponsorBlock</title>
-        <p>啟用後 Parabolic 將會對 YouTube 下載啟用 SponsorBlock 附加元件。</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>SponsorBlock 只會運作於 YouTube 影片。然而保留這個選項啟用不會影響其他下載 (也就是說不會造成下載失敗)。</p>
         </note>
@@ -43,7 +43,7 @@
     </item>
     <item>
         <title>速度限制</title>
-        <p>限制在多少 Ki/s，只會在有 <code>速度限制</code> 這個進階選項的下載項目套用。必須是 512 到 10240 之間的整數。</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>預設值：1024</p>
         </note>

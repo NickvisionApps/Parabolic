@@ -257,7 +257,10 @@ namespace Nickvision::TubeConverter::Shared::Models
     std::vector<std::string> DownloadOptions::toArgumentVector(const DownloaderOptions& downloaderOptions) const
     {
         std::vector<std::string> arguments;
+        //Basic Options
         arguments.push_back(m_url);
+        arguments.push_back("--ignore-config");
+        arguments.push_back("--verbose");
         arguments.push_back("--xff");
         arguments.push_back("default");
         arguments.push_back("--no-warnings");
@@ -269,6 +272,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
+        //Downloader Options
         if(downloaderOptions.getOverwriteExistingFiles() && !shouldDownloadResume())
         {
             arguments.push_back("--force-overwrites");
@@ -281,31 +285,71 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--windows-filenames");
         }
-        if(downloaderOptions.getVerboseLogging())
+        std::string formatSort;
+        if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
-            arguments.push_back("--verbose");
-        }
-        if(m_credential)
-        {
-            if(!m_credential->getUsername().empty() && !m_credential->getPassword().empty())
+            std::string vcodec{ "vcodec:" };
+            switch (downloaderOptions.getPreferredVideoCodec())
             {
-                arguments.push_back("--username");
-                arguments.push_back(m_credential->getUsername());
-                arguments.push_back("--password");
-                arguments.push_back(m_credential->getPassword());
+            case VideoCodec::VP9:
+                vcodec += "vp9";
+                break;
+            case VideoCodec::AV01:
+                vcodec += "av01";
+                break;
+            case VideoCodec::H264:
+                vcodec += "h264";
+                break;
+            case VideoCodec::H265:
+                vcodec += "h265";
+                break;
             }
-            else if(!m_credential->getPassword().empty())
-            {
-                arguments.push_back("--video-password");
-                arguments.push_back(m_credential->getPassword());
-            }
+            formatSort += vcodec;
         }
-        if(downloaderOptions.getUseAria())
+        if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
         {
-            arguments.push_back("--downloader");
-            arguments.push_back(Environment::findDependency("aria2c").string());
-            arguments.push_back("--downloader-args");
-            arguments.push_back("aria2c:--enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
+            std::string acodec{ "acodec:" };
+            switch (downloaderOptions.getPreferredAudioCodec())
+            {
+            case AudioCodec::FLAC:
+                acodec += "flac";
+                break;
+            case AudioCodec::WAV:
+                acodec += "wav";
+                break;
+            case AudioCodec::OPUS:
+                acodec += "opus";
+                break;
+            case AudioCodec::AAC:
+                acodec += "aac";
+                break;
+            case AudioCodec::MP4A:
+                acodec += "mp4a";
+                break;
+            case AudioCodec::MP3:
+                acodec += "mp3";
+                break;
+            }
+            if(!formatSort.empty())
+            {
+                formatSort += ",";
+            }
+            formatSort += acodec;
+        }
+        if(!formatSort.empty())
+        {
+            arguments.push_back("--format-sort");
+            arguments.push_back(formatSort);
+            arguments.push_back("--format-sort-force");
+        }
+        if(!downloaderOptions.getUsePartFiles())
+        {
+            arguments.push_back("--no-part");
+        }
+        if(downloaderOptions.getYouTubeSponsorBlock())
+        {
+            arguments.push_back("--sponsorblock-remove");
+            arguments.push_back("default");
         }
         if(!downloaderOptions.getProxyUrl().empty())
         {
@@ -350,11 +394,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--cookies");
             arguments.push_back(downloaderOptions.getCookiesPath().string());
         }
-        if(downloaderOptions.getYouTubeSponsorBlock())
-        {
-            arguments.push_back("--sponsorblock-remove");
-            arguments.push_back("default");
-        }
         if(downloaderOptions.getEmbedMetadata())
         {
             arguments.push_back("--embed-metadata");
@@ -386,7 +425,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back("--write-thumbnail");
             }
             arguments.push_back("--convert-thumbnails");
-            arguments.push_back("jpg");
+            arguments.push_back("png>png/jpg");
             if(downloaderOptions.getCropAudioThumbnails() && m_fileType.isAudio())
             {
                 arguments.push_back("--postprocessor-args");
@@ -401,64 +440,28 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--no-embed-chapters");
         }
-        std::string formatSort;
-        //Force preferred video codec sorting for playlist downloads to use as format selection is not available
-        if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
+        if(downloaderOptions.getUseAria())
         {
-            std::string vcodec{ "vcodec:" };
-            switch (downloaderOptions.getPreferredVideoCodec())
-            {
-            case VideoCodec::VP9:
-                vcodec += "vp9";
-                break;
-            case VideoCodec::AV01:
-                vcodec += "av01";
-                break;
-            case VideoCodec::H264:
-                vcodec += "h264";
-                break;
-            case VideoCodec::H265:
-                vcodec += "h265";
-                break;
-            }
-            formatSort += vcodec;
+            arguments.push_back("--downloader");
+            arguments.push_back(Environment::findDependency("aria2c").string());
+            arguments.push_back("--downloader-args");
+            arguments.push_back("aria2c:--summary-interval=" + std::string(Environment::getOperatingSystem() == OperatingSystem::Windows ? "0" : "1") + " --enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
         }
-        //Force preferred audio codec sorting for playlist downloads to use as format selection is not available
-        if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
+        //Download Options
+        if(m_credential)
         {
-            std::string acodec{ "acodec:" };
-            switch (downloaderOptions.getPreferredAudioCodec())
+            if(!m_credential->getUsername().empty() && !m_credential->getPassword().empty())
             {
-            case AudioCodec::FLAC:
-                acodec += "flac";
-                break;
-            case AudioCodec::WAV:
-                acodec += "wav";
-                break;
-            case AudioCodec::OPUS:
-                acodec += "opus";
-                break;
-            case AudioCodec::AAC:
-                acodec += "aac";
-                break;
-            case AudioCodec::MP4A:
-                acodec += "mp4a";
-                break;
-            case AudioCodec::MP3:
-                acodec += "mp3";
-                break;
+                arguments.push_back("--username");
+                arguments.push_back(m_credential->getUsername());
+                arguments.push_back("--password");
+                arguments.push_back(m_credential->getPassword());
             }
-            if(!formatSort.empty())
+            else if(!m_credential->getPassword().empty())
             {
-                formatSort += ",";
+                arguments.push_back("--video-password");
+                arguments.push_back(m_credential->getPassword());
             }
-            formatSort += acodec;
-        }
-        if(!formatSort.empty())
-        {
-            arguments.push_back("--format-sort");
-            arguments.push_back(formatSort);
-            arguments.push_back("--format-sort-force");
         }
         if(m_fileType.isAudio())
         {
@@ -467,11 +470,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 arguments.push_back("--audio-format");
                 arguments.push_back(StringHelpers::lower(m_fileType.str()));   
-            }
-            if(m_audioFormat)
-            {
-                arguments.push_back("--format");
-                arguments.push_back(m_audioFormat->getId());
             }
         }
         else if(m_fileType.isVideo())
@@ -486,21 +484,62 @@ namespace Nickvision::TubeConverter::Shared::Models
                     arguments.push_back(StringHelpers::lower(m_fileType.str()));
                 }
             }
-            if(m_videoFormat && m_audioFormat)
+        }
+        std::string formatString;
+        if(m_videoFormat && !m_videoFormat->isFormatValue(FormatValue::None))
+        {
+            if(m_videoFormat->isFormatValue(FormatValue::Best))
             {
-                arguments.push_back("--format");
-                arguments.push_back(m_videoFormat->getId() + "+" + m_audioFormat->getId());
+                formatString += "bv*";
             }
-            else if(m_videoFormat)
+            else if(m_videoFormat->isFormatValue(FormatValue::Worst))
             {
-                arguments.push_back("--format");
-                arguments.push_back(m_videoFormat->getId() + "+ba/b");
+                formatString += "wv*";
             }
-            else if(m_audioFormat)
+            else
             {
-                arguments.push_back("--format");
-                arguments.push_back("bv+" + m_audioFormat->getId());
+                formatString += m_videoFormat->getId();
             }
+        }
+        if(m_audioFormat && !m_audioFormat->isFormatValue(FormatValue::None))
+        {
+            if(!formatString.empty())
+            {
+                formatString += "+";
+            }
+            if(m_audioFormat->isFormatValue(FormatValue::Best))
+            {
+                formatString += "ba";
+            }
+            else if(m_audioFormat->isFormatValue(FormatValue::Worst))
+            {
+                formatString += "wa";
+            }
+            else
+            {
+                formatString += m_audioFormat->getId();
+            }
+        }
+        if(formatString == "bv*+ba")
+        {
+            formatString += "/b";
+        }
+        else if(formatString == "wv*+wa")
+        {
+            formatString += "/w";
+        }
+        else if(formatString == "bv*" && m_fileType.isAudio())
+        {
+            formatString = "+ba/b";
+        }
+        else if(formatString == "wv*" && m_fileType.isAudio())
+        {
+            formatString = "+wa/w";
+        }
+        if(!formatString.empty())
+        {
+            arguments.push_back("--format");
+            arguments.push_back(formatString);
         }
         if(!std::filesystem::exists(m_saveFolder))
         {
@@ -522,6 +561,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             languages += "-live_chat";
             arguments.push_back("--sub-langs");
             arguments.push_back(languages);
+            arguments.push_back("--sleep-subtitles");
+            arguments.push_back("1.5");
             arguments.push_back("--write-subs");
             if(downloaderOptions.getIncludeAutoGeneratedSubtitles())
             {

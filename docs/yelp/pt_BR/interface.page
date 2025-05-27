@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="interface" its:version="2.0" xml:lang="pt-BR">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">User Interface 🖥️</title>
+	<title type="link">Interface de Usuário 🖥️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -15,49 +15,42 @@
 </info>
 
 <title>Interface do usuário</title>
-<p>This page explains all options for configuring the User Interface in Preferences in <app>Parabolic</app>.</p>
+<p>Esta página explica todas as opções para configurar a Interface de Usuário nas Preferências no <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Theme</title>
-        <p>The theme for the user interface.</p>
+        <title>Tema</title>
+        <p>O tema para a interface de usuário.</p>
         <note style="advanced">
-            <p>Default: System</p>
+            <p>Padrão: Sistema</p>
         </note>
     </item>
     <item>
-        <title>Completed Notification Trigger</title>
-        <p>The trigger used for showing completed download notifications when the application is not active.</p>
-        <note style="advanced">
-            <p>Default: For each download</p>
-        </note>
-    </item>
-    <item>
-        <title>Prevent Suspend</title>
-        <p>If enabled, the system while be prevented from suspending while Parabolic is running.</p>
+        <title>Prevenir suspender</title>
+        <p>Parabolic will prevent the computer from sleeping while downloads are running.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
+        <title>Recuperar downloads com falha</title>
+        <p>Parabolic will recover downloads that were in progress when the app crashed.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Baixar imediatamente após a validação</title>
-        <p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+        <p>Parabolic will immediately download media after validation, without presenting configuration options to the user.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
-        <title>Download History Length</title>
-        <p>The amount of time to keep download history saved.</p>
+        <title>Duração do histórico de downloads</title>
+        <p>The amount of time to keep past downloads in the app's history.</p>
         <note style="advanced">
-            <p>Default: One Week</p>
+            <p>Padrão: Uma semana</p>
         </note>
     </item>
 </terms>

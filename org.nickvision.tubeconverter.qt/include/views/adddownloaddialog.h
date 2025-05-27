@@ -57,10 +57,14 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void validateUrl();
         /**
-         * @brief Handles when the cmbFileTypeSingle's index has changed.
+         * @brief Handles when the file type's combobox index has changed.
          * @param index The new index
          */
-        void onCmbFileTypeSingleChanged(int index);
+        void onCmbFileTypeChanged(int index);
+        /**
+         * @brief Shows the generic file type disclaimer.
+         */
+        void genericFileTypeDisclaimer();
         /**
          * @brief Prompts the user to select a save folder for a single download.
          */
@@ -81,11 +85,6 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Downloads a single media.
          */
         void downloadSingle();
-        /**
-         * @brief Handles when the cmbFileTypePlaylist's index has changed.
-         * @param index The new index
-         */
-        void onCmbFileTypePlaylistChanged(int index);
         /**
          * @brief Prompts the user to select a save folder for a playlist download.
          */

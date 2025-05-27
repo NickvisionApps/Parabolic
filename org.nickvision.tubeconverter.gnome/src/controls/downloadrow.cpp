@@ -93,7 +93,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         {
             gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), true);
             gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), args.getProgress());
-            gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr()));
+            gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr()).c_str());
         }
         if(args.getLog() != m_log)
         {

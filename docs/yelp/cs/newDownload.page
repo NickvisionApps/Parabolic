@@ -12,13 +12,7 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Jonáš Loskot</mal:name>
-      <mal:email>osobni@jonasloskot.cz</mal:email>
-      <mal:years>2023, 2024</mal:years>
-    </mal:credit>
-  </info>
+</info>
 
 <title>Nové stahování</title>
 <p>Na této stránce najdete vysvětlení všech možností konfigurace nového stahování v předvolbách v aplikaci <app>Parabolic</app>.</p>
@@ -32,15 +26,16 @@
         </note>
     </item>
     <item>
-        <title>Use Batch File</title>
-        <p>Select a batch text file that contains a list of URLs to validate.</p>
-        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
-        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <title>Použít hromadný soubor</title>
+        <p>Vyberte hromadný textový soubor, který obsahuje adresy k ověření.</p>
+        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
+        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
+        <p>The optional save folder must be an absolute path.</p>
         <note style="advanced">
-            <p>Batch File Format:</p>
+            <p>Formát hromadného souboru:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 ; "Folder1"</code></p>
-            <p><code>URL3;"Folder2"</code></p>
+            <p><code>URL2 | "Folder1"</code></p>
+            <p><code>"URL3"|"Folder2"</code></p>
             <p><code>"URL4"</code></p>
         </note>
     </item>
@@ -71,6 +66,12 @@
         <note>
             <p>Dříve použitý formát videa bude zapamatován a předem vybrán pro další stahování.</p>
         </note>
+        <note style="advanced">
+            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
+            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
+            <p>- <code>Best</code> = <code>bv*</code></p>
+            <p>- <code>Worst</code> = <code>wv*</code></p>
+        </note>
     </item>
     <item>
         <title>Formát zvuku</title>
@@ -78,6 +79,12 @@
         <p>Každý formát má podobu: <code>datový tok | jazyk (id)</code>.</p>
         <note>
             <p>Dříve použitý formát zvuku bude zapamatován a předem vybrán pro další stahování.</p>
+        </note>
+        <note style="advanced">
+            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
+            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
+            <p>- <code>Best</code> = <code>ba</code></p>
+            <p>- <code>Worst</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
@@ -109,8 +116,8 @@
         </note>
     </item>
     <item>
-        <title>Exclude from History</title>
-        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+        <title>Odstranit z historie</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic odstraní stahování ze seznamu historie stahování.</p>
     </item>
     <item>
         <title>Časový rámec</title>

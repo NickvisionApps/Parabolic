@@ -12,28 +12,22 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Jonáš Loskot</mal:name>
-      <mal:email>osobni@jonasloskot.cz</mal:email>
-      <mal:years>2023, 2024</mal:years>
-    </mal:credit>
-  </info>
+</info>
 
 <title>Služba stahování</title>
 <p>Na této stránce najdete vysvětlení všech možností konfigurace stahování v předvolbách v aplikaci <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Podrobné protokolování</title>
-        <p>Pokud je tato funkce povolena, budou programem <code>yt-dlp</code> poskytnuty podrobnější protokoly.</p>
+        <title>Use Part Files</title>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
         </note>
     </item>
     <item>
         <title>Použít SponsorBlock pro YouTube</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic automaticky zapne rozšíření SponsorBlock pro stahování z YouTube.</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>SponsorBlock funguje pouze s videi na YouTube. Zapnutí tohoto nastavení nicméně neovlivní stahování z ostatních webů (např. se nestane, že by se kvůli tomu nestáhly).</p>
         </note>
@@ -43,7 +37,7 @@
     </item>
     <item>
         <title>Omezení rychlosti</title>
-        <p>Limit, v Ki/s, který bude použit na stahování pouze pokud mají povolenou pokročilou možnost <code>Omezení rychlosti</code>. Musí to být celočíselná hodnota mezi 512 a 10 240.</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>Výchozí: 1024</p>
         </note>

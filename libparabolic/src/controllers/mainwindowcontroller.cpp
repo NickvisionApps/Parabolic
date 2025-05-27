@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.5.3" });
+        m_appInfo.setVersion({ "2025.5.4-beta3" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where the app crashed when attempting to download media on Linux");
+        m_appInfo.setChangelog("- Added the ability to use video formats for audio file downloads\n- Added the ability to specify Worst for a video/audio format\n- Added the ability to specify None for a video/audio format\n- Added the Use Part Files option to downloader settings\n- Added the Documentation help menu item in the Qt app\n- Changed the folder path delimiter in batch files from ';' to '|'\n- Fixed an issue where thumbnail conversion failed for some videos\n- Fixed an issue where progress of downloads using aria2c was not displayed correctly\n- Fixed an issue where playlist downloads caused the app to crash on Windows\n- Parabolic should now provide users with error messages instead of crashing the entire app\n- Tweaked the GNOME user interface as we get closer to joining GNOME Circle\n- Updated yt-dlp to fix YouTube format errors");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -211,10 +211,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
         }
         //Load DownloadManager
-        size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
-        if(recoveredDownloads > 0)
+        try
         {
-            AppNotification::send({ _fn("Recovered {} download", "Recovered {} downloads", recoveredDownloads, recoveredDownloads), NotificationSeverity::Informational });
+            size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
+            if(recoveredDownloads > 0)
+            {
+                AppNotification::send({ _fn("Recovered {} download", "Recovered {} downloads", recoveredDownloads, recoveredDownloads), NotificationSeverity::Informational });
+            }
+        }
+        catch(const std::exception& e)
+        {
+            AppNotification::send({ _f("Error attempting to recover downloads: {}", e.what()), NotificationSeverity::Error, "error" });
         }
         m_started = true;
         return info;
@@ -286,21 +293,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return;
         }
-        CompletedNotificationPreference preference{ m_dataFileManager.get<Configuration>("config").getCompletedNotificationPreference() };
-        if(preference == CompletedNotificationPreference::ForEach)
+        if(args.getStatus() == DownloadStatus::Success)
         {
-            if(args.getStatus() == DownloadStatus::Success)
-            {
-                ShellNotification::send({ _("Download Finished"), _f("{} has finished downloading", args.getPath().filename().string()), NotificationSeverity::Success, "open", args.getPath().string() }, m_appInfo, _("Open"));
-            }
-            else
-            {
-                ShellNotification::send({ _("Download Finished With Error"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
-            }
+            ShellNotification::send({ _("Download Finished"), _f("{} has finished downloading", args.getPath().filename().string()), NotificationSeverity::Success, "open", args.getPath().string() }, m_appInfo, _("Open"));
         }
-        else if(preference == CompletedNotificationPreference::AllCompleted && m_downloadManager.getRemainingDownloadsCount() == 0)
+        else
         {
-            ShellNotification::send({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational }, m_appInfo);
+            ShellNotification::send({ _("Download Finished With Error"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
         }
     }
 }

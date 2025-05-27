@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="nb-NO">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">aria2</title>
+        <title type="link">aria2c 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -20,21 +20,20 @@
     </mal:credit>
   </info>
 
-<title>aria2</title>
-<p>Denne seksjonen tar for seg alle innstillingene for aria2 i <app>Parabolic</app>.</p>
+<title>aria2c</title>
+<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Bruk aria2</title>
-        <p>Hvis dette er på, vil Parabolic bruke aria2c til å gjennomføre nedlastinger.</p>
-        <p>Å bruke aria2c kan øke nedlastingshastigheten, men vil føre til at fremgang ikke indikeres i appen.</p>
+        <title>Use aria2c</title>
+        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
         <note style="advanced">
             <p>Standard: av</p>
         </note>
     </item>
     <item>
         <title>Høyeste antall tilkoblinger per tjener</title>
-        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-x</code> til ara2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>Det høyeste antallet tilkoblinger som kan brukes per tjener. Må være et tall mellom 1 og 32.</p>
         <note style="advanced">
             <p>Standard: 16</p>
@@ -42,7 +41,7 @@
     </item>
     <item>
         <title>Minste inndelingsstørrelse</title>
-        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-k</code> til aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>Den minste størrelsen en fil kan deles inn i, i MiB. Må være et tall mellom 1 og 1024.</p>
         <note style="advanced">
             <p>Standard: 20</p>

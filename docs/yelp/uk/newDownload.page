@@ -34,13 +34,14 @@
     <item>
         <title>Use Batch File</title>
         <p>Select a batch text file that contains a list of URLs to validate.</p>
-        <p>Each URL can be accompanied by an optional save folder to save said URL's media to.</p>
-        <p>All of the URLs and their media will be grouped and treated as one single playlist by Parabolic.</p>
+        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
+        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
+        <p>The optional save folder must be an absolute path.</p>
         <note style="advanced">
             <p>Batch File Format:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 ; "Folder1"</code></p>
-            <p><code>URL3;"Folder2"</code></p>
+            <p><code>URL2 | "Folder1"</code></p>
+            <p><code>"URL3"|"Folder2"</code></p>
             <p><code>"URL4"</code></p>
         </note>
     </item>
@@ -71,6 +72,12 @@
         <note>
             <p>Раніше використаний формат відео буде запам'ятований і вибраний за замовчуванням для наступного завантаження.</p>
         </note>
+        <note style="advanced">
+            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
+            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
+            <p>- <code>Best</code> = <code>bv*</code></p>
+            <p>- <code>Worst</code> = <code>wv*</code></p>
+        </note>
     </item>
     <item>
         <title>Формат аудіо</title>
@@ -78,6 +85,12 @@
         <p>Кожен формат має вигляд: <code>бітрейт | мова (id)</code>.</p>
         <note>
             <p>Раніше використаний формат аудіо буде запам'ятований і вибраний за замовчуванням для наступного завантаження.</p>
+        </note>
+        <note style="advanced">
+            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
+            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
+            <p>- <code>Best</code> = <code>ba</code></p>
+            <p>- <code>Worst</code> = <code>wa</code></p>
         </note>
     </item>
     <item>

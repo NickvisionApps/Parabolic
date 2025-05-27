@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Maximalt antal aktiva nedladdningar</dt>
 <dd class="terms">
-<p class="p">Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett heltalsvärde mellan 1 och 10.</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att placera nya nedladdningar i en kö tills fler nedladdningar kan köras.</p>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Skriv över existerande filer</dt>
 <dd class="terms">
-<p class="p">Om aktiverat kommer Parabolic att skriva över befintliga filer.</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">Till exempel, om en fil med namnet <span class="code">movie.mp4</span> finns i nedladdningsmappen, och en ny nedladdning skapas med namnet <span class="code">movie</span>, kommer <span class="code">movie.mp4</span> skrivas över med den nya nedladdningens innehåll.</p>
 <div class="note" title="Anteckning">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Begränsa tecken för filnamn</dt>
 <dd class="terms">
-<p class="p">Begränsar tecken i filnamn till endast de som stöds av Windows.</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">Det här alternativet är endast tillgängligt på Linux.</p>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inkluderat media-ID i titeln efter validering</dt>
 <dd class="terms">
-<p class="p">Huruvida medias id ska inkluderas i titeln (filnamnet) när den har validerats.</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inkluderade automatiskt genererade undertexter</dt>
 <dd class="terms">
-<p class="p">Oavsett om du vill inkludera undertexter eller inte, som är automatiskt översatta för att passa de begärda undertextspråken.</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Föredraget textningsformat</dt>
 <dd class="terms">
-<p class="p">Filformatet Parabolic bör säkerställa att alla nedladdade undertexter laddas ner som.</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
  <g>

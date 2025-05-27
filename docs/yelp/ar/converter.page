@@ -20,14 +20,14 @@
 <terms>
     <item>
         <title>دمج بيانات الوصف</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>الإفتراضي: مفعل</p>
         </note>
     </item>
     <item>
         <title>أزل بيانات المصدر</title>
-        <p>عند التفعيل، بارابولِك سيتم مسح حقول البيانات الوصفية التي تحتوي على عنوان URL والمعلومات التعريفية الأخرى للوسائط.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>الحقول اللي تم مسحها: <code>التعليق</code>، <code>الوصف</code>، <code>الملخص</code>، <code>الرابط</code>، و<code>اسم المعالج</code> في كل تدفق.</p>
         <note>
             <p>هذا الخيار قابل للتعديل عندما يكون 
@@ -39,7 +39,7 @@
     </item>
     <item>
         <title>دمج صورة العرض</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>إن لم يدعم نوع الملف هذا الدمج، صورة العرض ستُكتب كصورة مُستقلّة.</p>
         <note style="advanced">
             <p>الإفتراضي: مفعل</p>
@@ -47,9 +47,9 @@
     </item>
     <item>
         <title>قص صور الصوتيات المصغرة</title>
-        <p>عند التفعيل، بارابولِك سيقوم بقص الصور المصغرة لملفات الصوت لجعلها ذات ابعاد مربعة.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
-            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+            <p>هذا الخيار قابل للتعديل عندما يكون <code>خيار دمج صور العرض</code> مُفَعّل.</p>
         </note>
         <note style="advanced">
             <p>الافتراضي: إيقاف</p>
@@ -57,21 +57,21 @@
     </item>
     <item>
         <title>دمج الفصول</title>
-        <p>عند التفعيل، بارابولِك سيقوم بوضع علامة للمحتوى بمعلومات القسم ان وجدت.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>الافتراضي: إيقاف</p>
         </note>
     </item>
     <item>
         <title>دمج الترجمة</title>
-        <p>إن أُطفِئ الدمج أو لم يُدعم، الترجمة المُحمّلة ستُحفظ كملف مستقل.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>الإفتراضي: مفعل</p>
         </note>
     </item>
     <item>
         <title>مسارات مابعد المعالجة</title>
-        <p>عدد مؤشرات الترابط (threads) المسموح للمعالج اللاحق (<code>FFmpeg</code>) باستخدامها لكل عملية تنزيل.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>الافتراضي: الحد الأقصى لعدد مؤشرات الترابط المتاحة في النظام</p>
         </note>

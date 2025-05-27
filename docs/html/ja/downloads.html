@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">アクティブダウンロードの最大数</dt>
 <dd class="terms">
-<p class="p">平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があります。</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダウンロードが可能になるまでキューに入れます。</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">存在するファイルを上書きする</dt>
 <dd class="terms">
-<p class="p">有効であれば、Parabolic は存在するファイルを上書きします。</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">例えば、<span class="code">movie.mp4</span>という名前のファイルがダウンロードフォルダーに存在し、<span class="code">movie</span>という名前のダウンロードが作成されると、<span class="code">movie.mp4</span>は新しいダウンロードの内容で上書きされます。</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">ファイル名の文字を制限</dt>
 <dd class="terms">
-<p class="p">ファイル名の文字を Windows がサポートする文字のみに制限する。</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">このオプションは Linux でのみ利用できます。</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">検証完了後のタイトルにメディア ID を含める</dt>
 <dd class="terms">
-<p class="p">検証後にメディアのタイトル（ファイル名）にメディアの ID を含めるかどうか。</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">自動生成された字幕を含める</dt>
 <dd class="terms">
-<p class="p">要求された字幕の言語の自動翻訳された字幕を含むかどうか。</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">優先する字幕のフォーマット</dt>
 <dd class="terms">
-<p class="p">Parabolic がダウンロードするすべての字幕のファイル形式。</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>

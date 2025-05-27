@@ -21,7 +21,7 @@
 <terms>
     <item>
         <title>Nombre maximum de téléchargements actifs</title>
-        <p>Indique le nombre de téléchargements actifs autorisés à s’exécuter en même temps. Il doit s’agir d’un nombre entier compris entre 1 et 10.</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>Si le maximum de téléchargements actifs est atteint, Parabolic placera les nouveaux téléchargements dans une file d’attente jusqu’à ce que des téléchargements supplémentaires soient autorisés à s’exécuter.</p>
         <note style="advanced">
             <p>Par défaut : 5</p>
@@ -29,7 +29,7 @@
     </item>
     <item>
         <title>Remplacer les fichiers existants</title>
-        <p>Si cette option est activée, Parabolic écrasera les fichiers existants.</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>Par exemple, si un fichier intitulé <code>film.mp4</code> existe dans le dossier de téléchargement et qu’un nouveau téléchargement est créé avec le titre <code>film</code>, <code>film.mp4</code> sera remplacé par le contenu du nouveau téléchargement.</p>
         <note>
             <p>Parabolic détectera les téléchargements qui devraient être repris et évitera ce paramètre lors de la récupération ou de la nouvelle tentative de téléchargement ayant échoué</p>
@@ -40,7 +40,7 @@
     </item>
     <item>
         <title>Limiter le caractères des noms des fichiers</title>
-        <p>Restreint les caractères dans les noms de fichiers à ceux uniquement pris en charge par Windows.</p>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
         <p>Option disponible uniquement sur Linux.</p>
         <note style="advanced">
             <p>Par défaut : Désactivée</p>
@@ -48,14 +48,14 @@
     </item>
     <item>
         <title>Identifiant du média inclus dans le titre après validation</title>
-        <p>Indique s’il faut inclure l’identifiant du média dans le titre (nom du fichier) lorsque celui-ci est validé.</p>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
     </item>
     <item>
         <title>Inclure les sous-titres générés automatiquement</title>
-        <p>Indique s’il faut inclure les sous-titres traduits automatiquement pour correspondre à la langue demandée.</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
@@ -82,7 +82,7 @@
     </item>
     <item>
         <title>Format de sous-titres préféré</title>
-        <p>Le format de fichier que tous les sous-titres téléchargés devraient adopter.</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Par défaut : N’importe lequel</p>
         </note>

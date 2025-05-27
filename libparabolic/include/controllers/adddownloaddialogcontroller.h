@@ -53,16 +53,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getKeyringCredentialNames() const;
         /**
-         * @brief Gets whether or not to show the generic disclaimer.
-         * @return True to show disclaimer, else false
-         */
-        bool getShowGenericDisclaimer() const;
-        /**
-         * @brief Sets whether or not to show the generic disclaimer.
-         * @param showDisclaimer True to show disclaimer, else false
-         */
-        void setShowGenericDisclaimer(bool showDisclaimer);
-        /**
          * @brief Gets whether or not to download immediately after validation.
          * @return True to download immediately after validation, else false
          */

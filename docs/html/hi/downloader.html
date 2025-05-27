@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">यह पृष्ठ <span class="app">Parabolic</span> में प्राथमिकता में डाउनलोडर को कॉन्फ़िगर करने के सभी विकल्पों की व्याख्या करता है।</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Verbose Logging</dt>
+<dt class="terms">Use Part Files</dt>
 <dd class="terms">
-<p class="p">If enabled, more verbose logs will be provided by <span class="code">yt-dlp</span> for each download.</p>
+<p class="p">Parabolic will download media in separate .part files instead of directly into the output file.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें</dt>
 <dd class="terms">
-<p class="p">सक्षम होने पर, Parabolic YouTube डाउनलोड पर स्पॉन्सरब्लॉक एक्सटेंशन लागू करेगा।</p>
+<p class="p">Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
 <div class="note" title="टिप्पणी">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">गति सीमा</dt>
 <dd class="terms">
-<p class="p">Ki/s में एक सीमा, जो डाउनलोड पर केवल तभी लागू होती है जब उनके पास उन्नत विकल्प <span class="code">स्पीड लिमिट</span> सक्षम हो। 512 और 10240 के बीच एक पूर्णांक मान होना चाहिए।</p>
+<p class="p">The limit, in KiB/s, to apply to downloads only with the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
  <g>

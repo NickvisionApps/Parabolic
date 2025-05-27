@@ -20,14 +20,14 @@
 <terms>
     <item>
         <title>Inclure les métadonnées</title>
-        <p>Si cette option est activée, Parabolic inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…), si disponibles.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
     </item>
     <item>
         <title>Retirer les données sur la source</title>
-        <p>Si cette option est activée, Parabolic effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
         <note>
             <p>Cette option est configurable uniquement si l’<code>inclusion des métadonnées</code> est activée.</p>
@@ -38,7 +38,7 @@
     </item>
     <item>
         <title>Inclure les vignettes</title>
-        <p>Si cette option est activée, Parabolic inclura dans un média sa vignette, si disponible.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Si le type de fichier ne prend pas en charge l’inclusion d’une vignette, celle-ci sera exportée vers un fichier d’image séparé.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Rogner les vignettes des fichiers audio</title>
-        <p>Si cette option est activée, Parabolic découpera la vignette des fichiers audio pour obtenir une résolution carrée.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>Cette option est configurable uniquement si l’ <code>inclusion des vignettes</code> est activée.</p>
         </note>
@@ -56,21 +56,21 @@
     </item>
     <item>
         <title>Inclure les chapitres</title>
-        <p>Si cette option est activée, Parabolic inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Par défaut : Désactivée</p>
         </note>
     </item>
     <item>
         <title>Inclure les sous-titres</title>
-        <p>Si cette option est désactivée ou si l’inclusion n’est pas prise en charge, les sous-titres téléchargés seront enregistrés dans un fichier séparé.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
     </item>
     <item>
         <title>Fils de post-traitement</title>
-        <p>Le nombre de fils que le postprocesseur (<code>FFmpeg</code>) peut utiliser pour chaque téléchargement.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Par défaut : le nombre maximal de fils disponibles sur le système</p>
         </note>

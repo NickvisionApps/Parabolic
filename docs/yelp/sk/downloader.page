@@ -16,7 +16,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Jozef Gaal</mal:name>
       <mal:email>preklady@mayday.sk</mal:email>
-      <mal:years>2024</mal:years>
+      <mal:years>2024, 2025</mal:years>
     </mal:credit>
   </info>
 
@@ -25,15 +25,15 @@
 
 <terms>
     <item>
-        <title>Podrobné zaznamenávanie</title>
-        <p>Ak je táto možnosť zapnutá, <code>yt-dlp</code> bude pri každom sťahovaní poskytovať viac podrobných záznamov.</p>
+        <title>Use Part Files</title>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
         <title>Použiť SponsorBlock pre YouTube</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic použije rozšírenie SponsorBlock na sťahovanie z YouTube.</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>SponsorBlock funguje len na videá v službe YouTube. Ponechanie tohto nastavenia však neovplyvní sťahovanie z iných stránok (t. j. nespôsobí ich zlyhanie).</p>
         </note>
@@ -43,7 +43,7 @@
     </item>
     <item>
         <title>Obmedzenie rýchlosti</title>
-        <p>Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je zapnutá rozšírená možnosť <code>Obmedzenie rýchlosti</code>. Musí to byť celočíselná hodnota medzi 512 a 10240.</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>Predvolené: 1024</p>
         </note>

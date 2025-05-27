@@ -16,7 +16,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Jozef Gaal</mal:name>
       <mal:email>preklady@mayday.sk</mal:email>
-      <mal:years>2024</mal:years>
+      <mal:years>2024, 2025</mal:years>
     </mal:credit>
   </info>
 
@@ -27,7 +27,7 @@
 <terms>
     <item>
         <title>Maximálny počet aktívnych stiahnutí</title>
-        <p>Počet aktívnych sťahovaní, ktoré môžu prebiehať súčasne. Musí to byť celočíselná hodnota od 1 do 10.</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, aplikácia Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
         <note style="advanced">
             <p>Predvolené: 5</p>
@@ -35,7 +35,7 @@
     </item>
     <item>
         <title>Prepísať existujúce súbory</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic prepíše existujúce súbory.</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</code>, <code>movie.mp4</code> bude prepísaný s novým obsahom sťahovania.</p>
         <note>
             <p>Parabolic rozpozná sťahovania, ktoré by mali pokračovať, a toto nastavenie neaplikuje pri obnove alebo opakovaní neúspešných sťahovaní</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Obmedziť znaky názvu súboru</title>
-        <p>Obmedzí znaky v názvoch súborov iba na znaky podporované systémom Windows.</p>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
         <p>Táto možnosť je dostupná iba na systéme Linux.</p>
         <note style="advanced">
             <p>Predvolené: Vypnuté</p>
@@ -54,33 +54,33 @@
     </item>
     <item>
         <title>Pridanie ID média do názvu po overení</title>
-        <p>Či sa má alebo nemá zahrnúť ID média do názvu (názov súboru) pri overení.</p>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
         <title>Zahrnúť automaticky generované titulky</title>
-        <p>Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby zodpovedali požadovanému jazyku tituliek, alebo nie.</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
         <title>Uprednostňovaný video kodek</title>
-        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <p>Kodek videa, ktorý by mala aplikácia Parabolic uprednostniť pri analýze formátov médií na stiahnutie.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+            <p>Ak aplikácia Parabolic nenájde žiadne formáty s vybraným uprednostňovaným kodekom, nebudú k dispozícii žiadne formáty videa na stiahnutie.</p>
         </note>
         <note style="advanced">
             <p>Predvolené: Akýkoľvek</p>
         </note>
     </item>
     <item>
-        <title>Preferred Audio Codec</title>
-        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Uprednostňovaný audio kodek</title>
+        <p>Zvukový kodek, ktorý by mala aplikácia Parabolic uprednostniť pri analýze formátov médií na stiahnutie.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+            <p>Ak aplikácia Parabolic nenájde žiadne formáty s vybraným uprednostňovaným kodekom, nebudú k dispozícii žiadne zvukové formáty na stiahnutie.</p>
         </note>
         <note style="advanced">
             <p>Predvolené: Akýkoľvek</p>
@@ -88,7 +88,7 @@
     </item>
     <item>
         <title>Uprednostňovaný formát tituliek</title>
-        <p>Formát súboru, v ktorom majú byť stiahnuté titulky v aplikácii Parabolic.</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Predvolené: Akýkoľvek</p>
         </note>

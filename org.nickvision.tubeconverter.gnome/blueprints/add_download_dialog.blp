@@ -44,7 +44,7 @@ Adw.Dialog root {
           margin-end: 24;
           margin-bottom: 24;
           orientation: vertical;
-          spacing: 24;
+          spacing: 12;
 
           Adw.PreferencesGroup {
             Adw.EntryRow urlRow {
@@ -60,7 +60,9 @@ Adw.Dialog root {
                 styles [ "flat" ]
               }
             }
+          }
 
+          Adw.PreferencesGroup {
             Adw.ExpanderRow authenticateRow {
               title: _("Authenticate");
               enable-expansion: false;
@@ -83,6 +85,7 @@ Adw.Dialog root {
           Gtk.Button validateUrlButton {
             label: _("Validate");
             halign: center;
+            margin-top: 12;
 
             styles ["pill", "suggested-action"]
           }
@@ -101,6 +104,23 @@ Adw.Dialog root {
           Adw.PreferencesGroup {
             Adw.ComboRow fileTypeSingleRow {
               title: _("File Type");
+
+              [suffix]
+              Gtk.MenuButton genericDisclaimerSingleButton {
+                valign: center;
+                icon-name: "dialog-warning-symbolic";
+                popover: Gtk.Popover {
+                  child: Gtk.Box {
+                    Gtk.Label {
+                      wrap: true;
+                      wrap-mode: word;
+                      label: _("Generic file types do not support embedding thumbnails and subtitles.\nPlease select a specific file type that supports embedding to prevent\nseparate image and subtitle files from being written to disk.");
+                    }
+                  };
+                };
+
+                styles ["flat"]
+              }
             }
 
             Adw.ComboRow videoFormatSingleRow {

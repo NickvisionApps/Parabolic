@@ -143,7 +143,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         if(!m_controller->isUrlValid())
         {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, and the selected browser for cookies in preferences."))) };
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, and the selected browser for cookies in preferences. Note that YouTube may have blocked your IP or the video may be geo-restricted."))) };
             adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
             adw_alert_dialog_set_close_response(dialog, "close");
             adw_alert_dialog_set_default_response(dialog, "close");
@@ -215,7 +215,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("limitSpeedPlaylistRow"), m_controller->getPreviousDownloadOptions().getLimitSpeed());
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("exportDescriptionPlaylistRow"), m_controller->getPreviousDownloadOptions().getExportDescription());
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
-            adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("itemsPlaylistRow"), _f("{} items", m_controller->getMediaCount()));
+            adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("itemsPlaylistRow"), _f("{} items", m_controller->getMediaCount()).c_str());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
                 GtkCheckButton* chk{ GTK_CHECK_BUTTON(gtk_check_button_new()) };
@@ -273,21 +273,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
         }
         MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
-        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("videoFormatSingleRow"), !type.isAudio());
-        if(type.isGeneric() && m_controller->getShowGenericDisclaimer())
-        {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Warning"), _("Generic file types do not support embedding thumbnails and subtitles. Please select a specific file type that supports embedding to prevent separate image and subtitle files from being written to disk."))) };
-            adw_alert_dialog_set_extra_child(dialog, gtk_check_button_new_with_label(_("Don't show this message again")));
-            adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
-            adw_alert_dialog_set_default_response(dialog, "close");
-            adw_alert_dialog_set_close_response(dialog, "close");
-            g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
-            {
-                AddDownloadDialog* addDownloadDialog{ reinterpret_cast<AddDownloadDialog*>(data) };
-                addDownloadDialog->m_controller->setShowGenericDisclaimer(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
-            }), this);
-            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_dialog));
-        }
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("genericDisclaimerSingleButton"), type.isGeneric());
     }
 
     void AddDownloadDialog::subtitlesSingle()
@@ -367,21 +353,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
-        }
-        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
-        if(type.isGeneric() && m_controller->getShowGenericDisclaimer())
-        {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Warning"), _("Generic file types do not support embedding thumbnails and subtitles. Please select a specific file type that supports embedding to prevent separate image and subtitle files from being written to disk."))) };
-            adw_alert_dialog_set_extra_child(dialog, gtk_check_button_new_with_label(_("Don't show this message again")));
-            adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
-            adw_alert_dialog_set_default_response(dialog, "close");
-            adw_alert_dialog_set_close_response(dialog, "close");
-            g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
-            {
-                AddDownloadDialog* addDownloadDialog{ reinterpret_cast<AddDownloadDialog*>(data) };
-                addDownloadDialog->m_controller->setShowGenericDisclaimer(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
-            }), this);
-            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_dialog));
         }
     }
 

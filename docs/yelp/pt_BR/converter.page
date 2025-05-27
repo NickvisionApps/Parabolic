@@ -15,22 +15,22 @@
 </info>
 
 <title>Conversor</title>
-<p>Esta página explica todas as opções para configurar o Conversor em Preferências em <app>Parabolic</app>.</p>
+<p>Esta página explica todas as opções para configurar o Conversor em Preferências no <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>Incorporar metadados</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Remover Dados de Origem</title>
-        <p>Se ativado, o Parabolic limpará os campos de metadados que contêm a URL e outras informações de identificação da fonte de mídia.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Campos que são limpos: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> e <code>handler_name</code> em cada fluxo.</p>
         <note>
-            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+            <p>Esta opção só pode ser configurada se <code>Incorporar metadados</code> estiver ativado.</p>
         </note>
         <note style="advanced">
             <p>Padrão: Desligado</p>
@@ -38,7 +38,7 @@
     </item>
     <item>
         <title>Incorporar miniaturas</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Se o tipo de arquivo não suportar a incorporação, a miniatura será escrita em um arquivo de imagem separado.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
@@ -46,9 +46,9 @@
     </item>
     <item>
         <title>Cortar miniaturas para áudio</title>
-        <p>Se ativado, o Parabolic cortará as miniaturas dos arquivos de áudio para uma resolução quadrada.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
-            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+            <p>Esta opção só pode ser configurada se <code>Incorporar miniaturas</code> estiver ativado.</p>
         </note>
         <note style="advanced">
             <p>Padrão: Desligado</p>
@@ -56,23 +56,23 @@
     </item>
     <item>
         <title>Incorporar capítulos</title>
-        <p>Se ativado, o Parabolic marcará uma mídia com informações do capítulo, se disponíveis.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
         <title>Incorporar legendas</title>
-        <p>Se desativado ou se a incorporação não for suportada, as legendas baixadas serão salvas em um arquivo separado.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Pós-processamento de threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>Padrão: O máximo de threads disponível no sistema</p>
         </note>
     </item>
 </terms>

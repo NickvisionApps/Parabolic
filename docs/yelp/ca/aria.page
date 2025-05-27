@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="ca">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">aria2 🛠️</title>
+        <title type="link">aria2c 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -20,21 +20,20 @@
     </mal:credit>
   </info>
 
-<title>aria2</title>
-<p>Aquesta pàgina explica tot opcions per configurar aria2 en Preferències dins <app>Parabòlic</app>.</p>
+<title>aria2c</title>
+<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Utilitza l’aria2</title>
-        <p>Si està activat, Parabolic utilitzarà aria2c per descarregar els mitjans.</p>
-        <p>Encara que l'ús d'ària2c pot millorar la velocitat de descàrrega, no es mostrarà el progrés de descàrrega a la interfície d'usuari.</p>
+        <title>Use aria2c</title>
+        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
         <note style="advanced">
             <p>Valor per defecte: desactivat</p>
         </note>
     </item>
     <item>
         <title>Connexions màximes Per Servidor</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
         <note style="advanced">
             <p>Valor per defecte: 16</p>
@@ -42,7 +41,7 @@
     </item>
     <item>
         <title>Minimum Split Size</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
+        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
         <note style="advanced">
             <p>Valor per defecte: 20</p>

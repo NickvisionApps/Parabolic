@@ -20,14 +20,14 @@
 <terms>
     <item>
         <title>메타데이터 삽입</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>기본값: 켬</p>
         </note>
     </item>
     <item>
         <title>원본 데이터 제거</title>
-        <p>활성화되면, Parabolic은 미디어 소스의 URL 및 기타 식별 정보를 포함하는 메타데이터 필드를 지웁니다.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>지워지는 필드: 각 스트림에서 <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> 및 <code>handler_name</code>입니다.</p>
         <note>
             <p>이 옵션은 <code>메타데이터 포함</code>이 활성화된 경우에만 설정할 수 있습니다.</p>
@@ -38,7 +38,7 @@
     </item>
     <item>
         <title>Embed Thumbnails</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
         <note style="advanced">
             <p>기본값: 켬</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>오디오 썸네일 자르기</title>
-        <p>활성화되면, Parabolic은 오디오 파일의 썸네일을 정사각형 해상도로 자릅니다.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
         </note>
@@ -56,21 +56,21 @@
     </item>
     <item>
         <title>챕터 포함</title>
-        <p>활성화되면, Parabolic은 사용 가능한 경우 미디어에 챕터 정보를 태그합니다.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>기본값: 꺼짐</p>
         </note>
     </item>
     <item>
         <title>자막 삽입</title>
-        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>기본값: 켬</p>
         </note>
     </item>
     <item>
         <title>후처리 스레드</title>
-        <p>각 다운로드에 대해 후처리기(<code>FFmpeg</code>)가 사용할 수 있는 스레드 수입니다.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>기본값: 시스템에서 사용 가능한 최대 스레드 수</p>
         </note>

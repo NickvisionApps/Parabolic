@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">This page explains all options for configuring the Downloader in Preferences in <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Verbose Logging</dt>
+<dt class="terms">Use Part Files</dt>
 <dd class="terms">
-<p class="p">If enabled, more verbose logs will be provided by <span class="code">yt-dlp</span> for each download.</p>
+<p class="p">Parabolic will download media in separate .part files instead of directly into the output file.</p>
 <div class="note note-advanced" title="Допълнителна информация">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Използване на SponsorBlock за YouTube</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+<p class="p">Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
 <div class="note" title="Бележка">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Ограничение на скоростта</dt>
 <dd class="terms">
-<p class="p">A limit, in Ki/s, that is applied to downloads only if they have the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">The limit, in KiB/s, to apply to downloads only with the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
 <div class="note note-advanced" title="Допълнителна информация">
 <svg height="24" width="24" version="1.1">
  <g>

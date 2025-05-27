@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">このページでは <span class="app">Parabolic</span> でダウンローダーを設定するためのすべてオプションについて説明します。</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">詳細なログ (Verbose)</dt>
+<dt class="terms">Use Part Files</dt>
 <dd class="terms">
-<p class="p">有効であれば、各ダウンロードで、より詳細なログが <span class="code">yt-dlp</span> から出力されます。</p>
+<p class="p">Parabolic will download media in separate .part files instead of directly into the output file.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">YouTube のダウンロードで SponsorBlock を使用</dt>
 <dd class="terms">
-<p class="p">有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで有効にします。</p>
+<p class="p">Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">スピード制限</dt>
 <dd class="terms">
-<p class="p">制限は、Ki/s 単位で、<span class="code">スピード制限</span>の詳細オプションが有効なダウンロードにのみ適用されます。数値は512から10240の整数である必要があります。</p>
+<p class="p">The limit, in KiB/s, to apply to downloads only with the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>

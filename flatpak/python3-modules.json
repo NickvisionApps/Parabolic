@@ -2,7 +2,7 @@
     "name": "python3-yt-dlp",
     "buildsystem": "simple",
     "build-commands": [
-        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"yt-dlp[curl-cffi,default]\" --no-build-isolation"
+        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"yt-dlp[default,curl-cffi]\" --no-build-isolation"
     ],
     "sources": [
         {
@@ -47,8 +47,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/ba/d5/861a7daada160fcf6b0393fb741eeb0d0910b039ad7f0cd56c39afdd4a20/pycryptodomex-3.22.0.tar.gz",
-            "sha256": "a1da61bacc22f93a91cbe690e3eb2022a03ab4123690ab16c46abb693a9df63d"
+            "url": "https://files.pythonhosted.org/packages/c9/85/e24bf90972a30b0fcd16c73009add1d7d7cd9140c2498a68252028899e41/pycryptodomex-3.23.0.tar.gz",
+            "sha256": "71909758f010c82bc99b0abf4ea12012c98962fbf0583c2164f8b84533c2e4da"
         },
         {
             "type": "file",
@@ -67,8 +67,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/ea/18/bbccb18661a853c3db947152439229b9bf686fe0ab2cc7848ab3a24f2ad2/yt_dlp-2025.4.30-py3-none-any.whl",
-            "sha256": "53cd82bf13f12a1fe9c564b0004e001156b153c9247fa3cef14d1400ab359150"
+            "url": "https://files.pythonhosted.org/packages/25/68/4f108193ebce3ee7beb5f9a21daa6bc875e261150b510be468626f151959/yt_dlp-2025.5.22-py3-none-any.whl",
+            "sha256": "a49c4b76afeaded6254c3e2b759d8d5a13271aa963d5fccb51fe059d1c313151"
         }
     ]
 }

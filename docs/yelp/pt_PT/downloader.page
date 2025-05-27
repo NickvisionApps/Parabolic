@@ -19,15 +19,15 @@
 
 <terms>
     <item>
-        <title>Verbose Logging</title>
-        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
+        <title>Use Part Files</title>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Usar SponsorBlock para o YouTube</title>
-        <p>Se ativado, o Parabolic aplicará a extensão SponsorBlock aos downloads do YouTube.</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>O SponsorBlock só funciona em vídeos do YouTube. No entanto, deixar essa configuração ativada não afetará os downloads de outros sites (ou seja, não fará com que falhem).</p>
         </note>
@@ -37,7 +37,7 @@
     </item>
     <item>
         <title>Limite de Velocidade</title>
-        <p>Um limite, em Ki/s, que é aplicado a downloads somente se tiverem a opção avançada <code>Limite de Velocidade</code> ativada. Deve ser um valor inteiro entre 512 e 10240.</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>Padrão: 1024</p>
         </note>

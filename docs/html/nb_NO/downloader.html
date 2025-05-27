@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">Denne seksjonen tar for seg alle innstillingene for nedlasting i <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Full logging</dt>
+<dt class="terms">Use Part Files</dt>
 <dd class="terms">
-<p class="p">Hvis denne innstillingen er på, vil yt-dlp gi mer utfyllende informasjon om hver nedlasting.</p>
+<p class="p">Parabolic will download media in separate .part files instead of directly into the output file.</p>
 <div class="note note-advanced" title="Avansert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Bruk SponsorBlock på Youtube</dt>
 <dd class="terms">
-<p class="p">Hvis dette er på, vil Parabolic bruke SponsorBlock-utvidelsen til å kutte ut betalte segmenter fra YouTube-videoer.</p>
+<p class="p">Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
 <div class="note" title="Merknad">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Hastighetsgrense</dt>
 <dd class="terms">
-<p class="p">En øvre grense for nedlastningsfart i KiB/s, som brukes hvis hastighetsgrense også er slått på for den enkelte nedlastingen.</p>
+<p class="p">The limit, in KiB/s, to apply to downloads only with the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
 <div class="note note-advanced" title="Avansert">
 <svg height="24" width="24" version="1.1">
  <g>

@@ -19,15 +19,15 @@
 
 <terms>
     <item>
-        <title>Verbose Logging</title>
-        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
+        <title>Use Part Files</title>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
     <item>
         <title>YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें</title>
-        <p>सक्षम होने पर, Parabolic YouTube डाउनलोड पर स्पॉन्सरब्लॉक एक्सटेंशन लागू करेगा।</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
             <p>स्पॉन्सरब्लॉक केवल YouTube वीडियो पर काम करता है। हालाँकि, इस सेटिंग को चालू रखने से अन्य साइटों से डाउनलोड प्रभावित नहीं होंगे (अर्थात वे विफल नहीं होंगे)।</p>
         </note>
@@ -37,7 +37,7 @@
     </item>
     <item>
         <title>गति सीमा</title>
-        <p>Ki/s में एक सीमा, जो डाउनलोड पर केवल तभी लागू होती है जब उनके पास उन्नत विकल्प <code>स्पीड लिमिट</code> सक्षम हो। 512 और 10240 के बीच एक पूर्णांक मान होना चाहिए।</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: 1024</p>
         </note>

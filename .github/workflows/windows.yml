@@ -37,8 +37,8 @@ jobs:
         with:
           pkgs: boost-date-time libnick qtbase qtsvg qttools qlementine qlementine-icons
           triplet: x64-windows
-          revision: a68ff2cb7feb5983035d7caaf373a7feabc950b0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          revision: 8f54ef5453e7e76ff01e15988bf243e7247c5eb5
+          token: ${{ github.token }}
           github-binarycache: true
       - name: "Build"
         working-directory: ${{github.workspace}}/build
@@ -51,7 +51,7 @@ jobs:
         run: |
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile vc_redist.x64.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.04.30/yt-dlp.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.05.22/yt-dlp.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip
           Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip -OutFile ffmpeg.zip
           Expand-Archive -Force 'aria2.zip'

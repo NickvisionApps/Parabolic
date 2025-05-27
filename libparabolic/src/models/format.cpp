@@ -5,6 +5,28 @@
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
+    Format::Format(FormatValue value, MediaType type)
+        : m_bytes{ 0 },
+        m_type{ type },
+        m_hasAudioDescription{ false }
+    {
+        switch(value)
+        {
+        case FormatValue::Best:
+            m_id = _("Best");
+            m_protocol = "Best";
+            break;
+        case FormatValue::Worst:
+            m_id = _("Worst");
+            m_protocol = "Worst";
+            break;
+        case FormatValue::None:
+            m_id = _("None");
+            m_protocol = "None";
+            break;
+        }
+    }
+
     Format::Format(boost::json::object json, bool isYtdlpJson)
         : m_bytes{ 0 },
         m_hasAudioDescription{ false }
@@ -91,6 +113,34 @@ namespace Nickvision::TubeConverter::Shared::Models
                         m_videoCodec = VideoCodec::H265;
                     }
                 }
+                std::string acodec{ json["acodec"].is_string() ? json["acodec"].as_string() : "" };
+                if(!acodec.empty() && acodec != "none")
+                {
+                    if(acodec.find("flac") != std::string::npos || acodec.find("alac") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::FLAC;
+                    }
+                    else if(acodec.find("wav") != std::string::npos || acodec.find("aiff") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::WAV;
+                    }
+                    else if(acodec.find("opus") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::OPUS;
+                    }
+                    else if(acodec.find("aac") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::AAC;
+                    }
+                    else if(acodec.find("mp4a") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::MP4A;
+                    }
+                    else if(acodec.find("mp3") != std::string::npos)
+                    {
+                        m_audioCodec = AudioCodec::MP3;
+                    }
+                }
                 m_videoResolution = VideoResolution::parse(resolution);
             }
         }
@@ -175,6 +225,20 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_videoResolution;
     }
 
+    bool Format::isFormatValue(FormatValue value) const
+    {
+        switch(value)
+        {
+        case FormatValue::Best:
+            return m_id == _("Best") && m_protocol == "Best";
+        case FormatValue::Worst:
+            return m_id == _("Worst") && m_protocol == "Worst";
+        case FormatValue::None:
+            return m_id == _("None") && m_protocol == "None";
+        }
+        return false;
+    }
+
     std::string Format::str() const
     {
         std::stringstream builder;
@@ -204,6 +268,30 @@ namespace Nickvision::TubeConverter::Shared::Models
                     break;
                 case VideoCodec::H265:
                     builder << separator << "H.265";
+                    break;
+                }
+            }
+            if(m_audioCodec)
+            {
+                switch(*m_audioCodec)
+                {
+                case AudioCodec::FLAC:
+                    builder << separator << "FLAC";
+                    break;
+                case AudioCodec::WAV:
+                    builder << separator << "WAV";
+                    break;
+                case AudioCodec::OPUS:
+                    builder << separator << "OPUS";
+                    break;
+                case AudioCodec::AAC:
+                    builder << separator << "AAC";
+                    break;
+                case AudioCodec::MP4A:
+                    builder << separator << "MP4A";
+                    break;
+                case AudioCodec::MP3:
+                    builder << separator << "MP3";
                     break;
                 }
             }
@@ -284,6 +372,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         else if(str[0] == ' ')
         {
+            if(str[1] == '(' && str[str.size() - 1] == ')')
+            {
+                return str.substr(2, str.size() - 3);
+            }
             return str.substr(1);
         }
         return str;

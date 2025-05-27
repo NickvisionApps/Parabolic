@@ -26,14 +26,14 @@
 <terms>
     <item>
         <title>Встраивать метаданные</title>
-        <p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>По умолчанию: Включено</p>
         </note>
     </item>
     <item>
         <title>Удалить метаданные об источнике</title>
-        <p>Если включено, Parabolic будет очищать метаданные, содержащие URL и другую информацию, по которой можно отследить источник файла.</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>Следующие поля будут удалены: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> в каждой дорожке.</p>
         <note>
             <p>Доступно только если <code>Встраивание метаданных</code> включено.</p>
@@ -44,7 +44,7 @@
     </item>
     <item>
         <title>Embed Thumbnails</title>
-        <p>If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
         <note style="advanced">
             <p>По умолчанию: Включено</p>
@@ -52,7 +52,7 @@
     </item>
     <item>
         <title>Обрезать миниатюры для аудио</title>
-        <p>Если этот параметр включен, Parabolic будет обрезать миниатюры аудиофайлов до квадратного разрешения.</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
         </note>
@@ -62,21 +62,21 @@
     </item>
     <item>
         <title>Встраивать главы</title>
-        <p>Если включено и доступны данные о метках глав, Parabolic будет добавлять их в файл.</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>По умолчанию: Выключено</p>
         </note>
     </item>
     <item>
         <title>Встраивать субтитры</title>
-        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to a separate file.</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>По умолчанию: Включено</p>
         </note>
     </item>
     <item>
         <title>Потоки постобработки</title>
-        <p>Количество потоков, которое постпроцессор (<code>FFmpeg</code>) может использовать для каждой загрузки.</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>По умолчанию: максимальное количество потоков, доступных в системе</p>
         </note>

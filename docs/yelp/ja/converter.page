@@ -26,14 +26,14 @@
 <terms>
     <item>
         <title>メタデータを埋め込む</title>
-        <p>有効であれば、Parabolic は可能な場合、メディアに関連する情報（タイトル、ジャンルなど）とサムネイルをファイルにタグ付けします。</p>
+        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
     </item>
     <item>
         <title>ダウンロード元のデータを削除</title>
-        <p>有効であれば、Parabolic はメディアのソースを特定できる URL などのメタデータを削除します。</p>
+        <p>Parabolic will clear metadata fields containing identifying download information.</p>
         <p>これらのメタデータ欄: <code>comment</code>、<code>description</code>、<code>synopsis</code>、<code>purl</code>、<code>handler_name</code> は初めから埋め込まれません。</p>
         <note>
             <p>このオプションは <code>メタデータを埋め込む</code> が有効な場合のみ設定可能です。</p>
@@ -44,7 +44,7 @@
     </item>
     <item>
         <title>字幕を埋め込む</title>
-        <p>有効であれば、Parabolic は利用可能な場合、メディアにサムネイルを埋め込みます。</p>
+        <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>ファイル形式が埋め込みに対応していない場合は、サムネイルは独立した画像ファイルとして保存されます。</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
@@ -52,7 +52,7 @@
     </item>
     <item>
         <title>オーディオサムネイルを整形</title>
-        <p>有効であれば、Parabolic はオーディオファイルのサムネイル画像を正方形に切り抜きます。</p>
+        <p>Parabolic will crop thumbnails of audio files to squares.</p>
         <note>
             <p>このオプションは <code>サムネイルを埋め込む</code> がオンの場合のみ設定可能です。</p>
         </note>
@@ -62,21 +62,21 @@
     </item>
     <item>
         <title>チャプター（章）を埋め込む</title>
-        <p>有効であれば、利用可能であれば、Parabolic はメディアにチャプター（章）をタグ付けします。</p>
+        <p>Parabolic will tag a media with its chapter information if available.</p>
         <note style="advanced">
             <p>デフォルト: オフ</p>
         </note>
     </item>
     <item>
         <title>字幕を埋め込む</title>
-        <p>無効化されていたり、埋め込みが対応されていない場合は、ダウンロードされた字幕は独立したファイルに保存されます。</p>
+        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
     </item>
     <item>
         <title>ポストプロセッサのスレッド</title>
-        <p>各ダウンロードで使用するポストプロセッサ (<code>FFmpeg</code>) に許可するスレッドの数。</p>
+        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>デフォルト: システムで利用できるスレッドの最大値</p>
         </note>

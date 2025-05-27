@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="pt-BR">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🛠️</title>
+	<title type="link">Baixador 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -19,17 +19,17 @@
 
 <terms>
     <item>
-        <title>Registro detalhado</title>
-        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
+        <title>Use Part Files</title>
+        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Usar SponsorBlock para o YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>O SponsorBlock apenas funciona em vídeos do YouTube. No entanto, deixar essa opção ativada não irá afetar downloads de outros sites (ou seja, não vai faze-los falhar).</p>
         </note>
         <note style="advanced">
             <p>Padrão: Desligado</p>
@@ -37,39 +37,39 @@
     </item>
     <item>
         <title>Limite de velocidade</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <p>The limit, in KiB/s, to apply to downloads only with the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
         <note style="advanced">
-            <p>Default: 1024</p>
+            <p>Padrão: 1024</p>
         </note>
     </item>
     <item>
-        <title>URL da Proxy</title>
-        <p>The url of the proxy server to use.</p>
+        <title>URL do Proxy</title>
+        <p>A URL do servidor proxy a ser usado.</p>
         <note style="advanced">
-            <p>Default: No URL</p>
+            <p>Padrão: Sem URL</p>
         </note>
     </item>
     <item>
         <title>Cookies do navegador</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
+        <p>Um navegador no qual será usado para ler os cookies e passar para mecanismo de download do yt-dlp.</p>
+        <p>Isso pode ser útil ao baixar alguma mídia que precise de login, por exemplo: vídeos privados no YouTube.</p>
+        <p>Esta opção está disponível apenas em plataformas que não estejam em sandbox.</p>
         <note style="advanced">
-            <p>Default: None</p>
+            <p>Padrão: Nenhum</p>
         </note>
     </item>
     <item>
         <title>Aquivo de cookies</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>Um arquivo .txt de cookies para passar para o mecanismo de download do yt-dlp.</p>
+        <p>Isso pode ser útil ao baixar alguma mídia que precise de login, por exemplo: vídeos privados no YouTube.</p>
+        <p>Use uma das extensões a seguir para conseguir um arquivo de cookies do seu navegador:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/pt-BR/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Use essas extensões por sua conta e risco.</p>
         </note>
         <note style="advanced">
-            <p>Default: No File Selected</p>
+            <p>Padrão: Nenhum arquivo selecionado</p>
         </note>
     </item>
 </terms>

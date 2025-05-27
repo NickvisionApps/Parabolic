@@ -27,7 +27,7 @@
 <terms>
     <item>
         <title>Максимальна кількість активних завантажень</title>
-        <p>Кількість активних завантажень, які дозволено виконувати одночасно. Має бути цілим числом від 1 до 10.</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>Якщо досягнуто максимальної кількості активних завантажень, Parabolic ставитиме нові завантаження в чергу, доки не з'явиться більше завантажень, які можна буде запустити.</p>
         <note style="advanced">
             <p>За замовчуванням: 5</p>
@@ -35,7 +35,7 @@
     </item>
     <item>
         <title>Перезаписати наявні файли</title>
-        <p>Якщо ввімкнено, Parabolic перезапише наявні файли.</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>Наприклад, якщо в теці для завантаження існує файл з іменем <code>movie.mp4</code>, а в теці створюється нове завантаження з іменем <code>movie</code>, <code>movie.mp4</code> буде замінено вмістом нового завантаження.</p>
         <note>
             <p>Parabolic визначатиме завантаження, які потрібно відновити, і уникатиме цієї настройки під час відновлення або повторної спроби невдалих завантажень</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Обмежити символи у іменах файлів</title>
-        <p>Обмежує символи в іменах файлів лише тими, що підтримуються Windows.</p>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
         <p>Цей параметр доступний лише на Linux.</p>
         <note style="advanced">
             <p>За замовчуванням: Вимк</p>
@@ -54,14 +54,14 @@
     </item>
     <item>
         <title>Включити ідентифікатор медіа в заголовок після валідації</title>
-        <p>Чи включати ідентифікатор медіа в заголовок (ім’я файлу) після валідації.</p>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>За замовчуванням: Ввімк</p>
         </note>
     </item>
     <item>
         <title>Вмикати автоматично згенеровані субтитри</title>
-        <p>Чи треба вмикати субтитри, створені YouTube автоматично, для покриття обраних мов субтитрів.</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>За замовчуванням: Ввімк</p>
         </note>
@@ -88,7 +88,7 @@
     </item>
     <item>
         <title>Бажаний формат субтитрів</title>
-        <p>Формат файлу, який Parabolic має забезпечити для всіх завантажених субтитрів.</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
             <p>За замовчуванням: Будь-який</p>
         </note>

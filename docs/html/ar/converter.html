@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">دمج بيانات الوصف</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+<p class="p">Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
 <div class="note note-advanced" title="متقدم">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">أزل بيانات المصدر</dt>
 <dd class="terms">
-<p class="p">عند التفعيل، بارابولِك سيتم مسح حقول البيانات الوصفية التي تحتوي على عنوان URL والمعلومات التعريفية الأخرى للوسائط.</p>
+<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
 <p class="p">الحقول اللي تم مسحها: <span class="code">التعليق</span>، <span class="code">الوصف</span>، <span class="code">الملخص</span>، <span class="code">الرابط</span>، و<span class="code">اسم المعالج</span> في كل تدفق.</p>
 <div class="note" title="ملاحظة">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">دمج صورة العرض</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will embed a media with its thumbnail if available.</p>
+<p class="p">Parabolic will embed a media with its thumbnail if available.</p>
 <p class="p">إن لم يدعم نوع الملف هذا الدمج، صورة العرض ستُكتب كصورة مُستقلّة.</p>
 <div class="note note-advanced" title="متقدم">
 <svg height="24" width="24" version="1.1">
@@ -93,14 +93,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">قص صور الصوتيات المصغرة</dt>
 <dd class="terms">
-<p class="p">عند التفعيل، بارابولِك سيقوم بقص الصور المصغرة لملفات الصوت لجعلها ذات ابعاد مربعة.</p>
+<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
 <div class="note" title="ملاحظة">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">This option is only configurable if <span class="code">Embed Thumbnails</span> is on.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">هذا الخيار قابل للتعديل عندما يكون <span class="code">خيار دمج صور العرض</span> مُفَعّل.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="متقدم">
 <svg height="24" width="24" version="1.1">
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">دمج الفصول</dt>
 <dd class="terms">
-<p class="p">عند التفعيل، بارابولِك سيقوم بوضع علامة للمحتوى بمعلومات القسم ان وجدت.</p>
+<p class="p">Parabolic will tag a media with its chapter information if available.</p>
 <div class="note note-advanced" title="متقدم">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">دمج الترجمة</dt>
 <dd class="terms">
-<p class="p">إن أُطفِئ الدمج أو لم يُدعم، الترجمة المُحمّلة ستُحفظ كملف مستقل.</p>
+<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
 <div class="note note-advanced" title="متقدم">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">مسارات مابعد المعالجة</dt>
 <dd class="terms">
-<p class="p">عدد مؤشرات الترابط (threads) المسموح للمعالج اللاحق (<span class="code">FFmpeg</span>) باستخدامها لكل عملية تنزيل.</p>
+<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="متقدم">
 <svg height="24" width="24" version="1.1">
  <g>

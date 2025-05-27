@@ -21,7 +21,7 @@
 <terms>
     <item>
         <title>Número Máximo de Downloads Ativos</title>
-        <p>O número de downloads ativos permitidos para execução por vez. Deve ser um valor inteiro entre 1 e 10.</p>
+        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
         <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads em uma fila até que mais downloads possam ser executados.</p>
         <note style="advanced">
             <p>Padrão: 5</p>
@@ -29,62 +29,62 @@
     </item>
     <item>
         <title>Sobrescrever arquivos existentes</title>
-        <p>Se ativado, o Parabolic substituirá os arquivos existentes.</p>
+        <p>Parabolic will overwrite existing files.</p>
         <p>Por exemplo, se um arquivo chamado <code>movie.mp4</code> existir na pasta de download e um novo download for criado chamado <code>movie</code>, <code>movie.mp4</code> será substituído pelo conteúdo do novo download.</p>
         <note>
-            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+            <p>O Parabolic irá detectar downloads que devem ser retomados e evitará essa configuração ao recuperar ou ao tentar novamente downloads com falha</p>
         </note>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
-        <title>Limit Filename Characters</title>
-        <p>Restringe os caracteres dos nomes de arquivos a apenas aqueles suportados pelo Windows.</p>
-        <p>This option is only available on Linux.</p>
+        <title>Limite de caracteres no nome do arquivo</title>
+        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
+        <p>Esta opção só está disponível no Linux.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
-        <title>Included Media Id in Title After Validation</title>
-        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <title>Incluir ID da mídia no título após validação</title>
+        <p>Parabolic will include a media's id in its default title.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Legendas Geradas Automaticamente Incluídas</title>
-        <p>Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
+        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
         <title>Codec de vídeo preferido</title>
-        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <p>O codec de vídeo que o Parabolic deve preferir ao analisar os formatos de mídias para fazer download.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+            <p>Se o Parabolic não conseguir achar nenhum formato com o codec preferido selecionado, nenhum formato de vídeo estará disponível para download.</p>
         </note>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Padrão: Qualquer</p>
         </note>
     </item>
     <item>
-        <title>Preferred Audio Codec</title>
-        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Codec de áudio preferido</title>
+        <p>O codec de áudio que o Parabolic deve preferir ao analisar os formatos de mídias para fazer download.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+            <p>Se o Parabolic não conseguir achar nenhum formato com o codec preferido selecionado, nenhum formato de áudio estará disponível para download.</p>
         </note>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Padrão: Qualquer</p>
         </note>
     </item>
     <item>
         <title>Formato de legenda preferido</title>
-        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Padrão: Qualquer</p>
         </note>
     </item>
 </terms>

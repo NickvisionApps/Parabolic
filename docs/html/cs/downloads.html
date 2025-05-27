@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Maximální počet aktivních stahování</dt>
 <dd class="terms">
-<p class="p">Počet aktivních stahování, které mohou v jednu chvíli běžet. Musí to být celočíselná hodnota mezi 1 a 10.</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">Při dosažení maximálního počtu aktivních stahování, aplikace Parabolic umístí nová stahování do fronty, dokud nebude moct být spuštěno více stahování.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Přepsat existující soubory</dt>
 <dd class="terms">
-<p class="p">Pokud je tato funkce povolena, aplikace Parabolic přepíše existující soubory.</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">Pokud již například ve složce stahování existuje soubor <span class="code">film.mp4</span> a bude vytvořeno nové stahování s názvem <span class="code">film</span>, bude soubor <span class="code">film.mp4</span> přepsán novým obsahem stahování.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Omezení znaků v názvu souboru</dt>
 <dd class="terms">
-<p class="p">Omezí znaky v názvech souborů pouze na znaky podporované sytémem Windows.</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">Tato možnost je dostupná pouze na systému Linux.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Přidat ID média do názvu po ověření</dt>
 <dd class="terms">
-<p class="p">Zda se má po ověření přidat do názvu (názvu souboru) ID média.</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Zahrnout automaticky generované titulky</dt>
 <dd class="terms">
-<p class="p">Zda do požadovaných jazyků titulků zahrnout i automaticky přeložené titulky.</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -133,14 +133,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Preferovaný video kodek</dt>
 <dd class="terms">
-<p class="p">The video codec Parabolic should prefer when parsing media formats to download.</p>
+<p class="p">Kodek videa, který by měla aplikace Parabolic preferovat při zpracování formátů médií ke stažení.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Pokud aplikace Parabolic nenajde žádné formáty se zvoleným preferovaným kodekem, nebudou ke stažení dostupné žádné formáty videa.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -159,16 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: jakýkoli</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Preferred Audio Codec</dt>
+<dt class="terms">Preferovaný zvukový kodek</dt>
 <dd class="terms">
-<p class="p">The audio codec Parabolic should prefer when parsing media formats to download.</p>
+<p class="p">Kodek zvuku, který by měla aplikace Parabolic preferovat při zpracování formátů médií ke stažení.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Pokud aplikace Parabolic nenajde žádné formáty se zvoleným preferovaným kodekem, nebudou ke stažení dostupné žádné formáty zvuku.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Preferovaný formát titulků</dt>
 <dd class="terms">
-<p class="p">Formát souboru, ve kterém má aplikace Parabolic zajistit stahování všech titulků.</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -225,16 +225,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="copyrights">
 <div class="copyright">© 2023-2025 Nicholas Logozzo</div>
 <div class="copyright">© 2023-2025 Nicholas Logozzo</div>
-<div class="copyright">© 2023, 2024 Jonáš Loskot</div>
 </div>
 <div class="credits">
 <div class="credits-authors">
 <div class="title"><span class="title">Napsali</span></div>
 <ul class="credits"><li>Nicholas Logozzo</li></ul>
-</div>
-<div class="credits-translators">
-<div class="title"><span class="title">Přeložili</span></div>
-<ul class="credits"><li>Jonáš Loskot</li></ul>
 </div>
 <div class="credits-publishers">
 <div class="title"><span class="title">Vydali</span></div>

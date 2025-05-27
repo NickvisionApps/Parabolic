@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">활성 다운로드 최대 수</dt>
 <dd class="terms">
-<p class="p">한 번에 실행할 수 있는 활성 다운로드 수입니다. 1과 10 사이의 정수 값이어야 합니다.</p>
+<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
 <p class="p">활성 다운로드의 최대 수에 도달하면, Parabolic은 새 다운로드를 대기열에 배치하고 더 많은 다운로드가 실행될 수 있을 때까지 기다립니다.</p>
 <div class="note note-advanced" title="고급">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">기존 파일 덮어쓰기</dt>
 <dd class="terms">
-<p class="p">활성화되면, Parabolic은 기존 파일을 덮어씁니다.</p>
+<p class="p">Parabolic will overwrite existing files.</p>
 <p class="p">예를 들어, 다운로드 폴더에 <span class="code">movie.mp4</span>라는 파일이 이미 존재하고, 새 다운로드가 <span class="code">movie</span>라는 이름으로 생성되면, <span class="code">movie.mp4</span> 파일은 새 다운로드의 내용으로 덮어씌워집니다.</p>
 <div class="note" title="알림">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">파일명 글자 수 제한</dt>
 <dd class="terms">
-<p class="p">파일명에 Windows에서 지원하는 문자만 사용 가능하도록 제한.</p>
+<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
 <p class="p">이 옵션은 Linux에서만 사용할 수 있습니다.</p>
 <div class="note note-advanced" title="고급">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">검증 후 제목에 미디어 ID 포함</dt>
 <dd class="terms">
-<p class="p">미디어가 검증될 때 제목(파일 이름)에 미디어 ID를 포함할지 여부입니다.</p>
+<p class="p">Parabolic will include a media's id in its default title.</p>
 <div class="note note-advanced" title="고급">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">자동 생성된 자막 포함</dt>
 <dd class="terms">
-<p class="p">요청된 자막 언어에 맞게 자동 번역된 자막을 포함할지 여부입니다.</p>
+<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
 <div class="note note-advanced" title="고급">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">선호하는 자막 형식</dt>
 <dd class="terms">
-<p class="p">Parabolic이 다운로드한 모든 자막을 다운로드할 형식입니다.</p>
+<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
 <div class="note note-advanced" title="고급">
 <svg height="24" width="24" version="1.1">
  <g>
