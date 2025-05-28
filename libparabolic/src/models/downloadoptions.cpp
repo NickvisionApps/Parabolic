@@ -292,59 +292,56 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string formatSort;
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
-            std::string vcodec{ "vcodec:" };
+            formatSort += "res,vcodec:";
             switch (downloaderOptions.getPreferredVideoCodec())
             {
             case VideoCodec::VP9:
-                vcodec += "vp9";
+                formatSort += "vp9";
                 break;
             case VideoCodec::AV01:
-                vcodec += "av01";
+                formatSort += "av01";
                 break;
             case VideoCodec::H264:
-                vcodec += "h264";
+                formatSort += "h264";
                 break;
             case VideoCodec::H265:
-                vcodec += "h265";
+                formatSort += "h265";
                 break;
             }
-            formatSort += vcodec;
         }
         if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
         {
-            std::string acodec{ "acodec:" };
-            switch (downloaderOptions.getPreferredAudioCodec())
-            {
-            case AudioCodec::FLAC:
-                acodec += "flac";
-                break;
-            case AudioCodec::WAV:
-                acodec += "wav";
-                break;
-            case AudioCodec::OPUS:
-                acodec += "opus";
-                break;
-            case AudioCodec::AAC:
-                acodec += "aac";
-                break;
-            case AudioCodec::MP4A:
-                acodec += "mp4a";
-                break;
-            case AudioCodec::MP3:
-                acodec += "mp3";
-                break;
-            }
             if(!formatSort.empty())
             {
                 formatSort += ",";
             }
-            formatSort += acodec;
+            formatSort += "quality,acodec:";
+            switch (downloaderOptions.getPreferredAudioCodec())
+            {
+            case AudioCodec::FLAC:
+                formatSort += "flac";
+                break;
+            case AudioCodec::WAV:
+                formatSort += "wav";
+                break;
+            case AudioCodec::OPUS:
+                formatSort += "opus";
+                break;
+            case AudioCodec::AAC:
+                formatSort += "aac";
+                break;
+            case AudioCodec::MP4A:
+                formatSort += "mp4a";
+                break;
+            case AudioCodec::MP3:
+                formatSort += "mp3";
+                break;
+            }
         }
         if(!formatSort.empty())
         {
             arguments.push_back("--format-sort");
             arguments.push_back(formatSort);
-            arguments.push_back("--format-sort-force");
         }
         if(!downloaderOptions.getUsePartFiles())
         {

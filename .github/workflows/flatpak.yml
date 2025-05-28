@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.user.login != 'weblate' }}
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9
       options: --privileged
     strategy:
       matrix:
