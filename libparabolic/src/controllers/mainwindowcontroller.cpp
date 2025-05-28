@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.5.4-beta3" });
+        m_appInfo.setVersion({ "2025.5.4" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added the ability to use video formats for audio file downloads\n- Added the ability to specify Worst for a video/audio format\n- Added the ability to specify None for a video/audio format\n- Added the Use Part Files option to downloader settings\n- Added the Documentation help menu item in the Qt app\n- Changed the folder path delimiter in batch files from ';' to '|'\n- Fixed an issue where thumbnail conversion failed for some videos\n- Fixed an issue where the wrong quality was chosen for downloads with preferred codecs\n- Fixed an issue where audio files were outputted with low quality\n- Fixed an issue where progress of downloads using aria2c was not displayed correctly\n- Fixed an issue where playlist downloads caused the app to crash on Windows\n- Parabolic should now provide users with error messages instead of crashing the entire app\n- Parabolic will now pause slightly during downloads to prevent users from being banned by services such as YouTube (Users should not see significantly longer download times however)\n- Tweaked the GNOME user interface as we get closer to joining GNOME Circle\n- Updated yt-dlp to fix YouTube format errors");

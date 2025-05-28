@@ -34,14 +34,14 @@
     <item>
         <title>Použiť dávkový súbor</title>
         <p>Vyberte dávkový textový súbor, ktorý obsahuje zoznam URL adries na overenie.</p>
-        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
-        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-        <p>The optional save folder must be an absolute path.</p>
+        <p>Každá URL adresa môže byť sprevádzaná voliteľným priečinkom na uloženie (oddeleným pomocou <code>|</code>), do ktorého sa uloží každé médium z danej URL adresy.</p>
+        <p>Všetky URL adresy a ich médiá z dávkového súboru budú zoskupené a spracované ako jediný playlist aplikáciou Parabolic.</p>
+        <p>Voliteľný priečinok na uloženie musí byť zadaný ako úplná cesta v systéme.</p>
         <note style="advanced">
             <p>Formát dávkového súboru:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 | "Folder1"</code></p>
-            <p><code>"URL3"|"Folder2"</code></p>
+            <p><code>URL2 | "Priečinok1"</code></p>
+            <p><code>URL3"|"Priečinok2"</code></p>
             <p><code>"URL4"</code></p>
         </note>
     </item>
@@ -61,7 +61,7 @@
             <p>Predtým vybraný formát súboru sa uloží a automaticky sa predvolí pre ďalšie sťahovanie.</p>
         </note>
         <note style="advanced">
-            <p>Ak vyberiete typ súboru <code>Video (všeobecné)</code> alebo <code>Zvuk (všeobecný)</code>, aplikácia Parabolic stiahne médiá v pôvodnom formáte bez vykonania konverzie.</p>
+            <p>Ak vyberiete typ súboru <code>Video (všeobecné)</code> alebo <code>Zvuk (všeobecný)</code>, Parabolic stiahne médiá v pôvodnom formáte bez vykonania konverzie.</p>
         </note>
     </item>
     <item>
@@ -73,10 +73,10 @@
             <p>Predtým použitý video formát sa uloží a automaticky sa predvolí pre ďalšie sťahovanie.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>bv*</code></p>
-            <p>- <code>Worst</code> = <code>wv*</code></p>
+            <p>Nasledujúce formáty sú špeciálne typy, ktoré Parabolic používa na zosúladenie s funkciami <code>yt-dlp</code>:</p>
+            <p>- <code>Žiadny</code> = Žiadna možnosť nebola odovzdaná programu <code>yt-dlp</code></p>
+            <p>- <code>Najlepší</code> = <code>bv*</code></p>
+            <p>- <code>Najhorší</code> = <code>wv*</code></p>
         </note>
     </item>
     <item>
@@ -87,10 +87,10 @@
             <p>Predtým použitý audio formát sa uloží a automaticky sa predvolí pre ďalšie sťahovanie.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>ba</code></p>
-            <p>- <code>Worst</code> = <code>wa</code></p>
+            <p>Nasledujúce formáty sú špeciálne typy, ktoré Parabolic používa na zosúladenie s funkciami <code>yt-dlp</code>:</p>
+            <p>- <code>Žiadny</code> = Žiadna možnosť nebola odovzdaná programu <code>yt-dlp</code></p>
+            <p>- <code>Najlepší</code> = <code>ba</code></p>
+            <p>- <code>Najhorší</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
@@ -102,28 +102,28 @@
     </item>
     <item>
         <title>Rozdeliť kapitoly</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
+        <p>Ak je táto možnosť zapnutá, Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
         <note>
             <p>Predtým použitý stav sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
         <title>Obmedzenie rýchlosti sťahovania</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <link xref="downloader">nastaveniach</link>.</p>
+        <p>Ak je táto možnosť zapnutá, Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <link xref="downloader">nastaveniach</link>.</p>
         <note>
             <p>Predtým použitý stav sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
         <title>Popis exportu</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <code>.description</code> vedľa stiahnutého súboru.</p>
+        <p>Ak je táto možnosť zapnutá, Parabolic automaticky exportuje popis média do súboru <code>.description</code> vedľa stiahnutého súboru.</p>
         <note>
             <p>Predtým použitý stav sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
         <title>Vylúčiť z histórie</title>
-        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic vylúči toto stiahnutie z histórie sťahovania.</p>
+        <p>Ak je táto možnosť zapnutá, Parabolic vylúči toto stiahnutie z histórie sťahovania.</p>
     </item>
     <item>
         <title>Časový rozsah</title>

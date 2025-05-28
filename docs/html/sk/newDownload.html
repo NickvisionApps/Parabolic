@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Použiť dávkový súbor</dt>
 <dd class="terms">
 <p class="p">Vyberte dávkový textový súbor, ktorý obsahuje zoznam URL adries na overenie.</p>
-<p class="p">Each URL can be accompanied by an optional save folder (delimited by <span class="code">|</span>) in which to save each media of the URL to.</p>
-<p class="p">All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-<p class="p">The optional save folder must be an absolute path.</p>
+<p class="p">Každá URL adresa môže byť sprevádzaná voliteľným priečinkom na uloženie (oddeleným pomocou <span class="code">|</span>), do ktorého sa uloží každé médium z danej URL adresy.</p>
+<p class="p">Všetky URL adresy a ich médiá z dávkového súboru budú zoskupené a spracované ako jediný playlist aplikáciou Parabolic.</p>
+<p class="p">Voliteľný priečinok na uloženie musí byť zadaný ako úplná cesta v systéme.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Formát dávkového súboru:</p>
 <p class="p"><span class="code">URL1</span></p>
-<p class="p"><span class="code">URL2 | "Folder1"</span></p>
-<p class="p"><span class="code">"URL3"|"Folder2"</span></p>
+<p class="p"><span class="code">URL2 | "Priečinok1"</span></p>
+<p class="p"><span class="code">URL3"|"Priečinok2"</span></p>
 <p class="p"><span class="code">"URL4"</span></p>
 </div></div></div>
 </div>
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Ak vyberiete typ súboru <span class="code">Video (všeobecné)</span> alebo <span class="code">Zvuk (všeobecný)</span>, aplikácia Parabolic stiahne médiá v pôvodnom formáte bez vykonania konverzie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Ak vyberiete typ súboru <span class="code">Video (všeobecné)</span> alebo <span class="code">Zvuk (všeobecný)</span>, Parabolic stiahne médiá v pôvodnom formáte bez vykonania konverzie.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Formát videa</dt>
@@ -141,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">bv*</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wv*</span></p>
+<p class="p">Nasledujúce formáty sú špeciálne typy, ktoré Parabolic používa na zosúladenie s funkciami <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Žiadny</span> = Žiadna možnosť nebola odovzdaná programu <span class="code">yt-dlp</span></p>
+<p class="p">- <span class="code">Najlepší</span> = <span class="code">bv*</span></p>
+<p class="p">- <span class="code">Najhorší</span> = <span class="code">wv*</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -175,10 +175,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">ba</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wa</span></p>
+<p class="p">Nasledujúce formáty sú špeciálne typy, ktoré Parabolic používa na zosúladenie s funkciami <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Žiadny</span> = Žiadna možnosť nebola odovzdaná programu <span class="code">yt-dlp</span></p>
+<p class="p">- <span class="code">Najlepší</span> = <span class="code">ba</span></p>
+<p class="p">- <span class="code">Najhorší</span> = <span class="code">wa</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Rozdeliť kapitoly</dt>
 <dd class="terms">
-<p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
+<p class="p">Ak je táto možnosť zapnutá, Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Obmedzenie rýchlosti sťahovania</dt>
 <dd class="terms">
-<p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <span class="link"><a href="downloader.html" title="Služba sťahovania">nastaveniach</a></span>.</p>
+<p class="p">Ak je táto možnosť zapnutá, Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <span class="link"><a href="downloader.html" title="Služba sťahovania">nastaveniach</a></span>.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Popis exportu</dt>
 <dd class="terms">
-<p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <span class="code">.description</span> vedľa stiahnutého súboru.</p>
+<p class="p">Ak je táto možnosť zapnutá, Parabolic automaticky exportuje popis média do súboru <span class="code">.description</span> vedľa stiahnutého súboru.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </dd>
 <dt class="terms">Vylúčiť z histórie</dt>
-<dd class="terms"><p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic vylúči toto stiahnutie z histórie sťahovania.</p></dd>
+<dd class="terms"><p class="p">Ak je táto možnosť zapnutá, Parabolic vylúči toto stiahnutie z histórie sťahovania.</p></dd>
 <dt class="terms">Časový rozsah</dt>
 <dd class="terms">
 <p class="p">Používateľ môže zadať časový rozsah začiatku a konca sťahovania konkrétnej časti média.</p>
