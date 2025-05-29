@@ -151,11 +151,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         switch(format)
         {
         case SubtitleFormat::Any:
-            return !isAudio() && m_value != MediaFileTypeValue::AVI;
+            return isVideo() && m_value != MediaFileTypeValue::AVI;
         case SubtitleFormat::VTT:
-            return m_value == MediaFileTypeValue::MP4 || m_value == MediaFileTypeValue::WEBM || m_value == MediaFileTypeValue::MKV || m_value == MediaFileTypeValue::MOV;
+            return isVideo() && m_value != MediaFileTypeValue::AVI;
         case SubtitleFormat::SRT:
-            return m_value == MediaFileTypeValue::MP4 || m_value == MediaFileTypeValue::MKV || m_value == MediaFileTypeValue::MOV;
+            return isVideo() && m_value != MediaFileTypeValue::WEBM && m_value != MediaFileTypeValue::AVI;
         case SubtitleFormat::ASS:
             return m_value == MediaFileTypeValue::MKV;
         case SubtitleFormat::LRC:
