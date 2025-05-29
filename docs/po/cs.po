@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-28 21:49-0400\n"
+"POT-Creation-Date: 2025-05-28 21:59-0400\n"
 "PO-Revision-Date: 2025-05-18 16:01+0000\n"
 "Last-Translator: Fjuro <git@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1067,13 +1067,23 @@ msgstr ""
 "code> stáhne aplikace Parabolic média v původním typu souboru bez vykonání "
 "jakýchkoli konverzí."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:62
+#, fuzzy
+msgid ""
+"Generic file types do not fully support embedding thumbnails and subtitles. "
+"Separate files may be written to disk if embedding is not supported."
+msgstr ""
+"Pokud typ souboru nepodporuje vkládání, bude miniatura uložena do "
+"samostatného souboru."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:65
+#: docs/yelp/C/newDownload.page:66
 msgid "Video Format"
 msgstr "Formát videa"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:67
 msgid ""
 "The list of video formats available for download, sorted by resolution and "
 "bitrate."
@@ -1082,19 +1092,19 @@ msgstr ""
 "datového toku."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:67
+#: docs/yelp/C/newDownload.page:68
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
 "Každý formát má tvar: <code>rozlišení | datový tok | kodek (id)</code>."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:69
 msgid "If the file type is an audio type, this option will not be available."
 msgstr "Pokud je typem souboru typ zvuku, nebude tato možnost dostupná."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:70
+#: docs/yelp/C/newDownload.page:71
 msgid ""
 "The previously used video format will be remembered and pre-selected for the "
 "next download."
@@ -1103,45 +1113,45 @@ msgstr ""
 "stahování."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:73 docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:74 docs/yelp/C/newDownload.page:88
 msgid ""
 "The following are special formats used by Parabolic to match <code>yt-dlp</"
 "code> behaviors:"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:74 docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:89
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:76
 msgid "- <code>Best</code> = <code>bv*</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:76
+#: docs/yelp/C/newDownload.page:77
 msgid "- <code>Worst</code> = <code>wv*</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:81
 msgid "Audio Format"
 msgstr "Formát zvuku"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:82
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 "Seznam formátů zvuku dostupných ke stažení, seřazený podle datového toku."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:83
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr "Každý formát má podobu: <code>datový tok | jazyk (id)</code>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:84
+#: docs/yelp/C/newDownload.page:85
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
@@ -1150,22 +1160,22 @@ msgstr ""
 "stahování."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:90
 msgid "- <code>Best</code> = <code>ba</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:90
+#: docs/yelp/C/newDownload.page:91
 msgid "- <code>Worst</code> = <code>wa</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:95
 msgid "Subtitles"
 msgstr "Titulky"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1175,7 +1185,7 @@ msgstr ""
 "titulků najdete v <link xref=\"downloads\">předvolbách</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:97
+#: docs/yelp/C/newDownload.page:98
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1184,12 +1194,12 @@ msgstr ""
 "stahování."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:102
 msgid "Split Chapters"
 msgstr "Rozdělit kapitoly"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:103
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1198,20 +1208,20 @@ msgstr ""
 "několik malých souborů podle jeho kapitol."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:104 docs/yelp/C/newDownload.page:111
-#: docs/yelp/C/newDownload.page:118
+#: docs/yelp/C/newDownload.page:105 docs/yelp/C/newDownload.page:112
+#: docs/yelp/C/newDownload.page:119
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr "Dříve použitý stav bude zapamatován a předvolen pro další stahování."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:108
+#: docs/yelp/C/newDownload.page:109
 msgid "Limit Download Speed"
 msgstr "Omezit rychlost stahování"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:110
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1220,12 +1230,12 @@ msgstr ""
 "na rychlost nastavenou v <link xref=\"downloader\">předvolbách</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:115
+#: docs/yelp/C/newDownload.page:116
 msgid "Export Description"
 msgstr "Popis exportu"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1234,12 +1244,12 @@ msgstr ""
 "popis média do souboru <code>.description</code> vedle staženého souboru."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:122
+#: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
 msgstr "Odstranit z historie"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:123
+#: docs/yelp/C/newDownload.page:124
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
 "downloads."
@@ -1248,12 +1258,12 @@ msgstr ""
 "seznamu historie stahování."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:126
+#: docs/yelp/C/newDownload.page:127
 msgid "Time Frame"
 msgstr "Časový rámec"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:128
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1262,22 +1272,22 @@ msgstr ""
 "stažení určité části média."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:129
+#: docs/yelp/C/newDownload.page:130
 msgid "Default: The whole media length"
 msgstr "Výchozí: celá délka média"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:133
+#: docs/yelp/C/newDownload.page:134
 msgid "Save Folder"
 msgstr "Složka k uložení"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:134
+#: docs/yelp/C/newDownload.page:135
 msgid "The folder at which to save the download to."
 msgstr "Složka, do které budou ukládány stažené soubory."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:136
+#: docs/yelp/C/newDownload.page:137
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1285,17 +1295,17 @@ msgstr ""
 "Dříve použitá složka bude zapamatována a předem vybrána pro další stahování."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:140
+#: docs/yelp/C/newDownload.page:141
 msgid "File Name"
 msgstr "Název souboru"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:141
+#: docs/yelp/C/newDownload.page:142
 msgid "The file name to use when saving the download."
 msgstr "Název souboru, který se použije při ukládání stahování."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:143
+#: docs/yelp/C/newDownload.page:144
 msgid "Default: The title of the media"
 msgstr "Výchozí: název média"
 

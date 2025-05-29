@@ -612,7 +612,7 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void AddDownloadDialog::genericFileTypeDisclaimer()
     {
-        QMessageBox::warning(this, _("Warning"), _("Generic file types do not support embedding thumbnails and subtitles. Please select a specific file type that supports embedding to prevent separate image and subtitle files from being written to disk."));
+        QMessageBox::warning(this, _("Warning"), _("Generic file types do not fully support embedding thumbnails and subtitles. Please select a specific file type that is known to support embedding to prevent separate files from being written."));
     }
 
     void AddDownloadDialog::selectSaveFolderSingle()

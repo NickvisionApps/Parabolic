@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-28 21:49-0400\n"
+"POT-Creation-Date: 2025-05-28 21:59-0400\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1038,26 +1038,35 @@ msgstr ""
 "택하면, Parabolic은 미디어의 원본 파일 형식으로 미디어를 다운로드하며, 변환"
 "을 수행하지 않습니다."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:62
+#, fuzzy
+msgid ""
+"Generic file types do not fully support embedding thumbnails and subtitles. "
+"Separate files may be written to disk if embedding is not supported."
+msgstr ""
+"비활성화되거나 포함에 실패하면, 다운로드한 자막은 별도의 파일로 저장됩니다."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:65
+#: docs/yelp/C/newDownload.page:66
 msgid "Video Format"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:67
 msgid ""
 "The list of video formats available for download, sorted by resolution and "
 "bitrate."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:67
+#: docs/yelp/C/newDownload.page:68
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:69
 #, fuzzy
 msgid "If the file type is an audio type, this option will not be available."
 msgstr ""
@@ -1065,7 +1074,7 @@ msgstr ""
 "트입니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:70
+#: docs/yelp/C/newDownload.page:71
 #, fuzzy
 msgid ""
 "The previously used video format will be remembered and pre-selected for the "
@@ -1073,44 +1082,44 @@ msgid ""
 msgstr "이전에 사용한 폴더는 기억되어 다음 다운로드에서 자동으로 선택됩니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:73 docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:74 docs/yelp/C/newDownload.page:88
 msgid ""
 "The following are special formats used by Parabolic to match <code>yt-dlp</"
 "code> behaviors:"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:74 docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:89
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:76
 msgid "- <code>Best</code> = <code>bv*</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:76
+#: docs/yelp/C/newDownload.page:77
 msgid "- <code>Worst</code> = <code>wv*</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:81
 msgid "Audio Format"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:82
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:83
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:84
+#: docs/yelp/C/newDownload.page:85
 #, fuzzy
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
@@ -1118,22 +1127,22 @@ msgid ""
 msgstr "이전에 사용한 폴더는 기억되어 다음 다운로드에서 자동으로 선택됩니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:90
 msgid "- <code>Best</code> = <code>ba</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:90
+#: docs/yelp/C/newDownload.page:91
 msgid "- <code>Worst</code> = <code>wa</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:95
 msgid "Subtitles"
 msgstr "자막"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1144,19 +1153,19 @@ msgstr ""
 "서 구성할 수 있습니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:97
+#: docs/yelp/C/newDownload.page:98
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
 msgstr "이전에 선택한 자막은 기억되어 다음 다운로드에서 자동으로 선택됩니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:102
 msgid "Split Chapters"
 msgstr "챕터 분할"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:103
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1165,20 +1174,20 @@ msgstr ""
 "로 분할합니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:104 docs/yelp/C/newDownload.page:111
-#: docs/yelp/C/newDownload.page:118
+#: docs/yelp/C/newDownload.page:105 docs/yelp/C/newDownload.page:112
+#: docs/yelp/C/newDownload.page:119
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr "이전에 사용한 상태는 기억되어 다음 다운로드에서 자동으로 선택됩니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:108
+#: docs/yelp/C/newDownload.page:109
 msgid "Limit Download Speed"
 msgstr "다운로드 속도 제한"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:110
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1187,12 +1196,12 @@ msgstr ""
 "된 속도로 다운로드 속도를 제한합니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:115
+#: docs/yelp/C/newDownload.page:116
 msgid "Export Description"
 msgstr "설명 내보내기"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1201,12 +1210,12 @@ msgstr ""
 "로드한 파일과 함께 내보냅니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:122
+#: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:123
+#: docs/yelp/C/newDownload.page:124
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
@@ -1215,12 +1224,12 @@ msgstr ""
 "활성화되면, Parabolic은 YouTube 다운로드에 SponsorBlock 확장을 적용합니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:126
+#: docs/yelp/C/newDownload.page:127
 msgid "Time Frame"
 msgstr "시간 범위"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:128
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1229,39 +1238,39 @@ msgstr ""
 "로드할 수 있습니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:129
+#: docs/yelp/C/newDownload.page:130
 msgid "Default: The whole media length"
 msgstr "기본값: 전체 미디어 길이"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:133
+#: docs/yelp/C/newDownload.page:134
 msgid "Save Folder"
 msgstr "저장 폴더"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:134
+#: docs/yelp/C/newDownload.page:135
 msgid "The folder at which to save the download to."
 msgstr "다운로드를 저장할 폴더입니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:136
+#: docs/yelp/C/newDownload.page:137
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr "이전에 사용한 폴더는 기억되어 다음 다운로드에서 자동으로 선택됩니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:140
+#: docs/yelp/C/newDownload.page:141
 msgid "File Name"
 msgstr "파일 이름"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:141
+#: docs/yelp/C/newDownload.page:142
 msgid "The file name to use when saving the download."
 msgstr "다운로드를 저장할 때 사용할 파일 이름입니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:143
+#: docs/yelp/C/newDownload.page:144
 msgid "Default: The title of the media"
 msgstr "기본값: 미디어의 제목"
 
