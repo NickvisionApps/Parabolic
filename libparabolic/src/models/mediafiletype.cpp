@@ -146,13 +146,33 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
-    bool MediaFileType::supportsSubtitles() const
+    bool MediaFileType::supportsSubtitleFormat(SubtitleFormat format) const
+    {
+        switch(format)
+        {
+        case SubtitleFormat::Any:
+            return !isAudio() && m_value != MediaFileTypeValue::AVI;
+        case SubtitleFormat::VTT:
+            return m_value == MediaFileTypeValue::MP4 || m_value == MediaFileTypeValue::WEBM || m_value == MediaFileTypeValue::MKV || m_value == MediaFileTypeValue::MOV;
+        case SubtitleFormat::SRT:
+            return m_value == MediaFileTypeValue::MP4 || m_value == MediaFileTypeValue::MKV || m_value == MediaFileTypeValue::MOV;
+        case SubtitleFormat::ASS:
+            return m_value == MediaFileTypeValue::MKV;
+        case SubtitleFormat::LRC:
+            return isAudio();
+        default:
+            return false;
+        }
+
+    }
+
+    bool MediaFileType::shouldRecode() const
     {
         switch(m_value)
         {
-        case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::WEBM:
-        case MediaFileTypeValue::MKV:
+        case MediaFileTypeValue::MOV:
+        case MediaFileTypeValue::AVI:
             return true;
         default:
             return false;
