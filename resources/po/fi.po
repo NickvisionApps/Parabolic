@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-27 22:52-0400\n"
+"POT-Creation-Date: 2025-05-28 21:59-0400\n"
 "PO-Revision-Date: 2025-05-18 16:01+0000\n"
 "Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -81,11 +81,13 @@ msgstr "WAV (Ääni)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:247
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:277
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:343
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:377
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -119,12 +121,14 @@ msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Palautettiin {} lataus"
 msgstr[1] "Palautettiin {} latausta"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:224
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -146,6 +150,7 @@ msgid "Download Finished"
 msgstr "Lataus valmistui"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} on ladattu"
 
@@ -160,6 +165,7 @@ msgid "Download Finished With Error"
 msgstr "Lataus päättyi virheen kanssa"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:302
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} päättyi virheellä"
 
@@ -168,18 +174,22 @@ msgid "0 B/s"
 msgstr "0 t/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} t/s"
 
@@ -209,18 +219,22 @@ msgid "Audio Description"
 msgstr "Ääniraidan kuvaus"
 
 #: libparabolic/src/models/format.cpp:352
+#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:356
+#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB"
 
 #: libparabolic/src/models/format.cpp:360
+#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:364
+#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} T"
 
@@ -314,9 +328,9 @@ msgstr "Tiedoston tyyppi"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:117
 #, fuzzy
 msgid ""
-"Generic file types do not support embedding thumbnails and subtitles.\n"
-"Please select a specific file type that supports embedding to prevent\n"
-"separate image and subtitle files from being written to disk."
+"Generic file types do not fully support embedding thumbnails and subtitles.\n"
+"Please select a specific file type that is known to support embedding\n"
+"to prevent separate files from being written."
 msgstr ""
 "Yleiset tiedostotyypit eivät tue pikkukuvien ja tekstitysten upottamista. "
 "Valitse tietty tiedostotyyppi, joka tukee upottamista estääksesi erillisten "
@@ -1181,6 +1195,7 @@ msgstr "Käynnissä"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Arv. aika: {}"
 
@@ -1267,10 +1282,12 @@ msgid "No Subtitles Available"
 msgstr "Tekstityksiä ei saatavilla"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
+#, c++-format
 msgid "{} items"
 msgstr "{} kohteet"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1532,16 +1549,18 @@ msgid "Warning"
 msgstr "Varoitus"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:615
+#, fuzzy
 msgid ""
-"Generic file types do not support embedding thumbnails and subtitles. Please "
-"select a specific file type that supports embedding to prevent separate "
-"image and subtitle files from being written to disk."
+"Generic file types do not fully support embedding thumbnails and subtitles. "
+"Please select a specific file type that is known to support embedding to "
+"prevent separate files from being written."
 msgstr ""
 "Yleiset tiedostotyypit eivät tue pikkukuvien ja tekstitysten upottamista. "
 "Valitse tietty tiedostotyyppi, joka tukee upottamista estääksesi erillisten "
 "kuva -ja tekstitystiedostojen kirjoittamisen levylle."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} vaatii kirjautumista ennen lataamista. Valitse tai syötä käytettävä "
@@ -1664,6 +1683,7 @@ msgstr "Päivitä"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:556
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:610
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:649
+#, c++-format
 msgid "Queued ({})"
 msgstr "Jonossa ({})"
 
@@ -1671,12 +1691,14 @@ msgstr "Jonossa ({})"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:582
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:609
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:631
+#, c++-format
 msgid "Downloading ({})"
 msgstr "Ladataan ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:583
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:650
+#, c++-format
 msgid "Completed ({})"
 msgstr "Valmistunut ({})"
 

@@ -3,6 +3,7 @@
 
 #include <optional>
 #include <string>
+#include "subtitleformat.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -77,10 +78,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         bool supportsThumbnails() const;
         /**
-         * @brief Gets whether or not the file type supports embedding subtitles.
-         * @return True if supports embedding subtitles, else false
+         * @brief Gets whether or not the file type supports embedding the subtitle format.
+         * @return True if supports embedding the subtitle format, else false
          */
-        bool supportsSubtitles() const;
+        bool supportsSubtitleFormat(SubtitleFormat format) const;
+        /**
+         * @brief Gets whether or not the file type should be recoded instead of remuxed.
+         * @return True if should be recoded, else false
+         */
+        bool shouldRecode() const;
         /**
          * @brief Gets the string representation of the media file type.
          * @return The string representation of the media file type

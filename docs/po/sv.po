@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-28 06:22-0400\n"
+"POT-Creation-Date: 2025-05-28 21:59-0400\n"
 "PO-Revision-Date: 2025-02-06 19:22+0000\n"
 "Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -169,7 +169,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
-#: docs/yelp/C/converter.page:71 docs/yelp/C/downloader.page:28
+#: docs/yelp/C/converter.page:72 docs/yelp/C/downloader.page:28
 #: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
 #: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:42
 msgid "Default: On"
@@ -279,18 +279,25 @@ msgstr ""
 "Om det är inaktiverad eller om inbäddning inte stöds, kommer nedladdade "
 "undertexter att sparas i en separat fil."
 
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:70
+msgid ""
+"Whether or not embedding is supported if affected by your chosen "
+"<code>Preferred Subtitle Format</code>."
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:75
+#: docs/yelp/C/converter.page:76
 msgid "Postprocessing Threads"
 msgstr "Efterbearbetning av trådar"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:76
+#: docs/yelp/C/converter.page:77
 msgid "Parabolic will limit the number of threads used by <code>ffmpeg</code>."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:78
+#: docs/yelp/C/converter.page:79
 msgid "Default: The max number of threads available on the system"
 msgstr "Standard: Det maximala antalet trådar som är tillgängliga på systemet"
 
@@ -1052,13 +1059,23 @@ msgstr ""
 "filtyper kommer att få Parabolic att ladda ner media i den ursprungliga "
 "filtypen för media utan att utföra några konverteringar."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:62
+#, fuzzy
+msgid ""
+"Generic file types do not fully support embedding thumbnails and subtitles. "
+"Separate files may be written to disk if embedding is not supported."
+msgstr ""
+"Om filtypen inte stöder inbäddning skrivs miniatyrbilden till en separat "
+"bildfil."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:65
+#: docs/yelp/C/newDownload.page:66
 msgid "Video Format"
 msgstr "Video format"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:67
 msgid ""
 "The list of video formats available for download, sorted by resolution and "
 "bitrate."
@@ -1067,21 +1084,21 @@ msgstr ""
 "upplösning och bithastighet."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:67
+#: docs/yelp/C/newDownload.page:68
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
 "Varje format har formen: <code>upplösning | bithastighet | codec (id)</code>."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:69
 msgid "If the file type is an audio type, this option will not be available."
 msgstr ""
 "Om filtypen är en ljudtyp kommer det här alternativet inte att vara "
 "tillgängligt."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:70
+#: docs/yelp/C/newDownload.page:71
 msgid ""
 "The previously used video format will be remembered and pre-selected for the "
 "next download."
@@ -1090,46 +1107,46 @@ msgstr ""
 "vid nästa nedladdning."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:73 docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:74 docs/yelp/C/newDownload.page:88
 msgid ""
 "The following are special formats used by Parabolic to match <code>yt-dlp</"
 "code> behaviors:"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:74 docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:89
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:76
 msgid "- <code>Best</code> = <code>bv*</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:76
+#: docs/yelp/C/newDownload.page:77
 msgid "- <code>Worst</code> = <code>wv*</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:81
 msgid "Audio Format"
 msgstr "Ljud format"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:82
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 "Listan över ljudformat som är tillgängliga för nedladdning, sorterade efter "
 "bithastighet."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:83
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr "Varje format har formen: <code>bitrate | språk (id)</code>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:84
+#: docs/yelp/C/newDownload.page:85
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
@@ -1138,22 +1155,22 @@ msgstr ""
 "vid nästa nedladdning."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:90
 msgid "- <code>Best</code> = <code>ba</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:90
+#: docs/yelp/C/newDownload.page:91
 msgid "- <code>Worst</code> = <code>wa</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:95
 msgid "Subtitles"
 msgstr "Undertexter"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1164,7 +1181,7 @@ msgstr ""
 "xref=\"downloads\">inställningarna</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:97
+#: docs/yelp/C/newDownload.page:98
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
@@ -1173,12 +1190,12 @@ msgstr ""
 "nästa nedladdning."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:102
 msgid "Split Chapters"
 msgstr "Dela upp kapitlen"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:103
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -1187,8 +1204,8 @@ msgstr ""
 "mindre filer baserat på dess kapitel."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:104 docs/yelp/C/newDownload.page:111
-#: docs/yelp/C/newDownload.page:118
+#: docs/yelp/C/newDownload.page:105 docs/yelp/C/newDownload.page:112
+#: docs/yelp/C/newDownload.page:119
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1197,12 +1214,12 @@ msgstr ""
 "nästa nedladdning."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:108
+#: docs/yelp/C/newDownload.page:109
 msgid "Limit Download Speed"
 msgstr "Begränsa nedladdningshastigheten"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:109
+#: docs/yelp/C/newDownload.page:110
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1211,12 +1228,12 @@ msgstr ""
 "hastigheten konfigurerad i <link xref=\"Nedladdare\">Inställningar</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:115
+#: docs/yelp/C/newDownload.page:116
 msgid "Export Description"
 msgstr "Export Beskrivning"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1225,12 +1242,12 @@ msgstr ""
 "<code>.description</code>-fil bredvid den nedladdade filen."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:122
+#: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:123
+#: docs/yelp/C/newDownload.page:124
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
@@ -1240,12 +1257,12 @@ msgstr ""
 "YouTube-nedladdningar."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:126
+#: docs/yelp/C/newDownload.page:127
 msgid "Time Frame"
 msgstr "Tidsram"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:128
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1254,22 +1271,22 @@ msgstr ""
 "del av media."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:129
+#: docs/yelp/C/newDownload.page:130
 msgid "Default: The whole media length"
 msgstr "Standard: Hela medialängden"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:133
+#: docs/yelp/C/newDownload.page:134
 msgid "Save Folder"
 msgstr "Lagringsmapp"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:134
+#: docs/yelp/C/newDownload.page:135
 msgid "The folder at which to save the download to."
 msgstr "Mappen där nedladdningen ska sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:136
+#: docs/yelp/C/newDownload.page:137
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1278,17 +1295,17 @@ msgstr ""
 "nästa nedladdning."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:140
+#: docs/yelp/C/newDownload.page:141
 msgid "File Name"
 msgstr "Filnamn"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:141
+#: docs/yelp/C/newDownload.page:142
 msgid "The file name to use when saving the download."
 msgstr "Filnamnet som ska användas när nedladdningen sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:143
+#: docs/yelp/C/newDownload.page:144
 msgid "Default: The title of the media"
 msgstr "Standard: Mediets titel"
 

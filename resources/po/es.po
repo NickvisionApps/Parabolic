@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-27 22:52-0400\n"
+"POT-Creation-Date: 2025-05-28 21:59-0400\n"
 "PO-Revision-Date: 2025-03-02 15:36+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -81,11 +81,13 @@ msgstr "WAV (Audio)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:247
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:277
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:343
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:377
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -121,12 +123,14 @@ msgstr ""
 "Óscar Fernández Díaz <oscfdezdz@tuta.io>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} descarga restaurada"
 msgstr[1] "{} descargas restauradas"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:224
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -150,6 +154,7 @@ msgid "Download Finished"
 msgstr "Descarga finalizada"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} ha terminado de descargarse"
 
@@ -164,6 +169,7 @@ msgid "Download Finished With Error"
 msgstr "Descarga finalizada con error"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:302
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} ha terminado con un error"
 
@@ -172,18 +178,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -213,22 +223,22 @@ msgid "Audio Description"
 msgstr "Descripción del audio"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -320,9 +330,9 @@ msgstr "Tipo de archivo"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:117
 #, fuzzy
 msgid ""
-"Generic file types do not support embedding thumbnails and subtitles.\n"
-"Please select a specific file type that supports embedding to prevent\n"
-"separate image and subtitle files from being written to disk."
+"Generic file types do not fully support embedding thumbnails and subtitles.\n"
+"Please select a specific file type that is known to support embedding\n"
+"to prevent separate files from being written."
 msgstr ""
 "Los tipos de archivo genéricos no admiten la incrustación de miniaturas y "
 "subtítulos. Seleccione un tipo de archivo específico que admita la "
@@ -1196,6 +1206,7 @@ msgstr "Ejecutando"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1283,10 +1294,12 @@ msgid "No Subtitles Available"
 msgstr "Sin subtítulos disponibles"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
+#, c++-format
 msgid "{} items"
 msgstr "{} elementos"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1560,10 +1573,11 @@ msgid "Warning"
 msgstr "Advertencia"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:615
+#, fuzzy
 msgid ""
-"Generic file types do not support embedding thumbnails and subtitles. Please "
-"select a specific file type that supports embedding to prevent separate "
-"image and subtitle files from being written to disk."
+"Generic file types do not fully support embedding thumbnails and subtitles. "
+"Please select a specific file type that is known to support embedding to "
+"prevent separate files from being written."
 msgstr ""
 "Los tipos de archivo genéricos no admiten la incrustación de miniaturas y "
 "subtítulos. Seleccione un tipo de archivo específico que admita la "
@@ -1571,6 +1585,7 @@ msgstr ""
 "imágenes y subtítulos."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} necesita una credencial para descargar. Por favor, seleccione o "
@@ -1700,7 +1715,7 @@ msgstr "Actualizar"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:556
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:610
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:649
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "En cola"
 
@@ -1708,14 +1723,14 @@ msgstr "En cola"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:582
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:609
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:631
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Descargando"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:583
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:650
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Completado"
 

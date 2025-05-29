@@ -55,23 +55,10 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2025.5.4" date="2025-05-28">
+    <release version="2025.5.5" date="2025-05-29">
       <description translate="no">
-        <p>- Added the ability to use video formats for audio file downloads</p>
-        <p>- Added the ability to specify Worst for a video/audio format</p>
-        <p>- Added the ability to specify None for a video/audio format</p>
-        <p>- Added the Use Part Files option to downloader settings</p>
-        <p>- Added the Documentation help menu item in the Qt app</p>
-        <p>- Changed the folder path delimiter in batch files from ';' to '|'</p>
-        <p>- Fixed an issue where thumbnail conversion failed for some videos</p>
-        <p>- Fixed an issue where the wrong quality was chosen for downloads with preferred codecs</p>
-        <p>- Fixed an issue where audio files were outputted with low quality</p>
-        <p>- Fixed an issue where progress of downloads using aria2c was not displayed correctly</p>
-        <p>- Fixed an issue where playlist downloads caused the app to crash on Windows</p>
-        <p>- Parabolic should now provide users with error messages instead of crashing the entire app</p>
-        <p>- Parabolic will now pause slightly during downloads to prevent users from being banned by services such as YouTube (Users should not see significantly longer download times however)</p>
-        <p>- Tweaked the GNOME user interface as we get closer to joining GNOME Circle</p>
-        <p>- Updated yt-dlp to fix YouTube format errors</p>
+        <p>- Fixed an issue where downloading subtitles would cause a download to fail</p>
+        <p>- Fixed an issue where generic downloads did not embed subtitles</p>
       </description>
     </release>
   </releases>
