@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-28 21:59-0400\n"
-"PO-Revision-Date: 2025-05-12 19:03+0000\n"
-"Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/sk/>\n"
+"PO-Revision-Date: 2025-05-30 10:03+0000\n"
+"Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,13 +81,11 @@ msgstr "WAV (Audio)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:247
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:277
-#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "Chyba pri pokuse o overenie sťahovania: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:343
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:377
-#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Chyba pri pokuse o pridanie sťahovania: {}"
 
@@ -121,7 +119,6 @@ msgid "translator-credits"
 msgstr "Jozef Gaál <preklady@mayday.sk>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:219
-#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Obnovené {} stiahnutie"
@@ -129,7 +126,6 @@ msgstr[1] "Obnovené {} stiahnutia"
 msgstr[2] "Obnovených {} stiahnutí"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:224
-#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "Chyba pri pokuse o obnovenie sťahovaní: {}"
 
@@ -151,7 +147,6 @@ msgid "Download Finished"
 msgstr "Stiahnutie dokončené"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
-#, c++-format
 msgid "{} has finished downloading"
 msgstr "Súbor „{}“ bol stiahnutý"
 
@@ -166,7 +161,6 @@ msgid "Download Finished With Error"
 msgstr "Sťahovanie neprebehlo úspešne"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:302
-#, c++-format
 msgid "{} has finished with an error"
 msgstr "Sťahovanie súboru „{}“ nebolo úspešné"
 
@@ -175,22 +169,18 @@ msgid "0 B/s"
 msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -220,22 +210,18 @@ msgid "Audio Description"
 msgstr "Popis zvuku"
 
 #: libparabolic/src/models/format.cpp:352
-#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB"
 
 #: libparabolic/src/models/format.cpp:356
-#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB"
 
 #: libparabolic/src/models/format.cpp:360
-#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB"
 
 #: libparabolic/src/models/format.cpp:364
-#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B"
 
@@ -325,15 +311,15 @@ msgid "File Type"
 msgstr "Typ súboru"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:117
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles.\n"
 "Please select a specific file type that is known to support embedding\n"
 "to prevent separate files from being written."
 msgstr ""
-"Všeobecné typy súborov nepodporujú vkladanie miniatúr a titulkov.\n"
-"Vyberte konkrétny typ súboru, ktorý podporuje vkladanie, aby sa zabránilo\n"
-"ukladaniu samostatných obrazových a titulkových súborov na disk."
+"Niektoré typy súborov nepodporujú úplne vkladanie miniatúr a titulkov.\n"
+"Vyberte prosím konkrétny typ súboru, o ktorom je známe, že podporuje "
+"vkladanie,\n"
+"aby sa predišlo ukladaniu samostatných súborov."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:127
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:135
@@ -809,7 +795,7 @@ msgstr "Navždy"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:82
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:80
 msgid "Max Number of Running Downloads"
-msgstr "Maximálny počet súčasne prebiehajúcich sťahovaní"
+msgstr "Maximálny počet prebiehajúcich sťahovaní"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:85
@@ -1170,7 +1156,7 @@ msgstr "Spracovanie vlákien"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:238
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
 msgid "Parabolic will limit the number of threads used by ffmpeg."
-msgstr "Parabolic obmedzí počet vlákien používaných ffmpeg."
+msgstr "Parabolic obmedzí počet vlákien ktoré používa ffmpeg."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1205,7 +1191,6 @@ msgstr "Prebieha"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
-#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Zostávajúci čas: {}"
 
@@ -1276,10 +1261,10 @@ msgid ""
 "Note that YouTube may have blocked your IP or the video may be geo-"
 "restricted."
 msgstr ""
-"Poskytnutá URL adresa je neplatná alebo ju nie je možné otvoriť. "
-"Skontrolujte URL adresu, použité overenie a vybraný prehliadač pre súbory "
-"cookie v nastaveniach. Upozorňujeme, že YouTube mohol zablokovať vašu IP "
-"adresu alebo video môže byť geograficky obmedzené."
+"Zadaná adresa URL je neplatná alebo nie je dostupná. Skontrolujte URL "
+"adresu, použité overenie a vybraný prehliadač pre súbory cookie v "
+"nastaveniach. Upozorňujeme, že YouTube mohol zablokovať vašu IP adresu alebo "
+"video môže byť geograficky obmedzené."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
@@ -1293,12 +1278,10 @@ msgid "No Subtitles Available"
 msgstr "Titulky nie sú k dispozícii"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
-#, c++-format
 msgid "{} items"
 msgstr "{} položiek"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1549,10 +1532,10 @@ msgid ""
 "authentication used, and the selected browser for cookies in settings. Note "
 "that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
-"Poskytnutá URL adresa je neplatná alebo sa k nej nedá dostať. Skontrolujte "
-"URL adresu, použité overenie a vybraný prehliadač pre súbory cookie v "
-"nastaveniach. Upozorňujeme, že YouTube mohol zablokovať vašu IP adresu alebo "
-"video môže byť geograficky obmedzené."
+"Zadaná adresa URL je neplatná alebo nie je dostupná. V nastaveniach "
+"skontrolujte adresu URL, použité overenie a vybraný prehliadač pre súbory "
+"cookie. Upozorňujeme, že YouTube mohol zablokovať vašu IP adresu alebo môže "
+"byť video geograficky obmedzené."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:615
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
@@ -1560,18 +1543,16 @@ msgid "Warning"
 msgstr "Upozornenie"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:615
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
 "Please select a specific file type that is known to support embedding to "
 "prevent separate files from being written."
 msgstr ""
-"Niektoré formáty súborov nepodporujú vloženie miniatúr a titulkov. Vyberte "
-"taký typ súboru, ktorý túto možnosť podporuje, aby sa predišlo ukladaniu "
-"samostatných obrázkových a titulkových súborov."
+"Niektoré typy súborov nepodporujú úplne vkladanie miniatúr a titulkov. Ak "
+"chcete predísť ukladaniu samostatných súborov, vyberte konkrétny typ súboru, "
+"o ktorom je známe, že vkladanie podporuje."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} potrebuje poverenie na stiahnutie. Prosím, vyberte alebo zadajte také, "
@@ -1692,7 +1673,6 @@ msgstr "Aktualizovať"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:556
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:610
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:649
-#, c++-format
 msgid "Queued ({})"
 msgstr "V poradí ({})"
 
@@ -1700,14 +1680,12 @@ msgstr "V poradí ({})"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:582
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:609
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:631
-#, c++-format
 msgid "Downloading ({})"
 msgstr "Sťahuje sa ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:583
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:650
-#, c++-format
 msgid "Completed ({})"
 msgstr "Dokončené ({})"
 
