@@ -703,7 +703,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_saveFilename = filenamePath.stem().string();
         }
         //Find max extension length
-        size_t maxExtensionLength{ 5 };
+        size_t maxExtensionLength{ 11 }; //.part.aria2
         for(const Format& format : m_availableFormats)
         {
             size_t formatSize{ std::string(".f" + format.getId() + "." + format.getExtension() + ".part").size() };
@@ -714,7 +714,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         //Check filename length
 #ifdef _WIN32
-        static size_t maxFileNameLength{ MAX_PATH - 12 };
+        static size_t maxFileNameLength{ MAX_PATH };
 #else
         static size_t maxFileNameLength{ NAME_MAX };
 #endif
