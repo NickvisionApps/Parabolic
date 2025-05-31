@@ -1,5 +1,6 @@
 #include "views/mainwindow.h"
 #include <QAction>
+#include <QCheckBox>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QHBoxLayout>
@@ -364,10 +365,29 @@ namespace Nickvision::TubeConverter::Qt::Views
 #else
         const StartupInformation& info{ m_controller->startup() };
 #endif
-        setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         if(info.getWindowGeometry().isMaximized())
         {
             showMaximized();
+        }
+        else
+        {
+#ifdef _WIN32
+            info.getWindowGeometry().apply(reinterpret_cast<HWND>(winId()));
+#else
+            setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
+#endif
+        }
+        if(info.showDisclaimer())
+        {
+            QMessageBox msg{ QMessageBox::Icon::Warning, _("Disclaimer"), _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk."), QMessageBox::StandardButton::Ok, this };
+            QCheckBox* chk{ new QCheckBox(_("Don't show this message again"), this) };
+            msg.setCheckBox(chk);
+            msg.exec();
+            m_controller->setShowDisclaimerOnStartup(!chk->isChecked());
+        }
+        if(!info.getUrlToValidate().empty())
+        {
+            addDownload(info.getUrlToValidate());
         }
     }
 
@@ -384,7 +404,11 @@ namespace Nickvision::TubeConverter::Qt::Views
             }
             return;
         }
+#ifdef _WIN32
+        m_controller->shutdown({ reinterpret_cast<HWND>(winId()) });
+#else
         m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized() });
+#endif
         event->accept();
     }
 
