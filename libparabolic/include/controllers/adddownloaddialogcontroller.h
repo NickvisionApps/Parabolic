@@ -114,6 +114,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         const Models::TimeFrame& getMediaTimeFrame(size_t index) const;
         /**
+         * @brief Sets the previous number titles option.
+         * @param number True to number titles, else false
+         */
+        void setPreviousNumberTitles(bool number);
+        /**
          * @brief Validates a url.
          * @brief This method will invoke the urlValidated event with the list of media found at the url.
          * @param url The url to validate

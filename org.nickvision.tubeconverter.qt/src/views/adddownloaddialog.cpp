@@ -580,7 +580,7 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->chkNumberTitlesPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getNumberTitles());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
-                QListWidgetItem* item{ new QListWidgetItem(QString::fromStdString(m_controller->getMediaTitle(i))) };
+                QListWidgetItem* item{ new QListWidgetItem(QString::fromStdString(m_controller->getMediaTitle(i, m_controller->getPreviousDownloadOptions().getNumberTitles()))) };
                 item->setFlags(item->flags() | ::Qt::ItemIsUserCheckable | ::Qt::ItemIsEditable);
                 item->setCheckState(::Qt::CheckState::Checked);
                 m_ui->listItemsPlaylist->addItem(item);
@@ -671,6 +671,7 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void AddDownloadDialog::onNumberTitlesPlaylistChanged(bool checked)
     {
+        m_controller->setPreviousNumberTitles(checked);
         for(int i = 0; i < m_ui->listItemsPlaylist->count(); i++)
         {
             m_ui->listItemsPlaylist->item(i)->setText(QString::fromStdString(m_controller->getMediaTitle(i, checked)));

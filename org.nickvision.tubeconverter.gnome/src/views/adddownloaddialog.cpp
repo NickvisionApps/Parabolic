@@ -216,6 +216,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("exportDescriptionPlaylistRow"), m_controller->getPreviousDownloadOptions().getExportDescription());
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("itemsPlaylistRow"), _f("{} items", m_controller->getMediaCount()).c_str());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"), m_controller->getPreviousDownloadOptions().getNumberTitles());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
                 GtkCheckButton* chk{ GTK_CHECK_BUTTON(gtk_check_button_new()) };
@@ -236,7 +237,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 }), this);
                 AdwEntryRow* row{ ADW_ENTRY_ROW(adw_entry_row_new()) };
                 adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
-                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), m_controller->getMediaUrl(i).c_str());
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), m_controller->getMediaUrl(i, m_controller->getPreviousDownloadOptions().getNumberTitles()).c_str());
                 gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
                 adw_entry_row_add_prefix(row, GTK_WIDGET(chk));
                 adw_entry_row_add_suffix(row, GTK_WIDGET(undo));
@@ -244,7 +245,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 m_playlistItemRows.push_back(row);
                 m_playlistItemCheckButtons.push_back(chk);
             }
-            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"), m_controller->getPreviousDownloadOptions().getNumberTitles());
         }
         if(m_controller->getDownloadImmediatelyAfterValidation())
         {
@@ -379,6 +379,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void AddDownloadDialog::onNumberTitlesPlaylistChanged()
     {
         int i{ 0 };
+        m_controller->setPreviousNumberTitles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow")));
         for(AdwEntryRow* row : m_playlistItemRows)
         {
             gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());

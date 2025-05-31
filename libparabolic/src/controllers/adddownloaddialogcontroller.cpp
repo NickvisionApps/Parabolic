@@ -216,7 +216,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(m_urlInfo && index < m_urlInfo->count())
         {
             std::string title{ m_urlInfo->get(index).getTitle() };
-            m_previousOptions.setNumberTitles(numbered);
             return numbered ? std::format("{} - {}", index + 1, title) : title;
         }
         return empty;
@@ -230,6 +229,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             return m_urlInfo->get(index).getTimeFrame();
         }
         return empty;
+    }
+
+    void AddDownloadDialogController::setPreviousNumberTitles(bool number)
+    {
+        m_previousOptions.setNumberTitles(number);
     }
 
     void AddDownloadDialogController::validateUrl(const std::string& url, const std::optional<Credential>& credential)
