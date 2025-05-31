@@ -25,28 +25,16 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     WindowGeometry Configuration::getWindowGeometry() const
     {
-        WindowGeometry geometry;
         if(!m_json["WindowGeometry"].is_object())
         {
-            geometry.setWidth(800);
-            geometry.setHeight(600);
-            geometry.setIsMaximized(false);
-            return geometry;
+            return { 800, 600, false };
         }
-        boost::json::object& obj{ m_json["WindowGeometry"].as_object() };
-        geometry.setWidth(obj["Width"].is_int64() ? static_cast<long>(obj["Width"].as_int64()) : 800);
-        geometry.setHeight(obj["Height"].is_int64() ? static_cast<long>(obj["Height"].as_int64()) : 600);
-        geometry.setIsMaximized(obj["IsMaximized"].is_bool() ? obj["IsMaximized"].as_bool() : false);
-        return geometry;
+        return WindowGeometry(m_json["WindowGeometry"].as_object());
     }
 
     void Configuration::setWindowGeometry(const WindowGeometry& geometry)
     {
-        boost::json::object obj;
-        obj["Width"] = geometry.getWidth();
-        obj["Height"] = geometry.getHeight();
-        obj["IsMaximized"] = geometry.isMaximized();
-        m_json["WindowGeometry"] = obj;
+        m_json["WindowGeometry"] = geometry.toJson();
     }
 
     bool Configuration::getAutomaticallyCheckForUpdates() const
