@@ -58,16 +58,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setPreventSuspend(bool prevent);
         /**
-         * @brief Gets whether or not to recover crashed downloads.
-         * @return True to recover crashed downloads, else false
-         */
-        bool getRecoverCrashedDownloads() const;
-        /**
-         * @brief Sets whether or not to recover crashed downloads.
-         * @param recoverCrashedDownloads True to recover crashed downloads, else false
-         */
-        void setRecoverCrashedDownloads(bool recoverCrashedDownloads);
-        /**
          * @brief Gets the downloader options.
          * @return The downloader options
          */

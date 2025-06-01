@@ -36,16 +36,6 @@ Adw.PreferencesDialog root {
         }
       }
 
-      Adw.SwitchRow recoverCrashedDownloadsRow {
-        title: _("Recover Crashed Downloads");
-        subtitle: _("Parabolic will recover downloads that were in progress when the app crashed.");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "shield-warning-symbolic";
-        }
-      }
-
       Adw.SwitchRow downloadImmediatelyRow {
         title: _("Download Immediately After Validation");
         subtitle: _("Parabolic will immediately download media after validation, without presenting configuration options to the user.");

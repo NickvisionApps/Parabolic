@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.6.0" });
+        m_appInfo.setVersion({ "2025.6.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where the previous number titles setting was not restored correctly\n- Fixed an issue where the window's position was not remembered on Windows");
+        m_appInfo.setChangelog("- Fixed an issue where the previous number titles setting was not restored correctly\n- Fixed an issue where file names could grow too long when using aria2c\n- Fixed an issue where the window's position was not remembered on Windows\n- Parabolic will now ask to recover downloads if there are any available instead of recovering automatically");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -211,18 +211,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
         }
         //Load DownloadManager
-        try
-        {
-            size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
-            if(recoveredDownloads > 0)
-            {
-                AppNotification::send({ _fn("Recovered {} download", "Recovered {} downloads", recoveredDownloads, recoveredDownloads), NotificationSeverity::Informational });
-            }
-        }
-        catch(const std::exception& e)
-        {
-            AppNotification::send({ _f("Error attempting to recover downloads: {}", e.what()), NotificationSeverity::Error, "error" });
-        }
+        m_downloadManager.startup(info);
         m_started = true;
         return info;
     }
@@ -273,6 +262,27 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         worker.detach();
     }
 #endif
+
+    void MainWindowController::recoverDownloads()
+    {
+        try
+        {
+            size_t recoveredDownloads{ m_downloadManager.recoverDownloads() };
+            if(recoveredDownloads > 0)
+            {
+                AppNotification::send({ _fn("Recovered {} download", "Recovered {} downloads", recoveredDownloads, recoveredDownloads), NotificationSeverity::Informational });
+            }
+        }
+        catch(const std::exception& e)
+        {
+            AppNotification::send({ _f("Error attempting to recover downloads: {}", e.what()), NotificationSeverity::Error, "error" });
+        }
+    }
+
+    void MainWindowController::clearRecoverableDownloads()
+    {
+        m_downloadManager.clearRecoverableDownloads();
+    }
 
     void MainWindowController::onConfigurationSaved()
     {

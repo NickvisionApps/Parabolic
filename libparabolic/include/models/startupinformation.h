@@ -22,8 +22,9 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param canDownload Whether or not the application can perform downloads
          * @param showDisclaimer Whether or not to show the legal disclaimer on startup
          * @param urlToValidate The URL to validate
+         * @param recover Whether or not there are downloads to recover.
          */
-        StartupInformation(const Nickvision::App::WindowGeometry& windowGeometry, bool canDownload, bool showDisclaimer, const std::string& urlToValidate);
+        StartupInformation(const Nickvision::App::WindowGeometry& windowGeometry, bool canDownload, bool showDisclaimer, const std::string& urlToValidate, bool recover);
         /**
          * @brief Gets the window geometry.
          * @return The window geometry
@@ -64,12 +65,23 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param urlToValidate The URL to validate
          */
         void setUrlToValidate(const std::string& urlToValidate);
+        /**
+         * @brief Gets whether or not there are downloads to recover.
+         * @return True if there are downloads to recover, else false
+         */
+        bool hasRecoverableDownloads() const;
+        /**
+         * @brief Sets whether or not there are downloads to recover.
+         * @param recover True if there are downloads to recover, else false
+         */
+        void setHasRecoverableDownloads(bool recover);
 
     private:
         Nickvision::App::WindowGeometry m_windowGeometry;
         bool m_canDownload;
         bool m_showDisclaimer;
         std::string m_urlToValidate;
+        bool m_hasRecoverableDownloads;
     };
 }
 

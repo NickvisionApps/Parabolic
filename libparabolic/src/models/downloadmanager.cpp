@@ -182,32 +182,38 @@ namespace Nickvision::TubeConverter::Shared::Models
         return DownloadStatus::Queued;
     }
 
-    size_t DownloadManager::startup(bool recoverDownloads)
+    void DownloadManager::startup(StartupInformation& info)
     {
-        //Load Historic Downloads
         m_historyChanged.invoke(m_history.getHistory());
-        //Recover Crashed Downloads
-        if(!recoverDownloads)
-        {
-            m_recoveryQueue.clear();
-            return 0;
-        }
-        std::unordered_map<int, DownloadOptions> recoverableDownloads{ m_recoveryQueue.getRecoverableDownloads() };
+        info.setHasRecoverableDownloads(m_recoveryQueue.getRecoverableDownloads().size() > 0);
+    }
+
+    size_t DownloadManager::recoverDownloads()
+    {
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        std::unordered_map<int, std::pair<DownloadOptions, bool>> queue{ m_recoveryQueue.getRecoverableDownloads() };
         m_recoveryQueue.clear();
-        for(std::pair<const int, DownloadOptions>& pair : recoverableDownloads)
+        lock.unlock();
+        for(std::pair<const int, std::pair<DownloadOptions, bool>>& pair : queue)
         {
-            if(m_recoveryQueue.needsCredential(pair.first))
+            if(pair.second.second)
             {
                 std::shared_ptr<Credential> credential{ std::make_shared<Credential>("", "", "", "") };
                 while(credential->getUsername().empty() && credential->getPassword().empty())
                 {
-                    m_downloadCredentialNeeded.invoke({ pair.first, pair.second.getUrl(), credential });
+                    m_downloadCredentialNeeded.invoke({ pair.second.first.getUrl(), credential });
                 }
-                pair.second.setCredential(*credential);
+                pair.second.first.setCredential(*credential);
             }
-            addDownload(pair.second, true);
+            addDownload(pair.second.first, false);
         }
-        return recoverableDownloads.size();
+        return queue.size();
+    }
+
+    void DownloadManager::clearRecoverableDownloads()
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        m_recoveryQueue.clear();
     }
 
     void DownloadManager::clearHistory()
@@ -404,7 +410,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return UrlInfo{ batchFile.string(), batchFile.filename().stem().string(), urlInfos };
     }
 
-    void DownloadManager::addDownload(const DownloadOptions& options, bool excludeFromHistory, bool recovered)
+    void DownloadManager::addDownload(const DownloadOptions& options, bool excludeFromHistory)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         //Build a Download object
@@ -413,7 +419,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         download->completed() += [this](const DownloadCompletedEventArgs& args){ onDownloadCompleted(args); };
         lock.unlock();
         //Add the download
-        addDownload(download, excludeFromHistory, recovered);
+        addDownload(download, excludeFromHistory);
     }
 
     void DownloadManager::stopDownload(int id)
@@ -435,7 +441,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(stopped)
         {
-            m_recoveryQueue.removeDownload(id);
+            m_recoveryQueue.remove(id);
             lock.unlock();
             m_downloadStopped.invoke(id);
         }
@@ -540,12 +546,13 @@ namespace Nickvision::TubeConverter::Shared::Models
         return cleared;
     }
 
-    void DownloadManager::addDownload(const std::shared_ptr<Download>& download, bool excludeFromHistory, bool recovered)
+    void DownloadManager::addDownload(const std::shared_ptr<Download>& download, bool excludeFromHistory)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        if(!recovered)
+        m_recoveryQueue.add(download->getId(), download->getOptions());
+        if(!excludeFromHistory)
         {
-            m_recoveryQueue.addDownload(download->getId(), download->getOptions());
+            m_history.addDownload({ download->getUrl(), download->getPath().filename().stem().string(), download->getPath() });
         }
         if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()))
         {
@@ -559,10 +566,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_queued.emplace(download->getId(), download);
             lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getUrl(), download->getStatus() });
-        }
-        if(!excludeFromHistory)
-        {
-            m_history.addDownload({ download->getUrl(), download->getPath().filename().stem().string(), download->getPath() });
         }
     }
 
@@ -596,7 +599,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         m_completed.emplace(download->getId(), download);
         m_downloading.erase(download->getId());
-        m_recoveryQueue.removeDownload(download->getId());
+        m_recoveryQueue.remove(download->getId());
         lock.unlock();
         m_downloadCompleted.invoke(args);
         lock.lock();

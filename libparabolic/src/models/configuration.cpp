@@ -57,16 +57,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["PreventSuspend"] = prevent;
     }
 
-    bool Configuration::getRecoverCrashedDownloads() const
-    {
-        return m_json["RecoverCrashedDownloads"].is_bool() ? m_json["RecoverCrashedDownloads"].as_bool() : true;
-    }
-
-    void Configuration::setRecoverCrashedDownloads(bool recoverCrashedDownloads)
-    {
-        m_json["RecoverCrashedDownloads"] = recoverCrashedDownloads;
-    }
-
     DownloaderOptions Configuration::getDownloaderOptions() const
     {
         DownloaderOptions options;

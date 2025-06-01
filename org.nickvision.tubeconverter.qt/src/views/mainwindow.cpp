@@ -385,6 +385,18 @@ namespace Nickvision::TubeConverter::Qt::Views
             msg.exec();
             m_controller->setShowDisclaimerOnStartup(!chk->isChecked());
         }
+        if(info.hasRecoverableDownloads())
+        {
+            QMessageBox msg{ QMessageBox::Icon::Information, _("Recover Crashed Downloads?"), _("There are downloads available to recover from when Parabolic crashed. Would you like to recover them?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+            if(msg.exec() == QMessageBox::StandardButton::Yes)
+            {
+                m_controller->recoverDownloads();
+            }
+            else
+            {
+                m_controller->clearRecoverableDownloads();
+            }
+        }
         if(!info.getUrlToValidate().empty())
         {
             addDownload(info.getUrlToValidate());

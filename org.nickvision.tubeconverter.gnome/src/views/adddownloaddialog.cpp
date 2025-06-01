@@ -237,8 +237,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 }), this);
                 AdwEntryRow* row{ ADW_ENTRY_ROW(adw_entry_row_new()) };
                 adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
-                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), m_controller->getMediaUrl(i, m_controller->getPreviousDownloadOptions().getNumberTitles()).c_str());
-                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), m_controller->getMediaUrl(i).c_str());
+                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, m_controller->getPreviousDownloadOptions().getNumberTitles()).c_str());
                 adw_entry_row_add_prefix(row, GTK_WIDGET(chk));
                 adw_entry_row_add_suffix(row, GTK_WIDGET(undo));
                 adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("itemsPlaylistGroup"), GTK_WIDGET(row));
