@@ -246,7 +246,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 m_playlistItemCheckButtons.push_back(chk);
             }
         }
-        if(m_controller->getDownloadImmediatelyAfterValidation())
+        if(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("immediatelyRow")))
         {
             if(m_controller->isUrlPlaylist())
             {

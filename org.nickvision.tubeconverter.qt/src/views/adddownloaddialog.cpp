@@ -63,9 +63,15 @@ namespace Ui
             btnUseBatchFile->setDefault(false);
             btnUseBatchFile->setIcon(QLEMENTINE_ICON(Document_Open));
             btnUseBatchFile->setText(_("Use Batch File"));
+            QLabel* lblDownloadImmediately{ new QLabel(parent) };
+            lblDownloadImmediately->setText(_("Download Immediately"));
+            lblDownloadImmediately->setToolTip(_("Use your previous download options for this download"));
+            chkDownloadImmediately = new Switch(parent);
+            chkDownloadImmediately->setToolTip(_("Use your previous download options for this download"));
             QFormLayout* layoutMedia{ new QFormLayout() };
             layoutMedia->addRow(lblMediaUrl, txtMediaUrl);
             layoutMedia->addRow(nullptr, btnUseBatchFile);
+            layoutMedia->addRow(lblDownloadImmediately, chkDownloadImmediately);
             QWidget* mediaPage{ new QWidget(parent) };
             mediaPage->setLayout(layoutMedia);
             QLabel* lblCredential{ new QLabel(parent) };
@@ -354,6 +360,7 @@ namespace Ui
         QStackedWidget* viewStack;
         LineEdit* txtMediaUrl;
         QPushButton* btnUseBatchFile;
+        Switch* chkDownloadImmediately;
         QComboBox* cmbCredential;
         LineEdit* txtUsername;
         LineEdit* txtPassword;
@@ -586,7 +593,7 @@ namespace Nickvision::TubeConverter::Qt::Views
                 m_ui->listItemsPlaylist->addItem(item);
             }
         }
-        if(m_controller->getDownloadImmediatelyAfterValidation())
+        if(m_ui->chkDownloadImmediately->isChecked())
         {
             if(m_controller->isUrlPlaylist())
             {

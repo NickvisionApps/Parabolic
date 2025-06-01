@@ -19,7 +19,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 {
     AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, DataFileManager& dataFileManager, Keyring::Keyring& keyring)
         : m_downloadManager{ downloadManager },
-        m_configuration{ dataFileManager.get<Configuration>("config") },
         m_previousOptions{ dataFileManager.get<PreviousDownloadOptions>("prev") },
         m_keyring{ keyring },
         m_urlInfo{ std::nullopt },
@@ -30,7 +29,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     AddDownloadDialogController::~AddDownloadDialogController()
     {
-        m_configuration.save();
         m_previousOptions.save();
     }
 
@@ -52,11 +50,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             names.push_back(credential.getName());
         }
         return names;
-    }
-
-    bool AddDownloadDialogController::getDownloadImmediatelyAfterValidation() const
-    {
-        return m_configuration.getDownloadImmediatelyAfterValidation();
     }
 
     bool AddDownloadDialogController::isUrlValid() const

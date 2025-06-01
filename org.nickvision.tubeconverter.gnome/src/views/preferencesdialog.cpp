@@ -19,7 +19,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("themeRow"), static_cast<unsigned int>(m_controller->getTheme()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("preventSuspendRow"), m_controller->getPreventSuspend());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow"), m_controller->getDownloadImmediatelyAfterValidation());
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("historyLengthRow"), static_cast<unsigned int>(m_controller->getHistoryLengthIndex()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("maxNumberOfActiveDownloadsRow"), static_cast<double>(options.getMaxNumberOfActiveDownloads()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("overwriteExistingFilesRow"), options.getOverwriteExistingFiles());
@@ -67,7 +66,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setPreventSuspend(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("preventSuspendRow")));
-        m_controller->setDownloadImmediatelyAfterValidation(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow")));
         m_controller->setHistoryLengthIndex(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("historyLengthRow"))));
         options.setMaxNumberOfActiveDownloads(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("maxNumberOfActiveDownloadsRow"))));
         options.setOverwriteExistingFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("overwriteExistingFilesRow")));

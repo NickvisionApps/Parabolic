@@ -78,16 +78,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setHistoryLengthIndex(size_t length);
         /**
-         * @brief Gets whether or not to download immediately after validation.
-         * @return True to download immediately after validation, else false
-         */
-        bool getDownloadImmediatelyAfterValidation() const;
-        /**
-         * @brief Sets whether or not to download immediately after validation.
-         * @param downloadImmediatelyAfterValidation True to download immediately after validation, else false
-         */
-        void setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation);
-        /**
          * @brief Saves the current configuration to disk.
          */
         void saveConfiguration();

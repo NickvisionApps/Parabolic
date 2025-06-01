@@ -81,16 +81,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param showDisclaimerOnStartup True to show the disclaimer, else false
          */
         void setShowDisclaimerOnStartup(bool showDisclaimerOnStartup);
-        /**
-         * @brief Gets whether or not to download immediately after validation.
-         * @return True to download immediately after validation, else false
-         */
-        bool getDownloadImmediatelyAfterValidation() const;
-        /**
-         * @brief Sets whether or not to download immediately after validation.
-         * @param downloadImmediatelyAfterValidation True to download immediately after validation, else false
-         */
-        void setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation);
     };
 }
 

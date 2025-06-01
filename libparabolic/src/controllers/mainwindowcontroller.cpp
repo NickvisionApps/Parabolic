@@ -41,7 +41,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2025.6.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where the previous number titles setting was not restored correctly\n- Fixed an issue where file names could grow too long when using aria2c\n- Fixed an issue where the window's position was not remembered on Windows\n- Parabolic will now ask to recover downloads if there are any available instead of recovering automatically");
+        m_appInfo.setChangelog("- Moved the download immediately after validation option to the add download dialog\n- Fixed an issue where the previous number titles setting was not restored correctly\n- Fixed an issue where file names could grow too long when using aria2c\n- Fixed an issue where the window's position was not remembered on Windows\n- Parabolic will now ask to recover downloads if there are any available instead of recovering automatically");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

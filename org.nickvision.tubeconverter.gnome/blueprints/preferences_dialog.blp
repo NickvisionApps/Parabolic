@@ -36,16 +36,6 @@ Adw.PreferencesDialog root {
         }
       }
 
-      Adw.SwitchRow downloadImmediatelyRow {
-        title: _("Download Immediately After Validation");
-        subtitle: _("Parabolic will immediately download media after validation, without presenting configuration options to the user.");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "snapshots-alt-symbolic";
-        }
-      }
-
       Adw.ComboRow historyLengthRow {
         title: _("Download History Length");
         subtitle: _("The amount of time to keep past downloads in the app's history.");

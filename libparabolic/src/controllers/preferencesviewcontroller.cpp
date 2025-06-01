@@ -106,16 +106,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    bool PreferencesViewController::getDownloadImmediatelyAfterValidation() const
-    {
-        return m_configuration.getDownloadImmediatelyAfterValidation();
-    }
-
-    void PreferencesViewController::setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation)
-    {
-        m_configuration.setDownloadImmediatelyAfterValidation(downloadImmediatelyAfterValidation);
-    }
-
     void PreferencesViewController::saveConfiguration()
     {
         m_configuration.save();

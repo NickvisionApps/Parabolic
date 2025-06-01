@@ -44,11 +44,6 @@ namespace Ui
             lblPreventSuspend->setToolTip(_("Parabolic will prevent the computer from sleeping while downloads are running."));
             chkPreventSuspend = new Switch(parent);
             chkPreventSuspend->setToolTip(_("Parabolic will prevent the computer from sleeping while downloads are running."));
-            QLabel* lblDownloadImmediately{ new QLabel(parent) };
-            lblDownloadImmediately->setText(_("Download Immediately After Validation"));
-            lblDownloadImmediately->setToolTip(_("Parabolic will immediately download media after validation, without presenting configuration options to the user."));
-            chkDownloadImmediately = new Switch(parent);
-            chkDownloadImmediately->setToolTip(_("Parabolic will immediately download media after validation, without presenting configuration options to the user."));
             QLabel* lblHistoryLength{ new QLabel(parent) };
             lblHistoryLength->setText(_("Download History Length"));
             lblHistoryLength->setToolTip(_("The amount of time to keep past downloads in the app's history."));
@@ -64,7 +59,6 @@ namespace Ui
             layoutUserInterface->addRow(lblTheme, cmbTheme);
             layoutUserInterface->addRow(lblUpdates, chkUpdates);
             layoutUserInterface->addRow(lblPreventSuspend, chkPreventSuspend);
-            layoutUserInterface->addRow(lblDownloadImmediately, chkDownloadImmediately);
             layoutUserInterface->addRow(lblHistoryLength, cmbHistoryLength);
             QWidget* userInterfacePage{ new QWidget(parent) };
             userInterfacePage->setLayout(layoutUserInterface);
@@ -296,7 +290,6 @@ namespace Ui
         QComboBox* cmbTheme;
         Switch* chkUpdates;
         Switch* chkPreventSuspend;
-        Switch* chkDownloadImmediately;
         QComboBox* cmbHistoryLength;
         QSpinBox* spnMaxNumberOfActiveDownloads;
         Switch* chkOverwriteExistingFiles;
@@ -347,7 +340,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->cmbTheme->setCurrentIndex(static_cast<int>(m_controller->getTheme()));
         m_ui->chkUpdates->setChecked(m_controller->getAutomaticallyCheckForUpdates());
         m_ui->chkPreventSuspend->setChecked(m_controller->getPreventSuspend());
-        m_ui->chkDownloadImmediately->setChecked(m_controller->getDownloadImmediatelyAfterValidation());
         m_ui->cmbHistoryLength->setCurrentIndex(static_cast<int>(m_controller->getHistoryLengthIndex()));
         m_ui->spnMaxNumberOfActiveDownloads->setValue(options.getMaxNumberOfActiveDownloads());
         m_ui->chkOverwriteExistingFiles->setChecked(options.getOverwriteExistingFiles());
@@ -406,7 +398,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_controller->setTheme(static_cast<Shared::Models::Theme>(m_ui->cmbTheme->currentIndex()));
         m_controller->setAutomaticallyCheckForUpdates(m_ui->chkUpdates->isChecked());
         m_controller->setPreventSuspend(m_ui->chkPreventSuspend->isChecked());
-        m_controller->setDownloadImmediatelyAfterValidation(m_ui->chkDownloadImmediately->isChecked());
         m_controller->setHistoryLengthIndex(m_ui->cmbHistoryLength->currentIndex());
         m_controller->setDownloaderOptions(options);
         options.setMaxNumberOfActiveDownloads(m_ui->spnMaxNumberOfActiveDownloads->value());
