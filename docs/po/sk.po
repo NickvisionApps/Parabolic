@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-06-01 01:13-0400\n"
-"PO-Revision-Date: 2025-05-28 23:07+0000\n"
+"POT-Creation-Date: 2025-05-28 21:59-0400\n"
+"PO-Revision-Date: 2025-05-30 10:03+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +64,7 @@ msgstr "Parabolic bude používať aria2c namiesto pôvodného sťahovača yt-dl
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
 #: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
-#: docs/yelp/C/interface.page:35 docs/yelp/C/interface.page:42
+#: docs/yelp/C/interface.page:35 docs/yelp/C/interface.page:49
 msgid "Default: Off"
 msgstr "Predvolené: Vypnuté"
 
@@ -162,7 +162,7 @@ msgstr ""
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
 #: docs/yelp/C/converter.page:72 docs/yelp/C/downloader.page:28
 #: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
-#: docs/yelp/C/downloads.page:63
+#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:42
 msgid "Default: On"
 msgstr "Predvolené: Zapnuté"
 
@@ -243,7 +243,7 @@ msgstr "Vložiť kapitoly"
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:62
 msgid "Parabolic will tag a media with its chapter information if available."
-msgstr "Parabolic označí médiá kapitolami, ak sú dostupné."
+msgstr "Parabolic označí médium informáciami o kapitole, ak sú k dispozícii."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:68
@@ -265,16 +265,18 @@ msgid ""
 "Whether or not embedding is supported if affected by your chosen "
 "<code>Preferred Subtitle Format</code>."
 msgstr ""
+"Podpora vkladania titulkov závisí od zvoleného formátu titulkov v nastavení "
+"<code>Uprednostňovaný formát tituliek</code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:76
 msgid "Postprocessing Threads"
-msgstr "Spracovávanie vlákien"
+msgstr "Spracovanie vlákien"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:77
 msgid "Parabolic will limit the number of threads used by <code>ffmpeg</code>."
-msgstr "Parabolic obmedzí počet vlákien používaných <code>ffmpeg</code>."
+msgstr "Parabolic obmedzí počet vlákien ktoré používa <code>ffmpeg</code>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:79
@@ -405,7 +407,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:61
 msgid "Default: None"
-msgstr "Predvolené: Žiadne"
+msgstr "Predvolené: Žiadny"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:65
@@ -415,8 +417,7 @@ msgstr "Súbor s cookie"
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:66
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
-msgstr ""
-"Súbor .txt so súbormi cookie, ktorý sa odovzdá službe yt-dlp pri sťahovaní."
+msgstr "Súbor .txt so súbormi cookie, ktorý sa odovzdá do yt-dlp pri sťahovaní."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:68
@@ -743,11 +744,24 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:39
+msgid "Recover Crashed Downloads"
+msgstr "Obnoviť neúspešné stiahnutia"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:40
+msgid ""
+"Parabolic will recover downloads that were in progress when the app crashed."
+msgstr ""
+"Parabolic obnoví sťahovania, ktoré boli v procese, keď sa aplikácia "
+"neočakávane zatvorila."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:46
 msgid "Download Immediately After Validation"
 msgstr "Stiahnuť ihneď po overení"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/interface.page:40
+#: docs/yelp/C/interface.page:47
 msgid ""
 "Parabolic will immediately download media after validation, without "
 "presenting configuration options to the user."
@@ -756,19 +770,19 @@ msgstr ""
 "zobrazil možnosti konfigurácie."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/interface.page:46
+#: docs/yelp/C/interface.page:53
 msgid "Download History Length"
 msgstr "Dĺžka histórie sťahovania"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/interface.page:47
+#: docs/yelp/C/interface.page:54
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr ""
 "Čas, počas ktorého zostanú informácie o predchádzajúcich sťahovaniach "
 "uložené v aplikácii."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/interface.page:49
+#: docs/yelp/C/interface.page:56
 msgid "Default: One Week"
 msgstr "Predvolené: Jeden týždeň"
 
@@ -929,8 +943,8 @@ msgid ""
 "All of the URLs and their media from the batch file will be grouped and "
 "treated as one single playlist by Parabolic."
 msgstr ""
-"Všetky URL adresy a ich médiá z dávkového súboru budú zoskupené a spracované "
-"ako jediný playlist aplikáciou Parabolic."
+"Všetky URL adresy a ich médiá z dávkového súboru budú aplikáciou Parabolic "
+"zoskupené a spracované ako jediný playlist."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:36
@@ -975,7 +989,7 @@ msgid ""
 "pass to yt-dlp when downloading."
 msgstr ""
 "Ak je táto možnosť zapnutá, používateľ bude požiadaný o zadanie "
-"používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri "
+"používateľského mena a/alebo hesla, ktoré sa má odovzdať do yt-dlp pri "
 "sťahovaní."
 
 #. (itstool) path: item/p
@@ -1039,13 +1053,13 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:62
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
 "Separate files may be written to disk if embedding is not supported."
 msgstr ""
-"Ak formát súboru nepodporuje vloženie, miniatúra bude uložená do "
-"samostatného obrázkového súboru."
+"Niektoré formáty súborov nemusia plne podporovať vkladanie miniatúr a "
+"titulkov. Ak nie je vkladanie podporované, môžu sa na disk uložiť samostatné "
+"súbory."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:66
@@ -1096,7 +1110,7 @@ msgstr ""
 #: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:89
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
 msgstr ""
-"- <code>Žiadny</code> = Žiadna možnosť nebola odovzdaná programu <code>yt-"
+"- <code>Žiadny</code> = Žiadna možnosť nebola odovzdaná do <code>yt-"
 "dlp</code>"
 
 #. (itstool) path: note/p
@@ -1289,16 +1303,6 @@ msgstr "Názov súboru, ktorý sa má použiť pri ukladaní sťahovania."
 #: docs/yelp/C/newDownload.page:144
 msgid "Default: The title of the media"
 msgstr "Predvolené: Názov média"
-
-#~ msgid "Recover Crashed Downloads"
-#~ msgstr "Obnoviť neúspešné stiahnutia"
-
-#~ msgid ""
-#~ "Parabolic will recover downloads that were in progress when the app "
-#~ "crashed."
-#~ msgstr ""
-#~ "Parabolic obnoví sťahovania, ktoré boli v procese, keď sa aplikácia "
-#~ "neočakávane zatvorila."
 
 #~ msgid ""
 #~ "Although using aria2c can improve download speed, download progress will "
