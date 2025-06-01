@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-28 21:59-0400\n"
+"POT-Creation-Date: 2025-06-01 01:27-0400\n"
 "PO-Revision-Date: 2025-01-20 09:15+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -79,18 +79,20 @@ msgstr "Flac (ஆடியோ)"
 msgid "WAV (Audio)"
 msgstr "WAV (ஆடியோ)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:247
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:277
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:251
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:343
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:377
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:347
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:381
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:317
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
 msgid "Parabolic"
 msgstr "பரபோலிக்"
 
@@ -118,49 +120,52 @@ msgstr "டேவிட் லாப்ஷின்"
 msgid "translator-credits"
 msgstr "K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2023"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:219
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:240
+msgid "New update available"
+msgstr "புதிய புதுப்பிப்பு கிடைக்கிறது"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:254
+msgid ""
+"The update is downloading in the background and will start once it finishes"
+msgstr ""
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:259
+msgid "Unable to download and install update"
+msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:273
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "மீட்டெடுக்கப்பட்டது {} பதிவிறக்கம்"
 msgstr[1] "மீட்டெடுக்கப்பட்டது {} பதிவிறக்கங்கள்"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:224
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:278
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:251
-msgid "New update available"
-msgstr "புதிய புதுப்பிப்பு கிடைக்கிறது"
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
-msgid ""
-"The update is downloading in the background and will start once it finishes"
-msgstr ""
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:270
-msgid "Unable to download and install update"
-msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 msgid "Download Finished"
 msgstr "பதிவிறக்கம் முடிந்தது"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
-#, fuzzy
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:308
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "{the பதிவிறக்குவதை முடித்துவிட்டது"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
 msgid "Open"
 msgstr "திற"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:302
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:312
 msgid "Download Finished With Error"
 msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:302
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:312
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} பிழையுடன் முடித்துவிட்டது"
 
@@ -169,18 +174,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} கிப்/கள்"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} mib/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} kib/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} b/s"
 
@@ -199,9 +208,9 @@ msgid "Worst"
 msgstr "மோசமான"
 
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:426
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:172
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:166
 msgid "None"
 msgstr "எதுவுமில்லை"
 
@@ -210,22 +219,22 @@ msgid "Audio Description"
 msgstr "ஆடியோ விளக்கம்"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} கிப்/கள்"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} mib/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} kib/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} b/s"
 
@@ -249,7 +258,7 @@ msgstr "தானாக உருவாக்கிய"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:405
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:72
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
 msgid "Add Download"
 msgstr "பதிவிறக்கத்தைச் சேர்க்கவும்"
 
@@ -364,7 +373,7 @@ msgid "File Name"
 msgstr "கோப்பு பெயர்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:180
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:228
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:229
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:158
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:319
 msgid "Revert to Title"
@@ -476,7 +485,7 @@ msgid "Stop"
 msgstr "நிறுத்து"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:292
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
@@ -545,13 +554,13 @@ msgstr "விசைப்பலகை குறுக்குவழிகள�
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:158
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:159
 msgid "Help"
 msgstr "உதவி"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:126
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:127
 msgid "About Parabolic"
 msgstr "பரபோலிக் பற்றி"
 
@@ -560,52 +569,52 @@ msgid "Main Menu"
 msgstr "முதன்மை பட்டியல்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:232
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:269
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
 msgid "Home"
 msgstr "வீடு"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 msgid "Keyring"
 msgstr "சாவி வளையம்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:244
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
 #: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:55
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:88
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
 msgid "History"
 msgstr "வரலாறு"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:75
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:65
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:69
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:285
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:279
 msgid "Downloads"
 msgstr "பதிவிறக்கங்கள்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
 msgid "Downloading"
 msgstr "பதிவிறக்குகிறது"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:163
 msgid "Queued"
 msgstr "வரிசையில் நிற்கிறது"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
 msgid "Completed"
 msgstr "முடிக்கப்பட்டது"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:108
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
 msgid "Clear History"
 msgstr "வரலாற்றை அழிக்கவும்"
 
@@ -617,7 +626,7 @@ msgstr "தெளிவாக்கு"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:225
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:96
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
 msgid "Stop All Downloads"
 msgstr "அனைத்து பதிவிறக்கங்களையும் நிறுத்து"
 
@@ -626,31 +635,31 @@ msgid "Stop All"
 msgstr "அனைத்தையும் நிறுத்து"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:237
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:102
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
 msgid "Clear Queued Downloads"
 msgstr "வரிசைப்படுத்தப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:249
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:100
 msgid "Retry Failed Downloads"
 msgstr "தோல்வியடைந்த பதிவிறக்கங்களை மீண்டும் முயற்சிக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:105
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:106
 msgid "Clear Completed Downloads"
 msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:192
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:193
 msgid "Download Media"
 msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:193
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:203
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:227
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:251
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:204
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:228
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:252
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
 
@@ -661,17 +670,17 @@ msgid "No History Available"
 msgstr "வரலாறு எதுவும் கிடைக்கவில்லை"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:330
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:202
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:203
 msgid "No Downloads Running"
 msgstr "பதிவிறக்கங்கள் இயங்கவில்லை"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:370
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:226
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:227
 msgid "No Downloads Queued"
 msgstr "பதிவிறக்கங்கள் இல்லை"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:410
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:250
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:251
 msgid "No Downloads Completed"
 msgstr "பதிவிறக்கங்கள் எதுவும் இல்லை"
 
@@ -680,7 +689,7 @@ msgid "UI"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:284
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:278
 msgid "User Interface"
 msgstr "பயனர் இடைமுகம்"
 
@@ -719,89 +728,77 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
-msgid "Recover Crashed Downloads"
-msgstr "செயலிழந்த பதிவிறக்கங்களை மீட்டெடுக்கவும்"
+msgid "Download Immediately After Validation"
+msgstr "சரிபார்த்தவுடன் உடனடியாக பதிவிறக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:41
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:51
 msgid ""
-"Parabolic will recover downloads that were in progress when the app crashed."
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
-msgid "Download Immediately After Validation"
-msgstr "சரிபார்த்தவுடன் உடனடியாக பதிவிறக்கவும்"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:51
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:54
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:56
-msgid ""
 "Parabolic will immediately download media after validation, without "
 "presenting configuration options to the user."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:60
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
 msgid "Download History Length"
 msgstr "வரலாற்று நீளத்தைப் பதிவிறக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:51
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:56
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:63
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
 msgid "Never"
 msgstr "ஒருபோதும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:63
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 msgid "One Day"
 msgstr "ஒரு நாள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:63
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:64
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
 msgid "One Week"
 msgstr "ஒரு வாரம்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:63
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:65
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:60
 msgid "One Month"
 msgstr "ஒரு மாதம்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:63
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:66
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
 msgid "Three Months"
 msgstr "மூன்று மாதங்கள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:63
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
 msgid "Forever"
 msgstr "என்றென்றும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:82
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:80
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:72
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:74
 #, fuzzy
 msgid "Max Number of Running Downloads"
 msgstr "செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:85
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:88
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:79
 msgid "Overwrite Existing Files"
 msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:82
 msgid "Limit Filename Characters"
 msgstr "கோப்பு பெயர் எழுத்துக்களைக் கட்டுப்படுத்துங்கள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:89
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:91
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:85
 #, fuzzy
 msgid ""
 "Parabolic will restrict characters in filenames to those supported only by "
@@ -810,280 +807,280 @@ msgstr ""
 "கோப்பு பெயர்களில் உள்ள எழுத்துக்களை விண்டோசால் ஆதரிக்கப்படுவதற்கு மட்டுமே "
 "கட்டுப்படுத்துகிறது."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:93
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
 #, fuzzy
 msgid "Include Media Id in Title"
 msgstr "சரிபார்ப்புக்குப் பிறகு தலைப்பில் மீடியா ஐடியை சேர்க்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
 msgid "Parabolic will include a media's id in its default title."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:127
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:98
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
 msgid "Include Auto-Generated Subtitles"
 msgstr "தானாக உருவாக்கிய வசன வரிகள் சேர்க்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:128
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:99
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:101
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:95
 msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:127
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:97
 msgid "Preferred Video Codec"
 msgstr "விருப்பமான வீடியோ கோடெக்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:106
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:128
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:100
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:140
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:153
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:107
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:117
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:129
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:101
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:111
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:123
 msgid "Any"
 msgstr "ஏதேனும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:140
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:110
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
 msgid "H.264 (AVC)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:140
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:111
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:105
 msgid "H.265 (HEVC)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:150
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:113
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:140
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:107
 #, fuzzy
 msgid "Preferred Audio Codec"
 msgstr "விருப்பமான வீடியோ கோடெக்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:151
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:114
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:116
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:141
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:110
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:153
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:118
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:112
 #, fuzzy
 msgid "FLAC (ALAC)"
 msgstr "Flac (ஆடியோ)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:153
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:119
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:113
 #, fuzzy
 msgid "WAV (AIFF)"
 msgstr "WAV (ஆடியோ)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:125
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:153
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:119
 msgid "Preferred Subtitle Format"
 msgstr "விருப்பமான வசன வடிவமைப்பு"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:164
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:126
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:128
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:154
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:122
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:178
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:182
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:149
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:286
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:168
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:280
 msgid "Downloader"
 msgstr "பதிவிறக்குபவர்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:148
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:142
 #, fuzzy
 msgid "Use Part Files"
 msgstr "தொகுதி கோப்பைப் பயன்படுத்தவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:186
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:176
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:143
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:145
 msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:195
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:147
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:196
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:156
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:186
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:150
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:205
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:195
 msgid "Speed Limit (KiB/s)"
 msgstr "வேக வரம்பு (KIB/s)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:206
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:159
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:161
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:196
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:155
 #, fuzzy
 msgid "The limit to apply to downloads with limiting speed enabled."
 msgstr ""
 "பதிவிறக்க வேகத்தை கட்டுப்படுத்த உதவிய பதிவிறக்கங்களுக்கு மட்டுமே இந்த வரம்பு "
 "பயன்படுத்தப்படுகிறது."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:222
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:166
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:212
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:160
 msgid "Proxy URL"
 msgstr "ப்ராக்ஸி URL"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:170
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:221
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:164
 msgid "Cookies from Browser"
 msgstr "உலாவியில் இருந்து குக்கீகள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:173
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:167
 msgid "Brave"
 msgstr "தைரியமான"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:174
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:168
 msgid "Chrome"
 msgstr "குரோம்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:175
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
 msgid "Chromium"
 msgstr "நீலிரும்பு, குருமம்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:176
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:170
 msgid "Edge"
 msgstr "விளிம்பு"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:177
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
 msgid "Firefox"
 msgstr "பயர்பாக்ச்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:178
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:172
 msgid "Opera"
 msgstr "ஓபரா"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:179
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:173
 msgid "Safari"
 msgstr "சஃபாரி"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:180
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:174
 msgid "Vivaldi"
 msgstr "விவால்டி"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:181
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:175
 msgid "Whale"
 msgstr "திமிங்கலம்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:243
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:183
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:177
 msgid "Cookies File"
 msgstr "குக்கீகள் கோப்பு"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:244
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:144
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:186
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:234
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:180
 msgid "No file selected"
 msgstr "எந்த கோப்பும் தேர்ந்தெடுக்கப்படவில்லை"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:255
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:191
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:471
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:245
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:185
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:462
 msgid "Select Cookies File"
 msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:196
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:254
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
 msgid "Clear Cookies File"
 msgstr "குக்கீகள் கோப்பை அழிக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:288
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:282
 #, fuzzy
 msgid "aria2c"
 msgstr "கருத்துக்கள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:265
 msgid "Configure downloading with aria2c."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:278
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:268
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:250
 #, fuzzy
 msgid "Use aria2c"
 msgstr "aria2 ஐப் பயன்படுத்தவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:279
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:259
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:269
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:251
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:253
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:288
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:278
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:255
 msgid "Max Connections Per Server (-x)"
 msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:305
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:266
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:295
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:260
 msgid "Minimum Split Size (-k)"
 msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:267
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:269
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:263
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:325
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:329
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:287
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:319
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:281
 msgid "Converter"
 msgstr "மாற்றி"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:332
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:322
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:205
 msgid "Embed Metadata"
 msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:342
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:214
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:332
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:208
 msgid "Remove Source Data"
 msgstr "மூலத் தரவை அகற்று"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:343
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:215
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:217
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:333
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
 #, fuzzy
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
@@ -1092,59 +1089,59 @@ msgstr ""
 "இயக்கப்பட்டால், பதிவிறக்கம் தகவல்களை அடையாளம் காணும் மேனிலை தரவு புலங்களை பரபோலிக் "
 "அழிக்கும்."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:353
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:219
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:343
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:213
 #, fuzzy
 msgid "Embed Thumbnails"
 msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:354
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:220
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:222
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:344
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:216
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:364
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:224
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:354
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:218
 msgid "Crop Audio Thumbnails"
 msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:365
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:225
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:227
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:355
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:219
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:221
 #, fuzzy
 msgid "Parabolic will crop thumbnails of audio files to squares."
 msgstr ""
 "இயக்கப்பட்டால், பரபோலிக் ஆடியோ கோப்புகளின் சிறுபடங்களை சதுரங்களுக்கு பயிர் செய்யும்."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:375
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:229
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:365
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:223
 msgid "Embed Chapters"
 msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:384
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:232
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:374
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:226
 msgid "Embed Subtitles"
 msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:385
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:375
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:229
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:394
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:237
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:384
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:231
 msgid "Postprocessing Threads"
 msgstr "போச்ட்ரோசெசிங் நூல்கள்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:395
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:238
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:385
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:234
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
 
@@ -1181,13 +1178,14 @@ msgstr "இயங்கும்"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:211
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:523
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
@@ -1201,7 +1199,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:243
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:246
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:507
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:543
 msgid "Error"
 msgstr "பிழை"
 
@@ -1238,9 +1236,9 @@ msgid "Select Batch File"
 msgstr "தொகுதி கோப்பைத் தேர்ந்தெடுக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:124
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:472
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:471
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:462
 msgid "TXT Files (*.txt)"
 msgstr "Txt கோப்புகள் (*.txt)"
 
@@ -1257,7 +1255,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:155
 msgid "Close"
 msgstr "மூடு"
 
@@ -1267,12 +1265,12 @@ msgid "No Subtitles Available"
 msgstr "வசன வரிகள் எதுவும் கிடைக்கவில்லை"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:218
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "}} உருப்படிகள்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1292,12 +1290,12 @@ msgid "Keyring is not saving to disk. Changes will be lost."
 msgstr "கீரிங் வட்டில் சேமிக்கவில்லை. மாற்றங்கள் இழக்கப்படும்."
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:140
 msgid "Edit"
 msgstr "தொகு"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:328
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:215
 msgid "Delete"
@@ -1320,12 +1318,14 @@ msgid "Are you sure you want to delete this credential?"
 msgstr "இந்த நற்சான்றிதழை நீக்க விரும்புகிறீர்களா?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 msgid "Yes"
 msgstr "ஆம்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 msgid "No"
 msgstr "இல்லை"
 
@@ -1353,11 +1353,13 @@ msgstr "பெயர் (உள்ளது)"
 msgid "Credential (Database Error)"
 msgstr "நற்சான்றிதழ் (தரவுத்தள பிழை)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:382
 msgid "Disclaimer"
 msgstr "மறுப்பு"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:382
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1367,29 +1369,43 @@ msgstr ""
 "நிக்விஷன் பரபோலிக் இன் ஆசிரியர்கள் பொறுப்பல்ல/பொறுப்பேற்க மாட்டார்கள். பயனர்கள் இந்த "
 "பயன்பாட்டை தங்கள் சொந்த ஆபத்தில் பயன்படுத்துகின்றனர்."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:383
 msgid "Don't show this message again"
 msgstr "இந்த செய்தியை மீண்டும் காட்ட வேண்டாம்"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:390
+#, fuzzy
+msgid "Recover Crashed Downloads?"
+msgstr "செயலிழந்த பதிவிறக்கங்களை மீட்டெடுக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:390
+msgid ""
+"There are downloads available to recover from when Parabolic crashed. Would "
+"you like to recover them?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
 msgid "Exit?"
 msgstr "வெளியேற?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:379
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:411
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "பதிவிறக்கங்கள் முன்னேற்றத்தில் உள்ளன. நீங்கள் வெளியேற விரும்புகிறீர்களா?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:212
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:236
 msgid "Ok"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:313
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:337
 msgid "Download Again"
 msgstr "மீண்டும் பதிவிறக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:482
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:117
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:118
 msgid "GitHub Repo"
 msgstr "GitHub களஞ்சியம்"
 
@@ -1432,7 +1448,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:92
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
 msgid "Log"
 msgstr "பதிவு"
 
@@ -1552,7 +1568,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{bownload பதிவிறக்கம் செய்ய ஒரு நற்சான்றிதழ் தேவை. பயன்படுத்த ஒன்றைத் தேர்ந்தெடுக்கவும் "
@@ -1616,86 +1632,86 @@ msgstr "சேமி"
 msgid "Delete Credential"
 msgstr "நற்சான்றிதழை நீக்கவா?"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
 #, fuzzy
 msgid "Exit"
 msgstr "வெளியேற?"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:348
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:341
 msgid "Settings"
 msgstr "அமைப்புகள்"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:112
 msgid "Check for Updates"
 msgstr "புதுப்பிப்புகளை சரிபார்க்கவும்"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:114
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:115
 msgid "Documentation"
 msgstr "ஆவணப்படுத்துதல்"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:121
 msgid "Report a Bug"
 msgstr "ஒரு பிழையைப் புகாரளிக்கவும்"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:124
 msgid "Discussions"
 msgstr "விவாதங்கள்"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:134
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:135
 #, fuzzy
 msgid "File"
 msgstr "கோப்பு பெயர்"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:145
 #, fuzzy
 msgid "View"
 msgstr "பதிவை பார்க்கவும்"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
 #, fuzzy
 msgid "Downloading (0)"
 msgstr "பதிவிறக்குகிறது"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:436
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:272
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:472
 #, fuzzy
 msgid "Queued (0)"
 msgstr "வரிசையில் நிற்கிறது"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:272
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:453
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:273
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:489
 #, fuzzy
 msgid "Completed (0)"
 msgstr "முடிக்கப்பட்டது"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:317
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
 msgid "Parabolic (Preview)"
 msgstr "பரபோலிக் (முன்னோட்டம்)"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:513
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:549
 msgid "Update"
 msgstr "புதுப்பிப்பு"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:556
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:610
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:649
-#, fuzzy
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:592
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:646
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:685
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "வரிசையில் நிற்கிறது"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:567
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:582
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:609
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:631
-#, fuzzy
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:603
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:618
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:645
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:667
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "பதிவிறக்குகிறது"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:583
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:650
-#, fuzzy
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:647
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:686
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "முடிக்கப்பட்டது"
 
@@ -1715,16 +1731,16 @@ msgstr "மண்டலம்"
 msgid "Automatically Check for Updates"
 msgstr "புதுப்பிப்புகளை தானாக சரிபார்க்கவும்"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:94
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:96
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:90
 msgid "Parabolic will include the media's id in its default title."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
 msgid "Speed Limit"
 msgstr "வேக வரம்பு"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:168
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:162
 msgid "Enter proxy url here"
 msgstr "பதிலாள் முகவரி ஐ இங்கே உள்ளிடவும்"
 

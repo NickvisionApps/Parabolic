@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Použít hromadný soubor</dt>
 <dd class="terms">
 <p class="p">Vyberte hromadný textový soubor, který obsahuje adresy k ověření.</p>
-<p class="p">Each URL can be accompanied by an optional save folder (delimited by <span class="code">|</span>) in which to save each media of the URL to.</p>
-<p class="p">All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-<p class="p">The optional save folder must be an absolute path.</p>
+<p class="p">Ke každé adrese může být zároveň přiřazena volitelná složka (oddělená znakem <span class="code">|</span>) k uložení daného média.</p>
+<p class="p">Všechny adresy a jejich média z hromadného souboru budou seskupeny a budou aplikací Parabolic považovány za jeden playlist.</p>
+<p class="p">Volitelná složka pro uložení musí být absolutní cesta.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Formát hromadného souboru:</p>
 <p class="p"><span class="code">URL1</span></p>
-<p class="p"><span class="code">URL2 | "Folder1"</span></p>
-<p class="p"><span class="code">"URL3"|"Folder2"</span></p>
+<p class="p"><span class="code">URL2 | "Složka1"</span></p>
+<p class="p"><span class="code">"URL3"|"Složka2"</span></p>
 <p class="p"><span class="code">"URL4"</span></p>
 </div></div></div>
 </div>
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Vybráním typu souboru <span class="code">Video (obecné)</span> nebo <span class="code">Zvuk (obecný)</span> stáhne aplikace Parabolic média v původním typu souboru bez vykonání jakýchkoli konverzí.</p>
-<p class="p">Generic file types do not fully support embedding thumbnails and subtitles. Separate files may be written to disk if embedding is not supported.</p>
+<p class="p">Obecné typy souborů plně nepodporují vkládání náhledů a titulků. Pokud vkládání není podporováno, mohou být na disk uloženy samostatné soubory.</p>
 </div></div></div>
 </div>
 </dd>
@@ -144,10 +144,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">bv*</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wv*</span></p>
+<p class="p">Aplikace Parabolic používá následující speciální formáty pro sjednocení chování <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Žádné</span> = Službě <span class="code">yt-dlp</span> není předána žádná možnost</p>
+<p class="p">- <span class="code">Nejlepší</span> = <span class="code">bv*</span></p>
+<p class="p">- <span class="code">Nejhorší</span> = <span class="code">wv*</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -178,10 +178,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">ba</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wa</span></p>
+<p class="p">Aplikace Parabolic používá následující speciální formáty pro sjednocení chování <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Žádné</span> = Službě <span class="code">yt-dlp</span> není předána žádná možnost</p>
+<p class="p">- <span class="code">Nejlepší</span> = <span class="code">ba</span></p>
+<p class="p">- <span class="code">Nejhorší</span> = <span class="code">wa</span></p>
 </div></div></div>
 </div>
 </dd>
