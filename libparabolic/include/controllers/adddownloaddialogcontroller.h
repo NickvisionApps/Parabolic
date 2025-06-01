@@ -147,25 +147,26 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param videoFormatIndex The index of the selected video format
          * @param audioFormatIndex The index of the selected audio format
          * @param subtitleLanguages The list of selected subtitle languages
-         * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
          * @param exportDescription Whether or not to export the media description to a file
+        * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param startTime The start time of the download
          * @param endTime The end time of the download
          */
-        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime);
+        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, bool excludeFromHistory, const std::string& startTime, const std::string& endTime);
         /**
          * @brief Adds a playlist download to the download manager.
          * @param saveFolder The folder to save the downloads to
          * @param filenames The filenames to save the downloads as with their respective indices (Excluded indices will not be downloaded)
          * @param fileTypeIndex The index of the selected file type
-         * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
          * @param exportDescription Whether or not to export the media description to a file
+         * @param writePlaylistFile Whether or not to write a m3u playlist file
+         * @param excludeFromHistory Whether or not to exclude the download from the history
          */
-        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription);
+        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory);
 
     private:
         Models::DownloadManager& m_downloadManager;

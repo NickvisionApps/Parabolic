@@ -4,8 +4,8 @@
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/notifications/appnotification.h>
-#include "models/configuration.h"
 #include "models/downloadoptions.h"
+#include "models/m3u.h"
 #include "models/urlinfo.h"
 
 using namespace Nickvision::App;
@@ -289,7 +289,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime)
+    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, bool excludeFromHistory, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };
         //Get Subtitle Languages
@@ -341,14 +341,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription)
+    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory)
     {
+        M3U m3u{ m_urlInfo->getTitle() };
         //Save Previous Options
         m_previousOptions.setSaveFolder(saveFolder);
         m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
         m_previousOptions.setSplitChapters(splitChapters);
         m_previousOptions.setLimitSpeed(limitSpeed);
         m_previousOptions.setExportDescription(exportDescription);
+        m_previousOptions.setWritePlaylistFile(writePlaylistFile);
         std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / StringHelpers::normalizeForFilename(m_urlInfo->getTitle(), m_downloadManager.getDownloaderOptions().getLimitCharacters()) };
         std::filesystem::create_directories(playlistSaveFolder);
         for(const std::pair<const size_t, std::string>& pair : filenames)
@@ -368,11 +370,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             try
             {
                 m_downloadManager.addDownload(options, excludeFromHistory);
+                m3u.add(options);
             }
             catch(const std::exception& e)
             {
                 AppNotification::send({ _f("Error attempting to add download: {}", e.what()), NotificationSeverity::Error, "error" });
             }
+        }
+        //Write playlist file
+        if(writePlaylistFile)
+        {
+            m3u.write(playlistSaveFolder / (playlistSaveFolder.filename().string() + ".m3u"));
         }
     }
 }

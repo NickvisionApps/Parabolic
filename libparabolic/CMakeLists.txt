@@ -21,6 +21,7 @@ add_library(libparabolic
     "src/models/downloadrecoveryqueue.cpp"
     "src/models/format.cpp"
     "src/models/historicdownload.cpp"
+    "src/models/m3u.cpp"
     "src/models/media.cpp"
     "src/models/mediafiletype.cpp"
     "src/models/previousdownloadoptions.cpp"

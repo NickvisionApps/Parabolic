@@ -17,20 +17,20 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::filesystem::path path{ m_json["SaveFolder"].is_string() ? m_json["SaveFolder"].as_string().c_str() : UserDirectories::get(UserDirectory::Downloads).string() };
         if(std::filesystem::exists(path))
         {
-            return path;
+            return path.make_preferred();
         }
-        return UserDirectories::get(UserDirectory::Downloads);
+        return UserDirectories::get(UserDirectory::Downloads).make_preferred();
     }
 
-    void PreviousDownloadOptions::setSaveFolder(const std::filesystem::path& previousSaveFolder)
+    void PreviousDownloadOptions::setSaveFolder(std::filesystem::path previousSaveFolder)
     {
         if(std::filesystem::exists(previousSaveFolder))
         {
-            m_json["SaveFolder"] = previousSaveFolder.string();
+            m_json["SaveFolder"] = previousSaveFolder.make_preferred().string();
         }
         else
         {
-            m_json["SaveFolder"] = UserDirectories::get(UserDirectory::Downloads).string();
+            m_json["SaveFolder"] = UserDirectories::get(UserDirectory::Downloads).make_preferred().string();
         }
     }
 
@@ -92,6 +92,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     void PreviousDownloadOptions::setExportDescription(bool exportDescription)
     {
         m_json["ExportDescription"] = exportDescription;
+    }
+
+    bool PreviousDownloadOptions::getWritePlaylistFile() const
+    {
+        return m_json["WritePlaylistFile"].is_bool() ? m_json["WritePlaylistFile"].as_bool() : false;
+    }
+
+    void PreviousDownloadOptions::setWritePlaylistFile(bool writePlaylistFile)
+    {
+        m_json["WritePlaylistFile"] = writePlaylistFile;
     }
 
     bool PreviousDownloadOptions::getNumberTitles() const

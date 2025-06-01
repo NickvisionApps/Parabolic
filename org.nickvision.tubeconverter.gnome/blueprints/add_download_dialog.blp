@@ -305,6 +305,23 @@ Adw.Dialog root {
           Adw.PreferencesGroup {
             Adw.ComboRow fileTypePlaylistRow {
               title: _("File Type");
+
+              [suffix]
+              Gtk.MenuButton genericDisclaimerPlaylistButton {
+                valign: center;
+                icon-name: "dialog-warning-symbolic";
+                popover: Gtk.Popover {
+                  child: Gtk.Box {
+                    Gtk.Label {
+                      wrap: true;
+                      wrap-mode: word;
+                      label: _("Generic file types do not fully support embedding thumbnails and writing playlist files. Please select a specific file type that is known to support embedding to prevent separate files from being written.");
+                    }
+                  };
+                };
+
+                styles ["flat"]
+              }
             }
 
             Adw.SwitchRow splitChaptersPlaylistRow {
@@ -317,6 +334,10 @@ Adw.Dialog root {
 
             Adw.SwitchRow exportDescriptionPlaylistRow {
               title: _("Export Description");
+            }
+
+            Adw.SwitchRow writeFilePlaylistRow {
+              title: _("Write M3U Playlist File");
             }
 
             Adw.SwitchRow excludeHistoryPlaylistRow {

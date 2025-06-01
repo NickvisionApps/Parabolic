@@ -62,9 +62,9 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onCmbFileTypeChanged(int index);
         /**
-         * @brief Shows the generic file type disclaimer.
+         * @brief Shows the generic file type disclaimer for a single download.
          */
-        void genericFileTypeDisclaimer();
+        void genericFileTypeDisclaimerSingle();
         /**
          * @brief Prompts the user to select a save folder for a single download.
          */
@@ -85,6 +85,10 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Downloads a single media.
          */
         void downloadSingle();
+        /**
+         * @brief Shows the generic file type disclaimer for a playlist download.
+         */
+        void genericFileTypeDisclaimerPlaylist();
         /**
          * @brief Prompts the user to select a save folder for a playlist download.
          */

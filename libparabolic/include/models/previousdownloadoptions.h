@@ -31,7 +31,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Sets the previous save folder.
          * @param previousSaveFolder The new previous save folder
          */
-        void setSaveFolder(const std::filesystem::path& previousSaveFolder);
+        void setSaveFolder(std::filesystem::path previousSaveFolder);
         /**
          * @brief Gets the previous media file type.
          * @return The previous media file type
@@ -92,6 +92,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param exportDescription The new previous export description state
          */
         void setExportDescription(bool exportDescription);
+        /**
+         * @brief Gets the previous write playlist file state.
+         * @return The previous write playlist file state
+         */
+        bool getWritePlaylistFile() const;
+        /**
+         * @brief Sets the previous write playlist file state.
+         * @param exportDescription The new previous write playlist file state
+         */
+        void setWritePlaylistFile(bool writePlaylistFile);
         /**
          * @brief Gets the previous number titles state.
          * @return The previous number titles state
