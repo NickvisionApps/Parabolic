@@ -367,15 +367,12 @@ namespace Nickvision::TubeConverter::Qt::Views
 #endif
         if(info.getWindowGeometry().isMaximized())
         {
+            setGeometry(10, 10, 800, 600);
             showMaximized();
         }
         else
         {
-#ifdef _WIN32
-            info.getWindowGeometry().apply(reinterpret_cast<HWND>(winId()));
-#else
-            setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
-#endif
+            setGeometry(info.getWindowGeometry().getX(), info.getWindowGeometry().getY(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         }
         if(info.showDisclaimer())
         {
@@ -416,11 +413,7 @@ namespace Nickvision::TubeConverter::Qt::Views
             }
             return;
         }
-#ifdef _WIN32
-        m_controller->shutdown({ reinterpret_cast<HWND>(winId()) });
-#else
-        m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized() });
-#endif
+        m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized(), geometry().x(), geometry().y() });
         event->accept();
     }
 
