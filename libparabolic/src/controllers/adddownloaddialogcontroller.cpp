@@ -289,7 +289,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, bool excludeFromHistory, const std::string& startTime, const std::string& endTime)
+    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, const std::optional<int>& speedLimit, bool exportDescription, bool excludeFromHistory, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };
         //Get Subtitle Languages
@@ -314,7 +314,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         options.setAudioFormat(media.getFormats()[m_audioFormatMap[audioFormatIndex]]);
         options.setSubtitleLanguages(subtitles);
         options.setSplitChapters(splitChapters);
-        options.setLimitSpeed(limitSpeed);
+        options.setSpeedLimit(speedLimit);
         options.setExportDescription(exportDescription);
         std::optional<TimeFrame> timeFrame{ TimeFrame::parse(startTime, endTime, media.getTimeFrame().getDuration()) };
         if(timeFrame && media.getTimeFrame() != *timeFrame)
@@ -327,7 +327,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_previousOptions.setVideoFormatId(options.getVideoFormat() ? options.getVideoFormat()->getId() : "");
         m_previousOptions.setAudioFormatId(options.getAudioFormat() ? options.getAudioFormat()->getId() : "");
         m_previousOptions.setSplitChapters(options.getSplitChapters());
-        m_previousOptions.setLimitSpeed(options.getLimitSpeed());
+        m_previousOptions.setSpeedLimit(options.getSpeedLimit());
         m_previousOptions.setExportDescription(exportDescription);
         m_previousOptions.setSubtitleLanguages(options.getSubtitleLanguages());
         //Add Download
@@ -341,14 +341,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory)
+    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, const std::optional<int>& speedLimit, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory)
     {
         M3U m3u{ m_urlInfo->getTitle() };
         //Save Previous Options
         m_previousOptions.setSaveFolder(saveFolder);
         m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
         m_previousOptions.setSplitChapters(splitChapters);
-        m_previousOptions.setLimitSpeed(limitSpeed);
+        m_previousOptions.setSpeedLimit(speedLimit);
         m_previousOptions.setExportDescription(exportDescription);
         m_previousOptions.setWritePlaylistFile(writePlaylistFile);
         std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / StringHelpers::normalizeForFilename(m_urlInfo->getTitle(), m_downloadManager.getDownloaderOptions().getLimitCharacters()) };
@@ -363,7 +363,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             options.setSaveFolder(media.getSuggestedSaveFolder().empty() ? playlistSaveFolder : media.getSuggestedSaveFolder());
             options.setSaveFilename(!pair.second.empty() ? StringHelpers::normalizeForFilename(pair.second, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
             options.setSplitChapters(splitChapters);
-            options.setLimitSpeed(limitSpeed);
+            options.setSpeedLimit(speedLimit);
             options.setExportDescription(exportDescription);
             options.setPlaylistPosition(media.getPlaylistPosition());
             //Add Download

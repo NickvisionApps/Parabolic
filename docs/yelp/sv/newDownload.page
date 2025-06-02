@@ -110,10 +110,13 @@
         </note>
     </item>
     <item>
-        <title>Begränsa nedladdningshastigheten</title>
-        <p>Om aktiverat, kommer Parabolic att begränsa nedladdningshastigheten med hastigheten konfigurerad i <link xref="Nedladdare">Inställningar</link>.</p>
+        <title>Hastighetsgräns</title>
+        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
         <note>
             <p>Det tidigare använda tillståndet kommer att kommas ihåg och blir förvalt för nästa nedladdning.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: 1024</p>
         </note>
     </item>
     <item>

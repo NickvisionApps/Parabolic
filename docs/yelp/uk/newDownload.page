@@ -116,10 +116,13 @@
         </note>
     </item>
     <item>
-        <title>Обмежити швидкість завантаження</title>
-        <p>Якщо увімкнено, Parabolic обмежить швидкість завантаження відповідно до швидкості, налаштованої в <link xref="downloader">Параметрах</link>.</p>
+        <title>Обмеження швидкості</title>
+        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
         <note>
             <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
+        </note>
+        <note style="advanced">
+            <p>За замовчуванням: 1024</p>
         </note>
     </item>
     <item>

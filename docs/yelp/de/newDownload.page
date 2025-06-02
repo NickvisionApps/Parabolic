@@ -110,10 +110,13 @@
         </note>
     </item>
     <item>
-        <title>Herunterladegeschwindigkeit begrenzen</title>
-        <p>Wenn aktiviert, begrenzt Parabolic die Geschwindigkeit des Downloads mit der in den <link xref="downloader">Einstellungen</link> konfigurierten Geschwindigkeit.</p>
+        <title>Geschwindigkeitsbegrenzung</title>
+        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
         <note>
             <p>Der zuvor verwendete Status wird gespeichert und für den nächsten Download vorausgewählt.</p>
+        </note>
+        <note style="advanced">
+            <p>Standardeinstellung: 1024</p>
         </note>
     </item>
     <item>

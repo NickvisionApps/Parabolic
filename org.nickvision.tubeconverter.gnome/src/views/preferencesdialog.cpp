@@ -30,7 +30,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"), static_cast<unsigned int>(options.getPreferredSubtitleFormat()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("usePartFilesRow"), options.getUsePartFiles());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow"), options.getYouTubeSponsorBlock());
-        adw_spin_row_set_value(m_builder.get<AdwSpinRow>("speedLimitRow"), static_cast<double>(options.getSpeedLimit()));
         gtk_editable_set_text(m_builder.get<GtkEditable>("proxyUrlRow"), options.getProxyUrl().c_str());
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"), static_cast<unsigned int>(options.getCookiesBrowser()));
         adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), options.getCookiesPath().filename().string().c_str());
@@ -77,7 +76,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"))));
         options.setUsePartFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("usePartFilesRow")));
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow")));
-        options.setSpeedLimit(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("speedLimitRow"))));
         options.setProxyUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("proxyUrlRow")));
         options.setCookiesBrowser(static_cast<Browser>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"))));
         options.setCookiesPath(gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) ? gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) : "");

@@ -18,7 +18,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     DownloadOptions::DownloadOptions()
         : m_fileType{ MediaFileType::MP4 },
         m_splitChapters{ false },
-        m_limitSpeed{ false },
         m_exportDescription{ false },
         m_playlistPosition{ -1 }
     {
@@ -29,7 +28,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_url{ url },
         m_fileType{ MediaFileType::MP4 },
         m_splitChapters{ false },
-        m_limitSpeed{ false },
         m_exportDescription{ false },
         m_playlistPosition{ -1 }
     {
@@ -42,7 +40,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_saveFolder{ json["SaveFolder"].is_string() ? json["SaveFolder"].as_string().c_str() : "" },
         m_saveFilename{ json["SaveFilename"].is_string() ? json["SaveFilename"].as_string().c_str() : "" },
         m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false },
-        m_limitSpeed{ json["LimitSpeed"].is_bool() ? json["LimitSpeed"].as_bool() : false },
+        m_speedLimit{ json["SpeedLimit"].is_int64() ? std::make_optional<int>(json["SpeedLimit"].as_int64()) : std::nullopt },
         m_exportDescription{ json["ExportDescription"].is_bool() ? json["ExportDescription"].as_bool() : false },
         m_playlistPosition{ json["PlaylistPosition"].is_int64() ? static_cast<int>(json["PlaylistPosition"].as_int64()) : -1 }
     {
@@ -202,18 +200,25 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_splitChapters = splitChapters;
     }
 
-    bool DownloadOptions::getLimitSpeed() const
+    const std::optional<int>& DownloadOptions::getSpeedLimit() const
     {
-        return m_limitSpeed;
+        return m_speedLimit;
     }
 
-    void DownloadOptions::setLimitSpeed(bool limitSpeed)
+    void DownloadOptions::setSpeedLimit(const std::optional<int>& limit)
     {
-        if(limitSpeed && m_timeFrame.has_value())
+        if(limit && m_timeFrame.has_value())
         {
-            return;
+            m_speedLimit = std::nullopt;
         }
-        m_limitSpeed = limitSpeed;
+        else if(limit && (*limit < 512 || *limit > 10240))
+        {
+            m_speedLimit = 1024;
+        }
+        else
+        {
+            m_speedLimit = limit;
+        }
     }
 
     bool DownloadOptions::getExportDescription() const
@@ -233,11 +238,14 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::setTimeFrame(const std::optional<TimeFrame>& timeFrame)
     {
-        if(timeFrame && m_limitSpeed)
+        if(timeFrame && m_speedLimit)
         {
-            return;
+            m_timeFrame = std::nullopt;
         }
-        m_timeFrame = timeFrame;
+        else
+        {
+            m_timeFrame = timeFrame;
+        }
     }
 
     int DownloadOptions::getPlaylistPosition() const
@@ -622,10 +630,10 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--postprocessor-args");
             arguments.push_back(args);
         }
-        if(m_limitSpeed)
+        if(m_speedLimit)
         {
             arguments.push_back("--limit-rate");
-            arguments.push_back(std::to_string(downloaderOptions.getSpeedLimit()) + "K");
+            arguments.push_back(std::to_string(*m_speedLimit) + "K");
         }
         if(m_exportDescription)
         {
@@ -686,7 +694,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         json["SubtitleLanguages"] = subtitleLanguages;
         json["SplitChapters"] = m_splitChapters;
-        json["LimitSpeed"] = m_limitSpeed;
+        json["SpeedLimit"] = m_speedLimit ? *m_speedLimit : boost::json::value(nullptr);
         json["ExportDescription"] = m_exportDescription;
         if(m_timeFrame)
         {

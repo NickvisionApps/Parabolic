@@ -116,10 +116,13 @@
         </note>
     </item>
     <item>
-        <title>Limitar la velocidad de descarga</title>
-        <p>Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en <link xref="downloader">Preferencias</link>.</p>
+        <title>Límite de velocidad</title>
+        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
         <note>
             <p>El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: 1024</p>
         </note>
     </item>
     <item>

@@ -116,10 +116,13 @@
         </note>
     </item>
     <item>
-        <title>ダウンロード速度を制限</title>
-        <p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
+        <title>スピード制限</title>
+        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
         <note>
             <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+        <note style="advanced">
+            <p>デフォルト: 1024</p>
         </note>
     </item>
     <item>

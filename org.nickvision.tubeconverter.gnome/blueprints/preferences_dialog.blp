@@ -181,23 +181,6 @@ Adw.PreferencesDialog root {
         }
       }
 
-      Adw.SpinRow speedLimitRow {
-        title: _("Speed Limit (KiB/s)");
-        subtitle: _("The limit to apply to downloads with limiting speed enabled.");
-        numeric: true;
-        adjustment: Gtk.Adjustment {
-          lower: 512.0;
-          upper: 10240.0;
-          step-increment: 512.0;
-          page-increment: 1024.0;
-        };
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "speedometer-symbolic";
-        }
-      }
-
       Adw.EntryRow proxyUrlRow {
         title: _("Proxy URL");
 

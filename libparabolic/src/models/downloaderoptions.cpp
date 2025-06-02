@@ -17,7 +17,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_preferredSubtitleFormat{ SubtitleFormat::Any },
         m_usePartFiles{ true },
         m_youTubeSponsorBlock{ false },
-        m_speedLimit{ 1024 },
         m_cookiesBrowser{ Browser::None },        
         m_embedMetadata{ true },
         m_removeSourceData{ false },
@@ -135,20 +134,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloaderOptions::setYouTubeSponsorBlock(bool sponsorBlock)
     {
         m_youTubeSponsorBlock = sponsorBlock;
-    }
-
-    int DownloaderOptions::getSpeedLimit() const
-    {
-        return m_speedLimit;
-    }
-
-    void DownloaderOptions::setSpeedLimit(int speedLimit)
-    {
-        if(speedLimit < 512 || speedLimit > 10240)
-        {
-            speedLimit = 1024;
-        }
-        m_speedLimit = speedLimit;
     }
 
     const std::string& DownloaderOptions::getProxyUrl() const

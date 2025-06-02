@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-06-01 12:45-0400\n"
+"POT-Creation-Date: 2025-06-01 21:32-0400\n"
 "PO-Revision-Date: 2025-03-02 15:36+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -363,48 +363,26 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:42
-msgid "Speed Limit"
-msgstr "Límite de velocidad"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:43
-#, fuzzy
-msgid ""
-"The limit, in KiB/s, to apply to downloads only with the advanced option "
-"<code>Speed Limit</code> enabled. Must be an integer value between 512 and "
-"10240."
-msgstr ""
-"Un límite, en Ki/s, que se aplica a las descargas sólo si tienen activada la "
-"opción avanzada <code>Límite de velocidad</code>. Debe ser un valor entero "
-"entre 512 y 10240."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
-msgid "Default: 1024"
-msgstr "Predeterminado: 1024"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:49
 msgid "Proxy URL"
 msgstr "URL del proxy"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:50
+#: docs/yelp/C/downloader.page:43
 msgid "The url of the proxy server to use."
 msgstr "La url del servidor proxy para usar."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:45
 msgid "Default: No URL"
 msgstr "Por defecto: Sin URL"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
+#: docs/yelp/C/downloader.page:49
 msgid "Cookies from Browser"
 msgstr "Cookies del navegador"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:50
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
@@ -412,7 +390,7 @@ msgstr ""
 "yt-dlp."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
+#: docs/yelp/C/downloader.page:51 docs/yelp/C/downloader.page:60
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
@@ -421,29 +399,29 @@ msgstr ""
 "sesión, por ejemplo: vídeos privados de YouTube."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:59
+#: docs/yelp/C/downloader.page:52
 msgid "This option is on available on non sandboxed platforms."
 msgstr "Esta opción solo está disponible en plataformas sin sandbox."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:61
+#: docs/yelp/C/downloader.page:54
 msgid "Default: None"
 msgstr "Predeterminado: Ninguna"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:65
+#: docs/yelp/C/downloader.page:58
 msgid "Cookies File"
 msgstr "Archivo de cookies"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:66
+#: docs/yelp/C/downloader.page:59
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr ""
 "Un archivo .txt con cookies que se enviará a yt-dlp a través del motor de "
 "descarga."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:61
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
@@ -452,7 +430,7 @@ msgstr ""
 "su navegador:"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:69
+#: docs/yelp/C/downloader.page:62
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -461,7 +439,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:63
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -470,12 +448,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:72
+#: docs/yelp/C/downloader.page:65
 msgid "Use these extensions at your own risk."
 msgstr "Use estas extensiones bajo su propia responsabilidad."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:75
+#: docs/yelp/C/downloader.page:68
 msgid "Default: No File Selected"
 msgstr "Predeterminado: Ningún archivo seleccionado"
 
@@ -1200,7 +1178,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:112 docs/yelp/C/newDownload.page:119
-#: docs/yelp/C/newDownload.page:126
+#: docs/yelp/C/newDownload.page:129
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1210,25 +1188,32 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:116
-msgid "Limit Download Speed"
-msgstr "Limitar la velocidad de descarga"
+msgid "Speed Limit"
+msgstr "Límite de velocidad"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:117
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in <link xref=\"downloader\">Preferences</link>."
+"The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
+"value between 512 and 10240."
 msgstr ""
-"Si está activada, Parabolic limitará la velocidad de descarga con la "
-"velocidad configurada en <link xref=\"downloader\">Preferencias</link>."
+"Un límite, en Ki/s, que se aplica a las descargas sólo si tienen activada la "
+"opción avanzada <code>Límite de velocidad</code>. Debe ser un valor entero "
+"entre 512 y 10240."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:122
+msgid "Default: 1024"
+msgstr "Predeterminado: 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:123
+#: docs/yelp/C/newDownload.page:126
 msgid "Export Description"
 msgstr "Exportar la descripción"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:124
+#: docs/yelp/C/newDownload.page:127
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1237,12 +1222,12 @@ msgstr ""
 "archivo <code> .description </code> junto con el archivo descargado."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:130
+#: docs/yelp/C/newDownload.page:133
 msgid "Exclude from History"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:131
+#: docs/yelp/C/newDownload.page:134
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
@@ -1252,12 +1237,12 @@ msgstr ""
 "de YouTube."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:134
+#: docs/yelp/C/newDownload.page:137
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:135
+#: docs/yelp/C/newDownload.page:138
 #, fuzzy
 msgid "If enabled, Parabolic will write a m3u file for the playlist download."
 msgstr ""
@@ -1265,7 +1250,7 @@ msgstr ""
 "de YouTube."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:137
+#: docs/yelp/C/newDownload.page:140
 #, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
@@ -1275,12 +1260,12 @@ msgstr ""
 "siguiente descarga."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:141
+#: docs/yelp/C/newDownload.page:144
 msgid "Time Frame"
 msgstr "Duración"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:142
+#: docs/yelp/C/newDownload.page:145
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1289,22 +1274,22 @@ msgstr ""
 "finalización para descargar una sección específica del multimedia."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:144
+#: docs/yelp/C/newDownload.page:147
 msgid "Default: The whole media length"
 msgstr "Predeterminado: Toda la longitud del multimedia"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:148
+#: docs/yelp/C/newDownload.page:151
 msgid "Save Folder"
 msgstr "Guardar carpeta"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:149
+#: docs/yelp/C/newDownload.page:152
 msgid "The folder at which to save the download to."
 msgstr "La carpeta en la que guardar la descarga."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:151
+#: docs/yelp/C/newDownload.page:154
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1313,19 +1298,29 @@ msgstr ""
 "siguiente descarga."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:155
+#: docs/yelp/C/newDownload.page:158
 msgid "File Name"
 msgstr "Nombre del archivo"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:156
+#: docs/yelp/C/newDownload.page:159
 msgid "The file name to use when saving the download."
 msgstr "El nombre de archivo que se usará al guardar la descarga."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:158
+#: docs/yelp/C/newDownload.page:161
 msgid "Default: The title of the media"
 msgstr "Predeterminado: El título del medio"
+
+#~ msgid "Limit Download Speed"
+#~ msgstr "Limitar la velocidad de descarga"
+
+#~ msgid ""
+#~ "If enabled, Parabolic will limit the download's speed with the speed "
+#~ "configured in <link xref=\"downloader\">Preferences</link>."
+#~ msgstr ""
+#~ "Si está activada, Parabolic limitará la velocidad de descarga con la "
+#~ "velocidad configurada en <link xref=\"downloader\">Preferencias</link>."
 
 #~ msgid "Recover Crashed Downloads"
 #~ msgstr "Recuperar descargas fallidas"

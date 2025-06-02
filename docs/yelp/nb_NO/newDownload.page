@@ -117,9 +117,12 @@
     </item>
     <item>
         <title>Hastighetsgrense</title>
-        <p>Hvis dette er på, vil Parabolic begrense nedlastingshastigheten til det som er angitt i <link xref="downloader">innstillingene</link>.</p>
+        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
         <note>
             <p>Det sist brukte valget vil huskes og forhåndsvelges ved neste nedlasting.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: 1024</p>
         </note>
     </item>
     <item>

@@ -94,6 +94,10 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void selectSaveFolderPlaylist();
         /**
+         * @brief Shows the save folder disclaimer for a playlist download.
+         */
+        void saveFolderDisclaimerPlaylist();
+        /**
          * @brief Handles when the chkNumberTitlesPlaylist's state has changed.
          * @param checked Whether or not the switch is checked
          */

@@ -116,10 +116,13 @@
         </note>
     </item>
     <item>
-        <title>Ограничение скорости скачивания</title>
-        <p>Если включено, Parabolic ограничит скорость загрузки в соответствии с выбранным в <link xref="downloader">Настройках</link> ограничением.</p>
+        <title>Ограничение скорости</title>
+        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
         <note>
             <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
+        </note>
+        <note style="advanced">
+            <p>По умолчанию: 1024</p>
         </note>
     </item>
     <item>

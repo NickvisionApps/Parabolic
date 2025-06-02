@@ -142,14 +142,6 @@ namespace Ui
             lblSponsorBlock->setToolTip(_("Parabolic will attempt to remove sponsored segments from YouTube videos."));
             chkSponsorBlock = new Switch(parent);
             chkSponsorBlock->setToolTip(_("Parabolic will attempt to remove sponsored segments from YouTube videos."));
-            QLabel* lblSpeedLimit{ new QLabel(parent) };
-            lblSpeedLimit->setText(_("Speed Limit"));
-            lblSpeedLimit->setToolTip(_("The limit to apply to downloads with limiting speed enabled."));
-            spnSpeedLimit = new QSpinBox(parent);
-            spnSpeedLimit->setToolTip(_("The limit to apply to downloads with limiting speed enabled."));
-            spnSpeedLimit->setMinimum(512);
-            spnSpeedLimit->setMaximum(10240);
-            spnSpeedLimit->setSingleStep(512);
             QLabel* lblProxyUrl{ new QLabel(parent) };
             lblProxyUrl->setText(_("Proxy URL"));
             txtProxyUrl = new LineEdit(parent);
@@ -185,7 +177,6 @@ namespace Ui
             QFormLayout* layoutDownloader{ new QFormLayout() };
             layoutDownloader->addRow(lblUsePartFiles, chkUsePartFiles);
             layoutDownloader->addRow(lblSponsorBlock, chkSponsorBlock);
-            layoutDownloader->addRow(lblSpeedLimit, spnSpeedLimit);
             layoutDownloader->addRow(lblProxyUrl, txtProxyUrl);
             layoutDownloader->addRow(lblCookiesBrowser, cmbCookiesBrowser);
             layoutDownloader->addRow(lblCookiesFile, txtCookiesFile);
@@ -302,7 +293,6 @@ namespace Ui
         QComboBox* cmbPreferredSubtitleFormat;
         Switch* chkUsePartFiles;
         Switch* chkSponsorBlock;
-        QSpinBox* spnSpeedLimit;
         LineEdit* txtProxyUrl;
         QLabel* lblCookiesBrowser;
         QComboBox* cmbCookiesBrowser;
@@ -351,7 +341,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->cmbPreferredSubtitleFormat->setCurrentIndex(static_cast<int>(options.getPreferredSubtitleFormat()));
         m_ui->chkUsePartFiles->setChecked(options.getUsePartFiles());
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
-        m_ui->spnSpeedLimit->setValue(options.getSpeedLimit());
         m_ui->txtProxyUrl->setText(QString::fromStdString(options.getProxyUrl()));
         m_ui->cmbCookiesBrowser->setCurrentIndex(static_cast<int>(options.getCookiesBrowser()));
         m_ui->txtCookiesFile->setText(QString::fromStdString(options.getCookiesPath().filename().string()));
@@ -410,7 +399,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(m_ui->cmbPreferredSubtitleFormat->currentIndex()));
         options.setUsePartFiles(m_ui->chkUsePartFiles->isChecked());
         options.setYouTubeSponsorBlock(m_ui->chkSponsorBlock->isChecked());
-        options.setSpeedLimit(m_ui->spnSpeedLimit->value());
         options.setProxyUrl(m_ui->txtProxyUrl->text().toStdString());
         options.setCookiesBrowser(static_cast<Browser>(m_ui->cmbCookiesBrowser->currentIndex()));
         options.setCookiesPath(m_ui->txtCookiesFile->toolTip().toStdString());

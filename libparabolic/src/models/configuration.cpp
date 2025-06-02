@@ -70,7 +70,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setPreferredSubtitleFormat(m_json["PreferredSubtitleFormat"].is_int64() ? static_cast<SubtitleFormat>(m_json["PreferredSubtitleFormat"].as_int64()) : SubtitleFormat::Any);
         options.setUsePartFiles(m_json["UsePartFiles"].is_bool() ? m_json["UsePartFiles"].as_bool() : true);
         options.setYouTubeSponsorBlock(m_json["YouTubeSponsorBlock"].is_bool() ? m_json["YouTubeSponsorBlock"].as_bool() : false);
-        options.setSpeedLimit(m_json["SpeedLimit"].is_int64() ? static_cast<int>(m_json["SpeedLimit"].as_int64()) : 1024);
         options.setProxyUrl(m_json["ProxyUrl"].is_string() ? m_json["ProxyUrl"].as_string().c_str() : "");
         options.setCookiesBrowser(m_json["CookiesBrowser"].is_int64() ? static_cast<Browser>(m_json["CookiesBrowser"].as_int64()) : Browser::None);
         options.setCookiesPath(m_json["CookiesPath"].is_string() ? m_json["CookiesPath"].as_string().c_str() : "");
@@ -99,7 +98,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["PreferredSubtitleFormat"] = static_cast<int>(downloaderOptions.getPreferredSubtitleFormat());
         m_json["UsePartFiles"] = downloaderOptions.getUsePartFiles();
         m_json["YouTubeSponsorBlock"] = downloaderOptions.getYouTubeSponsorBlock();
-        m_json["SpeedLimit"] = downloaderOptions.getSpeedLimit();
         m_json["ProxyUrl"] = downloaderOptions.getProxyUrl();
         m_json["CookiesBrowser"] = static_cast<int>(downloaderOptions.getCookiesBrowser());
         m_json["CookiesPath"] = downloaderOptions.getCookiesPath().string();
