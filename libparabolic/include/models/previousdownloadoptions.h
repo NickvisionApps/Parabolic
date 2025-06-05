@@ -2,7 +2,6 @@
 #define PREVIOUSDOWNLOADOPTIONS_H
 
 #include <filesystem>
-#include <optional>
 #include <string>
 #include <vector>
 #include <libnick/app/datafilebase.h>
@@ -73,16 +72,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param splitChapters The new previous split chapters state
          */
         void setSplitChapters(bool splitChapters);
-        /**
-         * @brief Gets the previous speed limit.
-         * @return The previous speed limit
-         */
-        std::optional<int> getSpeedLimit() const;
-        /**
-         * @brief Sets the previous speed limit.
-         * @param limit The new previous speed limit
-         */
-        void setSpeedLimit(const std::optional<int>& limit);
         /**
          * @brief Gets the previous export description state.
          * @return The previous export description state

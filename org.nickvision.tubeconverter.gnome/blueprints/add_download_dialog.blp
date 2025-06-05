@@ -252,29 +252,6 @@ Adw.Dialog root {
               title: _("Split Videos by Chapters");
             }
 
-            Adw.ExpanderRow limitSpeedSingleRow {
-              title: _("Limit Download Speed");
-              enable-expansion: false;
-              show-enable-switch: true;
-
-              Adw.SpinRow speedLimitSingleRow {
-                title: _("Speed Limit (KiB/s)");
-                numeric: true;
-                adjustment: Gtk.Adjustment {
-                  lower: 512.0;
-                  upper: 10240.0;
-                  step-increment: 512.0;
-                  page-increment: 1024.0;
-                };
-                value: 1024.0;
-
-                [prefix]
-                Gtk.Image {
-                  icon-name: "speedometer-symbolic";
-                }
-              }
-            }
-
             Adw.SwitchRow exportDescriptionSingleRow {
               title: _("Export Description");
             }
@@ -345,29 +322,6 @@ Adw.Dialog root {
 
             Adw.SwitchRow splitChaptersPlaylistRow {
               title: _("Split Videos by Chapters");
-            }
-
-            Adw.ExpanderRow limitSpeedPlaylistRow {
-              title: _("Limit Download Speed");
-              enable-expansion: false;
-              show-enable-switch: true;
-
-              Adw.SpinRow speedLimitPlaylistRow {
-                title: _("Speed Limit (KiB/s)");
-                numeric: true;
-                adjustment: Gtk.Adjustment {
-                  lower: 512.0;
-                  upper: 10240.0;
-                  step-increment: 512.0;
-                  page-increment: 1024.0;
-                };
-                value: 1024.0;
-
-                [prefix]
-                Gtk.Image {
-                  icon-name: "speedometer-symbolic";
-                }
-              }
             }
 
             Adw.SwitchRow exportDescriptionPlaylistRow {

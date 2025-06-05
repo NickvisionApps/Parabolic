@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-06-01 21:32-0400\n"
+"POT-Creation-Date: 2025-06-04 20:10-0400\n"
 "PO-Revision-Date: 2025-03-13 05:02+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -69,8 +69,9 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
-#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
-#: docs/yelp/C/interface.page:35 docs/yelp/C/newDownload.page:58
+#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloads.page:49 docs/yelp/C/interface.page:35
+#: docs/yelp/C/newDownload.page:58
 msgid "Default: Off"
 msgstr "デフォルト: オフ"
 
@@ -362,32 +363,47 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:42
+msgid "Speed Limit"
+msgstr "スピード制限"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:43
+#, fuzzy
+msgid ""
+"The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
+"value between 512 and 10240."
+msgstr ""
+"制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウン"
+"ロードにのみ適用されます。数値は512から10240の整数である必要があります。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:49
 msgid "Proxy URL"
 msgstr "プロキシ URL"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:43
+#: docs/yelp/C/downloader.page:50
 msgid "The url of the proxy server to use."
 msgstr "使用するプロキシサーバーの URL。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloader.page:52
 msgid "Default: No URL"
 msgstr "デフォルト: URL なし"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:49
+#: docs/yelp/C/downloader.page:56
 msgid "Cookies from Browser"
 msgstr "ブラウザのクッキー"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:50
+#: docs/yelp/C/downloader.page:57
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr "Cookie を読み取り yt-dlp のダウンロードエンジンに渡すためのブラウザ。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:51 docs/yelp/C/downloader.page:60
+#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
@@ -396,36 +412,36 @@ msgstr ""
 "ちます。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:59
 msgid "This option is on available on non sandboxed platforms."
 msgstr ""
 "このオプションは、サンドボックス化されていないプラットフォームで利用可能で"
 "す。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:54
+#: docs/yelp/C/downloader.page:61
 msgid "Default: None"
 msgstr "デフォルト: なし"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:58
+#: docs/yelp/C/downloader.page:65
 msgid "Cookies File"
 msgstr "クッキーファイル"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:59
+#: docs/yelp/C/downloader.page:66
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr "yt-dlp のダウンロードエンジンへ渡すためのクッキーの .txt ファイル。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:61
+#: docs/yelp/C/downloader.page:68
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr "拡張機能を使って、ブラウザーからクッキーファイルを入手できます："
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:62
+#: docs/yelp/C/downloader.page:69
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -434,7 +450,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:63
+#: docs/yelp/C/downloader.page:70
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -443,12 +459,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:65
+#: docs/yelp/C/downloader.page:72
 msgid "Use these extensions at your own risk."
 msgstr "これらの拡張機能は、自己責任で使用してください。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:75
 msgid "Default: No File Selected"
 msgstr "デフォルト: ファイル選択なし"
 
@@ -1162,7 +1178,6 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:112 docs/yelp/C/newDownload.page:119
-#: docs/yelp/C/newDownload.page:129
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1171,31 +1186,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:116
-msgid "Speed Limit"
-msgstr "スピード制限"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:117
-#, fuzzy
-msgid ""
-"The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
-"value between 512 and 10240."
-msgstr ""
-"制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウン"
-"ロードにのみ適用されます。数値は512から10240の整数である必要があります。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:122
-msgid "Default: 1024"
-msgstr "デフォルト: 1024"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:126
 msgid "Export Description"
 msgstr "概要をエクスポート"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1204,12 +1199,12 @@ msgstr ""
 "要を <code>.description</code> ファイルにエクスポートします。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:133
+#: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:134
+#: docs/yelp/C/newDownload.page:124
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
@@ -1219,12 +1214,12 @@ msgstr ""
 "有効にします。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:137
+#: docs/yelp/C/newDownload.page:127
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:138
+#: docs/yelp/C/newDownload.page:128
 #, fuzzy
 msgid "If enabled, Parabolic will write a m3u file for the playlist download."
 msgstr ""
@@ -1232,7 +1227,7 @@ msgstr ""
 "有効にします。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:140
+#: docs/yelp/C/newDownload.page:130
 #, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
@@ -1241,12 +1236,12 @@ msgstr ""
 "最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:144
+#: docs/yelp/C/newDownload.page:134
 msgid "Time Frame"
 msgstr "タイムフレーム"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:145
+#: docs/yelp/C/newDownload.page:135
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1255,22 +1250,22 @@ msgstr ""
 "の特定部分をダウンロードできるようになります。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:147
+#: docs/yelp/C/newDownload.page:137
 msgid "Default: The whole media length"
 msgstr "デフォルト: メディア全体の(時間の)長さ"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:151
+#: docs/yelp/C/newDownload.page:141
 msgid "Save Folder"
 msgstr "保存フォルダー"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:152
+#: docs/yelp/C/newDownload.page:142
 msgid "The folder at which to save the download to."
 msgstr "ダウンロードを保存フォルダー。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:154
+#: docs/yelp/C/newDownload.page:144
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1279,19 +1274,22 @@ msgstr ""
 "す。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:158
+#: docs/yelp/C/newDownload.page:148
 msgid "File Name"
 msgstr "ファイル名"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:159
+#: docs/yelp/C/newDownload.page:149
 msgid "The file name to use when saving the download."
 msgstr "ダウンロードを保存する際に使用するファイル名。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:161
+#: docs/yelp/C/newDownload.page:151
 msgid "Default: The title of the media"
 msgstr "デフォルト: メディアのタイトル"
+
+#~ msgid "Default: 1024"
+#~ msgstr "デフォルト: 1024"
 
 #~ msgid "Limit Download Speed"
 #~ msgstr "ダウンロード速度を制限"

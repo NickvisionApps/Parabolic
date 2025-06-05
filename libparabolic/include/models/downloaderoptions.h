@@ -123,6 +123,21 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setYouTubeSponsorBlock(bool sponsorBlock);
         /**
+         * @brief Gets the speed limit for the download.
+         * @brief Limit must be in KiB/s.
+         * @brief Must be between 512 and 10240.
+         * @return The speed limit to use for the download
+         * @return std::nullopt if no limit set
+         */
+        const std::optional<int>& getSpeedLimit() const;
+        /**
+         * @brief Sets the speed limit for the download.
+         * @brief Limit must be in KiB/s.
+         * @brief Must be between 512 and 10240.
+         * @param limit The speed limit to use for the download or std::nullopt to set no limit
+         */
+        void setSpeedLimit(const std::optional<int>& limit);
+        /**
          * @brief Gets the proxy server url to use for downloading.
          * @return The proxy server url
          */
@@ -276,6 +291,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         //Downloader
         bool m_usePartFiles;
         bool m_youTubeSponsorBlock;
+        std::optional<int> m_speedLimit;
         std::string m_proxyUrl;
         Browser m_cookiesBrowser;
         std::filesystem::path m_cookiesPath;

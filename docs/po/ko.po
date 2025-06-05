@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-06-01 21:32-0400\n"
+"POT-Creation-Date: 2025-06-04 20:10-0400\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -68,8 +68,9 @@ msgstr "활성화되면, Parabolic은 aria2c를 사용하여 미디어를 다운
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
-#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
-#: docs/yelp/C/interface.page:35 docs/yelp/C/newDownload.page:58
+#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloads.page:49 docs/yelp/C/interface.page:35
+#: docs/yelp/C/newDownload.page:58
 msgid "Default: Off"
 msgstr "기본값: 꺼짐"
 
@@ -357,32 +358,47 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:42
+msgid "Speed Limit"
+msgstr "속도 제한"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:43
+#, fuzzy
+msgid ""
+"The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
+"value between 512 and 10240."
+msgstr ""
+"고급 옵션 <code>속도 제한</code>이 활성화된 경우에만 다운로드에 적용되는 KiB/"
+"s 단위의 제한입니다. 512와 10240 사이의 정수 값이어야 합니다."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:49
 msgid "Proxy URL"
 msgstr "프록시 URL"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:43
+#: docs/yelp/C/downloader.page:50
 msgid "The url of the proxy server to use."
 msgstr "사용할 프록시 서버의 URL입니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloader.page:52
 msgid "Default: No URL"
 msgstr "기본값: URL 없음"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:49
+#: docs/yelp/C/downloader.page:56
 msgid "Cookies from Browser"
 msgstr "브라우저의 쿠키"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:50
+#: docs/yelp/C/downloader.page:57
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr "yt-dlp의 다운로드 엔진에 전달할 쿠키를 읽을 브라우저입니다."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:51 docs/yelp/C/downloader.page:60
+#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
@@ -391,27 +407,27 @@ msgstr ""
 "수 있습니다."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:59
 msgid "This option is on available on non sandboxed platforms."
 msgstr "이 옵션은 샌드박스되지 않은 플랫폼에서만 사용할 수 있습니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:54
+#: docs/yelp/C/downloader.page:61
 msgid "Default: None"
 msgstr "기본값: 없음"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:58
+#: docs/yelp/C/downloader.page:65
 msgid "Cookies File"
 msgstr "쿠키 파일"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:59
+#: docs/yelp/C/downloader.page:66
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr "다운로드 엔진에서 yt-dlp에 전달할 쿠키의 .txt 파일입니다."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:61
+#: docs/yelp/C/downloader.page:68
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
@@ -419,7 +435,7 @@ msgstr ""
 "브라우저에서 쿠키 파일을 얻기 위해 다음 확장 프로그램 중 하나를 사용하세요:"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:62
+#: docs/yelp/C/downloader.page:69
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -428,7 +444,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:63
+#: docs/yelp/C/downloader.page:70
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -437,12 +453,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:65
+#: docs/yelp/C/downloader.page:72
 msgid "Use these extensions at your own risk."
 msgstr "이 확장 프로그램은 사용자의 책임 하에 사용하세요."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:75
 msgid "Default: No File Selected"
 msgstr "기본값: 선택된 파일 없음"
 
@@ -1147,7 +1163,6 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:112 docs/yelp/C/newDownload.page:119
-#: docs/yelp/C/newDownload.page:129
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -1155,31 +1170,11 @@ msgstr "이전에 사용한 상태는 기억되어 다음 다운로드에서 자
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:116
-msgid "Speed Limit"
-msgstr "속도 제한"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:117
-#, fuzzy
-msgid ""
-"The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
-"value between 512 and 10240."
-msgstr ""
-"고급 옵션 <code>속도 제한</code>이 활성화된 경우에만 다운로드에 적용되는 KiB/"
-"s 단위의 제한입니다. 512와 10240 사이의 정수 값이어야 합니다."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:122
-msgid "Default: 1024"
-msgstr "기본값: 1024"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:126
 msgid "Export Description"
 msgstr "설명 내보내기"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:127
+#: docs/yelp/C/newDownload.page:117
 msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
@@ -1188,12 +1183,12 @@ msgstr ""
 "로드한 파일과 함께 내보냅니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:133
+#: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:134
+#: docs/yelp/C/newDownload.page:124
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
@@ -1202,19 +1197,19 @@ msgstr ""
 "활성화되면, Parabolic은 YouTube 다운로드에 SponsorBlock 확장을 적용합니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:137
+#: docs/yelp/C/newDownload.page:127
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:138
+#: docs/yelp/C/newDownload.page:128
 #, fuzzy
 msgid "If enabled, Parabolic will write a m3u file for the playlist download."
 msgstr ""
 "활성화되면, Parabolic은 YouTube 다운로드에 SponsorBlock 확장을 적용합니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:140
+#: docs/yelp/C/newDownload.page:130
 #, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
@@ -1222,12 +1217,12 @@ msgid ""
 msgstr "이전에 사용한 상태는 기억되어 다음 다운로드에서 자동으로 선택됩니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:144
+#: docs/yelp/C/newDownload.page:134
 msgid "Time Frame"
 msgstr "시간 범위"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:145
+#: docs/yelp/C/newDownload.page:135
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1236,41 +1231,44 @@ msgstr ""
 "로드할 수 있습니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:147
+#: docs/yelp/C/newDownload.page:137
 msgid "Default: The whole media length"
 msgstr "기본값: 전체 미디어 길이"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:151
+#: docs/yelp/C/newDownload.page:141
 msgid "Save Folder"
 msgstr "저장 폴더"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:152
+#: docs/yelp/C/newDownload.page:142
 msgid "The folder at which to save the download to."
 msgstr "다운로드를 저장할 폴더입니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:154
+#: docs/yelp/C/newDownload.page:144
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr "이전에 사용한 폴더는 기억되어 다음 다운로드에서 자동으로 선택됩니다."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:158
+#: docs/yelp/C/newDownload.page:148
 msgid "File Name"
 msgstr "파일 이름"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:159
+#: docs/yelp/C/newDownload.page:149
 msgid "The file name to use when saving the download."
 msgstr "다운로드를 저장할 때 사용할 파일 이름입니다."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:161
+#: docs/yelp/C/newDownload.page:151
 msgid "Default: The title of the media"
 msgstr "기본값: 미디어의 제목"
+
+#~ msgid "Default: 1024"
+#~ msgstr "기본값: 1024"
 
 #~ msgid "Limit Download Speed"
 #~ msgstr "다운로드 속도 제한"

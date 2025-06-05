@@ -40,7 +40,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_saveFolder{ json["SaveFolder"].is_string() ? json["SaveFolder"].as_string().c_str() : "" },
         m_saveFilename{ json["SaveFilename"].is_string() ? json["SaveFilename"].as_string().c_str() : "" },
         m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false },
-        m_speedLimit{ json["SpeedLimit"].is_int64() ? std::make_optional<int>(json["SpeedLimit"].as_int64()) : std::nullopt },
         m_exportDescription{ json["ExportDescription"].is_bool() ? json["ExportDescription"].as_bool() : false },
         m_playlistPosition{ json["PlaylistPosition"].is_int64() ? static_cast<int>(json["PlaylistPosition"].as_int64()) : -1 }
     {
@@ -200,27 +199,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_splitChapters = splitChapters;
     }
 
-    const std::optional<int>& DownloadOptions::getSpeedLimit() const
-    {
-        return m_speedLimit;
-    }
-
-    void DownloadOptions::setSpeedLimit(const std::optional<int>& limit)
-    {
-        if(limit && m_timeFrame.has_value())
-        {
-            m_speedLimit = std::nullopt;
-        }
-        else if(limit && (*limit < 512 || *limit > 10240))
-        {
-            m_speedLimit = 1024;
-        }
-        else
-        {
-            m_speedLimit = limit;
-        }
-    }
-
     bool DownloadOptions::getExportDescription() const
     {
         return m_exportDescription;
@@ -238,14 +216,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::setTimeFrame(const std::optional<TimeFrame>& timeFrame)
     {
-        if(timeFrame && m_speedLimit)
-        {
-            m_timeFrame = std::nullopt;
-        }
-        else
-        {
-            m_timeFrame = timeFrame;
-        }
+        m_timeFrame = timeFrame;
     }
 
     int DownloadOptions::getPlaylistPosition() const
@@ -359,6 +330,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--sponsorblock-remove");
             arguments.push_back("default");
+        }
+        if(downloaderOptions.getSpeedLimit() && !m_timeFrame)
+        {
+            arguments.push_back("--limit-rate");
+            arguments.push_back(std::to_string(*downloaderOptions.getSpeedLimit()) + "K");
         }
         if(!downloaderOptions.getProxyUrl().empty())
         {
@@ -630,11 +606,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--postprocessor-args");
             arguments.push_back(args);
         }
-        if(m_speedLimit)
-        {
-            arguments.push_back("--limit-rate");
-            arguments.push_back(std::to_string(*m_speedLimit) + "K");
-        }
         if(m_exportDescription)
         {
             arguments.push_back("--write-description");
@@ -694,7 +665,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         json["SubtitleLanguages"] = subtitleLanguages;
         json["SplitChapters"] = m_splitChapters;
-        json["SpeedLimit"] = m_speedLimit ? *m_speedLimit : boost::json::value(nullptr);
         json["ExportDescription"] = m_exportDescription;
         if(m_timeFrame)
         {

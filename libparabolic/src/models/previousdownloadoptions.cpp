@@ -74,23 +74,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["SplitChapters"] = splitChapters;
     }
 
-    std::optional<int> PreviousDownloadOptions::getSpeedLimit() const
-    {
-        return m_json["SpeedLimit"].is_int64() ? std::make_optional<int>(m_json["SpeedLimit"].as_int64()) : std::nullopt;
-    }
-
-    void PreviousDownloadOptions::setSpeedLimit(const std::optional<int>& limit)
-    {
-        if(limit && (*limit < 512 || *limit > 10240))
-        {
-            m_json["SpeedLimit"] = 1024;
-        }
-        else
-        {
-            m_json["SpeedLimit"] = limit ? *limit : boost::json::value(nullptr);
-        }
-    }
-
     bool PreviousDownloadOptions::getExportDescription() const
     {
         return m_json["ExportDescription"].is_bool() ? m_json["ExportDescription"].as_bool() : false;

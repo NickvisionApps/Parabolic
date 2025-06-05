@@ -184,23 +184,6 @@ namespace Ui
             QLabel* lblSplitChaptersSingle{ new QLabel(parent) };
             lblSplitChaptersSingle->setText(_("Split Video by Chapters"));
             chkSplitChaptersSingle = new Switch(parent);
-            QLabel* lblLimitSpeedSingle{ new QLabel(parent) };
-            lblLimitSpeedSingle->setText(_("Limit Download Speed"));
-            chkLimitSpeedSingle = new Switch(parent);
-            QLabel* lblSpeedLimitSingle{ new QLabel(parent) };
-            lblSpeedLimitSingle->setText(_("Speed Limit"));
-            lblSpeedLimitSingle->setVisible(false);
-            spnSpeedLimitSingle = new QSpinBox(parent);
-            spnSpeedLimitSingle->setMinimum(512);
-            spnSpeedLimitSingle->setMaximum(10240);
-            spnSpeedLimitSingle->setSingleStep(512);
-            spnSpeedLimitSingle->setValue(1024);
-            spnSpeedLimitSingle->setVisible(false);
-            QObject::connect(chkLimitSpeedSingle, &Switch::clicked, [this, lblSpeedLimitSingle](bool checked)
-            {
-                lblSpeedLimitSingle->setVisible(checked);
-                spnSpeedLimitSingle->setVisible(checked);
-            });
             QLabel* lblExportDescriptionSingle{ new QLabel(parent) };
             lblExportDescriptionSingle->setText(_("Export Description"));
             chkExportDescriptionSingle = new Switch(parent);
@@ -217,8 +200,6 @@ namespace Ui
             txtTimeFrameEndSingle->setPlaceholderText(_("Enter end time here"));
             QFormLayout* layoutAdvancedSingle{ new QFormLayout() };
             layoutAdvancedSingle->addRow(lblSplitChaptersSingle, chkSplitChaptersSingle);
-            layoutAdvancedSingle->addRow(lblLimitSpeedSingle, chkLimitSpeedSingle);
-            layoutAdvancedSingle->addRow(lblSpeedLimitSingle, spnSpeedLimitSingle);
             layoutAdvancedSingle->addRow(lblExportDescriptionSingle, chkExportDescriptionSingle);
             layoutAdvancedSingle->addRow(lblExcludeHistorySingle, chkExcludeHistorySingle);
             layoutAdvancedSingle->addRow(lblTimeFrameStartSingle, txtTimeFrameStartSingle);
@@ -286,23 +267,6 @@ namespace Ui
             QLabel* lblSplitChaptersPlaylist{ new QLabel(parent) };
             lblSplitChaptersPlaylist->setText(_("Split Video by Chapters"));
             chkSplitChaptersPlaylist = new Switch(parent);
-            QLabel* lblLimitSpeedPlaylist{ new QLabel(parent) };
-            lblLimitSpeedPlaylist->setText(_("Limit Download Speed"));
-            chkLimitSpeedPlaylist = new Switch(parent);
-            QLabel* lblSpeedLimitPlaylist{ new QLabel(parent) };
-            lblSpeedLimitPlaylist->setText(_("Speed Limit"));
-            lblSpeedLimitPlaylist->setVisible(false);
-            spnSpeedLimitPlaylist = new QSpinBox(parent);
-            spnSpeedLimitPlaylist->setMinimum(512);
-            spnSpeedLimitPlaylist->setMaximum(10240);
-            spnSpeedLimitPlaylist->setSingleStep(512);
-            spnSpeedLimitPlaylist->setValue(1024);
-            spnSpeedLimitPlaylist->setVisible(false);
-            QObject::connect(chkLimitSpeedPlaylist, &Switch::clicked, [this, lblSpeedLimitPlaylist](bool checked)
-            {
-                lblSpeedLimitPlaylist->setVisible(checked);
-                spnSpeedLimitPlaylist->setVisible(checked);
-            });
             QLabel* lblExportDescriptionPlaylist{ new QLabel(parent) };
             lblExportDescriptionPlaylist->setText(_("Export Description"));
             chkExportDescriptionPlaylist = new Switch(parent);
@@ -338,8 +302,6 @@ namespace Ui
             QFormLayout* layoutGeneralPlaylist{ new QFormLayout() };
             layoutGeneralPlaylist->addRow(lblFileTypePlaylist, layoutFileTypePlaylist);
             layoutGeneralPlaylist->addRow(lblSplitChaptersPlaylist, chkSplitChaptersPlaylist);
-            layoutGeneralPlaylist->addRow(lblLimitSpeedPlaylist, chkLimitSpeedPlaylist);
-            layoutGeneralPlaylist->addRow(lblSpeedLimitPlaylist, spnSpeedLimitPlaylist);
             layoutGeneralPlaylist->addRow(lblExportDescriptionPlaylist, chkExportDescriptionPlaylist);
             layoutGeneralPlaylist->addRow(lblWriteFilePlaylist, chkWriteFilePlaylist);
             layoutGeneralPlaylist->addRow(lblExcludeHistoryPlaylist, chkExcludeHistoryPlaylist);
@@ -420,8 +382,6 @@ namespace Ui
         LineEdit* txtFilenameSingle;
         QPushButton* btnRevertFilenameSingle;
         Switch* chkSplitChaptersSingle;
-        Switch* chkLimitSpeedSingle;
-        QSpinBox* spnSpeedLimitSingle;
         Switch* chkExportDescriptionSingle;
         Switch* chkExcludeHistorySingle;
         LineEdit* txtTimeFrameStartSingle;
@@ -435,8 +395,6 @@ namespace Ui
         QComboBox* cmbFileTypePlaylist;
         QPushButton* btnGenericDisclaimerPlaylist;
         Switch* chkSplitChaptersPlaylist;
-        Switch* chkLimitSpeedPlaylist;
-        QSpinBox* spnSpeedLimitPlaylist;
         Switch* chkExportDescriptionPlaylist;
         Switch* chkWriteFilePlaylist;
         Switch* chkExcludeHistoryPlaylist;
@@ -599,11 +557,6 @@ namespace Nickvision::TubeConverter::Qt::Views
             QtHelpers::setComboBoxItems(m_ui->cmbAudioFormatSingle, m_controller->getAudioFormatStrings(&previous));
             m_ui->cmbAudioFormatSingle->setCurrentIndex(previous);
             m_ui->chkSplitChaptersSingle->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
-            if(m_controller->getPreviousDownloadOptions().getSpeedLimit())
-            {
-                m_ui->chkLimitSpeedSingle->setChecked(true);
-                m_ui->spnSpeedLimitSingle->setValue(*m_controller->getPreviousDownloadOptions().getSpeedLimit());
-            }
             m_ui->chkExportDescriptionSingle->setChecked(m_controller->getPreviousDownloadOptions().getExportDescription());
             m_ui->txtSaveFolderSingle->setText(QString::fromStdString(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
             m_ui->txtFilenameSingle->setText(QString::fromStdString(m_controller->getMediaTitle(0)));
@@ -638,11 +591,6 @@ namespace Nickvision::TubeConverter::Qt::Views
             QtHelpers::setComboBoxItems(m_ui->cmbFileTypePlaylist, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypePlaylist->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
             m_ui->chkSplitChaptersPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
-            if(m_controller->getPreviousDownloadOptions().getSpeedLimit())
-            {
-                m_ui->chkLimitSpeedPlaylist->setChecked(true);
-                m_ui->spnSpeedLimitPlaylist->setValue(*m_controller->getPreviousDownloadOptions().getSpeedLimit());
-            }
             m_ui->chkExportDescriptionPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getExportDescription());
             m_ui->chkWriteFilePlaylist->setChecked(m_controller->getPreviousDownloadOptions().getWritePlaylistFile());
             m_ui->txtSaveFolderPlaylist->setText(QString::fromStdString(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
@@ -717,12 +665,7 @@ namespace Nickvision::TubeConverter::Qt::Views
     
     void AddDownloadDialog::downloadSingle()
     {
-        std::optional<int> speedLimit{ std::nullopt };
         std::vector<std::string> subtitles;
-        if(m_ui->chkLimitSpeedSingle->isChecked())
-        {
-            speedLimit = m_ui->spnSpeedLimitSingle->value();
-        }
         for(int i = 0; i < m_ui->listSubtitlesSingle->count(); i++)
         {
             QListWidgetItem* item{ m_ui->listSubtitlesSingle->item(i) };
@@ -731,7 +674,7 @@ namespace Nickvision::TubeConverter::Qt::Views
                 subtitles.push_back(item->text().toStdString());
             }
         }
-        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbVideoFormatSingle->currentIndex(), m_ui->cmbAudioFormatSingle->currentIndex(), subtitles, m_ui->chkSplitChaptersSingle->isChecked(), speedLimit, m_ui->chkExportDescriptionSingle->isChecked(), m_ui->chkExcludeHistorySingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
+        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbVideoFormatSingle->currentIndex(), m_ui->cmbAudioFormatSingle->currentIndex(), subtitles, m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkExportDescriptionSingle->isChecked(), m_ui->chkExcludeHistorySingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
         accept();
     }
 
@@ -788,7 +731,6 @@ namespace Nickvision::TubeConverter::Qt::Views
     void AddDownloadDialog::downloadPlaylist()
     {
         std::unordered_map<size_t, std::string> filenames;
-        std::optional<int> speedLimit{ std::nullopt };
         for(int i = 0; i < m_ui->listItemsPlaylist->count(); i++)
         {
             QListWidgetItem* item{ m_ui->listItemsPlaylist->item(i) };
@@ -797,11 +739,7 @@ namespace Nickvision::TubeConverter::Qt::Views
                 filenames.emplace(static_cast<size_t>(i), item->text().toStdString());
             }
         }
-        if(m_ui->chkLimitSpeedPlaylist->isChecked())
-        {
-            speedLimit = m_ui->spnSpeedLimitPlaylist->value();
-        }
-        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkSplitChaptersPlaylist->isChecked(), speedLimit, m_ui->chkExportDescriptionPlaylist->isChecked(), m_ui->chkWriteFilePlaylist->isChecked(), m_ui->chkExcludeHistoryPlaylist->isChecked());
+        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkExportDescriptionPlaylist->isChecked(), m_ui->chkWriteFilePlaylist->isChecked(), m_ui->chkExcludeHistoryPlaylist->isChecked());
         accept();
     }
 }
