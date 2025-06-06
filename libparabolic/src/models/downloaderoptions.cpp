@@ -259,6 +259,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_postprocessingThreads = threads;
     }
 
+    std::vector<PostProcessorArguments> DownloaderOptions::getPostprocessingArguments() const
+    {
+        return m_postProcessingArguments;
+    }
+
+    void DownloaderOptions::setPostprocessingArguments(const std::vector<PostProcessorArguments>& args)
+    {
+        m_postProcessingArguments = args;
+    }
+
     bool DownloaderOptions::getUseAria() const
     {
         return m_useAria;

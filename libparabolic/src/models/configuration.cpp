@@ -59,6 +59,14 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     DownloaderOptions Configuration::getDownloaderOptions() const
     {
+        std::vector<PostProcessorArguments> postprocessingArguments;
+        for(const boost::json::value& json : (m_json["PostprocessingArguments"].is_array() ? m_json["PostprocessingArguments"].as_array() : boost::json::array()))
+        {
+            if(json.is_object())
+            {
+                postprocessingArguments.push_back(PostProcessorArguments(json.as_object()));
+            }
+        }
         DownloaderOptions options;
         options.setMaxNumberOfActiveDownloads(m_json["MaxNumberOfActiveDownloads"].is_int64() ? static_cast<int>(m_json["MaxNumberOfActiveDownloads"].as_int64()) : 5);
         options.setOverwriteExistingFiles(m_json["OverwriteExistingFiles"].is_bool() ? m_json["OverwriteExistingFiles"].as_bool() : true);
@@ -81,6 +89,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setEmbedChapters(m_json["EmbedChapters"].is_bool() ? m_json["EmbedChapters"].as_bool() : false);
         options.setEmbedSubtitles(m_json["EmbedSubtitle"].is_bool() ? m_json["EmbedSubtitle"].as_bool() : true);
         options.setPostprocessingThreads(m_json["PostprocessingThreads"].is_int64() ? static_cast<int>(m_json["PostprocessingThreads"].as_int64()) : static_cast<int>(std::thread::hardware_concurrency()));
+        options.setPostprocessingArguments(postprocessingArguments);
         options.setUseAria(m_json["UseAria"].is_bool() ? m_json["UseAria"].as_bool() : false);
         options.setAriaMaxConnectionsPerServer(m_json["AriaMaxConnectionsPerServer"].is_int64() ? static_cast<int>(m_json["AriaMaxConnectionsPerServer"].as_int64()) : 16);
         options.setAriaMinSplitSize(m_json["AriaMinSplitSize"].is_int64() ? static_cast<int>(m_json["AriaMinSplitSize"].as_int64()) : 20);
@@ -89,6 +98,11 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void Configuration::setDownloaderOptions(const DownloaderOptions& downloaderOptions)
     {
+        boost::json::array postprocessingArguments;
+        for(const PostProcessorArguments& args : downloaderOptions.getPostprocessingArguments())
+        {
+            postprocessingArguments.push_back(args.toJson());
+        }
         m_json["MaxNumberOfActiveDownloads"] = downloaderOptions.getMaxNumberOfActiveDownloads();
         m_json["OverwriteExistingFiles"] = downloaderOptions.getOverwriteExistingFiles();
         m_json["LimitCharacters"] = downloaderOptions.getLimitCharacters();
@@ -110,6 +124,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["EmbedChapters"] = downloaderOptions.getEmbedChapters();
         m_json["EmbedSubtitle"] = downloaderOptions.getEmbedSubtitles();
         m_json["PostprocessingThreads"] = downloaderOptions.getPostprocessingThreads();
+        m_json["PostprocessingArguments"] = postprocessingArguments;
         m_json["UseAria"] = downloaderOptions.getUseAria();
         m_json["AriaMaxConnectionsPerServer"] = downloaderOptions.getAriaMaxConnectionsPerServer();
         m_json["AriaMinSplitSize"] = downloaderOptions.getAriaMinSplitSize();

@@ -24,7 +24,7 @@ add_library(libparabolic
     "src/models/m3u.cpp"
     "src/models/media.cpp"
     "src/models/mediafiletype.cpp"
-    "src/models/postprocessarguments.cpp"
+    "src/models/postprocessorarguments.cpp"
     "src/models/previousdownloadoptions.cpp"
     "src/models/startupinformation.cpp"
     "src/models/subtitlelanguage.cpp"

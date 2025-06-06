@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 21:15-0400\n"
+"POT-Creation-Date: 2025-06-06 08:12-0400\n"
 "PO-Revision-Date: 2025-01-04 12:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -81,11 +81,13 @@ msgstr "WAV (audio)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:244
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:274
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:338
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -132,13 +134,14 @@ msgid "Unable to download and install update"
 msgstr "Kan update niet downloaden en installeren"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:273
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Mislukte downloads opnieuw proberen"
 msgstr[1] "Mislukte downloads opnieuw proberen"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:278
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -147,7 +150,7 @@ msgid "Download Finished"
 msgstr "Download voltooid"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "‘{0}’ is klaar met downloaden"
 
@@ -162,7 +165,7 @@ msgid "Download Finished With Error"
 msgstr "Download voltooid met fouten"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:312
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "‘{0}’ is voltooid met een fout!"
 
@@ -171,18 +174,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -212,22 +219,22 @@ msgid "Audio Description"
 msgstr "Audio­beschrĳving"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1172,6 +1179,7 @@ msgstr "Bezig"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1257,10 +1265,12 @@ msgid "No Subtitles Available"
 msgstr "Geen onder­titels beschikbaar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:217
+#, c++-format
 msgid "{} items"
 msgstr "{} items"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1553,6 +1563,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1676,7 +1687,7 @@ msgstr "Bij­werken"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "In wachtrij"
 
@@ -1684,14 +1695,14 @@ msgstr "In wachtrij"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Downloaden"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Voltooid"
 

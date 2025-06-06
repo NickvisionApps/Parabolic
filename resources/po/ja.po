@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 21:15-0400\n"
+"POT-Creation-Date: 2025-06-06 08:12-0400\n"
 "PO-Revision-Date: 2025-02-23 06:07+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -81,11 +81,13 @@ msgstr "WAV (音声)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:244
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:274
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:338
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -133,11 +135,13 @@ msgid "Unable to download and install update"
 msgstr "アップデートをダウンロードしてインストールできません"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:273
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "再試行された {} 個のダウンロード"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:278
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -146,6 +150,7 @@ msgid "Download Finished"
 msgstr "ダウンロードが完了"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} はダウンロード完了です"
 
@@ -160,6 +165,7 @@ msgid "Download Finished With Error"
 msgstr "ダウンロードはエラーで終了"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:312
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} のダウンロードはエラーで終了しました"
 
@@ -168,18 +174,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB /毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/毎秒"
 
@@ -209,22 +219,22 @@ msgid "Audio Description"
 msgstr "音声の概要"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB /毎秒"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/毎秒"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/毎秒"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/毎秒"
 
@@ -1181,6 +1191,7 @@ msgstr "実行中"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1268,10 +1279,12 @@ msgid "No Subtitles Available"
 msgstr "利用可能な字幕がありません"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:217
+#, c++-format
 msgid "{} items"
 msgstr "{} 個のアイテム"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1564,6 +1577,7 @@ msgstr ""
 "るファイル形式を選択してください。"
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} はダウンロードに資格情報を必要とします。使用する資格情報を選択、または入力"
@@ -1691,7 +1705,7 @@ msgstr "アップデート"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "停止中"
 
@@ -1699,14 +1713,14 @@ msgstr "停止中"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "ダウンロード中"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "完了済"
 
@@ -1939,8 +1953,8 @@ msgstr "プロキシの URL を入力"
 #~ "generated ones. To exclude auto-generated ones, turn off the option below."
 #~ msgstr ""
 #~ "同じ言語であっても、サイトによって違った言語コードを使用しているかもしれま"
-#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、\"en"
-#~ "\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
+#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例え"
+#~ "ば、\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
 #~ "より良い結果を得るために、有効な言語コードを全て指定してください。自動生成"
 #~ "された字幕が利用可能な場合は、それらもダウンロードされます。\n"
 #~ "\n"
