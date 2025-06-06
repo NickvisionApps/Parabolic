@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 19:59-0400\n"
+"POT-Creation-Date: 2025-06-04 21:15-0400\n"
 "PO-Revision-Date: 2025-05-14 21:02+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -82,13 +82,11 @@ msgstr "WAV (صوت)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:244
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:274
-#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:338
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
-#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -135,7 +133,7 @@ msgid "Unable to download and install update"
 msgstr "تعذّر تنزيل التحديث وتثبيته"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:273
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "تم إسترداد كل الملفات"
@@ -146,7 +144,6 @@ msgstr[4] "تم إسترداد الكثير من التنزيلات"
 msgstr[5] "تم إسترداد تنزيلات بالجملة"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:278
-#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -155,7 +152,6 @@ msgid "Download Finished"
 msgstr "اكتمل التنزيل"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
-#, c++-format
 msgid "{} has finished downloading"
 msgstr "انتهى تنزيل {}"
 
@@ -170,7 +166,6 @@ msgid "Download Finished With Error"
 msgstr "اكتمل التنزيل مع وجود خطأ"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:312
-#, c++-format
 msgid "{} has finished with an error"
 msgstr "انتهى التحميل مع خطأ {}"
 
@@ -179,22 +174,18 @@ msgid "0 B/s"
 msgstr "0 بايت/ثانية"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} جيجابايت/ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} ميغابايت/ثانية"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} كيلوبايت/ثانية"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} بايت/ث"
 
@@ -224,22 +215,18 @@ msgid "Audio Description"
 msgstr "وصف صوتي"
 
 #: libparabolic/src/models/format.cpp:352
-#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} جيجابايت"
 
 #: libparabolic/src/models/format.cpp:356
-#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} ميغابايت"
 
 #: libparabolic/src/models/format.cpp:360
-#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} كيلوبايت"
 
 #: libparabolic/src/models/format.cpp:364
-#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} بايت"
 
@@ -1185,7 +1172,6 @@ msgstr "جاري التشغيل"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
-#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | الوقت المُقدّر: {}"
 
@@ -1250,12 +1236,13 @@ msgid "TXT Files (*.txt)"
 msgstr "ملفات نصية (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
 #, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences. "
-"Note that YouTube may have blocked your IP or the video may be geo-"
-"restricted."
+"authentication used, the cookies settings, and the preferred codecs "
+"selected. Note that the service may have blocked your IP or the video may be "
+"geo-restricted."
 msgstr ""
 "رابط الـ URL المقدم غير صالح أو لا يمكن الوصول إليه. تحقق من الرابط، وطرق "
 "المصادقة المستخدمة، والمتصفح المحدد لملفات تعريف الارتباط في التفضيلات."
@@ -1272,12 +1259,10 @@ msgid "No Subtitles Available"
 msgstr "لا توجد ترجمة متوفرة"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:217
-#, c++-format
 msgid "{} items"
 msgstr "{} عناصر"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1540,16 +1525,6 @@ msgstr "إختيارات متقدمة"
 msgid "Items"
 msgstr "عناصر"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
-#, fuzzy
-msgid ""
-"The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings. Note "
-"that YouTube may have blocked your IP or the video may be geo-restricted."
-msgstr ""
-"الرابط الذي أدخلته غير صحيح أو لا يمكن الوصول إليه. تحقق من الرابط، والتوثيق "
-"المستخدم، والمتصفح المُسْتَخدم لبيانات تعريف الإرتباط في الإعدادات."
-
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
@@ -1569,7 +1544,6 @@ msgstr ""
 "بالتخزين."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} يحتاج إلى بيانات اعتماد للتنزيل. يرجى تحديد أو إدخال واحد للاستخدام."
@@ -1689,7 +1663,6 @@ msgstr "تحديث"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
-#, c++-format
 msgid "Queued ({})"
 msgstr "في قائمة الانتظار ({})"
 
@@ -1697,14 +1670,12 @@ msgstr "في قائمة الانتظار ({})"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
-#, c++-format
 msgid "Downloading ({})"
 msgstr "جارٍ التنزيل ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
-#, c++-format
 msgid "Completed ({})"
 msgstr "مكتمل ({})"
 
@@ -1736,6 +1707,16 @@ msgstr "حد السرعة"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:165
 msgid "Enter proxy url here"
 msgstr "أدخل رابط خادم الوكيل هنا"
+
+#, fuzzy
+#~ msgid ""
+#~ "The url provided is invalid or unable to be reached. Check the url, the "
+#~ "authentication used, and the selected browser for cookies in settings. "
+#~ "Note that YouTube may have blocked your IP or the video may be geo-"
+#~ "restricted."
+#~ msgstr ""
+#~ "الرابط الذي أدخلته غير صحيح أو لا يمكن الوصول إليه. تحقق من الرابط، "
+#~ "والتوثيق المستخدم، والمتصفح المُسْتَخدم لبيانات تعريف الإرتباط في الإعدادات."
 
 #, fuzzy
 #~ msgid "The limit to apply to downloads with limiting speed enabled."

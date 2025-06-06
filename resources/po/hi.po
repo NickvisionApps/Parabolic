@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 19:59-0400\n"
+"POT-Creation-Date: 2025-06-04 21:15-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -88,13 +88,11 @@ msgstr "ऑडियो"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:244
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:274
-#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:338
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
-#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -144,14 +142,13 @@ msgid "Unable to download and install update"
 msgstr "अपडेट डाउनलोड और इंस्टॉल करने में असमर्थ।"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:273
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "विफल डाउनलोड पुनः प्रयास करें"
 msgstr[1] "विफल डाउनलोड पुनः प्रयास करें"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:278
-#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -160,7 +157,7 @@ msgid "Download Finished"
 msgstr "डाउनलोड समाप्त"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} has finished downloading"
 msgstr "\"{0}\" का डाउनलोड समाप्त हो गया है।"
 
@@ -176,7 +173,7 @@ msgid "Download Finished With Error"
 msgstr "डाउनलोड त्रुटि के साथ समाप्त हुआ"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:312
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} has finished with an error"
 msgstr "\"{0}\" एक त्रुटि के साथ समाप्त हो गया है!"
 
@@ -185,22 +182,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -230,22 +227,22 @@ msgid "Audio Description"
 msgstr ""
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B"
 msgstr "{0:f1} B/s"
 
@@ -1219,7 +1216,6 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
-#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1285,11 +1281,12 @@ msgid "TXT Files (*.txt)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in preferences. "
-"Note that YouTube may have blocked your IP or the video may be geo-"
-"restricted."
+"authentication used, the cookies settings, and the preferred codecs "
+"selected. Note that the service may have blocked your IP or the video may be "
+"geo-restricted."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
@@ -1305,12 +1302,11 @@ msgid "No Subtitles Available"
 msgstr "नया अपडेट उपलब्ध है।"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:217
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} items"
 msgstr "{1} में से {0} आइटम"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1591,13 +1587,6 @@ msgstr "उन्नत विकल्प"
 msgid "Items"
 msgstr "{1} में से {0} आइटम"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
-msgid ""
-"The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, and the selected browser for cookies in settings. Note "
-"that YouTube may have blocked your IP or the video may be geo-restricted."
-msgstr ""
-
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
@@ -1613,7 +1602,6 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1742,7 +1730,7 @@ msgstr "अपडेट"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Queued ({})"
 msgstr "कतारबद्ध"
 
@@ -1750,14 +1738,14 @@ msgstr "कतारबद्ध"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Downloading ({})"
 msgstr "डाउनलोड हो रहा है"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Completed ({})"
 msgstr "पूर्ण"
 

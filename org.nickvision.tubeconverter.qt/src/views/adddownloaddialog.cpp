@@ -538,7 +538,7 @@ namespace Nickvision::TubeConverter::Qt::Views
     {
         if(!m_controller->isUrlValid())
         {
-            QMessageBox::critical(this, _("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, and the selected browser for cookies in settings. Note that YouTube may have blocked your IP or the video may be geo-restricted."), QMessageBox::StandardButton::Ok);
+            QMessageBox::critical(this, _("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, the cookies settings, and the preferred codecs selected. Note that the service may have blocked your IP or the video may be geo-restricted."), QMessageBox::StandardButton::Ok);
             m_ui->viewStack->setCurrentIndex(0);
             return;
         }
