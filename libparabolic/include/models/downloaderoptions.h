@@ -7,7 +7,7 @@
 #include <boost/json.hpp>
 #include "audiocodec.h"
 #include "browser.h"
-#include "postprocessorarguments.h"
+#include "postprocessorargument.h"
 #include "subtitleformat.h"
 #include "videocodec.h"
 
@@ -243,12 +243,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the list of user-defined postprocessing arguments.
          * @return The list of user-defined postprocessing arguments
          */
-        std::vector<PostProcessorArguments> getPostprocessingArguments() const;
+        std::vector<PostProcessorArgument> getPostprocessingArguments() const;
         /**
          * @brief Sets the list of user-defined postprocessing arguments.
          * @param args The new list of user-defined postprocessing arguments
          */
-        void setPostprocessingArguments(const std::vector<PostProcessorArguments>& args);
+        void setPostprocessingArguments(const std::vector<PostProcessorArgument>& args);
         /**
          * @brief Gets whether or not to use aria2 for downloading.
          * @return True to use aria2, else false
@@ -316,7 +316,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool m_embedSubtitles;
         //Postprocessing
         int m_postprocessingThreads;
-        std::vector<PostProcessorArguments> m_postProcessingArguments;
+        std::vector<PostProcessorArgument> m_postProcessingArguments;
         //aria2
         bool m_useAria;
         int m_ariaMaxConnectionsPerServer;

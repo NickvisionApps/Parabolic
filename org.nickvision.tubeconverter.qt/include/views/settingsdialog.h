@@ -4,6 +4,7 @@
 #include <memory>
 #include <QCloseEvent>
 #include <QDialog>
+#include <QListWidgetItem>
 #include <oclero/qlementine/style/ThemeManager.hpp>
 #include "controllers/preferencesviewcontroller.h"
 
@@ -51,8 +52,31 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Clears the cookies file.
          */
         void clearCookiesFile();
+        /**
+         * @brief Prompts the user to add a postprocessing argument.
+         */
+        void addPostprocessingArgument();
+        /**
+         * @brief Handles showing a context menu on the postprocessing arguments list.
+         * @param pos QPoint
+         */
+        void onListPostprocessignArgumentsContextMenu(const QPoint& pos);
+        /**
+         * @brief Handles when a postprocessing argument in the list was double clicked.
+         * @param item The item that was double clicked
+         */
+        void onPostprocessingArgumentDoubleClicked(QListWidgetItem* item);
 
     private:
+        /**
+         * @brief Prompts the user to edit a postprocessing argument.
+         * @param name The name of the postprocessing argument to edit
+         */
+        void editPostprocessingArgument(const QString& name);
+        /**
+         * @brief Reloads the postprocessing arguments to show on the page.
+         */
+        void reloadPostprocessingArguments();
         Ui::SettingsDialog* m_ui;
         std::shared_ptr<Shared::Controllers::PreferencesViewController> m_controller;
         oclero::qlementine::ThemeManager* m_themeManager;

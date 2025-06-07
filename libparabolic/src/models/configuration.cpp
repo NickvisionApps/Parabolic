@@ -59,12 +59,12 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     DownloaderOptions Configuration::getDownloaderOptions() const
     {
-        std::vector<PostProcessorArguments> postprocessingArguments;
+        std::vector<PostProcessorArgument> postprocessingArguments;
         for(const boost::json::value& json : (m_json["PostprocessingArguments"].is_array() ? m_json["PostprocessingArguments"].as_array() : boost::json::array()))
         {
             if(json.is_object())
             {
-                postprocessingArguments.push_back(PostProcessorArguments(json.as_object()));
+                postprocessingArguments.push_back(PostProcessorArgument(json.as_object()));
             }
         }
         DownloaderOptions options;
@@ -99,7 +99,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void Configuration::setDownloaderOptions(const DownloaderOptions& downloaderOptions)
     {
         boost::json::array postprocessingArguments;
-        for(const PostProcessorArguments& args : downloaderOptions.getPostprocessingArguments())
+        for(const PostProcessorArgument& args : downloaderOptions.getPostprocessingArguments())
         {
             postprocessingArguments.push_back(args.toJson());
         }

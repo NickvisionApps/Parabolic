@@ -6,6 +6,8 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QListWidget>
+#include <QMenu>
+#include <QMessageBox>
 #include <QPushButton>
 #include <QSpinBox>
 #include <QStackedWidget>
@@ -268,6 +270,7 @@ namespace Ui
             btnAddPostprocessingArgument->setIcon(QLEMENTINE_ICON(Action_Plus));
             btnAddPostprocessingArgument->setText(_("Add"));
             btnAddPostprocessingArgument->setToolTip(_("Add Postprocessing Argument"));
+            listPostprocessingArguments = new QListWidget(parent);
             QVBoxLayout* layoutLabels{ new QVBoxLayout() };
             layoutLabels->addWidget(lblArguments);
             layoutLabels->addWidget(lblArgumentsDescription);
@@ -281,7 +284,7 @@ namespace Ui
             layoutPostprocessing->addLayout(layoutThreads);
             layoutPostprocessing->addWidget(QtHelpers::createHLine(parent));
             layoutPostprocessing->addLayout(layoutHeader);
-            layoutPostprocessing->addStretch();
+            layoutPostprocessing->addWidget(listPostprocessingArguments);
             QWidget* postprocessingPage{ new QWidget(parent) };
             postprocessingPage->setLayout(layoutPostprocessing);
             viewStack->addWidget(postprocessingPage);
@@ -365,6 +368,7 @@ namespace Ui
         Switch* chkEmbedSubtitles;
         QSpinBox* spnPostprocessingThreads;
         QPushButton* btnAddPostprocessingArgument;
+        QListWidget* listPostprocessingArguments;
         Switch* chkUseAria;
         QSpinBox* spnAriaMaxConnectionsPerServer;
         QSpinBox* spnAriaMinSplitSize;
@@ -433,10 +437,14 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->chkLimitCharacters->setVisible(false);
         }
         m_ui->listNavigation->setCurrentRow(0);
+        reloadPostprocessingArguments();
         //Signals
         connect(m_ui->cmbTheme, &QComboBox::currentIndexChanged, this, &SettingsDialog::onThemeChanged);
         connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsDialog::selectCookiesFile);
         connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsDialog::clearCookiesFile);
+        connect(m_ui->btnAddPostprocessingArgument, &QPushButton::clicked, this, &SettingsDialog::addPostprocessingArgument);
+        connect(m_ui->listPostprocessingArguments, &QListWidget::customContextMenuRequested, this, &SettingsDialog::onListPostprocessignArgumentsContextMenu);
+        connect(m_ui->listPostprocessingArguments, &QListWidget::itemDoubleClicked, this, &SettingsDialog::onPostprocessingArgumentDoubleClicked);
     }
 
     SettingsDialog::~SettingsDialog()
@@ -515,5 +523,182 @@ namespace Nickvision::TubeConverter::Qt::Views
     {
         m_ui->txtCookiesFile->setText("");
         m_ui->txtCookiesFile->setToolTip("");
+    }
+
+    void SettingsDialog::addPostprocessingArgument()
+    {
+        //Add Argument Dialog
+        QDialog* dialog{ new QDialog(this) };
+        dialog->setMinimumSize(300, 360);
+        dialog->setWindowTitle(_("New Argument"));
+        QLabel* lblName{ new QLabel(dialog) };
+        lblName->setText(_("Name"));
+        QLineEdit* txtName{ new QLineEdit(dialog) };
+        txtName->setPlaceholderText("Enter name here");
+        QLabel* lblPostProcessor{ new QLabel(dialog) };
+        lblPostProcessor->setText(_("Post Processor"));
+        QComboBox* cmbPostProcessor{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbPostProcessor, m_controller->getPostProcessorStrings());
+        QLabel* lblExecutable{ new QLabel(dialog) };
+        lblExecutable->setText(_("Executable"));
+        QComboBox* cmbExecutable{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbExecutable, m_controller->getExecutableStrings());
+        QLabel* lblArgs{ new QLabel(dialog) };
+        lblArgs->setText(_("Args"));
+        QLineEdit* txtArgs{ new QLineEdit(dialog) };
+        txtArgs->setPlaceholderText("Enter args here");
+        QPushButton* btnAdd{ new QPushButton(dialog) };
+        btnAdd->setAutoDefault(true);
+        btnAdd->setDefault(true);
+        btnAdd->setIcon(QLEMENTINE_ICON(Action_Plus));
+        btnAdd->setText(_("Add"));
+        QFormLayout* layoutForm{ new QFormLayout() };
+        layoutForm->addRow(lblName, txtName);
+        layoutForm->addRow(lblPostProcessor, cmbPostProcessor);
+        layoutForm->addRow(lblExecutable, cmbExecutable);
+        layoutForm->addRow(lblArgs, txtArgs);
+        QVBoxLayout* layout{ new QVBoxLayout() };
+        layout->addLayout(layoutForm);
+        layout->addWidget(btnAdd);
+        dialog->setLayout(layout);
+        connect(btnAdd, &QPushButton::clicked, [&]()
+        {
+            PostProcessorArgumentCheckStatus status{ m_controller->addPostprocessingArgument(txtName->text().toStdString(), static_cast<PostProcessor>(cmbPostProcessor->currentIndex()), static_cast<Executable>(cmbExecutable->currentIndex()), txtArgs->text().toStdString()) };
+            switch(status)
+            {
+            case PostProcessorArgumentCheckStatus::EmptyName:
+                QMessageBox::critical(this, _("Error"), _("The argument name cannot be empty."), QMessageBox::Ok);
+                break;
+            case PostProcessorArgumentCheckStatus::ExistingName:
+                QMessageBox::critical(this, _("Error"), _("An argument with this name already exists."), QMessageBox::Ok);
+                break;
+            case PostProcessorArgumentCheckStatus::EmptyArgs:
+                QMessageBox::critical(this, _("Error"), _("The argument args cannot be empty."), QMessageBox::Ok);
+                break;
+            default:
+                dialog->close();
+                break;
+            }
+        });
+        dialog->exec();
+        reloadPostprocessingArguments();
+    }
+
+    void SettingsDialog::onListPostprocessignArgumentsContextMenu(const QPoint& pos)
+    {
+        QListWidgetItem* selected;
+        if((selected = m_ui->listPostprocessingArguments->itemAt(pos)))
+        {
+            QMenu menu{ this };
+            menu.addAction(QLEMENTINE_ICON(Misc_Pen), _("Edit Argument"), [this, selected]()
+            {
+                editPostprocessingArgument(selected->text());
+            });
+            menu.addAction(QLEMENTINE_ICON(Action_Trash), _("Delete Argument"), [this, selected]()
+            {
+                QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Argument?"), _("Are you sure you want to delete this argument?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+                if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+                {
+                    m_controller->deletePostprocessingArgument(selected->text().toStdString());
+                    reloadPostprocessingArguments();
+                }
+            });
+            menu.exec(mapToGlobal(pos));
+        }
+    }
+
+    void SettingsDialog::onPostprocessingArgumentDoubleClicked(QListWidgetItem* item)
+    {
+        editPostprocessingArgument(item->text());
+    }
+
+    void SettingsDialog::editPostprocessingArgument(const QString& name)
+    {
+        std::optional<PostProcessorArgument> argument{ m_controller->getPostprocessingArgument(name.toStdString()) };
+        if(!argument)
+        {
+            return;
+        }
+        //Edit Argument Dialog
+        QDialog* dialog{ new QDialog(this) };
+        dialog->setMinimumSize(300, 360);
+        dialog->setWindowTitle(_("Edit Argument"));
+        QLabel* lblName{ new QLabel(dialog) };
+        lblName->setText(_("Name"));
+        QLineEdit* txtName{ new QLineEdit(dialog) };
+        txtName->setPlaceholderText("Enter name here");
+        txtName->setText(QString::fromStdString(argument->getName()));
+        txtName->setEnabled(false);
+        QLabel* lblPostProcessor{ new QLabel(dialog) };
+        lblPostProcessor->setText(_("Post Processor"));
+        QComboBox* cmbPostProcessor{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbPostProcessor, m_controller->getPostProcessorStrings());
+        cmbPostProcessor->setCurrentIndex(static_cast<int>(argument->getPostProcessor()));
+        QLabel* lblExecutable{ new QLabel(dialog) };
+        lblExecutable->setText(_("Executable"));
+        QComboBox* cmbExecutable{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbExecutable, m_controller->getExecutableStrings());
+        cmbExecutable->setCurrentIndex(static_cast<int>(argument->getExecutable()));
+        QLabel* lblArgs{ new QLabel(dialog) };
+        lblArgs->setText(_("Args"));
+        QLineEdit* txtArgs{ new QLineEdit(dialog) };
+        txtArgs->setPlaceholderText("Enter args here");
+        txtArgs->setText(QString::fromStdString(argument->getArgs()));
+        QPushButton* btnSave{ new QPushButton(dialog) };
+        btnSave->setAutoDefault(true);
+        btnSave->setDefault(true);
+        btnSave->setIcon(QLEMENTINE_ICON(Action_Save));
+        btnSave->setText(_("Save"));
+        QPushButton* btnDelete{ new QPushButton(dialog) };
+        btnDelete->setAutoDefault(false);
+        btnDelete->setDefault(false);
+        btnDelete->setIcon(QLEMENTINE_ICON(Action_Trash));
+        btnDelete->setText(_("Delete"));
+        QFormLayout* layoutForm{ new QFormLayout() };
+        layoutForm->addRow(lblName, txtName);
+        layoutForm->addRow(lblPostProcessor, cmbPostProcessor);
+        layoutForm->addRow(lblExecutable, cmbExecutable);
+        layoutForm->addRow(lblArgs, txtArgs);
+        QHBoxLayout* layoutButtons{ new QHBoxLayout() };
+        layoutButtons->addWidget(btnDelete);
+        layoutButtons->addWidget(btnSave);
+        QVBoxLayout* layout{ new QVBoxLayout() };
+        layout->addLayout(layoutForm);
+        layout->addLayout(layoutButtons);
+        dialog->setLayout(layout);
+        connect(btnSave, &QPushButton::clicked, [&]()
+        {
+            PostProcessorArgumentCheckStatus status{ m_controller->updatePostprocessingArgument(argument->getName(), static_cast<PostProcessor>(cmbPostProcessor->currentIndex()), static_cast<Executable>(cmbExecutable->currentIndex()), txtArgs->text().toStdString()) };
+            switch(status)
+            {
+            case PostProcessorArgumentCheckStatus::EmptyArgs:
+                QMessageBox::critical(this, _("Error"), _("The argument args cannot be empty."), QMessageBox::Ok);
+                break;
+            default:
+                dialog->close();
+                break;
+            }
+        });
+        connect(btnDelete, &QPushButton::clicked, [&]()
+        {
+            QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Argument?"), _("Are you sure you want to delete this argument?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+            if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+            {
+                m_controller->deletePostprocessingArgument(argument->getName());
+                dialog->close();
+            }
+        });
+        dialog->exec();
+        reloadPostprocessingArguments();
+    }
+
+    void SettingsDialog::reloadPostprocessingArguments()
+    {
+        m_ui->listPostprocessingArguments->clear();
+        for(const PostProcessorArgument& argument : m_controller->getDownloaderOptions().getPostprocessingArguments())
+        {
+            QListWidgetItem* item{ new QListWidgetItem(QString::fromStdString(argument.getName()), m_ui->listPostprocessingArguments) };
+            m_ui->listPostprocessingArguments->addItem(item);
+        }
     }
 }

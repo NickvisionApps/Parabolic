@@ -1,5 +1,5 @@
-#ifndef POSTPROCESSORARGUMENTS_H
-#define POSTPROCESSORARGUMENTS_H
+#ifndef POSTPROCESSORARGUMENT_H
+#define POSTPROCESSORARGUMENT_H
 
 #include <string>
 #include <boost/json.hpp>
@@ -11,22 +11,22 @@ namespace Nickvision::TubeConverter::Shared::Models
     /**
      * @brief A model of arguments to pass to a post-processor.
      */
-    class PostProcessorArguments
+    class PostProcessorArgument
     {
     public:
         /**
-         * @brief Constructs a PostProcessorArguments.
+         * @brief Constructs a PostProcessorArgument.
          * @param name The name of the arguments
          * @param postProcessor The post-processor to pass the arguments too
          * @param executable The executable to pass the arguments too
          * @param args The arguments to pass to the post-processor
          */
-        PostProcessorArguments(const std::string& name, PostProcessor postProcessor, Executable executable, const std::string& args);
+        PostProcessorArgument(const std::string& name, PostProcessor postProcessor, Executable executable, const std::string& args);
         /**
-         * @brief Constructs a PostProcessorArguments.
-         * @param json The JSON object to construct the PostProcessorArguments from
+         * @brief Constructs a PostProcessorArgument.
+         * @param json The JSON object to construct the PostProcessorArgument from
          */
-        PostProcessorArguments(boost::json::object json);
+        PostProcessorArgument(boost::json::object json);
         /**
          * @brief Gets the name of the arguments.
          * @return The name of the arguments
@@ -82,13 +82,25 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param other The other PostProcessorArguments to compare
          * @return True if this == other
          */
-        bool operator==(const PostProcessorArguments& other) const;
+        bool operator==(const PostProcessorArgument& other) const;
         /**
          * @brief Compares two PostProcessorArguments via !=.
          * @param other The other PostProcessorArguments to compare
          * @return True if this != other
          */
-        bool operator!=(const PostProcessorArguments& other) const;
+        bool operator!=(const PostProcessorArgument& other) const;
+        /**
+         * @brief Compares two PostProcessorArguments via <.
+         * @param other The other PostProcessorArguments to compare
+         * @return True if this < other
+         */
+        bool operator<(const PostProcessorArgument& other) const;
+        /**
+         * @brief Compares two PostProcessorArguments via >.
+         * @param other The other PostProcessorArguments to compare
+         * @return True if this > other
+         */
+        bool operator>(const PostProcessorArgument& other) const;
 
     private:
         std::string m_name;
@@ -98,4 +110,4 @@ namespace Nickvision::TubeConverter::Shared::Models
     };
 }
 
-#endif //POSTPROCESSORARGUMENTS_H
+#endif //POSTPROCESSORARGUMENT_H

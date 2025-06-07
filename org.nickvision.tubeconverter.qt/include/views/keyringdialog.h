@@ -35,11 +35,6 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void addCredential();
         /**
-         * @brief Prompts the user to edit a credential.
-         * @param name The name of the credential to edit
-         */
-        void editCredential(const QString& name);
-        /**
          * @brief Handles showing a context menu on the credentials list.
          * @param pos QPoint
          */
@@ -51,6 +46,11 @@ namespace Nickvision::TubeConverter::Qt::Views
         void onCredentialDoubleClicked(QListWidgetItem* item);
 
     private:
+        /**
+         * @brief Prompts the user to edit a credential.
+         * @param name The name of the credential to edit
+         */
+        void editCredential(const QString& name);
         /**
          * @brief Reloads the credentials to show on the page.
          */

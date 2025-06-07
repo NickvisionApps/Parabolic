@@ -1,4 +1,4 @@
-#include "models/postprocessorarguments.h"
+#include "models/postprocessorargument.h"
 #include <format>
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -57,7 +57,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return "";
     }
 
-    PostProcessorArguments::PostProcessorArguments(const std::string& name, PostProcessor postProcessor, Executable executable, const std::string& args)
+    PostProcessorArgument::PostProcessorArgument(const std::string& name, PostProcessor postProcessor, Executable executable, const std::string& args)
         : m_name{ name },
         m_postProcessor{ postProcessor },
         m_executable{ executable },
@@ -66,7 +66,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     }
 
-    PostProcessorArguments::PostProcessorArguments(boost::json::object json)
+    PostProcessorArgument::PostProcessorArgument(boost::json::object json)
         : m_name{ json["Name"].is_string() ? json["Name"].as_string() : "" },
         m_postProcessor{ json["PostProcessor"].is_int64() ? static_cast<PostProcessor>(json["PostProcessor"].as_int64()) : PostProcessor::None },
         m_executable{ json["Executable"].is_int64() ? static_cast<Executable>(json["Executable"].as_int64()) : Executable::None },
@@ -75,47 +75,47 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     }
 
-    const std::string& PostProcessorArguments::getName() const
+    const std::string& PostProcessorArgument::getName() const
     {
         return m_name;
     }
 
-    void PostProcessorArguments::setName(const std::string& name)
+    void PostProcessorArgument::setName(const std::string& name)
     {
         m_name = name;
     }
 
-    PostProcessor PostProcessorArguments::getPostProcessor() const
+    PostProcessor PostProcessorArgument::getPostProcessor() const
     {
         return m_postProcessor;
     }
 
-    void PostProcessorArguments::setPostProcessor(PostProcessor postProcessor)
+    void PostProcessorArgument::setPostProcessor(PostProcessor postProcessor)
     {
         m_postProcessor = postProcessor;
     }
 
-    Executable PostProcessorArguments::getExecutable() const
+    Executable PostProcessorArgument::getExecutable() const
     {
         return m_executable;
     }
 
-    void PostProcessorArguments::setExecutable(Executable executable)
+    void PostProcessorArgument::setExecutable(Executable executable)
     {
         m_executable = executable;
     }
 
-    const std::string& PostProcessorArguments::getArgs() const
+    const std::string& PostProcessorArgument::getArgs() const
     {
        return m_args;
     }
 
-    void PostProcessorArguments::setArgs(const std::string& args)
+    void PostProcessorArgument::setArgs(const std::string& args)
     {
        m_args = args;
     }
 
-    std::string PostProcessorArguments::str() const
+    std::string PostProcessorArgument::str() const
     {
         if(m_postProcessor == PostProcessor::None && m_executable == Executable::None)
         {
@@ -136,7 +136,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return "";
     }
 
-    boost::json::object PostProcessorArguments::toJson() const
+    boost::json::object PostProcessorArgument::toJson() const
     {
         boost::json::object json;
         json["Name"] = m_name;
@@ -146,7 +146,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return json;
     }
 
-    bool PostProcessorArguments::operator==(const PostProcessorArguments& other) const
+    bool PostProcessorArgument::operator==(const PostProcessorArgument& other) const
     {
         if(m_name == other.m_name)
         {
@@ -155,8 +155,18 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_postProcessor == other.m_postProcessor && m_executable == other.m_executable && m_args == other.m_args;
     }
 
-    bool PostProcessorArguments::operator!=(const PostProcessorArguments& other) const
+    bool PostProcessorArgument::operator!=(const PostProcessorArgument& other) const
     {
         return !(operator==(other));
+    }
+
+    bool PostProcessorArgument::operator<(const PostProcessorArgument& other) const
+    {
+        return m_name < other.m_name;
+    }
+
+    bool PostProcessorArgument::operator>(const PostProcessorArgument& other) const
+    {
+        return m_name < other.m_name;
     }
 }

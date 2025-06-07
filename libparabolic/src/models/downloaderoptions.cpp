@@ -1,4 +1,5 @@
 #include "models/downloaderoptions.h"
+#include <algorithm>
 #include <thread>
 #include <libnick/system/environment.h>
 
@@ -259,14 +260,15 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_postprocessingThreads = threads;
     }
 
-    std::vector<PostProcessorArguments> DownloaderOptions::getPostprocessingArguments() const
+    std::vector<PostProcessorArgument> DownloaderOptions::getPostprocessingArguments() const
     {
         return m_postProcessingArguments;
     }
 
-    void DownloaderOptions::setPostprocessingArguments(const std::vector<PostProcessorArguments>& args)
+    void DownloaderOptions::setPostprocessingArguments(const std::vector<PostProcessorArgument>& args)
     {
         m_postProcessingArguments = args;
+        std::sort(m_postProcessingArguments.begin(), m_postProcessingArguments.end());
     }
 
     bool DownloaderOptions::getUseAria() const
