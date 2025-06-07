@@ -136,17 +136,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setSplitChapters(bool splitChapters);
         /**
-         * @brief Gets whether or not to limit the download speed.
-         * @return True if limiting the download speed, else false
-         */
-        bool getLimitSpeed() const;
-        /**
-         * @brief Sets whether or not to limit the download speed.
-         * @brief Can only be set to true if no time frame was specified.
-         * @param limitSpeed True if limiting the download speed, else false
-         */
-        void setLimitSpeed(bool limitSpeed);
-        /**
          * @brief Gets whether or not to export the media description to a file.
          * @return True to export the media description, else false
          */
@@ -213,7 +202,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_saveFilename;
         std::vector<SubtitleLanguage> m_subtitleLanguages;
         bool m_splitChapters;
-        bool m_limitSpeed;
         bool m_exportDescription;
         std::optional<TimeFrame> m_timeFrame;
         int m_playlistPosition;

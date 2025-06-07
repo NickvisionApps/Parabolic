@@ -87,7 +87,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     }
 
     Download::Download(const DownloadOptions& options)
-        : m_id{ ++s_downloadIdCounter }, 
+        : m_id{ s_downloadIdCounter++ },
         m_options{ options },
         m_status{ DownloadStatus::Queued },
         m_path{ m_options.getSaveFolder() / (m_options.getSaveFilename() + m_options.getFileType().getDotExtension()) },

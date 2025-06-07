@@ -19,8 +19,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("themeRow"), static_cast<unsigned int>(m_controller->getTheme()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("preventSuspendRow"), m_controller->getPreventSuspend());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("recoverCrashedDownloadsRow"), m_controller->getRecoverCrashedDownloads());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow"), m_controller->getDownloadImmediatelyAfterValidation());
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("historyLengthRow"), static_cast<unsigned int>(m_controller->getHistoryLengthIndex()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("maxNumberOfActiveDownloadsRow"), static_cast<double>(options.getMaxNumberOfActiveDownloads()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("overwriteExistingFilesRow"), options.getOverwriteExistingFiles());
@@ -32,7 +30,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"), static_cast<unsigned int>(options.getPreferredSubtitleFormat()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("usePartFilesRow"), options.getUsePartFiles());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow"), options.getYouTubeSponsorBlock());
-        adw_spin_row_set_value(m_builder.get<AdwSpinRow>("speedLimitRow"), static_cast<double>(options.getSpeedLimit()));
+        if(options.getSpeedLimit())
+        {
+            adw_expander_row_set_enable_expansion(m_builder.get<AdwExpanderRow>("limitSpeedRow"), true);
+            adw_spin_row_set_value(m_builder.get<AdwSpinRow>("speedLimitRow"), *options.getSpeedLimit());
+        }
         gtk_editable_set_text(m_builder.get<GtkEditable>("proxyUrlRow"), options.getProxyUrl().c_str());
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"), static_cast<unsigned int>(options.getCookiesBrowser()));
         adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), options.getCookiesPath().filename().string().c_str());
@@ -68,8 +70,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setPreventSuspend(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("preventSuspendRow")));
-        m_controller->setRecoverCrashedDownloads(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("recoverCrashedDownloadsRow")));
-        m_controller->setDownloadImmediatelyAfterValidation(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow")));
         m_controller->setHistoryLengthIndex(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("historyLengthRow"))));
         options.setMaxNumberOfActiveDownloads(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("maxNumberOfActiveDownloadsRow"))));
         options.setOverwriteExistingFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("overwriteExistingFilesRow")));
@@ -81,7 +81,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"))));
         options.setUsePartFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("usePartFilesRow")));
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow")));
-        options.setSpeedLimit(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("speedLimitRow"))));
+        options.setSpeedLimit(adw_expander_row_get_enable_expansion(m_builder.get<AdwExpanderRow>("limitSpeedRow")) ? std::make_optional<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("speedLimitRow"))) : std::nullopt);
         options.setProxyUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("proxyUrlRow")));
         options.setCookiesBrowser(static_cast<Browser>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"))));
         options.setCookiesPath(gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) ? gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) : "");

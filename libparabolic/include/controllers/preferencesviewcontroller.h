@@ -6,6 +6,7 @@
 #include "models/configuration.h"
 #include "models/downloaderoptions.h"
 #include "models/downloadhistory.h"
+#include "models/postprocessorargumentcheckstatus.h"
 #include "models/theme.h"
 
 namespace Nickvision::TubeConverter::Shared::Controllers
@@ -58,20 +59,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setPreventSuspend(bool prevent);
         /**
-         * @brief Gets whether or not to recover crashed downloads.
-         * @return True to recover crashed downloads, else false
-         */
-        bool getRecoverCrashedDownloads() const;
-        /**
-         * @brief Sets whether or not to recover crashed downloads.
-         * @param recoverCrashedDownloads True to recover crashed downloads, else false
-         */
-        void setRecoverCrashedDownloads(bool recoverCrashedDownloads);
-        /**
          * @brief Gets the downloader options.
          * @return The downloader options
          */
-        Models::DownloaderOptions getDownloaderOptions() const;
+        const Models::DownloaderOptions& getDownloaderOptions() const;
         /**
          * @brief Sets the downloader options.
          * @param options The new downloader options
@@ -88,15 +79,46 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setHistoryLengthIndex(size_t length);
         /**
-         * @brief Gets whether or not to download immediately after validation.
-         * @return True to download immediately after validation, else false
+         * @brief Gets the list of post processor strings.
+         * @return The list of post processor strings
          */
-        bool getDownloadImmediatelyAfterValidation() const;
+        const std::vector<std::string>& getPostProcessorStrings() const;
         /**
-         * @brief Sets whether or not to download immediately after validation.
-         * @param downloadImmediatelyAfterValidation True to download immediately after validation, else false
+         * @brief Gets the list of executable strings.
+         * @return The list of executable strings
          */
-        void setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation);
+        const std::vector<std::string>& getExecutableStrings() const;
+        /**
+         * @brief Gets a postprocessing argument from the downloader options.
+         * @param name The name of the argument to get
+         * @return std::optional<PostProcessorArgument>
+         */
+        std::optional<Models::PostProcessorArgument> getPostprocessingArgument(const std::string& name) const;
+        /**
+         * @brief Adds a postprocessing argument to the downloader options.
+         * @param name The name of the argument
+         * @param postProcessor The post processor of the argument
+         * @param executable The executable of the argument
+         * @param args The args of the argument
+         * @return PostProcessorArgumentCheckStatus
+         */
+        Models::PostProcessorArgumentCheckStatus addPostprocessingArgument(const std::string& name, Models::PostProcessor postProcessor, Models::Executable executable, const std::string& args);
+        /**
+         * @brief Updates a postprocessing argument in the downloader options.
+         * @param name The name of the argument
+         * @param postProcessor The post processor of the argument
+         * @param executable The executable of the argument
+         * @param args The args of the argument
+         * @return PostProcessorArgumentCheckStatus
+         */
+        Models::PostProcessorArgumentCheckStatus updatePostprocessingArgument(const std::string& name, Models::PostProcessor postProcessor, Models::Executable executable, const std::string& args);
+        /**
+         * @brief Deletes a postprocessing argument from the downloader options.
+         * @param name The name of the argument to delete
+         * @return True if deleted
+         * @return False if not deleted
+         */
+        bool deletePostprocessingArgument(const std::string& name);
         /**
          * @brief Saves the current configuration to disk.
          */
@@ -105,6 +127,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     private:
         Models::Configuration& m_configuration;
         Models::DownloadHistory& m_downloadHistory;
+        Models::DownloaderOptions m_options;
     };
 }
 

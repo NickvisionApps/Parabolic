@@ -62,16 +62,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setPreventSuspend(bool prevent);
         /**
-         * @brief Gets whether or not to recover crashed downloads.
-         * @return True to recover crashed downloads, else false
-         */
-        bool getRecoverCrashedDownloads() const;
-        /**
-         * @brief Sets whether or not to recover crashed downloads.
-         * @param recoverCrashedDownloads True to recover crashed downloads, else false
-         */
-        void setRecoverCrashedDownloads(bool recoverCrashedDownloads);
-        /**
          * @brief Gets the downloader options.
          * @return The downloader options
          */
@@ -91,16 +81,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param showDisclaimerOnStartup True to show the disclaimer, else false
          */
         void setShowDisclaimerOnStartup(bool showDisclaimerOnStartup);
-        /**
-         * @brief Gets whether or not to download immediately after validation.
-         * @return True to download immediately after validation, else false
-         */
-        bool getDownloadImmediatelyAfterValidation() const;
-        /**
-         * @brief Sets whether or not to download immediately after validation.
-         * @param downloadImmediatelyAfterValidation True to download immediately after validation, else false
-         */
-        void setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation);
     };
 }
 

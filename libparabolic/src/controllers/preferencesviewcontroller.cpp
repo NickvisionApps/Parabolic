@@ -1,5 +1,6 @@
 #include "controllers/preferencesviewcontroller.h"
 #include <thread>
+#include <libnick/localization/gettext.h>
 
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -7,7 +8,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 {
     PreferencesViewController::PreferencesViewController(Configuration& configuration, Models::DownloadHistory& downloadHistory)
         : m_configuration{ configuration },
-        m_downloadHistory{ downloadHistory }
+        m_downloadHistory{ downloadHistory },
+        m_options{ m_configuration.getDownloaderOptions() }
     {
 
     }
@@ -47,24 +49,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_configuration.setPreventSuspend(prevent);
     }
 
-    bool PreferencesViewController::getRecoverCrashedDownloads() const
+    const DownloaderOptions& PreferencesViewController::getDownloaderOptions() const
     {
-        return m_configuration.getRecoverCrashedDownloads();
-    }
-
-    void PreferencesViewController::setRecoverCrashedDownloads(bool recover)
-    {
-        m_configuration.setRecoverCrashedDownloads(recover);
-    }
-
-    DownloaderOptions PreferencesViewController::getDownloaderOptions() const
-    {
-        return m_configuration.getDownloaderOptions();
+        return m_options;
     }
 
     void PreferencesViewController::setDownloaderOptions(const DownloaderOptions& options)
     {
-        m_configuration.setDownloaderOptions(options);
+        m_options = options;
     }
 
     size_t PreferencesViewController::getHistoryLengthIndex() const
@@ -116,18 +108,119 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    bool PreferencesViewController::getDownloadImmediatelyAfterValidation() const
+    const std::vector<std::string>& PreferencesViewController::getPostProcessorStrings() const
     {
-        return m_configuration.getDownloadImmediatelyAfterValidation();
+        static std::vector<std::string> postProcessors;
+        if(postProcessors.empty())
+        {
+            postProcessors.push_back(_("None"));
+            postProcessors.push_back("Merger");
+            postProcessors.push_back("ModifyChapters");
+            postProcessors.push_back("SplitChapters");
+            postProcessors.push_back("ExtractAudio");
+            postProcessors.push_back("VideoRemuxer");
+            postProcessors.push_back("VideoConverter");
+            postProcessors.push_back("Metadata");
+            postProcessors.push_back("EmbedSubtitle");
+            postProcessors.push_back("EmbedThumbnail");
+            postProcessors.push_back("SubtitlesConverter");
+            postProcessors.push_back("ThumbnailsConverter");
+            postProcessors.push_back("FixupStretched");
+            postProcessors.push_back("FixupM4a");
+            postProcessors.push_back("FixupM3u8");
+            postProcessors.push_back("FixupTimestamp");
+            postProcessors.push_back("FixupDuration");
+        }
+        return postProcessors;
     }
 
-    void PreferencesViewController::setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation)
+    const std::vector<std::string>& PreferencesViewController::getExecutableStrings() const
     {
-        m_configuration.setDownloadImmediatelyAfterValidation(downloadImmediatelyAfterValidation);
+        static std::vector<std::string> executables;
+        if(executables.empty())
+        {
+            executables.push_back(_("None"));
+            executables.push_back("AtomicParsley");
+            executables.push_back("FFmpeg");
+            executables.push_back("FFprobe");
+        }
+        return executables;
+    }
+
+    std::optional<PostProcessorArgument> PreferencesViewController::getPostprocessingArgument(const std::string& name) const
+    {
+        for(const PostProcessorArgument& argument : m_options.getPostprocessingArguments())
+        {
+            if(argument.getName() == name)
+            {
+                return argument;
+            }
+        }
+        return std::nullopt;
+    }
+
+    PostProcessorArgumentCheckStatus PreferencesViewController::addPostprocessingArgument(const std::string& name, PostProcessor postProcessor, Executable executable, const std::string& args)
+    {
+        if(name.empty())
+        {
+            return PostProcessorArgumentCheckStatus::EmptyName;
+        }
+        else if(args.empty())
+        {
+            return PostProcessorArgumentCheckStatus::EmptyArgs;
+        }
+        std::vector<PostProcessorArgument> arguments{ m_options.getPostprocessingArguments() };
+        for(const PostProcessorArgument& argument : arguments)
+        {
+            if(argument.getName() == name)
+            {
+                return PostProcessorArgumentCheckStatus::ExistingName;
+            }
+        }
+        arguments.push_back({ name, postProcessor, executable, args });
+        m_options.setPostprocessingArguments(arguments);
+        return PostProcessorArgumentCheckStatus::Valid;
+    }
+
+    PostProcessorArgumentCheckStatus PreferencesViewController::updatePostprocessingArgument(const std::string& name, PostProcessor postProcessor, Executable executable, const std::string& args)
+    {
+        if(args.empty())
+        {
+            return PostProcessorArgumentCheckStatus::EmptyArgs;
+        }
+        std::vector<PostProcessorArgument> arguments{ m_options.getPostprocessingArguments() };
+        for(std::vector<PostProcessorArgument>::iterator it = arguments.begin(); it != arguments.end(); ++it)
+        {
+            if(it->getName() == name)
+            {
+                it->setPostProcessor(postProcessor);
+                it->setExecutable(executable);
+                it->setArgs(args);
+                m_options.setPostprocessingArguments(arguments);
+                return PostProcessorArgumentCheckStatus::Valid;
+            }
+        }
+        return PostProcessorArgumentCheckStatus::EmptyName;
+    }
+
+    bool PreferencesViewController::deletePostprocessingArgument(const std::string& name)
+    {
+        std::vector<PostProcessorArgument> arguments{ m_options.getPostprocessingArguments() };
+        for(std::vector<PostProcessorArgument>::iterator it = arguments.begin(); it != arguments.end(); ++it)
+        {
+            if(it->getName() == name)
+            {
+                arguments.erase(it);
+                m_options.setPostprocessingArguments(arguments);
+                return true;
+            }
+        }
+        return false;
     }
 
     void PreferencesViewController::saveConfiguration()
     {
+        m_configuration.setDownloaderOptions(m_options);
         m_configuration.save();
     }
 }

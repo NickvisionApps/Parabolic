@@ -135,10 +135,13 @@ namespace Nickvision::TubeConverter::GNOME::Views
 #else
         const StartupInformation& info{ m_controller->startup() };
 #endif
-        gtk_window_set_default_size(GTK_WINDOW(m_window), static_cast<int>(info.getWindowGeometry().getWidth()), static_cast<int>(info.getWindowGeometry().getHeight()));
         if(info.getWindowGeometry().isMaximized())
         {
             gtk_window_maximize(GTK_WINDOW(m_window));
+        }
+        else
+        {
+            gtk_window_set_default_size(GTK_WINDOW(m_window), static_cast<int>(info.getWindowGeometry().getWidth()), static_cast<int>(info.getWindowGeometry().getHeight()));
         }
         gtk_list_box_select_row(m_builder.get<GtkListBox>("listNavItems"), gtk_list_box_get_row_at_index(m_builder.get<GtkListBox>("listNavItems"), Pages::Home));
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), "no-downloading");
@@ -156,6 +159,27 @@ namespace Nickvision::TubeConverter::GNOME::Views
             {
                 MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
                 mainWindow->m_controller->setShowDisclaimerOnStartup(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
+            }), this);
+            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+        }
+        if(info.hasRecoverableDownloads())
+        {
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Recover Crashed Downloads?"), _("There are downloads available to recover from when Parabolic crashed. Would you like to recover them?"))) };
+            adw_alert_dialog_add_responses(dialog, "yes", _("Yes"), "no", _("No"), nullptr);
+            adw_alert_dialog_set_response_appearance (dialog, "yes", ADW_RESPONSE_SUGGESTED);
+            adw_alert_dialog_set_default_response(dialog, "no");
+            adw_alert_dialog_set_close_response(dialog, "no");
+            g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char* response, gpointer data)
+            {
+                MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
+                if(std::string(response) == "yes")
+                {
+                    mainWindow->m_controller->recoverDownloads();
+                }
+                else
+                {
+                    mainWindow->m_controller->clearRecoverableDownloads();
+                }
             }), this);
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
         }

@@ -10,9 +10,7 @@
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
-#include "models/configuration.h"
 #include "models/downloadmanager.h"
-#include "models/format.h"
 #include "models/timeframe.h"
 #include "models/urlinfo.h"
 #include "models/previousdownloadoptions.h"
@@ -52,16 +50,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The list of credential names in the keyring
          */
         std::vector<std::string> getKeyringCredentialNames() const;
-        /**
-         * @brief Gets whether or not to download immediately after validation.
-         * @return True to download immediately after validation, else false
-         */
-        bool getDownloadImmediatelyAfterValidation() const;
-        /**
-         * @brief Gets whether or not a valid url has been validated.
-         * @return True if valid url, else false
-         */
-        bool isUrlValid() const;
         /**
          * @brief Gets whether or not the url is a playlist.
          * @return True if playlist, else false
@@ -114,6 +102,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         const Models::TimeFrame& getMediaTimeFrame(size_t index) const;
         /**
+         * @brief Sets the previous number titles option.
+         * @param number True to number titles, else false
+         */
+        void setPreviousNumberTitles(bool number);
+        /**
          * @brief Validates a url.
          * @brief This method will invoke the urlValidated event with the list of media found at the url.
          * @param url The url to validate
@@ -149,29 +142,27 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param videoFormatIndex The index of the selected video format
          * @param audioFormatIndex The index of the selected audio format
          * @param subtitleLanguages The list of selected subtitle languages
-         * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param splitChapters Whether or not to split the video by chapters
-         * @param limitSpeed Whether or not to limit the download speed
          * @param exportDescription Whether or not to export the media description to a file
+         * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param startTime The start time of the download
          * @param endTime The end time of the download
          */
-        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime);
+        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, const std::string& startTime, const std::string& endTime);
         /**
          * @brief Adds a playlist download to the download manager.
          * @param saveFolder The folder to save the downloads to
          * @param filenames The filenames to save the downloads as with their respective indices (Excluded indices will not be downloaded)
          * @param fileTypeIndex The index of the selected file type
-         * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param splitChapters Whether or not to split the video by chapters
-         * @param limitSpeed Whether or not to limit the download speed
          * @param exportDescription Whether or not to export the media description to a file
+         * @param writePlaylistFile Whether or not to write a m3u playlist file
+         * @param excludeFromHistory Whether or not to exclude the download from the history
          */
-        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool excludeFromHistory, bool splitChapters, bool limitSpeed, bool exportDescription);
+        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory);
 
     private:
         Models::DownloadManager& m_downloadManager;
-        Models::Configuration& m_configuration;
         Models::PreviousDownloadOptions& m_previousOptions;
         Keyring::Keyring& m_keyring;
         std::optional<Models::UrlInfo> m_urlInfo;

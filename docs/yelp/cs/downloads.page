@@ -21,7 +21,7 @@
 <terms>
     <item>
         <title>Maximální počet aktivních stahování</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
+        <p>Počet stahování, která mohou v jednu chvíli běžet. Musí to být celočíselná hodnota mezi 1 a 10.</p>
         <p>Při dosažení maximálního počtu aktivních stahování, aplikace Parabolic umístí nová stahování do fronty, dokud nebude moct být spuštěno více stahování.</p>
         <note style="advanced">
             <p>Výchozí: 5</p>
@@ -29,7 +29,7 @@
     </item>
     <item>
         <title>Přepsat existující soubory</title>
-        <p>Parabolic will overwrite existing files.</p>
+        <p>Aplikace Parabolic přepíše existující soubory.</p>
         <p>Pokud již například ve složce stahování existuje soubor <code>film.mp4</code> a bude vytvořeno nové stahování s názvem <code>film</code>, bude soubor <code>film.mp4</code> přepsán novým obsahem stahování.</p>
         <note>
             <p>Parabolic rozpozná stahování, která mají být obnovena a vyhne se tomuto nastavení při obnově nebo opakování neúspěšných stahování</p>
@@ -40,7 +40,7 @@
     </item>
     <item>
         <title>Omezení znaků v názvu souboru</title>
-        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
+        <p>Aplikace Parabolic omezí znaky v názvech souborů pouze na znaky podporované sytémem Windows.</p>
         <p>Tato možnost je dostupná pouze na systému Linux.</p>
         <note style="advanced">
             <p>Výchozí: vypnuto</p>
@@ -48,21 +48,21 @@
     </item>
     <item>
         <title>Přidat ID média do názvu po ověření</title>
-        <p>Parabolic will include a media's id in its default title.</p>
+        <p>Aplikace Parabolic přidá ID média do jeho výchozího názvu.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
         </note>
     </item>
     <item>
         <title>Zahrnout automaticky generované titulky</title>
-        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
+        <p>Parabolic zobrazí automaticky generované titulky ke stažení společně s dostupnými titulky.</p>
         <note style="advanced">
             <p>Výchozí: zapnuto</p>
         </note>
     </item>
     <item>
         <title>Preferovaný video kodek</title>
-        <p>Kodek videa, který by měla aplikace Parabolic preferovat při zpracování formátů médií ke stažení.</p>
+        <p>Video kodek, který by měla aplikace Parabolic preferovat při zpracování formátů médií ke stažení.</p>
         <note>
             <p>Pokud aplikace Parabolic nenajde žádné formáty se zvoleným preferovaným kodekem, nebudou ke stažení dostupné žádné formáty videa.</p>
         </note>
@@ -72,7 +72,7 @@
     </item>
     <item>
         <title>Preferovaný zvukový kodek</title>
-        <p>Kodek zvuku, který by měla aplikace Parabolic preferovat při zpracování formátů médií ke stažení.</p>
+        <p>Zvukový kodek, který by měla aplikace Parabolic preferovat při zpracování formátů médií ke stažení.</p>
         <note>
             <p>Pokud aplikace Parabolic nenajde žádné formáty se zvoleným preferovaným kodekem, nebudou ke stažení dostupné žádné formáty zvuku.</p>
         </note>
@@ -82,7 +82,7 @@
     </item>
     <item>
         <title>Preferovaný formát titulků</title>
-        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
+        <p>Formát souboru, ve kterém by měla aplikace Parabolic stáhnout všechny titulky.</p>
         <note style="advanced">
             <p>Výchozí: jakýkoli</p>
         </note>

@@ -169,7 +169,36 @@ namespace Nickvision::TubeConverter::Qt::Views
         dialog->exec();
         reloadCredentials();
     }
-	
+
+    void KeyringDialog::onListCredentialsContextMenu(const QPoint& pos)
+    {
+        QListWidgetItem* selected;
+        if((selected = m_ui->listCredentials->itemAt(pos)))
+        {
+
+            QMenu menu{ this };
+            menu.addAction(QLEMENTINE_ICON(Misc_Pen), _("Edit Credential"), [this, selected]()
+            {
+                editCredential(selected->text());
+            });
+            menu.addAction(QLEMENTINE_ICON(Action_Trash), _("Delete Credential"), [this, selected]()
+            {
+                QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Credential?"), _("Are you sure you want to delete this credential?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+                if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+                {
+                    m_controller->deleteCredential(selected->text().toStdString());
+                    reloadCredentials();
+                }
+            });
+            menu.exec(mapToGlobal(pos));
+        }
+    }
+
+    void KeyringDialog::onCredentialDoubleClicked(QListWidgetItem* item)
+    {
+        editCredential(item->text());
+    }
+
     void KeyringDialog::editCredential(const QString& name)
     {
         std::optional<Credential> credential{ m_controller->getCredential(name.toStdString()) };
@@ -227,7 +256,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         dialog->setLayout(layout);
         connect(btnSave, &QPushButton::clicked, [&]()
         {
-            CredentialCheckStatus status{ m_controller->updateCredential(txtName->text().toStdString(), txtUrl->text().toStdString(), txtUsername->text().toStdString(), txtPassword->text().toStdString()) };
+            CredentialCheckStatus status{ m_controller->updateCredential(credential->getName(), txtUrl->text().toStdString(), txtUsername->text().toStdString(), txtPassword->text().toStdString()) };
             switch(status)
             {
             case CredentialCheckStatus::EmptyName:
@@ -254,41 +283,12 @@ namespace Nickvision::TubeConverter::Qt::Views
             QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Credential?"), _("Are you sure you want to delete this credential?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
             if(msgBox.exec() == QMessageBox::StandardButton::Yes)
             {
-                m_controller->deleteCredential(txtName->text().toStdString());
+                m_controller->deleteCredential(credential->getName());
                 dialog->close();
             }
         });
         dialog->exec();
         reloadCredentials();
-    }
-
-    void KeyringDialog::onListCredentialsContextMenu(const QPoint& pos)
-    {
-        QListWidgetItem* selected;
-        if((selected = m_ui->listCredentials->itemAt(pos)))
-        {
-
-            QMenu menu{ this };
-            menu.addAction(QLEMENTINE_ICON(Misc_Pen), _("Edit Credential"), [this, selected]()
-            {
-                editCredential(selected->text());
-            });
-            menu.addAction(QLEMENTINE_ICON(Action_Trash), _("Delete Credential"), [this, selected]()
-            {
-                QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Credential?"), _("Are you sure you want to delete this credential?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
-                if(msgBox.exec() == QMessageBox::StandardButton::Yes)
-                {
-                    m_controller->deleteCredential(selected->text().toStdString());
-                    reloadCredentials();
-                }
-            });
-            menu.exec(mapToGlobal(pos));
-        }
-    }
-
-    void KeyringDialog::onCredentialDoubleClicked(QListWidgetItem* item)
-    {
-        editCredential(item->text());
     }
 
     void KeyringDialog::reloadCredentials()

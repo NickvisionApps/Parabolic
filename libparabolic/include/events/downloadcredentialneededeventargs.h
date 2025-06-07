@@ -16,16 +16,10 @@ namespace Nickvision::TubeConverter::Shared::Events
     public:
         /**
          * @brief Constructs a DownloadCredentialNeededEventArgs.
-         * @param id The Id of the download
          * @param url The URL of the download
          * @param credential The credential to fill in
          */
-        DownloadCredentialNeededEventArgs(int id, const std::string& url, const std::shared_ptr<Keyring::Credential>& credential);
-        /**
-         * @brief Gets the Id of the download.
-         * @return The Id of the download
-         */
-        int getId() const;
+        DownloadCredentialNeededEventArgs(const std::string& url, const std::shared_ptr<Keyring::Credential>& credential);
         /**
          * @brief Gets the URL of the download.
          * @return The URL of the download
@@ -38,7 +32,6 @@ namespace Nickvision::TubeConverter::Shared::Events
         std::shared_ptr<Keyring::Credential>& getCredential();
 
     private:
-        int m_id;
         std::string m_url;
         std::shared_ptr<Keyring::Credential> m_credential;
     };

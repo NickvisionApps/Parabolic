@@ -25,26 +25,20 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets a list of downloads to recover.
          * @returns A list of DownloadOptions
          */
-        const std::unordered_map<int, DownloadOptions>& getRecoverableDownloads() const;
-        /**
-         * @brief Gets whether or not a download needs a credential to be downloaded again.
-         * @param id The ID of the download
-         * @returns True if a credential is needed, else false
-         */
-        bool needsCredential(int id) const;
+        std::unordered_map<int, std::pair<DownloadOptions, bool>>& getRecoverableDownloads();
         /**
          * @brief Adds a download to the recovery queue.
-         * @param id The ID of the download
+         * @param id The id of the download to add
          * @param downloadOptions The options of the download
          * @returns True if added, else false
          */
-        bool addDownload(int id, const DownloadOptions& downloadOptions);
+        bool add(int id, const DownloadOptions& downloadOptions);
         /**
          * @brief Removes a download from the recovery queue.
-         * @param id The ID of the download
+         * @param id The id of the download to remove
          * @returns True if removed, else false
          */
-        bool removeDownload(int id);
+        bool remove(int id);
         /**
          * @brief Clears all downloads from the recovery queue.
          * @returns True if cleared, else false
@@ -56,8 +50,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * Updates the recovery file on disk.
          */
         void updateDisk();
-        std::unordered_map<int, DownloadOptions> m_recoverableDownloads;
-        std::unordered_map<int, bool> m_needsCredentials;
+        std::unordered_map<int, std::pair<DownloadOptions, bool>> m_queue;
     };
 }
 

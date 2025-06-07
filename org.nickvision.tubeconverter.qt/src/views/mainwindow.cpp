@@ -1,5 +1,6 @@
 #include "views/mainwindow.h"
 #include <QAction>
+#include <QCheckBox>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QHBoxLayout>
@@ -364,10 +365,38 @@ namespace Nickvision::TubeConverter::Qt::Views
 #else
         const StartupInformation& info{ m_controller->startup() };
 #endif
-        setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         if(info.getWindowGeometry().isMaximized())
         {
+            setGeometry(10, 10, 800, 600);
             showMaximized();
+        }
+        else
+        {
+            setGeometry(info.getWindowGeometry().getX(), info.getWindowGeometry().getY(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
+        }
+        if(info.showDisclaimer())
+        {
+            QMessageBox msg{ QMessageBox::Icon::Warning, _("Disclaimer"), _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk."), QMessageBox::StandardButton::Ok, this };
+            QCheckBox* chk{ new QCheckBox(_("Don't show this message again"), this) };
+            msg.setCheckBox(chk);
+            msg.exec();
+            m_controller->setShowDisclaimerOnStartup(!chk->isChecked());
+        }
+        if(info.hasRecoverableDownloads())
+        {
+            QMessageBox msg{ QMessageBox::Icon::Information, _("Recover Crashed Downloads?"), _("There are downloads available to recover from when Parabolic crashed. Would you like to recover them?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+            if(msg.exec() == QMessageBox::StandardButton::Yes)
+            {
+                m_controller->recoverDownloads();
+            }
+            else
+            {
+                m_controller->clearRecoverableDownloads();
+            }
+        }
+        if(!info.getUrlToValidate().empty())
+        {
+            addDownload(info.getUrlToValidate());
         }
     }
 
@@ -384,7 +413,7 @@ namespace Nickvision::TubeConverter::Qt::Views
             }
             return;
         }
-        m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized() });
+        m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized(), geometry().x(), geometry().y() });
         event->accept();
     }
 

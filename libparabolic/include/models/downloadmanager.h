@@ -14,6 +14,7 @@
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
 #include "downloadrecoveryqueue.h"
+#include "startupinformation.h"
 #include "urlinfo.h"
 #include "events/downloadaddedeventargs.h"
 #include "events/downloadcompletedeventargs.h"
@@ -137,13 +138,20 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         DownloadStatus getDownloadStatus(int id) const;
         /**
-         * @brief Loads the download history.
+         * @brief Loads the DownloadManager.
          * @brief This method invokes the historyChanged event.
-         * @brief This method will recover previous downloads that were interrupted by a crash.
-         * @param recoverDownloads Whether or not to recover downloads
+         * @param info The StartupInformation object to edit
+         */
+        void startup(StartupInformation& info);
+        /**
+         * @brief Recovers all available recoverable downloads.
          * @return The number of downloads recovered
          */
-        size_t startup(bool recoverDownloads);
+        size_t recoverDownloads();
+        /**
+         * @brief Clears all available recoverable downloads.
+         */
+        void clearRecoverableDownloads();
         /**
          * @brief Clears the download history.
          * @brief This method invokes the historyChanged event.
@@ -175,9 +183,8 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief This will invoke the downloadAdded event if added successfully.
          * @param options The options for the download
          * @param excludeFromHistory Whether or not to exclude the download from the history
-         * @param recovered Whether or not the download was previously recovered
          */
-        void addDownload(const DownloadOptions& options, bool excludeFromHistory, bool recovered = false);
+        void addDownload(const DownloadOptions& options, bool excludeFromHistory);
         /**
          * @brief Requests that a download be stopped.
          * @brief This will invoke the downloadStopped event if stopped successfully.
@@ -228,9 +235,8 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Adds a download to the queue.
          * @param download The download to add
          * @param excludeFromHistory Whether or not to exclude the download from the history
-         * @param recovered Whether or not the download was previously recovered
          */
-        void addDownload(const std::shared_ptr<Download>& download, bool excludeFromHistory, bool recovered = false);
+        void addDownload(const std::shared_ptr<Download>& download, bool excludeFromHistory);
         /**
          * @brief Handles when a download's progress is changed.
          * @param args Events::DownloadProgressChangedEventArgs

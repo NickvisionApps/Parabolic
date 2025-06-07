@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-05-28 21:59-0400\n"
+"POT-Creation-Date: 2025-06-07 14:37-0400\n"
 "PO-Revision-Date: 2025-05-05 17:36+0000\n"
 "Last-Translator: YC Tsai <ataiwanaton@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -67,8 +67,9 @@ msgstr "當啟動時，Parabolic 會使用 aria2c 來下載媒體。"
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
 #: docs/yelp/C/converter.page:57 docs/yelp/C/converter.page:64
-#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
-#: docs/yelp/C/interface.page:35 docs/yelp/C/interface.page:49
+#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloader.page:45
+#: docs/yelp/C/downloads.page:49 docs/yelp/C/interface.page:35
+#: docs/yelp/C/newDownload.page:58
 msgid "Default: Off"
 msgstr "預設值：關閉"
 
@@ -163,7 +164,7 @@ msgstr ""
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
 #: docs/yelp/C/converter.page:72 docs/yelp/C/downloader.page:28
 #: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
-#: docs/yelp/C/downloads.page:63 docs/yelp/C/interface.page:42
+#: docs/yelp/C/downloads.page:63
 msgid "Default: On"
 msgstr "預設值：開啟"
 
@@ -264,7 +265,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:76
-msgid "Postprocessing Threads"
+#, fuzzy
+msgid "FFmpeg Threads"
 msgstr "後製使用的核心數"
 
 #. (itstool) path: item/p
@@ -339,17 +341,11 @@ msgstr "速度限制"
 #: docs/yelp/C/downloader.page:43
 #, fuzzy
 msgid ""
-"The limit, in KiB/s, to apply to downloads only with the advanced option "
-"<code>Speed Limit</code> enabled. Must be an integer value between 512 and "
-"10240."
+"The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
+"value between 512 and 10240."
 msgstr ""
 "限制在多少 Ki/s，只會在有 <code>速度限制</code> 這個進階選項的下載項目套用。"
 "必須是 512 到 10240 之間的整數。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:45
-msgid "Default: 1024"
-msgstr "預設值：1024"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:49
@@ -707,40 +703,17 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:39
-msgid "Recover Crashed Downloads"
-msgstr "恢復損毀的下載"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/interface.page:40
-msgid ""
-"Parabolic will recover downloads that were in progress when the app crashed."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/interface.page:46
-msgid "Download Immediately After Validation"
-msgstr "驗證後馬上下載"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/interface.page:47
-msgid ""
-"Parabolic will immediately download media after validation, without "
-"presenting configuration options to the user."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/interface.page:53
 msgid "Download History Length"
 msgstr "下載歷史記錄長度"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/interface.page:54
+#: docs/yelp/C/interface.page:40
 #, fuzzy
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr "要保留多少時間的下載歷史記錄。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/interface.page:56
+#: docs/yelp/C/interface.page:42
 msgid "Default: One Week"
 msgstr "預設：一星期"
 
@@ -960,23 +933,38 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:55
+#, fuzzy
+msgid "Download Immediately"
+msgstr "驗證後馬上下載"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:56
+#, fuzzy
+msgid ""
+"Parabolic will immediately download the media after validation, using the "
+"previously configured download options."
+msgstr ""
+"Parabolic 會偵測應該被繼續的項目，並且在復原或重試失敗的下載時忽略這個選項"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:62
 msgid "File Type"
 msgstr "檔案類型"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:56
+#: docs/yelp/C/newDownload.page:63
 msgid "The file type of which to download the media as."
 msgstr "下載媒體時要使用的檔案類型。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:58
+#: docs/yelp/C/newDownload.page:65
 msgid ""
 "The previously used file type will be remembered and pre-selected for the "
 "next download."
 msgstr "前次選擇的檔案類型將被記住，並成為下次下載的預設值。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:61
+#: docs/yelp/C/newDownload.page:68
 msgid ""
 "Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> "
 "file types will cause Parabolic to download the media in the original file "
@@ -984,7 +972,7 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:62
+#: docs/yelp/C/newDownload.page:69
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
@@ -992,96 +980,96 @@ msgid ""
 msgstr "如果檔案類型不支援嵌入，縮圖將會另存成圖檔"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:73
 msgid "Video Format"
 msgstr "影片格式"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:67
+#: docs/yelp/C/newDownload.page:74
 msgid ""
 "The list of video formats available for download, sorted by resolution and "
 "bitrate."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:69
+#: docs/yelp/C/newDownload.page:76
 msgid "If the file type is an audio type, this option will not be available."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:71
+#: docs/yelp/C/newDownload.page:78
 msgid ""
 "The previously used video format will be remembered and pre-selected for the "
 "next download."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:74 docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:81 docs/yelp/C/newDownload.page:95
 msgid ""
 "The following are special formats used by Parabolic to match <code>yt-dlp</"
 "code> behaviors:"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:82 docs/yelp/C/newDownload.page:96
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:76
+#: docs/yelp/C/newDownload.page:83
 msgid "- <code>Best</code> = <code>bv*</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:77
+#: docs/yelp/C/newDownload.page:84
 msgid "- <code>Worst</code> = <code>wv*</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/newDownload.page:88
 msgid "Audio Format"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:89
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:83
+#: docs/yelp/C/newDownload.page:90
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:85
+#: docs/yelp/C/newDownload.page:92
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:90
+#: docs/yelp/C/newDownload.page:97
 msgid "- <code>Best</code> = <code>ba</code>"
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:91
+#: docs/yelp/C/newDownload.page:98
 msgid "- <code>Worst</code> = <code>wa</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:102
 msgid "Subtitles"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:103
 msgid ""
 "The list of subtitles available by the media that can be selected for "
 "download by the user. Further subtitle settings can be configured in <link "
@@ -1089,42 +1077,29 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:98
+#: docs/yelp/C/newDownload.page:105
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:109
 msgid "Split Chapters"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:110
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:105 docs/yelp/C/newDownload.page:112
-#: docs/yelp/C/newDownload.page:119
+#: docs/yelp/C/newDownload.page:112 docs/yelp/C/newDownload.page:119
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:109
-msgid "Limit Download Speed"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:110
-msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in <link xref=\"downloader\">Preferences</link>."
 msgstr ""
 
 #. (itstool) path: item/title
@@ -1154,52 +1129,77 @@ msgstr "啟用後 Parabolic 將會對 YouTube 下載啟用 SponsorBlock 附加�
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:127
-msgid "Time Frame"
+msgid "Write M3U Playlist File"
 msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:128
+#, fuzzy
+msgid "If enabled, Parabolic will write a m3u file for the playlist download."
+msgstr "啟用後 Parabolic 將會對 YouTube 下載啟用 SponsorBlock 附加元件。"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:130
+#, fuzzy
+msgid ""
+"The previously used state will be remembered and pre-selected for the next "
+"playlist download."
+msgstr "前次使用的資料夾將被記住並且成為下次下載的預設位置。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:134
+msgid "Time Frame"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:135
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:130
+#: docs/yelp/C/newDownload.page:137
 msgid "Default: The whole media length"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:134
+#: docs/yelp/C/newDownload.page:141
 msgid "Save Folder"
 msgstr "儲存位置"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:135
+#: docs/yelp/C/newDownload.page:142
 msgid "The folder at which to save the download to."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:137
+#: docs/yelp/C/newDownload.page:144
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr "前次使用的資料夾將被記住並且成為下次下載的預設位置。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:141
+#: docs/yelp/C/newDownload.page:148
 msgid "File Name"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:142
+#: docs/yelp/C/newDownload.page:149
 msgid "The file name to use when saving the download."
 msgstr "當儲存下載項目時使用的檔案名稱。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:144
+#: docs/yelp/C/newDownload.page:151
 msgid "Default: The title of the media"
 msgstr "預設值：媒體的標題"
+
+#~ msgid "Default: 1024"
+#~ msgstr "預設值：1024"
+
+#~ msgid "Recover Crashed Downloads"
+#~ msgstr "恢復損毀的下載"
 
 #~ msgid ""
 #~ "Although using aria2c can improve download speed, download progress will "

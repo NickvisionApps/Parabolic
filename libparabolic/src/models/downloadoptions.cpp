@@ -18,7 +18,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     DownloadOptions::DownloadOptions()
         : m_fileType{ MediaFileType::MP4 },
         m_splitChapters{ false },
-        m_limitSpeed{ false },
         m_exportDescription{ false },
         m_playlistPosition{ -1 }
     {
@@ -29,7 +28,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_url{ url },
         m_fileType{ MediaFileType::MP4 },
         m_splitChapters{ false },
-        m_limitSpeed{ false },
         m_exportDescription{ false },
         m_playlistPosition{ -1 }
     {
@@ -42,7 +40,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_saveFolder{ json["SaveFolder"].is_string() ? json["SaveFolder"].as_string().c_str() : "" },
         m_saveFilename{ json["SaveFilename"].is_string() ? json["SaveFilename"].as_string().c_str() : "" },
         m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false },
-        m_limitSpeed{ json["LimitSpeed"].is_bool() ? json["LimitSpeed"].as_bool() : false },
         m_exportDescription{ json["ExportDescription"].is_bool() ? json["ExportDescription"].as_bool() : false },
         m_playlistPosition{ json["PlaylistPosition"].is_int64() ? static_cast<int>(json["PlaylistPosition"].as_int64()) : -1 }
     {
@@ -202,20 +199,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_splitChapters = splitChapters;
     }
 
-    bool DownloadOptions::getLimitSpeed() const
-    {
-        return m_limitSpeed;
-    }
-
-    void DownloadOptions::setLimitSpeed(bool limitSpeed)
-    {
-        if(limitSpeed && m_timeFrame.has_value())
-        {
-            return;
-        }
-        m_limitSpeed = limitSpeed;
-    }
-
     bool DownloadOptions::getExportDescription() const
     {
         return m_exportDescription;
@@ -233,10 +216,6 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::setTimeFrame(const std::optional<TimeFrame>& timeFrame)
     {
-        if(timeFrame && m_limitSpeed)
-        {
-            return;
-        }
         m_timeFrame = timeFrame;
     }
 
@@ -352,6 +331,11 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--sponsorblock-remove");
             arguments.push_back("default");
         }
+        if(downloaderOptions.getSpeedLimit() && !m_timeFrame)
+        {
+            arguments.push_back("--limit-rate");
+            arguments.push_back(std::to_string(*downloaderOptions.getSpeedLimit()) + "K");
+        }
         if(!downloaderOptions.getProxyUrl().empty())
         {
             arguments.push_back("--proxy");
@@ -443,6 +427,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back(Environment::findDependency("aria2c").string());
             arguments.push_back("--downloader-args");
             arguments.push_back("aria2c:--summary-interval=" + std::string(Environment::getOperatingSystem() == OperatingSystem::Windows ? "0" : "1") + " --enable-color=false -x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
+            arguments.push_back("--concurrent-fragments");
+            arguments.push_back("8");
         }
         //Download Options
         if(m_credential)
@@ -620,11 +606,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--postprocessor-args");
             arguments.push_back(args);
         }
-        if(m_limitSpeed)
-        {
-            arguments.push_back("--limit-rate");
-            arguments.push_back(std::to_string(downloaderOptions.getSpeedLimit()) + "K");
-        }
         if(m_exportDescription)
         {
             arguments.push_back("--write-description");
@@ -684,7 +665,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         json["SubtitleLanguages"] = subtitleLanguages;
         json["SplitChapters"] = m_splitChapters;
-        json["LimitSpeed"] = m_limitSpeed;
         json["ExportDescription"] = m_exportDescription;
         if(m_timeFrame)
         {
@@ -703,7 +683,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_saveFilename = filenamePath.stem().string();
         }
         //Find max extension length
-        size_t maxExtensionLength{ 5 };
+        size_t maxExtensionLength{ 11 }; //.part.aria2
         for(const Format& format : m_availableFormats)
         {
             size_t formatSize{ std::string(".f" + format.getId() + "." + format.getExtension() + ".part").size() };
@@ -714,7 +694,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         //Check filename length
 #ifdef _WIN32
-        static size_t maxFileNameLength{ MAX_PATH - 12 };
+        static size_t maxFileNameLength{ MAX_PATH };
 #else
         static size_t maxFileNameLength{ NAME_MAX };
 #endif
