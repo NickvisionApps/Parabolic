@@ -462,7 +462,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->btnDeselectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::deselectAllPlaylist);
         connect(m_ui->btnRevertToTitlePlaylist, &QPushButton::clicked, this, &AddDownloadDialog::revertToTitlePlaylist);
         connect(m_ui->btnDownloadPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::downloadPlaylist);
-        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QtHelpers::dispatchToMainThread([this]() { onUrlValidated(); }); };
+        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QtHelpers::dispatchToMainThread([this, args]() { onUrlValidated(args.getParam()); }); };
     }
 
     AddDownloadDialog::~AddDownloadDialog()
@@ -534,9 +534,9 @@ namespace Nickvision::TubeConverter::Qt::Views
         }
     }
 
-    void AddDownloadDialog::onUrlValidated()
+    void AddDownloadDialog::onUrlValidated(bool valid)
     {
-        if(!m_controller->isUrlValid())
+        if(!valid)
         {
             QMessageBox::critical(this, _("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, the cookies settings, and the preferred codecs selected. Note that the service may have blocked your IP or the video may be geo-restricted."), QMessageBox::StandardButton::Ok);
             m_ui->viewStack->setCurrentIndex(0);

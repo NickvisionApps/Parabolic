@@ -68,7 +68,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("selectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("deselectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->deselectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
-        m_controller->urlValidated() += [this](const EventArgs& args){ GtkHelpers::dispatchToMainThread([this]{ onUrlValidated(); }); };
+        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ GtkHelpers::dispatchToMainThread([this, args]{ onUrlValidated(args.getParam()); }); };
     }
 
     void AddDownloadDialog::onTxtUrlChanged()
@@ -139,9 +139,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
     }
 
-    void AddDownloadDialog::onUrlValidated()
+    void AddDownloadDialog::onUrlValidated(bool valid)
     {
-        if(!m_controller->isUrlValid())
+        if(!valid)
         {
             AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, the cookies settings, and the preferred codecs selected. Note that the service may have blocked your IP or the video may be geo-restricted."))) };
             adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);

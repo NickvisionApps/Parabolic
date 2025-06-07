@@ -314,6 +314,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool m_cropAudioThumbnails;
         bool m_embedChapters;
         bool m_embedSubtitles;
+        //Postprocessing
         int m_postprocessingThreads;
         std::vector<PostProcessorArguments> m_postProcessingArguments;
         //aria2

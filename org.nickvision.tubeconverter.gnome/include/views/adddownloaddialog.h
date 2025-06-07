@@ -41,9 +41,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void validateUrl();
         /**
-         * @brief Handles when a url is validated.
+         * @brief Handles when the url has been validated.
+         * @param valid Whether or not the url is valid
          */
-        void onUrlValidated();
+        void onUrlValidated(bool valid);
         /**
          * @brief Goes back to the single download page.
          */

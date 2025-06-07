@@ -122,8 +122,9 @@ namespace Nickvision::TubeConverter::Qt::Views
     private:
         /**
          * @brief Handles when the url has been validated.
+         * @param valid Whether or not the url is valid
          */
-        void onUrlValidated();
+        void onUrlValidated(bool valid);
         Ui::AddDownloadDialog* m_ui;
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
     };

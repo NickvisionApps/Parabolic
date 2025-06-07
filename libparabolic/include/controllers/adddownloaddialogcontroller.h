@@ -51,11 +51,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getKeyringCredentialNames() const;
         /**
-         * @brief Gets whether or not a valid url has been validated.
-         * @return True if valid url, else false
-         */
-        bool isUrlValid() const;
-        /**
          * @brief Gets whether or not the url is a playlist.
          * @return True if playlist, else false
          */

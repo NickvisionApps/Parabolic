@@ -52,11 +52,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return names;
     }
 
-    bool AddDownloadDialogController::isUrlValid() const
-    {
-        return m_urlInfo && m_urlInfo->count() > 0;
-    }
-
     bool AddDownloadDialogController::isUrlPlaylist() const
     {
         return m_urlInfo && m_urlInfo->isPlaylist();
@@ -237,11 +232,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             {
                 m_credential = credential;
                 m_urlInfo = m_downloadManager.fetchUrlInfo(url, m_credential);
-                m_urlValidated.invoke({ isUrlValid() });
+                m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
             }
             catch(const std::exception& e)
             {
+                m_urlInfo = std::nullopt;
                 AppNotification::send({ _f("Error attempting to validate download: {}", e.what()), NotificationSeverity::Error, "error" });
+                m_urlValidated.invoke({ false });
             }
         } };
         worker.detach();
@@ -267,11 +264,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             {
                 m_credential = credential;
                 m_urlInfo = m_downloadManager.fetchUrlInfo(batchFile, m_credential);
-                m_urlValidated.invoke({ isUrlValid() });
+                m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
             }
             catch(const std::exception& e)
             {
+                m_urlInfo = std::nullopt;
                 AppNotification::send({ _f("Error attempting to validate download: {}", e.what()), NotificationSeverity::Error, "error" });
+                m_urlValidated.invoke({ false });
             }
         } };
         worker.detach();

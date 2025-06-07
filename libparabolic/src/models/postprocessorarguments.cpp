@@ -143,6 +143,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         json["PostProcessor"] = static_cast<int>(m_postProcessor);
         json["Executable"] = static_cast<int>(m_executable);
         json["Args"] = m_args;
+        return json;
     }
 
     bool PostProcessorArguments::operator==(const PostProcessorArguments& other) const

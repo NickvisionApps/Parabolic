@@ -295,7 +295,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return std::nullopt;
         }
-        boost::json::value info = boost::json::parse(process.getOutput());
+        boost::json::value info = boost::json::parse(process.getOutput()[0] == '{' ? process.getOutput() : process.getOutput().substr(process.getOutput().find('{')));
         if(!info.is_object())
         {
             return std::nullopt;
