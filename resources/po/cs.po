@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 14:00-0400\n"
+"POT-Creation-Date: 2025-06-07 14:34-0400\n"
 "PO-Revision-Date: 2025-05-31 20:05+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1150,14 +1150,21 @@ msgstr ""
 "uloženy do samostatných souborů."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
-msgid "Postprocessing Threads"
-msgstr "Zpracovávání vláken"
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
+#, fuzzy
+msgid "FFmpeg Threads"
+msgstr "Argumenty FFmpeg"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:381
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:255
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr "Aplikace Parabolic omezí počet vláken používaných službou ffmpeg."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
+#, fuzzy
+msgid "Postprocessing Arguments"
+msgstr "Zpracovávání vláken"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1734,11 +1741,6 @@ msgstr "Omezení rychlosti"
 msgid "Enter proxy url here"
 msgstr "Zde zadejte adresu URL proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
-#, fuzzy
-msgid "FFmpeg Threads"
-msgstr "Argumenty FFmpeg"
-
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
 msgid "Arguments"
 msgstr ""
@@ -1757,6 +1759,9 @@ msgstr "Zpracovávání vláken"
 #, fuzzy
 msgid "Postprocessing"
 msgstr "Zpracovává se"
+
+#~ msgid "Postprocessing Threads"
+#~ msgstr "Zpracovávání vláken"
 
 #~ msgid ""
 #~ "The url provided is invalid or unable to be reached. Check the url, the "

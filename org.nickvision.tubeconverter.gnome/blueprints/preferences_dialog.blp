@@ -377,7 +377,7 @@ Adw.PreferencesDialog root {
       }
 
       Adw.ComboRow postprocessingThreadsRow {
-        title: _("Postprocessing Threads");
+        title: _("FFmpeg Threads");
         subtitle: _("Parabolic will limit the number of threads used by ffmpeg.");
 
         [prefix]
@@ -385,6 +385,10 @@ Adw.PreferencesDialog root {
           icon-name: "speedometer-symbolic";
         }
       }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Postprocessing Arguments");
     }
   }
 }

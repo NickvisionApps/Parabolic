@@ -19,6 +19,7 @@
 using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
+using namespace Nickvision::TubeConverter::Qt::Helpers;
 using namespace oclero::qlementine;
 
 namespace Ui
@@ -29,6 +30,8 @@ namespace Ui
         void setupUi(Nickvision::TubeConverter::Qt::Views::SettingsDialog* parent, int maxPostprocessingThreads)
         {
             viewStack = new QStackedWidget(parent);
+            QFont boldFont;
+            boldFont.setBold(true);
             //User Interface Page
             QLabel* lblTheme{ new QLabel(parent) };
             lblTheme->setText(_("Theme"));
@@ -145,20 +148,17 @@ namespace Ui
             QLabel* lblLimitSpeed{ new QLabel(parent) };
             lblLimitSpeed->setText(_("Limit Download Speed"));
             chkLimitSpeed = new Switch(parent);
-            lblSpeedLimit = new QLabel(parent);
+            QObject::connect(chkLimitSpeed, &Switch::toggled, [this](bool checked)
+            {
+                spnSpeedLimit->setEnabled(checked);
+            });
+            QLabel* lblSpeedLimit{ new QLabel(parent) };
             lblSpeedLimit->setText(_("Speed Limit"));
-            lblSpeedLimit->setVisible(false);
             spnSpeedLimit = new QSpinBox(parent);
             spnSpeedLimit->setMinimum(512);
             spnSpeedLimit->setMaximum(10240);
             spnSpeedLimit->setSingleStep(512);
             spnSpeedLimit->setValue(1024);
-            spnSpeedLimit->setVisible(false);
-            QObject::connect(chkLimitSpeed, &Switch::clicked, [this](bool checked)
-            {
-                lblSpeedLimit->setVisible(checked);
-                spnSpeedLimit->setVisible(checked);
-            });
             QLabel* lblProxyUrl{ new QLabel(parent) };
             lblProxyUrl->setText(_("Proxy URL"));
             txtProxyUrl = new LineEdit(parent);
@@ -208,6 +208,10 @@ namespace Ui
             QLabel* lblEmbedMetadata{ new QLabel(parent) };
             lblEmbedMetadata->setText(_("Embed Metadata"));
             chkEmbedMetadata = new Switch(parent);
+            QObject::connect(chkEmbedMetadata, &Switch::toggled, [this](bool checked)
+            {
+                chkRemoveSourceData->setEnabled(checked);
+            });
             QLabel* lblRemoveSourceData{ new QLabel(parent) };
             lblRemoveSourceData->setText(_("Remove Source Data"));
             lblRemoveSourceData->setToolTip(_("Parabolic will clear metadata fields containing identifying download information."));
@@ -218,6 +222,10 @@ namespace Ui
             lblEmbedThumbnails->setToolTip(_("If the file type does not support embedding, the thumbnail will be written to a separate image file."));
             chkEmbedThumbnails = new Switch(parent);
             chkEmbedThumbnails->setToolTip(_("If the file type does not support embedding, the thumbnail will be written to a separate image file."));
+            QObject::connect(chkEmbedThumbnails, &Switch::toggled, [this](bool checked)
+            {
+                chkCropAudioThumbnails->setEnabled(checked);
+            });
             QLabel* lblCropAudioThumbnails{ new QLabel(parent) };
             lblCropAudioThumbnails->setText(_("Crop Audio Thumbnails"));
             lblCropAudioThumbnails->setToolTip(_("Parabolic will crop thumbnails of audio files to squares."));
@@ -231,13 +239,6 @@ namespace Ui
             lblEmbedSubtitles->setToolTip(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files."));
             chkEmbedSubtitles = new Switch(parent);
             chkEmbedSubtitles->setToolTip(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files."));
-            QLabel* lblPostprocessingThreads{ new QLabel(parent) };
-            lblPostprocessingThreads->setText(_("Postprocessing Threads"));
-            lblPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
-            spnPostprocessingThreads = new QSpinBox(parent);
-            spnPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
-            spnPostprocessingThreads->setMinimum(1);
-            spnPostprocessingThreads->setMaximum(maxPostprocessingThreads);
             QFormLayout* layoutConverter{ new QFormLayout() };
             layoutConverter->addRow(lblEmbedMetadata, chkEmbedMetadata);
             layoutConverter->addRow(lblRemoveSourceData, chkRemoveSourceData);
@@ -245,10 +246,45 @@ namespace Ui
             layoutConverter->addRow(lblCropAudioThumbnails, chkCropAudioThumbnails);
             layoutConverter->addRow(lblEmbedChapters, chkEmbedChapters);
             layoutConverter->addRow(lblEmbedSubtitles, chkEmbedSubtitles);
-            layoutConverter->addRow(lblPostprocessingThreads, spnPostprocessingThreads);
             QWidget* converterPage{ new QWidget(parent) };
             converterPage->setLayout(layoutConverter);
             viewStack->addWidget(converterPage);
+            //Postprocessing Page
+            QLabel* lblPostprocessingThreads{ new QLabel(parent) };
+            lblPostprocessingThreads->setText(_("FFmpeg Threads"));
+            lblPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
+            spnPostprocessingThreads = new QSpinBox(parent);
+            spnPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
+            spnPostprocessingThreads->setMinimum(1);
+            spnPostprocessingThreads->setMaximum(maxPostprocessingThreads);
+            QLabel* lblArguments{ new QLabel(parent) };
+            lblArguments->setText(_("Arguments"));
+            lblArguments->setFont(boldFont);
+            QLabel* lblArgumentsDescription{ new QLabel(parent) };
+            lblArgumentsDescription->setText(_("Add, delete, and modify arguments for postprocessing"));
+            btnAddPostprocessingArgument = new QPushButton(parent);
+            btnAddPostprocessingArgument->setAutoDefault(true);
+            btnAddPostprocessingArgument->setDefault(true);
+            btnAddPostprocessingArgument->setIcon(QLEMENTINE_ICON(Action_Plus));
+            btnAddPostprocessingArgument->setText(_("Add"));
+            btnAddPostprocessingArgument->setToolTip(_("Add Postprocessing Argument"));
+            QVBoxLayout* layoutLabels{ new QVBoxLayout() };
+            layoutLabels->addWidget(lblArguments);
+            layoutLabels->addWidget(lblArgumentsDescription);
+            QHBoxLayout* layoutHeader{ new QHBoxLayout() };
+            layoutHeader->addLayout(layoutLabels);
+            layoutHeader->addStretch();
+            layoutHeader->addWidget(btnAddPostprocessingArgument);
+            QFormLayout* layoutThreads{ new QFormLayout() };
+            layoutThreads->addRow(lblPostprocessingThreads, spnPostprocessingThreads);
+            QVBoxLayout* layoutPostprocessing{ new QVBoxLayout() };
+            layoutPostprocessing->addLayout(layoutThreads);
+            layoutPostprocessing->addWidget(QtHelpers::createHLine(parent));
+            layoutPostprocessing->addLayout(layoutHeader);
+            layoutPostprocessing->addStretch();
+            QWidget* postprocessingPage{ new QWidget(parent) };
+            postprocessingPage->setLayout(layoutPostprocessing);
+            viewStack->addWidget(postprocessingPage);
             //aria2 Page
             QLabel* lblUseAria{ new QLabel(parent) };
             lblUseAria->setText(_("Use aria2c"));
@@ -283,6 +319,7 @@ namespace Ui
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Misc_ItemsList), _("Downloads"), listNavigation));
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Action_Download), _("Downloader"), listNavigation));
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Misc_Tool), _("Converter"), listNavigation));
+            listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Misc_Fx), _("Postprocessing"), listNavigation));
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Software_CommandLine), _("aria2c"), listNavigation));
             QObject::connect(listNavigation, &QListWidget::currentRowChanged, [this]()
             {
@@ -313,7 +350,6 @@ namespace Ui
         Switch* chkUsePartFiles;
         Switch* chkSponsorBlock;
         Switch* chkLimitSpeed;
-        QLabel* lblSpeedLimit;
         QSpinBox* spnSpeedLimit;
         LineEdit* txtProxyUrl;
         QLabel* lblCookiesBrowser;
@@ -328,6 +364,7 @@ namespace Ui
         Switch* chkEmbedChapters;
         Switch* chkEmbedSubtitles;
         QSpinBox* spnPostprocessingThreads;
+        QPushButton* btnAddPostprocessingArgument;
         Switch* chkUseAria;
         QSpinBox* spnAriaMaxConnectionsPerServer;
         QSpinBox* spnAriaMinSplitSize;
@@ -363,11 +400,10 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->cmbPreferredSubtitleFormat->setCurrentIndex(static_cast<int>(options.getPreferredSubtitleFormat()));
         m_ui->chkUsePartFiles->setChecked(options.getUsePartFiles());
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
+        m_ui->chkLimitSpeed->setChecked(options.getSpeedLimit().has_value());
+        m_ui->spnSpeedLimit->setEnabled(options.getSpeedLimit().has_value());
         if(options.getSpeedLimit())
         {
-            m_ui->chkLimitSpeed->setChecked(true);
-            m_ui->lblSpeedLimit->setVisible(true);
-            m_ui->spnSpeedLimit->setVisible(true);
             m_ui->spnSpeedLimit->setValue(*options.getSpeedLimit());
         }
         m_ui->txtProxyUrl->setText(QString::fromStdString(options.getProxyUrl()));
@@ -401,8 +437,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         connect(m_ui->cmbTheme, &QComboBox::currentIndexChanged, this, &SettingsDialog::onThemeChanged);
         connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsDialog::selectCookiesFile);
         connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsDialog::clearCookiesFile);
-        connect(m_ui->chkEmbedMetadata, &Switch::toggled, this, &SettingsDialog::onEmbedMetadataChanged);
-        connect(m_ui->chkEmbedThumbnails, &Switch::toggled, this, &SettingsDialog::onEmbedThumbnailsChanged);
     }
 
     SettingsDialog::~SettingsDialog()
@@ -481,15 +515,5 @@ namespace Nickvision::TubeConverter::Qt::Views
     {
         m_ui->txtCookiesFile->setText("");
         m_ui->txtCookiesFile->setToolTip("");
-    }
-
-    void SettingsDialog::onEmbedMetadataChanged(bool checked)
-    {
-        m_ui->chkRemoveSourceData->setEnabled(checked);
-    }
-
-    void SettingsDialog::onEmbedThumbnailsChanged(bool checked)
-    {
-        m_ui->chkCropAudioThumbnails->setEnabled(checked);
     }
 }

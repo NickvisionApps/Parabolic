@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 14:00-0400\n"
+"POT-Creation-Date: 2025-06-07 14:34-0400\n"
 "PO-Revision-Date: 2025-02-16 13:33+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1151,7 +1151,9 @@ msgstr ""
 "scaricati verranno salvati in un file separato."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
-msgid "Postprocessing Threads"
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
+#, fuzzy
+msgid "FFmpeg Threads"
 msgstr "Fili della postproduzione"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:381
@@ -1159,6 +1161,11 @@ msgstr "Fili della postproduzione"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
+#, fuzzy
+msgid "Postprocessing Arguments"
+msgstr "Fili della postproduzione"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1761,11 +1768,6 @@ msgstr "Limite di velocità"
 msgid "Enter proxy url here"
 msgstr "Inserisci qui l'URL del proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
-#, fuzzy
-msgid "FFmpeg Threads"
-msgstr "Fili della postproduzione"
-
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
 msgid "Arguments"
 msgstr ""
@@ -1783,6 +1785,9 @@ msgstr "Fili della postproduzione"
 #, fuzzy
 msgid "Postprocessing"
 msgstr "In lavorazione"
+
+#~ msgid "Postprocessing Threads"
+#~ msgstr "Fili della postproduzione"
 
 #, fuzzy
 #~ msgid ""
@@ -2323,7 +2328,9 @@ msgstr "In lavorazione"
 #~ msgstr "Download rimanenti: {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Scaricatore;Tube;Converter;Convertitore;"
+#~ msgstr ""
+#~ "YouTube;Downloader;ytdlp;Nickvision;Scaricatore;Tube;Converter;"
+#~ "Convertitore;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Un frontend di base per yt-dlp"

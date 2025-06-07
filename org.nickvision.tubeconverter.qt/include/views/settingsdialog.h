@@ -51,16 +51,6 @@ namespace Nickvision::TubeConverter::Qt::Views
          * @brief Clears the cookies file.
          */
         void clearCookiesFile();
-        /**
-         * @brief Handles when the embed metadata checkbox is toggled.
-         * @param checked The new state of the checkbox
-         */
-        void onEmbedMetadataChanged(bool checked);
-        /**
-         * @brief Handles when the embed thumbnails checkbox is toggled.
-         * @param checked The new state of the checkbox
-         */
-        void onEmbedThumbnailsChanged(bool checked);
 
     private:
         Ui::SettingsDialog* m_ui;

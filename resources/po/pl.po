@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 14:00-0400\n"
+"POT-Creation-Date: 2025-06-07 14:34-0400\n"
 "PO-Revision-Date: 2024-10-18 20:15+0000\n"
 "Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1148,8 +1148,9 @@ msgstr ""
 "pobrane napisy zostaną zapisane do osobnego pliku"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
 #, fuzzy
-msgid "Postprocessing Threads"
+msgid "FFmpeg Threads"
 msgstr "Przetwarzanie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:381
@@ -1157,6 +1158,11 @@ msgstr "Przetwarzanie"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
+#, fuzzy
+msgid "Postprocessing Arguments"
+msgstr "Przetwarzanie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1757,11 +1763,6 @@ msgstr "Limit prędkości pobierania"
 msgid "Enter proxy url here"
 msgstr "Podaj adres URL serwera proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
-#, fuzzy
-msgid "FFmpeg Threads"
-msgstr "Przetwarzanie"
-
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
 msgid "Arguments"
 msgstr ""
@@ -1779,6 +1780,10 @@ msgstr "Przetwarzanie"
 #, fuzzy
 msgid "Postprocessing"
 msgstr "Przetwarzanie"
+
+#, fuzzy
+#~ msgid "Postprocessing Threads"
+#~ msgstr "Przetwarzanie"
 
 #, fuzzy
 #~ msgid "The limit to apply to downloads with limiting speed enabled."

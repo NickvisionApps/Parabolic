@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 14:00-0400\n"
+"POT-Creation-Date: 2025-06-07 14:34-0400\n"
 "PO-Revision-Date: 2025-02-23 06:07+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1149,7 +1149,9 @@ msgstr ""
 "は独立したファイルに保存されます。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
-msgid "Postprocessing Threads"
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
+#, fuzzy
+msgid "FFmpeg Threads"
 msgstr "後処理のスレッド"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:381
@@ -1157,6 +1159,11 @@ msgstr "後処理のスレッド"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
+#, fuzzy
+msgid "Postprocessing Arguments"
+msgstr "後処理のスレッド"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1753,11 +1760,6 @@ msgstr "スピード制限"
 msgid "Enter proxy url here"
 msgstr "プロキシの URL を入力"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
-#, fuzzy
-msgid "FFmpeg Threads"
-msgstr "後処理のスレッド"
-
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
 msgid "Arguments"
 msgstr ""
@@ -1776,6 +1778,9 @@ msgstr "後処理のスレッド"
 #, fuzzy
 msgid "Postprocessing"
 msgstr "進行中"
+
+#~ msgid "Postprocessing Threads"
+#~ msgstr "後処理のスレッド"
 
 #, fuzzy
 #~ msgid ""
@@ -1977,8 +1982,8 @@ msgstr "進行中"
 #~ "generated ones. To exclude auto-generated ones, turn off the option below."
 #~ msgstr ""
 #~ "同じ言語であっても、サイトによって違った言語コードを使用しているかもしれま"
-#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、"
-#~ "\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
+#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例え"
+#~ "ば、\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
 #~ "より良い結果を得るために、有効な言語コードを全て指定してください。自動生成"
 #~ "された字幕が利用可能な場合は、それらもダウンロードされます。\n"
 #~ "\n"

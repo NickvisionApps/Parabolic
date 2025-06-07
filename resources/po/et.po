@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 14:00-0400\n"
+"POT-Creation-Date: 2025-06-07 14:34-0400\n"
 "PO-Revision-Date: 2025-05-18 16:01+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -1149,7 +1149,9 @@ msgstr ""
 "salvestame allalaaditud subtiitrid eraldi faili."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
-msgid "Postprocessing Threads"
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
+#, fuzzy
+msgid "FFmpeg Threads"
 msgstr "Protsessorilõimesid järeltöötlusel"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:381
@@ -1157,6 +1159,11 @@ msgstr "Protsessorilõimesid järeltöötlusel"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
+#, fuzzy
+msgid "Postprocessing Arguments"
+msgstr "Protsessorilõimesid järeltöötlusel"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1738,11 +1745,6 @@ msgstr "Võrgukiiruse piirang"
 msgid "Enter proxy url here"
 msgstr "Sisesta siia proksiserveri võrguaadress"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:254
-#, fuzzy
-msgid "FFmpeg Threads"
-msgstr "Protsessorilõimesid järeltöötlusel"
-
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
 msgid "Arguments"
 msgstr ""
@@ -1763,6 +1765,9 @@ msgstr "Protsessorilõimesid järeltöötlusel"
 #, fuzzy
 msgid "Postprocessing"
 msgstr "Töötlemisel"
+
+#~ msgid "Postprocessing Threads"
+#~ msgstr "Protsessorilõimesid järeltöötlusel"
 
 #, fuzzy
 #~ msgid ""
