@@ -13,7 +13,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
 {
     PreferencesDialog::PreferencesDialog(const std::shared_ptr<PreferencesViewController>& controller, GtkWindow* parent)
         : DialogBase{ parent, "preferences_dialog" },
-        m_controller{ controller }
+        m_controller{ controller },
+        m_postprocessingArgumentEditMode{ EditMode::None }
     {
         //Load
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
@@ -65,8 +66,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("themeRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->onThemeChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->selectCookiesFile(); }), this);
         g_signal_connect(m_builder.get<GObject>("clearCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->clearCookiesFile(); }), this);
-        //g_signal_connect(m_builder.get<GObject>("addPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->addNewPostprocessingArgument(); }), this);
-        //g_signal_connect(m_builder.get<GObject>("editConfirmPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->editConfirmPostprocessingArgument(); }), this);
+        g_signal_connect(m_builder.get<GObject>("addPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->addNewPostprocessingArgument(); }), this);
+        g_signal_connect(m_builder.get<GObject>("editConfirmPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->editConfirmPostprocessingArgument(); }), this);
     }
 
     void PreferencesDialog::onClosed()
@@ -149,6 +150,77 @@ namespace Nickvision::TubeConverter::GNOME::Views
     }
 
     void PreferencesDialog::reloadPostprocessingArguments()
+    {
+        for(AdwActionRow* row : m_postprocessingArgumentRows)
+        {
+            adw_preferences_group_remove(m_builder.get<AdwPreferencesGroup>("postprocessingArgumentsGroup"), GTK_WIDGET(row));
+        }
+        m_postprocessingArgumentRows.clear();
+        for(const PostProcessorArgument& argument : m_controller->getDownloaderOptions().getPostprocessingArguments())
+        {
+            //Edit Button
+            GtkButton* editButton{ GTK_BUTTON(gtk_button_new_from_icon_name("document-edit-symbolic")) };
+            std::pair<PreferencesDialog*, std::string>* editPair{ new std::pair<PreferencesDialog*, std::string>(this, argument.getName()) };
+            gtk_widget_set_valign(GTK_WIDGET(editButton), GTK_ALIGN_CENTER);
+            gtk_widget_set_tooltip_text(GTK_WIDGET(editButton), _("Edit"));
+            gtk_widget_add_css_class(GTK_WIDGET(editButton), "flat");
+            g_signal_connect_data(editButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
+            {
+                std::pair<PreferencesDialog*, std::string>* pair{ reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data) };
+                pair->first->editPostprocessingArgument(pair->second);
+            }), editPair, GClosureNotify(+[](gpointer data, GClosure*)
+            {
+                delete reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data);
+            }), G_CONNECT_DEFAULT);
+            //Delete Button
+            GtkButton* deleteButton{ GTK_BUTTON(gtk_button_new_from_icon_name("user-trash-symbolic")) };
+            std::pair<PreferencesDialog*, std::string>* deletePair{ new std::pair<PreferencesDialog*, std::string>(this, argument.getName()) };
+            gtk_widget_set_valign(GTK_WIDGET(deleteButton), GTK_ALIGN_CENTER);
+            gtk_widget_set_tooltip_text(GTK_WIDGET(deleteButton), _("Delete"));
+            gtk_widget_add_css_class(GTK_WIDGET(deleteButton), "flat");
+            g_signal_connect_data(deleteButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
+            {
+                std::pair<PreferencesDialog*, std::string>* pair{ reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data) };
+                pair->first->deletePostprocessingArgument(pair->second);
+            }), deletePair, GClosureNotify(+[](gpointer data, GClosure*)
+            {
+                delete reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data);
+            }), G_CONNECT_DEFAULT);
+            //Row
+            AdwActionRow* row{ ADW_ACTION_ROW(adw_action_row_new()) };
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), argument.getName().c_str());
+            adw_action_row_set_subtitle(row, argument.getArgs().c_str());
+            adw_action_row_add_suffix(row, GTK_WIDGET(editButton));
+            adw_action_row_add_suffix(row, GTK_WIDGET(deleteButton));
+            adw_action_row_set_activatable_widget(row, GTK_WIDGET(editButton));
+            adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("postprocessingArgumentsGroup"), GTK_WIDGET(row));
+            m_postprocessingArgumentRows.push_back(row);
+        }
+        if(m_controller->getDownloaderOptions().getPostprocessingArguments().empty())
+        {
+            AdwActionRow* row{ ADW_ACTION_ROW(adw_action_row_new()) };
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), _("No Arguments"));
+            adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("postprocessingArgumentsGroup"), GTK_WIDGET(row));
+            m_postprocessingArgumentRows.push_back(row);
+        }
+    }
+
+    void PreferencesDialog::addNewPostprocessingArgument()
+    {
+
+    }
+
+    void PreferencesDialog::editPostprocessingArgument(const std::string& name)
+    {
+
+    }
+
+    void PreferencesDialog::deletePostprocessingArgument(const std::string& name)
+    {
+
+    }
+
+    void PreferencesDialog::editConfirmPostprocessingArgument()
     {
 
     }
