@@ -59,6 +59,6 @@ if(NOT WIN32)
         message(FATAL_ERROR "blueprint-compiler not found, UI will not be compiled")
     endif()
 
-    generate_translations(${OUTPUT_NAME})
-    generate_linux_install(ON)
+    generate_translations()
+    generate_linux_install()
 endif()

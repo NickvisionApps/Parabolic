@@ -57,5 +57,5 @@ if(WIN32)
     add_custom_command(TARGET ${OUTPUT_NAME} POST_BUILD COMMAND "mt.exe" -manifest "${CMAKE_SOURCE_DIR}/resources/windows/${PROJECT_NAME}.manifest" -inputresource:\"$<TARGET_FILE:${OUTPUT_NAME}>\"\;\#1 -outputresource:\"$<TARGET_FILE:${OUTPUT_NAME}>\"\;\#1)
 endif()
 
-generate_translations(${OUTPUT_NAME})
-generate_linux_install(OFF)
+generate_translations()
+generate_linux_install()
