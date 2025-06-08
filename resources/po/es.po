@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-07 16:28-0400\n"
+"POT-Creation-Date: 2025-06-08 07:00-0400\n"
 "PO-Revision-Date: 2025-03-02 15:36+0000\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -81,11 +81,13 @@ msgstr "WAV (Audio)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:240
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:337
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:372
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -136,12 +138,14 @@ msgid "Unable to download and install update"
 msgstr "No se puede descargar e instalar la actualización"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:273
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} descarga restaurada"
 msgstr[1] "{} descargas restauradas"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:278
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -150,6 +154,7 @@ msgid "Download Finished"
 msgstr "Descarga finalizada"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} ha terminado de descargarse"
 
@@ -164,6 +169,7 @@ msgid "Download Finished With Error"
 msgstr "Descarga finalizada con error"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:312
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} ha terminado con un error"
 
@@ -181,18 +187,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -215,22 +225,22 @@ msgid "Audio Description"
 msgstr "Descripción del audio"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -545,6 +555,7 @@ msgid "Credentials"
 msgstr "Credenciales"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:396
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
@@ -554,6 +565,7 @@ msgid "Add"
 msgstr "Añadir"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:421
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:214
@@ -1043,55 +1055,51 @@ msgstr "Borrar archivo de cookies"
 msgid "aria2c"
 msgstr "aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-msgid "Configure downloading with aria2c."
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:293
 #, fuzzy
 msgid "Use aria2c"
 msgstr "Usar aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:265
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:294
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:296
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:298
 msgid "Max Connections Per Server (-x)"
 msgstr "Conexiones máximas por servidor (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:290
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:303
 msgid "Minimum Split Size (-k)"
 msgstr "Tamaño mínimo de la división (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:292
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:304
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:306
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "El tamaño mínimo para dividir un archivo (en MiB)."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:311
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:310
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:324
 msgid "Converter"
 msgstr "Conversor"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:318
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
 msgid "Embed Metadata"
 msgstr "Incrustar metadatos"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:218
 msgid "Remove Source Data"
 msgstr "Eliminar los datos de origen"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:329
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:221
 #, fuzzy
@@ -1102,12 +1110,12 @@ msgstr ""
 "Si está activada, Parabolic borrará los campos de metadatos que contienen "
 "información identificativa de la descarga."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:339
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:223
 msgid "Embed Thumbnails"
 msgstr "Incrustar miniaturas"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:340
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:339
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:224
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:226
 msgid ""
@@ -1117,12 +1125,12 @@ msgstr ""
 "Si el tipo de archivo no admite la incrustación, la miniatura se escribirá "
 "en un archivo de imagen independiente."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:350
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:232
 msgid "Crop Audio Thumbnails"
 msgstr "Recortar miniaturas de audio"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:351
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:350
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:233
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
 #, fuzzy
@@ -1131,17 +1139,17 @@ msgstr ""
 "Si está activada, Parabolic recortará las miniaturas de los archivos de "
 "audio a cuadrados."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:361
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:237
 msgid "Embed Chapters"
 msgstr "Incrustar capítulos"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:369
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
 msgid "Embed Subtitles"
 msgstr "Incrustar los subtítulos"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:371
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:241
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:243
 #, fuzzy
@@ -1152,22 +1160,53 @@ msgstr ""
 "Si se desactiva o si no se admite la incrustación, los subtítulos "
 "descargados se guardarán en un archivo independiente."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:379
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
 #, fuzzy
 msgid "FFmpeg Threads"
 msgstr "Argumentos FFmpeg"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:381
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:259
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:390
 #, fuzzy
 msgid "Postprocessing Arguments"
 msgstr "Hilos de postprocesamiento"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:392
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:272
+#, fuzzy
+msgid "Add Postprocessing Argument"
+msgstr "Hilos de postprocesamiento"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:406
+#, fuzzy
+msgid "Argument"
+msgstr "Nueva credencial"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:425
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:539
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:633
+#, fuzzy
+msgid "Post Processor"
+msgstr "Procesando"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:429
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:638
+#, fuzzy
+msgid "Executable"
+msgstr "Activar"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:433
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:547
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:643
+msgid "Args"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1202,6 +1241,7 @@ msgstr "Ejecutando"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1294,10 +1334,12 @@ msgid "No Subtitles Available"
 msgstr "Sin subtítulos disponibles"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:217
+#, c++-format
 msgid "{} items"
 msgstr "{} elementos"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1593,6 +1635,7 @@ msgstr ""
 "imágenes y subtítulos."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} necesita una credencial para descargar. Por favor, seleccione o "
@@ -1723,7 +1766,7 @@ msgstr "Actualizar"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Queued ({})"
 msgstr "En cola"
 
@@ -1731,14 +1774,14 @@ msgstr "En cola"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading ({})"
 msgstr "Descargando"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Completed ({})"
 msgstr "Completado"
 
@@ -1781,11 +1824,6 @@ msgid "Add, delete, and modify arguments for postprocessing"
 msgstr ""
 "Cree, guarde y gestione sus credenciales para sitios web de multimedia."
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:272
-#, fuzzy
-msgid "Add Postprocessing Argument"
-msgstr "Hilos de postprocesamiento"
-
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:325
 #, fuzzy
 msgid "Postprocessing"
@@ -1795,23 +1833,6 @@ msgstr "Procesando"
 #, fuzzy
 msgid "New Argument"
 msgstr "Nueva credencial"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:539
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:633
-#, fuzzy
-msgid "Post Processor"
-msgstr "Procesando"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:543
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:638
-#, fuzzy
-msgid "Executable"
-msgstr "Activar"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:547
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:643
-msgid "Args"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:570
 #, fuzzy

@@ -258,7 +258,6 @@ Adw.PreferencesDialog root {
 
     Adw.PreferencesGroup {
       title: _("aria2c");
-      description: _("Configure downloading with aria2c.");
 
       Adw.SwitchRow useAriaRow {
         title: _("Use aria2c");
@@ -389,6 +388,58 @@ Adw.PreferencesDialog root {
 
     Adw.PreferencesGroup {
       title: _("Postprocessing Arguments");
+      header-suffix: Gtk.Button addPostprocessingArgument {
+        tooltip-text: _("Add Postprocessing Argument");
+
+        Adw.ButtonContent {
+          icon-name: "list-add-symbolic";
+          label: _("Add");
+        }
+
+        styles [ "flat" ]
+      };
     }
   }
+}
+
+Adw.Dialog editDialog {
+  title: _("Argument");
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar { }
+
+    content: Gtk.Box {
+      orientation: vertical;
+      spacing: 12;
+
+      Adw.PreferencesGroup {
+        margin-start: 12;
+        margin-end: 12;
+
+        Adw.EntryRow editNameRow {
+          title: _("Name");
+        }
+
+        Adw.ComboRow editPostProcessorRow {
+          title: _("Post Processor");
+        }
+
+        Adw.ComboRow editExecutableRow {
+          title: _("Executable");
+        }
+
+        Adw.EntryRow editArgsRow {
+          title: _("Args");
+        }
+      }
+
+      Gtk.Button editConfirmButton {
+        halign: center;
+        margin-bottom: 12;
+
+        styles [ "pill", "suggested-action" ]
+      }
+    };
+  };
 }
