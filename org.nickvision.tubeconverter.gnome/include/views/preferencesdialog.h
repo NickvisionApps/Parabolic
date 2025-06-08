@@ -23,6 +23,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     private:
         /**
+         * @brief Modes for editing a credential.
+         */
+        enum class EditMode
+        {
+            None,
+            Add,
+            Modify
+        };
+        /**
          * @brief Handles when the dialog is closed.
          */
         void onClosed();
@@ -38,7 +47,31 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Clears the cookies file.
          */
         void clearCookiesFile();
+        /**
+         * @brief Reloads the postprocessing arguments to show on the page.
+         */
+        void reloadPostprocessingArguments();
+        /**
+         * @brief Prompts the user to add a new postprocessing argument.
+         */
+        void addNewPostprocessingArgument();
+        /**
+         * @brief Prompts the user to edit a postprocessing argument.
+         * @param name The name of the postprocessing argument to edit
+         */
+        void editPostprocessingArgument(const std::string& name);
+        /**
+         * @brief Deletes a postprocessing argument.
+         * @param name The name of the postprocessing argument to delete
+         */
+        void deletePostprocessingArgument(const std::string& name);
+        /**
+         * @brief Confirms an edit to a postprocessing argument.
+         */
+        void editConfirmPostprocessingArgument();
         std::shared_ptr<Shared::Controllers::PreferencesViewController> m_controller;
+        EditMode m_postprocessingArgumentEditMode;
+        std::vector<AdwActionRow*> m_postprocessingArgumentRows;
     };
 }
 

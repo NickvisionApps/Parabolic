@@ -59,11 +59,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             gtk_widget_set_visible(m_builder.get<GtkWidget>("cookiesBrowserRow"), false);
         }
+        reloadPostprocessingArguments();
         //Signals
         m_closed += [&](const EventArgs&) { onClosed(); };
         g_signal_connect(m_builder.get<GObject>("themeRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->onThemeChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->selectCookiesFile(); }), this);
         g_signal_connect(m_builder.get<GObject>("clearCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->clearCookiesFile(); }), this);
+        g_signal_connect(m_builder.get<GObject>("addPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->addNewPostprocessingArgument(); }), this);
+        g_signal_connect(m_builder.get<GObject>("editConfirmPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->editConfirmPostprocessingArgument(); }), this);
+
     }
 
     void PreferencesDialog::onClosed()
@@ -143,5 +147,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), _("No file selected"));
         gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow"), "");
+    }
+
+    void PreferencesDialog::reloadPostprocessingArguments()
+    {
+
     }
 }
