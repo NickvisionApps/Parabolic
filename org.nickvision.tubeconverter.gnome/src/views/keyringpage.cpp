@@ -59,7 +59,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 pair->first->deleteCredential(pair->second);
             }), deletePair, GClosureNotify(+[](gpointer data, GClosure*)
             {
-                delete reinterpret_cast<std::pair<KeyringPage*, std::string>*>(data); 
+                delete reinterpret_cast<std::pair<KeyringPage*, std::string>*>(data);
             }), G_CONNECT_DEFAULT);
             //Row
             AdwActionRow* row{ ADW_ACTION_ROW(adw_action_row_new()) };
@@ -73,7 +73,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), m_controller->getCredentials().empty() ? "no-credentials" : "credentials");
     }
-    
+
     void KeyringPage::addNewCredential()
     {
         m_editMode = EditMode::Add;
@@ -171,6 +171,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         default:
             adw_dialog_force_close(m_builder.get<AdwDialog>("editDialog"));
             reloadCredentials();
+            break;
         }
     }
 }

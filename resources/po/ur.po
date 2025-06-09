@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-08 17:38-0400\n"
+"POT-Creation-Date: 2025-06-08 20:29-0400\n"
 "PO-Revision-Date: 2023-10-09 05:02+0000\n"
 "Last-Translator: Abdur Rehman Imran <arehmanimran4@gmail.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -568,6 +568,7 @@ msgstr "کوئی اسناد نہیں"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:396
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:215
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:271
@@ -578,6 +579,7 @@ msgstr "اضافہ کریں"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:421
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:262
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:214
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:535
@@ -1190,6 +1192,7 @@ msgid "Add Postprocessing Argument"
 msgstr "عمل کر رہے ہیں ..."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:406
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:261
 #, fuzzy
 msgid "Argument"
 msgstr "کوئی اسناد نہیں"
@@ -1209,6 +1212,7 @@ msgid "Executable"
 msgstr "فعال کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:433
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:547
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:643
 msgid "Args"
@@ -1379,6 +1383,7 @@ msgid "Delete"
 msgstr "حذف کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:233
 msgid "Modify"
 msgstr ""
 
@@ -1397,16 +1402,19 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 msgid "Yes"
 msgstr "ہاں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 msgid "No"
 msgstr "نہیں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:280
 msgid "Name (Empty)"
 msgstr "نام (خالی)"
 
@@ -1424,6 +1432,7 @@ msgid "URL (Invalid)"
 msgstr "یو-آر-ایل (غلط)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:284
 #, fuzzy
 msgid "Name (Exists)"
 msgstr "نام (خالی)"
@@ -1495,6 +1504,24 @@ msgstr "گٹ ہب رجسٹر(ریپوسٹری)"
 #, fuzzy
 msgid "No Arguments"
 msgstr "کوئی اسناد نہیں"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
+#, fuzzy
+msgid "Delete Argument?"
+msgstr "کوئی اسناد نہیں"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
+msgid "Are you sure you want to delete this argument?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:288
+#, fuzzy
+msgid "Args (Empty)"
+msgstr "نام (خالی)"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:69
 msgid "Developers"
@@ -1881,17 +1908,6 @@ msgstr "کوئی اسناد نہیں"
 #, fuzzy
 msgid "Delete Argument"
 msgstr "کوئی اسناد نہیں"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
-#, fuzzy
-msgid "Delete Argument?"
-msgstr "کوئی اسناد نہیں"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
-msgid "Are you sure you want to delete this argument?"
-msgstr ""
 
 #, fuzzy
 #~ msgid "Postprocessing Threads"

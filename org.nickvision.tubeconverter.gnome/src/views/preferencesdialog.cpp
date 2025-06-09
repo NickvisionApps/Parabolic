@@ -207,21 +207,91 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void PreferencesDialog::addNewPostprocessingArgument()
     {
-
+        m_postprocessingArgumentEditMode = EditMode::Add;
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editNameRow"), "");
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings());
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings());
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editArgsRow"), "");
+        gtk_button_set_label(m_builder.get<GtkButton>("editConfirmPostprocessingArgumentButton"), _("Add"));
+        adw_dialog_present(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), GTK_WIDGET(m_parent));
     }
 
     void PreferencesDialog::editPostprocessingArgument(const std::string& name)
     {
-
+        std::optional<PostProcessorArgument> argument{ m_controller->getPostprocessingArgument(name) };
+        if(!argument)
+        {
+            return;
+        }
+        m_postprocessingArgumentEditMode = EditMode::Modify;
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editNameRow"), argument->getName().c_str());
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings());
+        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("editPostProcessorRow"), static_cast<int>(argument->getPostProcessor()));
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings());
+        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("editExecutableRow"), static_cast<int>(argument->getExecutable()));
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editArgsRow"), argument->getArgs().c_str());
+        gtk_button_set_label(m_builder.get<GtkButton>("editConfirmPostprocessingArgumentButton"), _("Modify"));
+        adw_dialog_present(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), GTK_WIDGET(m_parent));
     }
 
     void PreferencesDialog::deletePostprocessingArgument(const std::string& name)
     {
-
+        AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Delete Argument?"), _("Are you sure you want to delete this argument?"))) };
+        std::pair<PreferencesDialog*, std::string>* pair{ new std::pair<PreferencesDialog*, std::string>(this, name) };
+        adw_alert_dialog_add_responses(dialog, "yes", _("Yes"), "no", _("No"), nullptr);
+        adw_alert_dialog_set_response_appearance(dialog, "yes", ADW_RESPONSE_DESTRUCTIVE);
+        adw_alert_dialog_set_default_response(dialog, "no");
+        adw_alert_dialog_set_close_response(dialog, "no");
+        g_signal_connect(dialog, "response", GCallback(+[](AdwAlertDialog* self, const char* response, gpointer data)
+        {
+            std::pair<PreferencesDialog*, std::string>* pair{ reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data) };
+            if(std::string(response) == "yes")
+            {
+                pair->first->m_controller->deletePostprocessingArgument(pair->second);
+                pair->first->reloadPostprocessingArguments();
+            }
+            delete pair;
+        }), pair);
+        adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_parent));
     }
 
     void PreferencesDialog::editConfirmPostprocessingArgument()
     {
-
+        PostProcessorArgumentCheckStatus status;
+        adw_dialog_set_title(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), _("Argument"));
+        adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editNameRow"), _("Name"));
+        gtk_widget_remove_css_class(m_builder.get<GtkWidget>("editNameRow"), "error");
+        adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editArgsRow"), _("Args"));
+        gtk_widget_remove_css_class(m_builder.get<GtkWidget>("editArgsRow"), "error");
+        switch(m_postprocessingArgumentEditMode)
+        {
+        case EditMode::Add:
+            status = m_controller->addPostprocessingArgument(gtk_editable_get_text(m_builder.get<GtkEditable>("editNameRow")), static_cast<PostProcessor>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editPostProcessorRow"))), static_cast<Executable>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editExecutableRow"))), gtk_editable_get_text(m_builder.get<GtkEditable>("editArgsRow")));
+            break;
+        case EditMode::Modify:
+            status = m_controller->updatePostprocessingArgument(gtk_editable_get_text(m_builder.get<GtkEditable>("editNameRow")), static_cast<PostProcessor>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editPostProcessorRow"))), static_cast<Executable>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editExecutableRow"))), gtk_editable_get_text(m_builder.get<GtkEditable>("editArgsRow")));
+            break;
+        default:
+            return;
+        }
+        switch(status)
+        {
+        case PostProcessorArgumentCheckStatus::EmptyName:
+            adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editNameRow"), _("Name (Empty)"));
+            gtk_widget_add_css_class(m_builder.get<GtkWidget>("editNameRow"), "error");
+            break;
+        case PostProcessorArgumentCheckStatus::ExistingName:
+            adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editNameRow"), _("Name (Exists)"));
+            gtk_widget_add_css_class(m_builder.get<GtkWidget>("editNameRow"), "error");
+            break;
+        case PostProcessorArgumentCheckStatus::EmptyArgs:
+            adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editArgsRow"), _("Args (Empty)"));
+            gtk_widget_add_css_class(m_builder.get<GtkWidget>("editArgsRow"), "error");
+            break;
+        default:
+            adw_dialog_force_close(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"));
+            reloadPostprocessingArguments();
+            break;
+        }
     }
 }

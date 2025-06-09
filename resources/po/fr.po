@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-08 17:38-0400\n"
+"POT-Creation-Date: 2025-06-08 20:29-0400\n"
 "PO-Revision-Date: 2025-02-06 19:22+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -556,6 +556,7 @@ msgstr "Identifiants"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:396
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:215
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:271
@@ -566,6 +567,7 @@ msgstr "Ajouter"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:421
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:262
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:214
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:535
@@ -1183,6 +1185,7 @@ msgid "Add Postprocessing Argument"
 msgstr "Fils de post-traitement"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:406
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:261
 #, fuzzy
 msgid "Argument"
 msgstr "Nouvel identifiant"
@@ -1202,6 +1205,7 @@ msgid "Executable"
 msgstr "Activer"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:433
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:547
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:643
 msgid "Args"
@@ -1374,6 +1378,7 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:233
 msgid "Modify"
 msgstr "Modifier"
 
@@ -1392,16 +1397,19 @@ msgstr "Êtes-vous sûr de vouloir supprimer cet identifiant ?"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 msgid "Yes"
 msgstr "Oui"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 msgid "No"
 msgstr "Non"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:280
 msgid "Name (Empty)"
 msgstr "Nom (vide)"
 
@@ -1418,6 +1426,7 @@ msgid "URL (Invalid)"
 msgstr "URL (invalide)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:284
 msgid "Name (Exists)"
 msgstr "Nom (existe)"
 
@@ -1486,6 +1495,25 @@ msgstr "Dépôt GitHub"
 #, fuzzy
 msgid "No Arguments"
 msgstr "Nouvel identifiant"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
+#, fuzzy
+msgid "Delete Argument?"
+msgstr "Nouvel identifiant"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
+#, fuzzy
+msgid "Are you sure you want to delete this argument?"
+msgstr "Êtes-vous sûr de vouloir supprimer cet identifiant ?"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:288
+#, fuzzy
+msgid "Args (Empty)"
+msgstr "Nom (vide)"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:69
 msgid "Developers"
@@ -1868,18 +1896,6 @@ msgstr "Nouvel identifiant"
 #, fuzzy
 msgid "Delete Argument"
 msgstr "Nouvel identifiant"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
-#, fuzzy
-msgid "Delete Argument?"
-msgstr "Nouvel identifiant"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:599
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:684
-#, fuzzy
-msgid "Are you sure you want to delete this argument?"
-msgstr "Êtes-vous sûr de vouloir supprimer cet identifiant ?"
 
 #~ msgid "Postprocessing Threads"
 #~ msgstr "Fils de post-traitement"
