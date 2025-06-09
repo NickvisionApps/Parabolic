@@ -83,6 +83,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getSubtitleLanguageStrings() const;
         /**
+         * @brief Gets the list of postprocessing arguments as strings.
+         * @return The list of postprocessing arguments as strings
+         */
+        std::vector<std::string> getPostprocessingArgumentNames() const;
+        /**
          * @brief Gets the url for the media at the specified index.
          * @param index The index of the media
          * @return The url of the media
@@ -145,10 +150,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param splitChapters Whether or not to split the video by chapters
          * @param exportDescription Whether or not to export the media description to a file
          * @param excludeFromHistory Whether or not to exclude the download from the history
+         * @param postProcessorArgumentIndex The index of the selected post processor argument
          * @param startTime The start time of the download
          * @param endTime The end time of the download
          */
-        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, const std::string& startTime, const std::string& endTime);
+        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, size_t postProcessorArgumentIndex, const std::string& startTime, const std::string& endTime);
         /**
          * @brief Adds a playlist download to the download manager.
          * @param saveFolder The folder to save the downloads to
@@ -158,8 +164,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param exportDescription Whether or not to export the media description to a file
          * @param writePlaylistFile Whether or not to write a m3u playlist file
          * @param excludeFromHistory Whether or not to exclude the download from the history
+         * @param postProcessorArgumentIndex The index of the selected post processor argument
          */
-        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory);
+        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory, size_t postProcessorArgumentIndex);
 
     private:
         Models::DownloadManager& m_downloadManager;

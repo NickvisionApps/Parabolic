@@ -10,6 +10,7 @@
 #include "downloaderoptions.h"
 #include "format.h"
 #include "mediafiletype.h"
+#include "postprocessorargument.h"
 #include "subtitlelanguage.h"
 #include "timeframe.h"
 
@@ -146,6 +147,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setExportDescription(bool exportDescription);
         /**
+         * @brief Gets the post processor argument for the download.
+         * @return The post processor argument for the download
+         */
+        const std::optional<PostProcessorArgument>& getPostProcessorArgument() const;
+        /**
+         * @brief Sets the post processor argument for the download.
+         * @param postProcessorArgument The post processor argument for the download
+         */
+        void setPostProcessorArgument(const std::optional<PostProcessorArgument>& postProcessorArgument);
+        /**
          * @brief Gets the time frame of the download.
          * @return The time frame of the download
          */
@@ -203,6 +214,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::vector<SubtitleLanguage> m_subtitleLanguages;
         bool m_splitChapters;
         bool m_exportDescription;
+        std::optional<PostProcessorArgument> m_postProcessorArgument;
         std::optional<TimeFrame> m_timeFrame;
         int m_playlistPosition;
     };

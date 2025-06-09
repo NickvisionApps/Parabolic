@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-08 20:50-0400\n"
+"POT-Creation-Date: 2025-06-08 21:37-0400\n"
 "PO-Revision-Date: 2025-05-30 10:03+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -79,14 +79,26 @@ msgstr "FLAC (Audio)"
 msgid "WAV (Audio)"
 msgstr "WAV (Audio)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:240
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:195
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:348
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:375
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
+#: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:452
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
+msgid "None"
+msgstr "Žiadny"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
 #, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "Chyba pri pokuse o overenie sťahovania: {}"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:337
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:372
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:400
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Chyba pri pokuse o pridanie sťahovania: {}"
@@ -170,15 +182,6 @@ msgstr "Sťahovanie neprebehlo úspešne"
 msgid "{} has finished with an error"
 msgstr "Sťahovanie súboru „{}“ nebolo úspešné"
 
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
-#: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:442
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
-msgid "None"
-msgstr "Žiadny"
-
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
 msgstr "0 B/s"
@@ -260,7 +263,7 @@ msgstr "Automaticky vygenerované"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:421
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:431
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
 msgid "Add Download"
 msgstr "Pridať stiahnutie"
@@ -334,7 +337,7 @@ msgstr "Overiť"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:303
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:133
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:260
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:264
 msgid "File Type"
 msgstr "Typ súboru"
 
@@ -360,7 +363,7 @@ msgid "Audio Format"
 msgstr "Formát zvuku"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:140
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:246
 msgid "Subtitles"
 msgstr "Titulky"
 
@@ -371,7 +374,7 @@ msgstr "Pokročilé možnosti"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:164
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:280
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:287
 msgid "Save Folder"
 msgstr "Priečinok na uloženie"
 
@@ -380,9 +383,9 @@ msgstr "Priečinok na uloženie"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:293
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:364
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:289
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:638
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:688
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:296
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:650
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:700
 msgid "Select Save Folder"
 msgstr "Vybrať priečinok na uloženie"
 
@@ -394,29 +397,29 @@ msgstr "Názov súboru"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:185
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:166
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:333
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:341
 msgid "Revert to Title"
 msgstr "Vrátiť späť názov"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:194
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:385
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:250
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:354
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:362
 msgid "Download"
 msgstr "Stiahnuť"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:414
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:318
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:220
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:326
 msgid "Select All"
 msgstr "Vybrať všetko"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:224
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:421
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:221
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:323
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:331
 msgid "Deselect All"
 msgstr "Zrušiť výber všetkých"
 
@@ -428,19 +431,19 @@ msgstr "Rozdeliť videá podľa kapitol"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:256
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:328
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:188
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:275
 msgid "Export Description"
 msgstr "Popis exportu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:260
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:336
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:191
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:277
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
 msgid "Exclude from History"
 msgstr "Vylúčiť z histórie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:264
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:197
 msgid "Start Time"
 msgstr "Čas začiatku"
 
@@ -450,12 +453,12 @@ msgid "Revert to Original"
 msgstr "Návrat k pôvodnému stavu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:277
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:201
 msgid "End Time"
 msgstr "Čas ukončenia"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:314
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
@@ -467,12 +470,12 @@ msgstr ""
 "o ktorom je známe, že vkladanie podporuje."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:332
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:274
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:278
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:359
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr ""
@@ -484,7 +487,7 @@ msgid "Playlist Items"
 msgstr "Položky zoznamu prehrávania"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:403
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:312
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:320
 msgid "Number Titles"
 msgstr "Názvy čísel"
 
@@ -1256,7 +1259,7 @@ msgstr "{} | {} | Zostávajúci čas: {}"
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
@@ -1298,25 +1301,25 @@ msgstr "Obnoviť"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:441
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:451
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:73
 msgid "Use manual credential"
 msgstr "Použiť manuálne poverenie"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:83
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:490
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 msgid "Select Batch File"
 msgstr "Vybrať dávkový súbor"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:490
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "TXT Files (*.txt)"
 msgstr "TXT súbory (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 #, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
@@ -1336,7 +1339,7 @@ msgid "Close"
 msgstr "Zavrieť"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:199
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:211
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:215
 msgid "No Subtitles Available"
 msgstr "Titulky nie sú k dispozícii"
 
@@ -1607,7 +1610,7 @@ msgid "This may take some time..."
 msgstr "Môže to chvíľu trvať..."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:283
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
 msgid "No save folder selected"
 msgstr "Nie je vybraný žiadny priečinok na uloženie"
 
@@ -1616,39 +1619,45 @@ msgid "Enter file name here"
 msgstr "Sem zadajte názov súboru"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:185
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:268
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
 msgid "Split Video by Chapters"
 msgstr "Rozdeliť video podľa kapitol"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:284
+#, fuzzy
+msgid "Post Processor Argument"
+msgstr "Spracovanie vlákien"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
 msgid "Enter start time here"
 msgstr "Tu zadajte čas začiatku"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:200
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:203
 msgid "Enter end time here"
 msgstr "Tu zadajte čas ukončenia"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:348
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:356
 msgid "General"
 msgstr "Všeobecné"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:242
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:247
 msgid "Advanced"
 msgstr "Pokročilé"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:349
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:357
 msgid "Items"
 msgstr "Položky"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Warning"
 msgstr "Upozornenie"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
 "Please select a specific file type that is known to support embedding to "

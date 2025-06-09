@@ -72,6 +72,10 @@ namespace Nickvision::TubeConverter::Shared::Models
                 m_subtitleLanguages.push_back(SubtitleLanguage(value.as_object()));
             }
         }
+        if(json["PostProcessorArgument"].is_object())
+        {
+            m_postProcessorArgument = PostProcessorArgument(json["PostProcessorArgument"].as_object());
+        }
         if(json["TimeFrame"].is_object())
         {
             m_timeFrame = TimeFrame(json["TimeFrame"].as_object());
@@ -207,6 +211,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setExportDescription(bool exportDescription)
     {
         m_exportDescription = exportDescription;
+    }
+
+    const std::optional<PostProcessorArgument>& DownloadOptions::getPostProcessorArgument() const
+    {
+        return m_postProcessorArgument;
+    }
+
+    void DownloadOptions::setPostProcessorArgument(const std::optional<PostProcessorArgument>& postProcessorArgument)
+    {
+        m_postProcessorArgument = postProcessorArgument;
     }
 
     const std::optional<TimeFrame>& DownloadOptions::getTimeFrame() const
@@ -454,7 +468,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(!m_fileType.isGeneric())
             {
                 arguments.push_back("--audio-format");
-                arguments.push_back(StringHelpers::lower(m_fileType.str()));   
+                arguments.push_back(StringHelpers::lower(m_fileType.str()));
             }
         }
         else if(m_fileType.isVideo())
@@ -610,14 +624,29 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--write-description");
         }
+        if(m_postProcessorArgument)
+        {
+            arguments.push_back("--postprocessor-args");
+            if(m_postProcessorArgument->getExecutable() == Executable::FFmpeg && m_postProcessorArgument->getPostProcessor() == PostProcessor::None)
+            {
+                arguments.push_back(m_postProcessorArgument->str() + " -threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
+            }
+            else
+            {
+                arguments.push_back(m_postProcessorArgument->str());
+            }
+        }
+        else
+        {
+            arguments.push_back("--postprocessor-args");
+            arguments.push_back("ffmpeg:-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
+        }
         if(m_timeFrame)
         {
             arguments.push_back("--download-sections");
             arguments.push_back("*" + m_timeFrame->str());
             arguments.push_back("--force-keyframes-at-cuts");
         }
-        arguments.push_back("--postprocessor-args");
-        arguments.push_back("ffmpeg:-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
         arguments.push_back("--print");
         arguments.push_back("after_move:filepath");
         return arguments;
@@ -666,6 +695,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         json["SubtitleLanguages"] = subtitleLanguages;
         json["SplitChapters"] = m_splitChapters;
         json["ExportDescription"] = m_exportDescription;
+        if(m_postProcessorArgument)
+        {
+            json["PostProcessorArgument"] = m_postProcessorArgument->toJson();
+        }
         if(m_timeFrame)
         {
             json["TimeFrame"] = m_timeFrame->toJson();

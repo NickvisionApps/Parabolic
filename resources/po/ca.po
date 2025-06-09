@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-08 20:50-0400\n"
+"POT-Creation-Date: 2025-06-08 21:37-0400\n"
 "PO-Revision-Date: 2025-05-03 08:01+0000\n"
 "Last-Translator: Roger VC <rogervilarasau@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -79,14 +79,26 @@ msgstr "FLAC (àudio)"
 msgid "WAV (Audio)"
 msgstr "WAV (àudio)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:240
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:195
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:348
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:375
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
+#: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:452
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
+msgid "None"
+msgstr "Cap"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
 #, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:337
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:372
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:400
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -173,15 +185,6 @@ msgstr "La descàrrega ha Acabat amb Error"
 msgid "{} has finished with an error"
 msgstr "{} ha acabat amb un error"
 
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
-#: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:442
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
-msgid "None"
-msgstr "Cap"
-
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
 msgstr ""
@@ -263,7 +266,7 @@ msgstr "De generació automàtica"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:421
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:431
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
 msgid "Add Download"
 msgstr "Afegeix baixada"
@@ -337,7 +340,7 @@ msgstr "Valida"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:303
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:133
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:260
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:264
 msgid "File Type"
 msgstr "Tipus de fitxer"
 
@@ -364,7 +367,7 @@ msgid "Audio Format"
 msgstr "Format d'àudio"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:140
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:246
 msgid "Subtitles"
 msgstr "Subtítols"
 
@@ -375,7 +378,7 @@ msgstr "Opcions avançades"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:164
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:280
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:287
 msgid "Save Folder"
 msgstr "Desa la carpeta"
 
@@ -384,9 +387,9 @@ msgstr "Desa la carpeta"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:293
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:364
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:289
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:638
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:688
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:296
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:650
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:700
 msgid "Select Save Folder"
 msgstr "Seleccioneu la carpeta on es desa"
 
@@ -398,29 +401,29 @@ msgstr "Nom del fitxer"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:185
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:166
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:333
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:341
 msgid "Revert to Title"
 msgstr "Reverteix al títol"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:194
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:385
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:250
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:354
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:362
 msgid "Download"
 msgstr "Baixa"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:414
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:318
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:220
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:326
 msgid "Select All"
 msgstr "Selecciona-ho tot"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:224
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:421
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:221
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:323
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:331
 msgid "Deselect All"
 msgstr "Desselecciona-ho tot"
 
@@ -432,20 +435,20 @@ msgstr "Parteix els vídeos en capítols"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:256
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:328
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:188
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:275
 msgid "Export Description"
 msgstr "Exportar Descripció"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:260
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:336
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:191
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:277
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
 #, fuzzy
 msgid "Exclude from History"
 msgstr "Neteja l’historial"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:264
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:197
 msgid "Start Time"
 msgstr "Temps d'inici"
 
@@ -455,12 +458,12 @@ msgid "Revert to Original"
 msgstr "Reverteix a l’original"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:277
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:201
 msgid "End Time"
 msgstr "Temps de finalització"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:314
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
@@ -473,12 +476,12 @@ msgstr ""
 "escrits al disc."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:332
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:274
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:278
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:359
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr ""
@@ -488,7 +491,7 @@ msgid "Playlist Items"
 msgstr "Elements de la llista de reproducció"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:403
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:312
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:320
 msgid "Number Titles"
 msgstr "Nombre de títols"
 
@@ -1259,7 +1262,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
@@ -1301,25 +1304,25 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:441
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:451
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:73
 msgid "Use manual credential"
 msgstr "Utilitza credencials manuals"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:83
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:490
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 msgid "Select Batch File"
 msgstr "Seleccioneu el fitxer de lots"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:490
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "TXT Files (*.txt)"
 msgstr "Fitxers TXT (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 #, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
@@ -1337,7 +1340,7 @@ msgid "Close"
 msgstr "Tanca"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:199
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:211
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:215
 msgid "No Subtitles Available"
 msgstr "No hi ha cap subtítol disponible"
 
@@ -1615,7 +1618,7 @@ msgid "This may take some time..."
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:283
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
 #, fuzzy
 msgid "No save folder selected"
 msgstr "No s’ha seleccionat cap fitxer"
@@ -1625,42 +1628,48 @@ msgid "Enter file name here"
 msgstr "Introduïu el nom de fitxer ací"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:185
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:268
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
 msgid "Split Video by Chapters"
 msgstr "Parteix el vídeo en capítols"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:284
+#, fuzzy
+msgid "Post Processor Argument"
+msgstr "Fils de postprocessament"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
 #, fuzzy
 msgid "Enter start time here"
 msgstr "Introduïu el període de temps d'inici aquí"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:200
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:203
 #, fuzzy
 msgid "Enter end time here"
 msgstr "Introduïu el període de temps de final aquí"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:348
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:356
 msgid "General"
 msgstr "Generals"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:242
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:247
 #, fuzzy
 msgid "Advanced"
 msgstr "Opcions avançades"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:349
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:357
 msgid "Items"
 msgstr "Elements"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Warning"
 msgstr "Avís"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "

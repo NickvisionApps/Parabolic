@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-08 20:50-0400\n"
+"POT-Creation-Date: 2025-06-08 21:37-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -87,14 +87,26 @@ msgstr ""
 msgid "WAV (Audio)"
 msgstr "音频"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:240
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:195
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:348
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:375
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
+#: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:452
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
+msgid "None"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
 #, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:337
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:372
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:400
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
@@ -181,15 +193,6 @@ msgstr "下载完成, 但有错误"
 msgid "{} has finished with an error"
 msgstr "\"{0}\" 已完成下载, 但出现错误!"
 
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
-#: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:442
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
-msgid "None"
-msgstr ""
-
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
 msgstr ""
@@ -273,7 +276,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:421
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:431
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
 msgid "Add Download"
 msgstr "添加下载"
@@ -348,7 +351,7 @@ msgstr "验证"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:303
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:133
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:260
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:264
 msgid "File Type"
 msgstr "文件类型"
 
@@ -370,7 +373,7 @@ msgid "Audio Format"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:140
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:246
 #, fuzzy
 msgid "Subtitles"
 msgstr "嵌入字幕"
@@ -382,7 +385,7 @@ msgstr "高级选项"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:164
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:280
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:287
 msgid "Save Folder"
 msgstr "保存文件夹"
 
@@ -391,9 +394,9 @@ msgstr "保存文件夹"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:293
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:364
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:289
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:638
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:688
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:296
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:650
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:700
 msgid "Select Save Folder"
 msgstr "选择保存文件夹"
 
@@ -405,30 +408,30 @@ msgstr "文件名"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:185
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:166
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:333
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:341
 msgid "Revert to Title"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:194
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:385
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:250
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:354
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:362
 msgid "Download"
 msgstr "下载"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:414
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:318
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:220
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:326
 #, fuzzy
 msgid "Select All"
 msgstr "取消全选"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:224
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:421
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:221
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:323
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:331
 msgid "Deselect All"
 msgstr "取消全选"
 
@@ -441,20 +444,20 @@ msgstr "拆分章节"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:256
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:328
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:188
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:275
 msgid "Export Description"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:260
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:336
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:191
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:277
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
 #, fuzzy
 msgid "Exclude from History"
 msgstr "清除历史记录"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:264
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:197
 msgid "Start Time"
 msgstr "开始时间"
 
@@ -464,12 +467,12 @@ msgid "Revert to Original"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:277
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:198
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:201
 msgid "End Time"
 msgstr "结束时间"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:314
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
 "playlist files. Please select a specific file type that is known to support "
@@ -477,12 +480,12 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:332
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:274
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:278
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:359
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr ""
@@ -493,7 +496,7 @@ msgid "Playlist Items"
 msgstr "播放列表"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:403
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:312
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:320
 msgid "Number Titles"
 msgstr "数字标题"
 
@@ -1274,7 +1277,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
@@ -1316,26 +1319,26 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:441
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:451
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:73
 msgid "Use manual credential"
 msgstr "使用手动凭据"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:83
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:490
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 #, fuzzy
 msgid "Select Batch File"
 msgstr "选择保存文件夹"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:490
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "TXT Files (*.txt)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:541
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, the cookies settings, and the preferred codecs "
@@ -1350,7 +1353,7 @@ msgid "Close"
 msgstr "关闭"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:199
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:211
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:215
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "有新的版本可更新"
@@ -1631,7 +1634,7 @@ msgid "This may take some time..."
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:283
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
 #, fuzzy
 msgid "No save folder selected"
 msgstr "未选择任何文件"
@@ -1642,44 +1645,50 @@ msgid "Enter file name here"
 msgstr "在此处输入名称"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:185
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:268
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
 #, fuzzy
 msgid "Split Video by Chapters"
 msgstr "拆分章节"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:196
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:284
+#, fuzzy
+msgid "Post Processor Argument"
+msgstr "处理中..."
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
 #, fuzzy
 msgid "Enter start time here"
 msgstr "在此处输入开始时间"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:200
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:203
 #, fuzzy
 msgid "Enter end time here"
 msgstr "在此处输入结束时间"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:348
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:356
 msgid "General"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:242
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:247
 #, fuzzy
 msgid "Advanced"
 msgstr "高级选项"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:349
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:357
 #, fuzzy
 msgid "Items"
 msgstr "{1} 项目中的 {0} 个"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:683
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:697
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Warning"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
 "Please select a specific file type that is known to support embedding to "

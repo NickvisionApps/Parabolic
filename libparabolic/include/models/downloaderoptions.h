@@ -243,7 +243,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the list of user-defined postprocessing arguments.
          * @return The list of user-defined postprocessing arguments
          */
-        std::vector<PostProcessorArgument> getPostprocessingArguments() const;
+        const std::vector<PostProcessorArgument>& getPostprocessingArguments() const;
         /**
          * @brief Sets the list of user-defined postprocessing arguments.
          * @param args The new list of user-defined postprocessing arguments

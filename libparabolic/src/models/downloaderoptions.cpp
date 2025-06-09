@@ -19,11 +19,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_usePartFiles{ true },
         m_youTubeSponsorBlock{ false },
         m_speedLimit{ std::nullopt },
-        m_cookiesBrowser{ Browser::None },        
+        m_cookiesBrowser{ Browser::None },
         m_embedMetadata{ true },
         m_removeSourceData{ false },
         m_embedThumbnails{ true },
-        m_cropAudioThumbnails{ false },        
+        m_cropAudioThumbnails{ false },
         m_embedChapters{ false },
         m_embedSubtitles{ true },
         m_postprocessingThreads{ static_cast<int>(std::thread::hardware_concurrency()) },
@@ -31,7 +31,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_ariaMaxConnectionsPerServer{ 16 },
         m_ariaMinSplitSize{ 20 }
     {
-        
+
     }
 
     int DownloaderOptions::getMaxNumberOfActiveDownloads() const
@@ -244,7 +244,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_embedSubtitles = embedSubtitles;
     }
-    
+
     int DownloaderOptions::getPostprocessingThreads() const
     {
         return m_postprocessingThreads;
@@ -260,7 +260,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_postprocessingThreads = threads;
     }
 
-    std::vector<PostProcessorArgument> DownloaderOptions::getPostprocessingArguments() const
+    const std::vector<PostProcessorArgument>& DownloaderOptions::getPostprocessingArguments() const
     {
         return m_postProcessingArguments;
     }

@@ -9,7 +9,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     PreviousDownloadOptions::PreviousDownloadOptions(const std::string& key, const std::string& appName)
         : DataFileBase{ key, appName }
     {
-        
+
     }
 
     std::filesystem::path PreviousDownloadOptions::getSaveFolder() const
@@ -63,7 +63,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_json["AudioFormatId"] = audioFormatId;
     }
-    
+
     bool PreviousDownloadOptions::getSplitChapters() const
     {
         return m_json["SplitChapters"].is_bool() ? m_json["SplitChapters"].as_bool() : false;
@@ -82,6 +82,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     void PreviousDownloadOptions::setExportDescription(bool exportDescription)
     {
         m_json["ExportDescription"] = exportDescription;
+    }
+
+    std::string PreviousDownloadOptions::getPostProcessorArgument() const
+    {
+        return m_json["PostProcessorArgument"].is_string() ? m_json["PostProcessorArgument"].as_string().c_str() : "";
+    }
+
+    void PreviousDownloadOptions::setPostProcessorArgument(const std::string& postProcessorArgument)
+    {
+        m_json["PostProcessorArgument"] = postProcessorArgument;
     }
 
     bool PreviousDownloadOptions::getWritePlaylistFile() const

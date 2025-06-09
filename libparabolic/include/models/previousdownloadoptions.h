@@ -83,6 +83,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setExportDescription(bool exportDescription);
         /**
+         * @brief Gets the previous name of the post processor argument.
+         * @return The previous post processor argument name
+         */
+        std::string getPostProcessorArgument() const;
+        /**
+         * @brief Sets the previous name of the post processor argument.
+         * @param postProcessorArgument The new previous postprocessing argument name
+         */
+        void setPostProcessorArgument(const std::string& postProcessorArgument);
+        /**
          * @brief Gets the previous write playlist file state.
          * @return The previous write playlist file state
          */
