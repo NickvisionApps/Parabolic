@@ -35,7 +35,7 @@ Adw.Dialog root {
           height-request: 32;
         };
       }
-      
+
       Adw.ViewStackPage {
         name: "validate";
         child: Gtk.Box {
@@ -260,6 +260,10 @@ Adw.Dialog root {
               title: _("Exclude from History");
             }
 
+            Adw.ComboRow postProcessorArgumentSingleRow {
+              title: _("Post Processor Argument");
+            }
+
             Adw.EntryRow startTimeSingleRow {
               title: _("Start Time");
 
@@ -334,6 +338,10 @@ Adw.Dialog root {
 
             Adw.SwitchRow excludeHistoryPlaylistRow {
               title: _("Exclude from History");
+            }
+
+            Adw.ComboRow postProcessorArgumentPlaylistRow {
+              title: _("Post Processor Argument");
             }
           }
 
