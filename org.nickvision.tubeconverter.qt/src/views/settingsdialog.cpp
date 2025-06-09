@@ -263,7 +263,7 @@ namespace Ui
             lblArguments->setText(_("Arguments"));
             lblArguments->setFont(boldFont);
             QLabel* lblArgumentsDescription{ new QLabel(parent) };
-            lblArgumentsDescription->setText(_("Add, delete, and modify arguments for postprocessing"));
+            lblArgumentsDescription->setText(_("Parabolic will show these arguments for\nselection in the add download dialog."));
             btnAddPostprocessingArgument = new QPushButton(parent);
             btnAddPostprocessingArgument->setAutoDefault(true);
             btnAddPostprocessingArgument->setDefault(true);
@@ -271,6 +271,7 @@ namespace Ui
             btnAddPostprocessingArgument->setText(_("Add"));
             btnAddPostprocessingArgument->setToolTip(_("Add Postprocessing Argument"));
             listPostprocessingArguments = new QListWidget(parent);
+            listPostprocessingArguments->setContextMenuPolicy(::Qt::ContextMenuPolicy::CustomContextMenu);
             QVBoxLayout* layoutLabels{ new QVBoxLayout() };
             layoutLabels->addWidget(lblArguments);
             layoutLabels->addWidget(lblArgumentsDescription);
