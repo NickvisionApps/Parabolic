@@ -121,7 +121,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         else if(args.getStatus() == DownloadStatus::Success)
         {
             gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "success");
-            gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "emblem-ok-symbolic");
+            gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "checkmark-small-symbolic");
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Success"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "success");
             gtk_level_bar_set_value(m_builder.get<GtkLevelBar>("levelBar"), 1.0);
