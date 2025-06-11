@@ -5,6 +5,8 @@ on:
     branches: [ "main" ]
     types: [ "review_requested", "ready_for_review" ]
 name: Spell Check
+permissions:
+  contents: read
 jobs:
   codespell:
     runs-on: ubuntu-latest
