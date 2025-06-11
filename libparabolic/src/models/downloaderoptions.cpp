@@ -1,4 +1,5 @@
 #include "models/downloaderoptions.h"
+#include <algorithm>
 #include <thread>
 #include <libnick/system/environment.h>
 
@@ -17,12 +18,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_preferredSubtitleFormat{ SubtitleFormat::Any },
         m_usePartFiles{ true },
         m_youTubeSponsorBlock{ false },
-        m_speedLimit{ 1024 },
-        m_cookiesBrowser{ Browser::None },        
+        m_speedLimit{ std::nullopt },
+        m_cookiesBrowser{ Browser::None },
         m_embedMetadata{ true },
         m_removeSourceData{ false },
         m_embedThumbnails{ true },
-        m_cropAudioThumbnails{ false },        
+        m_cropAudioThumbnails{ false },
         m_embedChapters{ false },
         m_embedSubtitles{ true },
         m_postprocessingThreads{ static_cast<int>(std::thread::hardware_concurrency()) },
@@ -30,7 +31,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_ariaMaxConnectionsPerServer{ 16 },
         m_ariaMinSplitSize{ 20 }
     {
-        
+
     }
 
     int DownloaderOptions::getMaxNumberOfActiveDownloads() const
@@ -137,18 +138,21 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_youTubeSponsorBlock = sponsorBlock;
     }
 
-    int DownloaderOptions::getSpeedLimit() const
+    const std::optional<int>& DownloaderOptions::getSpeedLimit() const
     {
         return m_speedLimit;
     }
 
-    void DownloaderOptions::setSpeedLimit(int speedLimit)
+    void DownloaderOptions::setSpeedLimit(const std::optional<int>& limit)
     {
-        if(speedLimit < 512 || speedLimit > 10240)
+        if(limit && (*limit < 512 || *limit > 10240))
         {
-            speedLimit = 1024;
+            m_speedLimit = 1024;
         }
-        m_speedLimit = speedLimit;
+        else
+        {
+            m_speedLimit = limit;
+        }
     }
 
     const std::string& DownloaderOptions::getProxyUrl() const
@@ -240,7 +244,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_embedSubtitles = embedSubtitles;
     }
-    
+
     int DownloaderOptions::getPostprocessingThreads() const
     {
         return m_postprocessingThreads;
@@ -254,6 +258,17 @@ namespace Nickvision::TubeConverter::Shared::Models
             threads = hardwareThreads;
         }
         m_postprocessingThreads = threads;
+    }
+
+    const std::vector<PostProcessorArgument>& DownloaderOptions::getPostprocessingArguments() const
+    {
+        return m_postProcessingArguments;
+    }
+
+    void DownloaderOptions::setPostprocessingArguments(const std::vector<PostProcessorArgument>& args)
+    {
+        m_postProcessingArguments = args;
+        std::sort(m_postProcessingArguments.begin(), m_postProcessingArguments.end());
     }
 
     bool DownloaderOptions::getUseAria() const

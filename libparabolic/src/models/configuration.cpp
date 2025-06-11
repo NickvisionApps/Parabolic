@@ -25,28 +25,16 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     WindowGeometry Configuration::getWindowGeometry() const
     {
-        WindowGeometry geometry;
         if(!m_json["WindowGeometry"].is_object())
         {
-            geometry.setWidth(800);
-            geometry.setHeight(600);
-            geometry.setIsMaximized(false);
-            return geometry;
+            return { 800, 600, false };
         }
-        boost::json::object& obj{ m_json["WindowGeometry"].as_object() };
-        geometry.setWidth(obj["Width"].is_int64() ? static_cast<long>(obj["Width"].as_int64()) : 800);
-        geometry.setHeight(obj["Height"].is_int64() ? static_cast<long>(obj["Height"].as_int64()) : 600);
-        geometry.setIsMaximized(obj["IsMaximized"].is_bool() ? obj["IsMaximized"].as_bool() : false);
-        return geometry;
+        return WindowGeometry(m_json["WindowGeometry"].as_object());
     }
 
     void Configuration::setWindowGeometry(const WindowGeometry& geometry)
     {
-        boost::json::object obj;
-        obj["Width"] = geometry.getWidth();
-        obj["Height"] = geometry.getHeight();
-        obj["IsMaximized"] = geometry.isMaximized();
-        m_json["WindowGeometry"] = obj;
+        m_json["WindowGeometry"] = geometry.toJson();
     }
 
     bool Configuration::getAutomaticallyCheckForUpdates() const
@@ -69,18 +57,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["PreventSuspend"] = prevent;
     }
 
-    bool Configuration::getRecoverCrashedDownloads() const
-    {
-        return m_json["RecoverCrashedDownloads"].is_bool() ? m_json["RecoverCrashedDownloads"].as_bool() : true;
-    }
-
-    void Configuration::setRecoverCrashedDownloads(bool recoverCrashedDownloads)
-    {
-        m_json["RecoverCrashedDownloads"] = recoverCrashedDownloads;
-    }
-
     DownloaderOptions Configuration::getDownloaderOptions() const
     {
+        std::vector<PostProcessorArgument> postprocessingArguments;
+        for(const boost::json::value& json : (m_json["PostprocessingArguments"].is_array() ? m_json["PostprocessingArguments"].as_array() : boost::json::array()))
+        {
+            if(json.is_object())
+            {
+                postprocessingArguments.push_back(PostProcessorArgument(json.as_object()));
+            }
+        }
         DownloaderOptions options;
         options.setMaxNumberOfActiveDownloads(m_json["MaxNumberOfActiveDownloads"].is_int64() ? static_cast<int>(m_json["MaxNumberOfActiveDownloads"].as_int64()) : 5);
         options.setOverwriteExistingFiles(m_json["OverwriteExistingFiles"].is_bool() ? m_json["OverwriteExistingFiles"].as_bool() : true);
@@ -92,7 +78,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setPreferredSubtitleFormat(m_json["PreferredSubtitleFormat"].is_int64() ? static_cast<SubtitleFormat>(m_json["PreferredSubtitleFormat"].as_int64()) : SubtitleFormat::Any);
         options.setUsePartFiles(m_json["UsePartFiles"].is_bool() ? m_json["UsePartFiles"].as_bool() : true);
         options.setYouTubeSponsorBlock(m_json["YouTubeSponsorBlock"].is_bool() ? m_json["YouTubeSponsorBlock"].as_bool() : false);
-        options.setSpeedLimit(m_json["SpeedLimit"].is_int64() ? static_cast<int>(m_json["SpeedLimit"].as_int64()) : 1024);
+        options.setSpeedLimit(m_json["SpeedLimitKB"].is_int64() ? std::make_optional<int>(m_json["SpeedLimitKB"].as_int64()) : std::nullopt);
         options.setProxyUrl(m_json["ProxyUrl"].is_string() ? m_json["ProxyUrl"].as_string().c_str() : "");
         options.setCookiesBrowser(m_json["CookiesBrowser"].is_int64() ? static_cast<Browser>(m_json["CookiesBrowser"].as_int64()) : Browser::None);
         options.setCookiesPath(m_json["CookiesPath"].is_string() ? m_json["CookiesPath"].as_string().c_str() : "");
@@ -103,6 +89,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setEmbedChapters(m_json["EmbedChapters"].is_bool() ? m_json["EmbedChapters"].as_bool() : false);
         options.setEmbedSubtitles(m_json["EmbedSubtitle"].is_bool() ? m_json["EmbedSubtitle"].as_bool() : true);
         options.setPostprocessingThreads(m_json["PostprocessingThreads"].is_int64() ? static_cast<int>(m_json["PostprocessingThreads"].as_int64()) : static_cast<int>(std::thread::hardware_concurrency()));
+        options.setPostprocessingArguments(postprocessingArguments);
         options.setUseAria(m_json["UseAria"].is_bool() ? m_json["UseAria"].as_bool() : false);
         options.setAriaMaxConnectionsPerServer(m_json["AriaMaxConnectionsPerServer"].is_int64() ? static_cast<int>(m_json["AriaMaxConnectionsPerServer"].as_int64()) : 16);
         options.setAriaMinSplitSize(m_json["AriaMinSplitSize"].is_int64() ? static_cast<int>(m_json["AriaMinSplitSize"].as_int64()) : 20);
@@ -111,6 +98,11 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void Configuration::setDownloaderOptions(const DownloaderOptions& downloaderOptions)
     {
+        boost::json::array postprocessingArguments;
+        for(const PostProcessorArgument& args : downloaderOptions.getPostprocessingArguments())
+        {
+            postprocessingArguments.push_back(args.toJson());
+        }
         m_json["MaxNumberOfActiveDownloads"] = downloaderOptions.getMaxNumberOfActiveDownloads();
         m_json["OverwriteExistingFiles"] = downloaderOptions.getOverwriteExistingFiles();
         m_json["LimitCharacters"] = downloaderOptions.getLimitCharacters();
@@ -121,7 +113,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["PreferredSubtitleFormat"] = static_cast<int>(downloaderOptions.getPreferredSubtitleFormat());
         m_json["UsePartFiles"] = downloaderOptions.getUsePartFiles();
         m_json["YouTubeSponsorBlock"] = downloaderOptions.getYouTubeSponsorBlock();
-        m_json["SpeedLimit"] = downloaderOptions.getSpeedLimit();
+        m_json["SpeedLimitKB"] = downloaderOptions.getSpeedLimit() ? *downloaderOptions.getSpeedLimit() : boost::json::value(nullptr);
         m_json["ProxyUrl"] = downloaderOptions.getProxyUrl();
         m_json["CookiesBrowser"] = static_cast<int>(downloaderOptions.getCookiesBrowser());
         m_json["CookiesPath"] = downloaderOptions.getCookiesPath().string();
@@ -132,6 +124,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["EmbedChapters"] = downloaderOptions.getEmbedChapters();
         m_json["EmbedSubtitle"] = downloaderOptions.getEmbedSubtitles();
         m_json["PostprocessingThreads"] = downloaderOptions.getPostprocessingThreads();
+        m_json["PostprocessingArguments"] = postprocessingArguments;
         m_json["UseAria"] = downloaderOptions.getUseAria();
         m_json["AriaMaxConnectionsPerServer"] = downloaderOptions.getAriaMaxConnectionsPerServer();
         m_json["AriaMinSplitSize"] = downloaderOptions.getAriaMinSplitSize();
@@ -145,15 +138,5 @@ namespace Nickvision::TubeConverter::Shared::Models
     void Configuration::setShowDisclaimerOnStartup(bool showDisclaimerOnStartup)
     {
         m_json["ShowDisclaimerOnStartup"] = showDisclaimerOnStartup;
-    }
-
-    bool Configuration::getDownloadImmediatelyAfterValidation() const
-    {
-        return m_json["DownloadImmediatelyAfterValidation"].is_bool() ? m_json["DownloadImmediatelyAfterValidation"].as_bool() : false;
-    }
-
-    void Configuration::setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation)
-    {
-        m_json["DownloadImmediatelyAfterValidation"] = downloadImmediatelyAfterValidation;
     }
 }

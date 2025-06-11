@@ -31,7 +31,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Sets the previous save folder.
          * @param previousSaveFolder The new previous save folder
          */
-        void setSaveFolder(const std::filesystem::path& previousSaveFolder);
+        void setSaveFolder(std::filesystem::path previousSaveFolder);
         /**
          * @brief Gets the previous media file type.
          * @return The previous media file type
@@ -73,16 +73,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setSplitChapters(bool splitChapters);
         /**
-         * @brief Gets the previous limit speed state.
-         * @return The previous limit speed state
-         */
-        bool getLimitSpeed() const;
-        /**
-         * @brief Sets the previous limit speed state.
-         * @param limitSpeed The new previous limit speed state
-         */
-        void setLimitSpeed(bool limitSpeed);
-        /**
          * @brief Gets the previous export description state.
          * @return The previous export description state
          */
@@ -92,6 +82,26 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param exportDescription The new previous export description state
          */
         void setExportDescription(bool exportDescription);
+        /**
+         * @brief Gets the previous name of the post processor argument.
+         * @return The previous post processor argument name
+         */
+        std::string getPostProcessorArgument() const;
+        /**
+         * @brief Sets the previous name of the post processor argument.
+         * @param postProcessorArgument The new previous postprocessing argument name
+         */
+        void setPostProcessorArgument(const std::string& postProcessorArgument);
+        /**
+         * @brief Gets the previous write playlist file state.
+         * @return The previous write playlist file state
+         */
+        bool getWritePlaylistFile() const;
+        /**
+         * @brief Sets the previous write playlist file state.
+         * @param exportDescription The new previous write playlist file state
+         */
+        void setWritePlaylistFile(bool writePlaylistFile);
         /**
          * @brief Gets the previous number titles state.
          * @return The previous number titles state

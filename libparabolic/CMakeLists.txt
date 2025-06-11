@@ -3,6 +3,47 @@
 endif()
 
 add_library(libparabolic
+    "include/controllers/adddownloaddialogcontroller.h"
+    "include/controllers/credentialdialogcontroller.h"
+    "include/controllers/keyringdialogcontroller.h"
+    "include/controllers/mainwindowcontroller.h"
+    "include/controllers/preferencesviewcontroller.h"
+    "include/events/downloadaddedeventargs.h"
+    "include/events/downloadcompletedeventargs.h"
+    "include/events/downloadcredentialneededeventargs.h"
+    "include/events/downloadprogresschangedeventargs.h"
+    "include/models/audiocodec.h"
+    "include/models/browser.h"
+    "include/models/configuration.h"
+    "include/models/credentialcheckstatus.h"
+    "include/models/download.h"
+    "include/models/downloaderoptions.h"
+    "include/models/downloadhistory.h"
+    "include/models/downloadmanager.h"
+    "include/models/downloadoptions.h"
+    "include/models/downloadrecoveryqueue.h"
+    "include/models/downloadstatus.h"
+    "include/models/executable.h"
+    "include/models/format.h"
+    "include/models/formatvalue.h"
+    "include/models/historicdownload.h"
+    "include/models/historylength.h"
+    "include/models/m3u.h"
+    "include/models/media.h"
+    "include/models/mediafiletype.h"
+    "include/models/mediatype.h"
+    "include/models/postprocessor.h"
+    "include/models/postprocessorargument.h"
+    "include/models/postprocessorargumentcheckstatus.h"
+    "include/models/previousdownloadoptions.h"
+    "include/models/startupinformation.h"
+    "include/models/subtitleformat.h"
+    "include/models/subtitlelanguage.h"
+    "include/models/theme.h"
+    "include/models/timeframe.h"
+    "include/models/videocodec.h"
+    "include/models/urlinfo.h"
+    "include/models/videoresolution.h"
     "src/controllers/adddownloaddialogcontroller.cpp"
     "src/controllers/credentialdialogcontroller.cpp"
     "src/controllers/keyringdialogcontroller.cpp"
@@ -21,8 +62,10 @@ add_library(libparabolic
     "src/models/downloadrecoveryqueue.cpp"
     "src/models/format.cpp"
     "src/models/historicdownload.cpp"
+    "src/models/m3u.cpp"
     "src/models/media.cpp"
     "src/models/mediafiletype.cpp"
+    "src/models/postprocessorargument.cpp"
     "src/models/previousdownloadoptions.cpp"
     "src/models/startupinformation.cpp"
     "src/models/subtitlelanguage.cpp"
@@ -40,40 +83,3 @@ endif()
 find_package(libnick CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS date_time)
 target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time)
-
-add_custom_target(shared_commands ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/__shared.h")
-add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/__shared.h" "${CMAKE_CURRENT_BINARY_DIR}/shared.h" COMMAND "${CMAKE_COMMAND}" -E touch "${CMAKE_CURRENT_BINARY_DIR}/shared.h")
-if(HAS_GETTEXT)
-    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_XGETTEXT_EXECUTABLE}" --from-code=utf-8 --c++ --force-po --output="${POT_FILE}" --keyword=_ --keyword=_f --keyword=_n:1,2 --keyword=_fn:1,2 --keyword=_p:1c,2 --keyword=_pn:1c,2,3 --keyword=C_:1c,2 --width=80 ${TRANSLATE_FILES} WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
-    foreach(LINGUA IN ITEMS ${LINGUAS})
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_MSGMERGE_EXECUTABLE}" --backup=off --update "${CMAKE_SOURCE_DIR}/resources/po/${LINGUA}.po" "${POT_FILE}")
-    endforeach()
-    if(HAS_YELP)
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${ITSTOOL_EXECUTABLE}" -o "docs/po/${SHORT_NAME}.pot" "docs/yelp/C/*.page" WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
-        foreach(LINGUA IN ITEMS ${DOC_LINGUAS})
-            # Update Po
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_MSGMERGE_EXECUTABLE}" --backup=off --update "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.po" "${DOC_POT_FILE}")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_MSGFMT_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.po" --output-file="${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo")
-            # Generate Yelp Pages
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${ITSTOOL_EXECUTABLE}" -m "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo" -o "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/" "${CMAKE_SOURCE_DIR}/docs/yelp/C/*.page")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E rm "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory_if_different "${CMAKE_SOURCE_DIR}/docs/yelp/C/figures" "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures")
-            # Generate HTML Pages
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/figures")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory_if_different "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures" "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/figures")
-            add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${YELP_BUILD_EXECUTABLE}" html -o "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/" "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/")
-        endforeach()
-        # Generate English HTML
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/C")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/C/figures")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory_if_different "${CMAKE_SOURCE_DIR}/docs/yelp/C/figures" "${CMAKE_SOURCE_DIR}/docs/html/C/figures")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${YELP_BUILD_EXECUTABLE}" html -o "${CMAKE_SOURCE_DIR}/docs/html/C/" "${CMAKE_SOURCE_DIR}/docs/yelp/C/")
-    else()
-        message(WARNING "yelp not found, documentation will not be generated")
-    endif()
-else()
-    message(WARNING "gettext not found, translations will not be generated")
-endif()

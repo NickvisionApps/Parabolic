@@ -10,6 +10,7 @@
 #include "downloaderoptions.h"
 #include "format.h"
 #include "mediafiletype.h"
+#include "postprocessorargument.h"
 #include "subtitlelanguage.h"
 #include "timeframe.h"
 
@@ -136,17 +137,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setSplitChapters(bool splitChapters);
         /**
-         * @brief Gets whether or not to limit the download speed.
-         * @return True if limiting the download speed, else false
-         */
-        bool getLimitSpeed() const;
-        /**
-         * @brief Sets whether or not to limit the download speed.
-         * @brief Can only be set to true if no time frame was specified.
-         * @param limitSpeed True if limiting the download speed, else false
-         */
-        void setLimitSpeed(bool limitSpeed);
-        /**
          * @brief Gets whether or not to export the media description to a file.
          * @return True to export the media description, else false
          */
@@ -156,6 +146,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param exportDescription True to export the media description, else false
          */
         void setExportDescription(bool exportDescription);
+        /**
+         * @brief Gets the post processor argument for the download.
+         * @return The post processor argument for the download
+         */
+        const std::optional<PostProcessorArgument>& getPostProcessorArgument() const;
+        /**
+         * @brief Sets the post processor argument for the download.
+         * @param postProcessorArgument The post processor argument for the download
+         */
+        void setPostProcessorArgument(const std::optional<PostProcessorArgument>& postProcessorArgument);
         /**
          * @brief Gets the time frame of the download.
          * @return The time frame of the download
@@ -213,8 +213,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_saveFilename;
         std::vector<SubtitleLanguage> m_subtitleLanguages;
         bool m_splitChapters;
-        bool m_limitSpeed;
         bool m_exportDescription;
+        std::optional<PostProcessorArgument> m_postProcessorArgument;
         std::optional<TimeFrame> m_timeFrame;
         int m_playlistPosition;
     };

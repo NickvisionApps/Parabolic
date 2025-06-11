@@ -49,6 +49,13 @@
         </note>
     </item>
     <item>
+        <title>Download Immediately</title>
+        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
+    </item>
+    <item>
         <title>Dateityp</title>
         <p>Der Dateityp, in dem die Medien heruntergeladen werden sollen.</p>
         <note>
@@ -103,13 +110,6 @@
         </note>
     </item>
     <item>
-        <title>Herunterladegeschwindigkeit begrenzen</title>
-        <p>Wenn aktiviert, begrenzt Parabolic die Geschwindigkeit des Downloads mit der in den <link xref="downloader">Einstellungen</link> konfigurierten Geschwindigkeit.</p>
-        <note>
-            <p>Der zuvor verwendete Status wird gespeichert und für den nächsten Download vorausgewählt.</p>
-        </note>
-    </item>
-    <item>
         <title>Beschreibung exportieren</title>
         <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
@@ -119,6 +119,20 @@
     <item>
         <title>Exclude from History</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+    </item>
+    <item>
+        <title>Post Processor Argument</title>
+        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <note>
+            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Write M3U Playlist File</title>
+        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+        </note>
     </item>
     <item>
         <title>Zeitrahmen</title>

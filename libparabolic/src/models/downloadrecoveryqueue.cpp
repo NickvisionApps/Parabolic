@@ -9,8 +9,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         if(m_json["RecoverableDownloads"].is_array())
         {
-            m_recoverableDownloads.reserve(m_json["RecoverableDownloads"].as_array().size());
-            m_needsCredentials.reserve(m_json["RecoverableDownloads"].as_array().size());
+            m_queue.reserve(m_json["RecoverableDownloads"].as_array().size());
             for(const boost::json::value& value : m_json["RecoverableDownloads"].as_array())
             {
                 if(!value.is_object())
@@ -18,58 +17,41 @@ namespace Nickvision::TubeConverter::Shared::Models
                     continue;
                 }
                 boost::json::object recoverableDownload = value.as_object();
-                int id{ recoverableDownload["Id"].is_int64() ? static_cast<int>(recoverableDownload["Id"].as_int64()) : -1 };
-                if(id == -1)
-                {
-                    continue;
-                }
-                m_recoverableDownloads[id] = DownloadOptions(recoverableDownload["Download"].is_object() ? recoverableDownload["Download"].as_object() : boost::json::object());
-                m_needsCredentials[id] = recoverableDownload["NeedsCredential"].is_bool() ? recoverableDownload["NeedsCredential"].as_bool() : false;
+                int id{ recoverableDownload["Id"].is_int64() ? static_cast<int>(recoverableDownload["Id"].as_int64()) : false };
+                DownloadOptions options{ recoverableDownload["Download"].is_object() ? DownloadOptions(recoverableDownload["Download"].as_object()) : DownloadOptions() };
+                bool needsCredentials{ recoverableDownload["NeedsCredential"].is_bool() ? recoverableDownload["NeedsCredential"].as_bool() : false };
+                m_queue.emplace(id, std::make_pair(options, needsCredentials));
             }
         }
     }
 
-    const std::unordered_map<int, DownloadOptions>& DownloadRecoveryQueue::getRecoverableDownloads() const
+    std::unordered_map<int, std::pair<DownloadOptions, bool>>& DownloadRecoveryQueue::getRecoverableDownloads()
     {
-        return m_recoverableDownloads;
+        return m_queue;
     }
 
-    bool DownloadRecoveryQueue::needsCredential(int id) const
+    bool DownloadRecoveryQueue::add(int id, const DownloadOptions& downloadOptions)
     {
-        if(!m_needsCredentials.contains(id))
-        {
-            return false;
-        }
-        return m_needsCredentials.at(id);
-    }
-
-    bool DownloadRecoveryQueue::addDownload(int id, const DownloadOptions& downloadOptions)
-    {
-        if(m_recoverableDownloads.contains(id))
-        {
-            return false;
-        }
-        m_recoverableDownloads[id] = downloadOptions;
+        m_queue.emplace(id, std::make_pair(downloadOptions, downloadOptions.getCredential().has_value()));
         updateDisk();
         return true;
     }
 
-    bool DownloadRecoveryQueue::removeDownload(int id)
+    bool DownloadRecoveryQueue::remove(int id)
     {
-        if(!m_recoverableDownloads.contains(id))
+        if(!m_queue.contains(id))
         {
             return false;
         }
-        m_recoverableDownloads.erase(id);
+        m_queue.erase(id);
         updateDisk();
         return true;
     }
 
     bool DownloadRecoveryQueue::clear()
     {
-        m_recoverableDownloads.clear();
-        m_json.clear();
-        save();
+        m_queue.clear();
+        updateDisk();
         return true;
     }
 
@@ -77,12 +59,12 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_json.clear();
         boost::json::array arr;
-        for(const std::pair<const int, DownloadOptions>& pair : m_recoverableDownloads)
+        for(const std::pair<const int, std::pair<DownloadOptions, bool>>& pair : m_queue)
         {
             boost::json::object obj;
             obj["Id"] = pair.first;
-            obj["Download"] = pair.second.toJson(false);
-            obj["NeedsCredential"] = pair.second.getCredential().has_value();
+            obj["Download"] = pair.second.first.toJson(false);
+            obj["NeedsCredential"] = pair.second.second;
             arr.push_back(obj);
         }
         m_json["RecoverableDownloads"] = arr;

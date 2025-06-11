@@ -35,7 +35,7 @@ Adw.Dialog root {
           height-request: 32;
         };
       }
-      
+
       Adw.ViewStackPage {
         name: "validate";
         child: Gtk.Box {
@@ -79,6 +79,11 @@ Adw.Dialog root {
               Adw.PasswordEntryRow passwordRow {
                 title: _("Password");
               }
+            }
+
+            Adw.SwitchRow immediatelyRow {
+              title: _("Download Immediately");
+              subtitle: _("Use your previous download options for this download");
             }
           }
 
@@ -247,16 +252,16 @@ Adw.Dialog root {
               title: _("Split Videos by Chapters");
             }
 
-            Adw.SwitchRow limitSpeedSingleRow {
-              title: _("Limit Download Speed");
-            }
-
             Adw.SwitchRow exportDescriptionSingleRow {
               title: _("Export Description");
             }
 
             Adw.SwitchRow excludeHistorySingleRow {
               title: _("Exclude from History");
+            }
+
+            Adw.ComboRow postProcessorArgumentSingleRow {
+              title: _("Post Processor Argument");
             }
 
             Adw.EntryRow startTimeSingleRow {
@@ -300,22 +305,43 @@ Adw.Dialog root {
           Adw.PreferencesGroup {
             Adw.ComboRow fileTypePlaylistRow {
               title: _("File Type");
+
+              [suffix]
+              Gtk.MenuButton genericDisclaimerPlaylistButton {
+                valign: center;
+                icon-name: "dialog-warning-symbolic";
+                popover: Gtk.Popover {
+                  child: Gtk.Box {
+                    Gtk.Label {
+                      wrap: true;
+                      wrap-mode: word;
+                      label: _("Generic file types do not fully support embedding thumbnails and writing playlist files. Please select a specific file type that is known to support embedding to prevent separate files from being written.");
+                    }
+                  };
+                };
+
+                styles ["flat"]
+              }
             }
 
             Adw.SwitchRow splitChaptersPlaylistRow {
               title: _("Split Videos by Chapters");
             }
 
-            Adw.SwitchRow limitSpeedPlaylistRow {
-              title: _("Limit Download Speed");
-            }
-
             Adw.SwitchRow exportDescriptionPlaylistRow {
               title: _("Export Description");
             }
 
+            Adw.SwitchRow writeFilePlaylistRow {
+              title: _("Write M3U Playlist File");
+            }
+
             Adw.SwitchRow excludeHistoryPlaylistRow {
               title: _("Exclude from History");
+            }
+
+            Adw.ComboRow postProcessorArgumentPlaylistRow {
+              title: _("Post Processor Argument");
             }
           }
 

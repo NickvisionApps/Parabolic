@@ -55,6 +55,13 @@
         </note>
     </item>
     <item>
+        <title>Download Immediately</title>
+        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <note style="advanced">
+            <p>По умолчанию: Выкл</p>
+        </note>
+    </item>
+    <item>
         <title>Тип файла</title>
         <p>Файл какого типа требуется загрузить.</p>
         <note>
@@ -66,7 +73,7 @@
         </note>
     </item>
     <item>
-        <title>Video Format</title>
+        <title>Формат видео</title>
         <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
         <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
         <p>If the file type is an audio type, this option will not be available.</p>
@@ -81,7 +88,7 @@
         </note>
     </item>
     <item>
-        <title>Audio Format</title>
+        <title>Формат аудио</title>
         <p>The list of audio formats available for download, sorted by bitrate.</p>
         <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
@@ -109,13 +116,6 @@
         </note>
     </item>
     <item>
-        <title>Ограничение скорости скачивания</title>
-        <p>Если включено, Parabolic ограничит скорость загрузки в соответствии с выбранным в <link xref="downloader">Настройках</link> ограничением.</p>
-        <note>
-            <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
-        </note>
-    </item>
-    <item>
         <title>Экспортирование описания</title>
         <p>Если этот параметр включен, Parabolic экспортирует описание мультимедиа в файл <code>.description</code> рядом с загруженным файлом.</p>
         <note>
@@ -125,6 +125,20 @@
     <item>
         <title>Exclude from History</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+    </item>
+    <item>
+        <title>Post Processor Argument</title>
+        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <note>
+            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Write M3U Playlist File</title>
+        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+        </note>
     </item>
     <item>
         <title>Временные рамки</title>

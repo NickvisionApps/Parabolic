@@ -62,9 +62,9 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void onCmbFileTypeChanged(int index);
         /**
-         * @brief Shows the generic file type disclaimer.
+         * @brief Shows the generic file type disclaimer for a single download.
          */
-        void genericFileTypeDisclaimer();
+        void genericFileTypeDisclaimerSingle();
         /**
          * @brief Prompts the user to select a save folder for a single download.
          */
@@ -86,9 +86,17 @@ namespace Nickvision::TubeConverter::Qt::Views
          */
         void downloadSingle();
         /**
+         * @brief Shows the generic file type disclaimer for a playlist download.
+         */
+        void genericFileTypeDisclaimerPlaylist();
+        /**
          * @brief Prompts the user to select a save folder for a playlist download.
          */
         void selectSaveFolderPlaylist();
+        /**
+         * @brief Shows the save folder disclaimer for a playlist download.
+         */
+        void saveFolderDisclaimerPlaylist();
         /**
          * @brief Handles when the chkNumberTitlesPlaylist's state has changed.
          * @param checked Whether or not the switch is checked
@@ -114,8 +122,9 @@ namespace Nickvision::TubeConverter::Qt::Views
     private:
         /**
          * @brief Handles when the url has been validated.
+         * @param valid Whether or not the url is valid
          */
-        void onUrlValidated();
+        void onUrlValidated(bool valid);
         Ui::AddDownloadDialog* m_ui;
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
     };

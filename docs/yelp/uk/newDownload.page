@@ -55,6 +55,13 @@
         </note>
     </item>
     <item>
+        <title>Download Immediately</title>
+        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Вимк</p>
+        </note>
+    </item>
+    <item>
         <title>Тип файлу</title>
         <p>Тип файлу, у якому потрібно завантажити медіафайл.</p>
         <note>
@@ -109,13 +116,6 @@
         </note>
     </item>
     <item>
-        <title>Обмежити швидкість завантаження</title>
-        <p>Якщо увімкнено, Parabolic обмежить швидкість завантаження відповідно до швидкості, налаштованої в <link xref="downloader">Параметрах</link>.</p>
-        <note>
-            <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
-        </note>
-    </item>
-    <item>
         <title>Експорт опису</title>
         <p>Якщо увімкнено, Parabolic експортуватиме опис медіа у файл <code>.description</code> разом з завантаженим файлом.</p>
         <note>
@@ -125,6 +125,20 @@
     <item>
         <title>Exclude from History</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+    </item>
+    <item>
+        <title>Post Processor Argument</title>
+        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <note>
+            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Write M3U Playlist File</title>
+        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+        </note>
     </item>
     <item>
         <title>Часовий проміжок</title>

@@ -9,7 +9,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     PreviousDownloadOptions::PreviousDownloadOptions(const std::string& key, const std::string& appName)
         : DataFileBase{ key, appName }
     {
-        
+
     }
 
     std::filesystem::path PreviousDownloadOptions::getSaveFolder() const
@@ -17,20 +17,20 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::filesystem::path path{ m_json["SaveFolder"].is_string() ? m_json["SaveFolder"].as_string().c_str() : UserDirectories::get(UserDirectory::Downloads).string() };
         if(std::filesystem::exists(path))
         {
-            return path;
+            return path.make_preferred();
         }
-        return UserDirectories::get(UserDirectory::Downloads);
+        return UserDirectories::get(UserDirectory::Downloads).make_preferred();
     }
 
-    void PreviousDownloadOptions::setSaveFolder(const std::filesystem::path& previousSaveFolder)
+    void PreviousDownloadOptions::setSaveFolder(std::filesystem::path previousSaveFolder)
     {
         if(std::filesystem::exists(previousSaveFolder))
         {
-            m_json["SaveFolder"] = previousSaveFolder.string();
+            m_json["SaveFolder"] = previousSaveFolder.make_preferred().string();
         }
         else
         {
-            m_json["SaveFolder"] = UserDirectories::get(UserDirectory::Downloads).string();
+            m_json["SaveFolder"] = UserDirectories::get(UserDirectory::Downloads).make_preferred().string();
         }
     }
 
@@ -63,7 +63,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_json["AudioFormatId"] = audioFormatId;
     }
-    
+
     bool PreviousDownloadOptions::getSplitChapters() const
     {
         return m_json["SplitChapters"].is_bool() ? m_json["SplitChapters"].as_bool() : false;
@@ -74,16 +74,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["SplitChapters"] = splitChapters;
     }
 
-    bool PreviousDownloadOptions::getLimitSpeed() const
-    {
-        return m_json["LimitSpeed"].is_bool() ? m_json["LimitSpeed"].as_bool() : false;
-    }
-
-    void PreviousDownloadOptions::setLimitSpeed(bool limitSpeed)
-    {
-        m_json["LimitSpeed"] = limitSpeed;
-    }
-
     bool PreviousDownloadOptions::getExportDescription() const
     {
         return m_json["ExportDescription"].is_bool() ? m_json["ExportDescription"].as_bool() : false;
@@ -92,6 +82,26 @@ namespace Nickvision::TubeConverter::Shared::Models
     void PreviousDownloadOptions::setExportDescription(bool exportDescription)
     {
         m_json["ExportDescription"] = exportDescription;
+    }
+
+    std::string PreviousDownloadOptions::getPostProcessorArgument() const
+    {
+        return m_json["PostProcessorArgument"].is_string() ? m_json["PostProcessorArgument"].as_string().c_str() : "";
+    }
+
+    void PreviousDownloadOptions::setPostProcessorArgument(const std::string& postProcessorArgument)
+    {
+        m_json["PostProcessorArgument"] = postProcessorArgument;
+    }
+
+    bool PreviousDownloadOptions::getWritePlaylistFile() const
+    {
+        return m_json["WritePlaylistFile"].is_bool() ? m_json["WritePlaylistFile"].as_bool() : false;
+    }
+
+    void PreviousDownloadOptions::setWritePlaylistFile(bool writePlaylistFile)
+    {
+        m_json["WritePlaylistFile"] = writePlaylistFile;
     }
 
     bool PreviousDownloadOptions::getNumberTitles() const

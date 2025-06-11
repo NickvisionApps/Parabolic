@@ -55,6 +55,13 @@
         </note>
     </item>
     <item>
+        <title>Download Immediately</title>
+        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
+    </item>
+    <item>
         <title>ファイルの種類</title>
         <p>ダウンロードするメディアのファイルのタイプ。</p>
         <note>
@@ -109,13 +116,6 @@
         </note>
     </item>
     <item>
-        <title>ダウンロード速度を制限</title>
-        <p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
-        <note>
-            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
-        </note>
-    </item>
-    <item>
         <title>概要をエクスポート</title>
         <p>有効であれば、Parabolic は、ダウンロードされたファイルと一緒に、メディアの概要を <code>.description</code> ファイルにエクスポートします。</p>
         <note>
@@ -125,6 +125,20 @@
     <item>
         <title>Exclude from History</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+    </item>
+    <item>
+        <title>Post Processor Argument</title>
+        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <note>
+            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Write M3U Playlist File</title>
+        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+        </note>
     </item>
     <item>
         <title>タイムフレーム</title>

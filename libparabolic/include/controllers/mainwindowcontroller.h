@@ -144,6 +144,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void windowsUpdate();
 #endif
+        /**
+         * @brief Recovers all available recoverable downloads.
+         * @return The number of recovered downloads
+         */
+        void recoverDownloads();
+        /**
+         * @brief Clears all available recoverable downloads.
+         */
+        void clearRecoverableDownloads();
 
     private:
         /**

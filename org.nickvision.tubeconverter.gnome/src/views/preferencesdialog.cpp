@@ -13,14 +13,13 @@ namespace Nickvision::TubeConverter::GNOME::Views
 {
     PreferencesDialog::PreferencesDialog(const std::shared_ptr<PreferencesViewController>& controller, GtkWindow* parent)
         : DialogBase{ parent, "preferences_dialog" },
-        m_controller{ controller }
+        m_controller{ controller },
+        m_postprocessingArgumentEditMode{ EditMode::None }
     {
         //Load
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("themeRow"), static_cast<unsigned int>(m_controller->getTheme()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("preventSuspendRow"), m_controller->getPreventSuspend());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("recoverCrashedDownloadsRow"), m_controller->getRecoverCrashedDownloads());
-        adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow"), m_controller->getDownloadImmediatelyAfterValidation());
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("historyLengthRow"), static_cast<unsigned int>(m_controller->getHistoryLengthIndex()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("maxNumberOfActiveDownloadsRow"), static_cast<double>(options.getMaxNumberOfActiveDownloads()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("overwriteExistingFilesRow"), options.getOverwriteExistingFiles());
@@ -32,7 +31,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"), static_cast<unsigned int>(options.getPreferredSubtitleFormat()));
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("usePartFilesRow"), options.getUsePartFiles());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow"), options.getYouTubeSponsorBlock());
-        adw_spin_row_set_value(m_builder.get<AdwSpinRow>("speedLimitRow"), static_cast<double>(options.getSpeedLimit()));
+        if(options.getSpeedLimit())
+        {
+            adw_expander_row_set_enable_expansion(m_builder.get<AdwExpanderRow>("limitSpeedRow"), true);
+            adw_spin_row_set_value(m_builder.get<AdwSpinRow>("speedLimitRow"), *options.getSpeedLimit());
+        }
         gtk_editable_set_text(m_builder.get<GtkEditable>("proxyUrlRow"), options.getProxyUrl().c_str());
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"), static_cast<unsigned int>(options.getCookiesBrowser()));
         adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), options.getCookiesPath().filename().string().c_str());
@@ -57,19 +60,20 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             gtk_widget_set_visible(m_builder.get<GtkWidget>("cookiesBrowserRow"), false);
         }
+        reloadPostprocessingArguments();
         //Signals
         m_closed += [&](const EventArgs&) { onClosed(); };
         g_signal_connect(m_builder.get<GObject>("themeRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->onThemeChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->selectCookiesFile(); }), this);
         g_signal_connect(m_builder.get<GObject>("clearCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->clearCookiesFile(); }), this);
+        g_signal_connect(m_builder.get<GObject>("addPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->addNewPostprocessingArgument(); }), this);
+        g_signal_connect(m_builder.get<GObject>("editConfirmPostprocessingArgumentButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->editConfirmPostprocessingArgument(); }), this);
     }
 
     void PreferencesDialog::onClosed()
     {
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setPreventSuspend(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("preventSuspendRow")));
-        m_controller->setRecoverCrashedDownloads(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("recoverCrashedDownloadsRow")));
-        m_controller->setDownloadImmediatelyAfterValidation(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("downloadImmediatelyRow")));
         m_controller->setHistoryLengthIndex(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("historyLengthRow"))));
         options.setMaxNumberOfActiveDownloads(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("maxNumberOfActiveDownloadsRow"))));
         options.setOverwriteExistingFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("overwriteExistingFilesRow")));
@@ -81,7 +85,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("preferredSubtitleFormatRow"))));
         options.setUsePartFiles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("usePartFilesRow")));
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow")));
-        options.setSpeedLimit(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("speedLimitRow"))));
+        options.setSpeedLimit(adw_expander_row_get_enable_expansion(m_builder.get<AdwExpanderRow>("limitSpeedRow")) ? std::make_optional<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("speedLimitRow"))) : std::nullopt);
         options.setProxyUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("proxyUrlRow")));
         options.setCookiesBrowser(static_cast<Browser>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"))));
         options.setCookiesPath(gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) ? gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) : "");
@@ -143,5 +147,151 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), _("No file selected"));
         gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow"), "");
+    }
+
+    void PreferencesDialog::reloadPostprocessingArguments()
+    {
+        for(AdwActionRow* row : m_postprocessingArgumentRows)
+        {
+            adw_preferences_group_remove(m_builder.get<AdwPreferencesGroup>("postprocessingArgumentsGroup"), GTK_WIDGET(row));
+        }
+        m_postprocessingArgumentRows.clear();
+        for(const PostProcessorArgument& argument : m_controller->getDownloaderOptions().getPostprocessingArguments())
+        {
+            //Edit Button
+            GtkButton* editButton{ GTK_BUTTON(gtk_button_new_from_icon_name("document-edit-symbolic")) };
+            std::pair<PreferencesDialog*, std::string>* editPair{ new std::pair<PreferencesDialog*, std::string>(this, argument.getName()) };
+            gtk_widget_set_valign(GTK_WIDGET(editButton), GTK_ALIGN_CENTER);
+            gtk_widget_set_tooltip_text(GTK_WIDGET(editButton), _("Edit"));
+            gtk_widget_add_css_class(GTK_WIDGET(editButton), "flat");
+            g_signal_connect_data(editButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
+            {
+                std::pair<PreferencesDialog*, std::string>* pair{ reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data) };
+                pair->first->editPostprocessingArgument(pair->second);
+            }), editPair, GClosureNotify(+[](gpointer data, GClosure*)
+            {
+                delete reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data);
+            }), G_CONNECT_DEFAULT);
+            //Delete Button
+            GtkButton* deleteButton{ GTK_BUTTON(gtk_button_new_from_icon_name("user-trash-symbolic")) };
+            std::pair<PreferencesDialog*, std::string>* deletePair{ new std::pair<PreferencesDialog*, std::string>(this, argument.getName()) };
+            gtk_widget_set_valign(GTK_WIDGET(deleteButton), GTK_ALIGN_CENTER);
+            gtk_widget_set_tooltip_text(GTK_WIDGET(deleteButton), _("Delete"));
+            gtk_widget_add_css_class(GTK_WIDGET(deleteButton), "flat");
+            g_signal_connect_data(deleteButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
+            {
+                std::pair<PreferencesDialog*, std::string>* pair{ reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data) };
+                pair->first->deletePostprocessingArgument(pair->second);
+            }), deletePair, GClosureNotify(+[](gpointer data, GClosure*)
+            {
+                delete reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data);
+            }), G_CONNECT_DEFAULT);
+            //Row
+            AdwActionRow* row{ ADW_ACTION_ROW(adw_action_row_new()) };
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), argument.getName().c_str());
+            adw_action_row_set_subtitle(row, argument.getArgs().c_str());
+            adw_action_row_add_suffix(row, GTK_WIDGET(editButton));
+            adw_action_row_add_suffix(row, GTK_WIDGET(deleteButton));
+            adw_action_row_set_activatable_widget(row, GTK_WIDGET(editButton));
+            adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("postprocessingArgumentsGroup"), GTK_WIDGET(row));
+            m_postprocessingArgumentRows.push_back(row);
+        }
+        if(m_controller->getDownloaderOptions().getPostprocessingArguments().empty())
+        {
+            AdwActionRow* row{ ADW_ACTION_ROW(adw_action_row_new()) };
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), _("No Arguments"));
+            adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("postprocessingArgumentsGroup"), GTK_WIDGET(row));
+            m_postprocessingArgumentRows.push_back(row);
+        }
+    }
+
+    void PreferencesDialog::addNewPostprocessingArgument()
+    {
+        m_postprocessingArgumentEditMode = EditMode::Add;
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editNameRow"), "");
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings());
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings());
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editArgsRow"), "");
+        gtk_button_set_label(m_builder.get<GtkButton>("editConfirmPostprocessingArgumentButton"), _("Add"));
+        adw_dialog_present(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), GTK_WIDGET(m_parent));
+    }
+
+    void PreferencesDialog::editPostprocessingArgument(const std::string& name)
+    {
+        std::optional<PostProcessorArgument> argument{ m_controller->getPostprocessingArgument(name) };
+        if(!argument)
+        {
+            return;
+        }
+        m_postprocessingArgumentEditMode = EditMode::Modify;
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editNameRow"), argument->getName().c_str());
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings());
+        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("editPostProcessorRow"), static_cast<int>(argument->getPostProcessor()));
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings());
+        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("editExecutableRow"), static_cast<int>(argument->getExecutable()));
+        gtk_editable_set_text(m_builder.get<GtkEditable>("editArgsRow"), argument->getArgs().c_str());
+        gtk_button_set_label(m_builder.get<GtkButton>("editConfirmPostprocessingArgumentButton"), _("Modify"));
+        adw_dialog_present(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), GTK_WIDGET(m_parent));
+    }
+
+    void PreferencesDialog::deletePostprocessingArgument(const std::string& name)
+    {
+        AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Delete Argument?"), _("Are you sure you want to delete this argument?"))) };
+        std::pair<PreferencesDialog*, std::string>* pair{ new std::pair<PreferencesDialog*, std::string>(this, name) };
+        adw_alert_dialog_add_responses(dialog, "yes", _("Yes"), "no", _("No"), nullptr);
+        adw_alert_dialog_set_response_appearance(dialog, "yes", ADW_RESPONSE_DESTRUCTIVE);
+        adw_alert_dialog_set_default_response(dialog, "no");
+        adw_alert_dialog_set_close_response(dialog, "no");
+        g_signal_connect(dialog, "response", GCallback(+[](AdwAlertDialog* self, const char* response, gpointer data)
+        {
+            std::pair<PreferencesDialog*, std::string>* pair{ reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data) };
+            if(std::string(response) == "yes")
+            {
+                pair->first->m_controller->deletePostprocessingArgument(pair->second);
+                pair->first->reloadPostprocessingArguments();
+            }
+            delete pair;
+        }), pair);
+        adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_parent));
+    }
+
+    void PreferencesDialog::editConfirmPostprocessingArgument()
+    {
+        PostProcessorArgumentCheckStatus status;
+        adw_dialog_set_title(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), _("Argument"));
+        adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editNameRow"), _("Name"));
+        gtk_widget_remove_css_class(m_builder.get<GtkWidget>("editNameRow"), "error");
+        adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editArgsRow"), _("Args"));
+        gtk_widget_remove_css_class(m_builder.get<GtkWidget>("editArgsRow"), "error");
+        switch(m_postprocessingArgumentEditMode)
+        {
+        case EditMode::Add:
+            status = m_controller->addPostprocessingArgument(gtk_editable_get_text(m_builder.get<GtkEditable>("editNameRow")), static_cast<PostProcessor>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editPostProcessorRow"))), static_cast<Executable>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editExecutableRow"))), gtk_editable_get_text(m_builder.get<GtkEditable>("editArgsRow")));
+            break;
+        case EditMode::Modify:
+            status = m_controller->updatePostprocessingArgument(gtk_editable_get_text(m_builder.get<GtkEditable>("editNameRow")), static_cast<PostProcessor>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editPostProcessorRow"))), static_cast<Executable>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("editExecutableRow"))), gtk_editable_get_text(m_builder.get<GtkEditable>("editArgsRow")));
+            break;
+        default:
+            return;
+        }
+        switch(status)
+        {
+        case PostProcessorArgumentCheckStatus::EmptyName:
+            adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editNameRow"), _("Name (Empty)"));
+            gtk_widget_add_css_class(m_builder.get<GtkWidget>("editNameRow"), "error");
+            break;
+        case PostProcessorArgumentCheckStatus::ExistingName:
+            adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editNameRow"), _("Name (Exists)"));
+            gtk_widget_add_css_class(m_builder.get<GtkWidget>("editNameRow"), "error");
+            break;
+        case PostProcessorArgumentCheckStatus::EmptyArgs:
+            adw_preferences_row_set_title(m_builder.get<AdwPreferencesRow>("editArgsRow"), _("Args (Empty)"));
+            gtk_widget_add_css_class(m_builder.get<GtkWidget>("editArgsRow"), "error");
+            break;
+        default:
+            adw_dialog_force_close(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"));
+            reloadPostprocessingArguments();
+            break;
+        }
     }
 }

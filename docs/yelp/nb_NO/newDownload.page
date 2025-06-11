@@ -55,6 +55,13 @@
         </note>
     </item>
     <item>
+        <title>Download Immediately</title>
+        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <note style="advanced">
+            <p>Standard: av</p>
+        </note>
+    </item>
+    <item>
         <title>Filtype</title>
         <p>Filtypen innholdet skal lastes ned som.</p>
         <note>
@@ -109,13 +116,6 @@
         </note>
     </item>
     <item>
-        <title>Hastighetsgrense</title>
-        <p>Hvis dette er på, vil Parabolic begrense nedlastingshastigheten til det som er angitt i <link xref="downloader">innstillingene</link>.</p>
-        <note>
-            <p>Det sist brukte valget vil huskes og forhåndsvelges ved neste nedlasting.</p>
-        </note>
-    </item>
-    <item>
         <title>Eksporter beskrivelse</title>
         <p>Hvis denne innstillingen er på, vil Parabolic eksportere innholdets beskrivelse til en egen fil ved siden av det nedlastede innholdet.</p>
         <note>
@@ -125,6 +125,20 @@
     <item>
         <title>Exclude from History</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+    </item>
+    <item>
+        <title>Post Processor Argument</title>
+        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <note>
+            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Write M3U Playlist File</title>
+        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+        </note>
     </item>
     <item>
         <title>Tidsrom</title>

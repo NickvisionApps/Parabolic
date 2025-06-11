@@ -6,6 +6,8 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QListWidget>
+#include <QMenu>
+#include <QMessageBox>
 #include <QPushButton>
 #include <QSpinBox>
 #include <QStackedWidget>
@@ -19,6 +21,7 @@
 using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
+using namespace Nickvision::TubeConverter::Qt::Helpers;
 using namespace oclero::qlementine;
 
 namespace Ui
@@ -29,6 +32,8 @@ namespace Ui
         void setupUi(Nickvision::TubeConverter::Qt::Views::SettingsDialog* parent, int maxPostprocessingThreads)
         {
             viewStack = new QStackedWidget(parent);
+            QFont boldFont;
+            boldFont.setBold(true);
             //User Interface Page
             QLabel* lblTheme{ new QLabel(parent) };
             lblTheme->setText(_("Theme"));
@@ -44,16 +49,6 @@ namespace Ui
             lblPreventSuspend->setToolTip(_("Parabolic will prevent the computer from sleeping while downloads are running."));
             chkPreventSuspend = new Switch(parent);
             chkPreventSuspend->setToolTip(_("Parabolic will prevent the computer from sleeping while downloads are running."));
-            QLabel* lblRecoverCrashedDownloads{ new QLabel(parent) };
-            lblRecoverCrashedDownloads->setText(_("Recover Crashed Downloads"));
-            lblRecoverCrashedDownloads->setToolTip(_("Parabolic will recover downloads that were in progress when the app crashed."));
-            chkRecoverCrashedDownloads = new Switch(parent);
-            chkRecoverCrashedDownloads->setToolTip(_("Parabolic will recover downloads that were in progress when the app crashed."));
-            QLabel* lblDownloadImmediately{ new QLabel(parent) };
-            lblDownloadImmediately->setText(_("Download Immediately After Validation"));
-            lblDownloadImmediately->setToolTip(_("Parabolic will immediately download media after validation, without presenting configuration options to the user."));
-            chkDownloadImmediately = new Switch(parent);
-            chkDownloadImmediately->setToolTip(_("Parabolic will immediately download media after validation, without presenting configuration options to the user."));
             QLabel* lblHistoryLength{ new QLabel(parent) };
             lblHistoryLength->setText(_("Download History Length"));
             lblHistoryLength->setToolTip(_("The amount of time to keep past downloads in the app's history."));
@@ -69,8 +64,6 @@ namespace Ui
             layoutUserInterface->addRow(lblTheme, cmbTheme);
             layoutUserInterface->addRow(lblUpdates, chkUpdates);
             layoutUserInterface->addRow(lblPreventSuspend, chkPreventSuspend);
-            layoutUserInterface->addRow(lblRecoverCrashedDownloads, chkRecoverCrashedDownloads);
-            layoutUserInterface->addRow(lblDownloadImmediately, chkDownloadImmediately);
             layoutUserInterface->addRow(lblHistoryLength, cmbHistoryLength);
             QWidget* userInterfacePage{ new QWidget(parent) };
             userInterfacePage->setLayout(layoutUserInterface);
@@ -154,14 +147,20 @@ namespace Ui
             lblSponsorBlock->setToolTip(_("Parabolic will attempt to remove sponsored segments from YouTube videos."));
             chkSponsorBlock = new Switch(parent);
             chkSponsorBlock->setToolTip(_("Parabolic will attempt to remove sponsored segments from YouTube videos."));
+            QLabel* lblLimitSpeed{ new QLabel(parent) };
+            lblLimitSpeed->setText(_("Limit Download Speed"));
+            chkLimitSpeed = new Switch(parent);
+            QObject::connect(chkLimitSpeed, &Switch::toggled, [this](bool checked)
+            {
+                spnSpeedLimit->setEnabled(checked);
+            });
             QLabel* lblSpeedLimit{ new QLabel(parent) };
             lblSpeedLimit->setText(_("Speed Limit"));
-            lblSpeedLimit->setToolTip(_("The limit to apply to downloads with limiting speed enabled."));
             spnSpeedLimit = new QSpinBox(parent);
-            spnSpeedLimit->setToolTip(_("The limit to apply to downloads with limiting speed enabled."));
             spnSpeedLimit->setMinimum(512);
             spnSpeedLimit->setMaximum(10240);
             spnSpeedLimit->setSingleStep(512);
+            spnSpeedLimit->setValue(1024);
             QLabel* lblProxyUrl{ new QLabel(parent) };
             lblProxyUrl->setText(_("Proxy URL"));
             txtProxyUrl = new LineEdit(parent);
@@ -197,6 +196,7 @@ namespace Ui
             QFormLayout* layoutDownloader{ new QFormLayout() };
             layoutDownloader->addRow(lblUsePartFiles, chkUsePartFiles);
             layoutDownloader->addRow(lblSponsorBlock, chkSponsorBlock);
+            layoutDownloader->addRow(lblLimitSpeed, chkLimitSpeed);
             layoutDownloader->addRow(lblSpeedLimit, spnSpeedLimit);
             layoutDownloader->addRow(lblProxyUrl, txtProxyUrl);
             layoutDownloader->addRow(lblCookiesBrowser, cmbCookiesBrowser);
@@ -210,6 +210,10 @@ namespace Ui
             QLabel* lblEmbedMetadata{ new QLabel(parent) };
             lblEmbedMetadata->setText(_("Embed Metadata"));
             chkEmbedMetadata = new Switch(parent);
+            QObject::connect(chkEmbedMetadata, &Switch::toggled, [this](bool checked)
+            {
+                chkRemoveSourceData->setEnabled(checked);
+            });
             QLabel* lblRemoveSourceData{ new QLabel(parent) };
             lblRemoveSourceData->setText(_("Remove Source Data"));
             lblRemoveSourceData->setToolTip(_("Parabolic will clear metadata fields containing identifying download information."));
@@ -220,6 +224,10 @@ namespace Ui
             lblEmbedThumbnails->setToolTip(_("If the file type does not support embedding, the thumbnail will be written to a separate image file."));
             chkEmbedThumbnails = new Switch(parent);
             chkEmbedThumbnails->setToolTip(_("If the file type does not support embedding, the thumbnail will be written to a separate image file."));
+            QObject::connect(chkEmbedThumbnails, &Switch::toggled, [this](bool checked)
+            {
+                chkCropAudioThumbnails->setEnabled(checked);
+            });
             QLabel* lblCropAudioThumbnails{ new QLabel(parent) };
             lblCropAudioThumbnails->setText(_("Crop Audio Thumbnails"));
             lblCropAudioThumbnails->setToolTip(_("Parabolic will crop thumbnails of audio files to squares."));
@@ -233,13 +241,6 @@ namespace Ui
             lblEmbedSubtitles->setToolTip(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files."));
             chkEmbedSubtitles = new Switch(parent);
             chkEmbedSubtitles->setToolTip(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files."));
-            QLabel* lblPostprocessingThreads{ new QLabel(parent) };
-            lblPostprocessingThreads->setText(_("Postprocessing Threads"));
-            lblPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
-            spnPostprocessingThreads = new QSpinBox(parent);
-            spnPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
-            spnPostprocessingThreads->setMinimum(1);
-            spnPostprocessingThreads->setMaximum(maxPostprocessingThreads);
             QFormLayout* layoutConverter{ new QFormLayout() };
             layoutConverter->addRow(lblEmbedMetadata, chkEmbedMetadata);
             layoutConverter->addRow(lblRemoveSourceData, chkRemoveSourceData);
@@ -247,10 +248,47 @@ namespace Ui
             layoutConverter->addRow(lblCropAudioThumbnails, chkCropAudioThumbnails);
             layoutConverter->addRow(lblEmbedChapters, chkEmbedChapters);
             layoutConverter->addRow(lblEmbedSubtitles, chkEmbedSubtitles);
-            layoutConverter->addRow(lblPostprocessingThreads, spnPostprocessingThreads);
             QWidget* converterPage{ new QWidget(parent) };
             converterPage->setLayout(layoutConverter);
             viewStack->addWidget(converterPage);
+            //Postprocessing Page
+            QLabel* lblPostprocessingThreads{ new QLabel(parent) };
+            lblPostprocessingThreads->setText(_("FFmpeg Threads"));
+            lblPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
+            spnPostprocessingThreads = new QSpinBox(parent);
+            spnPostprocessingThreads->setToolTip(_("Parabolic will limit the number of threads used by ffmpeg."));
+            spnPostprocessingThreads->setMinimum(1);
+            spnPostprocessingThreads->setMaximum(maxPostprocessingThreads);
+            QLabel* lblArguments{ new QLabel(parent) };
+            lblArguments->setText(_("Arguments"));
+            lblArguments->setFont(boldFont);
+            QLabel* lblArgumentsDescription{ new QLabel(parent) };
+            lblArgumentsDescription->setText(_("Parabolic will show these arguments for\nselection in the add download dialog."));
+            btnAddPostprocessingArgument = new QPushButton(parent);
+            btnAddPostprocessingArgument->setAutoDefault(true);
+            btnAddPostprocessingArgument->setDefault(true);
+            btnAddPostprocessingArgument->setIcon(QLEMENTINE_ICON(Action_Plus));
+            btnAddPostprocessingArgument->setText(_("Add"));
+            btnAddPostprocessingArgument->setToolTip(_("Add Postprocessing Argument"));
+            listPostprocessingArguments = new QListWidget(parent);
+            listPostprocessingArguments->setContextMenuPolicy(::Qt::ContextMenuPolicy::CustomContextMenu);
+            QVBoxLayout* layoutLabels{ new QVBoxLayout() };
+            layoutLabels->addWidget(lblArguments);
+            layoutLabels->addWidget(lblArgumentsDescription);
+            QHBoxLayout* layoutHeader{ new QHBoxLayout() };
+            layoutHeader->addLayout(layoutLabels);
+            layoutHeader->addStretch();
+            layoutHeader->addWidget(btnAddPostprocessingArgument);
+            QFormLayout* layoutThreads{ new QFormLayout() };
+            layoutThreads->addRow(lblPostprocessingThreads, spnPostprocessingThreads);
+            QVBoxLayout* layoutPostprocessing{ new QVBoxLayout() };
+            layoutPostprocessing->addLayout(layoutThreads);
+            layoutPostprocessing->addWidget(QtHelpers::createHLine(parent));
+            layoutPostprocessing->addLayout(layoutHeader);
+            layoutPostprocessing->addWidget(listPostprocessingArguments);
+            QWidget* postprocessingPage{ new QWidget(parent) };
+            postprocessingPage->setLayout(layoutPostprocessing);
+            viewStack->addWidget(postprocessingPage);
             //aria2 Page
             QLabel* lblUseAria{ new QLabel(parent) };
             lblUseAria->setText(_("Use aria2c"));
@@ -285,6 +323,7 @@ namespace Ui
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Misc_ItemsList), _("Downloads"), listNavigation));
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Action_Download), _("Downloader"), listNavigation));
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Misc_Tool), _("Converter"), listNavigation));
+            listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Misc_Fx), _("Postprocessing"), listNavigation));
             listNavigation->addItem(new QListWidgetItem(QLEMENTINE_ICON(Software_CommandLine), _("aria2c"), listNavigation));
             QObject::connect(listNavigation, &QListWidget::currentRowChanged, [this]()
             {
@@ -302,8 +341,6 @@ namespace Ui
         QComboBox* cmbTheme;
         Switch* chkUpdates;
         Switch* chkPreventSuspend;
-        Switch* chkRecoverCrashedDownloads;
-        Switch* chkDownloadImmediately;
         QComboBox* cmbHistoryLength;
         QSpinBox* spnMaxNumberOfActiveDownloads;
         Switch* chkOverwriteExistingFiles;
@@ -316,6 +353,7 @@ namespace Ui
         QComboBox* cmbPreferredSubtitleFormat;
         Switch* chkUsePartFiles;
         Switch* chkSponsorBlock;
+        Switch* chkLimitSpeed;
         QSpinBox* spnSpeedLimit;
         LineEdit* txtProxyUrl;
         QLabel* lblCookiesBrowser;
@@ -330,6 +368,8 @@ namespace Ui
         Switch* chkEmbedChapters;
         Switch* chkEmbedSubtitles;
         QSpinBox* spnPostprocessingThreads;
+        QPushButton* btnAddPostprocessingArgument;
+        QListWidget* listPostprocessingArguments;
         Switch* chkUseAria;
         QSpinBox* spnAriaMaxConnectionsPerServer;
         QSpinBox* spnAriaMinSplitSize;
@@ -354,8 +394,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->cmbTheme->setCurrentIndex(static_cast<int>(m_controller->getTheme()));
         m_ui->chkUpdates->setChecked(m_controller->getAutomaticallyCheckForUpdates());
         m_ui->chkPreventSuspend->setChecked(m_controller->getPreventSuspend());
-        m_ui->chkRecoverCrashedDownloads->setChecked(m_controller->getRecoverCrashedDownloads());
-        m_ui->chkDownloadImmediately->setChecked(m_controller->getDownloadImmediatelyAfterValidation());
         m_ui->cmbHistoryLength->setCurrentIndex(static_cast<int>(m_controller->getHistoryLengthIndex()));
         m_ui->spnMaxNumberOfActiveDownloads->setValue(options.getMaxNumberOfActiveDownloads());
         m_ui->chkOverwriteExistingFiles->setChecked(options.getOverwriteExistingFiles());
@@ -367,7 +405,12 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->cmbPreferredSubtitleFormat->setCurrentIndex(static_cast<int>(options.getPreferredSubtitleFormat()));
         m_ui->chkUsePartFiles->setChecked(options.getUsePartFiles());
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
-        m_ui->spnSpeedLimit->setValue(options.getSpeedLimit());
+        m_ui->chkLimitSpeed->setChecked(options.getSpeedLimit().has_value());
+        m_ui->spnSpeedLimit->setEnabled(options.getSpeedLimit().has_value());
+        if(options.getSpeedLimit())
+        {
+            m_ui->spnSpeedLimit->setValue(*options.getSpeedLimit());
+        }
         m_ui->txtProxyUrl->setText(QString::fromStdString(options.getProxyUrl()));
         m_ui->cmbCookiesBrowser->setCurrentIndex(static_cast<int>(options.getCookiesBrowser()));
         m_ui->txtCookiesFile->setText(QString::fromStdString(options.getCookiesPath().filename().string()));
@@ -395,12 +438,14 @@ namespace Nickvision::TubeConverter::Qt::Views
             m_ui->chkLimitCharacters->setVisible(false);
         }
         m_ui->listNavigation->setCurrentRow(0);
+        reloadPostprocessingArguments();
         //Signals
         connect(m_ui->cmbTheme, &QComboBox::currentIndexChanged, this, &SettingsDialog::onThemeChanged);
         connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsDialog::selectCookiesFile);
         connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsDialog::clearCookiesFile);
-        connect(m_ui->chkEmbedMetadata, &Switch::toggled, this, &SettingsDialog::onEmbedMetadataChanged);
-        connect(m_ui->chkEmbedThumbnails, &Switch::toggled, this, &SettingsDialog::onEmbedThumbnailsChanged);
+        connect(m_ui->btnAddPostprocessingArgument, &QPushButton::clicked, this, &SettingsDialog::addPostprocessingArgument);
+        connect(m_ui->listPostprocessingArguments, &QListWidget::customContextMenuRequested, this, &SettingsDialog::onListPostprocessignArgumentsContextMenu);
+        connect(m_ui->listPostprocessingArguments, &QListWidget::itemDoubleClicked, this, &SettingsDialog::onPostprocessingArgumentDoubleClicked);
     }
 
     SettingsDialog::~SettingsDialog()
@@ -414,8 +459,6 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_controller->setTheme(static_cast<Shared::Models::Theme>(m_ui->cmbTheme->currentIndex()));
         m_controller->setAutomaticallyCheckForUpdates(m_ui->chkUpdates->isChecked());
         m_controller->setPreventSuspend(m_ui->chkPreventSuspend->isChecked());
-        m_controller->setRecoverCrashedDownloads(m_ui->chkRecoverCrashedDownloads->isChecked());
-        m_controller->setDownloadImmediatelyAfterValidation(m_ui->chkDownloadImmediately->isChecked());
         m_controller->setHistoryLengthIndex(m_ui->cmbHistoryLength->currentIndex());
         m_controller->setDownloaderOptions(options);
         options.setMaxNumberOfActiveDownloads(m_ui->spnMaxNumberOfActiveDownloads->value());
@@ -428,7 +471,7 @@ namespace Nickvision::TubeConverter::Qt::Views
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(m_ui->cmbPreferredSubtitleFormat->currentIndex()));
         options.setUsePartFiles(m_ui->chkUsePartFiles->isChecked());
         options.setYouTubeSponsorBlock(m_ui->chkSponsorBlock->isChecked());
-        options.setSpeedLimit(m_ui->spnSpeedLimit->value());
+        options.setSpeedLimit(m_ui->chkLimitSpeed->isChecked() ? std::make_optional<int>(m_ui->spnSpeedLimit->value()) : std::nullopt);
         options.setProxyUrl(m_ui->txtProxyUrl->text().toStdString());
         options.setCookiesBrowser(static_cast<Browser>(m_ui->cmbCookiesBrowser->currentIndex()));
         options.setCookiesPath(m_ui->txtCookiesFile->toolTip().toStdString());
@@ -483,13 +526,180 @@ namespace Nickvision::TubeConverter::Qt::Views
         m_ui->txtCookiesFile->setToolTip("");
     }
 
-    void SettingsDialog::onEmbedMetadataChanged(bool checked)
+    void SettingsDialog::addPostprocessingArgument()
     {
-        m_ui->chkRemoveSourceData->setEnabled(checked);
+        //Add Argument Dialog
+        QDialog* dialog{ new QDialog(this) };
+        dialog->setMinimumSize(300, 360);
+        dialog->setWindowTitle(_("New Argument"));
+        QLabel* lblName{ new QLabel(dialog) };
+        lblName->setText(_("Name"));
+        QLineEdit* txtName{ new QLineEdit(dialog) };
+        txtName->setPlaceholderText("Enter name here");
+        QLabel* lblPostProcessor{ new QLabel(dialog) };
+        lblPostProcessor->setText(_("Post Processor"));
+        QComboBox* cmbPostProcessor{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbPostProcessor, m_controller->getPostProcessorStrings());
+        QLabel* lblExecutable{ new QLabel(dialog) };
+        lblExecutable->setText(_("Executable"));
+        QComboBox* cmbExecutable{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbExecutable, m_controller->getExecutableStrings());
+        QLabel* lblArgs{ new QLabel(dialog) };
+        lblArgs->setText(_("Args"));
+        QLineEdit* txtArgs{ new QLineEdit(dialog) };
+        txtArgs->setPlaceholderText("Enter args here");
+        QPushButton* btnAdd{ new QPushButton(dialog) };
+        btnAdd->setAutoDefault(true);
+        btnAdd->setDefault(true);
+        btnAdd->setIcon(QLEMENTINE_ICON(Action_Plus));
+        btnAdd->setText(_("Add"));
+        QFormLayout* layoutForm{ new QFormLayout() };
+        layoutForm->addRow(lblName, txtName);
+        layoutForm->addRow(lblPostProcessor, cmbPostProcessor);
+        layoutForm->addRow(lblExecutable, cmbExecutable);
+        layoutForm->addRow(lblArgs, txtArgs);
+        QVBoxLayout* layout{ new QVBoxLayout() };
+        layout->addLayout(layoutForm);
+        layout->addWidget(btnAdd);
+        dialog->setLayout(layout);
+        connect(btnAdd, &QPushButton::clicked, [&]()
+        {
+            PostProcessorArgumentCheckStatus status{ m_controller->addPostprocessingArgument(txtName->text().toStdString(), static_cast<PostProcessor>(cmbPostProcessor->currentIndex()), static_cast<Executable>(cmbExecutable->currentIndex()), txtArgs->text().toStdString()) };
+            switch(status)
+            {
+            case PostProcessorArgumentCheckStatus::EmptyName:
+                QMessageBox::critical(this, _("Error"), _("The argument name cannot be empty."), QMessageBox::Ok);
+                break;
+            case PostProcessorArgumentCheckStatus::ExistingName:
+                QMessageBox::critical(this, _("Error"), _("An argument with this name already exists."), QMessageBox::Ok);
+                break;
+            case PostProcessorArgumentCheckStatus::EmptyArgs:
+                QMessageBox::critical(this, _("Error"), _("The argument args cannot be empty."), QMessageBox::Ok);
+                break;
+            default:
+                dialog->close();
+                break;
+            }
+        });
+        dialog->exec();
+        reloadPostprocessingArguments();
     }
 
-    void SettingsDialog::onEmbedThumbnailsChanged(bool checked)
+    void SettingsDialog::onListPostprocessignArgumentsContextMenu(const QPoint& pos)
     {
-        m_ui->chkCropAudioThumbnails->setEnabled(checked);
+        QListWidgetItem* selected;
+        if((selected = m_ui->listPostprocessingArguments->itemAt(pos)))
+        {
+            QMenu menu{ this };
+            menu.addAction(QLEMENTINE_ICON(Misc_Pen), _("Edit Argument"), [this, selected]()
+            {
+                editPostprocessingArgument(selected->text());
+            });
+            menu.addAction(QLEMENTINE_ICON(Action_Trash), _("Delete Argument"), [this, selected]()
+            {
+                QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Argument?"), _("Are you sure you want to delete this argument?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+                if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+                {
+                    m_controller->deletePostprocessingArgument(selected->text().toStdString());
+                    reloadPostprocessingArguments();
+                }
+            });
+            menu.exec(mapToGlobal(pos));
+        }
+    }
+
+    void SettingsDialog::onPostprocessingArgumentDoubleClicked(QListWidgetItem* item)
+    {
+        editPostprocessingArgument(item->text());
+    }
+
+    void SettingsDialog::editPostprocessingArgument(const QString& name)
+    {
+        std::optional<PostProcessorArgument> argument{ m_controller->getPostprocessingArgument(name.toStdString()) };
+        if(!argument)
+        {
+            return;
+        }
+        //Edit Argument Dialog
+        QDialog* dialog{ new QDialog(this) };
+        dialog->setMinimumSize(300, 360);
+        dialog->setWindowTitle(_("Edit Argument"));
+        QLabel* lblName{ new QLabel(dialog) };
+        lblName->setText(_("Name"));
+        QLineEdit* txtName{ new QLineEdit(dialog) };
+        txtName->setPlaceholderText("Enter name here");
+        txtName->setText(QString::fromStdString(argument->getName()));
+        txtName->setEnabled(false);
+        QLabel* lblPostProcessor{ new QLabel(dialog) };
+        lblPostProcessor->setText(_("Post Processor"));
+        QComboBox* cmbPostProcessor{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbPostProcessor, m_controller->getPostProcessorStrings());
+        cmbPostProcessor->setCurrentIndex(static_cast<int>(argument->getPostProcessor()));
+        QLabel* lblExecutable{ new QLabel(dialog) };
+        lblExecutable->setText(_("Executable"));
+        QComboBox* cmbExecutable{ new QComboBox(dialog) };
+        QtHelpers::setComboBoxItems(cmbExecutable, m_controller->getExecutableStrings());
+        cmbExecutable->setCurrentIndex(static_cast<int>(argument->getExecutable()));
+        QLabel* lblArgs{ new QLabel(dialog) };
+        lblArgs->setText(_("Args"));
+        QLineEdit* txtArgs{ new QLineEdit(dialog) };
+        txtArgs->setPlaceholderText("Enter args here");
+        txtArgs->setText(QString::fromStdString(argument->getArgs()));
+        QPushButton* btnSave{ new QPushButton(dialog) };
+        btnSave->setAutoDefault(true);
+        btnSave->setDefault(true);
+        btnSave->setIcon(QLEMENTINE_ICON(Action_Save));
+        btnSave->setText(_("Save"));
+        QPushButton* btnDelete{ new QPushButton(dialog) };
+        btnDelete->setAutoDefault(false);
+        btnDelete->setDefault(false);
+        btnDelete->setIcon(QLEMENTINE_ICON(Action_Trash));
+        btnDelete->setText(_("Delete"));
+        QFormLayout* layoutForm{ new QFormLayout() };
+        layoutForm->addRow(lblName, txtName);
+        layoutForm->addRow(lblPostProcessor, cmbPostProcessor);
+        layoutForm->addRow(lblExecutable, cmbExecutable);
+        layoutForm->addRow(lblArgs, txtArgs);
+        QHBoxLayout* layoutButtons{ new QHBoxLayout() };
+        layoutButtons->addWidget(btnDelete);
+        layoutButtons->addWidget(btnSave);
+        QVBoxLayout* layout{ new QVBoxLayout() };
+        layout->addLayout(layoutForm);
+        layout->addLayout(layoutButtons);
+        dialog->setLayout(layout);
+        connect(btnSave, &QPushButton::clicked, [&]()
+        {
+            PostProcessorArgumentCheckStatus status{ m_controller->updatePostprocessingArgument(argument->getName(), static_cast<PostProcessor>(cmbPostProcessor->currentIndex()), static_cast<Executable>(cmbExecutable->currentIndex()), txtArgs->text().toStdString()) };
+            switch(status)
+            {
+            case PostProcessorArgumentCheckStatus::EmptyArgs:
+                QMessageBox::critical(this, _("Error"), _("The argument args cannot be empty."), QMessageBox::Ok);
+                break;
+            default:
+                dialog->close();
+                break;
+            }
+        });
+        connect(btnDelete, &QPushButton::clicked, [&]()
+        {
+            QMessageBox msgBox{ QMessageBox::Icon::Warning, _("Delete Argument?"), _("Are you sure you want to delete this argument?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+            if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+            {
+                m_controller->deletePostprocessingArgument(argument->getName());
+                dialog->close();
+            }
+        });
+        dialog->exec();
+        reloadPostprocessingArguments();
+    }
+
+    void SettingsDialog::reloadPostprocessingArguments()
+    {
+        m_ui->listPostprocessingArguments->clear();
+        for(const PostProcessorArgument& argument : m_controller->getDownloaderOptions().getPostprocessingArguments())
+        {
+            QListWidgetItem* item{ new QListWidgetItem(QString::fromStdString(argument.getName()), m_ui->listPostprocessingArguments) };
+            m_ui->listPostprocessingArguments->addItem(item);
+        }
     }
 }

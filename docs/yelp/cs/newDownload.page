@@ -28,14 +28,14 @@
     <item>
         <title>Použít hromadný soubor</title>
         <p>Vyberte hromadný textový soubor, který obsahuje adresy k ověření.</p>
-        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
-        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-        <p>The optional save folder must be an absolute path.</p>
+        <p>Ke každé adrese může být zároveň přiřazena volitelná složka (oddělená znakem <code>|</code>) k uložení daného média.</p>
+        <p>Všechny adresy a jejich média z hromadného souboru budou seskupeny a budou aplikací Parabolic považovány za jeden playlist.</p>
+        <p>Volitelná složka pro uložení musí být absolutní cesta.</p>
         <note style="advanced">
             <p>Formát hromadného souboru:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 | "Folder1"</code></p>
-            <p><code>"URL3"|"Folder2"</code></p>
+            <p><code>URL2 | "Složka1"</code></p>
+            <p><code>"URL3"|"Složka2"</code></p>
             <p><code>"URL4"</code></p>
         </note>
     </item>
@@ -49,6 +49,13 @@
         </note>
     </item>
     <item>
+        <title>Download Immediately</title>
+        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
+    </item>
+    <item>
         <title>Typ souboru</title>
         <p>Typ souboru, jako který se má médium stáhnout.</p>
         <note>
@@ -56,7 +63,7 @@
         </note>
         <note style="advanced">
             <p>Vybráním typu souboru <code>Video (obecné)</code> nebo <code>Zvuk (obecný)</code> stáhne aplikace Parabolic média v původním typu souboru bez vykonání jakýchkoli konverzí.</p>
-            <p>Generic file types do not fully support embedding thumbnails and subtitles. Separate files may be written to disk if embedding is not supported.</p>
+            <p>Obecné typy souborů plně nepodporují vkládání náhledů a titulků. Pokud vkládání není podporováno, mohou být na disk uloženy samostatné soubory.</p>
         </note>
     </item>
     <item>
@@ -68,10 +75,10 @@
             <p>Dříve použitý formát videa bude zapamatován a předem vybrán pro další stahování.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>bv*</code></p>
-            <p>- <code>Worst</code> = <code>wv*</code></p>
+            <p>Aplikace Parabolic používá následující speciální formáty pro sjednocení chování <code>yt-dlp</code>:</p>
+            <p>- <code>Žádné</code> = Službě <code>yt-dlp</code> není předána žádná možnost</p>
+            <p>- <code>Nejlepší</code> = <code>bv*</code></p>
+            <p>- <code>Nejhorší</code> = <code>wv*</code></p>
         </note>
     </item>
     <item>
@@ -82,10 +89,10 @@
             <p>Dříve použitý formát zvuku bude zapamatován a předem vybrán pro další stahování.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>ba</code></p>
-            <p>- <code>Worst</code> = <code>wa</code></p>
+            <p>Aplikace Parabolic používá následující speciální formáty pro sjednocení chování <code>yt-dlp</code>:</p>
+            <p>- <code>Žádné</code> = Službě <code>yt-dlp</code> není předána žádná možnost</p>
+            <p>- <code>Nejlepší</code> = <code>ba</code></p>
+            <p>- <code>Nejhorší</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
@@ -103,13 +110,6 @@
         </note>
     </item>
     <item>
-        <title>Omezit rychlost stahování</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <link xref="downloader">předvolbách</link>.</p>
-        <note>
-            <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
-        </note>
-    </item>
-    <item>
         <title>Popis exportu</title>
         <p>Pokud je tato funkce povolena, aplikace Parabolic automaticky exportuje popis média do souboru <code>.description</code> vedle staženého souboru.</p>
         <note>
@@ -119,6 +119,20 @@
     <item>
         <title>Odstranit z historie</title>
         <p>Pokud je tato funkce povolena, aplikace Parabolic odstraní stahování ze seznamu historie stahování.</p>
+    </item>
+    <item>
+        <title>Post Processor Argument</title>
+        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <note>
+            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Write M3U Playlist File</title>
+        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+        </note>
     </item>
     <item>
         <title>Časový rámec</title>

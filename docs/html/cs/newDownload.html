@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Použít hromadný soubor</dt>
 <dd class="terms">
 <p class="p">Vyberte hromadný textový soubor, který obsahuje adresy k ověření.</p>
-<p class="p">Each URL can be accompanied by an optional save folder (delimited by <span class="code">|</span>) in which to save each media of the URL to.</p>
-<p class="p">All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-<p class="p">The optional save folder must be an absolute path.</p>
+<p class="p">Ke každé adrese může být zároveň přiřazena volitelná složka (oddělená znakem <span class="code">|</span>) k uložení daného média.</p>
+<p class="p">Všechny adresy a jejich média z hromadného souboru budou seskupeny a budou aplikací Parabolic považovány za jeden playlist.</p>
+<p class="p">Volitelná složka pro uložení musí být absolutní cesta.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Formát hromadného souboru:</p>
 <p class="p"><span class="code">URL1</span></p>
-<p class="p"><span class="code">URL2 | "Folder1"</span></p>
-<p class="p"><span class="code">"URL3"|"Folder2"</span></p>
+<p class="p"><span class="code">URL2 | "Složka1"</span></p>
+<p class="p"><span class="code">"URL3"|"Složka2"</span></p>
 <p class="p"><span class="code">"URL4"</span></p>
 </div></div></div>
 </div>
@@ -83,6 +83,26 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do yt-dlp. Například YouTube tuto funkci NEpodporuje.</p>
 <p class="p">U těchto webů, které nepodporují předávání přihlašovacích údajů, je doporučeno v předvolbách vybrat prohlížeč, ze kterého mají být použity soubory cookie.</p>
 </div></div></div>
+</div>
+</dd>
+<dt class="terms">Download Immediately</dt>
+<dd class="terms">
+<p class="p">Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+<div class="note note-advanced" title="Pokročilé">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: vypnuto</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Typ souboru</dt>
@@ -112,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Vybráním typu souboru <span class="code">Video (obecné)</span> nebo <span class="code">Zvuk (obecný)</span> stáhne aplikace Parabolic média v původním typu souboru bez vykonání jakýchkoli konverzí.</p>
-<p class="p">Generic file types do not fully support embedding thumbnails and subtitles. Separate files may be written to disk if embedding is not supported.</p>
+<p class="p">Obecné typy souborů plně nepodporují vkládání náhledů a titulků. Pokud vkládání není podporováno, mohou být na disk uloženy samostatné soubory.</p>
 </div></div></div>
 </div>
 </dd>
@@ -144,10 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">bv*</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wv*</span></p>
+<p class="p">Aplikace Parabolic používá následující speciální formáty pro sjednocení chování <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Žádné</span> = Službě <span class="code">yt-dlp</span> není předána žádná možnost</p>
+<p class="p">- <span class="code">Nejlepší</span> = <span class="code">bv*</span></p>
+<p class="p">- <span class="code">Nejhorší</span> = <span class="code">wv*</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -178,10 +198,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">ba</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wa</span></p>
+<p class="p">Aplikace Parabolic používá následující speciální formáty pro sjednocení chování <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Žádné</span> = Službě <span class="code">yt-dlp</span> není předána žádná možnost</p>
+<p class="p">- <span class="code">Nejlepší</span> = <span class="code">ba</span></p>
+<p class="p">- <span class="code">Nejhorší</span> = <span class="code">wa</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -209,18 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Omezit rychlost stahování</dt>
-<dd class="terms">
-<p class="p">Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <span class="link"><a href="downloader.html" title="Služba stahování">předvolbách</a></span>.</p>
-<div class="note" title="Upozornění">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p></div></div></div>
-</div>
-</dd>
 <dt class="terms">Popis exportu</dt>
 <dd class="terms">
 <p class="p">Pokud je tato funkce povolena, aplikace Parabolic automaticky exportuje popis média do souboru <span class="code">.description</span> vedle staženého souboru.</p>
@@ -235,6 +243,30 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Odstranit z historie</dt>
 <dd class="terms"><p class="p">Pokud je tato funkce povolena, aplikace Parabolic odstraní stahování ze seznamu historie stahování.</p></dd>
+<dt class="terms">Post Processor Argument</dt>
+<dd class="terms">
+<p class="p">An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <span class="link"><a href="converter.html" title="Konvertor">preferences</a></span>.</p>
+<div class="note" title="Upozornění">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously selected argument will be remembered and pre-selected for the next download.</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Write M3U Playlist File</dt>
+<dd class="terms">
+<p class="p">If enabled, Parabolic will write a m3u file for the playlist download.</p>
+<div class="note" title="Upozornění">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next playlist download.</p></div></div></div>
+</div>
+</dd>
 <dt class="terms">Časový rámec</dt>
 <dd class="terms">
 <p class="p">Uživatel může zadat počáteční časový rámec a konečný časový rámec pro stažení určité části média.</p>

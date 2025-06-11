@@ -68,7 +68,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("selectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("deselectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->deselectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
-        m_controller->urlValidated() += [this](const EventArgs& args){ GtkHelpers::dispatchToMainThread([this]{ onUrlValidated(); }); };
+        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ GtkHelpers::dispatchToMainThread([this, args]{ onUrlValidated(args.getParam()); }); };
     }
 
     void AddDownloadDialog::onTxtUrlChanged()
@@ -139,11 +139,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
     }
 
-    void AddDownloadDialog::onUrlValidated()
+    void AddDownloadDialog::onUrlValidated(bool valid)
     {
-        if(!m_controller->isUrlValid())
+        if(!valid)
         {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, and the selected browser for cookies in preferences. Note that YouTube may have blocked your IP or the video may be geo-restricted."))) };
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, the cookies settings, and the preferred codecs selected. Note that the service may have blocked your IP or the video may be geo-restricted."))) };
             adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
             adw_alert_dialog_set_close_response(dialog, "close");
             adw_alert_dialog_set_default_response(dialog, "close");
@@ -201,8 +201,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
             }
             //Load Advanced Options
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersSingleRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());
-            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("limitSpeedSingleRow"), m_controller->getPreviousDownloadOptions().getLimitSpeed());
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("exportDescriptionSingleRow"), m_controller->getPreviousDownloadOptions().getExportDescription());
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("postProcessorArgumentSingleRow"), m_controller->getPostprocessingArgumentNames(), m_controller->getPreviousDownloadOptions().getPostProcessorArgument());
             gtk_editable_set_text(m_builder.get<GtkEditable>("startTimeSingleRow"), m_controller->getMediaTimeFrame(0).startStr().c_str());
             gtk_editable_set_text(m_builder.get<GtkEditable>("endTimeSingleRow"), m_controller->getMediaTimeFrame(0).endStr().c_str());
         }
@@ -212,10 +212,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), m_controller->getFileTypeStrings());
             adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());
-            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("limitSpeedPlaylistRow"), m_controller->getPreviousDownloadOptions().getLimitSpeed());
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("exportDescriptionPlaylistRow"), m_controller->getPreviousDownloadOptions().getExportDescription());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("writeFilePlaylistRow"), m_controller->getPreviousDownloadOptions().getWritePlaylistFile());
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("postProcessorArgumentPlaylistRow"), m_controller->getPostprocessingArgumentNames(), m_controller->getPreviousDownloadOptions().getPostProcessorArgument());
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("itemsPlaylistRow"), _f("{} items", m_controller->getMediaCount()).c_str());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"), m_controller->getPreviousDownloadOptions().getNumberTitles());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
                 GtkCheckButton* chk{ GTK_CHECK_BUTTON(gtk_check_button_new()) };
@@ -229,7 +231,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 gtk_widget_add_css_class(GTK_WIDGET(undo), "flat");
                 gtk_widget_set_name(GTK_WIDGET(undo), std::to_string(i).c_str());
                 g_signal_connect(undo, "clicked", G_CALLBACK(+[](GtkButton* btn, gpointer data)
-                { 
+                {
                     AddDownloadDialog* dialog{ reinterpret_cast<AddDownloadDialog*>(data) };
                     size_t index{ std::stoul(gtk_widget_get_name(GTK_WIDGET(btn))) };
                     gtk_editable_set_text(GTK_EDITABLE(dialog->m_playlistItemRows[index]), dialog->m_controller->getMediaTitle(index, adw_switch_row_get_active(dialog->m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
@@ -237,16 +239,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 AdwEntryRow* row{ ADW_ENTRY_ROW(adw_entry_row_new()) };
                 adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), m_controller->getMediaUrl(i).c_str());
-                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
+                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, m_controller->getPreviousDownloadOptions().getNumberTitles()).c_str());
                 adw_entry_row_add_prefix(row, GTK_WIDGET(chk));
                 adw_entry_row_add_suffix(row, GTK_WIDGET(undo));
                 adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("itemsPlaylistGroup"), GTK_WIDGET(row));
                 m_playlistItemRows.push_back(row);
                 m_playlistItemCheckButtons.push_back(chk);
             }
-            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"), m_controller->getPreviousDownloadOptions().getNumberTitles());
         }
-        if(m_controller->getDownloadImmediatelyAfterValidation())
+        if(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("immediatelyRow")))
         {
             if(m_controller->isUrlPlaylist())
             {
@@ -297,7 +298,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
             GFile* folder{ gtk_file_dialog_select_folder_finish(GTK_FILE_DIALOG(self), res, nullptr) };
             if(folder)
             {
-                adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("saveFolderSingleRow"), g_file_get_path(folder));
+                std::filesystem::path path{ g_file_get_path(folder) };
+                adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("saveFolderSingleRow"), path.make_preferred().string().c_str());
             }
         }), &m_builder);
     }
@@ -343,7 +345,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 subtitles.push_back(adw_preferences_row_get_title(ADW_PREFERENCES_ROW(m_singleSubtitleRows[i])));
             }
         }
-        m_controller->addSingleDownload(adw_action_row_get_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("filenameSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("videoFormatSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioFormatSingleRow")), subtitles, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("excludeHistorySingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("splitChaptersSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("limitSpeedSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("exportDescriptionSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("startTimeSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("endTimeSingleRow")));
+        m_controller->addSingleDownload(adw_action_row_get_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("filenameSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("videoFormatSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioFormatSingleRow")), subtitles, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("splitChaptersSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("exportDescriptionSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("excludeHistorySingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("postProcessorArgumentSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("startTimeSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("endTimeSingleRow")));
         adw_dialog_close(m_dialog);
     }
 
@@ -354,6 +356,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
         }
+        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("genericDisclaimerPlaylistButton"), type.isGeneric());
     }
 
     void AddDownloadDialog::selectSaveFolderPlaylist()
@@ -365,7 +369,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
             GFile* folder{ gtk_file_dialog_select_folder_finish(GTK_FILE_DIALOG(self), res, nullptr) };
             if(folder)
             {
-                adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("saveFolderPlaylistRow"), g_file_get_path(folder));
+                std::filesystem::path path{ g_file_get_path(folder) };
+                adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("saveFolderPlaylistRow"), path.make_preferred().string().c_str());
             }
         }), &m_builder);
     }
@@ -379,6 +384,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void AddDownloadDialog::onNumberTitlesPlaylistChanged()
     {
         int i{ 0 };
+        m_controller->setPreviousNumberTitles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow")));
         for(AdwEntryRow* row : m_playlistItemRows)
         {
             gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
@@ -412,7 +418,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 filenames.emplace(i, gtk_editable_get_text(GTK_EDITABLE(m_playlistItemRows[i])));
             }
         }
-        m_controller->addPlaylistDownload(adw_action_row_get_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow")), filenames, adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("excludeHistoryPlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("limitSpeedPlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("exportDescriptionPlaylistRow")));
+        m_controller->addPlaylistDownload(adw_action_row_get_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow")), filenames, adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("exportDescriptionPlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("writeFilePlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("excludeHistoryPlaylistRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("postProcessorArgumentPlaylistRow")));
         adw_dialog_close(m_dialog);
     }
 }

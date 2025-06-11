@@ -55,6 +55,13 @@
         </note>
     </item>
     <item>
+        <title>Download Immediately</title>
+        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <note style="advanced">
+            <p>Predeterminado: Apagado</p>
+        </note>
+    </item>
+    <item>
         <title>Tipo de archivo</title>
         <p>El tipo de archivo con el que se descargarán los archivos multimedia.</p>
         <note>
@@ -109,13 +116,6 @@
         </note>
     </item>
     <item>
-        <title>Limitar la velocidad de descarga</title>
-        <p>Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en <link xref="downloader">Preferencias</link>.</p>
-        <note>
-            <p>El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
-        </note>
-    </item>
-    <item>
         <title>Exportar la descripción</title>
         <p>Si está habilitado, Parabolic exportará la descripción del medio a un archivo <code> .description </code> junto con el archivo descargado.</p>
         <note>
@@ -125,6 +125,20 @@
     <item>
         <title>Exclude from History</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+    </item>
+    <item>
+        <title>Post Processor Argument</title>
+        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <note>
+            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Write M3U Playlist File</title>
+        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+        </note>
     </item>
     <item>
         <title>Duración</title>
