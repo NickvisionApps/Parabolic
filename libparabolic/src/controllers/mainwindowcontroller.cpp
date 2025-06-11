@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.6.0-next" });
+        m_appInfo.setVersion({ "2025.6.0-beta1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added the ability to configure a set of postprocessing arguments to enable for downloads\n- Added the ability to write a m3u file to disk for playlist downloads\n- Made it so Parabolic will now ask to recover downloads if there are any available instead of recovering automatically\n- Moved the download immediately after validation option to the add download dialog\n- Moved the speed limit option to the downloader preferences\n- Fixed an issue where some media incorrectly failed validation\n- Fixed an issue where the previous number titles setting was not restored correctly\n- Fixed an issue where file names could grow too long when using aria2c\n- Fixed an issue where the window's position was not remembered on Windows\n- Updated yt-dlp");
