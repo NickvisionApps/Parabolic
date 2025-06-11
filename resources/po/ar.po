@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-28 21:59-0400\n"
-"PO-Revision-Date: 2025-05-14 21:02+0000\n"
+"PO-Revision-Date: 2025-06-11 00:47+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,12 +83,12 @@ msgstr "WAV (صوت)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:247
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:277
 msgid "Error attempting to validate download: {}"
-msgstr ""
+msgstr "لم يتم تأكيد عملية التحميل: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:343
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:377
 msgid "Error attempting to add download: {}"
-msgstr ""
+msgstr "لم يتم إضافة التحميل بنجاح: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:317
@@ -132,7 +132,7 @@ msgstr[5] "تم إسترداد تنزيلات بالجملة"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:224
 msgid "Error attempting to recover downloads: {}"
-msgstr ""
+msgstr "لم يتم إستعادة التحميل: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:251
 msgid "New update available"
@@ -316,15 +316,14 @@ msgid "File Type"
 msgstr "نوع الملف"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:117
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles.\n"
 "Please select a specific file type that is known to support embedding\n"
 "to prevent separate files from being written."
 msgstr ""
 "أنواع الملفات العامة لاتدعم دمج صور العرض والترجمات. \n"
-"يرجى إختيار نوع ملف داعم للدمج لتجنب حفظ ملفات الترجمة والصور بشكل مستقل "
-"بالتخزين."
+"يرجى إختيار نوع ملف داعم للدمج \n"
+"لتجنب حفظ ملفات الترجمة والصور بشكل مستقل بالتخزين."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:127
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:135
@@ -660,9 +659,8 @@ msgstr "أضف رابط مقطع أو صوت أو قائمة تشغيل لبدء
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:304
 #: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:28
-#, fuzzy
 msgid "No History Available"
-msgstr "لا يوجد سجل متاح"
+msgstr "لا يوجد سجل تحميلات متاح"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:330
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:202
@@ -681,7 +679,7 @@ msgstr "لا يوجد تنزيلات مكتملة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:11
 msgid "UI"
-msgstr ""
+msgstr "واجهة المستخدم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:284
@@ -719,7 +717,7 @@ msgstr "منع التعليق"
 msgid ""
 "Parabolic will prevent the computer from sleeping while downloads are "
 "running."
-msgstr ""
+msgstr "برنامج (بارا-بوليك) سيمنع خمول حاسوبك أثناء عمليات التحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
@@ -732,6 +730,7 @@ msgstr "استعادة التنزيلات المعطلة"
 msgid ""
 "Parabolic will recover downloads that were in progress when the app crashed."
 msgstr ""
+"سيستعيد برنامج (بارا-بوليك) التحميلات التي كانت جارية قبل أن يتعطل التطبيق."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
@@ -745,6 +744,8 @@ msgid ""
 "Parabolic will immediately download media after validation, without "
 "presenting configuration options to the user."
 msgstr ""
+"سيحمّل برنامج (بارا-بوليك) المرئيات بعد التوقيف، من دون إظهار خيارات الضبط "
+"للمستخدم."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:60
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
@@ -755,7 +756,7 @@ msgstr "طول السجل"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
 msgid "The amount of time to keep past downloads in the app's history."
-msgstr ""
+msgstr "الوقت الكافي لإبقاء التحميلات السابقة بسجل التطبيق."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:63
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
@@ -814,13 +815,12 @@ msgstr "يقتصر استخدام الأحرف في أسماء الملفات ع
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:93
-#, fuzzy
 msgid "Include Media Id in Title"
-msgstr "ضمّن معرّف الوسائط في العنوان بعد التحقق"
+msgstr "ضمّن معرّف الوسائط في العنوان"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
 msgid "Parabolic will include a media's id in its default title."
-msgstr ""
+msgstr "(بارا-بوليك) سيُرفق معرّف الملف المرئي في تسميتها الإفتراضية."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:127
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:98
@@ -833,7 +833,7 @@ msgstr "أضف الترجمة التلقائية"
 msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
-msgstr ""
+msgstr "(بارا-بوليك) سيُظهر الترجمة التلقائية للتحميل، فوق الترجمات المتاحة."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
@@ -847,6 +847,7 @@ msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
+"ترميز المقطع الذي يُفضِّلُه (بارا-بوليك) أثناء نحليل صيغ المرئيات للتحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:140
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:153
@@ -879,6 +880,7 @@ msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
+"ترميز الصوت الذي يُفضِّلُه (بارا-بوليك) أثناء نحليل صيغ المرئيات للتحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:153
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:118
@@ -900,7 +902,7 @@ msgstr "تفضيل صيغة الترجمة"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:128
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
-msgstr ""
+msgstr "صيغة الملف الذي يضمنه (بارا-بوليك) بتحميل كل الترجمات."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:178
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:182
@@ -911,9 +913,8 @@ msgstr "المحمّل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:148
-#, fuzzy
 msgid "Use Part Files"
-msgstr "استخدم ملف الدفعة"
+msgstr "استخدم ملف الدفعات"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:186
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
@@ -922,6 +923,8 @@ msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
+"(بارا-بوليك) سيحمّل الوسائط في ملفات (.part) منفصلة بدلًا من تحميلها مباشرة في "
+"ملف الإنتاج."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:195
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
@@ -933,7 +936,7 @@ msgstr "استخدم اضافة \"SponsorBlock\" لليوتيوب"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:156
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
-msgstr ""
+msgstr "سيحاول (بارا-بوليك) إزالة الجزئيات الإعلانية من مقاطع اليوتيوب."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:205
 msgid "Speed Limit (KiB/s)"
@@ -942,9 +945,8 @@ msgstr "حدّ السرعة (كيلوبايت/ث)"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:206
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:159
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:161
-#, fuzzy
 msgid "The limit to apply to downloads with limiting speed enabled."
-msgstr "هذا الحد ينطبق فقط على التنزيلات التي تم حد سرعتها."
+msgstr "تم تفعيل الحد المنطبق فقط على التنزيلات التي تم حد سرعتها."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:222
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:166
@@ -1026,25 +1028,23 @@ msgstr "إحذف ملف تعريف الارتباط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:288
-#, fuzzy
 msgid "aria2c"
-msgstr "aria2"
+msgstr "aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:275
 msgid "Configure downloading with aria2c."
-msgstr ""
+msgstr "خصص التحميل بaria2c."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:278
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
-#, fuzzy
 msgid "Use aria2c"
-msgstr "استخدم aria2"
+msgstr "إستخدم aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:279
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:259
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
-msgstr ""
+msgstr "سيستخدم (بارا-بوليك) aria2c بدلًا من محمّل yt-dlp الأصلي."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:288
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:261
@@ -1081,12 +1081,11 @@ msgstr "أزل بيانات المصدر"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:343
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:215
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:217
-#, fuzzy
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
 msgstr ""
-"في حال التمكين، سيقوم البرنامج بمسح خانات البيانات الوصفيّة المحتوية على "
+"في حال التمكين، سيقوم (بارا-بوليك) بمسح خانات البيانات الوصفيّة المحتوية على "
 "معلومات تحديد التحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:353
@@ -1110,9 +1109,8 @@ msgstr "قص صور الصوتيات المصغرة"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:365
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:225
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:227
-#, fuzzy
 msgid "Parabolic will crop thumbnails of audio files to squares."
-msgstr "وقت التفعيل، سيقوم البرنامج بقص صور المقاطع الصوتية المصغرة لمكعبات."
+msgstr "سيقوم (بارا-بوليك) بقص صور المقاطع الصوتية المصغرة لصورة مربعة."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:375
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:229
@@ -1142,7 +1140,7 @@ msgstr "مسارات مابعد المعالجة"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:238
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
 msgid "Parabolic will limit the number of threads used by ffmpeg."
-msgstr ""
+msgstr "سيحُد (بارا-بوليك) من عدد المسارات التي يستخدمها ffmpeg."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
@@ -1241,7 +1239,6 @@ msgid "TXT Files (*.txt)"
 msgstr "ملفات نصية (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in preferences. "
@@ -1249,7 +1246,9 @@ msgid ""
 "restricted."
 msgstr ""
 "رابط الـ URL المقدم غير صالح أو لا يمكن الوصول إليه. تحقق من الرابط، وطرق "
-"المصادقة المستخدمة، والمتصفح المحدد لملفات تعريف الارتباط في التفضيلات."
+"المصادقة المستخدمة، والمتصفح المحدد لملفات تعريف الارتباط في التفضيلات. مع "
+"العلم أن اليوتيوب قد حظر عنوان بروتوكول الشابكة/IP Address الخاص بك أو أن "
+"المقطع محدود جغرافيًا."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
@@ -1376,7 +1375,7 @@ msgstr "هناك عمليات تنزيل جارية. هل أنت متأكد من
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:212
 msgid "Ok"
-msgstr ""
+msgstr "حسنًا"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:313
 msgid "Download Again"
@@ -1512,14 +1511,15 @@ msgid "Items"
 msgstr "عناصر"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:523
-#, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in settings. Note "
 "that YouTube may have blocked your IP or the video may be geo-restricted."
 msgstr ""
 "الرابط الذي أدخلته غير صحيح أو لا يمكن الوصول إليه. تحقق من الرابط، والتوثيق "
-"المستخدم، والمتصفح المُسْتَخدم لبيانات تعريف الإرتباط في الإعدادات."
+"المستخدم، والمتصفح المُسْتَخدم لبيانات تعريف الإرتباط في الإعدادات. مع العلم أن "
+"اليوتيوب قد حظر عنوان بروتوكول الشابكة/IP Address الخاص بك أو أن المقطع "
+"محدود جغرافيًا."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:615
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
@@ -1527,14 +1527,13 @@ msgid "Warning"
 msgstr "تحذير"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:615
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
 "Please select a specific file type that is known to support embedding to "
 "prevent separate files from being written."
 msgstr ""
 "أنواع الملفات العامة لاتدعم دمج صور العرض والترجمات. \n"
-"يرجى إختيار نوع ملف داعم للدمج لتجنب حفظ ملفات الترجمة والصور بشكل مستقل "
+"يُرجى إختيار نوع ملف داعم للدمج لتجنب حفظ ملفات الترجمة والصور بشكل مستقل "
 "بالتخزين."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
@@ -1692,7 +1691,7 @@ msgstr "التحقق من التحديثات تلقائيًا"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:96
 msgid "Parabolic will include the media's id in its default title."
-msgstr ""
+msgstr "سيُرفِق (بارا-بوليك) هوية الملف المرئي بإسمها الإفتراضي."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
 msgid "Speed Limit"
