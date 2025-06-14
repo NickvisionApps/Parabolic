@@ -37,9 +37,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         const std::string& getUrl() const;
         /**
          * @brief Gets whether the Url is a playlist.
-         * @return True if playlist, false otherwise
+         * @return True if playlist, else false
          */
         bool isPlaylist() const;
+        /**
+         * @brief Gets whether or not the Url has a suggested save folder.
+         * @return True if it has a suggested save folder, else false
+         **/
+        bool hasSuggestedSaveFolder() const;
         /**
          * @brief Gets the number of media belonging to the Url.
          * @return The number of media
@@ -69,7 +74,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     private:
         std::string m_url;
         std::string m_title;
-        bool m_isPlaylist;
+        bool m_hasSuggestedSaveFolder;
         std::vector<Media> m_media;
     };
 }

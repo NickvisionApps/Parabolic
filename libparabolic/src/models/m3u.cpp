@@ -6,7 +6,8 @@ using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    M3U::M3U(const std::string& title)
+    M3U::M3U(const std::string& title, PathType pathType)
+        : m_pathType{ pathType }
     {
         m_builder << "#EXTM3U" << std::endl;
         if(!title.empty())
@@ -22,7 +23,14 @@ namespace Nickvision::TubeConverter::Shared::Models
             return false;
         }
         std::filesystem::path path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) };
-        m_builder << path.make_preferred().string() << std::endl;
+        if(m_pathType == PathType::Absolute)
+        {
+            m_builder << path.make_preferred().string() << std::endl;
+        }
+        else if(m_pathType == PathType::Relative)
+        {
+            m_builder << std::filesystem::relative(path, options.getSaveFolder()).make_preferred().string() << std::endl;
+        }
         return true;
     }
 
@@ -37,7 +45,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return false;
         }
-        file << m_builder.str() << std::endl;
+        file << m_builder.str();
         return true;
     }
 }

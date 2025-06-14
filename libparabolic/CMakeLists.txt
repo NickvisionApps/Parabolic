@@ -32,6 +32,7 @@ add_library(libparabolic
     "include/models/media.h"
     "include/models/mediafiletype.h"
     "include/models/mediatype.h"
+    "include/models/pathtype.h"
     "include/models/postprocessor.h"
     "include/models/postprocessorargument.h"
     "include/models/postprocessorargumentcheckstatus.h"
