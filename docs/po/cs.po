@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-06-08 21:53-0400\n"
-"PO-Revision-Date: 2025-05-31 20:05+0000\n"
+"POT-Creation-Date: 2025-06-11 12:06-0400\n"
+"PO-Revision-Date: 2025-06-12 21:01+0000\n"
 "Last-Translator: Fjuro <git@alius.cz>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/cs/>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -274,9 +274,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:76
-#, fuzzy
 msgid "FFmpeg Threads"
-msgstr "Zpracovávání vláken"
+msgstr "Vlákna FFmpeg"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:77
@@ -292,7 +291,7 @@ msgstr "Výchozí: maximální počet vláken dostupných v systému"
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:83
 msgid "Postprocessing Arguments"
-msgstr ""
+msgstr "Argumenty postprocesoru"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:84
@@ -300,33 +299,38 @@ msgid ""
 "Parabolic will present these options in the add download dialog to be passed "
 "to <code>ffmpeg</code> and other post-processors when processing media."
 msgstr ""
+"Aplikace Parabolic zobrazí tyto možnosti v dialogu přidání stahování. Ty "
+"budou následně předány službě <code>ffmpeg</code> a dalším postprocesorům "
+"během zpracování médií."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:86
 msgid "Postprocessing Argument Fields:"
-msgstr ""
+msgstr "Pole argumentů postprocesorů:"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:87
-#, fuzzy
 msgid "<code>Name</code> - The friendly name of the argument."
-msgstr "<code>Název</code>: název údaje"
+msgstr "<code>Název</code> – Zobrazovaný název argumentu."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:88
 msgid ""
 "<code>Post Processor</code> - The post processor to pass the arguments to."
 msgstr ""
+"<code>Postprocesor</code> – Postprocesor, kterému mají být argumenty předány."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:89
 msgid "<code>Executable</code> - The executable to pass the arguments to."
 msgstr ""
+"<code>Spustitelný soubor</code> – Spustitelný soubor, kterému mají být "
+"argumenty předány."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:90
 msgid "<code>Args</code> - The args to pass."
-msgstr ""
+msgstr "<code>Argumenty</code> – Argumenty k předání."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
@@ -391,14 +395,12 @@ msgstr "Omezení rychlosti"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:43
-#, fuzzy
 msgid ""
 "The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
 "value between 512 and 10240."
 msgstr ""
-"Limit, v KiB/s, který bude použit na stahování pouze s povolenou pokročilou "
-"možností <code>Omezení rychlosti</code>. Musí to být celočíselná hodnota "
-"mezi 512 a 10240."
+"Limit v KiB/s, který bude použit na stahování. Musí to být celočíselná "
+"hodnota mezi 512 a 10240."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:49
@@ -1028,19 +1030,17 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:55
-#, fuzzy
 msgid "Download Immediately"
-msgstr "Stáhnout ihned po ověření"
+msgstr "Stáhnout okamžitě"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:56
-#, fuzzy
 msgid ""
 "Parabolic will immediately download the media after validation, using the "
 "previously configured download options."
 msgstr ""
-"Parabolic stáhne média okamžitě po ověření, bez zobrazení možností "
-"konfigurace."
+"Parabolic stáhne média okamžitě po ověření, pomocí naposledy nastavených "
+"možností stahování."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:62
@@ -1251,7 +1251,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:127
 msgid "Post Processor Argument"
-msgstr ""
+msgstr "Argument postprocesoru"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:128
@@ -1260,37 +1260,37 @@ msgid ""
 "postprocessing arguments can be configured in <link "
 "xref=\"converter\">preferences</link>."
 msgstr ""
+"Argument, který předat postprocesoru během stahování. Dostupné argumenty lze "
+"nastavit v <link xref=\"converter\">předvolbách</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:130
-#, fuzzy
 msgid ""
 "The previously selected argument will be remembered and pre-selected for the "
 "next download."
 msgstr ""
-"Dříve vybrané titulky budou zapamatovány a předem zvoleny pro další "
-"stahování."
+"Dříve vybraný argument bude zapamatován a předem zvolen pro další stahování."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:134
 msgid "Write M3U Playlist File"
-msgstr ""
+msgstr "Zapsat soubor playlistu M3U"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:135
-#, fuzzy
 msgid "If enabled, Parabolic will write a m3u file for the playlist download."
 msgstr ""
-"Pokud je tato funkce povolena, aplikace Parabolic odstraní stahování ze "
-"seznamu historie stahování."
+"Pokud je tato funkce povolena, aplikace Parabolic vytvoří soubor m3u pro "
+"stahování playlistu."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:137
-#, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "playlist download."
-msgstr "Dříve použitý stav bude zapamatován a předvolen pro další stahování."
+msgstr ""
+"Dříve použitý stav bude zapamatován a předvolen pro další stahování "
+"playlistu."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:141
