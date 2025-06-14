@@ -410,7 +410,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::downloadPlaylist()
     {
-        std::unordered_map<size_t, std::string> filenames;
+        std::map<size_t, std::string> filenames;
         for(size_t i = 0; i < m_playlistItemRows.size(); i++)
         {
             if(gtk_check_button_get_active(m_playlistItemCheckButtons[i]))

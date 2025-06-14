@@ -2,6 +2,7 @@
 #define ADDDOWNLOADDIALOGCONTROLLER_H
 
 #include <filesystem>
+#include <map>
 #include <optional>
 #include <string>
 #include <vector>
@@ -166,7 +167,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param excludeFromHistory Whether or not to exclude the download from the history
          * @param postProcessorArgumentIndex The index of the selected post processor argument
          */
-        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory, size_t postProcessorArgumentIndex);
+        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory, size_t postProcessorArgumentIndex);
 
     private:
         Models::DownloadManager& m_downloadManager;

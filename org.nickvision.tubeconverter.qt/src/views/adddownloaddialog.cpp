@@ -742,7 +742,7 @@ namespace Nickvision::TubeConverter::Qt::Views
 
     void AddDownloadDialog::downloadPlaylist()
     {
-        std::unordered_map<size_t, std::string> filenames;
+        std::map<size_t, std::string> filenames;
         for(int i = 0; i < m_ui->listItemsPlaylist->count(); i++)
         {
             QListWidgetItem* item{ m_ui->listItemsPlaylist->item(i) };

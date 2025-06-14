@@ -358,7 +358,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory, size_t postProcessorArgumentIndex)
+    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool exportDescription, bool writePlaylistFile, bool excludeFromHistory, size_t postProcessorArgumentIndex)
     {
         M3U m3u{ m_urlInfo->getTitle(), m_urlInfo->hasSuggestedSaveFolder() ? PathType::Absolute : PathType::Relative };
         //Get Post Processor Argument
