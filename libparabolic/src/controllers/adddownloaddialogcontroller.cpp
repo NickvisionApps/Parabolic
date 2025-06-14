@@ -383,6 +383,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             DownloadOptions options{ media.getUrl() };
             options.setCredential(m_credential);
             options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
+            options.setAvailableFormats(media.getFormats());
             options.setSaveFolder(media.getSuggestedSaveFolder().empty() ? playlistSaveFolder : media.getSuggestedSaveFolder());
             options.setSaveFilename(!pair.second.empty() ? StringHelpers::normalizeForFilename(pair.second, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
             options.setSplitChapters(splitChapters);

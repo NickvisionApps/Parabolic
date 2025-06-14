@@ -709,6 +709,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::validateFileNamesAndPaths()
     {
+        if(m_saveFolder.empty() || m_saveFilename.empty())
+        {
+            return;
+        }
         //Check filename extension
         std::filesystem::path filenamePath{ m_saveFilename };
         if(filenamePath.extension().string() == m_fileType.getDotExtension())
@@ -727,7 +731,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         //Check filename length
 #ifdef _WIN32
-        static size_t maxFileNameLength{ MAX_PATH };
+        static size_t maxFileNameLength{ MAX_PATH - 1 };
 #else
         static size_t maxFileNameLength{ NAME_MAX };
 #endif
@@ -739,7 +743,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 #ifdef _WIN32
         static size_t maxPathLength{ MAX_PATH };
 #else
-        static size_t maxPathLength{ PATH_MAX };
+        static size_t maxPathLength{ PATH_MAX - 1 };
 #endif
         if((m_saveFolder / m_saveFilename).string().size() + maxExtensionLength > maxPathLength)
         {
