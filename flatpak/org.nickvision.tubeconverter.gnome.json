@@ -55,6 +55,55 @@
             ]
         },
         {
+            "name": "tcl",
+            "buildsystem": "autotools",
+            "subdir": "unix",
+            "post-install": [
+                "chmod 755 /app/lib/libtcl*.so"
+            ],
+            "cleanup": [
+                "/lib/pkgconfig",
+                "/man"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz",
+                    "sha256": "91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 4941,
+                        "stable-only": true,
+                        "versions": {
+                            "<": "9.0.0"
+                        },
+                        "url-template": "https://prdownloads.sourceforge.net/tcl/tcl$version-src.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "sqlcipher",
+            "buildsystem": "autotools",
+            "build-opts": {
+                "cflags": "-DSQLITE_HAS_CODEC",
+                "ldflags": "-lcrypto"
+            },
+            "config-opts": [
+                "--enable-tempstore=yes",
+                "--enable-fts5",
+                "--enable-releasemode",
+                "--disable-static"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/sqlcipher/sqlcipher",
+                    "tag": "v4.6.1"
+                }
+            ]
+        },
+        {
             "name": "libnick",
             "buildsystem": "cmake-ninja",
             "builddir": true,
@@ -66,7 +115,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2025.6.1"
+                    "tag": "2025.6.3"
                 }
             ]
         },
