@@ -55,18 +55,9 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2025.6.0" date="2025-06-14">
+    <release version="2025.6.1-next" date="2025-06-14">
       <description translate="no">
-        <p>- Added the ability to configure a set of postprocessing arguments to enable for downloads</p>
-        <p>- Added the ability to write a m3u file to disk for playlist downloads</p>
-        <p>- Made it so Parabolic will now ask to recover downloads if there are any available instead of recovering automatically</p>
-        <p>- Moved the download immediately after validation option to the add download dialog</p>
-        <p>- Moved the speed limit option to the downloader preferences</p>
-        <p>- Fixed an issue where some media incorrectly failed validation</p>
-        <p>- Fixed an issue where the previous number titles setting was not restored correctly</p>
-        <p>- Fixed an issue where file names could grow too long when using aria2c</p>
-        <p>- Fixed an issue where the window's position was not remembered on Windows</p>
-        <p>- Updated yt-dlp</p>
+        <p>- Fixed an issue where pressing enter in the download dialog would not start the download</p>
       </description>
     </release>
   </releases>
