@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-19 11:45-0400\n"
+"POT-Creation-Date: 2025-06-19 21:12-0400\n"
 "PO-Revision-Date: 2025-06-11 00:47+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -87,8 +87,6 @@ msgstr "WAV (صوت)"
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:452
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
 msgid "None"
 msgstr "لا شيء"
 
@@ -105,7 +103,6 @@ msgid "Error attempting to add download: {}"
 msgstr "لم يتم إضافة التحميل بنجاح: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
 msgid "Parabolic"
 msgstr "بارا-بوليك"
 
@@ -173,7 +170,6 @@ msgstr "انتهى تنزيل {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
 msgid "Open"
 msgstr "شغّل"
 
@@ -267,8 +263,7 @@ msgstr "مُنشأ تلقائيًا"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:431
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
 msgid "Add Download"
 msgstr "إضافة تحميل"
 
@@ -277,12 +272,10 @@ msgid "Back"
 msgstr "عودة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
 msgid "Media URL"
 msgstr "رابط الوسائط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
 msgid "Use Batch File"
 msgstr "استخدم ملف الدفعة"
 
@@ -294,8 +287,6 @@ msgstr "مصادقة/توثيق"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:79
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Credential"
 msgstr "بيانات إعتماد"
 
@@ -303,10 +294,6 @@ msgstr "بيانات إعتماد"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:82
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:29
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:225
 msgid "Username"
 msgstr "اسم المُستخدم"
 
@@ -314,34 +301,24 @@ msgstr "اسم المُستخدم"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:86
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:230
 msgid "Password"
 msgstr "كلمة المرور"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:86
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:68
 #, fuzzy
 msgid "Download Immediately"
 msgstr "حمّل الوسائط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:87
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:71
 msgid "Use your previous download options for this download"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:92
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:104
 msgid "Validate"
 msgstr "تأكيد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:309
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:133
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:264
 msgid "File Type"
 msgstr "نوع الملف"
 
@@ -356,17 +333,14 @@ msgstr ""
 "لتجنب حفظ ملفات الترجمة والصور بشكل مستقل بالتخزين."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:133
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:142
 msgid "Video Format"
 msgstr "صيغة المقطع"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:145
 msgid "Audio Format"
 msgstr "صيغة الصوت"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:246
 msgid "Subtitles"
 msgstr "الترجمة"
 
@@ -376,8 +350,6 @@ msgstr "خيارات متقدمة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:165
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:352
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:287
 msgid "Save Folder"
 msgstr "مجلد الحفظ"
 
@@ -385,44 +357,30 @@ msgstr "مجلد الحفظ"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:358
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:298
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:369
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:296
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:650
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:700
 msgid "Select Save Folder"
 msgstr "إختر مجلد الحفظ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:180
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:159
 msgid "File Name"
 msgstr "إسم الملف"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:166
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:341
 msgid "Revert to Title"
 msgstr "إستعادة الاسم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:196
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:395
-#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:254
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:362
 msgid "Download"
 msgstr "حمّل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:219
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:424
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:220
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:326
 msgid "Select All"
 msgstr "تحديد الكل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:226
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:431
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:331
 msgid "Deselect All"
 msgstr "ألغِ تحديد الكلِّ"
 
@@ -433,27 +391,20 @@ msgstr "تقسيم المقاطع حسب الفصول"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:258
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:334
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:188
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:275
 msgid "Export Description"
 msgstr "صدّر وصف المقطع"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:262
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:191
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
 msgid "Exclude from History"
 msgstr "يُستثنى من السجل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:266
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:346
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:284
 msgid "Post Processor Argument"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:270
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:197
 msgid "Start Time"
 msgstr "وقت البدء"
 
@@ -463,12 +414,10 @@ msgid "Revert to Original"
 msgstr "عد للأصل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:283
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:201
 msgid "End Time"
 msgstr "وقت النهاية"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:320
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
@@ -480,12 +429,10 @@ msgstr ""
 "بالتخزين."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:338
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:278
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:369
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr "سيُتجاهل للمرئيات الموجودة بملفات الدفعة المتضمنة لمناطق الحفظ بالمجلد."
@@ -495,17 +442,14 @@ msgid "Playlist Items"
 msgstr "عناصر قائمة التشغيل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:413
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:320
 msgid "Number Titles"
 msgstr "ترقيم العناوين"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:66
 msgid "Credential Needed"
 msgstr "التوثيق مطلوب"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:38
 msgid "Use"
 msgstr "استخدم"
 
@@ -515,25 +459,19 @@ msgstr "عرض السجل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:155
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:58
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:295
 msgid "Pause"
 msgstr "إيقاف مؤقت"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
 msgid "Stop"
 msgstr "توقف"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
-#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "تشغيل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:91
 msgid "Retry"
 msgstr "أعد المحاولة"
 
@@ -542,7 +480,6 @@ msgid "Copy Command to Clipboard"
 msgstr "انسخ الأمر للحافظة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:160
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:41
 msgid "Copy Log to Clipboard"
 msgstr "انسخ السجل للحافظة"
 
@@ -552,12 +489,10 @@ msgstr "لا توجد بيانات توثيق"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:49
 msgid "Add Credential"
 msgstr "أضف بيانات التوثيق"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:31
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:40
 msgid "Credentials"
 msgstr "توثيق"
 
@@ -565,10 +500,6 @@ msgstr "توثيق"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:397
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:215
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:271
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:555
 msgid "Add"
 msgstr "أضف"
 
@@ -576,17 +507,11 @@ msgstr "أضف"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:422
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:262
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:214
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:536
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:628
 msgid "Name"
 msgstr "إسم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:220
 msgid "URL"
 msgstr "الرابط"
 
@@ -603,13 +528,11 @@ msgstr "اختصارات لوحة المفاتيح"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:159
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:54
 msgid "Help"
 msgstr "مساعدة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:127
 msgid "About Parabolic"
 msgstr "حول البرنامج"
 
@@ -619,21 +542,17 @@ msgstr "القائمة الرئيسية"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:53
 msgid "Home"
 msgstr "الرئيسية"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 msgid "Keyring"
 msgstr "حلقة المفاتيح (بيانات التسجيل المخزنة لديك)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:55
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
 msgid "History"
 msgstr "سجل التحميل"
 
@@ -641,7 +560,6 @@ msgstr "سجل التحميل"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:323
 msgid "Downloads"
 msgstr "التنزيلات"
 
@@ -653,7 +571,6 @@ msgstr "جارٍ التنزيل"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:163
 msgid "Queued"
 msgstr "في قائمة الانتظار"
 
@@ -663,7 +580,6 @@ msgid "Completed"
 msgstr "مكتمل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
 msgid "Clear History"
 msgstr "مسح السجل"
 
@@ -675,7 +591,6 @@ msgstr "مسح"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:225
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
 msgid "Stop All Downloads"
 msgstr "أوقف جميع التنزيلات"
 
@@ -684,51 +599,41 @@ msgid "Stop All"
 msgstr "أوقف الكل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:237
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
 msgid "Clear Queued Downloads"
 msgstr "مسح التنزيلات في قائمة الانتظار"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:249
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:100
 msgid "Retry Failed Downloads"
 msgstr "أعد تنزيل التنزيلات الفاشلة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:106
 msgid "Clear Completed Downloads"
 msgstr "امسح التنزيلات المكتملة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:193
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
 msgid "Download Media"
 msgstr "حمّل الوسائط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:194
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:228
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:252
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "أضف رابط مقطع أو صوت أو قائمة تشغيل لبدء التنزيل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:304
-#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:28
 msgid "No History Available"
 msgstr "لا يوجد سجل تحميلات متاح"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:330
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:203
 msgid "No Downloads Running"
 msgstr "لا توجد تنزيلات جارية"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:370
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:227
 msgid "No Downloads Queued"
 msgstr "لا توجد تنزيلات في قائمة الانتظار"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:410
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:251
 msgid "No Downloads Completed"
 msgstr "لا يوجد تنزيلات مكتملة"
 
@@ -737,12 +642,12 @@ msgid "UI"
 msgstr "واجهة المستخدم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:322
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:20
 msgid "User Interface"
 msgstr "واجهة المستخدم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:18
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:39
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:21
 msgid "Theme"
 msgstr "مظهر"
 
@@ -762,78 +667,61 @@ msgid "System"
 msgstr "نظام"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:30
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
 msgid "Prevent Suspend"
 msgstr "منع التعليق"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:31
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:51
 msgid ""
 "Parabolic will prevent the computer from sleeping while downloads are "
 "running."
 msgstr "برنامج (بارا-بوليك) سيمنع خمول حاسوبك أثناء عمليات التحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
 msgid "Download History Length"
 msgstr "طول السجل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:41
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:54
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:56
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr "الوقت الكافي لإبقاء التحميلات السابقة بسجل التطبيق."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
 msgid "Never"
 msgstr "أبداً"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 msgid "One Day"
 msgstr "يوم واحد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
 msgid "One Week"
 msgstr "أسبوع واحد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:60
 msgid "One Month"
 msgstr "شهر واحد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
 msgid "Three Months"
 msgstr "3 أشهر"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
 msgid "Forever"
 msgstr "للأبد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:62
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:73
 #, fuzzy
 msgid "Max Number of Running Downloads"
 msgstr "أقصى عدد للتنزيلات النشطة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:78
 msgid "Overwrite Existing Files"
 msgstr "أُكتُب فوق الملفات الموجودة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:81
 msgid "Limit Filename Characters"
 msgstr "الحد من أحرف اسم المِلَفّ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:88
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:82
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:84
 #, fuzzy
 msgid ""
 "Parabolic will restrict characters in filenames to those supported only by "
@@ -841,7 +729,6 @@ msgid ""
 msgstr "يقتصر استخدام الأحرف في أسماء الملفات على ماتدعمه ويندوز فقط."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:86
 msgid "Include Media Id in Title"
 msgstr "ضمّن معرّف الوسائط في العنوان"
 
@@ -850,26 +737,20 @@ msgid "Parabolic will include a media's id in its default title."
 msgstr "(بارا-بوليك) سيُرفق معرّف الملف المرئي في تسميتها الإفتراضية."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:91
 msgid "Include Auto-Generated Subtitles"
 msgstr "أضف الترجمة التلقائية"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:94
 msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
 msgstr "(بارا-بوليك) سيُظهر الترجمة التلقائية للتحميل، فوق الترجمات المتاحة."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:96
 msgid "Preferred Video Codec"
 msgstr "ترميز الفيديو المفضل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:97
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:99
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
@@ -878,72 +759,54 @@ msgstr "ترميز المقطع الذي يُفضِّلُه (بارا-بوليك
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:100
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:110
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:122
 msgid "Any"
 msgstr "أي"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
 msgid "H.264 (AVC)"
 msgstr "ترميز H.264"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
 msgid "H.265 (HEVC)"
 msgstr "ترميز H.265"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:106
 msgid "Preferred Audio Codec"
 msgstr "ترميز الصوت المفضل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:131
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:107
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:109
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr "ترميز الصوت الذي يُفضِّلُه (بارا-بوليك) أثناء نحليل صيغ المرئيات للتحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:111
 msgid "FLAC (ALAC)"
 msgstr "FLAC (صوت)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:112
 msgid "WAV (AIFF)"
 msgstr "WAV (صوت)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:118
 msgid "Preferred Subtitle Format"
 msgstr "تفضيل صيغة الترجمة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:144
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:119
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:121
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
 msgstr "صيغة الملف الذي يضمنه (بارا-بوليك) بتحميل كل الترجمات."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:158
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:162
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:150
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:324
 msgid "Downloader"
 msgstr "المحمّل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:165
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:141
 msgid "Use Part Files"
 msgstr "استخدم ملف الدفعات"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:142
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:144
 msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
@@ -952,19 +815,15 @@ msgstr ""
 "ملف الإنتاج."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
 msgid "Use SponsorBlock for YouTube"
 msgstr "استخدم اضافة \"SponsorBlock\" لليوتيوب"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:176
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:147
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr "سيحاول (بارا-بوليك) إزالة الجزئيات الإعلانية من مقاطع اليوتيوب."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
 msgid "Limit Download Speed"
 msgstr "تقييد سرعة التنزيل"
 
@@ -973,134 +832,105 @@ msgid "Speed Limit (KiB/s)"
 msgstr "حدّ السرعة (كيلوبايت/ث)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:208
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:165
 msgid "Proxy URL"
 msgstr "رابط الوكيل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:217
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
 msgid "Cookies from Browser"
 msgstr "معرّفات الإرتباط من المتصفح"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:172
 msgid "Brave"
 msgstr "متصفح \"بريف\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:173
 msgid "Chrome"
 msgstr "متصفح \"كروم\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:174
 msgid "Chromium"
 msgstr "متصفح \"كروميوم\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:175
 msgid "Edge"
 msgstr "متصفح \"إيدج\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:176
 msgid "Firefox"
 msgstr "متصفح \"فايرفوكس\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:177
 msgid "Opera"
 msgstr "متصفح \"أوبرا\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:178
 msgid "Safari"
 msgstr "متصفح \"سفاري/متصفح أبل\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:179
 msgid "Vivaldi"
 msgstr "متصفح \"فيفالدي\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:180
 msgid "Whale"
 msgstr "متصفح \"ويل\""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:182
 msgid "Cookies File"
 msgstr "مِلَفّ تعريف الارتباط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:148
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:185
 msgid "No file selected"
 msgstr "لم يتم تحديد ملف"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:126
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "Select Cookies File"
 msgstr "إختر ملف تعريف الارتباط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:195
 msgid "Clear Cookies File"
 msgstr "إحذف ملف تعريف الارتباط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:327
 msgid "aria2c"
 msgstr "aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:294
 msgid "Use aria2c"
 msgstr "إستخدم aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:295
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:297
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
 msgstr "سيستخدم (بارا-بوليك) aria2c بدلًا من محمّل yt-dlp الأصلي."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:299
 msgid "Max Connections Per Server (-x)"
 msgstr "أقصى عدد إتصالات لكل خادم (x-)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:290
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:304
 msgid "Minimum Split Size (-k)"
 msgstr "أصغر حجم تقسيمات (k-)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:305
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:307
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "أصغر حجم تقسيم للملف (بالميجابايت)."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:310
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:325
 msgid "Converter"
 msgstr "محوّل الصيغة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
 msgid "Embed Metadata"
 msgstr "دمج بيانات الوصف"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:218
 msgid "Remove Source Data"
 msgstr "أزل بيانات المصدر"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:219
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:221
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
@@ -1109,42 +939,32 @@ msgstr ""
 "معلومات تحديد التحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:223
 msgid "Embed Thumbnails"
 msgstr "دمج صورة العرض"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:339
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:224
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:226
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr "إن لم يدعم نوع الملف هذا الدمج، صورة العرض ستُكتب كصورة مُستقلّة."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:232
 msgid "Crop Audio Thumbnails"
 msgstr "قص صور الصوتيات المصغرة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:350
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
 msgid "Parabolic will crop thumbnails of audio files to squares."
 msgstr "سيقوم (بارا-بوليك) بقص صور المقاطع الصوتية المصغرة لصورة مربعة."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:237
 msgid "Embed Chapters"
 msgstr "دمج الفصول"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:369
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
 msgid "Embed Subtitles"
 msgstr "دمج الترجمة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:243
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
@@ -1152,14 +972,11 @@ msgid ""
 msgstr "إن أُطفِئ الدمج أو لم يُدعم، الترجمة المُحمّلة ستُحفظ كملف مستقل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:379
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
 #, fuzzy
 msgid "FFmpeg Threads"
 msgstr "مسارات مابعد المعالجة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:259
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr "سيحُد (بارا-بوليك) من عدد المسارات التي يستخدمها ffmpeg."
 
@@ -1175,7 +992,6 @@ msgid ""
 msgstr "برنامج (بارا-بوليك) سيمنع خمول حاسوبك أثناء عمليات التحميل."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:393
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:272
 #, fuzzy
 msgid "Add Postprocessing Argument"
 msgstr "مسارات مابعد المعالجة"
@@ -1186,23 +1002,17 @@ msgid "Argument"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:426
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:540
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:634
 #, fuzzy
 msgid "Post Processor"
 msgstr "مسارات مابعد المعالجة"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:430
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:544
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:639
 #, fuzzy
 msgid "Executable"
 msgstr "ممكن"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:548
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:644
 msgid "Args"
 msgstr ""
 
@@ -1220,25 +1030,19 @@ msgid "Starting"
 msgstr "البداية"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:173
 msgid "Unknown"
 msgstr "غير معروف"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:234
 msgid "Processing"
 msgstr "جاري المعالجة"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:168
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:300
 msgid "Running"
 msgstr "جاري التشغيل"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
 #, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | الوقت المُقدّر: {}"
@@ -1247,68 +1051,40 @@ msgstr "{} | {} | الوقت المُقدّر: {}"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:263
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:266
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:269
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:275
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:536
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:571
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:574
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:577
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:676
 msgid "Error"
 msgstr "خطأ"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
 msgid "Success"
 msgstr "نجاح"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:271
 msgid "Stopped"
 msgstr "تم التوقف"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:281
 msgid "Paused"
 msgstr "تم الإيقاف بشكل مؤقت"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:289
 msgid "Resume"
 msgstr "إستأنف"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:451
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:73
 msgid "Use manual credential"
 msgstr "استخدم بيانات التحقق بشكل يدوي"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:83
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 msgid "Select Batch File"
 msgstr "إختر ملف Batch"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "TXT Files (*.txt)"
 msgstr "ملفات نصية (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 #, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
@@ -1328,7 +1104,6 @@ msgid "Close"
 msgstr "أغلق"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:201
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:215
 msgid "No Subtitles Available"
 msgstr "لا توجد ترجمة متوفرة"
 
@@ -1347,9 +1122,6 @@ msgstr ""
 "أرجو إختيار أو إدخال البيان الذي توّد استخدامه."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:266
 msgid "Both the username and password cannot be empty."
 msgstr "كلا من إسم المستخدم وكلمة المرور لا يجب أن يكونا فارغين."
 
@@ -1359,16 +1131,12 @@ msgstr "حافظة المفاتيح لا تحفظ على القرص. ستفقد 
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:165
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:140
 msgid "Edit"
 msgstr "تعديل"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:179
-#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:40
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:244
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:657
 msgid "Delete"
 msgstr "حذف"
 
@@ -1378,14 +1146,10 @@ msgid "Modify"
 msgstr "تغيير"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:283
 msgid "Delete Credential?"
 msgstr "حذف بيانات الاعتماد؟"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:283
 msgid "Are you sure you want to delete this credential?"
 msgstr "هل أنت متأكد أنك تريد حذف هذه البيانات؟"
 
@@ -1430,12 +1194,10 @@ msgid "Credential (Database Error)"
 msgstr "بيانات الاعتماد (خطأ في قاعدة البيانات)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:379
 msgid "Disclaimer"
 msgstr "إخلاء مسؤولية"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:379
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1446,18 +1208,15 @@ msgstr ""
 "مسؤوليتهم الخاصة."
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:380
 msgid "Don't show this message again"
 msgstr "لا تعرض هذه الرسالة مجدداً"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
 #, fuzzy
 msgid "Recover Crashed Downloads?"
 msgstr "استعادة التنزيلات المعطلة"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
 msgid ""
 "There are downloads available to recover from when Parabolic crashed. Would "
 "you like to recover them?"
@@ -1468,7 +1227,6 @@ msgid "Exit?"
 msgstr "خروج؟"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:408
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "هناك عمليات تنزيل جارية. هل أنت متأكد من أنك تريد الخروج؟"
 
@@ -1481,7 +1239,7 @@ msgid "Download Again"
 msgstr "حمّل مجدداً"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:118
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:58
 msgid "GitHub Repo"
 msgstr "مستودع \"GitHub\""
 
@@ -1490,15 +1248,11 @@ msgid "No Arguments"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:600
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:685
 #, fuzzy
 msgid "Delete Argument?"
 msgstr "حذف بيانات الاعتماد؟"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:600
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:685
 #, fuzzy
 msgid "Are you sure you want to delete this argument?"
 msgstr "هل أنت متأكد أنك تريد حذف هذه البيانات؟"
@@ -1508,363 +1262,289 @@ msgstr "هل أنت متأكد أنك تريد حذف هذه البيانات؟"
 msgid "Args (Empty)"
 msgstr "الاسم (فارغ)"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:69
-msgid "Developers"
-msgstr "المُطورّين"
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:34
+msgid "OK"
+msgstr "حسنًا"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:74
-msgid "Designers"
-msgstr "المُصممين"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:79
-msgid "Artists"
-msgstr "الرسامين"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:90
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:161
-msgid "Copy Debug Information"
-msgstr "نسخ معلومات التصحيح"
-
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:108
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
 msgid "About"
 msgstr "حول"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:109
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:36
 msgid "Changelog"
 msgstr "سجل التغييرات"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:110
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:37
 msgid "Credits"
 msgstr "الحقوق"
 
-#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:111
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:38
 msgid "Debugging"
 msgstr "تصحيح الأعطال"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
-msgid "Log"
-msgstr "سجل"
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:39
+msgid "Developers"
+msgstr "المُطورّين"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:69
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:86
-msgid "Show Log"
-msgstr "عرض سجل الحالة"
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:40
+msgid "Designers"
+msgstr "المُصممين"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
-msgid "Open Containing Folder"
-msgstr "افتح المجلد الشامل"
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:41
+msgid "Artists"
+msgstr "الرسامين"
 
-#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:50
-msgid "Notification"
-msgstr "الإشعار"
+#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:42
+msgid "Copy Debug Information"
+msgstr "نسخ معلومات التصحيح"
 
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:32
-msgid "No Download Log"
-msgstr "لا يوجد سجل تحميل"
+#: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:192
+#, fuzzy
+msgid "Search"
+msgstr "يبحث..."
 
-#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:40
-msgid "Copy"
-msgstr "نسخ"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
-msgid "Enter media url here"
-msgstr "أدخل رابط الوسائط هنا"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:31
-msgid "Enter username here"
-msgstr "أدخل اسم المستخدم هنا"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:88
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:35
-msgid "Enter password here"
-msgstr "أدخل كلمة المرور هنا"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:96
-msgid "Media"
-msgstr "مرئيات"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:97
-msgid "Authentication"
-msgstr "مصادقة/توثيق"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:117
-msgid "This may take some time..."
-msgstr "إملأ فراغ الوقت بالإستغفار...."
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
-msgid "No save folder selected"
-msgstr "لم يتم تحديد مجلد للتنزيل"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:161
-msgid "Enter file name here"
-msgstr "أدخل اسم الملف هنا"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:185
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
-msgid "Split Video by Chapters"
-msgstr "تقسيم الفيديو حسب الفصول"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
-msgid "Enter start time here"
-msgstr "أدخل وقت بداية القص هنا"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:203
-msgid "Enter end time here"
-msgstr "أدخل نهاية وقت القص هنا"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:356
-msgid "General"
-msgstr "عام"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:247
-msgid "Advanced"
-msgstr "إختيارات متقدمة"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:357
-msgid "Items"
-msgstr "عناصر"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
-msgid "Warning"
-msgstr "تحذير"
-
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
-msgid ""
-"Generic file types do not fully support embedding thumbnails and subtitles. "
-"Please select a specific file type that is known to support embedding to "
-"prevent separate files from being written."
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:52
+msgid "Preview"
 msgstr ""
-"أنواع الملفات العامة لاتدعم دمج صور العرض والترجمات. \n"
-"يُرجى إختيار نوع ملف داعم للدمج لتجنب حفظ ملفات الترجمة والصور بشكل مستقل "
-"بالتخزين."
 
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#, c++-format
-msgid "{} needs a credential to download. Please select or enter one to use."
-msgstr ""
-"{} يحتاج إلى بيانات اعتماد للتنزيل. يرجى تحديد أو إدخال واحد للاستخدام."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:43
-msgid "Add, delete, and modify credentials for validating websites"
-msgstr "أدخل، إحذف، وعدّل مُعتمدات بياناتك لمواقع الوسائط."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
-msgid "No Credentials"
-msgstr "لا يوجد بيانات توثيق"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
-msgid "Add a credential to get started"
-msgstr "أضف بيان توثيق لتبدأ."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
-msgid ""
-"The keyring is not saving changes to disk. Any changes made will be lost "
-"when the application closes."
-msgstr ""
-"حافظة المفاتيح لا تحفظ التغييرات على القرص. سيتم فقدان أي تغييرات تم إجراؤها "
-"عند إغلاق التطبيق."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
-msgid "New Credential"
-msgstr "بيانات اعتماد جديدة"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:263
-msgid "The credential name cannot be empty."
-msgstr "اسم بيانات الاعتماد لا يمكن أن يكون فارغًا."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:269
-msgid "The provided url is invalid."
-msgstr "الرابط المُدخل غير صحيح."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
-msgid "A credential with this name already exists."
-msgstr "هناك بيانات اعتماد بهذا الاسم موجودة بالفعل."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:275
-msgid "There was an unknown error adding the credential to the keyring."
-msgstr "حدث خطأ غير معروف أثناء إضافة بيانات الاعتماد إلى حافظة المفاتيح."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:180
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:212
-msgid "Edit Credential"
-msgstr "تعديل بيانات الاعتماد"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:184
-msgid "Delete Credential"
-msgstr "حذف بيانات الاعتماد"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:239
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:652
-msgid "Save"
-msgstr "احفظ"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
-msgid "Exit"
-msgstr "خروج"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:388
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:56
 msgid "Check for Updates"
 msgstr "البحث عن تحديثات"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:115
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:57
 msgid "Documentation"
 msgstr "الوثائق"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:121
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
 msgid "Report a Bug"
 msgstr "الإبلاغ عن خطأ"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:124
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
 msgid "Discussions"
 msgstr "النقاشات"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:135
-msgid "File"
-msgstr "ملف"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:145
-msgid "View"
-msgstr "عرض"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
-msgid "Downloading (0)"
-msgstr "جارٍ التنزيل (0)"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:272
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:465
-msgid "Queued (0)"
-msgstr "في قائمة الانتظار (0)"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:273
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:482
-msgid "Completed (0)"
-msgstr "مكتمل (0)"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
-msgid "Parabolic (Preview)"
-msgstr "بارابوليك (معاينة)"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:542
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:156
 msgid "Update"
 msgstr "تحديث"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
-#, c++-format
-msgid "Queued ({})"
-msgstr "في قائمة الانتظار ({})"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:596
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
-#, c++-format
-msgid "Downloading ({})"
-msgstr "جارٍ التنزيل ({})"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
-#, c++-format
-msgid "Completed ({})"
-msgstr "مكتمل ({})"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:41
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:22
 msgid "Light"
 msgstr "فاتح"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:42
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:23
 msgid "Dark"
 msgstr "داكن"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:43
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:24
 msgid "System"
 msgstr "نظام"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:45
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
 msgid "Automatically Check for Updates"
 msgstr "التحقق من التحديثات تلقائيًا"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:89
-msgid "Parabolic will include the media's id in its default title."
-msgstr "سيُرفِق (بارا-بوليك) هوية الملف المرئي بإسمها الإفتراضي."
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
+#, fuzzy
+msgid "On"
+msgstr "افتح"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
-msgid "Speed Limit"
-msgstr "حد السرعة"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:167
-msgid "Enter proxy url here"
-msgstr "أدخل رابط خادم الوكيل هنا"
-
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:263
-msgid "Arguments"
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
+msgid "Off"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:266
-msgid ""
-"Parabolic will show these arguments for\n"
-"selection in the add download dialog."
-msgstr ""
+#~ msgid "Log"
+#~ msgstr "سجل"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:326
-#, fuzzy
-msgid "Postprocessing"
-msgstr "جاري المعالجة"
+#~ msgid "Show Log"
+#~ msgstr "عرض سجل الحالة"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:534
-#, fuzzy
-msgid "New Argument"
-msgstr "بيانات اعتماد جديدة"
+#~ msgid "Open Containing Folder"
+#~ msgstr "افتح المجلد الشامل"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:571
-#, fuzzy
-msgid "The argument name cannot be empty."
-msgstr "اسم بيانات الاعتماد لا يمكن أن يكون فارغًا."
+#~ msgid "Notification"
+#~ msgstr "الإشعار"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:574
-#, fuzzy
-msgid "An argument with this name already exists."
-msgstr "هناك بيانات اعتماد بهذا الاسم موجودة بالفعل."
+#~ msgid "No Download Log"
+#~ msgstr "لا يوجد سجل تحميل"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:577
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:676
-#, fuzzy
-msgid "The argument args cannot be empty."
-msgstr "اسم بيانات الاعتماد لا يمكن أن يكون فارغًا."
+#~ msgid "Copy"
+#~ msgstr "نسخ"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:594
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:626
-#, fuzzy
-msgid "Edit Argument"
-msgstr "تعديل بيانات الاعتماد"
+#~ msgid "Enter media url here"
+#~ msgstr "أدخل رابط الوسائط هنا"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:598
+#~ msgid "Enter username here"
+#~ msgstr "أدخل اسم المستخدم هنا"
+
+#~ msgid "Enter password here"
+#~ msgstr "أدخل كلمة المرور هنا"
+
+#~ msgid "Media"
+#~ msgstr "مرئيات"
+
+#~ msgid "Authentication"
+#~ msgstr "مصادقة/توثيق"
+
+#~ msgid "This may take some time..."
+#~ msgstr "إملأ فراغ الوقت بالإستغفار...."
+
+#~ msgid "No save folder selected"
+#~ msgstr "لم يتم تحديد مجلد للتنزيل"
+
+#~ msgid "Enter file name here"
+#~ msgstr "أدخل اسم الملف هنا"
+
+#~ msgid "Split Video by Chapters"
+#~ msgstr "تقسيم الفيديو حسب الفصول"
+
+#~ msgid "Enter start time here"
+#~ msgstr "أدخل وقت بداية القص هنا"
+
+#~ msgid "Enter end time here"
+#~ msgstr "أدخل نهاية وقت القص هنا"
+
+#~ msgid "General"
+#~ msgstr "عام"
+
+#~ msgid "Advanced"
+#~ msgstr "إختيارات متقدمة"
+
+#~ msgid "Items"
+#~ msgstr "عناصر"
+
+#~ msgid "Warning"
+#~ msgstr "تحذير"
+
+#~ msgid ""
+#~ "Generic file types do not fully support embedding thumbnails and "
+#~ "subtitles. Please select a specific file type that is known to support "
+#~ "embedding to prevent separate files from being written."
+#~ msgstr ""
+#~ "أنواع الملفات العامة لاتدعم دمج صور العرض والترجمات. \n"
+#~ "يُرجى إختيار نوع ملف داعم للدمج لتجنب حفظ ملفات الترجمة والصور بشكل مستقل "
+#~ "بالتخزين."
+
+#, c++-format
+#~ msgid ""
+#~ "{} needs a credential to download. Please select or enter one to use."
+#~ msgstr ""
+#~ "{} يحتاج إلى بيانات اعتماد للتنزيل. يرجى تحديد أو إدخال واحد للاستخدام."
+
+#~ msgid "Add, delete, and modify credentials for validating websites"
+#~ msgstr "أدخل، إحذف، وعدّل مُعتمدات بياناتك لمواقع الوسائط."
+
+#~ msgid "No Credentials"
+#~ msgstr "لا يوجد بيانات توثيق"
+
+#~ msgid "Add a credential to get started"
+#~ msgstr "أضف بيان توثيق لتبدأ."
+
+#~ msgid ""
+#~ "The keyring is not saving changes to disk. Any changes made will be lost "
+#~ "when the application closes."
+#~ msgstr ""
+#~ "حافظة المفاتيح لا تحفظ التغييرات على القرص. سيتم فقدان أي تغييرات تم "
+#~ "إجراؤها عند إغلاق التطبيق."
+
+#~ msgid "New Credential"
+#~ msgstr "بيانات اعتماد جديدة"
+
+#~ msgid "The credential name cannot be empty."
+#~ msgstr "اسم بيانات الاعتماد لا يمكن أن يكون فارغًا."
+
+#~ msgid "The provided url is invalid."
+#~ msgstr "الرابط المُدخل غير صحيح."
+
+#~ msgid "A credential with this name already exists."
+#~ msgstr "هناك بيانات اعتماد بهذا الاسم موجودة بالفعل."
+
+#~ msgid "There was an unknown error adding the credential to the keyring."
+#~ msgstr "حدث خطأ غير معروف أثناء إضافة بيانات الاعتماد إلى حافظة المفاتيح."
+
+#~ msgid "Edit Credential"
+#~ msgstr "تعديل بيانات الاعتماد"
+
+#~ msgid "Delete Credential"
+#~ msgstr "حذف بيانات الاعتماد"
+
+#~ msgid "Save"
+#~ msgstr "احفظ"
+
+#~ msgid "Exit"
+#~ msgstr "خروج"
+
+#~ msgid "File"
+#~ msgstr "ملف"
+
+#~ msgid "View"
+#~ msgstr "عرض"
+
+#~ msgid "Downloading (0)"
+#~ msgstr "جارٍ التنزيل (0)"
+
+#~ msgid "Queued (0)"
+#~ msgstr "في قائمة الانتظار (0)"
+
+#~ msgid "Completed (0)"
+#~ msgstr "مكتمل (0)"
+
+#~ msgid "Parabolic (Preview)"
+#~ msgstr "بارابوليك (معاينة)"
+
+#, c++-format
+#~ msgid "Queued ({})"
+#~ msgstr "في قائمة الانتظار ({})"
+
+#, c++-format
+#~ msgid "Downloading ({})"
+#~ msgstr "جارٍ التنزيل ({})"
+
+#, c++-format
+#~ msgid "Completed ({})"
+#~ msgstr "مكتمل ({})"
+
+#~ msgid "Parabolic will include the media's id in its default title."
+#~ msgstr "سيُرفِق (بارا-بوليك) هوية الملف المرئي بإسمها الإفتراضي."
+
+#~ msgid "Speed Limit"
+#~ msgstr "حد السرعة"
+
+#~ msgid "Enter proxy url here"
+#~ msgstr "أدخل رابط خادم الوكيل هنا"
+
 #, fuzzy
-msgid "Delete Argument"
-msgstr "حذف بيانات الاعتماد"
+#~ msgid "Postprocessing"
+#~ msgstr "جاري المعالجة"
+
+#, fuzzy
+#~ msgid "New Argument"
+#~ msgstr "بيانات اعتماد جديدة"
+
+#, fuzzy
+#~ msgid "The argument name cannot be empty."
+#~ msgstr "اسم بيانات الاعتماد لا يمكن أن يكون فارغًا."
+
+#, fuzzy
+#~ msgid "An argument with this name already exists."
+#~ msgstr "هناك بيانات اعتماد بهذا الاسم موجودة بالفعل."
+
+#, fuzzy
+#~ msgid "The argument args cannot be empty."
+#~ msgstr "اسم بيانات الاعتماد لا يمكن أن يكون فارغًا."
+
+#, fuzzy
+#~ msgid "Edit Argument"
+#~ msgstr "تعديل بيانات الاعتماد"
+
+#, fuzzy
+#~ msgid "Delete Argument"
+#~ msgstr "حذف بيانات الاعتماد"
 
 #~ msgid ""
 #~ "Parabolic will recover downloads that were in progress when the app "
@@ -2214,13 +1894,6 @@ msgstr "حذف بيانات الاعتماد"
 #~ msgid "No Running Downloads"
 #~ msgstr "امسح التنزيلات التي في قائمة الانتظار"
 
-#~ msgid "OK"
-#~ msgstr "حسنًا"
-
-#, fuzzy
-#~ msgid "On"
-#~ msgstr "افتح"
-
 #~ msgid "Preparing..."
 #~ msgstr "يجهِّز..."
 
@@ -2383,9 +2056,6 @@ msgstr "حذف بيانات الاعتماد"
 
 #~ msgid "Unable to setup dependencies. Please restart the app and try again."
 #~ msgstr "تعذر تثبيت التبعيات. أعد تشغيل التطبيق وحاول مرةً أخرى."
-
-#~ msgid "Search..."
-#~ msgstr "يبحث..."
 
 #~ msgid "Remove data about media source"
 #~ msgstr "أزل بيانات المصدر"
