@@ -51,6 +51,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
         NavViewHome().Content(winrt::box_value(winrt::to_hstring(_("Home"))));
+        NavViewKeyring().Content(winrt::box_value(winrt::to_hstring(_("Keyring"))));
+        NavViewHistory().Content(winrt::box_value(winrt::to_hstring(_("History"))));
+        NavViewDownloads().Content(winrt::box_value(winrt::to_hstring(_("Downloads"))));
+        NavViewDownloading().Content(winrt::box_value(winrt::to_hstring(_("Downloading"))));
+        NavViewQueued().Content(winrt::box_value(winrt::to_hstring(_("Queued"))));
+        NavViewCompleted().Content(winrt::box_value(winrt::to_hstring(_("Completed"))));
         NavViewHelp().Content(winrt::box_value(winrt::to_hstring(_("Help"))));
         NavViewSettings().Content(winrt::box_value(winrt::to_hstring(_("Settings"))));
         MenuCheckForUpdates().Text(winrt::to_hstring(_("Check for Updates")));
@@ -186,7 +192,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void MainWindow::CheckForUpdates(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        m_controller->checkForUpdates();
+        m_controller->checkForUpdates(true);
     }
 
     Windows::Foundation::IAsyncAction MainWindow::Documentation(const IInspectable& sender, const RoutedEventArgs& args)

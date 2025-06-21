@@ -27,6 +27,50 @@
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavViewKeyring" Tag="Keyring">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA18;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavViewHistory" Tag="History">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItemHeader x:Name="NavViewDownloads"/>
+
+                <NavigationViewItem x:Name="NavViewDownloading" Tag="Downloading">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                    </NavigationViewItem.Icon>
+
+                    <NavigationViewItem.InfoBadge>
+                        <InfoBadge x:Name="BadgeDownloading" Value="0"/>
+                    </NavigationViewItem.InfoBadge>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavViewQueued" Tag="Queued">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE823;"/>
+                    </NavigationViewItem.Icon>
+
+                    <NavigationViewItem.InfoBadge>
+                        <InfoBadge x:Name="BadgeQueued" Value="0"/>
+                    </NavigationViewItem.InfoBadge>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavViewCompleted" Tag="Completed">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE930;"/>
+                    </NavigationViewItem.Icon>
+
+                    <NavigationViewItem.InfoBadge>
+                        <InfoBadge x:Name="BadgeCompleted" Value="0"/>
+                    </NavigationViewItem.InfoBadge>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>
