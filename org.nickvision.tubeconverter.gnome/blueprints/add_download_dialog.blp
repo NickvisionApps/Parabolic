@@ -3,6 +3,7 @@ using Adw 1;
 
 Adw.Dialog root {
   follows-content-size: true;
+  default-widget: validateUrlButton;
 
   child: Adw.ToolbarView {
     [top]
@@ -177,6 +178,7 @@ Adw.Dialog root {
 
             Adw.EntryRow filenameSingleRow {
               title: _("File Name");
+              activates-default: true;
 
               [suffix]
               Gtk.Button revertFilenameSingleButton {
