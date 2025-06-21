@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 09:56-0400\n"
+"POT-Creation-Date: 2025-06-21 11:01-0400\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -91,11 +91,13 @@ msgstr "없음"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:401
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -147,11 +149,13 @@ msgid "Unable to download and install update"
 msgstr "업데이트를 다운로드하고 설치할 수 없습니다"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "다운로드 {} 개가 복구됨"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:286
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -160,6 +164,7 @@ msgid "Download Finished"
 msgstr "다운로드 완료"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:316
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{}의 다운로드가 완료되었습니다"
 
@@ -173,6 +178,7 @@ msgid "Download Finished With Error"
 msgstr "다운로드가 실패했습니다"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:320
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{}의 작업이 오류로 종료되었습니다"
 
@@ -181,18 +187,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/초"
 
@@ -215,22 +225,22 @@ msgid "Audio Description"
 msgstr "오디오 설명"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/초"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/초"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/초"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/초"
 
@@ -253,7 +263,8 @@ msgstr "자동 생성됨"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:190
 msgid "Add Download"
 msgstr "다운로드 추가"
 
@@ -513,7 +524,7 @@ msgstr "키보드 단축키"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
 msgid "Help"
 msgstr "도움말"
 
@@ -527,19 +538,19 @@ msgstr "메인 메뉴"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
 msgid "Home"
 msgstr "홈"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
 msgid "Keyring"
 msgstr "암호 저장소"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
 msgid "History"
 msgstr "기록"
 
@@ -547,26 +558,26 @@ msgstr "기록"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
 msgid "Downloads"
 msgstr "다운로드"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
 msgid "Downloading"
 msgstr "다운로드 중"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:58
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
 msgid "Queued"
 msgstr "대기 중"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
 msgid "Completed"
 msgstr "완료됨"
 
@@ -603,12 +614,12 @@ msgid "Clear Completed Downloads"
 msgstr "완료된 다운로드 지우기"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
 msgid "Download Media"
 msgstr "미디어 다운로드"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "다운로드를 시작하려면 비디오, 오디오 또는 재생 목록 URL을 추가하세요"
 
@@ -1041,6 +1052,7 @@ msgid "Running"
 msgstr "실행 중"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1103,10 +1115,12 @@ msgid "No Subtitles Available"
 msgstr "사용 가능한 자막이 없습니다"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:222
+#, c++-format
 msgid "{} items"
 msgstr "{} 항목"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1232,7 +1246,7 @@ msgid "Download Again"
 msgstr "다시 다운로드"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
 msgid "GitHub Repo"
 msgstr "GitHub 저장소"
 
@@ -1261,7 +1275,7 @@ msgid "OK"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
 msgid "About"
 msgstr "정보"
 
@@ -1295,36 +1309,36 @@ msgstr ""
 msgid "Copy Debug Information"
 msgstr "디버그 정보 복사"
 
-#: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:192
+#: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:202
 msgid "Search"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:58
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "설정"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
 msgid "Check for Updates"
 msgstr "업데이트 확인"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
 msgid "Documentation"
 msgstr "문서"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
 msgid "Report a Bug"
 msgstr "버그 보고"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
 msgid "Discussions"
 msgstr "토론"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:162
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:168
 msgid "Update"
 msgstr "업데이트"
 

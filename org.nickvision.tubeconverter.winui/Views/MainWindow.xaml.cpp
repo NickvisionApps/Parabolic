@@ -3,14 +3,18 @@
 #include "Views/MainWindow.g.cpp"
 #endif
 #include <stdexcept>
+#include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "Controls/AboutDialog.xaml.h"
+#include "Helpers/WinUIHelpers.h"
 #include "Views/SettingsPage.xaml.h"
 
 using namespace ::Nickvision::Events;
+using namespace ::Nickvision::Helpers;
 using namespace ::Nickvision::Notifications;
 using namespace ::Nickvision::TubeConverter::Shared::Controllers;
 using namespace ::Nickvision::TubeConverter::Shared::Models;
+using namespace ::Nickvision::TubeConverter::WinUI::Helpers;
 using namespace ::Nickvision::Update;
 using namespace winrt::Microsoft::UI::Dispatching;
 using namespace winrt::Microsoft::UI::Windowing;
@@ -18,6 +22,8 @@ using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace winrt::Microsoft::UI::Xaml::Controls::Primitives;
 using namespace winrt::Microsoft::UI::Xaml::Input;
+using namespace winrt::Microsoft::UI::Xaml::Media;
+using namespace winrt::Windows::Foundation::Collections;
 using namespace winrt::Windows::Graphics;
 using namespace winrt::Windows::Storage;
 using namespace winrt::Windows::Storage::Pickers;
@@ -172,7 +178,31 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)
     {
+        if(args.Reason() == AutoSuggestionBoxTextChangeReason::UserInput)
+        {
+            IObservableVector<IInspectable> items{ winrt::single_threaded_observable_vector<IInspectable>() };
+            if(StringHelpers::isValidUrl(winrt::to_string(sender.Text())))
+            {
+                FontIcon icn;
+                icn.FontFamily(WinUIHelpers::LookupAppResource<FontFamily>(L"SymbolThemeFontFamily"));
+                icn.Glyph(L"\uE710");
+                TextBlock txt;
+                txt.Text(winrt::to_hstring(_("Add Download")));
+                StackPanel panel;
+                panel.Tag(winrt::box_value(sender.Text()));
+                panel.Orientation(Orientation::Horizontal);
+                panel.Spacing(6);
+                panel.Children().Append(icn);
+                panel.Children().Append(txt);
+                items.Append(winrt::box_value(panel));
+            }
+            sender.ItemsSource(items);
+        }
+    }
 
+    void MainWindow::OnTitleBarSearchSelected(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs& args)
+    {
+        winrt::hstring url{ winrt::unbox_value<winrt::hstring>(sender.as<StackPanel>().Tag()) };
     }
 
     void MainWindow::OnNavViewSelectionChanged(const NavigationView& sender, const NavigationViewSelectionChangedEventArgs& args)

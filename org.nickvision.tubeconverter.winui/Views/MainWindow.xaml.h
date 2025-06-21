@@ -60,11 +60,17 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void OnNotificationSent(const ::Nickvision::Notifications::NotificationSentEventArgs& args);
         /**
-         * Handles when the titlebar's search box is changed
+         * Handles when the titlebar's search box text is changed
          * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox
          * @param args Microsoft::UI::Xaml::Controls::AutoSuggestEventArgs
          */
         void OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args);
+        /**
+         * Handles when the titlebar's search box selection is changed
+         * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox
+         * @param args Microsoft::UI::Xaml::Controls::AutoSuggestEventArgs
+         */
+        void OnTitleBarSearchSelected(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs& args);
         /**
         * @brief Handles when a change in the window's navigation occurs.
         * @param sender Microsoft::UI::Xaml::Controls::NavigationView

@@ -103,6 +103,16 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
          */
         void SearchChanged(const winrt::event_token& token);
         /**
+         * @brief Subscribes a handler to the search selected event.
+         * @return The token for the newly subscribed handler.
+         */
+        winrt::event_token SearchSelected(const Windows::Foundation::TypedEventHandler<Microsoft::UI::Xaml::Controls::AutoSuggestBox, Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs>& handler);
+        /**
+         * @brief Unsubscribes a handler from the search selected event.
+         * @param token The token of the handler to unsubscribe.
+         */
+        void SearchSelected(const winrt::event_token& token);
+        /**
          * @brief Subscribes a handler to the property changed event.
          * @return The token for the newly subscribed handler.
          */
@@ -136,6 +146,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
          * @param args Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs
          */
         void OnSearchTextChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args);
+        /**
+         * @brief Handles when the titlebar's search suggestion is chosen.
+         * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox
+         * @param args Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs
+         */
+        void OnSearchSuggestionChosen(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs& args);
 
     private:
         /**
@@ -150,6 +166,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         bool m_loaded;
         bool m_isActivated;
         winrt::event<Windows::Foundation::TypedEventHandler<Microsoft::UI::Xaml::Controls::AutoSuggestBox, Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs>> m_searchChangedEvent;
+        winrt::event<Windows::Foundation::TypedEventHandler<Microsoft::UI::Xaml::Controls::AutoSuggestBox, Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs>> m_searchSelectedEvent;
         winrt::event<Microsoft::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChangedEvent;
     };
 }

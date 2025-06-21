@@ -69,9 +69,9 @@ jobs:
           Expand-Archive -Force 'aria2.zip'
           Expand-Archive -Force 'ffmpeg.zip'
           move aria2\aria2-1.37.0-win-64bit-build1\aria2c.exe aria2c.exe
-          move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.arch }}-gpl-7.1\bin\ffmpeg.exe ffmpeg.exe
-          move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.arch }}-gpl-7.1\bin\ffprobe.exe ffprobe.exe
-          move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.arch }}-gpl-7.1\bin\ffplay.exe ffplay.exe
+          move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.ffmpeg }}-gpl-7.1\bin\ffmpeg.exe ffmpeg.exe
+          move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.ffmpeg }}-gpl-7.1\bin\ffprobe.exe ffprobe.exe
+          move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.ffmpeg }}-gpl-7.1\bin\ffplay.exe ffplay.exe
           iscc setup.iss
       - name: Upload
         uses: actions/upload-artifact@v4
