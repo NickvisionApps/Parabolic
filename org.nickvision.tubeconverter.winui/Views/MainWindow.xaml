@@ -17,7 +17,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <controls:TitleBar x:Name="TitleBar" Grid.Row="0" SearchVisibility="Visible"/>
+        <controls:TitleBar x:Name="TitleBar" Grid.Row="0" SearchVisibility="Visible" SearchChanged="OnTitleBarSearchChanged"/>
 
         <NavigationView x:Name="NavView" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                         IsBackButtonVisible="Collapsed" IsSettingsVisible="False" SelectionChanged="OnNavViewSelectionChanged">

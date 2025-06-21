@@ -96,7 +96,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
          * @brief Subscribes a handler to the search changed event.
          * @return The token for the newly subscribed handler.
          */
-        winrt::event_token SearchChanged(const Windows::Foundation::EventHandler<winrt::hstring>& handler);
+        winrt::event_token SearchChanged(const Windows::Foundation::TypedEventHandler<Microsoft::UI::Xaml::Controls::AutoSuggestBox, Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs>& handler);
         /**
          * @brief Unsubscribes a handler from the search changed event.
          * @param token The token of the handler to unsubscribe.
@@ -149,7 +149,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         Microsoft::UI::Windowing::AppWindow m_appWindow;
         bool m_loaded;
         bool m_isActivated;
-        winrt::event<Windows::Foundation::EventHandler<winrt::hstring>> m_searchChangedEvent;
+        winrt::event<Windows::Foundation::TypedEventHandler<Microsoft::UI::Xaml::Controls::AutoSuggestBox, Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs>> m_searchChangedEvent;
         winrt::event<Microsoft::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChangedEvent;
     };
 }

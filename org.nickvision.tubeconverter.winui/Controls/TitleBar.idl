@@ -13,6 +13,6 @@ namespace Nickvision.TubeConverter.WinUI.Controls
         Boolean IsActivated;
         Microsoft.UI.Xaml.Visibility SearchVisibility;
         Microsoft.UI.Windowing.AppWindow AppWindow;
-        event Windows.Foundation.EventHandler<String> SearchChanged;
+        event Windows.Foundation.TypedEventHandler<Microsoft.UI.Xaml.Controls.AutoSuggestBox, Microsoft.UI.Xaml.Controls.AutoSuggestBoxTextChangedEventArgs> SearchChanged;
     }
 }

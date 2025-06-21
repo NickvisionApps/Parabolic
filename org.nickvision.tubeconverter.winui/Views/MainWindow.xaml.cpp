@@ -170,6 +170,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         InfoBar().IsOpen(true);
     }
 
+    void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)
+    {
+
+    }
+
     void MainWindow::OnNavViewSelectionChanged(const NavigationView& sender, const NavigationViewSelectionChangedEventArgs& args)
     {
         winrt::hstring tag{ NavView().SelectedItem().as<NavigationViewItem>().Tag().as<winrt::hstring>() };

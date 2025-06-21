@@ -162,7 +162,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         SetDragRegion();
     }
 
-    winrt::event_token TitleBar::SearchChanged(const Windows::Foundation::EventHandler<winrt::hstring>& handler)
+    winrt::event_token TitleBar::SearchChanged(const Windows::Foundation::TypedEventHandler<AutoSuggestBox, AutoSuggestBoxTextChangedEventArgs>& handler)
     {
         return m_searchChangedEvent.add(handler);
     }
@@ -220,7 +220,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
 
     void TitleBar::OnSearchTextChanged(const AutoSuggestBox& sender, const AutoSuggestBoxTextChangedEventArgs& args)
     {
-        m_searchChangedEvent(*this, sender.Text());
+        m_searchChangedEvent(sender, args);
     }
 
     void TitleBar::SetDragRegion()
