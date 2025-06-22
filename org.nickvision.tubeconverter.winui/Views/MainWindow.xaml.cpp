@@ -26,8 +26,6 @@ using namespace winrt::Microsoft::UI::Xaml::Input;
 using namespace winrt::Microsoft::UI::Xaml::Media;
 using namespace winrt::Windows::Foundation::Collections;
 using namespace winrt::Windows::Graphics;
-using namespace winrt::Windows::Storage;
-using namespace winrt::Windows::Storage::Pickers;
 using namespace winrt::Windows::System;
 
 enum MainWindowPage
@@ -268,7 +266,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     Windows::Foundation::IAsyncAction MainWindow::AddDownload(const winrt::hstring& url)
     {
         ContentDialog dialog{ winrt::make<implementation::AddDownloadDialog>() };
-        dialog.as<implementation::AddDownloadDialog>()->Controller(m_controller->createAddDownloadDialogController(), url);
+        co_await dialog.as<implementation::AddDownloadDialog>()->Controller(m_controller->createAddDownloadDialogController(), url);
+        dialog.as<implementation::AddDownloadDialog>()->Hwnd(m_hwnd);
         dialog.RequestedTheme(MainGrid().RequestedTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
         co_await dialog.as<implementation::AddDownloadDialog>()->ShowAsync();

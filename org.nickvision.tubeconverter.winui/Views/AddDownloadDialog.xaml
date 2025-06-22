@@ -6,8 +6,7 @@
     xmlns:controls="using:Nickvision.TubeConverter.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
-    DefaultButton="Close">
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
     <controls:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <controls:ViewStack.Pages>
             <Grid RowSpacing="6">
@@ -36,9 +35,9 @@
                             <controls:SettingsRow x:Name="RowMediaUrl">
                                 <controls:SettingsRow.Child>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <TextBox x:Name="TxtMediaUrl" MaxWidth="320"/>
+                                        <TextBox x:Name="TxtMediaUrl" MaxWidth="240" TextChanged="OnTxtMediaUrlTextChanged"/>
 
-                                        <Button x:Name="BtnUseBatchFile" HorizontalAlignment="Stretch">
+                                        <Button x:Name="BtnUseBatchFile" HorizontalAlignment="Stretch" Click="UseBatchFile">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E5;"/>
                                             </Button.Content>
@@ -57,17 +56,17 @@
                         <StackPanel Orientation="Vertical" Spacing="6">
                             <controls:SettingsRow x:Name="RowCredential">
                                 <controls:SettingsRow.Child>
-                                    <ComboBox x:Name="CmbCredential"/>
+                                    <ComboBox x:Name="CmbCredential" SelectionChanged="OnCmbCredentialSelectionChanged"/>
                                 </controls:SettingsRow.Child>
                             </controls:SettingsRow>
 
-                            <controls:SettingsRow x:Name="RowUsername">
+                            <controls:SettingsRow x:Name="RowUsername" Visibility="Collapsed">
                                 <controls:SettingsRow.Child>
                                     <TextBox x:Name="TxtUsername"/>
                                 </controls:SettingsRow.Child>
                             </controls:SettingsRow>
 
-                            <controls:SettingsRow x:Name="RowPassword">
+                            <controls:SettingsRow x:Name="RowPassword" Visibility="Collapsed">
                                 <controls:SettingsRow.Child>
                                     <TextBox x:Name="TxtPassword"/>
                                 </controls:SettingsRow.Child>
@@ -82,6 +81,62 @@
 
                 <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"/>
             </StackPanel>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <SelectorBar x:Name="NavViewSingle" Grid.Row="0">
+                    <SelectorBarItem x:Name="NavViewSingleGeneral" IsSelected="True">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA69;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
+
+                    <SelectorBarItem x:Name="NavViewSingleSubtitles">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
+
+                    <SelectorBarItem x:Name="NavViewSingleAdvanced">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
+                </SelectorBar>
+
+                <controls:ViewStack x:Name="ViewStackSingle" Grid.Row="1" MinWidth="350">
+
+                </controls:ViewStack>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <SelectorBar x:Name="NavViewPlaylist" Grid.Row="0">
+                    <SelectorBarItem x:Name="NavViewPlaylistGeneral" IsSelected="True">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA69;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
+
+                    <SelectorBarItem x:Name="NavViewPlaylistItems">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FD;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
+                </SelectorBar>
+
+                <controls:ViewStack x:Name="ViewStackPlaylist" Grid.Row="1" MinWidth="350">
+
+                </controls:ViewStack>
+            </Grid>
         </controls:ViewStack.Pages>
     </controls:ViewStack>
 </ContentDialog>

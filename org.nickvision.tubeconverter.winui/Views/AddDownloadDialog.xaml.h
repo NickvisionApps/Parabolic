@@ -25,7 +25,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param controller The AddDownloadDialogController
          * @param url A url to fill in the dialog with
          */
-        void Controller(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController>& controller, const winrt::hstring& url);
+        Windows::Foundation::IAsyncAction Controller(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController>& controller, const winrt::hstring& url);
+        /**
+         * @brief Sets the hwnd for the dialog.
+         * @param hwnd The hwnd
+         */
+        void Hwnd(HWND hwnd);
         /**
          * @brief Shows the dialog
          * @return Microsoft::UI::Xaml::Controls::ContentDialogResult
@@ -37,9 +42,33 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args SelectorItemInvokedEventArgs
          */
         void OnNavViewValidateSelectionChanged(const Microsoft::UI::Xaml::Controls::SelectorBar& sender, const Microsoft::UI::Xaml::Controls::SelectorBarSelectionChangedEventArgs& args);
+        /**
+         * @brief Handles when the media url textbox's text is changed.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::Controls::TextChangedEventArgs
+         */
+        void OnTxtMediaUrlTextChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::TextChangedEventArgs& args);
+        /**
+         * @brief Handles when the credential combobox's selection is changed.
+         * @param sender Iinspectable
+         * @param args Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs
+         */
+        void OnCmbCredentialSelectionChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs& args);
+        /**
+         * @brief Prompts the user to select a batch file.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction UseBatchFile(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
+        /**
+         * @brief Handles when a url is validated.
+         * @param valid Whether or not the url is valid
+         */
+        winrt::fire_and_forget OnUrlValidated(bool valid);
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController> m_controller;
+        HWND m_hwnd;
     };
 }
 
