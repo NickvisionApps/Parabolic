@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 11:01-0400\n"
+"POT-Creation-Date: 2025-06-21 20:24-0400\n"
 "PO-Revision-Date: 2025-02-23 06:07+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -265,8 +265,9 @@ msgstr "自動生成"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:190
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:33
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:191
 msgid "Add Download"
 msgstr "ダウンロードを追加"
 
@@ -275,10 +276,12 @@ msgid "Back"
 msgstr "戻る"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:37
 msgid "Media URL"
 msgstr "メディアの URL"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:39
 msgid "Use Batch File"
 msgstr "バッチファイルを使う"
 
@@ -290,6 +293,7 @@ msgstr "認証"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 msgid "Credential"
 msgstr "資格情報"
 
@@ -297,6 +301,7 @@ msgstr "資格情報"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
 msgid "Username"
 msgstr "ユーザー名"
 
@@ -304,10 +309,12 @@ msgstr "ユーザー名"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:46
 msgid "Password"
 msgstr "パスワード"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:86
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:40
 #, fuzzy
 msgid "Download Immediately"
 msgstr "メディアをダウンロード"
@@ -317,6 +324,7 @@ msgid "Use your previous download options for this download"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:92
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
 msgid "Validate"
 msgstr "内容の確認"
 
@@ -534,7 +542,7 @@ msgstr "キーボードショートカット"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -548,19 +556,19 @@ msgstr "メインメニュー"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
 msgid "Home"
 msgstr "ホーム"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
 msgid "Keyring"
 msgstr "キーリング"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
 msgid "History"
 msgstr "履歴"
 
@@ -568,26 +576,26 @@ msgstr "履歴"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
 msgid "Downloads"
 msgstr "ダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
 msgid "Downloading"
 msgstr "ダウンロード中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
 msgid "Queued"
 msgstr "停止中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
 msgid "Completed"
 msgstr "完了済"
 
@@ -624,12 +632,12 @@ msgid "Clear Completed Downloads"
 msgstr "完了したダウンロードをクリア"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
 msgid "Download Media"
 msgstr "メディアをダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "動画、音声、再生リストの URL を追加してダウンロードを始めます"
 
@@ -1263,7 +1271,7 @@ msgid "Download Again"
 msgstr "もう一度ダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
 
@@ -1292,7 +1300,7 @@ msgid "OK"
 msgstr "OK"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
 msgid "About"
 msgstr "Parabolic について"
 
@@ -1330,32 +1338,69 @@ msgstr "デバッグ情報をコピー"
 msgid "Search"
 msgstr "検索..."
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:58
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:34
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:35
+#, fuzzy
+msgid "Media"
+msgstr "メディア"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:36
+#, fuzzy
+msgid "Authentication"
+msgstr "認証"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:38
+msgid "Enter media url here"
+msgstr "メディアの URL を入力"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
+msgid "On"
+msgstr "オン"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:42
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
+msgid "Off"
+msgstr "オフ"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:45
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:47
+msgid "Enter username here"
+msgstr "ユーザー名を入力"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:48
+msgid "This may take some time..."
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
 msgid "Check for Updates"
 msgstr "アップデートをチェック"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
 msgid "Documentation"
 msgstr "ドキュメント"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
 msgid "Report a Bug"
 msgstr "バグを報告"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
 msgid "Discussions"
 msgstr "ディスカッション"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:168
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:169
 msgid "Update"
 msgstr "アップデート"
 
@@ -1374,14 +1419,6 @@ msgstr "システムに従う"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
 msgid "Automatically Check for Updates"
 msgstr "アップデートを自動的にチェックする"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
-msgid "On"
-msgstr "オン"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
-msgid "Off"
-msgstr "オフ"
 
 #~ msgid "Log"
 #~ msgstr "ログ"
@@ -1402,22 +1439,8 @@ msgstr "オフ"
 #~ msgid "No Download Log"
 #~ msgstr "ダウンロード履歴の保存量"
 
-#~ msgid "Enter media url here"
-#~ msgstr "メディアの URL を入力"
-
-#~ msgid "Enter username here"
-#~ msgstr "ユーザー名を入力"
-
 #~ msgid "Enter password here"
 #~ msgstr "パスワードをに入力"
-
-#, fuzzy
-#~ msgid "Media"
-#~ msgstr "メディア"
-
-#, fuzzy
-#~ msgid "Authentication"
-#~ msgstr "認証"
 
 #, fuzzy
 #~ msgid "No save folder selected"
@@ -1637,9 +1660,6 @@ msgstr "オフ"
 
 #~ msgid "Retry Failed"
 #~ msgstr "失敗したダウンロードを再試行"
-
-#~ msgid "Cancel"
-#~ msgstr "キャンセル"
 
 #~ msgid "Enter name here"
 #~ msgstr "名前を入力"

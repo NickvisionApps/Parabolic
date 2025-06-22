@@ -1,0 +1,87 @@
+<ContentDialog
+    x:Class="Nickvision.TubeConverter.WinUI.Views.AddDownloadDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.TubeConverter.WinUI.Views"
+    xmlns:controls="using:Nickvision.TubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Close">
+    <controls:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <controls:ViewStack.Pages>
+            <Grid RowSpacing="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <SelectorBar x:Name="NavViewValidate" Grid.Row="0" SelectionChanged="OnNavViewValidateSelectionChanged">
+                    <SelectorBarItem x:Name="NavViewValidateMedia" IsSelected="True">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA69;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
+
+                    <SelectorBarItem x:Name="NavViewValidateAuthentication">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA18;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
+                </SelectorBar>
+
+                <controls:ViewStack x:Name="ViewStackValidate" Grid.Row="1" MinWidth="350">
+                    <controls:ViewStack.Pages>
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <controls:SettingsRow x:Name="RowMediaUrl">
+                                <controls:SettingsRow.Child>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <TextBox x:Name="TxtMediaUrl" MaxWidth="320"/>
+
+                                        <Button x:Name="BtnUseBatchFile" HorizontalAlignment="Stretch">
+                                            <Button.Content>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E5;"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowDownloadImmediately">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglDownloadImmediately"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <controls:SettingsRow x:Name="RowCredential">
+                                <controls:SettingsRow.Child>
+                                    <ComboBox x:Name="CmbCredential"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowUsername">
+                                <controls:SettingsRow.Child>
+                                    <TextBox x:Name="TxtUsername"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowPassword">
+                                <controls:SettingsRow.Child>
+                                    <TextBox x:Name="TxtPassword"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+                        </StackPanel>
+                    </controls:ViewStack.Pages>
+                </controls:ViewStack>
+            </Grid>
+
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,24,0,24" Orientation="Vertical" Spacing="12">
+                <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True" Width="36" Height="36"/>
+
+                <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"/>
+            </StackPanel>
+        </controls:ViewStack.Pages>
+    </controls:ViewStack>
+</ContentDialog>

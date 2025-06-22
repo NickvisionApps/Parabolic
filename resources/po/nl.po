@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 11:01-0400\n"
+"POT-Creation-Date: 2025-06-21 20:24-0400\n"
 "PO-Revision-Date: 2025-01-04 12:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -264,8 +264,9 @@ msgstr "Automatisch gegenereerd"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:190
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:33
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:191
 msgid "Add Download"
 msgstr "Download toevoegen"
 
@@ -274,10 +275,12 @@ msgid "Back"
 msgstr "Terug"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:37
 msgid "Media URL"
 msgstr "Media-URL"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:39
 msgid "Use Batch File"
 msgstr ""
 
@@ -289,6 +292,7 @@ msgstr "Authenticeren"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 msgid "Credential"
 msgstr "Inloggegevens"
 
@@ -296,6 +300,7 @@ msgstr "Inloggegevens"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
 msgid "Username"
 msgstr "Gebruikersnaam"
 
@@ -303,10 +308,12 @@ msgstr "Gebruikersnaam"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:46
 msgid "Password"
 msgstr "Wachtwoord"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:86
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:40
 #, fuzzy
 msgid "Download Immediately"
 msgstr "Media downloaden"
@@ -316,6 +323,7 @@ msgid "Use your previous download options for this download"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:92
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
 msgid "Validate"
 msgstr "Valideren"
 
@@ -528,7 +536,7 @@ msgstr "Sneltoetsen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
 msgid "Help"
 msgstr "Hulp"
 
@@ -542,19 +550,19 @@ msgstr "Hoofdmenu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
 msgid "Home"
 msgstr "Start"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
 msgid "Keyring"
 msgstr "Sleutelbos"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
 msgid "History"
 msgstr "Geschiedenis"
 
@@ -562,26 +570,26 @@ msgstr "Geschiedenis"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
 msgid "Downloads"
 msgstr "Downloads"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
 msgid "Downloading"
 msgstr "Downloaden"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
 msgid "Queued"
 msgstr "In wachtrij"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
 msgid "Completed"
 msgstr "Voltooid"
 
@@ -618,12 +626,12 @@ msgid "Clear Completed Downloads"
 msgstr "Voltooide downloads wissen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
 msgid "Download Media"
 msgstr "Media downloaden"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Voeg een URL van een video, audio, of een playlist toe om te downloaden"
@@ -1248,7 +1256,7 @@ msgid "Download Again"
 msgstr "Opnieuw downloaden"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
 msgid "GitHub Repo"
 msgstr "GitHub-repo"
 
@@ -1276,7 +1284,7 @@ msgid "OK"
 msgstr "Ok"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
 msgid "About"
 msgstr "Over"
 
@@ -1315,32 +1323,71 @@ msgstr "Cookies-bestand-informatie"
 msgid "Search"
 msgstr "Zoeken…"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:58
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:34
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:35
+#, fuzzy
+msgid "Media"
+msgstr "media"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:36
+#, fuzzy
+msgid "Authentication"
+msgstr "Authenticeren"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:38
+#, fuzzy
+msgid "Enter media url here"
+msgstr "Voer media-URL hier in"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
+msgid "On"
+msgstr "Aan"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:42
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
+msgid "Off"
+msgstr "Uit"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:45
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Enter username here"
+msgstr "Voer media-URL hier in"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:48
+msgid "This may take some time..."
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "Instellingen"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
 msgid "Check for Updates"
 msgstr "Controleren op updates"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
 msgid "Report a Bug"
 msgstr "Fout melden"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
 msgid "Discussions"
 msgstr "Discussies"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:168
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:169
 msgid "Update"
 msgstr "Bij­werken"
 
@@ -1359,14 +1406,6 @@ msgstr "Systeem"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
 msgid "Automatically Check for Updates"
 msgstr ""
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
-msgid "On"
-msgstr "Aan"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
-msgid "Off"
-msgstr "Uit"
 
 #~ msgid "Log"
 #~ msgstr "Log­boek"
@@ -1387,24 +1426,8 @@ msgstr "Uit"
 #~ msgid "No Download Log"
 #~ msgstr "Downloaden"
 
-#, fuzzy
-#~ msgid "Enter media url here"
-#~ msgstr "Voer media-URL hier in"
-
-#, fuzzy
-#~ msgid "Enter username here"
-#~ msgstr "Voer media-URL hier in"
-
 #~ msgid "Enter password here"
 #~ msgstr "Voer wacht­woord hier in"
-
-#, fuzzy
-#~ msgid "Media"
-#~ msgstr "media"
-
-#, fuzzy
-#~ msgid "Authentication"
-#~ msgstr "Authenticeren"
 
 #, fuzzy
 #~ msgid "No save folder selected"
@@ -1575,9 +1598,6 @@ msgstr "Uit"
 
 #~ msgid "Retry Failed"
 #~ msgstr "Opnieuw proberen mislukt"
-
-#~ msgid "Cancel"
-#~ msgstr "Annuleren"
 
 #~ msgid "Enter name here"
 #~ msgstr "Voer naam hier in"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 11:01-0400\n"
+"POT-Creation-Date: 2025-06-21 20:24-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -277,8 +277,9 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:190
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:33
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:191
 msgid "Add Download"
 msgstr "डाउनलोड जोड़ें"
 
@@ -287,10 +288,12 @@ msgid "Back"
 msgstr "पीछे"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:37
 msgid "Media URL"
 msgstr "मीडिया URL"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:39
 msgid "Use Batch File"
 msgstr ""
 
@@ -302,6 +305,7 @@ msgstr "प्रमाणित करें"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 #, fuzzy
 msgid "Credential"
 msgstr "कोई क्रेडेंशियल नहीं"
@@ -310,6 +314,7 @@ msgstr "कोई क्रेडेंशियल नहीं"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
@@ -317,10 +322,12 @@ msgstr "उपयोगकर्ता नाम"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:46
 msgid "Password"
 msgstr "पासवर्ड"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:86
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:40
 #, fuzzy
 msgid "Download Immediately"
 msgstr "मीडिया डाउनलोड करें"
@@ -330,6 +337,7 @@ msgid "Use your previous download options for this download"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:92
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
 msgid "Validate"
 msgstr "सत्यापित करें"
 
@@ -551,7 +559,7 @@ msgstr "कीबोर्ड शॉर्टकट"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
 msgid "Help"
 msgstr "सहायता"
 
@@ -565,19 +573,19 @@ msgstr "मुख्य मेनू"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
 msgid "Home"
 msgstr "गृह"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
 msgid "Keyring"
 msgstr "कीरिंग"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
 msgid "History"
 msgstr "इतिहास"
 
@@ -585,26 +593,26 @@ msgstr "इतिहास"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
 msgid "Downloads"
 msgstr "डाउनलोड"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
 msgid "Downloading"
 msgstr "डाउनलोड हो रहा है"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
 msgid "Queued"
 msgstr "कतारबद्ध"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
 msgid "Completed"
 msgstr "पूर्ण"
 
@@ -641,12 +649,12 @@ msgid "Clear Completed Downloads"
 msgstr "पूर्ण डाउनलोड साफ़ करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
 msgid "Download Media"
 msgstr "मीडिया डाउनलोड करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "डाउनलोड करना शुरू करने के लिए एक वीडियो, ऑडियो या प्लेलिस्ट URL जोड़ें"
 
@@ -1291,7 +1299,7 @@ msgid "Download Again"
 msgstr "पुनः डाउनलोड करें"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
 msgid "GitHub Repo"
 msgstr "गिटहब रेपो"
 
@@ -1319,7 +1327,7 @@ msgid "OK"
 msgstr "ठीक है"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
 msgid "About"
 msgstr "परिचय"
 
@@ -1357,32 +1365,71 @@ msgstr "डिबग जानकारी कॉपी करें"
 msgid "Search"
 msgstr "इतिहास खोजें"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:58
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:34
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:35
+#, fuzzy
+msgid "Media"
+msgstr "मीडिया URL"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:36
+#, fuzzy
+msgid "Authentication"
+msgstr "प्रमाणित करें"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:38
+#, fuzzy
+msgid "Enter media url here"
+msgstr "यहां मीडिया URL दर्ज करें"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
+msgid "On"
+msgstr "चालू"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:42
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
+msgid "Off"
+msgstr "बंद"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:45
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Enter username here"
+msgstr "यहां उपयोगकर्ता नाम दर्ज करें"
+
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:48
+msgid "This may take some time..."
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:59
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "सेटिंग्स"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
 msgid "Check for Updates"
 msgstr "अपडेट के लिए जांचें"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
 msgid "Documentation"
 msgstr "दस्तावेज़ीकरण"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
 msgid "Report a Bug"
 msgstr "खराबी की जानकारी दें"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
 msgid "Discussions"
 msgstr "विचार विमर्श"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:168
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:169
 msgid "Update"
 msgstr "अपडेट"
 
@@ -1405,14 +1452,6 @@ msgstr "सिस्टम"
 msgid "Automatically Check for Updates"
 msgstr "अपडेट के लिए स्वचालित रूप से जांचे"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
-msgid "On"
-msgstr "चालू"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
-msgid "Off"
-msgstr "बंद"
-
 #~ msgid "Log"
 #~ msgstr "लॉग"
 
@@ -1432,24 +1471,8 @@ msgstr "बंद"
 #~ msgid "No Download Log"
 #~ msgstr "डाउनलोड हो रहा है"
 
-#, fuzzy
-#~ msgid "Enter media url here"
-#~ msgstr "यहां मीडिया URL दर्ज करें"
-
-#, fuzzy
-#~ msgid "Enter username here"
-#~ msgstr "यहां उपयोगकर्ता नाम दर्ज करें"
-
 #~ msgid "Enter password here"
 #~ msgstr "यहां पासवर्ड डालें"
-
-#, fuzzy
-#~ msgid "Media"
-#~ msgstr "मीडिया URL"
-
-#, fuzzy
-#~ msgid "Authentication"
-#~ msgstr "प्रमाणित करें"
 
 #, fuzzy
 #~ msgid "No save folder selected"
@@ -1615,9 +1638,6 @@ msgstr "बंद"
 
 #~ msgid "Retry Failed"
 #~ msgstr "पुनः प्रयास विफल"
-
-#~ msgid "Cancel"
-#~ msgstr "रद्द करें"
 
 #, fuzzy
 #~ msgid "Enter name here"

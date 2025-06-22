@@ -7,6 +7,7 @@
 #include <libnick/localization/gettext.h>
 #include "Controls/AboutDialog.xaml.h"
 #include "Helpers/WinUIHelpers.h"
+#include "Views/AddDownloadDialog.xaml.h"
 #include "Views/SettingsPage.xaml.h"
 
 using namespace ::Nickvision::Events;
@@ -200,9 +201,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
     }
 
-    void MainWindow::OnTitleBarSearchSelected(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs& args)
+    Windows::Foundation::IAsyncAction MainWindow::OnTitleBarSearchSelected(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs& args)
     {
-        winrt::hstring url{ winrt::unbox_value<winrt::hstring>(sender.as<StackPanel>().Tag()) };
+        co_await AddDownload(winrt::unbox_value<winrt::hstring>(args.SelectedItem().as<StackPanel>().Tag()));
     }
 
     void MainWindow::OnNavViewSelectionChanged(const NavigationView& sender, const NavigationViewSelectionChangedEventArgs& args)
@@ -257,5 +258,19 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         dialog.RequestedTheme(MainGrid().RequestedTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
         co_await dialog.ShowAsync();
+    }
+
+    Windows::Foundation::IAsyncAction MainWindow::AddDownload(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        co_await AddDownload();
+    }
+
+    Windows::Foundation::IAsyncAction MainWindow::AddDownload(const winrt::hstring& url)
+    {
+        ContentDialog dialog{ winrt::make<implementation::AddDownloadDialog>() };
+        dialog.as<implementation::AddDownloadDialog>()->Controller(m_controller->createAddDownloadDialogController(), url);
+        dialog.RequestedTheme(MainGrid().RequestedTheme());
+        dialog.XamlRoot(MainGrid().XamlRoot());
+        co_await dialog.as<implementation::AddDownloadDialog>()->ShowAsync();
     }
 }

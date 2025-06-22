@@ -70,7 +70,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox
          * @param args Microsoft::UI::Xaml::Controls::AutoSuggestEventArgs
          */
-        void OnTitleBarSearchSelected(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs& args);
+        Windows::Foundation::IAsyncAction OnTitleBarSearchSelected(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxSuggestionChosenEventArgs& args);
         /**
         * @brief Handles when a change in the window's navigation occurs.
         * @param sender Microsoft::UI::Xaml::Controls::NavigationView
@@ -119,8 +119,19 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         * @param args Microsoft::UI::Xaml::RoutedEventArgs
         */
         Windows::Foundation::IAsyncAction About(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+        * @brief Opens the add download dialog.
+        * @param sender IInspectable
+        * @param args Microsoft::UI::Xaml::RoutedEventArgs
+        */
+        Windows::Foundation::IAsyncAction AddDownload(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
+        /**
+        * @brief Opens the add download dialog.
+        * @param url A url to fill in the dialog with
+        */
+        Windows::Foundation::IAsyncAction AddDownload(const winrt::hstring& url = L"");
         HWND m_hwnd;
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::MainWindowController> m_controller;
         Microsoft::UI::Xaml::ElementTheme m_systemTheme;

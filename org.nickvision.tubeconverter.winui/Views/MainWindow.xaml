@@ -136,7 +136,7 @@
                     <controls:ViewStack.Pages>
                         <controls:StatusPage x:Name="PageHome" UseAppIcon="True">
                             <controls:StatusPage.Child>
-                                <Button Style="{StaticResource AccentButtonStyle}">
+                                <Button Style="{StaticResource AccentButtonStyle}" Click="AddDownload">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>

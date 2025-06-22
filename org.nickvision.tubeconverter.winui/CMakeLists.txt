@@ -28,6 +28,7 @@ if(WIN32)
         "Controls/TitleBar.xaml.cpp" "Controls/TitleBar.xaml.h" "Controls/TitleBar.xaml" "Controls/TitleBar.idl"
         "Controls/ViewStack.xaml.cpp" "Controls/ViewStack.xaml.h" "Controls/ViewStack.xaml" "Controls/ViewStack.idl"
         "Helpers/WinUIHelpers.h"
+        "Views/AddDownloadDialog.xaml.cpp" "Views/AddDownloadDialog.xaml.h" "Views/AddDownloadDialog.xaml" "Views/AddDownloadDialog.idl"
         "Views/MainWindow.xaml.cpp" "Views/MainWindow.xaml.h" "Views/MainWindow.xaml" "Views/MainWindow.idl"
         "Views/SettingsPage.xaml.cpp" "Views/SettingsPage.xaml.h" "Views/SettingsPage.xaml" "Views/SettingsPage.idl"
         "App.xaml.cpp" "App.xaml.h" "App.xaml" "App.idl")
