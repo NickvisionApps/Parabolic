@@ -58,7 +58,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @brief Handles when a notification is sent.
          * @param args Nickvision::Notifications::NotificationSentEventArgs
          */
-        void OnNotificationSent(const ::Nickvision::Notifications::NotificationSentEventArgs& args);
+        winrt::fire_and_forget OnNotificationSent(const ::Nickvision::Notifications::NotificationSentEventArgs& args);
         /**
          * Handles when the titlebar's search box text is changed
          * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox

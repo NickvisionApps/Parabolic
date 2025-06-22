@@ -25,6 +25,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void Controller(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::PreferencesViewController>& controller);
         /**
+         * @brief Sets the hwnd for the dialog.
+         * @param hwnd The hwnd
+         */
+        void Hwnd(HWND hwnd);
+        /**
          * @brief Handles when the navigation view selection changes.
          * @param sender SelectorBar
          * @param args SelectorItemInvokedEventArgs
@@ -36,16 +41,62 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         void OnCmbChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs& args);
         /**
          * @brief Handles when a switch preference is changed.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
          */
         void OnSwitchToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Handles when a number preference is changed.
+         */
+        void OnNumChanged(const Microsoft::UI::Xaml::Controls::NumberBox& sender, const Microsoft::UI::Xaml::Controls::NumberBoxValueChangedEventArgs& args);
+        /**
+         * @brief Handles when a text preference is changed.
+         */
+        void OnTextChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::TextChangedEventArgs& args);
+        /**
+         * @brief Prompts the user to select a cookies file.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction SelectCookiesFile(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Clears the selected cookie file.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void ClearCookiesFile(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Prompts the user to add a postprocessing argument.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction AddPostprocessingArgument(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Prompts the user to edit a postprocessing argument.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction EditPostprocessingArgument(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Prompts the user to delete a postprocessing argument.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction DeletePostprocessingArgument(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
+        /**
+         * @brief Reloads the postprocessing arguments shown.
+         */
+        void ReloadPostprocessingArguments();
         /**
          * @brief Applies changes the application's configuration.
          */
         void ApplyChanges();
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::PreferencesViewController> m_controller;
+        HWND m_hwnd;
         bool m_constructing;
+        std::filesystem::path m_cookiesFilePath;
     };
 }
 

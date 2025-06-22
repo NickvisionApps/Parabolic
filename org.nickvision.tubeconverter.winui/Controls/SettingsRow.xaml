@@ -35,17 +35,22 @@
                     </Style>
                     <Style TargetType="Slider" BasedOn="{StaticResource DefaultSliderStyle}">
                         <Style.Setters>
-                            <Setter Property="MinWidth" Value="120"/>
+                            <Setter Property="MinWidth" Value="140"/>
                         </Style.Setters>
                     </Style>
                     <Style TargetType="ComboBox" BasedOn="{StaticResource DefaultComboBoxStyle}">
                         <Style.Setters>
-                            <Setter Property="MinWidth" Value="120"/>
+                            <Setter Property="MinWidth" Value="140"/>
                         </Style.Setters>
                     </Style>
                     <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}">
                         <Style.Setters>
-                            <Setter Property="MinWidth" Value="120"/>
+                            <Setter Property="MinWidth" Value="140"/>
+                        </Style.Setters>
+                    </Style>
+                    <Style TargetType="NumberBox">
+                        <Style.Setters>
+                            <Setter Property="MinWidth" Value="140"/>
                         </Style.Setters>
                     </Style>
                 </ResourceDictionary>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-21 22:07-0400\n"
+"POT-Creation-Date: 2025-06-22 17:26-0400\n"
 "PO-Revision-Date: 2025-06-12 21:01+0000\n"
 "Last-Translator: Fjuro <git@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -87,6 +87,7 @@ msgstr "WAV (zvuk)"
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:83
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:99
 msgid "None"
 msgstr "Žádné"
 
@@ -268,7 +269,7 @@ msgstr "Automaticky generovaný"
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:39
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:189
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:201
 msgid "Add Download"
 msgstr "Přidat stahování"
 
@@ -513,6 +514,8 @@ msgstr "Údaje"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:397
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:215
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:148
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:285
 msgid "Add"
 msgstr "Přidat"
 
@@ -520,6 +523,8 @@ msgstr "Přidat"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:422
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:262
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:254
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:347
 msgid "Name"
 msgstr "Název"
 
@@ -576,6 +581,7 @@ msgstr "Historie"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
 msgid "Downloads"
 msgstr "Stahování"
 
@@ -661,12 +667,12 @@ msgid "UI"
 msgstr "Rozhraní"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:20
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
 msgid "User Interface"
 msgstr "Uživatelské rozhraní"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:18
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:21
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:30
 msgid "Theme"
 msgstr "Motiv"
 
@@ -686,10 +692,12 @@ msgid "System"
 msgstr "Systémový"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:30
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:37
 msgid "Prevent Suspend"
 msgstr "Zabránit uspání"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:31
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:38
 msgid ""
 "Parabolic will prevent the computer from sleeping while downloads are "
 "running."
@@ -698,34 +706,42 @@ msgstr ""
 "probíhá stahování."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:41
 msgid "Download History Length"
 msgstr "Délka historie stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:41
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:42
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr "Jak dlouho ponechat stahování v historii aplikace."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:43
 msgid "Never"
 msgstr "Nikdy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:44
 msgid "One Day"
 msgstr "Jeden den"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:45
 msgid "One Week"
 msgstr "Jeden týden"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:46
 msgid "One Month"
 msgstr "Jeden měsíc"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:47
 msgid "Three Months"
 msgstr "Tři měsíce"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:48
 msgid "Forever"
 msgstr "Navždy"
 
@@ -734,6 +750,7 @@ msgid "Max Number of Running Downloads"
 msgstr "Maximální počet běžících stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:50
 msgid "Overwrite Existing Files"
 msgstr "Přepsat existující soubory"
 
@@ -750,6 +767,7 @@ msgstr ""
 "sytémem Windows."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:53
 msgid "Include Media Id in Title"
 msgstr "Přidat ID média do názvu"
 
@@ -758,10 +776,12 @@ msgid "Parabolic will include a media's id in its default title."
 msgstr "Aplikace Parabolic přidá ID média do jeho výchozího názvu."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:57
 msgid "Include Auto-Generated Subtitles"
 msgstr "Zahrnout automaticky generované titulky"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:58
 msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
@@ -770,10 +790,12 @@ msgstr ""
 "dostupnými titulky."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:61
 msgid "Preferred Video Codec"
 msgstr "Preferovaný video kodek"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:62
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
@@ -784,22 +806,29 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:79
 msgid "Any"
 msgstr "Jakýkoli"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:66
 msgid "H.264 (AVC)"
 msgstr "H.264 (AVC)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:67
 msgid "H.265 (HEVC)"
 msgstr "H.265 (HEVC)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:68
 msgid "Preferred Audio Codec"
 msgstr "Preferovaný zvukový kodek"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:131
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:69
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
@@ -808,18 +837,22 @@ msgstr ""
 "formátů médií ke stažení."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:71
 msgid "FLAC (ALAC)"
 msgstr "FLAC (ALAC)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:72
 msgid "WAV (AIFF)"
 msgstr "WAV (AIFF)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:77
 msgid "Preferred Subtitle Format"
 msgstr "Preferovaný formát titulků"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:144
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:78
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
 msgstr ""
@@ -828,14 +861,17 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:158
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:162
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:28
 msgid "Downloader"
 msgstr "Služba stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:165
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:84
 msgid "Use Part Files"
 msgstr "Použít částečné soubory"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:85
 msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
@@ -844,16 +880,19 @@ msgstr ""
 "přímého stažení do výsledného souboru."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:88
 msgid "Use SponsorBlock for YouTube"
 msgstr "Použít SponsorBlock pro YouTube"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:176
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:89
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr ""
 "Aplikace Parabolic se pokusí odstranit sponzorské segmenty z YouTube videí."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:92
 msgid "Limit Download Speed"
 msgstr "Omezit rychlost stahování"
 
@@ -862,106 +901,132 @@ msgid "Speed Limit (KiB/s)"
 msgstr "Omezení rychlosti (KiB/s)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:208
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:96
 msgid "Proxy URL"
 msgstr "URL proxy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:217
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:98
 msgid "Cookies from Browser"
 msgstr "Soubory cookie z prohlížeče"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:100
 msgid "Brave"
 msgstr "Brave"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:101
 msgid "Chrome"
 msgstr "Chrome"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:102
 msgid "Chromium"
 msgstr "Chromium"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:103
 msgid "Edge"
 msgstr "Edge"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:104
 msgid "Firefox"
 msgstr "Firefox"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:105
 msgid "Opera"
 msgstr "Opera"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:106
 msgid "Safari"
 msgstr "Safari"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:107
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:108
 msgid "Whale"
 msgstr "Whale"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:109
 msgid "Cookies File"
 msgstr "Soubor cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:148
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:110
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:247
 msgid "No file selected"
 msgstr "Není vybrán žádný soubor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:126
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:111
 msgid "Select Cookies File"
 msgstr "Vybrat soubor s cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:112
 msgid "Clear Cookies File"
 msgstr "Vymazat soubor s cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:113
 msgid "aria2c"
 msgstr "aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:114
 msgid "Use aria2c"
 msgstr "Použít aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:115
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
 msgstr ""
 "Aplikace Parabolic použije aria2c namísto nativní služby stahování yt-dlp."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:118
 msgid "Max Connections Per Server (-x)"
 msgstr "Maximální počet připojení na server (-x)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:290
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:119
 msgid "Minimum Split Size (-k)"
 msgstr "Minimální velikost rozdělení (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:120
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Minimální velikost, na kterou má být soubor rozdělen (v MiB)."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:310
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:29
 msgid "Converter"
 msgstr "Konvertor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:121
 msgid "Embed Metadata"
 msgstr "Vložit metadata"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:124
 msgid "Remove Source Data"
 msgstr "Odebrat zdrojová data"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:125
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
@@ -970,10 +1035,12 @@ msgstr ""
 "stahování."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:128
 msgid "Embed Thumbnails"
 msgstr "Vkládat miniatury"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:339
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:129
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
@@ -982,22 +1049,27 @@ msgstr ""
 "samostatného souboru."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:132
 msgid "Crop Audio Thumbnails"
 msgstr "Oříznout miniatury zvuku"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:350
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:133
 msgid "Parabolic will crop thumbnails of audio files to squares."
 msgstr "Aplikace Parabolic ořízne miniatury zvukových souborů na čtverec."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:136
 msgid "Embed Chapters"
 msgstr "Vložit kapitoly"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:369
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:139
 msgid "Embed Subtitles"
 msgstr "Vložit titulky"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:140
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files."
@@ -1006,10 +1078,12 @@ msgstr ""
 "uloženy do samostatných souborů."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:379
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:144
 msgid "FFmpeg Threads"
 msgstr "Vlákna FFmpeg"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:145
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr "Aplikace Parabolic omezí počet vláken používaných službou ffmpeg."
 
@@ -1034,15 +1108,21 @@ msgid "Argument"
 msgstr "Argument"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:426
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:258
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:352
 msgid "Post Processor"
 msgstr "Postprocesor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:430
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:266
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:360
 msgid "Executable"
 msgstr "Spustitelný soubor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:273
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:367
 msgid "Args"
 msgstr "Argumenty"
 
@@ -1082,6 +1162,11 @@ msgstr "{} | {} | Zbývá: {}"
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:183
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:148
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:299
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:311
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:323
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:394
 msgid "Error"
 msgstr "Chyba"
 
@@ -1187,6 +1272,7 @@ msgstr "Opravdu chcete odstranit tento údaj?"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
 msgid "Yes"
 msgstr "Ano"
 
@@ -1194,6 +1280,7 @@ msgstr "Ano"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
 msgid "No"
 msgstr "Ne"
 
@@ -1275,14 +1362,17 @@ msgid "GitHub Repo"
 msgstr "Repozitář GitHub"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:202
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:465
 msgid "No Arguments"
 msgstr "Žádné argumenty"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:414
 msgid "Delete Argument?"
 msgstr "Odstranit argument?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:415
 msgid "Are you sure you want to delete this argument?"
 msgstr "Opravdu chcete odstranit tento argument?"
 
@@ -1292,6 +1382,11 @@ msgstr "Argumenty (prázdné)"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:34
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:185
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:150
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:301
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:313
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:325
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:396
 msgid "OK"
 msgstr "OK"
 
@@ -1334,6 +1429,8 @@ msgid "Search"
 msgstr "Hledat..."
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:40
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:286
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:381
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -1350,12 +1447,40 @@ msgid "Enter media url here"
 msgstr "Zde zadejte adresu URL média"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:47
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:35
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:39
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:51
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:86
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:90
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:93
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:122
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:126
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:130
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:134
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:137
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:141
 msgid "On"
 msgstr "Zapnuto"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:48
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:40
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:87
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:91
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:94
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:117
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:123
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:127
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:131
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:135
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:138
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:142
 msgid "Off"
 msgstr "Vypnuto"
 
@@ -1394,7 +1519,7 @@ msgid "Preview"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -1414,25 +1539,99 @@ msgstr "Nahlásit chybu"
 msgid "Discussions"
 msgstr "Diskuze"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:167
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:179
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:31
 msgid "Light"
 msgstr "Světlý"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:23
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:32
 msgid "Dark"
 msgstr "Tmavý"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:24
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:33
 msgid "System"
 msgstr "Systémový"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:34
 msgid "Automatically Check for Updates"
 msgstr "Automaticky kontrolovat aktualizace"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:49
+#, fuzzy
+msgid "Max Number of Active Downloads"
+msgstr "Maximální počet běžících stahování"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:54
+msgid "Parabolic will include the media's id in its default title."
+msgstr "Aplikace Parabolic vloží ID média do jeho výchozího názvu."
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:95
+msgid "Speed Limit"
+msgstr "Omezení rychlosti"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:97
+msgid "Enter proxy url here"
+msgstr "Zde zadejte adresu URL proxy"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:143
+msgid "Postprocessing"
+msgstr "Zpracování"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:146
+msgid "Arguments"
+msgstr "Argumenty"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:147
+#, fuzzy
+msgid ""
+"Parabolic will show these arguments below for selection in the add download "
+"dialog."
+msgstr ""
+"Aplikace Parabolic zobrazí tyto argumenty k výběru v dialogu přidání "
+"stahování."
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:255
+msgid "Enter name here"
+msgstr "Zde zadejte název"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:274
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:368
+#, fuzzy
+msgid "Enter args here"
+msgstr "Zde zadejte adresu URL"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:283
+msgid "New Argument"
+msgstr "Nový argument"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:300
+msgid "The argument name cannot be empty."
+msgstr "Název argumentu nemůže být prázdný."
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:312
+msgid "An argument with this name already exists."
+msgstr "Argument s tímto názvem již existuje."
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:324
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:395
+msgid "The argument args cannot be empty."
+msgstr "Argumenty argumentu nemohou být prázdné."
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:378
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:442
+msgid "Edit Argument"
+msgstr "Upravit argument"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:380
+msgid "Save"
+msgstr "Uložit"
+
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:450
+msgid "Delete Argument"
+msgstr "Odstranit argument"
 
 #~ msgid "Log"
 #~ msgstr "Protokol"
@@ -1520,9 +1719,6 @@ msgstr "Automaticky kontrolovat aktualizace"
 #~ msgid "Delete Credential"
 #~ msgstr "Odstranit údaj"
 
-#~ msgid "Save"
-#~ msgstr "Uložit"
-
 #~ msgid "Exit"
 #~ msgstr "Ukončit"
 
@@ -1553,45 +1749,12 @@ msgstr "Automaticky kontrolovat aktualizace"
 #~ msgid "Completed ({})"
 #~ msgstr "Dokončeno ({})"
 
-#~ msgid "Parabolic will include the media's id in its default title."
-#~ msgstr "Aplikace Parabolic vloží ID média do jeho výchozího názvu."
-
-#~ msgid "Speed Limit"
-#~ msgstr "Omezení rychlosti"
-
-#~ msgid "Enter proxy url here"
-#~ msgstr "Zde zadejte adresu URL proxy"
-
-#~ msgid "Arguments"
-#~ msgstr "Argumenty"
-
 #~ msgid ""
 #~ "Parabolic will show these arguments for\n"
 #~ "selection in the add download dialog."
 #~ msgstr ""
 #~ "Aplikace Parabolic zobrazí tyto argumenty\n"
 #~ "k výběru v dialogu přidání stahování."
-
-#~ msgid "Postprocessing"
-#~ msgstr "Zpracování"
-
-#~ msgid "New Argument"
-#~ msgstr "Nový argument"
-
-#~ msgid "The argument name cannot be empty."
-#~ msgstr "Název argumentu nemůže být prázdný."
-
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Argument s tímto názvem již existuje."
-
-#~ msgid "The argument args cannot be empty."
-#~ msgstr "Argumenty argumentu nemohou být prázdné."
-
-#~ msgid "Edit Argument"
-#~ msgstr "Upravit argument"
-
-#~ msgid "Delete Argument"
-#~ msgstr "Odstranit argument"
 
 #, fuzzy
 #~ msgid "Add, delete, and modify arguments for postprocessing"
@@ -1661,12 +1824,6 @@ msgstr "Automaticky kontrolovat aktualizace"
 
 #~ msgid "Retry Failed"
 #~ msgstr "Opakovat neúspěšné"
-
-#~ msgid "Enter name here"
-#~ msgstr "Zde zadejte název"
-
-#~ msgid "Enter url here"
-#~ msgstr "Zde zadejte adresu URL"
 
 #~ msgid "Revert"
 #~ msgstr "Vrátit"

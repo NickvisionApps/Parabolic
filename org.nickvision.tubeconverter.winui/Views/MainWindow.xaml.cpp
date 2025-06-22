@@ -140,8 +140,20 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
     }
 
-    void MainWindow::OnNotificationSent(const NotificationSentEventArgs& args)
+    winrt::fire_and_forget MainWindow::OnNotificationSent(const NotificationSentEventArgs& args)
     {
+        if(args.getAction() == "error")
+        {
+            ContentDialog dialogErr;
+            dialogErr.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
+            dialogErr.Content(winrt::box_value(winrt::to_hstring(args.getActionParam())));
+            dialogErr.CloseButtonText(winrt::to_hstring(_("OK")));
+            dialogErr.DefaultButton(ContentDialogButton::Close);
+            dialogErr.RequestedTheme(MainGrid().RequestedTheme());
+            dialogErr.XamlRoot(MainGrid().XamlRoot());
+            co_await dialogErr.ShowAsync();
+            co_return;
+        }
         InfoBar().Message(winrt::to_hstring(args.getMessage()));
         switch(args.getSeverity())
         {
@@ -216,6 +228,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             ViewStack().CurrentPageIndex(MainWindowPage::Custom);
             PageCustom().Content(winrt::make<implementation::SettingsPage>());
             PageCustom().Content().as<implementation::SettingsPage>()->Controller(m_controller->createPreferencesViewController());
+            PageCustom().Content().as<implementation::SettingsPage>()->Hwnd(m_hwnd);
         }
     }
 
