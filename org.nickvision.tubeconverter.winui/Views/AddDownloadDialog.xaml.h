@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include "Controls/SettingsRow.xaml.h"
+#include "Controls/StatusPage.g.h"
 #include "Controls/ViewStack.g.h"
 #include "Views/AddDownloadDialog.g.h"
 #include <memory>
@@ -60,6 +61,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
          */
         Windows::Foundation::IAsyncAction UseBatchFile(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Handles when the single page's navigation view selection changes.
+         * @param sender SelectorBar
+         * @param args SelectorItemInvokedEventArgs
+         */
+        void OnNavViewSingleSelectionChanged(const Microsoft::UI::Xaml::Controls::SelectorBar& sender, const Microsoft::UI::Xaml::Controls::SelectorBarSelectionChangedEventArgs& args);
 
     private:
         /**

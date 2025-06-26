@@ -7,7 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
-    <controls:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <controls:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        MinWidth="420">
         <controls:ViewStack.Pages>
             <Grid RowSpacing="6">
                 <Grid.RowDefinitions>
@@ -29,13 +30,13 @@
                     </SelectorBarItem>
                 </SelectorBar>
 
-                <controls:ViewStack x:Name="ViewStackValidate" Grid.Row="1" MinWidth="350">
+                <controls:ViewStack x:Name="ViewStackValidate" Grid.Row="1">
                     <controls:ViewStack.Pages>
                         <StackPanel Orientation="Vertical" Spacing="6">
                             <controls:SettingsRow x:Name="RowMediaUrl">
                                 <controls:SettingsRow.Child>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <TextBox x:Name="TxtMediaUrl" MaxWidth="240" TextChanged="OnTxtMediaUrlTextChanged"/>
+                                        <TextBox x:Name="TxtMediaUrl" MinWidth="220" MaxWidth="220" TextChanged="OnTxtMediaUrlTextChanged"/>
 
                                         <Button x:Name="BtnUseBatchFile" Click="UseBatchFile">
                                             <Button.Content>
@@ -76,19 +77,19 @@
                 </controls:ViewStack>
             </Grid>
 
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,24,0,24" Orientation="Vertical" Spacing="12">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,48,0,48" Orientation="Vertical" Spacing="24">
                 <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="True" Width="36" Height="36"/>
 
                 <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray"/>
             </StackPanel>
 
-            <Grid>
+            <Grid MinHeight="400" RowSpacing="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <SelectorBar x:Name="NavViewSingle" Grid.Row="0">
+                <SelectorBar x:Name="NavViewSingle" Grid.Row="0" SelectionChanged="OnNavViewSingleSelectionChanged">
                     <SelectorBarItem x:Name="NavViewSingleGeneral" IsSelected="True">
                         <SelectorBarItem.Icon>
                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA69;"/>
@@ -108,12 +109,145 @@
                     </SelectorBarItem>
                 </SelectorBar>
 
-                <controls:ViewStack x:Name="ViewStackSingle" Grid.Row="1" MinWidth="350">
+                <controls:ViewStack x:Name="ViewStackSingle" Grid.Row="1">
+                    <controls:ViewStack.Pages>
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <controls:SettingsRow x:Name="RowFileTypeSingle" Glyph="&#xE8A5;">
+                                <controls:SettingsRow.Child>
+                                    <ComboBox x:Name="CmbFileTypeSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
 
+                            <controls:SettingsRow x:Name="RowVideoFormatSingle" Glyph="&#xE714;">
+                                <controls:SettingsRow.Child>
+                                    <ComboBox x:Name="CmbVideoFormatSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowAudioFormatSingle" Glyph="&#xE8D6;">
+                                <controls:SettingsRow.Child>
+                                    <ComboBox x:Name="CmbAudioFormatSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowSaveFolderSingle" Glyph="&#xE8B7;">
+                                <controls:SettingsRow.Child>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <TextBox x:Name="TxtSaveFolderSingle" MinWidth="220" MaxWidth="220" IsReadOnly="True"/>
+
+                                        <Button x:Name="BtnSelectSaveFolderSingle">
+                                            <Button.Content>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowFileNameSingle" Glyph="&#xE8AC;">
+                                <controls:SettingsRow.Child>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <TextBox x:Name="TxtFileNameSingle" MinWidth="220" MaxWidth="220"/>
+
+                                        <Button x:Name="BtnRevertFileNameSingle">
+                                            <Button.Content>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A6;"/>
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+                        </StackPanel>
+
+                        <Grid RowSpacing="6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" ColumnSpacing="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" HorizontalAlignment="Stretch">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;"/>
+
+                                            <TextBlock x:Name="LblSelectAllSubtitlesSingle"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button Grid.Column="1" HorizontalAlignment="Stretch">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;"/>
+
+                                            <TextBlock x:Name="LblDeselectAllSubtitlesSingle"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                            <controls:ViewStack x:Name="ViewStackSubtitlesSingle" Grid.Row="1">
+                                <controls:ViewStack.Pages>
+                                    <controls:StatusPage x:Name="StatusNoSubtitlesSingle" Glyph="&#xECA5;" IsCompact="True"/>
+
+                                    <Border Padding="6" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" CornerRadius="8"
+                                            BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                                        <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
+                                            <ListView x:Name="ListSubtitlesSingle" SelectionMode="Multiple"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </controls:ViewStack.Pages>
+                            </controls:ViewStack>
+                        </Grid>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <controls:SettingsRow x:Name="RowSplitVideoByChaptersSingle" Glyph="&#xE8C6;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglSplitVideoByChaptersSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowExportDescriptionSingle" Glyph="&#xE779;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglExportDescriptionSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowExcludeFromHistorySingle" Glyph="&#xF739;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglExcludeFromHistorySingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowPostProcessorArgumentSingle" Glyph="&#xE90F;">
+                                <controls:SettingsRow.Child>
+                                    <ComboBox x:Name="CmbPostProcessorArgumentSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowStartTimeSingle" Glyph="&#xE917;">
+                                <controls:SettingsRow.Child>
+                                    <TextBox x:Name="TxtStartTimeSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowEndTimeSingle" Glyph="&#xE917;">
+                                <controls:SettingsRow.Child>
+                                    <TextBox x:Name="TxtEndTimeSingle"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+                        </StackPanel>
+                    </controls:ViewStack.Pages>
                 </controls:ViewStack>
             </Grid>
 
-            <Grid>
+            <Grid RowSpacing="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -133,7 +267,7 @@
                     </SelectorBarItem>
                 </SelectorBar>
 
-                <controls:ViewStack x:Name="ViewStackPlaylist" Grid.Row="1" MinWidth="350">
+                <controls:ViewStack x:Name="ViewStackPlaylist" Grid.Row="1">
 
                 </controls:ViewStack>
             </Grid>
