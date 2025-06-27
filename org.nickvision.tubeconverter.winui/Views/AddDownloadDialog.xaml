@@ -135,7 +135,7 @@
                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                         <TextBox x:Name="TxtSaveFolderSingle" MinWidth="220" MaxWidth="220" IsReadOnly="True"/>
 
-                                        <Button x:Name="BtnSelectSaveFolderSingle">
+                                        <Button x:Name="BtnSelectSaveFolderSingle" Click="SelectSaveFolderSingle">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
                                             </Button.Content>
@@ -149,7 +149,7 @@
                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                         <TextBox x:Name="TxtFileNameSingle" MinWidth="220" MaxWidth="220"/>
 
-                                        <Button x:Name="BtnRevertFileNameSingle">
+                                        <Button x:Name="BtnRevertFileNameSingle" Click="RevertFileNameSingle">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A6;"/>
                                             </Button.Content>
@@ -171,7 +171,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Button Grid.Column="0" HorizontalAlignment="Stretch">
+                                <Button Grid.Column="0" HorizontalAlignment="Stretch" Click="SelectAllSubtitlesSingle">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;"/>
@@ -181,7 +181,7 @@
                                     </Button.Content>
                                 </Button>
 
-                                <Button Grid.Column="1" HorizontalAlignment="Stretch">
+                                <Button Grid.Column="1" HorizontalAlignment="Stretch" Click="DeselectAllSubtitlesSingle">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;"/>

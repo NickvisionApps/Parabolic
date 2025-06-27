@@ -136,7 +136,19 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         else if(res == ContentDialogResult::Secondary) //Download
         {
+            if(!m_controller->isUrlPlaylist()) //Single Download
+            {
+                std::vector<std::string> subtitles;
+                for(const IInspectable& object : ListSubtitlesSingle().SelectedItems())
+                {
+                    subtitles.push_back(winrt::to_string(winrt::unbox_value<winrt::hstring>(object)));
+                }
+                m_controller->addSingleDownload(winrt::to_string(TxtSaveFolderSingle().Text()), winrt::to_string(TxtFileNameSingle().Text()), CmbFileTypeSingle().SelectedIndex(), CmbVideoFormatSingle().SelectedIndex(), CmbAudioFormatSingle().SelectedIndex(), subtitles, TglSplitVideoByChaptersSingle().IsOn(), TglExportDescriptionSingle().IsOn(), TglExcludeFromHistorySingle().IsOn(), CmbPostProcessorArgumentSingle().SelectedIndex(), winrt::to_string(TxtStartTimeSingle().Text()), winrt::to_string(TxtEndTimeSingle().Text()));
+            }
+            else //Playlist Download
+            {
 
+            }
         }
         co_return res;
     }
@@ -200,6 +212,33 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
     }
 
+    Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        FolderPicker picker;
+        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
+        picker.FileTypeFilter().Append(L"*");
+        StorageFolder folder{ co_await picker.PickSingleFolderAsync() };
+        if(folder)
+        {
+            TxtSaveFolderSingle().Text(folder.Path());
+        }
+    }
+
+    void AddDownloadDialog::RevertFileNameSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        TxtFileNameSingle().Text(winrt::to_hstring(m_controller->getMediaTitle(0)));
+    }
+
+    void AddDownloadDialog::SelectAllSubtitlesSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        ListSubtitlesSingle().SelectAll();
+    }
+
+    void AddDownloadDialog::DeselectAllSubtitlesSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        ListSubtitlesSingle().SelectedItems().Clear();
+    }
+
     winrt::fire_and_forget AddDownloadDialog::OnUrlValidated(bool valid)
     {
         if(!valid)
@@ -213,6 +252,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             dialog.RequestedTheme(RequestedTheme());
             dialog.XamlRoot(XamlRoot());
             co_await dialog.ShowAsync();
+            co_return;
         }
         CloseButtonText(L"Cancel");
         SecondaryButtonText(L"Download");

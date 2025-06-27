@@ -67,6 +67,30 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args SelectorItemInvokedEventArgs
          */
         void OnNavViewSingleSelectionChanged(const Microsoft::UI::Xaml::Controls::SelectorBar& sender, const Microsoft::UI::Xaml::Controls::SelectorBarSelectionChangedEventArgs& args);
+        /**
+         * @brief Prompts the user to select a save folder for a single download.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction SelectSaveFolderSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Reverts the file name of a single download.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void RevertFileNameSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Selects all subtitles for a single download.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void SelectAllSubtitlesSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Deselects all subtitles for a single download.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void DeselectAllSubtitlesSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         /**
