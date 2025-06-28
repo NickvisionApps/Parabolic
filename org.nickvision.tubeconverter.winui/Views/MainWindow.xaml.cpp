@@ -6,6 +6,7 @@
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "Controls/AboutDialog.xaml.h"
+#include "Controls/SettingsRow.xaml.h"
 #include "Helpers/WinUIHelpers.h"
 #include "Views/AddDownloadDialog.xaml.h"
 #include "Views/SettingsPage.xaml.h"
@@ -26,11 +27,16 @@ using namespace winrt::Microsoft::UI::Xaml::Input;
 using namespace winrt::Microsoft::UI::Xaml::Media;
 using namespace winrt::Windows::Foundation::Collections;
 using namespace winrt::Windows::Graphics;
+using namespace winrt::Windows::Storage;
 using namespace winrt::Windows::System;
 
 enum MainWindowPage
 {
     Home = 0,
+    History,
+    Downloading,
+    Queued,
+    Completed,
     Custom
 };
 
@@ -50,8 +56,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_controller = controller;
         //Register Events
         AppWindow().Closing({ this, &MainWindow::OnClosing });
-        m_controller->configurationSaved() += [&](const EventArgs& args){ OnConfigurationSaved(args); };
-        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
+        m_controller->configurationSaved() += [this](const EventArgs& args){ OnConfigurationSaved(args); };
+        m_controller->notificationSent() += [this](const NotificationSentEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
+        m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnHistoryChanged(args); }); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
@@ -73,6 +80,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         PageHome().Title(winrt::to_hstring(_("Download Media")));
         PageHome().Description(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
         LblHomeAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        LblHistoryTitle().Text(winrt::to_hstring(_("History")));
+        PageNoHistory().Title(winrt::to_hstring(_("No History Available")));
+        PageNoHistory().Description(winrt::to_hstring(_("Download some media to see it here")));
+        LblHistoryAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        LblHistoryClearHistory().Text(winrt::to_hstring(_("Clear")));
     }
 
     void MainWindow::SystemTheme(ElementTheme theme)
@@ -187,6 +199,57 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         InfoBar().IsOpen(true);
     }
 
+    void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
+    {
+        ViewStackHistory().CurrentPageIndex(0);
+        ListHistory().Items().Clear();
+        for(const HistoricDownload& download : *args)
+        {
+            FontIcon icnPlay;
+            icnPlay.FontFamily(WinUIHelpers::LookupAppResource<Microsoft::UI::Xaml::Media::FontFamily>(L"SymbolThemeFontFamily"));
+            icnPlay.Glyph(L"\uE768");
+            Button btnPlay;
+            btnPlay.Content(icnPlay);
+            btnPlay.Click([this, download](const IInspectable&, const RoutedEventArgs&) -> Windows::Foundation::IAsyncAction
+            {
+                co_await Launcher::LaunchFileAsync(co_await StorageFile::GetFileFromPathAsync(winrt::to_hstring(download.getPath().string())));
+            });
+            FontIcon icnDownload;
+            icnDownload.FontFamily(WinUIHelpers::LookupAppResource<Microsoft::UI::Xaml::Media::FontFamily>(L"SymbolThemeFontFamily"));
+            icnDownload.Glyph(L"\uE896");
+            Button btnDownload;
+            btnDownload.Content(icnDownload);
+            btnDownload.Click([this, download](const IInspectable&, const RoutedEventArgs&) -> Windows::Foundation::IAsyncAction
+            {
+                co_await AddDownload(winrt::to_hstring(download.getUrl()));
+            });
+            FontIcon icnDelete;
+            icnDelete.FontFamily(WinUIHelpers::LookupAppResource<Microsoft::UI::Xaml::Media::FontFamily>(L"SymbolThemeFontFamily"));
+            icnDelete.Glyph(L"\uE74D");
+            Button btnDelete;
+            btnDelete.Content(icnDelete);
+            btnDelete.Click([this, download](const IInspectable&, const RoutedEventArgs&)
+            {
+                m_controller->getDownloadManager().removeHistoricDownload(download);
+            });
+            StackPanel panel;
+            panel.Orientation(Orientation::Horizontal);
+            panel.Spacing(6);
+            if(std::filesystem::exists(download.getPath()))
+            {
+                panel.Children().Append(btnPlay);
+            }
+            panel.Children().Append(btnDownload);
+            panel.Children().Append(btnDelete);
+            Controls::SettingsRow row{ winrt::make<Controls::implementation::SettingsRow>() };
+            row.Title(winrt::to_hstring(download.getTitle()));
+            row.Description(winrt::to_hstring(download.getUrl()));
+            row.Child(panel);
+            ViewStackHistory().CurrentPageIndex(1);
+            ListHistory().Items().Append(row);
+        }
+    }
+
     void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)
     {
         if(args.Reason() == AutoSuggestionBoxTextChangeReason::UserInput)
@@ -222,6 +285,22 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(tag == L"Home")
         {
             ViewStack().CurrentPageIndex(MainWindowPage::Home);
+        }
+        else if(tag == L"History")
+        {
+            ViewStack().CurrentPageIndex(MainWindowPage::History);
+        }
+        else if(tag == L"Downloading")
+        {
+            ViewStack().CurrentPageIndex(MainWindowPage::Downloading);
+        }
+        else if(tag == L"Queued")
+        {
+            ViewStack().CurrentPageIndex(MainWindowPage::Queued);
+        }
+        else if(tag == L"Completed")
+        {
+            ViewStack().CurrentPageIndex(MainWindowPage::Completed);
         }
         else if(tag == L"Settings")
         {
@@ -274,6 +353,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     Windows::Foundation::IAsyncAction MainWindow::AddDownload(const IInspectable& sender, const RoutedEventArgs& args)
     {
         co_await AddDownload();
+    }
+
+    void MainWindow::ClearHistory(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        m_controller->getDownloadManager().clearHistory();
     }
 
     Windows::Foundation::IAsyncAction MainWindow::AddDownload(const winrt::hstring& url)

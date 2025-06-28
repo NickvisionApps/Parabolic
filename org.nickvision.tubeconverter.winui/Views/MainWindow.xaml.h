@@ -60,6 +60,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         winrt::fire_and_forget OnNotificationSent(const ::Nickvision::Notifications::NotificationSentEventArgs& args);
         /**
+         * @brief Handles when the download history is changed.
+         * @param args Nickvision::Events::ParamEventArgs<std::vector<Nickvision::TubeConverter::Shared::Models::HistoricDownload>>
+         */
+        void OnHistoryChanged(const ::Nickvision::Events::ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::HistoricDownload>>& args);
+        /**
          * Handles when the titlebar's search box text is changed
          * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox
          * @param args Microsoft::UI::Xaml::Controls::AutoSuggestEventArgs
@@ -125,6 +130,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         * @param args Microsoft::UI::Xaml::RoutedEventArgs
         */
         Windows::Foundation::IAsyncAction AddDownload(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Clears the download history.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void ClearHistory(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         /**

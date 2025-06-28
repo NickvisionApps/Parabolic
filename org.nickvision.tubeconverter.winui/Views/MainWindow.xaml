@@ -148,6 +148,69 @@
                             </controls:StatusPage.Child>
                         </controls:StatusPage>
 
+                        <Grid Margin="24,24,24,24" RowSpacing="12">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="LblHistoryTitle" Grid.Row="0" FontSize="26" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                            <controls:ViewStack x:Name="ViewStackHistory" Grid.Row="1">
+                                <controls:ViewStack.Pages>
+                                    <controls:StatusPage x:Name="PageNoHistory" Glyph="&#xE81C;">
+                                        <controls:StatusPage.Child>
+                                            <Button Style="{StaticResource AccentButtonStyle}" Click="AddDownload">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+
+                                                        <TextBlock x:Name="LblHistoryAddDownload"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                        </controls:StatusPage.Child>
+                                    </controls:StatusPage>
+
+                                    <Grid RowSpacing="12">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
+                                            <Button Style="{StaticResource AccentButtonStyle}" Click="ClearHistory">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+
+                                                        <TextBlock x:Name="LblHistoryClearHistory"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+                                        </StackPanel>
+
+                                        <MenuFlyoutSeparator Grid.Row="1"/>
+
+                                        <ListView x:Name="ListHistory" Grid.Row="2" SelectionMode="None"/>
+                                    </Grid>
+                                </controls:ViewStack.Pages>
+                            </controls:ViewStack>
+                        </Grid>
+
+                        <Grid Margin="24,24,24,24" RowSpacing="12">
+
+                        </Grid>
+
+                        <Grid Margin="24,24,24,24" RowSpacing="12">
+
+                        </Grid>
+
+                        <Grid Margin="24,24,24,24" RowSpacing="12">
+
+                        </Grid>
+
                         <Frame x:Name="PageCustom"/>
                     </controls:ViewStack.Pages>
                 </controls:ViewStack>
