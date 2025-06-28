@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-14 08:01-0400\n"
-"PO-Revision-Date: 2025-05-05 17:36+0000\n"
-"Last-Translator: YC Tsai <ataiwanaton@gmail.com>\n"
+"PO-Revision-Date: 2025-06-28 13:05+0000\n"
+"Last-Translator: cy lin <cylin577@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/nickvision-tube-converter/app/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
@@ -93,13 +93,15 @@ msgstr "無"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
+#, fuzzy
 msgid "Error attempting to validate download: {}"
-msgstr ""
+msgstr "無法驗證下載: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:401
+#, fuzzy
 msgid "Error attempting to add download: {}"
-msgstr ""
+msgstr "無法添加下載: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
@@ -150,7 +152,7 @@ msgstr[0] "已還原 {} 個下載"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:278
 msgid "Error attempting to recover downloads: {}"
-msgstr ""
+msgstr "無法恢復下載: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 msgid "Download Finished"
@@ -176,7 +178,7 @@ msgstr "{} 下載完成但有錯誤"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
-msgstr ""
+msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
 msgid "{:.2f} GiB/s"
@@ -196,7 +198,7 @@ msgstr "{:.2f} B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:37
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
@@ -206,7 +208,7 @@ msgstr "最佳化"
 
 #: libparabolic/src/models/format.cpp:20 libparabolic/src/models/format.cpp:235
 msgid "Worst"
-msgstr ""
+msgstr "最糟"
 
 #: libparabolic/src/models/format.cpp:310
 msgid "Audio Description"
@@ -1054,8 +1056,9 @@ msgstr "使用 aria2"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:295
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:297
+#, fuzzy
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
-msgstr ""
+msgstr "當啟動時，Parabolic 會使用 aria2c 來下載媒體。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:299
@@ -1096,7 +1099,7 @@ msgstr "移除來源資訊"
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
-msgstr "啟用後 Parabolic 將會清除後設資料中可被辨識的下載資訊。"
+msgstr "啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:223
@@ -1121,7 +1124,7 @@ msgstr "剪裁音訊縮圖"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
 #, fuzzy
 msgid "Parabolic will crop thumbnails of audio files to squares."
-msgstr "啟用後 Parabolic 將會剪裁音訊檔案縮圖成正方形。"
+msgstr "啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:237
@@ -1155,9 +1158,8 @@ msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:390
-#, fuzzy
 msgid "Postprocessing Arguments"
-msgstr "後製使用的核心數"
+msgstr "後製參數"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
 msgid ""
