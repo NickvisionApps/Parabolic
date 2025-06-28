@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-26 20:48-0400\n"
+"POT-Creation-Date: 2025-06-28 13:24-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -93,7 +93,7 @@ msgstr "Audio"
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:100
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:134
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:99
 #, fuzzy
 msgid "None"
@@ -101,13 +101,11 @@ msgstr "Không"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
-#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:401
-#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -162,13 +160,12 @@ msgid "Unable to download and install update"
 msgstr "Không thể tải và cài bản cập nhật."
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:281
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Thử lại các lượt tải xuống thất bại"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:286
-#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -177,7 +174,7 @@ msgid "Download Finished"
 msgstr "Đã tải xong"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:316
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} has finished downloading"
 msgstr "\"{0}\" đã tải xong."
 
@@ -192,7 +189,7 @@ msgid "Download Finished With Error"
 msgstr "Đã tải xong kèm lỗi"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:320
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} has finished with an error"
 msgstr "\"{0}\" đã tải xong kèm lỗi!"
 
@@ -201,22 +198,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -239,22 +236,22 @@ msgid "Audio Description"
 msgstr ""
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B"
 msgstr "{0:f1} B/s"
 
@@ -279,7 +276,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:40
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:201
 msgid "Add Download"
@@ -290,12 +287,12 @@ msgid "Back"
 msgstr "Quay lại"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:47
 msgid "Media URL"
 msgstr "URL của media"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:46
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:49
 msgid "Use Batch File"
 msgstr ""
 
@@ -307,7 +304,7 @@ msgstr "Xác thực"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:50
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:53
 msgid "Credential"
 msgstr "Chứng chỉ"
 
@@ -315,7 +312,7 @@ msgstr "Chứng chỉ"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:51
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:54
 msgid "Username"
 msgstr "Tên đăng nhập"
 
@@ -323,12 +320,12 @@ msgstr "Tên đăng nhập"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:56
 msgid "Password"
 msgstr "Mật khẩu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:86
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:50
 #, fuzzy
 msgid "Download Immediately"
 msgstr "Tải media"
@@ -338,13 +335,14 @@ msgid "Use your previous download options for this download"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:92
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:79
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:113
 msgid "Validate"
 msgstr "Xác thực"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:309
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:88
 msgid "File Type"
 msgstr "Loại tệp"
 
@@ -356,17 +354,17 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:133
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:64
 msgid "Video Format"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:65
 msgid "Audio Format"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:60
 #, fuzzy
 msgid "Subtitles"
 msgstr "Nhúng phụ đề"
@@ -377,7 +375,8 @@ msgstr "Tùy chọn nâng cao"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:165
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:352
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:93
 msgid "Save Folder"
 msgstr "Thư mục lưu"
 
@@ -385,17 +384,20 @@ msgstr "Thư mục lưu"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:358
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:298
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:369
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:95
 msgid "Select Save Folder"
 msgstr "Chọn thư mục lưu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:180
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:68
 msgid "File Name"
 msgstr "Tên tệp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:233
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:426
 msgid "Revert to Title"
 msgstr ""
 
@@ -406,14 +408,16 @@ msgstr "Tải"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:219
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:424
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:99
 #, fuzzy
 msgid "Select All"
 msgstr "Bỏ chọn tất cả"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:226
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:431
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:100
 msgid "Deselect All"
 msgstr "Bỏ chọn tất cả"
 
@@ -425,26 +429,29 @@ msgstr "Tách chương"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:258
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:334
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:104
 msgid "Export Description"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:262
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:79
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:107
 #, fuzzy
 msgid "Exclude from History"
 msgstr "Xóa lịch sử"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:266
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:346
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:82
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:110
 #, fuzzy
 msgid "Post Processor Argument"
 msgstr "Đang xử lý..."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:270
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:83
 msgid "Start Time"
 msgstr "Thời điểm bắt đầu"
 
@@ -454,11 +461,12 @@ msgid "Revert to Original"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:283
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:84
 msgid "End Time"
 msgstr "Thời điểm kết thúc"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:320
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:89
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
 "playlist files. Please select a specific file type that is known to support "
@@ -466,10 +474,12 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:338
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:90
 msgid "Write M3U Playlist File"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:369
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:94
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr ""
@@ -480,6 +490,7 @@ msgid "Playlist Items"
 msgstr "Playlist"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:413
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:96
 msgid "Number Titles"
 msgstr "Đánh số tiêu đề"
 
@@ -1199,7 +1210,6 @@ msgid "Running"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
-#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1207,7 +1217,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:248
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:324
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:148
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:299
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:311
@@ -1248,7 +1258,7 @@ msgid "TXT Files (*.txt)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:249
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:325
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, the cookies settings, and the preferred codecs "
@@ -1263,18 +1273,17 @@ msgid "Close"
 msgstr "Đóng"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:201
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:70
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "Đã ra bản cập nhật mới."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:222
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} items"
 msgstr "{0} trên {1} lượt"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1431,7 +1440,7 @@ msgid "Args (Empty)"
 msgstr "Tên (trống)"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:34
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:250
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:326
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:150
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:301
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:313
@@ -1480,28 +1489,36 @@ msgstr "Chép thông tin debug"
 msgid "Search"
 msgstr "Tìm trong lịch sử"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:286
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:381
 msgid "Cancel"
 msgstr "Hủy"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:42
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:45
 #, fuzzy
 msgid "Media"
 msgstr "phương tiện truyền thông"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:46
 #, fuzzy
 msgid "Authentication"
 msgstr "Xác thực"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:45
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:48
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Nhập URL của media vào đây"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:48
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:51
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:91
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:97
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:102
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:105
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:35
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:39
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:51
@@ -1520,7 +1537,15 @@ msgstr "Nhập URL của media vào đây"
 msgid "On"
 msgstr "Bật"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:49
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:78
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:92
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:98
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:103
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:106
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:109
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:36
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:40
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:52
@@ -1539,45 +1564,49 @@ msgstr "Bật"
 msgid "Off"
 msgstr "Tắt"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
 #, fuzzy
 msgid "Enter username here"
 msgstr "Nhập tên đăng nhập vào đây"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:57
 msgid "Enter password here"
 msgstr "Nhập mật khẩu vào đây"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:58
 msgid "This may take some time..."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:56
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:85
 msgid "General"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:58
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:87
 #, fuzzy
 msgid "Advanced"
 msgstr "Tùy chọn nâng cao"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:65
-#, fuzzy
-msgid "Revert File Name"
-msgstr "Tên tệp"
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:63
+msgid ""
+"Generic file types do not fully support embedding thumbnails and subtitles. "
+"Please select a specific file type that is known to support embedding to "
+"prevent separate files from being written."
+msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:101
 #, fuzzy
 msgid "Split Video by Chapters"
 msgstr "Tách chương"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:86
 #, fuzzy
 msgid "Items"
 msgstr "{0} trên {1} lượt"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:101
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:135
 #, fuzzy
 msgid "Use manual credentials"
 msgstr "Sử dụng chứng chỉ thủ công"
@@ -1710,6 +1739,10 @@ msgstr ""
 #, fuzzy
 msgid "Delete Argument"
 msgstr "Chứng chỉ"
+
+#, fuzzy
+#~ msgid "Revert File Name"
+#~ msgstr "Tên tệp"
 
 #, fuzzy
 #~ msgid "Log"

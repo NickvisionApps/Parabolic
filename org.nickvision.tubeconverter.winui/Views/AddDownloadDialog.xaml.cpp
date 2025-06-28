@@ -4,14 +4,17 @@
 #endif
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include "helpers/WinUIHelpers.h"
 
 using namespace ::Nickvision::Events;
 using namespace ::Nickvision::Helpers;
 using namespace ::Nickvision::Keyring;
 using namespace ::Nickvision::TubeConverter::Shared::Controllers;
 using namespace ::Nickvision::TubeConverter::Shared::Models;
+using namespace ::Nickvision::TubeConverter::WinUI::Helpers;
 using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
+using namespace winrt::Microsoft::UI::Xaml::Media;
 using namespace winrt::Windows::ApplicationModel::DataTransfer;
 using namespace winrt::Windows::Storage;
 using namespace winrt::Windows::Storage::Pickers;
@@ -57,23 +60,54 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         NavViewSingleSubtitles().Text(winrt::to_hstring(_("Subtitles")));
         NavViewSingleAdvanced().Text(winrt::to_hstring(_("Advanced")));
         RowFileTypeSingle().Title(winrt::to_hstring(_("File Type")));
+        LblFileTypeWarningSingle().Text(winrt::to_hstring(_("Generic file types do not fully support embedding thumbnails and subtitles. Please select a specific file type that is known to support embedding to prevent separate files from being written.")));
         RowVideoFormatSingle().Title(winrt::to_hstring(_("Video Format")));
         RowAudioFormatSingle().Title(winrt::to_hstring(_("Audio Format")));
         RowSaveFolderSingle().Title(winrt::to_hstring(_("Save Folder")));
         ToolTipService::SetToolTip(BtnSelectSaveFolderSingle(), winrt::box_value(winrt::to_hstring(_("Select Save Folder"))));
         RowFileNameSingle().Title(winrt::to_hstring(_("File Name")));
-        ToolTipService::SetToolTip(BtnRevertFileNameSingle(), winrt::box_value(winrt::to_hstring(_("Revert File Name"))));
+        ToolTipService::SetToolTip(BtnRevertFileNameSingle(), winrt::box_value(winrt::to_hstring(_("Revert to Title"))));
         StatusNoSubtitlesSingle().Title(winrt::to_hstring(_("No Subtitles Available")));
         LblSelectAllSubtitlesSingle().Text(winrt::to_hstring(_("Select All")));
         LblDeselectAllSubtitlesSingle().Text(winrt::to_hstring(_("Deselect All")));
         RowSplitVideoByChaptersSingle().Title(winrt::to_hstring(_("Split Video by Chapters")));
+        TglSplitVideoByChaptersSingle().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglSplitVideoByChaptersSingle().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowExportDescriptionSingle().Title(winrt::to_hstring(_("Export Description")));
+        TglExportDescriptionSingle().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglExportDescriptionSingle().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowExcludeFromHistorySingle().Title(winrt::to_hstring(_("Exclude from History")));
+        TglExcludeFromHistorySingle().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglExcludeFromHistorySingle().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowPostProcessorArgumentSingle().Title(winrt::to_hstring(_("Post Processor Argument")));
         RowStartTimeSingle().Title(winrt::to_hstring(_("Start Time")));
         RowEndTimeSingle().Title(winrt::to_hstring(_("End Time")));
         NavViewPlaylistGeneral().Text(winrt::to_hstring(_("General")));
         NavViewPlaylistItems().Text(winrt::to_hstring(_("Items")));
+        NavViewPlaylistAdvanced().Text(winrt::to_hstring(_("Advanced")));
+        RowFileTypePlaylist().Title(winrt::to_hstring(_("File Type")));
+        LblFileTypeWarningPlaylist().Text(winrt::to_hstring(_("Generic file types do not fully support embedding thumbnails and writing playlist files. Please select a specific file type that is known to support embedding to prevent separate files from being written.")));
+        RowWriteM3UFilePlaylist().Title(winrt::to_hstring(_("Write M3U Playlist File")));
+        TglWriteM3UFilePlaylist().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglWriteM3UFilePlaylist().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
+        RowSaveFolderPlaylist().Title(winrt::to_hstring(_("Save Folder")));
+        LblSaveFolderWarningPlaylist().Text(winrt::to_hstring(_("Will be ignored for media in batch files that provide save folder paths.")));
+        ToolTipService::SetToolTip(BtnSelectSaveFolderPlaylist(), winrt::box_value(winrt::to_hstring(_("Select Save Folder"))));
+        RowNumberTitlesPlaylist().Title(winrt::to_hstring(_("Number Titles")));
+        TglNumberTitlesPlaylist().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglNumberTitlesPlaylist().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
+        LblSelectAllItemsPlaylist().Text(winrt::to_hstring(_("Select All")));
+        LblDeselectAllItemsPlaylist().Text(winrt::to_hstring(_("Deselect All")));
+        RowSplitVideoByChaptersPlaylist().Title(winrt::to_hstring(_("Split Video by Chapters")));
+        TglSplitVideoByChaptersPlaylist().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglSplitVideoByChaptersPlaylist().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
+        RowExportDescriptionPlaylist().Title(winrt::to_hstring(_("Export Description")));
+        TglExportDescriptionPlaylist().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglExportDescriptionPlaylist().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
+        RowExcludeFromHistoryPlaylist().Title(winrt::to_hstring(_("Exclude from History")));
+        TglExcludeFromHistoryPlaylist().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglExcludeFromHistoryPlaylist().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
+        RowPostProcessorArgumentPlaylist().Title(winrt::to_hstring(_("Post Processor Argument")));
         //Load
         ViewStack().CurrentPageIndex(AddDownloadDialogPage::Validate);
         PrimaryButtonText(winrt::to_hstring(_("Validate")));
@@ -132,23 +166,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             {
                 m_controller->validateUrl(winrt::to_string(TxtMediaUrl().Text()), CmbCredential().SelectedIndex() - 2);
             }
-            res = co_await base_type::ShowAsync();
+            res = co_await ShowAsync();
         }
         else if(res == ContentDialogResult::Secondary) //Download
         {
-            if(!m_controller->isUrlPlaylist()) //Single Download
-            {
-                std::vector<std::string> subtitles;
-                for(const IInspectable& object : ListSubtitlesSingle().SelectedItems())
-                {
-                    subtitles.push_back(winrt::to_string(winrt::unbox_value<winrt::hstring>(object)));
-                }
-                m_controller->addSingleDownload(winrt::to_string(TxtSaveFolderSingle().Text()), winrt::to_string(TxtFileNameSingle().Text()), CmbFileTypeSingle().SelectedIndex(), CmbVideoFormatSingle().SelectedIndex(), CmbAudioFormatSingle().SelectedIndex(), subtitles, TglSplitVideoByChaptersSingle().IsOn(), TglExportDescriptionSingle().IsOn(), TglExcludeFromHistorySingle().IsOn(), CmbPostProcessorArgumentSingle().SelectedIndex(), winrt::to_string(TxtStartTimeSingle().Text()), winrt::to_string(TxtEndTimeSingle().Text()));
-            }
-            else //Playlist Download
-            {
-
-            }
+            Download();
         }
         co_return res;
     }
@@ -203,6 +225,18 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
     }
 
+    void AddDownloadDialog::OnCmbFileTypeChanged(const IInspectable& sender, const SelectionChangedEventArgs& args)
+    {
+        int fileTypeIndex{ sender.as<ComboBox>().SelectedIndex() };
+        if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
+        {
+            fileTypeIndex += MediaFileType::getVideoFileTypeCount();
+        }
+        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
+        BtnFileTypeWarningSingle().Visibility(type.isGeneric() ? Visibility::Visible : Visibility::Collapsed);
+        BtnFileTypeWarningPlaylist().Visibility(type.isGeneric() ? Visibility::Visible : Visibility::Collapsed);
+    }
+
     void AddDownloadDialog::OnNavViewSingleSelectionChanged(const SelectorBar& sender, const SelectorBarSelectionChangedEventArgs& args)
     {
         uint32_t index;
@@ -212,7 +246,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
     }
 
-    Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderSingle(const IInspectable& sender, const RoutedEventArgs& args)
     {
         FolderPicker picker;
         picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
@@ -224,19 +258,61 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
     }
 
-    void AddDownloadDialog::RevertFileNameSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    void AddDownloadDialog::RevertFileNameSingle(const IInspectable& sender, const RoutedEventArgs& args)
     {
         TxtFileNameSingle().Text(winrt::to_hstring(m_controller->getMediaTitle(0)));
     }
 
-    void AddDownloadDialog::SelectAllSubtitlesSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    void AddDownloadDialog::SelectAllSubtitlesSingle(const IInspectable& sender, const RoutedEventArgs& args)
     {
         ListSubtitlesSingle().SelectAll();
     }
 
-    void AddDownloadDialog::DeselectAllSubtitlesSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    void AddDownloadDialog::DeselectAllSubtitlesSingle(const IInspectable& sender, const RoutedEventArgs& args)
     {
         ListSubtitlesSingle().SelectedItems().Clear();
+    }
+
+    void AddDownloadDialog::OnNavViewPlaylistSelectionChanged(const SelectorBar& sender, const SelectorBarSelectionChangedEventArgs& args)
+    {
+        uint32_t index;
+        if(sender.Items().IndexOf(sender.SelectedItem(), index))
+        {
+            ViewStackPlaylist().CurrentPageIndex(static_cast<int>(index));
+        }
+    }
+
+    Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderPlaylist(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        FolderPicker picker;
+        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
+        picker.FileTypeFilter().Append(L"*");
+        StorageFolder folder{ co_await picker.PickSingleFolderAsync() };
+        if(folder)
+        {
+            TxtSaveFolderPlaylist().Text(folder.Path());
+        }
+    }
+
+    void AddDownloadDialog::OnTglNumberTitlesPlaylistToggled(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        m_controller->setPreviousNumberTitles(TglNumberTitlesPlaylist().IsOn());
+        for(unsigned int i = 0; i < ListItemsPlaylist().Items().Size(); i++)
+        {
+            StackPanel panel{ ListItemsPlaylist().Items().GetAt(i).as<StackPanel>() };
+            TextBox txt{ panel.Children().GetAt(0).as<TextBox>() };
+            txt.Text(winrt::to_hstring(m_controller->getMediaTitle(i, TglNumberTitlesPlaylist().IsOn())));
+        }
+    }
+
+    void AddDownloadDialog::SelectAllItemsPlaylist(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        ListItemsPlaylist().SelectAll();
+    }
+
+    void AddDownloadDialog::DeselectAllItemsPlaylist(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        ListItemsPlaylist().SelectedItems().Clear();
     }
 
     winrt::fire_and_forget AddDownloadDialog::OnUrlValidated(bool valid)
@@ -306,6 +382,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                     CmbPostProcessorArgumentSingle().SelectedIndex(CmbPostProcessorArgumentSingle().Items().Size() - 1);
                 }
             }
+            if(CmbPostProcessorArgumentSingle().SelectedIndex() == -1)
+            {
+                CmbPostProcessorArgumentSingle().SelectedIndex(0);
+            }
             TxtStartTimeSingle().PlaceholderText(winrt::to_hstring(m_controller->getMediaTimeFrame(0).startStr()));
             TxtStartTimeSingle().Text(winrt::to_hstring(m_controller->getMediaTimeFrame(0).startStr()));
             TxtEndTimeSingle().PlaceholderText(winrt::to_hstring(m_controller->getMediaTimeFrame(0).endStr()));
@@ -314,6 +394,92 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         else //Playlist Download
         {
             ViewStack().CurrentPageIndex(AddDownloadDialogPage::Playlist);
+            //Load Options
+            for(const std::string& fileType : m_controller->getFileTypeStrings())
+            {
+                CmbFileTypePlaylist().Items().Append(winrt::box_value(winrt::to_hstring(fileType)));
+            }
+            CmbFileTypePlaylist().SelectedIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
+            TglWriteM3UFilePlaylist().IsOn(m_controller->getPreviousDownloadOptions().getWritePlaylistFile());
+            TxtSaveFolderPlaylist().Text(winrt::to_hstring(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
+            //Load Items
+            TglNumberTitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getNumberTitles());
+            for(size_t i = 0; i < m_controller->getMediaCount(); i++)
+            {
+                winrt::hstring title{ winrt::to_hstring(m_controller->getMediaTitle(i, TglNumberTitlesPlaylist().IsOn())) };
+                StackPanel panel;
+                panel.Tag(winrt::box_value(title));
+                panel.Orientation(Orientation::Horizontal);
+                panel.Spacing(6);
+                TextBox txt;
+                txt.MaxWidth(320);
+                txt.Text(title);
+                txt.TextChanged([this, panel, txt](const IInspectable&, const TextChangedEventArgs&)
+                {
+                    panel.Tag(winrt::box_value(txt.Text()));
+                });
+                FontIcon icn;
+                icn.FontFamily(WinUIHelpers::LookupAppResource<Microsoft::UI::Xaml::Media::FontFamily>(L"SymbolThemeFontFamily"));
+                icn.Glyph(L"\uE7A7");
+                Button btn;
+                btn.Content(icn);
+                ToolTipService::SetToolTip(btn, winrt::box_value(winrt::to_hstring(_("Revert to Title"))));
+                btn.Click([this, i, txt](const IInspectable&, const RoutedEventArgs&)
+                {
+                    txt.Text(winrt::to_hstring(m_controller->getMediaTitle(i, TglNumberTitlesPlaylist().IsOn())));
+                });
+                panel.Children().Append(txt);
+                panel.Children().Append(btn);
+                ListItemsPlaylist().Items().Append(panel);
+                ListItemsPlaylist().SelectedItems().Append(ListItemsPlaylist().Items().GetAt(static_cast<int>(i)));
+            }
+            //Load Advanced Options
+            TglSplitVideoByChaptersPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getSplitChapters());
+            TglExportDescriptionPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getExportDescription());
+            for(const std::string& name : m_controller->getPostprocessingArgumentNames())
+            {
+                CmbPostProcessorArgumentPlaylist().Items().Append(winrt::box_value(winrt::to_hstring(name)));
+                if(name == m_controller->getPreviousDownloadOptions().getPostProcessorArgument())
+                {
+                    CmbPostProcessorArgumentPlaylist().SelectedIndex(CmbPostProcessorArgumentPlaylist().Items().Size() - 1);
+                }
+            }
+            if(CmbPostProcessorArgumentPlaylist().SelectedIndex() == -1)
+            {
+                CmbPostProcessorArgumentPlaylist().SelectedIndex(0);
+            }
+        }
+        if(TglDownloadImmediately().IsOn())
+        {
+            Hide();
+            Download();
+        }
+    }
+
+    void AddDownloadDialog::Download()
+    {
+        if(!m_controller->isUrlPlaylist()) //Single Download
+        {
+            std::vector<std::string> subtitles;
+            for(const IInspectable& item : ListSubtitlesSingle().SelectedItems())
+            {
+                subtitles.push_back(winrt::to_string(winrt::unbox_value<winrt::hstring>(item)));
+            }
+            m_controller->addSingleDownload(winrt::to_string(TxtSaveFolderSingle().Text()), winrt::to_string(TxtFileNameSingle().Text()), CmbFileTypeSingle().SelectedIndex(), CmbVideoFormatSingle().SelectedIndex(), CmbAudioFormatSingle().SelectedIndex(), subtitles, TglSplitVideoByChaptersSingle().IsOn(), TglExportDescriptionSingle().IsOn(), TglExcludeFromHistorySingle().IsOn(), CmbPostProcessorArgumentSingle().SelectedIndex(), winrt::to_string(TxtStartTimeSingle().Text()), winrt::to_string(TxtEndTimeSingle().Text()));
+        }
+        else //Playlist Download
+        {
+            std::map<size_t, std::string> filenames;
+            for(const IInspectable& item : ListItemsPlaylist().SelectedItems())
+            {
+                unsigned int index;
+                if(ListItemsPlaylist().Items().IndexOf(item, index))
+                {
+                    winrt::hstring filename{ winrt::unbox_value<winrt::hstring>(item.as<FrameworkElement>().Tag()) };
+                    filenames.emplace(static_cast<size_t>(index), winrt::to_string(filename));
+                }
+            }
+            m_controller->addPlaylistDownload(winrt::to_string(TxtSaveFolderPlaylist().Text()), filenames, CmbFileTypePlaylist().SelectedIndex(), TglSplitVideoByChaptersPlaylist().IsOn(), TglExportDescriptionPlaylist().IsOn(), TglWriteM3UFilePlaylist().IsOn(), TglExcludeFromHistoryPlaylist().IsOn(), CmbPostProcessorArgumentPlaylist().SelectedIndex());
         }
     }
 }

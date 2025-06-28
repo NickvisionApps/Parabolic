@@ -62,6 +62,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         Windows::Foundation::IAsyncAction UseBatchFile(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
+         * @brief Handles when the file type combobox is changed.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs
+         */
+        void OnCmbFileTypeChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs& args);
+        /**
          * @brief Handles when the single page's navigation view selection changes.
          * @param sender SelectorBar
          * @param args SelectorItemInvokedEventArgs
@@ -91,6 +97,36 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
          */
         void DeselectAllSubtitlesSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Handles when the playlist page's navigation view selection changes.
+         * @param sender SelectorBar
+         * @param args SelectorItemInvokedEventArgs
+         */
+        void OnNavViewPlaylistSelectionChanged(const Microsoft::UI::Xaml::Controls::SelectorBar& sender, const Microsoft::UI::Xaml::Controls::SelectorBarSelectionChangedEventArgs& args);
+        /**
+         * @brief Prompts the user to select a save folder for a playlist download.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction SelectSaveFolderPlaylist(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Handles when the playlist's number titles toggle is changed.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void OnTglNumberTitlesPlaylistToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Selects all items for a playlist download.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void SelectAllItemsPlaylist(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Deselects all items for a playlist download.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void DeselectAllItemsPlaylist(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         /**
@@ -98,6 +134,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param valid Whether or not the url is valid
          */
         winrt::fire_and_forget OnUrlValidated(bool valid);
+        /**
+         * @brief Triggers the download.
+         */
+        void Download();
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController> m_controller;
         HWND m_hwnd;
     };

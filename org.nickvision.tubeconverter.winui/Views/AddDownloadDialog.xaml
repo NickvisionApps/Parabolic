@@ -114,7 +114,21 @@
                         <StackPanel Orientation="Vertical" Spacing="6">
                             <controls:SettingsRow x:Name="RowFileTypeSingle" Glyph="&#xE8A5;">
                                 <controls:SettingsRow.Child>
-                                    <ComboBox x:Name="CmbFileTypeSingle"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <ComboBox x:Name="CmbFileTypeSingle" SelectionChanged="OnCmbFileTypeChanged"/>
+
+                                        <Button x:Name="BtnFileTypeWarningSingle">
+                                            <Button.Content>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BA;"/>
+                                            </Button.Content>
+
+                                            <Button.Flyout>
+                                                <Flyout>
+                                                    <TextBlock x:Name="LblFileTypeWarningSingle" Margin="6,6,6,6" MaxWidth="240" TextWrapping="WrapWholeWords"/>
+                                                </Flyout>
+                                            </Button.Flyout>
+                                        </Button>
+                                    </StackPanel>
                                 </controls:SettingsRow.Child>
                             </controls:SettingsRow>
 
@@ -247,13 +261,13 @@
                 </controls:ViewStack>
             </Grid>
 
-            <Grid RowSpacing="6">
+            <Grid MinHeight="400" RowSpacing="6">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <SelectorBar x:Name="NavViewPlaylist" Grid.Row="0">
+                <SelectorBar x:Name="NavViewPlaylist" Grid.Row="0" SelectionChanged="OnNavViewPlaylistSelectionChanged">
                     <SelectorBarItem x:Name="NavViewPlaylistGeneral" IsSelected="True">
                         <SelectorBarItem.Icon>
                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA69;"/>
@@ -265,10 +279,144 @@
                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FD;"/>
                         </SelectorBarItem.Icon>
                     </SelectorBarItem>
+
+                    <SelectorBarItem x:Name="NavViewPlaylistAdvanced">
+                        <SelectorBarItem.Icon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                        </SelectorBarItem.Icon>
+                    </SelectorBarItem>
                 </SelectorBar>
 
                 <controls:ViewStack x:Name="ViewStackPlaylist" Grid.Row="1">
+                    <controls:ViewStack.Pages>
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <controls:SettingsRow x:Name="RowFileTypePlaylist" Glyph="&#xE8A5;">
+                                <controls:SettingsRow.Child>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <ComboBox x:Name="CmbFileTypePlaylist" SelectionChanged="OnCmbFileTypeChanged"/>
 
+                                        <Button x:Name="BtnFileTypeWarningPlaylist">
+                                            <Button.Content>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BA;"/>
+                                            </Button.Content>
+
+                                            <Button.Flyout>
+                                                <Flyout>
+                                                    <TextBlock x:Name="LblFileTypeWarningPlaylist" Margin="6,6,6,6" MaxWidth="240" TextWrapping="WrapWholeWords"/>
+                                                </Flyout>
+                                            </Button.Flyout>
+                                        </Button>
+                                    </StackPanel>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowWriteM3UFilePlaylist" Glyph="&#xE8FD;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglWriteM3UFilePlaylist"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowSaveFolderPlaylist" Glyph="&#xE8B7;">
+                                <controls:SettingsRow.Child>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <TextBox x:Name="TxtSaveFolderPlaylist" MinWidth="220" MaxWidth="220" IsReadOnly="True"/>
+
+                                        <Button x:Name="BtnSelectSaveFolderPlaylist" Click="SelectSaveFolderPlaylist">
+                                            <Button.Content>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button>
+                                            <Button.Content>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BA;"/>
+                                            </Button.Content>
+
+                                            <Button.Flyout>
+                                                <Flyout>
+                                                    <TextBlock x:Name="LblSaveFolderWarningPlaylist" Margin="6,6,6,6" MaxWidth="240" TextWrapping="WrapWholeWords"/>
+                                                </Flyout>
+                                            </Button.Flyout>
+                                        </Button>
+                                    </StackPanel>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+                        </StackPanel>
+
+                        <Grid RowSpacing="6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <controls:SettingsRow x:Name="RowNumberTitlesPlaylist" Grid.Row="0" Glyph="&#xE9D5;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglNumberTitlesPlaylist" Toggled="OnTglNumberTitlesPlaylistToggled"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <Grid Grid.Row="1" ColumnSpacing="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button Grid.Column="0" HorizontalAlignment="Stretch" Click="SelectAllItemsPlaylist">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;"/>
+
+                                            <TextBlock x:Name="LblSelectAllItemsPlaylist"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button Grid.Column="1" HorizontalAlignment="Stretch" Click="DeselectAllItemsPlaylist">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;"/>
+
+                                            <TextBlock x:Name="LblDeselectAllItemsPlaylist"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                            <Border Grid.Row="2" Padding="6" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" CornerRadius="8"
+                                    BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                                <ScrollViewer HorizontalScrollMode="Disabled" VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
+                                    <ListView x:Name="ListItemsPlaylist" SelectionMode="Multiple"/>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <controls:SettingsRow x:Name="RowSplitVideoByChaptersPlaylist" Glyph="&#xE8C6;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglSplitVideoByChaptersPlaylist"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowExportDescriptionPlaylist" Glyph="&#xE779;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglExportDescriptionPlaylist"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowExcludeFromHistoryPlaylist" Glyph="&#xF739;">
+                                <controls:SettingsRow.Child>
+                                    <ToggleSwitch x:Name="TglExcludeFromHistoryPlaylist"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+
+                            <controls:SettingsRow x:Name="RowPostProcessorArgumentPlaylist" Glyph="&#xE90F;">
+                                <controls:SettingsRow.Child>
+                                    <ComboBox x:Name="CmbPostProcessorArgumentPlaylist"/>
+                                </controls:SettingsRow.Child>
+                            </controls:SettingsRow>
+                        </StackPanel>
+                    </controls:ViewStack.Pages>
                 </controls:ViewStack>
             </Grid>
         </controls:ViewStack.Pages>
