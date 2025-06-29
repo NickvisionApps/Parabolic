@@ -63,6 +63,14 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
         m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args){ OnDownloadCredentialNeeded(args); };
+        m_controller->getDownloadManager().downloadAdded() += [this](const DownloadAddedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadAdded(args); }); };
+        m_controller->getDownloadManager().downloadCompleted() += [this](const DownloadCompletedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadCompleted(args); }); };
+        m_controller->getDownloadManager().downloadProgressChanged() += [this](const DownloadProgressChangedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadProgressChanged(args); }); };
+        m_controller->getDownloadManager().downloadStopped() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStopped(args); }); };
+        m_controller->getDownloadManager().downloadPaused() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadPaused(args); }); };
+        m_controller->getDownloadManager().downloadResumed() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadResumed(args); }); };
+        m_controller->getDownloadManager().downloadRetried() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadRetried(args); }); };
+        m_controller->getDownloadManager().downloadStartedFromQueue() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStartedFromQueue(args); }); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
@@ -104,7 +112,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_systemTheme = theme;
     }
 
-    void MainWindow::OnLoaded(const IInspectable& sender, const RoutedEventArgs& args)
+    Windows::Foundation::IAsyncAction MainWindow::OnLoaded(const IInspectable& sender, const RoutedEventArgs& args)
     {
         if (!m_controller)
         {
@@ -112,9 +120,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         if(m_opened)
         {
-            return;
+            co_return;
         }
-        //Startup
         const StartupInformation& info{ m_controller->startup(m_hwnd) };
         if(info.getWindowGeometry().isMaximized())
         {
@@ -133,15 +140,75 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         ViewStackDownloading().CurrentPageIndex(0);
         ViewStackQueued().CurrentPageIndex(0);
         ViewStackCompleted().CurrentPageIndex(0);
+        if(info.showDisclaimer())
+        {
+            TextBlock txt;
+            txt.Text(winrt::to_hstring(_("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.")));
+            txt.TextWrapping(TextWrapping::WrapWholeWords);
+            CheckBox chk;
+            chk.Content(winrt::box_value(winrt::to_hstring(_("Don't show this message again"))));
+            StackPanel panel;
+            panel.Orientation(Orientation::Vertical);
+            panel.Spacing(6);
+            panel.Children().Append(txt);
+            panel.Children().Append(chk);
+            ContentDialog dialog;
+            dialog.Title(winrt::box_value(winrt::to_hstring(_("Disclaimer"))));
+            dialog.Content(panel);
+            dialog.CloseButtonText(winrt::to_hstring(_("OK")));
+            dialog.DefaultButton(ContentDialogButton::Close);
+            dialog.RequestedTheme(MainGrid().RequestedTheme());
+            dialog.XamlRoot(MainGrid().XamlRoot());
+            co_await dialog.ShowAsync();
+            m_controller->setShowDisclaimerOnStartup(!chk.IsChecked().Value());
+        }
+        if(info.hasRecoverableDownloads())
+        {
+            ContentDialog dialog;
+            dialog.Title(winrt::box_value(winrt::to_hstring(_("Recover Crashed Downloads?"))));
+            dialog.Content(winrt::box_value(winrt::to_hstring(_("There are downloads available to recover from when Parabolic crashed. Would you like to recover them?"))));
+            dialog.PrimaryButtonText(winrt::to_hstring(_("Yes")));
+            dialog.CloseButtonText(winrt::to_hstring(_("No")));
+            dialog.DefaultButton(ContentDialogButton::Primary);
+            dialog.RequestedTheme(MainGrid().RequestedTheme());
+            dialog.XamlRoot(MainGrid().XamlRoot());
+            ContentDialogResult res{ co_await dialog.ShowAsync() };
+            if(res == ContentDialogResult::Primary)
+            {
+                m_controller->recoverDownloads();
+            }
+            else
+            {
+                m_controller->clearRecoverableDownloads();
+            }
+        }
+        if(!info.getUrlToValidate().empty())
+        {
+            co_await AddDownload(winrt::to_hstring(info.getUrlToValidate()));
+        }
         m_opened = true;
     }
 
-    void MainWindow::OnClosing(const Microsoft::UI::Windowing::AppWindow& sender, const AppWindowClosingEventArgs& args)
+    Windows::Foundation::IAsyncAction MainWindow::OnClosing(const Microsoft::UI::Windowing::AppWindow& sender, const AppWindowClosingEventArgs& args)
     {
         if(!m_controller->canShutdown())
         {
             args.Cancel(true);
-            return;
+            ContentDialog dialog;
+            dialog.Title(winrt::box_value(winrt::to_hstring(m_controller->getAppInfo().getShortName())));
+            dialog.Content(winrt::box_value(winrt::to_hstring(_("There are downloads in progress. Are you sure you want to exit?"))));
+            dialog.PrimaryButtonText(winrt::to_hstring(_("Yes")));
+            dialog.CloseButtonText(winrt::to_hstring(_("No")));
+            dialog.DefaultButton(ContentDialogButton::Primary);
+            dialog.RequestedTheme(MainGrid().RequestedTheme());
+            dialog.XamlRoot(MainGrid().XamlRoot());
+            ContentDialogResult res{ co_await dialog.ShowAsync() };
+            if(res == ContentDialogResult::Primary)
+            {
+                m_controller->getDownloadManager().stopAllDownloads();
+                Close();
+            }
+            co_return;
         }
         m_controller->shutdown({ AppWindow().Size().Width, AppWindow().Size().Height, static_cast<bool>(IsZoomed(m_hwnd)), AppWindow().Position().X, AppWindow().Position().Y });
     }
@@ -275,6 +342,46 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         dialog.RequestedTheme(MainGrid().RequestedTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
         co_await dialog.as<implementation::CredentialDialog>()->ShowAsync();
+    }
+
+    void MainWindow::OnDownloadAdded(const DownloadAddedEventArgs& args)
+    {
+
+    }
+
+    void MainWindow::OnDownloadCompleted(const DownloadCompletedEventArgs& args)
+    {
+
+    }
+
+    void MainWindow::OnDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
+    {
+
+    }
+
+    void MainWindow::OnDownloadStopped(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::OnDownloadPaused(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::OnDownloadResumed(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::OnDownloadRetried(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::OnDownloadStartedFromQueue(const ParamEventArgs<int>& args)
+    {
+
     }
 
     void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)

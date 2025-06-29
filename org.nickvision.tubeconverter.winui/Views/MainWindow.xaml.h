@@ -36,13 +36,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
          * @throw std::logic_error Thrown if the controller has not been set before loading the window
          */
-        void OnLoaded(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        Windows::Foundation::IAsyncAction OnLoaded(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
          * @brief Handles when the main window is closing.
          * @param sender Microsoft::UI::Windowing::AppWindow
          * @param args Microsoft::UI::Windowing::AppWindowClosingEventArgs
          */
-        void OnClosing(const Microsoft::UI::Windowing::AppWindow& sender, const Microsoft::UI::Windowing::AppWindowClosingEventArgs& args);\
+        Windows::Foundation::IAsyncAction OnClosing(const Microsoft::UI::Windowing::AppWindow& sender, const Microsoft::UI::Windowing::AppWindowClosingEventArgs& args);\
         /**
          * @brief Handles when the main window is activated.
          * @param sender IInspectable
@@ -69,6 +69,46 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args Nickvision::TubeConverter::Shared::Events::DownloadCredentialNeededEventArgs
          */
         winrt::fire_and_forget OnDownloadCredentialNeeded(const ::Nickvision::TubeConverter::Shared::Events::DownloadCredentialNeededEventArgs& args);
+        /**
+         * @brief Handles when a download is addded.
+         * @param args Nickvision::TubeConverter::Shared::Events::DownloadAddedEventArgs
+         */
+        void OnDownloadAdded(const ::Nickvision::TubeConverter::Shared::Events::DownloadAddedEventArgs& args);
+        /**
+         * @brief Handles when a download is completed.
+         * @param args Nickvision::TubeConverter::Shared::Events::DownloadCompletedEventArgs
+         */
+        void OnDownloadCompleted(const ::Nickvision::TubeConverter::Shared::Events::DownloadCompletedEventArgs& args);
+        /**
+         * @brief Handles when a download's progress is changed.
+         * @param args Nickvision::TubeConverter::Shared::Events::DownloadProgressChangedEventArgs
+         */
+        void OnDownloadProgressChanged(const ::Nickvision::TubeConverter::Shared::Events::DownloadProgressChangedEventArgs& args);
+        /**
+         * @brief Handles when a download is stopped.
+         * @param args Nickvision::Events::ParamEventArgs<int>
+         */
+        void OnDownloadStopped(const ::Nickvision::Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is paused.
+         * @param args Nickvision::Events::ParamEventArgs<int>
+         */
+        void OnDownloadPaused(const ::Nickvision::Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is resumed.
+         * @param args Nickvision::Events::ParamEventArgs<int>
+         */
+        void OnDownloadResumed(const ::Nickvision::Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is retried.
+         * @param args Nickvision::Events::ParamEventArgs<int>
+         */
+        void OnDownloadRetried(const ::Nickvision::Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is started from queue.
+         * @param args Nickvision::Events::ParamEventArgs<int>
+         */
+        void OnDownloadStartedFromQueue(const ::Nickvision::Events::ParamEventArgs<int>& args);
         /**
          * Handles when the titlebar's search box text is changed
          * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox
