@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-14 08:01-0400\n"
-"PO-Revision-Date: 2025-06-21 06:05+0000\n"
+"PO-Revision-Date: 2025-06-28 13:05+0000\n"
 "Last-Translator: Pavel Miniutka <pavel.miniutka@gmail.com>\n"
 "Language-Team: Belarusian <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/app/be/>\n"
@@ -95,12 +95,12 @@ msgstr "Няма"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
 msgid "Error attempting to validate download: {}"
-msgstr "Памылка пры спробе праверыць спампоўванне: {}"
+msgstr "Памылка пры спробе праверыць спампоўку: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:401
 msgid "Error attempting to add download: {}"
-msgstr "Памылка пры спробе дадаць спампоўванне: {}"
+msgstr "Памылка пры спробе дадаць спампоўку: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
@@ -254,7 +254,7 @@ msgstr "Аўтаматычна згенерыраваныя"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:431
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
 msgid "Add Download"
-msgstr "Дадаць спампоўванне"
+msgstr "Дадаць спампоўку"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
 msgid "Back"
@@ -314,7 +314,7 @@ msgstr "Спампоўваць адразу"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:71
 msgid "Use your previous download options for this download"
-msgstr "Выкарыстоўваць папярэднія параметры для гэтага спампоўвання"
+msgstr "Выкарыстоўваць папярэднія параметры для гэтай спампоўкі"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:91
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:104
@@ -695,7 +695,7 @@ msgstr "Спампоўвайце медыя"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:252
 msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "Дадайце URL-адрас відэа, аўдыё або плэй-ліста, каб пачаць спампоўванне"
+msgstr "Дадайце URL-адрас відэа, аўдыя або плэй-ліста, каб пачаць спампоўванне"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:304
 #: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:28
@@ -724,7 +724,7 @@ msgstr "Інтэрфейс"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:322
 msgid "User Interface"
-msgstr "Карыстальніцкі інтэрфейс"
+msgstr "Інтэрфейс"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:18
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:39
@@ -922,19 +922,19 @@ msgstr "Прыярытэтны фармат субцітраў"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:121
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
-msgstr ""
+msgstr "Фармат файлаў, у якім Parabolic мусіць спампоўваць усе субцітры."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:158
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:162
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:324
 msgid "Downloader"
-msgstr ""
+msgstr "Менеджар спампоўвання"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:165
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:141
 msgid "Use Part Files"
-msgstr ""
+msgstr "Выкарыстоўваць часткі файлаў"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:142
@@ -943,153 +943,157 @@ msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
+"Parabolic будзе спампоўваць медыя ў асобныя файлы .part, а не непасрэдна ў "
+"выходны файл."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
 msgid "Use SponsorBlock for YouTube"
-msgstr ""
+msgstr "Выкарыстоўваць SponsorBlock для YouTube"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:176
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:147
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
-msgstr ""
+msgstr "Parabolic паспрабуе выдаліць спонсарскія сегменты з відэа на YouTube."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
 msgid "Limit Download Speed"
-msgstr ""
+msgstr "Абмежаваць хуткасць спампоўвання"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:190
 msgid "Speed Limit (KiB/s)"
-msgstr ""
+msgstr "Абмежаванне хуткасці (KiB/s)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:208
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:165
 msgid "Proxy URL"
-msgstr ""
+msgstr "URL-адрас проксі-сервера"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:217
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
 msgid "Cookies from Browser"
-msgstr ""
+msgstr "Файлы cookie браўзера"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:172
 msgid "Brave"
-msgstr ""
+msgstr "Brave"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:173
 msgid "Chrome"
-msgstr ""
+msgstr "Chrome"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:174
 msgid "Chromium"
-msgstr ""
+msgstr "Chromium"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:175
 msgid "Edge"
-msgstr ""
+msgstr "Edge"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:176
 msgid "Firefox"
-msgstr ""
+msgstr "Firefox"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:177
 msgid "Opera"
-msgstr ""
+msgstr "Opera"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:178
 msgid "Safari"
-msgstr ""
+msgstr "Safari"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:179
 msgid "Vivaldi"
-msgstr ""
+msgstr "Vivaldi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:180
 msgid "Whale"
-msgstr ""
+msgstr "Whale"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:182
 msgid "Cookies File"
-msgstr ""
+msgstr "Файл cookie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:148
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:185
 msgid "No file selected"
-msgstr ""
+msgstr "Файл не выбраны"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:126
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "Select Cookies File"
-msgstr ""
+msgstr "Выберыце файл cookie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:195
 msgid "Clear Cookies File"
-msgstr ""
+msgstr "Ачысціць файл cookie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:327
 msgid "aria2c"
-msgstr ""
+msgstr "aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:294
 msgid "Use aria2c"
-msgstr ""
+msgstr "Выкарыстоўваць aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:295
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:297
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
 msgstr ""
+"Parabolic будзе выкарыстоўваць aria2c замест уласнага менеджара спампоўвання "
+"yt-dlp."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:299
 msgid "Max Connections Per Server (-x)"
-msgstr ""
+msgstr "Максімальная колькасць злучэнняў на сервер (-x)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:290
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:304
 msgid "Minimum Split Size (-k)"
-msgstr ""
+msgstr "Мінімальны памер падзелу (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:305
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:307
 msgid "The minimum size of which to split a file (in MiB)."
-msgstr ""
+msgstr "Мінімальны памер, на які паздзяляць файл (у MiB)."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:310
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:325
 msgid "Converter"
-msgstr ""
+msgstr "Канвертар"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
 msgid "Embed Metadata"
-msgstr ""
+msgstr "Убудоўваць метаданыя"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:218
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Выдаляць зыходныя даныя"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:219
@@ -1098,11 +1102,13 @@ msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
 msgstr ""
+"Parabolic будзе ачышчаць палі метаданых, якія змяшчаюць ідэнтыфікацыйныя "
+"звесткі пра спампоўку."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:223
 msgid "Embed Thumbnails"
-msgstr ""
+msgstr "Убудоўваць мініяцюры"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:339
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:224
@@ -1111,27 +1117,29 @@ msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
+"Калі тып файла не падтрымлівае ўбудоўванне, мініяцюра будзе запісана ў "
+"асобны файл відарыса."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:232
 msgid "Crop Audio Thumbnails"
-msgstr ""
+msgstr "Абразаць мініяцюры аўдыя"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:350
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:233
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
 msgid "Parabolic will crop thumbnails of audio files to squares."
-msgstr ""
+msgstr "Parabolic будзе абразаць мініяцюры аўдыяфайлаў да квадратнай формы."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:237
 msgid "Embed Chapters"
-msgstr ""
+msgstr "Убудоўваць раздзелы"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:369
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
 msgid "Embed Subtitles"
-msgstr ""
+msgstr "Убудоўваць субцітры"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:241
@@ -1140,78 +1148,83 @@ msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files."
 msgstr ""
+"Калі адключана або ўбудоўванне не падтрымліваецца, спампаваныя субцітры "
+"будуць захоўвацца ў асобных файлах."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:379
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
 msgid "FFmpeg Threads"
-msgstr ""
+msgstr "Колькасць патокаў FFmpeg"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:259
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
+"Parabolic будзе абмяжоўваць колькасць патокаў, якія выкарыстоўвае ffmpeg."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:390
 msgid "Postprocessing Arguments"
-msgstr ""
+msgstr "Аргументы постапрацоўкі"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
 msgid ""
 "Parabolic will show these arguments for selection in the add download dialog."
 msgstr ""
+"Parabolic будзе паказваць гэтыя аргументы для выбару ў дыялогавым акне "
+"дадавання спампоўкі."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:393
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:272
 msgid "Add Postprocessing Argument"
-msgstr ""
+msgstr "Дадаць аргумент постапрацоўкі"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:407
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:261
 msgid "Argument"
-msgstr ""
+msgstr "Аргумент"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:426
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:540
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:634
 msgid "Post Processor"
-msgstr ""
+msgstr "Постапрацоўка"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:430
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:544
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:639
 msgid "Executable"
-msgstr ""
+msgstr "Выканальны файл"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:548
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:644
 msgid "Args"
-msgstr ""
+msgstr "Args"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:12
 msgctxt "Shortcut"
 msgid "Application"
-msgstr ""
+msgstr "Праграма"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:30
 msgid "Quit"
-msgstr ""
+msgstr "Выйсці"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:28
 msgid "Starting"
-msgstr ""
+msgstr "Пачатак"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:173
 msgid "Unknown"
-msgstr ""
+msgstr "Невядомы"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:234
 msgid "Processing"
-msgstr ""
+msgstr "Апрацоўка"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
@@ -1219,12 +1232,12 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:300
 msgid "Running"
-msgstr ""
+msgstr "Выконваецца"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
 msgid "{} | {} | ETA: {}"
-msgstr ""
+msgstr "{} | {} | Прыблізны час: {}"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
@@ -1249,46 +1262,46 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:676
 msgid "Error"
-msgstr ""
+msgstr "Памылка"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
 msgid "Success"
-msgstr ""
+msgstr "Поспех"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:271
 msgid "Stopped"
-msgstr ""
+msgstr "Спынена"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:281
 msgid "Paused"
-msgstr ""
+msgstr "Прыпынена"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:289
 msgid "Resume"
-msgstr ""
+msgstr "Узнавіць"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:451
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:73
 msgid "Use manual credential"
-msgstr ""
+msgstr "Увесці ўліковыя даныя ўручную"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:83
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 msgid "Select Batch File"
-msgstr ""
+msgstr "Выберыце пакетны файл"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "TXT Files (*.txt)"
-msgstr ""
+msgstr "TXT-файлы (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
@@ -1298,44 +1311,50 @@ msgid ""
 "selected. Note that the service may have blocked your IP or the video may be "
 "geo-restricted."
 msgstr ""
+"Пададзены URL-адрас няправільны або недаступны. Праверце URL-адрас, "
+"выкарыстаную аўтэнтыфікацыю, налады файлаў cookie і прыярытэтныя кодэкі. "
+"Звярніце ўвагу, што сэрвіс мог заблакіраваць ваш IP-адрас, або відэа можа "
+"быць абмежавана геаграфічна."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:155
 msgid "Close"
-msgstr ""
+msgstr "Закрыць"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:199
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:215
 msgid "No Subtitles Available"
-msgstr ""
+msgstr "Субцітры недаступны"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
 msgid "{} items"
-msgstr ""
+msgstr "Элементаў: {}"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
 msgstr ""
+"Для спампоўвання {} патрэбны ўліковыя даныя.\n"
+"Выберыце або ўвядзіце ўліковыя даныя."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:266
 msgid "Both the username and password cannot be empty."
-msgstr ""
+msgstr "І імя карыстальніка, і пароль не могуць быць пустымі."
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:22
 msgid "Keyring is not saving to disk. Changes will be lost."
-msgstr ""
+msgstr "Бірулька не захоўваецца на дыск. Змены будуць страчаныя."
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:165
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:140
 msgid "Edit"
-msgstr ""
+msgstr "Рэдагаваць"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
@@ -1344,69 +1363,69 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:244
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:657
 msgid "Delete"
-msgstr ""
+msgstr "Выдаліць"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:233
 msgid "Modify"
-msgstr ""
+msgstr "Змяніць"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:283
 msgid "Delete Credential?"
-msgstr ""
+msgstr "Выдаліць уліковыя даныя?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:283
 msgid "Are you sure you want to delete this credential?"
-msgstr ""
+msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя ўліковыя даныя?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 msgid "Yes"
-msgstr ""
+msgstr "Так"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 msgid "No"
-msgstr ""
+msgstr "Не"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:280
 msgid "Name (Empty)"
-msgstr ""
+msgstr "Назва (пустая)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:155
 msgid "Username (Empty)"
-msgstr ""
+msgstr "Імя карыстальніка (пустое)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:157
 msgid "Password (Empty)"
-msgstr ""
+msgstr "Пароль (пусты)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:161
 msgid "URL (Invalid)"
-msgstr ""
+msgstr "URL-адрас (памылковы)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:284
 msgid "Name (Exists)"
-msgstr ""
+msgstr "Назва (існуе)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:169
 msgid "Credential (Database Error)"
-msgstr ""
+msgstr "Уліковыя даныя (памылка базы даных)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:379
 msgid "Disclaimer"
-msgstr ""
+msgstr "Адмова ад адказнасці"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:379
@@ -1415,16 +1434,19 @@ msgid ""
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
+"Аўтары Nickvision Parabolic не нясуць адказнасці за любое няправільнае "
+"выкарыстанне гэтай праграмы, якое можа парушаць мясцовыя законы аб аўтарскім "
+"праве/DMCA. Карыстальнікі выкарыстоўваюць гэту праграму на ўласную рызыку."
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:380
 msgid "Don't show this message again"
-msgstr ""
+msgstr "Больш не паказваць гэта паведамленне"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
 msgid "Recover Crashed Downloads?"
-msgstr ""
+msgstr "Аднавіць няўдалыя спампоўванні?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
@@ -1432,81 +1454,83 @@ msgid ""
 "There are downloads available to recover from when Parabolic crashed. Would "
 "you like to recover them?"
 msgstr ""
+"Ёсць спампоўванні, якія можна аднавіць пасля збою Parabolic. Хочаце аднавіць "
+"іх?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
 msgid "Exit?"
-msgstr ""
+msgstr "Выйсці?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:408
 msgid "There are downloads in progress. Are you sure you want to exit?"
-msgstr ""
+msgstr "Ёсць актыўныя спампоўванні. Вы ўпэўнены, што хочаце выйсці?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:236
 msgid "Ok"
-msgstr ""
+msgstr "ОК"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:337
 msgid "Download Again"
-msgstr ""
+msgstr "Спампаваць яшчэ раз"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:118
 msgid "GitHub Repo"
-msgstr ""
+msgstr "Рэпазіторый GitHub"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:202
 msgid "No Arguments"
-msgstr ""
+msgstr "Няма аргументаў"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:600
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:685
 msgid "Delete Argument?"
-msgstr ""
+msgstr "Выдаліць аргумент?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:600
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:685
 msgid "Are you sure you want to delete this argument?"
-msgstr ""
+msgstr "Вы ўпэўнены, што хочаце выдаліць гэты аргумент?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:288
 msgid "Args (Empty)"
-msgstr ""
+msgstr "Args (пуста)"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:69
 msgid "Developers"
-msgstr ""
+msgstr "Распрацоўшчыкі"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:74
 msgid "Designers"
-msgstr ""
+msgstr "Дызайнеры"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:79
 msgid "Artists"
-msgstr ""
+msgstr "Мастакі"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:90
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:161
 msgid "Copy Debug Information"
-msgstr ""
+msgstr "Капіраваць інфармацыю для адладкі"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:108
 msgid "About"
-msgstr ""
+msgstr "Аб праграме"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:109
 msgid "Changelog"
-msgstr ""
+msgstr "Спіс змен"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:110
 msgid "Credits"
-msgstr ""
+msgstr "Удзельнікі"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:111
 msgid "Debugging"
-msgstr ""
+msgstr "Адладка"
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
@@ -1514,97 +1538,97 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
 msgid "Log"
-msgstr ""
+msgstr "Журнал"
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:69
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:86
 msgid "Show Log"
-msgstr ""
+msgstr "Паказаць журнал"
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
 msgid "Open Containing Folder"
-msgstr ""
+msgstr "Адкрыць папку"
 
 #: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:50
 msgid "Notification"
-msgstr ""
+msgstr "Апавяшчэнне"
 
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:32
 msgid "No Download Log"
-msgstr ""
+msgstr "Няма журнала спампоўванняў"
 
 #: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:40
 msgid "Copy"
-msgstr ""
+msgstr "Капіраваць"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 msgid "Enter media url here"
-msgstr ""
+msgstr "Увядзіце тут URL-адрас медыя"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:84
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:31
 msgid "Enter username here"
-msgstr ""
+msgstr "Увядзіце тут імя карыстальніка"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:88
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:35
 msgid "Enter password here"
-msgstr ""
+msgstr "Увядзіце тут пароль"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:96
 msgid "Media"
-msgstr ""
+msgstr "Медыя"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:97
 msgid "Authentication"
-msgstr ""
+msgstr "Аўтэнтыфікацыя"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:117
 msgid "This may take some time..."
-msgstr ""
+msgstr "Гэта можа заняць некаторы час..."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
 msgid "No save folder selected"
-msgstr ""
+msgstr "Папка для захавання не выбрана"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:161
 msgid "Enter file name here"
-msgstr ""
+msgstr "Увядзіце тут назву файла"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:185
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
 msgid "Split Video by Chapters"
-msgstr ""
+msgstr "Падзяліць відэа па раздзелах"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
 msgid "Enter start time here"
-msgstr ""
+msgstr "Увядзіце тут час пачатку"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:203
 msgid "Enter end time here"
-msgstr ""
+msgstr "Увядзіце тут час заканчэння"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:356
 msgid "General"
-msgstr ""
+msgstr "Агульныя"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:247
 msgid "Advanced"
-msgstr ""
+msgstr "Пашыраныя"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:357
 msgid "Items"
-msgstr ""
+msgstr "Элементы"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Warning"
-msgstr ""
+msgstr "Папярэджанне"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
 msgid ""
@@ -1612,206 +1636,216 @@ msgid ""
 "Please select a specific file type that is known to support embedding to "
 "prevent separate files from being written."
 msgstr ""
+"Агульныя тыпы файлаў не цалкам падтрымліваюць убудаванне мініяцюр і "
+"субтытраў. Выберыце канкрэтны тып файла, які падтрымлівае ўбудаванне, каб "
+"прадухіліць запіс асобных файлаў."
 
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
+"Для спампоўвання {} патрэбны ўліковыя даныя. Выберыце або ўвядзіце ўліковыя "
+"даныя."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:43
 msgid "Add, delete, and modify credentials for validating websites"
-msgstr ""
+msgstr "Дадавайце, выдаляйце і змяняйце ўліковыя даныя для праверкі вэб-сайтаў"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
 msgid "No Credentials"
-msgstr ""
+msgstr "Няма ўліковых даных"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
 msgid "Add a credential to get started"
-msgstr ""
+msgstr "Дадайце ўліковыя даныя, каб пачаць"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
 msgstr ""
+"Бірулька не захоўвае змены на дыску. Усе зробленыя змены будуць страчаныя "
+"пры закрыцці праграмы."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
 msgid "New Credential"
-msgstr ""
+msgstr "Новыя ўліковыя даныя"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:263
 msgid "The credential name cannot be empty."
-msgstr ""
+msgstr "Імя ўліковых даных не можа быць пустым."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:269
 msgid "The provided url is invalid."
-msgstr ""
+msgstr "Пададзены URL-адрас памылковы."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
 msgid "A credential with this name already exists."
-msgstr ""
+msgstr "Уліковыя даныя з такім імем ужо існуюць."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:275
 msgid "There was an unknown error adding the credential to the keyring."
-msgstr ""
+msgstr "Падчас дадавання ўліковых даных да бірулькі адбылася невядомая памылка."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:180
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:212
 msgid "Edit Credential"
-msgstr ""
+msgstr "Рэдагаваць уліковыя даныя"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:184
 msgid "Delete Credential"
-msgstr ""
+msgstr "Выдаліць уліковыя даныя"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:239
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:652
 msgid "Save"
-msgstr ""
+msgstr "Захаваць"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
 msgid "Exit"
-msgstr ""
+msgstr "Выйсці"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:388
 msgid "Settings"
-msgstr ""
+msgstr "Налады"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:112
 msgid "Check for Updates"
-msgstr ""
+msgstr "Праверыць наяўнасць абнаўленняў"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:115
 msgid "Documentation"
-msgstr ""
+msgstr "Дакументацыя"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:121
 msgid "Report a Bug"
-msgstr ""
+msgstr "Паведаміць пра памылку"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:124
 msgid "Discussions"
-msgstr ""
+msgstr "Абмеркаванні"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:135
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:145
 msgid "View"
-msgstr ""
+msgstr "Прагляд"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
 msgid "Downloading (0)"
-msgstr ""
+msgstr "Спампоўваецца (0)"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:272
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:465
 msgid "Queued (0)"
-msgstr ""
+msgstr "У чарзе (0)"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:273
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:482
 msgid "Completed (0)"
-msgstr ""
+msgstr "Завершана (0)"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
 msgid "Parabolic (Preview)"
-msgstr ""
+msgstr "Parabolic (Перадпрагляд)"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:542
 msgid "Update"
-msgstr ""
+msgstr "Абнавіць"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
 msgid "Queued ({})"
-msgstr ""
+msgstr "У чарзе ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:596
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
 msgid "Downloading ({})"
-msgstr ""
+msgstr "Спампоўваецца ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
 msgid "Completed ({})"
-msgstr ""
+msgstr "Завершана ({})"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:41
 msgid "Light"
-msgstr ""
+msgstr "Светлая"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:42
 msgid "Dark"
-msgstr ""
+msgstr "Цёмная"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:43
 msgid "System"
-msgstr ""
+msgstr "Сістэмная"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:45
 msgid "Automatically Check for Updates"
-msgstr ""
+msgstr "Аўтаматычна правяраць наяўнасць абнаўленняў"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:89
 msgid "Parabolic will include the media's id in its default title."
 msgstr ""
+"Parabolic будзе ўключаць ідэнтыфікатар медыя ў яго прадвызначаны загаловак."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
 msgid "Speed Limit"
-msgstr ""
+msgstr "Абмежаванне хуткасці"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:167
 msgid "Enter proxy url here"
-msgstr ""
+msgstr "Увядзіце тут URL-адрас проксі"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:263
 msgid "Arguments"
-msgstr ""
+msgstr "Аргументы"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:266
 msgid ""
 "Parabolic will show these arguments for\n"
 "selection in the add download dialog."
 msgstr ""
+"Parabolic будзе паказваць гэтыя аргументы для выбару \n"
+"ў дыялогавым акне дадавання спампоўкі."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:326
 msgid "Postprocessing"
-msgstr ""
+msgstr "Постапрацоўка"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:534
 msgid "New Argument"
-msgstr ""
+msgstr "Новы аргумент"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:571
 msgid "The argument name cannot be empty."
-msgstr ""
+msgstr "Назва аргумента не можа быць пустой."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:574
 msgid "An argument with this name already exists."
-msgstr ""
+msgstr "Аргумент з такой назвай ужо існуе."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:577
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:676
 msgid "The argument args cannot be empty."
-msgstr ""
+msgstr "Аргумент args не можа быць пустым."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:594
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:626
 msgid "Edit Argument"
-msgstr ""
+msgstr "Рэдагаваць аргумент"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:598
 msgid "Delete Argument"
-msgstr ""
+msgstr "Выдаліць аргумент"
