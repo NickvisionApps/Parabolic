@@ -88,6 +88,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         PageNoHistory().Title(winrt::to_hstring(_("No History Available")));
         LblHistoryAddDownload().Text(winrt::to_hstring(_("Add Download")));
         LblHistoryClearHistory().Text(winrt::to_hstring(_("Clear")));
+        LblDownloadingTitle().Text(winrt::to_hstring(_("Downloading")));
+        PageNoDownloading().Title(winrt::to_hstring(_("No Downloads Running")));
+        LblDownloadingAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        LblQueuedTitle().Text(winrt::to_hstring(_("Queued")));
+        PageNoQueued().Title(winrt::to_hstring(_("No Downloads Queued")));
+        LblQueuedAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        LblCompletedTitle().Text(winrt::to_hstring(_("Completed")));
+        PageNoCompleted().Title(winrt::to_hstring(_("No Downloads Completed")));
+        LblCompletedAddDownload().Text(winrt::to_hstring(_("Add Download")));
     }
 
     void MainWindow::SystemTheme(ElementTheme theme)
@@ -121,6 +130,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             AppWindow().MoveAndResize(size);
         }
         NavViewHome().IsSelected(true);
+        ViewStackDownloading().CurrentPageIndex(0);
+        ViewStackQueued().CurrentPageIndex(0);
+        ViewStackCompleted().CurrentPageIndex(0);
         m_opened = true;
     }
 
