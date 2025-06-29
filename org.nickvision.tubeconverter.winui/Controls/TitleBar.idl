@@ -1,0 +1,19 @@
+namespace Nickvision.TubeConverter.WinUI.Controls
+{
+    [default_interface]
+    runtimeclass TitleBar : Microsoft.UI.Xaml.Controls.UserControl, Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        TitleBar();
+        static Microsoft.UI.Xaml.DependencyProperty TitleProperty{ get; };
+        static Microsoft.UI.Xaml.DependencyProperty SubtitleProperty{ get; };
+        static Microsoft.UI.Xaml.DependencyProperty IsActivatedProperty{ get; };
+        static Microsoft.UI.Xaml.DependencyProperty SearchVisibilityProperty{ get; };
+        String Title;
+        String Subtitle;
+        Boolean IsActivated;
+        Microsoft.UI.Xaml.Visibility SearchVisibility;
+        Microsoft.UI.Windowing.AppWindow AppWindow;
+        event Windows.Foundation.TypedEventHandler<Microsoft.UI.Xaml.Controls.AutoSuggestBox, Microsoft.UI.Xaml.Controls.AutoSuggestBoxTextChangedEventArgs> SearchChanged;
+        event Windows.Foundation.TypedEventHandler<Microsoft.UI.Xaml.Controls.AutoSuggestBox, Microsoft.UI.Xaml.Controls.AutoSuggestBoxSuggestionChosenEventArgs> SearchSelected;
+    }
+}

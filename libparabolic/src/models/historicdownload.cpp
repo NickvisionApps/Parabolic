@@ -49,24 +49,12 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     const std::filesystem::path& HistoricDownload::getPath() const
     {
-        if(std::filesystem::exists(m_path))
-        {
-            return m_path;
-        }
-        static std::filesystem::path emptyPath{};
-        return emptyPath;
+        return m_path;
     }
 
     void HistoricDownload::setPath(const std::filesystem::path& path)
     {
-        if(std::filesystem::exists(path))
-        {
-            m_path = path;
-        }
-        else
-        {
-            m_path = "";
-        }
+        m_path = path;
     }
 
     const boost::posix_time::ptime& HistoricDownload::getDateTime() const

@@ -1,0 +1,87 @@
+<ContentDialog
+    x:Class="Nickvision.TubeConverter.WinUI.Controls.AboutDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.TubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Close">
+    <StackPanel MinHeight="300" Orientation="Vertical" Spacing="6">
+        <SelectorBar x:Name="NavView" SelectionChanged="OnNavViewSelectionChanged">
+            <SelectorBarItem x:Name="NavAbout" IsSelected="True">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE946;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+
+            <SelectorBarItem x:Name="NavChangelog">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FD;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+
+            <SelectorBarItem x:Name="NavCredits">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE716;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+
+            <SelectorBarItem x:Name="NavDebugging">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+        </SelectorBar>
+
+        <local:ViewStack x:Name="ViewStack">
+            <local:ViewStack.Pages>
+                <StackPanel VerticalAlignment="Center" Orientation="Vertical" Spacing="12">
+                    <Image HorizontalAlignment="Center" Width="128" Height="128"  Source="../resources/icon.ico"/>
+
+                    <TextBlock x:Name="LblDescription" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+                    <TextBlock x:Name="LblVersion" HorizontalAlignment="Center"/>
+
+                    <TextBlock x:Name="LblCopyright" HorizontalAlignment="Center" Foreground="Gray" Text="© Nickvision 2021-2025"/>
+                </StackPanel>
+
+                <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
+                    <TextBlock x:Name="LblChangelog" TextWrapping="Wrap" Margin="0,0,12,0"/>
+                </ScrollViewer>
+
+                <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical" Spacing="6">
+                        <TextBlock x:Name="LblDevelopersTitle" FontWeight="Bold" Margin="0,0,12,0"/>
+
+                        <TextBlock x:Name="LblDevelopers" TextWrapping="Wrap" Margin="0,0,12,0"/>
+
+                        <TextBlock x:Name="LblDesignersTitle" FontWeight="Bold" Margin="0,12,12,0"/>
+
+                        <TextBlock x:Name="LblDesigners" TextWrapping="Wrap" Margin="0,0,12,0"/>
+
+                        <TextBlock x:Name="LblArtistsTitle" FontWeight="Bold" Margin="0,12,12,0"/>
+
+                        <TextBlock x:Name="LblArtists" TextWrapping="Wrap" Margin="0,0,12,0"/>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <StackPanel Orientation="Vertical" Spacing="6">
+                    <Button HorizontalAlignment="Stretch" Click="CopyDebugInfo">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon x:Name="IcnCopyDebugInfo" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8C8;"/>
+
+                                <TextBlock x:Name="LblCopyDebugInfo"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+
+                    <ScrollViewer VerticalScrollMode="Enabled" VerticalScrollBarVisibility="Auto">
+                        <TextBlock x:Name="LblDebugInfo" TextWrapping="Wrap" Margin="0,0,12,0"/>
+                    </ScrollViewer>
+                </StackPanel>
+            </local:ViewStack.Pages>
+        </local:ViewStack>
+    </StackPanel>
+</ContentDialog>
