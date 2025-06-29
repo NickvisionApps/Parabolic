@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 21:08-0400\n"
+"POT-Creation-Date: 2025-06-28 22:38-0400\n"
 "PO-Revision-Date: 2025-06-12 21:01+0000\n"
 "Last-Translator: Fjuro <git@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -268,9 +268,9 @@ msgstr "Automaticky generovaný"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:83
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:86
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:267
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:279
 msgid "Add Download"
 msgstr "Přidat stahování"
 
@@ -297,6 +297,7 @@ msgstr "Přihlášení"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:28
 msgid "Credential"
 msgstr "Údaj"
 
@@ -305,6 +306,7 @@ msgstr "Údaj"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:29
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:50
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:167
 msgid "Username"
@@ -315,6 +317,7 @@ msgstr "Uživatelské jméno"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:31
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:53
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:171
 msgid "Password"
@@ -400,7 +403,7 @@ msgstr "Vrátit na název"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:196
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:395
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:223
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:226
 msgid "Download"
 msgstr "Stáhnout"
 
@@ -493,10 +496,12 @@ msgid "Number Titles"
 msgstr "Očíslovat názvy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:23
 msgid "Credential Needed"
 msgstr "Vyžadovány údaje"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:24
 msgid "Use"
 msgstr "Použít"
 
@@ -515,7 +520,7 @@ msgstr "Zastavit"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:213
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:216
 msgid "Play"
 msgstr "Přehrát"
 
@@ -564,7 +569,7 @@ msgstr "Přidat"
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:44
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:160
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:254
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:347
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:342
 msgid "Name"
 msgstr "Název"
 
@@ -588,7 +593,7 @@ msgstr "Klávesové zkratky"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
 msgid "Help"
 msgstr "Nápověda"
 
@@ -602,21 +607,21 @@ msgstr "Hlavní nabídka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
 msgid "Home"
 msgstr "Domů"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:24
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
 msgid "Keyring"
 msgstr "Klíčenka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:87
 msgid "History"
 msgstr "Historie"
 
@@ -624,27 +629,27 @@ msgstr "Historie"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
 msgid "Downloads"
 msgstr "Stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
 msgid "Downloading"
 msgstr "Stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
 msgid "Queued"
 msgstr "Ve frontě"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
 msgid "Completed"
 msgstr "Dokončeno"
 
@@ -655,7 +660,7 @@ msgstr "Vymazat historii"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:242
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:261
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:87
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:90
 msgid "Clear"
 msgstr "Vymazat"
 
@@ -682,17 +687,17 @@ msgid "Clear Completed Downloads"
 msgstr "Vymazat dokončená stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:84
 msgid "Download Media"
 msgstr "Stáhnout média"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:82
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:85
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Pro spuštění stahování přidejte adresu URL videa, zvuku nebo playlistu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:304
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:88
 msgid "No History Available"
 msgstr "Není dostupná žádná historie"
 
@@ -1155,20 +1160,20 @@ msgstr "Argument"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:426
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:258
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:352
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:347
 msgid "Post Processor"
 msgstr "Postprocesor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:430
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:266
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:360
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:355
 msgid "Executable"
 msgstr "Spustitelný soubor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:273
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:367
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:362
 msgid "Args"
 msgstr "Argumenty"
 
@@ -1208,13 +1213,12 @@ msgstr "{} | {} | Zbývá: {}"
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:324
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:160
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:299
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:311
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:323
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:394
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:163
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
 msgid "Error"
 msgstr "Chyba"
 
@@ -1236,6 +1240,7 @@ msgstr "Pokračovat"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:35
 msgid "Use manual credential"
 msgstr "Použít manuální údaje"
 
@@ -1286,6 +1291,7 @@ msgstr ""
 "Vyberte jej nebo jej zadejte."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:56
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:89
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:205
 msgid "Both the username and password cannot be empty."
@@ -1306,7 +1312,7 @@ msgstr "Upravit"
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:179
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:233
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:236
 msgid "Delete"
 msgstr "Odstranit"
 
@@ -1329,7 +1335,7 @@ msgstr "Opravdu chcete odstranit tento údaj?"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:238
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:418
 msgid "Yes"
 msgstr "Ano"
 
@@ -1338,7 +1344,7 @@ msgstr "Ano"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:237
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:419
 msgid "No"
 msgstr "Ne"
 
@@ -1415,22 +1421,22 @@ msgid "Download Again"
 msgstr "Stáhnout znovu"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:80
 msgid "GitHub Repo"
 msgstr "Repozitář GitHub"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:202
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:465
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:467
 msgid "No Arguments"
 msgstr "Žádné argumenty"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:414
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
 msgid "Delete Argument?"
 msgstr "Odstranit argument?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:415
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
 msgid "Are you sure you want to delete this argument?"
 msgstr "Opravdu chcete odstranit tento argument?"
 
@@ -1440,18 +1446,17 @@ msgstr "Argumenty (prázdné)"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:34
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:326
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:162
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:301
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:313
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:325
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:396
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:165
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:298
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:388
 msgid "OK"
 msgstr "OK"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:83
 msgid "About"
 msgstr "O aplikaci"
 
@@ -1489,10 +1494,11 @@ msgid "Search"
 msgstr "Hledat..."
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:25
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:66
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:186
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:381
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:376
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -1563,12 +1569,14 @@ msgid "Off"
 msgstr "Vypnuto"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:30
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:51
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:168
 msgid "Enter username here"
 msgstr "Zde zadejte uživatelské jméno"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:32
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:172
 msgid "Enter password here"
@@ -1611,6 +1619,11 @@ msgstr "Položky"
 #, fuzzy
 msgid "Use manual credentials"
 msgstr "Použít manuální údaje"
+
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
+msgid "{} needs a credential to download. Please select or enter one to use."
+msgstr "{} potřebuje údaj ke stahování. Vyberte jej nebo jej zadejte."
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:37
 #, fuzzy
@@ -1658,7 +1671,7 @@ msgid "Edit Credential"
 msgstr "Upravit údaj"
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:184
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:380
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:375
 msgid "Save"
 msgstr "Uložit"
 
@@ -1666,32 +1679,32 @@ msgstr "Uložit"
 msgid "Delete Credential"
 msgstr "Odstranit údaj"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
 msgid "Settings"
 msgstr "Nastavení"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:78
 msgid "Check for Updates"
 msgstr "Zkontrolovat aktualizace"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:79
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:78
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:81
 msgid "Report a Bug"
 msgstr "Nahlásit chybu"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:79
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:82
 msgid "Discussions"
 msgstr "Diskuze"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:191
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:194
 msgid "Update"
 msgstr "Aktualizovat"
 
@@ -1746,7 +1759,7 @@ msgstr ""
 "stahování."
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:368
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:363
 #, fuzzy
 msgid "Enter args here"
 msgstr "Zde zadejte adresu URL"
@@ -1755,7 +1768,7 @@ msgstr "Zde zadejte adresu URL"
 msgid "New Argument"
 msgstr "Nový argument"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:300
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:306
 msgid "The argument name cannot be empty."
 msgstr "Název argumentu nemůže být prázdný."
 
@@ -1763,17 +1776,17 @@ msgstr "Název argumentu nemůže být prázdný."
 msgid "An argument with this name already exists."
 msgstr "Argument s tímto názvem již existuje."
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:324
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:395
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:318
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:396
 msgid "The argument args cannot be empty."
 msgstr "Argumenty argumentu nemohou být prázdné."
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:378
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:442
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:373
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:444
 msgid "Edit Argument"
 msgstr "Upravit argument"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:450
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:452
 msgid "Delete Argument"
 msgstr "Odstranit argument"
 
@@ -1824,10 +1837,6 @@ msgstr "Odstranit argument"
 
 #~ msgid "Warning"
 #~ msgstr "Varování"
-
-#~ msgid ""
-#~ "{} needs a credential to download. Please select or enter one to use."
-#~ msgstr "{} potřebuje údaj ke stahování. Vyberte jej nebo jej zadejte."
 
 #~ msgid "No Credentials"
 #~ msgstr "Žádné údaje"

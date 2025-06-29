@@ -65,6 +65,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void OnHistoryChanged(const ::Nickvision::Events::ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::HistoricDownload>>& args);
         /**
+         * @brief Handles when a credential is needed for a download.
+         * @param args Nickvision::TubeConverter::Shared::Events::DownloadCredentialNeededEventArgs
+         */
+        winrt::fire_and_forget OnDownloadCredentialNeeded(const ::Nickvision::TubeConverter::Shared::Events::DownloadCredentialNeededEventArgs& args);
+        /**
          * Handles when the titlebar's search box text is changed
          * @param sender Microsoft::UI::Xaml::Controls::AutoSuggestBox
          * @param args Microsoft::UI::Xaml::Controls::AutoSuggestEventArgs

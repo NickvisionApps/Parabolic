@@ -287,51 +287,46 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         dialog.DefaultButton(ContentDialogButton::Primary);
         dialog.RequestedTheme(MainGrid().RequestedTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
-        ContentDialogResult res{ co_await dialog.ShowAsync() };
-        if(res == ContentDialogResult::Primary)
+        while(true)
         {
-            PostProcessorArgumentCheckStatus status{ m_controller->addPostprocessingArgument(winrt::to_string(txtName.Text()), static_cast<PostProcessor>(cmbPostProcessor.SelectedIndex()), static_cast<Executable>(cmbExecutable.SelectedIndex()), winrt::to_string(txtArgs.Text())) };
-            switch(status)
+            ContentDialogResult res{ co_await dialog.ShowAsync() };
+            if(res == ContentDialogResult::Primary)
             {
-            case PostProcessorArgumentCheckStatus::EmptyName:
-            {
-                ContentDialog dialogErr;
-                dialogErr.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
-                dialogErr.Content(winrt::box_value(winrt::to_hstring(_("The argument name cannot be empty."))));
-                dialogErr.CloseButtonText(winrt::to_hstring(_("OK")));
-                dialogErr.DefaultButton(ContentDialogButton::Close);
-                dialogErr.RequestedTheme(MainGrid().RequestedTheme());
-                dialogErr.XamlRoot(MainGrid().XamlRoot());
-                co_await dialogErr.ShowAsync();
-                break;
+                PostProcessorArgumentCheckStatus status{ m_controller->addPostprocessingArgument(winrt::to_string(txtName.Text()), static_cast<PostProcessor>(cmbPostProcessor.SelectedIndex()), static_cast<Executable>(cmbExecutable.SelectedIndex()), winrt::to_string(txtArgs.Text())) };
+                ContentDialog errorDialog;
+                errorDialog.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
+                errorDialog.CloseButtonText(winrt::to_hstring(_("OK")));
+                errorDialog.DefaultButton(ContentDialogButton::Close);
+                errorDialog.RequestedTheme(MainGrid().RequestedTheme());
+                errorDialog.XamlRoot(MainGrid().XamlRoot());
+                switch(status)
+                {
+                case PostProcessorArgumentCheckStatus::EmptyName:
+                {
+                    errorDialog.Content(winrt::box_value(winrt::to_hstring(_("The argument name cannot be empty."))));
+                    co_await errorDialog.ShowAsync();
+                    break;
+                }
+                case PostProcessorArgumentCheckStatus::ExistingName:
+                {
+                    errorDialog.Content(winrt::box_value(winrt::to_hstring(_("An argument with this name already exists."))));
+                    co_await errorDialog.ShowAsync();
+                    break;
+                }
+                case PostProcessorArgumentCheckStatus::EmptyArgs:
+                {
+                    errorDialog.Content(winrt::box_value(winrt::to_hstring(_("The argument args cannot be empty."))));
+                    co_await errorDialog.ShowAsync();
+                    break;
+                }
+                default:
+                    ReloadPostprocessingArguments();
+                    co_return;
+                }
             }
-            case PostProcessorArgumentCheckStatus::ExistingName:
+            else
             {
-                ContentDialog dialogErr;
-                dialogErr.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
-                dialogErr.Content(winrt::box_value(winrt::to_hstring(_("An argument with this name already exists."))));
-                dialogErr.CloseButtonText(winrt::to_hstring(_("OK")));
-                dialogErr.DefaultButton(ContentDialogButton::Close);
-                dialogErr.RequestedTheme(MainGrid().RequestedTheme());
-                dialogErr.XamlRoot(MainGrid().XamlRoot());
-                co_await dialogErr.ShowAsync();
-                break;
-            }
-            case PostProcessorArgumentCheckStatus::EmptyArgs:
-            {
-                ContentDialog dialogErr;
-                dialogErr.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
-                dialogErr.Content(winrt::box_value(winrt::to_hstring(_("The argument args cannot be empty."))));
-                dialogErr.CloseButtonText(winrt::to_hstring(_("OK")));
-                dialogErr.DefaultButton(ContentDialogButton::Close);
-                dialogErr.RequestedTheme(MainGrid().RequestedTheme());
-                dialogErr.XamlRoot(MainGrid().XamlRoot());
-                co_await dialogErr.ShowAsync();
-                break;
-            }
-            default:
-                ReloadPostprocessingArguments();
-                break;
+                co_return;
             }
         }
     }
@@ -383,26 +378,33 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         dialog.RequestedTheme(MainGrid().RequestedTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
         ContentDialogResult res{ co_await dialog.ShowAsync() };
-        if(res == ContentDialogResult::Primary)
+        while(true)
         {
-            PostProcessorArgumentCheckStatus status{ m_controller->updatePostprocessingArgument(winrt::to_string(txtName.Text()), static_cast<PostProcessor>(cmbPostProcessor.SelectedIndex()), static_cast<Executable>(cmbExecutable.SelectedIndex()), winrt::to_string(txtArgs.Text())) };
-            switch(status)
+            if(res == ContentDialogResult::Primary)
             {
-            case PostProcessorArgumentCheckStatus::EmptyArgs:
-            {
-                ContentDialog dialogErr;
-                dialogErr.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
-                dialogErr.Content(winrt::box_value(winrt::to_hstring(_("The argument args cannot be empty."))));
-                dialogErr.CloseButtonText(winrt::to_hstring(_("OK")));
-                dialogErr.DefaultButton(ContentDialogButton::Close);
-                dialogErr.RequestedTheme(MainGrid().RequestedTheme());
-                dialogErr.XamlRoot(MainGrid().XamlRoot());
-                co_await dialogErr.ShowAsync();
-                break;
+                PostProcessorArgumentCheckStatus status{ m_controller->updatePostprocessingArgument(winrt::to_string(txtName.Text()), static_cast<PostProcessor>(cmbPostProcessor.SelectedIndex()), static_cast<Executable>(cmbExecutable.SelectedIndex()), winrt::to_string(txtArgs.Text())) };
+                ContentDialog errorDialog;
+                errorDialog.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
+                errorDialog.CloseButtonText(winrt::to_hstring(_("OK")));
+                errorDialog.DefaultButton(ContentDialogButton::Close);
+                errorDialog.RequestedTheme(MainGrid().RequestedTheme());
+                errorDialog.XamlRoot(MainGrid().XamlRoot());
+                switch(status)
+                {
+                case PostProcessorArgumentCheckStatus::EmptyArgs:
+                {
+                    errorDialog.Content(winrt::box_value(winrt::to_hstring(_("The argument args cannot be empty."))));
+                    co_await errorDialog.ShowAsync();
+                    break;
+                }
+                default:
+                    ReloadPostprocessingArguments();
+                    co_return;
+                }
             }
-            default:
-                ReloadPostprocessingArguments();
-                break;
+            else
+            {
+                co_return;
             }
         }
     }

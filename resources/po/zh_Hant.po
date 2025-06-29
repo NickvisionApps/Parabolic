@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 21:08-0400\n"
+"POT-Creation-Date: 2025-06-28 22:38-0400\n"
 "PO-Revision-Date: 2025-05-05 17:36+0000\n"
 "Last-Translator: YC Tsai <ataiwanaton@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -266,9 +266,9 @@ msgstr "自動生成"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:83
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:86
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:267
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:279
 msgid "Add Download"
 msgstr "新增下載項目"
 
@@ -295,6 +295,7 @@ msgstr "驗證"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:28
 msgid "Credential"
 msgstr "驗證資訊"
 
@@ -303,6 +304,7 @@ msgstr "驗證資訊"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:29
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:50
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:167
 msgid "Username"
@@ -313,6 +315,7 @@ msgstr "使用者名稱"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:31
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:53
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:171
 msgid "Password"
@@ -399,7 +402,7 @@ msgstr "還原成原本標題"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:196
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:395
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:223
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:226
 msgid "Download"
 msgstr "下載"
 
@@ -492,10 +495,12 @@ msgid "Number Titles"
 msgstr "標題編號"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:23
 msgid "Credential Needed"
 msgstr "需要身份驗證"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:24
 msgid "Use"
 msgstr "使用"
 
@@ -514,7 +519,7 @@ msgstr "停止"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:213
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:216
 msgid "Play"
 msgstr "播放"
 
@@ -563,7 +568,7 @@ msgstr "增加"
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:44
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:160
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:254
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:347
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:342
 msgid "Name"
 msgstr "名稱"
 
@@ -587,7 +592,7 @@ msgstr "鍵盤快速鍵"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
 msgid "Help"
 msgstr "說明"
 
@@ -601,21 +606,21 @@ msgstr "主選單"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
 msgid "Home"
 msgstr "首頁"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:24
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
 msgid "Keyring"
 msgstr "金鑰環"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:87
 msgid "History"
 msgstr "歷史記錄"
 
@@ -623,27 +628,27 @@ msgstr "歷史記錄"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
 msgid "Downloads"
 msgstr "下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
 msgid "Downloading"
 msgstr "下載中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
 msgid "Queued"
 msgstr "佇列"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
 msgid "Completed"
 msgstr "已完成"
 
@@ -654,7 +659,7 @@ msgstr "清除歷史記錄"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:242
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:261
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:87
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:90
 msgid "Clear"
 msgstr "清除"
 
@@ -681,17 +686,17 @@ msgid "Clear Completed Downloads"
 msgstr "清除已完成項目"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:84
 msgid "Download Media"
 msgstr "下載媒體"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:82
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:85
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "新增影片、音訊或播放清單的 URL 開始下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:304
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:88
 #, fuzzy
 msgid "No History Available"
 msgstr "沒有歷史記錄"
@@ -1147,21 +1152,21 @@ msgstr "新的身份驗證資訊"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:426
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:258
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:352
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:347
 #, fuzzy
 msgid "Post Processor"
 msgstr "處理中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:430
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:266
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:360
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:355
 msgid "Executable"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:273
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:367
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:362
 msgid "Args"
 msgstr ""
 
@@ -1201,13 +1206,12 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:324
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:160
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:299
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:311
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:323
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:394
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:163
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
 msgid "Error"
 msgstr "錯誤"
 
@@ -1229,6 +1233,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:35
 msgid "Use manual credential"
 msgstr "使用手動身份驗證"
 
@@ -1279,6 +1284,7 @@ msgstr ""
 "請選擇或輸入一個驗證來繼續。"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:56
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:89
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:205
 msgid "Both the username and password cannot be empty."
@@ -1299,7 +1305,7 @@ msgstr "編輯"
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:179
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:233
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:236
 msgid "Delete"
 msgstr "刪除"
 
@@ -1322,7 +1328,7 @@ msgstr "您確定要刪除身份驗證嗎？"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:238
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:418
 msgid "Yes"
 msgstr "是"
 
@@ -1331,7 +1337,7 @@ msgstr "是"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:237
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:419
 msgid "No"
 msgstr "否"
 
@@ -1406,24 +1412,24 @@ msgid "Download Again"
 msgstr "再次下載"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:80
 msgid "GitHub Repo"
 msgstr "GitHub 儲存庫"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:202
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:465
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:467
 #, fuzzy
 msgid "No Arguments"
 msgstr "新的身份驗證資訊"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:414
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
 #, fuzzy
 msgid "Delete Argument?"
 msgstr "新的身份驗證資訊"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:415
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
 #, fuzzy
 msgid "Are you sure you want to delete this argument?"
 msgstr "您確定要刪除身份驗證嗎？"
@@ -1435,18 +1441,17 @@ msgstr "名稱 (空白)"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:34
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:326
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:162
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:301
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:313
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:325
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:396
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:165
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:298
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:388
 msgid "OK"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:83
 msgid "About"
 msgstr "關於"
 
@@ -1483,10 +1488,11 @@ msgid "Search"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:25
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:66
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:186
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:381
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:376
 msgid "Cancel"
 msgstr ""
 
@@ -1560,12 +1566,14 @@ msgid "Off"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:30
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:51
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:168
 msgid "Enter username here"
 msgstr "在這裡輸入使用者名稱"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:32
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:172
 msgid "Enter password here"
@@ -1609,6 +1617,11 @@ msgstr "項目"
 #, fuzzy
 msgid "Use manual credentials"
 msgstr "使用手動身份驗證"
+
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
+msgid "{} needs a credential to download. Please select or enter one to use."
+msgstr "{} 需要身份驗證資訊才能下載。請選擇或輸入一個驗證。"
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:37
 #, fuzzy
@@ -1654,7 +1667,7 @@ msgid "Edit Credential"
 msgstr "編輯身份驗證資訊"
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:184
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:380
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:375
 msgid "Save"
 msgstr "儲存"
 
@@ -1662,32 +1675,32 @@ msgstr "儲存"
 msgid "Delete Credential"
 msgstr "刪除身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:78
 msgid "Check for Updates"
 msgstr "檢查更新"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:79
 msgid "Documentation"
 msgstr "說明文件"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:78
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:81
 msgid "Report a Bug"
 msgstr "回報錯誤(Bug)"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:79
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:82
 msgid "Discussions"
 msgstr "討論區"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:191
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:194
 msgid "Update"
 msgstr "更新"
 
@@ -1741,7 +1754,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:368
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:363
 #, fuzzy
 msgid "Enter args here"
 msgstr "請在這裡輸入 URL"
@@ -1751,7 +1764,7 @@ msgstr "請在這裡輸入 URL"
 msgid "New Argument"
 msgstr "新的身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:300
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:306
 #, fuzzy
 msgid "The argument name cannot be empty."
 msgstr "身份驗證資訊名稱不能為空白"
@@ -1761,19 +1774,19 @@ msgstr "身份驗證資訊名稱不能為空白"
 msgid "An argument with this name already exists."
 msgstr "此名稱的身份驗證資訊已經存在"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:324
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:395
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:318
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:396
 #, fuzzy
 msgid "The argument args cannot be empty."
 msgstr "身份驗證資訊名稱不能為空白"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:378
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:442
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:373
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:444
 #, fuzzy
 msgid "Edit Argument"
 msgstr "新的身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:450
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:452
 #, fuzzy
 msgid "Delete Argument"
 msgstr "新的身份驗證資訊"
@@ -1827,10 +1840,6 @@ msgstr "新的身份驗證資訊"
 
 #~ msgid "Warning"
 #~ msgstr "警告"
-
-#~ msgid ""
-#~ "{} needs a credential to download. Please select or enter one to use."
-#~ msgstr "{} 需要身份驗證資訊才能下載。請選擇或輸入一個驗證。"
 
 #~ msgid "No Credentials"
 #~ msgstr "沒有身份驗證資訊"

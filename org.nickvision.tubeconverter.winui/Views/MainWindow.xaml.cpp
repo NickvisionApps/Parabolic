@@ -9,6 +9,7 @@
 #include "Controls/SettingsRow.xaml.h"
 #include "Helpers/WinUIHelpers.h"
 #include "Views/AddDownloadDialog.xaml.h"
+#include "Views/CredentialDialog.xaml.h"
 #include "Views/KeyringPage.xaml.h"
 #include "Views/SettingsPage.xaml.h"
 
@@ -16,6 +17,7 @@ using namespace ::Nickvision::Events;
 using namespace ::Nickvision::Helpers;
 using namespace ::Nickvision::Notifications;
 using namespace ::Nickvision::TubeConverter::Shared::Controllers;
+using namespace ::Nickvision::TubeConverter::Shared::Events;
 using namespace ::Nickvision::TubeConverter::Shared::Models;
 using namespace ::Nickvision::TubeConverter::WinUI::Helpers;
 using namespace ::Nickvision::Update;
@@ -60,6 +62,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_controller->configurationSaved() += [this](const EventArgs& args){ OnConfigurationSaved(args); };
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
         m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnHistoryChanged(args); }); };
+        m_controller->getDownloadManager().downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args){ OnDownloadCredentialNeeded(args); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
@@ -251,6 +254,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             ViewStackHistory().CurrentPageIndex(1);
             ListHistory().Children().Append(row);
         }
+    }
+
+    winrt::fire_and_forget MainWindow::OnDownloadCredentialNeeded(const DownloadCredentialNeededEventArgs& args)
+    {
+        ContentDialog dialog{ winrt::make<implementation::CredentialDialog>() };
+        dialog.as<implementation::CredentialDialog>()->Controller(m_controller->createCredentialDialogController(args));
+        dialog.RequestedTheme(MainGrid().RequestedTheme());
+        dialog.XamlRoot(MainGrid().XamlRoot());
+        co_await dialog.as<implementation::CredentialDialog>()->ShowAsync();
     }
 
     void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)

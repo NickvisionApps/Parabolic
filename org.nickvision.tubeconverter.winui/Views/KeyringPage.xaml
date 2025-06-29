@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid x:Name="MainGrid" Margin="24,24,24,24" RowSpacing="12">
+    <Grid x:Name="MainGrid" Margin="24,24,0,24" RowSpacing="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -17,7 +17,7 @@
 
         <controls:ViewStack x:Name="ViewStack" Grid.Row="1">
             <controls:ViewStack.Pages>
-                <controls:StatusPage x:Name="PageNoCredentials" Glyph="&#xEA18;">
+                <controls:StatusPage x:Name="PageNoCredentials" Margin="0,0,24,0" Glyph="&#xEA18;">
                     <controls:StatusPage.Child>
                         <Button Style="{StaticResource AccentButtonStyle}" Click="AddCredential">
                             <Button.Content>
@@ -37,7 +37,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
+                    <StackPanel Grid.Row="0" Margin="0,0,24,0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
                         <Button Style="{StaticResource AccentButtonStyle}" Click="AddCredential">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal" Spacing="6">
@@ -50,7 +50,7 @@
                     </StackPanel>
 
                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                        <StackPanel x:Name="ListCredentials" Spacing="6"/>
+                        <StackPanel x:Name="ListCredentials" Margin="0,0,24,0" Spacing="6"/>
                     </ScrollViewer>
                 </Grid>
             </controls:ViewStack.Pages>

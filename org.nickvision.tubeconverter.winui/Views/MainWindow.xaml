@@ -148,7 +148,7 @@
                             </controls:StatusPage.Child>
                         </controls:StatusPage>
 
-                        <Grid Margin="24,24,24,24" RowSpacing="12">
+                        <Grid Margin="24,24,0,24" RowSpacing="12">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
@@ -158,7 +158,7 @@
 
                             <controls:ViewStack x:Name="ViewStackHistory" Grid.Row="1">
                                 <controls:ViewStack.Pages>
-                                    <controls:StatusPage x:Name="PageNoHistory" Glyph="&#xE81C;">
+                                    <controls:StatusPage x:Name="PageNoHistory" Margin="0,0,24,0" Glyph="&#xE81C;">
                                         <controls:StatusPage.Child>
                                             <Button Style="{StaticResource AccentButtonStyle}" Click="AddDownload">
                                                 <Button.Content>
@@ -178,7 +178,7 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
 
-                                        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
+                                        <StackPanel Grid.Row="0" Margin="0,0,24,0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
                                             <Button Style="{StaticResource AccentButtonStyle}" Click="ClearHistory">
                                                 <Button.Content>
                                                     <StackPanel Orientation="Horizontal" Spacing="6">
@@ -191,22 +191,22 @@
                                         </StackPanel>
 
                                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                                            <StackPanel x:Name="ListHistory" Spacing="6"/>
+                                            <StackPanel x:Name="ListHistory" Margin="0,0,24,0" Spacing="6"/>
                                         </ScrollViewer>
                                     </Grid>
                                 </controls:ViewStack.Pages>
                             </controls:ViewStack>
                         </Grid>
 
-                        <Grid Margin="24,24,24,24" RowSpacing="12">
+                        <Grid Margin="24,24,0,24" RowSpacing="12">
 
                         </Grid>
 
-                        <Grid Margin="24,24,24,24" RowSpacing="12">
+                        <Grid Margin="24,24,0,24" RowSpacing="12">
 
                         </Grid>
 
-                        <Grid Margin="24,24,24,24" RowSpacing="12">
+                        <Grid Margin="24,24,0,24" RowSpacing="12">
 
                         </Grid>
 

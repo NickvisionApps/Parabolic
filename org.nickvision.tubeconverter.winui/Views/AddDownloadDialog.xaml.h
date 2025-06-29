@@ -7,7 +7,7 @@
 #include "Controls/ViewStack.g.h"
 #include "Views/AddDownloadDialog.g.h"
 #include <memory>
-#include "controllers/mainwindowcontroller.h"
+#include "controllers/adddownloaddialogcontroller.h"
 
 namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 {
