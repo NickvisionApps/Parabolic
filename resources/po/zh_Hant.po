@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 22:50-0400\n"
-"PO-Revision-Date: 2025-05-05 17:36+0000\n"
-"Last-Translator: YC Tsai <ataiwanaton@gmail.com>\n"
+"POT-Creation-Date: 2025-06-14 08:01-0400\n"
+"PO-Revision-Date: 2025-06-28 13:05+0000\n"
+"Last-Translator: cy lin <cylin577@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/nickvision-tube-converter/app/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
@@ -86,24 +86,25 @@ msgstr "WAV (音訊)"
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:134
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:452
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:171
 msgid "None"
 msgstr "無"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
-#, c++-format
+#, fuzzy
 msgid "Error attempting to validate download: {}"
-msgstr ""
+msgstr "無法驗證下載: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:401
-#, c++-format
+#, fuzzy
 msgid "Error attempting to add download: {}"
-msgstr ""
+msgstr "無法添加下載: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -135,82 +136,69 @@ msgstr "Chung-Wei Chung <webb790709@proton.me>"
 msgid "New update available"
 msgstr "有可用更新"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:244
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:249
-#, fuzzy
-msgid "No update available"
-msgstr "有可用更新"
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:262
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:254
 msgid ""
 "The update is downloading in the background and will start once it finishes"
 msgstr "更新正在背景下載中，下載完成將會開始更新"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:267
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:259
 msgid "Unable to download and install update"
 msgstr "無法下載和安裝更新"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:281
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:273
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "已還原 {} 個下載"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:286
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:278
 msgid "Error attempting to recover downloads: {}"
-msgstr ""
+msgstr "無法恢復下載: {}"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:316
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 msgid "Download Finished"
 msgstr "下載完成"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:316
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 msgid "{} has finished downloading"
 msgstr "{} 已下載完成"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:316
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:79
 msgid "Open"
 msgstr "打開"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:320
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:312
 msgid "Download Finished With Error"
 msgstr "下載完成但有錯誤"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:320
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:312
 msgid "{} has finished with an error"
 msgstr "{} 下載完成但有錯誤"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
-msgstr ""
+msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:37
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
@@ -220,29 +208,29 @@ msgstr "最佳化"
 
 #: libparabolic/src/models/format.cpp:20 libparabolic/src/models/format.cpp:235
 msgid "Worst"
-msgstr ""
+msgstr "最糟"
 
 #: libparabolic/src/models/format.cpp:310
 msgid "Audio Description"
 msgstr "音訊描述"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -258,95 +246,92 @@ msgstr "正在開始下載..."
 msgid "Auto-generated"
 msgstr "自動生成"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:279
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:333
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:373
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:413
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:86
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:93
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:96
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:99
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:291
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:431
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
 msgid "Add Download"
 msgstr "新增下載項目"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:19
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
 msgid "Back"
 msgstr "返回"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:47
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
 msgid "Media URL"
 msgstr "媒體 URL"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:49
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:58
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
 msgid "Use Batch File"
 msgstr "使用 Batch 檔案"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:68
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
 msgid "Authenticate"
 msgstr "驗證"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:73
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:72
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:79
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Credential"
 msgstr "驗證資訊"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:77
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:76
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:54
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:29
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:50
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:167
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:82
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:225
 msgid "Username"
 msgstr "使用者名稱"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:81
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:80
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:56
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:31
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:171
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:86
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:230
 msgid "Password"
 msgstr "密碼"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:86
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:50
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:85
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:68
 #, fuzzy
 msgid "Download Immediately"
 msgstr "下載媒體"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:86
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:71
 msgid "Use your previous download options for this download"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:92
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:113
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:91
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:104
 msgid "Validate"
 msgstr "驗證"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:112
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:309
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:62
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:307
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:133
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:264
 msgid "File Type"
 msgstr "檔案類型"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:123
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:122
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles.\n"
@@ -356,118 +341,122 @@ msgstr ""
 "一般的檔案類型不支援嵌入縮圖和字幕，請選擇支援嵌入的格式以避免寫入磁碟的時候"
 "額外產生縮圖和字幕檔"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:133
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:64
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:132
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:142
 msgid "Video Format"
 msgstr "影片格式"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:65
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:136
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:145
 msgid "Audio Format"
 msgstr "音訊格式"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:140
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:246
 msgid "Subtitles"
 msgstr "字幕"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:152
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:151
 msgid "Advanced Options"
 msgstr "進階選項"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:165
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:352
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:66
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:93
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:164
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:350
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:287
 msgid "Save Folder"
 msgstr "儲存位置"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:171
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:358
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:298
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:369
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:67
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:95
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:170
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:356
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:295
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:366
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:296
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:650
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:700
 msgid "Select Save Folder"
 msgstr "選擇儲存位置"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:180
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:68
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:179
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:159
 msgid "File Name"
 msgstr "檔案名稱"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:233
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:426
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:185
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:166
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:341
 msgid "Revert to Title"
 msgstr "還原成原本標題"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:196
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:395
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:238
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:194
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:393
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:362
 msgid "Download"
 msgstr "下載"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:219
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:424
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:71
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:99
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:422
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:220
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:326
 msgid "Select All"
 msgstr "全部選擇"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:226
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:431
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:72
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:100
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:224
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:429
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:331
 msgid "Deselect All"
 msgstr "全部不選"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:254
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:330
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:252
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:328
 msgid "Split Videos by Chapters"
 msgstr "依照章節分割影片"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:258
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:334
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:76
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:104
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:256
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:332
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:188
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:275
 msgid "Export Description"
 msgstr "匯出描述"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:262
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:342
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:79
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:107
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:260
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:340
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:191
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
 #, fuzzy
 msgid "Exclude from History"
 msgstr "清除歷史記錄"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:266
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:346
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:82
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:110
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:264
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:344
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:284
 #, fuzzy
 msgid "Post Processor Argument"
 msgstr "後製使用的核心數"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:270
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:83
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:268
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:197
 msgid "Start Time"
 msgstr "開始時間"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:276
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:289
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:274
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:287
 msgid "Revert to Original"
 msgstr "還原成原樣"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:283
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:84
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:281
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:201
 msgid "End Time"
 msgstr "結束時間"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:320
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:89
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:318
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
@@ -477,33 +466,33 @@ msgstr ""
 "一般的檔案類型不支援嵌入縮圖和字幕，請選擇支援嵌入的格式以避免寫入磁碟的時候"
 "額外產生縮圖和字幕檔"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:338
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:90
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:336
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:278
 msgid "Write M3U Playlist File"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:369
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:94
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:367
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:382
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:380
 msgid "Playlist Items"
 msgstr "播放清單項目"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:413
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:96
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:411
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:320
 msgid "Number Titles"
 msgstr "標題編號"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:66
 msgid "Credential Needed"
 msgstr "需要身份驗證"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:38
 msgid "Use"
 msgstr "使用"
 
@@ -513,20 +502,25 @@ msgstr "檢視記錄檔"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:155
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:58
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:295
 msgid "Pause"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:63
 msgid "Stop"
 msgstr "停止"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:228
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:30
 msgid "Play"
 msgstr "播放"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:91
 msgid "Retry"
 msgstr "重試"
 
@@ -535,21 +529,22 @@ msgid "Copy Command to Clipboard"
 msgstr "複製指令到剪貼簿"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:160
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:41
 msgid "Copy Log to Clipboard"
 msgstr "複製記錄檔到剪貼簿"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:25
 msgid "No Credentials Found"
 msgstr "找不到身份驗證"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:49
 msgid "Add Credential"
 msgstr "增加身份驗證"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:31
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:40
 msgid "Credentials"
 msgstr "身份驗證"
 
@@ -557,10 +552,10 @@ msgstr "身份驗證"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:397
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:215
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:27
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:65
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:148
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:285
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:135
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:555
 msgid "Add"
 msgstr "增加"
 
@@ -568,17 +563,17 @@ msgstr "增加"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:422
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:262
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:44
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:160
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:254
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:342
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:115
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:536
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:628
 msgid "Name"
 msgstr "名稱"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:47
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:220
 msgid "URL"
 msgstr "URL"
 
@@ -595,11 +590,13 @@ msgstr "鍵盤快速鍵"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:159
 msgid "Help"
 msgstr "說明"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:127
 msgid "About Parabolic"
 msgstr "關於 Parabolic"
 
@@ -609,21 +606,21 @@ msgstr "主選單"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
 msgid "Home"
 msgstr "首頁"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:24
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 msgid "Keyring"
 msgstr "金鑰環"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:71
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:87
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
 msgid "History"
 msgstr "歷史記錄"
 
@@ -631,46 +628,41 @@ msgstr "歷史記錄"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:72
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:323
 msgid "Downloads"
 msgstr "下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:73
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:91
 msgid "Downloading"
 msgstr "下載中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:74
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:163
 msgid "Queued"
 msgstr "佇列"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:75
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:97
 msgid "Completed"
 msgstr "已完成"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
 msgid "Clear History"
 msgstr "清除歷史記錄"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:242
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:261
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:90
 msgid "Clear"
 msgstr "清除"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:225
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
 msgid "Stop All Downloads"
 msgstr "停止所有下載"
 
@@ -679,46 +671,52 @@ msgid "Stop All"
 msgstr "停止全部"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:237
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
 msgid "Clear Queued Downloads"
 msgstr "清除佇列中的下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:249
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:100
 msgid "Retry Failed Downloads"
 msgstr "重試失敗的下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:106
 msgid "Clear Completed Downloads"
 msgstr "清除已完成項目"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:275
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:193
 msgid "Download Media"
 msgstr "下載媒體"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:276
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:194
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:204
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:228
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:252
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "新增影片、音訊或播放清單的 URL 開始下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:304
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/historypane.cpp:28
 #, fuzzy
 msgid "No History Available"
 msgstr "沒有歷史記錄"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:330
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:92
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:203
 msgid "No Downloads Running"
 msgstr "沒有執行中的下載項目"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:370
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:227
 msgid "No Downloads Queued"
 msgstr "沒有佇列中的下載"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:410
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:251
 msgid "No Downloads Completed"
 msgstr "沒有已完成的項目"
 
@@ -727,12 +725,12 @@ msgid "UI"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:322
 msgid "User Interface"
 msgstr "使用者介面"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:18
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:39
 msgid "Theme"
 msgstr "主題"
 
@@ -752,72 +750,78 @@ msgid "System"
 msgstr "跟隨系統"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:30
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
 msgid "Prevent Suspend"
 msgstr "防止休眠"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:31
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:51
 msgid ""
 "Parabolic will prevent the computer from sleeping while downloads are "
 "running."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
 msgid "Download History Length"
 msgstr "下載歷史記錄長度"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:41
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:56
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
 msgid "Never"
 msgstr "永不"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 msgid "One Day"
 msgstr "一天"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
 msgid "One Week"
 msgstr "一個星期"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:60
 msgid "One Month"
 msgstr "一個月"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
 msgid "Three Months"
 msgstr "三個月"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
 msgid "Forever"
 msgstr "永久"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:62
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:73
 #, fuzzy
 msgid "Max Number of Running Downloads"
 msgstr "最大同時下載數"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:78
 msgid "Overwrite Existing Files"
 msgstr "取代現有檔案"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:81
 msgid "Limit Filename Characters"
 msgstr "限制檔案名稱字元"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:88
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:82
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:84
 #, fuzzy
 msgid ""
 "Parabolic will restrict characters in filenames to those supported only by "
@@ -825,7 +829,7 @@ msgid ""
 msgstr "限制只能使用支援 Windows 的檔案字元。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:86
 #, fuzzy
 msgid "Include Media Id in Title"
 msgstr "在驗證後將媒體 Id 加入標題"
@@ -835,24 +839,26 @@ msgid "Parabolic will include a media's id in its default title."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:91
 msgid "Include Auto-Generated Subtitles"
 msgstr "包含自動生成字幕"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:94
 msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:96
 msgid "Preferred Video Codec"
 msgstr "偏好的影片編碼"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:99
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
@@ -861,90 +867,95 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:63
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:79
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:110
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:122
 msgid "Any"
 msgstr "任意"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
 msgid "H.264 (AVC)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
 msgid "H.265 (HEVC)"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:106
 #, fuzzy
 msgid "Preferred Audio Codec"
 msgstr "偏好的影片編碼"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:131
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:109
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:111
 #, fuzzy
 msgid "FLAC (ALAC)"
 msgstr "FLAC (音訊)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:72
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:112
 #, fuzzy
 msgid "WAV (AIFF)"
 msgstr "WAV (音訊)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:118
 msgid "Preferred Subtitle Format"
 msgstr "偏好的字幕格式"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:144
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:78
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:121
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:158
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:162
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:324
 msgid "Downloader"
 msgstr "下載器"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:165
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:141
 #, fuzzy
 msgid "Use Part Files"
 msgstr "使用 Batch 檔案"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:144
 msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:88
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:146
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube 使用 SponsorBlock"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:176
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:147
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:149
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:92
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:151
 msgid "Limit Download Speed"
 msgstr "限制下載速度"
 
@@ -953,174 +964,181 @@ msgid "Speed Limit (KiB/s)"
 msgstr "速度限制 (KiB/s)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:208
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:96
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:165
 msgid "Proxy URL"
 msgstr "代理 URL"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:217
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:98
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:169
 msgid "Cookies from Browser"
 msgstr "瀏覽器的 Cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:172
 msgid "Brave"
 msgstr "Brave"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:101
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:173
 msgid "Chrome"
 msgstr "Chrome"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:102
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:174
 msgid "Chromium"
 msgstr "Chromium"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:103
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:175
 msgid "Edge"
 msgstr "Edge"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:104
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:176
 msgid "Firefox"
 msgstr "Firefox"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:105
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:177
 msgid "Opera"
 msgstr "Opera"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:178
 msgid "Safari"
 msgstr "Safari"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:179
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:108
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:180
 msgid "Whale"
 msgstr "Whale"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:109
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:182
 msgid "Cookies File"
 msgstr "Cookies 檔案"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:148
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:110
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:185
 msgid "No file selected"
 msgstr "沒有選擇檔案"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:126
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:111
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "Select Cookies File"
 msgstr "選擇 Cookies 檔案"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:195
 msgid "Clear Cookies File"
 msgstr "清除 Cookies 檔案"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:113
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:327
 #, fuzzy
 msgid "aria2c"
 msgstr "aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:114
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:294
 #, fuzzy
 msgid "Use aria2c"
 msgstr "使用 aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:115
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:295
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:297
+#, fuzzy
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
-msgstr ""
+msgstr "當啟動時，Parabolic 會使用 aria2c 來下載媒體。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:118
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:299
 msgid "Max Connections Per Server (-x)"
 msgstr "每個伺服器最大連線數 (-x)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:290
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:304
 msgid "Minimum Split Size (-k)"
 msgstr "分割最小值 (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:305
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:307
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "分割最小值 (單位 MiB)。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:310
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:325
 msgid "Converter"
 msgstr "轉換器"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:121
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:211
 msgid "Embed Metadata"
 msgstr "嵌入後設資料"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:124
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:218
 msgid "Remove Source Data"
 msgstr "移除來源資訊"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:219
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:221
 #, fuzzy
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
-msgstr "啟用後 Parabolic 將會清除後設資料中可被辨識的下載資訊。"
+msgstr "啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:223
 msgid "Embed Thumbnails"
 msgstr "嵌入縮圖"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:339
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:224
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:226
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr "如果檔案類型不支援嵌入，縮圖將會另存成圖檔"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:132
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:232
 msgid "Crop Audio Thumbnails"
 msgstr "剪裁音訊縮圖"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:350
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:133
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:233
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:235
 #, fuzzy
 msgid "Parabolic will crop thumbnails of audio files to squares."
-msgstr "啟用後 Parabolic 將會剪裁音訊檔案縮圖成正方形。"
+msgstr "啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:136
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:237
 msgid "Embed Chapters"
 msgstr "嵌入章節"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:369
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:240
 msgid "Embed Subtitles"
 msgstr "嵌入字幕"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:140
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:243
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
@@ -1128,20 +1146,20 @@ msgid ""
 msgstr "如果關閉或不支援嵌入，已下載的字幕會另存新檔"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:379
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:256
 #, fuzzy
 msgid "FFmpeg Threads"
 msgstr "後製使用的核心數"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:145
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:257
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:259
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:390
-#, fuzzy
 msgid "Postprocessing Arguments"
-msgstr "後製使用的核心數"
+msgstr "後製參數"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
 msgid ""
@@ -1149,6 +1167,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:393
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:272
 #, fuzzy
 msgid "Add Postprocessing Argument"
 msgstr "後製使用的核心數"
@@ -1160,22 +1179,22 @@ msgid "Argument"
 msgstr "新的身份驗證資訊"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:426
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:258
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:347
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:540
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:634
 #, fuzzy
 msgid "Post Processor"
 msgstr "處理中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:430
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:266
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:355
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:544
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:639
 msgid "Executable"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:273
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:362
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:548
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:644
 msgid "Args"
 msgstr ""
 
@@ -1193,20 +1212,25 @@ msgid "Starting"
 msgstr "開始"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:173
 msgid "Unknown"
 msgstr "未知"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:234
 msgid "Processing"
 msgstr "處理中"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:168
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:300
 msgid "Running"
 msgstr "執行中"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
-#, c++-format
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:240
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1214,49 +1238,68 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:324
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:175
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:257
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:263
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:266
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:269
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:275
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:536
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:571
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:574
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:577
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:676
 msgid "Error"
 msgstr "錯誤"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:263
 msgid "Success"
 msgstr "成功"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:271
 msgid "Stopped"
 msgstr "已停止"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:281
 msgid "Paused"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:289
 msgid "Resume"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:46
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:451
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:73
 msgid "Use manual credential"
 msgstr "使用手動身份驗證"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
 msgid "Select Batch File"
 msgstr "選擇 Batch 檔案"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:500
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:514
 msgid "TXT Files (*.txt)"
 msgstr "TXT 檔案 (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:325
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:551
 #, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
@@ -1273,18 +1316,16 @@ msgstr ""
 msgid "Close"
 msgstr "關閉"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:201
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:70
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:199
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:215
 msgid "No Subtitles Available"
 msgstr "沒有可提供的字幕"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:222
-#, c++-format
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
 msgid "{} items"
 msgstr "{} 項目"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1293,9 +1334,9 @@ msgstr ""
 "請選擇或輸入一個驗證來繼續。"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:56
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:89
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:205
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:266
 msgid "Both the username and password cannot be empty."
 msgstr "使用者名稱和密碼不能空白。"
 
@@ -1305,16 +1346,16 @@ msgstr "金鑰圈沒有儲存到磁碟。所有變動都會遺失。"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:165
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:140
 msgid "Edit"
 msgstr "編輯"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:179
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:248
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:657
 msgid "Delete"
 msgstr "刪除"
 
@@ -1324,11 +1365,14 @@ msgid "Modify"
 msgstr "修改"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:283
 msgid "Delete Credential?"
 msgstr "刪除身份驗證？"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:283
 msgid "Are you sure you want to delete this credential?"
 msgstr "您確定要刪除身份驗證嗎？"
 
@@ -1336,8 +1380,6 @@ msgstr "您確定要刪除身份驗證嗎？"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:238
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:418
 msgid "Yes"
 msgstr "是"
 
@@ -1345,8 +1387,6 @@ msgstr "是"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:237
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:419
 msgid "No"
 msgstr "否"
 
@@ -1377,10 +1417,12 @@ msgid "Credential (Database Error)"
 msgstr "身份驗證 (資料庫錯誤)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:379
 msgid "Disclaimer"
 msgstr "聲明"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:379
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1390,15 +1432,18 @@ msgstr ""
 "DMCA 負責。在使用本應用程式時請自行承擔風險。"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:154
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:380
 msgid "Don't show this message again"
 msgstr "不要再顯示這個訊息"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
 #, fuzzy
 msgid "Recover Crashed Downloads?"
 msgstr "恢復損毀的下載"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
 msgid ""
 "There are downloads available to recover from when Parabolic crashed. Would "
 "you like to recover them?"
@@ -1409,6 +1454,7 @@ msgid "Exit?"
 msgstr "離開嗎？"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:408
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "下載正在進行中。請問您確定要關閉嗎？"
 
@@ -1421,24 +1467,25 @@ msgid "Download Again"
 msgstr "再次下載"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:118
 msgid "GitHub Repo"
 msgstr "GitHub 儲存庫"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:202
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:467
 #, fuzzy
 msgid "No Arguments"
 msgstr "新的身份驗證資訊"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:600
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:685
 #, fuzzy
 msgid "Delete Argument?"
 msgstr "新的身份驗證資訊"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:600
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:685
 #, fuzzy
 msgid "Are you sure you want to delete this argument?"
 msgstr "您確定要刪除身份驗證嗎？"
@@ -1448,162 +1495,142 @@ msgstr "您確定要刪除身份驗證嗎？"
 msgid "Args (Empty)"
 msgstr "名稱 (空白)"
 
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:34
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:326
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:177
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:298
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:388
-msgid "OK"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:83
-msgid "About"
-msgstr "關於"
-
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:36
-msgid "Changelog"
-msgstr "更新記錄"
-
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:37
-msgid "Credits"
-msgstr "人員名單"
-
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:38
-msgid "Debugging"
-msgstr "除錯"
-
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:69
 msgid "Developers"
 msgstr "開發者"
 
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:40
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:74
 msgid "Designers"
 msgstr "設計者"
 
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:79
 msgid "Artists"
 msgstr "藝術家"
 
-#: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:42
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:161
 msgid "Copy Debug Information"
 msgstr "複製除錯資訊"
 
-#: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:202
-msgid "Search"
-msgstr ""
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:108
+msgid "About"
+msgstr "關於"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:25
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:66
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:186
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:376
-msgid "Cancel"
-msgstr ""
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:109
+msgid "Changelog"
+msgstr "更新記錄"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:45
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:110
+msgid "Credits"
+msgstr "人員名單"
+
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:111
+msgid "Debugging"
+msgstr "除錯"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
+msgid "Log"
+msgstr "記錄"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:86
+#, fuzzy
+msgid "Show Log"
+msgstr "檢視記錄檔"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:80
+msgid "Open Containing Folder"
+msgstr "開啟下載資料夾"
+
+#: org.nickvision.tubeconverter.qt/src/controls/infobar.cpp:50
+msgid "Notification"
+msgstr "通知"
+
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:32
+msgid "No Download Log"
+msgstr "無下載紀錄"
+
+#: org.nickvision.tubeconverter.qt/src/controls/logpane.cpp:40
+msgid "Copy"
+msgstr "複製"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
+msgid "Enter media url here"
+msgstr "請在這裡輸入媒體的 URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:31
+msgid "Enter username here"
+msgstr "在這裡輸入使用者名稱"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:35
+msgid "Enter password here"
+msgstr "在這裡輸入密碼"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:96
 #, fuzzy
 msgid "Media"
 msgstr "媒體 URL"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:97
 #, fuzzy
 msgid "Authentication"
 msgstr "驗證"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:48
-msgid "Enter media url here"
-msgstr "請在這裡輸入媒體的 URL"
-
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:74
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:77
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:80
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:91
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:97
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:102
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:105
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:108
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:39
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:55
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:59
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:86
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:90
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:93
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:116
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:122
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:126
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:130
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:134
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:137
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:141
-#, fuzzy
-msgid "On"
-msgstr "打開"
-
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:75
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:78
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:81
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:92
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:98
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:103
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:106
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:109
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:36
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:40
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:56
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:60
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:87
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:91
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:94
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:117
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:123
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:127
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:131
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:135
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:138
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:142
-msgid "Off"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:55
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:30
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:168
-msgid "Enter username here"
-msgstr "在這裡輸入使用者名稱"
-
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:57
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:32
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:54
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:172
-msgid "Enter password here"
-msgstr "在這裡輸入密碼"
-
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:117
 msgid "This may take some time..."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:59
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:290
+msgid "No save folder selected"
+msgstr "沒有選擇儲存資料夾"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:161
+msgid "Enter file name here"
+msgstr "在這裡輸入檔案名稱"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:185
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:272
+msgid "Split Video by Chapters"
+msgstr "依據章節切割影片"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:199
+msgid "Enter start time here"
+msgstr "在這裡輸入開始時間"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:203
+msgid "Enter end time here"
+msgstr "在這裡輸入結束時間"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:356
 msgid "General"
 msgstr "一般"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:61
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:247
 #, fuzzy
 msgid "Advanced"
 msgstr "進階選項"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:357
+msgid "Items"
+msgstr "項目"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:695
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:709
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+msgid "Warning"
+msgstr "警告"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:645
 #, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
@@ -1613,278 +1640,219 @@ msgstr ""
 "一般的檔案類型不支援嵌入縮圖和字幕，請選擇支援嵌入的格式以避免寫入磁碟的時候"
 "額外產生縮圖和字幕檔"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:73
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:101
-msgid "Split Video by Chapters"
-msgstr "依據章節切割影片"
-
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:86
-msgid "Items"
-msgstr "項目"
-
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:135
-#, fuzzy
-msgid "Use manual credentials"
-msgstr "使用手動身份驗證"
-
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
-#, c++-format
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr "{} 需要身份驗證資訊才能下載。請選擇或輸入一個驗證。"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:43
+msgid "Add, delete, and modify credentials for validating websites"
+msgstr "新增、刪除和修改身分驗證資訊來驗證網站"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:59
+msgid "No Credentials"
+msgstr "沒有身份驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:60
 #, fuzzy
+msgid "Add a credential to get started"
+msgstr "新增身分驗證資訊以開始"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid ""
-"The keyring is not saving changes to disk. Any changes made will be lost"
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
 msgstr "金鑰環沒有儲存變更到硬碟。當應用程式關閉所有更動都會遺失。"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:45
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:255
-msgid "Enter name here"
-msgstr "在這裡輸入名字"
-
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:48
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:164
-#, fuzzy
-msgid "Enter url here"
-msgstr "請在這裡輸入 URL"
-
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:113
 msgid "New Credential"
 msgstr "新的身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:151
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:263
 msgid "The credential name cannot be empty."
 msgstr "身份驗證資訊名稱不能為空白"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:93
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:269
 msgid "The provided url is invalid."
 msgstr "提供的 URL 無效"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:272
 msgid "A credential with this name already exists."
 msgstr "此名稱的身份驗證資訊已經存在"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:101
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:213
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:163
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:275
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr "新增身份驗證資訊至金鑰環時發生不明錯誤"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:182
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:212
 msgid "Edit Credential"
 msgstr "編輯身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:184
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:375
-msgid "Save"
-msgstr "儲存"
-
-#: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:235
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:184
 msgid "Delete Credential"
 msgstr "刪除身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:68
-msgid "Preview"
-msgstr ""
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:652
+msgid "Save"
+msgstr "儲存"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:77
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
+msgid "Exit"
+msgstr "退出"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:388
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:78
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:112
 msgid "Check for Updates"
 msgstr "檢查更新"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:79
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:115
 msgid "Documentation"
 msgstr "說明文件"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:121
 msgid "Report a Bug"
 msgstr "回報錯誤(Bug)"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:82
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:124
 msgid "Discussions"
 msgstr "討論區"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:206
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:135
+msgid "File"
+msgstr "檔案"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:145
+msgid "View"
+msgstr "檢視"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
+#, fuzzy
+msgid "Downloading (0)"
+msgstr "下載中"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:272
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:465
+#, fuzzy
+msgid "Queued (0)"
+msgstr "佇列"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:273
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:482
+#, fuzzy
+msgid "Completed (0)"
+msgstr "已完成"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
+msgid "Parabolic (Preview)"
+msgstr "Parabolic (預覽版)"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:542
 msgid "Update"
 msgstr "更新"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:585
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:639
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:678
+msgid "Queued ({})"
+msgstr "佇列({})"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:596
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:611
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:638
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:660
+msgid "Downloading ({})"
+msgstr "下載中({})"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:612
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:640
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:679
+msgid "Completed ({})"
+msgstr "已完成({})"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:41
 msgid "Light"
 msgstr "明亮"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:42
 msgid "Dark"
 msgstr "暗色"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:43
 msgid "System"
 msgstr "系統"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:45
 msgid "Automatically Check for Updates"
 msgstr "自動檢查更新"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:49
-#, fuzzy
-msgid "Max Number of Active Downloads"
-msgstr "最大同時下載數"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:89
 msgid "Parabolic will include the media's id in its default title."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:158
 msgid "Speed Limit"
 msgstr "速度限制"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:167
 msgid "Enter proxy url here"
 msgstr "在這裡輸入 Proxy URL"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:143
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:263
+msgid "Arguments"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:266
+msgid ""
+"Parabolic will show these arguments for\n"
+"selection in the add download dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:326
 #, fuzzy
 msgid "Postprocessing"
 msgstr "處理中"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:146
-#, fuzzy
-msgid "Arguments"
-msgstr "新的身份驗證資訊"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:147
-msgid ""
-"Parabolic will show these arguments below for selection in the add download "
-"dialog."
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:363
-#, fuzzy
-msgid "Enter args here"
-msgstr "請在這裡輸入 URL"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:283
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:534
 #, fuzzy
 msgid "New Argument"
 msgstr "新的身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:306
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:571
 #, fuzzy
 msgid "The argument name cannot be empty."
 msgstr "身份驗證資訊名稱不能為空白"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:312
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:574
 #, fuzzy
 msgid "An argument with this name already exists."
 msgstr "此名稱的身份驗證資訊已經存在"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:318
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:396
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:577
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:676
 #, fuzzy
 msgid "The argument args cannot be empty."
 msgstr "身份驗證資訊名稱不能為空白"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:373
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:444
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:594
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:626
 #, fuzzy
 msgid "Edit Argument"
 msgstr "新的身份驗證資訊"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:452
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:598
 #, fuzzy
 msgid "Delete Argument"
 msgstr "新的身份驗證資訊"
-
-#, fuzzy
-#~ msgid "Download some media to see it here"
-#~ msgstr "下載媒體"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr "新增、刪除和修改身分驗證資訊來驗證網站"
-
-#, fuzzy
-#~ msgid "Add a credential to get started"
-#~ msgstr "新增身分驗證資訊以開始"
-
-#, fuzzy
-#~ msgid "Revert File Name"
-#~ msgstr "檔案名稱"
-
-#~ msgid "Log"
-#~ msgstr "記錄"
-
-#, fuzzy
-#~ msgid "Show Log"
-#~ msgstr "檢視記錄檔"
-
-#~ msgid "Open Containing Folder"
-#~ msgstr "開啟下載資料夾"
-
-#~ msgid "Notification"
-#~ msgstr "通知"
-
-#~ msgid "No Download Log"
-#~ msgstr "無下載紀錄"
-
-#~ msgid "Copy"
-#~ msgstr "複製"
-
-#~ msgid "No save folder selected"
-#~ msgstr "沒有選擇儲存資料夾"
-
-#~ msgid "Enter file name here"
-#~ msgstr "在這裡輸入檔案名稱"
-
-#~ msgid "Enter start time here"
-#~ msgstr "在這裡輸入開始時間"
-
-#~ msgid "Enter end time here"
-#~ msgstr "在這裡輸入結束時間"
-
-#~ msgid "Warning"
-#~ msgstr "警告"
-
-#~ msgid "No Credentials"
-#~ msgstr "沒有身份驗證資訊"
-
-#~ msgid "Exit"
-#~ msgstr "退出"
-
-#~ msgid "File"
-#~ msgstr "檔案"
-
-#~ msgid "View"
-#~ msgstr "檢視"
-
-#, fuzzy
-#~ msgid "Downloading (0)"
-#~ msgstr "下載中"
-
-#, fuzzy
-#~ msgid "Queued (0)"
-#~ msgstr "佇列"
-
-#, fuzzy
-#~ msgid "Completed (0)"
-#~ msgstr "已完成"
-
-#~ msgid "Parabolic (Preview)"
-#~ msgstr "Parabolic (預覽版)"
-
-#~ msgid "Queued ({})"
-#~ msgstr "佇列({})"
-
-#~ msgid "Downloading ({})"
-#~ msgstr "下載中({})"
-
-#~ msgid "Completed ({})"
-#~ msgstr "已完成({})"
 
 #, fuzzy
 #~ msgid "Add, delete, and modify arguments for postprocessing"
@@ -1940,6 +1908,12 @@ msgstr "新的身份驗證資訊"
 
 #~ msgid "Retry Failed"
 #~ msgstr "重試失敗的項目"
+
+#~ msgid "Enter name here"
+#~ msgstr "在這裡輸入名字"
+
+#~ msgid "Enter url here"
+#~ msgstr "請在這裡輸入 URL"
 
 #~ msgid "Revert"
 #~ msgstr "回復"
