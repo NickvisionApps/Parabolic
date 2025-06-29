@@ -9,6 +9,7 @@
 #include "Controls/SettingsRow.xaml.h"
 #include "Helpers/WinUIHelpers.h"
 #include "Views/AddDownloadDialog.xaml.h"
+#include "Views/KeyringPage.xaml.h"
 #include "Views/SettingsPage.xaml.h"
 
 using namespace ::Nickvision::Events;
@@ -82,7 +83,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         LblHomeAddDownload().Text(winrt::to_hstring(_("Add Download")));
         LblHistoryTitle().Text(winrt::to_hstring(_("History")));
         PageNoHistory().Title(winrt::to_hstring(_("No History Available")));
-        PageNoHistory().Description(winrt::to_hstring(_("Download some media to see it here")));
         LblHistoryAddDownload().Text(winrt::to_hstring(_("Add Download")));
         LblHistoryClearHistory().Text(winrt::to_hstring(_("Clear")));
     }
@@ -202,7 +202,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
     {
         ViewStackHistory().CurrentPageIndex(0);
-        ListHistory().Items().Clear();
+        ListHistory().Children().Clear();
         for(const HistoricDownload& download : *args)
         {
             FontIcon icnPlay;
@@ -210,6 +210,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             icnPlay.Glyph(L"\uE768");
             Button btnPlay;
             btnPlay.Content(icnPlay);
+            ToolTipService::SetToolTip(btnPlay, winrt::box_value(winrt::to_hstring(_("Play"))));
             btnPlay.Click([this, download](const IInspectable&, const RoutedEventArgs&) -> Windows::Foundation::IAsyncAction
             {
                 co_await Launcher::LaunchFileAsync(co_await StorageFile::GetFileFromPathAsync(winrt::to_hstring(download.getPath().string())));
@@ -219,6 +220,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             icnDownload.Glyph(L"\uE896");
             Button btnDownload;
             btnDownload.Content(icnDownload);
+            ToolTipService::SetToolTip(btnDownload, winrt::box_value(winrt::to_hstring(_("Download"))));
             btnDownload.Click([this, download](const IInspectable&, const RoutedEventArgs&) -> Windows::Foundation::IAsyncAction
             {
                 co_await AddDownload(winrt::to_hstring(download.getUrl()));
@@ -228,6 +230,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             icnDelete.Glyph(L"\uE74D");
             Button btnDelete;
             btnDelete.Content(icnDelete);
+            ToolTipService::SetToolTip(btnDelete, winrt::box_value(winrt::to_hstring(_("Delete"))));
             btnDelete.Click([this, download](const IInspectable&, const RoutedEventArgs&)
             {
                 m_controller->getDownloadManager().removeHistoricDownload(download);
@@ -246,7 +249,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             row.Description(winrt::to_hstring(download.getUrl()));
             row.Child(panel);
             ViewStackHistory().CurrentPageIndex(1);
-            ListHistory().Items().Append(row);
+            ListHistory().Children().Append(row);
         }
     }
 
@@ -285,6 +288,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(tag == L"Home")
         {
             ViewStack().CurrentPageIndex(MainWindowPage::Home);
+        }
+        else if(tag == L"Keyring")
+        {
+            ViewStack().CurrentPageIndex(MainWindowPage::Custom);
+            PageCustom().Content(winrt::make<implementation::KeyringPage>());
+            PageCustom().Content().as<implementation::KeyringPage>()->Controller(m_controller->createKeyringDialogController());
         }
         else if(tag == L"History")
         {

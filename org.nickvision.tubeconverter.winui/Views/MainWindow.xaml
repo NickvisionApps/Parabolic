@@ -175,7 +175,6 @@
                                     <Grid RowSpacing="12">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
 
@@ -191,9 +190,9 @@
                                             </Button>
                                         </StackPanel>
 
-                                        <MenuFlyoutSeparator Grid.Row="1"/>
-
-                                        <ListView x:Name="ListHistory" Grid.Row="2" SelectionMode="None"/>
+                                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="ListHistory" Spacing="6"/>
+                                        </ScrollViewer>
                                     </Grid>
                                 </controls:ViewStack.Pages>
                             </controls:ViewStack>
