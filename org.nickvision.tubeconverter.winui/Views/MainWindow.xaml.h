@@ -6,6 +6,7 @@
 #include "Controls/ViewStack.g.h"
 #include "Views/MainWindow.g.h"
 #include <memory>
+#include <unordered_map>
 #include "controllers/mainwindowcontroller.h"
 
 namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
@@ -193,6 +194,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         Microsoft::UI::Xaml::ElementTheme m_systemTheme;
         bool m_opened;
         winrt::event_token m_notificationClickToken;
+        std::unordered_map<int, Microsoft::UI::Xaml::Controls::UserControl> m_downloadRows;
     };
 }
 

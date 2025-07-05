@@ -65,8 +65,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         dialog.PrimaryButtonText(winrt::to_hstring(_("Add")));
         dialog.CloseButtonText(winrt::to_hstring(_("Cancel")));
         dialog.DefaultButton(ContentDialogButton::Primary);
-        dialog.RequestedTheme(MainGrid().RequestedTheme());
-        dialog.XamlRoot(MainGrid().XamlRoot());
+        dialog.RequestedTheme(RequestedTheme());
+        dialog.XamlRoot(XamlRoot());
         while(true)
         {
             ContentDialogResult res{ co_await dialog.ShowAsync() };
@@ -77,8 +77,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 errorDialog.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
                 errorDialog.CloseButtonText(winrt::to_hstring(_("OK")));
                 errorDialog.DefaultButton(ContentDialogButton::Close);
-                errorDialog.RequestedTheme(MainGrid().RequestedTheme());
-                errorDialog.XamlRoot(MainGrid().XamlRoot());
+                errorDialog.RequestedTheme(RequestedTheme());
+                errorDialog.XamlRoot(XamlRoot());
                 switch(status)
                 {
                 case CredentialCheckStatus::EmptyName:
@@ -185,8 +185,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         dialog.SecondaryButtonText(winrt::to_hstring(_("Delete")));
         dialog.CloseButtonText(winrt::to_hstring(_("Cancel")));
         dialog.DefaultButton(ContentDialogButton::Primary);
-        dialog.RequestedTheme(MainGrid().RequestedTheme());
-        dialog.XamlRoot(MainGrid().XamlRoot());
+        dialog.RequestedTheme(RequestedTheme());
+        dialog.XamlRoot(XamlRoot());
         while(true)
         {
             ContentDialogResult res{ co_await dialog.ShowAsync() };
@@ -197,8 +197,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 errorDialog.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
                 errorDialog.CloseButtonText(winrt::to_hstring(_("OK")));
                 errorDialog.DefaultButton(ContentDialogButton::Close);
-                errorDialog.RequestedTheme(MainGrid().RequestedTheme());
-                errorDialog.XamlRoot(MainGrid().XamlRoot());
+                errorDialog.RequestedTheme(RequestedTheme());
+                errorDialog.XamlRoot(XamlRoot());
                 switch(status)
                 {
                 case CredentialCheckStatus::EmptyUsernamePassword:
@@ -237,8 +237,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         dialog.CloseButtonText(winrt::to_hstring(_("No")));
         dialog.PrimaryButtonText(winrt::to_hstring(_("Yes")));
         dialog.DefaultButton(ContentDialogButton::Primary);
-        dialog.RequestedTheme(MainGrid().RequestedTheme());
-        dialog.XamlRoot(MainGrid().XamlRoot());
+        dialog.RequestedTheme(RequestedTheme());
+        dialog.XamlRoot(XamlRoot());
         ContentDialogResult res{ co_await dialog.ShowAsync() };
         if(res == ContentDialogResult::Primary)
         {

@@ -6,6 +6,7 @@
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "Controls/AboutDialog.xaml.h"
+#include "Controls/DownloadRow.xaml.h"
 #include "Controls/SettingsRow.xaml.h"
 #include "Helpers/WinUIHelpers.h"
 #include "Views/AddDownloadDialog.xaml.h"
@@ -41,6 +42,12 @@ enum MainWindowPage
     Queued,
     Completed,
     Custom
+};
+
+enum ListPage
+{
+    None = 0,
+    Has
 };
 
 namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
@@ -216,6 +223,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     void MainWindow::OnActivated(const IInspectable& sender, const WindowActivatedEventArgs& args)
     {
         TitleBar().IsActivated(args.WindowActivationState() != WindowActivationState::Deactivated);
+        m_controller->setIsWindowActive(args.WindowActivationState() != WindowActivationState::Deactivated);
     }
 
     void MainWindow::OnConfigurationSaved(const ::Nickvision::Events::EventArgs&)
@@ -283,7 +291,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
     {
-        ViewStackHistory().CurrentPageIndex(0);
+        ViewStackHistory().CurrentPageIndex(ListPage::None);
         ListHistory().Children().Clear();
         for(const HistoricDownload& download : *args)
         {
@@ -330,7 +338,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             row.Title(winrt::to_hstring(download.getTitle()));
             row.Description(winrt::to_hstring(download.getUrl()));
             row.Child(panel);
-            ViewStackHistory().CurrentPageIndex(1);
+            ViewStackHistory().CurrentPageIndex(ListPage::Has);
             ListHistory().Children().Append(row);
         }
     }
@@ -346,42 +354,109 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void MainWindow::OnDownloadAdded(const DownloadAddedEventArgs& args)
     {
-
+        Controls::DownloadRow row{ winrt::make<Controls::implementation::DownloadRow>() };
+        row.as<Controls::implementation::DownloadRow>()->TriggerAddedState(args);
+        m_downloadRows[args.getId()] = row;
+        if(args.getStatus() == DownloadStatus::Queued)
+        {
+            ListQueued().Children().InsertAt(0, row);
+            ViewStackQueued().CurrentPageIndex(ListPage::Has);
+            if(NavViewHome().IsSelected())
+            {
+                NavViewQueued().IsSelected(true);
+            }
+            BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
+        }
+        else
+        {
+            ListDownloading().Children().InsertAt(0, row);
+            ViewStackDownloading().CurrentPageIndex(ListPage::Has);
+            if(NavViewHome().IsSelected())
+            {
+                NavViewDownloading().IsSelected(true);
+            }
+            BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
+        }
     }
 
     void MainWindow::OnDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
-
+        unsigned int index;
+        m_downloadRows[args.getId()].as<Controls::implementation::DownloadRow>()->TriggerCompletedState(args);
+        if(ListDownloading().Children().IndexOf(m_downloadRows[args.getId()], index))
+        {
+            ListDownloading().Children().RemoveAt(index);
+        }
+        ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
+        ListCompleted().Children().InsertAt(0, m_downloadRows[args.getId()]);
+        ViewStackCompleted().CurrentPageIndex(ListPage::Has);
+        BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
     }
 
     void MainWindow::OnDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
     {
-
+        m_downloadRows[args.getId()].as<Controls::implementation::DownloadRow>()->TriggerProgressState(args);
     }
 
     void MainWindow::OnDownloadStopped(const ParamEventArgs<int>& args)
     {
-
+        unsigned int index;
+        m_downloadRows[*args].as<Controls::implementation::DownloadRow>()->TriggerStoppedState();
+        if(ListDownloading().Children().IndexOf(m_downloadRows[*args], index))
+        {
+            ListDownloading().Children().RemoveAt(index);
+        }
+        ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
+        if(ListQueued().Children().IndexOf(m_downloadRows[*args], index))
+        {
+            ListQueued().Children().RemoveAt(index);
+        }
+        ViewStackQueued().CurrentPageIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
+        ListCompleted().Children().InsertAt(0, m_downloadRows[*args]);
+        ViewStackCompleted().CurrentPageIndex(ListPage::Has);
+        BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
     }
 
     void MainWindow::OnDownloadPaused(const ParamEventArgs<int>& args)
     {
-
+        m_downloadRows[*args].as<Controls::implementation::DownloadRow>()->TriggerPausedState();
     }
 
     void MainWindow::OnDownloadResumed(const ParamEventArgs<int>& args)
     {
-
+        m_downloadRows[*args].as<Controls::implementation::DownloadRow>()->TriggerResumedState();
     }
 
     void MainWindow::OnDownloadRetried(const ParamEventArgs<int>& args)
     {
-
+        unsigned int index;
+        if(ListCompleted().Children().IndexOf(m_downloadRows[*args], index))
+        {
+            ListCompleted().Children().RemoveAt(index);
+        }
+        ViewStackCompleted().CurrentPageIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
+        ListDownloading().Children().InsertAt(0, m_downloadRows[*args]);
+        ViewStackDownloading().CurrentPageIndex(ListPage::Has);
+        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
     }
 
     void MainWindow::OnDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
-
+        unsigned int index;
+        m_downloadRows[*args].as<Controls::implementation::DownloadRow>()->TriggerStartedFromQueueState();
+        if(ListQueued().Children().IndexOf(m_downloadRows[*args], index))
+        {
+            ListQueued().Children().RemoveAt(index);
+        }
+        ViewStackQueued().CurrentPageIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
+        ListDownloading().Children().InsertAt(0, m_downloadRows[*args]);
+        ViewStackDownloading().CurrentPageIndex(ListPage::Has);
+        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
     }
 
     void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)
