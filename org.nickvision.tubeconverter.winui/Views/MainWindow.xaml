@@ -229,7 +229,15 @@
                                         </Grid.RowDefinitions>
 
                                         <StackPanel Grid.Row="0" Margin="0,0,24,0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
+                                            <Button x:Name="BtnStopAllDownloads" Style="{StaticResource AccentButtonStyle}" Click="StopAllDownloads">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE71A;"/>
 
+                                                        <TextBlock x:Name="LblStopAllDownloads"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
                                         </StackPanel>
 
                                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
@@ -271,7 +279,15 @@
                                         </Grid.RowDefinitions>
 
                                         <StackPanel Grid.Row="0" Margin="0,0,24,0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
+                                            <Button x:Name="BtnClearQueuedDownloads" Style="{StaticResource AccentButtonStyle}" Click="ClearQueuedDownloads">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
 
+                                                        <TextBlock x:Name="LblClearQueuedDownloads"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
                                         </StackPanel>
 
                                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
@@ -313,7 +329,25 @@
                                         </Grid.RowDefinitions>
 
                                         <StackPanel Grid.Row="0" Margin="0,0,24,0" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
+                                            <Button x:Name="BtnRetryFailedDownloads" Style="{StaticResource AccentButtonStyle}" Click="RetryFailedDownloads">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72C;"/>
 
+                                                        <TextBlock x:Name="LblRetryFailedDownloads"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+
+                                            <Button x:Name="BtnClearCompletedDownloads" Click="ClearCompletedDownloads">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+
+                                                        <TextBlock x:Name="LblClearCompletedDownloads"/>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
                                         </StackPanel>
 
                                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">

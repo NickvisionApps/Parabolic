@@ -182,6 +182,30 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
          */
         void ClearHistory(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Stops all running downloads.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void StopAllDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Clears all queued downloads.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void ClearQueuedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Retries all failed downloads.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void RetryFailedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Clears all completed downloads.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void ClearCompletedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         /**

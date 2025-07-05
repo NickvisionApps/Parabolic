@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:04-0400\n"
+"POT-Creation-Date: 2025-07-05 14:16-0400\n"
 "PO-Revision-Date: 2025-05-30 10:03+0000\n"
 "Last-Translator: \"ShaV Gutman (ImShaV)\" <shavnotfound@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -275,9 +275,9 @@ msgstr "Созданные автоматически"
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:101
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:104
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:111
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:114
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:474
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:113
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:118
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:482
 msgid "Add Download"
 msgstr "Добавить загрузку"
 
@@ -412,7 +412,7 @@ msgstr "Вернуть название"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:196
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:395
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:313
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:321
 msgid "Download"
 msgstr "Загрузка"
 
@@ -530,18 +530,20 @@ msgstr "Пауза"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:32
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:110
 msgid "Stop"
 msgstr "Остановлена"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:33
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:303
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:311
 msgid "Play"
 msgstr "Играть"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:120
 msgid "Retry"
 msgstr "Повторить"
 
@@ -663,14 +665,14 @@ msgstr "Загружается"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:109
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:111
 msgid "Queued"
 msgstr "В очереди"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:90
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:116
 msgid "Completed"
 msgstr "Завершено"
 
@@ -682,11 +684,14 @@ msgstr "Очистить историю"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:242
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:261
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:105
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:122
 msgid "Clear"
 msgstr "Очистить"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:225
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:109
 msgid "Stop All Downloads"
 msgstr "Остановить все загрузки"
 
@@ -695,15 +700,18 @@ msgid "Stop All"
 msgstr "Остановить все"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:237
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:114
 msgid "Clear Queued Downloads"
 msgstr "Очистить очередь"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:249
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:119
 msgid "Retry Failed Downloads"
 msgstr "Перезапустить неудавшиеся загрузки"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:121
 msgid "Clear Completed Downloads"
 msgstr "Очистить завершённые загрузки"
 
@@ -729,12 +737,12 @@ msgid "No Downloads Running"
 msgstr "Ничего не загружается"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:370
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:110
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
 msgid "No Downloads Queued"
 msgstr "Нет активных скачиваний"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:410
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:113
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 msgid "No Downloads Completed"
 msgstr "Нет завершённых"
 
@@ -1248,7 +1256,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:250
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:258
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
 msgid "Error"
@@ -1348,7 +1356,7 @@ msgstr "Правка"
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:179
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:323
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:331
 msgid "Delete"
 msgstr "Удалить"
 
@@ -1371,8 +1379,8 @@ msgstr "Вы точно хотите удалить эти учётные дан
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:238
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:177
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:207
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:185
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:215
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:418
 msgid "Yes"
 msgstr "Да"
@@ -1382,8 +1390,8 @@ msgstr "Да"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:237
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:178
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:208
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:186
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:216
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:419
 msgid "No"
 msgstr "Нет"
@@ -1415,12 +1423,12 @@ msgid "Credential (Database Error)"
 msgstr "Учётные данные (ошибка базы данных)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:163
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:171
 msgid "Disclaimer"
 msgstr "Предупреждение"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:153
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:161
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1431,18 +1439,18 @@ msgstr ""
 "праве или DMCA. Пользователи используют это приложение на свой страх и риск."
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:154
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:156
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:164
 msgid "Don't show this message again"
 msgstr "Больше не показывать это сообщение"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:175
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:183
 #, fuzzy
 msgid "Recover Crashed Downloads?"
 msgstr "Перезапустить неудавшиеся загрузки"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:176
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:184
 msgid ""
 "There are downloads available to recover from when Parabolic crashed. Would "
 "you like to recover them?"
@@ -1453,7 +1461,7 @@ msgid "Exit?"
 msgstr "Закрыть?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:206
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:214
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Имеются незавершённые скачивания. Вы точно хотите закрыть Parabolic?"
 
@@ -1498,8 +1506,8 @@ msgstr "Имя (пустое)"
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:165
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:252
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:173
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:260
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:298
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:388
 msgid "OK"
@@ -1779,7 +1787,7 @@ msgstr "Сообщить об ошибке"
 msgid "Discussions"
 msgstr "Обсуждения"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:281
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:289
 msgid "Update"
 msgstr "Обновить"
 

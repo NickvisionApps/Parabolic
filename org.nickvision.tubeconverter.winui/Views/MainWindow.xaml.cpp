@@ -106,12 +106,20 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         LblDownloadingTitle().Text(winrt::to_hstring(_("Downloading")));
         PageNoDownloading().Title(winrt::to_hstring(_("No Downloads Running")));
         LblDownloadingAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        ToolTipService::SetToolTip(BtnStopAllDownloads(), winrt::box_value(winrt::to_hstring(_("Stop All Downloads"))));
+        LblStopAllDownloads().Text(winrt::to_hstring(_("Stop")));
         LblQueuedTitle().Text(winrt::to_hstring(_("Queued")));
         PageNoQueued().Title(winrt::to_hstring(_("No Downloads Queued")));
         LblQueuedAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        ToolTipService::SetToolTip(BtnClearQueuedDownloads(), winrt::box_value(winrt::to_hstring(_("Clear Queued Downloads"))));
+        LblClearQueuedDownloads().Text(winrt::to_hstring(_("Clear")));
         LblCompletedTitle().Text(winrt::to_hstring(_("Completed")));
         PageNoCompleted().Title(winrt::to_hstring(_("No Downloads Completed")));
         LblCompletedAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        ToolTipService::SetToolTip(BtnRetryFailedDownloads(), winrt::box_value(winrt::to_hstring(_("Retry Failed Downloads"))));
+        LblRetryFailedDownloads().Text(winrt::to_hstring(_("Retry")));
+        ToolTipService::SetToolTip(BtnClearCompletedDownloads(), winrt::box_value(winrt::to_hstring(_("Clear Completed Downloads"))));
+        LblClearCompletedDownloads().Text(winrt::to_hstring(_("Clear")));
     }
 
     void MainWindow::SystemTheme(ElementTheme theme)
@@ -574,6 +582,46 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     void MainWindow::ClearHistory(const IInspectable& sender, const RoutedEventArgs& args)
     {
         m_controller->getDownloadManager().clearHistory();
+    }
+
+    void MainWindow::StopAllDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        m_controller->getDownloadManager().stopAllDownloads();
+    }
+
+    void MainWindow::ClearQueuedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        unsigned int index;
+        for(int id : m_controller->getDownloadManager().clearQueuedDownloads())
+        {
+            if(ListQueued().Children().IndexOf(m_downloadRows[id], index))
+            {
+                ListQueued().Children().RemoveAt(index);
+            }
+            ViewStackQueued().CurrentPageIndex(ListPage::None);
+            BadgeQueued().Value(0);
+            m_downloadRows.erase(id);
+        }
+    }
+
+    void MainWindow::RetryFailedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        m_controller->getDownloadManager().retryFailedDownloads();
+    }
+
+    void MainWindow::ClearCompletedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        unsigned int index;
+        for(int id : m_controller->getDownloadManager().clearCompletedDownloads())
+        {
+            if(ListCompleted().Children().IndexOf(m_downloadRows[id], index))
+            {
+                ListCompleted().Children().RemoveAt(index);
+            }
+            ViewStackCompleted().CurrentPageIndex(ListPage::None);
+            BadgeCompleted().Value(0);
+            m_downloadRows.erase(id);
+        }
     }
 
     Windows::Foundation::IAsyncAction MainWindow::AddDownload(const winrt::hstring& url)
