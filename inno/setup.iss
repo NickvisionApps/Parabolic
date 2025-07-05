@@ -3,10 +3,10 @@
 
 #define MyAppName "Nickvision Parabolic"
 #define MyAppShortName "Parabolic"
-#define MyAppVersion "2025.6.0"
+#define MyAppVersion "2025.7.0"
 #define MyAppPublisher "Nickvision"
 #define MyAppURL "https://nickvision.org"
-#define MyAppExeName "org.nickvision.tubeconverter.qt.exe"
+#define MyAppExeName "org.nickvision.tubeconverter.winui.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -36,21 +36,6 @@ DirExistsWarning=no
 CloseApplications=yes
 ChangesEnvironment=yes
 
-[Code]
-procedure SetupVC();
-var
-  ResultCode: Integer;
-begin
-  if not Exec(ExpandConstant('{app}\deps\vc_redist.x64.exe'), '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
-  then
-    MsgBox('Unable to install VC . Please try again', mbError, MB_OK);
-end;
-
-procedure Cleanup();
-begin
-  DelTree(ExpandConstant('{app}\deps'), True, True, True);
-end;
-
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
@@ -58,15 +43,16 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC
+Source: "vc_redist.exe"; DestDir: "{app}"; Flags: deleteafterinstall
+Source: "windowsappruntimeinstall.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\resources\yt-dlp-plugins\*"; DestDir: "{app}\Release\yt-dlp-plugins\"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "..\build\org.nickvision.tubeconverter.qt\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion 
-Source: "..\build\org.nickvision.tubeconverter.qt\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs; AfterInstall: Cleanup
+Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion
+Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -74,5 +60,7 @@ Name: "{autoprograms}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeNam
 Name: "{autodesktop}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
+Filename: "{app}\vc_redist.exe"; Parameters: "/install /quiet /norestart"
+Filename: "{app}\windowsappruntimeinstall.exe"
 Filename: "{app}\Release\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 

@@ -36,7 +36,7 @@ parts:
     plugin: python
     source: .
     python-packages:
-      - yt-dlp[default,curl-cffi]==2025.06.09
+      - yt-dlp[default,curl-cffi]==2025.06.30
       - mutagen
     stage:
       - -bin/activate*
@@ -63,7 +63,7 @@ parts:
   libnick:
     after: [maddy]
     source: https://github.com/nickvisionapps/libnick.git
-    source-tag: "2025.6.3"
+    source-tag: "2025.6.5"
     source-depth: 1
     plugin: cmake
     cmake-parameters:
@@ -105,7 +105,6 @@ parts:
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
       - -DCMAKE_BUILD_TYPE=Release
-      - -DUI_PLATFORM=gnome
     build-packages:
       - libboost-dev
       - libboost-date-time1.83-dev

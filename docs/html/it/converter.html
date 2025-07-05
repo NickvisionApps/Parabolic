@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Incorpora miniature</dt>
 <dd class="terms">
-<p class="p">Parabolic taggherà un materiale con la sua anteprima se disponibili</p>
-<p class="p">Se il tipo di file non supporta l'incorporamento, la miniatura verrà scritta in un file immagine separato.</p>
+<p class="p">Parabolic incorporerà un file multimediale con la relativa miniatura, se disponibile.</p>
+<p class="p">Se il tipo di file non supporta l'incorporamento, la miniatura verrà salvata in un file immagine separato.</p>
 <div class="note note-advanced" title="Avanzato">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -92,14 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Ritaglia miniature audio</dt>
 <dd class="terms">
-<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
+<p class="p">Parabolic ritaglierà le copertine degli audio in dei quadrati.</p>
 <div class="note" title="Annotazione">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">This option is only configurable if <span class="code">Embed Thumbnails</span> is on.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Questa opzione è configurabile solamente se <span class="code">Embed Thumbnails</span> è attivo.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Avanzato">
 <svg height="24" width="24" version="1.1">
@@ -118,9 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predefinito: Disattivato</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Includi i capitoli</dt>
+<dt class="terms">Incorpora i capitoli</dt>
 <dd class="terms">
-<p class="p">Parabolic will tag a media with its chapter information if available.</p>
+<p class="p">Parabolic etichetterà un file multimediale con le sue informazioni sui capitoli, se disponibili.</p>
 <div class="note note-advanced" title="Avanzato">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -138,10 +138,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predefinito: Disattivato</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Embed Subtitles</dt>
+<dt class="terms">Incorpora i sottotitoli</dt>
 <dd class="terms">
-<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
-<p class="p">Whether or not embedding is supported if affected by your chosen <span class="code">Preferred Subtitle Format</span>.</p>
+<p class="p">Se disabilitati o se l'incorporamento non è supportato, i sottotitoli scaricati verranno salvati in file separati.</p>
+<p class="p">La possibilità di incorporare i sottotitoli dipende dal <span class="code">Formato Preferito Sottotitoli</span> selezionato.</p>
 <div class="note note-advanced" title="Avanzato">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">FFmpeg Threads</dt>
 <dd class="terms">
-<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
+<p class="p">Parabolic limiterà il numero di thread usati da <span class="code">FFmpeg</span>.</p>
 <div class="note note-advanced" title="Avanzato">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The max number of threads available on the system</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predefinito: il massimo numero di thread disponibili sul sistema</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Postprocessing Arguments</dt>

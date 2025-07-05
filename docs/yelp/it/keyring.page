@@ -19,17 +19,17 @@
 
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+    <p>La funzionalità Portachiavi è supportata dalla libreria <code>Nickvision.Keyring</code>.</p>
+    <p>Questa libreria utilizza SQLCipher per memorizzare in modo sicuro le credenziali, in maniera indipendente dalla piattaforma.</p>
+    <p>La libreria utilizzerà il gestore di credenziali del sistema (come DBus su Linux o il Gestore delle credenziali su Windows) per proteggere il file del database del portachiavi.</p>
 </section>
 
 <section>
-    <title>Storing a Credential</title>
-    <p>Here are the fields that can be stored in a credential:</p>
-    <p><code>Name</code>: The name of the credential</p>
-    <p><code>URL</code> (optional): The URL of the credential</p>
-    <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-    <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+    <title>Memorizzare una credenziale</title>
+    <p>Ecco i campi che possono essere memorizzati in una credenziale:</p>
+    <p><code>Nome</code>: Il nome di una credenziale</p>
+    <p><code>URL</code> (opzionale): L'URL di una credenziale</p>
+    <p><code>Username</code> (opzionale se il campo della password non è vuoto): L'username di una credenziale</p>
+    <p><code>Password</code> (opzionale se il campo dell'username non è vuoto): La password di una credenziale</p>
 </section>
 </page>

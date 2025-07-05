@@ -150,6 +150,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_parent));
             adw_dialog_set_can_close(m_dialog, true);
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
+            adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("validateUrlButton"));
             return;
         }
         adw_dialog_set_can_close(m_dialog, true);
@@ -158,6 +159,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             size_t previous{ 0 };
             //Load Options
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single");
+            adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("downloadSingleButton"));
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings());
             adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("videoFormatSingleRow"), m_controller->getVideoFormatStrings(&previous), "", false);
@@ -209,6 +211,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         else //Playlist Download
         {
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-playlist");
+            adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("downloadPlaylistButton"));
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), m_controller->getFileTypeStrings());
             adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());

@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.6.0" });
+        m_appInfo.setVersion({ "2025.7.0-beta1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to configure a set of postprocessing arguments to enable for downloads\n- Added the ability to write a m3u file to disk for playlist downloads\n- Made it so Parabolic will now ask to recover downloads if there are any available instead of recovering automatically\n- Moved the download immediately after validation option to the add download dialog\n- Moved the speed limit option to the downloader preferences\n- Fixed an issue where some media incorrectly failed validation\n- Fixed an issue where the previous number titles setting was not restored correctly\n- Fixed an issue where file names could grow too long when using aria2c\n- Fixed an issue where the window's position was not remembered on Windows\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Redesigned the Windows app using WinUI 3\n- Fixed an issue where pressing enter in the download dialog would not start the download\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -193,7 +193,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_taskbar.connect(hwnd);
         if (m_dataFileManager.get<Configuration>("config").getAutomaticallyCheckForUpdates())
         {
-            checkForUpdates();
+            checkForUpdates(false);
         }
 #elif defined(__linux__)
         m_taskbar.connect(desktopFile);
@@ -224,13 +224,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         config.save();
     }
 
-    void MainWindowController::checkForUpdates()
+    void MainWindowController::checkForUpdates(bool noUpdateNotification) const
     {
         if(!m_updater)
         {
             return;
         }
-        std::thread worker{ [this]()
+        std::thread worker{ [this, noUpdateNotification]()
         {
             Version latest{ m_updater->fetchCurrentVersion(VersionType::Stable) };
             if(!latest.empty())
@@ -239,6 +239,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 {
                     AppNotification::send({ _("New update available"), NotificationSeverity::Success, "update" });
                 }
+                else if(noUpdateNotification)
+                {
+                    AppNotification::send({ _("No update available"), NotificationSeverity::Warning });
+                }
+            }
+            else if(noUpdateNotification)
+            {
+                AppNotification::send({ _("No update available"), NotificationSeverity::Warning });
             }
         } };
         worker.detach();
