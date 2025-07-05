@@ -71,7 +71,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         winrt::fire_and_forget OnDownloadCredentialNeeded(const ::Nickvision::TubeConverter::Shared::Events::DownloadCredentialNeededEventArgs& args);
         /**
-         * @brief Handles when a download is addded.
+         * @brief Handles when a download is added.
          * @param args Nickvision::TubeConverter::Shared::Events::DownloadAddedEventArgs
          */
         void OnDownloadAdded(const ::Nickvision::TubeConverter::Shared::Events::DownloadAddedEventArgs& args);
