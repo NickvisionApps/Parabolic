@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 12:06-0400\n"
+"POT-Creation-Date: 2025-07-05 14:04-0400\n"
 "PO-Revision-Date: 2025-06-28 13:05+0000\n"
 "Last-Translator: cy lin <cylin577@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -272,7 +272,7 @@ msgstr "自動生成"
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:111
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:114
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:473
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:474
 msgid "Add Download"
 msgstr "新增下載項目"
 
@@ -515,7 +515,7 @@ msgstr "檢視記錄檔"
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:155
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:31
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:124
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:166
 msgid "Pause"
 msgstr ""
 
@@ -532,6 +532,7 @@ msgid "Play"
 msgstr "播放"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:36
 msgid "Retry"
 msgstr "重試"
 
@@ -651,7 +652,7 @@ msgstr "下載中"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:109
 msgid "Queued"
@@ -1199,25 +1200,25 @@ msgid "Starting"
 msgstr "開始"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:98
 msgid "Unknown"
 msgstr "未知"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:109
 msgid "Processing"
 msgstr "處理中"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:74
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:129
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:93
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:171
 msgid "Running"
 msgstr "執行中"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
 #, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
@@ -1226,7 +1227,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:131
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:324
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
@@ -1238,22 +1239,22 @@ msgid "Error"
 msgstr "錯誤"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:95
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:137
 msgid "Success"
 msgstr "成功"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:103
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:145
 msgid "Stopped"
 msgstr "已停止"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:154
 msgid "Paused"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:118
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:160
 msgid "Resume"
 msgstr ""
 

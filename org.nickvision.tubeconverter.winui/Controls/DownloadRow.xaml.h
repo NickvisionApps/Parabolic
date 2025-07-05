@@ -22,6 +22,46 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
          */
         DownloadRow();
         /**
+         * @brief Subscribes a handler to the pause requested event.
+         * @return The token for the newly subscribed handler.
+         */
+        winrt::event_token PauseRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler);
+        /**
+         * @brief Unsubscribes a handler from the pause requested event.
+         * @param token The token of the handler to unsubscribe.
+         */
+        void PauseRequested(const winrt::event_token& token);
+        /**
+         * @brief Subscribes a handler to the resume requested event.
+         * @return The token for the newly subscribed handler.
+         */
+        winrt::event_token ResumeRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler);
+        /**
+         * @brief Unsubscribes a handler from the resume requested event.
+         * @param token The token of the handler to unsubscribe.
+         */
+        void ResumeRequested(const winrt::event_token& token);
+        /**
+         * @brief Subscribes a handler to the stop requested event.
+         * @return The token for the newly subscribed handler.
+         */
+        winrt::event_token StopRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler);
+        /**
+         * @brief Unsubscribes a handler from the stop requested event.
+         * @param token The token of the handler to unsubscribe.
+         */
+        void StopRequested(const winrt::event_token& token);
+        /**
+         * @brief Subscribes a handler to the retry requested event.
+         * @return The token for the newly subscribed handler.
+         */
+        winrt::event_token RetryRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler);
+        /**
+         * @brief Unsubscribes a handler from the retry requested event.
+         * @param token The token of the handler to unsubscribe.
+         */
+        void RetryRequested(const winrt::event_token& token);
+        /**
          * @brief Triggers the added state.
          * @param args Nickvision::TubeConverter::Shared::Events::DownloadAddedEventArgs
          */
@@ -93,6 +133,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         int m_id;
         std::filesystem::path m_path;
         bool m_isPaused;
+        winrt::event<Microsoft::UI::Xaml::RoutedEventHandler> m_pauseRequestedEvent;
+        winrt::event<Microsoft::UI::Xaml::RoutedEventHandler> m_resumeRequestedEvent;
+        winrt::event<Microsoft::UI::Xaml::RoutedEventHandler> m_stopRequestedEvent;
+        winrt::event<Microsoft::UI::Xaml::RoutedEventHandler> m_retryRequestedEvent;
     };
 }
 

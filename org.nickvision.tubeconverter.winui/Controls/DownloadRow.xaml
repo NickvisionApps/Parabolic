@@ -6,93 +6,114 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid HorizontalAlignment="Stretch" ColumnSpacing="6" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+    <Grid HorizontalAlignment="Stretch" RowSpacing="12" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
           CornerRadius="{ThemeResource ControlCornerRadius}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" Padding="16">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <FontIcon x:Name="IcnStatus" Grid.Column="0" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="20"/>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch" ColumnSpacing="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="12,0,0,0" Orientation="Vertical" Spacing="6">
-            <TextBlock x:Name="LblTitle"/>
+            <FontIcon x:Name="IcnStatus" Grid.Column="0" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="20"/>
 
-            <TextBlock x:Name="LblStatus" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="12,0,0,0" Orientation="Vertical" Spacing="6">
+                <TextBlock x:Name="LblTitle" TextWrapping="WrapWholeWords"/>
 
-            <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Minimum="0" Maximum="1"/>
-        </StackPanel>
+                <TextBlock x:Name="LblStatus" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
 
-        <Button x:Name="BtnShowLog" Grid.Column="2" Margin="20,0,0,0" VerticalAlignment="Center" Click="ShowLog">
-            <Button.Content>
-                <StackPanel Orientation="Horizontal" Spacing="6">
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
+                <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Minimum="0" Maximum="1"/>
+            </StackPanel>
 
-                    <TextBlock x:Name="LblShowLog"/>
-                </StackPanel>
-            </Button.Content>
-        </Button>
+            <ToggleButton x:Name="BtnShowLog" Grid.Column="2" Margin="20,0,0,0" VerticalAlignment="Center" Click="ShowLog">
+                <ToggleButton.Content>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
 
-        <local:ViewStack x:Name="ViewStackButtons" Grid.Column="3" VerticalAlignment="Center">
-            <local:ViewStack.Pages>
-                <StackPanel Orientation="Horizontal" Spacing="6">
-                    <Button Click="PauseResume">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <FontIcon x:Name="FntPauseResume" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE769;"/>
+                        <TextBlock x:Name="LblShowLog"/>
+                    </StackPanel>
+                </ToggleButton.Content>
+            </ToggleButton>
 
-                                <TextBlock x:Name="LblPauseResume"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
+            <local:ViewStack x:Name="ViewStackButtons" Grid.Column="3" VerticalAlignment="Center">
+                <local:ViewStack.Pages>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <Button Click="PauseResume">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <FontIcon x:Name="FntPauseResume" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE769;"/>
 
-                    <Button Click="Stop">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE71A;"/>
+                                    <TextBlock x:Name="LblPauseResume"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
 
-                                <TextBlock x:Name="LblStop"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
+                        <Button Click="Stop">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE71A;"/>
 
-                <StackPanel Orientation="Horizontal" Spacing="6">
-                    <Button Click="Play">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE768;"/>
+                                    <TextBlock x:Name="LblStop"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
 
-                                <TextBlock x:Name="LblPlay"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <Button Click="Play">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE768;"/>
 
-                    <Button x:Name="BtnOpenFolder" Click="OpenFolder">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
+                                    <TextBlock x:Name="LblPlay"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
 
-                                <TextBlock x:Name="LblOpenFolder"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
+                        <Button x:Name="BtnOpenFolder" Click="OpenFolder">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
 
-                <StackPanel Orientation="Horizontal" Spacing="6">
-                    <Button Click="Retry">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72C;"/>
+                                    <TextBlock x:Name="LblOpenFolder"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
 
-                                <TextBlock x:Name="LblRetry"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-            </local:ViewStack.Pages>
-        </local:ViewStack>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <Button Click="Retry">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72C;"/>
+
+                                    <TextBlock x:Name="LblRetry"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </local:ViewStack.Pages>
+            </local:ViewStack>
+        </Grid>
+
+        <Grid x:Name="GridLog" Grid.Row="1" RowSpacing="12" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="320"/>
+            </Grid.RowDefinitions>
+
+            <MenuFlyoutSeparator Grid.Row="0" HorizontalAlignment="Stretch"/>
+
+            <ScrollViewer Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                          HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="LblLog" Margin="0,0,14,0" IsTextSelectionEnabled="True"/>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>

@@ -355,6 +355,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     void MainWindow::OnDownloadAdded(const DownloadAddedEventArgs& args)
     {
         Controls::DownloadRow row{ winrt::make<Controls::implementation::DownloadRow>() };
+        row.PauseRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().pauseDownload(args.getId()); });
+        row.ResumeRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().resumeDownload(args.getId()); });
+        row.StopRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().stopDownload(args.getId()); });
+        row.RetryRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().retryDownload(args.getId()); });
         row.as<Controls::implementation::DownloadRow>()->TriggerAddedState(args);
         m_downloadRows[args.getId()] = row;
         if(args.getStatus() == DownloadStatus::Queued)
@@ -439,9 +443,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackCompleted().CurrentPageIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
-        ListDownloading().Children().InsertAt(0, m_downloadRows[*args]);
-        ViewStackDownloading().CurrentPageIndex(ListPage::Has);
-        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
     }
 
     void MainWindow::OnDownloadStartedFromQueue(const ParamEventArgs<int>& args)

@@ -33,6 +33,47 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         LblPlay().Text(winrt::to_hstring(_("Play")));
         ToolTipService::SetToolTip(BtnOpenFolder(), winrt::box_value(winrt::to_hstring(_("Open Containing Folder"))));
         LblOpenFolder().Text(winrt::to_hstring(_("Open")));
+        LblRetry().Text(winrt::to_hstring(_("Retry")));
+    }
+
+    winrt::event_token DownloadRow::PauseRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler)
+    {
+        return m_pauseRequestedEvent.add(handler);
+    }
+
+    void DownloadRow::PauseRequested(const winrt::event_token& token)
+    {
+        m_pauseRequestedEvent.remove(token);
+    }
+
+    winrt::event_token DownloadRow::ResumeRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler)
+    {
+        return m_resumeRequestedEvent.add(handler);
+    }
+
+    void DownloadRow::ResumeRequested(const winrt::event_token& token)
+    {
+        m_resumeRequestedEvent.remove(token);
+    }
+
+    winrt::event_token DownloadRow::StopRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler)
+    {
+        return m_stopRequestedEvent.add(handler);
+    }
+
+    void DownloadRow::StopRequested(const winrt::event_token& token)
+    {
+        m_stopRequestedEvent.remove(token);
+    }
+
+    winrt::event_token DownloadRow::RetryRequested(const Microsoft::UI::Xaml::RoutedEventHandler& handler)
+    {
+        return m_retryRequestedEvent.add(handler);
+    }
+
+    void DownloadRow::RetryRequested(const winrt::event_token& token)
+    {
+        m_retryRequestedEvent.remove(token);
     }
 
     void DownloadRow::TriggerAddedState(const DownloadAddedEventArgs& args)
@@ -75,6 +116,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
             ProgBar().Value(args.getProgress());
             ProgBar().IsIndeterminate(true);
         }
+        LblLog().Text(winrt::to_hstring(args.getLog()));
     }
 
     void DownloadRow::TriggerCompletedState(const DownloadCompletedEventArgs& args)
@@ -133,17 +175,25 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
 
     void DownloadRow::ShowLog(const IInspectable& sender, const RoutedEventArgs& args)
     {
-
+        GridLog().Visibility(BtnShowLog().IsChecked().Value() ? Visibility::Visible : Visibility::Collapsed);
     }
 
     void DownloadRow::PauseResume(const IInspectable& sender, const RoutedEventArgs& args)
     {
-
+        if(m_isPaused)
+        {
+            m_resumeRequestedEvent(sender, args);
+        }
+        else
+        {
+            m_pauseRequestedEvent(sender, args);
+        }
+        m_isPaused = !m_isPaused;
     }
 
     void DownloadRow::Stop(const IInspectable& sender, const RoutedEventArgs& args)
     {
-
+        m_stopRequestedEvent(sender, args);
     }
 
     Windows::Foundation::IAsyncAction DownloadRow::Play(const IInspectable& sender, const RoutedEventArgs& args)
@@ -160,6 +210,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
 
     void DownloadRow::Retry(const IInspectable& sender, const RoutedEventArgs& args)
     {
-
+        m_retryRequestedEvent(sender, args);
     }
 }

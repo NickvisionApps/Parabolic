@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 12:06-0400\n"
+"POT-Creation-Date: 2025-07-05 14:04-0400\n"
 "PO-Revision-Date: 2024-10-31 14:27+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -279,7 +279,7 @@ msgstr "נוצר אוטומטית"
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:111
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:114
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:473
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:474
 msgid "Add Download"
 msgstr "הוספת הורדה"
 
@@ -517,7 +517,7 @@ msgstr "הצגת יומן"
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:155
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:31
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:124
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:166
 msgid "Pause"
 msgstr ""
 
@@ -534,6 +534,7 @@ msgid "Play"
 msgstr "ניגון"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:36
 msgid "Retry"
 msgstr "ניסיון חוזר"
 
@@ -653,7 +654,7 @@ msgstr "בהורדה"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:109
 msgid "Queued"
@@ -1206,25 +1207,25 @@ msgid "Starting"
 msgstr "מתחיל"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:33
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:98
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:109
 msgid "Processing"
 msgstr "בתהליך"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:74
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:129
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:93
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:171
 msgid "Running"
 msgstr "בפעילות"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
 #, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
@@ -1233,7 +1234,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:131
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:324
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
@@ -1245,22 +1246,22 @@ msgid "Error"
 msgstr "שגיאה"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:95
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:137
 msgid "Success"
 msgstr "הצליחה"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:103
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:145
 msgid "Stopped"
 msgstr "נעצרה"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:154
 msgid "Paused"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
-#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:118
+#: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:160
 msgid "Resume"
 msgstr ""
 
