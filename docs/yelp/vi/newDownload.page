@@ -18,6 +18,12 @@
       <mal:email>kinten108101@protonmail.com</mal:email>
       <mal:years>2024</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>jack74593</mal:name>
+      <mal:email>jack74593@proton.me</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
   </info>
 
 <title>New Download</title>
@@ -32,7 +38,7 @@
         </note>
     </item>
     <item>
-        <title>Use Batch File</title>
+        <title>Dùng file Batch</title>
         <p>Select a batch text file that contains a list of URLs to validate.</p>
         <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
         <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
@@ -55,7 +61,7 @@
         </note>
     </item>
     <item>
-        <title>Download Immediately</title>
+        <title>Tải ngay</title>
         <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
         <note style="advanced">
             <p>Default: Off</p>
@@ -73,7 +79,7 @@
         </note>
     </item>
     <item>
-        <title>Video Format</title>
+        <title>Định dạng video</title>
         <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
         <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
         <p>If the file type is an audio type, this option will not be available.</p>
@@ -88,7 +94,7 @@
         </note>
     </item>
     <item>
-        <title>Audio Format</title>
+        <title>Định dạng âm thanh</title>
         <p>The list of audio formats available for download, sorted by bitrate.</p>
         <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
         <note>
@@ -116,14 +122,14 @@
         </note>
     </item>
     <item>
-        <title>Export Description</title>
+        <title>Mô tả</title>
         <p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-        <title>Exclude from History</title>
+        <title>Xóa khỏi lịch sử</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
@@ -134,7 +140,7 @@
         </note>
     </item>
     <item>
-        <title>Write M3U Playlist File</title>
+        <title>Viết tệp danh sách phát M3U</title>
         <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
