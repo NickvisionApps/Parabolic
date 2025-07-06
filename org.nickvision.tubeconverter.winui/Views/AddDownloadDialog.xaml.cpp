@@ -235,6 +235,22 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
         BtnFileTypeWarningSingle().Visibility(type.isGeneric() ? Visibility::Visible : Visibility::Collapsed);
         BtnFileTypeWarningPlaylist().Visibility(type.isGeneric() ? Visibility::Visible : Visibility::Collapsed);
+        if(sender == CmbFileTypeSingle())
+        {
+            size_t previous{ 0 };
+            CmbVideoFormatSingle().Items().Clear();
+            for(const std::string& videoFormat : m_controller->getVideoFormatStrings(type, previous))
+            {
+                CmbVideoFormatSingle().Items().Append(winrt::box_value(winrt::to_hstring(videoFormat)));
+            }
+            CmbVideoFormatSingle().SelectedIndex(static_cast<int>(previous));
+            CmbAudioFormatSingle().Items().Clear();
+            for(const std::string& audioFormat : m_controller->getAudioFormatStrings(type, previous))
+            {
+                CmbAudioFormatSingle().Items().Append(winrt::box_value(winrt::to_hstring(audioFormat)));
+            }
+            CmbAudioFormatSingle().SelectedIndex(static_cast<int>(previous));
+        }
     }
 
     void AddDownloadDialog::OnNavViewSingleSelectionChanged(const SelectorBar& sender, const SelectorBarSelectionChangedEventArgs& args)
@@ -343,12 +359,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 CmbFileTypeSingle().Items().Append(winrt::box_value(winrt::to_hstring(fileType)));
             }
             CmbFileTypeSingle().SelectedIndex(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount() ? static_cast<int>(previous) - MediaFileType::getVideoFileTypeCount() : static_cast<int>(previous));
-            for(const std::string& videoFormat : m_controller->getVideoFormatStrings(&previous))
+            for(const std::string& videoFormat : m_controller->getVideoFormatStrings(m_controller->getPreviousDownloadOptions().getFileType(), previous))
             {
                 CmbVideoFormatSingle().Items().Append(winrt::box_value(winrt::to_hstring(videoFormat)));
             }
             CmbVideoFormatSingle().SelectedIndex(static_cast<int>(previous));
-            for(const std::string& audioFormat : m_controller->getAudioFormatStrings(&previous))
+            for(const std::string& audioFormat : m_controller->getAudioFormatStrings(m_controller->getPreviousDownloadOptions().getFileType(), previous))
             {
                 CmbAudioFormatSingle().Items().Append(winrt::box_value(winrt::to_hstring(audioFormat)));
             }

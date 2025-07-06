@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:25-0400\n"
+"POT-Creation-Date: 2025-07-06 02:01-0400\n"
 "PO-Revision-Date: 2025-02-04 11:59+0000\n"
 "Last-Translator: Compact / Naomi <webmaster@compactbunker.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -80,9 +80,9 @@ msgstr "FLAC (Аудио)"
 msgid "WAV (Audio)"
 msgstr "WAV (Аудио)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:195
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:348
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:375
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:189
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:343
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:370
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
@@ -92,13 +92,15 @@ msgstr "WAV (Аудио)"
 msgid "None"
 msgstr "Ниједан"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:252
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:284
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:246
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:278
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:357
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:401
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:352
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:396
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -150,6 +152,7 @@ msgid "Unable to download and install update"
 msgstr "Преузимање и инсталирање нове верзије није било успешно"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Опорављено {} преузимање"
@@ -157,6 +160,7 @@ msgstr[1] "Опорављено {} преузимања"
 msgstr[2] "Опорављено {} преузимања"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:286
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -165,6 +169,7 @@ msgid "Download Finished"
 msgstr "Преузимање успешно"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:316
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} је успешно скинуто"
 
@@ -179,6 +184,7 @@ msgid "Download Finished With Error"
 msgstr "Преузимање је успело са грешком"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:320
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} је завршило са грешком"
 
@@ -187,18 +193,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -221,22 +231,22 @@ msgid "Audio Description"
 msgstr "Аудио опис"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -393,9 +403,9 @@ msgid "File Name"
 msgstr "Име датотеке"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:426
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:442
 msgid "Revert to Title"
 msgstr "Врати на наслов"
 
@@ -566,7 +576,7 @@ msgstr "Подаци улоговања"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:397
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:215
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:214
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:27
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:65
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:148
@@ -577,7 +587,7 @@ msgstr "Додај"
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:422
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:262
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:259
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:44
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:160
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:254
@@ -1032,14 +1042,14 @@ msgid "Cookies File"
 msgstr "Датотека колачића"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:147
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:110
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:247
 msgid "No file selected"
 msgstr "Датотека није изабрана"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:126
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:125
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:111
 msgid "Select Cookies File"
 msgstr "Изабери датотеку колачића"
@@ -1181,7 +1191,7 @@ msgid "Add Postprocessing Argument"
 msgstr "Thread-ови за постпроцесирање"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:407
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:261
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:258
 #, fuzzy
 msgid "Argument"
 msgstr "Нове податке улоговања"
@@ -1200,7 +1210,7 @@ msgid "Executable"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:264
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:261
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:273
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:362
 msgid "Args"
@@ -1240,6 +1250,7 @@ msgstr "Управљање"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1248,7 +1259,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:131
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:324
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:340
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
@@ -1290,12 +1301,12 @@ msgid "Select Batch File"
 msgstr "Изабери Batch датотеку"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:128
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:127
 msgid "TXT Files (*.txt)"
 msgstr "Текст датотеке (*.txt)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:325
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:341
 #, fuzzy
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
@@ -1312,18 +1323,18 @@ msgstr ""
 msgid "Close"
 msgstr "Затвори"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:201
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:198
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:70
 msgid "No Subtitles Available"
 msgstr "Нема доступних титлова"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:222
-#, fuzzy
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{} ствари"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1344,14 +1355,14 @@ msgid "Keyring is not saving to disk. Changes will be lost."
 msgstr "Привезак за кључеве се не чува на диску. Промене ће бити изгубљене."
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:165
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:164
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:127
 msgid "Edit"
 msgstr "Измени"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:179
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:178
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:331
@@ -1359,7 +1370,7 @@ msgid "Delete"
 msgstr "Избриши"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:230
 msgid "Modify"
 msgstr "Измени"
 
@@ -1377,7 +1388,7 @@ msgstr "Да ли сте сигурни да желите да избришет�
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:238
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:238
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:185
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:215
@@ -1388,7 +1399,7 @@ msgstr "Да"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:241
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:238
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:237
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:186
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:216
@@ -1397,7 +1408,7 @@ msgid "No"
 msgstr "Не"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:280
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:277
 msgid "Name (Empty)"
 msgstr "Име (Празно)"
 
@@ -1415,7 +1426,7 @@ msgid "URL (Invalid)"
 msgstr "УРЛ (Не важећи)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:284
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:281
 msgid "Name (Exists)"
 msgstr "Име (Постоји)"
 
@@ -1479,31 +1490,31 @@ msgstr "Преузми опет"
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:202
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:201
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:467
 #, fuzzy
 msgid "No Arguments"
 msgstr "Нове податке улоговања"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:236
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
 #, fuzzy
 msgid "Delete Argument?"
 msgstr "Нове податке улоговања"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:239
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:236
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
 #, fuzzy
 msgid "Are you sure you want to delete this argument?"
 msgstr "Да ли сте сигурни да желите да избришете ове податке улоговања?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:288
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:285
 #, fuzzy
 msgid "Args (Empty)"
 msgstr "Име (Празно)"
 
 #: org.nickvision.tubeconverter.winui/Controls/AboutDialog.xaml.cpp:34
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:326
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:342
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
@@ -1699,7 +1710,7 @@ msgid "Use manual credentials"
 msgstr "Користи ручне податке улоговања"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} требају подаци улоговања за преузимање. Молимо изаберите или унесите "

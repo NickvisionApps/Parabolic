@@ -43,25 +43,29 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& previousMediaFileType);
         /**
-         * @brief Gets the previous video format id.
-         * @return The previous video format id
+         * @brief Gets the previous video format id for the media file type.
+         * @param type The MediaFileType
+         * @return The previous video format id for the media file type
          */
-        std::string getVideoFormatId() const;
+        std::string getVideoFormatId(const MediaFileType& type) const;
         /**
-         * @brief Sets the previous video format id.
+         * @brief Sets the previous video format id for the media file type.
+         * @param type The MediaFileType
          * @param videoFormatId The new previous video format id
          */
-        void setVideoFormatId(const std::string& videoFormatId);
+        void setVideoFormatId(const MediaFileType& type, const std::string& videoFormatId);
         /**
-         * @brief Gets the previous audio format id.
-         * @return The previous audio format id
+         * @brief Gets the previous audio format id for the media file type.
+         * @param type The MediaFileType
+         * @return The previous audio format id for the media file type
          */
-        std::string getAudioFormatId() const;
+        std::string getAudioFormatId(const MediaFileType& type) const;
         /**
-         * @brief Sets the previous audio format id.
+         * @brief Sets the previous audio format id for the media file type.
+         * @param type The MediaFileType
          * @param audioFormatId The new previous audio format id
          */
-        void setAudioFormatId(const std::string& audioFormatId);
+        void setAudioFormatId(const MediaFileType& type, const std::string& audioFormatId);
         /**
          * @brief Gets the previous split chapters state.
          * @return The previous split chapters state
