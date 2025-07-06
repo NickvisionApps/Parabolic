@@ -106,14 +106,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return fileTypes;
     }
 
-    std::vector<std::string> AddDownloadDialogController::getVideoFormatStrings(size_t* previousIndex) const
+    std::vector<std::string> AddDownloadDialogController::getVideoFormatStrings(const MediaFileType& type, size_t& previousIndex) const
     {
         std::vector<std::string> formats;
         m_videoFormatMap.clear();
-        if(previousIndex)
-        {
-            *previousIndex = 0;
-        }
+        previousIndex = 0;
         if(!m_urlInfo)
         {
             return formats;
@@ -127,9 +124,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 if(format.getType() == MediaType::Video)
                 {
                     m_videoFormatMap[formats.size()] = i;
-                    if(previousIndex && format.getId() == m_previousOptions.getVideoFormatId())
+                    if(format.getId() == m_previousOptions.getVideoFormatId(type))
                     {
-                        *previousIndex = formats.size();
+                        previousIndex = formats.size();
                     }
                     formats.push_back(format.str());
                 }
@@ -138,14 +135,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return formats;
     }
 
-    std::vector<std::string> AddDownloadDialogController::getAudioFormatStrings(size_t* previousIndex) const
+    std::vector<std::string> AddDownloadDialogController::getAudioFormatStrings(const MediaFileType& type, size_t& previousIndex) const
     {
         std::vector<std::string> formats;
         m_audioFormatMap.clear();
-        if(previousIndex)
-        {
-            *previousIndex = 0;
-        }
+        previousIndex = 0;
         if(!m_urlInfo)
         {
             return formats;
@@ -159,9 +153,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 if(format.getType() == MediaType::Audio)
                 {
                     m_audioFormatMap[formats.size()] = i;
-                    if(previousIndex && format.getId() == m_previousOptions.getAudioFormatId())
+                    if(format.getId() == m_previousOptions.getAudioFormatId(type))
                     {
-                        *previousIndex = formats.size();
+                        previousIndex = formats.size();
                     }
                     formats.push_back(format.str());
                 }
@@ -323,7 +317,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
         }
-        options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
+        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
+        options.setFileType(type);
         options.setAvailableFormats(m_urlInfo->get(0).getFormats());
         options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
         options.setSaveFilename(!filename.empty() ? StringHelpers::normalizeForFilename(filename, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
@@ -340,9 +335,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         //Save Previous Options
         m_previousOptions.setSaveFolder(options.getSaveFolder());
-        m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex)); //Use the originally selected type
-        m_previousOptions.setVideoFormatId(options.getVideoFormat() ? options.getVideoFormat()->getId() : "");
-        m_previousOptions.setAudioFormatId(options.getAudioFormat() ? options.getAudioFormat()->getId() : "");
+        m_previousOptions.setFileType(type);
+        m_previousOptions.setVideoFormatId(type, options.getVideoFormat() ? options.getVideoFormat()->getId() : "");
+        m_previousOptions.setAudioFormatId(type, options.getAudioFormat() ? options.getAudioFormat()->getId() : "");
         m_previousOptions.setSplitChapters(options.getSplitChapters());
         m_previousOptions.setExportDescription(exportDescription);
         m_previousOptions.setPostProcessorArgument(options.getPostProcessorArgument() ? options.getPostProcessorArgument()->getName() : _("None"));

@@ -51,8 +51,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             postprocessingThreads.push_back(std::to_string(i));
         }
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("postprocessingThreadsRow"), postprocessingThreads);
-        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("postprocessingThreadsRow"), options.getPostprocessingThreads() - 1);
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("postprocessingThreadsRow"), postprocessingThreads, options.getPostprocessingThreads() - 1);
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("useAriaRow"), options.getUseAria());
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMaxConnectionsPerServerRow"), static_cast<double>(options.getAriaMaxConnectionsPerServer()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMinSplitSizeRow"), static_cast<double>(options.getAriaMinSplitSize()));
@@ -209,8 +208,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         m_postprocessingArgumentEditMode = EditMode::Add;
         gtk_editable_set_text(m_builder.get<GtkEditable>("editNameRow"), "");
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings());
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings());
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings(), 0);
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings(), 0);
         gtk_editable_set_text(m_builder.get<GtkEditable>("editArgsRow"), "");
         gtk_button_set_label(m_builder.get<GtkButton>("editConfirmPostprocessingArgumentButton"), _("Add"));
         adw_dialog_present(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), GTK_WIDGET(m_parent));
@@ -225,10 +224,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         m_postprocessingArgumentEditMode = EditMode::Modify;
         gtk_editable_set_text(m_builder.get<GtkEditable>("editNameRow"), argument->getName().c_str());
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings());
-        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("editPostProcessorRow"), static_cast<int>(argument->getPostProcessor()));
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings());
-        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("editExecutableRow"), static_cast<int>(argument->getExecutable()));
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editPostProcessorRow"), m_controller->getPostProcessorStrings(), static_cast<size_t>(argument->getPostProcessor()));
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("editExecutableRow"), m_controller->getExecutableStrings(), static_cast<size_t>(argument->getExecutable()));
         gtk_editable_set_text(m_builder.get<GtkEditable>("editArgsRow"), argument->getArgs().c_str());
         gtk_button_set_label(m_builder.get<GtkButton>("editConfirmPostprocessingArgumentButton"), _("Modify"));
         adw_dialog_present(m_builder.get<AdwDialog>("editPostprocessingArgumentDialog"), GTK_WIDGET(m_parent));

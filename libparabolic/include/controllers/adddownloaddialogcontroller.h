@@ -68,16 +68,18 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::vector<std::string> getFileTypeStrings() const;
         /**
          * @brief Gets the list of video formats as strings.
-         * @param previousIndex An optional out parameter that will contain the previous selected video format index if available, else index will be 0
+         * @param type The selected MediaFileType
+         * @param previousIndex The out parameter that will contain the previous selected video format index if available, else index will be 0
          * @return The list of video formats as strings
          */
-        std::vector<std::string> getVideoFormatStrings(size_t* previousIndex = nullptr) const;
+        std::vector<std::string> getVideoFormatStrings(const Models::MediaFileType& type, size_t& previousIndex) const;
         /**
          * @brief Gets the list of audio formats as strings.
-         * @param previousIndex An optional out parameter that will contain the previous selected audio format index if available, else index will be 0
+         * @param type The selected MediaFileType
+         * @param previousIndex The out parameter that will contain the previous selected audio format index if available, else index will be 0
          * @return The list of audio formats as strings
          */
-        std::vector<std::string> getAudioFormatStrings(size_t* previousIndex = nullptr) const;
+        std::vector<std::string> getAudioFormatStrings(const Models::MediaFileType& type, size_t& previousIndex) const;
         /**
          * @brief Gets the list of subtitles languages as strings.
          * @return The list of subtitles languages as strings
