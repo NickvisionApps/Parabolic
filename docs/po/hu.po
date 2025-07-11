@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-07-04 22:55-0400\n"
-"PO-Revision-Date: 2025-04-02 22:05+0000\n"
+"PO-Revision-Date: 2025-07-10 19:46+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/docs/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -38,9 +38,8 @@ msgstr "Nicholas Logozzo"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/aria.page:20
-#, fuzzy
 msgid "aria2c"
-msgstr "aria2"
+msgstr "aria2c"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/aria.page:21
@@ -51,17 +50,14 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:25
-#, fuzzy
 msgid "Use aria2c"
-msgstr "aria2 letöltő használata"
+msgstr "aria2 letöltéskezelő"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
-#, fuzzy
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
 msgstr ""
-"Engedélyezés esetén a program automatikusan felülírja a már létező azonos "
-"nevű fájlokat."
+"Az alkalmazás ezt fogja használni a natív yt-dlp letöltéskezelő helyett."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
@@ -172,6 +168,8 @@ msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
 msgstr ""
+"Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott "
+"adatokat a letöltött fájlokból."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:34
@@ -215,11 +213,10 @@ msgstr "Borítókép igazítása"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:52
-#, fuzzy
 msgid "Parabolic will crop thumbnails of audio files to squares."
 msgstr ""
-"Engedélyezés esetén a program automatikusan felülírja a már létező azonos "
-"nevű fájlokat."
+"Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
+"lehet hasznos."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:54
@@ -247,12 +244,11 @@ msgstr "Feliratok beágyazása"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:69
-#, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files."
 msgstr ""
-"Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve"
+"Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:70
@@ -279,7 +275,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:83
 msgid "Postprocessing Arguments"
-msgstr ""
+msgstr "Használt futtatási szálak száma"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:84
@@ -359,6 +355,8 @@ msgstr "Szponzoráció eltávolítása YouTube videókból"
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr ""
+"Az alkalmazás megpróbálja eltávolítani a videóban esetlegesen megjelenő "
+"hirdetéseket."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:35
@@ -551,6 +549,8 @@ msgid ""
 "Parabolic will restrict characters in filenames to those supported only by "
 "Windows."
 msgstr ""
+"A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
+"fogja a Windows számára."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:47
@@ -565,7 +565,7 @@ msgstr ""
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:54
 msgid "Parabolic will include a media's id in its default title."
-msgstr ""
+msgstr "A videó egyedi azonosítója szerepelni fog a fájlnévben."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:60
@@ -578,19 +578,19 @@ msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
 msgstr ""
+"A videóhoz elérhető automatikusan létrehozott feliratok letöltésre kerülnek"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:67
-#, fuzzy
 msgid "Preferred Video Codec"
-msgstr "AV1 kódoló előnyben részesítése"
+msgstr "Előnyben részesített videókódoló"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:68
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
-msgstr ""
+msgstr "Ezt a kódolót fogja használni az alkalmazás a videó feldolgozásához."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:70
@@ -608,16 +608,15 @@ msgstr "Alapértelmezett: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:77
-#, fuzzy
 msgid "Preferred Audio Codec"
-msgstr "AV1 kódoló előnyben részesítése"
+msgstr "Előnyben részesített hangkódoló"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:78
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
-msgstr ""
+msgstr "Ezt a kódolót fogja használni az alkalmazás a hang feldolgozásához."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:80
@@ -635,7 +634,7 @@ msgstr "Előnyben részesített feliratformátum"
 #: docs/yelp/C/downloads.page:88
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
-msgstr ""
+msgstr "Ebben a formátumban kerülnek letöltésre a feliratok."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -726,6 +725,7 @@ msgid ""
 "Parabolic will prevent the computer from sleeping while downloads are "
 "running."
 msgstr ""
+"A beállítás megakadályozza, hogy a rendszer megszakítsa a futó letöltéseket."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:39
@@ -736,7 +736,7 @@ msgstr "Letöltő"
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:40
 msgid "The amount of time to keep past downloads in the app's history."
-msgstr ""
+msgstr "Ennyi ideig fogja listázni az alkalmazás a korábbi letöltéseket."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/interface.page:42
@@ -947,7 +947,6 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:55
-#, fuzzy
 msgid "Download Immediately"
 msgstr "Azonnali letöltés elemzést követően"
 
@@ -1138,7 +1137,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
-msgstr ""
+msgstr "Kizárás az előzményekből"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:124
@@ -1153,7 +1152,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:127
 msgid "Post Processor Argument"
-msgstr ""
+msgstr "Utófeldolgozási paraméter"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:128
@@ -1174,7 +1173,7 @@ msgstr "A beállítás minden letöltésre hatással lesz, visszavonásig érvé
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:134
 msgid "Write M3U Playlist File"
-msgstr ""
+msgstr "Lejátszási lista létrehozása"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:135
