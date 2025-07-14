@@ -19,8 +19,9 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief This will load the recoverable downloads from disk.
          * @param key The key to pass to the DataFileBase
          * @param appName The name of the application to pass to the DataFileBase
+         * @param isPortable The isPortable to pass to the DataFileBase
          */
-        DownloadRecoveryQueue(const std::string& key, const std::string& appName);
+        DownloadRecoveryQueue(const std::string& key, const std::string& appName, bool isPortable);
         /**
          * @brief Gets a list of downloads to recover.
          * @returns A list of DownloadOptions

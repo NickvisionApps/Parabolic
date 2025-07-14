@@ -20,8 +20,9 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Constructs a PreviousDownloadOptions.
          * @param key The key to pass to the DataFileBase
          * @param appName The name of the application to pass to the DataFileBase
+         * @param isPortable The isPortable to pass to the DataFileBase
          */
-        PreviousDownloadOptions(const std::string& key, const std::string& appName);
+        PreviousDownloadOptions(const std::string& key, const std::string& appName, bool isPortable);
         /**
          * @brief Gets the previous save folder.
          * @return The previous save folder

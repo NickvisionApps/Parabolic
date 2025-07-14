@@ -53,6 +53,19 @@ parts:
     organize:
       lib/python3.12/site-packages: usr/lib/python3/dist-packages
 
+  cpr:
+    source: https://github.com/libcpr/cpr.git
+    source-commit: '93a325cd5496c79d1783c22041985fe5d27ac965'
+    source-depth: 1
+    plugin: cmake
+    cmake-parameters:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCPR_BUILD_TESTS=OFF
+      - -DCPR_USE_SYSTEM_CURL=ON
+      - -DCPR_ENABLE_SSL=ON
+    override-prime: ''
+
   maddy:
     source: https://github.com/progsource/maddy.git
     source-tag: '1.5.0'
@@ -61,9 +74,9 @@ parts:
     override-prime: '' 
 
   libnick:
-    after: [maddy]
+    after: [cpr, maddy]
     source: https://github.com/nickvisionapps/libnick.git
-    source-tag: "2025.6.5"
+    source-tag: "2025.7.0"
     source-depth: 1
     plugin: cmake
     cmake-parameters:
@@ -71,7 +84,7 @@ parts:
       - -DBUILD_TESTING=OFF
       - -DCMAKE_BUILD_TYPE=Release
     build-environment:
-      - CPLUS_INCLUDE_PATH: ${CRAFT_STAGE}/include
+      - CMAKE_PREFIX_PATH: ${CRAFT_STAGE}/usr${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
     build-packages:
       - libssl-dev
       - uuid-dev
@@ -109,8 +122,10 @@ parts:
       - libboost-dev
       - libboost-date-time1.83-dev
       - libboost-system1.83-dev
+    stage-packages:
+      - libstdc++6
     build-environment:
-      - CMAKE_PREFIX_PATH: ${CRAFT_STAGE}/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/cmake${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
+      - CMAKE_PREFIX_PATH: ${CRAFT_STAGE}/usr${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
     organize:
       snap/tube-converter/current: .

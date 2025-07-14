@@ -235,7 +235,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
         BtnFileTypeWarningSingle().Visibility(type.isGeneric() ? Visibility::Visible : Visibility::Collapsed);
         BtnFileTypeWarningPlaylist().Visibility(type.isGeneric() ? Visibility::Visible : Visibility::Collapsed);
-        if(sender == CmbFileTypeSingle())
+        if(sender.as<ComboBox>() == CmbFileTypeSingle())
         {
             size_t previous{ 0 };
             CmbVideoFormatSingle().Items().Clear();

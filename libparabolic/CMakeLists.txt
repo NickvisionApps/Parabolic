@@ -1,5 +1,8 @@
 ﻿if(WIN32)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    if(BUILD_AS_PORTABLE)
+        add_definitions(-DPORTABLE_BUILD)
+    endif()
 endif()
 
 add_library(libparabolic

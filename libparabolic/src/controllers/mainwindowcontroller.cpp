@@ -33,7 +33,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         : m_started{ false },
         m_args{ args },
         m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
-        m_dataFileManager{ m_appInfo.getName() },
+#ifdef PORTABLE_BUILD
+        m_dataFileManager{ m_appInfo.getName(), true },
+#else
+        m_dataFileManager{ m_appInfo.getName(), false },
+#endif
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
@@ -41,7 +45,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2025.7.0-beta1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Redesigned the Windows app using WinUI 3\n- Added the ability to remeber video and audio formats individually for each file type\n- Fixed an issue where pressing enter in the download dialog would not start the download\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Redesigned the Windows app using WinUI 3\n- Added the ability to remember video and audio formats individually for each file type\n- Fixed an issue where pressing enter in the download dialog would not start the download\n- Fixed an issue where configuration files were not stored properly for the portable Windows build\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -237,14 +241,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             {
                 if(latest > m_appInfo.getVersion())
                 {
+#ifdef PORTABLE_BUILD
+                    AppNotification::send({ _("New update available"), NotificationSeverity::Success });
+#else
                     AppNotification::send({ _("New update available"), NotificationSeverity::Success, "update" });
-                }
-                else if(noUpdateNotification)
-                {
-                    AppNotification::send({ _("No update available"), NotificationSeverity::Warning });
+#endif
+                    return;
                 }
             }
-            else if(noUpdateNotification)
+            if(noUpdateNotification)
             {
                 AppNotification::send({ _("No update available"), NotificationSeverity::Warning });
             }

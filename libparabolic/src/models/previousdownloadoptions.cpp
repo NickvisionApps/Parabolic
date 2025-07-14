@@ -7,8 +7,8 @@ using namespace Nickvision::Filesystem;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    PreviousDownloadOptions::PreviousDownloadOptions(const std::string& key, const std::string& appName)
-        : DataFileBase{ key, appName }
+    PreviousDownloadOptions::PreviousDownloadOptions(const std::string& key, const std::string& appName, bool isPortable)
+        : DataFileBase{ key, appName, isPortable }
     {
 
     }

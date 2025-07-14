@@ -41,6 +41,24 @@
             ]
         },
         {
+            "name": "cpr",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCPR_BUILD_TESTS=OFF",
+                "-DCPR_USE_SYSTEM_CURL=ON",
+                "-DCPR_ENABLE_SSL=ON"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libcpr/cpr",
+                    "commit": "93a325cd5496c79d1783c22041985fe5d27ac965"
+                }
+            ]
+        },
+        {
             "name": "maddy",
             "buildsystem": "simple",
             "build-commands": [
@@ -101,7 +119,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2025.6.5"
+                    "tag": "2025.7.0"
                 }
             ]
         },

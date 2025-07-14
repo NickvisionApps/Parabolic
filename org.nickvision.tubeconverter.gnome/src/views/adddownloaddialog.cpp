@@ -268,7 +268,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::onFileTypeSingleChanged()
     {
-        unsigned int fileTypeIndex{ adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")) };
+        int fileTypeIndex{ static_cast<int>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"))) };
         if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
@@ -354,7 +354,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::onFileTypePlaylistChanged()
     {
-        unsigned int fileTypeIndex{ adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow")) };
+        int fileTypeIndex{ static_cast<int>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow"))) };
         if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
