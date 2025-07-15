@@ -44,14 +44,14 @@ jobs:
           move gettext\bin\* C:\Windows\System32
           choco install innosetup
       - name: "Vcpkg"
-        uses: johnwason/vcpkg-action@v6
+        uses: johnwason/vcpkg-action@v7
         id: vcpkg
         with:
           pkgs: boost-date-time libnick
           triplet: ${{ matrix.variant.triplet }}
           revision: 3c81ed09705008f13bf76f39853507bef51f71a1
           token: ${{ github.token }}
-          github-binarycache: true
+          cache-key: ${{ matrix.variant.triplet }}
       - name: "Build (Installer)"
         working-directory: ${{ github.workspace }}/build
         run: |
@@ -95,7 +95,9 @@ jobs:
           move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.ffmpeg }}-gpl-7.1\bin\ffmpeg.exe ffmpeg.exe
           move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.ffmpeg }}-gpl-7.1\bin\ffprobe.exe ffprobe.exe
           move ffmpeg\ffmpeg-n7.1-latest-${{ matrix.variant.ffmpeg }}-gpl-7.1\bin\ffplay.exe ffplay.exe
+          Remove-Item -Path aria2.zip -Force
           Remove-Item -Path aria2 -Recurse -Force
+          Remove-Item -Path ffmpeg.zip -Force
           Remove-Item -Path ffmpeg -Recurse -Force
       - name: "Upload (Installer)"
         uses: actions/upload-artifact@v4
