@@ -4,8 +4,8 @@ using namespace Nickvision::App;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    DownloadRecoveryQueue::DownloadRecoveryQueue(const std::string& key, const std::string& appName)
-        : DataFileBase{ key, appName }
+    DownloadRecoveryQueue::DownloadRecoveryQueue(const std::string& key, const std::string& appName, bool isPortable)
+        : DataFileBase{ key, appName, isPortable }
     {
         if(m_json["RecoverableDownloads"].is_array())
         {

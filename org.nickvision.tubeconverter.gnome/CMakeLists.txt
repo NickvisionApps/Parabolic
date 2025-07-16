@@ -60,5 +60,5 @@ if(NOT WIN32)
     endif()
 
     generate_translations()
-    generate_linux_install()
+    generate_unix_install()
 endif()

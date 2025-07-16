@@ -5,8 +5,8 @@ using namespace Nickvision::App;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    DownloadHistory::DownloadHistory(const std::string& key, const std::string& appName)
-        : DataFileBase{ key, appName },
+    DownloadHistory::DownloadHistory(const std::string& key, const std::string& appName, bool isPortable)
+        : DataFileBase{ key, appName, isPortable },
         m_length{ m_json["Length"].is_int64() ? static_cast<HistoryLength>(m_json["Length"].as_int64()) : HistoryLength::OneWeek }
     {
         if(m_length != HistoryLength::Never && m_json["History"].is_array())

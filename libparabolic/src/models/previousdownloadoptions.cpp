@@ -1,13 +1,14 @@
 #include "models/previousdownloadoptions.h"
 #include <libnick/filesystem/userdirectories.h>
+#include "models/format.h"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Filesystem;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    PreviousDownloadOptions::PreviousDownloadOptions(const std::string& key, const std::string& appName)
-        : DataFileBase{ key, appName }
+    PreviousDownloadOptions::PreviousDownloadOptions(const std::string& key, const std::string& appName, bool isPortable)
+        : DataFileBase{ key, appName, isPortable }
     {
 
     }
@@ -44,24 +45,31 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["FileType"] = static_cast<int>(previousMediaFileType);
     }
 
-    std::string PreviousDownloadOptions::getVideoFormatId() const
+    std::string PreviousDownloadOptions::getVideoFormatId(const MediaFileType& type) const
     {
-        return m_json["VideoFormatId"].is_string() ? m_json["VideoFormatId"].as_string().c_str() : "";
+        static Format bestVideoFormat{ FormatValue::Best, MediaType::Video };
+        static Format noneVideoFormat{ FormatValue::None, MediaType::Video };
+        std::string key{ "VideoFormatId_" + type.str() };
+        return m_json[key].is_string() ? m_json[key].as_string().c_str() : (type.isAudio() ? noneVideoFormat.getId() : bestVideoFormat.getId());
     }
 
-    void PreviousDownloadOptions::setVideoFormatId(const std::string& videoFormatId)
+    void PreviousDownloadOptions::setVideoFormatId(const MediaFileType& type, const std::string& videoFormatId)
     {
-        m_json["VideoFormatId"] = videoFormatId;
+        std::string key{ "VideoFormatId_" + type.str() };
+        m_json[key] = videoFormatId;
     }
 
-    std::string PreviousDownloadOptions::getAudioFormatId() const
+    std::string PreviousDownloadOptions::getAudioFormatId(const MediaFileType& type) const
     {
-        return m_json["AudioFormatId"].is_string() ? m_json["AudioFormatId"].as_string().c_str() : "";
+        static Format bestAudioFormat{ FormatValue::Best, MediaType::Audio };
+        std::string key{ "AudioFormatId_" + type.str() };
+        return m_json[key].is_string() ? m_json[key].as_string().c_str() : bestAudioFormat.getId();
     }
 
-    void PreviousDownloadOptions::setAudioFormatId(const std::string& audioFormatId)
+    void PreviousDownloadOptions::setAudioFormatId(const MediaFileType& type, const std::string& audioFormatId)
     {
-        m_json["AudioFormatId"] = audioFormatId;
+        std::string key{ "AudioFormatId_" + type.str() };
+        m_json[key] = audioFormatId;
     }
 
     bool PreviousDownloadOptions::getSplitChapters() const

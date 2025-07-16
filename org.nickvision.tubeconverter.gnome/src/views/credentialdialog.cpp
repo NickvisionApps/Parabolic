@@ -18,7 +18,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         //Load
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames);
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames, 0);
     }
 
     void CredentialDialog::onCmbCredentialChanged()

@@ -27,7 +27,7 @@
     </item>
     <item>
         <title>Metaadatok törlése</title>
-        <p>Parabolic will clear metadata fields containing identifying download information.</p>
+        <p>Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott adatokat a letöltött fájlokból.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
         <note>
             <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Borítókép igazítása</title>
-        <p>Parabolic will crop thumbnails of audio files to squares.</p>
+        <p>Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében lehet hasznos.</p>
         <note>
             <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
         </note>
@@ -63,7 +63,7 @@
     </item>
     <item>
         <title>Feliratok beágyazása</title>
-        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
+        <p>Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve.</p>
         <p>Whether or not embedding is supported if affected by your chosen <code>Preferred Subtitle Format</code>.</p>
         <note style="advanced">
             <p>Default: On</p>
@@ -77,7 +77,7 @@
         </note>
     </item>
     <item>
-        <title>Postprocessing Arguments</title>
+        <title>Használt futtatási szálak száma</title>
         <p>Parabolic will present these options in the add download dialog to be passed to <code>ffmpeg</code> and other post-processors when processing media.</p>
         <note style="advanced">
             <p>Postprocessing Argument Fields:</p>

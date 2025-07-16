@@ -19,8 +19,9 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Constructs a DownloadHistory.
          * @param key The key to pass to the DataFileBase
          * @param appName The application name to pass to the DataFileBase
+         * @param isPortable The isPortable to pass to the DataFileBase
          */
-        DownloadHistory(const std::string& key, const std::string& appName);
+        DownloadHistory(const std::string& key, const std::string& appName, bool isPortable);
         /**
          * @brief Gets the download history.
          * @return The download history

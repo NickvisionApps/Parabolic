@@ -44,7 +44,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames);
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames, 0);
         //Signals
         g_signal_connect(m_builder.get<GObject>("urlRow"), "changed", G_CALLBACK(+[](GtkEditable*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onTxtUrlChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("batchFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->useBatchFile(); }), this);
@@ -156,16 +156,13 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_dialog_set_can_close(m_dialog, true);
         if(!m_controller->isUrlPlaylist()) //Single Download
         {
-            size_t previous{ 0 };
+            size_t previous{ static_cast<size_t>(m_controller->getPreviousDownloadOptions().getFileType()) };
             //Load Options
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single");
             adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("downloadSingleButton"));
-            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings());
-            adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("videoFormatSingleRow"), m_controller->getVideoFormatStrings(&previous), "", false);
-            adw_combo_row_set_selected(m_builder.get<AdwComboRow>("videoFormatSingleRow"), previous);
-            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("audioFormatSingleRow"), m_controller->getAudioFormatStrings(&previous), "", false);
-            adw_combo_row_set_selected(m_builder.get<AdwComboRow>("audioFormatSingleRow"), previous);
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings(), previous);
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("videoFormatSingleRow"), m_controller->getVideoFormatStrings(m_controller->getPreviousDownloadOptions().getFileType(), previous), previous, false);
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("audioFormatSingleRow"), m_controller->getAudioFormatStrings(m_controller->getPreviousDownloadOptions().getFileType(), previous), previous, false);
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
             gtk_editable_set_text(m_builder.get<GtkEditable>("filenameSingleRow"), m_controller->getMediaTitle(0).c_str());
             //Load Subtitles
@@ -210,10 +207,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         else //Playlist Download
         {
+            size_t previous{ static_cast<size_t>(m_controller->getPreviousDownloadOptions().getFileType()) };
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-playlist");
             adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("downloadPlaylistButton"));
-            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), m_controller->getFileTypeStrings());
-            adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), m_controller->getFileTypeStrings(), previous);
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("exportDescriptionPlaylistRow"), m_controller->getPreviousDownloadOptions().getExportDescription());
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("writeFilePlaylistRow"), m_controller->getPreviousDownloadOptions().getWritePlaylistFile());
@@ -271,13 +268,16 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::onFileTypeSingleChanged()
     {
-        int fileTypeIndex{ adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")) };
+        int fileTypeIndex{ static_cast<int>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"))) };
         if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();
         }
         MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
+        size_t previous{ 0 };
         gtk_widget_set_visible(m_builder.get<GtkWidget>("genericDisclaimerSingleButton"), type.isGeneric());
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("videoFormatSingleRow"), m_controller->getVideoFormatStrings(type, previous), previous, false);
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("audioFormatSingleRow"), m_controller->getAudioFormatStrings(type, previous), previous, false);
     }
 
     void AddDownloadDialog::subtitlesSingle()
@@ -354,7 +354,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::onFileTypePlaylistChanged()
     {
-        int fileTypeIndex{ adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow")) };
+        int fileTypeIndex{ static_cast<int>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow"))) };
         if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
         {
             fileTypeIndex += MediaFileType::getVideoFileTypeCount();

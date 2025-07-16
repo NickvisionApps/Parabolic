@@ -152,10 +152,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
     {
         IcnStatus().Glyph(L"\uE769");
         LblStatus().Text(winrt::to_hstring(_("Paused")));
-        if(ProgBar().Value() == 0.0)
-        {
-            ProgBar().IsIndeterminate(true);
-        }
+        ProgBar().IsIndeterminate(false);
         FntPauseResume().Glyph(L"\uE768");
         LblPauseResume().Text(winrt::to_hstring(_("Resume")));
     }
