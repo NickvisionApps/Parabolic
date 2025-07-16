@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-07-04 22:55-0400\n"
-"PO-Revision-Date: 2025-05-31 20:05+0000\n"
+"PO-Revision-Date: 2025-07-16 02:57+0000\n"
 "Last-Translator: NIICKTCHUNS <niicktchuns7@proton.me>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/pt_BR/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -42,9 +42,8 @@ msgstr "Nicholas Logozzo"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/aria.page:20
-#, fuzzy
 msgid "aria2c"
-msgstr "aria2"
+msgstr "aria2c"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/aria.page:21
@@ -58,15 +57,13 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:25
-#, fuzzy
 msgid "Use aria2c"
-msgstr "Usar aria2"
+msgstr "Usar aria2c"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
-#, fuzzy
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
-msgstr "Se habilitado, o Parabolic usará aria2c para baixar mídia."
+msgstr "Parabolic irá usar aria2c invés do baixador nativo do yt-dlp."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
@@ -185,13 +182,12 @@ msgstr "Remover Dados de Origem"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:33
-#, fuzzy
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
 msgstr ""
-"Se ativado, o Parabolic limpará os campos de metadados que contêm a URL e "
-"outras informações de identificação da fonte de mídia."
+"Parabolic limpará os campos de metadados que contêm informações de "
+"identificação de download."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:34
@@ -240,11 +236,8 @@ msgstr "Cortar miniaturas para áudio"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:52
-#, fuzzy
 msgid "Parabolic will crop thumbnails of audio files to squares."
-msgstr ""
-"Se ativado, o Parabolic cortará as miniaturas dos arquivos de áudio para uma "
-"resolução quadrada."
+msgstr "Parabolic irá cortar as miniaturas dos arquivos de áudio em quadrados."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:54
@@ -291,9 +284,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:76
-#, fuzzy
 msgid "FFmpeg Threads"
-msgstr "Pós-processamento de threads"
+msgstr "Threads do FFmpeg"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:77
@@ -308,7 +300,7 @@ msgstr "Padrão: O máximo de threads disponível no sistema"
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:83
 msgid "Postprocessing Arguments"
-msgstr ""
+msgstr "Argumentos do pós-processamento"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:84
@@ -365,19 +357,17 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:25
-#, fuzzy
 msgid "Use Part Files"
-msgstr "Usar aria2"
+msgstr "Usar arquivos de partes"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:26
-#, fuzzy
 msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
-"Se ativado, o Parabolic vai exportar a descrição da mídia em um arquivo "
-"<code>.description</code> ao lado do arquivo baixado."
+"Parabolic baixará a mídia em arquivos .part separados invés de diretamente "
+"no arquivo final."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
@@ -386,12 +376,10 @@ msgstr "Usar SponsorBlock para o YouTube"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:33
-#, fuzzy
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr ""
-"Se ativado, o Parabolic irá aplicar a extensão SponsorBlock para downloads "
-"do YouTube."
+"Parabolic irá tentar remover segmentos patrocinados de vídeos do YouTube."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:35
@@ -603,13 +591,12 @@ msgstr "Limite de caracteres no nome do arquivo"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:46
-#, fuzzy
 msgid ""
 "Parabolic will restrict characters in filenames to those supported only by "
 "Windows."
 msgstr ""
-"Restringe os caracteres dos nomes de arquivos a apenas aqueles suportados "
-"pelo Windows."
+"Parabolic restringirá os caracteres dos nomes de arquivos a apenas aqueles "
+"suportados pelo Windows."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:47
@@ -638,6 +625,8 @@ msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
 msgstr ""
+"Parabolic irá apresentar legendas geradas automaticamente para baixar, além "
+"das legendas disponíveis."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:67
@@ -650,8 +639,8 @@ msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
-"O codec de vídeo que o Parabolic deve preferir ao analisar os formatos de "
-"mídias para fazer download."
+"O codec de vídeo que o Parabolic deve preferir ao analisar formatos de mídia "
+"para baixar."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:70
@@ -679,8 +668,8 @@ msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
-"O codec de áudio que o Parabolic deve preferir ao analisar os formatos de "
-"mídias para fazer download."
+"O codec de áudio que o Parabolic deve preferir ao analisar formatos de mídia "
+"para baixar."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:80
@@ -698,12 +687,11 @@ msgstr "Formato de legenda preferido"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:88
-#, fuzzy
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
 msgstr ""
-"O formato de arquivo que o Parabolic deve garantir que todas as legendas "
-"baixadas sejam."
+"O formato do arquivo que o Parabolic deve garantir que todas as legendas "
+"sejam baixadas."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -1023,9 +1011,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:55
-#, fuzzy
 msgid "Download Immediately"
-msgstr "Baixar imediatamente após a validação"
+msgstr "Baixar imediatamente"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:56
@@ -1232,7 +1219,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:127
 msgid "Post Processor Argument"
-msgstr ""
+msgstr "Argumento do pós-processador"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:128
@@ -1255,7 +1242,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:134
 msgid "Write M3U Playlist File"
-msgstr ""
+msgstr "Gravar arquivo de playlist M3U"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:135
