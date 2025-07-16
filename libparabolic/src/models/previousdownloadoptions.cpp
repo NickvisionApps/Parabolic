@@ -48,9 +48,9 @@ namespace Nickvision::TubeConverter::Shared::Models
     std::string PreviousDownloadOptions::getVideoFormatId(const MediaFileType& type) const
     {
         static Format bestVideoFormat{ FormatValue::Best, MediaType::Video };
-        static Format noneAudioFormat{ FormatValue::None, MediaType::Audio };
+        static Format noneVideoFormat{ FormatValue::None, MediaType::Video };
         std::string key{ "VideoFormatId_" + type.str() };
-        return m_json[key].is_string() ? m_json[key].as_string().c_str() : (type.isAudio() ? noneAudioFormat.getId() : bestVideoFormat.getId());
+        return m_json[key].is_string() ? m_json[key].as_string().c_str() : (type.isAudio() ? noneVideoFormat.getId() : bestVideoFormat.getId());
     }
 
     void PreviousDownloadOptions::setVideoFormatId(const MediaFileType& type, const std::string& videoFormatId)

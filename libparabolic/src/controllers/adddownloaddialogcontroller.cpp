@@ -118,13 +118,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
+            std::string previousId{ m_previousOptions.getVideoFormatId(type) };
             for(size_t i = 0; i < media.getFormats().size(); i++)
             {
                 const Format& format{ media.getFormats()[i] };
                 if(format.getType() == MediaType::Video)
                 {
                     m_videoFormatMap[formats.size()] = i;
-                    if(format.getId() == m_previousOptions.getVideoFormatId(type))
+                    if(format.getId() == previousId)
                     {
                         previousIndex = formats.size();
                     }
@@ -147,13 +148,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
+            std::string previousId{ m_previousOptions.getAudioFormatId(type) };
             for(size_t i = 0; i < media.getFormats().size(); i++)
             {
                 const Format& format{ media.getFormats()[i] };
                 if(format.getType() == MediaType::Audio)
                 {
                     m_audioFormatMap[formats.size()] = i;
-                    if(format.getId() == m_previousOptions.getAudioFormatId(type))
+                    if(format.getId() == previousId)
                     {
                         previousIndex = formats.size();
                     }

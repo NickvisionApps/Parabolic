@@ -70,10 +70,11 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
             }), nullptr);
         }
         adw_combo_row_set_model(row, G_LIST_MODEL(list));
+        g_object_unref(list);
         adw_combo_row_set_selected(row, selectedIndex);
     }
 
-    void GtkHelpers::setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, size_t selected, bool allowEllipse)
+    void GtkHelpers::setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const size_t& selected, bool allowEllipse)
     {
         GtkStringList* list{ gtk_string_list_new(nullptr) };
         for(const std::string& str : strs)
@@ -90,7 +91,8 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
             }), nullptr);
         }
         adw_combo_row_set_model(row, G_LIST_MODEL(list));
-        if(selected >= 0 && selected < strs.size())
+        g_object_unref(list);
+        if(selected < strs.size())
         {
             adw_combo_row_set_selected(row, selected);
         }

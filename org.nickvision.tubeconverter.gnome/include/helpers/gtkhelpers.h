@@ -50,7 +50,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers::GtkHelpers
      * @param selected An optional index that should be selected
      * @param allowEllipse Whether or not to allow ellipses in the combo row
      */
-    void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, size_t selected, bool allowEllipse = true);
+    void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const size_t& selected, bool allowEllipse = true);
 }
 
 #endif //GTKHELPERS_H
