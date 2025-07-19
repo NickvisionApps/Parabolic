@@ -29,12 +29,12 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         {
             oldSeparator = gtk_widget_get_next_sibling(widget);
         }
-        if(oldSeparator && GTK_IS_SEPARATOR(oldSeparator))
+        if(addSeparator && oldSeparator && GTK_IS_SEPARATOR(oldSeparator))
         {
             gtk_box_remove(oldBox, oldSeparator);
         }
         gtk_box_remove(oldBox, widget);
-        if(addSeparator && gtk_widget_get_first_child(GTK_WIDGET(newBox)) != nullptr)
+        if(addSeparator && oldSeparator && GTK_IS_SEPARATOR(oldSeparator) && gtk_widget_get_first_child(GTK_WIDGET(newBox)) != nullptr)
         {
             gtk_box_append(newBox, gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
         }
