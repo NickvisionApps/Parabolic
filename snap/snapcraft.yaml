@@ -55,7 +55,7 @@ parts:
 
   cpr:
     source: https://github.com/libcpr/cpr.git
-    source-commit: '93a325cd5496c79d1783c22041985fe5d27ac965'
+    source-commit: 'b14cd346bf3657ac046ebde136bd9300ce885c5e'
     source-depth: 1
     plugin: cmake
     cmake-parameters:
@@ -75,7 +75,7 @@ parts:
 
   libnick:
     after: [cpr, maddy]
-    source: https://github.com/nickvisionapps/libnick.git
+    source-commit: '0f7c048f4a45984378749f5119d4091966ae1a2c'
     source-tag: "2025.7.1"
     source-depth: 1
     plugin: cmake

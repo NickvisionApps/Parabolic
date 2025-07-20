@@ -10,7 +10,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     Configuration::Configuration(const std::string& key, const std::string& appName, bool isPortable)
         : DataFileBase{ key, appName, isPortable }
     {
-        
+
     }
 
     Theme Configuration::getTheme() const
@@ -21,6 +21,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     void Configuration::setTheme(Theme theme)
     {
         m_json["Theme"] = static_cast<int>(theme);
+    }
+
+    std::string Configuration::getTranslationLanguage() const
+    {
+        return m_json["TranslationLanguage"].is_string() ? m_json["TranslationLanguage"].as_string().c_str() : "";
+    }
+
+    void Configuration::setTranslationLanguage(const std::string& language)
+    {
+        m_json["TranslationLanguage"] = language;
     }
 
     WindowGeometry Configuration::getWindowGeometry() const

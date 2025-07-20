@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-15 23:06-0400\n"
+"POT-Creation-Date: 2025-07-20 15:27-0400\n"
 "PO-Revision-Date: 2025-02-02 05:02+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.10-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
@@ -83,12 +83,15 @@ msgstr "WAV (Аудіо)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:191
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:345
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:372
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:116
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:142
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:17
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:49
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:60
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:170
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:196
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:134
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:99
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:101
 msgid "None"
 msgstr "Немає"
 
@@ -102,89 +105,96 @@ msgstr ""
 msgid "Error attempting to add download: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:46
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:48
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:47
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
 msgid "Download web video and audio"
 msgstr "Завантажити веб відео та аудіо"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "Matrix Chat"
 msgstr "Чат Matrix"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
 msgid "Contributors on GitHub"
 msgstr "Учасники на GitHub"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:59
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:59
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:61
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:60
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:62
 msgid "translator-credits"
 msgstr ""
 "kefir2105\n"
 "denqwerta@gmail.com\n"
 "volkov <volkovissocool@gmail.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:245
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:247
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:252
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:254
 msgid "New update available"
 msgstr "Доступне нове оновлення"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:254
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:261
 #, fuzzy
 msgid "No update available"
 msgstr "Доступне нове оновлення"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:267
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:274
 msgid ""
 "The update is downloading in the background and will start once it finishes"
 msgstr ""
 "Оновлення завантажується у фоновому режимі й розпочнеться після завершення"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:272
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:279
 msgid "Unable to download and install update"
 msgstr "Не вдалося завантажити та встановити оновлення"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:286
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:293
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Відновлено {} завантаження"
 msgstr[1] "Відновлено {} завантажень"
 msgstr[2] "Відновлено {} завантажень"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:291
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:321
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "Download Finished"
 msgstr "Завантаження завершено"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:321
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "{} has finished downloading"
 msgstr "{} завершено завантаження"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:321
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:35
 msgid "Open"
 msgstr "Відкрити"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:325
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:332
 msgid "Download Finished With Error"
 msgstr "Завантаження завершено з помилкою"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:325
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:332
 msgid "{} has finished with an error"
 msgstr "{} завершено з помилкою"
+
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:16
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:45
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:56
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:33
+msgid "System"
+msgstr "Системна"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
@@ -561,24 +571,24 @@ msgid "Credentials"
 msgstr "Облікові дані"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:397
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:407
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:214
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:216
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:27
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:65
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:148
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:285
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:150
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:296
 msgid "Add"
 msgstr "Додати"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:422
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:432
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:259
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:261
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:44
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:160
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:254
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:342
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:265
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:353
 msgid "Name"
 msgstr "Ім'я"
 
@@ -635,8 +645,8 @@ msgid "History"
 msgstr "Історія"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:55
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:59
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:65
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:69
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:87
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:27
@@ -768,334 +778,346 @@ msgid "System"
 msgstr "Системна"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:30
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:34
+#, fuzzy
+msgid "Translation Language"
+msgstr "Мова аудіо"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:31
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:35
+#, fuzzy
+msgid "An application restart is required for change to take effect"
+msgstr "Треба перезавантажити додаток, щоб змінити стиль."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:39
 msgid "Prevent Suspend"
 msgstr "Запобігти призупиненню системи"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:31
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:38
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:41
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:40
 msgid ""
 "Parabolic will prevent the computer from sleeping while downloads are "
 "running."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:41
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:43
 msgid "Download History Length"
 msgstr "Довжина історії завантажень"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:41
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:42
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:51
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:44
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:45
 msgid "Never"
 msgstr "Ніколи"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:44
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:46
 msgid "One Day"
 msgstr "Один день"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:45
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:47
 msgid "One Week"
 msgstr "Один тиждень"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:48
 msgid "One Month"
 msgstr "Один місяць"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:49
 msgid "Three Months"
 msgstr "Три місяці"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:43
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:48
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:50
 msgid "Forever"
 msgstr "Назавжди"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:72
 #, fuzzy
 msgid "Max Number of Running Downloads"
 msgstr "Максимальна кількість активних завантажень"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:50
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:88
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:52
 msgid "Overwrite Existing Files"
 msgstr "Перезаписати наявні файли"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
 msgid "Limit Filename Characters"
 msgstr "Обмежити символи у іменах файлів"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
 #, fuzzy
 msgid ""
 "Parabolic will restrict characters in filenames to those supported only by "
 "Windows."
 msgstr "Обмежує символи в іменах файлів лише тими, що підтримуються Windows."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:55
 #, fuzzy
 msgid "Include Media Id in Title"
 msgstr "Включити Media ID у заголовок після перевірки"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
 msgid "Parabolic will include a media's id in its default title."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:57
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:59
 msgid "Include Auto-Generated Subtitles"
 msgstr "Включати автоматично сгенеровані субтитри"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:58
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:60
 msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:127
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:63
 msgid "Preferred Video Codec"
 msgstr "Переважний відеокодек"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:118
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:128
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:64
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:63
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:81
 msgid "Any"
 msgstr "Будь-який"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:66
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:68
 msgid "H.264 (AVC)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:120
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:69
 msgid "H.265 (HEVC)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:130
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:140
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:70
 #, fuzzy
 msgid "Preferred Audio Codec"
 msgstr "Переважний відеокодек"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:131
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:69
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:141
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:71
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:73
 #, fuzzy
 msgid "FLAC (ALAC)"
 msgstr "FLAC (Аудіо)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:133
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:74
 #, fuzzy
 msgid "WAV (AIFF)"
 msgstr "WAV (Аудіо)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:143
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:153
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:79
 msgid "Preferred Subtitle Format"
 msgstr "Бажаний формат субтитрів"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:144
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:154
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:80
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:158
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:162
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:168
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:28
 msgid "Downloader"
 msgstr "Завантажувач"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:165
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:86
 #, fuzzy
 msgid "Use Part Files"
 msgstr "Використовувати пакетний файл"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:176
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:87
 msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:175
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:90
 msgid "Use SponsorBlock for YouTube"
 msgstr "Використовувати SponsorBlock для YouTube"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:176
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:89
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:186
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:91
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:185
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:92
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:195
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:94
 msgid "Limit Download Speed"
 msgstr "Обмежити швидкість завантаження"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:190
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
 msgid "Speed Limit (KiB/s)"
 msgstr "Обмеження швидкості (КіБ/с)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:208
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:96
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:218
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:98
 msgid "Proxy URL"
 msgstr "Проксі URL"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:217
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:98
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:227
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:100
 msgid "Cookies from Browser"
 msgstr "Файли cookie з браузера"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:100
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:102
 msgid "Brave"
 msgstr "Brave"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:101
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:103
 msgid "Chrome"
 msgstr "Chrome"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:102
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:104
 msgid "Chromium"
 msgstr "Chromium"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:103
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:105
 msgid "Edge"
 msgstr "Edge"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:104
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:106
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:105
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:107
 msgid "Opera"
 msgstr "Opera"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:106
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:108
 msgid "Safari"
 msgstr "Safari"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:107
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:109
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:108
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:110
 msgid "Whale"
 msgstr "Whale"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:229
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:109
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:239
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:111
 msgid "Cookies File"
 msgstr "Файл cookie"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:230
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:147
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:110
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:247
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:240
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:149
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:258
 msgid "No file selected"
 msgstr "Файл не вибрано"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:125
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:111
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:127
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:113
 msgid "Select Cookies File"
 msgstr "Виберіть файл cookies"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:114
 msgid "Clear Cookies File"
 msgstr "Очистити файл cookie"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:113
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:270
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:115
 #, fuzzy
 msgid "aria2c"
 msgstr "aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:114
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:116
 #, fuzzy
 msgid "Use aria2c"
 msgstr "Використовувати aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:264
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:115
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:274
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:117
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:118
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:120
 msgid "Max Connections Per Server (-x)"
 msgstr "Максимальна кількість з'єднань на сервер (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:290
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:119
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:300
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:121
 msgid "Minimum Split Size (-k)"
 msgstr "Мінімальний розмір розділення (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:120
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:301
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:122
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Мінімальний розмір, на який потрібно розділити файл (у MiB)."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:310
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:320
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:324
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:29
 msgid "Converter"
 msgstr "Конвертер"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:317
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:121
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:123
 msgid "Embed Metadata"
 msgstr "Вставити метадані"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:327
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:124
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:337
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:126
 msgid "Remove Source Data"
 msgstr "Вилучити вихідні дані"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:328
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:125
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:127
 #, fuzzy
 msgid ""
 "Parabolic will clear metadata fields containing identifying download "
@@ -1104,13 +1126,13 @@ msgstr ""
 "Якщо увімкнено, Parabolic очистить поля метаданих, що містять інформацію, "
 "яка ідентифікує завантаження."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:338
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:128
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:348
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:130
 msgid "Embed Thumbnails"
 msgstr "Вбудовані ескізи"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:339
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:129
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:131
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
@@ -1118,30 +1140,30 @@ msgstr ""
 "Якщо тип файлу не підтримує вбудовування, ескіз буде збережено окремим "
 "зображенням."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:349
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:132
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:359
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:134
 msgid "Crop Audio Thumbnails"
 msgstr "Обрізати мініатюри аудіо"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:350
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:133
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:135
 #, fuzzy
 msgid "Parabolic will crop thumbnails of audio files to squares."
 msgstr ""
 "Якщо увімкнено, Parabolic обрізає ескізи аудіофайлів до квадратної форми."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:360
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:136
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:138
 msgid "Embed Chapters"
 msgstr "Вставити розділи"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:369
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:139
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:379
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:141
 msgid "Embed Subtitles"
 msgstr "Вбудовані субтитри"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:370
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:140
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:142
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
@@ -1150,56 +1172,56 @@ msgstr ""
 "Якщо вимкнено або вбудовування не підтримується, завантажені субтитри "
 "зберігатимуться окремим файлом."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:379
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:144
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:389
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:146
 #, fuzzy
 msgid "FFmpeg Threads"
 msgstr "Аргументи FFmpeg"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:380
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:145
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:390
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:147
 msgid "Parabolic will limit the number of threads used by ffmpeg."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:390
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:400
 #, fuzzy
 msgid "Postprocessing Arguments"
 msgstr "Потоки постобробки"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:391
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:401
 msgid ""
 "Parabolic will show these arguments for selection in the add download dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:393
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:403
 #, fuzzy
 msgid "Add Postprocessing Argument"
 msgstr "Потоки постобробки"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:407
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:258
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:417
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:260
 #, fuzzy
 msgid "Argument"
 msgstr "Нові облікові дані"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:426
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:258
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:347
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:436
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:269
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:358
 #, fuzzy
 msgid "Post Processor"
 msgstr "Обробка"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:430
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:266
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:355
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:440
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:277
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:366
 #, fuzzy
 msgid "Executable"
 msgstr "Ввімкнути"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:434
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:261
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:273
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:362
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:444
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:263
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:284
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:373
 msgid "Args"
 msgstr ""
 
@@ -1249,8 +1271,8 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:258
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:308
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:398
 msgid "Error"
 msgstr "Помилка"
 
@@ -1285,7 +1307,7 @@ msgid "Select Batch File"
 msgstr "Вибрати пакетний файл"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:127
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:129
 msgid "TXT Files (*.txt)"
 msgstr "TXT файли (*.txt)"
 
@@ -1336,14 +1358,14 @@ msgid "Keyring is not saving to disk. Changes will be lost."
 msgstr "Keyring не зберігається на диску. Зміни будуть втрачені."
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:164
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:166
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:127
 msgid "Edit"
 msgstr "Редагувати"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:178
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:180
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:331
@@ -1351,7 +1373,7 @@ msgid "Delete"
 msgstr "Видалити"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:230
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:232
 msgid "Modify"
 msgstr "Змінити"
 
@@ -1367,27 +1389,27 @@ msgstr "Ви впевнені, що хочете видалити ці облі�
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:240
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:238
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:185
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:215
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:418
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:429
 msgid "Yes"
 msgstr "Так"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:240
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:237
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:186
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:216
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:419
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:430
 msgid "No"
 msgstr "Ні"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:277
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:279
 msgid "Name (Empty)"
 msgstr "Ім'я (Порожньо)"
 
@@ -1404,7 +1426,7 @@ msgid "URL (Invalid)"
 msgstr "URL (Неправильна)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:281
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:283
 msgid "Name (Exists)"
 msgstr "Назва (існує)"
 
@@ -1469,25 +1491,25 @@ msgstr "Завантажити знову"
 msgid "GitHub Repo"
 msgstr "Репозиторій GitHub"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:201
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:467
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:203
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:478
 #, fuzzy
 msgid "No Arguments"
 msgstr "Нові облікові дані"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:236
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:416
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:238
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:427
 #, fuzzy
 msgid "Delete Argument?"
 msgstr "Нові облікові дані"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:236
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:417
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:238
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:428
 #, fuzzy
 msgid "Are you sure you want to delete this argument?"
 msgstr "Ви впевнені, що хочете видалити ці облікові дані?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:285
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:287
 #, fuzzy
 msgid "Args (Empty)"
 msgstr "Ім'я (Порожньо)"
@@ -1499,8 +1521,8 @@ msgstr "Ім'я (Порожньо)"
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:173
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:260
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:298
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:388
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:309
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:399
 msgid "OK"
 msgstr "ОК"
 
@@ -1561,8 +1583,8 @@ msgstr "Пошук..."
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:25
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:66
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:186
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:286
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:376
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -1589,21 +1611,21 @@ msgstr "Введіть URL-адресу медіа тут"
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:102
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:105
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:108
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:35
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:39
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:55
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:59
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:86
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:90
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:93
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:116
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:122
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:126
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:130
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:134
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:137
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:141
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:88
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:92
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:95
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:118
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:124
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:128
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:132
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:136
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:139
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:143
 msgid "On"
 msgstr "Увімкнено"
 
@@ -1616,21 +1638,21 @@ msgstr "Увімкнено"
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:103
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:106
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:109
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:36
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:40
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:56
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:60
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:87
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:91
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:94
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:117
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:123
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:127
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:131
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:135
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:138
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:142
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:38
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:42
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:58
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:93
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:96
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:119
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:125
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:129
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:133
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:137
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:140
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:144
 msgid "Off"
 msgstr "Вимкнено"
 
@@ -1703,7 +1725,7 @@ msgstr ""
 "втрачені, коли програма закриється."
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:45
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:255
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:266
 msgid "Enter name here"
 msgstr "Введіть ім'я користувача тут"
 
@@ -1740,7 +1762,7 @@ msgid "Edit Credential"
 msgstr "Редагувати облікові дані"
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:184
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:375
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:386
 msgid "Save"
 msgstr "Зберегти"
 
@@ -1786,81 +1808,77 @@ msgstr "Світла"
 msgid "Dark"
 msgstr "Темна"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:33
-msgid "System"
-msgstr "Системна"
-
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:34
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:36
 msgid "Automatically Check for Updates"
 msgstr "Автоматично перевіряти оновлення"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:49
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:51
 #, fuzzy
 msgid "Max Number of Active Downloads"
 msgstr "Максимальна кількість активних завантажень"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:56
 msgid "Parabolic will include the media's id in its default title."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:95
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:97
 msgid "Speed Limit"
 msgstr "Обмеження швидкості"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:97
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:99
 msgid "Enter proxy url here"
 msgstr "Введіть URL-адресу проксі"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:143
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:145
 #, fuzzy
 msgid "Postprocessing"
 msgstr "Обробка"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:146
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:148
 #, fuzzy
 msgid "Arguments"
 msgstr "Нові облікові дані"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:147
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:149
 msgid ""
 "Parabolic will show these arguments below for selection in the add download "
 "dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:274
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:363
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:285
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:374
 #, fuzzy
 msgid "Enter args here"
 msgstr "Введіть URL-адресу медіа"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:283
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:294
 #, fuzzy
 msgid "New Argument"
 msgstr "Нові облікові дані"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:306
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:317
 #, fuzzy
 msgid "The argument name cannot be empty."
 msgstr "Ім'я облікових даних не може бути порожнім."
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:312
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:323
 #, fuzzy
 msgid "An argument with this name already exists."
 msgstr "Облікові дані з таким ім'ям вже існують."
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:318
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:396
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:329
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:407
 #, fuzzy
 msgid "The argument args cannot be empty."
 msgstr "Ім'я облікових даних не може бути порожнім."
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:373
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:444
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:384
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:455
 #, fuzzy
 msgid "Edit Argument"
 msgstr "Нові облікові дані"
 
-#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:452
+#: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:463
 #, fuzzy
 msgid "Delete Argument"
 msgstr "Нові облікові дані"
@@ -2056,9 +2074,6 @@ msgstr "Нові облікові дані"
 #~ msgid "Quality"
 #~ msgstr "Якість"
 
-#~ msgid "Audio Language"
-#~ msgstr "Мова аудіо"
-
 #~ msgid "Default"
 #~ msgstr "За замовчуванням"
 
@@ -2109,9 +2124,6 @@ msgstr "Нові облікові дані"
 
 #~ msgid "Allow Running In Background"
 #~ msgstr "Дозволити роботу у фоновому режимі"
-
-#~ msgid "An application restart is required to change the theme."
-#~ msgstr "Треба перезавантажити додаток, щоб змінити стиль."
 
 #~ msgid "Clear Completed"
 #~ msgstr "Очистити завершені"

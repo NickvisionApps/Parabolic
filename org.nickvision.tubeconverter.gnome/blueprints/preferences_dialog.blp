@@ -26,6 +26,16 @@ Adw.PreferencesDialog root {
         }
       }
 
+      Adw.ComboRow languageRow {
+        title: _("Translation Language");
+        subtitle: _("An application restart is required for change to take effect");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "translate-symbolic";
+        }
+      }
+
       Adw.SwitchRow preventSuspendRow {
         title: _("Prevent Suspend");
         subtitle: _("Parabolic will prevent the computer from sleeping while downloads are running.");
