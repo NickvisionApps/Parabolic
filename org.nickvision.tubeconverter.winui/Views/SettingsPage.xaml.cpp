@@ -488,7 +488,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setTheme(static_cast<Theme>(CmbTheme().SelectedIndex()));
-         m_controller->setTranslationLanguage(winrt::to_string(CmbLanguage().SelectedItem().as<winrt::hstring>()));
+        m_controller->setTranslationLanguage(winrt::to_string(CmbLanguage().SelectedItem().as<winrt::hstring>()));
         m_controller->setAutomaticallyCheckForUpdates(TglUpdates().IsOn());
         m_controller->setPreventSuspend(TglPreventSuspend().IsOn());
         m_controller->setHistoryLengthIndex(CmbHistoryLength().SelectedIndex());

@@ -3,7 +3,7 @@
 [![Translation status](https://hosted.weblate.org/widgets/nickvision-tube-converter/-/app/svg-badge.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/) ✨Powered by [Weblate](https://weblate.org/en/)✨
 
 # Features
-- A basic yt-dlp frontend ([supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))
+- A powerful yt-dlp frontend ([supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))
 - Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)
 - Run multiple downloads at a time
 - Supports downloading metadata and video subtitles
@@ -78,6 +78,10 @@ The recommendation is to (and below commands will) use vcpkg to pull these depen
 1. From the `build` folder, run `cmake .. -G "Visual Studio 17 2022"`.
 1. From the `build` folder, run `cmake --build . --config Release`.
 1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.winui/Release` folder of the `build` folder.
+#### Windows (Portable)
+1. From the `build` folder, run `cmake .. -G "Visual Studio 17 2022" -DBUILD_AS_PORTABLE=ON`.
+1. From the `build` folder, run `cmake --build . --config Release`.
+1. After these commands complete, Application will be successfully built and its binaries can be found in the `org.nickvision.application.winui/Release` folder of the `build` folder.
 #### Linux
 1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release`.
 1. From the `build` folder, run `cmake --build .`.
