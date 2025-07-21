@@ -226,7 +226,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_history.removeDownload(download);
     }
 
-    std::optional<UrlInfo> DownloadManager::fetchUrlInfo(const std::string& url, const std::optional<Credential>& credential, const std::filesystem::path& suggestedSaveFolder) const
+    std::optional<UrlInfo> DownloadManager::fetchUrlInfo(CancellationToken& token, const std::string& url, const std::optional<Credential>& credential, const std::filesystem::path& suggestedSaveFolder) const
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         std::vector<std::string> arguments{ "--ignore-config", "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
@@ -289,12 +289,21 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back(m_options.getCookiesPath().string());
         }
         arguments.push_back(url);
+        if(token)
+        {
+            return std::nullopt;
+        }
         Process process{ Environment::findDependency("yt-dlp"), arguments };
+        token.setCancelFunction([&process]()
+        {
+            process.kill();
+        });
         process.start();
         if(process.waitForExit() != 0 || process.getOutput().empty())
         {
             return std::nullopt;
         }
+        token.setCancelFunction({});
         boost::json::value info = boost::json::parse(process.getOutput()[0] == '{' ? process.getOutput() : process.getOutput().substr(process.getOutput().find('{')));
         if(!info.is_object())
         {
@@ -316,6 +325,10 @@ namespace Nickvision::TubeConverter::Shared::Models
             std::vector<UrlInfo> urlInfos;
             for(const boost::json::value& entry : obj["entries"].as_array())
             {
+                if(token)
+                {
+                    return std::nullopt;
+                }
                 if(entry.is_object())
                 {
                     boost::json::object e = entry.as_object();
@@ -324,7 +337,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                     {
                         //Fetch UrlInfo for YoutubeTab
                         lock.unlock();
-                        std::optional<UrlInfo> urlInfo{ fetchUrlInfo(std::string(e["url"].as_string().c_str()), credential) };
+                        std::optional<UrlInfo> urlInfo{ fetchUrlInfo(token, std::string(e["url"].as_string().c_str()), credential) };
                         if(urlInfo)
                         {
                             urlInfos.push_back(*urlInfo);
@@ -333,16 +346,24 @@ namespace Nickvision::TubeConverter::Shared::Models
                     }
                 }
             }
+            if(token)
+            {
+                return std::nullopt;
+            }
             if(!urlInfos.empty())
             {
                 //Build final UrlInfo
                 return UrlInfo{ url, obj["title"].is_string() ? obj["title"].as_string().c_str() : "Tab", urlInfos };
             }
         }
+        if(token)
+        {
+            return std::nullopt;
+        }
         return UrlInfo{ url, obj };
     }
 
-    std::optional<UrlInfo> DownloadManager::fetchUrlInfo(const std::filesystem::path& batchFile, const std::optional<Credential>& credential) const
+    std::optional<UrlInfo> DownloadManager::fetchUrlInfo(CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Credential>& credential) const
     {
         if(!std::filesystem::exists(batchFile) || batchFile.extension().string() != ".txt")
         {
@@ -392,18 +413,26 @@ namespace Nickvision::TubeConverter::Shared::Models
                 urls.push_back({ line, {} });
             }
         }
+        if(token)
+        {
+            return std::nullopt;
+        }
         //Fetch UrlInfo objects for each URL in the batch file
         std::vector<UrlInfo> urlInfos;
         for(const std::pair<std::string, std::filesystem::path>& pair : urls)
         {
-            std::optional<UrlInfo> urlInfo{ fetchUrlInfo(pair.first, credential, pair.second) };
+            if(token)
+            {
+                return std::nullopt;
+            }
+            std::optional<UrlInfo> urlInfo{ fetchUrlInfo(token, pair.first, credential, pair.second) };
             if(urlInfo)
             {
                 urlInfos.push_back(*urlInfo);
             }
         }
         //Build final UrlInfo
-        if(urlInfos.empty())
+        if(token || urlInfos.empty())
         {
             return std::nullopt;
         }

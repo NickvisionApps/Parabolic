@@ -9,11 +9,12 @@
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/credential.h>
-#include "historicdownload.h"
+#include "cancellationtoken.h"
 #include "download.h"
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
 #include "downloadrecoveryqueue.h"
+#include "historicdownload.h"
 #include "startupinformation.h"
 #include "urlinfo.h"
 #include "events/downloadaddedeventargs.h"
@@ -165,19 +166,21 @@ namespace Nickvision::TubeConverter::Shared::Models
         void removeHistoricDownload(const HistoricDownload& download);
         /**
          * @brief Fetches information about a URL.
+         * @param token The CancellationToken to use for cancellation
          * @param url The URL to fetch information for
          * @param credential An optional credential to use for authentication
          * @param suggestedSaveFolder An option save folder to save the url's media to
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
+        std::optional<UrlInfo> fetchUrlInfo(CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
         /**
          * @brief Fetches information about a set of URLs from a batch file.
+         * @param token The CancellationToken to use for cancellation
          * @param batchFile The batch file with listed URLs
          * @param credential An optional credential to use for authentication
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
+        std::optional<UrlInfo> fetchUrlInfo(CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.
