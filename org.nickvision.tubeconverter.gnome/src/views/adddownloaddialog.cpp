@@ -264,6 +264,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), !m_controller->isUrlPlaylist() ? "download-single" : "download-playlist");
         gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), false);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("subtitlesSingleActionBar"), false);
     }
 
     void AddDownloadDialog::onFileTypeSingleChanged()
@@ -284,6 +285,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single-subtitles");
         gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), true);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("subtitlesSingleActionBar"), true);
     }
 
     void AddDownloadDialog::advancedOptionsSingle()
