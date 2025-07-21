@@ -25,7 +25,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 ## I Have a Question
 
-Before you ask a question, it is best to search for existing [Discussions](https://github.com/NickvisionApps/Parabolic/discussions) and [Issues](https://github.com/NickvisionApps/Parabolic/issues) that might help you. 
+Before you ask a question, it is best to search for existing [Discussions](https://github.com/NickvisionApps/Parabolic/discussions) and [Issues](https://github.com/NickvisionApps/Parabolic/issues) that might help you.
 
 In case you have found a suitable existing issue/discussion and still need clarification, you can write your question in said post. It is also advisable to search the internet for answers first to common error messages.
 
@@ -53,8 +53,8 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 - See if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in both the [Discussions](https://github.com/NickvisionApps/Parabolic/discussions) and [Issues](https://github.com/NickvisionApps/Parabolic/issues) sections.
 - Collect information about the bug:
   - Debug information provided by the application
-    - GNOME: From the main hamburger menu, open About Parabolic → Troubleshooting → Debugging Information and copy the information to the clipboard to paste in your issue.
-    - WinUI: From the Help item in the left-side navigation, click the gear/wrench icon in the top right corner of the flyout to copy the information to the clipboard to paste in your issue.
+    - GNOME: From the main hamburger menu, open About Parabolic --> Troubleshooting --> Debugging Information and copy the information to the clipboard to paste in your issue.
+    - WinUI: From the Help item in the left-side navigation, open About Parabolic --> Debugging and copy the information to the clipboard to paste in your issue.
   - Stack trace (Traceback)
     - Including any error messages thrown by the application
     - You may need to start the application via the terminal/console to receive an error message for a crash.
@@ -76,7 +76,7 @@ We use GitHub issues to track bugs and errors. If you run into an issue with the
 Once it has been opened:
 
 - The project team will label the issue accordingly.
-- A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps. 
+- A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps.
     - Bugs that are not able to be reproduced will not be addressed until they are reproduced. Therefore, it is important to include steps to speed up the fixing process.
 
 ### Suggesting Enhancements
@@ -111,11 +111,13 @@ Parabolic is available to translate on [Weblate](https://hosted.weblate.org/enga
 
 To start translating the app, fork the repository and clone it locally.
 
-Parabolic uses [gettext](https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files) for translations. In the `resources/po` folder you will find files that can be edited in your favourite `*.po` files editor (or with any plain text editor). 
+Parabolic uses [gettext](https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files) for translations. In the `resources/po` folder you will find files that can be edited in your favourite `*.po` files editor (or with any plain text editor).
 
-If you want to create a new translation, copy the `parabolic.pot` file and rename said copy as `<lang_code>.po`, where `<lang_code>` is the language code for your translation. Usually the code is two letters, but it can also be a specific locale code to differentiate between versions of the same language (for example, `pt` and `pt_BR`). **Also, add the language code to `LINGUAS` file** (keeping this file in alphabetical order).
+If you want to create a new translation, copy the `parabolic.pot` file and rename said copy as `<lang_code>.po`, where `<lang_code>` is the language code for your translation. Usually the code is two letters, but it can also be a specific locale code to differentiate between versions of the same language (for example, `pt` and `pt_BR`).
 
-Edit your new translation file with correct translations for the English messages. 
+**Also, add the language code to `LINGUAS` file** (keeping this file in alphabetical order).
+
+Edit your new translation file with correct translations for the English messages.
 
 To check your translation file, make sure your system is in the locale of the language you are translating and [locally build and run the app](README#building-manually). If all steps were carried out successfully, you should see your translation in action!
 
@@ -128,16 +130,17 @@ Once all changes to your translated file are made, commit these changes and crea
 Parabolic is built using C++20 and platform-native user interface libraries. With these technologies, Parabolic is built for all desktop platforms.
 
 The project is split up into the following sub-projects:
- - [libapplication](#libapplication)
+ - [libparabolic](#libparabolic)
  - [org.nickvision.tubeconverter.gnome](#org.nickvision.tubeconverter.gnome)
- - [org.nickvision.tubeconverter.qt](org.nickvision.tubeconverter.qt)
+ - [org.nickvision.tubeconverter.winui](org.nickvision.tubeconverter.winui)
 
 The whole project utilizes the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern for separating data models and UI views.
 
-##### libapplication
+##### libparabolic
 
 This project contains all of the code used by all platforms of the app:
 - `controllers` => The objects used by UI views to receive and manipulate data from the models.
+- `events` => Arguments that are used by events throughout the application.
 - `helpers` => Useful objects and functions specific to the application that can be used by all platforms.
 - `models` => The data driven objects of the application (i.e. Configuration, Database, etc...).
 
@@ -151,20 +154,17 @@ This project contains all of the code used for the GNOME platform version of the
 - `resources` => Extra icons and other files specific for the GNOME platform version of the app.
 - `views` => The views (pages, windows, dialogs, etc...) of the app.
 
-##### org.nickvision.tubeconverter.qt
+##### org.nickvision.tubeconverter.winui
 
-This project contains all of the code used for the QT platform (Windows, KDE) version of the app:
+This project contains all of the code used for the WinUI platform version of the app:
 - `controls` => Generic controls for the app.
     - These UI objects are separate from views in that they should not be backed by a controller and should be easily ported to any other app.
-- `helpers` => Useful objects and functions specific for the QT platform version of the app.
-- `resources` => Extra icons and other files specific for the QT platform version of the app.
+- `helpers` => Useful objects and functions specific for the WinUI platform version of the app.
 - `views` => The views (pages, windows, dialogs, etc...) of the app.
 
 #### Developing and Testing
 
-Parabolic simply relies on `cmake` to configure and manage the correct projects for the running platform. Meaning, on Linux the `.gnome` variant of the app will be built by default and on Windows the `.qt` variant.
-
-Although on Linux, you can specify the `-DUI_PLATFORM=qt` flag to cmake and build and run the `.qt` variant.
+Parabolic simply relies on `cmake` to configure and manage the correct projects for the running platform. Meaning, on Linux the `.gnome` variant of the app will be built and on Windows the `.winui` variant.
 
 [See the readme](README#building-manually) for instructions on building and running the app locally.
 
@@ -174,6 +174,7 @@ Parabolic uses the following naming conventions:
 - `CamelCase` for namespaces and classes
 - `pascalCase` for file names, functions, and variables
 - `m_` prefix appended to class member variables
+- `s_` prefix appended to global static variables
 - `get` and `set` prefixes used for accessor and modifiers methods of a class variable respectively
     - Exception: For boolean class members, `is` and `setIs` should be used as the prefixes for the accessor and modifier methods of said members.
 
@@ -183,10 +184,10 @@ Parabolic uses the following coding styles:
     #define FILENAME_H
     ...
     #endif //FILENAME_H
-  ``` 
-  used as the guards to a header file. 
+  ```
+  used as the guards to a header file.
   - `#pragma once` should not be used.
-- Brackets `{}` should be placed on individual new lines and never inline. 
+- Brackets `{}` should be placed on individual new lines and never inline.
     - This applies for any type of structure (`if`, `switch`, `class`, etc...) that requires brackets.
     - *Single-line if statements should also be wrapped by brackets.*
 - Proper indentation using spacing with spaces and not tabs.
