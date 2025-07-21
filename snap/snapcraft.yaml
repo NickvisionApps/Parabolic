@@ -75,8 +75,8 @@ parts:
 
   libnick:
     after: [cpr, maddy]
+    source: https://github.com/NickvisionApps/libnick.git
     source-commit: '0f7c048f4a45984378749f5119d4091966ae1a2c'
-    source-tag: "2025.7.1"
     source-depth: 1
     plugin: cmake
     cmake-parameters:
