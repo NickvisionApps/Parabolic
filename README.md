@@ -8,8 +8,8 @@
 - Run multiple downloads at a time
 - Supports downloading metadata and video subtitles
 
-# Disclaimer
-The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.
+# Legal Copyright Disclaimer
+Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws.
 
 # Installation
 <p><a href='https://flathub.org/apps/details/org.nickvision.tubeconverter'><img width='150' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/></a></p>

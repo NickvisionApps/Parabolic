@@ -45,6 +45,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
         GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames, 0);
+        if(credentialNames.size() == 1)
+        {
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("credentialRow"), false);
+        }
         //Signals
         g_signal_connect(m_builder.get<GObject>("urlRow"), "changed", G_CALLBACK(+[](GtkEditable*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onTxtUrlChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("batchFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->useBatchFile(); }), this);

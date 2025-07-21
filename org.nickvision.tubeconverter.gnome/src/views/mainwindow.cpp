@@ -150,9 +150,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_simple_action_set_enabled(m_actAddDownload, info.canDownload());
         if(info.showDisclaimer())
         {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Disclaimer"), _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk."))) };
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Legal Copyright Disclaimer"), _("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws."))) };
             adw_alert_dialog_set_extra_child(dialog, gtk_check_button_new_with_label(_("Don't show this message again")));
-            adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
+            adw_alert_dialog_add_responses(dialog, "close", _("I understand"), nullptr);
             adw_alert_dialog_set_default_response(dialog, "close");
             adw_alert_dialog_set_close_response(dialog, "close");
             g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
@@ -164,8 +164,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         if(info.hasRecoverableDownloads())
         {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Recover Crashed Downloads?"), _("There are downloads available to recover from when Parabolic crashed. Would you like to recover them?"))) };
-            adw_alert_dialog_add_responses(dialog, "yes", _("Yes"), "no", _("No"), nullptr);
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Recover Crashed Downloads?"), _("There are downloads available to recover from when Parabolic crashed. Parabolic will try to download them again."))) };
+            adw_alert_dialog_add_responses(dialog, "yes", _("Recover"), "no", _("Cancel"), nullptr);
             adw_alert_dialog_set_response_appearance (dialog, "yes", ADW_RESPONSE_SUGGESTED);
             adw_alert_dialog_set_default_response(dialog, "no");
             adw_alert_dialog_set_close_response(dialog, "no");
@@ -199,8 +199,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         if(!m_controller->canShutdown())
         {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Exit?"), _("There are downloads in progress. Are you sure you want to exit?"))) };
-            adw_alert_dialog_add_responses(dialog, "yes", _("Yes"), "no", _("No"), nullptr);
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Exit?"), _("There are downloads in progress. Exiting will stop all downloads."))) };
+            adw_alert_dialog_add_responses(dialog, "yes", _("Exit"), "no", _("Cancel"), nullptr);
             adw_alert_dialog_set_response_appearance(dialog, "yes", ADW_RESPONSE_DESTRUCTIVE);
             adw_alert_dialog_set_default_response(dialog, "no");
             adw_alert_dialog_set_close_response(dialog, "no");
@@ -320,8 +320,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
                     std::filesystem::path* path{ reinterpret_cast<std::filesystem::path*>(data) };
                     GtkFileLauncher* launcher{ gtk_file_launcher_new(g_file_new_for_path(path->string().c_str())) };
                     gtk_file_launcher_launch(launcher, nullptr, nullptr, GAsyncReadyCallback(+[](GObject* source, GAsyncResult* res, gpointer)
-                    { 
-                        gtk_file_launcher_launch_finish(GTK_FILE_LAUNCHER(source), res, nullptr); 
+                    {
+                        gtk_file_launcher_launch_finish(GTK_FILE_LAUNCHER(source), res, nullptr);
                         g_object_unref(source);
                     }), nullptr);
                 }), new std::filesystem::path(download.getPath()), GClosureNotify(+[](gpointer data, GClosure*)
