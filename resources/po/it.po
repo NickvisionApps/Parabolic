@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 15:27-0400\n"
+"POT-Creation-Date: 2025-07-20 16:32-0400\n"
 "PO-Revision-Date: 2025-06-26 00:00+0000\n"
 "Last-Translator: gablilli <gabriele.lilli0511@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -96,11 +96,13 @@ msgstr "Nessuno"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:248
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:280
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "Errore durante la validazione dello scaricamento: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:354
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:398
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Errore durante l'aggiunta dello scaricamento: {}"
 
@@ -156,12 +158,14 @@ msgid "Unable to download and install update"
 msgstr "Impossibile scaricare e installare l'aggiornamento"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:293
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} scaricamento recuperato"
 msgstr[1] "{} scaricamenti recuperati"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "Errore durante il recupero dello scaricamento: {}"
 
@@ -170,6 +174,7 @@ msgid "Download Finished"
 msgstr "Scaricamento terminato"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} ha finito di scaricare"
 
@@ -184,6 +189,7 @@ msgid "Download Finished With Error"
 msgstr "Scaricamento terminato con errori"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:332
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} è terminato con un errore"
 
@@ -199,18 +205,22 @@ msgid "0 B/s"
 msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -233,22 +243,22 @@ msgid "Audio Description"
 msgstr "Descrizione Audio"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1257,6 +1267,7 @@ msgstr "In lavorazione"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1334,10 +1345,12 @@ msgid "No Subtitles Available"
 msgstr "Nessun sottotitolo disponibile"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} elementi"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1712,6 +1725,7 @@ msgid "Use manual credentials"
 msgstr "Usa un certificato manuale"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} ha bisogno delle credenziali per essere scaricato. Scegli o inserisci "
@@ -2467,9 +2481,7 @@ msgstr "Eliminare il certificato?"
 #~ msgstr "Download rimanenti: {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr ""
-#~ "YouTube;Downloader;ytdlp;Nickvision;Scaricatore;Tube;Converter;"
-#~ "Convertitore;"
+#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Scaricatore;Tube;Converter;Convertitore;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Un frontend di base per yt-dlp"

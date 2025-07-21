@@ -44,7 +44,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.7.0-beta2" });
+        m_appInfo.setVersion({ "2025.7.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Redesigned the Windows app using WinUI 3\n- Added the ability to change the application's translation language\n- Added the ability to remember video and audio formats individually for each file type\n- Fixed an issue where pressing enter in the download dialog would not start the download\n- Fixed an issue where configuration files were not stored properly for the portable Windows build\n- Fixed an issue where downloads did not pause and resume on Windows\n- Fixed an issue where there would sometimes be leftover separators in the downloads list on Gnome\n- Updated yt-dlp");
