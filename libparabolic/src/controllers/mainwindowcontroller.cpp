@@ -15,6 +15,8 @@
 #include <windows.h>
 #endif
 
+#define CONFIG_FILE_KEY "config"
+
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
@@ -39,13 +41,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName(), false },
 #endif
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
+        m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.7.0-beta2" });
+        m_appInfo.setVersion({ "2025.7.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Redesigned the Windows app using WinUI 3\n- Added the ability to remember video and audio formats individually for each file type\n- Fixed an issue where pressing enter in the download dialog would not start the download\n- Fixed an issue where configuration files were not stored properly for the portable Windows build\n- Fixed an issue where downloads did not pause and resume on Windows\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Redesigned the Windows app using WinUI 3\n- Added the ability to change the application's translation language\n- Added the ability to remember video and audio formats individually for each file type\n- Fixed an issue where pressing enter in the download dialog would not start the download\n- Fixed an issue where configuration files were not stored properly for the portable Windows build\n- Fixed an issue where downloads did not pause and resume on Windows\n- Fixed an issue where there would sometimes be leftover separators in the downloads list on GNOME\n- Fixed some elements of the GNOME UI as we get closer to joining GNOME Circle\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -58,11 +60,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.getDesigners()["DaPigGuy"] = "https://github.com/DaPigGuy";
         m_appInfo.getArtists()[_("David Lapshin")] = "https://github.com/daudix";
         m_appInfo.setTranslatorCredits(_("translator-credits"));
-        Localization::Gettext::init(m_appInfo.getEnglishShortName());
+        Gettext::init(m_appInfo.getEnglishShortName());
+        std::string translationLanguage{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getTranslationLanguage() };
+        if(!translationLanguage.empty())
+        {
+            Gettext::changeLanguage(translationLanguage);
+        }
 #ifdef _WIN32
         m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
 #endif
-        m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&){ onConfigurationSaved(); };
+        m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).saved() += [this](const EventArgs&){ onConfigurationSaved(); };
         m_downloadManager.downloadCompleted() += [this](const DownloadCompletedEventArgs& args) { onDownloadCompleted(args); };
     }
 
@@ -78,12 +85,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     Theme MainWindowController::getTheme()
     {
-        return m_dataFileManager.get<Configuration>("config").getTheme();
+        return m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getTheme();
     }
 
     void MainWindowController::setShowDisclaimerOnStartup(bool showDisclaimerOnStartup)
     {
-        Configuration& config{ m_dataFileManager.get<Configuration>("config") };
+        Configuration& config{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY) };
         config.setShowDisclaimerOnStartup(showDisclaimerOnStartup);
         config.save();
     }
@@ -95,7 +102,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     Event<EventArgs>& MainWindowController::configurationSaved()
     {
-        return m_dataFileManager.get<Configuration>("config").saved();
+        return m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).saved();
     }
 
     Event<NotificationSentEventArgs>& MainWindowController::notificationSent()
@@ -174,7 +181,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
     {
-        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>("config"), m_dataFileManager.get<DownloadHistory>("history"));
+        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>("history"));
     }
 
 #ifdef _WIN32
@@ -191,11 +198,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             return info;
         }
         //Load configuration
-        info.setWindowGeometry(m_dataFileManager.get<Configuration>("config").getWindowGeometry());
+        info.setWindowGeometry(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getWindowGeometry());
         //Load taskbar item
 #ifdef _WIN32
         m_taskbar.connect(hwnd);
-        if (m_dataFileManager.get<Configuration>("config").getAutomaticallyCheckForUpdates())
+        if (m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getAutomaticallyCheckForUpdates())
         {
             checkForUpdates(false);
         }
@@ -205,7 +212,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Check if can download
         info.setCanDownload(!Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty());
         //Check if disclaimer should be shown
-        info.setShowDisclaimer(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup());
+        info.setShowDisclaimer(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getShowDisclaimerOnStartup());
         //Get URL to validate from args
         if(m_args.size() > 1)
         {
@@ -223,7 +230,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     void MainWindowController::shutdown(const WindowGeometry& geometry)
     {
         //Save config
-        Configuration& config{ m_dataFileManager.get<Configuration>("config") };
+        Configuration& config{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY) };
         config.setWindowGeometry(geometry);
         config.save();
     }
@@ -299,7 +306,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void MainWindowController::onConfigurationSaved()
     {
-        if(m_dataFileManager.get<Configuration>("config").getPreventSuspend())
+        if(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getPreventSuspend())
         {
             m_suspendInhibitor.inhibit();
         }
@@ -307,7 +314,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_suspendInhibitor.uninhibit();
         }
-        m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>("config").getDownloaderOptions());
+        m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getDownloaderOptions());
     }
 
     void MainWindowController::onDownloadCompleted(const DownloadCompletedEventArgs& args)

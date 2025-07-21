@@ -33,6 +33,18 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setTheme(Theme theme);
         /**
+         * @brief Gets the preferred translation language for the application.
+         * @return The preferred translation language
+         * @return An empty string to use the system language
+         * @return "C" to not use translations
+         */
+        std::string getTranslationLanguage() const;
+        /**
+         * @brief Sets the preferred translation language for the application.
+         * @param language The new preferred translation language
+         */
+        void setTranslationLanguage(const std::string& language);
+        /**
          * @brief Gets the window geometry for the application.
          * @return The window geometry
          */

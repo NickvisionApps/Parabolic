@@ -29,6 +29,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     AddDownloadDialogController::~AddDownloadDialogController()
     {
+        m_validationCancellationToken.cancel();
         m_previousOptions.save();
     }
 
@@ -239,7 +240,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             try
             {
                 m_credential = credential;
-                m_urlInfo = m_downloadManager.fetchUrlInfo(url, m_credential);
+                m_urlInfo = m_downloadManager.fetchUrlInfo(m_validationCancellationToken, url, m_credential);
                 m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
             }
             catch(const std::exception& e)
@@ -271,7 +272,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             try
             {
                 m_credential = credential;
-                m_urlInfo = m_downloadManager.fetchUrlInfo(batchFile, m_credential);
+                m_urlInfo = m_downloadManager.fetchUrlInfo(m_validationCancellationToken, batchFile, m_credential);
                 m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
             }
             catch(const std::exception& e)

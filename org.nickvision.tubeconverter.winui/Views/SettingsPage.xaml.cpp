@@ -31,15 +31,17 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         CmbTheme().Items().Append(winrt::box_value(winrt::to_hstring(_("Light"))));
         CmbTheme().Items().Append(winrt::box_value(winrt::to_hstring(_("Dark"))));
         CmbTheme().Items().Append(winrt::box_value(winrt::to_hstring(_("System"))));
+        RowLanguage().Title(winrt::to_hstring(_("Translation Language")));
+        RowLanguage().Description(winrt::to_hstring(_("An application restart is required for change to take effect")));
         RowUpdates().Title(winrt::to_hstring(_("Automatically Check for Updates")));
         TglUpdates().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglUpdates().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowPreventSuspend().Title(winrt::to_hstring(_("Prevent Suspend")));
-        RowPreventSuspend().Description(winrt::to_hstring(_("Parabolic will prevent the computer from sleeping while downloads are running.")));
+        RowPreventSuspend().Description(winrt::to_hstring(_("Prevent the computer from sleeping while downloads are running")));
         TglPreventSuspend().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglPreventSuspend().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowHistoryLength().Title(winrt::to_hstring(_("Download History Length")));
-        RowHistoryLength().Description(winrt::to_hstring(_("The amount of time to keep past downloads in the app's history.")));
+        RowHistoryLength().Description(winrt::to_hstring(_("The amount of time to keep past downloads in the app's history")));
         CmbHistoryLength().Items().Append(winrt::box_value(winrt::to_hstring(_("Never"))));
         CmbHistoryLength().Items().Append(winrt::box_value(winrt::to_hstring(_("One Day"))));
         CmbHistoryLength().Items().Append(winrt::box_value(winrt::to_hstring(_("One Week"))));
@@ -51,22 +53,22 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         TglOverwriteExistingFiles().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglOverwriteExistingFiles().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowIncludeMediaId().Title(winrt::to_hstring(_("Include Media Id in Title")));
-        RowIncludeMediaId().Description(winrt::to_hstring(_("Parabolic will include the media's id in its default title.")));
+        RowIncludeMediaId().Description(winrt::to_hstring(_("Add the media's id to its default title")));
         TglIncludeMediaId().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglIncludeMediaId().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowIncludeAutoSubtitles().Title(winrt::to_hstring(_("Include Auto-Generated Subtitles")));
-        RowIncludeAutoSubtitles().Description(winrt::to_hstring(_("Parabolic will present auto-generated subtitles to download in addition to available subtitles.")));
+        RowIncludeAutoSubtitles().Description(winrt::to_hstring(_("Show auto-generated subtitles to download in addition to available subtitles")));
         TglIncludeAutoSubtitles().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglIncludeAutoSubtitles().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowPreferredVideoCodec().Title(winrt::to_hstring(_("Preferred Video Codec")));
-        RowPreferredVideoCodec().Description(winrt::to_hstring(_("The video codec Parabolic should prefer when parsing media formats to download.")));
+        RowPreferredVideoCodec().Description(winrt::to_hstring(_("Prefer this codec when parsing video formats to show available to download")));
         CmbPreferredVideoCodec().Items().Append(winrt::box_value(winrt::to_hstring(_("Any"))));
         CmbPreferredVideoCodec().Items().Append(winrt::box_value(L"VP9"));
         CmbPreferredVideoCodec().Items().Append(winrt::box_value(L"AV1"));
         CmbPreferredVideoCodec().Items().Append(winrt::box_value(winrt::to_hstring(_("H.264 (AVC)"))));
         CmbPreferredVideoCodec().Items().Append(winrt::box_value(winrt::to_hstring(_("H.265 (HEVC)"))));
         RowPreferredAudioCodec().Title(winrt::to_hstring(_("Preferred Audio Codec")));
-        RowPreferredAudioCodec().Description(winrt::to_hstring(_("The audio codec Parabolic should prefer when parsing media formats to download.")));
+        RowPreferredAudioCodec().Description(winrt::to_hstring(_("Prefer this codec when parsing audio formats to show available to download")));
         CmbPreferredAudioCodec().Items().Append(winrt::box_value(winrt::to_hstring(_("Any"))));
         CmbPreferredAudioCodec().Items().Append(winrt::box_value(winrt::to_hstring(_("FLAC (ALAC)"))));
         CmbPreferredAudioCodec().Items().Append(winrt::box_value(winrt::to_hstring(_("WAV (AIFF)"))));
@@ -75,18 +77,18 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         CmbPreferredAudioCodec().Items().Append(winrt::box_value(L"MP4A"));
         CmbPreferredAudioCodec().Items().Append(winrt::box_value(L"MP3"));
         RowPreferredSubtitleFormat().Title(winrt::to_hstring(_("Preferred Subtitle Format")));
-        RowPreferredSubtitleFormat().Description(winrt::to_hstring(_("The file format Parabolic should ensure all subtitles are downloaded as.")));
+        RowPreferredSubtitleFormat().Description(winrt::to_hstring(_("Prefer this subtitle file format when downloading")));
         CmbPreferredSubtitleFormat().Items().Append(winrt::box_value(winrt::to_hstring(_("Any"))));
         CmbPreferredSubtitleFormat().Items().Append(winrt::box_value(L"VTT"));
         CmbPreferredSubtitleFormat().Items().Append(winrt::box_value(L"SRT"));
         CmbPreferredSubtitleFormat().Items().Append(winrt::box_value(L"ASS"));
         CmbPreferredSubtitleFormat().Items().Append(winrt::box_value(L"LRC"));
         RowUsePartFiles().Title(winrt::to_hstring(_("Use Part Files")));
-        RowUsePartFiles().Description(winrt::to_hstring(_("Parabolic will download media in separate .part files instead of directly into the output file.")));
+        RowUsePartFiles().Description(winrt::to_hstring(_("Download media in separate .part files instead of directly into the output file")));
         TglUsePartFiles().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglUsePartFiles().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowUseSponsorBlock().Title(winrt::to_hstring(_("Use SponsorBlock for YouTube")));
-        RowUseSponsorBlock().Description(winrt::to_hstring(_("Parabolic will attempt to remove sponsored segments from YouTube videos.")));
+        RowUseSponsorBlock().Description(winrt::to_hstring(_("Try to remove sponsored segments from videos")));
         TglUseSponsorBlock().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglUseSponsorBlock().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowLimitSpeed().Title(winrt::to_hstring(_("Limit Download Speed")));
@@ -112,39 +114,39 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         ToolTipService::SetToolTip(BtnClearCookiesFile(), winrt::box_value(winrt::to_hstring(_("Clear Cookies File"))));
         LblAria().Text(winrt::to_hstring(_("aria2c")));
         RowUseAria().Title(winrt::to_hstring(_("Use aria2c")));
-        RowUseAria().Description(winrt::to_hstring(_("Parabolic will use aria2c instead of yt-dlp's native downloader.")));
+        RowUseAria().Description(winrt::to_hstring(_("Use aria2c instead of yt-dlp's native downloader")));
         TglUseAria().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglUseAria().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowMaxConnectionsPerServer().Title(winrt::to_hstring(_("Max Connections Per Server (-x)")));
         RowMinimumSplitSize().Title(winrt::to_hstring(_("Minimum Split Size (-k)")));
-        RowMinimumSplitSize().Description(winrt::to_hstring(_("The minimum size of which to split a file (in MiB).")));
+        RowMinimumSplitSize().Description(winrt::to_hstring(_("The minimum size of which to split a file (in MiB)")));
         RowEmbedMetadata().Title(winrt::to_hstring(_("Embed Metadata")));
         TglEmbedMetadata().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglEmbedMetadata().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowRemoveSourceData().Title(winrt::to_hstring(_("Remove Source Data")));
-        RowRemoveSourceData().Description(winrt::to_hstring(_("Parabolic will clear metadata fields containing identifying download information.")));
+        RowRemoveSourceData().Description(winrt::to_hstring(_("Clear metadata fields containing identifying download information")));
         TglRemoveSourceData().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglRemoveSourceData().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowEmbedThumbnails().Title(winrt::to_hstring(_("Embed Thumbnails")));
-        RowEmbedThumbnails().Description(winrt::to_hstring(_("If the file type does not support embedding, the thumbnail will be written to a separate image file.")));
+        RowEmbedThumbnails().Description(winrt::to_hstring(_("If the file type does not support embedding, the thumbnail will be written to a separate image file")));
         TglEmbedThumbnails().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglEmbedThumbnails().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowCropAudioThumbnails().Title(winrt::to_hstring(_("Crop Audio Thumbnails")));
-        RowCropAudioThumbnails().Description(winrt::to_hstring(_("Parabolic will crop thumbnails of audio files to squares.")));
+        RowCropAudioThumbnails().Description(winrt::to_hstring(_("Crop thumbnails of audio files to squares")));
         TglCropAudioThumbnails().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglCropAudioThumbnails().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowEmbedChapters().Title(winrt::to_hstring(_("Embed Chapters")));
         TglEmbedChapters().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglEmbedChapters().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowEmbedSubtitles().Title(winrt::to_hstring(_("Embed Subtitles")));
-        RowEmbedSubtitles().Description(winrt::to_hstring(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.")));
+        RowEmbedSubtitles().Description(winrt::to_hstring(_("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files")));
         TglEmbedSubtitles().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglEmbedSubtitles().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         LblPostprocessing().Text(winrt::to_hstring(_("Postprocessing")));
         RowFfmpegThreads().Title(winrt::to_hstring(_("FFmpeg Threads")));
-        RowFfmpegThreads().Description(winrt::to_hstring(_("Parabolic will limit the number of threads used by ffmpeg.")));
+        RowFfmpegThreads().Description(winrt::to_hstring(_("Limit the number of threads used by ffmpeg")));
         RowPostprocessingArguments().Title(winrt::to_hstring(_("Arguments")));
-        RowPostprocessingArguments().Description(winrt::to_hstring(_("Parabolic will show these arguments below for selection in the add download dialog.")));
+        RowPostprocessingArguments().Description(winrt::to_hstring(_("Arguments will be shown for selection in the add download dialog")));
         LblPostprocessingArgumentsAdd().Text(winrt::to_hstring(_("Add")));
     }
 
@@ -154,6 +156,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         //Load
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         CmbTheme().SelectedIndex(static_cast<int>(m_controller->getTheme()));
+        for(const std::string& language : m_controller->getAvailableTranslationLanguages())
+        {
+            Windows::Foundation::IInspectable item{ winrt::box_value(winrt::to_hstring(language)) };
+            CmbLanguage().Items().Append(item);
+            if(language == m_controller->getTranslationLanguage())
+            {
+                CmbLanguage().SelectedItem(item);
+            }
+        }
         TglUpdates().IsOn(m_controller->getAutomaticallyCheckForUpdates());
         TglPreventSuspend().IsOn(m_controller->getPreventSuspend());
         CmbHistoryLength().SelectedIndex(static_cast<int>(m_controller->getHistoryLengthIndex()));
@@ -477,6 +488,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setTheme(static_cast<Theme>(CmbTheme().SelectedIndex()));
+        m_controller->setTranslationLanguage(winrt::to_string(CmbLanguage().SelectedItem().as<winrt::hstring>()));
         m_controller->setAutomaticallyCheckForUpdates(TglUpdates().IsOn());
         m_controller->setPreventSuspend(TglPreventSuspend().IsOn());
         m_controller->setHistoryLengthIndex(CmbHistoryLength().SelectedIndex());

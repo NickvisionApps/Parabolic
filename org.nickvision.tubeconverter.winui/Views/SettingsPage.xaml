@@ -52,6 +52,12 @@
                             </controls:SettingsRow.Child>
                         </controls:SettingsRow>
 
+                        <controls:SettingsRow x:Name="RowLanguage" Glyph="&#xF2B7;">
+                            <controls:SettingsRow.Child>
+                                <ComboBox x:Name="CmbLanguage" SelectionChanged="OnCmbChanged"/>
+                            </controls:SettingsRow.Child>
+                        </controls:SettingsRow>
+
                         <controls:SettingsRow x:Name="RowUpdates" Glyph="&#xE117;">
                             <controls:SettingsRow.Child>
                                 <ToggleSwitch x:Name="TglUpdates" Toggled="OnSwitchToggled"/>

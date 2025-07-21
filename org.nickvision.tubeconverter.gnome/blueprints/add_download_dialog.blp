@@ -14,9 +14,30 @@ Adw.Dialog root {
 
       [start]
       Gtk.Button backButton {
-        icon-name: "left-symbolic";
+        icon-name: "go-previous-symbolic";
         visible: false;
         tooltip-text: _("Back");
+      }
+    }
+
+    [bottom]
+    Gtk.ActionBar subtitlesSingleActionBar {
+      visible: false;
+
+      [start]
+      Gtk.Button selectAllSubtitlesSingleButton {
+        Adw.ButtonContent {
+          icon-name: "edit-select-all-symbolic";
+          label: _("Select All");
+        }
+      }
+
+      [end]
+      Gtk.Button deselectAllSubtitlesSingleButton {
+        Adw.ButtonContent {
+          icon-name: "edit-select-none-symbolic";
+          label: _("Deselect All");
+        }
       }
     }
 
@@ -144,7 +165,7 @@ Adw.Dialog root {
               [suffix]
               Gtk.Image subtitlesSingleImage {
                 valign: center;
-                icon-name: "right-symbolic";
+                icon-name: "go-next-symbolic";
               }
             }
 
@@ -155,7 +176,7 @@ Adw.Dialog root {
               [suffix]
               Gtk.Image advancedOptionsSingleImage {
                 valign: center;
-                icon-name: "right-symbolic";
+                icon-name: "go-next-symbolic";
               }
             }
           }
@@ -202,41 +223,17 @@ Adw.Dialog root {
 
       Adw.ViewStackPage {
         name: "download-single-subtitles";
-        child: Gtk.Box {
-          orientation: vertical;
-          spacing: 12;
-          margin-start: 16;
-          margin-end: 16;
-          margin-bottom: 16;
-
-          Gtk.Box {
-            orientation: horizontal;
-            halign: center;
-
-            Gtk.Button selectAllSubtitlesSingleButton {
-              Adw.ButtonContent {
-                icon-name: "edit-select-all-symbolic";
-                label: _("Select All");
-              }
-            }
-
-            Gtk.Button deselectAllSubtitlesSingleButton {
-              Adw.ButtonContent {
-                icon-name: "edit-select-none-symbolic";
-                label: _("Deselect All");
-              }
-            }
-
-            styles [ "linked" ]
-          }
-
-          Gtk.ScrolledWindow {
-            hexpand: true;
-            vexpand: true;
-            min-content-width: 328;
-            min-content-height: 400;
-            child: Adw.PreferencesGroup subtitlesSingleGroup { };
-          }
+        child: Gtk.ScrolledWindow {
+          hexpand: true;
+          vexpand: true;
+          min-content-width: 328;
+          min-content-height: 400;
+          child: Adw.PreferencesGroup subtitlesSingleGroup {
+            margin-start: 16;
+            margin-top: 6;
+            margin-end: 16;
+            margin-bottom: 16;
+          };
         };
       }
 
@@ -385,7 +382,7 @@ Adw.Dialog root {
               [suffix]
               Gtk.Image itemsPlaylistImage {
                 valign: center;
-                icon-name: "right-symbolic";
+                icon-name: "go-next-symbolic";
               }
             }
           }

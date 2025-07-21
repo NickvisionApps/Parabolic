@@ -158,7 +158,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(info.showDisclaimer())
         {
             TextBlock txt;
-            txt.Text(winrt::to_hstring(_("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.")));
+            txt.Text(winrt::to_hstring(_("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws.")));
             txt.TextWrapping(TextWrapping::WrapWholeWords);
             CheckBox chk;
             chk.Content(winrt::box_value(winrt::to_hstring(_("Don't show this message again"))));
@@ -168,9 +168,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             panel.Children().Append(txt);
             panel.Children().Append(chk);
             ContentDialog dialog;
-            dialog.Title(winrt::box_value(winrt::to_hstring(_("Disclaimer"))));
+            dialog.Title(winrt::box_value(winrt::to_hstring(_("Legal Copyright Disclaimer"))));
             dialog.Content(panel);
-            dialog.CloseButtonText(winrt::to_hstring(_("OK")));
+            dialog.CloseButtonText(winrt::to_hstring(_("I understand")));
             dialog.DefaultButton(ContentDialogButton::Close);
             dialog.RequestedTheme(MainGrid().RequestedTheme());
             dialog.XamlRoot(MainGrid().XamlRoot());
@@ -181,9 +181,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             ContentDialog dialog;
             dialog.Title(winrt::box_value(winrt::to_hstring(_("Recover Crashed Downloads?"))));
-            dialog.Content(winrt::box_value(winrt::to_hstring(_("There are downloads available to recover from when Parabolic crashed. Would you like to recover them?"))));
-            dialog.PrimaryButtonText(winrt::to_hstring(_("Yes")));
-            dialog.CloseButtonText(winrt::to_hstring(_("No")));
+            dialog.Content(winrt::box_value(winrt::to_hstring(_("There are downloads available to recover from when Parabolic crashed. Parabolic will try to download them again."))));
+            dialog.PrimaryButtonText(winrt::to_hstring(_("Recover")));
+            dialog.CloseButtonText(winrt::to_hstring(_("Cancel")));
             dialog.DefaultButton(ContentDialogButton::Primary);
             dialog.RequestedTheme(MainGrid().RequestedTheme());
             dialog.XamlRoot(MainGrid().XamlRoot());
@@ -211,9 +211,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             args.Cancel(true);
             ContentDialog dialog;
             dialog.Title(winrt::box_value(winrt::to_hstring(m_controller->getAppInfo().getShortName())));
-            dialog.Content(winrt::box_value(winrt::to_hstring(_("There are downloads in progress. Are you sure you want to exit?"))));
-            dialog.PrimaryButtonText(winrt::to_hstring(_("Yes")));
-            dialog.CloseButtonText(winrt::to_hstring(_("No")));
+            dialog.Content(winrt::box_value(winrt::to_hstring(_("There are downloads in progress. Exiting will stop all downloads."))));
+            dialog.PrimaryButtonText(winrt::to_hstring(_("Exit")));
+            dialog.CloseButtonText(winrt::to_hstring(_("Cancel")));
             dialog.DefaultButton(ContentDialogButton::Primary);
             dialog.RequestedTheme(MainGrid().RequestedTheme());
             dialog.XamlRoot(MainGrid().XamlRoot());

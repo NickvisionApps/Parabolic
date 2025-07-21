@@ -16,7 +16,7 @@ Adw.ApplicationWindow root {
 
   Adw.Breakpoint breakpoint {
     condition ("max-width: 400sp")
-    
+
     setters {
       navView.collapsed: true;
     }
@@ -32,7 +32,7 @@ Adw.ApplicationWindow root {
         [top]
         Adw.HeaderBar {
           title-widget: Adw.WindowTitle title {};
-      
+
           [start]
           Gtk.Button {
             icon-name: "list-add-symbolic";
@@ -281,14 +281,14 @@ Adw.ApplicationWindow root {
 
                   styles ["pill", "suggested-action"]
                 };
-                
+
                 styles ["icon-dropshadow"]
               };
             }
 
             Adw.ViewStackPage {
               name: "keyring";
-              child: Adw.Bin binKeyring { 
+              child: Adw.Bin binKeyring {
                 hexpand: true;
                 vexpand: true;
               };
@@ -308,10 +308,11 @@ Adw.ApplicationWindow root {
                 Adw.ViewStackPage {
                   name: "history";
                   child: Gtk.ScrolledWindow {
-                    margin-top: 6;
                     child: Adw.Clamp {
                       maximum-size: 600;
-                      child: Adw.PreferencesGroup historyGroup { };
+                      child: Adw.PreferencesGroup historyGroup {
+                        margin-top: 6;
+                      };
                     };
                   };
                 }
