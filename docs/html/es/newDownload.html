@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Si se encuentra una URL válida en el portapapeles al abrir el cuadro de diálogo Añadir descarga, la URL se pegará automáticamente en la fila de entrada de URL.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Use Batch File</dt>
+<dt class="terms">Usar archivo por lotes</dt>
 <dd class="terms">
-<p class="p">Select a batch text file that contains a list of URLs to validate.</p>
-<p class="p">Each URL can be accompanied by an optional save folder (delimited by <span class="code">|</span>) in which to save each media of the URL to.</p>
-<p class="p">All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-<p class="p">The optional save folder must be an absolute path.</p>
+<p class="p">Seleccione un archivo de texto por lotes que contenga una lista de URL para validar.</p>
+<p class="p">Cada URL puede ir acompañada de una carpeta de almacenamiento opcional (delimitada por <span class="code">|</span>) en la que guardar cada medio de la URL.</p>
+<p class="p">Parabolic agrupará y tratará como una única lista de reproducción todas las URL y sus archivos multimedia del archivo por lotes.</p>
+<p class="p">La carpeta de guardado opcional debe ser una ruta absoluta.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">Batch File Format:</p>
+<p class="p">Formato de archivo por lotes:</p>
 <p class="p"><span class="code">URL1</span></p>
-<p class="p"><span class="code">URL2 | "Folder1"</span></p>
-<p class="p"><span class="code">"URL3"|"Folder2"</span></p>
-<p class="p"><span class="code">"URL4"</span></p>
+<p class="p"><span class="code">URL2 | «Carpeta1»</span></p>
+<p class="p"><span class="code">«URL3»|«Carpeta2»</span></p>
+<p class="p"><span class="code">«URL4»</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </div></div></div>
 </div>
 </dd>
-<dt class="terms">Download Immediately</dt>
+<dt class="terms">Descargar inmediatamente</dt>
 <dd class="terms">
-<p class="p">Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+<p class="p">Parabolic descargará inmediatamente los medios después de la validación, usando las opciones de descarga previamente configuradas.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Al seleccionar los tipos de archivo <span class="code"> Video (Genérico) </span> o <span class="code"> Audio (Genérico) </span>, Parabolic descargará el contenido multimedia en el tipo de archivo original del mismo sin realizar ninguna conversión.</p>
-<p class="p">Generic file types do not fully support embedding thumbnails and subtitles. Separate files may be written to disk if embedding is not supported.</p>
+<p class="p">Los tipos de archivo genéricos no admiten totalmente la incrustación de miniaturas y subtítulos. Se pueden escribir archivos separados en el disco si no se admite la incrustación.</p>
 </div></div></div>
 </div>
 </dd>
@@ -164,10 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">bv*</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wv*</span></p>
+<p class="p">Los siguientes son formatos especiales usados por Parabolic para coincidir con comportamientos <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Ninguno</span> = Ninguna opción pasada a <span class="code">yt-dlp</span></p>
+<p class="p">- <span class="code">Mejor</span> = <span class="code">bv*</span></p>
+<p class="p">- <span class="code">Peor</span> = <span class="code">wv*</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -198,10 +198,10 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">ba</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wa</span></p>
+<p class="p">Los siguientes son formatos especiales usados por Parabolic para coincidir con comportamientos <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">Ninguno</span> = Ninguna opción pasada a <span class="code">yt-dlp</span></p>
+<p class="p">- <span class="code">Mejor</span> = <span class="code">ba</span></p>
+<p class="p">- <span class="code">Peor</span> = <span class="code">wa</span></p>
 </div></div></div>
 </div>
 </dd>
@@ -241,30 +241,30 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Exclude from History</dt>
-<dd class="terms"><p class="p">If enabled, Parabolic will exclude the download from the list of historic downloads.</p></dd>
-<dt class="terms">Post Processor Argument</dt>
+<dt class="terms">Excluir del historial</dt>
+<dd class="terms"><p class="p">Si se activa, Parabolic excluirá la descarga de la lista de descargas históricas.</p></dd>
+<dt class="terms">Argumento postprocesador</dt>
 <dd class="terms">
-<p class="p">An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <span class="link"><a href="converter.html" title="Conversor">preferences</a></span>.</p>
+<p class="p">Un argumento para pasar al postprocesador durante la descarga. Los argumentos de posprocesamiento disponibles pueden configurarse en <span class="link"><a href="converter.html" title="Conversor">preferencias</a></span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously selected argument will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">El argumento seleccionado previamente será recordado y preseleccionado para la siguiente descarga.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Write M3U Playlist File</dt>
+<dt class="terms">Escribir archivo de lista de reproducción M3U</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will write a m3u file for the playlist download.</p>
+<p class="p">Si se activa, Parabolic escribirá un archivo m3u para la descarga de la lista de reproducción.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next playlist download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">El estado usado anteriormente será recordado y preseleccionado para la próxima descarga de la lista de reproducción.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Duración</dt>

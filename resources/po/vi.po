@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 22:36-0400\n"
+"POT-Creation-Date: 2025-07-21 22:10-0400\n"
 "PO-Revision-Date: 2025-07-02 05:01+0000\n"
 "Last-Translator: Jack74593 <jack74593@outlook.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -104,11 +104,13 @@ msgstr "Không"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "Lỗi xác thực tải xuống: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Lỗi thêm nội dung tải xuống: {}"
 
@@ -164,12 +166,13 @@ msgid "Unable to download and install update"
 msgstr "Không thể tải và cài đặt bản cập nhật."
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:293
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Thử lại các lượt tải xuống thất bại"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "Lỗi hồi phục lại các tệp tải xuống: {}"
 
@@ -178,7 +181,7 @@ msgid "Download Finished"
 msgstr "Đã tải xong"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" đã tải xong."
 
@@ -194,6 +197,7 @@ msgid "Download Finished With Error"
 msgstr "Đã tải xong, có lỗi"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:332
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" đã tải xong nhưng bị lỗi"
 
@@ -210,22 +214,22 @@ msgid "0 B/s"
 msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -248,22 +252,22 @@ msgid "Audio Description"
 msgstr "Mô tả âm thanh"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{0:f1} B/s"
 
@@ -283,9 +287,9 @@ msgstr "Tự tạo"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:279
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:334
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:374
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:414
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:332
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:372
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:412
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:101
@@ -435,7 +439,7 @@ msgstr "Tên tệp"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:208
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:442
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:444
 msgid "Revert to Title"
 msgstr "Đổi về tiêu đề"
 
@@ -746,19 +750,19 @@ msgstr "Thêm một liên kết đến video, audio, hoặc playlist để bắt
 msgid "No History Available"
 msgstr "Không có lịch sử"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:331
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:329
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:107
 #, fuzzy
 msgid "No Downloads Running"
 msgstr "Không có tải xuống nào đang chạy"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:371
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:369
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
 #, fuzzy
 msgid "No Downloads Queued"
 msgstr "Không có tải xuống nào đang chạy"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:411
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:409
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 #, fuzzy
 msgid "No Downloads Completed"
@@ -1276,6 +1280,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1351,11 +1356,12 @@ msgid "No Subtitles Available"
 msgstr "Đã ra bản cập nhật mới."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} trên {1} lượt"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1521,7 +1527,7 @@ msgstr ""
 msgid "Download Again"
 msgstr "Tải lại"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:514
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:95
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
@@ -1732,6 +1738,7 @@ msgid "Use manual credentials"
 msgstr "Sử dụng chứng chỉ thủ công"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 

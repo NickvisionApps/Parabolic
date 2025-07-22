@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 22:36-0400\n"
+"POT-Creation-Date: 2025-07-21 22:10-0400\n"
 "PO-Revision-Date: 2025-01-04 12:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -96,11 +96,13 @@ msgstr "Geen"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -152,13 +154,14 @@ msgid "Unable to download and install update"
 msgstr "Kan update niet downloaden en installeren"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:293
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Mislukte downloads opnieuw proberen"
 msgstr[1] "Mislukte downloads opnieuw proberen"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -167,7 +170,7 @@ msgid "Download Finished"
 msgstr "Download voltooid"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "‘{0}’ is klaar met downloaden"
 
@@ -182,7 +185,7 @@ msgid "Download Finished With Error"
 msgstr "Download voltooid met fouten"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:332
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "‘{0}’ is voltooid met een fout!"
 
@@ -198,18 +201,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -232,22 +239,22 @@ msgid "Audio Description"
 msgstr "Audio­beschrĳving"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -266,9 +273,9 @@ msgstr "Automatisch gegenereerd"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:279
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:334
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:374
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:414
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:332
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:372
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:412
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:101
@@ -415,7 +422,7 @@ msgstr "Bestandsnaam"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:208
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:442
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:444
 msgid "Revert to Title"
 msgstr ""
 
@@ -723,17 +730,17 @@ msgstr ""
 msgid "No History Available"
 msgstr "Geen geschiedenis beschikbaar"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:331
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:329
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:107
 msgid "No Downloads Running"
 msgstr "Geen actieve downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:371
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:369
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
 msgid "No Downloads Queued"
 msgstr "Geen downloads in wacht­rĳ"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:411
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:409
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 msgid "No Downloads Completed"
 msgstr "Geen voltooide downloads"
@@ -1233,6 +1240,7 @@ msgstr "Bezig"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1307,10 +1315,12 @@ msgid "No Subtitles Available"
 msgstr "Geen onder­titels beschikbaar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} items"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1473,7 +1483,7 @@ msgstr ""
 msgid "Download Again"
 msgstr "Opnieuw downloaden"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:514
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:95
 msgid "GitHub Repo"
 msgstr "GitHub-repo"
@@ -1682,6 +1692,7 @@ msgid "Use manual credentials"
 msgstr "Handmatige inloggegevens gebruiken"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 

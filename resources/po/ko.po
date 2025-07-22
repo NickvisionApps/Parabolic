@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 22:36-0400\n"
+"POT-Creation-Date: 2025-07-21 22:10-0400\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -96,11 +96,13 @@ msgstr "없음"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -152,11 +154,13 @@ msgid "Unable to download and install update"
 msgstr "업데이트를 다운로드하고 설치할 수 없습니다"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:293
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "다운로드 {} 개가 복구됨"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -165,6 +169,7 @@ msgid "Download Finished"
 msgstr "다운로드 완료"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{}의 다운로드가 완료되었습니다"
 
@@ -179,6 +184,7 @@ msgid "Download Finished With Error"
 msgstr "다운로드가 실패했습니다"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:332
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{}의 작업이 오류로 종료되었습니다"
 
@@ -194,18 +200,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/초"
 
@@ -228,22 +238,22 @@ msgid "Audio Description"
 msgstr "오디오 설명"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/초"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/초"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/초"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/초"
 
@@ -262,9 +272,9 @@ msgstr "자동 생성됨"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:279
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:334
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:374
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:414
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:332
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:372
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:412
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:101
@@ -411,7 +421,7 @@ msgstr "파일 이름"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:208
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:442
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:444
 msgid "Revert to Title"
 msgstr "제목으로 되돌리기"
 
@@ -715,17 +725,17 @@ msgstr "다운로드를 시작하려면 비디오, 오디오 또는 재생 목�
 msgid "No History Available"
 msgstr "기록이 없습니다"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:331
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:329
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:107
 msgid "No Downloads Running"
 msgstr "다운로드가 진행 중이지 않음"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:371
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:369
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
 msgid "No Downloads Queued"
 msgstr "대기 중인 다운로드 없음"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:411
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:409
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 msgid "No Downloads Completed"
 msgstr "완료된 다운로드 없음"
@@ -1226,6 +1236,7 @@ msgstr "실행 중"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1302,10 +1313,12 @@ msgid "No Subtitles Available"
 msgstr "사용 가능한 자막이 없습니다"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} 항목"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1471,7 +1484,7 @@ msgstr ""
 msgid "Download Again"
 msgstr "다시 다운로드"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:514
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:95
 msgid "GitHub Repo"
 msgstr "GitHub 저장소"
@@ -1677,6 +1690,7 @@ msgid "Use manual credentials"
 msgstr "수동 자격 증명 사용"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{}는 다운로드를 위한 자격 증명이 필요합니다. 사용할 자격 증명을 선택하거나 입"

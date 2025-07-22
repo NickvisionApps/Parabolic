@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 22:36-0400\n"
+"POT-Creation-Date: 2025-07-21 22:10-0400\n"
 "PO-Revision-Date: 2025-07-11 20:01+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -96,11 +96,13 @@ msgstr "Nincs"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "Hiba történt elemzés közben: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Hiba történt letöltés közben: {}"
 
@@ -152,12 +154,14 @@ msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:293
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} letöltés helyreállítva"
 msgstr[1] "{} letöltés helyreállítva"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "Hiba történt helyreállítás során: {}"
 
@@ -166,6 +170,7 @@ msgid "Download Finished"
 msgstr "Letöltés befejeződött"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "A(z) „{}” letöltése befejeződött"
 
@@ -180,6 +185,7 @@ msgid "Download Finished With Error"
 msgstr "Hiba történt letöltés közben"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:332
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "A(z) „{}” letöltése során hiba történt"
 
@@ -195,18 +201,22 @@ msgid "0 B/s"
 msgstr "0 B/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} kiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/mp"
 
@@ -229,18 +239,22 @@ msgid "Audio Description"
 msgstr "Hangos leírás"
 
 #: libparabolic/src/models/format.cpp:352
+#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB"
 
 #: libparabolic/src/models/format.cpp:356
+#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB"
 
 #: libparabolic/src/models/format.cpp:360
+#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} kiB"
 
 #: libparabolic/src/models/format.cpp:364
+#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B"
 
@@ -259,9 +273,9 @@ msgstr "Automatikusan létrehozott"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:279
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:334
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:374
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:414
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:332
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:372
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:412
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:101
@@ -412,7 +426,7 @@ msgstr "Fájlnév"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:208
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:442
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:444
 msgid "Revert to Title"
 msgstr "Visszavonás"
 
@@ -717,17 +731,17 @@ msgstr "Kezdéshez adja hozzá a letölteni kívánt tartalom hivatkozását"
 msgid "No History Available"
 msgstr "Nincsenek előzmények"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:331
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:329
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:107
 msgid "No Downloads Running"
 msgstr "Nincs folyamatban letöltés"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:371
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:369
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
 msgid "No Downloads Queued"
 msgstr "Nincs sorban álló letöltés"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:411
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:409
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 msgid "No Downloads Completed"
 msgstr "Nincs befejezett letöltés"
@@ -1241,6 +1255,7 @@ msgstr "Fut"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Hátralévő idő: {}"
 
@@ -1316,10 +1331,12 @@ msgid "No Subtitles Available"
 msgstr "Nincs felirat"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} elem"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1484,7 +1501,7 @@ msgstr "Rendben"
 msgid "Download Again"
 msgstr "Letöltés ismét"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:514
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:95
 msgid "GitHub Repo"
 msgstr "GitHub tároló"
@@ -1685,6 +1702,7 @@ msgid "Use manual credentials"
 msgstr "Bejelentkezés másként"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "A(z) {} letöltéséhez bejelentkezés szükséges. Kérem, jelentkezzen be, vagy "

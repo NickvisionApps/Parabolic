@@ -14,17 +14,17 @@
             <ColumnDefinition x:Name="TitleColumn" Width="Auto"/>
             <ColumnDefinition x:Name="SubtitleColumn" Width="Auto"/>
             <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
-            <ColumnDefinition x:Name="SearchColumn" Width="4*"/>
+            <ColumnDefinition x:Name="SearchColumn" Width="4*" MinWidth="220"/>
             <ColumnDefinition x:Name="RightDragColumn" Width="*" MinWidth="48"/>
             <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
         </Grid.ColumnDefinitions>
 
         <Image x:Name="ImgIcon" Grid.Column="1" VerticalAlignment="Center" Margin="8,0,4,0" Width="18" Height="18" Source="../resources/icon.ico"/>
 
-        <TextBlock x:Name="LblTitle" Grid.Column="2" VerticalAlignment="Center" Margin="4,0,0,0" Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Title, Mode=OneWay}"/>
+        <TextBlock x:Name="LblTitle" Grid.Column="2" VerticalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Title, Mode=OneWay}"/>
 
         <TextBlock x:Name="LblSubtitle" Grid.Column="3" VerticalAlignment="Center" Margin="12,0,0,0" Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Subtitle, Mode=OneWay}" Foreground="Gray"/>
 
-        <AutoSuggestBox x:Name="AsbSearch" Grid.Column="5" QueryIcon="Find" VerticalAlignment="Center" MaxWidth="400" Visibility="{x:Bind SearchVisibility, Mode=OneWay}" TextChanged="OnSearchTextChanged" SuggestionChosen="OnSearchSuggestionChosen"/>
+        <AutoSuggestBox x:Name="AsbSearch" Grid.Column="5" QueryIcon="Find" VerticalAlignment="Center" Margin="0,0,16,0" MaxWidth="400" Visibility="{x:Bind SearchVisibility, Mode=OneWay}" TextChanged="OnSearchTextChanged" SuggestionChosen="OnSearchSuggestionChosen"/>
     </Grid>
 </UserControl>

@@ -321,121 +321,121 @@ Adw.ApplicationWindow root {
 
             Adw.ViewStackPage {
               name: "downloading";
-              child: Adw.Clamp {
-                maximum-size: 600;
-                child: Adw.ViewStack downloadingViewStack {
-                  Adw.ViewStackPage {
-                    name: "no-downloading";
-                    child: Adw.StatusPage {
-                      icon-name: "folder-download-symbolic";
-                      title: _("No Downloads Running");
-                      child: Gtk.Button {
-                        halign: center;
-                        label: _("Add Download");
-                        action-name: "win.addDownload";
+              child: Adw.ViewStack downloadingViewStack {
+                Adw.ViewStackPage {
+                  name: "no-downloading";
+                  child: Adw.StatusPage {
+                    icon-name: "folder-download-symbolic";
+                    title: _("No Downloads Running");
+                    child: Gtk.Button {
+                      halign: center;
+                      label: _("Add Download");
+                      action-name: "win.addDownload";
 
-                        styles ["pill", "suggested-action"]
-                      };
+                      styles ["pill", "suggested-action"]
                     };
-                  }
+                  };
+                }
 
-                  Adw.ViewStackPage {
-                    name: "downloading";
-                    child: Gtk.ScrolledWindow {
-                      child: Gtk.Box listDownloading {
-                        orientation: vertical;
+                Adw.ViewStackPage {
+                  name: "downloading";
+                  child: Gtk.ScrolledWindow {
+                    child: Adw.Clamp {
+                      maximum-size: 600;
+                      child: Gtk.ListBox listDownloading {
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
                         margin-top: 6;
                         margin-end: 12;
-                        spacing: 6;
+                        margin-bottom: 6;
+                        selection-mode: none;
 
-                        styles [ "card" ]
+                        styles [ "boxed-list" ]
                       };
                     };
-                  }
-                };
+                  };
+                }
               };
             }
 
             Adw.ViewStackPage {
               name: "queued";
-              child: Adw.Clamp {
-                maximum-size: 600;
-                child: Adw.ViewStack queuedViewStack {
-                  Adw.ViewStackPage {
-                    name: "no-queued";
-                    child: Adw.StatusPage {
-                      icon-name: "hourglass-symbolic";
-                      title: _("No Downloads Queued");
-                      child: Gtk.Button {
-                        halign: center;
-                        label: _("Add Download");
-                        action-name: "win.addDownload";
+              child: Adw.ViewStack queuedViewStack {
+                Adw.ViewStackPage {
+                  name: "no-queued";
+                  child: Adw.StatusPage {
+                    icon-name: "hourglass-symbolic";
+                    title: _("No Downloads Queued");
+                    child: Gtk.Button {
+                      halign: center;
+                      label: _("Add Download");
+                      action-name: "win.addDownload";
 
-                        styles ["pill", "suggested-action"]
-                      };
+                      styles ["pill", "suggested-action"]
                     };
-                  }
+                  };
+                }
 
-                  Adw.ViewStackPage {
-                    name: "queued";
-                    child: Gtk.ScrolledWindow {
-                      child: Gtk.Box listQueued {
-                        orientation: vertical;
+                Adw.ViewStackPage {
+                  name: "queued";
+                  child: Gtk.ScrolledWindow {
+                    child: Adw.Clamp {
+                      maximum-size: 600;
+                      child: Gtk.ListBox listQueued {
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
                         margin-top: 6;
                         margin-end: 12;
-                        spacing: 6;
+                        margin-bottom: 6;
+                        selection-mode: none;
 
-                        styles [ "card" ]
+                        styles [ "boxed-list" ]
                       };
                     };
-                  }
-                };
+                  };
+                }
               };
             }
 
             Adw.ViewStackPage {
               name: "completed";
-              child: Adw.Clamp {
-                maximum-size: 600;
-                child: Adw.ViewStack completedViewStack {
-                  Adw.ViewStackPage {
-                    name: "no-completed";
-                    child: Adw.StatusPage {
-                      icon-name: "check-round-outline-symbolic";
-                      title: _("No Downloads Completed");
-                      child: Gtk.Button {
-                        halign: center;
-                        label: _("Add Download");
-                        action-name: "win.addDownload";
+              child: Adw.ViewStack completedViewStack {
+                Adw.ViewStackPage {
+                  name: "no-completed";
+                  child: Adw.StatusPage {
+                    icon-name: "check-round-outline-symbolic";
+                    title: _("No Downloads Completed");
+                    child: Gtk.Button {
+                      halign: center;
+                      label: _("Add Download");
+                      action-name: "win.addDownload";
 
-                        styles ["pill", "suggested-action"]
-                      };
+                      styles ["pill", "suggested-action"]
                     };
-                  }
+                  };
+                }
 
-                  Adw.ViewStackPage {
-                    name: "completed";
-                    child: Gtk.ScrolledWindow {
-                      child: Gtk.Box listCompleted {
-                        orientation: vertical;
+                Adw.ViewStackPage {
+                  name: "completed";
+                  child: Gtk.ScrolledWindow {
+                    child: Adw.Clamp {
+                      maximum-size: 600;
+                      child: Gtk.ListBox listCompleted {
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
                         margin-top: 6;
                         margin-end: 12;
-                        spacing: 6;
+                        margin-bottom: 6;
+                        selection-mode: none;
 
-                        styles [ "card" ]
+                        styles [ "boxed-list" ]
                       };
                     };
-                  }
-                };
+                  };
+                }
               };
             }
           };

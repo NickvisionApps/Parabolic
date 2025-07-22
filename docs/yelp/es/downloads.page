@@ -27,7 +27,7 @@
 <terms>
     <item>
         <title>Máximo número de descargas activas</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
+        <p>El número de descargas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
         <p>Si se alcanza el número máximo de descargas activas, Parabolic colocará las descargas nuevas en una cola hasta que se puedan ejecutar más descargas.</p>
         <note style="advanced">
             <p>Predeterminado: 5</p>
@@ -35,7 +35,7 @@
     </item>
     <item>
         <title>Sobreescribir archivos existentes</title>
-        <p>Parabolic will overwrite existing files.</p>
+        <p>Parabolic sobrescribirá los archivos existentes.</p>
         <p>Por ejemplo, si un archivo llamado <code>pelicula.mp4</code> existe en la carpeta de descargas, y se crea una descarga nueva llamada <code>pelicula</code>, <code>pelicula.mp4</code> se sobrescribirá con el contenido de la descarga nueva.</p>
         <note>
             <p>Parabolic detectará las descargas que deban reanudarse y evitará esta configuración al recuperar o reintentar descargas fallidas</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Limitar los caracteres del nombre del archivo</title>
-        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
+        <p>Parabolic restringirá los caracteres de los nombres de archivo a los soportados solo por Windows.</p>
         <p>Esta opción solo está disponible en Linux.</p>
         <note style="advanced">
             <p>Predeterminado: Apagado</p>
@@ -54,33 +54,33 @@
     </item>
     <item>
         <title>Incluir el ID del medio en el título después de la validación</title>
-        <p>Parabolic will include a media's id in its default title.</p>
+        <p>Parabolic incluirá el id de un medio en su título predeterminado.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
         <title>Subtítulos generados automáticamente</title>
-        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
+        <p>Parabolic presentará subtítulos autogenerados para descargar además de los subtítulos disponibles.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
         <title>Códec de vídeo preferido</title>
-        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <p>El códec de vídeo que Parabolic debe preferir al analizar los formatos multimedia para descargar.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+            <p>Si Parabolic no puede encontrar ningún formato con el códec preferido seleccionado, no habrá ningún formato de vídeo disponible para descargar.</p>
         </note>
         <note style="advanced">
             <p>Por defecto: Cualquiera</p>
         </note>
     </item>
     <item>
-        <title>Preferred Audio Codec</title>
-        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Codec de audio preferido</title>
+        <p>El códec de audio que Parabolic debe preferir al analizar los formatos multimedia para descargar.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+            <p>Si Parabolic no puede encontrar ningún formato con el códec preferido seleccionado, no habrá ningún formato de audio disponible para descargar.</p>
         </note>
         <note style="advanced">
             <p>Por defecto: Cualquiera</p>
@@ -88,7 +88,7 @@
     </item>
     <item>
         <title>Formato de subtítulos preferido</title>
-        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
+        <p>El formato de archivo Parabolic debe garantizar que todos los subtítulos se descargan como.</p>
         <note style="advanced">
             <p>Por defecto: Cualquiera</p>
         </note>

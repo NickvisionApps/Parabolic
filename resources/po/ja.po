@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 22:36-0400\n"
+"POT-Creation-Date: 2025-07-21 22:10-0400\n"
 "PO-Revision-Date: 2025-02-23 06:07+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -96,11 +96,13 @@ msgstr "なし"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -153,11 +155,13 @@ msgid "Unable to download and install update"
 msgstr "アップデートをダウンロードしてインストールできません"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:293
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "再試行された {} 個のダウンロード"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -166,6 +170,7 @@ msgid "Download Finished"
 msgstr "ダウンロードが完了"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} はダウンロード完了です"
 
@@ -180,6 +185,7 @@ msgid "Download Finished With Error"
 msgstr "ダウンロードはエラーで終了"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:332
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} のダウンロードはエラーで終了しました"
 
@@ -195,18 +201,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB /毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/毎秒"
 
@@ -229,22 +239,22 @@ msgid "Audio Description"
 msgstr "音声の概要"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB /毎秒"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/毎秒"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/毎秒"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/毎秒"
 
@@ -264,9 +274,9 @@ msgstr "自動生成"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:279
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:334
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:374
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:414
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:332
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:372
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:412
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:43
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:101
@@ -417,7 +427,7 @@ msgstr "ファイル名"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:208
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:230
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:442
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:444
 msgid "Revert to Title"
 msgstr "タイトルを元に戻す"
 
@@ -725,17 +735,17 @@ msgstr "動画、音声、再生リストの URL を追加してダウンロー�
 msgid "No History Available"
 msgstr "表示可能な履歴はありません"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:331
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:329
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:107
 msgid "No Downloads Running"
 msgstr "進行中のダウンロードはありません"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:371
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:369
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
 msgid "No Downloads Queued"
 msgstr "一時停止中のダウンロードはありません"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:411
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:409
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 msgid "No Downloads Completed"
 msgstr "完了済のダウンロードはありません"
@@ -1245,6 +1255,7 @@ msgstr "実行中"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1321,10 +1332,12 @@ msgid "No Subtitles Available"
 msgstr "利用可能な字幕がありません"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} 個のアイテム"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1489,7 +1502,7 @@ msgstr ""
 msgid "Download Again"
 msgstr "もう一度ダウンロード"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:506
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:514
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:95
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
@@ -1699,6 +1712,7 @@ msgid "Use manual credentials"
 msgstr "手動で資格情報を入力する"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} はダウンロードに資格情報を必要とします。使用する資格情報を選択、または入力"
