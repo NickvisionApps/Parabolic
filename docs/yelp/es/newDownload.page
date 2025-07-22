@@ -32,17 +32,17 @@
         </note>
     </item>
     <item>
-        <title>Use Batch File</title>
-        <p>Select a batch text file that contains a list of URLs to validate.</p>
-        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
-        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-        <p>The optional save folder must be an absolute path.</p>
+        <title>Usar archivo por lotes</title>
+        <p>Seleccione un archivo de texto por lotes que contenga una lista de URL para validar.</p>
+        <p>Cada URL puede ir acompañada de una carpeta de almacenamiento opcional (delimitada por <code>|</code>) en la que guardar cada medio de la URL.</p>
+        <p>Parabolic agrupará y tratará como una única lista de reproducción todas las URL y sus archivos multimedia del archivo por lotes.</p>
+        <p>La carpeta de guardado opcional debe ser una ruta absoluta.</p>
         <note style="advanced">
-            <p>Batch File Format:</p>
+            <p>Formato de archivo por lotes:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 | "Folder1"</code></p>
-            <p><code>"URL3"|"Folder2"</code></p>
-            <p><code>"URL4"</code></p>
+            <p><code>URL2 | «Carpeta1»</code></p>
+            <p><code>«URL3»|«Carpeta2»</code></p>
+            <p><code>«URL4»</code></p>
         </note>
     </item>
     <item>
@@ -55,8 +55,8 @@
         </note>
     </item>
     <item>
-        <title>Download Immediately</title>
-        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <title>Descargar inmediatamente</title>
+        <p>Parabolic descargará inmediatamente los medios después de la validación, usando las opciones de descarga previamente configuradas.</p>
         <note style="advanced">
             <p>Predeterminado: Apagado</p>
         </note>
@@ -69,7 +69,7 @@
         </note>
         <note style="advanced">
             <p>Al seleccionar los tipos de archivo <code> Video (Genérico) </code> o <code> Audio (Genérico) </code>, Parabolic descargará el contenido multimedia en el tipo de archivo original del mismo sin realizar ninguna conversión.</p>
-            <p>Generic file types do not fully support embedding thumbnails and subtitles. Separate files may be written to disk if embedding is not supported.</p>
+            <p>Los tipos de archivo genéricos no admiten totalmente la incrustación de miniaturas y subtítulos. Se pueden escribir archivos separados en el disco si no se admite la incrustación.</p>
         </note>
     </item>
     <item>
@@ -81,10 +81,10 @@
             <p>El formato de vídeo usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>bv*</code></p>
-            <p>- <code>Worst</code> = <code>wv*</code></p>
+            <p>Los siguientes son formatos especiales usados por Parabolic para coincidir con comportamientos <code>yt-dlp</code>:</p>
+            <p>- <code>Ninguno</code> = Ninguna opción pasada a <code>yt-dlp</code></p>
+            <p>- <code>Mejor</code> = <code>bv*</code></p>
+            <p>- <code>Peor</code> = <code>wv*</code></p>
         </note>
     </item>
     <item>
@@ -95,10 +95,10 @@
             <p>El formato de audio usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>ba</code></p>
-            <p>- <code>Worst</code> = <code>wa</code></p>
+            <p>Los siguientes son formatos especiales usados por Parabolic para coincidir con comportamientos <code>yt-dlp</code>:</p>
+            <p>- <code>Ninguno</code> = Ninguna opción pasada a <code>yt-dlp</code></p>
+            <p>- <code>Mejor</code> = <code>ba</code></p>
+            <p>- <code>Peor</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
@@ -123,21 +123,21 @@
         </note>
     </item>
     <item>
-        <title>Exclude from History</title>
-        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+        <title>Excluir del historial</title>
+        <p>Si se activa, Parabolic excluirá la descarga de la lista de descargas históricas.</p>
     </item>
     <item>
-        <title>Post Processor Argument</title>
-        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <title>Argumento postprocesador</title>
+        <p>Un argumento para pasar al postprocesador durante la descarga. Los argumentos de posprocesamiento disponibles pueden configurarse en <link xref="converter">preferencias</link>.</p>
         <note>
-            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+            <p>El argumento seleccionado previamente será recordado y preseleccionado para la siguiente descarga.</p>
         </note>
     </item>
     <item>
-        <title>Write M3U Playlist File</title>
-        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <title>Escribir archivo de lista de reproducción M3U</title>
+        <p>Si se activa, Parabolic escribirá un archivo m3u para la descarga de la lista de reproducción.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+            <p>El estado usado anteriormente será recordado y preseleccionado para la próxima descarga de la lista de reproducción.</p>
         </note>
     </item>
     <item>

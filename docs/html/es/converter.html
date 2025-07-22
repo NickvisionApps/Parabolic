@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Incrustar metadatos</dt>
 <dd class="terms">
-<p class="p">Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+<p class="p">Parabolic etiquetará un medio con su información relevante (título, género, etc...) si está disponible.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Eliminar los datos de origen</dt>
 <dd class="terms">
-<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
+<p class="p">Parabolic borrará los campos de metadatos que contengan información identificativa de la descarga.</p>
 <p class="p">Campos que se borran: <span class="code">comment</span>, <span class="code">description</span>, <span class="code">synopsis</span>, <span class="code">purl</span> y <span class="code">handler_name</span> en cada transmisión.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Incrustar miniaturas</dt>
 <dd class="terms">
-<p class="p">Parabolic will embed a media with its thumbnail if available.</p>
+<p class="p">Parabolic incrustará un medio con su miniatura si está disponible.</p>
 <p class="p">Si el tipo de archivo no admite la incrustación, la miniatura se escribirá en un archivo de imagen independiente.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Recortar miniaturas de audio</dt>
 <dd class="terms">
-<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
+<p class="p">Parabolic recortará las miniaturas de los archivos de audio a cuadrados.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Incrustar capítulos</dt>
 <dd class="terms">
-<p class="p">Parabolic will tag a media with its chapter information if available.</p>
+<p class="p">Parabolic etiquetará un medio con la información de su capítulo si está disponible.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Incrustar los subtítulos</dt>
 <dd class="terms">
-<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
-<p class="p">Whether or not embedding is supported if affected by your chosen <span class="code">Preferred Subtitle Format</span>.</p>
+<p class="p">Si se desactiva o si no se admite la incrustación, los subtítulos descargados se guardarán en archivos independientes.</p>
+<p class="p">Si se admite o no la incrustación si se ve afectado por su <span class="code">Formato de subtítulos preferido</span> elegido.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -159,9 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predeterminado: Encendido</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">FFmpeg Threads</dt>
+<dt class="terms">Hilos FFmpeg</dt>
 <dd class="terms">
-<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
+<p class="p">Parabolic limitará el número de hilos usados por <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -179,9 +179,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Por defecto: El número máximo de hilos disponibles en el sistema</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Postprocessing Arguments</dt>
+<dt class="terms">Argumentos de postprocesamiento</dt>
 <dd class="terms">
-<p class="p">Parabolic will present these options in the add download dialog to be passed to <span class="code">ffmpeg</span> and other post-processors when processing media.</p>
+<p class="p">Parabolic presentará estas opciones en el diálogo de añadir descarga para que sean pasadas a <span class="code">ffmpeg</span> y otros post-procesadores cuando procesen los medios.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -197,11 +197,11 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">Postprocessing Argument Fields:</p>
-<p class="p"><span class="code">Name</span> - The friendly name of the argument.</p>
-<p class="p"><span class="code">Post Processor</span> - The post processor to pass the arguments to.</p>
-<p class="p"><span class="code">Executable</span> - The executable to pass the arguments to.</p>
-<p class="p"><span class="code">Args</span> - The args to pass.</p>
+<p class="p">Campos de argumentos de postprocesamiento:</p>
+<p class="p"><span class="code">Nombre</span> - El nombre descriptivo del argumento.</p>
+<p class="p"><span class="code">Post Procesador</span> - El post procesador al que pasar los argumentos.</p>
+<p class="p"><span class="code">Ejecutable</span> - El ejecutable al que pasar los argumentos.</p>
+<p class="p"><span class="code">Args</span> - Los argumentos a pasar.</p>
 </div></div></div>
 </div>
 </dd>

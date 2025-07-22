@@ -26,14 +26,14 @@
 <terms>
     <item>
         <title>Incrustar metadatos</title>
-        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic etiquetará un medio con su información relevante (título, género, etc...) si está disponible.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
         <title>Eliminar los datos de origen</title>
-        <p>Parabolic will clear metadata fields containing identifying download information.</p>
+        <p>Parabolic borrará los campos de metadatos que contengan información identificativa de la descarga.</p>
         <p>Campos que se borran: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> y <code>handler_name</code> en cada transmisión.</p>
         <note>
             <p>Esta opción solo es configurable si <code> Incrustar metadatos </code> está activado.</p>
@@ -44,7 +44,7 @@
     </item>
     <item>
         <title>Incrustar miniaturas</title>
-        <p>Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic incrustará un medio con su miniatura si está disponible.</p>
         <p>Si el tipo de archivo no admite la incrustación, la miniatura se escribirá en un archivo de imagen independiente.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
@@ -52,7 +52,7 @@
     </item>
     <item>
         <title>Recortar miniaturas de audio</title>
-        <p>Parabolic will crop thumbnails of audio files to squares.</p>
+        <p>Parabolic recortará las miniaturas de los archivos de audio a cuadrados.</p>
         <note>
             <p>Esta opción solo es configurable si <code>Incrustar miniaturas</code> está activada.</p>
         </note>
@@ -62,35 +62,35 @@
     </item>
     <item>
         <title>Incrustar capítulos</title>
-        <p>Parabolic will tag a media with its chapter information if available.</p>
+        <p>Parabolic etiquetará un medio con la información de su capítulo si está disponible.</p>
         <note style="advanced">
             <p>Predeterminado: Apagado</p>
         </note>
     </item>
     <item>
         <title>Incrustar los subtítulos</title>
-        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
-        <p>Whether or not embedding is supported if affected by your chosen <code>Preferred Subtitle Format</code>.</p>
+        <p>Si se desactiva o si no se admite la incrustación, los subtítulos descargados se guardarán en archivos independientes.</p>
+        <p>Si se admite o no la incrustación si se ve afectado por su <code>Formato de subtítulos preferido</code> elegido.</p>
         <note style="advanced">
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
-        <title>FFmpeg Threads</title>
-        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
+        <title>Hilos FFmpeg</title>
+        <p>Parabolic limitará el número de hilos usados por <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Por defecto: El número máximo de hilos disponibles en el sistema</p>
         </note>
     </item>
     <item>
-        <title>Postprocessing Arguments</title>
-        <p>Parabolic will present these options in the add download dialog to be passed to <code>ffmpeg</code> and other post-processors when processing media.</p>
+        <title>Argumentos de postprocesamiento</title>
+        <p>Parabolic presentará estas opciones en el diálogo de añadir descarga para que sean pasadas a <code>ffmpeg</code> y otros post-procesadores cuando procesen los medios.</p>
         <note style="advanced">
-            <p>Postprocessing Argument Fields:</p>
-            <p><code>Name</code> - The friendly name of the argument.</p>
-            <p><code>Post Processor</code> - The post processor to pass the arguments to.</p>
-            <p><code>Executable</code> - The executable to pass the arguments to.</p>
-            <p><code>Args</code> - The args to pass.</p>
+            <p>Campos de argumentos de postprocesamiento:</p>
+            <p><code>Nombre</code> - El nombre descriptivo del argumento.</p>
+            <p><code>Post Procesador</code> - El post procesador al que pasar los argumentos.</p>
+            <p><code>Ejecutable</code> - El ejecutable al que pasar los argumentos.</p>
+            <p><code>Args</code> - Los argumentos a pasar.</p>
         </note>
     </item>
 </terms>

@@ -50,7 +50,7 @@
     </item>
     <item>
         <title>Встраивать обложку</title>
-        <p>Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic по возможности будет встраивать обложку медиа в файл.</p>
         <p>Если тип файла не поддерживает встраивание, обложка будет сохранена отдельным файлом.</p>
         <note style="advanced">
             <p>По умолчанию: Вкл</p>
@@ -60,7 +60,7 @@
         <title>Обрезать миниатюры для аудио</title>
         <p>Parabolic будет обрезать миниатюры аудиофайлов до квадратного разрешения.</p>
         <note>
-            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+            <p>Доступно только с включенной опцией <code>Встраивание метаданных</code>.</p>
         </note>
         <note style="advanced">
             <p>По умолчанию: Выкл</p>
@@ -82,14 +82,14 @@
         </note>
     </item>
     <item>
-        <title>FFmpeg Threads</title>
+        <title>Число потоков FFmpeg</title>
         <p>Parabolic ограничивает число потоков используемых <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>По умолчанию: максимальное количество потоков доступных в системе</p>
         </note>
     </item>
     <item>
-        <title>Postprocessing Arguments</title>
+        <title>Аргументы постобработки</title>
         <p>Parabolic will present these options in the add download dialog to be passed to <code>ffmpeg</code> and other post-processors when processing media.</p>
         <note style="advanced">
             <p>Postprocessing Argument Fields:</p>
