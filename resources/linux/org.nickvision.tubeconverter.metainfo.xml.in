@@ -55,17 +55,10 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2025.7.0" date="2025-07-20">
+    <release version="2025.7.1" date="2025-07-21">
       <description translate="no">
-        <p>- Redesigned the Windows app using WinUI 3</p>
-        <p>- Added the ability to change the application's translation language</p>
-        <p>- Added the ability to remember video and audio formats individually for each file type</p>
-        <p>- Fixed an issue where pressing enter in the download dialog would not start the download</p>
-        <p>- Fixed an issue where configuration files were not stored properly for the portable Windows build</p>
-        <p>- Fixed an issue where downloads did not pause and resume on Windows</p>
-        <p>- Fixed an issue where there would sometimes be leftover separators in the downloads list on GNOME</p>
-        <p>- Fixed some elements of the GNOME UI as we get closer to joining GNOME Circle</p>
-        <p>- Updated yt-dlp</p>
+        <p>- Fixed an issue where Parabolic crashed when multiple downloads completed on GNOME</p>
+        <p>- Fixed an issue where downloads were ordered wrong on Windows</p>
       </description>
     </release>
   </releases>
