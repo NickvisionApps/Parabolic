@@ -371,7 +371,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_downloadRows[args.getId()] = row;
         if(args.getStatus() == DownloadStatus::Queued)
         {
-            ListQueued().Children().InsertAt(0, row);
+            ListQueued().Children().Append(row);
             ViewStackQueued().CurrentPageIndex(ListPage::Has);
             if(NavViewHome().IsSelected())
             {
@@ -381,7 +381,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         else
         {
-            ListDownloading().Children().InsertAt(0, row);
+            ListDownloading().Children().Append(row);
             ViewStackDownloading().CurrentPageIndex(ListPage::Has);
             if(NavViewHome().IsSelected())
             {
@@ -401,7 +401,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
-        ListCompleted().Children().InsertAt(0, m_downloadRows[args.getId()]);
+        ListCompleted().Children().Append(m_downloadRows[args.getId()]);
         ViewStackCompleted().CurrentPageIndex(ListPage::Has);
         BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
     }
@@ -427,7 +427,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackQueued().CurrentPageIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
-        ListCompleted().Children().InsertAt(0, m_downloadRows[*args]);
+        ListCompleted().Children().Append(m_downloadRows[*args]);
         ViewStackCompleted().CurrentPageIndex(ListPage::Has);
         BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
     }
@@ -463,7 +463,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackQueued().CurrentPageIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
-        ListDownloading().Children().InsertAt(0, m_downloadRows[*args]);
+        ListDownloading().Children().Append(m_downloadRows[*args]);
         ViewStackDownloading().CurrentPageIndex(ListPage::Has);
         BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
     }
