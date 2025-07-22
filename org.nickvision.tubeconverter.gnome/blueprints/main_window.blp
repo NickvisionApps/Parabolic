@@ -342,16 +342,15 @@ Adw.ApplicationWindow root {
                   Adw.ViewStackPage {
                     name: "downloading";
                     child: Gtk.ScrolledWindow {
-                      child: Gtk.Box listDownloading {
-                        orientation: vertical;
+                      child: Gtk.ListBox listDownloading {
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
                         margin-top: 6;
                         margin-end: 12;
-                        spacing: 6;
+                        selection-mode: none;
 
-                        styles [ "card" ]
+                        styles [ "boxed-list" ]
                       };
                     };
                   }
@@ -382,16 +381,15 @@ Adw.ApplicationWindow root {
                   Adw.ViewStackPage {
                     name: "queued";
                     child: Gtk.ScrolledWindow {
-                      child: Gtk.Box listQueued {
-                        orientation: vertical;
+                      child: Gtk.ListBox listQueued {
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
                         margin-top: 6;
                         margin-end: 12;
-                        spacing: 6;
+                        selection-mode: none;
 
-                        styles [ "card" ]
+                        styles [ "boxed-list" ]
                       };
                     };
                   }
@@ -422,16 +420,15 @@ Adw.ApplicationWindow root {
                   Adw.ViewStackPage {
                     name: "completed";
                     child: Gtk.ScrolledWindow {
-                      child: Gtk.Box listCompleted {
-                        orientation: vertical;
+                      child: Gtk.ListBox listCompleted {
                         hexpand: true;
                         valign: start;
                         margin-start: 12;
                         margin-top: 6;
                         margin-end: 12;
-                        spacing: 6;
+                        selection-mode: none;
 
-                        styles [ "card" ]
+                        styles [ "boxed-list" ]
                       };
                     };
                   }

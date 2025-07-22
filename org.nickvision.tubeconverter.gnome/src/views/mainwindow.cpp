@@ -385,13 +385,13 @@ namespace Nickvision::TubeConverter::GNOME::Views
         row->commandToClipboardRequested() += [this](const ParamEventArgs<int>& args){ gdk_clipboard_set_text(gdk_display_get_clipboard(gdk_display_get_default()), m_controller->getDownloadManager().getDownloadCommand(*args).c_str()); };
         if(args.getStatus() == DownloadStatus::Queued)
         {
-            GtkHelpers::addToBox(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(row->gobj()), true);
+            gtk_list_box_append(m_builder.get<GtkListBox>("listQueued"), GTK_WIDGET(row->gobj()));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), "queued");
             gtk_label_set_label(m_builder.get<GtkLabel>("queuedCountLabel"), std::to_string(m_controller->getDownloadManager().getQueuedCount()).c_str());
         }
         else
         {
-            GtkHelpers::addToBox(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(row->gobj()), true);
+            gtk_list_box_append(m_builder.get<GtkListBox>("listDownloading"), GTK_WIDGET(row->gobj()));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), "downloading");
             gtk_label_set_label(m_builder.get<GtkLabel>("downloadingCountLabel"), std::to_string(m_controller->getDownloadManager().getDownloadingCount()).c_str());
         }
@@ -401,7 +401,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
         m_downloadRows[args.getId()]->setCompleteState(args);
-        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listDownloading"), m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getId()]->gobj()), true);
+        gtk_list_box_remove(m_builder.get<GtkListBox>("listDownloading"), gtk_widget_get_parent(GTK_WIDGET(m_downloadRows[args.getId()]->gobj())));
+        gtk_widget_unparent(GTK_WIDGET(m_downloadRows[args.getId()]->gobj()));
+        gtk_list_box_append(m_builder.get<GtkListBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getId()]->gobj()));
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), m_controller->getDownloadManager().getDownloadingCount() > 0 ? "downloading" : "no-downloading");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), "completed");
         gtk_label_set_label(m_builder.get<GtkLabel>("downloadingCountLabel"), std::to_string(m_controller->getDownloadManager().getDownloadingCount()).c_str());
@@ -416,8 +418,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
         m_downloadRows[*args]->setStopState();
-        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listDownloading"), m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[*args]->gobj()), true);
-        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listQueued"), m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[*args]->gobj()), true);
+        gtk_list_box_remove(m_builder.get<GtkListBox>("listDownloading"), gtk_widget_get_parent(GTK_WIDGET(m_downloadRows[*args]->gobj())));
+        gtk_list_box_remove(m_builder.get<GtkListBox>("listQueued"), gtk_widget_get_parent(GTK_WIDGET(m_downloadRows[*args]->gobj())));
+        gtk_widget_unparent(GTK_WIDGET(m_downloadRows[*args]->gobj()));
+        gtk_list_box_append(m_builder.get<GtkListBox>("listCompleted"), GTK_WIDGET(m_downloadRows[*args]->gobj()));
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), m_controller->getDownloadManager().getDownloadingCount() > 0 ? "downloading" : "no-downloading");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), m_controller->getDownloadManager().getQueuedCount() > 0 ? "queued" : "no-queued");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), "completed");
@@ -439,7 +443,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
     {
         m_downloadRows[*args]->setStartFromQueueState();
-        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listCompleted"), m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[*args]->gobj()), true);
+        gtk_list_box_remove(m_builder.get<GtkListBox>("listCompleted"), gtk_widget_get_parent(GTK_WIDGET(m_downloadRows[*args]->gobj())));
+        gtk_widget_unparent(GTK_WIDGET(m_downloadRows[*args]->gobj()));
+        gtk_list_box_append(m_builder.get<GtkListBox>("listDownloading"), GTK_WIDGET(m_downloadRows[*args]->gobj()));
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), m_controller->getDownloadManager().getCompletedCount() > 0 ? "completed" : "no-completed");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), "downloading");
         gtk_label_set_label(m_builder.get<GtkLabel>("downloadingCountLabel"), std::to_string(m_controller->getDownloadManager().getDownloadingCount()).c_str());
@@ -449,7 +455,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
         m_downloadRows[*args]->setStartFromQueueState();
-        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listQueued"), m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[*args]->gobj()), true);
+        gtk_list_box_remove(m_builder.get<GtkListBox>("listQueued"), gtk_widget_get_parent(GTK_WIDGET(m_downloadRows[*args]->gobj())));
+        gtk_widget_unparent(GTK_WIDGET(m_downloadRows[*args]->gobj()));
+        gtk_list_box_append(m_builder.get<GtkListBox>("listDownloading"), GTK_WIDGET(m_downloadRows[*args]->gobj()));
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), m_controller->getDownloadManager().getQueuedCount() > 0 ? "queued" : "no-queued");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), "downloading");
         gtk_label_set_label(m_builder.get<GtkLabel>("downloadingCountLabel"), std::to_string(m_controller->getDownloadManager().getDownloadingCount()).c_str());
@@ -550,7 +558,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         for(int id : m_controller->getDownloadManager().clearQueuedDownloads())
         {
-            gtk_box_remove(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(m_downloadRows[id]->gobj()));
+            gtk_list_box_remove(m_builder.get<GtkListBox>("listQueued"), gtk_widget_get_parent(GTK_WIDGET(m_downloadRows[id]->gobj())));
             m_downloadRows.erase(id);
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), "no-queued");
@@ -561,7 +569,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         for(int id : m_controller->getDownloadManager().clearCompletedDownloads())
         {
-            gtk_box_remove(m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[id]->gobj()));
+            gtk_list_box_remove(m_builder.get<GtkListBox>("listCompleted"), gtk_widget_get_parent(GTK_WIDGET(m_downloadRows[id]->gobj())));
             m_downloadRows.erase(id);
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), "no-completed");

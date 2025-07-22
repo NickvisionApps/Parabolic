@@ -18,6 +18,12 @@
       <mal:email/>
       <mal:years>2023</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Fr0stmatic</mal:name>
+      <mal:email>fr0stmatic@proton.me</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
   </info>
 
 <title>Конвертер</title>
@@ -26,14 +32,14 @@
 <terms>
     <item>
         <title>Встраивать метаданные</title>
-        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic будет встраивать в медиа соответствующие теги (заголовок, жанр, и т.д.) при их наличии.</p>
         <note style="advanced">
             <p>По умолчанию: Вкл</p>
         </note>
     </item>
     <item>
         <title>Удалить метаданные об источнике</title>
-        <p>Parabolic will clear metadata fields containing identifying download information.</p>
+        <p>Parabolic будет очищать метаданные, содержащие идентифицирующие сведения о загрузке.</p>
         <p>Следующие поля будут удалены: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> в каждой дорожке.</p>
         <note>
             <p>Эта опция доступна только если <code>Встраивание метаданных</code> включено.</p>
