@@ -359,11 +359,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 CmbFileTypeSingle().Items().Append(winrt::box_value(winrt::to_hstring(fileType)));
             }
             CmbFileTypeSingle().SelectedIndex(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount() ? static_cast<int>(previous) - MediaFileType::getVideoFileTypeCount() : static_cast<int>(previous));
+            CmbVideoFormatSingle().Items().Clear();
             for(const std::string& videoFormat : m_controller->getVideoFormatStrings(m_controller->getPreviousDownloadOptions().getFileType(), previous))
             {
                 CmbVideoFormatSingle().Items().Append(winrt::box_value(winrt::to_hstring(videoFormat)));
             }
             CmbVideoFormatSingle().SelectedIndex(static_cast<int>(previous));
+            CmbAudioFormatSingle().Items().Clear();
             for(const std::string& audioFormat : m_controller->getAudioFormatStrings(m_controller->getPreviousDownloadOptions().getFileType(), previous))
             {
                 CmbAudioFormatSingle().Items().Append(winrt::box_value(winrt::to_hstring(audioFormat)));

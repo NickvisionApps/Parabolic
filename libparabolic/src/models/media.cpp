@@ -101,13 +101,13 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_formats.insert(m_formats.begin(), { FormatValue::Worst, MediaType::Audio });
             m_formats.insert(m_formats.begin(), { FormatValue::Best, MediaType::Audio });
         }
-        else if(hasVideoFormat)
+        else if(hasAudioFormat)
         {
-            m_type = MediaType::Video;
+            m_type = MediaType::Audio;
         }
         else
         {
-            m_type = MediaType::Audio;
+            m_type = MediaType::Video;
         }
         m_formats.insert(m_formats.begin(), { FormatValue::Worst, m_type });
         m_formats.insert(m_formats.begin(), { FormatValue::Best, m_type });
