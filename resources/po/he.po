@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-21 22:10-0400\n"
+"POT-Creation-Date: 2025-07-23 22:18-0400\n"
 "PO-Revision-Date: 2024-10-31 14:27+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -98,11 +98,13 @@ msgstr "ללא"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -156,6 +158,7 @@ msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:293
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "הורדה שוחזרה"
@@ -164,6 +167,7 @@ msgstr[2] "{} הורדות שוחזרו"
 msgstr[3] "{} הורדות שוחזרו"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:298
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -172,7 +176,7 @@ msgid "Download Finished"
 msgstr "הורדה הסתיימה"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:328
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "הסתיימה הורדת „{0}”."
 
@@ -187,7 +191,7 @@ msgid "Download Finished With Error"
 msgstr "הורדה הסתיימה עם שגיאה"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:332
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "הורדת „{0}” הסתיימה עם שגיאה!"
 
@@ -204,18 +208,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "‏{:.2f} גיב״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "‏{:.2f} מבי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "‏{:.2f} קי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "‏{:.2f} בית/שנ׳"
 
@@ -238,22 +246,22 @@ msgid "Audio Description"
 msgstr "תיאור שמע"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "‏{:.2f} גיב״ב/שנ׳"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "‏{:.2f} מבי״ב/שנ׳"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "‏{:.2f} קי״ב/שנ׳"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "‏{:.2f} בית/שנ׳"
 
@@ -1241,6 +1249,7 @@ msgstr "בפעילות"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1317,10 +1326,12 @@ msgid "No Subtitles Available"
 msgstr "אין כתוביות זמינות"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} פריטים"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1691,6 +1702,7 @@ msgid "Use manual credentials"
 msgstr "שימוש מזהה גישה ידנית"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr "נדרשים פרטי גישה כדי לגשת אל {}. נא לבחור או למלא פרטי גישה לשימוש."
 
@@ -2426,8 +2438,8 @@ msgstr "פרטי זיהוי"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr ""
-#~ "מוריד;מנהל הורדות;YouTube;youtube;ytdlp;Nickvision;Tube;Converter;ממיר;"
-#~ "שמע;מוזיקה;סרטונים;סרטים;הורדה;יוטיוב;הורדות;"
+#~ "מוריד;מנהל "
+#~ "הורדות;YouTube;youtube;ytdlp;Nickvision;Tube;Converter;ממיר;שמע;מוזיקה;סרטונים;סרטים;הורדה;יוטיוב;הורדות;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "- לקוח חזותי בסיסי עבור yt-dlp"

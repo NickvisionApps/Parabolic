@@ -20,68 +20,68 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Fr0stmatic</mal:name>
+      <mal:name>Valerii Zhikharev</mal:name>
       <mal:email>fr0stmatic@proton.me</mal:email>
       <mal:years>2025</mal:years>
     </mal:credit>
   </info>
 
 <title>Загрузчик</title>
-<p>Эта страница поясняет все опции по настройке Загрузчика в параметрах <app>Parabolic</app>.</p>
+<p>На данной странице описаны все параметры по конфигурации загрузчика в настройках <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Use Part Files</title>
-        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
+        <title>Использование частичных файлов</title>
+        <p>Parabolic будет загружать медиа раздельными файлами <code>.part</code>, а не выводить напрямую в конечный файл</p>
         <note style="advanced">
             <p>По умолчанию: Вкл</p>
         </note>
     </item>
     <item>
-        <title>Использовать SponsorBlock для YouTube</title>
-        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
+        <title>Использование SponsorBlock для YouTube</title>
+        <p>Parabolic по возможности будет вырезать спонсорские сегменты из видео с YouTube.</p>
         <note>
-            <p>SponsorBlock работает только для видео с YouTube. Однако включение этой настройки не повлияет на загрузки с других сайтов (т.е. не приведёт к их неудаче).</p>
+            <p>SponsorBlock работает только для видео с YouTube. Однако включение данного параметра не повлияет на загрузки с других сайтов (т.е. не приведёт к их неудаче).</p>
         </note>
         <note style="advanced">
             <p>По умолчанию: Выкл</p>
         </note>
     </item>
     <item>
-        <title>Ограничение скорости</title>
-        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
+        <title>Ограничение скорости загрузки</title>
+        <p>Ограничение (в КиБ/с), применяемое к загрузкам при включении параметра. Должно быть целое число от 512 до 10240.</p>
         <note style="advanced">
             <p>По умолчанию: Выкл</p>
         </note>
     </item>
     <item>
-        <title>Адрес прокси-сервера</title>
-        <p>Ссылка на прокси-сервер, который будет использоваться при загрузке.</p>
+        <title>Ссылка на прокси</title>
+        <p>Ссылка на адрес используемого прокси-сервера.</p>
         <note style="advanced">
-            <p>По умолчанию: нет URL-адреса</p>
+            <p>По умолчанию: Без ссылки</p>
         </note>
     </item>
     <item>
-        <title>Куки браузера</title>
-        <p>Браузер, в котором можно считывать файлы cookie и передавать их в механизм загрузки yt-dlp.</p>
-        <p>Это может быть полезно при загрузке медиафайлов, требующих входа в систему, например: частных видео YouTube.</p>
-        <p>Эта опция доступна на платформах без изолированной программной среды.</p>
+        <title>Cookie из браузера</title>
+        <p>Браузер, в котором можно считывать cookie и передавать их в компонент загрузки yt-dlp.</p>
+        <p>Полезно при загрузке медиа, требующих входа в систему; например: частных видео с YouTube.</p>
+        <p>Данный параметр доступен на платформах без изолированной программной среды.</p>
         <note style="advanced">
             <p>По умолчанию: Нет</p>
         </note>
     </item>
     <item>
-        <title>Файл куки</title>
-        <p>Файл cookie в формате .txt для передачи в yt-dlp при загрузке системы.</p>
-        <p>Это может быть полезно при загрузке медиафайлов, требующих входа в систему, например: частных видео YouTube.</p>
-        <p>Используйте одно из следующих расширений для получения файла куки из вашего браузера:</p>
+        <title>Файл cookie</title>
+        <p>Файл в формате .txt под cookie для передачи в компонент загрузки yt-dlp.</p>
+        <p>Полезно при загрузке медиа, требующих входа в систему; например: частных видео с YouTube.</p>
+        <p>Используйте одно из следующих расширений для получения cookie из вашего браузера:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Используйте эти расширения на свой страх и риск.</p>
+            <p>Используйте данные расширения на свой страх и риск.</p>
         </note>
         <note style="advanced">
-            <p>По умолчанию: файл не выбран</p>
+            <p>По умолчанию: Файл не выбран</p>
         </note>
     </item>
 </terms>

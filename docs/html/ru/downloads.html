@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <a class="trail" href="index.html" title="Справка Parabolic">Справка Parabolic</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Загрузки</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">Эта страница объясняет все опции по настройке загрузок в параметрах <span class="app">Parabolic</span>.</p>
+<p class="p">На данной странице описаны все параметры по конфигурации загрузок в настройках <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Максимальное число активных загрузок</dt>
+<dt class="terms">Максимум активных загрузок</dt>
 <dd class="terms">
-<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
-<p class="p">Если достигнут максимум активных загрузок, новые загрузки будут помещаться в очередь, пока не появится место для запуска новых загрузок.</p>
+<p class="p">Допустимое количество одновременно выполняемых загрузок. Должно быть целое число от 1 до 10.</p>
+<p class="p">При достигнутом максимуме активных загрузок Parabolic будет помещать новые загрузки в очередь, пока новые не смогут быть запущены.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -41,17 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: 5</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Перезаписывать существующие файлы</dt>
+<dt class="terms">Перезапись имеющихся файлов</dt>
 <dd class="terms">
-<p class="p">Parabolic will overwrite existing files.</p>
-<p class="p">Например, если файл с именем <span class="code">movie.mp4</span> существует в папке сохранения, а новый файл создаётся с именем <span class="code">movie</span>, в файл <span class="code">movie.mp4</span> будет записано новое содержимое.</p>
+<p class="p">Parabolic будет перезаписывать уже существующие файлы.</p>
+<p class="p">Например, если файл с именем <span class="code">фильм.mp4</span> существует в папке сохранения, а новый файл создаётся с именем <span class="code">фильм</span>, файл <span class="code">фильм.mp4</span> будет перезаписан новым загружаемым файлом.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Parabolic обнаружит загрузки, которые следует возобновить, и избегает этой настройки при восстановлении или повторной попытке неудачных загрузок</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Parabolic будет отслеживать загрузки, которые следует возобновить, и избегать данный параметр при восстановлении или повторном запуске неудачных загрузок</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Вкл</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Ограничение количества символов в имени файла</dt>
+<dt class="terms">Ограничение символов в имени файла</dt>
 <dd class="terms">
-<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
-<p class="p">Эта опция доступна только в Linux.</p>
+<p class="p">Parabolic будет ограничивать символы в именах файлов только теми, которые поддерживаются Windows.</p>
+<p class="p">Данный параметр доступен только в Linux.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -91,9 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Выкл</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Включенный идентификатор носителя в заголовок после проверки</dt>
+<dt class="terms">Добавление ID медиа в заголовок</dt>
 <dd class="terms">
-<p class="p">Parabolic включит id носителя в его заголовок по умолчанию.</p>
+<p class="p">Parabolic будет добавлять идентификатор медиа к его начальному заголовку.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Вкл</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Включать автоматически сгенерированные субтитры</dt>
+<dt class="terms">Добавление автоматических субтитров</dt>
 <dd class="terms">
-<p class="p">Parabolic предоставит на скачивание автоматически сгенерированные субтитры в дополнение к доступным субтитрам.</p>
+<p class="p">Parabolic предоставит на загрузку автоматически созданные субтитры в дополнение к имеющимся.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -131,16 +131,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Вкл</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Preferred Video Codec</dt>
+<dt class="terms">Предпочтительный видеокодек</dt>
 <dd class="terms">
-<p class="p">The video codec Parabolic should prefer when parsing media formats to download.</p>
+<p class="p">Видеокодек, который должен быть в приоритете у Parabolic при обработке доступных к загрузке медиаформатов.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Если Parabolic не сможет найти ни одного формата с выбранным предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Если Parabolic не сможет найти ни одного формата с конкретно предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -159,16 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Любой</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Preferred Audio Codec</dt>
+<dt class="terms">Предпочтительный аудиокодек</dt>
 <dd class="terms">
-<p class="p">The audio codec Parabolic should prefer when parsing media formats to download.</p>
+<p class="p">Аудиокодек, который должен быть в приоритете у Parabolic при обработке доступных к загрузке медиаформатов.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Если Parabolic не сможет найти ни одного формата с выбранным предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Если Parabolic не сможет найти ни одного формата с конкретно предпочтительным кодеком, ни один аудиоформат не будет доступен для загрузки.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -187,9 +187,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Любой</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Preferred Subtitle Format</dt>
+<dt class="terms">Предпочтительный формат субтитров</dt>
 <dd class="terms">
-<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
+<p class="p">Формат файла, в котором Parabolic должен будет загружать все субтитры.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="copyright">© 2023-2025 Николас Логоццо</div>
 <div class="copyright">© 2023-2025 Николас Логоццо</div>
 <div class="copyright">© 2023 Фёдор Соболев</div>
-<div class="copyright">© 2025 Fr0stmatic</div>
+<div class="copyright">© 2025 Valerii Zhikharev</div>
 </div>
 <div class="credits">
 <div class="credits-authors">
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="title"><span class="title">Переведено</span></div>
 <ul class="credits">
 <li>Фёдор Соболев</li>
-<li>Fr0stmatic</li>
+<li>Valerii Zhikharev</li>
 </ul>
 </div>
 <div class="credits-publishers">

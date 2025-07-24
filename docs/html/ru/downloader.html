@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <a class="trail" href="index.html" title="Справка Parabolic">Справка Parabolic</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Загрузчик</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">Эта страница поясняет все опции по настройке Загрузчика в параметрах <span class="app">Parabolic</span>.</p>
+<p class="p">На данной странице описаны все параметры по конфигурации загрузчика в настройках <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Use Part Files</dt>
+<dt class="terms">Использование частичных файлов</dt>
 <dd class="terms">
-<p class="p">Parabolic will download media in separate .part files instead of directly into the output file.</p>
+<p class="p">Parabolic будет загружать медиа раздельными файлами <span class="code">.part</span>, а не выводить напрямую в конечный файл</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -40,16 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Вкл</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Использовать SponsorBlock для YouTube</dt>
+<dt class="terms">Использование SponsorBlock для YouTube</dt>
 <dd class="terms">
-<p class="p">Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
+<p class="p">Parabolic по возможности будет вырезать спонсорские сегменты из видео с YouTube.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">SponsorBlock работает только для видео с YouTube. Однако включение этой настройки не повлияет на загрузки с других сайтов (т.е. не приведёт к их неудаче).</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">SponsorBlock работает только для видео с YouTube. Однако включение данного параметра не повлияет на загрузки с других сайтов (т.е. не приведёт к их неудаче).</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Выкл</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Ограничение скорости</dt>
+<dt class="terms">Ограничение скорости загрузки</dt>
 <dd class="terms">
-<p class="p">The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">Ограничение (в КиБ/с), применяемое к загрузкам при включении параметра. Должно быть целое число от 512 до 10240.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -88,9 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Выкл</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Адрес прокси-сервера</dt>
+<dt class="terms">Ссылка на прокси</dt>
 <dd class="terms">
-<p class="p">Ссылка на прокси-сервер, который будет использоваться при загрузке.</p>
+<p class="p">Ссылка на адрес используемого прокси-сервера.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -105,14 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: нет URL-адреса</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Без ссылки</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Куки браузера</dt>
+<dt class="terms">Cookie из браузера</dt>
 <dd class="terms">
-<p class="p">Браузер, в котором можно считывать файлы cookie и передавать их в механизм загрузки yt-dlp.</p>
-<p class="p">Это может быть полезно при загрузке медиафайлов, требующих входа в систему, например: частных видео YouTube.</p>
-<p class="p">Эта опция доступна на платформах без изолированной программной среды.</p>
+<p class="p">Браузер, в котором можно считывать cookie и передавать их в компонент загрузки yt-dlp.</p>
+<p class="p">Полезно при загрузке медиа, требующих входа в систему; например: частных видео с YouTube.</p>
+<p class="p">Данный параметр доступен на платформах без изолированной программной среды.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -130,11 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Нет</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Файл куки</dt>
+<dt class="terms">Файл cookie</dt>
 <dd class="terms">
-<p class="p">Файл cookie в формате .txt для передачи в yt-dlp при загрузке системы.</p>
-<p class="p">Это может быть полезно при загрузке медиафайлов, требующих входа в систему, например: частных видео YouTube.</p>
-<p class="p">Используйте одно из следующих расширений для получения файла куки из вашего браузера:</p>
+<p class="p">Файл в формате .txt под cookie для передачи в компонент загрузки yt-dlp.</p>
+<p class="p">Полезно при загрузке медиа, требующих входа в систему; например: частных видео с YouTube.</p>
+<p class="p">Используйте одно из следующих расширений для получения cookie из вашего браузера:</p>
 <p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
 <p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
 <div class="note" title="Примечание">
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Используйте эти расширения на свой страх и риск.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Используйте данные расширения на свой страх и риск.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: файл не выбран</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Файл не выбран</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="copyright">© 2023-2025 Николас Логоццо</div>
 <div class="copyright">© 2023-2025 Николас Логоццо</div>
 <div class="copyright">© 2023 Фёдор Соболев</div>
-<div class="copyright">© 2025 Fr0stmatic</div>
+<div class="copyright">© 2025 Valerii Zhikharev</div>
 </div>
 <div class="credits">
 <div class="credits-authors">
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="title"><span class="title">Переведено</span></div>
 <ul class="credits">
 <li>Фёдор Соболев</li>
-<li>Fr0stmatic</li>
+<li>Valerii Zhikharev</li>
 </ul>
 </div>
 <div class="credits-publishers">

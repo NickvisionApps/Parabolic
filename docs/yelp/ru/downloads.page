@@ -20,81 +20,81 @@
     </mal:credit>
   
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Fr0stmatic</mal:name>
+      <mal:name>Valerii Zhikharev</mal:name>
       <mal:email>fr0stmatic@proton.me</mal:email>
       <mal:years>2025</mal:years>
     </mal:credit>
   </info>
 
 <title>Загрузки</title>
-<p>Эта страница объясняет все опции по настройке загрузок в параметрах <app>Parabolic</app>.</p>
+<p>На данной странице описаны все параметры по конфигурации загрузок в настройках <app>Parabolic</app>.</p>
 
 
 <terms>
     <item>
-        <title>Максимальное число активных загрузок</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
-        <p>Если достигнут максимум активных загрузок, новые загрузки будут помещаться в очередь, пока не появится место для запуска новых загрузок.</p>
+        <title>Максимум активных загрузок</title>
+        <p>Допустимое количество одновременно выполняемых загрузок. Должно быть целое число от 1 до 10.</p>
+        <p>При достигнутом максимуме активных загрузок Parabolic будет помещать новые загрузки в очередь, пока новые не смогут быть запущены.</p>
         <note style="advanced">
             <p>По умолчанию: 5</p>
         </note>
     </item>
     <item>
-        <title>Перезаписывать существующие файлы</title>
-        <p>Parabolic will overwrite existing files.</p>
-        <p>Например, если файл с именем <code>movie.mp4</code> существует в папке сохранения, а новый файл создаётся с именем <code>movie</code>, в файл <code>movie.mp4</code> будет записано новое содержимое.</p>
+        <title>Перезапись имеющихся файлов</title>
+        <p>Parabolic будет перезаписывать уже существующие файлы.</p>
+        <p>Например, если файл с именем <code>фильм.mp4</code> существует в папке сохранения, а новый файл создаётся с именем <code>фильм</code>, файл <code>фильм.mp4</code> будет перезаписан новым загружаемым файлом.</p>
         <note>
-            <p>Parabolic обнаружит загрузки, которые следует возобновить, и избегает этой настройки при восстановлении или повторной попытке неудачных загрузок</p>
+            <p>Parabolic будет отслеживать загрузки, которые следует возобновить, и избегать данный параметр при восстановлении или повторном запуске неудачных загрузок</p>
         </note>
         <note style="advanced">
             <p>По умолчанию: Вкл</p>
         </note>
     </item>
     <item>
-        <title>Ограничение количества символов в имени файла</title>
-        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
-        <p>Эта опция доступна только в Linux.</p>
+        <title>Ограничение символов в имени файла</title>
+        <p>Parabolic будет ограничивать символы в именах файлов только теми, которые поддерживаются Windows.</p>
+        <p>Данный параметр доступен только в Linux.</p>
         <note style="advanced">
             <p>По умолчанию: Выкл</p>
         </note>
     </item>
     <item>
-        <title>Включенный идентификатор носителя в заголовок после проверки</title>
-        <p>Parabolic включит id носителя в его заголовок по умолчанию.</p>
+        <title>Добавление ID медиа в заголовок</title>
+        <p>Parabolic будет добавлять идентификатор медиа к его начальному заголовку.</p>
         <note style="advanced">
             <p>По умолчанию: Вкл</p>
         </note>
     </item>
     <item>
-        <title>Включать автоматически сгенерированные субтитры</title>
-        <p>Parabolic предоставит на скачивание автоматически сгенерированные субтитры в дополнение к доступным субтитрам.</p>
+        <title>Добавление автоматических субтитров</title>
+        <p>Parabolic предоставит на загрузку автоматически созданные субтитры в дополнение к имеющимся.</p>
         <note style="advanced">
             <p>По умолчанию: Вкл</p>
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Предпочтительный видеокодек</title>
+        <p>Видеокодек, который должен быть в приоритете у Parabolic при обработке доступных к загрузке медиаформатов.</p>
         <note>
-            <p>Если Parabolic не сможет найти ни одного формата с выбранным предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки.</p>
+            <p>Если Parabolic не сможет найти ни одного формата с конкретно предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки.</p>
         </note>
         <note style="advanced">
             <p>По умолчанию: Любой</p>
         </note>
     </item>
     <item>
-        <title>Preferred Audio Codec</title>
-        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Предпочтительный аудиокодек</title>
+        <p>Аудиокодек, который должен быть в приоритете у Parabolic при обработке доступных к загрузке медиаформатов.</p>
         <note>
-            <p>Если Parabolic не сможет найти ни одного формата с выбранным предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки.</p>
+            <p>Если Parabolic не сможет найти ни одного формата с конкретно предпочтительным кодеком, ни один аудиоформат не будет доступен для загрузки.</p>
         </note>
         <note style="advanced">
             <p>По умолчанию: Любой</p>
         </note>
     </item>
     <item>
-        <title>Preferred Subtitle Format</title>
-        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
+        <title>Предпочтительный формат субтитров</title>
+        <p>Формат файла, в котором Parabolic должен будет загружать все субтитры.</p>
         <note style="advanced">
             <p>По умолчанию: Любой</p>
         </note>
