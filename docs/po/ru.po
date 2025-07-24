@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-07-20 22:36-0400\n"
-"PO-Revision-Date: 2025-07-21 18:36+0000\n"
-"Last-Translator: Valerii Zhikharev <valzhikharev59@gmail.com>\n"
+"POT-Creation-Date: 2025-07-21 22:10-0400\n"
+"PO-Revision-Date: 2025-07-24 02:09+0000\n"
+"Last-Translator: Valerii Zhikharev <fr0stmatic@proton.me>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/ru/>\n"
 "Language: ru\n"
@@ -19,7 +19,7 @@ msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Фёдор Соболев <>, 2023\n"
-"Fr0stmatic <fr0stmatic@proton.me>, 2025"
+"Valerii Zhikharev <fr0stmatic@proton.me>, 2025"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/aria.page:8
@@ -50,18 +50,19 @@ msgid ""
 "This page explains all options for configuring aria2c in Preferences in "
 "<app>Parabolic</app>."
 msgstr ""
-"Эта страница объясняет все опции по настройке загрузчика aria2c в параметрах "
+"На данной странице описаны все параметры по конфигурации aria2c в настройках "
 "<app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:25
 msgid "Use aria2c"
-msgstr "Использовать aria2c"
+msgstr "Использование aria2c"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
 msgid "Parabolic will use aria2c instead of yt-dlp's native downloader."
-msgstr "Parabolic будет использовать aria2c вместо основного загрузчика yt-dlp."
+msgstr ""
+"Parabolic будет использовать aria2c вместо встроенного загрузчика yt-dlp."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:28 docs/yelp/C/converter.page:39
@@ -75,7 +76,7 @@ msgstr "По умолчанию: Выкл"
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:32
 msgid "Maximum Connections Per Server"
-msgstr "Максимум подключений на сервер"
+msgstr "Максимум подключений к серверу"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:33
@@ -83,15 +84,17 @@ msgid ""
 "This option only applies when using aria2c is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
 msgstr ""
-"Эта опция применяется при включении использования aria2с. Эта опция "
-"эквивалентна использованию флага <code>-x</code> у aria2c."
+"Данный параметр применяется только при задействовании aria2с. Равносильно "
+"использованию флага <code>-x</code> в aria2c."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:34
 msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
-msgstr "Максимум подключений на сервер нолжно быть целым числом от 1 до 32."
+msgstr ""
+"Максимальное количество подключений, задействуемое к серверу. Должно быть "
+"целое число от 1 до 32."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:36
@@ -109,8 +112,8 @@ msgid ""
 "This option only applies when using aria2c is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
-"Эта опция применяется при включении использования aria2c. Она эквивалентна "
-"использованию флага <code>-k</code> у aria2c."
+"Данный параметр применяется только при задействовании aria2с. Равносильно "
+"использованию флага <code>-k</code> в aria2c."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:42
@@ -118,7 +121,7 @@ msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
 msgstr ""
-"Минимальный размер, в МиБ, на который разбивать файл при загрузке. Целое "
+"Минимальный размер (в МиБ), на который разбивать файл. Должно быть целое "
 "число от 1 до 1024."
 
 #. (itstool) path: note/p
@@ -143,13 +146,13 @@ msgid ""
 "This page explains all options for configuring the Converter in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"Эта страница поясняет все опции по настройке Конвертера в параметрах "
-"<app>Parabolic</app>."
+"На данной странице описаны все параметры по конфигурации конвертера в "
+"настройках <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
 msgid "Embed Metadata"
-msgstr "Встраивать метаданные"
+msgstr "Встраивание метаданных"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:26
@@ -157,8 +160,8 @@ msgid ""
 "Parabolic will tag a media with its relevant information (title, genre, "
 "etc...) if available."
 msgstr ""
-"Parabolic будет встраивать в медиа соответствующие теги (заголовок, жанр, и "
-"т.д.) при их наличии."
+"Parabolic по возможности будет добавлять определяющие теги (заголовок, жанр "
+"и т.д.) в медиа."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
@@ -171,7 +174,7 @@ msgstr "По умолчанию: Вкл"
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:32
 msgid "Remove Source Data"
-msgstr "Удалить метаданные об источнике"
+msgstr "Удаление данных об источнике"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:33
@@ -179,7 +182,7 @@ msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
 msgstr ""
-"Parabolic будет очищать метаданные, содержащие идентифицирующие сведения о "
+"Parabolic будет стирать метаданные, содержащие идентифицирующие сведения о "
 "загрузке."
 
 #. (itstool) path: item/p
@@ -197,12 +200,13 @@ msgstr ""
 #: docs/yelp/C/converter.page:36
 msgid "This option is only configurable if <code>Embed Metadata</code> is on."
 msgstr ""
-"Эта опция доступна только если <code>Встраивание метаданных</code> включено."
+"Данный параметр доступен, только если <code>Встраивание метаданных</code> "
+"включено."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:43
 msgid "Embed Thumbnails"
-msgstr "Встраивать обложку"
+msgstr "Встраивание обложек"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:44
@@ -215,42 +219,41 @@ msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr ""
-"Если тип файла не поддерживает встраивание, обложка будет сохранена "
-"отдельным файлом."
+"Если тип файла не поддерживает встраивание, обложка будет сохранена в виде "
+"отдельного изображения."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:51
 msgid "Crop Audio Thumbnails"
-msgstr "Обрезать миниатюры для аудио"
+msgstr "Обрезка обложки аудио"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:52
 msgid "Parabolic will crop thumbnails of audio files to squares."
-msgstr ""
-"Parabolic будет обрезать миниатюры аудиофайлов до квадратного разрешения."
+msgstr "Parabolic будет обрезать обложки аудиофайлов до квадратного разрешения."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:54
 msgid ""
 "This option is only configurable if <code>Embed Thumbnails</code> is on."
 msgstr ""
-"Доступно только с включенной опцией <code>Встраивание метаданных</code>."
+"Данный параметр доступен, только если <code>Встраивание обложек</code> "
+"включено."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:61
 msgid "Embed Chapters"
-msgstr "Встраивать главы"
+msgstr "Встраивание глав"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:62
 msgid "Parabolic will tag a media with its chapter information if available."
-msgstr ""
-"Если доступны данные о метках глав, Parabolic будет добавлять их в файл."
+msgstr "Parabolic по возможности будет добавлять теги глав в медиа."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:68
 msgid "Embed Subtitles"
-msgstr "Встраивать субтитры"
+msgstr "Встраивание субтитров"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:69
@@ -258,8 +261,8 @@ msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files."
 msgstr ""
-"Если выключено, или если встраивание не удастся, загруженные субтитры будут "
-"сохранены отдельными файлами."
+"Если параметр выключен или если встраивание не поддерживается, загруженные "
+"субтитры будут сохранены в отдельных файлах."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:70
@@ -267,23 +270,25 @@ msgid ""
 "Whether or not embedding is supported if affected by your chosen "
 "<code>Preferred Subtitle Format</code>."
 msgstr ""
-"Поддерживается ли встраивание, зависит от выбранного вами "
-"<code>Предпочтительного формата субтитров</code>."
+"Поддержка встраивания зависит от выбранного вами параметра "
+"<code>Предпочтительный формат субтитров</code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:76
 msgid "FFmpeg Threads"
-msgstr "Число потоков FFmpeg"
+msgstr "Потоки FFmpeg"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:77
 msgid "Parabolic will limit the number of threads used by <code>ffmpeg</code>."
-msgstr "Parabolic ограничивает число потоков используемых <code>ffmpeg</code>."
+msgstr ""
+"Parabolic будет ограничивать количество потоков, выделяемых "
+"<code>ffmpeg</code>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:79
 msgid "Default: The max number of threads available on the system"
-msgstr "По умолчанию: максимальное количество потоков доступных в системе"
+msgstr "По умолчанию: Максимальное количество потоков, доступных в системе"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:83
@@ -296,33 +301,38 @@ msgid ""
 "Parabolic will present these options in the add download dialog to be passed "
 "to <code>ffmpeg</code> and other post-processors when processing media."
 msgstr ""
+"Parabolic предоставит следующие параметры в диалоге добавления загрузки для "
+"последующей передачи в <code>ffmpeg</code> и другие постпроцессоры при "
+"обработке медиа."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:86
 msgid "Postprocessing Argument Fields:"
-msgstr ""
+msgstr "Поля аргументов постобработки:"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:87
-#, fuzzy
 msgid "<code>Name</code> - The friendly name of the argument."
-msgstr "<code>Имя</code>: Имя учётных данных"
+msgstr "<code>Имя</code> — Описательное имя аргумента."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:88
 msgid ""
 "<code>Post Processor</code> - The post processor to pass the arguments to."
 msgstr ""
+"<code>Постпроцессор</code> — Постпроцессор, которому передаются аргументы."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:89
 msgid "<code>Executable</code> - The executable to pass the arguments to."
 msgstr ""
+"<code>Исполняемый файл</code> — Внешняя программа, которой передаются "
+"аругменты."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:90
 msgid "<code>Args</code> - The args to pass."
-msgstr ""
+msgstr "<code>Переменные</code> — Передаваемые переменные."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
@@ -341,38 +351,35 @@ msgid ""
 "This page explains all options for configuring the Downloader in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"Эта страница поясняет все опции по настройке Загрузчика в параметрах "
-"<app>Parabolic</app>."
+"На данной странице описаны все параметры по конфигурации загрузчика в "
+"настройках <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:25
-#, fuzzy
 msgid "Use Part Files"
-msgstr "Использовать aria2"
+msgstr "Использование частичных файлов"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:26
-#, fuzzy
 msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
-"Если этот параметр включен, Parabolic экспортирует описание мультимедиа в "
-"файл <code>.description</code> рядом с загруженным файлом."
+"Parabolic будет загружать медиа раздельными файлами <code>.part</code>, а не "
+"выводить напрямую в конечный файл"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
 msgid "Use SponsorBlock for YouTube"
-msgstr "Использовать SponsorBlock для YouTube"
+msgstr "Использование SponsorBlock для YouTube"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:33
-#, fuzzy
 msgid ""
 "Parabolic will attempt to remove sponsored segments from YouTube videos."
 msgstr ""
-"Если включено, Parabolic будет применять расширение SponsorBlock для "
-"загрузок с YouTube."
+"Parabolic по возможности будет вырезать спонсорские сегменты из видео с "
+"YouTube."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:35
@@ -380,51 +387,50 @@ msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
 msgstr ""
-"SponsorBlock работает только для видео с YouTube. Однако включение этой "
-"настройки не повлияет на загрузки с других сайтов (т.е. не приведёт к их "
+"SponsorBlock работает только для видео с YouTube. Однако включение данного "
+"параметра не повлияет на загрузки с других сайтов (т.е. не приведёт к их "
 "неудаче)."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:42
 msgid "Speed Limit"
-msgstr "Ограничение скорости"
+msgstr "Ограничение скорости загрузки"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:43
-#, fuzzy
 msgid ""
 "The limit, in KiB/s, to apply to downloads when enabled. Must be an integer "
 "value between 512 and 10240."
 msgstr ""
-"Этот лимит (в КиБ/с) применяется к загрузкам, у которых включена опция "
-"<code>Ограничения скорости</code>. Целое число от 512 до 10240."
+"Ограничение (в КиБ/с), применяемое к загрузкам при включении параметра. "
+"Должно быть целое число от 512 до 10240."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:49
 msgid "Proxy URL"
-msgstr "Адрес прокси-сервера"
+msgstr "Ссылка на прокси"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:50
 msgid "The url of the proxy server to use."
-msgstr "Ссылка на прокси-сервер, который будет использоваться при загрузке."
+msgstr "Ссылка на адрес используемого прокси-сервера."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:52
 msgid "Default: No URL"
-msgstr "По умолчанию: нет URL-адреса"
+msgstr "По умолчанию: Без ссылки"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:56
 msgid "Cookies from Browser"
-msgstr "Куки браузера"
+msgstr "Cookie из браузера"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:57
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
-"Браузер, в котором можно считывать файлы cookie и передавать их в механизм "
+"Браузер, в котором можно считывать cookie и передавать их в компонент "
 "загрузки yt-dlp."
 
 #. (itstool) path: item/p
@@ -433,13 +439,14 @@ msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
 msgstr ""
-"Это может быть полезно при загрузке медиафайлов, требующих входа в систему, "
-"например: частных видео YouTube."
+"Полезно при загрузке медиа, требующих входа в систему; например: частных "
+"видео с YouTube."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:59
 msgid "This option is on available on non sandboxed platforms."
-msgstr "Эта опция доступна на платформах без изолированной программной среды."
+msgstr ""
+"Данный параметр доступен на платформах без изолированной программной среды."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:61
@@ -449,12 +456,13 @@ msgstr "По умолчанию: Нет"
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:65
 msgid "Cookies File"
-msgstr "Файл куки"
+msgstr "Файл cookie"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:66
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
-msgstr "Файл cookie в формате .txt для передачи в yt-dlp при загрузке системы."
+msgstr ""
+"Файл в формате .txt под cookie для передачи в компонент загрузки yt-dlp."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:68
@@ -462,7 +470,7 @@ msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr ""
-"Используйте одно из следующих расширений для получения файла куки из вашего "
+"Используйте одно из следующих расширений для получения cookie из вашего "
 "браузера:"
 
 #. (itstool) path: item/p
@@ -486,12 +494,12 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:72
 msgid "Use these extensions at your own risk."
-msgstr "Используйте эти расширения на свой страх и риск."
+msgstr "Используйте данные расширения на свой страх и риск."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:75
 msgid "Default: No File Selected"
-msgstr "По умолчанию: файл не выбран"
+msgstr "По умолчанию: Файл не выбран"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloads.page:8
@@ -510,22 +518,21 @@ msgid ""
 "This page explains all options for configuring Downloads in Preferences in "
 "<app>Parabolic</app>."
 msgstr ""
-"Эта страница объясняет все опции по настройке загрузок в параметрах "
-"<app>Parabolic</app>."
+"На данной странице описаны все параметры по конфигурации загрузок в "
+"настройках <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:26
 msgid "Maximum Number of Active Downloads"
-msgstr "Максимальное число активных загрузок"
+msgstr "Максимум активных загрузок"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:27
-#, fuzzy
 msgid ""
 "The number of downloads allowed to be running at a time. Must be an integer "
 "value between 1 and 10."
 msgstr ""
-"Число активных загрузок, которые могут быть запущены одновременно. Целое "
+"Допустимое количество одновременно выполняемых загрузок. Должно быть целое "
 "число от 1 до 10."
 
 #. (itstool) path: item/p
@@ -534,8 +541,8 @@ msgid ""
 "If the max number of active downloads is reached, Parabolic will place new "
 "downloads in a queue until more downloads are able to be run."
 msgstr ""
-"Если достигнут максимум активных загрузок, новые загрузки будут помещаться в "
-"очередь, пока не появится место для запуска новых загрузок."
+"При достигнутом максимуме активных загрузок Parabolic будет помещать новые "
+"загрузки в очередь, пока новые не смогут быть запущены."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:30
@@ -545,13 +552,12 @@ msgstr "По умолчанию: 5"
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:34
 msgid "Overwrite Existing Files"
-msgstr "Перезаписывать существующие файлы"
+msgstr "Перезапись имеющихся файлов"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:35
-#, fuzzy
 msgid "Parabolic will overwrite existing files."
-msgstr "Если включено, Parabolic будет перезаписывать существующие файлы."
+msgstr "Parabolic будет перезаписывать уже существующие файлы."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:36
@@ -560,9 +566,9 @@ msgid ""
 "folder, and a new download is created named <code>movie</code>, <code>movie."
 "mp4</code> will be overwritten with the new download's content."
 msgstr ""
-"Например, если файл с именем <code>movie.mp4</code> существует в папке "
-"сохранения, а новый файл создаётся с именем <code>movie</code>, в файл "
-"<code>movie.mp4</code> будет записано новое содержимое."
+"Например, если файл с именем <code>фильм.mp4</code> существует в папке "
+"сохранения, а новый файл создаётся с именем <code>фильм</code>, файл "
+"<code>фильм.mp4</code> будет перезаписан новым загружаемым файлом."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:38
@@ -570,43 +576,44 @@ msgid ""
 "Parabolic will detect downloads that should be resumed and avoid this "
 "setting when recovering or retrying failed downloads"
 msgstr ""
-"Parabolic обнаружит загрузки, которые следует возобновить, и избегает этой "
-"настройки при восстановлении или повторной попытке неудачных загрузок"
+"Parabolic будет отслеживать загрузки, которые следует возобновить, и "
+"избегать данный параметр при восстановлении или повторном запуске неудачных "
+"загрузок"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:45
 msgid "Limit Filename Characters"
-msgstr "Ограничение количества символов в имени файла"
+msgstr "Ограничение символов в имени файла"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:46
-#, fuzzy
 msgid ""
 "Parabolic will restrict characters in filenames to those supported only by "
 "Windows."
 msgstr ""
-"Ограничивает символы в именах файлов только теми, которые поддерживаются "
-"Windows."
+"Parabolic будет ограничивать символы в именах файлов только теми, которые "
+"поддерживаются Windows."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:47
 msgid "This option is only available on Linux."
-msgstr "Эта опция доступна только в Linux."
+msgstr "Данный параметр доступен только в Linux."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:53
 msgid "Included Media Id in Title After Validation"
-msgstr "Включенный идентификатор носителя в заголовок после проверки"
+msgstr "Добавление ID медиа в заголовок"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:54
 msgid "Parabolic will include a media's id in its default title."
-msgstr "Parabolic включит id носителя в его заголовок по умолчанию."
+msgstr ""
+"Parabolic будет добавлять идентификатор медиа к его начальному заголовку."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:60
 msgid "Included Auto-Generated Subtitles"
-msgstr "Включать автоматически сгенерированные субтитры"
+msgstr "Добавление автоматических субтитров"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:61
@@ -614,24 +621,22 @@ msgid ""
 "Parabolic will present auto-generated subtitles to download in addition to "
 "available subtitles."
 msgstr ""
-"Parabolic предоставит на скачивание автоматически сгенерированные субтитры в "
-"дополнение к доступным субтитрам."
+"Parabolic предоставит на загрузку автоматически созданные субтитры в "
+"дополнение к имеющимся."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:67
-#, fuzzy
 msgid "Preferred Video Codec"
-msgstr "Загружать в AV1"
+msgstr "Предпочтительный видеокодек"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:68
-#, fuzzy
 msgid ""
 "The video codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
-"Видеокодек Parabolic следует отдавать предпочтение при выборе медиаформатов "
-"для загрузки."
+"Видеокодек, который должен быть в приоритете у Parabolic при обработке "
+"доступных к загрузке медиаформатов."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:70
@@ -639,7 +644,7 @@ msgid ""
 "If Parabolic cannot find any formats with the selected preferred codec, no "
 "video formats will be available for download."
 msgstr ""
-"Если Parabolic не сможет найти ни одного формата с выбранным "
+"Если Parabolic не сможет найти ни одного формата с конкретно "
 "предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки."
 
 #. (itstool) path: note/p
@@ -650,19 +655,17 @@ msgstr "По умолчанию: Любой"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:77
-#, fuzzy
 msgid "Preferred Audio Codec"
-msgstr "Загружать в AV1"
+msgstr "Предпочтительный аудиокодек"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:78
-#, fuzzy
 msgid ""
 "The audio codec Parabolic should prefer when parsing media formats to "
 "download."
 msgstr ""
-"Видеокодек Parabolic следует отдавать предпочтение при выборе медиаформатов "
-"для загрузки."
+"Аудиокодек, который должен быть в приоритете у Parabolic при обработке "
+"доступных к загрузке медиаформатов."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:80
@@ -670,23 +673,19 @@ msgid ""
 "If Parabolic cannot find any formats with the selected preferred codec, no "
 "audio formats will be available for download."
 msgstr ""
-"Если Parabolic не сможет найти ни одного формата с выбранным "
-"предпочтительным кодеком, ни один видеоформат не будет доступен для загрузки."
+"Если Parabolic не сможет найти ни одного формата с конкретно "
+"предпочтительным кодеком, ни один аудиоформат не будет доступен для загрузки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:87
-#, fuzzy
 msgid "Preferred Subtitle Format"
-msgstr "Загружать в AV1"
+msgstr "Предпочтительный формат субтитров"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:88
-#, fuzzy
 msgid ""
 "The file format Parabolic should ensure all subtitles are downloaded as."
-msgstr ""
-"Формат файла Parabolic должен гарантировать загрузку всех загруженных "
-"субтитров в формате."
+msgstr "Формат файла, в котором Parabolic должен будет загружать все субтитры."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -711,8 +710,8 @@ msgid ""
 "This documentation will help you understand how to configure <app>Parabolic</"
 "app> to get the most of the application."
 msgstr ""
-"Эта документация призвана помочь вам понять, как настроить <app>Parabolic</"
-"app>, чтобы использовать приложение максимально эффективно."
+"Данная документация призвана помочь вам разобраться, как настроить "
+"<app>Parabolic</app> и получить лучший опыт от приложения."
 
 #. (itstool) path: page/p
 #: docs/yelp/C/index.page:22
@@ -722,11 +721,11 @@ msgid ""
 "Parabolic/discussions\">discussions</link> on Github, or <link "
 "href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
-"Для получения дополнительной помощи посетите <link href=\"https://github.com/"
-"NickvisionApps/Parabolic/issues\">раздел проблем</link> или <link "
-"href=\"https://github.com/NickvisionApps/Parabolic/discussions\">обсуждения</"
-"link> на Github, либо <link href=\"https://bit.ly/3GrfEid\">наш канал в "
-"Matrix</link>."
+"Для получения дополнительной помощи посетите <link href="
+"\"https://github.com/NickvisionApps/Parabolic/issues\">раздел проблем</link> "
+"или <link href=\"https://github.com/NickvisionApps/Parabolic/discussions\""
+">обсуждений</link> на Github, либо <link href=\"https://bit.ly/3GrfEid\">наш "
+"канал в Matrix</link>."
 
 #. (itstool) path: page/p
 #: docs/yelp/C/index.page:23
@@ -736,8 +735,9 @@ msgid ""
 "this application at their own risk."
 msgstr ""
 "Авторы Nickvision Parabolic не несут ответственности за любое неправомерное "
-"использование программы, которое может нарушать местные законы об авторском "
-"праве или DMCA. Пользователи используют это приложение на свой страх и риск."
+"использование программы, потенциально нарушающее местное законодательство об "
+"авторском праве или DMCA. Пользователи используют данное приложение на свой "
+"страх и риск."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/interface.page:8
@@ -756,8 +756,8 @@ msgid ""
 "This page explains all options for configuring the User Interface in "
 "Preferences in <app>Parabolic</app>."
 msgstr ""
-"Эта страница объясняет все опции по настройке пользовательского интерфейса в "
-"параметрах <app>Parabolic</app>."
+"На данной странице описаны все параметры по конфигурации пользовательского "
+"интерфейса в настройках <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:25
@@ -777,7 +777,7 @@ msgstr "По умолчанию: Системная"
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:32
 msgid "Prevent Suspend"
-msgstr "Предотвращение приостановки"
+msgstr "Запрет на выключение"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:33
@@ -785,17 +785,17 @@ msgid ""
 "Parabolic will prevent the computer from sleeping while downloads are "
 "running."
 msgstr ""
+"Parabolic не позволит компьютеру перейти в спящий режим во время загрузки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:39
 msgid "Download History Length"
-msgstr "Размер истории загрузок"
+msgstr "Длительность истории загрузок"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:40
-#, fuzzy
 msgid "The amount of time to keep past downloads in the app's history."
-msgstr "Время, в течение которого сохраняется история загрузок."
+msgstr "Срок хранения последних загрузок в истории приложения."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/interface.page:42
@@ -818,8 +818,8 @@ msgstr "Связка ключей"
 msgid ""
 "This page explains all options for using the Keyring in <app>Parabolic</app>."
 msgstr ""
-"Эта страница поясняет все опции для использования Связки Ключей в "
-"<app>Parabolic</app>."
+"На данной странице описаны все параметры по использованию связки ключей в "
+"настройках <app>Parabolic</app>."
 
 #. (itstool) path: section/title
 #: docs/yelp/C/keyring.page:24
@@ -847,14 +847,14 @@ msgid ""
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring database file."
 msgstr ""
-"Библиотека будет использовать системный менеджер учётных данных для "
-"безопасного хранения связки ключей: DBus Secret Service в Linux или "
-"Диспетчер учетных данных в Windows."
+"Библиотека будет использовать системный менеджер учётных данных («DBus "
+"Secret Service» в Linux или «Диспетчер учетных данных» в Windows) для "
+"безопасного хранения связки ключей."
 
 #. (itstool) path: section/title
 #: docs/yelp/C/keyring.page:31
 msgid "Storing a Credential"
-msgstr "Сохранение учётных данных"
+msgstr "Хранение учётных данных"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:32
@@ -864,12 +864,12 @@ msgstr "Учётные данные могут содержать следующ
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:33
 msgid "<code>Name</code>: The name of the credential"
-msgstr "<code>Имя</code>: Имя учётных данных"
+msgstr "<code>Имя</code> — Имя учётных данных"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:34
 msgid "<code>URL</code> (optional): The URL of the credential"
-msgstr "<code>URL</code> (необязательно): ссылка для учётных данных"
+msgstr "<code>Ссылка</code> (необязательно) — Ссылка для учётных данных"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:35
@@ -877,7 +877,7 @@ msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
 msgstr ""
-"<code>Имя пользователя</code> (необязательно, если указан пароль): Имя "
+"<code>Имя пользователя</code> (необязательно, если указан пароль) — Имя "
 "пользователя учётных данных"
 
 #. (itstool) path: section/p
@@ -886,7 +886,7 @@ msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
 msgstr ""
-"<code>Пароль</code> (необязательно, если указано имя пользователя): пароль "
+"<code>Пароль</code> (необязательно, если указано имя пользователя) — Пароль "
 "учётных данных"
 
 #. (itstool) path: info/title
@@ -906,13 +906,13 @@ msgid ""
 "This page explains all options for configuring a new download in "
 "<app>Parabolic</app>."
 msgstr ""
-"Эта страница поясняет все опции по настройке новой загрузки в "
-"<app>Parabolic</app>."
+"На данной странице описаны все параметры по конфигурации новой загрузки в "
+"настройках <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:25
 msgid "Media URL"
-msgstr "Ссылка"
+msgstr "Ссылка на медиа"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:26
@@ -920,8 +920,8 @@ msgid ""
 "The URL of the media to download. Must be a valid (\"valid\" meaning "
 "syntactically correct) http or https link."
 msgstr ""
-"Ссылка для скачивания медиа. Должна быть корректной (\"корректной\" в смысле "
-"синтаксиса) http или https ссылкой."
+"Ссылка на загрузку медиа. Должна быть корректной (в плане синтаксиса) "
+"ссылкой с префиксом http или https."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:28
@@ -929,18 +929,19 @@ msgid ""
 "If a valid URL is found inside the clipboard upon opening the Add Download "
 "dialog, the URL will be automatically pasted in the URL entry row."
 msgstr ""
-"Если корректная ссылка обнаружена в буфере обмена, она будет автоматически "
-"вставлена в поле при открытии диалога добавления новой загрузки."
+"Если в буфере обмена хранится корректная ссылка, она автоматически будет "
+"вставлена в поле ввода адреса при открытии диалога добавления загрузки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:32
 msgid "Use Batch File"
-msgstr ""
+msgstr "Использовать пакетный файл"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:33
 msgid "Select a batch text file that contains a list of URLs to validate."
 msgstr ""
+"Выберите пакетный текстовый файл, содержащий список ссылок для проверки."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
@@ -948,6 +949,8 @@ msgid ""
 "Each URL can be accompanied by an optional save folder (delimited by <code>|"
 "</code>) in which to save each media of the URL to."
 msgstr ""
+"Каждую ссылку можно сопроводить дополнительной папкой сохранения ("
+"разделённой символом <code>|</code>), отдельной для каждого медиа."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:35
@@ -955,41 +958,43 @@ msgid ""
 "All of the URLs and their media from the batch file will be grouped and "
 "treated as one single playlist by Parabolic."
 msgstr ""
+"Parabolic сгруппирует и обработает все ссылки со связанными медиа из "
+"пакетного файла в единый плейлист."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:36
 msgid "The optional save folder must be an absolute path."
-msgstr ""
+msgstr "Дополнительная папка сохранения должна иметь абсолютный путь."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:38
 msgid "Batch File Format:"
-msgstr ""
+msgstr "Формат пакетного файла:"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:39
 msgid "<code>URL1</code>"
-msgstr ""
+msgstr "<code>Ссылка1</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:40
 msgid "<code>URL2 | \"Folder1\"</code>"
-msgstr ""
+msgstr "<code>Ссылка2 | \"Папка1\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:41
 msgid "<code>\"URL3\"|\"Folder2\"</code>"
-msgstr ""
+msgstr "<code>\"Ссылка3\"|\"Папка2\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:42
 msgid "<code>\"URL4\"</code>"
-msgstr ""
+msgstr "<code>\"Ссылка4\"</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:46
 msgid "Authenticate"
-msgstr "Аутентификация"
+msgstr "Авторизоваться"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:47
@@ -997,8 +1002,8 @@ msgid ""
 "If enabled, the user will be asked to provide a username and/or password to "
 "pass to yt-dlp when downloading."
 msgstr ""
-"Если включено, пользователь сможет предоставить имя пользователя и/или "
-"пароль для передачи yt-dlp при загрузке."
+"Если параметр включён, пользователь сможет предоставить имя пользователя и/"
+"или пароль для передачи в yt-dlp при загрузке."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:48
@@ -1006,8 +1011,8 @@ msgid ""
 "If credentials are found in the keyring, the user can instead chose from a "
 "list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
-"Если учетные данные найдены в связке ключей, пользователь может выбрать "
-"учётные данные из списка (или продолжить ввод учетных данных вручную)"
+"Если учётные данные найдены в связке ключей, пользователь может выбрать "
+"учётные данные из списка (или продолжит вводить их вручную)"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:50
@@ -1015,8 +1020,8 @@ msgid ""
 "Not all websites support passing usernames and passwords to yt-dlp. For "
 "example, YouTube does NOT support this feature."
 msgstr ""
-"Не все сайты поддерживают аутентификацию по имени пользователя и паролю. "
-"Например, YouTube НЕ поддерживает эту функцию."
+"Не все сайты поддерживают передачу имени пользователя и пароля в yt-dlp. "
+"Например, YouTube НЕ поддерживает данную функцию."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:51
@@ -1024,24 +1029,22 @@ msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
 "select a browser to use cookies from in Preferences instead."
 msgstr ""
-"Для сайтов, которые не поддерживают передачу учетных данных, рекомендуется "
-"выбрать браузер для использования файлов cookie в приложениях."
+"Для сайтов, не поддерживающих передачу учётных данных, рекомендуется выбрать "
+"браузер для считывания cookie в настройках."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:55
-#, fuzzy
 msgid "Download Immediately"
-msgstr "Немедленное скачивание сразу после проверки"
+msgstr "Загрузить сразу"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:56
-#, fuzzy
 msgid ""
 "Parabolic will immediately download the media after validation, using the "
 "previously configured download options."
 msgstr ""
-"Parabolic обнаружит загрузки, которые следует возобновить, и избегает этой "
-"настройки при восстановлении или повторной попытке неудачных загрузок"
+"Parabolic будет загружать медиа сразу после проверки, с учётом ранее "
+"настроенных параметров загруки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:62
@@ -1051,7 +1054,7 @@ msgstr "Тип файла"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:63
 msgid "The file type of which to download the media as."
-msgstr "Файл какого типа требуется загрузить."
+msgstr "Файл какого типа требуется загрузить из медиа."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:65
@@ -1059,8 +1062,8 @@ msgid ""
 "The previously used file type will be remembered and pre-selected for the "
 "next download."
 msgstr ""
-"Использованный тип файла будет сохранён и автоматически выбран в следующий "
-"раз."
+"Ранее выбранный тип файла будет запоминаться и предварительно указываться "
+"для следующей загрузки."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:68
@@ -1070,23 +1073,23 @@ msgid ""
 "type of the media without performing any conversions."
 msgstr ""
 "Выбор типов файлов <code>Видео (общее)</code> или <code>Аудио (общее)</code> "
-"приведет к тому, что Parabolic загрузит медиафайл в исходном типе файла "
-"мультимедиа без выполнения каких-либо преобразований."
+"приведёт к тому, что Parabolic загрузит медиа в исходном формате без "
+"выполнения каких-либо конвертаций."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:69
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
 "Separate files may be written to disk if embedding is not supported."
 msgstr ""
-"Если выключено, или если встраивание не удастся, загруженные субтитры будут "
-"сохранены отдельными файлами."
+"Распространённые типы файлов не полностью поддерживают встраивание обложек и "
+"субтитров. Раздельные файлы можно записать на носитель при неподдерживаемом "
+"встраивании."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:73
 msgid "Video Format"
-msgstr "Формат видео"
+msgstr "Видеоформат"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:74
@@ -1094,29 +1097,30 @@ msgid ""
 "The list of video formats available for download, sorted by resolution and "
 "bitrate."
 msgstr ""
+"Список доступных для загрузки видеоформатов, отсортированных по разрешению и "
+"битрейту."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:75
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
+"Каждый формат имеет вид: <code>разрешение | битрейт | кодек (id)</code>."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:76
-#, fuzzy
 msgid "If the file type is an audio type, this option will not be available."
 msgstr ""
-"Если выбранный тип файла является аудио, будут перечислены доступные "
-"битрейты."
+"Если выбранный тип файла является аудио, данный параметр будет недоступен."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:78
-#, fuzzy
 msgid ""
 "The previously used video format will be remembered and pre-selected for the "
 "next download."
 msgstr ""
-"Выбранная папка будет сохранена и автоматически выбрана в следующий раз."
+"Ранее выбранный видеоформат будет запоминаться и предварительно указываться "
+"для следующей загрузки."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:81 docs/yelp/C/newDownload.page:95
@@ -1124,61 +1128,63 @@ msgid ""
 "The following are special formats used by Parabolic to match <code>yt-dlp</"
 "code> behaviors:"
 msgstr ""
+"Parabolic использует следующие спецформаты для соответствия поведению <code"
+">yt-dlp</code>:"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:82 docs/yelp/C/newDownload.page:96
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
-msgstr ""
+msgstr "— <code>Нет</code> = Параметр не передаётся в <code>yt-dlp</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:83
 msgid "- <code>Best</code> = <code>bv*</code>"
-msgstr ""
+msgstr "— <code>Лучший</code> = <code>bv*</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:84
 msgid "- <code>Worst</code> = <code>wv*</code>"
-msgstr ""
+msgstr "— <code>Худший</code> = <code>wv*</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:88
 msgid "Audio Format"
-msgstr "Формат аудио"
+msgstr "Аудиоформат"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:89
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
+"Список доступных для загрузки аудиоформатов, отсортированных по битрейту."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:90
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
-msgstr ""
+msgstr "Каждый формат имеет вид: <code>битрейт | язык (id)</code>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:92
-#, fuzzy
 msgid ""
 "The previously used audio format will be remembered and pre-selected for the "
 "next download."
 msgstr ""
-"Выбранная папка будет сохранена и автоматически выбрана в следующий раз."
+"Ранее выбранный аудиоформат будет запоминаться и предварительно указываться "
+"для следующей загрузки."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:97
 msgid "- <code>Best</code> = <code>ba</code>"
-msgstr ""
+msgstr "— <code>Лучший</code> = <code>ba</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:98
 msgid "- <code>Worst</code> = <code>wa</code>"
-msgstr ""
+msgstr "— <code>Худший</code> = <code>wa</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:102
-#, fuzzy
 msgid "Subtitles"
-msgstr "Встраивать субтитры"
+msgstr "Субтитры"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:103
@@ -1187,9 +1193,9 @@ msgid ""
 "download by the user. Further subtitle settings can be configured in <link "
 "xref=\"downloads\">preferences</link>."
 msgstr ""
-"Список доступных субтитров, которые пользователь может выбрать для загрузки. "
-"Дополнительные настройки субтитров можно настроить в <link "
-"xref=\"downloads\">настройках</link>."
+"Список доступных субтитров, которые пользователь выбирает для загрузки. "
+"Дополнительные параметры субтитров задаются в <link xref=\"downloads\""
+">настройках</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:105
@@ -1197,13 +1203,13 @@ msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
 msgstr ""
-"Ранее выбранные субтитры будут запоминаться и предварительно выбраны для "
+"Ранее выбранные субтитры будут запоминаться и предварительно указываться для "
 "следующей загрузки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:109
 msgid "Split Chapters"
-msgstr "Разделить по главам"
+msgstr "Разделение видео по главам"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:110
@@ -1211,8 +1217,8 @@ msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
 msgstr ""
-"Если включено, Parabolic разделит видео на части в соответствии с его "
-"оглавлением."
+"Если параметр включён, Parabolic разобьёт загружаемое видео на меньшие файлы "
+"в соответствии с его главами."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:112 docs/yelp/C/newDownload.page:119
@@ -1220,13 +1226,13 @@ msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr ""
-"Выбранное состояние переключателя будет сохранено и автоматически выбрано в "
-"следующий раз."
+"Ранее выбранное состояние будет запоминаться и предварительно указываться "
+"для следующей загрузки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:116
 msgid "Export Description"
-msgstr "Экспортирование описания"
+msgstr "Экспорт описания"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:117
@@ -1234,28 +1240,26 @@ msgid ""
 "If enabled, Parabolic will export the media's description to a <code>."
 "description</code> file alongside the downloaded file."
 msgstr ""
-"Если этот параметр включен, Parabolic экспортирует описание мультимедиа в "
-"файл <code>.description</code> рядом с загруженным файлом."
+"Если параметр включён, Parabolic экспортирует описание медиа в файл "
+"<code>.description</code> рядом с загруженным файлом."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
-msgstr ""
+msgstr "Исключение из истории"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:124
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
 "downloads."
 msgstr ""
-"Если включено, Parabolic будет применять расширение SponsorBlock для "
-"загрузок с YouTube."
+"Если параметр включён, Parabolic исключит данную загрузку из общей истории."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:127
 msgid "Post Processor Argument"
-msgstr ""
+msgstr "Аргумент постпроцессора"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:128
@@ -1264,44 +1268,42 @@ msgid ""
 "postprocessing arguments can be configured in <link "
 "xref=\"converter\">preferences</link>."
 msgstr ""
+"Аргумент, передаваемый постпроцессору при загрузке. Доступные аргументы "
+"постобработки задаются в <link xref=\"converter\">настройках</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:130
-#, fuzzy
 msgid ""
 "The previously selected argument will be remembered and pre-selected for the "
 "next download."
 msgstr ""
-"Ранее выбранные субтитры будут запоминаться и предварительно выбраны для "
+"Ранее выбранный аргумент будет запоминаться и предварительно указываться для "
 "следующей загрузки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:134
 msgid "Write M3U Playlist File"
-msgstr ""
+msgstr "Запись файла плейлиста M3U"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:135
-#, fuzzy
 msgid "If enabled, Parabolic will write a m3u file for the playlist download."
 msgstr ""
-"Если включено, Parabolic будет применять расширение SponsorBlock для "
-"загрузок с YouTube."
+"Если параметр включён, Parabolic создаст файл m3u для загрузки плейлиста."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:137
-#, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "playlist download."
 msgstr ""
-"Выбранное состояние переключателя будет сохранено и автоматически выбрано в "
-"следующий раз."
+"Ранее выбранное состояние будет запоминаться и предварительно указываться "
+"для следующей загрузки плейлиста."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:141
 msgid "Time Frame"
-msgstr "Временные рамки"
+msgstr "Временной отрезок"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:142
@@ -1309,13 +1311,13 @@ msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
 msgstr ""
-"Пользователь может ввести временные рамки начала и окончания, чтобы "
-"загрузить определенную часть мультимедиа."
+"Пользователь может задать промежутки начала и конца, чтобы загрузить "
+"определённый отрезок медиа."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:144
 msgid "Default: The whole media length"
-msgstr "По умолчанию: Целиком"
+msgstr "По умолчанию: Медиа загружается целиком"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:148
@@ -1325,7 +1327,7 @@ msgstr "Папка сохранения"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:149
 msgid "The folder at which to save the download to."
-msgstr "Папка, в которую сохранить загруженный файл."
+msgstr "Папка, куда сохранятся загружаемые файлы."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:151
@@ -1333,7 +1335,8 @@ msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr ""
-"Выбранная папка будет сохранена и автоматически выбрана в следующий раз."
+"Ранее выбранная папка будет запоминаться и предварительно указываться для "
+"следующей загрузки."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:155
@@ -1343,12 +1346,12 @@ msgstr "Имя файла"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:156
 msgid "The file name to use when saving the download."
-msgstr "Имя, под которым сохранить загруженный файл."
+msgstr "Имя, используемое при сохранении загружаемого файла."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:158
 msgid "Default: The title of the media"
-msgstr "По умолчанию: заголовок медиа"
+msgstr "По умолчанию: Заголовок медиа"
 
 #, fuzzy, no-wrap
 #~ msgid "Name"
