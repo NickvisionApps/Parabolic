@@ -53,7 +53,7 @@ if(WIN32)
         VS_GLOBAL_ApplicationType "Windows Store"
         VS_GLOBAL_ApplicationTypeRevision 10.0
         VS_GLOBAL_WindowsTargetPlatformVersion 10.0
-        VS_GLOBAL_WindowsTargetPlatformMinVersion "10.0.19045.0"
+        VS_GLOBAL_WindowsTargetPlatformMinVersion "10.0.19044.0"
         VS_GLOBAL_WindowsPackageType None
         VS_GLOBAL_EnablePreviewMsixTooling true
         VS_GLOBAL_OutputType WinExe
