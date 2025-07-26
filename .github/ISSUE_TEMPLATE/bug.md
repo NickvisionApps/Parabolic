@@ -24,15 +24,11 @@ If applicable, list the download options you selected, as well as the options yo
     - [ ] Flatpak
     - [ ] Snap
     - [ ] Source (Including AUR)
-- [ ] Qt on Linux
-    - [ ] Flatpak
-    - [ ] Snap
-    - [ ] Source (Including AUR)
-- [ ] Qt on Windows
+- [ ] WinUI on Windows
     - [ ] Installer
     - [ ] Portable
 
-Version Number: 
+Version Number:
 
 **Additional context**
 Add any other context about the problem here.

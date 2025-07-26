@@ -51,7 +51,7 @@ jobs:
           triplet: ${{ matrix.variant.triplet }}
           revision: 4887ad6d1414f74cb7cb8d1e527fb46adb4e9ace
           token: ${{ github.token }}
-          cache-key: ${{ matrix.variant.triplet }}
+          cache-key: ${{ matrix.variant.triplet }}-4887ad6d1414f74cb7cb8d1e527fb46adb4e9ace
       - name: "Build (Installer)"
         working-directory: ${{ github.workspace }}/build
         run: |
