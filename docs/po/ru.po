@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-07-23 22:31-0400\n"
-"PO-Revision-Date: 2025-07-25 06:03+0000\n"
+"PO-Revision-Date: 2025-07-26 14:22+0000\n"
 "Last-Translator: Valerii Zhikharev <fr0stmatic@proton.me>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/ru/>\n"
@@ -56,7 +56,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:25
 msgid "Use aria2c"
-msgstr "Использование aria2c"
+msgstr "Включение aria2c"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
@@ -85,7 +85,7 @@ msgid ""
 "same as the <code>-x</code> flag passed to aria2c."
 msgstr ""
 "Данный параметр применяется только при задействовании aria2с. Равносильно "
-"использованию флага <code>-x</code> в aria2c."
+"использованию флага <code>-x</code>, передаваемого aria2c."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:34
@@ -113,7 +113,7 @@ msgid ""
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
 "Данный параметр применяется только при задействовании aria2с. Равносильно "
-"использованию флага <code>-k</code> в aria2c."
+"использованию флага <code>-k</code>, передаваемого aria2c."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:42
@@ -160,8 +160,8 @@ msgid ""
 "Parabolic will tag a media with its relevant information (title, genre, "
 "etc...) if available."
 msgstr ""
-"Parabolic по возможности будет добавлять определяющие теги (заголовок, жанр "
-"и т.д.) в медиа."
+"Parabolic по возможности будет добавлять в медиа теги с основными данными ("
+"заголовок, жанр и т.д.)."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
@@ -182,8 +182,8 @@ msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
 msgstr ""
-"Parabolic будет стирать метаданные, содержащие идентифицирующие сведения о "
-"загрузке."
+"Parabolic будет стирать поля метаданных, содержащие идентифицирующие "
+"сведения о загрузке."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:34
@@ -192,16 +192,16 @@ msgid ""
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
-"Следующие поля будут удалены: <code>comment</code>, <code>description</"
-"code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> "
-"в каждой дорожке."
+"В каждой дорожке будут стёрты следующие поля: <code>comment</code>, "
+"<code>description</code>, <code>synopsis</code>, <code>purl</code> и "
+"<code>handler_name</code>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:36
 msgid "This option is only configurable if <code>Embed Metadata</code> is on."
 msgstr ""
-"Данный параметр доступен, только если <code>Встраивание метаданных</code> "
-"включено."
+"Данный параметр доступен, только если включено <code>Встраивание "
+"метаданных</code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:43
@@ -238,8 +238,8 @@ msgstr ""
 msgid ""
 "This option is only configurable if <code>Embed Thumbnails</code> is on."
 msgstr ""
-"Данный параметр доступен, только если <code>Встраивание обложек</code> "
-"включено."
+"Данный параметр доступен, только если включено <code>Встраивание "
+"обложек</code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:61
@@ -249,7 +249,7 @@ msgstr "Встраивание глав"
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:62
 msgid "Parabolic will tag a media with its chapter information if available."
-msgstr "Parabolic по возможности будет добавлять теги глав в медиа."
+msgstr "Parabolic по возможности будет добавлять в медиа теги с главами."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:68
@@ -303,7 +303,7 @@ msgid ""
 "to <code>ffmpeg</code> and other post-processors when processing media."
 msgstr ""
 "Parabolic предоставит следующие параметры в диалоге добавления загрузки для "
-"последующей передачи в <code>ffmpeg</code> и другие постпроцессоры при "
+"последующей передачи <code>ffmpeg</code> и другим постпроцессорам при "
 "обработке медиа."
 
 #. (itstool) path: note/p
@@ -333,7 +333,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:90
 msgid "<code>Args</code> - The args to pass."
-msgstr "<code>Переменные</code> — Передаваемые переменные."
+msgstr "<code>Переменные</code> — Непосредственно передаваемые переменные."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
@@ -366,8 +366,8 @@ msgid ""
 "Parabolic will download media in separate .part files instead of directly "
 "into the output file."
 msgstr ""
-"Parabolic будет загружать медиа раздельными файлами <code>.part</code>, а не "
-"выводить напрямую в конечный файл"
+"Parabolic будет загружать медиа раздельными файлами <code>.part</code> "
+"вместо прямого вывода."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:32
@@ -430,9 +430,7 @@ msgstr "Cookie из браузера"
 #: docs/yelp/C/downloader.page:57
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
-msgstr ""
-"Браузер, в котором можно считывать cookie и передавать их в компонент "
-"загрузки yt-dlp."
+msgstr "Браузер, из которого считывать cookie для передачи загрузчику yt-dlp."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
@@ -447,7 +445,8 @@ msgstr ""
 #: docs/yelp/C/downloader.page:59
 msgid "This option is on available on non sandboxed platforms."
 msgstr ""
-"Данный параметр доступен на платформах без изолированной программной среды."
+"Данный параметр доступен только в неизолированных программных средах (не в "
+"«песочницах»)."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:61
@@ -462,8 +461,7 @@ msgstr "Файл cookie"
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:66
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
-msgstr ""
-"Файл в формате .txt под cookie для передачи в компонент загрузки yt-dlp."
+msgstr "Файл в формате .txt под cookie для передачи загрузчику yt-dlp."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:68
@@ -542,8 +540,9 @@ msgid ""
 "If the max number of active downloads is reached, Parabolic will place new "
 "downloads in a queue until more downloads are able to be run."
 msgstr ""
-"При достигнутом максимуме активных загрузок Parabolic будет помещать новые "
-"загрузки в очередь, пока новые не смогут быть запущены."
+"При достигнутом максимуме активных загрузок Parabolic будет ставить новые "
+"загрузки в очередь до тех пор, пока не освободится возможность для их "
+"запуска."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:30
@@ -768,7 +767,7 @@ msgstr "Тема"
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:26
 msgid "The theme for the user interface."
-msgstr "Тема для пользовательского интерфейса."
+msgstr "Непосредственно оформление для пользовательского интерфейса."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/interface.page:28
@@ -878,7 +877,7 @@ msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
 msgstr ""
-"<code>Имя пользователя</code> (необязательно, если указан пароль) — Имя "
+"<code>Имя пользователя</code> (необязательно и при заданном пароле) — Имя "
 "пользователя учётных данных"
 
 #. (itstool) path: section/p
@@ -887,8 +886,8 @@ msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
 msgstr ""
-"<code>Пароль</code> (необязательно, если указано имя пользователя) — Пароль "
-"учётных данных"
+"<code>Пароль</code> (необязательно и при заданном имени пользователя) — "
+"Пароль учётных данных"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/newDownload.page:8
@@ -921,8 +920,8 @@ msgid ""
 "The URL of the media to download. Must be a valid (\"valid\" meaning "
 "syntactically correct) http or https link."
 msgstr ""
-"Ссылка на загрузку медиа. Должна быть корректной (в плане синтаксиса) "
-"ссылкой с префиксом http или https."
+"Непосредственно ссылка на загружаемое медиа. Должна быть корректной (в плане "
+"синтаксиса), с префиксом http или https."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:28
@@ -1004,7 +1003,7 @@ msgid ""
 "pass to yt-dlp when downloading."
 msgstr ""
 "Если параметр включён, пользователь сможет предоставить имя пользователя и/"
-"или пароль для передачи в yt-dlp при загрузке."
+"или пароль для передачи yt-dlp при загрузке."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:48
@@ -1030,8 +1029,8 @@ msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
 "select a browser to use cookies from in Preferences instead."
 msgstr ""
-"Для сайтов, не поддерживающих передачу учётных данных, рекомендуется выбрать "
-"браузер для считывания cookie в настройках."
+"Для сайтов, не поддерживающих передачу учётных данных, в настройках "
+"рекомендуется выбрать браузер для считывания cookie."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:55
@@ -1135,7 +1134,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:82 docs/yelp/C/newDownload.page:96
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
-msgstr "— <code>Нет</code> = Параметр не передаётся в <code>yt-dlp</code>"
+msgstr "— <code>Нет</code> = Параметр не передаётся <code>yt-dlp</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:83
