@@ -7,11 +7,11 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <libnick/app/cancellationtoken.h>
 #include <libnick/app/datafilemanager.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
-#include "models/cancellationtoken.h"
 #include "models/downloadmanager.h"
 #include "models/timeframe.h"
 #include "models/urlinfo.h"
@@ -176,7 +176,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Models::DownloadManager& m_downloadManager;
         Models::PreviousDownloadOptions& m_previousOptions;
         Keyring::Keyring& m_keyring;
-        Models::CancellationToken m_validationCancellationToken;
+        App::CancellationToken m_validationCancellationToken;
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;
         mutable std::unordered_map<size_t, size_t> m_videoFormatMap;

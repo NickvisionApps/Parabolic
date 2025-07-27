@@ -68,15 +68,18 @@ parts:
 
   maddy:
     source: https://github.com/progsource/maddy.git
-    source-tag: '1.5.0'
-    plugin: dump
+    source-tag: '1.6.0'
     source-depth: 1
-    override-prime: '' 
+    plugin: cmake
+    cmake-parameters:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/usr
+    override-prime: ''
 
   libnick:
     after: [cpr, maddy]
     source: https://github.com/NickvisionApps/libnick.git
-    source-commit: '0f7c048f4a45984378749f5119d4091966ae1a2c'
+    source-tag: '2025.7.4'
     source-depth: 1
     plugin: cmake
     cmake-parameters:

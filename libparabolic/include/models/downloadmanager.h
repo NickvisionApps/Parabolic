@@ -6,10 +6,10 @@
 #include <optional>
 #include <unordered_map>
 #include <vector>
+#include <libnick/app/cancellationtoken.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/credential.h>
-#include "cancellationtoken.h"
 #include "download.h"
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
@@ -172,7 +172,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param suggestedSaveFolder An option save folder to save the url's media to
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
+        std::optional<UrlInfo> fetchUrlInfo(App::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
         /**
          * @brief Fetches information about a set of URLs from a batch file.
          * @param token The CancellationToken to use for cancellation
@@ -180,7 +180,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param credential An optional credential to use for authentication
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
+        std::optional<UrlInfo> fetchUrlInfo(App::CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.

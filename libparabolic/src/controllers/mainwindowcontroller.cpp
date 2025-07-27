@@ -16,6 +16,8 @@
 #endif
 
 #define CONFIG_FILE_KEY "config"
+#define HISTORY_FILE_KEY "history"
+#define RECOVERY_FILE_KEY "recovery"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
@@ -41,13 +43,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName(), false },
 #endif
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery") },
+        m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY), m_dataFileManager.get<DownloadRecoveryQueue>(RECOVERY_FILE_KEY) },
         m_isWindowActive{ false }
     {
         m_appInfo.setVersion({ "2025.7.3-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where the app would not open on certain versions of Windows 10");
+        m_appInfo.setChangelog("- Replaced None translation language with en_US\n- Fixed an issue where the app would not open on certain versions of Windows 10");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -181,7 +183,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
     {
-        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>("history"));
+        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY));
     }
 
 #ifdef _WIN32

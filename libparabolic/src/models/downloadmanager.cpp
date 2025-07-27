@@ -6,6 +6,7 @@
 #include <libnick/system/environment.h>
 #include <libnick/system/process.h>
 
+using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
