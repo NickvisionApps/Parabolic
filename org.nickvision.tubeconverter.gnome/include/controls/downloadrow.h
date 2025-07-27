@@ -16,7 +16,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     /**
      * @brief A row that displays and manages a download.
      */
-    class DownloadRow : public Helpers::ControlBase<AdwBin>
+    class DownloadRow : public Helpers::ControlBase<GtkListBoxRow>
     {
     public:
         /**

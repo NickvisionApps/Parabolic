@@ -1,8 +1,10 @@
 using Gtk 4.0;
 using Adw 1;
 
-Adw.Bin root {
-  Gtk.Box {
+Gtk.ListBoxRow root {
+  activatable: false;
+  selectable: false;
+  child: Gtk.Box {
     orientation: vertical;
 
     Gtk.Box {
@@ -178,5 +180,5 @@ Adw.Bin root {
         };
       }
     }
-  }
+  };
 }
