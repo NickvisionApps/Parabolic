@@ -80,11 +80,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_appInfo;
     }
 
-    DownloadManager& MainWindowController::getDownloadManager()
-    {
-        return m_downloadManager;
-    }
-
     Theme MainWindowController::getTheme()
     {
         return m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getTheme();
@@ -110,6 +105,56 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     Event<NotificationSentEventArgs>& MainWindowController::notificationSent()
     {
         return AppNotification::sent();
+    }
+
+    Event<ParamEventArgs<std::vector<HistoricDownload>>>& MainWindowController::historyChanged()
+    {
+        return m_downloadManager.historyChanged();
+    }
+
+    Event<DownloadAddedEventArgs>& MainWindowController::downloadAdded()
+    {
+        return m_downloadManager.downloadAdded();
+    }
+
+    Event<DownloadCompletedEventArgs>& MainWindowController::downloadCompleted()
+    {
+        return m_downloadManager.downloadCompleted();
+    }
+
+    Event<DownloadProgressChangedEventArgs>& MainWindowController::downloadProgressChanged()
+    {
+        return m_downloadManager.downloadProgressChanged();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadStopped()
+    {
+        return m_downloadManager.downloadStopped();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadPaused()
+    {
+        return m_downloadManager.downloadPaused();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadResumed()
+    {
+        return m_downloadManager.downloadResumed();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadRetried()
+    {
+        return m_downloadManager.downloadRetried();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadStartedFromQueue()
+    {
+        return m_downloadManager.downloadStartedFromQueue();
+    }
+
+    Event<DownloadCredentialNeededEventArgs>& MainWindowController::downloadCredentialNeeded()
+    {
+        return m_downloadManager.downloadCredentialNeeded();
     }
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
@@ -285,6 +330,26 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     }
 #endif
 
+    size_t MainWindowController::getRemainingDownloadsCount() const
+    {
+        return m_downloadManager.getRemainingDownloadsCount();
+    }
+
+    size_t MainWindowController::getDownloadingCount() const
+    {
+        return m_downloadManager.getDownloadingCount();
+    }
+
+    size_t MainWindowController::getQueuedCount() const
+    {
+        return m_downloadManager.getQueuedCount();
+    }
+
+    size_t MainWindowController::getCompletedCount() const
+    {
+        return m_downloadManager.getCompletedCount();
+    }
+
     void MainWindowController::recoverDownloads(bool clearInstead)
     {
         if(clearInstead)
@@ -304,6 +369,56 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             AppNotification::send({ _f("Error attempting to recover downloads: {}", e.what()), NotificationSeverity::Error, "error" });
         }
+    }
+
+    void MainWindowController::clearHistory()
+    {
+        m_downloadManager.clearHistory();
+    }
+
+    void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
+    {
+        m_downloadManager.removeHistoricDownload(download);
+    }
+
+    void MainWindowController::stopDownload(int id)
+    {
+        m_downloadManager.stopDownload(id);
+    }
+
+    void MainWindowController::pauseDownload(int id)
+    {
+        m_downloadManager.pauseDownload(id);
+    }
+
+    void MainWindowController::resumeDownload(int id)
+    {
+        m_downloadManager.resumeDownload(id);
+    }
+
+    void MainWindowController::retryDownload(int id)
+    {
+        m_downloadManager.retryDownload(id);
+    }
+
+    void MainWindowController::stopAllDownloads()
+    {
+        m_downloadManager.stopAllDownloads();
+    }
+
+    void MainWindowController::retryFailedDownloads()
+    {
+        m_downloadManager.retryFailedDownloads();
+    }
+
+    std::vector<int> MainWindowController::clearQueuedDownloads()
+    {
+        return m_downloadManager.clearQueuedDownloads();
+    }
+
+    std::vector<int> MainWindowController::clearCompletedDownloads()
+    {
+        return m_downloadManager.clearCompletedDownloads();
     }
 
     void MainWindowController::onConfigurationSaved()

@@ -53,15 +53,60 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs>& notificationSent();
         /**
+         * @brief Gets the event for when the history is changed.
+         * @return The history changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>>& historyChanged();
+        /**
+         * @brief Gets the event for when a download is added.
+         * @return The download added event
+         */
+        Nickvision::Events::Event<Events::DownloadAddedEventArgs>& downloadAdded();
+        /**
+         * @brief Gets the event for when a download is completed.
+         * @return The download completed event
+         */
+        Nickvision::Events::Event<Events::DownloadCompletedEventArgs>& downloadCompleted();
+        /**
+         * @brief Gets the event for when a download's progress is changed.
+         * @return The download progress changed event
+         */
+        Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs>& downloadProgressChanged();
+        /**
+         * @brief Gets the event for when a download is stopped.
+         * @return The download stopped event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStopped();
+        /**
+         * @brief Gets the event for when a download is paused.
+         * @return The download paused event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadPaused();
+        /**
+         * @brief Gets the event for when a download is resumed.
+         * @return The download resumed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadResumed();
+        /**
+         * @brief Gets the event for when a download is retried.
+         * @return The download retried event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadRetried();
+        /**
+         * @brief Gets the event for when a download is started from the queue.
+         * @return The download started from queue event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStartedFromQueue();
+        /**
+         * @brief Gets the event for when a credential is needed for a download.
+         * @return The download credential needed event
+         */
+        Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
+        /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
          */
         const Nickvision::App::AppInfo& getAppInfo() const;
-        /**
-         * @brief Gets the DownloadManager for the application.
-         * @return The DownloadManager
-         */
-        Models::DownloadManager& getDownloadManager();
         /**
          * @brief Gets the preferred theme for the application.
          * @return The preferred theme
@@ -146,11 +191,86 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         void windowsUpdate();
 #endif
         /**
+         * @brief Gets the count of remaining downloads.
+         * @return The count of remaining downloads
+         */
+        size_t getRemainingDownloadsCount() const;
+        /**
+         * @brief Gets the count of downloading downloads.
+         * @return The count of downloading downloads
+         */
+        size_t getDownloadingCount() const;
+        /**
+         * @brief Gets the count of queued downloads.
+         * @return The count of queued downloads
+         */
+        size_t getQueuedCount() const;
+        /**
+         * @brief Gets the count of completed downloads.
+         * @return The count of completed downloads
+         */
+        size_t getCompletedCount() const;
+        /**
          * @brief Recovers all available recoverable downloads.
          * @param clearInstead Whether or not to clear the recoverable downloads instead of recovering them
          * @return The number of recovered downloads
          */
         void recoverDownloads(bool clearInstead);
+        /**
+         * @brief Clears the download history.
+         * @brief This method invokes the historyChanged event.
+         */
+        void clearHistory();
+        /**
+         * @brief Removes a historic download from the history.
+         * @brief This method invokes the historyChanged event.
+         * @param download The historic download to remove
+         */
+        void removeHistoricDownload(const Models::HistoricDownload& download);
+        /**
+         * @brief Requests that a download be stopped.
+         * @brief This will invoke the downloadStopped event if stopped successfully.
+         * @param id The id of the download to stop
+         */
+        void stopDownload(int id);
+        /**
+         * @brief Requests that a download be paused.
+         * @brief This will invoke the downloadPaused event if stopped successfully.
+         * @param id The id of the download to pause
+         */
+        void pauseDownload(int id);
+        /**
+         * @brief Requests that a download be resumed.
+         * @brief This will invoke the downloadResumed event if stopped successfully.
+         * @param id The id of the download to resume
+         */
+        void resumeDownload(int id);
+        /**
+         * @brief Requests that a download be retried.
+         * @brief This will invoke the downloadRetried event if retried successfully.
+         * @param id The id of the download to retry
+         */
+        void retryDownload(int id);
+        /**
+         * @brief Requests that all downloads be stopped.
+         * @brief This will invoke the downloadStopped event for each download stopped.
+         */
+        void stopAllDownloads();
+        /**
+         * @brief Requests that all failed downloads be retried.
+         * @brief This will invoke the downloadRetried event for each download retried.
+         */
+        void retryFailedDownloads();
+        /**
+         * @brief Clears all downloads from the queue.
+         * @return The ids of the downloads cleared
+         */
+        std::vector<int> clearQueuedDownloads();
+        /**
+         * @brief Clears all completed downloads.
+         * @return The ids of the downloads cleared
+         */
+        std::vector<int> clearCompletedDownloads();
 
     private:
         /**

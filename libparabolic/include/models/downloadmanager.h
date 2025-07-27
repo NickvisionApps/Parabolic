@@ -101,23 +101,23 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setDownloaderOptions(const DownloaderOptions& options);
         /**
-         * @brief Gets the remaining downloads count.
-         * @return The remaining downloads count
+         * @brief Gets the count of remaining downloads.
+         * @return The count of remaining downloads
          */
         size_t getRemainingDownloadsCount() const;
         /**
-         * @brief Gets the downloading count.
-         * @return The downloading count
+         * @brief Gets the count of downloading downloads.
+         * @return The count of downloading downloads
          */
         size_t getDownloadingCount() const;
         /**
-         * @brief Gets the queued count.
-         * @return The queued count
+         * @brief Gets the count of queued downloads.
+         * @return The count of queued downloads
          */
         size_t getQueuedCount() const;
         /**
-         * @brief Gets the completed count.
-         * @return The completed count
+         * @brief Gets the count of completed downloads.
+         * @return The count of completed downloads
          */
         size_t getCompletedCount() const;
         /**
