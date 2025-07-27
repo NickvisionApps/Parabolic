@@ -82,30 +82,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_downloadCredentialNeeded;
     }
 
-    size_t DownloadManager::getRemainingDownloadsCount() const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        return m_downloading.size() + m_queued.size();
-    }
-
-    size_t DownloadManager::getDownloadingCount() const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        return m_downloading.size();
-    }
-
-    size_t DownloadManager::getQueuedCount() const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        return m_queued.size();
-    }
-
-    size_t DownloadManager::getCompletedCount() const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        return m_completed.size();
-    }
-
     const DownloaderOptions& DownloadManager::getDownloaderOptions() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
@@ -129,58 +105,28 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
-    const std::string& DownloadManager::getDownloadLog(int id) const
+    size_t DownloadManager::getRemainingDownloadsCount() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
-        if(m_downloading.contains(id))
-        {
-            return m_downloading.at(id)->getLog();
-        }
-        if(m_queued.contains(id))
-        {
-            return m_queued.at(id)->getLog();
-        }
-        if(m_completed.contains(id))
-        {
-            return m_completed.at(id)->getLog();
-        }
-        return s_empty;
+        return m_downloading.size() + m_queued.size();
     }
 
-    const std::string& DownloadManager::getDownloadCommand(int id) const
+    size_t DownloadManager::getDownloadingCount() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
-        if(m_downloading.contains(id))
-        {
-            return m_downloading.at(id)->getCommand();
-        }
-        if(m_queued.contains(id))
-        {
-            return m_queued.at(id)->getCommand();
-        }
-        if(m_completed.contains(id))
-        {
-            return m_completed.at(id)->getCommand();
-        }
-        return s_empty;
+        return m_downloading.size();
     }
 
-    DownloadStatus DownloadManager::getDownloadStatus(int id) const
+    size_t DownloadManager::getQueuedCount() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
-        if(m_downloading.contains(id))
-        {
-            return m_downloading.at(id)->getStatus();
-        }
-        if(m_queued.contains(id))
-        {
-            return m_queued.at(id)->getStatus();
-        }
-        if(m_completed.contains(id))
-        {
-            return m_completed.at(id)->getStatus();
-        }
-        return DownloadStatus::Queued;
+        return m_queued.size();
+    }
+
+    size_t DownloadManager::getCompletedCount() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_completed.size();
     }
 
     void DownloadManager::startup(StartupInformation& info)

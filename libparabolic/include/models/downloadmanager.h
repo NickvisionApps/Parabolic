@@ -91,6 +91,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
         /**
+         * @brief Gets the options used for the downloader.
+         * @return The DownloaderOptions
+         */
+        const DownloaderOptions& getDownloaderOptions() const;
+        /**
+         * @brief Sets the options to use for the downloader.
+         * @param options The DownloaderOptions
+         */
+        void setDownloaderOptions(const DownloaderOptions& options);
+        /**
          * @brief Gets the remaining downloads count.
          * @return The remaining downloads count
          */
@@ -110,34 +120,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The completed count
          */
         size_t getCompletedCount() const;
-        /**
-         * @brief Gets the options used for the downloader.
-         * @return The DownloaderOptions
-         */
-        const DownloaderOptions& getDownloaderOptions() const;
-        /**
-         * @brief Sets the options to use for the downloader.
-         * @param options The DownloaderOptions
-         */
-        void setDownloaderOptions(const DownloaderOptions& options);
-        /**
-         * @brief Gets the log of a download.
-         * @param id The id of the download
-         * @return The download log
-         */
-        const std::string& getDownloadLog(int id) const;
-        /**
-         * @brief Gets the command used to start a download.
-         * @param id The id of the download
-         * @return The download command
-         */
-        const std::string& getDownloadCommand(int id) const;
-        /**
-         * @brief Gets the status of a download.
-         * @param id The id of the download
-         * @return The download status
-         */
-        DownloadStatus getDownloadStatus(int id) const;
         /**
          * @brief Loads the DownloadManager.
          * @brief This method invokes the historyChanged event.

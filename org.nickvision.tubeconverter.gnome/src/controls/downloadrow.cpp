@@ -40,7 +40,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         g_signal_connect(m_builder.get<GObject>("playButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->play(); }), this);
         g_signal_connect(m_builder.get<GObject>("openButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->openFolder(); }), this);
         g_signal_connect(m_builder.get<GObject>("retryButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->retry(); }), this);
-        g_signal_connect(m_builder.get<GObject>("cmdToClipboardButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->cmdToClipboard(); }), this);
         g_signal_connect(m_builder.get<GObject>("logToClipboardButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->logToClipboard(); }), this);
     }
 
@@ -72,11 +71,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     Event<ParamEventArgs<int>>& DownloadRow::retried()
     {
         return m_retried;
-    }
-
-    Event<ParamEventArgs<int>>& DownloadRow::commandToClipboardRequested()
-    {
-        return m_commandToClipboardRequested;
     }
 
     void DownloadRow::setProgressState(const DownloadProgressChangedEventArgs& args)
@@ -204,11 +198,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     void DownloadRow::retry()
     {
         m_retried.invoke({ m_id });
-    }
-
-    void DownloadRow::cmdToClipboard()
-    {
-        m_commandToClipboardRequested.invoke({ m_id });
     }
 
     void DownloadRow::logToClipboard()

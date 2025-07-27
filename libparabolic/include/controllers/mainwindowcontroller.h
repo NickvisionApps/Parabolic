@@ -147,13 +147,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         /**
          * @brief Recovers all available recoverable downloads.
+         * @param clearInstead Whether or not to clear the recoverable downloads instead of recovering them
          * @return The number of recovered downloads
          */
-        void recoverDownloads();
-        /**
-         * @brief Clears all available recoverable downloads.
-         */
-        void clearRecoverableDownloads();
+        void recoverDownloads(bool clearInstead);
 
     private:
         /**

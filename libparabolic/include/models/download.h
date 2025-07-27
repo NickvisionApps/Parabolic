@@ -72,11 +72,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getLog() const;
         /**
-         * @brief Gets the command that was used to start the download.
-         * @return The command that was used to start the download
-         */
-        const std::string& getCommand() const;
-        /**
          * @brief Starts the download.
          * @brief downloaderOptions The DownloaderOptions
          */
@@ -110,7 +105,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         DownloadStatus m_status;
         std::filesystem::path m_path;
         std::shared_ptr<System::Process> m_process;
-        std::string m_command;
         Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs> m_progressChanged;
         Nickvision::Events::Event<Events::DownloadCompletedEventArgs> m_completed;
     };

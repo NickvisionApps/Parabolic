@@ -188,14 +188,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             dialog.RequestedTheme(MainGrid().RequestedTheme());
             dialog.XamlRoot(MainGrid().XamlRoot());
             ContentDialogResult res{ co_await dialog.ShowAsync() };
-            if(res == ContentDialogResult::Primary)
-            {
-                m_controller->recoverDownloads();
-            }
-            else
-            {
-                m_controller->clearRecoverableDownloads();
-            }
+            m_controller->recoverDownloads(res != ContentDialogResult::Primary);
         }
         if(!info.getUrlToValidate().empty())
         {

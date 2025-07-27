@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-26 22:28-0400\n"
+"POT-Creation-Date: 2025-07-27 11:54-0400\n"
 "PO-Revision-Date: 2025-07-21 09:51+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -149,7 +149,7 @@ msgstr "Aktualizace se stahuje na pozadí a po dokončení bude spuštěna"
 msgid "Unable to download and install update"
 msgstr "Nepodařilo se stáhnout a nainstalovat aktualizaci"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
 #, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
@@ -157,7 +157,7 @@ msgstr[0] "Obnoveno {} stahování"
 msgstr[1] "Obnovena {} stahování"
 msgstr[2] "Obnoveno {} stahování"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
 #, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "Chyba při pokusu o obnovení stahování: {}"
@@ -255,11 +255,11 @@ msgstr "{:.2f} KiB"
 msgid "{:.2f} B"
 msgstr "{:.2f} B"
 
-#: libparabolic/src/models/download.cpp:171
+#: libparabolic/src/models/download.cpp:166
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "CHYBA: Soubor již existuje a přepisování je zakázáno."
 
-#: libparabolic/src/models/download.cpp:235
+#: libparabolic/src/models/download.cpp:229
 msgid "Starting download..."
 msgstr "Spouštění stahování..."
 
@@ -280,7 +280,7 @@ msgstr "Automaticky generovaný"
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:113
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:118
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:482
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:475
 msgid "Add Download"
 msgstr "Přidat stahování"
 
@@ -427,7 +427,7 @@ msgstr "Vrátit na název"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:392
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:321
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:314
 msgid "Download"
 msgstr "Stáhnout"
 
@@ -520,7 +520,7 @@ msgid "View Log"
 msgstr "Zobrazit protokol"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:70
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:155
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:31
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:163
 msgid "Pause"
@@ -533,9 +533,9 @@ msgid "Stop"
 msgstr "Zastavit"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:94
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:309
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:33
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:311
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:304
 msgid "Play"
 msgstr "Přehrát"
 
@@ -545,11 +545,7 @@ msgstr "Přehrát"
 msgid "Retry"
 msgstr "Zkusit znovu"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:155
-msgid "Copy Command to Clipboard"
-msgstr "Kopírovat příkaz do schránky"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:162
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:154
 msgid "Copy Log to Clipboard"
 msgstr "Kopírovat protokol do schránky"
 
@@ -623,20 +619,20 @@ msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:84
 msgid "Home"
 msgstr "Domů"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:24
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:85
 msgid "Keyring"
 msgstr "Klíčenka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:261
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:86
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:102
 msgid "History"
@@ -651,7 +647,7 @@ msgid "Downloads"
 msgstr "Stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:106
 msgid "Downloading"
@@ -659,7 +655,7 @@ msgstr "Stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:273
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:111
@@ -667,7 +663,7 @@ msgid "Queued"
 msgstr "Ve frontě"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:279
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:90
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:116
 msgid "Completed"
@@ -1215,56 +1211,56 @@ msgstr "Spouštění"
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:82
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:109
 msgid "Processing"
 msgstr "Zpracovává se"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:90
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:156
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:93
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:168
 msgid "Running"
 msgstr "Běží"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
 #, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Zbývá: {}"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:111
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:131
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:340
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:258
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:251
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:308
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:398
 msgid "Error"
 msgstr "Chyba"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:119
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:137
 msgid "Success"
 msgstr "Úspěch"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:131
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:145
 msgid "Stopped"
 msgstr "Zastaveno"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:140
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:154
 msgid "Paused"
 msgstr "Pozastaveno"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:143
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:157
 msgid "Resume"
 msgstr "Pokračovat"
@@ -1338,11 +1334,11 @@ msgid "Edit"
 msgstr "Upravit"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:345
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:180
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:331
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:324
 msgid "Delete"
 msgstr "Odstranit"
 
@@ -1447,41 +1443,41 @@ msgid "Recover"
 msgstr "Obnovit"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:25
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:66
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:186
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:186
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:209
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
 msgid "Exit?"
 msgstr "Ukončit?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:214
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:207
 msgid "There are downloads in progress. Exiting will stop all downloads."
 msgstr "Probíhají stahování. Ukončením všechna stahování zastavíte."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:215
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:208
 msgid "Exit"
 msgstr "Ukončit"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:236
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
 msgid "Ok"
 msgstr "OK"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:337
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:330
 msgid "Download Again"
 msgstr "Stáhnout znovu"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:522
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:514
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:95
 msgid "GitHub Repo"
 msgstr "Repozitář GitHub"
@@ -1510,7 +1506,7 @@ msgstr "Argumenty (prázdné)"
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:260
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:253
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:309
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:399
 msgid "OK"
@@ -1758,7 +1754,7 @@ msgstr "Nahlásit chybu"
 msgid "Discussions"
 msgstr "Diskuze"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:289
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:282
 msgid "Update"
 msgstr "Aktualizovat"
 
@@ -1824,6 +1820,9 @@ msgstr "Upravit argument"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:463
 msgid "Delete Argument"
 msgstr "Odstranit argument"
+
+#~ msgid "Copy Command to Clipboard"
+#~ msgstr "Kopírovat příkaz do schránky"
 
 #~ msgid "Parabolic will limit the number of threads used by ffmpeg."
 #~ msgstr "Aplikace Parabolic omezí počet vláken používaných službou ffmpeg."

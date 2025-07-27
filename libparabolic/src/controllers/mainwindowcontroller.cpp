@@ -285,8 +285,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     }
 #endif
 
-    void MainWindowController::recoverDownloads()
+    void MainWindowController::recoverDownloads(bool clearInstead)
     {
+        if(clearInstead)
+        {
+            m_downloadManager.clearRecoverableDownloads();
+            return;
+        }
         try
         {
             size_t recoveredDownloads{ m_downloadManager.recoverDownloads() };
@@ -299,11 +304,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             AppNotification::send({ _f("Error attempting to recover downloads: {}", e.what()), NotificationSeverity::Error, "error" });
         }
-    }
-
-    void MainWindowController::clearRecoverableDownloads()
-    {
-        m_downloadManager.clearRecoverableDownloads();
     }
 
     void MainWindowController::onConfigurationSaved()

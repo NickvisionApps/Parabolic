@@ -172,14 +172,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char* response, gpointer data)
             {
                 MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
-                if(std::string(response) == "yes")
-                {
-                    mainWindow->m_controller->recoverDownloads();
-                }
-                else
-                {
-                    mainWindow->m_controller->clearRecoverableDownloads();
-                }
+                mainWindow->m_controller->recoverDownloads(std::string(response) != "yes");
             }), this);
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
         }
@@ -382,7 +375,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         row->paused() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().pauseDownload(*args); };
         row->resumed() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().resumeDownload(*args); };
         row->retried() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().retryDownload(*args); };
-        row->commandToClipboardRequested() += [this](const ParamEventArgs<int>& args){ gdk_clipboard_set_text(gdk_display_get_clipboard(gdk_display_get_default()), m_controller->getDownloadManager().getDownloadCommand(*args).c_str()); };
         if(args.getStatus() == DownloadStatus::Queued)
         {
             gtk_list_box_append(m_builder.get<GtkListBox>("listQueued"), GTK_WIDGET(row->gobj()));
