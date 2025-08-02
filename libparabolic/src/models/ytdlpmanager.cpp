@@ -34,7 +34,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 m_config.setInstalledYtdlpVersion({});
             }
         }
-        return Environment::findDependency("yt-dlp", DependencySearchOption::App);
+        return Environment::findDependency("yt-dlp", DependencySearchOption::Global);
     }
 
     void YtdlpManager::checkForUpdates()
