@@ -17,15 +17,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         StartupInformation();
         /**
-         * @brief Constructs a StartupInformation.
-         * @param windowGeometry The window geometry
-         * @param canDownload Whether or not the application can perform downloads
-         * @param showDisclaimer Whether or not to show the legal disclaimer on startup
-         * @param urlToValidate The URL to validate
-         * @param recover Whether or not there are downloads to recover.
-         */
-        StartupInformation(const Nickvision::App::WindowGeometry& windowGeometry, bool canDownload, bool showDisclaimer, const std::string& urlToValidate, bool recover);
-        /**
          * @brief Gets the window geometry.
          * @return The window geometry
          */

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-27 12:12-0400\n"
+"POT-Creation-Date: 2025-08-02 09:18-0400\n"
 "PO-Revision-Date: 2025-01-04 12:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -133,12 +133,12 @@ msgstr "Philip Goto https://philipgoto.nl/"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:299
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:301
-msgid "New update available"
-msgstr "Nieuwe update beschikbaar"
+msgid "New version of Parabolic available"
+msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 #, fuzzy
-msgid "No update available"
+msgid "No Parabolic update available"
 msgstr "Nieuwe update beschikbaar"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:321
@@ -150,38 +150,38 @@ msgstr ""
 msgid "Unable to download and install update"
 msgstr "Kan update niet downloaden en installeren"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:365
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:370
 #, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Mislukte downloads opnieuw proberen"
 msgstr[1] "Mislukte downloads opnieuw proberen"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:370
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:375
 #, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:445
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:450
 msgid "Download Finished"
 msgstr "Download voltooid"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:445
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:450
 #, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "‘{0}’ is klaar met downloaden"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:445
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:450
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:102
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:35
 msgid "Open"
 msgstr "Openen"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:449
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:454
 msgid "Download Finished With Error"
 msgstr "Download voltooid met fouten"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:449
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:454
 #, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "‘{0}’ is voltooid met een fout!"
@@ -255,17 +255,30 @@ msgstr "{:.2f} KiB/s"
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
-#: libparabolic/src/models/download.cpp:166
+#: libparabolic/src/models/download.cpp:165
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "FOUT: Bestand bestaat al en overschrĳven is uitgeschakeld."
 
-#: libparabolic/src/models/download.cpp:229
+#: libparabolic/src/models/download.cpp:228
 msgid "Starting download..."
 msgstr "Download starten…"
 
 #: libparabolic/src/models/subtitlelanguage.cpp:38
 msgid "Auto-generated"
 msgstr "Automatisch gegenereerd"
+
+#: libparabolic/src/models/ytdlpmanager.cpp:49
+msgid "New version of yt-dlp available"
+msgstr ""
+
+#: libparabolic/src/models/ytdlpmanager.cpp:75
+msgid "yt-dlp updated successfully"
+msgstr ""
+
+#: libparabolic/src/models/ytdlpmanager.cpp:79
+#, fuzzy
+msgid "Unable to download yt-dlp update"
+msgstr "Kan update niet downloaden en installeren"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
@@ -280,7 +293,7 @@ msgstr "Automatisch gegenereerd"
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:113
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:118
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:475
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:484
 msgid "Add Download"
 msgstr "Download toevoegen"
 
@@ -425,7 +438,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:392
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:314
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:323
 msgid "Download"
 msgstr "Downloaden"
 
@@ -531,7 +544,7 @@ msgstr "Stoppen"
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:94
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:309
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:33
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:304
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:313
 msgid "Play"
 msgstr "Afspelen"
 
@@ -1340,7 +1353,7 @@ msgstr "Bewerken"
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:180
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:324
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:333
 msgid "Delete"
 msgstr "Verwijderen"
 
@@ -1767,6 +1780,7 @@ msgid "Discussions"
 msgstr "Discussies"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:282
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:291
 msgid "Update"
 msgstr "Bij­werken"
 
@@ -1842,6 +1856,9 @@ msgstr "Nieuwe inlog­gegevens"
 #, fuzzy
 msgid "Delete Argument"
 msgstr "Nieuwe inlog­gegevens"
+
+#~ msgid "New update available"
+#~ msgstr "Nieuwe update beschikbaar"
 
 #, fuzzy
 #~ msgid "Copy Command to Clipboard"

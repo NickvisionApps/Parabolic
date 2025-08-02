@@ -43,10 +43,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName(), false },
 #endif
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY), m_dataFileManager.get<DownloadRecoveryQueue>(RECOVERY_FILE_KEY) },
+        m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY), m_dataFileManager.get<DownloadRecoveryQueue>(RECOVERY_FILE_KEY) },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.7.3-next" });
+        m_appInfo.setVersion({ "2025.8.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Replaced None translation language with en_US\n- Fixed an issue where the app would not open on certain versions of Windows 10\n- Fixed an issue where download rows disappeared on GNOME");
@@ -161,13 +161,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::stringstream builder;
         //yt-dlp
-        if(Environment::findDependency("yt-dlp").empty())
+        if(m_downloadManager.getYtdlpExecutablePath().empty())
         {
             builder << "yt-dlp not found" << std::endl;
         }
         else
         {
-            std::string ytdlpVersion{ Environment::exec("\"" + Environment::findDependency("yt-dlp").string() + "\"" + " --version") };
+            std::string ytdlpVersion{ Environment::exec("\"" + m_downloadManager.getYtdlpExecutablePath().string() + "\"" + " --version") };
             builder << "yt-dlp version " << ytdlpVersion;
         }
         //ffmpeg
@@ -256,8 +256,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #elif defined(__linux__)
         m_taskbar.connect(desktopFile);
 #endif
+        //Load DownloadManager
+        m_downloadManager.startup(info);
         //Check if can download
-        info.setCanDownload(!Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty());
+        info.setCanDownload(!m_downloadManager.getYtdlpExecutablePath().empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty());
         //Check if disclaimer should be shown
         info.setShowDisclaimer(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getShowDisclaimerOnStartup());
         //Get URL to validate from args
@@ -268,8 +270,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 info.setUrlToValidate(m_args[1]);
             }
         }
-        //Load DownloadManager
-        m_downloadManager.startup(info);
         m_started = true;
         return info;
     }
@@ -296,16 +296,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 if(latest > m_appInfo.getVersion())
                 {
 #ifdef PORTABLE_BUILD
-                    AppNotification::send({ _("New update available"), NotificationSeverity::Success });
+                    AppNotification::send({ _("New version of Parabolic available"), NotificationSeverity::Success });
 #else
-                    AppNotification::send({ _("New update available"), NotificationSeverity::Success, "update" });
+                    AppNotification::send({ _("New version of Parabolic available"), NotificationSeverity::Success, "update" });
 #endif
                     return;
                 }
             }
             if(noUpdateNotification)
             {
-                AppNotification::send({ _("No update available"), NotificationSeverity::Warning });
+                AppNotification::send({ _("No Parabolic update available"), NotificationSeverity::Warning });
             }
         } };
         worker.detach();
@@ -323,12 +323,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             if(!m_updater->windowsUpdate(VersionType::Stable))
             {
-                AppNotification::send({ _("Unable to download and install update"), NotificationSeverity::Error, "error" });
+                AppNotification::send({ _("Unable to download and install update"), NotificationSeverity::Error });
             }
         } };
         worker.detach();
     }
 #endif
+
+    void MainWindowController::ytdlpUpdate()
+    {
+        m_downloadManager.ytdlpUpdate();
+    }
 
     size_t MainWindowController::getRemainingDownloadsCount() const
     {

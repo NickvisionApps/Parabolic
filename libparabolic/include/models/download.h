@@ -73,9 +73,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         const std::string& getLog() const;
         /**
          * @brief Starts the download.
-         * @brief downloaderOptions The DownloaderOptions
+         * @param ytdlpExecutable The path to the yt-dlp executable
+         * @param downloaderOptions The DownloaderOptions
          */
-        void start(const DownloaderOptions& downloaderOptions);
+        void start(const std::filesystem::path& ytdlpExecutable, const DownloaderOptions& downloaderOptions);
         /**
          * @brief Stops the download.
          */

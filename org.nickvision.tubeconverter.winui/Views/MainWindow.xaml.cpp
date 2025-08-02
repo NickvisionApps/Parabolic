@@ -286,6 +286,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 m_controller->windowsUpdate();
             });
         }
+        else if(args.getAction() == "ytdlp")
+        {
+            BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
+            m_notificationClickToken = BtnInfoBar().Click([this](const IInspectable&, const RoutedEventArgs&)
+            {
+                InfoBar().IsOpen(false);
+                m_controller->ytdlpUpdate();
+            });
+        }
         BtnInfoBar().Visibility(!args.getAction().empty() ? Visibility::Visible : Visibility::Collapsed);
         InfoBar().IsOpen(true);
     }

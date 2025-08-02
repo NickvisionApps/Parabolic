@@ -4,6 +4,7 @@
 
 using namespace Nickvision::App;
 using namespace Nickvision::System;
+using namespace Nickvision::Update;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -55,6 +56,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     void Configuration::setAutomaticallyCheckForUpdates(bool check)
     {
         m_json["AutomaticallyCheckForUpdates"] = check;
+    }
+
+    Version Configuration::getInstalledYtdlpVersion() const
+    {
+        return m_json["InstalledYtdlpVersion"].is_string() ? Version(m_json["InstalledYtdlpVersion"].as_string().c_str()) : Version();
+    }
+
+    void Configuration::setInstalledYtdlpVersion(const Version& version)
+    {
+        m_json["InstalledYtdlpVersion"] = version.str();
     }
 
     bool Configuration::getPreventSuspend() const

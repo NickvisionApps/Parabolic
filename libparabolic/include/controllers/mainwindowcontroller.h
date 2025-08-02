@@ -28,6 +28,7 @@
 #include "models/historicdownload.h"
 #include "models/startupinformation.h"
 #include "models/theme.h"
+#include "models/ytdlpmanager.h"
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
@@ -178,7 +179,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void shutdown(const Nickvision::App::WindowGeometry& geometry);
         /**
-         * @brief Checks for an application update and sends a notification if one is available.
+         * @brief Checks for an application update and sends a notification with the "update" action if one is available.
          * @param noUpdateNotification Send an app notification if no update is available.
          */
         void checkForUpdates(bool noUpdateNotification) const;
@@ -190,6 +191,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void windowsUpdate();
 #endif
+        /**
+         * @brief Downloads the latest yt-dlp update in the background.
+         * @brief Will send a notification if the update fails.
+         */
+        void ytdlpUpdate();
         /**
          * @brief Gets the count of remaining downloads.
          * @return The count of remaining downloads

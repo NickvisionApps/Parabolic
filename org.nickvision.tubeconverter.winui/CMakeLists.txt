@@ -55,6 +55,7 @@ if(WIN32)
         VS_GLOBAL_WindowsTargetPlatformVersion 10.0
         VS_GLOBAL_WindowsTargetPlatformMinVersion "10.0.17763.0"
         VS_GLOBAL_WindowsPackageType None
+        VS_GLOBAL_WinUISDKReferences false
         VS_GLOBAL_EnablePreviewMsixTooling true
         VS_GLOBAL_OutputType WinExe
         VS_GLOBAL_WindowsAppSDKSelfContained true)

@@ -10,6 +10,7 @@
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/credential.h>
+#include "configuration.h"
 #include "download.h"
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
@@ -17,6 +18,7 @@
 #include "historicdownload.h"
 #include "startupinformation.h"
 #include "urlinfo.h"
+#include "ytdlpmanager.h"
 #include "events/downloadaddedeventargs.h"
 #include "events/downloadcompletedeventargs.h"
 #include "events/downloadcredentialneededeventargs.h"
@@ -32,10 +34,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Constructs a DownloadManager.
-         * @param options The DownloaderOptions
+         * @param configuration The Configuration
          * @param history The DownloadHistory
+         * @param recoveryQueue The DownloadRecoveryQueue
          */
-        DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue);
+        DownloadManager(Configuration& configuration, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue);
         /**
          * @brief Destructs a DownloadManager.
          */
@@ -91,6 +94,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
         /**
+         * @brief Gets the path to the yt-dlp executable.
+         * @return The path to the yt-dlp executable
+         */
+        const std::filesystem::path& getYtdlpExecutablePath() const;
+        /**
          * @brief Gets the options used for the downloader.
          * @return The DownloaderOptions
          */
@@ -126,6 +134,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param info The StartupInformation object to edit
          */
         void startup(StartupInformation& info);
+        /**
+         * @brief Downloads the latest yt-dlp update in the background.
+         * @brief Will send a notification if the update fails.
+         */
+        void ytdlpUpdate();
         /**
          * @brief Recovers all available recoverable downloads.
          * @return The number of downloads recovered
@@ -233,6 +246,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void onDownloadCompleted(const Events::DownloadCompletedEventArgs& args);
         mutable std::mutex m_mutex;
+        YtdlpManager m_ytdlpManager;
         DownloaderOptions m_options;
         DownloadHistory& m_history;
         DownloadRecoveryQueue& m_recoveryQueue;

@@ -4,6 +4,7 @@
 #include <string>
 #include <libnick/app/datafilebase.h>
 #include <libnick/app/windowgeometry.h>
+#include <libnick/update/version.h>
 #include "downloaderoptions.h"
 #include "theme.h"
 
@@ -64,6 +65,17 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param check Whether or not to automatically check for updates
          */
         void setAutomaticallyCheckForUpdates(bool check);
+        /**
+         * @brief Gets the installed version of yt-dlp.
+         * @return The installed version of yt-dlp
+         * @return An empty Version object if yt-dlp is using the bundled version
+         */
+        Update::Version getInstalledYtdlpVersion() const;
+        /**
+         * @brief Sets the installed version of yt-dlp.
+         * @param version The new installed version of yt-dlp
+         */
+        void setInstalledYtdlpVersion(const Update::Version& version);
         /**
          * @brief Gets whether or not to prevent the system from suspending while Parabolic is running.
          * @return True to prevent the system from suspending, else false

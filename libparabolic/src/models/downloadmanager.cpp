@@ -19,8 +19,9 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     static std::string s_empty{};
 
-    DownloadManager::DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue)
-        : m_options{ options },
+    DownloadManager::DownloadManager(Configuration& configuration, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue)
+        : m_ytdlpManager{ configuration },
+        m_options{ configuration.getDownloaderOptions() },
         m_history{ history },
         m_recoveryQueue{ recoveryQueue }
     {
@@ -82,6 +83,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_downloadCredentialNeeded;
     }
 
+    const std::filesystem::path& DownloadManager::getYtdlpExecutablePath() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_ytdlpManager.getExecutablePath();
+    }
+
     const DownloaderOptions& DownloadManager::getDownloaderOptions() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
@@ -101,7 +108,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_queued.erase(firstQueuedDownload->getId());
             lock.unlock();
             m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
-            firstQueuedDownload->start(m_options);
+            firstQueuedDownload->start(m_ytdlpManager.getExecutablePath(), m_options);
         }
     }
 
@@ -131,8 +138,14 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::startup(StartupInformation& info)
     {
+        m_ytdlpManager.checkForUpdates();
         m_historyChanged.invoke(m_history.getHistory());
         info.setHasRecoverableDownloads(m_recoveryQueue.getRecoverableDownloads().size() > 0);
+    }
+
+    void DownloadManager::ytdlpUpdate()
+    {
+        m_ytdlpManager.downloadUpdate();
     }
 
     size_t DownloadManager::recoverDownloads()
@@ -240,7 +253,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return std::nullopt;
         }
-        Process process{ Environment::findDependency("yt-dlp"), arguments };
+        Process process{ m_ytdlpManager.getExecutablePath(), arguments };
         token.setCancelFunction([&process]()
         {
             process.kill();
@@ -535,7 +548,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_downloading.emplace(download->getId(), download);
             lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getUrl(), DownloadStatus::Running });
-            download->start(m_options);
+            download->start(m_ytdlpManager.getExecutablePath(), m_options);
         }
         else
         {
@@ -587,7 +600,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_queued.erase(firstQueuedDownload->getId());
             lock.unlock();
             m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
-            firstQueuedDownload->start(m_options);
+            firstQueuedDownload->start(m_ytdlpManager.getExecutablePath(), m_options);
         }
     }
 }

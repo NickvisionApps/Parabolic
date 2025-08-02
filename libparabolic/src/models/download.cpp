@@ -3,7 +3,6 @@
 #include <thread>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
-#include <libnick/system/environment.h>
 
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
@@ -152,7 +151,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return empty;
     }
 
-    void Download::start(const DownloaderOptions& downloaderOptions)
+    void Download::start(const std::filesystem::path& ytdlpExecutable, const DownloaderOptions& downloaderOptions)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         if(m_status == DownloadStatus::Running || m_status == DownloadStatus::Paused)
@@ -168,7 +167,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             return;
         }
         std::vector<std::string> arguments{ m_options.toArgumentVector(downloaderOptions) };
-        m_process = std::make_shared<Process>(Environment::findDependency("yt-dlp"), arguments);
+        m_process = std::make_shared<Process>(ytdlpExecutable, arguments);
         m_process->exited() += [this](const ProcessExitedEventArgs& args) { onProcessExit(args); };
         m_process->start();
         m_status = DownloadStatus::Running;

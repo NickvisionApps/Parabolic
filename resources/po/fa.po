@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-27 12:12-0400\n"
+"POT-Creation-Date: 2025-08-02 09:18-0400\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -137,13 +137,12 @@ msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:299
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:301
-#, fuzzy
-msgid "New update available"
-msgstr "بروز رسانی جدیدی در دسترس قرار گرفته است."
+msgid "New version of Parabolic available"
+msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:308
 #, fuzzy
-msgid "No update available"
+msgid "No Parabolic update available"
 msgstr "بروز رسانی جدیدی در دسترس قرار گرفته است."
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:321
@@ -155,39 +154,39 @@ msgstr ""
 msgid "Unable to download and install update"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:365
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:370
 #, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "بدون بارگیری در صف"
 msgstr[1] "بدون بارگیری در صف"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:370
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:375
 #, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:445
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:450
 msgid "Download Finished"
 msgstr "اتمام بارگیری"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:445
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:450
 #, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" بارگیری به پایان رسید."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:445
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:450
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:102
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:35
 #, fuzzy
 msgid "Open"
 msgstr "فایل را باز کنید"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:449
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:454
 msgid "Download Finished With Error"
 msgstr "بارگیری با خطا تمام شد"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:449
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:454
 #, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" با یک خطا به پایان رسید!"
@@ -261,16 +260,28 @@ msgstr "{0:f1} KiB/s"
 msgid "{:.2f} B"
 msgstr "{0:f1} B/s"
 
-#: libparabolic/src/models/download.cpp:166
+#: libparabolic/src/models/download.cpp:165
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr ""
 
-#: libparabolic/src/models/download.cpp:229
+#: libparabolic/src/models/download.cpp:228
 msgid "Starting download..."
 msgstr ""
 
 #: libparabolic/src/models/subtitlelanguage.cpp:38
 msgid "Auto-generated"
+msgstr ""
+
+#: libparabolic/src/models/ytdlpmanager.cpp:49
+msgid "New version of yt-dlp available"
+msgstr ""
+
+#: libparabolic/src/models/ytdlpmanager.cpp:75
+msgid "yt-dlp updated successfully"
+msgstr ""
+
+#: libparabolic/src/models/ytdlpmanager.cpp:79
+msgid "Unable to download yt-dlp update"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
@@ -286,7 +297,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:113
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:118
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:475
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:484
 msgid "Add Download"
 msgstr "اضافه کردن دانلود"
 
@@ -434,7 +445,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:392
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:314
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:323
 msgid "Download"
 msgstr "بارگیری"
 
@@ -541,7 +552,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:94
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:309
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:33
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:304
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:313
 msgid "Play"
 msgstr "پخش"
 
@@ -1365,7 +1376,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:180
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:324
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:333
 msgid "Delete"
 msgstr "حذف"
 
@@ -1790,6 +1801,7 @@ msgid "Discussions"
 msgstr "بحث ها"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:282
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:291
 msgid "Update"
 msgstr ""
 
@@ -1861,6 +1873,10 @@ msgstr "اعتبارنامه حذف شود؟"
 #, fuzzy
 msgid "Delete Argument"
 msgstr "اعتبارنامه حذف شود؟"
+
+#, fuzzy
+#~ msgid "New update available"
+#~ msgstr "بروز رسانی جدیدی در دسترس قرار گرفته است."
 
 #, fuzzy
 #~ msgid "Copy Command to Clipboard"
