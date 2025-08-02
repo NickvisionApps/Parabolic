@@ -245,7 +245,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             return info;
         }
         //Load configuration
-        info.setWindowGeometry(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getWindowGeometry());
+        WindowGeometry geometry{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getWindowGeometry() };
+        if(geometry.getX() < 0 || geometry.getY() < 0)
+        {
+            geometry.setX(10);
+            geometry.setY(10);
+        }
+        info.setWindowGeometry(geometry);
+
         //Load taskbar item
 #ifdef _WIN32
         m_taskbar.connect(hwnd);
