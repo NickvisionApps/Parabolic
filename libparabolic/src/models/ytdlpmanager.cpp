@@ -22,6 +22,9 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     const std::filesystem::path& YtdlpManager::getExecutablePath() const
     {
+#ifdef PORTABLE_BUILD
+        return Environment::findDependency("yt-dlp", DependencySearchOption::App);
+#else
         if(m_config.getInstalledYtdlpVersion() > m_bundledYtdlpVersion)
         {
             const std::filesystem::path& local{ Environment::findDependency("yt-dlp", DependencySearchOption::Local) };
@@ -35,6 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             }
         }
         return Environment::findDependency("yt-dlp", DependencySearchOption::Global);
+#endif
     }
 
     void YtdlpManager::checkForUpdates()
@@ -58,9 +62,17 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::thread worker{ [this]()
         {
 #ifdef _WIN32
+#ifdef PORTABLE_BUILD
+            std::filesystem::path ytdlpPath{ Environment::getExecutableDirectory() / "yt-dlp.exe" };
+#else
             std::filesystem::path ytdlpPath{ UserDirectories::get(UserDirectory::LocalData) / "yt-dlp.exe" };
+#endif
+#else
+#ifdef PORTABLE_BUILD
+            std::filesystem::path ytdlpPath{ Environment::getExecutableDirectory() / "yt-dlp" };
 #else
             std::filesystem::path ytdlpPath{ UserDirectories::get(UserDirectory::LocalData) / "yt-dlp" };
+#endif
 #endif
 #ifdef _WIN32
             if(m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp.exe", true))
