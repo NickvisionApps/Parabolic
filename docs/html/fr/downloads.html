@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Nombre maximum de téléchargements actifs</dt>
 <dd class="terms">
-<p class="p">The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
+<p class="p">Indique le nombre de téléchargements actifs autorisés à s’exécuter en même temps. Il doit s’agir d’un nombre entier compris entre 1 et 10.</p>
 <p class="p">Si le maximum de téléchargements actifs est atteint, Parabolic placera les nouveaux téléchargements dans une file d’attente jusqu’à ce que des téléchargements supplémentaires soient autorisés à s’exécuter.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Remplacer les fichiers existants</dt>
 <dd class="terms">
-<p class="p">Parabolic will overwrite existing files.</p>
+<p class="p">Parabolic écrasera les fichiers existants.</p>
 <p class="p">Par exemple, si un fichier intitulé <span class="code">film.mp4</span> existe dans le dossier de téléchargement et qu’un nouveau téléchargement est créé avec le titre <span class="code">film</span>, <span class="code">film.mp4</span> sera remplacé par le contenu du nouveau téléchargement.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Limiter le caractères des noms des fichiers</dt>
 <dd class="terms">
-<p class="p">Parabolic will restrict characters in filenames to those supported only by Windows.</p>
+<p class="p">Parabolic restreindra les caractères dans les noms de fichiers à ceux uniquement pris en charge par Windows.</p>
 <p class="p">Option disponible uniquement sur Linux.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Identifiant du média inclus dans le titre après validation</dt>
 <dd class="terms">
-<p class="p">Parabolic will include a media's id in its default title.</p>
+<p class="p">Parabolic inclura l'ID du media dans le titre par défaut.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Inclure les sous-titres générés automatiquement</dt>
 <dd class="terms">
-<p class="p">Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
+<p class="p">Parabolic présentera des sous-titres auto-générés a télécharger en plus des sous-titres disponibles.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -133,14 +133,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Codec vidéo préféré</dt>
 <dd class="terms">
-<p class="p">The video codec Parabolic should prefer when parsing media formats to download.</p>
+<p class="p">Le codec vidéo que Parabolic devrait préférer lors de la sélection de format de médias à télécharger.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Si Parabolic ne peut pas trouver un format avec le codec préféré, aucun format vidéo ne sera disponible a télécharger.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
@@ -159,16 +159,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Par défaut : N’importe lequel</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Preferred Audio Codec</dt>
+<dt class="terms">Codec Audio Préféré</dt>
 <dd class="terms">
-<p class="p">The audio codec Parabolic should prefer when parsing media formats to download.</p>
+<p class="p">Le codec audio que Parabolic devrait préférer lors de la sélection de format de médias à télécharger.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Si Parabolic ne peut pas trouver un format avec le codec préféré, aucun format audio ne sera disponible a télécharger.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Format de sous-titres préféré</dt>
 <dd class="terms">
-<p class="p">The file format Parabolic should ensure all subtitles are downloaded as.</p>
+<p class="p">Le format de fichier que Parabolic devrais assurer que tous les sous-titres téléchargés son.</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>

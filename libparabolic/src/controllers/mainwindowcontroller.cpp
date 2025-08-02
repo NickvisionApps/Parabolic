@@ -46,10 +46,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY), m_dataFileManager.get<DownloadRecoveryQueue>(RECOVERY_FILE_KEY) },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.8.0-next" });
+        m_appInfo.setVersion({ "2025.8.0-beta1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Replaced None translation language with en_US\n- Fixed an issue where the app would not open on certain versions of Windows 10\n- Fixed an issue where download rows disappeared on GNOME");
+        m_appInfo.setChangelog("- Added the ability to update yt-dlp from within the app when a newer version is available\n- Replaced None translation language with en_US\n- Fixed an issue where the app would not open on Windows\n- Fixed an issue where download rows disappeared on GNOME");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

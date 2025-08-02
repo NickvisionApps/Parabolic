@@ -26,7 +26,7 @@
         </note>
     </item>
     <item>
-        <title>Use Batch File</title>
+        <title>Utiliser un fichier en lot</title>
         <p>Select a batch text file that contains a list of URLs to validate.</p>
         <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
         <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
@@ -49,7 +49,7 @@
         </note>
     </item>
     <item>
-        <title>Download Immediately</title>
+        <title>Téléchargement Immédiat</title>
         <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
         <note style="advanced">
             <p>Par défaut : Désactivée</p>
@@ -91,8 +91,8 @@
         <note style="advanced">
             <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
             <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>ba</code></p>
-            <p>- <code>Worst</code> = <code>wa</code></p>
+            <p>- <code>Meilleur</code> = <code>ba</code></p>
+            <p>- <code>Pire</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
@@ -117,21 +117,21 @@
         </note>
     </item>
     <item>
-        <title>Exclude from History</title>
+        <title>Exclure de l'Historique</title>
         <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
     </item>
     <item>
-        <title>Post Processor Argument</title>
+        <title>Paramètres de Post-Traitement</title>
         <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
         <note>
             <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-        <title>Write M3U Playlist File</title>
+        <title>Écrire un Fichier de Playlist M3U</title>
         <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+            <p>Si activée, Parabolic exclura ce téléchargement de l'historique des téléchargement.</p>
         </note>
     </item>
     <item>
