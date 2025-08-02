@@ -68,16 +68,16 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         AppWindow().Closing({ this, &MainWindow::OnClosing });
         m_controller->configurationSaved() += [this](const EventArgs& args){ OnConfigurationSaved(args); };
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
-        m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnHistoryChanged(args); }); };
-        m_controller->getDownloadManager().downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args){ OnDownloadCredentialNeeded(args); };
-        m_controller->getDownloadManager().downloadAdded() += [this](const DownloadAddedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadAdded(args); }); };
-        m_controller->getDownloadManager().downloadCompleted() += [this](const DownloadCompletedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadCompleted(args); }); };
-        m_controller->getDownloadManager().downloadProgressChanged() += [this](const DownloadProgressChangedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadProgressChanged(args); }); };
-        m_controller->getDownloadManager().downloadStopped() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStopped(args); }); };
-        m_controller->getDownloadManager().downloadPaused() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadPaused(args); }); };
-        m_controller->getDownloadManager().downloadResumed() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadResumed(args); }); };
-        m_controller->getDownloadManager().downloadRetried() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadRetried(args); }); };
-        m_controller->getDownloadManager().downloadStartedFromQueue() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStartedFromQueue(args); }); };
+        m_controller->historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnHistoryChanged(args); }); };
+        m_controller->downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args){ OnDownloadCredentialNeeded(args); };
+        m_controller->downloadAdded() += [this](const DownloadAddedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadAdded(args); }); };
+        m_controller->downloadCompleted() += [this](const DownloadCompletedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadCompleted(args); }); };
+        m_controller->downloadProgressChanged() += [this](const DownloadProgressChangedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadProgressChanged(args); }); };
+        m_controller->downloadStopped() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStopped(args); }); };
+        m_controller->downloadPaused() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadPaused(args); }); };
+        m_controller->downloadResumed() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadResumed(args); }); };
+        m_controller->downloadRetried() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadRetried(args); }); };
+        m_controller->downloadStartedFromQueue() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStartedFromQueue(args); }); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
@@ -188,14 +188,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             dialog.RequestedTheme(MainGrid().RequestedTheme());
             dialog.XamlRoot(MainGrid().XamlRoot());
             ContentDialogResult res{ co_await dialog.ShowAsync() };
-            if(res == ContentDialogResult::Primary)
-            {
-                m_controller->recoverDownloads();
-            }
-            else
-            {
-                m_controller->clearRecoverableDownloads();
-            }
+            m_controller->recoverDownloads(res != ContentDialogResult::Primary);
         }
         if(!info.getUrlToValidate().empty())
         {
@@ -220,7 +213,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             ContentDialogResult res{ co_await dialog.ShowAsync() };
             if(res == ContentDialogResult::Primary)
             {
-                m_controller->getDownloadManager().stopAllDownloads();
+                m_controller->stopAllDownloads();
                 Close();
             }
             co_return;
@@ -293,6 +286,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 m_controller->windowsUpdate();
             });
         }
+        else if(args.getAction() == "ytdlp")
+        {
+            BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
+            m_notificationClickToken = BtnInfoBar().Click([this](const IInspectable&, const RoutedEventArgs&)
+            {
+                InfoBar().IsOpen(false);
+                m_controller->ytdlpUpdate();
+            });
+        }
         BtnInfoBar().Visibility(!args.getAction().empty() ? Visibility::Visible : Visibility::Collapsed);
         InfoBar().IsOpen(true);
     }
@@ -331,7 +333,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             ToolTipService::SetToolTip(btnDelete, winrt::box_value(winrt::to_hstring(_("Delete"))));
             btnDelete.Click([this, download](const IInspectable&, const RoutedEventArgs&)
             {
-                m_controller->getDownloadManager().removeHistoricDownload(download);
+                m_controller->removeHistoricDownload(download);
             });
             StackPanel panel;
             panel.Orientation(Orientation::Horizontal);
@@ -363,10 +365,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     void MainWindow::OnDownloadAdded(const DownloadAddedEventArgs& args)
     {
         Controls::DownloadRow row{ winrt::make<Controls::implementation::DownloadRow>() };
-        row.PauseRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().pauseDownload(args.getId()); });
-        row.ResumeRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().resumeDownload(args.getId()); });
-        row.StopRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().stopDownload(args.getId()); });
-        row.RetryRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->getDownloadManager().retryDownload(args.getId()); });
+        row.PauseRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->pauseDownload(args.getId()); });
+        row.ResumeRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->resumeDownload(args.getId()); });
+        row.StopRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->stopDownload(args.getId()); });
+        row.RetryRequested([this, args](const IInspectable&, const RoutedEventArgs&){ m_controller->retryDownload(args.getId()); });
         row.as<Controls::implementation::DownloadRow>()->TriggerAddedState(args);
         m_downloadRows[args.getId()] = row;
         if(args.getStatus() == DownloadStatus::Queued)
@@ -377,7 +379,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             {
                 NavViewQueued().IsSelected(true);
             }
-            BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
+            BadgeQueued().Value(static_cast<int>(m_controller->getQueuedCount()));
         }
         else
         {
@@ -387,7 +389,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             {
                 NavViewDownloading().IsSelected(true);
             }
-            BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
+            BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
         }
     }
 
@@ -399,11 +401,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             ListDownloading().Children().RemoveAt(index);
         }
-        ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
-        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
+        ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
         ListCompleted().Children().Append(m_downloadRows[args.getId()]);
         ViewStackCompleted().CurrentPageIndex(ListPage::Has);
-        BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
+        BadgeCompleted().Value(static_cast<int>(m_controller->getCompletedCount()));
     }
 
     void MainWindow::OnDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
@@ -419,17 +421,17 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             ListDownloading().Children().RemoveAt(index);
         }
-        ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
-        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
+        ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
         if(ListQueued().Children().IndexOf(m_downloadRows[*args], index))
         {
             ListQueued().Children().RemoveAt(index);
         }
-        ViewStackQueued().CurrentPageIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
-        BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
+        ViewStackQueued().CurrentPageIndex(m_controller->getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeQueued().Value(static_cast<int>(m_controller->getQueuedCount()));
         ListCompleted().Children().Append(m_downloadRows[*args]);
         ViewStackCompleted().CurrentPageIndex(ListPage::Has);
-        BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
+        BadgeCompleted().Value(static_cast<int>(m_controller->getCompletedCount()));
     }
 
     void MainWindow::OnDownloadPaused(const ParamEventArgs<int>& args)
@@ -449,8 +451,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             ListCompleted().Children().RemoveAt(index);
         }
-        ViewStackCompleted().CurrentPageIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? ListPage::Has : ListPage::None);
-        BadgeCompleted().Value(static_cast<int>(m_controller->getDownloadManager().getCompletedCount()));
+        ViewStackCompleted().CurrentPageIndex(m_controller->getCompletedCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeCompleted().Value(static_cast<int>(m_controller->getCompletedCount()));
     }
 
     void MainWindow::OnDownloadStartedFromQueue(const ParamEventArgs<int>& args)
@@ -461,11 +463,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             ListQueued().Children().RemoveAt(index);
         }
-        ViewStackQueued().CurrentPageIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
-        BadgeQueued().Value(static_cast<int>(m_controller->getDownloadManager().getQueuedCount()));
+        ViewStackQueued().CurrentPageIndex(m_controller->getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
+        BadgeQueued().Value(static_cast<int>(m_controller->getQueuedCount()));
         ListDownloading().Children().Append(m_downloadRows[*args]);
         ViewStackDownloading().CurrentPageIndex(ListPage::Has);
-        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadManager().getDownloadingCount()));
+        BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
     }
 
     void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)
@@ -581,18 +583,18 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void MainWindow::ClearHistory(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        m_controller->getDownloadManager().clearHistory();
+        m_controller->clearHistory();
     }
 
     void MainWindow::StopAllDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
     {
-        m_controller->getDownloadManager().stopAllDownloads();
+        m_controller->stopAllDownloads();
     }
 
     void MainWindow::ClearQueuedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
     {
         unsigned int index;
-        for(int id : m_controller->getDownloadManager().clearQueuedDownloads())
+        for(int id : m_controller->clearQueuedDownloads())
         {
             if(ListQueued().Children().IndexOf(m_downloadRows[id], index))
             {
@@ -606,13 +608,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void MainWindow::RetryFailedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
     {
-        m_controller->getDownloadManager().retryFailedDownloads();
+        m_controller->retryFailedDownloads();
     }
 
     void MainWindow::ClearCompletedDownloads(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
     {
         unsigned int index;
-        for(int id : m_controller->getDownloadManager().clearCompletedDownloads())
+        for(int id : m_controller->clearCompletedDownloads())
         {
             if(ListCompleted().Children().IndexOf(m_downloadRows[id], index))
             {

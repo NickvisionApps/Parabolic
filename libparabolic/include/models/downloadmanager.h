@@ -6,10 +6,11 @@
 #include <optional>
 #include <unordered_map>
 #include <vector>
+#include <libnick/app/cancellationtoken.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/credential.h>
-#include "cancellationtoken.h"
+#include "configuration.h"
 #include "download.h"
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
@@ -17,6 +18,7 @@
 #include "historicdownload.h"
 #include "startupinformation.h"
 #include "urlinfo.h"
+#include "ytdlpmanager.h"
 #include "events/downloadaddedeventargs.h"
 #include "events/downloadcompletedeventargs.h"
 #include "events/downloadcredentialneededeventargs.h"
@@ -32,10 +34,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Constructs a DownloadManager.
-         * @param options The DownloaderOptions
+         * @param configuration The Configuration
          * @param history The DownloadHistory
+         * @param recoveryQueue The DownloadRecoveryQueue
          */
-        DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue);
+        DownloadManager(Configuration& configuration, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue);
         /**
          * @brief Destructs a DownloadManager.
          */
@@ -91,25 +94,10 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
         /**
-         * @brief Gets the remaining downloads count.
-         * @return The remaining downloads count
+         * @brief Gets the path to the yt-dlp executable.
+         * @return The path to the yt-dlp executable
          */
-        size_t getRemainingDownloadsCount() const;
-        /**
-         * @brief Gets the downloading count.
-         * @return The downloading count
-         */
-        size_t getDownloadingCount() const;
-        /**
-         * @brief Gets the queued count.
-         * @return The queued count
-         */
-        size_t getQueuedCount() const;
-        /**
-         * @brief Gets the completed count.
-         * @return The completed count
-         */
-        size_t getCompletedCount() const;
+        const std::filesystem::path& getYtdlpExecutablePath() const;
         /**
          * @brief Gets the options used for the downloader.
          * @return The DownloaderOptions
@@ -121,29 +109,36 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setDownloaderOptions(const DownloaderOptions& options);
         /**
-         * @brief Gets the log of a download.
-         * @param id The id of the download
-         * @return The download log
+         * @brief Gets the count of remaining downloads.
+         * @return The count of remaining downloads
          */
-        const std::string& getDownloadLog(int id) const;
+        size_t getRemainingDownloadsCount() const;
         /**
-         * @brief Gets the command used to start a download.
-         * @param id The id of the download
-         * @return The download command
+         * @brief Gets the count of downloading downloads.
+         * @return The count of downloading downloads
          */
-        const std::string& getDownloadCommand(int id) const;
+        size_t getDownloadingCount() const;
         /**
-         * @brief Gets the status of a download.
-         * @param id The id of the download
-         * @return The download status
+         * @brief Gets the count of queued downloads.
+         * @return The count of queued downloads
          */
-        DownloadStatus getDownloadStatus(int id) const;
+        size_t getQueuedCount() const;
+        /**
+         * @brief Gets the count of completed downloads.
+         * @return The count of completed downloads
+         */
+        size_t getCompletedCount() const;
         /**
          * @brief Loads the DownloadManager.
          * @brief This method invokes the historyChanged event.
          * @param info The StartupInformation object to edit
          */
         void startup(StartupInformation& info);
+        /**
+         * @brief Downloads the latest yt-dlp update in the background.
+         * @brief Will send a notification if the update fails.
+         */
+        void ytdlpUpdate();
         /**
          * @brief Recovers all available recoverable downloads.
          * @return The number of downloads recovered
@@ -172,7 +167,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param suggestedSaveFolder An option save folder to save the url's media to
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
+        std::optional<UrlInfo> fetchUrlInfo(App::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
         /**
          * @brief Fetches information about a set of URLs from a batch file.
          * @param token The CancellationToken to use for cancellation
@@ -180,7 +175,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param credential An optional credential to use for authentication
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
+        std::optional<UrlInfo> fetchUrlInfo(App::CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.
@@ -251,6 +246,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void onDownloadCompleted(const Events::DownloadCompletedEventArgs& args);
         mutable std::mutex m_mutex;
+        YtdlpManager m_ytdlpManager;
         DownloaderOptions m_options;
         DownloadHistory& m_history;
         DownloadRecoveryQueue& m_recoveryQueue;

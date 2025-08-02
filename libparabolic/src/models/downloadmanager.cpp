@@ -6,6 +6,7 @@
 #include <libnick/system/environment.h>
 #include <libnick/system/process.h>
 
+using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
@@ -18,8 +19,9 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     static std::string s_empty{};
 
-    DownloadManager::DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue)
-        : m_options{ options },
+    DownloadManager::DownloadManager(Configuration& configuration, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue)
+        : m_ytdlpManager{ configuration },
+        m_options{ configuration.getDownloaderOptions() },
         m_history{ history },
         m_recoveryQueue{ recoveryQueue }
     {
@@ -81,6 +83,35 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_downloadCredentialNeeded;
     }
 
+    const std::filesystem::path& DownloadManager::getYtdlpExecutablePath() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_ytdlpManager.getExecutablePath();
+    }
+
+    const DownloaderOptions& DownloadManager::getDownloaderOptions() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_options;
+    }
+
+    void DownloadManager::setDownloaderOptions(const DownloaderOptions& options)
+    {
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        m_options = options;
+        lock.unlock();
+        while(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()) && !m_queued.empty())
+        {
+            lock.lock();
+            std::shared_ptr<Download> firstQueuedDownload{ (*m_queued.begin()).second };
+            m_downloading.emplace(firstQueuedDownload->getId(), firstQueuedDownload);
+            m_queued.erase(firstQueuedDownload->getId());
+            lock.unlock();
+            m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
+            firstQueuedDownload->start(m_ytdlpManager.getExecutablePath(), m_options);
+        }
+    }
+
     size_t DownloadManager::getRemainingDownloadsCount() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
@@ -105,87 +136,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_completed.size();
     }
 
-    const DownloaderOptions& DownloadManager::getDownloaderOptions() const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        return m_options;
-    }
-
-    void DownloadManager::setDownloaderOptions(const DownloaderOptions& options)
-    {
-        std::unique_lock<std::mutex> lock{ m_mutex };
-        m_options = options;
-        lock.unlock();
-        while(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()) && !m_queued.empty())
-        {
-            lock.lock();
-            std::shared_ptr<Download> firstQueuedDownload{ (*m_queued.begin()).second };
-            m_downloading.emplace(firstQueuedDownload->getId(), firstQueuedDownload);
-            m_queued.erase(firstQueuedDownload->getId());
-            lock.unlock();
-            m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
-            firstQueuedDownload->start(m_options);
-        }
-    }
-
-    const std::string& DownloadManager::getDownloadLog(int id) const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        if(m_downloading.contains(id))
-        {
-            return m_downloading.at(id)->getLog();
-        }
-        if(m_queued.contains(id))
-        {
-            return m_queued.at(id)->getLog();
-        }
-        if(m_completed.contains(id))
-        {
-            return m_completed.at(id)->getLog();
-        }
-        return s_empty;
-    }
-
-    const std::string& DownloadManager::getDownloadCommand(int id) const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        if(m_downloading.contains(id))
-        {
-            return m_downloading.at(id)->getCommand();
-        }
-        if(m_queued.contains(id))
-        {
-            return m_queued.at(id)->getCommand();
-        }
-        if(m_completed.contains(id))
-        {
-            return m_completed.at(id)->getCommand();
-        }
-        return s_empty;
-    }
-
-    DownloadStatus DownloadManager::getDownloadStatus(int id) const
-    {
-        std::lock_guard<std::mutex> lock{ m_mutex };
-        if(m_downloading.contains(id))
-        {
-            return m_downloading.at(id)->getStatus();
-        }
-        if(m_queued.contains(id))
-        {
-            return m_queued.at(id)->getStatus();
-        }
-        if(m_completed.contains(id))
-        {
-            return m_completed.at(id)->getStatus();
-        }
-        return DownloadStatus::Queued;
-    }
-
     void DownloadManager::startup(StartupInformation& info)
     {
+        m_ytdlpManager.checkForUpdates();
         m_historyChanged.invoke(m_history.getHistory());
         info.setHasRecoverableDownloads(m_recoveryQueue.getRecoverableDownloads().size() > 0);
+    }
+
+    void DownloadManager::ytdlpUpdate()
+    {
+        m_ytdlpManager.downloadUpdate();
     }
 
     size_t DownloadManager::recoverDownloads()
@@ -293,7 +253,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return std::nullopt;
         }
-        Process process{ Environment::findDependency("yt-dlp"), arguments };
+        Process process{ m_ytdlpManager.getExecutablePath(), arguments };
         token.setCancelFunction([&process]()
         {
             process.kill();
@@ -588,7 +548,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_downloading.emplace(download->getId(), download);
             lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getUrl(), DownloadStatus::Running });
-            download->start(m_options);
+            download->start(m_ytdlpManager.getExecutablePath(), m_options);
         }
         else
         {
@@ -640,7 +600,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_queued.erase(firstQueuedDownload->getId());
             lock.unlock();
             m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
-            firstQueuedDownload->start(m_options);
+            firstQueuedDownload->start(m_ytdlpManager.getExecutablePath(), m_options);
         }
     }
 }

@@ -10,16 +10,6 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     }
 
-    StartupInformation::StartupInformation(const Nickvision::App::WindowGeometry& windowGeometry, bool canDownload, bool showDisclaimer, const std::string& urlToValidate, bool recover)
-        : m_windowGeometry{ windowGeometry },
-        m_canDownload{ canDownload },
-        m_showDisclaimer{ showDisclaimer },
-        m_urlToValidate{ urlToValidate },
-        m_hasRecoverableDownloads{ recover }
-    {
-
-    }
-
     const Nickvision::App::WindowGeometry& StartupInformation::getWindowGeometry() const
     {
         return m_windowGeometry;

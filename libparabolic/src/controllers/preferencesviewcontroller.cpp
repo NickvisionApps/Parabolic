@@ -1,4 +1,5 @@
 #include "controllers/preferencesviewcontroller.h"
+#include <algorithm>
 #include <thread>
 #include <libnick/localization/gettext.h>
 
@@ -13,8 +14,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadHistory{ downloadHistory },
         m_options{ m_configuration.getDownloaderOptions() }
     {
+        m_availableTranslationLanguages.push_back("en_US");
+        std::sort(m_availableTranslationLanguages.begin(), m_availableTranslationLanguages.end());
         m_availableTranslationLanguages.insert(m_availableTranslationLanguages.begin(), _("System"));
-        m_availableTranslationLanguages.insert(m_availableTranslationLanguages.begin(), _("None"));
     }
 
     int PreferencesViewController::getMaxPostprocessingThreads() const
@@ -46,7 +48,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else if(language == "C")
         {
-            return _("None");
+            return "en_US";
         }
         return language;
     }
@@ -57,7 +59,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_configuration.setTranslationLanguage("");
         }
-        else if(language == _("None"))
+        else if(language == "en_US")
         {
             m_configuration.setTranslationLanguage("C");
         }

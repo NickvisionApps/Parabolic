@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Встраивание метаданных</dt>
 <dd class="terms">
-<p class="p">Parabolic по возможности будет добавлять определяющие теги (заголовок, жанр и т.д.) в медиа.</p>
+<p class="p">Parabolic по возможности будет добавлять в медиа теги с основными данными (заголовок, жанр и т.д.).</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,15 +42,15 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Удаление данных об источнике</dt>
 <dd class="terms">
-<p class="p">Parabolic будет стирать метаданные, содержащие идентифицирующие сведения о загрузке.</p>
-<p class="p">Следующие поля будут удалены: <span class="code">comment</span>, <span class="code">description</span>, <span class="code">synopsis</span>, <span class="code">purl</span> и <span class="code">handler_name</span> в каждой дорожке.</p>
+<p class="p">Parabolic будет стирать поля метаданных, содержащие идентифицирующие сведения о загрузке.</p>
+<p class="p">В каждой дорожке будут стёрты следующие поля: <span class="code">comment</span>, <span class="code">description</span>, <span class="code">synopsis</span>, <span class="code">purl</span> и <span class="code">handler_name</span>.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Данный параметр доступен, только если <span class="code">Встраивание метаданных</span> включено.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Данный параметр доступен, только если включено <span class="code">Встраивание метаданных</span>.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Встраивание обложек</dt>
 <dd class="terms">
 <p class="p">Parabolic по возможности будет встраивать обложку медиа в файл.</p>
-<p class="p">Если тип файла не поддерживает встраивание, обложка будет сохранена в виде отдельного изображения.</p>
+<p class="p">Если тип файла не поддерживает встраивание, обложка сохранится в виде отдельного изображения.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Данный параметр доступен, только если <span class="code">Встраивание обложек</span> включено.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Данный параметр доступен, только если включено <span class="code">Встраивание обложек</span>.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Встраивание глав</dt>
 <dd class="terms">
-<p class="p">Parabolic по возможности будет добавлять теги глав в медиа.</p>
+<p class="p">Parabolic по возможности будет добавлять в медиа теги с главами.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Встраивание субтитров</dt>
 <dd class="terms">
-<p class="p">Если параметр выключен или если встраивание не поддерживается, загруженные субтитры будут сохранены в отдельных файлах.</p>
+<p class="p">Если параметр выключен или если встраивание не поддерживается, загруженные субтитры сохранятся в отдельных файлах.</p>
 <p class="p">Поддержка встраивания зависит от выбранного вами параметра <span class="code">Предпочтительный формат субтитров</span>.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Аргументы постобработки</dt>
 <dd class="terms">
-<p class="p">Parabolic предоставит следующие параметры в диалоге добавления загрузки для последующей передачи в <span class="code">ffmpeg</span> и другие постпроцессоры при обработке медиа.</p>
+<p class="p">Parabolic предоставит следующие параметры в диалоге добавления загрузки для последующей передачи <span class="code">ffmpeg</span> и другим постпроцессорам при обработке медиа.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p"><span class="code">Имя</span> — Описательное имя аргумента.</p>
 <p class="p"><span class="code">Постпроцессор</span> — Постпроцессор, которому передаются аргументы.</p>
 <p class="p"><span class="code">Исполняемый файл</span> — Внешняя программа, которой передаются аругменты.</p>
-<p class="p"><span class="code">Переменные</span> — Передаваемые переменные.</p>
+<p class="p"><span class="code">Переменные</span> — Непосредственно передаваемые переменные.</p>
 </div></div></div>
 </div>
 </dd>

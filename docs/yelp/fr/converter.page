@@ -20,14 +20,14 @@
 <terms>
     <item>
         <title>Inclure les métadonnées</title>
-        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…), si disponibles.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
     </item>
     <item>
         <title>Retirer les données sur la source</title>
-        <p>Parabolic will clear metadata fields containing identifying download information.</p>
+        <p>Parabolic effacera les champs de métadonnées contenant des informations d’identification de la source du média.</p>
         <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
         <note>
             <p>Cette option est configurable uniquement si l’<code>inclusion des métadonnées</code> est activée.</p>
@@ -38,7 +38,7 @@
     </item>
     <item>
         <title>Inclure les vignettes</title>
-        <p>Parabolic will embed a media with its thumbnail if available.</p>
+        <p>Parabolic inclura dans un média sa vignette, si disponible.</p>
         <p>Si le type de fichier ne prend pas en charge l’inclusion d’une vignette, celle-ci sera exportée vers un fichier d’image séparé.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
@@ -46,7 +46,7 @@
     </item>
     <item>
         <title>Rogner les vignettes des fichiers audio</title>
-        <p>Parabolic will crop thumbnails of audio files to squares.</p>
+        <p>Parabolic rognera la vignette des fichiers audio en carrée.</p>
         <note>
             <p>Cette option est configurable uniquement si l’ <code>inclusion des vignettes</code> est activée.</p>
         </note>
@@ -56,7 +56,7 @@
     </item>
     <item>
         <title>Inclure les chapitres</title>
-        <p>Parabolic will tag a media with its chapter information if available.</p>
+        <p>Parabolic inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
         <note style="advanced">
             <p>Par défaut : Désactivée</p>
         </note>
@@ -64,27 +64,27 @@
     <item>
         <title>Inclure les sous-titres</title>
         <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
-        <p>Whether or not embedding is supported if affected by your chosen <code>Preferred Subtitle Format</code>.</p>
+        <p>Si l'inclusion est disponible ou pas, dépendant de votre <code>Préférence de Format de Sous-titre </code>.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
     </item>
     <item>
-        <title>FFmpeg Threads</title>
-        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
+        <title>Fils (Threads) FFmpeg</title>
+        <p>Parabolic limiteras le nombre de fils (threads) utilisé par <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>Par défaut : le nombre maximal de fils disponibles sur le système</p>
         </note>
     </item>
     <item>
-        <title>Postprocessing Arguments</title>
-        <p>Parabolic will present these options in the add download dialog to be passed to <code>ffmpeg</code> and other post-processors when processing media.</p>
+        <title>Paramètre de Post-Traitement</title>
+        <p>Parabolic présentera ces option dans le menu d'ajout de téléchargement qui seront passé a <code>ffmpeg</code> et autre post-traiteur pendant le traitement des médias.</p>
         <note style="advanced">
-            <p>Postprocessing Argument Fields:</p>
-            <p><code>Name</code> - The friendly name of the argument.</p>
-            <p><code>Post Processor</code> - The post processor to pass the arguments to.</p>
-            <p><code>Executable</code> - The executable to pass the arguments to.</p>
-            <p><code>Args</code> - The args to pass.</p>
+            <p>Champs de Paramètres de Post-Traitement :</p>
+            <p><code>Nom</code> - Le nom du paramètre.</p>
+            <p><code>Post-Traiteur</code> - Le post-traiteur auquel passer les paramètres.</p>
+            <p><code>Exécutable</code> - L'exécutable auquel passer les paramètre.</p>
+            <p><code>Paramètres</code> - Les paramètres a passer.</p>
         </note>
     </item>
 </terms>

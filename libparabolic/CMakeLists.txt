@@ -17,7 +17,6 @@ add_library(libparabolic
     "include/events/downloadprogresschangedeventargs.h"
     "include/models/audiocodec.h"
     "include/models/browser.h"
-    "include/models/cancellationtoken.h"
     "include/models/configuration.h"
     "include/models/credentialcheckstatus.h"
     "include/models/download.h"
@@ -49,6 +48,7 @@ add_library(libparabolic
     "include/models/videocodec.h"
     "include/models/urlinfo.h"
     "include/models/videoresolution.h"
+    "include/models/ytdlpmanager.h"
     "src/controllers/adddownloaddialogcontroller.cpp"
     "src/controllers/credentialdialogcontroller.cpp"
     "src/controllers/keyringdialogcontroller.cpp"
@@ -58,7 +58,6 @@ add_library(libparabolic
     "src/events/downloadcompletedeventargs.cpp"
     "src/events/downloadcredentialneededeventargs.cpp"
     "src/events/downloadprogresschangedeventargs.cpp"
-    "src/models/cancellationtoken.cpp"
     "src/models/configuration.cpp"
     "src/models/download.cpp"
     "src/models/downloaderoptions.cpp"
@@ -77,7 +76,8 @@ add_library(libparabolic
     "src/models/subtitlelanguage.cpp"
     "src/models/timeframe.cpp"
     "src/models/urlinfo.cpp"
-    "src/models/videoresolution.cpp")
+    "src/models/videoresolution.cpp"
+    "src/models/ytdlpmanager.cpp")
 target_include_directories(libparabolic PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set_target_properties(libparabolic PROPERTIES VERSION "${PROJECT_VERSION}" SOVERSION "${PROJECT_VERSION}")
 if(MSVC)

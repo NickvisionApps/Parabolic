@@ -15,19 +15,19 @@
 </info>
 
 <title>aria2c</title>
-<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
+<p>Cette page explique toutes les options pour configurer aria2c dans les Préférences de <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Use aria2c</title>
-        <p>Parabolic will use aria2c instead of yt-dlp's native downloader.</p>
+        <title>Utiliser aria2c</title>
+        <p>Parabolic utilisera aria2c, au lieu de yt-dlp directement, pour télécharger les médias.</p>
         <note style="advanced">
             <p>Par défaut : Désactivée</p>
         </note>
     </item>
     <item>
         <title>Nombre maximal de connexions par serveur</title>
-        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
+        <p>Cette option est disponible uniquement quand l’utilisation de aria2c est activée. Cette option est la même que la balise <code>-x</code> passée à aria2c.</p>
         <p>Le nombre maximal de connexions qui peuvent être utilisées par serveur. Il doit s’agir d’un nombre entier entre 1 et 32.</p>
         <note style="advanced">
             <p>Par défaut : 16</p>
@@ -35,7 +35,7 @@
     </item>
     <item>
         <title>Taille minimale de division</title>
-        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
+        <p>Cette option s’applique uniquement lorsque l’utilisation de aria2c est activée. Cette option est la même que la balise <code>-k</code> passée à aria2c.</p>
         <p>La taille minimale, en MiB, dans laquelle diviser un fichier. Il doit s’agir d’un nombre entier compris entre 1 et 1024.</p>
         <note style="advanced">
             <p>Par défaut : 20</p>

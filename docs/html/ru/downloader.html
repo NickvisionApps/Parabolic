@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Использование частичных файлов</dt>
 <dd class="terms">
-<p class="p">Parabolic будет загружать медиа раздельными файлами <span class="code">.part</span>, а не выводить напрямую в конечный файл</p>
+<p class="p">Parabolic будет загружать медиа раздельными файлами <span class="code">.part</span> вместо прямого вывода.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -110,9 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Cookie из браузера</dt>
 <dd class="terms">
-<p class="p">Браузер, в котором можно считывать cookie и передавать их в компонент загрузки yt-dlp.</p>
+<p class="p">Браузер, из которого считывать cookie для передачи загрузчику yt-dlp.</p>
 <p class="p">Полезно при загрузке медиа, требующих входа в систему; например: частных видео с YouTube.</p>
-<p class="p">Данный параметр доступен на платформах без изолированной программной среды.</p>
+<p class="p">Данный параметр доступен только в неизолированных программных средах (не в «песочницах»).</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Файл cookie</dt>
 <dd class="terms">
-<p class="p">Файл в формате .txt под cookie для передачи в компонент загрузки yt-dlp.</p>
+<p class="p">Файл в формате .txt под cookie для передачи загрузчику yt-dlp.</p>
 <p class="p">Полезно при загрузке медиа, требующих входа в систему; например: частных видео с YouTube.</p>
 <p class="p">Используйте одно из следующих расширений для получения cookie из вашего браузера:</p>
 <p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
