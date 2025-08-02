@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-02 09:27-0400\n"
-"PO-Revision-Date: 2025-02-06 19:22+0000\n"
-"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/fr/>\n"
+"POT-Creation-Date: 2025-07-23 22:31-0400\n"
+"PO-Revision-Date: 2025-07-30 21:11+0000\n"
+"Last-Translator: InfiniteLoop <corentinjacques10@protonmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:94
@@ -82,8 +82,11 @@ msgstr "WAV (Audio)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:192
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:346
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:373
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:172
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:198
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:17
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:49
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:60
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:170
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:196
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:134
@@ -93,135 +96,124 @@ msgstr "Aucuns"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
-#, c++-format
 msgid "Error attempting to validate download: {}"
-msgstr ""
+msgstr "Erreur en essayant de valider le téléchargement: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
-#, c++-format
 msgid "Error attempting to add download: {}"
-msgstr ""
+msgstr "Erreur en essayent d'ajouter ce téléchargement: {}"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:50
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:48
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
 msgid "Download web video and audio"
 msgstr "Téléchargez des vidéos et de l’audio en ligne"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "Matrix Chat"
 msgstr "Discussion Matrix"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:59
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
 msgid "Contributors on GitHub"
 msgstr "Contributeurs sur GitHub"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:61
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:59
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:63
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:61
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:64
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:62
 msgid "translator-credits"
 msgstr "Irénée Thirion"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:306
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:308
-msgid "New version of Parabolic available"
-msgstr ""
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:315
-#, fuzzy
-msgid "No Parabolic update available"
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:252
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:254
+msgid "New update available"
 msgstr "Nouvelle mise à jour disponible"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:261
+msgid "No update available"
+msgstr "Aucune mise à jour disponible"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:274
 msgid ""
 "The update is downloading in the background and will start once it finishes"
 msgstr ""
 "La mise à jour est téléchargée en arrière-plan et sera lancée une fois "
 "terminée"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:333
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:279
 msgid "Unable to download and install update"
 msgstr "Impossible de télécharger et installer la mise à jour"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:377
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:293
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} téléchargement récupéré"
 msgstr[1] "{} téléchargements récupérés"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:382
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:298
 msgid "Error attempting to recover downloads: {}"
-msgstr ""
+msgstr "Erreur en essayant de recommencer les téléchargements : {}"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:457
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "Download Finished"
 msgstr "Téléchargement terminé"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:457
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "{} has finished downloading"
 msgstr "{} a été téléchargé"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:457
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:102
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:35
 msgid "Open"
 msgstr "Ouvrir"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:461
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:332
 msgid "Download Finished With Error"
 msgstr "Téléchargement terminé avec une erreur"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:461
-#, c++-format
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:332
 msgid "{} has finished with an error"
 msgstr "{} s’est terminé avec une erreur"
 
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:19
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:47
-#: libparabolic/src/controllers/preferencesviewcontroller.cpp:58
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:16
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:45
+#: libparabolic/src/controllers/preferencesviewcontroller.cpp:56
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:33
 msgid "System"
 msgstr "Système"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
 msgid "0 B/s"
-msgstr ""
+msgstr "0 o/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:37
 msgid "N/A"
-msgstr ""
+msgstr "N/C"
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
@@ -238,50 +230,33 @@ msgid "Audio Description"
 msgstr "Audio-description"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy, c++-format
 msgid "{:.2f} GiB"
-msgstr "{:.2f} GiB/s"
+msgstr "{:.2f} Gio"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy, c++-format
 msgid "{:.2f} MiB"
-msgstr "{:.2f} MiB/s"
+msgstr "{:.2f} Mio"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy, c++-format
 msgid "{:.2f} KiB"
-msgstr "{:.2f} KiB/s"
+msgstr "{:.2f} Kio"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy, c++-format
 msgid "{:.2f} B"
-msgstr "{:.2f} B/s"
+msgstr "{:.2f} o"
 
-#: libparabolic/src/models/download.cpp:165
+#: libparabolic/src/models/download.cpp:171
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr ""
 "ERREUR : Le fichier existe déjà, et le remplacement n’a pas été activé."
 
-#: libparabolic/src/models/download.cpp:228
+#: libparabolic/src/models/download.cpp:235
 msgid "Starting download..."
 msgstr "Début du téléchargement…"
 
 #: libparabolic/src/models/subtitlelanguage.cpp:38
 msgid "Auto-generated"
 msgstr "Auto-généré"
-
-#: libparabolic/src/models/ytdlpmanager.cpp:49
-msgid "New version of yt-dlp available"
-msgstr ""
-
-#: libparabolic/src/models/ytdlpmanager.cpp:75
-msgid "yt-dlp updated successfully"
-msgstr ""
-
-#: libparabolic/src/models/ytdlpmanager.cpp:79
-#, fuzzy
-msgid "Unable to download yt-dlp update"
-msgstr "Impossible de télécharger et installer la mise à jour"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
@@ -296,7 +271,7 @@ msgstr "Impossible de télécharger et installer la mise à jour"
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:113
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:118
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:484
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:482
 msgid "Add Download"
 msgstr "Ajouter un téléchargement"
 
@@ -326,7 +301,7 @@ msgstr "URL du média"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:80
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:49
 msgid "Use Batch File"
-msgstr "Utiliser un fichier Batch"
+msgstr "Utiliser un fichier en lot"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:89
 msgid "Authenticate"
@@ -365,13 +340,13 @@ msgstr "Mot de passe"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:50
-#, fuzzy
 msgid "Download Immediately"
-msgstr "Téléchargez un média"
+msgstr "Téléchargement Immédiat"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:108
 msgid "Use your previous download options for this download"
 msgstr ""
+"Utiliser les options de téléchargement précédente pour ce téléchargement"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:113
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:113
@@ -386,16 +361,15 @@ msgid "File Type"
 msgstr "Type de fichier"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:144
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles.\n"
 "Please select a specific file type that is known to support embedding\n"
 "to prevent separate files from being written."
 msgstr ""
 "Les types de fichier génériques ne prennent pas en charge l’inclusion des "
-"vignettes et des sous-titres. Veuillez sélectionner un type de fichier "
-"spécifique qui prend en charge l’inclusion pour que les sous-titres et la "
-"vignette ne soient pas stockés séparément."
+"vignettes et des sous-titres. \n"
+"Veuillez sélectionner un type de fichier spécifique qui prend en charge l’"
+"inclusion pour éviter que d'autre fichiers soit enregistrés séparément."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:64
@@ -446,7 +420,7 @@ msgstr "Revenir au titre"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:217
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:392
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:323
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:321
 msgid "Download"
 msgstr "Télécharger"
 
@@ -466,17 +440,15 @@ msgstr "Exporter la description"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:339
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:79
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:107
-#, fuzzy
 msgid "Exclude from History"
-msgstr "Effacer l’historique"
+msgstr "Exclure de l'Historique"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:263
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:343
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:82
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:110
-#, fuzzy
 msgid "Post Processor Argument"
-msgstr "Fils de post-traitement"
+msgstr "Paramètres de Post-Traitement"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:267
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:83
@@ -495,27 +467,26 @@ msgstr "Fin"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:317
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:89
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
 "playlist files. Please select a specific file type that is known to support "
 "embedding to prevent separate files from being written."
 msgstr ""
 "Les types de fichier génériques ne prennent pas en charge l’inclusion des "
-"vignettes et des sous-titres. Veuillez sélectionner un type de fichier "
-"spécifique qui prend en charge l’inclusion pour que les sous-titres et la "
-"vignette ne soient pas stockés séparément."
+"vignettes et l'écriture des fichiers de playlist. Veuillez sélectionner un "
+"type de fichier spécifique qui prend en charge l’inclusion pour éviter que "
+"d'autre fichiers soit enregistrés séparément."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:335
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:90
 msgid "Write M3U Playlist File"
-msgstr ""
+msgstr "Écrire un Fichier de Playlist M3U"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:366
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:94
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
-msgstr ""
+msgstr "Sera ignoré pour les médias en lot qui fournisse un lieu de sauvegarde."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:379
 msgid "Playlist Items"
@@ -536,37 +507,41 @@ msgstr "Identifiant requis"
 msgid "Use"
 msgstr "Utiliser"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:51
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
 msgstr "Voir le journal"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:70
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:68
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:155
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:31
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:163
 msgid "Pause"
-msgstr ""
+msgstr "Pause"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:76
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:32
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:110
 msgid "Stop"
 msgstr "Arrêter"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:94
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:309
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:92
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:316
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:33
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:313
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:311
 msgid "Play"
 msgstr "Lire"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:114
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:112
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:36
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:120
 msgid "Retry"
 msgstr "Réessayer"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:154
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:153
+msgid "Copy Command to Clipboard"
+msgstr "Copier la commande vers le presse-papiers"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:160
 msgid "Copy Log to Clipboard"
 msgstr "Copier le journal dans le presse-papier"
 
@@ -640,20 +615,20 @@ msgid "Main Menu"
 msgstr "Menu principal"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:84
 msgid "Home"
 msgstr "Accueil"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:262
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:24
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:85
 msgid "Keyring"
 msgstr "Trousseau"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:261
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:86
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:102
 msgid "History"
@@ -668,7 +643,7 @@ msgid "Downloads"
 msgstr "Téléchargements"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:274
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:106
 msgid "Downloading"
@@ -676,7 +651,7 @@ msgstr "Téléchargement"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:161
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:273
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:89
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:111
@@ -684,7 +659,7 @@ msgid "Queued"
 msgstr "En attente"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:187
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:279
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:286
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:90
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:116
 msgid "Completed"
@@ -743,9 +718,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:304
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:103
-#, fuzzy
 msgid "No History Available"
-msgstr "Pas d’historique disponible"
+msgstr "Pas d’Historique Disponible"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:329
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:107
@@ -795,15 +769,13 @@ msgstr "Système"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:30
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:34
-#, fuzzy
 msgid "Translation Language"
-msgstr "Langue de l’audio"
+msgstr "Langue de Traduction"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:31
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:35
-#, fuzzy
 msgid "An application restart is required for change to take effect"
-msgstr "Un redémarrage de l’application est requis pour changer le thème."
+msgstr "Un redémarrage de l’application est requis pour effectuer le changement"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:39
@@ -814,6 +786,7 @@ msgstr "Empêcher la mise en veille"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:40
 msgid "Prevent the computer from sleeping while downloads are running"
 msgstr ""
+"Empêcher l'ordinateur de dormir pendant que les téléchargements fonctionnent"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:43
@@ -930,9 +903,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:70
-#, fuzzy
 msgid "Preferred Audio Codec"
-msgstr "Codec vidéo préféré"
+msgstr "Codec Audio Préféré"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:71
@@ -970,9 +942,8 @@ msgstr "Téléchargeur"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:170
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:86
-#, fuzzy
 msgid "Use Part Files"
-msgstr "Utiliser un fichier Batch"
+msgstr "Utiliser les Fichiers Segmentés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:171
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:87
@@ -980,6 +951,8 @@ msgid ""
 "Download media in separate .part files instead of directly into the output "
 "file"
 msgstr ""
+"Télécharger les médias dans des fichiers .part séparés au lieu de "
+"directement dans le fichier de sortie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:180
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:90
@@ -989,7 +962,7 @@ msgstr "Utiliser SponsorBlock pour YouTube"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:91
 msgid "Try to remove sponsored segments from videos"
-msgstr ""
+msgstr "Essayez de supprimer les segments sponsorisés de vidéos"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:190
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:94
@@ -1080,15 +1053,13 @@ msgstr "Effacer le fichier de cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:265
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:115
-#, fuzzy
 msgid "aria2c"
-msgstr "aria2"
+msgstr "aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:268
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:116
-#, fuzzy
 msgid "Use aria2c"
-msgstr "Utiliser aria2"
+msgstr "Utiliser aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:269
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:117
@@ -1185,9 +1156,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:384
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:146
-#, fuzzy
 msgid "FFmpeg Threads"
-msgstr "Paramètres FFmpeg"
+msgstr "Fils (Threads) FFmpeg"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:385
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:147
@@ -1195,9 +1165,8 @@ msgid "Limit the number of threads used by ffmpeg"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:395
-#, fuzzy
 msgid "Postprocessing Arguments"
-msgstr "Fils de post-traitement"
+msgstr "Paramètre de Post-Traitement"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:396
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:149
@@ -1254,56 +1223,55 @@ msgstr "Démarrage"
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:82
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:88
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:109
 msgid "Processing"
 msgstr "Traitement"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:90
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:156
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:162
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:93
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:168
 msgid "Running"
 msgstr "En cours"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:90
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
-#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:111
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:131
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:340
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:251
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:258
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:308
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:398
 msgid "Error"
 msgstr "Erreur"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:119
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:125
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:137
 msgid "Success"
 msgstr "Succès"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:131
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:137
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:145
 msgid "Stopped"
 msgstr "Arrêté"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:154
 msgid "Paused"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:143
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:149
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:157
 msgid "Resume"
 msgstr ""
@@ -1347,12 +1315,10 @@ msgid "No Subtitles Available"
 msgstr "Aucun sous-titre disponible"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
-#, c++-format
 msgid "{} items"
 msgstr "{} éléments"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1379,11 +1345,11 @@ msgid "Edit"
 msgstr "Modifier"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:345
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:352
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:180
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:185
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:333
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:331
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -1483,38 +1449,38 @@ msgid "Recover"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:44
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:25
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:66
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:186
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:186
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:209
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:216
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:297
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:387
 msgid "Cancel"
 msgstr "Annuler"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
 msgid "Exit?"
 msgstr "Quitter ?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:207
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:214
 #, fuzzy
 msgid "There are downloads in progress. Exiting will stop all downloads."
 msgstr "Des téléchargements sont en cours. Êtes-vous sûr de vouloir quitter ?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:208
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:203
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:215
 msgid "Exit"
 msgstr "Sortir"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:236
 msgid "Ok"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:330
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:337
 msgid "Download Again"
 msgstr "Télécharger à nouveau"
 
@@ -1551,7 +1517,7 @@ msgstr "Nom (vide)"
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:253
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:260
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:309
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:399
 msgid "OK"
@@ -1729,7 +1695,6 @@ msgid "Use manual credentials"
 msgstr "Identification manuelle"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} nécessite un identifiant pour télécharger. Veuillez en sélectionner ou en "
@@ -1817,8 +1782,7 @@ msgstr "Signaler un bogue"
 msgid "Discussions"
 msgstr "Discussions"
 
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:282
-#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:291
+#: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:289
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -1894,12 +1858,6 @@ msgstr "Nouvel identifiant"
 #, fuzzy
 msgid "Delete Argument"
 msgstr "Nouvel identifiant"
-
-#~ msgid "New update available"
-#~ msgstr "Nouvelle mise à jour disponible"
-
-#~ msgid "Copy Command to Clipboard"
-#~ msgstr "Copier la commande vers le presse-papiers"
 
 #~ msgid "Disclaimer"
 #~ msgstr "Avertissement"
@@ -2516,7 +2474,9 @@ msgstr "Nouvel identifiant"
 #~ msgstr "Téléchargements restants : {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;Converter;convertisseur;"
+#~ msgstr ""
+#~ "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;"
+#~ "Converter;convertisseur;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Une interface basique pour yt-dlp"
