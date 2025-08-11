@@ -11,7 +11,9 @@ assignees: ''
 Paste the URL of the video/audio you were trying to download.
 
 **Download Log**
-Copy and paste the entire download log.
+```
+Copy and paste the entire download log here.
+```
 
 **Download Options**
 If applicable, list the download options you selected, as well as the options you have configured in the app's preferences/settings for all downloads.
@@ -21,15 +23,11 @@ If applicable, list the download options you selected, as well as the options yo
     - [ ] Flatpak
     - [ ] Snap
     - [ ] Source (Including AUR)
-- [ ] Qt on Linux
-    - [ ] Flatpak
-    - [ ] Snap
-    - [ ] Source (Including AUR)
-- [ ] Qt on Windows
+- [ ] WinUI on Windows
     - [ ] Installer
     - [ ] Portable
 
-Version Number: 
+Version Number:
 
 **Additional context**
 Add any other context about the problem here.
