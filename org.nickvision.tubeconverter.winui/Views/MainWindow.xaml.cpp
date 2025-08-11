@@ -2,6 +2,7 @@
 #if __has_include("Views/MainWindow.g.cpp")
 #include "Views/MainWindow.g.cpp"
 #endif
+#include <cmath>
 #include <stdexcept>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
@@ -9,7 +10,6 @@
 #include "Controls/DownloadRow.xaml.h"
 #include "Controls/SettingsRow.xaml.h"
 #include "Helpers/WinUIHelpers.h"
-#include "Views/AddDownloadDialog.xaml.h"
 #include "Views/CredentialDialog.xaml.h"
 #include "Views/KeyringPage.xaml.h"
 #include "Views/SettingsPage.xaml.h"
@@ -41,7 +41,15 @@ enum MainWindowPage
     Downloading,
     Queued,
     Completed,
+    UpdateCenter,
     Custom
+};
+
+enum UpdateCenterPage
+{
+    NoUpdates = 0,
+    UpdatesAvailable,
+    DownloadingUpdate,
 };
 
 enum ListPage
@@ -68,6 +76,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         AppWindow().Closing({ this, &MainWindow::OnClosing });
         m_controller->configurationSaved() += [this](const EventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnConfigurationSaved(args); }); };
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
+        m_controller->appUpdateAvailable() += [this](const ParamEventArgs<Version>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnAppUpdateAvailable(args); }); };
+        m_controller->appUpdateProgressChanged() += [this](const ParamEventArgs<double>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnAppUpdateProgressChanged(args); }); };
         m_controller->historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnHistoryChanged(args); }); };
         m_controller->downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args){ OnDownloadCredentialNeeded(args); };
         m_controller->downloadAdded() += [this](const DownloadAddedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadAdded(args); }); };
@@ -88,17 +98,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         NavViewDownloading().Content(winrt::box_value(winrt::to_hstring(_("Downloading"))));
         NavViewQueued().Content(winrt::box_value(winrt::to_hstring(_("Queued"))));
         NavViewCompleted().Content(winrt::box_value(winrt::to_hstring(_("Completed"))));
-        NavViewHelp().Content(winrt::box_value(winrt::to_hstring(_("Help"))));
+        NavViewUpdates().Content(winrt::box_value(winrt::to_hstring(_("Updates"))));
         NavViewSettings().Content(winrt::box_value(winrt::to_hstring(_("Settings"))));
-        MenuCheckForUpdates().Text(winrt::to_hstring(_("Check for Updates")));
-        MenuDocumentation().Text(winrt::to_hstring(_("Documentation")));
-        MenuGitHubRepo().Text(winrt::to_hstring(_("GitHub Repo")));
-        MenuReportABug().Text(winrt::to_hstring(_("Report a Bug")));
-        MenuDiscussions().Text(winrt::to_hstring(_("Discussions")));
-        MenuAbout().Text(winrt::to_hstring(_("About")));
-        PageHome().Title(winrt::to_hstring(_("Download Media")));
-        PageHome().Description(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
+        LblGreeting().Text(winrt::to_hstring(_("Download Media")));
+        LblGettingStarted().Text(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
+        LblHomeStart().Text(winrt::to_hstring(_("Start")));
         LblHomeAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        BtnHomeGitHubRepo().Label(winrt::to_hstring(_("GitHub Repo")));
+        BtnHomeReportABug().Label(winrt::to_hstring(_("Report a Bug")));
+        BtnHomeDiscussions().Label(winrt::to_hstring(_("Discussions")));
         LblHistoryTitle().Text(winrt::to_hstring(_("History")));
         PageNoHistory().Title(winrt::to_hstring(_("No History Available")));
         LblHistoryAddDownload().Text(winrt::to_hstring(_("Add Download")));
@@ -120,6 +128,22 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         LblRetryFailedDownloads().Text(winrt::to_hstring(_("Retry")));
         ToolTipService::SetToolTip(BtnClearCompletedDownloads(), winrt::box_value(winrt::to_hstring(_("Clear Completed Downloads"))));
         LblClearCompletedDownloads().Text(winrt::to_hstring(_("Clear")));
+        LblUpdateCenter().Text(winrt::to_hstring(_("Updates")));
+        LblNoUpdates().Text(winrt::to_hstring(_("You're up to date")));
+        LblNoUpdatesDetails().Text(winrt::to_hstring(_("We will let you know once app updates are available to install")));
+        LblUpdatesAvailable().Text(winrt::to_hstring(_("There is an update available")));
+        LblDownloadUpdate().Text(winrt::to_hstring(_("Download")));
+        LblUpdatesDownloading().Text(winrt::to_hstring(_("Downloading the update")));
+        LblUpdatesOptions().Text(winrt::to_hstring(_("Options")));
+        RowUpdatesBeta().Title(winrt::to_hstring(_("Receive Beta App Updates")));
+        RowUpdatesBeta().Description(winrt::to_hstring(_f("Check for pre-release (beta) versions of {}", m_controller->getAppInfo().getShortName())));
+        TglUpdatesBeta().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
+        TglUpdatesBeta().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
+        LblUpdatesChangelogTitle().Text(winrt::to_hstring(_("Changelog")));
+        LblUpdatesChangelogVersion().Text(winrt::to_hstring(_f("Version {}", m_controller->getAppInfo().getVersion().str())));
+        LblUpdatesChangelog().Text(winrt::to_hstring(m_controller->getAppInfo().getChangelog()));
+        //Load
+        TglUpdatesBeta().IsOn(m_controller->getPreferredUpdateType() == VersionType::Preview);
     }
 
     void MainWindow::SystemTheme(ElementTheme theme)
@@ -137,6 +161,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             co_return;
         }
+        //Load UI
+        ViewStackDownloading().CurrentPageIndex(0);
+        ViewStackQueued().CurrentPageIndex(0);
+        ViewStackCompleted().CurrentPageIndex(0);
+        ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::NoUpdates);
+        NavViewHome().IsSelected(true);
+        //Startup
         const StartupInformation& info{ m_controller->startup(m_hwnd) };
         if(info.getWindowGeometry().isMaximized())
         {
@@ -151,10 +182,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             size.Y = info.getWindowGeometry().getY();
             AppWindow().MoveAndResize(size);
         }
-        NavViewHome().IsSelected(true);
-        ViewStackDownloading().CurrentPageIndex(0);
-        ViewStackQueued().CurrentPageIndex(0);
-        ViewStackCompleted().CurrentPageIndex(0);
         if(info.showDisclaimer())
         {
             TextBlock txt;
@@ -277,16 +304,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             BtnInfoBar().Click(m_notificationClickToken);
         }
-        if(args.getAction() == "update")
-        {
-            BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
-            m_notificationClickToken = BtnInfoBar().Click([this](const IInspectable&, const RoutedEventArgs&)
-            {
-                InfoBar().IsOpen(false);
-                m_controller->windowsUpdate();
-            });
-        }
-        else if(args.getAction() == "ytdlp")
+        if(args.getAction() == "ytdlp")
         {
             BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
             m_notificationClickToken = BtnInfoBar().Click([this](const IInspectable&, const RoutedEventArgs&)
@@ -297,6 +315,30 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         BtnInfoBar().Visibility(!args.getAction().empty() ? Visibility::Visible : Visibility::Collapsed);
         InfoBar().IsOpen(true);
+    }
+
+    void MainWindow::OnAppUpdateAvailable(const ParamEventArgs<Version>& args)
+    {
+        InfoBadgeUpdates().Visibility(Visibility::Visible);
+        ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::UpdatesAvailable);
+        LblUpdatesAvailableDetails().Text(winrt::to_hstring(_f("{} version {} is available to download and install", m_controller->getAppInfo().getShortName(), (*args).str())));
+    }
+
+    void MainWindow::OnAppUpdateProgressChanged(const ParamEventArgs<double>& args)
+    {
+        ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::DownloadingUpdate);
+        LblUpdatesDownloadingDetails().Text(winrt::to_hstring(_("The installer will start once the download is complete")));
+        LblUpdatesDownloadingProgress().Text(winrt::to_hstring(_f("Downloading {}%", static_cast<int>(std::round((*args) * 100.0)))));
+        if(*args == 1.0)
+        {
+            InfoBadgeUpdates().Visibility(Visibility::Collapsed);
+            ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::NoUpdates);
+        }
+    }
+
+    void MainWindow::OnAppUpdateBetaToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    {
+        m_controller->setPreferredUpdateType(TglUpdatesBeta().IsOn() ? VersionType::Preview : VersionType::Stable);
     }
 
     void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
@@ -528,6 +570,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             ViewStack().CurrentPageIndex(MainWindowPage::Completed);
         }
+        else if(tag == L"Updates")
+        {
+            ViewStack().CurrentPageIndex(MainWindowPage::UpdateCenter);
+        }
         else if(tag == L"Settings")
         {
             ViewStack().CurrentPageIndex(MainWindowPage::Custom);
@@ -540,11 +586,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     void MainWindow::OnNavViewItemTapped(const IInspectable& sender, const TappedRoutedEventArgs& args)
     {
         FlyoutBase::ShowAttachedFlyout(sender.as<FrameworkElement>());
-    }
-
-    void MainWindow::CheckForUpdates(const IInspectable& sender, const RoutedEventArgs& args)
-    {
-        m_controller->checkForUpdates(true);
     }
 
     Windows::Foundation::IAsyncAction MainWindow::Documentation(const IInspectable& sender, const RoutedEventArgs& args)
@@ -567,13 +608,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         co_await Launcher::LaunchUriAsync(Windows::Foundation::Uri{ winrt::to_hstring(m_controller->getAppInfo().getSupportUrl()) });
     }
 
-    Windows::Foundation::IAsyncAction MainWindow::About(const IInspectable& sender, const RoutedEventArgs& args)
+    void MainWindow::DownloadUpdate(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
     {
-        ContentDialog dialog{ winrt::make<Controls::implementation::AboutDialog>() };
-        dialog.as<Controls::implementation::AboutDialog>()->Info(m_controller->getAppInfo(), m_controller->getDebugInformation());
-        dialog.RequestedTheme(MainGrid().RequestedTheme());
-        dialog.XamlRoot(MainGrid().XamlRoot());
-        co_await dialog.ShowAsync();
+        m_controller->startWindowsUpdate();
     }
 
     Windows::Foundation::IAsyncAction MainWindow::AddDownload(const IInspectable& sender, const RoutedEventArgs& args)

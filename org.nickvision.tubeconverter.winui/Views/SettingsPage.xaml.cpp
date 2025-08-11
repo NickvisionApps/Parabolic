@@ -33,9 +33,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         CmbTheme().Items().Append(winrt::box_value(winrt::to_hstring(_("System"))));
         RowLanguage().Title(winrt::to_hstring(_("Translation Language")));
         RowLanguage().Description(winrt::to_hstring(_("An application restart is required for change to take effect")));
-        RowUpdates().Title(winrt::to_hstring(_("Automatically Check for Updates")));
-        TglUpdates().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
-        TglUpdates().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowPreventSuspend().Title(winrt::to_hstring(_("Prevent Suspend")));
         RowPreventSuspend().Description(winrt::to_hstring(_("Prevent the computer from sleeping while downloads are running")));
         TglPreventSuspend().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
@@ -165,7 +162,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 CmbLanguage().SelectedItem(item);
             }
         }
-        TglUpdates().IsOn(m_controller->getAutomaticallyCheckForUpdates());
         TglPreventSuspend().IsOn(m_controller->getPreventSuspend());
         CmbHistoryLength().SelectedIndex(static_cast<int>(m_controller->getHistoryLengthIndex()));
         NumMaxActiveDownloads().Value(static_cast<double>(options.getMaxNumberOfActiveDownloads()));
@@ -489,7 +485,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setTheme(static_cast<Theme>(CmbTheme().SelectedIndex()));
         m_controller->setTranslationLanguage(winrt::to_string(CmbLanguage().SelectedItem().as<winrt::hstring>()));
-        m_controller->setAutomaticallyCheckForUpdates(TglUpdates().IsOn());
         m_controller->setPreventSuspend(TglPreventSuspend().IsOn());
         m_controller->setHistoryLengthIndex(CmbHistoryLength().SelectedIndex());
         options.setMaxNumberOfActiveDownloads(static_cast<int>(NumMaxActiveDownloads().Value()));

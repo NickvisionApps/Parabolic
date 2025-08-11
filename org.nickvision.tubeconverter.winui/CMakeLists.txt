@@ -22,7 +22,6 @@ if(WIN32)
         "../resources/windows/${PROJECT_NAME}.manifest"
         "../resources/windows/${PROJECT_NAME}.rc"
         "pch.cpp" "pch.h"
-        "Controls/AboutDialog.xaml.cpp" "Controls/AboutDialog.xaml.h" "Controls/AboutDialog.xaml" "Controls/AboutDialog.idl"
         "Controls/DownloadRow.xaml.cpp" "Controls/DownloadRow.xaml.h" "Controls/DownloadRow.xaml" "Controls/DownloadRow.idl"
         "Controls/SettingsRow.xaml.cpp" "Controls/SettingsRow.xaml.h" "Controls/SettingsRow.xaml" "Controls/SettingsRow.idl"
         "Controls/StatusPage.xaml.cpp" "Controls/StatusPage.xaml.h" "Controls/StatusPage.xaml" "Controls/StatusPage.idl"

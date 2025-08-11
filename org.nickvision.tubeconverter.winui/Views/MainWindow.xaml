@@ -74,55 +74,15 @@
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem x:Name="NavViewHelp" SelectsOnInvoked="False" Tapped="OnNavViewItemTapped">
+                <NavigationViewItem x:Name="NavViewUpdates" Tag="Updates">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE897;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE895;"/>
                     </NavigationViewItem.Icon>
 
-                    <FlyoutBase.AttachedFlyout>
-                        <MenuFlyout>
-                            <MenuFlyoutItem x:Name="MenuCheckForUpdates" Click="CheckForUpdates">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE895;"/>
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-
-                            <MenuFlyoutSeparator/>
-
-                            <MenuFlyoutItem x:Name="MenuDocumentation" Click="Documentation">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F1;"/>
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-
-                            <MenuFlyoutItem x:Name="MenuGitHubRepo" Click="GitHubRepo">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE943;"/>
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-
-                            <MenuFlyoutItem x:Name="MenuReportABug" Click="ReportABug">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBE8;"/>
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-
-                            <MenuFlyoutItem x:Name="MenuDiscussions" Click="Discussions">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F2;"/>
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-
-                            <MenuFlyoutSeparator/>
-
-                            <MenuFlyoutItem x:Name="MenuAbout" Click="About">
-                                <MenuFlyoutItem.Icon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE946;"/>
-                                </MenuFlyoutItem.Icon>
-                            </MenuFlyoutItem>
-                        </MenuFlyout>
-                    </FlyoutBase.AttachedFlyout>
-                 </NavigationViewItem>
+                    <NavigationViewItem.InfoBadge>
+                        <InfoBadge x:Name="InfoBadgeUpdates" Visibility="Collapsed" Style="{StaticResource AttentionIconInfoBadgeStyle}"/>
+                    </NavigationViewItem.InfoBadge>
+                </NavigationViewItem>
 
                 <NavigationViewItem x:Name="NavViewSettings" Tag="Settings">
                     <NavigationViewItem.Icon>
@@ -134,19 +94,73 @@
             <Grid x:Name="ContentGrid">
                 <controls:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <controls:ViewStack.Pages>
-                        <controls:StatusPage x:Name="PageHome" UseAppIcon="True">
-                            <controls:StatusPage.Child>
-                                <Button Style="{StaticResource AccentButtonStyle}" Click="AddDownload">
-                                    <Button.Content>
+                        <Grid x:Name="PageHome" Margin="24,24,24,6" RowSpacing="12">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" HorizontalAlignment="Stretch" Height="160" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" 
+                                    BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8" Padding="24">
+                                <Grid ColumnSpacing="6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0" VerticalAlignment="Stretch" RowSpacing="6">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock x:Name="LblGreeting" Grid.Row="0" FontSize="24" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                        <TextBlock x:Name="LblGettingStarted" Grid.Row="2"/>
+                                    </Grid>
+
+                                    <Image Grid.Column="2" VerticalAlignment="Center" Width="96" Height="96"  Source="../resources/icon.ico"/>
+                                </Grid>
+                            </Border>
+
+                            <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
+                                <TextBlock x:Name="LblHomeStart" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                
+                                <HyperlinkButton Click="OpenFolder">
+                                    <HyperlinkButton.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
 
                                             <TextBlock x:Name="LblHomeAddDownload"/>
                                         </StackPanel>
-                                    </Button.Content>
-                                </Button>
-                            </controls:StatusPage.Child>
-                        </controls:StatusPage>
+                                    </HyperlinkButton.Content>
+                                </HyperlinkButton>
+                            </StackPanel>
+
+                            <CommandBar Grid.Row="3" HorizontalAlignment="Center" DefaultLabelPosition="Right">
+                                <AppBarButton x:Name="BtnHomeGitHubRepo" Click="GitHubRepo">
+                                    <AppBarButton.Icon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE943;"/>
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
+
+                                <AppBarButton x:Name="BtnHomeReportABug" Click="ReportABug">
+                                    <AppBarButton.Icon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBE8;"/>
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
+
+                                <AppBarButton x:Name="BtnHomeDiscussions" Click="Discussions">
+                                    <AppBarButton.Icon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F2;"/>
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
+                            </CommandBar>
+                        </Grid>
 
                         <Grid Margin="24,24,0,24" RowSpacing="12">
                             <Grid.RowDefinitions>
@@ -356,6 +370,102 @@
                                     </Grid>
                                 </controls:ViewStack.Pages>
                             </controls:ViewStack>
+                        </Grid>
+
+                        <Grid x:Name="PageUpdateCenter" Margin="24,24,24,24" RowSpacing="24">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="LblUpdateCenter" Grid.Row="0" FontSize="26" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                            <controls:ViewStack x:Name="ViewStackUpdateCenter" Grid.Row="1" HorizontalAlignment="Stretch">
+                                <controls:ViewStack.Pages>
+                                    <Grid ColumnSpacing="24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <FontIcon Grid.Column="0" VerticalAlignment="Center" Glyph="&#xE73E;" FontSize="32"/>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="6">
+                                            <TextBlock x:Name="LblNoUpdates" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                            <TextBlock x:Name="LblNoUpdatesDetails" TextWrapping="WrapWholeWords" Foreground="Gray"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Grid ColumnSpacing="24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <FontIcon Grid.Column="0" VerticalAlignment="Center" Glyph="&#xE895;" FontSize="32"/>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="6">
+                                            <TextBlock x:Name="LblUpdatesAvailable" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                            <TextBlock x:Name="LblUpdatesAvailableDetails" TextWrapping="WrapWholeWords" Foreground="Gray"/>
+                                        </StackPanel>
+
+                                        <Button Grid.Column="3" VerticalAlignment="Center" Style="{StaticResource AccentButtonStyle}" Click="DownloadUpdate">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+
+                                                    <TextBlock x:Name="LblDownloadUpdate"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </Grid>
+
+                                    <Grid ColumnSpacing="24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <FontIcon Grid.Column="0" VerticalAlignment="Center" Glyph="&#xE896;" FontSize="32"/>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="6">
+                                            <TextBlock x:Name="LblUpdatesDownloading" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                            <TextBlock x:Name="LblUpdatesDownloadingDetails" TextWrapping="WrapWholeWords" Foreground="Gray"/>
+                                        </StackPanel>
+
+                                        <TextBlock x:Name="LblUpdatesDownloadingProgress" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </controls:ViewStack.Pages>
+                            </controls:ViewStack>
+
+                            <StackPanel Grid.Row="2" Orientation="Vertical" Spacing="6">
+                                <TextBlock x:Name="LblUpdatesOptions" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                <controls:SettingsRow x:Name="RowUpdatesBeta" Glyph="&#xF1AD;">
+                                    <controls:SettingsRow.Child>
+                                        <ToggleSwitch x:Name="TglUpdatesBeta" Toggled="OnAppUpdateBetaToggled"/>
+                                    </controls:SettingsRow.Child>
+                                </controls:SettingsRow>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="3" Orientation="Vertical" Spacing="6">
+                                <TextBlock x:Name="LblUpdatesChangelogTitle" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                <TextBlock x:Name="LblUpdatesChangelogVersion" Foreground="Gray"/>
+
+                                <TextBlock x:Name="LblUpdatesChangelog" Margin="0,6,0,0" TextWrapping="WrapWholeWords"/>
+                            </StackPanel>
                         </Grid>
 
                         <Frame x:Name="PageCustom"/>

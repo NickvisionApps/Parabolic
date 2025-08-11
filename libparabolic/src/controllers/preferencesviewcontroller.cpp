@@ -85,16 +85,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    bool PreferencesViewController::getAutomaticallyCheckForUpdates() const
-    {
-        return m_configuration.getAutomaticallyCheckForUpdates();
-    }
-
-    void PreferencesViewController::setAutomaticallyCheckForUpdates(bool check)
-    {
-        m_configuration.setAutomaticallyCheckForUpdates(check);
-    }
-
     bool PreferencesViewController::getPreventSuspend() const
     {
         return m_configuration.getPreventSuspend();

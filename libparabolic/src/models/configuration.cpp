@@ -48,14 +48,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["WindowGeometry"] = geometry.toJson();
     }
 
-    bool Configuration::getAutomaticallyCheckForUpdates() const
+    VersionType Configuration::getPreferredUpdateType() const
     {
-        return m_json["AutomaticallyCheckForUpdates"].is_bool() ? m_json["AutomaticallyCheckForUpdates"].as_bool() : Environment::getOperatingSystem() == OperatingSystem::Windows;
+        return m_json["PreferredUpdateType"].is_int64() ? static_cast<VersionType>(m_json["PreferredUpdateType"].as_int64()) : VersionType::Stable;
     }
 
-    void Configuration::setAutomaticallyCheckForUpdates(bool check)
+    void Configuration::setPreferredUpdateType(VersionType type)
     {
-        m_json["AutomaticallyCheckForUpdates"] = check;
+        m_json["PreferredUpdateType"] = static_cast<int>(type);
     }
 
     Version Configuration::getInstalledYtdlpVersion() const

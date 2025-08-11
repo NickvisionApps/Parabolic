@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "pch.h"
+#include "Controls/SettingsRow.g.h"
 #include "Controls/TitleBar.g.h"
 #include "Controls/ViewStack.g.h"
 #include "Views/MainWindow.g.h"
@@ -60,6 +61,22 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args Nickvision::Notifications::NotificationSentEventArgs
          */
         winrt::fire_and_forget OnNotificationSent(const ::Nickvision::Notifications::NotificationSentEventArgs& args);
+        /**
+         * @brief Handles when an application update is available.
+         * @param args Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>
+         */
+        void OnAppUpdateAvailable(const ::Nickvision::Events::ParamEventArgs<::Nickvision::Update::Version>& args);
+        /**
+         * @brief Handles when an application update's progress is changed.
+         * @param args Nickvision::Events::ParamEventArgs<double>
+         */
+        void OnAppUpdateProgressChanged(const ::Nickvision::Events::ParamEventArgs<double>& args);
+        /**
+         * @brief Handles when the updates beta toggle is changed.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void OnAppUpdateBetaToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
          * @brief Handles when the download history is changed.
          * @param args Nickvision::Events::ParamEventArgs<std::vector<Nickvision::TubeConverter::Shared::Models::HistoricDownload>>
@@ -135,12 +152,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void OnNavViewItemTapped(const IInspectable& sender, const Microsoft::UI::Xaml::Input::TappedRoutedEventArgs& args);
         /**
-         * @brief Checks for an update to the application.
-         * @param sender IInspectable
-         * @param args Microsoft::UI::Xaml::RoutedEventArgs
-         */
-        void CheckForUpdates(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
-        /**
          * @brief Opens the application's documentation page.
          * @param sender IInspectable
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
@@ -165,11 +176,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         Windows::Foundation::IAsyncAction Discussions(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
-        * @brief Opens the about dialog.
+        * @brief Downloads an application update.
         * @param sender IInspectable
         * @param args Microsoft::UI::Xaml::RoutedEventArgs
         */
-        Windows::Foundation::IAsyncAction About(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        void DownloadUpdate(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
         * @brief Opens the add download dialog.
         * @param sender IInspectable
