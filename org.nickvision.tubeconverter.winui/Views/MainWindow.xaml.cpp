@@ -104,6 +104,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         LblGettingStarted().Text(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
         LblHomeStart().Text(winrt::to_hstring(_("Start")));
         LblHomeAddDownload().Text(winrt::to_hstring(_("Add Download")));
+        BtnHomeDocumentation().Label(winrt::to_hstring(_("Documentation")));
         BtnHomeGitHubRepo().Label(winrt::to_hstring(_("GitHub Repo")));
         BtnHomeReportABug().Label(winrt::to_hstring(_("Report a Bug")));
         BtnHomeDiscussions().Label(winrt::to_hstring(_("Discussions")));

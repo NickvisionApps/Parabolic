@@ -130,7 +130,7 @@
                             <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
                                 <TextBlock x:Name="LblHomeStart" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
                                 
-                                <HyperlinkButton Click="OpenFolder">
+                                <HyperlinkButton Click="AddDownload">
                                     <HyperlinkButton.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
@@ -142,6 +142,12 @@
                             </StackPanel>
 
                             <CommandBar Grid.Row="3" HorizontalAlignment="Center" DefaultLabelPosition="Right">
+                                <AppBarButton x:Name="BtnHomeDocumentation" Click="Documentation">
+                                    <AppBarButton.Icon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F1;"/>
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
+
                                 <AppBarButton x:Name="BtnHomeGitHubRepo" Click="GitHubRepo">
                                     <AppBarButton.Icon>
                                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE943;"/>
