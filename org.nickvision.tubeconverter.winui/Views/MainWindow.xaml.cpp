@@ -6,10 +6,10 @@
 #include <stdexcept>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
-#include "Controls/AboutDialog.xaml.h"
 #include "Controls/DownloadRow.xaml.h"
 #include "Controls/SettingsRow.xaml.h"
 #include "Helpers/WinUIHelpers.h"
+#include "Views/AddDownloadDialog.xaml.h"
 #include "Views/CredentialDialog.xaml.h"
 #include "Views/KeyringPage.xaml.h"
 #include "Views/SettingsPage.xaml.h"
