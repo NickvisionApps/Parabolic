@@ -4,6 +4,9 @@
 #include <libnick/localization/gettext.h>
 #include <libnick/notifications/appnotification.h>
 #include <libnick/system/environment.h>
+#ifndef _WIN32
+#include <sys/stat.h>
+#endif
 
 using namespace Nickvision::Filesystem;
 using namespace Nickvision::Notifications;
@@ -15,7 +18,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     YtdlpManager::YtdlpManager(Configuration& config)
         : m_config{ config },
         m_updater{ "https://github.com/yt-dlp/yt-dlp/" },
-        m_bundledYtdlpVersion{ 2025, 7, 21 }
+        m_bundledYtdlpVersion{ 2025, 8, 11 }
     {
 
     }
@@ -82,6 +85,9 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp", true))
 #endif
             {
+#ifndef _WIN32
+                chmod(ytdlpPath.string().c_str(), 0777);
+#endif
                 m_config.setInstalledYtdlpVersion(m_latestYtdlpVersion);
                 m_config.save();
                 AppNotification::send({ _("yt-dlp updated successfully"), NotificationSeverity::Success });
