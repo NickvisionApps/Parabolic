@@ -2,12 +2,14 @@
 #include <filesystem>
 #include <fstream>
 #include <utility>
+#include <libnick/filesystem/userdirectories.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/system/environment.h>
 #include <libnick/system/process.h>
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
+using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::System;
@@ -248,6 +250,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--cookies");
             arguments.push_back(m_options.getCookiesPath().string());
         }
+        arguments.push_back("--paths");
+        arguments.push_back("temp:" + UserDirectories::get(UserDirectory::Cache).string());
         arguments.push_back(url);
         if(token)
         {

@@ -1,4 +1,5 @@
 #include "models/downloadoptions.h"
+#include <libnick/filesystem/userdirectories.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/system/environment.h>
 #ifdef _WIN32
@@ -9,6 +10,7 @@
 #include <sys/syslimits.h>
 #endif
 
+using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::System;
@@ -546,6 +548,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         arguments.push_back("--paths");
         arguments.push_back(m_saveFolder.string());
+        arguments.push_back("--paths");
+        arguments.push_back("temp:" + UserDirectories::get(UserDirectory::Cache).string());
         arguments.push_back("--output");
         arguments.push_back(m_saveFilename + ".%(ext)s");
         arguments.push_back("--output");

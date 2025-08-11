@@ -15,7 +15,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     YtdlpManager::YtdlpManager(Configuration& config)
         : m_config{ config },
         m_updater{ "https://github.com/yt-dlp/yt-dlp/" },
-        m_bundledYtdlpVersion{ 2025, 8, 11 }
+        m_bundledYtdlpVersion{ 2025, 7, 21 }
     {
 
     }
