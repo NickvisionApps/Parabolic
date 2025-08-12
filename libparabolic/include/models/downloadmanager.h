@@ -44,6 +44,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         ~DownloadManager();
         /**
+         * @brief Gets the event for when an yt-dlp update is available.
+         * @return The yt-dlp update available event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>>& ytdlpUpdateAvailable();
+        /**
+         * @brief Gets the event for when an yt-dlp update's progress is changed.
+         * @return The yt-dlp update progress changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>>& ytdlpUpdateProgressChanged();
+        /**
          * @brief Gets the event for when the history is changed.
          * @return The history changed event
          */
@@ -135,10 +145,9 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void startup(StartupInformation& info);
         /**
-         * @brief Downloads the latest yt-dlp update in the background.
-         * @brief Will send a notification if the update fails.
+         * @brief Starts downloading the latest yt-dlp update in the background.
          */
-        void ytdlpUpdate();
+        void startYtdlpUpdate();
         /**
          * @brief Recovers all available recoverable downloads.
          * @return The number of downloads recovered

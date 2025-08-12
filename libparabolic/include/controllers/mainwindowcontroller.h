@@ -116,6 +116,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
         /**
+         * @brief Gets the event for when an yt-dlp update is available.
+         * @return The yt-dlp update available event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>>& ytdlpUpdateAvailable();
+        /**
+         * @brief Gets the event for when an yt-dlp update's progress is changed.
+         * @return The yt-dlp update progress changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>>& ytdlpUpdateProgressChanged();
+        /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
          */
@@ -207,10 +217,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         void startWindowsUpdate();
 #endif
         /**
-         * @brief Downloads the latest yt-dlp update in the background.
-         * @brief Will send a notification if the update fails.
+         * @brief Starts downloading the latest yt-dlp update in the background.
          */
-        void ytdlpUpdate();
+        void startYtdlpUpdate();
         /**
          * @brief Gets the count of remaining downloads.
          * @return The count of remaining downloads

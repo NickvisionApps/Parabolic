@@ -175,6 +175,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_downloadManager.downloadCredentialNeeded();
     }
 
+    Event<ParamEventArgs<Version>>& MainWindowController::ytdlpUpdateAvailable()
+    {
+        return m_downloadManager.ytdlpUpdateAvailable();
+    }
+
+    Event<ParamEventArgs<double>>& MainWindowController::ytdlpUpdateProgressChanged()
+    {
+        return m_downloadManager.ytdlpUpdateProgressChanged();
+    }
+
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
@@ -331,11 +341,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 m_appUpdateProgressChanged.invoke({ static_cast<double>(static_cast<long double>(downloadNow) / static_cast<long double>(downloadTotal)) });
                 return true;
             } }) };
-            if(res)
-            {
-                m_appUpdateProgressChanged.invoke({ 1.0 });
-            }
-            else
+            m_appUpdateProgressChanged.invoke({ 1.0 });
+            if(!res)
             {
                 AppNotification::send({ _("Unable to download and install update"), NotificationSeverity::Error });
             }
@@ -344,9 +351,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     }
 #endif
 
-    void MainWindowController::ytdlpUpdate()
+    void MainWindowController::startYtdlpUpdate()
     {
-        m_downloadManager.ytdlpUpdate();
+        m_downloadManager.startYtdlpUpdate();
     }
 
     size_t MainWindowController::getRemainingDownloadsCount() const

@@ -78,6 +78,16 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void OnAppUpdateBetaToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
+         * @brief Handles when a yt-dlp update is available.
+         * @param args Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>
+         */
+        void OnYtdlpUpdateAvailable(const ::Nickvision::Events::ParamEventArgs<::Nickvision::Update::Version>& args);
+        /**
+         * @brief Handles when a yt-dlp update's progress is changed.
+         * @param args Nickvision::Events::ParamEventArgs<double>
+         */
+        void OnYtdlpUpdateProgressChanged(const ::Nickvision::Events::ParamEventArgs<double>& args);
+        /**
          * @brief Handles when the download history is changed.
          * @param args Nickvision::Events::ParamEventArgs<std::vector<Nickvision::TubeConverter::Shared::Models::HistoricDownload>>
          */
@@ -176,11 +186,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         Windows::Foundation::IAsyncAction Discussions(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
-        * @brief Downloads an application update.
-        * @param sender IInspectable
-        * @param args Microsoft::UI::Xaml::RoutedEventArgs
-        */
-        void DownloadUpdate(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+         * @brief Copies the debug information to the clipboard.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void CopyDebugInformation(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
         * @brief Opens the add download dialog.
         * @param sender IInspectable
@@ -229,6 +239,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         Microsoft::UI::Xaml::ElementTheme m_systemTheme;
         bool m_opened;
         winrt::event_token m_notificationClickToken;
+        winrt::event_token m_updateClickToken;
         std::unordered_map<int, Microsoft::UI::Xaml::Controls::UserControl> m_downloadRows;
     };
 }

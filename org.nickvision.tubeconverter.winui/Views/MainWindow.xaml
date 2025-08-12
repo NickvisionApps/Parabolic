@@ -378,13 +378,14 @@
                             </controls:ViewStack>
                         </Grid>
 
-                        <Grid x:Name="PageUpdateCenter" Margin="24,24,24,24" RowSpacing="24">
+                        <Grid x:Name="PageUpdateCenter" Margin="24,24,24,6" RowSpacing="24">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
                             <TextBlock x:Name="LblUpdateCenter" Grid.Row="0" FontSize="26" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
@@ -423,7 +424,7 @@
                                             <TextBlock x:Name="LblUpdatesAvailableDetails" TextWrapping="WrapWholeWords" Foreground="Gray"/>
                                         </StackPanel>
 
-                                        <Button Grid.Column="3" VerticalAlignment="Center" Style="{StaticResource AccentButtonStyle}" Click="DownloadUpdate">
+                                        <Button x:Name="BtnDownloadUpdate" Grid.Column="3" VerticalAlignment="Center" Style="{StaticResource AccentButtonStyle}">
                                             <Button.Content>
                                                 <StackPanel Orientation="Horizontal" Spacing="6">
                                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
@@ -472,6 +473,14 @@
 
                                 <TextBlock x:Name="LblUpdatesChangelog" Margin="0,6,0,0" TextWrapping="WrapWholeWords"/>
                             </StackPanel>
+
+                            <CommandBar Grid.Row="5" DefaultLabelPosition="Right">
+                                <AppBarButton x:Name="BtnCopyDebugInformation" Click="CopyDebugInformation">
+                                    <AppBarButton.Icon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8C8;"/>
+                                    </AppBarButton.Icon>
+                                </AppBarButton>
+                            </CommandBar>
                         </Grid>
 
                         <Frame x:Name="PageCustom"/>

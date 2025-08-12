@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include <libnick/notifications/appnotification.h>
 #include "Controls/DownloadRow.xaml.h"
 #include "Controls/SettingsRow.xaml.h"
 #include "Helpers/WinUIHelpers.h"
@@ -29,6 +30,7 @@ using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace winrt::Microsoft::UI::Xaml::Controls::Primitives;
 using namespace winrt::Microsoft::UI::Xaml::Input;
 using namespace winrt::Microsoft::UI::Xaml::Media;
+using namespace winrt::Windows::ApplicationModel::DataTransfer;
 using namespace winrt::Windows::Foundation::Collections;
 using namespace winrt::Windows::Graphics;
 using namespace winrt::Windows::Storage;
@@ -62,7 +64,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 {
     MainWindow::MainWindow()
         : m_opened{ false },
-        m_notificationClickToken{ 0 }
+        m_notificationClickToken{ 0 },
+        m_updateClickToken{ 0 }
     {
         InitializeComponent();
         this->m_inner.as<::IWindowNative>()->get_WindowHandle(&m_hwnd);
@@ -88,6 +91,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_controller->downloadResumed() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadResumed(args); }); };
         m_controller->downloadRetried() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadRetried(args); }); };
         m_controller->downloadStartedFromQueue() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStartedFromQueue(args); }); };
+        m_controller->ytdlpUpdateAvailable() += [this](const ParamEventArgs<Version>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnYtdlpUpdateAvailable(args); }); };
+        m_controller->ytdlpUpdateProgressChanged() += [this](const ParamEventArgs<double>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnYtdlpUpdateProgressChanged(args); }); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
@@ -143,6 +148,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         LblUpdatesChangelogTitle().Text(winrt::to_hstring(_("Changelog")));
         LblUpdatesChangelogVersion().Text(winrt::to_hstring(_f("Version {}", m_controller->getAppInfo().getVersion().str())));
         LblUpdatesChangelog().Text(winrt::to_hstring(m_controller->getAppInfo().getChangelog()));
+        BtnCopyDebugInformation().Label(winrt::to_hstring(_("Copy Debug Information")));
         //Load
         TglUpdatesBeta().IsOn(m_controller->getPreferredUpdateType() == VersionType::Preview);
     }
@@ -305,24 +311,23 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             BtnInfoBar().Click(m_notificationClickToken);
         }
-        if(args.getAction() == "ytdlp")
-        {
-            BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
-            m_notificationClickToken = BtnInfoBar().Click([this](const IInspectable&, const RoutedEventArgs&)
-            {
-                InfoBar().IsOpen(false);
-                m_controller->ytdlpUpdate();
-            });
-        }
         BtnInfoBar().Visibility(!args.getAction().empty() ? Visibility::Visible : Visibility::Collapsed);
         InfoBar().IsOpen(true);
     }
 
     void MainWindow::OnAppUpdateAvailable(const ParamEventArgs<Version>& args)
     {
+        if(m_updateClickToken)
+        {
+            BtnDownloadUpdate().Click(m_updateClickToken);
+        }
         InfoBadgeUpdates().Visibility(Visibility::Visible);
         ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::UpdatesAvailable);
         LblUpdatesAvailableDetails().Text(winrt::to_hstring(_f("{} version {} is available to download and install", m_controller->getAppInfo().getShortName(), (*args).str())));
+        m_updateClickToken = BtnDownloadUpdate().Click([this](const IInspectable&, const RoutedEventArgs&)
+        {
+            m_controller->startWindowsUpdate();
+        });
     }
 
     void MainWindow::OnAppUpdateProgressChanged(const ParamEventArgs<double>& args)
@@ -340,6 +345,33 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     void MainWindow::OnAppUpdateBetaToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
     {
         m_controller->setPreferredUpdateType(TglUpdatesBeta().IsOn() ? VersionType::Preview : VersionType::Stable);
+    }
+
+    void MainWindow::OnYtdlpUpdateAvailable(const ParamEventArgs<Version>& args)
+    {
+        if(m_updateClickToken)
+        {
+            BtnDownloadUpdate().Click(m_updateClickToken);
+        }
+        InfoBadgeUpdates().Visibility(Visibility::Visible);
+        ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::UpdatesAvailable);
+        LblUpdatesAvailableDetails().Text(winrt::to_hstring(_f("{} version {} is available to download and install", "yt-dlp", (*args).str())));
+        m_updateClickToken = BtnDownloadUpdate().Click([this](const IInspectable&, const RoutedEventArgs&)
+        {
+            m_controller->startYtdlpUpdate();
+        });
+    }
+
+    void MainWindow::OnYtdlpUpdateProgressChanged(const ParamEventArgs<double>& args)
+    {
+        ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::DownloadingUpdate);
+        LblUpdatesDownloadingDetails().Text(L"");
+        LblUpdatesDownloadingProgress().Text(winrt::to_hstring(_f("Downloading {}%", static_cast<int>(std::round((*args) * 100.0)))));
+        if(*args == 1.0)
+        {
+            InfoBadgeUpdates().Visibility(Visibility::Collapsed);
+            ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::NoUpdates);
+        }
     }
 
     void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
@@ -609,9 +641,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         co_await Launcher::LaunchUriAsync(Windows::Foundation::Uri{ winrt::to_hstring(m_controller->getAppInfo().getSupportUrl()) });
     }
 
-    void MainWindow::DownloadUpdate(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args)
+    void MainWindow::CopyDebugInformation(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        m_controller->startWindowsUpdate();
+        DataPackage dataPackage;
+        dataPackage.SetText(winrt::to_hstring(m_controller->getDebugInformation()));
+        Clipboard::SetContent(dataPackage);
+        AppNotification::send({ _("Debug information copied to clipboard"), NotificationSeverity::Success });
     }
 
     Windows::Foundation::IAsyncAction MainWindow::AddDownload(const IInspectable& sender, const RoutedEventArgs& args)

@@ -14,6 +14,7 @@ using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Events;
+using namespace Nickvision::Update;
 
 #define BATCH_FOLDER_PATH_DELIM '|'
 
@@ -33,6 +34,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     DownloadManager::~DownloadManager()
     {
         stopAllDownloads();
+    }
+
+    Event<ParamEventArgs<Version>>& DownloadManager::ytdlpUpdateAvailable()
+    {
+        return m_ytdlpManager.updateAvailable();
+    }
+
+    Event<ParamEventArgs<double>>& DownloadManager::ytdlpUpdateProgressChanged()
+    {
+        return m_ytdlpManager.updateProgressChanged();
     }
 
     Event<ParamEventArgs<std::vector<HistoricDownload>>>& DownloadManager::historyChanged()
@@ -145,9 +156,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         info.setHasRecoverableDownloads(m_recoveryQueue.getRecoverableDownloads().size() > 0);
     }
 
-    void DownloadManager::ytdlpUpdate()
+    void DownloadManager::startYtdlpUpdate()
     {
-        m_ytdlpManager.downloadUpdate();
+        m_ytdlpManager.startUpdateDownload();
     }
 
     size_t DownloadManager::recoverDownloads()

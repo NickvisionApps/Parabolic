@@ -233,15 +233,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
             return;
         }
         AdwToast* toast{ adw_toast_new(args.getMessage().c_str()) };
-        if(args.getAction() == "ytdlp")
-        {
-            adw_toast_set_button_label(toast, _("Update"));
-            g_signal_connect(toast, "button-clicked", G_CALLBACK(+[](AdwToast*, gpointer data)
-            {
-                MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
-                mainWindow->m_controller->ytdlpUpdate();
-            }), this);
-        }
         adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
     }
 
