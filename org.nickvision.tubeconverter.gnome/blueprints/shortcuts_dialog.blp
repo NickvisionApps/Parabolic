@@ -1,54 +1,47 @@
 using Gtk 4.0;
+using Adw 1;
 
-Gtk.ShortcutsWindow root {
-  default-width: 600;
-  default-height: 500;
-  modal: true;
-  resizable: true;
-  destroy-with-parent: false;
+Adw.ShortcutsDialog root {
+  Adw.ShortcutsSection {
+    title: C_("Shortcut", "Application");
 
-  Gtk.ShortcutsSection {
-    Gtk.ShortcutsGroup {
-      title: C_("Shortcut", "Application");
-
-      Gtk.ShortcutsShortcut {
-        title: _("Preferences");
-        accelerator: "<Control>comma";
-      }
-
-      Gtk.ShortcutsShortcut {
-        title: _("Keyboard Shortcuts");
-        accelerator: "<Control>question";
-      }
-
-      Gtk.ShortcutsShortcut {
-        title: _("Help");
-        accelerator: "F1";
-      }
-
-      Gtk.ShortcutsShortcut {
-        title: _("Quit");
-        accelerator: "<Control>Q";
-      }
+    Adw.ShortcutsItem {
+      title: _("Preferences");
+      accelerator: "<Control>comma";
     }
 
-    Gtk.ShortcutsGroup {
-      title: _("Downloads");
+    Adw.ShortcutsItem {
+      title: _("Keyboard Shortcuts");
+      accelerator: "<Control>question";
+    }
 
-      Gtk.ShortcutsShortcut {
-        title: _("Add Download");
-        accelerator: "<Control>N";
-      }
+    Adw.ShortcutsItem {
+      title: _("Help");
+      accelerator: "F1";
+    }
 
-      Gtk.ShortcutsShortcut {
-        title: _("Stop All Downloads");
-        accelerator: "<Control><Shift>Delete";
-      }
+    Adw.ShortcutsItem {
+      title: _("Quit");
+      accelerator: "<Control>Q";
+    }
+  }
 
-      Gtk.ShortcutsShortcut {
-        title: _("Retry Failed Downloads");
-        accelerator: "<Control>R";
-      }
+  Adw.ShortcutsSection {
+    title: _("Downloads");
+
+    Adw.ShortcutsItem {
+      title: _("Add Download");
+      accelerator: "<Control>N";
+    }
+
+    Adw.ShortcutsItem {
+      title: _("Stop All Downloads");
+      accelerator: "<Control><Shift>Delete";
+    }
+
+    Adw.ShortcutsItem {
+      title: _("Retry Failed Downloads");
+      accelerator: "<Control>R";
     }
   }
 }
