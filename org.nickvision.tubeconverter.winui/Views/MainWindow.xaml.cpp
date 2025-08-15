@@ -81,6 +81,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
         m_controller->appUpdateAvailable() += [this](const ParamEventArgs<Version>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnAppUpdateAvailable(args); }); };
         m_controller->appUpdateProgressChanged() += [this](const ParamEventArgs<double>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnAppUpdateProgressChanged(args); }); };
+        m_controller->ytdlpUpdateAvailable() += [this](const ParamEventArgs<Version>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnYtdlpUpdateAvailable(args); }); };
+        m_controller->ytdlpUpdateProgressChanged() += [this](const ParamEventArgs<double>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnYtdlpUpdateProgressChanged(args); }); };
         m_controller->historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnHistoryChanged(args); }); };
         m_controller->downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args){ OnDownloadCredentialNeeded(args); };
         m_controller->downloadAdded() += [this](const DownloadAddedEventArgs& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadAdded(args); }); };
@@ -91,8 +93,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_controller->downloadResumed() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadResumed(args); }); };
         m_controller->downloadRetried() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadRetried(args); }); };
         m_controller->downloadStartedFromQueue() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStartedFromQueue(args); }); };
-        m_controller->ytdlpUpdateAvailable() += [this](const ParamEventArgs<Version>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnYtdlpUpdateAvailable(args); }); };
-        m_controller->ytdlpUpdateProgressChanged() += [this](const ParamEventArgs<double>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnYtdlpUpdateProgressChanged(args); }); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
@@ -320,6 +320,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(m_updateClickToken)
         {
             BtnDownloadUpdate().Click(m_updateClickToken);
+            m_updateClickToken = {};
         }
         InfoBadgeUpdates().Visibility(Visibility::Visible);
         ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::UpdatesAvailable);
@@ -352,6 +353,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(m_updateClickToken)
         {
             BtnDownloadUpdate().Click(m_updateClickToken);
+            m_updateClickToken = {};
         }
         InfoBadgeUpdates().Visibility(Visibility::Visible);
         ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::UpdatesAvailable);

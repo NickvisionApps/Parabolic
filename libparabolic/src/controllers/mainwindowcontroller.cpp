@@ -338,7 +338,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 {
                     return true;
                 }
-                m_appUpdateProgressChanged.invoke({ static_cast<double>(static_cast<long double>(downloadNow) / static_cast<long double>(downloadTotal)) });
+                double progress{ static_cast<double>(static_cast<long double>(downloadNow) / static_cast<long double>(downloadTotal)) };
+                if(progress != 1.0)
+                {
+                    m_appUpdateProgressChanged.invoke({ progress });
+                }
                 return true;
             } }) };
             m_appUpdateProgressChanged.invoke({ 1.0 });

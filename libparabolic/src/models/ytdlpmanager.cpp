@@ -57,6 +57,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void YtdlpManager::checkForUpdates()
     {
+        getExecutablePath(); // Validate the executable path from config
         std::thread worker{ [this]()
         {
             m_latestYtdlpVersion = m_updater.fetchCurrentVersion(VersionType::Stable);
@@ -94,7 +95,11 @@ namespace Nickvision::TubeConverter::Shared::Models
                 {
                     return true;
                 }
-                m_updateProgressChanged.invoke({ static_cast<double>(static_cast<long double>(downloadNow) / static_cast<long double>(downloadTotal)) });
+                double progress{ static_cast<double>(static_cast<long double>(downloadNow) / static_cast<long double>(downloadTotal)) };
+                if(progress != 1.0)
+                {
+                    m_updateProgressChanged.invoke({ progress });
+                }
                 return true;
             } };
             m_updateProgressChanged.invoke({ 0.0 });

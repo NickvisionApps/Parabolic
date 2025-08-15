@@ -47,6 +47,51 @@ Adw.ApplicationWindow root {
             tooltip-text: _("Main Menu");
             primary: true;
           }
+
+          [end]
+          Gtk.MenuButton updatesMenuButton {
+            visible: false;
+            direction: none;
+            icon-name: "update-symbolic";
+            tooltip-text: _("Updates");
+            popover: Gtk.Popover {
+              width-request: 300;
+              child: Adw.ViewStack viewStackUpdates {
+                hexpand: true;
+                vexpand: true;
+
+                Adw.ViewStackPage {
+                  name: "available";
+                  child: Adw.StatusPage updateAvailableStatus {
+                    icon-name: "software-update-available-symbolic";
+                    title: _("Update Available");
+                    child: Gtk.Button downloadUpdateButton {
+                      halign: center;
+                      label: _("Download");
+
+                      styles ["pill", "suggested-action"]
+                    };
+
+                    styles ["compact"]
+                  };
+                }
+
+                Adw.ViewStackPage {
+                  name: "progress";
+                  child: Adw.StatusPage {
+                    icon-name: "folder-download-symbolic";
+                    title: _("Downloading Update");
+                    child: Gtk.ProgressBar updateProgBar {
+                      hexpand: true;
+                      show-text: true;
+                    };
+
+                    styles ["compact"]
+                  };
+                }
+              };
+            };
+          }
         }
 
         content: Gtk.ScrolledWindow {

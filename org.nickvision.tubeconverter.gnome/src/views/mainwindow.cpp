@@ -41,7 +41,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         : m_controller{ controller },
         m_app{ app },
         m_builder{ "main_window" },
-        m_window{ m_builder.get<AdwApplicationWindow>("root") }
+        m_window{ m_builder.get<AdwApplicationWindow>("root") },
+        m_updateHandlerId{ 0 }
     {
         //Setup Window
         gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(m_window));
@@ -59,6 +60,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("listNavItems"), "row-activated", G_CALLBACK(+[](GtkListBox*, GtkListBoxRow*, gpointer data) { adw_navigation_split_view_set_show_content(reinterpret_cast<MainWindow*>(data)->m_builder.get<AdwNavigationSplitView>("navView"), true); }), this);
         g_signal_connect(m_builder.get<GObject>("listNavItems"), "row-selected", G_CALLBACK(+[](GtkListBox* self, GtkListBoxRow* row, gpointer data) { reinterpret_cast<MainWindow*>(data)->onNavItemSelected(self, row); }), this);
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onNotificationSent(args); }); };
+        m_controller->ytdlpUpdateAvailable() += [this](const ParamEventArgs<Version>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onYtdlpUpdateAvailable(args); }); };
+        m_controller->ytdlpUpdateProgressChanged() += [this](const ParamEventArgs<double>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onYtdlpUpdateProgressChanged(args); }); };
         m_controller->historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onHistoryChanged(args); }); };
         m_controller->downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->downloadAdded() += [this](const DownloadAddedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadAdded(args); }); };
@@ -234,6 +237,37 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         AdwToast* toast{ adw_toast_new(args.getMessage().c_str()) };
         adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
+    }
+
+    void MainWindow::onYtdlpUpdateAvailable(const ParamEventArgs<Version>& args)
+    {
+        if(m_updateHandlerId != 0)
+        {
+            g_signal_handler_disconnect(m_builder.get<GObject>("downloadUpdateButton"), m_updateHandlerId);
+            m_updateHandlerId = 0;
+        }
+        AdwToast* toast{ adw_toast_new(_("An update is available")) };
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("updatesMenuButton"), true);
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStackUpdates"), "available");
+        adw_status_page_set_description(m_builder.get<AdwStatusPage>("updateAvailableStatus"), _f("{} version {} is available to download and install", "yt-dlp", (*args).str()).c_str());
+        m_updateHandlerId = g_signal_connect(m_builder.get<GObject>("downloadUpdateButton"), "clicked", G_CALLBACK(+[](GObject* self, gpointer data)
+        {
+            MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
+            mainWindow->m_controller->startYtdlpUpdate();
+        }), this);
+        adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
+    }
+
+    void MainWindow::onYtdlpUpdateProgressChanged(const ParamEventArgs<double>& args)
+    {
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStackUpdates"), "progress");
+        gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("updateProgBar"), *args);
+        if(*args == 1.0)
+        {
+            AdwToast* toast{ adw_toast_new(_("Update completed successfully")) };
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("updatesMenuButton"), false);
+            adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
+        }
     }
 
     void MainWindow::onNavItemSelected(GtkListBox* box, GtkListBoxRow* row)
