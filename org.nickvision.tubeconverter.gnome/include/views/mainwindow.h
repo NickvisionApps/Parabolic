@@ -12,7 +12,7 @@
 namespace Nickvision::TubeConverter::GNOME::Views
 {
     /**
-     * @brief The main window for the application. 
+     * @brief The main window for the application.
      */
     class MainWindow
     {
@@ -20,15 +20,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
         /**
          * @brief Constructs a MainWindow.
          * @param controller The MainWindowController
-         * @param app The GtkApplication object of the running app 
+         * @param app The GtkApplication object of the running app
          */
         MainWindow(const std::shared_ptr<Shared::Controllers::MainWindowController>& controller, GtkApplication* app);
         /**
-         * @brief Destructs the MainWindow. 
+         * @brief Destructs the MainWindow.
          */
         ~MainWindow();
         /**
-         * @brief Shows the main window. 
+         * @brief Shows the main window.
          */
         void show();
         /**
@@ -40,7 +40,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     private:
         /**
          * @brief Handles when the window requests to close.
-         * @return True to prevent closing, else false 
+         * @return True to prevent closing, else false
          */
         bool onCloseRequested();
         /**
@@ -49,9 +49,19 @@ namespace Nickvision::TubeConverter::GNOME::Views
         void onVisibilityChanged();
         /**
          * @brief Handles when a notification is sent to the window.
-         * @param args NotificationSentEventArgs 
+         * @param args NotificationSentEventArgs
          */
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
+        /**
+         * @brief Handles when a yt-dlp update is available.
+         * @param args ParamEventArgs<Nickvision::Update::Version>
+         */
+        void onYtdlpUpdateAvailable(const Events::ParamEventArgs<Update::Version>& args);
+        /**
+         * @brief Handles when a yt-dlp update's progress is changed.
+         * @param args ParamEventArgs<double>
+         */
+        void onYtdlpUpdateProgressChanged(const Events::ParamEventArgs<double>& args);
         /**
          * @brief Handles when a navigation item is selected.
          * @param box The listNavItems box
@@ -64,7 +74,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
         /**
-         * @brief Handles when a recovered download needs a credential. 
+         * @brief Handles when a recovered download needs a credential.
          * @param args DownloadCredentialNeededEventArgs
          */
         void onDownloadCredentialNeeded(const Shared::Events::DownloadCredentialNeededEventArgs& args);
@@ -109,11 +119,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
         /**
-         * @brief Quits the application. 
+         * @brief Quits the application.
          */
         void quit();
         /**
-         * @brief Opens the application's preferences dialog. 
+         * @brief Opens the application's preferences dialog.
          */
         void preferences();
         /**
@@ -121,11 +131,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void keyboardShortcuts();
         /**
-         * @brief Opens the application's help documentation. 
+         * @brief Opens the application's help documentation.
          */
         void help();
         /**
-         * @brief Opens the application's about dialog. 
+         * @brief Opens the application's about dialog.
          */
         void about();
         /**
@@ -152,6 +162,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GtkApplication* m_app;
         Helpers::Builder m_builder;
         AdwApplicationWindow* m_window;
+        unsigned long m_updateHandlerId;
         GSimpleAction* m_actAddDownload;
         std::vector<AdwActionRow*> m_historyRows;
         std::unordered_map<int, Helpers::ControlPtr<Controls::DownloadRow>> m_downloadRows;

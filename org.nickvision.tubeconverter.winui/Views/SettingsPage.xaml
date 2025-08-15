@@ -57,13 +57,7 @@
                                 <ComboBox x:Name="CmbLanguage" SelectionChanged="OnCmbChanged"/>
                             </controls:SettingsRow.Child>
                         </controls:SettingsRow>
-
-                        <controls:SettingsRow x:Name="RowUpdates" Glyph="&#xE117;">
-                            <controls:SettingsRow.Child>
-                                <ToggleSwitch x:Name="TglUpdates" Toggled="OnSwitchToggled"/>
-                            </controls:SettingsRow.Child>
-                        </controls:SettingsRow>
-
+                        
                         <controls:SettingsRow x:Name="RowPreventSuspend" Glyph="&#xE7E8;">
                             <controls:SettingsRow.Child>
                                 <ToggleSwitch x:Name="TglPreventSuspend" Toggled="OnSwitchToggled"/>

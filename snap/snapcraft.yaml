@@ -36,7 +36,7 @@ parts:
     plugin: python
     source: .
     python-packages:
-      - yt-dlp[default,curl-cffi]==2025.07.21
+      - yt-dlp[default,curl-cffi]==2025.08.11
       - mutagen
     stage:
       - -bin/activate*
@@ -55,7 +55,7 @@ parts:
 
   cpr:
     source: https://github.com/libcpr/cpr.git
-    source-commit: 'b14cd346bf3657ac046ebde136bd9300ce885c5e'
+    source-commit: 'a0ff651296a620ed5fabf7d12cf4905fefc7ce86'
     source-depth: 1
     plugin: cmake
     cmake-parameters:

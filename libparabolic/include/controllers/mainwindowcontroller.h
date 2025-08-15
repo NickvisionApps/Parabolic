@@ -14,12 +14,14 @@
 #include <libnick/app/datafilemanager.h>
 #include <libnick/app/windowgeometry.h>
 #include <libnick/events/event.h>
+#include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
 #include <libnick/system/suspendinhibitor.h>
 #include <libnick/taskbar/taskbaritem.h>
 #include <libnick/update/updater.h>
+#include <libnick/update/version.h>
 #include "controllers/adddownloaddialogcontroller.h"
 #include "controllers/credentialdialogcontroller.h"
 #include "controllers/keyringdialogcontroller.h"
@@ -53,6 +55,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The notification sent event
          */
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs>& notificationSent();
+        /**
+         * @brief Gets the event for when an application update is available.
+         * @return The application update available event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>>& appUpdateAvailable();
+        /**
+         * @brief Gets the event for when an application update's progress is changed.
+         * @return The application update progress changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>>& appUpdateProgressChanged();
         /**
          * @brief Gets the event for when the history is changed.
          * @return The history changed event
@@ -104,6 +116,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
         /**
+         * @brief Gets the event for when an yt-dlp update is available.
+         * @return The yt-dlp update available event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>>& ytdlpUpdateAvailable();
+        /**
+         * @brief Gets the event for when an yt-dlp update's progress is changed.
+         * @return The yt-dlp update progress changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>>& ytdlpUpdateProgressChanged();
+        /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
          */
@@ -113,6 +135,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The preferred theme
          */
         Models::Theme getTheme();
+        /**
+         * @brief Gets the preferred update type for the application.
+         * @return The preferred update type
+         */
+        Update::VersionType getPreferredUpdateType();
+        /**
+         * @brief Sets the preferred update type for the application.
+         * @param type The preferred update type
+         */
+        void setPreferredUpdateType(Update::VersionType type);
         /**
          * @brief Sets whether or not to show the disclaimer on startup.
          * @param showDisclaimerOnStartup True to show the disclaimer, else false
@@ -178,24 +210,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param geometry The window geometry to save
          */
         void shutdown(const Nickvision::App::WindowGeometry& geometry);
-        /**
-         * @brief Checks for an application update and sends a notification with the "update" action if one is available.
-         * @param noUpdateNotification Send an app notification if no update is available.
-         */
-        void checkForUpdates(bool noUpdateNotification) const;
 #ifdef _WIN32
         /**
-         * @brief Downloads and installs the latest application update in the background.
-         * @brief Will send a notification if the update fails.
-         * @brief MainWindowController::checkForUpdates() must be called before this method.
+         * @brief Starts downloading and installing the latest application update for Windows in the background.
          */
-        void windowsUpdate();
+        void startWindowsUpdate();
 #endif
         /**
-         * @brief Downloads the latest yt-dlp update in the background.
-         * @brief Will send a notification if the update fails.
+         * @brief Starts downloading the latest yt-dlp update in the background.
          */
-        void ytdlpUpdate();
+        void startYtdlpUpdate();
         /**
          * @brief Gets the count of remaining downloads.
          * @return The count of remaining downloads
@@ -290,6 +314,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         void onDownloadCompleted(const Events::DownloadCompletedEventArgs& args);
         bool m_started;
         std::vector<std::string> m_args;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>> m_appUpdateAvailable;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>> m_appUpdateProgressChanged;
         Nickvision::App::AppInfo m_appInfo;
         Nickvision::App::DataFileManager m_dataFileManager;
         std::shared_ptr<Nickvision::Update::Updater> m_updater;

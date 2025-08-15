@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <libnick/events/event.h>
+#include <libnick/events/parameventargs.h>
 #include <libnick/update/updater.h>
 #include <libnick/update/version.h>
 #include "models/configuration.h"
@@ -21,6 +22,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         YtdlpManager(Configuration& config);
         /**
+         * @brief Gets the event for when a yt-dlp update is available.
+         * @return The yt-dlp update available event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>>& updateAvailable();
+        /**
+         * @brief Gets the event for when a yt-dlp update's progress is changed.
+         * @return The yt-dlp update progress changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>>& updateProgressChanged();
+        /**
          * @brief Gets the path to the yt-dlp executable.
          * @return The path to the yt-dlp executable
          */
@@ -30,16 +41,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void checkForUpdates();
         /**
-         * @brief Downloads the latest version of yt-dlp in the background.
-         * @brief Will send a notification if the update fails.
-         * @brief YtdlpManager::checkForUpdates() must be called before this method.
+         * @brief Starts to download the latest version of yt-dlp in the background.
          */
-        void downloadUpdate();
+        void startUpdateDownload();
 
     private:
         mutable std::mutex m_mutex;
         Configuration& m_config;
         mutable Update::Updater m_updater;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>> m_updateAvailable;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>> m_updateProgressChanged;
         Update::Version m_bundledYtdlpVersion;
         Update::Version m_latestYtdlpVersion;
     };

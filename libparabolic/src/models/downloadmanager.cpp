@@ -2,16 +2,19 @@
 #include <filesystem>
 #include <fstream>
 #include <utility>
+#include <libnick/filesystem/userdirectories.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/system/environment.h>
 #include <libnick/system/process.h>
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
+using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Events;
+using namespace Nickvision::Update;
 
 #define BATCH_FOLDER_PATH_DELIM '|'
 
@@ -31,6 +34,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     DownloadManager::~DownloadManager()
     {
         stopAllDownloads();
+    }
+
+    Event<ParamEventArgs<Version>>& DownloadManager::ytdlpUpdateAvailable()
+    {
+        return m_ytdlpManager.updateAvailable();
+    }
+
+    Event<ParamEventArgs<double>>& DownloadManager::ytdlpUpdateProgressChanged()
+    {
+        return m_ytdlpManager.updateProgressChanged();
     }
 
     Event<ParamEventArgs<std::vector<HistoricDownload>>>& DownloadManager::historyChanged()
@@ -143,9 +156,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         info.setHasRecoverableDownloads(m_recoveryQueue.getRecoverableDownloads().size() > 0);
     }
 
-    void DownloadManager::ytdlpUpdate()
+    void DownloadManager::startYtdlpUpdate()
     {
-        m_ytdlpManager.downloadUpdate();
+        m_ytdlpManager.startUpdateDownload();
     }
 
     size_t DownloadManager::recoverDownloads()
@@ -248,6 +261,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--cookies");
             arguments.push_back(m_options.getCookiesPath().string());
         }
+        arguments.push_back("--paths");
+        arguments.push_back("temp:" + UserDirectories::get(UserDirectory::Cache).string());
         arguments.push_back(url);
         if(token)
         {

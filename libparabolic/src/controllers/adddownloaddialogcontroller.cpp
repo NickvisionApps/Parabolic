@@ -213,7 +213,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(m_urlInfo && index < m_urlInfo->count())
         {
             std::string title{ m_urlInfo->get(index).getTitle() };
-            return numbered ? std::format("{} - {}", index + 1, title) : title;
+            return numbered ? std::format("{:02} - {}", index + 1, title) : title;
         }
         return empty;
     }

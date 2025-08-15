@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Remover Dados de Origem</dt>
 <dd class="terms">
-<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
+<p class="p">Parabolic limpará os campos de metadados que contêm informações de identificação de descarga.</p>
 <p class="p">Campos que são limpos: <span class="code">comment</span> , <span class="code">description</span> , <span class="code">synopsis</span> , <span class="code">purl</span> e <span class="code">handler_name</span> em cada stream.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
@@ -69,10 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Desligado</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Embed Thumbnails</dt>
+<dt class="terms">Incorporar miniaturas</dt>
 <dd class="terms">
 <p class="p">Parabolic will embed a media with its thumbnail if available.</p>
-<p class="p">If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+<p class="p">Se o tipo de ficheiro não suportar a incorporação, a miniatura será escrita num ficheiro de imagem separado.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -92,14 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Cortar Miniaturas para Áudio</dt>
 <dd class="terms">
-<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
+<p class="p">Parabolic irá cortar as miniaturas dos ficheiros de áudio em quadrados.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">This option is only configurable if <span class="code">Embed Thumbnails</span> is on.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Esta opção só pode ser configurada se <span class="code">Incorporar miniaturas</span> estiver ativado.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Ativado</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">FFmpeg Threads</dt>
+<dt class="terms">Threads do FFmpeg</dt>
 <dd class="terms">
 <p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="Avançado">
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: O número máximo de threads disponíveis no sistema</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Postprocessing Arguments</dt>
+<dt class="terms">Argumentos do pós-processamento</dt>
 <dd class="terms">
 <p class="p">Parabolic will present these options in the add download dialog to be passed to <span class="code">ffmpeg</span> and other post-processors when processing media.</p>
 <div class="note note-advanced" title="Avançado">

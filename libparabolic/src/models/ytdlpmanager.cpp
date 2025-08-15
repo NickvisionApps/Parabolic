@@ -4,7 +4,11 @@
 #include <libnick/localization/gettext.h>
 #include <libnick/notifications/appnotification.h>
 #include <libnick/system/environment.h>
+#ifndef _WIN32
+#include <sys/stat.h>
+#endif
 
+using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::System;
@@ -15,9 +19,19 @@ namespace Nickvision::TubeConverter::Shared::Models
     YtdlpManager::YtdlpManager(Configuration& config)
         : m_config{ config },
         m_updater{ "https://github.com/yt-dlp/yt-dlp/" },
-        m_bundledYtdlpVersion{ 2025, 7, 21 }
+        m_bundledYtdlpVersion{ 2025, 8, 11 }
     {
 
+    }
+
+    Event<ParamEventArgs<Version>>& YtdlpManager::updateAvailable()
+    {
+        return m_updateAvailable;
+    }
+
+    Event<ParamEventArgs<double>>& YtdlpManager::updateProgressChanged()
+    {
+        return m_updateProgressChanged;
     }
 
     const std::filesystem::path& YtdlpManager::getExecutablePath() const
@@ -43,6 +57,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void YtdlpManager::checkForUpdates()
     {
+        getExecutablePath(); // Validate the executable path from config
         std::thread worker{ [this]()
         {
             m_latestYtdlpVersion = m_updater.fetchCurrentVersion(VersionType::Stable);
@@ -50,14 +65,14 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 if(m_latestYtdlpVersion > m_bundledYtdlpVersion && m_latestYtdlpVersion > m_config.getInstalledYtdlpVersion())
                 {
-                    AppNotification::send({ _("New version of yt-dlp available"), NotificationSeverity::Success, "ytdlp" });
+                    m_updateAvailable.invoke({ m_latestYtdlpVersion });
                 }
             }
         } };
         worker.detach();
     }
 
-    void YtdlpManager::downloadUpdate()
+    void YtdlpManager::startUpdateDownload()
     {
         std::thread worker{ [this]()
         {
@@ -74,17 +89,35 @@ namespace Nickvision::TubeConverter::Shared::Models
             std::filesystem::path ytdlpPath{ UserDirectories::get(UserDirectory::LocalData) / "yt-dlp" };
 #endif
 #endif
-#ifdef _WIN32
-            if(m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp.exe", true))
-#elif defined(__APPLE__)
-            if(m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp_macos", true))
-#else
-            if(m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp", true))
-#endif
+            cpr::ProgressCallback progressCallback{ [this](curl_off_t downloadTotal, curl_off_t downloadNow, curl_off_t, curl_off_t, intptr_t) -> bool
             {
+                if(downloadTotal == 0)
+                {
+                    return true;
+                }
+                double progress{ static_cast<double>(static_cast<long double>(downloadNow) / static_cast<long double>(downloadTotal)) };
+                if(progress != 1.0)
+                {
+                    m_updateProgressChanged.invoke({ progress });
+                }
+                return true;
+            } };
+            m_updateProgressChanged.invoke({ 0.0 });
+#ifdef _WIN32
+            bool res{ m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp.exe", true, progressCallback) };
+#elif defined(__APPLE__)
+            bool res{ m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp_macos", true, progressCallback) };
+#else
+            bool res{ m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp", true, progressCallback) };
+#endif
+            m_updateProgressChanged.invoke({ 1.0 });
+            if(res)
+            {
+#ifndef _WIN32
+                chmod(ytdlpPath.string().c_str(), 0777);
+#endif
                 m_config.setInstalledYtdlpVersion(m_latestYtdlpVersion);
                 m_config.save();
-                AppNotification::send({ _("yt-dlp updated successfully"), NotificationSeverity::Success });
             }
             else
             {

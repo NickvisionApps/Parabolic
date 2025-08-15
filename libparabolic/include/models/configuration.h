@@ -5,6 +5,7 @@
 #include <libnick/app/datafilebase.h>
 #include <libnick/app/windowgeometry.h>
 #include <libnick/update/version.h>
+#include <libnick/update/versiontype.h>
 #include "downloaderoptions.h"
 #include "theme.h"
 
@@ -56,15 +57,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setWindowGeometry(const App::WindowGeometry& geometry);
         /**
-         * @brief Gets whether or not to automatically check for application updates.
-         * @return True to automatically check for updates, else false
+         * @brief Gets the preferred update type for the application.
+         * @return The preferred update type
          */
-        bool getAutomaticallyCheckForUpdates() const;
+        Update::VersionType getPreferredUpdateType() const;
         /**
-         * @brief Sets whether or not to automatically check for application updates.
-         * @param check Whether or not to automatically check for updates
+         * @brief Sets the preferred update type for the application.
+         * @param type The new preferred update type
          */
-        void setAutomaticallyCheckForUpdates(bool check);
+        void setPreferredUpdateType(Update::VersionType type);
         /**
          * @brief Gets the installed version of yt-dlp.
          * @return The installed version of yt-dlp
