@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-08-14 21:34-0400\n"
-"PO-Revision-Date: 2025-07-30 21:11+0000\n"
-"Last-Translator: InfiniteLoop <corentinjacques10@protonmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/fr/>\n"
+"PO-Revision-Date: 2025-08-21 19:02+0000\n"
+"Last-Translator: p-sage <hemionn@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -259,7 +259,6 @@ msgstr "Inclure les sous-titres"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:69
-#, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files."
@@ -296,7 +295,7 @@ msgstr "Par défaut : le nombre maximal de fils disponibles sur le système"
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:83
 msgid "Postprocessing Arguments"
-msgstr "Paramètre de Post-Traitement"
+msgstr "Arguments de post-traitement"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:84
@@ -311,7 +310,7 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:86
 msgid "Postprocessing Argument Fields:"
-msgstr "Champs de Paramètres de Post-Traitement :"
+msgstr "Champs d'arguments de post-traitement :"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:87
@@ -323,7 +322,8 @@ msgstr "<code>Nom</code> - Le nom du paramètre."
 msgid ""
 "<code>Post Processor</code> - The post processor to pass the arguments to."
 msgstr ""
-"<code>Post-Traiteur</code> - Le post-traiteur auquel passer les paramètres."
+"<code>Post-processeur</code> - Le post-processeur auquel transmettre les "
+"arguments."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:89
@@ -358,7 +358,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:25
 msgid "Use Part Files"
-msgstr "Utiliser les Fichiers Segmentés"
+msgstr "Utiliser des fichiers segmentés"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:26
@@ -658,7 +658,7 @@ msgstr "Par défaut : N’importe lequel"
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:77
 msgid "Preferred Audio Codec"
-msgstr "Codec Audio Préféré"
+msgstr "Codec audio préféré"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:78
@@ -795,13 +795,13 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:39
 msgid "Download History Length"
-msgstr "Taille de l’historique de téléchargement"
+msgstr "Taille de l’historique des téléchargements"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/interface.page:40
 msgid "The amount of time to keep past downloads in the app's history."
 msgstr ""
-"La période pendant laquelle l’historique de téléchargement est conservé."
+"La période pendant laquelle l’historique des téléchargements est conservé."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/interface.page:42
@@ -950,7 +950,7 @@ msgstr "Utiliser un fichier en lot"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:33
 msgid "Select a batch text file that contains a list of URLs to validate."
-msgstr ""
+msgstr "Sélectionnez un fichier texte contenant une liste d’URL à valider."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
@@ -958,6 +958,8 @@ msgid ""
 "Each URL can be accompanied by an optional save folder (delimited by <code>|"
 "</code>) in which to save each media of the URL to."
 msgstr ""
+"Chaque URL peut être accompagnée d'un dossier de sauvegarde facultatif ("
+"délimité par <code>|</code>) dans lequel enregistrer chaque média de l'URL."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:35
@@ -965,37 +967,38 @@ msgid ""
 "All of the URLs and their media from the batch file will be grouped and "
 "treated as one single playlist by Parabolic."
 msgstr ""
+"Toutes les URL et leurs médias du fichier batch seront regroupés et traités "
+"comme une seule liste de lecture par Parabolic."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:36
 msgid "The optional save folder must be an absolute path."
-msgstr ""
+msgstr "Le dossier de sauvegarde facultatif doit être un chemin absolu."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:38
-#, fuzzy
 msgid "Batch File Format:"
-msgstr "Format vidéo"
+msgstr "Format du fichier batch :"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:39
 msgid "<code>URL1</code>"
-msgstr ""
+msgstr "<code>URL1</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:40
 msgid "<code>URL2 | \"Folder1\"</code>"
-msgstr ""
+msgstr "<code>URL2 | \"Dossier1\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:41
 msgid "<code>\"URL3\"|\"Folder2\"</code>"
-msgstr ""
+msgstr "<code>\"URL3\"|\"Dossier2\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:42
 msgid "<code>\"URL4\"</code>"
-msgstr ""
+msgstr "<code>\"URL4\"</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:46
@@ -1043,18 +1046,16 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:55
 msgid "Download Immediately"
-msgstr "Téléchargement Immédiat"
+msgstr "Télécharger immédiatement"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:56
-#, fuzzy
 msgid ""
 "Parabolic will immediately download the media after validation, using the "
 "previously configured download options."
 msgstr ""
-"Parabolic détectera les téléchargements qui devraient être repris et évitera "
-"ce paramètre lors de la récupération ou de la nouvelle tentative de "
-"téléchargement ayant échoué"
+"Parabolic téléchargera immédiatement le média après validation, en utilisant "
+"les options de téléchargement précédemment configurées."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:62
@@ -1088,13 +1089,14 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:69
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles. "
 "Separate files may be written to disk if embedding is not supported."
 msgstr ""
-"Si le type de fichier ne prend pas en charge l’inclusion d’une vignette, "
-"celle-ci sera exportée vers un fichier d’image séparé."
+"Les types de fichiers génériques ne prennent pas entièrement en charge "
+"l'intégration des vignettes et des sous-titres. Des fichiers distincts "
+"peuvent être enregistrés sur le disque si l'intégration n'est pas prise en "
+"charge."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:73
@@ -1139,21 +1141,23 @@ msgid ""
 "The following are special formats used by Parabolic to match <code>yt-dlp</"
 "code> behaviors:"
 msgstr ""
+"Voici les formats spéciaux utilisés par Parabolic pour correspondre aux "
+"comportements de <code>yt-dlp</code> :"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:82 docs/yelp/C/newDownload.page:96
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
-msgstr ""
+msgstr "- <code>Aucun</code> = Aucune option transmise à <code>yt-dlp</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:83
 msgid "- <code>Best</code> = <code>bv*</code>"
-msgstr ""
+msgstr "- <code>Meilleur</code> = <code>bv*</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:84
 msgid "- <code>Worst</code> = <code>wv*</code>"
-msgstr ""
+msgstr "- <code>Pire</code> = <code>wv*</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:88
@@ -1260,22 +1264,21 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:123
 msgid "Exclude from History"
-msgstr "Exclure de l'Historique"
+msgstr "Exclure de l'historique"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:124
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will exclude the download from the list of historic "
 "downloads."
 msgstr ""
-"Si cette option est activée, Parabolic appliquera l’extension SponsorBlock "
-"pour les téléchargements YouTube."
+"Si cette option est activée, Parabolic n’ajoutera pas le téléchargement à "
+"l’historique."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:127
 msgid "Post Processor Argument"
-msgstr "Paramètres de Post-Traitement"
+msgstr "Argument du post-processeur"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:128
@@ -1284,16 +1287,18 @@ msgid ""
 "postprocessing arguments can be configured in <link "
 "xref=\"converter\">preferences</link>."
 msgstr ""
+"Un argument à transmettre au post-processeur lors du téléchargement. Les "
+"arguments de post-traitement disponibles peuvent être configurés dans les "
+"<link xref=\"converter\">Préférences</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:130
-#, fuzzy
 msgid ""
 "The previously selected argument will be remembered and pre-selected for the "
 "next download."
 msgstr ""
-"Les sous-titres sélectionnés précédemment seront mémorisés et "
-"présélectionnés pour le prochain téléchargement."
+"L'argument précédemment sélectionné sera mémorisé et présélectionné pour le "
+"prochain téléchargement."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:134
@@ -1302,11 +1307,10 @@ msgstr "Écrire un Fichier de Playlist M3U"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:135
-#, fuzzy
 msgid "If enabled, Parabolic will write a m3u file for the playlist download."
 msgstr ""
-"Si cette option est activée, Parabolic appliquera l’extension SponsorBlock "
-"pour les téléchargements YouTube."
+"Si cette option est activée, Parabolic écrira un fichier m3u pour le "
+"téléchargement de la playlist."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:137
@@ -1314,8 +1318,8 @@ msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "playlist download."
 msgstr ""
-"Si activée, Parabolic exclura ce téléchargement de l'historique des "
-"téléchargement."
+"L'état précédemment utilisé sera mémorisé et présélectionné pour le prochain "
+"téléchargement de la playlist."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:141
