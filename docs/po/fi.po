@@ -2,21 +2,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-08-14 21:34-0400\n"
-"PO-Revision-Date: 2025-05-18 16:01+0000\n"
+"PO-Revision-Date: 2025-08-21 19:02+0000\n"
 "Last-Translator: Linus Virtanen <linus.virtanen@protonmail.com>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/fi/>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Jiri Grönroos"
+msgstr ""
+"Jiri Grönroos\n"
+"Linus Virtanen"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/aria.page:8
@@ -86,6 +88,8 @@ msgid ""
 "This option only applies when using aria2c is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
 msgstr ""
+"Tämä pätee vain mikäli aria2c:n käyttö on kytketty päälle. Tämä valinta on "
+"sama kuin <code>-x</code> -lippu välitettynä aria2c:lle."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:34
@@ -93,16 +97,18 @@ msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
 msgstr ""
+"Palvelinta kohti käytettävien yhteyksien enimmäismäärä. Oltava "
+"kokonaislukuarvo väliltä 1 ja 32."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:36
 msgid "Default: 16"
-msgstr ""
+msgstr "Vakio: 16"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:40
 msgid "Minimum Split Size"
-msgstr ""
+msgstr "Vähimmäinen koko jaolle"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:41
@@ -110,6 +116,8 @@ msgid ""
 "This option only applies when using aria2c is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
+"Tämä pätee vain mikäli aria2c:n käyttö on kytketty päälle. Tämä valinta on "
+"sama kuin <code>-k</code> -lippu välitettynä aria2c:lle."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:42
@@ -117,17 +125,19 @@ msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
 msgstr ""
+"Vähimmäiskoko, mebitavuina (MiB), johon tiedosto jaetaan. Oltava "
+"kokonaislukuarvo väliltä 1 ja 1024."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:44
 msgid "Default: 20"
-msgstr ""
+msgstr "Vakio: 20"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/converter.page:8
 msgctxt "link"
 msgid "Converter ⚒️"
-msgstr ""
+msgstr "Muunnin ⚒️"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/converter.page:20
@@ -140,6 +150,8 @@ msgid ""
 "This page explains all options for configuring the Converter in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
+"Tällä sivulla selitetään kaikki vaihtoehdot muuntimen määrittämiseen "
+"<app>Parabolicin</app> asetuksissa."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
@@ -152,6 +164,8 @@ msgid ""
 "Parabolic will tag a media with its relevant information (title, genre, "
 "etc...) if available."
 msgstr ""
+"Parabolic merkitsee mediaan tunnisteet asiaankuuluvilla tiedoilla (nimi, "
+"tyylilaji, jne...) mikäli ne ovat saatavilla."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:47
@@ -159,7 +173,7 @@ msgstr ""
 #: docs/yelp/C/downloads.page:41 docs/yelp/C/downloads.page:56
 #: docs/yelp/C/downloads.page:63
 msgid "Default: On"
-msgstr ""
+msgstr "Vakio: päällä"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:32
@@ -172,6 +186,8 @@ msgid ""
 "Parabolic will clear metadata fields containing identifying download "
 "information."
 msgstr ""
+"Parabolic tyhjentää metatietokentät jotka sisältävät tunnisteita "
+"lataustiedoissa."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:34
@@ -180,11 +196,16 @@ msgid ""
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
+"Poistetut kentät: <code>comment</code>, <code>description</code>, "
+"<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> "
+"jokaiselle suoratoistolle."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:36
 msgid "This option is only configurable if <code>Embed Metadata</code> is on."
 msgstr ""
+"Tämä vaihtoehto määritettävissä vain, jos <code>Embed Thumbnails </code> on "
+"käytössä."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:43
@@ -194,7 +215,7 @@ msgstr "Upota pikkukuvat"
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:44
 msgid "Parabolic will embed a media with its thumbnail if available."
-msgstr ""
+msgstr "Parabolic upottaa mediaan pikkukuvan mikäli sellainen on saatavilla."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:45
@@ -213,13 +234,15 @@ msgstr "Rajaa äänen pikkukuvat"
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:52
 msgid "Parabolic will crop thumbnails of audio files to squares."
-msgstr ""
+msgstr "Parabolic rajaa äänitiedostojen pikkukuvat neliöiksi."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:54
 msgid ""
 "This option is only configurable if <code>Embed Thumbnails</code> is on."
 msgstr ""
+"Tämä vaihtoehto on määritettävissä vain, jos <code>Embed Thumbnails </code> "
+"on käytössä."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:61
@@ -229,7 +252,7 @@ msgstr "Upota kappaleet"
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:62
 msgid "Parabolic will tag a media with its chapter information if available."
-msgstr ""
+msgstr "Parabolic merkitsee mediaan jaksotiedot mikäli saatavilla."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:68
@@ -252,6 +275,8 @@ msgid ""
 "Whether or not embedding is supported if affected by your chosen "
 "<code>Preferred Subtitle Format</code>."
 msgstr ""
+"Tuetaanko upottamista vaiko ei, jos valintasi vaikuttaa <code>Toivottuun "
+"tekstitysmuotoon </code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:76
@@ -262,17 +287,17 @@ msgstr "Jälkikäsittely käynnissä"
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:77
 msgid "Parabolic will limit the number of threads used by <code>ffmpeg</code>."
-msgstr ""
+msgstr "Parabolic rajoittaa säikeiden määrää joita <code>ffmpeg</code> käyttää."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:79
 msgid "Default: The max number of threads available on the system"
-msgstr ""
+msgstr "Vakio: järjestelmässä käytettävissä olevien säikeiden enimmäismäärä"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:83
 msgid "Postprocessing Arguments"
-msgstr ""
+msgstr "Jälkikäsittelyn määritykset"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:84
@@ -280,6 +305,9 @@ msgid ""
 "Parabolic will present these options in the add download dialog to be passed "
 "to <code>ffmpeg</code> and other post-processors when processing media."
 msgstr ""
+"Parabolic esittää nämä vaihtoehdot lisää lataus ilmoitteessa jotka "
+"välitetään <code>ffmpeg:lle</code> ja muille jälkikäsittelijöille "
+"käsitellessä mediaa."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:86
