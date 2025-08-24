@@ -255,6 +255,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
             MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
             mainWindow->m_controller->startYtdlpUpdate();
         }), this);
+        adw_toast_set_button_label(toast, _("Manage"));
+        g_signal_connect(toast, "button-clicked", G_CALLBACK(+[](AdwToast*, gpointer data){ gtk_popover_popup(reinterpret_cast<MainWindow*>(data)->m_builder.get<GtkPopover>("updatePopover")); }), this);
         adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
     }
 
