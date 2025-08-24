@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 21:38-0400\n"
+"POT-Creation-Date: 2025-08-23 12:28-0400\n"
 "PO-Revision-Date: 2025-08-21 19:02+0000\n"
 "Last-Translator: p-sage <hemionn@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,11 +93,13 @@ msgstr "Aucun"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "Erreur en essayant de valider le téléchargement : {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Erreur en essayant d'ajouter ce téléchargement : {}"
 
@@ -134,12 +136,14 @@ msgid "Unable to download and install update"
 msgstr "Impossible de télécharger et installer la mise à jour"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:395
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} téléchargement récupéré"
 msgstr[1] "{} téléchargements récupérés"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:400
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "Erreur en essayant de recommencer les téléchargements : {}"
 
@@ -148,6 +152,7 @@ msgid "Download Finished"
 msgstr "Téléchargement terminé"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:475
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} a été téléchargé"
 
@@ -162,6 +167,7 @@ msgid "Download Finished With Error"
 msgstr "Téléchargement terminé avec une erreur"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:479
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} s’est terminé avec une erreur"
 
@@ -177,18 +183,22 @@ msgid "0 B/s"
 msgstr "0 o/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -211,18 +221,22 @@ msgid "Audio Description"
 msgstr "Audio-description"
 
 #: libparabolic/src/models/format.cpp:352
+#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} Gio"
 
 #: libparabolic/src/models/format.cpp:356
+#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} Mio"
 
 #: libparabolic/src/models/format.cpp:360
+#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} Kio"
 
 #: libparabolic/src/models/format.cpp:364
+#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} o"
 
@@ -353,8 +367,8 @@ msgid ""
 msgstr ""
 "Les types de fichiers génériques ne prennent pas entièrement en charge "
 "l'intégration des vignettes et des sous-titres.\n"
-"Veuillez sélectionner un type de fichier spécifique compatible avec l'"
-"intégration\n"
+"Veuillez sélectionner un type de fichier spécifique compatible avec "
+"l'intégration\n"
 "afin d'éviter l'écriture de fichiers séparés."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
@@ -1232,6 +1246,7 @@ msgstr "En cours"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr "{} | {} | Temps restant : {}"
 
@@ -1309,10 +1324,12 @@ msgid "No Subtitles Available"
 msgstr "Aucun sous-titre disponible"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:219
+#, c++-format
 msgid "{} items"
 msgstr "{} éléments"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1485,6 +1502,7 @@ msgstr "Une mise à jour est disponible"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:252
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:327
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:360
+#, c++-format
 msgid "{} version {} is available to download and install"
 msgstr "{} version {} est disponible pour téléchargement et installation"
 
@@ -1660,6 +1678,7 @@ msgid "OK"
 msgstr "OK"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} nécessite un identifiant pour télécharger. Veuillez en sélectionner ou en "
@@ -1771,6 +1790,7 @@ msgid "Receive Beta App Updates"
 msgstr "Recevoir les mises à jour bêta de l'application"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:145
+#, c++-format
 msgid "Check for pre-release (beta) versions of {}"
 msgstr "Vérifier les versions préliminaires (bêta) de {}"
 
@@ -1779,6 +1799,7 @@ msgid "Changelog"
 msgstr "Journal des modifications"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:149
+#, c++-format
 msgid "Version {}"
 msgstr "Version {}"
 
@@ -1793,6 +1814,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:338
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:371
+#, c++-format
 msgid "Downloading {}%"
 msgstr "Téléchargement en cours {} %"
 
@@ -2493,9 +2515,7 @@ msgstr "Supprimer l'argument"
 #~ msgstr "Téléchargements restants : {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr ""
-#~ "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;"
-#~ "Converter;convertisseur;"
+#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;Converter;convertisseur;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Une interface basique pour yt-dlp"

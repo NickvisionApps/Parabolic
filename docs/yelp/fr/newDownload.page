@@ -27,15 +27,15 @@
     </item>
     <item>
         <title>Utiliser un fichier en lot</title>
-        <p>Select a batch text file that contains a list of URLs to validate.</p>
-        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
-        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-        <p>The optional save folder must be an absolute path.</p>
+        <p>Sélectionnez un fichier texte contenant une liste d’URL à valider.</p>
+        <p>Chaque URL peut être accompagnée d'un dossier de sauvegarde facultatif (délimité par <code>|</code>) dans lequel enregistrer chaque média de l'URL.</p>
+        <p>Toutes les URL et leurs médias du fichier batch seront regroupés et traités comme une seule liste de lecture par Parabolic.</p>
+        <p>Le dossier de sauvegarde facultatif doit être un chemin absolu.</p>
         <note style="advanced">
-            <p>Batch File Format:</p>
+            <p>Format du fichier batch :</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 | "Folder1"</code></p>
-            <p><code>"URL3"|"Folder2"</code></p>
+            <p><code>URL2 | "Dossier1"</code></p>
+            <p><code>"URL3"|"Dossier2"</code></p>
             <p><code>"URL4"</code></p>
         </note>
     </item>
@@ -49,8 +49,8 @@
         </note>
     </item>
     <item>
-        <title>Téléchargement Immédiat</title>
-        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <title>Télécharger immédiatement</title>
+        <p>Parabolic téléchargera immédiatement le média après validation, en utilisant les options de téléchargement précédemment configurées.</p>
         <note style="advanced">
             <p>Par défaut : Désactivée</p>
         </note>
@@ -63,7 +63,7 @@
         </note>
         <note style="advanced">
             <p>La sélection des types de fichiers <code>Vidéo (générique)</code> ou <code>Audio (générique)</code> obligera Parabolic à télécharger le média dans son type de fichier d’origine sans effectuer aucune conversion.</p>
-            <p>Generic file types do not fully support embedding thumbnails and subtitles. Separate files may be written to disk if embedding is not supported.</p>
+            <p>Les types de fichiers génériques ne prennent pas entièrement en charge l'intégration des vignettes et des sous-titres. Des fichiers distincts peuvent être enregistrés sur le disque si l'intégration n'est pas prise en charge.</p>
         </note>
     </item>
     <item>
@@ -75,10 +75,10 @@
             <p>Le format vidéo sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>bv*</code></p>
-            <p>- <code>Worst</code> = <code>wv*</code></p>
+            <p>Voici les formats spéciaux utilisés par Parabolic pour correspondre aux comportements de <code>yt-dlp</code> :</p>
+            <p>- <code>Aucun</code> = Aucune option transmise à <code>yt-dlp</code></p>
+            <p>- <code>Meilleur</code> = <code>bv*</code></p>
+            <p>- <code>Pire</code> = <code>wv*</code></p>
         </note>
     </item>
     <item>
@@ -89,8 +89,8 @@
             <p>Le format audio sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
+            <p>Voici les formats spéciaux utilisés par Parabolic pour correspondre aux comportements de <code>yt-dlp</code> :</p>
+            <p>- <code>Aucun</code> = Aucune option transmise à <code>yt-dlp</code></p>
             <p>- <code>Meilleur</code> = <code>ba</code></p>
             <p>- <code>Pire</code> = <code>wa</code></p>
         </note>
@@ -117,21 +117,21 @@
         </note>
     </item>
     <item>
-        <title>Exclure de l'Historique</title>
-        <p>If enabled, Parabolic will exclude the download from the list of historic downloads.</p>
+        <title>Exclure de l'historique</title>
+        <p>Si cette option est activée, Parabolic n’ajoutera pas le téléchargement à l’historique.</p>
     </item>
     <item>
-        <title>Paramètres de Post-Traitement</title>
-        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <title>Argument du post-processeur</title>
+        <p>Un argument à transmettre au post-processeur lors du téléchargement. Les arguments de post-traitement disponibles peuvent être configurés dans les <link xref="converter">Préférences</link>.</p>
         <note>
-            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+            <p>L'argument précédemment sélectionné sera mémorisé et présélectionné pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
         <title>Écrire un Fichier de Playlist M3U</title>
-        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <p>Si cette option est activée, Parabolic écrira un fichier m3u pour le téléchargement de la playlist.</p>
         <note>
-            <p>Si activée, Parabolic exclura ce téléchargement de l'historique des téléchargement.</p>
+            <p>L'état précédemment utilisé sera mémorisé et présélectionné pour le prochain téléchargement de la playlist.</p>
         </note>
     </item>
     <item>
