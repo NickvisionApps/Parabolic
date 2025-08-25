@@ -19,7 +19,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         //Load Validate Page
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), false);
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
-        if(StringHelpers::isValidUrl(url))
+        if(StringHelpers::isValidUrl(StringHelpers::trim(url)))
         {
             gtk_editable_set_text(m_builder.get<GtkEditable>("urlRow"), url.c_str());
             gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), true);
@@ -32,7 +32,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 if(clipboardText)
                 {
                     std::string url{ clipboardText };
-                    if(StringHelpers::isValidUrl(url))
+                    if(StringHelpers::isValidUrl(StringHelpers::trim(url)))
                     {
                         Builder* builder{ reinterpret_cast<Builder*>(data) };
                         gtk_editable_set_text(builder->get<GtkEditable>("urlRow"), url.c_str());
@@ -78,7 +78,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void AddDownloadDialog::onTxtUrlChanged()
     {
         std::string url{ gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")) };
-        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), StringHelpers::isValidUrl(url));
+        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), StringHelpers::isValidUrl(StringHelpers::trim(url)));
     }
 
     void AddDownloadDialog::useBatchFile()
@@ -133,11 +133,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         if(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) == 0)
         {
-            m_controller->validateUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")), credential);
+            m_controller->validateUrl(StringHelpers::trim(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow"))), credential);
         }
         else
         {
-            m_controller->validateUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) - 1);
+            m_controller->validateUrl(StringHelpers::trim(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow"))), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) - 1);
         }
     }
 

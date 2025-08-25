@@ -5,6 +5,7 @@
 #include <map>
 #include <optional>
 #include <string>
+#include <thread>
 #include <vector>
 #include <unordered_map>
 #include <libnick/app/cancellationtoken.h>
@@ -177,6 +178,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Models::PreviousDownloadOptions& m_previousOptions;
         Keyring::Keyring& m_keyring;
         App::CancellationToken m_validationCancellationToken;
+        std::thread m_validationWorkerThread;
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;
         mutable std::unordered_map<size_t, size_t> m_videoFormatMap;

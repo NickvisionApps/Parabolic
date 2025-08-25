@@ -54,7 +54,7 @@ Adw.ApplicationWindow root {
             direction: none;
             icon-name: "update-symbolic";
             tooltip-text: _("Updates");
-            popover: Gtk.Popover {
+            popover: Gtk.Popover updatePopover {
               width-request: 300;
               child: Adw.ViewStack viewStackUpdates {
                 hexpand: true;

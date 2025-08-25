@@ -249,12 +249,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
         AdwToast* toast{ adw_toast_new(_("An update is available")) };
         gtk_widget_set_visible(m_builder.get<GtkWidget>("updatesMenuButton"), true);
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStackUpdates"), "available");
-        adw_status_page_set_description(m_builder.get<AdwStatusPage>("updateAvailableStatus"), _f("{} version {} is available to download and install", "yt-dlp", (*args).str()).c_str());
+        adw_status_page_set_description(m_builder.get<AdwStatusPage>("updateAvailableStatus"), _f("{} version {} is available to download and install", "yt-dlp", args->str()).c_str());
         m_updateHandlerId = g_signal_connect(m_builder.get<GObject>("downloadUpdateButton"), "clicked", G_CALLBACK(+[](GObject* self, gpointer data)
         {
             MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
             mainWindow->m_controller->startYtdlpUpdate();
         }), this);
+        adw_toast_set_button_label(toast, _("Manage"));
+        g_signal_connect(toast, "button-clicked", G_CALLBACK(+[](AdwToast*, gpointer data){ gtk_popover_popup(reinterpret_cast<MainWindow*>(data)->m_builder.get<GtkPopover>("updatePopover")); }), this);
         adw_toast_overlay_add_toast(m_builder.get<AdwToastOverlay>("toastOverlay"), toast);
     }
 
@@ -324,7 +326,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_preferences_group_remove(m_builder.get<AdwPreferencesGroup>("historyGroup"), GTK_WIDGET(row));
         }
         m_historyRows.clear();
-        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("historyViewStack"), (*args).size() > 0 ? "history" : "no-history");
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("historyViewStack"), args->size() > 0 ? "history" : "no-history");
         for(const HistoricDownload& download : *args)
         {
             //Row

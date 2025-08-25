@@ -29,8 +29,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     AddDownloadDialogController::~AddDownloadDialogController()
     {
-        m_validationCancellationToken.cancel();
         m_previousOptions.save();
+        m_validationCancellationToken.cancel();
+        if(m_validationWorkerThread.joinable())
+        {
+            m_validationWorkerThread.join();
+        }
     }
 
     Event<ParamEventArgs<bool>>& AddDownloadDialogController::urlValidated()
@@ -235,22 +239,34 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void AddDownloadDialogController::validateUrl(const std::string& url, const std::optional<Credential>& credential)
     {
-        std::thread worker{ [this, url, credential]()
+        m_validationCancellationToken.cancel();
+        if(m_validationWorkerThread.joinable())
+        {
+            m_validationWorkerThread.join();
+        }
+        m_validationCancellationToken.reset();
+        m_validationWorkerThread = std::thread{ [this, url, credential]()
         {
             try
             {
                 m_credential = credential;
                 m_urlInfo = m_downloadManager.fetchUrlInfo(m_validationCancellationToken, url, m_credential);
-                m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
+                if(!m_validationCancellationToken)
+                {
+                    m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
+                }
+
             }
             catch(const std::exception& e)
             {
                 m_urlInfo = std::nullopt;
                 AppNotification::send({ _f("Error attempting to validate download: {}", e.what()), NotificationSeverity::Error, "error" });
-                m_urlValidated.invoke({ false });
+                if(!m_validationCancellationToken)
+                {
+                    m_urlValidated.invoke({ false });
+                }
             }
         } };
-        worker.detach();
     }
 
     void AddDownloadDialogController::validateUrl(const std::string& url, size_t credentialNameIndex)
