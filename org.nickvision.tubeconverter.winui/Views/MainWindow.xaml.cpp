@@ -552,7 +552,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(args.Reason() == AutoSuggestionBoxTextChangeReason::UserInput)
         {
             IObservableVector<IInspectable> items{ winrt::single_threaded_observable_vector<IInspectable>() };
-            if(StringHelpers::isValidUrl(winrt::to_string(sender.Text())))
+            if(StringHelpers::isValidUrl(StringHelpers::trim(winrt::to_string(sender.Text()))))
             {
                 FontIcon icn;
                 icn.FontFamily(WinUIHelpers::LookupAppResource<FontFamily>(L"SymbolThemeFontFamily"));

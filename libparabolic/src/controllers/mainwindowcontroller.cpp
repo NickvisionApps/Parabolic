@@ -49,7 +49,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2025.8.1-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where the downloaded updated yt-dlp did not work correctly on some linux systems\n- Fixed an issue where the app crashed when closing the add download dialog after failed validation\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Fixed an issue where the downloaded updated yt-dlp did not work correctly on some linux systems\n- Fixed an issue where the app crashed when closing the add download dialog after failed validation\n- Fixed an issue where URLs with whitespace were unable to be validated\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -309,9 +309,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Get URL to validate from args
         if(m_args.size() > 1)
         {
-            if(StringHelpers::isValidUrl(m_args[1]))
+            if(StringHelpers::isValidUrl(StringHelpers::trim(m_args[1])))
             {
-                info.setUrlToValidate(m_args[1]);
+                info.setUrlToValidate(StringHelpers::trim(m_args[1]));
             }
         }
         m_started = true;

@@ -370,7 +370,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                         fields.erase(fields.begin() + 1);
                     }
                 }
-                if(!StringHelpers::isValidUrl(fields[0]))
+                if(!StringHelpers::isValidUrl(StringHelpers::trim(fields[0])))
                 {
                     continue;
                 }
@@ -381,7 +381,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 line = StringHelpers::trim(line);
                 line = StringHelpers::trim(line, '"');
                 line = StringHelpers::trim(line);
-                if(!StringHelpers::isValidUrl(line))
+                if(!StringHelpers::isValidUrl(StringHelpers::trim(line)))
                 {
                     continue;
                 }

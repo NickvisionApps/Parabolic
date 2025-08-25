@@ -12,7 +12,13 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Yousef mohamed</mal:name>
+      <mal:email>oandygames.ygames+weblate@gmail.com</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
+  </info>
 
 <title>محوّل الصيغة</title>
 <p>توضح هذه الصفحة جميع الخيارات لتكوين المحول في التفضيلات في <app>Parabolic</app>.</p>
@@ -30,8 +36,7 @@
         <p>في حال التمكين، سيقوم (بارا-بوليك) بمسح خانات البيانات الوصفيّة المحتوية على معلومات تحديد التحميل.</p>
         <p>الحقول اللي تم مسحها: <code>التعليق</code>، <code>الوصف</code>، <code>الملخص</code>، <code>الرابط</code>، و<code>اسم المعالج</code> في كل تدفق.</p>
         <note>
-            <p>هذا الخيار قابل للتعديل عندما يكون 
-<code>Embed Metadata</code>مفعل.</p>
+            <p>هذا الخيار قابل للتعديل عندما يكون <code>Embed Metadata</code>مفعل.</p>
         </note>
         <note style="advanced">
             <p>الافتراضي: إيقاف</p>
@@ -72,7 +77,7 @@
     </item>
     <item>
         <title>FFmpeg Threads</title>
-        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
+        <p>بارابوليك سيقوم بتحديد عدد خيوط وحدة المعالجة المركزية المستخدمة من قبل <code>ffmpeg</code>.</p>
         <note style="advanced">
             <p>الافتراضي: الحد الأقصى لعدد مؤشرات الترابط المتاحة في النظام</p>
         </note>
@@ -81,7 +86,7 @@
         <title>Postprocessing Arguments</title>
         <p>Parabolic will present these options in the add download dialog to be passed to <code>ffmpeg</code> and other post-processors when processing media.</p>
         <note style="advanced">
-            <p>Postprocessing Argument Fields:</p>
+            <p>مسارات مابعد المعالجة:</p>
             <p><code>Name</code> - The friendly name of the argument.</p>
             <p><code>Post Processor</code> - The post processor to pass the arguments to.</p>
             <p><code>Executable</code> - The executable to pass the arguments to.</p>
