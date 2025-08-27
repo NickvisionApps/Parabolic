@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 21:38-0400\n"
-"PO-Revision-Date: 2025-05-31 20:05+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/de/>\n"
+"PO-Revision-Date: 2025-08-27 04:42+0000\n"
+"Last-Translator: Diz Bley <diz.bley@gmail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:94
@@ -94,12 +94,12 @@ msgstr "Keine"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:249
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:281
 msgid "Error attempting to validate download: {}"
-msgstr ""
+msgstr "Fehler beim Validieren des Downloads: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:355
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:399
 msgid "Error attempting to add download: {}"
-msgstr ""
+msgstr "Fehler beim Hinzufügen des Downloads: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:50
 msgid "Parabolic"
@@ -145,7 +145,7 @@ msgstr[1] "{} Downloads wiederhergestellt"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:400
 msgid "Error attempting to recover downloads: {}"
-msgstr ""
+msgstr "Fehler beim Wiederherstellen des Downloads: {}"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:475
 msgid "Download Finished"
@@ -198,7 +198,7 @@ msgstr "{:.2f} B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:37
 msgid "N/A"
-msgstr ""
+msgstr "nicht verfügbar"
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
@@ -248,9 +248,8 @@ msgid "Auto-generated"
 msgstr "Automatisch generiert"
 
 #: libparabolic/src/models/ytdlpmanager.cpp:124
-#, fuzzy
 msgid "Unable to download yt-dlp update"
-msgstr "Aktualisierung kann nicht heruntergeladen und installiert werden"
+msgstr "Aktualisierung für yt-dlp konnte nicht heruntergeladen werden"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:12
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
@@ -334,13 +333,12 @@ msgstr "Passwort"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:50
-#, fuzzy
 msgid "Download Immediately"
-msgstr "Medien herunterladen"
+msgstr "Sofort herunterladen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:108
 msgid "Use your previous download options for this download"
-msgstr ""
+msgstr "Benutze die vorherigen Einstellungen für diesen Download"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:113
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:113
@@ -355,16 +353,16 @@ msgid "File Type"
 msgstr "Dateityp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:144
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and subtitles.\n"
 "Please select a specific file type that is known to support embedding\n"
 "to prevent separate files from being written."
 msgstr ""
-"Allgemeine Datentypen unterstützen das Einbetten von Vorschaubildern und "
-"Untertiteln nicht. Bitte wähle einen bestimmten Datentyp, der die Einbettung "
-"unterstützt, um zu verhindern, dass separate Bild- und Untertiteldateien "
-"abgespeichert werden."
+"Allgemeine Dateitypen unterstützen das Einbetten von Vorschaubildern und "
+"Untertiteln nicht.\n"
+"Bitte wähle einen Datentyp, der die Einbettung unterstützt, um zu verhindern,"
+"\n"
+"dass separate Bild- und Untertiteldateien abgespeichert werden."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:64
@@ -437,17 +435,15 @@ msgstr "Beschreibung exportieren"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:339
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:79
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:107
-#, fuzzy
 msgid "Exclude from History"
-msgstr "Verlauf leeren"
+msgstr "Vom Verlauf ausschließen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:263
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:343
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:82
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:110
-#, fuzzy
 msgid "Post Processor Argument"
-msgstr "Threads der Nachverarbeitung"
+msgstr "Parameter für Nachverarbeitung"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:267
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:83
@@ -466,27 +462,29 @@ msgstr "Endzeit"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:317
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:89
-#, fuzzy
 msgid ""
 "Generic file types do not fully support embedding thumbnails and writing "
 "playlist files. Please select a specific file type that is known to support "
 "embedding to prevent separate files from being written."
 msgstr ""
-"Allgemeine Datentypen unterstützen das Einbetten von Vorschaubildern und "
-"Untertiteln nicht. Bitte wähle einen bestimmten Datentyp, der die Einbettung "
-"unterstützt, um zu verhindern, dass separate Bild- und Untertiteldateien "
+"Allgemeine Dateitypen unterstützen das Einbetten von Vorschaubildern und "
+"Schreiben von Playlist-Dateien nicht. Bitte wähle einen Dateityp, der die "
+"Einbettung unterstützt, um zu verhindern, dass separate Dateien "
 "abgespeichert werden."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:335
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:90
 msgid "Write M3U Playlist File"
-msgstr ""
+msgstr "Schreibe M3U Playlist Datei"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:366
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:94
+#, fuzzy
 msgid ""
 "Will be ignored for media in batch files that provide save folder paths."
 msgstr ""
+"Wird ignoriert für Medien in Stapelverarbeitungsdateien, die einen "
+"Speicherpfad angeben."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:379
 msgid "Playlist Items"
@@ -516,7 +514,7 @@ msgstr "Protokoll ansehen"
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:31
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:163
 msgid "Pause"
-msgstr ""
+msgstr "Pause"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:78
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:32
@@ -959,9 +957,8 @@ msgstr "Downloader"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:170
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:83
-#, fuzzy
 msgid "Use Part Files"
-msgstr "Stapelverarbeitungsdatei verwenden"
+msgstr "Medien in \".part\" Dateien aufteilen."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:171
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:84
@@ -1182,9 +1179,8 @@ msgid "Limit the number of threads used by ffmpeg"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:395
-#, fuzzy
 msgid "Postprocessing Arguments"
-msgstr "Threads der Nachverarbeitung"
+msgstr "Übergabeargumente für Nachbearbeitung"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:396
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:146
