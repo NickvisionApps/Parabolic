@@ -8,7 +8,7 @@
 #include <sys/stat.h>
 #endif
 
-#define BUNDLED_YTDLP_VERSION Version(2025, 8, 22)
+#define BUNDLED_YTDLP_VERSION Version(2025, 8, 27)
 
 #ifdef _WIN32
 #ifdef _M_ARM64
