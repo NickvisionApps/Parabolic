@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Metadaten einbetten</dt>
 <dd class="terms">
-<p class="p">Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+<p class="p">Medieninformationen (Titel, Genre, etc.) in Dateien einbetten.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Quelldaten entfernen</dt>
 <dd class="terms">
-<p class="p">Parabolic will clear metadata fields containing identifying download information.</p>
+<p class="p">Parabolic löscht Medienquellen aus Metadaten.</p>
 <p class="p">Felder, die gelöscht werden: <span class="code">Kommentar</span>, <span class="code">Beschreibung</span>, <span class="code">Synopse</span>, <span class="code">Purl</span> und <span class="code">handler_name</span> in jedem Stream.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">This option is only configurable if <span class="code">Embed Metadata</span> is on.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Nur verfügbar, wenn <span class="code">Metadaten einbetten</span> aktiviert ist.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Vorschaubilder einbetten</dt>
 <dd class="terms">
-<p class="p">Parabolic will embed a media with its thumbnail if available.</p>
+<p class="p">Parabolic versieht Medien mit Kapitelinformationen, falls vorhanden.</p>
 <p class="p">Wenn der Dateityp Einbetten nicht unterstützt, wird das Vorschaubild in einer separaten Bilddatei abgespeichert.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
@@ -92,14 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Audio-Miniaturbilder zuschneiden</dt>
 <dd class="terms">
-<p class="p">Parabolic will crop thumbnails of audio files to squares.</p>
+<p class="p">Parabolic beschneidet die Miniaturansichten für Audiodateien auf eine quadratische Auflösung.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">This option is only configurable if <span class="code">Embed Thumbnails</span> is on.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Nur verfügbar, wenn <span class="code">Metadaten einbetten</span> aktiviert ist.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Kapitel einbetten</dt>
 <dd class="terms">
-<p class="p">Parabolic will tag a media with its chapter information if available.</p>
+<p class="p">Parabolic fügt Tags mit Kapitelinformationen zu Medien hinzu, falls vorhanden.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Untertitel einbetten</dt>
 <dd class="terms">
-<p class="p">If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
-<p class="p">Whether or not embedding is supported if affected by your chosen <span class="code">Preferred Subtitle Format</span>.</p>
+<p class="p">Wenn deaktiviert oder das Einbetten nicht unterstützt wird, werden die heruntergeladenen Untertitel in einer separaten Datei gespeichert.</p>
+<p class="p">Ob einbetten unterstützt wird, hängt vom eingestellten <span class="code">Untertitel-Format</span> ab.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">FFmpeg Threads</dt>
 <dd class="terms">
-<p class="p">Parabolic will limit the number of threads used by <span class="code">ffmpeg</span>.</p>
+<p class="p">Parabolic limitiert die Anzahl an Threads von <span class="code">ffmpeg</span>.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -176,12 +176,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The max number of threads available on the system</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Standard: Die maximale Anzahl an Threads des Systems</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Postprocessing Arguments</dt>
+<dt class="terms">Übergabeargumente für Nachbearbeitung</dt>
 <dd class="terms">
-<p class="p">Parabolic will present these options in the add download dialog to be passed to <span class="code">ffmpeg</span> and other post-processors when processing media.</p>
+<p class="p">Parabolic wird diese Optionen im Download Hinzufügen Dialog anzeigen und sie an <span class="code">ffmpeg</span> und andere Nachbearbeitungsprozesse weitergeben.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -197,11 +197,11 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">Postprocessing Argument Fields:</p>
-<p class="p"><span class="code">Name</span> - The friendly name of the argument.</p>
-<p class="p"><span class="code">Post Processor</span> - The post processor to pass the arguments to.</p>
-<p class="p"><span class="code">Executable</span> - The executable to pass the arguments to.</p>
-<p class="p"><span class="code">Args</span> - The args to pass.</p>
+<p class="p">Nachbearbeitungs-Übergabeparameter:</p>
+<p class="p"><span class="code">Name</span>: Bezeichnung des Parameters.</p>
+<p class="p"><span class="code">Post Processor</span> - Der Nachbearbeitungsprozess, dem die Parameter übergeben werden.</p>
+<p class="p"><span class="code">Executable</span> - Die ausführbare Datei, dem die Parameter übergeben werden.</p>
+<p class="p"><span class="code">Args</span> - Die zu übergebenden Parameter.</p>
 </div></div></div>
 </div>
 </dd>
