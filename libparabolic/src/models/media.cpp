@@ -44,22 +44,14 @@ namespace Nickvision::TubeConverter::Shared::Models
                 if(f.getType() != MediaType::Image)
                 {
                     VideoCodec preferredVideoCodec{ VideoCodec::Any };
+                    AudioCodec preferredAudioCodec{ AudioCodec::Any };
                     if(info["preferred_video_codec"].is_int64())
                     {
                         preferredVideoCodec = static_cast<VideoCodec>(info["preferred_video_codec"].as_int64());
                     }
-                    if(f.getVideoCodec() && preferredVideoCodec != VideoCodec::Any && f.getVideoCodec().value() != preferredVideoCodec)
-                    {
-                        continue;
-                    }
-                    AudioCodec preferredAudioCodec{ AudioCodec::Any };
                     if(info["preferred_audio_codec"].is_int64())
                     {
                         preferredAudioCodec = static_cast<AudioCodec>(info["preferred_audio_codec"].as_int64());
-                    }
-                    if(f.getAudioCodec() && preferredAudioCodec != AudioCodec::Any && f.getAudioCodec().value() != preferredAudioCodec)
-                    {
-                        continue;
                     }
                     if(f.getType() == MediaType::Video)
                     {
@@ -68,6 +60,14 @@ namespace Nickvision::TubeConverter::Shared::Models
                     else if(f.getType() == MediaType::Audio)
                     {
                         hasAudioFormat = true;
+                    }
+                    if(f.getVideoCodec() && preferredVideoCodec != VideoCodec::Any && f.getVideoCodec().value() != preferredVideoCodec)
+                    {
+                        continue;
+                    }
+                    if(f.getAudioCodec() && preferredAudioCodec != AudioCodec::Any && f.getAudioCodec().value() != preferredAudioCodec)
+                    {
+                        continue;
                     }
                     m_formats.push_back(f);
                 }
