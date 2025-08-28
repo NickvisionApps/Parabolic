@@ -96,6 +96,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GSimpleAction* actAbout{ g_simple_action_new("about", nullptr) };
         g_signal_connect(actAbout, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->about(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actAbout));
+        //Open File Action
+        GSimpleAction* actOpenFile{ g_simple_action_new("open", G_VARIANT_TYPE_STRING) };
+        g_signal_connect(actOpenFile, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant* variant, gpointer data){ reinterpret_cast<MainWindow*>(data)->openFile(variant); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_app), G_ACTION(actOpenFile));
         //Add Download Action
         m_actAddDownload = g_simple_action_new("addDownload", nullptr);
         g_signal_connect(m_actAddDownload, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->addDownload(); }), this);
@@ -578,6 +582,17 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_artists(dialog, &urls[0]);
         adw_about_dialog_set_translator_credits(dialog, m_controller->getAppInfo().getTranslatorCredits().c_str());
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+    }
+
+    void MainWindow::openFile(GVariant* variant)
+    {
+        std::filesystem::path path{ g_variant_get_string(variant, nullptr) };
+        GtkFileLauncher* launcher{ gtk_file_launcher_new(g_file_new_for_path(path.string().c_str())) };
+        gtk_file_launcher_launch(launcher, nullptr, nullptr, GAsyncReadyCallback(+[](GObject* source, GAsyncResult* res, gpointer)
+        {
+            gtk_file_launcher_launch_finish(GTK_FILE_LAUNCHER(source), res, nullptr);
+            g_object_unref(source);
+        }), nullptr);
     }
 
     void MainWindow::clearHistory()

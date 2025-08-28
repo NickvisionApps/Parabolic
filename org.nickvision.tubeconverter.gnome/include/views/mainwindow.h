@@ -139,6 +139,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void about();
         /**
+         * @brief Opens a file from the given GVariant.
+         * @param variant GVariant
+         */
+        void openFile(GVariant* variant);
+        /**
          * @brief Clears the download history.
          */
         void clearHistory();
