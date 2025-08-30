@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">Diese Seite erklärt alle Optionen zur Konfiguration des Downloaders in den Einstellungen in <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Use Part Files</dt>
+<dt class="terms">Medien in ".part" Dateien aufteilen.</dt>
 <dd class="terms">
-<p class="p">Parabolic will download media in separate .part files instead of directly into the output file.</p>
+<p class="p">Medien werden in seperaten .part Dateien heruntergeladen anstatt direkt in die Ausgabe Datei.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">SponsorBlock für YouTube verwenden</dt>
 <dd class="terms">
-<p class="p">Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
+<p class="p">Parabolic versucht gesponserte Segmente von Youtube Videos zu entfernen.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Geschwindigkeitsbegrenzung</dt>
 <dd class="terms">
-<p class="p">The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">Downloadlimit in KiB/s, wenn <span class="code">Geschwindigkeitsbegrenzung</span> aktiviert ist. Muss ein ganzzahliger Wert zwischen 512 und 10240 sein.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Cookies vom Browser</dt>
 <dd class="terms">
 <p class="p">Ein Browser, der Cookies ausliest und an die Download-Engine von yt-dlp weitergibt.</p>
-<p class="p">This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+<p class="p">Dies könnte nützlich sein wenn Medien von Seiten heruntergeladen werden, die einen Login benötigen, z.B. private Youtube Videos.</p>
 <p class="p">This option is on available on non sandboxed platforms.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Cookie-Datei</dt>
 <dd class="terms">
-<p class="p">A .txt file of cookies to pass to yt-dlp when download engine.</p>
-<p class="p">This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+<p class="p">Eine .txt Datei mit Cookies, die an yt-dlp's Download Engine weitergegeben wird.</p>
+<p class="p">Dies könnte nützlich sein wenn Medien von Seiten heruntergeladen werden, die einen Login benötigen, z.B. private Youtube Videos.</p>
 <p class="p">Du kannst eine der folgenden Erweiterungen nutzen, um von deinem Browser eine Cookie-Datei zu erhalten:</p>
 <p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
 <p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>

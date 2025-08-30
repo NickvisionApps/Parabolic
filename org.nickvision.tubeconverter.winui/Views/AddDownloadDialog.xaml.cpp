@@ -113,9 +113,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         PrimaryButtonText(winrt::to_hstring(_("Validate")));
         IsPrimaryButtonEnabled(false);
         DefaultButton(ContentDialogButton::Primary);
-        if(StringHelpers::isValidUrl(winrt::to_string(url)))
+        if(StringHelpers::isValidUrl(StringHelpers::trim(winrt::to_string(url))))
         {
-            TxtMediaUrl().Text(url);
+            TxtMediaUrl().Text(winrt::to_hstring(StringHelpers::trim(winrt::to_string(url))));
             IsPrimaryButtonEnabled(true);
         }
         else
@@ -124,9 +124,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             if(package.Contains(StandardDataFormats::Text()))
             {
                 winrt::hstring txt{ co_await package.GetTextAsync() };
-                if(StringHelpers::isValidUrl(winrt::to_string(txt)))
+                if(StringHelpers::isValidUrl(StringHelpers::trim(winrt::to_string(txt))))
                 {
-                    TxtMediaUrl().Text(txt);
+                    TxtMediaUrl().Text(winrt::to_hstring(StringHelpers::trim(winrt::to_string(txt))));
                     IsPrimaryButtonEnabled(true);
                 }
             }
@@ -160,11 +160,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             }
             if(CmbCredential().SelectedIndex() < 2)
             {
-                m_controller->validateUrl(winrt::to_string(TxtMediaUrl().Text()), credential);
+                m_controller->validateUrl(StringHelpers::trim(winrt::to_string(TxtMediaUrl().Text())), credential);
             }
             else
             {
-                m_controller->validateUrl(winrt::to_string(TxtMediaUrl().Text()), CmbCredential().SelectedIndex() - 2);
+                m_controller->validateUrl(StringHelpers::trim(winrt::to_string(TxtMediaUrl().Text())), CmbCredential().SelectedIndex() - 2);
             }
             res = co_await ShowAsync();
         }
@@ -186,7 +186,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void AddDownloadDialog::OnTxtMediaUrlTextChanged(const IInspectable& sender, const TextChangedEventArgs& args)
     {
-        IsPrimaryButtonEnabled(StringHelpers::isValidUrl(winrt::to_string(TxtMediaUrl().Text())));
+        IsPrimaryButtonEnabled(StringHelpers::isValidUrl(StringHelpers::trim(winrt::to_string(TxtMediaUrl().Text()))));
     }
 
     void AddDownloadDialog::OnCmbCredentialSelectionChanged(const IInspectable& sender, const SelectionChangedEventArgs& args)

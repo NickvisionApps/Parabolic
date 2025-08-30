@@ -8,6 +8,24 @@
 #include <sys/stat.h>
 #endif
 
+#define BUNDLED_YTDLP_VERSION Version(2025, 8, 27)
+
+#ifdef _WIN32
+#ifdef _M_ARM64
+#define UPDATED_YTDLP_EXECUTABLE_NAME "yt-dlp_arm64.exe"
+#else
+#define UPDATED_YTDLP_EXECUTABLE_NAME "yt-dlp.exe"
+#endif
+#elif defined(__linux__)
+#ifdef __aarch64__
+#define UPDATED_YTDLP_EXECUTABLE_NAME "yt-dlp_linux_aarch64"
+#else
+#define UPDATED_YTDLP_EXECUTABLE_NAME "yt-dlp_linux"
+#endif
+#elif defined(__APPLE__)
+#define UPDATED_YTDLP_EXECUTABLE_NAME "yt-dlp_macos"
+#endif
+
 using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
 using namespace Nickvision::Notifications;
@@ -19,7 +37,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     YtdlpManager::YtdlpManager(Configuration& config)
         : m_config{ config },
         m_updater{ "https://github.com/yt-dlp/yt-dlp/" },
-        m_bundledYtdlpVersion{ 2025, 8, 11 }
+#ifndef __linux__
+        m_bundledYtdlpVersion{ BUNDLED_YTDLP_VERSION }
+#else
+        m_bundledYtdlpVersion{ Environment::getDeploymentMode() == DeploymentMode::Local ? Version(0, 0, 0) : BUNDLED_YTDLP_VERSION }
+#endif
     {
 
     }
@@ -103,13 +125,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 return true;
             } };
             m_updateProgressChanged.invoke({ 0.0 });
-#ifdef _WIN32
-            bool res{ m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp.exe", true, progressCallback) };
-#elif defined(__APPLE__)
-            bool res{ m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp_macos", true, progressCallback) };
-#else
-            bool res{ m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, "yt-dlp", true, progressCallback) };
-#endif
+            bool res{ m_updater.downloadUpdate(VersionType::Stable, ytdlpPath, UPDATED_YTDLP_EXECUTABLE_NAME, true, progressCallback) };
             m_updateProgressChanged.invoke({ 1.0 });
             if(res)
             {

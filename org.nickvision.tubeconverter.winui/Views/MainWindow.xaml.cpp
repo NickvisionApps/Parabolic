@@ -324,7 +324,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         InfoBadgeUpdates().Visibility(Visibility::Visible);
         ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::UpdatesAvailable);
-        LblUpdatesAvailableDetails().Text(winrt::to_hstring(_f("{} version {} is available to download and install", m_controller->getAppInfo().getShortName(), (*args).str())));
+        LblUpdatesAvailableDetails().Text(winrt::to_hstring(_f("{} version {} is available to download and install", m_controller->getAppInfo().getShortName(), args->str())));
         m_updateClickToken = BtnDownloadUpdate().Click([this](const IInspectable&, const RoutedEventArgs&)
         {
             m_controller->startWindowsUpdate();
@@ -357,7 +357,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         InfoBadgeUpdates().Visibility(Visibility::Visible);
         ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::UpdatesAvailable);
-        LblUpdatesAvailableDetails().Text(winrt::to_hstring(_f("{} version {} is available to download and install", "yt-dlp", (*args).str())));
+        LblUpdatesAvailableDetails().Text(winrt::to_hstring(_f("{} version {} is available to download and install", "yt-dlp", args->str())));
         m_updateClickToken = BtnDownloadUpdate().Click([this](const IInspectable&, const RoutedEventArgs&)
         {
             m_controller->startYtdlpUpdate();
@@ -552,7 +552,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(args.Reason() == AutoSuggestionBoxTextChangeReason::UserInput)
         {
             IObservableVector<IInspectable> items{ winrt::single_threaded_observable_vector<IInspectable>() };
-            if(StringHelpers::isValidUrl(winrt::to_string(sender.Text())))
+            if(StringHelpers::isValidUrl(StringHelpers::trim(winrt::to_string(sender.Text()))))
             {
                 FontIcon icn;
                 icn.FontFamily(WinUIHelpers::LookupAppResource<FontFamily>(L"SymbolThemeFontFamily"));

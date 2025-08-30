@@ -19,15 +19,15 @@
 
 <terms>
     <item>
-        <title>Use Part Files</title>
-        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
+        <title>Medien in ".part" Dateien aufteilen.</title>
+        <p>Medien werden in seperaten .part Dateien heruntergeladen anstatt direkt in die Ausgabe Datei.</p>
         <note style="advanced">
             <p>Standardeinstellung: Ein</p>
         </note>
     </item>
     <item>
         <title>SponsorBlock für YouTube verwenden</title>
-        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
+        <p>Parabolic versucht gesponserte Segmente von Youtube Videos zu entfernen.</p>
         <note>
             <p>SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von anderen Webseiten (d. h. sie werden nicht fehlschlagen).</p>
         </note>
@@ -37,7 +37,7 @@
     </item>
     <item>
         <title>Geschwindigkeitsbegrenzung</title>
-        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
+        <p>Downloadlimit in KiB/s, wenn <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. Muss ein ganzzahliger Wert zwischen 512 und 10240 sein.</p>
         <note style="advanced">
             <p>Standardeinstellung: Aus</p>
         </note>
@@ -52,7 +52,7 @@
     <item>
         <title>Cookies vom Browser</title>
         <p>Ein Browser, der Cookies ausliest und an die Download-Engine von yt-dlp weitergibt.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Dies könnte nützlich sein wenn Medien von Seiten heruntergeladen werden, die einen Login benötigen, z.B. private Youtube Videos.</p>
         <p>This option is on available on non sandboxed platforms.</p>
         <note style="advanced">
             <p>Standardeinstellung: Keine</p>
@@ -60,8 +60,8 @@
     </item>
     <item>
         <title>Cookie-Datei</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Eine .txt Datei mit Cookies, die an yt-dlp's Download Engine weitergegeben wird.</p>
+        <p>Dies könnte nützlich sein wenn Medien von Seiten heruntergeladen werden, die einen Login benötigen, z.B. private Youtube Videos.</p>
         <p>Du kannst eine der folgenden Erweiterungen nutzen, um von deinem Browser eine Cookie-Datei zu erhalten:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>

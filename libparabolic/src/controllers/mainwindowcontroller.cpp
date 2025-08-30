@@ -46,10 +46,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY), m_dataFileManager.get<DownloadRecoveryQueue>(RECOVERY_FILE_KEY) },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.8.0" });
+        m_appInfo.setVersion({ "2025.8.1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to update yt-dlp from within the app when a newer version is available\n- Added padding to single digit numbered titles in playlist downloads\n- Replaced None translation language with en_US\n- Fixed an issue where validating some media would cause the app to crash\n- Fixed an issue where the app would not open on Windows\n- Fixed an issue where download rows disappeared on GNOME\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Fixed an issue where the downloaded updated yt-dlp did not work correctly on some linux systems\n- Fixed an issue where the app crashed when closing the add download dialog after failed validation\n- Fixed an issue where URLs with whitespace were unable to be validated\n- Fixed an issue where some media were incorrectly marked as audio-only\n- Fixed an issue where the open button on the GNOME completed notifications was not working\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -309,9 +309,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Get URL to validate from args
         if(m_args.size() > 1)
         {
-            if(StringHelpers::isValidUrl(m_args[1]))
+            if(StringHelpers::isValidUrl(StringHelpers::trim(m_args[1])))
             {
-                info.setUrlToValidate(m_args[1]);
+                info.setUrlToValidate(StringHelpers::trim(m_args[1]));
             }
         }
         m_started = true;

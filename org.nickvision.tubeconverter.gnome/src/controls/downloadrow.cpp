@@ -26,7 +26,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         else if(args.getStatus() == DownloadStatus::Running)
         {
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Starting"));
-            gtk_widget_set_sensitive(m_builder.get<GtkWidget>("cmdToClipboardButton"), true);
         }
         else
         {
@@ -154,7 +153,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "folder-download-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));
-        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("cmdToClipboardButton"), true);
     }
 
     void DownloadRow::pauseResume()

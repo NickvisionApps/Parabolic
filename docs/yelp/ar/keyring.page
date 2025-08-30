@@ -12,7 +12,13 @@
 	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Yousef mohamed</mal:name>
+      <mal:email>oandygames.ygames+weblate@gmail.com</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
+  </info>
 
 <title>حلقة المفاتيح (بيانات التسجيل المخزنة لديك)</title>
 <p>تشرح هذه الصفحة جميع الخيارات لاستخدام حلقة المفاتيح في <app>Parabolic</app>.</p>
@@ -20,16 +26,16 @@
 <section>
     <title>Backend</title>
     <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
+    <p>تستخدم هذه المكتبة SQLCipher لتخزين بيانات الاعتماد بشكل آمن وبطريقة مستقلة عن المنصة.</p>
     <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
 
 <section>
-    <title>Storing a Credential</title>
-    <p>Here are the fields that can be stored in a credential:</p>
-    <p><code>Name</code>: The name of the credential</p>
-    <p><code>URL</code> (optional): The URL of the credential</p>
-    <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-    <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+    <title>تخزين بيانات اعتماد</title>
+    <p>فيما يلي الحقول التي يمكن تخزينها في بيانات اعتماد:</p>
+    <p><code>الاسم</code>: اسم بيانات الاعتماد</p>
+    <p><code>عنوان ال url </code> عنوان الـ URL لبيانات الاعتماد</p>
+    <p><code>اسم المستخدم</code> (اختياري لو كلمة السر غير فارغة): اسم المستخدم لبيانات الاعتماد</p>
+    <p><code>كلمة السر</code> (اختياري لو اسم المستخدم غير فارغ ): كلمة السر لبيانات الاعتماد</p>
 </section>
 </page>

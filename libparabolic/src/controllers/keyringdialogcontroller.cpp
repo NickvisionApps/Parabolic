@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return CredentialCheckStatus::EmptyUsernamePassword;
         }
-        else if(!StringHelpers::isValidUrl(url))
+        else if(!StringHelpers::isValidUrl(StringHelpers::trim(url)))
         {
             return CredentialCheckStatus::InvalidUri;
         }
@@ -48,7 +48,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            return m_keyring.addCredential({ name, url, username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
+            return m_keyring.addCredential({ name, StringHelpers::trim(url), username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
         }
     }
 
@@ -62,13 +62,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return CredentialCheckStatus::EmptyUsernamePassword;
         }
-        else if(!StringHelpers::isValidUrl(url))
+        else if(!StringHelpers::isValidUrl(StringHelpers::trim(url)))
         {
             return CredentialCheckStatus::InvalidUri;
         }
         else
         {
-            return m_keyring.updateCredential({ name, url, username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
+            return m_keyring.updateCredential({ name, StringHelpers::trim(url), username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
         }
     }
 

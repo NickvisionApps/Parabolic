@@ -19,7 +19,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         //Load Validate Page
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), false);
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
-        if(StringHelpers::isValidUrl(url))
+        if(StringHelpers::isValidUrl(StringHelpers::trim(url)))
         {
             gtk_editable_set_text(m_builder.get<GtkEditable>("urlRow"), url.c_str());
             gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), true);
@@ -32,7 +32,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 if(clipboardText)
                 {
                     std::string url{ clipboardText };
-                    if(StringHelpers::isValidUrl(url))
+                    if(StringHelpers::isValidUrl(StringHelpers::trim(url)))
                     {
                         Builder* builder{ reinterpret_cast<Builder*>(data) };
                         gtk_editable_set_text(builder->get<GtkEditable>("urlRow"), url.c_str());
@@ -54,10 +54,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("batchFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->useBatchFile(); }), this);
         g_signal_connect(m_builder.get<GObject>("credentialRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onCmbCredentialChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("validateUrlButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->validateUrl(); }), this);
-        g_signal_connect(m_builder.get<GObject>("backButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->back(); }), this);
         g_signal_connect(m_builder.get<GObject>("fileTypeSingleRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onFileTypeSingleChanged(); }), this);
-        g_signal_connect(m_builder.get<GObject>("subtitlesSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->subtitlesSingle(); }), this);
-        g_signal_connect(m_builder.get<GObject>("advancedOptionsSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->advancedOptionsSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectSaveFolderSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("revertFilenameSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertFilenameSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectAllSubtitlesSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectAllSubtitlesSingle(); }), this);
@@ -67,7 +64,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("downloadSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("fileTypePlaylistRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onFileTypePlaylistChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectSaveFolderPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderPlaylist(); }), this);
-        g_signal_connect(m_builder.get<GObject>("itemsPlaylistRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("deselectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->deselectAllPlaylist(); }), this);
@@ -78,7 +74,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void AddDownloadDialog::onTxtUrlChanged()
     {
         std::string url{ gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")) };
-        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), StringHelpers::isValidUrl(url));
+        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), StringHelpers::isValidUrl(StringHelpers::trim(url)));
     }
 
     void AddDownloadDialog::useBatchFile()
@@ -125,7 +121,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::validateUrl()
     {
-        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "spinner");
+        adw_navigation_view_push_by_tag(m_builder.get<AdwNavigationView>("navigationView"), "loading");
         std::optional<Credential> credential{ std::nullopt };
         if(adw_expander_row_get_enable_expansion(m_builder.get<AdwExpanderRow>("authenticateRow")) && adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) == 0)
         {
@@ -133,11 +129,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         if(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) == 0)
         {
-            m_controller->validateUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")), credential);
+            m_controller->validateUrl(StringHelpers::trim(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow"))), credential);
         }
         else
         {
-            m_controller->validateUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) - 1);
+            m_controller->validateUrl(StringHelpers::trim(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow"))), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) - 1);
         }
     }
 
@@ -158,7 +154,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             size_t previous{ static_cast<size_t>(m_controller->getPreviousDownloadOptions().getFileType()) };
             //Load Options
-            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single");
+            adw_navigation_view_push_by_tag(m_builder.get<AdwNavigationView>("navigationView"), "download-single");
             adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("downloadSingleButton"));
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings(), previous);
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("videoFormatSingleRow"), m_controller->getVideoFormatStrings(m_controller->getPreviousDownloadOptions().getFileType(), previous), previous, false);
@@ -208,7 +204,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         else //Playlist Download
         {
             size_t previous{ static_cast<size_t>(m_controller->getPreviousDownloadOptions().getFileType()) };
-            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-playlist");
+            adw_navigation_view_push_by_tag(m_builder.get<AdwNavigationView>("navigationView"), "download-playlist");
             adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("downloadPlaylistButton"));
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), m_controller->getFileTypeStrings(), previous);
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());
@@ -260,13 +256,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
     }
 
-    void AddDownloadDialog::back()
-    {
-        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), !m_controller->isUrlPlaylist() ? "download-single" : "download-playlist");
-        gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), false);
-        gtk_widget_set_visible(m_builder.get<GtkWidget>("subtitlesSingleActionBar"), false);
-    }
-
     void AddDownloadDialog::onFileTypeSingleChanged()
     {
         int fileTypeIndex{ static_cast<int>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"))) };
@@ -279,19 +268,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         gtk_widget_set_visible(m_builder.get<GtkWidget>("genericDisclaimerSingleButton"), type.isGeneric());
         GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("videoFormatSingleRow"), m_controller->getVideoFormatStrings(type, previous), previous, false);
         GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("audioFormatSingleRow"), m_controller->getAudioFormatStrings(type, previous), previous, false);
-    }
-
-    void AddDownloadDialog::subtitlesSingle()
-    {
-        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single-subtitles");
-        gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), true);
-        gtk_widget_set_visible(m_builder.get<GtkWidget>("subtitlesSingleActionBar"), true);
-    }
-
-    void AddDownloadDialog::advancedOptionsSingle()
-    {
-        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single-advanced");
-        gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), true);
     }
 
     void AddDownloadDialog::selectSaveFolderSingle()
@@ -378,12 +354,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("saveFolderPlaylistRow"), path.make_preferred().string().c_str());
             }
         }), &m_builder);
-    }
-
-    void AddDownloadDialog::itemsPlaylist()
-    {
-        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-playlist-items");
-        gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), true);
     }
 
     void AddDownloadDialog::onNumberTitlesPlaylistChanged()
