@@ -4,63 +4,18 @@ using Adw 1;
 Adw.Dialog root {
   follows-content-size: true;
   default-widget: validateUrlButton;
+  width-request: 360;
 
-  child: Adw.ToolbarView {
-    [top]
-    Adw.HeaderBar {
-      title-widget: Adw.WindowTitle {
-        title: _("Add Download");
-      };
+  child: Adw.NavigationView navigationView {
+    Adw.NavigationPage {
+      title: _("Add Download");
+      tag: "validate";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
 
-      [start]
-      Gtk.Button backButton {
-        icon-name: "go-previous-symbolic";
-        visible: false;
-        tooltip-text: _("Back");
-      }
-    }
-
-    [bottom]
-    Gtk.ActionBar subtitlesSingleActionBar {
-      visible: false;
-
-      [start]
-      Gtk.Button selectAllSubtitlesSingleButton {
-        Adw.ButtonContent {
-          icon-name: "edit-select-all-symbolic";
-          label: _("Select All");
-        }
-      }
-
-      [end]
-      Gtk.Button deselectAllSubtitlesSingleButton {
-        Adw.ButtonContent {
-          icon-name: "edit-select-none-symbolic";
-          label: _("Deselect All");
-        }
-      }
-    }
-
-    content: Adw.ViewStack viewStack {
-      vhomogeneous: false;
-
-      Adw.ViewStackPage {
-        name: "spinner";
-        child: Adw.Spinner {
-          margin-start: 32;
-          margin-top: 32;
-          margin-end: 32;
-          margin-bottom: 32;
-          halign: center;
-          valign: center;
-          width-request: 32;
-          height-request: 32;
-        };
-      }
-
-      Adw.ViewStackPage {
-        name: "validate";
-        child: Gtk.Box {
+        content: Gtk.Box {
           margin-start: 24;
           margin-top: 24;
           margin-end: 24;
@@ -117,16 +72,45 @@ Adw.Dialog root {
             styles ["pill", "suggested-action"]
           }
         };
-      }
+      };
+    }
 
-      Adw.ViewStackPage {
-        name: "download-single";
-        child: Gtk.Box {
+    Adw.NavigationPage {
+      title: _("Validating");
+      tag: "loading";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: Adw.Spinner {
+          margin-start: 32;
+          margin-top: 32;
+          margin-end: 32;
+          margin-bottom: 32;
+          halign: center;
+          valign: center;
+          width-request: 32;
+          height-request: 32;
+        };
+      };
+    }
+
+    Adw.NavigationPage {
+      title: _("Configure");
+      tag: "download-single";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: Gtk.Box {
           orientation: vertical;
           spacing: 16;
-          margin-start: 16;
-          margin-end: 16;
-          margin-bottom: 16;
+          margin-start: 12;
+          margin-top: 6;
+          margin-end: 12;
+          margin-bottom: 12;
 
           Adw.PreferencesGroup {
             Adw.ComboRow fileTypeSingleRow {
@@ -160,23 +144,31 @@ Adw.Dialog root {
 
             Adw.ActionRow subtitlesSingleRow {
               title: _("Subtitles");
-              activatable-widget: subtitlesSingleImage;
+              activatable-widget: subtitlesSingleButton;
 
               [suffix]
-              Gtk.Image subtitlesSingleImage {
+              Gtk.Button subtitlesSingleButton {
                 valign: center;
                 icon-name: "go-next-symbolic";
+                action-name: "navigation.push";
+                action-target: "'download-single-subtitles'";
+
+                styles [ "flat" ]
               }
             }
 
             Adw.ActionRow advancedOptionsSingleRow {
               title: _("Advanced Options");
-              activatable-widget: advancedOptionsSingleImage;
+              activatable-widget: advancedOptionsSingleButton;
 
               [suffix]
-              Gtk.Image advancedOptionsSingleImage {
+              Gtk.Button advancedOptionsSingleButton {
                 valign: center;
                 icon-name: "go-next-symbolic";
+                action-name: "navigation.push";
+                action-target: "'download-single-advanced'";
+
+                styles [ "flat" ]
               }
             }
           }
@@ -219,32 +211,64 @@ Adw.Dialog root {
             styles ["pill", "suggested-action"]
           }
         };
-      }
+      };
+    }
 
-      Adw.ViewStackPage {
-        name: "download-single-subtitles";
-        child: Gtk.ScrolledWindow {
+    Adw.NavigationPage {
+      title: _("Subtitles");
+      tag: "download-single-subtitles";
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        [bottom]
+        Gtk.ActionBar subtitlesSingleActionBar {
+          [start]
+          Gtk.Button selectAllSubtitlesSingleButton {
+            Adw.ButtonContent {
+              icon-name: "edit-select-all-symbolic";
+              label: _("Select All");
+            }
+          }
+
+          [end]
+          Gtk.Button deselectAllSubtitlesSingleButton {
+            Adw.ButtonContent {
+              icon-name: "edit-select-none-symbolic";
+              label: _("Deselect All");
+            }
+          }
+        }
+
+        content: Gtk.ScrolledWindow {
           hexpand: true;
           vexpand: true;
           min-content-width: 328;
           min-content-height: 400;
           child: Adw.PreferencesGroup subtitlesSingleGroup {
-            margin-start: 16;
+            margin-start: 12;
             margin-top: 6;
-            margin-end: 16;
-            margin-bottom: 16;
+            margin-end: 12;
+            margin-bottom: 12;
           };
         };
-      }
+      };
+    }
 
-      Adw.ViewStackPage {
-        name: "download-single-advanced";
-        child: Gtk.Box {
+    Adw.NavigationPage {
+      title: _("Advanced");
+      tag: "download-single-advanced";
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: Gtk.Box {
           orientation: vertical;
           spacing: 16;
-          margin-start: 16;
-          margin-end: 16;
-          margin-bottom: 16;
+          margin-start: 12;
+          margin-top: 6;
+          margin-end: 12;
+          margin-bottom: 12;
 
           Adw.PreferencesGroup {
             Adw.SwitchRow splitChaptersSingleRow {
@@ -290,16 +314,24 @@ Adw.Dialog root {
             }
           }
         };
-      }
+      };
+    }
 
-      Adw.ViewStackPage {
-        name: "download-playlist";
-        child: Gtk.Box {
+    Adw.NavigationPage {
+      title: _("Configure");
+      tag: "download-playlist";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: Gtk.Box {
           orientation: vertical;
           spacing: 16;
-          margin-start: 16;
-          margin-end: 16;
-          margin-bottom: 16;
+          margin-start: 12;
+          margin-top: 6;
+          margin-end: 12;
+          margin-bottom: 12;
 
           Adw.PreferencesGroup {
             Adw.ComboRow fileTypePlaylistRow {
@@ -377,12 +409,16 @@ Adw.Dialog root {
 
             Adw.ActionRow itemsPlaylistRow {
               title: _("Playlist Items");
-              activatable-widget: itemsPlaylistImage;
+              activatable-widget: itemsPlaylistButton;
 
               [suffix]
-              Gtk.Image itemsPlaylistImage {
+              Gtk.Button itemsPlaylistButton {
                 valign: center;
                 icon-name: "go-next-symbolic";
+                action-name: "navigation.push";
+                action-target: "'download-playlist-items'";
+
+                styles [ "flat" ]
               }
             }
           }
@@ -394,16 +430,23 @@ Adw.Dialog root {
             styles ["pill", "suggested-action"]
           }
         };
-      }
+      };
+    }
 
-      Adw.ViewStackPage {
-        name: "download-playlist-items";
-        child: Gtk.Box {
+    Adw.NavigationPage {
+      title: _("Items");
+      tag: "download-playlist-items";
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: Gtk.Box {
           orientation: vertical;
           spacing: 12;
-          margin-start: 16;
-          margin-end: 16;
-          margin-bottom: 16;
+          margin-start: 12;
+          margin-top: 6;
+          margin-end: 12;
+          margin-bottom: 12;
 
           Adw.PreferencesGroup {
             Adw.SwitchRow numberTitlesPlaylistRow {
@@ -440,7 +483,7 @@ Adw.Dialog root {
             child: Adw.PreferencesGroup itemsPlaylistGroup { };
           }
         };
-      }
-    };
+      };
+    }
   };
 }

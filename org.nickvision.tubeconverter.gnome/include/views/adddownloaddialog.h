@@ -46,21 +46,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onUrlValidated(bool valid);
         /**
-         * @brief Goes back to the single download page.
-         */
-        void back();
-        /**
          * @brief Handles when the single file type combobox is changed.
          */
         void onFileTypeSingleChanged();
-        /**
-         * @brief Shows the subtitles page for a single download.
-         */
-        void subtitlesSingle();
-        /**
-         * @brief Shows the advanced options page for a single download.
-         */
-        void advancedOptionsSingle();
         /**
          * @brief Prompts the user to select a folder to save a single download.
          */
@@ -97,10 +85,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Prompts the user to select a folder to save a playlist download.
          */
         void selectSaveFolderPlaylist();
-        /**
-         * @brief Shows the items for a playlist download.
-         */
-        void itemsPlaylist();
         /**
          * @brief Handles when the number titles switch is changed.
          */
