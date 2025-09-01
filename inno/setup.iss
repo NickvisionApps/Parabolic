@@ -54,16 +54,16 @@ CloseApplications=yes
 ChangesEnvironment=yes
 
 [Languages]
-Name: "brasilianportoguese"; MessagesFile: "compiler:Languages\BrasilianPortoguese.isl"
+Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 Name: "czech"; MessagesFile: "compiler:Languages\Czech.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "german"; MessagesFile: "compiler:Languages\German.isl"
 Name: "hungarian"; MessagesFile: "compiler:Languages\Hungarian.isl"
 Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
-Name: "japèanese"; MessagesFile: "compiler:Languages\Japanese.isl"
-Name: "portoguese"; MessagesFile: "compiler:Languages\Portoguese.isl"
-Name: "russian"; MessagesFile: "compiler:Languages\Russain.isl"
+Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
+Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "tamil"; MessagesFile: "compiler:Languages\Tamil.isl"
