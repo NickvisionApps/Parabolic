@@ -7,7 +7,7 @@
 #define MyAppPublisher      "Nickvision"
 #define MyAppURL            "https://nickvision.org"
 #define MyAppExeName        "org.nickvision.tubeconverter.winui.exe"
-#define StartYearCopyright  "2011"
+#define StartYearCopyright  "2021"
 #define CurrentYear         GetDateTimeString('yyyy','','')
 
 [Setup]
@@ -54,8 +54,19 @@ CloseApplications=yes
 ChangesEnvironment=yes
 
 [Languages]
+Name: "brasilianportoguese"; MessagesFile: "compiler:Languages\BrasilianPortoguese.isl"
+Name: "czech"; MessagesFile: "compiler:Languages\Czech.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+Name: "german"; MessagesFile: "compiler:Languages\German.isl"
+Name: "hungarian"; MessagesFile: "compiler:Languages\Hungarian.isl"
 Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
+Name: "japèanese"; MessagesFile: "compiler:Languages\Japanese.isl"
+Name: "portoguese"; MessagesFile: "compiler:Languages\Portoguese.isl"
+Name: "russian"; MessagesFile: "compiler:Languages\Russain.isl"
+Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
+Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "tamil"; MessagesFile: "compiler:Languages\Tamil.isl"
 
 [installDelete]
 Type: filesandordirs; Name: "{app}\*"
