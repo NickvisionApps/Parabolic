@@ -22,6 +22,10 @@ AppCopyright={#StartYearCopyright}-{#CurrentYear}  {#MyAppPublisher}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 
+VersionInfoDescription={#MyAppName} installer
+VersionInfoProductName={#MyAppName}
+VersionInfoVersion={#MyAppVersion}
+
 UninstallDisplayName={#MyAppName} {#MyAppVersion}
 UninstallDisplayIcon={app}\Release\{#MyAppExeName}
 AppPublisher={#MyAppPublisher}
