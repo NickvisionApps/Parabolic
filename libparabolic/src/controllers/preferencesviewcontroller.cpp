@@ -14,8 +14,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadHistory{ downloadHistory },
         m_options{ m_configuration.getDownloaderOptions() }
     {
-        m_availableTranslationLanguages.push_back("en_US");
         std::sort(m_availableTranslationLanguages.begin(), m_availableTranslationLanguages.end());
+        m_availableTranslationLanguages.insert(m_availableTranslationLanguages.begin(), "en_US");
         m_availableTranslationLanguages.insert(m_availableTranslationLanguages.begin(), _("System"));
     }
 
@@ -71,11 +71,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void PreferencesViewController::setTranslationLanguage(size_t index)
     {
-        if(index == 1 || index >= m_availableTranslationLanguages.size())
+        if(index == 0 || index >= m_availableTranslationLanguages.size())
         {
             m_configuration.setTranslationLanguage("");
         }
-        else if(index == 0)
+        else if(index == 1)
         {
             m_configuration.setTranslationLanguage("C");
         }
