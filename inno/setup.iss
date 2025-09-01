@@ -39,7 +39,7 @@ WizardStyle=modern
 UsePreviousAppDir=no
 DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=..\COPYING
+LicenseFile=..\License.rtf
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=..\inno
