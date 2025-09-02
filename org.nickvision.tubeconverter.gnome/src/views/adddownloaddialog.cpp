@@ -146,8 +146,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_alert_dialog_set_close_response(dialog, "close");
             adw_alert_dialog_set_default_response(dialog, "close");
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_parent));
-            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
-            adw_dialog_set_default_widget(m_dialog, m_builder.get<GtkWidget>("validateUrlButton"));
+            adw_dialog_close(m_dialog);
             return;
         }
         if(!m_controller->isUrlPlaylist()) //Single Download

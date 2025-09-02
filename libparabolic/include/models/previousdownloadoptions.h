@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <string>
 #include <vector>
-#include <libnick/app/datafilebase.h>
+#include <libnick/helpers/jsonfilebase.h>
 #include "mediafiletype.h"
 #include "subtitlelanguage.h"
 
@@ -13,16 +13,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     /**
      * @brief A model of the most recently used download options.
      */
-    class PreviousDownloadOptions : public Nickvision::App::DataFileBase
+    class PreviousDownloadOptions : public Helpers::JsonFileBase
     {
     public:
         /**
          * @brief Constructs a PreviousDownloadOptions.
-         * @param key The key to pass to the DataFileBase
-         * @param appName The name of the application to pass to the DataFileBase
-         * @param isPortable The isPortable to pass to the DataFileBase
+         * @param path The path to the options file
          */
-        PreviousDownloadOptions(const std::string& key, const std::string& appName, bool isPortable);
+        PreviousDownloadOptions(const std::filesystem::path& path);
         /**
          * @brief Gets the previous save folder.
          * @return The previous save folder

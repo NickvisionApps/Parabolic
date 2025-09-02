@@ -440,6 +440,25 @@ Adw.Dialog root {
         [top]
         Adw.HeaderBar {}
 
+        [bottom]
+        Gtk.ActionBar {
+          [start]
+          Gtk.Button selectAllPlaylistButton {
+            Adw.ButtonContent {
+              icon-name: "edit-select-all-symbolic";
+              label: _("Select All");
+            }
+          }
+
+          [end]
+          Gtk.Button deselectAllPlaylistButton {
+            Adw.ButtonContent {
+              icon-name: "edit-select-none-symbolic";
+              label: _("Deselect All");
+            }
+          }
+        }
+
         content: Gtk.Box {
           orientation: vertical;
           spacing: 12;
@@ -452,27 +471,6 @@ Adw.Dialog root {
             Adw.SwitchRow numberTitlesPlaylistRow {
               title: _("Number Titles");
             }
-          }
-
-          Gtk.Box {
-            orientation: horizontal;
-            halign: center;
-
-            Gtk.Button selectAllPlaylistButton {
-              Adw.ButtonContent {
-                icon-name: "edit-select-all-symbolic";
-                label: _("Select All");
-              }
-            }
-
-            Gtk.Button deselectAllPlaylistButton {
-              Adw.ButtonContent {
-                icon-name: "edit-select-none-symbolic";
-                label: _("Deselect All");
-              }
-            }
-
-            styles [ "linked" ]
           }
 
           Gtk.ScrolledWindow {

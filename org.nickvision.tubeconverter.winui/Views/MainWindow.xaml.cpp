@@ -175,7 +175,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::NoUpdates);
         NavViewHome().IsSelected(true);
         //Startup
-        const StartupInformation& info{ m_controller->startup(m_hwnd) };
+        const StartupInformation& info{ m_controller->startup() };
         if(info.getWindowGeometry().isMaximized())
         {
             ShowWindow(m_hwnd, SW_MAXIMIZE);

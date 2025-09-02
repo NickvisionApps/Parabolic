@@ -1,18 +1,19 @@
 #include "models/downloadhistory.h"
 #include <algorithm>
 
-using namespace Nickvision::App;
+using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    DownloadHistory::DownloadHistory(const std::string& key, const std::string& appName, bool isPortable)
-        : DataFileBase{ key, appName, isPortable },
-        m_length{ m_json["Length"].is_int64() ? static_cast<HistoryLength>(m_json["Length"].as_int64()) : HistoryLength::OneWeek }
+    DownloadHistory::DownloadHistory(const std::filesystem::path& path)
+        : JsonFileBase{ path },
+        m_length{ static_cast<HistoryLength>(get("Length", static_cast<int>(HistoryLength::OneWeek))) }
     {
-        if(m_length != HistoryLength::Never && m_json["History"].is_array())
+        boost::json::array jsonHistory = get<boost::json::array>("History", {});
+        if(m_length != HistoryLength::Never && jsonHistory.size() > 0)
         {
-            m_history.reserve(m_json["History"].as_array().size());
-            for(const boost::json::value& value : m_json["History"].as_array())
+            m_history.reserve(jsonHistory.size());
+            for(const boost::json::value& value : jsonHistory)
             {
                 if(!value.is_object())
                 {
@@ -142,7 +143,8 @@ namespace Nickvision::TubeConverter::Shared::Models
     bool DownloadHistory::clear()
     {
         m_history.clear();
-        m_json.clear();
+        set("Length", static_cast<int>(HistoryLength::OneWeek));
+        set<boost::json::array>("History", {});
         save();
         return true;
     }
@@ -150,8 +152,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadHistory::updateDisk()
     {
         std::sort(m_history.begin(), m_history.end());
-        m_json.clear();
-        m_json["Length"] = static_cast<int>(m_length);
+        set("Length", static_cast<int>(m_length));
         boost::json::array arr;
         for(const HistoricDownload& download : m_history)
         {
@@ -162,7 +163,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             obj["DateTime"] = boost::posix_time::to_iso_string(download.getDateTime());
             arr.push_back(obj);
         }
-        m_json["History"] = arr;
+        set("History", arr);
         save();
     }
 }

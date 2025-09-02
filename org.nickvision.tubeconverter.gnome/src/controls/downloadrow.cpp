@@ -79,12 +79,10 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         if(std::isnan(args.getProgress()))
         {
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Processing"));
-            gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), false);
             gtk_progress_bar_pulse(m_builder.get<GtkProgressBar>("progBar"));
         }
         else
         {
-            gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), true);
             gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), args.getProgress());
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr()).c_str());
         }
@@ -124,7 +122,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
 
     void DownloadRow::setStopState()
     {
-        gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), false);
         gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 1.0);
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "media-playback-stop-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Stopped"));
@@ -137,7 +134,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     {
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "media-playback-pause-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Paused"));
-        gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), false);
         gtk_button_set_icon_name(m_builder.get<GtkButton>("pauseResumeButton"), "media-playback-start-symbolic");
         gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("pauseResumeButton"), _("Resume"));
     }

@@ -7,7 +7,6 @@
 #include <libnick/system/environment.h>
 #include <libnick/system/process.h>
 
-using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
@@ -22,11 +21,11 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     static std::string s_empty{};
 
-    DownloadManager::DownloadManager(Configuration& configuration, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue)
+    DownloadManager::DownloadManager(const std::filesystem::path& dataDirPath, Configuration& configuration)
         : m_ytdlpManager{ configuration },
         m_options{ configuration.getDownloaderOptions() },
-        m_history{ history },
-        m_recoveryQueue{ recoveryQueue }
+        m_history{ dataDirPath / "history.json" },
+        m_recoveryQueue{ dataDirPath / "recovery.json" }
     {
         m_history.saved() += [this](const EventArgs&){ m_historyChanged.invoke(m_history.getHistory()); };
     }
@@ -147,6 +146,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
         return m_completed.size();
+    }
+
+    DownloadHistory& DownloadManager::getDownloadHistory()
+    {
+        return m_history;
     }
 
     void DownloadManager::startup(StartupInformation& info)

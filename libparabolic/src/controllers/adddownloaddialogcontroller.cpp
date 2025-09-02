@@ -8,7 +8,6 @@
 #include "models/m3u.h"
 #include "models/urlinfo.h"
 
-using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
@@ -17,9 +16,9 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
-    AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, DataFileManager& dataFileManager, Keyring::Keyring& keyring)
+    AddDownloadDialogController::AddDownloadDialogController(const std::filesystem::path& dataDirPath, DownloadManager& downloadManager, Keyring::Keyring& keyring)
         : m_downloadManager{ downloadManager },
-        m_previousOptions{ dataFileManager.get<PreviousDownloadOptions>("prev") },
+        m_previousOptions{ dataDirPath / "prev.json" },
         m_keyring{ keyring },
         m_urlInfo{ std::nullopt },
         m_credential{ std::nullopt }
@@ -50,7 +49,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::vector<std::string> AddDownloadDialogController::getKeyringCredentialNames() const
     {
         std::vector<std::string> names;
-        for(const Credential& credential : m_keyring.getCredentials())
+        for(const Credential& credential : m_keyring.getAll())
         {
             names.push_back(credential.getName());
         }
@@ -271,9 +270,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void AddDownloadDialogController::validateUrl(const std::string& url, size_t credentialNameIndex)
     {
-        if(credentialNameIndex < m_keyring.getCredentials().size())
+        if(credentialNameIndex < m_keyring.getAll().size())
         {
-            validateUrl(url, m_keyring.getCredentials()[credentialNameIndex]);
+            validateUrl(url, m_keyring.getAll()[credentialNameIndex]);
         }
         else
         {
@@ -303,9 +302,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void AddDownloadDialogController::validateBatchFile(const std::filesystem::path& batchFile, size_t credentialNameIndex)
     {
-        if(credentialNameIndex < m_keyring.getCredentials().size())
+        if(credentialNameIndex < m_keyring.getAll().size())
         {
-            validateBatchFile(batchFile, m_keyring.getCredentials()[credentialNameIndex]);
+            validateBatchFile(batchFile, m_keyring.getAll()[credentialNameIndex]);
         }
         else
         {
