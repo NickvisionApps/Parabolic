@@ -35,6 +35,8 @@ UsePreviousLanguage=no
 LanguageDetectionMethod=uilanguage
 
 WizardStyle=modern
+WizardResizable=yes
+WizardSizePercent=120,130
 
 UsePreviousAppDir=no
 DefaultDirName={autopf}\{#MyAppName}
