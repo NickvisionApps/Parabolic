@@ -15,76 +15,76 @@
 </info>
 
 <title>Download</title>
-<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+<p>Questa pagina illustra tutte le opzioni di configurazione del downloader nelle Preferenze in <app>Parabolic</app>.</p>
 
 
 <terms>
     <item>
-        <title>Numero massimo di download attivi</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
+        <title>Numero massimo download attivi</title>
+        <p>Il numero di download attivi che è possibile eseguire contemporaneamente. Deve essere un valore intero compreso tra 1 e 10.</p>
         <p>Se viene raggiunto il numero massimo di download attivi, Parabolic metterà i nuovi download in coda finché non sarà possibile eseguirne altri.</p>
         <note style="advanced">
-            <p>Predefinito: 5</p>
+            <p>Predefiniti: 5</p>
         </note>
     </item>
     <item>
         <title>Sovrascrivi file esistenti</title>
-        <p>Parabolic will overwrite existing files.</p>
+        <p>Se l'opzione è abilitata, Parabolic sovrascriverà i file esistenti.</p>
         <p>Ad esempio, se nella cartella dei download esiste un file denominato <code>movie.mp4</code> e viene creato un nuovo download denominato <code>movie</code>, <code>movie.mp4</code> verrà sovrascritto con il contenuto del nuovo download.</p>
         <note>
             <p>Parabolic rileverà automaticamente i download da riprendere ed eviterà di applicare questa impostazione durante il recupero o il nuovo tentativo di quelli falliti</p>
         </note>
         <note style="advanced">
-            <p>Predefinito: attivato</p>
+            <p>Predefinito: ON</p>
         </note>
     </item>
     <item>
-        <title>Limita i caratteri nel nome del file</title>
+        <title>Limita caratteri nel nome file</title>
         <p>Parabolic limiterà i caratteri nei nomi dei file a quelli supportati da Windows.</p>
-        <p>Questa opzione è disponibile solo su Linux.</p>
+        <p>Questa opzione è disponibile solo in Linux.</p>
         <note style="advanced">
-            <p>Predefinito: Disattivato</p>
+            <p>Predefinito: disattivato</p>
         </note>
     </item>
     <item>
-        <title>ID del file multimediale incluso nel titolo dopo la convalida</title>
-        <p>Parabolic includerà l'id del file multimediale nel suo titolo predefinito.</p>
+        <title>ID media incluso nel titolo dopo la convalida</title>
+        <p>Parabolic includerà l'id del media nel titolo predefinito.</p>
         <note style="advanced">
-            <p>Predefinito: attivato</p>
+            <p>Predefinito: ON</p>
         </note>
     </item>
     <item>
         <title>Sottotitoli generati automaticamente inclusi</title>
-        <p>Parabolic mostrerà anche i sottotitoli generati automaticamente, oltre a quelli già disponibili, per il download.</p>
+        <p>Parabolic visualizzerà anche i sottotitoli generati automaticamente, oltre a quelli già disponibili, per il download.</p>
         <note style="advanced">
-            <p>Predefinito: attivato</p>
+            <p>Predefinito: ON</p>
         </note>
     </item>
     <item>
-        <title>Video Codec Preferito</title>
+        <title>Codec video preferito</title>
         <p>Il codec video che Parabolic dovrebbe preferire durante l'analisi dei formati multimediali da scaricare.</p>
         <note>
-            <p>Se Parabolic non riesce a trovare formati con il codec preferito selezionato, non saranno disponibili formati video da scaricare.</p>
+            <p>Se Parabolic non trova formati con il codec preferito selezionato, non saranno disponibili formati video da scaricare.</p>
         </note>
         <note style="advanced">
-            <p>Predefinito: Qualsiasi</p>
+            <p>Predefinito: qualsiasi</p>
         </note>
     </item>
     <item>
-        <title>Codec Audio Preferito</title>
+        <title>Codec audio preferito</title>
         <p>Il codec audio che Parabolic dovrebbe preferire durante l'analisi dei formati multimediali da scaricare.</p>
         <note>
-            <p>Se Parabolic non può trovare alcun formato con il codec preferito selezionato, nessun formato audio sarà disponibile per il download.</p>
+            <p>Se Parabolic non trova formati con il codec preferito selezionato, nessun formato audio sarà disponibile per il download.</p>
         </note>
         <note style="advanced">
-            <p>Predefinito: Qualsiasi</p>
+            <p>Predefinito: qualsiasi</p>
         </note>
     </item>
     <item>
-        <title>Formato Dei Sottotitoli Preferito</title>
-        <p>Formato file in cui Parabolic deve salvare tutti i sottotitoli.</p>
+        <title>Formato sottotitoli preferito</title>
+        <p>Formato file in cui Parabolic salva tutti i sottotitoli.</p>
         <note style="advanced">
-            <p>Predefinito: Qualsiasi</p>
+            <p>Predefinito: qualsiasi</p>
         </note>
     </item>
 </terms>

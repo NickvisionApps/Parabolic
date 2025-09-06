@@ -139,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Formato de vídeo</dt>
 <dd class="terms">
 <p class="p">A lista de formatos de vídeo disponíveis para download, classificados por resolução e taxa de bits.</p>
-<p class="p">Each format is the form: <span class="code">resolution | bitrate | codec (id)</span>.</p>
-<p class="p">If the file type is an audio type, this option will not be available.</p>
+<p class="p">Cada formato é o seguinte: <span class="code">resolução | taxa de bits | codec (id)</span>.</p>
+<p class="p">Se o tipo de arquivo for de áudio, esta opção não estará disponível.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -164,17 +164,17 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">bv*</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wv*</span></p>
+<p class="p">A seguir estão os formatos especiais usados pelo Parabolic para corresponder aos comportamentos do <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">None</span> = Nenhuma opção passada para <span class="code">yt-dlp</span></p>
+<p class="p">- <span class="code">Melhor</span> = <span class="code">bv*</span></p>
+<p class="p">- <span class="code">Pior</span> = <span class="code">wv*</span></p>
 </div></div></div>
 </div>
 </dd>
 <dt class="terms">Formato de áudio</dt>
 <dd class="terms">
-<p class="p">The list of audio formats available for download, sorted by bitrate.</p>
-<p class="p">Each format is the form: <span class="code">bitrate | language (id)</span>.</p>
+<p class="p">A lista de formatos de áudio disponíveis para download, classificados por taxa de bits.</p>
+<p class="p">Cada formato é o seguinte: <span class="code">bitrate | language (id)</span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -198,16 +198,16 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">The following are special formats used by Parabolic to match <span class="code">yt-dlp</span> behaviors:</p>
-<p class="p">- <span class="code">None</span> = No option passed to <span class="code">yt-dlp</span></p>
-<p class="p">- <span class="code">Best</span> = <span class="code">ba</span></p>
-<p class="p">- <span class="code">Worst</span> = <span class="code">wa</span></p>
+<p class="p">A seguir estão os formatos especiais usados pelo Parabolic para corresponder aos comportamentos do <span class="code">yt-dlp</span>:</p>
+<p class="p">- <span class="code">None</span> = Nenhuma opção passada para <span class="code">yt-dlp</span></p>
+<p class="p">- <span class="code">Melhor</span> = <span class="code">ba</span></p>
+<p class="p">- <span class="code">Pior</span> = <span class="code">wa</span></p>
 </div></div></div>
 </div>
 </dd>
 <dt class="terms">Legendas</dt>
 <dd class="terms">
-<p class="p">The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <span class="link"><a href="downloads.html" title="Downloads">preferences</a></span>.</p>
+<p class="p">Lista de legendas disponíveis para download pela mídia. Outras configurações de legendas podem ser definidas em <span class="link"><a href="downloads.html" title="Downloads">preferências</a></span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -219,14 +219,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Dividir capítulos</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+<p class="p">Se ativado, o Parabolic dividirá o download de um vídeo em vários arquivos menores com base em seus capítulos.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Exportar descrição</dt>
@@ -238,38 +238,38 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Apagar do histórico</dt>
 <dd class="terms"><p class="p">Se ativado, o Parabolic excluirá o download da lista de histórico de downloads.</p></dd>
 <dt class="terms">Argumento do pós-processador</dt>
 <dd class="terms">
-<p class="p">An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <span class="link"><a href="converter.html" title="Conversor">preferences</a></span>.</p>
+<p class="p">Um argumento a ser passado ao pós-processador durante o download. Os argumentos de pós-processamento disponíveis podem ser configurados em <span class="link"><a href="converter.html" title="Conversor">preferências</a></span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously selected argument will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">O argumento selecionado anteriormente será lembrado e pré-selecionado para o próximo download.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Gravar arquivo de playlist M3U</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will write a m3u file for the playlist download.</p>
+<p class="p">Se ativado, o Parabolic gravará um arquivo m3u para download da playlist.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used state will be remembered and pre-selected for the next playlist download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">O estado usado anteriormente será lembrado e pré-selecionado para o próximo download da playlist.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">Período de tempo</dt>
 <dd class="terms">
-<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<p class="p">O usuário pode inserir um período de início e um período de término para baixar uma seção específica da mídia.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -284,24 +284,24 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: todo o comprimento da mídia</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Pasta de destino</dt>
 <dd class="terms">
-<p class="p">The folder at which to save the download to.</p>
+<p class="p">A pasta onde o download será salvo.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used folder will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">A pasta usada anteriormente será lembrada e pré-selecionada para o próximo download.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Nome do arquivo</dt>
 <dd class="terms">
-<p class="p">The file name to use when saving the download.</p>
+<p class="p">O nome do arquivo a ser usado ao salvar o download.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The title of the media</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: O título da mídia</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

@@ -69,51 +69,51 @@
     <item>
         <title>Formato de vídeo</title>
         <p>A lista de formatos de vídeo disponíveis para download, classificados por resolução e taxa de bits.</p>
-        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
-        <p>If the file type is an audio type, this option will not be available.</p>
+        <p>Cada formato é o seguinte: <code>resolução | taxa de bits | codec (id)</code>.</p>
+        <p>Se o tipo de arquivo for de áudio, esta opção não estará disponível.</p>
         <note>
             <p>O formato de vídeo usado anteriormente será relembrado e pré-selecionado no próximo download.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>bv*</code></p>
-            <p>- <code>Worst</code> = <code>wv*</code></p>
+            <p>A seguir estão os formatos especiais usados pelo Parabolic para corresponder aos comportamentos do <code>yt-dlp</code>:</p>
+            <p>- <code>None</code> = Nenhuma opção passada para <code>yt-dlp</code></p>
+            <p>- <code>Melhor</code> = <code>bv*</code></p>
+            <p>- <code>Pior</code> = <code>wv*</code></p>
         </note>
     </item>
     <item>
         <title>Formato de áudio</title>
-        <p>The list of audio formats available for download, sorted by bitrate.</p>
-        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
+        <p>A lista de formatos de áudio disponíveis para download, classificados por taxa de bits.</p>
+        <p>Cada formato é o seguinte: <code>bitrate | language (id)</code>.</p>
         <note>
             <p>O formato de áudio usado anteriormente será relembrado e pré-selecionado no próximo download.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>ba</code></p>
-            <p>- <code>Worst</code> = <code>wa</code></p>
+            <p>A seguir estão os formatos especiais usados pelo Parabolic para corresponder aos comportamentos do <code>yt-dlp</code>:</p>
+            <p>- <code>None</code> = Nenhuma opção passada para <code>yt-dlp</code></p>
+            <p>- <code>Melhor</code> = <code>ba</code></p>
+            <p>- <code>Pior</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
         <title>Legendas</title>
-        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <p>Lista de legendas disponíveis para download pela mídia. Outras configurações de legendas podem ser definidas em <link xref="downloads">preferências</link>.</p>
         <note>
             <p>O formato de legendas usado anteriormente será relembrado e pré-selecionado no próximo download.</p>
         </note>
     </item>
     <item>
         <title>Dividir capítulos</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <p>Se ativado, o Parabolic dividirá o download de um vídeo em vários arquivos menores com base em seus capítulos.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
         <title>Exportar descrição</title>
         <p>Se ativado, o Parabolic vai exportar a descrição da mídia em um arquivo <code>.description</code> ao lado do arquivo baixado.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
@@ -122,37 +122,37 @@
     </item>
     <item>
         <title>Argumento do pós-processador</title>
-        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <p>Um argumento a ser passado ao pós-processador durante o download. Os argumentos de pós-processamento disponíveis podem ser configurados em <link xref="converter">preferências</link>.</p>
         <note>
-            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+            <p>O argumento selecionado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
         <title>Gravar arquivo de playlist M3U</title>
-        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <p>Se ativado, o Parabolic gravará um arquivo m3u para download da playlist.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download da playlist.</p>
         </note>
     </item>
     <item>
-        <title>Time Frame</title>
-        <p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <title>Período de tempo</title>
+        <p>O usuário pode inserir um período de início e um período de término para baixar uma seção específica da mídia.</p>
         <note style="advanced">
-            <p>Default: The whole media length</p>
+            <p>Padrão: todo o comprimento da mídia</p>
         </note>
     </item>
     <item>
         <title>Pasta de destino</title>
-        <p>The folder at which to save the download to.</p>
+        <p>A pasta onde o download será salvo.</p>
         <note>
-            <p>The previously used folder will be remembered and pre-selected for the next download.</p>
+            <p>A pasta usada anteriormente será lembrada e pré-selecionada para o próximo download.</p>
         </note>
     </item>
     <item>
         <title>Nome do arquivo</title>
-        <p>The file name to use when saving the download.</p>
+        <p>O nome do arquivo a ser usado ao salvar o download.</p>
         <note style="advanced">
-            <p>Default: The title of the media</p>
+            <p>Padrão: O título da mídia</p>
         </note>
     </item>
 </terms>
