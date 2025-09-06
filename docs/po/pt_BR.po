@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2025-08-29 21:49-0400\n"
-"PO-Revision-Date: 2025-09-01 12:20+0000\n"
+"PO-Revision-Date: 2025-09-06 00:02+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/pt_BR/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.13.1-rc\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -1108,11 +1108,13 @@ msgstr ""
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
+"Cada formato é o seguinte: <code>resolução | taxa de bits | codec "
+"(id)</code>."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:76
 msgid "If the file type is an audio type, this option will not be available."
-msgstr ""
+msgstr "Se o tipo de arquivo for de áudio, esta opção não estará disponível."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:78
@@ -1129,21 +1131,23 @@ msgid ""
 "The following are special formats used by Parabolic to match <code>yt-dlp</"
 "code> behaviors:"
 msgstr ""
+"A seguir estão os formatos especiais usados pelo Parabolic para corresponder "
+"aos comportamentos do <code>yt-dlp</code>:"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:82 docs/yelp/C/newDownload.page:96
 msgid "- <code>None</code> = No option passed to <code>yt-dlp</code>"
-msgstr ""
+msgstr "- <code>None</code> = Nenhuma opção passada para <code>yt-dlp</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:83
 msgid "- <code>Best</code> = <code>bv*</code>"
-msgstr ""
+msgstr "- <code>Melhor</code> = <code>bv*</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:84
 msgid "- <code>Worst</code> = <code>wv*</code>"
-msgstr ""
+msgstr "- <code>Pior</code> = <code>wv*</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:88
@@ -1154,11 +1158,13 @@ msgstr "Formato de áudio"
 #: docs/yelp/C/newDownload.page:89
 msgid "The list of audio formats available for download, sorted by bitrate."
 msgstr ""
+"A lista de formatos de áudio disponíveis para download, classificados por "
+"taxa de bits."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:90
 msgid "Each format is the form: <code>bitrate | language (id)</code>."
-msgstr ""
+msgstr "Cada formato é o seguinte: <code>bitrate | language (id)</code>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:92
@@ -1172,12 +1178,12 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:97
 msgid "- <code>Best</code> = <code>ba</code>"
-msgstr ""
+msgstr "- <code>Melhor</code> = <code>ba</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:98
 msgid "- <code>Worst</code> = <code>wa</code>"
-msgstr ""
+msgstr "- <code>Pior</code> = <code>wa</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:102
@@ -1191,6 +1197,9 @@ msgid ""
 "download by the user. Further subtitle settings can be configured in <link "
 "xref=\"downloads\">preferences</link>."
 msgstr ""
+"Lista de legendas disponíveis para download pela mídia. Outras configurações "
+"de legendas podem ser definidas em <link xref=\"downloads\""
+">preferências</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:105
@@ -1212,6 +1221,8 @@ msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
 msgstr ""
+"Se ativado, o Parabolic dividirá o download de um vídeo em vários arquivos "
+"menores com base em seus capítulos."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:112 docs/yelp/C/newDownload.page:119
@@ -1219,6 +1230,8 @@ msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr ""
+"O estado usado anteriormente será lembrado e pré-selecionado para o próximo "
+"download."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:116
@@ -1260,16 +1273,18 @@ msgid ""
 "postprocessing arguments can be configured in <link "
 "xref=\"converter\">preferences</link>."
 msgstr ""
+"Um argumento a ser passado ao pós-processador durante o download. Os "
+"argumentos de pós-processamento disponíveis podem ser configurados em <link "
+"xref=\"converter\">preferências</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:130
-#, fuzzy
 msgid ""
 "The previously selected argument will be remembered and pre-selected for the "
 "next download."
 msgstr ""
-"O formato de legendas usado anteriormente será relembrado e pré-selecionado "
-"no próximo download."
+"O argumento selecionado anteriormente será lembrado e pré-selecionado para o "
+"próximo download."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:134
@@ -1278,26 +1293,23 @@ msgstr "Gravar arquivo de playlist M3U"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:135
-#, fuzzy
 msgid "If enabled, Parabolic will write a m3u file for the playlist download."
 msgstr ""
-"Se ativado, o Parabolic excluirá o download da lista de histórico de "
-"downloads."
+"Se ativado, o Parabolic gravará um arquivo m3u para download da playlist."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:137
-#, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "playlist download."
 msgstr ""
-"O formato de legendas usado anteriormente será relembrado e pré-selecionado "
-"no próximo download."
+"O estado usado anteriormente será lembrado e pré-selecionado para o próximo "
+"download da playlist."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:141
 msgid "Time Frame"
-msgstr ""
+msgstr "Período de tempo"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:142
@@ -1305,11 +1317,13 @@ msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
 msgstr ""
+"O usuário pode inserir um período de início e um período de término para "
+"baixar uma seção específica da mídia."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:144
 msgid "Default: The whole media length"
-msgstr ""
+msgstr "Padrão: todo o comprimento da mídia"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:148
@@ -1319,7 +1333,7 @@ msgstr "Pasta de destino"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:149
 msgid "The folder at which to save the download to."
-msgstr ""
+msgstr "A pasta onde o download será salvo."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:151
@@ -1327,6 +1341,8 @@ msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr ""
+"A pasta usada anteriormente será lembrada e pré-selecionada para o próximo "
+"download."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:155
@@ -1336,12 +1352,12 @@ msgstr "Nome do arquivo"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:156
 msgid "The file name to use when saving the download."
-msgstr ""
+msgstr "O nome do arquivo a ser usado ao salvar o download."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:158
 msgid "Default: The title of the media"
-msgstr ""
+msgstr "Padrão: O título da mídia"
 
 #, fuzzy, no-wrap
 #~ msgid "Name"
