@@ -39,7 +39,7 @@ jobs:
           $ProgressPreference = 'SilentlyContinue'
           mkdir build
           mkdir build-portable
-          Invoke-WebRequest https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.25-v1.17/gettext0.25-iconv1.17-shared-64.zip -OutFile gettext.zip
+          Invoke-WebRequest https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.26-v1.17/gettext0.26-iconv1.17-shared-64.zip -OutFile gettext.zip
           Expand-Archive -Force 'gettext.zip'
           move gettext\bin\* C:\Windows\System32
           choco install innosetup
