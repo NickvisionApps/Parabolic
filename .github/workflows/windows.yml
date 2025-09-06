@@ -49,9 +49,9 @@ jobs:
         with:
           pkgs: boost-date-time libnick
           triplet: ${{ matrix.variant.triplet }}
-          revision: 3c49e92d66d8eb4505d7f18d8c461240f55c08b0
+          revision: b1e15efef6758eaa0beb0a8732cfa66f6a68a81d
           token: ${{ github.token }}
-          cache-key: ${{ matrix.variant.triplet }}-3c49e92d66d8eb4505d7f18d8c461240f55c08b0
+          cache-key: ${{ matrix.variant.triplet }}-b1e15efef6758eaa0beb0a8732cfa66f6a68a81d
       - name: "Build (Installer)"
         working-directory: ${{ github.workspace }}/build
         run: |
