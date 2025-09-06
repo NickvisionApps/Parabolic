@@ -62,12 +62,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("revertStartTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertStartTimeSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("revertEndTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertEndTimeSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("downloadSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("downloadSingleSubtitlesButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("downloadSingleAdvancedButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("fileTypePlaylistRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onFileTypePlaylistChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectSaveFolderPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("deselectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->deselectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
+        g_signal_connect(m_builder.get<GObject>("downloadPlaylistItemsButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
         m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ GtkHelpers::dispatchToMainThread([this, args]{ onUrlValidated(args.getParam()); }); };
     }
 
