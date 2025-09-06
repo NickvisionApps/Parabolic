@@ -20,12 +20,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     const std::vector<Credential>& KeyringDialogController::getCredentials() const
     {
-        return m_keyring.getCredentials();
+        return m_keyring.getAll();
     }
 
     std::optional<Credential> KeyringDialogController::getCredential(const std::string& name) const
     {
-        return m_keyring.getCredential(name);
+        return m_keyring.get(name);
     }
 
     CredentialCheckStatus KeyringDialogController::addCredential(const std::string& name, const std::string& url, const std::string& username, const std::string& password)
@@ -42,13 +42,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return CredentialCheckStatus::InvalidUri;
         }
-        else if(m_keyring.getCredential(name).has_value())
+        else if(m_keyring.get(name).has_value())
         {
             return CredentialCheckStatus::ExistingName;
         }
         else
         {
-            return m_keyring.addCredential({ name, StringHelpers::trim(url), username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
+            return m_keyring.add({ name, StringHelpers::trim(url), username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
         }
     }
 
@@ -68,7 +68,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            return m_keyring.updateCredential({ name, StringHelpers::trim(url), username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
+            return m_keyring.update({ name, StringHelpers::trim(url), username, password }) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
         }
     }
 
@@ -80,7 +80,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            return m_keyring.deleteCredential(name) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
+            return m_keyring.remove(name) ? CredentialCheckStatus::Valid : CredentialCheckStatus::DatabaseError;
         }
     }
 }

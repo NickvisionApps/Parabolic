@@ -2,20 +2,20 @@
 #include <libnick/filesystem/userdirectories.h>
 #include "models/format.h"
 
-using namespace Nickvision::App;
 using namespace Nickvision::Filesystem;
+using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    PreviousDownloadOptions::PreviousDownloadOptions(const std::string& key, const std::string& appName, bool isPortable)
-        : DataFileBase{ key, appName, isPortable }
+    PreviousDownloadOptions::PreviousDownloadOptions(const std::filesystem::path& path)
+        : JsonFileBase{ path }
     {
 
     }
 
     std::filesystem::path PreviousDownloadOptions::getSaveFolder() const
     {
-        std::filesystem::path path{ m_json["SaveFolder"].is_string() ? m_json["SaveFolder"].as_string().c_str() : UserDirectories::get(UserDirectory::Downloads).string() };
+        std::filesystem::path path{ get("SaveFolder", UserDirectories::get(UserDirectory::Downloads).string()) };
         if(std::filesystem::exists(path))
         {
             return path.make_preferred();
@@ -27,113 +27,107 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         if(std::filesystem::exists(previousSaveFolder))
         {
-            m_json["SaveFolder"] = previousSaveFolder.make_preferred().string();
+            set("SaveFolder", previousSaveFolder.make_preferred().string());
         }
         else
         {
-            m_json["SaveFolder"] = UserDirectories::get(UserDirectory::Downloads).make_preferred().string();
+            set("SaveFolder", UserDirectories::get(UserDirectory::Downloads).make_preferred().string());
         }
     }
 
     MediaFileType PreviousDownloadOptions::getFileType() const
     {
-        return { m_json["FileType"].is_int64() ? static_cast<MediaFileType::MediaFileTypeValue>(m_json["FileType"].as_int64()) : MediaFileType::MP4 };
+        return { static_cast<MediaFileType::MediaFileTypeValue>(get("FileType", static_cast<int>(MediaFileType::MP4))) };
     }
 
     void PreviousDownloadOptions::setFileType(const MediaFileType& previousMediaFileType)
     {
-        m_json["FileType"] = static_cast<int>(previousMediaFileType);
+        set("FileType", static_cast<int>(previousMediaFileType));
     }
 
     std::string PreviousDownloadOptions::getVideoFormatId(const MediaFileType& type) const
     {
         static Format bestVideoFormat{ FormatValue::Best, MediaType::Video };
         static Format noneVideoFormat{ FormatValue::None, MediaType::Video };
-        std::string key{ "VideoFormatId_" + type.str() };
-        return m_json[key].is_string() ? m_json[key].as_string().c_str() : (type.isAudio() ? noneVideoFormat.getId() : bestVideoFormat.getId());
+        return get<std::string>("VideoFormatId_" + type.str(), type.isAudio() ? noneVideoFormat.getId() : bestVideoFormat.getId());
     }
 
     void PreviousDownloadOptions::setVideoFormatId(const MediaFileType& type, const std::string& videoFormatId)
     {
-        std::string key{ "VideoFormatId_" + type.str() };
-        m_json[key] = videoFormatId;
+        set("VideoFormatId_" + type.str(), videoFormatId);
     }
 
     std::string PreviousDownloadOptions::getAudioFormatId(const MediaFileType& type) const
     {
         static Format bestAudioFormat{ FormatValue::Best, MediaType::Audio };
-        std::string key{ "AudioFormatId_" + type.str() };
-        return m_json[key].is_string() ? m_json[key].as_string().c_str() : bestAudioFormat.getId();
+        return get<std::string>("AudioFormatId_" + type.str(), bestAudioFormat.getId());
     }
 
     void PreviousDownloadOptions::setAudioFormatId(const MediaFileType& type, const std::string& audioFormatId)
     {
-        std::string key{ "AudioFormatId_" + type.str() };
-        m_json[key] = audioFormatId;
+        set("AudioFormatId_" + type.str(), audioFormatId);
     }
 
     bool PreviousDownloadOptions::getSplitChapters() const
     {
-        return m_json["SplitChapters"].is_bool() ? m_json["SplitChapters"].as_bool() : false;
+        return get<bool>("SplitChapters", false);
     }
 
     void PreviousDownloadOptions::setSplitChapters(bool splitChapters)
     {
-        m_json["SplitChapters"] = splitChapters;
+        set("SplitChapters", splitChapters);
     }
 
     bool PreviousDownloadOptions::getExportDescription() const
     {
-        return m_json["ExportDescription"].is_bool() ? m_json["ExportDescription"].as_bool() : false;
+        return get<bool>("ExportDescription", false);
     }
 
     void PreviousDownloadOptions::setExportDescription(bool exportDescription)
     {
-        m_json["ExportDescription"] = exportDescription;
+        set("ExportDescription", exportDescription);
     }
 
     std::string PreviousDownloadOptions::getPostProcessorArgument() const
     {
-        return m_json["PostProcessorArgument"].is_string() ? m_json["PostProcessorArgument"].as_string().c_str() : "";
+        return get<std::string>("PostProcessorArgument", "");
     }
 
     void PreviousDownloadOptions::setPostProcessorArgument(const std::string& postProcessorArgument)
     {
-        m_json["PostProcessorArgument"] = postProcessorArgument;
+        set("PostProcessorArgument", postProcessorArgument);
     }
 
     bool PreviousDownloadOptions::getWritePlaylistFile() const
     {
-        return m_json["WritePlaylistFile"].is_bool() ? m_json["WritePlaylistFile"].as_bool() : false;
+        return get<bool>("WritePlaylistFile", false);
     }
 
     void PreviousDownloadOptions::setWritePlaylistFile(bool writePlaylistFile)
     {
-        m_json["WritePlaylistFile"] = writePlaylistFile;
+        set("WritePlaylistFile", writePlaylistFile);
     }
 
     bool PreviousDownloadOptions::getNumberTitles() const
     {
-        return m_json["NumberTitles"].is_bool() ? m_json["NumberTitles"].as_bool() : false;
+        return get<bool>("NumberTitles", false);
     }
 
     void PreviousDownloadOptions::setNumberTitles(bool numberTitles)
     {
-        m_json["NumberTitles"] = numberTitles;
+        set("NumberTitles", numberTitles);
     }
 
     std::vector<SubtitleLanguage> PreviousDownloadOptions::getSubtitleLanguages() const
     {
         std::vector<SubtitleLanguage> languages;
-        if(m_json.contains("SubtitleLanguages") && m_json["SubtitleLanguages"].is_array())
+        boost::json::array jsonLanguages = get<boost::json::array>("SubtitleLanguages", {});
+        for(const boost::json::value& language : jsonLanguages)
         {
-            for(const boost::json::value& language : m_json["SubtitleLanguages"].as_array())
+            if(language.is_object())
             {
-                if(language.is_object())
-                {
-                    boost::json::object obj = language.as_object();
-                    languages.push_back({ obj["Language"].is_string() ? obj["Language"].as_string().c_str() : "", obj["AutoGenerated"].is_bool() ? obj["AutoGenerated"].as_bool() : false });
-                }
+                boost::json::object obj = language.as_object();
+                languages.push_back({ obj["Language"].is_string() ? obj["Language"].as_string().c_str() : "", obj["AutoGenerated"].is_bool() ? obj["AutoGenerated"].as_bool() : false });
             }
         }
         return languages;
@@ -149,6 +143,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             obj["AutoGenerated"] = language.isAutoGenerated();
             languages.push_back(obj);
         }
-        m_json["SubtitleLanguages"] = languages;
+        set("SubtitleLanguages", languages);
     }
 }

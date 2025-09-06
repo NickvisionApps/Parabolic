@@ -19,17 +19,17 @@
 
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+    <p>O recurso Keyring é suportado pela biblioteca <code>libnick</code>.</p>
+    <p>Esta biblioteca usa SQLCipher para armazenar credenciais com segurança de maneira independente de plataforma.</p>
+    <p>A biblioteca usará o gerenciador de credenciais do seu sistema (por exemplo, o serviço secreto DBus no Linux e o Gerenciador de Credenciais do Windows no Windows) para proteger o arquivo de banco de dados do Keyring.</p>
 </section>
 
 <section>
     <title>Armazenando uma credencial</title>
     <p>Aqui estão os campos que podem ser armazenados em uma credencial:</p>
-    <p><code>Name</code>: The name of the credential</p>
-    <p><code>URL</code> (optional): The URL of the credential</p>
-    <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-    <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+    <p><code>Nome</code>: O nome da credencial</p>
+    <p><code>URL</code> (opcional): A URL da credencial</p>
+    <p><code>Nome de usuário</code> (opcional se a senha não estiver vazia): O nome de usuário da credencial</p>
+    <p><code>Senha</code> (opcional se o nome de usuário não estiver vazio): A senha da credencial</p>
 </section>
 </page>

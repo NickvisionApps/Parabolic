@@ -21,7 +21,7 @@
 <terms>
     <item>
         <title>Número Máximo de Downloads Ativos</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
+        <p>Número de downloads permitidos simultaneamente. Deve ser um valor inteiro entre 1 e 10.</p>
         <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads em uma fila até que mais downloads possam ser executados.</p>
         <note style="advanced">
             <p>Padrão: 5</p>
@@ -29,7 +29,7 @@
     </item>
     <item>
         <title>Sobrescrever arquivos existentes</title>
-        <p>Parabolic will overwrite existing files.</p>
+        <p>O Parabolic substituirá os arquivos existentes.</p>
         <p>Por exemplo, se um arquivo chamado <code>movie.mp4</code> existir na pasta de download e um novo download for criado chamado <code>movie</code>, <code>movie.mp4</code> será substituído pelo conteúdo do novo download.</p>
         <note>
             <p>O Parabolic irá detectar downloads que devem ser retomados e evitará essa configuração ao recuperar ou ao tentar novamente downloads com falha</p>
@@ -48,7 +48,7 @@
     </item>
     <item>
         <title>Incluir ID da mídia no título após validação</title>
-        <p>Parabolic will include a media's id in its default title.</p>
+        <p>O Parabolic incluirá o ID de uma mídia em seu título padrão.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>

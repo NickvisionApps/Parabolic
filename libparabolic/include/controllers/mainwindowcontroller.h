@@ -11,7 +11,6 @@
 #include <string>
 #include <vector>
 #include <libnick/app/appinfo.h>
-#include <libnick/app/datafilemanager.h>
 #include <libnick/app/windowgeometry.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
@@ -19,13 +18,13 @@
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
 #include <libnick/system/suspendinhibitor.h>
-#include <libnick/taskbar/taskbaritem.h>
 #include <libnick/update/updater.h>
 #include <libnick/update/version.h>
 #include "controllers/adddownloaddialogcontroller.h"
 #include "controllers/credentialdialogcontroller.h"
 #include "controllers/keyringdialogcontroller.h"
 #include "controllers/preferencesviewcontroller.h"
+#include "models/configuration.h"
 #include "models/downloadmanager.h"
 #include "models/historicdownload.h"
 #include "models/startupinformation.h"
@@ -198,13 +197,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Will only have an effect on the first time called.
          * @return The WindowGeometry to use for the application window at startup
          */
-#ifdef _WIN32
-        const Models::StartupInformation& startup(HWND hwnd);
-#elif defined(__linux__)
-        const Models::StartupInformation& startup(const std::string& desktopFile);
-#else
         const Models::StartupInformation& startup();
-#endif
         /**
          * @brief Shuts down the application.
          * @param geometry The window geometry to save
@@ -317,9 +310,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<Nickvision::Update::Version>> m_appUpdateAvailable;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<double>> m_appUpdateProgressChanged;
         Nickvision::App::AppInfo m_appInfo;
-        Nickvision::App::DataFileManager m_dataFileManager;
         std::shared_ptr<Nickvision::Update::Updater> m_updater;
-        Nickvision::Taskbar::TaskbarItem m_taskbar;
+        Models::Configuration m_configuration;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         Nickvision::Keyring::Keyring m_keyring;
         Models::DownloadManager m_downloadManager;

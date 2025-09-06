@@ -15,21 +15,21 @@
 </info>
 
 <title>Portachiavi</title>
-<p>Questa pagina spiega tutte le opzioni per utilizzare il portachiavi in <app>Parabolic</app>.</p>
+<p>Questa pagina illustra tutte le opzioni per usare il Portachiavi in <app>Parabolic</app>.</p>
 
 <section>
     <title>Backend</title>
-    <p>La funzionalità Portachiavi è supportata dalla libreria <code>Nickvision.Keyring</code>.</p>
-    <p>Questa libreria utilizza SQLCipher per memorizzare in modo sicuro le credenziali, in maniera indipendente dalla piattaforma.</p>
-    <p>La libreria utilizzerà il gestore di credenziali del sistema (come DBus su Linux o il Gestore delle credenziali su Windows) per proteggere il file del database del portachiavi.</p>
+    <p>La funzionalità Portachiavi è supportata dalla libreria <code>libnick</code>.</p>
+    <p>Questa libreria usa SQLCipher per memorizzare in modo sicuro le credenziali, in maniera indipendente dalla piattaforma.</p>
+    <p>La libreria userà il gestore di credenziali del sistema (come DBus in Linux o il Gestore delle credenziali inu Windows) per proteggere il file del database del portachiavi.</p>
 </section>
 
 <section>
-    <title>Memorizzare una credenziale</title>
+    <title>Memorizza una credenziale</title>
     <p>Ecco i campi che possono essere memorizzati in una credenziale:</p>
-    <p><code>Nome</code>: Il nome di una credenziale</p>
-    <p><code>URL</code> (opzionale): L'URL di una credenziale</p>
-    <p><code>Username</code> (opzionale se il campo della password non è vuoto): L'username di una credenziale</p>
-    <p><code>Password</code> (opzionale se il campo dell'username non è vuoto): La password di una credenziale</p>
+    <p><code>Nome</code>: il nome di una credenziale</p>
+    <p><code>URL</code> (opzionale): l'URL di una credenziale</p>
+    <p><code>Nome utente</code> (opzionale se il campo della password non è vuoto): il nome utente di una credenziale</p>
+    <p><code>Password</code> (opzionale se il campo del nome utente non è vuoto): la password di una credenziale</p>
 </section>
 </page>

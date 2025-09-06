@@ -1,16 +1,17 @@
 #include "models/downloadrecoveryqueue.h"
 
-using namespace Nickvision::App;
+using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    DownloadRecoveryQueue::DownloadRecoveryQueue(const std::string& key, const std::string& appName, bool isPortable)
-        : DataFileBase{ key, appName, isPortable }
+    DownloadRecoveryQueue::DownloadRecoveryQueue(const std::filesystem::path& path)
+        : JsonFileBase{ path }
     {
-        if(m_json["RecoverableDownloads"].is_array())
+        boost::json::array jsonDownloads = get<boost::json::array>("RecoverableDownloads", {});
+        if(jsonDownloads.size() > 0)
         {
-            m_queue.reserve(m_json["RecoverableDownloads"].as_array().size());
-            for(const boost::json::value& value : m_json["RecoverableDownloads"].as_array())
+            m_queue.reserve(jsonDownloads.size());
+            for(const boost::json::value& value : jsonDownloads)
             {
                 if(!value.is_object())
                 {
@@ -57,7 +58,6 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadRecoveryQueue::updateDisk()
     {
-        m_json.clear();
         boost::json::array arr;
         for(const std::pair<const int, std::pair<DownloadOptions, bool>>& pair : m_queue)
         {
@@ -67,7 +67,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             obj["NeedsCredential"] = pair.second.second;
             arr.push_back(obj);
         }
-        m_json["RecoverableDownloads"] = arr;
+        set("RecoverableDownloads", arr);
         save();
     }
 }

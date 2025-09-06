@@ -1,9 +1,10 @@
 #ifndef DOWNLOADHISTORY_H
 #define DOWNLOADHISTORY_H
 
+#include <filesystem>
 #include <string>
 #include <vector>
-#include <libnick/app/datafilebase.h>
+#include <libnick/helpers/jsonfilebase.h>
 #include "historicdownload.h"
 #include "historylength.h"
 
@@ -12,16 +13,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     /**
      * @brief A model for the download history of the application.
      */
-    class DownloadHistory : public Nickvision::App::DataFileBase
+    class DownloadHistory : public Helpers::JsonFileBase
     {
     public:
         /**
          * @brief Constructs a DownloadHistory.
-         * @param key The key to pass to the DataFileBase
-         * @param appName The application name to pass to the DataFileBase
-         * @param isPortable The isPortable to pass to the DataFileBase
+         * @param path The path to the history file
          */
-        DownloadHistory(const std::string& key, const std::string& appName, bool isPortable);
+        DownloadHistory(const std::filesystem::path& path);
         /**
          * @brief Gets the download history.
          * @return The download history

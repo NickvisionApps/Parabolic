@@ -20,7 +20,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::vector<std::string> CredentialDialogController::getKeyringCredentialNames() const
     {
         std::vector<std::string> names;
-        for(const Credential& credential : m_keyring.getCredentials())
+        for(const Credential& credential : m_keyring.getAll())
         {
             names.push_back(credential.getName());
         }
@@ -35,11 +35,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void CredentialDialogController::use(int index)
     {
-        if(index >= static_cast<int>(m_keyring.getCredentials().size()))
+        if(index >= static_cast<int>(m_keyring.getAll().size()))
         {
             return;
         }
-        const Credential& credential{ m_keyring.getCredentials()[index] };
+        const Credential& credential{ m_keyring.getAll()[index] };
         m_args.getCredential()->setUsername(credential.getUsername());
         m_args.getCredential()->setPassword(credential.getPassword());
     }

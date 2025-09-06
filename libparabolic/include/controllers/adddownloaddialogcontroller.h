@@ -8,10 +8,9 @@
 #include <thread>
 #include <vector>
 #include <unordered_map>
-#include <libnick/app/cancellationtoken.h>
-#include <libnick/app/datafilemanager.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
+#include <libnick/helpers/cancellationtoken.h>
 #include <libnick/keyring/keyring.h>
 #include "models/downloadmanager.h"
 #include "models/timeframe.h"
@@ -28,11 +27,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     public:
         /**
          * @brief Constructs an AddDownloadDialogController.
+         * @param dataDirPath The path to save data files for the application to
          * @param downloadManager The DownloadManager to use
-         * @param dataFileManager The DataFileManager to use
          * @param keyring The Keyring to use
          */
-        AddDownloadDialogController(Models::DownloadManager& downloadManager, App::DataFileManager& dataFileManager, Keyring::Keyring& keyring);
+        AddDownloadDialogController(const std::filesystem::path& dataDirPath, Models::DownloadManager& downloadManager, Keyring::Keyring& keyring);
         /**
          * @brief Destructs the AddDownloadDialogController.
          */
@@ -175,9 +174,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     private:
         Models::DownloadManager& m_downloadManager;
-        Models::PreviousDownloadOptions& m_previousOptions;
+        Models::PreviousDownloadOptions m_previousOptions;
         Keyring::Keyring& m_keyring;
-        App::CancellationToken m_validationCancellationToken;
+        Helpers::CancellationToken m_validationCancellationToken;
         std::thread m_validationWorkerThread;
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;

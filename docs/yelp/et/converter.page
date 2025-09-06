@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="et">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Töötleja ⚒️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -22,12 +22,12 @@
         <title>Kaasa faili metainfo</title>
         <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Vaikimisi: Sees</p>
         </note>
     </item>
     <item>
         <title>Eemalda kõik lähteinfo andmed</title>
-        <p>Parabolic will clear metadata fields containing identifying download information.</p>
+        <p>Parabolic tühjendab metaandmete väljad, mis sisaldavad allalaadimise informatsiooni.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
         <note>
             <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
@@ -41,7 +41,7 @@
         <p>Parabolic will embed a media with its thumbnail if available.</p>
         <p>Kui failivorming ei toeta lõimitud pilte, siis salvestame selle eraldi pildifaili.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Vaikimisi: Sees</p>
         </note>
     </item>
     <item>
@@ -66,7 +66,7 @@
         <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
         <p>Whether or not embedding is supported if affected by your chosen <code>Preferred Subtitle Format</code>.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Vaikimisi: Sees</p>
         </note>
     </item>
     <item>

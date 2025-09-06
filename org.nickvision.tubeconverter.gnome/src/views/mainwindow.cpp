@@ -2,7 +2,6 @@
 #include <filesystem>
 #include <format>
 #include <thread>
-#include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
 #include "helpers/builder.h"
@@ -13,7 +12,6 @@
 #include "views/keyringpage.h"
 #include "views/preferencesdialog.h"
 
-using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
@@ -137,11 +135,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::show()
     {
         gtk_window_present(GTK_WINDOW(m_window));
-#ifdef __linux__
-        const StartupInformation& info{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
-#else
         const StartupInformation& info{ m_controller->startup() };
-#endif
         if(info.getWindowGeometry().isMaximized())
         {
             gtk_window_maximize(GTK_WINDOW(m_window));
@@ -557,7 +551,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_about_dialog_add_link(dialog, pair.first.c_str(), pair.second.c_str());
         }
         std::vector<const char*> urls;
-        std::vector<std::string> developers{ AppInfo::convertUrlMapToVector(m_controller->getAppInfo().getDevelopers()) };
+        std::vector<std::string> developers{ CodeHelpers::convertUrlMapToVector(m_controller->getAppInfo().getDevelopers()) };
         for(const std::string& developer : developers)
         {
             urls.push_back(developer.c_str());
@@ -565,7 +559,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         urls.push_back(nullptr);
         adw_about_dialog_set_developers(dialog, &urls[0]);
         urls.clear();
-        std::vector<std::string> designers{ AppInfo::convertUrlMapToVector(m_controller->getAppInfo().getDesigners()) };
+        std::vector<std::string> designers{ CodeHelpers::convertUrlMapToVector(m_controller->getAppInfo().getDesigners()) };
         for(const std::string& designer : designers)
         {
             urls.push_back(designer.c_str());
@@ -573,7 +567,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         urls.push_back(nullptr);
         adw_about_dialog_set_designers(dialog, &urls[0]);
         urls.clear();
-        std::vector<std::string> artists{ AppInfo::convertUrlMapToVector(m_controller->getAppInfo().getArtists()) };
+        std::vector<std::string> artists{ CodeHelpers::convertUrlMapToVector(m_controller->getAppInfo().getArtists()) };
         for(const std::string& artist : artists)
         {
             urls.push_back(artist.c_str());

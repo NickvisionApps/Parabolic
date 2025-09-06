@@ -1,9 +1,10 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
+#include <filesystem>
 #include <string>
-#include <libnick/app/datafilebase.h>
 #include <libnick/app/windowgeometry.h>
+#include <libnick/helpers/jsonfilebase.h>
 #include <libnick/update/version.h>
 #include <libnick/update/versiontype.h>
 #include "downloaderoptions.h"
@@ -14,16 +15,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     /**
      * @brief A model for the configuration of the application.
      */
-    class Configuration : public Nickvision::App::DataFileBase
+    class Configuration : public Helpers::JsonFileBase
     {
     public:
         /**
          * @brief Constructs a Configuration.
-         * @param key The key to pass to the DataFileBase
-         * @param appName The name of the application to pass to the DataFileBase
-         * @param isPortable The isPortable to pass to the DataFileBase
+         * @param path The path to the configuration file
          */
-        Configuration(const std::string& key, const std::string& appName, bool isPortable);
+        Configuration(const std::filesystem::path& path);
         /**
          * @brief Gets the preferred theme for the application.
          * @return The preferred theme

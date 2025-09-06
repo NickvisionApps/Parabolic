@@ -1,8 +1,10 @@
 #include "controls/downloadrow.h"
 #include <cmath>
 #include <libnick/localization/gettext.h>
+#include <libnick/notifications/appnotification.h>
 
 using namespace Nickvision::Events;
+using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -79,19 +81,17 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         if(std::isnan(args.getProgress()))
         {
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Processing"));
-            gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), false);
             gtk_progress_bar_pulse(m_builder.get<GtkProgressBar>("progBar"));
         }
         else
         {
-            gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), true);
             gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), args.getProgress());
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _f("{} | {} | ETA: {}", _("Running"), args.getSpeedStr(), args.getEtaStr()).c_str());
         }
         if(args.getLog() != m_log)
         {
             m_log = args.getLog();
-            gtk_text_buffer_set_text(gtk_text_view_get_buffer(m_builder.get<GtkTextView>("logView")), m_log.c_str(), m_log.size());
+            gtk_label_set_text(m_builder.get<GtkLabel>("logLabel"), m_log.c_str());
             GtkAdjustment* vadjustment{ gtk_scrolled_window_get_vadjustment(m_builder.get<GtkScrolledWindow>("logScroll")) };
             gtk_adjustment_set_value(vadjustment, gtk_adjustment_get_upper(vadjustment));
         }
@@ -124,7 +124,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
 
     void DownloadRow::setStopState()
     {
-        gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), false);
         gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 1.0);
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "media-playback-stop-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Stopped"));
@@ -137,7 +136,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     {
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "media-playback-pause-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Paused"));
-        gtk_progress_bar_set_show_text(m_builder.get<GtkProgressBar>("progBar"), false);
         gtk_button_set_icon_name(m_builder.get<GtkButton>("pauseResumeButton"), "media-playback-start-symbolic");
         gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("pauseResumeButton"), _("Resume"));
     }
@@ -201,5 +199,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     void DownloadRow::logToClipboard()
     {
         gdk_clipboard_set_text(gdk_display_get_clipboard(gdk_display_get_default()), m_log.c_str());
+        AppNotification::send({ _("Log copied to clipboard"), NotificationSeverity::Informational });;
     }
 }
