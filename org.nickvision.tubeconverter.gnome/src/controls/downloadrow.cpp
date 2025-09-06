@@ -1,8 +1,10 @@
 #include "controls/downloadrow.h"
 #include <cmath>
 #include <libnick/localization/gettext.h>
+#include <libnick/notifications/appnotification.h>
 
 using namespace Nickvision::Events;
+using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -89,7 +91,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         if(args.getLog() != m_log)
         {
             m_log = args.getLog();
-            gtk_text_buffer_set_text(gtk_text_view_get_buffer(m_builder.get<GtkTextView>("logView")), m_log.c_str(), m_log.size());
+            gtk_label_set_text(m_builder.get<GtkLabel>("logLabel"), m_log.c_str());
             GtkAdjustment* vadjustment{ gtk_scrolled_window_get_vadjustment(m_builder.get<GtkScrolledWindow>("logScroll")) };
             gtk_adjustment_set_value(vadjustment, gtk_adjustment_get_upper(vadjustment));
         }
@@ -197,5 +199,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     void DownloadRow::logToClipboard()
     {
         gdk_clipboard_set_text(gdk_display_get_clipboard(gdk_display_get_default()), m_log.c_str());
+        AppNotification::send({ _("Log copied to clipboard"), NotificationSeverity::Informational });;
     }
 }
