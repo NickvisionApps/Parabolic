@@ -49,7 +49,6 @@ OutputBaseFilename=NickvisionParabolicSetup
 SetupIconFile=..\resources\org.nickvision.tubeconverter.ico
 Compression=lzma
 SolidCompression=yes
-WizardStyle=modern
 PrivilegesRequired=admin
 DirExistsWarning=no
 CloseApplications=yes
