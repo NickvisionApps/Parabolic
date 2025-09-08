@@ -20,7 +20,7 @@ jobs:
       matrix:
         variant:
           - arch: x64
-            runner: windows-latest
+            runner: windows-2025
             triplet: x64-windows
             ffmpeg: win64
           #- arch: arm64
@@ -40,9 +40,13 @@ jobs:
           mkdir build
           mkdir build-portable
           Invoke-WebRequest https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.26-v1.17/gettext0.26-iconv1.17-shared-64.zip -OutFile gettext.zip
+          Invoke-WebRequest https://files.jrsoftware.org/is/6/innosetup-6.5.1.exe -OutFile innosetup.exe
           Expand-Archive -Force 'gettext.zip'
           move gettext\bin\* C:\Windows\System32
-          choco install innosetup
+          winget upgrade winget --accept-package-agreements --accept-source-agreements --disable-interactivity
+          winget install --id JRSoftware.InnoSetup -e --accept-package-agreements --accept-source-agreements --disable-interactivity
+          echo "C:\Program Files (x86)\Inno Setup 6" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "$env:LOCALAPPDATA\Programs\Inno Setup 6" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: "Vcpkg"
         uses: johnwason/vcpkg-action@v7
         id: vcpkg
