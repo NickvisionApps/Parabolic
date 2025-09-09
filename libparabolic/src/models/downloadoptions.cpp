@@ -569,40 +569,37 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 arguments.push_back("--write-auto-subs");
             }
-            if(downloaderOptions.getPreferredSubtitleFormat() != SubtitleFormat::Any)
+            arguments.push_back("--sub-format");
+            switch(downloaderOptions.getPreferredSubtitleFormat())
             {
-                arguments.push_back("--sub-format");
-                switch(downloaderOptions.getPreferredSubtitleFormat())
-                {
-                case SubtitleFormat::VTT:
-                    arguments.push_back("vtt/best");
-                    break;
-                case SubtitleFormat::SRT:
-                    arguments.push_back("srt/best");
-                    break;
-                case SubtitleFormat::ASS:
-                    arguments.push_back("ass/best");
-                    break;
-                case SubtitleFormat::LRC:
-                    arguments.push_back("lrc/best");
-                    break;
-                }
-                arguments.push_back("--convert-subs");
-                switch(downloaderOptions.getPreferredSubtitleFormat())
-                {
-                case SubtitleFormat::VTT:
-                    arguments.push_back("vtt");
-                    break;
-                case SubtitleFormat::SRT:
-                    arguments.push_back("srt");
-                    break;
-                case SubtitleFormat::ASS:
-                    arguments.push_back("ass");
-                    break;
-                case SubtitleFormat::LRC:
-                    arguments.push_back("lrc");
-                    break;
-                }
+            case SubtitleFormat::SRT:
+                arguments.push_back("srt/best");
+                break;
+            case SubtitleFormat::ASS:
+                arguments.push_back("ass/best");
+                break;
+            case SubtitleFormat::LRC:
+                arguments.push_back("lrc/best");
+                break;
+            default:
+                arguments.push_back("vtt/best");
+                break;
+            }
+            arguments.push_back("--convert-subs");
+            switch(downloaderOptions.getPreferredSubtitleFormat())
+            {
+            case SubtitleFormat::SRT:
+                arguments.push_back("srt");
+                break;
+            case SubtitleFormat::ASS:
+                arguments.push_back("ass");
+                break;
+            case SubtitleFormat::LRC:
+                arguments.push_back("lrc");
+                break;
+            default:
+                arguments.push_back("vtt");
+                break;
             }
             if(downloaderOptions.getEmbedSubtitles() && m_fileType.supportsSubtitleFormat(downloaderOptions.getPreferredSubtitleFormat()))
             {
