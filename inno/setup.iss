@@ -34,6 +34,9 @@ ShowLanguageDialog=yes
 UsePreviousLanguage=no
 LanguageDetectionMethod=uilanguage
 
+ArchitecturesAllowed=x64compatible
+ArchitecturesInstallIn64BitMode=x64compatible
+
 WizardStyle=modern
 WizardResizable=yes
 WizardSizePercent=120,130
@@ -69,11 +72,15 @@ Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "tamil"; MessagesFile: "compiler:Languages\Tamil.isl"
 
-[installDelete]
+[InstallDelete]
 Type: filesandordirs; Name: "{app}\*"
+
+[UninstallDelete]
+Type: filesandordirs; Name: "{app}"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
 Source: "vc_redist.exe"; DestDir: "{app}"; Flags: deleteafterinstall
@@ -88,10 +95,10 @@ Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; D
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{autoprograms}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeName}"
+Name: "{autoprograms}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeName}"; Tasks: quicklaunchicon
 Name: "{commondesktop}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
 Filename: "{app}\vc_redist.exe"; Parameters: "/install /quiet /norestart"
 Filename: "{app}\windowsappruntimeinstall.exe"; Parameters: "--quiet --force"
-Filename: "{app}\Release\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\Release\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked
