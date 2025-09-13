@@ -34,9 +34,6 @@ ShowLanguageDialog=yes
 UsePreviousLanguage=no
 LanguageDetectionMethod=uilanguage
 
-ArchitecturesAllowed=x64compatible
-ArchitecturesInstallIn64BitMode=x64compatible
-
 WizardStyle=modern
 WizardResizable=yes
 WizardSizePercent=120,130
@@ -80,7 +77,7 @@ Type: filesandordirs; Name: "{app}"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
 Source: "vc_redist.exe"; DestDir: "{app}"; Flags: deleteafterinstall
