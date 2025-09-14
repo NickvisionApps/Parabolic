@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-08-29 21:49-0400\n"
+"POT-Creation-Date: 2025-09-13 22:22-0400\n"
 "PO-Revision-Date: 2025-09-06 00:02+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -563,8 +563,8 @@ msgstr "O Parabolic substituirá os arquivos existentes."
 #: docs/yelp/C/downloads.page:36
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
-"folder, and a new download is created named <code>movie</code>, <code>movie."
-"mp4</code> will be overwritten with the new download's content."
+"folder, and a new download is created named <code>movie</code>, "
+"<code>movie.mp4</code> will be overwritten with the new download's content."
 msgstr ""
 "Por exemplo, se um arquivo chamado <code>movie.mp4</code> existir na pasta "
 "de download e um novo download for criado chamado <code>movie</code>, "
@@ -919,8 +919,8 @@ msgid ""
 "The URL of the media to download. Must be a valid (\"valid\" meaning "
 "syntactically correct) http or https link."
 msgstr ""
-"A URL da mídia a ser baixada. Deve ser um link http ou https válido ("
-"\"válido\" significa sintaticamente correto)."
+"A URL da mídia a ser baixada. Deve ser um link http ou https válido "
+"(\"válido\" significa sintaticamente correto)."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:28
@@ -946,12 +946,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
+#, fuzzy
 msgid ""
-"Each URL can be accompanied by an optional save folder (delimited by <code>|"
-"</code>) in which to save each media of the URL to."
+"Each URL can be accompanied by an optional save folder and filename "
+"(delimited by <code>|</code>) in which to save each media of the URL to."
 msgstr ""
-"Cada URL pode ser acompanhada por uma pasta de salvamento opcional ("
-"delimitada por <code>|</code>) na qual salvar cada mídia da URL."
+"Cada URL pode ser acompanhada por uma pasta de salvamento opcional "
+"(delimitada por <code>|</code>) na qual salvar cada mídia da URL."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:35
@@ -979,7 +980,8 @@ msgstr "<code>URL1</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:40
-msgid "<code>URL2 | \"Folder1\"</code>"
+#, fuzzy
+msgid "<code>URL2 | \"Folder1\" | Filename1</code>"
 msgstr "<code>URL2 | \"Pasta1\"</code>"
 
 #. (itstool) path: note/p
@@ -989,8 +991,9 @@ msgstr "<code>\"URL3\"|\"Pasta2\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:42
-msgid "<code>\"URL4\"</code>"
-msgstr "<code>\"URL4\"</code>"
+#, fuzzy
+msgid "<code>\"URL4\" | Folder3 | \"Filename2\"</code>"
+msgstr "<code>\"URL3\"|\"Pasta2\"</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:46
@@ -1108,8 +1111,8 @@ msgstr ""
 msgid ""
 "Each format is the form: <code>resolution | bitrate | codec (id)</code>."
 msgstr ""
-"Cada formato é o seguinte: <code>resolução | taxa de bits | codec "
-"(id)</code>."
+"Cada formato é o seguinte: <code>resolução | taxa de bits | codec (id)</"
+"code>."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:76
@@ -1198,8 +1201,8 @@ msgid ""
 "xref=\"downloads\">preferences</link>."
 msgstr ""
 "Lista de legendas disponíveis para download pela mídia. Outras configurações "
-"de legendas podem ser definidas em <link xref=\"downloads\""
-">preferências</link>."
+"de legendas podem ser definidas em <link xref=\"downloads\">preferências</"
+"link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:105
@@ -1241,8 +1244,8 @@ msgstr "Exportar descrição"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:117
 msgid ""
-"If enabled, Parabolic will export the media's description to a <code>."
-"description</code> file alongside the downloaded file."
+"If enabled, Parabolic will export the media's description to a "
+"<code>.description</code> file alongside the downloaded file."
 msgstr ""
 "Se ativado, o Parabolic vai exportar a descrição da mídia em um arquivo "
 "<code>.description</code> ao lado do arquivo baixado."
@@ -1358,6 +1361,9 @@ msgstr "O nome do arquivo a ser usado ao salvar o download."
 #: docs/yelp/C/newDownload.page:158
 msgid "Default: The title of the media"
 msgstr "Padrão: O título da mídia"
+
+#~ msgid "<code>\"URL4\"</code>"
+#~ msgstr "<code>\"URL4\"</code>"
 
 #, fuzzy, no-wrap
 #~ msgid "Name"
