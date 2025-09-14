@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.9.0-next" });
+        m_appInfo.setVersion({ "2025.9.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added the ability to specify a suggested filename in batch files\n- Added the ability to open URLs directly in Parabolic with the parabolic:// URL protocol\n- Fixed handling of temporary files\n- Fixed an issue where some subtitles could not be downloaded\n- Fixed an issue where the app crashed when validating an invalid URL\n- Updated yt-dlp");
@@ -193,7 +193,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             else
             {
-                std::string ytdlpVersion{ Environment::exec(m_downloadManager.getYtdlpExecutablePath().string() + " --version") };
+                std::string ytdlpVersion{ Environment::exec("\"" + m_downloadManager.getYtdlpExecutablePath().string() + "\" --version") };
                 return "yt-dlp version " + ytdlpVersion;
             }
         }) };
@@ -206,7 +206,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             else
             {
-                std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
+                std::string ffmpegVersion{ Environment::exec("\"" + Environment::findDependency("ffmpeg").string() + "\" -version") };
                 return ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) + "\n";
             }
         }) };
@@ -219,7 +219,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             else
             {
-                std::string aria2cVersion{ Environment::exec(Environment::findDependency("aria2c").string() + " --version") };
+                std::string aria2cVersion{ Environment::exec("\"" + Environment::findDependency("aria2c").string() + "\" --version") };
                 return aria2cVersion.substr(0, aria2cVersion.find('\n')) + "\n";
             }
         }) };
@@ -309,9 +309,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Get URL to validate from args
         if(m_args.size() > 1)
         {
-            if(StringHelpers::isValidUrl(StringHelpers::trim(m_args[1])))
+            std::string url{ StringHelpers::trim(m_args[1]) };
+            if(url.starts_with("parabolic://"))
             {
-                info.setUrlToValidate(StringHelpers::trim(m_args[1]));
+                url = url.substr(12);
+            }
+            if(StringHelpers::isValidUrl(url))
+            {
+                info.setUrlToValidate(url);
             }
         }
         m_started = true;

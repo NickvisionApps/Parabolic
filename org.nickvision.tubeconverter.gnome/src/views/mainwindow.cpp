@@ -3,6 +3,7 @@
 #include <format>
 #include <thread>
 #include <libnick/helpers/codehelpers.h>
+#include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "helpers/builder.h"
 #include "helpers/dialogptr.h"
@@ -132,7 +133,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         gtk_window_destroy(GTK_WINDOW(m_window));
     }
 
-    void MainWindow::show()
+    void MainWindow::show(const std::string& url)
     {
         gtk_window_present(GTK_WINDOW(m_window));
         const StartupInformation& info{ m_controller->startup() };
@@ -177,16 +178,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
             }), this);
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
         }
-        if(!info.getUrlToValidate().empty())
+        if(StringHelpers::isValidUrl(url))
+        {
+            addDownload(url);
+        }
+        else if(!info.getUrlToValidate().empty())
         {
             addDownload(info.getUrlToValidate());
         }
-    }
-
-    void MainWindow::addDownload(const std::string& url)
-    {
-        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
-        dialog->present();
     }
 
     bool MainWindow::onCloseRequested()
@@ -576,6 +575,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_artists(dialog, &urls[0]);
         adw_about_dialog_set_translator_credits(dialog, m_controller->getAppInfo().getTranslatorCredits().c_str());
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+    }
+
+    void MainWindow::addDownload(const std::string& url)
+    {
+        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
+        dialog->present();
     }
 
     void MainWindow::openFile(GVariant* variant)
