@@ -1,4 +1,5 @@
 ﻿#include "controllers/mainwindowcontroller.h"
+#include <future>
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
@@ -183,38 +184,50 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
-        std::stringstream builder;
         //yt-dlp
-        if(m_downloadManager.getYtdlpExecutablePath().empty())
+        std::future<std::string> ytdlpFuture{ std::async(std::launch::async, [this]() -> std::string
         {
-            builder << "yt-dlp not found" << std::endl;
-        }
-        else
-        {
-            std::string ytdlpVersion{ Environment::exec("\"" + m_downloadManager.getYtdlpExecutablePath().string() + "\"" + " --version") };
-            builder << "yt-dlp version " << ytdlpVersion;
-        }
+            if(m_downloadManager.getYtdlpExecutablePath().empty())
+            {
+                return "yt-dlp not found\n";
+            }
+            else
+            {
+                std::string ytdlpVersion{ Environment::exec(m_downloadManager.getYtdlpExecutablePath().string() + " --version") };
+                return "yt-dlp version " + ytdlpVersion;
+            }
+        }) };
         //ffmpeg
-        if(Environment::findDependency("ffmpeg").empty())
+        std::future<std::string> ffmpegFuture{ std::async(std::launch::async, []() -> std::string
         {
-            builder << "ffmpeg not found" << std::endl;
-        }
-        else
-        {
-            std::string ffmpegVersion{ Environment::exec("\"" + Environment::findDependency("ffmpeg").string() + "\"" + " -version") };
-            builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
-        }
+            if(Environment::findDependency("ffmpeg").empty())
+            {
+                return "ffmpeg not found\n";
+            }
+            else
+            {
+                std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
+                return ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) + "\n";
+            }
+        }) };
         //aria2c
-        if(Environment::findDependency("aria2c").empty())
+        std::future<std::string> aria2cFuture{ std::async(std::launch::async, []() -> std::string
         {
-            builder << "aria2c not found" << std::endl;
-        }
-        else
-        {
-            std::string aria2cVersion{ Environment::exec("\"" + Environment::findDependency("aria2c").string() + "\"" + " --version") };
-            builder << aria2cVersion.substr(0, aria2cVersion.find('\n')) << std::endl;
-        }
+            if(Environment::findDependency("aria2c").empty())
+            {
+                return "aria2c not found\n";
+            }
+            else
+            {
+                std::string aria2cVersion{ Environment::exec(Environment::findDependency("aria2c").string() + " --version") };
+                return aria2cVersion.substr(0, aria2cVersion.find('\n')) + "\n";
+            }
+        }) };
         //Extra
+        std::stringstream builder;
+        builder << ytdlpFuture.get();
+        builder << ffmpegFuture.get();
+        builder << aria2cFuture.get();
         if(!extraInformation.empty())
         {
             builder << std::endl << extraInformation << std::endl;
