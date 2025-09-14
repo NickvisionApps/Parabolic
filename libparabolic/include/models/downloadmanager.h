@@ -2,6 +2,7 @@
 #define DOWNLOADMANAGER_H
 
 #include <filesystem>
+#include <future>
 #include <memory>
 #include <mutex>
 #include <optional>
@@ -178,18 +179,29 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param token The CancellationToken to use for cancellation
          * @param url The URL to fetch information for
          * @param credential An optional credential to use for authentication
-         * @param suggestedSaveFolder An option save folder to save the url's media to
+         * @param suggestedSaveFolder An optional save folder to save the url's media to
+         * @param suggestedFilename An optional suggested filename to save the url's media as
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
+        std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}, const std::string& suggestedFilename = {}) const;
+        /**
+         * @brief Asynchronously fetches information about a URL.
+         * @param token The CancellationToken to use for cancellation
+         * @param url The URL to fetch information for
+         * @param credential An optional credential to use for authentication
+         * @param suggestedSaveFolder An optional save folder to save the url's media to
+         * @param suggestedFilename An optional suggested filename to save the url's media as
+         * @return A future to the optional UrlInfo
+         */
+        std::future<std::optional<UrlInfo>> fetchUrlInfoAsync(Helpers::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}, const std::string& suggestedFilename = {}) const;
         /**
          * @brief Fetches information about a set of URLs from a batch file.
          * @param token The CancellationToken to use for cancellation
-         * @param batchFile The batch file with listed URLs
+         * @param batchFilePath The path to a batch file
          * @param credential An optional credential to use for authentication
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
+        std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::filesystem::path& batchFilePath, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.

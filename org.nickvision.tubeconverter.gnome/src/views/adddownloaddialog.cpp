@@ -18,7 +18,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         //Load Validate Page
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), false);
-        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
         if(StringHelpers::isValidUrl(StringHelpers::trim(url)))
         {
             gtk_editable_set_text(m_builder.get<GtkEditable>("urlRow"), url.c_str());
@@ -97,7 +96,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             if(file)
             {
                 AddDownloadDialog* dialog{ reinterpret_cast<AddDownloadDialog*>(data) };
-                adw_view_stack_set_visible_child_name(dialog->m_builder.get<AdwViewStack>("viewStack"), "spinner");
+                adw_navigation_view_push_by_tag(dialog->m_builder.get<AdwNavigationView>("navigationView"), "loading");
                 std::optional<Credential> credential{ std::nullopt };
                 if(adw_expander_row_get_enable_expansion(dialog->m_builder.get<AdwExpanderRow>("authenticateRow")) && adw_combo_row_get_selected(dialog->m_builder.get<AdwComboRow>("credentialRow")) == 0)
                 {
