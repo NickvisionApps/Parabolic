@@ -1,4 +1,5 @@
 #include "App.xaml.h"
+#include <cstdlib>
 #include "Views/MainWindow.xaml.h"
 #include <libnick/helpers/stringhelpers.h>
 
@@ -10,7 +11,7 @@ using namespace winrt::Microsoft::UI::Xaml;
 namespace winrt::Nickvision::TubeConverter::WinUI::implementation
 {
     App::App()
-        : m_controller{ std::make_shared<MainWindowController>(StringHelpers::splitArgs(GetCommandLineA())) },
+        : m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(__argv, __argv + __argc)) },
         m_window{ nullptr }
     {
         InitializeComponent();
