@@ -277,6 +277,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         process.start();
         if(process.waitForExit() != 0 || process.getOutput().empty())
         {
+            token.setCancelFunction({});
             return std::nullopt;
         }
         token.setCancelFunction({});
