@@ -20,71 +20,71 @@
 <terms>
     <item>
         <title>Incorpora metadati</title>
-        <p>Parabolic taggherà un materiale con le sue informazioni rilevanti (titolo, genere, ecc...) se disponibile.</p>
+        <p>Parabolic taggherà un media con le sue informazioni rilevanti (titolo, genere, ecc...) se disponibili.</p>
         <note style="advanced">
-            <p>Predefinito: attivato</p>
+            <p>Predefinito: ON</p>
         </note>
     </item>
     <item>
-        <title>Rimuovi i dati della sorgente</title>
-        <p>Parabolic cancellerà le informazioni identificative dai metadati.</p>
-        <p>Informazioni cancellate: <code>commento</code>, <code>descrizione</code>, <code>sinossi</code>, <code>rovescio</code> e <code>handler_name</code> in ogni flusso.</p>
+        <title>Rimuovi dati sorgente</title>
+        <p>Parabolic eliminerà i metadatio con le informazioni identificative.</p>
+        <p>Informazioni eliminate in ogni stream: <code>commento</code>, <code>descrizione</code>, <code>sinossi</code>, <code>rpurl</code> e <code>handler_name</code>.</p>
         <note>
-            <p>L'opzione è configurabile solo se abilitato l'opzione <code>Embed Metadata</code>.</p>
+            <p>L'opzione è configurabile solo se è abilitata l'opzione <code>Incorpora metadati</code>.</p>
         </note>
         <note style="advanced">
-            <p>Predefinito: Disattivato</p>
+            <p>Predefinito: disattivato</p>
         </note>
     </item>
     <item>
         <title>Incorpora miniature</title>
-        <p>Parabolic incorporerà un file multimediale con la relativa miniatura, se disponibile.</p>
+        <p>Parabolic incorporerà un media con la relativa miniatura, se disponibile.</p>
         <p>Se il tipo di file non supporta l'incorporamento, la miniatura verrà salvata in un file immagine separato.</p>
         <note style="advanced">
-            <p>Predefinito: attivato</p>
+            <p>Predefinito: ON</p>
         </note>
     </item>
     <item>
         <title>Ritaglia miniature audio</title>
         <p>Parabolic ritaglierà le copertine degli audio in dei quadrati.</p>
         <note>
-            <p>Questa opzione è configurabile solamente se <code>Embed Thumbnails</code> è attivo.</p>
+            <p>Questa opzione è configurabile solamente se è attiva l'opzione <code>Incorpora miniatura</code>.</p>
         </note>
         <note style="advanced">
-            <p>Predefinito: Disattivato</p>
+            <p>Predefinito: disattivato</p>
         </note>
     </item>
     <item>
-        <title>Incorpora i capitoli</title>
-        <p>Parabolic etichetterà un file multimediale con le sue informazioni sui capitoli, se disponibili.</p>
+        <title>Incorpora capitoli</title>
+        <p>Parabolic etichetterà un media con le sue informazioni sui capitoli, se disponibili.</p>
         <note style="advanced">
-            <p>Predefinito: Disattivato</p>
+            <p>Predefinito: disattivato</p>
         </note>
     </item>
     <item>
-        <title>Incorpora i sottotitoli</title>
+        <title>Incorpora sottotitoli</title>
         <p>Se disabilitati o se l'incorporamento non è supportato, i sottotitoli scaricati verranno salvati in file separati.</p>
-        <p>La possibilità di incorporare i sottotitoli dipende dal <code>Formato Preferito Sottotitoli</code> selezionato.</p>
+        <p>La possibilità di incorporare i sottotitoli dipende dal <code>Formato sottotitoli preferito</code> selezionato.</p>
         <note style="advanced">
-            <p>Predefinito: attivato</p>
+            <p>Predefinito: ON</p>
         </note>
     </item>
     <item>
-        <title>FFmpeg Threads</title>
+        <title>Thread FFmpeg</title>
         <p>Parabolic limiterà il numero di thread usati da <code>FFmpeg</code>.</p>
         <note style="advanced">
-            <p>Predefinito: il massimo numero di thread disponibili sul sistema</p>
+            <p>Predefinito: numero massimo di thread disponibili nel sistema</p>
         </note>
     </item>
     <item>
-        <title>Postprocessing Arguments</title>
-        <p>Parabolic will present these options in the add download dialog to be passed to <code>ffmpeg</code> and other post-processors when processing media.</p>
+        <title>Argomenti post elaborazione</title>
+        <p>Parabolic visualizzerà queste opzioni nella finestra di dialogo Aggiungi download da passare a <code>FFmpeg </code> e altri post elaboratori durante l'elaborazione dei media.</p>
         <note style="advanced">
-            <p>Postprocessing Argument Fields:</p>
-            <p><code>Name</code> - The friendly name of the argument.</p>
-            <p><code>Post Processor</code> - The post processor to pass the arguments to.</p>
-            <p><code>Executable</code> - The executable to pass the arguments to.</p>
-            <p><code>Args</code> - The args to pass.</p>
+            <p>Campi argomento post elaborazione:</p>
+            <p><code>Nome</code> - Il nome amichevole dell'argomento.</p>
+            <p><code>Post processore</code> - Il programma di post elaborazione a cui trasmettere gli argomenti.</p>
+            <p><code>Eseguibile</code> - L'eseguibile a cui passare gli argomenti.</p>
+            <p><code>Arg</code> - Gli argomenti da passare.</p>
         </note>
     </item>
 </terms>

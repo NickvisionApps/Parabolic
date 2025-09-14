@@ -15,105 +15,105 @@
 </info>
 
 <title>Novo Download</title>
-<p>This page explains all options for configuring a new download in <app>Parabolic</app>.</p>
+<p>Esta página explica todas as opções para configurar um novo download no <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>URL da mídia</title>
-        <p>The URL of the media to download. Must be a valid ("valid" meaning syntactically correct) http or https link.</p>
+        <p>A URL da mídia a ser baixada. Deve ser um link http ou https válido ("válido" significa sintaticamente correto).</p>
         <note>
-            <p>If a valid URL is found inside the clipboard upon opening the Add Download dialog, the URL will be automatically pasted in the URL entry row.</p>
+            <p>Se uma URL válida for encontrada na área de transferência ao abrir a caixa de diálogo Adicionar download, a URL será colada automaticamente na linha de entrada de URL.</p>
         </note>
     </item>
     <item>
-        <title>Use Batch File</title>
-        <p>Select a batch text file that contains a list of URLs to validate.</p>
-        <p>Each URL can be accompanied by an optional save folder (delimited by <code>|</code>) in which to save each media of the URL to.</p>
-        <p>All of the URLs and their media from the batch file will be grouped and treated as one single playlist by Parabolic.</p>
-        <p>The optional save folder must be an absolute path.</p>
+        <title>Usar arquivo em lote</title>
+        <p>Selecione um arquivo de texto em lote que contenha uma lista de URLs para validar.</p>
+        <p>Each URL can be accompanied by an optional save folder and filename (delimited by <code>|</code>) in which to save each media of the URL to.</p>
+        <p>Todos os URLs e suas mídias do arquivo em lote serão agrupados e tratados como uma única lista de reprodução pelo Parabolic.</p>
+        <p>A pasta de salvamento opcional deve ser um caminho absoluto.</p>
         <note style="advanced">
             <p>Formato de arquivo em lote:</p>
             <p><code>URL1</code></p>
-            <p><code>URL2 | "Folder1"</code></p>
-            <p><code>"URL3"|"Folder2"</code></p>
-            <p><code>"URL4"</code></p>
+            <p><code>URL2 | "Folder1" | Filename1</code></p>
+            <p><code>"URL3"|"Pasta2"</code></p>
+            <p><code>"URL4" | Folder3 | "Filename2"</code></p>
         </note>
     </item>
     <item>
         <title>Autenticar</title>
-        <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
-        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+        <p>Se ativado, o usuário será solicitado a fornecer um nome de usuário e/ou senha para passar ao yt-dlp durante o download.</p>
+        <p>Se forem encontradas credenciais no chaveiro, o usuário pode escolher entre uma lista de credenciais nomeadas para usar (ou continuar a inserir manualmente uma credencial)</p>
          <note style="advanced">
-            <p>Not all websites support passing usernames and passwords to yt-dlp. For example, YouTube does NOT support this feature.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+            <p>Nem todos os sites oferecem suporte à transmissão de nomes de usuário e senhas para o yt-dlp. Por exemplo, o YouTube NÃO oferece suporte a esse recurso.</p>
+            <p>Para esses sites que não suportam a passagem de credenciais, é recomendável selecionar um navegador para usar cookies em Preferências.</p>
         </note>
     </item>
     <item>
         <title>Baixar imediatamente</title>
-        <p>Parabolic will immediately download the media after validation, using the previously configured download options.</p>
+        <p>O Parabolic baixará a mídia imediatamente após a validação, usando as opções de download configuradas anteriormente.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
         <title>Tipo de arquivo</title>
-        <p>The file type of which to download the media as.</p>
+        <p>O tipo de arquivo do qual a mídia será baixada.</p>
         <note>
-            <p>The previously used file type will be remembered and pre-selected for the next download.</p>
+            <p>O tipo de arquivo usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
         <note style="advanced">
-            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
-            <p>Generic file types do not fully support embedding thumbnails and subtitles. Separate files may be written to disk if embedding is not supported.</p>
+            <p>Selecionar os tipos de arquivo <code>Vídeo (Genérico)</code> ou <code>Áudio (Genérico)</code> fará com que o Parabolic baixe a mídia no tipo de arquivo original sem realizar nenhuma conversão.</p>
+            <p>Tipos de arquivo genéricos não oferecem suporte total à incorporação de miniaturas e legendas. Arquivos separados podem ser gravados em disco se a incorporação não for suportada.</p>
         </note>
     </item>
     <item>
         <title>Formato de vídeo</title>
-        <p>The list of video formats available for download, sorted by resolution and bitrate.</p>
-        <p>Each format is the form: <code>resolution | bitrate | codec (id)</code>.</p>
-        <p>If the file type is an audio type, this option will not be available.</p>
+        <p>A lista de formatos de vídeo disponíveis para download, classificados por resolução e taxa de bits.</p>
+        <p>Cada formato é o seguinte: <code>resolução | taxa de bits | codec (id)</code>.</p>
+        <p>Se o tipo de arquivo for de áudio, esta opção não estará disponível.</p>
         <note>
             <p>O formato de vídeo usado anteriormente será relembrado e pré-selecionado no próximo download.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>bv*</code></p>
-            <p>- <code>Worst</code> = <code>wv*</code></p>
+            <p>A seguir estão os formatos especiais usados pelo Parabolic para corresponder aos comportamentos do <code>yt-dlp</code>:</p>
+            <p>- <code>None</code> = Nenhuma opção passada para <code>yt-dlp</code></p>
+            <p>- <code>Melhor</code> = <code>bv*</code></p>
+            <p>- <code>Pior</code> = <code>wv*</code></p>
         </note>
     </item>
     <item>
         <title>Formato de áudio</title>
-        <p>The list of audio formats available for download, sorted by bitrate.</p>
-        <p>Each format is the form: <code>bitrate | language (id)</code>.</p>
+        <p>A lista de formatos de áudio disponíveis para download, classificados por taxa de bits.</p>
+        <p>Cada formato é o seguinte: <code>bitrate | language (id)</code>.</p>
         <note>
             <p>O formato de áudio usado anteriormente será relembrado e pré-selecionado no próximo download.</p>
         </note>
         <note style="advanced">
-            <p>The following are special formats used by Parabolic to match <code>yt-dlp</code> behaviors:</p>
-            <p>- <code>None</code> = No option passed to <code>yt-dlp</code></p>
-            <p>- <code>Best</code> = <code>ba</code></p>
-            <p>- <code>Worst</code> = <code>wa</code></p>
+            <p>A seguir estão os formatos especiais usados pelo Parabolic para corresponder aos comportamentos do <code>yt-dlp</code>:</p>
+            <p>- <code>None</code> = Nenhuma opção passada para <code>yt-dlp</code></p>
+            <p>- <code>Melhor</code> = <code>ba</code></p>
+            <p>- <code>Pior</code> = <code>wa</code></p>
         </note>
     </item>
     <item>
         <title>Legendas</title>
-        <p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+        <p>Lista de legendas disponíveis para download pela mídia. Outras configurações de legendas podem ser definidas em <link xref="downloads">preferências</link>.</p>
         <note>
             <p>O formato de legendas usado anteriormente será relembrado e pré-selecionado no próximo download.</p>
         </note>
     </item>
     <item>
         <title>Dividir capítulos</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <p>Se ativado, o Parabolic dividirá o download de um vídeo em vários arquivos menores com base em seus capítulos.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
         <title>Exportar descrição</title>
         <p>Se ativado, o Parabolic vai exportar a descrição da mídia em um arquivo <code>.description</code> ao lado do arquivo baixado.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
@@ -122,37 +122,37 @@
     </item>
     <item>
         <title>Argumento do pós-processador</title>
-        <p>An argument to pass to the post processor during the download. The available postprocessing arguments can be configured in <link xref="converter">preferences</link>.</p>
+        <p>Um argumento a ser passado ao pós-processador durante o download. Os argumentos de pós-processamento disponíveis podem ser configurados em <link xref="converter">preferências</link>.</p>
         <note>
-            <p>The previously selected argument will be remembered and pre-selected for the next download.</p>
+            <p>O argumento selecionado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
         <title>Gravar arquivo de playlist M3U</title>
-        <p>If enabled, Parabolic will write a m3u file for the playlist download.</p>
+        <p>Se ativado, o Parabolic gravará um arquivo m3u para download da playlist.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next playlist download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download da playlist.</p>
         </note>
     </item>
     <item>
-        <title>Time Frame</title>
-        <p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <title>Período de tempo</title>
+        <p>O usuário pode inserir um período de início e um período de término para baixar uma seção específica da mídia.</p>
         <note style="advanced">
-            <p>Default: The whole media length</p>
+            <p>Padrão: todo o comprimento da mídia</p>
         </note>
     </item>
     <item>
         <title>Pasta de destino</title>
-        <p>The folder at which to save the download to.</p>
+        <p>A pasta onde o download será salvo.</p>
         <note>
-            <p>The previously used folder will be remembered and pre-selected for the next download.</p>
+            <p>A pasta usada anteriormente será lembrada e pré-selecionada para o próximo download.</p>
         </note>
     </item>
     <item>
         <title>Nome do arquivo</title>
-        <p>The file name to use when saving the download.</p>
+        <p>O nome do arquivo a ser usado ao salvar o download.</p>
         <note style="advanced">
-            <p>Default: The title of the media</p>
+            <p>Padrão: O título da mídia</p>
         </note>
     </item>
 </terms>

@@ -1,9 +1,10 @@
 #ifndef DOWNLOADRECOVERYQUEUE_H
 #define DOWNLOADRECOVERYQUEUE_H
 
+#include <filesystem>
 #include <unordered_map>
 #include <utility>
-#include <libnick/app/datafilebase.h>
+#include <libnick/helpers/jsonfilebase.h>
 #include "downloadoptions.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -11,17 +12,15 @@ namespace Nickvision::TubeConverter::Shared::Models
     /**
      * @brief A model of a queue of downloads that can be recovered.
      */
-    class DownloadRecoveryQueue : public Nickvision::App::DataFileBase
+    class DownloadRecoveryQueue : public Helpers::JsonFileBase
     {
     public:
         /**
          * @brief Constructs a DownloadRecoveryQueue.
          * @brief This will load the recoverable downloads from disk.
-         * @param key The key to pass to the DataFileBase
-         * @param appName The name of the application to pass to the DataFileBase
-         * @param isPortable The isPortable to pass to the DataFileBase
+         * @param path The path to the recovery file
          */
-        DownloadRecoveryQueue(const std::string& key, const std::string& appName, bool isPortable);
+        DownloadRecoveryQueue(const std::filesystem::path& path);
         /**
          * @brief Gets a list of downloads to recover.
          * @returns A list of DownloadOptions

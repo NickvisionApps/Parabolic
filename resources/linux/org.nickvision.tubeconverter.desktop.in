@@ -2,13 +2,13 @@
 Version=1.0
 Name=@DISPLAY_NAME@
 Comment=Download web video and audio
-Exec=@CMAKE_INSTALL_FULL_LIBDIR@/@PROJECT_NAME@/@OUTPUT_NAME@
+Exec=@CMAKE_INSTALL_FULL_LIBDIR@/@PROJECT_NAME@/@OUTPUT_NAME@ %u
 Icon=@PROJECT_NAME@
 Terminal=false
 Type=Application
 Categories=AudioVideo;Network;
 Keywords=YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;audio;video;media;download;
-MimeType=text/x-uri
+MimeType=x-scheme-handler/parabolic;
 X-GNOME-UsesNotifications=@GNOME_NOTIFICATIONS@
 StartupNotify=@STARTUP_NOTIFY@
 DBusActivatable=@DBUS_ACTIVATABLE@

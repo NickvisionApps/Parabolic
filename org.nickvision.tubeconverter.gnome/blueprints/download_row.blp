@@ -160,15 +160,15 @@ Gtk.ListBoxRow root {
       Gtk.ScrolledWindow logScroll {
         height-request: 200;
 
-        child: Gtk.TextView logView {
-          left-margin: 16;
-          top-margin: 6;
-          bottom-margin: 16;
-          right-margin: 16;
-          editable: false;
+        child: Gtk.Label logLabel {
+          hexpand: true;
+          margin-start: 6;
+          margin-top: 6;
+          margin-end: 6;
+          margin-bottom: 6;
+          selectable: true;
+          wrap: true;
           wrap-mode: char;
-
-          styles [ "card", "flat" ]
         };
       }
     }

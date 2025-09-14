@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <memory>
+#include <string>
 #include <vector>
 #include <adwaita.h>
 #include "controls/downloadrow.h"
@@ -29,13 +30,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
         ~MainWindow();
         /**
          * @brief Shows the main window.
-         */
-        void show();
-        /**
-         * @brief Opens the application's add download dialog.
          * @param url An optional url to start download validation with
          */
-        void addDownload(const std::string& url = "");
+        void show(const std::string& url = "");
 
     private:
         /**
@@ -138,6 +135,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Opens the application's about dialog.
          */
         void about();
+        /**
+         * @brief Opens the application's add download dialog.
+         * @param url An optional url to start download validation with
+         */
+        void addDownload(const std::string& url = "");
         /**
          * @brief Opens a file from the given GVariant.
          * @param variant GVariant

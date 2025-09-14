@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-08-29 21:49-0400\n"
+"POT-Creation-Date: 2025-09-13 22:22-0400\n"
 "PO-Revision-Date: 2025-08-10 11:01+0000\n"
 "Last-Translator: YuzuMikan <gyagehi@fuwamofu.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -572,8 +572,8 @@ msgstr "有効であれば、Parabolic は存在するファイルを上書き�
 #: docs/yelp/C/downloads.page:36
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
-"folder, and a new download is created named <code>movie</code>, <code>movie."
-"mp4</code> will be overwritten with the new download's content."
+"folder, and a new download is created named <code>movie</code>, "
+"<code>movie.mp4</code> will be overwritten with the new download's content."
 msgstr ""
 "例えば、<code>movie.mp4</code>という名前のファイルがダウンロードフォルダーに"
 "存在し、<code>movie</code>という名前のダウンロードが作成されると、"
@@ -949,8 +949,8 @@ msgstr ""
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
 msgid ""
-"Each URL can be accompanied by an optional save folder (delimited by <code>|"
-"</code>) in which to save each media of the URL to."
+"Each URL can be accompanied by an optional save folder and filename "
+"(delimited by <code>|</code>) in which to save each media of the URL to."
 msgstr ""
 
 #. (itstool) path: item/p
@@ -978,7 +978,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:40
-msgid "<code>URL2 | \"Folder1\"</code>"
+msgid "<code>URL2 | \"Folder1\" | Filename1</code>"
 msgstr ""
 
 #. (itstool) path: note/p
@@ -988,7 +988,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:42
-msgid "<code>\"URL4\"</code>"
+msgid "<code>\"URL4\" | Folder3 | \"Filename2\"</code>"
 msgstr ""
 
 #. (itstool) path: item/title
@@ -1232,8 +1232,8 @@ msgstr "概要をエクスポート"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:117
 msgid ""
-"If enabled, Parabolic will export the media's description to a <code>."
-"description</code> file alongside the downloaded file."
+"If enabled, Parabolic will export the media's description to a "
+"<code>.description</code> file alongside the downloaded file."
 msgstr ""
 "有効であれば、Parabolic は、ダウンロードされたファイルと一緒に、メディアの概"
 "要を <code>.description</code> ファイルにエクスポートします。"
@@ -1562,10 +1562,10 @@ msgstr "デフォルト: メディアのタイトル"
 #~ "be downloaded if available."
 #~ msgstr ""
 #~ "同じ言語であっても、サイトによって違った言語コードを使用しているかもしれま"
-#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例え"
-#~ "ば、\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。より"
-#~ "良い結果を得るために、有効な言語コードを全て指定してください。自動生成され"
-#~ "た字幕が利用可能な場合は、それらもダウンロードされます。"
+#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、"
+#~ "\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。より良い"
+#~ "結果を得るために、有効な言語コードを全て指定してください。自動生成された字"
+#~ "幕が利用可能な場合は、それらもダウンロードされます。"
 
 #~ msgid ""
 #~ "You can specify \"all\" instead to download all subtitles, but without "
@@ -1631,8 +1631,8 @@ msgstr "デフォルト: メディアのタイトル"
 #~ "の資格情報を再度入力する必要があります。"
 
 #~ msgid ""
-#~ "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-#~ "Application\">Passwords and Keys</link>."
+#~ "Install <link href=\"https://flathub.org/apps/"
+#~ "org.gnome.seahorse.Application\">Passwords and Keys</link>."
 #~ msgstr ""
 #~ "<link href=\"https://flathub.org/apps/org.gnome.seahorse.Application\">パ"
 #~ "スワードと鍵</link>をインストール。"
@@ -1645,8 +1645,9 @@ msgstr "デフォルト: メディアのタイトル"
 #~ "リがシステムの資格情報管理に登録することを確実にします）"
 
 #~ msgid ""
-#~ "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
-#~ "tubeconverter</code> entry in the <code>Default Keyring</code>."
+#~ "Open <code>Passwords and Keys</code> and locate the "
+#~ "<code>org.nickvision.tubeconverter</code> entry in the <code>Default "
+#~ "Keyring</code>."
 #~ msgstr ""
 #~ "<code>パスワードと鍵</code>を開き、<code>デフォルトのキーリング</code>の"
 #~ "<code>org.nickvision.tubeconverter</code>のエントリをさがす。"

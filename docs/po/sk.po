@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-08-29 21:49-0400\n"
+"POT-Creation-Date: 2025-09-13 22:22-0400\n"
 "PO-Revision-Date: 2025-07-25 06:03+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -557,8 +557,8 @@ msgstr "Parabolic prepíše existujúce súbory."
 #: docs/yelp/C/downloads.page:36
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
-"folder, and a new download is created named <code>movie</code>, <code>movie."
-"mp4</code> will be overwritten with the new download's content."
+"folder, and a new download is created named <code>movie</code>, "
+"<code>movie.mp4</code> will be overwritten with the new download's content."
 msgstr ""
 "Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na "
 "stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</"
@@ -942,9 +942,10 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
+#, fuzzy
 msgid ""
-"Each URL can be accompanied by an optional save folder (delimited by <code>|"
-"</code>) in which to save each media of the URL to."
+"Each URL can be accompanied by an optional save folder and filename "
+"(delimited by <code>|</code>) in which to save each media of the URL to."
 msgstr ""
 "Každá URL adresa môže byť sprevádzaná voliteľným priečinkom na uloženie "
 "(oddeleným pomocou <code>|</code>), do ktorého sa uloží každé médium z danej "
@@ -977,7 +978,8 @@ msgstr "<code>URL1</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:40
-msgid "<code>URL2 | \"Folder1\"</code>"
+#, fuzzy
+msgid "<code>URL2 | \"Folder1\" | Filename1</code>"
 msgstr "<code>URL2 | \"Priečinok1\"</code>"
 
 #. (itstool) path: note/p
@@ -987,8 +989,9 @@ msgstr "<code>URL3\"|\"Priečinok2\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:42
-msgid "<code>\"URL4\"</code>"
-msgstr "<code>\"URL4\"</code>"
+#, fuzzy
+msgid "<code>\"URL4\" | Folder3 | \"Filename2\"</code>"
+msgstr "<code>URL3\"|\"Priečinok2\"</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:46
@@ -1243,8 +1246,8 @@ msgstr "Popis exportu"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:117
 msgid ""
-"If enabled, Parabolic will export the media's description to a <code>."
-"description</code> file alongside the downloaded file."
+"If enabled, Parabolic will export the media's description to a "
+"<code>.description</code> file alongside the downloaded file."
 msgstr ""
 "Ak je táto možnosť zapnutá, Parabolic automaticky exportuje popis média do "
 "súboru <code>.description</code> vedľa stiahnutého súboru."
@@ -1359,6 +1362,9 @@ msgstr "Názov súboru, ktorý sa má použiť pri ukladaní sťahovania."
 #: docs/yelp/C/newDownload.page:158
 msgid "Default: The title of the media"
 msgstr "Predvolené: Názov média"
+
+#~ msgid "<code>\"URL4\"</code>"
+#~ msgstr "<code>\"URL4\"</code>"
 
 #, fuzzy, no-wrap
 #~ msgid "Name"

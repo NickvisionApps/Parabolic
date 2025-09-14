@@ -2,8 +2,8 @@
 #include <filesystem>
 #include <format>
 #include <thread>
-#include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
+#include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "helpers/builder.h"
 #include "helpers/dialogptr.h"
@@ -13,7 +13,6 @@
 #include "views/keyringpage.h"
 #include "views/preferencesdialog.h"
 
-using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
@@ -134,14 +133,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
         gtk_window_destroy(GTK_WINDOW(m_window));
     }
 
-    void MainWindow::show()
+    void MainWindow::show(const std::string& url)
     {
         gtk_window_present(GTK_WINDOW(m_window));
-#ifdef __linux__
-        const StartupInformation& info{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
-#else
         const StartupInformation& info{ m_controller->startup() };
-#endif
         if(info.getWindowGeometry().isMaximized())
         {
             gtk_window_maximize(GTK_WINDOW(m_window));
@@ -183,16 +178,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
             }), this);
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
         }
-        if(!info.getUrlToValidate().empty())
+        if(StringHelpers::isValidUrl(url))
+        {
+            addDownload(url);
+        }
+        else if(!info.getUrlToValidate().empty())
         {
             addDownload(info.getUrlToValidate());
         }
-    }
-
-    void MainWindow::addDownload(const std::string& url)
-    {
-        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
-        dialog->present();
     }
 
     bool MainWindow::onCloseRequested()
@@ -557,7 +550,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_about_dialog_add_link(dialog, pair.first.c_str(), pair.second.c_str());
         }
         std::vector<const char*> urls;
-        std::vector<std::string> developers{ AppInfo::convertUrlMapToVector(m_controller->getAppInfo().getDevelopers()) };
+        std::vector<std::string> developers{ CodeHelpers::convertUrlMapToVector(m_controller->getAppInfo().getDevelopers()) };
         for(const std::string& developer : developers)
         {
             urls.push_back(developer.c_str());
@@ -565,7 +558,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         urls.push_back(nullptr);
         adw_about_dialog_set_developers(dialog, &urls[0]);
         urls.clear();
-        std::vector<std::string> designers{ AppInfo::convertUrlMapToVector(m_controller->getAppInfo().getDesigners()) };
+        std::vector<std::string> designers{ CodeHelpers::convertUrlMapToVector(m_controller->getAppInfo().getDesigners()) };
         for(const std::string& designer : designers)
         {
             urls.push_back(designer.c_str());
@@ -573,7 +566,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         urls.push_back(nullptr);
         adw_about_dialog_set_designers(dialog, &urls[0]);
         urls.clear();
-        std::vector<std::string> artists{ AppInfo::convertUrlMapToVector(m_controller->getAppInfo().getArtists()) };
+        std::vector<std::string> artists{ CodeHelpers::convertUrlMapToVector(m_controller->getAppInfo().getArtists()) };
         for(const std::string& artist : artists)
         {
             urls.push_back(artist.c_str());
@@ -582,6 +575,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_artists(dialog, &urls[0]);
         adw_about_dialog_set_translator_credits(dialog, m_controller->getAppInfo().getTranslatorCredits().c_str());
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+    }
+
+    void MainWindow::addDownload(const std::string& url)
+    {
+        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
+        dialog->present();
     }
 
     void MainWindow::openFile(GVariant* variant)

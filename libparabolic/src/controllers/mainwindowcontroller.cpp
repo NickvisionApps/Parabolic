@@ -1,4 +1,5 @@
 ﻿#include "controllers/mainwindowcontroller.h"
+#include <future>
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
@@ -8,17 +9,9 @@
 #include <libnick/notifications/appnotification.h>
 #include <libnick/notifications/shellnotification.h>
 #include <libnick/system/environment.h>
-#include "models/configuration.h"
-#include "models/downloadhistory.h"
-#include "models/downloadrecoveryqueue.h"
 #ifdef _WIN32
 #include <windows.h>
 #endif
-
-#define CONFIG_FILE_KEY "config"
-#define HISTORY_FILE_KEY "history"
-#define RECOVERY_FILE_KEY "recovery"
-
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
@@ -38,18 +31,22 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_args{ args },
         m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
 #ifdef PORTABLE_BUILD
-        m_dataFileManager{ m_appInfo.getName(), true },
+        m_configuration{ Environment::getExecutableDirectory() / "config.json" },
 #else
-        m_dataFileManager{ m_appInfo.getName(), false },
+        m_configuration{ UserDirectories::get(ApplicationUserDirectory::Config, m_appInfo.getName()) / "config.json" },
 #endif
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY), m_dataFileManager.get<DownloadRecoveryQueue>(RECOVERY_FILE_KEY) },
+#ifdef PORTABLE_BUILD
+        m_downloadManager{ Environment::getExecutableDirectory(), m_configuration },
+#else
+        m_downloadManager{ UserDirectories::get(ApplicationUserDirectory::Config, m_appInfo.getName()), m_configuration },
+#endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.8.1" });
+        m_appInfo.setVersion({ "2025.9.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where the downloaded updated yt-dlp did not work correctly on some linux systems\n- Fixed an issue where the app crashed when closing the add download dialog after failed validation\n- Fixed an issue where URLs with whitespace were unable to be validated\n- Fixed an issue where some media were incorrectly marked as audio-only\n- Fixed an issue where the open button on the GNOME completed notifications was not working\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Added the ability to specify a suggested filename in batch files\n- Added the ability to open URLs directly in Parabolic with the parabolic:// URL protocol\n- Fixed handling of temporary files\n- Fixed an issue where some subtitles could not be downloaded\n- Fixed an issue where the app crashed when validating an invalid URL\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -63,13 +60,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.getArtists()[_("David Lapshin")] = "https://github.com/daudix";
         m_appInfo.setTranslatorCredits(_("translator-credits"));
         Gettext::init(m_appInfo.getEnglishShortName());
-        std::string translationLanguage{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getTranslationLanguage() };
+        std::string translationLanguage{ m_configuration.getTranslationLanguage() };
         if(!translationLanguage.empty())
         {
             Gettext::changeLanguage(translationLanguage);
         }
         m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
-        m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).saved() += [this](const EventArgs&){ onConfigurationSaved(); };
+        m_configuration.saved() += [this](const EventArgs&){ onConfigurationSaved(); };
         m_downloadManager.downloadCompleted() += [this](const DownloadCompletedEventArgs& args) { onDownloadCompleted(args); };
     }
 
@@ -80,22 +77,22 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     Theme MainWindowController::getTheme()
     {
-        return m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getTheme();
+        return m_configuration.getTheme();
     }
 
     VersionType MainWindowController::getPreferredUpdateType()
     {
-        return m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getPreferredUpdateType();
+        return m_configuration.getPreferredUpdateType();
     }
 
     void MainWindowController::setPreferredUpdateType(VersionType type)
     {
-        m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).setPreferredUpdateType(type);
+        m_configuration.setPreferredUpdateType(type);
     }
 
     void MainWindowController::setShowDisclaimerOnStartup(bool showDisclaimerOnStartup)
     {
-        Configuration& config{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY) };
+        Configuration& config{ m_configuration };
         config.setShowDisclaimerOnStartup(showDisclaimerOnStartup);
         config.save();
     }
@@ -107,7 +104,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     Event<EventArgs>& MainWindowController::configurationSaved()
     {
-        return m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).saved();
+        return m_configuration.saved();
     }
 
     Event<NotificationSentEventArgs>& MainWindowController::notificationSent()
@@ -187,38 +184,50 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
-        std::stringstream builder;
         //yt-dlp
-        if(m_downloadManager.getYtdlpExecutablePath().empty())
+        std::future<std::string> ytdlpFuture{ std::async(std::launch::async, [this]() -> std::string
         {
-            builder << "yt-dlp not found" << std::endl;
-        }
-        else
-        {
-            std::string ytdlpVersion{ Environment::exec("\"" + m_downloadManager.getYtdlpExecutablePath().string() + "\"" + " --version") };
-            builder << "yt-dlp version " << ytdlpVersion;
-        }
+            if(m_downloadManager.getYtdlpExecutablePath().empty())
+            {
+                return "yt-dlp not found\n";
+            }
+            else
+            {
+                std::string ytdlpVersion{ Environment::exec("\"" + m_downloadManager.getYtdlpExecutablePath().string() + "\" --version") };
+                return "yt-dlp version " + ytdlpVersion;
+            }
+        }) };
         //ffmpeg
-        if(Environment::findDependency("ffmpeg").empty())
+        std::future<std::string> ffmpegFuture{ std::async(std::launch::async, []() -> std::string
         {
-            builder << "ffmpeg not found" << std::endl;
-        }
-        else
-        {
-            std::string ffmpegVersion{ Environment::exec("\"" + Environment::findDependency("ffmpeg").string() + "\"" + " -version") };
-            builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
-        }
+            if(Environment::findDependency("ffmpeg").empty())
+            {
+                return "ffmpeg not found\n";
+            }
+            else
+            {
+                std::string ffmpegVersion{ Environment::exec("\"" + Environment::findDependency("ffmpeg").string() + "\" -version") };
+                return ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) + "\n";
+            }
+        }) };
         //aria2c
-        if(Environment::findDependency("aria2c").empty())
+        std::future<std::string> aria2cFuture{ std::async(std::launch::async, []() -> std::string
         {
-            builder << "aria2c not found" << std::endl;
-        }
-        else
-        {
-            std::string aria2cVersion{ Environment::exec("\"" + Environment::findDependency("aria2c").string() + "\"" + " --version") };
-            builder << aria2cVersion.substr(0, aria2cVersion.find('\n')) << std::endl;
-        }
+            if(Environment::findDependency("aria2c").empty())
+            {
+                return "aria2c not found\n";
+            }
+            else
+            {
+                std::string aria2cVersion{ Environment::exec("\"" + Environment::findDependency("aria2c").string() + "\" --version") };
+                return aria2cVersion.substr(0, aria2cVersion.find('\n')) + "\n";
+            }
+        }) };
         //Extra
+        std::stringstream builder;
+        builder << ytdlpFuture.get();
+        builder << ffmpegFuture.get();
+        builder << aria2cFuture.get();
         if(!extraInformation.empty())
         {
             builder << std::endl << extraInformation << std::endl;
@@ -241,7 +250,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()
     {
-        return std::make_shared<AddDownloadDialogController>(m_downloadManager, m_dataFileManager, m_keyring);
+#ifdef PORTABLE_BUILD
+        return std::make_shared<AddDownloadDialogController>(Environment::getExecutableDirectory(), m_downloadManager, m_keyring);
+#else
+        return std::make_shared<AddDownloadDialogController>(UserDirectories::get(ApplicationUserDirectory::Config, m_appInfo.getName()), m_downloadManager, m_keyring);
+#endif
     }
 
     std::shared_ptr<CredentialDialogController> MainWindowController::createCredentialDialogController(const DownloadCredentialNeededEventArgs& args)
@@ -256,16 +269,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
     {
-        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY), m_dataFileManager.get<DownloadHistory>(HISTORY_FILE_KEY));
+        return std::make_shared<PreferencesViewController>(m_configuration, m_downloadManager.getDownloadHistory());
     }
 
-#ifdef _WIN32
-    const StartupInformation& MainWindowController::startup(HWND hwnd)
-#elif defined(__linux__)
-    const StartupInformation& MainWindowController::startup(const std::string& desktopFile)
-#else
     const StartupInformation& MainWindowController::startup()
-#endif
     {
         static StartupInformation info;
         if (m_started)
@@ -273,20 +280,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             return info;
         }
         //Load configuration
-        WindowGeometry geometry{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getWindowGeometry() };
+        WindowGeometry geometry{ m_configuration.getWindowGeometry() };
         if(geometry.getX() < 0 || geometry.getY() < 0)
         {
             geometry.setX(10);
             geometry.setY(10);
         }
         info.setWindowGeometry(geometry);
-
-        //Load taskbar item
-#ifdef _WIN32
-        m_taskbar.connect(hwnd);
-#elif defined(__linux__)
-        m_taskbar.connect(desktopFile);
-#endif
         //Start checking for app updates
         std::thread workerUpdates{ [this]()
         {
@@ -305,13 +305,18 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Check if can download
         info.setCanDownload(!m_downloadManager.getYtdlpExecutablePath().empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty());
         //Check if disclaimer should be shown
-        info.setShowDisclaimer(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getShowDisclaimerOnStartup());
+        info.setShowDisclaimer(m_configuration.getShowDisclaimerOnStartup());
         //Get URL to validate from args
         if(m_args.size() > 1)
         {
-            if(StringHelpers::isValidUrl(StringHelpers::trim(m_args[1])))
+            std::string url{ StringHelpers::trim(m_args[1]) };
+            if(url.starts_with("parabolic://"))
             {
-                info.setUrlToValidate(StringHelpers::trim(m_args[1]));
+                url = url.substr(12);
+            }
+            if(StringHelpers::isValidUrl(url))
+            {
+                info.setUrlToValidate(url);
             }
         }
         m_started = true;
@@ -321,7 +326,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     void MainWindowController::shutdown(const WindowGeometry& geometry)
     {
         //Save config
-        Configuration& config{ m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY) };
+        Configuration& config{ m_configuration };
         config.setWindowGeometry(geometry);
         config.save();
     }
@@ -453,7 +458,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void MainWindowController::onConfigurationSaved()
     {
-        if(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getPreventSuspend())
+        if(m_configuration.getPreventSuspend())
         {
             m_suspendInhibitor.inhibit();
         }
@@ -461,7 +466,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_suspendInhibitor.uninhibit();
         }
-        m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>(CONFIG_FILE_KEY).getDownloaderOptions());
+        m_downloadManager.setDownloaderOptions(m_configuration.getDownloaderOptions());
     }
 
     void MainWindowController::onDownloadCompleted(const DownloadCompletedEventArgs& args)

@@ -136,7 +136,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         LblClearCompletedDownloads().Text(winrt::to_hstring(_("Clear")));
         LblUpdateCenter().Text(winrt::to_hstring(_("Updates")));
         LblNoUpdates().Text(winrt::to_hstring(_("You're up to date")));
-        LblNoUpdatesDetails().Text(winrt::to_hstring(_("We will let you know once app updates are available to install")));
+        LblNoUpdatesDetails().Text(winrt::to_hstring(_("We will let you know once app or yt-dlp updates are available to install")));
         LblUpdatesAvailable().Text(winrt::to_hstring(_("There is an update available")));
         LblDownloadUpdate().Text(winrt::to_hstring(_("Download")));
         LblUpdatesDownloading().Text(winrt::to_hstring(_("Downloading the update")));
@@ -175,7 +175,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         ViewStackUpdateCenter().CurrentPageIndex(UpdateCenterPage::NoUpdates);
         NavViewHome().IsSelected(true);
         //Startup
-        const StartupInformation& info{ m_controller->startup(m_hwnd) };
+        const StartupInformation& info{ m_controller->startup() };
         if(info.getWindowGeometry().isMaximized())
         {
             ShowWindow(m_hwnd, SW_MAXIMIZE);

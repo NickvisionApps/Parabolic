@@ -61,7 +61,11 @@ namespace Nickvision::TubeConverter::GNOME
     void Application::onOpen(GtkApplication* app, void* files, int n, const char* hint)
     {
         GFile** arr{ reinterpret_cast<GFile**>(files) };
-        m_mainWindow->show();
-        m_mainWindow->addDownload(g_file_get_uri(arr[0]));
+        std::string url{ g_file_get_uri(arr[0]) };
+        if(url.find("parabolic://") != std::string::npos)
+        {
+            url = url.substr(12);
+        }
+        m_mainWindow->show(url);
     }
 }

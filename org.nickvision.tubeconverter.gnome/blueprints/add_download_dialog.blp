@@ -15,6 +15,16 @@ Adw.Dialog root {
         [top]
         Adw.HeaderBar {}
 
+        [bottom]
+        Gtk.ActionBar {
+          [end]
+          Gtk.Button validateUrlButton {
+            label: _("Validate");
+
+            styles ["suggested-action"]
+          }
+        }
+
         content: Gtk.Box {
           margin-start: 24;
           margin-top: 24;
@@ -63,14 +73,6 @@ Adw.Dialog root {
               subtitle: _("Use your previous download options for this download");
             }
           }
-
-          Gtk.Button validateUrlButton {
-            label: _("Validate");
-            halign: center;
-            margin-top: 12;
-
-            styles ["pill", "suggested-action"]
-          }
         };
       };
     }
@@ -104,112 +106,121 @@ Adw.Dialog root {
         [top]
         Adw.HeaderBar {}
 
-        content: Gtk.Box {
-          orientation: vertical;
-          spacing: 16;
-          margin-start: 12;
-          margin-top: 6;
-          margin-end: 12;
-          margin-bottom: 12;
-
-          Adw.PreferencesGroup {
-            Adw.ComboRow fileTypeSingleRow {
-              title: _("File Type");
-
-              [suffix]
-              Gtk.MenuButton genericDisclaimerSingleButton {
-                valign: center;
-                icon-name: "dialog-warning-symbolic";
-                popover: Gtk.Popover {
-                  child: Gtk.Box {
-                    Gtk.Label {
-                      wrap: true;
-                      wrap-mode: word;
-                      label: _("Generic file types do not fully support embedding thumbnails and subtitles.\nPlease select a specific file type that is known to support embedding\nto prevent separate files from being written.");
-                    }
-                  };
-                };
-
-                styles ["flat"]
-              }
-            }
-
-            Adw.ComboRow videoFormatSingleRow {
-              title: _("Video Format");
-            }
-
-            Adw.ComboRow audioFormatSingleRow {
-              title: _("Audio Format");
-            }
-
-            Adw.ActionRow subtitlesSingleRow {
-              title: _("Subtitles");
-              activatable-widget: subtitlesSingleButton;
-
-              [suffix]
-              Gtk.Button subtitlesSingleButton {
-                valign: center;
-                icon-name: "go-next-symbolic";
-                action-name: "navigation.push";
-                action-target: "'download-single-subtitles'";
-
-                styles [ "flat" ]
-              }
-            }
-
-            Adw.ActionRow advancedOptionsSingleRow {
-              title: _("Advanced Options");
-              activatable-widget: advancedOptionsSingleButton;
-
-              [suffix]
-              Gtk.Button advancedOptionsSingleButton {
-                valign: center;
-                icon-name: "go-next-symbolic";
-                action-name: "navigation.push";
-                action-target: "'download-single-advanced'";
-
-                styles [ "flat" ]
-              }
-            }
-          }
-
-          Adw.PreferencesGroup {
-            Adw.ActionRow saveFolderSingleRow {
-              title: _("Save Folder");
-
-              [suffix]
-              Gtk.Button selectSaveFolderSingleButton {
-                valign: center;
-                icon-name: "folder-open-symbolic";
-                tooltip-text: _("Select Save Folder");
-
-                styles ["flat"]
-              }
-
-              styles ["property"]
-            }
-
-            Adw.EntryRow filenameSingleRow {
-              title: _("File Name");
-              activates-default: true;
-
-              [suffix]
-              Gtk.Button revertFilenameSingleButton {
-                valign: center;
-                icon-name: "edit-undo-symbolic";
-                tooltip-text: _("Revert to Title");
-
-                styles ["flat"]
-              }
-            }
-          }
-
+        [bottom]
+        Gtk.ActionBar {
+          [end]
           Gtk.Button downloadSingleButton {
-            halign: center;
             label: _("Download");
 
-            styles ["pill", "suggested-action"]
+            styles ["suggested-action"]
           }
+        }
+
+        content: Gtk.ScrolledWindow {
+          hexpand: true;
+          vexpand: true;
+          propagate-natural-width: true;
+          propagate-natural-height: true;
+          child: Gtk.Box {
+            orientation: vertical;
+            spacing: 16;
+            margin-start: 12;
+            margin-top: 6;
+            margin-end: 12;
+            margin-bottom: 12;
+
+            Adw.PreferencesGroup {
+              Adw.ComboRow fileTypeSingleRow {
+                title: _("File Type");
+
+                [suffix]
+                Gtk.MenuButton genericDisclaimerSingleButton {
+                  valign: center;
+                  icon-name: "dialog-warning-symbolic";
+                  popover: Gtk.Popover {
+                    child: Gtk.Box {
+                      Gtk.Label {
+                        wrap: true;
+                        wrap-mode: word;
+                        label: _("Generic file types do not fully support embedding thumbnails and subtitles.\nPlease select a specific file type that is known to support embedding\nto prevent separate files from being written.");
+                      }
+                    };
+                  };
+
+                  styles ["flat"]
+                }
+              }
+
+              Adw.ComboRow videoFormatSingleRow {
+                title: _("Video Format");
+              }
+
+              Adw.ComboRow audioFormatSingleRow {
+                title: _("Audio Format");
+              }
+
+              Adw.ActionRow subtitlesSingleRow {
+                title: _("Subtitles");
+                activatable-widget: subtitlesSingleButton;
+
+                [suffix]
+                Gtk.Button subtitlesSingleButton {
+                  valign: center;
+                  icon-name: "go-next-symbolic";
+                  action-name: "navigation.push";
+                  action-target: "'download-single-subtitles'";
+
+                  styles [ "flat" ]
+                }
+              }
+
+              Adw.ActionRow advancedOptionsSingleRow {
+                title: _("Advanced Options");
+                activatable-widget: advancedOptionsSingleButton;
+
+                [suffix]
+                Gtk.Button advancedOptionsSingleButton {
+                  valign: center;
+                  icon-name: "go-next-symbolic";
+                  action-name: "navigation.push";
+                  action-target: "'download-single-advanced'";
+
+                  styles [ "flat" ]
+                }
+              }
+            }
+
+            Adw.PreferencesGroup {
+              Adw.ActionRow saveFolderSingleRow {
+                title: _("Save Folder");
+
+                [suffix]
+                Gtk.Button selectSaveFolderSingleButton {
+                  valign: center;
+                  icon-name: "folder-open-symbolic";
+                  tooltip-text: _("Select Save Folder");
+
+                  styles ["flat"]
+                }
+
+                styles ["property"]
+              }
+
+              Adw.EntryRow filenameSingleRow {
+                title: _("File Name");
+                activates-default: true;
+
+                [suffix]
+                Gtk.Button revertFilenameSingleButton {
+                  valign: center;
+                  icon-name: "edit-undo-symbolic";
+                  tooltip-text: _("Revert to Title");
+
+                  styles ["flat"]
+                }
+              }
+            }
+          };
         };
       };
     }
@@ -221,8 +232,8 @@ Adw.Dialog root {
         [top]
         Adw.HeaderBar {}
 
-        [bottom]
-        Gtk.ActionBar subtitlesSingleActionBar {
+        [top]
+        Gtk.ActionBar {
           [start]
           Gtk.Button selectAllSubtitlesSingleButton {
             Adw.ButtonContent {
@@ -240,11 +251,21 @@ Adw.Dialog root {
           }
         }
 
+        [bottom]
+        Gtk.ActionBar {
+          [end]
+          Gtk.Button downloadSingleSubtitlesButton {
+            label: _("Download");
+
+            styles ["suggested-action"]
+          }
+        }
+
         content: Gtk.ScrolledWindow {
           hexpand: true;
           vexpand: true;
-          min-content-width: 328;
-          min-content-height: 400;
+          propagate-natural-width: true;
+          propagate-natural-height: true;
           child: Adw.PreferencesGroup subtitlesSingleGroup {
             margin-start: 12;
             margin-top: 6;
@@ -261,6 +282,16 @@ Adw.Dialog root {
       child: Adw.ToolbarView {
         [top]
         Adw.HeaderBar {}
+
+        [bottom]
+        Gtk.ActionBar {
+          [end]
+          Gtk.Button downloadSingleAdvancedButton {
+            label: _("Download");
+
+            styles ["suggested-action"]
+          }
+        }
 
         content: Gtk.Box {
           orientation: vertical;
@@ -325,110 +356,119 @@ Adw.Dialog root {
         [top]
         Adw.HeaderBar {}
 
-        content: Gtk.Box {
-          orientation: vertical;
-          spacing: 16;
-          margin-start: 12;
-          margin-top: 6;
-          margin-end: 12;
-          margin-bottom: 12;
-
-          Adw.PreferencesGroup {
-            Adw.ComboRow fileTypePlaylistRow {
-              title: _("File Type");
-
-              [suffix]
-              Gtk.MenuButton genericDisclaimerPlaylistButton {
-                valign: center;
-                icon-name: "dialog-warning-symbolic";
-                popover: Gtk.Popover {
-                  child: Gtk.Box {
-                    Gtk.Label {
-                      wrap: true;
-                      wrap-mode: word;
-                      label: _("Generic file types do not fully support embedding thumbnails and writing playlist files. Please select a specific file type that is known to support embedding to prevent separate files from being written.");
-                    }
-                  };
-                };
-
-                styles ["flat"]
-              }
-            }
-
-            Adw.SwitchRow splitChaptersPlaylistRow {
-              title: _("Split Videos by Chapters");
-            }
-
-            Adw.SwitchRow exportDescriptionPlaylistRow {
-              title: _("Export Description");
-            }
-
-            Adw.SwitchRow writeFilePlaylistRow {
-              title: _("Write M3U Playlist File");
-            }
-
-            Adw.SwitchRow excludeHistoryPlaylistRow {
-              title: _("Exclude from History");
-            }
-
-            Adw.ComboRow postProcessorArgumentPlaylistRow {
-              title: _("Post Processor Argument");
-            }
-          }
-
-          Adw.PreferencesGroup {
-            Adw.ActionRow saveFolderPlaylistRow {
-              title: _("Save Folder");
-
-              [suffix]
-              Gtk.Button selectSaveFolderPlaylistButton {
-                valign: center;
-                icon-name: "folder-open-symbolic";
-                tooltip-text: _("Select Save Folder");
-
-                styles ["flat"]
-              }
-
-              [suffix]
-              Gtk.MenuButton {
-                valign: center;
-                icon-name: "dialog-warning-symbolic";
-                popover: Gtk.Popover {
-                  child: Gtk.Label {
-                    label: _("Will be ignored for media in batch files that provide save folder paths.");
-                    wrap: true;
-                    wrap-mode: word;
-                  };
-                };
-
-                styles ["flat"]
-              }
-
-              styles ["property"]
-            }
-
-            Adw.ActionRow itemsPlaylistRow {
-              title: _("Playlist Items");
-              activatable-widget: itemsPlaylistButton;
-
-              [suffix]
-              Gtk.Button itemsPlaylistButton {
-                valign: center;
-                icon-name: "go-next-symbolic";
-                action-name: "navigation.push";
-                action-target: "'download-playlist-items'";
-
-                styles [ "flat" ]
-              }
-            }
-          }
-
+        [bottom]
+        Gtk.ActionBar {
+          [end]
           Gtk.Button downloadPlaylistButton {
-            halign: center;
             label: _("Download");
 
-            styles ["pill", "suggested-action"]
+            styles ["suggested-action"]
           }
+        }
+
+        content: Gtk.ScrolledWindow {
+          hexpand: true;
+          vexpand: true;
+          propagate-natural-width: true;
+          propagate-natural-height: true;
+          child: Gtk.Box {
+            orientation: vertical;
+            spacing: 16;
+            margin-start: 12;
+            margin-top: 6;
+            margin-end: 12;
+            margin-bottom: 12;
+
+            Adw.PreferencesGroup {
+              Adw.ComboRow fileTypePlaylistRow {
+                title: _("File Type");
+
+                [suffix]
+                Gtk.MenuButton genericDisclaimerPlaylistButton {
+                  valign: center;
+                  icon-name: "dialog-warning-symbolic";
+                  popover: Gtk.Popover {
+                    child: Gtk.Box {
+                      Gtk.Label {
+                        wrap: true;
+                        wrap-mode: word;
+                        label: _("Generic file types do not fully support embedding thumbnails and writing playlist files. Please select a specific file type that is known to support embedding to prevent separate files from being written.");
+                      }
+                    };
+                  };
+
+                  styles ["flat"]
+                }
+              }
+
+              Adw.SwitchRow splitChaptersPlaylistRow {
+                title: _("Split Videos by Chapters");
+              }
+
+              Adw.SwitchRow exportDescriptionPlaylistRow {
+                title: _("Export Description");
+              }
+
+              Adw.SwitchRow writeFilePlaylistRow {
+                title: _("Write M3U Playlist File");
+              }
+
+              Adw.SwitchRow excludeHistoryPlaylistRow {
+                title: _("Exclude from History");
+              }
+
+              Adw.ComboRow postProcessorArgumentPlaylistRow {
+                title: _("Post Processor Argument");
+              }
+            }
+
+            Adw.PreferencesGroup {
+              Adw.ActionRow saveFolderPlaylistRow {
+                title: _("Save Folder");
+
+                [suffix]
+                Gtk.Button selectSaveFolderPlaylistButton {
+                  valign: center;
+                  icon-name: "folder-open-symbolic";
+                  tooltip-text: _("Select Save Folder");
+
+                  styles ["flat"]
+                }
+
+                [suffix]
+                Gtk.MenuButton {
+                  valign: center;
+                  icon-name: "dialog-warning-symbolic";
+                  popover: Gtk.Popover {
+                    child: Gtk.Label {
+                      label: _("Will be ignored for media in batch files that provide save folder paths.");
+                      wrap: true;
+                      wrap-mode: word;
+                    };
+                  };
+
+                  styles ["flat"]
+                }
+
+                styles ["property"]
+              }
+
+              Adw.ActionRow itemsPlaylistRow {
+                title: _("Playlist Items");
+                activatable-widget: itemsPlaylistButton;
+
+                [suffix]
+                Gtk.Button itemsPlaylistButton {
+                  valign: center;
+                  icon-name: "go-next-symbolic";
+                  action-name: "navigation.push";
+                  action-target: "'download-playlist-items'";
+
+                  styles [ "flat" ]
+                }
+              }
+            }
+          };
         };
       };
     }
@@ -439,6 +479,35 @@ Adw.Dialog root {
       child: Adw.ToolbarView {
         [top]
         Adw.HeaderBar {}
+
+        [top]
+        Gtk.ActionBar {
+          [start]
+          Gtk.Button selectAllPlaylistButton {
+            Adw.ButtonContent {
+              icon-name: "edit-select-all-symbolic";
+              label: _("Select All");
+            }
+          }
+
+          [end]
+          Gtk.Button deselectAllPlaylistButton {
+            Adw.ButtonContent {
+              icon-name: "edit-select-none-symbolic";
+              label: _("Deselect All");
+            }
+          }
+        }
+
+        [bottom]
+        Gtk.ActionBar {
+          [end]
+          Gtk.Button downloadPlaylistItemsButton {
+            label: _("Download");
+
+            styles ["suggested-action"]
+          }
+        }
 
         content: Gtk.Box {
           orientation: vertical;
@@ -454,32 +523,11 @@ Adw.Dialog root {
             }
           }
 
-          Gtk.Box {
-            orientation: horizontal;
-            halign: center;
-
-            Gtk.Button selectAllPlaylistButton {
-              Adw.ButtonContent {
-                icon-name: "edit-select-all-symbolic";
-                label: _("Select All");
-              }
-            }
-
-            Gtk.Button deselectAllPlaylistButton {
-              Adw.ButtonContent {
-                icon-name: "edit-select-none-symbolic";
-                label: _("Deselect All");
-              }
-            }
-
-            styles [ "linked" ]
-          }
-
           Gtk.ScrolledWindow {
             hexpand: true;
             vexpand: true;
-            min-content-width: 328;
-            min-content-height: 400;
+            propagate-natural-width: true;
+            propagate-natural-height: true;
             child: Adw.PreferencesGroup itemsPlaylistGroup { };
           }
         };

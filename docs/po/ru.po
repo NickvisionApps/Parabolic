@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-08-29 21:49-0400\n"
+"POT-Creation-Date: 2025-09-13 22:22-0400\n"
 "PO-Revision-Date: 2025-08-16 07:02+0000\n"
 "Last-Translator: Valerii Zhikharev <fr0stmatic@proton.me>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -563,8 +563,8 @@ msgstr "Parabolic будет перезаписывать уже существ�
 #: docs/yelp/C/downloads.page:36
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
-"folder, and a new download is created named <code>movie</code>, <code>movie."
-"mp4</code> will be overwritten with the new download's content."
+"folder, and a new download is created named <code>movie</code>, "
+"<code>movie.mp4</code> will be overwritten with the new download's content."
 msgstr ""
 "Например, если файл с именем <code>фильм.mp4</code> существует в папке "
 "сохранения, а новый файл создаётся с именем <code>фильм</code>, файл "
@@ -945,9 +945,10 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
+#, fuzzy
 msgid ""
-"Each URL can be accompanied by an optional save folder (delimited by <code>|"
-"</code>) in which to save each media of the URL to."
+"Each URL can be accompanied by an optional save folder and filename "
+"(delimited by <code>|</code>) in which to save each media of the URL to."
 msgstr ""
 "Каждую ссылку можно сопроводить дополнительной папкой сохранения "
 "(разделённой символом <code>|</code>), отдельной для каждого медиа."
@@ -978,7 +979,8 @@ msgstr "<code>Ссылка1</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:40
-msgid "<code>URL2 | \"Folder1\"</code>"
+#, fuzzy
+msgid "<code>URL2 | \"Folder1\" | Filename1</code>"
 msgstr "<code>Ссылка2 | \"Папка1\"</code>"
 
 #. (itstool) path: note/p
@@ -988,8 +990,9 @@ msgstr "<code>\"Ссылка3\"|\"Папка2\"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:42
-msgid "<code>\"URL4\"</code>"
-msgstr "<code>\"Ссылка4\"</code>"
+#, fuzzy
+msgid "<code>\"URL4\" | Folder3 | \"Filename2\"</code>"
+msgstr "<code>\"Ссылка3\"|\"Папка2\"</code>"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:46
@@ -1237,11 +1240,11 @@ msgstr "Экспорт описания"
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:117
 msgid ""
-"If enabled, Parabolic will export the media's description to a <code>."
-"description</code> file alongside the downloaded file."
+"If enabled, Parabolic will export the media's description to a "
+"<code>.description</code> file alongside the downloaded file."
 msgstr ""
-"Если параметр включён, Parabolic экспортирует описание медиа в файл <code>."
-"description</code> рядом с загруженным файлом."
+"Если параметр включён, Parabolic экспортирует описание медиа в файл "
+"<code>.description</code> рядом с загруженным файлом."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:123
@@ -1352,6 +1355,9 @@ msgstr "Имя, используемое при сохранении загру�
 #: docs/yelp/C/newDownload.page:158
 msgid "Default: The title of the media"
 msgstr "По умолчанию: Заголовок медиа"
+
+#~ msgid "<code>\"URL4\"</code>"
+#~ msgstr "<code>\"Ссылка4\"</code>"
 
 #, fuzzy, no-wrap
 #~ msgid "Name"
@@ -1634,11 +1640,11 @@ msgstr "По умолчанию: Заголовок медиа"
 #~ "потребуется вводить их по-новой."
 
 #~ msgid ""
-#~ "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-#~ "Application\">Passwords and Keys</link>."
+#~ "Install <link href=\"https://flathub.org/apps/"
+#~ "org.gnome.seahorse.Application\">Passwords and Keys</link>."
 #~ msgstr ""
-#~ "Установите <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-#~ "Application\">Пароли и ключи</link>."
+#~ "Установите <link href=\"https://flathub.org/apps/"
+#~ "org.gnome.seahorse.Application\">Пароли и ключи</link>."
 
 #~ msgid ""
 #~ "Open Parabolic V2023.9.0 or newer at least once. (This will ensure that "
@@ -1648,12 +1654,13 @@ msgstr "По умолчанию: Заголовок медиа"
 #~ "могло зарегистрироваться в системном менеджере учётных данных)"
 
 #~ msgid ""
-#~ "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
-#~ "tubeconverter</code> entry in the <code>Default Keyring</code>."
+#~ "Open <code>Passwords and Keys</code> and locate the "
+#~ "<code>org.nickvision.tubeconverter</code> entry in the <code>Default "
+#~ "Keyring</code>."
 #~ msgstr ""
 #~ "Откройте <code>Пароли и ключи</code>, найдите в <code>Default keyring</"
-#~ "code> (связка ключей по умолчанию) запись <code>org.nickvision."
-#~ "tubeconverter</code>."
+#~ "code> (связка ключей по умолчанию) запись "
+#~ "<code>org.nickvision.tubeconverter</code>."
 
 #~ msgid ""
 #~ "Double click the <code>org.nickvision.tubeconverter</code> entry and edit "

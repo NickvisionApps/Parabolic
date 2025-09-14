@@ -1,14 +1,16 @@
 #ifndef DOWNLOADMANAGER_H
 #define DOWNLOADMANAGER_H
 
+#include <filesystem>
+#include <future>
 #include <memory>
 #include <mutex>
 #include <optional>
 #include <unordered_map>
 #include <vector>
-#include <libnick/app/cancellationtoken.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
+#include <libnick/helpers/cancellationtoken.h>
 #include <libnick/keyring/credential.h>
 #include "configuration.h"
 #include "download.h"
@@ -34,11 +36,10 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Constructs a DownloadManager.
+         * @param dataDirPath The path to save data files for the application to
          * @param configuration The Configuration
-         * @param history The DownloadHistory
-         * @param recoveryQueue The DownloadRecoveryQueue
          */
-        DownloadManager(Configuration& configuration, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue);
+        DownloadManager(const std::filesystem::path& dataDirPath, Configuration& configuration);
         /**
          * @brief Destructs a DownloadManager.
          */
@@ -139,6 +140,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         size_t getCompletedCount() const;
         /**
+         * @brief Gets the download history.
+         * @return The download history
+         */
+        DownloadHistory& getDownloadHistory();
+        /**
          * @brief Loads the DownloadManager.
          * @brief This method invokes the historyChanged event.
          * @param info The StartupInformation object to edit
@@ -173,18 +179,29 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param token The CancellationToken to use for cancellation
          * @param url The URL to fetch information for
          * @param credential An optional credential to use for authentication
-         * @param suggestedSaveFolder An option save folder to save the url's media to
+         * @param suggestedSaveFolder An optional save folder to save the url's media to
+         * @param suggestedFilename An optional suggested filename to save the url's media as
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(App::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}) const;
+        std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}, const std::string& suggestedFilename = {}) const;
+        /**
+         * @brief Asynchronously fetches information about a URL.
+         * @param token The CancellationToken to use for cancellation
+         * @param url The URL to fetch information for
+         * @param credential An optional credential to use for authentication
+         * @param suggestedSaveFolder An optional save folder to save the url's media to
+         * @param suggestedFilename An optional suggested filename to save the url's media as
+         * @return A future to the optional UrlInfo
+         */
+        std::future<std::optional<UrlInfo>> fetchUrlInfoAsync(Helpers::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}, const std::string& suggestedFilename = {}) const;
         /**
          * @brief Fetches information about a set of URLs from a batch file.
          * @param token The CancellationToken to use for cancellation
-         * @param batchFile The batch file with listed URLs
+         * @param batchFilePath The path to a batch file
          * @param credential An optional credential to use for authentication
          * @return The UrlInfo if successful, else std::nullopt
          */
-        std::optional<UrlInfo> fetchUrlInfo(App::CancellationToken& token, const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
+        std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::filesystem::path& batchFilePath, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.
@@ -257,8 +274,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         mutable std::mutex m_mutex;
         YtdlpManager m_ytdlpManager;
         DownloaderOptions m_options;
-        DownloadHistory& m_history;
-        DownloadRecoveryQueue& m_recoveryQueue;
+        DownloadHistory m_history;
+        DownloadRecoveryQueue m_recoveryQueue;
         std::unordered_map<int, std::shared_ptr<Download>> m_downloading;
         std::unordered_map<int, std::shared_ptr<Download>> m_queued;
         std::unordered_map<int, std::shared_ptr<Download>> m_completed;
