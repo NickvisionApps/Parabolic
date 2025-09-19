@@ -514,10 +514,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::keyboardShortcuts()
     {
         Builder builderHelp{ "shortcuts_dialog" };
-        GtkShortcutsWindow* shortcuts{ builderHelp.get<GtkShortcutsWindow>("root") };
-        gtk_window_set_transient_for(GTK_WINDOW(shortcuts), GTK_WINDOW(m_window));
-        gtk_window_set_icon_name(GTK_WINDOW(shortcuts), m_controller->getAppInfo().getId().c_str());
-        gtk_window_present(GTK_WINDOW(shortcuts));
+        AdwShortcutsDialog* shortcuts{ builderHelp.get<AdwShortcutsDialog>("root") };
+        adw_dialog_present(ADW_DIALOG(shortcuts), GTK_WIDGET(m_window));
     }
 
     void MainWindow::help()
