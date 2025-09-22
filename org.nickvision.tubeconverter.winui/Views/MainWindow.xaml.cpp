@@ -69,7 +69,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     {
         InitializeComponent();
         this->m_inner.as<::IWindowNative>()->get_WindowHandle(&m_hwnd);
-        TitleBar().AppWindow(AppWindow());
+        ExtendsContentIntoTitleBar(true);
+        SetTitleBar(TitleBar());
+        AppWindow().TitleBar().PreferredHeightOption(TitleBarHeightOption::Tall);
     }
 
     void MainWindow::Controller(const std::shared_ptr<MainWindowController>& controller)
@@ -96,6 +98,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
+        TitleBarSearch().PlaceholderText(winrt::to_hstring(_("Search")));
         NavViewHome().Content(winrt::box_value(winrt::to_hstring(_("Home"))));
         NavViewKeyring().Content(winrt::box_value(winrt::to_hstring(_("Keyring"))));
         NavViewHistory().Content(winrt::box_value(winrt::to_hstring(_("History"))));
@@ -257,8 +260,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     void MainWindow::OnActivated(const IInspectable& sender, const WindowActivatedEventArgs& args)
     {
-        TitleBar().IsActivated(args.WindowActivationState() != WindowActivationState::Deactivated);
         m_controller->setIsWindowActive(args.WindowActivationState() != WindowActivationState::Deactivated);
+    }
+
+    void MainWindow::OnPaneToggleRequested(const Microsoft::UI::Xaml::Controls::TitleBar& sender, const IInspectable& args)
+    {
+        NavView().IsPaneOpen(!NavView().IsPaneOpen());
     }
 
     void MainWindow::OnConfigurationSaved(const ::Nickvision::Events::EventArgs&)
