@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-21 20:10-0400\n"
+"POT-Creation-Date: 2025-09-21 20:15-0400\n"
 "PO-Revision-Date: 2025-08-27 04:42+0000\n"
 "Last-Translator: Diz Bley <diz.bley@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -93,11 +93,13 @@ msgstr "Keine"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:262
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:296
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "Fehler beim Validieren des Downloads: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:370
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:414
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Fehler beim Hinzufügen des Downloads: {}"
 
@@ -138,12 +140,14 @@ msgid "Unable to download and install update"
 msgstr "Aktualisierung kann nicht heruntergeladen und installiert werden"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:400
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} Download wiederhergestellt"
 msgstr[1] "{} Downloads wiederhergestellt"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:405
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "Fehler beim Wiederherstellen des Downloads: {}"
 
@@ -152,6 +156,7 @@ msgid "Download Finished"
 msgstr "Download Beendet"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:480
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "Herunterladen von {} ist beendet"
 
@@ -166,6 +171,7 @@ msgid "Download Finished With Error"
 msgstr "Herunterladen mit Fehler beendet"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:484
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} wurde mit einem Fehler beendet"
 
@@ -181,18 +187,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -215,22 +225,22 @@ msgid "Audio Description"
 msgstr "Audiobeschreibung"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1275,6 +1285,7 @@ msgstr "Läuft"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1357,10 +1368,12 @@ msgid "No Subtitles Available"
 msgstr "Keine Untertitel verfügbar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#, c++-format
 msgid "{} items"
 msgstr "{} Elemente"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1533,7 +1546,7 @@ msgstr "Neue Aktualisierung verfügbar"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:334
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:367
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} version {} is available to download and install"
 msgstr "Aktualisierung kann nicht heruntergeladen und installiert werden"
 
@@ -1711,6 +1724,7 @@ msgid "OK"
 msgstr "OK"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} benötigt eine Anmeldeinformation zum Herunterladen. Bitte wählen Sie eine "
@@ -1833,6 +1847,7 @@ msgid "Receive Beta App Updates"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:148
+#, c++-format
 msgid "Check for pre-release (beta) versions of {}"
 msgstr ""
 
@@ -1842,7 +1857,7 @@ msgid "Changelog"
 msgstr "Änderungsprotokoll:"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:152
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Version {}"
 msgstr "Version: {0}"
 
@@ -1856,7 +1871,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:345
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:378
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading {}%"
 msgstr "Wird heruntergeladen"
 

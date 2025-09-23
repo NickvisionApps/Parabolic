@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-21 20:10-0400\n"
+"POT-Creation-Date: 2025-09-21 20:15-0400\n"
 "PO-Revision-Date: 2025-09-11 12:01+0000\n"
 "Last-Translator: lexerotk <lexerotk@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -93,11 +93,13 @@ msgstr "Hiçbiri"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:262
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:296
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "İndirmeyi doğrulamaya çalışırken hata: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:370
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:414
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "İndirmeyi eklemeye çalışırken hata: {}"
 
@@ -136,12 +138,14 @@ msgid "Unable to download and install update"
 msgstr "Güncelleme indirilemiyor ve kurulamıyor"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:400
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} indirme kurtarıldı"
 msgstr[1] "{} indirme kurtarıldı"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:405
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -150,6 +154,7 @@ msgid "Download Finished"
 msgstr "İndirme Tamamlandı"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:480
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} indirmeyi tamamladı"
 
@@ -164,6 +169,7 @@ msgid "Download Finished With Error"
 msgstr "İndirme Hata İle Tamamlandı"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:484
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} bir hatayla tamamlandı"
 
@@ -179,18 +185,22 @@ msgid "0 B/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -213,22 +223,22 @@ msgid "Audio Description"
 msgstr "Ses Açıklaması"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} B/s"
 
@@ -1251,6 +1261,7 @@ msgstr "Çalışıyor"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} | {} | ETA: {}"
 msgstr ""
 
@@ -1332,10 +1343,12 @@ msgid "No Subtitles Available"
 msgstr "Alt Yazı Yok"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#, c++-format
 msgid "{} items"
 msgstr "{} öge"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1503,7 +1516,7 @@ msgstr "Yeni güncelleme var"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:334
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:367
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} version {} is available to download and install"
 msgstr "Güncelleme indirilemiyor ve kurulamıyor"
 
@@ -1675,6 +1688,7 @@ msgid "OK"
 msgstr "Tamam"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} indirmek için kimlik bilgisi gerekli. Lütfen kullanmak için bir tane "
@@ -1795,6 +1809,7 @@ msgid "Receive Beta App Updates"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:148
+#, c++-format
 msgid "Check for pre-release (beta) versions of {}"
 msgstr ""
 
@@ -1803,7 +1818,7 @@ msgid "Changelog"
 msgstr "Değişiklik günlüğü"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:152
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Version {}"
 msgstr "Sürüm: {0}"
 
@@ -1817,7 +1832,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:345
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:378
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading {}%"
 msgstr "İndiriliyor"
 
@@ -2193,8 +2208,8 @@ msgstr "Bağımsız Değişkeni Sil"
 #~ msgstr ""
 #~ "Farklı siteler aynı dil için farklı dil kodu biçimini kullanabilir. "
 #~ "Aşağıdaki üç türden biriyle karşılaşabilirsiniz: iki harfli, bölgeli iki "
-#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve \"eng"
-#~ "\" kelimelerinin tümü kullanılır.\n"
+#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve "
+#~ "\"eng\" kelimelerinin tümü kullanılır.\n"
 #~ "En iyi sonuçları elde etmek için lütfen dilleriniz için geçerli tüm "
 #~ "kodları belirtin. Varsa, otomatik oluşturulan alt yazılar da "
 #~ "indirilecektir.\n"
@@ -2501,8 +2516,7 @@ msgstr "Bağımsız Değişkeni Sil"
 #~ msgstr "Kalan İndirme: {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr ""
-#~ "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;Dönüştürücü;İndirici;"
+#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;Dönüştürücü;İndirici;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Basit bir yt-dlp ön ucu"
