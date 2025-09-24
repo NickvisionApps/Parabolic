@@ -17,10 +17,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <controls:TitleBar x:Name="TitleBar" Grid.Row="0" SearchVisibility="Visible" SearchChanged="OnTitleBarSearchChanged" SearchSelected="OnTitleBarSearchSelected"/>
+        <TitleBar x:Name="TitleBar" Grid.Row="0" IsPaneToggleButtonVisible="True" PaneToggleRequested="OnPaneToggleRequested">
+            <TitleBar.IconSource>
+                <ImageIconSource ImageSource="../resources/icon.ico"/>
+            </TitleBar.IconSource>
+
+            <TitleBar.Content>
+                <AutoSuggestBox x:Name="TitleBarSearch" MinWidth="300" QueryIcon="Find" TextChanged="OnTitleBarSearchChanged" SuggestionChosen="OnTitleBarSearchSelected"/>
+            </TitleBar.Content>
+        </TitleBar>
 
         <NavigationView x:Name="NavView" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                        IsBackButtonVisible="Collapsed" IsSettingsVisible="False" SelectionChanged="OnNavViewSelectionChanged">
+                        IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="False"
+                        SelectionChanged="OnNavViewSelectionChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="NavViewHome" Tag="Home">
                     <NavigationViewItem.Icon>

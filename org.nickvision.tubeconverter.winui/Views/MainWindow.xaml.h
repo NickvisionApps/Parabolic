@@ -3,7 +3,6 @@
 
 #include "pch.h"
 #include "Controls/SettingsRow.g.h"
-#include "Controls/TitleBar.g.h"
 #include "Controls/ViewStack.g.h"
 #include "Views/MainWindow.g.h"
 #include <memory>
@@ -51,6 +50,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          * @param args Microsoft::UI::Xaml::WindowActivatedEventArgs
          */
         void OnActivated(const IInspectable& sender, const Microsoft::UI::Xaml::WindowActivatedEventArgs& args);
+        /**
+         * @brief Handles when the title bar's pane toggle button is clicked.
+         * @param sender Microsoft::UI::Xaml::Controls::TitleBar
+         * @param args IInspectable
+         */
+        void OnPaneToggleRequested(const Microsoft::UI::Xaml::Controls::TitleBar& sender, const IInspectable& args);
         /**
          * @brief Handles when the app's configuration is saved.
          * @param args Nickvision::Events::EventArgs

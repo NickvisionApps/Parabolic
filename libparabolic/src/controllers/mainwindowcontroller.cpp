@@ -43,10 +43,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.9.0" });
+        m_appInfo.setVersion({ "2025.10.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to specify a suggested filename in batch files\n- Added the ability to open URLs directly in Parabolic with the parabolic:// URL protocol\n- Fixed handling of temporary files\n- Fixed an issue where some subtitles could not be downloaded\n- Fixed an issue where the app crashed when validating an invalid URL\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Fixed an issue where Parabolic was unable to start\n- Fixed an issue where Parabolic did not notify of new yt-dlp releases\n- Updated GNOME runtime to 49\n- Updated WindowsAppSDK to 1.8\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

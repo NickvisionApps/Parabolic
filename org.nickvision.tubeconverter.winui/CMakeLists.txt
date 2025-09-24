@@ -25,7 +25,6 @@ if(WIN32)
         "Controls/DownloadRow.xaml.cpp" "Controls/DownloadRow.xaml.h" "Controls/DownloadRow.xaml" "Controls/DownloadRow.idl"
         "Controls/SettingsRow.xaml.cpp" "Controls/SettingsRow.xaml.h" "Controls/SettingsRow.xaml" "Controls/SettingsRow.idl"
         "Controls/StatusPage.xaml.cpp" "Controls/StatusPage.xaml.h" "Controls/StatusPage.xaml" "Controls/StatusPage.idl"
-        "Controls/TitleBar.xaml.cpp" "Controls/TitleBar.xaml.h" "Controls/TitleBar.xaml" "Controls/TitleBar.idl"
         "Controls/ViewStack.xaml.cpp" "Controls/ViewStack.xaml.h" "Controls/ViewStack.xaml" "Controls/ViewStack.idl"
         "Helpers/WinUIHelpers.h"
         "Views/AddDownloadDialog.xaml.cpp" "Views/AddDownloadDialog.xaml.h" "Views/AddDownloadDialog.xaml" "Views/AddDownloadDialog.idl"
@@ -37,8 +36,8 @@ if(WIN32)
     set_property(SOURCE App.xaml PROPERTY VS_XAML_TYPE "ApplicationDefinition")
     set_property(TARGET ${OUTPUT_NAME} PROPERTY VS_PACKAGE_REFERENCES
         "Microsoft.Windows.CppWinRT_2.0.250303.1"
-        "Microsoft.WindowsAppSDK_1.7.250606001"
-        "Microsoft.Windows.SDK.BuildTools_10.0.26100.4188"
+        "Microsoft.WindowsAppSDK_1.8.250907003"
+        "Microsoft.Windows.SDK.BuildTools_10.0.26100.4948"
         "Microsoft.Windows.ImplementationLibrary_1.0.250325.1")
     target_include_directories(${OUTPUT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
     set_target_properties(${OUTPUT_NAME} PROPERTIES
