@@ -223,7 +223,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--password");
             arguments.push_back(credential->getPassword());
         }
-        if(m_options.getCookiesBrowser() != Browser::None && Environment::getDeploymentMode() == DeploymentMode::Local)
+        if(m_options.getCookiesBrowser() != Browser::None)
         {
             arguments.push_back("--cookies-from-browser");
             switch(m_options.getCookiesBrowser())

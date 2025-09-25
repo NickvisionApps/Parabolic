@@ -14,7 +14,17 @@
         "--talk-name=org.freedesktop.Notifications",
         "--talk-name=org.freedesktop.ScreenSaver",
         "--talk-name=org.freedesktop.secrets",
-        "--filesystem=xdg-download"
+        "--filesystem=xdg-download",
+        "--filesystem=xdg-config/BraveSoftware/Brave-Browser:ro",
+        "--filesystem=xdg-config/google-chrome:ro",
+        "--filesystem=xdg-config/chromium:ro",
+        "--filesystem=xdg-config/microsoft-edge:ro",
+        "--filesystem=~/.mozilla/firefox:ro",
+        "--filesystem=~/.var/app/org.mozilla.firefox/.mozilla/firefox:ro",
+        "--filesystem=~/snap/firefox/common/.mozilla/firefox:ro",
+        "--filesystem=xdg-config/opera:ro",
+        "--filesystem=xdg-config/vivaldi:ro",
+        "--filesystem=xdg-config/naver-whale:ro"
     ],
     "cleanup":[
         "/include",
