@@ -102,7 +102,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         CmbCookiesBrowser().Items().Append(winrt::box_value(winrt::to_hstring(_("Edge"))));
         CmbCookiesBrowser().Items().Append(winrt::box_value(winrt::to_hstring(_("Firefox"))));
         CmbCookiesBrowser().Items().Append(winrt::box_value(winrt::to_hstring(_("Opera"))));
-        CmbCookiesBrowser().Items().Append(winrt::box_value(winrt::to_hstring(_("Safari"))));
         CmbCookiesBrowser().Items().Append(winrt::box_value(winrt::to_hstring(_("Vivaldi"))));
         CmbCookiesBrowser().Items().Append(winrt::box_value(winrt::to_hstring(_("Whale"))));
         RowCookiesFile().Title(winrt::to_hstring(_("Cookies File")));

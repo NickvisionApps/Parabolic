@@ -15,7 +15,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         Edge,
         Firefox,
         Opera,
-        Safari,
         Vivaldi,
         Whale
     };

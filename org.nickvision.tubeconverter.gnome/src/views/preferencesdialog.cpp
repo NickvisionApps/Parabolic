@@ -1,10 +1,8 @@
 #include "views/preferencesdialog.h"
 #include <libnick/localization/gettext.h>
-#include <libnick/system/environment.h>
 #include "helpers/gtkhelpers.h"
 
 using namespace Nickvision::Events;
-using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
@@ -56,10 +54,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("useAriaRow"), options.getUseAria());
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMaxConnectionsPerServerRow"), static_cast<double>(options.getAriaMaxConnectionsPerServer()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMinSplitSizeRow"), static_cast<double>(options.getAriaMinSplitSize()));
-        if(Environment::getDeploymentMode() != DeploymentMode::Local)
-        {
-            gtk_widget_set_visible(m_builder.get<GtkWidget>("cookiesBrowserRow"), false);
-        }
         reloadPostprocessingArguments();
         //Signals
         m_closed += [&](const EventArgs&) { onClosed(); };
