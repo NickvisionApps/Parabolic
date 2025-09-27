@@ -69,6 +69,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     {
         InitializeComponent();
         this->m_inner.as<::IWindowNative>()->get_WindowHandle(&m_hwnd);
+        AppWindow().SetIcon(L"resources\\icon.ico");
         ExtendsContentIntoTitleBar(true);
         SetTitleBar(TitleBar());
         AppWindow().TitleBar().PreferredHeightOption(TitleBarHeightOption::Tall);
@@ -96,6 +97,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_controller->downloadRetried() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadRetried(args); }); };
         m_controller->downloadStartedFromQueue() += [this](const ParamEventArgs<int>& args){ DispatcherQueue().TryEnqueue([this, args](){ OnDownloadStartedFromQueue(args); }); };
         //Localize Strings
+        AppWindow().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview ? winrt::to_hstring(_("Preview")) : L"");
         TitleBarSearch().PlaceholderText(winrt::to_hstring(_("Search")));
