@@ -197,19 +197,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 return "yt-dlp version " + ytdlpVersion;
             }
         }) };
-        //ffmpeg
-        std::future<std::string> ffmpegFuture{ std::async(std::launch::async, []() -> std::string
-        {
-            if(Environment::findDependency("ffmpeg").empty())
-            {
-                return "ffmpeg not found\n";
-            }
-            else
-            {
-                std::string ffmpegVersion{ Environment::exec("\"" + Environment::findDependency("ffmpeg").string() + "\" -version") };
-                return ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) + "\n";
-            }
-        }) };
         //aria2c
         std::future<std::string> aria2cFuture{ std::async(std::launch::async, []() -> std::string
         {
@@ -223,11 +210,38 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 return aria2cVersion.substr(0, aria2cVersion.find('\n')) + "\n";
             }
         }) };
+        //ffmpeg
+        std::future<std::string> ffmpegFuture{ std::async(std::launch::async, []() -> std::string
+        {
+            if(Environment::findDependency("ffmpeg").empty())
+            {
+                return "ffmpeg not found\n";
+            }
+            else
+            {
+                std::string ffmpegVersion{ Environment::exec("\"" + Environment::findDependency("ffmpeg").string() + "\" -version") };
+                return ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) + "\n";
+            }
+        }) };
+        //deno
+        std::future<std::string> denoFuture{ std::async(std::launch::async, []() -> std::string
+        {
+            if(Environment::findDependency("deno").empty())
+            {
+                return "deno not found\n";
+            }
+            else
+            {
+                std::string denoVersion{ Environment::exec("\"" + Environment::findDependency("deno").string() + "\" --version") };
+                return denoVersion.substr(0, denoVersion.find("(")) + "\n";
+            }
+        }) };
         //Extra
         std::stringstream builder;
         builder << ytdlpFuture.get();
-        builder << ffmpegFuture.get();
         builder << aria2cFuture.get();
+        builder << ffmpegFuture.get();
+        builder << denoFuture.get();
         if(!extraInformation.empty())
         {
             builder << std::endl << extraInformation << std::endl;
