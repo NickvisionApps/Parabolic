@@ -97,6 +97,18 @@ parts:
       - libsqlcipher-dev
     override-prime: ''
 
+   deno:
+    source: https://github.com/denoland/deno_install.git
+    source-tag: 'v0.3.3'
+    source-depth: 1
+    plugin: dump
+    build-packages:
+      - unzip
+      - curl
+    override-build: |
+      export DENO_INSTALL=/usr
+      ./install.sh
+
   libxmlplusplus:
     source: https://github.com/libxmlplusplus/libxmlplusplus.git
     source-tag: '5.4.0'
@@ -111,7 +123,7 @@ parts:
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libxml++-5.0*.so*
 
   tube-converter:
-    after: [maddy, libnick, libxmlplusplus]
+    after: [maddy, libnick, deno, libxmlplusplus]
     plugin: cmake
     source: .
     build-snaps:
