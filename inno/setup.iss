@@ -85,10 +85,11 @@ Source: "vc_redist.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "windowsappruntimeinstall.exe"; DestDir: "{app}"; Flags: deleteafterinstall 
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\resources\yt-dlp-plugins\*"; DestDir: "{app}\Release\yt-dlp-plugins\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
+Source: "deno.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs
 
