@@ -53,37 +53,47 @@ Adw.Dialog editDialog {
     [top]
     Adw.HeaderBar { }
 
-    content: Gtk.Box {
-      orientation: vertical;
-      spacing: 12;
-
-      Adw.PreferencesGroup {
-        margin-start: 12;
-        margin-end: 12;
-
-        Adw.EntryRow editNameRow {
-          title: _("Name");
-        }
-
-        Adw.EntryRow editUrlRow {
-          title: _("URL");
-        }
-
-        Adw.EntryRow editUsernameRow {
-          title: _("Username");
-        }
-
-        Adw.PasswordEntryRow editPasswordRow {
-          title: _("Password");
-        }
-      }
-
+    [bottom]
+    Gtk.ActionBar {
+      [center]
       Gtk.Button editConfirmButton {
-        halign: center;
         margin-bottom: 12;
 
         styles [ "pill", "suggested-action" ]
       }
+    }
+
+    content: Gtk.ScrolledWindow {
+      hexpand: true;
+      vexpand: true;
+      propagate-natural-width: true;
+      propagate-natural-height: true;
+      child: Gtk.Box {
+        orientation: vertical;
+        spacing: 16;
+        margin-start: 12;
+        margin-top: 6;
+        margin-end: 12;
+        margin-bottom: 12;
+
+        Adw.PreferencesGroup {
+          Adw.EntryRow editNameRow {
+            title: _("Name");
+          }
+
+          Adw.EntryRow editUrlRow {
+            title: _("URL");
+          }
+
+          Adw.EntryRow editUsernameRow {
+            title: _("Username");
+          }
+
+          Adw.PasswordEntryRow editPasswordRow {
+            title: _("Password");
+          }
+        }
+      };
     };
   };
 }

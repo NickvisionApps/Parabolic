@@ -234,8 +234,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         ContentDialog dialog;
         dialog.Title(winrt::box_value(winrt::to_hstring(_("Delete Credential"))));
         dialog.Content(winrt::box_value(winrt::to_hstring(_("Are you sure you want to delete this credential?"))));
-        dialog.CloseButtonText(winrt::to_hstring(_("No")));
-        dialog.PrimaryButtonText(winrt::to_hstring(_("Yes")));
+        dialog.CloseButtonText(winrt::to_hstring(_("Cancel")));
+        dialog.PrimaryButtonText(winrt::to_hstring(_("Delete")));
         dialog.DefaultButton(ContentDialogButton::Primary);
         dialog.RequestedTheme(RequestedTheme());
         dialog.XamlRoot(XamlRoot());

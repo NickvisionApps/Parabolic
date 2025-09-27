@@ -17,21 +17,22 @@ Adw.Dialog root {
 
         [bottom]
         Gtk.ActionBar {
-          [end]
+          [center]
           Gtk.Button validateUrlButton {
+            margin-bottom: 12;
             label: _("Validate");
 
-            styles ["suggested-action"]
+            styles [ "pill", "suggested-action" ]
           }
         }
 
         content: Gtk.Box {
-          margin-start: 24;
-          margin-top: 24;
-          margin-end: 24;
-          margin-bottom: 24;
           orientation: vertical;
-          spacing: 12;
+          spacing: 16;
+          margin-start: 12;
+          margin-top: 6;
+          margin-end: 12;
+          margin-bottom: 12;
 
           Adw.PreferencesGroup {
             Adw.EntryRow urlRow {
@@ -108,11 +109,12 @@ Adw.Dialog root {
 
         [bottom]
         Gtk.ActionBar {
-          [end]
+          [center]
           Gtk.Button downloadSingleButton {
+            margin-bottom: 12;
             label: _("Download");
 
-            styles ["suggested-action"]
+            styles [ "pill", "suggested-action" ]
           }
         }
 
@@ -253,11 +255,12 @@ Adw.Dialog root {
 
         [bottom]
         Gtk.ActionBar {
-          [end]
+          [center]
           Gtk.Button downloadSingleSubtitlesButton {
+            margin-bottom: 12;
             label: _("Download");
 
-            styles ["suggested-action"]
+            styles [ "pill", "suggested-action" ]
           }
         }
 
@@ -285,11 +288,12 @@ Adw.Dialog root {
 
         [bottom]
         Gtk.ActionBar {
-          [end]
+          [center]
           Gtk.Button downloadSingleAdvancedButton {
+            margin-bottom: 12;
             label: _("Download");
 
-            styles ["suggested-action"]
+            styles [ "pill", "suggested-action" ]
           }
         }
 
@@ -358,11 +362,12 @@ Adw.Dialog root {
 
         [bottom]
         Gtk.ActionBar {
-          [end]
+          [center]
           Gtk.Button downloadPlaylistButton {
+            margin-bottom: 12;
             label: _("Download");
 
-            styles ["suggested-action"]
+            styles [ "pill", "suggested-action" ]
           }
         }
 
@@ -501,11 +506,11 @@ Adw.Dialog root {
 
         [bottom]
         Gtk.ActionBar {
-          [end]
+          [center]
           Gtk.Button downloadPlaylistItemsButton {
             label: _("Download");
 
-            styles ["suggested-action"]
+            styles [ "pill", "suggested-action" ]
           }
         }
 
