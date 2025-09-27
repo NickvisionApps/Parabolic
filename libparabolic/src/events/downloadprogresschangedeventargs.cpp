@@ -1,6 +1,5 @@
 #include "events/downloadprogresschangedeventargs.h"
 #include <chrono>
-#include <format>
 #include <libnick/localization/gettext.h>
 
 namespace Nickvision::TubeConverter::Shared::Events
@@ -34,7 +33,48 @@ namespace Nickvision::TubeConverter::Shared::Events
         {
             m_speedStr = _f("{:.2f} B/s", m_speed);
         }
-        m_etaStr = m_eta == -1 ? _("N/A") : std::format("{:%T}", std::chrono::round<std::chrono::milliseconds>(std::chrono::duration<int>(eta)));
+        if(m_eta == -1)
+        {
+            m_etaStr = _("Unknown time left");
+        }
+        else
+        {
+            std::chrono::seconds totalSeconds{ std::chrono::round<std::chrono::seconds>(std::chrono::duration<int>(m_eta)) };
+            std::chrono::hours hours{ std::chrono::duration_cast<std::chrono::hours>(totalSeconds) };
+            totalSeconds -= hours;
+            std::chrono::minutes minutes{ std::chrono::duration_cast<std::chrono::minutes>(totalSeconds) };
+            totalSeconds -= minutes;
+            std::chrono::seconds seconds{ std::chrono::duration_cast<std::chrono::seconds>(totalSeconds) };
+            std::string remainingStr;
+            if(m_eta == 0)
+            {
+                remainingStr = _("0 seconds");
+            }
+            else
+            {
+                if(hours.count())
+                {
+                    remainingStr += _fn("{} hour", "{} hours", hours.count(), hours.count());
+                }
+                if(hours.count() || minutes.count())
+                {
+                    if(hours.count())
+                    {
+                        remainingStr = _f("{} and ", remainingStr);
+                    }
+                    remainingStr += _fn("{} minute", "{} minutes", minutes.count(), minutes.count());
+                }
+                if(hours.count() || minutes.count() || seconds.count())
+                {
+                    if(hours.count() || minutes.count())
+                    {
+                        remainingStr = _f("{} and ", remainingStr);
+                    }
+                    remainingStr += _fn("{} second", "{} seconds", seconds.count(), seconds.count());
+                }
+            }
+            m_etaStr = _fn("{} left", "{} left", hours.count() + minutes.count() + seconds.count(), remainingStr);
+        }
     }
 
     int DownloadProgressChangedEventArgs::getId() const

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-26 23:15-0400\n"
+"POT-Creation-Date: 2025-09-26 23:54-0400\n"
 "PO-Revision-Date: 2025-02-04 11:59+0000\n"
 "Last-Translator: Compact / Naomi <webmaster@compactbunker.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -180,33 +180,75 @@ msgstr "{} је завршило са грешком"
 msgid "System"
 msgstr "Систем"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:19
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:18
 msgid "0 B/s"
 msgstr ""
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:23
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:22
 #, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:27
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:26
 #, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:31
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:30
 #, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:35
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:34
 #, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
-#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:37
-msgid "N/A"
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:38
+msgid "Unknown time left"
 msgstr ""
+
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:51
+msgid "0 seconds"
+msgstr ""
+
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
+#, c++-format
+msgid "{} hour"
+msgid_plural "{} hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
+#, c++-format
+msgid "{} and "
+msgstr ""
+
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
+#, c++-format
+msgid "{} minute"
+msgid_plural "{} minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
+#, c++-format
+msgid "{} second"
+msgid_plural "{} seconds"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
+#, c++-format
+msgid "{} left"
+msgid_plural "{} left"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
@@ -1276,7 +1318,7 @@ msgstr "Обрада"
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
 #, c++-format
-msgid "{} • ETA: {}"
+msgid "{} • {}"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:110

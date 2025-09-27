@@ -112,7 +112,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         }
         else
         {
-            LblStatus().Text(winrt::to_hstring(_f("{} • ETA: {}", args.getSpeedStr(), args.getEtaStr())));
+            LblStatus().Text(winrt::to_hstring(_f("{} • {}", args.getSpeedStr(), args.getEtaStr())));
             ProgBar().Value(args.getProgress());
             ProgBar().IsIndeterminate(false);
         }
