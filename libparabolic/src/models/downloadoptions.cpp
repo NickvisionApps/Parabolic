@@ -355,7 +355,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--proxy");
             arguments.push_back(downloaderOptions.getProxyUrl());
         }
-        if(downloaderOptions.getCookiesBrowser() != Browser::None && Environment::getDeploymentMode() == DeploymentMode::Local)
+        if(downloaderOptions.getCookiesBrowser() != Browser::None)
         {
             arguments.push_back("--cookies-from-browser");
             switch(downloaderOptions.getCookiesBrowser())

@@ -221,7 +221,7 @@ Adw.PreferencesDialog root {
       Adw.ComboRow cookiesBrowserRow {
         title: _("Cookies from Browser");
         model: Gtk.StringList {
-          strings [_("None"), _("Brave"), _("Chrome"), _("Chromium"), _("Edge"), _("Firefox"), _("Opera"), _("Safari"), _("Vivaldi"), _("Whale")]
+          strings [_("None"), _("Brave"), _("Chrome"), _("Chromium"), _("Edge"), _("Firefox"), _("Opera"), _("Vivaldi"), _("Whale")]
         };
 
         [prefix]
@@ -263,10 +263,10 @@ Adw.PreferencesDialog root {
 
     Adw.PreferencesGroup {
       title: _("aria2c");
+      description: _("An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader");
 
       Adw.SwitchRow useAriaRow {
         title: _("Use aria2c");
-        subtitle: _("Use aria2c instead of yt-dlp's native downloader");
 
         [prefix]
         Gtk.Image {

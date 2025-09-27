@@ -1,10 +1,8 @@
 #include "views/preferencesdialog.h"
 #include <libnick/localization/gettext.h>
-#include <libnick/system/environment.h>
 #include "helpers/gtkhelpers.h"
 
 using namespace Nickvision::Events;
-using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
@@ -56,10 +54,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("useAriaRow"), options.getUseAria());
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMaxConnectionsPerServerRow"), static_cast<double>(options.getAriaMaxConnectionsPerServer()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMinSplitSizeRow"), static_cast<double>(options.getAriaMinSplitSize()));
-        if(Environment::getDeploymentMode() != DeploymentMode::Local)
-        {
-            gtk_widget_set_visible(m_builder.get<GtkWidget>("cookiesBrowserRow"), false);
-        }
         reloadPostprocessingArguments();
         //Signals
         m_closed += [&](const EventArgs&) { onClosed(); };
@@ -237,14 +231,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Delete Argument?"), _("Are you sure you want to delete this argument?"))) };
         std::pair<PreferencesDialog*, std::string>* pair{ new std::pair<PreferencesDialog*, std::string>(this, name) };
-        adw_alert_dialog_add_responses(dialog, "yes", _("Yes"), "no", _("No"), nullptr);
-        adw_alert_dialog_set_response_appearance(dialog, "yes", ADW_RESPONSE_DESTRUCTIVE);
-        adw_alert_dialog_set_default_response(dialog, "no");
-        adw_alert_dialog_set_close_response(dialog, "no");
+        adw_alert_dialog_add_responses(dialog, "delete", _("Delete"), "cancel", _("Cancel"), nullptr);
+        adw_alert_dialog_set_response_appearance(dialog, "delete", ADW_RESPONSE_DESTRUCTIVE);
+        adw_alert_dialog_set_default_response(dialog, "cancel");
+        adw_alert_dialog_set_close_response(dialog, "cancel");
         g_signal_connect(dialog, "response", GCallback(+[](AdwAlertDialog* self, const char* response, gpointer data)
         {
             std::pair<PreferencesDialog*, std::string>* pair{ reinterpret_cast<std::pair<PreferencesDialog*, std::string>*>(data) };
-            if(std::string(response) == "yes")
+            if(std::string(response) == "delete")
             {
                 pair->first->m_controller->deletePostprocessingArgument(pair->second);
                 pair->first->reloadPostprocessingArguments();
