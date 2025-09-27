@@ -134,6 +134,19 @@
         },
         "python3-modules.json",
         {
+            "name": "aria2",
+            "config-opts": [
+                "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz",
+                    "sha256": "60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b"
+                }
+            ]
+        },
+        {
             "name": "ffmpeg",
             "buildsystem": "simple",
             "build-commands": [
@@ -159,15 +172,27 @@
             ]
         },
         {
-            "name": "aria2",
-            "config-opts": [
-                "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+            "name": "deno",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mv * /app/bin/"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz",
-                    "sha256": "60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b"
+                    "url": "https://github.com/denoland/deno/releases/download/v2.5.2/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "520fd4bc2d18b50b6ac2ea8b7d0f7f6a35588e412754a081e8c6afd4b15264c4",
+                    "only-arches": [
+                        "x86_64"
+                    ]
+                },
+                {
+                    "type": "archive",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.5.2/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "e7dca4989847db4237589153ff6cc572b212c8dd1640219b6788badfc8f9a3ef",
+                    "only-arches": [
+                        "aarch64"
+                    ]
                 }
             ]
         },
