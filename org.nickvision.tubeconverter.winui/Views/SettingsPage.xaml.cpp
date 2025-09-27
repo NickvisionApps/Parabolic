@@ -110,7 +110,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         ToolTipService::SetToolTip(BtnClearCookiesFile(), winrt::box_value(winrt::to_hstring(_("Clear Cookies File"))));
         LblAria().Text(winrt::to_hstring(_("aria2c")));
         RowUseAria().Title(winrt::to_hstring(_("Use aria2c")));
-        RowUseAria().Description(winrt::to_hstring(_("Use aria2c instead of yt-dlp's native downloader")));
+        RowUseAria().Description(winrt::to_hstring(_("An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader")));
         TglUseAria().OnContent(winrt::box_value(winrt::to_hstring(_("On"))));
         TglUseAria().OffContent(winrt::box_value(winrt::to_hstring(_("Off"))));
         RowMaxConnectionsPerServer().Title(winrt::to_hstring(_("Max Connections Per Server (-x)")));
@@ -421,8 +421,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         ContentDialog dialog;
         dialog.Title(winrt::box_value(winrt::to_hstring(_("Delete Argument?"))));
         dialog.Content(winrt::box_value(winrt::to_hstring(_("Are you sure you want to delete this argument?"))));
-        dialog.PrimaryButtonText(winrt::to_hstring(_("Yes")));
-        dialog.CloseButtonText(winrt::to_hstring(_("No")));
+        dialog.PrimaryButtonText(winrt::to_hstring(_("Delete")));
+        dialog.CloseButtonText(winrt::to_hstring(_("Cancel")));
         dialog.DefaultButton(ContentDialogButton::Primary);
         dialog.RequestedTheme(MainGrid().RequestedTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
