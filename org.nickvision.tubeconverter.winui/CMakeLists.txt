@@ -36,8 +36,8 @@ if(WIN32)
     set_property(SOURCE App.xaml PROPERTY VS_XAML_TYPE "ApplicationDefinition")
     set_property(TARGET ${OUTPUT_NAME} PROPERTY VS_PACKAGE_REFERENCES
         "Microsoft.Windows.CppWinRT_2.0.250303.1"
-        "Microsoft.WindowsAppSDK_1.8.250907003"
-        "Microsoft.Windows.SDK.BuildTools_10.0.26100.4948"
+        "Microsoft.WindowsAppSDK_1.8.250916003"
+        "Microsoft.Windows.SDK.BuildTools_10.0.26100.6584"
         "Microsoft.Windows.ImplementationLibrary_1.0.250325.1")
     target_include_directories(${OUTPUT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")
     set_target_properties(${OUTPUT_NAME} PROPERTIES

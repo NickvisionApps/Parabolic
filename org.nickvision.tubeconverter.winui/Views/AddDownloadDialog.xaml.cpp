@@ -15,9 +15,9 @@ using namespace ::Nickvision::TubeConverter::WinUI::Helpers;
 using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace winrt::Microsoft::UI::Xaml::Media;
+using namespace winrt::Microsoft::Windows::Storage::Pickers;
 using namespace winrt::Windows::ApplicationModel::DataTransfer;
 using namespace winrt::Windows::Storage;
-using namespace winrt::Windows::Storage::Pickers;
 
 enum AddDownloadDialogPage
 {
@@ -30,6 +30,7 @@ enum AddDownloadDialogPage
 namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 {
     AddDownloadDialog::AddDownloadDialog()
+        : m_windowId{ 0 }
     {
         InitializeComponent();
     }
@@ -140,9 +141,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         CmbCredential().SelectedIndex(0);
     }
 
-    void AddDownloadDialog::Hwnd(HWND hwnd)
+    void AddDownloadDialog::WindowId(Microsoft::UI::WindowId id)
     {
-        m_hwnd = hwnd;
+        m_windowId = id;
     }
 
     Windows::Foundation::IAsyncOperation<ContentDialogResult> AddDownloadDialog::ShowAsync()
@@ -200,11 +201,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     Windows::Foundation::IAsyncAction AddDownloadDialog::UseBatchFile(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        FileOpenPicker picker;
-        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
+        FileOpenPicker picker{ m_windowId };
         picker.FileTypeFilter().Append(L".txt");
-        StorageFile file{ co_await picker.PickSingleFileAsync() };
-        if(file)
+        PickFileResult result{ co_await picker.PickSingleFileAsync() };
+        if(result)
         {
             CloseButtonText(L"");
             PrimaryButtonText(L"");
@@ -216,11 +216,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             }
             if(CmbCredential().SelectedIndex() < 2)
             {
-                m_controller->validateBatchFile(winrt::to_string(file.Path()), credential);
+                m_controller->validateBatchFile(winrt::to_string(result.Path()), credential);
             }
             else
             {
-                m_controller->validateBatchFile(winrt::to_string(file.Path()), CmbCredential().SelectedIndex() - 2);
+                m_controller->validateBatchFile(winrt::to_string(result.Path()), CmbCredential().SelectedIndex() - 2);
             }
         }
     }
@@ -264,13 +264,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderSingle(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        FolderPicker picker;
-        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
-        picker.FileTypeFilter().Append(L"*");
-        StorageFolder folder{ co_await picker.PickSingleFolderAsync() };
-        if(folder)
+        FolderPicker picker{ m_windowId };
+        PickFolderResult result{ co_await picker.PickSingleFolderAsync() };
+        if(result)
         {
-            TxtSaveFolderSingle().Text(folder.Path());
+            TxtSaveFolderSingle().Text(result.Path());
         }
     }
 
@@ -300,13 +298,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderPlaylist(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        FolderPicker picker;
-        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
-        picker.FileTypeFilter().Append(L"*");
-        StorageFolder folder{ co_await picker.PickSingleFolderAsync() };
-        if(folder)
+        FolderPicker picker{ m_windowId };
+        PickFolderResult result{ co_await picker.PickSingleFolderAsync() };
+        if(result)
         {
-            TxtSaveFolderPlaylist().Text(folder.Path());
+            TxtSaveFolderPlaylist().Text(result.Path());
         }
     }
 
