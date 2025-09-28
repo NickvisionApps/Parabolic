@@ -12,13 +12,14 @@ using namespace ::Nickvision::TubeConverter::WinUI::Helpers;
 using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace winrt::Microsoft::UI::Xaml::Media;
+using namespace winrt::Microsoft::Windows::Storage::Pickers;
 using namespace winrt::Windows::Storage;
-using namespace winrt::Windows::Storage::Pickers;
 
 namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 {
     SettingsPage::SettingsPage()
-        : m_constructing{ true }
+        : m_constructing{ true },
+        m_windowId{ 0 }
     {
         InitializeComponent();
         //Localize Strings
@@ -199,9 +200,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         m_constructing = false;
     }
 
-    void SettingsPage::Hwnd(HWND hwnd)
+    void SettingsPage::WindowId(Microsoft::UI::WindowId id)
     {
-        m_hwnd = hwnd;
+        m_windowId = id;
     }
 
     void SettingsPage::OnNavViewSelectionChanged(const SelectorBar& sender, const SelectorBarSelectionChangedEventArgs& args)
@@ -235,13 +236,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
 
     Windows::Foundation::IAsyncAction SettingsPage::SelectCookiesFile(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        FileOpenPicker picker;
-        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
+        FileOpenPicker picker{ m_windowId };
         picker.FileTypeFilter().Append(L".txt");
-        StorageFile file{ co_await picker.PickSingleFileAsync() };
-        if(file)
+        PickFileResult result{ co_await picker.PickSingleFileAsync() };
+        if(result)
         {
-            m_cookiesFilePath = winrt::to_string(file.Path());
+            m_cookiesFilePath = winrt::to_string(result.Path());
             LblCookiesFile().Text(winrt::to_hstring(std::filesystem::path(m_cookiesFilePath).filename().string()));
             ApplyChanges();
         }

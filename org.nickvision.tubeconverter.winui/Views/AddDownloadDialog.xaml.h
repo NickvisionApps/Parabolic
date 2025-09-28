@@ -28,10 +28,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         Windows::Foundation::IAsyncAction Controller(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController>& controller, const winrt::hstring& url);
         /**
-         * @brief Sets the hwnd for the dialog.
-         * @param hwnd The hwnd
+         * @brief Sets the WindowId for the dialog.
+         * @param id The WindowId
          */
-        void Hwnd(HWND hwnd);
+        void WindowId(Microsoft::UI::WindowId id);
         /**
          * @brief Shows the dialog
          * @return Microsoft::UI::Xaml::Controls::ContentDialogResult
@@ -139,7 +139,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void Download();
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController> m_controller;
-        HWND m_hwnd;
+        Microsoft::UI::WindowId m_windowId;
     };
 }
 

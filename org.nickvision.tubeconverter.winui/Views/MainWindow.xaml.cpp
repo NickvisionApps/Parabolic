@@ -623,7 +623,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             ViewStack().CurrentPageIndex(MainWindowPage::Custom);
             PageCustom().Content(winrt::make<implementation::SettingsPage>());
             PageCustom().Content().as<implementation::SettingsPage>()->Controller(m_controller->createPreferencesViewController());
-            PageCustom().Content().as<implementation::SettingsPage>()->Hwnd(m_hwnd);
+            PageCustom().Content().as<implementation::SettingsPage>()->WindowId(AppWindow().Id());
         }
     }
 
@@ -714,7 +714,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
     {
         ContentDialog dialog{ winrt::make<implementation::AddDownloadDialog>() };
         co_await dialog.as<implementation::AddDownloadDialog>()->Controller(m_controller->createAddDownloadDialogController(), url);
-        dialog.as<implementation::AddDownloadDialog>()->Hwnd(m_hwnd);
+        dialog.as<implementation::AddDownloadDialog>()->WindowId(AppWindow().Id());
         dialog.RequestedTheme(MainGrid().RequestedTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
         co_await dialog.as<implementation::AddDownloadDialog>()->ShowAsync();

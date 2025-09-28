@@ -25,10 +25,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void Controller(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::PreferencesViewController>& controller);
         /**
-         * @brief Sets the hwnd for the dialog.
-         * @param hwnd The hwnd
+         * @brief Sets the WindowId for the dialog.
+         * @param id The WindowId
          */
-        void Hwnd(HWND hwnd);
+        void WindowId(Microsoft::UI::WindowId id);
         /**
          * @brief Handles when the navigation view selection changes.
          * @param sender SelectorBar
@@ -94,7 +94,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
          */
         void ApplyChanges();
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::PreferencesViewController> m_controller;
-        HWND m_hwnd;
+        Microsoft::UI::WindowId m_windowId;
         bool m_constructing;
         std::filesystem::path m_cookiesFilePath;
     };
