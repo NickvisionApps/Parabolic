@@ -312,6 +312,10 @@ namespace Nickvision::TubeConverter::Shared::Models
             try
             {
                 std::filesystem::path finalPath{ logLines[logLines.size() - 1] };
+                if(!std::filesystem::exists(finalPath))
+                {
+                    finalPath = logLines[logLines.size() - 2];
+                }
                 if(std::filesystem::exists(finalPath))
                 {
                     m_path = finalPath;
