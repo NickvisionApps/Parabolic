@@ -282,7 +282,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--windows-filenames");
         }
-        std::string formatSort;
+        std::string formatSort{ m_timeFrame ? "proto:https," : "" };
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
             formatSort += "res,vcodec:";
