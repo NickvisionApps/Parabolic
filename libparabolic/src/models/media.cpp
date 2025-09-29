@@ -159,4 +159,28 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         return m_suggestedSaveFolder;
     }
+
+    bool Media::hasVideoFormats() const
+    {
+        for(const Format& format : m_formats)
+        {
+            if(!format.isFormatValue(FormatValue::None) && format.getType() == MediaType::Video)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    bool Media::hasAudioFormats() const
+    {
+        for(const Format& format : m_formats)
+        {
+            if(!format.isFormatValue(FormatValue::None) && format.getType() == MediaType::Audio)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

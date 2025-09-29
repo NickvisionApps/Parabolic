@@ -354,8 +354,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Save Previous Options
         m_previousOptions.setSaveFolder(options.getSaveFolder());
         m_previousOptions.setFileType(type);
-        m_previousOptions.setVideoFormatId(type, options.getVideoFormat() ? options.getVideoFormat()->getId() : "");
-        m_previousOptions.setAudioFormatId(type, options.getAudioFormat() ? options.getAudioFormat()->getId() : "");
+        if(media.hasVideoFormats())
+        {
+            m_previousOptions.setVideoFormatId(type, options.getVideoFormat() ? options.getVideoFormat()->getId() : "");
+        }
+        if(media.hasAudioFormats())
+        {
+            m_previousOptions.setAudioFormatId(type, options.getAudioFormat() ? options.getAudioFormat()->getId() : "");
+        }
         m_previousOptions.setSplitChapters(options.getSplitChapters());
         m_previousOptions.setExportDescription(exportDescription);
         m_previousOptions.setPostProcessorArgument(options.getPostProcessorArgument() ? options.getPostProcessorArgument()->getName() : _("None"));

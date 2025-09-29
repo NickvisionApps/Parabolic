@@ -64,6 +64,18 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The suggested save folder of the media
          */
         const std::filesystem::path& getSuggestedSaveFolder() const;
+        /**
+         * @brief Gets whether or not the media has video formats available.
+         * @return True if the media has video formats
+         * @return False if the media does not have any specific video formats
+         */
+        bool hasVideoFormats() const;
+        /**
+         * @brief Gets whether or not the media has audio formats available.
+         * @return True if the media has audio formats
+         * @return False if the media does not have any specific audio formats
+         */
+        bool hasAudioFormats() const;
 
     private:
         std::string m_url;
