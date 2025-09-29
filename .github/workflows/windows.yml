@@ -84,7 +84,7 @@ jobs:
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffmpeg.exe ffmpeg.exe
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffprobe.exe ffprobe.exe
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffplay.exe ffplay.exe
-          move deno\deno-x86_64-pc-windows-msvc\deno.exe deno.exe
+          move deno\deno.exe deno.exe
           iscc setup.iss
       - name: "Create Portable"
         working-directory: ${{ github.workspace }}/build-portable/org.nickvision.tubeconverter.winui/Release
@@ -104,7 +104,7 @@ jobs:
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffmpeg.exe ffmpeg.exe
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffprobe.exe ffprobe.exe
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffplay.exe ffplay.exe
-          move deno\deno-x86_64-pc-windows-msvc\deno.exe deno.exe
+          move deno\deno.exe deno.exe
           Remove-Item -Path aria2.zip -Force
           Remove-Item -Path aria2 -Recurse -Force
           Remove-Item -Path ffmpeg.zip -Force
