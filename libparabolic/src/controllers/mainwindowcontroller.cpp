@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.10.1-next" });
+        m_appInfo.setVersion({ "2025.10.1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added the ability to use cookies from browser on sandboxed platforms\n- Fixed an issue where some audios where unable to be downloaded with time frames specified\n- Fixed an issue where generic downloads where unable to be opened/played on success\n- Fixed an issue where \"None\" would overwrite the previous saved format when media without video/audio formats were downloaded\n- Updated yt-dlp");
