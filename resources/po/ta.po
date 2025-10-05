@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 20:13-0400\n"
+"POT-Creation-Date: 2025-10-05 16:49-0400\n"
 "PO-Revision-Date: 2025-06-21 06:05+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -93,11 +93,13 @@ msgstr "எதுவுமில்லை"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:262
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:296
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr "பதிவிறக்கத்தை சரிபார்க்க முயற்சிப்பதில் பிழை: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:376
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:420
+#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "பதிவிறக்கத்தை சேர்க்க முயற்சிப்பதில் பிழை: {}"
 
@@ -134,12 +136,14 @@ msgid "Unable to download and install update"
 msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:414
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "மீட்டெடுக்கப்பட்டது {} பதிவிறக்கம்"
 msgstr[1] "மீட்டெடுக்கப்பட்டது {} பதிவிறக்கங்கள்"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:419
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr "பதிவிறக்கங்களை மீட்டெடுக்க முயற்சிப்பதில் பிழை: {}"
 
@@ -148,7 +152,7 @@ msgid "Download Finished"
 msgstr "பதிவிறக்கம் முடிந்தது"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:494
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "{the பதிவிறக்குவதை முடித்துவிட்டது"
 
@@ -163,6 +167,7 @@ msgid "Download Finished With Error"
 msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} பிழையுடன் முடித்துவிட்டது"
 
@@ -178,18 +183,22 @@ msgid "0 B/s"
 msgstr "0 பி/வி"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:22
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} கிப்/கள்"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:26
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} mib/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:30
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} kib/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:34
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} b/s"
 
@@ -202,6 +211,7 @@ msgid "0 seconds"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
+#, c++-format
 msgid "{} hour"
 msgid_plural "{} hours"
 msgstr[0] ""
@@ -209,22 +219,26 @@ msgstr[1] ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
+#, c++-format
 msgid "{} and "
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
+#, c++-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] ""
 msgstr[1] ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
+#, c++-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
+#, c++-format
 msgid "{} left"
 msgid_plural "{} left"
 msgstr[0] ""
@@ -245,18 +259,22 @@ msgid "Audio Description"
 msgstr "ஆடியோ விளக்கம்"
 
 #: libparabolic/src/models/format.cpp:352
+#, c++-format
 msgid "{:.2f} GiB"
 msgstr "{:.2f} கிப்"
 
 #: libparabolic/src/models/format.cpp:356
+#, c++-format
 msgid "{:.2f} MiB"
 msgstr "{:.2f} mib"
 
 #: libparabolic/src/models/format.cpp:360
+#, c++-format
 msgid "{:.2f} KiB"
 msgstr "{:.2f} என்பது"
 
 #: libparabolic/src/models/format.cpp:364
+#, c++-format
 msgid "{:.2f} B"
 msgstr "{:.2f} b"
 
@@ -1275,7 +1293,7 @@ msgstr "செயலாக்கம்"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} • {}"
 msgstr "{} | {} | மற்றும்: {}"
 
@@ -1363,12 +1381,12 @@ msgid "No Subtitles Available"
 msgstr "வசன வரிகள் எதுவும் கிடைக்கவில்லை"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "}} உருப்படிகள்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1532,7 +1550,7 @@ msgstr "புதிய புதுப்பிப்பு கிடைக்�
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:369
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} version {} is available to download and install"
 msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
 
@@ -1701,7 +1719,7 @@ msgid "OK"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{bownload பதிவிறக்கம் செய்ய ஒரு நற்சான்றிதழ் தேவை. பயன்படுத்த ஒன்றைத் தேர்ந்தெடுக்கவும் "
@@ -1820,6 +1838,7 @@ msgid "Receive Beta App Updates"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:150
+#, c++-format
 msgid "Check for pre-release (beta) versions of {}"
 msgstr ""
 
@@ -1828,7 +1847,7 @@ msgid "Changelog"
 msgstr "மாற்றபதிவு"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:154
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Version {}"
 msgstr "பதிப்பு: {0}"
 
@@ -1842,7 +1861,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:347
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:380
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading {}%"
 msgstr "பதிவிறக்குதல் ({})"
 

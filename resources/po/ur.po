@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 20:13-0400\n"
+"POT-Creation-Date: 2025-10-05 16:49-0400\n"
 "PO-Revision-Date: 2025-09-06 08:51+0000\n"
 "Last-Translator: Abdur Rehman Imran <arehmanimran4@gmail.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -101,12 +101,13 @@ msgstr "کچھ نہیں"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:262
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:296
+#, c++-format
 msgid "Error attempting to validate download: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:376
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:420
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "ڈائونلود کے اضافے میں مسئلہ"
 
@@ -143,13 +144,14 @@ msgid "Unable to download and install update"
 msgstr "ایپ ڈیٹ کو ڈائون لوڈ اور انسٹال نہیں کیا جا سکا"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:414
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "ناکام ڈاؤن لوڈز کو ڈاؤن لوڈ کرنے کی دوبارہ کوشش کریں"
 msgstr[1] "ناکام ڈاؤن لوڈز کو ڈاؤن لوڈ کرنے کی دوبارہ کوشش کریں"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:419
+#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -158,6 +160,7 @@ msgid "Download Finished"
 msgstr "ڈاؤن لوڈ مکمل"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:494
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{} کا ڈاؤن لوڈ مکمل کر لیا ہے"
 
@@ -173,6 +176,7 @@ msgid "Download Finished With Error"
 msgstr "خرابی کے ساتھ ڈاؤن لوڈ مکمل ہو گیا"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} ایک خرابی کے ساتھ ختم ہو گیا ہے"
 
@@ -189,18 +193,22 @@ msgid "0 B/s"
 msgstr "0 B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:22
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:26
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:30
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:34
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -213,6 +221,7 @@ msgid "0 seconds"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
+#, c++-format
 msgid "{} hour"
 msgid_plural "{} hours"
 msgstr[0] ""
@@ -220,22 +229,26 @@ msgstr[1] ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
+#, c++-format
 msgid "{} and "
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
+#, c++-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] ""
 msgstr[1] ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
+#, c++-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] ""
 msgstr[1] ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
+#, c++-format
 msgid "{} left"
 msgid_plural "{} left"
 msgstr[0] ""
@@ -256,22 +269,22 @@ msgid "Audio Description"
 msgstr ""
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B"
 msgstr "{0:f1} B/s"
 
@@ -1303,6 +1316,7 @@ msgstr "عمل کر رہے ہیں ..."
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
+#, c++-format
 msgid "{} • {}"
 msgstr ""
 
@@ -1389,11 +1403,12 @@ msgid "No Subtitles Available"
 msgstr "سب ٹائٹل کی زبانیں (غلط)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} میں سے {1} چیز"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1558,6 +1573,7 @@ msgstr "سب ٹائٹل کی زبانیں (غلط)"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:369
+#, c++-format
 msgid "{} version {} is available to download and install"
 msgstr ""
 
@@ -1735,6 +1751,7 @@ msgid "OK"
 msgstr "ٹھیک"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
@@ -1856,6 +1873,7 @@ msgid "Receive Beta App Updates"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:150
+#, c++-format
 msgid "Check for pre-release (beta) versions of {}"
 msgstr ""
 
@@ -1865,7 +1883,7 @@ msgid "Changelog"
 msgstr "فہرست رَدّ و بَدَل"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:154
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Version {}"
 msgstr "ورثزن : [0]"
 
@@ -1880,7 +1898,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:347
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:380
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Downloading {}%"
 msgstr "ڈاؤن لوڈینگ ہو رہی ہے"
 
