@@ -85,7 +85,6 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Source: "vc_redist.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "windowsappruntimeinstall.exe"; DestDir: "{app}"; Flags: deleteafterinstall 
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "..\resources\yt-dlp-plugins\*"; DestDir: "{app}\Release\plugins"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
