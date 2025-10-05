@@ -269,6 +269,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
+        arguments.push_back("--plugin-dir");
+        arguments.push_back((Environment::getExecutableDirectory() / "plugins").string());
         //Downloader Options
         if(downloaderOptions.getOverwriteExistingFiles() && !shouldDownloadResume())
         {
@@ -590,6 +592,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
             case SubtitleFormat::SRT:
                 arguments.push_back("srt");
+                arguments.push_back("--use-postprocessor");
+                arguments.push_back("srt_fix");
                 break;
             case SubtitleFormat::ASS:
                 arguments.push_back("ass");

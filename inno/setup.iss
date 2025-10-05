@@ -54,6 +54,7 @@ PrivilegesRequired=admin
 DirExistsWarning=no
 CloseApplications=yes
 ChangesEnvironment=yes
+AlwaysRestart=yes
 
 [Languages]
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
@@ -84,7 +85,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 Source: "vc_redist.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "windowsappruntimeinstall.exe"; DestDir: "{app}"; Flags: deleteafterinstall 
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "..\resources\yt-dlp-plugins\*"; DestDir: "{app}\Release\yt-dlp-plugins\"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\resources\yt-dlp-plugins\*"; DestDir: "{app}\Release\plugins"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
@@ -102,6 +103,7 @@ Root: HKCR; Subkey: {#MyAppShortNameLower}; ValueType: "string"; ValueData: "URL
 Root: HKCR; Subkey: {#MyAppShortNameLower}; ValueType: "string"; ValueName: "URL Protocol"; ValueData: ""
 Root: HKCR; Subkey: "{#MyAppShortNameLower}\DefaultIcon"; ValueType: "string"; ValueData: "{app}\Release\{#MyAppExeName},0"
 Root: HKCR; Subkey: "{#MyAppShortNameLower}\shell\open\command"; ValueType: "string"; ValueData: """{app}\Release\{#MyAppExeName}"" ""%1"""
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}\Release"
 
 [Run]
 Filename: "{app}\vc_redist.exe"; Parameters: "/install /quiet /norestart"
