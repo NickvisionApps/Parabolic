@@ -495,7 +495,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            ShellNotification::send({ _("Download Finished With Error"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
+            ShellNotification::send({ _("Download Failed"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
         }
     }
 }

@@ -521,21 +521,29 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatString += m_audioFormat->getId();
             }
         }
-        if(formatString == "bv*+ba")
+        if(formatString == "bv*")
         {
+            if(m_fileType.isAudio())
+            {
+                formatString += "+ba";
+            }
             formatString += "/b";
-        }
-        else if(formatString == "wv*+wa")
-        {
-            formatString += "/w";
-        }
-        else if(formatString == "bv*" && m_fileType.isAudio())
-        {
-            formatString = "+ba/b";
         }
         else if(formatString == "wv*" && m_fileType.isAudio())
         {
-            formatString = "+wa/w";
+            if(m_fileType.isAudio())
+            {
+                formatString += "+wa";
+            }
+            formatString += "/w";
+        }
+        if(formatString == "bv*+ba" || formatString == "bv*" || formatString == "ba")
+        {
+            formatString += "/b";
+        }
+        else if(formatString == "wv*+wa" || formatString == "wv*" || formatString == "wa")
+        {
+            formatString += "/w";
         }
         if(!formatString.empty())
         {
