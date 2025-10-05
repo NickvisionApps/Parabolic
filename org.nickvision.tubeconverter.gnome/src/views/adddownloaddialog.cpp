@@ -143,11 +143,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         if(!valid)
         {
-            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, the cookies settings, and the preferred codecs selected. Note that the service may have blocked your IP or the video may be geo-restricted."))) };
-            adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
-            adw_alert_dialog_set_close_response(dialog, "close");
-            adw_alert_dialog_set_default_response(dialog, "close");
-            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_parent));
             adw_dialog_close(m_dialog);
             return;
         }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-05 18:11-0400\n"
+"POT-Creation-Date: 2025-10-05 19:11-0400\n"
 "PO-Revision-Date: 2025-07-02 05:01+0000\n"
 "Last-Translator: Jack74593 <jack74593@outlook.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -87,8 +87,8 @@ msgid "WAV (Audio)"
 msgstr "Audio"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:195
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:367
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:394
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:385
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:412
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:162
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:188
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
@@ -99,14 +99,30 @@ msgstr "Audio"
 msgid "None"
 msgstr "Không"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:262
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:296
-#, c++-format
-msgid "Error attempting to validate download: {}"
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:263
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:306
+#, fuzzy, c++-format
+msgid ""
+"Error during yt-dlp validation:\n"
+"{}"
 msgstr "Lỗi xác thực tải xuống: {}"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:376
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:420
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:265
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:308
+#, fuzzy, c++-format
+msgid ""
+"Error during yt-dlp validation:\n"
+"<span font_family='monospace'>{}</span>"
+msgstr "Lỗi xác thực tải xuống: {}"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:315
+#, fuzzy, c++-format
+msgid "Error during download validation: {}"
+msgstr "Lỗi xác thực tải xuống: {}"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:394
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:438
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "Lỗi thêm nội dung tải xuống: {}"
@@ -449,8 +465,8 @@ msgstr "Thư mục lưu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:203
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:438
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:277
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:348
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:272
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:343
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:68
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:96
 msgid "Select Save Folder"
@@ -462,9 +478,9 @@ msgid "File Name"
 msgstr "Tên tệp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:219
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:227
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:222
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:440
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:432
 msgid "Revert to Title"
 msgstr "Đổi về tiêu đề"
 
@@ -599,7 +615,7 @@ msgid "Stop"
 msgstr "Đã dừng"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:94
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:342
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:343
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:33
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:399
 msgid "Play"
@@ -702,13 +718,13 @@ msgid "Downloading Update"
 msgstr "Đang tải"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:115
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:283
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:104
 msgid "Home"
 msgstr "Trang chủ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:132
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:288
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:289
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:24
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:105
 #, fuzzy
@@ -716,7 +732,7 @@ msgid "Keyring"
 msgstr "Keyring"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:149
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:294
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:295
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:106
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:121
 msgid "History"
@@ -732,7 +748,7 @@ msgid "Downloads"
 msgstr "Downloads"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:180
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:300
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:301
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:125
 msgid "Downloading"
@@ -740,7 +756,7 @@ msgstr "Đang tải"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:206
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:109
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:130
@@ -748,7 +764,7 @@ msgid "Queued"
 msgstr "Đã đem vào hàng đợi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:232
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:312
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:313
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:110
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:135
 msgid "Completed"
@@ -1332,11 +1348,9 @@ msgid "{} • {}"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:110
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:131
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
@@ -1393,27 +1407,13 @@ msgstr "Chọn thư mục lưu"
 msgid "TXT Files (*.txt)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:337
-msgid ""
-"The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, the cookies settings, and the preferred codecs "
-"selected. Note that the service may have blocked your IP or the video may be "
-"geo-restricted."
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
-#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-msgid "Close"
-msgstr "Đóng"
-
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:195
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:190
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:71
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "Đã ra bản cập nhật mới."
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:211
 #, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} trên {1} lượt"
@@ -1432,6 +1432,10 @@ msgstr ""
 msgid "Both the username and password cannot be empty."
 msgstr ""
 
+#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
+msgid "Close"
+msgstr "Đóng"
+
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:22
 msgid "Keyring is not saving to disk. Changes will be lost."
 msgstr ""
@@ -1444,7 +1448,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:378
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:379
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:174
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:234
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
@@ -1571,36 +1575,36 @@ msgstr "Sau khi xóa, bạn sẽ không thể khôi phục. Bạn có chắc ch�
 msgid "Exit"
 msgstr "Thoát"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:230
 msgid "Ok"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:246
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:247
 #, fuzzy
 msgid "An update is available"
 msgstr "Đã ra bản cập nhật mới."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:369
 #, fuzzy, c++-format
 msgid "{} version {} is available to download and install"
 msgstr "Không thể tải và cài đặt bản cập nhật."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
 msgid "Manage"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
 #, fuzzy
 msgid "Update completed successfully"
 msgstr "Xóa các lượt tải đã hoàn tất"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:363
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:364
 msgid "Download Again"
 msgstr "Tải lại"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:545
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:546
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:118
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
@@ -1748,7 +1752,11 @@ msgstr "Tách chương"
 msgid "Use manual credentials"
 msgstr "Sử dụng chứng chỉ thủ công"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:338
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, c++-format
+msgid "{} needs a credential to download. Please select or enter one to use."
+msgstr ""
+
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
@@ -1757,11 +1765,6 @@ msgstr "Sử dụng chứng chỉ thủ công"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:394
 msgid "OK"
 msgstr "Đồng ý"
-
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
-#, c++-format
-msgid "{} needs a credential to download. Please select or enter one to use."
-msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:37
 msgid ""
@@ -1982,6 +1985,16 @@ msgstr "Chứng chỉ"
 #, fuzzy
 msgid "Delete Argument"
 msgstr "Chứng chỉ"
+
+#, fuzzy, c++-format
+#~ msgid ""
+#~ "Error during yt-dlp validation:\n"
+#~ "```{}```"
+#~ msgstr "Lỗi xác thực tải xuống: {}"
+
+#, c++-format
+#~ msgid "Error attempting to validate download: {}"
+#~ msgstr "Lỗi xác thực tải xuống: {}"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "Đã tải xong, có lỗi"

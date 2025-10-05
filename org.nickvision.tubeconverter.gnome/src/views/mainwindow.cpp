@@ -226,6 +226,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         if(args.getAction() == "error")
         {
             AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Error"), args.getMessage().c_str())) };
+            adw_alert_dialog_set_body_use_markup(dialog, true);
             adw_alert_dialog_add_responses(dialog, "ok", _("Ok"), nullptr);
             adw_alert_dialog_set_default_response(dialog, "ok");
             adw_alert_dialog_set_close_response(dialog, "ok");

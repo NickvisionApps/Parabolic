@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-05 18:11-0400\n"
+"POT-Creation-Date: 2025-10-05 19:11-0400\n"
 "PO-Revision-Date: 2025-06-21 06:05+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -80,8 +80,8 @@ msgid "WAV (Audio)"
 msgstr "WAV (ஆடியோ)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:195
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:367
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:394
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:385
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:412
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:162
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:188
 #: libparabolic/src/models/format.cpp:24 libparabolic/src/models/format.cpp:237
@@ -91,14 +91,30 @@ msgstr "WAV (ஆடியோ)"
 msgid "None"
 msgstr "எதுவுமில்லை"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:262
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:296
-#, c++-format
-msgid "Error attempting to validate download: {}"
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:263
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:306
+#, fuzzy, c++-format
+msgid ""
+"Error during yt-dlp validation:\n"
+"{}"
 msgstr "பதிவிறக்கத்தை சரிபார்க்க முயற்சிப்பதில் பிழை: {}"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:376
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:420
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:265
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:308
+#, fuzzy, c++-format
+msgid ""
+"Error during yt-dlp validation:\n"
+"<span font_family='monospace'>{}</span>"
+msgstr "பதிவிறக்கத்தை சரிபார்க்க முயற்சிப்பதில் பிழை: {}"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:315
+#, fuzzy, c++-format
+msgid "Error during download validation: {}"
+msgstr "பதிவிறக்கத்தை சரிபார்க்க முயற்சிப்பதில் பிழை: {}"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:394
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:438
 #, c++-format
 msgid "Error attempting to add download: {}"
 msgstr "பதிவிறக்கத்தை சேர்க்க முயற்சிப்பதில் பிழை: {}"
@@ -441,8 +457,8 @@ msgstr "கோப்புறையை சேமி"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:203
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:438
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:277
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:348
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:272
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:343
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:68
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:96
 msgid "Select Save Folder"
@@ -454,9 +470,9 @@ msgid "File Name"
 msgstr "கோப்பு பெயர்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:219
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:227
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:222
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:440
+#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:432
 msgid "Revert to Title"
 msgstr "தலைப்புக்கு திரும்பவும்"
 
@@ -585,7 +601,7 @@ msgid "Stop"
 msgstr "நிறுத்து"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:94
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:342
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:343
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:33
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:399
 msgid "Play"
@@ -687,20 +703,20 @@ msgid "Downloading Update"
 msgstr "பதிவிறக்குகிறது"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:115
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:283
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:104
 msgid "Home"
 msgstr "வீடு"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:132
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:288
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:289
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:24
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:105
 msgid "Keyring"
 msgstr "சாவி வளையம்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:149
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:294
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:295
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:106
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:121
 msgid "History"
@@ -715,7 +731,7 @@ msgid "Downloads"
 msgstr "பதிவிறக்கங்கள்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:180
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:300
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:301
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:108
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:125
 msgid "Downloading"
@@ -723,7 +739,7 @@ msgstr "பதிவிறக்குகிறது"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:206
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:26
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:306
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:88
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:109
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:130
@@ -731,7 +747,7 @@ msgid "Queued"
 msgstr "வரிசையில் நிற்கிறது"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:232
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:312
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:313
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:110
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:135
 msgid "Completed"
@@ -1299,11 +1315,9 @@ msgid "{} • {}"
 msgstr "{} | {} | மற்றும்: {}"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:110
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:131
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:197
@@ -1359,29 +1373,12 @@ msgstr "தொகுதி கோப்பைத் தேர்ந்தெட�
 msgid "TXT Files (*.txt)"
 msgstr "Txt கோப்புகள் (*.txt)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:337
-msgid ""
-"The url provided is invalid or unable to be reached. Check the url, the "
-"authentication used, the cookies settings, and the preferred codecs "
-"selected. Note that the service may have blocked your IP or the video may be "
-"geo-restricted."
-msgstr ""
-"வழங்கப்பட்ட முகவரி தவறானது அல்லது அடைய முடியவில்லை. URL, பயன்படுத்தப்படும் ஏற்பு, "
-"குக்கீகள் அமைப்புகள் மற்றும் தேர்ந்தெடுக்கப்பட்ட விருப்பமான கோடெக்குகளை சரிபார்க்கவும். பணி "
-"உங்கள் ஐபி தடுத்திருக்கலாம் அல்லது வீடியோ உலகம் தடைசெய்யப்படலாம் என்பதை நினைவில் கொள்க."
-
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
-#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-msgid "Close"
-msgstr "மூடு"
-
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:195
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:190
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:71
 msgid "No Subtitles Available"
 msgstr "வசன வரிகள் எதுவும் கிடைக்கவில்லை"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:211
 #, fuzzy, c++-format
 msgid "{} items"
 msgstr "}} உருப்படிகள்"
@@ -1402,6 +1399,10 @@ msgstr ""
 msgid "Both the username and password cannot be empty."
 msgstr "பயனர்பெயர் மற்றும் கடவுச்சொல் இரண்டும் காலியாக இருக்க முடியாது."
 
+#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
+msgid "Close"
+msgstr "மூடு"
+
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:22
 msgid "Keyring is not saving to disk. Changes will be lost."
 msgstr "கீரிங் வட்டில் சேமிக்கவில்லை. மாற்றங்கள் இழக்கப்படும்."
@@ -1414,7 +1415,7 @@ msgstr "தொகு"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:378
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:379
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:174
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:234
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:137
@@ -1539,36 +1540,36 @@ msgstr "பதிவிறக்கங்கள் முன்னேற்ற�
 msgid "Exit"
 msgstr "வெளியேறு"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:230
 msgid "Ok"
 msgstr "சரி"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:246
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:247
 #, fuzzy
 msgid "An update is available"
 msgstr "புதிய புதுப்பிப்பு கிடைக்கிறது"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:369
 #, fuzzy, c++-format
 msgid "{} version {} is available to download and install"
 msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
 msgid "Manage"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
 #, fuzzy
 msgid "Update completed successfully"
 msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:363
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:364
 msgid "Download Again"
 msgstr "மீண்டும் பதிவிறக்கவும்"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:545
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:546
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:118
 msgid "GitHub Repo"
 msgstr "GitHub களஞ்சியம்"
@@ -1709,7 +1710,13 @@ msgstr "அத்தியாயங்களால் வீடியோவை�
 msgid "Use manual credentials"
 msgstr "கைமுறை நற்சான்றிதழைப் பயன்படுத்தவும்"
 
-#: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:338
+#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
+#, fuzzy, c++-format
+msgid "{} needs a credential to download. Please select or enter one to use."
+msgstr ""
+"{bownload பதிவிறக்கம் செய்ய ஒரு நற்சான்றிதழ் தேவை. பயன்படுத்த ஒன்றைத் தேர்ந்தெடுக்கவும் "
+"அல்லது உள்ளிடவும்."
+
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:78
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:198
@@ -1718,13 +1725,6 @@ msgstr "கைமுறை நற்சான்றிதழைப் பயன�
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:394
 msgid "OK"
 msgstr ""
-
-#: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
-#, fuzzy, c++-format
-msgid "{} needs a credential to download. Please select or enter one to use."
-msgstr ""
-"{bownload பதிவிறக்கம் செய்ய ஒரு நற்சான்றிதழ் தேவை. பயன்படுத்த ஒன்றைத் தேர்ந்தெடுக்கவும் "
-"அல்லது உள்ளிடவும்."
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:37
 #, fuzzy
@@ -1931,6 +1931,27 @@ msgstr "வாதத்தைத் திருத்து"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:458
 msgid "Delete Argument"
 msgstr "வாதத்தை நீக்கு"
+
+#, fuzzy, c++-format
+#~ msgid ""
+#~ "Error during yt-dlp validation:\n"
+#~ "```{}```"
+#~ msgstr "பதிவிறக்கத்தை சரிபார்க்க முயற்சிப்பதில் பிழை: {}"
+
+#, c++-format
+#~ msgid "Error attempting to validate download: {}"
+#~ msgstr "பதிவிறக்கத்தை சரிபார்க்க முயற்சிப்பதில் பிழை: {}"
+
+#~ msgid ""
+#~ "The url provided is invalid or unable to be reached. Check the url, the "
+#~ "authentication used, the cookies settings, and the preferred codecs "
+#~ "selected. Note that the service may have blocked your IP or the video may "
+#~ "be geo-restricted."
+#~ msgstr ""
+#~ "வழங்கப்பட்ட முகவரி தவறானது அல்லது அடைய முடியவில்லை. URL, பயன்படுத்தப்படும் ஏற்பு, "
+#~ "குக்கீகள் அமைப்புகள் மற்றும் தேர்ந்தெடுக்கப்பட்ட விருப்பமான கோடெக்குகளை சரிபார்க்கவும். "
+#~ "பணி உங்கள் ஐபி தடுத்திருக்கலாம் அல்லது வீடியோ உலகம் தடைசெய்யப்படலாம் என்பதை நினைவில் "
+#~ "கொள்க."
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"

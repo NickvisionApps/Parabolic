@@ -332,14 +332,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         if(!valid)
         {
             Hide();
-            ContentDialog dialog;
-            dialog.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
-            dialog.Content(winrt::box_value(winrt::to_hstring(_("The url provided is invalid or unable to be reached. Check the url, the authentication used, the cookies settings, and the preferred codecs selected. Note that the service may have blocked your IP or the video may be geo-restricted."))));
-            dialog.CloseButtonText(winrt::to_hstring(_("OK")));
-            dialog.DefaultButton(ContentDialogButton::Close);
-            dialog.RequestedTheme(RequestedTheme());
-            dialog.XamlRoot(XamlRoot());
-            co_await dialog.ShowAsync();
             co_return;
         }
         CloseButtonText(L"Cancel");
