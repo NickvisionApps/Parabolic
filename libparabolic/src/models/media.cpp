@@ -5,6 +5,18 @@ using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
+    static bool hasFormats(const std::vector<Format> formats, MediaType type)
+    {
+        for(const Format& format : formats)
+        {
+            if(!format.isFormatValue(FormatValue::None) && format.getType() == type)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     Media::Media(boost::json::object info)
         : m_playlistPosition{ -1 },
         m_timeFrame{ std::chrono::seconds(0), std::chrono::seconds(0) }
@@ -34,6 +46,17 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool hasAudioFormat{ false };
         if(info.contains("formats") && info["formats"].is_array())
         {
+            VideoCodec preferredVideoCodec{ VideoCodec::Any };
+            AudioCodec preferredAudioCodec{ AudioCodec::Any };
+            if(info["preferred_video_codec"].is_int64())
+            {
+                preferredVideoCodec = static_cast<VideoCodec>(info["preferred_video_codec"].as_int64());
+            }
+            if(info["preferred_audio_codec"].is_int64())
+            {
+                preferredAudioCodec = static_cast<AudioCodec>(info["preferred_audio_codec"].as_int64());
+            }
+            std::vector<Format> skippedFormats;
             for(const boost::json::value& format : info["formats"].as_array())
             {
                 if(!format.is_object())
@@ -43,16 +66,6 @@ namespace Nickvision::TubeConverter::Shared::Models
                 Format f{ format.as_object() };
                 if(f.getType() != MediaType::Image)
                 {
-                    VideoCodec preferredVideoCodec{ VideoCodec::Any };
-                    AudioCodec preferredAudioCodec{ AudioCodec::Any };
-                    if(info["preferred_video_codec"].is_int64())
-                    {
-                        preferredVideoCodec = static_cast<VideoCodec>(info["preferred_video_codec"].as_int64());
-                    }
-                    if(info["preferred_audio_codec"].is_int64())
-                    {
-                        preferredAudioCodec = static_cast<AudioCodec>(info["preferred_audio_codec"].as_int64());
-                    }
                     if(f.getType() == MediaType::Video)
                     {
                         hasVideoFormat = true;
@@ -63,13 +76,39 @@ namespace Nickvision::TubeConverter::Shared::Models
                     }
                     if(f.getVideoCodec() && preferredVideoCodec != VideoCodec::Any && f.getVideoCodec().value() != preferredVideoCodec)
                     {
+                        skippedFormats.push_back(f);
                         continue;
                     }
                     if(f.getAudioCodec() && preferredAudioCodec != AudioCodec::Any && f.getAudioCodec().value() != preferredAudioCodec)
                     {
+                        skippedFormats.push_back(f);
                         continue;
                     }
                     m_formats.push_back(f);
+                }
+            }
+            if(m_formats.size() == 0 && skippedFormats.size() > 0)
+            {
+                m_formats = skippedFormats;
+            }
+            else if(!hasFormats(m_formats, MediaType::Video) && hasFormats(skippedFormats, MediaType::Video))
+            {
+                for(const Format& format : skippedFormats)
+                {
+                    if(!format.isFormatValue(FormatValue::None) && format.getType() == MediaType::Video)
+                    {
+                        m_formats.push_back(format);
+                    }
+                }
+            }
+            else if(!hasFormats(m_formats, MediaType::Audio) && hasFormats(skippedFormats, MediaType::Audio))
+            {
+                for(const Format& format : skippedFormats)
+                {
+                    if(!format.isFormatValue(FormatValue::None) && format.getType() == MediaType::Audio)
+                    {
+                        m_formats.push_back(format);
+                    }
                 }
             }
         }
@@ -162,25 +201,11 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool Media::hasVideoFormats() const
     {
-        for(const Format& format : m_formats)
-        {
-            if(!format.isFormatValue(FormatValue::None) && format.getType() == MediaType::Video)
-            {
-                return true;
-            }
-        }
-        return false;
+        return hasFormats(m_formats, MediaType::Video);
     }
 
     bool Media::hasAudioFormats() const
     {
-        for(const Format& format : m_formats)
-        {
-            if(!format.isFormatValue(FormatValue::None) && format.getType() == MediaType::Audio)
-            {
-                return true;
-            }
-        }
-        return false;
+        return hasFormats(m_formats, MediaType::Audio);
     }
 }

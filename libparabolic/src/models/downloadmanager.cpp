@@ -343,7 +343,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 UrlInfo urlInfo{ url, obj["title"].is_string() ? obj["title"].as_string().c_str() : "Tab", urlInfos };
                 if(urlInfo.count() <= 0)
                 {
-                    throw std::logic_error("No formats found");
+                    throw std::logic_error("No media found");
                 }
                 return urlInfo;
             }
@@ -359,7 +359,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         UrlInfo urlInfo{ url, obj };
         if(urlInfo.count() <= 0)
         {
-            throw std::logic_error("No formats found");
+            throw std::logic_error("No media found");
         }
         return urlInfo;
     }
