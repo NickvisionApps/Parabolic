@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.10.2-next" });
+        m_appInfo.setVersion({ "2025.10.2" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added support for the nsig decryption yt-dlp plugin\n- Added support for the srt_fix yt-dlp plugin\n- Added the ability to see exact yt-dlp error during validation\n- Fixed an issue where incompatible OPUS audios would be selected on Windows\n- Fixed an issue where no formats were available when preferred codecs were set");
