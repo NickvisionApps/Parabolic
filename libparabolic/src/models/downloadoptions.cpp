@@ -287,7 +287,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string formatSort{ m_timeFrame ? "proto:https," : "" };
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
-            formatSort += "res,vcodec:";
+            formatSort += "res,+vcodec:";
             switch (downloaderOptions.getPreferredVideoCodec())
             {
             case VideoCodec::VP9:
@@ -310,7 +310,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 formatSort += ",";
             }
-            formatSort += "quality,acodec:";
+            formatSort += "quality,+acodec:";
             switch (downloaderOptions.getPreferredAudioCodec())
             {
             case AudioCodec::FLAC:
@@ -332,6 +332,14 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatSort += "mp3";
                 break;
             }
+        }
+        if(Environment::getOperatingSystem() == OperatingSystem::Windows)
+        {
+            if(!formatSort.empty())
+            {
+                formatSort += ",";
+            }
+            formatSort += "acodec:opus";
         }
         if(!formatSort.empty())
         {

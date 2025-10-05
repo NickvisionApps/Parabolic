@@ -4,7 +4,6 @@
 #include <libnick/system/environment.h>
 #include <libnick/system/process.h>
 #include "models/batchfile.h"
-#include <iostream>
 
 using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
@@ -284,8 +283,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             return std::nullopt;
         }
         token.setCancelFunction({});
-        std::cerr << "Test" << std::endl;
-        std::cerr << process.getOutput() << std::endl;
         boost::json::value info = boost::json::parse(process.getOutput()[0] == '{' ? process.getOutput() : process.getOutput().substr(process.getOutput().find('{')));
         if(!info.is_object())
         {
