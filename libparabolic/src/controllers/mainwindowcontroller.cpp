@@ -46,7 +46,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2025.10.2-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added support for the hianime yt-dlp plugin\n- Added support for the nsig decryption yt-dlp plugin\n- Added support for the srt_fix yt-dlp plugin");
+        m_appInfo.setChangelog("- Added support for the nsig decryption yt-dlp plugin\n- Added support for the srt_fix yt-dlp plugin");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

@@ -65,6 +65,7 @@ jobs:
         run: |
           cmake -G "Visual Studio 17 2022" -DBUILD_AS_PORTABLE=ON ..
           cmake --build . --config Release
+          xcopy ..\resources\yt-dlp-plugins Release\plugins /s /e /h
       - name: "Create Installer"
         working-directory: ${{github.workspace}}/inno
         shell: pwsh
