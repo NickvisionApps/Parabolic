@@ -55,13 +55,13 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2025.10.1" date="2025-09-28">
+    <release version="2025.10.2" date="2025-10-05">
       <description translate="no">
-        <p>- Added the ability to use cookies from browser on sandboxed platforms</p>
-        <p>- Fixed an issue where some audios where unable to be downloaded with time frames specified</p>
-        <p>- Fixed an issue where generic downloads where unable to be opened/played on success</p>
-        <p>- Fixed an issue where "None" would overwrite the previous saved format when media without video/audio formats were downloaded</p>
-        <p>- Updated yt-dlp</p>
+        <p>- Added support for the nsig decryption yt-dlp plugin</p>
+        <p>- Added support for the srt_fix yt-dlp plugin</p>
+        <p>- Added the ability to see exact yt-dlp error during validation</p>
+        <p>- Fixed an issue where incompatible OPUS audios would be selected on Windows</p>
+        <p>- Fixed an issue where no formats were available when preferred codecs were set</p>
       </description>
     </release>
   </releases>

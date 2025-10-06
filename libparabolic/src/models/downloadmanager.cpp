@@ -1,4 +1,5 @@
 #include "models/downloadmanager.h"
+#include <stdexcept>
 #include <libnick/filesystem/userdirectories.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/system/environment.h>
@@ -203,6 +204,8 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         std::vector<std::string> arguments{ "--ignore-config", "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
+        arguments.push_back("--plugin-dir");
+        arguments.push_back((Environment::getExecutableDirectory() / "plugins").string());
         if(url.find("soundcloud.com") == std::string::npos)
         {
             arguments.push_back("--flat-playlist");
@@ -278,13 +281,13 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(process.waitForExit() != 0 || process.getOutput().empty())
         {
             token.setCancelFunction({});
-            return std::nullopt;
+            throw std::runtime_error(process.getOutput());
         }
         token.setCancelFunction({});
         boost::json::value info = boost::json::parse(process.getOutput()[0] == '{' ? process.getOutput() : process.getOutput().substr(process.getOutput().find('{')));
         if(!info.is_object())
         {
-            return std::nullopt;
+            throw std::runtime_error(process.getOutput());
         }
         boost::json::object obj = info.as_object();
         lock.lock();
@@ -337,7 +340,12 @@ namespace Nickvision::TubeConverter::Shared::Models
             }
             if(!urlInfos.empty())
             {
-                return UrlInfo{ url, obj["title"].is_string() ? obj["title"].as_string().c_str() : "Tab", urlInfos };
+                UrlInfo urlInfo{ url, obj["title"].is_string() ? obj["title"].as_string().c_str() : "Tab", urlInfos };
+                if(urlInfo.count() <= 0)
+                {
+                    throw std::logic_error("No media found");
+                }
+                return urlInfo;
             }
         }
         else if(!suggestedFilename.empty()) //Set suggested filename if provided for single media only
@@ -348,7 +356,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return std::nullopt;
         }
-        return UrlInfo{ url, obj };
+        UrlInfo urlInfo{ url, obj };
+        if(urlInfo.count() <= 0)
+        {
+            throw std::logic_error("No media found");
+        }
+        return urlInfo;
     }
 
     std::future<std::optional<UrlInfo>> DownloadManager::fetchUrlInfoAsync(CancellationToken& token, const std::string& url, const std::optional<Credential>& credential, const std::filesystem::path& suggestedSaveFolder, const std::string& suggestedFilename) const

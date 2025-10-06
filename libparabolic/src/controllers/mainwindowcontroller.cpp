@@ -43,10 +43,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.10.1" });
+        m_appInfo.setVersion({ "2025.10.2" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to use cookies from browser on sandboxed platforms\n- Fixed an issue where some audios where unable to be downloaded with time frames specified\n- Fixed an issue where generic downloads where unable to be opened/played on success\n- Fixed an issue where \"None\" would overwrite the previous saved format when media without video/audio formats were downloaded\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Added support for the nsig decryption yt-dlp plugin\n- Added support for the srt_fix yt-dlp plugin\n- Added the ability to see exact yt-dlp error during validation\n- Fixed an issue where incompatible OPUS audios would be selected on Windows\n- Fixed an issue where no formats were available when preferred codecs were set");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -495,7 +495,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
-            ShellNotification::send({ _("Download Finished With Error"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
+            ShellNotification::send({ _("Download Failed"), _f("{} has finished with an error", args.getPath().filename().string()), NotificationSeverity::Error }, m_appInfo);
         }
     }
 }

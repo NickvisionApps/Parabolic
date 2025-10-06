@@ -246,24 +246,30 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_validationCancellationToken.reset();
         m_validationWorkerThread = std::thread{ [this, url, credential]()
         {
+            m_urlInfo = std::nullopt;
             try
             {
                 m_credential = credential;
                 m_urlInfo = m_downloadManager.fetchUrlInfo(m_validationCancellationToken, url, m_credential);
-                if(!m_validationCancellationToken)
+                if(m_urlInfo)
                 {
-                    m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
+                    m_urlValidated.invoke({ true });
                 }
 
             }
+            catch(const std::runtime_error& e)
+            {
+#ifdef _WIN32
+                AppNotification::send({ _f("Error during yt-dlp validation:\n{}", e.what()), NotificationSeverity::Error, "error" });
+#else
+                AppNotification::send({ _f("Error during yt-dlp validation:\n<span font_family='monospace'>{}</span>", e.what()), NotificationSeverity::Error, "error" });
+#endif
+                m_urlValidated.invoke({ false });
+            }
             catch(const std::exception& e)
             {
-                m_urlInfo = std::nullopt;
-                AppNotification::send({ _f("Error attempting to validate download: {}", e.what()), NotificationSeverity::Error, "error" });
-                if(!m_validationCancellationToken)
-                {
-                    m_urlValidated.invoke({ false });
-                }
+                m_urlValidated.invoke({ false });
+                AppNotification::send({ _f("Error during download validation: {}", e.what()), NotificationSeverity::Error, "error" });
             }
         } };
     }
@@ -284,17 +290,29 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::thread worker{ [this, batchFile, credential]()
         {
+            m_urlInfo = std::nullopt;
             try
             {
                 m_credential = credential;
                 m_urlInfo = m_downloadManager.fetchUrlInfo(m_validationCancellationToken, batchFile, m_credential);
-                m_urlValidated.invoke({ m_urlInfo && m_urlInfo->count() > 0 });
+                if(m_urlInfo)
+                {
+                    m_urlValidated.invoke({ true });
+                }
+            }
+            catch(const std::runtime_error& e)
+            {
+#ifdef _WIN32
+                AppNotification::send({ _f("Error during yt-dlp validation:\n{}", e.what()), NotificationSeverity::Error, "error" });
+#else
+                AppNotification::send({ _f("Error during yt-dlp validation:\n<span font_family='monospace'>{}</span>", e.what()), NotificationSeverity::Error, "error" });
+#endif
+                m_urlValidated.invoke({ false });
             }
             catch(const std::exception& e)
             {
-                m_urlInfo = std::nullopt;
-                AppNotification::send({ _f("Error attempting to validate download: {}", e.what()), NotificationSeverity::Error, "error" });
                 m_urlValidated.invoke({ false });
+                AppNotification::send({ _f("Error during download validation: {}", e.what()), NotificationSeverity::Error, "error" });
             }
         } };
         worker.detach();

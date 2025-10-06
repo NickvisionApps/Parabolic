@@ -181,7 +181,10 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param credential An optional credential to use for authentication
          * @param suggestedSaveFolder An optional save folder to save the url's media to
          * @param suggestedFilename An optional suggested filename to save the url's media as
-         * @return The UrlInfo if successful, else std::nullopt
+         * @return The UrlInfo for the URL
+         * @return std::nullopt if the token was cancelled
+         * @throw std::runtime_error Thrown when yt-dlp fails
+         * @throw std::exception Thrown when something else goes wrong
          */
         std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}, const std::string& suggestedFilename = {}) const;
         /**
@@ -191,7 +194,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param credential An optional credential to use for authentication
          * @param suggestedSaveFolder An optional save folder to save the url's media to
          * @param suggestedFilename An optional suggested filename to save the url's media as
-         * @return A future to the optional UrlInfo
+         * @return A future to the optional UrlInfo (see fetchUrlInfo() docs)
          */
         std::future<std::optional<UrlInfo>> fetchUrlInfoAsync(Helpers::CancellationToken& token, const std::string& url, const std::optional<Keyring::Credential>& credential, const std::filesystem::path& suggestedSaveFolder = {}, const std::string& suggestedFilename = {}) const;
         /**
@@ -199,7 +202,10 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param token The CancellationToken to use for cancellation
          * @param batchFilePath The path to a batch file
          * @param credential An optional credential to use for authentication
-         * @return The UrlInfo if successful, else std::nullopt
+         * @return The UrlInfo for the URL
+         * @return std::nullopt if the token was cancelled
+         * @throw std::runtime_error Thrown when yt-dlp fails
+         * @throw std::exception Thrown when something else goes wrong
          */
         std::optional<UrlInfo> fetchUrlInfo(Helpers::CancellationToken& token, const std::filesystem::path& batchFilePath, const std::optional<Keyring::Credential>& credential) const;
         /**

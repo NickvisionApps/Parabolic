@@ -269,6 +269,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
+        arguments.push_back("--plugin-dir");
+        arguments.push_back((Environment::getExecutableDirectory() / "plugins").string());
         //Downloader Options
         if(downloaderOptions.getOverwriteExistingFiles() && !shouldDownloadResume())
         {
@@ -285,7 +287,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string formatSort{ m_timeFrame ? "proto:https," : "" };
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
-            formatSort += "res,vcodec:";
+            formatSort += "res,+vcodec:";
             switch (downloaderOptions.getPreferredVideoCodec())
             {
             case VideoCodec::VP9:
@@ -308,7 +310,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 formatSort += ",";
             }
-            formatSort += "quality,acodec:";
+            formatSort += "quality,+acodec:";
             switch (downloaderOptions.getPreferredAudioCodec())
             {
             case AudioCodec::FLAC:
@@ -330,6 +332,14 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatSort += "mp3";
                 break;
             }
+        }
+        if(Environment::getOperatingSystem() == OperatingSystem::Windows)
+        {
+            if(!formatSort.empty())
+            {
+                formatSort += ",";
+            }
+            formatSort += "acodec:opus";
         }
         if(!formatSort.empty())
         {
@@ -519,21 +529,29 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatString += m_audioFormat->getId();
             }
         }
-        if(formatString == "bv*+ba")
+        if(formatString == "bv*")
         {
+            if(m_fileType.isAudio())
+            {
+                formatString += "+ba";
+            }
             formatString += "/b";
-        }
-        else if(formatString == "wv*+wa")
-        {
-            formatString += "/w";
-        }
-        else if(formatString == "bv*" && m_fileType.isAudio())
-        {
-            formatString = "+ba/b";
         }
         else if(formatString == "wv*" && m_fileType.isAudio())
         {
-            formatString = "+wa/w";
+            if(m_fileType.isAudio())
+            {
+                formatString += "+wa";
+            }
+            formatString += "/w";
+        }
+        if(formatString == "bv*+ba" || formatString == "bv*" || formatString == "ba")
+        {
+            formatString += "/b";
+        }
+        else if(formatString == "wv*+wa" || formatString == "wv*" || formatString == "wa")
+        {
+            formatString += "/w";
         }
         if(!formatString.empty())
         {
@@ -590,6 +608,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
             case SubtitleFormat::SRT:
                 arguments.push_back("srt");
+                arguments.push_back("--use-postprocessor");
+                arguments.push_back("srt_fix");
                 break;
             case SubtitleFormat::ASS:
                 arguments.push_back("ass");
