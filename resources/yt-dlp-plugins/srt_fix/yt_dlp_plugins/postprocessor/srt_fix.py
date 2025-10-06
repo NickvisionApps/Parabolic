@@ -140,7 +140,7 @@ def dedupe_yt_srt(subs_iter):
     for subtitle in subs_iter:
 
 
-        if previous_subtitle is None: # first interation set previous subtitle for comparison
+        if previous_subtitle is None: # first iteration set previous subtitle for comparison
              previous_subtitle = subtitle
              continue
 
