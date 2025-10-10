@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-05 19:12-0400\n"
-"PO-Revision-Date: 2025-09-15 15:02+0000\n"
+"PO-Revision-Date: 2025-10-08 03:02+0000\n"
 "Last-Translator: bovirus <roberto.boriotti@canon.it>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/it/>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -93,25 +93,26 @@ msgstr "Nessuno"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:263
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:306
-#, fuzzy
 msgid ""
 "Error during yt-dlp validation:\n"
 "{}"
-msgstr "Errore durante la validazione del download: {}"
+msgstr ""
+"Errore durante validazione yt-dlp: {}\n"
+"{}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:265
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:308
-#, fuzzy
 msgid ""
 "Error during yt-dlp validation:\n"
 "<span font_family='monospace'>{}</span>"
-msgstr "Errore durante la validazione del download: {}"
+msgstr ""
+"Errore durante validazione yt-dlp: {}\n"
+"<span font_family='monospace'>{}</span>"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:315
-#, fuzzy
 msgid "Error during download validation: {}"
-msgstr "Errore durante la validazione del download: {}"
+msgstr "Errore durante validazione download: {}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:394
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:438
@@ -179,9 +180,8 @@ msgid "Open"
 msgstr "Apri"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
-#, fuzzy
 msgid "Download Failed"
-msgstr "Download completato"
+msgstr "Download fallito"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
 msgid "{} has finished with an error"
@@ -216,40 +216,40 @@ msgstr "{:.2f} B/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:38
 msgid "Unknown time left"
-msgstr ""
+msgstr "Tempo rimanente sconosciuto"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:51
 msgid "0 seconds"
-msgstr ""
+msgstr "0 secondi"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
 msgid "{} hour"
 msgid_plural "{} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{} ora"
+msgstr[1] "{} ore"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
 msgid "{} and "
-msgstr ""
+msgstr "{} e "
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
 msgid "{} minute"
 msgid_plural "{} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{} minuto"
+msgstr[1] "{} minuti"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
 msgid "{} second"
 msgid_plural "{} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{} secondo"
+msgstr[1] "{} secondi"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
 msgid "{} left"
 msgid_plural "{} left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "rimanente {}"
+msgstr[1] "rimanenti {}"
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
@@ -1129,6 +1129,8 @@ msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader"
 msgstr ""
+"Un downloader alternativo che potrebbe essere più veloce in alcune regioni "
+"rispetto al downloader nativo yt-dlp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:269
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:113
@@ -1288,9 +1290,8 @@ msgstr "In elaborazione"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
-#, fuzzy
 msgid "{} • {}"
-msgstr "{} | {} | STIMATO: {}"
+msgstr "{} • {}"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:110
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
