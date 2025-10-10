@@ -8,23 +8,22 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-10-05 19:12-0400\n"
-"PO-Revision-Date: 2024-10-31 14:27+0000\n"
+"PO-Revision-Date: 2025-10-08 03:02+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/he/>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
-"n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : "
+"((n > 10 && n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:81
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:97
-#, fuzzy
 msgid "Video (Generic)"
-msgstr "מפענח וידאו"
+msgstr "וידאו (גנרי)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
@@ -54,7 +53,7 @@ msgstr "‏AVI (סרט)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:103
 msgid "Audio (Generic)"
-msgstr ""
+msgstr "שמע (גנרי)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:89
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:104
@@ -99,6 +98,8 @@ msgid ""
 "Error during yt-dlp validation:\n"
 "{}"
 msgstr ""
+"שגיאה במהלך אימות yt-dlp:\n"
+"{}"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:265
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:308
@@ -106,6 +107,8 @@ msgid ""
 "Error during yt-dlp validation:\n"
 "<span font_family='monospace'>{}</span>"
 msgstr ""
+"שגיאה במהלך אימות yt-dlp:\n"
+"<span font_family='monospace'>{}</span>"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:315
@@ -179,87 +182,84 @@ msgid "Open"
 msgstr "פתיחה"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
-#, fuzzy
 msgid "Download Failed"
-msgstr "הורדה הסתיימה"
+msgstr "הורדה נכשלה"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
-#, fuzzy
 msgid "{} has finished with an error"
-msgstr "הורדת „{0}” הסתיימה עם שגיאה!"
+msgstr "{} הסתיימה עם שגיאה"
 
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:19
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:47
 #: libparabolic/src/controllers/preferencesviewcontroller.cpp:58
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:34
-#, fuzzy
 msgid "System"
 msgstr "מערכת"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:18
 msgid "0 B/s"
-msgstr ""
+msgstr "0 ב׳ לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:22
 msgid "{:.2f} GiB/s"
-msgstr "‏{:.2f} גיב״ב/שנ׳"
+msgstr "‏{:.2f} GiB לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:26
 msgid "{:.2f} MiB/s"
-msgstr "‏{:.2f} מבי״ב/שנ׳"
+msgstr "‏{:.2f} MiB לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:30
 msgid "{:.2f} KiB/s"
-msgstr "‏{:.2f} קי״ב/שנ׳"
+msgstr "‏{:.2f} KiB לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:34
 msgid "{:.2f} B/s"
-msgstr "‏{:.2f} בית/שנ׳"
+msgstr "‏{:.2f} ב׳ לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:38
 msgid "Unknown time left"
-msgstr ""
+msgstr "לא ידוע כמה זמן נותר"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:51
 msgid "0 seconds"
-msgstr ""
+msgstr "0 שניות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
 msgid "{} hour"
 msgid_plural "{} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "שעה"
+msgstr[1] "שעתיים"
+msgstr[2] "{} שעות"
+msgstr[3] "{} שעות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
 msgid "{} and "
-msgstr ""
+msgstr "{} וגם "
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
 msgid "{} minute"
 msgid_plural "{} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "דקה"
+msgstr[1] "שתי דקות"
+msgstr[2] "{} דקות"
+msgstr[3] "{} דקות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
 msgid "{} second"
 msgid_plural "{} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "שנייה"
+msgstr[1] "שתי שניות"
+msgstr[2] "{} שניות"
+msgstr[3] "{} שניות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
 msgid "{} left"
 msgid_plural "{} left"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "נותרה {}"
+msgstr[1] "נותרו {}"
+msgstr[2] "נותרו {}"
+msgstr[3] "נותרו {}"
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
