@@ -292,7 +292,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         {
             ContentDialog dialogErr;
             dialogErr.Title(winrt::box_value(winrt::to_hstring(_("Error"))));
-            dialogErr.Content(winrt::box_value(winrt::to_hstring(args.getActionParam())));
+            dialogErr.Content(winrt::box_value(winrt::to_hstring(args.getMessage())));
             dialogErr.CloseButtonText(winrt::to_hstring(_("OK")));
             dialogErr.DefaultButton(ContentDialogButton::Close);
             dialogErr.RequestedTheme(MainGrid().RequestedTheme());

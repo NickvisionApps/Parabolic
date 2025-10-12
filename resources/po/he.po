@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-12 18:21-0400\n"
+"POT-Creation-Date: 2025-10-12 18:35-0400\n"
 "PO-Revision-Date: 2025-10-08 03:02+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -92,9 +92,8 @@ msgstr "‏WAV (שמע)"
 msgid "None"
 msgstr "ללא"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:263
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:306
-#, c++-format
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:264
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:307
 msgid ""
 "Error during yt-dlp validation:\n"
 "{}"
@@ -102,9 +101,8 @@ msgstr ""
 "שגיאה במהלך אימות yt-dlp:\n"
 "{}"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:265
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:308
-#, c++-format
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:266
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:309
 msgid ""
 "Error during yt-dlp validation:\n"
 "<span font_family='monospace'>{}</span>"
@@ -114,13 +112,11 @@ msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:272
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:315
-#, c++-format
 msgid "Error during download validation: {}"
 msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:394
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:438
-#, c++-format
 msgid "Error attempting to add download: {}"
 msgstr ""
 
@@ -159,7 +155,6 @@ msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:414
-#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "הורדה שוחזרה"
@@ -168,7 +163,6 @@ msgstr[2] "{} הורדות שוחזרו"
 msgstr[3] "{} הורדות שוחזרו"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:419
-#, c++-format
 msgid "Error attempting to recover downloads: {}"
 msgstr ""
 
@@ -177,7 +171,7 @@ msgid "Download Finished"
 msgstr "הורדה הסתיימה"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:494
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} has finished downloading"
 msgstr "הסתיימה הורדת „{0}”."
 
@@ -192,7 +186,6 @@ msgid "Download Failed"
 msgstr "הורדה נכשלה"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
-#, c++-format
 msgid "{} has finished with an error"
 msgstr "{} הסתיימה עם שגיאה"
 
@@ -208,22 +201,18 @@ msgid "0 B/s"
 msgstr "0 ב׳ לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:22
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "‏{:.2f} GiB לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:26
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "‏{:.2f} MiB לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:30
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "‏{:.2f} KiB לשנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:34
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "‏{:.2f} ב׳ לשנ׳"
 
@@ -236,7 +225,6 @@ msgid "0 seconds"
 msgstr "0 שניות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
-#, c++-format
 msgid "{} hour"
 msgid_plural "{} hours"
 msgstr[0] "שעה"
@@ -246,12 +234,10 @@ msgstr[3] "{} שעות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
-#, c++-format
 msgid "{} and "
 msgstr "{} וגם "
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
-#, c++-format
 msgid "{} minute"
 msgid_plural "{} minutes"
 msgstr[0] "דקה"
@@ -260,7 +246,6 @@ msgstr[2] "{} דקות"
 msgstr[3] "{} דקות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
-#, c++-format
 msgid "{} second"
 msgid_plural "{} seconds"
 msgstr[0] "שנייה"
@@ -269,7 +254,6 @@ msgstr[2] "{} שניות"
 msgstr[3] "{} שניות"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
-#, c++-format
 msgid "{} left"
 msgid_plural "{} left"
 msgstr[0] "נותרה {}"
@@ -292,22 +276,22 @@ msgid "Audio Description"
 msgstr "תיאור שמע"
 
 #: libparabolic/src/models/format.cpp:352
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB"
 msgstr "‏{:.2f} גיב״ב/שנ׳"
 
 #: libparabolic/src/models/format.cpp:356
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB"
 msgstr "‏{:.2f} מבי״ב/שנ׳"
 
 #: libparabolic/src/models/format.cpp:360
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB"
 msgstr "‏{:.2f} קי״ב/שנ׳"
 
 #: libparabolic/src/models/format.cpp:364
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B"
 msgstr "‏{:.2f} בית/שנ׳"
 
@@ -1325,7 +1309,6 @@ msgstr "בתהליך"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
-#, c++-format
 msgid "{} • {}"
 msgstr ""
 
@@ -1394,12 +1377,10 @@ msgid "No Subtitles Available"
 msgstr "אין כתוביות זמינות"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:211
-#, c++-format
 msgid "{} items"
 msgstr "{} פריטים"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:14
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1566,7 +1547,7 @@ msgstr "עדכון חדש זמין"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:369
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} version {} is available to download and install"
 msgstr "לא ניתן להוריד ולהתקין את העדכון"
 
@@ -1729,7 +1710,6 @@ msgid "Use manual credentials"
 msgstr "שימוש מזהה גישה ידנית"
 
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:27
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr "נדרשים פרטי גישה כדי לגשת אל {}. נא לבחור או למלא פרטי גישה לשימוש."
 
@@ -1858,7 +1838,6 @@ msgid "Receive Beta App Updates"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:150
-#, c++-format
 msgid "Check for pre-release (beta) versions of {}"
 msgstr ""
 
@@ -1868,7 +1847,6 @@ msgid "Changelog"
 msgstr "יומן שינויים:"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:154
-#, c++-format
 msgid "Version {}"
 msgstr ""
 
@@ -1882,7 +1860,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:347
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:380
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Downloading {}%"
 msgstr "בהורדה"
 
@@ -2565,8 +2543,8 @@ msgstr "פרטי זיהוי"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr ""
-#~ "מוריד;מנהל "
-#~ "הורדות;YouTube;youtube;ytdlp;Nickvision;Tube;Converter;ממיר;שמע;מוזיקה;סרטונים;סרטים;הורדה;יוטיוב;הורדות;"
+#~ "מוריד;מנהל הורדות;YouTube;youtube;ytdlp;Nickvision;Tube;Converter;ממיר;"
+#~ "שמע;מוזיקה;סרטונים;סרטים;הורדה;יוטיוב;הורדות;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "- לקוח חזותי בסיסי עבור yt-dlp"
