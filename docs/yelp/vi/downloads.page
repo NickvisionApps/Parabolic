@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="vi">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloads 🌐</title>
+	<title type="link">Tải xuống 🌐</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -24,79 +24,85 @@
       <mal:email>jack74593@proton.me</mal:email>
       <mal:years>2025</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Loc Huynh</mal:name>
+      <mal:email>huynhloc.contact@gmail.com</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
   </info>
 
-<title>Downloads</title>
-<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+<title>Tải xuống</title>
+<p>Trang này giải thích tất cả các tùy chọn để định cấu hình Tải xuống trong Tùy chọn trong <app>Parabolic</app>.</p>
 
 
 <terms>
     <item>
-        <title>Maximum Number of Active Downloads</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+        <title>Số lượng tải xuống hoạt động tối đa</title>
+        <p>Số lượt tải xuống được phép chạy cùng một lúc. Phải là giá trị số nguyên từ 1 đến 10.</p>
+        <p>Nếu đạt đến số lượt tải xuống đang hoạt động tối đa, Parabolic sẽ đặt các lượt tải xuống mới vào hàng đợi cho đến khi có thể chạy thêm nhiều lượt tải xuống.</p>
         <note style="advanced">
-            <p>Default: 5</p>
+            <p>Mặc định: 5</p>
         </note>
     </item>
     <item>
         <title>Ghi đè tệp đã tồn tại</title>
-        <p>Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <p>Parabolic sẽ ghi đè lên các tập tin hiện có.</p>
+        <p>Ví dụ: nếu tệp có tên <code>movie.mp4</code> tồn tại trong thư mục tải xuống và tệp tải xuống mới được tạo có tên <code>movie</code> thì <code>movie.mp4</code> sẽ bị ghi đè bằng nội dung của tệp tải xuống mới.</p>
         <note>
-            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+            <p>Parabolic sẽ phát hiện các bản tải xuống cần được tiếp tục và tránh cài đặt này khi khôi phục hoặc thử tải lại các bản tải xuống không thành công</p>
         </note>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
-        <title>Limit Filename Characters</title>
-        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
-        <p>This option is only available on Linux.</p>
+        <title>Giới hạn ký tự tên tệp</title>
+        <p>Parabolic sẽ hạn chế các ký tự trong tên tệp ở những ký tự chỉ được Windows hỗ trợ.</p>
+        <p>Tùy chọn này chỉ có sẵn trên Linux.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Mặc định: Tắt</p>
         </note>
     </item>
     <item>
-        <title>Included Media Id in Title After Validation</title>
-        <p>Parabolic will include a media's id in its default title.</p>
+        <title>Id phương tiện được bao gồm trong tiêu đề sau khi xác thực</title>
+        <p>Parabolic sẽ bao gồm id của phương tiện trong tiêu đề mặc định của nó.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
+        <title>Bao gồm phụ đề được tạo tự động</title>
+        <p>Parabolic sẽ hiển thị phụ đề được tạo tự động để tải xuống ngoài phụ đề có sẵn.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Codec video ưu tiên</title>
+        <p>Nên ưu tiên codec video Parabolic khi phân tích các định dạng phương tiện để tải xuống.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+            <p>Nếu Parabolic không thể tìm thấy bất kỳ định dạng nào với codec ưu tiên đã chọn thì sẽ không có định dạng video nào để tải xuống.</p>
         </note>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Mặc định: Bất kỳ</p>
         </note>
     </item>
     <item>
-        <title>Preferred Audio Codec</title>
-        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Codec âm thanh ưu tiên</title>
+        <p>Bộ giải mã âm thanh Parabolic nên được ưu tiên khi phân tích các định dạng phương tiện để tải xuống.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+            <p>Nếu Parabolic không thể tìm thấy bất kỳ định dạng nào với codec ưu tiên đã chọn thì sẽ không có định dạng âm thanh nào có sẵn để tải xuống.</p>
         </note>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Mặc định: Bất kỳ</p>
         </note>
     </item>
     <item>
-        <title>Preferred Subtitle Format</title>
-        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
+        <title>Định dạng phụ đề ưa thích</title>
+        <p>Định dạng tệp Parabolic phải đảm bảo tất cả phụ đề được tải xuống dưới dạng .</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Mặc định: Bất kỳ</p>
         </note>
     </item>
 </terms>

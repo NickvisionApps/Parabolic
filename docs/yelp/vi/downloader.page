@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="vi">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🛠️</title>
+	<title type="link">Trình tải xuống 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -24,64 +24,70 @@
       <mal:email>jack74593@proton.me</mal:email>
       <mal:years>2025</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Loc Huynh</mal:name>
+      <mal:email>huynhloc.contact@gmail.com</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
   </info>
 
 <title>Trình tải</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Trang này giải thích tất cả các tùy chọn để định cấu hình Trình tải xuống trong Tùy chọn trong <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Use Part Files</title>
-        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
+        <title>Sử dụng tập tin phần</title>
+        <p>Parabolic sẽ tải phương tiện ở các tệp .part riêng biệt thay vì trực tiếp vào tệp đầu ra.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
         <title>Sử dụng SponsorBlock đối với YouTube</title>
-        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
+        <p>Parabolic sẽ cố gắng xóa các phân đoạn được tài trợ khỏi video YouTube.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>Nhà tài trợBlock chỉ hoạt động trên video YouTube. Tuy nhiên, việc bật cài đặt này sẽ không ảnh hưởng đến việc tải xuống từ các trang web khác (tức là không khiến chúng bị lỗi).</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Mặc định: Tắt</p>
         </note>
     </item>
     <item>
         <title>Giới hạn tốc độ</title>
-        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
+        <p>Giới hạn tính bằng KiB/s để áp dụng cho các lượt tải xuống khi được bật. Phải là giá trị số nguyên trong khoảng từ 512 đến 10240.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Mặc định: Tắt</p>
         </note>
     </item>
     <item>
         <title>URL của proxy</title>
-        <p>The url of the proxy server to use.</p>
+        <p>Url của máy chủ proxy sẽ sử dụng.</p>
         <note style="advanced">
-            <p>Default: No URL</p>
+            <p>Mặc định: Không có URL</p>
         </note>
     </item>
     <item>
-        <title>Cookies from Browser</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
+        <title>Cookie từ trình duyệt</title>
+        <p>Một trình duyệt để đọc cookie và chuyển tới công cụ tải xuống của yt-dlp.</p>
+        <p>Điều này có thể hữu ích khi tải xuống phương tiện yêu cầu đăng nhập, ví dụ: video YouTube riêng tư.</p>
+        <p>Tùy chọn này có sẵn trên các nền tảng không có hộp cát.</p>
         <note style="advanced">
-            <p>Default: None</p>
+            <p>Mặc định: Không có</p>
         </note>
     </item>
     <item>
         <title>Tệp cookie</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>Tệp .txt chứa cookie để chuyển tới yt-dlp khi tải xuống công cụ.</p>
+        <p>Điều này có thể hữu ích khi tải xuống phương tiện yêu cầu đăng nhập, ví dụ: video YouTube riêng tư.</p>
+        <p>Sử dụng một trong các tiện ích mở rộng sau để nhận tệp cookie từ trình duyệt của bạn:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Bạn phải tự chịu rủi ro khi sử dụng các tiện ích mở rộng này.</p>
         </note>
         <note style="advanced">
-            <p>Default: No File Selected</p>
+            <p>Mặc định: Không có tệp nào được chọn</p>
         </note>
     </item>
 </terms>
