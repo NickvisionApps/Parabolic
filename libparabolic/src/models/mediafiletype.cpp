@@ -63,6 +63,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return { MediaFileTypeValue::WAV };
         }
+        else if(value == "ogg" || value == "vorbis")
+        {
+            return { MediaFileTypeValue::OGG };
+        }
         return std::nullopt;
     }
 
@@ -95,6 +99,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
         case MediaFileTypeValue::WAV:
+        case MediaFileTypeValue::OGG:
             return true;
         default:
             return false;
@@ -140,6 +145,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         case MediaFileTypeValue::M4A:
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
+        case MediaFileTypeValue::OGG:
             return true;
         default:
             return false;
@@ -207,6 +213,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             return "FLAC";
         case MediaFileTypeValue::WAV:
             return "WAV";
+        case MediaFileTypeValue::OGG:
+            return "OGG";
         default:
             return "";
         }

@@ -478,7 +478,14 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(!m_fileType.isGeneric())
             {
                 arguments.push_back("--audio-format");
-                arguments.push_back(StringHelpers::lower(m_fileType.str()));
+                if(m_fileType == MediaFileType::OGG)
+                {
+                    arguments.push_back("vorbis");
+                }
+                else
+                {
+                    arguments.push_back(StringHelpers::lower(m_fileType.str()));
+                }
             }
         }
         else if(m_fileType.isVideo())

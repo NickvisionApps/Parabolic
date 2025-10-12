@@ -91,6 +91,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             fileTypes.push_back(_("OPUS (Audio)"));
             fileTypes.push_back(_("FLAC (Audio)"));
             fileTypes.push_back(_("WAV (Audio)"));
+            fileTypes.push_back(_("OGG (Audio)"));
         }
         else
         {
@@ -106,6 +107,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             fileTypes.push_back(_("OPUS (Audio)"));
             fileTypes.push_back(_("FLAC (Audio)"));
             fileTypes.push_back(_("WAV (Audio)"));
+            fileTypes.push_back(_("OGG (Audio)"));
         }
         return fileTypes;
     }
