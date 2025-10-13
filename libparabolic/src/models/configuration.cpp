@@ -102,7 +102,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(get("PreferredSubtitleFormat", static_cast<int>(SubtitleFormat::Any))));
         options.setUsePartFiles(get("UsePartFiles", true));
         options.setYouTubeSponsorBlock(get("YouTubeSponsorBlock", false));
-        options.setSpeedLimit(get("SpeedLimitKB", 0) == 0 ? std::nullopt : std::make_optional(get("SpeedLimitKB", 0)));
+        options.setSpeedLimit(get("SpeedLimitKB", 0) == 0 ? std::nullopt : std::make_optional<int>(get("SpeedLimitKB", 0)));
         options.setProxyUrl(get<std::string>("ProxyUrl", ""));
         options.setCookiesBrowser(static_cast<Browser>(get("CookiesBrowser", static_cast<int>(Browser::None))));
         options.setCookiesPath(get<std::string>("CookiesPath", ""));
@@ -137,7 +137,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         set("PreferredSubtitleFormat", static_cast<int>(downloaderOptions.getPreferredSubtitleFormat()));
         set("UsePartFiles", downloaderOptions.getUsePartFiles());
         set("YouTubeSponsorBlock", downloaderOptions.getYouTubeSponsorBlock());
-        set("SpeedLimitKB", downloaderOptions.getSpeedLimit() ? *downloaderOptions.getSpeedLimit() : boost::json::object());
+        set("SpeedLimitKB", downloaderOptions.getSpeedLimit() ? *downloaderOptions.getSpeedLimit() : 0);
         set("ProxyUrl", downloaderOptions.getProxyUrl());
         set("CookiesBrowser", static_cast<int>(downloaderOptions.getCookiesBrowser()));
         set("CookiesPath", downloaderOptions.getCookiesPath().string());
