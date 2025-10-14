@@ -491,7 +491,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
-        BadgeDownloading().Visibility(m_controller->getDownloadingCount() > 0 ? Visibility::Visible : Visibility::Collapsed)
+        BadgeDownloading().Visibility(m_controller->getDownloadingCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
         ListCompleted().Children().Append(m_downloadRows[args.getId()]);
         ViewStackCompleted().CurrentPageIndex(ListPage::Has);
         BadgeCompleted().Value(static_cast<int>(m_controller->getCompletedCount()));
