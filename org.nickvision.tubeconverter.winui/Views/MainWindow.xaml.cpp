@@ -466,6 +466,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 NavViewQueued().IsSelected(true);
             }
             BadgeQueued().Value(static_cast<int>(m_controller->getQueuedCount()));
+            BadgeQueued().Visibility(m_controller->getQueuedCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
         }
         else
         {
@@ -476,6 +477,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 NavViewDownloading().IsSelected(true);
             }
             BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
+            BadgeDownloading().Visibility(m_controller->getDownloadingCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
         }
     }
 
@@ -489,9 +491,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
+        BadgeDownloading().Visibility(m_controller->getDownloadingCount() > 0 ? Visibility::Visible : Visibility::Collapsed)
         ListCompleted().Children().Append(m_downloadRows[args.getId()]);
         ViewStackCompleted().CurrentPageIndex(ListPage::Has);
         BadgeCompleted().Value(static_cast<int>(m_controller->getCompletedCount()));
+        BadgeCompleted().Visibility(m_controller->getCompletedCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
     }
 
     void MainWindow::OnDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
@@ -509,15 +513,18 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackDownloading().CurrentPageIndex(m_controller->getDownloadingCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
+        BadgeDownloading().Visibility(m_controller->getDownloadingCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
         if(ListQueued().Children().IndexOf(m_downloadRows[*args], index))
         {
             ListQueued().Children().RemoveAt(index);
         }
         ViewStackQueued().CurrentPageIndex(m_controller->getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeQueued().Value(static_cast<int>(m_controller->getQueuedCount()));
+        BadgeQueued().Visibility(m_controller->getQueuedCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
         ListCompleted().Children().Append(m_downloadRows[*args]);
         ViewStackCompleted().CurrentPageIndex(ListPage::Has);
         BadgeCompleted().Value(static_cast<int>(m_controller->getCompletedCount()));
+        BadgeCompleted().Visibility(m_controller->getCompletedCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
     }
 
     void MainWindow::OnDownloadPaused(const ParamEventArgs<int>& args)
@@ -539,6 +546,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackCompleted().CurrentPageIndex(m_controller->getCompletedCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeCompleted().Value(static_cast<int>(m_controller->getCompletedCount()));
+        BadgeCompleted().Visibility(m_controller->getCompletedCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
     }
 
     void MainWindow::OnDownloadStartedFromQueue(const ParamEventArgs<int>& args)
@@ -551,9 +559,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         ViewStackQueued().CurrentPageIndex(m_controller->getQueuedCount() > 0 ? ListPage::Has : ListPage::None);
         BadgeQueued().Value(static_cast<int>(m_controller->getQueuedCount()));
+        BadgeQueued().Visibility(m_controller->getQueuedCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
         ListDownloading().Children().Append(m_downloadRows[*args]);
         ViewStackDownloading().CurrentPageIndex(ListPage::Has);
         BadgeDownloading().Value(static_cast<int>(m_controller->getDownloadingCount()));
+        BadgeDownloading().Visibility(m_controller->getDownloadingCount() > 0 ? Visibility::Visible : Visibility::Collapsed);
     }
 
     void MainWindow::OnTitleBarSearchChanged(const Microsoft::UI::Xaml::Controls::AutoSuggestBox& sender, const Microsoft::UI::Xaml::Controls::AutoSuggestBoxTextChangedEventArgs& args)
@@ -686,6 +696,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             }
             ViewStackQueued().CurrentPageIndex(ListPage::None);
             BadgeQueued().Value(0);
+            BadgeQueued().Visibility(Visibility::Collapsed);
             m_downloadRows.erase(id);
         }
     }
@@ -706,6 +717,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             }
             ViewStackCompleted().CurrentPageIndex(ListPage::None);
             BadgeCompleted().Value(0);
+            BadgeCompleted().Visibility(Visibility::Collapsed);
             m_downloadRows.erase(id);
         }
     }
