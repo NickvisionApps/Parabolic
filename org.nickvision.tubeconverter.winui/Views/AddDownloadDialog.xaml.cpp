@@ -457,13 +457,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
         }
         if(TglDownloadImmediately().IsOn())
         {
-            Hide();
             Download();
         }
     }
 
     void AddDownloadDialog::Download()
     {
+        Hide();
         if(!m_controller->isUrlPlaylist()) //Single Download
         {
             std::vector<std::string> subtitles;
