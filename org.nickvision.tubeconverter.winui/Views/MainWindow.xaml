@@ -57,7 +57,7 @@
                     </NavigationViewItem.Icon>
 
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge x:Name="BadgeDownloading" Value="0"/>
+                        <InfoBadge x:Name="BadgeDownloading" Visibility="Collapsed" Value="0"/>
                     </NavigationViewItem.InfoBadge>
                 </NavigationViewItem>
 
@@ -67,7 +67,7 @@
                     </NavigationViewItem.Icon>
 
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge x:Name="BadgeQueued" Value="0"/>
+                        <InfoBadge x:Name="BadgeQueued" Visibility="Collapsed" Value="0"/>
                     </NavigationViewItem.InfoBadge>
                 </NavigationViewItem>
 
@@ -77,7 +77,7 @@
                     </NavigationViewItem.Icon>
 
                     <NavigationViewItem.InfoBadge>
-                        <InfoBadge x:Name="BadgeCompleted" Value="0"/>
+                        <InfoBadge x:Name="BadgeCompleted" Visibility="Collapsed" Value="0"/>
                     </NavigationViewItem.InfoBadge>
                 </NavigationViewItem>
             </NavigationView.MenuItems>

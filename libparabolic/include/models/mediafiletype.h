@@ -29,7 +29,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             M4A,
             OPUS,
             FLAC,
-            WAV
+            WAV,
+            OGG
         };
         /**
          * @brief Constructs a MediaFileType.

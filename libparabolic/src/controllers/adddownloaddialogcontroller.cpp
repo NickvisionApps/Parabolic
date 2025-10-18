@@ -91,6 +91,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             fileTypes.push_back(_("OPUS (Audio)"));
             fileTypes.push_back(_("FLAC (Audio)"));
             fileTypes.push_back(_("WAV (Audio)"));
+            fileTypes.push_back(_("OGG (Audio)"));
         }
         else
         {
@@ -106,6 +107,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             fileTypes.push_back(_("OPUS (Audio)"));
             fileTypes.push_back(_("FLAC (Audio)"));
             fileTypes.push_back(_("WAV (Audio)"));
+            fileTypes.push_back(_("OGG (Audio)"));
         }
         return fileTypes;
     }
@@ -259,12 +261,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             catch(const std::runtime_error& e)
             {
+                m_urlValidated.invoke({ false });
 #ifdef _WIN32
                 AppNotification::send({ _f("Error during yt-dlp validation:\n{}", e.what()), NotificationSeverity::Error, "error" });
 #else
                 AppNotification::send({ _f("Error during yt-dlp validation:\n<span font_family='monospace'>{}</span>", e.what()), NotificationSeverity::Error, "error" });
 #endif
-                m_urlValidated.invoke({ false });
             }
             catch(const std::exception& e)
             {
@@ -302,12 +304,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             catch(const std::runtime_error& e)
             {
+                m_urlValidated.invoke({ false });
 #ifdef _WIN32
                 AppNotification::send({ _f("Error during yt-dlp validation:\n{}", e.what()), NotificationSeverity::Error, "error" });
 #else
                 AppNotification::send({ _f("Error during yt-dlp validation:\n<span font_family='monospace'>{}</span>", e.what()), NotificationSeverity::Error, "error" });
 #endif
-                m_urlValidated.invoke({ false });
             }
             catch(const std::exception& e)
             {

@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="vi">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Bộ chuyển đổi ⚒️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -24,79 +24,85 @@
       <mal:email>jack74593@proton.me</mal:email>
       <mal:years>2025</mal:years>
     </mal:credit>
+  
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Loc Huynh</mal:name>
+      <mal:email>huynhloc.contact@gmail.com</mal:email>
+      <mal:years>2025</mal:years>
+    </mal:credit>
   </info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+<title>Bộ chuyển đổi</title>
+<p>Trang này giải thích tất cả các tùy chọn để định cấu hình Bộ chuyển đổi trong Tùy chọn trong <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>Nhúng siêu dữ liệu</title>
-        <p>Parabolic will tag a media with its relevant information (title, genre, etc...) if available.</p>
+        <p>Parabolic sẽ gắn thẻ phương tiện với thông tin liên quan (tiêu đề, thể loại, v.v.) nếu có.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
         <title>Xóa dữ liệu nguồn</title>
-        <p>Parabolic will clear metadata fields containing identifying download information.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+        <p>Parabolic sẽ xóa các trường siêu dữ liệu chứa thông tin tải xuống nhận dạng.</p>
+        <p>Các trường bị xóa: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> và <code>handler_name</code> trong mỗi luồng.</p>
         <note>
-            <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+            <p>Tùy chọn này chỉ có thể định cấu hình nếu <code>Nhúng siêu dữ liệu</code> được bật.</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Mặc định: Tắt</p>
         </note>
     </item>
     <item>
-        <title>Embed Thumbnails</title>
-        <p>Parabolic will embed a media with its thumbnail if available.</p>
-        <p>If the file type does not support embedding, the thumbnail will be written to a separate image file.</p>
+        <title>Nhúng hình thu nhỏ</title>
+        <p>Parabolic sẽ nhúng phương tiện có hình thu nhỏ của nó nếu có.</p>
+        <p>Nếu loại file không hỗ trợ nhúng, hình thu nhỏ sẽ được ghi vào một file ảnh riêng.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
         <title>Cắt thumbnail của audio</title>
-        <p>Parabolic will crop thumbnails of audio files to squares.</p>
+        <p>Parabolic sẽ cắt hình thu nhỏ của tệp âm thanh thành hình vuông.</p>
         <note>
-            <p>This option is only configurable if <code>Embed Thumbnails</code> is on.</p>
+            <p>Tùy chọn này chỉ có thể định cấu hình nếu <code>Nhúng hình thu nhỏ</code> được bật.</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Mặc định: Tắt</p>
         </note>
     </item>
     <item>
         <title>Nhúng chương</title>
-        <p>Parabolic will tag a media with its chapter information if available.</p>
+        <p>Parabolic sẽ gắn thẻ phương tiện với thông tin chương của nó nếu có.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Mặc định: Tắt</p>
         </note>
     </item>
     <item>
         <title>Nhúng phụ đề</title>
-        <p>If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.</p>
-        <p>Whether or not embedding is supported if affected by your chosen <code>Preferred Subtitle Format</code>.</p>
+        <p>Nếu bị tắt hoặc nếu tính năng nhúng không được hỗ trợ, phụ đề đã tải xuống sẽ được lưu vào các tệp riêng biệt.</p>
+        <p>Việc nhúng có được hỗ trợ hay không nếu bị ảnh hưởng bởi <code>Định dạng phụ đề ưa thích</code> mà bạn đã chọn.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
-        <title>FFmpeg Threads</title>
-        <p>Parabolic will limit the number of threads used by <code>ffmpeg</code>.</p>
+        <title>Luồng FFmpeg</title>
+        <p>Parabolic sẽ giới hạn số lượng luồng được sử dụng bởi <code>ffmpeg</code>.</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>Mặc định: Số lượng thread tối đa có sẵn trên hệ thống</p>
         </note>
     </item>
     <item>
-        <title>Postprocessing Arguments</title>
-        <p>Parabolic will present these options in the add download dialog to be passed to <code>ffmpeg</code> and other post-processors when processing media.</p>
+        <title>Đối số xử lý hậu kỳ</title>
+        <p>Parabolic sẽ hiển thị các tùy chọn này trong hộp thoại thêm tải xuống để chuyển tới <code>ffmpeg</code> và các bộ xử lý hậu kỳ khác khi xử lý phương tiện.</p>
         <note style="advanced">
-            <p>Postprocessing Argument Fields:</p>
-            <p><code>Name</code> - The friendly name of the argument.</p>
-            <p><code>Post Processor</code> - The post processor to pass the arguments to.</p>
-            <p><code>Executable</code> - The executable to pass the arguments to.</p>
-            <p><code>Args</code> - The args to pass.</p>
+            <p>Các trường đối số xử lý sau:</p>
+            <p><code>Tên</code> - Tên thân thiện của đối số.</p>
+            <p><code>Bộ xử lý hậu kỳ</code> – Bộ xử lý hậu kỳ để truyền các đối số tới.</p>
+            <p><code>Có thể thực thi</code> - Tệp thực thi để truyền đối số tới.</p>
+            <p><code>Đối số</code> - Các đối số cần chuyển.</p>
         </note>
     </item>
 </terms>
