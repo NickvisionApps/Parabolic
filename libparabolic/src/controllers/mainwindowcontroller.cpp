@@ -46,7 +46,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2025.10.3-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added support for downloading ogg audio files\n- Fixed an issue where a configured speed limit was not saved\n- Fixed an issue where Parabolic crashed when validating some videos on Windows");
+        m_appInfo.setChangelog("- Added support for downloading ogg audio files\n- Fixed an issue where a configured speed limit was not saved\n- Fixed an issue where Parabolic crashed when validating some videos on Windows\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
