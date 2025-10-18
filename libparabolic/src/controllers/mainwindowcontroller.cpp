@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.10.3-next" });
+        m_appInfo.setVersion({ "2025.10.3" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added support for downloading ogg audio files\n- Fixed an issue where a configured speed limit was not saved\n- Fixed an issue where Parabolic crashed when validating some videos on Windows\n- Updated yt-dlp");
