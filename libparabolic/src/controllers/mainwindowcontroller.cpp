@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.11.0-next" });
+        m_appInfo.setVersion({ "2025.11.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Fixed an issue where a user selected audio format was sometimes not correctly downloaded\n- Fixed an issue where preferred codecs were not always correctly selected\n- Updated yt-dlp with support for deno runtime");
