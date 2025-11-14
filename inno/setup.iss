@@ -39,22 +39,16 @@ WizardStyle=modern
 WizardResizable=yes
 WizardSizePercent=120,130
 
-UsePreviousAppDir=no
 DefaultDirName={autopf}\{#MyAppName}
-DisableProgramGroupPage=yes
 LicenseFile=..\License.rtf
-; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
 OutputDir=..\inno
 OutputBaseFilename=NickvisionParabolicSetup
 SetupIconFile=..\resources\org.nickvision.tubeconverter.ico
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
-DirExistsWarning=no
 CloseApplications=yes
 ChangesEnvironment=yes
-AlwaysRestart=yes
 
 [Languages]
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
