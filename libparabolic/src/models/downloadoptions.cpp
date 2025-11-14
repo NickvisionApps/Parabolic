@@ -179,7 +179,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::setSaveFilename(const std::string& saveFilename)
     {
-        m_saveFilename = m_saveFilename.find('›') != std::string::npos ? StringHelpers::normalizeForFilename(saveFilename, true) : saveFilename;
+        m_saveFilename = m_saveFilename.find(std::string("›")) != std::string::npos ? StringHelpers::normalizeForFilename(saveFilename, true) : saveFilename;
         validateFileNamesAndPaths();
     }
 
