@@ -204,6 +204,10 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         std::vector<std::string> arguments{ "--ignore-config", "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
+        arguments.push_back("--ffmpeg-location");
+        arguments.push_back(Environment::findDependency("ffmpeg").string());
+        arguments.push_back("--js-runtimes");
+        arguments.push_back("deno:" + Environment::findDependency("deno").string());
         arguments.push_back("--plugin-dir");
         arguments.push_back((Environment::getExecutableDirectory() / "plugins").string());
         if(url.find("soundcloud.com") == std::string::npos)
