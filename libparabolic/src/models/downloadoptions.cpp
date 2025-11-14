@@ -289,7 +289,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string formatSort{ m_timeFrame ? "proto:https," : "" };
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
-            formatSort += "res,+vcodec:";
+            formatSort += "+vcodec:";
             switch (downloaderOptions.getPreferredVideoCodec())
             {
             case VideoCodec::VP9:
@@ -305,6 +305,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatSort += "h265";
                 break;
             }
+            formatSort += ",res";
         }
         if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
         {
@@ -312,7 +313,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 formatSort += ",";
             }
-            formatSort += "quality,+acodec:";
+            formatSort += "+acodec:";
             switch (downloaderOptions.getPreferredAudioCodec())
             {
             case AudioCodec::FLAC:
@@ -334,8 +335,9 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatSort += "mp3";
                 break;
             }
+            formatSort += ",quality";
         }
-        if(Environment::getOperatingSystem() == OperatingSystem::Windows)
+        if(Environment::getOperatingSystem() == OperatingSystem::Windows && m_audioFormat && m_audioFormat->isFormatValue(FormatValue::Best))
         {
             if(!formatSort.empty())
             {
