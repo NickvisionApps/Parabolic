@@ -36,7 +36,7 @@ parts:
     plugin: python
     source: .
     python-packages:
-      - yt-dlp[default,curl-cffi]==2025.10.14
+      - yt-dlp[default,curl-cffi]==2025.11.12
       - mutagen
     stage:
       - -bin/activate*
@@ -97,7 +97,7 @@ parts:
       - libsqlcipher-dev
     override-prime: ''
 
-   deno:
+  deno:
     source: https://github.com/denoland/deno_install.git
     source-tag: 'v0.3.3'
     source-depth: 1

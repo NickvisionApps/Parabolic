@@ -4,7 +4,7 @@
 #define MyAppName            "Nickvision Parabolic"
 #define MyAppShortName       "Parabolic"
 #define MyAppShortNameLower  "parabolic"
-#define MyAppVersion         "2025.10.3"
+#define MyAppVersion         "2025.11.0"
 #define MyAppPublisher       "Nickvision"
 #define MyAppURL             "https://nickvision.org"
 #define MyAppExeName         "org.nickvision.tubeconverter.winui.exe"
@@ -39,22 +39,16 @@ WizardStyle=modern
 WizardResizable=yes
 WizardSizePercent=120,130
 
-UsePreviousAppDir=no
 DefaultDirName={autopf}\{#MyAppName}
-DisableProgramGroupPage=yes
 LicenseFile=..\License.rtf
-; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
 OutputDir=..\inno
 OutputBaseFilename=NickvisionParabolicSetup
 SetupIconFile=..\resources\org.nickvision.tubeconverter.ico
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
-DirExistsWarning=no
 CloseApplications=yes
 ChangesEnvironment=yes
-AlwaysRestart=yes
 
 [Languages]
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
@@ -102,7 +96,6 @@ Root: HKCR; Subkey: {#MyAppShortNameLower}; ValueType: "string"; ValueData: "URL
 Root: HKCR; Subkey: {#MyAppShortNameLower}; ValueType: "string"; ValueName: "URL Protocol"; ValueData: ""
 Root: HKCR; Subkey: "{#MyAppShortNameLower}\DefaultIcon"; ValueType: "string"; ValueData: "{app}\Release\{#MyAppExeName},0"
 Root: HKCR; Subkey: "{#MyAppShortNameLower}\shell\open\command"; ValueType: "string"; ValueData: """{app}\Release\{#MyAppExeName}"" ""%1"""
-Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}\Release"
 
 [Run]
 Filename: "{app}\vc_redist.exe"; Parameters: "/install /quiet /norestart"

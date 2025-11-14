@@ -179,7 +179,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::setSaveFilename(const std::string& saveFilename)
     {
-        m_saveFilename = saveFilename;
+        m_saveFilename = m_saveFilename.find(std::string("›")) != std::string::npos ? StringHelpers::normalizeForFilename(saveFilename, true) : saveFilename;
         validateFileNamesAndPaths();
     }
 
@@ -269,6 +269,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--no-embed-info-json");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
+        arguments.push_back("--js-runtimes");
+        arguments.push_back("deno:" + Environment::findDependency("deno").string());
         arguments.push_back("--plugin-dir");
         arguments.push_back((Environment::getExecutableDirectory() / "plugins").string());
         //Downloader Options
@@ -287,7 +289,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string formatSort{ m_timeFrame ? "proto:https," : "" };
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
         {
-            formatSort += "res,+vcodec:";
+            formatSort += "+vcodec:";
             switch (downloaderOptions.getPreferredVideoCodec())
             {
             case VideoCodec::VP9:
@@ -303,6 +305,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatSort += "h265";
                 break;
             }
+            formatSort += ",res";
         }
         if(downloaderOptions.getPreferredAudioCodec() != AudioCodec::Any)
         {
@@ -310,7 +313,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 formatSort += ",";
             }
-            formatSort += "quality,+acodec:";
+            formatSort += "+acodec:";
             switch (downloaderOptions.getPreferredAudioCodec())
             {
             case AudioCodec::FLAC:
@@ -332,8 +335,9 @@ namespace Nickvision::TubeConverter::Shared::Models
                 formatSort += "mp3";
                 break;
             }
+            formatSort += ",quality";
         }
-        if(Environment::getOperatingSystem() == OperatingSystem::Windows)
+        if(Environment::getOperatingSystem() == OperatingSystem::Windows && m_audioFormat && m_audioFormat->isFormatValue(FormatValue::Best))
         {
             if(!formatSort.empty())
             {
