@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-13 21:00-0500\n"
-"PO-Revision-Date: 2025-07-11 20:01+0000\n"
+"PO-Revision-Date: 2025-11-19 23:51+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/app/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:81
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
 msgid "Video (Generic)"
-msgstr "Videó (forrás szerint)"
+msgstr "Forrás szerint"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:99
@@ -52,7 +52,7 @@ msgstr "AVI (videó)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:104
 msgid "Audio (Generic)"
-msgstr "Hang (forrás szerint)"
+msgstr "Forrás szerint"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:89
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
@@ -81,9 +81,8 @@ msgstr "WAV (hang)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:94
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:110
-#, fuzzy
 msgid "OGG (Audio)"
-msgstr "Opus (hang)"
+msgstr "OGG (hang)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:197
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:387
@@ -99,23 +98,20 @@ msgstr "Nincs"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:266
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:309
-#, fuzzy
 msgid ""
 "Error during yt-dlp validation:\n"
 "{}"
-msgstr "Hiba történt elemzés közben: {}"
+msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:268
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:311
-#, fuzzy
 msgid ""
 "Error during yt-dlp validation:\n"
 "<span font_family='monospace'>{}</span>"
-msgstr "Hiba történt elemzés közben: {}"
+msgstr ""
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:274
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:317
-#, fuzzy
 msgid "Error during download validation: {}"
 msgstr "Hiba történt elemzés közben: {}"
 
@@ -181,9 +177,8 @@ msgid "Open"
 msgstr "Megnyitás"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
-#, fuzzy
 msgid "Download Failed"
-msgstr "Letöltés befejeződött"
+msgstr "Hiba történt letöltés közben"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:498
 msgid "{} has finished with an error"
@@ -218,40 +213,40 @@ msgstr "{:.2f} B/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:38
 msgid "Unknown time left"
-msgstr ""
+msgstr "Hátralévő idő ismeretlen"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:51
 msgid "0 seconds"
-msgstr ""
+msgstr "0 másodperc"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
 msgid "{} hour"
 msgid_plural "{} hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{} óra"
+msgstr[1] "{} óra"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
 msgid "{} and "
-msgstr ""
+msgstr "{} és "
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
 msgid "{} minute"
 msgid_plural "{} minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{} perc"
+msgstr[1] "{} perc"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
 msgid "{} second"
 msgid_plural "{} seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{} másodperc"
+msgstr[1] "{} másodperc"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
 msgid "{} left"
 msgid_plural "{} left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{} van hátra"
+msgstr[1] "{} van hátra"
 
 #: libparabolic/src/models/format.cpp:16 libparabolic/src/models/format.cpp:233
 #: libparabolic/src/models/videoresolution.cpp:33
@@ -296,9 +291,8 @@ msgid "Auto-generated"
 msgstr "Automatikusan létrehozott"
 
 #: libparabolic/src/models/ytdlpmanager.cpp:140
-#, fuzzy
 msgid "Unable to download yt-dlp update"
-msgstr "A frissítés letöltése és telepítése nem sikerült"
+msgstr "yt-dlp frissítés letöltése sikertelen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
@@ -383,9 +377,8 @@ msgstr "Elemzés folyamatban"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:356
-#, fuzzy
 msgid "Configure"
-msgstr "Nincs folyamatban letöltés"
+msgstr "Letöltés testre szabása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:115
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:261
@@ -411,20 +404,20 @@ msgid ""
 "Please select a specific file type that is known to support embedding\n"
 "to prevent separate files from being written."
 msgstr ""
-"Egyes fájlformátumok nem támogatják a beágyazásokat. Borítóképek és "
-"feliratok\n"
-"beágyazásához válasszon olyan formátumot, ami támogatja ezt!\n"
-"Ellenkező esetben a borítóképek külön fájlként kerülnek letöltésre."
+"Egyes fájlformátumok nem támogatják a borítóképek beágyazását. Ha szeretné,\n"
+"hogy a borítóképek mégis beágyazva legyenek válasszon olyan formátumot,\n"
+"ami támogatja ezt. Ellenkező esetben a borítóképek külön fájlként kerülnek "
+"letöltésre."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:157
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:65
 msgid "Video Format"
-msgstr "Felbontás/minőség"
+msgstr "Kép"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:161
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:66
 msgid "Audio Format"
-msgstr "Hangsáv"
+msgstr "Hang"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:165
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
@@ -677,19 +670,16 @@ msgstr "Menü"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:56
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:111
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:142
-#, fuzzy
 msgid "Updates"
-msgstr "Frissítés"
+msgstr "Frissítések"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:67
-#, fuzzy
 msgid "Update Available"
 msgstr "Elérhető frissítés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:83
-#, fuzzy
 msgid "Downloading Update"
-msgstr "Letöltés"
+msgstr "Frissítés letöltése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:115
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:283
@@ -844,15 +834,13 @@ msgstr "Rendszer"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:30
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:35
-#, fuzzy
 msgid "Translation Language"
-msgstr "Hangsáv"
+msgstr "Nyelv"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:31
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:36
-#, fuzzy
 msgid "An application restart is required for change to take effect"
-msgstr "A téma beállításához az alkalmazás újraindítása szükséges."
+msgstr "A beállítás érvénybe lépéséhez az alkalmazás újraindítása szükséges"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:40
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:37
@@ -861,10 +849,9 @@ msgstr "Készenlét/felfüggesztés tiltása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:41
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:38
-#, fuzzy
 msgid "Prevent the computer from sleeping while downloads are running"
 msgstr ""
-"A beállítás megakadályozza, hogy a rendszer megszakítsa a futó letöltéseket."
+"A beállítás megakadályozza, hogy a rendszer megszakítsa a futó letöltéseket"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:41
@@ -873,9 +860,8 @@ msgstr "Letöltési előzmények tárolása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:51
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:42
-#, fuzzy
 msgid "The amount of time to keep past downloads in the app's history"
-msgstr "Ennyi ideig fogja listázni az alkalmazás a korábbi letöltéseket."
+msgstr "Ennyi ideig fogja listázni az alkalmazás a korábbi letöltéseket"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:53
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:43
@@ -921,11 +907,10 @@ msgid "Limit Filename Characters"
 msgstr "Nem támogatott karakterek konvertálása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:93
-#, fuzzy
 msgid "Restrict characters in filenames to those supported only by Windows"
 msgstr ""
 "A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
-"fogja a Windows számára."
+"fogja a Windows számára"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:102
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:53
@@ -934,9 +919,8 @@ msgstr "Videó azonosítójának hozzáadása a fájlnévhez"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:103
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:54
-#, fuzzy
 msgid "Add the media's id to its default title"
-msgstr "A videó egyedi azonosítója szerepelni fog a fájlnévben."
+msgstr "A videó egyedi azonosítója szerepelni fog a fájlnévben"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:112
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:57
@@ -945,7 +929,6 @@ msgstr "Automatikusan létrehozott feliratok letöltése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:113
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:58
-#, fuzzy
 msgid ""
 "Show auto-generated subtitles to download in addition to available subtitles"
 msgstr ""
@@ -960,7 +943,7 @@ msgstr "Előnyben részesített videókódoló"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:62
 msgid ""
 "Prefer this codec when parsing video formats to show available to download"
-msgstr ""
+msgstr "Ezt a kódolót fogja használni az alkalmazás a videó feldolgozásához"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:125
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
@@ -990,7 +973,7 @@ msgstr "Előnyben részesített hangkódoló"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:69
 msgid ""
 "Prefer this codec when parsing audio formats to show available to download"
-msgstr ""
+msgstr "Ezt a kódolót fogja használni az alkalmazás a hang feldolgozásához"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:71
@@ -1010,7 +993,7 @@ msgstr "Előnyben részesített feliratformátum"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:78
 msgid "Prefer this subtitle file format when downloading"
-msgstr ""
+msgstr "Ebben a formátumban kerülnek letöltésre a feliratok"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:167
@@ -1020,9 +1003,8 @@ msgstr "Letöltés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:170
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:84
-#, fuzzy
 msgid "Use Part Files"
-msgstr "Letöltési lista megnyitása"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:171
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:85
@@ -1038,11 +1020,10 @@ msgstr "Beágyazott hirdetések eltávolítása YouTube videókból"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:89
-#, fuzzy
 msgid "Try to remove sponsored segments from videos"
 msgstr ""
 "Az alkalmazás megpróbálja eltávolítani a videóban esetlegesen megjelenő "
-"hirdetéseket."
+"hirdetéseket"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:190
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:92
@@ -1155,9 +1136,8 @@ msgstr "Tartalmak darabolása (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:119
-#, fuzzy
 msgid "The minimum size of which to split a file (in MiB)"
-msgstr "Meghatározza a darabok méretét. Értéke MiB-ban értendő."
+msgstr "Meghatározza a darabok méretét. Értéke MiB-ban értendő"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:319
@@ -1177,11 +1157,10 @@ msgstr "Metaadatok törlése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:333
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:124
-#, fuzzy
 msgid "Clear metadata fields containing identifying download information"
 msgstr ""
 "Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott "
-"adatokat a letöltött fájlokból."
+"adatokat a letöltött fájlokból"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:343
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:127
@@ -1190,13 +1169,12 @@ msgstr "Borítókép beágyazása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:344
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:128
-#, fuzzy
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file"
 msgstr ""
 "Amennyiben a fájlformátum ezt nem támogatja, úgy a borítókép külön fájlként "
-"kerül letöltésre."
+"kerül letöltésre"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:354
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:131
@@ -1205,11 +1183,10 @@ msgstr "Borítókép igazítása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:355
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:132
-#, fuzzy
 msgid "Crop thumbnails of audio files to squares"
 msgstr ""
 "Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
-"lehet hasznos."
+"lehet hasznos"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:365
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:135
@@ -1223,12 +1200,11 @@ msgstr "Feliratok beágyazása"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:375
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:139
-#, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files"
 msgstr ""
-"Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve."
+"Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:384
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:143
@@ -1271,9 +1247,8 @@ msgstr "Feldolgozás"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:435
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:272
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:361
-#, fuzzy
 msgid "Executable"
-msgstr "Jelszókezelő engedélyezése"
+msgstr "Futtatandó"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:439
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:257
@@ -1307,9 +1282,8 @@ msgstr "Feldolgozás"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
-#, fuzzy
 msgid "{} • {}"
-msgstr "{} | {} | Hátralévő idő: {}"
+msgstr "{} • {}"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:110
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
@@ -1351,9 +1325,8 @@ msgid "Running"
 msgstr "Fut"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:202
-#, fuzzy
 msgid "Log copied to clipboard"
-msgstr "Letöltés napló vágólapra másolva."
+msgstr "Napló vágólapra másolva"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:45
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
@@ -1433,7 +1406,7 @@ msgstr "Bejelentkezés törlése"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:236
 msgid "Are you sure you want to delete this credential?"
-msgstr "Valóban törli a bejelentkezési adatokat?"
+msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:170
@@ -1481,7 +1454,7 @@ msgstr "Bejelentkezés (adatbázis hiba)"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:155
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:210
 msgid "Legal Copyright Disclaimer"
-msgstr ""
+msgstr "Jogi nyilatkozat"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:155
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:200
@@ -1490,6 +1463,9 @@ msgid ""
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
 "this application in means that will violate these laws."
 msgstr ""
+"A Parabolic fejlesztője nem vállal felelősséget az alkalmazás használatából "
+"fakadó esetleges jogsértésekért. A felhasználó saját felelősségére használja "
+"az alkalmazást."
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:156
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:203
@@ -1499,7 +1475,7 @@ msgstr "Ne mutassa újra"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:157
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:212
 msgid "I understand"
-msgstr ""
+msgstr "Megértettem"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:222
@@ -1516,7 +1492,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:170
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:224
 msgid "Recover"
-msgstr ""
+msgstr "Helyreállítás"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
 msgid "Exit?"
@@ -1524,10 +1500,9 @@ msgstr "Kilépés"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:246
-#, fuzzy
 msgid "There are downloads in progress. Exiting will stop all downloads."
 msgstr ""
-"Egyes letöltések még folyamatban vannak. Valóban kilép az alkalmazásból?"
+"Egyes letöltések még folyamatban vannak. Biztosan kilép az alkalmazásból?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:247
@@ -1539,7 +1514,6 @@ msgid "Ok"
 msgstr "Rendben"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:247
-#, fuzzy
 msgid "An update is available"
 msgstr "Elérhető frissítés"
 
@@ -1555,9 +1529,8 @@ msgid "Manage"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
-#, fuzzy
 msgid "Update completed successfully"
-msgstr "Befejezett letöltések törlése"
+msgstr "Frissítés telepítése sikeres"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:364
 msgid "Download Again"
@@ -1576,20 +1549,17 @@ msgstr "Bejelentkezés hozzáadása"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:232
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:422
-#, fuzzy
 msgid "Delete Argument?"
-msgstr "Bejelentkezés hozzáadása"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:232
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:423
-#, fuzzy
 msgid "Are you sure you want to delete this argument?"
-msgstr "Valóban törli a bejelentkezési adatokat?"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:281
-#, fuzzy
 msgid "Args (Empty)"
-msgstr "Megnevezés (üres)"
+msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:29
 msgid "Show Log"
@@ -1785,7 +1755,6 @@ msgid "Settings"
 msgstr "Beállítások"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:115
-#, fuzzy
 msgid "Start"
 msgstr "Kezdés"
 
@@ -1803,7 +1772,7 @@ msgstr "Kibeszélés"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:143
 msgid "You're up to date"
-msgstr ""
+msgstr "Az alkalmazás naprakész"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:144
 msgid ""
@@ -1811,27 +1780,25 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:145
-#, fuzzy
 msgid "There is an update available"
 msgstr "Elérhető frissítés"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:147
-#, fuzzy
 msgid "Downloading the update"
 msgstr "Letöltés"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:148
-#, fuzzy
 msgid "Options"
-msgstr "Haladó beállítások"
+msgstr "Beállítások"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:149
 msgid "Receive Beta App Updates"
-msgstr ""
+msgstr "Előzetes kiadások fogadása"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:150
 msgid "Check for pre-release (beta) versions of {}"
 msgstr ""
+"Ezen frissítések engedélyezésével a {} kísérleti funkcióihoz is hozzáférhet"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:153
 msgid "Changelog"
@@ -1839,7 +1806,7 @@ msgstr "Kiadási jegyzék"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:154
 msgid "Version {}"
-msgstr ""
+msgstr "Verzió: {}"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:156
 msgid "Copy Debug Information"
@@ -1851,14 +1818,12 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:347
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:380
-#, fuzzy
 msgid "Downloading {}%"
-msgstr "Letöltés"
+msgstr "{}% letöltése"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:670
-#, fuzzy
 msgid "Debug information copied to clipboard"
-msgstr "Letöltés napló vágólapra másolva."
+msgstr "Hibakeresési napló vágólapra másolva"
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:32
 msgid "Light"
@@ -1885,47 +1850,39 @@ msgid "Postprocessing"
 msgstr "Utófeldolgozás"
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:145
-#, fuzzy
 msgid "Arguments"
-msgstr "Bejelentkezés hozzáadása"
+msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:280
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:369
-#, fuzzy
 msgid "Enter args here"
-msgstr "Hivatkozás beillesztése"
+msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:289
-#, fuzzy
 msgid "New Argument"
-msgstr "Bejelentkezés hozzáadása"
+msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:312
-#, fuzzy
 msgid "The argument name cannot be empty."
-msgstr "A felhasználónév nem lehet üres."
+msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:318
-#, fuzzy
 msgid "An argument with this name already exists."
-msgstr "Ez a bejelentkezés már tárolva van."
+msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:324
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:402
-#, fuzzy
 msgid "The argument args cannot be empty."
-msgstr "A felhasználónév nem lehet üres."
+msgstr ""
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:379
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:450
-#, fuzzy
 msgid "Edit Argument"
-msgstr "Bejelentkezés hozzáadása"
+msgstr "Paraméterek szerkesztése"
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:458
-#, fuzzy
 msgid "Delete Argument"
-msgstr "Bejelentkezés hozzáadása"
+msgstr ""
 
 #, fuzzy
 #~ msgid ""
