@@ -11,6 +11,79 @@ lint:
     - library
 
 parts:
+  gtk4:
+    source: https://gitlab.gnome.org/GNOME/gtk.git
+    source-tag: '4.19.4'
+    source-depth: 1
+    plugin: meson
+    meson-parameters:
+      - --prefix=/usr
+      - -Doptimization=3
+      - -Dbuildtype=release
+      - -Dbroadway-backend=true
+      - -Dx11-backend=true
+      - -Dwayland-backend=true
+      - -Dwin32-backend=false
+      - -Dmacos-backend=false
+      - -Dintrospection=enabled
+      - -Ddocumentation=false
+      - -Dbuild-examples=false
+      - -Dbuild-tests=false
+      - -Dmedia-gstreamer=enabled
+      - -Dbuild-demos=false
+      - -Dbuild-testsuite=false
+      - -Dbuild-examples=false
+      - -Dbuild-tests=false
+      - -Dprint-cups=enabled
+      - -Dc_args=['-Wno-error=redundant-decls', '-Wno-redundant-decls']
+    organize:
+      usr/lib/gtk-4.0: usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/gtk-4.0
+    build-packages:
+      - libxkbcommon-dev
+      - libcups2-dev
+      - libcolord-dev
+      - libxrandr-dev
+      - libxcursor-dev
+      - libxcomposite-dev
+      - libxdamage-dev
+      - libxfixes-dev
+      - libxi-dev
+      - libxkbfile-dev
+      - libxml2-utils
+      - libgstreamer-plugins-bad1.0-dev
+      - libvulkan-dev
+      - libwayland-dev
+      - glslc
+      - gcc-multilib
+      - libgraphene-1.0-dev
+
+  libadwaita:
+    after: [gtk4]
+    source: https://gitlab.gnome.org/GNOME/libadwaita.git
+    source-tag: '1.8.1'
+    source-depth: 1
+    plugin: meson
+    meson-parameters:
+      - --prefix=/usr
+      - -Doptimization=3
+      - -Dbuildtype=release
+      - -Dintrospection=enabled
+      - -Dvapi=true
+      - -Dgtk_doc=false
+      - -Dtests=false
+      - -Dexamples=false
+      - -Dc_args="-Wno-error=format-nonliteral"
+    build-environment:
+      - PKG_CONFIG_PATH: $CRAFT_STAGE/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pkgconfig:$PKG_CONFIG_PATH
+    build-packages:
+      - sassc
+      - libyaml-dev
+      - libzstd-dev
+      - libsystemd-dev
+      - gperf
+      - libappstream-dev
+      - glslc
+
   deps:
     plugin: nil
     stage-packages:
@@ -123,23 +196,25 @@ parts:
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libxml++-5.0*.so*
 
   tube-converter:
-    after: [maddy, libnick, deno, libxmlplusplus]
+    after: [libadwaita, maddy, libnick, deno, libxmlplusplus]
     plugin: cmake
     source: .
     build-snaps:
       - cmake
-      - blueprint-compiler/latest/edge
       - ffmpeg-2404/latest/candidate
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
       - -DCMAKE_BUILD_TYPE=Release
     build-packages:
+      - blueprint-compiler
       - libboost-dev
       - libboost-date-time1.83-dev
       - libboost-system1.83-dev
     stage-packages:
       - libstdc++6
     build-environment:
+      - GI_TYPELIB_PATH: ${CRAFT_STAGE}/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/girepository-1.0:${GI_TYPELIB_PATH}
+      - PKG_CONFIG_PATH: ${CRAFT_STAGE}/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pkgconfig:$PKG_CONFIG_PATH
       - CMAKE_PREFIX_PATH: ${CRAFT_STAGE}/usr${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
     organize:
