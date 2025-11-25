@@ -1,4 +1,4 @@
-![](extension/resources/banner.png)
+![](resources/banner.png)
 
 # Features
 - **One-Click Capture**: Send the URL of your active tab to Parabolic instantly by clicking the Extension/Add-on icon.
@@ -15,4 +15,4 @@
 3. Click the `Load unpacked` button and select the extension folder.
 
 ##### Firefox
-[![get-the-addon](extension/resources/firefox.png)](https://addons.mozilla.org/en-US/firefox/addon/parabolic/)
+[![get-the-addon](resources/firefox.png)](https://addons.mozilla.org/en-US/firefox/addon/parabolic/)
