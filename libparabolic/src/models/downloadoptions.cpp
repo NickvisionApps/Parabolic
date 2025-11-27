@@ -416,19 +416,13 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--embed-metadata");
             if(downloaderOptions.getRemoveSourceData())
             {
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_comment>)");
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_description>)");
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_synopsis>)");
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_purl>)");
+                arguments.push_back("--postprocessor-args");
+                arguments.push_back("Metadata+ffmpeg:-metadata comment= -metadata description= -metadata synopsis= -metadata purl= ");
             }
             if(m_playlistPosition != -1)
             {
-                arguments.push_back("--parse-metadata");
-                arguments.push_back(std::to_string(m_playlistPosition) + ":%(meta_track)s");
+                arguments.push_back("--postprocessor-args");
+                arguments.push_back("Metadata+ffmpeg:-metadata track=" + std::to_string(m_playlistPosition));
             }
         }
         if(downloaderOptions.getEmbedThumbnails())
