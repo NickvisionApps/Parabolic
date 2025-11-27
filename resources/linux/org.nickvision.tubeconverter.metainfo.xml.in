@@ -55,11 +55,12 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2025.11.0" date="2025-11-13">
+    <release version="2025.11.1" date="2025-11-27">
       <description translate="no">
-        <p>- Fixed an issue where a user selected audio format was sometimes not correctly downloaded</p>
-        <p>- Fixed an issue where preferred codecs were not always correctly selected</p>
-        <p>- Updated yt-dlp with support for deno runtime</p>
+        <p>- Fixed the sleep interval for multiple subtitle downloads</p>
+        <p>- Fixed an issue where low-resolution media was being downloaded on Windows</p>
+        <p>- Fixed an issue where aria2c couldn't download media from certain sites</p>
+        <p>- Fixed an issue where Remove Source Data was not clearing all identifiable metadata fields</p>
       </description>
     </release>
   </releases>
