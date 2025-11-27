@@ -300,20 +300,20 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Downloading"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "downloading");
-            gtk_widget_set_visible(m_builder.get<GtkWidget>("stopAllDownloadsButton"), true);
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("stopAllDownloadsButton"), m_controller->getDownloadingCount() > 0);
         }
         else if(row == gtk_list_box_get_row_at_index(box, Pages::Queued))
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Queued"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "queued");
-            gtk_widget_set_visible(m_builder.get<GtkWidget>("clearQueuedDownloadsButton"), true);
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("clearQueuedDownloadsButton"), m_controller->getQueuedCount() > 0);
         }
         else if(row == gtk_list_box_get_row_at_index(box, Pages::Completed))
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Completed"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "completed");
-            gtk_widget_set_visible(m_builder.get<GtkWidget>("clearCompletedDownloadsButton"), true);
-            gtk_widget_set_visible(m_builder.get<GtkWidget>("retryFailedDownloadsButton"), true);
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("clearCompletedDownloadsButton"), m_controller->getCompletedCount() > 0);
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("retryFailedDownloadsButton"), m_controller->getCompletedCount() > 0);
         }
     }
 

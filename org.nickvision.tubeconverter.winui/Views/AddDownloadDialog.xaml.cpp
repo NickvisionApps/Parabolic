@@ -409,6 +409,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
             TglWriteM3UFilePlaylist().IsOn(m_controller->getPreviousDownloadOptions().getWritePlaylistFile());
             TxtSaveFolderPlaylist().Text(winrt::to_hstring(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
             //Load Items
+            NavViewPlaylistItems().Text(winrt::to_hstring(_f("Items ({})", m_controller->getMediaCount())));
             TglNumberTitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getNumberTitles());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
@@ -419,6 +420,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Views::implementation
                 panel.Spacing(6);
                 TextBox txt;
                 txt.MaxWidth(320);
+                txt.HorizontalAlignment(HorizontalAlignment::Stretch);
                 txt.Text(title);
                 txt.TextChanged([this, panel, txt](const IInspectable&, const TextChangedEventArgs&)
                 {
