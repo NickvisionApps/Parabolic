@@ -43,7 +43,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.11.1-next" });
+        m_appInfo.setVersion({ "2025.11.1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Fixed the sleep interval for multiple subtitle downloads\n- Fixed an issue where low-resolution media was being downloaded on Windows\n- Fixed an issue where aria2c couldn't download media from certain sites\n- Fixed an issue where Remove Source Data was not clearing all identifiable metadata fields");
