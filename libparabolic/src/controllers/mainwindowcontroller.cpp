@@ -43,10 +43,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.11.0" });
+        m_appInfo.setVersion({ "2025.11.1" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where a user selected audio format was sometimes not correctly downloaded\n- Fixed an issue where preferred codecs were not always correctly selected\n- Updated yt-dlp with support for deno runtime");
+        m_appInfo.setChangelog("- Fixed the sleep interval for multiple subtitle downloads\n- Fixed an issue where low-resolution media was being downloaded on Windows\n- Fixed an issue where aria2c couldn't download media from certain sites\n- Fixed an issue where Remove Source Data was not clearing all identifiable metadata fields");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

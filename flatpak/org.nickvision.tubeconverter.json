@@ -133,14 +133,18 @@
         "python3-modules.json",
         {
             "name": "aria2",
-            "config-opts": [
-                "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+            "buildsystem": "simple",
+            "build-commands": [
+                "autoreconf -i",
+                "./configure --prefix=/app --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt",
+                "make -j $FLATPAK_BUILDER_N_JOBS",
+                "make install"
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz",
-                    "sha256": "60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b"
+                    "type": "git",
+                    "url": "https://github.com/aria2/aria2.git",
+                    "commit": "412d435b8421915ee5442111c8a6417b2241348d"
                 }
             ]
         },
@@ -153,16 +157,16 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-11-13-14-17/ffmpeg-N-121752-g6cdd2cbe32-linux64-gpl.tar.xz",
-                    "sha256": "441443aef06f81498b5bfadd58989fc7ef7469a3f822d9d75e49884897a28d9d",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-11-27-14-16/ffmpeg-N-121910-gcac5018eb9-linux64-gpl.tar.xz",
+                    "sha256": "da98e1246320a14a059a50a6c878310b782e301d3e34b6d0e8497fea47b5d654",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-11-13-14-17/ffmpeg-N-121752-g6cdd2cbe32-linuxarm64-gpl.tar.xz",
-                    "sha256": "3d698684531f09b6323d25c53926b55de05299db940b45c2dd65430a7470cb8f",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-11-27-14-16/ffmpeg-N-121910-gcac5018eb9-linuxarm64-gpl.tar.xz",
+                    "sha256": "9fb097b7de394c252ded2eaade6897a335b8b04785ba08bb0af80782bb897644",
                     "only-arches": [
                         "aarch64"
                     ]
