@@ -133,8 +133,12 @@
         "python3-modules.json",
         {
             "name": "aria2",
-            "config-opts": [
-                "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+            "buildsystem": "simple",
+            "build-commands": [
+                "autoreconf -i",
+                "./configure --prefix=/app --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt",
+                "make -j $FLATPAK_BUILDER_N_JOBS",
+                "make install"
             ],
             "sources": [
                 {
