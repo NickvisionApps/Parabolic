@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Parabolic Extension",
+  "version": "1.0",
+  "description": "Opens specified links in Parabolic for download",
+  "homepage_url": "https://github.com/NickvisionApps/Parabolic",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "contextMenus"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "38": "icons/icon38.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "38": "icons/icon38.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "open-parabolic-current-tab": {
+      "suggested_key": {
+        "default": "Alt+P",
+        "mac": "Alt+P"
+      },
+      "description": "Opens current tab in Parabolic."
+    }
+  }
+}

@@ -16,6 +16,8 @@ Videos on YouTube and other sites may be subject to DMCA protection. The authors
 <p><a href="https://snapcraft.io/tube-converter"><img width='150' alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" /></a></p>
 <p><a href="https://github.com/NickvisionApps/Parabolic/releases"><img width='140' alt="Download from Releases" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Windows_logo_and_wordmark_-_2021.svg"/></a></p>
 
+[![get-the-addon](extension/resources/firefox.png)](https://addons.mozilla.org/en-US/firefox/addon/parabolic/)
+
 # Chat
 <a href='https://matrix.to/#/#nickvision:matrix.org'><img width='140' alt='Join our room' src='https://user-images.githubusercontent.com/17648453/196094077-c896527d-af6d-4b43-a5d8-e34a00ffd8f6.png'/></a>
 
@@ -39,6 +41,22 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
  ![Downloading](org.nickvision.tubeconverter.winui/screenshots/downloading.png)
  ![Dark Mode](org.nickvision.tubeconverter.winui/screenshots/dark.png)
  ![Add Download Dialog](org.nickvision.tubeconverter.winui/screenshots/add.png)
+</details>
+
+<details>
+  <summary>Chrome Extension</summary>
+
+  <video width="800" height="600" controls>
+    <source src="extension/resources/chrome.mp4" type="video/mp4">
+  </video>
+</details>
+
+<details>
+  <summary>Firefox Extension</summary>
+
+  <video width="800" height="600" controls>
+    <source src="extension/resources/firefox.mp4" type="video/mp4">
+  </video>
 </details>
 
 ## Building Manually
