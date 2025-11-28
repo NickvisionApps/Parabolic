@@ -1,17 +1,19 @@
 {
   "manifest_version": 3,
   "name": "Parabolic Extension",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Opens specified links in Parabolic for download",
   "homepage_url": "https://github.com/NickvisionApps/Parabolic",
   "permissions": [
     "activeTab",
     "scripting",
-    "contextMenus"
+    "contextMenus",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js"
   },
+  "options_page": "options.html",
   "action": {
     "default_icon": {
       "38": "icons/icon38.png"
