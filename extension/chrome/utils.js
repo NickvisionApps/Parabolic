@@ -25,7 +25,7 @@ function trimPlaylistFromUrl(url) {
       return urlObj.toString();
     }
   } catch (e) {
-    // If URL parsing fails, return original
+    // If URL parsing fails (e.g., malformed URL, invalid protocol), return original URL unchanged
   }
   return url;
 }

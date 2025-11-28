@@ -2,7 +2,7 @@
 function openParabolicUrl(url) {
   browser.storage.sync.get(['trimPlaylist']).then((result) => {
     let processedUrl = url;
-    if (result.trimPlaylist) {
+    if (result && result.trimPlaylist) {
       processedUrl = trimPlaylistFromUrl(url);
     }
     // Remove "https://" or "http://" from the URL
@@ -12,13 +12,21 @@ function openParabolicUrl(url) {
 
     // Use the browser.tabs API to open the URL scheme
     browser.tabs.update({ url: schemeUrl });
+  }).catch((error) => {
+    console.error('Storage error:', error);
+    // On error, proceed with original URL
+    let formattedUrl = url.replace(/^https?:\/\//, '');
+    let schemeUrl = `parabolic://${formattedUrl}`;
+    browser.tabs.update({ url: schemeUrl });
   });
 }
 
 // Load saved settings when popup opens
 document.addEventListener('DOMContentLoaded', () => {
   browser.storage.sync.get(['trimPlaylist']).then((result) => {
-    document.getElementById('trimPlaylist').checked = result.trimPlaylist || false;
+    document.getElementById('trimPlaylist').checked = (result && result.trimPlaylist) || false;
+  }).catch((error) => {
+    console.error('Storage error:', error);
   });
 });
 

@@ -1,8 +1,11 @@
 // Function to format the URL and open the scheme link
 function openParabolicUrl(url) {
   chrome.storage.sync.get(['trimPlaylist'], (result) => {
+    if (chrome.runtime.lastError) {
+      console.error('Storage error:', chrome.runtime.lastError);
+    }
     let processedUrl = url;
-    if (result.trimPlaylist) {
+    if (result && result.trimPlaylist) {
       processedUrl = trimPlaylistFromUrl(url);
     }
     // Remove "https://" or "http://" from the URL
@@ -18,7 +21,11 @@ function openParabolicUrl(url) {
 // Load saved settings when popup opens
 document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.sync.get(['trimPlaylist'], (result) => {
-    document.getElementById('trimPlaylist').checked = result.trimPlaylist || false;
+    if (chrome.runtime.lastError) {
+      console.error('Storage error:', chrome.runtime.lastError);
+      return;
+    }
+    document.getElementById('trimPlaylist').checked = (result && result.trimPlaylist) || false;
   });
 });
 
