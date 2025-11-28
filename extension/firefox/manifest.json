@@ -16,7 +16,8 @@
   "permissions": [
     "activeTab",
     "scripting",
-    "contextMenus"
+    "contextMenus",
+    "storage"
   ],
   "background": {
     "scripts": ["background.js"]
@@ -24,7 +25,8 @@
   "action": {
     "default_icon": {
       "38": "icons/icon38.png"
-    }
+    },
+    "default_popup": "popup.html"
   },
   "icons": {
     "16": "icons/icon16.png",

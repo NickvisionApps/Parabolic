@@ -32,32 +32,23 @@ function openParabolicUrl(url) {
   });
 }
 
-// Creates the context menu item when the extension is installed
-browser.runtime.onInstalled.addListener(() => {
-  browser.contextMenus.create({
-    id: "openParabolicLink",
-    title: "Open link in Parabolic",
-    contexts: ["page", "link"] // Shows the menu on the page and on links
+// Load saved settings when popup opens
+document.addEventListener('DOMContentLoaded', () => {
+  browser.storage.sync.get(['trimPlaylist']).then((result) => {
+    document.getElementById('trimPlaylist').checked = result.trimPlaylist || false;
   });
 });
 
-// Listener for context menu: Open link in Parabolic clicks
-browser.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "openParabolicLink") {
-    // If the right click was on a link, use the link's URL.
-    // Otherwise, use the current tab's URL.
-    const urlToOpen = info.linkUrl || info.pageUrl;
-    openParabolicUrl(urlToOpen);
-  }
+// Save setting when checkbox is toggled
+document.getElementById('trimPlaylist').addEventListener('change', (e) => {
+  browser.storage.sync.set({ trimPlaylist: e.target.checked });
 });
 
-// Listener for Keyboard shorcut command(Alt+P)
-browser.commands.onCommand.addListener((command) => {
-  if (command === "open-parabolic-current-tab") {
-    browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs.length > 0) {
-        openParabolicUrl(tabs[0].url);
-      }
-    });
-  }
+// Send current page button handler
+document.getElementById('sendBtn').addEventListener('click', () => {
+  browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+    if (tabs.length > 0) {
+      openParabolicUrl(tabs[0].url);
+    }
+  });
 });
