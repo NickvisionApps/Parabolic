@@ -1,12 +1,24 @@
 // Function to format the URL and open the scheme link
 function openParabolicUrl(url) {
-  // Remove "https://" or "http://" from the URL
-  let formattedUrl = url.replace(/^https?:\/\//, '');
-  // Construct the final scheme URL
-  let schemeUrl = `parabolic://${formattedUrl}`;
+  browser.storage.sync.get(['trimPlaylist']).then((result) => {
+    let processedUrl = url;
+    if (result && result.trimPlaylist) {
+      processedUrl = trimPlaylistFromUrl(url);
+    }
+    // Remove "https://" or "http://" from the URL
+    let formattedUrl = processedUrl.replace(/^https?:\/\//, '');
+    // Construct the final scheme URL
+    let schemeUrl = `parabolic://${formattedUrl}`;
 
-  // Use the browser.tabs API to open the URL scheme
-  browser.tabs.update({ url: schemeUrl });
+    // Use the browser.tabs API to open the URL scheme
+    browser.tabs.update({ url: schemeUrl });
+  }).catch((error) => {
+    console.error('Storage error:', error);
+    // On error, proceed with original URL
+    let formattedUrl = url.replace(/^https?:\/\//, '');
+    let schemeUrl = `parabolic://${formattedUrl}`;
+    browser.tabs.update({ url: schemeUrl });
+  });
 }
 
 // Creates the context menu item when the extension is installed
@@ -18,6 +30,12 @@ browser.runtime.onInstalled.addListener(() => {
   });
 });
 
+// Listener for action (Extension icon) clicks
+browser.action.onClicked.addListener((tab) => {
+  // Use the current tab's URL for the action button
+  openParabolicUrl(tab.url);
+});
+
 // Listener for context menu: Open link in Parabolic clicks
 browser.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "openParabolicLink") {
@@ -26,12 +44,6 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     const urlToOpen = info.linkUrl || info.pageUrl;
     openParabolicUrl(urlToOpen);
   }
-});
-
-// Listener for action (Extension icon) clicks
-browser.action.onClicked.addListener((tab) => {
-  // Use the current tab's URL for the action button
-  openParabolicUrl(tab.url);
 });
 
 // Listener for Keyboard shorcut command(Alt+P)

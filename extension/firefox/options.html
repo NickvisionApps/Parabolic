@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Parabolic Settings</title>
+  <style>
+    body {
+      padding: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .container {
+      max-width: 300px;
+      padding: 10px;
+      width: 100%;
+      margin: 0;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 12px 0;
+    }
+    .setting {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+    }
+    .setting label {
+      flex: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+    }
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 22px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #e63a3f;
+    }
+    input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+    .description {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #202020;
+        color: #e6e6e6;
+      }
+      .container {
+        background-color: #272727;
+      }
+      h3 {
+        color: #fff;
+      }
+      hr {
+        border-top-color: #333;
+      }
+      .description {
+        color: #bdbdbd;
+      }
+      .slider {
+        background-color: #444;
+      }
+      .slider:before {
+        background-color: #f5f5f5;
+      }
+      input:checked + .slider {
+        background-color: #e63a3f;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <h3>Parabolic Settings</h3>
+  <hr>
+  <div class="setting">
+    <label for="trimPlaylist">Trim playlist from URL
+    <div class="toggle">
+      <input type="checkbox" id="trimPlaylist">
+      <span class="slider"></span>
+    </div>
+    </label>
+  </div>
+  <div class="description">
+    Remove playlist parameters (&amp;list=...) from YouTube URLs to download only the current video.
+  </div>
+</div>
+  <script src="utils.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
