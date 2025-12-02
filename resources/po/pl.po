@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-27 16:47-0500\n"
-"PO-Revision-Date: 2024-10-18 20:15+0000\n"
-"Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
+"PO-Revision-Date: 2025-12-02 19:00+0000\n"
+"Last-Translator: TestNintendo <testnintendo@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/pl/>\n"
 "Language: pl\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:81
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
@@ -157,12 +158,11 @@ msgid "Unable to download and install update"
 msgstr "Nie można pobrać i zainstalować aktualizacji"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:414
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "Pobierz nieudane ponownie"
-msgstr[1] "Pobierz nieudane ponownie"
-msgstr[2] "Pobierz nieudane ponownie"
+msgstr[0] "Odzyskano {} pobranie"
+msgstr[1] "Odzyskano {} pobrania"
+msgstr[2] "Odzyskano {} pobrań"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:419
 msgid "Error attempting to recover downloads: {}"
@@ -232,28 +232,28 @@ msgstr ""
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
 msgid "{} hour"
 msgid_plural "{} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{} godzina"
+msgstr[1] "{} godziny"
+msgstr[2] "{} godzin"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
 msgid "{} and "
-msgstr ""
+msgstr "{} i "
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:65
 msgid "{} minute"
 msgid_plural "{} minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{} minuta"
+msgstr[1] "{} minuty"
+msgstr[2] "{} minut"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:73
 msgid "{} second"
 msgid_plural "{} seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "{} sekunda"
+msgstr[1] "{} sekundy"
+msgstr[2] "{} sekund"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:76
 msgid "{} left"
@@ -310,9 +310,8 @@ msgid "Auto-generated"
 msgstr "Wygenerowano automatycznie"
 
 #: libparabolic/src/models/ytdlpmanager.cpp:140
-#, fuzzy
 msgid "Unable to download yt-dlp update"
-msgstr "Nie można pobrać i zainstalować aktualizacji"
+msgstr "Nie można pobrać aktualizacji yt-dlp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
@@ -429,12 +428,12 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:157
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:65
 msgid "Video Format"
-msgstr ""
+msgstr "Format wideo"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:161
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:66
 msgid "Audio Format"
-msgstr ""
+msgstr "Format audio"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:165
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
@@ -581,7 +580,7 @@ msgstr "Dane logowania"
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:17
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:24
 msgid "Use"
-msgstr ""
+msgstr "Użyj"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:51
 msgid "View Log"
@@ -990,9 +989,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:68
-#, fuzzy
 msgid "Preferred Audio Codec"
-msgstr "Preferowany kodek wideo"
+msgstr "Preferowany kodek audio"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:69
@@ -1136,9 +1134,8 @@ msgstr "Wyczyść ciasteczka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:265
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:112
-#, fuzzy
 msgid "aria2c"
-msgstr "aria2"
+msgstr "aria2c"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:266
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:114
@@ -1165,9 +1162,8 @@ msgstr "Minimalny rozmiar podziału (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:119
-#, fuzzy
 msgid "The minimum size of which to split a file (in MiB)"
-msgstr "Minimalny rozmiar pliku do podziału (w MiB)."
+msgstr "Minimalny rozmiar pliku do podziału (w MiB)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:319
@@ -1383,9 +1379,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:190
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:71
-#, fuzzy
 msgid "No Subtitles Available"
-msgstr "Dostępna nowa aktualizacja"
+msgstr "Brak dostępnych napisów"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:211
 msgid "{} items"
@@ -1402,7 +1397,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:89
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:205
 msgid "Both the username and password cannot be empty."
-msgstr ""
+msgstr "Nazwa użytkownika i hasło nie mogą być puste."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 msgid "Close"
@@ -1566,9 +1561,8 @@ msgid "Manage"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
-#, fuzzy
 msgid "Update completed successfully"
-msgstr "Wyczyść ukończone"
+msgstr "Pomyślnie ukończono aktualizację"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:364
 msgid "Download Again"
@@ -1788,7 +1782,7 @@ msgstr "Dodaj dane logowania"
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:184
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:381
 msgid "Save"
-msgstr ""
+msgstr "Zapisz"
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:235
 #, fuzzy
@@ -1797,7 +1791,7 @@ msgstr "Usunąć dane logowania?"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:102
 msgid "Preview"
-msgstr ""
+msgstr "Podgląd"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:103
 #, fuzzy
@@ -1810,9 +1804,8 @@ msgid "Settings"
 msgstr "Ustawienia"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:115
-#, fuzzy
 msgid "Start"
-msgstr "Ustawienia"
+msgstr "Start"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 msgid "Documentation"
@@ -1865,7 +1858,7 @@ msgstr "Dziennik zmian:"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:154
 msgid "Version {}"
-msgstr ""
+msgstr "Wersja {}"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:156
 msgid "Copy Debug Information"
@@ -1873,13 +1866,12 @@ msgstr "Skopiuj informacje do debugowania"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:346
 msgid "The installer will start once the download is complete"
-msgstr ""
+msgstr "Instalator uruchomi się po zakończeniu pobierania"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:347
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:380
-#, fuzzy
 msgid "Downloading {}%"
-msgstr "Pobierane"
+msgstr "Pobieranie {}%"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:670
 #, fuzzy
