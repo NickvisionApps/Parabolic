@@ -1,0 +1,47 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Target Name="GenerateTranslationsForBuild" AfterTargets="Build">
+		<Message Importance="high" Text="Generating translations..." />
+		<PropertyGroup>
+			<ShortName>application</ShortName>
+			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
+			<TemplateFile>$(RootDirectory)\resources\po\$(ShortName).pot</TemplateFile>
+		</PropertyGroup>
+		<ReadLinesFromFile File="$(RootDirectory)\resources\po\POTFILES">
+			<Output TaskParameter="Lines" ItemName="TranslationFilesList"/>
+		</ReadLinesFromFile>
+		<ReadLinesFromFile File="$(RootDirectory)\resources\po\LINGUAS">
+			<Output TaskParameter="Lines" ItemName="LanguagesList"/>
+		</ReadLinesFromFile>
+		<PropertyGroup>
+			<TranslationFiles>@(TranslationFilesList->'&quot;%(Identity)&quot;', ' ')</TranslationFiles>
+		</PropertyGroup>
+		<Exec WorkingDirectory="$(RootDirectory)" Command="xgettext --from-code=utf-8 --language=C# --force-po --output=&quot;$(TemplateFile)&quot; --keyword=_ --keyword=_n:1,2 --keyword=_p:1c,2 --keyword=_pn:1c,2,3 --keyword=C_:1c,2 --width=80 $(TranslationFiles)"/>
+		<Exec WorkingDirectory="$(RootDirectory)" Command="msgmerge --backup=off --update &quot;resources/po/%(LanguagesList.Identity).po&quot; &quot;$(TemplateFile)&quot;"/>
+		<MakeDir Directories="$(TargetDir)/%(LanguagesList.Identity)"/>
+		<Exec WorkingDirectory="$(RootDirectory)" Command="msgfmt &quot;resources/po/%(LanguagesList.Identity).po&quot; --output-file=&quot;$(TargetDir)/%(LanguagesList.Identity)/$(ShortName).mo&quot;"/>
+	</Target>
+
+	<Target Name="GenerateTranslationsForPublish" AfterTargets="Publish">
+		<Message Importance="high" Text="Generating translations..." />
+		<PropertyGroup>
+			<ShortName>application</ShortName>
+			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
+			<TemplateFile>$(RootDirectory)\resources\po\$(ShortName).pot</TemplateFile>
+		</PropertyGroup>
+		<ReadLinesFromFile File="$(RootDirectory)\resources\po\POTFILES">
+			<Output TaskParameter="Lines" ItemName="TranslationFilesList"/>
+		</ReadLinesFromFile>
+		<ReadLinesFromFile File="$(RootDirectory)\resources\po\LINGUAS">
+			<Output TaskParameter="Lines" ItemName="LanguagesList"/>
+		</ReadLinesFromFile>
+		<PropertyGroup>
+			<TranslationFiles>@(TranslationFilesList->'&quot;%(Identity)&quot;', ' ')</TranslationFiles>
+		</PropertyGroup>
+		<Exec WorkingDirectory="$(RootDirectory)" Command="xgettext --from-code=utf-8 --language=C# --force-po --output=&quot;$(TemplateFile)&quot; --keyword=_ --keyword=_n:1,2 --keyword=_p:1c,2 --keyword=_pn:1c,2,3 --keyword=C_:1c,2 --width=80 $(TranslationFiles)"/>
+		<Exec WorkingDirectory="$(RootDirectory)" Command="msgmerge --backup=off --update &quot;resources/po/%(LanguagesList.Identity).po&quot; &quot;$(TemplateFile)&quot;"/>
+		<MakeDir Directories="$(MSBuildProjectDirectory)/$(PublishDir)/%(LanguagesList.Identity)"/>
+		<Exec WorkingDirectory="$(RootDirectory)" Command="msgfmt &quot;resources/po/%(LanguagesList.Identity).po&quot; --output-file=&quot;$(MSBuildProjectDirectory)/$(PublishDir)/%(LanguagesList.Identity)/$(ShortName).mo&quot;"/>
+	</Target>
+
+</Project>
