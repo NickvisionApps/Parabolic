@@ -48,9 +48,9 @@ jobs:
         with:
           pkgs: boost-date-time libnick
           triplet: ${{ matrix.variant.triplet }}
-          revision: d1ff36c6520ee43f1a656c03cd6425c2974a449e
+          revision: 7dacf21ceb1525863ebd5051e5962ca026d2bfbf
           token: ${{ github.token }}
-          cache-key: ${{ matrix.variant.triplet }}-d1ff36c6520ee43f1a656c03cd6425c2974a449e
+          cache-key: ${{ matrix.variant.triplet }}-7dacf21ceb1525863ebd5051e5962ca026d2bfbf
       - name: "Build (Installer)"
         working-directory: ${{ github.workspace }}/build
         run: |
@@ -68,10 +68,10 @@ jobs:
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.${{ matrix.variant.arch }}.exe -OutFile vc_redist.exe
           Invoke-WebRequest https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-${{ matrix.variant.arch }}.exe -OutFile windowsappruntimeinstall.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.11.12/yt-dlp.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.12.08/yt-dlp.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/Elypha/aria2-mod/releases/download/aria2c-1.37.0-b4fd7cb-20251126/aria2c-windows-x86_64-wintls.zip -OutFile aria2.zip
           Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl.zip -OutFile ffmpeg.zip
-          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.5.6/deno-x86_64-pc-windows-msvc.zip -OutFile deno.zip
+          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.6.0/deno-x86_64-pc-windows-msvc.zip -OutFile deno.zip
           Expand-Archive -Force 'aria2.zip'
           Expand-Archive -Force 'ffmpeg.zip'
           Expand-Archive -Force 'deno.zip'
@@ -88,10 +88,10 @@ jobs:
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.${{ matrix.variant.arch }}.exe -OutFile vc_redist.exe
           Invoke-WebRequest https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-${{ matrix.variant.arch }}.exe -OutFile windowsappruntimeinstall.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.11.12/yt-dlp.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.12.08/yt-dlp.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/Elypha/aria2-mod/releases/download/aria2c-1.37.0-b4fd7cb-20251126/aria2c-windows-x86_64-wintls.zip -OutFile aria2.zip
           Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl.zip -OutFile ffmpeg.zip
-          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.5.6/deno-x86_64-pc-windows-msvc.zip -OutFile deno.zip
+          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.6.0/deno-x86_64-pc-windows-msvc.zip -OutFile deno.zip
           Expand-Archive -Force 'aria2.zip'
           Expand-Archive -Force 'ffmpeg.zip'
           Expand-Archive -Force 'deno.zip'
