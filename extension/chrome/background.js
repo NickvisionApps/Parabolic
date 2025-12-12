@@ -23,11 +23,42 @@ function openParabolicUrl(url) {
 
 // Creates the context menu item when the extension is installed
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    id: "openParabolicLink",
-    title: "Open link in Parabolic",
-    contexts: ["page", "link"] // Shows the menu on the page and on links
+  chrome.storage.sync.get(['showContextMenu'], (result) => {
+    const show = result && (typeof result.showContextMenu !== 'undefined' ? result.showContextMenu : true);
+    if (show) {
+      chrome.contextMenus.create({
+        id: "openParabolicLink",
+        title: "Open link in Parabolic",
+        contexts: ["page", "link"]
+      });
+    }
   });
+});
+
+// React to changes in the showContextMenu setting and add/remove menu dynamically
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area !== 'sync') return;
+  if (!changes.showContextMenu) return;
+  const newVal = changes.showContextMenu.newValue;
+  if (newVal) {
+    // ensure no duplicate: remove then create
+    chrome.contextMenus.remove('openParabolicLink', () => {
+      if (chrome.runtime.lastError) {
+        // ignore error when the menu did not exist
+      }
+      chrome.contextMenus.create({
+        id: "openParabolicLink",
+        title: "Open link in Parabolic",
+        contexts: ["page", "link"]
+      });
+    });
+  } else {
+    chrome.contextMenus.remove('openParabolicLink', () => {
+      if (chrome.runtime.lastError) {
+        // ignore error when the menu did not exist
+      }
+    });
+  }
 });
 
 // Listener for action (Extension icon) clicks

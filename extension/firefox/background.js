@@ -23,11 +23,72 @@ function openParabolicUrl(url) {
 
 // Creates the context menu item when the extension is installed
 browser.runtime.onInstalled.addListener(() => {
-  browser.contextMenus.create({
-    id: "openParabolicLink",
-    title: "Open link in Parabolic",
-    contexts: ["page", "link"] // Shows the menu on the page and on links
+  browser.storage.sync.get(['showContextMenu']).then((result) => {
+    const show = result && (typeof result.showContextMenu !== 'undefined' ? result.showContextMenu : true);
+    if (show) {
+      try {
+        browser.contextMenus.create({
+          id: "openParabolicLink",
+          title: "Open link in Parabolic",
+          contexts: ["page", "link"] // Shows the menu on the page and on links
+        });
+      } catch (e) {
+        // some browser builds may not return a promise; ignore synchronous throw
+      }
+    }
+  }).catch((error) => {
+    console.error('Storage error:', error);
+    // fallback: create menu by default
+    try {
+      browser.contextMenus.create({
+        id: "openParabolicLink",
+        title: "Open link in Parabolic",
+        contexts: ["page", "link"]
+      });
+    } catch (e) {
+      // ignore
+    }
   });
+});
+
+// React to changes in the showContextMenu setting and add/remove menu dynamically
+browser.storage.onChanged.addListener((changes, area) => {
+  if (area !== 'sync') return;
+  if (!changes.showContextMenu) return;
+  const newVal = changes.showContextMenu.newValue;
+  if (newVal) {
+    // remove may be synchronous or return a promise depending on platform
+    try {
+      const maybe = browser.contextMenus.remove('openParabolicLink');
+      Promise.resolve(maybe).catch(() => {}).then(() => {
+        try {
+          browser.contextMenus.create({
+            id: "openParabolicLink",
+            title: "Open link in Parabolic",
+            contexts: ["page", "link"]
+          });
+        } catch (e) {
+          // ignore
+        }
+      });
+    } catch (e) {
+      // if synchronous remove threw, still attempt to create
+      try {
+        browser.contextMenus.create({
+          id: "openParabolicLink",
+          title: "Open link in Parabolic",
+          contexts: ["page", "link"]
+        });
+      } catch (err) {}
+    }
+  } else {
+    try {
+      const maybe = browser.contextMenus.remove('openParabolicLink');
+      Promise.resolve(maybe).catch(() => {});
+    } catch (e) {
+      // ignore
+    }
+  }
 });
 
 // Listener for action (Extension icon) clicks
