@@ -15,7 +15,7 @@
       align-items: flex-start;
     }
     .container {
-      max-width: 300px;
+      max-width: 500px;
       padding: 10px;
       width: 100%;
       margin: 0;
@@ -122,6 +122,18 @@
   <h3>Parabolic Settings</h3>
   <hr>
   <div class="setting">
+    <label for="showContextMenu">Show "Open link in Parabolic" context menu
+    <div class="toggle">
+      <input type="checkbox" id="showContextMenu">
+      <span class="slider"></span>
+    </div>
+    </label>
+  </div>
+  <div class="description">
+    Display the "Open link in Parabolic" item in the right-click/context menu.
+  </div>
+  <hr>
+  <div class="setting">
     <label for="trimPlaylist">Trim playlist from URL
     <div class="toggle">
       <input type="checkbox" id="trimPlaylist">
@@ -133,7 +145,6 @@
     Remove playlist parameters (&amp;list=...) from YouTube URLs to download only the current video.
   </div>
 </div>
-  <script src="utils.js"></script>
   <script src="options.js"></script>
 </body>
 </html>
