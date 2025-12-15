@@ -21,50 +21,38 @@ function openParabolicUrl(url) {
   });
 }
 
-// Creates the context menu item when the extension is installed
+// Function to create the context menu item
+function createContextMenu() {
+  chrome.contextMenus.create({
+    id: "openParabolicLink",
+    title: "Open link in Parabolic",
+    contexts: ["link", "page"]
+  });
+}
+
+// Function to remove the context menu item
+function removeContextMenu() {
+  chrome.contextMenus.remove("openParabolicLink");
+}
+
+// Initialize context menu based on stored settings
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.get(['showContextMenu'], (result) => {
-    const show = result && (typeof result.showContextMenu !== 'undefined' ? result.showContextMenu : true);
-    if (show) {
-      chrome.contextMenus.create({
-        id: "openParabolicLink",
-        title: "Open link in Parabolic",
-        contexts: ["page", "link"]
-      });
+  chrome.storage.sync.get('showContextMenu', (result) => {
+    if (result.showContextMenu !== false) {
+      createContextMenu();
     }
   });
 });
 
-// React to changes in the showContextMenu setting and add/remove menu dynamically
-chrome.storage.onChanged.addListener((changes, area) => {
-  if (area !== 'sync') return;
-  if (!changes.showContextMenu) return;
-  const newVal = changes.showContextMenu.newValue;
-  if (newVal) {
-    // ensure no duplicate: remove then create
-    chrome.contextMenus.remove('openParabolicLink', () => {
-      if (chrome.runtime.lastError) {
-        // ignore error when the menu did not exist
-      }
-      chrome.contextMenus.create({
-        id: "openParabolicLink",
-        title: "Open link in Parabolic",
-        contexts: ["page", "link"]
-      });
-    });
-  } else {
-    chrome.contextMenus.remove('openParabolicLink', () => {
-      if (chrome.runtime.lastError) {
-        // ignore error when the menu did not exist
-      }
-    });
+// Listen for changes in storage to update the context menu
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (namespace === 'sync' && changes.showContextMenu) {
+    if (changes.showContextMenu.newValue) {
+      createContextMenu();
+    } else {
+      removeContextMenu();
+    }
   }
-});
-
-// Listener for action (Extension icon) clicks
-chrome.action.onClicked.addListener((tab) => {
-  // Use the current tab's URL for the action button
-  openParabolicUrl(tab.url);
 });
 
 // Listener for context menu: Open link in Parabolic clicks
@@ -77,7 +65,13 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
-// Listener for Keyboard shorcut command(Alt+P)
+// Listener for action (Extension icon) clicks
+chrome.action.onClicked.addListener((tab) => {
+  // Use the current tab's URL for the action button
+  openParabolicUrl(tab.url);
+});
+
+// Listener for Keyboard shorcut command(Alt+P, Alt+O)
 chrome.commands.onCommand.addListener((command) => {
   if (command === "open-parabolic-current-tab") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -85,5 +79,8 @@ chrome.commands.onCommand.addListener((command) => {
         openParabolicUrl(tabs[0].url);
       }
     });
+  };
+  if (command === "open-parabolic-options") {
+    chrome.runtime.openOptionsPage();
   }
 });
