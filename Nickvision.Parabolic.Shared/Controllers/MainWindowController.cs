@@ -16,7 +16,8 @@ public class MainWindowController : IDisposable
     private readonly string[] _args;
     private readonly HttpClient _httpClient;
     private readonly ServiceCollection _services;
-    private AppVersion _latestVersion;
+    private AppVersion _latestAppVersion;
+    private AppVersion _latestYtdlpVersion;
 
     public AppInfo AppInfo { get; init; }
 
@@ -25,10 +26,10 @@ public class MainWindowController : IDisposable
         _args = args;
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestVersion = new AppVersion("2025.12.0-next");
+        _latestAppVersion = new AppVersion("2025.12.0-next");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
-            Version = _latestVersion,
+            Version = _latestAppVersion,
             Changelog = "- Initial release",
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
@@ -39,7 +40,9 @@ public class MainWindowController : IDisposable
         var updaterService = _services.Add<IUpdaterService>(new GitHubUpdaterService(AppInfo, _httpClient));
         var translationService = _services.Add<ITranslationService>(new GettextTranslationService(AppInfo, jsonFileService!.Load<Configuration>(Configuration.Key).TranslationLanguage));
         var notificationService = _services.Add<INotificationService>(new NotificationService(AppInfo, translationService!._("Open")));
-        _services.Add<IDiscoveryService>(new DiscoveryService());
+        var ytdlpExecutableService = _services.Add<IYtdlpExecutableService>(new YtdlpExecutableService(jsonFileService, _httpClient));
+        _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService!));
+        _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         // Translate strings
         AppInfo.ShortName = translationService._("Parabolic");
         AppInfo.Description = translationService._("Download web video and audio.");
@@ -105,24 +108,42 @@ public class MainWindowController : IDisposable
         var notificationService = _services.Get<INotificationService>()!;
         var translationService = _services.Get<ITranslationService>()!;
         var updaterService = _services.Get<IUpdaterService>()!;
-        var stableVersion = await updaterService.GetLatestStableVersionAsync();
-        if (stableVersion is not null)
+        var ytdlpService = _services.Get<IYtdlpExecutableService>()!;
+        var stableAppVersion = await updaterService.GetLatestStableVersionAsync();
+        var stableYtdlpVersion = await ytdlpService.GetLatestStableVersionAsync();
+        if (stableAppVersion is not null)
         {
-            _latestVersion = stableVersion;
+            _latestAppVersion = stableAppVersion;
+        }
+        if (stableYtdlpVersion is not null)
+        {
+            _latestYtdlpVersion = stableYtdlpVersion;
         }
         if (config.AllowPreviewUpdates)
         {
-            var previewVersion = await updaterService.GetLatestPreviewVersionAsync();
-            if (previewVersion is not null && previewVersion > stableVersion)
+            var previewAppVersion = await updaterService.GetLatestPreviewVersionAsync();
+            var previewYtdlpVersion = await ytdlpService.GetLatestPreviewVersionAsync();
+            if (previewAppVersion is not null && previewAppVersion > stableAppVersion)
             {
-                _latestVersion = previewVersion;
+                _latestAppVersion = previewAppVersion;
+            }
+            if (previewYtdlpVersion is not null && previewYtdlpVersion > stableYtdlpVersion)
+            {
+                _latestYtdlpVersion = previewYtdlpVersion;
             }
         }
-        if (_latestVersion > AppInfo.Version!)
+        if (_latestAppVersion > AppInfo.Version!)
         {
-            notificationService.Send(new AppNotification(translationService._("New {0} update available: {1}", AppInfo.ShortName!, _latestVersion.ToString()), NotificationSeverity.Success)
+            notificationService.Send(new AppNotification(translationService._("New {0} update available: {1}", AppInfo.ShortName!, _latestAppVersion.ToString()), NotificationSeverity.Success)
             {
                 Action = "update"
+            });
+        }
+        else if (_latestYtdlpVersion > ytdlpService.BundledVersion && _latestYtdlpVersion > config.InstalledYtdlpVersion)
+        {
+            notificationService.Send(new AppNotification(translationService._("New yt-dlp update available: {0}", _latestYtdlpVersion.ToString()), NotificationSeverity.Success)
+            {
+                Action = "update-ytdlp"
             });
         }
         else if (showNotificationForNoUpdates)
@@ -131,12 +152,22 @@ public class MainWindowController : IDisposable
         }
     }
 
+    public async Task DownloadYtdlpUpdateAsync(IProgress<DownloadProgress> progress)
+    {
+        var ytdlpService = _services.Get<IYtdlpExecutableService>()!;
+        var res = await ytdlpService.DownloadUpdateAsync(_latestYtdlpVersion, progress);
+        if (!res)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(_services.Get<ITranslationService>()!._("Unable to download and install the yt-dlp update"), NotificationSeverity.Error));
+        }
+    }
+
     public string GetDebugInformation(string extraInformation = "") => Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
 
 #if OS_WINDOWS
     public async Task WindowsUpdateAsync(IProgress<DownloadProgress> progress)
     {
-        var res = await _services.Get<IUpdaterService>()!.WindowsUpdate(_latestVersion, progress);
+        var res = await _services.Get<IUpdaterService>()!.WindowsUpdate(_latestAppVersion, progress);
         if (!res)
         {
             _services.Get<INotificationService>()!.Send(new AppNotification(_services.Get<ITranslationService>()!._("Unable to download and install the update"), NotificationSeverity.Error));

@@ -1,0 +1,120 @@
+﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Filesystem;
+using Nickvision.Desktop.Network;
+using Nickvision.Desktop.System;
+using Nickvision.Parabolic.Shared.Models;
+using System;
+using System.IO;
+using System.Net.Http;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+#if OS_LINUX
+using System.Diagnostics;
+#endif
+
+namespace Nickvision.Parabolic.Shared.Services;
+
+public class YtdlpExecutableService : IYtdlpExecutableService
+{
+    private static readonly AppVersion _bundledVersion;
+    private static readonly string _assetName;
+
+    private readonly IJsonFileService _jsonFileService;
+    private readonly IUpdaterService _stableUpdaterService;
+    private readonly IUpdaterService _previewUpdaterService;
+
+    public AppVersion BundledVersion => _bundledVersion;
+
+    static YtdlpExecutableService()
+    {
+#if OS_LINUX
+        _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2025.12.08");
+#else
+        _bundledVersion = new AppVersion("2025.12.08");
+#endif
+#if OS_WINDOWS
+        _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_arm64.exe" : "yt-dlp.exe";
+#elif OS_LINUX
+        _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_linux_aarch64" : "yt-dlp_linux";
+#elif OS_MAC
+        _assetName = "yt-dlp_macos";
+#else
+        _assetName = "yt-dlp";
+#endif
+    }
+
+    public YtdlpExecutableService(IJsonFileService jsonFileService, HttpClient httpClient)
+    {
+        _jsonFileService = jsonFileService;
+        _stableUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp", httpClient);
+        _previewUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClient);
+    }
+
+    public string? ExecutablePath
+    {
+        get
+        {
+            var config = _jsonFileService.Load<Configuration>(Configuration.Key);
+            if (config.InstalledYtdlpVersion > _bundledVersion)
+            {
+                var local = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Local);
+                if (!string.IsNullOrEmpty(local) && File.Exists(local))
+                {
+                    return local;
+                }
+                else
+                {
+                    config.InstalledYtdlpVersion = new AppVersion("0.0.0");
+                    _jsonFileService.Save(config, Configuration.Key);
+                }
+            }
+            return Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Global);
+        }
+    }
+
+    public async Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null)
+    {
+#if OS_WINDOWS
+        var path = Path.Combine(UserDirectories.LocalData, "yt-dlp.exe");
+#else
+        var path = Path.Combine(UserDirectories.LocalData, "yt-dlp");
+#endif
+        var res = version.BaseVersion.Revision > 0 ? await _previewUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress) : await _stableUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
+        if (res)
+        {
+            var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
+            config.InstalledYtdlpVersion = version;
+            await _jsonFileService.SaveAsync(config, Configuration.Key);
+#if !OS_WINDOWS
+            using var process = new Process()
+            {
+                StartInfo = new ProcessStartInfo()
+                {
+                    FileName = "chmod",
+                    Arguments = $"+x \"{path}\"",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                }
+            };
+            process.Start();
+            await process.WaitForExitAsync();
+            return process.ExitCode == 0;
+#endif
+        }
+        return res;
+    }
+
+    public async Task<AppVersion?> GetLatestPreviewVersionAsync()
+    {
+        var _ = ExecutablePath;
+        return await _previewUpdaterService.GetLatestStableVersionAsync();
+    }
+
+    public async Task<AppVersion?> GetLatestStableVersionAsync()
+    {
+        var _ = ExecutablePath;
+        return await _stableUpdaterService.GetLatestStableVersionAsync();
+    }
+}

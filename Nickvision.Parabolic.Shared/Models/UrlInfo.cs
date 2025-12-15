@@ -1,4 +1,5 @@
 ﻿using Nickvision.Desktop.Globalization;
+using System;
 using System.Collections.Generic;
 using System.Text.Json;
 
@@ -6,14 +7,14 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class UrlInfo
 {
-    public string Url { get; }
+    public Uri Url { get; }
     public string Title { get; }
     public bool HasSuggestedSaveFolder { get; }
     public List<Media> Media { get; }
 
     public bool IsPlaylist => Media.Count > 1;
 
-    private UrlInfo(string url, string suggestedSaveFolder, string suggestedSaveFilename)
+    private UrlInfo(Uri url, string suggestedSaveFolder, string suggestedSaveFilename)
     {
         Url = url;
         Title = suggestedSaveFilename;
@@ -21,7 +22,7 @@ public class UrlInfo
         Media = new List<Media>();
     }
 
-    public UrlInfo(JsonElement ytdlp, ITranslationService translator, DownloaderOptions downloaderOptions, string url, string suggestedSaveFolder, string suggestedSaveFilename) : this(url, suggestedSaveFolder, suggestedSaveFilename)
+    public UrlInfo(JsonElement ytdlp, ITranslationService translator, DownloaderOptions downloaderOptions, Uri url, string suggestedSaveFolder, string suggestedSaveFilename) : this(url, suggestedSaveFolder, suggestedSaveFilename)
     {
         if (ytdlp.TryGetProperty("title", out var titleProperty))
         {
@@ -42,7 +43,7 @@ public class UrlInfo
         }
     }
 
-    public UrlInfo(string url, string title, List<UrlInfo> urlInfos) : this(url, string.Empty, title)
+    public UrlInfo(Uri url, string title, List<UrlInfo> urlInfos) : this(url, string.Empty, title)
     {
         Title = title;
         foreach (var urlInfo in urlInfos)
