@@ -13,7 +13,7 @@ function openParabolicUrl(url) {
     // Construct the final scheme URL
     let schemeUrl = `parabolic://${formattedUrl}`;
 
-    // Use the chrome.tabs API to open the URL scheme
+    // Use the browser.tabs API to open the URL scheme
     browser.tabs.update({ url: schemeUrl });
   });
 }
