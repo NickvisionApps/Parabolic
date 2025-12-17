@@ -42,7 +42,7 @@ public sealed class YtdlpExecutableServiceTests
 
     [TestMethod]
     public void Case003_ExecutablePathCheck() => File.Exists(_ytdlpExecutableService!.ExecutablePath);
-    
+
     [TestMethod]
     public async Task Case004_ExecutableVersionCheck()
     {
@@ -80,7 +80,7 @@ public sealed class YtdlpExecutableServiceTests
         var downloadedYtdlp = Path.Combine(UserDirectories.LocalData, "yt-dlp");
 #endif
         var preview = await _ytdlpExecutableService!.GetLatestPreviewVersionAsync();
-        if(File.Exists(downloadedYtdlp))
+        if (File.Exists(downloadedYtdlp))
         {
             File.Delete(downloadedYtdlp);
         }

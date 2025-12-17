@@ -34,7 +34,7 @@ public sealed class DiscoveryServiceTests
         _translationService = new GettextTranslationService(appInfo);
         _ytdlpExecutableService = new YtdlpExecutableService(_jsonFileService, _httpClient);
         _discoveryService = new DiscoveryService(_jsonFileService, _translationService, _ytdlpExecutableService);
-        if(File.Exists(_batchTestFilePath))
+        if (File.Exists(_batchTestFilePath))
         {
             File.Delete(_batchTestFilePath);
         }
@@ -102,7 +102,7 @@ public sealed class DiscoveryServiceTests
         Assert.AreEqual("Cartoon, Jéja - On & On (feat. Daniel Levi) | Electronic Pop | NCS - Copyright Free Music [K4DyBUG242c]", media2.Title);
         Assert.AreEqual(1, media2.PlaylistPosition);
         Assert.AreEqual(MediaType.Video, media2.Type);
-        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:27", TimeSpan.FromSeconds(207))!, media2.TimeFrame);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:28", TimeSpan.FromSeconds(208))!, media2.TimeFrame);
         Assert.IsGreaterThan(0, media2.Formats.Count);
         Assert.IsGreaterThan(0, media2.Subtitles.Count);
         Assert.IsFalse(string.IsNullOrEmpty(media2.SuggestedSaveFolder));

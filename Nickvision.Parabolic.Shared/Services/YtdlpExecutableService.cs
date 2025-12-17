@@ -4,10 +4,12 @@ using Nickvision.Desktop.Network;
 using Nickvision.Desktop.System;
 using Nickvision.Parabolic.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
@@ -104,32 +106,33 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         return res;
     }
 
-    public async Task<AppVersion?> GetExecutableVersionAsync()
+    public async Task<string> ExecuteAsync(IEnumerable<string> args, CancellationToken cancellationToken = default)
     {
         var executablePath = ExecutablePath;
         if (!File.Exists(executablePath))
         {
-            return null;
+            return string.Empty;
         }
         using var process = new Process()
         {
-            StartInfo = new ProcessStartInfo(executablePath, ["--version"])
+            StartInfo = new ProcessStartInfo(executablePath, args)
             {
                 RedirectStandardOutput = true,
-                RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
             }
         };
         process.Start();
-        var outputTask = process.StandardOutput.ReadToEndAsync();
-        await process.WaitForExitAsync();
+        var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
+        await process.WaitForExitAsync(cancellationToken);
         var output = await outputTask;
-        if (process.ExitCode != 0 || string.IsNullOrEmpty(output))
-        {
-            return null;
-        }
-        if(AppVersion.TryParse(output.Trim(), out var version))
+        return process.ExitCode == 0 ? output : string.Empty;
+    }
+
+    public async Task<AppVersion?> GetExecutableVersionAsync()
+    {
+        var result = await ExecuteAsync(["--version"]);
+        if (AppVersion.TryParse(result.Trim(), out var version))
         {
             return version;
         }
@@ -138,7 +141,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
 
     public async Task<AppVersion?> GetLatestPreviewVersionAsync()
     {
-        if(_latestPreviewVersion is null)
+        if (_latestPreviewVersion is null)
         {
             var _ = ExecutablePath;
             _latestPreviewVersion = await _previewUpdaterService.GetLatestStableVersionAsync();

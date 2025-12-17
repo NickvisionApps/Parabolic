@@ -4,11 +4,13 @@ using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+#if OS_LINUX
+using System.Diagnostics;
+#endif
 
 namespace Nickvision.Parabolic.Shared.Services;
 
@@ -76,7 +78,7 @@ public class DiscoveryService : IDiscoveryService
             "--paths",
             $"temp:{UserDirectories.Cache}"
         };
-        if(Directory.Exists(pluginsDir))
+        if (Directory.Exists(pluginsDir))
         {
             arguments.AddRange(["--plugin-dir", pluginsDir]);
         }
@@ -115,23 +117,8 @@ public class DiscoveryService : IDiscoveryService
         {
             arguments.AddRange(["--cookies", downloaderOptions.CookiesPath]);
         }
-        using var process = new Process()
-        {
-            StartInfo = new ProcessStartInfo(_ytdlpExecutableService.ExecutablePath ?? "yt-dlp", arguments)
-            {
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                CreateNewProcessGroup = true
-            }
-        };
-        cancellationToken.ThrowIfCancellationRequested();
-        process.Start();
-        var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
-        await process.WaitForExitAsync(cancellationToken);
-        var output = await outputTask;
-        if (process.ExitCode != 0 || string.IsNullOrEmpty(output))
+        var output = await _ytdlpExecutableService.ExecuteAsync(arguments, cancellationToken);
+        if (string.IsNullOrEmpty(output))
         {
             return null;
         }

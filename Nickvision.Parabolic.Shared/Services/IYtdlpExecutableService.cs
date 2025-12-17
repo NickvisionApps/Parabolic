@@ -2,6 +2,8 @@
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Network;
 using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
@@ -12,6 +14,7 @@ public interface IYtdlpExecutableService : IService
     string? ExecutablePath { get; }
 
     Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null);
+    Task<string> ExecuteAsync(IEnumerable<string> args, CancellationToken cancellationToken = default);
     Task<AppVersion?> GetExecutableVersionAsync();
     Task<AppVersion?> GetLatestPreviewVersionAsync();
     Task<AppVersion?> GetLatestStableVersionAsync();
