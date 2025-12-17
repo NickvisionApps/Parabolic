@@ -18,13 +18,20 @@ public sealed class YtdlpExecutableServiceTests
     [ClassInitialize]
     public static void ClassInitialize(TestContext context)
     {
-        var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
+        var appInfo = new AppInfo("org.nickvision.tubeconverter.ytdlp.tests", "Nickvision Parabolic Ytdlp Tests", "Parabolic Ytdlp Tests")
         {
             Version = new AppVersion("2025.12.0-next")
         };
         _httpClient = new HttpClient();
         _jsonFileService = new JsonFileService(appInfo);
         _ytdlpExecutableService = new YtdlpExecutableService(_jsonFileService, _httpClient);
+    }
+
+    [ClassCleanup]
+    public static void ClassCleanup()
+    {
+        _httpClient?.Dispose();
+        Directory.Delete(Path.Combine(UserDirectories.Config, "Nickvision Parabolic Ytdlp Tests"), true);
     }
 
     [TestMethod]
@@ -35,25 +42,13 @@ public sealed class YtdlpExecutableServiceTests
 
     [TestMethod]
     public void Case003_ExecutablePathCheck() => File.Exists(_ytdlpExecutableService!.ExecutablePath);
-
+    
     [TestMethod]
-    public async Task Case004_DownloadLatestPreviewVersion()
+    public async Task Case004_ExecutableVersionCheck()
     {
-#if OS_WINDOWS
-        var downloadedYtdlp = Path.Combine(UserDirectories.LocalData, "yt-dlp.exe");
-#else
-        var downloadedYtdlp = Path.Combine(UserDirectories.LocalData, "yt-dlp");
-#endif
-        var preview = await _ytdlpExecutableService!.GetLatestPreviewVersionAsync();
-        if(File.Exists(downloadedYtdlp))
-        {
-            File.Delete(downloadedYtdlp);
-        }
-        Assert.IsNotNull(preview);
-        Assert.IsGreaterThan(new AppVersion("2025.12.13"), preview);
-        Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(preview));
-        Assert.IsTrue(File.Exists(downloadedYtdlp));
-        File.Delete(downloadedYtdlp);
+        var version = await _ytdlpExecutableService!.GetExecutableVersionAsync();
+        Assert.IsNotNull(version);
+        Assert.IsGreaterThanOrEqualTo(_ytdlpExecutableService.BundledVersion, version);
     }
 
     [TestMethod]
@@ -72,6 +67,26 @@ public sealed class YtdlpExecutableServiceTests
         Assert.IsNotNull(stable);
         Assert.AreEqual(new AppVersion("2025.12.08"), stable);
         Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(stable));
+        Assert.IsTrue(File.Exists(downloadedYtdlp));
+        File.Delete(downloadedYtdlp);
+    }
+
+    [TestMethod]
+    public async Task Case006_DownloadLatestPreviewVersion()
+    {
+#if OS_WINDOWS
+        var downloadedYtdlp = Path.Combine(UserDirectories.LocalData, "yt-dlp.exe");
+#else
+        var downloadedYtdlp = Path.Combine(UserDirectories.LocalData, "yt-dlp");
+#endif
+        var preview = await _ytdlpExecutableService!.GetLatestPreviewVersionAsync();
+        if(File.Exists(downloadedYtdlp))
+        {
+            File.Delete(downloadedYtdlp);
+        }
+        Assert.IsNotNull(preview);
+        Assert.IsGreaterThan(new AppVersion("2025.12.13"), preview);
+        Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(preview));
         Assert.IsTrue(File.Exists(downloadedYtdlp));
         File.Delete(downloadedYtdlp);
     }

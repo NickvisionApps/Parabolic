@@ -9,6 +9,6 @@ namespace Nickvision.Parabolic.Shared.Services;
 
 public interface IDiscoveryService : IService
 {
-    Task<UrlInfo?> GetForBatchFileAsync(string path, Credential? credential, CancellationToken cancellationToken = default);
-    Task<UrlInfo?> GetForUrlAsync(Uri url, Credential? credential, CancellationToken cancellationToken = default);
+    Task<UrlInfo?> GetForBatchFileAsync(string path, Credential? credential = null, CancellationToken cancellationToken = default);
+    Task<UrlInfo?> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default);
 }

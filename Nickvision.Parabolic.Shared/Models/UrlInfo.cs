@@ -24,7 +24,7 @@ public class UrlInfo
 
     public UrlInfo(JsonElement ytdlp, ITranslationService translator, DownloaderOptions downloaderOptions, Uri url, string suggestedSaveFolder, string suggestedSaveFilename) : this(url, suggestedSaveFolder, suggestedSaveFilename)
     {
-        if (ytdlp.TryGetProperty("title", out var titleProperty))
+        if (ytdlp.TryGetProperty("title", out var titleProperty) && titleProperty.ValueKind != JsonValueKind.Null)
         {
             Title = titleProperty.GetString() ?? string.Empty;
         }
@@ -46,13 +46,16 @@ public class UrlInfo
     public UrlInfo(Uri url, string title, List<UrlInfo> urlInfos) : this(url, string.Empty, title)
     {
         Title = title;
+        var position = 0;
         foreach (var urlInfo in urlInfos)
         {
             HasSuggestedSaveFolder |= urlInfo.HasSuggestedSaveFolder;
             Media.EnsureCapacity(Media.Count + urlInfo.Media.Count);
             foreach (var media in urlInfo.Media)
             {
+                media.PlaylistPosition = position;
                 Media.Add(media);
+                position++;
             }
         }
     }

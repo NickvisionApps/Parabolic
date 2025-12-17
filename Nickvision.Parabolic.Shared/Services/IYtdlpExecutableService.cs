@@ -12,6 +12,7 @@ public interface IYtdlpExecutableService : IService
     string? ExecutablePath { get; }
 
     Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null);
+    Task<AppVersion?> GetExecutableVersionAsync();
     Task<AppVersion?> GetLatestPreviewVersionAsync();
     Task<AppVersion?> GetLatestStableVersionAsync();
 }

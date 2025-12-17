@@ -1,6 +1,7 @@
 ﻿using Nickvision.Desktop.Application;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -82,6 +83,7 @@ public class Configuration
         AriaMinSplitSize = 20;
     }
 
+    [JsonIgnore]
     public DownloaderOptions DownloaderOptions => new DownloaderOptions()
     {
         MaxNumberOfActiveDownloads = MaxNumberOfActiveDownloads,

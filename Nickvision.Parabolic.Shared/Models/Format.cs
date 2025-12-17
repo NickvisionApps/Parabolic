@@ -55,33 +55,33 @@ public class Format : IComparable<Format>, IEquatable<Format>
 
     public Format(JsonElement ytdlp, ITranslationService translator) : this(string.Empty, string.Empty, MediaType.Video)
     {
-        if (ytdlp.TryGetProperty("format_id", out var idProperty))
+        if (ytdlp.TryGetProperty("format_id", out var idProperty) && idProperty.ValueKind != JsonValueKind.Null)
         {
             Id = idProperty.GetString() ?? string.Empty;
         }
-        if (ytdlp.TryGetProperty("protocol", out var protocolProperty))
+        if (ytdlp.TryGetProperty("protocol", out var protocolProperty) && protocolProperty.ValueKind != JsonValueKind.Null)
         {
             Protocol = protocolProperty.GetString() ?? string.Empty;
         }
-        if (ytdlp.TryGetProperty("ext", out var extensionProperty))
+        if (ytdlp.TryGetProperty("ext", out var extensionProperty) && extensionProperty.ValueKind != JsonValueKind.Null)
         {
             Extension = extensionProperty.GetString() ?? string.Empty;
         }
-        if (ytdlp.TryGetProperty("filesize", out var filesizeProprty) && filesizeProprty.TryGetUInt64(out var bytes))
+        if (ytdlp.TryGetProperty("filesize", out var filesizeProprty) && filesizeProprty.ValueKind != JsonValueKind.Null && filesizeProprty.TryGetUInt64(out var bytes))
         {
             Bytes = bytes;
         }
-        if (ytdlp.TryGetProperty("tbr", out var bitrateProperty) && bitrateProperty.TryGetDouble(out var bitrate))
+        if (ytdlp.TryGetProperty("tbr", out var bitrateProperty) && bitrateProperty.ValueKind != JsonValueKind.Null && bitrateProperty.TryGetDouble(out var bitrate))
         {
             Bitrate = bitrate;
         }
         var note = string.Empty;
         var resolution = string.Empty;
-        if (ytdlp.TryGetProperty("format_note", out var noteProperty))
+        if (ytdlp.TryGetProperty("format_note", out var noteProperty) && noteProperty.ValueKind != JsonValueKind.Null)
         {
             note = noteProperty.GetString() ?? string.Empty;
         }
-        if (ytdlp.TryGetProperty("resolution", out var resolutionProprety))
+        if (ytdlp.TryGetProperty("resolution", out var resolutionProprety) && resolutionProprety.ValueKind != JsonValueKind.Null)
         {
             resolution = resolutionProprety.GetString() ?? string.Empty;
         }
@@ -89,7 +89,7 @@ public class Format : IComparable<Format>, IEquatable<Format>
         {
             Type = MediaType.Audio;
             var language = string.Empty;
-            if (ytdlp.TryGetProperty("language", out var languageProperty))
+            if (ytdlp.TryGetProperty("language", out var languageProperty) && languageProperty.ValueKind != JsonValueKind.Null)
             {
                 language = languageProperty.GetString() ?? string.Empty;
             }
@@ -101,7 +101,7 @@ public class Format : IComparable<Format>, IEquatable<Format>
                     HasAudioDescription = true;
                 }
             }
-            if (ytdlp.TryGetProperty("acodec", out var audioCodecProperty))
+            if (ytdlp.TryGetProperty("acodec", out var audioCodecProperty) && audioCodecProperty.ValueKind != JsonValueKind.Null)
             {
                 AudioCodec = (audioCodecProperty.GetString()?.ToLower() ?? string.Empty) switch
                 {
@@ -124,7 +124,7 @@ public class Format : IComparable<Format>, IEquatable<Format>
         else
         {
             Type = MediaType.Video;
-            if (ytdlp.TryGetProperty("vcodec", out var videoCodecProprety))
+            if (ytdlp.TryGetProperty("vcodec", out var videoCodecProprety) && videoCodecProprety.ValueKind != JsonValueKind.Null)
             {
                 VideoCodec = (videoCodecProprety.GetString()?.ToLower() ?? string.Empty) switch
                 {
@@ -136,7 +136,7 @@ public class Format : IComparable<Format>, IEquatable<Format>
                     _ => null
                 };
             }
-            if (ytdlp.TryGetProperty("acodec", out var audioCodecProperty))
+            if (ytdlp.TryGetProperty("acodec", out var audioCodecProperty) && audioCodecProperty.ValueKind != JsonValueKind.Null)
             {
                 AudioCodec = (audioCodecProperty.GetString()?.ToLower() ?? string.Empty) switch
                 {

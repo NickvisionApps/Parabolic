@@ -4,13 +4,11 @@ using Nickvision.Desktop.Network;
 using Nickvision.Desktop.System;
 using Nickvision.Parabolic.Shared.Models;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-#if OS_LINUX
-using System.Diagnostics;
-#endif
 
 namespace Nickvision.Parabolic.Shared.Services;
 
@@ -22,6 +20,8 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     private readonly IJsonFileService _jsonFileService;
     private readonly IUpdaterService _stableUpdaterService;
     private readonly IUpdaterService _previewUpdaterService;
+    private AppVersion? _latestPreviewVersion;
+    private AppVersion? _latestStableVersion;
 
     public AppVersion BundledVersion => _bundledVersion;
 
@@ -48,6 +48,8 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         _jsonFileService = jsonFileService;
         _stableUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp", httpClient);
         _previewUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClient);
+        _latestPreviewVersion = null;
+        _latestStableVersion = null;
     }
 
     public string? ExecutablePath
@@ -88,12 +90,8 @@ public class YtdlpExecutableService : IYtdlpExecutableService
 #if !OS_WINDOWS
             using var process = new Process()
             {
-                StartInfo = new ProcessStartInfo()
+                StartInfo = new ProcessStartInfo("chmod", [$"+x \"{path}\""])
                 {
-                    FileName = "chmod",
-                    Arguments = $"+x \"{path}\"",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true,
                 }
@@ -106,15 +104,55 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         return res;
     }
 
+    public async Task<AppVersion?> GetExecutableVersionAsync()
+    {
+        var executablePath = ExecutablePath;
+        if (!File.Exists(executablePath))
+        {
+            return null;
+        }
+        using var process = new Process()
+        {
+            StartInfo = new ProcessStartInfo(executablePath, ["--version"])
+            {
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            }
+        };
+        process.Start();
+        var outputTask = process.StandardOutput.ReadToEndAsync();
+        await process.WaitForExitAsync();
+        var output = await outputTask;
+        if (process.ExitCode != 0 || string.IsNullOrEmpty(output))
+        {
+            return null;
+        }
+        if(AppVersion.TryParse(output.Trim(), out var version))
+        {
+            return version;
+        }
+        return null;
+    }
+
     public async Task<AppVersion?> GetLatestPreviewVersionAsync()
     {
-        var _ = ExecutablePath;
-        return await _previewUpdaterService.GetLatestStableVersionAsync();
+        if(_latestPreviewVersion is null)
+        {
+            var _ = ExecutablePath;
+            _latestPreviewVersion = await _previewUpdaterService.GetLatestStableVersionAsync();
+        }
+        return _latestPreviewVersion;
     }
 
     public async Task<AppVersion?> GetLatestStableVersionAsync()
     {
-        var _ = ExecutablePath;
-        return await _stableUpdaterService.GetLatestStableVersionAsync();
+        if (_latestStableVersion is null)
+        {
+            var _ = ExecutablePath;
+            return await _stableUpdaterService.GetLatestStableVersionAsync();
+        }
+        return _latestStableVersion;
     }
 }

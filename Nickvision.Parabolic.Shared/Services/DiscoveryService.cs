@@ -32,7 +32,7 @@ public class DiscoveryService : IDiscoveryService
         _ytdlpExecutableService = ytdlpExecutableService;
     }
 
-    public async Task<UrlInfo?> GetForBatchFileAsync(string path, Credential? credential, CancellationToken cancellationToken = default)
+    public async Task<UrlInfo?> GetForBatchFileAsync(string path, Credential? credential = null, CancellationToken cancellationToken = default)
     {
         var entries = await ParseBatchFileAsync(path, cancellationToken);
         if (entries.Count == 0)
@@ -53,11 +53,12 @@ public class DiscoveryService : IDiscoveryService
         return new UrlInfo(new Uri($"file://{path}"), Path.GetFileNameWithoutExtension(path), entryInfos);
     }
 
-    public async Task<UrlInfo?> GetForUrlAsync(Uri url, Credential? credential, CancellationToken cancellationToken = default) => await GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
+    public async Task<UrlInfo?> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => await GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
 
     private async Task<UrlInfo?> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
     {
         var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
         var arguments = new List<string>
         {
             url.ToString(),
@@ -72,11 +73,13 @@ public class DiscoveryService : IDiscoveryService
             Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg",
             "--js-runtimes",
             $"deno:{Desktop.System.Environment.FindDependency("deno") ?? "deno"}",
-            "--plugin-dir",
-            Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins"),
             "--paths",
             $"temp:{UserDirectories.Cache}"
         };
+        if(Directory.Exists(pluginsDir))
+        {
+            arguments.AddRange(["--plugin-dir", pluginsDir]);
+        }
         if (url.ToString().Contains("soundcloud.com"))
         {
             arguments.Add("--flat-playlist");
@@ -119,13 +122,15 @@ public class DiscoveryService : IDiscoveryService
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
-                CreateNoWindow = true
+                CreateNoWindow = true,
+                CreateNewProcessGroup = true
             }
         };
         cancellationToken.ThrowIfCancellationRequested();
         process.Start();
+        var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
         await process.WaitForExitAsync(cancellationToken);
-        var output = await process.StandardOutput.ReadToEndAsync(cancellationToken);
+        var output = await outputTask;
         if (process.ExitCode != 0 || string.IsNullOrEmpty(output))
         {
             return null;
@@ -185,6 +190,10 @@ public class DiscoveryService : IDiscoveryService
             if (fields.Length >= 2)
             {
                 var saveFolder = fields[1].Trim().Trim('"').Trim();
+                if (saveFolder.StartsWith("~"))
+                {
+                    saveFolder = saveFolder.Replace("~", UserDirectories.Home);
+                }
                 if (Path.IsPathRooted(saveFolder))
                 {
                     entry.SuggestedSaveFolder = saveFolder;
