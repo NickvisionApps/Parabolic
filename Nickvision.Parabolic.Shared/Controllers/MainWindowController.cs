@@ -42,6 +42,7 @@ public class MainWindowController : IDisposable
         var notificationService = _services.Add<INotificationService>(new NotificationService(AppInfo, translationService!._("Open")));
         var ytdlpExecutableService = _services.Add<IYtdlpExecutableService>(new YtdlpExecutableService(jsonFileService, _httpClient));
         _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService!));
+        _services.Add<IHistoryService>(new HistoryService(AppInfo));
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         // Translate strings
         AppInfo.ShortName = translationService._("Parabolic");

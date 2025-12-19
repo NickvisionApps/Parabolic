@@ -19,11 +19,11 @@ public class TimeFrame : IEquatable<TimeFrame>
         {
             throw new ArgumentException("End time must be greater than or equal to start time.");
         }
-        if(Start.Milliseconds > 0)
+        if (Start.Milliseconds > 0)
         {
             Start = new TimeSpan(Start.Hours, Start.Minutes, Start.Seconds);
         }
-        if(End.Milliseconds > 0)
+        if (End.Milliseconds > 0)
         {
             End = new TimeSpan(End.Hours, End.Minutes, End.Seconds);
         }
