@@ -34,14 +34,14 @@ public class DiscoveryService : IDiscoveryService
         _ytdlpExecutableService = ytdlpExecutableService;
     }
 
-    public async Task<UrlInfo?> GetForBatchFileAsync(string path, Credential? credential = null, CancellationToken cancellationToken = default)
+    public async Task<DiscoveryResult?> GetForBatchFileAsync(string path, Credential? credential = null, CancellationToken cancellationToken = default)
     {
         var entries = await ParseBatchFileAsync(path, cancellationToken);
         if (entries.Count == 0)
         {
             return null;
         }
-        var entryInfos = new List<UrlInfo>();
+        var entryInfos = new List<DiscoveryResult>();
         foreach (var entry in entries)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -52,12 +52,12 @@ public class DiscoveryService : IDiscoveryService
             }
         }
         cancellationToken.ThrowIfCancellationRequested();
-        return new UrlInfo(new Uri($"file://{path}"), Path.GetFileNameWithoutExtension(path), entryInfos);
+        return new DiscoveryResult(new Uri($"file://{path}"), Path.GetFileNameWithoutExtension(path), entryInfos);
     }
 
-    public async Task<UrlInfo?> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => await GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
+    public async Task<DiscoveryResult?> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => await GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
 
-    private async Task<UrlInfo?> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
+    private async Task<DiscoveryResult?> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
     {
         var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
@@ -81,10 +81,6 @@ public class DiscoveryService : IDiscoveryService
         if (Directory.Exists(pluginsDir))
         {
             arguments.AddRange(["--plugin-dir", pluginsDir]);
-        }
-        if (url.ToString().Contains("soundcloud.com"))
-        {
-            arguments.Add("--flat-playlist");
         }
         if (downloaderOptions.LimitCharacters)
         {
@@ -128,7 +124,7 @@ public class DiscoveryService : IDiscoveryService
             using var json = JsonDocument.Parse(output);
             if (json.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
             {
-                var urlInfos = new List<UrlInfo>();
+                var urlInfos = new List<DiscoveryResult>();
                 foreach (var entry in entriesProperty.EnumerateArray())
                 {
                     cancellationToken.ThrowIfCancellationRequested();
@@ -143,10 +139,10 @@ public class DiscoveryService : IDiscoveryService
                 }
                 if (urlInfos.Count > 0 && json.RootElement.TryGetProperty("title", out var titleProperty))
                 {
-                    return new UrlInfo(url, titleProperty.GetString() ?? "Tab", urlInfos);
+                    return new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
                 }
             }
-            return new UrlInfo(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+            return new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
         }
         catch
         {

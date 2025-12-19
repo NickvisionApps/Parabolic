@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
-public class UrlInfo
+public class DiscoveryResult
 {
     public Uri Url { get; }
     public string Title { get; }
@@ -14,7 +14,7 @@ public class UrlInfo
 
     public bool IsPlaylist => Media.Count > 1;
 
-    private UrlInfo(Uri url, string suggestedSaveFolder, string suggestedSaveFilename)
+    private DiscoveryResult(Uri url, string suggestedSaveFolder, string suggestedSaveFilename)
     {
         Url = url;
         Title = suggestedSaveFilename;
@@ -22,7 +22,7 @@ public class UrlInfo
         Media = new List<Media>();
     }
 
-    public UrlInfo(JsonElement ytdlp, ITranslationService translator, DownloaderOptions downloaderOptions, Uri url, string suggestedSaveFolder, string suggestedSaveFilename) : this(url, suggestedSaveFolder, suggestedSaveFilename)
+    public DiscoveryResult(JsonElement ytdlp, ITranslationService translator, DownloaderOptions downloaderOptions, Uri url, string suggestedSaveFolder, string suggestedSaveFilename) : this(url, suggestedSaveFolder, suggestedSaveFilename)
     {
         if (ytdlp.TryGetProperty("title", out var titleProperty) && titleProperty.ValueKind != JsonValueKind.Null)
         {
@@ -43,7 +43,7 @@ public class UrlInfo
         }
     }
 
-    public UrlInfo(Uri url, string title, List<UrlInfo> urlInfos) : this(url, string.Empty, title)
+    public DiscoveryResult(Uri url, string title, List<DiscoveryResult> urlInfos) : this(url, string.Empty, title)
     {
         Title = title;
         var position = 0;

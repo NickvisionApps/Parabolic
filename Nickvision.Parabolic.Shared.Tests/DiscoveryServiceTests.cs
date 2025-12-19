@@ -57,17 +57,56 @@ public sealed class DiscoveryServiceTests
     public void Case001_InitalizeCheck() => Assert.IsNotNull(_discoveryService);
 
     [TestMethod]
-    public async Task Case002_YouTubeLostSky()
+    public async Task Case002_BatchFile()
+    {
+        var result = await _discoveryService!.GetForBatchFileAsync(_batchTestFilePath!);
+        Assert.IsNotNull(result);
+        Assert.AreEqual(new Uri($"file://{_batchTestFilePath}"), result.Url);
+        Assert.AreEqual(Path.GetFileNameWithoutExtension(_batchTestFilePath), result.Title);
+        Assert.IsTrue(result.HasSuggestedSaveFolder);
+        Assert.HasCount(3, result.Media);
+        Assert.IsTrue(result.IsPlaylist);
+        var media1 = result.Media[0];
+        Assert.AreEqual(new Uri("https://www.youtube.com/watch?v=83RUhxsfLWs"), media1.Url);
+        Assert.AreEqual("NEFFEX - Grateful [Copyright Free] No.54 [83RUhxsfLWs]", media1.Title);
+        Assert.AreEqual(0, media1.PlaylistPosition);
+        Assert.AreEqual(MediaType.Video, media1.Type);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:02", TimeSpan.FromSeconds(182))!, media1.TimeFrame);
+        Assert.IsGreaterThan(0, media1.Formats.Count);
+        Assert.IsGreaterThan(0, media1.Subtitles.Count);
+        Assert.IsTrue(string.IsNullOrEmpty(media1.SuggestedSaveFolder));
+        var media2 = result.Media[1];
+        Assert.AreEqual(new Uri("https://www.youtube.com/watch?v=K4DyBUG242c"), media2.Url);
+        Assert.AreEqual("Cartoon, Jéja - On & On (feat. Daniel Levi) | Electronic Pop | NCS - Copyright Free Music [K4DyBUG242c]", media2.Title);
+        Assert.AreEqual(1, media2.PlaylistPosition);
+        Assert.AreEqual(MediaType.Video, media2.Type);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:28", TimeSpan.FromSeconds(208))!, media2.TimeFrame);
+        Assert.IsGreaterThan(0, media2.Formats.Count);
+        Assert.IsGreaterThan(0, media2.Subtitles.Count);
+        Assert.IsFalse(string.IsNullOrEmpty(media2.SuggestedSaveFolder));
+        var media3 = result.Media[2];
+        Assert.AreEqual(new Uri("https://www.youtube.com/watch?v=TW9d8vYrVFQ"), media3.Url);
+        Assert.AreEqual("a [TW9d8vYrVFQ]", media3.Title);
+        Assert.AreEqual(2, media3.PlaylistPosition);
+        Assert.AreEqual(MediaType.Video, media3.Type);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:58", TimeSpan.FromSeconds(238))!, media3.TimeFrame);
+        Assert.IsGreaterThan(0, media3.Formats.Count);
+        Assert.IsGreaterThan(0, media3.Subtitles.Count);
+        Assert.IsFalse(string.IsNullOrEmpty(media3.SuggestedSaveFolder));
+    }
+
+    [TestMethod]
+    public async Task Case003_YouTube_LostSky()
     {
         var url = new Uri("https://www.youtube.com/watch?v=L7kF4MXXCoA");
-        var info = await _discoveryService!.GetForUrlAsync(url);
-        Assert.IsNotNull(info);
-        Assert.AreEqual(url, info.Url);
-        Assert.AreEqual("Lost Sky - Dreams pt. II (feat. Sara Skinner) | Trap | NCS - Copyright Free Music", info.Title);
-        Assert.IsFalse(info.HasSuggestedSaveFolder);
-        Assert.HasCount(1, info.Media);
-        Assert.IsFalse(info.IsPlaylist);
-        var media = info.Media[0];
+        var result = await _discoveryService!.GetForUrlAsync(url);
+        Assert.IsNotNull(result);
+        Assert.AreEqual(url, result.Url);
+        Assert.AreEqual("Lost Sky - Dreams pt. II (feat. Sara Skinner) | Trap | NCS - Copyright Free Music", result.Title);
+        Assert.IsFalse(result.HasSuggestedSaveFolder);
+        Assert.HasCount(1, result.Media);
+        Assert.IsFalse(result.IsPlaylist);
+        var media = result.Media[0];
         Assert.AreEqual(url, media.Url);
         Assert.AreEqual("Lost Sky - Dreams pt. II (feat. Sara Skinner) | Trap | NCS - Copyright Free Music [L7kF4MXXCoA]", media.Title);
         Assert.AreEqual(-1, media.PlaylistPosition);
@@ -79,41 +118,44 @@ public sealed class DiscoveryServiceTests
     }
 
     [TestMethod]
-    public async Task Case003_BatchFile()
+    public async Task Case004_YouTube_Playlist()
     {
-        var info = await _discoveryService!.GetForBatchFileAsync(_batchTestFilePath!);
-        Assert.IsNotNull(info);
-        Assert.AreEqual(new Uri($"file://{_batchTestFilePath}"), info.Url);
-        Assert.AreEqual(Path.GetFileNameWithoutExtension(_batchTestFilePath), info.Title);
-        Assert.IsTrue(info.HasSuggestedSaveFolder);
-        Assert.HasCount(3, info.Media);
-        Assert.IsTrue(info.IsPlaylist);
-        var media1 = info.Media[0];
-        Assert.AreEqual(new Uri("https://www.youtube.com/watch?v=83RUhxsfLWs"), media1.Url);
-        Assert.AreEqual("NEFFEX - Grateful [Copyright Free] No.54 [83RUhxsfLWs]", media1.Title);
-        Assert.AreEqual(0, media1.PlaylistPosition);
-        Assert.AreEqual(MediaType.Video, media1.Type);
-        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:02", TimeSpan.FromSeconds(182))!, media1.TimeFrame);
-        Assert.IsGreaterThan(0, media1.Formats.Count);
-        Assert.IsGreaterThan(0, media1.Subtitles.Count);
-        Assert.IsTrue(string.IsNullOrEmpty(media1.SuggestedSaveFolder));
-        var media2 = info.Media[1];
-        Assert.AreEqual(new Uri("https://www.youtube.com/watch?v=K4DyBUG242c"), media2.Url);
-        Assert.AreEqual("Cartoon, Jéja - On & On (feat. Daniel Levi) | Electronic Pop | NCS - Copyright Free Music [K4DyBUG242c]", media2.Title);
-        Assert.AreEqual(1, media2.PlaylistPosition);
-        Assert.AreEqual(MediaType.Video, media2.Type);
-        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:28", TimeSpan.FromSeconds(208))!, media2.TimeFrame);
-        Assert.IsGreaterThan(0, media2.Formats.Count);
-        Assert.IsGreaterThan(0, media2.Subtitles.Count);
-        Assert.IsFalse(string.IsNullOrEmpty(media2.SuggestedSaveFolder));
-        var media3 = info.Media[2];
-        Assert.AreEqual(new Uri("https://www.youtube.com/watch?v=TW9d8vYrVFQ"), media3.Url);
-        Assert.AreEqual("a [TW9d8vYrVFQ]", media3.Title);
-        Assert.AreEqual(2, media3.PlaylistPosition);
-        Assert.AreEqual(MediaType.Video, media3.Type);
-        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:03:58", TimeSpan.FromSeconds(238))!, media3.TimeFrame);
-        Assert.IsGreaterThan(0, media3.Formats.Count);
-        Assert.IsGreaterThan(0, media3.Subtitles.Count);
-        Assert.IsFalse(string.IsNullOrEmpty(media3.SuggestedSaveFolder));
+        var result = await _discoveryService!.GetForUrlAsync(new Uri("https://www.youtube.com/playlist?list=PLXJg25X-OulsVsnvZ7RVtSDW-id9_RzAO"));
+        Assert.IsNotNull(result);
+        Assert.AreEqual(new Uri("https://www.youtube.com/playlist?list=PLXJg25X-OulsVsnvZ7RVtSDW-id9_RzAO"), result.Url);
+        Assert.AreEqual("Top 10 Copyright Free Music Tracks 2025", result.Title);
+        Assert.IsFalse(result.HasSuggestedSaveFolder);
+        Assert.HasCount(17, result.Media);
+        Assert.IsTrue(result.IsPlaylist);
+        var media8 = result.Media[7];
+        Assert.AreEqual(new Uri("https://www.youtube.com/watch?v=DTUUOewYJkY"), media8.Url);
+        Assert.AreEqual("Happy Background Instrumental Royalty Free Music for Summer Videos, Commercials, Adverts, Kids [DTUUOewYJkY]", media8.Title);
+        Assert.AreEqual(7, media8.PlaylistPosition);
+        Assert.AreEqual(MediaType.Video, media8.Type);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:02:32", TimeSpan.FromSeconds(152))!, media8.TimeFrame);
+        Assert.IsGreaterThan(0, media8.Formats.Count);
+        Assert.HasCount(0, media8.Subtitles);
+        Assert.IsTrue(string.IsNullOrEmpty(media8.SuggestedSaveFolder));
+    }
+
+    [TestMethod]
+    public async Task Case005_SoundCloud_Control()
+    {
+        var result = await _discoveryService!.GetForUrlAsync(new Uri("https://soundcloud.com/neffexmusic/control-copyright-free"));
+        Assert.IsNotNull(result);
+        Assert.AreEqual(new Uri("https://soundcloud.com/neffexmusic/control-copyright-free"), result.Url);
+        Assert.AreEqual("Control [Copyright Free]", result.Title);
+        Assert.IsFalse(result.HasSuggestedSaveFolder);
+        Assert.HasCount(1, result.Media);
+        Assert.IsFalse(result.IsPlaylist);
+        var media = result.Media[0];
+        Assert.AreEqual(new Uri("https://soundcloud.com/neffexmusic/control-copyright-free"), media.Url);
+        Assert.AreEqual("Control [Copyright Free] [2175665586]", media.Title);
+        Assert.AreEqual(-1, media.PlaylistPosition);
+        Assert.AreEqual(MediaType.Audio, media.Type);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:04:11", TimeSpan.FromSeconds(251))!, media.TimeFrame);
+        Assert.IsGreaterThan(0, media.Formats.Count);
+        Assert.HasCount(0, media.Subtitles);
+        Assert.IsTrue(string.IsNullOrEmpty(media.SuggestedSaveFolder));
     }
 }
