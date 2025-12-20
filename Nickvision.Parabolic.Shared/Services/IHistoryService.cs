@@ -10,13 +10,11 @@ public interface IHistoryService : IService
 {
     HistoryLength Length { get; set; }
 
-    public Task<bool> AddAsync(HistoricDownload download);
-    public Task<bool> AddAsync(IEnumerable<HistoricDownload> downloads);
-    public Task<bool> ClearAsync();
-    public Task<IEnumerable<HistoricDownload>> GetAllAsync();
-    public Task<bool> RemoveAsync(HistoricDownload download);
-    public Task<bool> RemoveAsync(Uri uri);
-    public Task<bool> UpdateAsync(HistoricDownload download);
-
-
+    Task<bool> AddAsync(HistoricDownload download);
+    Task<bool> AddAsync(IEnumerable<HistoricDownload> downloads);
+    Task<bool> ClearAsync();
+    Task<IEnumerable<HistoricDownload>> GetAllAsync();
+    Task<bool> RemoveAsync(HistoricDownload download);
+    Task<bool> RemoveAsync(Uri uri);
+    Task<bool> UpdateAsync(HistoricDownload download);
 }
