@@ -61,12 +61,10 @@ public class DiscoveryService : IDiscoveryService
     {
         var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
-        var arguments = new List<string>
+        var arguments = new List<string>(23)
         {
             url.ToString(),
             "--ignore-config",
-            "--xff",
-            "default",
             "--dump-single-json",
             "--skip-download",
             "--ignore-errors",
@@ -80,7 +78,8 @@ public class DiscoveryService : IDiscoveryService
         };
         if (Directory.Exists(pluginsDir))
         {
-            arguments.AddRange(["--plugin-dir", pluginsDir]);
+            arguments.Add("--plugin-dir");
+            arguments.Add(pluginsDir);
         }
         if (downloaderOptions.LimitCharacters)
         {
@@ -88,15 +87,28 @@ public class DiscoveryService : IDiscoveryService
         }
         if (!string.IsNullOrEmpty(downloaderOptions.ProxyUrl))
         {
-            arguments.AddRange(["--proxy", downloaderOptions.ProxyUrl]);
+            arguments.Add("--proxy");
+            arguments.Add(downloaderOptions.ProxyUrl);
         }
         if (credential is not null)
         {
-            arguments.AddRange(["--username", credential.Username, "--password", credential.Password]);
+            if (!string.IsNullOrEmpty(credential.Username) && !string.IsNullOrEmpty(credential.Password))
+            {
+                arguments.Add("--username");
+                arguments.Add(credential.Username);
+                arguments.Add("--password");
+                arguments.Add(credential.Password);
+            }
+            else if (string.IsNullOrEmpty(credential.Password))
+            {
+                arguments.Add("--video-password");
+                arguments.Add(credential.Password);
+            }
         }
         if (downloaderOptions.CookiesBrowser != Browser.None)
         {
-            arguments.AddRange(["--cookies-from-browser", downloaderOptions.CookiesBrowser switch
+            arguments.Add("--cookies-from-browser");
+            arguments.Add(downloaderOptions.CookiesBrowser switch
             {
                 Browser.Brave => "brave",
                 Browser.Chrome => "chrome",
@@ -107,11 +119,12 @@ public class DiscoveryService : IDiscoveryService
                 Browser.Vivaldi => "vivaldi",
                 Browser.Whale => "whale",
                 _ => string.Empty
-            }]);
+            });
         }
         else if (File.Exists(downloaderOptions.CookiesPath))
         {
-            arguments.AddRange(["--cookies", downloaderOptions.CookiesPath]);
+            arguments.Add("--cookies");
+            arguments.Add(downloaderOptions.CookiesPath);
         }
         var output = await _ytdlpExecutableService.ExecuteAsync(arguments, cancellationToken);
         if (string.IsNullOrEmpty(output))

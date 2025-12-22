@@ -1,8 +1,10 @@
 ﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
+using Nickvision.Desktop.System;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -36,14 +38,17 @@ public class MainWindowController : IDisposable
             DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions")
         };
         // Register services
-        var jsonFileService = _services.Add<IJsonFileService>(new JsonFileService(AppInfo));
-        var updaterService = _services.Add<IUpdaterService>(new GitHubUpdaterService(AppInfo, _httpClient));
-        var translationService = _services.Add<ITranslationService>(new GettextTranslationService(AppInfo, jsonFileService!.Load<Configuration>(Configuration.Key).TranslationLanguage));
-        var notificationService = _services.Add<INotificationService>(new NotificationService(AppInfo, translationService!._("Open")));
-        var ytdlpExecutableService = _services.Add<IYtdlpExecutableService>(new YtdlpExecutableService(jsonFileService, _httpClient));
-        _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService!));
-        _services.Add<IRecoveryService>(new RecoveryService(AppInfo));
-        _services.Add<IHistoryService>(new HistoryService(AppInfo));
+        var jsonFileService = _services.Add<IJsonFileService>(new JsonFileService(AppInfo))!;
+        var updaterService = _services.Add<IUpdaterService>(new GitHubUpdaterService(AppInfo, _httpClient))!;
+        var translationService = _services.Add<ITranslationService>(new GettextTranslationService(AppInfo, jsonFileService.Load<Configuration>(Configuration.Key).TranslationLanguage))!;
+        var notificationService = _services.Add<INotificationService>(new NotificationService(AppInfo, translationService._("Open")))!;
+        var secretService = _services.Add<ISecretService>(new SystemSecretService())!;
+        var keyringService = _services.Add<IKeyringService>(new DatabaseKeyringService(AppInfo, secretService))!;
+        var ytdlpExecutableService = _services.Add<IYtdlpExecutableService>(new YtdlpExecutableService(jsonFileService, _httpClient))!;
+        var historyService = _services.Add<IHistoryService>(new HistoryService(AppInfo))!;
+        var recoveryService = _services.Add<IRecoveryService>(new RecoveryService(AppInfo))!;
+        _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService));
+        _services.Add<IDownloadService>(new DownloadService(jsonFileService, ytdlpExecutableService, historyService, recoveryService));
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         // Translate strings
         AppInfo.ShortName = translationService._("Parabolic");

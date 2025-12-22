@@ -10,8 +10,8 @@ public class DownloadOptions
     public Credential? Credential { get; set; }
     public MediaFileType FileType { get; set; }
     public int PlaylistPosition { get; set; }
-    public List<Format> VideoFormats { get; set; }
-    public List<Format> AudioFormats { get; set; }
+    public Format? VideoFormat { get; set; }
+    public Format? AudioFormat { get; set; }
     public string SaveFolder { get; set; }
     public string SaveFilename { get; set; }
     public List<SubtitleLanguage> SubtitleLanguages { get; set; }
@@ -26,8 +26,8 @@ public class DownloadOptions
         Credential = null;
         FileType = MediaFileType.MP4;
         PlaylistPosition = -1;
-        VideoFormats = new List<Format>();
-        AudioFormats = new List<Format>();
+        VideoFormat = null;
+        AudioFormat = null;
         SaveFolder = string.Empty;
         SaveFilename = string.Empty;
         SubtitleLanguages = new List<SubtitleLanguage>();
@@ -36,4 +36,8 @@ public class DownloadOptions
         PostProcessorArgument = null;
         TimeFrame = null;
     }
+
+    public override int GetHashCode() => HashCode.Combine(
+        HashCode.Combine(Url, Credential, FileType, PlaylistPosition, VideoFormat, AudioFormat, SaveFolder, SaveFilename),
+        SubtitleLanguages, SplitChapters, ExportDescription, PostProcessorArgument, TimeFrame);
 }
