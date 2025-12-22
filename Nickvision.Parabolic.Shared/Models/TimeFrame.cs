@@ -4,8 +4,8 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class TimeFrame : IEquatable<TimeFrame>
 {
-    public TimeSpan Start { get; init; }
-    public TimeSpan End { get; init; }
+    public TimeSpan Start { get; }
+    public TimeSpan End { get; }
 
     public string StartString => $"{Start:c}";
     public string EndString => $"{End:c}";

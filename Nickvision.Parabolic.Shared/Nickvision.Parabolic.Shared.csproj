@@ -6,12 +6,14 @@
 		<LangVersion>latest</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<Platforms>AnyCPU;ARM64;x64</Platforms>
 		<Version>2025.12.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Nickvision.Desktop" Version="2025.12.1" />
+		<PackageReference Include="System.Management" Version="10.0.1" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">

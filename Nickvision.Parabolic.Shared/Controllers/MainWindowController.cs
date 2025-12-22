@@ -21,7 +21,7 @@ public class MainWindowController : IDisposable
     private AppVersion _latestAppVersion;
     private AppVersion _latestYtdlpVersion;
 
-    public AppInfo AppInfo { get; init; }
+    public AppInfo AppInfo { get; }
 
     public MainWindowController(string[] args)
     {
@@ -48,7 +48,7 @@ public class MainWindowController : IDisposable
         var historyService = _services.Add<IHistoryService>(new HistoryService(AppInfo))!;
         var recoveryService = _services.Add<IRecoveryService>(new RecoveryService(AppInfo))!;
         _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService));
-        _services.Add<IDownloadService>(new DownloadService(jsonFileService, ytdlpExecutableService, historyService, recoveryService));
+        _services.Add<IDownloadService>(new DownloadService(jsonFileService, translationService, ytdlpExecutableService, historyService, recoveryService));
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         // Translate strings
         AppInfo.ShortName = translationService._("Parabolic");

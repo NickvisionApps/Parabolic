@@ -12,8 +12,8 @@ public class PreferencesViewController
     private IJsonFileService _jsonFileService;
     private Configuration _configuration;
 
-    public ITranslationService Translator { get; init; }
-    public List<string> AvailableTranslationLanguages { get; init; }
+    public ITranslationService Translator { get; }
+    public List<string> AvailableTranslationLanguages { get; }
 
     public PreferencesViewController(IJsonFileService jsonFileService, ITranslationService translationService)
     {

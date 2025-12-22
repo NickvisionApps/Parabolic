@@ -5,10 +5,10 @@ namespace Nickvision.Parabolic.Shared.Events;
 
 public class DownloadAddedEventArgs : EventArgs
 {
-    public int Id { get; init; }
-    public string Path { get; init; }
-    public Uri Url { get; init; }
-    public DownloadStatus Status { get; init; }
+    public int Id { get; }
+    public string Path { get; }
+    public Uri Url { get; }
+    public DownloadStatus Status { get; }
 
     public DownloadAddedEventArgs(int id, string path, Uri url, DownloadStatus status)
     {

@@ -11,6 +11,13 @@ public static class MediaFileTypeExtensions
 
     extension(MediaFileType type)
     {
+        public string DotExtension => type switch
+        {
+            MediaFileType.Audio => string.Empty,
+            MediaFileType.Video => string.Empty,
+            _ => $".{type.ToString().ToLower()}",
+        };
+
         public bool IsGeneric => type == MediaFileType.Audio || type == MediaFileType.Video;
 
         public bool IsAudio => type switch

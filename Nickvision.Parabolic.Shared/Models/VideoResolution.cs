@@ -7,8 +7,8 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
 {
     public static VideoResolution Best { get; }
 
-    public int Width { get; init; }
-    public int Height { get; init; }
+    public int Width { get; }
+    public int Height { get; }
 
     public bool IsValid => Width > 0 && Height > 0;
 

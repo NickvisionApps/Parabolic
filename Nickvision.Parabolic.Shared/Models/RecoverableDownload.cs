@@ -4,9 +4,9 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class RecoverableDownload
 {
-    public int Id { get; init; }
-    public DownloadOptions Options { get; init; }
-    public bool CredentialRequired { get; init; }
+    public int Id { get; }
+    public DownloadOptions Options { get; }
+    public bool CredentialRequired { get; }
 
     public RecoverableDownload(int id, DownloadOptions options)
     {

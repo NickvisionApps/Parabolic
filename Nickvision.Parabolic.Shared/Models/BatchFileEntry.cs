@@ -4,7 +4,7 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class BatchFileEntry
 {
-    public Uri Url { get; init; }
+    public Uri Url { get; }
     public string SuggestedSaveFolder { get; set; }
     public string SuggestedFilename { get; set; }
 
