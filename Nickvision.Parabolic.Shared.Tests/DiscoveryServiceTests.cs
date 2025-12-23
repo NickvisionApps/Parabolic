@@ -34,22 +34,16 @@ public sealed class DiscoveryServiceTests
         _translationService = new GettextTranslationService(appInfo);
         _ytdlpExecutableService = new YtdlpExecutableService(_jsonFileService, _httpClient);
         _discoveryService = new DiscoveryService(_jsonFileService, _translationService, _ytdlpExecutableService);
-        if (File.Exists(_batchTestFilePath))
-        {
-            File.Delete(_batchTestFilePath);
-        }
-        File.WriteAllText(_batchTestFilePath, """
-        https://www.youtube.com/watch?v=83RUhxsfLWs
-        https://www.youtube.com/watch?v=K4DyBUG242c | ~\Downloads\org.nickvision.tubeconverter.tests
-        https://www.youtube.com/watch?v=TW9d8vYrVFQ | ~\Downloads\org.nickvision.tubeconverter.tests | a
-        """);
     }
 
     [ClassCleanup]
     public static void ClassCleanup()
     {
         _httpClient?.Dispose();
-        File.Delete(_batchTestFilePath!);
+        if (File.Exists(_batchTestFilePath))
+        {
+            File.Delete(_batchTestFilePath);
+        }
         Directory.Delete(Path.Combine(UserDirectories.Config, "Nickvision Parabolic Discovery Tests"), true);
     }
 
@@ -57,8 +51,17 @@ public sealed class DiscoveryServiceTests
     public void Case001_InitalizeCheck() => Assert.IsNotNull(_discoveryService);
 
     [TestMethod]
-    public async Task Case002_BatchFile()
+    public async Task Case002_YouTube_BatchFile()
     {
+        if (File.Exists(_batchTestFilePath))
+        {
+            File.Delete(_batchTestFilePath);
+        }
+        File.WriteAllText(_batchTestFilePath!, """
+        https://www.youtube.com/watch?v=83RUhxsfLWs
+        https://www.youtube.com/watch?v=K4DyBUG242c | ~\Downloads\org.nickvision.tubeconverter.tests
+        https://www.youtube.com/watch?v=TW9d8vYrVFQ | ~\Downloads\org.nickvision.tubeconverter.tests | a
+        """);
         var result = await _discoveryService!.GetForBatchFileAsync(_batchTestFilePath!);
         Assert.IsNotNull(result);
         Assert.AreEqual(new Uri($"file://{_batchTestFilePath}"), result.Url);
@@ -93,6 +96,7 @@ public sealed class DiscoveryServiceTests
         Assert.IsGreaterThan(0, media3.Formats.Count);
         Assert.IsGreaterThan(0, media3.Subtitles.Count);
         Assert.IsFalse(string.IsNullOrEmpty(media3.SuggestedSaveFolder));
+        File.Delete(_batchTestFilePath!);
     }
 
     [TestMethod]
@@ -154,6 +158,27 @@ public sealed class DiscoveryServiceTests
         Assert.AreEqual(-1, media.PlaylistPosition);
         Assert.AreEqual(MediaType.Audio, media.Type);
         Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:04:11", TimeSpan.FromSeconds(251))!, media.TimeFrame);
+        Assert.IsGreaterThan(0, media.Formats.Count);
+        Assert.HasCount(0, media.Subtitles);
+        Assert.IsTrue(string.IsNullOrEmpty(media.SuggestedSaveFolder));
+    }
+
+    [TestMethod]
+    public async Task Case006_SoundCloud_Dominator()
+    {
+        var result = await _discoveryService!.GetForUrlAsync(new Uri("https://soundcloud.com/rlgrime/dominator"));
+        Assert.IsNotNull(result);
+        Assert.AreEqual(new Uri("https://soundcloud.com/rlgrime/dominator"), result.Url);
+        Assert.AreEqual("Dominator", result.Title);
+        Assert.IsFalse(result.HasSuggestedSaveFolder);
+        Assert.HasCount(1, result.Media);
+        Assert.IsFalse(result.IsPlaylist);
+        var media = result.Media[0];
+        Assert.AreEqual(new Uri("https://soundcloud.com/rlgrime/dominator"), media.Url);
+        Assert.AreEqual("Dominator [2189965763]", media.Title);
+        Assert.AreEqual(-1, media.PlaylistPosition);
+        Assert.AreEqual(MediaType.Audio, media.Type);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:02:53", TimeSpan.FromSeconds(173))!, media.TimeFrame);
         Assert.IsGreaterThan(0, media.Formats.Count);
         Assert.HasCount(0, media.Subtitles);
         Assert.IsTrue(string.IsNullOrEmpty(media.SuggestedSaveFolder));

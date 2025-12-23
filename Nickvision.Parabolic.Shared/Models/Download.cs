@@ -91,6 +91,7 @@ public partial class Download : IDisposable
         }
         _process = new Process()
         {
+            EnableRaisingEvents = true,
             StartInfo = new ProcessStartInfo(ytdlpExecutablePath, GetDownloadArguments(downloader))
             {
                 UseShellExecute = false,
@@ -102,8 +103,10 @@ public partial class Download : IDisposable
         Status = DownloadStatus.Running;
         _process.Exited += Process_Exited;
         _process.OutputDataReceived += Process_OutputDataReceived;
+        _process.ErrorDataReceived += Process_OutputDataReceived;
         _process.Start();
         _process.BeginOutputReadLine();
+        _process.BeginErrorReadLine();
         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, _translator?._("Starting download...") ?? "Starting download..."));
     }
 
@@ -165,7 +168,7 @@ public partial class Download : IDisposable
             "--output",
             $"chapter:%(section_number)03d - {Options.SaveFilename}.%(ext)s",
             "--print",
-            "filepath"
+            "after_move:filepath"
         };
         if (Directory.Exists(pluginsDir))
         {
@@ -477,7 +480,7 @@ public partial class Download : IDisposable
         }
         if (Options.PostProcessorArgument is not null)
         {
-            arguments.Add("-postprocessor-args");
+            arguments.Add("--postprocessor-args");
             if (Options.PostProcessorArgument.Executable == Executable.FFmpeg && Options.PostProcessorArgument.PostProcessor == PostProcessor.None)
             {
                 arguments.Add($"{Options.PostProcessorArgument.ToString()} -threads {downloader.PostprocessingThreads}");
@@ -489,7 +492,7 @@ public partial class Download : IDisposable
         }
         else
         {
-            arguments.Add("-postprocessor-args");
+            arguments.Add("--postprocessor-args");
             arguments.Add($"ffmpeg:-threads {downloader.PostprocessingThreads}");
         }
         if (Options.TimeFrame is not null)

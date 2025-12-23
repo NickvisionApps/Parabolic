@@ -15,7 +15,6 @@ public class DownloadService : IDownloadService
     private readonly IYtdlpExecutableService _ytdlpService;
     private readonly IHistoryService _historyService;
     private readonly IRecoveryService _recoveryService;
-    private readonly Dictionary<int, IEnumerable<string>> _downloadArgumentsCache;
 
     public event EventHandler<DownloadAddedEventArgs>? DownloadAdded;
 
@@ -26,7 +25,6 @@ public class DownloadService : IDownloadService
         _ytdlpService = ytdlpService;
         _historyService = historyService;
         _recoveryService = recoveryService;
-        _downloadArgumentsCache = new Dictionary<int, IEnumerable<string>>();
     }
 
     public async Task AddDownloadAsync(DownloadOptions options, bool excludeFromHistory)

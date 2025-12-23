@@ -15,7 +15,7 @@ public static class MediaFileTypeExtensions
         {
             MediaFileType.Audio => string.Empty,
             MediaFileType.Video => string.Empty,
-            _ => $".{type.ToString().ToLower()}",
+            _ => $".{type.ToString().ToLower()}"
         };
 
         public bool IsGeneric => type == MediaFileType.Audio || type == MediaFileType.Video;
@@ -29,7 +29,7 @@ public static class MediaFileTypeExtensions
             MediaFileType.FLAC => true,
             MediaFileType.WAV => true,
             MediaFileType.OGG => true,
-            _ => false,
+            _ => false
         };
 
         public bool IsVideo => type switch
@@ -40,7 +40,7 @@ public static class MediaFileTypeExtensions
             MediaFileType.MKV => true,
             MediaFileType.MOV => true,
             MediaFileType.AVI => true,
-            _ => false,
+            _ => false
         };
 
         public bool SupportsThumbnails => type switch
@@ -53,15 +53,15 @@ public static class MediaFileTypeExtensions
             MediaFileType.OPUS => true,
             MediaFileType.FLAC => true,
             MediaFileType.OGG => true,
-            _ => false,
+            _ => false
         };
 
         public bool ShouldRecode => type switch
         {
-            MediaFileType.WEBM => false,
-            MediaFileType.MOV => false,
-            MediaFileType.AVI => false,
-            _ => true,
+            MediaFileType.WEBM => true,
+            MediaFileType.MOV => true,
+            MediaFileType.AVI => true,
+            _ => false
         };
 
         public bool GetSupportsSubtitleFormat(SubtitleFormat format) => format switch
