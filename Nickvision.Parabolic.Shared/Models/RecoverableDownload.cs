@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using Nickvision.Parabolic.Shared.Helpers;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -11,7 +11,7 @@ public class RecoverableDownload
     public RecoverableDownload(int id, DownloadOptions options)
     {
         Id = id;
-        Options = JsonSerializer.Deserialize<DownloadOptions>(JsonSerializer.Serialize(options))!;
+        Options = options.DeepCopy();
         CredentialRequired = Options.Credential is not null;
         Options.Credential = null;
     }

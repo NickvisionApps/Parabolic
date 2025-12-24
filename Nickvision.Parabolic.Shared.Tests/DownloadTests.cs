@@ -46,7 +46,7 @@ public class DownloadTests
         {
             Directory.Delete(_downloadDirectory, true);
         }
-    } 
+    }
 
     [TestMethod]
     public async Task Case001_YouTube_LostSky_MP4()
@@ -380,7 +380,7 @@ public class DownloadTests
         var iterations = 0;
         while (!done)
         {
-            if(iterations == 3)
+            if (iterations == 5)
             {
                 download.Stop();
             }

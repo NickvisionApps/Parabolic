@@ -1,6 +1,7 @@
 ﻿using Nickvision.Desktop.Globalization;
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -152,6 +153,22 @@ public class Format : IComparable<Format>, IEquatable<Format>
             }
             VideoResolution = VideoResolution.Parse(resolution, translator);
         }
+    }
+
+    [JsonConstructor]
+    internal Format(string id, string protocol, string extension, ulong bytes, MediaType type, double? bitrate, string? audioLanguage, bool hasAudioDescription, VideoCodec? videoCodec, AudioCodec? audioCodec, VideoResolution? videoResolution)
+    {
+        Id = id;
+        Protocol = protocol;
+        Extension = extension;
+        Bytes = bytes;
+        Type = type;
+        Bitrate = bitrate;
+        AudioLanguage = audioLanguage;
+        HasAudioDescription = hasAudioDescription;
+        VideoCodec = videoCodec;
+        AudioCodec = audioCodec;
+        VideoResolution = videoResolution;
     }
 
     public int CompareTo(Format? other)

@@ -9,8 +9,25 @@ namespace Nickvision.Parabolic.Shared.Services;
 
 public interface IDownloadService : IService
 {
-    event EventHandler<DownloadAddedEventArgs> DownloadAdded;
+    event EventHandler<DownloadAddedEventArgs>? DownloadAdded;
+    event EventHandler<DownloadCompletedEventArgs>? DownloadCompleted;
+    event EventHandler<DownloadProgressChangedEventArgs>? DownloadProgressChanged;
+    event EventHandler<DownloadEventArgs>? DownloadRetired;
+    event EventHandler<DownloadEventArgs>? DownloadStartedFromQueue;
+    event EventHandler<DownloadEventArgs>? DownloadStopped;
 
-    Task AddDownloadAsync(DownloadOptions options, bool excludeFromHistory);
-    Task AddDownloadsAsync(IEnumerable<DownloadOptions> options, bool excludeFromHistory);
+    int DownloadingCount { get; }
+    int QueuedCount { get; }
+    int CompletedCount { get; }
+
+    Task AddAsync(DownloadOptions options, bool excludeFromHistory);
+    Task AddAsync(IEnumerable<DownloadOptions> options, bool excludeFromHistory);
+    IEnumerable<int> ClearCompleted();
+    IEnumerable<int> ClearQueued();
+    bool Pause(int id);
+    bool Resume(int id);
+    Task<bool> RetryAsync(int id);
+    Task RetryFailedAsync();
+    Task<bool> StopAsync(int id);
+    Task StopAllAsync();
 }

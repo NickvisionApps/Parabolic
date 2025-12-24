@@ -64,6 +64,10 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 
     public async Task<bool> AddAsync(HistoricDownload download)
     {
+        if (Length == HistoryLength.Never)
+        {
+            return true;
+        }
         download.DownloadedOn = DateTime.Now;
         using var command = _connection.CreateCommand();
         command.CommandText = "INSERT INTO history (url, title, path, downloadedOn) VALUES ($url, $title, $path, $downloadedOn) ON CONFLICT(url) DO UPDATE SET title = $title, path = $path, downloadedOn = $downloadedOn WHERE url = $url";
@@ -76,6 +80,10 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 
     public async Task<bool> AddAsync(IEnumerable<HistoricDownload> downloads)
     {
+        if (Length == HistoryLength.Never)
+        {
+            return true;
+        }
         using var transaction = await _connection.BeginTransactionAsync();
         foreach (var download in downloads)
         {

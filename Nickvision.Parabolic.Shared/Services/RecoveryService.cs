@@ -117,6 +117,24 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         return await command.ExecuteNonQueryAsync() > 0;
     }
 
+    public async Task<bool> RemoveAsync(IEnumerable<int> ids)
+    {
+        using var transaction = await _connection.BeginTransactionAsync();
+        foreach (var id in ids)
+        {
+            using var command = _connection.CreateCommand();
+            command.CommandText = "DELETE FROM recovery WHERE id = $id";
+            command.Parameters.AddWithValue("$id", id);
+            if (await command.ExecuteNonQueryAsync() <= 0)
+            {
+                await transaction.RollbackAsync();
+                return false;
+            }
+        }
+        await transaction.CommitAsync();
+        return true;
+    }
+
     protected virtual async ValueTask DisposeAsyncCore()
     {
         await _connection.CloseAsync().ConfigureAwait(false);

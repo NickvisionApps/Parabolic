@@ -24,7 +24,7 @@ public static partial class ProcessExtensions
         {
 #if OS_WINDOWS
             NtSuspendProcess(p.Handle);
-            if(entireProcessTree)
+            if (entireProcessTree)
             {
                 var searcher = new System.Management.ManagementObjectSearcher($"SELECT ProcessId FROM Win32_Process WHERE ParentProcessId={p.Id}");
                 foreach (var obj in searcher.Get())
@@ -50,7 +50,7 @@ public static partial class ProcessExtensions
         {
 #if OS_WINDOWS
             NtResumeProcess(p.Handle);
-            if(entireProcessTree)
+            if (entireProcessTree)
             {
                 var searcher = new System.Management.ManagementObjectSearcher($"SELECT ProcessId FROM Win32_Process WHERE ParentProcessId={p.Id}");
                 foreach (var obj in searcher.Get())

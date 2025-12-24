@@ -13,4 +13,5 @@ public interface IRecoveryService : IService
     public Task<IEnumerable<RecoverableDownload>> GetAllAsync();
     Task<bool> RemoveAsync(RecoverableDownload download);
     Task<bool> RemoveAsync(int id);
+    Task<bool> RemoveAsync(IEnumerable<int> ids);
 }

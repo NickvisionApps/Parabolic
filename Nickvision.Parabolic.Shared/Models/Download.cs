@@ -126,8 +126,19 @@ public partial class Download : IDisposable
         {
             return;
         }
-        _process?.Dispose();
-        _process = null;
+        if (_process is not null)
+        {
+            if (!_process.HasExited)
+            {
+                _process.Kill(true);
+                _process.WaitForExit();
+            }
+            _process.Exited -= Process_Exited;
+            _process.ErrorDataReceived -= Process_OutputDataReceived;
+            _process.OutputDataReceived -= Process_OutputDataReceived;
+            _process.Dispose();
+            _process = null;
+        }
     }
 
     private IEnumerable<string> GetDownloadArguments(DownloaderOptions downloader)
@@ -546,6 +557,14 @@ public partial class Download : IDisposable
         }
         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, Log));
         Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, true));
+        if (_process is not null)
+        {
+            _process.Exited -= Process_Exited;
+            _process.ErrorDataReceived -= Process_OutputDataReceived;
+            _process.OutputDataReceived -= Process_OutputDataReceived;
+            _process.Dispose();
+            _process = null;
+        }
     }
 
     private void Process_OutputDataReceived(object? sender, DataReceivedEventArgs e)
