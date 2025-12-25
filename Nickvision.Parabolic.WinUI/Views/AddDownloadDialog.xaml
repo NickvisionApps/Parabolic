@@ -1,0 +1,56 @@
+<ContentDialog
+    x:Class="Nickvision.Parabolic.WinUI.Views.AddDownloadDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
+    xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:community="using:CommunityToolkit.WinUI.Controls"
+    xmlns:converters="using:Nickvision.Desktop.WinUI.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
+
+    <ContentDialog.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </ContentDialog.Resources>
+
+	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+        <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <nickvision:ViewStack.Pages>
+                <StackPanel Orientation="Vertical" Spacing="12" Width="320">
+                    <TextBox x:Name="TxtUrl" TextChanged="TxtUrl_TextChanged"/>
+
+                    <Button x:Name="BtnSelectSaveFolder" HorizontalAlignment="Stretch" Click="BtnSelectSaveFolder_Click">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;" FontSize="18"/>
+
+                                <TextBlock x:Name="LblSelectBatchFile"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+
+                    <CheckBox x:Name="ChkUseAuthentication"/>
+
+                    <StackPanel Orientation="Vertical" Spacing="6" Visibility="{x:Bind ChkUseAuthentication.IsChecked, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <ComboBox x:Name="CmbCredential" HorizontalAlignment="Stretch" SelectionChanged="CmbCredential_SelectionChanged"/>
+
+                        <TextBox x:Name="TxtUsername" Visibility="Collapsed"/>
+
+                        <PasswordBox x:Name="TxtPassword" Visibility="Collapsed"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Spacing="24" Margin="0,24,0,0">
+                    <ProgressRing IsActive="True"/>
+
+                    <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" Foreground="Gray"/>
+                </StackPanel>
+
+                <StackPanel>
+                    
+                </StackPanel>
+            </nickvision:ViewStack.Pages>
+        </nickvision:ViewStack>
+    </ScrollViewer>
+</ContentDialog>

@@ -9,6 +9,7 @@ using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -141,6 +142,8 @@ public class MainWindowController : IDisposable
 
     public bool CanShutdown => _services.Get<IDownloadService>()!.RemainingCount == 0;
 
+    public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
+
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
 
     public Theme Theme => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).Theme;
@@ -231,7 +234,17 @@ public class MainWindowController : IDisposable
         }
     }
 
-    public string GetDebugInformation(string extraInformation = "") => Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
+    public async Task<string> GetDebugInformationAsync(string extraInformation = "")
+    {
+        var ytdlpVersion = await _services.Get<IYtdlpExecutableService>()!.GetExecutableVersionAsync();
+        var ffmpegVersion = await ExecuteAsync("ffmpeg", "-version");
+        var ariaVersion = await ExecuteAsync("aria2c", "--version");
+        extraInformation += string.IsNullOrEmpty(extraInformation) ? string.Empty : "\n";
+        extraInformation += $"yt-dlp: {(ytdlpVersion is not null ? ytdlpVersion.ToString() : "not found")}";
+        extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";
+        extraInformation += $"\naria2: {(!string.IsNullOrEmpty(ariaVersion) ? ariaVersion.Substring(ariaVersion.IndexOf("aria2 version") + 14, ariaVersion.IndexOf('\n') - 14) : "not found")}";
+        return Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
+    }
 
 #if OS_WINDOWS
     public async Task WindowsUpdateAsync(IProgress<DownloadProgress> progress)
@@ -252,5 +265,23 @@ public class MainWindowController : IDisposable
         }
         _services.Dispose();
         _httpClient.Dispose();
+    }
+
+    private async Task<string> ExecuteAsync(string executable, string arguments)
+    {
+        using var process = new Process()
+        {
+            StartInfo = new ProcessStartInfo(executable, arguments)
+            {
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            }
+        };
+        process.Start();
+        var outputTask = process.StandardOutput.ReadToEndAsync();
+        await process.WaitForExitAsync();
+        var output = await outputTask;
+        return process.ExitCode == 0 ? output : string.Empty;
     }
 }

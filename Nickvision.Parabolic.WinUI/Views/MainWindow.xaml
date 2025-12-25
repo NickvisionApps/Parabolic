@@ -34,6 +34,16 @@
 
             <MenuBar Grid.Column="0">
                 <MenuBarItem x:Name="MenuFile">
+                    <MenuFlyoutItem x:Name="MenuAddDownload" Click="AddDownload">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+                        </MenuFlyoutItem.Icon>
+
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+
                     <MenuFlyoutSeparator/>
 
                     <MenuFlyoutItem x:Name="MenuExit" Click="Exit">
@@ -125,6 +135,24 @@
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavItemDownloads" Tag="Downloads">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavItemHistory" Tag="History">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavItemKeyring" Tag="Keyring">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEA18;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>
@@ -144,15 +172,43 @@
                     <nickvision:ViewStack.Pages>
                         <nickvision:StatusPage x:Name="StatusHome" Image="/Assets/org.nickvision.tubeconverter.ico">
                             <nickvision:StatusPage.Child>
-                                <Button Style="{ThemeResource AccentButtonStyle}">
+                                <Button Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
                                     <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
 
-                                        <TextBlock x:Name="LblHomeOpenFolder"/>
+                                        <TextBlock x:Name="LblHomeAddDownload"/>
                                     </StackPanel>
                                 </Button>
                             </nickvision:StatusPage.Child>
                         </nickvision:StatusPage>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
+                                    <CommandBar.PrimaryCommands>
+                                        <AppBarButton x:Name="BtnDownloadsAddDownload" Click="AddDownload">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+                                    </CommandBar.PrimaryCommands>
+                                </CommandBar>
+                            </Grid>
+
+                            <MenuFlyoutSeparator Grid.Row="1"/>
+                        </Grid>
 
                         <Frame x:Name="FrameCustom"/>
                     </nickvision:ViewStack.Pages>

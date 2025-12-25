@@ -1,13 +1,13 @@
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Nickvision.Parabolic.Shared.Controllers;
-using Nickvision.Parabolic.Shared.Models;
-using Nickvision.Parabolic.WinUI.Controls;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
+using Nickvision.Parabolic.Shared.Controllers;
+using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.WinUI.Controls;
 using System;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
@@ -22,7 +22,8 @@ public sealed partial class MainWindow : Window
     private enum Pages
     {
         Home = 0,
-        Custom = 1
+        Downloads,
+        Custom
     }
 
     private readonly MainWindowController _controller;
@@ -77,6 +78,7 @@ public sealed partial class MainWindow : Window
         TitleBar.Title = _controller.AppInfo.ShortName;
         TitleBar.Subtitle = _controller.AppInfo.Version!.IsPreview ? _controller.Translator._("Preview") : string.Empty;
         MenuFile.Title = _controller.Translator._("File");
+        MenuAddDownload.Text = _controller.Translator._("Add Download");
         MenuExit.Text = _controller.Translator._("Exit");
         MenuEdit.Title = _controller.Translator._("Edit");
         MenuSettings.Text = _controller.Translator._("Settings");
@@ -87,10 +89,14 @@ public sealed partial class MainWindow : Window
         MenuDiscussions.Text = _controller.Translator._("Discussions");
         MenuAbout.Text = _controller.Translator._("About {0}", _controller.AppInfo.ShortName!);
         NavItemHome.Content = _controller.Translator._("Home");
+        NavItemDownloads.Content = _controller.Translator._("Downloads");
+        NavItemHistory.Content = _controller.Translator._("History");
+        NavItemKeyring.Content = _controller.Translator._("Keyring");
         NavItemSettings.Content = _controller.Translator._("Settings");
         StatusHome.Title = _controller.Translator._("Download Media");
-        StatusHome.Description = _controller.Translator._("Open a folder to get started");
-        LblHomeOpenFolder.Text = _controller.Translator._("Open Folder");
+        StatusHome.Description = _controller.Translator._("Add a video, audio, or playlist URL to start downloading");
+        LblHomeAddDownload.Text = _controller.Translator._("Add Download");
+        BtnDownloadsAddDownload.Label = _controller.Translator._("Add");
     }
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -128,6 +134,9 @@ public sealed partial class MainWindow : Window
             };
             ViewStack.SelectedIndex = tag switch
             {
+                "Downloads" => (int)Pages.Downloads,
+                "History" => (int)Pages.Custom,
+                "Keyring" => (int)Pages.Custom,
                 "Settings" => (int)Pages.Custom,
                 _ => (int)Pages.Home
             };
@@ -172,6 +181,16 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private async void AddDownload(object sender, RoutedEventArgs e)
+    {
+        var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, AppWindow.Id)
+        {
+            RequestedTheme = MainGrid.RequestedTheme,
+            XamlRoot = MainGrid.XamlRoot
+        };
+        await addDownloadDialog.ShowAsync();
+    }
+
     private void Exit(object sender, RoutedEventArgs e) => Close();
 
     private void Settings(object sender, RoutedEventArgs e) => NavItemSettings.IsSelected = true;
@@ -191,11 +210,23 @@ public sealed partial class MainWindow : Window
 
     private async void About(object sender, RoutedEventArgs e)
     {
-        var aboutDialog = new AboutDialog(_controller.AppInfo, _controller.GetDebugInformation(), _controller.Translator)
+        var progressDialog = new ContentDialog()
+        {
+            Title = _controller.Translator._("About {0}", _controller.AppInfo.ShortName!),
+            Content = new ProgressRing()
+            {
+                IsActive = true,
+            },
+            RequestedTheme = MainGrid.RequestedTheme,
+            XamlRoot = MainGrid.XamlRoot
+        };
+        DispatcherQueue.TryEnqueue(async () => await progressDialog.ShowAsync());
+        var aboutDialog = new AboutDialog(_controller.AppInfo, await _controller.GetDebugInformationAsync(), _controller.Translator)
         {
             RequestedTheme = MainGrid.RequestedTheme,
             XamlRoot = MainGrid.XamlRoot
         };
+        progressDialog.Hide();
         await aboutDialog.ShowAsync();
     }
 
