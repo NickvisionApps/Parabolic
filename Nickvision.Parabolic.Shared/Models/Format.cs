@@ -31,12 +31,12 @@ public class Format : IComparable<Format>, IEquatable<Format>
     static Format()
     {
         Separator = " | ";
-        BestVideo = new Format("BEST", "BEST", MediaType.Video);
-        BestAudio = new Format("BEST", "BEST", MediaType.Audio);
-        WorstVideo = new Format("WORST", "WORST", MediaType.Video);
-        WorstAudio = new Format("WORST", "WORST", MediaType.Audio);
-        NoneVideo = new Format("NONE", "NONE", MediaType.Video);
-        NoneAudio = new Format("NONE", "NONE", MediaType.Audio);
+        BestVideo = new Format("BEST_VIDEO", "BEST", MediaType.Video);
+        BestAudio = new Format("BEST_AUDIO", "BEST", MediaType.Audio);
+        WorstVideo = new Format("WORST_VIDEO", "WORST", MediaType.Video);
+        WorstAudio = new Format("WORST_AUDIO", "WORST", MediaType.Audio);
+        NoneVideo = new Format("NONE_VIDEO", "NONE", MediaType.Video);
+        NoneAudio = new Format("NONE_AUDIO", "NONE", MediaType.Audio);
     }
 
     private Format(string id, string protocol, MediaType type)
@@ -285,9 +285,12 @@ public class Format : IComparable<Format>, IEquatable<Format>
         }
         result += $" ({Id switch
         {
-            "BEST" => translator?._("Best") ?? "Best",
-            "WORST" => translator?._("Worst") ?? "Worst",
-            "NONE" => translator?._("None") ?? "None",
+            "BEST_VIDEO" => translator?._("Best") ?? "Best",
+            "BEST_AUDIO" => translator?._("Best") ?? "Best",
+            "WORST_VIDEO" => translator?._("Worst") ?? "Worst",
+            "WORST_AUDIO" => translator?._("Worst") ?? "Worst",
+            "NONE_VIDEO" => translator?._("None") ?? "None",
+            "NONE_AUDIO" => translator?._("None") ?? "None",
             _ => Id
         }})";
         if (result[1] == '|')

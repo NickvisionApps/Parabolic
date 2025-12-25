@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
+using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -48,10 +49,18 @@ public class RecoveryServiceTests
     [TestMethod]
     public async Task Case003_AddOne() => Assert.IsTrue(await _recoveryService!.AddAsync(new RecoverableDownload(1, new DownloadOptions(new Uri("https://example.com/video"))
     {
+        Credential = new Credential("Example", "abc", "123"),
         FileType = MediaFileType.MP4,
+        PlaylistPosition = 2,
+        VideoFormat = Format.WorstVideo,
+        AudioFormat = Format.WorstAudio,
         SaveFolder = "/home/user/Videos",
         SaveFilename = "example_video.mp4",
-        ExportDescription = true
+        SubtitleLanguages = [ new SubtitleLanguage("en", false), new SubtitleLanguage("es", true) ],
+        SplitChapters = false,
+        ExportDescription = true,
+        PostProcessorArgument = new PostProcessorArgument("Test", PostProcessor.None, Executable.FFmpeg, "-h 1"),
+        TimeFrame = TimeFrame.Parse("00:00:00", "00:01:00", TimeSpan.FromMinutes(1))
     })));
 
     [TestMethod]
@@ -62,11 +71,19 @@ public class RecoveryServiceTests
         var download = all.ElementAt(0);
         Assert.AreEqual(1, download.Id);
         Assert.AreEqual(new Uri("https://example.com/video"), download.Options.Url);
+        Assert.IsTrue(download.CredentialRequired);
+        Assert.IsNull(download.Options.Credential);
         Assert.AreEqual(MediaFileType.MP4, download.Options.FileType);
+        Assert.AreEqual(2, download.Options.PlaylistPosition);
+        Assert.AreEqual(Format.WorstVideo, download.Options.VideoFormat);
+        Assert.AreEqual(Format.WorstAudio, download.Options.AudioFormat);
         Assert.AreEqual("/home/user/Videos", download.Options.SaveFolder);
         Assert.AreEqual("example_video.mp4", download.Options.SaveFilename);
+        Assert.HasCount(2, download.Options.SubtitleLanguages);
+        Assert.IsFalse(download.Options.SplitChapters);
         Assert.IsTrue(download.Options.ExportDescription);
-        Assert.IsFalse(download.CredentialRequired);
+        Assert.AreEqual(new PostProcessorArgument("Test", PostProcessor.None, Executable.FFmpeg, "-h 1"), download.Options.PostProcessorArgument);
+        Assert.AreEqual(TimeFrame.Parse("00:00:00", "00:01:00", TimeSpan.FromMinutes(1)), download.Options.TimeFrame);
     }
 
     [TestMethod]
