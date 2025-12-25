@@ -139,7 +139,7 @@ public class MainWindowController : IDisposable
         remove => _services.Get<IDownloadService>()!.DownloadStopped -= value;
     }
 
-    public bool CanShutdown => _services.Get<IDownloadService>()!.RemainingCount > 0;
+    public bool CanShutdown => _services.Get<IDownloadService>()!.RemainingCount == 0;
 
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
 

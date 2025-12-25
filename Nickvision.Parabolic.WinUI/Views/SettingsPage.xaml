@@ -1,0 +1,61 @@
+<Page
+    x:Class="Nickvision.Parabolic.WinUI.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
+    xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:community="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="MainGrid" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="LblSettings" Grid.Row="0" Margin="24,24,0,0" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+
+        <SelectorBar Grid.Row="1" Margin="24,0,0,0" SelectionChanged="SelectorBar_SelectionChanged">
+            <SelectorBarItem x:Name="SelectorUI" IsSelected="True">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+        </SelectorBar>
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+            <nickvision:ViewStack x:Name="ViewStack" Margin="24,0,24,24">
+                <nickvision:ViewStack.Pages>
+                    <StackPanel Spacing="6">
+                        <community:SettingsCard x:Name="RowTheme">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE793;"/> 
+                            </community:SettingsCard.HeaderIcon>
+                            
+                            <ComboBox x:Name="CmbTheme" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowTranslationLanguage">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF2B7;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbTranslationLanguage" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowPreviewUpdates">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF1AD;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglPreviewUpdates" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+                    </StackPanel>
+                </nickvision:ViewStack.Pages>
+            </nickvision:ViewStack>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,169 @@
+<Window
+    x:Class="Nickvision.Parabolic.WinUI.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
+    xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop/>
+    </Window.SystemBackdrop>
+
+    <Grid x:Name="MainGrid" Loaded="Window_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TitleBar x:Name="TitleBar" Grid.Row="0" IsPaneToggleButtonVisible="True" PaneToggleRequested="TitleBar_PaneToggleRequested">
+            <TitleBar.LeftHeader>
+                <ImageIcon VerticalAlignment="Center" Margin="0,0,8,0" Height="18" Source="/Assets/org.nickvision.tubeconverter.ico"/>
+            </TitleBar.LeftHeader>
+        </TitleBar>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <MenuBar Grid.Column="0">
+                <MenuBarItem x:Name="MenuFile">
+                    <MenuFlyoutSeparator/>
+
+                    <MenuFlyoutItem x:Name="MenuExit" Click="Exit">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE711;"/>
+                        </MenuFlyoutItem.Icon>
+
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Menu" Key="F4"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </MenuBarItem>
+
+                <MenuBarItem x:Name="MenuEdit">
+                    <MenuFlyoutItem x:Name="MenuSettings" Click="Settings">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE713;"/>
+                        </MenuFlyoutItem.Icon>
+
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="Decimal"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </MenuBarItem>
+
+                <MenuBarItem x:Name="MenuHelp">
+                    <MenuFlyoutItem x:Name="MenuCheckForUpdates" Click="CheckForUpdates">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE895;"/>
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+
+                    <MenuFlyoutSeparator/>
+
+                    <MenuFlyoutItem x:Name="MenuGitHubRepo" Click="GitHubRepo">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE943;"/>
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+
+                    <MenuFlyoutItem x:Name="MenuReportABug" Click="ReportABug">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEBE8;"/>
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+
+                    <MenuFlyoutItem x:Name="MenuDiscussions" Click="Discussions">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE8BD;"/>
+                        </MenuFlyoutItem.Icon>
+                    </MenuFlyoutItem>
+
+                    <MenuFlyoutSeparator/>
+
+                    <MenuFlyoutItem x:Name="MenuAbout" Click="About">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE897;"/>
+                        </MenuFlyoutItem.Icon>
+
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="None" Key="F1"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+                </MenuBarItem>
+            </MenuBar>
+
+            <Button x:Name="BtnProgress" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,6,0" Visibility="Collapsed">
+                <Button.Content>
+                    <FontIcon x:Name="IconProgress" FontSize="18" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                </Button.Content>
+
+                <Button.Flyout>
+                    <Flyout x:Name="FlyoutProgress" Placement="Bottom">
+                        <nickvision:StatusPage x:Name="StsProgress" IsCompact="True">
+                            <nickvision:StatusPage.Child>
+                                <ProgressBar x:Name="BarProgress" Width="200"/>
+                            </nickvision:StatusPage.Child>
+                        </nickvision:StatusPage>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
+        </Grid>
+
+        <NavigationView x:Name="NavView" Grid.Row="2" PaneDisplayMode="LeftCompact" SelectionChanged="NavView_SelectionChanged"
+                        IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="False" IsSettingsVisible="False">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="NavItemHome" Tag="Home" IsSelected="True">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem x:Name="NavItemSettings" Tag="Settings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE713;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <nickvision:ViewStack x:Name="ViewStack" Grid.Row="0">
+                    <nickvision:ViewStack.Pages>
+                        <nickvision:StatusPage x:Name="StatusHome" Image="/Assets/org.nickvision.tubeconverter.ico">
+                            <nickvision:StatusPage.Child>
+                                <Button Style="{ThemeResource AccentButtonStyle}">
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
+
+                                        <TextBlock x:Name="LblHomeOpenFolder"/>
+                                    </StackPanel>
+                                </Button>
+                            </nickvision:StatusPage.Child>
+                        </nickvision:StatusPage>
+
+                        <Frame x:Name="FrameCustom"/>
+                    </nickvision:ViewStack.Pages>
+                </nickvision:ViewStack>
+
+                <InfoBar x:Name="InfoBar" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="24,0,24,0" IsOpen="False">
+                    <InfoBar.ActionButton>
+                        <Button x:Name="BtnInfoBar" HorizontalAlignment="Right" Visibility="Collapsed"/>
+                    </InfoBar.ActionButton>
+                </InfoBar>
+            </Grid>
+        </NavigationView>
+    </Grid>
+</Window>
