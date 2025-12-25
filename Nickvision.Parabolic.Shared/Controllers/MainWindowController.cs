@@ -142,7 +142,7 @@ public class MainWindowController : IDisposable
 
     public bool CanShutdown => _services.Get<IDownloadService>()!.RemainingCount == 0;
 
-    public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
+    public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<INotificationService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
 
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
 

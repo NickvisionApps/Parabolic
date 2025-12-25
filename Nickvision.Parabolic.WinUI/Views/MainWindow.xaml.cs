@@ -164,6 +164,33 @@ public sealed partial class MainWindow : Window
             _notificationClickHandler = WindowsUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
+        else if (args.Notification.Action == "error")
+        {
+            BtnInfoBar.Content = _controller.Translator._("Details");
+            _notificationClickHandler = async (s, e) =>
+            {
+                var errorDialog = new ContentDialog()
+                {
+                    Title = _controller.Translator._("Error"),
+                    Content = new ScrollViewer()
+                    {
+                        HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
+                        VerticalScrollBarVisibility = ScrollBarVisibility.Visible,
+                        Content = new TextBlock()
+                        {
+                            Text = args.Notification.ActionParam ?? string.Empty,
+                            TextWrapping = TextWrapping.Wrap
+                        }
+                    },
+                    CloseButtonText = _controller.Translator._("Close"),
+                    DefaultButton = ContentDialogButton.Close,
+                    RequestedTheme = MainGrid.RequestedTheme,
+                    XamlRoot = MainGrid.XamlRoot
+                };
+                await errorDialog.ShowAsync();
+            };
+            BtnInfoBar.Click += _notificationClickHandler;
+        }    
         BtnInfoBar.Visibility = _notificationClickHandler is not null ? Visibility.Visible : Visibility.Collapsed;
         InfoBar.IsOpen = true;
     }

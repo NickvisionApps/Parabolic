@@ -3,7 +3,7 @@
 	<Target Name="GenerateTranslationsForBuild" AfterTargets="Build">
 		<Message Importance="high" Text="Generating translations..." />
 		<PropertyGroup>
-			<ShortName>application</ShortName>
+			<ShortName>parabolic</ShortName>
 			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
 			<TemplateFile>$(RootDirectory)\resources\po\$(ShortName).pot</TemplateFile>
 		</PropertyGroup>
@@ -25,7 +25,7 @@
 	<Target Name="GenerateTranslationsForPublish" AfterTargets="Publish">
 		<Message Importance="high" Text="Generating translations..." />
 		<PropertyGroup>
-			<ShortName>application</ShortName>
+			<ShortName>parabolic</ShortName>
 			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
 			<TemplateFile>$(RootDirectory)\resources\po\$(ShortName).pot</TemplateFile>
 		</PropertyGroup>

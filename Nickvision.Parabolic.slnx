@@ -1,10 +1,21 @@
 <Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+  </Configurations>
   <Folder Name="/Solution Items/">
     <File Path="Nickvision.Common.targets" />
   </Folder>
-  <Project Path="Nickvision.Parabolic.Shared.Tests/Nickvision.Parabolic.Shared.Tests.csproj" />
-  <Project Path="Nickvision.Parabolic.Shared/Nickvision.Parabolic.Shared.csproj" />
+  <Project Path="Nickvision.Parabolic.Shared.Tests/Nickvision.Parabolic.Shared.Tests.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="Nickvision.Parabolic.Shared/Nickvision.Parabolic.Shared.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
   <Project Path="Nickvision.Parabolic.WinUI/Nickvision.Parabolic.WinUI.csproj">
-    <Platform Project="ARM64" />
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
   </Project>
 </Solution>

@@ -8,6 +8,7 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace Nickvision.Parabolic.WinUI.Views;
 
@@ -54,6 +55,11 @@ public sealed partial class AddDownloadDialog : ContentDialog
     public async new Task<ContentDialogResult> ShowAsync()
     {
         ViewStack.SelectedIndex = (int)Pages.Discover;
+        if (Uri.TryCreate(await Clipboard.GetContent().GetTextAsync(), UriKind.Absolute, out var uri))
+        {
+            TxtUrl.Text = uri.ToString();
+            IsPrimaryButtonEnabled = true;
+        }
         var result = await base.ShowAsync();
         if (result != ContentDialogResult.Primary)
         {
@@ -64,6 +70,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         PrimaryButtonText = null;
         CloseButtonText = null;
         SecondaryButtonText = _controller.Translator._("Cancel");
+        DefaultButton = ContentDialogButton.Secondary;
         ViewStack.SelectedIndex = (int)Pages.Loading;
         DispatcherQueue.TryEnqueue(async () =>
         {
@@ -81,19 +88,23 @@ public sealed partial class AddDownloadDialog : ContentDialog
             {
                 result = await _controller.DiscoverAsync(new Uri(TxtUrl.Text), (CmbCredential.SelectedItem as string)!, cancellationToken.Token);
             }
-            if (result is not null)
+            if (result is null)
             {
-                Title = _controller.Translator._("Add Download");
-                PrimaryButtonText = _controller.Translator._("Download");
-                CloseButtonText = _controller.Translator._("Cancel");
-                SecondaryButtonText = null;
-                DefaultButton = ContentDialogButton.Primary;
+                Hide();
+                return;
+            }
+            Title = _controller.Translator._("Add Download");
+            PrimaryButtonText = _controller.Translator._("Download");
+            CloseButtonText = _controller.Translator._("Cancel");
+            SecondaryButtonText = null;
+            DefaultButton = ContentDialogButton.Primary;
+            if (!result.IsPlaylist)
+            {
                 ViewStack.SelectedIndex = (int)Pages.Single;
-                // Load single
             }
             else
             {
-                // Show error
+                ViewStack.SelectedIndex = (int)Pages.Playlist;
             }
         });
         result = await base.ShowAsync();
