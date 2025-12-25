@@ -45,7 +45,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtPassword.Header = _controller.Translator._("Password");
         TxtPassword.PlaceholderText = _controller.Translator._("Enter password here");
         LblLoading.Text = _controller.Translator._("This may take some time...");
-        foreach(var name in _controller.CredentialNames)
+        foreach (var name in _controller.CredentialNames)
         {
             CmbCredential.Items.Add(name);
         }
@@ -75,7 +75,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         DispatcherQueue.TryEnqueue(async () =>
         {
             DiscoveryResult? result = null;
-            if(CmbCredential.SelectedIndex == 0)
+            if (CmbCredential.SelectedIndex == 0)
             {
                 Credential? credential = null;
                 if (!string.IsNullOrEmpty(TxtUsername.Text) && !string.IsNullOrEmpty(TxtPassword.Password))
@@ -108,11 +108,11 @@ public sealed partial class AddDownloadDialog : ContentDialog
             }
         });
         result = await base.ShowAsync();
-        if(result == ContentDialogResult.Primary)
+        if (result == ContentDialogResult.Primary)
         {
             // Download
         }
-        else if(result == ContentDialogResult.Secondary)
+        else if (result == ContentDialogResult.Secondary)
         {
             cancellationToken.Cancel();
         }
@@ -129,7 +129,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             FileTypeFilter = { ".txt" }
         };
         var file = await picker.PickSingleFileAsync();
-        if(file is not null)
+        if (file is not null)
         {
             TxtUrl.Text = new Uri($"file://{file.Path}").ToString();
         }

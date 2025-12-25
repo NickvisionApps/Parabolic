@@ -120,10 +120,10 @@ public class PreferencesViewController
         {
             var strings = new List<string>();
             strings.Add(Translator._("None"));
-            foreach(var value in Enum.GetValues(typeof(PostProcessor)))
+            foreach (var value in Enum.GetValues(typeof(PostProcessor)))
             {
                 var ppValue = (PostProcessor)value;
-                if(ppValue == PostProcessor.None)
+                if (ppValue == PostProcessor.None)
                 {
                     continue;
                 }

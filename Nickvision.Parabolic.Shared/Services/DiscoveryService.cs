@@ -4,6 +4,7 @@ using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -34,12 +35,12 @@ public class DiscoveryService : IDiscoveryService
         _ytdlpExecutableService = ytdlpExecutableService;
     }
 
-    public async Task<DiscoveryResult?> GetForBatchFileAsync(string path, Credential? credential = null, CancellationToken cancellationToken = default)
+    public async Task<DiscoveryResult> GetForBatchFileAsync(string path, Credential? credential = null, CancellationToken cancellationToken = default)
     {
         var entries = await ParseBatchFileAsync(path, cancellationToken);
         if (entries.Count == 0)
         {
-            return null;
+            throw new ArgumentException("The batch file is empty or is of invalid syntax.");
         }
         var entryInfos = new List<DiscoveryResult>();
         foreach (var entry in entries)
@@ -55,9 +56,9 @@ public class DiscoveryService : IDiscoveryService
         return new DiscoveryResult(new Uri($"file://{path}"), Path.GetFileNameWithoutExtension(path), entryInfos);
     }
 
-    public async Task<DiscoveryResult?> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => await GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
+    public async Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => await GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
 
-    private async Task<DiscoveryResult?> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
+    private async Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
     {
         var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
@@ -126,41 +127,49 @@ public class DiscoveryService : IDiscoveryService
             arguments.Add("--cookies");
             arguments.Add(downloaderOptions.CookiesPath);
         }
-        var output = await _ytdlpExecutableService.ExecuteAsync(arguments, cancellationToken);
-        if (string.IsNullOrEmpty(output))
+        using var process = new Process()
         {
-            return null;
+            StartInfo = new ProcessStartInfo(_ytdlpExecutableService.ExecutablePath ?? "yt-dlp", arguments)
+            {
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            }
+        };
+        process.Start();
+        var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
+        var errorTask = process.StandardError.ReadToEndAsync(cancellationToken);
+        await process.WaitForExitAsync(cancellationToken);
+        var output = await outputTask;
+        var error = await errorTask;
+        if (process.ExitCode != 0 || string.IsNullOrEmpty(output))
+        {
+            throw new Exception(error);
         }
         cancellationToken.ThrowIfCancellationRequested();
-        try
+        using var json = JsonDocument.Parse(output);
+        if (json.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
         {
-            using var json = JsonDocument.Parse(output);
-            if (json.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
+            var urlInfos = new List<DiscoveryResult>();
+            foreach (var entry in entriesProperty.EnumerateArray())
             {
-                var urlInfos = new List<DiscoveryResult>();
-                foreach (var entry in entriesProperty.EnumerateArray())
+                cancellationToken.ThrowIfCancellationRequested();
+                if (entry.TryGetProperty("ie_key", out var ieProperty) && (ieProperty.GetString() ?? string.Empty) == "YoutubeTab" && entry.TryGetProperty("url", out var urlProperty))
                 {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    if (entry.TryGetProperty("ie_key", out var ieProperty) && (ieProperty.GetString() ?? string.Empty) == "YoutubeTab" && entry.TryGetProperty("url", out var urlProperty))
+                    var urlInfo = await GetForUrlAsync(new Uri(urlProperty.GetString() ?? string.Empty), credential, suggestedSaveFolder, suggestedFilename, cancellationToken);
+                    if (urlInfo is not null)
                     {
-                        var urlInfo = await GetForUrlAsync(new Uri(urlProperty.GetString() ?? string.Empty), credential, suggestedSaveFolder, suggestedFilename, cancellationToken);
-                        if (urlInfo is not null)
-                        {
-                            urlInfos.Add(urlInfo);
-                        }
+                        urlInfos.Add(urlInfo);
                     }
                 }
-                if (urlInfos.Count > 0 && json.RootElement.TryGetProperty("title", out var titleProperty))
-                {
-                    return new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
-                }
             }
-            return new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+            if (urlInfos.Count > 0 && json.RootElement.TryGetProperty("title", out var titleProperty))
+            {
+                return new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
+            }
         }
-        catch
-        {
-            return null;
-        }
+        return new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
     }
 
     private async Task<List<BatchFileEntry>> ParseBatchFileAsync(string batchFilePath, CancellationToken cancellationToken = default)

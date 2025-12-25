@@ -190,7 +190,7 @@ public sealed partial class MainWindow : Window
                 await errorDialog.ShowAsync();
             };
             BtnInfoBar.Click += _notificationClickHandler;
-        }    
+        }
         BtnInfoBar.Visibility = _notificationClickHandler is not null ? Visibility.Visible : Visibility.Collapsed;
         InfoBar.IsOpen = true;
     }

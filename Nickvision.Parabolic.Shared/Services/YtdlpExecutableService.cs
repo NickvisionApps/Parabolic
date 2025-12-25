@@ -4,12 +4,10 @@ using Nickvision.Desktop.Network;
 using Nickvision.Desktop.System;
 using Nickvision.Parabolic.Shared.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
@@ -106,16 +104,11 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         return res;
     }
 
-    public async Task<string> ExecuteAsync(IEnumerable<string> args, CancellationToken cancellationToken = default)
+    public async Task<AppVersion?> GetExecutableVersionAsync()
     {
-        var executablePath = ExecutablePath;
-        if (!File.Exists(executablePath))
-        {
-            return string.Empty;
-        }
         using var process = new Process()
         {
-            StartInfo = new ProcessStartInfo(executablePath, args)
+            StartInfo = new ProcessStartInfo(ExecutablePath ?? string.Empty, "--version")
             {
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
@@ -123,16 +116,10 @@ public class YtdlpExecutableService : IYtdlpExecutableService
             }
         };
         process.Start();
-        var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
-        await process.WaitForExitAsync(cancellationToken);
+        var outputTask = process.StandardOutput.ReadToEndAsync();
+        await process.WaitForExitAsync();
         var output = await outputTask;
-        return process.ExitCode == 0 ? output : string.Empty;
-    }
-
-    public async Task<AppVersion?> GetExecutableVersionAsync()
-    {
-        var result = await ExecuteAsync(["--version"]);
-        if (AppVersion.TryParse(result.Trim(), out var version))
+        if (process.ExitCode == 0 && AppVersion.TryParse(output.Trim(), out var version))
         {
             return version;
         }

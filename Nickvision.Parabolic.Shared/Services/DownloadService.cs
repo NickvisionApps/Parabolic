@@ -279,7 +279,7 @@ public class DownloadService : IDisposable, IDownloadService
         _downloading.Remove(e.Id);
         await _recoveryService.RemoveAsync(e.Id);
         DownloadCompleted?.Invoke(this, e);
-        if(_queued.Count > 0 && _downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
+        if (_queued.Count > 0 && _downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
         {
             var firstDownload = _queued.First().Value;
             _downloading.Add(firstDownload.Id, firstDownload);

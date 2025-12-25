@@ -29,7 +29,7 @@ public class AddDownloadDialogController
     }
 
     public IEnumerable<string> CredentialNames
-    { 
+    {
         get
         {
             var names = new List<string>();
@@ -50,32 +50,13 @@ public class AddDownloadDialogController
     {
         try
         {
-            DiscoveryResult? result = null;
             if (url.ToString().StartsWith("file://"))
             {
-                result = await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(7), credential, cancellationToken);
-                if(result is null)
-                {
-                    _notificationService.Send(new AppNotification(Translator._("An error occured"), NotificationSeverity.Error)
-                    {
-                        Action = "error",
-                        ActionParam = Translator._("yt-dlp was unable to find media for the provided batch file. Please ensure that the URLs listed are valid and supported by yt-dlp. Proper credentials and/or cookies may be missing as well.")
-                    });
-                }
-                return result;
+                return await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(7), credential, cancellationToken);
             }
             else
             {
-                result = await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
-                if (result is null)
-                {
-                    _notificationService.Send(new AppNotification(Translator._("An error occured"), NotificationSeverity.Error)
-                    {
-                        Action = "error",
-                        ActionParam = Translator._("yt-dlp was unable to find media for the provided URL. Please ensure that the URL is valid and supported by yt-dlp. Proper credentials and/or cookies may be missing as well.")
-                    });
-                }
-                return result;
+                return await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
             }
         }
         catch (TaskCanceledException)
@@ -87,7 +68,7 @@ public class AddDownloadDialogController
             _notificationService.Send(new AppNotification(Translator._("An error occured"), NotificationSeverity.Error)
             {
                 Action = "error",
-                ActionParam = Translator._("Please provide the following information to the developers: {0}", e.Message)
+                ActionParam = e.Message
             });
             return null;
         }

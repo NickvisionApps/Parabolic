@@ -78,7 +78,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$title", download.Title);
         command.Parameters.AddWithValue("$path", download.Path);
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
-        if(await command.ExecuteNonQueryAsync() > 0)
+        if (await command.ExecuteNonQueryAsync() > 0)
         {
             Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Add));
             return true;
@@ -117,7 +117,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
     {
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history";
-        if(await command.ExecuteNonQueryAsync() >= 0)
+        if (await command.ExecuteNonQueryAsync() >= 0)
         {
             Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Clear));
             return true;
@@ -185,7 +185,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history WHERE url = $url";
         command.Parameters.AddWithValue("$url", download.Url.ToString());
-        if(await command.ExecuteNonQueryAsync() > 0)
+        if (await command.ExecuteNonQueryAsync() > 0)
         {
             Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Remove));
             return true;
@@ -215,7 +215,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$title", download.Title);
         command.Parameters.AddWithValue("$path", download.Path);
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
-        if(await command.ExecuteNonQueryAsync() > 0)
+        if (await command.ExecuteNonQueryAsync() > 0)
         {
             Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Update));
             return true;

@@ -18,7 +18,7 @@ public class M3UFile
         _pathType = pathType;
         Title = title;
         _content = "#EXTM3U\n";
-        if(!string.IsNullOrEmpty(Title))
+        if (!string.IsNullOrEmpty(Title))
         {
             _content += $"#PLAYLIST:{Title}\n";
         }
@@ -26,7 +26,7 @@ public class M3UFile
 
     public bool Add(DownloadOptions options)
     {
-        if(options.FileType.IsGeneric)
+        if (options.FileType.IsGeneric)
         {
             return false;
         }
@@ -42,7 +42,7 @@ public class M3UFile
     public bool Add(IEnumerable<DownloadOptions> options)
     {
         var success = true;
-        foreach(var option in options)
+        foreach (var option in options)
         {
             success &= Add(option);
         }
@@ -51,7 +51,7 @@ public class M3UFile
 
     public async Task WriteAsync(string path)
     {
-        if(Path.GetExtension(path).ToLower() != ".m3u")
+        if (Path.GetExtension(path).ToLower() != ".m3u")
         {
             path += ".m3u";
         }
