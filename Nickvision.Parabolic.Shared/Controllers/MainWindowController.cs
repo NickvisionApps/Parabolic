@@ -5,6 +5,7 @@ using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Desktop.System;
+using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -89,7 +90,56 @@ public class MainWindowController : IDisposable
         remove => _services.Get<IJsonFileService>()!.Saved -= value;
     }
 
-    public bool CanShutdown => true;
+    public event EventHandler<HistoryChangedEventArgs> HistoryChanged
+    {
+        add => _services.Get<IHistoryService>()!.Changed += value;
+
+        remove => _services.Get<IHistoryService>()!.Changed -= value;
+    }
+
+    public event EventHandler<DownloadAddedEventArgs> DownloadAdded
+    {
+        add => _services.Get<IDownloadService>()!.DownloadAdded += value;
+
+        remove => _services.Get<IDownloadService>()!.DownloadAdded -= value;
+    }
+
+    public event EventHandler<DownloadCompletedEventArgs> DownloadCompleted
+    {
+        add => _services.Get<IDownloadService>()!.DownloadCompleted += value;
+
+        remove => _services.Get<IDownloadService>()!.DownloadCompleted -= value;
+    }
+
+    public event EventHandler<DownloadProgressChangedEventArgs> DownloadProgressChanged
+    {
+        add => _services.Get<IDownloadService>()!.DownloadProgressChanged += value;
+
+        remove => _services.Get<IDownloadService>()!.DownloadProgressChanged -= value;
+    }
+
+    public event EventHandler<DownloadEventArgs> DownloadRetired
+    {
+        add => _services.Get<IDownloadService>()!.DownloadRetired += value;
+
+        remove => _services.Get<IDownloadService>()!.DownloadRetired -= value;
+    }
+
+    public event EventHandler<DownloadEventArgs> DownloadStartedFromQueue
+    {
+        add => _services.Get<IDownloadService>()!.DownloadStartedFromQueue += value;
+
+        remove => _services.Get<IDownloadService>()!.DownloadStartedFromQueue -= value;
+    }
+
+    public event EventHandler<DownloadEventArgs> DownloadStopped
+    {
+        add => _services.Get<IDownloadService>()!.DownloadStopped += value;
+
+        remove => _services.Get<IDownloadService>()!.DownloadStopped -= value;
+    }
+
+    public bool CanShutdown => _services.Get<IDownloadService>()!.RemainingCount > 0;
 
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
 
@@ -105,6 +155,18 @@ public class MainWindowController : IDisposable
         {
             var config = _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key);
             config.WindowGeometry = value;
+            _services.Get<IJsonFileService>()!.Save(config, Configuration.Key);
+        }
+    }
+
+    public bool ShowDislcaimerOnStartup
+    {
+        get => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).ShowDislcaimerOnStartup;
+
+        set
+        {
+            var config = _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key);
+            config.ShowDislcaimerOnStartup = value;
             _services.Get<IJsonFileService>()!.Save(config, Configuration.Key);
         }
     }

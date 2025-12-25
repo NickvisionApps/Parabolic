@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
+using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 {
     private readonly string _path;
     private SqliteConnection _connection;
+
+    public event EventHandler<HistoryChangedEventArgs>? Changed;
 
     public HistoryService(AppInfo appInfo)
     {
@@ -75,7 +78,12 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$title", download.Title);
         command.Parameters.AddWithValue("$path", download.Path);
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
-        return await command.ExecuteNonQueryAsync() > 0;
+        if(await command.ExecuteNonQueryAsync() > 0)
+        {
+            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Add));
+            return true;
+        }
+        return false;
     }
 
     public async Task<bool> AddAsync(IEnumerable<HistoricDownload> downloads)
@@ -101,6 +109,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
             }
         }
         await transaction.CommitAsync();
+        Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Add));
         return true;
     }
 
@@ -108,7 +117,12 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
     {
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history";
-        return await command.ExecuteNonQueryAsync() >= 0;
+        if(await command.ExecuteNonQueryAsync() >= 0)
+        {
+            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Clear));
+            return true;
+        }
+        return false;
     }
 
     public async ValueTask DisposeAsync()
@@ -171,7 +185,12 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history WHERE url = $url";
         command.Parameters.AddWithValue("$url", download.Url.ToString());
-        return await command.ExecuteNonQueryAsync() > 0;
+        if(await command.ExecuteNonQueryAsync() > 0)
+        {
+            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Remove));
+            return true;
+        }
+        return false;
     }
 
     public async Task<bool> RemoveAsync(Uri url)
@@ -179,7 +198,12 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history WHERE url = $url";
         command.Parameters.AddWithValue("$url", url.ToString());
-        return await command.ExecuteNonQueryAsync() > 0;
+        if (await command.ExecuteNonQueryAsync() > 0)
+        {
+            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Remove));
+            return true;
+        }
+        return false;
     }
 
     public async Task<bool> UpdateAsync(HistoricDownload download)
@@ -191,7 +215,12 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$title", download.Title);
         command.Parameters.AddWithValue("$path", download.Path);
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
-        return await command.ExecuteNonQueryAsync() > 0;
+        if(await command.ExecuteNonQueryAsync() > 0)
+        {
+            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Update));
+            return true;
+        }
+        return false;
     }
 
     protected virtual async ValueTask DisposeAsyncCore()

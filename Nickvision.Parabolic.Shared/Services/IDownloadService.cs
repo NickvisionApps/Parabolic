@@ -20,6 +20,8 @@ public interface IDownloadService : IService
     int QueuedCount { get; }
     int CompletedCount { get; }
 
+    int RemainingCount => DownloadingCount + QueuedCount;
+
     Task AddAsync(DownloadOptions options, bool excludeFromHistory);
     Task AddAsync(IEnumerable<DownloadOptions> options, bool excludeFromHistory);
     IEnumerable<int> ClearCompleted();
