@@ -8,12 +8,12 @@ public class DownloadOptions
 {
     public Uri Url { get; set; }
     public Credential? Credential { get; set; }
+    public string SaveFilename { get; set; }
+    public string SaveFolder { get; set; }
     public MediaFileType FileType { get; set; }
     public int PlaylistPosition { get; set; }
     public Format? VideoFormat { get; set; }
     public Format? AudioFormat { get; set; }
-    public string SaveFolder { get; set; }
-    public string SaveFilename { get; set; }
     public List<SubtitleLanguage> SubtitleLanguages { get; set; }
     public bool SplitChapters { get; set; }
     public bool ExportDescription { get; set; }
@@ -24,12 +24,12 @@ public class DownloadOptions
     {
         Url = url;
         Credential = null;
+        SaveFilename = string.Empty;
+        SaveFolder = string.Empty;
         FileType = MediaFileType.MP4;
         PlaylistPosition = -1;
         VideoFormat = null;
         AudioFormat = null;
-        SaveFolder = string.Empty;
-        SaveFilename = string.Empty;
         SubtitleLanguages = new List<SubtitleLanguage>();
         SplitChapters = false;
         ExportDescription = false;

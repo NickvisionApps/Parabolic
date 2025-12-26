@@ -17,10 +17,10 @@
 	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
         <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <nickvision:ViewStack.Pages>
-                <StackPanel Orientation="Vertical" Spacing="12" Width="320">
+                <StackPanel Orientation="Vertical" Spacing="12" Width="400">
                     <TextBox x:Name="TxtUrl" TextChanged="TxtUrl_TextChanged"/>
 
-                    <Button x:Name="BtnSelectSaveFolder" HorizontalAlignment="Stretch" Click="BtnSelectSaveFolder_Click">
+                    <Button x:Name="BtnSelectBatchFile" HorizontalAlignment="Stretch" Click="BtnSelectBatchFile_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal" Spacing="6">
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;" FontSize="18"/>
@@ -30,15 +30,19 @@
                         </Button.Content>
                     </Button>
 
-                    <CheckBox x:Name="ChkUseAuthentication"/>
+                    <ToggleSwitch x:Name="TglUseAuthentication"/>
 
-                    <StackPanel Orientation="Vertical" Spacing="6" Visibility="{x:Bind ChkUseAuthentication.IsChecked, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <StackPanel Orientation="Vertical" Spacing="6" Visibility="{x:Bind TglUseAuthentication.IsOn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
                         <ComboBox x:Name="CmbCredential" HorizontalAlignment="Stretch" SelectionChanged="CmbCredential_SelectionChanged"/>
 
                         <TextBox x:Name="TxtUsername" Visibility="Collapsed"/>
 
                         <PasswordBox x:Name="TxtPassword" Visibility="Collapsed"/>
                     </StackPanel>
+
+                    <ToggleSwitch x:Name="TglDownloadImmediately" Toggled="TglDownloadImmediately_Toggled"/>
+
+                    <TeachingTip x:Name="TeachDownloadImmediately" PreferredPlacement="Bottom" Target="{x:Bind TglDownloadImmediately}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Spacing="24" Margin="0,24,0,0">
@@ -47,9 +51,37 @@
                     <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" Foreground="Gray"/>
                 </StackPanel>
 
-                <StackPanel>
+                <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="TxtSingleSaveFilename" Grid.Row="0" Grid.Column="0"/>
+
+                    <Button x:Name="BtnSingleRevertFilename" Grid.Row="0" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleRevertFilename_Click">
+                        <Button.Content>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A7;" FontSize="18"/>
+                        </Button.Content>
+                    </Button>
+
+                    <TextBox x:Name="TxtSingleSaveFolder" Grid.Row="1" Grid.Column="0" IsReadOnly="True"/>
+
+                    <Button x:Name="BtnSingleSelectSaveFolder" Grid.Row="1" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleSelectSaveFolder_Click">
+                        <Button.Content>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B7;" FontSize="18"/>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+
+                <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
                     
-                </StackPanel>
+                </Grid>
             </nickvision:ViewStack.Pages>
         </nickvision:ViewStack>
     </ScrollViewer>

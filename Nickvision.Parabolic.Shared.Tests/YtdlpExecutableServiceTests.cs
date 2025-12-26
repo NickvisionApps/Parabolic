@@ -20,7 +20,7 @@ public sealed class YtdlpExecutableServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.ytdlp.tests", "Nickvision Parabolic Ytdlp Tests", "Parabolic Ytdlp Tests")
         {
-            Version = new AppVersion("2025.12.0-next")
+            Version = new AppVersion("2026.1.0-next")
         };
         _httpClient = new HttpClient();
         _jsonFileService = new JsonFileService(appInfo);

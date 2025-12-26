@@ -7,6 +7,9 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class DiscoveryResult
 {
+    private static int _nextId = 0;
+
+    public int Id { get; }
     public Uri Url { get; }
     public string Title { get; }
     public bool HasSuggestedSaveFolder { get; }
@@ -14,8 +17,14 @@ public class DiscoveryResult
 
     public bool IsPlaylist => Media.Count > 1;
 
+    static DiscoveryResult()
+    {
+        _nextId = 0;
+    }
+
     private DiscoveryResult(Uri url, string suggestedSaveFolder, string suggestedSaveFilename)
     {
+        Id = _nextId++;
         Url = url;
         Title = suggestedSaveFilename;
         HasSuggestedSaveFolder = !string.IsNullOrEmpty(suggestedSaveFolder);

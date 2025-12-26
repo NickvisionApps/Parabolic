@@ -22,7 +22,7 @@ public class HistoryServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.history.tests", "Nickvision Parabolic History Tests", "Parabolic History Tests")
         {
-            Version = new AppVersion("2025.12.0-next")
+            Version = new AppVersion("2026.1.0-next")
         };
         _historyDirectory = Path.Combine(UserDirectories.Config, "Nickvision Parabolic History Tests");
         if (Directory.Exists(_historyDirectory))

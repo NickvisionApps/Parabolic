@@ -30,7 +30,7 @@ public class MainWindowController : IDisposable
         _args = args;
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2025.12.0-next");
+        _latestAppVersion = new AppVersion("2026.1.0-next");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
@@ -142,9 +142,21 @@ public class MainWindowController : IDisposable
 
     public bool CanShutdown => _services.Get<IDownloadService>()!.RemainingCount == 0;
 
-    public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<INotificationService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
+    public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<INotificationService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
 
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
+
+    public bool ShowDisclaimerOnStartup
+    {
+        get => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).ShowDislcaimerOnStartup;
+
+        set
+        {
+            var config = _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key);
+            config.ShowDislcaimerOnStartup = value;
+            _services.Get<IJsonFileService>()!.Save(config, Configuration.Key);
+        }
+    }
 
     public Theme Theme => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).Theme;
 

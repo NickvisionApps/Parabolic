@@ -102,7 +102,42 @@ public sealed partial class MainWindow : Window
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
         MenuCheckForUpdates.IsEnabled = false;
-        await _controller.CheckForUpdatesAsync(false);
+        var updatesTask = _controller.CheckForUpdatesAsync(false);
+        if(_controller.ShowDislcaimerOnStartup)
+        {
+            var checkBox = new CheckBox()
+            {
+                Content = _controller.Translator._("Don't show this message again")
+            };
+            var disclaimerDialog = new ContentDialog()
+            {
+                Title = _controller.Translator._("Legal Copyright Disclaimer"),
+                Content = new StackPanel()
+                {
+                    Orientation = Orientation.Vertical,
+                    Spacing = 6,
+                    Children =
+                    {
+                        new TextBlock()
+                        {
+                            Text = _controller.Translator._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws."),
+                            TextWrapping = TextWrapping.WrapWholeWords
+                        },
+                        checkBox
+                    }
+                },
+                CloseButtonText = _controller.Translator._("I understand"),
+                DefaultButton = ContentDialogButton.Close,
+                RequestedTheme = MainGrid.RequestedTheme,
+                XamlRoot = MainGrid.XamlRoot
+            };
+            await disclaimerDialog.ShowAsync();
+            if (checkBox.IsChecked ?? false)
+            {
+                _controller.ShowDislcaimerOnStartup = false;
+            }
+        }
+        await updatesTask;
         MenuCheckForUpdates.IsEnabled = true;
     }
 

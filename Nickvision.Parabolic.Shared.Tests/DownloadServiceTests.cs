@@ -32,7 +32,7 @@ public class DownloadServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.downloads.tests", "Nickvision Parabolic Downloads Tests", "Parabolic Downloads Tests")
         {
-            Version = new AppVersion("2025.12.0-next")
+            Version = new AppVersion("2026.1.0-next")
         };
         _downloadDirectory = Path.Combine(UserDirectories.Cache, "Nickvision Parabolic Downloads Tests");
         _httpClient = new HttpClient();
@@ -78,11 +78,11 @@ public class DownloadServiceTests
         DownloadAddedEventArgs? args = null;
         var options = new DownloadOptions(new Uri("https://www.youtube.com/watch?v=L7kF4MXXCoA"))
         {
+            SaveFilename = "1",
+            SaveFolder = _downloadDirectory!,
             FileType = MediaFileType.MP4,
             VideoFormat = Format.BestVideo,
-            AudioFormat = Format.BestAudio,
-            SaveFolder = _downloadDirectory!,
-            SaveFilename = "1"
+            AudioFormat = Format.BestAudio
         };
         _downloadService!.DownloadAdded += (sender, e) => args = e;
         await _downloadService.AddAsync(options, false);
