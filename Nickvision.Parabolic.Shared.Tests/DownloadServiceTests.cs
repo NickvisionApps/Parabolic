@@ -101,7 +101,7 @@ public class DownloadServiceTests
     {
         await Task.Delay(1000);
         Assert.IsNotNull(_lastProgressChangedEventArgs);
-        Assert.IsFalse(string.IsNullOrEmpty(_lastProgressChangedEventArgs.Log));
+        Assert.IsFalse(_lastProgressChangedEventArgs.LogChunk.IsEmpty);
     }
 
     [TestMethod]

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -16,13 +17,14 @@ public partial class Download : IDisposable
     private static int _nextId;
 
     private ITranslationService? _translator;
+    private readonly StringBuilder _logBuilder;
     private Process? _process;
 
     public int Id { get; }
     public DownloadOptions Options { get; }
     public string FilePath { get; private set; }
     public DownloadStatus Status { get; private set; }
-    public string Log { get; private set; }
+    public string Log => _logBuilder.ToString();
 
     public event EventHandler<DownloadCompletedEventArgs>? Completed;
     public event EventHandler<DownloadProgressChangedEventArgs>? ProgressChanged;
@@ -37,12 +39,12 @@ public partial class Download : IDisposable
     public Download(DownloadOptions options, ITranslationService? translator)
     {
         _translator = translator;
+        _logBuilder = new StringBuilder();
         _process = null;
         Id = _nextId++;
         Options = options;
         FilePath = Path.Combine(Options.SaveFolder, $"{Options.SaveFilename}{Options.FileType.DotExtension}");
         Status = DownloadStatus.Queued;
-        Log = string.Empty;
     }
 
     ~Download()
@@ -84,9 +86,11 @@ public partial class Download : IDisposable
         }
         if (File.Exists(FilePath) && !downloader.OverwriteExistingFiles)
         {
+            var log = _translator?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
+            _logBuilder.AppendLine(log);
             Status = DownloadStatus.Error;
-            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, _translator?._("ERROR: The file already exists and overwriting is disabled.") ?? "ERROR: The file already exists and overwriting is disabled."));
-            Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, false));
+            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, log.AsMemory()));
+            Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, log.AsMemory(), false));
             return;
         }
         _process = new Process()
@@ -107,7 +111,7 @@ public partial class Download : IDisposable
         _process.Start();
         _process.BeginOutputReadLine();
         _process.BeginErrorReadLine();
-        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, _translator?._("Starting download...") ?? "Starting download..."));
+        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translator?._("Starting download...") ?? "Starting download...").AsMemory()));
     }
 
     public void Stop()
@@ -555,8 +559,8 @@ public partial class Download : IDisposable
             }
             catch { }
         }
-        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, Log));
-        Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, true));
+        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty));
+        Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, Log.AsMemory(), true));
         if (_process is not null)
         {
             _process.Exited -= Process_Exited;
@@ -573,7 +577,7 @@ public partial class Download : IDisposable
         {
             return;
         }
-        Log += $"{e.Data}\n";
+        _logBuilder.AppendLine(e.Data);
         if ((!e.Data.Contains("PROGRESS;") && !e.Data.Contains("[#")) || e.Data.Contains("[debug"))
         {
             return;
@@ -584,20 +588,19 @@ public partial class Download : IDisposable
             {
                 var line = e.Data;
 #if OS_WINDOWS
-                var lines = e.Data.Split('\r', StringSplitOptions.RemoveEmptyEntries);
-                for (var i = lines.Length - 1; i >= 0; i--)
+                foreach(var l in e.Data.Split('\r', StringSplitOptions.RemoveEmptyEntries).Reverse())
                 {
-                    var fields = lines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    if (lines[i].Contains("[download]") || (fields.Length == 5 && fields[1].Split('/').Length == 2))
+                    var fields = l.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                    if (l.Contains("[download]") || (fields.Length == 5 && fields[1].Split('/').Length == 2))
                     {
-                        line = lines[i];
+                        line = l;
                         break;
                     }
                 }
 #endif
                 if (line.Contains("[download]"))
                 {
-                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, Log, double.NaN, 0.0, 0));
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
                 }
                 else
                 {
@@ -612,7 +615,7 @@ public partial class Download : IDisposable
                         return;
                     }
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id,
-                        Log,
+                        e.Data.AsMemory(),
                         sizes[0].AriaSizeToBytes() / sizes[1].AriaSizeToBytes(),
                         fields[3].Substring(3).AriaSizeToBytes(),
                         fields[4].Substring(4, fields[4].Length - 4 - 1).AriaEtaToSeconds()));
@@ -627,12 +630,12 @@ public partial class Download : IDisposable
                 }
                 if (fields[1] == "finished" || fields[1] == "processing")
                 {
-                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, Log, double.NaN, 0.0, 0));
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
                 }
                 else
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id,
-                        Log,
+                        e.Data.AsMemory(),
                         (fields[2] != "NA" ? double.Parse(fields[2]) : 0.0) / (fields[3] != "NA" ? double.Parse(fields[3]) : (fields[4] != "NA" ? double.Parse(fields[4]) : 1.0)),
                         fields[5] != "NA" ? double.Parse(fields[5]) : 0.0,
                         fields[6] == "NA" || fields[6] == "Unknown" ? -1 : int.Parse(fields[6])));
