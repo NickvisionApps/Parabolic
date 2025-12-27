@@ -99,8 +99,7 @@ public class RecoveryServiceTests
     [TestMethod]
     public async Task Case006_AddMany()
     {
-        var many = new List<RecoverableDownload>();
-        many.EnsureCapacity(1000);
+        var many = new List<RecoverableDownload>(1000);
         for (var i = 0; i < 1000; i++)
         {
             many.Add(new RecoverableDownload(i, new DownloadOptions(new Uri($"https://example.com/video{i}"))

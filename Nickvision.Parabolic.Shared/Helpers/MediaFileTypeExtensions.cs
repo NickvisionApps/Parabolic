@@ -6,9 +6,6 @@ namespace Nickvision.Parabolic.Shared.Helpers;
 
 public static class MediaFileTypeExtensions
 {
-    public static int AudioFileTypeCount => Enum.GetValues<MediaFileType>().Where(value => value.IsAudio).Count();
-    public static int VideoFileTypeCount => Enum.GetValues<MediaFileType>().Where(value => value.IsVideo).Count();
-
     extension(MediaFileType type)
     {
         public string DotExtension => type switch
@@ -73,5 +70,12 @@ public static class MediaFileTypeExtensions
             SubtitleFormat.LRC => type.IsAudio,
             _ => false
         };
+    }
+
+    extension(MediaFileType)
+    {
+        public static int AudioCount => Enum.GetValues<MediaFileType>().Where(x => x.IsAudio).Count();
+
+        public static int VideoCount => Enum.GetValues<MediaFileType>().Where(x => x.IsVideo).Count();
     }
 }

@@ -101,14 +101,13 @@ public class PreferencesViewController
         {
             var strings = new List<string>();
             strings.Add(Translator._("None"));
-            foreach (var value in Enum.GetValues(typeof(Executable)))
+            foreach (var value in Enum.GetValues<Executable>())
             {
-                var executableValue = (Executable)value;
-                if (executableValue == Executable.None)
+                if (value == Executable.None)
                 {
                     continue;
                 }
-                strings.Add(executableValue.ToYtdlpString());
+                strings.Add(value.ToYtdlpString());
             }
             return strings;
         }
@@ -120,14 +119,13 @@ public class PreferencesViewController
         {
             var strings = new List<string>();
             strings.Add(Translator._("None"));
-            foreach (var value in Enum.GetValues(typeof(PostProcessor)))
+            foreach (var value in Enum.GetValues<PostProcessor>())
             {
-                var ppValue = (PostProcessor)value;
-                if (ppValue == PostProcessor.None)
+                if (value == PostProcessor.None)
                 {
                     continue;
                 }
-                strings.Add(ppValue.ToYtdlpString());
+                strings.Add(value.ToYtdlpString());
             }
             return strings;
         }

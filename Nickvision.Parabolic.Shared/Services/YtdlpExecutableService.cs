@@ -57,7 +57,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         get
         {
             var config = _jsonFileService.Load<Configuration>(Configuration.Key);
-            if (config.InstalledYtdlpVersion > _bundledVersion)
+            if (config.InstalledYtdlpAppVersion > _bundledVersion)
             {
                 var local = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Local);
                 if (!string.IsNullOrEmpty(local) && File.Exists(local))
@@ -66,7 +66,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
                 }
                 else
                 {
-                    config.InstalledYtdlpVersion = new AppVersion("0.0.0");
+                    config.InstalledYtdlpAppVersion = new AppVersion("0.0.0");
                     _jsonFileService.Save(config, Configuration.Key);
                 }
             }
@@ -85,7 +85,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         if (res)
         {
             var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
-            config.InstalledYtdlpVersion = version;
+            config.InstalledYtdlpAppVersion = version;
             await _jsonFileService.SaveAsync(config, Configuration.Key);
 #if !OS_WINDOWS
             using var process = new Process()

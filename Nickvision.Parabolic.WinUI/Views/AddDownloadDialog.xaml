@@ -51,36 +51,145 @@
                     <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" Foreground="Gray"/>
                 </StackPanel>
 
-                <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                <Grid RowSpacing="6">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                    <SelectorBar x:Name="NavViewSingle" Grid.Row="0" SelectionChanged="NavViewSingle_SelectionChanged">
+                        <SelectorBarItem x:Name="NavViewItemSingleGeneral" IsSelected="True" Tag="General">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
 
-                    <TextBox x:Name="TxtSingleSaveFilename" Grid.Row="0" Grid.Column="0"/>
+                        <SelectorBarItem x:Name="NavViewItemSingleSubtitles" Tag="Subtitles">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
 
-                    <Button x:Name="BtnSingleRevertFilename" Grid.Row="0" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleRevertFilename_Click">
-                        <Button.Content>
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A7;" FontSize="18"/>
-                        </Button.Content>
-                    </Button>
+                        <SelectorBarItem x:Name="NavViewItemSingleAdvanced" Tag="Advanced">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+                    </SelectorBar>
 
-                    <TextBox x:Name="TxtSingleSaveFolder" Grid.Row="1" Grid.Column="0" IsReadOnly="True"/>
+                    <nickvision:ViewStack x:Name="ViewStackSingle" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <nickvision:ViewStack.Pages>
+                            <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
-                    <Button x:Name="BtnSingleSelectSaveFolder" Grid.Row="1" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleSelectSaveFolder_Click">
-                        <Button.Content>
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B7;" FontSize="18"/>
-                        </Button.Content>
-                    </Button>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox x:Name="TxtSingleSaveFilename" Grid.Row="0" Grid.Column="0"/>
+
+                                <Button x:Name="BtnSingleRevertFilename" Grid.Row="0" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleRevertFilename_Click">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A7;" FontSize="18"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <TextBox x:Name="TxtSingleSaveFolder" Grid.Row="1" Grid.Column="0" IsReadOnly="True"/>
+
+                                <Button x:Name="BtnSingleSelectSaveFolder" Grid.Row="1" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleSelectSaveFolder_Click">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B7;" FontSize="18"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <ComboBox x:Name="CmbSingleFileType" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" SelectionChanged="CmbSingleFileType_SelectionChanged"/>
+
+                                <TeachingTip x:Name="TeachSingleFileType" PreferredPlacement="Bottom" Target="{x:Bind CmbSingleFileType}"/>
+
+                                <ComboBox x:Name="CmbSingleVideoFormat" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+
+                                <ComboBox x:Name="CmbSingleAudioFormat" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+                            </Grid>
+
+                            <nickvision:ViewStack x:Name="ViewStackSingleSubtitles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <nickvision:ViewStack.Pages>
+                                    <nickvision:StatusPage x:Name="StatusSingleSubtitles" Margin="0,24,0,0" Glyph="&#xE721;" IsCompact="True"/>
+
+                                    <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button x:Name="BtnSingleSelectAllSubtitles" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Click="BtnSingleSelectAllSubtitles_Click">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;" FontSize="18"/>
+
+                                                    <TextBlock x:Name="LblSingleSelectAllSubtitles"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button x:Name="BtnSingleDeselectAllSubtitles" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Click="BtnSingleDeselectAllSubtitles_Click">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;" FontSize="18"/>
+
+                                                    <TextBlock x:Name="LblSingleDeselectAllSubtitles"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" SelectionMode="Multiple"/>
+                                    </Grid>
+                                </nickvision:ViewStack.Pages>
+                            </nickvision:ViewStack>
+
+                            <StackPanel Orientation="Vertical" Spacing="12" Width="400" HorizontalAlignment="Stretch">
+                                <ToggleSwitch x:Name="TglSingleSplitChapters"/>
+
+                                <ToggleSwitch x:Name="TglSingleExportDescription"/>
+
+                                <ComboBox x:Name="CmbSinglePostProcessorArgument" HorizontalAlignment="Stretch"/>
+
+                                <TextBox x:Name="TxtSingleStartTime"/>
+
+                                <TextBox x:Name="TxtSingleEndTime"/>
+                            </StackPanel>
+                        </nickvision:ViewStack.Pages>
+                    </nickvision:ViewStack>
                 </Grid>
 
-                <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
-                    
+                <Grid RowSpacing="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <SelectorBar x:Name="NavViewPlaylist" Grid.Row="0">
+
+                    </SelectorBar>
+
+                    <nickvision:ViewStack x:Name="ViewStrackPlaylist" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <nickvision:ViewStack.Pages>
+                            <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                                
+                            </Grid>
+                        </nickvision:ViewStack.Pages>
+                    </nickvision:ViewStack>
                 </Grid>
             </nickvision:ViewStack.Pages>
         </nickvision:ViewStack>

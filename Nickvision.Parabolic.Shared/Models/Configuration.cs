@@ -13,7 +13,7 @@ public class Configuration
     public Theme Theme { get; set; }
     public string TranslationLanguage { get; set; }
     public WindowGeometry WindowGeometry { get; set; }
-    public AppVersion InstalledYtdlpVersion { get; set; }
+    public AppVersion InstalledYtdlpAppVersion { get; set; }
     public bool ShowDislcaimerOnStartup { get; set; }
     public bool PreventSuspend { get; set; }
     public int MaxNumberOfActiveDownloads { get; set; }
@@ -53,7 +53,7 @@ public class Configuration
         TranslationLanguage = string.Empty;
         WindowGeometry = new WindowGeometry();
         AllowPreviewUpdates = false;
-        InstalledYtdlpVersion = new AppVersion("0.0.0");
+        InstalledYtdlpAppVersion = new AppVersion("0.0.0");
         ShowDislcaimerOnStartup = true;
         PreventSuspend = false;
         MaxNumberOfActiveDownloads = 5;

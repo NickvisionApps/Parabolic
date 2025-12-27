@@ -223,7 +223,7 @@ public class MainWindowController : IDisposable
                 Action = "update"
             });
         }
-        else if (_latestYtdlpVersion > ytdlpService.BundledVersion && _latestYtdlpVersion > config.InstalledYtdlpVersion)
+        else if (_latestYtdlpVersion > ytdlpService.BundledVersion && _latestYtdlpVersion > config.InstalledYtdlpAppVersion)
         {
             notificationService.Send(new AppNotification(translationService._("New yt-dlp update available: {0}", _latestYtdlpVersion.ToString()), NotificationSeverity.Success)
             {
@@ -233,16 +233,6 @@ public class MainWindowController : IDisposable
         else if (showNotificationForNoUpdates)
         {
             notificationService.Send(new AppNotification(translationService._("No update available"), NotificationSeverity.Warning));
-        }
-    }
-
-    public async Task DownloadYtdlpUpdateAsync(IProgress<DownloadProgress> progress)
-    {
-        var ytdlpService = _services.Get<IYtdlpExecutableService>()!;
-        var res = await ytdlpService.DownloadUpdateAsync(_latestYtdlpVersion, progress);
-        if (!res)
-        {
-            _services.Get<INotificationService>()!.Send(new AppNotification(_services.Get<ITranslationService>()!._("Unable to download and install the yt-dlp update"), NotificationSeverity.Error));
         }
     }
 
@@ -268,6 +258,15 @@ public class MainWindowController : IDisposable
         }
     }
 #endif
+
+    public async Task YtdlpUpdateAsync(IProgress<DownloadProgress> progress)
+    {
+        var res = await _services.Get<IYtdlpExecutableService>()!.DownloadUpdateAsync(_latestYtdlpVersion, progress);
+        if (!res)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(_services.Get<ITranslationService>()!._("Unable to download and install the yt-dlp update"), NotificationSeverity.Error));
+        }
+    }
 
     private void Dispose(bool disposing)
     {

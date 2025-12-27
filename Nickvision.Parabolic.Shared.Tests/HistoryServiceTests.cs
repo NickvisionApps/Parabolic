@@ -106,8 +106,7 @@ public class HistoryServiceTests
     [TestMethod]
     public async Task Case008_AddMany()
     {
-        var many = new List<HistoricDownload>();
-        many.EnsureCapacity(1000);
+        var many = new List<HistoricDownload>(1000);
         for (var i = 0; i < 1000; i++)
         {
             many.Add(new HistoricDownload(new Uri($"https://www.example.com/video{i}"))

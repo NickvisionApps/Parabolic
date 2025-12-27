@@ -103,7 +103,7 @@ public sealed partial class MainWindow : Window
     {
         MenuCheckForUpdates.IsEnabled = false;
         var updatesTask = _controller.CheckForUpdatesAsync(false);
-        if(_controller.ShowDislcaimerOnStartup)
+        if (_controller.ShowDislcaimerOnStartup)
         {
             var checkBox = new CheckBox()
             {
@@ -197,6 +197,12 @@ public sealed partial class MainWindow : Window
         {
             BtnInfoBar.Content = _controller.Translator._("Update");
             _notificationClickHandler = WindowsUpdate;
+            BtnInfoBar.Click += _notificationClickHandler;
+        }
+        else if (args.Notification.Action == "update-ytdlp")
+        {
+            BtnInfoBar.Content = _controller.Translator._("Update");
+            _notificationClickHandler = YtdlpUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
         else if (args.Notification.Action == "error")
@@ -295,27 +301,19 @@ public sealed partial class MainWindow : Window
     private async void WindowsUpdate(object sender, RoutedEventArgs e)
     {
         var progress = new Progress<DownloadProgress>();
-        progress.ProgressChanged += (s, p) =>
-        {
-            DispatcherQueue.TryEnqueue(() =>
-            {
-                if (p.Completed)
-                {
-                    FlyoutProgress.Hide();
-                    BtnProgress.Visibility = Visibility.Collapsed;
-                    ToolTipService.SetToolTip(BtnProgress, string.Empty);
-                    return;
-                }
-                var message = _controller.Translator._("Downloading update: {0}%", Math.Round(p.Percentage * 100));
-                BtnProgress.Visibility = Visibility.Visible;
-                ToolTipService.SetToolTip(BtnProgress, message);
-                IconProgress.Glyph = "\uE896";
-                StsProgress.Description = message;
-                BarProgress.Value = p.Percentage * 100;
-            });
-        };
+        progress.ProgressChanged += UpdateProgress_Changed;
         InfoBar.IsOpen = false;
         await _controller.WindowsUpdateAsync(progress);
+        progress.ProgressChanged -= UpdateProgress_Changed;
+    }
+
+    private async void YtdlpUpdate(object sender, RoutedEventArgs e)
+    {
+        var progress = new Progress<DownloadProgress>();
+        progress.ProgressChanged += UpdateProgress_Changed;
+        InfoBar.IsOpen = false;
+        await _controller.YtdlpUpdateAsync(progress);
+        progress.ProgressChanged -= UpdateProgress_Changed;
     }
 
     private async Task LaunchUriAsync(Uri? uri)
@@ -325,5 +323,25 @@ public sealed partial class MainWindow : Window
             return;
         }
         await Launcher.LaunchUriAsync(uri);
+    }
+
+    private void UpdateProgress_Changed(object? sender, DownloadProgress e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            if (e.Completed)
+            {
+                FlyoutProgress.Hide();
+                BtnProgress.Visibility = Visibility.Collapsed;
+                ToolTipService.SetToolTip(BtnProgress, string.Empty);
+                return;
+            }
+            var message = _controller.Translator._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
+            BtnProgress.Visibility = Visibility.Visible;
+            ToolTipService.SetToolTip(BtnProgress, message);
+            IconProgress.Glyph = "\uE896";
+            StsProgress.Description = message;
+            BarProgress.Value = e.Percentage * 100;
+        });
     }
 }

@@ -1,11 +1,14 @@
-﻿using Microsoft.UI;
+﻿using CommunityToolkit.WinUI;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.Storage.Pickers;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Controllers;
+using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
@@ -22,7 +25,15 @@ public sealed partial class AddDownloadDialog : ContentDialog
         Playlist
     }
 
+    private enum SinglePages
+    {
+        General = 0,
+        Subtitles,
+        Advanced
+    }
+
     private static bool _showTeachDownloadImmediately = true;
+    private static bool _showTeachSingleFileType = true;
 
     private readonly AddDownloadDialogController _controller;
     private readonly WindowId _windowId;
@@ -31,6 +42,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     static AddDownloadDialog()
     {
         _showTeachDownloadImmediately = true;
+        _showTeachSingleFileType = true;
     }
 
     public AddDownloadDialog(AddDownloadDialogController controller, WindowId windowId)
@@ -63,10 +75,29 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbCredential.Items.Add(name);
         }
         CmbCredential.SelectedIndex = 0;
+        NavViewItemSingleGeneral.Text = _controller.Translator._("General");
+        NavViewItemSingleSubtitles.Text = _controller.Translator._("Subtitles");
+        NavViewItemSingleAdvanced.Text = _controller.Translator._("Advanced");
         TxtSingleSaveFilename.Header = _controller.Translator._("File Name");
         ToolTipService.SetToolTip(BtnSingleRevertFilename, _controller.Translator._("Revert to Title"));
         TxtSingleSaveFolder.Header = _controller.Translator._("Save Folder");
         ToolTipService.SetToolTip(BtnSingleSelectSaveFolder, _controller.Translator._("Select Save Folder"));
+        CmbSingleFileType.Header = _controller.Translator._("File Type");
+        TeachSingleFileType.Title = _controller.Translator._("Warning");
+        TeachSingleFileType.Subtitle = _controller.Translator._("Generic file types do not fully support embedding thumbnails and subtitles. If neccessary, please select a specific file type that is known to support embedding to prevent separate files from being written.");
+        CmbSingleVideoFormat.Header = _controller.Translator._("Video Format");
+        CmbSingleAudioFormat.Header = _controller.Translator._("Audio Format");
+        StatusSingleSubtitles.Title = _controller.Translator._("No Subtitles");
+        StatusSingleSubtitles.Description = _controller.Translator._("No subtitles were found for this media.");
+        LblSingleSelectAllSubtitles.Text = _controller.Translator._("Select All");
+        LblSingleDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
+        TglSingleSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
+        TglSingleSplitChapters.OffContent = _controller.Translator._("Split into Files by Chapters");
+        TglSingleExportDescription.OnContent = _controller.Translator._("Export Description to File");
+        TglSingleExportDescription.OffContent = _controller.Translator._("Export Description to File");
+        CmbSinglePostProcessorArgument.Header = _controller.Translator._("Post Processor Argument");
+        TxtSingleStartTime.Header = _controller.Translator._("Start Time");
+        TxtSingleEndTime.Header = _controller.Translator._("End Time");
     }
 
     public async new Task<ContentDialogResult> ShowAsync()
@@ -95,11 +126,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         ViewStack.SelectedIndex = (int)Pages.Loading;
         DispatcherQueue.TryEnqueue(async () => await DiscoverMediaAsync(cancellationToken.Token));
         result = await base.ShowAsync();
-        if (result == ContentDialogResult.Primary)
-        {
-            // Download
-        }
-        else if (result == ContentDialogResult.Secondary)
+        if (result == ContentDialogResult.Secondary)
         {
             cancellationToken.Cancel();
         }
@@ -136,14 +163,75 @@ public sealed partial class AddDownloadDialog : ContentDialog
         if (!result.IsPlaylist)
         {
             var media = result.Media[0];
+            var subtitles = _controller.GetDiscoveredMediaSubtitleLanguageStrings(_discoveryId, 0);
+            var postProcessorArgs = _controller.PostProcessorArgumentNames;
+            PrimaryButtonClick += async (_, _) => await DownloadSingleAsync();
             ViewStack.SelectedIndex = (int)Pages.Single;
+            ViewStackSingle.SelectedIndex = (int)SinglePages.General;
+            ViewStackSingleSubtitles.SelectedIndex = subtitles.Any() ? 1 : 0;
             TxtSingleSaveFilename.Text = media.Title;
             TxtSingleSaveFolder.Text = !string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : _controller.PreviousDownloadOptions.SaveFolder;
+            CmbSingleFileType.ItemsSource = _controller.GetDiscoveredMediaFileTypeStrings(_discoveryId, 0);
+            CmbSingleFileType.SelectedIndex = (int)_controller.PreviousDownloadOptions.FileType;
+            foreach(var subtitle in subtitles)
+            {
+                ListSingleSubtitles.Items.Add(subtitle);
+                if(_controller.PreviousDownloadOptions.SubtitleLanguages.Contains(subtitle))
+                {
+                    ListSingleSubtitles.SelectedItems.Add(subtitle);
+                }
+            }
+            TglSingleSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
+            TglSingleExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
+            CmbSinglePostProcessorArgument.ItemsSource = postProcessorArgs;
+            CmbSinglePostProcessorArgument.SelectedIndex = 0;
+            for(var i = 0; i < postProcessorArgs.Count(); i++)
+            {
+                if(postProcessorArgs.ElementAt(i) == _controller.PreviousDownloadOptions.PostProcessorArgumentName)
+                {
+                    CmbSinglePostProcessorArgument.SelectedIndex = i;
+                    break;
+                }
+            }
+            TxtSingleStartTime.PlaceholderText = media.TimeFrame.StartString;
+            TxtSingleStartTime.Text = media.TimeFrame.StartString;
+            TxtSingleEndTime.PlaceholderText = media.TimeFrame.EndString;
+            TxtSingleEndTime.Text = media.TimeFrame.EndString;
+            if (TglDownloadImmediately.IsOn)
+            {
+                await DownloadSingleAsync();
+                Hide();
+            }
         }
         else
         {
+            PrimaryButtonClick += async (_, _) => await DownloadPlaylistAsync();
             ViewStack.SelectedIndex = (int)Pages.Playlist;
+            if (TglDownloadImmediately.IsOn)
+            {
+                await DownloadPlaylistAsync();
+                Hide();
+            }
         }
+    }
+
+    private async Task DownloadSingleAsync() => await _controller.AddSingleDownloadAsync(_discoveryId, 0,
+        TxtSingleSaveFilename.Text,
+        TxtSingleSaveFolder.Text,
+        CmbSingleFileType.SelectedIndex,
+        CmbSingleVideoFormat.SelectedIndex,
+        CmbSingleAudioFormat.SelectedIndex,
+        ListSingleSubtitles.SelectedItems.Cast<string>(),
+        TglSingleSplitChapters.IsOn,
+        TglSingleExportDescription.IsOn,
+        (CmbSinglePostProcessorArgument.SelectedItem as string)!,
+        TxtSingleStartTime.Text,
+        TxtSingleEndTime.Text
+    );
+
+    private async Task DownloadPlaylistAsync()
+    {
+
     }
 
     private void TxtUrl_TextChanged(object sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
@@ -171,11 +259,25 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private void TglDownloadImmediately_Toggled(object sender, RoutedEventArgs e)
     {
-        if(!_controller.PreviousDownloadOptions.DownloadImmediately && _showTeachDownloadImmediately)
+        if (!_controller.PreviousDownloadOptions.DownloadImmediately && _showTeachDownloadImmediately)
         {
             TeachDownloadImmediately.IsOpen = true;
             _showTeachDownloadImmediately = false;
         }
+        else if (!TglDownloadImmediately.IsOn)
+        {
+            TeachDownloadImmediately.IsOpen = false;
+        }
+    }
+
+    private void NavViewSingle_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+    {
+        ViewStackSingle.SelectedIndex = (NavViewSingle.SelectedItem.Tag as string)! switch
+        {
+            "Subtitles" => (int)SinglePages.Subtitles,
+            "Advanced" => (int)SinglePages.Advanced,
+            _ => (int)SinglePages.General
+        };
     }
 
     private void BtnSingleRevertFilename_Click(object sender, RoutedEventArgs e) => TxtSingleSaveFilename.Text = _controller.GetDiscoveredMediaTitle(_discoveryId, 0);
@@ -192,4 +294,26 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtSingleSaveFolder.Text = folder.Path;
         }
     }
+
+    private void CmbSingleFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var type = _controller.GetDiscoveredMediaFileTypeByIndex(_discoveryId, 0, CmbSingleFileType.SelectedIndex);
+        if (!_controller.PreviousDownloadOptions.FileType.IsGeneric && type.IsGeneric && _showTeachSingleFileType)
+        {
+            TeachSingleFileType.IsOpen = true;
+            _showTeachSingleFileType = false;
+        }
+        else if (!type.IsGeneric)
+        {
+            TeachSingleFileType.IsOpen = false;
+        }
+        CmbSingleVideoFormat.ItemsSource = _controller.GetDiscoveredMediaVideoFormatStrings(_discoveryId, 0, CmbSingleFileType.SelectedIndex, out var previousVideoFormatIndex);
+        CmbSingleVideoFormat.SelectedIndex = previousVideoFormatIndex;
+        CmbSingleAudioFormat.ItemsSource = _controller.GetDiscoveredMediaAudioFormatStrings(_discoveryId, 0, CmbSingleFileType.SelectedIndex, out var previousAudioFormatIndex);
+        CmbSingleAudioFormat.SelectedIndex = previousAudioFormatIndex;
+    }
+
+    private void BtnSingleSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListSingleSubtitles.SelectAll();
+
+    private void BtnSingleDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListSingleSubtitles.DeselectAll();
 }
