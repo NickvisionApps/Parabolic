@@ -12,7 +12,7 @@ namespace Nickvision.Parabolic.Shared.Models;
 public partial class Download : IDisposable
 {
     private static readonly string[] PartialDownloadFilePatterns;
-    private static readonly Dictionary<int, IEnumerable<string>> DownloadArgumentsCache;
+    private static readonly Dictionary<int, IReadOnlyCollection<string>> DownloadArgumentsCache;
     private static int _nextId;
 
     private ITranslationService? _translator;
@@ -30,7 +30,7 @@ public partial class Download : IDisposable
     static Download()
     {
         PartialDownloadFilePatterns = ["*.part*", "*.vtt", "*.srt", "*.ass", "*.lrc"];
-        DownloadArgumentsCache = new Dictionary<int, IEnumerable<string>>();
+        DownloadArgumentsCache = new Dictionary<int, IReadOnlyCollection<string>>();
         _nextId = 0;
     }
 
@@ -141,7 +141,7 @@ public partial class Download : IDisposable
         }
     }
 
-    private IEnumerable<string> GetDownloadArguments(DownloaderOptions downloader)
+    private IReadOnlyCollection<string> GetDownloadArguments(DownloaderOptions downloader)
     {
         var hash = HashCode.Combine(downloader, Options);
         if (DownloadArgumentsCache.TryGetValue(hash, out var cache))

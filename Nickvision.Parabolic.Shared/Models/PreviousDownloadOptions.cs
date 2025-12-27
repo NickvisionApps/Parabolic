@@ -66,6 +66,6 @@ public class PreviousDownloadOptions
         PostProcessorArgumentName = string.Empty;
         WritePlaylistFile = false;
         NumberTitles = false;
-        SubtitleLanguages = new List<SubtitleLanguage>();
+        SubtitleLanguages = [];
     }
 }

@@ -14,9 +14,9 @@ public interface IHistoryService : IService
     event EventHandler<HistoryChangedEventArgs>? Changed;
 
     Task<bool> AddAsync(HistoricDownload download);
-    Task<bool> AddAsync(IEnumerable<HistoricDownload> downloads);
+    Task<bool> AddAsync(IReadOnlyCollection<HistoricDownload> downloads);
     Task<bool> ClearAsync();
-    Task<IEnumerable<HistoricDownload>> GetAllAsync();
+    Task<IReadOnlyCollection<HistoricDownload>> GetAllAsync();
     Task<bool> RemoveAsync(HistoricDownload download);
     Task<bool> RemoveAsync(Uri uri);
     Task<bool> UpdateAsync(HistoricDownload download);

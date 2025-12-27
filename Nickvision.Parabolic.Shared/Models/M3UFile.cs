@@ -39,7 +39,7 @@ public class M3UFile
         return true;
     }
 
-    public bool Add(IEnumerable<DownloadOptions> options)
+    public bool Add(IReadOnlyCollection<DownloadOptions> options)
     {
         var success = true;
         foreach (var option in options)

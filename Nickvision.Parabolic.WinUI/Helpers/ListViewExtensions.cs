@@ -11,7 +11,7 @@ public static class ListViewExtensions
     {
         public void SelectSelectionItems<T>()
         {
-            if (listView.ItemsSource is IEnumerable<SelectionItem<T>> items)
+            if (listView.ItemsSource is IReadOnlyCollection<SelectionItem<T>> items)
             {
                 foreach(var item in items.Where(i => i.ShouldSelect))
                 {

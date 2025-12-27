@@ -66,7 +66,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TeachDownloadImmediately.Title = _controller.Translator._("Warning");
         TeachDownloadImmediately.Subtitle = _controller.Translator._("Parabolic will download media based off of previously configured options and sensable defaults. Options including save folder, format, and subtitle selection will not be shown.");
         LblLoading.Text = _controller.Translator._("This may take some time...");
-        CmbCredential.ItemsSource = _controller.GetAvailableCredentials();
+        CmbCredential.ItemsSource = _controller.AvailableCredentials;
         CmbCredential.SelectSelectionItem<Credential?>();
         NavViewItemSingleGeneral.Text = _controller.Translator._("General");
         NavViewItemSingleSubtitles.Text = _controller.Translator._("Subtitles");
@@ -183,7 +183,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ListSingleSubtitles.SelectSelectionItems<SubtitleLanguage>();
             TglSingleSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglSingleExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
-            CmbSinglePostProcessorArgument.ItemsSource = await _controller.GetAvailablePostProcessorArgumentsAsync();
+            CmbSinglePostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
             CmbSinglePostProcessorArgument.SelectSelectionItem<PostProcessorArgument?>();
             TxtSingleStartTime.PlaceholderText = media.TimeFrame.StartString;
             TxtSingleStartTime.Text = media.TimeFrame.StartString;

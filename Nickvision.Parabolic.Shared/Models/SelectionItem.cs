@@ -6,7 +6,7 @@ public class SelectionItem<T>
 {
     public T Value { get; }
     public string Label { get; }
-    public bool ShouldSelect { get; }
+    public bool ShouldSelect { get; set; }
 
     public SelectionItem(T value, string label, bool shouldSelect)
     {

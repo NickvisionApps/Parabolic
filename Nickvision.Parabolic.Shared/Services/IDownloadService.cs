@@ -23,9 +23,9 @@ public interface IDownloadService : IService
     int RemainingCount => DownloadingCount + QueuedCount;
 
     Task AddAsync(DownloadOptions options, bool excludeFromHistory);
-    Task AddAsync(IEnumerable<DownloadOptions> options, bool excludeFromHistory);
-    IEnumerable<int> ClearCompleted();
-    IEnumerable<int> ClearQueued();
+    Task AddAsync(IReadOnlyCollection<DownloadOptions> options, bool excludeFromHistory);
+    IReadOnlyCollection<int> ClearCompleted();
+    IReadOnlyCollection<int> ClearQueued();
     bool Pause(int id);
     bool Resume(int id);
     Task<bool> RetryAsync(int id);

@@ -8,10 +8,10 @@ namespace Nickvision.Parabolic.Shared.Services;
 public interface IRecoveryService : IService
 {
     Task<bool> AddAsync(RecoverableDownload download);
-    Task<bool> AddAsync(IEnumerable<RecoverableDownload> downloads);
+    Task<bool> AddAsync(IReadOnlyCollection<RecoverableDownload> downloads);
     Task<bool> ClearAsync();
-    public Task<IEnumerable<RecoverableDownload>> GetAllAsync();
+    public Task<IReadOnlyCollection<RecoverableDownload>> GetAllAsync();
     Task<bool> RemoveAsync(RecoverableDownload download);
     Task<bool> RemoveAsync(int id);
-    Task<bool> RemoveAsync(IEnumerable<int> ids);
+    Task<bool> RemoveAsync(IReadOnlyCollection<int> ids);
 }
