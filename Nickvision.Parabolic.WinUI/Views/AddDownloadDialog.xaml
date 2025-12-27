@@ -33,7 +33,7 @@
                     <ToggleSwitch x:Name="TglUseAuthentication"/>
 
                     <StackPanel Orientation="Vertical" Spacing="6" Visibility="{x:Bind TglUseAuthentication.IsOn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-                        <ComboBox x:Name="CmbCredential" HorizontalAlignment="Stretch" SelectionChanged="CmbCredential_SelectionChanged"/>
+                        <ComboBox x:Name="CmbCredential" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbCredential_SelectionChanged"/>
 
                         <TextBox x:Name="TxtUsername" Visibility="Collapsed"/>
 
@@ -109,13 +109,13 @@
                                     </Button.Content>
                                 </Button>
 
-                                <ComboBox x:Name="CmbSingleFileType" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" SelectionChanged="CmbSingleFileType_SelectionChanged"/>
+                                <ComboBox x:Name="CmbSingleFileType" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbSingleFileType_SelectionChanged"/>
 
                                 <TeachingTip x:Name="TeachSingleFileType" PreferredPlacement="Bottom" Target="{x:Bind CmbSingleFileType}"/>
 
-                                <ComboBox x:Name="CmbSingleVideoFormat" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+                                <ComboBox x:Name="CmbSingleVideoFormat" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
 
-                                <ComboBox x:Name="CmbSingleAudioFormat" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch"/>
+                                <ComboBox x:Name="CmbSingleAudioFormat" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
                             </Grid>
 
                             <nickvision:ViewStack x:Name="ViewStackSingleSubtitles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -153,7 +153,8 @@
                                             </Button.Content>
                                         </Button>
 
-                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" SelectionMode="Multiple"/>
+                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                                  DisplayMemberPath="Label" SelectedValuePath="IsSelected" SelectionMode="Multiple"/>
                                     </Grid>
                                 </nickvision:ViewStack.Pages>
                             </nickvision:ViewStack>
@@ -163,7 +164,9 @@
 
                                 <ToggleSwitch x:Name="TglSingleExportDescription"/>
 
-                                <ComboBox x:Name="CmbSinglePostProcessorArgument" HorizontalAlignment="Stretch"/>
+                                <ToggleSwitch x:Name="TglSingleExcludeFromHistory"/>
+
+                                <ComboBox x:Name="CmbSinglePostProcessorArgument" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
 
                                 <TextBox x:Name="TxtSingleStartTime"/>
 

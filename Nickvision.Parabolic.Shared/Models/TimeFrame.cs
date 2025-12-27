@@ -57,6 +57,18 @@ public class TimeFrame : IEquatable<TimeFrame>
         }
     }
 
+    public static bool TryParse(string start, string end, TimeSpan duration, out TimeFrame timeFrame)
+    {
+        var time = Parse(start, end, duration);
+        if (time is null)
+        {
+            timeFrame = new TimeFrame(TimeSpan.Zero, TimeSpan.Zero);
+            return false;
+        }
+        timeFrame = time;
+        return true;
+    }
+
     public override bool Equals(object? obj) => obj is TimeFrame other && Equals(other);
 
     public bool Equals(TimeFrame? other) => other is not null && Start == other.Start && End == other.End;

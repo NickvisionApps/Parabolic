@@ -14,7 +14,7 @@ public class DownloadOptions
     public int PlaylistPosition { get; set; }
     public Format? VideoFormat { get; set; }
     public Format? AudioFormat { get; set; }
-    public List<SubtitleLanguage> SubtitleLanguages { get; set; }
+    public IEnumerable<SubtitleLanguage> SubtitleLanguages { get; set; }
     public bool SplitChapters { get; set; }
     public bool ExportDescription { get; set; }
     public PostProcessorArgument? PostProcessorArgument { get; set; }
