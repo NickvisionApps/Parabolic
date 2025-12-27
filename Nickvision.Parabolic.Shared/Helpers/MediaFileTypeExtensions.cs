@@ -71,11 +71,4 @@ public static class MediaFileTypeExtensions
             _ => false
         };
     }
-
-    extension(MediaFileType)
-    {
-        public static int AudioCount => Enum.GetValues<MediaFileType>().Where(x => x.IsAudio).Count();
-
-        public static int VideoCount => Enum.GetValues<MediaFileType>().Where(x => x.IsVideo).Count();
-    }
 }

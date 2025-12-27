@@ -17,7 +17,7 @@ public class PreviousDownloadOptions
     public string PostProcessorArgumentName { get; set; }
     public bool WritePlaylistFile { get; set; }
     public bool NumberTitles { get; set; }
-    public IEnumerable<string> SubtitleLanguageStrings { get; set; }
+    public IEnumerable<SubtitleLanguage> SubtitleLanguages { get; set; }
 
     static PreviousDownloadOptions()
     {
@@ -66,6 +66,6 @@ public class PreviousDownloadOptions
         PostProcessorArgumentName = string.Empty;
         WritePlaylistFile = false;
         NumberTitles = false;
-        SubtitleLanguageStrings = new List<string>();
+        SubtitleLanguages = new List<SubtitleLanguage>();
     }
 }
