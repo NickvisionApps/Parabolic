@@ -6,17 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
     document.getElementById('trimPlaylist').checked = (result && result.trimPlaylist) || false;
-    document.getElementById('showContextMenu').checked = (result && (typeof result.showContextMenu !== 'undefined' ? result.showContextMenu : true));
+    document.getElementById('contextMenuToggle').checked = (result && (typeof result.showContextMenu !== 'undefined' ? result.showContextMenu : true));
   });
 });
 
-// Save setting when checkbox is toggled
+// Save/show Trim Playlist setting
 document.getElementById('trimPlaylist').addEventListener('change', (e) => {
   chrome.storage.sync.set({ trimPlaylist: e.target.checked });
 });
 
 // Save/show context menu setting
-document.getElementById('showContextMenu').addEventListener('change', (e) => {
+document.getElementById('contextMenuToggle').addEventListener('change', (e) => {
   chrome.storage.sync.set({ showContextMenu: e.target.checked });
 });
 
