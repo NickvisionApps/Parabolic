@@ -13,7 +13,7 @@ public static class ListViewExtensions
         {
             if (listView.ItemsSource is IReadOnlyCollection<SelectionItem<T>> items)
             {
-                foreach(var item in items.Where(i => i.ShouldSelect))
+                foreach (var item in items.Where(i => i.ShouldSelect))
                 {
                     listView.SelectedItems.Add(item);
                 }

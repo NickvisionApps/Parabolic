@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Nickvision.Parabolic.Shared.Models;
+﻿namespace Nickvision.Parabolic.Shared.Models;
 
 public class SelectionItem<T>
 {

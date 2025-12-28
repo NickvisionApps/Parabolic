@@ -23,11 +23,13 @@ public class AddDownloadDialogController
     private readonly IDiscoveryService _discoveryService;
     private readonly IDownloadService _downloadService;
     private readonly Dictionary<int, Credential> _credentialMap;
-    private readonly Dictionary<(int DiscoveryId, int MediaIndex), Media> _mediaMap;
-    private readonly Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<Format>>> _audioFormatsMap;
-    private readonly Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<MediaFileType>>> _fileTypesMap;
-    private readonly Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<SubtitleLanguage>>> _subtitleLanguagesMap;
-    private readonly Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<Format>>> _videoFormatsMap;
+    private readonly Dictionary<int, IReadOnlyCollection<Media>> _mediaMap;
+    private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<double>>> _audioBitratesMap;
+    private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<Format>>> _audioFormatsMap;
+    private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<MediaFileType>>> _fileTypesMap;
+    private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<SubtitleLanguage>>> _subtitleLanguagesMap;
+    private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<Format>>> _videoFormatsMap;
+    private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<VideoResolution>>> _videoResolutionsMap;
 
     public ITranslationService Translator { get; }
     public PreviousDownloadOptions PreviousDownloadOptions { get; }
@@ -47,11 +49,13 @@ public class AddDownloadDialogController
         _discoveryService = discoveryService;
         _downloadService = downloadService;
         _credentialMap = new Dictionary<int, Credential>();
-        _mediaMap = new Dictionary<(int DiscoveryId, int MediaIndex), Media>();
-        _audioFormatsMap = new Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<Format>>>();
-        _fileTypesMap = new Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<MediaFileType>>>();
-        _subtitleLanguagesMap = new Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<SubtitleLanguage>>>();
-        _videoFormatsMap = new Dictionary<(int DiscoveryId, int MediaIndex), IReadOnlyCollection<SelectionItem<Format>>>();
+        _mediaMap = new Dictionary<int, IReadOnlyCollection<Media>>();
+        _audioBitratesMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<double>>>();
+        _audioFormatsMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<Format>>>();
+        _fileTypesMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<MediaFileType>>>();
+        _subtitleLanguagesMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<SubtitleLanguage>>>();
+        _videoFormatsMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<Format>>>();
+        _videoResolutionsMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<VideoResolution>>>();
         Translator = translationService;
         PreviousDownloadOptions = _jsonFileService.Load<PreviousDownloadOptions>(PreviousDownloadOptions.Key);
         var availableCredentials = new List<SelectionItem<Credential?>>(_keyringService.Credentials.Count() + 1)
@@ -73,18 +77,86 @@ public class AddDownloadDialogController
         AvailablePostProcessorArguments = availablePostProcessorArguments;
     }
 
-    public async Task AddSingleDownloadAsync(int discoveryId, int mediaIndex, string saveFilename, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<Format> selectedVideoFormat, SelectionItem<Format> selectedAudioFormat, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument, string startTime, string endTime)
+    public async Task AddPlaylistDownloadsAsync(int discoveryId, Dictionary<int, string> filenames, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument, string startTime, string endTime)
     {
-        var key = (discoveryId, mediaIndex);
-        if (!_mediaMap.TryGetValue(key, out var media))
+        if (!_mediaMap.TryGetValue(discoveryId, out var list))
         {
-            _notificationService.Send(new AppNotification(Translator._("An error occured while adding the download"), NotificationSeverity.Error)
+            _notificationService.Send(new AppNotification(Translator._("An error occured while adding playlist downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
                 ActionParam = "Unable to find the discovered media."
             });
             return;
         }
+        var options = new List<DownloadOptions>(filenames.Count);
+        foreach (var pair in filenames)
+        {
+            if (pair.Key < 0 || pair.Key >= list.Count)
+            {
+                continue;
+            }
+            var media = list.ElementAt(pair.Key);
+            options.Add(new DownloadOptions(media.Url)
+            {
+                Credential = _credentialMap.ContainsKey(discoveryId) ? _credentialMap[discoveryId] : null,
+                SaveFilename = pair.Value,
+                SaveFolder = !string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : saveFolder,
+                FileType = selectedFileType.Value,
+                PlaylistPosition = media.PlaylistPosition,
+                VideoResolution = selectedVideoResoltuion.Value,
+                AudioBitrate = selectedAudioBitrate.Value,
+                SubtitleLanguages = selectedSubtitleLanguages.Select(x => x.Value).Where(x => media.Subtitles.Contains(x)),
+                SplitChapters = splitChapters,
+                ExportDescription = exportDescription,
+                PostProcessorArgument = selectedPostProcessorArgument.Value,
+                TimeFrame = TimeFrame.TryParse(startTime, endTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
+            });
+        }
+        PreviousDownloadOptions.SaveFolder = saveFolder;
+        if (list.Any(m => m.Type == MediaType.Video))
+        {
+            PreviousDownloadOptions.FullFileType = selectedFileType.Value;
+        }
+        else
+        {
+            PreviousDownloadOptions.AudioOnlyFileType = selectedFileType.Value;
+        }
+        PreviousDownloadOptions.VideoResolution = selectedVideoResoltuion.Value;
+        PreviousDownloadOptions.AudioBitrate = selectedAudioBitrate.Value;
+        PreviousDownloadOptions.SplitChapters = splitChapters;
+        PreviousDownloadOptions.ExportDescription = exportDescription;
+        if (selectedPostProcessorArgument.Value is not null)
+        {
+            PreviousDownloadOptions.PostProcessorArgumentName = selectedPostProcessorArgument.Value.Name;
+        }
+        PreviousDownloadOptions.SubtitleLanguages = selectedSubtitleLanguages.Select(x => x.Value);
+        await _jsonFileService.SaveAsync(PreviousDownloadOptions, PreviousDownloadOptions.Key);
+        try
+        {
+            await _downloadService.AddAsync(options, excludeFromHistory);
+        }
+        catch (Exception e)
+        {
+            _notificationService.Send(new AppNotification(Translator._("An error occured while adding playlist downloads"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.Message
+            });
+        }
+    }
+
+    public async Task AddSingleDownloadAsync(int discoveryId, string saveFilename, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<Format> selectedVideoFormat, SelectionItem<Format> selectedAudioFormat, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument, string startTime, string endTime)
+    {
+        if (!_mediaMap.TryGetValue(discoveryId, out var list))
+        {
+            _notificationService.Send(new AppNotification(Translator._("An error occured while adding the single download"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = "Unable to find the discovered media."
+            });
+            return;
+        }
+        var media = list.ElementAt(0);
         var options = new DownloadOptions(media.Url)
         {
             Credential = _credentialMap.ContainsKey(discoveryId) ? _credentialMap[discoveryId] : null,
@@ -101,7 +173,14 @@ public class AddDownloadDialogController
             TimeFrame = TimeFrame.TryParse(startTime, endTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
         };
         PreviousDownloadOptions.SaveFolder = options.SaveFolder;
-        PreviousDownloadOptions.FileType = options.FileType;
+        if (media.Type == MediaType.Video)
+        {
+            PreviousDownloadOptions.FullFileType = options.FileType;
+        }
+        else
+        {
+            PreviousDownloadOptions.AudioOnlyFileType = options.FileType;
+        }
         if (media.Formats.HasFormats(MediaType.Video))
         {
             PreviousDownloadOptions.VideoFormatIds[options.FileType] = options.VideoFormat?.Id ?? PreviousDownloadOptions.VideoFormatIds[options.FileType];
@@ -121,18 +200,18 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _notificationService.Send(new AppNotification(Translator._("An error occured while adding the download"), NotificationSeverity.Error)
+            _notificationService.Send(new AppNotification(Translator._("An error occured while adding the single download"), NotificationSeverity.Error)
             {
                 Action = "error",
                 ActionParam = e.Message
             });
         }
         _credentialMap.Remove(discoveryId);
-        _mediaMap.Remove(key);
-        _audioFormatsMap.Remove(key);
-        _fileTypesMap.Remove(key);
-        _subtitleLanguagesMap.Remove(key);
-        _videoFormatsMap.Remove(key);
+        _mediaMap.Remove(discoveryId);
+        _audioFormatsMap.Remove(discoveryId);
+        _fileTypesMap.Remove(discoveryId);
+        _subtitleLanguagesMap.Remove(discoveryId);
+        _videoFormatsMap.Remove(discoveryId);
     }
 
     public async Task<DiscoveryResult?> DiscoverAsync(Uri url, Credential? credential, CancellationToken cancellationToken)
@@ -153,53 +232,74 @@ public class AddDownloadDialogController
             {
                 _credentialMap[res.Id] = credential;
             }
-            var mediaIndex = 0;
-            foreach(var media in res.Media)
+            _mediaMap[res.Id] = res.Media;
+            if (!res.IsPlaylist)
             {
-                var key = (res.Id, mediaIndex);
-                _mediaMap[key] = media;
                 var audioFormats = new List<SelectionItem<Format>>();
                 var videoFormats = new List<SelectionItem<Format>>();
-                foreach(var format in media.Formats)
+                foreach (var format in res.Media[0].Formats)
                 {
                     var formatSelectionItem = new SelectionItem<Format>(format, format.ToString(Translator), false);
                     if (format.Type == MediaType.Audio)
                     {
                         audioFormats.Add(formatSelectionItem);
                     }
-                    else if(format.Type == MediaType.Video)
+                    else if (format.Type == MediaType.Video)
                     {
                         videoFormats.Add(formatSelectionItem);
                     }
                 }
-                var fileTypes = new List<SelectionItem<MediaFileType>>(media.Type == MediaType.Video ? 13 : 7);
-                if(media.Type == MediaType.Video)
-                {
-                    fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.Video, Translator._("Video (Generic)"), PreviousDownloadOptions.FileType == MediaFileType.Video));
-                    fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MP4, Translator._("MP4 (Video)"), PreviousDownloadOptions.FileType == MediaFileType.MP4));
-                    fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.WEBM, Translator._("WEBM (Video)"), PreviousDownloadOptions.FileType == MediaFileType.WEBM));
-                    fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MKV, Translator._("MKV (Video)"), PreviousDownloadOptions.FileType == MediaFileType.MKV));
-                    fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MOV, Translator._("MOV (Video)"), PreviousDownloadOptions.FileType == MediaFileType.MOV));
-                    fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.AVI, Translator._("AVI (Video)"), PreviousDownloadOptions.FileType == MediaFileType.AVI));
-                }
-                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.Audio, Translator._("Audio (Generic)"), PreviousDownloadOptions.FileType == MediaFileType.Audio));
-                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MP3, Translator._("MP3 (Audio)"), PreviousDownloadOptions.FileType == MediaFileType.MP3));
-                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.M4A, Translator._("M4A (Audio)"), PreviousDownloadOptions.FileType == MediaFileType.M4A));
-                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.OPUS, Translator._("OPUS (Audio)"), PreviousDownloadOptions.FileType == MediaFileType.OPUS));
-                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.FLAC, Translator._("FLAC (Audio)"), PreviousDownloadOptions.FileType == MediaFileType.FLAC));
-                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.WAV, Translator._("WAV (Audio)"), PreviousDownloadOptions.FileType == MediaFileType.WAV));
-                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.OGG, Translator._("OGG (Audio)"), PreviousDownloadOptions.FileType == MediaFileType.OGG));
-                var subtitleLanguages = new List<SelectionItem<SubtitleLanguage>>();
-                foreach (var subtitle in media.Subtitles)
-                {
-                    subtitleLanguages.Add(new SelectionItem<SubtitleLanguage>(subtitle, subtitle.ToString(Translator), PreviousDownloadOptions.SubtitleLanguages.Contains(subtitle)));
-                }
-                _audioFormatsMap[key] = audioFormats;
-                _fileTypesMap[key] = fileTypes;
-                _subtitleLanguagesMap[key] = subtitleLanguages;
-                _videoFormatsMap[key] = videoFormats;
-                mediaIndex++;
+                _audioFormatsMap[res.Id] = audioFormats;
+                _videoFormatsMap[res.Id] = videoFormats;
             }
+            else
+            {
+                var audioBitrates = new List<SelectionItem<double>>()
+                {
+                    new SelectionItem<double>(double.MaxValue, Translator._("Best"), PreviousDownloadOptions.AudioBitrate == double.MaxValue),
+                    new SelectionItem<double>(-1.0, Translator._("Worst"), PreviousDownloadOptions.AudioBitrate == -1.0)
+                };
+                foreach (var bitrate in res.Media.SelectMany(m => m.Formats).Where(f => f.Bitrate.HasValue).Select(f => f.Bitrate!.Value).Distinct())
+                {
+                    audioBitrates.Add(new SelectionItem<double>(bitrate, $"{bitrate}k", PreviousDownloadOptions.AudioBitrate == bitrate));
+                }
+                var videoResolutions = new List<SelectionItem<VideoResolution>>()
+                {
+                    new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(Translator), PreviousDownloadOptions.VideoResolution == VideoResolution.Best),
+                    new SelectionItem<VideoResolution>(VideoResolution.Worst, VideoResolution.Worst.ToString(Translator), PreviousDownloadOptions.VideoResolution == VideoResolution.Worst)
+                };
+                foreach (var resolution in res.Media.SelectMany(m => m.Formats).Where(f => f.VideoResolution is not null).Select(f => f.VideoResolution!).Distinct())
+                {
+                    videoResolutions.Add(new SelectionItem<VideoResolution>(resolution, resolution.ToString(Translator), PreviousDownloadOptions.VideoResolution == resolution));
+                }
+                _audioBitratesMap[res.Id] = audioBitrates;
+                _videoResolutionsMap[res.Id] = videoResolutions;
+            }
+            var fileTypes = new List<SelectionItem<MediaFileType>>(res.Media.Any(m => m.Type == MediaType.Video) ? 13 : 7);
+            var previousFileType = fileTypes.Capacity == 13 ? PreviousDownloadOptions.FullFileType : PreviousDownloadOptions.AudioOnlyFileType;
+            if (fileTypes.Capacity == 13)
+            {
+                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.Video, Translator._("Video (Generic)"), previousFileType == MediaFileType.Video));
+                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MP4, Translator._("MP4 (Video)"), previousFileType == MediaFileType.MP4));
+                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.WEBM, Translator._("WEBM (Video)"), previousFileType == MediaFileType.WEBM));
+                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MKV, Translator._("MKV (Video)"), previousFileType == MediaFileType.MKV));
+                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MOV, Translator._("MOV (Video)"), previousFileType == MediaFileType.MOV));
+                fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.AVI, Translator._("AVI (Video)"), previousFileType == MediaFileType.AVI));
+            }
+            fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.Audio, Translator._("Audio (Generic)"), previousFileType == MediaFileType.Audio));
+            fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.MP3, Translator._("MP3 (Audio)"), previousFileType == MediaFileType.MP3));
+            fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.M4A, Translator._("M4A (Audio)"), previousFileType == MediaFileType.M4A));
+            fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.OPUS, Translator._("OPUS (Audio)"), previousFileType == MediaFileType.OPUS));
+            fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.FLAC, Translator._("FLAC (Audio)"), previousFileType == MediaFileType.FLAC));
+            fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.WAV, Translator._("WAV (Audio)"), previousFileType == MediaFileType.WAV));
+            fileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.OGG, Translator._("OGG (Audio)"), previousFileType == MediaFileType.OGG));
+            var subtitleLanguages = new List<SelectionItem<SubtitleLanguage>>();
+            foreach (var subtitle in res.Media.SelectMany(m => m.Subtitles).Distinct())
+            {
+                subtitleLanguages.Add(new SelectionItem<SubtitleLanguage>(subtitle, subtitle.ToString(Translator), PreviousDownloadOptions.SubtitleLanguages.Contains(subtitle)));
+            }
+            _fileTypesMap[res.Id] = fileTypes;
+            _subtitleLanguagesMap[res.Id] = subtitleLanguages;
             return res;
         }
         catch (TaskCanceledException)
@@ -217,41 +317,50 @@ public class AddDownloadDialogController
         }
     }
 
-    public IReadOnlyCollection<SelectionItem<Format>> GetAvailableAudioFormats(int discoveryId, int mediaIndex, SelectionItem<MediaFileType> selectedFileType)
+    public IReadOnlyCollection<SelectionItem<double>> GetAvailableAudioBitrates(int discoveryId)
     {
-        if (!_audioFormatsMap.TryGetValue((discoveryId, mediaIndex), out var formats))
+        if (!_audioBitratesMap.TryGetValue(discoveryId, out var bitrates))
+        {
+            return [];
+        }
+        return bitrates;
+    }
+
+    public IReadOnlyCollection<SelectionItem<Format>> GetAvailableAudioFormats(int discoveryId, SelectionItem<MediaFileType> selectedFileType)
+    {
+        if (!_audioFormatsMap.TryGetValue(discoveryId, out var formats))
         {
             return [];
         }
         var previousId = PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value];
-        foreach(var format in formats)
+        foreach (var format in formats)
         {
             format.ShouldSelect = format.Value.Id == previousId;
         }
         return formats;
     }
 
-    public IReadOnlyCollection<SelectionItem<MediaFileType>> GetAvailableFileTypes(int discoveryId, int mediaIndex)
+    public IReadOnlyCollection<SelectionItem<MediaFileType>> GetAvailableFileTypes(int discoveryId)
     {
-        if (!_fileTypesMap.TryGetValue((discoveryId, mediaIndex), out var fileTypes))
+        if (!_fileTypesMap.TryGetValue(discoveryId, out var fileTypes))
         {
             return [];
         }
         return fileTypes;
     }
 
-    public IReadOnlyCollection<SelectionItem<SubtitleLanguage>> GetAvailableSubtitleLanguages(int discoveryId, int mediaIndex)
+    public IReadOnlyCollection<SelectionItem<SubtitleLanguage>> GetAvailableSubtitleLanguages(int discoveryId)
     {
-        if (!_subtitleLanguagesMap.TryGetValue((discoveryId, mediaIndex), out var languages))
+        if (!_subtitleLanguagesMap.TryGetValue(discoveryId, out var languages))
         {
             return [];
         }
         return languages;
     }
 
-    public IReadOnlyCollection<SelectionItem<Format>> GetAvailableVideoFormats(int discoveryId, int mediaIndex, SelectionItem<MediaFileType> selectedFileType)
+    public IReadOnlyCollection<SelectionItem<Format>> GetAvailableVideoFormats(int discoveryId, SelectionItem<MediaFileType> selectedFileType)
     {
-        if (!_videoFormatsMap.TryGetValue((discoveryId, mediaIndex), out var formats))
+        if (!_videoFormatsMap.TryGetValue(discoveryId, out var formats))
         {
             return [];
         }
@@ -263,13 +372,22 @@ public class AddDownloadDialogController
         return formats;
     }
 
+    public IReadOnlyCollection<SelectionItem<VideoResolution>> GetAvailableVideoResolutions(int discoveryId)
+    {
+        if (!_videoResolutionsMap.TryGetValue(discoveryId, out var resolutions))
+        {
+            return [];
+        }
+        return resolutions;
+    }
+
     public string GetMediaTitle(int discoveryId, int mediaIndex)
     {
-        if (!_mediaMap.TryGetValue((discoveryId, mediaIndex), out var media))
+        if (!_mediaMap.TryGetValue(discoveryId, out var media) || mediaIndex < 0 || mediaIndex > media.Count)
         {
             return string.Empty;
         }
-        return media.Title;
+        return media.ElementAt(mediaIndex).Title;
     }
 
     public bool GetShouldShowDownloadImmediatelyTeach()
@@ -282,9 +400,14 @@ public class AddDownloadDialogController
         return false;
     }
 
-    public bool GetShouldShowFileTypeTeach(int discoveryId, int mediaIndex, SelectionItem<MediaFileType> selectedFileType)
+    public bool GetShouldShowFileTypeTeach(int discoveryId, SelectionItem<MediaFileType> selectedFileType)
     {
-        if (!PreviousDownloadOptions.FileType.IsGeneric && selectedFileType.Value.IsGeneric && !ShowTeachMap.TryGetValue(AddDownloadTeachType.FileType, out var _))
+        if (!_mediaMap.TryGetValue(discoveryId, out var media))
+        {
+            return false;
+        }
+        var previousFileType = media.Any(m => m.Type == MediaType.Video) ? PreviousDownloadOptions.FullFileType : PreviousDownloadOptions.AudioOnlyFileType;
+        if (!previousFileType.IsGeneric && selectedFileType.Value.IsGeneric && !ShowTeachMap.TryGetValue(AddDownloadTeachType.FileType, out var _))
         {
             ShowTeachMap[AddDownloadTeachType.FileType] = false;
             return true;

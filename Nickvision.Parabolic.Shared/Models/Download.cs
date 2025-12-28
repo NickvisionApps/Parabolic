@@ -244,14 +244,6 @@ public partial class Download : IDisposable
             };
             formatSort += ",quality";
         }
-        if (downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.AudioFormat is not null && Options.AudioFormat == Format.BestAudio)
-        {
-            if (!string.IsNullOrEmpty(formatSort))
-            {
-                formatSort += ',';
-            }
-            formatSort += "+acodec:mp4a";
-        }
         if (!string.IsNullOrEmpty(formatSort))
         {
             arguments.Add("--format-sort");
@@ -386,28 +378,23 @@ public partial class Download : IDisposable
             }
         }
         var formatString = string.Empty;
-        if (Options.VideoFormat is not null && Options.VideoFormat != Format.NoneVideo)
+        if (Options.VideoFormat is not null && Options.VideoFormat != Format.NoneVideo && !Options.FileType.IsAudio)
         {
-            if (Options.VideoFormat == Format.BestVideo)
+            formatString += Options.VideoFormat switch
             {
-                formatString += "bv";
-                if (Options.AudioFormat is not null && Options.AudioFormat == Format.NoneAudio)
-                {
-                    formatString += "*";
-                }
-            }
-            else if (Options.VideoFormat == Format.WorstVideo)
+                var f when f == Format.BestVideo => "bestvideo*",
+                var f when f == Format.WorstVideo => "worstvideo*",
+                _ => Options.VideoFormat.Id
+            };
+        }
+        else if (Options.VideoResolution is not null && !Options.FileType.IsAudio)
+        {
+            formatString += Options.VideoResolution switch
             {
-                formatString += "wv";
-                if (Options.AudioFormat is not null && Options.AudioFormat == Format.NoneAudio)
-                {
-                    formatString += "*";
-                }
-            }
-            else
-            {
-                formatString += Options.VideoFormat.Id;
-            }
+                var v when v == VideoResolution.Best => "bestvideo*",
+                var v when v == VideoResolution.Worst => "worstvideo*",
+                _ => $"bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
+            };
         }
         if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
         {
@@ -415,28 +402,33 @@ public partial class Download : IDisposable
             {
                 formatString += "+";
             }
+            else if (Options.FileType.IsVideo)
+            {
+                formatString += Options.AudioFormat switch
+                {
+                    var f when f == Format.WorstAudio => "worstvideo*+",
+                    _ => "bestvideo*+",
+                };
+            }
             formatString += Options.AudioFormat switch
             {
-                var f when f == Format.BestAudio => "ba",
-                var f when f == Format.WorstAudio => "wa",
+                var f when f == Format.BestAudio => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() ? "bestaudio[acodec!=opus]" : "bestaudio",
+                var f when f == Format.WorstAudio => "worstaudio",
                 _ => Options.AudioFormat.Id
             };
         }
-        if (formatString == "bv*" && Options.FileType.IsAudio)
+        else if (Options.AudioBitrate.HasValue)
         {
-            formatString += "+ba";
-        }
-        else if (formatString == "wv*" && Options.FileType.IsAudio)
-        {
-            formatString += "+wa";
-        }
-        if (formatString == "bv+ba" || formatString == "bv*+ba" || formatString == "bv*" || formatString == "ba")
-        {
-            formatString += "/b";
-        }
-        else if (formatString == "wv+wa" || formatString == "wv*+wa" || formatString == "wv*" || formatString == "wa")
-        {
-            formatString += "/w";
+            if (!string.IsNullOrEmpty(formatString))
+            {
+                formatString += "+";
+            }
+            formatString += Options.AudioBitrate.Value switch
+            {
+                var b when b == double.MaxValue => "bestaudio",
+                var b when b == -1.0 => "worstaudio",
+                _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]/worstaudio"
+            };
         }
         if (!string.IsNullOrEmpty(formatString))
         {
@@ -588,7 +580,7 @@ public partial class Download : IDisposable
             {
                 var line = e.Data;
 #if OS_WINDOWS
-                foreach(var l in e.Data.Split('\r', StringSplitOptions.RemoveEmptyEntries).Reverse())
+                foreach (var l in e.Data.Split('\r', StringSplitOptions.RemoveEmptyEntries).Reverse())
                 {
                     var fields = l.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                     if (l.Contains("[download]") || (fields.Length == 5 && fields[1].Split('/').Length == 2))

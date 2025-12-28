@@ -426,4 +426,56 @@ public class DownloadTests
         Assert.IsFalse(string.IsNullOrEmpty(download.Log));
         Assert.IsTrue(File.Exists(Path.Combine(_downloadDirectory!, "14.mp4")));
     }
+
+    [TestMethod]
+    public async Task Case015_YouTube_LostSky_Playlist()
+    {
+        var done = false;
+        using var download = new Download(new DownloadOptions(new Uri("https://www.youtube.com/watch?v=L7kF4MXXCoA"))
+        {
+            FileType = MediaFileType.MP4,
+            VideoResolution = new VideoResolution(1920, 1080),
+            AudioBitrate = double.MaxValue,
+            SaveFolder = _downloadDirectory!,
+            SaveFilename = "15"
+        }, null);
+        Assert.AreEqual(DownloadStatus.Queued, download.Status);
+        Assert.AreEqual(Path.Combine(_downloadDirectory!, "15.mp4"), download.FilePath);
+        download.Completed += (_, _) => done = true;
+        download.Start(_ytdlpExecutableService!.ExecutablePath ?? "yt-dlp", _downloaderOptions!);
+        Assert.AreEqual(DownloadStatus.Running, download.Status);
+        while (!done)
+        {
+            await Task.Delay(500);
+        }
+        Assert.AreEqual(DownloadStatus.Success, download.Status, download.Log);
+        Assert.IsFalse(string.IsNullOrEmpty(download.Log));
+        Assert.IsTrue(File.Exists(Path.Combine(_downloadDirectory!, "15.mp4")));
+    }
+
+    [TestMethod]
+    public async Task Case016_SoundCloud_Dominator_Playlist()
+    {
+        var done = false;
+        using var download = new Download(new DownloadOptions(new Uri("https://soundcloud.com/rlgrime/dominator"))
+        {
+            FileType = MediaFileType.MP3,
+            VideoResolution = VideoResolution.Best,
+            AudioBitrate = double.MaxValue,
+            SaveFolder = _downloadDirectory!,
+            SaveFilename = "16"
+        }, null);
+        Assert.AreEqual(DownloadStatus.Queued, download.Status);
+        Assert.AreEqual(Path.Combine(_downloadDirectory!, "16.mp3"), download.FilePath);
+        download.Completed += (_, _) => done = true;
+        download.Start(_ytdlpExecutableService!.ExecutablePath ?? "yt-dlp", _downloaderOptions!);
+        Assert.AreEqual(DownloadStatus.Running, download.Status);
+        while (!done)
+        {
+            await Task.Delay(500);
+        }
+        Assert.AreEqual(DownloadStatus.Success, download.Status, download.Log);
+        Assert.IsFalse(string.IsNullOrEmpty(download.Log));
+        Assert.IsTrue(File.Exists(Path.Combine(_downloadDirectory!, "16.mp3")));
+    }
 }

@@ -9,7 +9,8 @@ public class PreviousDownloadOptions
 
     public bool DownloadImmediately { get; set; }
     public string SaveFolder { get; set; }
-    public MediaFileType FileType { get; set; }
+    public MediaFileType FullFileType { get; set; }
+    public MediaFileType AudioOnlyFileType { get; set; }
     public Dictionary<MediaFileType, string> VideoFormatIds { get; set; }
     public Dictionary<MediaFileType, string> AudioFormatIds { get; set; }
     public bool SplitChapters { get; set; }
@@ -18,6 +19,8 @@ public class PreviousDownloadOptions
     public bool WritePlaylistFile { get; set; }
     public bool NumberTitles { get; set; }
     public IEnumerable<SubtitleLanguage> SubtitleLanguages { get; set; }
+    public double AudioBitrate { get; set; }
+    public VideoResolution VideoResolution { get; set; }
 
     static PreviousDownloadOptions()
     {
@@ -28,7 +31,8 @@ public class PreviousDownloadOptions
     {
         DownloadImmediately = false;
         SaveFolder = UserDirectories.Downloads;
-        FileType = MediaFileType.MP4;
+        FullFileType = MediaFileType.MP4;
+        AudioOnlyFileType = MediaFileType.MP3;
         VideoFormatIds = new Dictionary<MediaFileType, string>()
         {
             { MediaFileType.Video, Format.BestVideo.Id },
@@ -67,5 +71,7 @@ public class PreviousDownloadOptions
         WritePlaylistFile = false;
         NumberTitles = false;
         SubtitleLanguages = [];
+        AudioBitrate = double.MaxValue;
+        VideoResolution = VideoResolution.Best;
     }
 }

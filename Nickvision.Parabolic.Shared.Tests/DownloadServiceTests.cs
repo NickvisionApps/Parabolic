@@ -6,7 +6,6 @@ using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
-using System.Formats.Asn1;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -109,7 +108,7 @@ public class DownloadServiceTests
     {
         Assert.IsNotNull(_lastProgressChangedEventArgs);
         Assert.IsNull(_downloadCompletedEventArgs);
-        while(_downloadCompletedEventArgs is null)
+        while (_downloadCompletedEventArgs is null)
         {
             await Task.Delay(3000);
         }

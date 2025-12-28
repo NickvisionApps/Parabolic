@@ -56,7 +56,7 @@ public class RecoveryServiceTests
         AudioFormat = Format.WorstAudio,
         SaveFolder = "/home/user/Videos",
         SaveFilename = "example_video.mp4",
-        SubtitleLanguages = [ new SubtitleLanguage("en", false), new SubtitleLanguage("es", true) ],
+        SubtitleLanguages = [new SubtitleLanguage("en", false), new SubtitleLanguage("es", true)],
         SplitChapters = false,
         ExportDescription = true,
         PostProcessorArgument = new PostProcessorArgument("Test", PostProcessor.None, Executable.FFmpeg, "-h 1"),

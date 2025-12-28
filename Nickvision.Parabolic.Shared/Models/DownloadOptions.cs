@@ -19,6 +19,8 @@ public class DownloadOptions
     public bool ExportDescription { get; set; }
     public PostProcessorArgument? PostProcessorArgument { get; set; }
     public TimeFrame? TimeFrame { get; set; }
+    public VideoResolution? VideoResolution { get; set; }
+    public double? AudioBitrate { get; set; }
 
     public DownloadOptions(Uri url)
     {
@@ -35,9 +37,11 @@ public class DownloadOptions
         ExportDescription = false;
         PostProcessorArgument = null;
         TimeFrame = null;
+        VideoResolution = null;
+        AudioBitrate = null;
     }
 
     public override int GetHashCode() => HashCode.Combine(
         HashCode.Combine(Url, Credential, FileType, PlaylistPosition, VideoFormat, AudioFormat, SaveFolder, SaveFilename),
-        SubtitleLanguages, SplitChapters, ExportDescription, PostProcessorArgument, TimeFrame);
+        SubtitleLanguages, SplitChapters, ExportDescription, PostProcessorArgument, TimeFrame, VideoResolution, AudioBitrate);
 }

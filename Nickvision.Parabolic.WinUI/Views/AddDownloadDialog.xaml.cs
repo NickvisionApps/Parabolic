@@ -9,7 +9,6 @@ using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -121,9 +120,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         ViewStack.SelectedIndex = (int)Pages.Loading;
         DispatcherQueue.TryEnqueue(async () => await DiscoverMediaAsync(cancellationToken.Token));
         result = await base.ShowAsync();
-        if(result == ContentDialogResult.Primary)
+        if (result == ContentDialogResult.Primary)
         {
-            if(_downloadPlaylist)
+            if (_downloadPlaylist)
             {
                 await DownloadPlaylistAsync();
             }
@@ -170,14 +169,14 @@ public sealed partial class AddDownloadDialog : ContentDialog
         if (!result.IsPlaylist)
         {
             var media = result.Media[0];
-            var subtitles = _controller.GetAvailableSubtitleLanguages(_discoveryId, 0);
+            var subtitles = _controller.GetAvailableSubtitleLanguages(_discoveryId);
             _downloadPlaylist = false;
             ViewStack.SelectedIndex = (int)Pages.Single;
             ViewStackSingle.SelectedIndex = (int)SinglePages.General;
             ViewStackSingleSubtitles.SelectedIndex = subtitles.Any() ? 1 : 0;
             TxtSingleSaveFilename.Text = media.Title;
             TxtSingleSaveFolder.Text = !string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : _controller.PreviousDownloadOptions.SaveFolder;
-            CmbSingleFileType.ItemsSource = _controller.GetAvailableFileTypes(_discoveryId, 0);
+            CmbSingleFileType.ItemsSource = _controller.GetAvailableFileTypes(_discoveryId);
             CmbSingleFileType.SelectSelectionItem<MediaFileType>();
             ListSingleSubtitles.ItemsSource = subtitles;
             ListSingleSubtitles.SelectSelectionItems<SubtitleLanguage>();
@@ -208,7 +207,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private async Task DownloadSingleAsync() => await _controller.AddSingleDownloadAsync(_discoveryId, 0,
+    private async Task DownloadSingleAsync() => await _controller.AddSingleDownloadAsync(_discoveryId,
         TxtSingleSaveFilename.Text,
         TxtSingleSaveFolder.Text,
         (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!,
@@ -225,7 +224,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private async Task DownloadPlaylistAsync()
     {
-        
+
     }
 
     private void TxtUrl_TextChanged(object sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
@@ -280,10 +279,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private void CmbSingleFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        TeachSingleFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryId, 0, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
-        CmbSingleVideoFormat.ItemsSource = _controller.GetAvailableVideoFormats(_discoveryId, 0, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
+        TeachSingleFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryId, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
+        CmbSingleVideoFormat.ItemsSource = _controller.GetAvailableVideoFormats(_discoveryId, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
         CmbSingleVideoFormat.SelectSelectionItem<Format>();
-        CmbSingleAudioFormat.ItemsSource = _controller.GetAvailableAudioFormats(_discoveryId, 0, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
+        CmbSingleAudioFormat.ItemsSource = _controller.GetAvailableAudioFormats(_discoveryId, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
         CmbSingleAudioFormat.SelectSelectionItem<Format>();
 
     }

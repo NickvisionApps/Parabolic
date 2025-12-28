@@ -6,15 +6,15 @@ namespace Nickvision.Parabolic.Shared.Models;
 public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoResolution>
 {
     public static VideoResolution Best { get; }
+    public static VideoResolution Worst { get; }
 
     public int Width { get; }
     public int Height { get; }
 
-    public bool IsValid => Width > 0 && Height > 0;
-
     static VideoResolution()
     {
         Best = new VideoResolution(int.MaxValue, int.MaxValue);
+        Worst = new VideoResolution(-1, -1);
     }
 
     public VideoResolution(int width, int height)
@@ -28,6 +28,10 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
         if (value == "Best" || value == translator._("Best"))
         {
             return Best;
+        }
+        else if (value == "Worst" || value == translator._("Worst"))
+        {
+            return Worst;
         }
         var parts = value.Split('x');
         if (parts.Length != 2)

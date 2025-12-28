@@ -11,7 +11,7 @@ public static class ComboBoxExtensions
     {
         public void SelectSelectionItem<T>()
         {
-            if(comboBox.ItemsSource is IReadOnlyCollection<SelectionItem<T>> items)
+            if (comboBox.ItemsSource is IReadOnlyCollection<SelectionItem<T>> items)
             {
                 comboBox.SelectedItem = items.FirstOrDefault(item => item.ShouldSelect);
             }
