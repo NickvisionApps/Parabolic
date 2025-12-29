@@ -9,6 +9,7 @@ using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -263,10 +264,19 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtSingleEndTime.Text
     );
 
-    private async Task DownloadPlaylistAsync()
-    {
-
-    }
+    private async Task DownloadPlaylistAsync() => await _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
+        ListPlaylistItems.SelectedItems.Cast<MediaSelectionItem>(),
+        TxtPlaylistSaveFolder.Text,
+        (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!,
+        (CmbPlaylistSuggestedVideoResolution.SelectedItem as SelectionItem<VideoResolution>)!,
+        (CmbPlaylistSuggestedAudioBitrate.SelectedItem as SelectionItem<double>)!,
+        ListPlaylistSubtitles.SelectedItems.Cast<SelectionItem<SubtitleLanguage>>(),
+        TglPlaylistExportM3U.IsOn,
+        TglPlaylistSplitChapters.IsOn,
+        TglPlaylistExportDescription.IsOn,
+        TglPlaylistExcludeFromHistory.IsOn,
+        (CmbPlaylistPostProcessorArgument.SelectedItem as SelectionItem<PostProcessorArgument?>)!
+    );
 
     private void TxtUrl_TextChanged(object sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
 
@@ -356,7 +366,20 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private void CmbPlaylistFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
 
+    private void BtnPlaylistSelectAllItems_Click(object sender, RoutedEventArgs e) => ListPlaylistItems.SelectAll();
+
+    private void BtnPlaylistDeselectAllItems_Click(object sender, RoutedEventArgs e) => ListPlaylistItems.DeselectAll();
+
     private void BtnPlaylistSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 
     private void BtnPlaylistDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
+
+    private void BtnPlaylistRevertFilename_Click(object sender, RoutedEventArgs e)
+    {
+        var index = (int)(sender as Button)!.Tag;
+        if (ListPlaylistItems.ItemsSource is IReadOnlyList<MediaSelectionItem> items)
+        {
+            items[index].Filename = items[index].Label;
+        }
+    }
 }

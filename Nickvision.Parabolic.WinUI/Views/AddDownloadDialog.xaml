@@ -252,7 +252,7 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Button x:Name="BtnPlaylistSelectAllItems" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch">
+                                <Button x:Name="BtnPlaylistSelectAllItems" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Click="BtnPlaylistSelectAllItems_Click">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;" FontSize="18"/>
@@ -262,7 +262,7 @@
                                     </Button.Content>
                                 </Button>
 
-                                <Button x:Name="BtnPlaylistDeselectAllItems" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
+                                <Button x:Name="BtnPlaylistDeselectAllItems" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Click="BtnPlaylistDeselectAllItems_Click">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;" FontSize="18"/>
@@ -274,8 +274,43 @@
 
                                 <ToggleSwitch x:Name="TglPlaylistNumberTitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-                                <ListView x:Name="ListPlaylistItems" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                                          DisplayMemberPath="Label" SelectionMode="Multiple"/>
+                                <ListView x:Name="ListPlaylistItems" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionMode="Multiple">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnSpacing="6">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBox Grid.Column="0" Text="{Binding Filename, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                                <Button Grid.Column="1" Click="BtnPlaylistRevertFilename_Click" Tag="{Binding Value, Mode=OneTime}">
+                                                    <Button.Content>
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A7;" FontSize="18"/>
+                                                    </Button.Content>
+                                                </Button>
+
+                                                <Button Grid.Column="2">
+                                                    <Button.Content>
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE712;" FontSize="18"/>
+                                                    </Button.Content>
+
+                                                    <Button.Flyout>
+                                                        <Flyout Placement="Bottom">
+                                                            <StackPanel Orientation="Vertical" Spacing="12" HorizontalAlignment="Stretch">
+                                                                <TextBox Header="{Binding StartTimeHeader, Mode=OneTime}" PlaceholderText="{Binding StartTime, Mode=OneTime}" Text="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                                                <TextBox Header="{Binding EndTimeHeader, Mode=OneTime}" PlaceholderText="{Binding EndTime, Mode=OneTime}" Text="{Binding EndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                            </StackPanel>
+                                                        </Flyout>
+                                                    </Button.Flyout>
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </Grid>
 
                             <nickvision:ViewStack x:Name="ViewStackPlaylistSubtitles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

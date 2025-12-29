@@ -435,7 +435,7 @@ public partial class Download : IDisposable
             arguments.Add("--format");
             arguments.Add(formatString);
         }
-        if (Options.SubtitleLanguages.Count() > 0)
+        if (Options.SubtitleLanguages.Count > 0)
         {
             var languages = string.Empty;
             foreach (var language in Options.SubtitleLanguages)
