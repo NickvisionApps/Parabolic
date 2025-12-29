@@ -9,9 +9,9 @@ public static class ComboBoxExtensions
 {
     extension(ComboBox comboBox)
     {
-        public void SelectSelectionItem<T>()
+        public void SelectSelectionItem()
         {
-            if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<T>> items)
+            if (comboBox.ItemsSource is IReadOnlyList<ISelectionItem> items)
             {
                 comboBox.SelectedItem = items.FirstOrDefault(item => item.ShouldSelect);
             }

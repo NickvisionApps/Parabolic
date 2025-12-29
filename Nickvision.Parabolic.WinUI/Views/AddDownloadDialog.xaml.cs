@@ -72,7 +72,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TeachDownloadImmediately.Subtitle = _controller.Translator._("Parabolic will download media based off of previously configured options and sensable defaults. Options including save folder, format, and subtitle selection will not be shown.");
         LblLoading.Text = _controller.Translator._("This may take some time...");
         CmbCredential.ItemsSource = _controller.AvailableCredentials;
-        CmbCredential.SelectSelectionItem<Credential?>();
+        CmbCredential.SelectSelectionItem();
         NavViewItemSingleGeneral.Text = _controller.Translator._("General");
         NavViewItemSingleSubtitles.Text = _controller.Translator._("Subtitles");
         NavViewItemSingleAdvanced.Text = _controller.Translator._("Advanced");
@@ -109,6 +109,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TeachPlaylistFileType.Subtitle = _controller.Translator._("Generic file types do not fully support embedding thumbnails and subtitles. If neccessary, please select a specific file type that is known to support embedding to prevent separate files from being written.");
         CmbPlaylistSuggestedVideoResolution.Header = _controller.Translator._("Suggested Video Resolution");
         CmbPlaylistSuggestedAudioBitrate.Header = _controller.Translator._("Suggested Audio Bitrate");
+        LblPlaylistSelectAllItems.Text = _controller.Translator._("Select All");
+        LblPlaylistDeselectAllItems.Text = _controller.Translator._("Deselect All");
+        TglPlaylistNumberTitles.OnContent = _controller.Translator._("Number Titles");
+        TglPlaylistNumberTitles.OffContent = _controller.Translator._("Number Titles");
         StatusPlaylistSubtitles.Title = _controller.Translator._("No Subtitles");
         StatusPlaylistSubtitles.Description = _controller.Translator._("No subtitles were found in this playlist.");
         LblPlaylistSelectAllSubtitles.Text = _controller.Translator._("Select All");
@@ -198,13 +202,13 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbSingleVideoFormat.ItemsSource = _discoveryContext.VideoFormats;
             CmbSingleAudioFormat.ItemsSource = _discoveryContext.AudioFormats;
             CmbSingleFileType.ItemsSource = _discoveryContext.FileTypes;
-            CmbSingleFileType.SelectSelectionItem<MediaFileType>();
+            CmbSingleFileType.SelectSelectionItem();
             ListSingleSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
-            ListSingleSubtitles.SelectSelectionItems<SubtitleLanguage>();
+            ListSingleSubtitles.SelectSelectionItems();
             TglSingleSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglSingleExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
             CmbSinglePostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
-            CmbSinglePostProcessorArgument.SelectSelectionItem<PostProcessorArgument?>();
+            CmbSinglePostProcessorArgument.SelectSelectionItem();
             TxtSingleStartTime.PlaceholderText = _discoveryContext.Items[0].StartTime;
             TxtSingleStartTime.Text = _discoveryContext.Items[0].StartTime;
             TxtSingleEndTime.PlaceholderText = _discoveryContext.Items[0].EndTime;
@@ -222,18 +226,20 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ViewStackPlaylistSubtitles.SelectedIndex = _discoveryContext.SubtitleLanguages.Any() ? 1 : 0;
             TxtPlaylistSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
             CmbPlaylistFileType.ItemsSource = _discoveryContext.FileTypes;
-            CmbPlaylistFileType.SelectSelectionItem<MediaFileType>();
+            CmbPlaylistFileType.SelectSelectionItem();
             CmbPlaylistSuggestedVideoResolution.ItemsSource = _discoveryContext.VideoResolutions;
-            CmbPlaylistSuggestedVideoResolution.SelectSelectionItem<VideoResolution>();
+            CmbPlaylistSuggestedVideoResolution.SelectSelectionItem();
             CmbPlaylistSuggestedAudioBitrate.ItemsSource = _discoveryContext.AudioBitrates;
-            CmbPlaylistSuggestedAudioBitrate.SelectSelectionItem<double>();
+            CmbPlaylistSuggestedAudioBitrate.SelectSelectionItem();
+            ListPlaylistItems.ItemsSource = _discoveryContext.Items;
+            ListPlaylistItems.SelectSelectionItems();
             ListPlaylistSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
-            ListPlaylistSubtitles.SelectSelectionItems<SubtitleLanguage>();
+            ListPlaylistSubtitles.SelectSelectionItems();
             TglPlaylistExportM3U.IsOn = _controller.PreviousDownloadOptions.ExportM3U;
             TglPlaylistSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglPlaylistExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
             CmbPlaylistPostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
-            CmbPlaylistPostProcessorArgument.SelectSelectionItem<PostProcessorArgument?>();
+            CmbPlaylistPostProcessorArgument.SelectSelectionItem();
             if (TglDownloadImmediately.IsOn)
             {
                 await DownloadPlaylistAsync();
@@ -348,10 +354,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void CmbPlaylistFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
-    }
+    private void CmbPlaylistFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
 
     private void BtnPlaylistSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 

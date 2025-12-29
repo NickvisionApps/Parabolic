@@ -16,12 +16,11 @@ public class PreviousDownloadOptions
     public bool SplitChapters { get; set; }
     public bool ExportDescription { get; set; }
     public string PostProcessorArgumentName { get; set; }
-    public bool WritePlaylistFile { get; set; }
+    public bool ExportM3U { get; set; }
     public bool NumberTitles { get; set; }
     public IReadOnlyList<SubtitleLanguage> SubtitleLanguages { get; set; }
     public double AudioBitrate { get; set; }
     public VideoResolution VideoResolution { get; set; }
-    public bool ExportM3U { get; set; }
 
     static PreviousDownloadOptions()
     {
@@ -69,7 +68,6 @@ public class PreviousDownloadOptions
         SplitChapters = false;
         ExportDescription = false;
         PostProcessorArgumentName = string.Empty;
-        WritePlaylistFile = false;
         NumberTitles = false;
         SubtitleLanguages = [];
         AudioBitrate = double.MaxValue;

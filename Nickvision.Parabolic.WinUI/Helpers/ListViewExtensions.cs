@@ -9,9 +9,9 @@ public static class ListViewExtensions
 {
     extension(ListView listView)
     {
-        public void SelectSelectionItems<T>()
+        public void SelectSelectionItems()
         {
-            if (listView.ItemsSource is IReadOnlyList<SelectionItem<T>> items)
+            if (listView.ItemsSource is IReadOnlyList<ISelectionItem> items)
             {
                 foreach (var item in items.Where(i => i.ShouldSelect))
                 {

@@ -241,7 +241,41 @@
                             </Grid>
 
                             <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="BtnPlaylistSelectAllItems" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;" FontSize="18"/>
+
+                                            <TextBlock x:Name="LblPlaylistSelectAllItems"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="BtnPlaylistDeselectAllItems" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;" FontSize="18"/>
+
+                                            <TextBlock x:Name="LblPlaylistDeselectAllItems"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                                <ToggleSwitch x:Name="TglPlaylistNumberTitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                                <ListView x:Name="ListPlaylistItems" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                          DisplayMemberPath="Label" SelectionMode="Multiple"/>
                             </Grid>
 
                             <nickvision:ViewStack x:Name="ViewStackPlaylistSubtitles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

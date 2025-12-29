@@ -1,10 +1,10 @@
 ﻿namespace Nickvision.Parabolic.Shared.Models;
 
-public class SelectionItem<T>
+public class SelectionItem<T> : ISelectionItem
 {
     public T Value { get; }
     public string Label { get; }
-    public bool ShouldSelect { get; set; }
+    public bool ShouldSelect { get; }
 
     public SelectionItem(T value, string label, bool shouldSelect)
     {
