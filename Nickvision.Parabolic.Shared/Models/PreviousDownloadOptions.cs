@@ -21,6 +21,7 @@ public class PreviousDownloadOptions
     public IEnumerable<SubtitleLanguage> SubtitleLanguages { get; set; }
     public double AudioBitrate { get; set; }
     public VideoResolution VideoResolution { get; set; }
+    public bool ExportM3U { get; set; }
 
     static PreviousDownloadOptions()
     {

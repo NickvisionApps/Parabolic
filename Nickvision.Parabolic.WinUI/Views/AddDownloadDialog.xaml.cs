@@ -9,6 +9,7 @@ using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,6 +30,14 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private enum SinglePages
     {
         General = 0,
+        Subtitles,
+        Advanced
+    }
+
+    private enum PlaylistPages
+    {
+        General = 0,
+        Items,
         Subtitles,
         Advanced
     }
@@ -92,6 +101,31 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbSinglePostProcessorArgument.Header = _controller.Translator._("Post Processor Argument");
         TxtSingleStartTime.Header = _controller.Translator._("Start Time");
         TxtSingleEndTime.Header = _controller.Translator._("End Time");
+        NavViewItemPlaylistGeneral.Text = _controller.Translator._("General");
+        NavViewItemPlaylistItems.Text = _controller.Translator._("Items");
+        NavViewItemPlaylistSubtitles.Text = _controller.Translator._("Subtitles");
+        NavViewItemPlaylistAdvanced.Text = _controller.Translator._("Advanced");
+        TxtPlaylistSaveFolder.Header = _controller.Translator._("Save Folder");
+        ToolTipService.SetToolTip(BtnPlaylistSelectSaveFolder, _controller.Translator._("Select Save Folder"));
+        CmbPlaylistFileType.Header = _controller.Translator._("File Type");
+        TeachPlaylistFileType.Title = _controller.Translator._("Warning");
+        TeachPlaylistFileType.Subtitle = _controller.Translator._("Generic file types do not fully support embedding thumbnails and subtitles. If neccessary, please select a specific file type that is known to support embedding to prevent separate files from being written.");
+        CmbPlaylistSuggestedVideoResolution.Header = _controller.Translator._("Suggested Video Resolution");
+        CmbPlaylistSuggestedAudioBitrate.Header = _controller.Translator._("Suggested Audio Bitrate");
+        StatusPlaylistSubtitles.Title = _controller.Translator._("No Subtitles");
+        StatusPlaylistSubtitles.Description = _controller.Translator._("No subtitles were found in this playlist.");
+        LblPlaylistSelectAllSubtitles.Text = _controller.Translator._("Select All");
+        LblPlaylistDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
+        LblPlaylistSubtitleNote.Text = _controller.Translator._("Note: Some playlist items may not contain subtitles for a selected language.");
+        TglPlaylistExportM3U.OnContent = _controller.Translator._("Export M3U Playlist File");
+        TglPlaylistExportM3U.OffContent = _controller.Translator._("Export M3U Playlist File");
+        TglPlaylistSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
+        TglPlaylistSplitChapters.OffContent = _controller.Translator._("Split into Files by Chapters");
+        TglPlaylistExportDescription.OnContent = _controller.Translator._("Export Description to File");
+        TglPlaylistExportDescription.OffContent = _controller.Translator._("Export Description to File");
+        TglPlaylistExcludeFromHistory.OnContent = _controller.Translator._("Exclude from History");
+        TglPlaylistExcludeFromHistory.OffContent = _controller.Translator._("Exclude from History");
+        CmbPlaylistPostProcessorArgument.Header = _controller.Translator._("Post Processor Argument");
     }
 
     public async new Task<ContentDialogResult> ShowAsync()
@@ -140,42 +174,33 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private async Task DiscoverMediaAsync(CancellationToken cancellationToken)
     {
-        DiscoveryResult? result = null;
-        if ((CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value is null)
+        Credential? credential = null;
+        if (!string.IsNullOrEmpty(TxtUsername.Text) && !string.IsNullOrEmpty(TxtPassword.Password))
         {
-            Credential? credential = null;
-            if (!string.IsNullOrEmpty(TxtUsername.Text) && !string.IsNullOrEmpty(TxtPassword.Password))
-            {
-                credential = new Credential("manual", TxtUsername.Text, TxtPassword.Password);
-            }
-            result = await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken);
+            credential = new Credential("manual", TxtUsername.Text, TxtPassword.Password);
         }
-        else
-        {
-            result = await _controller.DiscoverAsync(new Uri(TxtUrl.Text), (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value!, cancellationToken);
-        }
-        if (result is null)
+        (var id, var items) = (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value is null ? await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken) : await _controller.DiscoverAsync(new Uri(TxtUrl.Text), (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value!, cancellationToken);
+        if (id == -1)
         {
             Hide();
             return;
         }
-        _discoveryId = result.Id;
+        _discoveryId = id;
         Title = _controller.Translator._("Add Download");
         PrimaryButtonText = _controller.Translator._("Download");
         CloseButtonText = _controller.Translator._("Cancel");
         SecondaryButtonText = null;
         DefaultButton = ContentDialogButton.Primary;
         _controller.PreviousDownloadOptions.DownloadImmediately = TglDownloadImmediately.IsOn;
-        if (!result.IsPlaylist)
+        if (items.Count == 1)
         {
-            var media = result.Media[0];
             var subtitles = _controller.GetAvailableSubtitleLanguages(_discoveryId);
             _downloadPlaylist = false;
             ViewStack.SelectedIndex = (int)Pages.Single;
             ViewStackSingle.SelectedIndex = (int)SinglePages.General;
             ViewStackSingleSubtitles.SelectedIndex = subtitles.Any() ? 1 : 0;
-            TxtSingleSaveFilename.Text = media.Title;
-            TxtSingleSaveFolder.Text = !string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : _controller.PreviousDownloadOptions.SaveFolder;
+            TxtSingleSaveFilename.Text = items[0].Filename;
+            TxtSingleSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
             CmbSingleFileType.ItemsSource = _controller.GetAvailableFileTypes(_discoveryId);
             CmbSingleFileType.SelectSelectionItem<MediaFileType>();
             ListSingleSubtitles.ItemsSource = subtitles;
@@ -184,10 +209,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TglSingleExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
             CmbSinglePostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
             CmbSinglePostProcessorArgument.SelectSelectionItem<PostProcessorArgument?>();
-            TxtSingleStartTime.PlaceholderText = media.TimeFrame.StartString;
-            TxtSingleStartTime.Text = media.TimeFrame.StartString;
-            TxtSingleEndTime.PlaceholderText = media.TimeFrame.EndString;
-            TxtSingleEndTime.Text = media.TimeFrame.EndString;
+            TxtSingleStartTime.PlaceholderText = items[0].StartTime;
+            TxtSingleStartTime.Text = items[0].StartTime;
+            TxtSingleEndTime.PlaceholderText = items[0].EndTime;
+            TxtSingleEndTime.Text = items[0].EndTime;
             if (TglDownloadImmediately.IsOn)
             {
                 await DownloadSingleAsync();
@@ -196,9 +221,25 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         else
         {
+            var subtitles = _controller.GetAvailableSubtitleLanguages(_discoveryId);
             _downloadPlaylist = true;
             ViewStack.SelectedIndex = (int)Pages.Playlist;
-            // Playlist
+            ViewStackPlaylist.SelectedIndex = (int)PlaylistPages.General;
+            ViewStackPlaylistSubtitles.SelectedIndex = subtitles.Any() ? 1 : 0;
+            TxtPlaylistSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
+            CmbPlaylistFileType.ItemsSource = _controller.GetAvailableFileTypes(_discoveryId);
+            CmbPlaylistFileType.SelectSelectionItem<MediaFileType>();
+            CmbPlaylistSuggestedVideoResolution.ItemsSource = _controller.GetAvailableVideoResolutions(_discoveryId);
+            CmbPlaylistSuggestedVideoResolution.SelectSelectionItem<VideoResolution>();
+            CmbPlaylistSuggestedAudioBitrate.ItemsSource = _controller.GetAvailableAudioBitrates(_discoveryId);
+            CmbPlaylistSuggestedAudioBitrate.SelectSelectionItem<double>();
+            ListPlaylistSubtitles.ItemsSource = subtitles;
+            ListPlaylistSubtitles.SelectSelectionItems<SubtitleLanguage>();
+            TglPlaylistExportM3U.IsOn = _controller.PreviousDownloadOptions.ExportM3U;
+            TglPlaylistSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
+            TglPlaylistExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
+            CmbPlaylistPostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
+            CmbPlaylistPostProcessorArgument.SelectSelectionItem<PostProcessorArgument?>();
             if (TglDownloadImmediately.IsOn)
             {
                 await DownloadPlaylistAsync();
@@ -284,10 +325,42 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbSingleVideoFormat.SelectSelectionItem<Format>();
         CmbSingleAudioFormat.ItemsSource = _controller.GetAvailableAudioFormats(_discoveryId, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
         CmbSingleAudioFormat.SelectSelectionItem<Format>();
-
     }
 
     private void BtnSingleSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListSingleSubtitles.SelectAll();
 
     private void BtnSingleDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListSingleSubtitles.DeselectAll();
+
+    private void NavViewPlaylist_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
+    {
+        ViewStackPlaylist.SelectedIndex = (NavViewPlaylist.SelectedItem.Tag as string)! switch
+        {
+            "Items" => (int)PlaylistPages.Items,
+            "Subtitles" => (int)PlaylistPages.Subtitles,
+            "Advanced" => (int)PlaylistPages.Advanced,
+            _ => (int)PlaylistPages.General
+        };
+    }
+
+    private async void BtnPlaylistSelectSaveFolder_Click(object sender, RoutedEventArgs e)
+    {
+        var picker = new FolderPicker(_windowId)
+        {
+            SuggestedStartLocation = PickerLocationId.Downloads
+        };
+        var folder = await picker.PickSingleFolderAsync();
+        if (folder is not null)
+        {
+            TxtPlaylistSaveFolder.Text = folder.Path;
+        }
+    }
+
+    private void CmbPlaylistFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryId, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
+    }
+
+    private void BtnPlaylistSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
+
+    private void BtnPlaylistDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
 }

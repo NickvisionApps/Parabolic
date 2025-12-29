@@ -7,6 +7,7 @@ using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ public class AddDownloadDialogController
     private readonly IDiscoveryService _discoveryService;
     private readonly IDownloadService _downloadService;
     private readonly Dictionary<int, Credential> _credentialMap;
+    private readonly Dictionary<int, string> _titlesMap;
     private readonly Dictionary<int, IReadOnlyCollection<Media>> _mediaMap;
     private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<double>>> _audioBitratesMap;
     private readonly Dictionary<int, IReadOnlyCollection<SelectionItem<Format>>> _audioFormatsMap;
@@ -49,6 +51,7 @@ public class AddDownloadDialogController
         _discoveryService = discoveryService;
         _downloadService = downloadService;
         _credentialMap = new Dictionary<int, Credential>();
+        _titlesMap = new Dictionary<int, string>();
         _mediaMap = new Dictionary<int, IReadOnlyCollection<Media>>();
         _audioBitratesMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<double>>>();
         _audioFormatsMap = new Dictionary<int, IReadOnlyCollection<SelectionItem<Format>>>();
@@ -77,9 +80,9 @@ public class AddDownloadDialogController
         AvailablePostProcessorArguments = availablePostProcessorArguments;
     }
 
-    public async Task AddPlaylistDownloadsAsync(int discoveryId, Dictionary<int, string> filenames, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument, string startTime, string endTime)
+    public async Task AddPlaylistDownloadsAsync(int discoveryId, IReadOnlyCollection<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
     {
-        if (!_mediaMap.TryGetValue(discoveryId, out var list))
+        if (!_titlesMap.TryGetValue(discoveryId, out var title) || !_mediaMap.TryGetValue(discoveryId, out var list))
         {
             _notificationService.Send(new AppNotification(Translator._("An error occured while adding playlist downloads"), NotificationSeverity.Error)
             {
@@ -88,20 +91,22 @@ public class AddDownloadDialogController
             });
             return;
         }
-        var options = new List<DownloadOptions>(filenames.Count);
-        foreach (var pair in filenames)
+        var downloader = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var m3uFile = new M3UFile(title, list.Any(x => !string.IsNullOrEmpty(x.SuggestedSaveFolder)) ? PathType.Absolute : PathType.Relative);
+        var options = new List<DownloadOptions>(items.Count);
+        foreach (var item in items)
         {
-            if (pair.Key < 0 || pair.Key >= list.Count)
+            if (item.Value < 0 || item.Value >= list.Count)
             {
                 continue;
             }
-            var media = list.ElementAt(pair.Key);
+            var media = list.ElementAt(item.Value);
             options.Add(new DownloadOptions(media.Url)
             {
-                Credential = _credentialMap.ContainsKey(discoveryId) ? _credentialMap[discoveryId] : null,
-                SaveFilename = pair.Value,
-                SaveFolder = !string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : saveFolder,
-                FileType = selectedFileType.Value,
+                Credential = _credentialMap.TryGetValue(discoveryId, out var credential) ? credential : null,
+                SaveFilename = string.IsNullOrEmpty(item.Filename) ? media.Title : item.Filename.SanitizeForFilename(downloader.LimitCharacters),
+                SaveFolder = Path.Combine(!string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : saveFolder, title.SanitizeForFilename(downloader.LimitCharacters)),
+                FileType = selectedFileType.Value.IsVideo && media.Type == MediaType.Audio ? PreviousDownloadOptions.AudioOnlyFileType : selectedFileType.Value,
                 PlaylistPosition = media.PlaylistPosition,
                 VideoResolution = selectedVideoResoltuion.Value,
                 AudioBitrate = selectedAudioBitrate.Value,
@@ -109,8 +114,9 @@ public class AddDownloadDialogController
                 SplitChapters = splitChapters,
                 ExportDescription = exportDescription,
                 PostProcessorArgument = selectedPostProcessorArgument.Value,
-                TimeFrame = TimeFrame.TryParse(startTime, endTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
+                TimeFrame = TimeFrame.TryParse(item.StartTime, item.EndTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
             });
+            m3uFile.Add(options);
         }
         PreviousDownloadOptions.SaveFolder = saveFolder;
         if (list.Any(m => m.Type == MediaType.Video))
@@ -123,6 +129,7 @@ public class AddDownloadDialogController
         }
         PreviousDownloadOptions.VideoResolution = selectedVideoResoltuion.Value;
         PreviousDownloadOptions.AudioBitrate = selectedAudioBitrate.Value;
+        PreviousDownloadOptions.ExportM3U = exportM3U;
         PreviousDownloadOptions.SplitChapters = splitChapters;
         PreviousDownloadOptions.ExportDescription = exportDescription;
         if (selectedPostProcessorArgument.Value is not null)
@@ -134,6 +141,10 @@ public class AddDownloadDialogController
         try
         {
             await _downloadService.AddAsync(options, excludeFromHistory);
+            if (exportM3U)
+            {
+                await m3uFile.WriteAsync(Path.Combine(saveFolder, title.SanitizeForFilename(downloader.LimitCharacters), $"{title.SanitizeForFilename(downloader.LimitCharacters)}.m3u"));
+            }
         }
         catch (Exception e)
         {
@@ -143,6 +154,13 @@ public class AddDownloadDialogController
                 ActionParam = e.Message
             });
         }
+        _credentialMap.Remove(discoveryId);
+        _titlesMap.Remove(discoveryId);
+        _mediaMap.Remove(discoveryId);
+        _audioBitratesMap.Remove(discoveryId);
+        _fileTypesMap.Remove(discoveryId);
+        _subtitleLanguagesMap.Remove(discoveryId);
+        _videoResolutionsMap.Remove(discoveryId);
     }
 
     public async Task AddSingleDownloadAsync(int discoveryId, string saveFilename, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<Format> selectedVideoFormat, SelectionItem<Format> selectedAudioFormat, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument, string startTime, string endTime)
@@ -156,11 +174,12 @@ public class AddDownloadDialogController
             });
             return;
         }
+        var downloader = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var media = list.ElementAt(0);
         var options = new DownloadOptions(media.Url)
         {
-            Credential = _credentialMap.ContainsKey(discoveryId) ? _credentialMap[discoveryId] : null,
-            SaveFilename = saveFilename,
+            Credential = _credentialMap.TryGetValue(discoveryId, out var credential) ? credential : null,
+            SaveFilename = string.IsNullOrEmpty(saveFilename) ? media.Title : saveFilename.SanitizeForFilename(downloader.LimitCharacters),
             SaveFolder = saveFolder,
             FileType = selectedFileType.Value,
             PlaylistPosition = media.PlaylistPosition,
@@ -207,6 +226,7 @@ public class AddDownloadDialogController
             });
         }
         _credentialMap.Remove(discoveryId);
+        _titlesMap.Remove(discoveryId);
         _mediaMap.Remove(discoveryId);
         _audioFormatsMap.Remove(discoveryId);
         _fileTypesMap.Remove(discoveryId);
@@ -214,11 +234,11 @@ public class AddDownloadDialogController
         _videoFormatsMap.Remove(discoveryId);
     }
 
-    public async Task<DiscoveryResult?> DiscoverAsync(Uri url, Credential? credential, CancellationToken cancellationToken)
+    public async Task<(int Id, IReadOnlyList<MediaSelectionItem>)> DiscoverAsync(Uri url, Credential? credential, CancellationToken cancellationToken)
     {
         try
         {
-            var res = url.ToString().StartsWith("file://") ? await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(7), credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
+            var res = url.ToString().StartsWith("file://") ? await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(8), credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
             if (res.Media.Count == 0)
             {
                 _notificationService.Send(new AppNotification(Translator._("An error occured while discovering media"), NotificationSeverity.Warning)
@@ -226,12 +246,13 @@ public class AddDownloadDialogController
                     Action = "error",
                     ActionParam = Translator._("No media found at the provided URL.")
                 });
-                return null;
+                return (-1, []);
             }
             if (credential is not null)
             {
                 _credentialMap[res.Id] = credential;
             }
+            _titlesMap[res.Id] = res.Title;
             _mediaMap[res.Id] = res.Media;
             if (!res.IsPlaylist)
             {
@@ -254,24 +275,23 @@ public class AddDownloadDialogController
             }
             else
             {
-                var audioBitrates = new List<SelectionItem<double>>()
-                {
-                    new SelectionItem<double>(double.MaxValue, Translator._("Best"), PreviousDownloadOptions.AudioBitrate == double.MaxValue),
-                    new SelectionItem<double>(-1.0, Translator._("Worst"), PreviousDownloadOptions.AudioBitrate == -1.0)
-                };
+                var audioBitrates = new List<SelectionItem<double>>();
                 foreach (var bitrate in res.Media.SelectMany(m => m.Formats).Where(f => f.Bitrate.HasValue).Select(f => f.Bitrate!.Value).Distinct())
                 {
                     audioBitrates.Add(new SelectionItem<double>(bitrate, $"{bitrate}k", PreviousDownloadOptions.AudioBitrate == bitrate));
                 }
-                var videoResolutions = new List<SelectionItem<VideoResolution>>()
-                {
-                    new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(Translator), PreviousDownloadOptions.VideoResolution == VideoResolution.Best),
-                    new SelectionItem<VideoResolution>(VideoResolution.Worst, VideoResolution.Worst.ToString(Translator), PreviousDownloadOptions.VideoResolution == VideoResolution.Worst)
-                };
+                audioBitrates.Sort((a, b) => a.Value.CompareTo(b.Value));
+                audioBitrates.Insert(0, new SelectionItem<double>(-1.0, Translator._("Worst"), PreviousDownloadOptions.AudioBitrate == -1.0));
+                audioBitrates.Insert(0, new SelectionItem<double>(double.MaxValue, Translator._("Best"), PreviousDownloadOptions.AudioBitrate == double.MaxValue));
+                var videoResolutions = new List<SelectionItem<VideoResolution>>();
                 foreach (var resolution in res.Media.SelectMany(m => m.Formats).Where(f => f.VideoResolution is not null).Select(f => f.VideoResolution!).Distinct())
                 {
                     videoResolutions.Add(new SelectionItem<VideoResolution>(resolution, resolution.ToString(Translator), PreviousDownloadOptions.VideoResolution == resolution));
                 }
+                videoResolutions.Sort((a, b) => a.Value.CompareTo(b.Value));
+                videoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Worst, VideoResolution.Worst.ToString(Translator), PreviousDownloadOptions.VideoResolution == VideoResolution.Worst));
+                videoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(Translator), PreviousDownloadOptions.VideoResolution == VideoResolution.Best));
+                var playlistItems = new List<SelectionItem<(int Index, string Filename, string StartTime, string EndTime)>>(res.Media.Count);
                 _audioBitratesMap[res.Id] = audioBitrates;
                 _videoResolutionsMap[res.Id] = videoResolutions;
             }
@@ -298,13 +318,20 @@ public class AddDownloadDialogController
             {
                 subtitleLanguages.Add(new SelectionItem<SubtitleLanguage>(subtitle, subtitle.ToString(Translator), PreviousDownloadOptions.SubtitleLanguages.Contains(subtitle)));
             }
+            subtitleLanguages.Sort((a, b) => a.Value.CompareTo(b.Value));
             _fileTypesMap[res.Id] = fileTypes;
             _subtitleLanguagesMap[res.Id] = subtitleLanguages;
-            return res;
+            var items = new List<MediaSelectionItem>(res.Media.Count);
+            for (var i = 0; i < res.Media.Count; i++)
+            {
+                var media = res.Media[i];
+                items.Add(new MediaSelectionItem(i, media.Title, media.TimeFrame.StartString, media.TimeFrame.EndString));
+            }
+            return (res.Id, items);
         }
         catch (TaskCanceledException)
         {
-            return null;
+            return (-1, []);
         }
         catch (Exception e)
         {
@@ -313,7 +340,7 @@ public class AddDownloadDialogController
                 Action = "error",
                 ActionParam = e.Message
             });
-            return null;
+            return (-1, []);
         }
     }
 

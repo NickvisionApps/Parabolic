@@ -55,7 +55,18 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
 
     public override string ToString() => ToString(null);
 
-    public string ToString(ITranslationService? translator) => Width == int.MaxValue && Height == int.MaxValue ? (translator?._("Best") ?? "Best") : $"{Width}x{Height}";
+    public string ToString(ITranslationService? translator)
+    {
+        if(Width == int.MaxValue && Height == int.MaxValue)
+        {
+            return translator?._("Best") ?? "Best";
+        }
+        else if(Width == -1 && Height == -1)
+        {
+            return translator?._("Worst") ?? "Worst";
+        }
+        return $"{Width}x{Height}";
+    }
 
     public static bool operator >(VideoResolution left, VideoResolution right) => left.CompareTo(right) > 0;
 
