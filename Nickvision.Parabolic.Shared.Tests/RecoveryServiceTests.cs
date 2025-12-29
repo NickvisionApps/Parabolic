@@ -68,7 +68,7 @@ public class RecoveryServiceTests
     {
         var all = await _recoveryService!.GetAllAsync();
         Assert.HasCount(1, all);
-        var download = all.ElementAt(0);
+        var download = all[0];
         Assert.AreEqual(1, download.Id);
         Assert.AreEqual(new Uri("https://example.com/video"), download.Options.Url);
         Assert.IsTrue(download.CredentialRequired);
@@ -91,7 +91,7 @@ public class RecoveryServiceTests
     {
         var allBefore = await _recoveryService!.GetAllAsync();
         Assert.HasCount(1, allBefore);
-        await _recoveryService.RemoveAsync(allBefore.ElementAt(0).Id);
+        await _recoveryService.RemoveAsync(allBefore[0].Id);
         var allAfter = await _recoveryService.GetAllAsync();
         Assert.HasCount(0, allAfter);
     }

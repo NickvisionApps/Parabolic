@@ -86,7 +86,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         return false;
     }
 
-    public async Task<bool> AddAsync(IReadOnlyCollection<HistoricDownload> downloads)
+    public async Task<bool> AddAsync(IReadOnlyList<HistoricDownload> downloads)
     {
         if (Length == HistoryLength.Never)
         {
@@ -138,7 +138,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         GC.SuppressFinalize(this);
     }
 
-    public async Task<IReadOnlyCollection<HistoricDownload>> GetAllAsync()
+    public async Task<IReadOnlyList<HistoricDownload>> GetAllAsync()
     {
         var downloads = new List<HistoricDownload>();
         var toRemove = new List<int>();

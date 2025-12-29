@@ -65,7 +65,7 @@ public class HistoryServiceTests
     {
         var all = await _historyService!.GetAllAsync();
         Assert.HasCount(1, all);
-        var one = all.ElementAt(0);
+        var one = all[0];
         Assert.AreEqual(new Uri("https://www.example.com/video"), one.Url);
         Assert.AreEqual("Example Video", one.Title);
         Assert.AreEqual("/path/to/video.mp4", one.Path);
@@ -82,7 +82,7 @@ public class HistoryServiceTests
         Assert.IsTrue(await _historyService!.AddAsync(updatedDownload));
         var all = await _historyService.GetAllAsync();
         Assert.HasCount(1, all);
-        var one = all.ElementAt(0);
+        var one = all[0];
         Assert.AreEqual(new Uri("https://www.example.com/video"), one.Url);
         Assert.AreEqual("Updated Example Video", one.Title);
         Assert.AreEqual("/new/path/to/video.mp4", one.Path);
@@ -90,7 +90,7 @@ public class HistoryServiceTests
         Assert.IsTrue(await _historyService.UpdateAsync(updatedDownload));
         all = await _historyService.GetAllAsync();
         Assert.HasCount(1, all);
-        one = all.ElementAt(0);
+        one = all[0];
         Assert.AreEqual(new Uri("https://www.example.com/video"), one.Url);
         Assert.AreEqual("Final Example Video", one.Title);
         Assert.AreEqual("/new/path/to/video.mp4", one.Path);

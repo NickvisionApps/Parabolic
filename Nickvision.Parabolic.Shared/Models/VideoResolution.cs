@@ -57,11 +57,11 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
 
     public string ToString(ITranslationService? translator)
     {
-        if(Width == int.MaxValue && Height == int.MaxValue)
+        if (Width == int.MaxValue && Height == int.MaxValue)
         {
             return translator?._("Best") ?? "Best";
         }
-        else if(Width == -1 && Height == -1)
+        else if (Width == -1 && Height == -1)
         {
             return translator?._("Worst") ?? "Worst";
         }

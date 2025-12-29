@@ -11,9 +11,19 @@ public static class ComboBoxExtensions
     {
         public void SelectSelectionItem<T>()
         {
-            if (comboBox.ItemsSource is IReadOnlyCollection<SelectionItem<T>> items)
+            comboBox.SelectedIndex = 0;
+            if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<T>> items)
             {
                 comboBox.SelectedItem = items.FirstOrDefault(item => item.ShouldSelect);
+            }
+        }
+
+        public void SelectSelectionItemByFormatId(string id)
+        {
+            comboBox.SelectedIndex = 0;
+            if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<Format>> items)
+            {
+                comboBox.SelectedItem = items.FirstOrDefault(item => item.Value.Id == id);
             }
         }
     }

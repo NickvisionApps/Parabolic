@@ -95,7 +95,7 @@ public class PreferencesViewController
         set => _historyService.Length = value;
     }
 
-    public IReadOnlyCollection<string> ExecutableStrings
+    public IReadOnlyList<string> ExecutableStrings
     {
         get
         {
@@ -113,7 +113,7 @@ public class PreferencesViewController
         }
     }
 
-    public IReadOnlyCollection<string> PostProcessorStrings
+    public IReadOnlyList<string> PostProcessorStrings
     {
         get
         {

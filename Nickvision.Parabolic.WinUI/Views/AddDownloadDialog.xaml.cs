@@ -9,7 +9,6 @@ using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,16 +43,14 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private readonly AddDownloadDialogController _controller;
     private readonly WindowId _windowId;
-    private int _discoveryId;
-    private bool _downloadPlaylist;
+    private DiscoveryContext? _discoveryContext;
 
     public AddDownloadDialog(AddDownloadDialogController controller, WindowId windowId)
     {
         InitializeComponent();
         _controller = controller;
         _windowId = windowId;
-        _discoveryId = -1;
-        _downloadPlaylist = false;
+        _discoveryContext = null;
         Title = _controller.Translator._("Add Download");
         PrimaryButtonText = _controller.Translator._("Discover");
         CloseButtonText = _controller.Translator._("Cancel");
@@ -156,7 +153,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         result = await base.ShowAsync();
         if (result == ContentDialogResult.Primary)
         {
-            if (_downloadPlaylist)
+            if (_discoveryContext is not null && _discoveryContext.Items.Count > 1)
             {
                 await DownloadPlaylistAsync();
             }
@@ -179,40 +176,39 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             credential = new Credential("manual", TxtUsername.Text, TxtPassword.Password);
         }
-        (var id, var items) = (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value is null ? await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken) : await _controller.DiscoverAsync(new Uri(TxtUrl.Text), (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value!, cancellationToken);
-        if (id == -1)
+        _discoveryContext = (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value is null ? await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken) : await _controller.DiscoverAsync(new Uri(TxtUrl.Text), (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value!, cancellationToken);
+        if (_discoveryContext is null)
         {
             Hide();
             return;
         }
-        _discoveryId = id;
         Title = _controller.Translator._("Add Download");
         PrimaryButtonText = _controller.Translator._("Download");
         CloseButtonText = _controller.Translator._("Cancel");
         SecondaryButtonText = null;
         DefaultButton = ContentDialogButton.Primary;
         _controller.PreviousDownloadOptions.DownloadImmediately = TglDownloadImmediately.IsOn;
-        if (items.Count == 1)
+        if (_discoveryContext.Items.Count == 1)
         {
-            var subtitles = _controller.GetAvailableSubtitleLanguages(_discoveryId);
-            _downloadPlaylist = false;
             ViewStack.SelectedIndex = (int)Pages.Single;
             ViewStackSingle.SelectedIndex = (int)SinglePages.General;
-            ViewStackSingleSubtitles.SelectedIndex = subtitles.Any() ? 1 : 0;
-            TxtSingleSaveFilename.Text = items[0].Filename;
+            ViewStackSingleSubtitles.SelectedIndex = _discoveryContext.SubtitleLanguages.Any() ? 1 : 0;
+            TxtSingleSaveFilename.Text = _discoveryContext.Items[0].Label;
             TxtSingleSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
-            CmbSingleFileType.ItemsSource = _controller.GetAvailableFileTypes(_discoveryId);
+            CmbSingleVideoFormat.ItemsSource = _discoveryContext.VideoFormats;
+            CmbSingleAudioFormat.ItemsSource = _discoveryContext.AudioFormats;
+            CmbSingleFileType.ItemsSource = _discoveryContext.FileTypes;
             CmbSingleFileType.SelectSelectionItem<MediaFileType>();
-            ListSingleSubtitles.ItemsSource = subtitles;
+            ListSingleSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
             ListSingleSubtitles.SelectSelectionItems<SubtitleLanguage>();
             TglSingleSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglSingleExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
             CmbSinglePostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
             CmbSinglePostProcessorArgument.SelectSelectionItem<PostProcessorArgument?>();
-            TxtSingleStartTime.PlaceholderText = items[0].StartTime;
-            TxtSingleStartTime.Text = items[0].StartTime;
-            TxtSingleEndTime.PlaceholderText = items[0].EndTime;
-            TxtSingleEndTime.Text = items[0].EndTime;
+            TxtSingleStartTime.PlaceholderText = _discoveryContext.Items[0].StartTime;
+            TxtSingleStartTime.Text = _discoveryContext.Items[0].StartTime;
+            TxtSingleEndTime.PlaceholderText = _discoveryContext.Items[0].EndTime;
+            TxtSingleEndTime.Text = _discoveryContext.Items[0].EndTime;
             if (TglDownloadImmediately.IsOn)
             {
                 await DownloadSingleAsync();
@@ -221,19 +217,17 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         else
         {
-            var subtitles = _controller.GetAvailableSubtitleLanguages(_discoveryId);
-            _downloadPlaylist = true;
             ViewStack.SelectedIndex = (int)Pages.Playlist;
             ViewStackPlaylist.SelectedIndex = (int)PlaylistPages.General;
-            ViewStackPlaylistSubtitles.SelectedIndex = subtitles.Any() ? 1 : 0;
+            ViewStackPlaylistSubtitles.SelectedIndex = _discoveryContext.SubtitleLanguages.Any() ? 1 : 0;
             TxtPlaylistSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
-            CmbPlaylistFileType.ItemsSource = _controller.GetAvailableFileTypes(_discoveryId);
+            CmbPlaylistFileType.ItemsSource = _discoveryContext.FileTypes;
             CmbPlaylistFileType.SelectSelectionItem<MediaFileType>();
-            CmbPlaylistSuggestedVideoResolution.ItemsSource = _controller.GetAvailableVideoResolutions(_discoveryId);
+            CmbPlaylistSuggestedVideoResolution.ItemsSource = _discoveryContext.VideoResolutions;
             CmbPlaylistSuggestedVideoResolution.SelectSelectionItem<VideoResolution>();
-            CmbPlaylistSuggestedAudioBitrate.ItemsSource = _controller.GetAvailableAudioBitrates(_discoveryId);
+            CmbPlaylistSuggestedAudioBitrate.ItemsSource = _discoveryContext.AudioBitrates;
             CmbPlaylistSuggestedAudioBitrate.SelectSelectionItem<double>();
-            ListPlaylistSubtitles.ItemsSource = subtitles;
+            ListPlaylistSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
             ListPlaylistSubtitles.SelectSelectionItems<SubtitleLanguage>();
             TglPlaylistExportM3U.IsOn = _controller.PreviousDownloadOptions.ExportM3U;
             TglPlaylistSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
@@ -248,7 +242,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private async Task DownloadSingleAsync() => await _controller.AddSingleDownloadAsync(_discoveryId,
+    private async Task DownloadSingleAsync() => await _controller.AddSingleDownloadAsync(_discoveryContext!,
         TxtSingleSaveFilename.Text,
         TxtSingleSaveFolder.Text,
         (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!,
@@ -303,7 +297,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         };
     }
 
-    private void BtnSingleRevertFilename_Click(object sender, RoutedEventArgs e) => TxtSingleSaveFilename.Text = _controller.GetMediaTitle(_discoveryId, 0);
+    private void BtnSingleRevertFilename_Click(object sender, RoutedEventArgs e) => TxtSingleSaveFilename.Text = _discoveryContext!.Items[0].Label;
 
     private async void BtnSingleSelectSaveFolder_Click(object sender, RoutedEventArgs e)
     {
@@ -320,11 +314,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private void CmbSingleFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        TeachSingleFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryId, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
-        CmbSingleVideoFormat.ItemsSource = _controller.GetAvailableVideoFormats(_discoveryId, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
-        CmbSingleVideoFormat.SelectSelectionItem<Format>();
-        CmbSingleAudioFormat.ItemsSource = _controller.GetAvailableAudioFormats(_discoveryId, (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!);
-        CmbSingleAudioFormat.SelectSelectionItem<Format>();
+        var selectedFileType = (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!;
+        TeachSingleFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, selectedFileType);
+        CmbSingleVideoFormat.SelectSelectionItemByFormatId(_controller.PreviousDownloadOptions.VideoFormatIds[selectedFileType.Value]);
+        CmbSingleAudioFormat.SelectSelectionItemByFormatId(_controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]);
     }
 
     private void BtnSingleSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListSingleSubtitles.SelectAll();
@@ -357,7 +350,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private void CmbPlaylistFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryId, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
+        TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
     }
 
     private void BtnPlaylistSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();

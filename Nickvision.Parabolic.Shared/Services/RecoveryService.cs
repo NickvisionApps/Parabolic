@@ -45,7 +45,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         return await command.ExecuteNonQueryAsync() > 0;
     }
 
-    public async Task<bool> AddAsync(IReadOnlyCollection<RecoverableDownload> downloads)
+    public async Task<bool> AddAsync(IReadOnlyList<RecoverableDownload> downloads)
     {
         using var transaction = await _connection.BeginTransactionAsync();
         foreach (var download in downloads)
@@ -85,7 +85,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         GC.SuppressFinalize(this);
     }
 
-    public async Task<IReadOnlyCollection<RecoverableDownload>> GetAllAsync()
+    public async Task<IReadOnlyList<RecoverableDownload>> GetAllAsync()
     {
         var downloads = new List<RecoverableDownload>();
         using var command = _connection.CreateCommand();
@@ -117,7 +117,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         return await command.ExecuteNonQueryAsync() > 0;
     }
 
-    public async Task<bool> RemoveAsync(IReadOnlyCollection<int> ids)
+    public async Task<bool> RemoveAsync(IReadOnlyList<int> ids)
     {
         using var transaction = await _connection.BeginTransactionAsync();
         foreach (var id in ids)

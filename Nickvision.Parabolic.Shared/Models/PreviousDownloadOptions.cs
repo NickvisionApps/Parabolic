@@ -18,7 +18,7 @@ public class PreviousDownloadOptions
     public string PostProcessorArgumentName { get; set; }
     public bool WritePlaylistFile { get; set; }
     public bool NumberTitles { get; set; }
-    public IEnumerable<SubtitleLanguage> SubtitleLanguages { get; set; }
+    public IReadOnlyList<SubtitleLanguage> SubtitleLanguages { get; set; }
     public double AudioBitrate { get; set; }
     public VideoResolution VideoResolution { get; set; }
     public bool ExportM3U { get; set; }

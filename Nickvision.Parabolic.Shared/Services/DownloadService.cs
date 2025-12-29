@@ -77,7 +77,7 @@ public class DownloadService : IDisposable, IDownloadService
         }
     }
 
-    public async Task AddAsync(IReadOnlyCollection<DownloadOptions> options, bool exlucdeFromHistory)
+    public async Task AddAsync(IReadOnlyList<DownloadOptions> options, bool exlucdeFromHistory)
     {
         var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var ytdlpExecutablePath = _ytdlpService.ExecutablePath ?? "yt-dlp";
@@ -118,7 +118,7 @@ public class DownloadService : IDisposable, IDownloadService
         }
     }
 
-    public IReadOnlyCollection<int> ClearCompleted()
+    public IReadOnlyList<int> ClearCompleted()
     {
         var ids = new List<int>(_completed.Keys);
         foreach (var pair in _completed)
@@ -131,7 +131,7 @@ public class DownloadService : IDisposable, IDownloadService
         return ids;
     }
 
-    public IReadOnlyCollection<int> ClearQueued()
+    public IReadOnlyList<int> ClearQueued()
     {
         var ids = new List<int>(_queued.Keys);
         foreach (var pair in _queued)
