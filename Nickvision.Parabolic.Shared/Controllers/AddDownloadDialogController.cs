@@ -30,11 +30,6 @@ public class AddDownloadDialogController
     public IReadOnlyList<SelectionItem<Credential?>> AvailableCredentials { get; }
     public IReadOnlyList<SelectionItem<PostProcessorArgument?>> AvailablePostProcessorArguments { get; }
 
-    static AddDownloadDialogController()
-    {
-        _shownTeachTypeFlag = AddDownloadTeachType.None;
-    }
-
     public AddDownloadDialogController(IJsonFileService jsonFileService, ITranslationService translationService, IKeyringService keyringService, INotificationService notificationService, IDiscoveryService discoveryService, IDownloadService downloadService)
     {
         _jsonFileService = jsonFileService;

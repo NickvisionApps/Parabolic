@@ -11,7 +11,6 @@ public static class ComboBoxExtensions
     {
         public void SelectSelectionItem<T>()
         {
-            comboBox.SelectedIndex = 0;
             if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<T>> items)
             {
                 comboBox.SelectedItem = items.FirstOrDefault(item => item.ShouldSelect);
@@ -20,7 +19,6 @@ public static class ComboBoxExtensions
 
         public void SelectSelectionItemByFormatId(string id)
         {
-            comboBox.SelectedIndex = 0;
             if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<Format>> items)
             {
                 comboBox.SelectedItem = items.FirstOrDefault(item => item.Value.Id == id);
