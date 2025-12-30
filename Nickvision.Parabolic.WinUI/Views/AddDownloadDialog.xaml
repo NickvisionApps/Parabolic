@@ -244,6 +244,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
@@ -272,11 +273,13 @@
                                     </Button.Content>
                                 </Button>
 
-                                <ToggleSwitch x:Name="TglPlaylistNumberTitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Toggled="TglPlaylistNumberTitles_Toggled"/>
+                                <ToggleSwitch x:Name="TglPlaylistReverseDownloadOrder" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                                <ToggleSwitch x:Name="TglPlaylistNumberTitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Toggled="TglPlaylistNumberTitles_Toggled"/>
 
                                 <TeachingTip x:Name="TeachPlaylistNumberTitles" PreferredPlacement="Bottom" Target="{x:Bind TglPlaylistNumberTitles}"/>
 
-                                <ListView x:Name="ListPlaylistItems" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionMode="Multiple">
+                                <ListView x:Name="ListPlaylistItems" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" SelectionMode="Multiple">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Grid ColumnSpacing="6">

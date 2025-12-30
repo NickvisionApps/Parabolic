@@ -60,13 +60,13 @@ public class AddDownloadDialogController
         AvailablePostProcessorArguments = availablePostProcessorArguments;
     }
 
-    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
+    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
     {
         var downloader = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var m3uFile = new M3UFile(context.Title, context.Media.Any(x => !string.IsNullOrEmpty(x.SuggestedSaveFolder)) ? PathType.Absolute : PathType.Relative);
         var options = new List<DownloadOptions>(items.Count());
         var titleNumber = 1;
-        foreach (var item in items)
+        foreach (var item in reverseDownloadOrder ? items.Reverse() : items)
         {
             if (item.Value < 0 || item.Value >= context.Media.Count)
             {
@@ -103,6 +103,7 @@ public class AddDownloadDialogController
         PreviousDownloadOptions.VideoResolution = selectedVideoResoltuion.Value;
         PreviousDownloadOptions.AudioBitrate = selectedAudioBitrate.Value;
         PreviousDownloadOptions.ExportM3U = exportM3U;
+        PreviousDownloadOptions.ReverseDownloadOrder = reverseDownloadOrder;
         PreviousDownloadOptions.NumberTitles = numberTitles;
         PreviousDownloadOptions.SplitChapters = splitChapters;
         PreviousDownloadOptions.ExportDescription = exportDescription;

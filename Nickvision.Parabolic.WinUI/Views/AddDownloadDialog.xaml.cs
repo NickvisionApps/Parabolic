@@ -114,6 +114,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbPlaylistSuggestedAudioBitrate.Header = _controller.Translator._("Suggested Audio Bitrate");
         LblPlaylistSelectAllItems.Text = _controller.Translator._("Select All");
         LblPlaylistDeselectAllItems.Text = _controller.Translator._("Deselect All");
+        TglPlaylistReverseDownloadOrder.OnContent = _controller.Translator._("Reverse Download Order");
+        TglPlaylistReverseDownloadOrder.OffContent = _controller.Translator._("Reverse Download Order");
         TglPlaylistNumberTitles.OnContent = _controller.Translator._("Number Titles");
         TglPlaylistNumberTitles.OffContent = _controller.Translator._("Number Titles");
         TeachPlaylistNumberTitles.Title = _controller.Translator._("Warning");
@@ -236,6 +238,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbPlaylistSuggestedVideoResolution.SelectSelectionItem();
             CmbPlaylistSuggestedAudioBitrate.ItemsSource = _discoveryContext.AudioBitrates;
             CmbPlaylistSuggestedAudioBitrate.SelectSelectionItem();
+            TglPlaylistReverseDownloadOrder.IsOn = _controller.PreviousDownloadOptions.ReverseDownloadOrder;
             TglPlaylistNumberTitles.IsOn = _controller.PreviousDownloadOptions.NumberTitles;
             ListPlaylistItems.ItemsSource = _discoveryContext.Items;
             ListPlaylistItems.SelectSelectionItems();
@@ -275,6 +278,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!,
         (CmbPlaylistSuggestedVideoResolution.SelectedItem as SelectionItem<VideoResolution>)!,
         (CmbPlaylistSuggestedAudioBitrate.SelectedItem as SelectionItem<double>)!,
+        TglPlaylistReverseDownloadOrder.IsOn,
         TglPlaylistNumberTitles.IsOn,
         ListPlaylistSubtitles.SelectedItems.Cast<SelectionItem<SubtitleLanguage>>(),
         TglPlaylistExportM3U.IsOn,
