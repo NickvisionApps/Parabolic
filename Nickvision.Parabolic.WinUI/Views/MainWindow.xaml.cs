@@ -65,7 +65,7 @@ public sealed partial class MainWindow : Window
             });
         }
         // TitleBar
-        AppWindow.SetIcon("./Assets/org.nickvision.tubeconverter.ico");
+        AppWindow.SetIcon("./Assets/org.nickvision.tubeconverter-devel.ico");
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
