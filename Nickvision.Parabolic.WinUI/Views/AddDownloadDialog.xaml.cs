@@ -114,6 +114,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
         LblPlaylistDeselectAllItems.Text = _controller.Translator._("Deselect All");
         TglPlaylistNumberTitles.OnContent = _controller.Translator._("Number Titles");
         TglPlaylistNumberTitles.OffContent = _controller.Translator._("Number Titles");
+        TeachPlaylistNumberTitles.Title = _controller.Translator._("Warning");
+        TeachPlaylistNumberTitles.Subtitle = _controller.Translator._("Numbering will be applied to titles of selected items in succession on download.");
         StatusPlaylistSubtitles.Title = _controller.Translator._("No Subtitles");
         StatusPlaylistSubtitles.Description = _controller.Translator._("No subtitles were found in this playlist.");
         LblPlaylistSelectAllSubtitles.Text = _controller.Translator._("Select All");
@@ -232,6 +234,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbPlaylistSuggestedVideoResolution.SelectSelectionItem();
             CmbPlaylistSuggestedAudioBitrate.ItemsSource = _discoveryContext.AudioBitrates;
             CmbPlaylistSuggestedAudioBitrate.SelectSelectionItem();
+            TglPlaylistNumberTitles.IsOn = _controller.PreviousDownloadOptions.NumberTitles;
             ListPlaylistItems.ItemsSource = _discoveryContext.Items;
             ListPlaylistItems.SelectSelectionItems();
             ListPlaylistSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
@@ -270,6 +273,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!,
         (CmbPlaylistSuggestedVideoResolution.SelectedItem as SelectionItem<VideoResolution>)!,
         (CmbPlaylistSuggestedAudioBitrate.SelectedItem as SelectionItem<double>)!,
+        TglPlaylistNumberTitles.IsOn,
         ListPlaylistSubtitles.SelectedItems.Cast<SelectionItem<SubtitleLanguage>>(),
         TglPlaylistExportM3U.IsOn,
         TglPlaylistSplitChapters.IsOn,
@@ -370,9 +374,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private void BtnPlaylistDeselectAllItems_Click(object sender, RoutedEventArgs e) => ListPlaylistItems.DeselectAll();
 
-    private void BtnPlaylistSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
-
-    private void BtnPlaylistDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
+    private void TglPlaylistNumberTitles_Toggled(object sender, RoutedEventArgs e) => TeachPlaylistNumberTitles.IsOpen = _controller.GetShouldShowNumberTitlesTeach();
 
     private void BtnPlaylistRevertFilename_Click(object sender, RoutedEventArgs e)
     {
@@ -382,4 +384,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
             items[index].Filename = items[index].Label;
         }
     }
+
+    private void BtnPlaylistSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
+
+    private void BtnPlaylistDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
 }

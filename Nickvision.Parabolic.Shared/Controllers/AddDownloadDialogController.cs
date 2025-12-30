@@ -59,11 +59,12 @@ public class AddDownloadDialogController
         AvailablePostProcessorArguments = availablePostProcessorArguments;
     }
 
-    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
+    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
     {
         var downloader = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var m3uFile = new M3UFile(context.Title, context.Media.Any(x => !string.IsNullOrEmpty(x.SuggestedSaveFolder)) ? PathType.Absolute : PathType.Relative);
         var options = new List<DownloadOptions>(items.Count());
+        var titleNumber = 1;
         foreach (var item in items)
         {
             if (item.Value < 0 || item.Value >= context.Media.Count)
@@ -74,10 +75,10 @@ public class AddDownloadDialogController
             options.Add(new DownloadOptions(media.Url)
             {
                 Credential = context.Credential,
-                SaveFilename = string.IsNullOrEmpty(item.Filename) ? media.Title : item.Filename.SanitizeForFilename(downloader.LimitCharacters),
+                SaveFilename = $"{(numberTitles ? $"{titleNumber} - " : string.Empty)}{(string.IsNullOrEmpty(item.Filename) ? media.Title : item.Filename.SanitizeForFilename(downloader.LimitCharacters))}",
                 SaveFolder = Path.Combine(!string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : saveFolder, context.Title.SanitizeForFilename(downloader.LimitCharacters)),
                 FileType = selectedFileType.Value.IsVideo && media.Type == MediaType.Audio ? PreviousDownloadOptions.AudioOnlyFileType : selectedFileType.Value,
-                PlaylistPosition = media.PlaylistPosition,
+                PlaylistPosition = numberTitles ? titleNumber : media.PlaylistPosition,
                 VideoResolution = selectedVideoResoltuion.Value,
                 AudioBitrate = selectedAudioBitrate.Value,
                 SubtitleLanguages = selectedSubtitleLanguages.Select(x => x.Value).Where(x => media.Subtitles.Contains(x)).ToArray(),
@@ -87,6 +88,7 @@ public class AddDownloadDialogController
                 TimeFrame = TimeFrame.TryParse(item.StartTime, item.EndTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
             });
             m3uFile.Add(options);
+            titleNumber++;
         }
         PreviousDownloadOptions.SaveFolder = saveFolder;
         if (context.Media.Any(m => m.Type == MediaType.Video))
@@ -100,6 +102,7 @@ public class AddDownloadDialogController
         PreviousDownloadOptions.VideoResolution = selectedVideoResoltuion.Value;
         PreviousDownloadOptions.AudioBitrate = selectedAudioBitrate.Value;
         PreviousDownloadOptions.ExportM3U = exportM3U;
+        PreviousDownloadOptions.NumberTitles = numberTitles;
         PreviousDownloadOptions.SplitChapters = splitChapters;
         PreviousDownloadOptions.ExportDescription = exportDescription;
         if (selectedPostProcessorArgument.Value is not null)
@@ -294,6 +297,16 @@ public class AddDownloadDialogController
         if (!previousFileType.IsGeneric && selectedFileType.Value.IsGeneric && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.FileType))
         {
             _shownTeachTypeFlag |= AddDownloadTeachType.FileType;
+            return true;
+        }
+        return false;
+    }
+
+    public bool GetShouldShowNumberTitlesTeach()
+    {
+        if (!PreviousDownloadOptions.NumberTitles && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.NumberTitles))
+        {
+            _shownTeachTypeFlag |= AddDownloadTeachType.NumberTitles;
             return true;
         }
         return false;
