@@ -1,11 +1,9 @@
-﻿using Nickvision.Desktop.Globalization;
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
-public class MediaSelectionItem : SelectionItem<int>, INotifyPropertyChanged
+public class MediaSelectionItem : SelectionItem<int>
 {
     private static string? _startTimeHeader;
     private static string? _endTimeHeader;
@@ -33,8 +31,6 @@ public class MediaSelectionItem : SelectionItem<int>, INotifyPropertyChanged
             _endTimeHeader = translator._("End Time");
         }
     }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     public string Filename
     {
@@ -68,6 +64,4 @@ public class MediaSelectionItem : SelectionItem<int>, INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-
-    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

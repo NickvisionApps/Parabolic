@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Keyring;
+﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Keyring;
 using System;
 using System.Collections.Generic;
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Controls;
+using Nickvision.Desktop.Application;
 using Nickvision.Parabolic.Shared.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,6 @@ public static class ComboBoxExtensions
 {
     extension(ComboBox comboBox)
     {
-        public void SelectSelectionItem()
-        {
-            if (comboBox.ItemsSource is IReadOnlyList<ISelectionItem> items)
-            {
-                comboBox.SelectedItem = items.FirstOrDefault(item => item.ShouldSelect);
-            }
-        }
-
         public void SelectSelectionItemByFormatId(string id)
         {
             if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<Format>> items)
