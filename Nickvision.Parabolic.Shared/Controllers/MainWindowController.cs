@@ -36,7 +36,7 @@ public class MainWindowController : IDisposable
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
-            Changelog = "- Parabolic has been rewritten in C# from C++\n- Added support for playlist quality options\n- Added support for playlist subtitle options\n- Added support for reversing the download order of a playlist\n- Added support for remembering the previous Download Immediately selection in the add download dialog\n- Improved the design and usibility of the Windows version of Parabolic\n- Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist\n- Fixed an issue where Parabolic crashed when validating certain URLs\n- Fixed an issue where Parabolic refused to start",
+            Changelog = "- Parabolic has been rewritten in C# from C++\n- Added support for playlist quality options\n- Added support for playlist subtitle options\n- Added support for reversing the download order of a playlist\n- Added support for remembering the previous Download Immediately selection in the add download dialog\n- Improved the design and usibility of the Windows version of Parabolic\n- Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist\n- Fixed an issue where Parabolic crashed when validating certain URLs\n- Fixed an issue where Parabolic refused to start\n- Updated yt-dlp",
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
             DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions")

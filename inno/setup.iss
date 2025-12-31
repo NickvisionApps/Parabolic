@@ -7,7 +7,7 @@
 #define MyAppVersion         "2026.1.0"
 #define MyAppPublisher       "Nickvision"
 #define MyAppURL             "https://nickvision.org"
-#define MyAppExeName         "org.nickvision.tubeconverter.winui.exe"
+#define MyAppExeName         "Nickvision.Parabolic.WinUI.exe"
 #define StartYearCopyright   "2021"
 #define CurrentYear          GetDateTimeString('yyyy','','')
 
