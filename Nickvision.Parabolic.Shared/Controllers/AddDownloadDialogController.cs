@@ -123,7 +123,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _notificationService.Send(new AppNotification(Translator._("An error occured while adding playlist downloads"), NotificationSeverity.Error)
+            _notificationService.Send(new AppNotification(Translator._("An error occurred while adding playlist downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
                 ActionParam = e.Message
@@ -179,7 +179,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _notificationService.Send(new AppNotification(Translator._("An error occured while adding the single download"), NotificationSeverity.Error)
+            _notificationService.Send(new AppNotification(Translator._("An error occurred while adding the single download"), NotificationSeverity.Error)
             {
                 Action = "error",
                 ActionParam = e.Message
@@ -195,7 +195,7 @@ public class AddDownloadDialogController
             var res = url.ToString().StartsWith("file://") ? await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(8), credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
             if (res.Media.Count == 0)
             {
-                _notificationService.Send(new AppNotification(Translator._("An error occured while discovering media"), NotificationSeverity.Warning)
+                _notificationService.Send(new AppNotification(Translator._("An error occurred while discovering media"), NotificationSeverity.Warning)
                 {
                     Action = "error",
                     ActionParam = Translator._("No media found at the provided URL.")
@@ -274,7 +274,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _notificationService.Send(new AppNotification(Translator._("An error occured while discovering media"), NotificationSeverity.Error)
+            _notificationService.Send(new AppNotification(Translator._("An error occurred while discovering media"), NotificationSeverity.Error)
             {
                 Action = "error",
                 ActionParam = e.Message
