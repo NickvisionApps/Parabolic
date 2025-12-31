@@ -42,13 +42,13 @@
 		<MakeDir Directories="$(RootDirectory)/docs/html/%(LanguagesList.Identity)"/>
 		<MakeDir Directories="$(RootDirectory)/docs/html/%(LanguagesList.Identity)/figures"/>
 		<Copy SourceFiles="@(FigureFiles)" DestinationFolder="$(RootDirectory)/docs/html/%(LanguagesList.Identity)/figures"/>
-		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)!='ARM64'" WorkingDirectory="C:\msys64" Command="python &quot;C:\msys64\mingw64\bin\yelp-build&quot; html -o &quot;$(RootDirectory)/docs/html/%(LanguagesList.Identity)/&quot; &quot;$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)/&quot;"/>
+		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)!='ARM64'" Command="yelp-build html -o &quot;$(RootDirectory)/docs/html/%(LanguagesList.Identity)/&quot; &quot;$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)/&quot;"/>
 		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)=='ARM64'" WorkingDirectory="C:\msys64" Command="python &quot;C:\msys64\clangarm64\bin\yelp-build&quot; html -o &quot;$(RootDirectory)/docs/html/%(LanguagesList.Identity)/&quot; &quot;$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)/&quot;"/>
 		<Exec Condition="!$([MSBuild]::IsOSPlatform('Windows'))" WorkingDirectory="$(MSBuildProjectDirectory)" Command="yelp-build html -o &quot;$(RootDirectory)/docs/html/%(LanguagesList.Identity)/&quot; &quot;$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)/&quot;"/>
 		<MakeDir Directories="$(RootDirectory)/docs/html/C"/>
 		<MakeDir Directories="$(RootDirectory)/docs/html/C/figures"/>
 		<Copy SourceFiles="@(FigureFiles)" DestinationFolder="$(RootDirectory)/docs/html/C/figures"/>
-		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)!='ARM64'" WorkingDirectory="C:\msys64" Command="python &quot;C:\msys64\mingw64\bin\yelp-build&quot; html -o &quot;$(RootDirectory)/docs/html/C/&quot; &quot;$(RootDirectory)/docs/yelp/C/&quot;"/>
+		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)!='ARM64'" Command="yelp-build html -o &quot;$(RootDirectory)/docs/html/C/&quot; &quot;$(RootDirectory)/docs/yelp/C/&quot;"/>
 		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)=='ARM64'" WorkingDirectory="C:\msys64" Command="python &quot;C:\msys64\clangarm64\bin\yelp-build&quot; html -o &quot;$(RootDirectory)/docs/html/C/&quot; &quot;$(RootDirectory)/docs/yelp/C/&quot;"/>
 		<Exec Condition="!$([MSBuild]::IsOSPlatform('Windows'))" WorkingDirectory="$(MSBuildProjectDirectory)" Command="yelp-build html -o &quot;$(RootDirectory)/docs/html/C/&quot; &quot;$(RootDirectory)/docs/yelp/C/&quot;"/>
 	</Target>
