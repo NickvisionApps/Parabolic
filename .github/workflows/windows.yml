@@ -36,7 +36,7 @@ jobs:
         id: msys2
         with:
           msystem: ${{ matrix.variant.subsys }}
-          install: mingw-w64-${{ matrix.variant.type }}-gettext-tools
+          install: mingw-w64-${{ matrix.variant.type }}-gettext-tools mingw-w64-${{ matrix.variant.type }}-yelp-tools
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.0.x'

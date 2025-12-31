@@ -39,33 +39,33 @@ We will then take care of the question as soon as possible and convert it to a p
 
 ## I Want To Contribute
 
-> ### Legal Notice
-> When contributing to this project, you must agree that you have authored 100% of the content and/or that you have the necessary rights to the content and that the content you contribute may be provided under the project [license](COPYING).
+### Legal Notice
+When contributing to this project, you must agree that you have authored 100% of the content and/or that you have the necessary rights to the content and that the content you contribute may be provided under the project [license](LICENSE).
 
 ### Reporting Bugs
 
 #### Before Submitting a Bug Report
 
-A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask that you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible:
+A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask that you investigate carefully, collect necessary information and describe the issue in detail in your report. Please complete the following steps in advanced to help us fix any potential bug as fast as possible:
 
-- Make sure that you are using the latest released version.
+- Make sure that you are using the latest released stable version.
 - Determine if your bug is really a bug and not an error on your side. If you are looking for support, you might want to check [this section](#i-have-a-question).
 - See if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in both the [Discussions](https://github.com/NickvisionApps/Parabolic/discussions) and [Issues](https://github.com/NickvisionApps/Parabolic/issues) sections.
 - Collect information about the bug:
   - Debug information provided by the application
-    - GNOME: From the main hamburger menu, open About Parabolic --> Troubleshooting --> Debugging Information and copy the information to the clipboard to paste in your issue.
-    - WinUI: From the Help item in the left-side navigation, open About Parabolic --> Debugging and copy the information to the clipboard to paste in your issue.
+    - GNOME: From the main hamburger menu, open About Parabolic → Troubleshooting → Debugging Information and copy the information to the clipboard to paste in your issue.
+    - WinUI: From the main Help menu, open About Parabolic --> Debugging and copy the information to the clipboard to paste in your issue.
   - Stack trace (Traceback)
     - Including any error messages thrown by the application
     - You may need to start the application via the terminal/console to receive an error message for a crash.
-  - OS, Platform and Version (Distro, Kernel Version, x64/ARM, etc...)
+  - OS, Platform and Version (Distro, Kernel Version, x64/ARM64, etc...)
   - Your input and the output to the application
     - i.e. Steps you took to produce the crash and/or attach any files you may have opened within the app that caused a crash
   - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
 
 #### How Do I Submit a Good Bug Report?
 
-> You must never report security related issues, vulnerabilities and bugs (including sensitive information) to the issue tracker nor elsewhere in public. Instead sensitive issues must be reported and handled via email to <nlogozzo225@gmail.com>.
+You must never report security related issues, vulnerabilities and bugs (including sensitive information) to the issue tracker nor elsewhere in public. Instead, sensitive issues must be reported and handled via email to <nlogozzo225@gmail.com>.
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
@@ -127,71 +127,49 @@ Once all changes to your translated file are made, commit these changes and crea
 
 #### Structure
 
-Parabolic is built using C++20 and platform-native user interface libraries. With these technologies, Parabolic is built for all desktop platforms.
+Parabolic is built using .NET 10 and platform-native user interface libraries. With these technologies, Parabolic is built for the Windows and Linux operating systems.
 
 The project is split up into the following sub-projects:
- - [libparabolic](#libparabolic)
- - [org.nickvision.tubeconverter.gnome](#org.nickvision.tubeconverter.gnome)
- - [org.nickvision.tubeconverter.winui](org.nickvision.tubeconverter.winui)
+ - [Nickvision.Parabolic.Shared](#Nickvision.Parabolic.Shared)
+ - [Nickvision.Parabolic.GNOME](#Nickvision.Parabolic.GNOME)
+ - [Nickvision.Parabolic.WinUI](#Nickvision.Parabolic.WinUI)
 
-The whole project utilizes the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern for separating data models and UI views.
+The whole project utilizes the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern for separating data models, business logic, and UI views.
 
-##### libparabolic
+##### Nickvision.Parabolic.Shared
 
 This project contains all of the code used by all platforms of the app:
-- `controllers` => The objects used by UI views to receive and manipulate data from the models.
-- `events` => Arguments that are used by events throughout the application.
-- `helpers` => Useful objects and functions specific to the application that can be used by all platforms.
-- `models` => The data driven objects of the application (i.e. Configuration, Database, etc...).
+- `Controllers` => The objects used by UI views to receive and manipulate data in the application.
+- `Events` => Arguments that are used by events throughout the application.
+- `Models` => The data driven objects of the application (i.e. Configuration, Database, etc...).
+- `Services` => The business logic for modifying models and data throughout the application.
 
-##### org.nickvision.tubeconverter.gnome
+##### Nickvision.Parabolic.GNOME
 
-This project contains all of the code used for the GNOME platform version of the app, including flathub manifest and desktop files:
-- `blueprints` => UI design files written in [Blueprint markup language](https://jwestman.pages.gitlab.gnome.org/blueprint-compiler/).
-- `controls` => Generic controls for the app.
+This project contains all of the code used for the GNOME platform version of the app:
+- `Blueprint` => UI design files written in [Blueprint markup language](https://jwestman.pages.gitlab.gnome.org/blueprint-compiler/).
+- `Controls` => Generic controls for the app.
     - These UI objects are separate from views in that they should not be backed by a controller and should be easily ported to any other app.
-- `helpers` => Useful objects and functions specific for the GNOME platform version of the app.
-- `resources` => Extra icons and other files specific for the GNOME platform version of the app.
-- `views` => The views (pages, windows, dialogs, etc...) of the app.
+- `Resources` => Extra icons and other files specific for the GNOME platform version of the app.
+- `Views` => The views (pages, windows, dialogs, etc...) of the app.
 
-##### org.nickvision.tubeconverter.winui
+##### Nickvision.Parabolic.WinUI
 
 This project contains all of the code used for the WinUI platform version of the app:
-- `controls` => Generic controls for the app.
+- `Assets` => Extra icons and other files specific for the WinUI platform version of the app.
+- `Controls` => Generic controls for the app.
     - These UI objects are separate from views in that they should not be backed by a controller and should be easily ported to any other app.
-- `helpers` => Useful objects and functions specific for the WinUI platform version of the app.
-- `views` => The views (pages, windows, dialogs, etc...) of the app.
-
-#### Developing and Testing
-
-Parabolic simply relies on `cmake` to configure and manage the correct projects for the running platform. Meaning, on Linux the `.gnome` variant of the app will be built and on Windows the `.winui` variant.
-
-[See the readme](README#building-manually) for instructions on building and running the app locally.
+- `Views` => The views (pages, windows, dialogs, etc...) of the app.
 
 ## Styleguides
 
 Parabolic uses the following naming conventions:
-- `CamelCase` for namespaces and classes
-- `pascalCase` for file names, functions, and variables
-- `m_` prefix appended to class member variables
+- `CamelCase` for namespaces, classes, file names, functions, properties
+- `pascalCase` for local variables
+- `_` prefix appended to class member variables
 - `s_` prefix appended to global static variables
-- `get` and `set` prefixes used for accessor and modifiers methods of a class variable respectively
-    - Exception: For boolean class members, `is` and `setIs` should be used as the prefixes for the accessor and modifier methods of said members.
 
-Parabolic uses the following coding styles:
-- ```cpp
-    #ifndef FILENAME_H
-    #define FILENAME_H
-    ...
-    #endif //FILENAME_H
-  ```
-  used as the guards to a header file.
-  - `#pragma once` should not be used.
-- Brackets `{}` should be placed on individual new lines and never inline.
-    - This applies for any type of structure (`if`, `switch`, `class`, etc...) that requires brackets.
-    - *Single-line if statements should also be wrapped by brackets.*
-- Proper indentation using spacing with spaces and not tabs.
-
+Parabolic uses the standard Microsoft C# style code conventions.
 
 ## Join The Project Team
 

@@ -59,51 +59,24 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
   </video>
 </details>
 
-## Building Manually
-Parabolic uses `cmake` as its build system and `vcpkg` to *optionally* manage its dependencies.
+# Building
 
-Ensure `cmake` and `vcpkg` are installed on your system before building and installing Parabolic.
+Parabolic is a .NET 10 project and can easily be built on any platform. Besides, .NET 10 the following are required system dependencies for building each project:
 
-A C++20 compiler is also required to build Parabolic.
+- Shared
+  - [gettext](https://www.gnu.org/software/gettext/)
+    - Can be installed on Windows using `msys2`
+  - [yelp-tools](https://wiki.gnome.org/Apps/Yelp/Tools)
+    - Can be installed on Windows using `msys2`
+- WinUI
+  - [WindowsAppSDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/)
+- GNOME
+  - [Gtk4](https://docs.gtk.org/gtk4/)
+  - [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita)
+  - [blueprint-compiler](https://gitlab.gnome.org/GNOME/blueprint-compiler)
 
-### Dependencies
-The following are a list of dependencies used by Parabolic.
-
-The recommendation is to (and below commands will) use vcpkg to pull these dependencies. However, vcpkg is not a requirement as long as the system provides these dependencies correctly.
-
-#### All Platforms
-- `libnick`
-- `boost-date-time`
-
-#### Linux
-- `blueprint-compiler` (Not available from vcpkg)
-- `libxmlpp`
-
-### Configuring vcpkg
-1. Set the `VCPKG_ROOT` environment variable to the path of your vcpkg installation's root directory.
-#### Windows
-1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-windows`
-1. Run `vcpkg install libnick boost-date-time`
-#### Linux
-1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
-1. Run `vcpkg install libnick libxmlpp boost-date-time`
-
-### Building
-1. First, clone/download the repo.
-1. Open a terminal and navigate to the repo's root directory.
-1. Create a new `build` directory and `cd` into it.
-#### Windows
-1. From the `build` folder, run `cmake .. -G "Visual Studio 17 2022"`.
-1. From the `build` folder, run `cmake --build . --config Release`.
-1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.winui/Release` folder of the `build` folder.
-#### Windows (Portable)
-1. From the `build` folder, run `cmake .. -G "Visual Studio 17 2022" -DBUILD_AS_PORTABLE=ON`.
-1. From the `build` folder, run `cmake --build . --config Release`.
-1. After these commands complete, Application will be successfully built and its binaries can be found in the `org.nickvision.application.winui/Release` folder of the `build` folder.
-#### Linux
-1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release`.
-1. From the `build` folder, run `cmake --build .`.
-1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.gnome` folder of the `build` folder.
+Once all dependencies are available on the system, simply run `dotnet run --project Nickvision.Parabolic.WinUI` or `dotnet run --project Nickvision.Parabolic.GNOME` to run the version of the app for your system.
 
 # Code of Conduct
+
 This project follows the [GNOME Code of Conduct](https://conduct.gnome.org/).
