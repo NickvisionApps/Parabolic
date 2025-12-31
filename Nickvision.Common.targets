@@ -12,41 +12,18 @@
 		<MakeDir Directories="$(TargetDir)\plugins"/>
 		<Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(TargetDir)\plugins\%(RecursiveDir)"/>
 	</Target>
-
-	<Target Name="GenerateDocumentationTranslationsForBuild" AfterTargets="Build">
-		<Message Importance="high" Text="Generating documentation translations..." />
+	
+	<Target Name="CopyPluginsForPublish" AfterTargets="Publish">
+		<Message Importance="high" Text="Copying plugins..." />
 		<PropertyGroup>
-			<ShortName>parabolic</ShortName>
 			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
-			<TemplateFile>$(RootDirectory)\docs\po\$(ShortName).pot</TemplateFile>
-			<DocumentationDirectory>$(RootDirectory)\docs\yelp\C</DocumentationDirectory>
+			<PluginsDirectory>$(RootDirectory)\resources\yt-dlp-plugins</PluginsDirectory>
 		</PropertyGroup>
 		<ItemGroup>
-			<DocumentationFilesList Include="$(DocumentationDirectory)\*.page"/>
-			<DocumentationFilesRelativeList Include="@(DocumentationFilesList->'%(FullPath)')">
-				<Relative>$([MSBuild]::MakeRelative('$(RootDirectory)', '%(FullPath)'))</Relative>
-			</DocumentationFilesRelativeList>
-			<FigureFiles Include="$(DocumentationDirectory)\figures\**\*.*"/>
+			<PluginFiles Include="$(PluginsDirectory)\**\*.*"/>
 		</ItemGroup>
-		<ReadLinesFromFile File="$(RootDirectory)\docs\po\LINGUAS">
-			<Output TaskParameter="Lines" ItemName="LanguagesList"/>
-		</ReadLinesFromFile>
-		<Exec WorkingDirectory="$(RootDirectory)" Command="itstool -o &quot;docs/po/$(ShortName).pot&quot; @(DocumentationFilesRelativeList->'&quot;%(Relative)&quot;', ' ')"/>
-		<Exec WorkingDirectory="$(RootDirectory)" Command="msgmerge --backup=off --update &quot;docs/po/%(LanguagesList.Identity).po&quot; &quot;$(TemplateFile)&quot;"/>
-		<Exec WorkingDirectory="$(RootDirectory)" Command="msgfmt &quot;docs/po/%(LanguagesList.Identity).po&quot; --output-file=&quot;$(RootDirectory)/docs/po/%(LanguagesList.Identity).mo&quot;"/>
-		<MakeDir Directories="$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)"/>
-		<Exec WorkingDirectory="$(RootDirectory)" Command="itstool -m &quot;$(RootDirectory)/docs/po/%(LanguagesList.Identity).mo&quot; -o &quot;docs/yelp/%(LanguagesList.Identity)/&quot; @(DocumentationFilesRelativeList->'&quot;%(Relative)&quot;', ' ')"/>
-		<Delete Files="$(RootDirectory)/docs/po/%(LanguagesList.Identity).mo"/>
-		<MakeDir Directories="$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)/figures"/>
-		<Copy SourceFiles="@(FigureFiles)" DestinationFolder="$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)/figures"/>
-		<MakeDir Condition="!$([MSBuild]::IsOSPlatform('Windows'))" Directories="$(RootDirectory)/docs/html/%(LanguagesList.Identity)"/>
-		<MakeDir Condition="!$([MSBuild]::IsOSPlatform('Windows'))" Directories="$(RootDirectory)/docs/html/%(LanguagesList.Identity)/figures"/>
-		<Copy Condition="!$([MSBuild]::IsOSPlatform('Windows'))" SourceFiles="@(FigureFiles)" DestinationFolder="$(RootDirectory)/docs/html/%(LanguagesList.Identity)/figures"/>
-		<Exec Condition="!$([MSBuild]::IsOSPlatform('Windows'))" WorkingDirectory="$(RootDirectory)" Command="yelp-build html -o &quot;$(RootDirectory)/docs/html/%(LanguagesList.Identity)/&quot; &quot;$(RootDirectory)/docs/yelp/%(LanguagesList.Identity)/&quot;"/>
-		<MakeDir Condition="!$([MSBuild]::IsOSPlatform('Windows'))" Directories="$(RootDirectory)/docs/html/C"/>
-		<MakeDir Condition="!$([MSBuild]::IsOSPlatform('Windows'))" Directories="$(RootDirectory)/docs/html/C/figures"/>
-		<Copy Condition="!$([MSBuild]::IsOSPlatform('Windows'))" SourceFiles="@(FigureFiles)" DestinationFolder="$(RootDirectory)/docs/html/C/figures"/>
-		<Exec Condition="!$([MSBuild]::IsOSPlatform('Windows'))" WorkingDirectory="$(RootDirectory)" Command="yelp-build html -o &quot;$(RootDirectory)/docs/html/C/&quot; &quot;$(RootDirectory)/docs/yelp/C/&quot;"/>
+		<MakeDir Directories="$(PublishDir)\plugins"/>
+		<Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(PublishDir)\plugins\%(RecursiveDir)"/>
 	</Target>
 
 	<Target Name="GenerateTranslationsForBuild" AfterTargets="Build">
@@ -66,19 +43,6 @@
 		<Exec WorkingDirectory="$(RootDirectory)" Command="msgmerge --backup=off --update &quot;resources/po/%(LanguagesList.Identity).po&quot; &quot;$(TemplateFile)&quot;"/>
 		<MakeDir Directories="$(TargetDir)/%(LanguagesList.Identity)"/>
 		<Exec WorkingDirectory="$(RootDirectory)" Command="msgfmt &quot;resources/po/%(LanguagesList.Identity).po&quot; --output-file=&quot;$(TargetDir)/%(LanguagesList.Identity)/$(ShortName).mo&quot;"/>
-	</Target>
-
-	<Target Name="CopyPluginsForPublish" AfterTargets="Publish">
-		<Message Importance="high" Text="Copying plugins..." />
-		<PropertyGroup>
-			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
-			<PluginsDirectory>$(RootDirectory)\resources\yt-dlp-plugins</PluginsDirectory>
-		</PropertyGroup>
-		<ItemGroup>
-			<PluginFiles Include="$(PluginsDirectory)\**\*.*"/>
-		</ItemGroup>
-		<MakeDir Directories="$(PublishDir)\plugins"/>
-		<Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(PublishDir)\plugins\%(RecursiveDir)"/>
 	</Target>
 
 	<Target Name="GenerateTranslationsForPublish" AfterTargets="Publish">
