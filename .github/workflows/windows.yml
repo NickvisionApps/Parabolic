@@ -23,10 +23,12 @@ jobs:
             runner: windows-latest
             subsys: mingw64
             type: x86_64
+            ffmpeg: win64
           - arch: arm64
             runner: windows-11-arm
             subsys: clangarm64
             type: clang-aarch64
+            ffmpeg: winarm64
     runs-on: ${{ matrix.variant.runner }}
     steps:
       - uses: actions/checkout@v5
