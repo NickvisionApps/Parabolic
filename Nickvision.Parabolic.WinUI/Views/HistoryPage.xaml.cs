@@ -4,6 +4,7 @@ using Nickvision.Desktop.Application;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,15 +19,18 @@ public sealed partial class HistoryPage : Page
     {
         Loading = 0,
         None,
+        NoneSearch,
         History
     }
 
     private readonly HistoryPageController _controller;
+    private IReadOnlyList<SelectionItem<HistoricDownload>> _historicDownloads;
 
     public HistoryPage(HistoryPageController controller)
     {
         InitializeComponent();
         _controller = controller;
+        _historicDownloads = [];
         BtnClearAll.Label = _controller.Translator._("Clear All");
         BtnSort.Label = _controller.Translator._("Sort");
         TglSortNewest.Text = _controller.Translator._("Newest");
@@ -47,6 +51,8 @@ public sealed partial class HistoryPage : Page
         LblLoading.Text = _controller.Translator._("Please wait...");
         StatusNone.Title = _controller.Translator._("No History");
         StatusNone.Description = _controller.Translator._("There are no downloads in your history");
+        StatusNoneSearch.Title = _controller.Translator._("No History");
+        StatusNoneSearch.Description = _controller.Translator._("There are no downloads found with the current filters");
         MenuClearAll.Text = _controller.Translator._("Clear All");
         MenuDownloadAgain.Text = _controller.Translator._("Download Again");
         MenuPlay.Text = _controller.Translator._("Play");
@@ -137,6 +143,28 @@ public sealed partial class HistoryPage : Page
         await LoadDownloadsAsync();
     }
 
+    private void TxtSerach_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    {
+        if (_historicDownloads.Count == 0)
+        {
+            return;
+        }
+        if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+        {
+            if (string.IsNullOrEmpty(sender.Text))
+            {
+                ListDownloads.ItemsSource = _historicDownloads;
+                ViewStack.SelectedIndex = _historicDownloads.Count == 0 ? (int)Pages.None : (int)Pages.History;
+            }
+            else
+            {
+                var filtered = _historicDownloads.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower()));
+                ListDownloads.ItemsSource = filtered;
+                ViewStack.SelectedIndex = filtered.Any() ? (int)Pages.History : (int)Pages.NoneSearch;
+            }
+        }
+    }
+
     private async void ClearAll(object? sender, RoutedEventArgs e)
     {
         var confirmDialog = new ContentDialog()
@@ -192,8 +220,9 @@ public sealed partial class HistoryPage : Page
     private async Task LoadDownloadsAsync()
     {
         ViewStack.SelectedIndex = (int)Pages.Loading;
-        var downloads = await _controller.GetAllAsync();
-        ListDownloads.ItemsSource = downloads;
-        ViewStack.SelectedIndex = downloads.Count == 0 ? (int)Pages.None : (int)Pages.History;
+        TxtSerach.Text = string.Empty;
+        _historicDownloads = await _controller.GetAllAsync();
+        ListDownloads.ItemsSource = _historicDownloads;
+        ViewStack.SelectedIndex = _historicDownloads.Count == 0 ? (int)Pages.None : (int)Pages.History;
     }
 }

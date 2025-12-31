@@ -94,7 +94,7 @@
                 </CommandBar.PrimaryCommands>
             </CommandBar>
 
-            <AutoSuggestBox x:Name="TxtSerach" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,6,0" Width="320" QueryIcon="Find"/>
+            <AutoSuggestBox x:Name="TxtSerach" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,6,0" Width="320" QueryIcon="Find" TextChanged="TxtSerach_TextChanged"/>
         </Grid>
 
         <MenuFlyoutSeparator Grid.Row="1"/>
@@ -108,6 +108,8 @@
                 </StackPanel>
 
                 <nickvision:StatusPage x:Name="StatusNone" Glyph="&#xE81C;"/>
+
+                <nickvision:StatusPage x:Name="StatusNoneSearch" Glyph="&#xE721;"/>
 
                 <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <ListView x:Name="ListDownloads" SelectionMode="Multiple" SelectionChanged="ListDownloads_SelectionChanged">
