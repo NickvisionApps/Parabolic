@@ -10,8 +10,8 @@ permissions:
   id-token: write
   contents: read
 env:
-  GITHUB_ACTIONS: true
-  VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+  PROJECT_NAME: Nickvision.Parabolic.WinUI
+  INSTALLER_NAME: NickvisionParabolicSetup
 jobs:
   winui-windows:
     name: "WinUI on Windows"
@@ -20,53 +20,41 @@ jobs:
       matrix:
         variant:
           - arch: x64
-            runner: windows-2025
-            triplet: x64-windows
-            ffmpeg: win64
-          #- arch: arm64
-          #  runner: windows-11-arm
-          #  triplet: arm64-windows
-          #  ffmpeg: winarm64
+            runner: windows-latest
+            subsys: mingw64
+            type: x86_64
+          - arch: arm64
+            runner: windows-11-arm
+            subsys: clangarm64
+            type: clang-aarch64
     runs-on: ${{ matrix.variant.runner }}
     steps:
-      - name: "Checkout"
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           submodules: recursive
-      - name: "Setup Environment"
-        shell: pwsh
-        run: |
-          $ProgressPreference = 'SilentlyContinue'
-          mkdir build
-          mkdir build-portable
-          Invoke-WebRequest https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.26-v1.17/gettext0.26-iconv1.17-shared-64.zip -OutFile gettext.zip
-          Expand-Archive -Force 'gettext.zip'
-          move gettext\bin\* C:\Windows\System32
-      - name: "Vcpkg"
-        uses: johnwason/vcpkg-action@v7
-        id: vcpkg
+      - uses: msys2/setup-msys2@v2
+        id: msys2
         with:
-          pkgs: boost-date-time libnick
-          triplet: ${{ matrix.variant.triplet }}
-          revision: 7dacf21ceb1525863ebd5051e5962ca026d2bfbf
-          token: ${{ github.token }}
-          cache-key: ${{ matrix.variant.triplet }}-7dacf21ceb1525863ebd5051e5962ca026d2bfbf
-      - name: "Build (Installer)"
-        working-directory: ${{ github.workspace }}/build
-        run: |
-          cmake -G "Visual Studio 17 2022" ..
-          cmake --build . --config Release
-      - name: "Build (Portable)"
-        working-directory: ${{ github.workspace }}/build-portable
-        run: |
-          cmake -G "Visual Studio 17 2022" -DBUILD_AS_PORTABLE=ON ..
-          cmake --build . --config Release
-      - name: "Create Installer"
+          msystem: ${{ matrix.variant.subsys }}
+          install: mingw-w64-${{ matrix.variant.type }}-gettext-tools
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+      - name: "Setup PATH"
+        shell: pwsh
+        run: echo "${{ steps.msys2.outputs.msys2-location }}\${{ matrix.variant.subsys }}\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: "Restore"
+        run: dotnet restore ${{ env.PROJECT_NAME }} --runtime win-${{ matrix.variant.arch }} /p:PublishReadyToRun=true
+      - name: "Publish"
+        run: dotnet publish ${{ env.PROJECT_NAME }} -c Release --no-restore --runtime win-${{ matrix.variant.arch }} /p:Platform=${{ matrix.variant.arch }}
+      - name: "Installer"
         working-directory: ${{github.workspace}}/inno
+        env:
+          APP_FILES_PATH: ${{ env.PROJECT_NAME }}/bin/${{ matrix.variant.arch }}/Release/net10.0-windows10.0.19041.0/win-${{ matrix.variant.arch }}/publish
         shell: pwsh
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.${{ matrix.variant.arch }}.exe -OutFile vc_redist.exe
+          Invoke-WebRequest https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/10.0.0/windowsdesktop-runtime-10.0.0-win-${{ matrix.variant.arch }}.exe -OutFile dotnet.exe
           Invoke-WebRequest https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-${{ matrix.variant.arch }}.exe -OutFile windowsappruntimeinstall.exe
           Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.12.08/yt-dlp.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/Elypha/aria2-mod/releases/download/aria2c-1.37.0-b4fd7cb-20251126/aria2c-windows-x86_64-wintls.zip -OutFile aria2.zip
@@ -81,38 +69,7 @@ jobs:
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffplay.exe ffplay.exe
           move deno\deno.exe deno.exe
           iscc setup.iss
-      - name: "Create Portable"
-        working-directory: ${{ github.workspace }}/build-portable/org.nickvision.tubeconverter.winui/Release
-        shell: pwsh
-        run: |
-          $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.${{ matrix.variant.arch }}.exe -OutFile vc_redist.exe
-          Invoke-WebRequest https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-${{ matrix.variant.arch }}.exe -OutFile windowsappruntimeinstall.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2025.12.08/yt-dlp.exe -OutFile yt-dlp.exe
-          Invoke-WebRequest https://github.com/Elypha/aria2-mod/releases/download/aria2c-1.37.0-b4fd7cb-20251126/aria2c-windows-x86_64-wintls.zip -OutFile aria2.zip
-          Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl.zip -OutFile ffmpeg.zip
-          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.6.0/deno-x86_64-pc-windows-msvc.zip -OutFile deno.zip
-          Expand-Archive -Force 'aria2.zip'
-          Expand-Archive -Force 'ffmpeg.zip'
-          Expand-Archive -Force 'deno.zip'
-          move aria2\aria2c.exe aria2c.exe
-          move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffmpeg.exe ffmpeg.exe
-          move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffprobe.exe ffprobe.exe
-          move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffplay.exe ffplay.exe
-          move deno\deno.exe deno.exe
-          Remove-Item -Path aria2.zip -Force
-          Remove-Item -Path aria2 -Recurse -Force
-          Remove-Item -Path ffmpeg.zip -Force
-          Remove-Item -Path ffmpeg -Recurse -Force
-          Remove-Item -Path deno.zip -Recurse -Force
-          Remove-Item -Path deno -Recurse -Force
-      - name: "Upload (Installer)"
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          path: ${{ github.workspace }}/inno/NickvisionParabolicSetup.exe
-          name: Windows-${{ matrix.variant.arch }}-Installer
-      - name: "Upload (Portable)"
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{ github.workspace }}/build-portable/org.nickvision.tubeconverter.winui/Release
-          name: Windows-${{ matrix.variant.arch }}-Portable
+          path: ${{ github.workspace }}/inno/${{ env.INSTALLER_NAME }}.exe
+          name: ${{ env.INSTALLER_NAME }}-${{ matrix.variant.arch }}

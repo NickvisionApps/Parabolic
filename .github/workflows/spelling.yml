@@ -12,9 +12,9 @@ jobs:
   codespell:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: codespell-project/actions-codespell@master
+      - uses: actions/checkout@v5
+      - uses: codespell-project/actions-codespell@v2
         with:
           check_filenames: true
-          skip: cargo-sources.json,.git,*.svg,*.html,*.js,*.po,*.pot,*.page,*.map,*.rtf,,pch.h,CONTRIBUTING.md
+          skip: cargo-sources.json,.git,*.svg,*.html,*.js,*.po,*.pot,*.page,*.map,*.rtf,pch.h,CONTRIBUTING.md
           ignore_words_list: gir

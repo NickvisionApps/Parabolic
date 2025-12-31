@@ -1,9 +1,17 @@
 {
-    "app-id" : "org.nickvision.tubeconverter",
+    "app-id" : "org.nickvision.application",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "49",
     "sdk" : "org.gnome.Sdk",
-    "command" : "org.nickvision.tubeconverter",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.dotnet10"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/dotnet10/bin",
+        "append-ld-library-path": "/usr/lib/sdk/dotnet10/lib",
+        "prepend-pkg-config-path": "/usr/lib/sdk/dotnet10/lib/pkgconfig"
+    },
+    "command" : "org.nickvision.application",
     "finish-args":[
         "--socket=fallback-x11",
         "--socket=wayland",
@@ -26,110 +34,12 @@
     ],
     "cleanup":[
         "/include",
-        "/lib/cmake",
+        "/lib/debug",
         "/lib/pkgconfig",
         "/man",
         "*.a"
     ],
     "modules" : [
-        {
-            "name": "boost",
-            "buildsystem": "simple",
-            "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=system,date_time,json",
-                "./b2 -j $FLATPAK_BUILDER_N_JOBS install"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2",
-                    "sha256": "85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a"
-                }
-            ]
-        },
-        {
-            "name": "cpr",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DCPR_BUILD_TESTS=OFF",
-                "-DCPR_USE_SYSTEM_CURL=ON",
-                "-DCPR_ENABLE_SSL=ON"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/libcpr/cpr",
-                    "commit": "a0ff651296a620ed5fabf7d12cf4905fefc7ce86"
-                }
-            ]
-        },
-        {
-            "name": "maddy",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/progsource/maddy",
-                    "tag": "1.6.0"
-                }
-            ]
-        },
-        {
-            "name": "tcl",
-            "buildsystem": "autotools",
-            "subdir": "unix",
-            "config-opts": [
-                "--enable-shared=no"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz",
-                    "sha256": "91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5"
-                }
-            ]
-        },
-        {
-            "name": "sqlcipher",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--enable-tempstore=yes",
-                "--enable-fts5",
-                "--enable-releasemode",
-                "--disable-static",
-                "CFLAGS=-DSQLITE_HAS_CODEC",
-                "LDFLAGS=-lcrypto"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/sqlcipher/sqlcipher",
-                    "tag": "v4.6.1"
-                }
-            ]
-        },
-        {
-            "name": "libnick",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DBUILD_TESTING=OFF",
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2025.10.0"
-                }
-            ]
-        },
         "python3-modules.json",
         {
             "name": "aria2",
@@ -199,33 +109,34 @@
             ]
         },
         {
-            "name": "libxmlplusplus",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dmaintainer-mode=false",
-                "-Dbuild-examples=false",
-                "-Dbuild-tests=false"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/libxmlplusplus/libxmlplusplus",
-                    "tag": "5.4.0"
-                }
-            ]
-        },
-        {
             "name": "org.nickvision.tubeconverter",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
+            "buildsystem": "simple",
+            "build-options": {
+                "arch": {
+                    "aarch64": {
+                        "env" : {
+                            "RUNTIME": "linux-arm64",
+                            "container": "flatpak"
+                        }
+                    },
+                    "x86_64": {
+                        "env" : {
+                            "RUNTIME": "linux-x64",
+                            "container": "flatpak"
+                        }
+                    }
+                }
+            },
+            "build-commands": [
+                "chmod +x ./resources/linux/publish-and-install.sh",
+                "./resources/linux/publish-and-install.sh /app $RUNTIME"
             ],
             "sources": [
                 {
                     "type": "dir",
                     "path": ".."
-                }
+                },
+                "nuget-sources.json"
             ]
         }
     ]
