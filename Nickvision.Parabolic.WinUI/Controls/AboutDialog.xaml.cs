@@ -48,7 +48,7 @@ public sealed partial class AboutDialog : ContentDialog
         ViewStack.SelectedIndex = index == -1 ? 0 : index;
     }
 
-    private async void CopyDebugInformation(object sender, RoutedEventArgs args)
+    private async void CopyDebugInformation(object? sender, RoutedEventArgs args)
     {
         var package = new DataPackage();
         package.SetText(LblDebugInformation.Text);

@@ -144,6 +144,8 @@ public class MainWindowController : IDisposable
 
     public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<INotificationService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
 
+    public HistoryPageController HistoryPageController => new HistoryPageController(_services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
+
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
 
     public bool ShowDisclaimerOnStartup

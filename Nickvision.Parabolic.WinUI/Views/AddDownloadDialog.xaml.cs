@@ -140,12 +140,15 @@ public sealed partial class AddDownloadDialog : ContentDialog
     {
         ViewStack.SelectedIndex = (int)Pages.Discover;
         TglDownloadImmediately.IsOn = _controller.PreviousDownloadOptions.DownloadImmediately;
-        if (Clipboard.GetContent().Contains(StandardDataFormats.Text))
+        if (string.IsNullOrEmpty(TxtUrl.Text))
         {
-            if (Uri.TryCreate(await Clipboard.GetContent().GetTextAsync(), UriKind.Absolute, out var uri))
+            if (Clipboard.GetContent().Contains(StandardDataFormats.Text))
             {
-                TxtUrl.Text = uri.ToString();
-                IsPrimaryButtonEnabled = true;
+                if (Uri.TryCreate(await Clipboard.GetContent().GetTextAsync(), UriKind.Absolute, out var uri))
+                {
+                    TxtUrl.Text = uri.ToString();
+                    IsPrimaryButtonEnabled = true;
+                }
             }
         }
         var result = await base.ShowAsync();
@@ -178,6 +181,13 @@ public sealed partial class AddDownloadDialog : ContentDialog
             cancellationToken.Cancel();
         }
         return result;
+    }
+
+    public async Task<ContentDialogResult> ShowAsync(Uri url)
+    {
+        TxtUrl.Text = url.ToString();
+        IsPrimaryButtonEnabled = true;
+        return await ShowAsync();
     }
 
     private async Task DiscoverMediaAsync(CancellationToken cancellationToken)
@@ -288,9 +298,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbPlaylistPostProcessorArgument.SelectedItem as SelectionItem<PostProcessorArgument?>)!
     );
 
-    private void TxtUrl_TextChanged(object sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
+    private void TxtUrl_TextChanged(object? sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
 
-    private async void BtnSelectBatchFile_Click(object sender, RoutedEventArgs e)
+    private async void BtnSelectBatchFile_Click(object? sender, RoutedEventArgs e)
     {
         var picker = new FileOpenPicker(_windowId)
         {
@@ -304,14 +314,14 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void CmbCredential_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void CmbCredential_SelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         var visibility = (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value is null ? Visibility.Visible : Visibility.Collapsed;
         TxtUsername.Visibility = visibility;
         TxtPassword.Visibility = visibility;
     }
 
-    private void TglDownloadImmediately_Toggled(object sender, RoutedEventArgs e) => TeachDownloadImmediately.IsOpen = _controller.GetShouldShowDownloadImmediatelyTeach();
+    private void TglDownloadImmediately_Toggled(object? sender, RoutedEventArgs e) => TeachDownloadImmediately.IsOpen = _controller.GetShouldShowDownloadImmediatelyTeach();
 
     private void NavViewSingle_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
     {
@@ -323,9 +333,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         };
     }
 
-    private void BtnSingleRevertFilename_Click(object sender, RoutedEventArgs e) => TxtSingleSaveFilename.Text = _discoveryContext!.Items[0].Label;
+    private void BtnSingleRevertFilename_Click(object? sender, RoutedEventArgs e) => TxtSingleSaveFilename.Text = _discoveryContext!.Items[0].Label;
 
-    private async void BtnSingleSelectSaveFolder_Click(object sender, RoutedEventArgs e)
+    private async void BtnSingleSelectSaveFolder_Click(object? sender, RoutedEventArgs e)
     {
         var picker = new FolderPicker(_windowId)
         {
@@ -338,7 +348,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void CmbSingleFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void CmbSingleFileType_SelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         var selectedFileType = (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!;
         TeachSingleFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, selectedFileType);
@@ -346,9 +356,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbSingleAudioFormat.SelectSelectionItemByFormatId(_controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]);
     }
 
-    private void BtnSingleSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListSingleSubtitles.SelectAll();
+    private void BtnSingleSelectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListSingleSubtitles.SelectAll();
 
-    private void BtnSingleDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListSingleSubtitles.DeselectAll();
+    private void BtnSingleDeselectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListSingleSubtitles.DeselectAll();
 
     private void NavViewPlaylist_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
     {
@@ -361,7 +371,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         };
     }
 
-    private async void BtnPlaylistSelectSaveFolder_Click(object sender, RoutedEventArgs e)
+    private async void BtnPlaylistSelectSaveFolder_Click(object? sender, RoutedEventArgs e)
     {
         var picker = new FolderPicker(_windowId)
         {
@@ -374,15 +384,15 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void CmbPlaylistFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
+    private void CmbPlaylistFileType_SelectionChanged(object? sender, SelectionChangedEventArgs e) => TeachPlaylistFileType.IsOpen = _controller.GetShouldShowFileTypeTeach(_discoveryContext!, (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!);
 
-    private void BtnPlaylistSelectAllItems_Click(object sender, RoutedEventArgs e) => ListPlaylistItems.SelectAll();
+    private void BtnPlaylistSelectAllItems_Click(object? sender, RoutedEventArgs e) => ListPlaylistItems.SelectAll();
 
-    private void BtnPlaylistDeselectAllItems_Click(object sender, RoutedEventArgs e) => ListPlaylistItems.DeselectAll();
+    private void BtnPlaylistDeselectAllItems_Click(object? sender, RoutedEventArgs e) => ListPlaylistItems.DeselectAll();
 
-    private void TglPlaylistNumberTitles_Toggled(object sender, RoutedEventArgs e) => TeachPlaylistNumberTitles.IsOpen = _controller.GetShouldShowNumberTitlesTeach();
+    private void TglPlaylistNumberTitles_Toggled(object? sender, RoutedEventArgs e) => TeachPlaylistNumberTitles.IsOpen = _controller.GetShouldShowNumberTitlesTeach();
 
-    private void BtnPlaylistRevertFilename_Click(object sender, RoutedEventArgs e)
+    private void BtnPlaylistRevertFilename_Click(object? sender, RoutedEventArgs e)
     {
         var index = (int)(sender as Button)!.Tag;
         if (ListPlaylistItems.ItemsSource is IReadOnlyList<MediaSelectionItem> items)
@@ -391,7 +401,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void BtnPlaylistSelectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
+    private void BtnPlaylistSelectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 
-    private void BtnPlaylistDeselectAllSubtitles_Click(object sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
+    private void BtnPlaylistDeselectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
 }

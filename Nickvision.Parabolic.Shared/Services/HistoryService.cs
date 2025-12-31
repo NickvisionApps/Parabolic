@@ -6,6 +6,7 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
@@ -38,6 +39,31 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
     ~HistoryService()
     {
         Dispose(false);
+    }
+
+    public bool SortNewest
+    {
+        get
+        {
+            using var command = _connection.CreateCommand();
+            command.CommandText = "SELECT value FROM settings WHERE name = $name";
+            command.Parameters.AddWithValue("$name", "sort_newest");
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                return reader.GetInt32(0) == 1;
+            }
+            return true;
+        }
+
+        set
+        {
+            using var command = _connection.CreateCommand();
+            command.CommandText = "INSERT INTO settings (name, value) VALUES ($name, $value) ON CONFLICT(name) DO UPDATE SET value = $value WHERE name = $name";
+            command.Parameters.AddWithValue("$name", "sort_newest");
+            command.Parameters.AddWithValue("$value", value ? 1 : 0);
+            command.ExecuteNonQuery();
+        }
     }
 
     public HistoryLength Length
@@ -176,6 +202,14 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
                 await deleteCommand.ExecuteNonQueryAsync();
             }
             await transaction.CommitAsync();
+        }
+        if (SortNewest)
+        {
+            downloads = downloads.OrderDescending().ToList();
+        }
+        else
+        {
+            downloads.Sort();
         }
         return downloads;
     }

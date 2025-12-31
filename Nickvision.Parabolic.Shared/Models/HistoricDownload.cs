@@ -2,7 +2,7 @@
 
 namespace Nickvision.Parabolic.Shared.Models;
 
-public class HistoricDownload
+public class HistoricDownload : IComparable<HistoricDownload>, IEquatable<HistoricDownload>
 {
     public Uri Url { get; }
     public string Title { get; set; }
@@ -23,7 +23,7 @@ public class HistoricDownload
         {
             return 1;
         }
-        return Url.ToString().CompareTo(other.Url.ToString());
+        return DownloadedOn.CompareTo(other.DownloadedOn);
     }
 
     public override bool Equals(object? obj) => obj is HistoricDownload other && Equals(other);

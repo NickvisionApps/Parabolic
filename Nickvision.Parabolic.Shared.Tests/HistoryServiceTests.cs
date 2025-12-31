@@ -6,7 +6,6 @@ using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Tests;

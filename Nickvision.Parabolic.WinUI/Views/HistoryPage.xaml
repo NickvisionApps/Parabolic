@@ -1,0 +1,171 @@
+<Page
+    x:Class="Nickvision.Parabolic.WinUI.Views.HistoryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
+    xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
+                <CommandBar.PrimaryCommands>
+                    <AppBarButton x:Name="BtnClearAll" Click="ClearAll">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+
+                    <AppBarSeparator/>
+
+                    <AppBarButton x:Name="BtnSort">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE8CB;"/>
+                        </AppBarButton.Icon>
+
+                        <AppBarButton.Flyout>
+                            <MenuFlyout Placement="Bottom">
+                                <RadioMenuFlyoutItem x:Name="TglSortNewest" GroupName="Sort" Click="TglSort_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglSortOldest" GroupName="Sort" Click="TglSort_Click"/>
+                            </MenuFlyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+
+                    <AppBarButton x:Name="BtnLength">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEC92;"/>
+                        </AppBarButton.Icon>
+
+                        <AppBarButton.Flyout>
+                            <MenuFlyout Placement="Bottom">
+                                <RadioMenuFlyoutItem x:Name="TglLengthNever" GroupName="Length" Click="TglLength_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglLengthOneDay" GroupName="Length" Click="TglLength_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglLengthOneWeek" GroupName="Length" Click="TglLength_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglLengthOneMonth" GroupName="Length" Click="TglLength_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglLengthThreeMonths" GroupName="Length" Click="TglLength_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglLengthSixMonths" GroupName="Length" Click="TglLength_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglLengthOneYear" GroupName="Length" Click="TglLength_Click"/>
+
+                                <RadioMenuFlyoutItem x:Name="TglLengthForever" GroupName="Length" Click="TglLength_Click"/>
+                            </MenuFlyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+
+                    <AppBarSeparator/>
+
+                    <AppBarButton x:Name="BtnDownloadAgain" IsEnabled="False" Click="DownloadAgain">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+
+                    <AppBarButton x:Name="BtnPlay" IsEnabled="False" Click="Play">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE768;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+
+                    <AppBarButton x:Name="BtnRemove" IsEnabled="False" Click="Remove">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE894;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </CommandBar.PrimaryCommands>
+            </CommandBar>
+
+            <AutoSuggestBox x:Name="TxtSerach" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,6,0" Width="320" QueryIcon="Find"/>
+        </Grid>
+
+        <MenuFlyoutSeparator Grid.Row="1"/>
+
+        <nickvision:ViewStack x:Name="ViewStack" Grid.Row="2">
+            <nickvision:ViewStack.Pages>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="24">
+                    <ProgressRing IsActive="True"/>
+
+                    <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" Foreground="Gray"/>
+                </StackPanel>
+
+                <nickvision:StatusPage x:Name="StatusNone" Glyph="&#xE81C;"/>
+
+                <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ListView x:Name="ListDownloads" SelectionMode="Multiple" SelectionChanged="ListDownloads_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid RowSpacing="6" ColumnSpacing="6" Padding="6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Label, Mode=OneWay}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Value.Url, Mode=OneWay}" Foreground="Gray"/>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Text="{Binding Value.DownloadedOn, Mode=OneWay}" Foreground="Gray"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                        <ListView.ContextFlyout>
+                            <MenuFlyout Placement="Bottom">
+                                <MenuFlyoutItem x:Name="MenuClearAll" Click="ClearAll">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+
+                                <MenuFlyoutSeparator/>
+
+                                <MenuFlyoutItem x:Name="MenuDownloadAgain" Click="DownloadAgain" IsEnabled="False">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+
+                                <MenuFlyoutItem x:Name="MenuPlay" Click="Play" IsEnabled="False">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE768;"/>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+
+                                <MenuFlyoutItem x:Name="MenuRemove" Click="Remove" IsEnabled="False">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE894;"/>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                            </MenuFlyout>
+                        </ListView.ContextFlyout>
+                    </ListView>
+                </ScrollViewer>
+            </nickvision:ViewStack.Pages>
+        </nickvision:ViewStack>
+    </Grid>
+</Page>

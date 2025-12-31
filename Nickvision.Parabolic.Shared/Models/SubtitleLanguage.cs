@@ -28,7 +28,7 @@ public class SubtitleLanguage : IComparable<SubtitleLanguage>, IEquatable<Subtit
         {
             return -1;
         }
-        return Language.CompareTo(other?.Language ?? string.Empty);
+        return Language.CompareTo(other.Language);
     }
 
     public override bool Equals(object? obj)

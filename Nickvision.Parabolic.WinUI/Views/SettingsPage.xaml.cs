@@ -44,9 +44,9 @@ public sealed partial class SettingsPage : Page
         ViewStack.SelectedIndex = index == -1 ? 0 : index;
     }
 
-    private async void Cmb_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ApplyChangesAsync();
+    private async void Cmb_SelectionChanged(object? sender, SelectionChangedEventArgs e) => await ApplyChangesAsync();
 
-    private async void Tgl_Toggled(object sender, Microsoft.UI.Xaml.RoutedEventArgs e) => await ApplyChangesAsync();
+    private async void Tgl_Toggled(object? sender, Microsoft.UI.Xaml.RoutedEventArgs e) => await ApplyChangesAsync();
 
     private async Task ApplyChangesAsync()
     {

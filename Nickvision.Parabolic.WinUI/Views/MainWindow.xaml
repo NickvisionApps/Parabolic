@@ -58,6 +58,16 @@
                 </MenuBarItem>
 
                 <MenuBarItem x:Name="MenuEdit">
+                    <MenuFlyoutItem x:Name="MenuHistory" Click="History">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
+                        </MenuFlyoutItem.Icon>
+
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="H"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+
                     <MenuFlyoutItem x:Name="MenuSettings" Click="Settings">
                         <MenuFlyoutItem.Icon>
                             <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE713;"/>

@@ -9,6 +9,7 @@ namespace Nickvision.Parabolic.Shared.Services;
 
 public interface IHistoryService : IService
 {
+    bool SortNewest { get; set; }
     HistoryLength Length { get; set; }
 
     event EventHandler<HistoryChangedEventArgs>? Changed;

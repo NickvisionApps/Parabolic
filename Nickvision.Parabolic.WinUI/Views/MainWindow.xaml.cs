@@ -71,7 +71,7 @@ public sealed partial class MainWindow : Window
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
         // Events
         AppWindow.Closing += Window_Closing;
-        _controller.AppNotificationSent += (sender, args) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, args));
+        _controller.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
         _controller.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
         AppWindow.Title = _controller.AppInfo.ShortName;
@@ -81,6 +81,7 @@ public sealed partial class MainWindow : Window
         MenuAddDownload.Text = _controller.Translator._("Add Download");
         MenuExit.Text = _controller.Translator._("Exit");
         MenuEdit.Title = _controller.Translator._("Edit");
+        MenuHistory.Text = _controller.Translator._("History");
         MenuSettings.Text = _controller.Translator._("Settings");
         MenuHelp.Title = _controller.Translator._("Help");
         MenuCheckForUpdates.Text = _controller.Translator._("Check for Updates");
@@ -99,7 +100,7 @@ public sealed partial class MainWindow : Window
         BtnDownloadsAddDownload.Label = _controller.Translator._("Add");
     }
 
-    private async void Window_Loaded(object sender, RoutedEventArgs e)
+    private async void Window_Loaded(object? sender, RoutedEventArgs e)
     {
         MenuCheckForUpdates.IsEnabled = false;
         var updatesTask = _controller.CheckForUpdatesAsync(false);
@@ -141,32 +142,41 @@ public sealed partial class MainWindow : Window
         MenuCheckForUpdates.IsEnabled = true;
     }
 
-    private void Window_Closing(AppWindow sender, AppWindowClosingEventArgs args)
+    private void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
         if (!_controller.CanShutdown)
         {
-            args.Cancel = true;
+            e.Cancel = true;
             return;
         }
         _controller.WindowGeometry = new WindowGeometry(AppWindow.Size.Width, AppWindow.Size.Height, User32.IsZoomed(_hwnd), AppWindow.Position.X, AppWindow.Position.Y);
         _controller.Dispose();
     }
 
-    private void TitleBar_PaneToggleRequested(TitleBar sender, object args)
+    private void TitleBar_PaneToggleRequested(TitleBar sender, object e)
     {
         NavView.IsPaneOpen = !NavView.IsPaneOpen;
     }
 
-    private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs e)
     {
-        if (args.SelectedItem is NavigationViewItem item)
+        if (e.SelectedItem is NavigationViewItem item)
         {
             var tag = item.Tag as string;
-            FrameCustom.Content = tag switch
+            if (tag == "History")
             {
-                "Settings" => new SettingsPage(_controller.PreferencesViewController),
-                _ => null
-            };
+                var controller = _controller.HistoryPageController;
+                controller.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
+                FrameCustom.Content = new HistoryPage(controller);
+            }
+            else if (tag == "Settings")
+            {
+                FrameCustom.Content = new SettingsPage(_controller.PreferencesViewController);
+            }
+            else
+            {
+                FrameCustom.Content = null;
+            }
             ViewStack.SelectedIndex = tag switch
             {
                 "Downloads" => (int)Pages.Downloads,
@@ -178,37 +188,37 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs args)
+    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         if (_notificationClickHandler is not null)
         {
             BtnInfoBar.Click -= _notificationClickHandler;
             _notificationClickHandler = null;
         }
-        InfoBar.Message = args.Notification.Message;
-        InfoBar.Severity = args.Notification.Severity switch
+        InfoBar.Message = e.Notification.Message;
+        InfoBar.Severity = e.Notification.Severity switch
         {
             NotificationSeverity.Success => InfoBarSeverity.Success,
             NotificationSeverity.Warning => InfoBarSeverity.Warning,
             NotificationSeverity.Error => InfoBarSeverity.Error,
             _ => InfoBarSeverity.Informational
         };
-        if (args.Notification.Action == "update")
+        if (e.Notification.Action == "update")
         {
             BtnInfoBar.Content = _controller.Translator._("Update");
             _notificationClickHandler = WindowsUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
-        else if (args.Notification.Action == "update-ytdlp")
+        else if (e.Notification.Action == "update-ytdlp")
         {
             BtnInfoBar.Content = _controller.Translator._("Update");
             _notificationClickHandler = YtdlpUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
-        else if (args.Notification.Action == "error")
+        else if (e.Notification.Action == "error")
         {
             BtnInfoBar.Content = _controller.Translator._("Details");
-            _notificationClickHandler = async (s, e) =>
+            _notificationClickHandler = async (_, _) =>
             {
                 var errorDialog = new ContentDialog()
                 {
@@ -219,7 +229,7 @@ public sealed partial class MainWindow : Window
                         VerticalScrollBarVisibility = ScrollBarVisibility.Visible,
                         Content = new TextBlock()
                         {
-                            Text = args.Notification.ActionParam ?? string.Empty,
+                            Text = e.Notification.ActionParam ?? string.Empty,
                             TextWrapping = TextWrapping.Wrap
                         }
                     },
@@ -236,9 +246,9 @@ public sealed partial class MainWindow : Window
         InfoBar.IsOpen = true;
     }
 
-    private void Controller_JsonFileSaved(object? sender, JsonFileSavedEventArgs args)
+    private void Controller_JsonFileSaved(object? sender, JsonFileSavedEventArgs e)
     {
-        if (args.Name == Configuration.Key)
+        if (e.Name == Configuration.Key)
         {
             MainGrid.RequestedTheme = _controller.Theme switch
             {
@@ -249,34 +259,28 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private async void AddDownload(object sender, RoutedEventArgs e)
-    {
-        var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, AppWindow.Id)
-        {
-            RequestedTheme = MainGrid.RequestedTheme,
-            XamlRoot = MainGrid.XamlRoot
-        };
-        await addDownloadDialog.ShowAsync();
-    }
+    private async void AddDownload(object? sender, RoutedEventArgs e) => await AddDownloadAsync(null);
 
-    private void Exit(object sender, RoutedEventArgs e) => Close();
+    private void Exit(object? sender, RoutedEventArgs e) => Close();
 
-    private void Settings(object sender, RoutedEventArgs e) => NavItemSettings.IsSelected = true;
+    private void History(object? sender, RoutedEventArgs e) => NavItemHistory.IsSelected = true;
 
-    private async void CheckForUpdates(object sender, RoutedEventArgs e)
+    private void Settings(object? sender, RoutedEventArgs e) => NavItemSettings.IsSelected = true;
+
+    private async void CheckForUpdates(object? sender, RoutedEventArgs e)
     {
         MenuCheckForUpdates.IsEnabled = false;
         await _controller.CheckForUpdatesAsync(true);
         MenuCheckForUpdates.IsEnabled = true;
     }
 
-    private async void GitHubRepo(object sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.SourceRepository);
+    private async void GitHubRepo(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.SourceRepository);
 
-    private async void ReportABug(object sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.IssueTracker);
+    private async void ReportABug(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.IssueTracker);
 
-    private async void Discussions(object sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.DiscussionsForum);
+    private async void Discussions(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.DiscussionsForum);
 
-    private async void About(object sender, RoutedEventArgs e)
+    private async void About(object? sender, RoutedEventArgs e)
     {
         var progressDialog = new ContentDialog()
         {
@@ -298,7 +302,7 @@ public sealed partial class MainWindow : Window
         await aboutDialog.ShowAsync();
     }
 
-    private async void WindowsUpdate(object sender, RoutedEventArgs e)
+    private async void WindowsUpdate(object? sender, RoutedEventArgs e)
     {
         var progress = new Progress<DownloadProgress>();
         progress.ProgressChanged += UpdateProgress_Changed;
@@ -307,22 +311,13 @@ public sealed partial class MainWindow : Window
         progress.ProgressChanged -= UpdateProgress_Changed;
     }
 
-    private async void YtdlpUpdate(object sender, RoutedEventArgs e)
+    private async void YtdlpUpdate(object? sender, RoutedEventArgs e)
     {
         var progress = new Progress<DownloadProgress>();
         progress.ProgressChanged += UpdateProgress_Changed;
         InfoBar.IsOpen = false;
         await _controller.YtdlpUpdateAsync(progress);
         progress.ProgressChanged -= UpdateProgress_Changed;
-    }
-
-    private async Task LaunchUriAsync(Uri? uri)
-    {
-        if (uri is null)
-        {
-            return;
-        }
-        await Launcher.LaunchUriAsync(uri);
     }
 
     private void UpdateProgress_Changed(object? sender, DownloadProgress e)
@@ -343,5 +338,31 @@ public sealed partial class MainWindow : Window
             StsProgress.Description = message;
             BarProgress.Value = e.Percentage * 100;
         });
+    }
+
+    private async Task AddDownloadAsync(Uri? uri)
+    {
+        var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, AppWindow.Id)
+        {
+            RequestedTheme = MainGrid.RequestedTheme,
+            XamlRoot = MainGrid.XamlRoot
+        };
+        if (uri is not null)
+        {
+            await addDownloadDialog.ShowAsync(uri);
+        }
+        else
+        {
+            await addDownloadDialog.ShowAsync();
+        }
+    }
+
+    private async Task LaunchUriAsync(Uri? uri)
+    {
+        if (uri is null)
+        {
+            return;
+        }
+        await Launcher.LaunchUriAsync(uri);
     }
 }
