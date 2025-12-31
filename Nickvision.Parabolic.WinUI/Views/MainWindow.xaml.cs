@@ -72,6 +72,7 @@ public sealed partial class MainWindow : Window
         // Events
         AppWindow.Closing += Window_Closing;
         _controller.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
+        _controller.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
         _controller.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
         AppWindow.Title = _controller.AppInfo.ShortName;
@@ -163,20 +164,12 @@ public sealed partial class MainWindow : Window
         if (e.SelectedItem is NavigationViewItem item)
         {
             var tag = item.Tag as string;
-            if (tag == "History")
+            FrameCustom.Content = tag switch
             {
-                var controller = _controller.HistoryPageController;
-                controller.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
-                FrameCustom.Content = new HistoryPage(controller);
-            }
-            else if (tag == "Settings")
-            {
-                FrameCustom.Content = new SettingsPage(_controller.PreferencesViewController);
-            }
-            else
-            {
-                FrameCustom.Content = null;
-            }
+                "History" => new HistoryPage(_controller.HistoryPageController),
+                "Settings" => new SettingsPage(_controller.PreferencesViewController),
+                _ => null
+            };
             ViewStack.SelectedIndex = tag switch
             {
                 "Downloads" => (int)Pages.Downloads,

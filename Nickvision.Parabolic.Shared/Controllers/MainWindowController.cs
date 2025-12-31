@@ -25,6 +25,8 @@ public class MainWindowController : IDisposable
 
     public AppInfo AppInfo { get; }
 
+    public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
+
     public MainWindowController(string[] args)
     {
         _args = args;
@@ -144,7 +146,15 @@ public class MainWindowController : IDisposable
 
     public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<INotificationService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
 
-    public HistoryPageController HistoryPageController => new HistoryPageController(_services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
+    public HistoryPageController HistoryPageController
+    {
+        get
+        {
+            var controller = new HistoryPageController(_services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
+            controller.DownloadRequested += (sender, e) => DownloadRequested?.Invoke(this, e);
+            return controller;
+        }
+    }
 
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
 
