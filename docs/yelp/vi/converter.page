@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="vi">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" lang="vi">
 <info>
 	<link type="guide" xref="index"/>
 	<title type="link">Bộ chuyển đổi ⚒️</title>
@@ -12,32 +12,14 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Kinten Le</mal:name>
-      <mal:email>kinten108101@protonmail.com</mal:email>
-      <mal:years>2024</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>jack74593</mal:name>
-      <mal:email>jack74593@proton.me</mal:email>
-      <mal:years>2025</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Loc Huynh</mal:name>
-      <mal:email>huynhloc.contact@gmail.com</mal:email>
-      <mal:years>2025</mal:years>
-    </mal:credit>
-  </info>
+<credit type="translator copyright"><name>Kinten Le</name><email>kinten108101@protonmail.com</email><years>2024</years></credit><credit type="translator copyright"><name>jack74593</name><email>jack74593@proton.me</email><years>2025</years></credit><credit type="translator copyright"><name>Vietnam Linux L10n</name><email>https://github.com/linux-l10n-vi</email><years>2025</years></credit><credit type="translator copyright"><name>Loc Huynh</name><email>https://github.com/hthienloc</email><years>2025</years></credit></info>
 
 <title>Bộ chuyển đổi</title>
 <p>Trang này giải thích tất cả các tùy chọn để định cấu hình Bộ chuyển đổi trong Tùy chọn trong <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Nhúng siêu dữ liệu</title>
+        <title>Nhúng metadata</title>
         <p>Parabolic sẽ gắn thẻ phương tiện với thông tin liên quan (tiêu đề, thể loại, v.v.) nếu có.</p>
         <note style="advanced">
             <p>Mặc định: Bật</p>
@@ -45,10 +27,10 @@
     </item>
     <item>
         <title>Xóa dữ liệu nguồn</title>
-        <p>Parabolic sẽ xóa các trường siêu dữ liệu chứa thông tin tải xuống nhận dạng.</p>
+        <p>Parabolic sẽ xóa các trường metadata chứa thông tin tải xuống nhận dạng.</p>
         <p>Các trường bị xóa: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> và <code>handler_name</code> trong mỗi luồng.</p>
         <note>
-            <p>Tùy chọn này chỉ có thể định cấu hình nếu <code>Nhúng siêu dữ liệu</code> được bật.</p>
+            <p>Tùy chọn này chỉ có thể định cấu hình nếu <code>Nhúng metadata</code> được bật.</p>
         </note>
         <note style="advanced">
             <p>Mặc định: Tắt</p>
@@ -63,7 +45,7 @@
         </note>
     </item>
     <item>
-        <title>Cắt thumbnail của audio</title>
+        <title>Cắt hình thu nhỏ âm thanh</title>
         <p>Parabolic sẽ cắt hình thu nhỏ của tệp âm thanh thành hình vuông.</p>
         <note>
             <p>Tùy chọn này chỉ có thể định cấu hình nếu <code>Nhúng hình thu nhỏ</code> được bật.</p>

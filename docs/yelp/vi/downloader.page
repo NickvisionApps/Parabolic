@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="vi">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" lang="vi">
 <info>
 	<link type="guide" xref="index"/>
 	<title type="link">Trình tải xuống 🛠️</title>
@@ -12,42 +12,24 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Kinten Le</mal:name>
-      <mal:email>kinten108101@protonmail.com</mal:email>
-      <mal:years>2024</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>jack74593</mal:name>
-      <mal:email>jack74593@proton.me</mal:email>
-      <mal:years>2025</mal:years>
-    </mal:credit>
-  
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Loc Huynh</mal:name>
-      <mal:email>huynhloc.contact@gmail.com</mal:email>
-      <mal:years>2025</mal:years>
-    </mal:credit>
-  </info>
+<credit type="translator copyright"><name>Kinten Le</name><email>kinten108101@protonmail.com</email><years>2024</years></credit><credit type="translator copyright"><name>jack74593</name><email>jack74593@proton.me</email><years>2025</years></credit><credit type="translator copyright"><name>Vietnam Linux L10n</name><email>https://github.com/linux-l10n-vi</email><years>2025</years></credit><credit type="translator copyright"><name>Loc Huynh</name><email>https://github.com/hthienloc</email><years>2025</years></credit></info>
 
 <title>Trình tải</title>
 <p>Trang này giải thích tất cả các tùy chọn để định cấu hình Trình tải xuống trong Tùy chọn trong <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Sử dụng tập tin phần</title>
+        <title>Sử dụng tệp phần</title>
         <p>Parabolic sẽ tải phương tiện ở các tệp .part riêng biệt thay vì trực tiếp vào tệp đầu ra.</p>
         <note style="advanced">
             <p>Mặc định: Bật</p>
         </note>
     </item>
     <item>
-        <title>Sử dụng SponsorBlock đối với YouTube</title>
-        <p>Parabolic sẽ cố gắng xóa các phân đoạn được tài trợ khỏi video YouTube.</p>
+        <title>Sử dụng SponsorBlock với YouTube</title>
+        <p>Parabolic sẽ cố gắng xóa các phân đoạn tài trợ khỏi video YouTube.</p>
         <note>
-            <p>Nhà tài trợBlock chỉ hoạt động trên video YouTube. Tuy nhiên, việc bật cài đặt này sẽ không ảnh hưởng đến việc tải xuống từ các trang web khác (tức là không khiến chúng bị lỗi).</p>
+            <p>SponsorBlock chỉ hoạt động trên video YouTube. Tuy nhiên, việc bật cài đặt này sẽ không ảnh hưởng đến việc tải xuống từ các trang web khác (tức là không khiến chúng bị lỗi).</p>
         </note>
         <note style="advanced">
             <p>Mặc định: Tắt</p>

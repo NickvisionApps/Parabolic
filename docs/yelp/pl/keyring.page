@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="keyring" its:version="2.0" xml:lang="pl">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="keyring" its:version="2.0" lang="pl">
 <info>
 	<link type="guide" xref="index"/>
 	<title type="link">Lista kluczy 🔑</title>
@@ -12,22 +12,16 @@
 	    <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Dominik Gęgotek</mal:name>
-      <mal:email>ioutora@disroot.org</mal:email>
-      <mal:years>2023</mal:years>
-    </mal:credit>
-  </info>
+<credit type="translator copyright"><name>Dominik Gęgotek</name><email>ioutora@disroot.org</email><years>2023</years></credit></info>
 
 <title>Lista kluczy</title>
 <p>Na tej stronie wyjaśniono wszystkie opcje potrzebne do używania Listy kluczy w <app>Parabolic</app>.</p>
 
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+    <p>Lista kluczy jest wspierana przez bibliotekę <code>libnick</code>.</p>
+    <p>Ta biblioteka wykorzystuje SQLCipher do bezpiecznego przechowywania danych logowania w sposób niezależny od systemu.</p>
+    <p>Biblioteka będzie korzystać z menedżera danych logowania systemu (tj. DBus secret service w systemie Linux i Menedżer poświadczeń w systemie Windows) w celu zabezpieczenia pliku bazy danych listy kluczy.</p>
 </section>
 
 <section>

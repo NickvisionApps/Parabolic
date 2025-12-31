@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="pl">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" lang="pl">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloads 🌐</title>
+	<title type="link">Pobrane 🌐</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -12,22 +12,16 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+<credit type="translator copyright"><name>Dominik Gęgotek</name><email>ioutora@disroot.org</email><years>2023</years></credit></info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Dominik Gęgotek</mal:name>
-      <mal:email>ioutora@disroot.org</mal:email>
-      <mal:years>2023</mal:years>
-    </mal:credit>
-  </info>
-
-<title>Downloads</title>
-<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+<title>Pobrane</title>
+<p>Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Pobrane w preferencjach w <app>Parabolic</app>.</p>
 
 
 <terms>
     <item>
         <title>Maksymalna ilość aktywnych procesów pobierania</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
+        <p>Ilość procesów pobierania, które mogą być aktywne w tym samym czasie. Musi być liczbą całkowitą od 1 do 10.</p>
         <p>Jeśli maksymalna ilość aktywnych procesów pobierania zostanie osiągnięta nowe procesy będą oczekiwały w kolejce.</p>
         <note style="advanced">
             <p>Domyślnie: 5</p>
@@ -35,62 +29,62 @@
     </item>
     <item>
         <title>Nadpisuj istniejące pliki</title>
-        <p>Parabolic will overwrite existing files.</p>
+        <p>Parabolic będzie nadpisywał istniejące pliki.</p>
         <p>Na przykład, jeśli plik o nazwie <code>film.mp4</code> istnieje w folderze docelowym i nowe pobieranie o nazwie <code>film</code> zostanie rozpoczęte, to <code>film.mp4</code> zostanie zastąpiony nowo pobraną treścią.</p>
         <note>
-            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+            <p>Parabolic wykryje pobrania, które powinny zostać wznowione, i pominie to ustawienie podczas odzyskiwania lub ponownej próby pobrania nieudanych pobrań</p>
         </note>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
     <item>
-        <title>Limit Filename Characters</title>
-        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
-        <p>This option is only available on Linux.</p>
+        <title>Ograniczaj znaki nazw plików</title>
+        <p>Parabolic ograniczy znaki w nazwach plików do wyłącznie tych obsługiwanych przez system Windows.</p>
+        <p>Ta opcja jest dostępna tylko na Linuksie.</p>
         <note style="advanced">
             <p>Domyślnie: wyłączone</p>
         </note>
     </item>
     <item>
-        <title>Included Media Id in Title After Validation</title>
-        <p>Parabolic will include a media's id in its default title.</p>
+        <title>Dodany identyfikator mediów do tytułu po sprawdzeniu</title>
+        <p>Parabolic będzie dodawał identyfikator mediów w domyślnym tytule.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
     <item>
         <title>Zawiera automatycznie generowane napisy</title>
-        <p>Parabolic will present auto-generated subtitles to download in addition to available subtitles.</p>
+        <p>Parabolic pokaże automatycznie wygenerowane napisy do pobrania oprócz dostępnych napisów.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Preferowany kodek wideo</title>
+        <p>Kodek wideo, który Parabolic powinien preferować podczas analizowania formatów multimedialnych do pobrania.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no video formats will be available for download.</p>
+            <p>Jeśli Parabolic nie znajdzie żadnych formatów z wybranym preferowanym kodekiem, żadne formaty wideo nie będą dostępne do pobrania.</p>
         </note>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Domyślnie: Dowolny</p>
         </note>
     </item>
     <item>
-        <title>Preferred Audio Codec</title>
-        <p>The audio codec Parabolic should prefer when parsing media formats to download.</p>
+        <title>Preferowany kodek audio</title>
+        <p>Kodek audio, który Parabolic powinien preferować podczas analizowania formatów mediów do pobrania.</p>
         <note>
-            <p>If Parabolic cannot find any formats with the selected preferred codec, no audio formats will be available for download.</p>
+            <p>Jeśli Parabolic nie znajdzie żadnych formatów z wybranym preferowanym kodekiem, żadne formaty audio nie będą dostępne do pobrania.</p>
         </note>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Domyślnie: Dowolny</p>
         </note>
     </item>
     <item>
-        <title>Preferred Subtitle Format</title>
-        <p>The file format Parabolic should ensure all subtitles are downloaded as.</p>
+        <title>Preferowany format napisów</title>
+        <p>Parabolic postara się pobierać wszystkie napisy w tym formacie.</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Domyślnie: Dowolny</p>
         </note>
     </item>
 </terms>

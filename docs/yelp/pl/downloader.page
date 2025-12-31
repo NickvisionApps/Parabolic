@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="pl">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" lang="pl">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🛠️</title>
+	<title type="link">Pobieranie 🛠️</title>
 	<credit type="author copyright">
             <name>Nicholas Logozzo</name>
             <years its:translate="no">2023-2025</years>
@@ -12,30 +12,24 @@
             <years its:translate="no">2023-2025</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Dominik Gęgotek</mal:name>
-      <mal:email>ioutora@disroot.org</mal:email>
-      <mal:years>2023</mal:years>
-    </mal:credit>
-  </info>
+<credit type="translator copyright"><name>Dominik Gęgotek</name><email>ioutora@disroot.org</email><years>2023</years></credit></info>
 
 <title>Pobieranie</title>
 <p>Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Use Part Files</title>
-        <p>Parabolic will download media in separate .part files instead of directly into the output file.</p>
+        <title>Używaj plików częściowych</title>
+        <p>Parabolic pobierze multimedia do osobnych plików .part zamiast bezpośrednio do pliku wyjściowego.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
     <item>
         <title>Użyj SponsorBlock dla YouTube</title>
-        <p>Parabolic will attempt to remove sponsored segments from YouTube videos.</p>
+        <p>Parabolic spróbuje usunąć segmenty sponsorowane z filmów z YouTube.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>SponsorBlock działa tylko dla filmów na YouTube. Pozostawienie tego ustawienia nie wpłynie na pobieranie plików z innych stron (nie spowoduje niepowodzenia).</p>
         </note>
         <note style="advanced">
             <p>Domyślnie: wyłączone</p>
@@ -43,7 +37,7 @@
     </item>
     <item>
         <title>Limit prędkości pobierania</title>
-        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
+        <p>Limit w KiB/s, który będzie stosowany do pobierania plików po włączeniu. Musi być liczbą całkowitą z przedziału od 512 do 10240.</p>
         <note style="advanced">
             <p>Domyślnie: wyłączone</p>
         </note>
@@ -52,22 +46,22 @@
         <title>Adres URL serwera proxy</title>
         <p>Adres URL wybranego serwera proxy.</p>
         <note style="advanced">
-            <p>Default: No URL</p>
+            <p>Domyślnie: brak adresu URL</p>
         </note>
     </item>
     <item>
         <title>Ciasteczka z przeglądarki</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
+        <p>Przeglądarka, z której można odczytywać ciasteczka i przekazywać je do silnika pobierania yt-dlp.</p>
+        <p>Może się przydać do pobierania mediów wymagających logowania, na przykład prywatnych filmów z YouTube.</p>
+        <p>Ta opcja jest dostępna na platformach bez izolacji (sandboksa).</p>
         <note style="advanced">
-            <p>Default: None</p>
+            <p>Domyślnie: brak</p>
         </note>
     </item>
     <item>
         <title>Ciasteczka</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Plik .txt zawierający pliki cookie, które należy przekazać do yt-dlp podczas pobierania.</p>
+        <p>Może się przydać do pobierania mediów wymagających logowania, na przykład prywatnych filmów z YouTube.</p>
         <p>Wyeksportuj ciasteczka (pliki cookie) z przeglądarki za pomocą następujących rozszerzeń:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
@@ -75,7 +69,7 @@
             <p>Używasz tych rozszerzeń na własne ryzyko.</p>
         </note>
         <note style="advanced">
-            <p>Domyślnie: Brak wybranego pliku</p>
+            <p>Domyślnie: brak wybranego pliku</p>
         </note>
     </item>
 </terms>
