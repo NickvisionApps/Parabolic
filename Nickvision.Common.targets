@@ -1,5 +1,18 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+	<Target Name="CopyPluginsForBuild" AfterTargets="Build">
+		<Message Importance="high" Text="Copying plugins..." />
+		<PropertyGroup>
+			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
+			<PluginsDirectory>$(RootDirectory)\resources\yt-dlp-plugins</PluginsDirectory>
+		</PropertyGroup>
+		<ItemGroup>
+			<PluginFiles Include="$(PluginsDirectory)\**\*.*"/>
+		</ItemGroup>
+		<MakeDir Directories="$(TargetDir)\plugins"/>
+		<Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(TargetDir)\plugins\%(RecursiveDir)"/>
+	</Target>
+
 	<Target Name="GenerateTranslationsForBuild" AfterTargets="Build">
 		<Message Importance="high" Text="Generating translations..." />
 		<PropertyGroup>
@@ -20,6 +33,19 @@
 		<Exec WorkingDirectory="$(RootDirectory)" Command="msgmerge --backup=off --update &quot;resources/po/%(LanguagesList.Identity).po&quot; &quot;$(TemplateFile)&quot;"/>
 		<MakeDir Directories="$(TargetDir)/%(LanguagesList.Identity)"/>
 		<Exec WorkingDirectory="$(RootDirectory)" Command="msgfmt &quot;resources/po/%(LanguagesList.Identity).po&quot; --output-file=&quot;$(TargetDir)/%(LanguagesList.Identity)/$(ShortName).mo&quot;"/>
+	</Target>
+
+	<Target Name="CopyPluginsForPublish" AfterTargets="Publish">
+		<Message Importance="high" Text="Copying plugins..." />
+		<PropertyGroup>
+			<RootDirectory>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RootDirectory>
+			<PluginsDirectory>$(RootDirectory)\resources\yt-dlp-plugins</PluginsDirectory>
+		</PropertyGroup>
+		<ItemGroup>
+			<PluginFiles Include="$(PluginsDirectory)\**\*.*"/>
+		</ItemGroup>
+		<MakeDir Directories="$(PublishDir)\plugins"/>
+		<Copy SourceFiles="@(PluginFiles)" DestinationFolder="$(PublishDir)\plugins\%(RecursiveDir)"/>
 	</Target>
 
 	<Target Name="GenerateTranslationsForPublish" AfterTargets="Publish">
