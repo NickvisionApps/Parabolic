@@ -17,7 +17,7 @@
 	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
         <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <nickvision:ViewStack.Pages>
-                <StackPanel Orientation="Vertical" Spacing="12" Width="400">
+                <StackPanel Orientation="Vertical" Spacing="12" MinWidth="400">
                     <TextBox x:Name="TxtUrl" TextChanged="TxtUrl_TextChanged"/>
 
                     <Button x:Name="BtnSelectBatchFile" HorizontalAlignment="Stretch" Click="BtnSelectBatchFile_Click">
@@ -79,7 +79,7 @@
 
                     <nickvision:ViewStack x:Name="ViewStackSingle" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <nickvision:ViewStack.Pages>
-                            <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                            <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -122,7 +122,7 @@
                                 <nickvision:ViewStack.Pages>
                                     <nickvision:StatusPage x:Name="StatusSingleSubtitles" Margin="0,24,0,0" Glyph="&#xE721;" IsCompact="True"/>
 
-                                    <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                                    <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="*"/>
@@ -159,7 +159,7 @@
                                 </nickvision:ViewStack.Pages>
                             </nickvision:ViewStack>
 
-                            <StackPanel Orientation="Vertical" Spacing="12" Width="400" HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" Spacing="12" MinWidth="400" HorizontalAlignment="Stretch">
                                 <ToggleSwitch x:Name="TglSingleSplitChapters"/>
 
                                 <ToggleSwitch x:Name="TglSingleExportDescription"/>
@@ -210,7 +210,7 @@
 
                     <nickvision:ViewStack x:Name="ViewStackPlaylist" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <nickvision:ViewStack.Pages>
-                            <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                            <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -240,7 +240,7 @@
                                 <ComboBox x:Name="CmbPlaylistSuggestedAudioBitrate" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
                             </Grid>
 
-                            <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                            <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -322,7 +322,7 @@
                                 <nickvision:ViewStack.Pages>
                                     <nickvision:StatusPage x:Name="StatusPlaylistSubtitles" Margin="0,24,0,0" Glyph="&#xE721;" IsCompact="True"/>
 
-                                    <Grid RowSpacing="12" ColumnSpacing="6" Width="400">
+                                    <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
@@ -362,7 +362,7 @@
                                 </nickvision:ViewStack.Pages>
                             </nickvision:ViewStack>
 
-                            <StackPanel Orientation="Vertical" Spacing="12" Width="400" HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical" Spacing="12" MinWidth="400" HorizontalAlignment="Stretch">
                                 <ToggleSwitch x:Name="TglPlaylistExportM3U"/>
                                 
                                 <ToggleSwitch x:Name="TglPlaylistSplitChapters"/>

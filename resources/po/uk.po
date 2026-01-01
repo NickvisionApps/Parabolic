@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-30 22:10-0500\n"
+"POT-Creation-Date: 2025-12-31 20:51-0500\n"
 "PO-Revision-Date: 2025-02-02 05:02+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.10-dev\n"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:46
@@ -25,8 +25,7 @@ msgid "Use manual credential"
 msgstr "Використання облікових даних вручну"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:59
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:103
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:121
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:124
 #: Nickvision.Parabolic.Shared/Models/Format.cs:292
 #: Nickvision.Parabolic.Shared/Models/Format.cs:293
 msgid "None"
@@ -181,11 +180,125 @@ msgstr "Не вдалося завантажити та встановити о�
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Не вдалося завантажити та встановити оновлення"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:31
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:47
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:63
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:35
+msgctxt "Theme"
+msgid "Light"
+msgstr "Світла"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:36
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Темна"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:37
+msgctxt "Theme"
 msgid "System"
 msgstr "Системна"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:52
+msgid "System"
+msgstr "Системна"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:86
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:112
+msgid "Any"
+msgstr "Будь-який"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:89
+msgid "H.264 (AVC)"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:90
+msgid "H.265 (HEVC)"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
+#, fuzzy
+msgid "FLAC (ALAC)"
+msgstr "FLAC (Аудіо)"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:100
+#, fuzzy
+msgid "WAV (AIFF)"
+msgstr "WAV (Аудіо)"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:125
+msgid "Brave"
+msgstr "Brave"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:126
+msgid "Chrome"
+msgstr "Chrome"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:127
+msgid "Chromium"
+msgstr "Chromium"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:128
+msgid "Edge"
+msgstr "Edge"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:129
+msgid "Firefox"
+msgstr "Firefox"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:130
+msgid "Opera"
+msgstr "Opera"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:131
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:132
+msgid "Whale"
+msgstr "Whale"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:150
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
+msgid "Never"
+msgstr "Ніколи"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:151
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
+#, fuzzy
+msgid "1 Day"
+msgstr "Один день"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:152
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
+#, fuzzy
+msgid "1 Week"
+msgstr "Один тиждень"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:153
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:42
+#, fuzzy
+msgid "1 Month"
+msgstr "Один місяць"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:154
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:43
+#, fuzzy
+msgid "3 Months"
+msgstr "Один місяць"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:155
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:44
+#, fuzzy
+msgid "6 Months"
+msgstr "Один місяць"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:156
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:45
+msgid "1 Year"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:157
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:46
+msgid "Forever"
+msgstr "Назавжди"
 
 #: Nickvision.Parabolic.Shared/Models/Download.cs:89
 #, fuzzy
@@ -195,10 +308,6 @@ msgstr "ПОМИЛКА: Файл вже існує, і переписуванн�
 #: Nickvision.Parabolic.Shared/Models/Download.cs:114
 msgid "Starting download..."
 msgstr "Розпочато завантаження..."
-
-#: Nickvision.Parabolic.Shared/Models/Format.cs:240
-msgid "Audio Description"
-msgstr "Аудіоопис"
 
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
@@ -570,43 +679,6 @@ msgstr ""
 msgid "Save Length"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
-msgid "Never"
-msgstr "Ніколи"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
-#, fuzzy
-msgid "1 Day"
-msgstr "Один день"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
-#, fuzzy
-msgid "1 Week"
-msgstr "Один тиждень"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:42
-#, fuzzy
-msgid "1 Month"
-msgstr "Один місяць"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:43
-#, fuzzy
-msgid "3 Months"
-msgstr "Один місяць"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:44
-#, fuzzy
-msgid "6 Months"
-msgstr "Один місяць"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:45
-msgid "1 Year"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:46
-msgid "Forever"
-msgstr "Назавжди"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:47
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
 msgid "Download Again"
@@ -689,7 +761,7 @@ msgstr "Історія"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:19
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -718,6 +790,7 @@ msgid "Home"
 msgstr "Головна"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:31
 msgid "Downloads"
 msgstr "Завантаження"
 
@@ -776,51 +849,358 @@ msgstr "Помилка"
 msgid "Downloading update: {0}%"
 msgstr "Завантаження"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:20
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "User Interface"
 msgstr "Інтерфейс користувача"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:21
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
+msgid "Downloader"
+msgstr "Завантажувач"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
+msgid "Converter"
+msgstr "Конвертер"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
 msgid "Theme"
 msgstr "Стиль"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:22
-msgctxt "Theme"
-msgid "Light"
-msgstr "Світла"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:23
-msgctxt "Theme"
-msgid "Dark"
-msgstr "Темна"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:24
-msgctxt "Theme"
-msgid "System"
-msgstr "Системна"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:25
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:36
 #, fuzzy
 msgid "Translation Language"
 msgstr "Мова аудіо"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:26
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
 #, fuzzy
 msgid "An application restart is required for a change to take effect"
 msgstr "Треба перезавантажити додаток, щоб змінити стиль."
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:27
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:39
 #, fuzzy
 msgid "Receive Preview Updates"
 msgstr "Перевірити наявність оновлень"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:28
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:72
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
 msgid "On"
 msgstr "Увімкнено"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:41
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:45
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:52
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:56
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:60
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:77
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:80
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:105
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:113
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:120
 msgid "Off"
 msgstr "Вимкнено"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:42
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "Запобігти призупиненню системи"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
+msgid "Prevent the computer from sleeping while downloads are running"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:46
+msgid "Download History Length"
+msgstr "Довжина історії завантажень"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
+#, fuzzy
+msgid "The amount of time to keep past downloads in the app's history"
+msgstr "Коли всі завантаження завершаться"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:49
+#, fuzzy
+msgid "Max Number of Active Downloads"
+msgstr "Максимальна кількість активних завантажень"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:50
+msgid "Overwrite Existing Files"
+msgstr "Перезаписати наявні файли"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:53
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "Включити Media ID у заголовок після перевірки"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
+msgid "Add the media's id to its default title"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:57
+msgid "Include Auto-Generated Subtitles"
+msgstr "Включати автоматично сгенеровані субтитри"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
+msgid ""
+"Show auto-generated subtitles to download in addition to available subtitles"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:61
+msgid "Preferred Video Codec"
+msgstr "Переважний відеокодек"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
+msgid ""
+"Prefer this codec when parsing video formats to show available to download"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:64
+#, fuzzy
+msgid "Preferred Audio Codec"
+msgstr "Переважний відеокодек"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
+msgid ""
+"Prefer this codec when parsing audio formats to show available to download"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:67
+msgid "Preferred Subtitle Format"
+msgstr "Бажаний формат субтитрів"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:68
+msgid "Prefer this subtitle file format when downloading"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:70
+#, fuzzy
+msgid "Use Part Files"
+msgstr "Використовувати пакетний файл"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
+msgid "Use SponsorBlock for YouTube"
+msgstr "Використовувати SponsorBlock для YouTube"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
+msgid "Try to remove sponsored segments from videos"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:78
+msgid "Limit Download Speed"
+msgstr "Обмежити швидкість завантаження"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:81
+msgid "Speed Limit"
+msgstr "Обмеження швидкості"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:82
+msgid "Proxy URL"
+msgstr "Проксі URL"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
+msgid "Enter proxy url here"
+msgstr "Введіть URL-адресу проксі"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:84
+#, fuzzy
+msgid "Cookies from File"
+msgstr "Файл cookie"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:85
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:149
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:171
+msgid "No file selected"
+msgstr "Файл не вибрано"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
+msgid "Clear Cookies File"
+msgstr "Очистити файл cookie"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
+msgid "Select Cookies File"
+msgstr "Виберіть файл cookies"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
+msgid "Cookies from Browser"
+msgstr "Файли cookie з браузера"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:90
+#, fuzzy
+msgid "aria2c"
+msgstr "aria2"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
+#, fuzzy
+msgid "Use aria2c"
+msgstr "Використовувати aria2"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:95
+#, fuzzy
+msgid "Max Connections Per Server"
+msgstr "Максимальна кількість з'єднань на сервер (-x)"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:96
+msgid "Corresponds to -x option"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:97
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "Мінімальний розмір розділення (-k)"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:98
+msgid "Corresponds to -k option"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:99
+msgid "Embed Metadata"
+msgstr "Вставити метадані"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:102
+msgid "Remove Source Data"
+msgstr "Вилучити вихідні дані"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information"
+msgstr ""
+"Якщо увімкнено, Parabolic очистить поля метаданих, що містять інформацію, "
+"яка ідентифікує завантаження."
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:106
+msgid "Embed Thumbnails"
+msgstr "Вбудовані ескізи"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file"
+msgstr ""
+"Якщо тип файлу не підтримує вбудовування, ескіз буде збережено окремим "
+"зображенням."
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:110
+msgid "Crop Audio Thumbnails"
+msgstr "Обрізати мініатюри аудіо"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares"
+msgstr ""
+"Якщо увімкнено, Parabolic обрізає ескізи аудіофайлів до квадратної форми."
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
+msgid "Embed Chapters"
+msgstr "Вставити розділи"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:117
+msgid "Embed Subtitles"
+msgstr "Вбудовані субтитри"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files"
+msgstr ""
+"Якщо вимкнено або вбудовування не підтримується, завантажені субтитри "
+"зберігатимуться окремим файлом."
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:121
+#, fuzzy
+msgid "FFmpeg Threads"
+msgstr "Аргументи FFmpeg"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
+msgid "Limit the number of threads used by ffmpeg"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:124
+#, fuzzy
+msgid "Post-Processor Arguments"
+msgstr "Потоки постобробки"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:125
+msgid "Arguments will be shown for selection in the add download dialog"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:126
+msgid "Manage"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Postprocessing"
+#~ msgstr "Обробка"
+
+#, fuzzy
+#~ msgid "Arguments"
+#~ msgstr "Нові облікові дані"
+
+#~ msgid "Name"
+#~ msgstr "Ім'я"
+
+#~ msgid "Enter name here"
+#~ msgstr "Введіть ім'я користувача тут"
+
+#, fuzzy
+#~ msgid "Post Processor"
+#~ msgstr "Обробка"
+
+#, fuzzy
+#~ msgid "Executable"
+#~ msgstr "Ввімкнути"
+
+#, fuzzy
+#~ msgid "Enter arguments here"
+#~ msgstr "Введіть URL-адресу медіа"
+
+#, fuzzy
+#~ msgid "Add Argument"
+#~ msgstr "Нові облікові дані"
+
+#, fuzzy
+#~ msgid "Edit Argument"
+#~ msgstr "Нові облікові дані"
+
+#, fuzzy
+#~ msgid "Delete Argument"
+#~ msgstr "Нові облікові дані"
+
+#, fuzzy
+#~ msgid "No Arguments"
+#~ msgstr "Нові облікові дані"
+
+#~ msgid "Audio Description"
+#~ msgstr "Аудіоопис"
 
 #~ msgid "Recovered {} download"
 #~ msgid_plural "Recovered {} downloads"
@@ -934,9 +1314,6 @@ msgstr "Вимкнено"
 #~ msgid "Credentials"
 #~ msgstr "Облікові дані"
 
-#~ msgid "Name"
-#~ msgstr "Ім'я"
-
 #~ msgid "URL"
 #~ msgstr "URL"
 
@@ -997,21 +1374,12 @@ msgstr "Вимкнено"
 #~ msgid "No Downloads Completed"
 #~ msgstr "Немає завершених завантажень"
 
-#~ msgid "Prevent Suspend"
-#~ msgstr "Запобігти призупиненню системи"
-
-#~ msgid "Download History Length"
-#~ msgstr "Довжина історії завантажень"
-
 #~ msgid "Three Months"
 #~ msgstr "Три місяці"
 
 #, fuzzy
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Максимальна кількість активних завантажень"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Перезаписати наявні файли"
 
 #~ msgid "Limit Filename Characters"
 #~ msgstr "Обмежити символи у іменах файлів"
@@ -1021,161 +1389,12 @@ msgstr "Вимкнено"
 #~ msgstr ""
 #~ "Обмежує символи в іменах файлів лише тими, що підтримуються Windows."
 
-#, fuzzy
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Включити Media ID у заголовок після перевірки"
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "Включати автоматично сгенеровані субтитри"
-
-#~ msgid "Preferred Video Codec"
-#~ msgstr "Переважний відеокодек"
-
-#~ msgid "Any"
-#~ msgstr "Будь-який"
-
-#, fuzzy
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "Переважний відеокодек"
-
-#, fuzzy
-#~ msgid "FLAC (ALAC)"
-#~ msgstr "FLAC (Аудіо)"
-
-#, fuzzy
-#~ msgid "WAV (AIFF)"
-#~ msgstr "WAV (Аудіо)"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "Бажаний формат субтитрів"
-
-#~ msgid "Downloader"
-#~ msgstr "Завантажувач"
-
-#, fuzzy
-#~ msgid "Use Part Files"
-#~ msgstr "Використовувати пакетний файл"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Використовувати SponsorBlock для YouTube"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Обмежити швидкість завантаження"
-
 #~ msgid "Speed Limit (KiB/s)"
 #~ msgstr "Обмеження швидкості (КіБ/с)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "Проксі URL"
-
-#~ msgid "Cookies from Browser"
-#~ msgstr "Файли cookie з браузера"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Файл cookie"
-
-#~ msgid "No file selected"
-#~ msgstr "Файл не вибрано"
-
-#~ msgid "Select Cookies File"
-#~ msgstr "Виберіть файл cookies"
-
-#~ msgid "Clear Cookies File"
-#~ msgstr "Очистити файл cookie"
-
-#, fuzzy
-#~ msgid "aria2c"
-#~ msgstr "aria2"
-
-#, fuzzy
-#~ msgid "Use aria2c"
-#~ msgstr "Використовувати aria2"
-
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "Максимальна кількість з'єднань на сервер (-x)"
-
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "Мінімальний розмір розділення (-k)"
 
 #, fuzzy
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Мінімальний розмір, на який потрібно розділити файл (у MiB)."
-
-#~ msgid "Converter"
-#~ msgstr "Конвертер"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Вставити метадані"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Вилучити вихідні дані"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "Якщо увімкнено, Parabolic очистить поля метаданих, що містять інформацію, "
-#~ "яка ідентифікує завантаження."
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Вбудовані ескізи"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Якщо тип файлу не підтримує вбудовування, ескіз буде збережено окремим "
-#~ "зображенням."
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Обрізати мініатюри аудіо"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr ""
-#~ "Якщо увімкнено, Parabolic обрізає ескізи аудіофайлів до квадратної форми."
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Вставити розділи"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Вбудовані субтитри"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Якщо вимкнено або вбудовування не підтримується, завантажені субтитри "
-#~ "зберігатимуться окремим файлом."
-
-#, fuzzy
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Аргументи FFmpeg"
 
 #, fuzzy
 #~ msgid "Postprocessing Arguments"
@@ -1188,14 +1407,6 @@ msgstr "Вимкнено"
 #, fuzzy
 #~ msgid "Argument"
 #~ msgstr "Нові облікові дані"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "Обробка"
-
-#, fuzzy
-#~ msgid "Executable"
-#~ msgstr "Ввімкнути"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1291,10 +1502,6 @@ msgstr "Вимкнено"
 #~ msgstr "Очистити завершені"
 
 #, fuzzy
-#~ msgid "No Arguments"
-#~ msgstr "Нові облікові дані"
-
-#, fuzzy
 #~ msgid "Delete Argument?"
 #~ msgstr "Нові облікові дані"
 
@@ -1346,9 +1553,6 @@ msgstr "Вимкнено"
 #~ msgstr ""
 #~ "Зміни до зберігання ключів не зберігаються на диску. Будь-які зміни "
 #~ "будуть втрачені, коли програма закриється."
-
-#~ msgid "Enter name here"
-#~ msgstr "Введіть ім'я користувача тут"
 
 #, fuzzy
 #~ msgid "Enter url here"
@@ -1413,28 +1617,6 @@ msgstr "Вимкнено"
 #~ msgstr "Темна"
 
 #, fuzzy
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "Максимальна кількість активних завантажень"
-
-#~ msgid "Speed Limit"
-#~ msgstr "Обмеження швидкості"
-
-#~ msgid "Enter proxy url here"
-#~ msgstr "Введіть URL-адресу проксі"
-
-#, fuzzy
-#~ msgid "Postprocessing"
-#~ msgstr "Обробка"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "Нові облікові дані"
-
-#, fuzzy
-#~ msgid "Enter args here"
-#~ msgstr "Введіть URL-адресу медіа"
-
-#, fuzzy
 #~ msgid "New Argument"
 #~ msgstr "Нові облікові дані"
 
@@ -1449,14 +1631,6 @@ msgstr "Вимкнено"
 #, fuzzy
 #~ msgid "The argument args cannot be empty."
 #~ msgstr "Ім'я облікових даних не може бути порожнім."
-
-#, fuzzy
-#~ msgid "Edit Argument"
-#~ msgstr "Нові облікові дані"
-
-#, fuzzy
-#~ msgid "Delete Argument"
-#~ msgstr "Нові облікові дані"
 
 #, fuzzy
 #~ msgid ""

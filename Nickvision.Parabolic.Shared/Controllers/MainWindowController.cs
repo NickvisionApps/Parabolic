@@ -156,7 +156,7 @@ public class MainWindowController : IDisposable
         }
     }
 
-    public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
+    public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IHistoryService>()!);
 
     public bool ShowDisclaimerOnStartup
     {

@@ -167,7 +167,7 @@ public sealed partial class MainWindow : Window
             FrameCustom.Content = tag switch
             {
                 "History" => new HistoryPage(_controller.HistoryPageController),
-                "Settings" => new SettingsPage(_controller.PreferencesViewController),
+                "Settings" => new SettingsPage(_controller.PreferencesViewController, AppWindow.Id),
                 _ => null
             };
             ViewStack.SelectedIndex = tag switch

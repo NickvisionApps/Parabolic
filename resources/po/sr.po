@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-30 22:10-0500\n"
+"POT-Creation-Date: 2025-12-31 20:51-0500\n"
 "PO-Revision-Date: 2025-12-19 14:00+0000\n"
 "Last-Translator: Naomi <webmaster@compactbunker.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.15.1\n"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:46
@@ -25,8 +25,7 @@ msgid "Use manual credential"
 msgstr "Користи ручни аркедитив"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:59
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:103
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:121
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:124
 #: Nickvision.Parabolic.Shared/Models/Format.cs:292
 #: Nickvision.Parabolic.Shared/Models/Format.cs:293
 msgid "None"
@@ -177,11 +176,123 @@ msgstr "Преузимање и инсталирање нове верзије �
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Преузимање и инсталирање нове верзије није било успешно"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:31
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:47
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:63
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:35
+msgctxt "Theme"
+msgid "Light"
+msgstr "Светла"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:36
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Тамна"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:37
+msgctxt "Theme"
 msgid "System"
 msgstr "Систем"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:52
+msgid "System"
+msgstr "Систем"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:86
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:112
+msgid "Any"
+msgstr "Било који"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:89
+msgid "H.264 (AVC)"
+msgstr "H.264 (AVC)"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:90
+msgid "H.265 (HEVC)"
+msgstr "H.265 (HEVC)"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
+msgid "FLAC (ALAC)"
+msgstr "FLAC (ALAC)"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:100
+msgid "WAV (AIFF)"
+msgstr "WAV (AIFF)"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:125
+msgid "Brave"
+msgstr "Brave"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:126
+msgid "Chrome"
+msgstr "Chrome"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:127
+msgid "Chromium"
+msgstr "Chromium"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:128
+msgid "Edge"
+msgstr "Edge"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:129
+msgid "Firefox"
+msgstr "Firefox"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:130
+msgid "Opera"
+msgstr "Opera"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:131
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:132
+msgid "Whale"
+msgstr "Whale"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:150
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
+msgid "Never"
+msgstr "Никада"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:151
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
+#, fuzzy
+msgid "1 Day"
+msgstr "Један дан"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:152
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
+#, fuzzy
+msgid "1 Week"
+msgstr "Једну недељу"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:153
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:42
+#, fuzzy
+msgid "1 Month"
+msgstr "Један месец"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:154
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:43
+#, fuzzy
+msgid "3 Months"
+msgstr "Један месец"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:155
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:44
+#, fuzzy
+msgid "6 Months"
+msgstr "Један месец"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:156
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:45
+msgid "1 Year"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:157
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:46
+msgid "Forever"
+msgstr "Заувек"
 
 #: Nickvision.Parabolic.Shared/Models/Download.cs:89
 #, fuzzy
@@ -191,10 +302,6 @@ msgstr "ГРЕШКА: Датотека већ постоји и замењива
 #: Nickvision.Parabolic.Shared/Models/Download.cs:114
 msgid "Starting download..."
 msgstr "Преузимање започето…"
-
-#: Nickvision.Parabolic.Shared/Models/Format.cs:240
-msgid "Audio Description"
-msgstr "Аудио опис"
 
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
@@ -563,43 +670,6 @@ msgstr ""
 msgid "Save Length"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
-msgid "Never"
-msgstr "Никада"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
-#, fuzzy
-msgid "1 Day"
-msgstr "Један дан"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
-#, fuzzy
-msgid "1 Week"
-msgstr "Једну недељу"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:42
-#, fuzzy
-msgid "1 Month"
-msgstr "Један месец"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:43
-#, fuzzy
-msgid "3 Months"
-msgstr "Један месец"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:44
-#, fuzzy
-msgid "6 Months"
-msgstr "Један месец"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:45
-msgid "1 Year"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:46
-msgid "Forever"
-msgstr "Заувек"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:47
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
 msgid "Download Again"
@@ -683,7 +753,7 @@ msgstr "Историја"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:19
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -712,6 +782,7 @@ msgid "Home"
 msgstr "Почетак"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:31
 msgid "Downloads"
 msgstr "Преузето"
 
@@ -771,50 +842,348 @@ msgstr "Грешка"
 msgid "Downloading update: {0}%"
 msgstr "Преузимање ажурирања"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:20
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "User Interface"
 msgstr "Кориснички интерфејс"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:21
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
+msgid "Downloader"
+msgstr "Преузимач"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
+msgid "Converter"
+msgstr "Конвертор"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
 msgid "Theme"
 msgstr "Тема"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:22
-msgctxt "Theme"
-msgid "Light"
-msgstr "Светла"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:23
-msgctxt "Theme"
-msgid "Dark"
-msgstr "Тамна"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:24
-msgctxt "Theme"
-msgid "System"
-msgstr "Систем"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:25
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:36
 msgid "Translation Language"
 msgstr "Језик Превода"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:26
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
 #, fuzzy
 msgid "An application restart is required for a change to take effect"
 msgstr "Потребно је поново покренути апликацију да се промене прихвате"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:27
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:39
 #, fuzzy
 msgid "Receive Preview Updates"
 msgstr "Примите ажурирања Бета апликације"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:28
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:72
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
 msgid "On"
 msgstr "Укључено"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:41
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:45
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:52
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:56
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:60
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:77
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:80
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:105
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:113
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:120
 msgid "Off"
 msgstr "Искључено"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:42
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "Онемогући суспензију"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
+#, fuzzy
+msgid "Prevent the computer from sleeping while downloads are running"
+msgstr "Спречите рачунар да пређе у режим спавања док се преузимања покрећу"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:46
+msgid "Download History Length"
+msgstr "Дужина историје преузимања"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
+#, fuzzy
+msgid "The amount of time to keep past downloads in the app's history"
+msgstr ""
+"Време које треба да се претходна преузимања чувају у историји апликације"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:49
+msgid "Max Number of Active Downloads"
+msgstr "Максимални број активних преузимања"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:50
+msgid "Overwrite Existing Files"
+msgstr "Замени постојеће датотеке"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:53
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "Уклјучи ИД медије у наслову"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
+msgid "Add the media's id to its default title"
+msgstr "Додај ИД медије у његовом подразумеваном наслову"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:57
+msgid "Include Auto-Generated Subtitles"
+msgstr "Уклјучи ауто-генерисане титлове"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
+msgid ""
+"Show auto-generated subtitles to download in addition to available subtitles"
+msgstr "Прикажи ауто-генерисане титлове за преузимање поред доступних титлова"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:61
+msgid "Preferred Video Codec"
+msgstr "Жељени видео кодек"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
+msgid ""
+"Prefer this codec when parsing video formats to show available to download"
+msgstr ""
+"Преферирај овај кодек приликом анализе видео формата да би се приказали "
+"доступни за преузимање"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:64
+msgid "Preferred Audio Codec"
+msgstr "Жељени аудио кодек"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
+msgid ""
+"Prefer this codec when parsing audio formats to show available to download"
+msgstr ""
+"Преферирај овај кодек приликом анализе аудио формата да би се приказали "
+"формати доступни за преузимање"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:67
+msgid "Preferred Subtitle Format"
+msgstr "Жељени формат титлова"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:68
+msgid "Prefer this subtitle file format when downloading"
+msgstr "Преферирај овај формат датотеке превода приликом преузимања"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:70
+msgid "Use Part Files"
+msgstr "Користи датотеке делова"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file"
+msgstr ""
+"Преузми медије у одвојеним .part датотекама уместо директно у излазну "
+"датотеку"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
+msgid "Use SponsorBlock for YouTube"
+msgstr "Користи SponsorBlock уз YouTube"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
+msgid "Try to remove sponsored segments from videos"
+msgstr "Покушај да уклоните спонзорисане сегменте из видео снимака"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:78
+msgid "Limit Download Speed"
+msgstr "Ограничи брзину преузимања"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:81
+msgid "Speed Limit"
+msgstr "Ограничење брзине"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:82
+msgid "Proxy URL"
+msgstr "URL проксија"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
+msgid "Enter proxy url here"
+msgstr "Унеси УРЛ проксија овде"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:84
+#, fuzzy
+msgid "Cookies from File"
+msgstr "Датотека колачића"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:85
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:149
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:171
+msgid "No file selected"
+msgstr "Датотека није изабрана"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
+msgid "Clear Cookies File"
+msgstr "Уклони датотеку колачића"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
+msgid "Select Cookies File"
+msgstr "Изабери датотеку колачића"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
+msgid "Cookies from Browser"
+msgstr "Колачићи из Претраживача"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:90
+msgid "aria2c"
+msgstr "aria2c"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
+msgid "Use aria2c"
+msgstr "Користи aria2c"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader"
+msgstr ""
+"Алтернативни програм за преузимање који може бити бржи у неким регионима у "
+"поређењу са изворним програмом за преузимање са yt-dlp-а"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:95
+#, fuzzy
+msgid "Max Connections Per Server"
+msgstr "Највише веза по серверу (-x)"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:96
+msgid "Corresponds to -x option"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:97
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "Минимална величина поделе (-k)"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:98
+msgid "Corresponds to -k option"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:99
+msgid "Embed Metadata"
+msgstr "Угради метаподатке"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:102
+msgid "Remove Source Data"
+msgstr "Уклони изворне податке"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
+msgid "Clear metadata fields containing identifying download information"
+msgstr ""
+"Уклони метадатотеке које садрже идентификационе информације о преузимању"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:106
+msgid "Embed Thumbnails"
+msgstr "Угради сличицу"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file"
+msgstr ""
+"Ако тип датотеке не подржава уграђивање, сличица ће бити записана као обична "
+"слика"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:110
+msgid "Crop Audio Thumbnails"
+msgstr "Исеци аудио сличице"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
+msgid "Crop thumbnails of audio files to squares"
+msgstr "Исеци сличице од аудио датотека у квадрате"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
+msgid "Embed Chapters"
+msgstr "Угради поглавље"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:117
+msgid "Embed Subtitles"
+msgstr "Угради титлове"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files"
+msgstr ""
+"Ако је угашено или уграђивање није подржано, преузети титлови ће бити "
+"сачувани као самостална датотека"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:121
+msgid "FFmpeg Threads"
+msgstr "FFmpeg Thread-ови"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
+msgid "Limit the number of threads used by ffmpeg"
+msgstr "Ограничи број нити које користи ffmpeg"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:124
+#, fuzzy
+msgid "Post-Processor Arguments"
+msgstr "Аргумент постпроцесора"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:125
+msgid "Arguments will be shown for selection in the add download dialog"
+msgstr "Аргументи ће бити приказани за избор у дијалогу за додавање преузимања"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:126
+msgid "Manage"
+msgstr "Управљај"
+
+#~ msgid "Postprocessing"
+#~ msgstr "Постпроцесовање"
+
+#~ msgid "Arguments"
+#~ msgstr "Аргументи"
+
+#~ msgid "Name"
+#~ msgstr "Име"
+
+#~ msgid "Enter name here"
+#~ msgstr "Унесите име овде"
+
+#~ msgid "Post Processor"
+#~ msgstr "Постпроцесор"
+
+#~ msgid "Executable"
+#~ msgstr "Извршна датотека"
+
+#, fuzzy
+#~ msgid "Enter arguments here"
+#~ msgstr "Унесите аргументе овде"
+
+#, fuzzy
+#~ msgid "Add Argument"
+#~ msgstr "Измени аргумент"
+
+#~ msgid "Edit Argument"
+#~ msgstr "Измени аргумент"
+
+#~ msgid "Delete Argument"
+#~ msgstr "Избриши аргумент"
+
+#~ msgid "No Arguments"
+#~ msgstr "Нема аргумената"
+
+#~ msgid "Audio Description"
+#~ msgstr "Аудио опис"
 
 #~ msgid ""
 #~ "Error during yt-dlp validation:\n"
@@ -993,9 +1362,6 @@ msgstr "Искључено"
 #~ msgid "Credentials"
 #~ msgstr "Аркедитиви"
 
-#~ msgid "Name"
-#~ msgstr "Име"
-
 #~ msgid "URL"
 #~ msgstr "УРЛ"
 
@@ -1053,27 +1419,11 @@ msgstr "Искључено"
 #~ msgid "No Downloads Completed"
 #~ msgstr "Нема завршених преузимања"
 
-#~ msgid "Prevent Suspend"
-#~ msgstr "Онемогући суспензију"
-
-#~ msgid "Prevent the computer from sleeping while downloads are running"
-#~ msgstr "Спречите рачунар да пређе у режим спавања док се преузимања покрећу"
-
-#~ msgid "Download History Length"
-#~ msgstr "Дужина историје преузимања"
-
-#~ msgid "The amount of time to keep past downloads in the app's history"
-#~ msgstr ""
-#~ "Време које треба да се претходна преузимања чувају у историји апликације"
-
 #~ msgid "Three Months"
 #~ msgstr "Три месеца"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Максимални број активних преузимања"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Замени постојеће датотеке"
 
 #~ msgid "Limit Filename Characters"
 #~ msgstr "Ограничи знакове у имену датотеке"
@@ -1081,215 +1431,20 @@ msgstr "Искључено"
 #~ msgid "Restrict characters in filenames to those supported only by Windows"
 #~ msgstr "Ограничи знакове у именима датотека на оне које Windows подржава"
 
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Уклјучи ИД медије у наслову"
-
-#~ msgid "Add the media's id to its default title"
-#~ msgstr "Додај ИД медије у његовом подразумеваном наслову"
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "Уклјучи ауто-генерисане титлове"
-
-#~ msgid ""
-#~ "Show auto-generated subtitles to download in addition to available "
-#~ "subtitles"
-#~ msgstr ""
-#~ "Прикажи ауто-генерисане титлове за преузимање поред доступних титлова"
-
-#~ msgid "Preferred Video Codec"
-#~ msgstr "Жељени видео кодек"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing video formats to show available to download"
-#~ msgstr ""
-#~ "Преферирај овај кодек приликом анализе видео формата да би се приказали "
-#~ "доступни за преузимање"
-
-#~ msgid "Any"
-#~ msgstr "Било који"
-
-#~ msgid "H.264 (AVC)"
-#~ msgstr "H.264 (AVC)"
-
-#~ msgid "H.265 (HEVC)"
-#~ msgstr "H.265 (HEVC)"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "Жељени аудио кодек"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing audio formats to show available to download"
-#~ msgstr ""
-#~ "Преферирај овај кодек приликом анализе аудио формата да би се приказали "
-#~ "формати доступни за преузимање"
-
-#~ msgid "FLAC (ALAC)"
-#~ msgstr "FLAC (ALAC)"
-
-#~ msgid "WAV (AIFF)"
-#~ msgstr "WAV (AIFF)"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "Жељени формат титлова"
-
-#~ msgid "Prefer this subtitle file format when downloading"
-#~ msgstr "Преферирај овај формат датотеке превода приликом преузимања"
-
-#~ msgid "Downloader"
-#~ msgstr "Преузимач"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Користи датотеке делова"
-
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file"
-#~ msgstr ""
-#~ "Преузми медије у одвојеним .part датотекама уместо директно у излазну "
-#~ "датотеку"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Користи SponsorBlock уз YouTube"
-
-#~ msgid "Try to remove sponsored segments from videos"
-#~ msgstr "Покушај да уклоните спонзорисане сегменте из видео снимака"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Ограничи брзину преузимања"
-
 #~ msgid "Speed Limit (KiB/s)"
 #~ msgstr "Ограничење брзине (KiB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "URL проксија"
-
-#~ msgid "Cookies from Browser"
-#~ msgstr "Колачићи из Претраживача"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Датотека колачића"
-
-#~ msgid "No file selected"
-#~ msgstr "Датотека није изабрана"
-
-#~ msgid "Select Cookies File"
-#~ msgstr "Изабери датотеку колачића"
-
-#~ msgid "Clear Cookies File"
-#~ msgstr "Уклони датотеку колачића"
-
-#~ msgid "aria2c"
-#~ msgstr "aria2c"
-
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader"
-#~ msgstr ""
-#~ "Алтернативни програм за преузимање који може бити бржи у неким регионима "
-#~ "у поређењу са изворним програмом за преузимање са yt-dlp-а"
-
-#~ msgid "Use aria2c"
-#~ msgstr "Користи aria2c"
-
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "Највише веза по серверу (-x)"
-
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "Минимална величина поделе (-k)"
 
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Минимална величина коју треба поделити датотеку (у MiB)"
 
-#~ msgid "Converter"
-#~ msgstr "Конвертор"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Угради метаподатке"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Уклони изворне податке"
-
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "Уклони метадатотеке које садрже идентификационе информације о преузимању"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Угради сличицу"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Ако тип датотеке не подржава уграђивање, сличица ће бити записана као "
-#~ "обична слика"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Исеци аудио сличице"
-
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr "Исеци сличице од аудио датотека у квадрате"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Угради поглавље"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Угради титлове"
-
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Ако је угашено или уграђивање није подржано, преузети титлови ће бити "
-#~ "сачувани као самостална датотека"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "FFmpeg Thread-ови"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "Ограничи број нити које користи ffmpeg"
-
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "Аргументи за постпроцесирања"
-
-#~ msgid "Arguments will be shown for selection in the add download dialog"
-#~ msgstr ""
-#~ "Аргументи ће бити приказани за избор у дијалогу за додавање преузимања"
 
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Додај аргумент за постпроцесирање"
 
 #~ msgid "Argument"
 #~ msgstr "Аргумент"
-
-#~ msgid "Post Processor"
-#~ msgstr "Постпроцесор"
-
-#~ msgid "Executable"
-#~ msgstr "Извршна датотека"
 
 #~ msgid "Args"
 #~ msgstr "Аргументи"
@@ -1400,14 +1555,8 @@ msgstr "Искључено"
 #~ msgid "{} version {} is available to download and install"
 #~ msgstr "{} верзија {} је доступна за преузимање и инсталирање"
 
-#~ msgid "Manage"
-#~ msgstr "Управљај"
-
 #~ msgid "Update completed successfully"
 #~ msgstr "Ажурирање успешно"
-
-#~ msgid "No Arguments"
-#~ msgstr "Нема аргумената"
 
 #~ msgid "Delete Argument?"
 #~ msgstr "Избриши аргумент?"
@@ -1453,9 +1602,6 @@ msgstr "Искључено"
 #~ msgstr ""
 #~ "Акредитиви се не чува на диску. Било какве промене ће бити изгубљене при "
 #~ "изласку апликације"
-
-#~ msgid "Enter name here"
-#~ msgstr "Унесите име овде"
 
 #~ msgid "Enter url here"
 #~ msgstr "Унесите URL овде"
@@ -1527,24 +1673,6 @@ msgstr "Искључено"
 #~ msgid "Dark"
 #~ msgstr "Тамна"
 
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "Максимални број активних преузимања"
-
-#~ msgid "Speed Limit"
-#~ msgstr "Ограничење брзине"
-
-#~ msgid "Enter proxy url here"
-#~ msgstr "Унеси УРЛ проксија овде"
-
-#~ msgid "Postprocessing"
-#~ msgstr "Постпроцесовање"
-
-#~ msgid "Arguments"
-#~ msgstr "Аргументи"
-
-#~ msgid "Enter args here"
-#~ msgstr "Унесите аргументе овде"
-
 #~ msgid "New Argument"
 #~ msgstr "Нови аргумент"
 
@@ -1556,12 +1684,6 @@ msgstr "Искључено"
 
 #~ msgid "The argument args cannot be empty."
 #~ msgstr "Аргументи не могу бити празни."
-
-#~ msgid "Edit Argument"
-#~ msgstr "Измени аргумент"
-
-#~ msgid "Delete Argument"
-#~ msgstr "Избриши аргумент"
 
 #, fuzzy
 #~ msgid ""
