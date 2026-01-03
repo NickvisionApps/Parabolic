@@ -195,10 +195,9 @@ public class AddDownloadDialogController
             var res = url.ToString().StartsWith("file://") ? await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(8), credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
             if (res.Media.Count == 0)
             {
-                _notificationService.Send(new AppNotification(Translator._("An error occurred while discovering media"), NotificationSeverity.Warning)
+                _notificationService.Send(new AppNotification(Translator._("No media was found at the provided URL"), NotificationSeverity.Warning)
                 {
-                    Action = "error",
-                    ActionParam = Translator._("No media found at the provided URL.")
+                    Action = "error"
                 });
                 return null;
             }

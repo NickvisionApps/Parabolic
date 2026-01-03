@@ -178,7 +178,7 @@
                             </community:SettingsCard.HeaderIcon>
 
                             <NumberBox x:Name="NumSpeedLimit" Minimum="512" Maximum="10240" SmallChange="512" LargeChange="1024"
-                                       Value="1024" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                                       SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
                         </community:SettingsCard>
 
                         <community:SettingsCard x:Name="RowProxyUrl">
@@ -303,24 +303,58 @@
                             <NumberBox x:Name="NumFfmpegThreads" Minimum="1" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
                         </community:SettingsCard>
 
-                        <community:SettingsCard x:Name="RowPostProcessorArguments">
-                            <community:SettingsCard.HeaderIcon>
+                        <community:SettingsExpander x:Name="RowPostProcessorArguments">
+                            <community:SettingsExpander.HeaderIcon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
-                            </community:SettingsCard.HeaderIcon>
+                            </community:SettingsExpander.HeaderIcon>
 
-                            <Button x:Name="BtnManagePostProcessorArguments" Click="ManagePostProcessorArguments">
+                            <Button x:Name="BtnAddPostProcessorArgument" Click="AddPostprocessingArgument">
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;" FontSize="18"/>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;" FontSize="18"/>
 
-                                        <TextBlock x:Name="LblManagePostProcessorArguments"/>
+                                        <TextBlock x:Name="LblAddPostProcessorArgument"/>
                                     </StackPanel>
                                 </Button.Content>
                             </Button>
-                        </community:SettingsCard>
+
+                            <community:SettingsExpander.ItemTemplate>
+                                <DataTemplate>
+                                    <community:SettingsCard Header="{Binding Name, Mode=OneWay}" Description="{Binding Args, Mode=OneWay}">
+                                        <community:SettingsCard.HeaderIcon>
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                                        </community:SettingsCard.HeaderIcon>
+
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <Button Tag="{Binding Name, Mode=OneWay}" Click="EditPostprocessingArgument">
+                                                <Button.Content>
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE70F;" FontSize="18"/>
+                                                </Button.Content>
+                                            </Button>
+
+                                            <Button Tag="{Binding Name, Mode=OneWay}" Click="DeletePostprocessingArgument">
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;" FontSize="18"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </community:SettingsCard>
+                                </DataTemplate>
+                            </community:SettingsExpander.ItemTemplate>
+                        </community:SettingsExpander>
                     </StackPanel>
                 </nickvision:ViewStack.Pages>
             </nickvision:ViewStack>
         </ScrollViewer>
+
+        <ContentDialog x:Name="DlgPostprocessingArgument" DefaultButton="Primary">
+            <StackPanel Orientation="Vertical" Spacing="12">
+                <TextBox x:Name="TxtPostprocessingArgumentName"/>
+
+                <ComboBox x:Name="CmbPostprocessingArgumentPostProcessor" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+
+                <ComboBox x:Name="CmbPostprocessingArgumentExecutable" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+
+                <TextBox x:Name="TxtPostprocessingArgumentArgs"/>
+            </StackPanel>
+        </ContentDialog>
     </Grid>
 </Page>

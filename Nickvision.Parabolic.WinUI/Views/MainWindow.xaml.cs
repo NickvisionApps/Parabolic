@@ -208,7 +208,7 @@ public sealed partial class MainWindow : Window
             _notificationClickHandler = YtdlpUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
-        else if (e.Notification.Action == "error")
+        else if (e.Notification.Action == "error" && !string.IsNullOrEmpty(e.Notification.ActionParam))
         {
             BtnInfoBar.Content = _controller.Translator._("Details");
             _notificationClickHandler = async (_, _) =>
@@ -222,7 +222,7 @@ public sealed partial class MainWindow : Window
                         VerticalScrollBarVisibility = ScrollBarVisibility.Visible,
                         Content = new TextBlock()
                         {
-                            Text = e.Notification.ActionParam ?? string.Empty,
+                            Text = e.Notification.ActionParam,
                             TextWrapping = TextWrapping.Wrap
                         }
                     },

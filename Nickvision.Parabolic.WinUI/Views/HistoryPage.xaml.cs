@@ -177,8 +177,7 @@ public sealed partial class HistoryPage : Page
             XamlRoot = XamlRoot,
             RequestedTheme = RequestedTheme
         };
-        var res = await confirmDialog.ShowAsync();
-        if (res == ContentDialogResult.Primary)
+        if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
         {
             await _controller.ClearAllAsync();
             await LoadDownloadsAsync();

@@ -4,7 +4,10 @@ using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Controllers;
@@ -17,6 +20,7 @@ public class PreferencesViewController
     private readonly Configuration _configuration;
 
     public ITranslationService Translator { get; }
+    public ObservableCollection<PostProcessorArgument> PostprocessingArguments { get; }
 
     public PreferencesViewController(IJsonFileService jsonFileService, ITranslationService translationService, INotificationService notificationSerivce, IHistoryService historyService)
     {
@@ -25,21 +29,42 @@ public class PreferencesViewController
         _historyService = historyService;
         _configuration = _jsonFileService.Load<Configuration>(Configuration.Key);
         Translator = translationService;
+        PostprocessingArguments = new ObservableCollection<PostProcessorArgument>(_configuration.PostprocessingArguments);
     }
 
-    public IReadOnlyList<SelectionItem<Theme>> Themes
+    public bool AllowPreviewUpdates
     {
-        get => new List<SelectionItem<Theme>>()
+        get => _configuration.AllowPreviewUpdates;
+
+        set => _configuration.AllowPreviewUpdates = value;
+    }
+
+    public int AriaMaxConnectionsPerServer
+    {
+        get => _configuration.AriaMaxConnectionsPerServer;
+
+        set => _configuration.AriaMaxConnectionsPerServer = value;
+    }
+
+    public int AriaMinSplitSize
+    {
+        get => _configuration.AriaMinSplitSize;
+
+        set => _configuration.AriaMinSplitSize = value;
+    }
+
+    public IReadOnlyList<SelectionItem<AudioCodec>> AudioCodecs
+    {
+        get => new List<SelectionItem<AudioCodec>>()
         {
-            new SelectionItem<Theme>(Models.Theme.Light, Translator._p("Theme", "Light"), _configuration.Theme == Models.Theme.Light),
-            new SelectionItem<Theme>(Models.Theme.Dark, Translator._p("Theme", "Dark"), _configuration.Theme == Models.Theme.Dark),
-            new SelectionItem<Theme>(Models.Theme.System, Translator._p("Theme", "System"), _configuration.Theme == Models.Theme.System),
+            new SelectionItem<AudioCodec>(AudioCodec.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.Any),
+            new SelectionItem<AudioCodec>(AudioCodec.FLAC, Translator._("FLAC (ALAC)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.FLAC),
+            new SelectionItem<AudioCodec>(AudioCodec.WAV, Translator._("WAV (AIFF)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.WAV),
+            new SelectionItem<AudioCodec>(AudioCodec.OPUS, "OPUS", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.OPUS),
+            new SelectionItem<AudioCodec>(AudioCodec.AAC, "AAC", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.AAC),
+            new SelectionItem<AudioCodec>(AudioCodec.MP4A, "MP4A", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.MP4A),
+            new SelectionItem<AudioCodec>(AudioCodec.MP3, "MP3", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.MP3)
         };
-    }
-
-    public SelectionItem<Theme> Theme
-    {
-        set => _configuration.Theme = value.Value;
     }
 
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages
@@ -59,63 +84,6 @@ public class PreferencesViewController
         }
     }
 
-    public SelectionItem<string> TranslationLanguage
-    {
-        set => _configuration.TranslationLanguage = value.Value;
-    }
-
-    public bool AllowPreviewUpdates
-    {
-        get => _configuration.AllowPreviewUpdates;
-
-        set => _configuration.AllowPreviewUpdates = value;
-    }
-
-    public bool PreventSuspend
-    {
-        get => _configuration.PreventSuspend;
-
-        set => _configuration.PreventSuspend = value;
-    }
-
-    public IReadOnlyList<SelectionItem<VideoCodec>> VideoCodecs
-    {
-        get => new List<SelectionItem<VideoCodec>>()
-        {
-            new SelectionItem<VideoCodec>(VideoCodec.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.Any),
-            new SelectionItem<VideoCodec>(VideoCodec.VP9, "VP9", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.VP9),
-            new SelectionItem<VideoCodec>(VideoCodec.AV01, "AV1", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.AV01),
-            new SelectionItem<VideoCodec>(VideoCodec.H264, Translator._("H.264 (AVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H264),
-            new SelectionItem<VideoCodec>(VideoCodec.H265, Translator._("H.265 (HEVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H265)
-        };
-    }
-
-    public IReadOnlyList<SelectionItem<AudioCodec>> AudioCodecs
-    {
-        get => new List<SelectionItem<AudioCodec>>()
-        {
-            new SelectionItem<AudioCodec>(AudioCodec.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.Any),
-            new SelectionItem<AudioCodec>(AudioCodec.FLAC, Translator._("FLAC (ALAC)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.FLAC),
-            new SelectionItem<AudioCodec>(AudioCodec.WAV, Translator._("WAV (AIFF)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.WAV),
-            new SelectionItem<AudioCodec>(AudioCodec.OPUS, "OPUS", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.OPUS),
-            new SelectionItem<AudioCodec>(AudioCodec.AAC, "AAC", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.AAC),
-            new SelectionItem<AudioCodec>(AudioCodec.MP4A, "MP4A", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.MP4A),
-            new SelectionItem<AudioCodec>(AudioCodec.MP3, "MP3", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.MP3)
-        };
-    }
-
-    public IReadOnlyList<SelectionItem<SubtitleFormat>> SubtitleFormats
-    {
-        get => new List<SelectionItem<SubtitleFormat>>()
-        {
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.Any),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.VTT, "VTT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.VTT),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.SRT, "SRT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.SRT),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.ASS, "ASS", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.ASS),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.LRC, "LRC", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.LRC)
-        };
-    }
-
     public IReadOnlyList<SelectionItem<Browser>> Browsers
     {
         get => new List<SelectionItem<Browser>>()
@@ -132,11 +100,78 @@ public class PreferencesViewController
         };
     }
 
-    public DownloaderOptions DownloaderOptions
+    public bool CropAudioThumbnails
     {
-        get => _configuration.DownloaderOptions;
+        get => _configuration.CropAudioThumbnails;
 
-        set => _configuration.DownloaderOptions = value;
+        set => _configuration.CropAudioThumbnails = value;
+    }
+
+    public Browser CookiesBrowser
+    {
+        get => _configuration.CookiesBrowser;
+
+        set => _configuration.CookiesBrowser = value;
+    }
+
+    public string CookiesPath
+    {
+        get => _configuration.CookiesPath;
+
+        set => _configuration.CookiesPath = value;
+    }
+
+    public bool EmbedChapters
+    {
+        get => _configuration.EmbedChapters;
+
+        set => _configuration.EmbedChapters = value;
+    }
+
+    public bool EmbedMetadata
+    {
+        get => _configuration.EmbedMetadata;
+
+        set => _configuration.EmbedMetadata = value;
+    }
+
+    public bool EmbedSubtitles
+    {
+        get => _configuration.EmbedSubtitles;
+
+        set => _configuration.EmbedSubtitles = value;
+    }
+
+    public bool EmbedThumbnails
+    {
+        get => _configuration.EmbedThumbnails;
+
+        set => _configuration.EmbedThumbnails = value;
+    }
+
+    public IReadOnlyList<SelectionItem<Executable>> Executables
+    {
+        get
+        {
+            var executables = new List<SelectionItem<Executable>>()
+            {
+                new SelectionItem<Executable>(Executable.None, Translator._("None"), true)
+            };
+            foreach (var executable in Enum.GetValues<Executable>())
+            {
+                if (executable == Executable.None)
+                {
+                    continue;
+                }
+                executables.Add(new SelectionItem<Executable>(executable, executable.ToString(), false));
+            }
+            return executables;
+        }
+    }
+
+    public SelectionItem<HistoryLength> HistoryLength
+    {
+        set => _historyService.Length = value.Value;
     }
 
     public IReadOnlyList<SelectionItem<HistoryLength>> HistoryLengths
@@ -158,9 +193,264 @@ public class PreferencesViewController
         }
     }
 
-    public SelectionItem<HistoryLength> HistoryLength
+    public bool IncludeAutoGeneratedSubtitles
     {
-        set => _historyService.Length = value.Value;
+        get => _configuration.IncludeAutoGeneratedSubtitles;
+
+        set => _configuration.IncludeAutoGeneratedSubtitles = value;
+    }
+
+    public bool IncludeMediaIdInTitle
+    {
+        get => _configuration.IncludeMediaIdInTitle;
+
+        set => _configuration.IncludeMediaIdInTitle = value;
+    }
+
+    public bool LimitCharacters
+    {
+        get => _configuration.LimitCharacters;
+
+        set => _configuration.LimitCharacters = value;
+    }
+
+    public int MaxNumberOfActiveDownloads
+    {
+        get => _configuration.MaxNumberOfActiveDownloads;
+
+        set => _configuration.MaxNumberOfActiveDownloads = value;
+    }
+
+    public bool OverwriteExistingFiles
+    {
+        get => _configuration.OverwriteExistingFiles;
+
+        set => _configuration.OverwriteExistingFiles = value;
+    }
+
+    public int PostprocessingThreads
+    {
+        get => _configuration.PostprocessingThreads;
+
+        set => _configuration.PostprocessingThreads = value;
+    }
+
+    public IReadOnlyList<SelectionItem<PostProcessor>> PostProcessors
+    {
+        get
+        {
+            var postProcesors = new List<SelectionItem<PostProcessor>>()
+            {
+                new SelectionItem<PostProcessor>(PostProcessor.None, Translator._("None"), true)
+            };
+            foreach (var processor in Enum.GetValues<PostProcessor>())
+            {
+                if (processor == PostProcessor.None)
+                {
+                    continue;
+                }
+                postProcesors.Add(new SelectionItem<PostProcessor>(processor, processor.ToString(), false));
+            }
+            return postProcesors;
+        }
+    }
+
+    public AudioCodec PreferredAudioCodec
+    {
+        get => _configuration.PreferredAudioCodec;
+
+        set => _configuration.PreferredAudioCodec = value;
+    }
+
+    public SubtitleFormat PreferredSubtitleFormat
+    {
+        get => _configuration.PreferredSubtitleFormat;
+
+        set => _configuration.PreferredSubtitleFormat = value;
+    }
+
+    public VideoCodec PreferredVideoCodec
+    {
+        get => _configuration.PreferredVideoCodec;
+
+        set => _configuration.PreferredVideoCodec = value;
+    }
+
+    public bool PreventSuspend
+    {
+        get => _configuration.PreventSuspend;
+
+        set => _configuration.PreventSuspend = value;
+    }
+
+    public string ProxyUrl
+    {
+        get => _configuration.ProxyUrl;
+
+        set => _configuration.ProxyUrl = value;
+    }
+
+    public bool RemoveSourceData
+    {
+        get => _configuration.RemoveSourceData;
+
+        set => _configuration.RemoveSourceData = value;
+    }
+
+    public bool ShowDislcaimerOnStartup
+    {
+        get => _configuration.ShowDislcaimerOnStartup;
+
+        set => _configuration.ShowDislcaimerOnStartup = value;
+    }
+
+    public int? SpeedLimit
+    {
+        get => _configuration.SpeedLimit;
+
+        set => _configuration.SpeedLimit = value;
+    }
+
+    public IReadOnlyList<SelectionItem<SubtitleFormat>> SubtitleFormats
+    {
+        get => new List<SelectionItem<SubtitleFormat>>()
+        {
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.Any),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.VTT, "VTT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.VTT),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.SRT, "SRT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.SRT),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.ASS, "ASS", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.ASS),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.LRC, "LRC", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.LRC)
+        };
+    }
+
+    public SelectionItem<Theme> Theme
+    {
+        set => _configuration.Theme = value.Value;
+    }
+
+    public IReadOnlyList<SelectionItem<Theme>> Themes
+    {
+        get => new List<SelectionItem<Theme>>()
+        {
+            new SelectionItem<Theme>(Models.Theme.Light, Translator._p("Theme", "Light"), _configuration.Theme == Models.Theme.Light),
+            new SelectionItem<Theme>(Models.Theme.Dark, Translator._p("Theme", "Dark"), _configuration.Theme == Models.Theme.Dark),
+            new SelectionItem<Theme>(Models.Theme.System, Translator._p("Theme", "System"), _configuration.Theme == Models.Theme.System),
+        };
+    }
+
+    public SelectionItem<string> TranslationLanguage
+    {
+        set => _configuration.TranslationLanguage = value.Value;
+    }
+
+    public bool UseAria
+    {
+        get => _configuration.UseAria;
+
+        set => _configuration.UseAria = value;
+    }
+
+    public bool UsePartFiles
+    {
+        get => _configuration.UsePartFiles;
+
+        set => _configuration.UsePartFiles = value;
+    }
+
+    public IReadOnlyList<SelectionItem<VideoCodec>> VideoCodecs
+    {
+        get => new List<SelectionItem<VideoCodec>>()
+        {
+            new SelectionItem<VideoCodec>(VideoCodec.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.Any),
+            new SelectionItem<VideoCodec>(VideoCodec.VP9, "VP9", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.VP9),
+            new SelectionItem<VideoCodec>(VideoCodec.AV01, "AV1", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.AV01),
+            new SelectionItem<VideoCodec>(VideoCodec.H264, Translator._("H.264 (AVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H264),
+            new SelectionItem<VideoCodec>(VideoCodec.H265, Translator._("H.265 (HEVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H265)
+        };
+    }
+
+    public bool YouTubeSponsorBlock
+    {
+        get => _configuration.YouTubeSponsorBlock;
+
+        set => _configuration.YouTubeSponsorBlock = value;
+    }
+
+    public async Task AddPostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
+    {
+        if (_configuration.PostprocessingArguments.Any(arg => arg.Name == name))
+        {
+            _notificationService.Send(new AppNotification(Translator._("An argument with that name already exists"), NotificationSeverity.Error)
+            {
+                Action = "error"
+            });
+        }
+        else if (string.IsNullOrEmpty(name))
+        {
+            _notificationService.Send(new AppNotification(Translator._("The name of the argument cannot be empty"), NotificationSeverity.Error)
+            {
+                Action = "error"
+            });
+        }
+        else if (string.IsNullOrEmpty(arguments))
+        {
+            _notificationService.Send(new AppNotification(Translator._("The arguments of the argument cannot be empty"), NotificationSeverity.Error)
+            {
+                Action = "error"
+            });
+        }
+        else
+        {
+            var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
+            PostprocessingArguments.Add(argument);
+            _configuration.PostprocessingArguments.Add(argument);
+            await SaveConfigurationAsync();
+        }
+    }
+
+    public async Task DeletePostprocessingArgumentAsync(string name)
+    {
+        var argument = _configuration.PostprocessingArguments.FirstOrDefault(arg => arg.Name == name);
+        if (argument is null)
+        {
+            return;
+        }
+        PostprocessingArguments.Remove(argument);
+        _configuration.PostprocessingArguments.Remove(argument);
+        await SaveConfigurationAsync();
+    }
+
+    public async Task UpdatePostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
+    {
+        var index = _configuration.PostprocessingArguments.FindIndex(arg => arg.Name == name);
+        if (index == -1)
+        {
+            _notificationService.Send(new AppNotification(Translator._("An argument with that name does not exist"), NotificationSeverity.Error)
+            {
+                Action = "error"
+            });
+        }
+        else if (string.IsNullOrEmpty(name))
+        {
+            _notificationService.Send(new AppNotification(Translator._("The name of the argument cannot be empty"), NotificationSeverity.Error)
+            {
+                Action = "error"
+            });
+        }
+        else if (string.IsNullOrEmpty(arguments))
+        {
+            _notificationService.Send(new AppNotification(Translator._("The arguments of the argument cannot be empty"), NotificationSeverity.Error)
+            {
+                Action = "error"
+            });
+        }
+        else
+        {
+            var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
+            PostprocessingArguments[index] = argument;
+            _configuration.PostprocessingArguments[index] = argument;
+            await SaveConfigurationAsync();
+        }
     }
 
     public async Task SaveConfigurationAsync() => await _jsonFileService.SaveAsync(_configuration, Configuration.Key);

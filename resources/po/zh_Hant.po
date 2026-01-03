@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 20:51-0500\n"
+"POT-Creation-Date: 2026-01-03 17:14-0500\n"
 "PO-Revision-Date: 2025-07-10 10:01+0000\n"
 "Last-Translator: Chung-Wei Chung <webb790709@proton.me>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -24,7 +24,9 @@ msgid "Use manual credential"
 msgstr "使用手動身份驗證"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:59
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:124
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:91
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:158
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:244
 #: Nickvision.Parabolic.Shared/Models/Format.cs:292
 #: Nickvision.Parabolic.Shared/Models/Format.cs:293
 msgid "None"
@@ -39,15 +41,10 @@ msgid "An error occurred while adding the single download"
 msgstr ""
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:198
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:277
-msgid "An error occurred while discovering media"
+msgid "No media was found at the provided URL"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:201
-msgid "No media found at the provided URL."
-msgstr ""
-
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:228
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:227
 #: Nickvision.Parabolic.Shared/Models/Format.cs:290
 #: Nickvision.Parabolic.Shared/Models/Format.cs:291
 #: Nickvision.Parabolic.Shared/Models/VideoResolution.cs:32
@@ -55,7 +52,7 @@ msgstr ""
 msgid "Worst"
 msgstr "最糟"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:229
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:228
 #: Nickvision.Parabolic.Shared/Models/Format.cs:288
 #: Nickvision.Parabolic.Shared/Models/Format.cs:289
 #: Nickvision.Parabolic.Shared/Models/VideoResolution.cs:28
@@ -63,58 +60,62 @@ msgstr "最糟"
 msgid "Best"
 msgstr "最佳化"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:243
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:242
 msgid "Video (Generic)"
 msgstr "影片(一般)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:244
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:243
 msgid "MP4 (Video)"
 msgstr "MP4 (影片)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:245
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:244
 msgid "WEBM (Video)"
 msgstr "WEBM (影片)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:246
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:245
 msgid "MKV (Video)"
 msgstr "MKV (影片)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:247
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:246
 msgid "MOV (Video)"
 msgstr "MOV (影片)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:248
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:247
 msgid "AVI (Video)"
 msgstr "AVI (影片)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:250
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:249
 msgid "Audio (Generic)"
 msgstr "音訊 (一般)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:251
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:250
 msgid "MP3 (Audio)"
 msgstr "MP3 (音訊)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:252
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:251
 msgid "M4A (Audio)"
 msgstr "M4A (音訊)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:253
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:252
 msgid "OPUS (Audio)"
 msgstr "OPUS (音訊)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:254
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:253
 msgid "FLAC (Audio)"
 msgstr "FLAC (音訊)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:255
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:254
 msgid "WAV (Audio)"
 msgstr "WAV (音訊)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:256
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:255
 #, fuzzy
 msgid "OGG (Audio)"
 msgstr "OPUS (音訊)"
+
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:276
+msgid "An error occurred while discovering media"
+msgstr ""
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:48
 msgid "Open"
@@ -176,125 +177,147 @@ msgstr "無法下載和安裝更新"
 msgid "Unable to download and install the yt-dlp update"
 msgstr "無法下載和安裝更新"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:35
-msgctxt "Theme"
-msgid "Light"
-msgstr "亮色"
-
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:36
-msgctxt "Theme"
-msgid "Dark"
-msgstr "暗色"
-
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:37
-msgctxt "Theme"
-msgid "System"
-msgstr "跟隨系統"
-
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:52
-msgid "System"
-msgstr "系統"
-
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:86
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:112
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:60
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:318
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:364
 msgid "Any"
 msgstr "任意"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:89
-msgid "H.264 (AVC)"
-msgstr ""
-
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:90
-msgid "H.265 (HEVC)"
-msgstr ""
-
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:61
 #, fuzzy
 msgid "FLAC (ALAC)"
 msgstr "FLAC (音訊)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:100
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:62
 #, fuzzy
 msgid "WAV (AIFF)"
 msgstr "WAV (音訊)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:125
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:76
+msgid "System"
+msgstr "系統"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:92
 msgid "Brave"
 msgstr "Brave"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:126
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:93
 msgid "Chrome"
 msgstr "Chrome"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:127
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:94
 msgid "Chromium"
 msgstr "Chromium"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:128
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:95
 msgid "Edge"
 msgstr "Edge"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:129
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:96
 msgid "Firefox"
 msgstr "Firefox"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:130
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:97
 msgid "Opera"
 msgstr "Opera"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:131
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:132
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
 msgid "Whale"
 msgstr "Whale"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:150
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:184
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
 msgid "Never"
 msgstr "永不"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:151
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:185
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
 #, fuzzy
 msgid "1 Day"
 msgstr "一天"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:152
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:186
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
 #, fuzzy
 msgid "1 Week"
 msgstr "一個星期"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:153
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:187
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:42
 #, fuzzy
 msgid "1 Month"
 msgstr "一個月"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:154
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:188
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:43
 #, fuzzy
 msgid "3 Months"
 msgstr "一個月"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:155
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:189
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:44
 #, fuzzy
 msgid "6 Months"
 msgstr "一個月"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:156
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:190
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:45
 msgid "1 Year"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:157
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:191
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:46
 msgid "Forever"
 msgstr "永久"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:335
+msgctxt "Theme"
+msgid "Light"
+msgstr "亮色"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:336
+msgctxt "Theme"
+msgid "Dark"
+msgstr "暗色"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:337
+msgctxt "Theme"
+msgid "System"
+msgstr "跟隨系統"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:367
+msgid "H.264 (AVC)"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:368
+msgid "H.265 (HEVC)"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:383
+#, fuzzy
+msgid "An argument with that name already exists"
+msgstr "此名稱的身份驗證資訊已經存在"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:390
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:435
+#, fuzzy
+msgid "The name of the argument cannot be empty"
+msgstr "身份驗證資訊名稱不能為空白"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:397
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:442
+#, fuzzy
+msgid "The arguments of the argument cannot be empty"
+msgstr "身份驗證資訊名稱不能為空白"
+
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:428
+#, fuzzy
+msgid "An argument with that name does not exist"
+msgstr "此名稱的身份驗證資訊已經存在"
 
 #: Nickvision.Parabolic.Shared/Models/Download.cs:89
 #, fuzzy
@@ -304,6 +327,10 @@ msgstr "錯誤：檔案已經存在，且覆寫關閉"
 #: Nickvision.Parabolic.Shared/Models/Download.cs:114
 msgid "Starting download..."
 msgstr "正在開始下載..."
+
+#: Nickvision.Parabolic.Shared/Models/Format.cs:240
+msgid "Audio Description"
+msgstr "音訊描述"
 
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
@@ -430,6 +457,8 @@ msgstr "聲明"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:229
 msgid "Cancel"
 msgstr ""
 
@@ -722,10 +751,12 @@ msgid ""
 msgstr "您確定要刪除身份驗證嗎？"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:174
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr "是"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:175
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "否"
 
@@ -752,7 +783,7 @@ msgstr "歷史記錄"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Settings"
 msgstr "設定"
 
@@ -781,7 +812,7 @@ msgid "Home"
 msgstr "首頁"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:31
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
 msgid "Downloads"
 msgstr "下載"
 
@@ -798,6 +829,8 @@ msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "新增影片、音訊或播放清單的 URL 開始下載"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:181
 msgid "Add"
 msgstr "增加"
 
@@ -822,6 +855,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:207
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "更新"
 
@@ -838,327 +872,355 @@ msgstr "錯誤"
 msgid "Downloading update: {0}%"
 msgstr "下載中"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
 msgid "User Interface"
 msgstr "使用者介面"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:35
 msgid "Downloader"
 msgstr "下載器"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:36
 msgid "Converter"
 msgstr "轉換器"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
 msgid "Theme"
 msgstr "主題"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:36
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:39
 msgid "Translation Language"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
-msgid "An application restart is required for a change to take effect"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:39
-#, fuzzy
-msgid "Receive Preview Updates"
-msgstr "檢查更新"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:40
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:72
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
-#, fuzzy
-msgid "On"
-msgstr "打開"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:41
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:45
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:52
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:56
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:60
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:73
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:77
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:80
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:94
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:105
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:109
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:113
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:116
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:120
-msgid "Off"
+msgid "An application restart is required for a change to take effect"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:42
 #, fuzzy
+msgid "Receive Preview Updates"
+msgstr "檢查更新"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:82
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:96
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
+#, fuzzy
+msgid "On"
+msgstr "打開"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:48
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:80
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:97
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:123
+msgid "Off"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:45
+#, fuzzy
 msgid "Prevent Suspend"
 msgstr "防止休眠"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:46
 msgid "Prevent the computer from sleeping while downloads are running"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:46
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:49
 msgid "Download History Length"
 msgstr "下載歷史記錄長度"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:50
 #, fuzzy
 msgid "The amount of time to keep past downloads in the app's history"
 msgstr "當所有下載完成時"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:49
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:52
 #, fuzzy
 msgid "Max Number of Active Downloads"
 msgstr "最大同時下載數"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:50
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:53
 msgid "Overwrite Existing Files"
 msgstr "取代現有檔案"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:53
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:56
 #, fuzzy
 msgid "Include Media Id in Title"
 msgstr "在驗證後將媒體 Id 加入標題"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:57
 msgid "Add the media's id to its default title"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:57
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:60
 msgid "Include Auto-Generated Subtitles"
 msgstr "包含自動生成字幕"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:61
 msgid ""
 "Show auto-generated subtitles to download in addition to available subtitles"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:61
-msgid "Preferred Video Codec"
-msgstr "偏好的影片編碼"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
-msgid ""
-"Prefer this codec when parsing video formats to show available to download"
-msgstr ""
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:64
-#, fuzzy
-msgid "Preferred Audio Codec"
+msgid "Preferred Video Codec"
 msgstr "偏好的影片編碼"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
 msgid ""
-"Prefer this codec when parsing audio formats to show available to download"
+"Prefer this codec when parsing video formats to show available to download"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:67
-msgid "Preferred Subtitle Format"
-msgstr "偏好的字幕格式"
+#, fuzzy
+msgid "Preferred Audio Codec"
+msgstr "偏好的影片編碼"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:68
-msgid "Prefer this subtitle file format when downloading"
+msgid ""
+"Prefer this codec when parsing audio formats to show available to download"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:70
+msgid "Preferred Subtitle Format"
+msgstr "偏好的字幕格式"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
+msgid "Prefer this subtitle file format when downloading"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:73
 #, fuzzy
 msgid "Use Part Files"
 msgstr "使用 Batch 檔案"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
 msgid ""
 "Download media in separate .part files instead of directly into the output "
 "file"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:77
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube 使用 SponsorBlock"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:78
 msgid "Try to remove sponsored segments from videos"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:78
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:81
 msgid "Limit Download Speed"
 msgstr "限制下載速度"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:81
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:84
 msgid "Speed Limit"
 msgstr "速度限制"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:82
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:85
 msgid "Proxy URL"
 msgstr "代理 URL"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
 msgid "Enter proxy url here"
 msgstr "在這裡輸入 Proxy URL"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:84
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
 #, fuzzy
 msgid "Cookies from File"
 msgstr "Cookies 檔案"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:149
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:171
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:158
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
 msgid "No file selected"
 msgstr "沒有選擇檔案"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:89
 msgid "Clear Cookies File"
 msgstr "清除 Cookies 檔案"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:90
 msgid "Select Cookies File"
 msgstr "選擇 Cookies 檔案"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
 msgid "Cookies from Browser"
 msgstr "瀏覽器的 Cookies"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
 #, fuzzy
 msgid "aria2c"
 msgstr "aria2"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:94
 #, fuzzy
 msgid "Use aria2c"
 msgstr "使用 aria2"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:95
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:98
 #, fuzzy
 msgid "Max Connections Per Server"
 msgstr "每個伺服器最大連線數 (-x)"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:96
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:99
 msgid "Corresponds to -x option"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:97
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
 #, fuzzy
 msgid "Minimum Split Size (MiB)"
 msgstr "分割最小值 (-k)"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:101
 msgid "Corresponds to -k option"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:102
 msgid "Embed Metadata"
 msgstr "嵌入後設資料"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:102
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:105
 msgid "Remove Source Data"
 msgstr "移除來源資訊"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:106
 #, fuzzy
 msgid "Clear metadata fields containing identifying download information"
 msgstr "啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:109
 msgid "Embed Thumbnails"
 msgstr "嵌入縮圖"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:110
 #, fuzzy
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file"
 msgstr "如果檔案類型不支援嵌入，縮圖將會另存成圖檔"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:113
 msgid "Crop Audio Thumbnails"
 msgstr "剪裁音訊縮圖"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
 #, fuzzy
 msgid "Crop thumbnails of audio files to squares"
 msgstr "啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:117
 msgid "Embed Chapters"
 msgstr "嵌入章節"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:117
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:120
 msgid "Embed Subtitles"
 msgstr "嵌入字幕"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:121
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files"
 msgstr "如果關閉或不支援嵌入，已下載的字幕會另存新檔"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:121
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:124
 #, fuzzy
 msgid "FFmpeg Threads"
 msgstr "後製使用的核心數"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:125
 msgid "Limit the number of threads used by ffmpeg"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:124
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #, fuzzy
 msgid "Post-Processor Arguments"
 msgstr "後製使用的核心數"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:125
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
 msgid "Arguments will be shown for selection in the add download dialog"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:126
-msgid "Manage"
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
+#, fuzzy
+msgid "Argument"
+msgstr "新的身份驗證資訊"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+msgid "Name"
+msgstr "名稱"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
+msgid "Enter name here"
+msgstr "在這裡輸入名字"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
+#, fuzzy
+msgid "Post-Processor"
+msgstr "處理中"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
+msgid "Executable"
 msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:135
+msgid "Args"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:136
+#, fuzzy
+msgid "Enter args here"
+msgstr "請在這裡輸入 URL"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
+#, fuzzy
+msgid "Delete Argument?"
+msgstr "新的身份驗證資訊"
+
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this post-processor argument? The action is "
+"irreversible"
+msgstr "您確定要刪除身份驗證嗎？"
+
+#~ msgid "Delete"
+#~ msgstr "刪除"
+
+#, fuzzy
+#~ msgid "The name cannot be empty."
+#~ msgstr "身份驗證資訊名稱不能為空白"
 
 #, fuzzy
 #~ msgid "Postprocessing"
 #~ msgstr "處理中"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "新的身份驗證資訊"
-
-#~ msgid "Name"
-#~ msgstr "名稱"
-
-#~ msgid "Enter name here"
-#~ msgstr "在這裡輸入名字"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "處理中"
-
-#, fuzzy
-#~ msgid "Enter arguments here"
-#~ msgstr "請在這裡輸入 URL"
 
 #, fuzzy
 #~ msgid "Add Argument"
@@ -1175,9 +1237,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No Arguments"
 #~ msgstr "新的身份驗證資訊"
-
-#~ msgid "Audio Description"
-#~ msgstr "音訊描述"
 
 #, fuzzy
 #~ msgid ""
@@ -1454,9 +1513,6 @@ msgstr ""
 #~ msgid "Keyring is not saving to disk. Changes will be lost."
 #~ msgstr "金鑰圈沒有儲存到磁碟。所有變動都會遺失。"
 
-#~ msgid "Delete"
-#~ msgstr "刪除"
-
 #~ msgid "Modify"
 #~ msgstr "修改"
 
@@ -1491,10 +1547,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "{} version {} is available to download and install"
 #~ msgstr "無法下載和安裝更新"
-
-#, fuzzy
-#~ msgid "Delete Argument?"
-#~ msgstr "新的身份驗證資訊"
 
 #, fuzzy
 #~ msgid "Are you sure you want to delete this argument?"
@@ -1592,18 +1644,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "New Argument"
 #~ msgstr "新的身份驗證資訊"
-
-#, fuzzy
-#~ msgid "The argument name cannot be empty."
-#~ msgstr "身份驗證資訊名稱不能為空白"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "此名稱的身份驗證資訊已經存在"
-
-#, fuzzy
-#~ msgid "The argument args cannot be empty."
-#~ msgstr "身份驗證資訊名稱不能為空白"
 
 #, fuzzy
 #~ msgid ""
