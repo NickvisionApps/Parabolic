@@ -1,0 +1,360 @@
+<Page
+    x:Class="Nickvision.Parabolic.WinUI.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
+    xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:community="using:CommunityToolkit.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Grid x:Name="MainGrid" RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="LblSettings" Grid.Row="0" Margin="24,24,0,0" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+
+        <SelectorBar Grid.Row="1" Margin="24,0,0,0" SelectionChanged="SelectorBar_SelectionChanged">
+            <SelectorBarItem x:Name="SelectorUI" IsSelected="True">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+
+            <SelectorBarItem x:Name="SelectorDownloads">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FD;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+
+            <SelectorBarItem x:Name="SelectorDownloader">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+
+            <SelectorBarItem x:Name="SelectorConverter">
+                <SelectorBarItem.Icon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                </SelectorBarItem.Icon>
+            </SelectorBarItem>
+        </SelectorBar>
+
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+            <nickvision:ViewStack x:Name="ViewStack" Margin="24,0,24,24">
+                <nickvision:ViewStack.Pages>
+                    <StackPanel Spacing="6">
+                        <community:SettingsCard x:Name="RowTheme">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE793;"/> 
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbTheme" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowTranslationLanguage">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF2B7;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbTranslationLanguage" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowPreviewUpdates">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF1AD;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglPreviewUpdates" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowPreventSuspend">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7E8;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglPreventSuspend" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowHistoryLength">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbHistoryLength" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+                    </StackPanel>
+
+                    <StackPanel Spacing="6">
+                        <community:SettingsCard x:Name="RowActiveDownloads">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <NumberBox x:Name="NumActiveDownloads" Minimum="1" Maximum="10" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowOverwriteFiles">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E5;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglOverwriteFiles" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowIncludeMediaId">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8AC;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglIncludeMediaId" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowIncludeAutoSubtitles">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglIncludeAutoSubtitles" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowPreferredVideoCodec">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE714;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbPreferredVideoCodec" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowPreferredAudioCodec">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8D6;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbPreferredAudioCodec" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowPreferredSubtitleFormat">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1F;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbPreferredSubtitleFormat" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+                    </StackPanel>
+
+                    <StackPanel Spacing="6">
+                        <community:SettingsCard x:Name="RowUsePartFiles">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglUsePartFiles" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowUseSponsorBlock">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE789;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglUseSponsorBlock" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowLimitSpeed">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBD3;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglLimitSpeed" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowSpeedLimit" IsEnabled="{x:Bind TglLimitSpeed.IsOn, Mode=OneWay}">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC49;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <NumberBox x:Name="NumSpeedLimit" Minimum="512" Maximum="10240" SmallChange="512" LargeChange="1024"
+                                       SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowProxyUrl">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE71B;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <TextBox x:Name="TxtProxyUrl" TextChanged="Txt_TextChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowCookiesFile">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A6;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <TextBlock x:Name="LblCookiesFile" VerticalAlignment="Center"/>
+
+                                <Button x:Name="BtnSelectCookiesFile" Click="SelectCookiesFile">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E5;" FontSize="18"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="BtnClearCookiesFile" Click="ClearCookiesFile">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE894;" FontSize="18"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowCookiesBrowser">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE774;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbCookiesBrowser" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
+
+                        <TextBlock x:Name="LblAria" Margin="0,12,0,0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+                        <community:SettingsCard x:Name="RowUseAria">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglUseAria" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowMaxConnectionsPerServer" IsEnabled="{x:Bind TglUseAria.IsOn, Mode=OneWay}">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF0B9;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <NumberBox x:Name="NumMaxConnectionsPerServer" Minimum="1" Maximum="16" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowMinimumSplitSize" IsEnabled="{x:Bind TglUseAria.IsOn, Mode=OneWay}">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8C6;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <NumberBox x:Name="NumMinimumSplitSize" Minimum="1" Maximum="1024" LargeChange="128" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                        </community:SettingsCard>
+                    </StackPanel>
+
+                    <StackPanel Spacing="6">
+                        <community:SettingsCard x:Name="RowEmbedMetadata">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8EC;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglEmbedMetadata" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowRemoveSourceData" IsEnabled="{x:Bind TglEmbedMetadata.IsOn, Mode=OneWay}">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglRemoveSourceData" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowEmbedThumbnails">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B9;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglEmbedThumbnails" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowCropAudioThumbnails" IsEnabled="{x:Bind TglEmbedThumbnails.IsOn, Mode=OneWay}">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A8;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglCropAudioThumbnails" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowEmbedChapters">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF168;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglEmbedChapters" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowEmbedSubtitles">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglEmbedSubtitles" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowFfmpegThreads">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEEA1;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <NumberBox x:Name="NumFfmpegThreads" Minimum="1" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsExpander x:Name="RowPostProcessorArguments">
+                            <community:SettingsExpander.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
+                            </community:SettingsExpander.HeaderIcon>
+
+                            <Button x:Name="BtnAddPostProcessorArgument" Click="AddPostprocessingArgument">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;" FontSize="18"/>
+
+                                        <TextBlock x:Name="LblAddPostProcessorArgument"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+
+                            <community:SettingsExpander.ItemTemplate>
+                                <DataTemplate>
+                                    <community:SettingsCard Header="{Binding Name, Mode=OneWay}" Description="{Binding Args, Mode=OneWay}">
+                                        <community:SettingsCard.HeaderIcon>
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                                        </community:SettingsCard.HeaderIcon>
+
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <Button Tag="{Binding Name, Mode=OneWay}" Click="EditPostprocessingArgument">
+                                                <Button.Content>
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE70F;" FontSize="18"/>
+                                                </Button.Content>
+                                            </Button>
+
+                                            <Button Tag="{Binding Name, Mode=OneWay}" Click="DeletePostprocessingArgument">
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;" FontSize="18"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </community:SettingsCard>
+                                </DataTemplate>
+                            </community:SettingsExpander.ItemTemplate>
+                        </community:SettingsExpander>
+                    </StackPanel>
+                </nickvision:ViewStack.Pages>
+            </nickvision:ViewStack>
+        </ScrollViewer>
+
+        <ContentDialog x:Name="DlgPostprocessingArgument" DefaultButton="Primary">
+            <StackPanel Orientation="Vertical" Spacing="12">
+                <TextBox x:Name="TxtPostprocessingArgumentName"/>
+
+                <ComboBox x:Name="CmbPostprocessingArgumentPostProcessor" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+
+                <ComboBox x:Name="CmbPostprocessingArgumentExecutable" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+
+                <TextBox x:Name="TxtPostprocessingArgumentArgs"/>
+            </StackPanel>
+        </ContentDialog>
+    </Grid>
+</Page>
