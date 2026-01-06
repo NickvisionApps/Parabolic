@@ -1,0 +1,382 @@
+<ContentDialog
+    x:Class="Nickvision.Parabolic.WinUI.Views.AddDownloadDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
+    xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:community="using:CommunityToolkit.WinUI.Controls"
+    xmlns:converters="using:Nickvision.Desktop.WinUI.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
+
+    <ContentDialog.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </ContentDialog.Resources>
+
+	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+        <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <nickvision:ViewStack.Pages>
+                <StackPanel Orientation="Vertical" Spacing="12" MinWidth="400">
+                    <TextBox x:Name="TxtUrl" TextChanged="TxtUrl_TextChanged"/>
+
+                    <Button x:Name="BtnSelectBatchFile" HorizontalAlignment="Stretch" Click="BtnSelectBatchFile_Click">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;" FontSize="18"/>
+
+                                <TextBlock x:Name="LblSelectBatchFile"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+
+                    <ToggleSwitch x:Name="TglUseAuthentication"/>
+
+                    <StackPanel Orientation="Vertical" Spacing="6" Visibility="{x:Bind TglUseAuthentication.IsOn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <ComboBox x:Name="CmbCredential" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbCredential_SelectionChanged"/>
+
+                        <TextBox x:Name="TxtUsername" Visibility="Collapsed"/>
+
+                        <PasswordBox x:Name="TxtPassword" Visibility="Collapsed"/>
+                    </StackPanel>
+
+                    <ToggleSwitch x:Name="TglDownloadImmediately" Toggled="TglDownloadImmediately_Toggled"/>
+
+                    <TeachingTip x:Name="TeachDownloadImmediately" PreferredPlacement="Bottom" Target="{x:Bind TglDownloadImmediately}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Spacing="24" Margin="0,24,0,0">
+                    <ProgressRing IsActive="True"/>
+
+                    <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" Foreground="Gray"/>
+                </StackPanel>
+
+                <Grid RowSpacing="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <SelectorBar x:Name="NavViewSingle" Grid.Row="0" SelectionChanged="NavViewSingle_SelectionChanged">
+                        <SelectorBarItem x:Name="NavViewItemSingleGeneral" IsSelected="True" Tag="General">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+
+                        <SelectorBarItem x:Name="NavViewItemSingleSubtitles" Tag="Subtitles">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+
+                        <SelectorBarItem x:Name="NavViewItemSingleAdvanced" Tag="Advanced">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+                    </SelectorBar>
+
+                    <nickvision:ViewStack x:Name="ViewStackSingle" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <nickvision:ViewStack.Pages>
+                            <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox x:Name="TxtSingleSaveFilename" Grid.Row="0" Grid.Column="0"/>
+
+                                <Button x:Name="BtnSingleRevertFilename" Grid.Row="0" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleRevertFilename_Click">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A7;" FontSize="18"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <TextBox x:Name="TxtSingleSaveFolder" Grid.Row="1" Grid.Column="0" IsReadOnly="True"/>
+
+                                <Button x:Name="BtnSingleSelectSaveFolder" Grid.Row="1" Grid.Column="1" Margin="0,28,0,0" Click="BtnSingleSelectSaveFolder_Click">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B7;" FontSize="18"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <ComboBox x:Name="CmbSingleFileType" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbSingleFileType_SelectionChanged"/>
+
+                                <TeachingTip x:Name="TeachSingleFileType" PreferredPlacement="Bottom" Target="{x:Bind CmbSingleFileType}"/>
+
+                                <ComboBox x:Name="CmbSingleVideoFormat" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+
+                                <ComboBox x:Name="CmbSingleAudioFormat" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                            </Grid>
+
+                            <nickvision:ViewStack x:Name="ViewStackSingleSubtitles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <nickvision:ViewStack.Pages>
+                                    <nickvision:StatusPage x:Name="StatusSingleSubtitles" Margin="0,24,0,0" Glyph="&#xE721;" IsCompact="True"/>
+
+                                    <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button x:Name="BtnSingleSelectAllSubtitles" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Click="BtnSingleSelectAllSubtitles_Click">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;" FontSize="18"/>
+
+                                                    <TextBlock x:Name="LblSingleSelectAllSubtitles"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button x:Name="BtnSingleDeselectAllSubtitles" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Click="BtnSingleDeselectAllSubtitles_Click">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;" FontSize="18"/>
+
+                                                    <TextBlock x:Name="LblSingleDeselectAllSubtitles"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                                  DisplayMemberPath="Label" SelectionMode="Multiple"/>
+                                    </Grid>
+                                </nickvision:ViewStack.Pages>
+                            </nickvision:ViewStack>
+
+                            <StackPanel Orientation="Vertical" Spacing="12" MinWidth="400" HorizontalAlignment="Stretch">
+                                <ToggleSwitch x:Name="TglSingleSplitChapters"/>
+
+                                <ToggleSwitch x:Name="TglSingleExportDescription"/>
+
+                                <ToggleSwitch x:Name="TglSingleExcludeFromHistory"/>
+
+                                <ComboBox x:Name="CmbSinglePostProcessorArgument" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+
+                                <TextBox x:Name="TxtSingleStartTime"/>
+
+                                <TextBox x:Name="TxtSingleEndTime"/>
+                            </StackPanel>
+                        </nickvision:ViewStack.Pages>
+                    </nickvision:ViewStack>
+                </Grid>
+
+                <Grid RowSpacing="6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <SelectorBar x:Name="NavViewPlaylist" Grid.Row="0" SelectionChanged="NavViewPlaylist_SelectionChanged">
+                        <SelectorBarItem x:Name="NavViewItemPlaylistGeneral" IsSelected="True" Tag="General">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+
+                        <SelectorBarItem x:Name="NavViewItemPlaylistItems" Tag="Items">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF0E3;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+
+                        <SelectorBarItem x:Name="NavViewItemPlaylistSubtitles" Tag="Subtitles">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+
+                        <SelectorBarItem x:Name="NavViewItemPlaylistAdvanced" Tag="Advanced">
+                            <SelectorBarItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
+                            </SelectorBarItem.Icon>
+                        </SelectorBarItem>
+                    </SelectorBar>
+
+                    <nickvision:ViewStack x:Name="ViewStackPlaylist" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <nickvision:ViewStack.Pages>
+                            <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox x:Name="TxtPlaylistSaveFolder" Grid.Row="0" Grid.Column="0" IsReadOnly="True"/>
+
+                                <Button x:Name="BtnPlaylistSelectSaveFolder" Grid.Row="0" Grid.Column="1" Margin="0,28,0,0" Click="BtnPlaylistSelectSaveFolder_Click">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B7;" FontSize="18"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <ComboBox x:Name="CmbPlaylistFileType" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbPlaylistFileType_SelectionChanged"/>
+
+                                <TeachingTip x:Name="TeachPlaylistFileType" PreferredPlacement="Bottom" Target="{x:Bind CmbSingleFileType}"/>
+
+                                <ComboBox x:Name="CmbPlaylistSuggestedVideoResolution" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+
+                                <ComboBox x:Name="CmbPlaylistSuggestedAudioBitrate" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                            </Grid>
+
+                            <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="BtnPlaylistSelectAllItems" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Click="BtnPlaylistSelectAllItems_Click">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;" FontSize="18"/>
+
+                                            <TextBlock x:Name="LblPlaylistSelectAllItems"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="BtnPlaylistDeselectAllItems" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Click="BtnPlaylistDeselectAllItems_Click">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;" FontSize="18"/>
+
+                                            <TextBlock x:Name="LblPlaylistDeselectAllItems"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                                <ToggleSwitch x:Name="TglPlaylistReverseDownloadOrder" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                                <ToggleSwitch x:Name="TglPlaylistNumberTitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Toggled="TglPlaylistNumberTitles_Toggled"/>
+
+                                <TeachingTip x:Name="TeachPlaylistNumberTitles" PreferredPlacement="Bottom" Target="{x:Bind TglPlaylistNumberTitles}"/>
+
+                                <ListView x:Name="ListPlaylistItems" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" SelectionMode="Multiple">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnSpacing="6">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBox Grid.Column="0" Text="{Binding Filename, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                                <Button Grid.Column="1" Click="BtnPlaylistRevertFilename_Click" Tag="{Binding Value, Mode=OneTime}">
+                                                    <Button.Content>
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A7;" FontSize="18"/>
+                                                    </Button.Content>
+                                                </Button>
+
+                                                <Button Grid.Column="2">
+                                                    <Button.Content>
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE712;" FontSize="18"/>
+                                                    </Button.Content>
+
+                                                    <Button.Flyout>
+                                                        <Flyout Placement="Bottom">
+                                                            <StackPanel Orientation="Vertical" Spacing="12" HorizontalAlignment="Stretch">
+                                                                <TextBox Header="{Binding StartTimeHeader, Mode=OneTime}" PlaceholderText="{Binding StartTime, Mode=OneTime}" Text="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                                                <TextBox Header="{Binding EndTimeHeader, Mode=OneTime}" PlaceholderText="{Binding EndTime, Mode=OneTime}" Text="{Binding EndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                            </StackPanel>
+                                                        </Flyout>
+                                                    </Button.Flyout>
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </Grid>
+
+                            <nickvision:ViewStack x:Name="ViewStackPlaylistSubtitles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <nickvision:ViewStack.Pages>
+                                    <nickvision:StatusPage x:Name="StatusPlaylistSubtitles" Margin="0,24,0,0" Glyph="&#xE721;" IsCompact="True"/>
+
+                                    <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button x:Name="BtnPlaylistSelectAllSubtitles" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Click="BtnPlaylistSelectAllSubtitles_Click">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B3;" FontSize="18"/>
+
+                                                    <TextBlock x:Name="LblPlaylistSelectAllSubtitles"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button x:Name="BtnPlaylistDeselectAllSubtitles" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Click="BtnPlaylistDeselectAllSubtitles_Click">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E6;" FontSize="18"/>
+
+                                                    <TextBlock x:Name="LblPlaylistDeselectAllSubtitles"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+
+                                        <TextBlock x:Name="LblPlaylistSubtitleNote" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Foreground="Gray" TextWrapping="Wrap"/>
+
+                                        <ListView x:Name="ListPlaylistSubtitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                                  DisplayMemberPath="Label" SelectionMode="Multiple"/>
+                                    </Grid>
+                                </nickvision:ViewStack.Pages>
+                            </nickvision:ViewStack>
+
+                            <StackPanel Orientation="Vertical" Spacing="12" MinWidth="400" HorizontalAlignment="Stretch">
+                                <ToggleSwitch x:Name="TglPlaylistExportM3U"/>
+                                
+                                <ToggleSwitch x:Name="TglPlaylistSplitChapters"/>
+
+                                <ToggleSwitch x:Name="TglPlaylistExportDescription"/>
+
+                                <ToggleSwitch x:Name="TglPlaylistExcludeFromHistory"/>
+
+                                <ComboBox x:Name="CmbPlaylistPostProcessorArgument" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                            </StackPanel>
+                        </nickvision:ViewStack.Pages>
+                    </nickvision:ViewStack>
+                </Grid>
+            </nickvision:ViewStack.Pages>
+        </nickvision:ViewStack>
+    </ScrollViewer>
+</ContentDialog>
