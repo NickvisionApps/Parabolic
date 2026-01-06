@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-03 17:15-0500\n"
+"POT-Creation-Date: 2026-01-05 21:17-0500\n"
 "PO-Revision-Date: 2026-01-02 15:02+0000\n"
 "Last-Translator: Flynn <cirilla@tuta.io>\n"
 "Language-Team: Cornish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -122,6 +122,27 @@ msgstr "OGG (Son)"
 msgid "An error occurred while discovering media"
 msgstr ""
 
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:37
+#, fuzzy
+msgid "A credential with that name already exists"
+msgstr "Unn manylyon usyer gans an hanow ma eksistya seulabrys."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:44
+#, fuzzy
+msgid "The name of the credential cannot be empty"
+msgstr "Hanow oberadow a res."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:51
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:83
+#, fuzzy
+msgid "Either the credential username or password must be set"
+msgstr "An hanow usyer ha ger-tremena a res."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:76
+#, fuzzy
+msgid "A credential with that name does not exist"
+msgstr "Unn oberadow gans an hanow ma eksistya seulabrys."
+
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:48
 msgid "Open"
 msgstr "Ygeri"
@@ -157,27 +178,27 @@ msgstr "David Lapshin"
 msgid "translation-credits"
 msgstr "Flynn <cirilla@tuta.io>"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:233
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:235
 #, fuzzy, csharp-format
 msgid "New {0} update available: {1}"
 msgstr "Yma unn nowedhyans kavadow"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:240
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:242
 #, fuzzy, csharp-format
 msgid "New yt-dlp update available: {0}"
 msgstr "Yma unn nowedhyans kavadow"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:247
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:249
 #, fuzzy
 msgid "No update available"
 msgstr "Unn nowedhyans yw kavadow"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:269
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:271
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "Anabel dhe iskarga ha lea nowedhyans"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:279
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:281
 #, fuzzy
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Anabel dhe iskarga ha lea nowedhyans"
@@ -371,14 +392,14 @@ msgid "{0} (Auto-generated)"
 msgstr "Dinythys yn Awtomatek"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:280
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:285
 #, csharp-format
 msgid "About {0}"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:229
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:232
 msgid "Close"
 msgstr "Degea"
 
@@ -437,7 +458,7 @@ msgstr ""
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid "Add Download"
 msgstr "Addya Iskarg"
 
@@ -449,8 +470,8 @@ msgstr "Daskavos"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:180
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:227
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
 msgid "Cancel"
 msgstr "Hedhi"
 
@@ -473,22 +494,27 @@ msgid "Use Authentication"
 msgstr "Omgelm"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
 msgid "Credential"
 msgstr "Manylyon Usyer"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:47
 msgid "Username"
 msgstr "Hanow Usyer"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:69
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:48
 msgid "Enter username here"
 msgstr "Ynworra hanow usyer omma"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:49
 msgid "Password"
 msgstr "Ger-tremena"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:50
 msgid "Enter password here"
 msgstr "Ynworra ger-tremena omma"
 
@@ -704,10 +730,13 @@ msgstr "Gwari"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
 msgid "Remove"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
 msgid "Search..."
 msgstr "Hwilas"
@@ -731,28 +760,96 @@ msgstr "An termyn dhe gwitha iskargow passyes yn an istori"
 msgid "There are no downloads found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:172
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:107
 #, fuzzy
 msgid "Clear All History?"
 msgstr "Dilea Istori"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:173
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:108
 #, fuzzy
 msgid ""
 "Are you sure you want to clear all download history? This action is "
 "irreversible."
 msgstr "Os ta sur dilea an manylyon usyer ma?"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:174
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:175
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 #, fuzzy
 msgid "No"
 msgstr "Vyth"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "Addya"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
+msgid "Edit"
+msgstr "Dyllo"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+#, fuzzy
+msgid "No Credentials"
+msgstr "Manylyon Usyer Nowydh"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#, fuzzy
+msgid "There are no credentials in your keyring"
+msgstr "An termyn dhe gwitha iskargow passyes yn an istori"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+msgid "There are no credentials found with the current filters"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
+msgid "Name"
+msgstr "Hanow"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+msgid "Enter name here"
+msgstr "Ynworra hanow omma"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+msgid "URL"
+msgstr "URL"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:46
+msgid "Enter url here"
+msgstr "Ynworra URL omma"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
+#, fuzzy
+msgid "Update"
+msgstr "Nowedhyansow"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:104
+msgid "Delete Credential?"
+msgstr "Dilea Manylyon Usyer?"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:105
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this credential? The action is irreversible"
+msgstr "Os ta sur dilea an oberadow ma?"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
 msgid "Preview"
@@ -767,77 +864,68 @@ msgstr "Eghen Restren"
 msgid "Exit"
 msgstr "Kwytya"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
-msgid "Edit"
-msgstr "Dyllo"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
 msgid "History"
 msgstr "Istori"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
+msgid "Keyring"
+msgstr "Kelgh Alhwedh"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "Settings"
 msgstr "Settyansow"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Help"
 msgstr "Gweres"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
 msgid "Check for Updates"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "GitHub Repo"
 msgstr "GitHub"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Report a Bug"
 msgstr "Derivas unn Kudyn"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Discussions"
 msgstr "Omgussulyansow"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Home"
 msgstr "Tre"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Iskargow"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-msgid "Keyring"
-msgstr "Kelgh Alhwedh"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
 msgid "Download Media"
 msgstr "Iskarga Media"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Addya unn URL gwydhyow, son, po rol a media dhe dalleth iskargaow"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:179
-msgid "Add"
-msgstr "Addya"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:112
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:113
 msgid "Don't show this message again"
 msgstr "Na diskwedhes an messach arta"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
 msgid "Legal Copyright Disclaimer"
 msgstr "Hepkorrans Gwirbryntyans"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:125
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:126
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -847,26 +935,19 @@ msgstr ""
 "keynskrifa, ha na bos omgemeryansek rag, an devnydh a an app ma a usyoryon "
 "gorthmos an laghys ma."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:132
 msgid "I understand"
 msgstr "My a gonvedh"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:207
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:226
-#, fuzzy
-msgid "Update"
-msgstr "Nowedhyansow"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:213
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:215
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:218
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:221
 msgid "Error"
 msgstr "Error"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:327
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:332
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Iskargaow Nowedhyans"
@@ -1051,8 +1132,8 @@ msgid "Cookies from File"
 msgstr "Restren Cookies"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:156
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:194
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
 msgid "No file selected"
 msgstr "Restren dewisys vyth"
 
@@ -1171,36 +1252,28 @@ msgstr "Oberadowyow yw diskwedhys rag dewis yn an fenester \"Addya iskarg\""
 msgid "Argument"
 msgstr "Oberadow"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Name"
-msgstr "Hanow"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
-msgid "Enter name here"
-msgstr "Ynworra hanow omma"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
 #, fuzzy
 msgid "Post-Processor"
 msgstr "Dyghtyer Wosa"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
 msgid "Executable"
 msgstr "Eksekutadow"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
 msgid "Args"
 msgstr "Oberadowyow"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:135
 msgid "Enter args here"
 msgstr "Ywnorra oberadowyow omma"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
 msgid "Delete Argument?"
 msgstr "Dilea Oberadow?"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:204
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
 #, fuzzy
 msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
@@ -1397,9 +1470,6 @@ msgstr "Os ta sur dilea an oberadow ma?"
 #~ msgid "Add Credential"
 #~ msgstr "Addya Manylyon Usyer"
 
-#~ msgid "URL"
-#~ msgstr "URL"
-
 #~ msgid "Preferences"
 #~ msgstr "Settyansow"
 
@@ -1529,9 +1599,6 @@ msgstr "Os ta sur dilea an oberadow ma?"
 #~ "{} res manylyon usyer dhe iskarga.\n"
 #~ "Mar pleg, dewis po ynworra unn dhe devnydhya."
 
-#~ msgid "Both the username and password cannot be empty."
-#~ msgstr "An hanow usyer ha ger-tremena a res."
-
 #~ msgid "Keyring is not saving to disk. Changes will be lost."
 #~ msgstr "Kelgh alhwedh na sawyaow. Chanjyow yw kellys."
 
@@ -1540,9 +1607,6 @@ msgstr "Os ta sur dilea an oberadow ma?"
 
 #~ msgid "Modify"
 #~ msgstr "Chanjya"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Dilea Manylyon Usyer?"
 
 #~ msgid "Name (Empty)"
 #~ msgstr "Hanow (Gwag)"
@@ -1627,20 +1691,11 @@ msgstr "Os ta sur dilea an oberadow ma?"
 #~ "The keyring is not saving changes to disk. Any changes made will be lost"
 #~ msgstr "An kelgh alhwedh na sawyaow chanjyow. Neb chanjyow yw kellys"
 
-#~ msgid "Enter url here"
-#~ msgstr "Ynworra URL omma"
-
-#~ msgid "New Credential"
-#~ msgstr "Manylyon Usyer Nowydh"
-
 #~ msgid "The credential name cannot be empty."
 #~ msgstr "Hanow manylyon usyer a res."
 
 #~ msgid "The provided url is invalid."
 #~ msgstr "An URL provys yw anewn."
-
-#~ msgid "A credential with this name already exists."
-#~ msgstr "Unn manylyon usyer gans an hanow ma eksistya seulabrys."
 
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr ""

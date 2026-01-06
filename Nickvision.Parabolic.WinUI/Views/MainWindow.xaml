@@ -16,6 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -65,6 +66,16 @@
 
                         <MenuFlyoutItem.KeyboardAccelerators>
                             <KeyboardAccelerator Modifiers="Control" Key="H"/>
+                        </MenuFlyoutItem.KeyboardAccelerators>
+                    </MenuFlyoutItem>
+
+                    <MenuFlyoutItem x:Name="MenuKeyring" Click="Keyring">
+                        <MenuFlyoutItem.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xF540;"/>
+                        </MenuFlyoutItem.Icon>
+
+                        <MenuFlyoutItem.KeyboardAccelerators>
+                            <KeyboardAccelerator Modifiers="Control" Key="K"/>
                         </MenuFlyoutItem.KeyboardAccelerators>
                     </MenuFlyoutItem>
 
@@ -137,7 +148,13 @@
             </Button>
         </Grid>
 
-        <NavigationView x:Name="NavView" Grid.Row="2" PaneDisplayMode="LeftCompact" SelectionChanged="NavView_SelectionChanged"
+        <InfoBar x:Name="InfoBar" Grid.Row="2" Margin="6,0,6,6" IsOpen="False">
+            <InfoBar.ActionButton>
+                <Button x:Name="BtnInfoBar" HorizontalAlignment="Right" Visibility="Collapsed"/>
+            </InfoBar.ActionButton>
+        </InfoBar>
+
+        <NavigationView x:Name="NavView" Grid.Row="3" PaneDisplayMode="LeftCompact" SelectionChanged="NavView_SelectionChanged"
                         IsBackButtonVisible="Collapsed" IsPaneToggleButtonVisible="False" IsSettingsVisible="False">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="NavItemHome" Tag="Home" IsSelected="True">
@@ -160,7 +177,7 @@
 
                 <NavigationViewItem x:Name="NavItemKeyring" Tag="Keyring">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEA18;"/>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xF540;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
@@ -173,63 +190,51 @@
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <nickvision:ViewStack.Pages>
+                    <nickvision:StatusPage x:Name="StatusHome" Image="/Assets/org.nickvision.tubeconverter-devel.ico">
+                        <nickvision:StatusPage.Child>
+                            <Button Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
 
-                <nickvision:ViewStack x:Name="ViewStack" Grid.Row="0">
-                    <nickvision:ViewStack.Pages>
-                        <nickvision:StatusPage x:Name="StatusHome" Image="/Assets/org.nickvision.tubeconverter-devel.ico">
-                            <nickvision:StatusPage.Child>
-                                <Button Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
-                                    <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+                                    <TextBlock x:Name="LblHomeAddDownload"/>
+                                </StackPanel>
+                            </Button>
+                        </nickvision:StatusPage.Child>
+                    </nickvision:StatusPage>
 
-                                        <TextBlock x:Name="LblHomeAddDownload"/>
-                                    </StackPanel>
-                                </Button>
-                            </nickvision:StatusPage.Child>
-                        </nickvision:StatusPage>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
-                                    <CommandBar.PrimaryCommands>
-                                        <AppBarButton x:Name="BtnDownloadsAddDownload" Click="AddDownload">
-                                            <AppBarButton.Icon>
-                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
-                                            </AppBarButton.Icon>
-                                        </AppBarButton>
-                                    </CommandBar.PrimaryCommands>
-                                </CommandBar>
-                            </Grid>
-
-                            <MenuFlyoutSeparator Grid.Row="1"/>
+                            <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
+                                <CommandBar.PrimaryCommands>
+                                    <AppBarButton x:Name="BtnDownloadsAddDownload" Click="AddDownload">
+                                        <AppBarButton.Icon>
+                                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+                                        </AppBarButton.Icon>
+                                    </AppBarButton>
+                                </CommandBar.PrimaryCommands>
+                            </CommandBar>
                         </Grid>
 
-                        <Frame x:Name="FrameCustom"/>
-                    </nickvision:ViewStack.Pages>
-                </nickvision:ViewStack>
+                        <MenuFlyoutSeparator Grid.Row="1"/>
+                    </Grid>
 
-                <InfoBar x:Name="InfoBar" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="24,0,24,0" IsOpen="False">
-                    <InfoBar.ActionButton>
-                        <Button x:Name="BtnInfoBar" HorizontalAlignment="Right" Visibility="Collapsed"/>
-                    </InfoBar.ActionButton>
-                </InfoBar>
-            </Grid>
+                    <Frame x:Name="FrameCustom"/>
+                </nickvision:ViewStack.Pages>
+            </nickvision:ViewStack>
         </NavigationView>
     </Grid>
 </Window>

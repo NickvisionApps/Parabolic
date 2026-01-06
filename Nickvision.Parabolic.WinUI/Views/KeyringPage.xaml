@@ -1,0 +1,121 @@
+<Page
+    x:Class="Nickvision.Parabolic.WinUI.Views.KeyringPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
+    xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+	<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
+                <CommandBar.PrimaryCommands>
+                    <AppBarButton x:Name="BtnAdd" Click="Add">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+
+                    <AppBarButton x:Name="BtnEdit" IsEnabled="False" Click="Edit">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE70F;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+
+                    <AppBarButton x:Name="BtnRemove" IsEnabled="False" Click="Remove">
+                        <AppBarButton.Icon>
+                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE894;"/>
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                </CommandBar.PrimaryCommands>
+            </CommandBar>
+
+            <AutoSuggestBox x:Name="TxtSerach" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,6,0" Width="320" QueryIcon="Find" TextChanged="TxtSerach_TextChanged"/>
+        </Grid>
+
+        <MenuFlyoutSeparator Grid.Row="1"/>
+
+        <nickvision:ViewStack x:Name="ViewStack" Grid.Row="2">
+            <nickvision:ViewStack.Pages>
+                <nickvision:StatusPage x:Name="StatusNone" Glyph="&#xF540;"/>
+
+                <nickvision:StatusPage x:Name="StatusNoneSearch" Glyph="&#xE721;"/>
+
+                <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ListView x:Name="ListCredentials" SelectionMode="Single" IsDoubleTapEnabled="True" SelectionChanged="ListCredentials_SelectionChanged" DoubleTapped="ListCredentials_DoubleTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid RowSpacing="6" ColumnSpacing="6" Padding="6">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Label, Mode=OneWay}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Value.Username, Mode=OneWay}" Foreground="Gray"/>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Text="{Binding Value.Url, Mode=OneWay}" Foreground="Gray"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                        <ListView.ContextFlyout>
+                            <MenuFlyout Placement="Bottom">
+                                <MenuFlyoutItem x:Name="MenuAdd" Click="Add">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+
+                                <MenuFlyoutItem x:Name="MenuEdit" IsEnabled="False" Click="Edit">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE70F;"/>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+
+                                <MenuFlyoutItem x:Name="MenuRemove" IsEnabled="False" Click="Remove">
+                                    <MenuFlyoutItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE894;"/>
+                                    </MenuFlyoutItem.Icon>
+                                </MenuFlyoutItem>
+                            </MenuFlyout>
+                        </ListView.ContextFlyout>
+                    </ListView>
+                </ScrollViewer>
+            </nickvision:ViewStack.Pages>
+        </nickvision:ViewStack>
+
+        <ContentDialog x:Name="DlgCredential" DefaultButton="Primary">
+            <StackPanel Orientation="Vertical" Spacing="12">
+                <TextBox x:Name="TxtCredentialName"/>
+
+                <TextBox x:Name="TxtCredentialUrl"/>
+
+                <TextBox x:Name="TxtCredentialUsername"/>
+
+                <PasswordBox x:Name="TxtCredentialPassword"/>
+            </StackPanel>
+        </ContentDialog>
+    </Grid>
+</Page>

@@ -126,6 +126,7 @@ public sealed partial class SettingsPage : Page
         RowPostProcessorArguments.Description = _controller.Translator._("Arguments will be shown for selection in the add download dialog");
         LblAddPostProcessorArgument.Text = _controller.Translator._("Add");
         DlgPostprocessingArgument.Title = _controller.Translator._("Argument");
+        DlgPostprocessingArgument.CloseButtonText = _controller.Translator._("Cancel");
         TxtPostprocessingArgumentName.Header = _controller.Translator._("Name");
         TxtPostprocessingArgumentName.PlaceholderText = _controller.Translator._("Enter name here");
         CmbPostprocessingArgumentPostProcessor.Header = _controller.Translator._("Post-Processor");
@@ -174,12 +175,13 @@ public sealed partial class SettingsPage : Page
     private async void AddPostprocessingArgument(object? sender, RoutedEventArgs e)
     {
         TxtPostprocessingArgumentName.IsReadOnly = false;
+        TxtPostprocessingArgumentName.Text = string.Empty;
         CmbPostprocessingArgumentPostProcessor.SelectSelectionItem();
         CmbPostprocessingArgumentExecutable.SelectSelectionItem();
+        TxtPostprocessingArgumentArgs.Text = string.Empty;
         DlgPostprocessingArgument.PrimaryButtonText = _controller.Translator._("Add");
-        DlgPostprocessingArgument.CloseButtonText = _controller.Translator._("Cancel");
         DlgPostprocessingArgument.XamlRoot = XamlRoot;
-        DlgPostprocessingArgument.RequestedTheme = RequestedTheme;
+        DlgPostprocessingArgument.RequestedTheme = ActualTheme;
         if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
         {
             await _controller.AddPostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,
@@ -206,7 +208,7 @@ public sealed partial class SettingsPage : Page
             CloseButtonText = _controller.Translator._("No"),
             DefaultButton = ContentDialogButton.Close,
             XamlRoot = XamlRoot,
-            RequestedTheme = RequestedTheme
+            RequestedTheme = ActualTheme
         };
         if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
         {
@@ -224,9 +226,8 @@ public sealed partial class SettingsPage : Page
         CmbPostprocessingArgumentExecutable.SelectedItem = (CmbPostprocessingArgumentExecutable.ItemsSource as IReadOnlyList<SelectionItem<Executable>>)!.First(x => x.Value == argument.Executable);
         TxtPostprocessingArgumentArgs.Text = argument.Args;
         DlgPostprocessingArgument.PrimaryButtonText = _controller.Translator._("Update");
-        DlgPostprocessingArgument.CloseButtonText = _controller.Translator._("Cancel");
         DlgPostprocessingArgument.XamlRoot = XamlRoot;
-        DlgPostprocessingArgument.RequestedTheme = RequestedTheme;
+        DlgPostprocessingArgument.RequestedTheme = ActualTheme;
         if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
         {
             await _controller.UpdatePostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,

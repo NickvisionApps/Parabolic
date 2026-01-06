@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-03 17:15-0500\n"
+"POT-Creation-Date: 2026-01-05 21:17-0500\n"
 "PO-Revision-Date: 2025-11-29 08:00+0000\n"
 "Last-Translator: Pavel Miniutka <pavel.miniutka@gmail.com>\n"
 "Language-Team: Belarusian <https://hosted.weblate.org/projects/nickvision-"
@@ -117,6 +117,27 @@ msgstr "OPUS (аўдыя)"
 msgid "An error occurred while discovering media"
 msgstr ""
 
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:37
+#, fuzzy
+msgid "A credential with that name already exists"
+msgstr "Уліковыя даныя з такім імем ужо існуюць."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:44
+#, fuzzy
+msgid "The name of the credential cannot be empty"
+msgstr "Спіс аргументаў не можа быць пустым."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:51
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:83
+#, fuzzy
+msgid "Either the credential username or password must be set"
+msgstr "І імя карыстальніка, і пароль не могуць быць пустымі."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:76
+#, fuzzy
+msgid "A credential with that name does not exist"
+msgstr "Аргумент з такой назвай ужо існуе."
+
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:48
 msgid "Open"
 msgstr "Адкрыць"
@@ -152,27 +173,27 @@ msgstr "David Lapshin"
 msgid "translation-credits"
 msgstr "Pavel Miniutka <pavel.miniutka@gmail.com>"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:233
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:235
 #, fuzzy, csharp-format
 msgid "New {0} update available: {1}"
 msgstr "Даступна абнаўленне"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:240
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:242
 #, fuzzy, csharp-format
 msgid "New yt-dlp update available: {0}"
 msgstr "Няма даступных абнаўленняў Parabolic"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:247
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:249
 #, fuzzy
 msgid "No update available"
 msgstr "Даступна абнаўленне"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:269
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:271
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "Не ўдалося спампаваць і усталяваць абнаўленне"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:279
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:281
 #, fuzzy
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Не ўдалося спампаваць і усталяваць абнаўленне"
@@ -366,14 +387,14 @@ msgid "{0} (Auto-generated)"
 msgstr "Аўтаматычна згенерыраваныя"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:280
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:285
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "Аб праграме"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:229
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:232
 msgid "Close"
 msgstr "Закрыць"
 
@@ -431,7 +452,7 @@ msgstr ""
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid "Add Download"
 msgstr "Новая спампоўка"
 
@@ -443,8 +464,8 @@ msgstr "Аднавіць"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:180
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:227
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
 msgid "Cancel"
 msgstr "Скасаваць"
 
@@ -467,22 +488,27 @@ msgid "Use Authentication"
 msgstr "Аўтэнтыфікацыя"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
 msgid "Credential"
 msgstr "Уліковыя даныя"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:47
 msgid "Username"
 msgstr "Імя карыстальніка"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:69
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:48
 msgid "Enter username here"
 msgstr "Увядзіце тут імя карыстальніка"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:49
 msgid "Password"
 msgstr "Пароль"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:50
 msgid "Enter password here"
 msgstr "Увядзіце тут пароль"
 
@@ -698,10 +724,13 @@ msgstr "Прайграць"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
 msgid "Remove"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
 msgid "Search..."
 msgstr "Пошук"
@@ -727,27 +756,95 @@ msgstr ""
 msgid "There are no downloads found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:172
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:107
 #, fuzzy
 msgid "Clear All History?"
 msgstr "Ачысціць гісторыю"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:173
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:108
 #, fuzzy
 msgid ""
 "Are you sure you want to clear all download history? This action is "
 "irreversible."
 msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя ўліковыя даныя?"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:174
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr "Так"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:175
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "Не"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "Дадаць"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
+msgid "Edit"
+msgstr "Рэдагаваць"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+msgid "No Credentials"
+msgstr "Няма ўліковых даных"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#, fuzzy
+msgid "There are no credentials in your keyring"
+msgstr ""
+"Час, на працягу якога мінулыя спампоўванні будуць захоўвацца ў гісторыі "
+"праграмы"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+msgid "There are no credentials found with the current filters"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
+msgid "Name"
+msgstr "Назва"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+msgid "Enter name here"
+msgstr "Увядзіце тут назву"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+msgid "URL"
+msgstr "URL-адрас"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:46
+msgid "Enter url here"
+msgstr "Увядзіце тут URL-адрас"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
+msgid "Update"
+msgstr "Абнавіць"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:104
+msgid "Delete Credential?"
+msgstr "Выдаліць уліковыя даныя?"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:105
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this credential? The action is irreversible"
+msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя ўліковыя даныя?"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
 msgid "Preview"
@@ -761,77 +858,68 @@ msgstr "Файл"
 msgid "Exit"
 msgstr "Выйсці"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
-msgid "Edit"
-msgstr "Рэдагаваць"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
 msgid "History"
 msgstr "Гісторыя"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
+msgid "Keyring"
+msgstr "Бірулька"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "Settings"
 msgstr "Налады"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Help"
 msgstr "Даведка"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
 msgid "Check for Updates"
 msgstr "Праверыць наяўнасць абнаўленняў"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "GitHub Repo"
 msgstr "Рэпазіторый GitHub"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Report a Bug"
 msgstr "Паведаміць пра памылку"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Discussions"
 msgstr "Абмеркаванні"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Home"
 msgstr "Галоўная"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Спампоўванні"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-msgid "Keyring"
-msgstr "Бірулька"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
 msgid "Download Media"
 msgstr "Спампоўвайце медыя"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Дадайце URL-адрас відэа, аўдыя або плэй-ліста, каб пачаць спампоўванне"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:179
-msgid "Add"
-msgstr "Дадаць"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:112
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:113
 msgid "Don't show this message again"
 msgstr "Больш не паказваць гэта паведамленне"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
 msgid "Legal Copyright Disclaimer"
 msgstr "Юрыдычная адмова ад адказнасці за аўтарскія правы"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:125
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:126
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -841,25 +929,19 @@ msgstr ""
 "не падтрымліваюць і не нясуць адказнасці за выкарыстанне гэтай праграмы "
 "спосабамі, якія парушаюць гэтыя законы."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:132
 msgid "I understand"
 msgstr "Я разумею"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:207
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:226
-msgid "Update"
-msgstr "Абнавіць"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:213
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:215
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:218
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:221
 msgid "Error"
 msgstr "Памылка"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:327
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:332
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Ідзе спампоўванне абнаўлення"
@@ -1050,8 +1132,8 @@ msgid "Cookies from File"
 msgstr "Файл cookie"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:156
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:194
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
 msgid "No file selected"
 msgstr "Файл не выбраны"
 
@@ -1173,37 +1255,29 @@ msgstr ""
 msgid "Argument"
 msgstr "Аргумент"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Name"
-msgstr "Назва"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
-msgid "Enter name here"
-msgstr "Увядзіце тут назву"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
 #, fuzzy
 msgid "Post-Processor"
 msgstr "Постапрацоўка"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
 msgid "Executable"
 msgstr "Выканальны файл"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
 msgid "Args"
 msgstr "Аргументы"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:135
 #, fuzzy
 msgid "Enter args here"
 msgstr "Увядзіце тут аргументы"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
 msgid "Delete Argument?"
 msgstr "Выдаліць аргумент?"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:204
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
 #, fuzzy
 msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
@@ -1417,9 +1491,6 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя �
 #~ msgid "Credentials"
 #~ msgstr "Уліковыя даныя"
 
-#~ msgid "URL"
-#~ msgstr "URL-адрас"
-
 #~ msgid "Preferences"
 #~ msgstr "Параметры"
 
@@ -1552,17 +1623,11 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя �
 #~ "Для спампоўвання {} патрэбны ўліковыя даныя.\n"
 #~ "Выберыце або ўвядзіце ўліковыя даныя."
 
-#~ msgid "Both the username and password cannot be empty."
-#~ msgstr "І імя карыстальніка, і пароль не могуць быць пустымі."
-
 #~ msgid "Keyring is not saving to disk. Changes will be lost."
 #~ msgstr "Бірулька не захоўваецца на дыск. Змены будуць страчаныя."
 
 #~ msgid "Modify"
 #~ msgstr "Змяніць"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Выдаліць уліковыя даныя?"
 
 #~ msgid "Name (Empty)"
 #~ msgstr "Назва (пустая)"
@@ -1646,9 +1711,6 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя �
 #~ "Бірулька не захоўвае змены на дыску. Усе зробленыя змены будуць страчаныя "
 #~ "пры закрыцці праграмы"
 
-#~ msgid "Enter url here"
-#~ msgstr "Увядзіце тут URL-адрас"
-
 #~ msgid "New Credential"
 #~ msgstr "Новыя ўліковыя даныя"
 
@@ -1657,9 +1719,6 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя �
 
 #~ msgid "The provided url is invalid."
 #~ msgstr "Пададзены URL-адрас памылковы."
-
-#~ msgid "A credential with this name already exists."
-#~ msgstr "Уліковыя даныя з такім імем ужо існуюць."
 
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr ""
@@ -1863,9 +1922,6 @@ msgstr "Вы ўпэўнены, што хочаце выдаліць гэтыя �
 #~ msgid "Add, delete, and modify credentials for validating websites"
 #~ msgstr ""
 #~ "Дадавайце, выдаляйце і змяняйце ўліковыя даныя для праверкі вэб-сайтаў"
-
-#~ msgid "No Credentials"
-#~ msgstr "Няма ўліковых даных"
 
 #~ msgid "Add a credential to get started"
 #~ msgstr "Дадайце ўліковыя даныя, каб пачаць"

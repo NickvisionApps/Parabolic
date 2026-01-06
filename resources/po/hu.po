@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-03 17:15-0500\n"
+"POT-Creation-Date: 2026-01-05 21:17-0500\n"
 "PO-Revision-Date: 2025-12-10 18:00+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -116,6 +116,27 @@ msgstr "OGG (hang)"
 msgid "An error occurred while discovering media"
 msgstr ""
 
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:37
+#, fuzzy
+msgid "A credential with that name already exists"
+msgstr "Ez a bejelentkezés már tárolva van."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:44
+#, fuzzy
+msgid "The name of the credential cannot be empty"
+msgstr "A felhasználónév nem lehet üres."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:51
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:83
+#, fuzzy
+msgid "Either the credential username or password must be set"
+msgstr "A bejelentkezési adatok nem lehetnek üresek."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:76
+#, fuzzy
+msgid "A credential with that name does not exist"
+msgstr "Ez a bejelentkezés már tárolva van."
+
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:48
 msgid "Open"
 msgstr "Megnyitás"
@@ -151,27 +172,27 @@ msgstr "David Lapshin"
 msgid "translation-credits"
 msgstr "ViBE <vibe@protonmail.com>"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:233
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:235
 #, fuzzy, csharp-format
 msgid "New {0} update available: {1}"
 msgstr "Elérhető frissítés"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:240
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:242
 #, fuzzy, csharp-format
 msgid "New yt-dlp update available: {0}"
 msgstr "Nincs elérhető frissítés"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:247
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:249
 #, fuzzy
 msgid "No update available"
 msgstr "Elérhető frissítés"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:269
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:271
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "A frissítés letöltése és telepítése nem sikerült"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:279
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:281
 #, fuzzy
 msgid "Unable to download and install the yt-dlp update"
 msgstr "A frissítés letöltése és telepítése nem sikerült"
@@ -365,14 +386,14 @@ msgid "{0} (Auto-generated)"
 msgstr "Automatikusan létrehozott"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:280
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:285
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "Névjegy"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:229
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:232
 msgid "Close"
 msgstr "Bezárás"
 
@@ -442,7 +463,7 @@ msgstr ""
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid "Add Download"
 msgstr "Hozzáadás"
 
@@ -454,8 +475,8 @@ msgstr "Helyreállítás"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:180
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:227
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -478,22 +499,27 @@ msgid "Use Authentication"
 msgstr "Bejelentkezés"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
 msgid "Credential"
 msgstr "Bejelentkezés"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:47
 msgid "Username"
 msgstr "Felhasználónév"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:69
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:48
 msgid "Enter username here"
 msgstr "Felhasználónév megadása"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:49
 msgid "Password"
 msgstr "Jelszó"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:50
 msgid "Enter password here"
 msgstr "Jelszó megadása"
 
@@ -709,10 +735,13 @@ msgstr "Lejátszás"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
 msgid "Remove"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
 msgid "Search..."
 msgstr "Keresés"
@@ -736,27 +765,94 @@ msgstr "Minden letöltés végén"
 msgid "There are no downloads found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:172
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:107
 #, fuzzy
 msgid "Clear All History?"
 msgstr "Előzmények törlése"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:173
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:108
 #, fuzzy
 msgid ""
 "Are you sure you want to clear all download history? This action is "
 "irreversible."
 msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:174
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr "Igen"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:175
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "Nem"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+#, fuzzy
+msgid "No Credentials"
+msgstr "Bejelentkezés"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#, fuzzy
+msgid "There are no credentials in your keyring"
+msgstr "Bejelentkezések tárolása a jelszókezelővel."
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+msgid "There are no credentials found with the current filters"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
+msgid "Name"
+msgstr "Megnevezés"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+msgid "Enter name here"
+msgstr "Oldal megnevezése"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+msgid "URL"
+msgstr "Hivatkozás"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:46
+msgid "Enter url here"
+msgstr "Hivatkozás beillesztése"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
+msgid "Update"
+msgstr "Frissítés"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:104
+msgid "Delete Credential?"
+msgstr "Bejelentkezés törlése"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:105
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this credential? The action is irreversible"
+msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
 msgid "Preview"
@@ -770,77 +866,68 @@ msgstr "Fájl"
 msgid "Exit"
 msgstr "Kilépés"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
-msgid "Edit"
-msgstr "Szerkesztés"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
 msgid "History"
 msgstr "Előzmények"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
+msgid "Keyring"
+msgstr "Jelszókezelő"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "Settings"
 msgstr "Beállítások"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Help"
 msgstr "Súgó"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
 msgid "Check for Updates"
 msgstr "Frissítések keresése"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "GitHub Repo"
 msgstr "GitHub tároló"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Report a Bug"
 msgstr "Hiba jelentése"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Discussions"
 msgstr "Kibeszélés"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Home"
 msgstr "Kezdőlap"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Letöltések"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-msgid "Keyring"
-msgstr "Jelszókezelő"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
 msgid "Download Media"
 msgstr "Tartalom letöltése"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Kezdéshez adja hozzá a letölteni kívánt tartalom hivatkozását"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:179
-msgid "Add"
-msgstr "Hozzáadás"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:112
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:113
 msgid "Don't show this message again"
 msgstr "Ne mutassa újra"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
 msgid "Legal Copyright Disclaimer"
 msgstr "Jogi nyilatkozat"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:125
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:126
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -850,25 +937,19 @@ msgstr ""
 "fakadó esetleges jogsértésekért. A felhasználó saját felelősségére használja "
 "az alkalmazást."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:132
 msgid "I understand"
 msgstr "Megértettem"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:207
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:226
-msgid "Update"
-msgstr "Frissítés"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:213
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:215
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:218
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:221
 msgid "Error"
 msgstr "Hiba"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:327
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:332
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Frissítés letöltése"
@@ -1055,8 +1136,8 @@ msgid "Cookies from File"
 msgstr "Sütik használata fájlból"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:156
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:194
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
 msgid "No file selected"
 msgstr "Nincs fájl kiválasztva"
 
@@ -1178,38 +1259,30 @@ msgstr ""
 msgid "Argument"
 msgstr "Bejelentkezés hozzáadása"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Name"
-msgstr "Megnevezés"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
-msgid "Enter name here"
-msgstr "Oldal megnevezése"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
 #, fuzzy
 msgid "Post-Processor"
 msgstr "Feldolgozás"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
 msgid "Executable"
 msgstr "Futtatandó"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
 msgid "Args"
 msgstr "Paraméterek"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:135
 #, fuzzy
 msgid "Enter args here"
 msgstr "Oldal megnevezése"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
 #, fuzzy
 msgid "Delete Argument?"
 msgstr "Paraméterek szerkesztése"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:204
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
 #, fuzzy
 msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
@@ -1393,9 +1466,6 @@ msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 #~ msgid "Credentials"
 #~ msgstr "Bejelentkezés"
 
-#~ msgid "URL"
-#~ msgstr "Hivatkozás"
-
 #~ msgid "Preferences"
 #~ msgstr "Beállítások"
 
@@ -1530,14 +1600,8 @@ msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 #~ "A(z) {} letöltéséhez bejelentkezés szükséges.\n"
 #~ "Kérem, jelentkezzen be, vagy válasszon ki egy fiókot!"
 
-#~ msgid "Both the username and password cannot be empty."
-#~ msgstr "A bejelentkezési adatok nem lehetnek üresek."
-
 #~ msgid "Modify"
 #~ msgstr "Módosítás"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Bejelentkezés törlése"
 
 #~ msgid "Name (Empty)"
 #~ msgstr "Megnevezés (üres)"
@@ -1602,9 +1666,6 @@ msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 
 #~ msgid "OK"
 #~ msgstr "Rendben"
-
-#~ msgid "Enter url here"
-#~ msgstr "Hivatkozás beillesztése"
 
 #~ msgid "New Credential"
 #~ msgstr "Bejelentkezés hozzáadása"
@@ -1785,10 +1846,6 @@ msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 #, fuzzy
 #~ msgid "Enter end time here"
 #~ msgstr "Részlet vége"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "Bejelentkezés"
 
 #~ msgid "View"
 #~ msgstr "Nézet"
@@ -2353,6 +2410,3 @@ msgstr "Biztosan törölni szeretné a bejelentkezési adatokat?"
 #~ "Nicholas Logozzo {0}\n"
 #~ "Fyodor Sobolev {1}\n"
 #~ "DaPigGuy {2}"
-
-#~ msgid "Manage credentials in your keyring."
-#~ msgstr "Bejelentkezések tárolása a jelszókezelővel."

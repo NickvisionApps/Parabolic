@@ -100,6 +100,43 @@ public sealed partial class HistoryPage : Page
         await LoadDownloadsAsync();
     }
 
+    private async void ClearAll(object? sender, RoutedEventArgs e)
+    {
+        var confirmDialog = new ContentDialog()
+        {
+            Title = _controller.Translator._("Clear All History?"),
+            Content = _controller.Translator._("Are you sure you want to clear all download history? This action is irreversible."),
+            PrimaryButtonText = _controller.Translator._("Yes"),
+            CloseButtonText = _controller.Translator._("No"),
+            DefaultButton = ContentDialogButton.Close,
+            XamlRoot = XamlRoot,
+            RequestedTheme = ActualTheme
+        };
+        if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
+        {
+            await _controller.ClearAllAsync();
+            await LoadDownloadsAsync();
+        }
+    }
+
+    private void DownloadAgain(object? sender, RoutedEventArgs e)
+    {
+        var selected = ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>().First();
+        _controller.RequestDownload(selected.Value.Url);
+    }
+
+    private async void Play(object? sender, RoutedEventArgs e)
+    {
+        var selected = ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>().First();
+        await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(selected.Value.Path));
+    }
+
+    private async void Remove(object? sender, RoutedEventArgs e)
+    {
+        await _controller.RemoveAsync(ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>());
+        await LoadDownloadsAsync();
+    }
+
     private async void TglSort_Click(object? sender, RoutedEventArgs e)
     {
         _controller.SortNewest = TglSortNewest.IsChecked;
@@ -143,13 +180,13 @@ public sealed partial class HistoryPage : Page
         await LoadDownloadsAsync();
     }
 
-    private void TxtSerach_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+    private void TxtSerach_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
     {
         if (_historicDownloads.Count == 0)
         {
             return;
         }
-        if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+        if (e.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
         {
             if (string.IsNullOrEmpty(sender.Text))
             {
@@ -163,43 +200,6 @@ public sealed partial class HistoryPage : Page
                 ViewStack.SelectedIndex = filtered.Any() ? (int)Pages.History : (int)Pages.NoneSearch;
             }
         }
-    }
-
-    private async void ClearAll(object? sender, RoutedEventArgs e)
-    {
-        var confirmDialog = new ContentDialog()
-        {
-            Title = _controller.Translator._("Clear All History?"),
-            Content = _controller.Translator._("Are you sure you want to clear all download history? This action is irreversible."),
-            PrimaryButtonText = _controller.Translator._("Yes"),
-            CloseButtonText = _controller.Translator._("No"),
-            DefaultButton = ContentDialogButton.Close,
-            XamlRoot = XamlRoot,
-            RequestedTheme = RequestedTheme
-        };
-        if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
-        {
-            await _controller.ClearAllAsync();
-            await LoadDownloadsAsync();
-        }
-    }
-
-    private void DownloadAgain(object? sender, RoutedEventArgs e)
-    {
-        var selected = ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>().First();
-        _controller.RequestDownload(selected.Value.Url);
-    }
-
-    private async void Play(object? sender, RoutedEventArgs e)
-    {
-        var selected = ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>().First();
-        await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(selected.Value.Path));
-    }
-
-    private async void Remove(object? sender, RoutedEventArgs e)
-    {
-        await _controller.RemoveAsync(ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>());
-        await LoadDownloadsAsync();
     }
 
     private void ListDownloads_SelectionChanged(object? sender, SelectionChangedEventArgs e)

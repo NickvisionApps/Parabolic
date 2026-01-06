@@ -83,6 +83,7 @@ public sealed partial class MainWindow : Window
         MenuExit.Text = _controller.Translator._("Exit");
         MenuEdit.Title = _controller.Translator._("Edit");
         MenuHistory.Text = _controller.Translator._("History");
+        MenuKeyring.Text = _controller.Translator._("Keyring");
         MenuSettings.Text = _controller.Translator._("Settings");
         MenuHelp.Title = _controller.Translator._("Help");
         MenuCheckForUpdates.Text = _controller.Translator._("Check for Updates");
@@ -130,7 +131,7 @@ public sealed partial class MainWindow : Window
                 },
                 CloseButtonText = _controller.Translator._("I understand"),
                 DefaultButton = ContentDialogButton.Close,
-                RequestedTheme = MainGrid.RequestedTheme,
+                RequestedTheme = MainGrid.ActualTheme,
                 XamlRoot = MainGrid.XamlRoot
             };
             await disclaimerDialog.ShowAsync();
@@ -167,6 +168,7 @@ public sealed partial class MainWindow : Window
             FrameCustom.Content = tag switch
             {
                 "History" => new HistoryPage(_controller.HistoryPageController),
+                "Keyring" => new KeyringPage(_controller.KeyringPageController),
                 "Settings" => new SettingsPage(_controller.PreferencesViewController, AppWindow.Id),
                 _ => null
             };
@@ -213,6 +215,7 @@ public sealed partial class MainWindow : Window
             BtnInfoBar.Content = _controller.Translator._("Details");
             _notificationClickHandler = async (_, _) =>
             {
+                InfoBar.IsOpen = false;
                 var errorDialog = new ContentDialog()
                 {
                     Title = _controller.Translator._("Error"),
@@ -228,7 +231,7 @@ public sealed partial class MainWindow : Window
                     },
                     CloseButtonText = _controller.Translator._("Close"),
                     DefaultButton = ContentDialogButton.Close,
-                    RequestedTheme = MainGrid.RequestedTheme,
+                    RequestedTheme = MainGrid.ActualTheme,
                     XamlRoot = MainGrid.XamlRoot
                 };
                 await errorDialog.ShowAsync();
@@ -258,6 +261,8 @@ public sealed partial class MainWindow : Window
 
     private void History(object? sender, RoutedEventArgs e) => NavItemHistory.IsSelected = true;
 
+    private void Keyring(object? sender, RoutedEventArgs e) => NavItemKeyring.IsSelected = true;
+
     private void Settings(object? sender, RoutedEventArgs e) => NavItemSettings.IsSelected = true;
 
     private async void CheckForUpdates(object? sender, RoutedEventArgs e)
@@ -282,13 +287,13 @@ public sealed partial class MainWindow : Window
             {
                 IsActive = true,
             },
-            RequestedTheme = MainGrid.RequestedTheme,
+            RequestedTheme = MainGrid.ActualTheme,
             XamlRoot = MainGrid.XamlRoot
         };
         DispatcherQueue.TryEnqueue(async () => await progressDialog.ShowAsync());
         var aboutDialog = new AboutDialog(_controller.AppInfo, await _controller.GetDebugInformationAsync(), _controller.Translator)
         {
-            RequestedTheme = MainGrid.RequestedTheme,
+            RequestedTheme = MainGrid.ActualTheme,
             XamlRoot = MainGrid.XamlRoot
         };
         progressDialog.Hide();
@@ -337,7 +342,7 @@ public sealed partial class MainWindow : Window
     {
         var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, AppWindow.Id)
         {
-            RequestedTheme = MainGrid.RequestedTheme,
+            RequestedTheme = MainGrid.ActualTheme,
             XamlRoot = MainGrid.XamlRoot
         };
         if (uri is not null)

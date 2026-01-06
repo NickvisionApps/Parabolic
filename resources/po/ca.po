@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-03 17:15-0500\n"
+"POT-Creation-Date: 2026-01-05 21:17-0500\n"
 "PO-Revision-Date: 2025-05-03 08:01+0000\n"
 "Last-Translator: Roger VC <rogervilarasau@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -117,6 +117,27 @@ msgstr "OPUS (àudio)"
 msgid "An error occurred while discovering media"
 msgstr ""
 
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:37
+#, fuzzy
+msgid "A credential with that name already exists"
+msgstr "Ja existeix una credencial amb aquest nom."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:44
+#, fuzzy
+msgid "The name of the credential cannot be empty"
+msgstr "El nom de credencial no pot ser buit."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:51
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:83
+#, fuzzy
+msgid "Either the credential username or password must be set"
+msgstr "L'usuari i la contrasenya no poden estar buits."
+
+#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:76
+#, fuzzy
+msgid "A credential with that name does not exist"
+msgstr "Ja existeix una credencial amb aquest nom."
+
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:48
 msgid "Open"
 msgstr "Obre"
@@ -154,27 +175,27 @@ msgstr ""
 "Roger VC <rogervilarasau@gmail.com>, 2023\n"
 "Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2024"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:233
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:235
 #, fuzzy, csharp-format
 msgid "New {0} update available: {1}"
 msgstr "Hi ha una actualització disponible"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:240
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:242
 #, fuzzy, csharp-format
 msgid "New yt-dlp update available: {0}"
 msgstr "Hi ha una actualització disponible"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:247
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:249
 #, fuzzy
 msgid "No update available"
 msgstr "Hi ha una actualització disponible"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:269
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:271
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "No s’ha pogut baixar i instal·lar l’actualització"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:279
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:281
 #, fuzzy
 msgid "Unable to download and install the yt-dlp update"
 msgstr "No s’ha pogut baixar i instal·lar l’actualització"
@@ -370,14 +391,14 @@ msgid "{0} (Auto-generated)"
 msgstr "De generació automàtica"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:280
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:285
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "Sobre"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:229
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:232
 msgid "Close"
 msgstr "Tanca"
 
@@ -448,7 +469,7 @@ msgstr ""
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid "Add Download"
 msgstr "Afegeix baixada"
 
@@ -460,8 +481,8 @@ msgstr "Avís legal"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:180
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:227
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
 msgid "Cancel"
 msgstr "Cancel·lar"
 
@@ -484,22 +505,27 @@ msgid "Use Authentication"
 msgstr "Autentica"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
 msgid "Credential"
 msgstr "Credencial"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:47
 msgid "Username"
 msgstr "Nom d’usuari"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:69
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:48
 msgid "Enter username here"
 msgstr "Introduïu el nom d’usuari ací"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:49
 msgid "Password"
 msgstr "Contrasenya"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:50
 msgid "Enter password here"
 msgstr "Introduïu la contrasenya aquí"
 
@@ -719,10 +745,13 @@ msgstr "Reprodueix"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
 msgid "Remove"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
 msgid "Search..."
 msgstr "Història de cerca"
@@ -746,27 +775,95 @@ msgstr "Quan acabin totes les baixades"
 msgid "There are no downloads found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:172
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:107
 #, fuzzy
 msgid "Clear All History?"
 msgstr "Neteja l’historial"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:173
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:108
 #, fuzzy
 msgid ""
 "Are you sure you want to clear all download history? This action is "
 "irreversible."
 msgstr "Segur que voleu suprimir aquesta credencial?"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:174
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr "Sí"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:175
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "No"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:68
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "Afegeix"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
+msgid "Edit"
+msgstr "Edita"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+#, fuzzy
+msgid "No Credentials"
+msgstr "Credencials"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#, fuzzy
+msgid "There are no credentials in your keyring"
+msgstr "Quan acabin totes les baixades"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+msgid "There are no credentials found with the current filters"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
+msgid "Name"
+msgstr "Nom"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+msgid "Enter name here"
+msgstr "Introduïu el nom ací"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+msgid "URL"
+msgstr "URL"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:46
+#, fuzzy
+msgid "Enter url here"
+msgstr "Introduïu l’URL ací"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
+msgid "Update"
+msgstr "Actualitzar"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:104
+msgid "Delete Credential?"
+msgstr "Voleu suprimir la credencial?"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:105
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this credential? The action is irreversible"
+msgstr "Segur que voleu suprimir aquesta credencial?"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
 msgid "Preview"
@@ -780,104 +877,89 @@ msgstr "Fitxer"
 msgid "Exit"
 msgstr "Sortir"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
-msgid "Edit"
-msgstr "Edita"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
 msgid "History"
 msgstr "Historial"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
+msgid "Keyring"
+msgstr "Clauer"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "Settings"
 msgstr "Configuració"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Help"
 msgstr "Ajuda"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
 msgid "Check for Updates"
 msgstr "Comprova les actualitzacions"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "GitHub Repo"
 msgstr "Dipòsit al GitHub"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Report a Bug"
 msgstr "Informar d'un error"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Discussions"
 msgstr "Debats"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Home"
 msgstr "Inici"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Baixades"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-msgid "Keyring"
-msgstr "Clauer"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
 msgid "Download Media"
 msgstr "Descarregar mitjans"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Afegeix una URL de vídeo, àudio, o d'una llista de reproducció per començar "
 "a descarregar"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:179
-msgid "Add"
-msgstr "Afegeix"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:112
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:113
 msgid "Don't show this message again"
 msgstr "No mostris aquest missatge de nou"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
 msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:125
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:126
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
 "this application in means that will violate these laws."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:132
 msgid "I understand"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:207
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:226
-msgid "Update"
-msgstr "Actualitzar"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:213
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:215
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:218
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:221
 msgid "Error"
 msgstr "Error"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:327
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:332
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Descarregant"
@@ -1062,8 +1144,8 @@ msgid "Cookies from File"
 msgstr "Fitxer de galetes"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:156
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:194
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
 msgid "No file selected"
 msgstr "No s’ha seleccionat cap fitxer"
 
@@ -1192,39 +1274,31 @@ msgstr ""
 msgid "Argument"
 msgstr "Nova Credencial"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Name"
-msgstr "Nom"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
-msgid "Enter name here"
-msgstr "Introduïu el nom ací"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
 #, fuzzy
 msgid "Post-Processor"
 msgstr "Processant"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
 #, fuzzy
 msgid "Executable"
 msgstr "Activar"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
 msgid "Args"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:135
 #, fuzzy
 msgid "Enter args here"
 msgstr "Introduïu l’URL ací"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:203
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
 #, fuzzy
 msgid "Delete Argument?"
 msgstr "Nova Credencial"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:204
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
 #, fuzzy
 msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
@@ -1375,9 +1449,6 @@ msgstr "Segur que voleu suprimir aquesta credencial?"
 #~ msgid "Credentials"
 #~ msgstr "Credencials"
 
-#~ msgid "URL"
-#~ msgstr "URL"
-
 #~ msgid "Preferences"
 #~ msgstr "Preferències"
 
@@ -1511,17 +1582,11 @@ msgstr "Segur que voleu suprimir aquesta credencial?"
 #~ "{} es necessiten credencials per descarregar.\n"
 #~ "Si us plau, selecciona o introdueix-ne per utilitzar-la."
 
-#~ msgid "Both the username and password cannot be empty."
-#~ msgstr "L'usuari i la contrasenya no poden estar buits."
-
 #~ msgid "Keyring is not saving to disk. Changes will be lost."
 #~ msgstr "El clauer no es desa al disc. Se’n perdran els canvis."
 
 #~ msgid "Modify"
 #~ msgstr "Modifica"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Voleu suprimir la credencial?"
 
 #~ msgid "Name (Empty)"
 #~ msgstr "Nom (buit)"
@@ -1605,10 +1670,6 @@ msgstr "Segur que voleu suprimir aquesta credencial?"
 #~ "No s’estan desant els canvis del clauer en el disc. Els canvis que se’n "
 #~ "facin es perdran quan es tanqui l’aplicació."
 
-#, fuzzy
-#~ msgid "Enter url here"
-#~ msgstr "Introduïu l’URL ací"
-
 #~ msgid "New Credential"
 #~ msgstr "Nova Credencial"
 
@@ -1617,9 +1678,6 @@ msgstr "Segur que voleu suprimir aquesta credencial?"
 
 #~ msgid "The provided url is invalid."
 #~ msgstr "L’URL proporcionat no és vàlid."
-
-#~ msgid "A credential with this name already exists."
-#~ msgstr "Ja existeix una credencial amb aquest nom."
 
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "S’ha produït un error desconegut en afegir la credencial al clauer."
@@ -1743,10 +1801,6 @@ msgstr "Segur que voleu suprimir aquesta credencial?"
 #, fuzzy
 #~ msgid "Enter end time here"
 #~ msgstr "Introduïu el període de temps de final aquí"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "Credencials"
 
 #, fuzzy
 #~ msgid "View"

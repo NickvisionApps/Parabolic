@@ -156,6 +156,8 @@ public class MainWindowController : IDisposable
         }
     }
 
+    public KeyringPageController KeyringPageController => new KeyringPageController(_services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IKeyringService>()!);
+
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IHistoryService>()!);
 
     public bool ShowDisclaimerOnStartup
