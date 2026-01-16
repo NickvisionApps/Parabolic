@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 21:17-0500\n"
+"POT-Creation-Date: 2026-01-16 10:20-0500\n"
 "PO-Revision-Date: 2025-12-01 12:00+0000\n"
 "Last-Translator: NIICKTCHUNS "
 "<69496904+NIICKTCHUNS@users.noreply.github.com>\n"
@@ -393,13 +393,13 @@ msgstr "Gerado automaticamente"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:285
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:282
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "Sobre"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:232
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:237
 msgid "Close"
 msgstr "Fechar"
 
@@ -468,8 +468,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
 msgid "Add Download"
 msgstr "Adicionar download"
 
@@ -708,10 +707,9 @@ msgid "Download"
 msgstr "Baixar"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:34
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
-#, fuzzy
-msgid "Clear All"
-msgstr "Limpar"
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
+msgid "History"
+msgstr "Histórico"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
 msgid "Sort"
@@ -730,66 +728,54 @@ msgid "Save Length"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:47
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
-msgid "Download Again"
-msgstr "Baixar novamente"
+#, fuzzy
+msgid "Clear All"
+msgstr "Limpar"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:48
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:58
-msgid "Play"
-msgstr "Reproduzir"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
-msgid "Remove"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
 msgid "Search..."
 msgstr "Pesquisar"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
 msgid "Please wait..."
 msgstr "Por favor, aguarde..."
 
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:52
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
 #, fuzzy
 msgid "No History"
 msgstr "Histórico"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:53
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
 #, fuzzy
 msgid "There are no downloads in your history"
 msgstr "Quando todos terminarem"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:55
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:53
 msgid "There are no downloads found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:101
 #, fuzzy
 msgid "Clear All History?"
 msgstr "Apagar histórico"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:108
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:102
 #, fuzzy
 msgid ""
 "Are you sure you want to clear all download history? This action is "
 "irreversible."
 msgstr "Tem certeza que deseja apagar essa credencial?"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:103
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr "Sim"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:104
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:107
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
@@ -798,7 +784,7 @@ msgstr "Não"
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
@@ -806,9 +792,13 @@ msgstr "Adicionar"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Edit"
 msgstr "Editar"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
+msgid "Remove"
+msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
@@ -843,8 +833,8 @@ msgid "Enter url here"
 msgstr "Insira a URL aqui"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:90
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:203
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:208
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:214
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "Atualizar"
@@ -859,33 +849,27 @@ msgid ""
 "Are you sure you want to delete this credential? The action is irreversible"
 msgstr "Tem certeza que deseja apagar essa credencial?"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Preview"
 msgstr "Pré-visualizar"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:81
-msgid "File"
-msgstr "Arquivo"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
-msgid "Exit"
-msgstr "Sair"
+msgid "Home"
+msgstr "Início"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-msgid "History"
-msgstr "Histórico"
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
+msgid "Downloads"
+msgstr "Downloads"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
 msgid "Keyring"
 msgstr "Chaveiro"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
-msgid "Settings"
-msgstr "Configurações"
+#, fuzzy
+msgid "Updating"
+msgstr "Atualizar"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Help"
@@ -908,31 +892,54 @@ msgid "Discussions"
 msgstr "Discussões"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
-msgid "Home"
-msgstr "Início"
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
+msgid "Settings"
+msgstr "Configurações"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
-msgid "Downloads"
-msgstr "Downloads"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
 msgid "Download Media"
 msgstr "Download de mídia"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Adicione a URL de um áudio, vídeo ou playlist para iniciar o download"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:113
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+#, fuzzy
+msgid "All"
+msgstr "todos"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+msgid "Downloading"
+msgstr "Baixando"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+msgid "Queued"
+msgstr "Em fila"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+msgid "Completed"
+msgstr "Concluído"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:103
+#, fuzzy
+msgid "No Downloads"
+msgstr "Downloads"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
+#, fuzzy
+msgid "There are no downloads added"
+msgstr "Quando todos terminarem"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:116
 msgid "Don't show this message again"
 msgstr "Não mostrar esta mensagem novamente"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:120
 msgid "Legal Copyright Disclaimer"
 msgstr "Aviso legal de direitos autorais"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:126
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:129
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -942,19 +949,19 @@ msgstr ""
 "Os autores do Parabolic não endossam nem se responsabilizam pelo uso deste "
 "aplicativo de forma que viole essas leis."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:135
 msgid "I understand"
 msgstr "Eu entendo"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:215
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:220
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:221
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:226
 msgid "Error"
 msgstr "Erro"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:332
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:328
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Baixando atualização"
@@ -1298,6 +1305,22 @@ msgid ""
 "irreversible"
 msgstr "Tem certeza que deseja apagar essa credencial?"
 
+#~ msgid "File"
+#~ msgstr "Arquivo"
+
+#~ msgid "Exit"
+#~ msgstr "Sair"
+
+#~ msgid "Download Again"
+#~ msgstr "Baixar novamente"
+
+#~ msgid "Play"
+#~ msgstr "Reproduzir"
+
+#, fuzzy
+#~ msgid "Add a download to get started"
+#~ msgstr "Adicione uma credencial para começar"
+
 #~ msgid "Arguments"
 #~ msgstr "Argumentos"
 
@@ -1519,15 +1542,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 
 #~ msgid "Update Available"
 #~ msgstr "Atualização disponível"
-
-#~ msgid "Downloading"
-#~ msgstr "Baixando"
-
-#~ msgid "Queued"
-#~ msgstr "Em fila"
-
-#~ msgid "Completed"
-#~ msgstr "Concluído"
 
 #~ msgid "Stop All Downloads"
 #~ msgstr "Parar todos os download"
@@ -1915,9 +1929,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 #, fuzzy
 #~ msgid "Add, delete and modify credentials for validating websites"
 #~ msgstr "Adicione, exclua e modifique credenciais para sites de validação"
-
-#~ msgid "Add a credential to get started"
-#~ msgstr "Adicione uma credencial para começar"
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2411,10 +2422,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 #~ msgstr ""
 #~ "Gostaria de reiniciar {0} para aplicar o novo tema?\n"
 #~ "Qualquer trabalho não salvo será perdido."
-
-#~ msgctxt "subtitle"
-#~ msgid "all"
-#~ msgstr "todos"
 
 #~ msgid "Leave empty to download to end."
 #~ msgstr "Deixe em branco para fazer o download até o fim."

@@ -49,13 +49,7 @@ public class HistoryPageController
         return result;
     }
 
-    public async Task RemoveAsync(IEnumerable<SelectionItem<HistoricDownload>> list)
-    {
-        foreach (var item in list)
-        {
-            await _historyService.RemoveAsync(item.Value);
-        }
-    }
+    public async Task RemoveAsync(Uri url) => await _historyService.RemoveAsync(url);
 
     public void RequestDownload(Uri url) => DownloadRequested?.Invoke(this, new DownloadRequestedEventArgs(url));
 }

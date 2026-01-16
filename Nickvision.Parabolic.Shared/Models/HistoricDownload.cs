@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -8,6 +9,8 @@ public class HistoricDownload : IComparable<HistoricDownload>, IEquatable<Histor
     public string Title { get; set; }
     public string Path { get; set; }
     public DateTime DownloadedOn { get; set; }
+
+    public bool ExistsOnDisk => File.Exists(Path);
 
     public HistoricDownload(Uri url)
     {

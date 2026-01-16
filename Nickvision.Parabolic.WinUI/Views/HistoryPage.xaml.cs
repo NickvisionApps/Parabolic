@@ -5,7 +5,6 @@ using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -31,7 +30,7 @@ public sealed partial class HistoryPage : Page
         InitializeComponent();
         _controller = controller;
         _historicDownloads = [];
-        BtnClearAll.Label = _controller.Translator._("Clear All");
+        LblHistory.Text = _controller.Translator._("History");
         BtnSort.Label = _controller.Translator._("Sort");
         TglSortNewest.Text = _controller.Translator._("Newest");
         TglSortOldest.Text = _controller.Translator._("Oldest");
@@ -44,19 +43,13 @@ public sealed partial class HistoryPage : Page
         TglLengthSixMonths.Text = _controller.Translator._("6 Months");
         TglLengthOneYear.Text = _controller.Translator._("1 Year");
         TglLengthForever.Text = _controller.Translator._("Forever");
-        BtnDownloadAgain.Label = _controller.Translator._("Download Again");
-        BtnPlay.Label = _controller.Translator._("Play");
-        BtnRemove.Label = _controller.Translator._("Remove");
-        TxtSerach.PlaceholderText = _controller.Translator._("Search...");
+        LblClearAll.Text = _controller.Translator._("Clear All");
+        TxtSearch.PlaceholderText = _controller.Translator._("Search...");
         LblLoading.Text = _controller.Translator._("Please wait...");
         StatusNone.Title = _controller.Translator._("No History");
         StatusNone.Description = _controller.Translator._("There are no downloads in your history");
         StatusNoneSearch.Title = _controller.Translator._("No History");
         StatusNoneSearch.Description = _controller.Translator._("There are no downloads found with the current filters");
-        MenuClearAll.Text = _controller.Translator._("Clear All");
-        MenuDownloadAgain.Text = _controller.Translator._("Download Again");
-        MenuPlay.Text = _controller.Translator._("Play");
-        MenuRemove.Text = _controller.Translator._("Remove");
     }
 
     private async void Page_Loaded(object? sender, RoutedEventArgs e)
@@ -121,19 +114,20 @@ public sealed partial class HistoryPage : Page
 
     private void DownloadAgain(object? sender, RoutedEventArgs e)
     {
-        var selected = ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>().First();
-        _controller.RequestDownload(selected.Value.Url);
+        var tag = ((sender as Button)!.Tag as Uri)!;
+        _controller.RequestDownload(tag);
     }
 
     private async void Play(object? sender, RoutedEventArgs e)
     {
-        var selected = ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>().First();
-        await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(selected.Value.Path));
+        var tag = ((sender as Button)!.Tag as string)!;
+        await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(tag));
     }
 
     private async void Remove(object? sender, RoutedEventArgs e)
     {
-        await _controller.RemoveAsync(ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>());
+        var tag = ((sender as Button)!.Tag as Uri)!;
+        await _controller.RemoveAsync(tag);
         await LoadDownloadsAsync();
     }
 
@@ -180,7 +174,7 @@ public sealed partial class HistoryPage : Page
         await LoadDownloadsAsync();
     }
 
-    private void TxtSerach_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    private void TxtSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
     {
         if (_historicDownloads.Count == 0)
         {
@@ -202,24 +196,10 @@ public sealed partial class HistoryPage : Page
         }
     }
 
-    private void ListDownloads_SelectionChanged(object? sender, SelectionChangedEventArgs e)
-    {
-        var selected = ListDownloads.SelectedItems.Cast<SelectionItem<HistoricDownload>>();
-        var any = selected.Any();
-        var one = selected.Count() == 1;
-        var firstExists = one && File.Exists(selected.First().Value.Path);
-        BtnDownloadAgain.IsEnabled = one;
-        BtnPlay.IsEnabled = firstExists;
-        BtnRemove.IsEnabled = any;
-        MenuDownloadAgain.IsEnabled = one;
-        MenuPlay.IsEnabled = firstExists;
-        MenuRemove.IsEnabled = any;
-    }
-
     private async Task LoadDownloadsAsync()
     {
         ViewStack.SelectedIndex = (int)Pages.Loading;
-        TxtSerach.Text = string.Empty;
+        TxtSearch.Text = string.Empty;
         _historicDownloads = await _controller.GetAllAsync();
         ListDownloads.ItemsSource = _historicDownloads;
         ViewStack.SelectedIndex = _historicDownloads.Count == 0 ? (int)Pages.None : (int)Pages.History;

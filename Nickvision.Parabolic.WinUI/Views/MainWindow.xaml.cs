@@ -1,6 +1,8 @@
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Input;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Network;
@@ -78,32 +80,33 @@ public sealed partial class MainWindow : Window
         AppWindow.Title = _controller.AppInfo.ShortName;
         TitleBar.Title = _controller.AppInfo.ShortName;
         TitleBar.Subtitle = _controller.AppInfo.Version!.IsPreview ? _controller.Translator._("Preview") : string.Empty;
-        MenuFile.Title = _controller.Translator._("File");
-        MenuAddDownload.Text = _controller.Translator._("Add Download");
-        MenuExit.Text = _controller.Translator._("Exit");
-        MenuEdit.Title = _controller.Translator._("Edit");
-        MenuHistory.Text = _controller.Translator._("History");
-        MenuKeyring.Text = _controller.Translator._("Keyring");
-        MenuSettings.Text = _controller.Translator._("Settings");
-        MenuHelp.Title = _controller.Translator._("Help");
+        NavItemHome.Content = _controller.Translator._("Home");
+        NavItemDownloads.Content = _controller.Translator._("Downloads");
+        NavItemHistory.Content = _controller.Translator._("History");
+        NavItemKeyring.Content = _controller.Translator._("Keyring");
+        NavItemUpdates.Content = _controller.Translator._("Updating");
+        NavItemHelp.Content = _controller.Translator._("Help");
         MenuCheckForUpdates.Text = _controller.Translator._("Check for Updates");
         MenuGitHubRepo.Text = _controller.Translator._("GitHub Repo");
         MenuReportABug.Text = _controller.Translator._("Report a Bug");
         MenuDiscussions.Text = _controller.Translator._("Discussions");
         MenuAbout.Text = _controller.Translator._("About {0}", _controller.AppInfo.ShortName!);
-        NavItemHome.Content = _controller.Translator._("Home");
-        NavItemDownloads.Content = _controller.Translator._("Downloads");
-        NavItemHistory.Content = _controller.Translator._("History");
-        NavItemKeyring.Content = _controller.Translator._("Keyring");
         NavItemSettings.Content = _controller.Translator._("Settings");
         StatusHome.Title = _controller.Translator._("Download Media");
         StatusHome.Description = _controller.Translator._("Add a video, audio, or playlist URL to start downloading");
         LblHomeAddDownload.Text = _controller.Translator._("Add Download");
         BtnDownloadsAddDownload.Label = _controller.Translator._("Add");
+        TokenDownloadsAll.Content = _controller.Translator._("All");
+        TokenDownloadsDownloading.Content = _controller.Translator._("Downloading");
+        TokenDownloadsQueued.Content = _controller.Translator._("Queued");
+        TokenDownloadsCompleted.Content = _controller.Translator._("Completed");
+        StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
+        StatusNoneDownloads.Description = _controller.Translator._("There are no downloads added");
     }
 
     private async void Window_Loaded(object? sender, RoutedEventArgs e)
     {
+        ViewStackDownloads.SelectedIndex = 0;
         MenuCheckForUpdates.IsEnabled = false;
         var updatesTask = _controller.CheckForUpdatesAsync(false);
         if (_controller.ShowDislcaimerOnStartup)
@@ -183,6 +186,8 @@ public sealed partial class MainWindow : Window
         }
     }
 
+    private void NavItem_Tapped(object sender, TappedRoutedEventArgs e) => FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
+
     private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         if (_notificationClickHandler is not null)
@@ -257,14 +262,6 @@ public sealed partial class MainWindow : Window
 
     private async void AddDownload(object? sender, RoutedEventArgs e) => await AddDownloadAsync(null);
 
-    private void Exit(object? sender, RoutedEventArgs e) => Close();
-
-    private void History(object? sender, RoutedEventArgs e) => NavItemHistory.IsSelected = true;
-
-    private void Keyring(object? sender, RoutedEventArgs e) => NavItemKeyring.IsSelected = true;
-
-    private void Settings(object? sender, RoutedEventArgs e) => NavItemSettings.IsSelected = true;
-
     private async void CheckForUpdates(object? sender, RoutedEventArgs e)
     {
         MenuCheckForUpdates.IsEnabled = false;
@@ -325,14 +322,11 @@ public sealed partial class MainWindow : Window
             if (e.Completed)
             {
                 FlyoutProgress.Hide();
-                BtnProgress.Visibility = Visibility.Collapsed;
-                ToolTipService.SetToolTip(BtnProgress, string.Empty);
+                NavItemUpdates.Visibility = Visibility.Collapsed;
                 return;
             }
             var message = _controller.Translator._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
-            BtnProgress.Visibility = Visibility.Visible;
-            ToolTipService.SetToolTip(BtnProgress, message);
-            IconProgress.Glyph = "\uE896";
+            NavItemUpdates.Visibility = Visibility.Visible;
             StsProgress.Description = message;
             BarProgress.Value = e.Percentage * 100;
         });

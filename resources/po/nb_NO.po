@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 21:17-0500\n"
+"POT-Creation-Date: 2026-01-16 10:20-0500\n"
 "PO-Revision-Date: 2024-12-29 12:01+0000\n"
 "Last-Translator: Brage Fuglseth <brage.fuglseth@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -390,13 +390,13 @@ msgstr "automatisk"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:285
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:282
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "Om appen"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:232
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:237
 msgid "Close"
 msgstr "Lukk"
 
@@ -467,8 +467,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
 msgid "Add Download"
 msgstr "Legg til nedlasting"
 
@@ -706,10 +705,9 @@ msgid "Download"
 msgstr "Last ned"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:34
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
-#, fuzzy
-msgid "Clear All"
-msgstr "Fjern alt"
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
+msgid "History"
+msgstr "Logg"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
 msgid "Sort"
@@ -728,65 +726,53 @@ msgid "Save Length"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:47
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
-msgid "Download Again"
-msgstr "Last ned på nytt"
+#, fuzzy
+msgid "Clear All"
+msgstr "Fjern alt"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:48
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:58
-msgid "Play"
-msgstr "Spill"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
-msgid "Remove"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 msgid "Search..."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:49
 msgid "Please wait..."
 msgstr ""
 
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:50
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:52
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
 #, fuzzy
 msgid "No History"
 msgstr "Logg"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:53
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
 #, fuzzy
 msgid "There are no downloads in your history"
 msgstr "Ved fullføring av alle"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:55
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:53
 msgid "There are no downloads found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:101
 #, fuzzy
 msgid "Clear All History?"
 msgstr "Fjern logg"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:108
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:102
 #, fuzzy
 msgid ""
 "Are you sure you want to clear all download history? This action is "
 "irreversible."
 msgstr "Er du sikker på at du ønsker å slette innloggingen?"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:109
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:103
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr "Slett"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:104
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:107
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
@@ -795,7 +781,7 @@ msgstr "Avbryt"
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
@@ -803,9 +789,13 @@ msgstr "Legg til"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Edit"
 msgstr "Rediger"
+
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
+msgid "Remove"
+msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
@@ -842,8 +832,8 @@ msgid "Enter url here"
 msgstr "Skriv inn nettadresse her"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:90
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:203
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:208
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:214
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "Oppdater"
@@ -858,33 +848,27 @@ msgid ""
 "Are you sure you want to delete this credential? The action is irreversible"
 msgstr "Er du sikker på at du ønsker å slette innloggingen?"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Preview"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:81
-msgid "File"
-msgstr "Fil"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
-msgid "Exit"
-msgstr "Avslutt"
+msgid "Home"
+msgstr "Hjem"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-msgid "History"
-msgstr "Logg"
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
+msgid "Downloads"
+msgstr "Nedlastinger"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
 msgid "Keyring"
 msgstr "Nøkkelring"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
-msgid "Settings"
-msgstr "Innstillinger"
+#, fuzzy
+msgid "Updating"
+msgstr "Oppdater"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Help"
@@ -907,52 +891,74 @@ msgid "Discussions"
 msgstr "Diskusjon"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
-msgid "Home"
-msgstr "Hjem"
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
+msgid "Settings"
+msgstr "Innstillinger"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
-msgid "Downloads"
-msgstr "Nedlastinger"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
 msgid "Download Media"
 msgstr "Last ned lyd og video"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Oppgi adressen til et lydklipp, en video eller en spilleliste for å starte "
 "en nedlasting"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:113
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+msgid "All"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+msgid "Downloading"
+msgstr "Aktive"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+msgid "Queued"
+msgstr "Ventende"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
+msgid "Completed"
+msgstr "Fullført"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:103
+#, fuzzy
+msgid "No Downloads"
+msgstr "Nedlastinger"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
+#, fuzzy
+msgid "There are no downloads added"
+msgstr "Ved fullføring av alle"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:116
 msgid "Don't show this message again"
 msgstr "Ikke vis dette igjen"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:120
 msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:126
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:129
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
 "this application in means that will violate these laws."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:135
 msgid "I understand"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:215
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:220
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:221
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:226
 msgid "Error"
 msgstr "Feil"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:332
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:328
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Aktive"
@@ -1288,6 +1294,22 @@ msgid ""
 "irreversible"
 msgstr "Er du sikker på at du ønsker å slette innloggingen?"
 
+#~ msgid "File"
+#~ msgstr "Fil"
+
+#~ msgid "Exit"
+#~ msgstr "Avslutt"
+
+#~ msgid "Download Again"
+#~ msgstr "Last ned på nytt"
+
+#~ msgid "Play"
+#~ msgstr "Spill"
+
+#, fuzzy
+#~ msgid "Add a download to get started"
+#~ msgstr "Legg til nedlasting for å begynne."
+
 #, fuzzy
 #~ msgid "Arguments"
 #~ msgstr "Ny innlogging"
@@ -1429,15 +1451,6 @@ msgstr "Er du sikker på at du ønsker å slette innloggingen?"
 #, fuzzy
 #~ msgid "Update Available"
 #~ msgstr "Ny oppdatering tilgjengelig"
-
-#~ msgid "Downloading"
-#~ msgstr "Aktive"
-
-#~ msgid "Queued"
-#~ msgstr "Ventende"
-
-#~ msgid "Completed"
-#~ msgstr "Fullført"
 
 #~ msgid "Stop All Downloads"
 #~ msgstr "Stans alle nedlastinger"
@@ -1732,10 +1745,6 @@ msgstr "Er du sikker på at du ønsker å slette innloggingen?"
 #~ msgstr ""
 #~ "Opprett, lagre og rediger innloggingene dine til nettsteder du laster ned "
 #~ "fra."
-
-#, fuzzy
-#~ msgid "Add a credential to get started"
-#~ msgstr "Legg til nedlasting for å begynne."
 
 #, fuzzy
 #~ msgid "Revert File Name"
