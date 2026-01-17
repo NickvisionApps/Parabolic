@@ -22,5 +22,8 @@
 	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
 		<DefineConstants>OS_MAC</DefineConstants>
 	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage" Version="18.3.2" />
+	</ItemGroup>
 
 </Project>
