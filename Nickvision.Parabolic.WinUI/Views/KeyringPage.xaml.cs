@@ -27,17 +27,13 @@ public sealed partial class KeyringPage : Page
         InitializeComponent();
         _controller = controller;
         _credentials = [];
-        BtnAdd.Label = _controller.Translator._("Add");
-        BtnEdit.Label = _controller.Translator._("Edit");
-        BtnRemove.Label = _controller.Translator._("Remove");
-        TxtSerach.PlaceholderText = _controller.Translator._("Search...");
+        LblKeyring.Text = _controller.Translator._("Keyring");
+        LblAdd.Text = _controller.Translator._("Add");
+        TxtSearch.PlaceholderText = _controller.Translator._("Search...");
         StatusNone.Title = _controller.Translator._("No Credentials");
         StatusNone.Description = _controller.Translator._("There are no credentials in your keyring");
         StatusNoneSearch.Title = _controller.Translator._("No Credentials");
         StatusNoneSearch.Description = _controller.Translator._("There are no credentials found with the current filters");
-        MenuAdd.Text = _controller.Translator._("Add");
-        MenuEdit.Text = _controller.Translator._("Edit");
-        MenuRemove.Text = _controller.Translator._("Remove");
         DlgCredential.Title = _controller.Translator._("Credential");
         DlgCredential.CloseButtonText = _controller.Translator._("Cancel");
         TxtCredentialName.Header = _controller.Translator._("Name");
@@ -52,7 +48,7 @@ public sealed partial class KeyringPage : Page
 
     private void Page_Loaded(object sender, RoutedEventArgs e)
     {
-        TxtSerach.Text = string.Empty;
+        TxtSearch.Text = string.Empty;
         _credentials = _controller.Credentials;
         ListCredentials.ItemsSource = _credentials;
         ViewStack.SelectedIndex = _credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
@@ -77,16 +73,12 @@ public sealed partial class KeyringPage : Page
 
     private async void Edit(object sender, RoutedEventArgs e)
     {
-        var selected = ListCredentials.SelectedItem as SelectionItem<Credential>;
-        if (selected is null)
-        {
-            return;
-        }
+        var selected = ((sender as Button)!.Tag as Credential)!;
         TxtCredentialName.IsReadOnly = true;
-        TxtCredentialName.Text = selected.Value.Name;
-        TxtCredentialUrl.Text = selected.Value.Url.ToString();
-        TxtCredentialUsername.Text = selected.Value.Username;
-        TxtCredentialPassword.Password = selected.Value.Password;
+        TxtCredentialName.Text = selected.Name;
+        TxtCredentialUrl.Text = selected.Url.ToString();
+        TxtCredentialUsername.Text = selected.Username;
+        TxtCredentialPassword.Password = selected.Password;
         DlgCredential.PrimaryButtonText = _controller.Translator._("Update");
         DlgCredential.XamlRoot = XamlRoot;
         DlgCredential.RequestedTheme = ActualTheme;
@@ -98,7 +90,7 @@ public sealed partial class KeyringPage : Page
 
     private async void Remove(object sender, RoutedEventArgs e)
     {
-        var selected = (ListCredentials.SelectedItem as SelectionItem<Credential>)!;
+        var selected = ((sender as Button)!.Tag as Credential)!;
         var confirmDialog = new ContentDialog()
         {
             Title = _controller.Translator._("Delete Credential?"),
@@ -116,7 +108,7 @@ public sealed partial class KeyringPage : Page
         }
     }
 
-    private void TxtSerach_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    private void TxtSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
     {
         if (_credentials.Count == 0)
         {
@@ -137,15 +129,4 @@ public sealed partial class KeyringPage : Page
             }
         }
     }
-
-    private void ListCredentials_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var selected = ListCredentials.SelectedItem as SelectionItem<Credential>;
-        BtnEdit.IsEnabled = selected is not null;
-        BtnRemove.IsEnabled = selected is not null;
-        MenuEdit.IsEnabled = selected is not null;
-        MenuRemove.IsEnabled = selected is not null;
-    }
-
-    private void ListCredentials_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e) => Edit(sender, e);
 }

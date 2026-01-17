@@ -68,6 +68,12 @@ public class KeyringPageController
         await _keyringService.RemoveCredentialAsync(credential.Value);
     }
 
+    public async Task RemoveAsync(Credential credential)
+    {
+        Credentials.Remove(Credentials.First(x => x.Value == credential));
+        await _keyringService.RemoveCredentialAsync(credential);
+    }
+
     public async Task UpdateAsync(string name, string url, string username, string password)
     {
         var credential = _keyringService.Credentials.FirstOrDefault(cred => cred.Name == name);
