@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-11-27 16:47-0500\n"
-"PO-Revision-Date: 2025-12-06 15:17+0000\n"
+"PO-Revision-Date: 2026-01-17 17:01+0000\n"
 "Last-Translator: jonnysemon <jonnysemon@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:81
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
@@ -158,15 +158,14 @@ msgid "Unable to download and install update"
 msgstr "تعذّر تنزيل التحديث وتثبيته"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:414
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "تم إسترداد كل الملفات"
-msgstr[1] "تم إسترداد تنزيل واحد"
-msgstr[2] "تم إسترداد تنزيلين"
-msgstr[3] "تم إسترداد بضع تنزيلات"
-msgstr[4] "تم إسترداد الكثير من التنزيلات"
-msgstr[5] "تم إسترداد تنزيلات بالجملة"
+msgstr[0] "استُعد {} تنزيل"
+msgstr[1] "استُعد {} تنزيل"
+msgstr[2] "استُعد {} تنزيل"
+msgstr[3] "استُعد {} تنزيلات"
+msgstr[4] "استُعد {} تنزيل"
+msgstr[5] "استُعد {} تنزيل"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:419
 msgid "Error attempting to recover downloads: {}"
@@ -223,7 +222,7 @@ msgstr "{:.2f} بايت/ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:38
 msgid "Unknown time left"
-msgstr ""
+msgstr "الوقت المتبقي غير معروف"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:51
 msgid "0 seconds"
@@ -232,12 +231,12 @@ msgstr "0 ثوانِ"
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:57
 msgid "{} hour"
 msgid_plural "{} hours"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "{} ساعة"
+msgstr[1] "ساعة"
+msgstr[2] "ساعتان"
+msgstr[3] "{} ساعات"
+msgstr[4] "{} ساعة"
+msgstr[5] "{} ساعة"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:63
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:71
@@ -557,7 +556,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:418
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:91
 msgid "Write M3U Playlist File"
-msgstr ""
+msgstr "كتابة ملف قائمة تشغيل M3U"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:449
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:95
@@ -1047,7 +1046,7 @@ msgstr "استخدم اضافة \"SponsorBlock\" لليوتيوب"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:89
 msgid "Try to remove sponsored segments from videos"
-msgstr "حاول إزالة الجزئيات الإعلانية من الفيديوهات."
+msgstr "حاول إزالة الجزئيات الإعلانية من الفيديوهات"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:190
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:92
@@ -1142,6 +1141,7 @@ msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader"
 msgstr ""
+"مُنزّل بديل قد يكون أسرع في بعض المناطق مقارنة بالمُنزّل الأصلي لـ yt-dlp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:269
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:113
@@ -1273,9 +1273,8 @@ msgstr "مسارات مابعد المعالجة"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:435
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:272
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:361
-#, fuzzy
 msgid "Executable"
-msgstr "ممكن"
+msgstr "قابل للتنفيذ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:439
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:257
@@ -1309,9 +1308,8 @@ msgstr "جاري المعالجة"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:89
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:115
-#, fuzzy
 msgid "{} • {}"
-msgstr "{} | {} | الوقت المُقدّر: {}"
+msgstr "{} • {}"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:110
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:39
@@ -1353,9 +1351,8 @@ msgid "Running"
 msgstr "جاري التشغيل"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:202
-#, fuzzy
 msgid "Log copied to clipboard"
-msgstr "نُسخ سجل التنزيل إلى الحافظة."
+msgstr "نُسخ السجل إلى الحافظة"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:45
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:20
@@ -1505,9 +1502,8 @@ msgstr "فهمت"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:222
-#, fuzzy
 msgid "Recover Crashed Downloads?"
-msgstr "استعادة التنزيلات المعطلة"
+msgstr "استعادة التنزيلات المعطلة؟"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:223
@@ -1515,11 +1511,13 @@ msgid ""
 "There are downloads available to recover from when Parabolic crashed. "
 "Parabolic will try to download them again."
 msgstr ""
+"توجد تنزيلات متاحة للاستعادة عندما تعطل Parabolic. ستحاول Parabolic تنزيلها "
+"مرة أخرى."
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:170
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:224
 msgid "Recover"
-msgstr ""
+msgstr "استعد"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
 msgid "Exit?"
@@ -1527,9 +1525,8 @@ msgstr "خروج؟"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:195
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:246
-#, fuzzy
 msgid "There are downloads in progress. Exiting will stop all downloads."
-msgstr "هناك عمليات تنزيل جارية. هل أنت متأكد من أنك تريد الخروج؟"
+msgstr "هناك تنزيلات قيد التقدم. سيؤدي الخروج إلى إيقاف جميع التنزيلات."
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:247
@@ -1541,25 +1538,22 @@ msgid "Ok"
 msgstr "حسنًا"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:247
-#, fuzzy
 msgid "An update is available"
-msgstr "تحديث جديد متاح"
+msgstr "يتوفر تحديث"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:336
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:369
-#, fuzzy
 msgid "{} version {} is available to download and install"
-msgstr "تعذّر تنزيل التحديث وتثبيته"
+msgstr "الإصدار {} من {} متاح للتنزيل والتثبيت"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:256
 msgid "Manage"
-msgstr ""
+msgstr "أدر"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
-#, fuzzy
 msgid "Update completed successfully"
-msgstr "امحُ التنزيلات المكتملة"
+msgstr "اكتمل التحديث بنجاح"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:364
 msgid "Download Again"
@@ -1573,24 +1567,21 @@ msgstr "مستودع \"GitHub\""
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:197
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:473
 msgid "No Arguments"
-msgstr ""
+msgstr "لا معطيات"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:232
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:422
-#, fuzzy
 msgid "Delete Argument?"
-msgstr "حذف بيانات الاعتماد؟"
+msgstr "حذف المعطيات؟"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:232
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:423
-#, fuzzy
 msgid "Are you sure you want to delete this argument?"
-msgstr "هل أنت متأكد أنك تريد حذف هذه البيانات؟"
+msgstr "أمتأكد أنك تريد حذف هذه المعطية؟"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:281
-#, fuzzy
 msgid "Args (Empty)"
-msgstr "الاسم (فارغ)"
+msgstr "المعطيات (فارغ)"
 
 #: org.nickvision.tubeconverter.winui/Controls/DownloadRow.xaml.cpp:29
 msgid "Show Log"
@@ -1640,9 +1631,8 @@ msgstr "أدخل رابط الوسائط هنا"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:133
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:136
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:140
-#, fuzzy
 msgid "On"
-msgstr "افتح"
+msgstr "مفعّل"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:53
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:76
@@ -1669,7 +1659,7 @@ msgstr "افتح"
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:137
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:141
 msgid "Off"
-msgstr ""
+msgstr "معطّل"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:56
 #: org.nickvision.tubeconverter.winui/Views/CredentialDialog.xaml.cpp:30
@@ -1705,9 +1695,8 @@ msgid "Split Video by Chapters"
 msgstr "تقسيم الفيديو حسب الفصول"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:136
-#, fuzzy
 msgid "Use manual credentials"
-msgstr "استخدم بيانات التحقق بشكل يدوي"
+msgstr "استخدم بيانات الاعتماد اليدوية"
 
 #: org.nickvision.tubeconverter.winui/Views/AddDownloadDialog.xaml.cpp:412
 msgid "Items ({})"
@@ -1742,7 +1731,6 @@ msgstr "أدخل الاسم هنا"
 
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:48
 #: org.nickvision.tubeconverter.winui/Views/KeyringPage.xaml.cpp:164
-#, fuzzy
 msgid "Enter url here"
 msgstr "أدخل الرابط هنا"
 
@@ -1783,12 +1771,11 @@ msgstr "حذف بيانات الاعتماد"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:102
 msgid "Preview"
-msgstr ""
+msgstr "معاينة"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:103
-#, fuzzy
 msgid "Search"
-msgstr "يبحث..."
+msgstr "ابحث"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:112
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:26
@@ -1796,9 +1783,8 @@ msgid "Settings"
 msgstr "الإعدادات"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:115
-#, fuzzy
 msgid "Start"
-msgstr "البداية"
+msgstr "ابدأ"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:117
 msgid "Documentation"
@@ -1814,44 +1800,40 @@ msgstr "النقاشات"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:143
 msgid "You're up to date"
-msgstr ""
+msgstr "أنت محدث بالكامل"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:144
 msgid ""
 "We will let you know once app or yt-dlp updates are available to install"
-msgstr ""
+msgstr "سنخبرك بمجرد توفر تحديثات للتطبيق أو yt-dlp للتنزيل"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:145
-#, fuzzy
 msgid "There is an update available"
-msgstr "تحديث جديد متاح"
+msgstr "هناك تحديث متاح"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:147
-#, fuzzy
 msgid "Downloading the update"
-msgstr "جارٍ التنزيل"
+msgstr "جارِ تنزيل التحديث"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:148
-#, fuzzy
 msgid "Options"
-msgstr "خيارات متقدمة"
+msgstr "خيارات"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:149
 msgid "Receive Beta App Updates"
-msgstr ""
+msgstr "استقبل تحديثات تطبيق تجريبي"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:150
 msgid "Check for pre-release (beta) versions of {}"
-msgstr ""
+msgstr "تحقق من الإصدارات التجريبية (بيتا) لـ {}"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:153
 msgid "Changelog"
 msgstr "سجل التغييرات"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:154
-#, fuzzy
 msgid "Version {}"
-msgstr "الإصدار: {0}"
+msgstr "الإصدار {}"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:156
 msgid "Copy Debug Information"
@@ -1859,18 +1841,16 @@ msgstr "نسخ معلومات التصحيح"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:346
 msgid "The installer will start once the download is complete"
-msgstr ""
+msgstr "سيبدأ المُثبّت بمجرد اكتمال التنزيل"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:347
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:380
-#, fuzzy
 msgid "Downloading {}%"
-msgstr "جارٍ التنزيل ({})"
+msgstr "يُنزل {}%"
 
 #: org.nickvision.tubeconverter.winui/Views/MainWindow.xaml.cpp:670
-#, fuzzy
 msgid "Debug information copied to clipboard"
-msgstr "نُسخ سجل التنزيل إلى الحافظة."
+msgstr "نُسخ معلومات تصحيح العلل إلى الحافظة"
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:32
 msgid "Light"
@@ -1881,7 +1861,6 @@ msgid "Dark"
 msgstr "داكن"
 
 #: org.nickvision.tubeconverter.winui/Views/SettingsPage.xaml.cpp:49
-#, fuzzy
 msgid "Max Number of Active Downloads"
 msgstr "أقصى عدد للتنزيلات النشطة"
 
