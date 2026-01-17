@@ -1,97 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="ar">
-<info>
-	<link type="guide" xref="index"/>
-	<title type="link">التنزيلات 🌐</title>
-	<credit type="author copyright">
-            <name>نيكولاس لوجوزو</name>
-            <years its:translate="no">2023-2025</years>
-	</credit>
-	<credit type="publisher copyright">
-            <name>نيكولاس لوجوزو</name>
-            <years its:translate="no">2023-2025</years>
-	</credit>
-	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Yousef mohamed</mal:name>
-      <mal:email>oandygames.ygames+weblate@gmail.com</mal:email>
-      <mal:years>2025</mal:years>
-    </mal:credit>
-  </info>
-
-<title>التنزيلات</title>
-<p>توضح هذه الصفحة جميع الخيارات لإعداد التنزيلات في التفضيلات داخل تطبيق <app>Parabolic</app>.</p>
-
-
-<terms>
-    <item>
-        <title>الحد الأقصى لعدد التنزيلات النشطة</title>
-        <p>The number of downloads allowed to be running at a time. Must be an integer value between 1 and 10.</p>
-        <p>إذا وصل عدد التحميلات النشطة للحد الأقصى، بيحط تطبيق Parabolic التحميلات الجديدة في قائمة الانتظار لين يصير فيه مجال لتحميلات جديدة تشتغل.</p>
-        <note style="advanced">
-            <p>الأفتراضي: 5</p>
-        </note>
-    </item>
-    <item>
-        <title>أُكتُب فوق الملفات الموجودة</title>
-        <p>Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
-        <note>
-            <p>تطبيق Parabolic بيكشف التحميلات اللي لازم تُستأنف، وبيتجاوز هالإعداد إذا كان يسترجع أو يحاول يعيد تحميلات فشلت</p>
-        </note>
-        <note style="advanced">
-            <p>الإفتراضي: مفعل</p>
-        </note>
-    </item>
-    <item>
-        <title>تحديد عدد أحرف اسم الملف</title>
-        <p>Parabolic will restrict characters in filenames to those supported only by Windows.</p>
-        <p>هذا الخيار متوفر فقط لنسخة لينكس.</p>
-        <note style="advanced">
-            <p>الافتراضي: إيقاف</p>
-        </note>
-    </item>
-    <item>
-        <title>معرف الوسائط مضمن في العنوان بعد التحقق</title>
-        <p>(بارا-بوليك) سيُرفق معرّف الملف المرئي في تسميتها الإفتراضية.</p>
-        <note style="advanced">
-            <p>الإفتراضي: مفعل</p>
-        </note>
-    </item>
-    <item>
-        <title>يتضمن ترجمة تم انشائها تلقائياً</title>
-        <p>(بارا-بوليك) سيُظهر الترجمة التلقائية للتحميل، فوق الترجمات المتاحة.</p>
-        <note style="advanced">
-            <p>الإفتراضي: مفعل</p>
-        </note>
-    </item>
-    <item>
-        <title>تفضيل ترميز المقطع</title>
-        <p>ترميز المقطع الذي يُفضِّلُه (بارا-بوليك) أثناء نحليل صيغ المرئيات للتحميل.</p>
-        <note>
-            <p>إن لم يجد بارابوليك أي صيغة بالترميز المحدد الذي إخترتَه، لن يكون هناك صيغة مقطع متوفرة للتنزيل.</p>
-        </note>
-        <note style="advanced">
-            <p>القيمة الافتراضية: أي شيء</p>
-        </note>
-    </item>
-    <item>
-        <title>ترميز الصوت المفضل</title>
-        <p>ترميز الصوت الذي يُفضِّلُه (بارا-بوليك) أثناء نحليل صيغ المرئيات للتحميل.</p>
-        <note>
-            <p>لو بارابوليك ملقاش صيخ ترميز الفيديو المفضلة, لن تتوفر أي صيغ صوتية للتنزيل.</p>
-        </note>
-        <note style="advanced">
-            <p>القيمة الافتراضية: أي شيء</p>
-        </note>
-    </item>
-    <item>
-        <title>تفضيل صيغة الترجمة</title>
-        <p>صيغة الملف الذي يضمنه (بارا-بوليك) بتحميل كل الترجمات.</p>
-        <note style="advanced">
-            <p>القيمة الافتراضية: أي شيء</p>
-        </note>
-    </item>
-</terms>
-</page>
