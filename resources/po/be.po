@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-17 17:11-0500\n"
+"POT-Creation-Date: 2026-01-18 09:25-0500\n"
 "PO-Revision-Date: 2026-01-06 08:01+0000\n"
 "Last-Translator: Pavel Miniutka <pavel.miniutka@gmail.com>\n"
 "Language-Team: Belarusian <https://hosted.weblate.org/projects/nickvision-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.15.1\n"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:46
@@ -347,10 +347,6 @@ msgstr "ПАМЫЛКА: файл ужо існуе, а перазапісван�
 msgid "Starting download..."
 msgstr "Пачатак спампоўвання..."
 
-#: Nickvision.Parabolic.Shared/Models/Format.cs:240
-msgid "Audio Description"
-msgstr "Апісанне аўдыя"
-
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
 msgid "{0:0.00} GiB"
@@ -388,13 +384,13 @@ msgstr "Аўтаматычна згенерыраваныя"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:257
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:254
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "Аб праграме"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:212
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
 msgid "Close"
 msgstr "Закрыць"
 
@@ -773,7 +769,7 @@ msgstr "Бірулька"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:64
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
@@ -811,8 +807,8 @@ msgid "Enter url here"
 msgstr "Увядзіце тут URL-адрас"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:183
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:189
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:180
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:186
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "Абнавіць"
@@ -836,6 +832,7 @@ msgid "Home"
 msgstr "Галоўная"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Спампоўванні"
@@ -878,40 +875,24 @@ msgstr "Спампоўвайце медыя"
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Дадайце URL-адрас відэа, аўдыя або плэй-ліста, каб пачаць спампоўванне"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
-msgid "All"
-msgstr ""
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
-msgid "Downloading"
-msgstr "Спампоўваюцца"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
-msgid "Queued"
-msgstr "У чарзе"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
-msgid "Completed"
-msgstr "Завершаныя"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 #, fuzzy
 msgid "No Downloads"
 msgstr "Спампоўванні"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
 msgid "There are no downloads added"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Don't show this message again"
 msgstr "Больш не паказваць гэта паведамленне"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Legal Copyright Disclaimer"
 msgstr "Юрыдычная адмова ад адказнасці за аўтарскія правы"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -921,19 +902,19 @@ msgstr ""
 "не падтрымліваюць і не нясуць адказнасці за выкарыстанне гэтай праграмы "
 "спосабамі, якія парушаюць гэтыя законы."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:107
 msgid "I understand"
 msgstr "Я разумею"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:195
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:192
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:198
 msgid "Error"
 msgstr "Памылка"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:303
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:300
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Ідзе спампоўванне абнаўлення"
@@ -1270,6 +1251,18 @@ msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
 "irreversible"
 msgstr "Вы ўпэўнены, што хочаце выдаліць гэты аргумент?"
+
+#~ msgid "Audio Description"
+#~ msgstr "Апісанне аўдыя"
+
+#~ msgid "Downloading"
+#~ msgstr "Спампоўваюцца"
+
+#~ msgid "Queued"
+#~ msgstr "У чарзе"
+
+#~ msgid "Completed"
+#~ msgstr "Завершаныя"
 
 #~ msgid "Edit"
 #~ msgstr "Рэдагаваць"

@@ -70,11 +70,8 @@ public sealed partial class MainWindow : Window
         StatusHome.Title = _controller.Translator._("Download Media");
         StatusHome.Description = _controller.Translator._("Add a video, audio, or playlist URL to start downloading");
         LblHomeAddDownload.Text = _controller.Translator._("Add Download");
-        BtnDownloadsAddDownload.Label = _controller.Translator._("Add");
-        TokenDownloadsAll.Content = _controller.Translator._("All");
-        TokenDownloadsDownloading.Content = _controller.Translator._("Downloading");
-        TokenDownloadsQueued.Content = _controller.Translator._("Queued");
-        TokenDownloadsCompleted.Content = _controller.Translator._("Completed");
+        LblDownloads.Text = _controller.Translator._("Downloads");
+        LblDownloadsAddDownload.Text = _controller.Translator._("Add");
         StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
         StatusNoneDownloads.Description = _controller.Translator._("There are no downloads added");
     }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-17 17:11-0500\n"
+"POT-Creation-Date: 2026-01-18 09:25-0500\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -349,10 +349,6 @@ msgstr "오류: 파일이 이미 존재하며 덮어쓰기가 비활성화되어
 msgid "Starting download..."
 msgstr "다운로드 시작 중..."
 
-#: Nickvision.Parabolic.Shared/Models/Format.cs:240
-msgid "Audio Description"
-msgstr "오디오 설명"
-
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
 msgid "{0:0.00} GiB"
@@ -390,13 +386,13 @@ msgstr "자동 생성됨"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:257
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:254
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "정보"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:212
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
 msgid "Close"
 msgstr "닫기"
 
@@ -785,7 +781,7 @@ msgstr "암호 저장소"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:64
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
@@ -826,8 +822,8 @@ msgid "Enter url here"
 msgstr "여기에 URL을 입력하세요"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:183
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:189
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:180
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:186
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "업데이트"
@@ -851,6 +847,7 @@ msgid "Home"
 msgstr "홈"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "다운로드"
@@ -893,60 +890,44 @@ msgstr "미디어 다운로드"
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "다운로드를 시작하려면 비디오, 오디오 또는 재생 목록 URL을 추가하세요"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
-msgid "All"
-msgstr ""
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
-msgid "Downloading"
-msgstr "다운로드 중"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
-msgid "Queued"
-msgstr "대기 중"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
-msgid "Completed"
-msgstr "완료됨"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 #, fuzzy
 msgid "No Downloads"
 msgstr "다운로드"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
 #, fuzzy
 msgid "There are no downloads added"
 msgstr "모든 다운로드가 완료되면"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Don't show this message again"
 msgstr "이 메시지를 다시 표시하지 않음"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
 "this application in means that will violate these laws."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:107
 msgid "I understand"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:195
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:192
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:198
 msgid "Error"
 msgstr "오류"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:303
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:300
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "다운로드 중"
@@ -1283,6 +1264,18 @@ msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
 "irreversible"
 msgstr "이 자격 증명을 삭제하시겠습니까?"
+
+#~ msgid "Audio Description"
+#~ msgstr "오디오 설명"
+
+#~ msgid "Downloading"
+#~ msgstr "다운로드 중"
+
+#~ msgid "Queued"
+#~ msgstr "대기 중"
+
+#~ msgid "Completed"
+#~ msgstr "완료됨"
 
 #~ msgid "Edit"
 #~ msgstr "편집"

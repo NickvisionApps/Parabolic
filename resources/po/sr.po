@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-17 17:11-0500\n"
+"POT-Creation-Date: 2026-01-18 09:25-0500\n"
 "PO-Revision-Date: 2025-12-19 14:00+0000\n"
 "Last-Translator: Naomi <webmaster@compactbunker.org>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.15.1\n"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:46
@@ -347,10 +347,6 @@ msgstr "ГРЕШКА: Датотека већ постоји и замењива
 msgid "Starting download..."
 msgstr "Преузимање започето…"
 
-#: Nickvision.Parabolic.Shared/Models/Format.cs:240
-msgid "Audio Description"
-msgstr "Аудио опис"
-
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
 msgid "{0:0.00} GiB"
@@ -388,13 +384,13 @@ msgstr "Ауто-генерисано"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:257
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:254
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "О програму"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:212
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
 msgid "Close"
 msgstr "Затвори"
 
@@ -784,7 +780,7 @@ msgstr "Акредитиви"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:64
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
@@ -824,8 +820,8 @@ msgid "Enter url here"
 msgstr "Унесите URL овде"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:183
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:189
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:180
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:186
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "Ажурирај"
@@ -849,6 +845,7 @@ msgid "Home"
 msgstr "Почетак"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Преузето"
@@ -891,41 +888,25 @@ msgstr "Преузми медију"
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Додај видео, аудио, или УРЛ листе да започнеш преузимање"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
-msgid "All"
-msgstr ""
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
-msgid "Downloading"
-msgstr "Преузимања"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
-msgid "Queued"
-msgstr "Следеће"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
-msgid "Completed"
-msgstr "Завршено"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 #, fuzzy
 msgid "No Downloads"
 msgstr "Преузето"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
 #, fuzzy
 msgid "There are no downloads added"
 msgstr "Кад се заврше сва преузимања"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Don't show this message again"
 msgstr "Не показуј ову поруку опет"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Legal Copyright Disclaimer"
 msgstr "Одрицање од одговорности за ауторска права"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -935,19 +916,19 @@ msgstr ""
 "Аутори Parabolic-а не подржавају и нису одговорни за коришћење ове "
 "апликације на начин који крши ове законе."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:107
 msgid "I understand"
 msgstr "Разумем"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:195
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:192
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:198
 msgid "Error"
 msgstr "Грешка"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:303
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:300
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Преузимање ажурирања"
@@ -1285,6 +1266,18 @@ msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
 "irreversible"
 msgstr "Да ли сте сигурни да желите да избришете овај акредитив?"
+
+#~ msgid "Audio Description"
+#~ msgstr "Аудио опис"
+
+#~ msgid "Downloading"
+#~ msgstr "Преузимања"
+
+#~ msgid "Queued"
+#~ msgstr "Следеће"
+
+#~ msgid "Completed"
+#~ msgstr "Завршено"
 
 #~ msgid "Edit"
 #~ msgstr "Измени"

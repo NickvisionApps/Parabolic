@@ -150,14 +150,16 @@
                         </nickvision:StatusPage.Child>
                     </nickvision:StatusPage>
 
-                    <Grid>
+                    <Grid RowSpacing="12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0">
+                        <TextBlock x:Name="LblDownloads" Grid.Row="0" Margin="24,24,0,0" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+
+                        <Grid Grid.Row="1" Margin="24,0,24,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
@@ -166,61 +168,28 @@
 
                             <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
                                 <CommandBar.PrimaryCommands>
-                                    <AppBarButton x:Name="BtnDownloadsAddDownload" Click="AddDownload">
-                                        <AppBarButton.Icon>
-                                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
-                                        </AppBarButton.Icon>
-                                    </AppBarButton>
+
                                 </CommandBar.PrimaryCommands>
                             </CommandBar>
+
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
+                                <Button x:Name="BtnDownloadsAddDownload" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;" FontSize="18"/>
+
+                                            <TextBlock x:Name="LblDownloadsAddDownload"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
                         </Grid>
 
-                        <MenuFlyoutSeparator Grid.Row="1"/>
-
-                        <nickvision:ViewStack x:Name="ViewStackDownloads" Grid.Row="2">
+                        <nickvision:ViewStack x:Name="ViewStackDownloads" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <nickvision:ViewStack.Pages>
                                 <nickvision:StatusPage x:Name="StatusNoneDownloads" Glyph="&#xE896;"/>
-
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-
-                                    <community:TokenView x:Name="TokenDownloads" Grid.Row="0" Margin="12,12,0,0" SelectionMode="Single">
-                                        <community:TokenItem x:Name="TokenDownloadsAll" IsSelected="True">
-                                            <community:TokenItem.Icon>
-                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
-                                            </community:TokenItem.Icon>
-                                        </community:TokenItem>
-
-                                        <community:TokenItem x:Name="TokenDownloadsDownloading">
-                                            <community:TokenItem.Icon>
-                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xEBD3;"/>
-                                            </community:TokenItem.Icon>
-                                        </community:TokenItem>
-
-                                        <community:TokenItem x:Name="TokenDownloadsQueued">
-                                            <community:TokenItem.Icon>
-                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xF0E3;"/>
-                                            </community:TokenItem.Icon>
-                                        </community:TokenItem>
-
-                                        <community:TokenItem x:Name="TokenDownloadsCompleted">
-                                            <community:TokenItem.Icon>
-                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE73E;"/>
-                                            </community:TokenItem.Icon>
-                                        </community:TokenItem>
-                                    </community:TokenView>
-
-                                    <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
-                                        <ListView x:Name="ListDownloads"/>
-                                    </ScrollViewer>
-                                </Grid>
                             </nickvision:ViewStack.Pages>
                         </nickvision:ViewStack>
-
-                        
                     </Grid>
 
                     <Frame x:Name="FrameCustom"/>

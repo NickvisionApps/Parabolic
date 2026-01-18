@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-17 17:11-0500\n"
+"POT-Creation-Date: 2026-01-18 09:25-0500\n"
 "PO-Revision-Date: 2025-11-14 21:01+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -346,10 +346,6 @@ msgstr "VIGA: See fail on juba olemas ja ülekirjutamine on keelatud."
 msgid "Starting download..."
 msgstr "Alustame allalaadimist…"
 
-#: Nickvision.Parabolic.Shared/Models/Format.cs:240
-msgid "Audio Description"
-msgstr "Heliriba kirjeldus"
-
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
 msgid "{0:0.00} GiB"
@@ -387,13 +383,13 @@ msgstr "Loodud automaatselt"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:257
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:254
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "Rakenduse teave"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:212
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
 msgid "Close"
 msgstr "Sulge"
 
@@ -782,7 +778,7 @@ msgstr "Võtmerõngas"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:64
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
@@ -821,8 +817,8 @@ msgid "Enter url here"
 msgstr "Sisesta võrguaadress siia"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:183
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:189
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:180
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:186
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "Uuenda"
@@ -846,6 +842,7 @@ msgid "Home"
 msgstr "Avavaade"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Allalaadimised"
@@ -890,41 +887,25 @@ msgstr ""
 "Allalaadimise alustamiseks lisa video, helifaili või esitusloendi "
 "võrguaadress"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
-msgid "All"
-msgstr ""
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
-msgid "Downloading"
-msgstr "Laadime alla"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
-msgid "Queued"
-msgstr "Lisatud järjekorda"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
-msgid "Completed"
-msgstr "Valmis"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 #, fuzzy
 msgid "No Downloads"
 msgstr "Allalaadimised"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
 #, fuzzy
 msgid "There are no downloads added"
 msgstr "Kui kõik allalaadimised on lõppenud"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 msgid "Don't show this message again"
 msgstr "Ära näita seda sõnumit uuesti"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Legal Copyright Disclaimer"
 msgstr "Autoriõigustega seotud lahtiütlus vastutusest"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -934,19 +915,19 @@ msgstr ""
 "Parabolicu autorid ei soosi seda, ega ole vastutavad, kui seda rakendust "
 "kasutatakse nende seaduste rikkumisel."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:110
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:107
 msgid "I understand"
 msgstr "Ma saan sellest aru"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:195
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:192
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:198
 msgid "Error"
 msgstr "Viga"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:303
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:300
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Laadin uuendust alla"
@@ -1283,6 +1264,18 @@ msgid ""
 "Are you sure you want to delete this post-processor argument? The action is "
 "irreversible"
 msgstr "Kas oled kindel, et soovid need tuvastusandmed kustutada?"
+
+#~ msgid "Audio Description"
+#~ msgstr "Heliriba kirjeldus"
+
+#~ msgid "Downloading"
+#~ msgstr "Laadime alla"
+
+#~ msgid "Queued"
+#~ msgstr "Lisatud järjekorda"
+
+#~ msgid "Completed"
+#~ msgstr "Valmis"
 
 #~ msgid "Edit"
 #~ msgstr "Muuda"
