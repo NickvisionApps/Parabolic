@@ -277,13 +277,3 @@ cmake --build .
 This project follows the [**GNOME Code of Conduct**](https://conduct.gnome.org/).
 
 We expect all participants to treat each other with respect and contribute to a welcoming and inclusive community.
-
----
-
-<div align="center">
-
-**Made with ❤️ by the Nickvision community**
-
-⭐ If you like Parabolic, consider giving the repository a star!
-
-</div>
