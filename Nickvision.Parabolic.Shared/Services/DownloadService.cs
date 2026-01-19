@@ -211,6 +211,7 @@ public class DownloadService : IDisposable, IDownloadService
             download.Dispose();
             _downloading.Remove(id);
             _queued.Remove(id);
+            _completed.Add(id, download);
             await _recoveryService.RemoveAsync(id);
             DownloadStopped?.Invoke(this, new DownloadEventArgs(id));
             return true;
@@ -227,6 +228,7 @@ public class DownloadService : IDisposable, IDownloadService
             pair.Value.Completed -= Download_Completed;
             pair.Value.ProgressChanged -= Download_ProgressChanged;
             pair.Value.Dispose();
+            _completed.Add(pair.Key, pair.Value);
             DownloadStopped?.Invoke(this, new DownloadEventArgs(pair.Key));
         }
         foreach (var pair in _queued)
@@ -235,6 +237,7 @@ public class DownloadService : IDisposable, IDownloadService
             pair.Value.Completed -= Download_Completed;
             pair.Value.ProgressChanged -= Download_ProgressChanged;
             pair.Value.Dispose();
+            _completed.Add(pair.Key, pair.Value);
             DownloadStopped?.Invoke(this, new DownloadEventArgs(pair.Key));
         }
         _downloading.Clear();

@@ -149,6 +149,10 @@
 
                                     <TextBlock x:Name="LblHomeAddDownload"/>
                                 </StackPanel>
+
+                                <Button.KeyboardAccelerators>
+                                    <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                                </Button.KeyboardAccelerators>
                             </Button>
                         </nickvision:StatusPage.Child>
                     </nickvision:StatusPage>
@@ -196,15 +200,55 @@
                             </community:TokenView>
 
                             <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
-                                <Button x:Name="BtnDownloadsAddDownload" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;" FontSize="18"/>
+                                <Button Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;" FontSize="18"/>
 
-                                            <TextBlock x:Name="LblDownloadsAddDownload"/>
-                                        </StackPanel>
-                                    </Button.Content>
+                                        <TextBlock x:Name="LblDownloadsAddDownload"/>
+                                    </StackPanel>
+
+                                    <Button.KeyboardAccelerators>
+                                        <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                                    </Button.KeyboardAccelerators>
                                 </Button>
+
+                                <CommandBar DefaultLabelPosition="Right">
+                                    <CommandBar.SecondaryCommands>
+                                        <AppBarButton x:Name="BtnStopAllRemaining" Click="StopAllRemaining">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE71A;"/>
+                                            </AppBarButton.Icon>
+
+                                            <AppBarButton.KeyboardAccelerators>
+                                                <KeyboardAccelerator Modifiers="Control,Shift" Key="S"/>
+                                            </AppBarButton.KeyboardAccelerators>
+                                        </AppBarButton>
+
+                                        <AppBarButton x:Name="BtnRetryAllFailed" Click="RetryAllFailed">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE72C;"/>
+                                            </AppBarButton.Icon>
+
+                                            <AppBarButton.KeyboardAccelerators>
+                                                <KeyboardAccelerator Modifiers="Control,Shift" Key="R"/>
+                                            </AppBarButton.KeyboardAccelerators>
+                                        </AppBarButton>
+
+                                        <AppBarSeparator/>
+
+                                        <AppBarButton x:Name="BtnClearAllQueued" Click="ClearAllQueued">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE894;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+
+                                        <AppBarButton x:Name="BtnClearAllCompleted" Click="ClearAllCompleted">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE894;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+                                    </CommandBar.SecondaryCommands>
+                                </CommandBar>
                             </StackPanel>
                         </Grid>
 

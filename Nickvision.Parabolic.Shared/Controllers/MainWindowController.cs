@@ -9,6 +9,7 @@ using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -252,6 +253,10 @@ public class MainWindowController : IDisposable
         }
     }
 
+    public IEnumerable<int> ClearCompletedDownloads() => _services.Get<IDownloadService>()!.ClearCompleted();
+
+    public IEnumerable<int> ClearQueuedDownloads() => _services.Get<IDownloadService>()!.ClearQueued();
+
     public async Task<string> GetDebugInformationAsync(string extraInformation = "")
     {
         var ytdlpVersion = await _services.Get<IYtdlpExecutableService>()!.GetExecutableVersionAsync();
@@ -268,9 +273,13 @@ public class MainWindowController : IDisposable
 
     public bool ResumeDownload(int id) => _services.Get<IDownloadService>()!.Resume(id);
 
-    public Task<bool> RetryDownloadAsync(int id) => _services.Get<IDownloadService>()!.RetryAsync(id);
+    public async Task RetryFailedDownloadsAsync() => await _services.Get<IDownloadService>()!.RetryFailedAsync();
 
-    public Task<bool> StopDownloadAsync(int id) => _services.Get<IDownloadService>()!.StopAsync(id);
+    public async Task<bool> RetryDownloadAsync(int id) => await _services.Get<IDownloadService>()!.RetryAsync(id);
+
+    public async Task StopAllDownloadsAsync() => await _services.Get<IDownloadService>()!.StopAllAsync();
+
+    public async Task<bool> StopDownloadAsync(int id) => await _services.Get<IDownloadService>()!.StopAsync(id);
 
 #if OS_WINDOWS
     public async Task WindowsUpdateAsync(IProgress<DownloadProgress> progress)

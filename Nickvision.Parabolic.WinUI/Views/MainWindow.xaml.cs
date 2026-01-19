@@ -83,12 +83,16 @@ public sealed partial class MainWindow : Window
         LblHomeAddDownload.Text = _controller.Translator._("Add Download");
         LblDownloads.Text = _controller.Translator._("Downloads");
         LblDownloadsAddDownload.Text = _controller.Translator._("Add");
-        StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
-        StatusNoneDownloads.Description = _controller.Translator._("There are no downloads of this type");
         FilterAll.Content = _controller.Translator._("All");
         FilterRunning.Content = _controller.Translator._("Running");
         FilterQueued.Content = _controller.Translator._("Queued");
         FilterCompleted.Content = _controller.Translator._("Completed");
+        BtnStopAllRemaining.Label = _controller.Translator._("Stop All Remaining");
+        BtnRetryAllFailed.Label = _controller.Translator._("Retry All Failed");
+        BtnClearAllQueued.Label = _controller.Translator._("Clear All Queued");
+        BtnClearAllCompleted.Label = _controller.Translator._("Clear All Completed");
+        StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
+        StatusNoneDownloads.Description = _controller.Translator._("There are no downloads of this type");
     }
 
     private async void Window_Loaded(object? sender, RoutedEventArgs e)
@@ -345,21 +349,6 @@ public sealed partial class MainWindow : Window
         });
     }
 
-    private async void AddDownload(object? sender, RoutedEventArgs e) => await AddDownloadAsync(null);
-
-    private async void CheckForUpdates(object? sender, RoutedEventArgs e)
-    {
-        MenuCheckForUpdates.IsEnabled = false;
-        await _controller.CheckForUpdatesAsync(true);
-        MenuCheckForUpdates.IsEnabled = true;
-    }
-
-    private async void GitHubRepo(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.SourceRepository);
-
-    private async void ReportABug(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.IssueTracker);
-
-    private async void Discussions(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.DiscussionsForum);
-
     private async void About(object? sender, RoutedEventArgs e)
     {
         var progressDialog = new ContentDialog()
@@ -381,6 +370,43 @@ public sealed partial class MainWindow : Window
         progressDialog.Hide();
         await aboutDialog.ShowAsync();
     }
+
+    private async void AddDownload(object? sender, RoutedEventArgs e) => await AddDownloadAsync(null);
+
+    private async void CheckForUpdates(object? sender, RoutedEventArgs e)
+    {
+        MenuCheckForUpdates.IsEnabled = false;
+        await _controller.CheckForUpdatesAsync(true);
+        MenuCheckForUpdates.IsEnabled = true;
+    }
+
+    private void ClearAllCompleted(object? sender, RoutedEventArgs e)
+    {
+        foreach(var id in _controller.ClearCompletedDownloads())
+        {
+            _downloadRows.Remove(id);
+        }
+        UpdateDownloadsList();
+    }
+
+    private void ClearAllQueued(object? sender, RoutedEventArgs e)
+    {
+        foreach (var id in _controller.ClearQueuedDownloads())
+        {
+            _downloadRows.Remove(id);
+        }
+        UpdateDownloadsList();
+    }
+
+    private async void Discussions(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.DiscussionsForum);
+
+    private async void GitHubRepo(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.SourceRepository);
+
+    private async void ReportABug(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.IssueTracker);
+
+    private async void RetryAllFailed(object? sender, RoutedEventArgs e) => await _controller.RetryFailedDownloadsAsync();
+
+    private async void StopAllRemaining(object? sender, RoutedEventArgs e) => await _controller.StopAllDownloadsAsync();
 
     private async void WindowsUpdate(object? sender, RoutedEventArgs e)
     {
