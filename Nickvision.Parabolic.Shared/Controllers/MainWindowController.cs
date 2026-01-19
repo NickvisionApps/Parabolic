@@ -160,6 +160,8 @@ public class MainWindowController : IDisposable
 
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IHistoryService>()!);
 
+    public int RemainingDownloadsCount => _services.Get<IDownloadService>()!.RemainingCount;
+
     public bool ShowDisclaimerOnStartup
     {
         get => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).ShowDislcaimerOnStartup;

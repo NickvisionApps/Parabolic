@@ -246,6 +246,7 @@ public sealed partial class MainWindow : Window
         row.TriggerAddedState(e);
         _downloadRows[e.Id] = row;
         UpdateDownloadsList();
+        NavItemDownloads.IsSelected = true;
     }
 
     private void Controller_DownloadCompleted(object? sender, DownloadCompletedEventArgs e)
@@ -434,7 +435,9 @@ public sealed partial class MainWindow : Window
             2 => row.Status == DownloadStatus.Queued,
             3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
             _ => true
-        }).ToList();
+        }).Reverse().ToList();
         ViewStackDownloads.SelectedIndex = _downloadRows.Count > 0 ? 1 : 0;
+        BadgeDownloads.Value = _controller.RemainingDownloadsCount;
+        BadgeDownloads.Visibility = _controller.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 }
