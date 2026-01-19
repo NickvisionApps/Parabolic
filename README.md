@@ -68,12 +68,6 @@ Support for downloading **metadata** and **video subtitles**
 <img width='200' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/>
 </a>
 
-**or via Snap**
-
-<a href="https://snapcraft.io/tube-converter">
-<img width='200' alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" />
-</a>
-
 </td>
 <td align="center" width="33%">
 
@@ -88,9 +82,11 @@ Download the latest version from **Releases**
 </td>
 <td align="center" width="33%">
 
-### Firefox Extension
+### Browser Extensions
 
 [![get-the-addon](extension/resources/firefox.png)](https://addons.mozilla.org/en-US/firefox/addon/parabolic/)
+
+**Chrome:** See [extension folder](https://github.com/NickvisionApps/Parabolic/tree/dotnet/extension) for manual installation instructions
 
 </td>
 </tr>
@@ -98,7 +94,7 @@ Download the latest version from **Releases**
 
 ### 🌍 Translation Status
 
-[![Status da tradução](https://hosted.weblate.org/widget/nickvision-tube-converter/multi-auto.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/)
+[![Translation Status](https://hosted.weblate.org/widget/nickvision-tube-converter/multi-auto.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/)
 
 **Help us translate Parabolic!** [Click here to contribute](https://hosted.weblate.org/projects/nickvision-tube-converter/)
 
@@ -164,7 +160,7 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 </details>
 
 <details>
-<summary><b>🧩 Extensão Chrome</b></summary>
+<summary><b>🧩 Chrome Extension</b></summary>
 
 <br>
 
@@ -175,7 +171,7 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 </details>
 
 <details>
-<summary><b>🦊 Extensão Firefox</b></summary>
+<summary><b>🦊 Firefox Extension</b></summary>
 
 <br>
 
@@ -187,87 +183,38 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 
 ---
 
-## 🔨 Building Manually
+## 🔨 Building
 
-### 📋 Prerequisites
-
-- **cmake** - Build system
-- **vcpkg** - Dependency manager (optional)
-- **C++20 compiler**
+Parabolic is a .NET 10 project and can easily be built on any platform. Besides .NET 10, the following are required system dependencies for building each project:
 
 ### 📦 Dependencies
 
-#### All Platforms
-- `libnick`
-- `boost-date-time`
+#### Shared
+- [gettext](https://www.gnu.org/software/gettext/)
+  - Can be installed on Windows using `msys2`
+- [yelp-tools](https://wiki.gnome.org/Apps/Yelp/Tools)
+  - Can be installed on Windows using `msys2`
 
-#### Linux
-- `blueprint-compiler` *(not available via vcpkg)*
-- `libxmlpp`
+#### WinUI
+- [WindowsAppSDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/)
 
-### ⚙️ Configuring vcpkg
-
-1. Set the `VCPKG_ROOT` environment variable to your vcpkg installation's root directory
-
-#### 🪟 Windows
-```bash
-# Set environment variable
-VCPKG_DEFAULT_TRIPLET=x64-windows
-
-# Install dependencies
-vcpkg install libnick boost-date-time
-```
-
-#### 🐧 Linux
-```bash
-# Set environment variable
-VCPKG_DEFAULT_TRIPLET=x64-linux
-
-# Install dependencies
-vcpkg install libnick libxmlpp boost-date-time
-```
+#### GNOME
+- [Gtk4](https://docs.gtk.org/gtk4/)
+- [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita)
+- [blueprint-compiler](https://gitlab.gnome.org/GNOME/blueprint-compiler)
 
 ### 🏗️ Build Process
 
-#### 🪟 Windows (Installable)
+Once all dependencies are available on the system, simply run:
+
+**WinUI:**
 ```bash
-# Clone the repository and navigate to it
-git clone [repo-url]
-cd parabolic
-
-# Create and enter build folder
-mkdir build && cd build
-
-# Configure the project
-cmake .. -G "Visual Studio 17 2022"
-
-# Build
-cmake --build . --config Release
-
-# Binaries will be in: build/org.nickvision.tubeconverter.winui/Release
+dotnet run --project Nickvision.Parabolic.WinUI
 ```
 
-#### 🪟 Windows (Portable)
+**GNOME:**
 ```bash
-# Same process, but with additional flag
-cmake .. -G "Visual Studio 17 2022" -DBUILD_AS_PORTABLE=ON
-cmake --build . --config Release
-```
-
-#### 🐧 Linux
-```bash
-# Clone the repository and navigate to it
-git clone [repo-url]
-cd parabolic
-
-# Create and enter build folder
-mkdir build && cd build
-
-# Configure and build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-cmake --build .
-
-# Binaries will be in: build/org.nickvision.tubeconverter.gnome
+dotnet run --project Nickvision.Parabolic.GNOME
 ```
 
 ---
