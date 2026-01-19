@@ -7,6 +7,8 @@ namespace Nickvision.Parabolic.Shared.Services;
 
 public interface IRecoveryService : IService
 {
+    public int Count { get; }
+
     Task<bool> AddAsync(RecoverableDownload download);
     Task<bool> AddAsync(IReadOnlyList<RecoverableDownload> downloads);
     Task<bool> ClearAsync();

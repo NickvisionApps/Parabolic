@@ -179,19 +179,19 @@
                                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE71D;" />
                                     </community:TokenItem.Icon>
                                 </community:TokenItem>
-                                
+
                                 <community:TokenItem x:Name="FilterRunning">
                                     <community:TokenItem.Icon>
                                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE768;" />
                                     </community:TokenItem.Icon>
                                 </community:TokenItem>
-                                
+
                                 <community:TokenItem x:Name="FilterQueued">
                                     <community:TokenItem.Icon>
                                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE917;" />
                                     </community:TokenItem.Icon>
                                 </community:TokenItem>
-                                
+
                                 <community:TokenItem x:Name="FilterCompleted">
                                     <community:TokenItem.Icon>
                                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE73E;" />
@@ -271,5 +271,17 @@
                 </nickvision:ViewStack.Pages>
             </nickvision:ViewStack>
         </NavigationView>
+
+        <ContentDialog x:Name="DlgCredential" DefaultButton="Primary">
+            <StackPanel Orientation="Vertical" Spacing="12">
+                <TextBlock x:Name="LblCredentialRequired"/>
+
+                <TextBox x:Name="TxtCredentialUrl" IsReadOnly="True"/>
+
+                <TextBox x:Name="TxtCredentialUsername"/>
+
+                <PasswordBox x:Name="TxtCredentialPassword"/>
+            </StackPanel>
+        </ContentDialog>
     </Grid>
 </Window>

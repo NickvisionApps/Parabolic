@@ -11,6 +11,7 @@ public interface IDownloadService : IService
 {
     event EventHandler<DownloadAddedEventArgs>? DownloadAdded;
     event EventHandler<DownloadCompletedEventArgs>? DownloadCompleted;
+    event EventHandler<DownloadCredentialRequiredEventArgs>? DownloadCredentialRequired;
     event EventHandler<DownloadProgressChangedEventArgs>? DownloadProgressChanged;
     event EventHandler<DownloadEventArgs>? DownloadRetired;
     event EventHandler<DownloadEventArgs>? DownloadStartedFromQueue;
@@ -27,6 +28,7 @@ public interface IDownloadService : IService
     IReadOnlyList<int> ClearCompleted();
     IReadOnlyList<int> ClearQueued();
     bool Pause(int id);
+    Task RecoverAllAsync();
     bool Resume(int id);
     Task<bool> RetryAsync(int id);
     Task RetryFailedAsync();

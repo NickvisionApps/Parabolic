@@ -18,19 +18,19 @@ namespace Nickvision.Parabolic.Shared.Controllers;
 
 public class MainWindowController : IDisposable
 {
-    private readonly string[] _args;
     private readonly HttpClient _httpClient;
     private readonly ServiceCollection _services;
     private AppVersion _latestAppVersion;
     private AppVersion _latestYtdlpVersion;
 
     public AppInfo AppInfo { get; }
+    public Uri? UrlFromArgs { get; }
+    public int RecoverableDownloadsCount => _services.Get<IRecoveryService>()!.Count;
 
     public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
 
     public MainWindowController(string[] args)
     {
-        _args = args;
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
         _latestAppVersion = new AppVersion("2026.1.0-next");
@@ -42,6 +42,15 @@ public class MainWindowController : IDisposable
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
             DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions")
         };
+        UrlFromArgs = null;
+        for (var i = 1; i < args.Length; i++)
+        {
+            if (Uri.TryCreate(args[i].Trim(), UriKind.Absolute, out var url))
+            {
+                UrlFromArgs = url;
+                break;
+            }
+        }
         // Register services
         var jsonFileService = _services.Add<IJsonFileService>(new JsonFileService(AppInfo))!;
         var updaterService = _services.Add<IUpdaterService>(new GitHubUpdaterService(AppInfo, _httpClient))!;
@@ -113,6 +122,13 @@ public class MainWindowController : IDisposable
         add => _services.Get<IDownloadService>()!.DownloadCompleted += value;
 
         remove => _services.Get<IDownloadService>()!.DownloadCompleted -= value;
+    }
+
+    public event EventHandler<DownloadCredentialRequiredEventArgs> DownloadCredentialRequired
+    {
+        add => _services.Get<IDownloadService>()!.DownloadCredentialRequired += value;
+
+        remove => _services.Get<IDownloadService>()!.DownloadCredentialRequired -= value;
     }
 
     public event EventHandler<DownloadProgressChangedEventArgs> DownloadProgressChanged
@@ -273,6 +289,8 @@ public class MainWindowController : IDisposable
     }
 
     public bool PauseDownload(int id) => _services.Get<IDownloadService>()!.Pause(id);
+
+    public async Task RecoverAllDownloadsAsync() => await _services.Get<IDownloadService>()!.RecoverAllAsync();
 
     public bool ResumeDownload(int id) => _services.Get<IDownloadService>()!.Resume(id);
 

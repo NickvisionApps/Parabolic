@@ -1,10 +1,11 @@
 ﻿using Microsoft.UI.Xaml;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.WinUI.Views;
+using System;
 
 namespace Nickvision.Parabolic.WinUI;
 
-public partial class App : Microsoft.UI.Xaml.Application
+public partial class App : Application
 {
     private Window? _window;
 
@@ -17,7 +18,7 @@ public partial class App : Microsoft.UI.Xaml.Application
     {
         if (_window is null)
         {
-            _window = new MainWindow(new MainWindowController(args.Arguments.Split(' ')));
+            _window = new MainWindow(new MainWindowController(Environment.GetCommandLineArgs()));
         }
         _window.Activate();
     }

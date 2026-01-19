@@ -35,6 +35,16 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         Dispose(false);
     }
 
+    public int Count
+    {
+        get
+        {
+            using var command = _connection.CreateCommand();
+            command.CommandText = "SELECT COUNT(*) FROM recovery";
+            return Convert.ToInt32(command.ExecuteScalar());
+        }
+    }
+
     public async Task<bool> AddAsync(RecoverableDownload download)
     {
         using var command = _connection.CreateCommand();

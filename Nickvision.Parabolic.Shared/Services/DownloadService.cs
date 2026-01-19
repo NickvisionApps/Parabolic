@@ -23,6 +23,7 @@ public class DownloadService : IDisposable, IDownloadService
 
     public event EventHandler<DownloadAddedEventArgs>? DownloadAdded;
     public event EventHandler<DownloadCompletedEventArgs>? DownloadCompleted;
+    public event EventHandler<DownloadCredentialRequiredEventArgs>? DownloadCredentialRequired;
     public event EventHandler<DownloadProgressChangedEventArgs>? DownloadProgressChanged;
     public event EventHandler<DownloadEventArgs>? DownloadRetired;
     public event EventHandler<DownloadEventArgs>? DownloadStartedFromQueue;
@@ -158,6 +159,26 @@ public class DownloadService : IDisposable, IDownloadService
             return true;
         }
         return false;
+    }
+
+    public async Task RecoverAllAsync()
+    {
+        var downloads = await _recoveryService.GetAllAsync();
+        foreach (var recoverableDownload in downloads)
+        {
+            if (recoverableDownload.CredentialRequired)
+            {
+                var args = new DownloadCredentialRequiredEventArgs(recoverableDownload.Options.SaveFilename, recoverableDownload.Options.Url);
+                DownloadCredentialRequired?.Invoke(this, args);
+                if (string.IsNullOrEmpty(args.Credential.Username) && string.IsNullOrEmpty(args.Credential.Password))
+                {
+                    continue;
+                }
+                recoverableDownload.Options.Credential = args.Credential;
+            }
+        }
+        await _recoveryService.ClearAsync();
+        await AddAsync(downloads.Select(x => x.Options).ToList(), false);
     }
 
     public bool Resume(int id)

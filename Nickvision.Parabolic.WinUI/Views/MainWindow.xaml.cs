@@ -54,6 +54,7 @@ public sealed partial class MainWindow : Window
         // Events
         AppWindow.Closing += Window_Closing;
         _controller.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
+        _controller.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
         _controller.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
         _controller.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
         _controller.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
@@ -93,6 +94,11 @@ public sealed partial class MainWindow : Window
         BtnClearAllCompleted.Label = _controller.Translator._("Clear All Completed");
         StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
         StatusNoneDownloads.Description = _controller.Translator._("There are no downloads of this type");
+        DlgCredential.Title = _controller.Translator._("Credential Required");
+        TxtCredentialUsername.PlaceholderText = _controller.Translator._("Enter username here");
+        TxtCredentialPassword.PlaceholderText = _controller.Translator._("Enter password here");
+        DlgCredential.PrimaryButtonText = _controller.Translator._("Submit");
+        DlgCredential.CloseButtonText = _controller.Translator._("Cancel");
     }
 
     private async void Window_Loaded(object? sender, RoutedEventArgs e)
@@ -135,6 +141,27 @@ public sealed partial class MainWindow : Window
                 _controller.ShowDislcaimerOnStartup = false;
             }
         }
+        if (_controller.RecoverableDownloadsCount > 0)
+        {
+            var recoverDialog = new ContentDialog()
+            {
+                Title = _controller.Translator._("Recover Downloads?"),
+                Content = _controller.Translator._("There are downloads available to recover from when Parabolic crashed. Would you like to download them again?"),
+                PrimaryButtonText = _controller.Translator._("Yes"),
+                CloseButtonText = _controller.Translator._("No"),
+                DefaultButton = ContentDialogButton.Primary,
+                RequestedTheme = MainGrid.ActualTheme,
+                XamlRoot = MainGrid.XamlRoot
+            };
+            if ((await recoverDialog.ShowAsync()) == ContentDialogResult.Primary)
+            {
+                await _controller.RecoverAllDownloadsAsync();
+            }
+        }
+        if (_controller.UrlFromArgs is not null)
+        {
+            await AddDownloadAsync(_controller.UrlFromArgs);
+        }
         await updatesTask;
         MenuCheckForUpdates.IsEnabled = true;
     }
@@ -154,7 +181,7 @@ public sealed partial class MainWindow : Window
                 RequestedTheme = MainGrid.ActualTheme,
                 XamlRoot = MainGrid.XamlRoot
             };
-            if((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
+            if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
             {
                 await _controller.StopAllDownloadsAsync();
                 Close();
@@ -274,6 +301,21 @@ public sealed partial class MainWindow : Window
         {
             row.TriggerCompletedState(e);
             UpdateDownloadsList();
+        }
+    }
+
+    private async void Controller_DownloadCredentialRequired(object? sender, DownloadCredentialRequiredEventArgs e)
+    {
+        LblCredentialRequired.Text = _controller.Translator._("A credential is required to continue the download of \"{0}\".", e.Credential.Name);
+        TxtCredentialUrl.Text = e.Credential.Url.ToString();
+        TxtCredentialUsername.Text = string.Empty;
+        TxtCredentialPassword.Password = string.Empty;
+        DlgCredential.XamlRoot = MainGrid.XamlRoot;
+        DlgCredential.RequestedTheme = MainGrid.ActualTheme;
+        if ((await DlgCredential.ShowAsync()) == ContentDialogResult.Primary)
+        {
+            e.Credential.Username = TxtCredentialUsername.Text;
+            e.Credential.Password = TxtCredentialPassword.Password;
         }
     }
 
