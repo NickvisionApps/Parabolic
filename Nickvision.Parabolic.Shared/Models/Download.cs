@@ -572,6 +572,7 @@ public partial class Download : IDisposable
         _logBuilder.AppendLine(e.Data);
         if ((!e.Data.Contains("PROGRESS;") && !e.Data.Contains("[#")) || e.Data.Contains("[debug"))
         {
+            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
             return;
         }
         try

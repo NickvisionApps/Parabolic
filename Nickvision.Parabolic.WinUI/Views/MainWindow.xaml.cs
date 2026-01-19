@@ -84,7 +84,7 @@ public sealed partial class MainWindow : Window
         LblDownloads.Text = _controller.Translator._("Downloads");
         LblDownloadsAddDownload.Text = _controller.Translator._("Add");
         StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
-        StatusNoneDownloads.Description = _controller.Translator._("There are no downloads added");
+        StatusNoneDownloads.Description = _controller.Translator._("There are no downloads of this type");
         FilterAll.Content = _controller.Translator._("All");
         FilterRunning.Content = _controller.Translator._("Running");
         FilterQueued.Content = _controller.Translator._("Queued");
@@ -280,7 +280,6 @@ public sealed partial class MainWindow : Window
         if (_downloadRows.TryGetValue(e.Id, out var row))
         {
             row.TriggerStoppedState();
-            _downloadRows.Remove(e.Id);
             UpdateDownloadsList();
         }
     }
@@ -436,7 +435,7 @@ public sealed partial class MainWindow : Window
             3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
             _ => true
         }).Reverse().ToList();
-        ViewStackDownloads.SelectedIndex = _downloadRows.Count > 0 ? 1 : 0;
+        ViewStackDownloads.SelectedIndex = (DownloadsList.ItemsSource as IEnumerable<DownloadRow>)!.Count() > 0 ? 1 : 0;
         BadgeDownloads.Value = _controller.RemainingDownloadsCount;
         BadgeDownloads.Visibility = _controller.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
