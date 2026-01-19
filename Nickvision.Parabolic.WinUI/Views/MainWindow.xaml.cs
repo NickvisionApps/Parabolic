@@ -139,11 +139,26 @@ public sealed partial class MainWindow : Window
         MenuCheckForUpdates.IsEnabled = true;
     }
 
-    private void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
+    private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
         if (!_controller.CanShutdown)
         {
             e.Cancel = true;
+            var confirmDialog = new ContentDialog()
+            {
+                Title = _controller.AppInfo.ShortName,
+                Content = _controller.Translator._("There are downloads still in progress. Would you like to stop them and exit?"),
+                PrimaryButtonText = _controller.Translator._("Yes"),
+                CloseButtonText = _controller.Translator._("No"),
+                DefaultButton = ContentDialogButton.Close,
+                RequestedTheme = MainGrid.ActualTheme,
+                XamlRoot = MainGrid.XamlRoot
+            };
+            if((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
+            {
+                await _controller.StopAllDownloadsAsync();
+                Close();
+            }
             return;
         }
         _controller.WindowGeometry = this.Geometry;
@@ -382,7 +397,7 @@ public sealed partial class MainWindow : Window
 
     private void ClearAllCompleted(object? sender, RoutedEventArgs e)
     {
-        foreach(var id in _controller.ClearCompletedDownloads())
+        foreach (var id in _controller.ClearCompletedDownloads())
         {
             _downloadRows.Remove(id);
         }

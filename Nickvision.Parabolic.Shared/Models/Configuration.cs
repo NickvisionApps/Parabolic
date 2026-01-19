@@ -1,12 +1,15 @@
 ﻿using Nickvision.Desktop.Application;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
 public class Configuration
 {
+    private static readonly JsonSerializerOptions _options;
+
     public static readonly string Key;
 
     public bool AllowPreviewUpdates { get; set; }
@@ -44,6 +47,10 @@ public class Configuration
 
     static Configuration()
     {
+        _options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
         Key = "config";
     }
 
@@ -112,4 +119,6 @@ public class Configuration
         AriaMaxConnectionsPerServer = AriaMaxConnectionsPerServer,
         AriaMinSplitSize = AriaMinSplitSize
     };
+
+    public override string ToString() => JsonSerializer.Serialize(this, _options);
 }

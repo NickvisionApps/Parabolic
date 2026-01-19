@@ -260,12 +260,15 @@ public class MainWindowController : IDisposable
     public async Task<string> GetDebugInformationAsync(string extraInformation = "")
     {
         var ytdlpVersion = await _services.Get<IYtdlpExecutableService>()!.GetExecutableVersionAsync();
+        var denoVersion = await ExecuteAsync("deno", "--version");
         var ffmpegVersion = await ExecuteAsync("ffmpeg", "-version");
         var ariaVersion = await ExecuteAsync("aria2c", "--version");
         extraInformation += string.IsNullOrEmpty(extraInformation) ? string.Empty : "\n";
         extraInformation += $"yt-dlp: {(ytdlpVersion is not null ? ytdlpVersion.ToString() : "not found")}";
+        extraInformation += $"\ndeno: {(!string.IsNullOrEmpty(denoVersion) ? denoVersion.Substring(denoVersion.IndexOf("deno ") + 5, denoVersion.IndexOf('\n') - 5) : "not found")}";
         extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";
         extraInformation += $"\naria2: {(!string.IsNullOrEmpty(ariaVersion) ? ariaVersion.Substring(ariaVersion.IndexOf("aria2 version") + 14, ariaVersion.IndexOf('\n') - 14) : "not found")}";
+        extraInformation += $"\n\n{await _services.Get<IJsonFileService>()!.LoadAsync<Configuration>()}";
         return Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
     }
 
