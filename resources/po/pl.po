@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 09:25-0500\n"
+"POT-Creation-Date: 2026-01-19 09:45-0500\n"
 "PO-Revision-Date: 2025-12-29 08:00+0000\n"
 "Last-Translator: Michał Dominik <fancy0duck@duck.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -191,12 +191,12 @@ msgstr "Dostępna nowa aktualizacja"
 msgid "No update available"
 msgstr "Dostępna jest aktualizacja"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:271
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:279
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "Nie można pobrać i zainstalować aktualizacji"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:281
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:289
 #, fuzzy
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Nie można pobrać i zainstalować aktualizacji"
@@ -351,6 +351,10 @@ msgstr ""
 msgid "Starting download..."
 msgstr "Rozpoczynanie pobierania..."
 
+#: Nickvision.Parabolic.Shared/Models/Format.cs:240
+msgid "Audio Description"
+msgstr "Audiodeskrypcja"
+
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
 msgid "{0:0.00} GiB"
@@ -387,14 +391,14 @@ msgid "{0} (Auto-generated)"
 msgstr "Wygenerowane automatycznie"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:254
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:367
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "O programie"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:225
 msgid "Close"
 msgstr "Zamknij"
 
@@ -473,7 +477,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add Download"
 msgstr "Dodaj pobieranie"
 
@@ -485,7 +489,7 @@ msgstr "Odzyskaj"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
 msgid "Cancel"
 msgstr "Anuluj"
@@ -509,27 +513,27 @@ msgid "Use Authentication"
 msgstr "Uwierzytelnianie"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:67
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
 msgid "Credential"
 msgstr "Dane logowania"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:69
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
 msgid "Enter username here"
 msgstr "Podaj nazwę użytkownika"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:70
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
 msgid "Password"
 msgstr "Hasło"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:46
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
 msgid "Enter password here"
 msgstr "Podaj swoje hasło"
 
@@ -712,7 +716,7 @@ msgid "Download"
 msgstr "Pobierz"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:60
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
 msgid "History"
 msgstr "Historia"
 
@@ -738,7 +742,7 @@ msgid "Clear All"
 msgstr "Wyczyść"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:47
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #, fuzzy
 msgid "Search..."
 msgstr "Szukaj"
@@ -775,151 +779,168 @@ msgid ""
 msgstr "Czy na pewno chcesz usunąć te dane logowania?"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:102
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:97
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr "Tak"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:103
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "Nie"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
 msgid "Keyring"
 msgstr "Lista kluczy"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:64
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
 msgstr "Dodaj"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
 #, fuzzy
 msgid "No Credentials"
 msgstr "Dane logowania"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
 msgid "There are no credentials in your keyring"
 msgstr "Zarządzaj danymi logowania na liście kluczy."
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
 msgid "There are no credentials found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
 msgid "Name"
 msgstr "Nazwa"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
 msgid "Enter name here"
 msgstr "Podaj nazwę"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
 msgid "URL"
 msgstr "Adres URL"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
 msgid "Enter url here"
 msgstr "Podaj adres URL"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:180
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:186
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:81
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:196
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:202
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr "Aktualizacja"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:96
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:95
 msgid "Delete Credential?"
 msgstr "Usunąć dane logowania?"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:97
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:96
 #, fuzzy
 msgid ""
 "Are you sure you want to delete this credential? The action is irreversible"
 msgstr "Czy na pewno chcesz usunąć te dane logowania?"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:57
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
 msgid "Preview"
 msgstr "Podgląd"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:58
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:69
 msgid "Home"
 msgstr "Strona główna"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr "Pobrane"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:62
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 #, fuzzy
 msgid "Updating"
 msgstr "Aktualizacja"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 msgid "Help"
 msgstr "Pomoc"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:64
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
 msgid "Check for Updates"
 msgstr "Sprawdź aktualizacje"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:65
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
 msgid "GitHub Repo"
 msgstr "Repozytorium na Githubie"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:66
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
 msgid "Report a Bug"
 msgstr "Zgłoś błąd"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 msgid "Discussions"
 msgstr "Dyskusje"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:69
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:81
 msgid "Download Media"
 msgstr "Pobierz"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Dodaj adres URL wideo, audio lub playlisty, aby rozpocząć pobieranie"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #, fuzzy
 msgid "No Downloads"
 msgstr "Pobrane"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
 #, fuzzy
 msgid "There are no downloads added"
 msgstr "Kiedy wszystkie procesy pobierania się zakończą"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+#, fuzzy
+msgid "All"
+msgstr "wszystko"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Running"
+msgstr "W trakcie"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+msgid "Queued"
+msgstr "W kolejce"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+msgid "Completed"
+msgstr "Zakończone"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
 msgid "Don't show this message again"
 msgstr "Nie pokazuj tej wiadomości ponownie"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:108
 msgid "Legal Copyright Disclaimer"
 msgstr "Zastrzeżenie dotyczące praw autorskich"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -929,19 +950,19 @@ msgstr ""
 "aplikacji Parabolic nie popierają i nie ponoszą odpowiedzialności za "
 "wykorzystanie tej aplikacji w sposób naruszający te przepisy."
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:123
 msgid "I understand"
 msgstr "Rozumiem"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:192
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:208
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:198
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:214
 msgid "Error"
 msgstr "Błąd"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:300
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:341
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Pobieranie aktualizacji"
@@ -1280,21 +1301,8 @@ msgid ""
 "irreversible"
 msgstr "Czy na pewno chcesz usunąć te dane logowania?"
 
-#~ msgid "Audio Description"
-#~ msgstr "Audiodeskrypcja"
-
-#, fuzzy
-#~ msgid "All"
-#~ msgstr "wszystko"
-
 #~ msgid "Downloading"
 #~ msgstr "Pobierane"
-
-#~ msgid "Queued"
-#~ msgstr "W kolejce"
-
-#~ msgid "Completed"
-#~ msgstr "Zakończone"
 
 #~ msgid "Edit"
 #~ msgstr "Edytuj"
@@ -1621,9 +1629,6 @@ msgstr "Czy na pewno chcesz usunąć te dane logowania?"
 
 #~ msgid "Resume"
 #~ msgstr "Wznów"
-
-#~ msgid "Running"
-#~ msgstr "W trakcie"
 
 #~ msgid "Log copied to clipboard"
 #~ msgstr "Dziennik pobierania został skopiowany do schowka"

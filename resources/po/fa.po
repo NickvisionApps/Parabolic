@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-18 09:25-0500\n"
+"POT-Creation-Date: 2026-01-19 09:45-0500\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -187,12 +187,12 @@ msgstr "بروز رسانی جدیدی در دسترس قرار گرفته اس�
 msgid "No update available"
 msgstr "بروز رسانی جدیدی در دسترس قرار گرفته است."
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:271
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:279
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "در حال بارگیری"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:281
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:289
 msgid "Unable to download and install the yt-dlp update"
 msgstr ""
 
@@ -338,6 +338,10 @@ msgstr ""
 msgid "Starting download..."
 msgstr ""
 
+#: Nickvision.Parabolic.Shared/Models/Format.cs:240
+msgid "Audio Description"
+msgstr ""
+
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, fuzzy, csharp-format
 msgid "{0:0.00} GiB"
@@ -374,14 +378,14 @@ msgid "{0} (Auto-generated)"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:254
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:367
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "درباره"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:225
 msgid "Close"
 msgstr "بستن"
 
@@ -440,7 +444,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:206
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add Download"
 msgstr "اضافه کردن دانلود"
 
@@ -452,7 +456,7 @@ msgstr "سلب مسئولیت"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
 msgid "Cancel"
 msgstr "لغو"
@@ -477,28 +481,28 @@ msgid "Use Authentication"
 msgstr "اعتبار دادن"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:67
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
 #, fuzzy
 msgid "Credential"
 msgstr "اعتبارنامه حذف شود؟"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:68
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
 msgid "Username"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:69
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
 msgid "Enter username here"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:70
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
 msgid "Password"
 msgstr "کلمه عبور"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:46
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
 msgid "Enter password here"
 msgstr ""
 
@@ -680,7 +684,7 @@ msgid "Download"
 msgstr "بارگیری"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:60
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
 msgid "History"
 msgstr "تاریخچه"
 
@@ -706,7 +710,7 @@ msgid "Clear All"
 msgstr "پاک کردن"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:47
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 msgid "Search..."
 msgstr ""
 
@@ -740,171 +744,187 @@ msgid ""
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:102
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:97
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:207
 msgid "Yes"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:103
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "خیر"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
 msgid "Keyring"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:64
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
 msgid "Add"
 msgstr "افزودن"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
 #, fuzzy
 msgid "No Credentials"
 msgstr "اعتبارنامه حذف شود؟"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
 msgid "There are no credentials in your keyring"
 msgstr "همه دانلودها به پایان رسیده است."
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
 msgid "There are no credentials found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
 msgid "Name"
 msgstr "نام"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
 #, fuzzy
 msgid "Enter name here"
 msgstr "اعتبارنامه حذف شود؟"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
 msgid "URL"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
 #, fuzzy
 msgid "Enter url here"
 msgstr "اعتبارنامه حذف شود؟"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:82
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:180
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:186
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:81
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:196
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:202
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 msgid "Update"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:96
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:95
 #, fuzzy
 msgid "Delete Credential?"
 msgstr "اعتبارنامه حذف شود؟"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:97
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:96
 msgid ""
 "Are you sure you want to delete this credential? The action is irreversible"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:57
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:68
 msgid "Preview"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:58
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:69
 msgid "Home"
 msgstr "خانه"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Downloads"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:62
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 msgid "Updating"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 msgid "Help"
 msgstr "کمک"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:64
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
 msgid "Check for Updates"
 msgstr "به روز رسانی ها را بررسی کنید"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:65
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
 msgid "GitHub Repo"
 msgstr "مخزن گیت هاب"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:66
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
 msgid "Report a Bug"
 msgstr "گزارش یک اشکال"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 msgid "Discussions"
 msgstr "بحث ها"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:69
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "Settings"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:70
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:81
 msgid "Download Media"
 msgstr "بارگیری رسانه"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "برای شروع دانلود، یک URL ویدیو، صدا یا فهرست پخش اضافه کنید"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:75
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
 #, fuzzy
 msgid "No Downloads"
 msgstr "در حال بارگیری"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:76
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
 #, fuzzy
 msgid "There are no downloads added"
 msgstr "همه دانلودها به پایان رسیده است."
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "All"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Running"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+msgid "Queued"
+msgstr "در صف"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+msgid "Completed"
+msgstr "تکمیل شد"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
 msgid "Don't show this message again"
 msgstr "این پیام را دیگر نشان ندهید"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:108
 msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
 "this application in means that will violate these laws."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:107
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:123
 msgid "I understand"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:192
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:208
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:198
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:214
 msgid "Error"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:300
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:341
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "در حال بارگیری"
@@ -1252,12 +1272,6 @@ msgstr ""
 
 #~ msgid "Downloading"
 #~ msgstr "در حال بارگیری"
-
-#~ msgid "Queued"
-#~ msgstr "در صف"
-
-#~ msgid "Completed"
-#~ msgstr "تکمیل شد"
 
 #, fuzzy
 #~ msgid "File"

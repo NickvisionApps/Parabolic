@@ -166,11 +166,31 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
-                                <CommandBar.PrimaryCommands>
-
-                                </CommandBar.PrimaryCommands>
-                            </CommandBar>
+                            <community:TokenView x:Name="DownloadsFilter" Grid.Column="0" SelectionMode="Single" SelectionChanged="DownloadsFilter_SelectionChanged">
+                                <community:TokenItem x:Name="FilterAll">
+                                    <community:TokenItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE71D;" />
+                                    </community:TokenItem.Icon>
+                                </community:TokenItem>
+                                
+                                <community:TokenItem x:Name="FilterRunning">
+                                    <community:TokenItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE768;" />
+                                    </community:TokenItem.Icon>
+                                </community:TokenItem>
+                                
+                                <community:TokenItem x:Name="FilterQueued">
+                                    <community:TokenItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE917;" />
+                                    </community:TokenItem.Icon>
+                                </community:TokenItem>
+                                
+                                <community:TokenItem x:Name="FilterCompleted">
+                                    <community:TokenItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE73E;" />
+                                    </community:TokenItem.Icon>
+                                </community:TokenItem>
+                            </community:TokenView>
 
                             <StackPanel Grid.Column="2" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="6">
                                 <Button x:Name="BtnDownloadsAddDownload" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
@@ -188,6 +208,14 @@
                         <nickvision:ViewStack x:Name="ViewStackDownloads" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <nickvision:ViewStack.Pages>
                                 <nickvision:StatusPage x:Name="StatusNoneDownloads" Glyph="&#xE896;"/>
+
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <ItemsRepeater x:Name="DownloadsList" Margin="24,0,24,12">
+                                        <ItemsRepeater.Layout>
+                                            <StackLayout Spacing="6"/>
+                                        </ItemsRepeater.Layout>
+                                    </ItemsRepeater>
+                                </ScrollViewer>
                             </nickvision:ViewStack.Pages>
                         </nickvision:ViewStack>
                     </Grid>

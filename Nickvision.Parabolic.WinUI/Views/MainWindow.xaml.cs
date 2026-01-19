@@ -8,9 +8,12 @@ using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
+using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Controls;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.System;
 
@@ -26,12 +29,14 @@ public sealed partial class MainWindow : Window
     }
 
     private readonly MainWindowController _controller;
+    private readonly Dictionary<int, DownloadRow> _downloadRows;
     private RoutedEventHandler? _notificationClickHandler;
 
     public MainWindow(MainWindowController controller)
     {
         InitializeComponent();
         _controller = controller;
+        _downloadRows = new Dictionary<int, DownloadRow>();
         _notificationClickHandler = null;
         // Config
         MainGrid.RequestedTheme = _controller.Theme switch
@@ -50,6 +55,12 @@ public sealed partial class MainWindow : Window
         AppWindow.Closing += Window_Closing;
         _controller.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
         _controller.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
+        _controller.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
+        _controller.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
+        _controller.DownloadCompleted += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadCompleted(sender, e));
+        _controller.DownloadStopped += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStopped(sender, e));
+        _controller.DownloadStartedFromQueue += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStartedFromQueue(sender, e));
+        _controller.DownloadRetired += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadRetired(sender, e));
         _controller.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
         AppWindow.Title = _controller.AppInfo.ShortName;
@@ -74,11 +85,16 @@ public sealed partial class MainWindow : Window
         LblDownloadsAddDownload.Text = _controller.Translator._("Add");
         StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
         StatusNoneDownloads.Description = _controller.Translator._("There are no downloads added");
+        FilterAll.Content = _controller.Translator._("All");
+        FilterRunning.Content = _controller.Translator._("Running");
+        FilterQueued.Content = _controller.Translator._("Queued");
+        FilterCompleted.Content = _controller.Translator._("Completed");
     }
 
     private async void Window_Loaded(object? sender, RoutedEventArgs e)
     {
         ViewStackDownloads.SelectedIndex = 0;
+        DownloadsFilter.SelectedIndex = 0;
         MenuCheckForUpdates.IsEnabled = false;
         var updatesTask = _controller.CheckForUpdatesAsync(false);
         if (_controller.ShowDislcaimerOnStartup)
@@ -219,6 +235,64 @@ public sealed partial class MainWindow : Window
         InfoBar.IsOpen = true;
     }
 
+
+    private void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
+    {
+        var row = new DownloadRow(_controller.Translator);
+        row.PauseRequested += DownloadRow_PauseRequested;
+        row.ResumeRequested += DownloadRow_ResumeRequested;
+        row.StopRequested += DownloadRow_StopRequested;
+        row.RetryRequested += DownloadRow_RetryRequested;
+        row.TriggerAddedState(e);
+        _downloadRows[e.Id] = row;
+        UpdateDownloadsList();
+    }
+
+    private void Controller_DownloadCompleted(object? sender, DownloadCompletedEventArgs e)
+    {
+        if (_downloadRows.TryGetValue(e.Id, out var row))
+        {
+            row.TriggerCompletedState(e);
+            UpdateDownloadsList();
+        }
+    }
+
+    private void Controller_DownloadProgressChanged(object? sender, DownloadProgressChangedEventArgs e)
+    {
+        if (_downloadRows.TryGetValue(e.Id, out var row))
+        {
+            row.TriggerProgressState(e);
+        }
+    }
+
+    private void Controller_DownloadStartedFromQueue(object? sender, DownloadEventArgs e)
+    {
+        if (_downloadRows.TryGetValue(e.Id, out var row))
+        {
+            row.TriggerStartedFromQueueState();
+            UpdateDownloadsList();
+        }
+    }
+
+    private void Controller_DownloadStopped(object? sender, DownloadEventArgs e)
+    {
+        if (_downloadRows.TryGetValue(e.Id, out var row))
+        {
+            row.TriggerStoppedState();
+            _downloadRows.Remove(e.Id);
+            UpdateDownloadsList();
+        }
+    }
+
+    private void Controller_DownloadRetired(object? sender, DownloadEventArgs e)
+    {
+        if (_downloadRows.TryGetValue(e.Id, out var row))
+        {
+            _downloadRows.Remove(e.Id);
+            UpdateDownloadsList();
+        }
+    }
+
     private void Controller_JsonFileSaved(object? sender, JsonFileSavedEventArgs e)
     {
         if (e.Name == Configuration.Key)
@@ -230,6 +304,45 @@ public sealed partial class MainWindow : Window
                 _ => ElementTheme.Default
             };
         }
+    }
+
+    private void DownloadsFilter_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateDownloadsList();
+
+    private void DownloadRow_PauseRequested(object? sender, int id)
+    {
+        if (_controller.PauseDownload(id) && _downloadRows.TryGetValue(id, out var row))
+        {
+            row.TriggerPausedState();
+        }
+    }
+
+    private void DownloadRow_ResumeRequested(object? sender, int id)
+    {
+        if (_controller.ResumeDownload(id) && _downloadRows.TryGetValue(id, out var row))
+        {
+            row.TriggerResumedState();
+        }
+    }
+
+    private async void DownloadRow_RetryRequested(object? sender, int id) => await _controller.RetryDownloadAsync(id);
+
+    private async void DownloadRow_StopRequested(object? sender, int id) => await _controller.StopDownloadAsync(id);
+
+    private void UpdateProgress_Changed(object? sender, DownloadProgress e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            if (e.Completed)
+            {
+                FlyoutProgress.Hide();
+                NavItemUpdates.Visibility = Visibility.Collapsed;
+                return;
+            }
+            var message = _controller.Translator._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
+            NavItemUpdates.Visibility = Visibility.Visible;
+            StsProgress.Description = message;
+            BarProgress.Value = e.Percentage * 100;
+        });
     }
 
     private async void AddDownload(object? sender, RoutedEventArgs e) => await AddDownloadAsync(null);
@@ -287,23 +400,6 @@ public sealed partial class MainWindow : Window
         progress.ProgressChanged -= UpdateProgress_Changed;
     }
 
-    private void UpdateProgress_Changed(object? sender, DownloadProgress e)
-    {
-        DispatcherQueue.TryEnqueue(() =>
-        {
-            if (e.Completed)
-            {
-                FlyoutProgress.Hide();
-                NavItemUpdates.Visibility = Visibility.Collapsed;
-                return;
-            }
-            var message = _controller.Translator._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
-            NavItemUpdates.Visibility = Visibility.Visible;
-            StsProgress.Description = message;
-            BarProgress.Value = e.Percentage * 100;
-        });
-    }
-
     private async Task AddDownloadAsync(Uri? uri)
     {
         var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, AppWindow.Id)
@@ -328,5 +424,17 @@ public sealed partial class MainWindow : Window
             return;
         }
         await Launcher.LaunchUriAsync(uri);
+    }
+
+    private void UpdateDownloadsList()
+    {
+        DownloadsList.ItemsSource = _downloadRows.Values.Where(row => DownloadsFilter.SelectedIndex switch
+        {
+            1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
+            2 => row.Status == DownloadStatus.Queued,
+            3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+            _ => true
+        }).ToList();
+        ViewStackDownloads.SelectedIndex = _downloadRows.Count > 0 ? 1 : 0;
     }
 }

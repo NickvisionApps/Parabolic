@@ -262,6 +262,14 @@ public class MainWindowController : IDisposable
         return Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
     }
 
+    public bool PauseDownload(int id) => _services.Get<IDownloadService>()!.Pause(id);
+
+    public bool ResumeDownload(int id) => _services.Get<IDownloadService>()!.Resume(id);
+
+    public Task<bool> RetryDownloadAsync(int id) => _services.Get<IDownloadService>()!.RetryAsync(id);
+
+    public Task<bool> StopDownloadAsync(int id) => _services.Get<IDownloadService>()!.StopAsync(id);
+
 #if OS_WINDOWS
     public async Task WindowsUpdateAsync(IProgress<DownloadProgress> progress)
     {
