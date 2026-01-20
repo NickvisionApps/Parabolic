@@ -54,24 +54,22 @@ Support for downloading **metadata** and **video subtitles**
 
 ## 📥 Installation
 
-<div align="center">
-
 ### Choose your platform
 
 <table>
 <tr>
-<td align="center" width="33%">
+<td width="33%">
 
-### Linux
+#### Linux
 
 <a href='https://flathub.org/apps/details/org.nickvision.tubeconverter'>
 <img width='200' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/>
 </a>
 
 </td>
-<td align="center" width="33%">
+<td width="33%">
 
-### Windows
+#### Windows
 
 <a href="https://github.com/NickvisionApps/Parabolic/releases">
 <img width='180' alt="Download from Releases" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Windows_logo_and_wordmark_-_2021.svg"/>
@@ -80,9 +78,9 @@ Support for downloading **metadata** and **video subtitles**
 Download the latest version from **Releases**
 
 </td>
-<td align="center" width="33%">
+<td width="33%">
 
-### Browser Extensions
+#### Browser Extensions
 
 [![get-the-addon](extension/resources/firefox.png)](https://addons.mozilla.org/en-US/firefox/addon/parabolic/)
 
@@ -92,7 +90,11 @@ Download the latest version from **Releases**
 </tr>
 </table>
 
+---
+
 ### 🌍 Translation Status
+
+<div align="center">
 
 [![Translation Status](https://hosted.weblate.org/widget/nickvision-tube-converter/multi-auto.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/)
 
