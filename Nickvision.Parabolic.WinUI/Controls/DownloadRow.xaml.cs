@@ -85,6 +85,7 @@ public sealed partial class DownloadRow : UserControl
         }
         LblTitle.Text = Path.GetFileName(_path);
         LblLog.Text = _log;
+        ScrollLog.ChangeView(null, ScrollLog.ScrollableHeight, null);
         ProgBar.Value = 1.0;
         ProgBar.IsIndeterminate = false;
         if (args.Status == DownloadStatus.Error)
@@ -136,6 +137,7 @@ public sealed partial class DownloadRow : UserControl
             ProgBar.IsIndeterminate = false;
         }
         LblLog.Text = _log;
+        ScrollLog.ChangeView(null, ScrollLog.ScrollableHeight, null);
     }
 
     public void TriggerResumedState()

@@ -61,9 +61,12 @@ public class MainWindowController : IDisposable
         var ytdlpExecutableService = _services.Add<IYtdlpExecutableService>(new YtdlpExecutableService(jsonFileService, _httpClient))!;
         var historyService = _services.Add<IHistoryService>(new HistoryService(AppInfo))!;
         var recoveryService = _services.Add<IRecoveryService>(new RecoveryService(AppInfo))!;
+        _services.Add<IPowerService>(new PowerService());
         _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService));
         _services.Add<IDownloadService>(new DownloadService(jsonFileService, translationService, ytdlpExecutableService, historyService, recoveryService));
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
+        // Events
+        jsonFileService.Saved += JsonFileService_Saved;
         // Translate strings
         AppInfo.ShortName = translationService._("Parabolic");
         AppInfo.Description = translationService._("Download web video and audio.");
@@ -348,5 +351,21 @@ public class MainWindowController : IDisposable
         await process.WaitForExitAsync();
         var output = await outputTask;
         return process.ExitCode == 0 ? output : string.Empty;
+    }
+
+    private async void JsonFileService_Saved(object? sender, JsonFileSavedEventArgs e)
+    {
+        if(e.Name == Configuration.Key)
+        {
+            var config = (e.Data as Configuration)!;
+            if (config.PreventSuspend)
+            {
+                await _services.Get<IPowerService>()!.PreventSuspendAsync();
+            }
+            else
+            {
+                await _services.Get<IPowerService>()!.AllowSuspendAsync();
+            }
+        }
     }
 }

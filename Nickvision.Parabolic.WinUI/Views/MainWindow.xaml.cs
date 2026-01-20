@@ -358,7 +358,7 @@ public sealed partial class MainWindow : Window
     {
         if (e.Name == Configuration.Key)
         {
-            MainGrid.RequestedTheme = _controller.Theme switch
+            MainGrid.RequestedTheme = (e.Data as Configuration)!.Theme switch
             {
                 Theme.Light => ElementTheme.Light,
                 Theme.Dark => ElementTheme.Dark,
