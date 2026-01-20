@@ -17,8 +17,6 @@
 
 </div>
 
----
-
 ## ✨ Features
 
 <table>
@@ -44,13 +42,9 @@ Support for downloading **metadata** and **video subtitles**
 </tr>
 </table>
 
----
-
 ## ⚖️ Legal Copyright Disclaimer
 
 > **Warning:** Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws.
-
----
 
 ## 📥 Installation
 
@@ -102,8 +96,6 @@ Download the latest version from **Releases**
 
 </div>
 
----
-
 ## 💬 Chat & Community
 
 <div align="center">
@@ -116,8 +108,6 @@ Join our community on Matrix!
 
 </div>
 
----
-
 ## 🤝 Contributing
 
 We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for details on:
@@ -126,8 +116,6 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 - 💡 How to suggest new features
 - 🔧 How to contribute code
 - 📖 How to improve documentation
-
----
 
 ## 📸 Screenshots
 
@@ -183,8 +171,6 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 
 </details>
 
----
-
 ## 🔨 Building
 
 Parabolic is a .NET 10 project and can easily be built on any platform. Besides .NET 10, the following are required system dependencies for building each project:
@@ -218,8 +204,6 @@ dotnet run --project Nickvision.Parabolic.WinUI
 ```bash
 dotnet run --project Nickvision.Parabolic.GNOME
 ```
-
----
 
 ## 📜 Code of Conduct
 
