@@ -84,8 +84,6 @@ Download the latest version from **Releases**
 </tr>
 </table>
 
----
-
 ### 🌍 Translation Status
 
 <div align="center">
