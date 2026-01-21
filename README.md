@@ -179,8 +179,6 @@ Parabolic is a .NET 10 project and can easily be built on any platform. Besides 
 #### Shared
 - [gettext](https://www.gnu.org/software/gettext/)
   - Can be installed on Windows using `msys2`
-- [yelp-tools](https://wiki.gnome.org/Apps/Yelp/Tools)
-  - Can be installed on Windows using `msys2`
 
 #### WinUI
 - [WindowsAppSDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/)
@@ -189,6 +187,7 @@ Parabolic is a .NET 10 project and can easily be built on any platform. Besides 
 - [Gtk4](https://docs.gtk.org/gtk4/)
 - [libadwaita](https://gitlab.gnome.org/GNOME/libadwaita)
 - [blueprint-compiler](https://gitlab.gnome.org/GNOME/blueprint-compiler)
+  - Can be installed on Windows using `msys2`
 
 ### 🏗️ Build Process
 
