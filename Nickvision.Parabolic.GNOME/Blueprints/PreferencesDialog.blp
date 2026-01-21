@@ -1,0 +1,34 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.PreferencesDialog root {
+  content-width: 600;
+  content-height: 600;
+  search-enabled: true;
+  title: _("Preferences");
+
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup {
+      title: _("User Interface");
+
+      Adw.ComboRow themeRow {
+        title: _("Theme");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "dark-mode-symbolic";
+        }
+      }
+
+      Adw.ComboRow languageRow {
+        title: _("Translation Language");
+        subtitle: _("An application restart is required for a change to take effect");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "translate-symbolic";
+        }
+      }
+    }
+  }
+}

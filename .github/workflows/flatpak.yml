@@ -28,8 +28,8 @@ jobs:
       - uses: actions/checkout@v6
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
-          bundle: org.nickvision.application.flatpak
-          manifest-path: flatpak/org.nickvision.application.json
+          bundle: org.nickvision.tubeconverter.flatpak
+          manifest-path: flatpak/org.nickvision.tubeconverter.json
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.variant.arch }}
           restore-cache: true

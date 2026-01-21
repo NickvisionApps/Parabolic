@@ -1,0 +1,55 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu mainMenu {
+  item(_("Preferences"), "win.preferences")
+  item(_("Keyboard Shortcuts"), "win.keyboardShortcuts")
+  item(_("About Parabolic"), "win.about")
+}
+
+Adw.ApplicationWindow root {
+  width-request: 360;
+  height-request: 200;
+  default-width: 800;
+  default-height: 600;
+
+  Adw.ToolbarView toolbarView {
+    [top]
+    Adw.HeaderBar headerBar {
+      title-widget: Adw.WindowTitle windowTitle {};
+
+      [end]
+      Gtk.MenuButton {
+        direction: none;
+        menu-model: mainMenu;
+        tooltip-text: _("Main Menu");
+        primary: true;
+      }
+    }
+
+    content: Adw.ToastOverlay toastOverlay {
+      hexpand: true;
+      vexpand: true;
+
+      Adw.ViewStack viewStack {
+        Adw.ViewStackPage {
+          name: "Home";
+          child: Adw.StatusPage pageGreeting {
+            icon-name: "org.nickvision.tubeconverter";
+            title: _("Download Media");
+            description: _("Add a video, audio, or playlist URL to start downloading");
+            child: Gtk.Button {
+              halign: center;
+              label: _("Add Download");
+              action-name: "win.addDownload";
+
+              styles ["pill", "suggested-action"]
+            };
+            
+            styles ["icon-dropshadow"]
+          };
+        }
+      }
+    };
+  }
+}

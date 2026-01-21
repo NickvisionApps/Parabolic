@@ -85,9 +85,20 @@ info "Creating desktop file..."
 DESKTOP_FILE="$DATA_DIR/applications/$APP_ID.desktop"
 mkdir -p "$(dirname "$DESKTOP_FILE")"
 cp "$APP_ID.desktop.in" "$DESKTOP_FILE"
+sed -i "s|@APP_ID@|$APP_ID|g" "$DESKTOP_FILE"
 sed -i "s|@LIB_DIR@|$LIB_DIR|g" "$DESKTOP_FILE"
 sed -i "s|@OUTPUT_NAME@|$PROJECT|g" "$DESKTOP_FILE"
 success "Created desktop file at $DESKTOP_FILE."
+
+# Create service file
+info "Creating service file..."
+SERVICE_FILE="$DATA_DIR/dbus-1/services/$APP_ID.service"
+mkdir -p "$(dirname "$SERVICE_FILE")"
+cp "$APP_ID.service.in" "$SERVICE_FILE"
+sed -i "s|@APP_ID@|$APP_ID|g" "$SERVICE_FILE"
+sed -i "s|@LIB_DIR@|$LIB_DIR|g" "$SERVICE_FILE"
+sed -i "s|@OUTPUT_NAME@|$PROJECT|g" "$SERVICE_FILE"
+success "Created service file at $SERVICE_FILE."
 
 # Create executable launcher script
 info "Creating launcher script..."
