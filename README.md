@@ -44,7 +44,8 @@ Support for downloading **metadata** and **video subtitles**
 
 ## ⚖️ Legal Copyright Disclaimer
 
-> **Warning:** Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws.
+> [!CAUTION]
+> Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws.
 
 ## 📥 Installation
 
