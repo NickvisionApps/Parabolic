@@ -31,6 +31,7 @@ public class Application
         }
         _application.OnStartup += Application_OnStartup;
         _application.OnActivate += Application_OnActivate;
+        _application.OnOpen += Application_OnOpen;
     }
 
     public int Run() => _application.RunWithSynchronizationContext(_args);
@@ -50,4 +51,22 @@ public class Application
     }
 
     private void Application_OnActivate(Gio.Application sender, EventArgs args) => _mainWindow?.Present();
+
+    private void Application_OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs args)
+    {
+        if (args.NFiles < 1)
+        {
+            return;
+        }
+        var url = args.Files[0].GetUri();
+        if (!url.StartsWith("parabolic://"))
+        {
+            return;
+        }
+        if (Uri.TryCreate(url.Substring(12), UriKind.Absolute, out var uri))
+        {
+            _controller.UrlFromArgs = uri;
+        }
+        _mainWindow?.Present();
+    }
 }

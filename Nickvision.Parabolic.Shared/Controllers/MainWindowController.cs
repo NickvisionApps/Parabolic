@@ -24,7 +24,7 @@ public class MainWindowController : IDisposable
     private AppVersion _latestYtdlpVersion;
 
     public AppInfo AppInfo { get; }
-    public Uri? UrlFromArgs { get; }
+    public Uri? UrlFromArgs { get; set; }
     public int RecoverableDownloadsCount => _services.Get<IRecoveryService>()!.Count;
 
     public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
