@@ -106,7 +106,7 @@ public class MainWindow : Adw.ApplicationWindow
 
     private void Preferences(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
     {
-        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController);
+        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, this);
         preferencesDialog.Present(this);
     }
 
@@ -130,7 +130,7 @@ public class MainWindow : Adw.ApplicationWindow
         dialog.DebugInfo = await _controller.GetDebugInformationAsync(extraInfo);
         dialog.Comments = _controller.AppInfo.Description;
         dialog.LicenseType = Gtk.License.MitX11;
-        dialog.Copyright = "© Nickvision 2021-2025";
+        dialog.Copyright = "© Nickvision 2021-2026";
         dialog.Website = "https://nickvision.org";
         dialog.IssueUrl = _controller.AppInfo.IssueTracker!.ToString();
         dialog.SupportUrl = _controller.AppInfo.DiscussionsForum!.ToString();

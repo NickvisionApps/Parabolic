@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-21 18:33-0500\n"
+"POT-Creation-Date: 2026-01-25 13:42-0500\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -55,25 +55,371 @@ msgstr "다운로드를 시작하려면 비디오, 오디오 또는 재생 목�
 msgid "Add Download"
 msgstr "다운로드 추가"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:12
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:31
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:11
+#: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:24
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:104
+msgid "General"
+msgstr "일반"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "User Interface"
 msgstr "사용자 인터페이스"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:35
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:18
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
 msgid "Theme"
 msgstr "테마"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:24
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:27
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:36
 #, fuzzy
 msgid "Translation Language"
 msgstr "오디오 언어"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:25
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:38
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:28
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
 msgid "An application restart is required for a change to take effect"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:37
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:39
+#, fuzzy
+msgid "Receive Preview Updates"
+msgstr "업데이트 확인"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:38
+msgid "Update dependencies, such as yt-dlp, to beta versions"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:47
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "중단 방지"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:48
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
+msgid "Prevent the computer from sleeping while downloads are running"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:57
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
+msgid "Download History Length"
+msgstr "다운로드 기록 기간"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:58
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:48
+#, fuzzy
+msgid "The amount of time to keep past downloads in the app's history"
+msgstr "모든 다운로드가 완료되면"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:68
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:31
+msgid "Downloads"
+msgstr "다운로드"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:71
+#, fuzzy
+msgid "Max Number of Running Downloads"
+msgstr "최대 활성 다운로드 수"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:87
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
+msgid "Overwrite Existing Files"
+msgstr "기존 파일 덮어쓰기"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:96
+msgid "Limit Filename Characters"
+msgstr "파일명 문자 제한"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:97
+#, fuzzy
+msgid "Restrict characters in filenames to those supported only by Windows"
+msgstr "파일명에서 Windows에서 지원하는 문자만 사용하도록 제한."
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:106
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "검증 후 제목에 미디어 ID 포함"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
+msgid "Add the media's id to its default title"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:116
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
+msgid "Include Auto-Generated Subtitles"
+msgstr "자동 생성된 자막 포함"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:117
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
+msgid ""
+"Show auto-generated subtitles to download in addition to available subtitles"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:126
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
+msgid "Preferred Video Codec"
+msgstr "선호하는 비디오 코덱"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:63
+msgid ""
+"Prefer this codec when parsing video formats to show available to download"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:136
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
+#, fuzzy
+msgid "Preferred Audio Codec"
+msgstr "선호하는 비디오 코덱"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:137
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:66
+msgid ""
+"Prefer this codec when parsing audio formats to show available to download"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:146
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:68
+msgid "Preferred Subtitle Format"
+msgstr "선호하는 자막 형식"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:147
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:69
+msgid "Prefer this subtitle file format when downloading"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:158
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:162
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
+msgid "Downloader"
+msgstr "다운로더"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:165
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
+#, fuzzy
+msgid "Use Part Files"
+msgstr "배치 파일 사용"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:166
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:72
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:175
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTube용 SponsorBlock 사용"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:176
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
+msgid "Try to remove sponsored segments from videos"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:185
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
+msgid "Limit Download Speed"
+msgstr "다운로드 속도 제한"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:190
+msgid "Speed Limit (KiB/s)"
+msgstr "속도 제한 (KiB/초)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:208
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
+msgid "Proxy URL"
+msgstr "프록시 URL"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:217
+#, fuzzy
+msgid "Cookies File"
+msgstr "쿠키 파일"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:228
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:250
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
+msgid "Select Cookies File"
+msgstr "쿠키 파일 선택"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:237
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
+msgid "Clear Cookies File"
+msgstr "쿠키 파일 지우기"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:246
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:89
+msgid "Cookies from Browser"
+msgstr "브라우저에서 쿠키"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:256
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
+#, fuzzy
+msgid "aria2c"
+msgstr "aria2"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:257
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:260
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
+#, fuzzy
+msgid "Use aria2c"
+msgstr "aria2 사용"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:269
+#, fuzzy
+msgid "Max Connections Per Server (-x)"
+msgstr "서버당 최대 연결 수 (-x)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:286
+#, fuzzy
+msgid "Minimum Split Size (-k)"
+msgstr "최소 분할 크기 (-k)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:287
+#, fuzzy
+msgid "The minimum size of which to split a file (in MiB)"
+msgstr "파일을 분할할 최소 크기(단위: MiB)."
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:306
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:310
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
+msgid "Converter"
+msgstr "변환기"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:313
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
+msgid "Embed Metadata"
+msgstr "메타데이터 포함"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:323
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
+msgid "Remove Source Data"
+msgstr "소스 데이터 제거"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:324
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information"
+msgstr ""
+"활성화되면, Parabolic은 다운로드 정보를 포함하는 메타데이터 필드를 삭제합니"
+"다."
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:334
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "자막 포함"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:335
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:345
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
+msgid "Crop Audio Thumbnails"
+msgstr "오디오 썸네일 자르기"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:346
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares"
+msgstr "활성화되면, Parabolic은 오디오 파일의 썸네일을 정사각형으로 자릅니다."
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
+msgid "Embed Chapters"
+msgstr "챕터 포함"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:365
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
+msgid "Embed Subtitles"
+msgstr "자막 포함"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:366
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:375
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
+#, fuzzy
+msgid "FFmpeg Threads"
+msgstr "후처리 스레드"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:376
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:123
+msgid "Limit the number of threads used by ffmpeg"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:387
+#, fuzzy
+msgid "Postprocessing Arguments"
+msgstr "후처리 스레드"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:388
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:126
+msgid "Arguments will be shown for selection in the add download dialog"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:390
+#, fuzzy
+msgid "Add Postprocessing Argument"
+msgstr "후처리 스레드"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:274
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "추가"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:404
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
+#, fuzzy
+msgid "Argument"
+msgstr "새 자격 증명"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:419
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
+msgid "Name"
+msgstr "이름"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:423
+#, fuzzy
+msgid "Post Processor"
+msgstr "처리 중"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:427
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
+msgid "Executable"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:431
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
+msgid "Args"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:6
@@ -105,14 +451,70 @@ msgstr "저장 폴더"
 msgid "Close Folder"
 msgstr "저장 폴더"
 
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:137
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
+msgid "GitHub Repo"
+msgstr "GitHub 저장소"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:140
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:265
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
+msgid "No file selected"
+msgstr "선택된 파일 없음"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:207
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:316
+msgid "Edit"
+msgstr "편집"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:212
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:323
+msgid "Delete"
+msgstr "삭제"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:227
+#, fuzzy
+msgid "No Arguments"
+msgstr "새 자격 증명"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:252
+msgid "TXT Files (*.txt)"
+msgstr "TXT 파일 (*.txt)"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:322
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
+#, fuzzy
+msgid "Delete Argument?"
+msgstr "새 자격 증명"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:322
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this post-processor argument? The action is "
+"irreversible"
+msgstr "이 자격 증명을 삭제하시겠습니까?"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:324
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
+msgid "Cancel"
+msgstr ""
+
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:46
 msgid "Use manual credential"
 msgstr "수동 자격 증명 사용"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:59
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:91
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:158
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:244
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:64
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:76
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
 #: Nickvision.Parabolic.Shared/Models/Format.cs:292
 #: Nickvision.Parabolic.Shared/Models/Format.cs:293
 msgid "None"
@@ -284,144 +686,144 @@ msgstr "업데이트를 다운로드하고 설치할 수 없습니다"
 msgid "Unable to download and install the yt-dlp update"
 msgstr "업데이트를 다운로드하고 설치할 수 없습니다"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:60
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:318
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:364
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:45
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:112
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:126
 msgid "Any"
 msgstr "어느 것이든"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:61
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:46
 #, fuzzy
 msgid "FLAC (ALAC)"
 msgstr "FLAC (오디오)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:62
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:47
 #, fuzzy
 msgid "WAV (AIFF)"
 msgstr "WAV (오디오)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:76
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:55
 msgid "System"
 msgstr "시스템"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:92
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:65
 msgid "Brave"
 msgstr "브레이브"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:93
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:66
 msgid "Chrome"
 msgstr "크롬"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:94
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:67
 msgid "Chromium"
 msgstr "크로미움"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:95
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:68
 msgid "Edge"
 msgstr "엣지"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:96
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:69
 msgid "Firefox"
 msgstr "파이어폭스"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:97
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:70
 msgid "Opera"
 msgstr "오페라"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:71
 msgid "Vivaldi"
 msgstr "비발디"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:72
 msgid "Whale"
 msgstr "웨일"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:184
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:88
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:38
 msgid "Never"
 msgstr "절대"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:185
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:89
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
 #, fuzzy
 msgid "1 Day"
 msgstr "하루"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:186
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:90
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
 #, fuzzy
 msgid "1 Week"
 msgstr "일주일"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:187
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:91
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
 #, fuzzy
 msgid "1 Month"
 msgstr "한달"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:188
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:92
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:42
 #, fuzzy
 msgid "3 Months"
 msgstr "한달"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:189
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:93
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:43
 #, fuzzy
 msgid "6 Months"
 msgstr "한달"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:190
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:94
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:44
 msgid "1 Year"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:191
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:95
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:45
 msgid "Forever"
 msgstr "영구적으로"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:335
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:120
 msgctxt "Theme"
 msgid "Light"
 msgstr "밝은 모드"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:336
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:121
 msgctxt "Theme"
 msgid "Dark"
 msgstr "어두운 모드"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:337
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:122
 msgctxt "Theme"
 msgid "System"
 msgstr "시스템"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:367
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:129
 msgid "H.264 (AVC)"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:368
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:130
 msgid "H.265 (HEVC)"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:383
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:333
 #, fuzzy
 msgid "An argument with that name already exists"
 msgstr "이 이름의 자격 증명이 이미 존재합니다."
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:390
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:435
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:340
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:385
 #, fuzzy
 msgid "The name of the argument cannot be empty"
 msgstr "자격 증명 이름은 비워둘 수 없습니다."
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:397
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:442
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:347
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:392
 #, fuzzy
 msgid "The arguments of the argument cannot be empty"
 msgstr "자격 증명 이름은 비워둘 수 없습니다."
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:428
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:378
 #, fuzzy
 msgid "An argument with that name does not exist"
 msgstr "이 이름의 자격 증명이 이미 존재합니다."
@@ -486,12 +888,6 @@ msgstr "정보"
 msgid "Close"
 msgstr "닫기"
 
-#: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:24
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:79
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:104
-msgid "General"
-msgstr "일반"
-
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:25
 #, fuzzy
 msgid "Changelog"
@@ -555,15 +951,6 @@ msgstr ""
 #, fuzzy
 msgid "Discover"
 msgstr "면책 조항"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Cancel"
-msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:62
 msgid "Media URL"
@@ -870,14 +1257,6 @@ msgstr "아니오"
 msgid "Keyring"
 msgstr "암호 저장소"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
-msgid "Add"
-msgstr "추가"
-
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
 #, fuzzy
@@ -892,11 +1271,6 @@ msgstr "모든 다운로드가 완료되면"
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
 msgid "There are no credentials found with the current filters"
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
-msgid "Name"
-msgstr "이름"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
@@ -937,12 +1311,6 @@ msgstr ""
 msgid "Home"
 msgstr "홈"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
-msgid "Downloads"
-msgstr "다운로드"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 #, fuzzy
 msgid "Updating"
@@ -956,10 +1324,6 @@ msgstr "도움말"
 msgid "Check for Updates"
 msgstr "업데이트 확인"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
-msgid "GitHub Repo"
-msgstr "GitHub 저장소"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 msgid "Report a Bug"
 msgstr "버그 보고"
@@ -969,7 +1333,7 @@ msgid "Discussions"
 msgstr "토론"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:81
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
 msgid "Settings"
 msgstr "설정"
 
@@ -1083,18 +1447,9 @@ msgstr ""
 msgid "Downloading update: {0}%"
 msgstr "다운로드 중"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
-msgid "Downloader"
-msgstr "다운로더"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
-msgid "Converter"
-msgstr "변환기"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:40
-#, fuzzy
-msgid "Receive Preview Updates"
-msgstr "업데이트 확인"
+msgid "Update Parabolic and dependencies, such as yt-dlp, to beta versions"
+msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:41
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:45
@@ -1133,108 +1488,14 @@ msgstr "열기"
 msgid "Off"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
-#, fuzzy
-msgid "Prevent Suspend"
-msgstr "중단 방지"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
-msgid "Prevent the computer from sleeping while downloads are running"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
-msgid "Download History Length"
-msgstr "다운로드 기록 기간"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:48
-#, fuzzy
-msgid "The amount of time to keep past downloads in the app's history"
-msgstr "모든 다운로드가 완료되면"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:50
 #, fuzzy
 msgid "Max Number of Active Downloads"
 msgstr "최대 활성 다운로드 수"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
-msgid "Overwrite Existing Files"
-msgstr "기존 파일 덮어쓰기"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
-#, fuzzy
-msgid "Include Media Id in Title"
-msgstr "검증 후 제목에 미디어 ID 포함"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
-msgid "Add the media's id to its default title"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
-msgid "Include Auto-Generated Subtitles"
-msgstr "자동 생성된 자막 포함"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
-msgid ""
-"Show auto-generated subtitles to download in addition to available subtitles"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
-msgid "Preferred Video Codec"
-msgstr "선호하는 비디오 코덱"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:63
-msgid ""
-"Prefer this codec when parsing video formats to show available to download"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
-#, fuzzy
-msgid "Preferred Audio Codec"
-msgstr "선호하는 비디오 코덱"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:66
-msgid ""
-"Prefer this codec when parsing audio formats to show available to download"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:68
-msgid "Preferred Subtitle Format"
-msgstr "선호하는 자막 형식"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:69
-msgid "Prefer this subtitle file format when downloading"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
-#, fuzzy
-msgid "Use Part Files"
-msgstr "배치 파일 사용"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:72
-msgid ""
-"Download media in separate .part files instead of directly into the output "
-"file"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
-msgid "Use SponsorBlock for YouTube"
-msgstr "YouTube용 SponsorBlock 사용"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
-msgid "Try to remove sponsored segments from videos"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
-msgid "Limit Download Speed"
-msgstr "다운로드 속도 제한"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:82
 msgid "Speed Limit"
 msgstr "속도 제한"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
-msgid "Proxy URL"
-msgstr "프록시 URL"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:84
 msgid "Enter proxy url here"
@@ -1244,40 +1505,6 @@ msgstr "여기에 프록시 URL을 입력하세요"
 #, fuzzy
 msgid "Cookies from File"
 msgstr "쿠키 파일"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
-msgid "No file selected"
-msgstr "선택된 파일 없음"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
-msgid "Clear Cookies File"
-msgstr "쿠키 파일 지우기"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
-msgid "Select Cookies File"
-msgstr "쿠키 파일 선택"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:89
-msgid "Cookies from Browser"
-msgstr "브라우저에서 쿠키"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
-#, fuzzy
-msgid "aria2c"
-msgstr "aria2"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
-#, fuzzy
-msgid "Use aria2c"
-msgstr "aria2 사용"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
-msgid ""
-"An alternative downloader that may be faster in some regions compared to yt-"
-"dlp's native downloader"
-msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:96
 #, fuzzy
@@ -1297,107 +1524,35 @@ msgstr "최소 분할 크기 (-k)"
 msgid "Corresponds to -k option"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
-msgid "Embed Metadata"
-msgstr "메타데이터 포함"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
-msgid "Remove Source Data"
-msgstr "소스 데이터 제거"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
-#, fuzzy
-msgid "Clear metadata fields containing identifying download information"
-msgstr ""
-"활성화되면, Parabolic은 다운로드 정보를 포함하는 메타데이터 필드를 삭제합니"
-"다."
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
-#, fuzzy
-msgid "Embed Thumbnails"
-msgstr "자막 포함"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
-msgid ""
-"If the file type does not support embedding, the thumbnail will be written "
-"to a separate image file"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
-msgid "Crop Audio Thumbnails"
-msgstr "오디오 썸네일 자르기"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
-#, fuzzy
-msgid "Crop thumbnails of audio files to squares"
-msgstr "활성화되면, Parabolic은 오디오 파일의 썸네일을 정사각형으로 자릅니다."
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
-msgid "Embed Chapters"
-msgstr "챕터 포함"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
-msgid "Embed Subtitles"
-msgstr "자막 포함"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
-msgid ""
-"If disabled or if embedding is not supported, downloaded subtitles will be "
-"saved to separate files"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
-#, fuzzy
-msgid "FFmpeg Threads"
-msgstr "후처리 스레드"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:123
-msgid "Limit the number of threads used by ffmpeg"
-msgstr ""
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:125
 #, fuzzy
 msgid "Post-Processor Arguments"
 msgstr "후처리 스레드"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:126
-msgid "Arguments will be shown for selection in the add download dialog"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
-#, fuzzy
-msgid "Argument"
-msgstr "새 자격 증명"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
 #, fuzzy
 msgid "Post-Processor"
 msgstr "처리 중"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
-msgid "Executable"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
-msgid "Args"
-msgstr ""
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:135
 #, fuzzy
 msgid "Enter args here"
 msgstr "여기에 URL을 입력하세요"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
 #, fuzzy
-msgid "Delete Argument?"
-msgstr "새 자격 증명"
+#~ msgid "One Day"
+#~ msgstr "하루"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
 #, fuzzy
-msgid ""
-"Are you sure you want to delete this post-processor argument? The action is "
-"irreversible"
-msgstr "이 자격 증명을 삭제하시겠습니까?"
+#~ msgid "One Week"
+#~ msgstr "일주일"
+
+#, fuzzy
+#~ msgid "One Month"
+#~ msgstr "한달"
+
+#~ msgid "Three Months"
+#~ msgstr "세달"
 
 #, fuzzy
 #~ msgid "There are no downloads added"
@@ -1405,9 +1560,6 @@ msgstr "이 자격 증명을 삭제하시겠습니까?"
 
 #~ msgid "Downloading"
 #~ msgstr "다운로드 중"
-
-#~ msgid "Edit"
-#~ msgstr "편집"
 
 #, fuzzy
 #~ msgid "File"
@@ -1427,9 +1579,6 @@ msgstr "이 자격 증명을 삭제하시겠습니까?"
 #~ msgid "Arguments"
 #~ msgstr "새 자격 증명"
 
-#~ msgid "Delete"
-#~ msgstr "삭제"
-
 #, fuzzy
 #~ msgid "The name cannot be empty."
 #~ msgstr "자격 증명 이름은 비워둘 수 없습니다."
@@ -1448,10 +1597,6 @@ msgstr "이 자격 증명을 삭제하시겠습니까?"
 
 #, fuzzy
 #~ msgid "Delete Argument"
-#~ msgstr "새 자격 증명"
-
-#, fuzzy
-#~ msgid "No Arguments"
 #~ msgstr "새 자격 증명"
 
 #~ msgid "Download Finished"
@@ -1567,35 +1712,6 @@ msgstr "이 자격 증명을 삭제하시겠습니까?"
 #~ msgid "No Downloads Completed"
 #~ msgstr "완료된 다운로드 없음"
 
-#~ msgid "Three Months"
-#~ msgstr "세달"
-
-#, fuzzy
-#~ msgid "Max Number of Running Downloads"
-#~ msgstr "최대 활성 다운로드 수"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "파일명 문자 제한"
-
-#, fuzzy
-#~ msgid "Restrict characters in filenames to those supported only by Windows"
-#~ msgstr "파일명에서 Windows에서 지원하는 문자만 사용하도록 제한."
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "속도 제한 (KiB/초)"
-
-#, fuzzy
-#~ msgid "The minimum size of which to split a file (in MiB)"
-#~ msgstr "파일을 분할할 최소 크기(단위: MiB)."
-
-#, fuzzy
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "후처리 스레드"
-
-#, fuzzy
-#~ msgid "Add Postprocessing Argument"
-#~ msgstr "후처리 스레드"
-
 #~ msgid "Starting"
 #~ msgstr "시작 중"
 
@@ -1614,9 +1730,6 @@ msgstr "이 자격 증명을 삭제하시겠습니까?"
 #, fuzzy
 #~ msgid "Log copied to clipboard"
 #~ msgstr "로그 복사하기"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "TXT 파일 (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "사용 가능한 자막이 없습니다"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-21 18:33-0500\n"
+"POT-Creation-Date: 2026-01-25 13:42-0500\n"
 "PO-Revision-Date: 2025-12-01 12:00+0000\n"
 "Last-Translator: NIICKTCHUNS "
 "<69496904+NIICKTCHUNS@users.noreply.github.com>\n"
@@ -56,27 +56,378 @@ msgstr "Adicione a URL de um áudio, vídeo ou playlist para iniciar o download"
 msgid "Add Download"
 msgstr "Adicionar download"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:12
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:31
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:11
+#: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:24
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:79
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:104
+msgid "General"
+msgstr "Geral"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
 msgid "User Interface"
 msgstr "Interface do usuário"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:35
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:18
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
 msgid "Theme"
 msgstr "Tema"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:24
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:27
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:36
 msgid "Translation Language"
 msgstr "Idioma da tradução"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:25
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:38
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:28
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:37
 #, fuzzy
 msgid "An application restart is required for a change to take effect"
 msgstr ""
 "É necessário reiniciar o aplicativo para que a alteração entre em vigor"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:37
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:39
+#, fuzzy
+msgid "Receive Preview Updates"
+msgstr "Receber atualizações da beta do aplicativo"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:38
+msgid "Update dependencies, such as yt-dlp, to beta versions"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:47
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "Prevenir suspender"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:48
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
+#, fuzzy
+msgid "Prevent the computer from sleeping while downloads are running"
+msgstr ""
+"Impedir que o computador hiberne enquanto os downloads estão em execução"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:57
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
+msgid "Download History Length"
+msgstr "Duração do histórico de downloads"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:58
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:48
+#, fuzzy
+msgid "The amount of time to keep past downloads in the app's history"
+msgstr "O tempo para manter downloads anteriores no histórico do app"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:68
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:31
+msgid "Downloads"
+msgstr "Downloads"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:71
+msgid "Max Number of Running Downloads"
+msgstr "Número máximo de downloads simultâneos"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:87
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
+msgid "Overwrite Existing Files"
+msgstr "Sobrescrever arquivos existentes"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:96
+msgid "Limit Filename Characters"
+msgstr "Limite de caracteres no nome do arquivo"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:97
+msgid "Restrict characters in filenames to those supported only by Windows"
+msgstr ""
+"Restringir os caracteres nos nomes de arquivo apenas aos suportados pelo "
+"Windows"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:106
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "Incluir o ID da mídia no título"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:107
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
+msgid "Add the media's id to its default title"
+msgstr "Adicionar o ID da mídia ao seu título padrão"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:116
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
+msgid "Include Auto-Generated Subtitles"
+msgstr "Incluir legendas geradas automaticamente"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:117
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
+msgid ""
+"Show auto-generated subtitles to download in addition to available subtitles"
+msgstr ""
+"Mostrar legendas geradas automaticamente para baixar além das legendas "
+"disponíveis"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:126
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
+msgid "Preferred Video Codec"
+msgstr "Codec de vídeo preferido"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:63
+msgid ""
+"Prefer this codec when parsing video formats to show available to download"
+msgstr ""
+"Preferir este codec ao analisar formatos de vídeo para mostrar os "
+"disponíveis para download"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:136
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
+msgid "Preferred Audio Codec"
+msgstr "Codec de áudio preferido"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:137
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:66
+msgid ""
+"Prefer this codec when parsing audio formats to show available to download"
+msgstr ""
+"Preferir este codec ao analisar formatos de áudio para mostrar os "
+"disponíveis para download"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:146
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:68
+msgid "Preferred Subtitle Format"
+msgstr "Formato de legenda preferido"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:147
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:69
+msgid "Prefer this subtitle file format when downloading"
+msgstr "Preferir este formato de arquivo de legenda ao baixar"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:158
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:162
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
+msgid "Downloader"
+msgstr "Gerenciador de downloads"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:165
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
+msgid "Use Part Files"
+msgstr "Usar arquivos de partes"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:166
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:72
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file"
+msgstr ""
+"Baixar mídia em arquivos .part separados em vez de diretamente no arquivo "
+"final"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:175
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
+msgid "Use SponsorBlock for YouTube"
+msgstr "Usar SponsorBlock para o YouTube"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:176
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
+msgid "Try to remove sponsored segments from videos"
+msgstr "Tentar remover segmentos patrocinados dos vídeos"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:185
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
+msgid "Limit Download Speed"
+msgstr "Limitar velocidade de download"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:190
+msgid "Speed Limit (KiB/s)"
+msgstr "Limite de velocidade (KiB/s)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:208
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
+msgid "Proxy URL"
+msgstr "URL do Proxy"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:217
+#, fuzzy
+msgid "Cookies File"
+msgstr "Aquivo de cookies"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:228
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:250
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
+msgid "Select Cookies File"
+msgstr "Selecione o arquivo de cookies"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:237
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
+msgid "Clear Cookies File"
+msgstr "Limpar arquivo de cookies"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:246
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:89
+msgid "Cookies from Browser"
+msgstr "Cookies do navegador"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:256
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
+msgid "aria2c"
+msgstr "aria2c"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:257
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader"
+msgstr ""
+"Um downloader alternativo que pode ser mais veloz em algumas regiões "
+"comparado ao downloader nativo do yt-dlp"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:260
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
+msgid "Use aria2c"
+msgstr "Usar aria2c"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:269
+#, fuzzy
+msgid "Max Connections Per Server (-x)"
+msgstr "Máximo de conexões por servidor (-x)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:286
+#, fuzzy
+msgid "Minimum Split Size (-k)"
+msgstr "Tamanho mínimo da divisão (-k)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:287
+msgid "The minimum size of which to split a file (in MiB)"
+msgstr "O tamanho mínimo para dividir um arquivo (em MiB)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:306
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:310
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
+msgid "Converter"
+msgstr "Conversor"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:313
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
+msgid "Embed Metadata"
+msgstr "Incorporar metadados"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:323
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
+msgid "Remove Source Data"
+msgstr "Remover dados de origem"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:324
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
+msgid "Clear metadata fields containing identifying download information"
+msgstr ""
+"Limpar campos de metadados que contenham informações identificáveis do "
+"download"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:334
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
+msgid "Embed Thumbnails"
+msgstr "Incorporar miniaturas"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:335
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file"
+msgstr ""
+"Se o tipo de arquivo não suportar a incorporação, a miniatura será escrita "
+"em um arquivo de imagem separado"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:345
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
+msgid "Crop Audio Thumbnails"
+msgstr "Cortar miniaturas para áudio"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:346
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
+msgid "Crop thumbnails of audio files to squares"
+msgstr "Cortar miniaturas de arquivos de áudio em quadrados"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
+msgid "Embed Chapters"
+msgstr "Incorporar capítulos"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:365
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
+msgid "Embed Subtitles"
+msgstr "Incorporar Legendas"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:366
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files"
+msgstr ""
+"Se desativado ou se a incorporação não for suportada, as legendas baixadas "
+"serão salvas em um arquivo separado"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:375
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
+msgid "FFmpeg Threads"
+msgstr "Threads do FFmpeg"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:376
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:123
+msgid "Limit the number of threads used by ffmpeg"
+msgstr "Limitar o número de threads usado pelo ffmpeg"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:387
+msgid "Postprocessing Arguments"
+msgstr "Argumentos do pós-processamento"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:388
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:126
+msgid "Arguments will be shown for selection in the add download dialog"
+msgstr ""
+"Os argumentos serão exibidos para seleção na janela de adicionar download"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:390
+msgid "Add Postprocessing Argument"
+msgstr "Adicionar argumento do pós-processamento"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:274
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "Adicionar"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:404
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
+msgid "Argument"
+msgstr "Argumento"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:419
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
+msgid "Name"
+msgstr "Nome"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:423
+#, fuzzy
+msgid "Post Processor"
+msgstr "Pós-processador"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:427
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
+msgid "Executable"
+msgstr "Executável"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:431
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
+msgid "Args"
+msgstr "Args"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:6
 msgctxt "Shortcut"
@@ -107,14 +458,68 @@ msgstr "Pasta de destino"
 msgid "Close Folder"
 msgstr "Pasta de destino"
 
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:137
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
+msgid "GitHub Repo"
+msgstr "Repositório do GitHub"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:140
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:265
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
+msgid "No file selected"
+msgstr "Nenhum arquivo selecionado"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:207
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:316
+msgid "Edit"
+msgstr "Editar"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:212
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:323
+msgid "Delete"
+msgstr "Excluir"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:227
+msgid "No Arguments"
+msgstr "Sem argumentos"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:252
+msgid "TXT Files (*.txt)"
+msgstr "Arquivos TXT (*.txt)"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:322
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
+msgid "Delete Argument?"
+msgstr "Deletar argumento?"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:322
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
+#, fuzzy
+msgid ""
+"Are you sure you want to delete this post-processor argument? The action is "
+"irreversible"
+msgstr "Tem certeza que deseja apagar essa credencial?"
+
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:324
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
+msgid "Cancel"
+msgstr "Cancelar"
+
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:46
 msgid "Use manual credential"
 msgstr "Utilizar outra credencial manualmente"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:59
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:91
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:158
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:244
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:64
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:76
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
 #: Nickvision.Parabolic.Shared/Models/Format.cs:292
 #: Nickvision.Parabolic.Shared/Models/Format.cs:293
 msgid "None"
@@ -290,142 +695,142 @@ msgstr "Não foi possível baixar e instalar a atualização"
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Não foi possível baixar e instalar a atualização"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:60
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:318
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:364
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:45
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:112
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:126
 msgid "Any"
 msgstr "Qualquer"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:61
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:46
 msgid "FLAC (ALAC)"
 msgstr "FLAC (ALAC)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:62
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:47
 msgid "WAV (AIFF)"
 msgstr "WAV (AIFF)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:76
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:55
 msgid "System"
 msgstr "Sistema"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:92
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:65
 msgid "Brave"
 msgstr "Brave"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:93
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:66
 msgid "Chrome"
 msgstr "Chrome"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:94
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:67
 msgid "Chromium"
 msgstr "Chromium"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:95
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:68
 msgid "Edge"
 msgstr "Edge"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:96
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:69
 msgid "Firefox"
 msgstr "Firefox"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:97
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:70
 msgid "Opera"
 msgstr "Opera"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:71
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:72
 msgid "Whale"
 msgstr "Whale"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:184
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:88
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:38
 msgid "Never"
 msgstr "Nunca"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:185
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:89
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
 #, fuzzy
 msgid "1 Day"
 msgstr "Um dia"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:186
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:90
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
 #, fuzzy
 msgid "1 Week"
 msgstr "Uma semana"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:187
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:91
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
 #, fuzzy
 msgid "1 Month"
 msgstr "Um mês"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:188
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:92
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:42
 #, fuzzy
 msgid "3 Months"
 msgstr "Um mês"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:189
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:93
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:43
 #, fuzzy
 msgid "6 Months"
 msgstr "Um mês"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:190
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:94
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:44
 msgid "1 Year"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:191
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:95
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:45
 msgid "Forever"
 msgstr "Sempre"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:335
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:120
 msgctxt "Theme"
 msgid "Light"
 msgstr "Claro"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:336
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:121
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Escuro"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:337
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:122
 msgctxt "Theme"
 msgid "System"
 msgstr "Sistema"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:367
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:129
 msgid "H.264 (AVC)"
 msgstr "H.264 (AVC)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:368
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:130
 msgid "H.265 (HEVC)"
 msgstr "H.265 (HEVC)"
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:383
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:333
 #, fuzzy
 msgid "An argument with that name already exists"
 msgstr "Um argumento com esse nome já existe."
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:390
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:435
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:340
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:385
 #, fuzzy
 msgid "The name of the argument cannot be empty"
 msgstr "O argumento args não pode estar vazio."
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:397
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:442
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:347
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:392
 #, fuzzy
 msgid "The arguments of the argument cannot be empty"
 msgstr "O argumento args não pode estar vazio."
 
-#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:428
+#: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:378
 #, fuzzy
 msgid "An argument with that name does not exist"
 msgstr "Um argumento com esse nome já existe."
@@ -490,12 +895,6 @@ msgstr "Sobre"
 msgid "Close"
 msgstr "Fechar"
 
-#: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:24
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:79
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:104
-msgid "General"
-msgstr "Geral"
-
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:25
 msgid "Changelog"
 msgstr "Histórico de mudanças"
@@ -557,15 +956,6 @@ msgstr ""
 #, fuzzy
 msgid "Discover"
 msgstr "Recuperar"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:163
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:208
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:62
 msgid "Media URL"
@@ -874,14 +1264,6 @@ msgstr "Não"
 msgid "Keyring"
 msgstr "Chaveiro"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
-msgid "Add"
-msgstr "Adicionar"
-
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
 msgid "No Credentials"
@@ -895,11 +1277,6 @@ msgstr "Gerencie suas credenciais no Chaveiro."
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
 msgid "There are no credentials found with the current filters"
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:130
-msgid "Name"
-msgstr "Nome"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:131
@@ -939,12 +1316,6 @@ msgstr "Pré-visualizar"
 msgid "Home"
 msgstr "Início"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:85
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
-msgid "Downloads"
-msgstr "Downloads"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:74
 #, fuzzy
 msgid "Updating"
@@ -958,10 +1329,6 @@ msgstr "Ajuda"
 msgid "Check for Updates"
 msgstr "Verificar se há atualizações"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
-msgid "GitHub Repo"
-msgstr "Repositório do GitHub"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:78
 msgid "Report a Bug"
 msgstr "Reportar um Bug"
@@ -971,7 +1338,7 @@ msgid "Discussions"
 msgstr "Discussões"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:81
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
 msgid "Settings"
 msgstr "Configurações"
 
@@ -1091,18 +1458,9 @@ msgstr ""
 msgid "Downloading update: {0}%"
 msgstr "Baixando atualização"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:33
-msgid "Downloader"
-msgstr "Gerenciador de downloads"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
-msgid "Converter"
-msgstr "Conversor"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:40
-#, fuzzy
-msgid "Receive Preview Updates"
-msgstr "Receber atualizações da beta do aplicativo"
+msgid "Update Parabolic and dependencies, such as yt-dlp, to beta versions"
+msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:41
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:45
@@ -1140,115 +1498,13 @@ msgstr "Ativado"
 msgid "Off"
 msgstr "Desativado"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
-#, fuzzy
-msgid "Prevent Suspend"
-msgstr "Prevenir suspender"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
-#, fuzzy
-msgid "Prevent the computer from sleeping while downloads are running"
-msgstr ""
-"Impedir que o computador hiberne enquanto os downloads estão em execução"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:47
-msgid "Download History Length"
-msgstr "Duração do histórico de downloads"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:48
-#, fuzzy
-msgid "The amount of time to keep past downloads in the app's history"
-msgstr "O tempo para manter downloads anteriores no histórico do app"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:50
 msgid "Max Number of Active Downloads"
 msgstr "Número máximo de downloads ativos"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
-msgid "Overwrite Existing Files"
-msgstr "Sobrescrever arquivos existentes"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:54
-#, fuzzy
-msgid "Include Media Id in Title"
-msgstr "Incluir o ID da mídia no título"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:55
-msgid "Add the media's id to its default title"
-msgstr "Adicionar o ID da mídia ao seu título padrão"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:58
-msgid "Include Auto-Generated Subtitles"
-msgstr "Incluir legendas geradas automaticamente"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:59
-msgid ""
-"Show auto-generated subtitles to download in addition to available subtitles"
-msgstr ""
-"Mostrar legendas geradas automaticamente para baixar além das legendas "
-"disponíveis"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
-msgid "Preferred Video Codec"
-msgstr "Codec de vídeo preferido"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:63
-msgid ""
-"Prefer this codec when parsing video formats to show available to download"
-msgstr ""
-"Preferir este codec ao analisar formatos de vídeo para mostrar os "
-"disponíveis para download"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
-msgid "Preferred Audio Codec"
-msgstr "Codec de áudio preferido"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:66
-msgid ""
-"Prefer this codec when parsing audio formats to show available to download"
-msgstr ""
-"Preferir este codec ao analisar formatos de áudio para mostrar os "
-"disponíveis para download"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:68
-msgid "Preferred Subtitle Format"
-msgstr "Formato de legenda preferido"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:69
-msgid "Prefer this subtitle file format when downloading"
-msgstr "Preferir este formato de arquivo de legenda ao baixar"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
-msgid "Use Part Files"
-msgstr "Usar arquivos de partes"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:72
-msgid ""
-"Download media in separate .part files instead of directly into the output "
-"file"
-msgstr ""
-"Baixar mídia em arquivos .part separados em vez de diretamente no arquivo "
-"final"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
-msgid "Use SponsorBlock for YouTube"
-msgstr "Usar SponsorBlock para o YouTube"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:76
-msgid "Try to remove sponsored segments from videos"
-msgstr "Tentar remover segmentos patrocinados dos vídeos"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
-msgid "Limit Download Speed"
-msgstr "Limitar velocidade de download"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:82
 msgid "Speed Limit"
 msgstr "Limite de velocidade"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:83
-msgid "Proxy URL"
-msgstr "URL do Proxy"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:84
 msgid "Enter proxy url here"
@@ -1258,40 +1514,6 @@ msgstr "Insira a URL do proxy aqui"
 #, fuzzy
 msgid "Cookies from File"
 msgstr "Aquivo de cookies"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:196
-msgid "No file selected"
-msgstr "Nenhum arquivo selecionado"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:87
-msgid "Clear Cookies File"
-msgstr "Limpar arquivo de cookies"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:88
-msgid "Select Cookies File"
-msgstr "Selecione o arquivo de cookies"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:89
-msgid "Cookies from Browser"
-msgstr "Cookies do navegador"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:91
-msgid "aria2c"
-msgstr "aria2c"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
-msgid "Use aria2c"
-msgstr "Usar aria2c"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:93
-msgid ""
-"An alternative downloader that may be faster in some regions compared to yt-"
-"dlp's native downloader"
-msgstr ""
-"Um downloader alternativo que pode ser mais veloz em algumas regiões "
-"comparado ao downloader nativo do yt-dlp"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:96
 #, fuzzy
@@ -1311,106 +1533,35 @@ msgstr "Tamanho mínimo da divisão (-k)"
 msgid "Corresponds to -k option"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:100
-msgid "Embed Metadata"
-msgstr "Incorporar metadados"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
-msgid "Remove Source Data"
-msgstr "Remover dados de origem"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
-msgid "Clear metadata fields containing identifying download information"
-msgstr ""
-"Limpar campos de metadados que contenham informações identificáveis do "
-"download"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
-msgid "Embed Thumbnails"
-msgstr "Incorporar miniaturas"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:108
-msgid ""
-"If the file type does not support embedding, the thumbnail will be written "
-"to a separate image file"
-msgstr ""
-"Se o tipo de arquivo não suportar a incorporação, a miniatura será escrita "
-"em um arquivo de imagem separado"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:111
-msgid "Crop Audio Thumbnails"
-msgstr "Cortar miniaturas para áudio"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
-msgid "Crop thumbnails of audio files to squares"
-msgstr "Cortar miniaturas de arquivos de áudio em quadrados"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
-msgid "Embed Chapters"
-msgstr "Incorporar capítulos"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
-msgid "Embed Subtitles"
-msgstr "Incorporar Legendas"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
-msgid ""
-"If disabled or if embedding is not supported, downloaded subtitles will be "
-"saved to separate files"
-msgstr ""
-"Se desativado ou se a incorporação não for suportada, as legendas baixadas "
-"serão salvas em um arquivo separado"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
-msgid "FFmpeg Threads"
-msgstr "Threads do FFmpeg"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:123
-msgid "Limit the number of threads used by ffmpeg"
-msgstr "Limitar o número de threads usado pelo ffmpeg"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:125
 #, fuzzy
 msgid "Post-Processor Arguments"
 msgstr "Argumento do pós-processador"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:126
-msgid "Arguments will be shown for selection in the add download dialog"
-msgstr ""
-"Os argumentos serão exibidos para seleção na janela de adicionar download"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
-msgid "Argument"
-msgstr "Argumento"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:132
 #, fuzzy
 msgid "Post-Processor"
 msgstr "Pós-processador"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:133
-msgid "Executable"
-msgstr "Executável"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
-msgid "Args"
-msgstr "Args"
-
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:135
 #, fuzzy
 msgid "Enter args here"
 msgstr "Insira os argumentos aqui"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:205
-msgid "Delete Argument?"
-msgstr "Deletar argumento?"
-
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:206
 #, fuzzy
-msgid ""
-"Are you sure you want to delete this post-processor argument? The action is "
-"irreversible"
-msgstr "Tem certeza que deseja apagar essa credencial?"
+#~ msgid "One Day"
+#~ msgstr "Um dia"
+
+#, fuzzy
+#~ msgid "One Week"
+#~ msgstr "Uma semana"
+
+#, fuzzy
+#~ msgid "One Month"
+#~ msgstr "Um mês"
+
+#~ msgid "Three Months"
+#~ msgstr "Três meses"
 
 #, fuzzy
 #~ msgid "There are no downloads added"
@@ -1418,9 +1569,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 
 #~ msgid "Downloading"
 #~ msgstr "Baixando"
-
-#~ msgid "Edit"
-#~ msgstr "Editar"
 
 #~ msgid "File"
 #~ msgstr "Arquivo"
@@ -1441,9 +1589,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 #~ msgid "Arguments"
 #~ msgstr "Argumentos"
 
-#~ msgid "Delete"
-#~ msgstr "Excluir"
-
 #, fuzzy
 #~ msgid "The name cannot be empty."
 #~ msgstr "O nome do argumento não pode estar vazio."
@@ -1463,9 +1608,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 
 #~ msgid "Delete Argument"
 #~ msgstr "Apagar argumento"
-
-#~ msgid "No Arguments"
-#~ msgstr "Sem argumentos"
 
 #~ msgid ""
 #~ "Error during yt-dlp validation:\n"
@@ -1661,32 +1803,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 #~ msgid "No Downloads Completed"
 #~ msgstr "Nenhum download concluído"
 
-#~ msgid "Three Months"
-#~ msgstr "Três meses"
-
-#~ msgid "Max Number of Running Downloads"
-#~ msgstr "Número máximo de downloads simultâneos"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Limite de caracteres no nome do arquivo"
-
-#~ msgid "Restrict characters in filenames to those supported only by Windows"
-#~ msgstr ""
-#~ "Restringir os caracteres nos nomes de arquivo apenas aos suportados pelo "
-#~ "Windows"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Limite de velocidade (KiB/s)"
-
-#~ msgid "The minimum size of which to split a file (in MiB)"
-#~ msgstr "O tamanho mínimo para dividir um arquivo (em MiB)"
-
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "Argumentos do pós-processamento"
-
-#~ msgid "Add Postprocessing Argument"
-#~ msgstr "Adicionar argumento do pós-processamento"
-
 #~ msgid "Starting"
 #~ msgstr "Iniciando"
 
@@ -1713,9 +1829,6 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 
 #~ msgid "Log copied to clipboard"
 #~ msgstr "Registro copiado para a área de transferência"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "Arquivos TXT (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "Nenhuma legenda disponível"

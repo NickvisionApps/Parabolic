@@ -355,7 +355,7 @@ public class MainWindowController : IDisposable
 
     private async void JsonFileService_Saved(object? sender, JsonFileSavedEventArgs e)
     {
-        if(e.Name == Configuration.Key)
+        if (e.Name == Configuration.Key)
         {
             var config = (e.Data as Configuration)!;
             if (config.PreventSuspend)
