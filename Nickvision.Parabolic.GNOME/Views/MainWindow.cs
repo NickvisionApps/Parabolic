@@ -1,6 +1,7 @@
 ﻿using Nickvision.Desktop.GNOME.Controls;
 using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Desktop.Notifications;
+using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.Shared.Controllers;
 using System;
 using System.Linq;
@@ -118,6 +119,8 @@ public class MainWindow : Adw.ApplicationWindow
 
     private async void About(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
     {
+        var loadingDialog = new LoadingDialog(_controller.Translator);
+        loadingDialog.Present(this);
         var extraInfo = string.Empty;
         extraInfo += $"GTK {Gtk.Functions.GetMajorVersion()}.{Gtk.Functions.GetMinorVersion()}.{Gtk.Functions.GetMicroVersion()}\n";
         extraInfo += $"libadwaita {Adw.Functions.GetMajorVersion()}.{Adw.Functions.GetMinorVersion()}.{Adw.Functions.GetMicroVersion()}";
@@ -146,6 +149,7 @@ public class MainWindow : Adw.ApplicationWindow
         {
             dialog.TranslatorCredits = _controller.AppInfo.TranslationCredits;
         }
+        loadingDialog.ForceClose();
         dialog.Present(this);
     }
 }
