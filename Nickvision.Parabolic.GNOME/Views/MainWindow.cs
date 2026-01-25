@@ -16,6 +16,7 @@ public class MainWindow : Adw.ApplicationWindow
     private readonly Gio.SimpleAction _actPreferences;
     private readonly Gio.SimpleAction _actKeyboardShortcuts;
     private readonly Gio.SimpleAction _actAbout;
+    private readonly Gio.SimpleAction _actAddDownload;
 
     [Gtk.Connect("windowTitle")]
     private Adw.WindowTitle? _windowTitle;
@@ -70,6 +71,11 @@ public class MainWindow : Adw.ApplicationWindow
         _actAbout.OnActivate += About;
         AddAction(_actAbout);
         Application!.SetAccelsForAction("win.about", ["F1"]);
+        // Add download action
+        _actAddDownload = Gio.SimpleAction.New("addDownload", null);
+        _actAddDownload.OnActivate += AddDownload;
+        AddAction(_actAddDownload);
+        Application!.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
     }
 
     public new void Present()
@@ -151,5 +157,11 @@ public class MainWindow : Adw.ApplicationWindow
         }
         loadingDialog.ForceClose();
         dialog.Present(this);
+    }
+
+    private async void AddDownload(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, this);
+        await addDownloadDialog.PresentWithClipboardAsync();
     }
 }

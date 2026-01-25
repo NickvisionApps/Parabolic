@@ -1,0 +1,125 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Dialog root {
+  follows-content-size: true;
+  width-request: 360;
+  default-widget: discoverUrlButton;
+
+  child: Adw.NavigationView navigationView {
+    Adw.NavigationPage {
+      title: _("Add Download");
+      tag: "discover";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar { }
+
+        [bottom]
+        Gtk.ActionBar {
+          [center]
+          Gtk.Button discoverUrlButton {
+            margin-top: 12;
+            margin-bottom: 12;
+            label: _("Discover");
+            sensitive: false;
+
+            styles [ "pill", "suggested-action" ]
+          }
+        }
+
+        content: Adw.PreferencesPage {
+          Adw.PreferencesGroup {
+            Adw.EntryRow urlRow {
+              title: _("Media URL");
+            }
+
+            Adw.ButtonRow selectBatchFileRow {
+              title: _("Select Batch File");
+              start-icon-name: "document-open-symbolic";
+            }
+          }
+
+          Adw.PreferencesGroup {
+            Adw.ExpanderRow authenticationRow {
+              title: _("Use Authentication");
+              enable-expansion: false;
+              show-enable-switch: true;
+
+              Adw.ComboRow authenticationCredentialRow {
+                title: _("Credential");
+              }
+
+              Adw.EntryRow authenticationUsernameRow {
+                title: _("Username");
+              }
+
+              Adw.PasswordEntryRow authenticationPasswordRow {
+                title: _("Password");
+              }
+            }
+          }
+
+          Adw.PreferencesGroup {
+            Adw.SwitchRow downloadImmediatelyRow {
+              title: _("Download Immediately");
+            }
+          }
+        };
+      };
+    }
+
+    Adw.NavigationPage {
+      title: _("Discovering Media");
+      tag: "loading";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar { }
+
+        content: Gtk.Box {
+          margin-start: 32;
+          margin-top: 32;
+          margin-end: 32;
+          margin-bottom: 32;
+          valign: center;
+          orientation: vertical;
+          spacing: 12;
+
+          Adw.Spinner {
+            halign: center;
+            width-request: 32;
+            height-request: 32;
+          }
+
+          Gtk.Label {
+            halign: center;
+            label: _("This may take some time...");
+
+            styles [ "dim-label" ]
+          }
+        };
+      };
+    }
+
+    Adw.NavigationPage {
+      title: _("Configure Download");
+      tag: "single";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar { }
+      };
+    }
+
+    Adw.NavigationPage {
+      title: _("Configure Download");
+      tag: "playlist";
+      can-pop: false;
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar { }
+      };
+    }
+  };
+}

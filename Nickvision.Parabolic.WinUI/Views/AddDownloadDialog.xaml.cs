@@ -159,8 +159,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var cancellationToken = new CancellationTokenSource();
         Title = _controller.Translator._("Discovering Media");
         PrimaryButtonText = null;
-        CloseButtonText = null;
-        SecondaryButtonText = _controller.Translator._("Cancel");
+        CloseButtonText = _controller.Translator._("Cancel");
         DefaultButton = ContentDialogButton.None;
         ViewStack.SelectedIndex = (int)Pages.Loading;
         DispatcherQueue.TryEnqueue(async () => await DiscoverMediaAsync(cancellationToken.Token));
@@ -176,7 +175,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
                 await DownloadSingleAsync();
             }
         }
-        else if (result == ContentDialogResult.Secondary)
+        else
         {
             cancellationToken.Cancel();
         }
@@ -197,13 +196,17 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             credential = new Credential("manual", TxtUsername.Text, TxtPassword.Password);
         }
-        _discoveryContext = (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value is null ? await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken) : await _controller.DiscoverAsync(new Uri(TxtUrl.Text), (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value!, cancellationToken);
+        else
+        {
+            credential = (CmbCredential.SelectedItem as SelectionItem<Credential?>)!.Value;
+        }
+        _discoveryContext = await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken);
         if (_discoveryContext is null)
         {
             Hide();
             return;
         }
-        Title = _controller.Translator._("Add Download");
+        Title = _controller.Translator._("Configure Download");
         PrimaryButtonText = _controller.Translator._("Download");
         CloseButtonText = _controller.Translator._("Cancel");
         SecondaryButtonText = null;

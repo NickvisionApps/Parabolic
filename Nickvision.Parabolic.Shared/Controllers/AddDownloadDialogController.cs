@@ -7,6 +7,7 @@ using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -41,23 +42,21 @@ public class AddDownloadDialogController
         _discoveryContextMap = new Dictionary<int, DiscoveryContext>();
         Translator = translationService;
         PreviousDownloadOptions = _jsonFileService.Load<PreviousDownloadOptions>(PreviousDownloadOptions.Key);
-        var availableCredentials = new List<SelectionItem<Credential?>>(_keyringService.Credentials.Count() + 1)
+        AvailableCredentials = new List<SelectionItem<Credential?>>(_keyringService.Credentials.Count() + 1)
         {
             new SelectionItem<Credential?>(null, Translator._("Use manual credential"), true)
         };
         foreach (var credential in _keyringService.Credentials)
         {
-            availableCredentials.Add(new SelectionItem<Credential?>(credential, credential.Name, false));
+            (AvailableCredentials as IList)!.Add(new SelectionItem<Credential?>(credential, credential.Name, false));
         }
-        AvailableCredentials = availableCredentials;
         var postprocessingArguments = _jsonFileService.Load<Configuration>(Configuration.Key).PostprocessingArguments;
-        var availablePostProcessorArguments = new List<SelectionItem<PostProcessorArgument?>>(postprocessingArguments.Count + 1);
+        AvailablePostProcessorArguments = new List<SelectionItem<PostProcessorArgument?>>(postprocessingArguments.Count + 1);
         foreach (var argument in postprocessingArguments)
         {
-            availablePostProcessorArguments.Add(new SelectionItem<PostProcessorArgument?>(argument, argument.Name, PreviousDownloadOptions.PostProcessorArgumentName == argument.Name));
+            (AvailablePostProcessorArguments as IList)!.Add(new SelectionItem<PostProcessorArgument?>(argument, argument.Name, PreviousDownloadOptions.PostProcessorArgumentName == argument.Name));
         }
-        availablePostProcessorArguments.Insert(0, new SelectionItem<PostProcessorArgument?>(null, Translator._("None"), !availablePostProcessorArguments.Any(x => x.ShouldSelect)));
-        AvailablePostProcessorArguments = availablePostProcessorArguments;
+        (AvailablePostProcessorArguments as IList)!.Insert(0, new SelectionItem<PostProcessorArgument?>(null, Translator._("None"), !AvailablePostProcessorArguments.Any(x => x.ShouldSelect)));
     }
 
     public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
