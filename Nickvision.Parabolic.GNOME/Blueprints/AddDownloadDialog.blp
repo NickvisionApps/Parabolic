@@ -3,8 +3,16 @@ using Adw 1;
 
 Adw.Dialog root {
   follows-content-size: true;
-  width-request: 360;
   default-widget: discoverUrlButton;
+
+  Adw.Breakpoint {
+    condition ("max-width: 550sp")
+
+    setters {
+      singleSwitcherBar.reveal: true;
+      singleHeaderBar.title-widget: null;
+    }
+  }
 
   child: Adw.NavigationView navigationView {
     Adw.NavigationPage {
@@ -58,9 +66,7 @@ Adw.Dialog root {
                 title: _("Password");
               }
             }
-          }
 
-          Adw.PreferencesGroup {
             Adw.SwitchRow downloadImmediatelyRow {
               title: _("Download Immediately");
             }
@@ -108,7 +114,56 @@ Adw.Dialog root {
       can-pop: false;
       child: Adw.ToolbarView {
         [top]
-        Adw.HeaderBar { }
+        Adw.HeaderBar singleHeaderBar { 
+          title-widget: Adw.ViewSwitcher {
+            stack: singleViewStack;
+            policy: wide;
+          };
+        }
+
+        [bottom]
+        Gtk.ActionBar {
+          [center]
+          Gtk.Button downloadSingleButton {
+            margin-top: 12;
+            margin-bottom: 12;
+            label: _("Download");
+            sensitive: false;
+
+            styles [ "pill", "suggested-action" ]
+          }
+        }
+
+        [bottom]
+        Adw.ViewSwitcherBar singleSwitcherBar {
+          stack: singleViewStack;
+        }
+
+        content: Adw.ViewStack singleViewStack {
+          Adw.ViewStackPage {
+            title: _("General");
+            icon-name: "folder-download-symbolic";
+            child: Adw.PreferencesPage {
+
+            };
+          }
+
+          Adw.ViewStackPage {
+            title: _("Subtitles");
+            icon-name: "subtitles-symbolic";
+            child: Adw.PreferencesPage {
+
+            };
+          }
+
+          Adw.ViewStackPage {
+            title: _("Advanced");
+            icon-name: "wrench-wide-symbolic";
+            child: Adw.PreferencesPage {
+
+            };
+          }
+        };
       };
     }
 

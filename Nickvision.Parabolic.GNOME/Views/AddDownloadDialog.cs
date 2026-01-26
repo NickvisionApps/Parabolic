@@ -34,6 +34,8 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.SwitchRow? _downloadImmediatelyRow;
     [Gtk.Connect("discoverUrlButton")]
     private Gtk.Button? _discoverUrlButton;
+    [Gtk.Connect("downloadSingleButton")]
+    private Gtk.Button? _downloadSingleButton;
 
     public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("AddDownloadDialog", controller.Translator))
     {
