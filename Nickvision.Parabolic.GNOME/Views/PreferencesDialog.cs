@@ -255,11 +255,15 @@ public class PreferencesDialog : Adw.PreferencesDialog
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filter);
         fileDialog.SetFilters(filters);
-        var res = await fileDialog.OpenAsync(_parent);
-        if (res is not null)
+        try
         {
-            _cookiesFileRow!.Subtitle = res.GetPath();
+            var res = await fileDialog.OpenAsync(_parent);
+            if (res is not null)
+            {
+                _cookiesFileRow!.Subtitle = res.GetPath();
+            }
         }
+        catch { }
     }
 
     private void ClearCookiesFileButton_OnClicked(Gtk.Button sender, EventArgs args) => _cookiesFileRow!.Subtitle = _controller.Translator._("No file selected");

@@ -39,8 +39,8 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.ViewStack? _singleViewStack;
     [Gtk.Connect("singleGroup")]
     private Adw.PreferencesGroup? _singleGroup;
-    [Gtk.Connect("singleFilenameRow")]
-    private Adw.EntryRow? _singleFilenameRow;
+    [Gtk.Connect("singleSaveFilenameRow")]
+    private Adw.EntryRow? _singleSaveFilenameRow;
     [Gtk.Connect("singleRevertToTitleButton")]
     private Gtk.Button? _singleRevertToTitleButton;
     [Gtk.Connect("singleSaveFolderRow")]
@@ -81,7 +81,8 @@ public class AddDownloadDialog : Adw.Dialog
         _selectBatchFileRow!.OnActivated += SelectBathFileRow_OnActivated;
         _authenticationCredentialRow!.OnNotify += AuthenticationCredentialRow_OnNotify;
         _discoverUrlButton!.OnClicked += DiscoverUrlButton_OnClicked;
-        _singleSelectSaveFolderButton.OnClicked += SingleSelectSaveFolderButton_OnClicked;
+        _singleRevertToTitleButton!.OnClicked += SingleRevertToTitleButton_OnClicked;
+        _singleSelectSaveFolderButton!.OnClicked += SingleSelectSaveFolderButton_OnClicked;
         _singleFileTypeRow!.OnNotify += SingleFileTypeRow_OnNotify;
     }
 
@@ -120,11 +121,15 @@ public class AddDownloadDialog : Adw.Dialog
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filter);
         fileDialog.SetFilters(filters);
-        var res = await fileDialog.OpenAsync(_parent);
-        if (res is not null)
+        try
         {
-            _urlRow!.Text_ = new Uri($"file://{res.GetPath()}").ToString();
+            var res = await fileDialog.OpenAsync(_parent);
+            if (res is not null)
+            {
+                _urlRow!.Text_ = new Uri($"file://{res.GetPath()}").ToString();
+            }
         }
+        catch { }
     }
 
     private void AuthenticationCredentialRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
@@ -165,7 +170,7 @@ public class AddDownloadDialog : Adw.Dialog
         if (_discoveryContext.Items.Count == 1)
         {
             _navigationView.PushByTag("single");
-            _singleFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
+            _singleSaveFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
             _singleSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
             _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
             _singleAudioFormatRow!.SetModel(_discoveryContext.AudioFormats, false);
@@ -178,15 +183,21 @@ public class AddDownloadDialog : Adw.Dialog
         }
     }
 
+    private async void SingleRevertToTitleButton_OnClicked(Gtk.Button sender, EventArgs e) => _singleSaveFilenameRow!.Text_ = _discoveryContext!.Items[0].Label;
+
     private async void SingleSelectSaveFolderButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
         var fileDialog = Gtk.FileDialog.New();
         fileDialog.Title = _controller.Translator._("Select Save Folder");
-        var res = await fileDialog.SelectFolderAsync(_parent);
-        if (res is not null)
+        try
         {
-            _singleSaveFolderRow!.Subtitle = res.GetPath();
+            var res = await fileDialog.SelectFolderAsync(_parent);
+            if (res is not null)
+            {
+                _singleSaveFolderRow!.Subtitle = res.GetPath();
+            }
         }
+        catch { }
     }
 
     private void SingleFileTypeRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
