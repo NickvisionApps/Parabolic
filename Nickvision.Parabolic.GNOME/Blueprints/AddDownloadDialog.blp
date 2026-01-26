@@ -2,15 +2,19 @@ using Gtk 4.0;
 using Adw 1;
 
 Adw.Dialog root {
-  follows-content-size: true;
   default-widget: discoverUrlButton;
+  content-width: 400;
+  width-request: 360;
+  height-request: 150;
 
   Adw.Breakpoint {
-    condition ("max-width: 550sp")
+    condition ("max-width: 500px")
 
     setters {
-      singleSwitcherBar.reveal: true;
       singleHeaderBar.title-widget: null;
+      singleDownloadHeaderButton.visible: true;
+      singleActionBar.visible: false;
+      singleSwitcherBar.reveal: true;
     }
   }
 
@@ -114,23 +118,19 @@ Adw.Dialog root {
       can-pop: false;
       child: Adw.ToolbarView {
         [top]
-        Adw.HeaderBar singleHeaderBar { 
+        Adw.HeaderBar singleHeaderBar {
+          centering-policy: strict;
           title-widget: Adw.ViewSwitcher {
             stack: singleViewStack;
             policy: wide;
           };
-        }
 
-        [bottom]
-        Gtk.ActionBar {
-          [center]
-          Gtk.Button downloadSingleButton {
-            margin-top: 12;
-            margin-bottom: 12;
+          [start]
+          Gtk.Button singleDownloadHeaderButton {
             label: _("Download");
-            sensitive: false;
+            visible: false;
 
-            styles [ "pill", "suggested-action" ]
+            styles [ "suggested-action" ]
           }
         }
 
@@ -139,19 +139,74 @@ Adw.Dialog root {
           stack: singleViewStack;
         }
 
+        [bottom]
+        Gtk.ActionBar singleActionBar {
+          [center]
+          Gtk.Button singleDownloadButton {
+            margin-top: 12;
+            margin-bottom: 12;
+            label: _("Download");
+
+            styles [ "pill", "suggested-action" ]
+          }
+        }
+
         content: Adw.ViewStack singleViewStack {
+          vhomogeneous: false;
+
           Adw.ViewStackPage {
             title: _("General");
             icon-name: "folder-download-symbolic";
             child: Adw.PreferencesPage {
+              Adw.PreferencesGroup singleGroup {
+                Adw.EntryRow singleFilenameRow {
+                  title: _("File Name");
 
+                  [suffix]
+                  Gtk.Button singleRevertToTitleButton {
+                    valign: center;
+                    icon-name: "edit-undo-symbolic";
+                    tooltip-text: _("Revert to Title");
+
+                    styles [ "flat" ]
+                  }
+                }
+
+                Adw.ActionRow singleSaveFolderRow {
+                  title: _("Save Folder");
+                  activatable-widget: singleSelectSaveFolderButton;
+
+                  [suffix]
+                  Gtk.Button singleSelectSaveFolderButton {
+                    valign: center;
+                    icon-name: "folder-open-symbolic";
+                    tooltip-text: _("Select Save Folder");
+
+                    styles [ "flat" ]
+                  }
+
+                  styles [ "property" ]
+                }
+
+                Adw.ComboRow singleFileTypeRow {
+                  title: _("File Type");
+                }
+
+                Adw.ComboRow singleVideoFormatRow {
+                  title: _("Video Format");
+                }
+
+                Adw.ComboRow singleAudioFormatRow {
+                  title: _("Audio Format");
+                }
+              }
             };
           }
 
           Adw.ViewStackPage {
             title: _("Subtitles");
             icon-name: "subtitles-symbolic";
-            child: Adw.PreferencesPage {
+            child: Adw.PreferencesPage singleSubtitlesPage {
 
             };
           }

@@ -3,6 +3,7 @@ using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,8 +35,30 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.SwitchRow? _downloadImmediatelyRow;
     [Gtk.Connect("discoverUrlButton")]
     private Gtk.Button? _discoverUrlButton;
-    [Gtk.Connect("downloadSingleButton")]
-    private Gtk.Button? _downloadSingleButton;
+    [Gtk.Connect("singleViewStack")]
+    private Adw.ViewStack? _singleViewStack;
+    [Gtk.Connect("singleGroup")]
+    private Adw.PreferencesGroup? _singleGroup;
+    [Gtk.Connect("singleFilenameRow")]
+    private Adw.EntryRow? _singleFilenameRow;
+    [Gtk.Connect("singleRevertToTitleButton")]
+    private Gtk.Button? _singleRevertToTitleButton;
+    [Gtk.Connect("singleSaveFolderRow")]
+    private Adw.ActionRow? _singleSaveFolderRow;
+    [Gtk.Connect("singleSelectSaveFolderButton")]
+    private Gtk.Button? _singleSelectSaveFolderButton;
+    [Gtk.Connect("singleFileTypeRow")]
+    private Adw.ComboRow? _singleFileTypeRow;
+    [Gtk.Connect("singleVideoFormatRow")]
+    private Adw.ComboRow? _singleVideoFormatRow;
+    [Gtk.Connect("singleAudioFormatRow")]
+    private Adw.ComboRow? _singleAudioFormatRow;
+    [Gtk.Connect("singleSubtitlesPage")]
+    private Adw.PreferencesPage? _singleSubtitlesPage;
+    [Gtk.Connect("singleDownloadHeaderButton")]
+    private Gtk.Button? _singleDownloadHeaderButton;
+    [Gtk.Connect("singleDownloadButton")]
+    private Gtk.Button? _singleDownloadButton;
 
     public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("AddDownloadDialog", controller.Translator))
     {
@@ -58,15 +81,21 @@ public class AddDownloadDialog : Adw.Dialog
         _selectBatchFileRow!.OnActivated += SelectBathFileRow_OnActivated;
         _authenticationCredentialRow!.OnNotify += AuthenticationCredentialRow_OnNotify;
         _discoverUrlButton!.OnClicked += DiscoverUrlButton_OnClicked;
+        _singleSelectSaveFolderButton.OnClicked += SingleSelectSaveFolderButton_OnClicked;
+        _singleFileTypeRow!.OnNotify += SingleFileTypeRow_OnNotify;
     }
 
     public async Task PresentWithClipboardAsync()
     {
-        var text = await Gdk.Display.GetDefault()!.GetClipboard().ReadTextAsync();
-        if (!string.IsNullOrEmpty(text) && Uri.TryCreate(text, UriKind.Absolute, out var url))
+        try
         {
-            _urlRow!.Text_ = url.ToString();
+            var text = await Gdk.Display.GetDefault()!.GetClipboard().ReadTextAsync();
+            if (!string.IsNullOrEmpty(text) && Uri.TryCreate(text, UriKind.Absolute, out var url))
+            {
+                _urlRow!.Text_ = url.ToString();
+            }
         }
+        catch { }
         Present(_parent);
     }
 
@@ -128,14 +157,45 @@ public class AddDownloadDialog : Adw.Dialog
             Close();
             return;
         }
+        ContentWidth = 550;
+        ContentHeight = 500;
         _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
+        _singleGroup!.Title = _discoveryContext.Title;
+        _singleGroup!.Description = _discoveryContext.Url.ToString();
         if (_discoveryContext.Items.Count == 1)
         {
             _navigationView.PushByTag("single");
+            _singleFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
+            _singleSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
+            _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
+            _singleAudioFormatRow!.SetModel(_discoveryContext.AudioFormats, false);
+            _singleFileTypeRow!.SetModel(_discoveryContext.FileTypes);
+            _singleViewStack!.GetPage(_singleSubtitlesPage!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
         }
         else
         {
             _navigationView.PushByTag("playlist");
+        }
+    }
+
+    private async void SingleSelectSaveFolderButton_OnClicked(Gtk.Button sender, EventArgs e)
+    {
+        var fileDialog = Gtk.FileDialog.New();
+        fileDialog.Title = _controller.Translator._("Select Save Folder");
+        var res = await fileDialog.SelectFolderAsync(_parent);
+        if (res is not null)
+        {
+            _singleSaveFolderRow!.Subtitle = res.GetPath();
+        }
+    }
+
+    private void SingleFileTypeRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
+    {
+        if (e.Pspec.GetName() == "selected-item")
+        {
+            var selectedFileType = _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected];
+            _singleVideoFormatRow!.Selected = (uint)_discoveryContext.VideoFormats.IndexOf(_discoveryContext.VideoFormats.First(x => x.Value.Id == _controller.PreviousDownloadOptions.VideoFormatIds[selectedFileType.Value]));
+            _singleAudioFormatRow!.Selected = (uint)_discoveryContext.AudioFormats.IndexOf(_discoveryContext.AudioFormats.First(x => x.Value.Id == _controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]));
         }
     }
 }
