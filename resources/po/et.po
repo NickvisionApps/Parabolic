@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-25 22:24-0500\n"
+"POT-Creation-Date: 2026-01-26 17:54-0500\n"
 "PO-Revision-Date: 2025-11-14 21:01+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -38,7 +38,7 @@ msgid "Media URL"
 msgstr "Meedia võrguaadress"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:50
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:116
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:141
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:64
 msgid "Select Batch File"
 msgstr "Vali pakktöötluse fail"
@@ -85,15 +85,13 @@ msgid "This may take some time..."
 msgstr "Selleks võib natuke aega kuluda..."
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:116
-#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:226
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:209
-#, fuzzy
-msgid "Configure Download"
-msgstr "Allalaadimised"
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:263
+msgid "Configure"
+msgstr "Seadista"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:130
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:148
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:210
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:211
 msgid "Download"
 msgstr "Laadi alla"
 
@@ -122,7 +120,7 @@ msgid "Save Folder"
 msgstr "Salvestuste kaust"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:183
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:191
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:276
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:109
 msgid "Select Save Folder"
@@ -150,11 +148,73 @@ msgstr "Helivorming"
 msgid "Subtitles"
 msgstr "Subtiitrid"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:215
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:212
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:115
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:125
+msgid "Select All"
+msgstr "Vali kõik"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:217
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:126
+msgid "Deselect All"
+msgstr "Eemalda kogu valik"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:227
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:81
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:107
 msgid "Advanced"
 msgstr "Lisaseadistused"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:232
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:96
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:130
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:131
+#, fuzzy
+msgid "Split into Files by Chapters"
+msgstr "Jaga videod peatükkide kaupa tükkideks"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:236
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:97
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:133
+#, fuzzy
+msgid "Export Description to File"
+msgstr "Ekspordi kirjeldus"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:240
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:135
+msgid "Exclude from History"
+msgstr "Välista ajaloost"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:244
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:136
+msgid "Post Processor Argument"
+msgstr "Järeltöötluse argument"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:245
+msgid "Arguments are configurable in Preferences"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:249
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:102
+msgid "Start Time"
+msgstr "Algusaeg"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:253
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:31
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:103
+msgid "End Time"
+msgstr "Lõpuaeg"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/LoadingDialog.blp:5
 #, fuzzy
@@ -579,10 +639,14 @@ msgstr "Salvestuste kaust"
 msgid "Close Folder"
 msgstr "Salvestuste kaust"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:118
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:143
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:252
 msgid "TXT Files (*.txt)"
 msgstr "TXT-failid (*.txt)"
+
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:211
+msgid "No Subtitles Available"
+msgstr "Subtiitreid ei leidu"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:146
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
@@ -627,7 +691,7 @@ msgstr "Kas oled kindel, et soovid need tuvastusandmed kustutada?"
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:328
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:211
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
@@ -985,16 +1049,6 @@ msgstr "{:.2f} KiB"
 msgid "{0:0.00} B"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:102
-msgid "Start Time"
-msgstr "Algusaeg"
-
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:31
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:103
-msgid "End Time"
-msgstr "Lõpuaeg"
-
 #: Nickvision.Parabolic.Shared/Models/SubtitleLanguage.cs:49
 #, fuzzy, csharp-format
 msgid "{0} (Auto-generated)"
@@ -1121,46 +1175,6 @@ msgstr "Subtiitrid"
 msgid "No subtitles were found for this media."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:93
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:115
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:125
-msgid "Select All"
-msgstr "Vali kõik"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:94
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:116
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:126
-msgid "Deselect All"
-msgstr "Eemalda kogu valik"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:95
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:96
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:130
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:131
-#, fuzzy
-msgid "Split into Files by Chapters"
-msgstr "Jaga videod peatükkide kaupa tükkideks"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:97
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:98
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:132
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:133
-#, fuzzy
-msgid "Export Description to File"
-msgstr "Ekspordi kirjeldus"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:99
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:100
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:134
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:135
-msgid "Exclude from History"
-msgstr "Välista ajaloost"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:136
-msgid "Post Processor Argument"
-msgstr "Järeltöötluse argument"
-
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:105
 msgid "Items"
 msgstr "Objektid"
@@ -1204,6 +1218,11 @@ msgstr ""
 #, fuzzy
 msgid "Export M3U Playlist File"
 msgstr "Salvesta M3U esitusloendi fail"
+
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:210
+#, fuzzy
+msgid "Configure Download"
+msgstr "Allalaadimised"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
@@ -1731,9 +1750,6 @@ msgstr "Sisesta argumendid siia"
 #~ msgid "Validating"
 #~ msgstr "Kontrollin"
 
-#~ msgid "Configure"
-#~ msgstr "Seadista"
-
 #~ msgid ""
 #~ "Generic file types do not fully support embedding thumbnails and "
 #~ "subtitles.\n"
@@ -1850,9 +1866,6 @@ msgstr "Sisesta argumendid siia"
 
 #~ msgid "Log copied to clipboard"
 #~ msgstr "Logi kopeeritud lõikelauale"
-
-#~ msgid "No Subtitles Available"
-#~ msgstr "Subtiitreid ei leidu"
 
 #~ msgid "{} items"
 #~ msgstr "{} objekti"

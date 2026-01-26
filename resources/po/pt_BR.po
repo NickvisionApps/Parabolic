@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-25 22:24-0500\n"
+"POT-Creation-Date: 2026-01-26 17:54-0500\n"
 "PO-Revision-Date: 2025-12-01 12:00+0000\n"
 "Last-Translator: NIICKTCHUNS "
 "<69496904+NIICKTCHUNS@users.noreply.github.com>\n"
@@ -39,7 +39,7 @@ msgid "Media URL"
 msgstr "URL da mídia"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:50
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:116
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:141
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:64
 msgid "Select Batch File"
 msgstr "Selecionar arquivo de lote"
@@ -86,15 +86,13 @@ msgid "This may take some time..."
 msgstr "Isso pode levar algum tempo..."
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:116
-#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:226
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:209
-#, fuzzy
-msgid "Configure Download"
-msgstr "Downloads"
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:263
+msgid "Configure"
+msgstr "Configurar"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:130
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:148
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:210
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:211
 msgid "Download"
 msgstr "Baixar"
 
@@ -123,7 +121,7 @@ msgid "Save Folder"
 msgstr "Pasta de destino"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:183
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:191
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:276
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:109
 msgid "Select Save Folder"
@@ -151,11 +149,74 @@ msgstr "Formato de áudio"
 msgid "Subtitles"
 msgstr "Legendas"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:215
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:212
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:115
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:125
+msgid "Select All"
+msgstr "Selecionar todos"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:217
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:94
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:126
+msgid "Deselect All"
+msgstr "Desmarcar todos"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:227
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:81
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:107
 msgid "Advanced"
 msgstr "Avançado"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:232
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:96
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:130
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:131
+#, fuzzy
+msgid "Split into Files by Chapters"
+msgstr "Dividir vídeo em capítulos"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:236
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:97
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:133
+#, fuzzy
+msgid "Export Description to File"
+msgstr "Exportar descrição"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:240
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:135
+msgid "Exclude from History"
+msgstr "Apagar do histórico"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:244
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:136
+msgid "Post Processor Argument"
+msgstr "Argumento do pós-processador"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:245
+#, fuzzy
+msgid "Arguments are configurable in Preferences"
+msgstr "(Pode ser alterado nas preferências)"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:249
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:102
+msgid "Start Time"
+msgstr "Início"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:253
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:31
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:103
+msgid "End Time"
+msgstr "Fim"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/LoadingDialog.blp:5
 #, fuzzy
@@ -586,10 +647,14 @@ msgstr "Pasta de destino"
 msgid "Close Folder"
 msgstr "Pasta de destino"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:118
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:143
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:252
 msgid "TXT Files (*.txt)"
 msgstr "Arquivos TXT (*.txt)"
+
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:211
+msgid "No Subtitles Available"
+msgstr "Nenhuma legenda disponível"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:146
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
@@ -634,7 +699,7 @@ msgstr "Tem certeza que deseja apagar essa credencial?"
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:328
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:211
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
@@ -997,16 +1062,6 @@ msgstr "{:.2f} KiB"
 msgid "{0:0.00} B"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:102
-msgid "Start Time"
-msgstr "Início"
-
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:31
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:103
-msgid "End Time"
-msgstr "Fim"
-
 #: Nickvision.Parabolic.Shared/Models/SubtitleLanguage.cs:49
 #, fuzzy, csharp-format
 msgid "{0} (Auto-generated)"
@@ -1133,46 +1188,6 @@ msgstr "Legendas"
 msgid "No subtitles were found for this media."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:93
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:115
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:125
-msgid "Select All"
-msgstr "Selecionar todos"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:94
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:116
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:126
-msgid "Deselect All"
-msgstr "Desmarcar todos"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:95
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:96
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:130
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:131
-#, fuzzy
-msgid "Split into Files by Chapters"
-msgstr "Dividir vídeo em capítulos"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:97
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:98
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:132
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:133
-#, fuzzy
-msgid "Export Description to File"
-msgstr "Exportar descrição"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:99
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:100
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:134
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:135
-msgid "Exclude from History"
-msgstr "Apagar do histórico"
-
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:136
-msgid "Post Processor Argument"
-msgstr "Argumento do pós-processador"
-
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:105
 msgid "Items"
 msgstr "Itens"
@@ -1216,6 +1231,11 @@ msgstr ""
 #, fuzzy
 msgid "Export M3U Playlist File"
 msgstr "Gravar arquivo de playlist M3U"
+
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:210
+#, fuzzy
+msgid "Configure Download"
+msgstr "Downloads"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
@@ -1743,9 +1763,6 @@ msgstr "Insira os argumentos aqui"
 #~ msgid "Validating"
 #~ msgstr "Validando"
 
-#~ msgid "Configure"
-#~ msgstr "Configurar"
-
 #~ msgid ""
 #~ "Generic file types do not fully support embedding thumbnails and "
 #~ "subtitles.\n"
@@ -1863,9 +1880,6 @@ msgstr "Insira os argumentos aqui"
 
 #~ msgid "Log copied to clipboard"
 #~ msgstr "Registro copiado para a área de transferência"
-
-#~ msgid "No Subtitles Available"
-#~ msgstr "Nenhuma legenda disponível"
 
 #~ msgid "{} items"
 #~ msgstr "{} itens"
@@ -2296,9 +2310,6 @@ msgstr "Insira os argumentos aqui"
 
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Adicionar download (Ctrl+N)"
-
-#~ msgid "(Configurable in preferences)"
-#~ msgstr "(Pode ser alterado nas preferências)"
 
 #, csharp-format
 #~ msgid "{0} download — {1:f1}% ({2})"

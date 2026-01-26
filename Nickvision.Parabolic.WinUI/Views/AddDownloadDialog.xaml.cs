@@ -179,6 +179,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             cancellationToken.Cancel();
         }
+        cancellationToken.Dispose();
         return result;
     }
 

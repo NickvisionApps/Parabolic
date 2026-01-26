@@ -113,7 +113,7 @@ Adw.Dialog root {
     }
 
     Adw.NavigationPage {
-      title: _("Configure Download");
+      title: _("Configure");
       tag: "single";
       can-pop: false;
       child: Adw.ToolbarView {
@@ -207,7 +207,19 @@ Adw.Dialog root {
             title: _("Subtitles");
             icon-name: "subtitles-symbolic";
             child: Adw.PreferencesPage singleSubtitlesPage {
+              Adw.PreferencesGroup {
+                Adw.ButtonRow singleSelectAllSubtitlesRow {
+                  title: _("Select All");
+                  start-icon-name: "edit-select-all-symbolic";
+                }
 
+                Adw.ButtonRow singleDeselectAllSubtitlesRow {
+                  title: _("Deselect All");
+                  start-icon-name: "edit-select-none-symbolic";
+                }
+              }
+
+              Adw.PreferencesGroup singleSubtitlesGroup { }
             };
           }
 
@@ -215,7 +227,32 @@ Adw.Dialog root {
             title: _("Advanced");
             icon-name: "wrench-wide-symbolic";
             child: Adw.PreferencesPage {
+              Adw.PreferencesGroup {
+                Adw.SwitchRow singleSplitChaptersRow {
+                  title: _("Split into Files by Chapters");
+                }
 
+                Adw.SwitchRow singleExportDescriptionRow {
+                  title: _("Export Description to File");
+                }
+
+                Adw.SwitchRow singleExcludeFromHistoryRow {
+                  title: _("Exclude from History");
+                }
+
+                Adw.ComboRow singlePostProcessorArgumentRow {
+                  title: _("Post Processor Argument");
+                  subtitle: _("Arguments are configurable in Preferences");
+                }
+
+                Adw.EntryRow singleStartTimeRow {
+                  title: _("Start Time");
+                }
+
+                Adw.EntryRow singleEndTimeRow {
+                  title: _("End Time");
+                }
+              }
             };
           }
         };
@@ -223,7 +260,7 @@ Adw.Dialog root {
     }
 
     Adw.NavigationPage {
-      title: _("Configure Download");
+      title: _("Configure");
       tag: "playlist";
       can-pop: false;
       child: Adw.ToolbarView {
