@@ -25,8 +25,6 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.EntryRow? _urlRow;
     [Gtk.Connect("selectBatchFileRow")]
     private Adw.ButtonRow? _selectBatchFileRow;
-    [Gtk.Connect("authenticationRow")]
-    private Adw.ExpanderRow? _authenticationRow;
     [Gtk.Connect("authenticationCredentialRow")]
     private Adw.ComboRow? _authenticationCredentialRow;
     [Gtk.Connect("authenticationUsernameRow")]
@@ -79,6 +77,12 @@ public class AddDownloadDialog : Adw.Dialog
     private Gtk.Button? _singleDownloadHeaderButton;
     [Gtk.Connect("singleDownloadButton")]
     private Gtk.Button? _singleDownloadButton;
+    [Gtk.Connect("playlistViewStack")]
+    private Adw.ViewStack? _playlistViewStack;
+    [Gtk.Connect("playlistDownloadHeaderButton")]
+    private Gtk.Button? _playlistDownloadHeaderButton;
+    [Gtk.Connect("playlistDownloadButton")]
+    private Gtk.Button? _playlistDownloadButton;
 
     public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("AddDownloadDialog", controller.Translator))
     {
@@ -109,6 +113,8 @@ public class AddDownloadDialog : Adw.Dialog
         _singleDeselectAllSubtitlesRow!.OnActivated += SingleDeselectAllSubtitlesRow_OnActivated;
         _singleDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
         _singleDownloadButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
+        _playlistDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
+        _playlistDownloadButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
     }
 
     public async Task PresentWithClipboardAsync()
@@ -188,20 +194,20 @@ public class AddDownloadDialog : Adw.Dialog
             Close();
             return;
         }
-        ContentWidth = 550;
         ContentHeight = 500;
         _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
         _singleGroup!.Title = _discoveryContext.Title;
         _singleGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
         if (_discoveryContext.Items.Count == 1)
         {
+            ContentWidth = 550;
             _navigationView.PushByTag("single");
             _singleSaveFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
             _singleSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
             _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
             _singleAudioFormatRow!.SetModel(_discoveryContext.AudioFormats, false);
             _singleFileTypeRow!.SetModel(_discoveryContext.FileTypes);
-            if(_discoveryContext.SubtitleLanguages.Count > 0)
+            if (_discoveryContext.SubtitleLanguages.Count > 0)
             {
                 _singleViewStack!.GetPage(_singleSubtitlesPage!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
             }
@@ -230,13 +236,14 @@ public class AddDownloadDialog : Adw.Dialog
             _singlePostProcessorArgumentRow!.SetModel(_controller.AvailablePostProcessorArguments);
             _singleStartTimeRow!.Text_ = _discoveryContext.Items[0].StartTime;
             _singleEndTimeRow!.Text_ = _discoveryContext.Items[0].EndTime;
-            if(_downloadImmediatelyRow.Active)
+            if (_downloadImmediatelyRow.Active)
             {
                 await DownloadSingleAsync();
             }
         }
         else
         {
+            ContentWidth = 600;
             _navigationView.PushByTag("playlist");
             if (_downloadImmediatelyRow.Active)
             {
@@ -297,7 +304,7 @@ public class AddDownloadDialog : Adw.Dialog
 
     private async void SingleSelectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
     {
-        foreach(var row in _singleSubtitleRows)
+        foreach (var row in _singleSubtitleRows)
         {
             if (row.ActivatableWidget is Gtk.CheckButton chk)
             {
@@ -308,7 +315,7 @@ public class AddDownloadDialog : Adw.Dialog
 
     private async void SingleDeselectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
     {
-        foreach(var row in _singleSubtitleRows)
+        foreach (var row in _singleSubtitleRows)
         {
             if (row.ActivatableWidget is Gtk.CheckButton chk)
             {

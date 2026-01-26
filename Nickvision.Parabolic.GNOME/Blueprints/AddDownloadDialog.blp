@@ -15,6 +15,10 @@ Adw.Dialog root {
       singleDownloadHeaderButton.visible: true;
       singleActionBar.visible: false;
       singleSwitcherBar.reveal: true;
+      playlistHeaderBar.title-widget: null;
+      playlistDownloadHeaderButton.visible: true;
+      playlistActionBar.visible: false;
+      playlistSwitcherBar.reveal: true;
     }
   }
 
@@ -265,7 +269,74 @@ Adw.Dialog root {
       can-pop: false;
       child: Adw.ToolbarView {
         [top]
-        Adw.HeaderBar { }
+        Adw.HeaderBar playlistHeaderBar {
+          centering-policy: strict;
+          title-widget: Adw.ViewSwitcher {
+            stack: playlistViewStack;
+            policy: wide;
+          };
+
+          [start]
+          Gtk.Button playlistDownloadHeaderButton {
+            label: _("Download");
+            visible: false;
+
+            styles [ "suggested-action" ]
+          }
+        }
+
+        [bottom]
+        Adw.ViewSwitcherBar playlistSwitcherBar {
+          stack: playlistViewStack;
+        }
+
+        [bottom]
+        Gtk.ActionBar playlistActionBar {
+          [center]
+          Gtk.Button playlistDownloadButton {
+            margin-top: 12;
+            margin-bottom: 12;
+            label: _("Download");
+
+            styles [ "pill", "suggested-action" ]
+          }
+        }
+        
+        content: Adw.ViewStack playlistViewStack {
+          vhomogeneous: false;
+
+          Adw.ViewStackPage {
+            title: _("General");
+            icon-name: "folder-download-symbolic";
+            child: Adw.PreferencesPage {
+            
+            };
+          }
+
+          Adw.ViewStackPage {
+            title: _("Items");
+            icon-name: "view-list-bullet-symbolic";
+            child: Adw.PreferencesPage {
+            
+            };
+          }
+
+          Adw.ViewStackPage {
+            title: _("Subtitles");
+            icon-name: "subtitles-symbolic";
+            child: Adw.PreferencesPage playlistSubtitlesPage {
+            
+            };
+          }
+
+          Adw.ViewStackPage {
+            title: _("Advanced");
+            icon-name: "wrench-wide-symbolic";
+            child: Adw.PreferencesPage {
+            
+            };
+          }
+        };
       };
     }
   };
