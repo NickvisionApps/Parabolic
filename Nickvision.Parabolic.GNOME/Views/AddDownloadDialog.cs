@@ -374,7 +374,6 @@ public class AddDownloadDialog : Adw.Dialog
                 endTimeRow.Text_ = item.EndTime;
                 endTimeRow.OnChanged += (_, _) => item.EndTime = endTimeRow.Text_;
                 var preferencesGroup = Adw.PreferencesGroup.New();
-                preferencesGroup.Title = _controller.Translator._("Time Frame");
                 preferencesGroup.Add(startTimeRow);
                 preferencesGroup.Add(endTimeRow);
                 var preferncesPage = Adw.PreferencesPage.New();
