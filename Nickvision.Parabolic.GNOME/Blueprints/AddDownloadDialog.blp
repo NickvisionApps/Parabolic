@@ -309,15 +309,63 @@ Adw.Dialog root {
             title: _("General");
             icon-name: "folder-download-symbolic";
             child: Adw.PreferencesPage {
-            
+              Adw.PreferencesGroup playlistGroup {
+                Adw.ActionRow playlistSaveFolderRow {
+                  title: _("Save Folder");
+                  activatable-widget: playlistSelectSaveFolderButton;
+
+                  [suffix]
+                  Gtk.Button playlistSelectSaveFolderButton {
+                    valign: center;
+                    icon-name: "folder-open-symbolic";
+                    tooltip-text: _("Select Save Folder");
+
+                    styles [ "flat" ]
+                  }
+
+                  styles [ "property" ]
+                }
+
+                Adw.ComboRow playlistFileTypeRow {
+                  title: _("File Type");
+                }
+
+                Adw.ComboRow playlistVideoResolutionRow {
+                  title: _("Suggested Video Resolution");
+                }
+
+                Adw.ComboRow playlistAudioBitrateRow {
+                  title: _("Suggested Audio Bitrate");
+                }
+              }
             };
           }
 
           Adw.ViewStackPage {
             title: _("Items");
             icon-name: "view-list-bullet-symbolic";
-            child: Adw.PreferencesPage {
-            
+            child: Adw.PreferencesPage playlistItemsPage {
+              Adw.PreferencesGroup {
+                Adw.ButtonRow playlistSelectAllItemsRow {
+                  title: _("Select All");
+                  start-icon-name: "edit-select-all-symbolic";
+                }
+
+                Adw.ButtonRow playlistDeselectAllItemsRow {
+                  title: _("Deselect All");
+                  start-icon-name: "edit-select-none-symbolic";
+                }
+
+                Adw.SwitchRow playlistReverseOrderRow {
+                  title: _("Reverse Download Order");
+                }
+
+                Adw.SwitchRow playlistNumberTitlesRow {
+                  title: _("Number Titles");
+                }
+              }
+
+              Adw.PreferencesGroup playlistItemsGroup { }
             };
           }
 
@@ -325,7 +373,21 @@ Adw.Dialog root {
             title: _("Subtitles");
             icon-name: "subtitles-symbolic";
             child: Adw.PreferencesPage playlistSubtitlesPage {
-            
+              Adw.PreferencesGroup {
+                Adw.ButtonRow playlistSelectAllSubtitlesRow {
+                  title: _("Select All");
+                  start-icon-name: "edit-select-all-symbolic";
+                }
+
+                Adw.ButtonRow playlistDeselectAllSubtitlesRow {
+                  title: _("Deselect All");
+                  start-icon-name: "edit-select-none-symbolic";
+                }
+              }
+
+              Adw.PreferencesGroup playlistSubtitlesGroup {
+                description: _("Note: Some playlist items may not contain subtitles for a selected language.");
+              }
             };
           }
 
@@ -333,7 +395,28 @@ Adw.Dialog root {
             title: _("Advanced");
             icon-name: "wrench-wide-symbolic";
             child: Adw.PreferencesPage {
-            
+              Adw.PreferencesGroup {
+                Adw.SwitchRow playlistExportM3URow {
+                  title: _("Export M3U Playlist File");
+                }
+
+                Adw.SwitchRow playlistSplitChaptersRow {
+                  title: _("Split into Files by Chapters");
+                }
+
+                Adw.SwitchRow playlistExportDescriptionRow {
+                  title: _("Export Description to File");
+                }
+
+                Adw.SwitchRow playlistExcludeFromHistoryRow {
+                  title: _("Exclude from History");
+                }
+
+                Adw.ComboRow playlistPostProcessorArgumentRow {
+                  title: _("Post Processor Argument");
+                  subtitle: _("Arguments are configurable in Preferences");
+                }
+              }
             };
           }
         };

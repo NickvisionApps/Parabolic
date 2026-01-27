@@ -1,5 +1,6 @@
 ﻿using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Desktop.Keyring;
+using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Media.Playlists;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -17,7 +19,10 @@ public class AddDownloadDialog : Adw.Dialog
     private readonly Gtk.Builder _builder;
     private CancellationTokenSource? _cancellationTokenSource;
     private DiscoveryContext? _discoveryContext;
-    private readonly List<Adw.ActionRow> _singleSubtitleRows;
+    private readonly List<Adw.ActionRow> _singleSubtitlesRows;
+    private readonly List<Adw.EntryRow> _playlistItemsRows;
+    private readonly List<Gtk.CheckButton> _playlistItemsCheckButtons;
+    private readonly List<Adw.ActionRow> _playlistSubtitlesRows;
 
     [Gtk.Connect("navigationView")]
     private Adw.NavigationView? _navigationView;
@@ -79,6 +84,48 @@ public class AddDownloadDialog : Adw.Dialog
     private Gtk.Button? _singleDownloadButton;
     [Gtk.Connect("playlistViewStack")]
     private Adw.ViewStack? _playlistViewStack;
+    [Gtk.Connect("playlistGroup")]
+    private Adw.PreferencesGroup? _playlistGroup;
+    [Gtk.Connect("playlistSaveFolderRow")]
+    private Adw.ActionRow? _playlistSaveFolderRow;
+    [Gtk.Connect("playlistSelectSaveFolderButton")]
+    private Gtk.Button? _playlistSelectSaveFolderButton;
+    [Gtk.Connect("playlistFileTypeRow")]
+    private Adw.ComboRow? _playlistFileTypeRow;
+    [Gtk.Connect("playlistVideoResolutionRow")]
+    private Adw.ComboRow? _playlistVideoResolutionRow;
+    [Gtk.Connect("playlistAudioBitrateRow")]
+    private Adw.ComboRow? _playlistAudioBitrateRow;
+    [Gtk.Connect("playlistItemsPage")]
+    private Adw.PreferencesPage? _playlistItemsPage;
+    [Gtk.Connect("playlistSelectAllItemsRow")]
+    private Adw.ButtonRow? _playlistSelectAllItemsRow;
+    [Gtk.Connect("playlistDeselectAllItemsRow")]
+    private Adw.ButtonRow? _playlistDeselectAllItemsRow;
+    [Gtk.Connect("playlistReverseOrderRow")]
+    private Adw.SwitchRow? _playlistReverseOrderRow;
+    [Gtk.Connect("playlistNumberTitlesRow")]
+    private Adw.SwitchRow? _playlistNumberTitlesRow;
+    [Gtk.Connect("playlistItemsGroup")]
+    private Adw.PreferencesGroup? _playlistItemsGroup;
+    [Gtk.Connect("playlistSubtitlesPage")]
+    private Adw.PreferencesPage? _playlistSubtitlesPage;
+    [Gtk.Connect("playlistSelectAllSubtitlesRow")]
+    private Adw.ButtonRow? _playlistSelectAllSubtitlesRow;
+    [Gtk.Connect("playlistDeselectAllSubtitlesRow")]
+    private Adw.ButtonRow? _playlistDeselectAllSubtitlesRow;
+    [Gtk.Connect("playlistSubtitlesGroup")]
+    private Adw.PreferencesGroup? _playlistSubtitlesGroup;
+    [Gtk.Connect("playlistExportM3URow")]
+    private Adw.SwitchRow? _playlistExportM3URow;
+    [Gtk.Connect("playlistSplitChaptersRow")]
+    private Adw.SwitchRow? _playlistSplitChaptersRow;
+    [Gtk.Connect("playlistExportDescriptionRow")]
+    private Adw.SwitchRow? _playlistExportDescriptionRow;
+    [Gtk.Connect("playlistExcludeFromHistoryRow")]
+    private Adw.SwitchRow? _playlistExcludeFromHistoryRow;
+    [Gtk.Connect("playlistPostProcessorArgumentRow")]
+    private Adw.ComboRow? _playlistPostProcessorArgumentRow;
     [Gtk.Connect("playlistDownloadHeaderButton")]
     private Gtk.Button? _playlistDownloadHeaderButton;
     [Gtk.Connect("playlistDownloadButton")]
@@ -96,7 +143,10 @@ public class AddDownloadDialog : Adw.Dialog
         _builder = builder;
         _cancellationTokenSource = null;
         _discoveryContext = null;
-        _singleSubtitleRows = new List<Adw.ActionRow>();
+        _singleSubtitlesRows = new List<Adw.ActionRow>();
+        _playlistItemsRows = new List<Adw.EntryRow>();
+        _playlistItemsCheckButtons = new List<Gtk.CheckButton>();
+        _playlistSubtitlesRows = new List<Adw.ActionRow>();
         _builder.Connect(this);
         // Load
         _authenticationCredentialRow!.SetModel(_controller.AvailableCredentials);
@@ -113,6 +163,11 @@ public class AddDownloadDialog : Adw.Dialog
         _singleDeselectAllSubtitlesRow!.OnActivated += SingleDeselectAllSubtitlesRow_OnActivated;
         _singleDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
         _singleDownloadButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
+        _playlistSelectSaveFolderButton!.OnClicked += PlaylistSelectSaveFolderButton_OnClicked;
+        _playlistSelectAllItemsRow!.OnActivated += PlaylistSelectAllItemsRow_OnActivated;
+        _playlistDeselectAllItemsRow!.OnActivated += PlaylistDeselectAllItemsRow_OnActivated;
+        _playlistSelectAllSubtitlesRow!.OnActivated += PlaylistSelectAllSubtitlesRow_OnActivated;
+        _playlistDeselectAllSubtitlesRow!.OnActivated += PlaylistDeselectAllSubtitlesRow_OnActivated;
         _playlistDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
         _playlistDownloadButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
     }
@@ -135,6 +190,43 @@ public class AddDownloadDialog : Adw.Dialog
     {
         _urlRow!.Text_ = url.ToString();
         Present(_parent);
+    }
+
+    private async Task DownloadSingleAsync()
+    {
+        await _controller.AddSingleDownloadAsync(_discoveryContext!,
+            _singleSaveFilenameRow!.Text_ ?? string.Empty,
+            _singleSaveFolderRow!.Subtitle ?? string.Empty,
+            _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected],
+            _discoveryContext!.VideoFormats[(int)_singleVideoFormatRow!.Selected],
+            _discoveryContext!.AudioFormats[(int)_singleAudioFormatRow!.Selected],
+            _discoveryContext!.SubtitleLanguages.Where((x, i) => _singleSubtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
+            _singleSplitChaptersRow!.Active,
+            _singleExportDescriptionRow!.Active,
+            _singleExcludeFromHistoryRow!.Active,
+            _controller.AvailablePostProcessorArguments[(int)_singlePostProcessorArgumentRow!.Selected],
+            _singleStartTimeRow!.Text_ ?? string.Empty,
+            _singleEndTimeRow!.Text_ ?? string.Empty);
+        Hide();
+    }
+
+    private async Task DownloadPlaylistAsync()
+    {
+        await _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
+            _discoveryContext!.Items.Where((x, i) => _playlistItemsCheckButtons[i].Active),
+            _playlistSaveFolderRow!.Subtitle ?? string.Empty,
+            _discoveryContext!.FileTypes[(int)_playlistFileTypeRow!.Selected],
+            _discoveryContext!.VideoResolutions[(int)_playlistVideoResolutionRow!.Selected],
+            _discoveryContext!.AudioBitrates[(int)_playlistAudioBitrateRow!.Selected],
+            _playlistReverseOrderRow!.Active,
+            _playlistNumberTitlesRow!.Active,
+            _discoveryContext!.SubtitleLanguages.Where((x, i) => _playlistSubtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
+            _playlistExportM3URow!.Active,
+            _playlistSplitChaptersRow!.Active,
+            _playlistExportM3URow!.Active,
+            _playlistExcludeFromHistoryRow!.Active,
+            _controller.AvailablePostProcessorArguments[(int)_playlistPostProcessorArgumentRow!.Selected]);
+        Hide();
     }
 
     private void Dialog_OnClosed(Adw.Dialog sender, EventArgs e) => _cancellationTokenSource?.Cancel();
@@ -196,12 +288,12 @@ public class AddDownloadDialog : Adw.Dialog
         }
         ContentHeight = 500;
         _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
-        _singleGroup!.Title = _discoveryContext.Title;
-        _singleGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
         if (_discoveryContext.Items.Count == 1)
         {
             ContentWidth = 550;
             _navigationView.PushByTag("single");
+            _singleGroup!.Title = _discoveryContext.Title;
+            _singleGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
             _singleSaveFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
             _singleSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
             _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
@@ -228,7 +320,7 @@ public class AddDownloadDialog : Adw.Dialog
                 row.Title = subtitle.Label;
                 row.AddPrefix(chk);
                 row.ActivatableWidget = chk;
-                _singleSubtitleRows.Add(row);
+                _singleSubtitlesRows.Add(row);
                 _singleSubtitlesGroup!.Add(row);
             }
             _singleSplitChaptersRow!.Active = _controller.PreviousDownloadOptions.SplitChapters;
@@ -245,34 +337,95 @@ public class AddDownloadDialog : Adw.Dialog
         {
             ContentWidth = 600;
             _navigationView.PushByTag("playlist");
+            _playlistGroup!.Title = _discoveryContext.Title;
+            _playlistGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
+            _playlistSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
+            _playlistFileTypeRow!.SetModel(_discoveryContext.FileTypes);
+            _playlistVideoResolutionRow!.SetModel(_discoveryContext.VideoResolutions);
+            _playlistAudioBitrateRow!.SetModel(_discoveryContext.AudioBitrates);
+            _playlistViewStack!.GetPage(_playlistItemsPage!).BadgeNumber = (uint)_discoveryContext.Items.Count;
+            _playlistReverseOrderRow!.Active = _controller.PreviousDownloadOptions.ReverseDownloadOrder;
+            _playlistNumberTitlesRow!.Active = _controller.PreviousDownloadOptions.NumberTitles;
+            foreach(var item in _discoveryContext.Items)
+            {
+                var row = Adw.EntryRow.New();
+                row.UseMarkup = false;
+                row.Title = item.Label;
+                row.Text_ = item.Filename;
+                row.OnChanged += (_, _) => item.Filename = row.Text_ ?? string.Empty;
+                var chk = Gtk.CheckButton.New();
+                chk.Valign = Gtk.Align.Center;
+                chk.AddCssClass("selection-mode");
+                chk.Active = item.ShouldSelect;
+                row.AddPrefix(chk);
+                var revertBtn = Gtk.Button.New();
+                revertBtn.Valign = Gtk.Align.Center;
+                revertBtn.IconName = "edit-undo-symbolic";
+                revertBtn.TooltipText = _controller.Translator._("Revert to Title");
+                revertBtn.AddCssClass("flat");
+                revertBtn.OnClicked += (_, _) => row.Text_ = item.Label;
+                row.AddSuffix(revertBtn);
+                var startTimeRow = Adw.EntryRow.New();
+                startTimeRow.Title = item.StartTimeHeader;
+                startTimeRow.Text_ = item.StartTime;
+                startTimeRow.OnChanged += (_, _) => item.StartTime = startTimeRow.Text_ ?? string.Empty;
+                var endTimeRow = Adw.EntryRow.New();
+                endTimeRow.Title = item.EndTimeHeader;
+                endTimeRow.Text_ = item.EndTime;
+                endTimeRow.OnChanged += (_, _) => item.EndTime = endTimeRow.Text_;
+                var preferencesGroup = Adw.PreferencesGroup.New();
+                preferencesGroup.Title = _controller.Translator._("Time Frame");
+                preferencesGroup.Add(startTimeRow);
+                preferencesGroup.Add(endTimeRow);
+                var preferncesPage = Adw.PreferencesPage.New();
+                preferncesPage.WidthRequest = 200;
+                preferncesPage.Add(preferencesGroup);
+                var popover = Gtk.Popover.New();
+                popover.Child = preferncesPage;
+                var flyoutBtn = Gtk.MenuButton.New();
+                flyoutBtn.Valign = Gtk.Align.Center;
+                flyoutBtn.IconName = "wrench-wide-symbolic";
+                flyoutBtn.TooltipText = _controller.Translator._("Properties");
+                flyoutBtn.AddCssClass("flat");
+                flyoutBtn.Popover = popover;
+                row.AddSuffix(flyoutBtn);
+                _playlistItemsRows.Add(row);
+                _playlistItemsCheckButtons.Add(chk);
+                _playlistItemsGroup!.Add(row);
+            }
+            if (_discoveryContext.SubtitleLanguages.Count > 0)
+            {
+                _playlistViewStack!.GetPage(_playlistSubtitlesPage!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
+            }
+            else
+            {
+                var row = Adw.ActionRow.New();
+                row.Title = _controller.Translator._("No Subtitles Available");
+                _playlistSubtitlesGroup!.Add(row);
+            }
+            foreach (var subtitle in _discoveryContext.SubtitleLanguages)
+            {
+                var chk = Gtk.CheckButton.New();
+                chk.Valign = Gtk.Align.Center;
+                chk.AddCssClass("selection-mode");
+                chk.Active = subtitle.ShouldSelect;
+                var row = Adw.ActionRow.New();
+                row.UseMarkup = false;
+                row.Title = subtitle.Label;
+                row.AddPrefix(chk);
+                row.ActivatableWidget = chk;
+                _playlistSubtitlesRows.Add(row);
+                _playlistSubtitlesGroup!.Add(row);
+            }
+            _playlistExportM3URow!.Active = _controller.PreviousDownloadOptions.ExportM3U;
+            _playlistSplitChaptersRow!.Active = _controller.PreviousDownloadOptions.SplitChapters;
+            _playlistExportDescriptionRow!.Active = _controller.PreviousDownloadOptions.ExportDescription;
+            _playlistPostProcessorArgumentRow!.SetModel(_controller.AvailablePostProcessorArguments);
             if (_downloadImmediatelyRow.Active)
             {
                 await DownloadPlaylistAsync();
             }
         }
-    }
-
-    private async Task DownloadSingleAsync()
-    {
-        await _controller.AddSingleDownloadAsync(_discoveryContext!,
-            _singleSaveFilenameRow!.Text_ ?? string.Empty,
-            _singleSaveFolderRow!.Subtitle ?? string.Empty,
-            _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected],
-            _discoveryContext!.VideoFormats[(int)_singleVideoFormatRow!.Selected],
-            _discoveryContext!.AudioFormats[(int)_singleAudioFormatRow!.Selected],
-            _discoveryContext!.SubtitleLanguages.Where((x, i) => _singleSubtitleRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
-            _singleSplitChaptersRow!.Active,
-            _singleExportDescriptionRow!.Active,
-            _singleExcludeFromHistoryRow!.Active,
-            _controller.AvailablePostProcessorArguments[(int)_singlePostProcessorArgumentRow!.Selected],
-            _singleStartTimeRow!.Text_ ?? string.Empty,
-            _singleEndTimeRow!.Text_ ?? string.Empty);
-        Hide();
-    }
-
-    private async Task DownloadPlaylistAsync()
-    {
-        Hide();
     }
 
     private async void SingleRevertToTitleButton_OnClicked(Gtk.Button sender, EventArgs e) => _singleSaveFilenameRow!.Text_ = _discoveryContext!.Items[0].Label;
@@ -302,25 +455,42 @@ public class AddDownloadDialog : Adw.Dialog
         }
     }
 
-    private async void SingleSelectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
+    private async void SingleSelectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _singleSubtitlesRows.SelectAll();
+
+    private async void SingleDeselectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _singleSubtitlesRows.DeselectAll();
+
+    private async void PlaylistSelectSaveFolderButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
-        foreach (var row in _singleSubtitleRows)
+        var fileDialog = Gtk.FileDialog.New();
+        fileDialog.Title = _controller.Translator._("Select Save Folder");
+        try
         {
-            if (row.ActivatableWidget is Gtk.CheckButton chk)
+            var res = await fileDialog.SelectFolderAsync(_parent);
+            if (res is not null)
             {
-                chk.Active = true;
+                _playlistSaveFolderRow!.Subtitle = res.GetPath();
             }
+        }
+        catch { }
+    }
+
+    private async void PlaylistSelectAllItemsRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
+    {
+        foreach(var btn in _playlistItemsCheckButtons)
+        {
+            btn.Active = true;
         }
     }
 
-    private async void SingleDeselectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
+    private async void PlaylistDeselectAllItemsRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
     {
-        foreach (var row in _singleSubtitleRows)
+        foreach (var btn in _playlistItemsCheckButtons)
         {
-            if (row.ActivatableWidget is Gtk.CheckButton chk)
-            {
-                chk.Active = false;
-            }
+            btn.Active = false;
         }
     }
+
+    private async void PlaylistSelectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _playlistSubtitlesRows.SelectAll();
+
+    private async void PlaylistDeselectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _playlistSubtitlesRows.DeselectAll();
 }
