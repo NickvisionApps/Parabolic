@@ -1,0 +1,63 @@
+name: Download Error
+description: Report a download failing with an error
+title: "[Error] "
+labels:
+  - bug
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Paste the URL of the video/audio you were trying to download.
+      placeholder: https://example.com/video
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Download Log
+      description: Copy and paste the entire download log here.
+      render: shell
+      placeholder: |
+        Paste the full log output here
+    validations:
+      required: true
+
+  - type: textarea
+    id: download-options
+    attributes:
+      label: Download Options
+      description: |
+        If applicable, list the download options you selected and any app preferences related to downloads.
+      placeholder: |
+        Format:
+        Quality:
+        Other settings:
+
+  - type: checkboxes
+    id: platform
+    attributes:
+      label: App Version / Platform
+      options:
+        - label: GNOME on Linux (Flatpak)
+        - label: GNOME on Linux (Snap)
+        - label: GNOME on Linux (Source / AUR)
+        - label: WinUI on Windows (Installer)
+        - label: WinUI on Windows (Portable)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version Number
+      placeholder: e.g. v1.4.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.

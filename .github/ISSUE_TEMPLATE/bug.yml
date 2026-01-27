@@ -1,0 +1,70 @@
+name: Bug
+description: Report something not working correctly (crash, wrong behavior, etc.)
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: Describe the steps to reproduce the bug.
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Describe the expected result
+      description: Describe what you expect to happen instead.
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: If applicable, paste the URL of the video/audio you were trying to download.
+      placeholder: https://example.com/video
+
+  - type: textarea
+    id: download-options
+    attributes:
+      label: Download Options
+      description: |
+        If applicable, list the download options you selected and any app preferences related to downloads.
+      placeholder: |
+        Format:
+        Quality:
+        Other settings:
+
+  - type: checkboxes
+    id: platform
+    attributes:
+      label: App Version / Platform
+      options:
+        - label: GNOME on Linux (Flatpak)
+        - label: GNOME on Linux (Snap)
+        - label: GNOME on Linux (Source / AUR)
+        - label: WinUI on Windows (Installer)
+        - label: WinUI on Windows (Portable)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version Number
+      placeholder: e.g. v1.4.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
