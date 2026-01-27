@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 19:32-0500\n"
+"POT-Creation-Date: 2026-01-27 15:04-0500\n"
 "PO-Revision-Date: 2026-01-16 15:01+0000\n"
 "Last-Translator: Lukas E <lukas.engelter@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 5.15.2\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:43
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:65
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Add Download"
@@ -38,7 +38,7 @@ msgid "Media URL"
 msgstr "Medien-URL"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:54
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:239
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:238
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:64
 msgid "Select Batch File"
 msgstr "Stapelverarbeitungsdatei auswählen"
@@ -112,7 +112,7 @@ msgid "File Name"
 msgstr "Dateiname"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:173
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:364
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:363
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:83
 msgid "Revert to Title"
 msgstr "Zu Titel zurückkehren"
@@ -126,8 +126,8 @@ msgstr "Speicherordner"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:187
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:321
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:436
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:465
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:434
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:463
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:109
 msgid "Select Save Folder"
@@ -282,31 +282,54 @@ msgstr "Schreibe M3U Playlist Datei"
 msgid "Loading"
 msgstr "Wird heruntergeladen"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:5
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+msgid "History"
+msgstr "Verlauf"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:9
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:9
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:10
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:14
 msgid "Keyboard Shortcuts"
 msgstr "Tastenkürzel"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:7
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:11
 msgid "About Parabolic"
 msgstr "Info zu Parabolic"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:25
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:31
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:278
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:39
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+msgid "Keyring"
+msgstr "Schlüsselring"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:61
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Download Media"
 msgstr "Medien herunterladen"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:62
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
@@ -641,16 +664,6 @@ msgstr ""
 msgid "Add Postprocessing Argument"
 msgstr "Argument für Postprozessor hinzufügen"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:278
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
-msgid "Add"
-msgstr "Hinzufügen"
-
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:404
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
 msgid "Argument"
@@ -706,21 +719,17 @@ msgstr "Speicherordner"
 msgid "Close Folder"
 msgstr "Speicherordner"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:241
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:240
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:252
 msgid "TXT Files (*.txt)"
 msgstr "TXT-Dateien (*.txt)"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:309
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:403
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:308
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:401
 msgid "No Subtitles Available"
 msgstr "Keine Untertitel verfügbar"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:377
-msgid "Time Frame"
-msgstr ""
-
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:388
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:386
 msgid "Properties"
 msgstr ""
 
@@ -871,23 +880,23 @@ msgstr "OGG (Audio)"
 msgid "An error occurred while discovering media"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:37
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:37
 #, fuzzy
 msgid "A credential with that name already exists"
 msgstr "Eine Anmeldeinformation mit diesem Namen existiert bereits."
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:44
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:44
 #, fuzzy
 msgid "The name of the credential cannot be empty"
 msgstr "Der Name der Anmeldeinformation darf nicht leer sein."
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:51
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:89
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:51
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:89
 #, fuzzy
 msgid "Either the credential username or password must be set"
 msgstr "Sowohl der Benutzername als auch das Passwort dürfen nicht leer sein."
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:82
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:82
 #, fuzzy
 msgid "A credential with that name does not exist"
 msgstr "Eine Anmeldeinformation mit diesem Namen existiert bereits."
@@ -1272,11 +1281,6 @@ msgstr ""
 msgid "Configure Download"
 msgstr "Downloads"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
-msgid "History"
-msgstr "Verlauf"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:34
 msgid "Sort"
 msgstr ""
@@ -1350,11 +1354,6 @@ msgstr "Ja"
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "Nein"
-
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
-msgid "Keyring"
-msgstr "Schlüsselring"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34

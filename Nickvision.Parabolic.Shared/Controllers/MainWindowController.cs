@@ -166,17 +166,17 @@ public class MainWindowController : IDisposable
 
     public AddDownloadDialogController AddDownloadDialogController => new AddDownloadDialogController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!, _services.Get<INotificationService>()!, _services.Get<IDiscoveryService>()!, _services.Get<IDownloadService>()!);
 
-    public HistoryPageController HistoryPageController
+    public HistoryViewController HistoryViewController
     {
         get
         {
-            var controller = new HistoryPageController(_services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
+            var controller = new HistoryViewController(_services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
             controller.DownloadRequested += (sender, e) => DownloadRequested?.Invoke(this, e);
             return controller;
         }
     }
 
-    public KeyringPageController KeyringPageController => new KeyringPageController(_services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IKeyringService>()!);
+    public KeyringViewController KeyringViewController => new KeyringViewController(_services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IKeyringService>()!);
 
     public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IHistoryService>()!);
 

@@ -204,8 +204,8 @@ public sealed partial class MainWindow : Window
             var tag = item.Tag as string;
             FrameCustom.Content = tag switch
             {
-                "History" => new HistoryPage(_controller.HistoryPageController),
-                "Keyring" => new KeyringPage(_controller.KeyringPageController),
+                "History" => new HistoryPage(_controller.HistoryViewController),
+                "Keyring" => new KeyringPage(_controller.KeyringViewController),
                 "Settings" => new SettingsPage(_controller.PreferencesViewController, AppWindow.Id),
                 _ => null
             };

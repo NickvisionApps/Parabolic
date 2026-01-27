@@ -22,10 +22,10 @@ public sealed partial class HistoryPage : Page
         History
     }
 
-    private readonly HistoryPageController _controller;
+    private readonly HistoryViewController _controller;
     private IReadOnlyList<SelectionItem<HistoricDownload>> _historicDownloads;
 
-    public HistoryPage(HistoryPageController controller)
+    public HistoryPage(HistoryViewController controller)
     {
         InitializeComponent();
         _controller = controller;

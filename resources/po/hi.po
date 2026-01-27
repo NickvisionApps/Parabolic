@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 19:32-0500\n"
+"POT-Creation-Date: 2026-01-27 15:04-0500\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 5.7-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:43
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:65
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Add Download"
@@ -38,7 +38,7 @@ msgid "Media URL"
 msgstr "मीडिया URL"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:54
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:239
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:238
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:64
 #, fuzzy
 msgid "Select Batch File"
@@ -116,7 +116,7 @@ msgid "File Name"
 msgstr "फाइल नाम"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:173
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:364
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:363
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:83
 msgid "Revert to Title"
 msgstr ""
@@ -130,8 +130,8 @@ msgstr "फोल्डर सहेजें"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:187
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:321
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:436
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:465
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:434
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:463
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:109
 msgid "Select Save Folder"
@@ -290,31 +290,54 @@ msgstr ""
 msgid "Loading"
 msgstr "डाउनलोड हो रहा है"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:5
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+msgid "History"
+msgstr "इतिहास"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:9
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:9
 msgid "Preferences"
 msgstr "प्राथमिकताएं"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:10
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:14
 msgid "Keyboard Shortcuts"
 msgstr "कीबोर्ड शॉर्टकट"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:7
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:11
 msgid "About Parabolic"
 msgstr "पैराबोलिक के बारे में"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:25
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:31
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:278
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "जोड़ें"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
 msgid "Main Menu"
 msgstr "मुख्य मेनू"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:39
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+msgid "Keyring"
+msgstr "कीरिंग"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:61
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Download Media"
 msgstr "मीडिया डाउनलोड करें"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:62
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "डाउनलोड करना शुरू करने के लिए एक वीडियो, ऑडियो या प्लेलिस्ट URL जोड़ें"
@@ -650,16 +673,6 @@ msgstr ""
 msgid "Add Postprocessing Argument"
 msgstr "प्रसंस्करण…"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:278
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
-msgid "Add"
-msgstr "जोड़ें"
-
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:404
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
 #, fuzzy
@@ -718,22 +731,18 @@ msgstr "फोल्डर सहेजें"
 msgid "Close Folder"
 msgstr "फोल्डर सहेजें"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:241
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:240
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:252
 msgid "TXT Files (*.txt)"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:309
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:403
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:308
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:401
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "नया अपडेट उपलब्ध है।"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:377
-msgid "Time Frame"
-msgstr ""
-
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:388
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:386
 msgid "Properties"
 msgstr ""
 
@@ -894,22 +903,22 @@ msgstr "ऑडियो"
 msgid "An error occurred while discovering media"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:37
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:37
 msgid "A credential with that name already exists"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:44
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:44
 #, fuzzy
 msgid "The name of the credential cannot be empty"
 msgstr "सुनिश्चित करें कि क्रेडेंशियल सही हैं।"
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:51
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:89
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:51
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:89
 #, fuzzy
 msgid "Either the credential username or password must be set"
 msgstr "सुनिश्चित करें कि क्रेडेंशियल सही हैं।"
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:82
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:82
 msgid "A credential with that name does not exist"
 msgstr ""
 
@@ -1297,11 +1306,6 @@ msgstr ""
 msgid "Configure Download"
 msgstr "डाउनलोड"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
-msgid "History"
-msgstr "इतिहास"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:34
 msgid "Sort"
 msgstr ""
@@ -1374,11 +1378,6 @@ msgstr "हां"
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "नहीं"
-
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
-msgid "Keyring"
-msgstr "कीरिंग"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34

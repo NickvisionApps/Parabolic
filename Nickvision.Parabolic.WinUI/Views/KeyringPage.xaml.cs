@@ -18,10 +18,10 @@ public sealed partial class KeyringPage : Page
         Keyring
     }
 
-    private readonly KeyringPageController _controller;
+    private readonly KeyringViewController _controller;
     private ObservableCollection<SelectionItem<Credential>> _credentials;
 
-    public KeyringPage(KeyringPageController controller)
+    public KeyringPage(KeyringViewController controller)
     {
         InitializeComponent();
         _controller = controller;

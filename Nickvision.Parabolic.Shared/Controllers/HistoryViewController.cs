@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Controllers;
 
-public class HistoryPageController
+public class HistoryViewController
 {
     private readonly IHistoryService _historyService;
 
@@ -17,7 +17,7 @@ public class HistoryPageController
 
     public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
 
-    public HistoryPageController(ITranslationService translationService, IHistoryService historyService)
+    public HistoryViewController(ITranslationService translationService, IHistoryService historyService)
     {
         _historyService = historyService;
         Translator = translationService;

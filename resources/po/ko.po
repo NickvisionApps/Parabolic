@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 19:32-0500\n"
+"POT-Creation-Date: 2026-01-27 15:04-0500\n"
 "PO-Revision-Date: 2025-01-05 22:22+0000\n"
 "Last-Translator: parkyuno <yuno3587@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 5.10-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:43
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:65
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Add Download"
@@ -38,7 +38,7 @@ msgid "Media URL"
 msgstr "미디어 URL"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:54
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:239
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:238
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:64
 msgid "Select Batch File"
 msgstr "배치 파일 선택"
@@ -114,7 +114,7 @@ msgid "File Name"
 msgstr "파일 이름"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:173
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:364
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:363
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:83
 msgid "Revert to Title"
 msgstr "제목으로 되돌리기"
@@ -128,8 +128,8 @@ msgstr "저장 폴더"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:187
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:321
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:436
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:465
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:434
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:463
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:109
 msgid "Select Save Folder"
@@ -285,31 +285,54 @@ msgstr ""
 msgid "Loading"
 msgstr "다운로드 중"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:5
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+msgid "History"
+msgstr "기록"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:9
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:9
 msgid "Preferences"
 msgstr "환경 설정"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:10
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:14
 msgid "Keyboard Shortcuts"
 msgstr "키보드 단축키"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:7
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:11
 msgid "About Parabolic"
 msgstr "Parabolic에 대하여"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:25
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:31
+#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:278
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
+msgid "Add"
+msgstr "추가"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
 msgid "Main Menu"
 msgstr "메인 메뉴"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:39
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
+msgid "Keyring"
+msgstr "암호 저장소"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:61
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Download Media"
 msgstr "미디어 다운로드"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:62
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "다운로드를 시작하려면 비디오, 오디오 또는 재생 목록 URL을 추가하세요"
@@ -637,16 +660,6 @@ msgstr ""
 msgid "Add Postprocessing Argument"
 msgstr "후처리 스레드"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:278
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:182
-msgid "Add"
-msgstr "추가"
-
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:404
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:128
 #, fuzzy
@@ -703,21 +716,17 @@ msgstr "저장 폴더"
 msgid "Close Folder"
 msgstr "저장 폴더"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:241
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:240
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:252
 msgid "TXT Files (*.txt)"
 msgstr "TXT 파일 (*.txt)"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:309
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:403
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:308
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:401
 msgid "No Subtitles Available"
 msgstr "사용 가능한 자막이 없습니다"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:377
-msgid "Time Frame"
-msgstr ""
-
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:388
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:386
 msgid "Properties"
 msgstr ""
 
@@ -871,23 +880,23 @@ msgstr "OPUS (오디오)"
 msgid "An error occurred while discovering media"
 msgstr ""
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:37
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:37
 #, fuzzy
 msgid "A credential with that name already exists"
 msgstr "이 이름의 자격 증명이 이미 존재합니다."
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:44
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:44
 #, fuzzy
 msgid "The name of the credential cannot be empty"
 msgstr "자격 증명 이름은 비워둘 수 없습니다."
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:51
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:89
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:51
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:89
 #, fuzzy
 msgid "Either the credential username or password must be set"
 msgstr "사용자 이름과 비밀번호는 모두 비워둘 수 없습니다."
 
-#: Nickvision.Parabolic.Shared/Controllers/KeyringPageController.cs:82
+#: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:82
 #, fuzzy
 msgid "A credential with that name does not exist"
 msgstr "이 이름의 자격 증명이 이미 존재합니다."
@@ -1266,11 +1275,6 @@ msgstr ""
 msgid "Configure Download"
 msgstr "다운로드"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
-msgid "History"
-msgstr "기록"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:34
 msgid "Sort"
 msgstr ""
@@ -1343,11 +1347,6 @@ msgstr "예"
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:208
 msgid "No"
 msgstr "아니오"
-
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
-msgid "Keyring"
-msgstr "암호 저장소"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34

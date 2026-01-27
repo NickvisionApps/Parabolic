@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Controllers;
 
-public class KeyringPageController
+public class KeyringViewController
 {
     private readonly INotificationService _notificationService;
     private readonly IKeyringService _keyringService;
@@ -18,7 +18,7 @@ public class KeyringPageController
     public ITranslationService Translator { get; }
     public ObservableCollection<SelectionItem<Credential>> Credentials { get; }
 
-    public KeyringPageController(ITranslationService translationService, INotificationService notificationService, IKeyringService keyringService)
+    public KeyringViewController(ITranslationService translationService, INotificationService notificationService, IKeyringService keyringService)
     {
         _notificationService = notificationService;
         _keyringService = keyringService;
