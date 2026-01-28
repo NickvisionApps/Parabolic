@@ -42,24 +42,30 @@ body:
         Quality:
         Other settings:
 
-  - type: checkboxes
-    id: platform
+  - type: textarea
+    id: debugging-info
     attributes:
-      label: App Version / Platform
-      options:
-        - label: GNOME on Linux (Flatpak)
-        - label: GNOME on Linux (Snap)
-        - label: GNOME on Linux (Source / AUR)
-        - label: WinUI on Windows (Installer)
-        - label: WinUI on Windows (Portable)
-    validations:
-      required: true
+      label: Debugging Information
+      description: |
+        On Linux:
+        1. Click the Main Menu
+        2. Click `About Parabolic`
+        3. Click `Troubleshooting`
+        4. Click `Debugging Information`
+        5. Copy and paste the information here
 
-  - type: input
-    id: version
-    attributes:
-      label: Version Number
-      placeholder: e.g. v1.4.2
+        On Windows:
+        1. Click the Help item in the navigation sidebar
+        2. Click `About Parabolic`
+        3. Click `Debugging`
+        4. Copy and paste the information here
+      render: shell
+      placeholder: |
+        [Identification: App ID, OS, Version]
+        [Environment: Deployment Mode, Locale, Path]
+        [Dependencies: yt-dlp, aria2, ffmpeg, deno]
+        [Toolkits: GTK, Libadwaita]
+        [Localization: LANG, LC_ALL, etc...]
     validations:
       required: true
 
