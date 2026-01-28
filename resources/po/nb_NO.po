@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 21:19-0500\n"
+"POT-Creation-Date: 2026-01-27 21:43-0500\n"
 "PO-Revision-Date: 2024-12-29 12:01+0000\n"
 "Last-Translator: Brage Fuglseth <brage.fuglseth@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -213,6 +213,7 @@ msgstr "Avansert"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:248
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:365
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:441
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:12
 #, fuzzy
 msgid "Options"
 msgstr "Avansert"
@@ -324,6 +325,39 @@ msgstr ""
 msgid "Export M3U Playlist File"
 msgstr ""
 
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+msgid "History"
+msgstr "Logg"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:15
+msgid "Sort By"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:23
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
+msgid "Newest"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:28
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:36
+msgid "Oldest"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:36
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
+msgid "Save Length"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:47
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
+#, fuzzy
+msgid "Clear All"
+msgstr "Fjern alt"
+
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:25
@@ -364,12 +398,6 @@ msgstr "Nettadresse"
 #, fuzzy
 msgid "Loading"
 msgstr "Aktive"
-
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
-msgid "History"
-msgstr "Logg"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:9
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:8
@@ -787,19 +815,71 @@ msgstr "Ingen undertekster tilgjengelig"
 msgid "Properties"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:66
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:147
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:201
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
-msgid "Edit"
-msgstr "Rediger"
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:74
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:78
+#, fuzzy
+msgid "Clear All History?"
+msgstr "Fjern logg"
 
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:74
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:79
+#, fuzzy
+msgid ""
+"Are you sure you want to clear all download history? This action is "
+"irreversible"
+msgstr "Er du sikker på at du ønsker å slette innloggingen?"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:75
+#, fuzzy
+msgid "Clear"
+msgstr "Fjern alt"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:76
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:155
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:335
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:104
+msgid "Download Again"
+msgstr "Last ned på nytt"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
+msgid "Play"
+msgstr "Spill"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:115
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:71
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:154
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:206
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:334
 msgid "Delete"
 msgstr "Slett"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:121
+#, fuzzy, csharp-format
+msgid "Downloaded On: {0}"
+msgstr "Aktive"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:132
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
+#, fuzzy
+msgid "No History"
+msgstr "Logg"
+
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:66
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:147
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:201
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
+msgid "Edit"
+msgstr "Rediger"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:86
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:28
@@ -838,17 +918,6 @@ msgstr "Slette innlogging?"
 msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr "Er du sikker på at du ønsker å slette innloggingen?"
-
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:155
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:335
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Cancel"
-msgstr "Avbryt"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:151
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
@@ -1363,23 +1432,6 @@ msgstr "Nedlastinger"
 msgid "Sort"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
-msgid "Newest"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:36
-msgid "Oldest"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
-msgid "Save Length"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
-#, fuzzy
-msgid "Clear All"
-msgstr "Fjern alt"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:52
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:27
 msgid "Search..."
@@ -1389,12 +1441,6 @@ msgstr ""
 msgid "Please wait..."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
-#, fuzzy
-msgid "No History"
-msgstr "Logg"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:55
 #, fuzzy
 msgid "There are no downloads in your history"
@@ -1403,18 +1449,6 @@ msgstr "Ved fullføring av alle"
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
 msgid "There are no downloads found with the current filters"
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:78
-#, fuzzy
-msgid "Clear All History?"
-msgstr "Fjern logg"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:79
-#, fuzzy
-msgid ""
-"Are you sure you want to clear all download history? This action is "
-"irreversible"
-msgstr "Er du sikker på at du ønsker å slette innloggingen?"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:126
@@ -1715,12 +1749,6 @@ msgstr "Skriv inn nettadresse her"
 #~ msgid "Exit"
 #~ msgstr "Avslutt"
 
-#~ msgid "Download Again"
-#~ msgstr "Last ned på nytt"
-
-#~ msgid "Play"
-#~ msgstr "Spill"
-
 #, fuzzy
 #~ msgid "Add a download to get started"
 #~ msgstr "Legg til nedlasting for å begynne."
@@ -2002,10 +2030,6 @@ msgstr "Skriv inn nettadresse her"
 #, fuzzy
 #~ msgid "Version {}"
 #~ msgstr "Versjon: {0}"
-
-#, fuzzy
-#~ msgid "Downloading {}%"
-#~ msgstr "Aktive"
 
 #, fuzzy
 #~ msgid "Debug information copied to clipboard"

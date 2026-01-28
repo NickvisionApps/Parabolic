@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 21:19-0500\n"
+"POT-Creation-Date: 2026-01-27 21:43-0500\n"
 "PO-Revision-Date: 2025-01-04 12:01+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -214,6 +214,7 @@ msgstr "Geavanceerde opties"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:248
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:365
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:441
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:12
 #, fuzzy
 msgid "Options"
 msgstr "Geavanceerde opties"
@@ -325,6 +326,39 @@ msgstr ""
 msgid "Export M3U Playlist File"
 msgstr ""
 
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+msgid "History"
+msgstr "Geschiedenis"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:15
+msgid "Sort By"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:23
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
+msgid "Newest"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:28
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:36
+msgid "Oldest"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:36
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
+msgid "Save Length"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:47
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
+#, fuzzy
+msgid "Clear All"
+msgstr "Wissen"
+
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:25
@@ -365,12 +399,6 @@ msgstr "URL"
 #, fuzzy
 msgid "Loading"
 msgstr "Downloaden"
-
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
-msgid "History"
-msgstr "Geschiedenis"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:9
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:8
@@ -789,19 +817,70 @@ msgstr "Geen onder­titels beschikbaar"
 msgid "Properties"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:66
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:147
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:201
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
-msgid "Edit"
-msgstr "Bewerken"
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:74
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:78
+#, fuzzy
+msgid "Clear All History?"
+msgstr "Geschiedenis wissen"
 
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:74
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:79
+msgid ""
+"Are you sure you want to clear all download history? This action is "
+"irreversible"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:75
+#, fuzzy
+msgid "Clear"
+msgstr "Wissen"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:76
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:155
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:335
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:104
+msgid "Download Again"
+msgstr "Opnieuw downloaden"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
+msgid "Play"
+msgstr "Afspelen"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:115
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:71
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:154
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:206
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:334
 msgid "Delete"
 msgstr "Verwijderen"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:121
+#, fuzzy, csharp-format
+msgid "Downloaded On: {0}"
+msgstr "Downloaden"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:132
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
+#, fuzzy
+msgid "No History"
+msgstr "Geschiedenis"
+
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:66
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:147
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:201
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
+msgid "Edit"
+msgstr "Bewerken"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:86
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:28
@@ -839,17 +918,6 @@ msgstr "Inloggegevens verwijderen?"
 msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr ""
-
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:155
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:335
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Cancel"
-msgstr "Annuleren"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:151
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
@@ -1349,23 +1417,6 @@ msgstr "Downloads"
 msgid "Sort"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
-msgid "Newest"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:36
-msgid "Oldest"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
-msgid "Save Length"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
-#, fuzzy
-msgid "Clear All"
-msgstr "Wissen"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:52
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:27
 #, fuzzy
@@ -1376,12 +1427,6 @@ msgstr "Zoeken…"
 msgid "Please wait..."
 msgstr "Even geduld…"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
-#, fuzzy
-msgid "No History"
-msgstr "Geschiedenis"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:55
 #, fuzzy
 msgid "There are no downloads in your history"
@@ -1389,17 +1434,6 @@ msgstr "Bij voltooien van alle downloads"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
 msgid "There are no downloads found with the current filters"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:78
-#, fuzzy
-msgid "Clear All History?"
-msgstr "Geschiedenis wissen"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:79
-msgid ""
-"Are you sure you want to clear all download history? This action is "
-"irreversible"
 msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:80
@@ -1702,12 +1736,6 @@ msgstr "Voer media-URL hier in"
 #~ msgid "Exit"
 #~ msgstr "Verlaten"
 
-#~ msgid "Download Again"
-#~ msgstr "Opnieuw downloaden"
-
-#~ msgid "Play"
-#~ msgstr "Afspelen"
-
 #, fuzzy
 #~ msgid "Add a download to get started"
 #~ msgstr "Voeg een download toe om te beginnen"
@@ -1946,10 +1974,6 @@ msgstr "Voer media-URL hier in"
 #, fuzzy
 #~ msgid "Version {}"
 #~ msgstr "Versie: {0}"
-
-#, fuzzy
-#~ msgid "Downloading {}%"
-#~ msgstr "Downloaden"
 
 #, fuzzy
 #~ msgid "Debug information copied to clipboard"

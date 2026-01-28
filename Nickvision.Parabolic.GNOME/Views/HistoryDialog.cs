@@ -106,7 +106,7 @@ public class HistoryDialog : Adw.PreferencesDialog
             downloadAgainButton.OnClicked += (_, _) => _controller.RequestDownload(historicDowload.Value.Url);
             var playButton = Gtk.Button.NewFromIconName("media-playback-start-symbolic");
             playButton.Valign = Gtk.Align.Center;
-            playButton.TooltipText = _controller.Translator._("");
+            playButton.TooltipText = _controller.Translator._("Play");
             playButton.Sensitive = historicDowload.Value.ExistsOnDisk;
             playButton.AddCssClass("flat");
             playButton.OnClicked += async (_, _) => await PlayAsync(historicDowload.Value.Path);
@@ -118,6 +118,7 @@ public class HistoryDialog : Adw.PreferencesDialog
             var row = Adw.ActionRow.New();
             row.Title = historicDowload.Label;
             row.Subtitle = historicDowload.Value.Url.ToString();
+            row.TooltipText = _controller.Translator._("Downloaded On: {0}", $"{historicDowload.Value.DownloadedOn}");
             row.AddSuffix(downloadAgainButton);
             row.AddSuffix(playButton);
             row.AddSuffix(deleteButton);

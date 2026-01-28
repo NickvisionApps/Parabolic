@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 21:19-0500\n"
+"POT-Creation-Date: 2026-01-27 21:43-0500\n"
 "PO-Revision-Date: 2025-11-15 20:41+0000\n"
 "Last-Translator: bovirus <roberto.boriotti@canon.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -215,6 +215,7 @@ msgstr "Opzioni avanzate"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:248
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:365
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:441
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:12
 msgid "Options"
 msgstr "Opzioni"
 
@@ -324,6 +325,39 @@ msgstr ""
 msgid "Export M3U Playlist File"
 msgstr "Scrivi file playlist M3U"
 
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
+msgid "History"
+msgstr "Cronologia"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:15
+msgid "Sort By"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:23
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
+msgid "Newest"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:28
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:36
+msgid "Oldest"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:36
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
+msgid "Save Length"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:47
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
+#, fuzzy
+msgid "Clear All"
+msgstr "Cancella"
+
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:25
@@ -364,12 +398,6 @@ msgstr "URL"
 #, fuzzy
 msgid "Loading"
 msgstr "In download"
-
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:72
-msgid "History"
-msgstr "Cronologia"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:9
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:8
@@ -792,19 +820,71 @@ msgstr "Nessun sottotitolo disponibile"
 msgid "Properties"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:66
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:147
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:201
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
-msgid "Edit"
-msgstr "Modifica"
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:74
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:78
+#, fuzzy
+msgid "Clear All History?"
+msgstr "Cancella cronologia"
 
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:74
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:79
+#, fuzzy
+msgid ""
+"Are you sure you want to clear all download history? This action is "
+"irreversible"
+msgstr "Vuoi eliminare la credenziale?"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:75
+#, fuzzy
+msgid "Clear"
+msgstr "Cancella"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:76
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:155
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:335
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
+msgid "Cancel"
+msgstr "Annulla"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:104
+msgid "Download Again"
+msgstr "Nuovo download"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
+msgid "Play"
+msgstr "Riproduci"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:115
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:71
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:154
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:206
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:334
 msgid "Delete"
 msgstr "Elimina"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:121
+#, fuzzy, csharp-format
+msgid "Downloaded On: {0}"
+msgstr "Download {}%"
+
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:132
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
+#, fuzzy
+msgid "No History"
+msgstr "Cronologia"
+
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:66
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:147
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:201
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
+msgid "Edit"
+msgstr "Modifica"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:86
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:28
@@ -843,17 +923,6 @@ msgstr "Vuoi eliminare la credenziale?"
 msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr "Vuoi eliminare la credenziale?"
-
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:155
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:335
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:59
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:162
-#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:212
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:129
-msgid "Cancel"
-msgstr "Annulla"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:151
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
@@ -1365,23 +1434,6 @@ msgstr "Download"
 msgid "Sort"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
-msgid "Newest"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:36
-msgid "Oldest"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
-msgid "Save Length"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
-#, fuzzy
-msgid "Clear All"
-msgstr "Cancella"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:52
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:27
 #, fuzzy
@@ -1392,12 +1444,6 @@ msgstr "Cerca"
 msgid "Please wait..."
 msgstr "Attendere prego..."
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
-#, fuzzy
-msgid "No History"
-msgstr "Cronologia"
-
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:55
 #, fuzzy
 msgid "There are no downloads in your history"
@@ -1406,18 +1452,6 @@ msgstr "Quando finiscono tutti i scaricamenti"
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
 msgid "There are no downloads found with the current filters"
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:78
-#, fuzzy
-msgid "Clear All History?"
-msgstr "Cancella cronologia"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:79
-#, fuzzy
-msgid ""
-"Are you sure you want to clear all download history? This action is "
-"irreversible"
-msgstr "Vuoi eliminare la credenziale?"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:126
@@ -1722,12 +1756,6 @@ msgstr "Inserisci qui gli argomenti"
 
 #~ msgid "Exit"
 #~ msgstr "Esci"
-
-#~ msgid "Download Again"
-#~ msgstr "Nuovo download"
-
-#~ msgid "Play"
-#~ msgstr "Riproduci"
 
 #, fuzzy
 #~ msgid "Add a download to get started"
@@ -2105,9 +2133,6 @@ msgstr "Inserisci qui gli argomenti"
 
 #~ msgid "The installer will start once the download is complete"
 #~ msgstr "Una volta completato il download verrà avviato l'installer"
-
-#~ msgid "Downloading {}%"
-#~ msgstr "Download {}%"
 
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Elimina informazioni copiate negli appunti"
