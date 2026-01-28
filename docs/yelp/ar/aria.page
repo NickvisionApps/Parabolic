@@ -1,51 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="ar">
-<info>
-	<link type="guide" xref="index"/>
-        <title type="link">aria2c 🛠️</title>
-	<credit type="author copyright">
-            <name>نيكولاس لوجوزو</name>
-            <years its:translate="no">2023-2025</years>
-	</credit>
-	<credit type="publisher copyright">
-            <name>نيكولاس لوجوزو</name>
-            <years its:translate="no">2023-2025</years>
-	</credit>
-	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Yousef mohamed</mal:name>
-      <mal:email>oandygames.ygames+weblate@gmail.com</mal:email>
-      <mal:years>2025</mal:years>
-    </mal:credit>
-  </info>
-
-<title>aria2c</title>
-<p>This page explains all options for configuring aria2c in Preferences in <app>Parabolic</app>.</p>
-
-<terms>
-    <item>
-        <title>إستخدم aria2c</title>
-        <p>سيستخدم (بارا-بوليك) aria2c بدلًا من محمّل yt-dlp الأصلي.</p>
-        <note style="advanced">
-            <p>الافتراضي: إيقاف</p>
-        </note>
-    </item>
-    <item>
-        <title>أقصى عدد من الاتصالات لكل خادم</title>
-        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
-        <p>أقصى عدد من الاتصالات التي يمكن استخدامها لكل خادم. يجب أن يكون قيمة عددية صحيحة بين 1 و 32.</p>
-        <note style="advanced">
-            <p>الافتراضي: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>أقل حجم للتقسيم</title>
-        <p>This option only applies when using aria2c is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
-        <p>أقل حجم، بوحدات ميجابايت (MiB)، الذي يتم تقسيم الملف عليه. يجب أن يكون قيمة عددية صحيحة بين 1 و 1024.</p>
-        <note style="advanced">
-            <p>الافتراضي: 20</p>
-        </note>
-    </item>
-</terms>
-</page>

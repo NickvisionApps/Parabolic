@@ -1,0 +1,67 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.PreferencesDialog root {
+  content-width: 600;
+  content-height: 600;
+  search-enabled: true;
+  title: _("Keyring");
+
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup credentialsGroup {
+      title: _("Credentials");
+      header-suffix: Gtk.Button addButton {
+        valign: center;
+
+        Adw.ButtonContent {
+          label: _("Add");
+          icon-name: "list-add-symbolic";
+        }
+
+        styles [ "flat" ]
+      };
+    }
+  }
+}
+
+Adw.Dialog editCredentialDialog {
+  title: _("Credential");
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar { }
+
+    content: Gtk.Box {
+      orientation: vertical;
+      spacing: 12;
+
+      Adw.PreferencesGroup {
+        margin-start: 12;
+        margin-end: 12;
+
+        Adw.EntryRow editCredentialNameRow {
+          title: _("Name");
+        }
+
+        Adw.EntryRow editCredentialUrlRow {
+          title: _("URL");
+        }
+
+        Adw.EntryRow editCredentialUsernameRow {
+          title: _("Username");
+        }
+
+        Adw.PasswordEntryRow editCredentialPasswordRow {
+          title: _("Password");
+        }
+      }
+
+      Gtk.Button editConfirmCredentialButton {
+        halign: center;
+        margin-bottom: 12;
+
+        styles [ "pill", "suggested-action" ]
+      }
+    };
+  };
+}
