@@ -12,12 +12,6 @@ public class MainWindow : Adw.ApplicationWindow
 {
     private readonly MainWindowController _controller;
     private readonly Gtk.Builder _builder;
-    private readonly Gio.SimpleAction _actQuit;
-    private readonly Gio.SimpleAction _actPreferences;
-    private readonly Gio.SimpleAction _actKeyboardShortcuts;
-    private readonly Gio.SimpleAction _actAbout;
-    private readonly Gio.SimpleAction _actAddDownload;
-    private readonly Gio.SimpleAction _actKeyring;
 
     [Gtk.Connect("windowTitle")]
     private Adw.WindowTitle? _windowTitle;
@@ -53,35 +47,40 @@ public class MainWindow : Adw.ApplicationWindow
             return false;
         });
         // Quit action
-        _actQuit = Gio.SimpleAction.New("quit", null);
-        _actQuit.OnActivate += Quit;
-        AddAction(_actQuit);
+        var actQuit = Gio.SimpleAction.New("quit", null);
+        actQuit.OnActivate += Quit;
+        AddAction(actQuit);
         Application!.SetAccelsForAction("win.quit", ["<Ctrl>q"]);
         // Preferences action
-        _actPreferences = Gio.SimpleAction.New("preferences", null);
-        _actPreferences.OnActivate += Preferences;
-        AddAction(_actPreferences);
+        var actPreferences = Gio.SimpleAction.New("preferences", null);
+        actPreferences.OnActivate += Preferences;
+        AddAction(actPreferences);
         Application!.SetAccelsForAction("win.preferences", ["<Ctrl>period"]);
         // Keyboard shortcuts action
-        _actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
-        _actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
-        AddAction(_actKeyboardShortcuts);
+        var actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
+        actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
+        AddAction(actKeyboardShortcuts);
         Application!.SetAccelsForAction("win.keyboardShortcuts", ["<Ctrl>question"]);
         // About action
-        _actAbout = Gio.SimpleAction.New("about", null);
-        _actAbout.OnActivate += About;
-        AddAction(_actAbout);
+        var actAbout = Gio.SimpleAction.New("about", null);
+        actAbout.OnActivate += About;
+        AddAction(actAbout);
         Application!.SetAccelsForAction("win.about", ["F1"]);
         // Add download action
-        _actAddDownload = Gio.SimpleAction.New("addDownload", null);
-        _actAddDownload.OnActivate += AddDownload;
-        AddAction(_actAddDownload);
+        var actAddDownload = Gio.SimpleAction.New("addDownload", null);
+        actAddDownload.OnActivate += AddDownload;
+        AddAction(actAddDownload);
         Application!.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
         // Keyring action
-        _actKeyring = Gio.SimpleAction.New("keyring", null);
-        _actKeyring.OnActivate += Keyring;
-        AddAction(_actKeyring);
+        var actKeyring = Gio.SimpleAction.New("keyring", null);
+        actKeyring.OnActivate += Keyring;
+        AddAction(actKeyring);
         Application!.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
+        // History action
+        var actHistory = Gio.SimpleAction.New("history", null);
+        actHistory.OnActivate += History;
+        AddAction(actHistory);
+        Application!.SetAccelsForAction("win.history", ["<Ctrl>h"]);
     }
 
     public new void Present()
@@ -175,5 +174,11 @@ public class MainWindow : Adw.ApplicationWindow
     {
         var keyringDialog = new KeyringDialog(_controller.KeyringViewController, this);
         keyringDialog.Present(this);
+    }
+
+    private void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        var historyDialog = new HistoryDialog(_controller.HistoryViewController, this);
+        historyDialog.Present(this);
     }
 }

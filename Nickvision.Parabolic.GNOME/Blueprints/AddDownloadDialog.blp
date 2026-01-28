@@ -211,19 +211,30 @@ Adw.Dialog root {
             title: _("Subtitles");
             icon-name: "subtitles-symbolic";
             child: Adw.PreferencesPage singleSubtitlesPage {
-              Adw.PreferencesGroup {
-                Adw.ButtonRow singleSelectAllSubtitlesRow {
-                  title: _("Select All");
-                  start-icon-name: "edit-select-all-symbolic";
-                }
+              Adw.PreferencesGroup singleSubtitlesGroup { 
+                title: _("Available Subtitles");
 
-                Adw.ButtonRow singleDeselectAllSubtitlesRow {
-                  title: _("Deselect All");
-                  start-icon-name: "edit-select-none-symbolic";
-                }
+                header-suffix: Gtk.Box {
+                  orientation: horizontal;
+
+                  Gtk.Button singleDeselectAllSubtitlesButton {
+                    valign: center;
+                    icon-name: "edit-select-none-symbolic";
+                    tooltip-text: _("Deselect All");
+                  }
+
+                  Gtk.Button singleSelectAllSubtitlesButton {
+                    valign: center;
+
+                    Adw.ButtonContent {
+                      label: _("Select All");
+                      icon-name: "edit-select-all-symbolic";
+                    }
+                  }
+
+                  styles [ "toolbar" ]
+                };
               }
-
-              Adw.PreferencesGroup singleSubtitlesGroup { }
             };
           }
 
@@ -346,16 +357,6 @@ Adw.Dialog root {
             icon-name: "view-list-bullet-symbolic";
             child: Adw.PreferencesPage playlistItemsPage {
               Adw.PreferencesGroup {
-                Adw.ButtonRow playlistSelectAllItemsRow {
-                  title: _("Select All");
-                  start-icon-name: "edit-select-all-symbolic";
-                }
-
-                Adw.ButtonRow playlistDeselectAllItemsRow {
-                  title: _("Deselect All");
-                  start-icon-name: "edit-select-none-symbolic";
-                }
-
                 Adw.SwitchRow playlistReverseOrderRow {
                   title: _("Reverse Download Order");
                 }
@@ -365,7 +366,30 @@ Adw.Dialog root {
                 }
               }
 
-              Adw.PreferencesGroup playlistItemsGroup { }
+              Adw.PreferencesGroup playlistItemsGroup { 
+                title: _("Available Items");
+
+                header-suffix: Gtk.Box {
+                  orientation: horizontal;
+
+                  Gtk.Button playlistDeselectAllItemsButton {
+                    valign: center;
+                    icon-name: "edit-select-none-symbolic";
+                    tooltip-text: _("Deselect All");
+                  }
+
+                  Gtk.Button playlistSelectAllItemsButton {
+                    valign: center;
+
+                    Adw.ButtonContent {
+                      label: _("Select All");
+                      icon-name: "edit-select-all-symbolic";
+                    }
+                  }
+
+                  styles [ "toolbar" ]
+                };
+              }
             };
           }
 
@@ -373,20 +397,30 @@ Adw.Dialog root {
             title: _("Subtitles");
             icon-name: "subtitles-symbolic";
             child: Adw.PreferencesPage playlistSubtitlesPage {
-              Adw.PreferencesGroup {
-                Adw.ButtonRow playlistSelectAllSubtitlesRow {
-                  title: _("Select All");
-                  start-icon-name: "edit-select-all-symbolic";
-                }
-
-                Adw.ButtonRow playlistDeselectAllSubtitlesRow {
-                  title: _("Deselect All");
-                  start-icon-name: "edit-select-none-symbolic";
-                }
-              }
-
               Adw.PreferencesGroup playlistSubtitlesGroup {
+                title: _("Available Subtitles");
                 description: _("Note: Some playlist items may not contain subtitles for a selected language.");
+
+                header-suffix: Gtk.Box {
+                  orientation: horizontal;
+
+                  Gtk.Button playlistDeselectAllSubtitlesButton {
+                    valign: center;
+                    icon-name: "edit-select-none-symbolic";
+                    tooltip-text: _("Deselect All");
+                  }
+
+                  Gtk.Button playlistSelectAllSubtitlesButton {
+                    valign: center;
+
+                    Adw.ButtonContent {
+                      label: _("Select All");
+                      icon-name: "edit-select-all-symbolic";
+                    }
+                  }
+
+                  styles [ "toolbar" ]
+                };
               }
             };
           }

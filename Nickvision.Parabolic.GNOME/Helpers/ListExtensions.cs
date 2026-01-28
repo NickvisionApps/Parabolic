@@ -28,4 +28,23 @@ public static class ListExtensions
             }
         }
     }
+
+    extension(IReadOnlyList<Gtk.CheckButton> list)
+    {
+        public void DeselectAll()
+        {
+            foreach (var chk in list)
+            {
+                chk.Active = false;
+            }
+        }
+
+        public void SelectAll()
+        {
+            foreach (var chk in list)
+            {
+                chk.Active = true;
+            }
+        }
+    }
 }

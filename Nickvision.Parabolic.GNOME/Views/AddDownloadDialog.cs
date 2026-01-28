@@ -59,10 +59,10 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.ComboRow? _singleAudioFormatRow;
     [Gtk.Connect("singleSubtitlesPage")]
     private Adw.PreferencesPage? _singleSubtitlesPage;
-    [Gtk.Connect("singleSelectAllSubtitlesRow")]
-    private Adw.ButtonRow? _singleSelectAllSubtitlesRow;
-    [Gtk.Connect("singleDeselectAllSubtitlesRow")]
-    private Adw.ButtonRow? _singleDeselectAllSubtitlesRow;
+    [Gtk.Connect("singleSelectAllSubtitlesButton")]
+    private Gtk.Button? _singleSelectAllSubtitlesButton;
+    [Gtk.Connect("singleDeselectAllSubtitlesButton")]
+    private Gtk.Button? _singleDeselectAllSubtitlesButton;
     [Gtk.Connect("singleSubtitlesGroup")]
     private Adw.PreferencesGroup? _singleSubtitlesGroup;
     [Gtk.Connect("singleSplitChaptersRow")]
@@ -97,10 +97,10 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.ComboRow? _playlistAudioBitrateRow;
     [Gtk.Connect("playlistItemsPage")]
     private Adw.PreferencesPage? _playlistItemsPage;
-    [Gtk.Connect("playlistSelectAllItemsRow")]
-    private Adw.ButtonRow? _playlistSelectAllItemsRow;
-    [Gtk.Connect("playlistDeselectAllItemsRow")]
-    private Adw.ButtonRow? _playlistDeselectAllItemsRow;
+    [Gtk.Connect("playlistSelectAllItemsButton")]
+    private Gtk.Button? _playlistSelectAllItemsButton;
+    [Gtk.Connect("playlistDeselectAllItemsButton")]
+    private Gtk.Button? _playlistDeselectAllItemsButton;
     [Gtk.Connect("playlistReverseOrderRow")]
     private Adw.SwitchRow? _playlistReverseOrderRow;
     [Gtk.Connect("playlistNumberTitlesRow")]
@@ -109,10 +109,10 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.PreferencesGroup? _playlistItemsGroup;
     [Gtk.Connect("playlistSubtitlesPage")]
     private Adw.PreferencesPage? _playlistSubtitlesPage;
-    [Gtk.Connect("playlistSelectAllSubtitlesRow")]
-    private Adw.ButtonRow? _playlistSelectAllSubtitlesRow;
-    [Gtk.Connect("playlistDeselectAllSubtitlesRow")]
-    private Adw.ButtonRow? _playlistDeselectAllSubtitlesRow;
+    [Gtk.Connect("playlistSelectAllSubtitlesButton")]
+    private Gtk.Button? _playlistSelectAllSubtitlesButton;
+    [Gtk.Connect("playlistDeselectAllSubtitlesButton")]
+    private Gtk.Button? _playlistDeselectAllSubtitlesButton;
     [Gtk.Connect("playlistSubtitlesGroup")]
     private Adw.PreferencesGroup? _playlistSubtitlesGroup;
     [Gtk.Connect("playlistExportM3URow")]
@@ -158,15 +158,15 @@ public class AddDownloadDialog : Adw.Dialog
         _singleRevertToTitleButton!.OnClicked += SingleRevertToTitleButton_OnClicked;
         _singleSelectSaveFolderButton!.OnClicked += SingleSelectSaveFolderButton_OnClicked;
         _singleFileTypeRow!.OnNotify += SingleFileTypeRow_OnNotify;
-        _singleSelectAllSubtitlesRow!.OnActivated += SingleSelectAllSubtitlesRow_OnActivated;
-        _singleDeselectAllSubtitlesRow!.OnActivated += SingleDeselectAllSubtitlesRow_OnActivated;
+        _singleSelectAllSubtitlesButton!.OnClicked += (_, _) => _singleSubtitlesRows.SelectAll();
+        _singleDeselectAllSubtitlesButton!.OnClicked += (_, _) => _singleSubtitlesRows.DeselectAll();
         _singleDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
         _singleDownloadButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
         _playlistSelectSaveFolderButton!.OnClicked += PlaylistSelectSaveFolderButton_OnClicked;
-        _playlistSelectAllItemsRow!.OnActivated += PlaylistSelectAllItemsRow_OnActivated;
-        _playlistDeselectAllItemsRow!.OnActivated += PlaylistDeselectAllItemsRow_OnActivated;
-        _playlistSelectAllSubtitlesRow!.OnActivated += PlaylistSelectAllSubtitlesRow_OnActivated;
-        _playlistDeselectAllSubtitlesRow!.OnActivated += PlaylistDeselectAllSubtitlesRow_OnActivated;
+        _playlistSelectAllItemsButton!.OnClicked += (_, _) => _playlistItemsCheckButtons.SelectAll();
+        _playlistDeselectAllItemsButton!.OnClicked += (_, _) => _playlistItemsCheckButtons.DeselectAll();
+        _playlistSelectAllSubtitlesButton!.OnClicked += (_, _) => _playlistSubtitlesRows.SelectAll();
+        _playlistDeselectAllSubtitlesButton!.OnClicked += (_, _) => _playlistSubtitlesRows.DeselectAll();
         _playlistDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
         _playlistDownloadButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
     }
@@ -453,10 +453,6 @@ public class AddDownloadDialog : Adw.Dialog
         }
     }
 
-    private async void SingleSelectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _singleSubtitlesRows.SelectAll();
-
-    private async void SingleDeselectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _singleSubtitlesRows.DeselectAll();
-
     private async void PlaylistSelectSaveFolderButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
         var fileDialog = Gtk.FileDialog.New();
@@ -471,24 +467,4 @@ public class AddDownloadDialog : Adw.Dialog
         }
         catch { }
     }
-
-    private async void PlaylistSelectAllItemsRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
-    {
-        foreach (var btn in _playlistItemsCheckButtons)
-        {
-            btn.Active = true;
-        }
-    }
-
-    private async void PlaylistDeselectAllItemsRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
-    {
-        foreach (var btn in _playlistItemsCheckButtons)
-        {
-            btn.Active = false;
-        }
-    }
-
-    private async void PlaylistSelectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _playlistSubtitlesRows.SelectAll();
-
-    private async void PlaylistDeselectAllSubtitlesRow_OnActivated(Adw.ButtonRow sender, EventArgs e) => _playlistSubtitlesRows.DeselectAll();
 }

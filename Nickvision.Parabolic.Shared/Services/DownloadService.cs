@@ -78,7 +78,7 @@ public class DownloadService : IDisposable, IDownloadService
         }
     }
 
-    public async Task AddAsync(IReadOnlyList<DownloadOptions> options, bool exlucdeFromHistory)
+    public async Task AddAsync(IReadOnlyList<DownloadOptions> options, bool excludeFromHistory)
     {
         var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var ytdlpExecutablePath = _ytdlpService.ExecutablePath ?? "yt-dlp";
@@ -91,7 +91,7 @@ public class DownloadService : IDisposable, IDownloadService
             download.Completed += Download_Completed;
             download.ProgressChanged += Download_ProgressChanged;
             recoverableDownloads.Add(new RecoverableDownload(download.Id, download.Options));
-            if (!exlucdeFromHistory)
+            if (!excludeFromHistory)
             {
                 historicDownloads.Add(new HistoricDownload(download.Options.Url)
                 {

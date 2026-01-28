@@ -1,0 +1,25 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.PreferencesDialog root {
+  content-width: 600;
+  content-height: 400;
+  search-enabled: true;
+  title: _("History");
+
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup historyGroup {
+      title: _("History");
+      header-suffix: Gtk.Button clearButton {
+        valign: center;
+
+        Adw.ButtonContent {
+          label: _("Clear All");
+          icon-name: "user-trash-symbolic";
+        }
+
+        styles [ "flat" ]
+      };
+    }
+  }
+}
