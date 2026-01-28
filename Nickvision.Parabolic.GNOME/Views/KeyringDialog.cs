@@ -19,6 +19,18 @@ public class KeyringDialog : Adw.PreferencesDialog
     private Adw.PreferencesGroup? _credentialsGroup;
     [Gtk.Connect("addButton")]
     private Gtk.Button? _addButton;
+    [Gtk.Connect("editCredentialDialog")]
+    private Adw.Dialog? _editCredentialDialog;
+    [Gtk.Connect("editCredentialNameRow")]
+    private Adw.EntryRow? _editCredentialNameRow;
+    [Gtk.Connect("editCredentialUrlRow")]
+    private Adw.EntryRow? _editCredentialUrlRow;
+    [Gtk.Connect("editCredentialUsernameRow")]
+    private Adw.EntryRow? _editCredentialUsernameRow;
+    [Gtk.Connect("editCredentialPasswordRow")]
+    private Adw.PasswordEntryRow? _editCredentialPasswordRow;
+    [Gtk.Connect("editConfirmCredentialButton")]
+    private Gtk.Button? _editConfirmCredentialButton;
 
     public KeyringDialog(KeyringViewController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("KeyringDialog", controller.Translator))
     {
@@ -37,6 +49,7 @@ public class KeyringDialog : Adw.PreferencesDialog
         // Events
         _controller.Credentials.CollectionChanged += Credentials_CollectionChanged;
         _addButton!.OnClicked += AddButton_OnClicked;
+        _editConfirmCredentialButton!.OnClicked += EditConfirmCredentialButton_OnClicked;
     }
 
     private void Credentials_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -78,12 +91,61 @@ public class KeyringDialog : Adw.PreferencesDialog
 
     private void AddButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
+        _credentialEditMode = EditMode.Add;
+        _editCredentialNameRow!.Text_ = string.Empty;
+        _editCredentialNameRow.Sensitive = true;
+        _editCredentialUrlRow!.Text_ = string.Empty;
+        _editCredentialUsernameRow!.Text_ = string.Empty;
+        _editCredentialPasswordRow!.Text_ = string.Empty;
+        _editConfirmCredentialButton!.Label = _controller.Translator._("Add");
+        _editCredentialDialog!.Present(this);
+    }
 
+    private async void EditConfirmCredentialButton_OnClicked(Gtk.Button sender, EventArgs e)
+    {
+        string? error = null;
+        switch (_credentialEditMode)
+        {
+            case EditMode.Add:
+                error = await _controller.AddAsync(
+                    _editCredentialNameRow!.Text_ ?? string.Empty,
+                    _editCredentialUrlRow!.Text_ ?? string.Empty,
+                    _editCredentialUsernameRow!.Text_ ?? string.Empty,
+                    _editCredentialPasswordRow!.Text_ ?? string.Empty);
+                break;
+            case EditMode.Edit:
+                error = await _controller.UpdateAsync(
+                    _editCredentialNameRow!.Text_ ?? string.Empty,
+                    _editCredentialUrlRow!.Text_ ?? string.Empty,
+                    _editCredentialUsernameRow!.Text_ ?? string.Empty,
+                    _editCredentialPasswordRow!.Text_ ?? string.Empty);
+                break;
+            default:
+                break;
+        }
+        if (error is not null)
+        {
+            var alert = Adw.AlertDialog.New(_controller.Translator._("Error"), error);
+            alert.AddResponse("ok", _controller.Translator._("OK"));
+            alert.SetDefaultResponse("ok");
+            alert.Present(this);
+        }
+        else
+        {
+            _editCredentialDialog!.ForceClose();
+        }
     }
 
     private void Edit(Credential credential)
     {
-
+        _credentialEditMode = EditMode.Edit;
+        _editCredentialNameRow!.Text_ = credential.Name;
+        _editCredentialNameRow.Sensitive = true;
+        _editCredentialUrlRow!.Text_ = credential.Url.ToString();
+        _editCredentialUsernameRow!.Text_ = credential.Username;
+        _editCredentialPasswordRow!.Text_ = credential.Password;
+        _editConfirmCredentialButton!.Label = _controller.Translator._("Edit");
+        _editCredentialDialog!.Present(this);
     }
 
     private void Remove(Credential credential)

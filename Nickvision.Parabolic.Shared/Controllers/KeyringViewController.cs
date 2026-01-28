@@ -41,8 +41,8 @@ public class KeyringViewController
         {
             return Translator._("Either the credential username or password must be set");
         }
-        var credential = new Credential(name, username, password, Uri.Empty);
         Uri.TryCreate(url, UriKind.Absolute, out var uri);
+        var credential = new Credential(name, username, password, uri ?? Uri.Empty);
         Credentials.Add(new SelectionItem<Credential>(credential, credential.Name, false));
         await _keyringService.AddCredentialAsync(credential);
         return null;
