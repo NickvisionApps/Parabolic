@@ -1,0 +1,69 @@
+name: Download Error
+description: Report a download failing with an error
+title: "[Error] "
+labels:
+  - bug
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Paste the URL of the video/audio you were trying to download.
+      placeholder: https://example.com/video
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Download Log
+      description: Copy and paste the entire download log here.
+      render: shell
+      placeholder: |
+        Paste the full log output here
+    validations:
+      required: true
+
+  - type: textarea
+    id: download-options
+    attributes:
+      label: Download Options
+      description: |
+        If applicable, list the download options you selected and any app preferences related to downloads.
+      placeholder: |
+        Format:
+        Quality:
+        Other settings:
+
+  - type: textarea
+    id: debugging-info
+    attributes:
+      label: Debugging Information
+      description: |
+        On Linux:
+        1. Click the Main Menu
+        2. Click `About Parabolic`
+        3. Click `Troubleshooting`
+        4. Click `Debugging Information`
+        5. Copy and paste the information here
+
+        On Windows:
+        1. Click the Help item in the navigation sidebar
+        2. Click `About Parabolic`
+        3. Click `Debugging`
+        4. Copy and paste the information here
+      render: shell
+      placeholder: |
+        [Identification: App ID, OS, Version]
+        [Environment: Deployment Mode, Locale, Path]
+        [Dependencies: yt-dlp, aria2, ffmpeg, deno]
+        [Toolkits: GTK, Libadwaita]
+        [Localization: LANG, LC_ALL, etc...]
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
