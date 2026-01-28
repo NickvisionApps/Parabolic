@@ -85,7 +85,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         ToolTipService.SetToolTip(BtnSingleSelectSaveFolder, _controller.Translator._("Select Save Folder"));
         CmbSingleFileType.Header = _controller.Translator._("File Type");
         TeachSingleFileType.Title = _controller.Translator._("Warning");
-        TeachSingleFileType.Subtitle = _controller.Translator._("Generic file types do not fully support embedding thumbnails and subtitles. If necessary, please select a specific file type that is known to support embedding to prevent separate files from being written.");
+        TeachSingleFileType.Subtitle = _controller.Translator._("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
         CmbSingleVideoFormat.Header = _controller.Translator._("Video Format");
         CmbSingleAudioFormat.Header = _controller.Translator._("Audio Format");
         StatusSingleSubtitles.Title = _controller.Translator._("No Subtitles");
@@ -109,7 +109,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         ToolTipService.SetToolTip(BtnPlaylistSelectSaveFolder, _controller.Translator._("Select Save Folder"));
         CmbPlaylistFileType.Header = _controller.Translator._("File Type");
         TeachPlaylistFileType.Title = _controller.Translator._("Warning");
-        TeachPlaylistFileType.Subtitle = _controller.Translator._("Generic file types do not fully support embedding thumbnails and subtitles. If necessary, please select a specific file type that is known to support embedding to prevent separate files from being written.");
+        TeachPlaylistFileType.Subtitle = _controller.Translator._("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
         CmbPlaylistSuggestedVideoResolution.Header = _controller.Translator._("Suggested Video Resolution");
         CmbPlaylistSuggestedAudioBitrate.Header = _controller.Translator._("Suggested Audio Bitrate");
         LblPlaylistSelectAllItems.Text = _controller.Translator._("Select All");

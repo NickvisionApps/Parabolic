@@ -220,7 +220,7 @@ public sealed partial class SettingsPage : Page
         var confirmDialog = new ContentDialog()
         {
             Title = _controller.Translator._("Delete Argument?"),
-            Content = _controller.Translator._("Are you sure you want to delete this post-processor argument? The action is irreversible"),
+            Content = _controller.Translator._("Are you sure you want to delete this post-processor argument? This action is irreversible"),
             PrimaryButtonText = _controller.Translator._("Yes"),
             CloseButtonText = _controller.Translator._("No"),
             DefaultButton = ContentDialogButton.Close,

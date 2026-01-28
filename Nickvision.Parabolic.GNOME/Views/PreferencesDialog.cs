@@ -330,7 +330,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
 
     private void DeletePostProcessingArgument(string name)
     {
-        var dialog = Adw.AlertDialog.New(_controller.Translator._("Delete Argument?"), _controller.Translator._("Are you sure you want to delete this post-processor argument? The action is irreversible"));
+        var dialog = Adw.AlertDialog.New(_controller.Translator._("Delete Argument?"), _controller.Translator._("Are you sure you want to delete this post-processor argument? This action is irreversible"));
         dialog.AddResponse("delete", _controller.Translator._("Delete"));
         dialog.AddResponse("cancel", _controller.Translator._("Cancel"));
         dialog.SetResponseAppearance("delete", Adw.ResponseAppearance.Destructive);

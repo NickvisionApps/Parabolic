@@ -35,14 +35,19 @@ public sealed partial class HistoryPage : Page
         TglSortNewest.Text = _controller.Translator._("Newest");
         TglSortOldest.Text = _controller.Translator._("Oldest");
         BtnLength.Label = _controller.Translator._("Save Length");
-        TglLengthNever.Text = _controller.Translator._("Never");
-        TglLengthOneDay.Text = _controller.Translator._("1 Day");
-        TglLengthOneWeek.Text = _controller.Translator._("1 Week");
-        TglLengthOneMonth.Text = _controller.Translator._("1 Month");
-        TglLengthThreeMonths.Text = _controller.Translator._("3 Months");
-        TglLengthSixMonths.Text = _controller.Translator._("6 Months");
-        TglLengthOneYear.Text = _controller.Translator._("1 Year");
-        TglLengthForever.Text = _controller.Translator._("Forever");
+        foreach(var length in _controller.Lengths)
+        {
+            var item = new RadioMenuFlyoutItem()
+            {
+                Tag = length.Value,
+                GroupName = "Length",
+                Text = length.Label,
+                IsChecked = length.ShouldSelect,
+
+            };
+            item.Click += TglLength_Click;
+            MenuLength.Items.Add(item);
+        }
         LblClearAll.Text = _controller.Translator._("Clear All");
         TxtSearch.PlaceholderText = _controller.Translator._("Search...");
         LblLoading.Text = _controller.Translator._("Please wait...");
@@ -63,33 +68,6 @@ public sealed partial class HistoryPage : Page
         {
             TglSortOldest.IsChecked = true;
         }
-        switch (_controller.Length)
-        {
-            case HistoryLength.Never:
-                TglLengthNever.IsChecked = true;
-                break;
-            case HistoryLength.OneDay:
-                TglLengthOneDay.IsChecked = true;
-                break;
-            case HistoryLength.OneMonth:
-                TglLengthOneMonth.IsChecked = true;
-                break;
-            case HistoryLength.ThreeMonths:
-                TglLengthThreeMonths.IsChecked = true;
-                break;
-            case HistoryLength.SixMonths:
-                TglLengthSixMonths.IsChecked = true;
-                break;
-            case HistoryLength.OneYear:
-                TglLengthOneYear.IsChecked = true;
-                break;
-            case HistoryLength.Forever:
-                TglLengthForever.IsChecked = true;
-                break;
-            default:
-                TglLengthOneWeek.IsChecked = true;
-                break;
-        }
         await LoadDownloadsAsync();
     }
 
@@ -98,7 +76,7 @@ public sealed partial class HistoryPage : Page
         var confirmDialog = new ContentDialog()
         {
             Title = _controller.Translator._("Clear All History?"),
-            Content = _controller.Translator._("Are you sure you want to clear all download history? This action is irreversible."),
+            Content = _controller.Translator._("Are you sure you want to clear all download history? This action is irreversible"),
             PrimaryButtonText = _controller.Translator._("Yes"),
             CloseButtonText = _controller.Translator._("No"),
             DefaultButton = ContentDialogButton.Close,
@@ -112,17 +90,9 @@ public sealed partial class HistoryPage : Page
         }
     }
 
-    private void DownloadAgain(object? sender, RoutedEventArgs e)
-    {
-        var tag = ((sender as Button)!.Tag as Uri)!;
-        _controller.RequestDownload(tag);
-    }
+    private void DownloadAgain(object? sender, RoutedEventArgs e) => _controller.RequestDownload(((sender as Button)!.Tag as Uri)!);
 
-    private async void Play(object? sender, RoutedEventArgs e)
-    {
-        var tag = ((sender as Button)!.Tag as string)!;
-        await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(tag));
-    }
+    private async void Play(object? sender, RoutedEventArgs e) => await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(((sender as Button)!.Tag as string)!));
 
     private async void Remove(object? sender, RoutedEventArgs e)
     {
@@ -139,38 +109,7 @@ public sealed partial class HistoryPage : Page
 
     private async void TglLength_Click(object? sender, RoutedEventArgs e)
     {
-        if (TglLengthNever.IsChecked)
-        {
-            _controller.Length = HistoryLength.Never;
-        }
-        else if (TglLengthOneDay.IsChecked)
-        {
-            _controller.Length = HistoryLength.OneDay;
-        }
-        else if (TglLengthOneWeek.IsChecked)
-        {
-            _controller.Length = HistoryLength.OneWeek;
-        }
-        else if (TglLengthOneMonth.IsChecked)
-        {
-            _controller.Length = HistoryLength.OneMonth;
-        }
-        else if (TglLengthThreeMonths.IsChecked)
-        {
-            _controller.Length = HistoryLength.ThreeMonths;
-        }
-        else if (TglLengthSixMonths.IsChecked)
-        {
-            _controller.Length = HistoryLength.SixMonths;
-        }
-        else if (TglLengthOneYear.IsChecked)
-        {
-            _controller.Length = HistoryLength.OneYear;
-        }
-        else if (TglLengthForever.IsChecked)
-        {
-            _controller.Length = HistoryLength.Forever;
-        }
+        _controller.Length = (HistoryLength)(sender as RadioMenuFlyoutItem)!.Tag;
         await LoadDownloadsAsync();
     }
 

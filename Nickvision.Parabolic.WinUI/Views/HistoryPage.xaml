@@ -48,23 +48,7 @@
                         </AppBarButton.Icon>
 
                         <AppBarButton.Flyout>
-                            <MenuFlyout Placement="Bottom">
-                                <RadioMenuFlyoutItem x:Name="TglLengthNever" GroupName="Length" Click="TglLength_Click"/>
-
-                                <RadioMenuFlyoutItem x:Name="TglLengthOneDay" GroupName="Length" Click="TglLength_Click"/>
-
-                                <RadioMenuFlyoutItem x:Name="TglLengthOneWeek" GroupName="Length" Click="TglLength_Click"/>
-
-                                <RadioMenuFlyoutItem x:Name="TglLengthOneMonth" GroupName="Length" Click="TglLength_Click"/>
-
-                                <RadioMenuFlyoutItem x:Name="TglLengthThreeMonths" GroupName="Length" Click="TglLength_Click"/>
-
-                                <RadioMenuFlyoutItem x:Name="TglLengthSixMonths" GroupName="Length" Click="TglLength_Click"/>
-
-                                <RadioMenuFlyoutItem x:Name="TglLengthOneYear" GroupName="Length" Click="TglLength_Click"/>
-
-                                <RadioMenuFlyoutItem x:Name="TglLengthForever" GroupName="Length" Click="TglLength_Click"/>
-                            </MenuFlyout>
+                            <MenuFlyout x:Name="MenuLength" Placement="Bottom"/>
                         </AppBarButton.Flyout>
                     </AppBarButton>
                 </CommandBar.PrimaryCommands>

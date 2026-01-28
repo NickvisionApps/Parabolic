@@ -172,13 +172,13 @@ public class MainWindow : Adw.ApplicationWindow
 
     private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
     {
-        var keyringDialog = new KeyringDialog(_controller.KeyringViewController, this);
+        var keyringDialog = new KeyringDialog(_controller.KeyringViewController);
         keyringDialog.Present(this);
     }
 
-    private void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    private async void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
     {
         var historyDialog = new HistoryDialog(_controller.HistoryViewController, this);
-        historyDialog.Present(this);
+        await historyDialog.PresentAndLoadAsync();
     }
 }

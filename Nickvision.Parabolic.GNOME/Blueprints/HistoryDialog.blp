@@ -3,22 +3,53 @@ using Adw 1;
 
 Adw.PreferencesDialog root {
   content-width: 600;
-  content-height: 400;
+  content-height: 600;
   search-enabled: true;
   title: _("History");
 
   Adw.PreferencesPage {
+    Adw.PreferencesGroup {
+      title: _("Options");
+        
+      Adw.ActionRow {
+        title: _("Sort By");
+
+        [suffix]
+        Adw.ToggleGroup sortGroup {
+          valign: center;
+
+          Adw.Toggle {
+            name: "newest";
+            label: _("Newest");
+          }
+
+          Adw.Toggle {
+            name: "oldest";
+            label: _("Oldest");
+          }
+
+          active-name: "newest";
+        }
+      }
+
+      Adw.ComboRow saveLengthRow {
+        title: _("Save Length");
+      }
+    }
+
     Adw.PreferencesGroup historyGroup {
       title: _("History");
-      header-suffix: Gtk.Button clearButton {
-        valign: center;
+      header-suffix: Gtk.Box {
+        Gtk.Button clearButton {
+          valign: center;
 
-        Adw.ButtonContent {
-          label: _("Clear All");
-          icon-name: "user-trash-symbolic";
+          Adw.ButtonContent {
+            label: _("Clear All");
+            icon-name: "user-trash-symbolic";
+          }
         }
 
-        styles [ "flat" ]
+        styles [ "toolbar" ]
       };
     }
   }

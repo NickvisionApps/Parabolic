@@ -122,7 +122,7 @@ public sealed partial class KeyringPage : Page
         var confirmDialog = new ContentDialog()
         {
             Title = _controller.Translator._("Delete Credential?"),
-            Content = _controller.Translator._("Are you sure you want to delete this credential? The action is irreversible"),
+            Content = _controller.Translator._("Are you sure you want to delete this credential? This action is irreversible"),
             PrimaryButtonText = _controller.Translator._("Yes"),
             CloseButtonText = _controller.Translator._("No"),
             DefaultButton = ContentDialogButton.Close,

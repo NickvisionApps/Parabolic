@@ -32,12 +32,12 @@ public class KeyringDialog : Adw.PreferencesDialog
     [Gtk.Connect("editConfirmCredentialButton")]
     private Gtk.Button? _editConfirmCredentialButton;
 
-    public KeyringDialog(KeyringViewController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("KeyringDialog", controller.Translator))
+    public KeyringDialog(KeyringViewController controller) : this(controller, Gtk.Builder.NewFromBlueprint("KeyringDialog", controller.Translator))
     {
 
     }
 
-    public KeyringDialog(KeyringViewController controller, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
+    public KeyringDialog(KeyringViewController controller, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
     {
         _controller = controller;
         _builder = builder;
@@ -150,7 +150,7 @@ public class KeyringDialog : Adw.PreferencesDialog
 
     private void Remove(Credential credential)
     {
-        var dialog = Adw.AlertDialog.New(_controller.Translator._("Delete Credential?"), _controller.Translator._("Are you sure you want to delete this credential? The action is irreversible"));
+        var dialog = Adw.AlertDialog.New(_controller.Translator._("Delete Credential?"), _controller.Translator._("Are you sure you want to delete this credential? This action is irreversible"));
         dialog.AddResponse("delete", _controller.Translator._("Delete"));
         dialog.AddResponse("cancel", _controller.Translator._("Cancel"));
         dialog.SetResponseAppearance("delete", Adw.ResponseAppearance.Destructive);

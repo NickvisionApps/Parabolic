@@ -77,6 +77,7 @@ Adw.Dialog root {
 
             Adw.SwitchRow downloadImmediatelyRow {
               title: _("Download Immediately");
+              subtitle: _("Media will be downloaded based off of previously configured options and sensible defaults. Options will not be shown");
             }
           }
         };
@@ -194,6 +195,7 @@ Adw.Dialog root {
 
                 Adw.ComboRow singleFileTypeRow {
                   title: _("File Type");
+                  subtitle: _("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
                 }
 
                 Adw.ComboRow singleVideoFormatRow {
@@ -243,6 +245,8 @@ Adw.Dialog root {
             icon-name: "wrench-wide-symbolic";
             child: Adw.PreferencesPage {
               Adw.PreferencesGroup {
+                title: _("Options");
+
                 Adw.SwitchRow singleSplitChaptersRow {
                   title: _("Split into Files by Chapters");
                 }
@@ -339,6 +343,7 @@ Adw.Dialog root {
 
                 Adw.ComboRow playlistFileTypeRow {
                   title: _("File Type");
+                  subtitle: _("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
                 }
 
                 Adw.ComboRow playlistVideoResolutionRow {
@@ -357,12 +362,15 @@ Adw.Dialog root {
             icon-name: "view-list-bullet-symbolic";
             child: Adw.PreferencesPage playlistItemsPage {
               Adw.PreferencesGroup {
+                title: _("Options");
+
                 Adw.SwitchRow playlistReverseOrderRow {
                   title: _("Reverse Download Order");
                 }
 
                 Adw.SwitchRow playlistNumberTitlesRow {
                   title: _("Number Titles");
+                  subtitle: _("Numbering will be applied to titles of selected items in succession on download");
                 }
               }
 
@@ -430,6 +438,8 @@ Adw.Dialog root {
             icon-name: "wrench-wide-symbolic";
             child: Adw.PreferencesPage {
               Adw.PreferencesGroup {
+                title: _("Options");
+
                 Adw.SwitchRow playlistExportM3URow {
                   title: _("Export M3U Playlist File");
                 }
