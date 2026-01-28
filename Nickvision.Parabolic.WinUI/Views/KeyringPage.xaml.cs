@@ -1,10 +1,8 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Controllers;
 using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace Nickvision.Parabolic.WinUI.Views;
@@ -19,13 +17,11 @@ public sealed partial class KeyringPage : Page
     }
 
     private readonly KeyringViewController _controller;
-    private ObservableCollection<SelectionItem<Credential>> _credentials;
 
     public KeyringPage(KeyringViewController controller)
     {
         InitializeComponent();
         _controller = controller;
-        _credentials = [];
         LblKeyring.Text = _controller.Translator._("Keyring");
         LblAdd.Text = _controller.Translator._("Add");
         TxtSearch.PlaceholderText = _controller.Translator._("Search...");
@@ -48,9 +44,8 @@ public sealed partial class KeyringPage : Page
     private void Page_Loaded(object sender, RoutedEventArgs e)
     {
         TxtSearch.Text = string.Empty;
-        _credentials = _controller.Credentials;
-        ListCredentials.ItemsSource = _credentials;
-        ViewStack.SelectedIndex = _credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+        ListCredentials.ItemsSource = _controller.Credentials;
+        ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
     }
 
     private async void Add(object sender, RoutedEventArgs e)
@@ -63,11 +58,28 @@ public sealed partial class KeyringPage : Page
         DlgCredential.PrimaryButtonText = _controller.Translator._("Add");
         DlgCredential.XamlRoot = XamlRoot;
         DlgCredential.RequestedTheme = ActualTheme;
-        if ((await DlgCredential.ShowAsync()) == ContentDialogResult.Primary)
+        string? error = null;
+        do
         {
-            await _controller.AddAsync(TxtCredentialName.Text, TxtCredentialUrl.Text, TxtCredentialUsername.Text, TxtCredentialPassword.Password);
-            ViewStack.SelectedIndex = _credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
-        }
+            if ((await DlgCredential.ShowAsync()) == ContentDialogResult.Primary)
+            {
+                error = await _controller.AddAsync(TxtCredentialName.Text, TxtCredentialUrl.Text, TxtCredentialUsername.Text, TxtCredentialPassword.Password);
+                if (error is not null)
+                {
+                    var errorDialog = new ContentDialog()
+                    {
+                        Title = _controller.Translator._("Error"),
+                        Content = error,
+                        CloseButtonText = _controller.Translator._("OK"),
+                        DefaultButton = ContentDialogButton.Close,
+                        XamlRoot = XamlRoot,
+                        RequestedTheme = ActualTheme
+                    };
+                    await errorDialog.ShowAsync();
+                }
+            }
+        } while (error is not null);
+        ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
     }
 
     private async void Edit(object sender, RoutedEventArgs e)
@@ -81,10 +93,27 @@ public sealed partial class KeyringPage : Page
         DlgCredential.PrimaryButtonText = _controller.Translator._("Update");
         DlgCredential.XamlRoot = XamlRoot;
         DlgCredential.RequestedTheme = ActualTheme;
-        if ((await DlgCredential.ShowAsync()) == ContentDialogResult.Primary)
+        string? error = null;
+        do
         {
-            await _controller.UpdateAsync(TxtCredentialName.Text, TxtCredentialUrl.Text, TxtCredentialUsername.Text, TxtCredentialPassword.Password);
-        }
+            if ((await DlgCredential.ShowAsync()) == ContentDialogResult.Primary)
+            {
+                error = await _controller.UpdateAsync(TxtCredentialName.Text, TxtCredentialUrl.Text, TxtCredentialUsername.Text, TxtCredentialPassword.Password);
+                if (error is not null)
+                {
+                    var errorDialog = new ContentDialog()
+                    {
+                        Title = _controller.Translator._("Error"),
+                        Content = error,
+                        CloseButtonText = _controller.Translator._("OK"),
+                        DefaultButton = ContentDialogButton.Close,
+                        XamlRoot = XamlRoot,
+                        RequestedTheme = ActualTheme
+                    };
+                    await errorDialog.ShowAsync();
+                }
+            }
+        } while (error is not null);
     }
 
     private async void Remove(object sender, RoutedEventArgs e)
@@ -103,13 +132,13 @@ public sealed partial class KeyringPage : Page
         if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
         {
             await _controller.RemoveAsync(selected);
-            ViewStack.SelectedIndex = _credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+            ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
         }
     }
 
     private void TxtSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
     {
-        if (_credentials.Count == 0)
+        if (_controller.Credentials.Count == 0)
         {
             return;
         }
@@ -117,12 +146,12 @@ public sealed partial class KeyringPage : Page
         {
             if (string.IsNullOrEmpty(sender.Text))
             {
-                ListCredentials.ItemsSource = _credentials;
-                ViewStack.SelectedIndex = _credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+                ListCredentials.ItemsSource = _controller.Credentials;
+                ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
             }
             else
             {
-                var filtered = _credentials.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower()) || x.Value.Username.ToLower().Contains(sender.Text.ToLower()) || x.Value.Url.ToString().ToLower().Contains(sender.Text.ToLower()));
+                var filtered = _controller.Credentials.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower()) || x.Value.Username.ToLower().Contains(sender.Text.ToLower()) || x.Value.Url.ToString().ToLower().Contains(sender.Text.ToLower()));
                 ListCredentials.ItemsSource = filtered;
                 ViewStack.SelectedIndex = filtered.Any() ? (int)Pages.Keyring : (int)Pages.NoneSearch;
             }

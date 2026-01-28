@@ -176,9 +176,9 @@ public class MainWindowController : IDisposable
         }
     }
 
-    public KeyringViewController KeyringViewController => new KeyringViewController(_services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IKeyringService>()!);
+    public KeyringViewController KeyringViewController => new KeyringViewController(_services.Get<ITranslationService>()!, _services.Get<IKeyringService>()!);
 
-    public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<INotificationService>()!, _services.Get<IHistoryService>()!);
+    public PreferencesViewController PreferencesViewController => new PreferencesViewController(_services.Get<IJsonFileService>()!, _services.Get<ITranslationService>()!, _services.Get<IHistoryService>()!);
 
     public int RemainingDownloadsCount => _services.Get<IDownloadService>()!.RemainingCount;
 

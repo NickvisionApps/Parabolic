@@ -17,6 +17,7 @@ public class MainWindow : Adw.ApplicationWindow
     private readonly Gio.SimpleAction _actKeyboardShortcuts;
     private readonly Gio.SimpleAction _actAbout;
     private readonly Gio.SimpleAction _actAddDownload;
+    private readonly Gio.SimpleAction _actKeyring;
 
     [Gtk.Connect("windowTitle")]
     private Adw.WindowTitle? _windowTitle;
@@ -76,6 +77,11 @@ public class MainWindow : Adw.ApplicationWindow
         _actAddDownload.OnActivate += AddDownload;
         AddAction(_actAddDownload);
         Application!.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
+        // Keyring action
+        _actKeyring = Gio.SimpleAction.New("keyring", null);
+        _actKeyring.OnActivate += Keyring;
+        AddAction(_actKeyring);
+        Application!.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
     }
 
     public new void Present()
@@ -163,5 +169,11 @@ public class MainWindow : Adw.ApplicationWindow
     {
         var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, this);
         await addDownloadDialog.PresentWithClipboardAsync();
+    }
+
+    private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        var keyringDialog = new KeyringDialog(_controller.KeyringViewController, this);
+        keyringDialog.Present(this);
     }
 }

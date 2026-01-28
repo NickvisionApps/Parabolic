@@ -1,7 +1,6 @@
 ﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
-using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -16,7 +15,6 @@ namespace Nickvision.Parabolic.Shared.Controllers;
 public class PreferencesViewController
 {
     private readonly IJsonFileService _jsonFileService;
-    private readonly INotificationService _notificationService;
     private readonly IHistoryService _historyService;
     private readonly Configuration _configuration;
 
@@ -32,10 +30,9 @@ public class PreferencesViewController
     public IReadOnlyList<SelectionItem<Theme>> Themes { get; }
     public IReadOnlyList<SelectionItem<VideoCodec>> VideoCodecs { get; }
 
-    public PreferencesViewController(IJsonFileService jsonFileService, ITranslationService translationService, INotificationService notificationSerivce, IHistoryService historyService)
+    public PreferencesViewController(IJsonFileService jsonFileService, ITranslationService translationService, IHistoryService historyService)
     {
         _jsonFileService = jsonFileService;
-        _notificationService = notificationSerivce;
         _historyService = historyService;
         _configuration = _jsonFileService.Load<Configuration>(Configuration.Key);
         var selectedHistoryLength = _historyService.Length;
@@ -326,36 +323,25 @@ public class PreferencesViewController
         set => _configuration.YouTubeSponsorBlock = value;
     }
 
-    public async Task AddPostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
+    public async Task<string?> AddPostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
     {
         if (_configuration.PostprocessingArguments.Any(arg => arg.Name == name))
         {
-            _notificationService.Send(new AppNotification(Translator._("An argument with that name already exists"), NotificationSeverity.Error)
-            {
-                Action = "error"
-            });
+            return Translator._("An argument with that name already exists");
         }
         else if (string.IsNullOrEmpty(name))
         {
-            _notificationService.Send(new AppNotification(Translator._("The name of the argument cannot be empty"), NotificationSeverity.Error)
-            {
-                Action = "error"
-            });
+            return Translator._("The name of the argument cannot be empty");
         }
         else if (string.IsNullOrEmpty(arguments))
         {
-            _notificationService.Send(new AppNotification(Translator._("The arguments of the argument cannot be empty"), NotificationSeverity.Error)
-            {
-                Action = "error"
-            });
+            return Translator._("The arguments of the argument cannot be empty");
         }
-        else
-        {
-            var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
-            PostprocessingArguments.Add(argument);
-            _configuration.PostprocessingArguments.Add(argument);
-            await SaveConfigurationAsync();
-        }
+        var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
+        PostprocessingArguments.Add(argument);
+        _configuration.PostprocessingArguments.Add(argument);
+        await SaveConfigurationAsync();
+        return null;
     }
 
     public async Task DeletePostprocessingArgumentAsync(string name)
@@ -370,37 +356,26 @@ public class PreferencesViewController
         await SaveConfigurationAsync();
     }
 
-    public async Task UpdatePostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
+    public async Task<string?> UpdatePostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
     {
         var index = _configuration.PostprocessingArguments.FindIndex(arg => arg.Name == name);
         if (index == -1)
         {
-            _notificationService.Send(new AppNotification(Translator._("An argument with that name does not exist"), NotificationSeverity.Error)
-            {
-                Action = "error"
-            });
+            return Translator._("An argument with that name does not exist");
         }
         else if (string.IsNullOrEmpty(name))
         {
-            _notificationService.Send(new AppNotification(Translator._("The name of the argument cannot be empty"), NotificationSeverity.Error)
-            {
-                Action = "error"
-            });
+            return Translator._("The name of the argument cannot be empty");
         }
         else if (string.IsNullOrEmpty(arguments))
         {
-            _notificationService.Send(new AppNotification(Translator._("The arguments of the argument cannot be empty"), NotificationSeverity.Error)
-            {
-                Action = "error"
-            });
+            return Translator._("The arguments of the argument cannot be empty");
         }
-        else
-        {
-            var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
-            PostprocessingArguments[index] = argument;
-            _configuration.PostprocessingArguments[index] = argument;
-            await SaveConfigurationAsync();
-        }
+        var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
+        PostprocessingArguments[index] = argument;
+        _configuration.PostprocessingArguments[index] = argument;
+        await SaveConfigurationAsync();
+        return null;
     }
 
     public async Task SaveConfigurationAsync() => await _jsonFileService.SaveAsync(_configuration, Configuration.Key);

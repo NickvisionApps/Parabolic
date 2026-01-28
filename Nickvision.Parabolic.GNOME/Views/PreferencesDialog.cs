@@ -1,4 +1,5 @@
 ﻿using Nickvision.Desktop.GNOME.Helpers;
+using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
@@ -11,13 +12,6 @@ namespace Nickvision.Parabolic.GNOME.Views;
 
 public class PreferencesDialog : Adw.PreferencesDialog
 {
-    private enum EditMode
-    {
-        None,
-        Add,
-        Edit
-    }
-
     private readonly PreferencesViewController _controller;
     private readonly Gtk.Window _parent;
     private readonly Gtk.Builder _builder;
@@ -272,26 +266,28 @@ public class PreferencesDialog : Adw.PreferencesDialog
     {
         _postprocessingArgumentEditMode = EditMode.Add;
         _editArgumentNameRow!.Text_ = string.Empty;
+        _editArgumentNameRow.Sensitive = true;
         _editArgumentPostProcessorRow!.SetModel(_controller.PostProcessors);
         _editArgumentExecutableRow!.SetModel(_controller.Executables);
         _editArgumentArgsRow!.Text_ = string.Empty;
         _editConfirmPostprocessingArgumentButton!.Label = _controller.Translator._("Add");
-        _editPostprocessingArgumentDialog!.Present(_parent);
+        _editPostprocessingArgumentDialog!.Present(this);
     }
 
     private async void EditConfirmPostprocessingArgumentButton_OnClicked(Gtk.Button sender, EventArgs args)
     {
+        string? error = null;
         switch (_postprocessingArgumentEditMode)
         {
             case EditMode.Add:
-                await _controller.AddPostprocessingArgumentAsync(
+                error = await _controller.AddPostprocessingArgumentAsync(
                     _editArgumentNameRow!.Text_ ?? string.Empty,
                     _controller.PostProcessors[(int)_editArgumentPostProcessorRow!.Selected],
                     _controller.Executables[(int)_editArgumentExecutableRow!.Selected],
                     _editArgumentArgsRow!.Text_ ?? string.Empty);
                 break;
             case EditMode.Edit:
-                await _controller.UpdatePostprocessingArgumentAsync(
+                error = await _controller.UpdatePostprocessingArgumentAsync(
                     _editArgumentNameRow!.Text_ ?? string.Empty,
                     _controller.PostProcessors[(int)_editArgumentPostProcessorRow!.Selected],
                     _controller.Executables[(int)_editArgumentExecutableRow!.Selected],
@@ -300,7 +296,17 @@ public class PreferencesDialog : Adw.PreferencesDialog
             default:
                 break;
         }
-        _editPostprocessingArgumentDialog!.ForceClose();
+        if (error is not null)
+        {
+            var alert = Adw.AlertDialog.New(_controller.Translator._("Error"), error);
+            alert.AddResponse("ok", _controller.Translator._("OK"));
+            alert.SetDefaultResponse("ok");
+            alert.Present(this);
+        }
+        else
+        {
+            _editPostprocessingArgumentDialog!.ForceClose();
+        }
     }
 
     private void EditPostProcessingArgument(string name)
@@ -312,13 +318,14 @@ public class PreferencesDialog : Adw.PreferencesDialog
         }
         _postprocessingArgumentEditMode = EditMode.Edit;
         _editArgumentNameRow!.Text_ = argument.Name;
+        _editArgumentNameRow.Sensitive = false;
         _editArgumentPostProcessorRow!.SetModel(_controller.PostProcessors);
         _editArgumentPostProcessorRow!.Selected = (uint)_controller.PostProcessors.Select((x, i) => (x, i)).Where(x => x.x.Value == argument.PostProcessor).First().i;
         _editArgumentExecutableRow!.SetModel(_controller.Executables);
         _editArgumentExecutableRow!.Selected = (uint)_controller.Executables.Select((x, i) => (x, i)).Where(x => x.x.Value == argument.Executable).First().i;
         _editArgumentArgsRow!.Text_ = argument.Args;
         _editConfirmPostprocessingArgumentButton!.Label = _controller.Translator._("Edit");
-        _editPostprocessingArgumentDialog!.Present(_parent);
+        _editPostprocessingArgumentDialog!.Present(this);
     }
 
     private void DeletePostProcessingArgument(string name)
@@ -336,6 +343,6 @@ public class PreferencesDialog : Adw.PreferencesDialog
                 await _controller.DeletePostprocessingArgumentAsync(name);
             }
         };
-        dialog.Present(_parent);
+        dialog.Present(this);
     }
 }

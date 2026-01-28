@@ -182,13 +182,30 @@ public sealed partial class SettingsPage : Page
         DlgPostprocessingArgument.PrimaryButtonText = _controller.Translator._("Add");
         DlgPostprocessingArgument.XamlRoot = XamlRoot;
         DlgPostprocessingArgument.RequestedTheme = ActualTheme;
-        if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
+        string? error = null;
+        do
         {
-            await _controller.AddPostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,
-                (CmbPostprocessingArgumentPostProcessor.SelectedItem as SelectionItem<PostProcessor>)!,
-                (CmbPostprocessingArgumentExecutable.SelectedItem as SelectionItem<Executable>)!,
-                TxtPostprocessingArgumentArgs.Text);
-        }
+            if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
+            {
+                error = await _controller.AddPostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,
+                    (CmbPostprocessingArgumentPostProcessor.SelectedItem as SelectionItem<PostProcessor>)!,
+                    (CmbPostprocessingArgumentExecutable.SelectedItem as SelectionItem<Executable>)!,
+                    TxtPostprocessingArgumentArgs.Text);
+                if (error is not null)
+                {
+                    var errorDialog = new ContentDialog()
+                    {
+                        Title = _controller.Translator._("Error"),
+                        Content = error,
+                        CloseButtonText = _controller.Translator._("OK"),
+                        DefaultButton = ContentDialogButton.Close,
+                        XamlRoot = XamlRoot,
+                        RequestedTheme = ActualTheme
+                    };
+                    await errorDialog.ShowAsync();
+                }
+            }
+        } while (error is not null);
     }
 
     private async void ClearCookiesFile(object? sender, RoutedEventArgs e)
@@ -228,13 +245,30 @@ public sealed partial class SettingsPage : Page
         DlgPostprocessingArgument.PrimaryButtonText = _controller.Translator._("Update");
         DlgPostprocessingArgument.XamlRoot = XamlRoot;
         DlgPostprocessingArgument.RequestedTheme = ActualTheme;
-        if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
+        string? error = null;
+        do
         {
-            await _controller.UpdatePostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,
-                (CmbPostprocessingArgumentPostProcessor.SelectedItem as SelectionItem<PostProcessor>)!,
-                (CmbPostprocessingArgumentExecutable.SelectedItem as SelectionItem<Executable>)!,
-                TxtPostprocessingArgumentArgs.Text);
-        }
+            if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
+            {
+                error = await _controller.UpdatePostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,
+                    (CmbPostprocessingArgumentPostProcessor.SelectedItem as SelectionItem<PostProcessor>)!,
+                    (CmbPostprocessingArgumentExecutable.SelectedItem as SelectionItem<Executable>)!,
+                    TxtPostprocessingArgumentArgs.Text);
+                if (error is not null)
+                {
+                    var errorDialog = new ContentDialog()
+                    {
+                        Title = _controller.Translator._("Error"),
+                        Content = error,
+                        CloseButtonText = _controller.Translator._("OK"),
+                        DefaultButton = ContentDialogButton.Close,
+                        XamlRoot = XamlRoot,
+                        RequestedTheme = ActualTheme
+                    };
+                    await errorDialog.ShowAsync();
+                }
+            }
+        } while (error is not null);
     }
 
     private async void SelectCookiesFile(object? sender, RoutedEventArgs e)

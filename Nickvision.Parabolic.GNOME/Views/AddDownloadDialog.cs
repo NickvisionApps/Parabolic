@@ -135,7 +135,7 @@ public class AddDownloadDialog : Adw.Dialog
 
     }
 
-    private AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
+    private AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.DialogHandle(builder.GetPointer("root"), false))
     {
         _controller = controller;
         _parent = parent;
@@ -345,7 +345,7 @@ public class AddDownloadDialog : Adw.Dialog
             _playlistViewStack!.GetPage(_playlistItemsPage!).BadgeNumber = (uint)_discoveryContext.Items.Count;
             _playlistReverseOrderRow!.Active = _controller.PreviousDownloadOptions.ReverseDownloadOrder;
             _playlistNumberTitlesRow!.Active = _controller.PreviousDownloadOptions.NumberTitles;
-            foreach(var item in _discoveryContext.Items)
+            foreach (var item in _discoveryContext.Items)
             {
                 var row = Adw.EntryRow.New();
                 row.UseMarkup = false;
@@ -474,7 +474,7 @@ public class AddDownloadDialog : Adw.Dialog
 
     private async void PlaylistSelectAllItemsRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
     {
-        foreach(var btn in _playlistItemsCheckButtons)
+        foreach (var btn in _playlistItemsCheckButtons)
         {
             btn.Active = true;
         }
