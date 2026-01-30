@@ -53,7 +53,7 @@ public class HistoryDialog : Adw.PreferencesDialog
 
     private async void SortGroup_OnNotify(GObject.Object sender, NotifySignalArgs e)
     {
-        if(e.Pspec.GetName() == "active-name")
+        if (e.Pspec.GetName() == "active-name")
         {
             _controller.SortNewest = _sortGroup!.ActiveName == "newest";
             await LoadDownloadsAsync();
@@ -62,7 +62,7 @@ public class HistoryDialog : Adw.PreferencesDialog
 
     private async void SaveLengthRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
     {
-        if(e.Pspec.GetName() == "selected-item")
+        if (e.Pspec.GetName() == "selected-item")
         {
             _controller.Length = _controller.Lengths[(int)_saveLengthRow!.Selected].Value;
             await LoadDownloadsAsync();

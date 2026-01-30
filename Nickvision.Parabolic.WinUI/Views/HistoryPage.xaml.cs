@@ -35,7 +35,7 @@ public sealed partial class HistoryPage : Page
         TglSortNewest.Text = _controller.Translator._("Newest");
         TglSortOldest.Text = _controller.Translator._("Oldest");
         BtnLength.Label = _controller.Translator._("Save Length");
-        foreach(var length in _controller.Lengths)
+        foreach (var length in _controller.Lengths)
         {
             var item = new RadioMenuFlyoutItem()
             {
