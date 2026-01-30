@@ -38,7 +38,7 @@ public sealed class YtdlpExecutableServiceTests
     public void Case001_InitalizeCheck() => Assert.IsNotNull(_ytdlpExecutableService);
 
     [TestMethod]
-    public void Case002_BundledVersionCheck() => Assert.AreEqual(new AppVersion("2025.12.08"), _ytdlpExecutableService!.BundledVersion);
+    public void Case002_BundledVersionCheck() => Assert.AreEqual(new AppVersion("2026.1.29"), _ytdlpExecutableService!.BundledVersion);
 
     [TestMethod]
     public void Case003_ExecutablePathCheck() => File.Exists(_ytdlpExecutableService!.ExecutablePath);
@@ -65,7 +65,7 @@ public sealed class YtdlpExecutableServiceTests
             File.Delete(downloadedYtdlp);
         }
         Assert.IsNotNull(stable);
-        Assert.AreEqual(new AppVersion("2025.12.08"), stable);
+        Assert.AreEqual(new AppVersion("2026.1.29"), stable);
         Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(stable));
         Assert.IsTrue(File.Exists(downloadedYtdlp));
         File.Delete(downloadedYtdlp);
