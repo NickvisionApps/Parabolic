@@ -12,6 +12,17 @@ menu mainMenu {
   }
 }
 
+menu downloadsActionsMenu {
+  section {
+    item(_("Stop All Remaining"), "win.stopAllRemaining")
+    item(_("Retry All Failed"), "win.retryAllFailed")
+  }
+  section {
+    item(_("Clear All Queued"), "win.clearAllQueued")
+    item(_("Clear All Completed"), "win.clearAllCompleted")
+  }
+}
+
 Adw.ApplicationWindow root {
   width-request: 360;
   height-request: 200;
@@ -74,7 +85,79 @@ Adw.ApplicationWindow root {
 
         Adw.ViewStackPage {
           name: "Downloads";
-          
+          child: Gtk.Box {
+            orientation: vertical;
+
+            Gtk.Box {
+              orientation: horizontal;
+              spacing: 6;
+              margin-start: 18;
+              margin-top: 18;
+              margin-end: 18;
+              margin-bottom: 12;
+
+              Adw.ToggleGroup downloadsFilter {
+                homogeneous: true;
+
+                Adw.Toggle {
+                  label: _("All");
+                }
+
+                Adw.Toggle {
+                  label: _("Running");
+                }
+
+                Adw.Toggle {
+                  label: _("Queued");
+                }
+
+                Adw.Toggle {
+                  label: _("Completed");
+                }
+
+                active: 0;
+              }
+
+              Gtk.MenuButton actionsMenuButton {
+                valign: center;
+                icon-name: "view-more-symbolic";
+                tooltip-text: _("Download Actions");
+                menu-model: downloadsActionsMenu;
+                halign: end;
+                hexpand: true;
+              }
+            }
+
+            Adw.ViewStack downloadsViewStack {
+              vexpand: true;
+
+              Adw.ViewStackPage {
+                name: "NoDownloads";
+                child: Adw.StatusPage statusNoDownloads {
+                  icon-name: "folder-download-symbolic";
+                  title: _("No Downloads");
+                  description: _("There are no downloads of this type");
+                };
+              }
+
+              Adw.ViewStackPage {
+                name: "WithDownloads";
+                child: Gtk.ScrolledWindow {
+                  hscrollbar-policy: never;
+
+                  child: Gtk.ListBox downloadsList {
+                    margin-start: 12;
+                    margin-end: 12;
+                    margin-top: 6;
+                    margin-bottom: 12;
+                    selection-mode: none;
+
+                    styles ["boxed-list"]
+                  };
+                };
+              }
+            }
+          };
         }
       }
     };

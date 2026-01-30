@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-29 21:02-0500\n"
+"POT-Creation-Date: 2026-01-29 21:29-0500\n"
 "PO-Revision-Date: 2025-12-27 23:13+0000\n"
 "Last-Translator: ButterflyOfFire <boffire@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Kabyle <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 5.15.1\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:65
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:76
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Add Download"
@@ -325,7 +325,7 @@ msgid "View Log"
 msgstr "Wali aɣmis"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:70
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:182
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:181
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:44
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
 msgid "Pause"
@@ -391,7 +391,7 @@ msgid "Clear All"
 msgstr "Sfeḍ"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:58
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:25
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 msgid "Keyring"
@@ -402,7 +402,7 @@ msgid "Credentials"
 msgstr "Isulay"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:17
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:31
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:42
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:100
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:273
@@ -446,21 +446,87 @@ msgstr "Inegzumen n unasiw"
 msgid "About Parabolic"
 msgstr "Ɣef Parabolic"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:17
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#, fuzzy
+msgid "Stop All Remaining"
+msgstr "Seḥbes-iten akk"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:18
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
+msgid "Retry All Failed"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:21
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#, fuzzy
+msgid "Clear All Queued"
+msgstr "Sfeḍ"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:22
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#, fuzzy
+msgid "Clear All Completed"
+msgstr "Sfeḍ"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:51
 msgid "Main Menu"
 msgstr "Umuɣ agejdan"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:61
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:72
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Download Media"
 msgstr "Zdem amidya"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:62
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:73
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Rnu tansa URL n tvidyut, n umeslaw neɣ n tebdart n tɣuri akken ad tebduḍ "
 "asider"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:103
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+msgid "All"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:107
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:190
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "Running"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:111
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:94
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+#, fuzzy
+msgid "Queued"
+msgstr "Yemmed"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:115
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+msgid "Completed"
+msgstr "Yemmed"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:124
+#, fuzzy
+msgid "Download Actions"
+msgstr "Zdem-it-id tikkelt nniḍen"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:138
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#, fuzzy
+msgid "No Downloads"
+msgstr "Isadaren"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:139
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
+#, fuzzy
+msgid "There are no downloads of this type"
+msgstr "Amsider"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
@@ -825,26 +891,19 @@ msgstr "Akaram n usekles"
 msgid "Close Folder"
 msgstr "Akaram n usekles"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:95
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
-#, fuzzy
-msgid "Queued"
-msgstr "Yemmed"
-
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:100
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:99
 msgid "Starting"
 msgstr "Asenker"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:105
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:104
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:169
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:170
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:134
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:135
 msgid "Unknown"
 msgstr "Arussin"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:127
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:126
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
@@ -856,42 +915,35 @@ msgstr "Arussin"
 msgid "Error"
 msgstr "Anezri"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:136
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:135
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:102
 msgid "Success"
 msgstr "Yedda"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:147
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:146
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:111
 #, fuzzy
 msgid "Paused"
 msgstr "Serǧu"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:149
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:148
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:114
 msgid "Resume"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:163
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:162
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:73
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:127
 msgid "Processing"
 msgstr "Asekker"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:167
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
 #, fuzzy, csharp-format
 msgid "{0} • {1}"
 msgstr "{} • {}"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:191
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-msgid "Running"
-msgstr ""
-
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:199
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:198
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:163
 msgid "Stopped"
 msgstr "Yettwaḥbes"
@@ -1000,7 +1052,7 @@ msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:151
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:159
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
 msgid "GitHub Repo"
 msgstr "Akufi n Github"
@@ -1582,43 +1634,6 @@ msgstr "Asqerdec"
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
 msgid "Settings"
 msgstr "Iɣewwaren"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
-msgid "All"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
-msgid "Completed"
-msgstr "Yemmed"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
-#, fuzzy
-msgid "Stop All Remaining"
-msgstr "Seḥbes-iten akk"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
-msgid "Retry All Failed"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
-#, fuzzy
-msgid "Clear All Queued"
-msgstr "Sfeḍ"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
-#, fuzzy
-msgid "Clear All Completed"
-msgstr "Sfeḍ"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
-#, fuzzy
-msgid "No Downloads"
-msgstr "Isadaren"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-#, fuzzy
-msgid "There are no downloads of this type"
-msgstr "Amsider"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
 #, fuzzy

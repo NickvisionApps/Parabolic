@@ -3,7 +3,10 @@ using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.Shared.Controllers;
+using Nickvision.Parabolic.Shared.Events;
+using Nickvision.Parabolic.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Nickvision.Parabolic.GNOME.Views;
@@ -12,6 +15,7 @@ public class MainWindow : Adw.ApplicationWindow
 {
     private readonly MainWindowController _controller;
     private readonly Gtk.Builder _builder;
+    private readonly Dictionary<int, DownloadRow> _downloadRows;
 
     [Gtk.Connect("windowTitle")]
     private Adw.WindowTitle? _windowTitle;
@@ -19,6 +23,12 @@ public class MainWindow : Adw.ApplicationWindow
     private Adw.ToastOverlay? _toastOverlay;
     [Gtk.Connect("viewStack")]
     private Adw.ViewStack? _viewStack;
+    [Gtk.Connect("downloadsFilter")]
+    private Adw.ToggleGroup? _downloadsFilter;
+    [Gtk.Connect("downloadsList")]
+    private Gtk.ListBox? _downloadsList;
+    [Gtk.Connect("downloadsViewStack")]
+    private Adw.ViewStack? _downloadsViewStack;
 
     public MainWindow(MainWindowController controller, Adw.Application application) : this(controller, application, Gtk.Builder.NewFromBlueprint("MainWindow", controller.Translator))
     {
@@ -30,8 +40,8 @@ public class MainWindow : Adw.ApplicationWindow
         Application = application;
         _controller = controller;
         _builder = builder;
+        _downloadRows = new Dictionary<int, DownloadRow>();
         _builder.Connect(this);
-        // Window
         Title = _controller.AppInfo.ShortName;
         IconName = _controller.AppInfo.Id;
         if (_controller.AppInfo.Version!.IsPreview)
@@ -39,93 +49,91 @@ public class MainWindow : Adw.ApplicationWindow
             AddCssClass("devel");
         }
         _windowTitle!.Title = _controller.AppInfo.ShortName;
-        // Events
         OnCloseRequest += Window_OnCloseRequest;
         _controller.AppNotificationSent += (sender, args) => GLib.Functions.IdleAdd(200, () =>
         {
             Controller_AppNotificationSent(sender, args);
             return false;
         });
-        // Quit action
+        _controller.DownloadAdded += (sender, args) => GLib.Functions.IdleAdd(0, () =>
+        {
+            Controller_DownloadAdded(sender, args);
+            return false;
+        });
+        _controller.DownloadCompleted += (sender, args) => GLib.Functions.IdleAdd(0, () =>
+        {
+            Controller_DownloadCompleted(sender, args);
+            return false;
+        });
+        _controller.DownloadProgressChanged += (sender, args) => GLib.Functions.IdleAdd(0, () =>
+        {
+            Controller_DownloadProgressChanged(sender, args);
+            return false;
+        });
+        _controller.DownloadRetired += (sender, args) => GLib.Functions.IdleAdd(0, () =>
+        {
+            Controller_DownloadRetired(sender, args);
+            return false;
+        });
+        _controller.DownloadStartedFromQueue += (sender, args) => GLib.Functions.IdleAdd(0, () =>
+        {
+            Controller_DownloadStartedFromQueue(sender, args);
+            return false;
+        });
+        _controller.DownloadStopped += (sender, args) => GLib.Functions.IdleAdd(0, () =>
+        {
+            Controller_DownloadStopped(sender, args);
+            return false;
+        });
+        _downloadsFilter!.OnNotify += DownloadsFilter_OnNotify;
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
         AddAction(actQuit);
         Application!.SetAccelsForAction("win.quit", ["<Ctrl>q"]);
-        // Preferences action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
         AddAction(actPreferences);
         Application!.SetAccelsForAction("win.preferences", ["<Ctrl>period"]);
-        // Keyboard shortcuts action
         var actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
         actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
         AddAction(actKeyboardShortcuts);
         Application!.SetAccelsForAction("win.keyboardShortcuts", ["<Ctrl>question"]);
-        // About action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
         AddAction(actAbout);
         Application!.SetAccelsForAction("win.about", ["F1"]);
-        // Add download action
         var actAddDownload = Gio.SimpleAction.New("addDownload", null);
         actAddDownload.OnActivate += AddDownload;
         AddAction(actAddDownload);
         Application!.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
-        // Keyring action
         var actKeyring = Gio.SimpleAction.New("keyring", null);
         actKeyring.OnActivate += Keyring;
         AddAction(actKeyring);
         Application!.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
-        // History action
         var actHistory = Gio.SimpleAction.New("history", null);
         actHistory.OnActivate += History;
         AddAction(actHistory);
         Application!.SetAccelsForAction("win.history", ["<Ctrl>h"]);
+        var actStopAllRemaining = Gio.SimpleAction.New("stopAllRemaining", null);
+        actStopAllRemaining.OnActivate += StopAllRemaining;
+        AddAction(actStopAllRemaining);
+        Application!.SetAccelsForAction("win.stopAllRemaining", ["<Ctrl><Shift>s"]);
+        var actRetryAllFailed = Gio.SimpleAction.New("retryAllFailed", null);
+        actRetryAllFailed.OnActivate += RetryAllFailed;
+        AddAction(actRetryAllFailed);
+        Application!.SetAccelsForAction("win.retryAllFailed", ["<Ctrl><Shift>r"]);
+        var actClearAllQueued = Gio.SimpleAction.New("clearAllQueued", null);
+        actClearAllQueued.OnActivate += ClearAllQueued;
+        AddAction(actClearAllQueued);
+        var actClearAllCompleted = Gio.SimpleAction.New("clearAllCompleted", null);
+        actClearAllCompleted.OnActivate += ClearAllCompleted;
+        AddAction(actClearAllCompleted);
     }
 
     public new void Present()
     {
         base.Present();
         this.WindowGeometry = _controller.WindowGeometry;
-    }
-
-    private bool Window_OnCloseRequest(Gtk.Window sender, EventArgs args)
-    {
-        if (!_controller.CanShutdown)
-        {
-            return true;
-        }
-        GetDefaultSize(out int width, out int height);
-        _controller.WindowGeometry = this.WindowGeometry;
-        _controller.Dispose();
-        Destroy();
-        return false;
-    }
-
-    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs args)
-    {
-        var toast = Adw.Toast.New(args.Notification.Message);
-        _toastOverlay!.AddToast(toast);
-    }
-
-    private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
-    {
-        if (!Window_OnCloseRequest(this, new EventArgs()))
-        {
-            Application!.Quit();
-        }
-    }
-
-    private void Preferences(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
-    {
-        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, this);
-        preferencesDialog.Present(this);
-    }
-
-    private void KeyboardShortcuts(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
-    {
-        var shortcutsDialog = new ShortcutsDialog(_controller.Translator);
-        shortcutsDialog.Present(this);
     }
 
     private async void About(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
@@ -170,15 +178,203 @@ public class MainWindow : Adw.ApplicationWindow
         await addDownloadDialog.PresentWithClipboardAsync();
     }
 
-    private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    private void ClearAllCompleted(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
     {
-        var keyringDialog = new KeyringDialog(_controller.KeyringViewController);
-        keyringDialog.Present(this);
+        foreach (var id in _controller.ClearCompletedDownloads())
+        {
+            _downloadRows.Remove(id);
+        }
+        UpdateDownloadsList();
+    }
+
+    private void ClearAllQueued(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        foreach (var id in _controller.ClearQueuedDownloads())
+        {
+            _downloadRows.Remove(id);
+        }
+        UpdateDownloadsList();
     }
 
     private async void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
     {
         var historyDialog = new HistoryDialog(_controller.HistoryViewController, this);
         await historyDialog.PresentAndLoadAsync();
+    }
+
+    private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        var keyringDialog = new KeyringDialog(_controller.KeyringViewController);
+        keyringDialog.Present(this);
+    }
+
+    private void KeyboardShortcuts(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        var shortcutsDialog = new ShortcutsDialog(_controller.Translator);
+        shortcutsDialog.Present(this);
+    }
+
+    private void Preferences(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, this);
+        preferencesDialog.Present(this);
+    }
+
+    private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        if (!Window_OnCloseRequest(this, new EventArgs()))
+        {
+            Application!.Quit();
+        }
+    }
+
+    private async void RetryAllFailed(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        await _controller.RetryFailedDownloadsAsync();
+    }
+
+    private async void StopAllRemaining(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args)
+    {
+        await _controller.StopAllDownloadsAsync();
+    }
+
+    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs args)
+    {
+        var toast = Adw.Toast.New(args.Notification.Message);
+        _toastOverlay!.AddToast(toast);
+    }
+
+    private void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs args)
+    {
+        var row = new DownloadRow(_controller.Translator, this);
+        row.PauseRequested += DownloadRow_PauseRequested;
+        row.ResumeRequested += DownloadRow_ResumeRequested;
+        row.StopRequested += DownloadRow_StopRequested;
+        row.RetryRequested += DownloadRow_RetryRequested;
+        row.TriggerAddedState(args);
+        _downloadRows[args.Id] = row;
+        UpdateDownloadsList();
+        _viewStack!.VisibleChildName = "Downloads";
+    }
+
+    private void Controller_DownloadCompleted(object? sender, DownloadCompletedEventArgs args)
+    {
+        if (_downloadRows.TryGetValue(args.Id, out var row))
+        {
+            row.TriggerCompletedState(args);
+            UpdateDownloadsList();
+        }
+    }
+
+    private void Controller_DownloadProgressChanged(object? sender, DownloadProgressChangedEventArgs args)
+    {
+        if (_downloadRows.TryGetValue(args.Id, out var row))
+        {
+            row.TriggerProgressState(args);
+        }
+    }
+
+    private void Controller_DownloadRetired(object? sender, DownloadEventArgs args)
+    {
+        if (_downloadRows.TryGetValue(args.Id, out var row))
+        {
+            _downloadRows.Remove(args.Id);
+            UpdateDownloadsList();
+        }
+    }
+
+    private void Controller_DownloadStartedFromQueue(object? sender, DownloadEventArgs args)
+    {
+        if (_downloadRows.TryGetValue(args.Id, out var row))
+        {
+            row.TriggerStartedFromQueueState();
+            UpdateDownloadsList();
+        }
+    }
+
+    private void Controller_DownloadStopped(object? sender, DownloadEventArgs args)
+    {
+        if (_downloadRows.TryGetValue(args.Id, out var row))
+        {
+            row.TriggerStoppedState();
+            UpdateDownloadsList();
+        }
+    }
+
+    private void DownloadRow_PauseRequested(object? sender, int id)
+    {
+        if (_controller.PauseDownload(id) && _downloadRows.TryGetValue(id, out var row))
+        {
+            row.TriggerPausedState();
+        }
+    }
+
+    private void DownloadRow_ResumeRequested(object? sender, int id)
+    {
+        if (_controller.ResumeDownload(id) && _downloadRows.TryGetValue(id, out var row))
+        {
+            row.TriggerResumedState();
+        }
+    }
+
+    private async void DownloadRow_RetryRequested(object? sender, int id)
+    {
+        await _controller.RetryDownloadAsync(id);
+    }
+
+    private async void DownloadRow_StopRequested(object? sender, int id)
+    {
+        await _controller.StopDownloadAsync(id);
+    }
+
+    private void DownloadsFilter_OnNotify(GObject.Object sender, GObject.Object.NotifySignalArgs args)
+    {
+        if (args.Pspec.GetName() == "active-name")
+        {
+            UpdateDownloadsList();
+        }
+    }
+
+    private void UpdateDownloadsList()
+    {
+        while (_downloadsList!.GetFirstChild() is Gtk.Widget child)
+        {
+            _downloadsList.Remove(child);
+        }
+        var activeName = _downloadsFilter!.Active;
+        var filteredRows = _downloadRows.Values.Where(row =>
+        {
+            if (activeName == 1)
+            {
+                return row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused;
+            }
+            else if (activeName == 2)
+            {
+                return row.Status == DownloadStatus.Queued;
+            }
+            else if (activeName == 3)
+            {
+                return row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped;
+            }
+            return true;
+        }).Reverse().ToList();
+        foreach (var row in filteredRows)
+        {
+            _downloadsList.Append(row);
+        }
+        _downloadsViewStack!.VisibleChildName = filteredRows.Count > 0 ? "WithDownloads" : "NoDownloads";
+    }
+
+    private bool Window_OnCloseRequest(Gtk.Window sender, EventArgs args)
+    {
+        if (!_controller.CanShutdown)
+        {
+            return true;
+        }
+        GetDefaultSize(out int width, out int height);
+        _controller.WindowGeometry = this.WindowGeometry;
+        _controller.Dispose();
+        Destroy();
+        return false;
     }
 }

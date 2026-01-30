@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-29 21:02-0500\n"
+"POT-Creation-Date: 2026-01-29 21:29-0500\n"
 "PO-Revision-Date: 2025-11-15 20:41+0000\n"
 "Last-Translator: bovirus <roberto.boriotti@canon.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 5.15-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:65
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:76
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Add Download"
@@ -330,7 +330,7 @@ msgid "View Log"
 msgstr "Visualizza registro"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:70
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:182
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:181
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:44
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
 msgid "Pause"
@@ -396,7 +396,7 @@ msgid "Clear All"
 msgstr "Cancella"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:47
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:58
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:25
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 msgid "Keyring"
@@ -407,7 +407,7 @@ msgid "Credentials"
 msgstr "Credenziali"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:17
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:31
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:42
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:394
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:100
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:273
@@ -451,21 +451,88 @@ msgstr "Scorciatoie tastiera"
 msgid "About Parabolic"
 msgstr "Informazioni su Parabolic"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:40
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:17
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
+#, fuzzy
+msgid "Stop All Remaining"
+msgstr "Ferma tutto"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:18
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
+#, fuzzy
+msgid "Retry All Failed"
+msgstr "Nuovo tentativo fallito"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:21
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
+#, fuzzy
+msgid "Clear All Queued"
+msgstr "Cancella coda"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:22
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#, fuzzy
+msgid "Clear All Completed"
+msgstr "Cancella download completati"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:51
 msgid "Main Menu"
 msgstr "Menù principale"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:61
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:72
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Download Media"
 msgstr "Download audio e video"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:62
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:73
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Per un nuovo download aggiungi l'URL di un video, di un audio o di una "
 "playlist"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:103
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#, fuzzy
+msgid "All"
+msgstr "tutti"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:107
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:190
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "Running"
+msgstr "In esecuzione"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:111
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:94
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Queued"
+msgstr "In coda"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:115
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+msgid "Completed"
+msgstr "Completati"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:124
+#, fuzzy
+msgid "Download Actions"
+msgstr "Nuovo download"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:138
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
+#, fuzzy
+msgid "No Downloads"
+msgstr "Download"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:139
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
+#, fuzzy
+msgid "There are no downloads of this type"
+msgstr "Quando finiscono tutti i scaricamenti"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
@@ -843,25 +910,19 @@ msgstr "Cartella salvataggio"
 msgid "Close Folder"
 msgstr "Cartella di salvataggio"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:95
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
-msgid "Queued"
-msgstr "In coda"
-
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:100
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:99
 msgid "Starting"
 msgstr "Avvio"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:105
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:104
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:169
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:170
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:134
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:135
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:127
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:126
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
@@ -873,41 +934,34 @@ msgstr "Sconosciuto"
 msgid "Error"
 msgstr "Errore"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:136
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:135
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:102
 msgid "Success"
 msgstr "Completato"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:147
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:146
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:111
 msgid "Paused"
 msgstr "In pausa"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:149
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:148
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:114
 msgid "Resume"
 msgstr "Riprendi"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:163
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:162
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:73
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:127
 msgid "Processing"
 msgstr "In elaborazione"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:167
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
 #, fuzzy, csharp-format
 msgid "{0} • {1}"
 msgstr "{} • {}"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:191
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-msgid "Running"
-msgstr "In esecuzione"
-
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:199
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:198
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:163
 msgid "Stopped"
 msgstr "Fermato"
@@ -1016,7 +1070,7 @@ msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr "Vuoi eliminare la credenziale?"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:151
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:159
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
 msgid "GitHub Repo"
 msgstr "Repository GitHub"
@@ -1619,45 +1673,6 @@ msgstr "Discussioni"
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
 msgid "Settings"
 msgstr "Impostazioni"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
-#, fuzzy
-msgid "All"
-msgstr "tutti"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
-msgid "Completed"
-msgstr "Completati"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
-#, fuzzy
-msgid "Stop All Remaining"
-msgstr "Ferma tutto"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
-#, fuzzy
-msgid "Retry All Failed"
-msgstr "Nuovo tentativo fallito"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
-#, fuzzy
-msgid "Clear All Queued"
-msgstr "Cancella coda"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
-#, fuzzy
-msgid "Clear All Completed"
-msgstr "Cancella download completati"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
-#, fuzzy
-msgid "No Downloads"
-msgstr "Download"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-#, fuzzy
-msgid "There are no downloads of this type"
-msgstr "Quando finiscono tutti i scaricamenti"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
 #, fuzzy
