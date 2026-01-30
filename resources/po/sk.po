@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 21:43-0500\n"
+"POT-Creation-Date: 2026-01-29 21:02-0500\n"
 "PO-Revision-Date: 2025-12-22 18:00+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -322,6 +322,43 @@ msgstr ""
 #, fuzzy
 msgid "Export M3U Playlist File"
 msgstr "Zapísať M3U zoznam skladieb"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:51
+msgid "View Log"
+msgstr "Zobraziť záznam"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:70
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:182
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
+msgid "Pause"
+msgstr "Pozastaviť"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:78
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:45
+msgid "Stop"
+msgstr "Zastaviť"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:94
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:46
+msgid "Play"
+msgstr "Prehrať"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:102
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:47
+msgid "Open"
+msgstr "Otvoriť"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:114
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:48
+msgid "Retry"
+msgstr "Skúsiť znova"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:154
+msgid "Copy Log to Clipboard"
+msgstr "Kopírovať záznam do schránky"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
@@ -801,6 +838,75 @@ msgstr "Priečinok na uloženie"
 msgid "Close Folder"
 msgstr "Priečinok na uloženie"
 
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:95
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Queued"
+msgstr "V poradí"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:100
+msgid "Starting"
+msgstr "Spúšťanie"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:105
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:169
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:170
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:135
+msgid "Unknown"
+msgstr "Neznáme"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:127
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
+msgid "Error"
+msgstr "Chyba"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:136
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:102
+msgid "Success"
+msgstr "Úspech"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:147
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:111
+msgid "Paused"
+msgstr "Pozastavené"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:149
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:114
+msgid "Resume"
+msgstr "Pokračovať"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:163
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:127
+msgid "Processing"
+msgstr "Spracováva sa"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
+#, fuzzy, csharp-format
+msgid "{0} • {1}"
+msgstr "{} • {}"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:191
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "Running"
+msgstr "Prebieha"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:199
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:163
+msgid "Stopped"
+msgstr "Zastavené"
+
 #: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:240
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:246
 msgid "TXT Files (*.txt)"
@@ -850,10 +956,6 @@ msgstr "Zrušiť"
 msgid "Download Again"
 msgstr "Stiahnuť znova"
 
-#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
-msgid "Play"
-msgstr "Prehrať"
-
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:115
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:71
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:154
@@ -886,16 +988,6 @@ msgstr "Upraviť"
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
 msgid "No Credentials"
 msgstr "Žiadne poverenia"
-
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
-msgid "Error"
-msgstr "Chyba"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:129
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:302
@@ -1065,10 +1157,6 @@ msgstr "Používateľské meno ani heslo nemôžu byť prázdne."
 #, fuzzy
 msgid "A credential with that name does not exist"
 msgstr "Argument s týmto názvom už existuje."
-
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
-msgid "Open"
-msgstr "Otvoriť"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:71
 msgid "Parabolic"
@@ -1365,6 +1453,10 @@ msgstr ""
 "Umelci:\n"
 "{}"
 
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:43
+msgid "Log"
+msgstr "Záznam"
+
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:63
 msgid "Enter media url here"
 msgstr "Sem zadajte url adresu média"
@@ -1521,14 +1613,6 @@ msgstr "Nastavenia"
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
 msgid "All"
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-msgid "Running"
-msgstr "Prebieha"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
-msgid "Queued"
-msgstr "V poradí"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Completed"
@@ -1915,21 +1999,6 @@ msgstr "Tu zadajte argumenty"
 #~ msgid "Use"
 #~ msgstr "Použiť"
 
-#~ msgid "View Log"
-#~ msgstr "Zobraziť záznam"
-
-#~ msgid "Pause"
-#~ msgstr "Pozastaviť"
-
-#~ msgid "Stop"
-#~ msgstr "Zastaviť"
-
-#~ msgid "Retry"
-#~ msgstr "Skúsiť znova"
-
-#~ msgid "Copy Log to Clipboard"
-#~ msgstr "Kopírovať záznam do schránky"
-
 #~ msgid "No Credentials Found"
 #~ msgstr "Nenašli sa žiadne poverenia"
 
@@ -1962,30 +2031,6 @@ msgstr "Tu zadajte argumenty"
 
 #~ msgid "No Downloads Completed"
 #~ msgstr "Žiadne dokončené sťahovania"
-
-#~ msgid "Starting"
-#~ msgstr "Spúšťanie"
-
-#~ msgid "Unknown"
-#~ msgstr "Neznáme"
-
-#~ msgid "Processing"
-#~ msgstr "Spracováva sa"
-
-#~ msgid "{} • {}"
-#~ msgstr "{} • {}"
-
-#~ msgid "Success"
-#~ msgstr "Úspech"
-
-#~ msgid "Stopped"
-#~ msgstr "Zastavené"
-
-#~ msgid "Paused"
-#~ msgstr "Pozastavené"
-
-#~ msgid "Resume"
-#~ msgstr "Pokračovať"
 
 #~ msgid "Log copied to clipboard"
 #~ msgstr "Protokol skopírovaný do schránky"
@@ -2048,9 +2093,6 @@ msgstr "Tu zadajte argumenty"
 
 #~ msgid "Show Log"
 #~ msgstr "Zobraziť záznam"
-
-#~ msgid "Log"
-#~ msgstr "Záznam"
 
 #~ msgid "Open Containing Folder"
 #~ msgstr "Otvoriť priečinok s obsahom"

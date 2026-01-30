@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 21:43-0500\n"
+"POT-Creation-Date: 2026-01-29 21:02-0500\n"
 "PO-Revision-Date: 2026-01-05 06:04+0000\n"
 "Last-Translator: Valerii Zhikharev <fr0stmatic@proton.me>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -324,6 +324,43 @@ msgstr ""
 #, fuzzy
 msgid "Export M3U Playlist File"
 msgstr "Запись файла плейлиста M3U"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:51
+msgid "View Log"
+msgstr "Открыть журнал"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:70
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:182
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
+msgid "Pause"
+msgstr "Приостановить"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:78
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:45
+msgid "Stop"
+msgstr "Остановить"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:94
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:46
+msgid "Play"
+msgstr "Воспроизвести"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:102
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:47
+msgid "Open"
+msgstr "Открыть"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:114
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:48
+msgid "Retry"
+msgstr "Повторить"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:154
+msgid "Copy Log to Clipboard"
+msgstr "Скопировать журнал в буфер обмена"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
@@ -795,6 +832,75 @@ msgstr "Папка сохранения"
 msgid "Close Folder"
 msgstr "Папка сохранения"
 
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:95
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Queued"
+msgstr "В очереди"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:100
+msgid "Starting"
+msgstr "Начинается"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:105
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:169
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:170
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:135
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:127
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
+msgid "Error"
+msgstr "Ошибка"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:136
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:102
+msgid "Success"
+msgstr "Успех"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:147
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:111
+msgid "Paused"
+msgstr "Приостановлена"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:149
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:114
+msgid "Resume"
+msgstr "Возобновить"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:163
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:127
+msgid "Processing"
+msgstr "Обрабатывается"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
+#, fuzzy, csharp-format
+msgid "{0} • {1}"
+msgstr "{} • {}"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:191
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "Running"
+msgstr "Выполняется"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:199
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:163
+msgid "Stopped"
+msgstr "Остановлена"
+
 #: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:240
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:246
 msgid "TXT Files (*.txt)"
@@ -844,10 +950,6 @@ msgstr "Отмена"
 msgid "Download Again"
 msgstr "Повторить загрузку"
 
-#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
-msgid "Play"
-msgstr "Воспроизвести"
-
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:115
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:71
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:154
@@ -881,16 +983,6 @@ msgstr "Редактировать"
 #, fuzzy
 msgid "No Credentials"
 msgstr "Учётные данные"
-
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
-msgid "Error"
-msgstr "Ошибка"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:129
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:302
@@ -1060,10 +1152,6 @@ msgstr "Имя пользователя и пароль не могут быть
 #, fuzzy
 msgid "A credential with that name does not exist"
 msgstr "Учётные данные с таким именем уже существуют."
-
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
-msgid "Open"
-msgstr "Открыть"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:71
 msgid "Parabolic"
@@ -1362,6 +1450,10 @@ msgstr ""
 "Художники:\n"
 "{}"
 
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:43
+msgid "Log"
+msgstr "Журнал"
+
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:63
 msgid "Enter media url here"
 msgstr "Введите ссылку на медиа"
@@ -1519,14 +1611,6 @@ msgstr "Настройки"
 #, fuzzy
 msgid "All"
 msgstr "все"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-msgid "Running"
-msgstr "Выполняется"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
-msgid "Queued"
-msgstr "В очереди"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Completed"
@@ -1879,21 +1963,6 @@ msgstr "Введите переменные"
 #~ msgid "Use"
 #~ msgstr "Использовать"
 
-#~ msgid "View Log"
-#~ msgstr "Открыть журнал"
-
-#~ msgid "Pause"
-#~ msgstr "Приостановить"
-
-#~ msgid "Stop"
-#~ msgstr "Остановить"
-
-#~ msgid "Retry"
-#~ msgstr "Повторить"
-
-#~ msgid "Copy Log to Clipboard"
-#~ msgstr "Скопировать журнал в буфер обмена"
-
 #~ msgid "No Credentials Found"
 #~ msgstr "Учётных данных нет"
 
@@ -1926,30 +1995,6 @@ msgstr "Введите переменные"
 
 #~ msgid "No Downloads Completed"
 #~ msgstr "Завершённых загрузок нет"
-
-#~ msgid "Starting"
-#~ msgstr "Начинается"
-
-#~ msgid "Unknown"
-#~ msgstr "Неизвестно"
-
-#~ msgid "Processing"
-#~ msgstr "Обрабатывается"
-
-#~ msgid "{} • {}"
-#~ msgstr "{} • {}"
-
-#~ msgid "Success"
-#~ msgstr "Успех"
-
-#~ msgid "Stopped"
-#~ msgstr "Остановлена"
-
-#~ msgid "Paused"
-#~ msgstr "Приостановлена"
-
-#~ msgid "Resume"
-#~ msgstr "Возобновить"
 
 #~ msgid "Log copied to clipboard"
 #~ msgstr "Журнал скопирован в буфер обмена"
@@ -2011,9 +2056,6 @@ msgstr "Введите переменные"
 
 #~ msgid "Show Log"
 #~ msgstr "Показать журнал"
-
-#~ msgid "Log"
-#~ msgstr "Журнал"
 
 #~ msgid "Open Containing Folder"
 #~ msgstr "Открыть папку назначения"

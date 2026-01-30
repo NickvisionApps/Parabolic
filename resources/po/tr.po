@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 21:43-0500\n"
+"POT-Creation-Date: 2026-01-29 21:02-0500\n"
 "PO-Revision-Date: 2025-11-15 20:41+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -323,6 +323,43 @@ msgstr ""
 #, fuzzy
 msgid "Export M3U Playlist File"
 msgstr "M3U Çalma Listesi Dosyası Yaz"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:51
+msgid "View Log"
+msgstr "Günlüğü Görüntüle"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:70
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:182
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
+msgid "Pause"
+msgstr "Duraklat"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:78
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:45
+msgid "Stop"
+msgstr "Durdur"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:94
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:46
+msgid "Play"
+msgstr "Oynat"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:102
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:47
+msgid "Open"
+msgstr "Aç"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:114
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:48
+msgid "Retry"
+msgstr "Tekrar dene"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:154
+msgid "Copy Log to Clipboard"
+msgstr "Günlüğü Panoya Kopyala"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
@@ -803,6 +840,75 @@ msgstr "Kayıt Klasörü"
 msgid "Close Folder"
 msgstr "Kayıt Klasörü"
 
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:95
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Queued"
+msgstr "Kuyrukta"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:100
+msgid "Starting"
+msgstr "Başlatılıyor"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:105
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:169
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:170
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:135
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:127
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
+msgid "Error"
+msgstr "Hata"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:136
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:102
+msgid "Success"
+msgstr "Başarılı"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:147
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:111
+msgid "Paused"
+msgstr "Duraklatıldı"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:149
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:114
+msgid "Resume"
+msgstr "Sürdür"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:163
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:127
+msgid "Processing"
+msgstr "İşleniyor"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
+#, fuzzy, csharp-format
+msgid "{0} • {1}"
+msgstr "{} • {}"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:191
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "Running"
+msgstr "Çalışıyor"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:199
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:163
+msgid "Stopped"
+msgstr "Durduruldu"
+
 #: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:240
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:246
 msgid "TXT Files (*.txt)"
@@ -852,10 +958,6 @@ msgstr "İptal"
 msgid "Download Again"
 msgstr "Tekrar İndir"
 
-#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
-msgid "Play"
-msgstr "Oynat"
-
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:115
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:71
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:154
@@ -889,16 +991,6 @@ msgstr "Düzenle"
 #, fuzzy
 msgid "No Credentials"
 msgstr "Kimlik Bilgileri"
-
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
-msgid "Error"
-msgstr "Hata"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:129
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:302
@@ -1068,10 +1160,6 @@ msgstr "Kullanıcı adı ve parola boş olamaz."
 #, fuzzy
 msgid "A credential with that name does not exist"
 msgstr "Bu adla bir argüman zaten var."
-
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
-msgid "Open"
-msgstr "Aç"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:71
 msgid "Parabolic"
@@ -1370,6 +1458,10 @@ msgstr ""
 "Sanatçılar:\n"
 "{}"
 
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:43
+msgid "Log"
+msgstr "Günlük"
+
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:63
 msgid "Enter media url here"
 msgstr "Ortam URLʼsini buraya girin"
@@ -1527,14 +1619,6 @@ msgstr "Ayarlar"
 #, fuzzy
 msgid "All"
 msgstr "tümü"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-msgid "Running"
-msgstr "Çalışıyor"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
-msgid "Queued"
-msgstr "Kuyrukta"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Completed"
@@ -1915,21 +1999,6 @@ msgstr "Buraya argümanları girin"
 #~ msgid "Use"
 #~ msgstr "Kullan"
 
-#~ msgid "View Log"
-#~ msgstr "Günlüğü Görüntüle"
-
-#~ msgid "Pause"
-#~ msgstr "Duraklat"
-
-#~ msgid "Stop"
-#~ msgstr "Durdur"
-
-#~ msgid "Retry"
-#~ msgstr "Tekrar dene"
-
-#~ msgid "Copy Log to Clipboard"
-#~ msgstr "Günlüğü Panoya Kopyala"
-
 #~ msgid "No Credentials Found"
 #~ msgstr "Kimlik Bilgisi Yok"
 
@@ -1962,30 +2031,6 @@ msgstr "Buraya argümanları girin"
 
 #~ msgid "No Downloads Completed"
 #~ msgstr "Tamamlanmış İndirme Yok"
-
-#~ msgid "Starting"
-#~ msgstr "Başlatılıyor"
-
-#~ msgid "Unknown"
-#~ msgstr "Bilinmeyen"
-
-#~ msgid "Processing"
-#~ msgstr "İşleniyor"
-
-#~ msgid "{} • {}"
-#~ msgstr "{} • {}"
-
-#~ msgid "Success"
-#~ msgstr "Başarılı"
-
-#~ msgid "Stopped"
-#~ msgstr "Durduruldu"
-
-#~ msgid "Paused"
-#~ msgstr "Duraklatıldı"
-
-#~ msgid "Resume"
-#~ msgstr "Sürdür"
 
 #~ msgid "Log copied to clipboard"
 #~ msgstr "Günlük panoya kopyalandı"
@@ -2044,9 +2089,6 @@ msgstr "Buraya argümanları girin"
 
 #~ msgid "Show Log"
 #~ msgstr "Günlüğü Görüntüle"
-
-#~ msgid "Log"
-#~ msgstr "Günlük"
 
 #~ msgid "Open Containing Folder"
 #~ msgstr "İçeren Klasörü Aç"

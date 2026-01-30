@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 21:43-0500\n"
+"POT-Creation-Date: 2026-01-29 21:02-0500\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -325,6 +325,48 @@ msgstr ""
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:129
 msgid "Export M3U Playlist File"
 msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:51
+#, fuzzy
+msgid "View Log"
+msgstr "Lihat Log"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:70
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:182
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
+msgid "Pause"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:78
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:45
+#, fuzzy
+msgid "Stop"
+msgstr "Dihentikan"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:94
+#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:46
+#, fuzzy
+msgid "Play"
+msgstr "Daftar Putar"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:102
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:47
+#, fuzzy
+msgid "Open"
+msgstr "Buka File"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:114
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:48
+msgid "Retry"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:154
+#, fuzzy
+msgid "Copy Log to Clipboard"
+msgstr "Salin ke Papan Klip"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
@@ -804,6 +846,77 @@ msgstr "Folder Penyimpanan"
 msgid "Close Folder"
 msgstr "Folder Penyimpanan"
 
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:95
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Queued"
+msgstr "Antrian"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:100
+#, fuzzy
+msgid "Starting"
+msgstr "Pengaturan"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:105
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:169
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:170
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:134
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:135
+msgid "Unknown"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:127
+#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
+#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
+msgid "Error"
+msgstr "Kesalahan"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:136
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:102
+msgid "Success"
+msgstr "Sukses"
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:147
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:111
+msgid "Paused"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:149
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:114
+msgid "Resume"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:163
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:73
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:127
+#, fuzzy
+msgid "Processing"
+msgstr "Memproses..."
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
+#, csharp-format
+msgid "{0} • {1}"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:191
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "Running"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:199
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:163
+msgid "Stopped"
+msgstr "Dihentikan"
+
 #: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:240
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:246
 msgid "TXT Files (*.txt)"
@@ -853,11 +966,6 @@ msgstr "Batalkan"
 msgid "Download Again"
 msgstr "Mengunduh"
 
-#: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:109
-#, fuzzy
-msgid "Play"
-msgstr "Daftar Putar"
-
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:115
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:71
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:154
@@ -891,16 +999,6 @@ msgstr ""
 #, fuzzy
 msgid "No Credentials"
 msgstr "Tidak ada kredensial"
-
-#: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
-#: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
-msgid "Error"
-msgstr "Kesalahan"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:129
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:302
@@ -1077,11 +1175,6 @@ msgstr "Atur Kredensial di keyring anda."
 #: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:68
 msgid "A credential with that name does not exist"
 msgstr ""
-
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
-#, fuzzy
-msgid "Open"
-msgstr "Buka File"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:71
 msgid "Parabolic"
@@ -1368,6 +1461,11 @@ msgid ""
 "{3}"
 msgstr ""
 
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:43
+#, fuzzy
+msgid "Log"
+msgstr "Mengunduh"
+
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:63
 #, fuzzy
 msgid "Enter media url here"
@@ -1529,14 +1627,6 @@ msgstr "Pengaturan"
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
 msgid "All"
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-msgid "Running"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
-msgid "Queued"
-msgstr "Antrian"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Completed"
@@ -1810,18 +1900,6 @@ msgstr "Masukkan URL media disini"
 #~ msgstr "Daftar Putar"
 
 #, fuzzy
-#~ msgid "View Log"
-#~ msgstr "Lihat Log"
-
-#, fuzzy
-#~ msgid "Stop"
-#~ msgstr "Dihentikan"
-
-#, fuzzy
-#~ msgid "Copy Log to Clipboard"
-#~ msgstr "Salin ke Papan Klip"
-
-#, fuzzy
 #~ msgid "No Credentials Found"
 #~ msgstr "Tidak ada kredensial"
 
@@ -1859,20 +1937,6 @@ msgstr "Masukkan URL media disini"
 #, fuzzy
 #~ msgid "No Downloads Completed"
 #~ msgstr "Selesai"
-
-#, fuzzy
-#~ msgid "Starting"
-#~ msgstr "Pengaturan"
-
-#, fuzzy
-#~ msgid "Processing"
-#~ msgstr "Memproses..."
-
-#~ msgid "Success"
-#~ msgstr "Sukses"
-
-#~ msgid "Stopped"
-#~ msgstr "Dihentikan"
 
 #, fuzzy
 #~ msgid "Log copied to clipboard"

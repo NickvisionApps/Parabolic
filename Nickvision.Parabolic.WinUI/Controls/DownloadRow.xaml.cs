@@ -130,9 +130,9 @@ public sealed partial class DownloadRow : UserControl
         }
         else
         {
-            var speedStr = args.Speed > 0 ? FormatSpeed(args.Speed) : _translator._("Unknown");
-            var etaStr = args.Eta > 0 ? FormatEta(args.Eta) : _translator._("Unknown");
-            LblStatus.Text = _translator._("{0} • {1}", speedStr, etaStr);
+            LblStatus.Text = _translator._("{0} • {1}",
+                args.Speed > 0 ? args.SpeedString : _translator._("Unknown"),
+                args.Eta > 0 ? args.EtaString : _translator._("Unknown"));
             ProgBar.Value = args.Progress;
             ProgBar.IsIndeterminate = false;
         }
@@ -164,32 +164,6 @@ public sealed partial class DownloadRow : UserControl
         ProgBar.Value = 1.0;
         ProgBar.IsIndeterminate = false;
         ViewStackButtons.SelectedIndex = (int)ButtonsPage.Error;
-    }
-
-    private string FormatEta(int seconds)
-    {
-        if (seconds < 0)
-        {
-            return _translator._("Unknown");
-        }
-        var timeSpan = TimeSpan.FromSeconds(seconds);
-        if (timeSpan.TotalHours >= 1)
-        {
-            return $"{(int)timeSpan.TotalHours}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
-        }
-        return $"{timeSpan.Minutes}:{timeSpan.Seconds:D2}";
-    }
-
-    private string FormatSpeed(double bytesPerSecond)
-    {
-        var units = new[] { "B/s", "KB/s", "MB/s", "GB/s" };
-        var unitIndex = 0;
-        while (bytesPerSecond >= 1024 && unitIndex < units.Length - 1)
-        {
-            bytesPerSecond /= 1024;
-            unitIndex++;
-        }
-        return $"{bytesPerSecond:F2} {units[unitIndex]}";
     }
 
     private async void OpenFolder(object sender, RoutedEventArgs e) => await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(_path)!));
