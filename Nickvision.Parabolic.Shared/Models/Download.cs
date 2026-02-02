@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using static Vanara.PInvoke.Ole32.PROPERTYKEY.System;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -89,7 +90,7 @@ public partial class Download : IDisposable
             var log = _translator?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
             _logBuilder.AppendLine(log);
             Status = DownloadStatus.Error;
-            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, log.AsMemory()));
+            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, log.AsMemory(), double.NaN, 0.0, 0));
             Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, log.AsMemory(), false));
             return;
         }
@@ -111,7 +112,7 @@ public partial class Download : IDisposable
         _process.Start();
         _process.BeginOutputReadLine();
         _process.BeginErrorReadLine();
-        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translator?._("Starting download...") ?? "Starting download...").AsMemory()));
+        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translator?._("Starting download...") ?? "Starting download...").AsMemory(), double.NaN, 0.0, 0));
     }
 
     public void Stop()
@@ -163,7 +164,7 @@ public partial class Download : IDisposable
             "--progress",
             "--newline",
             "--progress-template",
-            "[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
+            "[Parabolic] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
             "--progress-delta",
             ".25",
             "-t",
@@ -570,58 +571,16 @@ public partial class Download : IDisposable
             return;
         }
         _logBuilder.AppendLine(e.Data);
-        if ((!e.Data.Contains("PROGRESS;") && !e.Data.Contains("[#")) || e.Data.Contains("[debug"))
-        {
-            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
-            return;
-        }
         try
         {
-            if (e.Data.Contains("[#"))
-            {
-                var line = e.Data;
-#if OS_WINDOWS
-                foreach (var l in e.Data.Split('\r', StringSplitOptions.RemoveEmptyEntries).Reverse())
-                {
-                    var fields = l.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    if (l.Contains("[download]") || (fields.Length == 5 && fields[1].Split('/').Length == 2))
-                    {
-                        line = l;
-                        break;
-                    }
-                }
-#endif
-                if (line.Contains("[download]"))
-                {
-                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
-                }
-                else
-                {
-                    var fields = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                    if (fields.Length != 5)
-                    {
-                        return;
-                    }
-                    var sizes = fields[1].Split('/');
-                    if (sizes.Length != 2)
-                    {
-                        return;
-                    }
-                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id,
-                        e.Data.AsMemory(),
-                        sizes[0].AriaSizeToBytes() / sizes[1].AriaSizeToBytes(),
-                        fields[3].Substring(3).AriaSizeToBytes(),
-                        fields[4].Substring(4, fields[4].Length - 4 - 1).AriaEtaToSeconds()));
-                }
-            }
-            else
+            if (e.Data.StartsWith("[Parabolic]"))
             {
                 var fields = e.Data.Split(';', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length != 7 || fields[1] == "NA")
                 {
-                    return;
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
                 }
-                if (fields[1] == "finished" || fields[1] == "processing")
+                else if (fields[1] == "finished" || fields[1] == "processing")
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
                 }
@@ -634,7 +593,60 @@ public partial class Download : IDisposable
                         fields[6] == "NA" || fields[6] == "Unknown" ? -1 : int.Parse(fields[6])));
                 }
             }
+            else if (e.Data.StartsWith("[#"))
+            {
+                var line = e.Data;
+                if (OperatingSystem.IsWindows())
+                {
+                    foreach (var l in e.Data.Split('\r', StringSplitOptions.RemoveEmptyEntries).Reverse())
+                    {
+                        var f = l.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                        if (f.Length == 5 && f[1].Split('/').Length == 2)
+                        {
+                            line = l;
+                            break;
+                        }
+                    }
+                }
+                var fields = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (fields.Length != 5)
+                {
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
+                    return;
+                }
+                var sizes = fields[1].Split('/');
+                if (sizes.Length != 2)
+                {
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
+                    return;
+                }
+                ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id,
+                    e.Data.AsMemory(),
+                    sizes[0].AriaSizeToBytes() / sizes[1].AriaSizeToBytes(),
+                    fields[3].Substring(3).AriaSizeToBytes(),
+                    fields[4].Substring(4, fields[4].Length - 4 - 1).AriaEtaToSeconds()));
+            }
+            else if (e.Data.StartsWith("[download] Sleeping"))
+            {
+                var fields = e.Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (fields.Length != 4)
+                {
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, 0.0, 0));
+                }
+                else
+                {
+
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, double.TryParse(fields[2], out var seconds) ? seconds : 0.0, 0));
+                }
+            }
+            else
+            {
+                ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
+            }
         }
-        catch { }
+        catch
+        {
+            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
+        }
     }
 }

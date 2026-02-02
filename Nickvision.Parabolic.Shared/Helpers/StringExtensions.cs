@@ -73,7 +73,7 @@ public static class StringExtensions
             {
                 result = result.Replace(c, '_');
             }
-            return s;
+            return result;
         }
     }
 }

@@ -23,6 +23,8 @@ public class DownloadRow : Gtk.ListBoxRow
     private Gtk.Label? _filenameLabel;
     [Gtk.Connect("statusLabel")]
     private Gtk.Label? _statusLabel;
+    [Gtk.Connect("spinner")]
+    private Adw.Spinner? _spinner;
     [Gtk.Connect("viewLogButton")]
     private Gtk.ToggleButton? _viewLogButton;
     [Gtk.Connect("buttonsViewStack")]
@@ -37,12 +39,6 @@ public class DownloadRow : Gtk.ListBoxRow
     private Gtk.Button? _openButton;
     [Gtk.Connect("retryButton")]
     private Gtk.Button? _retryButton;
-    [Gtk.Connect("progViewStack")]
-    private Adw.ViewStack? _progViewStack;
-    [Gtk.Connect("progBar")]
-    private Gtk.ProgressBar? _progBar;
-    [Gtk.Connect("levelBar")]
-    private Gtk.LevelBar? _levelBar;
     [Gtk.Connect("logLabel")]
     private Gtk.Label? _logLabel;
     [Gtk.Connect("logScroll")]
@@ -103,8 +99,8 @@ public class DownloadRow : Gtk.ListBoxRow
             Status = DownloadStatus.Running;
             _statusLabel!.SetLabel(_translator._("Unknown"));
         }
+        _spinner!.Visible = true;
         _buttonsViewStack!.SetVisibleChildName("Downloading");
-        _progViewStack!.SetVisibleChildName("Running");
     }
 
     public void TriggerCompletedState(DownloadCompletedEventArgs args)
@@ -116,8 +112,8 @@ public class DownloadRow : Gtk.ListBoxRow
         }
         _filenameLabel!.SetLabel(Path.GetFileName(_path));
         _logLabel!.SetLabel(_log.ToString());
-        _progBar!.SetFraction(1.0);
         _statusIcon!.RemoveCssClass("stopped");
+        _spinner!.Visible = false;
         if (args.Status == DownloadStatus.Error)
         {
             Status = DownloadStatus.Error;
@@ -125,7 +121,6 @@ public class DownloadRow : Gtk.ListBoxRow
             _statusIcon.SetFromIconName("process-stop-symbolic");
             _statusLabel!.SetLabel(_translator._("Error"));
             _buttonsViewStack!.SetVisibleChildName("Error");
-            _levelBar!.SetValue(0.0);
         }
         else if (args.Status == DownloadStatus.Success)
         {
@@ -134,9 +129,7 @@ public class DownloadRow : Gtk.ListBoxRow
             _statusIcon.SetFromIconName("checkmark-small-symbolic");
             _statusLabel!.SetLabel(_translator._("Success"));
             _buttonsViewStack!.SetVisibleChildName("Success");
-            _levelBar!.SetValue(1.0);
         }
-        _progViewStack!.SetVisibleChildName("Done");
     }
 
     public void TriggerPausedState()
@@ -144,6 +137,7 @@ public class DownloadRow : Gtk.ListBoxRow
         Status = DownloadStatus.Paused;
         _statusIcon!.SetFromIconName("media-playback-pause-symbolic");
         _statusLabel!.SetLabel(_translator._("Paused"));
+        _spinner!.Visible = false;
         _pauseResumeButton!.SetIconName("media-playback-start-symbolic");
         _pauseResumeButton.SetTooltipText(_translator._("Resume"));
         _isPaused = true;
@@ -152,22 +146,25 @@ public class DownloadRow : Gtk.ListBoxRow
     public void TriggerProgressState(DownloadProgressChangedEventArgs args)
     {
         _statusIcon!.SetFromIconName("folder-download-symbolic");
+        _spinner!.Visible = true;
         if (args.LogChunk.Length > 0)
         {
             _log += $"{args.LogChunk.ToString()}\n";
         }
-        _progViewStack!.SetVisibleChildName("Running");
         if (double.IsNaN(args.Progress))
         {
             _statusLabel!.SetLabel(_translator._("Processing"));
-            _progBar!.Pulse();
+        }
+        else if (double.IsNegativeInfinity(args.Progress))
+        {
+            _statusLabel!.SetLabel(_translator._("Sleeping for {0}", TimeSpan.FromSeconds(args.Speed)));
         }
         else
         {
-            _statusLabel!.SetLabel(_translator._("{0} • {1}",
+            _statusLabel!.SetLabel(_translator._("{0}% Complete • {1} • {2} Remaining",
+                    Math.Round(args.Progress * 100, 2),
                     args.Speed > 0 ? args.SpeedString : _translator._("Unknown"),
                     args.Eta > 0 ? args.EtaString : _translator._("Unknown")));
-            _progBar!.SetFraction(args.Progress);
         }
         _logLabel!.SetLabel(_log.ToString());
         var vadjustment = _logScroll!.GetVadjustment();
@@ -177,6 +174,7 @@ public class DownloadRow : Gtk.ListBoxRow
     public void TriggerResumedState()
     {
         Status = DownloadStatus.Running;
+        _spinner!.Visible = true;
         _pauseResumeButton!.SetIconName("media-playback-pause-symbolic");
         _pauseResumeButton.SetTooltipText(_translator._("Pause"));
         _isPaused = false;
@@ -187,18 +185,17 @@ public class DownloadRow : Gtk.ListBoxRow
         Status = DownloadStatus.Running;
         _statusIcon!.AddCssClass("stopped");
         _statusIcon.SetFromIconName("folder-download-symbolic");
+        _spinner!.Visible = true;
         _statusLabel!.SetLabel(_translator._("Running"));
     }
 
     public void TriggerStoppedState()
     {
         Status = DownloadStatus.Stopped;
-        _progBar!.SetFraction(1.0);
         _statusIcon!.SetFromIconName("media-playback-stop-symbolic");
         _statusLabel!.SetLabel(_translator._("Stopped"));
+        _spinner!.Visible = false;
         _buttonsViewStack!.SetVisibleChildName("Error");
-        _progViewStack!.SetVisibleChildName("Done");
-        _levelBar!.SetValue(0.0);
     }
 
     private void LogToClipboardButton_OnClicked(Gtk.Button sender, EventArgs args)

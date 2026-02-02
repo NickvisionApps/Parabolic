@@ -17,7 +17,6 @@ public class MainWindow : Adw.ApplicationWindow
     private readonly Adw.Application _application;
     private readonly Gtk.Builder _builder;
     private readonly Dictionary<int, DownloadRow> _downloadRows;
-    private readonly List<DownloadRow> _addedDownloadRows;
 
     [Gtk.Connect("windowTitle")]
     private Adw.WindowTitle? _windowTitle;
@@ -43,7 +42,6 @@ public class MainWindow : Adw.ApplicationWindow
         _application = application;
         _builder = builder;
         _downloadRows = new Dictionary<int, DownloadRow>();
-        _addedDownloadRows = new List<DownloadRow>();
         _builder.Connect(this);
         // Window
         Title = _controller.AppInfo.ShortName;
@@ -168,6 +166,19 @@ public class MainWindow : Adw.ApplicationWindow
     private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Notification.Message);
+        if(e.Notification.Action == "error")
+        {
+            toast.ButtonLabel = _controller.Translator._("Details");
+            toast.OnButtonClicked += (_, _) =>
+            {
+                var dialog = Adw.AlertDialog.New(_controller.Translator._("Error"), e.Notification.ActionParam);
+                dialog.BodyUseMarkup = false;
+                dialog.AddResponse("close", _controller.Translator._("Close"));
+                dialog.SetDefaultResponse("close");
+                dialog.SetCloseResponse("close");
+                dialog.Present(this);
+            };
+        }
         _toastOverlay!.AddToast(toast);
     }
 

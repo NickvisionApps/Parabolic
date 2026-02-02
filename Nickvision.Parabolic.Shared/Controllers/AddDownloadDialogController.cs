@@ -125,7 +125,7 @@ public class AddDownloadDialogController
             _notificationService.Send(new AppNotification(Translator._("An error occurred while adding playlist downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
-                ActionParam = e.Message
+                ActionParam = e.ToString()
             });
         }
         _discoveryContextMap.Remove(context.Id);
@@ -181,7 +181,7 @@ public class AddDownloadDialogController
             _notificationService.Send(new AppNotification(Translator._("An error occurred while adding the single download"), NotificationSeverity.Error)
             {
                 Action = "error",
-                ActionParam = e.Message
+                ActionParam = e.ToString()
             });
         }
         _discoveryContextMap.Remove(context.Id);
@@ -275,7 +275,7 @@ public class AddDownloadDialogController
             _notificationService.Send(new AppNotification(Translator._("An error occurred while discovering media"), NotificationSeverity.Error)
             {
                 Action = "error",
-                ActionParam = e.Message
+                ActionParam = e.ToString()
             });
             return null;
         }

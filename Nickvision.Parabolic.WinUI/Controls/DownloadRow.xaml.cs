@@ -128,9 +128,16 @@ public sealed partial class DownloadRow : UserControl
             ProgBar.Value = 0.0;
             ProgBar.IsIndeterminate = true;
         }
+        else if (double.IsNegativeInfinity(args.Progress))
+        {
+            LblStatus.Text = _translator._("Sleeping for {0}", TimeSpan.FromSeconds(args.Speed));
+            ProgBar.Value = 0.0;
+            ProgBar.IsIndeterminate = true;
+        }
         else
         {
-            LblStatus.Text = _translator._("{0} • {1}",
+            LblStatus.Text = _translator._("{0}% Complete • {1} • {2} Remaining",
+                Math.Round(args.Progress * 100, 2),
                 args.Speed > 0 ? args.SpeedString : _translator._("Unknown"),
                 args.Eta > 0 ? args.EtaString : _translator._("Unknown"));
             ProgBar.Value = args.Progress;

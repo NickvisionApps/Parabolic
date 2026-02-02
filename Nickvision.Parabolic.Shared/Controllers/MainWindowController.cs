@@ -307,7 +307,6 @@ public class MainWindowController : IDisposable
 
     public async Task<bool> StopDownloadAsync(int id) => await _services.Get<IDownloadService>()!.StopAsync(id);
 
-#if OS_WINDOWS
     public async Task WindowsUpdateAsync(IProgress<DownloadProgress> progress)
     {
         var res = await _services.Get<IUpdaterService>()!.WindowsUpdate(_latestAppVersion, progress);
@@ -316,7 +315,6 @@ public class MainWindowController : IDisposable
             _services.Get<INotificationService>()!.Send(new AppNotification(_services.Get<ITranslationService>()!._("Unable to download and install the update"), NotificationSeverity.Error));
         }
     }
-#endif
 
     public async Task YtdlpUpdateAsync(IProgress<DownloadProgress> progress)
     {
