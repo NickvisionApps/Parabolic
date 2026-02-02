@@ -12,6 +12,18 @@ menu mainMenu {
   }
 }
 
+menu downloadsMenu {
+  section {
+    item(_("Stop All Remaining"), "win.stopAllRemaining")
+    item(_("Retry All Failed"), "win.retryAllFailed")
+    
+  }
+  section {
+    item(_("Clear All Queued"), "win.clearAllQueued")
+    item(_("Clear All Completed"), "win.clearAllCompleted")
+  }
+}
+
 Adw.ApplicationWindow root {
   width-request: 360;
   height-request: 200;
@@ -56,7 +68,7 @@ Adw.ApplicationWindow root {
       Adw.ViewStack viewStack {
         Adw.ViewStackPage {
           name: "Home";
-          child: Adw.StatusPage pageGreeting {
+          child: Adw.StatusPage {
             icon-name: "org.nickvision.tubeconverter";
             title: _("Download Media");
             description: _("Add a video, audio, or playlist URL to start downloading");
@@ -73,41 +85,74 @@ Adw.ApplicationWindow root {
         }
 
         Adw.ViewStackPage {
+          name: "NoDownloads";
+          child: Adw.StatusPage {
+            icon-name: "folder-downloads-symbolic";
+            title: _("No Downloads");
+            description: _("There are no downloads of this type");
+          };
+        }
+
+        Adw.ViewStackPage {
           name: "Downloads";
-          child: Gtk.Box {
-            orientation: vertical;
-            spacing: 6;
-            margin-start: 6;
-            margin-top: 12;
-            margin-end: 6;
-            margin-bottom: 12;
+          child: Gtk.ScrolledWindow {
+            child: Adw.Clamp {
+              maximum-size: 600;
+              child: Gtk.Box {
+                orientation: vertical;
+                spacing: 12;
+                margin-start:12;
+                margin-top: 12;
+                margin-end: 12;
+                margin-bottom: 12;
 
-            Gtk.Box {
-              orientation: horizontal;
-              spacing: 6;
+                Gtk.Box {
+                  orientation: horizontal;
+                  spacing: 6;
 
-              Adw.ToggleGroup downloadsToggleGroup {
-                Adw.Toggle {
-                  icon-name: "view-list-bullet-symbolic";
-                  label: _("All");
+                  Adw.ToggleGroup downloadsToggleGroup {
+                    Adw.Toggle {
+                      icon-name: "view-list-bullet-symbolic";
+                      label: _("All");
+                    } 
+
+                    Adw.Toggle {
+                      icon-name: "media-playback-start-symbolic";
+                      label: _("Running");
+                    }
+
+                    Adw.Toggle {
+                      icon-name: "document-open-recent-symbolic";
+                      label: _("Queued");
+                    }
+
+                    Adw.Toggle {
+                      icon-name: "checkmark-small-symbolic";
+                      label: _("Completed");
+                    }
+                  }
+
+                  Gtk.Label {
+                    hexpand: true;
+                  }
+
+                  Gtk.MenuButton {
+                    direction: none;
+                    menu-model: downloadsMenu;
+                    tooltip-text: _("Manage Download");
+                    icon-name: "wrench-wide-symbolic";
+                  }
                 }
 
-                Adw.Toggle {
-                  icon-name: "media-playback-start-symbolic";
-                  label: _("Running");
-                }
+                Gtk.ListBox listDownloads { 
+                  hexpand: true;
+                  valign: start;
+                  selection-mode: none;
 
-                Adw.Toggle {
-                  icon-name: "document-open-recent-symbolic";
-                  label: _("Queued");
+                  styles [ "boxed-list" ]
                 }
-
-                Adw.Toggle {
-                  icon-name: "checkmark-small-symbolic";
-                  label: _("Completed");
-                }
-              }
-            }
+              };
+            };
           };
         }
       }

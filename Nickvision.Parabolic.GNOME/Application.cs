@@ -16,7 +16,9 @@ public class Application
 
     public Application(string[] args)
     {
-        _args = args;
+        _args = new string[args.Length + 1];
+        _args[0] = "org.nickvision.tubeconverter";
+        args.CopyTo(_args, 1);
         _controller = new MainWindowController(_args);
         _application = Adw.Application.New(_controller.AppInfo.Id, Gio.ApplicationFlags.DefaultFlags);
         var resourceFilePath = Path.Combine(Desktop.System.Environment.ExecutingDirectory, $"{_controller.AppInfo.Id}.gresource");
@@ -41,6 +43,7 @@ public class Application
         if (_mainWindow is null)
         {
             _mainWindow = new MainWindow(_controller, _application);
+            _application.AddWindow(_mainWindow);
         }
         Adw.StyleManager.GetDefault().ColorScheme = _controller.Theme switch
         {
