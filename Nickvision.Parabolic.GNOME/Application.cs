@@ -20,7 +20,7 @@ public class Application
         _args[0] = "org.nickvision.tubeconverter";
         args.CopyTo(_args, 1);
         _controller = new MainWindowController(_args);
-        _application = Adw.Application.New(_controller.AppInfo.Id, Gio.ApplicationFlags.DefaultFlags);
+        _application = Adw.Application.New(_controller.AppInfo.Id, Gio.ApplicationFlags.HandlesOpen);
         var resourceFilePath = Path.Combine(Desktop.System.Environment.ExecutingDirectory, $"{_controller.AppInfo.Id}.gresource");
         try
         {

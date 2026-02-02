@@ -14,6 +14,7 @@ namespace Nickvision.Parabolic.GNOME.Views;
 public class MainWindow : Adw.ApplicationWindow
 {
     private readonly MainWindowController _controller;
+    private readonly Adw.Application _application;
     private readonly Gtk.Builder _builder;
     private readonly Dictionary<int, DownloadRow> _downloadRows;
     private readonly List<DownloadRow> _addedDownloadRows;
@@ -36,8 +37,8 @@ public class MainWindow : Adw.ApplicationWindow
 
     private MainWindow(MainWindowController controller, Adw.Application application, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
     {
-        Application = application;
         _controller = controller;
+        _application = application;
         _builder = builder;
         _downloadRows = new Dictionary<int, DownloadRow>();
         _addedDownloadRows = new List<DownloadRow>();
@@ -91,47 +92,47 @@ public class MainWindow : Adw.ApplicationWindow
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
         AddAction(actQuit);
-        Application!.SetAccelsForAction("win.quit", ["<Ctrl>q"]);
+        _application.SetAccelsForAction("win.quit", ["<Ctrl>q"]);
         // Preferences action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
         AddAction(actPreferences);
-        Application!.SetAccelsForAction("win.preferences", ["<Ctrl>period"]);
+        _application.SetAccelsForAction("win.preferences", ["<Ctrl>period"]);
         // Keyboard shortcuts action
         var actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
         actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
         AddAction(actKeyboardShortcuts);
-        Application!.SetAccelsForAction("win.keyboardShortcuts", ["<Ctrl>question"]);
+        _application.SetAccelsForAction("win.keyboardShortcuts", ["<Ctrl>question"]);
         // About action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
         AddAction(actAbout);
-        Application!.SetAccelsForAction("win.about", ["F1"]);
+        _application.SetAccelsForAction("win.about", ["F1"]);
         // Add download action
         var actAddDownload = Gio.SimpleAction.New("addDownload", null);
         actAddDownload.OnActivate += AddDownload;
         AddAction(actAddDownload);
-        Application!.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
+        _application.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
         // Keyring action
         var actKeyring = Gio.SimpleAction.New("keyring", null);
         actKeyring.OnActivate += Keyring;
         AddAction(actKeyring);
-        Application!.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
+        _application.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
         // History action
         var actHistory = Gio.SimpleAction.New("history", null);
         actHistory.OnActivate += History;
         AddAction(actHistory);
-        Application!.SetAccelsForAction("win.history", ["<Ctrl>h"]);
+        _application.SetAccelsForAction("win.history", ["<Ctrl>h"]);
         // Stop all remaining action
         var actStopAllRemaining = Gio.SimpleAction.New("stopAllRemaining", null);
         actStopAllRemaining.OnActivate += StopAllRemaining;
         AddAction(actStopAllRemaining);
-        Application!.SetAccelsForAction("win.stopAllRemaining", ["<Ctrl><Shift>s"]);
+        _application.SetAccelsForAction("win.stopAllRemaining", ["<Ctrl><Shift>s"]);
         // Retry all failed action
         var actRetryAllFailed = Gio.SimpleAction.New("retryAllFailed", null);
         actRetryAllFailed.OnActivate += RetryAllFailed;
         AddAction(actRetryAllFailed);
-        Application!.SetAccelsForAction("win.retryAllFailed", ["<Ctrl><Shift>r"]);
+        _application.SetAccelsForAction("win.retryAllFailed", ["<Ctrl><Shift>r"]);
         // Clear all queued action
         var actClearAllQueued = Gio.SimpleAction.New("clearAllQueued", null);
         actClearAllQueued.OnActivate += ClearAllQueued;
@@ -248,7 +249,7 @@ public class MainWindow : Adw.ApplicationWindow
     {
         if (!Window_OnCloseRequest(this, new EventArgs()))
         {
-            Application!.Quit();
+            _application.Quit();
         }
     }
 
