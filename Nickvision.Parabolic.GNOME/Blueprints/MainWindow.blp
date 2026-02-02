@@ -85,15 +85,6 @@ Adw.ApplicationWindow root {
         }
 
         Adw.ViewStackPage {
-          name: "NoDownloads";
-          child: Adw.StatusPage {
-            icon-name: "folder-downloads-symbolic";
-            title: _("No Downloads");
-            description: _("There are no downloads of this type");
-          };
-        }
-
-        Adw.ViewStackPage {
           name: "Downloads";
           child: Gtk.ScrolledWindow {
             child: Adw.Clamp {
@@ -144,12 +135,29 @@ Adw.ApplicationWindow root {
                   }
                 }
 
-                Gtk.ListBox listDownloads { 
+                Adw.ViewStack viewStackDownloads {
+                  vexpand: true;
                   hexpand: true;
-                  valign: start;
-                  selection-mode: none;
 
-                  styles [ "boxed-list" ]
+                  Adw.ViewStackPage {
+                    name: "Has";
+                    child: Gtk.ListBox listDownloads { 
+                      hexpand: true;
+                      valign: start;
+                      selection-mode: none;
+
+                      styles [ "boxed-list" ]
+                    };
+                  }
+
+                  Adw.ViewStackPage {
+                    name: "None";
+                    child: Adw.StatusPage {
+                      icon-name: "folder-download-symbolic";
+                      title: _("No Downloads");
+                      description: _("There are no downloads of this type");
+                    }; 
+                  }
                 }
               };
             };

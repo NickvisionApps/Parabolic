@@ -206,7 +206,7 @@ public class AddDownloadDialog : Adw.Dialog
             _controller.AvailablePostProcessorArguments[(int)_singlePostProcessorArgumentRow!.Selected],
             _singleStartTimeRow!.Text_ ?? string.Empty,
             _singleEndTimeRow!.Text_ ?? string.Empty);
-        Hide();
+        Close();
     }
 
     private async Task DownloadPlaylistAsync()
@@ -225,7 +225,7 @@ public class AddDownloadDialog : Adw.Dialog
             _playlistExportM3URow!.Active,
             _playlistExcludeFromHistoryRow!.Active,
             _controller.AvailablePostProcessorArguments[(int)_playlistPostProcessorArgumentRow!.Selected]);
-        Hide();
+        Close();
     }
 
     private void Dialog_OnClosed(Adw.Dialog sender, EventArgs e) => _cancellationTokenSource?.Cancel();

@@ -27,6 +27,8 @@ public class MainWindow : Adw.ApplicationWindow
     private Adw.ViewStack? _viewStack;
     [Gtk.Connect("downloadsToggleGroup")]
     private Adw.ToggleGroup? _downloadsToggleGroup;
+    [Gtk.Connect("viewStackDownloads")]
+    private Adw.ViewStack? _viewStackDownloads;
     [Gtk.Connect("listDownloads")]
     private Gtk.ListBox? _listDownloads;
 
@@ -88,6 +90,7 @@ public class MainWindow : Adw.ApplicationWindow
             Controller_DownloadRetired(sender, e);
             return false;
         });
+        _downloadsToggleGroup!.OnNotify += DownloadToggleGroup_OnNotify;
         // Quit action
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
@@ -245,6 +248,14 @@ public class MainWindow : Adw.ApplicationWindow
 
     private async void DownloadRow_StopRequested(object? sender, int id) => await _controller.StopDownloadAsync(id);
 
+    private void DownloadToggleGroup_OnNotify(GObject.Object sender, NotifySignalArgs e)
+    {
+        if (e.Pspec.GetName() == "active")
+        {
+            UpdateDownloadsList();
+        }
+    }
+
     private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
     {
         if (!Window_OnCloseRequest(this, new EventArgs()))
@@ -323,9 +334,23 @@ public class MainWindow : Adw.ApplicationWindow
 
     private async void RetryAllFailed(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _controller.RetryFailedDownloadsAsync();
 
-    private void ClearAllQueued(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _controller.ClearQueuedDownloads();
+    private void ClearAllQueued(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
+    {
+        foreach (var id in _controller.ClearQueuedDownloads())
+        {
+            _downloadRows.Remove(id);
+        }
+        UpdateDownloadsList();
+    }
 
-    private void ClearAllCompleted(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _controller.ClearCompletedDownloads();
+    private void ClearAllCompleted(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
+    {
+        foreach (var id in _controller.ClearCompletedDownloads())
+        {
+            _downloadRows.Remove(id);
+        }
+        UpdateDownloadsList();
+    }
 
     private void UpdateDownloadsList()
     {
@@ -341,6 +366,6 @@ public class MainWindow : Adw.ApplicationWindow
         {
             _listDownloads!.Append(row);
         }
-        _viewStack!.VisibleChildName = downloads.Any() ? "Downloads" : "NoDownloads";
+        _viewStackDownloads!.VisibleChildName = downloads.Any() ? "Has" : "None";
     }
 }
