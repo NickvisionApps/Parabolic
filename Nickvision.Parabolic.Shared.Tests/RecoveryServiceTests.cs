@@ -22,7 +22,7 @@ public class RecoveryServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.recovery.tests", "Nickvision Parabolic Recovery Tests", "Parabolic Recovery Tests")
         {
-            Version = new AppVersion("2026.1.0-next")
+            Version = new AppVersion("2026.2.0-next")
         };
         _recoveryDirectory = Path.Combine(UserDirectories.Config, "Nickvision Parabolic Recovery Tests");
         if (Directory.Exists(_recoveryDirectory))

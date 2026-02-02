@@ -19,6 +19,8 @@ public class MainWindow : Adw.ApplicationWindow
     private Adw.ToastOverlay? _toastOverlay;
     [Gtk.Connect("viewStack")]
     private Adw.ViewStack? _viewStack;
+    [Gtk.Connect("downloadsToggleGroup")]
+    private Adw.ToggleGroup? _downloadsToggleGroup;
 
     public MainWindow(MainWindowController controller, Adw.Application application) : this(controller, application, Gtk.Builder.NewFromBlueprint("MainWindow", controller.Translator))
     {
@@ -87,6 +89,7 @@ public class MainWindow : Adw.ApplicationWindow
     {
         base.Present();
         this.WindowGeometry = _controller.WindowGeometry;
+        _viewStack!.VisibleChildName = "Downloads";
     }
 
     private bool Window_OnCloseRequest(Gtk.Window sender, EventArgs args)

@@ -20,7 +20,7 @@ public sealed class YtdlpExecutableServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.ytdlp.tests", "Nickvision Parabolic Ytdlp Tests", "Parabolic Ytdlp Tests")
         {
-            Version = new AppVersion("2026.1.0-next")
+            Version = new AppVersion("2026.2.0-next")
         };
         _httpClient = new HttpClient();
         _jsonFileService = new JsonFileService(appInfo);
@@ -38,7 +38,7 @@ public sealed class YtdlpExecutableServiceTests
     public void Case001_InitalizeCheck() => Assert.IsNotNull(_ytdlpExecutableService);
 
     [TestMethod]
-    public void Case002_BundledVersionCheck() => Assert.AreEqual(new AppVersion("2026.1.29"), _ytdlpExecutableService!.BundledVersion);
+    public void Case002_BundledVersionCheck() => Assert.AreEqual(new AppVersion("2026.1.31"), _ytdlpExecutableService!.BundledVersion);
 
     [TestMethod]
     public void Case003_ExecutablePathCheck() => File.Exists(_ytdlpExecutableService!.ExecutablePath);
@@ -65,7 +65,7 @@ public sealed class YtdlpExecutableServiceTests
             File.Delete(downloadedYtdlp);
         }
         Assert.IsNotNull(stable);
-        Assert.AreEqual(new AppVersion("2026.1.29"), stable);
+        Assert.AreEqual(new AppVersion("2026.1.31"), stable);
         Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(stable));
         Assert.IsTrue(File.Exists(downloadedYtdlp));
         File.Delete(downloadedYtdlp);
@@ -85,7 +85,7 @@ public sealed class YtdlpExecutableServiceTests
             File.Delete(downloadedYtdlp);
         }
         Assert.IsNotNull(preview);
-        Assert.IsGreaterThan(new AppVersion("2025.12.13"), preview);
+        Assert.IsGreaterThan(new AppVersion("2025.1.31"), preview);
         Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(preview));
         Assert.IsTrue(File.Exists(downloadedYtdlp));
         File.Delete(downloadedYtdlp);

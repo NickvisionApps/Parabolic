@@ -157,6 +157,10 @@ public sealed partial class MainWindow : Window
             {
                 await _controller.RecoverAllDownloadsAsync();
             }
+            else
+            {
+                await _controller.ClearRecoverableDownloadsAsync();
+            }
         }
         if (_controller.UrlFromArgs is not null)
         {

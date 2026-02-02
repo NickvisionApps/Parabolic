@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-29 21:02-0500\n"
+"POT-Creation-Date: 2026-02-01 18:56-0500\n"
 "PO-Revision-Date: 2025-06-21 06:05+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -331,7 +331,7 @@ msgid "View Log"
 msgstr "பதிவைக் காண்க"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:70
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:182
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:181
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:44
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
 msgid "Pause"
@@ -465,6 +465,32 @@ msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:92
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
+#, fuzzy
+msgid "All"
+msgstr "அனைத்து"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:97
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:190
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "Running"
+msgstr "இயங்கும்"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:102
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:94
+#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+msgid "Queued"
+msgstr "வரிசையில் நிற்கிறது"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:107
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+msgid "Completed"
+msgstr "முடிக்கப்பட்டது"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
@@ -845,71 +871,58 @@ msgstr "கோப்புறையை சேமி"
 msgid "Close Folder"
 msgstr "கோப்புறையை சேமி"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:95
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
-msgid "Queued"
-msgstr "வரிசையில் நிற்கிறது"
-
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:100
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:99
 msgid "Starting"
 msgstr "தொடங்குகிறது"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:105
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:104
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:169
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:170
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:134
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:135
 msgid "Unknown"
 msgstr "தெரியவில்லை"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:127
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:126
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:106
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:260
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:264
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:198
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:261
 msgid "Error"
 msgstr "பிழை"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:136
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:135
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:102
 msgid "Success"
 msgstr "வெற்றி"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:147
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:146
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:111
 msgid "Paused"
 msgstr "இடைநிறுத்தப்பட்டது"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:149
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:148
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:114
 msgid "Resume"
 msgstr "மீண்டும் தொடங்குங்கள்"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:163
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:162
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:73
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:127
 msgid "Processing"
 msgstr "செயலாக்கம்"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:168
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:167
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
 #, fuzzy, csharp-format
 msgid "{0} • {1}"
 msgstr "{} | {} | மற்றும்: {}"
 
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:191
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
-#: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:154
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-msgid "Running"
-msgstr "இயங்கும்"
-
-#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:199
+#: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:198
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:163
 msgid "Stopped"
 msgstr "நிறுத்தப்பட்டது"
@@ -1017,7 +1030,7 @@ msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr "இந்த நற்சான்றிதழை நீக்க விரும்புகிறீர்களா?"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:151
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:154
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
 msgid "GitHub Repo"
 msgstr "GitHub களஞ்சியம்"
@@ -1212,12 +1225,12 @@ msgstr "புதிய புதுப்பிப்பு கிடைக்�
 msgid "No update available"
 msgstr "புதிய புதுப்பிப்பு கிடைக்கிறது"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:314
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:316
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:324
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:326
 #, fuzzy
 msgid "Unable to download and install the yt-dlp update"
 msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
@@ -1394,13 +1407,13 @@ msgstr "தானாக உருவாக்கிய"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:21
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:80
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:413
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:417
 #, fuzzy, csharp-format
 msgid "About {0}"
 msgstr "பற்றி"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:271
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:275
 msgid "Close"
 msgstr "மூடு"
 
@@ -1546,7 +1559,7 @@ msgstr ""
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:126
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:150
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:178
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:182
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:224
 msgid "Yes"
 msgstr "ஆம்"
@@ -1554,7 +1567,7 @@ msgstr "ஆம்"
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:81
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:151
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:179
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:183
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:225
 msgid "No"
 msgstr "இல்லை"
@@ -1579,8 +1592,8 @@ msgid "Enter url here"
 msgstr "இங்கே முகவரி ஐ உள்ளிடவும்"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:93
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:242
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:248
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:246
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:252
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:245
 msgid "Update"
 msgstr "புதுப்பிப்பு"
@@ -1618,15 +1631,6 @@ msgstr "விவாதங்கள்"
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:29
 msgid "Settings"
 msgstr "அமைப்புகள்"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
-#, fuzzy
-msgid "All"
-msgstr "அனைத்து"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
-msgid "Completed"
-msgstr "முடிக்கப்பட்டது"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
 #, fuzzy
@@ -1699,23 +1703,23 @@ msgid ""
 msgstr ""
 "பரபோலிக் செயலிழந்தபோது மீட்க பதிவிறக்கங்கள் உள்ளன. அவற்றை மீட்டெடுக்க விரும்புகிறீர்களா?"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:177
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:181
 #, fuzzy
 msgid ""
 "There are downloads still in progress. Would you like to stop them and exit?"
 msgstr ""
 "பரபோலிக் செயலிழந்தபோது மீட்க பதிவிறக்கங்கள் உள்ளன. அவற்றை மீட்டெடுக்க விரும்புகிறீர்களா?"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:254
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:258
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:309
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:313
 #, csharp-format
 msgid "A credential is required to continue the download of \"{0}\"."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:402
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:406
 #, fuzzy, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "பதிவிறக்குகிறது"

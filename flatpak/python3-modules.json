@@ -2,7 +2,7 @@
     "name": "python3-yt-dlp",
     "buildsystem": "simple",
     "build-commands": [
-        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"yt-dlp[default,curl-cffi]\" --no-build-isolation"
+        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"yt-dlp[curl-cffi,default]\" --no-build-isolation"
     ],
     "sources": [
         {
@@ -67,8 +67,8 @@
         },
         {
             "type": "file",
-            "url": "https://files.pythonhosted.org/packages/0f/1d/696538eb18a9da3dd4b7772162cb3a6537723a56426a7452b98201c04bfd/yt_dlp-2026.1.29-py3-none-any.whl",
-            "sha256": "08d0a25aead160c4787cbd0d2e82a269c75c8dbcfbfa729ce45ad52a8375fa1d"
+            "url": "https://files.pythonhosted.org/packages/98/67/d76cddb63710f88fb53f287b713f268579a85bfc81caacbb1b6048b60b85/yt_dlp-2026.1.31-py3-none-any.whl",
+            "sha256": "81f8e70c0d111b9572420cfea0ba9b4c2ae783fa1a4237fa767eeb777d4c5a58"
         },
         {
             "type": "file",

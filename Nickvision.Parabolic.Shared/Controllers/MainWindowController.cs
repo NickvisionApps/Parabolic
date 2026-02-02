@@ -33,7 +33,7 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.1.0-next");
+        _latestAppVersion = new AppVersion("2026.2.0-next");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
@@ -273,6 +273,8 @@ public class MainWindowController : IDisposable
     }
 
     public IEnumerable<int> ClearCompletedDownloads() => _services.Get<IDownloadService>()!.ClearCompleted();
+
+    public Task ClearRecoverableDownloadsAsync() => _services.Get<IRecoveryService>()!.ClearAsync();
 
     public IEnumerable<int> ClearQueuedDownloads() => _services.Get<IDownloadService>()!.ClearQueued();
 

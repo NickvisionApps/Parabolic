@@ -28,9 +28,9 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     static YtdlpExecutableService()
     {
 #if OS_LINUX
-        _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.1.29");
+        _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.1.31");
 #else
-        _bundledVersion = new AppVersion("2026.1.29");
+        _bundledVersion = new AppVersion("2026.1.31");
 #endif
 #if OS_WINDOWS
         _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_arm64.exe" : "yt-dlp.exe";

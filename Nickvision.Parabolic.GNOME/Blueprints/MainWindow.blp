@@ -74,7 +74,41 @@ Adw.ApplicationWindow root {
 
         Adw.ViewStackPage {
           name: "Downloads";
-          
+          child: Gtk.Box {
+            orientation: vertical;
+            spacing: 6;
+            margin-start: 6;
+            margin-top: 12;
+            margin-end: 6;
+            margin-bottom: 12;
+
+            Gtk.Box {
+              orientation: horizontal;
+              spacing: 6;
+
+              Adw.ToggleGroup downloadsToggleGroup {
+                Adw.Toggle {
+                  icon-name: "view-list-bullet-symbolic";
+                  label: _("All");
+                }
+
+                Adw.Toggle {
+                  icon-name: "media-playback-start-symbolic";
+                  label: _("Running");
+                }
+
+                Adw.Toggle {
+                  icon-name: "document-open-recent-symbolic";
+                  label: _("Queued");
+                }
+
+                Adw.Toggle {
+                  icon-name: "checkmark-small-symbolic";
+                  label: _("Completed");
+                }
+              }
+            }
+          };
         }
       }
     };
