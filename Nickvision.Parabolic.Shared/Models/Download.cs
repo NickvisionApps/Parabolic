@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using static Vanara.PInvoke.Ole32.PROPERTYKEY.System;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -564,7 +564,7 @@ public partial class Download : IDisposable
         }
     }
 
-    private void Process_OutputDataReceived(object? sender, DataReceivedEventArgs e)
+    private async void Process_OutputDataReceived(object? sender, DataReceivedEventArgs e)
     {
         if (string.IsNullOrEmpty(e.Data))
         {
@@ -629,14 +629,18 @@ public partial class Download : IDisposable
             else if (e.Data.StartsWith("[download] Sleeping"))
             {
                 var fields = e.Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                if (fields.Length != 4)
+                if (fields.Length < 3 || !double.TryParse(fields[2], out var seconds))
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, 0.0, 0));
                 }
                 else
                 {
-
-                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, double.TryParse(fields[2], out var seconds) ? seconds : 0.0, 0));
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, seconds, 0));
+                    while (seconds > 1)
+                    {
+                        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NegativeInfinity, Math.Floor(seconds--), 0));
+                        await Task.Delay(1000);
+                    }
                 }
             }
             else

@@ -130,7 +130,7 @@ public sealed partial class DownloadRow : UserControl
         }
         else if (double.IsNegativeInfinity(args.Progress))
         {
-            LblStatus.Text = _translator._("Sleeping for {0}", TimeSpan.FromSeconds(args.Speed));
+            LblStatus.Text = _translator._("Sleeping for {0}", TimeSpan.FromSeconds(args.Speed).ToString("g"));
             ProgBar.Value = 0.0;
             ProgBar.IsIndeterminate = true;
         }

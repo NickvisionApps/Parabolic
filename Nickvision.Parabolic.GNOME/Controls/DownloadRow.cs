@@ -157,7 +157,7 @@ public class DownloadRow : Gtk.ListBoxRow
         }
         else if (double.IsNegativeInfinity(args.Progress))
         {
-            _statusLabel!.SetLabel(_translator._("Sleeping for {0}", TimeSpan.FromSeconds(args.Speed)));
+            _statusLabel!.SetLabel(_translator._("Sleeping for {0}", TimeSpan.FromSeconds(args.Speed).ToString("g")));
         }
         else
         {
