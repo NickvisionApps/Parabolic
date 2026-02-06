@@ -8,6 +8,7 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -144,16 +145,73 @@ public class MainWindow : Adw.ApplicationWindow
         AddAction(actClearAllCompleted);
     }
 
-    public new void Present()
+    public async Task PresentAsync()
     {
-        base.Present();
+        Present();
+        var updatesTask = _controller.CheckForUpdatesAsync(false);
         this.WindowGeometry = _controller.WindowGeometry;
+        if (_controller.ShowDisclaimerOnStartup)
+        {
+            var chkBox = Gtk.CheckButton.New();
+            chkBox.Label = _controller.Translator._("Don't show this message again");
+            var disclaimerDialog = Adw.AlertDialog.New(_controller.Translator._("Legal Copyright Disclaimer"), _controller.Translator._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws."));
+            disclaimerDialog.AddResponse("ok", _controller.Translator._("I understand"));
+            disclaimerDialog.SetDefaultResponse("ok");
+            disclaimerDialog.SetCloseResponse("ok");
+            disclaimerDialog.ExtraChild = chkBox;
+            disclaimerDialog.OnResponse += async (_, _) =>
+            {
+                _controller.ShowDisclaimerOnStartup = !chkBox.Active;
+            };
+            disclaimerDialog.Present(this);
+        }
+        if (_controller.RecoverableDownloadsCount > 0)
+        {
+            var recoverDialog = Adw.AlertDialog.New(_controller.Translator._("Recover Downloads?"), _controller.Translator._("There are downloads available to recover from when Parabolic crashed. Would you like to download them again?"));
+            recoverDialog.AddResponse("yes", _controller.Translator._("Yes"));
+            recoverDialog.AddResponse("no", _controller.Translator._("No"));
+            recoverDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Suggested);
+            recoverDialog.SetDefaultResponse("no");
+            recoverDialog.SetCloseResponse("no");
+            recoverDialog.OnResponse += async (_, e) =>
+            {
+                if (e.Response == "yes")
+                {
+                    await _controller.RecoverAllDownloadsAsync();
+                }
+                else
+                {
+                    await _controller.ClearRecoverableDownloadsAsync();
+                }
+            };
+            recoverDialog.Present(this);
+        }
+        if (_controller.UrlFromArgs is not null)
+        {
+            var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, this);
+            addDownloadDialog.Present(_controller.UrlFromArgs);
+        }
+        await updatesTask;
     }
 
     private bool Window_OnCloseRequest(Gtk.Window sender, EventArgs e)
     {
         if (!_controller.CanShutdown)
         {
+            var confirmDialog = Adw.AlertDialog.New(_controller.AppInfo.ShortName, _controller.Translator._("There are downloads still in progress. Would you like to stop them and exit?"));
+            confirmDialog.AddResponse("yes", _controller.Translator._("Yes"));
+            confirmDialog.AddResponse("no", _controller.Translator._("No"));
+            confirmDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Destructive);
+            confirmDialog.SetDefaultResponse("no");
+            confirmDialog.SetCloseResponse("no");
+            confirmDialog.OnResponse += async (_, e) =>
+            {
+                if (e.Response == "yes")
+                {
+                    await _controller.StopAllDownloadsAsync();
+                    Close();
+                }
+            };
             return true;
         }
         GetDefaultSize(out int width, out int height);
@@ -166,7 +224,11 @@ public class MainWindow : Adw.ApplicationWindow
     private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Notification.Message);
-        if(e.Notification.Action == "error")
+        if (e.Notification.Action == "update-ytdlp")
+        {
+
+        }
+        else if (e.Notification.Action == "error" && !string.IsNullOrEmpty(e.Notification.ActionParam))
         {
             toast.ButtonLabel = _controller.Translator._("Details");
             toast.OnButtonClicked += (_, _) =>
@@ -373,7 +435,7 @@ public class MainWindow : Adw.ApplicationWindow
             _ => true
         }).Reverse();
         _listDownloads!.RemoveAll();
-        foreach(var row in downloads)
+        foreach (var row in downloads)
         {
             _listDownloads!.Append(row);
         }

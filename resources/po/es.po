@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-01 22:34-0500\n"
+"POT-Creation-Date: 2026-02-05 21:06-0500\n"
 "PO-Revision-Date: 2025-07-21 18:36+0000\n"
 "Last-Translator: Óscar Fernández Díaz "
 "<42654671+oscfdezdz@users.noreply.github.com>\n"
@@ -929,7 +929,7 @@ msgstr "Desconocido"
 
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:122
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:174
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:218
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
@@ -1082,18 +1082,78 @@ msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr "¿Está seguro de que desea eliminar esta credencial?"
 
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:156
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:114
+msgid "Don't show this message again"
+msgstr "No volver a mostrar este mensaje"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:157
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:118
+msgid "Legal Copyright Disclaimer"
+msgstr "Aviso legal sobre derechos de autor"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:157
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:127
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+"Los vídeos de YouTube y otros sitios pueden estar sujetos a la protección de "
+"la DMCA. Los autores de Parabolic no apoyan, ni son responsables del uso de "
+"esta aplicación en medios que violen estas leyes."
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:158
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:133
+msgid "I understand"
+msgstr "Entiendo"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:170
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:148
+#, fuzzy
+msgid "Recover Downloads?"
+msgstr "{} descarga restaurada"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:170
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:149
+#, fuzzy
+msgid ""
+"There are downloads available to recover from when Parabolic crashed. Would "
+"you like to download them again?"
+msgstr ""
+"Hay descargas disponibles para recuperar cuando Parabolic falló. Parabolic "
+"intentará descargarlas de nuevo."
+
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:171
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:80
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:126
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:150
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:182
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:224
+msgid "Yes"
+msgstr "Sí"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:172
+#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:81
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:127
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:151
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:183
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:225
+msgid "No"
+msgstr "No"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:215
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:258
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:176
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:220
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:275
 msgid "Close"
 msgstr "Cerrar"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:310
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:354
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
 msgid "GitHub Repo"
 msgstr "Repo de GitHub"
@@ -1616,22 +1676,6 @@ msgstr "Cuando terminen todas las descargas"
 msgid "There are no downloads found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:80
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:126
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:150
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:182
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:224
-msgid "Yes"
-msgstr "Sí"
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:81
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:127
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:151
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:183
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:225
-msgid "No"
-msgstr "No"
-
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
 #, fuzzy
 msgid "There are no credentials in your keyring"
@@ -1699,42 +1743,6 @@ msgstr "Credencial requerida"
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
 msgid "Submit"
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:114
-msgid "Don't show this message again"
-msgstr "No volver a mostrar este mensaje"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:118
-msgid "Legal Copyright Disclaimer"
-msgstr "Aviso legal sobre derechos de autor"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:127
-msgid ""
-"Videos on YouTube and other sites may be subject to DMCA protection. The "
-"authors of Parabolic do not endorse, and are not responsible for, the use of "
-"this application in means that will violate these laws."
-msgstr ""
-"Los vídeos de YouTube y otros sitios pueden estar sujetos a la protección de "
-"la DMCA. Los autores de Parabolic no apoyan, ni son responsables del uso de "
-"esta aplicación en medios que violen estas leyes."
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:133
-msgid "I understand"
-msgstr "Entiendo"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:148
-#, fuzzy
-msgid "Recover Downloads?"
-msgstr "{} descarga restaurada"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:149
-#, fuzzy
-msgid ""
-"There are downloads available to recover from when Parabolic crashed. Would "
-"you like to download them again?"
-msgstr ""
-"Hay descargas disponibles para recuperar cuando Parabolic falló. Parabolic "
-"intentará descargarlas de nuevo."
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:181
 #, fuzzy

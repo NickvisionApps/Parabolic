@@ -53,9 +53,15 @@ public class Application
         };
     }
 
-    private void Application_OnActivate(Gio.Application sender, EventArgs args) => _mainWindow?.Present();
+    private async void Application_OnActivate(Gio.Application sender, EventArgs args)
+    {
+        if (_mainWindow is not null)
+        {
+            await _mainWindow.PresentAsync();
+        }
+    }
 
-    private void Application_OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs args)
+    private async void Application_OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs args)
     {
         if (args.NFiles < 1)
         {
@@ -70,6 +76,9 @@ public class Application
         {
             _controller.UrlFromArgs = uri;
         }
-        _mainWindow?.Present();
+        if (_mainWindow is not null)
+        {
+            await _mainWindow.PresentAsync();
+        }
     }
 }
