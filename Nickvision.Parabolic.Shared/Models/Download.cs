@@ -464,7 +464,7 @@ public partial class Download : IDisposable
             if (downloader.EmbedSubtitles && Options.FileType.GetSupportsSubtitleFormat(downloader.PreferredSubtitleFormat))
             {
                 arguments.Add("--embed-subs");
-                arguments.Add("--compact-options");
+                arguments.Add("--compat-options");
                 arguments.Add("no-keep-subs");
             }
         }
