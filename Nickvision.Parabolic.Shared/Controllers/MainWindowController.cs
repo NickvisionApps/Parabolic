@@ -33,11 +33,28 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.0");
+        _latestAppVersion = new AppVersion("2026.2.0-beta1");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
-            Changelog = "- Parabolic has been rewritten in C# from C++\n- Added support for playlist quality options\n- Added support for playlist subtitle options\n- Added support for reversing the download order of a playlist\n- Added support for remembering the previous Download Immediately selection in the add download dialog\n- Improved the design and usability of the Windows version of Parabolic\n- Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist\n- Fixed an issue where Parabolic crashed when validating certain URLs\n- Fixed an issue where Parabolic refused to start\n- Updated yt-dlp",
+            Changelog = """
+            - Parabolic has been rewritten in C# from C++
+            - Added support for playlist quality options
+            - Added support for playlist subtitle options
+            - Added support for reversing the download order of a playlist
+            - Added support for remembering the previous Download Immediately selection in the add download dialog
+            - Added support for showing yt-dlp's sleeping pauses within download rows
+            - Added support for enabling nightly yt-dlp updates within Parabolic
+            - Redesigned both platform application designs for a faster and smoother download experience
+            - Removed documentation pages as Parabolic shows in-app documentation when needed 
+            - Fixed an issue where translator-credits were not properly displayed
+            - Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist
+            - Fixed an issue where Parabolic crashed when validating certain URLs
+            - Fixed an issue where Parabolic refused to start due to keyring errors
+            - Fixed an issue where Parabolic refused to start due to VC errors
+            - Fixed an issue where opening the about dialog would freeze Parabolic for a few seconds
+            - Updated bundled yt-dlp
+            """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
             DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions")

@@ -60,18 +60,24 @@
     <display_length compare="ge">360</display_length>
   </requires>
   <releases>
-    <release version="2026.2.0-next" date="2026-02-01">
+    <release version="2026.2.0-beta1" date="2026-02-05">
       <description translate="no">
         <p>- Parabolic has been rewritten in C# from C++</p>
         <p>- Added support for playlist quality options</p>
         <p>- Added support for playlist subtitle options</p>
         <p>- Added support for reversing the download order of a playlist</p>
         <p>- Added support for remembering the previous Download Immediately selection in the add download dialog</p>
-        <p>- Improved the design and usability of the Windows version of Parabolic</p>
+        <p>- Added support for showing yt-dlp's sleeping pauses within download rows</p>
+        <p>- Added support for enabling nightly yt-dlp updates within Parabolic</p>
+        <p>- Redesigned both platform application designs for a faster and smoother download experience</p>
+        <p>- Removed documentation pages as Parabolic shows in-app documentation when needed</p>
+        <p>- Fixed an issue where translator-credits were not properly displayed</p>
         <p>- Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist</p>
         <p>- Fixed an issue where Parabolic crashed when validating certain URLs</p>
-        <p>- Fixed an issue where Parabolic refused to start</p>
-        <p>- Updated yt-dlp</p>
+        <p>- Fixed an issue where Parabolic refused to start due to keyring errors</p>
+        <p>- Fixed an issue where Parabolic refused to start due to VC errors</p>
+        <p>- Fixed an issue where opening the about dialog would freeze Parabolic for a few seconds</p>
+        <p>- Updated bundled yt-dlp</p>
       </description>
     </release>
   </releases>
