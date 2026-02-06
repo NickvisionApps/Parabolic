@@ -93,7 +93,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
             var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
             config.InstalledYtdlpAppVersion = version;
             await _jsonFileService.SaveAsync(config, Configuration.Key);
-            if(!OperatingSystem.IsWindows())
+            if (!OperatingSystem.IsWindows())
             {
                 using var process = new Process()
                 {

@@ -319,7 +319,11 @@ public class MainWindowController : IDisposable
     public async Task YtdlpUpdateAsync(IProgress<DownloadProgress> progress)
     {
         var res = await _services.Get<IYtdlpExecutableService>()!.DownloadUpdateAsync(_latestYtdlpVersion, progress);
-        if (!res)
+        if (res)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(_services.Get<ITranslationService>()!._("yt-dlp {0} installed successfully", _latestYtdlpVersion.ToString()), NotificationSeverity.Success));
+        }
+        else
         {
             _services.Get<INotificationService>()!.Send(new AppNotification(_services.Get<ITranslationService>()!._("Unable to download and install the yt-dlp update"), NotificationSeverity.Error));
         }
