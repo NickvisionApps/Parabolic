@@ -39,6 +39,7 @@ public class MainWindowController : IDisposable
             Version = _latestAppVersion,
             Changelog = """
             - Parabolic has been rewritten in C# from C++
+            - Added arm64 support for Windows
             - Added support for playlist quality options
             - Added support for playlist subtitle options
             - Added support for reversing the download order of a playlist
