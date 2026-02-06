@@ -131,18 +131,10 @@ public partial class Download : IDisposable
         {
             return;
         }
-        if (_process is not null)
+        if (_process is not null && !_process.HasExited)
         {
-            if (!_process.HasExited)
-            {
-                _process.Kill(true);
-                _process.WaitForExit();
-            }
-            _process.Exited -= Process_Exited;
-            _process.ErrorDataReceived -= Process_OutputDataReceived;
-            _process.OutputDataReceived -= Process_OutputDataReceived;
-            _process.Dispose();
-            _process = null;
+            _process?.Kill(true);
+            _process?.WaitForExit();
         }
     }
 
