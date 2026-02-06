@@ -47,7 +47,7 @@ public sealed partial class MainWindow : Window
         };
         this.Geometry = _controller.WindowGeometry;
         // TitleBar
-        AppWindow.SetIcon("./Assets/org.nickvision.tubeconverter-devel.ico");
+        AppWindow.SetIcon(_controller.AppInfo.Version!.IsPreview ? "./Assets/org.nickvision.tubeconverter-devel.ico" : "./Assets/org.nickvision.tubeconverter.ico");
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;

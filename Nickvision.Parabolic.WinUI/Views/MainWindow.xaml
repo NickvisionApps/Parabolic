@@ -22,7 +22,7 @@
 
         <TitleBar x:Name="TitleBar" Grid.Row="0" IsPaneToggleButtonVisible="True" PaneToggleRequested="TitleBar_PaneToggleRequested">
             <TitleBar.LeftHeader>
-                <ImageIcon VerticalAlignment="Center" Margin="0,0,8,0" Height="18" Source="/Assets/org.nickvision.tubeconverter-devel.ico"/>
+                <ImageIcon x:Name="TitleBarIcon" VerticalAlignment="Center" Margin="0,0,8,0" Height="18" Source="/Assets/org.nickvision.tubeconverter.ico"/>
             </TitleBar.LeftHeader>
         </TitleBar>
 
@@ -141,7 +141,7 @@
 
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <nickvision:ViewStack.Pages>
-                    <nickvision:StatusPage x:Name="StatusHome" Image="/Assets/org.nickvision.tubeconverter-devel.ico">
+                    <nickvision:StatusPage x:Name="StatusHome" Image="/Assets/org.nickvision.tubeconverter.ico">
                         <nickvision:StatusPage.Child>
                             <Button Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
                                 <StackPanel Orientation="Horizontal" Spacing="6">
