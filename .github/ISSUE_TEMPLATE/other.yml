@@ -1,0 +1,22 @@
+name: Other Issue
+description: Report an issue that does not fit the available templates
+title: "[Other] "
+labels:
+  - needs-triage
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe your concern
+      description: |
+        Please explain your issue clearly.
+        If this is a bug, include steps to reproduce.
+      placeholder: Be as specific as possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Logs, screenshots, environment info, etc.
