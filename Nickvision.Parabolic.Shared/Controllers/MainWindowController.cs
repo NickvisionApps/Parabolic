@@ -33,7 +33,7 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.0-beta1");
+        _latestAppVersion = new AppVersion("2026.2.0");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
@@ -53,6 +53,7 @@ public class MainWindowController : IDisposable
             - Fixed an issue where Parabolic crashed when validating certain URLs
             - Fixed an issue where Parabolic refused to start due to keyring errors
             - Fixed an issue where Parabolic refused to start due to VC errors
+            - Fixed an issue where Parabolic refused to start due to version errors
             - Fixed an issue where opening the about dialog would freeze Parabolic for a few seconds
             - Updated bundled yt-dlp
             """,
@@ -212,7 +213,7 @@ public class MainWindowController : IDisposable
         }
     }
 
-    public Theme Theme => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).Theme;
+    public Theme Theme => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).Theme ?? Theme.System;
 
     public ITranslationService Translator => _services.Get<ITranslationService>()!;
 

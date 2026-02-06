@@ -228,7 +228,11 @@ public class AddDownloadDialog : Adw.Dialog
         Close();
     }
 
-    private void Dialog_OnClosed(Adw.Dialog sender, EventArgs e) => _cancellationTokenSource?.Cancel();
+    private void Dialog_OnClosed(Adw.Dialog sender, EventArgs e)
+    {
+        _cancellationTokenSource?.Cancel();
+        _cancellationTokenSource?.Dispose();
+    }
 
     private void UrlRow_OnChanged(Gtk.Editable sender, EventArgs e) => _discoverUrlButton!.Sensitive = Uri.TryCreate(_urlRow!.Text_, UriKind.Absolute, out var _);
 

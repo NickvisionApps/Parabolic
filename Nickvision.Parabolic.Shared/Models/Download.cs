@@ -558,7 +558,7 @@ public partial class Download : IDisposable
 
     private async void Process_OutputDataReceived(object? sender, DataReceivedEventArgs e)
     {
-        if (string.IsNullOrEmpty(e.Data))
+        if (string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data))
         {
             return;
         }

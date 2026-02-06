@@ -1,74 +1,35 @@
-﻿using System.Diagnostics;
-using System.Runtime.InteropServices;
+﻿using System;
+using System.Diagnostics;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
 public static partial class ProcessExtensions
 {
-#if OS_WINDOWS
-    [LibraryImport("ntdll.dll")]
-    private static partial int NtSuspendProcess(nint processHandle);
-
-    [LibraryImport("ntdll.dll")]
-    private static partial int NtResumeProcess(nint processHandle);
-#else
-    [LibraryImport("libc")]
-    private static partial int kill(int pid, int sig);
-#endif
-
     extension(Process p)
     {
 
         public void Suspend(bool entireProcessTree = false)
         {
-#if OS_WINDOWS
-            NtSuspendProcess(p.Handle);
-            if (entireProcessTree)
+            if (OperatingSystem.IsWindows())
             {
-                var searcher = new System.Management.ManagementObjectSearcher($"SELECT ProcessId FROM Win32_Process WHERE ParentProcessId={p.Id}");
-                foreach (var obj in searcher.Get())
-                {
-                    try
-                    {
-                        using var childProcess = Process.GetProcessById(Convert.ToInt32(obj["ProcessId"]));
-                        childProcess.Suspend(true);
-                    }
-                    catch { }
-                }
+                WindowsProcessHelpers.Suspend(p, entireProcessTree);
             }
-#else
-            if (entireProcessTree)
+            else
             {
-                kill(-p.Id, 19);
+                UnixProcessHelpers.Suspend(p, entireProcessTree);
             }
-            kill(p.Id, 19);
-#endif
         }
 
         public void Resume(bool entireProcessTree = false)
         {
-#if OS_WINDOWS
-            NtResumeProcess(p.Handle);
-            if (entireProcessTree)
+            if (OperatingSystem.IsWindows())
             {
-                var searcher = new System.Management.ManagementObjectSearcher($"SELECT ProcessId FROM Win32_Process WHERE ParentProcessId={p.Id}");
-                foreach (var obj in searcher.Get())
-                {
-                    try
-                    {
-                        using var childProcess = Process.GetProcessById(Convert.ToInt32(obj["ProcessId"]));
-                        childProcess.Resume(true);
-                    }
-                    catch { }
-                }
+                WindowsProcessHelpers.Resume(p, entireProcessTree);
             }
-#else       
-            if (entireProcessTree)
+            else
             {
-                kill(-p.Id, 18);
+                UnixProcessHelpers.Resume(p, entireProcessTree);
             }
-            kill(p.Id, 18);
-#endif
         }
     }
 }
