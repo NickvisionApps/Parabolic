@@ -1,5 +1,6 @@
 ﻿using Nickvision.Desktop.GNOME.Controls;
 using Nickvision.Desktop.GNOME.Helpers;
+using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.Shared.Controllers;
@@ -21,6 +22,14 @@ public class MainWindow : Adw.ApplicationWindow
 
     [Gtk.Connect("windowTitle")]
     private Adw.WindowTitle? _windowTitle;
+    [Gtk.Connect("updateButton")]
+    private Gtk.MenuButton? _updateButton;
+    [Gtk.Connect("updatePopover")]
+    private Gtk.Popover? _updatePopover;
+    [Gtk.Connect("updateProgressLabel")]
+    private Gtk.Label? _updateProgressLabel;
+    [Gtk.Connect("updateProgressBar")]
+    private Gtk.ProgressBar? _updateProgressBar;
     [Gtk.Connect("toastOverlay")]
     private Adw.ToastOverlay? _toastOverlay;
     [Gtk.Connect("viewStack")]
@@ -226,10 +235,22 @@ public class MainWindow : Adw.ApplicationWindow
         var toast = Adw.Toast.New(e.Notification.Message);
         if (e.Notification.Action == "update-ytdlp")
         {
-
+            toast.Timeout = 0;
+            toast.ButtonLabel = _controller.Translator._("Update");
+            toast.OnButtonClicked += async (_, _) =>
+            {
+                _updateButton!.Visible = true;
+                _updatePopover!.Popup();
+                _updateProgressLabel!.Label_ = _controller.Translator._("Downloading update: {0}%", 0);
+                var progress = new Progress<DownloadProgress>();
+                progress.ProgressChanged += UpdateProgress_Changed;
+                await _controller.YtdlpUpdateAsync(progress);
+                progress.ProgressChanged -= UpdateProgress_Changed;
+            };
         }
         else if (e.Notification.Action == "error" && !string.IsNullOrEmpty(e.Notification.ActionParam))
         {
+            toast.Timeout = 0;
             toast.ButtonLabel = _controller.Translator._("Details");
             toast.OnButtonClicked += (_, _) =>
             {
@@ -329,6 +350,22 @@ public class MainWindow : Adw.ApplicationWindow
         }
     }
 
+    private void UpdateProgress_Changed(object? sender, DownloadProgress e)
+    {
+        GLib.Functions.IdleAdd(0, () =>
+        {
+            if (e.Completed)
+            {
+                _updatePopover!.Popdown();
+                _updateButton!.Visible = false;
+                return false;
+            }
+            var message = _controller.Translator._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
+            _updateProgressLabel!.Label_ = message;
+            _updateProgressBar!.Fraction = e.Percentage;
+            return false;
+        });
+    }
     private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
     {
         if (!Window_OnCloseRequest(this, new EventArgs()))

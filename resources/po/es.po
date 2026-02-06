@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 21:06-0500\n"
+"POT-Creation-Date: 2026-02-05 21:27-0500\n"
 "PO-Revision-Date: 2025-07-21 18:36+0000\n"
 "Last-Translator: Óscar Fernández Díaz "
 "<42654671+oscfdezdz@users.noreply.github.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Weblate 5.13-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:77
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:103
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Add Download"
@@ -399,7 +399,7 @@ msgid "Clear All"
 msgstr "Borrar"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:59
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:85
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:25
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:73
 msgid "Keyring"
@@ -482,25 +482,30 @@ msgstr "Borrar descargas completadas"
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:73
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:61
+#, fuzzy
+msgid "Updater"
+msgstr "Actualizar"
+
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:99
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
 msgid "Download Media"
 msgstr "Descargar medios"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:74
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:100
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Añada una URL de vídeo, audio o lista de reproducción para iniciar la "
 "descarga"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:107
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:133
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
 #, fuzzy
 msgid "All"
 msgstr "todo"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:138
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:189
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:67
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:161
@@ -508,30 +513,30 @@ msgstr "todo"
 msgid "Running"
 msgstr "Ejecutando"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:117
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:143
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:90
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:61
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
 msgid "Queued"
 msgstr "En cola"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:122
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:148
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Completed"
 msgstr "Completado"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:133
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:159
 #, fuzzy
 msgid "Manage Download"
 msgstr "Descargas"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:157
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:183
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
 #, fuzzy
 msgid "No Downloads"
 msgstr "Descargas"
 
-#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:158
+#: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:184
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
 #, fuzzy
 msgid "There are no downloads of this type"
@@ -929,7 +934,7 @@ msgstr "Desconocido"
 
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:122
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:128
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:218
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:255
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:301
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:71
@@ -1082,17 +1087,17 @@ msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr "¿Está seguro de que desea eliminar esta credencial?"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:156
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:165
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:114
 msgid "Don't show this message again"
 msgstr "No volver a mostrar este mensaje"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:157
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:166
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:118
 msgid "Legal Copyright Disclaimer"
 msgstr "Aviso legal sobre derechos de autor"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:157
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:166
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:127
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
@@ -1103,18 +1108,18 @@ msgstr ""
 "la DMCA. Los autores de Parabolic no apoyan, ni son responsables del uso de "
 "esta aplicación en medios que violen estas leyes."
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:158
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:167
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:133
 msgid "I understand"
 msgstr "Entiendo"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:170
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:179
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:148
 #, fuzzy
 msgid "Recover Downloads?"
 msgstr "{} descarga restaurada"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:170
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:179
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:149
 #, fuzzy
 msgid ""
@@ -1124,7 +1129,8 @@ msgstr ""
 "Hay descargas disponibles para recuperar cuando Parabolic falló. Parabolic "
 "intentará descargarlas de nuevo."
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:171
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:180
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:211
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:126
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:150
@@ -1133,7 +1139,8 @@ msgstr ""
 msgid "Yes"
 msgstr "Sí"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:172
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:181
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:212
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:81
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:151
@@ -1142,18 +1149,40 @@ msgstr "Sí"
 msgid "No"
 msgstr "No"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:215
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:210
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:181
+#, fuzzy
+msgid ""
+"There are downloads still in progress. Would you like to stop them and exit?"
+msgstr "Hay descargas en curso. Al salir se detendrán todas las descargas."
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:238
+#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:93
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:246
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:252
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:245
+msgid "Update"
+msgstr "Actualizar"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:243
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:361
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:406
+#, fuzzy, csharp-format
+msgid "Downloading update: {0}%"
+msgstr "Descargando"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:252
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:258
 msgid "Details"
 msgstr ""
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:220
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:257
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:275
 msgid "Close"
 msgstr "Cerrar"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:354
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:407
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:77
 msgid "GitHub Repo"
 msgstr "Repo de GitHub"
@@ -1694,13 +1723,6 @@ msgstr "Introduzca aquí el nombre"
 msgid "Enter url here"
 msgstr "Introduzca aquí la url"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:93
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:246
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:252
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:245
-msgid "Update"
-msgstr "Actualizar"
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:69
 msgid "Preview"
 msgstr "Vista previa"
@@ -1744,21 +1766,10 @@ msgstr "Credencial requerida"
 msgid "Submit"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:181
-#, fuzzy
-msgid ""
-"There are downloads still in progress. Would you like to stop them and exit?"
-msgstr "Hay descargas en curso. Al salir se detendrán todas las descargas."
-
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:313
 #, csharp-format
 msgid "A credential is required to continue the download of \"{0}\"."
 msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:406
-#, fuzzy, csharp-format
-msgid "Downloading update: {0}%"
-msgstr "Descargando"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:40
 msgid "Update Parabolic and dependencies, such as yt-dlp, to beta versions"

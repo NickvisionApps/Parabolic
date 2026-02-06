@@ -7,6 +7,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
@@ -26,20 +27,30 @@ public class YtdlpExecutableService : IYtdlpExecutableService
 
     static YtdlpExecutableService()
     {
-#if OS_LINUX
-        _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.02.04");
-#else
-        _bundledVersion = new AppVersion("2026.02.04");
-#endif
-#if OS_WINDOWS
-        _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_arm64.exe" : "yt-dlp.exe";
-#elif OS_LINUX
-        _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_linux_aarch64" : "yt-dlp_linux";
-#elif OS_MAC
-        _assetName = "yt-dlp_macos";
-#else
-        _assetName = "yt-dlp";
-#endif
+        if (OperatingSystem.IsLinux())
+        {
+            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.02.04");
+        }
+        else
+        {
+            _bundledVersion = new AppVersion("2026.01.31");
+        }
+        if (OperatingSystem.IsWindows())
+        {
+            _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_arm64.exe" : "yt-dlp.exe";
+        }
+        else if (OperatingSystem.IsLinux())
+        {
+            _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_linux_aarch64" : "yt-dlp_linux";
+        }
+        else if (OperatingSystem.IsMacOS())
+        {
+            _assetName = "yt-dlp_macos";
+        }
+        else
+        {
+            _assetName = "yt-dlp";
+        }
     }
 
     public YtdlpExecutableService(IJsonFileService jsonFileService, HttpClient httpClient)
@@ -75,30 +86,27 @@ public class YtdlpExecutableService : IYtdlpExecutableService
 
     public async Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null)
     {
-#if OS_WINDOWS
-        var path = Path.Combine(UserDirectories.LocalData, "yt-dlp.exe");
-#else
-        var path = Path.Combine(UserDirectories.LocalData, "yt-dlp");
-#endif
+        var path = OperatingSystem.IsWindows() ? Path.Combine(UserDirectories.LocalData, "yt-dlp.exe") : Path.Combine(UserDirectories.LocalData, "yt-dlp");
         var res = version.BaseVersion.Revision > 0 ? await _previewUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress) : await _stableUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
         if (res)
         {
             var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
             config.InstalledYtdlpAppVersion = version;
             await _jsonFileService.SaveAsync(config, Configuration.Key);
-#if !OS_WINDOWS
-            using var process = new Process()
+            if(!OperatingSystem.IsWindows())
             {
-                StartInfo = new ProcessStartInfo("chmod", [$"+x \"{path}\""])
+                using var process = new Process()
                 {
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                }
-            };
-            process.Start();
-            await process.WaitForExitAsync();
-            return process.ExitCode == 0;
-#endif
+                    StartInfo = new ProcessStartInfo("chmod", [$"+x \"{path}\""])
+                    {
+                        UseShellExecute = false,
+                        CreateNoWindow = true,
+                    }
+                };
+                process.Start();
+                await process.WaitForExitAsync();
+                return process.ExitCode == 0;
+            }
         }
         return res;
     }

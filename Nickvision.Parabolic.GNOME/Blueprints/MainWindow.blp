@@ -54,6 +54,32 @@ Adw.ApplicationWindow root {
       }
 
       [end]
+      Gtk.MenuButton updateButton {
+        visible: false;
+        direction: none;
+        icon-name: "update-symbolic";
+        tooltip-text: _("Updater");
+        popover: Gtk.Popover updatePopover {
+          child: Gtk.Box {
+            margin-start: 12;
+            margin-top: 12;
+            margin-end: 12;
+            margin-bottom: 12;
+            orientation: vertical;
+            spacing: 6;
+
+            Gtk.Label updateProgressLabel { 
+              hexpand: true;
+            }
+
+            Gtk.ProgressBar updateProgressBar {
+              hexpand: true;
+            }
+          };
+        };
+      }
+
+      [end]
       Gtk.Button {
         icon-name: "dialog-password-symbolic";
         tooltip-text: _("Keyring");
