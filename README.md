@@ -140,11 +140,11 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 
 | Home Page | Active Downloads |
 |:---:|:---:|
-| ![Home Page](org.nickvision.tubeconverter.winui/screenshots/home.png) | ![Downloading](org.nickvision.tubeconverter.winui/screenshots/downloading.png) |
+| ![Home Page](Nickvision.Parabolic.WinUI/Screenshots/Home.png) | ![Downloading](Nickvision.Parabolic.WinUI/Screenshots/Downloading.png) |
 
 | Dark Mode | Add Download |
 |:---:|:---:|
-| ![Dark Mode](org.nickvision.tubeconverter.winui/screenshots/dark.png) | ![Add Download Dialog](org.nickvision.tubeconverter.winui/screenshots/add.png) |
+| ![Dark Mode](Nickvision.Parabolic.WinUI/Screenshots/DarkMode.png) | ![Add Download Dialog](Nickvision.Parabolic.WinUI/Screenshots/AddDownloadDialog.png) |
 
 </details>
 

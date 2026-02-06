@@ -33,7 +33,7 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.0-next");
+        _latestAppVersion = new AppVersion("2026.2.0");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
