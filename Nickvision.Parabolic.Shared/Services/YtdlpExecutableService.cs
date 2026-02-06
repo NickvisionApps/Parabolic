@@ -7,7 +7,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
@@ -28,9 +27,9 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     static YtdlpExecutableService()
     {
 #if OS_LINUX
-        _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.1.31");
+        _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.02.04");
 #else
-        _bundledVersion = new AppVersion("2026.1.31");
+        _bundledVersion = new AppVersion("2026.02.04");
 #endif
 #if OS_WINDOWS
         _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_arm64.exe" : "yt-dlp.exe";

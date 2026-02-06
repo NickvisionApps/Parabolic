@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
@@ -38,7 +37,7 @@ public static partial class ProcessExtensions
                 }
             }
 #else
-            if(entireProcessTree)
+            if (entireProcessTree)
             {
                 kill(-p.Id, 19);
             }
@@ -64,7 +63,7 @@ public static partial class ProcessExtensions
                 }
             }
 #else       
-            if(entireProcessTree)
+            if (entireProcessTree)
             {
                 kill(-p.Id, 18);
             }
