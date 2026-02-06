@@ -1,82 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="ar">
-<info>
-	<link type="guide" xref="index"/>
-	<title type="link">المحمّل🛠️</title>
-	<credit type="author copyright">
-            <name>نيكولاس لوجوزو</name>
-            <years its:translate="no">2023-2025</years>
-	</credit>
-	<credit type="publisher copyright">
-            <name>نيكولاس لوجوزو</name>
-            <years its:translate="no">2023-2025</years>
-	</credit>
-	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Yousef mohamed</mal:name>
-      <mal:email>oandygames.ygames+weblate@gmail.com</mal:email>
-      <mal:years>2025</mal:years>
-    </mal:credit>
-  </info>
-
-<title>المحمّل</title>
-<p>توضح هذه الصفحة جميع الخيارات لإعداد برنامج التنزيل في التفضيلات داخل تطبيق <app>Parabolic</app>.</p>
-
-<terms>
-    <item>
-        <title>استخدم ملف الدفعات</title>
-        <p>(بارا-بوليك) سيحمّل الوسائط في ملفات (.part) منفصلة بدلًا من تحميلها مباشرة في ملف الإنتاج.</p>
-        <note style="advanced">
-            <p>الإفتراضي: مفعل</p>
-        </note>
-    </item>
-    <item>
-        <title>استخدم "مانع الإعلان لليوتيوب"</title>
-        <p>سيحاول (بارا-بوليك) إزالة الجزئيات الإعلانية من مقاطع اليوتيوب.</p>
-        <note>
-            <p>ميزة SponsorBlock تعمل فقط على مقاطع فيديو YouTube. ومع ذلك، ترك هذا الإعداد مفعلاً لن يؤثر على التنزيلات من المواقع الأخرى (أي لن يتسبب في فشلها).</p>
-        </note>
-        <note style="advanced">
-            <p>الافتراضي: إيقاف</p>
-        </note>
-    </item>
-    <item>
-        <title>حدُّ السرعة</title>
-        <p>The limit, in KiB/s, to apply to downloads when enabled. Must be an integer value between 512 and 10240.</p>
-        <note style="advanced">
-            <p>الافتراضي: إيقاف</p>
-        </note>
-    </item>
-    <item>
-        <title>رابط الوكيل</title>
-        <p>عنوان URL الخاص بخادم الوكيل لاستخدامه.</p>
-        <note style="advanced">
-            <p>الافتراضي: بلا رابط</p>
-        </note>
-    </item>
-    <item>
-        <title>معرّفات الإرتباط من المتصفح</title>
-        <p>متصفح يتم استخدامه لقراءة ملفات تعريف الارتباط (Cookies) وتمريرها إلى محرك التنزيل الخاص بـ <code>yt-dlp</code>.</p>
-        <p>قد يكون هذا مفيد عند تحميل محتوى يتطلب تسجيل الدخول،مثال:فديوهات اليوتوب الخاصة.</p>
-        <p>هذا الخيار متاح فقط على الأنظمة غير المعزولة (non-sandboxed).</p>
-        <note style="advanced">
-            <p>الافتراضي: لا شيء</p>
-        </note>
-    </item>
-    <item>
-        <title>مِلَفّ تعريف الارتباط</title>
-        <p>ملف نصي يحتوي على ملفات تعريف الارتباط لتمريرها إلى yt-dlp عند تشغيل محرك التنزيل.</p>
-        <p>قد يكون هذا مفيد عند تحميل محتوى يتطلب تسجيل الدخول،مثال:فديوهات اليوتوب الخاصة.</p>
-        <p>استخدم أحد الامتدادات التالية للحصول على ملف تعريف الارتباط من متصفحك:</p>
-        <p>كروم: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>استخدم هذه الإضافات على مسؤوليتك الخاصة.</p>
-        </note>
-        <note style="advanced">
-            <p>الافتراضي: لم يتم تحديد ملف</p>
-        </note>
-    </item>
-</terms>
-</page>

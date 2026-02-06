@@ -1,0 +1,195 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu mainMenu {
+  section {
+    item(_("History"), "win.history")
+  }
+  section {
+    item(_("Preferences"), "win.preferences")
+    item(_("Keyboard Shortcuts"), "win.keyboardShortcuts")
+    item(_("About Parabolic"), "win.about")
+  }
+}
+
+menu downloadsMenu {
+  section {
+    item(_("Stop All Remaining"), "win.stopAllRemaining")
+    item(_("Retry All Failed"), "win.retryAllFailed")
+    
+  }
+  section {
+    item(_("Clear All Queued"), "win.clearAllQueued")
+    item(_("Clear All Completed"), "win.clearAllCompleted")
+  }
+}
+
+Adw.ApplicationWindow root {
+  width-request: 360;
+  height-request: 200;
+  default-width: 800;
+  default-height: 600;
+
+  Adw.ToolbarView toolbarView {
+    [top]
+    Adw.HeaderBar headerBar {
+      title-widget: Adw.WindowTitle windowTitle {};
+
+      [start]
+      Gtk.Button {
+        action-name: "win.addDownload";
+
+        Adw.ButtonContent {
+          label: _("Add");
+          icon-name: "list-add";
+        }
+      }
+
+      [end]
+      Gtk.MenuButton {
+        direction: none;
+        menu-model: mainMenu;
+        tooltip-text: _("Main Menu");
+        primary: true;
+      }
+
+      [end]
+      Gtk.MenuButton updateButton {
+        visible: false;
+        direction: none;
+        icon-name: "update-symbolic";
+        tooltip-text: _("Updater");
+        popover: Gtk.Popover updatePopover {
+          child: Gtk.Box {
+            margin-start: 12;
+            margin-top: 12;
+            margin-end: 12;
+            margin-bottom: 12;
+            orientation: vertical;
+            spacing: 6;
+
+            Gtk.Label updateProgressLabel { 
+              hexpand: true;
+            }
+
+            Gtk.ProgressBar updateProgressBar {
+              hexpand: true;
+            }
+          };
+        };
+      }
+
+      [end]
+      Gtk.Button {
+        icon-name: "dialog-password-symbolic";
+        tooltip-text: _("Keyring");
+        action-name: "win.keyring";
+      }
+    }
+
+    content: Adw.ToastOverlay toastOverlay {
+      hexpand: true;
+      vexpand: true;
+
+      Adw.ViewStack viewStack {
+        Adw.ViewStackPage {
+          name: "Home";
+          child: Adw.StatusPage {
+            icon-name: "org.nickvision.tubeconverter";
+            title: _("Download Media");
+            description: _("Add a video, audio, or playlist URL to start downloading");
+            child: Gtk.Button {
+              halign: center;
+              label: _("Add Download");
+              action-name: "win.addDownload";
+
+              styles ["pill", "suggested-action"]
+            };
+            
+            styles ["icon-dropshadow"]
+          };
+        }
+
+        Adw.ViewStackPage {
+          name: "Downloads";
+          child: Gtk.ScrolledWindow {
+            child: Adw.Clamp {
+              maximum-size: 600;
+              child: Gtk.Box {
+                orientation: vertical;
+                spacing: 12;
+                margin-start:12;
+                margin-top: 12;
+                margin-end: 12;
+                margin-bottom: 12;
+
+                Gtk.Box {
+                  orientation: horizontal;
+                  spacing: 6;
+
+                  Adw.ToggleGroup downloadsToggleGroup {
+                    Adw.Toggle {
+                      icon-name: "view-list-bullet-symbolic";
+                      label: _("All");
+                    } 
+
+                    Adw.Toggle {
+                      icon-name: "media-playback-start-symbolic";
+                      label: _("Running");
+                    }
+
+                    Adw.Toggle {
+                      icon-name: "document-open-recent-symbolic";
+                      label: _("Queued");
+                    }
+
+                    Adw.Toggle {
+                      icon-name: "checkmark-small-symbolic";
+                      label: _("Completed");
+                    }
+                  }
+
+                  Gtk.Label {
+                    hexpand: true;
+                  }
+
+                  Gtk.MenuButton {
+                    direction: none;
+                    menu-model: downloadsMenu;
+                    tooltip-text: _("Manage Download");
+                    icon-name: "wrench-wide-symbolic";
+                  }
+                }
+
+                Adw.ViewStack viewStackDownloads {
+                  vexpand: true;
+                  hexpand: true;
+
+                  Adw.ViewStackPage {
+                    name: "Has";
+                    child: Gtk.ListBox listDownloads { 
+                      hexpand: true;
+                      valign: start;
+                      selection-mode: none;
+
+                      styles [ "boxed-list" ]
+                    };
+                  }
+
+                  Adw.ViewStackPage {
+                    name: "None";
+                    child: Adw.StatusPage {
+                      icon-name: "folder-download-symbolic";
+                      title: _("No Downloads");
+                      description: _("There are no downloads of this type");
+                    }; 
+                  }
+                }
+              };
+            };
+          };
+        }
+      }
+    };
+  }
+}

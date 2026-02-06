@@ -1,14 +1,14 @@
 [Desktop Entry]
 Version=1.0
-Name=@DISPLAY_NAME@
+Name=Parabolic
 Comment=Download web video and audio
-Exec=@CMAKE_INSTALL_FULL_LIBDIR@/@PROJECT_NAME@/@OUTPUT_NAME@ %u
-Icon=@PROJECT_NAME@
+Exec=@LIB_DIR@/@OUTPUT_NAME@
+Icon=@APP_ID@
 Terminal=false
 Type=Application
 Categories=AudioVideo;Network;
 Keywords=YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;audio;video;media;download;
 MimeType=x-scheme-handler/parabolic;
-X-GNOME-UsesNotifications=@GNOME_NOTIFICATIONS@
-StartupNotify=@STARTUP_NOTIFY@
-DBusActivatable=@DBUS_ACTIVATABLE@
+X-GNOME-UsesNotifications=true
+StartupNotify=true
+DBusActivatable=true

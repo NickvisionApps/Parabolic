@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.nickvision.tubeconverter</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Parabolic</name>
+  <project_group>Nickvision</project_group>
+  <developer id="org.nickvision">
+    <name>Nickvision</name>
+  </developer>
+  <summary>Download web video and audio</summary>
+  <description>
+    <ul>
+      <li>A powerful yt-dlp frontend</li>
+      <li>Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)</li>
+      <li>Run multiple downloads at a time</li>
+      <li>Supports downloading metadata and video subtitles</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">org.nickvision.tubeconverter.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Downloading files</caption>
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/downloading.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Home page</caption>
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/home.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Dark mode</caption>
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/dark.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Adding a download</caption>
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/add.png</image>
+    </screenshot>
+  </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#ffc199</color>
+    <color type="primary" scheme_preference="dark">#ae0010</color>
+  </branding>
+  <url type="homepage">https://nickvision.org/Parabolic.html</url>
+  <url type="bugtracker">https://github.com/NickvisionApps/Parabolic/issues</url>
+  <url type="donation">https://github.com/sponsors/nlogozzo</url>
+  <url type="translate">https://github.com/NickvisionApps/Parabolic/blob/master/CONTRIBUTING.md#providing-translations</url>
+  <url type="contribute">https://github.com/NickvisionApps/Parabolic/blob/main/CONTRIBUTING.md</url>
+  <url type="contact">https://matrix.to/#/#nickvision:matrix.org</url>
+  <url type="vcs-browser">https://github.com/NickvisionApps/Parabolic</url>
+  <provides>
+    <binary>org.nickvision.tubeconverter</binary>
+  </provides>
+  <content_rating type="oars-1.1" />
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <releases>
+    <release version="2026.2.0-beta1" date="2026-02-05">
+      <description translate="no">
+        <p>- Parabolic has been rewritten in C# from C++</p>
+        <p>- Added support for playlist quality options</p>
+        <p>- Added support for playlist subtitle options</p>
+        <p>- Added support for reversing the download order of a playlist</p>
+        <p>- Added support for remembering the previous Download Immediately selection in the add download dialog</p>
+        <p>- Added support for showing yt-dlp's sleeping pauses within download rows</p>
+        <p>- Added support for enabling nightly yt-dlp updates within Parabolic</p>
+        <p>- Redesigned both platform application designs for a faster and smoother download experience</p>
+        <p>- Removed documentation pages as Parabolic shows in-app documentation when needed</p>
+        <p>- Fixed an issue where translator-credits were not properly displayed</p>
+        <p>- Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist</p>
+        <p>- Fixed an issue where Parabolic crashed when validating certain URLs</p>
+        <p>- Fixed an issue where Parabolic refused to start due to keyring errors</p>
+        <p>- Fixed an issue where Parabolic refused to start due to VC errors</p>
+        <p>- Fixed an issue where opening the about dialog would freeze Parabolic for a few seconds</p>
+        <p>- Updated bundled yt-dlp</p>
+      </description>
+    </release>
+  </releases>
+</component>

@@ -4,10 +4,10 @@
 #define MyAppName            "Nickvision Parabolic"
 #define MyAppShortName       "Parabolic"
 #define MyAppShortNameLower  "parabolic"
-#define MyAppVersion         "2025.11.1"
+#define MyAppVersion         "2026.1.0"
 #define MyAppPublisher       "Nickvision"
 #define MyAppURL             "https://nickvision.org"
-#define MyAppExeName         "org.nickvision.tubeconverter.winui.exe"
+#define MyAppExeName         "Nickvision.Parabolic.WinUI.exe"
 #define StartYearCopyright   "2021"
 #define CurrentYear          GetDateTimeString('yyyy','','')
 
@@ -34,6 +34,9 @@ AppPublisher={#MyAppPublisher}
 ShowLanguageDialog=yes
 UsePreviousLanguage=no
 LanguageDetectionMethod=uilanguage
+
+ArchitecturesAllowed=x64compatible
+ArchitecturesInstallIn64BitMode=x64compatible
 
 WizardStyle=modern
 WizardResizable=yes
@@ -76,7 +79,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "vc_redist.exe"; DestDir: "{app}"; Flags: deleteafterinstall
+Source: "dotnet.exe"; DestDir: "{app}"; Flags: deleteafterinstall
 Source: "windowsappruntimeinstall.exe"; DestDir: "{app}"; Flags: deleteafterinstall 
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
@@ -84,8 +87,8 @@ Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "deno.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\{#GetEnv('APP_FILES_PATH')}\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion
+Source: "..\{#GetEnv('APP_FILES_PATH')}\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{autoprograms}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeName}"; Tasks: quicklaunchicon
@@ -98,6 +101,6 @@ Root: HKCR; Subkey: "{#MyAppShortNameLower}\DefaultIcon"; ValueType: "string"; V
 Root: HKCR; Subkey: "{#MyAppShortNameLower}\shell\open\command"; ValueType: "string"; ValueData: """{app}\Release\{#MyAppExeName}"" ""%1"""
 
 [Run]
-Filename: "{app}\vc_redist.exe"; Parameters: "/install /quiet /norestart"
+Filename: "{app}\dotnet.exe"; Parameters: "/install /quiet /norestart"
 Filename: "{app}\windowsappruntimeinstall.exe"; Parameters: "--quiet --force"
 Filename: "{app}\Release\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked

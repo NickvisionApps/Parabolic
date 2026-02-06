@@ -1,0 +1,163 @@
+using Gtk 4.0;
+using Adw 1;
+
+Gtk.ListBoxRow root {
+  activatable: false;
+  selectable: false;
+  child: Gtk.Box {
+    orientation: vertical;
+
+    Gtk.Box {
+      orientation: horizontal;
+      margin-start: 6;
+      margin-end: 6;
+      spacing: 6;
+
+      Gtk.Image statusIcon {
+        pixel-size: 16;
+        margin-start: 6;
+        margin-end: 6;
+        valign: center;
+
+        styles [ "status-icon" ]
+      }
+
+      Gtk.Box {
+        orientation: vertical;
+        spacing: 3;
+        margin-top: 8;
+        margin-bottom: 8;
+        hexpand: true;
+
+        Gtk.Label filenameLabel {
+          halign: start;
+          ellipsize: end;
+          lines: 1;
+        }
+
+        Gtk.Label statusLabel {
+          halign: start;
+          ellipsize: end;
+          lines: 1;
+
+          styles [ "dim-label" ]
+        }
+      }
+
+      Adw.Spinner spinner {
+        valign: center;
+        visible: false;
+        width-request: 24;
+        height-request: 24;
+        margin-end: 6;
+      }
+
+      Gtk.ToggleButton viewLogButton {
+        valign: center;
+        icon-name: "utilities-terminal-symbolic";
+        tooltip-text: _("View Log");
+
+        styles [ "circular" ]
+      }
+
+      Adw.ViewStack buttonsViewStack {
+        hhomogeneous: false;
+
+        Adw.ViewStackPage {
+          name: "Downloading";
+          child: Gtk.Box {
+            orientation: horizontal;
+            spacing: 6;
+
+            Gtk.Button pauseResumeButton {
+              valign: center;
+              icon-name: "media-playback-pause-symbolic";
+              tooltip-text: _("Pause");
+
+              styles [ "circular" ]
+            }
+
+            Gtk.Button stopButton {
+              valign: center;
+              icon-name: "media-playback-stop-symbolic";
+              tooltip-text: _("Stop");
+
+              styles [ "circular" ]
+            }
+          };
+        }
+
+        Adw.ViewStackPage {
+          name: "Success";
+          child: Gtk.Box {
+            orientation: horizontal;
+            spacing: 6;
+
+            Gtk.Button playButton {
+              valign: center;
+              icon-name: "media-playback-start-symbolic";
+              tooltip-text: _("Play");
+
+              styles [ "circular" ]
+            }
+
+            Gtk.Button openButton {
+              valign: center;
+              icon-name: "folder-symbolic";
+              tooltip-text: _("Open");
+
+              styles [ "circular" ]
+            }
+          };
+        }
+
+        Adw.ViewStackPage {
+          name: "Error";
+          child: Gtk.Button retryButton {
+            valign: center;
+            icon-name: "view-refresh-symbolic";
+            tooltip-text: _("Retry");
+
+            styles [ "circular" ]
+          };
+        }
+      }
+    }
+
+    Gtk.Overlay logOverlay {
+      visible: bind viewLogButton.active;
+
+      [overlay]
+      Gtk.Box {
+        orientation: horizontal;
+        spacing: 6;
+        vexpand: true;
+        halign: end;
+        valign: end;
+        margin-bottom: 7;
+        margin-end: 15;
+
+        Gtk.Button logToClipboardButton {
+          icon-name: "edit-copy-symbolic";
+          tooltip-text: _("Copy Log to Clipboard");
+
+          styles [ "opaque" ]
+        }
+      }
+
+      Gtk.ScrolledWindow logScroll {
+        height-request: 300;
+
+        child: Gtk.Label logLabel {
+          hexpand: true;
+          margin-start: 6;
+          margin-top: 6;
+          margin-end: 6;
+          selectable: true;
+          wrap: true;
+          wrap-mode: char;
+        };
+      }
+    }
+  };
+}

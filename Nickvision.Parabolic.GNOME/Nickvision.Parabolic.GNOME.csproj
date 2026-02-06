@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework Condition="$([MSBuild]::IsOSPlatform('Windows'))">net10.0-windows10.0.19041.0</TargetFramework>
+		<TargetFramework Condition="!$([MSBuild]::IsOSPlatform('Windows'))">net10.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<OutputType>Exe</OutputType>
+		<Platforms>AnyCPU;ARM64;x64</Platforms>
+		<Version>2026.2.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="GirCore.Adw-1" Version="0.7.0" />
+		<PackageReference Include="Nickvision.Desktop.GNOME" Version="2026.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Nickvision.Parabolic.Shared\Nickvision.Parabolic.Shared.csproj" />
+	</ItemGroup>
+
+	<Import Project="..\Nickvision.Common.targets" />
+
+	<Target Name="CompileGlibResourcesForBuild" AfterTargets="Build">
+		<Message Importance="high" Text="Compiling glib resources..." />
+		<Exec WorkingDirectory="$(MSBuildProjectDirectory)" Command="glib-compile-resources --sourcedir &quot;Resources&quot; &quot;Resources/org.nickvision.tubeconverter.gresource.xml&quot; --target=&quot;$(TargetDir)/org.nickvision.tubeconverter.gresource&quot;" />
+	</Target>
+
+	<Target Name="CompileGlibResourcesForPublish" AfterTargets="Publish">
+		<Message Importance="high" Text="Compiling glib resources..." />
+		<Exec WorkingDirectory="$(MSBuildProjectDirectory)" Command="glib-compile-resources --sourcedir &quot;Resources&quot; &quot;Resources/org.nickvision.tubeconverter.gresource.xml&quot; --target=&quot;$(MSBuildProjectDirectory)/$(PublishDir)/org.nickvision.tubeconverter.gresource&quot;" />
+	</Target>
+
+	<Target Name="CompileBlueprintsForBuild" AfterTargets="Build">
+		<ItemGroup>
+			<AllBlueprintFiles Include="$(MSBuildProjectDirectory)\Blueprints\**\*.blp" />
+		</ItemGroup>
+		<PropertyGroup>
+			<AllQuotedBlueprintFiles>@(AllBlueprintFiles->'"%(FullPath)"', ' ')</AllQuotedBlueprintFiles>
+		</PropertyGroup>
+		<Message Importance="high" Text="Compiling blueprints..." />
+		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)!='ARM64'" Command="python &quot;C:\msys64\mingw64\bin\blueprint-compiler&quot; batch-compile &quot;$(TargetDir)/ui&quot; &quot;$(MSBuildProjectDirectory)/Blueprints&quot; $(AllQuotedBlueprintFiles)" />
+		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)=='ARM64'" Command="python &quot;C:\msys64\clangarm64\bin\blueprint-compiler&quot; batch-compile &quot;$(TargetDir)/ui&quot; &quot;$(MSBuildProjectDirectory)/Blueprints&quot; $(AllQuotedBlueprintFiles)" />
+		<Exec Condition="!$([MSBuild]::IsOSPlatform('Windows'))" WorkingDirectory="$(MSBuildProjectDirectory)" Command="blueprint-compiler batch-compile &quot;$(TargetDir)/ui&quot; &quot;$(MSBuildProjectDirectory)/Blueprints&quot; $(AllQuotedBlueprintFiles)" />
+	</Target>
+
+	<Target Name="CompileBlueprintsForPublish" AfterTargets="Publish">
+		<ItemGroup>
+			<AllBlueprintFiles Include="$(MSBuildProjectDirectory)\Blueprints\**\*.blp" />
+		</ItemGroup>
+		<PropertyGroup>
+			<AllQuotedBlueprintFiles>@(AllBlueprintFiles->'"%(FullPath)"', ' ')</AllQuotedBlueprintFiles>
+		</PropertyGroup>
+		<Message Importance="high" Text="Compiling blueprints..." />
+		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)!='ARM64'" Command="python &quot;C:\msys64\mingw64\bin\blueprint-compiler&quot; batch-compile &quot;$(MSBuildProjectDirectory)/$(PublishDir)/ui&quot; &quot;$(MSBuildProjectDirectory)/Blueprints&quot; $(AllQuotedBlueprintFiles)" />
+		<Exec Condition="$([MSBuild]::IsOSPlatform('Windows')) and $(Platform)=='ARM64'" Command="python &quot;C:\msys64\clangarm64\bin\blueprint-compiler&quot; batch-compile &quot;$(MSBuildProjectDirectory)/$(PublishDir)/ui&quot; &quot;$(MSBuildProjectDirectory)/Blueprints&quot; $(AllQuotedBlueprintFiles)" />
+		<Exec Condition="!$([MSBuild]::IsOSPlatform('Windows'))" WorkingDirectory="$(MSBuildProjectDirectory)" Command="blueprint-compiler batch-compile &quot;$(MSBuildProjectDirectory)/$(PublishDir)/ui&quot; &quot;$(MSBuildProjectDirectory)/Blueprints&quot; $(AllQuotedBlueprintFiles)" />
+	</Target>
+
+</Project>

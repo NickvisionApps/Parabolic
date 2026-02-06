@@ -3,6 +3,14 @@
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "49",
     "sdk" : "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.dotnet10"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/dotnet10/bin",
+        "append-ld-library-path": "/usr/lib/sdk/dotnet10/lib",
+        "prepend-pkg-config-path": "/usr/lib/sdk/dotnet10/lib/pkgconfig"
+    },
     "command" : "org.nickvision.tubeconverter",
     "finish-args":[
         "--socket=fallback-x11",
@@ -19,6 +27,7 @@
         "--filesystem=~/.config/chromium:ro",
         "--filesystem=~/.config/microsoft-edge:ro",
         "--filesystem=~/.mozilla/firefox:ro",
+        "--filesystem=~/.config/mozilla/firefox:ro",
         "--filesystem=~/snap/firefox/common/.mozilla/firefox:ro",
         "--filesystem=~/.config/opera:ro",
         "--filesystem=~/.config/vivaldi:ro",
@@ -26,110 +35,12 @@
     ],
     "cleanup":[
         "/include",
-        "/lib/cmake",
+        "/lib/debug",
         "/lib/pkgconfig",
         "/man",
         "*.a"
     ],
     "modules" : [
-        {
-            "name": "boost",
-            "buildsystem": "simple",
-            "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=system,date_time,json",
-                "./b2 -j $FLATPAK_BUILDER_N_JOBS install"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://archives.boost.io/release/1.89.0/source/boost_1_89_0.tar.bz2",
-                    "sha256": "85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a"
-                }
-            ]
-        },
-        {
-            "name": "cpr",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DCPR_BUILD_TESTS=OFF",
-                "-DCPR_USE_SYSTEM_CURL=ON",
-                "-DCPR_ENABLE_SSL=ON"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/libcpr/cpr",
-                    "commit": "a0ff651296a620ed5fabf7d12cf4905fefc7ce86"
-                }
-            ]
-        },
-        {
-            "name": "maddy",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/progsource/maddy",
-                    "tag": "1.6.0"
-                }
-            ]
-        },
-        {
-            "name": "tcl",
-            "buildsystem": "autotools",
-            "subdir": "unix",
-            "config-opts": [
-                "--enable-shared=no"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://prdownloads.sourceforge.net/tcl/tcl8.6.16-src.tar.gz",
-                    "sha256": "91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5"
-                }
-            ]
-        },
-        {
-            "name": "sqlcipher",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--enable-tempstore=yes",
-                "--enable-fts5",
-                "--enable-releasemode",
-                "--disable-static",
-                "CFLAGS=-DSQLITE_HAS_CODEC",
-                "LDFLAGS=-lcrypto"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/sqlcipher/sqlcipher",
-                    "tag": "v4.6.1"
-                }
-            ]
-        },
-        {
-            "name": "libnick",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DBUILD_TESTING=OFF",
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2025.10.0"
-                }
-            ]
-        },
         "python3-modules.json",
         {
             "name": "aria2",
@@ -157,16 +68,16 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-12-12-14-18/ffmpeg-N-122097-g0637a28dc0-linux64-gpl.tar.xz",
-                    "sha256": "be9383b372ec247a21697a85f36ed99bebed59d004be3eb4561fa71e35468c2d",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-02-05-15-50/ffmpeg-N-122649-g5db50e8775-linux64-gpl.tar.xz",
+                    "sha256": "371b010bbf8ea5f9323df9c950dfb4a7fd868067e2752b6baea6ad4498670c71",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2025-12-12-14-18/ffmpeg-N-122097-g0637a28dc0-linuxarm64-gpl.tar.xz",
-                    "sha256": "6ace1f8521f8e495038ff97ef2712aa16bdb8e856fa5165466daf6fe791b8d31",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-02-05-15-50/ffmpeg-N-122649-g5db50e8775-linuxarm64-gpl.tar.xz",
+                    "sha256": "cb50e67b676bc5c3c687d05aaa80cde47549c253546460097d36e09a4a9deca1",
                     "only-arches": [
                         "aarch64"
                     ]
@@ -182,16 +93,16 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.5.6/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "fd4f6abc1b6a134fa9a4dba56519f1631f44c88e04e4e3e9a8ff5975dfa66e1a",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.6.7/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "c5626c9ee10e87201706fc5e64ed5a44b31527d98c130f164e149e1477c0a87d",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.5.6/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "f5e60ae3dfceb61e5e5a41f22129e40a8bc17f6393b59e75d7ca19ceef32d824",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.6.7/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "d2aedfa8c73e258cce78dc80e8d0e764a69d4a09d946d32f0c29eef46592b82f",
                     "only-arches": [
                         "aarch64"
                     ]
@@ -199,33 +110,34 @@
             ]
         },
         {
-            "name": "libxmlplusplus",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dmaintainer-mode=false",
-                "-Dbuild-examples=false",
-                "-Dbuild-tests=false"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/libxmlplusplus/libxmlplusplus",
-                    "tag": "5.4.0"
-                }
-            ]
-        },
-        {
             "name": "org.nickvision.tubeconverter",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
+            "buildsystem": "simple",
+            "build-options": {
+                "arch": {
+                    "aarch64": {
+                        "env" : {
+                            "RUNTIME": "linux-arm64",
+                            "container": "flatpak"
+                        }
+                    },
+                    "x86_64": {
+                        "env" : {
+                            "RUNTIME": "linux-x64",
+                            "container": "flatpak"
+                        }
+                    }
+                }
+            },
+            "build-commands": [
+                "chmod +x ./resources/linux/publish-and-install.sh",
+                "./resources/linux/publish-and-install.sh /app $RUNTIME"
             ],
             "sources": [
                 {
                     "type": "dir",
                     "path": ".."
-                }
+                },
+                "nuget-sources.json"
             ]
         }
     ]

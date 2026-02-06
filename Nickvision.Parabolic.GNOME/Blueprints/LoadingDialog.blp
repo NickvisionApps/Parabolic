@@ -1,0 +1,21 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Dialog root {
+  title: _("Loading");
+  can-close: false;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar { }
+
+    content: Adw.Spinner {
+      halign: center;
+      valign: center;
+      width-request: 24;
+      height-request: 24;
+      margin-top: 24;
+      margin-bottom: 24;
+    };
+  };
+}
