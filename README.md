@@ -125,11 +125,11 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 
 | Home Page | Active Downloads |
 |:---:|:---:|
-| ![Home Page](org.nickvision.tubeconverter.gnome/screenshots/home.png) | ![Downloading](org.nickvision.tubeconverter.gnome/screenshots/downloading.png) |
+| ![Home Page](Nickvision.Parabolic.GNOME/Screenshots/Home.png) | ![Downloading](Nickvision.Parabolic.GNOME/Screenshots/Downloading.png) |
 
 | Dark Mode | Add Download |
 |:---:|:---:|
-| ![Dark Mode](org.nickvision.tubeconverter.gnome/screenshots/dark.png) | ![Add Download Dialog](org.nickvision.tubeconverter.gnome/screenshots/add.png) |
+| ![Dark Mode](Nickvision.Parabolic.GNOME/Screenshots/DarkMode.png) | ![Add Download Dialog](Nickvision.Parabolic.GNOME/Screenshots/AddDownloadDialog.png) |
 
 </details>
 
