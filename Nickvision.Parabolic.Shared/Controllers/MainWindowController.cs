@@ -289,11 +289,55 @@ public class MainWindowController : IDisposable
         }
     }
 
-    public IEnumerable<int> ClearCompletedDownloads() => _services.Get<IDownloadService>()!.ClearCompleted();
+    public IEnumerable<int> ClearCompletedDownloads()
+    {
+        try
+        {
+            return _services.Get<IDownloadService>()!.ClearCompleted();
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while clearing completed downloads"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+            return [];
+        }
+    }
 
-    public Task ClearRecoverableDownloadsAsync() => _services.Get<IRecoveryService>()!.ClearAsync();
+    public async Task ClearRecoverableDownloadsAsync()
+    {
+        try
+        {
+            await _services.Get<IRecoveryService>()!.ClearAsync();
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while clearing recoverable downloads"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+        }
+    }
 
-    public IEnumerable<int> ClearQueuedDownloads() => _services.Get<IDownloadService>()!.ClearQueued();
+    public IEnumerable<int> ClearQueuedDownloads()
+    {
+        try
+        {
+            return _services.Get<IDownloadService>()!.ClearQueued();
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while clearing queued downloads"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+            return [];
+        }
+    }
 
     public async Task<string> GetDebugInformationAsync(string extraInformation = "")
     {
@@ -310,19 +354,121 @@ public class MainWindowController : IDisposable
         return Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
     }
 
-    public bool PauseDownload(int id) => _services.Get<IDownloadService>()!.Pause(id);
+    public bool PauseDownload(int id)
+    {
+        try
+        {
+            return _services.Get<IDownloadService>()!.Pause(id);
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while pausing the download"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+            return false;
+        }
+    }
 
-    public async Task RecoverAllDownloadsAsync() => await _services.Get<IDownloadService>()!.RecoverAllAsync();
+    public async Task RecoverAllDownloadsAsync()
+    {
+        try
+        {
+            await _services.Get<IDownloadService>()!.RecoverAllAsync();
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while recovering downloads"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+        }
+    }
 
-    public bool ResumeDownload(int id) => _services.Get<IDownloadService>()!.Resume(id);
+    public bool ResumeDownload(int id)
+    {
+        try
+        {
+            return _services.Get<IDownloadService>()!.Resume(id);
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while resuming the download"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+            return false;
+        }
+    }
 
-    public async Task RetryFailedDownloadsAsync() => await _services.Get<IDownloadService>()!.RetryFailedAsync();
+    public async Task RetryFailedDownloadsAsync()
+    {
+        try
+        {
+            await _services.Get<IDownloadService>()!.RetryFailedAsync();
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while retrying failed downloads"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+        }
+    }
 
-    public async Task<bool> RetryDownloadAsync(int id) => await _services.Get<IDownloadService>()!.RetryAsync(id);
+    public async Task<bool> RetryDownloadAsync(int id)
+    {
+        try
+        {
+            return await _services.Get<IDownloadService>()!.RetryAsync(id);
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while retrying the download"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+            return false;
+        }
+    }
 
-    public async Task StopAllDownloadsAsync() => await _services.Get<IDownloadService>()!.StopAllAsync();
+    public async Task StopAllDownloadsAsync()
+    {
+        try
+        {
+            await _services.Get<IDownloadService>()!.StopAllAsync();
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while stopping all downloads"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+        }
+    }
 
-    public async Task<bool> StopDownloadAsync(int id) => await _services.Get<IDownloadService>()!.StopAsync(id);
+    public async Task<bool> StopDownloadAsync(int id)
+    {
+        try
+        {
+            return await _services.Get<IDownloadService>()!.StopAsync(id);
+        }
+        catch (Exception e)
+        {
+            _services.Get<INotificationService>()!.Send(new AppNotification(Translator._("An error occurred while stopping the download"), NotificationSeverity.Error)
+            {
+                Action = "error",
+                ActionParam = e.ToString()
+            });
+            return false;
+        }
+    }
 
     public async Task WindowsUpdateAsync(IProgress<DownloadProgress> progress)
     {

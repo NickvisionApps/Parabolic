@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-05 21:30-0500\n"
+"POT-Creation-Date: 2026-02-05 22:11-0500\n"
 "PO-Revision-Date: 2026-01-05 06:04+0000\n"
 "Last-Translator: Valerii Zhikharev <fr0stmatic@proton.me>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -348,7 +348,7 @@ msgid "Play"
 msgstr "Воспроизвести"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/DownloadRow.blp:107
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:75
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:47
 msgid "Open"
 msgstr "Открыть"
@@ -1315,65 +1315,105 @@ msgstr "Имя пользователя и пароль не могут быть
 msgid "A credential with that name does not exist"
 msgstr "Учётные данные с таким именем уже существуют."
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:71
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:88
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:72
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:89
 #, fuzzy
 msgid "Download web video and audio."
 msgstr "Загружайте видео и аудио из Интернета"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:74
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:91
 msgid "Matrix Chat"
 msgstr "Чат в Matrix"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:76
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:93
 #, fuzzy
 msgid "Contributors on GitHub ❤️"
 msgstr "Участники на GitHub"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:78
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:95
 msgid "Fyodor Sobolev"
 msgstr "Фёдор Соболев"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:80
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:97
 msgid "David Lapshin"
 msgstr "Давид Лапшин"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:81
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:98
 #, fuzzy
 msgid "translation-credits"
 msgstr ""
 "Фёдор Соболев <https://github.com/fsobolev>, 2023\n"
 "Valerii Zhikharev <fr0stmatic@proton.me>, 2025-2026"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:257
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:274
 #, fuzzy, csharp-format
 msgid "New {0} update available: {1}"
 msgstr "Доступно обновление"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:264
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:281
 #, fuzzy, csharp-format
 msgid "New yt-dlp update available: {0}"
 msgstr "Обновлений Parabolic нет"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:271
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:288
 #, fuzzy
 msgid "No update available"
 msgstr "Доступно обновление"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:315
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:300
+msgid "An error occurred while clearing completed downloads"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:317
+msgid "An error occurred while clearing recoverable downloads"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:333
+msgid "An error occurred while clearing queued downloads"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:365
+msgid "An error occurred while pausing the download"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:382
+msgid "An error occurred while recovering downloads"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:398
+msgid "An error occurred while resuming the download"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:415
+msgid "An error occurred while retrying failed downloads"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:431
+msgid "An error occurred while retrying the download"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:448
+msgid "An error occurred while stopping all downloads"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:464
+msgid "An error occurred while stopping the download"
+msgstr ""
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:478
 #, fuzzy
 msgid "Unable to download and install the update"
 msgstr "Не удалось загрузить и установить обновление"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:324
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:487
 #, fuzzy, csharp-format
 msgid "yt-dlp {0} installed successfully"
 msgstr "yt-dlp успешно обновлён"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:328
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:491
 #, fuzzy
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Не удалось загрузить и установить обновление"
