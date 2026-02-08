@@ -40,6 +40,7 @@ public class MainWindowController : IDisposable
             Changelog = """
             - Improved the speed of subtitle downloads for non YouTube sites
             - Fixed an issue where Parabolic crashed when discovering some media
+            - Fixed an issue where Parabolic did not receive URLs from the browser extension correctly
             - Fixed an issue where Parabolic crashed if some DBus services were unavailable on Linux
             - Fixed an issue where Parabolic was unable to open on Windows
             - Fixed an issue where Parabolic did not update to arm64 binaries correctly on Windows
