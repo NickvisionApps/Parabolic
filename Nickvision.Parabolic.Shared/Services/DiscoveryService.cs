@@ -9,9 +9,6 @@ using System.IO;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-#if OS_LINUX
-using System.Diagnostics;
-#endif
 
 namespace Nickvision.Parabolic.Shared.Services;
 
@@ -143,33 +140,40 @@ public class DiscoveryService : IDiscoveryService
         await process.WaitForExitAsync(cancellationToken);
         var output = await outputTask;
         var error = await errorTask;
-        if (process.ExitCode != 0 || string.IsNullOrEmpty(output))
+        if (process.ExitCode != 0 && string.IsNullOrEmpty(output))
         {
             throw new Exception(error);
         }
         cancellationToken.ThrowIfCancellationRequested();
-        using var json = JsonDocument.Parse(output);
-        if (json.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
+        try
         {
-            var urlInfos = new List<DiscoveryResult>();
-            foreach (var entry in entriesProperty.EnumerateArray())
+            using var json = JsonDocument.Parse(output);
+            if (json.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                if (entry.TryGetProperty("ie_key", out var ieProperty) && (ieProperty.GetString() ?? string.Empty) == "YoutubeTab" && entry.TryGetProperty("url", out var urlProperty))
+                var urlInfos = new List<DiscoveryResult>();
+                foreach (var entry in entriesProperty.EnumerateArray())
                 {
-                    var urlInfo = await GetForUrlAsync(new Uri(urlProperty.GetString() ?? string.Empty), credential, suggestedSaveFolder, suggestedFilename, cancellationToken);
-                    if (urlInfo is not null)
+                    cancellationToken.ThrowIfCancellationRequested();
+                    if (entry.TryGetProperty("ie_key", out var ieProperty) && (ieProperty.GetString() ?? string.Empty) == "YoutubeTab" && entry.TryGetProperty("url", out var urlProperty))
                     {
-                        urlInfos.Add(urlInfo);
+                        var urlInfo = await GetForUrlAsync(new Uri(urlProperty.GetString() ?? string.Empty), credential, suggestedSaveFolder, suggestedFilename, cancellationToken);
+                        if (urlInfo is not null)
+                        {
+                            urlInfos.Add(urlInfo);
+                        }
                     }
                 }
+                if (urlInfos.Count > 0 && json.RootElement.TryGetProperty("title", out var titleProperty))
+                {
+                    return new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
+                }
             }
-            if (urlInfos.Count > 0 && json.RootElement.TryGetProperty("title", out var titleProperty))
-            {
-                return new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
-            }
+            return new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
         }
-        return new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+        catch(JsonException)
+        {
+            throw new Exception(error);
+        }
     }
 
     private async Task<List<BatchFileEntry>> ParseBatchFileAsync(string batchFilePath, CancellationToken cancellationToken = default)
