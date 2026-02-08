@@ -234,7 +234,7 @@ public class AddDownloadDialog : Adw.Dialog
         _cancellationTokenSource?.Dispose();
     }
 
-    private void UrlRow_OnChanged(Gtk.Editable sender, EventArgs e) => _discoverUrlButton!.Sensitive = Uri.TryCreate(_urlRow!.Text_, UriKind.Absolute, out var _);
+    private void UrlRow_OnChanged(Gtk.Editable sender, EventArgs e) => _discoverUrlButton!.Sensitive = !(_urlRow!.Text_?.StartsWith("//") ?? false) && Uri.TryCreate(_urlRow!.Text_, UriKind.Absolute, out var _);
 
     private async void SelectBathFileRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
     {
@@ -289,7 +289,7 @@ public class AddDownloadDialog : Adw.Dialog
             Close();
             return;
         }
-        ContentHeight = 500;
+        ContentHeight = 550;
         _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
         if (_discoveryContext.Items.Count == 1)
         {
@@ -452,8 +452,12 @@ public class AddDownloadDialog : Adw.Dialog
         if (e.Pspec.GetName() == "selected-item")
         {
             var selectedFileType = _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected];
-            _singleVideoFormatRow!.Selected = (uint)_discoveryContext.VideoFormats.IndexOf(_discoveryContext.VideoFormats.First(x => x.Value.Id == _controller.PreviousDownloadOptions.VideoFormatIds[selectedFileType.Value]));
-            _singleAudioFormatRow!.Selected = (uint)_discoveryContext.AudioFormats.IndexOf(_discoveryContext.AudioFormats.First(x => x.Value.Id == _controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]));
+            var foundVideoFormat = _discoveryContext.VideoFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousDownloadOptions.VideoFormatIds[selectedFileType.Value]);
+            var foundAudioFormat = _discoveryContext.AudioFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]);
+            var foundVideoFormatIndex = foundVideoFormat is null ? -1 : _discoveryContext.VideoFormats.IndexOf(foundVideoFormat);
+            var foundAudioFormatIndex = foundAudioFormat is null ? -1 : _discoveryContext.AudioFormats.IndexOf(foundAudioFormat);
+            _singleVideoFormatRow!.Selected = foundVideoFormatIndex == -1 ? 0 : (uint)foundVideoFormatIndex;
+            _singleAudioFormatRow!.Selected = foundAudioFormatIndex == -1 ? 0 : (uint)foundAudioFormatIndex;
         }
     }
 

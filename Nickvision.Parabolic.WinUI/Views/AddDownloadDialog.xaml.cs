@@ -302,7 +302,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbPlaylistPostProcessorArgument.SelectedItem as SelectionItem<PostProcessorArgument?>)!
     );
 
-    private void TxtUrl_TextChanged(object? sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
+    private void TxtUrl_TextChanged(object? sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = !TxtUrl.Text.StartsWith("//") && Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
 
     private async void BtnSelectBatchFile_Click(object? sender, RoutedEventArgs e)
     {

@@ -85,7 +85,7 @@ public sealed class YtdlpExecutableServiceTests
             File.Delete(downloadedYtdlp);
         }
         Assert.IsNotNull(preview);
-        Assert.IsGreaterThan(new AppVersion("2025.1.31"), preview);
+        Assert.IsGreaterThan(new AppVersion("2026.2.4"), preview);
         Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(preview));
         Assert.IsTrue(File.Exists(downloadedYtdlp));
         File.Delete(downloadedYtdlp);

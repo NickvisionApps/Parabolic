@@ -33,29 +33,20 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.0");
+        _latestAppVersion = new AppVersion("2026.2.1");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
             Changelog = """
-            - Parabolic has been rewritten in C# from C++
-            - Added arm64 support for Windows
-            - Added support for playlist quality options
-            - Added support for playlist subtitle options
-            - Added support for reversing the download order of a playlist
-            - Added support for remembering the previous Download Immediately selection in the add download dialog
-            - Added support for showing yt-dlp's sleeping pauses within download rows
-            - Added support for enabling nightly yt-dlp updates within Parabolic
-            - Redesigned both platform application designs for a faster and smoother download experience
-            - Removed documentation pages as Parabolic shows in-app documentation when needed 
-            - Fixed an issue where translator-credits were not properly displayed
-            - Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist
-            - Fixed an issue where Parabolic crashed when validating certain URLs
-            - Fixed an issue where Parabolic refused to start due to keyring errors
-            - Fixed an issue where Parabolic refused to start due to VC errors
-            - Fixed an issue where Parabolic refused to start due to version errors
-            - Fixed an issue where opening the about dialog would freeze Parabolic for a few seconds
-            - Updated bundled yt-dlp
+            - Improved sorting of formats in the add download dialog
+            - Improved the speed of subtitle downloads for non YouTube sites
+            - Fixed an issue where Parabolic crashed when discovering some media
+            - Fixed an issue where discovering playlists would fail if any media if some were unavailable
+            - Fixed an issue where downloads would fail with a requested format is not available error
+            - Fixed an issue where Parabolic did not receive URLs from the browser extension correctly
+            - Fixed an issue where Parabolic crashed if some DBus services were unavailable on Linux
+            - Fixed an issue where Parabolic was unable to open on Windows
+            - Fixed an issue where Parabolic did not update to arm64 binaries correctly on Windows
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
@@ -64,7 +55,12 @@ public class MainWindowController : IDisposable
         UrlFromArgs = null;
         for (var i = 1; i < args.Length; i++)
         {
-            if (Uri.TryCreate(args[i].Trim(), UriKind.Absolute, out var url))
+            var urlText = args[i].Trim();
+            if(urlText.StartsWith("parabolic://"))
+            {
+                urlText = urlText.Replace("parabolic://", "https://");
+            }
+            if (Uri.TryCreate(urlText, UriKind.Absolute, out var url))
             {
                 UrlFromArgs = url;
                 break;
@@ -213,7 +209,7 @@ public class MainWindowController : IDisposable
         }
     }
 
-    public Theme Theme => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).Theme ?? Theme.System;
+    public Theme Theme => _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key).Theme;
 
     public ITranslationService Translator => _services.Get<ITranslationService>()!;
 
@@ -352,7 +348,8 @@ public class MainWindowController : IDisposable
         extraInformation += $"\ndeno: {(!string.IsNullOrEmpty(denoVersion) ? denoVersion.Substring(denoVersion.IndexOf("deno ") + 5, denoVersion.IndexOf('\n') - 5) : "not found")}";
         extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";
         extraInformation += $"\naria2: {(!string.IsNullOrEmpty(ariaVersion) ? ariaVersion.Substring(ariaVersion.IndexOf("aria2 version") + 14, ariaVersion.IndexOf('\n') - 14) : "not found")}";
-        extraInformation += $"\n\n{await _services.Get<IJsonFileService>()!.LoadAsync<Configuration>()}";
+        extraInformation += $"\n\n{await _services.Get<IJsonFileService>()!.LoadAsync<Configuration>(Configuration.Key)}";
+        extraInformation += $"\n\n{await _services.Get<IJsonFileService>()!.LoadAsync<PreviousDownloadOptions>(PreviousDownloadOptions.Key)}";
         return Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
     }
 

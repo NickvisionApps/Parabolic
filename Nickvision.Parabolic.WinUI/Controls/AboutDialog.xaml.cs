@@ -28,7 +28,7 @@ public sealed partial class AboutDialog : ContentDialog
         LblAppName.Text = appInfo.ShortName;
         LblAppDescription.Text = appInfo.Description;
         LblAppVersion.Text = appInfo.Version!.ToString();
-        LblAppCopyright.Text = "© Nickvision 2021-2025";
+        LblAppCopyright.Text = "© Nickvision 2021-2026";
         LblChangelog.Text = appInfo.Changelog!;
         LblCopyDebugInformation.Text = _translator._("Copy Debug Information");
         LblDebugInformation.Text = debugInfo;

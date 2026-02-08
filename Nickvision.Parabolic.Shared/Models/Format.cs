@@ -177,7 +177,9 @@ public class Format : IComparable<Format>, IEquatable<Format>
         {
             return 1;
         }
-        return Id.CompareTo(other.Id);
+        var resolutionCompare = VideoResolution?.CompareTo(other.VideoResolution) ?? 0;
+        var bitrateComprae = Bitrate.HasValue && other.Bitrate.HasValue ? Bitrate.Value.CompareTo(other.Bitrate.Value) : 0;
+        return resolutionCompare != 0 ? resolutionCompare : (bitrateComprae != 0 ? bitrateComprae : Id.CompareTo(other.Id));
     }
 
     public override bool Equals(object? obj) => obj is Format other && Equals(other);

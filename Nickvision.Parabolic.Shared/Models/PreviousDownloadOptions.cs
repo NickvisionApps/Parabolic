@@ -1,15 +1,21 @@
-﻿using Nickvision.Desktop.Filesystem;
+﻿using Nickvision.Desktop.Converters;
+using Nickvision.Desktop.Filesystem;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
 public class PreviousDownloadOptions
 {
+    private static readonly JsonSerializerOptions _options;
     public static readonly string Key;
 
     public bool DownloadImmediately { get; set; }
     public string SaveFolder { get; set; }
+    [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType FullFileType { get; set; }
+    [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType AudioOnlyFileType { get; set; }
     public Dictionary<MediaFileType, string> VideoFormatIds { get; set; }
     public Dictionary<MediaFileType, string> AudioFormatIds { get; set; }
@@ -25,6 +31,10 @@ public class PreviousDownloadOptions
 
     static PreviousDownloadOptions()
     {
+        _options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
         Key = "previous";
     }
 
@@ -76,4 +86,6 @@ public class PreviousDownloadOptions
         AudioBitrate = double.MaxValue;
         VideoResolution = VideoResolution.Best;
     }
+
+    public override string ToString() => JsonSerializer.Serialize(this, _options);
 }

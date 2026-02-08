@@ -60,26 +60,17 @@
     <display_length compare="ge">360</display_length>
   </requires>
   <releases>
-    <release version="2026.2.0" date="2026-02-06">
+    <release version="2026.2.1" date="2026-02-07">
       <description translate="no">
-        <p>- Parabolic has been rewritten in C# from C++</p>
-        <p>- Added arm64 support for Windows</p>
-        <p>- Added support for playlist quality options</p>
-        <p>- Added support for playlist subtitle options</p>
-        <p>- Added support for reversing the download order of a playlist</p>
-        <p>- Added support for remembering the previous Download Immediately selection in the add download dialog</p>
-        <p>- Added support for showing yt-dlp's sleeping pauses within download rows</p>
-        <p>- Added support for enabling nightly yt-dlp updates within Parabolic</p>
-        <p>- Redesigned both platform application designs for a faster and smoother download experience</p>
-        <p>- Removed documentation pages as Parabolic shows in-app documentation when needed</p>
-        <p>- Fixed an issue where translator-credits were not properly displayed</p>
-        <p>- Fixed an issue where Parabolic crashed when adding large amounts of downloads from a playlist</p>
-        <p>- Fixed an issue where Parabolic crashed when validating certain URLs</p>
-        <p>- Fixed an issue where Parabolic refused to start due to keyring errors</p>
-        <p>- Fixed an issue where Parabolic refused to start due to VC errors</p>
-        <p>- Fixed an issue where Parabolic refused to start due to version errors</p>
-        <p>- Fixed an issue where opening the about dialog would freeze Parabolic for a few seconds</p>
-        <p>- Updated bundled yt-dlp</p>
+        <p>- Improved sorting of formats in the add download dialog</p>
+        <p>- Improved the speed of subtitle downloads for non YouTube sites</p>
+        <p>- Fixed an issue where Parabolic crashed when discovering some media</p>
+        <p>- Fixed an issue where discovering playlists would fail if any media if some were unavailable</p>
+        <p>- Fixed an issue where downloads would fail with a requested format is not available error</p>
+        <p>- Fixed an issue where Parabolic did not receive URLs from the browser extension correctly</p>
+        <p>- Fixed an issue where Parabolic crashed if some DBus services were unavailable on Linux</p>
+        <p>- Fixed an issue where Parabolic was unable to open on Windows</p>
+        <p>- Fixed an issue where Parabolic did not update to arm64 binaries correctly on Windows</p>
       </description>
     </release>
   </releases>

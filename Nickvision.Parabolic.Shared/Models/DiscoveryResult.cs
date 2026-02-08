@@ -42,6 +42,10 @@ public class DiscoveryResult
             var position = 0;
             foreach (var mediaObject in entriesProperty.EnumerateArray())
             {
+                if(mediaObject.ValueKind != JsonValueKind.Object)
+                {
+                    continue;
+                }
                 Media.Add(new Media(mediaObject, translator, downloaderOptions, suggestedSaveFolder, string.Empty, position));
                 position++;
             }
