@@ -40,7 +40,8 @@ public class MainWindowController : IDisposable
             Changelog = """
             - Improved the speed of subtitle downloads for non YouTube sites
             - Fixed an issue where Parabolic crashed when discovering some media
-            - Fixed an issue where Parabolic was unable to discover any media if some were unavailable
+            - Fixed an issue where discovering playlists would fail if any media if some were unavailable
+            - Fixed an issue where downloads would fail with a requested format is not available error
             - Fixed an issue where Parabolic did not receive URLs from the browser extension correctly
             - Fixed an issue where Parabolic crashed if some DBus services were unavailable on Linux
             - Fixed an issue where Parabolic was unable to open on Windows

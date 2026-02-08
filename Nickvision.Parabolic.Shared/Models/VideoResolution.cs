@@ -45,7 +45,15 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
         return null;
     }
 
-    public int CompareTo(VideoResolution? other) => other is null ? 1 : (Width * Height).CompareTo(other.Width * other.Height);
+    public int CompareTo(VideoResolution? other)
+    {
+        if(other is null)
+        {
+            return 1;
+        }
+        var widthCompare = Width.CompareTo(other.Width);
+        return widthCompare == 0 ? Height.CompareTo(other.Height) : widthCompare;
+    }
 
     public override bool Equals(object? obj) => obj is VideoResolution other && Equals(other);
 

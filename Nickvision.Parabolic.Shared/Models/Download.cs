@@ -405,7 +405,7 @@ public partial class Download : IDisposable
             }
             formatString += Options.AudioFormat switch
             {
-                var f when f == Format.BestAudio => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() ? "bestaudio[acodec!=opus]" : "bestaudio",
+                var f when f == Format.BestAudio => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var f when f == Format.WorstAudio => "worstaudio",
                 _ => Options.AudioFormat.Id
             };
