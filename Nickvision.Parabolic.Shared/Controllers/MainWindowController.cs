@@ -38,6 +38,8 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Improved the speed of subtitle downloads for non YouTube sites
+            - Fixed an issue where Parabolic crashed when discovering some media
             - Fixed an issue where Parabolic crashed if some DBus services were unavailable on Linux
             - Fixed an issue where Parabolic was unable to open on Windows
             - Fixed an issue where Parabolic did not update to arm64 binaries correctly on Windows
@@ -337,7 +339,8 @@ public class MainWindowController : IDisposable
         extraInformation += $"\ndeno: {(!string.IsNullOrEmpty(denoVersion) ? denoVersion.Substring(denoVersion.IndexOf("deno ") + 5, denoVersion.IndexOf('\n') - 5) : "not found")}";
         extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";
         extraInformation += $"\naria2: {(!string.IsNullOrEmpty(ariaVersion) ? ariaVersion.Substring(ariaVersion.IndexOf("aria2 version") + 14, ariaVersion.IndexOf('\n') - 14) : "not found")}";
-        extraInformation += $"\n\n{await _services.Get<IJsonFileService>()!.LoadAsync<Configuration>()}";
+        extraInformation += $"\n\n{await _services.Get<IJsonFileService>()!.LoadAsync<Configuration>(Configuration.Key)}";
+        extraInformation += $"\n\n{await _services.Get<IJsonFileService>()!.LoadAsync<PreviousDownloadOptions>(PreviousDownloadOptions.Key)}";
         return Desktop.System.Environment.GetDebugInformation(AppInfo, extraInformation);
     }
 

@@ -452,8 +452,12 @@ public class AddDownloadDialog : Adw.Dialog
         if (e.Pspec.GetName() == "selected-item")
         {
             var selectedFileType = _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected];
-            _singleVideoFormatRow!.Selected = (uint)_discoveryContext.VideoFormats.IndexOf(_discoveryContext.VideoFormats.First(x => x.Value.Id == _controller.PreviousDownloadOptions.VideoFormatIds[selectedFileType.Value]));
-            _singleAudioFormatRow!.Selected = (uint)_discoveryContext.AudioFormats.IndexOf(_discoveryContext.AudioFormats.First(x => x.Value.Id == _controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]));
+            var foundVideoFormat = _discoveryContext.VideoFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousDownloadOptions.VideoFormatIds[selectedFileType.Value]);
+            var foundAudioFormat = _discoveryContext.AudioFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]);
+            var foundVideoFormatIndex = foundVideoFormat is null ? -1 : _discoveryContext.VideoFormats.IndexOf(foundVideoFormat);
+            var foundAudioFormatIndex = foundAudioFormat is null ? -1 : _discoveryContext.AudioFormats.IndexOf(foundAudioFormat);
+            _singleVideoFormatRow!.Selected = foundVideoFormatIndex == -1 ? 0 : (uint)foundVideoFormatIndex;
+            _singleAudioFormatRow!.Selected = foundAudioFormatIndex == -1 ? 0 : (uint)foundAudioFormatIndex;
         }
     }
 
