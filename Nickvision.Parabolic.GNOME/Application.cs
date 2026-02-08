@@ -3,16 +3,31 @@ using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Nickvision.Parabolic.GNOME;
 
-public class Application
+public partial class Application
 {
     private string[] _args;
     private MainWindowController _controller;
     private Adw.Application _application;
     private Gio.Resource _resource;
     private MainWindow? _mainWindow;
+
+    public delegate void OpenCallback(nint application, nint[] files, int n_files, nint hint, nint data);
+#if WINDOWS
+    [LibraryImport("libgobject-2.0-0.dll", StringMarshalling = StringMarshalling.Utf8)]
+#else
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+#endif
+    private static partial ulong g_signal_connect_data(nint instance, string signal, OpenCallback callback, nint data, nint destroy_data, int flags);
+#if WINDOWS
+    [LibraryImport("libgio-2.0-0.dll", StringMarshalling = StringMarshalling.Utf8)]
+#else
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+#endif
+    private static partial string g_file_get_uri(nint file);
 
     public Application(string[] args)
     {
@@ -33,7 +48,7 @@ public class Application
         }
         _application.OnStartup += Application_OnStartup;
         _application.OnActivate += Application_OnActivate;
-        _application.OnOpen += Application_OnOpen;
+        g_signal_connect_data(_application.Handle.DangerousGetHandle(), "open", Application_OnOpen, IntPtr.Zero, IntPtr.Zero, 0);
     }
 
     public int Run() => _application.RunWithSynchronizationContext(_args);
@@ -61,24 +76,25 @@ public class Application
         }
     }
 
-    private async void Application_OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs args)
+    private void Application_OnOpen(nint application, nint[] files, int n_files, nint hint, nint data)
     {
-        if (args.NFiles < 1)
+        if (n_files < 1)
         {
             return;
         }
-        var url = args.Files[0].GetUri();
-        if (!url.StartsWith("parabolic://"))
+        try
         {
-            return;
+            var url = g_file_get_uri(files[0]);
+            if (!url.StartsWith("parabolic://"))
+            {
+                return;
+            }
+            if (Uri.TryCreate(url.Substring(12), UriKind.Absolute, out var uri))
+            {
+                _controller.UrlFromArgs = uri;
+            }
         }
-        if (Uri.TryCreate(url.Substring(12), UriKind.Absolute, out var uri))
-        {
-            _controller.UrlFromArgs = uri;
-        }
-        if (_mainWindow is not null)
-        {
-            await _mainWindow.PresentAsync();
-        }
+        catch { }
+        _application.Activate();
     }
 }

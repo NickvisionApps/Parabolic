@@ -38,6 +38,7 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Improved sorting of formats in the add download dialog
             - Improved the speed of subtitle downloads for non YouTube sites
             - Fixed an issue where Parabolic crashed when discovering some media
             - Fixed an issue where discovering playlists would fail if any media if some were unavailable
