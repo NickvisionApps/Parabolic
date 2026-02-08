@@ -234,7 +234,7 @@ public class AddDownloadDialog : Adw.Dialog
         _cancellationTokenSource?.Dispose();
     }
 
-    private void UrlRow_OnChanged(Gtk.Editable sender, EventArgs e) => _discoverUrlButton!.Sensitive = Uri.TryCreate(_urlRow!.Text_, UriKind.Absolute, out var _);
+    private void UrlRow_OnChanged(Gtk.Editable sender, EventArgs e) => _discoverUrlButton!.Sensitive = !(_urlRow!.Text_?.StartsWith("//") ?? false) && Uri.TryCreate(_urlRow!.Text_, UriKind.Absolute, out var _);
 
     private async void SelectBathFileRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
     {

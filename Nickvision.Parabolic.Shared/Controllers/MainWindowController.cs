@@ -51,7 +51,12 @@ public class MainWindowController : IDisposable
         UrlFromArgs = null;
         for (var i = 1; i < args.Length; i++)
         {
-            if (Uri.TryCreate(args[i].Trim(), UriKind.Absolute, out var url))
+            var urlText = args[i].Trim();
+            if(urlText.StartsWith("parabolic://"))
+            {
+                urlText = urlText.Replace("parabolic://", "https://");
+            }
+            if (Uri.TryCreate(urlText, UriKind.Absolute, out var url))
             {
                 UrlFromArgs = url;
                 break;

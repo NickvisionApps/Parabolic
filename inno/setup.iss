@@ -51,7 +51,6 @@ Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
 CloseApplications=yes
-ChangesEnvironment=yes
 
 [Languages]
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
