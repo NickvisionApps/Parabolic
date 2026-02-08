@@ -23,7 +23,16 @@
 		<DefineConstants>OS_MAC</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage" Version="18.3.2" />
+	  <PackageReference Update="Microsoft.Testing.Extensions.CodeCoverage" Version="18.4.1" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Testing.Extensions.TrxReport" Version="2.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="MSTest.TestAdapter" Version="4.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Update="MSTest.TestFramework" Version="4.1.0" />
 	</ItemGroup>
 
 </Project>
