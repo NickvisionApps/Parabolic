@@ -289,7 +289,7 @@ public class AddDownloadDialog : Adw.Dialog
             Close();
             return;
         }
-        ContentHeight = 500;
+        ContentHeight = 550;
         _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
         if (_discoveryContext.Items.Count == 1)
         {
