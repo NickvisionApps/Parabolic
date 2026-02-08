@@ -12,6 +12,7 @@ public class Configuration
 
     public static readonly string Key;
 
+    public Theme Theme { get; set; }
     public bool AllowPreviewUpdates { get; set; }
     public string TranslationLanguage { get; set; }
     public WindowGeometry WindowGeometry { get; set; }
@@ -55,7 +56,7 @@ public class Configuration
 
     public Configuration()
     {
-        Theme = Models.Theme.System;
+        Theme = Theme.System;
         TranslationLanguage = string.Empty;
         WindowGeometry = new WindowGeometry();
         AllowPreviewUpdates = false;
@@ -87,13 +88,6 @@ public class Configuration
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
-    }
-
-    public Theme? Theme
-    {
-        get => field ?? Models.Theme.System;
-
-        set => field = value ?? Models.Theme.System;
     }
 
     [JsonIgnore]
