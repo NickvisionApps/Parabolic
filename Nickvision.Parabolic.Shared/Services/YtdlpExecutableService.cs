@@ -33,7 +33,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         }
         else
         {
-            _bundledVersion = new AppVersion("2026.01.31");
+            _bundledVersion = new AppVersion("2026.02.04");
         }
         if (OperatingSystem.IsWindows())
         {

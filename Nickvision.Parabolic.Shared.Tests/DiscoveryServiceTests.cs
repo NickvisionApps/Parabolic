@@ -26,7 +26,7 @@ public sealed class DiscoveryServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.discovery.tests", "Nickvision Parabolic Discovery Tests", "Parabolic Discovery Tests")
         {
-            Version = new AppVersion("2026.2.1")
+            Version = new AppVersion("2026.2.2")
         };
         _batchTestFilePath = Path.Combine(UserDirectories.Cache, "batch-test.txt");
         _httpClient = new HttpClient();

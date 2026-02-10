@@ -33,20 +33,21 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.1");
+        _latestAppVersion = new AppVersion("2026.2.2");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
             Changelog = """
-            - Improved sorting of formats in the add download dialog
-            - Improved the speed of subtitle downloads for non YouTube sites
-            - Fixed an issue where Parabolic crashed when discovering some media
-            - Fixed an issue where discovering playlists would fail if any media if some were unavailable
-            - Fixed an issue where downloads would fail with a requested format is not available error
-            - Fixed an issue where Parabolic did not receive URLs from the browser extension correctly
-            - Fixed an issue where Parabolic crashed if some DBus services were unavailable on Linux
-            - Fixed an issue where Parabolic was unable to open on Windows
-            - Fixed an issue where Parabolic did not update to arm64 binaries correctly on Windows
+            - Added the ability to see audio language of video formats if applicable
+            - Improved display of yt-dlp progress
+            - Fixed an issue where yt-dlp errors weren't reported correctly
+            - Fixed an issue where source data was not removed for playlist media
+            - Fixed an issue where track numbers were starting at 0 instead of 1 for playlists
+            - Fixed an issue where the browser extension was unable to open Parabolic on Linux
+            - Fixed an issue where aria2c progress did not show on Linux
+            - Fixed an issue where some settings did not save on Linux
+            - Fixed an issue where Parabolic would not close on Linux
+            - Fixed an issue where Parabolic did not open on Windows
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
@@ -56,7 +57,7 @@ public class MainWindowController : IDisposable
         for (var i = 1; i < args.Length; i++)
         {
             var urlText = args[i].Trim();
-            if(urlText.StartsWith("parabolic://"))
+            if (urlText.StartsWith("parabolic://"))
             {
                 urlText = urlText.Replace("parabolic://", "https://");
             }

@@ -158,7 +158,7 @@ public partial class Download : IDisposable
             "--progress-template",
             "[Parabolic] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
             "--progress-delta",
-            ".25",
+            ".75",
             "-t",
             "sleep",
             "--no-mtime",
@@ -288,9 +288,9 @@ public partial class Download : IDisposable
             if (downloader.RemoveSourceData)
             {
                 arguments.Add("--postprocessor-args");
-                arguments.Add("Metadata+ffmpeg:-metadata comment= -metadata description= -metadata synopsis= -metadata purl= ");
+                arguments.Add($"Metadata+ffmpeg:-metadata comment= -metadata description= -metadata synopsis= -metadata purl= {(Options.PlaylistPosition != -1 ? $"-metadata track={Options.PlaylistPosition}" : string.Empty)}");
             }
-            if (Options.PlaylistPosition != -1)
+            else if (Options.PlaylistPosition != -1)
             {
                 arguments.Add("--postprocessor-args");
                 arguments.Add($"Metadata+ffmpeg:-metadata track={Options.PlaylistPosition}");
@@ -323,7 +323,7 @@ public partial class Download : IDisposable
             arguments.Add("--downloader");
             arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");
             arguments.Add("--downloader-args");
-            arguments.Add($"aria2c:--summary-interval={(OperatingSystem.IsWindows() ? "0" : "1")} --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
+            arguments.Add($"aria2c:--summary-interval=0 --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
             arguments.Add("--concurrent-fragments");
             arguments.Add("8");
         }
@@ -371,14 +371,21 @@ public partial class Download : IDisposable
             }
         }
         var formatString = string.Empty;
-        if (Options.VideoFormat is not null && Options.VideoFormat != Format.NoneVideo && !Options.FileType.IsAudio)
+        if (Options.VideoFormat is not null && Options.VideoFormat != Format.NoneVideo)
         {
-            formatString += Options.VideoFormat switch
+            if (!Options.FileType.IsAudio)
             {
-                var f when f == Format.BestVideo => "bestvideo*",
-                var f when f == Format.WorstVideo => "worstvideo*",
-                _ => Options.VideoFormat.Id
-            };
+                formatString += Options.VideoFormat switch
+                {
+                    var f when f == Format.BestVideo => "bestvideo*",
+                    var f when f == Format.WorstVideo => "worstvideo*",
+                    _ => Options.VideoFormat.Id
+                };
+            }
+            else if (Options.VideoFormat.ContainsAudio && (Options.AudioFormat is null || Options.AudioFormat == Format.NoneAudio))
+            {
+                formatString += Options.VideoFormat.Id;
+            }
         }
         else if (Options.VideoResolution is not null && !Options.FileType.IsAudio)
         {
@@ -438,7 +445,7 @@ public partial class Download : IDisposable
             languages += "-live_chat";
             arguments.Add("--sub-langs");
             arguments.Add(languages);
-            if(Options.Url.Host.Contains("youtube"))
+            if (Options.Url.Host.Contains("youtube"))
             {
                 arguments.Add("--sleep-subtitles");
                 arguments.Add("30");
@@ -631,7 +638,7 @@ public partial class Download : IDisposable
                 else
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, seconds, 0));
-                    while (seconds > 1)
+                    while (seconds >= 1)
                     {
                         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NegativeInfinity, Math.Floor(seconds--), 0));
                         await Task.Delay(1000);

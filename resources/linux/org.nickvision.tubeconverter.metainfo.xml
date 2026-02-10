@@ -60,17 +60,18 @@
     <display_length compare="ge">360</display_length>
   </requires>
   <releases>
-    <release version="2026.2.1" date="2026-02-07">
+    <release version="2026.2.2" date="2026-02-09">
       <description translate="no">
-        <p>- Improved sorting of formats in the add download dialog</p>
-        <p>- Improved the speed of subtitle downloads for non YouTube sites</p>
-        <p>- Fixed an issue where Parabolic crashed when discovering some media</p>
-        <p>- Fixed an issue where discovering playlists would fail if any media if some were unavailable</p>
-        <p>- Fixed an issue where downloads would fail with a requested format is not available error</p>
-        <p>- Fixed an issue where Parabolic did not receive URLs from the browser extension correctly</p>
-        <p>- Fixed an issue where Parabolic crashed if some DBus services were unavailable on Linux</p>
-        <p>- Fixed an issue where Parabolic was unable to open on Windows</p>
-        <p>- Fixed an issue where Parabolic did not update to arm64 binaries correctly on Windows</p>
+        <p>- Added the ability to see audio language of video formats if applicable</p>
+        <p>- Improved display of yt-dlp progress</p>
+        <p>- Fixed an issue where yt-dlp errors weren't reported correctly</p>
+        <p>- Fixed an issue where source data was not removed for playlist media</p>
+        <p>- Fixed an issue where track numbers were starting at 0 instead of 1 for playlists</p>
+        <p>- Fixed an issue where the browser extension was unable to open Parabolic on Linux</p>
+        <p>- Fixed an issue where aria2c progress did not show on Linux</p>
+        <p>- Fixed an issue where some settings did not save on Linux</p>
+        <p>- Fixed an issue where Parabolic would not close on Linux</p>
+        <p>- Fixed an issue where Parabolic did not open on Windows</p>
       </description>
     </release>
   </releases>

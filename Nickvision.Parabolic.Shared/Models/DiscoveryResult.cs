@@ -42,7 +42,7 @@ public class DiscoveryResult
             var position = 0;
             foreach (var mediaObject in entriesProperty.EnumerateArray())
             {
-                if(mediaObject.ValueKind != JsonValueKind.Object)
+                if (mediaObject.ValueKind != JsonValueKind.Object)
                 {
                     continue;
                 }
@@ -66,9 +66,8 @@ public class DiscoveryResult
             Media.EnsureCapacity(Media.Count + urlInfo.Media.Count);
             foreach (var media in urlInfo.Media)
             {
-                media.PlaylistPosition = position;
+                media.PlaylistPosition = ++position;
                 Media.Add(media);
-                position++;
             }
         }
     }

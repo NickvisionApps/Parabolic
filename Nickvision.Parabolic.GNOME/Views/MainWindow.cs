@@ -221,6 +221,7 @@ public class MainWindow : Adw.ApplicationWindow
                     Close();
                 }
             };
+            confirmDialog.Present(this);
             return true;
         }
         GetDefaultSize(out int width, out int height);
