@@ -40,6 +40,7 @@ public class MainWindowController : IDisposable
             Changelog = """
             - Fixed an issue where yt-dlp errors weren't reported correctly
             - Fixed an issue where the browser extension was unable to open Parabolic on Linux
+            - Fixed an issue where aria2c progress did not show on Linux
             - Fixed an issue where some settings did not save on Linux
             - Fixed an issue where Parabolic did not open on Windows
             """,

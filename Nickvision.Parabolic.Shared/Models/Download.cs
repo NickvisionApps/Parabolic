@@ -158,7 +158,7 @@ public partial class Download : IDisposable
             "--progress-template",
             "[Parabolic] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
             "--progress-delta",
-            ".25",
+            ".75",
             "-t",
             "sleep",
             "--no-mtime",
@@ -323,7 +323,7 @@ public partial class Download : IDisposable
             arguments.Add("--downloader");
             arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");
             arguments.Add("--downloader-args");
-            arguments.Add($"aria2c:--summary-interval={(OperatingSystem.IsWindows() ? "0" : "1")} --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
+            arguments.Add($"aria2c:--summary-interval=0 --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
             arguments.Add("--concurrent-fragments");
             arguments.Add("8");
         }
