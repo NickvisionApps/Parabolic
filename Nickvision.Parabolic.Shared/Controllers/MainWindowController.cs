@@ -38,6 +38,7 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Added the ability to see audio language of video formats if applicable
             - Improved display of yt-dlp progress
             - Fixed an issue where yt-dlp errors weren't reported correctly
             - Fixed an issue where source data was not removed for playlist media
@@ -56,7 +57,7 @@ public class MainWindowController : IDisposable
         for (var i = 1; i < args.Length; i++)
         {
             var urlText = args[i].Trim();
-            if(urlText.StartsWith("parabolic://"))
+            if (urlText.StartsWith("parabolic://"))
             {
                 urlText = urlText.Replace("parabolic://", "https://");
             }

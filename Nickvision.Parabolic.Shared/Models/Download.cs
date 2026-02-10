@@ -371,14 +371,21 @@ public partial class Download : IDisposable
             }
         }
         var formatString = string.Empty;
-        if (Options.VideoFormat is not null && Options.VideoFormat != Format.NoneVideo && !Options.FileType.IsAudio)
+        if (Options.VideoFormat is not null && Options.VideoFormat != Format.NoneVideo)
         {
-            formatString += Options.VideoFormat switch
+            if (!Options.FileType.IsAudio)
             {
-                var f when f == Format.BestVideo => "bestvideo*",
-                var f when f == Format.WorstVideo => "worstvideo*",
-                _ => Options.VideoFormat.Id
-            };
+                formatString += Options.VideoFormat switch
+                {
+                    var f when f == Format.BestVideo => "bestvideo*",
+                    var f when f == Format.WorstVideo => "worstvideo*",
+                    _ => Options.VideoFormat.Id
+                };
+            }
+            else if (Options.VideoFormat.ContainsAudio && (Options.AudioFormat is null || Options.AudioFormat == Format.NoneAudio))
+            {
+                formatString += Options.VideoFormat.Id;
+            }
         }
         else if (Options.VideoResolution is not null && !Options.FileType.IsAudio)
         {
@@ -438,7 +445,7 @@ public partial class Download : IDisposable
             languages += "-live_chat";
             arguments.Add("--sub-langs");
             arguments.Add(languages);
-            if(Options.Url.Host.Contains("youtube"))
+            if (Options.Url.Host.Contains("youtube"))
             {
                 arguments.Add("--sleep-subtitles");
                 arguments.Add("30");

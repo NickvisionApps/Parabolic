@@ -47,7 +47,7 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
 
     public int CompareTo(VideoResolution? other)
     {
-        if(other is null)
+        if (other is null)
         {
             return 1;
         }

@@ -42,7 +42,7 @@ public class DiscoveryResult
             var position = 0;
             foreach (var mediaObject in entriesProperty.EnumerateArray())
             {
-                if(mediaObject.ValueKind != JsonValueKind.Object)
+                if (mediaObject.ValueKind != JsonValueKind.Object)
                 {
                     continue;
                 }

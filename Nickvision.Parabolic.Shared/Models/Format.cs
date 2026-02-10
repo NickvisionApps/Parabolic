@@ -28,6 +28,8 @@ public class Format : IComparable<Format>, IEquatable<Format>
     public AudioCodec? AudioCodec { get; }
     public VideoResolution? VideoResolution { get; }
 
+    public bool ContainsAudio => Type == MediaType.Audio || Bitrate.HasValue || !string.IsNullOrEmpty(AudioLanguage) || HasAudioDescription || AudioCodec.HasValue;
+
     static Format()
     {
         Separator = " | ";
@@ -89,69 +91,50 @@ public class Format : IComparable<Format>, IEquatable<Format>
         if (resolution == "audio only")
         {
             Type = MediaType.Audio;
-            var language = string.Empty;
-            if (ytdlp.TryGetProperty("language", out var languageProperty) && languageProperty.ValueKind != JsonValueKind.Null)
-            {
-                language = languageProperty.GetString() ?? string.Empty;
-            }
-            if (!string.IsNullOrEmpty(language))
-            {
-                AudioLanguage = language;
-                if (Id.ToLower().Contains("audiodesc"))
-                {
-                    HasAudioDescription = true;
-                }
-            }
-            if (ytdlp.TryGetProperty("acodec", out var audioCodecProperty) && audioCodecProperty.ValueKind != JsonValueKind.Null)
-            {
-                AudioCodec = (audioCodecProperty.GetString()?.ToLower() ?? string.Empty) switch
-                {
-                    var x when x.Contains("flac") || x.Contains("alac") => Models.AudioCodec.FLAC,
-                    var x when x.Contains("wav") || x.Contains("aiff") => Models.AudioCodec.WAV,
-                    var x when x.Contains("opus") => Models.AudioCodec.OPUS,
-                    var x when x.Contains("aac") => Models.AudioCodec.AAC,
-                    var x when x.Contains("mp4a") => Models.AudioCodec.MP4A,
-                    var x when x.Contains("mp3") => Models.AudioCodec.MP3,
-                    "none" => null,
-                    _ => null
-                };
-            }
-        }
-        else if (note == "storyboard")
-        {
-            Type = MediaType.Image;
-            VideoResolution = VideoResolution.Parse(resolution, translator);
         }
         else
         {
-            Type = MediaType.Video;
-            if (ytdlp.TryGetProperty("vcodec", out var videoCodecProprety) && videoCodecProprety.ValueKind != JsonValueKind.Null)
-            {
-                VideoCodec = (videoCodecProprety.GetString()?.ToLower() ?? string.Empty) switch
-                {
-                    var x when x.Contains("vp09") || x.Contains("vp9") => Models.VideoCodec.VP9,
-                    var x when x.Contains("av01") => Models.VideoCodec.AV01,
-                    var x when x.Contains("avc1") || x.Contains("h264") => Models.VideoCodec.H264,
-                    var x when x.Contains("hevc") || x.Contains("h265") => Models.VideoCodec.H265,
-                    "none" => null,
-                    _ => null
-                };
-            }
-            if (ytdlp.TryGetProperty("acodec", out var audioCodecProperty) && audioCodecProperty.ValueKind != JsonValueKind.Null)
-            {
-                AudioCodec = (audioCodecProperty.GetString()?.ToLower() ?? string.Empty) switch
-                {
-                    var x when x.Contains("flac") || x.Contains("alac") => Models.AudioCodec.FLAC,
-                    var x when x.Contains("wav") || x.Contains("aiff") => Models.AudioCodec.WAV,
-                    var x when x.Contains("opus") => Models.AudioCodec.OPUS,
-                    var x when x.Contains("aac") => Models.AudioCodec.AAC,
-                    var x when x.Contains("mp4a") => Models.AudioCodec.MP4A,
-                    var x when x.Contains("mp3") => Models.AudioCodec.MP3,
-                    "none" => null,
-                    _ => null
-                };
-            }
+            Type = note == "storyboard" ? MediaType.Image : MediaType.Video;
             VideoResolution = VideoResolution.Parse(resolution, translator);
+        }
+        var language = string.Empty;
+        if (ytdlp.TryGetProperty("language", out var languageProperty) && languageProperty.ValueKind != JsonValueKind.Null)
+        {
+            language = languageProperty.GetString() ?? string.Empty;
+        }
+        if (!string.IsNullOrEmpty(language))
+        {
+            AudioLanguage = language;
+            if (Id.ToLower().Contains("audiodesc"))
+            {
+                HasAudioDescription = true;
+            }
+        }
+        if (ytdlp.TryGetProperty("vcodec", out var videoCodecProprety) && videoCodecProprety.ValueKind != JsonValueKind.Null)
+        {
+            VideoCodec = (videoCodecProprety.GetString()?.ToLower() ?? string.Empty) switch
+            {
+                var x when x.Contains("vp09") || x.Contains("vp9") => Models.VideoCodec.VP9,
+                var x when x.Contains("av01") => Models.VideoCodec.AV01,
+                var x when x.Contains("avc1") || x.Contains("h264") => Models.VideoCodec.H264,
+                var x when x.Contains("hevc") || x.Contains("h265") => Models.VideoCodec.H265,
+                "none" => null,
+                _ => null
+            };
+        }
+        if (ytdlp.TryGetProperty("acodec", out var audioCodecProperty) && audioCodecProperty.ValueKind != JsonValueKind.Null)
+        {
+            AudioCodec = (audioCodecProperty.GetString()?.ToLower() ?? string.Empty) switch
+            {
+                var x when x.Contains("flac") || x.Contains("alac") => Models.AudioCodec.FLAC,
+                var x when x.Contains("wav") || x.Contains("aiff") => Models.AudioCodec.WAV,
+                var x when x.Contains("opus") => Models.AudioCodec.OPUS,
+                var x when x.Contains("aac") => Models.AudioCodec.AAC,
+                var x when x.Contains("mp4a") => Models.AudioCodec.MP4A,
+                var x when x.Contains("mp3") => Models.AudioCodec.MP3,
+                "none" => null,
+                _ => null
+            };
         }
     }
 
@@ -178,8 +161,45 @@ public class Format : IComparable<Format>, IEquatable<Format>
             return 1;
         }
         var resolutionCompare = VideoResolution?.CompareTo(other.VideoResolution) ?? 0;
-        var bitrateComprae = Bitrate.HasValue && other.Bitrate.HasValue ? Bitrate.Value.CompareTo(other.Bitrate.Value) : 0;
-        return resolutionCompare != 0 ? resolutionCompare : (bitrateComprae != 0 ? bitrateComprae : Id.CompareTo(other.Id));
+        var languageCompare = string.Compare(AudioLanguage, other.AudioLanguage, StringComparison.OrdinalIgnoreCase);
+        var bitrateCompare = Bitrate.HasValue && other.Bitrate.HasValue ? Bitrate.Value.CompareTo(other.Bitrate.Value) : 0;
+        if (resolutionCompare != 0)
+        {
+            return resolutionCompare;
+        }
+        else
+        {
+            if (Type == MediaType.Video)
+            {
+                if (languageCompare != 0)
+                {
+                    return languageCompare;
+                }
+                else if (bitrateCompare != 0)
+                {
+                    return bitrateCompare;
+                }
+                else
+                {
+                    return Id.CompareTo(other.Id);
+                }
+            }
+            else
+            {
+                if (bitrateCompare != 0)
+                {
+                    return bitrateCompare;
+                }
+                else if (languageCompare != 0)
+                {
+                    return languageCompare;
+                }
+                else
+                {
+                    return Id.CompareTo(other.Id);
+                }
+            }
+        }
     }
 
     public override bool Equals(object? obj) => obj is Format other && Equals(other);
@@ -202,6 +222,14 @@ public class Format : IComparable<Format>, IEquatable<Format>
             if (Bitrate.HasValue)
             {
                 result += $"{Separator}{Bitrate.Value}k";
+            }
+            if (!string.IsNullOrEmpty(AudioLanguage))
+            {
+                result += $"{Separator}{AudioLanguage}";
+                if (HasAudioDescription)
+                {
+                    result += $" ({translator?._("Audio Description") ?? "Audio Description"})";
+                }
             }
             if (VideoCodec.HasValue)
             {

@@ -146,7 +146,7 @@ public class DiscoveryService : IDiscoveryService
         }
         cancellationToken.ThrowIfCancellationRequested();
         using var json = JsonDocument.Parse(output);
-        if(json.RootElement.ValueKind != JsonValueKind.Object)
+        if (json.RootElement.ValueKind != JsonValueKind.Object)
         {
             throw new YtdlpException($"Unexpected output format from yt-dlp: {output}");
         }
