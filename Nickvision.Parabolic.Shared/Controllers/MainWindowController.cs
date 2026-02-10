@@ -38,7 +38,7 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
-            
+            - Fixed an issue where yt-dlp errors weren't reported correctly
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
