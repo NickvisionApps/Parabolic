@@ -631,7 +631,7 @@ public partial class Download : IDisposable
                 else
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, seconds, 0));
-                    while (seconds > 1)
+                    while (seconds >= 1)
                     {
                         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NegativeInfinity, Math.Floor(seconds--), 0));
                         await Task.Delay(1000);
