@@ -66,9 +66,8 @@ public class DiscoveryResult
             Media.EnsureCapacity(Media.Count + urlInfo.Media.Count);
             foreach (var media in urlInfo.Media)
             {
-                media.PlaylistPosition = position;
+                media.PlaylistPosition = ++position;
                 Media.Add(media);
-                position++;
             }
         }
     }

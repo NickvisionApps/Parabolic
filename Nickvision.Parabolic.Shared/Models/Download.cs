@@ -288,9 +288,9 @@ public partial class Download : IDisposable
             if (downloader.RemoveSourceData)
             {
                 arguments.Add("--postprocessor-args");
-                arguments.Add("Metadata+ffmpeg:-metadata comment= -metadata description= -metadata synopsis= -metadata purl= ");
+                arguments.Add($"Metadata+ffmpeg:-metadata comment= -metadata description= -metadata synopsis= -metadata purl= {(Options.PlaylistPosition != -1 ? $"-metadata track={Options.PlaylistPosition}" : string.Empty)}");
             }
-            if (Options.PlaylistPosition != -1)
+            else if (Options.PlaylistPosition != -1)
             {
                 arguments.Add("--postprocessor-args");
                 arguments.Add($"Metadata+ffmpeg:-metadata track={Options.PlaylistPosition}");
