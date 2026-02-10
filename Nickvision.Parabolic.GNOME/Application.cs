@@ -9,10 +9,11 @@ namespace Nickvision.Parabolic.GNOME;
 
 public partial class Application
 {
-    private string[] _args;
-    private MainWindowController _controller;
-    private Adw.Application _application;
-    private Gio.Resource _resource;
+    private readonly string[] _args;
+    private readonly MainWindowController _controller;
+    private readonly Adw.Application _application;
+    private readonly Gio.Resource _resource;
+    private readonly OpenCallback _openCallback;
     private MainWindow? _mainWindow;
 
     public delegate void OpenCallback(nint application, nint[] files, int n_files, nint hint, nint data);
@@ -46,9 +47,10 @@ public partial class Application
         {
             throw new Exception($"Failed to load GResource file: {resourceFilePath}", ex);
         }
+        _openCallback = Application_OnOpen;
         _application.OnStartup += Application_OnStartup;
         _application.OnActivate += Application_OnActivate;
-        g_signal_connect_data(_application.Handle.DangerousGetHandle(), "open", Application_OnOpen, IntPtr.Zero, IntPtr.Zero, 0);
+        g_signal_connect_data(_application.Handle.DangerousGetHandle(), "open", _openCallback, IntPtr.Zero, IntPtr.Zero, 0);
     }
 
     public int Run() => _application.RunWithSynchronizationContext(_args);
