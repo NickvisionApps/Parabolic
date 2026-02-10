@@ -39,6 +39,7 @@ public class MainWindowController : IDisposable
             Version = _latestAppVersion,
             Changelog = """
             - Fixed an issue where yt-dlp errors weren't reported correctly
+            - Fixed an issue where some settings did not save on Linux
             - Fixed an issue where Parabolic did not open on Windows
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
