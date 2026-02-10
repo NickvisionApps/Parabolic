@@ -140,9 +140,9 @@ public class DiscoveryService : IDiscoveryService
         await process.WaitForExitAsync(cancellationToken);
         var output = await outputTask;
         var error = await errorTask;
-        if (process.ExitCode != 0 && string.IsNullOrEmpty(output))
+        if (process.ExitCode != 0 && (string.IsNullOrEmpty(output) || output.StartsWith("null")))
         {
-            throw new Exception(error);
+            throw new YtdlpException(error);
         }
         cancellationToken.ThrowIfCancellationRequested();
         try
@@ -176,7 +176,7 @@ public class DiscoveryService : IDiscoveryService
         }
         catch(JsonException e)
         {
-            throw new Exception(error, e);
+            throw new YtdlpException(error, e);
         }
     }
 
