@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-09 22:42-0500\n"
-"PO-Revision-Date: 2026-02-09 09:09+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2026-02-11 01:04+0000\n"
+"Last-Translator: Jani Kinnunen <janikinnunen340@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/fi/>\n"
 "Language: fi\n"
@@ -80,6 +80,8 @@ msgid ""
 "Media will be downloaded based off of previously configured options and "
 "sensible defaults. Options will not be shown"
 msgstr ""
+"Media ladataan aiemmin määritettyjen asetusten ja järkevien oletusasetusten "
+"perusteella. Asetuksia ei näytetä."
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:89
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:160
@@ -149,10 +151,9 @@ msgstr "Tiedoston tyyppi"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:183
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:331
-#, fuzzy
 msgid "Generic types do not support embedding thumbnails and subtitles."
 msgstr ""
-"Mikäli tiedostotyyppi ei tue upottamista, asetetaan pikkukuva erilliseen "
+"Mikäli tiedostotyyppi ei tue upottamista, pikkukuva tallennetaan erilliseen "
 "kuvatiedostoon."
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:187
@@ -240,15 +241,13 @@ msgstr "Poista historiasta"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:445
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:101
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:136
-#, fuzzy
 msgid "Post Processor Argument"
-msgstr "Jälkikäsittely käynnissä"
+msgstr "Jälkikäsittelijän parametri"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:249
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:446
-#, fuzzy
 msgid "Arguments are configurable in Preferences"
-msgstr "(Muokattavissa asetuksissa)"
+msgstr "(voidaan muokata asetuksissa)"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:253
 #: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
@@ -293,18 +292,19 @@ msgstr "Numerointi"
 msgid ""
 "Numbering will be applied to titles of selected items in succession on "
 "download"
-msgstr ""
+msgstr "Valittujen kohteiden nimiin lisätään juokseva numerointi ladattaessa."
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:363
-#, fuzzy
 msgid "Available Items"
-msgstr "Upota tekstitykset"
+msgstr "Saatavilla olevat kohteet"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:395
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:127
 msgid ""
 "Note: Some playlist items may not contain subtitles for a selected language."
 msgstr ""
+"Huom: Kaikissa soittolistan kohteissa ei välttämättä ole tekstityksiä "
+"valitulla kielellä."
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:429
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:128
@@ -359,7 +359,7 @@ msgstr "Historia"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:15
 msgid "Sort By"
-msgstr ""
+msgstr "Lajitteluperuste"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:23
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:35
@@ -374,7 +374,7 @@ msgstr "Vanhin"
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:36
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
 msgid "Save Length"
-msgstr ""
+msgstr "Tallenna pituus"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:47
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:51
@@ -438,7 +438,6 @@ msgstr "Tietoja - Parabolic"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:17
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
-#, fuzzy
 msgid "Stop All Remaining"
 msgstr "Pysäytä kaikki"
 
@@ -462,9 +461,8 @@ msgid "Main Menu"
 msgstr "Päävalikko"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:61
-#, fuzzy
 msgid "Updater"
-msgstr "Päivitä"
+msgstr "Päivittäjä"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:99
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
@@ -502,9 +500,8 @@ msgid "Completed"
 msgstr "Valmistunut"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:159
-#, fuzzy
 msgid "Manage Download"
-msgstr "Lataukset"
+msgstr "Latauksen hallinta"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:183
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
@@ -513,9 +510,8 @@ msgstr "Ei latauksia"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:184
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-#, fuzzy
 msgid "There are no downloads of this type"
-msgstr "Kaikkien latausten valmistuttua"
+msgstr "Tämän tyyppisiä latauksia ei ole."
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:15
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:30
@@ -837,7 +833,6 @@ msgid "Argument"
 msgstr "Argumentti"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:423
-#, fuzzy
 msgid "Post Processor"
 msgstr "Jälkikäsittelijä"
 
@@ -850,7 +845,7 @@ msgstr "Ota käyttöön"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:431
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:134
 msgid "Args"
-msgstr ""
+msgstr "Parametrit"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/ShortcutsDialog.blp:6
 msgctxt "Shortcut"
@@ -927,13 +922,13 @@ msgstr "Käsitellään"
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:133
 #, csharp-format
 msgid "Sleeping for {0}"
-msgstr ""
+msgstr "Odotetaan {0}"
 
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:164
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:139
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "{0}% Complete • {1} • {2} Remaining"
-msgstr "{} • {}"
+msgstr "{0} % valmiina • {1} • {2} jäljellä"
 
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:196
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:170
@@ -1069,17 +1064,17 @@ msgstr "Ymmärrän"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:179
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:148
-#, fuzzy
 msgid "Recover Downloads?"
-msgstr "Palautettiin {} lataus"
+msgstr "Palautetaanko lataukset?"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:179
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:149
-#, fuzzy
 msgid ""
 "There are downloads available to recover from when Parabolic crashed. Would "
 "you like to download them again?"
-msgstr "Latauksia on käynnissä. Oletko varma, että haluat poistua?"
+msgstr ""
+"Parabolicin kaatumisen vuoksi keskeytyneet lataukset voidaan palauttaa. "
+"Haluatko ladata ne uudelleen?"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:180
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:211
@@ -1103,10 +1098,9 @@ msgstr "Ei"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:210
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:181
-#, fuzzy
 msgid ""
 "There are downloads still in progress. Would you like to stop them and exit?"
-msgstr "Latauksia on käynnissä. Oletko varma, että haluat poistua?"
+msgstr "Latauksia on käynnissä. Haluatko keskeyttää ne ja sulkea ohjelman?"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:240
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:93
@@ -1158,11 +1152,12 @@ msgstr "Poistetaanko argumentti?"
 
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:333
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:223
-#, fuzzy
 msgid ""
 "Are you sure you want to delete this post-processor argument? This action is "
 "irreversible"
-msgstr "Oletko varma, että haluat poistaa tämän tunnistautumisen?"
+msgstr ""
+"Haluatko varmasti poistaa tämän jälkikäsittelijän parametrin? Poistoa ei voi "
+"perua."
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:47
 msgid "Use manual credential"
@@ -1179,15 +1174,15 @@ msgstr "Ei mitään"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:125
 msgid "An error occurred while adding playlist downloads"
-msgstr ""
+msgstr "Virhe soittolistan latauksia lisättäessä."
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:181
 msgid "An error occurred while adding the single download"
-msgstr ""
+msgstr "Virhe yksittäistä latausta lisättäessä."
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:197
 msgid "No media was found at the provided URL"
-msgstr ""
+msgstr "Annetusta URL-osoitteesta ei löytynyt mediaa."
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:226
 #: Nickvision.Parabolic.Shared/Models/Format.cs:283
@@ -1259,7 +1254,7 @@ msgstr "OGG (Ääni)"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:275
 msgid "An error occurred while discovering media"
-msgstr ""
+msgstr "Virhe mediaa haettaessa."
 
 #: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:34
 #, fuzzy
