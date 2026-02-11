@@ -20,6 +20,7 @@ public partial class Download : IDisposable
     private ITranslationService? _translator;
     private readonly StringBuilder _logBuilder;
     private Process? _process;
+    private bool _lastLineProgress;
 
     public int Id { get; }
     public DownloadOptions Options { get; }
@@ -42,6 +43,7 @@ public partial class Download : IDisposable
         _translator = translator;
         _logBuilder = new StringBuilder();
         _process = null;
+        _lastLineProgress = false;
         Id = _nextId++;
         Options = options;
         FilePath = Path.Combine(Options.SaveFolder, $"{Options.SaveFilename}{Options.FileType.DotExtension}");
@@ -156,7 +158,7 @@ public partial class Download : IDisposable
             "--progress",
             "--newline",
             "--progress-template",
-            "[Parabolic] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
+            "[Parabolic] Progress;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
             "--progress-delta",
             ".75",
             "-t",
@@ -323,7 +325,7 @@ public partial class Download : IDisposable
             arguments.Add("--downloader");
             arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");
             arguments.Add("--downloader-args");
-            arguments.Add($"aria2c:--summary-interval=0 --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
+            arguments.Add($"aria2c:--summary-interval={(OperatingSystem.IsWindows() ? "0" : "1")} --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
             arguments.Add("--concurrent-fragments");
             arguments.Add("8");
         }
@@ -575,8 +577,9 @@ public partial class Download : IDisposable
         _logBuilder.AppendLine(e.Data);
         try
         {
-            if (e.Data.StartsWith("[Parabolic]"))
+            if (e.Data.StartsWith("[Parabolic] Progress", StringComparison.InvariantCulture))
             {
+                _lastLineProgress = true;
                 var fields = e.Data.Split(';', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length != 7 || fields[1] == "NA")
                 {
@@ -595,8 +598,9 @@ public partial class Download : IDisposable
                         fields[6] == "NA" || fields[6] == "Unknown" ? -1 : int.Parse(fields[6])));
                 }
             }
-            else if (e.Data.StartsWith("[#"))
+            else if (e.Data.StartsWith("[#", StringComparison.InvariantCulture))
             {
+                _lastLineProgress = true;
                 var line = e.Data;
                 if (OperatingSystem.IsWindows())
                 {
@@ -628,8 +632,9 @@ public partial class Download : IDisposable
                     fields[3].Substring(3).AriaSizeToBytes(),
                     fields[4].Substring(4, fields[4].Length - 4 - 1).AriaEtaToSeconds()));
             }
-            else if (e.Data.StartsWith("[download] Sleeping"))
+            else if (e.Data.StartsWith("[download] Sleeping", StringComparison.InvariantCulture))
             {
+                _lastLineProgress = true;
                 var fields = e.Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length < 3 || !double.TryParse(fields[2], out var seconds))
                 {
@@ -646,9 +651,13 @@ public partial class Download : IDisposable
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
                 }
             }
-            else
+            else if(!_lastLineProgress)
             {
                 ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
+            }
+            else
+            {
+                _lastLineProgress = false;
             }
         }
         catch

@@ -37,6 +37,7 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Fixed an issue where yt-dlp progress was not always displayed correctly
             - Fixed an issue where Parabolic wouldn't open on Linux
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
