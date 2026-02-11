@@ -634,7 +634,6 @@ public partial class Download : IDisposable
             }
             else if (e.Data.StartsWith("[download] Sleeping", StringComparison.InvariantCulture))
             {
-                _lastLineProgress = true;
                 var fields = e.Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length < 3 || !double.TryParse(fields[2], out var seconds))
                 {
