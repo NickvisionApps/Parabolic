@@ -24,7 +24,6 @@ public class MainWindowController : IDisposable
     private AppVersion _latestYtdlpVersion;
 
     public AppInfo AppInfo { get; }
-    public Uri? UrlFromArgs { get; set; }
     public int RecoverableDownloadsCount => _services.Get<IRecoveryService>()!.Count;
 
     public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
@@ -226,6 +225,29 @@ public class MainWindowController : IDisposable
             var config = _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key);
             config.ShowDislcaimerOnStartup = value;
             _services.Get<IJsonFileService>()!.Save(config, Configuration.Key);
+        }
+    }
+
+    public Uri? UrlFromArgs
+    {
+        get;
+
+        set
+        {
+            if(value is null)
+            {
+                field = null;
+                return;
+            }
+            var urlText = value.ToString().Trim();
+            if (urlText.StartsWith("parabolic://"))
+            {
+                urlText = urlText.Replace("parabolic://", "https://");
+            }
+            if (Uri.TryCreate(urlText, UriKind.Absolute, out var url))
+            {
+                field = url;
+            }
         }
     }
 
