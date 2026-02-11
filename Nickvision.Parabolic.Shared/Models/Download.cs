@@ -572,7 +572,7 @@ public partial class Download : IDisposable
     {
         if (_skipNextProgress || string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data) || e.Data[0] == '=' || e.Data[0] == '-')
         {
-            _skipNextProgress = e.Data is null ? false : e.Data[0] == '-';
+            _skipNextProgress = (string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data)) ? false : e.Data[0] == '-';
             return;
         }
         _logBuilder.AppendLine(e.Data);
