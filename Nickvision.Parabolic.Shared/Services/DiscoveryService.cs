@@ -200,7 +200,7 @@ public class DiscoveryService : IDiscoveryService
             if (fields.Length >= 2)
             {
                 var saveFolder = fields[1].Trim().Trim('"').Trim();
-                if (saveFolder.StartsWith("~"))
+                if (saveFolder.StartsWith("~", StringComparison.Ordinal))
                 {
                     saveFolder = saveFolder.Replace("~", UserDirectories.Home);
                 }

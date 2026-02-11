@@ -577,7 +577,7 @@ public partial class Download : IDisposable
         _logBuilder.AppendLine(e.Data);
         try
         {
-            if (e.Data.StartsWith("[Parabolic] Progress", StringComparison.InvariantCulture))
+            if (e.Data.StartsWith("[Parabolic] Progress", StringComparison.Ordinal))
             {
                 _lastLineProgress = true;
                 var fields = e.Data.Split(';', StringSplitOptions.RemoveEmptyEntries);
@@ -598,7 +598,7 @@ public partial class Download : IDisposable
                         fields[6] == "NA" || fields[6] == "Unknown" ? -1 : int.Parse(fields[6])));
                 }
             }
-            else if (e.Data.StartsWith("[#", StringComparison.InvariantCulture))
+            else if (e.Data.StartsWith("[#", StringComparison.Ordinal))
             {
                 _lastLineProgress = true;
                 var line = e.Data;
@@ -632,7 +632,7 @@ public partial class Download : IDisposable
                     fields[3].Substring(3).AriaSizeToBytes(),
                     fields[4].Substring(4, fields[4].Length - 4 - 1).AriaEtaToSeconds()));
             }
-            else if (e.Data.StartsWith("[download] Sleeping", StringComparison.InvariantCulture))
+            else if (e.Data.StartsWith("[download] Sleeping", StringComparison.Ordinal))
             {
                 var fields = e.Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length < 3 || !double.TryParse(fields[2], out var seconds))

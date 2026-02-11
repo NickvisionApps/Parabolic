@@ -48,7 +48,7 @@ public class MainWindowController : IDisposable
         for (var i = 1; i < args.Length; i++)
         {
             var urlText = args[i].Trim();
-            if (urlText.StartsWith("parabolic://"))
+            if (urlText.StartsWith("parabolic://", StringComparison.Ordinal))
             {
                 urlText = urlText.Replace("parabolic://", "https://");
             }
@@ -241,7 +241,7 @@ public class MainWindowController : IDisposable
                 return;
             }
             var urlText = value.ToString().Trim();
-            if (urlText.StartsWith("parabolic://"))
+            if (urlText.StartsWith("parabolic://", StringComparison.Ordinal))
             {
                 urlText = urlText.Replace("parabolic://", "https://");
             }
