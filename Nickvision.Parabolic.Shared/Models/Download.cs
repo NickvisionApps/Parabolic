@@ -20,7 +20,7 @@ public partial class Download : IDisposable
     private ITranslationService? _translator;
     private readonly StringBuilder _logBuilder;
     private Process? _process;
-    private bool _lastLineProgress;
+    private bool _skipNextProgress;
 
     public int Id { get; }
     public DownloadOptions Options { get; }
@@ -43,7 +43,7 @@ public partial class Download : IDisposable
         _translator = translator;
         _logBuilder = new StringBuilder();
         _process = null;
-        _lastLineProgress = false;
+        _skipNextProgress = false;
         Id = _nextId++;
         Options = options;
         FilePath = Path.Combine(Options.SaveFolder, $"{Options.SaveFilename}{Options.FileType.DotExtension}");
@@ -570,8 +570,9 @@ public partial class Download : IDisposable
 
     private async void Process_OutputDataReceived(object? sender, DataReceivedEventArgs e)
     {
-        if (string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data))
+        if (_skipNextProgress || string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data) || e.Data[0] == '=' || e.Data[0] == '-')
         {
+            _skipNextProgress = e.Data is null ? false : e.Data[0] == '-';
             return;
         }
         _logBuilder.AppendLine(e.Data);
@@ -579,7 +580,6 @@ public partial class Download : IDisposable
         {
             if (e.Data.StartsWith("[Parabolic] Progress", StringComparison.Ordinal))
             {
-                _lastLineProgress = true;
                 var fields = e.Data.Split(';', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length != 7 || fields[1] == "NA")
                 {
@@ -600,7 +600,6 @@ public partial class Download : IDisposable
             }
             else if (e.Data.StartsWith("[#", StringComparison.Ordinal))
             {
-                _lastLineProgress = true;
                 var line = e.Data;
                 if (OperatingSystem.IsWindows())
                 {
@@ -650,13 +649,9 @@ public partial class Download : IDisposable
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NaN, 0.0, 0));
                 }
             }
-            else if(!_lastLineProgress)
-            {
-                ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
-            }
             else
             {
-                _lastLineProgress = false;
+                ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
             }
         }
         catch
