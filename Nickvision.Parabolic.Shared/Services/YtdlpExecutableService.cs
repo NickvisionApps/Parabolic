@@ -97,8 +97,13 @@ public class YtdlpExecutableService : IYtdlpExecutableService
             {
                 using var process = new Process()
                 {
-                    StartInfo = new ProcessStartInfo("chmod", [$"+x \"{path}\""])
+                    StartInfo = new ProcessStartInfo
                     {
+                        FileName = "chmod",
+                        ArgumentList = {
+                          "0755",
+                          path,
+                        },
                         UseShellExecute = false,
                         CreateNoWindow = true,
                     }
