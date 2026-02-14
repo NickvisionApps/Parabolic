@@ -20,7 +20,7 @@ public partial class Download : IDisposable
     private ITranslationService? _translator;
     private readonly StringBuilder _logBuilder;
     private Process? _process;
-    private bool _skipNextProgress;
+    private int _progressSkipCounter;
 
     public int Id { get; }
     public DownloadOptions Options { get; }
@@ -43,7 +43,7 @@ public partial class Download : IDisposable
         _translator = translator;
         _logBuilder = new StringBuilder();
         _process = null;
-        _skipNextProgress = false;
+        _progressSkipCounter = 0;
         Id = _nextId++;
         Options = options;
         FilePath = Path.Combine(Options.SaveFolder, $"{Options.SaveFilename}{Options.FileType.DotExtension}");
@@ -570,9 +570,16 @@ public partial class Download : IDisposable
 
     private async void Process_OutputDataReceived(object? sender, DataReceivedEventArgs e)
     {
-        if (_skipNextProgress || string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data) || e.Data[0] == '=' || e.Data[0] == '-')
+        if (_progressSkipCounter > 0 || e.Data is null || string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data) || e.Data.StartsWith(" ***", StringComparison.Ordinal))
         {
-            _skipNextProgress = (string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data)) ? false : e.Data[0] == '-';
+            if (_progressSkipCounter > 0)
+            {
+                _progressSkipCounter--;
+            }
+            else if(e.Data?.StartsWith(" ***", StringComparison.Ordinal) ?? false)
+            {
+                _progressSkipCounter = 4;
+            }
             return;
         }
         _logBuilder.AppendLine(e.Data);
