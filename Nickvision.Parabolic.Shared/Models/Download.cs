@@ -338,7 +338,7 @@ public partial class Download : IDisposable
                 arguments.Add("--password");
                 arguments.Add(Options.Credential.Password);
             }
-            else if (string.IsNullOrEmpty(Options.Credential.Password))
+            else if (!string.IsNullOrEmpty(Options.Credential.Password))
             {
                 arguments.Add("--video-password");
                 arguments.Add(Options.Credential.Password);

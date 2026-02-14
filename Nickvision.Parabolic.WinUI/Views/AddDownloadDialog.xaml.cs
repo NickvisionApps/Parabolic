@@ -7,7 +7,6 @@ using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
-using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
@@ -193,7 +192,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private async Task DiscoverMediaAsync(CancellationToken cancellationToken)
     {
         Credential? credential = null;
-        if (!string.IsNullOrEmpty(TxtUsername.Text) && !string.IsNullOrEmpty(TxtPassword.Password))
+        if (!string.IsNullOrEmpty(TxtUsername.Text) || !string.IsNullOrEmpty(TxtPassword.Password))
         {
             credential = new Credential("manual", TxtUsername.Text, TxtPassword.Password);
         }

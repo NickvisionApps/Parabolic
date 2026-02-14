@@ -1,6 +1,5 @@
 ﻿using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Parabolic.GNOME.Controls;
-using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using System;
 using System.Collections.Generic;

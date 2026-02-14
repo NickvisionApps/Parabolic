@@ -97,7 +97,7 @@ public class DiscoveryService : IDiscoveryService
                 arguments.Add("--password");
                 arguments.Add(credential.Password);
             }
-            else if (string.IsNullOrEmpty(credential.Password))
+            else if (!string.IsNullOrEmpty(credential.Password))
             {
                 arguments.Add("--video-password");
                 arguments.Add(credential.Password);

@@ -148,7 +148,7 @@ public class Configuration
     public int MaxNumberOfActiveDownloads
     {
         get => field == 0 ? 5 : field;
-        
+
         set;
     }
 
@@ -164,7 +164,7 @@ public class Configuration
     public int AriaMaxConnectionsPerServer
     {
         get => field == 0 ? 16 : field;
-        
+
         set;
     }
 

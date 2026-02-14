@@ -37,6 +37,7 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Fixed an issue where video passwords were not working when specified
             - Fixed an issue where yt-dlp progress was not always displayed correctly
             - Fixed an issue where Parabolic wouldn't open on Linux
             """,
@@ -235,7 +236,7 @@ public class MainWindowController : IDisposable
 
         set
         {
-            if(value is null)
+            if (value is null)
             {
                 field = null;
                 return;

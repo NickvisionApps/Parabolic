@@ -95,8 +95,8 @@ public partial class Application
                 Console.WriteLine($"Invalid URI: {g_file_get_uri(files[0])}");
             }
         }
-        catch(Exception e)
-        { 
+        catch (Exception e)
+        {
             Console.Error.WriteLine(e);
         }
         _application.Activate();

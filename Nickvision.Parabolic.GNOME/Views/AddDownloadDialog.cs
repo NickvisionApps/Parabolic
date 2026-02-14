@@ -273,9 +273,9 @@ public class AddDownloadDialog : Adw.Dialog
         _cancellationTokenSource = new CancellationTokenSource();
         _navigationView!.PushByTag("loading");
         Credential? credential = null;
-        if (!string.IsNullOrEmpty(_authenticationUsernameRow!.Text_) && !string.IsNullOrEmpty(_authenticationPasswordRow!.Text_))
+        if (!string.IsNullOrEmpty(_authenticationUsernameRow!.Text_) || !string.IsNullOrEmpty(_authenticationPasswordRow!.Text_))
         {
-            credential = new Credential("manual", _authenticationUsernameRow.Text_, _authenticationPasswordRow.Text_);
+            credential = new Credential("manual", _authenticationUsernameRow!.Text_ ?? string.Empty, _authenticationPasswordRow!.Text_ ?? string.Empty);
         }
         else
         {
