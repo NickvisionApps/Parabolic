@@ -102,7 +102,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
                         FileName = "chmod",
                         ArgumentList = [
                           "0755",
-                          path,
+                          path
                         ],
                         UseShellExecute = false,
                         CreateNoWindow = true,
