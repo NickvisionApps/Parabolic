@@ -100,10 +100,10 @@ public class YtdlpExecutableService : IYtdlpExecutableService
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = "chmod",
-                        ArgumentList = {
+                        ArgumentList = [
                           "0755",
                           path,
-                        },
+                        ],
                         UseShellExecute = false,
                         CreateNoWindow = true,
                     }
