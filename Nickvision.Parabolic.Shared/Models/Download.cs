@@ -180,6 +180,11 @@ public partial class Download : IDisposable
             "--print",
             "after_move:filepath"
         };
+        if(Options.Url.Host.Contains("instagram") && Options.PlaylistPosition != -1)
+        {
+            arguments.Add("--playlist-items");
+            arguments.Add($"{Options.PlaylistPosition}");
+        }
         if (Directory.Exists(pluginsDir))
         {
             arguments.Add("--plugin-dir");
@@ -576,7 +581,7 @@ public partial class Download : IDisposable
             {
                 _progressSkipCounter--;
             }
-            else if(e.Data?.StartsWith(" ***", StringComparison.Ordinal) ?? false)
+            else if (e.Data?.StartsWith(" ***", StringComparison.Ordinal) ?? false)
             {
                 _progressSkipCounter = 4;
             }

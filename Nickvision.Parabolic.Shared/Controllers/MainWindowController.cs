@@ -39,6 +39,7 @@ public class MainWindowController : IDisposable
             Changelog = """
             - Fixed an issue where video passwords were not working when specified
             - Fixed an issue where yt-dlp progress was not always displayed correctly
+            - Fixed an issue where instagram stories did not download correctly
             - Fixed an issue where downloaded yt-dlp version were not getting executable permissions on Linux
             - Fixed an issue where Parabolic wouldn't open on Linux
             """,
