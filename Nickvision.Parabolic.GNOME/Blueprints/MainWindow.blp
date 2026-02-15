@@ -30,6 +30,15 @@ Adw.ApplicationWindow root {
   default-width: 800;
   default-height: 600;
 
+  Adw.Breakpoint {
+    condition ("max-width: 800px")
+
+    setters {
+      downloadsBox.margin-start: 12;
+      downloadsBox.margin-end: 12;
+    }
+  }
+
   Adw.ToolbarView toolbarView {
     [top]
     Adw.HeaderBar headerBar {
@@ -113,12 +122,12 @@ Adw.ApplicationWindow root {
         Adw.ViewStackPage {
           name: "Downloads";
           child: Gtk.ScrolledWindow {
-            child: Gtk.Box {
+            child: Gtk.Box downloadsBox {
               orientation: vertical;
               spacing: 12;
-              margin-start: 300;
+              margin-start: 200;
               margin-top: 12;
-              margin-end: 300;
+              margin-end: 200;
               margin-bottom: 12;
 
               Gtk.Box {
