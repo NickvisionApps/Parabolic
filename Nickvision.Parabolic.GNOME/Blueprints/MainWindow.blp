@@ -113,79 +113,76 @@ Adw.ApplicationWindow root {
         Adw.ViewStackPage {
           name: "Downloads";
           child: Gtk.ScrolledWindow {
-            child: Adw.Clamp {
-              maximum-size: 600;
-              child: Gtk.Box {
-                orientation: vertical;
-                spacing: 12;
-                margin-start:12;
-                margin-top: 12;
-                margin-end: 12;
-                margin-bottom: 12;
+            child: Gtk.Box {
+              orientation: vertical;
+              spacing: 12;
+              margin-start: 300;
+              margin-top: 12;
+              margin-end: 300;
+              margin-bottom: 12;
 
-                Gtk.Box {
-                  orientation: horizontal;
-                  spacing: 6;
+              Gtk.Box {
+                orientation: horizontal;
+                spacing: 6;
 
-                  Adw.ToggleGroup downloadsToggleGroup {
-                    Adw.Toggle {
-                      icon-name: "view-list-bullet-symbolic";
-                      label: _("All");
-                    } 
+                Adw.ToggleGroup downloadsToggleGroup {
+                  Adw.Toggle {
+                    icon-name: "view-list-bullet-symbolic";
+                    label: _("All");
+                  } 
 
-                    Adw.Toggle {
-                      icon-name: "media-playback-start-symbolic";
-                      label: _("Running");
-                    }
-
-                    Adw.Toggle {
-                      icon-name: "document-open-recent-symbolic";
-                      label: _("Queued");
-                    }
-
-                    Adw.Toggle {
-                      icon-name: "checkmark-small-symbolic";
-                      label: _("Completed");
-                    }
+                  Adw.Toggle {
+                    icon-name: "media-playback-start-symbolic";
+                    label: _("Running");
                   }
 
-                  Gtk.Label {
-                    hexpand: true;
+                  Adw.Toggle {
+                    icon-name: "document-open-recent-symbolic";
+                    label: _("Queued");
                   }
 
-                  Gtk.MenuButton {
-                    direction: none;
-                    menu-model: downloadsMenu;
-                    tooltip-text: _("Manage Download");
-                    icon-name: "wrench-wide-symbolic";
+                  Adw.Toggle {
+                    icon-name: "checkmark-small-symbolic";
+                    label: _("Completed");
                   }
                 }
 
-                Adw.ViewStack viewStackDownloads {
-                  vexpand: true;
+                Gtk.Label {
                   hexpand: true;
-
-                  Adw.ViewStackPage {
-                    name: "Has";
-                    child: Gtk.ListBox listDownloads { 
-                      hexpand: true;
-                      valign: start;
-                      selection-mode: none;
-
-                      styles [ "boxed-list" ]
-                    };
-                  }
-
-                  Adw.ViewStackPage {
-                    name: "None";
-                    child: Adw.StatusPage {
-                      icon-name: "folder-download-symbolic";
-                      title: _("No Downloads");
-                      description: _("There are no downloads of this type");
-                    }; 
-                  }
                 }
-              };
+
+                Gtk.MenuButton {
+                  direction: none;
+                  menu-model: downloadsMenu;
+                  tooltip-text: _("Manage Download");
+                  icon-name: "wrench-wide-symbolic";
+                }
+              }
+
+              Adw.ViewStack viewStackDownloads {
+                vexpand: true;
+                hexpand: true;
+
+                Adw.ViewStackPage {
+                  name: "Has";
+                  child: Gtk.ListBox listDownloads { 
+                    hexpand: true;
+                    valign: start;
+                    selection-mode: none;
+
+                    styles [ "boxed-list" ]
+                  };
+                }
+
+                Adw.ViewStackPage {
+                  name: "None";
+                  child: Adw.StatusPage {
+                    icon-name: "folder-download-symbolic";
+                    title: _("No Downloads");
+                    description: _("There are no downloads of this type");
+                  }; 
+                }
+              }
             };
           };
         }
