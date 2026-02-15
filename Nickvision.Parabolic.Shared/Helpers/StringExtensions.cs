@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -74,6 +76,45 @@ public static class StringExtensions
                 result = result.Replace(c, '_');
             }
             return result;
+        }
+
+        public IEnumerable<string> Split(Func<char, bool> controller)
+        {
+            var nextPiece = 0;
+            for(int c = 0; c < s.Length; c++)
+            {
+                if(controller(s[c]))
+                {
+                    yield return s.Substring(nextPiece, c - nextPiece);
+                    nextPiece = c + 1;
+                }
+            }
+            if(nextPiece < s.Length)
+            {
+                yield return s.Substring(nextPiece);
+            }
+        }
+
+        public IEnumerable<string> SplitCommandLine()
+        {
+            var inQuotes = false;
+            return s.Split(c =>
+            {
+                if(c == '"')
+                {
+                    inQuotes = !inQuotes;
+                }
+                return !inQuotes && char.IsWhiteSpace(c);
+            }).Select(arg => arg.Trim().TrimMatchingQuotes('"')).Where(arg => !string.IsNullOrEmpty(arg));
+        }
+
+        public string TrimMatchingQuotes(char quote)
+        {
+            if(s.Length >= 2 && s[0] == quote && s[^1] == quote)
+            {
+                return s.Substring(1, s.Length - 2);
+            }
+            return s;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
+using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -124,6 +125,7 @@ public class DiscoveryService : IDiscoveryService
             arguments.Add("--cookies");
             arguments.Add(downloaderOptions.CookiesPath);
         }
+        arguments.AddRange(downloaderOptions.YtdlpDiscoveryArgs.SplitCommandLine());
         using var process = new Process()
         {
             StartInfo = new ProcessStartInfo(_ytdlpExecutableService.ExecutablePath ?? "yt-dlp", arguments)

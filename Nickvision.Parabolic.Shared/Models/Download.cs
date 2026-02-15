@@ -518,6 +518,7 @@ public partial class Download : IDisposable
             arguments.Add($"*{Options.TimeFrame.ToString()}");
             arguments.Add("--force-keyframes-at-cuts");
         }
+        arguments.AddRange(downloader.YtdlpDownloadArgs.SplitCommandLine());
         DownloadArgumentsCache[hash] = arguments;
         return arguments;
     }

@@ -148,6 +148,7 @@ public class PreferencesViewController
 
         set => _configuration.AriaMinSplitSize = value;
     }
+
     public bool CropAudioThumbnails
     {
         get => _configuration.CropAudioThumbnails;
@@ -321,6 +322,20 @@ public class PreferencesViewController
         get => _configuration.YouTubeSponsorBlock;
 
         set => _configuration.YouTubeSponsorBlock = value;
+    }
+
+    public string YtdlpDiscoveryArgs
+    {
+        get => _configuration.YtdlpDiscoveryArgs;
+
+        set => _configuration.YtdlpDiscoveryArgs = value;
+    }
+
+    public string YtdlpDownloadArgs
+    {
+        get => _configuration.YtdlpDownloadArgs;
+
+        set => _configuration.YtdlpDownloadArgs = value;
     }
 
     public async Task<string?> AddPostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)

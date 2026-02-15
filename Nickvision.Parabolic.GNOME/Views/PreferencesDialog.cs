@@ -68,6 +68,10 @@ public class PreferencesDialog : Adw.PreferencesDialog
     private Adw.SpinRow? _ariaMaxConnectionsPerServerRow;
     [Gtk.Connect("ariaMinSplitSizeRow")]
     private Adw.SpinRow? _ariaMinSplitSizeRow;
+    [Gtk.Connect("ytdlpDiscoveryArgsRow")]
+    private Adw.EntryRow? _ytdlpDiscoveryArgsRow;
+    [Gtk.Connect("ytdlpDownloadArgsRow")]
+    private Adw.EntryRow? _ytdlpDownloadArgsRow;
     [Gtk.Connect("embedMetadataRow")]
     private Adw.ExpanderRow? _embedMetadataRow;
     [Gtk.Connect("removeSourceDataRow")]
@@ -136,6 +140,8 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _useAriaRow!.Active = _controller.UseAria;
         _ariaMaxConnectionsPerServerRow!.Value = _controller.AriaMaxConnectionsPerServer;
         _ariaMinSplitSizeRow!.Value = _controller.AriaMinSplitSize;
+        _ytdlpDiscoveryArgsRow!.Text_ = _controller.YtdlpDiscoveryArgs;
+        _ytdlpDownloadArgsRow!.Text_ = _controller.YtdlpDownloadArgs;
         _embedMetadataRow!.EnableExpansion = _controller.EmbedMetadata;
         _removeSourceDataRow!.Active = _controller.RemoveSourceData;
         _embedThumbnailsRow!.EnableExpansion = _controller.EmbedThumbnails;
@@ -177,6 +183,8 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _controller.UseAria = _useAriaRow!.Active;
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerRow!.Value;
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeRow!.Value;
+        _controller.YtdlpDiscoveryArgs = _ytdlpDiscoveryArgsRow!.Text_ ?? string.Empty;
+        _controller.YtdlpDownloadArgs = _ytdlpDownloadArgsRow!.Text_ ?? string.Empty;
         _controller.EmbedMetadata = _embedMetadataRow!.EnableExpansion;
         _controller.RemoveSourceData = _removeSourceDataRow!.Active;
         _controller.EmbedThumbnails = _embedThumbnailsRow!.EnableExpansion;

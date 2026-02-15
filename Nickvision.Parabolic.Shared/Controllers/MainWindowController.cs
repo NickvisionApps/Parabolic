@@ -37,6 +37,8 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Added the ability to specify extra yt-dlp arguments for the discovery process
+            - Added the ability to specify extra yt-dlp arguments for the download process
             - Fixed an issue where video passwords were not working when specified
             - Fixed an issue where yt-dlp progress was not always displayed correctly
             - Fixed an issue where instagram stories did not download correctly

@@ -68,6 +68,10 @@ public class Configuration
     public List<PostProcessorArgument> PostprocessingArguments { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
     public bool UseAria { get; set; }
+    [JsonConverter(typeof(NullToEmptyStringConverter))]
+    public string YtdlpDiscoveryArgs { get; set; }
+    [JsonConverter(typeof(NullToEmptyStringConverter))]
+    public string YtdlpDownloadArgs { get; set; }
 
     static Configuration()
     {
@@ -112,6 +116,8 @@ public class Configuration
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
+        YtdlpDiscoveryArgs = string.Empty;
+        YtdlpDownloadArgs = string.Empty;
     }
 
     [JsonIgnore]
@@ -141,7 +147,9 @@ public class Configuration
         PostprocessingArguments = PostprocessingArguments,
         UseAria = UseAria,
         AriaMaxConnectionsPerServer = AriaMaxConnectionsPerServer,
-        AriaMinSplitSize = AriaMinSplitSize
+        AriaMinSplitSize = AriaMinSplitSize,
+        YtdlpDiscoveryArgs = YtdlpDiscoveryArgs,
+        YtdlpDownloadArgs = YtdlpDownloadArgs
     };
 
     [JsonConverter(typeof(NullToZeroIntConverter))]
