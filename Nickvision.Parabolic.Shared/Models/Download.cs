@@ -180,7 +180,7 @@ public partial class Download : IDisposable
             "--print",
             "after_move:filepath"
         };
-        if(Options.Url.Host.Contains("instagram") && Options.PlaylistPosition != -1)
+        if (Options.Url.Host.Contains("instagram") && Options.PlaylistPosition != -1)
         {
             arguments.Add("--playlist-items");
             arguments.Add($"{Options.PlaylistPosition}");

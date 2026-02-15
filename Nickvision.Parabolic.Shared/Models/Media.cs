@@ -33,7 +33,7 @@ public class Media
 
     public Media(JsonElement ytdlp, ITranslationService translator, DownloaderOptions options, string suggestedSaveFolder, string suggestedSaveFilename) : this(suggestedSaveFolder, suggestedSaveFilename)
     {
-        if(ytdlp.TryGetProperty("playlist_index", out var playlistIndexProperty) && playlistIndexProperty.ValueKind != JsonValueKind.Null)
+        if (ytdlp.TryGetProperty("playlist_index", out var playlistIndexProperty) && playlistIndexProperty.ValueKind != JsonValueKind.Null)
         {
             PlaylistPosition = playlistIndexProperty.GetInt32();
         }

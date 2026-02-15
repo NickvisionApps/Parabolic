@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -81,15 +80,15 @@ public static class StringExtensions
         public IEnumerable<string> Split(Func<char, bool> controller)
         {
             var nextPiece = 0;
-            for(int c = 0; c < s.Length; c++)
+            for (int c = 0; c < s.Length; c++)
             {
-                if(controller(s[c]))
+                if (controller(s[c]))
                 {
                     yield return s.Substring(nextPiece, c - nextPiece);
                     nextPiece = c + 1;
                 }
             }
-            if(nextPiece < s.Length)
+            if (nextPiece < s.Length)
             {
                 yield return s.Substring(nextPiece);
             }
@@ -100,7 +99,7 @@ public static class StringExtensions
             var inQuotes = false;
             return s.Split(c =>
             {
-                if(c == '"')
+                if (c == '"')
                 {
                     inQuotes = !inQuotes;
                 }
@@ -110,7 +109,7 @@ public static class StringExtensions
 
         public string TrimMatchingQuotes(char quote)
         {
-            if(s.Length >= 2 && s[0] == quote && s[^1] == quote)
+            if (s.Length >= 2 && s[0] == quote && s[^1] == quote)
             {
                 return s.Substring(1, s.Length - 2);
             }
