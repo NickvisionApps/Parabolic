@@ -42,6 +42,7 @@ public class MainWindowController : IDisposable
             - Fixed an issue where video passwords were not working when specified
             - Fixed an issue where yt-dlp progress was not always displayed correctly
             - Fixed an issue where instagram stories did not download correctly
+            - Fixed an issue where the encoder field was not properly cleared on FLAC files when remove soruce data was enabled
             - Fixed an issue where downloaded yt-dlp version were not getting executable permissions on Linux
             - Fixed an issue where Parabolic wouldn't open on Linux
             - Fixed an issue where playlist video downloads may not have had sound on Windows
@@ -74,9 +75,10 @@ public class MainWindowController : IDisposable
         var ytdlpExecutableService = _services.Add<IYtdlpExecutableService>(new YtdlpExecutableService(jsonFileService, _httpClient))!;
         var historyService = _services.Add<IHistoryService>(new HistoryService(AppInfo))!;
         var recoveryService = _services.Add<IRecoveryService>(new RecoveryService(AppInfo))!;
+        var metadataService = _services.Add<IFileMetadataService>(new FileMetadataService(translationService, notificationService))!;
         _services.Add<IPowerService>(new PowerService());
         _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService));
-        _services.Add<IDownloadService>(new DownloadService(jsonFileService, translationService, ytdlpExecutableService, historyService, recoveryService));
+        _services.Add<IDownloadService>(new DownloadService(jsonFileService, translationService, ytdlpExecutableService, historyService, recoveryService, metadataService));
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         // Events
         jsonFileService.Saved += JsonFileService_Saved;

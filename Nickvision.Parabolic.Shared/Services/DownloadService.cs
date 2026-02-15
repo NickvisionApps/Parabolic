@@ -17,6 +17,7 @@ public class DownloadService : IDisposable, IDownloadService
     private readonly IYtdlpExecutableService _ytdlpService;
     private readonly IHistoryService _historyService;
     private readonly IRecoveryService _recoveryService;
+    private readonly IFileMetadataService _fileMetadataService;
     private readonly Dictionary<int, Download> _downloading;
     private readonly Dictionary<int, Download> _queued;
     private readonly Dictionary<int, Download> _completed;
@@ -33,13 +34,14 @@ public class DownloadService : IDisposable, IDownloadService
     public int QueuedCount => _queued.Count;
     public int CompletedCount => _completed.Count;
 
-    public DownloadService(IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService)
+    public DownloadService(IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService, IFileMetadataService fileMetadataService)
     {
         _jsonFileService = jsonFileService;
         _translationService = translationService;
         _ytdlpService = ytdlpService;
         _historyService = historyService;
         _recoveryService = recoveryService;
+        _fileMetadataService = fileMetadataService;
         _downloading = new Dictionary<int, Download>();
         _queued = new Dictionary<int, Download>();
         _completed = new Dictionary<int, Download>();
@@ -298,6 +300,10 @@ public class DownloadService : IDisposable, IDownloadService
         if (!_downloading.TryGetValue(e.Id, out var download) || download.Status == DownloadStatus.Stopped)
         {
             return;
+        }
+        if(downloaderOptions.RemoveSourceData)
+        {
+            await _fileMetadataService.RemoveSourceDataAsync(download.FilePath);
         }
         _completed.Add(e.Id, download);
         _downloading.Remove(e.Id);
