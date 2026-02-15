@@ -42,6 +42,7 @@ public class MainWindowController : IDisposable
             - Fixed an issue where instagram stories did not download correctly
             - Fixed an issue where downloaded yt-dlp version were not getting executable permissions on Linux
             - Fixed an issue where Parabolic wouldn't open on Linux
+            - Fixed an issue where playlist video downloads may not have had sound on Windows
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),

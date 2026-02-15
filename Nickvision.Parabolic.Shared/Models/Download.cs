@@ -432,7 +432,7 @@ public partial class Download : IDisposable
             }
             formatString += Options.AudioBitrate.Value switch
             {
-                var b when b == double.MaxValue => "bestaudio",
+                var b when b == double.MaxValue => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var b when b == -1.0 => "worstaudio",
                 _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]/worstaudio"
             };
