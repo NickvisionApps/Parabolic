@@ -471,7 +471,7 @@ public class AddDownloadDialog : Adw.Dialog
             return;
         }
         var searchText = _singleSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
-        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Label.ToLower().Contains(searchText)), false);
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)), false);
     }
 
     private void PlaylistViewStack_OnNotify(GObject.Object sender, NotifySignalArgs e)
@@ -504,7 +504,7 @@ public class AddDownloadDialog : Adw.Dialog
             return;
         }
         var searchText = _playlistSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
-        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Label.ToLower().Contains(searchText)), true);
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)), true);
     }
 
     private void SetSubtitles(IEnumerable<SelectionItem<SubtitleLanguage>> subtitles, bool isPlaylist)
