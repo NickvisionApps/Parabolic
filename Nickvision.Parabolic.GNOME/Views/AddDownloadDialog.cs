@@ -171,8 +171,8 @@ public class AddDownloadDialog : Adw.Dialog
         _singleSelectSaveFolderButton!.OnClicked += SingleSelectSaveFolderButton_OnClicked;
         _singleFileTypeRow!.OnNotify += SingleFileTypeRow_OnNotify;
         _singleSubtitlesSearchEntry!.OnSearchChanged += SingleSubtitlesSearchEntry_OnSearchChanged;
-        _singleSelectAllSubtitlesButton!.OnClicked += (_, _) => _singleSubtitlesRows.SelectAll();
-        _singleDeselectAllSubtitlesButton!.OnClicked += (_, _) => _singleSubtitlesRows.DeselectAll();
+        _singleSelectAllSubtitlesButton!.OnClicked += (_, _) => _subtitlesRows.SelectAll();
+        _singleDeselectAllSubtitlesButton!.OnClicked += (_, _) => _subtitlesRows.DeselectAll();
         _singleDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
         _singleDownloadButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
         _playlistViewStack!.OnNotify += PlaylistViewStack_OnNotify;
@@ -180,8 +180,8 @@ public class AddDownloadDialog : Adw.Dialog
         _playlistSelectAllItemsButton!.OnClicked += (_, _) => _playlistItemsCheckButtons.SelectAll();
         _playlistDeselectAllItemsButton!.OnClicked += (_, _) => _playlistItemsCheckButtons.DeselectAll();
         _playlistSubtitlesSearchEntry!.OnSearchChanged += PlaylistSubtitlesSearchEntry_OnSearchChanged;
-        _playlistSelectAllSubtitlesButton!.OnClicked += (_, _) => _playlistSubtitlesRows.SelectAll();
-        _playlistDeselectAllSubtitlesButton!.OnClicked += (_, _) => _playlistSubtitlesRows.DeselectAll();
+        _playlistSelectAllSubtitlesButton!.OnClicked += (_, _) => _subtitlesRows.SelectAll();
+        _playlistDeselectAllSubtitlesButton!.OnClicked += (_, _) => _subtitlesRows.DeselectAll();
         _playlistDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
         _playlistDownloadButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
     }
@@ -214,7 +214,7 @@ public class AddDownloadDialog : Adw.Dialog
             _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected],
             _discoveryContext!.VideoFormats[(int)_singleVideoFormatRow!.Selected],
             _discoveryContext!.AudioFormats[(int)_singleAudioFormatRow!.Selected],
-            _discoveryContext!.SubtitleLanguages.Where((x, i) => _singleSubtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
+            _discoveryContext!.SubtitleLanguages.Where((x, i) => _subtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
             _singleSplitChaptersRow!.Active,
             _singleExportDescriptionRow!.Active,
             _singleExcludeFromHistoryRow!.Active,
@@ -234,7 +234,7 @@ public class AddDownloadDialog : Adw.Dialog
             _discoveryContext!.AudioBitrates[(int)_playlistAudioBitrateRow!.Selected],
             _playlistReverseOrderRow!.Active,
             _playlistNumberTitlesRow!.Active,
-            _discoveryContext!.SubtitleLanguages.Where((x, i) => _playlistSubtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
+            _discoveryContext!.SubtitleLanguages.Where((x, i) => _subtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
             _playlistExportM3URow!.Active,
             _playlistSplitChaptersRow!.Active,
             _playlistExportM3URow!.Active,
