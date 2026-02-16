@@ -91,6 +91,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         StatusSingleSubtitles.Description = _controller.Translator._("No subtitles were found for this media.");
         LblSingleSelectAllSubtitles.Text = _controller.Translator._("Select All");
         LblSingleDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
+        TxtSingleSubtitlesSearch.PlaceholderText = _controller.Translator._("Search subtitles");
         TglSingleSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
         TglSingleSplitChapters.OffContent = _controller.Translator._("Split into Files by Chapters");
         TglSingleExportDescription.OnContent = _controller.Translator._("Export Description to File");
@@ -124,6 +125,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         LblPlaylistSelectAllSubtitles.Text = _controller.Translator._("Select All");
         LblPlaylistDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
         LblPlaylistSubtitleNote.Text = _controller.Translator._("Note: Some playlist items may not contain subtitles for a selected language.");
+        TxtPlaylistSubtitlesSearch.PlaceholderText = _controller.Translator._("Search subtitles");
         TglPlaylistExportM3U.OnContent = _controller.Translator._("Export M3U Playlist File");
         TglPlaylistExportM3U.OffContent = _controller.Translator._("Export M3U Playlist File");
         TglPlaylistSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
@@ -225,6 +227,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbSingleFileType.SelectSelectionItem();
             ListSingleSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
             ListSingleSubtitles.SelectSelectionItems();
+            TxtSingleSubtitlesSearch.Text = string.Empty;
             TglSingleSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglSingleExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
             CmbSinglePostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
@@ -257,6 +260,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ListPlaylistItems.SelectSelectionItems();
             ListPlaylistSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
             ListPlaylistSubtitles.SelectSelectionItems();
+            TxtPlaylistSubtitlesSearch.Text = string.Empty;
             TglPlaylistExportM3U.IsOn = _controller.PreviousDownloadOptions.ExportM3U;
             TglPlaylistSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglPlaylistExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
@@ -407,4 +411,38 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private void BtnPlaylistSelectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 
     private void BtnPlaylistDeselectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
+
+    private void TxtSingleSubtitlesSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    {
+        if (_discoveryContext is null)
+        {
+            return;
+        }
+        var searchText = TxtSingleSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        if (string.IsNullOrEmpty(searchText))
+        {
+            ListSingleSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
+        }
+        else
+        {
+            ListSingleSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages.Where(x => x.Label.ToLower().Contains(searchText));
+        }
+    }
+
+    private void TxtPlaylistSubtitlesSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    {
+        if (_discoveryContext is null)
+        {
+            return;
+        }
+        var searchText = TxtPlaylistSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        if (string.IsNullOrEmpty(searchText))
+        {
+            ListPlaylistSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
+        }
+        else
+        {
+            ListPlaylistSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages.Where(x => x.Label.ToLower().Contains(searchText));
+        }
+    }
 }

@@ -22,7 +22,6 @@ public class DownloadServiceTests
     private static IYtdlpExecutableService? _ytdlpExecutableService;
     private static IHistoryService? _historyService;
     private static IRecoveryService? _recoveryService;
-    private static IFileMetadataService? _fileMetadataService;
     private static IDownloadService? _downloadService;
     private static DownloadProgressChangedEventArgs? _lastProgressChangedEventArgs;
     private static DownloadCompletedEventArgs? _downloadCompletedEventArgs;
@@ -41,8 +40,7 @@ public class DownloadServiceTests
         _ytdlpExecutableService = new YtdlpExecutableService(_jsonFileService, _httpClient);
         _historyService = new HistoryService(appInfo);
         _recoveryService = new RecoveryService(appInfo);
-        _fileMetadataService = new FileMetadataService(_translationService, null);
-        _downloadService = new DownloadService(_jsonFileService, _translationService, _ytdlpExecutableService, _historyService, _recoveryService, _fileMetadataService);
+        _downloadService = new DownloadService(_jsonFileService, _translationService, _ytdlpExecutableService, _historyService, _recoveryService);
         _lastProgressChangedEventArgs = null;
         _downloadCompletedEventArgs = null;
         _downloadService.DownloadProgressChanged += Download_ProgressChanged;
