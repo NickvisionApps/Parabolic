@@ -44,6 +44,7 @@ public class MainWindowController : IDisposable
             - Fixed an issue where yt-dlp progress was not always displayed correctly
             - Fixed an issue where instagram stories did not download correctly
             - Fixed an issue where the encoder field was not properly cleared on FLAC files when remove soruce data was enabled
+            - Fixed an issue where Parabolic would not detect translation languages correctly
             - Fixed an issue where downloaded yt-dlp version were not getting executable permissions on Linux
             - Fixed an issue where Parabolic wouldn't open on Linux
             - Fixed an issue where playlist video downloads may not have had sound on Windows
