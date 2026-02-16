@@ -4,7 +4,7 @@ namespace Nickvision.Parabolic.GNOME.Helpers;
 
 public static class ListExtensions
 {
-    extension(IReadOnlyList<Adw.ActionRow> list)
+    extension(IEnumerable<Adw.ActionRow> list)
     {
         public void DeselectAll()
         {
@@ -29,7 +29,7 @@ public static class ListExtensions
         }
     }
 
-    extension(IReadOnlyList<Gtk.CheckButton> list)
+    extension(IEnumerable<Gtk.CheckButton> list)
     {
         public void DeselectAll()
         {

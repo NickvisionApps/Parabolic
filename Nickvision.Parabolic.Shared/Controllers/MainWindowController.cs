@@ -37,6 +37,7 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Added a search bar for subtitles in the add download dialog
             - Added the ability to specify extra yt-dlp arguments for the discovery process
             - Added the ability to specify extra yt-dlp arguments for the download process
             - Fixed an issue where video passwords were not working when specified

@@ -46,6 +46,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private readonly AddDownloadDialogController _controller;
     private readonly WindowId _windowId;
     private DiscoveryContext? _discoveryContext;
+    private bool _isUpdatingSubtitleSelection;
 
     public AddDownloadDialog(AddDownloadDialogController controller, WindowId windowId)
     {
@@ -53,6 +54,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         _controller = controller;
         _windowId = windowId;
         _discoveryContext = null;
+        _isUpdatingSubtitleSelection = false;
         Title = _controller.Translator._("Add Download");
         PrimaryButtonText = _controller.Translator._("Discover");
         CloseButtonText = _controller.Translator._("Cancel");
@@ -419,8 +421,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
             return;
         }
         var searchText = TxtSingleSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        _isUpdatingSubtitleSelection = true;
         ListSingleSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText));
         ListSingleSubtitles.SelectSelectionItems();
+        _isUpdatingSubtitleSelection = false;
     }
 
     private void TxtPlaylistSubtitlesSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
@@ -430,12 +434,18 @@ public sealed partial class AddDownloadDialog : ContentDialog
             return;
         }
         var searchText = TxtPlaylistSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        _isUpdatingSubtitleSelection = true;
         ListPlaylistSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText));
         ListPlaylistSubtitles.SelectSelectionItems();
+        _isUpdatingSubtitleSelection = false;
     }
 
     private void ListSubtitles_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        if (_isUpdatingSubtitleSelection)
+        {
+            return;
+        }
         foreach(var item in e.AddedItems)
         {
             (item as SelectionItem<SubtitleLanguage>)!.ShouldSelect = true;
