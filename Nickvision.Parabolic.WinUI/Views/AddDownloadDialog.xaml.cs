@@ -446,11 +446,11 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             return;
         }
-        foreach(var item in e.AddedItems)
+        foreach (var item in e.AddedItems)
         {
             (item as SelectionItem<SubtitleLanguage>)!.ShouldSelect = true;
         }
-        foreach(var item in e.RemovedItems)
+        foreach (var item in e.RemovedItems)
         {
             (item as SelectionItem<SubtitleLanguage>)!.ShouldSelect = false;
         }
