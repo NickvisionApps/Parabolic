@@ -116,6 +116,13 @@ Adw.Dialog root {
           };
 
           [start]
+          Gtk.ToggleButton singleSearchSubtitlesButton {
+            icon-name: "edit-find-symbolic";
+            tooltip-text: _("Search Subtitles");
+            visible: false;
+          }
+
+          [start]
           Gtk.Button singleDownloadHeaderButton {
             label: _("Download");
             visible: false;
@@ -197,30 +204,50 @@ Adw.Dialog root {
           Adw.ViewStackPage {
             title: _("Subtitles");
             icon-name: "subtitles-symbolic";
-            child: Adw.PreferencesPage singleSubtitlesPage {
-              Adw.PreferencesGroup singleSubtitlesGroup { 
-                title: _("Available Subtitles");
+            child: Gtk.Box singleSubtitlesBox {
+              orientation: vertical;
 
-                header-suffix: Gtk.Box {
-                  orientation: horizontal;
+              Gtk.SearchBar singleSubtitlesSearchBar {
+                search-mode-enabled: bind singleSearchSubtitlesButton.active bidirectional;
 
-                  Gtk.Button singleDeselectAllSubtitlesButton {
-                    valign: center;
-                    icon-name: "edit-select-none-symbolic";
-                    tooltip-text: _("Deselect All");
+                Gtk.SearchEntry singleSubtitlesSearchEntry {
+                  placeholder-text: _("Search subtitles");
+                  hexpand: true;
+                }
+
+                styles [ "flat" ]
+              }
+
+              Gtk.ScrolledWindow {
+                hscrollbar-policy: never;
+                vexpand: true;
+
+                Adw.PreferencesPage singleSubtitlesPage {
+                  Adw.PreferencesGroup singleSubtitlesGroup { 
+                    title: _("Available Subtitles");
+
+                    header-suffix: Gtk.Box {
+                      orientation: horizontal;
+
+                      Gtk.Button singleDeselectAllSubtitlesButton {
+                        valign: center;
+                        icon-name: "edit-select-none-symbolic";
+                        tooltip-text: _("Deselect All");
+                      }
+
+                      Gtk.Button singleSelectAllSubtitlesButton {
+                        valign: center;
+
+                        Adw.ButtonContent {
+                          label: _("Select All");
+                          icon-name: "edit-select-all-symbolic";
+                        }
+                      }
+
+                      styles [ "toolbar" ]
+                    };
                   }
-
-                  Gtk.Button singleSelectAllSubtitlesButton {
-                    valign: center;
-
-                    Adw.ButtonContent {
-                      label: _("Select All");
-                      icon-name: "edit-select-all-symbolic";
-                    }
-                  }
-
-                  styles [ "toolbar" ]
-                };
+                }
               }
             };
           }
@@ -275,6 +302,13 @@ Adw.Dialog root {
             stack: playlistViewStack;
             policy: wide;
           };
+
+          [start]
+          Gtk.ToggleButton playlistSearchSubtitlesButton {
+            icon-name: "edit-find-symbolic";
+            tooltip-text: _("Search Subtitles");
+            visible: false;
+          }
 
           [start]
           Gtk.Button playlistDownloadHeaderButton {
@@ -389,31 +423,51 @@ Adw.Dialog root {
           Adw.ViewStackPage {
             title: _("Subtitles");
             icon-name: "subtitles-symbolic";
-            child: Adw.PreferencesPage playlistSubtitlesPage {
-              Adw.PreferencesGroup playlistSubtitlesGroup {
-                title: _("Available Subtitles");
-                description: _("Note: Some playlist items may not contain subtitles for a selected language.");
+            child: Gtk.Box playlistSubtitlesBox {
+              orientation: vertical;
 
-                header-suffix: Gtk.Box {
-                  orientation: horizontal;
+              Gtk.SearchBar playlistSubtitlesSearchBar {
+                search-mode-enabled: bind playlistSearchSubtitlesButton.active bidirectional;
 
-                  Gtk.Button playlistDeselectAllSubtitlesButton {
-                    valign: center;
-                    icon-name: "edit-select-none-symbolic";
-                    tooltip-text: _("Deselect All");
+                Gtk.SearchEntry playlistSubtitlesSearchEntry {
+                  placeholder-text: _("Search subtitles");
+                  hexpand: true;
+                }
+
+                styles [ "flat" ]
+              }
+
+              Gtk.ScrolledWindow {
+                hscrollbar-policy: never;
+                vexpand: true;
+
+                Adw.PreferencesPage playlistSubtitlesPage {
+                  Adw.PreferencesGroup playlistSubtitlesGroup {
+                    title: _("Available Subtitles");
+                    description: _("Note: Some playlist items may not contain subtitles for a selected language.");
+
+                    header-suffix: Gtk.Box {
+                      orientation: horizontal;
+
+                      Gtk.Button playlistDeselectAllSubtitlesButton {
+                        valign: center;
+                        icon-name: "edit-select-none-symbolic";
+                        tooltip-text: _("Deselect All");
+                      }
+
+                      Gtk.Button playlistSelectAllSubtitlesButton {
+                        valign: center;
+
+                        Adw.ButtonContent {
+                          label: _("Select All");
+                          icon-name: "edit-select-all-symbolic";
+                        }
+                      }
+
+                      styles [ "toolbar" ]
+                    };
                   }
-
-                  Gtk.Button playlistSelectAllSubtitlesButton {
-                    valign: center;
-
-                    Adw.ButtonContent {
-                      label: _("Select All");
-                      icon-name: "edit-select-all-symbolic";
-                    }
-                  }
-
-                  styles [ "toolbar" ]
-                };
+                }
               }
             };
           }

@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.GNOME.Helpers;
+﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
@@ -18,10 +19,9 @@ public class AddDownloadDialog : Adw.Dialog
     private readonly Gtk.Builder _builder;
     private CancellationTokenSource? _cancellationTokenSource;
     private DiscoveryContext? _discoveryContext;
-    private readonly List<Adw.ActionRow> _singleSubtitlesRows;
+    private readonly List<Adw.ActionRow> _subtitlesRows;
     private readonly List<Adw.EntryRow> _playlistItemsRows;
     private readonly List<Gtk.CheckButton> _playlistItemsCheckButtons;
-    private readonly List<Adw.ActionRow> _playlistSubtitlesRows;
 
     [Gtk.Connect("navigationView")]
     private Adw.NavigationView? _navigationView;
@@ -57,14 +57,20 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.ComboRow? _singleVideoFormatRow;
     [Gtk.Connect("singleAudioFormatRow")]
     private Adw.ComboRow? _singleAudioFormatRow;
-    [Gtk.Connect("singleSubtitlesPage")]
-    private Adw.PreferencesPage? _singleSubtitlesPage;
+    [Gtk.Connect("singleSubtitlesBox")]
+    private Gtk.Box? _singleSubtitlesBox;
     [Gtk.Connect("singleSelectAllSubtitlesButton")]
     private Gtk.Button? _singleSelectAllSubtitlesButton;
     [Gtk.Connect("singleDeselectAllSubtitlesButton")]
     private Gtk.Button? _singleDeselectAllSubtitlesButton;
     [Gtk.Connect("singleSubtitlesGroup")]
     private Adw.PreferencesGroup? _singleSubtitlesGroup;
+    [Gtk.Connect("singleSubtitlesSearchBar")]
+    private Gtk.SearchBar? _singleSubtitlesSearchBar;
+    [Gtk.Connect("singleSubtitlesSearchEntry")]
+    private Gtk.SearchEntry? _singleSubtitlesSearchEntry;
+    [Gtk.Connect("singleSearchSubtitlesButton")]
+    private Gtk.ToggleButton? _singleSearchSubtitlesButton;
     [Gtk.Connect("singleSplitChaptersRow")]
     private Adw.SwitchRow? _singleSplitChaptersRow;
     [Gtk.Connect("singleExportDescriptionRow")]
@@ -107,14 +113,20 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.SwitchRow? _playlistNumberTitlesRow;
     [Gtk.Connect("playlistItemsGroup")]
     private Adw.PreferencesGroup? _playlistItemsGroup;
-    [Gtk.Connect("playlistSubtitlesPage")]
-    private Adw.PreferencesPage? _playlistSubtitlesPage;
+    [Gtk.Connect("playlistSubtitlesBox")]
+    private Gtk.Box? _playlistSubtitlesBox;
     [Gtk.Connect("playlistSelectAllSubtitlesButton")]
     private Gtk.Button? _playlistSelectAllSubtitlesButton;
     [Gtk.Connect("playlistDeselectAllSubtitlesButton")]
     private Gtk.Button? _playlistDeselectAllSubtitlesButton;
     [Gtk.Connect("playlistSubtitlesGroup")]
     private Adw.PreferencesGroup? _playlistSubtitlesGroup;
+    [Gtk.Connect("playlistSubtitlesSearchBar")]
+    private Gtk.SearchBar? _playlistSubtitlesSearchBar;
+    [Gtk.Connect("playlistSubtitlesSearchEntry")]
+    private Gtk.SearchEntry? _playlistSubtitlesSearchEntry;
+    [Gtk.Connect("playlistSearchSubtitlesButton")]
+    private Gtk.ToggleButton? _playlistSearchSubtitlesButton;
     [Gtk.Connect("playlistExportM3URow")]
     private Adw.SwitchRow? _playlistExportM3URow;
     [Gtk.Connect("playlistSplitChaptersRow")]
@@ -142,10 +154,9 @@ public class AddDownloadDialog : Adw.Dialog
         _builder = builder;
         _cancellationTokenSource = null;
         _discoveryContext = null;
-        _singleSubtitlesRows = new List<Adw.ActionRow>();
+        _subtitlesRows = new List<Adw.ActionRow>();
         _playlistItemsRows = new List<Adw.EntryRow>();
         _playlistItemsCheckButtons = new List<Gtk.CheckButton>();
-        _playlistSubtitlesRows = new List<Adw.ActionRow>();
         _builder.Connect(this);
         // Load
         _authenticationCredentialRow!.SetModel(_controller.AvailableCredentials);
@@ -155,16 +166,20 @@ public class AddDownloadDialog : Adw.Dialog
         _selectBatchFileRow!.OnActivated += SelectBathFileRow_OnActivated;
         _authenticationCredentialRow!.OnNotify += AuthenticationCredentialRow_OnNotify;
         _discoverUrlButton!.OnClicked += DiscoverUrlButton_OnClicked;
+        _singleViewStack!.OnNotify += SingleViewStack_OnNotify;
         _singleRevertToTitleButton!.OnClicked += SingleRevertToTitleButton_OnClicked;
         _singleSelectSaveFolderButton!.OnClicked += SingleSelectSaveFolderButton_OnClicked;
         _singleFileTypeRow!.OnNotify += SingleFileTypeRow_OnNotify;
+        _singleSubtitlesSearchEntry!.OnSearchChanged += SingleSubtitlesSearchEntry_OnSearchChanged;
         _singleSelectAllSubtitlesButton!.OnClicked += (_, _) => _singleSubtitlesRows.SelectAll();
         _singleDeselectAllSubtitlesButton!.OnClicked += (_, _) => _singleSubtitlesRows.DeselectAll();
         _singleDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
         _singleDownloadButton!.OnClicked += async (sender, e) => await DownloadSingleAsync();
+        _playlistViewStack!.OnNotify += PlaylistViewStack_OnNotify;
         _playlistSelectSaveFolderButton!.OnClicked += PlaylistSelectSaveFolderButton_OnClicked;
         _playlistSelectAllItemsButton!.OnClicked += (_, _) => _playlistItemsCheckButtons.SelectAll();
         _playlistDeselectAllItemsButton!.OnClicked += (_, _) => _playlistItemsCheckButtons.DeselectAll();
+        _playlistSubtitlesSearchEntry!.OnSearchChanged += PlaylistSubtitlesSearchEntry_OnSearchChanged;
         _playlistSelectAllSubtitlesButton!.OnClicked += (_, _) => _playlistSubtitlesRows.SelectAll();
         _playlistDeselectAllSubtitlesButton!.OnClicked += (_, _) => _playlistSubtitlesRows.DeselectAll();
         _playlistDownloadHeaderButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
@@ -302,9 +317,12 @@ public class AddDownloadDialog : Adw.Dialog
             _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
             _singleAudioFormatRow!.SetModel(_discoveryContext.AudioFormats, false);
             _singleFileTypeRow!.SetModel(_discoveryContext.FileTypes);
+            _singleSearchSubtitlesButton!.Active = false;
+            _singleSubtitlesSearchEntry!.Text_ = string.Empty;
             if (_discoveryContext.SubtitleLanguages.Count > 0)
             {
-                _singleViewStack!.GetPage(_singleSubtitlesPage!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
+                _singleViewStack!.GetPage(_singleSubtitlesBox!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
+                _singleSubtitlesSearchBar!.SetKeyCaptureWidget(_singleViewStack);
             }
             else
             {
@@ -312,20 +330,7 @@ public class AddDownloadDialog : Adw.Dialog
                 row.Title = _controller.Translator._("No Subtitles Available");
                 _singleSubtitlesGroup!.Add(row);
             }
-            foreach (var subtitle in _discoveryContext.SubtitleLanguages)
-            {
-                var chk = Gtk.CheckButton.New();
-                chk.Valign = Gtk.Align.Center;
-                chk.AddCssClass("selection-mode");
-                chk.Active = subtitle.ShouldSelect;
-                var row = Adw.ActionRow.New();
-                row.UseMarkup = false;
-                row.Title = subtitle.Label;
-                row.AddPrefix(chk);
-                row.ActivatableWidget = chk;
-                _singleSubtitlesRows.Add(row);
-                _singleSubtitlesGroup!.Add(row);
-            }
+            SetSubtitles(_discoveryContext.SubtitleLanguages, false);
             _singleSplitChaptersRow!.Active = _controller.PreviousDownloadOptions.SplitChapters;
             _singleExportDescriptionRow!.Active = _controller.PreviousDownloadOptions.ExportDescription;
             _singlePostProcessorArgumentRow!.SetModel(_controller.AvailablePostProcessorArguments);
@@ -349,6 +354,8 @@ public class AddDownloadDialog : Adw.Dialog
             _playlistViewStack!.GetPage(_playlistItemsPage!).BadgeNumber = (uint)_discoveryContext.Items.Count;
             _playlistReverseOrderRow!.Active = _controller.PreviousDownloadOptions.ReverseDownloadOrder;
             _playlistNumberTitlesRow!.Active = _controller.PreviousDownloadOptions.NumberTitles;
+            _playlistSearchSubtitlesButton!.Active = false;
+            _playlistSubtitlesSearchEntry!.Text_ = string.Empty;
             foreach (var item in _discoveryContext.Items)
             {
                 var row = Adw.EntryRow.New();
@@ -397,7 +404,8 @@ public class AddDownloadDialog : Adw.Dialog
             }
             if (_discoveryContext.SubtitleLanguages.Count > 0)
             {
-                _playlistViewStack!.GetPage(_playlistSubtitlesPage!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
+                _playlistViewStack!.GetPage(_playlistSubtitlesBox!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
+                _playlistSubtitlesSearchBar!.SetKeyCaptureWidget(_playlistViewStack);
             }
             else
             {
@@ -405,20 +413,7 @@ public class AddDownloadDialog : Adw.Dialog
                 row.Title = _controller.Translator._("No Subtitles Available");
                 _playlistSubtitlesGroup!.Add(row);
             }
-            foreach (var subtitle in _discoveryContext.SubtitleLanguages)
-            {
-                var chk = Gtk.CheckButton.New();
-                chk.Valign = Gtk.Align.Center;
-                chk.AddCssClass("selection-mode");
-                chk.Active = subtitle.ShouldSelect;
-                var row = Adw.ActionRow.New();
-                row.UseMarkup = false;
-                row.Title = subtitle.Label;
-                row.AddPrefix(chk);
-                row.ActivatableWidget = chk;
-                _playlistSubtitlesRows.Add(row);
-                _playlistSubtitlesGroup!.Add(row);
-            }
+            SetSubtitles(_discoveryContext.SubtitleLanguages, true);
             _playlistExportM3URow!.Active = _controller.PreviousDownloadOptions.ExportM3U;
             _playlistSplitChaptersRow!.Active = _controller.PreviousDownloadOptions.SplitChapters;
             _playlistExportDescriptionRow!.Active = _controller.PreviousDownloadOptions.ExportDescription;
@@ -427,6 +422,14 @@ public class AddDownloadDialog : Adw.Dialog
             {
                 await DownloadPlaylistAsync();
             }
+        }
+    }
+
+    private void SingleViewStack_OnNotify(GObject.Object sender, NotifySignalArgs e)
+    {
+        if (e.Pspec.GetName() == "visible-child")
+        {
+            _singleSearchSubtitlesButton!.Visible = _singleViewStack!.VisibleChild == _singleSubtitlesBox;
         }
     }
 
@@ -461,6 +464,24 @@ public class AddDownloadDialog : Adw.Dialog
         }
     }
 
+    private void SingleSubtitlesSearchEntry_OnSearchChanged(Gtk.SearchEntry sender, EventArgs e)
+    {
+        if (_discoveryContext is null)
+        {
+            return;
+        }
+        var searchText = _singleSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Label.ToLower().Contains(searchText)), false);
+    }
+
+    private void PlaylistViewStack_OnNotify(GObject.Object sender, NotifySignalArgs e)
+    {
+        if (e.Pspec.GetName() == "visible-child")
+        {
+            _playlistSearchSubtitlesButton!.Visible = _playlistViewStack!.VisibleChild == _playlistSubtitlesBox;
+        }
+    }
+
     private async void PlaylistSelectSaveFolderButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
         var fileDialog = Gtk.FileDialog.New();
@@ -474,5 +495,52 @@ public class AddDownloadDialog : Adw.Dialog
             }
         }
         catch { }
+    }
+
+    private void PlaylistSubtitlesSearchEntry_OnSearchChanged(Gtk.SearchEntry sender, EventArgs e)
+    {
+        if (_discoveryContext is null)
+        {
+            return;
+        }
+        var searchText = _playlistSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Label.ToLower().Contains(searchText)), true);
+    }
+
+    private void SetSubtitles(IEnumerable<SelectionItem<SubtitleLanguage>> subtitles, bool isPlaylist)
+    {
+        foreach (var row in _subtitlesRows)
+        {
+            if (isPlaylist)
+            {
+                _playlistSubtitlesGroup!.Remove(row);
+            }
+            else
+            {
+                _singleSubtitlesGroup!.Remove(row);
+            }
+        }
+        _subtitlesRows.Clear();
+        foreach (var subtitle in subtitles)
+        {
+            var chk = Gtk.CheckButton.New();
+            chk.Valign = Gtk.Align.Center;
+            chk.AddCssClass("selection-mode");
+            chk.Active = subtitle.ShouldSelect;
+            var row = Adw.ActionRow.New();
+            row.UseMarkup = false;
+            row.Title = subtitle.Label;
+            row.AddPrefix(chk);
+            row.ActivatableWidget = chk;
+            _subtitlesRows.Add(row);
+            if (isPlaylist)
+            {
+                _playlistSubtitlesGroup!.Add(row);
+            }
+            else
+            {
+                _singleSubtitlesGroup!.Add(row);
+            }
+        }
     }
 }
