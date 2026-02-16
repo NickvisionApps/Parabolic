@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Filesystem;
+﻿using ATL;
+using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
@@ -17,7 +18,6 @@ public class DownloadService : IDisposable, IDownloadService
     private readonly IYtdlpExecutableService _ytdlpService;
     private readonly IHistoryService _historyService;
     private readonly IRecoveryService _recoveryService;
-    private readonly IFileMetadataService _fileMetadataService;
     private readonly Dictionary<int, Download> _downloading;
     private readonly Dictionary<int, Download> _queued;
     private readonly Dictionary<int, Download> _completed;
@@ -34,14 +34,13 @@ public class DownloadService : IDisposable, IDownloadService
     public int QueuedCount => _queued.Count;
     public int CompletedCount => _completed.Count;
 
-    public DownloadService(IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService, IFileMetadataService fileMetadataService)
+    public DownloadService(IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService)
     {
         _jsonFileService = jsonFileService;
         _translationService = translationService;
         _ytdlpService = ytdlpService;
         _historyService = historyService;
         _recoveryService = recoveryService;
-        _fileMetadataService = fileMetadataService;
         _downloading = new Dictionary<int, Download>();
         _queued = new Dictionary<int, Download>();
         _completed = new Dictionary<int, Download>();
@@ -301,9 +300,26 @@ public class DownloadService : IDisposable, IDownloadService
         {
             return;
         }
-        if(downloaderOptions.RemoveSourceData)
+        if (downloaderOptions.RemoveSourceData && File.Exists(e.Path))
         {
-            await _fileMetadataService.RemoveSourceDataAsync(download.FilePath);
+            var track = new Track(e.Path);
+            track.Comment = string.Empty;
+            track.Description = string.Empty;
+            track.EncodedBy = string.Empty;
+            track.Encoder = string.Empty;
+            if (track.AdditionalFields.ContainsKey("purl"))
+            {
+                track.AdditionalFields.Remove("purl");
+            }
+            if (track.AdditionalFields.ContainsKey("synopsis"))
+            {
+                track.AdditionalFields.Remove("synopsis");
+            }
+            if (track.AdditionalFields.ContainsKey("url"))
+            {
+                track.AdditionalFields.Remove("url");
+            }
+            await track.SaveAsync();
         }
         _completed.Add(e.Id, download);
         _downloading.Remove(e.Id);

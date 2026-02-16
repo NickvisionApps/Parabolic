@@ -75,10 +75,9 @@ public class MainWindowController : IDisposable
         var ytdlpExecutableService = _services.Add<IYtdlpExecutableService>(new YtdlpExecutableService(jsonFileService, _httpClient))!;
         var historyService = _services.Add<IHistoryService>(new HistoryService(AppInfo))!;
         var recoveryService = _services.Add<IRecoveryService>(new RecoveryService(AppInfo))!;
-        var metadataService = _services.Add<IFileMetadataService>(new FileMetadataService(translationService, notificationService))!;
         _services.Add<IPowerService>(new PowerService());
         _services.Add<IDiscoveryService>(new DiscoveryService(jsonFileService, translationService, ytdlpExecutableService));
-        _services.Add<IDownloadService>(new DownloadService(jsonFileService, translationService, ytdlpExecutableService, historyService, recoveryService, metadataService));
+        _services.Add<IDownloadService>(new DownloadService(jsonFileService, translationService, ytdlpExecutableService, historyService, recoveryService));
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         // Events
         jsonFileService.Saved += JsonFileService_Saved;
