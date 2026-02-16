@@ -156,7 +156,7 @@
 
                                         <AutoSuggestBox x:Name="TxtSingleSubtitlesSearch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" QueryIcon="Find" TextChanged="TxtSingleSubtitlesSearch_TextChanged"/>
 
-                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged"
                                                   DisplayMemberPath="Label" SelectionMode="Multiple"/>
                                     </Grid>
                                 </nickvision:ViewStack.Pages>
@@ -362,7 +362,7 @@
 
                                         <AutoSuggestBox x:Name="TxtPlaylistSubtitlesSearch" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" QueryIcon="Find" TextChanged="TxtPlaylistSubtitlesSearch_TextChanged"/>
 
-                                        <ListView x:Name="ListPlaylistSubtitles" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                                        <ListView x:Name="ListPlaylistSubtitles" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged"
                                                   DisplayMemberPath="Label" SelectionMode="Multiple"/>
                                     </Grid>
                                 </nickvision:ViewStack.Pages>

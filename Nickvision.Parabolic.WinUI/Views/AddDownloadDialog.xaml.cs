@@ -280,7 +280,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!,
         (CmbSingleVideoFormat.SelectedItem as SelectionItem<Format>)!,
         (CmbSingleAudioFormat.SelectedItem as SelectionItem<Format>)!,
-        ListSingleSubtitles.SelectedItems.Cast<SelectionItem<SubtitleLanguage>>(),
+        _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
         TglSingleSplitChapters.IsOn,
         TglSingleExportDescription.IsOn,
         TglSingleExcludeFromHistory.IsOn,
@@ -297,7 +297,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbPlaylistSuggestedAudioBitrate.SelectedItem as SelectionItem<double>)!,
         TglPlaylistReverseDownloadOrder.IsOn,
         TglPlaylistNumberTitles.IsOn,
-        ListPlaylistSubtitles.SelectedItems.Cast<SelectionItem<SubtitleLanguage>>(),
+        _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
         TglPlaylistExportM3U.IsOn,
         TglPlaylistSplitChapters.IsOn,
         TglPlaylistExportDescription.IsOn,
@@ -420,6 +420,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         var searchText = TxtSingleSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
         ListSingleSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText));
+        ListSingleSubtitles.SelectSelectionItems();
     }
 
     private void TxtPlaylistSubtitlesSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
@@ -430,5 +431,18 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         var searchText = TxtPlaylistSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
         ListPlaylistSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText));
+        ListPlaylistSubtitles.SelectSelectionItems();
+    }
+
+    private void ListSubtitles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        foreach(var item in e.AddedItems)
+        {
+            (item as SelectionItem<SubtitleLanguage>)!.ShouldSelect = true;
+        }
+        foreach(var item in e.RemovedItems)
+        {
+            (item as SelectionItem<SubtitleLanguage>)!.ShouldSelect = false;
+        }
     }
 }

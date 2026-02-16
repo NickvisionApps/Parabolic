@@ -214,7 +214,7 @@ public class AddDownloadDialog : Adw.Dialog
             _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected],
             _discoveryContext!.VideoFormats[(int)_singleVideoFormatRow!.Selected],
             _discoveryContext!.AudioFormats[(int)_singleAudioFormatRow!.Selected],
-            _discoveryContext!.SubtitleLanguages.Where((x, i) => _subtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
+            _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
             _singleSplitChaptersRow!.Active,
             _singleExportDescriptionRow!.Active,
             _singleExcludeFromHistoryRow!.Active,
@@ -234,7 +234,7 @@ public class AddDownloadDialog : Adw.Dialog
             _discoveryContext!.AudioBitrates[(int)_playlistAudioBitrateRow!.Selected],
             _playlistReverseOrderRow!.Active,
             _playlistNumberTitlesRow!.Active,
-            _discoveryContext!.SubtitleLanguages.Where((x, i) => _subtitlesRows[i].ActivatableWidget is Gtk.CheckButton chk && chk.Active),
+            _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
             _playlistExportM3URow!.Active,
             _playlistSplitChaptersRow!.Active,
             _playlistExportM3URow!.Active,
@@ -527,6 +527,7 @@ public class AddDownloadDialog : Adw.Dialog
             chk.Valign = Gtk.Align.Center;
             chk.AddCssClass("selection-mode");
             chk.Active = subtitle.ShouldSelect;
+            chk.OnToggled += (_, _) => subtitle.ShouldSelect = chk.Active;
             var row = Adw.ActionRow.New();
             row.UseMarkup = false;
             row.Title = subtitle.Label;
