@@ -1,5 +1,4 @@
-﻿using ATL;
-using Nickvision.Desktop.Filesystem;
+﻿using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
@@ -299,27 +298,6 @@ public class DownloadService : IDisposable, IDownloadService
         if (!_downloading.TryGetValue(e.Id, out var download) || download.Status == DownloadStatus.Stopped)
         {
             return;
-        }
-        if (downloaderOptions.RemoveSourceData && File.Exists(e.Path))
-        {
-            var track = new Track(e.Path);
-            track.Comment = string.Empty;
-            track.Description = string.Empty;
-            track.EncodedBy = string.Empty;
-            track.Encoder = string.Empty;
-            if (track.AdditionalFields.ContainsKey("purl"))
-            {
-                track.AdditionalFields.Remove("purl");
-            }
-            if (track.AdditionalFields.ContainsKey("synopsis"))
-            {
-                track.AdditionalFields.Remove("synopsis");
-            }
-            if (track.AdditionalFields.ContainsKey("url"))
-            {
-                track.AdditionalFields.Remove("url");
-            }
-            await track.SaveAsync();
         }
         _completed.Add(e.Id, download);
         _downloading.Remove(e.Id);

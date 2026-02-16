@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Globalization;
+﻿using ATL;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
 using System;
@@ -19,6 +20,7 @@ public partial class Download : IDisposable
 
     private ITranslationService? _translator;
     private readonly StringBuilder _logBuilder;
+    private bool _removeSourceData;
     private Process? _process;
     private int _progressSkipCounter;
 
@@ -42,6 +44,7 @@ public partial class Download : IDisposable
     {
         _translator = translator;
         _logBuilder = new StringBuilder();
+        _removeSourceData = false;
         _process = null;
         _progressSkipCounter = 0;
         Id = _nextId++;
@@ -96,6 +99,7 @@ public partial class Download : IDisposable
             Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, log.AsMemory(), false));
             return;
         }
+        _removeSourceData = downloader.RemoveSourceData;
         _process = new Process()
         {
             EnableRaisingEvents = true,
@@ -292,12 +296,7 @@ public partial class Download : IDisposable
         if (downloader.EmbedMetadata)
         {
             arguments.Add("--embed-metadata");
-            if (downloader.RemoveSourceData)
-            {
-                arguments.Add("--postprocessor-args");
-                arguments.Add($"Metadata+ffmpeg:-metadata comment= -metadata description= -metadata synopsis= -metadata purl= {(Options.PlaylistPosition != -1 ? $"-metadata track={Options.PlaylistPosition}" : string.Empty)}");
-            }
-            else if (Options.PlaylistPosition != -1)
+            if (Options.PlaylistPosition != -1)
             {
                 arguments.Add("--postprocessor-args");
                 arguments.Add($"Metadata+ffmpeg:-metadata track={Options.PlaylistPosition}");
@@ -539,7 +538,7 @@ public partial class Download : IDisposable
         return false;
     }
 
-    private void Process_Exited(object? sender, EventArgs e)
+    private async void Process_Exited(object? sender, EventArgs e)
     {
         if (Status != DownloadStatus.Stopped)
         {
@@ -550,14 +549,63 @@ public partial class Download : IDisposable
             var lines = Log.Split('\n');
             try
             {
-                var finalPath = lines[^1];
+                var finalPath = lines[^1].Trim('\r');
                 if (!File.Exists(finalPath))
                 {
-                    finalPath = lines[^2];
+                    finalPath = lines[^2].Trim('\r');
                 }
                 if (File.Exists(finalPath))
                 {
                     FilePath = finalPath;
+                    if (_removeSourceData)
+                    {
+                        var track = new Track(FilePath);
+                        track.Comment = string.Empty;
+                        track.Description = string.Empty;
+                        track.EncodedBy = string.Empty;
+                        track.Encoder = string.Empty;
+                        if (track.AdditionalFields.ContainsKey("comment"))
+                        {
+                            track.AdditionalFields.Remove("comment");
+                        }
+                        if (track.AdditionalFields.ContainsKey("COMMENT"))
+                        {
+                            track.AdditionalFields.Remove("COMMENT");
+                        }
+                        if (track.AdditionalFields.ContainsKey("description"))
+                        {
+                            track.AdditionalFields.Remove("description");
+                        }
+                        if (track.AdditionalFields.ContainsKey("DESCRIPTION"))
+                        {
+                            track.AdditionalFields.Remove("DESCRIPTION");
+                        }
+                        if (track.AdditionalFields.ContainsKey("purl"))
+                        {
+                            track.AdditionalFields.Remove("purl");
+                        }
+                        if (track.AdditionalFields.ContainsKey("PURL"))
+                        {
+                            track.AdditionalFields.Remove("PURL");
+                        }
+                        if (track.AdditionalFields.ContainsKey("synopsis"))
+                        {
+                            track.AdditionalFields.Remove("synopsis");
+                        }
+                        if (track.AdditionalFields.ContainsKey("SYNOPSIS"))
+                        {
+                            track.AdditionalFields.Remove("SYNOPSIS");
+                        }
+                        if (track.AdditionalFields.ContainsKey("url"))
+                        {
+                            track.AdditionalFields.Remove("url");
+                        }
+                        if (track.AdditionalFields.ContainsKey("URL"))
+                        {
+                            track.AdditionalFields.Remove("URL");
+                        }
+                        await track.SaveAsync();
+                    }
                 }
             }
             catch { }
