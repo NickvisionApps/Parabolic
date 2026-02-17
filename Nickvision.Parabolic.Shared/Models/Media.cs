@@ -12,18 +12,18 @@ public class Media
 {
     public Uri Url { get; }
     public string Title { get; }
-    public int PlaylistPosition { get; internal set; }
+    public int PlaylistPosition { get; }
     public MediaType Type { get; }
     public TimeFrame TimeFrame { get; }
     public List<Format> Formats { get; }
     public List<SubtitleLanguage> Subtitles { get; }
     public string SuggestedSaveFolder { get; }
 
-    private Media(string suggestedSaveFolder, string suggestedSaveFilename, int? playlistPosition)
+    private Media(string suggestedSaveFolder, string suggestedSaveFilename)
     {
         Url = Uri.Empty;
         Title = suggestedSaveFilename;
-        PlaylistPosition = playlistPosition.HasValue ? playlistPosition.Value : -1;
+        PlaylistPosition = -1;
         Type = MediaType.Video;
         TimeFrame = new TimeFrame(TimeSpan.Zero, TimeSpan.Zero);
         Formats = new List<Format>();
@@ -31,9 +31,13 @@ public class Media
         SuggestedSaveFolder = suggestedSaveFolder;
     }
 
-    public Media(JsonElement ytdlp, ITranslationService translator, DownloaderOptions options, string suggestedSaveFolder, string suggestedSaveFilename, int? playlistPosition) : this(suggestedSaveFolder, suggestedSaveFilename, playlistPosition)
+    public Media(JsonElement ytdlp, ITranslationService translator, DownloaderOptions options, string suggestedSaveFolder, string suggestedSaveFilename) : this(suggestedSaveFolder, suggestedSaveFilename)
     {
-        if (playlistPosition.HasValue)
+        if (ytdlp.TryGetProperty("playlist_index", out var playlistIndexProperty) && playlistIndexProperty.ValueKind != JsonValueKind.Null)
+        {
+            PlaylistPosition = playlistIndexProperty.GetInt32();
+        }
+        if (PlaylistPosition != -1)
         {
             if (ytdlp.TryGetProperty("url", out var urlProperty) && urlProperty.ValueKind != JsonValueKind.Null)
             {

@@ -14,7 +14,15 @@ public static class ComboBoxExtensions
         {
             if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<Format>> items)
             {
-                comboBox.SelectedItem = items.FirstOrDefault(item => item.Value.Id == id);
+                var selected = items.FirstOrDefault(item => item.Value.Id == id);
+                if (selected is null)
+                {
+                    comboBox.SelectedIndex = 0;
+                }
+                else
+                {
+                    comboBox.SelectedItem = selected;
+                }
             }
         }
     }

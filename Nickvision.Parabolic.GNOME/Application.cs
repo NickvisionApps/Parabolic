@@ -86,17 +86,19 @@ public partial class Application
         }
         try
         {
-            var url = g_file_get_uri(files[0]);
-            if (!url.StartsWith("parabolic://"))
-            {
-                return;
-            }
-            if (Uri.TryCreate(url.Substring(12), UriKind.Absolute, out var uri))
+            if (Uri.TryCreate(g_file_get_uri(files[0]), UriKind.Absolute, out var uri))
             {
                 _controller.UrlFromArgs = uri;
             }
+            else
+            {
+                Console.WriteLine($"Invalid URI: {g_file_get_uri(files[0])}");
+            }
         }
-        catch { }
+        catch (Exception e)
+        {
+            Console.Error.WriteLine(e);
+        }
         _application.Activate();
     }
 }

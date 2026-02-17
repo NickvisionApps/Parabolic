@@ -300,6 +300,29 @@ Adw.PreferencesDialog root {
         }
       }
     }
+
+    Adw.PreferencesGroup {
+      title: _("Advanced");
+      description: _("Specify extra arguments to pass to yt-dlp");
+
+      Adw.EntryRow ytdlpDiscoveryArgsRow {
+        title: _("yt-dlp Discovery Arguments");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "utilities-terminal-symbolic";
+        }
+      }
+
+      Adw.EntryRow ytdlpDownloadArgsRow {
+        title: _("yt-dlp Download Arguments");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "utilities-terminal-symbolic";
+        }
+      }
+    }
   }
 
   Adw.PreferencesPage {

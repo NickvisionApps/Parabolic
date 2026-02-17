@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Globalization;
+﻿using ATL;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
 using System;
@@ -19,7 +20,9 @@ public partial class Download : IDisposable
 
     private ITranslationService? _translator;
     private readonly StringBuilder _logBuilder;
+    private bool _removeSourceData;
     private Process? _process;
+    private int _progressSkipCounter;
 
     public int Id { get; }
     public DownloadOptions Options { get; }
@@ -41,7 +44,9 @@ public partial class Download : IDisposable
     {
         _translator = translator;
         _logBuilder = new StringBuilder();
+        _removeSourceData = false;
         _process = null;
+        _progressSkipCounter = 0;
         Id = _nextId++;
         Options = options;
         FilePath = Path.Combine(Options.SaveFolder, $"{Options.SaveFilename}{Options.FileType.DotExtension}");
@@ -94,6 +99,7 @@ public partial class Download : IDisposable
             Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, log.AsMemory(), false));
             return;
         }
+        _removeSourceData = downloader.RemoveSourceData;
         _process = new Process()
         {
             EnableRaisingEvents = true,
@@ -156,7 +162,7 @@ public partial class Download : IDisposable
             "--progress",
             "--newline",
             "--progress-template",
-            "[Parabolic] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
+            "[Parabolic] Progress;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
             "--progress-delta",
             ".75",
             "-t",
@@ -178,6 +184,11 @@ public partial class Download : IDisposable
             "--print",
             "after_move:filepath"
         };
+        if (Options.Url.Host.Contains("instagram") && Options.PlaylistPosition != -1)
+        {
+            arguments.Add("--playlist-items");
+            arguments.Add($"{Options.PlaylistPosition}");
+        }
         if (Directory.Exists(pluginsDir))
         {
             arguments.Add("--plugin-dir");
@@ -285,12 +296,7 @@ public partial class Download : IDisposable
         if (downloader.EmbedMetadata)
         {
             arguments.Add("--embed-metadata");
-            if (downloader.RemoveSourceData)
-            {
-                arguments.Add("--postprocessor-args");
-                arguments.Add($"Metadata+ffmpeg:-metadata comment= -metadata description= -metadata synopsis= -metadata purl= {(Options.PlaylistPosition != -1 ? $"-metadata track={Options.PlaylistPosition}" : string.Empty)}");
-            }
-            else if (Options.PlaylistPosition != -1)
+            if (Options.PlaylistPosition != -1)
             {
                 arguments.Add("--postprocessor-args");
                 arguments.Add($"Metadata+ffmpeg:-metadata track={Options.PlaylistPosition}");
@@ -323,7 +329,7 @@ public partial class Download : IDisposable
             arguments.Add("--downloader");
             arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");
             arguments.Add("--downloader-args");
-            arguments.Add($"aria2c:--summary-interval=0 --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
+            arguments.Add($"aria2c:--summary-interval={(OperatingSystem.IsWindows() ? "0" : "1")} --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
             arguments.Add("--concurrent-fragments");
             arguments.Add("8");
         }
@@ -336,7 +342,7 @@ public partial class Download : IDisposable
                 arguments.Add("--password");
                 arguments.Add(Options.Credential.Password);
             }
-            else if (string.IsNullOrEmpty(Options.Credential.Password))
+            else if (!string.IsNullOrEmpty(Options.Credential.Password))
             {
                 arguments.Add("--video-password");
                 arguments.Add(Options.Credential.Password);
@@ -425,7 +431,7 @@ public partial class Download : IDisposable
             }
             formatString += Options.AudioBitrate.Value switch
             {
-                var b when b == double.MaxValue => "bestaudio",
+                var b when b == double.MaxValue => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var b when b == -1.0 => "worstaudio",
                 _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]/worstaudio"
             };
@@ -511,6 +517,7 @@ public partial class Download : IDisposable
             arguments.Add($"*{Options.TimeFrame.ToString()}");
             arguments.Add("--force-keyframes-at-cuts");
         }
+        arguments.AddRange(downloader.YtdlpDownloadArgs.SplitCommandLine());
         DownloadArgumentsCache[hash] = arguments;
         return arguments;
     }
@@ -531,7 +538,7 @@ public partial class Download : IDisposable
         return false;
     }
 
-    private void Process_Exited(object? sender, EventArgs e)
+    private async void Process_Exited(object? sender, EventArgs e)
     {
         if (Status != DownloadStatus.Stopped)
         {
@@ -542,14 +549,63 @@ public partial class Download : IDisposable
             var lines = Log.Split('\n');
             try
             {
-                var finalPath = lines[^1];
+                var finalPath = lines[^1].Trim('\r');
                 if (!File.Exists(finalPath))
                 {
-                    finalPath = lines[^2];
+                    finalPath = lines[^2].Trim('\r');
                 }
                 if (File.Exists(finalPath))
                 {
                     FilePath = finalPath;
+                    if (_removeSourceData)
+                    {
+                        var track = new Track(FilePath);
+                        track.Comment = string.Empty;
+                        track.Description = string.Empty;
+                        track.EncodedBy = string.Empty;
+                        track.Encoder = string.Empty;
+                        if (track.AdditionalFields.ContainsKey("comment"))
+                        {
+                            track.AdditionalFields.Remove("comment");
+                        }
+                        if (track.AdditionalFields.ContainsKey("COMMENT"))
+                        {
+                            track.AdditionalFields.Remove("COMMENT");
+                        }
+                        if (track.AdditionalFields.ContainsKey("description"))
+                        {
+                            track.AdditionalFields.Remove("description");
+                        }
+                        if (track.AdditionalFields.ContainsKey("DESCRIPTION"))
+                        {
+                            track.AdditionalFields.Remove("DESCRIPTION");
+                        }
+                        if (track.AdditionalFields.ContainsKey("purl"))
+                        {
+                            track.AdditionalFields.Remove("purl");
+                        }
+                        if (track.AdditionalFields.ContainsKey("PURL"))
+                        {
+                            track.AdditionalFields.Remove("PURL");
+                        }
+                        if (track.AdditionalFields.ContainsKey("synopsis"))
+                        {
+                            track.AdditionalFields.Remove("synopsis");
+                        }
+                        if (track.AdditionalFields.ContainsKey("SYNOPSIS"))
+                        {
+                            track.AdditionalFields.Remove("SYNOPSIS");
+                        }
+                        if (track.AdditionalFields.ContainsKey("url"))
+                        {
+                            track.AdditionalFields.Remove("url");
+                        }
+                        if (track.AdditionalFields.ContainsKey("URL"))
+                        {
+                            track.AdditionalFields.Remove("URL");
+                        }
+                        await track.SaveAsync();
+                    }
                 }
             }
             catch { }
@@ -568,14 +624,22 @@ public partial class Download : IDisposable
 
     private async void Process_OutputDataReceived(object? sender, DataReceivedEventArgs e)
     {
-        if (string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data))
+        if (_progressSkipCounter > 0 || e.Data is null || string.IsNullOrEmpty(e.Data) || string.IsNullOrWhiteSpace(e.Data) || e.Data.StartsWith(" ***", StringComparison.Ordinal))
         {
+            if (_progressSkipCounter > 0)
+            {
+                _progressSkipCounter--;
+            }
+            else if (e.Data?.StartsWith(" ***", StringComparison.Ordinal) ?? false)
+            {
+                _progressSkipCounter = 4;
+            }
             return;
         }
         _logBuilder.AppendLine(e.Data);
         try
         {
-            if (e.Data.StartsWith("[Parabolic]"))
+            if (e.Data.StartsWith("[Parabolic] Progress", StringComparison.Ordinal))
             {
                 var fields = e.Data.Split(';', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length != 7 || fields[1] == "NA")
@@ -595,7 +659,7 @@ public partial class Download : IDisposable
                         fields[6] == "NA" || fields[6] == "Unknown" ? -1 : int.Parse(fields[6])));
                 }
             }
-            else if (e.Data.StartsWith("[#"))
+            else if (e.Data.StartsWith("[#", StringComparison.Ordinal))
             {
                 var line = e.Data;
                 if (OperatingSystem.IsWindows())
@@ -628,7 +692,7 @@ public partial class Download : IDisposable
                     fields[3].Substring(3).AriaSizeToBytes(),
                     fields[4].Substring(4, fields[4].Length - 4 - 1).AriaEtaToSeconds()));
             }
-            else if (e.Data.StartsWith("[download] Sleeping"))
+            else if (e.Data.StartsWith("[download] Sleeping", StringComparison.Ordinal))
             {
                 var fields = e.Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (fields.Length < 3 || !double.TryParse(fields[2], out var seconds))
@@ -643,7 +707,7 @@ public partial class Download : IDisposable
                         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NegativeInfinity, Math.Floor(seconds--), 0));
                         await Task.Delay(1000);
                     }
-                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
+                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NaN, 0.0, 0));
                 }
             }
             else

@@ -1,6 +1,7 @@
 ﻿using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
+using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -97,7 +98,7 @@ public class DiscoveryService : IDiscoveryService
                 arguments.Add("--password");
                 arguments.Add(credential.Password);
             }
-            else if (string.IsNullOrEmpty(credential.Password))
+            else if (!string.IsNullOrEmpty(credential.Password))
             {
                 arguments.Add("--video-password");
                 arguments.Add(credential.Password);
@@ -124,6 +125,7 @@ public class DiscoveryService : IDiscoveryService
             arguments.Add("--cookies");
             arguments.Add(downloaderOptions.CookiesPath);
         }
+        arguments.AddRange(downloaderOptions.YtdlpDiscoveryArgs.SplitCommandLine());
         using var process = new Process()
         {
             StartInfo = new ProcessStartInfo(_ytdlpExecutableService.ExecutablePath ?? "yt-dlp", arguments)
@@ -200,7 +202,7 @@ public class DiscoveryService : IDiscoveryService
             if (fields.Length >= 2)
             {
                 var saveFolder = fields[1].Trim().Trim('"').Trim();
-                if (saveFolder.StartsWith("~"))
+                if (saveFolder.StartsWith("~", StringComparison.Ordinal))
                 {
                     saveFolder = saveFolder.Replace("~", UserDirectories.Home);
                 }

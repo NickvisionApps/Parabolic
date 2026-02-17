@@ -7,7 +7,6 @@ using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
-using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
@@ -47,6 +46,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private readonly AddDownloadDialogController _controller;
     private readonly WindowId _windowId;
     private DiscoveryContext? _discoveryContext;
+    private bool _isUpdatingSubtitleSelection;
 
     public AddDownloadDialog(AddDownloadDialogController controller, WindowId windowId)
     {
@@ -54,6 +54,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         _controller = controller;
         _windowId = windowId;
         _discoveryContext = null;
+        _isUpdatingSubtitleSelection = false;
         Title = _controller.Translator._("Add Download");
         PrimaryButtonText = _controller.Translator._("Discover");
         CloseButtonText = _controller.Translator._("Cancel");
@@ -92,6 +93,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         StatusSingleSubtitles.Description = _controller.Translator._("No subtitles were found for this media.");
         LblSingleSelectAllSubtitles.Text = _controller.Translator._("Select All");
         LblSingleDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
+        TxtSingleSubtitlesSearch.PlaceholderText = _controller.Translator._("Search subtitles");
         TglSingleSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
         TglSingleSplitChapters.OffContent = _controller.Translator._("Split into Files by Chapters");
         TglSingleExportDescription.OnContent = _controller.Translator._("Export Description to File");
@@ -125,6 +127,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         LblPlaylistSelectAllSubtitles.Text = _controller.Translator._("Select All");
         LblPlaylistDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
         LblPlaylistSubtitleNote.Text = _controller.Translator._("Note: Some playlist items may not contain subtitles for a selected language.");
+        TxtPlaylistSubtitlesSearch.PlaceholderText = _controller.Translator._("Search subtitles");
         TglPlaylistExportM3U.OnContent = _controller.Translator._("Export M3U Playlist File");
         TglPlaylistExportM3U.OffContent = _controller.Translator._("Export M3U Playlist File");
         TglPlaylistSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
@@ -193,7 +196,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private async Task DiscoverMediaAsync(CancellationToken cancellationToken)
     {
         Credential? credential = null;
-        if (!string.IsNullOrEmpty(TxtUsername.Text) && !string.IsNullOrEmpty(TxtPassword.Password))
+        if (!string.IsNullOrEmpty(TxtUsername.Text) || !string.IsNullOrEmpty(TxtPassword.Password))
         {
             credential = new Credential("manual", TxtUsername.Text, TxtPassword.Password);
         }
@@ -226,6 +229,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbSingleFileType.SelectSelectionItem();
             ListSingleSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
             ListSingleSubtitles.SelectSelectionItems();
+            TxtSingleSubtitlesSearch.Text = string.Empty;
             TglSingleSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglSingleExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
             CmbSinglePostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments;
@@ -258,6 +262,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ListPlaylistItems.SelectSelectionItems();
             ListPlaylistSubtitles.ItemsSource = _discoveryContext.SubtitleLanguages;
             ListPlaylistSubtitles.SelectSelectionItems();
+            TxtPlaylistSubtitlesSearch.Text = string.Empty;
             TglPlaylistExportM3U.IsOn = _controller.PreviousDownloadOptions.ExportM3U;
             TglPlaylistSplitChapters.IsOn = _controller.PreviousDownloadOptions.SplitChapters;
             TglPlaylistExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
@@ -277,7 +282,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!,
         (CmbSingleVideoFormat.SelectedItem as SelectionItem<Format>)!,
         (CmbSingleAudioFormat.SelectedItem as SelectionItem<Format>)!,
-        ListSingleSubtitles.SelectedItems.Cast<SelectionItem<SubtitleLanguage>>(),
+        _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
         TglSingleSplitChapters.IsOn,
         TglSingleExportDescription.IsOn,
         TglSingleExcludeFromHistory.IsOn,
@@ -294,7 +299,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         (CmbPlaylistSuggestedAudioBitrate.SelectedItem as SelectionItem<double>)!,
         TglPlaylistReverseDownloadOrder.IsOn,
         TglPlaylistNumberTitles.IsOn,
-        ListPlaylistSubtitles.SelectedItems.Cast<SelectionItem<SubtitleLanguage>>(),
+        _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
         TglPlaylistExportM3U.IsOn,
         TglPlaylistSplitChapters.IsOn,
         TglPlaylistExportDescription.IsOn,
@@ -408,4 +413,46 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private void BtnPlaylistSelectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 
     private void BtnPlaylistDeselectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.DeselectAll();
+
+    private void TxtSingleSubtitlesSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    {
+        if (_discoveryContext is null)
+        {
+            return;
+        }
+        var searchText = TxtSingleSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        _isUpdatingSubtitleSelection = true;
+        ListSingleSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText));
+        ListSingleSubtitles.SelectSelectionItems();
+        _isUpdatingSubtitleSelection = false;
+    }
+
+    private void TxtPlaylistSubtitlesSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    {
+        if (_discoveryContext is null)
+        {
+            return;
+        }
+        var searchText = TxtPlaylistSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        _isUpdatingSubtitleSelection = true;
+        ListPlaylistSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText));
+        ListPlaylistSubtitles.SelectSelectionItems();
+        _isUpdatingSubtitleSelection = false;
+    }
+
+    private void ListSubtitles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_isUpdatingSubtitleSelection)
+        {
+            return;
+        }
+        foreach (var item in e.AddedItems)
+        {
+            (item as SelectionItem<SubtitleLanguage>)!.ShouldSelect = true;
+        }
+        foreach (var item in e.RemovedItems)
+        {
+            (item as SelectionItem<SubtitleLanguage>)!.ShouldSelect = false;
+        }
+    }
 }

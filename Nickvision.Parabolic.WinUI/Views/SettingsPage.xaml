@@ -244,6 +244,24 @@
 
                             <NumberBox x:Name="NumMinimumSplitSize" Minimum="1" Maximum="1024" LargeChange="128" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
                         </community:SettingsCard>
+
+                        <TextBlock x:Name="LblAdvanced" Margin="0,12,0,0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+                        <community:SettingsCard x:Name="RowYtdlpDiscoveryArgs">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <TextBox x:Name="TxtYtdlpDiscoveryArgs" TextChanged="Txt_TextChanged"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowYtdlpDownloadArgs">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <TextBox x:Name="TxtYtdlpDownloadArgs" TextChanged="Txt_TextChanged"/>
+                        </community:SettingsCard>
                     </StackPanel>
 
                     <StackPanel Spacing="6">

@@ -125,6 +125,7 @@
                                     <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
 
@@ -153,7 +154,9 @@
                                             </Button.Content>
                                         </Button>
 
-                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                        <AutoSuggestBox x:Name="TxtSingleSubtitlesSearch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" QueryIcon="Find" TextChanged="TxtSingleSubtitlesSearch_TextChanged"/>
+
+                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged"
                                                   DisplayMemberPath="Label" SelectionMode="Multiple"/>
                                     </Grid>
                                 </nickvision:ViewStack.Pages>
@@ -326,6 +329,7 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
 
@@ -356,7 +360,9 @@
 
                                         <TextBlock x:Name="LblPlaylistSubtitleNote" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Foreground="Gray" TextWrapping="Wrap"/>
 
-                                        <ListView x:Name="ListPlaylistSubtitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                        <AutoSuggestBox x:Name="TxtPlaylistSubtitlesSearch" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" QueryIcon="Find" TextChanged="TxtPlaylistSubtitlesSearch_TextChanged"/>
+
+                                        <ListView x:Name="ListPlaylistSubtitles" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged"
                                                   DisplayMemberPath="Label" SelectionMode="Multiple"/>
                                     </Grid>
                                 </nickvision:ViewStack.Pages>

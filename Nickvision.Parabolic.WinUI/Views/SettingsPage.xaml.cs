@@ -97,6 +97,13 @@ public sealed partial class SettingsPage : Page
         RowMaxConnectionsPerServer.Description = _controller.Translator._("Corresponds to -x option");
         RowMinimumSplitSize.Header = _controller.Translator._("Minimum Split Size (MiB)");
         RowMinimumSplitSize.Description = _controller.Translator._("Corresponds to -k option");
+        LblAdvanced.Text = _controller.Translator._("Advanced");
+        RowYtdlpDiscoveryArgs.Header = _controller.Translator._("yt-dlp Discovery Arguments");
+        RowYtdlpDiscoveryArgs.Description = _controller.Translator._("Extra arguments to pass to yt-dlp when discovering media");
+        TxtYtdlpDiscoveryArgs.PlaceholderText = _controller.Translator._("Enter args here");
+        RowYtdlpDownloadArgs.Header = _controller.Translator._("yt-dlp Download Arguments");
+        RowYtdlpDownloadArgs.Description = _controller.Translator._("Extra arguments to pass to yt-dlp when downloading media");
+        TxtYtdlpDownloadArgs.PlaceholderText = _controller.Translator._("Enter args here");
         RowEmbedMetadata.Header = _controller.Translator._("Embed Metadata");
         TglEmbedMetadata.OnContent = _controller.Translator._("On");
         TglEmbedMetadata.OffContent = _controller.Translator._("Off");
@@ -159,6 +166,8 @@ public sealed partial class SettingsPage : Page
         TglUseAria.IsOn = _controller.UseAria;
         NumMaxConnectionsPerServer.Value = _controller.AriaMaxConnectionsPerServer;
         NumMinimumSplitSize.Value = _controller.AriaMinSplitSize;
+        TxtYtdlpDiscoveryArgs.Text = _controller.YtdlpDiscoveryArgs;
+        TxtYtdlpDownloadArgs.Text = _controller.YtdlpDownloadArgs;
         TglEmbedMetadata.IsOn = _controller.EmbedMetadata;
         TglRemoveSourceData.IsOn = _controller.RemoveSourceData;
         TglEmbedThumbnails.IsOn = _controller.EmbedThumbnails;
@@ -326,6 +335,8 @@ public sealed partial class SettingsPage : Page
         _controller.UseAria = TglUseAria.IsOn;
         _controller.AriaMaxConnectionsPerServer = (int)NumMaxConnectionsPerServer.Value;
         _controller.AriaMinSplitSize = (int)NumMinimumSplitSize.Value;
+        _controller.YtdlpDiscoveryArgs = TxtYtdlpDiscoveryArgs.Text;
+        _controller.YtdlpDownloadArgs = TxtYtdlpDownloadArgs.Text;
         _controller.EmbedMetadata = TglEmbedMetadata.IsOn;
         _controller.RemoveSourceData = TglRemoveSourceData.IsOn;
         _controller.EmbedThumbnails = TglEmbedThumbnails.IsOn;

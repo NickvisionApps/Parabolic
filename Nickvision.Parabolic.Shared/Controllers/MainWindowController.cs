@@ -24,7 +24,6 @@ public class MainWindowController : IDisposable
     private AppVersion _latestYtdlpVersion;
 
     public AppInfo AppInfo { get; }
-    public Uri? UrlFromArgs { get; set; }
     public int RecoverableDownloadsCount => _services.Get<IRecoveryService>()!.Count;
 
     public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
@@ -33,21 +32,22 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.2");
+        _latestAppVersion = new AppVersion("2026.2.3");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
             Changelog = """
-            - Added the ability to see audio language of video formats if applicable
-            - Improved display of yt-dlp progress
-            - Fixed an issue where yt-dlp errors weren't reported correctly
-            - Fixed an issue where source data was not removed for playlist media
-            - Fixed an issue where track numbers were starting at 0 instead of 1 for playlists
-            - Fixed an issue where the browser extension was unable to open Parabolic on Linux
-            - Fixed an issue where aria2c progress did not show on Linux
-            - Fixed an issue where some settings did not save on Linux
-            - Fixed an issue where Parabolic would not close on Linux
-            - Fixed an issue where Parabolic did not open on Windows
+            - Added a search bar for subtitles in the add download dialog
+            - Added the ability to specify extra yt-dlp arguments for the discovery process
+            - Added the ability to specify extra yt-dlp arguments for the download process
+            - Fixed an issue where video passwords were not working when specified
+            - Fixed an issue where yt-dlp progress was not always displayed correctly
+            - Fixed an issue where instagram stories did not download correctly
+            - Fixed an issue where the encoder field was not properly cleared on FLAC files when remove source data was enabled
+            - Fixed an issue where Parabolic would not detect translation languages correctly
+            - Fixed an issue where downloaded yt-dlp version were not getting executable permissions on Linux
+            - Fixed an issue where Parabolic wouldn't open on Linux
+            - Fixed an issue where playlist video downloads may not have had sound on Windows
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
@@ -57,7 +57,7 @@ public class MainWindowController : IDisposable
         for (var i = 1; i < args.Length; i++)
         {
             var urlText = args[i].Trim();
-            if (urlText.StartsWith("parabolic://"))
+            if (urlText.StartsWith("parabolic://", StringComparison.Ordinal))
             {
                 urlText = urlText.Replace("parabolic://", "https://");
             }
@@ -235,6 +235,29 @@ public class MainWindowController : IDisposable
             var config = _services.Get<IJsonFileService>()!.Load<Configuration>(Configuration.Key);
             config.ShowDislcaimerOnStartup = value;
             _services.Get<IJsonFileService>()!.Save(config, Configuration.Key);
+        }
+    }
+
+    public Uri? UrlFromArgs
+    {
+        get;
+
+        set
+        {
+            if (value is null)
+            {
+                field = null;
+                return;
+            }
+            var urlText = value.ToString().Trim();
+            if (urlText.StartsWith("parabolic://", StringComparison.Ordinal))
+            {
+                urlText = urlText.Replace("parabolic://", "https://");
+            }
+            if (Uri.TryCreate(urlText, UriKind.Absolute, out var url))
+            {
+                field = url;
+            }
         }
     }
 

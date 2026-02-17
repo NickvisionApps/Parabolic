@@ -17,14 +17,16 @@ public class Configuration
     public Theme Theme { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
     public bool AllowPreviewUpdates { get; set; }
+    [JsonConverter(typeof(NullToEmptyStringConverter))]
     public string TranslationLanguage { get; set; }
+    [JsonConverter(typeof(NullToDefaultObjectConverter<WindowGeometry>))]
     public WindowGeometry WindowGeometry { get; set; }
+    [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledYtdlpAppVersion { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool ShowDislcaimerOnStartup { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
     public bool PreventSuspend { get; set; }
-    public int MaxNumberOfActiveDownloads { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool OverwriteExistingFiles { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
@@ -44,9 +46,11 @@ public class Configuration
     [JsonConverter(typeof(NullToFalseBoolConverter))]
     public bool YouTubeSponsorBlock { get; set; }
     public int? SpeedLimit { get; set; }
+    [JsonConverter(typeof(NullToEmptyStringConverter))]
     public string ProxyUrl { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<Browser>))]
     public Browser CookiesBrowser { get; set; }
+    [JsonConverter(typeof(NullToEmptyStringConverter))]
     public string CookiesPath { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool EmbedMetadata { get; set; }
@@ -60,12 +64,14 @@ public class Configuration
     public bool EmbedChapters { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool EmbedSubtitles { get; set; }
-    public int PostprocessingThreads { get; set; }
+    [JsonConverter(typeof(NullToDefaultObjectConverter<List<PostProcessorArgument>>))]
     public List<PostProcessorArgument> PostprocessingArguments { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
     public bool UseAria { get; set; }
-    public int AriaMaxConnectionsPerServer { get; set; }
-    public int AriaMinSplitSize { get; set; }
+    [JsonConverter(typeof(NullToEmptyStringConverter))]
+    public string YtdlpDiscoveryArgs { get; set; }
+    [JsonConverter(typeof(NullToEmptyStringConverter))]
+    public string YtdlpDownloadArgs { get; set; }
 
     static Configuration()
     {
@@ -110,6 +116,8 @@ public class Configuration
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
+        YtdlpDiscoveryArgs = string.Empty;
+        YtdlpDownloadArgs = string.Empty;
     }
 
     [JsonIgnore]
@@ -139,8 +147,42 @@ public class Configuration
         PostprocessingArguments = PostprocessingArguments,
         UseAria = UseAria,
         AriaMaxConnectionsPerServer = AriaMaxConnectionsPerServer,
-        AriaMinSplitSize = AriaMinSplitSize
+        AriaMinSplitSize = AriaMinSplitSize,
+        YtdlpDiscoveryArgs = YtdlpDiscoveryArgs,
+        YtdlpDownloadArgs = YtdlpDownloadArgs
     };
+
+    [JsonConverter(typeof(NullToZeroIntConverter))]
+    public int MaxNumberOfActiveDownloads
+    {
+        get => field == 0 ? 5 : field;
+
+        set;
+    }
+
+    [JsonConverter(typeof(NullToZeroIntConverter))]
+    public int PostprocessingThreads
+    {
+        get => field == 0 ? Environment.ProcessorCount : field;
+
+        set;
+    }
+
+    [JsonConverter(typeof(NullToZeroIntConverter))]
+    public int AriaMaxConnectionsPerServer
+    {
+        get => field == 0 ? 16 : field;
+
+        set;
+    }
+
+    [JsonConverter(typeof(NullToZeroIntConverter))]
+    public int AriaMinSplitSize
+    {
+        get => field == 0 ? 20 : field;
+
+        set;
+    }
 
     public override string ToString() => JsonSerializer.Serialize(this, _options);
 }
