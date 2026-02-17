@@ -1,50 +1,87 @@
-﻿using System;
+﻿using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+using Vanara.PInvoke;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
 public static partial class WindowsProcessHelpers
 {
-    [LibraryImport("ntdll.dll")]
-    private static partial int NtSuspendProcess(nint processHandle);
+    private static readonly ConcurrentDictionary<int, Kernel32.SafeHJOB> _jobObjects;
 
-    [LibraryImport("ntdll.dll")]
-    private static partial int NtResumeProcess(nint processHandle);
-
-    public static void Suspend(Process p, bool entireProcessTree = false)
+    static WindowsProcessHelpers()
     {
-        NtSuspendProcess(p.Handle);
-        if (entireProcessTree)
+        _jobObjects = new ConcurrentDictionary<int, Kernel32.SafeHJOB>();
+    }
+
+    public static void SetAsParentProcess(Process p)
+    {
+        var pid = p.Id;
+        var job = Kernel32.CreateJobObject(null, null);
+        var info = new Kernel32.JOBOBJECT_EXTENDED_LIMIT_INFORMATION
         {
-            var searcher = new System.Management.ManagementObjectSearcher($"SELECT ProcessId FROM Win32_Process WHERE ParentProcessId={p.Id}");
-            foreach (var obj in searcher.Get())
+            BasicLimitInformation = new Kernel32.JOBOBJECT_BASIC_LIMIT_INFORMATION
             {
-                try
-                {
-                    using var childProcess = Process.GetProcessById(Convert.ToInt32(obj["ProcessId"]));
-                    Suspend(childProcess, true);
-                }
-                catch { }
+                LimitFlags = Kernel32.JOBOBJECT_LIMIT_FLAGS.JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE | Kernel32.JOBOBJECT_LIMIT_FLAGS.JOB_OBJECT_LIMIT_DIE_ON_UNHANDLED_EXCEPTION
             }
+        };
+        Kernel32.SetInformationJobObject(job, Kernel32.JOBOBJECTINFOCLASS.JobObjectExtendedLimitInformation, info);
+        Kernel32.AssignProcessToJobObject(job, p.Handle);
+        _jobObjects[pid] = job;
+        p.Exited += (_, e) =>
+        {
+            job.Dispose();
+            _jobObjects.TryRemove(pid, out var _);
+        };
+    }
+
+    public static void Suspend(Process p)
+    {
+        foreach (var id in GetJobProcessIds(p))
+        {
+            try
+            {
+                using var proc = Process.GetProcessById((int)id.ToUInt32());
+                foreach (ProcessThread thread in proc.Threads)
+                {
+                    using var handle = Kernel32.OpenThread(ACCESS_MASK.FromEnum(Kernel32.ThreadAccess.THREAD_SUSPEND_RESUME), false, (uint)thread.Id);
+                    if (handle.IsInvalid)
+                    {
+                        continue;
+                    }
+                    Kernel32.SuspendThread(handle);
+                }
+            }
+            catch { }
         }
     }
 
-    public static void Resume(Process p, bool entireProcessTree = false)
+    public static void Resume(Process p)
     {
-        NtResumeProcess(p.Handle);
-        if (entireProcessTree)
+        foreach (var id in GetJobProcessIds(p))
         {
-            var searcher = new System.Management.ManagementObjectSearcher($"SELECT ProcessId FROM Win32_Process WHERE ParentProcessId={p.Id}");
-            foreach (var obj in searcher.Get())
+            try
             {
-                try
+                using var proc = Process.GetProcessById((int)id.ToUInt32());
+                foreach (ProcessThread thread in proc.Threads)
                 {
-                    using var childProcess = Process.GetProcessById(Convert.ToInt32(obj["ProcessId"]));
-                    Resume(childProcess, true);
+                    using var handle = Kernel32.OpenThread(ACCESS_MASK.FromEnum(Kernel32.ThreadAccess.THREAD_SUSPEND_RESUME), false, (uint)thread.Id);
+                    if (handle.IsInvalid)
+                    {
+                        continue;
+                    }
+                    Kernel32.ResumeThread(handle);
                 }
-                catch { }
             }
+            catch { }
         }
+    }
+
+    private static nuint[] GetJobProcessIds(Process p)
+    {
+        if (!_jobObjects.TryGetValue(p.Id, out var job))
+        {
+            return [];
+        }
+        return Kernel32.QueryInformationJobObject<Kernel32.JOBOBJECT_BASIC_PROCESS_ID_LIST>(job, Kernel32.JOBOBJECTINFOCLASS.JobObjectBasicProcessIdList).ProcessIdList;
     }
 }
