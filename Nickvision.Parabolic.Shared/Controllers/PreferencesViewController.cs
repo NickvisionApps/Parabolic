@@ -52,7 +52,9 @@ public class PreferencesViewController
             new SelectionItem<string>(string.Empty, Translator._("System"), string.IsNullOrEmpty(_configuration.TranslationLanguage)),
             new SelectionItem<string>("C", "en_US", _configuration.TranslationLanguage == "C")
         };
-        foreach (var language in Translator.AvailableLanguages)
+        var languages = Translator.AvailableLanguages.ToList();
+        languages.Sort();
+        foreach (var language in languages)
         {
             (AvailableTranslationLanguages as IList)!.Add(new SelectionItem<string>(language, language, _configuration.TranslationLanguage == language));
         }
