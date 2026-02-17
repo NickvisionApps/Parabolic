@@ -32,22 +32,14 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.3");
+        _latestAppVersion = new AppVersion("2026.2.4");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
             Changelog = """
-            - Added a search bar for subtitles in the add download dialog
-            - Added the ability to specify extra yt-dlp arguments for the discovery process
-            - Added the ability to specify extra yt-dlp arguments for the download process
-            - Fixed an issue where video passwords were not working when specified
-            - Fixed an issue where yt-dlp progress was not always displayed correctly
-            - Fixed an issue where instagram stories did not download correctly
-            - Fixed an issue where the encoder field was not properly cleared on FLAC files when remove source data was enabled
-            - Fixed an issue where Parabolic would not detect translation languages correctly
-            - Fixed an issue where downloaded yt-dlp version were not getting executable permissions on Linux
-            - Fixed an issue where Parabolic wouldn't open on Linux
-            - Fixed an issue where playlist video downloads may not have had sound on Windows
+            - Fixed an issue where pausing and resuming downloads did not work correctly
+            - Fixed an issue where Parabolic would use a previous save folder even if it no longer existed
+            - Fixed an issue where translations were not available on Linux
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),

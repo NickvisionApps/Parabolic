@@ -71,7 +71,7 @@ public partial class Download : IDisposable
             return;
         }
         Status = DownloadStatus.Paused;
-        _process?.Suspend(true);
+        _process?.Suspend();
     }
 
     public void Resume()
@@ -81,7 +81,8 @@ public partial class Download : IDisposable
             return;
         }
         Status = DownloadStatus.Running;
-        _process?.Resume(true);
+        _process?.Resume();
+        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NaN, 0.0, 0));
     }
 
     public void Start(string ytdlpExecutablePath, DownloaderOptions downloader)
@@ -116,6 +117,7 @@ public partial class Download : IDisposable
         _process.OutputDataReceived += Process_OutputDataReceived;
         _process.ErrorDataReceived += Process_OutputDataReceived;
         _process.Start();
+        _process.SetAsParentProcess();
         _process.BeginOutputReadLine();
         _process.BeginErrorReadLine();
         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translator?._("Starting download...") ?? "Starting download...").AsMemory(), double.NaN, 0.0, 0));
@@ -704,6 +706,10 @@ public partial class Download : IDisposable
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, seconds, 0));
                     while (seconds >= 1)
                     {
+                        if (Status == DownloadStatus.Paused)
+                        {
+                            return;
+                        }
                         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NegativeInfinity, Math.Floor(seconds--), 0));
                         await Task.Delay(1000);
                     }

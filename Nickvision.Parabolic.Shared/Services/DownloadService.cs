@@ -315,7 +315,7 @@ public class DownloadService : IDisposable, IDownloadService
 
     private void Download_ProgressChanged(object? sender, DownloadProgressChangedEventArgs e)
     {
-        if (!_downloading.TryGetValue(e.Id, out var download) || download.Status == DownloadStatus.Stopped)
+        if (!_downloading.TryGetValue(e.Id, out var download) || download.Status != DownloadStatus.Running)
         {
             return;
         }

@@ -7,28 +7,40 @@ public static partial class ProcessExtensions
 {
     extension(Process p)
     {
-
-        public void Suspend(bool entireProcessTree = false)
+        public void SetAsParentProcess()
         {
             if (OperatingSystem.IsWindows())
             {
-                WindowsProcessHelpers.Suspend(p, entireProcessTree);
+                WindowsProcessHelpers.SetAsParentProcess(p);
             }
             else
             {
-                UnixProcessHelpers.Suspend(p, entireProcessTree);
+                UnixProcessHelpers.SetAsParentProcess(p);
             }
         }
 
-        public void Resume(bool entireProcessTree = false)
+
+        public void Suspend()
         {
             if (OperatingSystem.IsWindows())
             {
-                WindowsProcessHelpers.Resume(p, entireProcessTree);
+                WindowsProcessHelpers.Suspend(p);
             }
             else
             {
-                UnixProcessHelpers.Resume(p, entireProcessTree);
+                UnixProcessHelpers.Suspend(p);
+            }
+        }
+
+        public void Resume()
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                WindowsProcessHelpers.Resume(p);
+            }
+            else
+            {
+                UnixProcessHelpers.Resume(p);
             }
         }
     }
