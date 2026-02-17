@@ -1,6 +1,7 @@
 ﻿using Nickvision.Desktop.Converters;
 using Nickvision.Desktop.Filesystem;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -12,7 +13,6 @@ public class PreviousDownloadOptions
     public static readonly string Key;
 
     public bool DownloadImmediately { get; set; }
-    public string SaveFolder { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType FullFileType { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
@@ -85,6 +85,13 @@ public class PreviousDownloadOptions
         SubtitleLanguages = [];
         AudioBitrate = double.MaxValue;
         VideoResolution = VideoResolution.Best;
+    }
+
+    public string SaveFolder
+    {
+        get => !Directory.Exists(field) ? UserDirectories.Downloads : field;
+
+        set => field = value;
     }
 
     public override string ToString() => JsonSerializer.Serialize(this, _options);

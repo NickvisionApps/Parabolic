@@ -38,6 +38,7 @@ public class MainWindowController : IDisposable
             Version = _latestAppVersion,
             Changelog = """
             - Fixed an issue where pausing and resuming downloads did not work correctly
+            - Fixed an issue where Parabolic would use a previous save folder even if it no longer existed
             - Fixed an issue where translations were not available on Linux
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
