@@ -32,14 +32,12 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.4");
+        _latestAppVersion = new AppVersion("2026.3.0-next");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
             Changelog = """
-            - Fixed an issue where pausing and resuming downloads did not work correctly
-            - Fixed an issue where Parabolic would use a previous save folder even if it no longer existed
-            - Fixed an issue where translations were not available on Linux
+            - Improved selection of playlist audio formats on Windows when bitrates are specified
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),

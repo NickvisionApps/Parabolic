@@ -20,7 +20,7 @@ public sealed class YtdlpExecutableServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.ytdlp.tests", "Nickvision Parabolic Ytdlp Tests", "Parabolic Ytdlp Tests")
         {
-            Version = new AppVersion("2026.2.4")
+            Version = new AppVersion("2026.3.0")
         };
         _httpClient = new HttpClient();
         _jsonFileService = new JsonFileService(appInfo);
@@ -85,7 +85,7 @@ public sealed class YtdlpExecutableServiceTests
             File.Delete(downloadedYtdlp);
         }
         Assert.IsNotNull(preview);
-        Assert.IsGreaterThan(new AppVersion("2026.2.4"), preview);
+        Assert.IsGreaterThan(new AppVersion("2026.3.0"), preview);
         Assert.IsTrue(await _ytdlpExecutableService.DownloadUpdateAsync(preview));
         Assert.IsTrue(File.Exists(downloadedYtdlp));
         File.Delete(downloadedYtdlp);

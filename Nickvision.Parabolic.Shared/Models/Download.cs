@@ -435,7 +435,7 @@ public partial class Download : IDisposable
             {
                 var b when b == double.MaxValue => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var b when b == -1.0 => "worstaudio",
-                _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]/worstaudio"
+                _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/worstaudio"
             };
         }
         if (!string.IsNullOrEmpty(formatString))
