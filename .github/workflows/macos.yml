@@ -1,0 +1,77 @@
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    types: [ "review_requested", "ready_for_review" ]
+  workflow_dispatch:
+name: macOS
+permissions:
+  id-token: write
+  contents: read
+env:
+  PROJECT_NAME: Nickvision.Parabolic.GNOME
+  APP_NAME: Parabolic
+jobs:
+  gnome-macos:
+    name: "GNOME on macOS"
+    if: ${{ github.event.pull_request.user.login != 'weblate' }}
+    strategy:
+      matrix:
+        variant:
+          - arch: x64
+            runner: macos-latest-large
+            runtime: osx-x64
+          - arch: arm64
+            runner: macos-latest
+            runtime: osx-arm64
+    runs-on: ${{ matrix.variant.runner }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - name: "Setup Environment"
+        run: brew install gtk4 libadwaita blueprint-compiler gettext glib
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+      - name: "Restore"
+        run: dotnet restore ${{ env.PROJECT_NAME }} --runtime ${{ matrix.variant.runtime }} /p:PublishReadyToRun=true
+      - name: "Publish"
+        run: dotnet publish ${{ env.PROJECT_NAME }} -c Release --no-restore --runtime ${{ matrix.variant.runtime }}
+      - name: "Create App Bundle"
+        working-directory: ${{ github.workspace }}
+        run: |
+          PUBLISH_DIR="${{ env.PROJECT_NAME }}/bin/Release/net10.0/${{ matrix.variant.runtime }}/publish"
+          APP_BUNDLE="${{ env.APP_NAME }}.app"
+          mkdir -p "$APP_BUNDLE/Contents/MacOS"
+          mkdir -p "$APP_BUNDLE/Contents/Resources"
+          cp -R "$PUBLISH_DIR/"* "$APP_BUNDLE/Contents/MacOS/"
+          cat > "$APP_BUNDLE/Contents/Info.plist" << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>CFBundleExecutable</key>
+              <string>${{ env.PROJECT_NAME }}</string>
+              <key>CFBundleIdentifier</key>
+              <string>org.nickvision.tubeconverter</string>
+              <key>CFBundleName</key>
+              <string>${{ env.APP_NAME }}</string>
+              <key>CFBundleVersion</key>
+              <string>2026.3.0</string>
+              <key>CFBundleShortVersionString</key>
+              <string>2026.3.0</string>
+              <key>CFBundlePackageType</key>
+              <string>APPL</string>
+              <key>LSMinimumSystemVersion</key>
+              <string>10.15</string>
+          </dict>
+          </plist>
+          EOF
+          chmod +x "$APP_BUNDLE/Contents/MacOS/${{ env.PROJECT_NAME }}"
+          tar -czf "${{ env.APP_NAME }}-${{ matrix.variant.arch }}.tar.gz" "$APP_BUNDLE"
+      - uses: actions/upload-artifact@v4
+        with:
+          path: ${{ github.workspace }}/${{ env.APP_NAME }}-${{ matrix.variant.arch }}.tar.gz
+          name: ${{ env.APP_NAME }}-macOS-${{ matrix.variant.arch }}
