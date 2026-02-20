@@ -19,9 +19,9 @@ jobs:
     strategy:
       matrix:
         variant:
-          - arch: x64
-            runner: macos-latest-large
-            runtime: osx-x64
+          # - arch: x64
+          #  runner: macos-latest-large
+          #  runtime: osx-x64
           - arch: arm64
             runner: macos-latest
             runtime: osx-arm64
