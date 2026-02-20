@@ -38,7 +38,7 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           chmod +x resources/macos/publish-and-package.sh
-          ./resources/macos/publish-and-package.sh /usr/local ${{ matrix.variant.runtime }}
+          ./resources/macos/publish-and-package.sh ${{ matrix.variant.runtime }}
       - uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/resources/macos/${{ env.APP_NAME }}.app

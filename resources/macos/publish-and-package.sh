@@ -21,8 +21,8 @@ echo -e "${BOLD}${BLUE}=========================================================
 # Initialize script and check arguments
 CURRENT_PWD=$(pwd)
 set -euo pipefail
-if [[ $# -lt 2 ]]; then
-    error "Usage: $0 prefix runtime"
+if [[ $# -lt 1 ]]; then
+    error "Usage: $0 runtime"
 fi
 
 # Change pwd to script directory
@@ -36,10 +36,8 @@ info "Loading variables..."
 APP_ID="org.nickvision.tubeconverter"
 APP_NAME="Parabolic"
 PROJECT="Nickvision.Parabolic.GNOME"
-PREFIX="$1"
-RUNTIME="$2"
+RUNTIME="$1"
 APP_BUNDLE="${APP_NAME}.app"
-info "Prefix: $PREFIX"
 info "Runtime: $RUNTIME"
 info "App bundle: $APP_BUNDLE"
 success "Loaded variables."
