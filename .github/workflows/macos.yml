@@ -19,9 +19,6 @@ jobs:
     strategy:
       matrix:
         variant:
-          # - arch: x64
-          #  runner: macos-latest-large
-          #  runtime: osx-x64
           - arch: arm64
             runner: macos-latest
             runtime: osx-arm64
@@ -44,5 +41,5 @@ jobs:
           ./resources/macos/publish-and-package.sh /usr/local ${{ matrix.variant.runtime }}
       - uses: actions/upload-artifact@v4
         with:
-          path: ${{ github.workspace }}/resources/macos/${{ env.APP_NAME }}.tar.gz
-          name: ${{ env.APP_NAME }}-macOS-${{ matrix.variant.arch }}
+          path: ${{ github.workspace }}/resources/macos/${{ env.APP_NAME }}.app
+          name: ${{ env.APP_NAME }}-${{ matrix.variant.arch }}

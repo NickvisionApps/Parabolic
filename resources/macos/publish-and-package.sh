@@ -82,11 +82,6 @@ info "Setting executable permissions..."
 chmod +x "$APP_BUNDLE/Contents/MacOS/$PROJECT"
 success "Set executable permissions."
 
-# Create tarball
-info "Creating tarball..."
-tar -czf "${APP_NAME}.tar.gz" "$APP_BUNDLE"
-success "Created tarball: ${APP_NAME}.tar.gz"
-
 # Restore pwd
 info "Restoring previous working directory..."
 cd "$CURRENT_PWD"
