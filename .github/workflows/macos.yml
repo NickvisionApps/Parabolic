@@ -42,4 +42,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/resources/macos/${{ env.APP_NAME }}.app
-          name: ${{ env.APP_NAME }}-${{ matrix.variant.arch }}
+          name: ${{ env.APP_NAME }}-${{ matrix.variant.arch }}.app

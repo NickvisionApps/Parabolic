@@ -71,9 +71,31 @@ info "Copying published files to app bundle..."
 cp -R "$PUBLISH_DIR/"* "$APP_BUNDLE/Contents/MacOS/"
 success "Copied published files to app bundle."
 cp "Info.plist" "$APP_BUNDLE/Contents/Info.plist"
+sed -i '' "s|@APP_ID@|$APP_ID|g" "$APP_BUNDLE/Contents/Info.plist"
 sed -i '' "s|@APP_NAME@|$APP_NAME|g" "$APP_BUNDLE/Contents/Info.plist"
 sed -i '' "s|@OUTPUT_NAME@|$PROJECT|g" "$APP_BUNDLE/Contents/Info.plist"
 success "Created Info.plist."
+
+# Set app icon
+info "Setting app icon..."
+if [[ -f "../${APP_ID}.png" ]]; then
+    mkdir -p AppIcon.iconset
+    sips -z 16 16 "../${APP_ID}.png" --out AppIcon.iconset/icon_16x16.png
+    sips -z 32 32 "../${APP_ID}.png" --out AppIcon.iconset/icon_16x16@2x.png
+    sips -z 32 32 "../${APP_ID}.png" --out AppIcon.iconset/icon_32x32.png
+    sips -z 64 64 "../${APP_ID}.png" --out AppIcon.iconset/icon_32x32@2x.png
+    sips -z 128 128 "../${APP_ID}.png" --out AppIcon.iconset/icon_128x128.png
+    sips -z 256 256 "../${APP_ID}.png" --out AppIcon.iconset/icon_128x128@2x.png
+    sips -z 256 256 "../${APP_ID}.png" --out AppIcon.iconset/icon_256x256.png
+    sips -z 512 512 "../${APP_ID}.png" --out AppIcon.iconset/icon_256x256@2x.png
+    sips -z 512 512 "../${APP_ID}.png" --out AppIcon.iconset/icon_512x512.png
+    sips -z 1024 1024 "../${APP_ID}.png" --out AppIcon.iconset/icon_512x512@2x.png
+    iconutil -c icns AppIcon.iconset -o "$APP_BUNDLE/Contents/Resources/${APP_ID}.icns"
+    rm -rf AppIcon.iconset
+    success "Set app icon."
+else
+    warn "Icon file not found at ../${APP_ID}.png"
+fi
 
 # Set executable permissions
 info "Setting executable permissions..."
