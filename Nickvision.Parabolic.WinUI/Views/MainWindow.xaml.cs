@@ -88,6 +88,7 @@ public sealed partial class MainWindow : Window
         FilterRunning.Content = _controller.Translator._("Running");
         FilterQueued.Content = _controller.Translator._("Queued");
         FilterCompleted.Content = _controller.Translator._("Completed");
+        FilterFailed.Content = _controller.Translator._("Failed");
         BtnStopAllRemaining.Label = _controller.Translator._("Stop All Remaining");
         BtnRetryAllFailed.Label = _controller.Translator._("Retry All Failed");
         BtnClearAllQueued.Label = _controller.Translator._("Clear All Queued");
@@ -520,6 +521,7 @@ public sealed partial class MainWindow : Window
             1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
             2 => row.Status == DownloadStatus.Queued,
             3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+            4 => row.Status == DownloadStatus.Error,
             _ => true
         }).Reverse().ToList();
         ViewStackDownloads.SelectedIndex = (DownloadsList.ItemsSource as IEnumerable<DownloadRow>)!.Count() > 0 ? 1 : 0;

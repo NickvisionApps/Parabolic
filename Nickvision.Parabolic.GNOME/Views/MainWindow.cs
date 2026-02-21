@@ -470,6 +470,7 @@ public class MainWindow : Adw.ApplicationWindow
             1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
             2 => row.Status == DownloadStatus.Queued,
             3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+            4 => row.Status == DownloadStatus.Error,
             _ => true
         }).Reverse();
         _listDownloads!.RemoveAll();
