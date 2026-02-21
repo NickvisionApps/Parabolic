@@ -37,6 +37,7 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Improved selection of playlist video formats when resolutions are specified
             - Improved selection of playlist audio formats on Windows when bitrates are specified
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),

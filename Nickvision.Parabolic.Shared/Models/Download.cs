@@ -401,7 +401,7 @@ public partial class Download : IDisposable
             {
                 var v when v == VideoResolution.Best => "bestvideo*",
                 var v when v == VideoResolution.Worst => "worstvideo*",
-                _ => $"bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
+                _ => $"bestvideo*[height={Options.VideoResolution.Height}]/bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
             };
         }
         if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
@@ -435,7 +435,7 @@ public partial class Download : IDisposable
             {
                 var b when b == double.MaxValue => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var b when b == -1.0 => "worstaudio",
-                _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/worstaudio"
+                _ => $"bestaudio[abr={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio"
             };
         }
         if (!string.IsNullOrEmpty(formatString))
