@@ -58,18 +58,21 @@ public class PreferencesViewController
         {
             (AvailableTranslationLanguages as IList)!.Add(new SelectionItem<string>(language, language, _configuration.TranslationLanguage == language));
         }
-        Browsers = new List<SelectionItem<Browser>>()
+        Browsers = new List<SelectionItem<Browser>>(OperatingSystem.IsWindows() ? 2 : 9)
         {
             new SelectionItem<Browser>(Browser.None, Translator._("None"), _configuration.DownloaderOptions.CookiesBrowser == Browser.None),
-            new SelectionItem<Browser>(Browser.Brave, Translator._("Brave"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Brave),
-            new SelectionItem<Browser>(Browser.Chrome, Translator._("Chrome"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chrome),
-            new SelectionItem<Browser>(Browser.Chromium, Translator._("Chromium"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chromium),
-            new SelectionItem<Browser>(Browser.Edge, Translator._("Edge"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Edge),
-            new SelectionItem<Browser>(Browser.Firefox, Translator._("Firefox"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Firefox),
-            new SelectionItem<Browser>(Browser.Opera, Translator._("Opera"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Opera),
-            new SelectionItem<Browser>(Browser.Vivaldi, Translator._("Vivaldi"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Vivaldi),
-            new SelectionItem<Browser>(Browser.Whale, Translator._("Whale"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Whale),
+            new SelectionItem<Browser>(Browser.Firefox, Translator._("Firefox"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Firefox)
         };
+        if(!OperatingSystem.IsWindows())
+        {
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Brave, Translator._("Brave"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Brave));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chrome, Translator._("Chrome"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chrome));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chromium, Translator._("Chromium"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chromium));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Edge, Translator._("Edge"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Edge));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Opera, Translator._("Opera"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Opera));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Vivaldi, Translator._("Vivaldi"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Vivaldi));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Whale, Translator._("Whale"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Whale));
+        }
         Executables = new List<SelectionItem<Executable>>()
         {
             new SelectionItem<Executable>(Executable.None, Translator._("None"), true)

@@ -37,8 +37,10 @@ public class MainWindowController : IDisposable
         {
             Version = _latestAppVersion,
             Changelog = """
+            - Added macOS app for the GNOME version of Parabolic
             - Improved selection of playlist video formats when resolutions are specified
             - Improved selection of playlist audio formats on Windows when bitrates are specified
+            - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),

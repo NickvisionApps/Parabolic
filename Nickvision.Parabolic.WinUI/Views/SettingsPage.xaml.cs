@@ -83,6 +83,7 @@ public sealed partial class SettingsPage : Page
         RowProxyUrl.Header = _controller.Translator._("Proxy URL");
         TxtProxyUrl.PlaceholderText = _controller.Translator._("Enter proxy url here");
         RowCookiesFile.Header = _controller.Translator._("Cookies from File");
+        RowCookiesFile.Description = _controller.Translator._("Upload a txt cookies file from unlisted browsers");
         LblCookiesFile.Text = _controller.Translator._("No file selected");
         ToolTipService.SetToolTip(BtnClearCookiesFile, _controller.Translator._("Clear Cookies File"));
         ToolTipService.SetToolTip(BtnSelectCookiesFile, _controller.Translator._("Select Cookies File"));
