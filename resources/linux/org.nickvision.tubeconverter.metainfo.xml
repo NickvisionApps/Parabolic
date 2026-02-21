@@ -60,11 +60,14 @@
     <display_length compare="ge">360</display_length>
   </requires>
   <releases>
-    <release version="2026.2.4" date="2026-02-17">
+    <release version="2026.3.0-next" date="2026-03-01">
       <description translate="no">
-        <p>- Fixed an issue where pausing and resuming downloads did not work correctly</p>
-        <p>- Fixed an issue where Parabolic would use a previous save folder even if it no longer existed</p>
-        <p>- Fixed an issue where translations were not available on Linux</p>
+        <p>- Added macOS app for the GNOME version of Parabolic</p>
+        <p>- Added the ability to specify a preferred frame rate for video downloads</p>
+        <p>- Added failed filter to downloads view</p>
+        <p>- Improved selection of playlist video formats when resolutions are specified</p>
+        <p>- Improved selection of playlist audio formats on Windows when bitrates are specified</p>
+        <p>- Removed unsupported cookie browsers on Windows. Manual txt files should be used instead</p>
       </description>
     </release>
   </releases>

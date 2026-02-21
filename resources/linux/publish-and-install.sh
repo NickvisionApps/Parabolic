@@ -44,6 +44,7 @@ DATA_DIR="$PREFIX/share"
 info "Bin directory: $BIN_DIR"
 info "Lib directory: $LIB_DIR"
 info "Data directory: $DATA_DIR"
+info "Runtime: $RUNTIME"
 success "Loaded variables."
 
 echo -e "${BOLD}${BLUE}==============================================================${RESET}"

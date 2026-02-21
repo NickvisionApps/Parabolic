@@ -41,6 +41,8 @@ public class Configuration
     public AudioCodec PreferredAudioCodec { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<SubtitleFormat>))]
     public SubtitleFormat PreferredSubtitleFormat { get; set; }
+    [JsonConverter(typeof(NullToDefaultValueConverter<FrameRate>))]
+    public FrameRate PreferredFrameRate { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool UsePartFiles { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
@@ -99,6 +101,7 @@ public class Configuration
         PreferredVideoCodec = VideoCodec.Any;
         PreferredAudioCodec = AudioCodec.Any;
         PreferredSubtitleFormat = SubtitleFormat.Any;
+        PreferredFrameRate = FrameRate.Any;
         UsePartFiles = true;
         YouTubeSponsorBlock = false;
         SpeedLimit = null;
@@ -131,6 +134,7 @@ public class Configuration
         PreferredVideoCodec = PreferredVideoCodec,
         PreferredAudioCodec = PreferredAudioCodec,
         PreferredSubtitleFormat = PreferredSubtitleFormat,
+        PreferredFrameRate = PreferredFrameRate,
         UsePartFiles = UsePartFiles,
         YouTubeSponsorBlock = YouTubeSponsorBlock,
         SpeedLimit = SpeedLimit,

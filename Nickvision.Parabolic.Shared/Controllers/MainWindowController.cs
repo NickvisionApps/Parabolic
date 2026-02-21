@@ -32,14 +32,17 @@ public class MainWindowController : IDisposable
     {
         _services = new ServiceCollection();
         _httpClient = new HttpClient();
-        _latestAppVersion = new AppVersion("2026.2.4");
+        _latestAppVersion = new AppVersion("2026.3.0-next");
         AppInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
         {
             Version = _latestAppVersion,
             Changelog = """
-            - Fixed an issue where pausing and resuming downloads did not work correctly
-            - Fixed an issue where Parabolic would use a previous save folder even if it no longer existed
-            - Fixed an issue where translations were not available on Linux
+            - Added macOS app for the GNOME version of Parabolic
+            - Added the ability to specify a preferred frame rate for video downloads
+            - Added failed filter to downloads view
+            - Improved selection of playlist video formats when resolutions are specified
+            - Improved selection of playlist audio formats on Windows when bitrates are specified
+            - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),

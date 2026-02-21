@@ -250,6 +250,22 @@ public partial class Download : IDisposable
             };
             formatSort += ",quality";
         }
+        if (downloader.PreferredFrameRate != FrameRate.Any)
+        {
+            if (!string.IsNullOrEmpty(formatSort))
+            {
+                formatSort += ',';
+            }
+            formatSort += "+fps:";
+            formatSort += downloader.PreferredFrameRate switch
+            {
+                FrameRate.Fps24 => "24",
+                FrameRate.Fps30 => "30",
+                FrameRate.Fps60 => "60",
+                _ => string.Empty
+            };
+
+        }
         if (!string.IsNullOrEmpty(formatSort))
         {
             arguments.Add("--format-sort");
@@ -401,7 +417,7 @@ public partial class Download : IDisposable
             {
                 var v when v == VideoResolution.Best => "bestvideo*",
                 var v when v == VideoResolution.Worst => "worstvideo*",
-                _ => $"bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
+                _ => $"bestvideo*[height={Options.VideoResolution.Height}]/bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
             };
         }
         if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
@@ -435,7 +451,7 @@ public partial class Download : IDisposable
             {
                 var b when b == double.MaxValue => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var b when b == -1.0 => "worstaudio",
-                _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]/worstaudio"
+                _ => $"bestaudio[abr={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio"
             };
         }
         if (!string.IsNullOrEmpty(formatString))

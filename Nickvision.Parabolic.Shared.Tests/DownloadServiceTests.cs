@@ -31,7 +31,7 @@ public class DownloadServiceTests
     {
         var appInfo = new AppInfo("org.nickvision.tubeconverter.downloads.tests", "Nickvision Parabolic Downloads Tests", "Parabolic Downloads Tests")
         {
-            Version = new AppVersion("2026.2.4")
+            Version = new AppVersion("2026.3.0")
         };
         _downloadDirectory = Path.Combine(UserDirectories.Cache, "Nickvision Parabolic Downloads Tests");
         _httpClient = new HttpClient();

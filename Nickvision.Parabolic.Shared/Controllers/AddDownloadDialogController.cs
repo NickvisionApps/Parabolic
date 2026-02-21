@@ -64,6 +64,7 @@ public class AddDownloadDialogController
         var downloader = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var m3uFile = new M3UFile(context.Title, context.Media.Any(x => !string.IsNullOrEmpty(x.SuggestedSaveFolder)) ? PathType.Absolute : PathType.Relative);
         var options = new List<DownloadOptions>(items.Count());
+        var titleNumber = 1;
         foreach (var item in reverseDownloadOrder ? items.Reverse() : items)
         {
             if (item.Value < 0 || item.Value >= context.Media.Count)
@@ -74,7 +75,7 @@ public class AddDownloadDialogController
             options.Add(new DownloadOptions(media.Url)
             {
                 Credential = context.Credential,
-                SaveFilename = $"{(numberTitles ? $"{media.PlaylistPosition} - " : string.Empty)}{(string.IsNullOrEmpty(item.Filename) ? media.Title : item.Filename.SanitizeForFilename(downloader.LimitCharacters))}",
+                SaveFilename = $"{(numberTitles ? $"{titleNumber++} - " : string.Empty)}{(string.IsNullOrEmpty(item.Filename) ? media.Title : item.Filename.SanitizeForFilename(downloader.LimitCharacters))}",
                 SaveFolder = Path.Combine(!string.IsNullOrEmpty(media.SuggestedSaveFolder) ? media.SuggestedSaveFolder : saveFolder, context.Title.SanitizeForFilename(downloader.LimitCharacters)),
                 FileType = selectedFileType.Value.IsVideo && media.Type == MediaType.Audio ? PreviousDownloadOptions.AudioOnlyFileType : selectedFileType.Value,
                 PlaylistPosition = media.PlaylistPosition,

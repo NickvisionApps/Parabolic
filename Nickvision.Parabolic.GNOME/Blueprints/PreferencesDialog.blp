@@ -151,6 +151,16 @@ Adw.PreferencesDialog root {
           icon-name: "subtitles-symbolic";
         }
       }
+
+      Adw.ComboRow preferredFrameRateRow {
+        title: _("Preferred Frame Rate");
+        subtitle: _("Prefer this frame rate when parsing video formats to show available to download");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "camera-video-symbolic";
+        }
+      }
     }
   }
 

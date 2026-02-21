@@ -23,6 +23,7 @@ public class PreferencesViewController
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages { get; }
     public IReadOnlyList<SelectionItem<Browser>> Browsers { get; }
     public IReadOnlyList<SelectionItem<Executable>> Executables { get; }
+    public IReadOnlyList<SelectionItem<FrameRate>> FrameRates { get; }
     public IReadOnlyList<SelectionItem<HistoryLength>> HistoryLengths { get; }
     public IReadOnlyList<SelectionItem<PostProcessor>> PostProcessors { get; }
     public ObservableCollection<PostProcessorArgument> PostprocessingArguments { get; }
@@ -58,18 +59,21 @@ public class PreferencesViewController
         {
             (AvailableTranslationLanguages as IList)!.Add(new SelectionItem<string>(language, language, _configuration.TranslationLanguage == language));
         }
-        Browsers = new List<SelectionItem<Browser>>()
+        Browsers = new List<SelectionItem<Browser>>(OperatingSystem.IsWindows() ? 2 : 9)
         {
             new SelectionItem<Browser>(Browser.None, Translator._("None"), _configuration.DownloaderOptions.CookiesBrowser == Browser.None),
-            new SelectionItem<Browser>(Browser.Brave, Translator._("Brave"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Brave),
-            new SelectionItem<Browser>(Browser.Chrome, Translator._("Chrome"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chrome),
-            new SelectionItem<Browser>(Browser.Chromium, Translator._("Chromium"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chromium),
-            new SelectionItem<Browser>(Browser.Edge, Translator._("Edge"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Edge),
-            new SelectionItem<Browser>(Browser.Firefox, Translator._("Firefox"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Firefox),
-            new SelectionItem<Browser>(Browser.Opera, Translator._("Opera"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Opera),
-            new SelectionItem<Browser>(Browser.Vivaldi, Translator._("Vivaldi"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Vivaldi),
-            new SelectionItem<Browser>(Browser.Whale, Translator._("Whale"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Whale),
+            new SelectionItem<Browser>(Browser.Firefox, Translator._("Firefox"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Firefox)
         };
+        if(!OperatingSystem.IsWindows())
+        {
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Brave, Translator._("Brave"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Brave));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chrome, Translator._("Chrome"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chrome));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chromium, Translator._("Chromium"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chromium));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Edge, Translator._("Edge"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Edge));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Opera, Translator._("Opera"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Opera));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Vivaldi, Translator._("Vivaldi"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Vivaldi));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Whale, Translator._("Whale"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Whale));
+        }
         Executables = new List<SelectionItem<Executable>>()
         {
             new SelectionItem<Executable>(Executable.None, Translator._("None"), true)
@@ -82,6 +86,13 @@ public class PreferencesViewController
             }
             (Executables as IList)!.Add(new SelectionItem<Executable>(executable, executable.ToString(), false));
         }
+        FrameRates = new List<SelectionItem<FrameRate>>()
+        {
+            new SelectionItem<FrameRate>(FrameRate.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Any),
+            new SelectionItem<FrameRate>(FrameRate.Fps24, Translator._("{0} FPS", 24), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps24),
+            new SelectionItem<FrameRate>(FrameRate.Fps30, Translator._("{0} FPS", 30), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps30),
+            new SelectionItem<FrameRate>(FrameRate.Fps60, Translator._("{0} FPS", 60), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps60)
+        };
         HistoryLengths = new List<SelectionItem<HistoryLength>>()
         {
             new SelectionItem<HistoryLength>(Models.HistoryLength.Never, Translator._("Never"), selectedHistoryLength == Models.HistoryLength.Never),
@@ -248,6 +259,11 @@ public class PreferencesViewController
     public SelectionItem<AudioCodec> PreferredAudioCodec
     {
         set => _configuration.PreferredAudioCodec = value.Value;
+    }
+
+    public SelectionItem<FrameRate> PreferredFrameRate
+    {
+        set => _configuration.PreferredFrameRate = value.Value;
     }
 
     public SelectionItem<SubtitleFormat> PreferredSubtitleFormat
