@@ -28,7 +28,10 @@ jobs:
         with:
           submodules: recursive
       - name: "Setup Environment"
-        run: brew install gtk4 libadwaita blueprint-compiler gettext glib
+        run: |
+          brew install gtk4 libadwaita blueprint-compiler gettext glib aria2 ffmpeg
+          curl -L "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos" -o "${{ github.workspace }}/resources/macos/yt-dlp"
+          chmod +x "${{ github.workspace }}/resources/macos/yt-dlp"
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.0.x'

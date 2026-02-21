@@ -97,6 +97,33 @@ else
     warn "Icon file not found at ../${APP_ID}.png"
 fi
 
+# Bundle yt-dlp, aria2c, and ffmpeg
+info "Bundling yt-dlp, aria2c, and ffmpeg..."
+YT_DLP_PATH="./yt-dlp"
+ARIA2C_PATH="$(which aria2c 2>/dev/null || true)"
+FFMPEG_PATH="$(which ffmpeg 2>/dev/null || true)"
+if [[ -f "$YT_DLP_PATH" ]]; then
+    cp "$YT_DLP_PATH" "$APP_BUNDLE/Contents/MacOS/yt-dlp"
+    chmod +x "$APP_BUNDLE/Contents/MacOS/yt-dlp"
+    success "Bundled yt-dlp."
+else
+    warn "yt-dlp not found at $YT_DLP_PATH"
+fi
+if [[ -n "$ARIA2C_PATH" && -f "$ARIA2C_PATH" ]]; then
+    cp "$ARIA2C_PATH" "$APP_BUNDLE/Contents/MacOS/aria2c"
+    chmod +x "$APP_BUNDLE/Contents/MacOS/aria2c"
+    success "Bundled aria2c."
+else
+    warn "aria2c not found"
+fi
+if [[ -n "$FFMPEG_PATH" && -f "$FFMPEG_PATH" ]]; then
+    cp "$FFMPEG_PATH" "$APP_BUNDLE/Contents/MacOS/ffmpeg"
+    chmod +x "$APP_BUNDLE/Contents/MacOS/ffmpeg"
+    success "Bundled ffmpeg."
+else
+    warn "ffmpeg not found"
+fi
+
 # Set executable permissions
 info "Setting executable permissions..."
 chmod +x "$APP_BUNDLE/Contents/MacOS/$PROJECT"
