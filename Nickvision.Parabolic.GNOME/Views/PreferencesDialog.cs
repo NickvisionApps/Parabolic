@@ -44,6 +44,8 @@ public class PreferencesDialog : Adw.PreferencesDialog
     private Adw.ComboRow? _preferredAudioCodecRow;
     [Gtk.Connect("preferredSubtitleFormatRow")]
     private Adw.ComboRow? _preferredSubtitleFormatRow;
+    [Gtk.Connect("preferredFrameRateRow")]
+    private Adw.ComboRow? _preferredFrameRateRow;
     [Gtk.Connect("usePartFilesRow")]
     private Adw.SwitchRow _usePartFilesRow;
     [Gtk.Connect("sponsorBlockRow")]
@@ -130,6 +132,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _preferredVideoCodecRow!.SetModel(_controller.VideoCodecs);
         _preferredAudioCodecRow!.SetModel(_controller.AudioCodecs);
         _preferredSubtitleFormatRow!.SetModel(_controller.SubtitleFormats);
+        _preferredFrameRateRow!.SetModel(_controller.FrameRates);
         _usePartFilesRow!.Active = _controller.UsePartFiles;
         _sponsorBlockRow!.Active = _controller.YouTubeSponsorBlock;
         _limitSpeedRow!.EnableExpansion = _controller.SpeedLimit.HasValue;
@@ -174,6 +177,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _controller.PreferredVideoCodec = _controller.VideoCodecs[(int)_preferredVideoCodecRow!.Selected];
         _controller.PreferredAudioCodec = _controller.AudioCodecs[(int)_preferredAudioCodecRow!.Selected];
         _controller.PreferredSubtitleFormat = _controller.SubtitleFormats[(int)_preferredSubtitleFormatRow!.Selected];
+        _controller.PreferredFrameRate = _controller.FrameRates[(int)_preferredFrameRateRow!.Selected];
         _controller.UsePartFiles = _usePartFilesRow!.Active;
         _controller.YouTubeSponsorBlock = _sponsorBlockRow!.Active;
         _controller.SpeedLimit = _limitSpeedRow!.EnableExpansion ? (int)_speedLimitRow!.Value : null;

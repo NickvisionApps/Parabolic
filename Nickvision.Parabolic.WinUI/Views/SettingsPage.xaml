@@ -145,6 +145,14 @@
 
                             <ComboBox x:Name="CmbPreferredSubtitleFormat" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
                         </community:SettingsCard>
+
+                        <community:SettingsCard x:Name="RowPreferredFrameRate">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE722;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ComboBox x:Name="CmbPreferredFrameRate" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                        </community:SettingsCard>
                     </StackPanel>
 
                     <StackPanel Spacing="6">

@@ -68,6 +68,9 @@ public sealed partial class SettingsPage : Page
         RowPreferredSubtitleFormat.Header = _controller.Translator._("Preferred Subtitle Format");
         RowPreferredSubtitleFormat.Description = _controller.Translator._("Prefer this subtitle file format when downloading");
         CmbPreferredSubtitleFormat.ItemsSource = _controller.SubtitleFormats;
+        RowPreferredFrameRate.Header = _controller.Translator._("Preferred Frame Rate");
+        RowPreferredFrameRate.Description = _controller.Translator._("Prefer this frame rate when parsing video formats to show available to download");
+        CmbPreferredFrameRate.ItemsSource = _controller.FrameRates;
         RowUsePartFiles.Header = _controller.Translator._("Use Part Files");
         RowUsePartFiles.Description = _controller.Translator._("Download media in separate .part files instead of directly into the output file");
         TglUsePartFiles.OnContent = _controller.Translator._("On");
@@ -157,6 +160,7 @@ public sealed partial class SettingsPage : Page
         CmbPreferredVideoCodec.SelectSelectionItem();
         CmbPreferredAudioCodec.SelectSelectionItem();
         CmbPreferredSubtitleFormat.SelectSelectionItem();
+        CmbPreferredFrameRate.SelectSelectionItem();
         TglUsePartFiles.IsOn = _controller.UsePartFiles;
         TglUseSponsorBlock.IsOn = _controller.YouTubeSponsorBlock;
         TglLimitSpeed.IsOn = _controller.SpeedLimit.HasValue;
@@ -327,6 +331,7 @@ public sealed partial class SettingsPage : Page
         _controller.PreferredVideoCodec = (CmbPreferredVideoCodec.SelectedItem as SelectionItem<VideoCodec>)!;
         _controller.PreferredAudioCodec = (CmbPreferredAudioCodec.SelectedItem as SelectionItem<AudioCodec>)!;
         _controller.PreferredSubtitleFormat = (CmbPreferredSubtitleFormat.SelectedItem as SelectionItem<SubtitleFormat>)!;
+        _controller.PreferredFrameRate = (CmbPreferredFrameRate.SelectedItem as SelectionItem<FrameRate>)!;
         _controller.UsePartFiles = TglUsePartFiles.IsOn;
         _controller.YouTubeSponsorBlock = TglUseSponsorBlock.IsOn;
         _controller.SpeedLimit = TglLimitSpeed.IsOn ? (int)NumSpeedLimit.Value : null;

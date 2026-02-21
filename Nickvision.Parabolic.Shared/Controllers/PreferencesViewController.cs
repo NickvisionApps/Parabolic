@@ -23,6 +23,7 @@ public class PreferencesViewController
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages { get; }
     public IReadOnlyList<SelectionItem<Browser>> Browsers { get; }
     public IReadOnlyList<SelectionItem<Executable>> Executables { get; }
+    public IReadOnlyList<SelectionItem<FrameRate>> FrameRates { get; }
     public IReadOnlyList<SelectionItem<HistoryLength>> HistoryLengths { get; }
     public IReadOnlyList<SelectionItem<PostProcessor>> PostProcessors { get; }
     public ObservableCollection<PostProcessorArgument> PostprocessingArguments { get; }
@@ -85,6 +86,13 @@ public class PreferencesViewController
             }
             (Executables as IList)!.Add(new SelectionItem<Executable>(executable, executable.ToString(), false));
         }
+        FrameRates = new List<SelectionItem<FrameRate>>()
+        {
+            new SelectionItem<FrameRate>(FrameRate.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Any),
+            new SelectionItem<FrameRate>(FrameRate.Fps24, Translator._("{0} FPS", 24), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps24),
+            new SelectionItem<FrameRate>(FrameRate.Fps30, Translator._("{0} FPS", 30), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps30),
+            new SelectionItem<FrameRate>(FrameRate.Fps60, Translator._("{0} FPS", 60), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps60)
+        };
         HistoryLengths = new List<SelectionItem<HistoryLength>>()
         {
             new SelectionItem<HistoryLength>(Models.HistoryLength.Never, Translator._("Never"), selectedHistoryLength == Models.HistoryLength.Never),
@@ -251,6 +259,11 @@ public class PreferencesViewController
     public SelectionItem<AudioCodec> PreferredAudioCodec
     {
         set => _configuration.PreferredAudioCodec = value.Value;
+    }
+
+    public SelectionItem<FrameRate> PreferredFrameRate
+    {
+        set => _configuration.PreferredFrameRate = value.Value;
     }
 
     public SelectionItem<SubtitleFormat> PreferredSubtitleFormat

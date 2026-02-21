@@ -114,7 +114,8 @@ public class Media
                         hasAudioFormats = true;
                     }
                     if ((format.VideoCodec.HasValue && options.PreferredVideoCodec != VideoCodec.Any && format.VideoCodec.Value != options.PreferredVideoCodec) ||
-                       (format.AudioCodec.HasValue && options.PreferredAudioCodec != AudioCodec.Any && format.AudioCodec.Value != options.PreferredAudioCodec))
+                       (format.AudioCodec.HasValue && options.PreferredAudioCodec != AudioCodec.Any && format.AudioCodec.Value != options.PreferredAudioCodec) ||
+                       (format.FrameRate.HasValue && options.PreferredFrameRate != FrameRate.Any && format.FrameRate.Value != options.PreferredFrameRate))
                     {
                         skippedFormats.Add(format);
                         continue;

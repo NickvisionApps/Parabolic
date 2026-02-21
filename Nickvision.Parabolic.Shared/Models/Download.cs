@@ -250,6 +250,22 @@ public partial class Download : IDisposable
             };
             formatSort += ",quality";
         }
+        if (downloader.PreferredFrameRate != FrameRate.Any)
+        {
+            if (!string.IsNullOrEmpty(formatSort))
+            {
+                formatSort += ',';
+            }
+            formatSort += "+fps:";
+            formatSort += downloader.PreferredFrameRate switch
+            {
+                FrameRate.Fps24 => "24",
+                FrameRate.Fps30 => "30",
+                FrameRate.Fps60 => "60",
+                _ => string.Empty
+            };
+
+        }
         if (!string.IsNullOrEmpty(formatSort))
         {
             arguments.Add("--format-sort");
