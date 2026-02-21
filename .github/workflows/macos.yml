@@ -30,7 +30,7 @@ jobs:
       - name: "Setup Environment"
         run: |
           brew install gtk4 libadwaita blueprint-compiler gettext glib aria2 ffmpeg
-          curl -L "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos" -o "${{ github.workspace }}/resources/macos/yt-dlp"
+          curl -L "https://github.com/yt-dlp/yt-dlp/releases/download/2026.02.04/yt-dlp_macos" -o "${{ github.workspace }}/resources/macos/yt-dlp"
           chmod +x "${{ github.workspace }}/resources/macos/yt-dlp"
       - uses: actions/setup-dotnet@v5
         with:

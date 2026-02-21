@@ -97,11 +97,13 @@ else
     warn "Icon file not found at ../${APP_ID}.png"
 fi
 
-# Bundle yt-dlp, aria2c, and ffmpeg
-info "Bundling yt-dlp, aria2c, and ffmpeg..."
+# Bundle dependencies
+info "Bundling dependencies..."
 YT_DLP_PATH="./yt-dlp"
 ARIA2C_PATH="$(which aria2c 2>/dev/null || true)"
 FFMPEG_PATH="$(which ffmpeg 2>/dev/null || true)"
+FFPROBE_PATH="$(which ffprobe 2>/dev/null || true)"
+FFPLAY_PATH="$(which ffplay 2>/dev/null || true)"
 if [[ -f "$YT_DLP_PATH" ]]; then
     cp "$YT_DLP_PATH" "$APP_BUNDLE/Contents/MacOS/yt-dlp"
     chmod +x "$APP_BUNDLE/Contents/MacOS/yt-dlp"
@@ -122,6 +124,20 @@ if [[ -n "$FFMPEG_PATH" && -f "$FFMPEG_PATH" ]]; then
     success "Bundled ffmpeg."
 else
     warn "ffmpeg not found"
+fi
+if [[ -n "$FFPROBE_PATH" && -f "$FFPROBE_PATH" ]]; then
+    cp "$FFPROBE_PATH" "$APP_BUNDLE/Contents/MacOS/ffprobe"
+    chmod +x "$APP_BUNDLE/Contents/MacOS/ffprobe"
+    success "Bundled ffprobe."
+else
+    warn "ffprobe not found"
+fi
+if [[ -n "$FFPLAY_PATH" && -f "$FFPLAY_PATH" ]]; then
+    cp "$FFPLAY_PATH" "$APP_BUNDLE/Contents/MacOS/ffplay"
+    chmod +x "$APP_BUNDLE/Contents/MacOS/ffplay"
+    success "Bundled ffplay."
+else
+    warn "ffplay not found"
 fi
 
 # Set executable permissions
