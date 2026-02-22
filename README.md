@@ -53,7 +53,7 @@ Support for downloading **metadata** and **video subtitles**
 
 <table>
 <tr>
-<td width="33%">
+<td width="25%">
 
 #### Linux
 
@@ -62,7 +62,7 @@ Support for downloading **metadata** and **video subtitles**
 </a>
 
 </td>
-<td width="33%">
+<td width="25%">
 
 #### Windows
 
@@ -73,7 +73,18 @@ Support for downloading **metadata** and **video subtitles**
 Download the latest version from **Releases**
 
 </td>
-<td width="33%">
+<td width="25%">
+
+#### macOS
+
+<a href="https://github.com/NickvisionApps/Parabolic/releases">
+<img width='80' alt="Download from Releases" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Apple_Computer_Logo_rainbow.svg/250px-Apple_Computer_Logo_rainbow.svg.png"/>
+</a>
+
+Download the latest version from **Releases**
+
+</td>
+<td width="25%">
 
 #### Browser Extensions
 
