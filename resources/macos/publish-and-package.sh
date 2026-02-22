@@ -104,6 +104,7 @@ ARIA2C_PATH="$(which aria2c 2>/dev/null || true)"
 FFMPEG_PATH="$(which ffmpeg 2>/dev/null || true)"
 FFPROBE_PATH="$(which ffprobe 2>/dev/null || true)"
 FFPLAY_PATH="$(which ffplay 2>/dev/null || true)"
+DENO_PATH="$(which deno 2>/dev/null || true)"
 if [[ -f "$YT_DLP_PATH" ]]; then
     cp "$YT_DLP_PATH" "$APP_BUNDLE/Contents/MacOS/yt-dlp"
     chmod +x "$APP_BUNDLE/Contents/MacOS/yt-dlp"
@@ -138,6 +139,13 @@ if [[ -n "$FFPLAY_PATH" && -f "$FFPLAY_PATH" ]]; then
     success "Bundled ffplay."
 else
     warn "ffplay not found"
+fi
+if [[ -n "$DENO_PATH" && -f "$DENO_PATH" ]]; then
+    cp "$DENO_PATH" "$APP_BUNDLE/Contents/MacOS/deno"
+    chmod +x "$APP_BUNDLE/Contents/MacOS/deno"
+    success "Bundled deno."
+else
+    warn "deno not found"
 fi
 
 # Bundle GTK4 and libadwaita

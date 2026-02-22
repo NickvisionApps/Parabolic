@@ -43,6 +43,7 @@ public class MainWindowController : IDisposable
             - Improved selection of playlist video formats when resolutions are specified
             - Improved selection of playlist audio formats on Windows when bitrates are specified
             - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
+            - Updated yt-dlp
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
