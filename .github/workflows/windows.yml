@@ -12,6 +12,7 @@ permissions:
 env:
   PROJECT_NAME: Nickvision.Parabolic.WinUI
   INSTALLER_NAME: NickvisionParabolicSetup
+  SHORT_NAME: Parabolic
 jobs:
   winui-windows:
     name: "WinUI on Windows"
@@ -46,7 +47,7 @@ jobs:
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.0.x'
-      - name: "Setup PATH"
+      - name: "Setup Environment"
         shell: pwsh
         run: echo "${{ steps.msys2.outputs.msys2-location }}\${{ matrix.variant.subsys }}\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: "Restore"
@@ -75,7 +76,25 @@ jobs:
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffplay.exe ffplay.exe
           move deno\deno.exe deno.exe
           iscc setup.iss
+      - name: "Portable"
+        shell: pwsh
+        run: |
+          $publishDir = "${{ env.PROJECT_NAME }}\bin\${{ matrix.variant.arch }}\Release\net10.0-windows10.0.19041.0\win-${{ matrix.variant.arch }}\publish"
+          $portableDir = "${{ github.workspace }}\portable"
+          New-Item -ItemType Directory -Force -Path "$portableDir\Release" | Out-Null
+          Copy-Item -Path "$publishDir\*" -Destination "$portableDir\Release" -Recurse
+          $WshShell = New-Object -comObject WScript.Shell
+          $Shortcut = $WshShell.CreateShortcut("$portableDir\${{ env.SHORT_NAME }}.lnk")
+          $Shortcut.TargetPath = "Release\${{ env.PROJECT_NAME }}.exe"
+          $Shortcut.Arguments = "--portable"
+          $Shortcut.Save()
+          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\Releases" | Out-Null
+          Compress-Archive -Path "$portableDir\*" -DestinationPath "${{ github.workspace }}\Releases\${{ env.PROJECT_NAME }}-portable-${{ matrix.variant.arch }}.zip"
       - uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/inno/${{ env.INSTALLER_NAME }}.exe
           name: ${{ env.INSTALLER_NAME }}-${{ matrix.variant.arch }}
+      - uses: actions/upload-artifact@v4
+        with:
+          path: ${{ github.workspace }}/Releases/${{ env.PROJECT_NAME }}-portable-${{ matrix.variant.arch }}.zip
+          name: ${{ env.PROJECT_NAME }}-portable-${{ matrix.variant.arch }}

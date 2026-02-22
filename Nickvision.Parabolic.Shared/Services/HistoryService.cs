@@ -20,7 +20,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 
     public HistoryService(AppInfo appInfo)
     {
-        _path = Path.Combine(UserDirectories.Config, appInfo.Name, "history.db");
+        _path = Path.Combine(appInfo.IsPortable ? Desktop.System.Environment.ExecutingDirectory : Path.Combine(UserDirectories.Config, appInfo.Name), "history.db");
         Directory.CreateDirectory(Path.GetDirectoryName(_path)!);
         _connection = new SqliteConnection(new SqliteConnectionStringBuilder($"Data Source='{_path}'")
         {

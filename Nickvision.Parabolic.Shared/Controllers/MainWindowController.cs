@@ -38,6 +38,7 @@ public class MainWindowController : IDisposable
             Version = _latestAppVersion,
             Changelog = """
             - Added macOS app for the GNOME version of Parabolic
+            - Added Windows portable version of Parabolic
             - Added the ability to specify a preferred frame rate for video downloads
             - Added failed filter to downloads view
             - Improved selection of playlist video formats when resolutions are specified
@@ -47,7 +48,8 @@ public class MainWindowController : IDisposable
             """,
             SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
             IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
-            DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions")
+            DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions"),
+            IsPortable = OperatingSystem.IsWindows() && args.Contains("--portable")
         };
         UrlFromArgs = null;
         for (var i = 1; i < args.Length; i++)

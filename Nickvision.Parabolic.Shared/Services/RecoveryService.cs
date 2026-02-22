@@ -17,7 +17,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
 
     public RecoveryService(AppInfo appInfo)
     {
-        _path = Path.Combine(UserDirectories.Config, appInfo.Name, "recovery.db");
+        _path = Path.Combine(appInfo.IsPortable ? Desktop.System.Environment.ExecutingDirectory : Path.Combine(UserDirectories.Config, appInfo.Name), "recovery.db");
         Directory.CreateDirectory(Path.GetDirectoryName(_path)!);
         _connection = new SqliteConnection(new SqliteConnectionStringBuilder($"Data Source='{_path}'")
         {
