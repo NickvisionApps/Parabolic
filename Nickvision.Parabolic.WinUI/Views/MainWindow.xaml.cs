@@ -65,14 +65,14 @@ public sealed partial class MainWindow : Window
         // Events
         AppWindow.Closing += Window_Closing;
         eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
-        eventsService.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
-        eventsService.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
         eventsService.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
+        eventsService.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
         eventsService.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
         eventsService.DownloadCompleted += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadCompleted(sender, e));
         eventsService.DownloadStopped += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStopped(sender, e));
         eventsService.DownloadStartedFromQueue += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStartedFromQueue(sender, e));
         eventsService.DownloadRetired += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadRetired(sender, e));
+        eventsService.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
         eventsService.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
         AppWindow.Title = _appInfo.ShortName;

@@ -116,6 +116,11 @@ public class MainWindow : Adw.ApplicationWindow
             Controller_DownloadRetired(sender, e);
             return false;
         });
+        eventsService.DownloadRequested += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(e.Url, this);
+            return false;
+        });
         _downloadsToggleGroup!.OnNotify += DownloadToggleGroup_OnNotify;
         // Quit action
         var actQuit = Gio.SimpleAction.New("quit", null);
