@@ -202,7 +202,10 @@ public sealed partial class MainWindow : Window
                 await _controller.StopAllDownloadsAsync();
                 Close();
             }
-            return;
+            else
+            {
+                return;
+            }
         }
         _controller.WindowGeometry = this.Geometry;
         _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
