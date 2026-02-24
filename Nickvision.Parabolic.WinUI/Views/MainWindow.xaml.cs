@@ -199,13 +199,12 @@ public sealed partial class MainWindow : Window
             };
             if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
             {
+                _controller.WindowGeometry = this.Geometry;
                 await _controller.StopAllDownloadsAsync();
                 Close();
+                _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
             }
-            else
-            {
-                return;
-            }
+            return;
         }
         _controller.WindowGeometry = this.Geometry;
         _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
