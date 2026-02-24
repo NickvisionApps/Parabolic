@@ -1,9 +1,13 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Desktop.WinUI.Helpers;
@@ -28,14 +32,20 @@ public sealed partial class MainWindow : Window
         Custom
     }
 
+    private readonly IServiceProvider _serviceProvider;
     private readonly MainWindowController _controller;
+    private readonly AppInfo _appInfo;
+    private readonly ITranslationService _translationService;
     private readonly Dictionary<int, DownloadRow> _downloadRows;
     private RoutedEventHandler? _notificationClickHandler;
 
-    public MainWindow(MainWindowController controller)
+    public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, ITranslationService translationService)
     {
         InitializeComponent();
+        _serviceProvider = serviceProvider;
         _controller = controller;
+        _appInfo = appInfo;
+        _translationService = translationService;
         _downloadRows = new Dictionary<int, DownloadRow>();
         _notificationClickHandler = null;
         // Config
@@ -47,7 +57,7 @@ public sealed partial class MainWindow : Window
         };
         this.Geometry = _controller.WindowGeometry;
         // TitleBar
-        AppWindow.SetIcon(_controller.AppInfo.Version!.IsPreview ? "./Assets/org.nickvision.tubeconverter-devel.ico" : "./Assets/org.nickvision.tubeconverter.ico");
+        AppWindow.SetIcon(_appInfo.Version!.IsPreview ? "./Assets/org.nickvision.tubeconverter-devel.ico" : "./Assets/org.nickvision.tubeconverter.ico");
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
@@ -64,42 +74,42 @@ public sealed partial class MainWindow : Window
         _controller.DownloadRetired += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadRetired(sender, e));
         _controller.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
-        AppWindow.Title = _controller.AppInfo.ShortName;
-        TitleBar.Title = _controller.AppInfo.ShortName;
-        TitleBar.Subtitle = _controller.AppInfo.Version!.IsPreview ? _controller.Translator._("Preview") : string.Empty;
-        NavItemHome.Content = _controller.Translator._("Home");
-        NavItemDownloads.Content = _controller.Translator._("Downloads");
-        NavItemHistory.Content = _controller.Translator._("History");
-        NavItemKeyring.Content = _controller.Translator._("Keyring");
-        NavItemUpdates.Content = _controller.Translator._("Updating");
-        NavItemHelp.Content = _controller.Translator._("Help");
-        MenuCheckForUpdates.Text = _controller.Translator._("Check for Updates");
-        MenuGitHubRepo.Text = _controller.Translator._("GitHub Repo");
-        MenuReportABug.Text = _controller.Translator._("Report a Bug");
-        MenuDiscussions.Text = _controller.Translator._("Discussions");
-        MenuAbout.Text = _controller.Translator._("About {0}", _controller.AppInfo.ShortName!);
-        NavItemSettings.Content = _controller.Translator._("Settings");
-        StatusHome.Title = _controller.Translator._("Download Media");
-        StatusHome.Description = _controller.Translator._("Add a video, audio, or playlist URL to start downloading");
-        LblHomeAddDownload.Text = _controller.Translator._("Add Download");
-        LblDownloads.Text = _controller.Translator._("Downloads");
-        LblDownloadsAddDownload.Text = _controller.Translator._("Add");
-        FilterAll.Content = _controller.Translator._("All");
-        FilterRunning.Content = _controller.Translator._("Running");
-        FilterQueued.Content = _controller.Translator._("Queued");
-        FilterCompleted.Content = _controller.Translator._("Completed");
-        FilterFailed.Content = _controller.Translator._("Failed");
-        BtnStopAllRemaining.Label = _controller.Translator._("Stop All Remaining");
-        BtnRetryAllFailed.Label = _controller.Translator._("Retry All Failed");
-        BtnClearAllQueued.Label = _controller.Translator._("Clear All Queued");
-        BtnClearAllCompleted.Label = _controller.Translator._("Clear All Completed");
-        StatusNoneDownloads.Title = _controller.Translator._("No Downloads");
-        StatusNoneDownloads.Description = _controller.Translator._("There are no downloads of this type");
-        DlgCredential.Title = _controller.Translator._("Credential Required");
-        TxtCredentialUsername.PlaceholderText = _controller.Translator._("Enter username here");
-        TxtCredentialPassword.PlaceholderText = _controller.Translator._("Enter password here");
-        DlgCredential.PrimaryButtonText = _controller.Translator._("Submit");
-        DlgCredential.CloseButtonText = _controller.Translator._("Cancel");
+        AppWindow.Title = _appInfo.ShortName;
+        TitleBar.Title = _appInfo.ShortName;
+        TitleBar.Subtitle = _appInfo.Version!.IsPreview ? _translationService._("Preview") : string.Empty;
+        NavItemHome.Content = _translationService._("Home");
+        NavItemDownloads.Content = _translationService._("Downloads");
+        NavItemHistory.Content = _translationService._("History");
+        NavItemKeyring.Content = _translationService._("Keyring");
+        NavItemUpdates.Content = _translationService._("Updating");
+        NavItemHelp.Content = _translationService._("Help");
+        MenuCheckForUpdates.Text = _translationService._("Check for Updates");
+        MenuGitHubRepo.Text = _translationService._("GitHub Repo");
+        MenuReportABug.Text = _translationService._("Report a Bug");
+        MenuDiscussions.Text = _translationService._("Discussions");
+        MenuAbout.Text = _translationService._("About {0}", _appInfo.ShortName!);
+        NavItemSettings.Content = _translationService._("Settings");
+        StatusHome.Title = _translationService._("Download Media");
+        StatusHome.Description = _translationService._("Add a video, audio, or playlist URL to start downloading");
+        LblHomeAddDownload.Text = _translationService._("Add Download");
+        LblDownloads.Text = _translationService._("Downloads");
+        LblDownloadsAddDownload.Text = _translationService._("Add");
+        FilterAll.Content = _translationService._("All");
+        FilterRunning.Content = _translationService._("Running");
+        FilterQueued.Content = _translationService._("Queued");
+        FilterCompleted.Content = _translationService._("Completed");
+        FilterFailed.Content = _translationService._("Failed");
+        BtnStopAllRemaining.Label = _translationService._("Stop All Remaining");
+        BtnRetryAllFailed.Label = _translationService._("Retry All Failed");
+        BtnClearAllQueued.Label = _translationService._("Clear All Queued");
+        BtnClearAllCompleted.Label = _translationService._("Clear All Completed");
+        StatusNoneDownloads.Title = _translationService._("No Downloads");
+        StatusNoneDownloads.Description = _translationService._("There are no downloads of this type");
+        DlgCredential.Title = _translationService._("Credential Required");
+        TxtCredentialUsername.PlaceholderText = _translationService._("Enter username here");
+        TxtCredentialPassword.PlaceholderText = _translationService._("Enter password here");
+        DlgCredential.PrimaryButtonText = _translationService._("Submit");
+        DlgCredential.CloseButtonText = _translationService._("Cancel");
     }
 
     private async void Window_Loaded(object? sender, RoutedEventArgs e)
@@ -112,11 +122,11 @@ public sealed partial class MainWindow : Window
         {
             var checkBox = new CheckBox()
             {
-                Content = _controller.Translator._("Don't show this message again")
+                Content = _translationService._("Don't show this message again")
             };
             var disclaimerDialog = new ContentDialog()
             {
-                Title = _controller.Translator._("Legal Copyright Disclaimer"),
+                Title = _translationService._("Legal Copyright Disclaimer"),
                 Content = new StackPanel()
                 {
                     Orientation = Orientation.Vertical,
@@ -125,13 +135,13 @@ public sealed partial class MainWindow : Window
                     {
                         new TextBlock()
                         {
-                            Text = _controller.Translator._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws."),
+                            Text = _translationService._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws."),
                             TextWrapping = TextWrapping.WrapWholeWords
                         },
                         checkBox
                     }
                 },
-                CloseButtonText = _controller.Translator._("I understand"),
+                CloseButtonText = _translationService._("I understand"),
                 DefaultButton = ContentDialogButton.Close,
                 RequestedTheme = MainGrid.ActualTheme,
                 XamlRoot = MainGrid.XamlRoot
@@ -146,10 +156,10 @@ public sealed partial class MainWindow : Window
         {
             var recoverDialog = new ContentDialog()
             {
-                Title = _controller.Translator._("Recover Downloads?"),
-                Content = _controller.Translator._("There are downloads available to recover from when Parabolic crashed. Would you like to download them again?"),
-                PrimaryButtonText = _controller.Translator._("Yes"),
-                CloseButtonText = _controller.Translator._("No"),
+                Title = _translationService._("Recover Downloads?"),
+                Content = _translationService._("There are downloads available to recover from when Parabolic crashed. Would you like to download them again?"),
+                PrimaryButtonText = _translationService._("Yes"),
+                CloseButtonText = _translationService._("No"),
                 DefaultButton = ContentDialogButton.Primary,
                 RequestedTheme = MainGrid.ActualTheme,
                 XamlRoot = MainGrid.XamlRoot
@@ -178,10 +188,10 @@ public sealed partial class MainWindow : Window
             e.Cancel = true;
             var confirmDialog = new ContentDialog()
             {
-                Title = _controller.AppInfo.ShortName,
-                Content = _controller.Translator._("There are downloads still in progress. Would you like to stop them and exit?"),
-                PrimaryButtonText = _controller.Translator._("Yes"),
-                CloseButtonText = _controller.Translator._("No"),
+                Title = _appInfo.ShortName,
+                Content = _translationService._("There are downloads still in progress. Would you like to stop them and exit?"),
+                PrimaryButtonText = _translationService._("Yes"),
+                CloseButtonText = _translationService._("No"),
                 DefaultButton = ContentDialogButton.Close,
                 RequestedTheme = MainGrid.ActualTheme,
                 XamlRoot = MainGrid.XamlRoot
@@ -194,7 +204,7 @@ public sealed partial class MainWindow : Window
             return;
         }
         _controller.WindowGeometry = this.Geometry;
-        _controller.Dispose();
+        _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
     }
 
     private void TitleBar_PaneToggleRequested(TitleBar sender, object e)
@@ -209,11 +219,15 @@ public sealed partial class MainWindow : Window
             var tag = item.Tag as string;
             FrameCustom.Content = tag switch
             {
-                "History" => new HistoryPage(_controller.HistoryViewController),
-                "Keyring" => new KeyringPage(_controller.KeyringViewController),
-                "Settings" => new SettingsPage(_controller.PreferencesViewController, AppWindow.Id),
+                "History" => _serviceProvider.GetRequiredService<HistoryPage>(),
+                "Keyring" => _serviceProvider.GetRequiredService<KeyringPage>(),
+                "Settings" => _serviceProvider.GetRequiredService<SettingsPage>(),
                 _ => null
             };
+            if (tag == "Settings")
+            {
+                (FrameCustom.Content as SettingsPage)!.WindowId = AppWindow.Id;
+            }
             ViewStack.SelectedIndex = tag switch
             {
                 "Downloads" => (int)Pages.Downloads,
@@ -244,25 +258,25 @@ public sealed partial class MainWindow : Window
         };
         if (e.Notification.Action == "update")
         {
-            BtnInfoBar.Content = _controller.Translator._("Update");
+            BtnInfoBar.Content = _translationService._("Update");
             _notificationClickHandler = WindowsUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
         else if (e.Notification.Action == "update-ytdlp")
         {
-            BtnInfoBar.Content = _controller.Translator._("Update");
+            BtnInfoBar.Content = _translationService._("Update");
             _notificationClickHandler = YtdlpUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
         else if (e.Notification.Action == "error" && !string.IsNullOrEmpty(e.Notification.ActionParam))
         {
-            BtnInfoBar.Content = _controller.Translator._("Details");
+            BtnInfoBar.Content = _translationService._("Details");
             _notificationClickHandler = async (_, _) =>
             {
                 InfoBar.IsOpen = false;
                 var errorDialog = new ContentDialog()
                 {
-                    Title = _controller.Translator._("Error"),
+                    Title = _translationService._("Error"),
                     Content = new ScrollViewer()
                     {
                         HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
@@ -273,7 +287,7 @@ public sealed partial class MainWindow : Window
                             TextWrapping = TextWrapping.Wrap
                         }
                     },
-                    CloseButtonText = _controller.Translator._("Close"),
+                    CloseButtonText = _translationService._("Close"),
                     DefaultButton = ContentDialogButton.Close,
                     RequestedTheme = MainGrid.ActualTheme,
                     XamlRoot = MainGrid.XamlRoot
@@ -289,7 +303,7 @@ public sealed partial class MainWindow : Window
 
     private void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
     {
-        var row = new DownloadRow(_controller.Translator);
+        var row = _serviceProvider.GetRequiredService<DownloadRow>();
         row.PauseRequested += DownloadRow_PauseRequested;
         row.ResumeRequested += DownloadRow_ResumeRequested;
         row.StopRequested += DownloadRow_StopRequested;
@@ -311,7 +325,7 @@ public sealed partial class MainWindow : Window
 
     private async void Controller_DownloadCredentialRequired(object? sender, DownloadCredentialRequiredEventArgs e)
     {
-        LblCredentialRequired.Text = _controller.Translator._("A credential is required to continue the download of \"{0}\".", e.Credential.Name);
+        LblCredentialRequired.Text = _translationService._("A credential is required to continue the download of \"{0}\".", e.Credential.Name);
         TxtCredentialUrl.Text = e.Credential.Url.ToString();
         TxtCredentialUsername.Text = string.Empty;
         TxtCredentialPassword.Password = string.Empty;
@@ -404,7 +418,7 @@ public sealed partial class MainWindow : Window
                 NavItemUpdates.Visibility = Visibility.Collapsed;
                 return;
             }
-            var message = _controller.Translator._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
+            var message = _translationService._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
             NavItemUpdates.Visibility = Visibility.Visible;
             StsProgress.Description = message;
             BarProgress.Value = e.Percentage * 100;
@@ -415,7 +429,7 @@ public sealed partial class MainWindow : Window
     {
         var progressDialog = new ContentDialog()
         {
-            Title = _controller.Translator._("About {0}", _controller.AppInfo.ShortName!),
+            Title = _translationService._("About {0}", _appInfo.ShortName!),
             Content = new ProgressRing()
             {
                 IsActive = true,
@@ -424,11 +438,10 @@ public sealed partial class MainWindow : Window
             XamlRoot = MainGrid.XamlRoot
         };
         DispatcherQueue.TryEnqueue(async () => await progressDialog.ShowAsync());
-        var aboutDialog = new AboutDialog(_controller.AppInfo, await _controller.GetDebugInformationAsync(), _controller.Translator)
-        {
-            RequestedTheme = MainGrid.ActualTheme,
-            XamlRoot = MainGrid.XamlRoot
-        };
+        var aboutDialog = _serviceProvider.GetRequiredService<AboutDialog>();
+        aboutDialog.DebugInformation = await _controller.GetDebugInformationAsync();
+        aboutDialog.RequestedTheme = MainGrid.ActualTheme;
+        aboutDialog.XamlRoot = MainGrid.XamlRoot;
         progressDialog.Hide();
         await aboutDialog.ShowAsync();
     }
@@ -460,11 +473,11 @@ public sealed partial class MainWindow : Window
         UpdateDownloadsList();
     }
 
-    private async void Discussions(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.DiscussionsForum);
+    private async void Discussions(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_appInfo.DiscussionsForum);
 
-    private async void GitHubRepo(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.SourceRepository);
+    private async void GitHubRepo(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_appInfo.SourceRepository);
 
-    private async void ReportABug(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_controller.AppInfo.IssueTracker);
+    private async void ReportABug(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_appInfo.IssueTracker);
 
     private async void RetryAllFailed(object? sender, RoutedEventArgs e) => await _controller.RetryFailedDownloadsAsync();
 
@@ -490,11 +503,10 @@ public sealed partial class MainWindow : Window
 
     private async Task AddDownloadAsync(Uri? uri)
     {
-        var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, AppWindow.Id)
-        {
-            RequestedTheme = MainGrid.ActualTheme,
-            XamlRoot = MainGrid.XamlRoot
-        };
+        var addDownloadDialog = _serviceProvider.GetRequiredService<AddDownloadDialog>();
+        addDownloadDialog.WindowId = AppWindow.Id;
+        addDownloadDialog.RequestedTheme = MainGrid.ActualTheme;
+        addDownloadDialog.XamlRoot = MainGrid.XamlRoot;
         if (uri is not null)
         {
             await addDownloadDialog.ShowAsync(uri);

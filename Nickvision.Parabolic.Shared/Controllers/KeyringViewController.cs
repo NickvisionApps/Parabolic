@@ -12,14 +12,14 @@ namespace Nickvision.Parabolic.Shared.Controllers;
 public class KeyringViewController
 {
     private readonly IKeyringService _keyringService;
+    private readonly ITranslationService _translationService;
 
-    public ITranslationService Translator { get; }
     public ObservableCollection<SelectionItem<Credential>> Credentials { get; }
 
-    public KeyringViewController(ITranslationService translationService, IKeyringService keyringService)
+    public KeyringViewController(IKeyringService keyringService, ITranslationService translationService)
     {
         _keyringService = keyringService;
-        Translator = translationService;
+        _translationService = translationService;
         Credentials = new ObservableCollection<SelectionItem<Credential>>();
         foreach (var credential in _keyringService.Credentials)
         {
@@ -31,15 +31,15 @@ public class KeyringViewController
     {
         if (_keyringService.Credentials.Any(cred => cred.Name == name))
         {
-            return Translator._("A credential with that name already exists");
+            return _translationService._("A credential with that name already exists");
         }
         else if (string.IsNullOrEmpty(name))
         {
-            return Translator._("The name of the credential cannot be empty");
+            return _translationService._("The name of the credential cannot be empty");
         }
         else if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
         {
-            return Translator._("Either the credential username or password must be set");
+            return _translationService._("Either the credential username or password must be set");
         }
         Uri.TryCreate(url, UriKind.Absolute, out var uri);
         var credential = new Credential(name, username, password, uri ?? Uri.Empty);
@@ -65,11 +65,11 @@ public class KeyringViewController
         var credential = _keyringService.Credentials.FirstOrDefault(cred => cred.Name == name);
         if (credential is null)
         {
-            return Translator._("A credential with that name does not exist");
+            return _translationService._("A credential with that name does not exist");
         }
         else if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
         {
-            return Translator._("Either the credential username or password must be set");
+            return _translationService._("Either the credential username or password must be set");
         }
         Uri.TryCreate(url, UriKind.Absolute, out var uri);
         credential.Url = uri ?? Uri.Empty;

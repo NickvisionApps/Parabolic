@@ -6,6 +6,7 @@
 		<LangVersion>latest</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>Nickvision.Parabolic.WinUI</RootNamespace>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -15,6 +16,8 @@
 		<UseWinUI>true</UseWinUI>
 		<EnableMsixTooling>true</EnableMsixTooling>
 		<WindowsPackageType>None</WindowsPackageType>
+		<DefineConstants>DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+		<StartupObject>Nickvision.Parabolic.WinUI.Program</StartupObject>
 		<Version>2026.3.0</Version>
 	</PropertyGroup>
 
@@ -31,7 +34,7 @@
 		<PackageReference Include="CommunityToolkit.WinUI.Extensions" Version="8.2.251219" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
-		<PackageReference Include="Nickvision.Desktop.WinUI" Version="2026.2.2" />
+		<PackageReference Include="Nickvision.Desktop.WinUI" Version="2026.2.4" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Nickvision.Parabolic.Shared\Nickvision.Parabolic.Shared.csproj" />

@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.Storage.Pickers;
 using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
@@ -15,135 +16,137 @@ namespace Nickvision.Parabolic.WinUI.Views;
 
 public sealed partial class SettingsPage : Page
 {
-    private PreferencesViewController _controller;
-    private readonly WindowId _windowId;
+    private readonly PreferencesViewController _controller;
+    private readonly ITranslationService _translationService;
     private bool _constructing;
 
-    public SettingsPage(PreferencesViewController controller, WindowId windowId)
+    public WindowId? WindowId { get; set; }
+
+    public SettingsPage(PreferencesViewController controller, ITranslationService translationService)
     {
         InitializeComponent();
         _controller = controller;
-        _windowId = windowId;
+        _translationService = translationService;
         _constructing = true;
         // Translations
-        LblSettings.Text = _controller.Translator._("Settings");
-        SelectorUI.Text = _controller.Translator._("User Interface");
-        SelectorDownloads.Text = _controller.Translator._("Downloads");
-        SelectorDownloader.Text = _controller.Translator._("Downloader");
-        SelectorConverter.Text = _controller.Translator._("Converter");
-        RowTheme.Header = _controller.Translator._("Theme");
+        LblSettings.Text = _translationService._("Settings");
+        SelectorUI.Text = _translationService._("User Interface");
+        SelectorDownloads.Text = _translationService._("Downloads");
+        SelectorDownloader.Text = _translationService._("Downloader");
+        SelectorConverter.Text = _translationService._("Converter");
+        RowTheme.Header = _translationService._("Theme");
         CmbTheme.ItemsSource = _controller.Themes;
-        RowTranslationLanguage.Header = _controller.Translator._("Translation Language");
-        RowTranslationLanguage.Description = _controller.Translator._("An application restart is required for a change to take effect");
+        RowTranslationLanguage.Header = _translationService._("Translation Language");
+        RowTranslationLanguage.Description = _translationService._("An application restart is required for a change to take effect");
         CmbTranslationLanguage.ItemsSource = _controller.AvailableTranslationLanguages;
-        RowPreviewUpdates.Header = _controller.Translator._("Receive Preview Updates");
-        RowPreviewUpdates.Description = _controller.Translator._("Update Parabolic and dependencies, such as yt-dlp, to beta versions");
-        TglPreviewUpdates.OnContent = _controller.Translator._("On");
-        TglPreviewUpdates.OffContent = _controller.Translator._("Off");
-        RowPreventSuspend.Header = _controller.Translator._("Prevent Suspend");
-        RowPreventSuspend.Description = _controller.Translator._("Prevent the computer from sleeping while downloads are running");
-        TglPreventSuspend.OnContent = _controller.Translator._("On");
-        TglPreventSuspend.OffContent = _controller.Translator._("Off");
-        RowHistoryLength.Header = _controller.Translator._("Download History Length");
-        RowHistoryLength.Description = _controller.Translator._("The amount of time to keep past downloads in the app's history");
+        RowPreviewUpdates.Header = _translationService._("Receive Preview Updates");
+        RowPreviewUpdates.Description = _translationService._("Update Parabolic and dependencies, such as yt-dlp, to beta versions");
+        TglPreviewUpdates.OnContent = _translationService._("On");
+        TglPreviewUpdates.OffContent = _translationService._("Off");
+        RowPreventSuspend.Header = _translationService._("Prevent Suspend");
+        RowPreventSuspend.Description = _translationService._("Prevent the computer from sleeping while downloads are running");
+        TglPreventSuspend.OnContent = _translationService._("On");
+        TglPreventSuspend.OffContent = _translationService._("Off");
+        RowHistoryLength.Header = _translationService._("Download History Length");
+        RowHistoryLength.Description = _translationService._("The amount of time to keep past downloads in the app's history");
         CmbHistoryLength.ItemsSource = _controller.HistoryLengths;
-        RowActiveDownloads.Header = _controller.Translator._("Max Number of Active Downloads");
-        RowOverwriteFiles.Header = _controller.Translator._("Overwrite Existing Files");
-        TglOverwriteFiles.OnContent = _controller.Translator._("On");
-        TglOverwriteFiles.OffContent = _controller.Translator._("Off");
-        RowIncludeMediaId.Header = _controller.Translator._("Include Media Id in Title");
-        RowIncludeMediaId.Description = _controller.Translator._("Add the media's id to its default title");
-        TglIncludeMediaId.OnContent = _controller.Translator._("On");
-        TglIncludeMediaId.OffContent = _controller.Translator._("Off");
-        RowIncludeAutoSubtitles.Header = _controller.Translator._("Include Auto-Generated Subtitles");
-        RowIncludeAutoSubtitles.Description = _controller.Translator._("Show auto-generated subtitles to download in addition to available subtitles");
-        TglIncludeAutoSubtitles.OnContent = _controller.Translator._("On");
-        TglIncludeAutoSubtitles.OffContent = _controller.Translator._("Off");
-        RowPreferredVideoCodec.Header = _controller.Translator._("Preferred Video Codec");
-        RowPreferredVideoCodec.Description = _controller.Translator._("Prefer this codec when parsing video formats to show available to download");
+        RowActiveDownloads.Header = _translationService._("Max Number of Active Downloads");
+        RowOverwriteFiles.Header = _translationService._("Overwrite Existing Files");
+        TglOverwriteFiles.OnContent = _translationService._("On");
+        TglOverwriteFiles.OffContent = _translationService._("Off");
+        RowIncludeMediaId.Header = _translationService._("Include Media Id in Title");
+        RowIncludeMediaId.Description = _translationService._("Add the media's id to its default title");
+        TglIncludeMediaId.OnContent = _translationService._("On");
+        TglIncludeMediaId.OffContent = _translationService._("Off");
+        RowIncludeAutoSubtitles.Header = _translationService._("Include Auto-Generated Subtitles");
+        RowIncludeAutoSubtitles.Description = _translationService._("Show auto-generated subtitles to download in addition to available subtitles");
+        TglIncludeAutoSubtitles.OnContent = _translationService._("On");
+        TglIncludeAutoSubtitles.OffContent = _translationService._("Off");
+        RowPreferredVideoCodec.Header = _translationService._("Preferred Video Codec");
+        RowPreferredVideoCodec.Description = _translationService._("Prefer this codec when parsing video formats to show available to download");
         CmbPreferredVideoCodec.ItemsSource = _controller.VideoCodecs;
-        RowPreferredAudioCodec.Header = _controller.Translator._("Preferred Audio Codec");
-        RowPreferredAudioCodec.Description = _controller.Translator._("Prefer this codec when parsing audio formats to show available to download");
+        RowPreferredAudioCodec.Header = _translationService._("Preferred Audio Codec");
+        RowPreferredAudioCodec.Description = _translationService._("Prefer this codec when parsing audio formats to show available to download");
         CmbPreferredAudioCodec.ItemsSource = _controller.AudioCodecs;
-        RowPreferredSubtitleFormat.Header = _controller.Translator._("Preferred Subtitle Format");
-        RowPreferredSubtitleFormat.Description = _controller.Translator._("Prefer this subtitle file format when downloading");
+        RowPreferredSubtitleFormat.Header = _translationService._("Preferred Subtitle Format");
+        RowPreferredSubtitleFormat.Description = _translationService._("Prefer this subtitle file format when downloading");
         CmbPreferredSubtitleFormat.ItemsSource = _controller.SubtitleFormats;
-        RowPreferredFrameRate.Header = _controller.Translator._("Preferred Frame Rate");
-        RowPreferredFrameRate.Description = _controller.Translator._("Prefer this frame rate when parsing video formats to show available to download");
+        RowPreferredFrameRate.Header = _translationService._("Preferred Frame Rate");
+        RowPreferredFrameRate.Description = _translationService._("Prefer this frame rate when parsing video formats to show available to download");
         CmbPreferredFrameRate.ItemsSource = _controller.FrameRates;
-        RowUsePartFiles.Header = _controller.Translator._("Use Part Files");
-        RowUsePartFiles.Description = _controller.Translator._("Download media in separate .part files instead of directly into the output file");
-        TglUsePartFiles.OnContent = _controller.Translator._("On");
-        TglUsePartFiles.OffContent = _controller.Translator._("Off");
-        RowUseSponsorBlock.Header = _controller.Translator._("Use SponsorBlock for YouTube");
-        RowUseSponsorBlock.Description = _controller.Translator._("Try to remove sponsored segments from videos");
-        TglUseSponsorBlock.OnContent = _controller.Translator._("On");
-        TglUseSponsorBlock.OffContent = _controller.Translator._("Off");
-        RowLimitSpeed.Header = _controller.Translator._("Limit Download Speed");
-        TglLimitSpeed.OnContent = _controller.Translator._("On");
-        TglLimitSpeed.OffContent = _controller.Translator._("Off");
-        RowSpeedLimit.Header = _controller.Translator._("Speed Limit");
-        RowProxyUrl.Header = _controller.Translator._("Proxy URL");
-        TxtProxyUrl.PlaceholderText = _controller.Translator._("Enter proxy url here");
-        RowCookiesFile.Header = _controller.Translator._("Cookies from File");
-        RowCookiesFile.Description = _controller.Translator._("Upload a txt cookies file from unlisted browsers");
-        LblCookiesFile.Text = _controller.Translator._("No file selected");
-        ToolTipService.SetToolTip(BtnClearCookiesFile, _controller.Translator._("Clear Cookies File"));
-        ToolTipService.SetToolTip(BtnSelectCookiesFile, _controller.Translator._("Select Cookies File"));
-        RowCookiesBrowser.Header = _controller.Translator._("Cookies from Browser");
+        RowUsePartFiles.Header = _translationService._("Use Part Files");
+        RowUsePartFiles.Description = _translationService._("Download media in separate .part files instead of directly into the output file");
+        TglUsePartFiles.OnContent = _translationService._("On");
+        TglUsePartFiles.OffContent = _translationService._("Off");
+        RowUseSponsorBlock.Header = _translationService._("Use SponsorBlock for YouTube");
+        RowUseSponsorBlock.Description = _translationService._("Try to remove sponsored segments from videos");
+        TglUseSponsorBlock.OnContent = _translationService._("On");
+        TglUseSponsorBlock.OffContent = _translationService._("Off");
+        RowLimitSpeed.Header = _translationService._("Limit Download Speed");
+        TglLimitSpeed.OnContent = _translationService._("On");
+        TglLimitSpeed.OffContent = _translationService._("Off");
+        RowSpeedLimit.Header = _translationService._("Speed Limit");
+        RowProxyUrl.Header = _translationService._("Proxy URL");
+        TxtProxyUrl.PlaceholderText = _translationService._("Enter proxy url here");
+        RowCookiesFile.Header = _translationService._("Cookies from File");
+        RowCookiesFile.Description = _translationService._("Upload a txt cookies file from unlisted browsers");
+        LblCookiesFile.Text = _translationService._("No file selected");
+        ToolTipService.SetToolTip(BtnClearCookiesFile, _translationService._("Clear Cookies File"));
+        ToolTipService.SetToolTip(BtnSelectCookiesFile, _translationService._("Select Cookies File"));
+        RowCookiesBrowser.Header = _translationService._("Cookies from Browser");
         CmbCookiesBrowser.ItemsSource = _controller.Browsers;
-        LblAria.Text = _controller.Translator._("aria2c");
-        RowUseAria.Header = _controller.Translator._("Use aria2c");
-        RowUseAria.Description = _controller.Translator._("An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader");
-        TglUseAria.OnContent = _controller.Translator._("On");
-        TglUseAria.OffContent = _controller.Translator._("Off");
-        RowMaxConnectionsPerServer.Header = _controller.Translator._("Max Connections Per Server");
-        RowMaxConnectionsPerServer.Description = _controller.Translator._("Corresponds to -x option");
-        RowMinimumSplitSize.Header = _controller.Translator._("Minimum Split Size (MiB)");
-        RowMinimumSplitSize.Description = _controller.Translator._("Corresponds to -k option");
-        LblAdvanced.Text = _controller.Translator._("Advanced");
-        RowYtdlpDiscoveryArgs.Header = _controller.Translator._("yt-dlp Discovery Arguments");
-        RowYtdlpDiscoveryArgs.Description = _controller.Translator._("Extra arguments to pass to yt-dlp when discovering media");
-        TxtYtdlpDiscoveryArgs.PlaceholderText = _controller.Translator._("Enter args here");
-        RowYtdlpDownloadArgs.Header = _controller.Translator._("yt-dlp Download Arguments");
-        RowYtdlpDownloadArgs.Description = _controller.Translator._("Extra arguments to pass to yt-dlp when downloading media");
-        TxtYtdlpDownloadArgs.PlaceholderText = _controller.Translator._("Enter args here");
-        RowEmbedMetadata.Header = _controller.Translator._("Embed Metadata");
-        TglEmbedMetadata.OnContent = _controller.Translator._("On");
-        TglEmbedMetadata.OffContent = _controller.Translator._("Off");
-        RowRemoveSourceData.Header = _controller.Translator._("Remove Source Data");
-        RowRemoveSourceData.Description = _controller.Translator._("Clear metadata fields containing identifying download information");
-        TglRemoveSourceData.OnContent = _controller.Translator._("On");
-        TglRemoveSourceData.OffContent = _controller.Translator._("Off");
-        RowEmbedThumbnails.Header = _controller.Translator._("Embed Thumbnails");
-        RowEmbedThumbnails.Description = _controller.Translator._("If the file type does not support embedding, the thumbnail will be written to a separate image file");
-        TglEmbedThumbnails.OnContent = _controller.Translator._("On");
-        TglEmbedThumbnails.OffContent = _controller.Translator._("Off");
-        RowCropAudioThumbnails.Header = _controller.Translator._("Crop Audio Thumbnails");
-        RowCropAudioThumbnails.Description = _controller.Translator._("Crop thumbnails of audio files to squares");
-        TglCropAudioThumbnails.OnContent = _controller.Translator._("On");
-        TglCropAudioThumbnails.OffContent = _controller.Translator._("Off");
-        RowEmbedChapters.Header = _controller.Translator._("Embed Chapters");
-        TglEmbedChapters.OnContent = _controller.Translator._("On");
-        TglEmbedChapters.OffContent = _controller.Translator._("Off");
-        RowEmbedSubtitles.Header = _controller.Translator._("Embed Subtitles");
-        RowEmbedSubtitles.Description = _controller.Translator._("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files");
-        TglEmbedSubtitles.OnContent = _controller.Translator._("On");
-        TglEmbedSubtitles.OffContent = _controller.Translator._("Off");
-        RowFfmpegThreads.Header = _controller.Translator._("FFmpeg Threads");
-        RowFfmpegThreads.Description = _controller.Translator._("Limit the number of threads used by ffmpeg");
+        LblAria.Text = _translationService._("aria2c");
+        RowUseAria.Header = _translationService._("Use aria2c");
+        RowUseAria.Description = _translationService._("An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader");
+        TglUseAria.OnContent = _translationService._("On");
+        TglUseAria.OffContent = _translationService._("Off");
+        RowMaxConnectionsPerServer.Header = _translationService._("Max Connections Per Server");
+        RowMaxConnectionsPerServer.Description = _translationService._("Corresponds to -x option");
+        RowMinimumSplitSize.Header = _translationService._("Minimum Split Size (MiB)");
+        RowMinimumSplitSize.Description = _translationService._("Corresponds to -k option");
+        LblAdvanced.Text = _translationService._("Advanced");
+        RowYtdlpDiscoveryArgs.Header = _translationService._("yt-dlp Discovery Arguments");
+        RowYtdlpDiscoveryArgs.Description = _translationService._("Extra arguments to pass to yt-dlp when discovering media");
+        TxtYtdlpDiscoveryArgs.PlaceholderText = _translationService._("Enter args here");
+        RowYtdlpDownloadArgs.Header = _translationService._("yt-dlp Download Arguments");
+        RowYtdlpDownloadArgs.Description = _translationService._("Extra arguments to pass to yt-dlp when downloading media");
+        TxtYtdlpDownloadArgs.PlaceholderText = _translationService._("Enter args here");
+        RowEmbedMetadata.Header = _translationService._("Embed Metadata");
+        TglEmbedMetadata.OnContent = _translationService._("On");
+        TglEmbedMetadata.OffContent = _translationService._("Off");
+        RowRemoveSourceData.Header = _translationService._("Remove Source Data");
+        RowRemoveSourceData.Description = _translationService._("Clear metadata fields containing identifying download information");
+        TglRemoveSourceData.OnContent = _translationService._("On");
+        TglRemoveSourceData.OffContent = _translationService._("Off");
+        RowEmbedThumbnails.Header = _translationService._("Embed Thumbnails");
+        RowEmbedThumbnails.Description = _translationService._("If the file type does not support embedding, the thumbnail will be written to a separate image file");
+        TglEmbedThumbnails.OnContent = _translationService._("On");
+        TglEmbedThumbnails.OffContent = _translationService._("Off");
+        RowCropAudioThumbnails.Header = _translationService._("Crop Audio Thumbnails");
+        RowCropAudioThumbnails.Description = _translationService._("Crop thumbnails of audio files to squares");
+        TglCropAudioThumbnails.OnContent = _translationService._("On");
+        TglCropAudioThumbnails.OffContent = _translationService._("Off");
+        RowEmbedChapters.Header = _translationService._("Embed Chapters");
+        TglEmbedChapters.OnContent = _translationService._("On");
+        TglEmbedChapters.OffContent = _translationService._("Off");
+        RowEmbedSubtitles.Header = _translationService._("Embed Subtitles");
+        RowEmbedSubtitles.Description = _translationService._("If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files");
+        TglEmbedSubtitles.OnContent = _translationService._("On");
+        TglEmbedSubtitles.OffContent = _translationService._("Off");
+        RowFfmpegThreads.Header = _translationService._("FFmpeg Threads");
+        RowFfmpegThreads.Description = _translationService._("Limit the number of threads used by ffmpeg");
         NumFfmpegThreads.Maximum = Environment.ProcessorCount;
-        RowPostProcessorArguments.Header = _controller.Translator._("Post-Processor Arguments");
-        RowPostProcessorArguments.Description = _controller.Translator._("Arguments will be shown for selection in the add download dialog");
-        LblAddPostProcessorArgument.Text = _controller.Translator._("Add");
-        DlgPostprocessingArgument.Title = _controller.Translator._("Argument");
-        DlgPostprocessingArgument.CloseButtonText = _controller.Translator._("Cancel");
-        TxtPostprocessingArgumentName.Header = _controller.Translator._("Name");
-        TxtPostprocessingArgumentName.PlaceholderText = _controller.Translator._("Enter name here");
-        CmbPostprocessingArgumentPostProcessor.Header = _controller.Translator._("Post-Processor");
-        CmbPostprocessingArgumentExecutable.Header = _controller.Translator._("Executable");
-        TxtPostprocessingArgumentArgs.Header = _controller.Translator._("Args");
-        TxtPostprocessingArgumentArgs.PlaceholderText = _controller.Translator._("Enter args here");
+        RowPostProcessorArguments.Header = _translationService._("Post-Processor Arguments");
+        RowPostProcessorArguments.Description = _translationService._("Arguments will be shown for selection in the add download dialog");
+        LblAddPostProcessorArgument.Text = _translationService._("Add");
+        DlgPostprocessingArgument.Title = _translationService._("Argument");
+        DlgPostprocessingArgument.CloseButtonText = _translationService._("Cancel");
+        TxtPostprocessingArgumentName.Header = _translationService._("Name");
+        TxtPostprocessingArgumentName.PlaceholderText = _translationService._("Enter name here");
+        CmbPostprocessingArgumentPostProcessor.Header = _translationService._("Post-Processor");
+        CmbPostprocessingArgumentExecutable.Header = _translationService._("Executable");
+        TxtPostprocessingArgumentArgs.Header = _translationService._("Args");
+        TxtPostprocessingArgumentArgs.PlaceholderText = _translationService._("Enter args here");
     }
 
     private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -166,7 +169,7 @@ public sealed partial class SettingsPage : Page
         TglLimitSpeed.IsOn = _controller.SpeedLimit.HasValue;
         NumSpeedLimit.Value = _controller.SpeedLimit ?? 1024;
         TxtProxyUrl.Text = _controller.ProxyUrl;
-        LblCookiesFile.Text = !File.Exists(_controller.CookiesPath) ? _controller.Translator._("No file selected") : _controller.CookiesPath;
+        LblCookiesFile.Text = !File.Exists(_controller.CookiesPath) ? _translationService._("No file selected") : _controller.CookiesPath;
         CmbCookiesBrowser.SelectSelectionItem();
         TglUseAria.IsOn = _controller.UseAria;
         NumMaxConnectionsPerServer.Value = _controller.AriaMaxConnectionsPerServer;
@@ -193,7 +196,7 @@ public sealed partial class SettingsPage : Page
         CmbPostprocessingArgumentPostProcessor.SelectSelectionItem();
         CmbPostprocessingArgumentExecutable.SelectSelectionItem();
         TxtPostprocessingArgumentArgs.Text = string.Empty;
-        DlgPostprocessingArgument.PrimaryButtonText = _controller.Translator._("Add");
+        DlgPostprocessingArgument.PrimaryButtonText = _translationService._("Add");
         DlgPostprocessingArgument.XamlRoot = XamlRoot;
         DlgPostprocessingArgument.RequestedTheme = ActualTheme;
         string? error = null;
@@ -209,9 +212,9 @@ public sealed partial class SettingsPage : Page
                 {
                     var errorDialog = new ContentDialog()
                     {
-                        Title = _controller.Translator._("Error"),
+                        Title = _translationService._("Error"),
                         Content = error,
-                        CloseButtonText = _controller.Translator._("OK"),
+                        CloseButtonText = _translationService._("OK"),
                         DefaultButton = ContentDialogButton.Close,
                         XamlRoot = XamlRoot,
                         RequestedTheme = ActualTheme
@@ -224,7 +227,7 @@ public sealed partial class SettingsPage : Page
 
     private async void ClearCookiesFile(object? sender, RoutedEventArgs e)
     {
-        LblCookiesFile.Text = _controller.Translator._("No file selected");
+        LblCookiesFile.Text = _translationService._("No file selected");
         await ApplyChangesAsync();
     }
 
@@ -233,10 +236,10 @@ public sealed partial class SettingsPage : Page
         var tag = ((sender as Button)!.Tag as string)!;
         var confirmDialog = new ContentDialog()
         {
-            Title = _controller.Translator._("Delete Argument?"),
-            Content = _controller.Translator._("Are you sure you want to delete this post-processor argument? This action is irreversible"),
-            PrimaryButtonText = _controller.Translator._("Yes"),
-            CloseButtonText = _controller.Translator._("No"),
+            Title = _translationService._("Delete Argument?"),
+            Content = _translationService._("Are you sure you want to delete this post-processor argument? This action is irreversible"),
+            PrimaryButtonText = _translationService._("Yes"),
+            CloseButtonText = _translationService._("No"),
             DefaultButton = ContentDialogButton.Close,
             XamlRoot = XamlRoot,
             RequestedTheme = ActualTheme
@@ -256,7 +259,7 @@ public sealed partial class SettingsPage : Page
         CmbPostprocessingArgumentPostProcessor.SelectedItem = _controller.PostProcessors.First(x => x.Value == argument.PostProcessor);
         CmbPostprocessingArgumentExecutable.SelectedItem = _controller.Executables.First(x => x.Value == argument.Executable);
         TxtPostprocessingArgumentArgs.Text = argument.Args;
-        DlgPostprocessingArgument.PrimaryButtonText = _controller.Translator._("Update");
+        DlgPostprocessingArgument.PrimaryButtonText = _translationService._("Update");
         DlgPostprocessingArgument.XamlRoot = XamlRoot;
         DlgPostprocessingArgument.RequestedTheme = ActualTheme;
         string? error = null;
@@ -272,9 +275,9 @@ public sealed partial class SettingsPage : Page
                 {
                     var errorDialog = new ContentDialog()
                     {
-                        Title = _controller.Translator._("Error"),
+                        Title = _translationService._("Error"),
                         Content = error,
-                        CloseButtonText = _controller.Translator._("OK"),
+                        CloseButtonText = _translationService._("OK"),
                         DefaultButton = ContentDialogButton.Close,
                         XamlRoot = XamlRoot,
                         RequestedTheme = ActualTheme
@@ -287,7 +290,7 @@ public sealed partial class SettingsPage : Page
 
     private async void SelectCookiesFile(object? sender, RoutedEventArgs e)
     {
-        var filePicker = new FileOpenPicker(_windowId)
+        var filePicker = new FileOpenPicker(WindowId!.Value)
         {
             SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
             FileTypeFilter = { ".txt" }

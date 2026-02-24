@@ -1,0 +1,52 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Helpers;
+using Nickvision.Parabolic.Shared.Controllers;
+using Nickvision.Parabolic.Shared.Services;
+using System;
+
+namespace Nickvision.Parabolic.Shared.Helpers;
+
+public static class HostApplicationBuilderExtensions
+{
+    extension(IHostApplicationBuilder builder)
+    {
+        public IHostApplicationBuilder ConfigureParabolic(string[] args)
+        {
+            var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
+            {
+                Version = new AppVersion("2026.3.0-next"),
+                Changelog = """
+                - Added macOS app for the GNOME version of Parabolic
+                - Added Windows portable version of Parabolic
+                - Added the ability to specify a preferred frame rate for video downloads
+                - Added failed filter to downloads view
+                - Improved selection of playlist video formats when resolutions are specified
+                - Improved selection of playlist audio formats on Windows when bitrates are specified
+                - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
+                - Updated yt-dlp
+                """,
+                SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
+                IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
+                DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions"),
+                IsPortable = OperatingSystem.IsWindows() && args.Contains("--portable")
+            };
+            builder.Properties.Add("AppInfo", appInfo);
+            builder.Services.AddSingleton(appInfo);
+            builder.ConfigureNickvision(args);
+            builder.Services.AddSingleton<IDiscoveryService, DiscoveryService>();
+            builder.Services.AddSingleton<IDownloadService, DownloadService>();
+            builder.Services.AddSingleton<IHistoryService, HistoryService>();
+            builder.Services.AddSingleton<IRecoveryService, RecoveryService>();
+            builder.Services.AddSingleton<IYtdlpExecutableService, YtdlpExecutableService>();
+            builder.Services.AddHttpClient<IYtdlpExecutableService, YtdlpExecutableService>();
+            builder.Services.AddTransient<AddDownloadDialogController>();
+            builder.Services.AddTransient<HistoryViewController>();
+            builder.Services.AddTransient<KeyringViewController>();
+            builder.Services.AddSingleton<MainWindowController>();
+            builder.Services.AddTransient<PreferencesViewController>();
+            return builder;
+        }
+    }
+}

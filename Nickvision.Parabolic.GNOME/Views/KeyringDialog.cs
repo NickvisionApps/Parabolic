@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.GNOME.Helpers;
+﻿using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
@@ -11,6 +12,7 @@ namespace Nickvision.Parabolic.GNOME.Views;
 public class KeyringDialog : Adw.PreferencesDialog
 {
     private readonly KeyringViewController _controller;
+    private readonly ITranslationService _translationService;
     private readonly Gtk.Builder _builder;
     private readonly List<Adw.ActionRow> _credentialRows;
     private EditMode _credentialEditMode;
@@ -32,14 +34,15 @@ public class KeyringDialog : Adw.PreferencesDialog
     [Gtk.Connect("editConfirmCredentialButton")]
     private Gtk.Button? _editConfirmCredentialButton;
 
-    public KeyringDialog(KeyringViewController controller) : this(controller, Gtk.Builder.NewFromBlueprint("KeyringDialog", controller.Translator))
+    public KeyringDialog(KeyringViewController controller, ITranslationService translationService, IGtkBuilderFactory builderFactory) : this(controller, translationService, builderFactory.Create("KeyringDialog"))
     {
 
     }
 
-    public KeyringDialog(KeyringViewController controller, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
+    public KeyringDialog(KeyringViewController controller, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
     {
         _controller = controller;
+        _translationService = translationService;
         _builder = builder;
         _credentialRows = new List<Adw.ActionRow>();
         _credentialEditMode = EditMode.None;
@@ -63,12 +66,12 @@ public class KeyringDialog : Adw.PreferencesDialog
         {
             var editButton = Gtk.Button.NewFromIconName("document-edit-symbolic");
             editButton.Valign = Gtk.Align.Center;
-            editButton.TooltipText = _controller.Translator._("Edit");
+            editButton.TooltipText = _translationService._("Edit");
             editButton.AddCssClass("flat");
             editButton.OnClicked += (_, _) => Edit(credential.Value);
             var deleteButton = Gtk.Button.NewFromIconName("user-trash-symbolic");
             deleteButton.Valign = Gtk.Align.Center;
-            deleteButton.TooltipText = _controller.Translator._("Delete");
+            deleteButton.TooltipText = _translationService._("Delete");
             deleteButton.AddCssClass("flat");
             deleteButton.OnClicked += (_, _) => Remove(credential.Value);
             var row = Adw.ActionRow.New();
@@ -83,7 +86,7 @@ public class KeyringDialog : Adw.PreferencesDialog
         if (_controller.Credentials.Count == 0)
         {
             var row = Adw.ActionRow.New();
-            row.Title = _controller.Translator._("No Credentials");
+            row.Title = _translationService._("No Credentials");
             _credentialRows.Add(row);
             _credentialsGroup!.Add(row);
         }
@@ -97,7 +100,7 @@ public class KeyringDialog : Adw.PreferencesDialog
         _editCredentialUrlRow!.Text_ = string.Empty;
         _editCredentialUsernameRow!.Text_ = string.Empty;
         _editCredentialPasswordRow!.Text_ = string.Empty;
-        _editConfirmCredentialButton!.Label = _controller.Translator._("Add");
+        _editConfirmCredentialButton!.Label = _translationService._("Add");
         _editCredentialDialog!.Present(this);
     }
 
@@ -125,8 +128,8 @@ public class KeyringDialog : Adw.PreferencesDialog
         }
         if (error is not null)
         {
-            var alert = Adw.AlertDialog.New(_controller.Translator._("Error"), error);
-            alert.AddResponse("ok", _controller.Translator._("OK"));
+            var alert = Adw.AlertDialog.New(_translationService._("Error"), error);
+            alert.AddResponse("ok", _translationService._("OK"));
             alert.SetDefaultResponse("ok");
             alert.Present(this);
         }
@@ -144,15 +147,15 @@ public class KeyringDialog : Adw.PreferencesDialog
         _editCredentialUrlRow!.Text_ = credential.Url.ToString();
         _editCredentialUsernameRow!.Text_ = credential.Username;
         _editCredentialPasswordRow!.Text_ = credential.Password;
-        _editConfirmCredentialButton!.Label = _controller.Translator._("Edit");
+        _editConfirmCredentialButton!.Label = _translationService._("Edit");
         _editCredentialDialog!.Present(this);
     }
 
     private void Remove(Credential credential)
     {
-        var dialog = Adw.AlertDialog.New(_controller.Translator._("Delete Credential?"), _controller.Translator._("Are you sure you want to delete this credential? This action is irreversible"));
-        dialog.AddResponse("delete", _controller.Translator._("Delete"));
-        dialog.AddResponse("cancel", _controller.Translator._("Cancel"));
+        var dialog = Adw.AlertDialog.New(_translationService._("Delete Credential?"), _translationService._("Are you sure you want to delete this credential? This action is irreversible"));
+        dialog.AddResponse("delete", _translationService._("Delete"));
+        dialog.AddResponse("cancel", _translationService._("Cancel"));
         dialog.SetResponseAppearance("delete", Adw.ResponseAppearance.Destructive);
         dialog.SetDefaultResponse("cancel");
         dialog.SetCloseResponse("cancel");

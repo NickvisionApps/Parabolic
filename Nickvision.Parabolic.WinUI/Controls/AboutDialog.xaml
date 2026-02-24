@@ -6,7 +6,8 @@
     xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
+    Loaded="Dialog_Loaded">
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
         <Grid RowSpacing="6">

@@ -1,4 +1,5 @@
 ﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.GNOME.Helpers;
@@ -9,12 +10,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Vanara.PInvoke;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
 public class AddDownloadDialog : Adw.Dialog
 {
     private readonly AddDownloadDialogController _controller;
+    private readonly ITranslationService _translationService;
     private readonly Gtk.Window _parent;
     private readonly Gtk.Builder _builder;
     private CancellationTokenSource? _cancellationTokenSource;
@@ -142,14 +145,15 @@ public class AddDownloadDialog : Adw.Dialog
     [Gtk.Connect("playlistDownloadButton")]
     private Gtk.Button? _playlistDownloadButton;
 
-    public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("AddDownloadDialog", controller.Translator))
+    public AddDownloadDialog(AddDownloadDialogController controller, ITranslationService translationService, Adw.ApplicationWindow parent, IGtkBuilderFactory builderFactory) : this(controller, translationService, parent, builderFactory.Create("AddDownloadDialog"))
     {
 
     }
 
-    private AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.DialogHandle(builder.GetPointer("root"), false))
+    private AddDownloadDialog(AddDownloadDialogController controller, ITranslationService translationService, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.DialogHandle(builder.GetPointer("root"), false))
     {
         _controller = controller;
+        _translationService = translationService;
         _parent = parent;
         _builder = builder;
         _cancellationTokenSource = null;
@@ -161,6 +165,7 @@ public class AddDownloadDialog : Adw.Dialog
         // Load
         _authenticationCredentialRow!.SetModel(_controller.AvailableCredentials);
         // Events
+        OnShow += Dialog_OnShow;
         OnClosed += Dialog_OnClosed;
         _urlRow!.OnChanged += UrlRow_OnChanged;
         _selectBatchFileRow!.OnActivated += SelectBathFileRow_OnActivated;
@@ -186,24 +191,10 @@ public class AddDownloadDialog : Adw.Dialog
         _playlistDownloadButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
     }
 
-    public async Task PresentWithClipboardAsync()
-    {
-        try
-        {
-            var text = await Gdk.Display.GetDefault()!.GetClipboard().ReadTextAsync();
-            if (!string.IsNullOrEmpty(text) && Uri.TryCreate(text, UriKind.Absolute, out var url))
-            {
-                _urlRow!.Text_ = url.ToString();
-            }
-        }
-        catch { }
-        Present(_parent);
-    }
-
-    public void Present(Uri url)
+    public void Present(Uri url, Gtk.Widget? parent)
     {
         _urlRow!.Text_ = url.ToString();
-        Present(_parent);
+        Present(parent);
     }
 
     private async Task DownloadSingleAsync()
@@ -243,6 +234,23 @@ public class AddDownloadDialog : Adw.Dialog
         Close();
     }
 
+    private async void Dialog_OnShow(Gtk.Widget sender, EventArgs e)
+    {
+        if(!string.IsNullOrEmpty(_urlRow!.Text_))
+        {
+            return;
+        }
+        try
+        {
+            var text = await Gdk.Display.GetDefault()!.GetClipboard().ReadTextAsync();
+            if (!string.IsNullOrEmpty(text) && Uri.TryCreate(text, UriKind.Absolute, out var url))
+            {
+                _urlRow!.Text_ = url.ToString();
+            }
+        }
+        catch { }
+    }
+
     private void Dialog_OnClosed(Adw.Dialog sender, EventArgs e)
     {
         _cancellationTokenSource?.Cancel();
@@ -254,9 +262,9 @@ public class AddDownloadDialog : Adw.Dialog
     private async void SelectBathFileRow_OnActivated(Adw.ButtonRow sender, EventArgs e)
     {
         var fileDialog = Gtk.FileDialog.New();
-        fileDialog.Title = _controller.Translator._("Select Batch File");
+        fileDialog.Title = _translationService._("Select Batch File");
         var filter = Gtk.FileFilter.New();
-        filter.Name = _controller.Translator._("TXT Files (*.txt)");
+        filter.Name = _translationService._("TXT Files (*.txt)");
         filter.AddPattern("*.txt");
         filter.AddPattern("*.TXT");
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
@@ -327,7 +335,7 @@ public class AddDownloadDialog : Adw.Dialog
             else
             {
                 var row = Adw.ActionRow.New();
-                row.Title = _controller.Translator._("No Subtitles Available");
+                row.Title = _translationService._("No Subtitles Available");
                 _singleSubtitlesGroup!.Add(row);
             }
             SetSubtitles(_discoveryContext.SubtitleLanguages, false);
@@ -371,7 +379,7 @@ public class AddDownloadDialog : Adw.Dialog
                 var revertBtn = Gtk.Button.New();
                 revertBtn.Valign = Gtk.Align.Center;
                 revertBtn.IconName = "edit-undo-symbolic";
-                revertBtn.TooltipText = _controller.Translator._("Revert to Title");
+                revertBtn.TooltipText = _translationService._("Revert to Title");
                 revertBtn.AddCssClass("flat");
                 revertBtn.OnClicked += (_, _) => row.Text_ = item.Label;
                 row.AddSuffix(revertBtn);
@@ -394,7 +402,7 @@ public class AddDownloadDialog : Adw.Dialog
                 var flyoutBtn = Gtk.MenuButton.New();
                 flyoutBtn.Valign = Gtk.Align.Center;
                 flyoutBtn.IconName = "wrench-wide-symbolic";
-                flyoutBtn.TooltipText = _controller.Translator._("Properties");
+                flyoutBtn.TooltipText = _translationService._("Properties");
                 flyoutBtn.AddCssClass("flat");
                 flyoutBtn.Popover = popover;
                 row.AddSuffix(flyoutBtn);
@@ -410,7 +418,7 @@ public class AddDownloadDialog : Adw.Dialog
             else
             {
                 var row = Adw.ActionRow.New();
-                row.Title = _controller.Translator._("No Subtitles Available");
+                row.Title = _translationService._("No Subtitles Available");
                 _playlistSubtitlesGroup!.Add(row);
             }
             SetSubtitles(_discoveryContext.SubtitleLanguages, true);
@@ -438,7 +446,7 @@ public class AddDownloadDialog : Adw.Dialog
     private async void SingleSelectSaveFolderButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
         var fileDialog = Gtk.FileDialog.New();
-        fileDialog.Title = _controller.Translator._("Select Save Folder");
+        fileDialog.Title = _translationService._("Select Save Folder");
         try
         {
             var res = await fileDialog.SelectFolderAsync(_parent);
@@ -485,7 +493,7 @@ public class AddDownloadDialog : Adw.Dialog
     private async void PlaylistSelectSaveFolderButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
         var fileDialog = Gtk.FileDialog.New();
-        fileDialog.Title = _controller.Translator._("Select Save Folder");
+        fileDialog.Title = _translationService._("Select Save Folder");
         try
         {
             var res = await fileDialog.SelectFolderAsync(_parent);

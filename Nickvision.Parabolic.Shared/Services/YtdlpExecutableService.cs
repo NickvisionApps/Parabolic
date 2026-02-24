@@ -56,8 +56,8 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     public YtdlpExecutableService(IJsonFileService jsonFileService, HttpClient httpClient)
     {
         _jsonFileService = jsonFileService;
-        _stableUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp", httpClient);
-        _previewUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClient);
+        _stableUpdaterService = new UpdaterService("yt-dlp", "yt-dlp", httpClient);
+        _previewUpdaterService = new UpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClient);
         _latestPreviewVersion = null;
         _latestStableVersion = null;
     }

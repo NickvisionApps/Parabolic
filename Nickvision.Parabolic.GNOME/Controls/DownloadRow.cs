@@ -53,7 +53,7 @@ public class DownloadRow : Gtk.ListBoxRow
 
     public DownloadStatus Status { get; private set; }
 
-    public DownloadRow(ITranslationService translator, Gtk.Window parent) : this(translator, parent, Gtk.Builder.NewFromBlueprint("DownloadRow", translator))
+    public DownloadRow(ITranslationService translator, Adw.ApplicationWindow parent, IGtkBuilderFactory builderFactory) : this(translator, parent, builderFactory.Create("DownloadRow"))
     {
 
     }

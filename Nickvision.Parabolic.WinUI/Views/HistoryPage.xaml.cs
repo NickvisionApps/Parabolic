@@ -1,6 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
@@ -23,18 +24,20 @@ public sealed partial class HistoryPage : Page
     }
 
     private readonly HistoryViewController _controller;
+    private readonly ITranslationService _translationService;
     private IReadOnlyList<SelectionItem<HistoricDownload>> _historicDownloads;
 
-    public HistoryPage(HistoryViewController controller)
+    public HistoryPage(HistoryViewController controller, ITranslationService translationService)
     {
         InitializeComponent();
         _controller = controller;
+        _translationService = translationService;
         _historicDownloads = [];
-        LblHistory.Text = _controller.Translator._("History");
-        BtnSort.Label = _controller.Translator._("Sort");
-        TglSortNewest.Text = _controller.Translator._("Newest");
-        TglSortOldest.Text = _controller.Translator._("Oldest");
-        BtnLength.Label = _controller.Translator._("Save Length");
+        LblHistory.Text = _translationService._("History");
+        BtnSort.Label = _translationService._("Sort");
+        TglSortNewest.Text = _translationService._("Newest");
+        TglSortOldest.Text = _translationService._("Oldest");
+        BtnLength.Label = _translationService._("Save Length");
         foreach (var length in _controller.Lengths)
         {
             var item = new RadioMenuFlyoutItem()
@@ -48,13 +51,13 @@ public sealed partial class HistoryPage : Page
             item.Click += TglLength_Click;
             MenuLength.Items.Add(item);
         }
-        LblClearAll.Text = _controller.Translator._("Clear All");
-        TxtSearch.PlaceholderText = _controller.Translator._("Search...");
-        LblLoading.Text = _controller.Translator._("Please wait...");
-        StatusNone.Title = _controller.Translator._("No History");
-        StatusNone.Description = _controller.Translator._("There are no downloads in your history");
-        StatusNoneSearch.Title = _controller.Translator._("No History");
-        StatusNoneSearch.Description = _controller.Translator._("There are no downloads found with the current filters");
+        LblClearAll.Text = _translationService._("Clear All");
+        TxtSearch.PlaceholderText = _translationService._("Search...");
+        LblLoading.Text = _translationService._("Please wait...");
+        StatusNone.Title = _translationService._("No History");
+        StatusNone.Description = _translationService._("There are no downloads in your history");
+        StatusNoneSearch.Title = _translationService._("No History");
+        StatusNoneSearch.Description = _translationService._("There are no downloads found with the current filters");
     }
 
     private async void Page_Loaded(object? sender, RoutedEventArgs e)
@@ -75,10 +78,10 @@ public sealed partial class HistoryPage : Page
     {
         var confirmDialog = new ContentDialog()
         {
-            Title = _controller.Translator._("Clear All History?"),
-            Content = _controller.Translator._("Are you sure you want to clear all download history? This action is irreversible"),
-            PrimaryButtonText = _controller.Translator._("Yes"),
-            CloseButtonText = _controller.Translator._("No"),
+            Title = _translationService._("Clear All History?"),
+            Content = _translationService._("Are you sure you want to clear all download history? This action is irreversible"),
+            PrimaryButtonText = _translationService._("Yes"),
+            CloseButtonText = _translationService._("No"),
             DefaultButton = ContentDialogButton.Close,
             XamlRoot = XamlRoot,
             RequestedTheme = ActualTheme
