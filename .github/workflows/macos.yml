@@ -22,6 +22,9 @@ jobs:
           - arch: arm64
             runner: macos-latest
             runtime: osx-arm64
+          - arch: x64
+            runner: macos-15-intel
+            runtime: osx-x64
     runs-on: ${{ matrix.variant.runner }}
     steps:
       - uses: actions/checkout@v6
