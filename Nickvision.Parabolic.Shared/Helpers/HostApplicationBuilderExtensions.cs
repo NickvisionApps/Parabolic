@@ -1,10 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Services;
+using NReco.Logging.File;
 using System;
+using System.IO;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
@@ -32,6 +36,7 @@ public static class HostApplicationBuilderExtensions
                 DiscussionsForum = new Uri("https://github.com/NickvisionApps/Parabolic/discussions"),
                 IsPortable = OperatingSystem.IsWindows() && args.Contains("--portable")
             };
+            var loggingPath = appInfo.IsPortable ? "app.log" : Path.Combine(UserDirectories.LocalData, appInfo.Name, "app.log");
             builder.Properties.Add("AppInfo", appInfo);
             builder.Services.AddSingleton(appInfo);
             builder.ConfigureNickvision(args);
@@ -47,6 +52,10 @@ public static class HostApplicationBuilderExtensions
             builder.Services.AddTransient<KeyringViewController>();
             builder.Services.AddSingleton<MainWindowController>();
             builder.Services.AddTransient<PreferencesViewController>();
+            builder.Logging.ClearProviders();
+            builder.Logging.SetMinimumLevel(LogLevel.Information);
+            builder.Logging.AddConsole();
+            builder.Logging.AddFile(loggingPath, false);
             return builder;
         }
     }

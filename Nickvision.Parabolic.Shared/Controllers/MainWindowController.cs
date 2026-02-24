@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Application;
+﻿using Microsoft.Extensions.Logging;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Network;
@@ -15,6 +16,7 @@ namespace Nickvision.Parabolic.Shared.Controllers;
 
 public class MainWindowController
 {
+    private readonly ILogger<MainWindowController> _logger;
     private readonly AppInfo _appInfo;
     private readonly IArgumentsService _argumentsService;
     private readonly IDownloadService _downloadService;
@@ -30,8 +32,9 @@ public class MainWindowController
 
     public int RecoverableDownloadsCount => _recoveryService.Count;
 
-    public MainWindowController(AppInfo appInfo, IArgumentsService argumentsService, IDownloadService downloadService, IJsonFileService jsonFileService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
+    public MainWindowController(ILogger<MainWindowController> logger, AppInfo appInfo, IArgumentsService argumentsService, IDownloadService downloadService, IJsonFileService jsonFileService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
     {
+        _logger = logger;
         _appInfo = appInfo;
         _argumentsService = argumentsService;
         _downloadService = downloadService;
@@ -45,6 +48,7 @@ public class MainWindowController
         _latestAppVersion = appInfo.Version!;
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         _translationService.Language = _jsonFileService.Load<Configuration>(Configuration.Key).TranslationLanguage;
+        _logger.LogInformation($"Receieved command-line argumnets: [{string.Join(", ", argumentsService.Data)}]");
         // Events
         _jsonFileService.Saved += JsonFileService_Saved;
         // Translate strings
@@ -124,6 +128,7 @@ public class MainWindowController
 
     public async Task CheckForUpdatesAsync(bool showNotificationForNoUpdates)
     {
+        _logger.LogInformation("Checking for updates...");
         var config = _jsonFileService.Load<Configuration>(Configuration.Key);
         var stableAppVersion = await _updaterService.GetLatestStableVersionAsync();
         var stableYtdlpVersion = await _ytdlpExecutableService.GetLatestStableVersionAsync();
@@ -150,6 +155,7 @@ public class MainWindowController
         }
         if (_latestAppVersion > _appInfo.Version!)
         {
+            _logger.LogInformation($"New application update available: {_latestAppVersion}");
             _notificationService.Send(new AppNotification(_translationService._("New {0} update available: {1}", _appInfo.ShortName!, _latestAppVersion.ToString()), NotificationSeverity.Success)
             {
                 Action = "update"
@@ -157,14 +163,19 @@ public class MainWindowController
         }
         else if (_latestYtdlpVersion > _ytdlpExecutableService.BundledVersion && _latestYtdlpVersion > config.InstalledYtdlpAppVersion)
         {
+            _logger.LogInformation($"New yt-dlp update available: {_latestYtdlpVersion}");
             _notificationService.Send(new AppNotification(_translationService._("New yt-dlp update available: {0}", _latestYtdlpVersion.ToString()), NotificationSeverity.Success)
             {
                 Action = "update-ytdlp"
             });
         }
-        else if (showNotificationForNoUpdates)
+        else
         {
-            _notificationService.Send(new AppNotification(_translationService._("No update available"), NotificationSeverity.Warning));
+            _logger.LogInformation("No application updates available.");
+            if (showNotificationForNoUpdates)
+            {
+                _notificationService.Send(new AppNotification(_translationService._("No update available"), NotificationSeverity.Warning));
+            }
         }
     }
 
