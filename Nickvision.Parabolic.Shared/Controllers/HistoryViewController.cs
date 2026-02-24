@@ -1,6 +1,5 @@
 ﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
-using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -11,15 +10,15 @@ namespace Nickvision.Parabolic.Shared.Controllers;
 
 public class HistoryViewController
 {
+    private readonly IEventsService _eventsService;
     private readonly IHistoryService _historyService;
     private readonly ITranslationService _translationService;
 
     public IReadOnlyList<SelectionItem<HistoryLength>> Lengths { get; }
 
-    public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
-
-    public HistoryViewController(IHistoryService historyService, ITranslationService translationService)
+    public HistoryViewController(IEventsService eventsService, IHistoryService historyService, ITranslationService translationService)
     {
+        _eventsService = eventsService;
         _historyService = historyService;
         _translationService = translationService;
         var selectedLength = _historyService.Length;
@@ -62,5 +61,5 @@ public class HistoryViewController
 
     public async Task RemoveAsync(Uri url) => await _historyService.RemoveAsync(url);
 
-    public void RequestDownload(Uri url) => DownloadRequested?.Invoke(this, new DownloadRequestedEventArgs(url));
+    public void RequestDownload(Uri url) => _eventsService.InvokeDownloadRequested(url);
 }

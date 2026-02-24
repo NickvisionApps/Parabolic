@@ -1,7 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
-using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -15,8 +14,6 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 {
     private readonly string _path;
     private SqliteConnection _connection;
-
-    public event EventHandler<HistoryChangedEventArgs>? Changed;
 
     public HistoryService(AppInfo appInfo)
     {
@@ -106,7 +103,6 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
         if (await command.ExecuteNonQueryAsync() > 0)
         {
-            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Add));
             return true;
         }
         return false;
@@ -135,7 +131,6 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
             }
         }
         await transaction.CommitAsync();
-        Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Add));
         return true;
     }
 
@@ -145,7 +140,6 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.CommandText = "DELETE FROM history";
         if (await command.ExecuteNonQueryAsync() >= 0)
         {
-            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Clear));
             return true;
         }
         return false;
@@ -221,7 +215,6 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$url", download.Url.ToString());
         if (await command.ExecuteNonQueryAsync() > 0)
         {
-            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Remove));
             return true;
         }
         return false;
@@ -234,7 +227,6 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$url", url.ToString());
         if (await command.ExecuteNonQueryAsync() > 0)
         {
-            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Remove));
             return true;
         }
         return false;
@@ -251,7 +243,6 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
         if (await command.ExecuteNonQueryAsync() > 0)
         {
-            Changed?.Invoke(this, new HistoryChangedEventArgs(ModificationType.Update));
             return true;
         }
         return false;

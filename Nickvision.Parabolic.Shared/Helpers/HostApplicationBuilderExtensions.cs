@@ -35,6 +35,7 @@ public static class HostApplicationBuilderExtensions
             builder.Properties.Add("AppInfo", appInfo);
             builder.Services.AddSingleton(appInfo);
             builder.ConfigureNickvision(args);
+            builder.Services.AddSingleton<IEventsService, EventsService>();
             builder.Services.AddSingleton<IDiscoveryService, DiscoveryService>();
             builder.Services.AddSingleton<IDownloadService, DownloadService>();
             builder.Services.AddSingleton<IHistoryService, HistoryService>();

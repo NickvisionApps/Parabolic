@@ -10,6 +10,7 @@ using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,12 +48,12 @@ public class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect("listDownloads")]
     private Gtk.ListBox? _listDownloads;
 
-    public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, ITranslationService translationService, IGtkBuilderFactory builderFactory) : this(serviceProvider, controller, appInfo, translationService, builderFactory.Create("MainWindow"))
+    public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, IGtkBuilderFactory builderFactory) : this(serviceProvider, controller, appInfo, eventsService, translationService, builderFactory.Create("MainWindow"))
     {
 
     }
 
-    private MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
+    private MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
     {
         var application = serviceProvider.GetRequiredService<Adw.Application>();
         _serviceProvider = serviceProvider;
@@ -80,37 +81,37 @@ public class MainWindow : Adw.ApplicationWindow
         // Events
         OnShow += Window_OnShow;
         OnCloseRequest += Window_OnCloseRequest;
-        _controller.AppNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.AppNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_AppNotificationSent(sender, e);
             return false;
         });
-        _controller.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadAdded(sender, e);
             return false;
         });
-        _controller.DownloadProgressChanged += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadProgressChanged += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadProgressChanged(sender, e);
             return false;
         });
-        _controller.DownloadCompleted += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadCompleted += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadCompleted(sender, e);
             return false;
         });
-        _controller.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadStopped(sender, e);
             return false;
         });
-        _controller.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadStartedFromQueue(sender, e);
             return false;
         });
-        _controller.DownloadRetired += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadRetired += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadRetired(sender, e);
             return false;

@@ -1,5 +1,4 @@
-﻿using Nickvision.Parabolic.Shared.Events;
-using Nickvision.Parabolic.Shared.Models;
+﻿using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,8 +9,6 @@ public interface IHistoryService
 {
     bool SortNewest { get; set; }
     HistoryLength Length { get; set; }
-
-    event EventHandler<HistoryChangedEventArgs>? Changed;
 
     Task<bool> AddAsync(HistoricDownload download);
     Task<bool> AddAsync(IReadOnlyList<HistoricDownload> downloads);

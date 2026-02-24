@@ -4,7 +4,6 @@ using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Desktop.System;
-using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -19,7 +18,6 @@ public class MainWindowController
     private readonly AppInfo _appInfo;
     private readonly IArgumentsService _argumentsService;
     private readonly IDownloadService _downloadService;
-    private readonly IHistoryService _historyService;
     private readonly IJsonFileService _jsonFileService;
     private readonly INotificationService _notificationService;
     private readonly IPowerService _powerService;
@@ -32,14 +30,11 @@ public class MainWindowController
 
     public int RecoverableDownloadsCount => _recoveryService.Count;
 
-    public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
-
-    public MainWindowController(AppInfo appInfo, IArgumentsService argumentsService, IDownloadService downloadService, IHistoryService historyService, IJsonFileService jsonFileService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
+    public MainWindowController(AppInfo appInfo, IArgumentsService argumentsService, IDownloadService downloadService, IJsonFileService jsonFileService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _appInfo = appInfo;
         _argumentsService = argumentsService;
         _downloadService = downloadService;
-        _historyService = historyService;
         _jsonFileService = jsonFileService;
         _notificationService = notificationService;
         _powerService = powerService;
@@ -63,76 +58,6 @@ public class MainWindowController
         _appInfo.Designers.Add("DaPigGuy", "https://github.com/DaPigGuy");
         _appInfo.Artists.Add(translationService._("David Lapshin"), "https://github.com/daudix");
         _appInfo.TranslationCredits = translationService._("translation-credits");
-    }
-
-    public event EventHandler<AppNotificationSentEventArgs>? AppNotificationSent
-    {
-        add => _notificationService.AppNotificationSent += value;
-
-        remove => _notificationService.AppNotificationSent -= value;
-    }
-
-    public event EventHandler<JsonFileSavedEventArgs>? JsonFileSaved
-    {
-        add => _jsonFileService.Saved += value;
-
-        remove => _jsonFileService.Saved -= value;
-    }
-
-    public event EventHandler<HistoryChangedEventArgs> HistoryChanged
-    {
-        add => _historyService.Changed += value;
-
-        remove => _historyService.Changed -= value;
-    }
-
-    public event EventHandler<DownloadAddedEventArgs> DownloadAdded
-    {
-        add => _downloadService.DownloadAdded += value;
-
-        remove => _downloadService.DownloadAdded -= value;
-    }
-
-    public event EventHandler<DownloadCompletedEventArgs> DownloadCompleted
-    {
-        add => _downloadService.DownloadCompleted += value;
-
-        remove => _downloadService.DownloadCompleted -= value;
-    }
-
-    public event EventHandler<DownloadCredentialRequiredEventArgs> DownloadCredentialRequired
-    {
-        add => _downloadService.DownloadCredentialRequired += value;
-
-        remove => _downloadService.DownloadCredentialRequired -= value;
-    }
-
-    public event EventHandler<DownloadProgressChangedEventArgs> DownloadProgressChanged
-    {
-        add => _downloadService.DownloadProgressChanged += value;
-
-        remove => _downloadService.DownloadProgressChanged -= value;
-    }
-
-    public event EventHandler<DownloadEventArgs> DownloadRetired
-    {
-        add => _downloadService.DownloadRetired += value;
-
-        remove => _downloadService.DownloadRetired -= value;
-    }
-
-    public event EventHandler<DownloadEventArgs> DownloadStartedFromQueue
-    {
-        add => _downloadService.DownloadStartedFromQueue += value;
-
-        remove => _downloadService.DownloadStartedFromQueue -= value;
-    }
-
-    public event EventHandler<DownloadEventArgs> DownloadStopped
-    {
-        add => _downloadService.DownloadStopped += value;
-
-        remove => _downloadService.DownloadStopped -= value;
     }
 
     public bool CanShutdown => _downloadService.RemainingCount == 0;

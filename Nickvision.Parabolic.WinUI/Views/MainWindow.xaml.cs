@@ -14,6 +14,7 @@ using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.Shared.Services;
 using Nickvision.Parabolic.WinUI.Controls;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ public sealed partial class MainWindow : Window
     private readonly Dictionary<int, DownloadRow> _downloadRows;
     private RoutedEventHandler? _notificationClickHandler;
 
-    public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, ITranslationService translationService)
+    public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService)
     {
         InitializeComponent();
         _serviceProvider = serviceProvider;
@@ -63,16 +64,16 @@ public sealed partial class MainWindow : Window
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
         // Events
         AppWindow.Closing += Window_Closing;
-        _controller.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
-        _controller.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
-        _controller.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
-        _controller.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
-        _controller.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
-        _controller.DownloadCompleted += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadCompleted(sender, e));
-        _controller.DownloadStopped += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStopped(sender, e));
-        _controller.DownloadStartedFromQueue += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStartedFromQueue(sender, e));
-        _controller.DownloadRetired += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadRetired(sender, e));
-        _controller.JsonFileSaved += Controller_JsonFileSaved;
+        eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
+        eventsService.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
+        eventsService.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
+        eventsService.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
+        eventsService.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
+        eventsService.DownloadCompleted += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadCompleted(sender, e));
+        eventsService.DownloadStopped += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStopped(sender, e));
+        eventsService.DownloadStartedFromQueue += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStartedFromQueue(sender, e));
+        eventsService.DownloadRetired += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadRetired(sender, e));
+        eventsService.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
         AppWindow.Title = _appInfo.ShortName;
         TitleBar.Title = _appInfo.ShortName;
