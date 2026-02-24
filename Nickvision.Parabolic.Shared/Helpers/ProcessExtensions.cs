@@ -13,9 +13,13 @@ public static partial class ProcessExtensions
             {
                 WindowsProcessHelpers.SetAsParentProcess(p);
             }
-            else
+            else if(OperatingSystem.IsMacOS())
             {
-                UnixProcessHelpers.SetAsParentProcess(p);
+                MacOSProcessHelpers.SetAsParentProcess(p);
+            }
+            else if(OperatingSystem.IsLinux())
+            {
+                LinuxProcessHelpers.SetAsParentProcess(p);
             }
         }
 
@@ -26,9 +30,13 @@ public static partial class ProcessExtensions
             {
                 WindowsProcessHelpers.Suspend(p);
             }
-            else
+            else if(OperatingSystem.IsMacOS())
             {
-                UnixProcessHelpers.Suspend(p);
+                MacOSProcessHelpers.Suspend(p);
+            }
+            else if (OperatingSystem.IsLinux())
+            {
+                LinuxProcessHelpers.Suspend(p);
             }
         }
 
@@ -38,9 +46,13 @@ public static partial class ProcessExtensions
             {
                 WindowsProcessHelpers.Resume(p);
             }
-            else
+            else if(OperatingSystem.IsMacOS())
             {
-                UnixProcessHelpers.Resume(p);
+                MacOSProcessHelpers.Resume(p);
+            }
+            else if (OperatingSystem.IsLinux())
+            {
+                LinuxProcessHelpers.Resume(p);
             }
         }
     }
