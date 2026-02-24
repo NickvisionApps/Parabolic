@@ -55,7 +55,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
 
     public async Task<bool> AddAsync(RecoverableDownload download)
     {
-        _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url}");
+        _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
         using var command = _connection.CreateCommand();
         command.CommandText = "INSERT INTO recovery (id, options, credentialRequired) VALUES ($id, $options, $credentialRequired)";
         command.Parameters.AddWithValue("$id", download.Id);
@@ -79,6 +79,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         using var transaction = await _connection.BeginTransactionAsync();
         foreach (var download in downloads)
         {
+            _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
             using var command = _connection.CreateCommand();
             command.CommandText = "INSERT INTO recovery (id, options, credentialRequired) VALUES ($id, $options, $credentialRequired)";
             command.Parameters.AddWithValue("$id", download.Id);

@@ -97,7 +97,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 
     public async Task<bool> AddAsync(HistoricDownload download)
     {
-        _logger.LogInformation($"Adding historic download ({download.Url})...");
+        _logger.LogInformation($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
         if (Length == HistoryLength.Never)
         {
             _logger.LogWarning("History length is set to Never. Skipping add.");
@@ -125,7 +125,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 
     public async Task<bool> AddAsync(IReadOnlyList<HistoricDownload> downloads)
     {
-        _logger.LogInformation($"Adding {downloads.Count} historic download(s).");
+        _logger.LogInformation($"Adding {downloads.Count} historic download(s)...");
         if (Length == HistoryLength.Never)
         {
             _logger.LogWarning("History length is set to Never. Skipping add.");
@@ -134,6 +134,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         using var transaction = await _connection.BeginTransactionAsync();
         foreach (var download in downloads)
         {
+            _logger.LogInformation($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
             download.DownloadedOn = DateTime.Now;
             using var command = _connection.CreateCommand();
             command.CommandText = "INSERT INTO history (url, title, path, downloadedOn) VALUES ($url, $title, $path, $downloadedOn) ON CONFLICT(url) DO UPDATE SET title = $title, path = $path, downloadedOn = $downloadedOn WHERE url = $url";

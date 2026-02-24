@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Application;
+﻿using Microsoft.Extensions.Logging;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
@@ -20,6 +21,7 @@ public class AddDownloadDialogController
 {
     private static AddDownloadTeachType _shownTeachTypeFlag;
 
+    private readonly ILogger<AddDownloadDialogController> _logger;
     private readonly IDiscoveryService _discoveryService;
     private readonly IDownloadService _downloadService;
     private readonly IJsonFileService _jsonFileService;
@@ -32,8 +34,9 @@ public class AddDownloadDialogController
     public IReadOnlyList<SelectionItem<Credential?>> AvailableCredentials { get; }
     public IReadOnlyList<SelectionItem<PostProcessorArgument?>> AvailablePostProcessorArguments { get; }
 
-    public AddDownloadDialogController(IDiscoveryService discoveryService, IDownloadService downloadService, IKeyringService keyringService, IJsonFileService jsonFileService, INotificationService notificationService, ITranslationService translationService)
+    public AddDownloadDialogController(ILogger<AddDownloadDialogController> logger, IDiscoveryService discoveryService, IDownloadService downloadService, IKeyringService keyringService, IJsonFileService jsonFileService, INotificationService notificationService, ITranslationService translationService)
     {
+        _logger = logger;
         _discoveryService = discoveryService;
         _downloadService = downloadService;
         _jsonFileService = jsonFileService;
@@ -121,6 +124,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while adding playlist downloads");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while adding playlist downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -177,6 +181,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while adding the single download");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while adding the single download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -193,6 +198,7 @@ public class AddDownloadDialogController
             var res = url.ToString().StartsWith("file://") ? await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(8), credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
             if (res.Media.Count == 0)
             {
+                _logger.LogError($"No media was found: {url}");
                 _notificationService.Send(new AppNotification(_translationService._("No media was found at the provided URL"), NotificationSeverity.Warning)
                 {
                     Action = "error"
@@ -271,6 +277,10 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
+            if(e is not YtdlpException)
+            {
+                _logger.LogError(e, $"An error occurred while discovering media: {url}");
+            }
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while discovering media"), NotificationSeverity.Error)
             {
                 Action = "error",

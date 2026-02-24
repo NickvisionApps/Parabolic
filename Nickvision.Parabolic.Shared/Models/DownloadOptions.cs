@@ -1,12 +1,14 @@
 ﻿using Nickvision.Desktop.Keyring;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
 public class DownloadOptions
 {
     public Uri Url { get; set; }
+    [JsonIgnore]
     public Credential? Credential { get; set; }
     public string SaveFilename { get; set; }
     public string SaveFolder { get; set; }

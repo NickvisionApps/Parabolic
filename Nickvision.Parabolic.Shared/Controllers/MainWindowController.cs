@@ -187,6 +187,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while clearing completed downloads");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while clearing completed downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -204,6 +205,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while clearing recoverable downloads");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while clearing recoverable downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -220,6 +222,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while clearing queued downloads");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while clearing queued downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -253,6 +256,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, $"An error occurred while pausing download ({id}).");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while pausing the download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -270,6 +274,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while recovering downloads.");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while recovering downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -286,6 +291,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, $"An error occurred while resuming download ({id}).");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while resuming the download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -303,6 +309,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while retrying failed downloads.");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while retrying failed downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -319,6 +326,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, $"An error occurred while retrying download ({id}).");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while retrying the download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -336,6 +344,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, "An error occurred while stopping all downloads.");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while stopping all downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -352,6 +361,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
+            _logger.LogError(e, $"An error occurred while stopping download ({id}).");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while stopping the download"), NotificationSeverity.Error)
             {
                 Action = "error",
