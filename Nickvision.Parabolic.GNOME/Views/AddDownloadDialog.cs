@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Vanara.PInvoke;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -165,7 +164,6 @@ public class AddDownloadDialog : Adw.Dialog
         // Load
         _authenticationCredentialRow!.SetModel(_controller.AvailableCredentials);
         // Events
-        OnShow += Dialog_OnShow;
         OnClosed += Dialog_OnClosed;
         _urlRow!.OnChanged += UrlRow_OnChanged;
         _selectBatchFileRow!.OnActivated += SelectBathFileRow_OnActivated;
@@ -194,7 +192,24 @@ public class AddDownloadDialog : Adw.Dialog
     public void Present(Uri url, Gtk.Widget? parent)
     {
         _urlRow!.Text_ = url.ToString();
-        Present(parent);
+        base.Present(parent);
+    }
+
+    public new async Task Present(Gtk.Widget? parent)
+    {
+        if (string.IsNullOrEmpty(_urlRow!.Text_))
+        {
+            try
+            {
+                var text = await Gdk.Display.GetDefault()!.GetClipboard().ReadTextAsync();
+                if (!string.IsNullOrEmpty(text) && Uri.TryCreate(text, UriKind.Absolute, out var url))
+                {
+                    _urlRow!.Text_ = url.ToString();
+                }
+            }
+            catch { }
+        }
+        base.Present(parent);
     }
 
     private async Task DownloadSingleAsync()
@@ -232,23 +247,6 @@ public class AddDownloadDialog : Adw.Dialog
             _playlistExcludeFromHistoryRow!.Active,
             _controller.AvailablePostProcessorArguments[(int)_playlistPostProcessorArgumentRow!.Selected]);
         Close();
-    }
-
-    private async void Dialog_OnShow(Gtk.Widget sender, EventArgs e)
-    {
-        if(!string.IsNullOrEmpty(_urlRow!.Text_))
-        {
-            return;
-        }
-        try
-        {
-            var text = await Gdk.Display.GetDefault()!.GetClipboard().ReadTextAsync();
-            if (!string.IsNullOrEmpty(text) && Uri.TryCreate(text, UriKind.Absolute, out var url))
-            {
-                _urlRow!.Text_ = url.ToString();
-            }
-        }
-        catch { }
     }
 
     private void Dialog_OnClosed(Adw.Dialog sender, EventArgs e)

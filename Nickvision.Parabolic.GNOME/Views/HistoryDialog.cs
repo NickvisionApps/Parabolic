@@ -45,13 +45,16 @@ public class HistoryDialog : Adw.PreferencesDialog
         _sortGroup!.ActiveName = _controller.SortNewest ? "newest" : "oldest";
         _saveLengthRow!.SetModel(_controller.Lengths);
         // Events
-        OnShow += Dialog_OnShow;
         _sortGroup!.OnNotify += SortGroup_OnNotify;
         _saveLengthRow!.OnNotify += SaveLengthRow_OnNotify;
         _clearButton!.OnClicked += ClearButton_OnClicked;
     }
 
-    private async void Dialog_OnShow(Gtk.Widget sender, EventArgs e) => await LoadDownloadsAsync();
+    public new async Task Present(Gtk.Widget? parent)
+    {
+        base.Present(parent);
+        await LoadDownloadsAsync();
+    }
 
     private async void SortGroup_OnNotify(GObject.Object sender, NotifySignalArgs e)
     {

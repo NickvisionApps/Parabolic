@@ -13,7 +13,6 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -180,7 +179,7 @@ public class MainWindow : Adw.ApplicationWindow
 
     public async void Window_OnShow(Gtk.Widget sender, EventArgs e)
     {
-        if(_shown)
+        if (_shown)
         {
             return;
         }
@@ -436,11 +435,11 @@ public class MainWindow : Adw.ApplicationWindow
         dialog.Present(this);
     }
 
-    private void AddDownload(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(this);
+    private async void AddDownload(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(this);
 
     private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<KeyringDialog>().Present(this);
 
-    private void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<HistoryDialog>().Present(this);
+    private async void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<HistoryDialog>().Present(this);
 
     private async void StopAllRemaining(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _controller.StopAllDownloadsAsync();
 
