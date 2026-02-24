@@ -48,7 +48,7 @@ public class MainWindowController
         _latestAppVersion = appInfo.Version!;
         _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
         _translationService.Language = _jsonFileService.Load<Configuration>(Configuration.Key).TranslationLanguage;
-        _logger.LogInformation($"Receieved command-line argumnets: [{string.Join(", ", argumentsService.Data)}]");
+        _logger.LogInformation($"Received command-line arguments: [{string.Join(", ", argumentsService.Data)}]");
         // Events
         _jsonFileService.Saved += JsonFileService_Saved;
         // Translate strings

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Logging;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Parabolic.Shared.Models;
@@ -12,12 +13,15 @@ namespace Nickvision.Parabolic.Shared.Services;
 
 public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 {
+    private readonly ILogger<HistoryService> _logger;
     private readonly string _path;
     private SqliteConnection _connection;
 
-    public HistoryService(AppInfo appInfo)
+    public HistoryService(ILogger<HistoryService> logger, AppInfo appInfo)
     {
+        _logger = logger;
         _path = Path.Combine(appInfo.IsPortable ? Desktop.System.Environment.ExecutingDirectory : Path.Combine(UserDirectories.Config, appInfo.Name), "history.db");
+        _logger.LogInformation($"Loading history database: {_path}");
         Directory.CreateDirectory(Path.GetDirectoryName(_path)!);
         _connection = new SqliteConnection(new SqliteConnectionStringBuilder($"Data Source='{_path}'")
         {
@@ -25,12 +29,15 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
             Pooling = false
         }.ToString());
         _connection.Open();
+        _logger.LogInformation("Ensuring settings tables exist...");
         using var settingsTableCommand = _connection.CreateCommand();
         settingsTableCommand.CommandText = "CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, value TEXT)";
         settingsTableCommand.ExecuteNonQuery();
+        _logger.LogInformation("Ensuring history table exists...");
         using var historyTableCommand = _connection.CreateCommand();
         historyTableCommand.CommandText = "CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY AUTOINCREMENT, url TEXT UNIQUE, title TEXT, path TEXT, downloadedOn TEXT)";
         historyTableCommand.ExecuteNonQuery();
+        _logger.LogInformation("History database loaded.");
     }
 
     ~HistoryService()
@@ -90,8 +97,10 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 
     public async Task<bool> AddAsync(HistoricDownload download)
     {
+        _logger.LogInformation($"Adding historic download ({download.Url})...");
         if (Length == HistoryLength.Never)
         {
+            _logger.LogWarning("History length is set to Never. Skipping add.");
             return true;
         }
         download.DownloadedOn = DateTime.Now;
@@ -101,17 +110,25 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$title", download.Title);
         command.Parameters.AddWithValue("$path", download.Path);
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
-        if (await command.ExecuteNonQueryAsync() > 0)
+        var res = await command.ExecuteNonQueryAsync() > 0;
+        if (res)
         {
-            return true;
+            _logger.LogInformation($"Added historic download ({download.Url}).");
+
         }
-        return false;
+        else
+        {
+            _logger.LogError($"Failed to add historic download ({download.Url}).");
+        }
+        return res;
     }
 
     public async Task<bool> AddAsync(IReadOnlyList<HistoricDownload> downloads)
     {
+        _logger.LogInformation($"Adding {downloads.Count} historic download(s).");
         if (Length == HistoryLength.Never)
         {
+            _logger.LogWarning("History length is set to Never. Skipping add.");
             return true;
         }
         using var transaction = await _connection.BeginTransactionAsync();
@@ -126,23 +143,32 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
             command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
             if (await command.ExecuteNonQueryAsync() <= 0)
             {
+                _logger.LogError($"Failed to add historic download ({download.Url}). Rolling back...");
                 await transaction.RollbackAsync();
                 return false;
             }
+            _logger.LogInformation($"Added historic download ({download.Url}).");
         }
         await transaction.CommitAsync();
+        _logger.LogInformation($"Added {downloads.Count} historic download(s).");
         return true;
     }
 
     public async Task<bool> ClearAsync()
     {
+        _logger.LogInformation("Clearing all historic downloads...");
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history";
-        if (await command.ExecuteNonQueryAsync() >= 0)
+        var res = await command.ExecuteNonQueryAsync() >= 0;
+        if (res)
         {
-            return true;
+            _logger.LogInformation("Cleared all historic downloads.");
         }
-        return false;
+        else
+        {
+            _logger.LogError("Failed to clear historic downloads.");
+        }
+        return res;
     }
 
     public async ValueTask DisposeAsync()
@@ -160,6 +186,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
 
     public async Task<IReadOnlyList<HistoricDownload>> GetAllAsync()
     {
+        _logger.LogInformation("Fetching all historic downloads...");
         var downloads = new List<HistoricDownload>();
         var toRemove = new List<int>();
         var length = Length;
@@ -179,10 +206,12 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
                 var daysSinceDownload = (DateTime.Now - download.DownloadedOn).TotalDays;
                 if (daysSinceDownload > (int)length)
                 {
+                    _logger.LogWarning($"Removing historic download ({download.Url}) due to old age.");
                     toRemove.Add(reader.GetInt32(0));
                     continue;
                 }
             }
+            _logger.LogInformation($"Fetched historic download ({download.Url}).");
             downloads.Add(download);
         }
         if (toRemove.Count > 0)
@@ -196,6 +225,7 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
                 await deleteCommand.ExecuteNonQueryAsync();
             }
             await transaction.CommitAsync();
+            _logger.LogInformation($"Removed {toRemove.Count} old historic download(s).");
         }
         if (SortNewest)
         {
@@ -205,35 +235,49 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         {
             downloads.Sort();
         }
+        _logger.LogInformation($"Fetched {downloads.Count} historic download(s).");
         return downloads;
     }
 
     public async Task<bool> RemoveAsync(HistoricDownload download)
     {
+        _logger.LogInformation($"Removing historic download ({download.Url})...");
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history WHERE url = $url";
         command.Parameters.AddWithValue("$url", download.Url.ToString());
-        if (await command.ExecuteNonQueryAsync() > 0)
+        var res = await command.ExecuteNonQueryAsync() > 0;
+        if (res)
         {
-            return true;
+            _logger.LogInformation($"Removed historic download ({download.Url}).");
         }
-        return false;
+        else
+        {
+            _logger.LogError($"Failed to remove historic download ({download.Url}).");
+        }
+        return res;
     }
 
     public async Task<bool> RemoveAsync(Uri url)
     {
+        _logger.LogInformation($"Removing historic download ({url})...");
         using var command = _connection.CreateCommand();
         command.CommandText = "DELETE FROM history WHERE url = $url";
         command.Parameters.AddWithValue("$url", url.ToString());
-        if (await command.ExecuteNonQueryAsync() > 0)
+        var res = await command.ExecuteNonQueryAsync() > 0;
+        if (res)
         {
-            return true;
+            _logger.LogInformation($"Removed historic download ({url}).");
         }
-        return false;
+        else
+        {
+            _logger.LogError($"Failed to remove historic download ({url}).");
+        }
+        return res;
     }
 
     public async Task<bool> UpdateAsync(HistoricDownload download)
     {
+        _logger.LogInformation($"Updating historic download ({download.Url})...");
         download.DownloadedOn = DateTime.Now;
         using var command = _connection.CreateCommand();
         command.CommandText = "UPDATE history SET title = $title, path = $path, downloadedOn = $downloadedOn WHERE url = $url";
@@ -241,11 +285,16 @@ public class HistoryService : IAsyncDisposable, IDisposable, IHistoryService
         command.Parameters.AddWithValue("$title", download.Title);
         command.Parameters.AddWithValue("$path", download.Path);
         command.Parameters.AddWithValue("$downloadedOn", download.DownloadedOn.ToString("o"));
-        if (await command.ExecuteNonQueryAsync() > 0)
+        var res = await command.ExecuteNonQueryAsync() > 0;
+        if (res)
         {
-            return true;
+            _logger.LogInformation($"Updated historic download ({download.Url}).");
         }
-        return false;
+        else
+        {
+            _logger.LogError($"Failed to update historic download ({download.Url}).");
+        }
+        return res;
     }
 
     protected virtual async ValueTask DisposeAsyncCore()
