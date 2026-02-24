@@ -244,6 +244,17 @@ info "Setting executable permissions..."
 chmod +x "$APP_BUNDLE/Contents/MacOS/$PROJECT"
 success "Set executable permissions."
 
+# Ad-hoc re-sign all binaries after install_name_tool modifications
+info "Ad-hoc signing bundled libraries and executables..."
+find "$FRAMEWORKS_DIR" \( -name "*.dylib" -o -name "*.so" \) | while read -r lib; do
+    codesign --force --sign - "$lib" 2>/dev/null || true
+done
+find "$APP_BUNDLE/Contents/MacOS" \( -name "*.dylib" -o -name "*.so" \) | while read -r lib; do
+    codesign --force --sign - "$lib" 2>/dev/null || true
+done
+codesign --force --sign - "$APP_BUNDLE/Contents/MacOS/$REAL_BINARY"
+success "Ad-hoc signed bundled libraries and executables."
+
 # Restore pwd
 info "Restoring previous working directory..."
 cd "$CURRENT_PWD"
