@@ -103,7 +103,6 @@ public class DiscoveryService : IDiscoveryService
         {
             if (!string.IsNullOrEmpty(credential.Username) && !string.IsNullOrEmpty(credential.Password))
             {
-
                 _logger.LogInformation("Using credential...");
                 arguments.Add("--username");
                 arguments.Add(credential.Username);
@@ -112,7 +111,6 @@ public class DiscoveryService : IDiscoveryService
             }
             else if (!string.IsNullOrEmpty(credential.Password))
             {
-
                 _logger.LogInformation("Using video password...");
                 arguments.Add("--video-password");
                 arguments.Add(credential.Password);

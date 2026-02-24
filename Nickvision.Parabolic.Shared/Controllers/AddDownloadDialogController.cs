@@ -277,7 +277,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            if(e is not YtdlpException)
+            if (e is not YtdlpException)
             {
                 _logger.LogError(e, $"An error occurred while discovering media: {url}");
             }
