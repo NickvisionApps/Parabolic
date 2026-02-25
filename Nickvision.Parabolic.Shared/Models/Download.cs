@@ -1,5 +1,6 @@
 ﻿using ATL;
 using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
 using System;
