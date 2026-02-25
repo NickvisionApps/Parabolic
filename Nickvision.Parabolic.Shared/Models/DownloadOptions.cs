@@ -8,10 +8,9 @@ namespace Nickvision.Parabolic.Shared.Models;
 public class DownloadOptions
 {
     public Uri Url { get; set; }
+    public string SaveFolder { get; set; }
     [JsonIgnore]
     public Credential? Credential { get; set; }
-    public string SaveFilename { get; set; }
-    public string SaveFolder { get; set; }
     public MediaFileType FileType { get; set; }
     public int PlaylistPosition { get; set; }
     public Format? VideoFormat { get; set; }
@@ -41,6 +40,13 @@ public class DownloadOptions
         TimeFrame = null;
         VideoResolution = null;
         AudioBitrate = null;
+    }
+
+    public string SaveFilename
+    {
+        get => field;
+
+        set => field = value.Length <= 251 ? value : value.Substring(0, 251); // 4 characters are reserved for the file extension
     }
 
     public override int GetHashCode() => HashCode.Combine(

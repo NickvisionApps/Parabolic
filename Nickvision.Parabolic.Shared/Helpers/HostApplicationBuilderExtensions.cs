@@ -29,6 +29,7 @@ public static class HostApplicationBuilderExtensions
                 - Improved selection of playlist video formats when resolutions are specified
                 - Improved selection of playlist audio formats on Windows when bitrates are specified
                 - Improved cropping of audio thumbnails
+                - Improved handling of long file names, they will now be truncated if too long
                 - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
                 - Updated yt-dlp
                 """,
