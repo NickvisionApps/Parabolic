@@ -331,11 +331,15 @@ public partial class Download : IDisposable
                 arguments.Add("--write-thumbnail");
             }
             arguments.Add("--convert-thumbnails");
-            arguments.Add("png>png/jpg");
+            arguments.Add("jpg");
             if (downloader.CropAudioThumbnails && Options.FileType.IsAudio)
             {
-                arguments.Add("--postprocessor-args");
-                arguments.Add("ThumbnailsConvertor:-vf crop=ih:ih");
+                arguments.Add("--exec");
+                arguments.Add("before_dl:ffmpeg -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath)s.tmp.jpg");
+                arguments.Add("--exec");
+                arguments.Add("before_dl:rm %(thumbnails.-1.filepath)q");
+                arguments.Add("--exec");
+                arguments.Add("before_dl:mv %(thumbnails.-1.filepath)s.tmp.jpg %(thumbnails.-1.filepath)q");
             }
         }
         if (downloader.EmbedChapters)

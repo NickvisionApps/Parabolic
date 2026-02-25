@@ -28,6 +28,7 @@ public static class HostApplicationBuilderExtensions
                 - Added failed filter to downloads view
                 - Improved selection of playlist video formats when resolutions are specified
                 - Improved selection of playlist audio formats on Windows when bitrates are specified
+                - Improved cropping of audio thumbnails
                 - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
                 - Updated yt-dlp
                 """,
