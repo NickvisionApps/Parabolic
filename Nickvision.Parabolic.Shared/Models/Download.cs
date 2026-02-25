@@ -336,7 +336,7 @@ public partial class Download : IDisposable
             if (downloader.CropAudioThumbnails && Options.FileType.IsAudio)
             {
                 arguments.Add("--exec");
-                arguments.Add("before_dl:ffmpeg -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath)s.tmp.jpg");
+                arguments.Add($"before_dl:{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"} -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath)s.tmp.jpg");
                 arguments.Add("--exec");
                 arguments.Add("before_dl:rm %(thumbnails.-1.filepath)q");
                 arguments.Add("--exec");
