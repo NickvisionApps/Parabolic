@@ -111,6 +111,10 @@ public sealed partial class SettingsPage : Page
         RowYtdlpDownloadArgs.Header = _translationService._("yt-dlp Download Arguments");
         RowYtdlpDownloadArgs.Description = _translationService._("Extra arguments to pass to yt-dlp when downloading media");
         TxtYtdlpDownloadArgs.PlaceholderText = _translationService._("Enter args here");
+        RowTranslateMetadataAndChapters.Header = _translationService._("Translate Metadata and Chapters");
+        RowTranslateMetadataAndChapters.Description = _translationService._("Automatically translate embedded metadata and chapters to the app's language on supported sites and media");
+        TglTranslateMetadataAndChapters.OnContent = _translationService._("On");
+        TglTranslateMetadataAndChapters.OffContent = _translationService._("Off");
         RowEmbedMetadata.Header = _translationService._("Embed Metadata");
         TglEmbedMetadata.OnContent = _translationService._("On");
         TglEmbedMetadata.OffContent = _translationService._("Off");
@@ -176,6 +180,7 @@ public sealed partial class SettingsPage : Page
         NumMinimumSplitSize.Value = _controller.AriaMinSplitSize;
         TxtYtdlpDiscoveryArgs.Text = _controller.YtdlpDiscoveryArgs;
         TxtYtdlpDownloadArgs.Text = _controller.YtdlpDownloadArgs;
+        TglTranslateMetadataAndChapters.IsOn = _controller.TranslateMetadataAndChapters;
         TglEmbedMetadata.IsOn = _controller.EmbedMetadata;
         TglRemoveSourceData.IsOn = _controller.RemoveSourceData;
         TglEmbedThumbnails.IsOn = _controller.EmbedThumbnails;
@@ -346,6 +351,7 @@ public sealed partial class SettingsPage : Page
         _controller.AriaMinSplitSize = (int)NumMinimumSplitSize.Value;
         _controller.YtdlpDiscoveryArgs = TxtYtdlpDiscoveryArgs.Text;
         _controller.YtdlpDownloadArgs = TxtYtdlpDownloadArgs.Text;
+        _controller.TranslateMetadataAndChapters = TglTranslateMetadataAndChapters.IsOn;
         _controller.EmbedMetadata = TglEmbedMetadata.IsOn;
         _controller.RemoveSourceData = TglRemoveSourceData.IsOn;
         _controller.EmbedThumbnails = TglEmbedThumbnails.IsOn;

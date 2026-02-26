@@ -6,6 +6,7 @@ using Nickvision.Parabolic.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -86,7 +87,7 @@ public partial class Download : IDisposable
         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NaN, 0.0, 0));
     }
 
-    public void Start(string ytdlpExecutablePath, DownloaderOptions downloader)
+    public void Start(string ytdlpExecutablePath, DownloaderOptions downloader, string appLanguage)
     {
         if (Status == DownloadStatus.Running || Status == DownloadStatus.Paused)
         {
@@ -105,7 +106,7 @@ public partial class Download : IDisposable
         _process = new Process()
         {
             EnableRaisingEvents = true,
-            StartInfo = new ProcessStartInfo(ytdlpExecutablePath, GetDownloadArguments(downloader))
+            StartInfo = new ProcessStartInfo(ytdlpExecutablePath, GetDownloadArguments(downloader, appLanguage))
             {
                 UseShellExecute = false,
                 CreateNoWindow = true,
@@ -147,7 +148,7 @@ public partial class Download : IDisposable
         }
     }
 
-    private IReadOnlyList<string> GetDownloadArguments(DownloaderOptions downloader)
+    private IReadOnlyList<string> GetDownloadArguments(DownloaderOptions downloader, string appLanguage)
     {
         var hash = HashCode.Combine(downloader, Options);
         if (DownloadArgumentsCache.TryGetValue(hash, out var cache))
@@ -311,6 +312,19 @@ public partial class Download : IDisposable
         {
             arguments.Add("--cookies");
             arguments.Add(downloader.CookiesPath);
+        }
+        if (downloader.TranslateMetadataAndChapters)
+        {
+            if (appLanguage.IsSupportedYouTubeLanguage)
+            {
+                arguments.Add("--extractor-args");
+                arguments.Add($"youtube:lang={appLanguage}");
+            }
+            else if (CultureInfo.CurrentCulture.Name.IsSupportedYouTubeLanguage)
+            {
+                arguments.Add("--extractor-args");
+                arguments.Add($"youtube:lang={CultureInfo.CurrentCulture.Name}");
+            }
         }
         if (downloader.EmbedMetadata)
         {

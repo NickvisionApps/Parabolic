@@ -66,7 +66,8 @@ public class DownloadService : IDisposable, IDownloadService
 
     public async Task AddAsync(DownloadOptions options, bool excludeFromHistory)
     {
-        var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
+        var downloaderOptions = config.DownloaderOptions;
         var download = new Download(options, _translationService);
         _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(options, JsonOptions)}");
         download.Completed += Download_Completed;
@@ -85,7 +86,7 @@ public class DownloadService : IDisposable, IDownloadService
             _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, JsonOptions)}");
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
-            download.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions);
+            download.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
         }
         else
         {
@@ -97,7 +98,8 @@ public class DownloadService : IDisposable, IDownloadService
 
     public async Task AddAsync(IReadOnlyList<DownloadOptions> options, bool excludeFromHistory)
     {
-        var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
+        var downloaderOptions = config.DownloaderOptions;
         var ytdlpExecutablePath = _ytdlpService.ExecutablePath ?? "yt-dlp";
         var recoverableDownloads = new List<RecoverableDownload>();
         var historicDownloads = new List<HistoricDownload>();
@@ -135,7 +137,7 @@ public class DownloadService : IDisposable, IDownloadService
         await _historyService.AddAsync(historicDownloads);
         foreach (var download in downloadsToStart)
         {
-            download.Start(ytdlpExecutablePath, downloaderOptions);
+            download.Start(ytdlpExecutablePath, downloaderOptions, config.TranslationLanguage);
         }
     }
 
@@ -338,7 +340,8 @@ public class DownloadService : IDisposable, IDownloadService
 
     private async void Download_Completed(object? sender, DownloadCompletedEventArgs e)
     {
-        var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
+        var downloaderOptions = config.DownloaderOptions;
         if (!_downloading.TryGetValue(e.Id, out var download) || download.Status == DownloadStatus.Stopped)
         {
             return;
@@ -366,7 +369,7 @@ public class DownloadService : IDisposable, IDownloadService
             _queued.Remove(firstDownload.Id);
             _logger.LogInformation($"Starting download from queue ({firstDownload.Id}): {JsonSerializer.Serialize(downloaderOptions, JsonOptions)}");
             DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
-            firstDownload.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions);
+            firstDownload.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
         }
     }
 

@@ -20,6 +20,7 @@ public class DownloaderOptions
     public string ProxyUrl { get; set; }
     public Browser CookiesBrowser { get; set; }
     public string CookiesPath { get; set; }
+    public bool TranslateMetadataAndChapters { get; set; }
     public bool EmbedMetadata { get; set; }
     public bool RemoveSourceData { get; set; }
     public bool EmbedThumbnails { get; set; }
@@ -51,6 +52,7 @@ public class DownloaderOptions
         ProxyUrl = string.Empty;
         CookiesBrowser = Browser.None;
         CookiesPath = string.Empty;
+        TranslateMetadataAndChapters = true;
         EmbedMetadata = true;
         RemoveSourceData = false;
         EmbedThumbnails = true;

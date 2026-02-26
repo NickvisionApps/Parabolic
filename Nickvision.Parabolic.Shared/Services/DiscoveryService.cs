@@ -118,7 +118,6 @@ public class DiscoveryService : IDiscoveryService
         }
         if (downloaderOptions.CookiesBrowser != Browser.None)
         {
-
             _logger.LogInformation($"Using cookies from browser: {downloaderOptions.CookiesBrowser}");
             arguments.Add("--cookies-from-browser");
             arguments.Add(downloaderOptions.CookiesBrowser switch

@@ -24,7 +24,8 @@ public static class HostApplicationBuilderExtensions
                 Changelog = """
                 - Added macOS app for the GNOME version of Parabolic
                 - Added Windows portable version of Parabolic
-                - Added the ability to specify a preferred frame rate for video downloads
+                - Added the ability to specify a preferred frame rate for video downloads in Parabolic's settings
+                - Added the ability to automatically translate embedded metadata and chapters to the app's language on supported sites. This can be turned off in Converter settings
                 - Added failed filter to downloads view
                 - Improved selection of playlist video formats when resolutions are specified
                 - Improved selection of playlist audio formats on Windows when bitrates are specified

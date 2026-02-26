@@ -55,6 +55,8 @@ public class Configuration
     [JsonConverter(typeof(NullToEmptyStringConverter))]
     public string CookiesPath { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
+    public bool TranslateMetadataAndChapters { get; set; }
+    [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool EmbedMetadata { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
     public bool RemoveSourceData { get; set; }
@@ -108,6 +110,7 @@ public class Configuration
         ProxyUrl = string.Empty;
         CookiesBrowser = Browser.None;
         CookiesPath = string.Empty;
+        TranslateMetadataAndChapters = true;
         EmbedMetadata = true;
         RemoveSourceData = false;
         EmbedThumbnails = true;
@@ -141,6 +144,7 @@ public class Configuration
         ProxyUrl = ProxyUrl,
         CookiesBrowser = CookiesBrowser,
         CookiesPath = CookiesPath,
+        TranslateMetadataAndChapters = TranslateMetadataAndChapters,
         EmbedMetadata = EmbedMetadata,
         RemoveSourceData = RemoveSourceData,
         EmbedThumbnails = EmbedThumbnails,

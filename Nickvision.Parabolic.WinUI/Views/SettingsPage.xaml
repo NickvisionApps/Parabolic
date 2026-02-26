@@ -229,29 +229,31 @@
 
                         <TextBlock x:Name="LblAria" Margin="0,12,0,0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
 
-                        <community:SettingsCard x:Name="RowUseAria">
-                            <community:SettingsCard.HeaderIcon>
+                        <community:SettingsExpander x:Name="RowUseAria">
+                            <community:SettingsExpander.HeaderIcon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
-                            </community:SettingsCard.HeaderIcon>
+                            </community:SettingsExpander.HeaderIcon>
 
                             <ToggleSwitch x:Name="TglUseAria" Toggled="Tgl_Toggled"/>
-                        </community:SettingsCard>
 
-                        <community:SettingsCard x:Name="RowMaxConnectionsPerServer" IsEnabled="{x:Bind TglUseAria.IsOn, Mode=OneWay}">
-                            <community:SettingsCard.HeaderIcon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF0B9;"/>
-                            </community:SettingsCard.HeaderIcon>
+                            <community:SettingsExpander.Items>
+                                <community:SettingsCard x:Name="RowMaxConnectionsPerServer" IsEnabled="{x:Bind TglUseAria.IsOn, Mode=OneWay}">
+                                    <community:SettingsCard.HeaderIcon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF0B9;"/>
+                                    </community:SettingsCard.HeaderIcon>
 
-                            <NumberBox x:Name="NumMaxConnectionsPerServer" Minimum="1" Maximum="16" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
-                        </community:SettingsCard>
+                                    <NumberBox x:Name="NumMaxConnectionsPerServer" Minimum="1" Maximum="16" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                                </community:SettingsCard>
 
-                        <community:SettingsCard x:Name="RowMinimumSplitSize" IsEnabled="{x:Bind TglUseAria.IsOn, Mode=OneWay}">
-                            <community:SettingsCard.HeaderIcon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8C6;"/>
-                            </community:SettingsCard.HeaderIcon>
+                                <community:SettingsCard x:Name="RowMinimumSplitSize" IsEnabled="{x:Bind TglUseAria.IsOn, Mode=OneWay}">
+                                    <community:SettingsCard.HeaderIcon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8C6;"/>
+                                    </community:SettingsCard.HeaderIcon>
 
-                            <NumberBox x:Name="NumMinimumSplitSize" Minimum="1" Maximum="1024" LargeChange="128" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
-                        </community:SettingsCard>
+                                    <NumberBox x:Name="NumMinimumSplitSize" Minimum="1" Maximum="1024" LargeChange="128" SpinButtonPlacementMode="Inline" ValueChanged="Num_ValueChanged"/>
+                                </community:SettingsCard>
+                            </community:SettingsExpander.Items>
+                        </community:SettingsExpander>
 
                         <TextBlock x:Name="LblAdvanced" Margin="0,12,0,0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
 
@@ -273,37 +275,49 @@
                     </StackPanel>
 
                     <StackPanel Spacing="6">
-                        <community:SettingsCard x:Name="RowEmbedMetadata">
+                        <community:SettingsCard x:Name="RowTranslateMetadataAndChapters">
                             <community:SettingsCard.HeaderIcon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8EC;"/>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF2B7;"/>
                             </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglTranslateMetadataAndChapters" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
+
+                        <community:SettingsExpander x:Name="RowEmbedMetadata">
+                            <community:SettingsExpander.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8EC;"/>
+                            </community:SettingsExpander.HeaderIcon>
 
                             <ToggleSwitch x:Name="TglEmbedMetadata" Toggled="Tgl_Toggled"/>
-                        </community:SettingsCard>
 
-                        <community:SettingsCard x:Name="RowRemoveSourceData" IsEnabled="{x:Bind TglEmbedMetadata.IsOn, Mode=OneWay}">
-                            <community:SettingsCard.HeaderIcon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
-                            </community:SettingsCard.HeaderIcon>
+                            <community:SettingsExpander.Items>
+                                <community:SettingsCard x:Name="RowRemoveSourceData" IsEnabled="{x:Bind TglEmbedMetadata.IsOn, Mode=OneWay}">
+                                    <community:SettingsCard.HeaderIcon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                                    </community:SettingsCard.HeaderIcon>
 
-                            <ToggleSwitch x:Name="TglRemoveSourceData" Toggled="Tgl_Toggled"/>
-                        </community:SettingsCard>
+                                    <ToggleSwitch x:Name="TglRemoveSourceData" Toggled="Tgl_Toggled"/>
+                                </community:SettingsCard>
+                            </community:SettingsExpander.Items>
+                        </community:SettingsExpander>
 
-                        <community:SettingsCard x:Name="RowEmbedThumbnails">
-                            <community:SettingsCard.HeaderIcon>
+                        <community:SettingsExpander x:Name="RowEmbedThumbnails">
+                            <community:SettingsExpander.HeaderIcon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B9;"/>
-                            </community:SettingsCard.HeaderIcon>
+                            </community:SettingsExpander.HeaderIcon>
 
                             <ToggleSwitch x:Name="TglEmbedThumbnails" Toggled="Tgl_Toggled"/>
-                        </community:SettingsCard>
 
-                        <community:SettingsCard x:Name="RowCropAudioThumbnails" IsEnabled="{x:Bind TglEmbedThumbnails.IsOn, Mode=OneWay}">
-                            <community:SettingsCard.HeaderIcon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A8;"/>
-                            </community:SettingsCard.HeaderIcon>
+                            <community:SettingsExpander.Items>
+                                <community:SettingsCard x:Name="RowCropAudioThumbnails" IsEnabled="{x:Bind TglEmbedThumbnails.IsOn, Mode=OneWay}">
+                                    <community:SettingsCard.HeaderIcon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A8;"/>
+                                    </community:SettingsCard.HeaderIcon>
 
-                            <ToggleSwitch x:Name="TglCropAudioThumbnails" Toggled="Tgl_Toggled"/>
-                        </community:SettingsCard>
+                                    <ToggleSwitch x:Name="TglCropAudioThumbnails" Toggled="Tgl_Toggled"/>
+                                </community:SettingsCard>
+                            </community:SettingsExpander.Items>
+                        </community:SettingsExpander>
 
                         <community:SettingsCard x:Name="RowEmbedChapters">
                             <community:SettingsCard.HeaderIcon>

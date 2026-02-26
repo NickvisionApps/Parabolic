@@ -316,6 +316,13 @@ public class PreferencesViewController
         set => _configuration.Theme = value.Value;
     }
 
+    public bool TranslateMetadataAndChapters
+    {
+        get => _configuration.TranslateMetadataAndChapters;
+
+        set => _configuration.TranslateMetadataAndChapters = value;
+    }
+
     public SelectionItem<string> TranslationLanguage
     {
         set => _configuration.TranslationLanguage = value.Value;

@@ -10,6 +10,7 @@ using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Controllers;
@@ -239,7 +240,8 @@ public class MainWindowController
         var ffmpegVersion = await ExecuteAsync("ffmpeg", "-version");
         var ariaVersion = await ExecuteAsync("aria2c", "--version");
         extraInformation += string.IsNullOrEmpty(extraInformation) ? string.Empty : "\n";
-        extraInformation += $"yt-dlp: {(ytdlpVersion is not null ? ytdlpVersion.ToString() : "not found")}";
+        extraInformation += $"Log path: {(_appInfo.IsPortable ? "app.log" : Path.Combine(UserDirectories.LocalData, _appInfo.Name, "app.log"))}";
+        extraInformation += $"\n\nyt-dlp: {(ytdlpVersion is not null ? ytdlpVersion.ToString() : "not found")}";
         extraInformation += $"\ndeno: {(!string.IsNullOrEmpty(denoVersion) ? denoVersion.Substring(denoVersion.IndexOf("deno ") + 5, denoVersion.IndexOf('\n') - 5) : "not found")}";
         extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";
         extraInformation += $"\naria2: {(!string.IsNullOrEmpty(ariaVersion) ? ariaVersion.Substring(ariaVersion.IndexOf("aria2 version") + 14, ariaVersion.IndexOf('\n') - 14) : "not found")}";

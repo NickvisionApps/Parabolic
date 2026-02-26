@@ -342,6 +342,16 @@ Adw.PreferencesDialog root {
     Adw.PreferencesGroup {
       title: _("Converter");
 
+      Adw.SwitchRow translateMetadataChaptersRow {
+        title: _("Translate Metadata and Chapters");
+        subtitle: _("Automatically translate embedded metadata and chapters to the app's language on supported sites and media");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "translate-symbolic";
+        }
+      }
+
       Adw.ExpanderRow embedMetadataRow {
         title: _("Embed Metadata");
         show-enable-switch: true;

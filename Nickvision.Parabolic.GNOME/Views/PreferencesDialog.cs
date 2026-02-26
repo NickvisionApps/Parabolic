@@ -80,6 +80,8 @@ public class PreferencesDialog : Adw.PreferencesDialog
     private Adw.ExpanderRow? _embedMetadataRow;
     [Gtk.Connect("removeSourceDataRow")]
     private Adw.SwitchRow _removeSourceDataRow;
+    [Gtk.Connect("translateMetadataChaptersRow")]
+    private Adw.SwitchRow _translateMetadataChaptersRow;
     [Gtk.Connect("embedThumbnailsRow")]
     private Adw.ExpanderRow? _embedThumbnailsRow;
     [Gtk.Connect("cropAudioThumbnailsRow")]
@@ -148,6 +150,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _ariaMinSplitSizeRow!.Value = _controller.AriaMinSplitSize;
         _ytdlpDiscoveryArgsRow!.Text_ = _controller.YtdlpDiscoveryArgs;
         _ytdlpDownloadArgsRow!.Text_ = _controller.YtdlpDownloadArgs;
+        _translateMetadataChaptersRow!.Active = _controller.TranslateMetadataAndChapters;
         _embedMetadataRow!.EnableExpansion = _controller.EmbedMetadata;
         _removeSourceDataRow!.Active = _controller.RemoveSourceData;
         _embedThumbnailsRow!.EnableExpansion = _controller.EmbedThumbnails;
@@ -192,6 +195,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeRow!.Value;
         _controller.YtdlpDiscoveryArgs = _ytdlpDiscoveryArgsRow!.Text_ ?? string.Empty;
         _controller.YtdlpDownloadArgs = _ytdlpDownloadArgsRow!.Text_ ?? string.Empty;
+        _controller.TranslateMetadataAndChapters = _translateMetadataChaptersRow!.Active;
         _controller.EmbedMetadata = _embedMetadataRow!.EnableExpansion;
         _controller.RemoveSourceData = _removeSourceDataRow!.Active;
         _controller.EmbedThumbnails = _embedThumbnailsRow!.EnableExpansion;
