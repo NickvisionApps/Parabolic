@@ -17,6 +17,7 @@ public class DownloadService : IDisposable, IDownloadService
     private static readonly JsonSerializerOptions JsonOptions;
 
     private readonly ILogger<DownloadService> _logger;
+    private readonly IDenoExecutableService _denoExecutableService;
     private readonly IJsonFileService _jsonFileService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpService;
@@ -46,9 +47,10 @@ public class DownloadService : IDisposable, IDownloadService
         };
     }
 
-    public DownloadService(ILogger<DownloadService> logger, IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService)
+    public DownloadService(ILogger<DownloadService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService)
     {
         _logger = logger;
+        _denoExecutableService = denoExecutableService;
         _jsonFileService = jsonFileService;
         _translationService = translationService;
         _ytdlpService = ytdlpService;
@@ -68,7 +70,7 @@ public class DownloadService : IDisposable, IDownloadService
     {
         var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
         var downloaderOptions = config.DownloaderOptions;
-        var download = new Download(options, _translationService);
+        var download = new Download(options, _denoExecutableService, _translationService);
         _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(options, JsonOptions)}");
         download.Completed += Download_Completed;
         download.ProgressChanged += Download_ProgressChanged;
@@ -106,7 +108,7 @@ public class DownloadService : IDisposable, IDownloadService
         var downloadsToStart = new List<Download>();
         foreach (var option in options)
         {
-            var download = new Download(option, _translationService);
+            var download = new Download(option, _denoExecutableService, _translationService);
             _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(option, JsonOptions)}");
             download.Completed += Download_Completed;
             download.ProgressChanged += Download_ProgressChanged;

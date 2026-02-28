@@ -23,6 +23,8 @@ public class Configuration
     public WindowGeometry WindowGeometry { get; set; }
     [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledYtdlpAppVersion { get; set; }
+    [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
+    public AppVersion InstalledDenoAppVersion { get; set;  }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool ShowDislcaimerOnStartup { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
@@ -93,6 +95,7 @@ public class Configuration
         WindowGeometry = new WindowGeometry();
         AllowPreviewUpdates = false;
         InstalledYtdlpAppVersion = new AppVersion("0.0.0");
+        InstalledDenoAppVersion = new AppVersion("0.0.0");
         ShowDislcaimerOnStartup = true;
         PreventSuspend = false;
         MaxNumberOfActiveDownloads = 5;

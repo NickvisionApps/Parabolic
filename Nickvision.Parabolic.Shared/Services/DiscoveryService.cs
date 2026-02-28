@@ -20,6 +20,7 @@ public class DiscoveryService : IDiscoveryService
     private static readonly JsonSerializerOptions JsonOptions;
 
     private readonly ILogger<DiscoveryService> _logger;
+    private readonly IDenoExecutableService _denoExecutableService;
     private readonly IJsonFileService _jsonFileService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpExecutableService;
@@ -33,9 +34,10 @@ public class DiscoveryService : IDiscoveryService
         };
     }
 
-    public DiscoveryService(ILogger<DiscoveryService> logger, IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
+    public DiscoveryService(ILogger<DiscoveryService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _logger = logger;
+        _denoExecutableService = denoExecutableService;
         _jsonFileService = jsonFileService;
         _translationService = translationService;
         _ytdlpExecutableService = ytdlpExecutableService;
@@ -80,7 +82,7 @@ public class DiscoveryService : IDiscoveryService
             "--ffmpeg-location",
             Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg",
             "--js-runtimes",
-            $"deno:{Desktop.System.Environment.FindDependency("deno") ?? "deno"}",
+            $"deno:{_denoExecutableService.ExecutablePath ?? "deno"}",
             "--paths",
             $"temp:{UserDirectories.Cache}"
         };

@@ -20,6 +20,7 @@ public class MainWindowController
     private readonly ILogger<MainWindowController> _logger;
     private readonly AppInfo _appInfo;
     private readonly IArgumentsService _argumentsService;
+    private readonly IDenoExecutableService _denoExecutableService;
     private readonly IDownloadService _downloadService;
     private readonly IJsonFileService _jsonFileService;
     private readonly INotificationService _notificationService;
@@ -30,14 +31,16 @@ public class MainWindowController
     private readonly IYtdlpExecutableService _ytdlpExecutableService;
     private AppVersion _latestAppVersion;
     private AppVersion _latestYtdlpVersion;
+    private AppVersion _latestDenoVersion;
 
     public int RecoverableDownloadsCount => _recoveryService.Count;
 
-    public MainWindowController(ILogger<MainWindowController> logger, AppInfo appInfo, IArgumentsService argumentsService, IDownloadService downloadService, IJsonFileService jsonFileService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
+    public MainWindowController(ILogger<MainWindowController> logger, AppInfo appInfo, IArgumentsService argumentsService, IDenoExecutableService denoExecutableService, IDownloadService downloadService, IJsonFileService jsonFileService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _logger = logger;
         _appInfo = appInfo;
         _argumentsService = argumentsService;
+        _denoExecutableService = denoExecutableService;
         _downloadService = downloadService;
         _jsonFileService = jsonFileService;
         _notificationService = notificationService;
@@ -47,7 +50,8 @@ public class MainWindowController
         _updaterService = updaterService;
         _ytdlpExecutableService = ytdlpExecutableService;
         _latestAppVersion = appInfo.Version!;
-        _latestYtdlpVersion = ytdlpExecutableService!.BundledVersion;
+        _latestYtdlpVersion = _ytdlpExecutableService!.BundledVersion;
+        _latestDenoVersion = _denoExecutableService!.BundledVersion;
         _translationService.Language = _jsonFileService.Load<Configuration>(Configuration.Key).TranslationLanguage;
         _logger.LogInformation($"Received command-line arguments: [{string.Join(", ", argumentsService.Data)}]");
         // Events
@@ -133,6 +137,7 @@ public class MainWindowController
         var config = _jsonFileService.Load<Configuration>(Configuration.Key);
         var stableAppVersion = await _updaterService.GetLatestStableVersionAsync();
         var stableYtdlpVersion = await _ytdlpExecutableService.GetLatestStableVersionAsync();
+        var stableDenoVersion = await _denoExecutableService.GetLatestStableVersionAsync();
         if (stableAppVersion is not null)
         {
             _latestAppVersion = stableAppVersion;
@@ -140,6 +145,10 @@ public class MainWindowController
         if (stableYtdlpVersion is not null)
         {
             _latestYtdlpVersion = stableYtdlpVersion;
+        }
+        if (stableDenoVersion is not null)
+        {
+            _latestDenoVersion = stableDenoVersion;
         }
         if (config.AllowPreviewUpdates)
         {
@@ -168,6 +177,14 @@ public class MainWindowController
             _notificationService.Send(new AppNotification(_translationService._("New yt-dlp update available: {0}", _latestYtdlpVersion.ToString()), NotificationSeverity.Success)
             {
                 Action = "update-ytdlp"
+            });
+        }
+        else if (_latestDenoVersion > _denoExecutableService.BundledVersion && _latestDenoVersion > config.InstalledDenoAppVersion)
+        {
+            _logger.LogInformation($"New Deno update available: {_latestDenoVersion}");
+            _notificationService.Send(new AppNotification(_translationService._("New Deno update available: {0}", _latestDenoVersion.ToString()), NotificationSeverity.Success)
+            {
+                Action = "update-deno"
             });
         }
         else
@@ -233,16 +250,29 @@ public class MainWindowController
         }
     }
 
+    public async Task DenoUpdateAsync(IProgress<DownloadProgress> progress)
+    {
+        var res = await _denoExecutableService.DownloadUpdateAsync(_latestDenoVersion, progress);
+        if (res)
+        {
+            _notificationService.Send(new AppNotification(_translationService._("Deno {0} installed successfully", _latestDenoVersion.ToString()), NotificationSeverity.Success));
+        }
+        else
+        {
+            _notificationService.Send(new AppNotification(_translationService._("Unable to download and install the Deno update"), NotificationSeverity.Error));
+        }
+    }
+
     public async Task<string> GetDebugInformationAsync(string extraInformation = "")
     {
         var ytdlpVersion = await _ytdlpExecutableService.GetExecutableVersionAsync();
-        var denoVersion = await ExecuteAsync("deno", "--version");
+        var denoVersion = await _denoExecutableService.GetExecutableVersionAsync();
         var ffmpegVersion = await ExecuteAsync("ffmpeg", "-version");
         var ariaVersion = await ExecuteAsync("aria2c", "--version");
         extraInformation += string.IsNullOrEmpty(extraInformation) ? string.Empty : "\n";
         extraInformation += $"Log path: {(_appInfo.IsPortable ? "app.log" : Path.Combine(UserDirectories.LocalData, _appInfo.Name, "app.log"))}";
         extraInformation += $"\n\nyt-dlp: {(ytdlpVersion is not null ? ytdlpVersion.ToString() : "not found")}";
-        extraInformation += $"\ndeno: {(!string.IsNullOrEmpty(denoVersion) ? denoVersion.Substring(denoVersion.IndexOf("deno ") + 5, denoVersion.IndexOf('\n') - 5) : "not found")}";
+        extraInformation += $"\ndeno: {(denoVersion is not null ? denoVersion.ToString() : "not found")}";
         extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";
         extraInformation += $"\naria2: {(!string.IsNullOrEmpty(ariaVersion) ? ariaVersion.Substring(ariaVersion.IndexOf("aria2 version") + 14, ariaVersion.IndexOf('\n') - 14) : "not found")}";
         extraInformation += $"\n\n{await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)}";

@@ -3,6 +3,7 @@ using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
+using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +21,8 @@ public partial class Download : IDisposable
     private static readonly Dictionary<int, IReadOnlyList<string>> DownloadArgumentsCache;
     private static int _nextId;
 
-    private ITranslationService? _translator;
+    private IDenoExecutableService _denoExecutableService;
+    private ITranslationService? _translationService;
     private readonly StringBuilder _logBuilder;
     private bool _removeSourceData;
     private Process? _process;
@@ -42,9 +44,10 @@ public partial class Download : IDisposable
         _nextId = 0;
     }
 
-    public Download(DownloadOptions options, ITranslationService? translator)
+    public Download(DownloadOptions options, IDenoExecutableService denoExecutableService, ITranslationService? translationService)
     {
-        _translator = translator;
+        _denoExecutableService = denoExecutableService;
+        _translationService = translationService;
         _logBuilder = new StringBuilder();
         _removeSourceData = false;
         _process = null;
@@ -95,7 +98,7 @@ public partial class Download : IDisposable
         }
         if (File.Exists(FilePath) && !downloader.OverwriteExistingFiles)
         {
-            var log = _translator?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
+            var log = _translationService?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
             _logBuilder.AppendLine(log);
             Status = DownloadStatus.Error;
             ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, log.AsMemory(), double.NaN, 0.0, 0));
@@ -122,7 +125,7 @@ public partial class Download : IDisposable
         _process.SetAsParentProcess();
         _process.BeginOutputReadLine();
         _process.BeginErrorReadLine();
-        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translator?._("Starting download...") ?? "Starting download...").AsMemory(), double.NaN, 0.0, 0));
+        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translationService?._("Starting download...") ?? "Starting download...").AsMemory(), double.NaN, 0.0, 0));
     }
 
     public void Stop()
@@ -176,7 +179,7 @@ public partial class Download : IDisposable
             "--ffmpeg-location",
             Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg",
             "--js-runtimes",
-            $"deno:{Desktop.System.Environment.FindDependency("deno") ?? "deno"}",
+            $"deno:{_denoExecutableService.ExecutablePath ?? "deno"}",
             "--paths",
             Options.SaveFolder,
             "--paths",

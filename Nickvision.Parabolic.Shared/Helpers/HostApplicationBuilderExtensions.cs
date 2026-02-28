@@ -26,6 +26,7 @@ public static class HostApplicationBuilderExtensions
                 - Added Windows portable version of Parabolic
                 - Added the ability to specify a preferred frame rate for video downloads in Parabolic's settings
                 - Added the ability to automatically translate embedded metadata and chapters to the app's language on supported sites. This can be turned off in Converter settings
+                - Added the ability to update deno from within the app
                 - Added failed filter to downloads view
                 - Improved selection of playlist video formats when resolutions are specified
                 - Improved selection of playlist audio formats on Windows when bitrates are specified
@@ -44,11 +45,13 @@ public static class HostApplicationBuilderExtensions
             builder.Services.AddSingleton(appInfo);
             builder.ConfigureNickvision(args);
             builder.Services.AddSingleton<IEventsService, EventsService>();
+            builder.Services.AddSingleton<IDenoExecutableService, DenoExecutableService>();
             builder.Services.AddSingleton<IDiscoveryService, DiscoveryService>();
             builder.Services.AddSingleton<IDownloadService, DownloadService>();
             builder.Services.AddSingleton<IHistoryService, HistoryService>();
             builder.Services.AddSingleton<IRecoveryService, RecoveryService>();
             builder.Services.AddSingleton<IYtdlpExecutableService, YtdlpExecutableService>();
+            builder.Services.AddHttpClient<IDenoExecutableService, DenoExecutableService>();
             builder.Services.AddHttpClient<IYtdlpExecutableService, YtdlpExecutableService>();
             builder.Services.AddTransient<AddDownloadDialogController>();
             builder.Services.AddTransient<HistoryViewController>();

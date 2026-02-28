@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-25 22:52-0500\n"
+"POT-Creation-Date: 2026-02-28 08:31-0500\n"
 "PO-Revision-Date: 2026-02-18 02:32+0000\n"
 "Last-Translator: Francehelder <francehelder@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -957,7 +957,7 @@ msgstr "Desconhecido"
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:74
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:109
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:282
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:288
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:220
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:283
 msgid "Error"
@@ -1173,25 +1173,26 @@ msgstr "Há downloads em andamento. Gostaria de interrompê-los e sair?"
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:96
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:264
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:270
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:276
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:267
 msgid "Update"
 msgstr "Atualizar"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:277
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:396
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:424
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:430
 #, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Baixando atualização: {0}%"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:287
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:276
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:282
 msgid "Details"
 msgstr "Detalhes"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:292
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:23
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:293
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:299
 msgid "Close"
 msgstr "Fechar"
 
@@ -1340,31 +1341,31 @@ msgstr "O nome de usuário e senha não podem estar ambos vazios"
 msgid "A credential with that name does not exist"
 msgstr "Não existe credencial com esse nome"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:56
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:60
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:57
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:61
 msgid "Download web video and audio."
 msgstr "Fazer download do áudio e vídeo."
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:58
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:62
 msgid "Matrix Chat"
 msgstr "Matrix Chat"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:60
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:64
 msgid "Contributors on GitHub ❤️"
 msgstr "Colaboradores no GitHub ❤️"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:62
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:66
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:64
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:68
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:65
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:69
 msgid "translation-credits"
 msgstr ""
 "Lun3wi <lun3witch@gmail.com>\n"
@@ -1374,70 +1375,85 @@ msgstr ""
 "NIICKTCHUNS <https://github.com/NIICKTCHUNS>\n"
 "Francehelder Santos <francehelder@gmail.com>"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:160
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:169
 #, csharp-format
 msgid "New {0} update available: {1}"
 msgstr "Há uma atualização para {0} disponível: {1}"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:168
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:177
 #, csharp-format
 msgid "New yt-dlp update available: {0}"
 msgstr "Atualização do yt-dlp disponível: {0}"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:178
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:185
+#, fuzzy, csharp-format
+msgid "New Deno update available: {0}"
+msgstr "Há uma atualização para {0} disponível: {1}"
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:195
 msgid "No update available"
 msgstr "Sem atualizações disponíveis"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:192
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:209
 msgid "An error occurred while clearing completed downloads"
 msgstr "Ocorreu um erro ao limpar os downloads concluídos"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:210
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:227
 msgid "An error occurred while clearing recoverable downloads"
 msgstr "Ocorreu um erro ao limpar os downloads recuperáveis"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:227
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:244
 msgid "An error occurred while clearing queued downloads"
 msgstr "Ocorreu um erro ao limpar os downloads em fila"
 
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:258
+#, fuzzy, csharp-format
+msgid "Deno {0} installed successfully"
+msgstr "yt-dlp {0} instalado com sucesso"
+
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:262
+#, fuzzy
+msgid "Unable to download and install the Deno update"
+msgstr "Não foi possível baixar e instalar a atualização"
+
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:292
 msgid "An error occurred while pausing the download"
 msgstr "Ocorreu um erro ao pausar o download"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:280
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:310
 msgid "An error occurred while recovering downloads"
 msgstr "Ocorreu um erro ao recuperar os downloads"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:297
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:327
 msgid "An error occurred while resuming the download"
 msgstr "Ocorreu um erro ao retomar o download"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:315
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:345
 msgid "An error occurred while retrying failed downloads"
 msgstr "Ocorreu um erro ao baixar novamente os downloads que falharam"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:332
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:362
 msgid "An error occurred while retrying the download"
 msgstr "Ocorreu um erro ao tentar novamente o download"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:350
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:380
 msgid "An error occurred while stopping all downloads"
 msgstr "Ocorreu um erro ao interromper todos os downloads"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:367
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:397
 msgid "An error occurred while stopping the download"
 msgstr "Ocorreu um erro ao interromper o download"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:381
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:411
 msgid "Unable to download and install the update"
 msgstr "Não foi possível baixar e instalar a atualização"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:390
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:420
 #, csharp-format
 msgid "yt-dlp {0} installed successfully"
 msgstr "yt-dlp {0} instalado com sucesso"
 
-#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:394
+#: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:424
 msgid "Unable to download and install the yt-dlp update"
 msgstr "Não foi possível baixar e instalar a atualização do yt-dlp"
 
@@ -1575,11 +1591,11 @@ msgstr "O campo Args não pode estar vazio"
 msgid "An argument with that name does not exist"
 msgstr "Não existe argumento com esse nome"
 
-#: Nickvision.Parabolic.Shared/Models/Download.cs:98
+#: Nickvision.Parabolic.Shared/Models/Download.cs:101
 msgid "The file already exists and overwriting is disabled."
 msgstr "O arquivo já existe e a substituição está desabilitada."
 
-#: Nickvision.Parabolic.Shared/Models/Download.cs:125
+#: Nickvision.Parabolic.Shared/Models/Download.cs:128
 msgid "Starting download..."
 msgstr "Iniciando o download..."
 
@@ -1610,7 +1626,7 @@ msgstr "{0} (Gerado automaticamente)"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:435
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:441
 #, csharp-format
 msgid "About {0}"
 msgstr "Sobre {0}"
@@ -1831,7 +1847,7 @@ msgstr "Credencial necessária"
 msgid "Submit"
 msgstr "Enviar"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:331
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:337
 #, csharp-format
 msgid "A credential is required to continue the download of \"{0}\"."
 msgstr "Uma credencial é necessária para continuar o download de \"{0}\"."

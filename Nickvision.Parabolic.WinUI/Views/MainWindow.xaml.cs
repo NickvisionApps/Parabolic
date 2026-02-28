@@ -271,6 +271,12 @@ public sealed partial class MainWindow : Window
             _notificationClickHandler = YtdlpUpdate;
             BtnInfoBar.Click += _notificationClickHandler;
         }
+        else if (e.Notification.Action == "update-deno")
+        {
+            BtnInfoBar.Content = _translationService._("Update");
+            _notificationClickHandler = DenoUpdate;
+            BtnInfoBar.Click += _notificationClickHandler;
+        }
         else if (e.Notification.Action == "error" && !string.IsNullOrEmpty(e.Notification.ActionParam))
         {
             BtnInfoBar.Content = _translationService._("Details");
@@ -474,6 +480,15 @@ public sealed partial class MainWindow : Window
             _downloadRows.Remove(id);
         }
         UpdateDownloadsList();
+    }
+
+    private async void DenoUpdate(object? sender, RoutedEventArgs e)
+    {
+        var progress = new Progress<DownloadProgress>();
+        progress.ProgressChanged += UpdateProgress_Changed;
+        InfoBar.IsOpen = false;
+        await _controller.DenoUpdateAsync(progress);
+        progress.ProgressChanged -= UpdateProgress_Changed;
     }
 
     private async void Discussions(object? sender, RoutedEventArgs e) => await LaunchUriAsync(_appInfo.DiscussionsForum);
