@@ -10,6 +10,12 @@
     mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Grid x:Name="MainGrid" RowSpacing="12">
+        <Grid.Transitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.Transitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -48,6 +54,12 @@
             <nickvision:ViewStack x:Name="ViewStack" Margin="24,0,24,24">
                 <nickvision:ViewStack.Pages>
                     <StackPanel Spacing="6">
+                        <StackPanel.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </StackPanel.Transitions>
+
                         <community:SettingsCard x:Name="RowTheme">
                             <community:SettingsCard.HeaderIcon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE793;"/> 
@@ -90,6 +102,12 @@
                     </StackPanel>
 
                     <StackPanel Spacing="6">
+                        <StackPanel.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </StackPanel.Transitions>
+
                         <community:SettingsCard x:Name="RowActiveDownloads">
                             <community:SettingsCard.HeaderIcon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE896;"/>
@@ -156,6 +174,12 @@
                     </StackPanel>
 
                     <StackPanel Spacing="6">
+                        <StackPanel.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </StackPanel.Transitions>
+
                         <community:SettingsCard x:Name="RowUsePartFiles">
                             <community:SettingsCard.HeaderIcon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;"/>
@@ -275,6 +299,12 @@
                     </StackPanel>
 
                     <StackPanel Spacing="6">
+                        <StackPanel.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </StackPanel.Transitions>
+
                         <community:SettingsCard x:Name="RowTranslateMetadataAndChapters">
                             <community:SettingsCard.HeaderIcon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF2B7;"/>
