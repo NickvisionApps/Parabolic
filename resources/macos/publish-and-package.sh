@@ -221,6 +221,36 @@ find "$BREW_PREFIX/share/glib-2.0/schemas" -name "*.xml" -exec cp {} "$SCHEMAS_D
 glib-compile-schemas "$SCHEMAS_DEST"
 success "Bundled GLib schemas."
 
+# Bundle icon themes required by GTK4
+info "Bundling icon themes..."
+ICONS_DEST="$BUNDLE_RESOURCES_DIR/share/icons"
+mkdir -p "$ICONS_DEST"
+for THEME in hicolor Adwaita; do
+    if [[ -d "$BREW_PREFIX/share/icons/$THEME" ]]; then
+        cp -R "$BREW_PREFIX/share/icons/$THEME" "$ICONS_DEST/"
+        success "Bundled $THEME icon theme."
+    else
+        warn "$THEME icon theme not found under $BREW_PREFIX/share/icons"
+    fi
+done
+
+# Bundle GDK pixbuf loaders required to render icons
+info "Bundling GDK pixbuf loaders..."
+GDK_PIXBUF_SRC="$(find "$BREW_PREFIX/lib/gdk-pixbuf-2.0" -maxdepth 1 -type d | grep -v "^$BREW_PREFIX/lib/gdk-pixbuf-2.0$" | head -n1)"
+if [[ -n "$GDK_PIXBUF_SRC" ]]; then
+    GDK_PIXBUF_DEST="$BUNDLE_RESOURCES_DIR/lib/gdk-pixbuf-2.0"
+    mkdir -p "$GDK_PIXBUF_DEST"
+    cp -R "$GDK_PIXBUF_SRC" "$GDK_PIXBUF_DEST/"
+    LOADERS_CACHE="$(find "$GDK_PIXBUF_DEST" -name "loaders.cache" | head -n1)"
+    if [[ -n "$LOADERS_CACHE" ]]; then
+        # Rewrite absolute paths in loaders.cache to use a placeholder; launcher will set GDK_PIXBUF_MODULE_FILE
+        sed -i '' "s|$BREW_PREFIX/lib/gdk-pixbuf-2.0|@GDK_PIXBUF_DIR@|g" "$LOADERS_CACHE"
+        success "Bundled GDK pixbuf loaders."
+    fi
+else
+    warn "GDK pixbuf loaders not found under $BREW_PREFIX/lib/gdk-pixbuf-2.0"
+fi
+
 # Create a launcher script that sets up the GTK environment before running the app.
 # DYLD_LIBRARY_PATH is needed because GirCore uses dlopen() by library name at runtime.
 info "Creating GTK environment launcher script..."
@@ -233,6 +263,13 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUNDLE_CONTENTS="$(cd "$SCRIPT_DIR/.." && pwd)"
 export DYLD_LIBRARY_PATH="$BUNDLE_CONTENTS/Frameworks${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
 export GSETTINGS_SCHEMA_DIR="$BUNDLE_CONTENTS/Resources/share/glib-2.0/schemas"
+export XDG_DATA_DIRS="$BUNDLE_CONTENTS/Resources/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}"
+GDK_PIXBUF_CACHE="$(find "$BUNDLE_CONTENTS/Resources/lib/gdk-pixbuf-2.0" -name "loaders.cache" 2>/dev/null | head -n1)"
+if [[ -n "$GDK_PIXBUF_CACHE" ]]; then
+    GDK_PIXBUF_DIR="$(dirname "$(dirname "$GDK_PIXBUF_CACHE")")"
+    sed "s|@GDK_PIXBUF_DIR@|$GDK_PIXBUF_DIR|g" "$GDK_PIXBUF_CACHE" > "/tmp/gdk-pixbuf-loaders-$$.cache"
+    export GDK_PIXBUF_MODULE_FILE="/tmp/gdk-pixbuf-loaders-$$.cache"
+fi
 exec "$SCRIPT_DIR/__REAL_BINARY__" "$@"
 LAUNCHER_EOF
 sed -i '' "s|__REAL_BINARY__|${REAL_BINARY}|g" "$APP_BUNDLE/Contents/MacOS/$PROJECT"
