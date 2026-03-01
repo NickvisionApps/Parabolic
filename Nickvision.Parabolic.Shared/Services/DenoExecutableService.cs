@@ -65,16 +65,16 @@ public class DenoExecutableService : IDenoExecutableService
     {
         get
         {
-            if(!string.IsNullOrEmpty(field))
+            if (!string.IsNullOrEmpty(field))
             {
                 return field;
             }
             _logger.LogInformation("Searching for deno executable...");
             var config = _jsonFileService.Load<Configuration>(Configuration.Key);
-            if(config.InstalledDenoAppVersion > _bundledVersion)
+            if (config.InstalledDenoAppVersion > _bundledVersion)
             {
                 var local = Desktop.System.Environment.FindDependency("deno", DependencySearchOption.Local);
-                if(!string.IsNullOrEmpty(local) && File.Exists(local))
+                if (!string.IsNullOrEmpty(local) && File.Exists(local))
                 {
                     _logger.LogInformation($"Found updated deno executable: {local}");
                     field = local;

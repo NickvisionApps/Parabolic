@@ -24,7 +24,7 @@ public class Configuration
     [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledYtdlpAppVersion { get; set; }
     [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
-    public AppVersion InstalledDenoAppVersion { get; set;  }
+    public AppVersion InstalledDenoAppVersion { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool ShowDislcaimerOnStartup { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
