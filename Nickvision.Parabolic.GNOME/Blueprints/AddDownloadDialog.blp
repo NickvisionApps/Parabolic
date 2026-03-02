@@ -156,6 +156,11 @@ Adw.Dialog root {
             icon-name: "folder-download-symbolic";
             child: Adw.PreferencesPage {
               Adw.PreferencesGroup singleGroup {
+                header-suffix: Gtk.Picture singleThumbnailImage { 
+                  width-request: 75;
+                  height-request: 50;
+                };
+
                 Adw.EntryRow singleSaveFilenameRow {
                   title: _("File Name");
 
@@ -344,6 +349,11 @@ Adw.Dialog root {
             icon-name: "folder-download-symbolic";
             child: Adw.PreferencesPage {
               Adw.PreferencesGroup playlistGroup {
+                header-suffix: Gtk.Picture playlistThumbnailImage { 
+                  width-request: 75;
+                  height-request: 50;
+                };
+
                 Adw.ActionRow playlistSaveFolderRow {
                   title: _("Save Folder");
                   activatable-widget: playlistSelectSaveFolderButton;

@@ -219,18 +219,18 @@ public sealed partial class AddDownloadDialog : ContentDialog
             return;
         }
         using var thumbnailImage = await _controller.GetThumbnailImageAsync(_discoveryContext);
-        Title = _translationService._("Configure Download");
-        PrimaryButtonText = _translationService._("Download");
-        CloseButtonText = _translationService._("Cancel");
-        SecondaryButtonText = null;
-        DefaultButton = ContentDialogButton.Primary;
-        _controller.PreviousDownloadOptions.DownloadImmediately = TglDownloadImmediately.IsOn;
         using var thumbnailStream = new InMemoryRandomAccessStream();
         thumbnailImage.Save(thumbnailStream.AsStream(), new JpegEncoder());
         var thumbnailDecoder = await BitmapDecoder.CreateAsync(thumbnailStream);
         var thumbnailBitmap = await thumbnailDecoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
         var thumbnailSource = new SoftwareBitmapSource();
         await thumbnailSource.SetBitmapAsync(thumbnailBitmap);
+        Title = _translationService._("Configure Download");
+        PrimaryButtonText = _translationService._("Download");
+        CloseButtonText = _translationService._("Cancel");
+        SecondaryButtonText = null;
+        DefaultButton = ContentDialogButton.Primary;
+        _controller.PreviousDownloadOptions.DownloadImmediately = TglDownloadImmediately.IsOn;
         if (_discoveryContext.Items.Count == 1)
         {
             ViewStack.SelectedIndex = (int)Pages.Single;

@@ -5,8 +5,11 @@ using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
+using SixLabors.ImageSharp.Formats.Jpeg;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,6 +48,8 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.ViewStack? _singleViewStack;
     [Gtk.Connect("singleGroup")]
     private Adw.PreferencesGroup? _singleGroup;
+    [Gtk.Connect("singleThumbnailImage")]
+    private Gtk.Picture _singleThumbnailImage;
     [Gtk.Connect("singleSaveFilenameRow")]
     private Adw.EntryRow? _singleSaveFilenameRow;
     [Gtk.Connect("singleRevertToTitleButton")]
@@ -93,6 +98,8 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.ViewStack? _playlistViewStack;
     [Gtk.Connect("playlistGroup")]
     private Adw.PreferencesGroup? _playlistGroup;
+    [Gtk.Connect("playlistThumbnailImage")]
+    private Gtk.Picture _playlistThumbnailImage;
     [Gtk.Connect("playlistSaveFolderRow")]
     private Adw.ActionRow? _playlistSaveFolderRow;
     [Gtk.Connect("playlistSelectSaveFolderButton")]
@@ -310,6 +317,9 @@ public class AddDownloadDialog : Adw.Dialog
             Close();
             return;
         }
+        using var thumbnailImage = await _controller.GetThumbnailImageAsync(_discoveryContext);
+        using var thumbnailStream = new MemoryStream();
+        thumbnailImage.Save(thumbnailStream, new JpegEncoder());
         ContentHeight = 550;
         _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
         if (_discoveryContext.Items.Count == 1)
@@ -318,6 +328,7 @@ public class AddDownloadDialog : Adw.Dialog
             _navigationView.PushByTag("single");
             _singleGroup!.Title = _discoveryContext.Title;
             _singleGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
+            _singleThumbnailImage.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.New(thumbnailStream.GetBuffer()));
             _singleSaveFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
             _singleSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
             _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
@@ -353,6 +364,7 @@ public class AddDownloadDialog : Adw.Dialog
             _navigationView.PushByTag("playlist");
             _playlistGroup!.Title = _discoveryContext.Title;
             _playlistGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
+            _playlistThumbnailImage.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.New(thumbnailStream.GetBuffer()));
             _playlistSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
             _playlistFileTypeRow!.SetModel(_discoveryContext.FileTypes);
             _playlistVideoResolutionRow!.SetModel(_discoveryContext.VideoResolutions);
