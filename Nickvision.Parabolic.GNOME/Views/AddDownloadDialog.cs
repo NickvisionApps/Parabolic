@@ -5,11 +5,8 @@ using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
-using SixLabors.ImageSharp.Formats.Jpeg;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -317,9 +314,7 @@ public class AddDownloadDialog : Adw.Dialog
             Close();
             return;
         }
-        using var thumbnailImage = await _controller.GetThumbnailImageAsync(_discoveryContext);
-        using var thumbnailStream = new MemoryStream();
-        thumbnailImage.Save(thumbnailStream, new JpegEncoder());
+        using var thumbnailStream = await _controller.GetThumbnailImageAsync(_discoveryContext);
         ContentHeight = 550;
         _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
         if (_discoveryContext.Items.Count == 1)

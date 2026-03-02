@@ -329,24 +329,34 @@ public class AddDownloadDialogController
         return false;
     }
 
-    public async Task<SixLabors.ImageSharp.Image> GetThumbnailImageAsync(DiscoveryContext context)
+    public async Task<MemoryStream> GetThumbnailImageAsync(DiscoveryContext context)
     {
+        using var defaultThumbnailStream = typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!;
+        var memoryStream = new MemoryStream();
         if (context.Media[0].ThumbnailUrl.IsEmpty)
         {
-            return SixLabors.ImageSharp.Image.Load(typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!); ;
+            await defaultThumbnailStream.CopyToAsync(memoryStream);
         }
-        try
+        else
         {
-            var bytes = await _httpClient.GetByteArrayAsync(context.Media[0].ThumbnailUrl);
-            if (bytes.Length == 0)
+            try
             {
-                return SixLabors.ImageSharp.Image.Load(typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!); ;
+                var bytes = await _httpClient.GetByteArrayAsync(context.Media[0].ThumbnailUrl);
+                if (bytes.Length == 0)
+                {
+                    await defaultThumbnailStream.CopyToAsync(memoryStream);
+                }
+                else
+                {
+                    memoryStream.Write(bytes);
+                }
             }
-            return SixLabors.ImageSharp.Image.Load(bytes);
+            catch
+            {
+                await defaultThumbnailStream.CopyToAsync(memoryStream);
+            }
         }
-        catch
-        {
-            return SixLabors.ImageSharp.Image.Load(typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!); ;
-        }
+        memoryStream.Seek(0, SeekOrigin.Begin);
+        return memoryStream;
     }
 }

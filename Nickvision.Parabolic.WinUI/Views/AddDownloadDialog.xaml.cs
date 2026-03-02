@@ -11,7 +11,6 @@ using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
-using SixLabors.ImageSharp.Formats.Jpeg;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,7 +19,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Graphics.Imaging;
-using Windows.Storage.Streams;
 
 namespace Nickvision.Parabolic.WinUI.Views;
 
@@ -218,9 +216,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             Hide();
             return;
         }
-        using var thumbnailImage = await _controller.GetThumbnailImageAsync(_discoveryContext);
-        using var thumbnailStream = new InMemoryRandomAccessStream();
-        thumbnailImage.Save(thumbnailStream.AsStream(), new JpegEncoder());
+        using var thumbnailStream = (await _controller.GetThumbnailImageAsync(_discoveryContext)).AsRandomAccessStream();
         var thumbnailDecoder = await BitmapDecoder.CreateAsync(thumbnailStream);
         var thumbnailBitmap = await thumbnailDecoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
         var thumbnailSource = new SoftwareBitmapSource();
