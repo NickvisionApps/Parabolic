@@ -310,14 +310,14 @@ public sealed partial class MainWindow : Window
     }
 
 
-    private void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
+    private async void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
     {
         var row = _serviceProvider.GetRequiredService<DownloadRow>();
         row.PauseRequested += DownloadRow_PauseRequested;
         row.ResumeRequested += DownloadRow_ResumeRequested;
         row.StopRequested += DownloadRow_StopRequested;
         row.RetryRequested += DownloadRow_RetryRequested;
-        row.TriggerAddedState(e);
+        await row.TriggerAddedStateAsync(e);
         _downloadRows[e.Id] = row;
         UpdateDownloadsList();
         NavItemDownloads.IsSelected = true;

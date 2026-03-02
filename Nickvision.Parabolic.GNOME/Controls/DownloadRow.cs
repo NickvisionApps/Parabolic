@@ -2,13 +2,16 @@
 using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Controls;
 
 public class DownloadRow : Gtk.ListBoxRow
 {
+    private readonly IThumbnailService _thumbnailService;
     private readonly ITranslationService _translator;
     private readonly Gtk.Window _parent;
     private readonly Gtk.Builder _builder;
@@ -17,6 +20,8 @@ public class DownloadRow : Gtk.ListBoxRow
     private string _log;
     private bool _isPaused;
 
+    [Gtk.Connect("thumbnailImage")]
+    private Gtk.Picture? _thumbnailImage;
     [Gtk.Connect("statusIcon")]
     private Gtk.Image? _statusIcon;
     [Gtk.Connect("filenameLabel")]
@@ -25,8 +30,6 @@ public class DownloadRow : Gtk.ListBoxRow
     private Gtk.Label? _statusLabel;
     [Gtk.Connect("spinner")]
     private Adw.Spinner? _spinner;
-    [Gtk.Connect("viewLogButton")]
-    private Gtk.ToggleButton? _viewLogButton;
     [Gtk.Connect("buttonsViewStack")]
     private Adw.ViewStack? _buttonsViewStack;
     [Gtk.Connect("pauseResumeButton")]
@@ -53,13 +56,14 @@ public class DownloadRow : Gtk.ListBoxRow
 
     public DownloadStatus Status { get; private set; }
 
-    public DownloadRow(ITranslationService translator, Adw.ApplicationWindow parent, IGtkBuilderFactory builderFactory) : this(translator, parent, builderFactory.Create("DownloadRow"))
+    public DownloadRow(IThumbnailService thumbnailService, ITranslationService translator, Adw.ApplicationWindow parent, IGtkBuilderFactory builderFactory) : this(thumbnailService, translator, parent, builderFactory.Create("DownloadRow"))
     {
 
     }
 
-    private DownloadRow(ITranslationService translator, Gtk.Window parent, Gtk.Builder builder) : base(new Gtk.Internal.ListBoxRowHandle(builder.GetPointer("root"), false))
+    private DownloadRow(IThumbnailService thumbnailService, ITranslationService translator, Gtk.Window parent, Gtk.Builder builder) : base(new Gtk.Internal.ListBoxRowHandle(builder.GetPointer("root"), false))
     {
+        _thumbnailService = thumbnailService;
         _translator = translator;
         _parent = parent;
         _builder = builder;
@@ -77,10 +81,11 @@ public class DownloadRow : Gtk.ListBoxRow
         _logToClipboardButton!.OnClicked += LogToClipboardButton_OnClicked;
     }
 
-    public void TriggerAddedState(DownloadAddedEventArgs args)
+    public async Task TriggerAddedStateAsync(DownloadAddedEventArgs args)
     {
         _id = args.Id;
         _path = args.Path;
+        _thumbnailImage!.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.NewStatic(await _thumbnailService.GetImageBytesAsync(args.Url)));
         _statusIcon!.AddCssClass("stopped");
         _statusIcon.SetFromIconName("folder-download-symbolic");
         _filenameLabel!.SetLabel(Path.GetFileName(_path));

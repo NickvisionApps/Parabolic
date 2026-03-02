@@ -202,11 +202,11 @@ public class DiscoveryService : IDiscoveryService
             result = new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
 
         }
-        _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, JsonOptions)}");
         foreach (var media in result.Media)
         {
             _thumbnailService.MapMedia(media);
         }
+        _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, JsonOptions)}");
         return result;
     }
 
