@@ -15,10 +15,10 @@ public class ThumbnailService : IThumbnailService
     private readonly HttpClient _httpClient;
     private readonly Dictionary<Uri, byte[]> _cache;
 
-    public ThumbnailService(ILogger<ThumbnailService> logger, HttpClient httpClient)
+    public ThumbnailService(ILogger<ThumbnailService> logger, IHttpClientFactory httpClientFactory)
     {
         _logger = logger;
-        _httpClient = httpClient;
+        _httpClient = httpClientFactory.CreateClient();
         _cache = [];
         _logger.LogInformation("Loading default thumbnail into cache...");
         using var stream = typeof(ThumbnailService).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg");

@@ -55,12 +55,12 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         }
     }
 
-    public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, IJsonFileService jsonFileService, HttpClient httpClient)
+    public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, IJsonFileService jsonFileService, IHttpClientFactory httpClientFactory)
     {
         _logger = logger;
         _jsonFileService = jsonFileService;
-        _stableUpdaterService = new UpdaterService("yt-dlp", "yt-dlp", httpClient);
-        _previewUpdaterService = new UpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClient);
+        _stableUpdaterService = new UpdaterService("yt-dlp", "yt-dlp", httpClientFactory.CreateClient());
+        _previewUpdaterService = new UpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClientFactory.CreateClient());
         _latestPreviewVersion = null;
         _latestStableVersion = null;
     }

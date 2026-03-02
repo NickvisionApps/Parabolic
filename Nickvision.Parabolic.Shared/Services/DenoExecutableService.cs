@@ -53,11 +53,11 @@ public class DenoExecutableService : IDenoExecutableService
         }
     }
 
-    public DenoExecutableService(ILogger<DenoExecutableService> logger, IJsonFileService jsonFileService, HttpClient httpClient)
+    public DenoExecutableService(ILogger<DenoExecutableService> logger, IJsonFileService jsonFileService, IHttpClientFactory httpClientFactory)
     {
         _logger = logger;
         _jsonFileService = jsonFileService;
-        _stableUpdaterService = new UpdaterService("denoland", "deno", httpClient);
+        _stableUpdaterService = new UpdaterService("denoland", "deno", httpClientFactory.CreateClient());
         _latestStableVersion = null;
     }
 
