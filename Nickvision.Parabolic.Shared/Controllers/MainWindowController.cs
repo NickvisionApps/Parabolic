@@ -165,7 +165,7 @@ public class MainWindowController
         }
         if (_latestAppVersion > _appInfo.Version!)
         {
-            if(!OperatingSystem.IsLinux())
+            if (!OperatingSystem.IsLinux())
             {
                 _logger.LogInformation($"New application update available: {_latestAppVersion}");
                 _notificationService.Send(new AppNotification(_translationService._("New {0} update available: {1}", _appInfo.ShortName!, _latestAppVersion.ToString()), NotificationSeverity.Success)

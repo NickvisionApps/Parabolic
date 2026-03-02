@@ -2,6 +2,7 @@
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.Helpers;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.Shared.Helpers;
@@ -12,6 +13,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,13 +30,14 @@ public class AddDownloadDialogController
     private readonly IKeyringService _keyringService;
     private readonly INotificationService _notificationService;
     private readonly ITranslationService _translationService;
+    private readonly HttpClient _httpClient;
     private readonly Dictionary<int, DiscoveryContext> _discoveryContextMap;
 
     public PreviousDownloadOptions PreviousDownloadOptions { get; }
     public IReadOnlyList<SelectionItem<Credential?>> AvailableCredentials { get; }
     public IReadOnlyList<SelectionItem<PostProcessorArgument?>> AvailablePostProcessorArguments { get; }
 
-    public AddDownloadDialogController(ILogger<AddDownloadDialogController> logger, IDiscoveryService discoveryService, IDownloadService downloadService, IKeyringService keyringService, IJsonFileService jsonFileService, INotificationService notificationService, ITranslationService translationService)
+    public AddDownloadDialogController(ILogger<AddDownloadDialogController> logger, IDiscoveryService discoveryService, IDownloadService downloadService, IKeyringService keyringService, IJsonFileService jsonFileService, INotificationService notificationService, ITranslationService translationService, HttpClient httpClient)
     {
         _logger = logger;
         _discoveryService = discoveryService;
@@ -43,6 +46,7 @@ public class AddDownloadDialogController
         _keyringService = keyringService;
         _notificationService = notificationService;
         _translationService = translationService;
+        _httpClient = httpClient;
         _discoveryContextMap = new Dictionary<int, DiscoveryContext>();
         PreviousDownloadOptions = _jsonFileService.Load<PreviousDownloadOptions>(PreviousDownloadOptions.Key);
         AvailableCredentials = new List<SelectionItem<Credential?>>(_keyringService.Credentials.Count() + 1)
@@ -223,20 +227,24 @@ public class AddDownloadDialogController
             }
             else
             {
+                var matched = false;
                 foreach (var bitrate in res.Media.SelectMany(m => m.Formats).Where(f => f.Bitrate.HasValue).Select(f => f.Bitrate!.Value).Distinct())
                 {
                     context.AudioBitrates.Add(new SelectionItem<double>(bitrate, $"{bitrate}k", PreviousDownloadOptions.AudioBitrate == bitrate));
+                    matched |= PreviousDownloadOptions.AudioBitrate == bitrate;
                 }
                 context.AudioBitrates.Sort((a, b) => a.Value.CompareTo(b.Value));
                 context.AudioBitrates.Insert(0, new SelectionItem<double>(-1.0, _translationService._("Worst"), PreviousDownloadOptions.AudioBitrate == -1.0));
-                context.AudioBitrates.Insert(0, new SelectionItem<double>(double.MaxValue, _translationService._("Best"), PreviousDownloadOptions.AudioBitrate == double.MaxValue));
+                context.AudioBitrates.Insert(0, new SelectionItem<double>(double.MaxValue, _translationService._("Best"), !matched || PreviousDownloadOptions.AudioBitrate == double.MaxValue));
+                matched = false;
                 foreach (var resolution in res.Media.SelectMany(m => m.Formats).Where(f => f.VideoResolution is not null).Select(f => f.VideoResolution!).Distinct())
                 {
                     context.VideoResolutions.Add(new SelectionItem<VideoResolution>(resolution, resolution.ToString(_translationService), PreviousDownloadOptions.VideoResolution == resolution));
+                    matched |= PreviousDownloadOptions.VideoResolution == resolution;
                 }
                 context.VideoResolutions.Sort((a, b) => a.Value.CompareTo(b.Value));
                 context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Worst, VideoResolution.Worst.ToString(_translationService), PreviousDownloadOptions.VideoResolution == VideoResolution.Worst));
-                context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(_translationService), PreviousDownloadOptions.VideoResolution == VideoResolution.Best));
+                context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(_translationService), !matched || PreviousDownloadOptions.VideoResolution == VideoResolution.Best));
             }
             var hasVideo = res.Media.Any(m => m.Type == MediaType.Video);
             var previousFileType = hasVideo ? PreviousDownloadOptions.FullFileType : PreviousDownloadOptions.AudioOnlyFileType;
@@ -266,7 +274,7 @@ public class AddDownloadDialogController
             for (var i = 0; i < res.Media.Count; i++)
             {
                 var media = res.Media[i];
-                context.Items.Add(new MediaSelectionItem(i, media.Title, media.TimeFrame.StartString, media.TimeFrame.EndString, _translationService));
+                context.Items.Add(new MediaSelectionItem(i, media, _translationService));
             }
             _discoveryContextMap[res.Id] = context;
             return context;
@@ -319,5 +327,26 @@ public class AddDownloadDialogController
             return true;
         }
         return false;
+    }
+
+    public async Task<SixLabors.ImageSharp.Image> GetThumbnailImageAsync(DiscoveryContext context)
+    {
+        if (context.Media[0].ThumbnailUrl.IsEmpty)
+        {
+            return SixLabors.ImageSharp.Image.Load(typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!); ;
+        }
+        try
+        {
+            var bytes = await _httpClient.GetByteArrayAsync(context.Media[0].ThumbnailUrl);
+            if (bytes.Length == 0)
+            {
+                return SixLabors.ImageSharp.Image.Load(typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!); ;
+            }
+            return SixLabors.ImageSharp.Image.Load(bytes);
+        }
+        catch
+        {
+            return SixLabors.ImageSharp.Image.Load(typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!); ;
+        }
     }
 }

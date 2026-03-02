@@ -2,6 +2,7 @@
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Windows.Storage.Pickers;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
@@ -10,12 +11,16 @@ using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
+using SixLabors.ImageSharp.Formats.Jpeg;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Graphics.Imaging;
+using Windows.Storage.Streams;
 
 namespace Nickvision.Parabolic.WinUI.Views;
 
@@ -213,17 +218,27 @@ public sealed partial class AddDownloadDialog : ContentDialog
             Hide();
             return;
         }
+        using var thumbnailImage = await _controller.GetThumbnailImageAsync(_discoveryContext);
         Title = _translationService._("Configure Download");
         PrimaryButtonText = _translationService._("Download");
         CloseButtonText = _translationService._("Cancel");
         SecondaryButtonText = null;
         DefaultButton = ContentDialogButton.Primary;
         _controller.PreviousDownloadOptions.DownloadImmediately = TglDownloadImmediately.IsOn;
+        using var thumbnailStream = new InMemoryRandomAccessStream();
+        thumbnailImage.Save(thumbnailStream.AsStream(), new JpegEncoder());
+        var thumbnailDecoder = await BitmapDecoder.CreateAsync(thumbnailStream);
+        var thumbnailBitmap = await thumbnailDecoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+        var thumbnailSource = new SoftwareBitmapSource();
+        await thumbnailSource.SetBitmapAsync(thumbnailBitmap);
         if (_discoveryContext.Items.Count == 1)
         {
             ViewStack.SelectedIndex = (int)Pages.Single;
             ViewStackSingle.SelectedIndex = (int)SinglePages.General;
             ViewStackSingleSubtitles.SelectedIndex = _discoveryContext.SubtitleLanguages.Any() ? 1 : 0;
+            ImgSingleThumbnail.Source = thumbnailSource;
+            LblSingleTitle.Text = _discoveryContext.Title;
+            LblSingleUrl.Text = _discoveryContext.Url.ToString();
             TxtSingleSaveFilename.Text = _discoveryContext.Items[0].Label;
             TxtSingleSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
             CmbSingleVideoFormat.ItemsSource = _discoveryContext.VideoFormats;
@@ -252,6 +267,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ViewStack.SelectedIndex = (int)Pages.Playlist;
             ViewStackPlaylist.SelectedIndex = (int)PlaylistPages.General;
             ViewStackPlaylistSubtitles.SelectedIndex = _discoveryContext.SubtitleLanguages.Any() ? 1 : 0;
+            ImgPlaylistThumbnail.Source = thumbnailSource;
+            LblPlaylistTitle.Text = _discoveryContext.Title;
+            LblPlaylistUrl.Text = _discoveryContext.Url.ToString();
             TxtPlaylistSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
             CmbPlaylistFileType.ItemsSource = _discoveryContext.FileTypes;
             CmbPlaylistFileType.SelectSelectionItem();

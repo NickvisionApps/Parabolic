@@ -17,6 +17,7 @@ public class Media
     public TimeFrame TimeFrame { get; }
     public List<Format> Formats { get; }
     public List<SubtitleLanguage> Subtitles { get; }
+    public Uri ThumbnailUrl { get; }
     public string SuggestedSaveFolder { get; }
 
     private Media(string suggestedSaveFolder, string suggestedSaveFilename)
@@ -28,6 +29,7 @@ public class Media
         TimeFrame = new TimeFrame(TimeSpan.Zero, TimeSpan.Zero);
         Formats = new List<Format>();
         Subtitles = new List<SubtitleLanguage>();
+        ThumbnailUrl = Uri.Empty;
         SuggestedSaveFolder = suggestedSaveFolder;
     }
 
@@ -103,25 +105,26 @@ public class Media
             foreach (var formatObject in formatsProperty.EnumerateArray())
             {
                 var format = new Format(formatObject, translator);
-                if (format.Type != MediaType.Image)
+                if (format.Type == MediaType.Image)
                 {
-                    if (format.Type == MediaType.Video)
-                    {
-                        hasVideoFormats = true;
-                    }
-                    else if (format.Type == MediaType.Audio)
-                    {
-                        hasAudioFormats = true;
-                    }
-                    if ((format.VideoCodec.HasValue && options.PreferredVideoCodec != VideoCodec.Any && format.VideoCodec.Value != options.PreferredVideoCodec) ||
-                       (format.AudioCodec.HasValue && options.PreferredAudioCodec != AudioCodec.Any && format.AudioCodec.Value != options.PreferredAudioCodec) ||
-                       (format.FrameRate.HasValue && options.PreferredFrameRate != FrameRate.Any && format.FrameRate.Value != options.PreferredFrameRate))
-                    {
-                        skippedFormats.Add(format);
-                        continue;
-                    }
-                    Formats.Add(format);
+                    continue;
                 }
+                if (format.Type == MediaType.Video)
+                {
+                    hasVideoFormats = true;
+                }
+                else if (format.Type == MediaType.Audio)
+                {
+                    hasAudioFormats = true;
+                }
+                if ((format.VideoCodec.HasValue && options.PreferredVideoCodec != VideoCodec.Any && format.VideoCodec.Value != options.PreferredVideoCodec) ||
+                    (format.AudioCodec.HasValue && options.PreferredAudioCodec != AudioCodec.Any && format.AudioCodec.Value != options.PreferredAudioCodec) ||
+                    (format.FrameRate.HasValue && options.PreferredFrameRate != FrameRate.Any && format.FrameRate.Value != options.PreferredFrameRate))
+                {
+                    skippedFormats.Add(format);
+                    continue;
+                }
+                Formats.Add(format);
             }
             if (Formats.Count == 0 && skippedFormats.Count > 0)
             {
@@ -162,6 +165,13 @@ public class Media
             }
         }
         Subtitles.Sort();
+        if (ytdlp.TryGetProperty("thumbnail", out var thumbnailProperty) && thumbnailProperty.ValueKind != JsonValueKind.Null)
+        {
+            if (Uri.TryCreate(thumbnailProperty.GetString() ?? string.Empty, UriKind.Absolute, out var uri))
+            {
+                ThumbnailUrl = uri;
+            }
+        }
         if (hasVideoFormats && hasAudioFormats)
         {
             Type = MediaType.Video;

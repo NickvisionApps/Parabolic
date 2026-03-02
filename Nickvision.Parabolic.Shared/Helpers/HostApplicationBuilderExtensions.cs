@@ -25,6 +25,7 @@ public static class HostApplicationBuilderExtensions
                 - Added the ability to specify a preferred frame rate for video downloads in Parabolic's settings
                 - Added the ability to automatically translate embedded metadata and chapters to the app's language on supported sites. This can be turned off in Converter settings
                 - Added the ability to update deno from within the app
+                - Added thumbnail image preview to add download dialog and downloads view
                 - Added failed filter to downloads view
                 - Improved selection of playlist video formats when resolutions are specified
                 - Improved selection of playlist audio formats on Windows when bitrates are specified
@@ -55,6 +56,7 @@ public static class HostApplicationBuilderExtensions
             builder.Services.AddTransient<KeyringViewController>();
             builder.Services.AddSingleton<MainWindowController>();
             builder.Services.AddTransient<PreferencesViewController>();
+            builder.Services.AddHttpClient<AddDownloadDialogController>();
             return builder;
         }
     }
