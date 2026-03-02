@@ -47,7 +47,7 @@ public class HistoryViewController
         set => _historyService.Length = value;
     }
 
-    public async Task ClearAllAsync() => await _historyService.ClearAsync();
+    public Task ClearAllAsync() => _historyService.ClearAsync();
 
     public async Task<IReadOnlyList<SelectionItem<HistoricDownload>>> GetAllAsync()
     {
@@ -59,7 +59,7 @@ public class HistoryViewController
         return result;
     }
 
-    public async Task RemoveAsync(Uri url) => await _historyService.RemoveAsync(url);
+    public Task RemoveAsync(Uri url) => _historyService.RemoveAsync(url);
 
     public void RequestDownload(Uri url) => _eventsService.InvokeDownloadRequested(url);
 }

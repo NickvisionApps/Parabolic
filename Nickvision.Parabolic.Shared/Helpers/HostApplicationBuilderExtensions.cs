@@ -48,15 +48,16 @@ public static class HostApplicationBuilderExtensions
             builder.Services.AddSingleton<IDownloadService, DownloadService>();
             builder.Services.AddSingleton<IHistoryService, HistoryService>();
             builder.Services.AddSingleton<IRecoveryService, RecoveryService>();
+            builder.Services.AddSingleton<IThumbnailService, ThumbnailService>();
             builder.Services.AddSingleton<IYtdlpExecutableService, YtdlpExecutableService>();
             builder.Services.AddHttpClient<IDenoExecutableService, DenoExecutableService>();
+            builder.Services.AddHttpClient<IThumbnailService, ThumbnailService>();
             builder.Services.AddHttpClient<IYtdlpExecutableService, YtdlpExecutableService>();
             builder.Services.AddTransient<AddDownloadDialogController>();
             builder.Services.AddTransient<HistoryViewController>();
             builder.Services.AddTransient<KeyringViewController>();
             builder.Services.AddSingleton<MainWindowController>();
             builder.Services.AddTransient<PreferencesViewController>();
-            builder.Services.AddHttpClient<AddDownloadDialogController>();
             return builder;
         }
     }

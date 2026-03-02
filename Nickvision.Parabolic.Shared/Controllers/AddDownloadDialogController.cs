@@ -2,7 +2,6 @@
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
-using Nickvision.Desktop.Helpers;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.Shared.Helpers;
@@ -13,7 +12,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -29,15 +27,15 @@ public class AddDownloadDialogController
     private readonly IJsonFileService _jsonFileService;
     private readonly IKeyringService _keyringService;
     private readonly INotificationService _notificationService;
+    private readonly IThumbnailService _thumbnailService;
     private readonly ITranslationService _translationService;
-    private readonly HttpClient _httpClient;
     private readonly Dictionary<int, DiscoveryContext> _discoveryContextMap;
 
     public PreviousDownloadOptions PreviousDownloadOptions { get; }
     public IReadOnlyList<SelectionItem<Credential?>> AvailableCredentials { get; }
     public IReadOnlyList<SelectionItem<PostProcessorArgument?>> AvailablePostProcessorArguments { get; }
 
-    public AddDownloadDialogController(ILogger<AddDownloadDialogController> logger, IDiscoveryService discoveryService, IDownloadService downloadService, IKeyringService keyringService, IJsonFileService jsonFileService, INotificationService notificationService, ITranslationService translationService, HttpClient httpClient)
+    public AddDownloadDialogController(ILogger<AddDownloadDialogController> logger, IDiscoveryService discoveryService, IDownloadService downloadService, IKeyringService keyringService, IJsonFileService jsonFileService, INotificationService notificationService, IThumbnailService thumbnailService, ITranslationService translationService)
     {
         _logger = logger;
         _discoveryService = discoveryService;
@@ -45,8 +43,8 @@ public class AddDownloadDialogController
         _jsonFileService = jsonFileService;
         _keyringService = keyringService;
         _notificationService = notificationService;
+        _thumbnailService = thumbnailService;
         _translationService = translationService;
-        _httpClient = httpClient;
         _discoveryContextMap = new Dictionary<int, DiscoveryContext>();
         PreviousDownloadOptions = _jsonFileService.Load<PreviousDownloadOptions>(PreviousDownloadOptions.Key);
         AvailableCredentials = new List<SelectionItem<Credential?>>(_keyringService.Credentials.Count() + 1)
@@ -329,34 +327,7 @@ public class AddDownloadDialogController
         return false;
     }
 
-    public async Task<MemoryStream> GetThumbnailImageAsync(DiscoveryContext context)
-    {
-        using var defaultThumbnailStream = typeof(AddDownloadDialogController).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg")!;
-        var memoryStream = new MemoryStream();
-        if (context.Media[0].ThumbnailUrl.IsEmpty)
-        {
-            await defaultThumbnailStream.CopyToAsync(memoryStream);
-        }
-        else
-        {
-            try
-            {
-                var bytes = await _httpClient.GetByteArrayAsync(context.Media[0].ThumbnailUrl);
-                if (bytes.Length == 0)
-                {
-                    await defaultThumbnailStream.CopyToAsync(memoryStream);
-                }
-                else
-                {
-                    memoryStream.Write(bytes);
-                }
-            }
-            catch
-            {
-                await defaultThumbnailStream.CopyToAsync(memoryStream);
-            }
-        }
-        memoryStream.Seek(0, SeekOrigin.Begin);
-        return memoryStream;
-    }
+    public Task<byte[]> GetThumbnailImageBytesAsync(DiscoveryContext context) => _thumbnailService.GetImageBytesAsync(context.Media[0]);
+
+    public Task<MemoryStream> GetThumbnailImageStreamAsync(DiscoveryContext context) => _thumbnailService.GetImageStreamAsync(context.Media[0]);
 }

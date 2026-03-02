@@ -418,5 +418,5 @@ public class PreferencesViewController
         return null;
     }
 
-    public async Task SaveConfigurationAsync() => await _jsonFileService.SaveAsync(_configuration, Configuration.Key);
+    public Task SaveConfigurationAsync() => _jsonFileService.SaveAsync(_configuration, Configuration.Key);
 }

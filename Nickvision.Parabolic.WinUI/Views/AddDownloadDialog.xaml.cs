@@ -216,7 +216,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             Hide();
             return;
         }
-        using var thumbnailStream = (await _controller.GetThumbnailImageAsync(_discoveryContext)).AsRandomAccessStream();
+        using var thumbnailStream = (await _controller.GetThumbnailImageStreamAsync(_discoveryContext)).AsRandomAccessStream();
         var thumbnailDecoder = await BitmapDecoder.CreateAsync(thumbnailStream);
         var thumbnailBitmap = await thumbnailDecoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
         var thumbnailSource = new SoftwareBitmapSource();
@@ -293,7 +293,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private async Task DownloadSingleAsync() => await _controller.AddSingleDownloadAsync(_discoveryContext!,
+    private Task DownloadSingleAsync() => _controller.AddSingleDownloadAsync(_discoveryContext!,
         TxtSingleSaveFilename.Text,
         TxtSingleSaveFolder.Text,
         (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!,
@@ -308,7 +308,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtSingleEndTime.Text
     );
 
-    private async Task DownloadPlaylistAsync() => await _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
+    private Task DownloadPlaylistAsync() => _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
         ListPlaylistItems.SelectedItems.Cast<MediaSelectionItem>(),
         TxtPlaylistSaveFolder.Text,
         (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!,
