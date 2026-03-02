@@ -165,11 +165,14 @@ public class MainWindowController
         }
         if (_latestAppVersion > _appInfo.Version!)
         {
-            _logger.LogInformation($"New application update available: {_latestAppVersion}");
-            _notificationService.Send(new AppNotification(_translationService._("New {0} update available: {1}", _appInfo.ShortName!, _latestAppVersion.ToString()), NotificationSeverity.Success)
+            if(!OperatingSystem.IsLinux())
             {
-                Action = "update"
-            });
+                _logger.LogInformation($"New application update available: {_latestAppVersion}");
+                _notificationService.Send(new AppNotification(_translationService._("New {0} update available: {1}", _appInfo.ShortName!, _latestAppVersion.ToString()), NotificationSeverity.Success)
+                {
+                    Action = "update"
+                });
+            }
         }
         else if (_latestYtdlpVersion > _ytdlpExecutableService.BundledVersion && _latestYtdlpVersion > config.InstalledYtdlpAppVersion)
         {

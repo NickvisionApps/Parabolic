@@ -190,7 +190,6 @@ public class MainWindow : Adw.ApplicationWindow
             return;
         }
         var updatesTask = _controller.CheckForUpdatesAsync(false);
-        this.WindowGeometry = _controller.WindowGeometry;
         if (_controller.ShowDisclaimerOnStartup)
         {
             var chkBox = Gtk.CheckButton.New();
@@ -266,7 +265,17 @@ public class MainWindow : Adw.ApplicationWindow
     private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Notification.Message);
-        if (e.Notification.Action == "update-ytdlp")
+        if (e.Notification.Action == "update")
+        {
+            toast.Timeout = 0;
+            toast.ButtonLabel = _translationService._("View");
+            toast.OnButtonClicked += async (_, _) =>
+            {
+                var launcher = Gtk.UriLauncher.New($"{_appInfo.SourceRepository}/releases/latest");
+                await launcher.LaunchAsync(this);
+            };
+        }
+        else if (e.Notification.Action == "update-ytdlp")
         {
             toast.Timeout = 0;
             toast.ButtonLabel = _translationService._("Update");
@@ -399,11 +408,11 @@ public class MainWindow : Adw.ApplicationWindow
             return false;
         });
     }
-    private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args) => Window_OnCloseRequest(this, new EventArgs());
+    private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => Window_OnCloseRequest(this, new EventArgs());
 
-    private void Preferences(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args) => _serviceProvider.GetRequiredService<PreferencesDialog>().Present(this);
+    private void Preferences(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<PreferencesDialog>().Present(this);
 
-    private void KeyboardShortcuts(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs args) => _serviceProvider.GetRequiredService<ShortcutsDialog>().Present(this);
+    private void KeyboardShortcuts(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<ShortcutsDialog>().Present(this);
 
     private async void About(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
     {
