@@ -8,7 +8,6 @@ namespace Nickvision.Parabolic.Shared.Services;
 public interface IThumbnailService
 {
     Task<byte[]> GetImageBytesAsync(Uri url);
-    Task<byte[]> GetImageBytesAsync(Media media);
     Task<MemoryStream> GetImageStreamAsync(Uri url);
-    Task<MemoryStream> GetImageStreamAsync(Media media);
+    void MapMedia(Media media);
 }

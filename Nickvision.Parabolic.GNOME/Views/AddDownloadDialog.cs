@@ -322,7 +322,11 @@ public class AddDownloadDialog : Adw.Dialog
             _navigationView.PushByTag("single");
             _singleGroup!.Title = _discoveryContext.Title;
             _singleGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
-            _singleThumbnailImage!.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.NewStatic(await _controller.GetThumbnailImageBytesAsync(_discoveryContext)));
+            try
+            {
+                _singleThumbnailImage!.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.NewStatic(await _controller.GetThumbnailImageBytesAsync(_discoveryContext)));
+            }
+            catch { }
             _singleSaveFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
             _singleSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
             _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
@@ -358,7 +362,11 @@ public class AddDownloadDialog : Adw.Dialog
             _navigationView.PushByTag("playlist");
             _playlistGroup!.Title = _discoveryContext.Title;
             _playlistGroup!.Description = GLib.Markup.EscapeText(_discoveryContext.Url.ToString());
-            _playlistThumbnailImage!.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.NewStatic(await _controller.GetThumbnailImageBytesAsync(_discoveryContext)));
+            try
+            {
+                _playlistThumbnailImage!.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.NewStatic(await _controller.GetThumbnailImageBytesAsync(_discoveryContext)));
+            }
+            catch { }
             _playlistSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
             _playlistFileTypeRow!.SetModel(_discoveryContext.FileTypes);
             _playlistVideoResolutionRow!.SetModel(_discoveryContext.VideoResolutions);

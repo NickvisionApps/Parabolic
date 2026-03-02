@@ -216,7 +216,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
             Hide();
             return;
         }
-        using var thumbnailStream = (await _controller.GetThumbnailImageStreamAsync(_discoveryContext)).AsRandomAccessStream();
+        using var thumbnailMemoryStream = await _controller.GetThumbnailImageStreamAsync(_discoveryContext);
+        using var thumbnailStream = thumbnailMemoryStream.AsRandomAccessStream();
         var thumbnailDecoder = await BitmapDecoder.CreateAsync(thumbnailStream);
         var thumbnailBitmap = await thumbnailDecoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
         var thumbnailSource = new SoftwareBitmapSource();

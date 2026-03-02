@@ -22,6 +22,7 @@ public class DiscoveryService : IDiscoveryService
     private readonly ILogger<DiscoveryService> _logger;
     private readonly IDenoExecutableService _denoExecutableService;
     private readonly IJsonFileService _jsonFileService;
+    private readonly IThumbnailService _thumbnailService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpExecutableService;
 
@@ -34,11 +35,12 @@ public class DiscoveryService : IDiscoveryService
         };
     }
 
-    public DiscoveryService(ILogger<DiscoveryService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
+    public DiscoveryService(ILogger<DiscoveryService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, IThumbnailService thumbnailService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _logger = logger;
         _denoExecutableService = denoExecutableService;
         _jsonFileService = jsonFileService;
+        _thumbnailService = thumbnailService;
         _translationService = translationService;
         _ytdlpExecutableService = ytdlpExecutableService;
     }
@@ -170,6 +172,7 @@ public class DiscoveryService : IDiscoveryService
             _logger.LogError($"Unexpected output format from yt-dlp for {url}: {output.TrimEnd()}");
             throw new YtdlpException($"Unexpected output format from yt-dlp: {output}");
         }
+        DiscoveryResult? result = null;
         if (json!.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
         {
             var urlInfos = new List<DiscoveryResult>();
@@ -191,12 +194,20 @@ public class DiscoveryService : IDiscoveryService
             }
             if (urlInfos.Count > 0 && json.RootElement.TryGetProperty("title", out var titleProperty))
             {
-                _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, JsonOptions)}");
-                return new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
+                result = new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
             }
         }
+        if (result is null)
+        {
+            result = new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+
+        }
         _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, JsonOptions)}");
-        return new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+        foreach (var media in result.Media)
+        {
+            _thumbnailService.MapMedia(media);
+        }
+        return result;
     }
 
     private async Task<List<BatchFileEntry>> ParseBatchFileAsync(string batchFilePath, CancellationToken cancellationToken = default)

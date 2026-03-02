@@ -14,12 +14,14 @@ public class ThumbnailService : IThumbnailService
     private readonly ILogger<ThumbnailService> _logger;
     private readonly HttpClient _httpClient;
     private readonly Dictionary<Uri, byte[]> _cache;
+    private readonly Dictionary<Uri, Uri> _mediaMap;
 
     public ThumbnailService(ILogger<ThumbnailService> logger, IHttpClientFactory httpClientFactory)
     {
         _logger = logger;
         _httpClient = httpClientFactory.CreateClient();
         _cache = [];
+        _mediaMap = [];
         _logger.LogInformation("Loading default thumbnail into cache...");
         using var stream = typeof(ThumbnailService).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg");
         if (stream is null)
@@ -46,18 +48,6 @@ public class ThumbnailService : IThumbnailService
         return _cache[url];
     }
 
-    public async Task<byte[]> GetImageBytesAsync(Media media)
-    {
-        _logger.LogInformation($"Getting image bytes for media: {media.Url}");
-        if (_cache.TryGetValue(media.Url, out var bytes))
-        {
-            _logger.LogInformation($"Found image bytes for media ({media.Url}) in cache.");
-            return bytes;
-        }
-        await DownloadImageBytesAsync(media);
-        return _cache[media.Url];
-    }
-
     public async Task<MemoryStream> GetImageStreamAsync(Uri url)
     {
         _logger.LogInformation($"Getting image stream for url: {url}");
@@ -70,16 +60,22 @@ public class ThumbnailService : IThumbnailService
         return new MemoryStream(_cache[url]);
     }
 
-    public async Task<MemoryStream> GetImageStreamAsync(Media media)
+    public void MapMedia(Media media)
     {
-        _logger.LogInformation($"Getting image stream for media: {media.Url}");
-        if (_cache.TryGetValue(media.Url, out var bytes))
+        if (_cache.ContainsKey(media.Url))
         {
-            _logger.LogInformation($"Found image stream for media ({media.Url}) in cache.");
-            return new MemoryStream(bytes);
+            return;
         }
-        await DownloadImageBytesAsync(media);
-        return new MemoryStream(_cache[media.Url]);
+        if (media.ThumbnailUrl.IsEmpty)
+        {
+            _cache[media.Url] = _cache[Uri.Empty];
+            _logger.LogWarning($"Mapped media url ({media.Url}) to default thumbnail as thumbnail url is empty.");
+        }
+        else
+        {
+            _mediaMap[media.Url] = media.ThumbnailUrl;
+            _logger.LogInformation($"Mapped media url ({media.Url}) to thumbnail url ({media.ThumbnailUrl}).");
+        }
     }
 
     private async Task DownloadImageBytesAsync(Uri url)
@@ -89,7 +85,7 @@ public class ThumbnailService : IThumbnailService
             return;
         }
         _logger.LogInformation($"Downloading image bytes for url: {url}");
-        var bytes = await _httpClient.GetByteArrayAsync(url);
+        var bytes = await _httpClient.GetByteArrayAsync(_mediaMap.TryGetValue(url, out var mappedUrl) ? mappedUrl : url);
         if (bytes.Length == 0)
         {
             _logger.LogWarning($"Downloaded image bytes for url ({url}) are empty. Using default thumbnail.");
@@ -99,25 +95,11 @@ public class ThumbnailService : IThumbnailService
             _logger.LogInformation($"Downloaded image bytes for url ({url}).");
         }
         _cache[url] = bytes.Length == 0 ? _cache[Uri.Empty] : bytes;
-    }
-
-    private async Task DownloadImageBytesAsync(Media media)
-    {
-        _logger.LogInformation($"Downloading image bytes for media: {media.Url}");
-        if (_cache.ContainsKey(media.Url) || media.ThumbnailUrl == Uri.Empty)
+        if (mappedUrl is not null)
         {
-            return;
+            _cache[mappedUrl] = bytes.Length == 0 ? _cache[Uri.Empty] : bytes;
+            _mediaMap.Remove(url);
+            _logger.LogInformation($"Removed media url ({url}) from media map.");
         }
-        var bytes = await _httpClient.GetByteArrayAsync(media.ThumbnailUrl);
-        if (bytes.Length == 0)
-        {
-            _logger.LogWarning($"Downloaded image bytes for media ({media.Url}) are empty. Using default thumbnail.");
-        }
-        else
-        {
-            _logger.LogInformation($"Downloaded image bytes for media ({media.Url}).");
-        }
-        _cache[media.Url] = bytes.Length == 0 ? _cache[Uri.Empty] : bytes;
-        _cache[media.ThumbnailUrl] = bytes.Length == 0 ? _cache[Uri.Empty] : bytes;
     }
 }
