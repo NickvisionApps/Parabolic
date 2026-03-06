@@ -83,14 +83,12 @@ public class DownloadRow : Gtk.ListBoxRow
 
     public async Task TriggerAddedStateAsync(DownloadAddedEventArgs args)
     {
-        using var pixbufLoader = GdkPixbuf.PixbufLoader.New();
+        var pixbufLoader = GdkPixbuf.PixbufLoader.New();
         pixbufLoader.Write(await _thumbnailService.GetImageBytesAsync(args.Url));
         pixbufLoader.Close();
-        var pixbuf = pixbufLoader.GetPixbuf()!;
-        pixbuf.ScaleSimple(75, 50, GdkPixbuf.InterpType.Bilinear);
         _id = args.Id;
         _path = args.Path;
-        _thumbnailImage!.SetPixbuf(pixbuf);
+        _thumbnailImage!.SetPixbuf(pixbufLoader.GetPixbuf()!.ScaleSimple(90, 50, GdkPixbuf.InterpType.Bilinear)!);
         _statusIcon!.AddCssClass("stopped");
         _statusIcon.SetFromIconName("folder-download-symbolic");
         _filenameLabel!.SetLabel(Path.GetFileName(_path));
