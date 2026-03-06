@@ -83,18 +83,13 @@ jobs:
           $portableDir = "${{ github.workspace }}\portable"
           New-Item -ItemType Directory -Force -Path "$portableDir\Release" | Out-Null
           Copy-Item -Path "$publishDir\*" -Destination "$portableDir\Release" -Recurse
-          $WshShell = New-Object -comObject WScript.Shell
-          $Shortcut = $WshShell.CreateShortcut("$portableDir\${{ env.SHORT_NAME }}.lnk")
-          $Shortcut.TargetPath = "Release\${{ env.PROJECT_NAME }}.exe"
-          $Shortcut.Arguments = "--portable"
-          $Shortcut.Save()
-          New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\Releases" | Out-Null
-          Compress-Archive -Path "$portableDir\*" -DestinationPath "${{ github.workspace }}\Releases\${{ env.PROJECT_NAME }}-portable-${{ matrix.variant.arch }}.zip"
+          $batContent = "@echo off`r`n`"%~dp0Release\${{ env.PROJECT_NAME }}.exe`" --portable"
+          Set-Content -Path "$portableDir\${{ env.SHORT_NAME }}.bat" -Value $batContent -NoNewline
       - uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/inno/${{ env.INSTALLER_NAME }}.exe
           name: ${{ env.INSTALLER_NAME }}-${{ matrix.variant.arch }}
       - uses: actions/upload-artifact@v4
         with:
-          path: ${{ github.workspace }}/Releases/${{ env.PROJECT_NAME }}-portable-${{ matrix.variant.arch }}.zip
+          path: ${{ github.workspace }}/portable
           name: ${{ env.PROJECT_NAME }}-portable-${{ matrix.variant.arch }}
