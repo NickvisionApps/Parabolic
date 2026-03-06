@@ -18,10 +18,13 @@ Gtk.ListBoxRow root {
         margin-start: 6;
         margin-end: 6;
         margin-bottom: 8;
-        width-request: 3;
-        height-request: 2;
-
-        Gtk.Picture thumbnailImage { }
+        width-request: 75;
+        height-request: 50;
+        
+        Gtk.Picture thumbnailImage { 
+         hexpand: false;
+         vexpand: false;
+        }
       }
 
       Gtk.Image statusIcon {

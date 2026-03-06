@@ -195,12 +195,13 @@ public class AddDownloadDialog : Adw.Dialog
 
     public void Present(Uri url, Gtk.Widget? parent)
     {
-        _urlRow!.Text_ = url.ToString();
         base.Present(parent);
+        _urlRow!.Text_ = url.ToString();
     }
 
     public new async Task Present(Gtk.Widget? parent)
     {
+        base.Present(parent);
         if (string.IsNullOrEmpty(_urlRow!.Text_))
         {
             try
@@ -213,7 +214,6 @@ public class AddDownloadDialog : Adw.Dialog
             }
             catch { }
         }
-        base.Present(parent);
     }
 
     private async Task DownloadSingleAsync()
