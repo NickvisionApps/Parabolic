@@ -1,10 +1,14 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.IO;
+using System.Threading.Tasks;
+using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.System;
 
@@ -19,6 +23,7 @@ public sealed partial class DownloadRow : UserControl
         Error
     }
 
+    private readonly IThumbnailService _thumbnailService;
     private readonly ITranslationService _translator;
     private int _id;
     private string _path;
@@ -32,9 +37,10 @@ public sealed partial class DownloadRow : UserControl
 
     public DownloadStatus Status { get; private set; }
 
-    public DownloadRow(ITranslationService translator)
+    public DownloadRow(IThumbnailService thumbnailService, ITranslationService translator)
     {
         InitializeComponent();
+        _thumbnailService = thumbnailService;
         _translator = translator;
         _id = -1;
         _path = string.Empty;
@@ -48,11 +54,18 @@ public sealed partial class DownloadRow : UserControl
         LblRetry.Text = _translator._("Retry");
     }
 
-    public void TriggerAddedState(DownloadAddedEventArgs args)
+    public async Task TriggerAddedStateAsync(DownloadAddedEventArgs args)
     {
+        using var thumbnailMemoryStream = await _thumbnailService.GetImageStreamAsync(args.Url);
+        using var thumbnailStream = thumbnailMemoryStream.AsRandomAccessStream();
+        var thumbnailDecoder = await BitmapDecoder.CreateAsync(thumbnailStream);
+        var thumbnailBitmap = await thumbnailDecoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+        var thumbnailSource = new SoftwareBitmapSource();
+        await thumbnailSource.SetBitmapAsync(thumbnailBitmap);
         _id = args.Id;
         _path = args.Path;
         IcnStatus.Glyph = "\uE896";
+        ImgThumbnail.Source = thumbnailSource;
         LblTitle.Text = Path.GetFileName(_path);
         ProgBar.Value = 0.0;
         if (args.Status == DownloadStatus.Queued)

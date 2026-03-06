@@ -14,15 +14,16 @@ namespace Nickvision.Parabolic.Shared.Controllers;
 
 public class PreferencesViewController
 {
-    private readonly IJsonFileService _jsonFileService;
     private readonly IHistoryService _historyService;
+    private readonly IJsonFileService _jsonFileService;
+    private readonly ITranslationService _translationService;
     private readonly Configuration _configuration;
 
-    public ITranslationService Translator { get; }
     public IReadOnlyList<SelectionItem<AudioCodec>> AudioCodecs { get; }
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages { get; }
     public IReadOnlyList<SelectionItem<Browser>> Browsers { get; }
     public IReadOnlyList<SelectionItem<Executable>> Executables { get; }
+    public IReadOnlyList<SelectionItem<FrameRate>> FrameRates { get; }
     public IReadOnlyList<SelectionItem<HistoryLength>> HistoryLengths { get; }
     public IReadOnlyList<SelectionItem<PostProcessor>> PostProcessors { get; }
     public ObservableCollection<PostProcessorArgument> PostprocessingArguments { get; }
@@ -30,18 +31,18 @@ public class PreferencesViewController
     public IReadOnlyList<SelectionItem<Theme>> Themes { get; }
     public IReadOnlyList<SelectionItem<VideoCodec>> VideoCodecs { get; }
 
-    public PreferencesViewController(IJsonFileService jsonFileService, ITranslationService translationService, IHistoryService historyService)
+    public PreferencesViewController(IHistoryService historyService, IJsonFileService jsonFileService, ITranslationService translationService)
     {
-        _jsonFileService = jsonFileService;
         _historyService = historyService;
+        _jsonFileService = jsonFileService;
+        _translationService = translationService;
         _configuration = _jsonFileService.Load<Configuration>(Configuration.Key);
         var selectedHistoryLength = _historyService.Length;
-        Translator = translationService;
         AudioCodecs = new List<SelectionItem<AudioCodec>>()
         {
-            new SelectionItem<AudioCodec>(AudioCodec.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.Any),
-            new SelectionItem<AudioCodec>(AudioCodec.FLAC, Translator._("FLAC (ALAC)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.FLAC),
-            new SelectionItem<AudioCodec>(AudioCodec.WAV, Translator._("WAV (AIFF)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.WAV),
+            new SelectionItem<AudioCodec>(AudioCodec.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.Any),
+            new SelectionItem<AudioCodec>(AudioCodec.FLAC, _translationService._("FLAC (ALAC)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.FLAC),
+            new SelectionItem<AudioCodec>(AudioCodec.WAV, _translationService._("WAV (AIFF)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.WAV),
             new SelectionItem<AudioCodec>(AudioCodec.OPUS, "OPUS", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.OPUS),
             new SelectionItem<AudioCodec>(AudioCodec.AAC, "AAC", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.AAC),
             new SelectionItem<AudioCodec>(AudioCodec.MP4A, "MP4A", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.MP4A),
@@ -49,30 +50,33 @@ public class PreferencesViewController
         };
         AvailableTranslationLanguages = new List<SelectionItem<string>>()
         {
-            new SelectionItem<string>(string.Empty, Translator._("System"), string.IsNullOrEmpty(_configuration.TranslationLanguage)),
+            new SelectionItem<string>(string.Empty, _translationService._("System"), string.IsNullOrEmpty(_configuration.TranslationLanguage)),
             new SelectionItem<string>("C", "en_US", _configuration.TranslationLanguage == "C")
         };
-        var languages = Translator.AvailableLanguages.ToList();
+        var languages = _translationService.AvailableLanguages.ToList();
         languages.Sort();
         foreach (var language in languages)
         {
             (AvailableTranslationLanguages as IList)!.Add(new SelectionItem<string>(language, language, _configuration.TranslationLanguage == language));
         }
-        Browsers = new List<SelectionItem<Browser>>()
+        Browsers = new List<SelectionItem<Browser>>(OperatingSystem.IsWindows() ? 2 : 9)
         {
-            new SelectionItem<Browser>(Browser.None, Translator._("None"), _configuration.DownloaderOptions.CookiesBrowser == Browser.None),
-            new SelectionItem<Browser>(Browser.Brave, Translator._("Brave"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Brave),
-            new SelectionItem<Browser>(Browser.Chrome, Translator._("Chrome"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chrome),
-            new SelectionItem<Browser>(Browser.Chromium, Translator._("Chromium"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chromium),
-            new SelectionItem<Browser>(Browser.Edge, Translator._("Edge"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Edge),
-            new SelectionItem<Browser>(Browser.Firefox, Translator._("Firefox"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Firefox),
-            new SelectionItem<Browser>(Browser.Opera, Translator._("Opera"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Opera),
-            new SelectionItem<Browser>(Browser.Vivaldi, Translator._("Vivaldi"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Vivaldi),
-            new SelectionItem<Browser>(Browser.Whale, Translator._("Whale"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Whale),
+            new SelectionItem<Browser>(Browser.None, _translationService._("None"), _configuration.DownloaderOptions.CookiesBrowser == Browser.None),
+            new SelectionItem<Browser>(Browser.Firefox, _translationService._("Firefox"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Firefox)
         };
+        if (!OperatingSystem.IsWindows())
+        {
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Brave, _translationService._("Brave"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Brave));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chrome, _translationService._("Chrome"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chrome));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chromium, _translationService._("Chromium"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chromium));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Edge, _translationService._("Edge"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Edge));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Opera, _translationService._("Opera"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Opera));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Vivaldi, _translationService._("Vivaldi"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Vivaldi));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Whale, _translationService._("Whale"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Whale));
+        }
         Executables = new List<SelectionItem<Executable>>()
         {
-            new SelectionItem<Executable>(Executable.None, Translator._("None"), true)
+            new SelectionItem<Executable>(Executable.None, _translationService._("None"), true)
         };
         foreach (var executable in Enum.GetValues<Executable>())
         {
@@ -82,20 +86,27 @@ public class PreferencesViewController
             }
             (Executables as IList)!.Add(new SelectionItem<Executable>(executable, executable.ToString(), false));
         }
+        FrameRates = new List<SelectionItem<FrameRate>>()
+        {
+            new SelectionItem<FrameRate>(FrameRate.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Any),
+            new SelectionItem<FrameRate>(FrameRate.Fps24, _translationService._("{0} FPS", 24), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps24),
+            new SelectionItem<FrameRate>(FrameRate.Fps30, _translationService._("{0} FPS", 30), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps30),
+            new SelectionItem<FrameRate>(FrameRate.Fps60, _translationService._("{0} FPS", 60), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps60)
+        };
         HistoryLengths = new List<SelectionItem<HistoryLength>>()
         {
-            new SelectionItem<HistoryLength>(Models.HistoryLength.Never, Translator._("Never"), selectedHistoryLength == Models.HistoryLength.Never),
-            new SelectionItem<HistoryLength>(Models.HistoryLength.OneDay, Translator._("1 Day"), selectedHistoryLength == Models.HistoryLength.OneDay),
-            new SelectionItem<HistoryLength>(Models.HistoryLength.OneWeek, Translator._("1 Week"), selectedHistoryLength == Models.HistoryLength.OneWeek),
-            new SelectionItem<HistoryLength>(Models.HistoryLength.OneMonth, Translator._("1 Month"), selectedHistoryLength == Models.HistoryLength.OneMonth),
-            new SelectionItem<HistoryLength>(Models.HistoryLength.ThreeMonths, Translator._("3 Months"), selectedHistoryLength == Models.HistoryLength.ThreeMonths),
-            new SelectionItem<HistoryLength>(Models.HistoryLength.SixMonths, Translator._("6 Months"), selectedHistoryLength == Models.HistoryLength.SixMonths),
-            new SelectionItem<HistoryLength>(Models.HistoryLength.OneYear, Translator._("1 Year"), selectedHistoryLength == Models.HistoryLength.OneYear),
-            new SelectionItem<HistoryLength>(Models.HistoryLength.Forever, Translator._("Forever"), selectedHistoryLength == Models.HistoryLength.Forever),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.Never, _translationService._("Never"), selectedHistoryLength == Models.HistoryLength.Never),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.OneDay, _translationService._("1 Day"), selectedHistoryLength == Models.HistoryLength.OneDay),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.OneWeek, _translationService._("1 Week"), selectedHistoryLength == Models.HistoryLength.OneWeek),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.OneMonth, _translationService._("1 Month"), selectedHistoryLength == Models.HistoryLength.OneMonth),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.ThreeMonths, _translationService._("3 Months"), selectedHistoryLength == Models.HistoryLength.ThreeMonths),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.SixMonths, _translationService._("6 Months"), selectedHistoryLength == Models.HistoryLength.SixMonths),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.OneYear, _translationService._("1 Year"), selectedHistoryLength == Models.HistoryLength.OneYear),
+            new SelectionItem<HistoryLength>(Models.HistoryLength.Forever, _translationService._("Forever"), selectedHistoryLength == Models.HistoryLength.Forever),
         };
         PostProcessors = new List<SelectionItem<PostProcessor>>()
         {
-            new SelectionItem<PostProcessor>(PostProcessor.None, Translator._("None"), true)
+            new SelectionItem<PostProcessor>(PostProcessor.None, _translationService._("None"), true)
         };
         foreach (var processor in Enum.GetValues<PostProcessor>())
         {
@@ -108,7 +119,7 @@ public class PreferencesViewController
         PostprocessingArguments = new ObservableCollection<PostProcessorArgument>(_configuration.PostprocessingArguments);
         SubtitleFormats = new List<SelectionItem<SubtitleFormat>>()
         {
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.Any),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.Any),
             new SelectionItem<SubtitleFormat>(SubtitleFormat.VTT, "VTT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.VTT),
             new SelectionItem<SubtitleFormat>(SubtitleFormat.SRT, "SRT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.SRT),
             new SelectionItem<SubtitleFormat>(SubtitleFormat.ASS, "ASS", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.ASS),
@@ -116,17 +127,17 @@ public class PreferencesViewController
         };
         Themes = new List<SelectionItem<Theme>>()
         {
-            new SelectionItem<Theme>(Models.Theme.Light, Translator._p("Theme", "Light"), _configuration.Theme == Models.Theme.Light),
-            new SelectionItem<Theme>(Models.Theme.Dark, Translator._p("Theme", "Dark"), _configuration.Theme == Models.Theme.Dark),
-            new SelectionItem<Theme>(Models.Theme.System, Translator._p("Theme", "System"), _configuration.Theme == Models.Theme.System),
+            new SelectionItem<Theme>(Models.Theme.Light, _translationService._p("Theme", "Light"), _configuration.Theme == Models.Theme.Light),
+            new SelectionItem<Theme>(Models.Theme.Dark, _translationService._p("Theme", "Dark"), _configuration.Theme == Models.Theme.Dark),
+            new SelectionItem<Theme>(Models.Theme.System, _translationService._p("Theme", "System"), _configuration.Theme == Models.Theme.System),
         };
         VideoCodecs = new List<SelectionItem<VideoCodec>>()
         {
-            new SelectionItem<VideoCodec>(VideoCodec.Any, Translator._("Any"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.Any),
+            new SelectionItem<VideoCodec>(VideoCodec.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.Any),
             new SelectionItem<VideoCodec>(VideoCodec.VP9, "VP9", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.VP9),
             new SelectionItem<VideoCodec>(VideoCodec.AV01, "AV1", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.AV01),
-            new SelectionItem<VideoCodec>(VideoCodec.H264, Translator._("H.264 (AVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H264),
-            new SelectionItem<VideoCodec>(VideoCodec.H265, Translator._("H.265 (HEVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H265)
+            new SelectionItem<VideoCodec>(VideoCodec.H264, _translationService._("H.264 (AVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H264),
+            new SelectionItem<VideoCodec>(VideoCodec.H265, _translationService._("H.265 (HEVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H265)
         };
     }
 
@@ -250,6 +261,11 @@ public class PreferencesViewController
         set => _configuration.PreferredAudioCodec = value.Value;
     }
 
+    public SelectionItem<FrameRate> PreferredFrameRate
+    {
+        set => _configuration.PreferredFrameRate = value.Value;
+    }
+
     public SelectionItem<SubtitleFormat> PreferredSubtitleFormat
     {
         set => _configuration.PreferredSubtitleFormat = value.Value;
@@ -300,6 +316,13 @@ public class PreferencesViewController
         set => _configuration.Theme = value.Value;
     }
 
+    public bool TranslateMetadataAndChapters
+    {
+        get => _configuration.TranslateMetadataAndChapters;
+
+        set => _configuration.TranslateMetadataAndChapters = value;
+    }
+
     public SelectionItem<string> TranslationLanguage
     {
         set => _configuration.TranslationLanguage = value.Value;
@@ -344,15 +367,15 @@ public class PreferencesViewController
     {
         if (_configuration.PostprocessingArguments.Any(arg => arg.Name == name))
         {
-            return Translator._("An argument with that name already exists");
+            return _translationService._("An argument with that name already exists");
         }
         else if (string.IsNullOrEmpty(name))
         {
-            return Translator._("The name of the argument cannot be empty");
+            return _translationService._("The name of the argument cannot be empty");
         }
         else if (string.IsNullOrEmpty(arguments))
         {
-            return Translator._("The arguments of the argument cannot be empty");
+            return _translationService._("The arguments of the argument cannot be empty");
         }
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments.Add(argument);
@@ -378,15 +401,15 @@ public class PreferencesViewController
         var index = _configuration.PostprocessingArguments.FindIndex(arg => arg.Name == name);
         if (index == -1)
         {
-            return Translator._("An argument with that name does not exist");
+            return _translationService._("An argument with that name does not exist");
         }
         else if (string.IsNullOrEmpty(name))
         {
-            return Translator._("The name of the argument cannot be empty");
+            return _translationService._("The name of the argument cannot be empty");
         }
         else if (string.IsNullOrEmpty(arguments))
         {
-            return Translator._("The arguments of the argument cannot be empty");
+            return _translationService._("The arguments of the argument cannot be empty");
         }
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments[index] = argument;
@@ -395,5 +418,5 @@ public class PreferencesViewController
         return null;
     }
 
-    public async Task SaveConfigurationAsync() => await _jsonFileService.SaveAsync(_configuration, Configuration.Key);
+    public Task SaveConfigurationAsync() => _jsonFileService.SaveAsync(_configuration, Configuration.Key);
 }

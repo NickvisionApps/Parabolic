@@ -1,4 +1,4 @@
-﻿using Nickvision.Parabolic.Shared.Helpers;
+﻿using Nickvision.Desktop.Helpers;
 
 namespace Nickvision.Parabolic.Shared.Models;
 

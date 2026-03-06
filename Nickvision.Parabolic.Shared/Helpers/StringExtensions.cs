@@ -7,8 +7,24 @@ namespace Nickvision.Parabolic.Shared.Helpers;
 
 public static class StringExtensions
 {
+    private static readonly List<string> SupportedYouTubeLanguages;
+
+    static StringExtensions()
+    {
+        SupportedYouTubeLanguages = [
+            "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es",
+            "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv",
+            "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi",
+            "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw",
+            "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml",
+            "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko"
+        ];
+    }
+
     extension(string s)
     {
+        public bool IsSupportedYouTubeLanguage => SupportedYouTubeLanguages.Contains(s);
+
         public int AriaEtaToSeconds()
         {
             var hours = 0;

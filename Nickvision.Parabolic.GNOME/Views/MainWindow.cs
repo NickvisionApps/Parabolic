@@ -1,4 +1,8 @@
-﻿using Nickvision.Desktop.GNOME.Controls;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.GNOME.Controls;
 using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
@@ -6,18 +10,21 @@ using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
 public class MainWindow : Adw.ApplicationWindow
 {
+    private readonly IServiceProvider _serviceProvider;
     private readonly MainWindowController _controller;
-    private readonly Adw.Application _application;
+    private readonly AppInfo _appInfo;
+    private readonly ITranslationService _translationService;
     private readonly Gtk.Builder _builder;
+    private bool _shown;
     private readonly Dictionary<int, DownloadRow> _downloadRows;
 
     [Gtk.Connect("windowTitle")]
@@ -41,61 +48,77 @@ public class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect("listDownloads")]
     private Gtk.ListBox? _listDownloads;
 
-    public MainWindow(MainWindowController controller, Adw.Application application) : this(controller, application, Gtk.Builder.NewFromBlueprint("MainWindow", controller.Translator))
+    public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, IGtkBuilderFactory builderFactory) : this(serviceProvider, controller, appInfo, eventsService, translationService, builderFactory.Create("MainWindow"))
     {
 
     }
 
-    private MainWindow(MainWindowController controller, Adw.Application application, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
+    private MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
     {
+        var application = serviceProvider.GetRequiredService<Adw.Application>();
+        _serviceProvider = serviceProvider;
         _controller = controller;
-        _application = application;
+        _appInfo = appInfo;
+        _translationService = translationService;
         _builder = builder;
         _downloadRows = new Dictionary<int, DownloadRow>();
+        _shown = false;
         _builder.Connect(this);
         // Window
-        Title = _controller.AppInfo.ShortName;
-        IconName = _controller.AppInfo.Id;
-        if (_controller.AppInfo.Version!.IsPreview)
+        Adw.StyleManager.GetDefault().ColorScheme = _controller.Theme switch
+        {
+            Theme.Light => Adw.ColorScheme.ForceLight,
+            Theme.Dark => Adw.ColorScheme.ForceDark,
+            _ => Adw.ColorScheme.Default
+        };
+        Title = _appInfo.ShortName;
+        IconName = _appInfo.Id;
+        if (_appInfo.Version!.IsPreview)
         {
             AddCssClass("devel");
         }
-        _windowTitle!.Title = _controller.AppInfo.ShortName;
+        _windowTitle!.Title = _appInfo.ShortName;
         // Events
+        OnShow += Window_OnShow;
         OnCloseRequest += Window_OnCloseRequest;
-        _controller.AppNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.AppNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_AppNotificationSent(sender, e);
             return false;
         });
-        _controller.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadAdded(sender, e);
             return false;
         });
-        _controller.DownloadProgressChanged += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadProgressChanged += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadProgressChanged(sender, e);
             return false;
         });
-        _controller.DownloadCompleted += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadCompleted += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadCompleted(sender, e);
             return false;
         });
-        _controller.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadStopped(sender, e);
             return false;
         });
-        _controller.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadStartedFromQueue(sender, e);
             return false;
         });
-        _controller.DownloadRetired += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        eventsService.DownloadRetired += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadRetired(sender, e);
+            return false;
+        });
+        eventsService.DownloadRequested += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(e.Url, this);
             return false;
         });
         _downloadsToggleGroup!.OnNotify += DownloadToggleGroup_OnNotify;
@@ -103,47 +126,47 @@ public class MainWindow : Adw.ApplicationWindow
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
         AddAction(actQuit);
-        _application.SetAccelsForAction("win.quit", ["<Ctrl>q"]);
+        application.SetAccelsForAction("win.quit", ["<Ctrl>q"]);
         // Preferences action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
         AddAction(actPreferences);
-        _application.SetAccelsForAction("win.preferences", ["<Ctrl>period"]);
+        application.SetAccelsForAction("win.preferences", ["<Ctrl>period"]);
         // Keyboard shortcuts action
         var actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
         actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
         AddAction(actKeyboardShortcuts);
-        _application.SetAccelsForAction("win.keyboardShortcuts", ["<Ctrl>question"]);
+        application.SetAccelsForAction("win.keyboardShortcuts", ["<Ctrl>question"]);
         // About action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
         AddAction(actAbout);
-        _application.SetAccelsForAction("win.about", ["F1"]);
+        application.SetAccelsForAction("win.about", ["F1"]);
         // Add download action
         var actAddDownload = Gio.SimpleAction.New("addDownload", null);
         actAddDownload.OnActivate += AddDownload;
         AddAction(actAddDownload);
-        _application.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
+        application.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
         // Keyring action
         var actKeyring = Gio.SimpleAction.New("keyring", null);
         actKeyring.OnActivate += Keyring;
         AddAction(actKeyring);
-        _application.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
+        application.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
         // History action
         var actHistory = Gio.SimpleAction.New("history", null);
         actHistory.OnActivate += History;
         AddAction(actHistory);
-        _application.SetAccelsForAction("win.history", ["<Ctrl>h"]);
+        application.SetAccelsForAction("win.history", ["<Ctrl>h"]);
         // Stop all remaining action
         var actStopAllRemaining = Gio.SimpleAction.New("stopAllRemaining", null);
         actStopAllRemaining.OnActivate += StopAllRemaining;
         AddAction(actStopAllRemaining);
-        _application.SetAccelsForAction("win.stopAllRemaining", ["<Ctrl><Shift>s"]);
+        application.SetAccelsForAction("win.stopAllRemaining", ["<Ctrl><Shift>s"]);
         // Retry all failed action
         var actRetryAllFailed = Gio.SimpleAction.New("retryAllFailed", null);
         actRetryAllFailed.OnActivate += RetryAllFailed;
         AddAction(actRetryAllFailed);
-        _application.SetAccelsForAction("win.retryAllFailed", ["<Ctrl><Shift>r"]);
+        application.SetAccelsForAction("win.retryAllFailed", ["<Ctrl><Shift>r"]);
         // Clear all queued action
         var actClearAllQueued = Gio.SimpleAction.New("clearAllQueued", null);
         actClearAllQueued.OnActivate += ClearAllQueued;
@@ -154,17 +177,25 @@ public class MainWindow : Adw.ApplicationWindow
         AddAction(actClearAllCompleted);
     }
 
-    public async Task PresentAsync()
+    public new void Present()
     {
-        Present();
-        var updatesTask = _controller.CheckForUpdatesAsync(false);
+        base.Present();
         this.WindowGeometry = _controller.WindowGeometry;
+    }
+
+    public async void Window_OnShow(Gtk.Widget sender, EventArgs e)
+    {
+        if (_shown)
+        {
+            return;
+        }
+        var updatesTask = _controller.CheckForUpdatesAsync(false);
         if (_controller.ShowDisclaimerOnStartup)
         {
             var chkBox = Gtk.CheckButton.New();
-            chkBox.Label = _controller.Translator._("Don't show this message again");
-            var disclaimerDialog = Adw.AlertDialog.New(_controller.Translator._("Legal Copyright Disclaimer"), _controller.Translator._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws."));
-            disclaimerDialog.AddResponse("ok", _controller.Translator._("I understand"));
+            chkBox.Label = _translationService._("Don't show this message again");
+            var disclaimerDialog = Adw.AlertDialog.New(_translationService._("Legal Copyright Disclaimer"), _translationService._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws."));
+            disclaimerDialog.AddResponse("ok", _translationService._("I understand"));
             disclaimerDialog.SetDefaultResponse("ok");
             disclaimerDialog.SetCloseResponse("ok");
             disclaimerDialog.ExtraChild = chkBox;
@@ -176,9 +207,9 @@ public class MainWindow : Adw.ApplicationWindow
         }
         if (_controller.RecoverableDownloadsCount > 0)
         {
-            var recoverDialog = Adw.AlertDialog.New(_controller.Translator._("Recover Downloads?"), _controller.Translator._("There are downloads available to recover from when Parabolic crashed. Would you like to download them again?"));
-            recoverDialog.AddResponse("yes", _controller.Translator._("Yes"));
-            recoverDialog.AddResponse("no", _controller.Translator._("No"));
+            var recoverDialog = Adw.AlertDialog.New(_translationService._("Recover Downloads?"), _translationService._("There are downloads available to recover from when Parabolic crashed. Would you like to download them again?"));
+            recoverDialog.AddResponse("yes", _translationService._("Yes"));
+            recoverDialog.AddResponse("no", _translationService._("No"));
             recoverDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Suggested);
             recoverDialog.SetDefaultResponse("no");
             recoverDialog.SetCloseResponse("no");
@@ -197,19 +228,19 @@ public class MainWindow : Adw.ApplicationWindow
         }
         if (_controller.UrlFromArgs is not null)
         {
-            var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, this);
-            addDownloadDialog.Present(_controller.UrlFromArgs);
+            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(_controller.UrlFromArgs, this);
         }
         await updatesTask;
+        _shown = true;
     }
 
     private bool Window_OnCloseRequest(Gtk.Window sender, EventArgs e)
     {
         if (!_controller.CanShutdown)
         {
-            var confirmDialog = Adw.AlertDialog.New(_controller.AppInfo.ShortName, _controller.Translator._("There are downloads still in progress. Would you like to stop them and exit?"));
-            confirmDialog.AddResponse("yes", _controller.Translator._("Yes"));
-            confirmDialog.AddResponse("no", _controller.Translator._("No"));
+            var confirmDialog = Adw.AlertDialog.New(_appInfo.ShortName, _translationService._("There are downloads still in progress. Would you like to stop them and exit?"));
+            confirmDialog.AddResponse("yes", _translationService._("Yes"));
+            confirmDialog.AddResponse("no", _translationService._("No"));
             confirmDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Destructive);
             confirmDialog.SetDefaultResponse("no");
             confirmDialog.SetCloseResponse("no");
@@ -226,23 +257,33 @@ public class MainWindow : Adw.ApplicationWindow
         }
         GetDefaultSize(out int width, out int height);
         _controller.WindowGeometry = this.WindowGeometry;
-        _controller.Dispose();
         Destroy();
+        _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
         return false;
     }
 
     private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Notification.Message);
-        if (e.Notification.Action == "update-ytdlp")
+        if (e.Notification.Action == "update")
         {
             toast.Timeout = 0;
-            toast.ButtonLabel = _controller.Translator._("Update");
+            toast.ButtonLabel = _translationService._("View");
+            toast.OnButtonClicked += async (_, _) =>
+            {
+                var launcher = Gtk.UriLauncher.New($"{_appInfo.SourceRepository}/releases/latest");
+                await launcher.LaunchAsync(this);
+            };
+        }
+        else if (e.Notification.Action == "update-ytdlp")
+        {
+            toast.Timeout = 0;
+            toast.ButtonLabel = _translationService._("Update");
             toast.OnButtonClicked += async (_, _) =>
             {
                 _updateButton!.Visible = true;
                 _updatePopover!.Popup();
-                _updateProgressLabel!.Label_ = _controller.Translator._("Downloading update: {0}%", 0);
+                _updateProgressLabel!.Label_ = _translationService._("Downloading update: {0}%", 0);
                 var progress = new Progress<DownloadProgress>();
                 progress.ProgressChanged += UpdateProgress_Changed;
                 await _controller.YtdlpUpdateAsync(progress);
@@ -252,12 +293,12 @@ public class MainWindow : Adw.ApplicationWindow
         else if (e.Notification.Action == "error" && !string.IsNullOrEmpty(e.Notification.ActionParam))
         {
             toast.Timeout = 0;
-            toast.ButtonLabel = _controller.Translator._("Details");
+            toast.ButtonLabel = _translationService._("Details");
             toast.OnButtonClicked += (_, _) =>
             {
-                var dialog = Adw.AlertDialog.New(_controller.Translator._("Error"), e.Notification.ActionParam);
+                var dialog = Adw.AlertDialog.New(_translationService._("Error"), e.Notification.ActionParam);
                 dialog.BodyUseMarkup = false;
-                dialog.AddResponse("close", _controller.Translator._("Close"));
+                dialog.AddResponse("close", _translationService._("Close"));
                 dialog.SetDefaultResponse("close");
                 dialog.SetCloseResponse("close");
                 dialog.Present(this);
@@ -266,14 +307,14 @@ public class MainWindow : Adw.ApplicationWindow
         _toastOverlay!.AddToast(toast);
     }
 
-    private void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
+    private async void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
     {
-        var row = new DownloadRow(_controller.Translator, this);
+        var row = _serviceProvider.GetRequiredService<DownloadRow>();
         row.PauseRequested += DownloadRow_PauseRequested;
         row.ResumeRequested += DownloadRow_ResumeRequested;
         row.StopRequested += DownloadRow_StopRequested;
         row.RetryRequested += DownloadRow_RetryRequested;
-        row.TriggerAddedState(e);
+        await row.TriggerAddedStateAsync(e);
         _downloadRows[e.Id] = row;
         UpdateDownloadsList();
         _viewStack!.VisibleChildName = "Downloads";
@@ -361,85 +402,59 @@ public class MainWindow : Adw.ApplicationWindow
                 _updateButton!.Visible = false;
                 return false;
             }
-            var message = _controller.Translator._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
+            var message = _translationService._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
             _updateProgressLabel!.Label_ = message;
             _updateProgressBar!.Fraction = e.Percentage;
             return false;
         });
     }
-    private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
-    {
-        if (!Window_OnCloseRequest(this, new EventArgs()))
-        {
-            _application.Quit();
-        }
-    }
+    private void Quit(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => Window_OnCloseRequest(this, new EventArgs());
 
-    private void Preferences(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
-    {
-        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, this);
-        preferencesDialog.Present(this);
-    }
+    private void Preferences(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<PreferencesDialog>().Present(this);
 
-    private void KeyboardShortcuts(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
-    {
-        var shortcutsDialog = new ShortcutsDialog(_controller.Translator);
-        shortcutsDialog.Present(this);
-    }
+    private void KeyboardShortcuts(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<ShortcutsDialog>().Present(this);
 
     private async void About(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
     {
-        var loadingDialog = new LoadingDialog(_controller.Translator);
+        var loadingDialog = _serviceProvider.GetRequiredService<LoadingDialog>();
         loadingDialog.Present(this);
         var extraInfo = string.Empty;
         extraInfo += $"GTK {Gtk.Functions.GetMajorVersion()}.{Gtk.Functions.GetMinorVersion()}.{Gtk.Functions.GetMicroVersion()}\n";
         extraInfo += $"libadwaita {Adw.Functions.GetMajorVersion()}.{Adw.Functions.GetMinorVersion()}.{Adw.Functions.GetMicroVersion()}";
         var dialog = Adw.AboutDialog.New();
-        dialog.ApplicationName = _controller.AppInfo.ShortName;
-        dialog.ApplicationIcon = _controller.AppInfo.Version!.IsPreview ? $"{_controller.AppInfo.Id}-devel" : _controller.AppInfo.Id;
+        dialog.ApplicationName = _appInfo.ShortName;
+        dialog.ApplicationIcon = _appInfo.Version!.IsPreview ? $"{_appInfo.Id}-devel" : _appInfo.Id;
         dialog.DeveloperName = "Nickvision";
-        dialog.Version = _controller.AppInfo.Version.ToString();
-        dialog.ReleaseNotes = _controller.AppInfo.HtmlChangelog;
+        dialog.Version = _appInfo.Version.ToString();
+        dialog.ReleaseNotes = _appInfo.HtmlChangelog;
         dialog.DebugInfo = await _controller.GetDebugInformationAsync(extraInfo);
-        dialog.Comments = _controller.AppInfo.Description;
+        dialog.Comments = _appInfo.Description;
         dialog.LicenseType = Gtk.License.MitX11;
         dialog.Copyright = "© Nickvision 2021-2026";
         dialog.Website = "https://nickvision.org";
-        dialog.IssueUrl = _controller.AppInfo.IssueTracker!.ToString();
-        dialog.SupportUrl = _controller.AppInfo.DiscussionsForum!.ToString();
-        dialog.AddLink(_controller.Translator._("GitHub Repo"), _controller.AppInfo.SourceRepository!.ToString());
-        foreach (var pair in _controller.AppInfo.ExtraLinks)
+        dialog.IssueUrl = _appInfo.IssueTracker!.ToString();
+        dialog.SupportUrl = _appInfo.DiscussionsForum!.ToString();
+        dialog.AddLink(_translationService._("GitHub Repo"), _appInfo.SourceRepository!.ToString());
+        foreach (var pair in _appInfo.ExtraLinks)
         {
             dialog.AddLink(pair.Key, pair.Value.ToString());
         }
-        dialog.Developers = _controller.AppInfo.Developers.Select(x => $"{x.Key} {x.Value}").ToArray();
-        dialog.Designers = _controller.AppInfo.Designers.Select(x => $"{x.Key} {x.Value}").ToArray();
-        dialog.Artists = _controller.AppInfo.Artists.Select(x => $"{x.Key} {x.Value}").ToArray();
-        if (!string.IsNullOrEmpty(_controller.AppInfo.TranslationCredits) && _controller.AppInfo.TranslationCredits != "translation-credits")
+        dialog.Developers = _appInfo.Developers.Select(x => $"{x.Key} {x.Value}").ToArray();
+        dialog.Designers = _appInfo.Designers.Select(x => $"{x.Key} {x.Value}").ToArray();
+        dialog.Artists = _appInfo.Artists.Select(x => $"{x.Key} {x.Value}").ToArray();
+        if (!string.IsNullOrEmpty(_appInfo.TranslationCredits) && _appInfo.TranslationCredits != "translation-credits")
         {
-            dialog.TranslatorCredits = _controller.AppInfo.TranslationCredits;
+            dialog.TranslatorCredits = _appInfo.TranslationCredits;
         }
         loadingDialog.ForceClose();
         dialog.Present(this);
     }
 
-    private async void AddDownload(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
-    {
-        var addDownloadDialog = new AddDownloadDialog(_controller.AddDownloadDialogController, this);
-        await addDownloadDialog.PresentWithClipboardAsync();
-    }
+    private async void AddDownload(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(this);
 
-    private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
-    {
-        var keyringDialog = new KeyringDialog(_controller.KeyringViewController);
-        keyringDialog.Present(this);
-    }
+    private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<KeyringDialog>().Present(this);
 
-    private async void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e)
-    {
-        var historyDialog = new HistoryDialog(_controller.HistoryViewController, this);
-        await historyDialog.PresentAndLoadAsync();
-    }
+    private async void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<HistoryDialog>().Present(this);
 
     private async void StopAllRemaining(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _controller.StopAllDownloadsAsync();
 
@@ -470,6 +485,7 @@ public class MainWindow : Adw.ApplicationWindow
             1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
             2 => row.Status == DownloadStatus.Queued,
             3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+            4 => row.Status == DownloadStatus.Error,
             _ => true
         }).Reverse();
         _listDownloads!.RemoveAll();

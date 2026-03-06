@@ -1,5 +1,4 @@
-﻿using Nickvision.Desktop.Globalization;
-using Nickvision.Desktop.GNOME.Helpers;
+﻿using Nickvision.Desktop.GNOME.Helpers;
 
 namespace Nickvision.Parabolic.GNOME.Controls;
 
@@ -7,7 +6,7 @@ public class LoadingDialog : Adw.Dialog
 {
     private readonly Gtk.Builder _builder;
 
-    public LoadingDialog(ITranslationService translator) : this(Gtk.Builder.NewFromBlueprint("LoadingDialog", translator))
+    public LoadingDialog(IGtkBuilderFactory builderFactory) : this(builderFactory.Create("LoadingDialog"))
     {
 
     }

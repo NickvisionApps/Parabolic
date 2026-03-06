@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.GNOME.Helpers;
+﻿using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Parabolic.GNOME.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
@@ -13,6 +14,7 @@ namespace Nickvision.Parabolic.GNOME.Views;
 public class PreferencesDialog : Adw.PreferencesDialog
 {
     private readonly PreferencesViewController _controller;
+    private readonly ITranslationService _translationService;
     private readonly Gtk.Window _parent;
     private readonly Gtk.Builder _builder;
     private readonly List<Adw.ActionRow> _postprocessingArgumentRows;
@@ -44,6 +46,8 @@ public class PreferencesDialog : Adw.PreferencesDialog
     private Adw.ComboRow? _preferredAudioCodecRow;
     [Gtk.Connect("preferredSubtitleFormatRow")]
     private Adw.ComboRow? _preferredSubtitleFormatRow;
+    [Gtk.Connect("preferredFrameRateRow")]
+    private Adw.ComboRow? _preferredFrameRateRow;
     [Gtk.Connect("usePartFilesRow")]
     private Adw.SwitchRow _usePartFilesRow;
     [Gtk.Connect("sponsorBlockRow")]
@@ -76,6 +80,8 @@ public class PreferencesDialog : Adw.PreferencesDialog
     private Adw.ExpanderRow? _embedMetadataRow;
     [Gtk.Connect("removeSourceDataRow")]
     private Adw.SwitchRow _removeSourceDataRow;
+    [Gtk.Connect("translateMetadataChaptersRow")]
+    private Adw.SwitchRow _translateMetadataChaptersRow;
     [Gtk.Connect("embedThumbnailsRow")]
     private Adw.ExpanderRow? _embedThumbnailsRow;
     [Gtk.Connect("cropAudioThumbnailsRow")]
@@ -103,14 +109,15 @@ public class PreferencesDialog : Adw.PreferencesDialog
     [Gtk.Connect("editConfirmPostprocessingArgumentButton")]
     private Gtk.Button? _editConfirmPostprocessingArgumentButton;
 
-    public PreferencesDialog(PreferencesViewController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("PreferencesDialog", controller.Translator))
+    public PreferencesDialog(PreferencesViewController controller, ITranslationService translationService, Adw.ApplicationWindow parent, IGtkBuilderFactory builderFactory) : this(controller, translationService, parent, builderFactory.Create("PreferencesDialog"))
     {
 
     }
 
-    private PreferencesDialog(PreferencesViewController controller, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
+    private PreferencesDialog(PreferencesViewController controller, ITranslationService translationService, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
     {
         _controller = controller;
+        _translationService = translationService;
         _parent = parent;
         _builder = builder;
         _postprocessingArgumentRows = new List<Adw.ActionRow>();
@@ -130,18 +137,20 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _preferredVideoCodecRow!.SetModel(_controller.VideoCodecs);
         _preferredAudioCodecRow!.SetModel(_controller.AudioCodecs);
         _preferredSubtitleFormatRow!.SetModel(_controller.SubtitleFormats);
+        _preferredFrameRateRow!.SetModel(_controller.FrameRates);
         _usePartFilesRow!.Active = _controller.UsePartFiles;
         _sponsorBlockRow!.Active = _controller.YouTubeSponsorBlock;
         _limitSpeedRow!.EnableExpansion = _controller.SpeedLimit.HasValue;
         _speedLimitRow!.Value = _controller.SpeedLimit ?? _speedLimitRow!.Value;
         _proxyUrlRow!.Text_ = _controller.ProxyUrl;
-        _cookiesFileRow!.Subtitle = !File.Exists(_controller.CookiesPath) ? _controller.Translator._("No file selected") : _controller.CookiesPath;
+        _cookiesFileRow!.Subtitle = !File.Exists(_controller.CookiesPath) ? _translationService._("No file selected") : _controller.CookiesPath;
         _cookiesBrowserRow!.SetModel(_controller.Browsers);
         _useAriaRow!.Active = _controller.UseAria;
         _ariaMaxConnectionsPerServerRow!.Value = _controller.AriaMaxConnectionsPerServer;
         _ariaMinSplitSizeRow!.Value = _controller.AriaMinSplitSize;
         _ytdlpDiscoveryArgsRow!.Text_ = _controller.YtdlpDiscoveryArgs;
         _ytdlpDownloadArgsRow!.Text_ = _controller.YtdlpDownloadArgs;
+        _translateMetadataChaptersRow!.Active = _controller.TranslateMetadataAndChapters;
         _embedMetadataRow!.EnableExpansion = _controller.EmbedMetadata;
         _removeSourceDataRow!.Active = _controller.RemoveSourceData;
         _embedThumbnailsRow!.EnableExpansion = _controller.EmbedThumbnails;
@@ -174,6 +183,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _controller.PreferredVideoCodec = _controller.VideoCodecs[(int)_preferredVideoCodecRow!.Selected];
         _controller.PreferredAudioCodec = _controller.AudioCodecs[(int)_preferredAudioCodecRow!.Selected];
         _controller.PreferredSubtitleFormat = _controller.SubtitleFormats[(int)_preferredSubtitleFormatRow!.Selected];
+        _controller.PreferredFrameRate = _controller.FrameRates[(int)_preferredFrameRateRow!.Selected];
         _controller.UsePartFiles = _usePartFilesRow!.Active;
         _controller.YouTubeSponsorBlock = _sponsorBlockRow!.Active;
         _controller.SpeedLimit = _limitSpeedRow!.EnableExpansion ? (int)_speedLimitRow!.Value : null;
@@ -185,6 +195,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeRow!.Value;
         _controller.YtdlpDiscoveryArgs = _ytdlpDiscoveryArgsRow!.Text_ ?? string.Empty;
         _controller.YtdlpDownloadArgs = _ytdlpDownloadArgsRow!.Text_ ?? string.Empty;
+        _controller.TranslateMetadataAndChapters = _translateMetadataChaptersRow!.Active;
         _controller.EmbedMetadata = _embedMetadataRow!.EnableExpansion;
         _controller.RemoveSourceData = _removeSourceDataRow!.Active;
         _controller.EmbedThumbnails = _embedThumbnailsRow!.EnableExpansion;
@@ -206,12 +217,12 @@ public class PreferencesDialog : Adw.PreferencesDialog
         {
             var editButton = Gtk.Button.NewFromIconName("document-edit-symbolic");
             editButton.Valign = Gtk.Align.Center;
-            editButton.TooltipText = _controller.Translator._("Edit");
+            editButton.TooltipText = _translationService._("Edit");
             editButton.AddCssClass("flat");
             editButton.OnClicked += (_, _) => EditPostProcessingArgument(argument.Name);
             var deleteButton = Gtk.Button.NewFromIconName("user-trash-symbolic");
             deleteButton.Valign = Gtk.Align.Center;
-            deleteButton.TooltipText = _controller.Translator._("Delete");
+            deleteButton.TooltipText = _translationService._("Delete");
             deleteButton.AddCssClass("flat");
             deleteButton.OnClicked += (_, _) => DeletePostProcessingArgument(argument.Name);
             var row = Adw.ActionRow.New();
@@ -226,7 +237,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         if (_controller.PostprocessingArguments.Count == 0)
         {
             var row = Adw.ActionRow.New();
-            row.Title = _controller.Translator._("No Arguments");
+            row.Title = _translationService._("No Arguments");
             _postprocessingArgumentRows.Add(row);
             _postprocessingArgumentsGroup!.Add(row);
         }
@@ -249,9 +260,9 @@ public class PreferencesDialog : Adw.PreferencesDialog
     private async void SelectCookiesFileButton_OnClicked(Gtk.Button sender, EventArgs args)
     {
         var fileDialog = Gtk.FileDialog.New();
-        fileDialog.Title = _controller.Translator._("Select Cookies File");
+        fileDialog.Title = _translationService._("Select Cookies File");
         var filter = Gtk.FileFilter.New();
-        filter.Name = _controller.Translator._("TXT Files (*.txt)");
+        filter.Name = _translationService._("TXT Files (*.txt)");
         filter.AddPattern("*.txt");
         filter.AddPattern("*.TXT");
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
@@ -268,7 +279,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         catch { }
     }
 
-    private void ClearCookiesFileButton_OnClicked(Gtk.Button sender, EventArgs args) => _cookiesFileRow!.Subtitle = _controller.Translator._("No file selected");
+    private void ClearCookiesFileButton_OnClicked(Gtk.Button sender, EventArgs args) => _cookiesFileRow!.Subtitle = _translationService._("No file selected");
 
     private void AddPostprocessingArgumentButton_OnClicked(Gtk.Button sender, EventArgs args)
     {
@@ -278,7 +289,7 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _editArgumentPostProcessorRow!.SetModel(_controller.PostProcessors);
         _editArgumentExecutableRow!.SetModel(_controller.Executables);
         _editArgumentArgsRow!.Text_ = string.Empty;
-        _editConfirmPostprocessingArgumentButton!.Label = _controller.Translator._("Add");
+        _editConfirmPostprocessingArgumentButton!.Label = _translationService._("Add");
         _editPostprocessingArgumentDialog!.Present(this);
     }
 
@@ -306,8 +317,8 @@ public class PreferencesDialog : Adw.PreferencesDialog
         }
         if (error is not null)
         {
-            var alert = Adw.AlertDialog.New(_controller.Translator._("Error"), error);
-            alert.AddResponse("ok", _controller.Translator._("OK"));
+            var alert = Adw.AlertDialog.New(_translationService._("Error"), error);
+            alert.AddResponse("ok", _translationService._("OK"));
             alert.SetDefaultResponse("ok");
             alert.Present(this);
         }
@@ -332,15 +343,15 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _editArgumentExecutableRow!.SetModel(_controller.Executables);
         _editArgumentExecutableRow!.Selected = (uint)_controller.Executables.Select((x, i) => (x, i)).Where(x => x.x.Value == argument.Executable).First().i;
         _editArgumentArgsRow!.Text_ = argument.Args;
-        _editConfirmPostprocessingArgumentButton!.Label = _controller.Translator._("Edit");
+        _editConfirmPostprocessingArgumentButton!.Label = _translationService._("Edit");
         _editPostprocessingArgumentDialog!.Present(this);
     }
 
     private void DeletePostProcessingArgument(string name)
     {
-        var dialog = Adw.AlertDialog.New(_controller.Translator._("Delete Argument?"), _controller.Translator._("Are you sure you want to delete this post-processor argument? This action is irreversible"));
-        dialog.AddResponse("delete", _controller.Translator._("Delete"));
-        dialog.AddResponse("cancel", _controller.Translator._("Cancel"));
+        var dialog = Adw.AlertDialog.New(_translationService._("Delete Argument?"), _translationService._("Are you sure you want to delete this post-processor argument? This action is irreversible"));
+        dialog.AddResponse("delete", _translationService._("Delete"));
+        dialog.AddResponse("cancel", _translationService._("Cancel"));
         dialog.SetResponseAppearance("delete", Adw.ResponseAppearance.Destructive);
         dialog.SetDefaultResponse("cancel");
         dialog.SetCloseResponse("cancel");

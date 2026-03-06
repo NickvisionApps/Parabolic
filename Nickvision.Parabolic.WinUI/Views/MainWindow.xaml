@@ -14,6 +14,12 @@
     </Window.SystemBackdrop>
 
     <Grid x:Name="MainGrid" Loaded="Window_Loaded">
+        <Grid.Transitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.Transitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -142,6 +148,12 @@
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <nickvision:ViewStack.Pages>
                     <nickvision:StatusPage x:Name="StatusHome" Image="/Assets/org.nickvision.tubeconverter.ico">
+                        <nickvision:StatusPage.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </nickvision:StatusPage.Transitions>
+
                         <nickvision:StatusPage.Child>
                             <Button Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
                                 <StackPanel Orientation="Horizontal" Spacing="6">
@@ -158,6 +170,12 @@
                     </nickvision:StatusPage>
 
                     <Grid RowSpacing="12">
+                        <Grid.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </Grid.Transitions>
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -167,6 +185,12 @@
                         <TextBlock x:Name="LblDownloads" Grid.Row="0" Margin="24,24,0,0" Style="{ThemeResource SubtitleTextBlockStyle}"/>
 
                         <Grid Grid.Row="1" Margin="24,0,24,0">
+                            <Grid.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition/>
+                                </TransitionCollection>
+                            </Grid.Transitions>
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
@@ -195,6 +219,12 @@
                                 <community:TokenItem x:Name="FilterCompleted">
                                     <community:TokenItem.Icon>
                                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE73E;" />
+                                    </community:TokenItem.Icon>
+                                </community:TokenItem>
+
+                                <community:TokenItem x:Name="FilterFailed">
+                                    <community:TokenItem.Icon>
+                                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE783;" />
                                     </community:TokenItem.Icon>
                                 </community:TokenItem>
                             </community:TokenView>
@@ -254,10 +284,22 @@
 
                         <nickvision:ViewStack x:Name="ViewStackDownloads" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <nickvision:ViewStack.Pages>
-                                <nickvision:StatusPage x:Name="StatusNoneDownloads" Glyph="&#xE896;"/>
+                                <nickvision:StatusPage x:Name="StatusNoneDownloads" Glyph="&#xE896;">
+                                    <nickvision:StatusPage.Transitions>
+                                        <TransitionCollection>
+                                            <EntranceThemeTransition/>
+                                        </TransitionCollection>
+                                    </nickvision:StatusPage.Transitions>
+                                </nickvision:StatusPage>
 
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <ItemsRepeater x:Name="DownloadsList" Margin="24,0,24,12">
+                                        <ItemsRepeater.Transitions>
+                                            <TransitionCollection>
+                                                <EntranceThemeTransition/>
+                                            </TransitionCollection>
+                                        </ItemsRepeater.Transitions>
+
                                         <ItemsRepeater.Layout>
                                             <StackLayout Spacing="6"/>
                                         </ItemsRepeater.Layout>

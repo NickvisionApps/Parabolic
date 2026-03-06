@@ -1,10 +1,13 @@
 ﻿using ATL;
 using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
+using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,7 +21,8 @@ public partial class Download : IDisposable
     private static readonly Dictionary<int, IReadOnlyList<string>> DownloadArgumentsCache;
     private static int _nextId;
 
-    private ITranslationService? _translator;
+    private IDenoExecutableService _denoExecutableService;
+    private ITranslationService? _translationService;
     private readonly StringBuilder _logBuilder;
     private bool _removeSourceData;
     private Process? _process;
@@ -40,9 +44,10 @@ public partial class Download : IDisposable
         _nextId = 0;
     }
 
-    public Download(DownloadOptions options, ITranslationService? translator)
+    public Download(DownloadOptions options, IDenoExecutableService denoExecutableService, ITranslationService? translationService)
     {
-        _translator = translator;
+        _denoExecutableService = denoExecutableService;
+        _translationService = translationService;
         _logBuilder = new StringBuilder();
         _removeSourceData = false;
         _process = null;
@@ -85,7 +90,7 @@ public partial class Download : IDisposable
         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NaN, 0.0, 0));
     }
 
-    public void Start(string ytdlpExecutablePath, DownloaderOptions downloader)
+    public void Start(string ytdlpExecutablePath, DownloaderOptions downloader, string appLanguage)
     {
         if (Status == DownloadStatus.Running || Status == DownloadStatus.Paused)
         {
@@ -93,7 +98,7 @@ public partial class Download : IDisposable
         }
         if (File.Exists(FilePath) && !downloader.OverwriteExistingFiles)
         {
-            var log = _translator?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
+            var log = _translationService?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
             _logBuilder.AppendLine(log);
             Status = DownloadStatus.Error;
             ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, log.AsMemory(), double.NaN, 0.0, 0));
@@ -104,7 +109,7 @@ public partial class Download : IDisposable
         _process = new Process()
         {
             EnableRaisingEvents = true,
-            StartInfo = new ProcessStartInfo(ytdlpExecutablePath, GetDownloadArguments(downloader))
+            StartInfo = new ProcessStartInfo(ytdlpExecutablePath, GetDownloadArguments(downloader, appLanguage))
             {
                 UseShellExecute = false,
                 CreateNoWindow = true,
@@ -120,7 +125,7 @@ public partial class Download : IDisposable
         _process.SetAsParentProcess();
         _process.BeginOutputReadLine();
         _process.BeginErrorReadLine();
-        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translator?._("Starting download...") ?? "Starting download...").AsMemory(), double.NaN, 0.0, 0));
+        ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, (_translationService?._("Starting download...") ?? "Starting download...").AsMemory(), double.NaN, 0.0, 0));
     }
 
     public void Stop()
@@ -146,7 +151,7 @@ public partial class Download : IDisposable
         }
     }
 
-    private IReadOnlyList<string> GetDownloadArguments(DownloaderOptions downloader)
+    private IReadOnlyList<string> GetDownloadArguments(DownloaderOptions downloader, string appLanguage)
     {
         var hash = HashCode.Combine(downloader, Options);
         if (DownloadArgumentsCache.TryGetValue(hash, out var cache))
@@ -174,7 +179,7 @@ public partial class Download : IDisposable
             "--ffmpeg-location",
             Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg",
             "--js-runtimes",
-            $"deno:{Desktop.System.Environment.FindDependency("deno") ?? "deno"}",
+            $"deno:{_denoExecutableService.ExecutablePath ?? "deno"}",
             "--paths",
             Options.SaveFolder,
             "--paths",
@@ -250,6 +255,22 @@ public partial class Download : IDisposable
             };
             formatSort += ",quality";
         }
+        if (downloader.PreferredFrameRate != FrameRate.Any)
+        {
+            if (!string.IsNullOrEmpty(formatSort))
+            {
+                formatSort += ',';
+            }
+            formatSort += "+fps:";
+            formatSort += downloader.PreferredFrameRate switch
+            {
+                FrameRate.Fps24 => "24",
+                FrameRate.Fps30 => "30",
+                FrameRate.Fps60 => "60",
+                _ => string.Empty
+            };
+
+        }
         if (!string.IsNullOrEmpty(formatSort))
         {
             arguments.Add("--format-sort");
@@ -295,6 +316,19 @@ public partial class Download : IDisposable
             arguments.Add("--cookies");
             arguments.Add(downloader.CookiesPath);
         }
+        if (downloader.TranslateMetadataAndChapters)
+        {
+            if (appLanguage.IsSupportedYouTubeLanguage)
+            {
+                arguments.Add("--extractor-args");
+                arguments.Add($"youtube:lang={appLanguage}");
+            }
+            else if (CultureInfo.CurrentCulture.Name.IsSupportedYouTubeLanguage)
+            {
+                arguments.Add("--extractor-args");
+                arguments.Add($"youtube:lang={CultureInfo.CurrentCulture.Name}");
+            }
+        }
         if (downloader.EmbedMetadata)
         {
             arguments.Add("--embed-metadata");
@@ -315,11 +349,15 @@ public partial class Download : IDisposable
                 arguments.Add("--write-thumbnail");
             }
             arguments.Add("--convert-thumbnails");
-            arguments.Add("png>png/jpg");
+            arguments.Add("jpg");
             if (downloader.CropAudioThumbnails && Options.FileType.IsAudio)
             {
-                arguments.Add("--postprocessor-args");
-                arguments.Add("ThumbnailsConvertor:-vf crop=ih:ih");
+                arguments.Add("--exec");
+                arguments.Add($"before_dl:{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"} -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath)s.tmp.jpg");
+                arguments.Add("--exec");
+                arguments.Add("before_dl:rm %(thumbnails.-1.filepath)q");
+                arguments.Add("--exec");
+                arguments.Add("before_dl:mv %(thumbnails.-1.filepath)s.tmp.jpg %(thumbnails.-1.filepath)q");
             }
         }
         if (downloader.EmbedChapters)
@@ -401,7 +439,7 @@ public partial class Download : IDisposable
             {
                 var v when v == VideoResolution.Best => "bestvideo*",
                 var v when v == VideoResolution.Worst => "worstvideo*",
-                _ => $"bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
+                _ => $"bestvideo*[height={Options.VideoResolution.Height}]/bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
             };
         }
         if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
@@ -435,7 +473,7 @@ public partial class Download : IDisposable
             {
                 var b when b == double.MaxValue => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var b when b == -1.0 => "worstaudio",
-                _ => $"bestaudio[abr<={Options.AudioBitrate.Value}]/worstaudio"
+                _ => $"bestaudio[abr={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio"
             };
         }
         if (!string.IsNullOrEmpty(formatString))

@@ -67,16 +67,16 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-02-09-15-03/ffmpeg-N-122688-g2e79453549-linux64-gpl.tar.xz",
-                    "sha256": "b1042aea939c437fac4af2c907641820a86dffeb9faae51815051111b0295568",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linux64-gpl.tar.xz",
+                    "sha256": "65c4c74227080f6e400bab1b4d6fc450f5f9c13b8bb88d2d5ca6ac696e353ab5",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-02-09-15-03/ffmpeg-N-122688-g2e79453549-linuxarm64-gpl.tar.xz",
-                    "sha256": "515f318bccf24855924dc12bbbb5fafb8a26169aaa88ca84441fadfbce09a4a7",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linuxarm64-gpl.tar.xz",
+                    "sha256": "4aabfbaeb03a151411b80d267a6f827c951d202a84454c350ef460cbe5fb10fd",
                     "only-arches": [
                         "aarch64"
                     ]
@@ -92,20 +92,37 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.6.9/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "8a677a4b0cea1a25aaecfc70d6c6a288f9ad69af0a92e9e9d513cabaaf3c688f",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.4/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "aef56590931e785af10bdab2077a2a01344b620c78b7086b88ebca73962ef25d",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.6.9/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "d1cd2f5f08abdc22156b67fc1cd9e8dcd2e8e3ab5caffe1da603992c8b1b5d67",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.4/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "d2b99d1c072cab6ec8ececda1a1bd5889a9ea5217fafd9a9a9f5b0e56ef5e9cd",
                     "only-arches": [
                         "aarch64"
                     ]
                 }   
+            ]
+        },
+        {
+            "name": "webp-pixbuf-loader",
+            "buildsystem": "meson",
+            "config-opts": [ 
+                "-Dgdk_pixbuf_moduledir=/app/lib/org.nickvision.tubeconverter/gdk-pixbuf-2.0/2.10.0/loaders" 
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/aruiz/webp-pixbuf-loader",
+                    "tag": "0.2.7"
+                }
+            ],
+            "post-install": [
+                "gdk-pixbuf-query-loaders /app/lib/org.nickvision.tubeconverter/gdk-pixbuf-2.0/2.10.0/loaders/*.so > /app/lib/org.nickvision.tubeconverter/gdk-pixbuf-2.0/2.10.0/loaders/loaders.cache"
             ]
         },
         {

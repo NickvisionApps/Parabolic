@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Controllers;
 using System;
@@ -17,28 +18,30 @@ public sealed partial class KeyringPage : Page
     }
 
     private readonly KeyringViewController _controller;
+    private readonly ITranslationService _translationService;
 
-    public KeyringPage(KeyringViewController controller)
+    public KeyringPage(KeyringViewController controller, ITranslationService translationService)
     {
         InitializeComponent();
         _controller = controller;
-        LblKeyring.Text = _controller.Translator._("Keyring");
-        LblAdd.Text = _controller.Translator._("Add");
-        TxtSearch.PlaceholderText = _controller.Translator._("Search...");
-        StatusNone.Title = _controller.Translator._("No Credentials");
-        StatusNone.Description = _controller.Translator._("There are no credentials in your keyring");
-        StatusNoneSearch.Title = _controller.Translator._("No Credentials");
-        StatusNoneSearch.Description = _controller.Translator._("There are no credentials found with the current filters");
-        DlgCredential.Title = _controller.Translator._("Credential");
-        DlgCredential.CloseButtonText = _controller.Translator._("Cancel");
-        TxtCredentialName.Header = _controller.Translator._("Name");
-        TxtCredentialName.PlaceholderText = _controller.Translator._("Enter name here");
-        TxtCredentialUrl.Header = _controller.Translator._("URL");
-        TxtCredentialUrl.PlaceholderText = _controller.Translator._("Enter url here");
-        TxtCredentialUsername.Header = _controller.Translator._("Username");
-        TxtCredentialUsername.PlaceholderText = _controller.Translator._("Enter username here");
-        TxtCredentialPassword.Header = _controller.Translator._("Password");
-        TxtCredentialPassword.PlaceholderText = _controller.Translator._("Enter password here");
+        _translationService = translationService;
+        LblKeyring.Text = _translationService._("Keyring");
+        LblAdd.Text = _translationService._("Add");
+        TxtSearch.PlaceholderText = _translationService._("Search...");
+        StatusNone.Title = _translationService._("No Credentials");
+        StatusNone.Description = _translationService._("There are no credentials in your keyring");
+        StatusNoneSearch.Title = _translationService._("No Credentials");
+        StatusNoneSearch.Description = _translationService._("There are no credentials found with the current filters");
+        DlgCredential.Title = _translationService._("Credential");
+        DlgCredential.CloseButtonText = _translationService._("Cancel");
+        TxtCredentialName.Header = _translationService._("Name");
+        TxtCredentialName.PlaceholderText = _translationService._("Enter name here");
+        TxtCredentialUrl.Header = _translationService._("URL");
+        TxtCredentialUrl.PlaceholderText = _translationService._("Enter url here");
+        TxtCredentialUsername.Header = _translationService._("Username");
+        TxtCredentialUsername.PlaceholderText = _translationService._("Enter username here");
+        TxtCredentialPassword.Header = _translationService._("Password");
+        TxtCredentialPassword.PlaceholderText = _translationService._("Enter password here");
     }
 
     private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -55,7 +58,7 @@ public sealed partial class KeyringPage : Page
         TxtCredentialUrl.Text = string.Empty;
         TxtCredentialUsername.Text = string.Empty;
         TxtCredentialPassword.Password = string.Empty;
-        DlgCredential.PrimaryButtonText = _controller.Translator._("Add");
+        DlgCredential.PrimaryButtonText = _translationService._("Add");
         DlgCredential.XamlRoot = XamlRoot;
         DlgCredential.RequestedTheme = ActualTheme;
         string? error = null;
@@ -68,9 +71,9 @@ public sealed partial class KeyringPage : Page
                 {
                     var errorDialog = new ContentDialog()
                     {
-                        Title = _controller.Translator._("Error"),
+                        Title = _translationService._("Error"),
                         Content = error,
-                        CloseButtonText = _controller.Translator._("OK"),
+                        CloseButtonText = _translationService._("OK"),
                         DefaultButton = ContentDialogButton.Close,
                         XamlRoot = XamlRoot,
                         RequestedTheme = ActualTheme
@@ -90,7 +93,7 @@ public sealed partial class KeyringPage : Page
         TxtCredentialUrl.Text = selected.Url.ToString();
         TxtCredentialUsername.Text = selected.Username;
         TxtCredentialPassword.Password = selected.Password;
-        DlgCredential.PrimaryButtonText = _controller.Translator._("Update");
+        DlgCredential.PrimaryButtonText = _translationService._("Update");
         DlgCredential.XamlRoot = XamlRoot;
         DlgCredential.RequestedTheme = ActualTheme;
         string? error = null;
@@ -103,9 +106,9 @@ public sealed partial class KeyringPage : Page
                 {
                     var errorDialog = new ContentDialog()
                     {
-                        Title = _controller.Translator._("Error"),
+                        Title = _translationService._("Error"),
                         Content = error,
-                        CloseButtonText = _controller.Translator._("OK"),
+                        CloseButtonText = _translationService._("OK"),
                         DefaultButton = ContentDialogButton.Close,
                         XamlRoot = XamlRoot,
                         RequestedTheme = ActualTheme
@@ -121,10 +124,10 @@ public sealed partial class KeyringPage : Page
         var selected = ((sender as Button)!.Tag as Credential)!;
         var confirmDialog = new ContentDialog()
         {
-            Title = _controller.Translator._("Delete Credential?"),
-            Content = _controller.Translator._("Are you sure you want to delete this credential? This action is irreversible"),
-            PrimaryButtonText = _controller.Translator._("Yes"),
-            CloseButtonText = _controller.Translator._("No"),
+            Title = _translationService._("Delete Credential?"),
+            Content = _translationService._("Are you sure you want to delete this credential? This action is irreversible"),
+            PrimaryButtonText = _translationService._("Yes"),
+            CloseButtonText = _translationService._("No"),
             DefaultButton = ContentDialogButton.Close,
             XamlRoot = XamlRoot,
             RequestedTheme = ActualTheme

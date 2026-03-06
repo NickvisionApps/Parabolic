@@ -17,11 +17,11 @@ public class MediaSelectionItem : SelectionItem<int>
         _endTimeHeader = null;
     }
 
-    public MediaSelectionItem(int index, string filename, string startTime, string endTime, ITranslationService translator) : base(index, filename, true)
+    public MediaSelectionItem(int index, Media media, ITranslationService translator) : base(index, media.Title, true)
     {
-        Filename = filename;
-        StartTime = startTime;
-        EndTime = endTime;
+        Filename = media.Title;
+        StartTime = media.TimeFrame.StartString;
+        EndTime = media.TimeFrame.EndString;
         if (_startTimeHeader is null)
         {
             _startTimeHeader = translator._("Start Time");

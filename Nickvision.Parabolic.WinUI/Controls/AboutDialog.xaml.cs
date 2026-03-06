@@ -10,14 +10,15 @@ namespace Nickvision.Parabolic.WinUI.Controls;
 
 public sealed partial class AboutDialog : ContentDialog
 {
-    private AppInfo _appInfo;
-    private ITranslationService _translator;
+    private readonly AppInfo _appInfo;
+    private readonly ITranslationService _translator;
 
-    public AboutDialog(AppInfo appInfo, string debugInfo, ITranslationService translator)
+    public AboutDialog(AppInfo appInfo, ITranslationService translator)
     {
         InitializeComponent();
         _appInfo = appInfo;
         _translator = translator;
+        DebugInformation = string.Empty;
         Title = _translator._("About {0}", appInfo.ShortName!);
         CloseButtonText = _translator._("Close");
         DefaultButton = ContentDialogButton.Close;
@@ -31,7 +32,6 @@ public sealed partial class AboutDialog : ContentDialog
         LblAppCopyright.Text = "© Nickvision 2021-2026";
         LblChangelog.Text = appInfo.Changelog!;
         LblCopyDebugInformation.Text = _translator._("Copy Debug Information");
-        LblDebugInformation.Text = debugInfo;
         if (string.IsNullOrEmpty(_appInfo.TranslationCredits) || _appInfo.TranslationCredits == "translation-credits")
         {
             LblCredits.Text = _translator._("Developers:\n{0}\n\nDesigners:\n{1}\n\nArtists:\n{2}", _appInfo.Developers.Keys.Aggregate((current, next) => $"{current}\n{next}"), _appInfo.Designers.Keys.Aggregate((current, next) => $"{current}\n{next}"), _appInfo.Artists.Keys.Aggregate((current, next) => $"{current}\n{next}"));
@@ -41,6 +41,19 @@ public sealed partial class AboutDialog : ContentDialog
             LblCredits.Text = _translator._("Developers:\n{0}\n\nDesigners:\n{1}\n\nArtists:\n{2}\n\nTranslators:\n{3}", _appInfo.Developers.Keys.Aggregate((current, next) => $"{current}\n{next}"), _appInfo.Designers.Keys.Aggregate((current, next) => $"{current}\n{next}"), _appInfo.Artists.Keys.Aggregate((current, next) => $"{current}\n{next}"), _appInfo.TranslationCredits!);
         }
     }
+
+    public string DebugInformation
+    {
+        get => field;
+
+        set
+        {
+            field = value;
+            LblDebugInformation.Text = value;
+        }
+    }
+
+    private void Dialog_Loaded(object sender, RoutedEventArgs e) => SelectorGeneral.IsSelected = true;
 
     private void SelectorBar_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
     {

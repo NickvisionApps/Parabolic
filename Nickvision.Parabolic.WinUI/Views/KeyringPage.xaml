@@ -10,6 +10,12 @@
     mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Grid RowSpacing="12">
+        <Grid.Transitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.Transitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -42,12 +48,30 @@
 
         <nickvision:ViewStack x:Name="ViewStack" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <nickvision:ViewStack.Pages>
-                <nickvision:StatusPage x:Name="StatusNone" Glyph="&#xF540;"/>
+                <nickvision:StatusPage x:Name="StatusNone" Glyph="&#xF540;">
+                    <nickvision:StatusPage.Transitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </nickvision:StatusPage.Transitions>
+                </nickvision:StatusPage>
 
-                <nickvision:StatusPage x:Name="StatusNoneSearch" Glyph="&#xE721;"/>
+                <nickvision:StatusPage x:Name="StatusNoneSearch" Glyph="&#xE721;">
+                    <nickvision:StatusPage.Transitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </nickvision:StatusPage.Transitions>
+                </nickvision:StatusPage>
 
                 <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <ListView x:Name="ListCredentials"  Margin="6,0,6,0" SelectionMode="None">
+                        <ListView.Transitions>
+                            <TransitionCollection>
+                                <EntranceThemeTransition/>
+                            </TransitionCollection>
+                        </ListView.Transitions>
+
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <community:SettingsCard Margin="0,0,0,6" Header="{Binding Label, Mode=OneWay}" Description="{Binding Value.Url, Mode=OneWay}">

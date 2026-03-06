@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Application;
+﻿using Microsoft.Extensions.Logging;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.System;
@@ -17,6 +18,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     private static readonly AppVersion _bundledVersion;
     private static readonly string _assetName;
 
+    private readonly ILogger<YtdlpExecutableService> _logger;
     private readonly IJsonFileService _jsonFileService;
     private readonly IUpdaterService _stableUpdaterService;
     private readonly IUpdaterService _previewUpdaterService;
@@ -29,11 +31,11 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     {
         if (OperatingSystem.IsLinux())
         {
-            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.02.04");
+            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.02.21");
         }
         else
         {
-            _bundledVersion = new AppVersion("2026.02.04");
+            _bundledVersion = new AppVersion("2026.03.03");
         }
         if (OperatingSystem.IsWindows())
         {
@@ -53,11 +55,12 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         }
     }
 
-    public YtdlpExecutableService(IJsonFileService jsonFileService, HttpClient httpClient)
+    public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, IJsonFileService jsonFileService, IHttpClientFactory httpClientFactory)
     {
+        _logger = logger;
         _jsonFileService = jsonFileService;
-        _stableUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp", httpClient);
-        _previewUpdaterService = new GitHubUpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClient);
+        _stableUpdaterService = new UpdaterService("yt-dlp", "yt-dlp", httpClientFactory.CreateClient());
+        _previewUpdaterService = new UpdaterService("yt-dlp", "yt-dlp-nightly-builds", httpClientFactory.CreateClient());
         _latestPreviewVersion = null;
         _latestStableVersion = null;
     }
@@ -66,13 +69,20 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     {
         get
         {
+            if (!string.IsNullOrEmpty(field))
+            {
+                return field;
+            }
+            _logger.LogInformation("Searching for yt-dlp executable...");
             var config = _jsonFileService.Load<Configuration>(Configuration.Key);
             if (config.InstalledYtdlpAppVersion > _bundledVersion)
             {
                 var local = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Local);
                 if (!string.IsNullOrEmpty(local) && File.Exists(local))
                 {
-                    return local;
+                    _logger.LogInformation($"Found updated yt-dlp executable: {local}");
+                    field = local;
+                    return field;
                 }
                 else
                 {
@@ -80,7 +90,9 @@ public class YtdlpExecutableService : IYtdlpExecutableService
                     _jsonFileService.Save(config, Configuration.Key);
                 }
             }
-            return Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Global);
+            field = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Global);
+            _logger.LogInformation($"Found bundled yt-dlp executable: {field}");
+            return field;
         }
     }
 

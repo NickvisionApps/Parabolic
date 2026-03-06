@@ -27,6 +27,7 @@ public class Format : IComparable<Format>, IEquatable<Format>
     public VideoCodec? VideoCodec { get; }
     public AudioCodec? AudioCodec { get; }
     public VideoResolution? VideoResolution { get; }
+    public FrameRate? FrameRate { get; }
 
     public bool ContainsAudio => Type == MediaType.Audio || Bitrate.HasValue || !string.IsNullOrEmpty(AudioLanguage) || HasAudioDescription || AudioCodec.HasValue;
 
@@ -54,6 +55,7 @@ public class Format : IComparable<Format>, IEquatable<Format>
         VideoCodec = null;
         AudioCodec = null;
         VideoResolution = null;
+        FrameRate = null;
     }
 
     public Format(JsonElement ytdlp, ITranslationService translator) : this(string.Empty, string.Empty, MediaType.Video)
@@ -136,10 +138,20 @@ public class Format : IComparable<Format>, IEquatable<Format>
                 _ => null
             };
         }
+        if (ytdlp.TryGetProperty("fps", out var fpsProperty) && fpsProperty.ValueKind != JsonValueKind.Null && fpsProperty.TryGetDouble(out var fps))
+        {
+            FrameRate = fps switch
+            {
+                24.0 => Models.FrameRate.Fps24,
+                30.0 => Models.FrameRate.Fps30,
+                60.0 => Models.FrameRate.Fps60,
+                _ => null
+            };
+        }
     }
 
     [JsonConstructor]
-    internal Format(string id, string protocol, string extension, ulong bytes, MediaType type, double? bitrate, string? audioLanguage, bool hasAudioDescription, VideoCodec? videoCodec, AudioCodec? audioCodec, VideoResolution? videoResolution)
+    internal Format(string id, string protocol, string extension, ulong bytes, MediaType type, double? bitrate, string? audioLanguage, bool hasAudioDescription, VideoCodec? videoCodec, AudioCodec? audioCodec, VideoResolution? videoResolution, FrameRate? frameRate)
     {
         Id = id;
         Protocol = protocol;
@@ -152,6 +164,7 @@ public class Format : IComparable<Format>, IEquatable<Format>
         VideoCodec = videoCodec;
         AudioCodec = audioCodec;
         VideoResolution = videoResolution;
+        FrameRate = frameRate;
     }
 
     public int CompareTo(Format? other)
@@ -219,10 +232,6 @@ public class Format : IComparable<Format>, IEquatable<Format>
             {
                 result += $"{Separator}{VideoResolution.ToString(translator)}";
             }
-            if (Bitrate.HasValue)
-            {
-                result += $"{Separator}{Bitrate.Value}k";
-            }
             if (!string.IsNullOrEmpty(AudioLanguage))
             {
                 result += $"{Separator}{AudioLanguage}";
@@ -242,6 +251,16 @@ public class Format : IComparable<Format>, IEquatable<Format>
                     _ => string.Empty
                 }}";
             }
+            if (FrameRate.HasValue)
+            {
+                result += $"{Separator}{FrameRate.Value switch
+                {
+                    Models.FrameRate.Fps24 => translator?._("{0} FPS", 24) ?? "24 FPS",
+                    Models.FrameRate.Fps30 => translator?._("{0} FPS", 30) ?? "30 FPS",
+                    Models.FrameRate.Fps60 => translator?._("{0} FPS", 60) ?? "60 FPS",
+                    _ => string.Empty
+                }}";
+            }
             if (AudioCodec.HasValue)
             {
                 result += $"{Separator}{AudioCodec.Value switch
@@ -254,6 +273,10 @@ public class Format : IComparable<Format>, IEquatable<Format>
                     Models.AudioCodec.MP3 => "MP3",
                     _ => string.Empty
                 }}";
+            }
+            if (Bitrate.HasValue)
+            {
+                result += $"{Separator}{Bitrate.Value}k";
             }
         }
         else if (Type == MediaType.Audio)

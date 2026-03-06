@@ -1,11 +1,10 @@
-﻿using Nickvision.Desktop;
-using Nickvision.Parabolic.Shared.Models;
+﻿using Nickvision.Parabolic.Shared.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
 
-public interface IRecoveryService : IService
+public interface IRecoveryService
 {
     public int Count { get; }
 

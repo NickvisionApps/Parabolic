@@ -1,4 +1,6 @@
-﻿using Nickvision.Desktop.GNOME.Helpers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.GNOME.Helpers;
 using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.Shared.Controllers;
 using System;
@@ -9,7 +11,9 @@ namespace Nickvision.Parabolic.GNOME.Views;
 
 public class HistoryDialog : Adw.PreferencesDialog
 {
+    private readonly IServiceProvider _serviceProvider;
     private readonly HistoryViewController _controller;
+    private readonly ITranslationService _translationService;
     private readonly Gtk.Window _parent;
     private readonly Gtk.Builder _builder;
     private readonly List<Adw.ActionRow> _historyRows;
@@ -23,14 +27,16 @@ public class HistoryDialog : Adw.PreferencesDialog
     [Gtk.Connect("clearButton")]
     private Gtk.Button? _clearButton;
 
-    public HistoryDialog(HistoryViewController controller, Gtk.Window parent) : this(controller, parent, Gtk.Builder.NewFromBlueprint("HistoryDialog", controller.Translator))
+    public HistoryDialog(IServiceProvider serviceProvider, HistoryViewController controller, ITranslationService translationService, Adw.ApplicationWindow parent, IGtkBuilderFactory builderFactory) : this(serviceProvider, controller, translationService, parent, builderFactory.Create("HistoryDialog"))
     {
 
     }
 
-    public HistoryDialog(HistoryViewController controller, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
+    public HistoryDialog(IServiceProvider serviceProvider, HistoryViewController controller, ITranslationService translationService, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
     {
+        _serviceProvider = serviceProvider;
         _controller = controller;
+        _translationService = translationService;
         _parent = parent;
         _builder = builder;
         _historyRows = new List<Adw.ActionRow>();
@@ -44,9 +50,9 @@ public class HistoryDialog : Adw.PreferencesDialog
         _clearButton!.OnClicked += ClearButton_OnClicked;
     }
 
-    public async Task PresentAndLoadAsync()
+    public new async Task Present(Gtk.Widget? parent)
     {
-        Present(_parent);
+        base.Present(parent);
         await LoadDownloadsAsync();
     }
 
@@ -70,9 +76,9 @@ public class HistoryDialog : Adw.PreferencesDialog
 
     private void ClearButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
-        var dialog = Adw.AlertDialog.New(_controller.Translator._("Clear All History?"), _controller.Translator._("Are you sure you want to clear all download history? This action is irreversible"));
-        dialog.AddResponse("clear", _controller.Translator._("Clear"));
-        dialog.AddResponse("cancel", _controller.Translator._("Cancel"));
+        var dialog = Adw.AlertDialog.New(_translationService._("Clear All History?"), _translationService._("Are you sure you want to clear all download history? This action is irreversible"));
+        dialog.AddResponse("clear", _translationService._("Clear"));
+        dialog.AddResponse("cancel", _translationService._("Cancel"));
         dialog.SetResponseAppearance("clear", Adw.ResponseAppearance.Destructive);
         dialog.SetDefaultResponse("cancel");
         dialog.SetCloseResponse("cancel");
@@ -89,7 +95,7 @@ public class HistoryDialog : Adw.PreferencesDialog
 
     private async Task LoadDownloadsAsync()
     {
-        var loadingDialog = new LoadingDialog(_controller.Translator);
+        var loadingDialog = _serviceProvider.GetRequiredService<LoadingDialog>();
         loadingDialog.Present(this);
         foreach (var row in _historyRows)
         {
@@ -100,24 +106,24 @@ public class HistoryDialog : Adw.PreferencesDialog
         {
             var downloadAgainButton = Gtk.Button.NewFromIconName("folder-download-symbolic");
             downloadAgainButton.Valign = Gtk.Align.Center;
-            downloadAgainButton.TooltipText = _controller.Translator._("Download Again");
+            downloadAgainButton.TooltipText = _translationService._("Download Again");
             downloadAgainButton.AddCssClass("flat");
             downloadAgainButton.OnClicked += (_, _) => _controller.RequestDownload(historicDowload.Value.Url);
             var playButton = Gtk.Button.NewFromIconName("media-playback-start-symbolic");
             playButton.Valign = Gtk.Align.Center;
-            playButton.TooltipText = _controller.Translator._("Play");
+            playButton.TooltipText = _translationService._("Play");
             playButton.Sensitive = historicDowload.Value.ExistsOnDisk;
             playButton.AddCssClass("flat");
             playButton.OnClicked += async (_, _) => await PlayAsync(historicDowload.Value.Path);
             var deleteButton = Gtk.Button.NewFromIconName("user-trash-symbolic");
             deleteButton.Valign = Gtk.Align.Center;
-            deleteButton.TooltipText = _controller.Translator._("Delete");
+            deleteButton.TooltipText = _translationService._("Delete");
             deleteButton.AddCssClass("flat");
             deleteButton.OnClicked += async (_, _) => await RemoveAsync(historicDowload.Value.Url);
             var row = Adw.ActionRow.New();
             row.Title = historicDowload.Label;
             row.Subtitle = historicDowload.Value.Url.ToString();
-            row.TooltipText = _controller.Translator._("Downloaded On: {0}", $"{historicDowload.Value.DownloadedOn}");
+            row.TooltipText = _translationService._("Downloaded On: {0}", $"{historicDowload.Value.DownloadedOn}");
             row.AddSuffix(downloadAgainButton);
             row.AddSuffix(playButton);
             row.AddSuffix(deleteButton);
@@ -128,7 +134,7 @@ public class HistoryDialog : Adw.PreferencesDialog
         if (_historyRows.Count == 0)
         {
             var row = Adw.ActionRow.New();
-            row.Title = _controller.Translator._("No History");
+            row.Title = _translationService._("No History");
             _historyRows.Add(row);
             _historyGroup!.Add(row);
         }

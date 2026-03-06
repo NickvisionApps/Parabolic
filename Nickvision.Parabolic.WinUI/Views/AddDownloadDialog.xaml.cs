@@ -2,8 +2,10 @@
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Windows.Storage.Pickers;
 using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
@@ -11,10 +13,12 @@ using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Graphics.Imaging;
 
 namespace Nickvision.Parabolic.WinUI.Views;
 
@@ -44,99 +48,101 @@ public sealed partial class AddDownloadDialog : ContentDialog
     }
 
     private readonly AddDownloadDialogController _controller;
-    private readonly WindowId _windowId;
+    private readonly ITranslationService _translationService;
     private DiscoveryContext? _discoveryContext;
     private bool _isUpdatingSubtitleSelection;
 
-    public AddDownloadDialog(AddDownloadDialogController controller, WindowId windowId)
+    public WindowId? WindowId { get; set; }
+
+    public AddDownloadDialog(AddDownloadDialogController controller, ITranslationService translationService)
     {
         InitializeComponent();
         _controller = controller;
-        _windowId = windowId;
+        _translationService = translationService;
         _discoveryContext = null;
         _isUpdatingSubtitleSelection = false;
-        Title = _controller.Translator._("Add Download");
-        PrimaryButtonText = _controller.Translator._("Discover");
-        CloseButtonText = _controller.Translator._("Cancel");
+        Title = _translationService._("Add Download");
+        PrimaryButtonText = _translationService._("Discover");
+        CloseButtonText = _translationService._("Cancel");
         DefaultButton = ContentDialogButton.Primary;
         IsPrimaryButtonEnabled = false;
-        TxtUrl.Header = _controller.Translator._("Media URL");
-        TxtUrl.PlaceholderText = _controller.Translator._("Enter media url here");
-        LblSelectBatchFile.Text = _controller.Translator._("Select Batch File");
-        TglUseAuthentication.OnContent = _controller.Translator._("Use Authentication");
-        TglUseAuthentication.OffContent = _controller.Translator._("Use Authentication");
-        CmbCredential.Header = _controller.Translator._("Credential");
-        TxtUsername.Header = _controller.Translator._("Username");
-        TxtUsername.PlaceholderText = _controller.Translator._("Enter username here");
-        TxtPassword.Header = _controller.Translator._("Password");
-        TxtPassword.PlaceholderText = _controller.Translator._("Enter password here");
-        TglDownloadImmediately.OnContent = _controller.Translator._("Download Immediately");
-        TglDownloadImmediately.OffContent = _controller.Translator._("Download Immediately");
-        TeachDownloadImmediately.Title = _controller.Translator._("Warning");
-        TeachDownloadImmediately.Subtitle = _controller.Translator._("Parabolic will download media based off of previously configured options and sensible defaults. Options including save folder, format, and subtitle selection will not be shown.");
-        LblLoading.Text = _controller.Translator._("This may take some time...");
+        TxtUrl.Header = _translationService._("Media URL");
+        TxtUrl.PlaceholderText = _translationService._("Enter media url here");
+        LblSelectBatchFile.Text = _translationService._("Select Batch File");
+        TglUseAuthentication.OnContent = _translationService._("Use Authentication");
+        TglUseAuthentication.OffContent = _translationService._("Use Authentication");
+        CmbCredential.Header = _translationService._("Credential");
+        TxtUsername.Header = _translationService._("Username");
+        TxtUsername.PlaceholderText = _translationService._("Enter username here");
+        TxtPassword.Header = _translationService._("Password");
+        TxtPassword.PlaceholderText = _translationService._("Enter password here");
+        TglDownloadImmediately.OnContent = _translationService._("Download Immediately");
+        TglDownloadImmediately.OffContent = _translationService._("Download Immediately");
+        TeachDownloadImmediately.Title = _translationService._("Warning");
+        TeachDownloadImmediately.Subtitle = _translationService._("Parabolic will download media based off of previously configured options and sensible defaults. Options including save folder, format, and subtitle selection will not be shown.");
+        LblLoading.Text = _translationService._("This may take some time...");
         CmbCredential.ItemsSource = _controller.AvailableCredentials;
         CmbCredential.SelectSelectionItem();
-        NavViewItemSingleGeneral.Text = _controller.Translator._("General");
-        NavViewItemSingleSubtitles.Text = _controller.Translator._("Subtitles");
-        NavViewItemSingleAdvanced.Text = _controller.Translator._("Advanced");
-        TxtSingleSaveFilename.Header = _controller.Translator._("File Name");
-        ToolTipService.SetToolTip(BtnSingleRevertFilename, _controller.Translator._("Revert to Title"));
-        TxtSingleSaveFolder.Header = _controller.Translator._("Save Folder");
-        ToolTipService.SetToolTip(BtnSingleSelectSaveFolder, _controller.Translator._("Select Save Folder"));
-        CmbSingleFileType.Header = _controller.Translator._("File Type");
-        TeachSingleFileType.Title = _controller.Translator._("Warning");
-        TeachSingleFileType.Subtitle = _controller.Translator._("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
-        CmbSingleVideoFormat.Header = _controller.Translator._("Video Format");
-        CmbSingleAudioFormat.Header = _controller.Translator._("Audio Format");
-        StatusSingleSubtitles.Title = _controller.Translator._("No Subtitles");
-        StatusSingleSubtitles.Description = _controller.Translator._("No subtitles were found for this media.");
-        LblSingleSelectAllSubtitles.Text = _controller.Translator._("Select All");
-        LblSingleDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
-        TxtSingleSubtitlesSearch.PlaceholderText = _controller.Translator._("Search subtitles");
-        TglSingleSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
-        TglSingleSplitChapters.OffContent = _controller.Translator._("Split into Files by Chapters");
-        TglSingleExportDescription.OnContent = _controller.Translator._("Export Description to File");
-        TglSingleExportDescription.OffContent = _controller.Translator._("Export Description to File");
-        TglSingleExcludeFromHistory.OnContent = _controller.Translator._("Exclude from History");
-        TglSingleExcludeFromHistory.OffContent = _controller.Translator._("Exclude from History");
-        CmbSinglePostProcessorArgument.Header = _controller.Translator._("Post Processor Argument");
-        TxtSingleStartTime.Header = _controller.Translator._("Start Time");
-        TxtSingleEndTime.Header = _controller.Translator._("End Time");
-        NavViewItemPlaylistGeneral.Text = _controller.Translator._("General");
-        NavViewItemPlaylistItems.Text = _controller.Translator._("Items");
-        NavViewItemPlaylistSubtitles.Text = _controller.Translator._("Subtitles");
-        NavViewItemPlaylistAdvanced.Text = _controller.Translator._("Advanced");
-        TxtPlaylistSaveFolder.Header = _controller.Translator._("Save Folder");
-        ToolTipService.SetToolTip(BtnPlaylistSelectSaveFolder, _controller.Translator._("Select Save Folder"));
-        CmbPlaylistFileType.Header = _controller.Translator._("File Type");
-        TeachPlaylistFileType.Title = _controller.Translator._("Warning");
-        TeachPlaylistFileType.Subtitle = _controller.Translator._("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
-        CmbPlaylistSuggestedVideoResolution.Header = _controller.Translator._("Suggested Video Resolution");
-        CmbPlaylistSuggestedAudioBitrate.Header = _controller.Translator._("Suggested Audio Bitrate");
-        LblPlaylistSelectAllItems.Text = _controller.Translator._("Select All");
-        LblPlaylistDeselectAllItems.Text = _controller.Translator._("Deselect All");
-        TglPlaylistReverseDownloadOrder.OnContent = _controller.Translator._("Reverse Download Order");
-        TglPlaylistReverseDownloadOrder.OffContent = _controller.Translator._("Reverse Download Order");
-        TglPlaylistNumberTitles.OnContent = _controller.Translator._("Number Titles");
-        TglPlaylistNumberTitles.OffContent = _controller.Translator._("Number Titles");
-        TeachPlaylistNumberTitles.Title = _controller.Translator._("Warning");
-        TeachPlaylistNumberTitles.Subtitle = _controller.Translator._("Numbering will be applied to titles of selected items in succession on download.");
-        StatusPlaylistSubtitles.Title = _controller.Translator._("No Subtitles");
-        StatusPlaylistSubtitles.Description = _controller.Translator._("No subtitles were found in this playlist.");
-        LblPlaylistSelectAllSubtitles.Text = _controller.Translator._("Select All");
-        LblPlaylistDeselectAllSubtitles.Text = _controller.Translator._("Deselect All");
-        LblPlaylistSubtitleNote.Text = _controller.Translator._("Note: Some playlist items may not contain subtitles for a selected language.");
-        TxtPlaylistSubtitlesSearch.PlaceholderText = _controller.Translator._("Search subtitles");
-        TglPlaylistExportM3U.OnContent = _controller.Translator._("Export M3U Playlist File");
-        TglPlaylistExportM3U.OffContent = _controller.Translator._("Export M3U Playlist File");
-        TglPlaylistSplitChapters.OnContent = _controller.Translator._("Split into Files by Chapters");
-        TglPlaylistSplitChapters.OffContent = _controller.Translator._("Split into Files by Chapters");
-        TglPlaylistExportDescription.OnContent = _controller.Translator._("Export Description to File");
-        TglPlaylistExportDescription.OffContent = _controller.Translator._("Export Description to File");
-        TglPlaylistExcludeFromHistory.OnContent = _controller.Translator._("Exclude from History");
-        TglPlaylistExcludeFromHistory.OffContent = _controller.Translator._("Exclude from History");
-        CmbPlaylistPostProcessorArgument.Header = _controller.Translator._("Post Processor Argument");
+        NavViewItemSingleGeneral.Text = _translationService._("General");
+        NavViewItemSingleSubtitles.Text = _translationService._("Subtitles");
+        NavViewItemSingleAdvanced.Text = _translationService._("Advanced");
+        TxtSingleSaveFilename.Header = _translationService._("File Name");
+        ToolTipService.SetToolTip(BtnSingleRevertFilename, _translationService._("Revert to Title"));
+        TxtSingleSaveFolder.Header = _translationService._("Save Folder");
+        ToolTipService.SetToolTip(BtnSingleSelectSaveFolder, _translationService._("Select Save Folder"));
+        CmbSingleFileType.Header = _translationService._("File Type");
+        TeachSingleFileType.Title = _translationService._("Warning");
+        TeachSingleFileType.Subtitle = _translationService._("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
+        CmbSingleVideoFormat.Header = _translationService._("Video Format");
+        CmbSingleAudioFormat.Header = _translationService._("Audio Format");
+        StatusSingleSubtitles.Title = _translationService._("No Subtitles");
+        StatusSingleSubtitles.Description = _translationService._("No subtitles were found for this media.");
+        LblSingleSelectAllSubtitles.Text = _translationService._("Select All");
+        LblSingleDeselectAllSubtitles.Text = _translationService._("Deselect All");
+        TxtSingleSubtitlesSearch.PlaceholderText = _translationService._("Search subtitles");
+        TglSingleSplitChapters.OnContent = _translationService._("Split into Files by Chapters");
+        TglSingleSplitChapters.OffContent = _translationService._("Split into Files by Chapters");
+        TglSingleExportDescription.OnContent = _translationService._("Export Description to File");
+        TglSingleExportDescription.OffContent = _translationService._("Export Description to File");
+        TglSingleExcludeFromHistory.OnContent = _translationService._("Exclude from History");
+        TglSingleExcludeFromHistory.OffContent = _translationService._("Exclude from History");
+        CmbSinglePostProcessorArgument.Header = _translationService._("Post Processor Argument");
+        TxtSingleStartTime.Header = _translationService._("Start Time");
+        TxtSingleEndTime.Header = _translationService._("End Time");
+        NavViewItemPlaylistGeneral.Text = _translationService._("General");
+        NavViewItemPlaylistItems.Text = _translationService._("Items");
+        NavViewItemPlaylistSubtitles.Text = _translationService._("Subtitles");
+        NavViewItemPlaylistAdvanced.Text = _translationService._("Advanced");
+        TxtPlaylistSaveFolder.Header = _translationService._("Save Folder");
+        ToolTipService.SetToolTip(BtnPlaylistSelectSaveFolder, _translationService._("Select Save Folder"));
+        CmbPlaylistFileType.Header = _translationService._("File Type");
+        TeachPlaylistFileType.Title = _translationService._("Warning");
+        TeachPlaylistFileType.Subtitle = _translationService._("Generic types do not support embedding thumbnails and subtitles. If necessary, please select a specific type that is known to support embedding to prevent separate files from being written.");
+        CmbPlaylistSuggestedVideoResolution.Header = _translationService._("Suggested Video Resolution");
+        CmbPlaylistSuggestedAudioBitrate.Header = _translationService._("Suggested Audio Bitrate");
+        LblPlaylistSelectAllItems.Text = _translationService._("Select All");
+        LblPlaylistDeselectAllItems.Text = _translationService._("Deselect All");
+        TglPlaylistReverseDownloadOrder.OnContent = _translationService._("Reverse Download Order");
+        TglPlaylistReverseDownloadOrder.OffContent = _translationService._("Reverse Download Order");
+        TglPlaylistNumberTitles.OnContent = _translationService._("Number Titles");
+        TglPlaylistNumberTitles.OffContent = _translationService._("Number Titles");
+        TeachPlaylistNumberTitles.Title = _translationService._("Warning");
+        TeachPlaylistNumberTitles.Subtitle = _translationService._("Numbering will be applied to titles of selected items in succession on download.");
+        StatusPlaylistSubtitles.Title = _translationService._("No Subtitles");
+        StatusPlaylistSubtitles.Description = _translationService._("No subtitles were found in this playlist.");
+        LblPlaylistSelectAllSubtitles.Text = _translationService._("Select All");
+        LblPlaylistDeselectAllSubtitles.Text = _translationService._("Deselect All");
+        LblPlaylistSubtitleNote.Text = _translationService._("Note: Some playlist items may not contain subtitles for a selected language.");
+        TxtPlaylistSubtitlesSearch.PlaceholderText = _translationService._("Search subtitles");
+        TglPlaylistExportM3U.OnContent = _translationService._("Export M3U Playlist File");
+        TglPlaylistExportM3U.OffContent = _translationService._("Export M3U Playlist File");
+        TglPlaylistSplitChapters.OnContent = _translationService._("Split into Files by Chapters");
+        TglPlaylistSplitChapters.OffContent = _translationService._("Split into Files by Chapters");
+        TglPlaylistExportDescription.OnContent = _translationService._("Export Description to File");
+        TglPlaylistExportDescription.OffContent = _translationService._("Export Description to File");
+        TglPlaylistExcludeFromHistory.OnContent = _translationService._("Exclude from History");
+        TglPlaylistExcludeFromHistory.OffContent = _translationService._("Exclude from History");
+        CmbPlaylistPostProcessorArgument.Header = _translationService._("Post Processor Argument");
     }
 
     public async new Task<ContentDialogResult> ShowAsync()
@@ -160,9 +166,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
             return result;
         }
         var cancellationToken = new CancellationTokenSource();
-        Title = _controller.Translator._("Discovering Media");
+        Title = _translationService._("Discovering Media");
         PrimaryButtonText = null;
-        CloseButtonText = _controller.Translator._("Cancel");
+        CloseButtonText = _translationService._("Cancel");
         DefaultButton = ContentDialogButton.None;
         ViewStack.SelectedIndex = (int)Pages.Loading;
         DispatcherQueue.TryEnqueue(async () => await DiscoverMediaAsync(cancellationToken.Token));
@@ -210,9 +216,15 @@ public sealed partial class AddDownloadDialog : ContentDialog
             Hide();
             return;
         }
-        Title = _controller.Translator._("Configure Download");
-        PrimaryButtonText = _controller.Translator._("Download");
-        CloseButtonText = _controller.Translator._("Cancel");
+        using var thumbnailMemoryStream = await _controller.GetThumbnailImageStreamAsync(_discoveryContext);
+        using var thumbnailStream = thumbnailMemoryStream.AsRandomAccessStream();
+        var thumbnailDecoder = await BitmapDecoder.CreateAsync(thumbnailStream);
+        var thumbnailBitmap = await thumbnailDecoder.GetSoftwareBitmapAsync(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Premultiplied);
+        var thumbnailSource = new SoftwareBitmapSource();
+        await thumbnailSource.SetBitmapAsync(thumbnailBitmap);
+        Title = _translationService._("Configure Download");
+        PrimaryButtonText = _translationService._("Download");
+        CloseButtonText = _translationService._("Cancel");
         SecondaryButtonText = null;
         DefaultButton = ContentDialogButton.Primary;
         _controller.PreviousDownloadOptions.DownloadImmediately = TglDownloadImmediately.IsOn;
@@ -221,6 +233,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ViewStack.SelectedIndex = (int)Pages.Single;
             ViewStackSingle.SelectedIndex = (int)SinglePages.General;
             ViewStackSingleSubtitles.SelectedIndex = _discoveryContext.SubtitleLanguages.Any() ? 1 : 0;
+            ImgSingleThumbnail.Source = thumbnailSource;
+            LblSingleTitle.Text = _discoveryContext.Title;
+            LblSingleUrl.Text = _discoveryContext.Url.ToString();
             TxtSingleSaveFilename.Text = _discoveryContext.Items[0].Label;
             TxtSingleSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
             CmbSingleVideoFormat.ItemsSource = _discoveryContext.VideoFormats;
@@ -249,6 +264,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ViewStack.SelectedIndex = (int)Pages.Playlist;
             ViewStackPlaylist.SelectedIndex = (int)PlaylistPages.General;
             ViewStackPlaylistSubtitles.SelectedIndex = _discoveryContext.SubtitleLanguages.Any() ? 1 : 0;
+            ImgPlaylistThumbnail.Source = thumbnailSource;
+            LblPlaylistTitle.Text = _discoveryContext.Title;
+            LblPlaylistUrl.Text = _discoveryContext.Url.ToString();
             TxtPlaylistSaveFolder.Text = _controller.PreviousDownloadOptions.SaveFolder;
             CmbPlaylistFileType.ItemsSource = _discoveryContext.FileTypes;
             CmbPlaylistFileType.SelectSelectionItem();
@@ -276,7 +294,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private async Task DownloadSingleAsync() => await _controller.AddSingleDownloadAsync(_discoveryContext!,
+    private Task DownloadSingleAsync() => _controller.AddSingleDownloadAsync(_discoveryContext!,
         TxtSingleSaveFilename.Text,
         TxtSingleSaveFolder.Text,
         (CmbSingleFileType.SelectedItem as SelectionItem<MediaFileType>)!,
@@ -291,7 +309,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtSingleEndTime.Text
     );
 
-    private async Task DownloadPlaylistAsync() => await _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
+    private Task DownloadPlaylistAsync() => _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
         ListPlaylistItems.SelectedItems.Cast<MediaSelectionItem>(),
         TxtPlaylistSaveFolder.Text,
         (CmbPlaylistFileType.SelectedItem as SelectionItem<MediaFileType>)!,
@@ -311,7 +329,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private async void BtnSelectBatchFile_Click(object? sender, RoutedEventArgs e)
     {
-        var picker = new FileOpenPicker(_windowId)
+        var picker = new FileOpenPicker(WindowId!.Value)
         {
             SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
             FileTypeFilter = { ".txt" }
@@ -346,7 +364,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private async void BtnSingleSelectSaveFolder_Click(object? sender, RoutedEventArgs e)
     {
-        var picker = new FolderPicker(_windowId)
+        var picker = new FolderPicker(WindowId!.Value)
         {
             SuggestedStartLocation = PickerLocationId.Downloads
         };
@@ -382,7 +400,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private async void BtnPlaylistSelectSaveFolder_Click(object? sender, RoutedEventArgs e)
     {
-        var picker = new FolderPicker(_windowId)
+        var picker = new FolderPicker(WindowId!.Value)
         {
             SuggestedStartLocation = PickerLocationId.Downloads
         };

@@ -12,6 +12,7 @@ permissions:
 env:
   PROJECT_NAME: Nickvision.Parabolic.WinUI
   INSTALLER_NAME: NickvisionParabolicSetup
+  SHORT_NAME: Parabolic
 jobs:
   winui-windows:
     name: "WinUI on Windows"
@@ -46,7 +47,7 @@ jobs:
       - uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '10.0.x'
-      - name: "Setup PATH"
+      - name: "Setup Environment"
         shell: pwsh
         run: echo "${{ steps.msys2.outputs.msys2-location }}\${{ matrix.variant.subsys }}\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: "Restore"
@@ -62,10 +63,10 @@ jobs:
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/10.0.2/windowsdesktop-runtime-10.0.2-win-${{ matrix.variant.arch }}.exe -OutFile dotnet.exe
           Invoke-WebRequest https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-${{ matrix.variant.arch }}.exe -OutFile windowsappruntimeinstall.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2026.02.04/yt-dlp${{ matrix.variant.ytdlp }}.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2026.03.03/yt-dlp${{ matrix.variant.ytdlp }}.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/Elypha/aria2-mod/releases/download/aria2c-1.37.0-b4fd7cb-20251126/aria2c-windows-x86_64-wintls.zip -OutFile aria2.zip
           Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl.zip -OutFile ffmpeg.zip
-          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.6.9/deno-${{ matrix.variant.deno }}-pc-windows-msvc.zip -OutFile deno.zip
+          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.7.4/deno-${{ matrix.variant.deno }}-pc-windows-msvc.zip -OutFile deno.zip
           Expand-Archive -Force 'aria2.zip'
           Expand-Archive -Force 'ffmpeg.zip'
           Expand-Archive -Force 'deno.zip'
@@ -75,7 +76,20 @@ jobs:
           move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffplay.exe ffplay.exe
           move deno\deno.exe deno.exe
           iscc setup.iss
+      - name: "Portable"
+        shell: pwsh
+        run: |
+          $publishDir = "${{ env.PROJECT_NAME }}\bin\${{ matrix.variant.arch }}\Release\net10.0-windows10.0.19041.0\win-${{ matrix.variant.arch }}\publish"
+          $portableDir = "${{ github.workspace }}\portable"
+          New-Item -ItemType Directory -Force -Path "$portableDir\Release" | Out-Null
+          Copy-Item -Path "$publishDir\*" -Destination "$portableDir\Release" -Recurse
+          $batContent = "@echo off`r`n`"%~dp0Release\${{ env.PROJECT_NAME }}.exe`" --portable"
+          Set-Content -Path "$portableDir\${{ env.SHORT_NAME }}.bat" -Value $batContent -NoNewline
       - uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/inno/${{ env.INSTALLER_NAME }}.exe
           name: ${{ env.INSTALLER_NAME }}-${{ matrix.variant.arch }}
+      - uses: actions/upload-artifact@v4
+        with:
+          path: ${{ github.workspace }}/portable
+          name: ${{ env.PROJECT_NAME }}-portable-${{ matrix.variant.arch }}

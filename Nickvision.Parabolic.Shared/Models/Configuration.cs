@@ -23,6 +23,8 @@ public class Configuration
     public WindowGeometry WindowGeometry { get; set; }
     [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledYtdlpAppVersion { get; set; }
+    [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
+    public AppVersion InstalledDenoAppVersion { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool ShowDislcaimerOnStartup { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
@@ -41,6 +43,8 @@ public class Configuration
     public AudioCodec PreferredAudioCodec { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<SubtitleFormat>))]
     public SubtitleFormat PreferredSubtitleFormat { get; set; }
+    [JsonConverter(typeof(NullToDefaultValueConverter<FrameRate>))]
+    public FrameRate PreferredFrameRate { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool UsePartFiles { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
@@ -52,6 +56,8 @@ public class Configuration
     public Browser CookiesBrowser { get; set; }
     [JsonConverter(typeof(NullToEmptyStringConverter))]
     public string CookiesPath { get; set; }
+    [JsonConverter(typeof(NullToTrueBoolConverter))]
+    public bool TranslateMetadataAndChapters { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool EmbedMetadata { get; set; }
     [JsonConverter(typeof(NullToFalseBoolConverter))]
@@ -89,6 +95,7 @@ public class Configuration
         WindowGeometry = new WindowGeometry();
         AllowPreviewUpdates = false;
         InstalledYtdlpAppVersion = new AppVersion("0.0.0");
+        InstalledDenoAppVersion = new AppVersion("0.0.0");
         ShowDislcaimerOnStartup = true;
         PreventSuspend = false;
         MaxNumberOfActiveDownloads = 5;
@@ -99,12 +106,14 @@ public class Configuration
         PreferredVideoCodec = VideoCodec.Any;
         PreferredAudioCodec = AudioCodec.Any;
         PreferredSubtitleFormat = SubtitleFormat.Any;
+        PreferredFrameRate = FrameRate.Any;
         UsePartFiles = true;
         YouTubeSponsorBlock = false;
         SpeedLimit = null;
         ProxyUrl = string.Empty;
         CookiesBrowser = Browser.None;
         CookiesPath = string.Empty;
+        TranslateMetadataAndChapters = true;
         EmbedMetadata = true;
         RemoveSourceData = false;
         EmbedThumbnails = true;
@@ -131,12 +140,14 @@ public class Configuration
         PreferredVideoCodec = PreferredVideoCodec,
         PreferredAudioCodec = PreferredAudioCodec,
         PreferredSubtitleFormat = PreferredSubtitleFormat,
+        PreferredFrameRate = PreferredFrameRate,
         UsePartFiles = UsePartFiles,
         YouTubeSponsorBlock = YouTubeSponsorBlock,
         SpeedLimit = SpeedLimit,
         ProxyUrl = ProxyUrl,
         CookiesBrowser = CookiesBrowser,
         CookiesPath = CookiesPath,
+        TranslateMetadataAndChapters = TranslateMetadataAndChapters,
         EmbedMetadata = EmbedMetadata,
         RemoveSourceData = RemoveSourceData,
         EmbedThumbnails = EmbedThumbnails,

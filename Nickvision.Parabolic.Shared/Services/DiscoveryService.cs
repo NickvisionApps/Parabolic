@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Filesystem;
+﻿using Microsoft.Extensions.Logging;
+using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Helpers;
@@ -16,19 +17,30 @@ namespace Nickvision.Parabolic.Shared.Services;
 public class DiscoveryService : IDiscoveryService
 {
     private static readonly char BatchFileDelimiter;
+    private static readonly JsonSerializerOptions JsonOptions;
 
+    private readonly ILogger<DiscoveryService> _logger;
+    private readonly IDenoExecutableService _denoExecutableService;
     private readonly IJsonFileService _jsonFileService;
+    private readonly IThumbnailService _thumbnailService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpExecutableService;
 
     static DiscoveryService()
     {
         BatchFileDelimiter = '|';
+        JsonOptions = new JsonSerializerOptions()
+        {
+            WriteIndented = true,
+        };
     }
 
-    public DiscoveryService(IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
+    public DiscoveryService(ILogger<DiscoveryService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, IThumbnailService thumbnailService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
     {
+        _logger = logger;
+        _denoExecutableService = denoExecutableService;
         _jsonFileService = jsonFileService;
+        _thumbnailService = thumbnailService;
         _translationService = translationService;
         _ytdlpExecutableService = ytdlpExecutableService;
     }
@@ -54,10 +66,11 @@ public class DiscoveryService : IDiscoveryService
         return new DiscoveryResult(new Uri($"file://{path}"), Path.GetFileNameWithoutExtension(path), entryInfos);
     }
 
-    public async Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => await GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
+    public Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
 
     private async Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
     {
+        _logger.LogInformation($"Discovering media for {url}...");
         var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
         var arguments = new List<string>(23)
@@ -71,7 +84,7 @@ public class DiscoveryService : IDiscoveryService
             "--ffmpeg-location",
             Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg",
             "--js-runtimes",
-            $"deno:{Desktop.System.Environment.FindDependency("deno") ?? "deno"}",
+            $"deno:{_denoExecutableService.ExecutablePath ?? "deno"}",
             "--paths",
             $"temp:{UserDirectories.Cache}"
         };
@@ -86,6 +99,7 @@ public class DiscoveryService : IDiscoveryService
         }
         if (!string.IsNullOrEmpty(downloaderOptions.ProxyUrl))
         {
+            _logger.LogInformation("Using proxy...");
             arguments.Add("--proxy");
             arguments.Add(downloaderOptions.ProxyUrl);
         }
@@ -93,6 +107,7 @@ public class DiscoveryService : IDiscoveryService
         {
             if (!string.IsNullOrEmpty(credential.Username) && !string.IsNullOrEmpty(credential.Password))
             {
+                _logger.LogInformation("Using credential...");
                 arguments.Add("--username");
                 arguments.Add(credential.Username);
                 arguments.Add("--password");
@@ -100,12 +115,14 @@ public class DiscoveryService : IDiscoveryService
             }
             else if (!string.IsNullOrEmpty(credential.Password))
             {
+                _logger.LogInformation("Using video password...");
                 arguments.Add("--video-password");
                 arguments.Add(credential.Password);
             }
         }
         if (downloaderOptions.CookiesBrowser != Browser.None)
         {
+            _logger.LogInformation($"Using cookies from browser: {downloaderOptions.CookiesBrowser}");
             arguments.Add("--cookies-from-browser");
             arguments.Add(downloaderOptions.CookiesBrowser switch
             {
@@ -122,6 +139,7 @@ public class DiscoveryService : IDiscoveryService
         }
         else if (File.Exists(downloaderOptions.CookiesPath))
         {
+            _logger.LogInformation($"Using cookies file...");
             arguments.Add("--cookies");
             arguments.Add(downloaderOptions.CookiesPath);
         }
@@ -144,14 +162,17 @@ public class DiscoveryService : IDiscoveryService
         var error = await errorTask;
         if (process.ExitCode != 0 && (string.IsNullOrEmpty(output) || output[0] != '{'))
         {
+            _logger.LogError($"Failed to discover media for {url}: {error.TrimEnd()}");
             throw new YtdlpException(error);
         }
         cancellationToken.ThrowIfCancellationRequested();
         using var json = JsonDocument.Parse(output);
         if (json.RootElement.ValueKind != JsonValueKind.Object)
         {
+            _logger.LogError($"Unexpected output format from yt-dlp for {url}: {output.TrimEnd()}");
             throw new YtdlpException($"Unexpected output format from yt-dlp: {output}");
         }
+        DiscoveryResult? result = null;
         if (json!.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
         {
             var urlInfos = new List<DiscoveryResult>();
@@ -173,14 +194,25 @@ public class DiscoveryService : IDiscoveryService
             }
             if (urlInfos.Count > 0 && json.RootElement.TryGetProperty("title", out var titleProperty))
             {
-                return new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
+                result = new DiscoveryResult(url, titleProperty.GetString() ?? "Tab", urlInfos);
             }
         }
-        return new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+        if (result is null)
+        {
+            result = new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+
+        }
+        foreach (var media in result.Media)
+        {
+            _thumbnailService.MapMedia(media);
+        }
+        _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, JsonOptions)}");
+        return result;
     }
 
     private async Task<List<BatchFileEntry>> ParseBatchFileAsync(string batchFilePath, CancellationToken cancellationToken = default)
     {
+        _logger.LogInformation($"Parsing batch file: {batchFilePath}");
         if (!File.Exists(batchFilePath) || Path.GetExtension(batchFilePath).ToLower() != ".txt")
         {
             return [];
@@ -219,9 +251,11 @@ public class DiscoveryService : IDiscoveryService
                     entry.SuggestedFilename = filename;
                 }
             }
+            _logger.LogInformation($"Found batch file entry {entry.Url} with path: {Path.Combine(entry.SuggestedSaveFolder, entry.SuggestedFilename)}");
             result.Add(entry);
         }
         cancellationToken.ThrowIfCancellationRequested();
+        _logger.LogInformation($"Parsed {result.Count} entries in batch file: {batchFilePath}");
         return result;
     }
 }

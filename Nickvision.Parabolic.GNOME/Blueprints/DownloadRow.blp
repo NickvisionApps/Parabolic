@@ -13,6 +13,18 @@ Gtk.ListBoxRow root {
       margin-end: 6;
       spacing: 6;
 
+      Gtk.Box {
+        margin-top: 8;
+        margin-start: 6;
+        margin-end: 6;
+        margin-bottom: 8;
+        
+        Gtk.Picture thumbnailImage { 
+         hexpand: false;
+         vexpand: false;
+        }
+      }
+
       Gtk.Image statusIcon {
         pixel-size: 16;
         margin-start: 6;
