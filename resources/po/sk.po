@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-05 20:56-0500\n"
-"PO-Revision-Date: 2026-02-18 02:32+0000\n"
+"PO-Revision-Date: 2026-03-07 08:55+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/sk/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
@@ -516,7 +516,7 @@ msgstr "Dokončené"
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:160
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 msgid "Failed"
-msgstr ""
+msgstr "Zlyhalo"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:171
 msgid "Manage Download"
@@ -668,19 +668,17 @@ msgstr "Uprednostniť tento formát titulkov pri sťahovaní"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:156
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
-#, fuzzy
 msgid "Preferred Frame Rate"
-msgstr "Uprednostňovaný formát tituliek"
+msgstr "Uprednostňovaná snímková frekvencia"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:157
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
-#, fuzzy
 msgid ""
 "Prefer this frame rate when parsing video formats to show available to "
 "download"
 msgstr ""
-"Uprednostniť tento kodek pri analýze video formátov na zobrazenie dostupných "
-"na stiahnutie"
+"Pri analýze formátov videa uprednostniť túto snímkovú frekvenciu, aby sa "
+"zobrazili dostupné na stiahnutie"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:168
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:172
@@ -800,7 +798,7 @@ msgstr "Konvertor"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:346
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
 msgid "Translate Metadata and Chapters"
-msgstr ""
+msgstr "Preložiť metadáta a kapitoly"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:347
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
@@ -808,6 +806,8 @@ msgid ""
 "Automatically translate embedded metadata and chapters to the app's language "
 "on supported sites and media"
 msgstr ""
+"Automaticky preložiť vložené metadáta a kapitoly do jazyka aplikácie na "
+"podporovaných stránkach a médiách"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
@@ -1379,9 +1379,9 @@ msgid "New yt-dlp update available: {0}"
 msgstr "K dispozícii je nová aktualizácia yt-dlp: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:188
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "New Deno update available: {0}"
-msgstr "K dispozícii je nová aktualizácia {0}: {1}"
+msgstr "K dispozícii je nová Deno aktualizácia: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:198
 msgid "No update available"
@@ -1400,14 +1400,13 @@ msgid "An error occurred while clearing queued downloads"
 msgstr "Pri čistení stiahnutí v poradí došlo k chybe"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:261
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Deno {0} installed successfully"
-msgstr "yt-dlp {0} bol úspešne nainštalovaný"
+msgstr "Deno {0} bolo úspešne nainštalované"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:265
-#, fuzzy
 msgid "Unable to download and install the Deno update"
-msgstr "Nie je možné stiahnuť a nainštalovať aktualizáciu"
+msgstr "Nie je možné stiahnuť a nainštalovať aktualizáciu Deno"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:295
 msgid "An error occurred while pausing the download"
@@ -1509,7 +1508,7 @@ msgstr "Whale"
 #: Nickvision.Parabolic.Shared/Models/Format.cs:260
 #, csharp-format
 msgid "{0} FPS"
-msgstr ""
+msgstr "{0} FPS"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
 msgid "Never"
@@ -1906,7 +1905,7 @@ msgstr "Súbory cookie zo súboru"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
 msgid "Upload a txt cookies file from unlisted browsers"
-msgstr ""
+msgstr "Nahrať textový súbor cookies z neuvedených prehliadačov"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
 msgid "Max Connections Per Server"
