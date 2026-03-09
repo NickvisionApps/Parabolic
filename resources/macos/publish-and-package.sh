@@ -247,6 +247,22 @@ if [[ -n "$GDK_PIXBUF_SRC" ]]; then
         sed -i '' "s|$BREW_PREFIX/lib/gdk-pixbuf-2.0|@GDK_PIXBUF_DIR@|g" "$LOADERS_CACHE"
         success "Bundled GDK pixbuf loaders."
     fi
+    # Fix Homebrew references in loader .so files and bundle their dependencies (e.g. librsvg for SVG rendering).
+    # Loaders are dlopen()'d at runtime, so their deps must be in Frameworks and their rpaths must point there.
+    info "Fixing GDK pixbuf loader library references..."
+    find "$GDK_PIXBUF_DEST" -name "*.so" | while read -r loader; do
+        install_name_tool -add_rpath "@loader_path/../../../../Frameworks" "$loader" 2>/dev/null || true
+        while IFS= read -r dep_line; do
+            dep_path="$(echo "$dep_line" | awk '{print $1}')"
+            if [[ "$dep_path" == "$BREW_PREFIX"* && -f "$dep_path" ]]; then
+                dep_name="$(basename "$dep_path")"
+                install_name_tool -change "$dep_path" "@rpath/$dep_name" "$loader" 2>/dev/null || true
+                bundle_dylib "$dep_path"
+            fi
+        done < <(otool -L "$loader" | tail -n +2)
+        codesign --force --sign - "$loader" 2>/dev/null || true
+    done
+    success "Fixed GDK pixbuf loader library references."
 else
     warn "GDK pixbuf loaders not found under $BREW_PREFIX/lib/gdk-pixbuf-2.0"
 fi
