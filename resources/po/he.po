@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-05 20:56-0500\n"
-"PO-Revision-Date: 2026-02-26 08:09+0000\n"
+"PO-Revision-Date: 2026-03-07 08:55+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/he/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
@@ -512,7 +512,7 @@ msgstr "הושלמו"
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:160
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 msgid "Failed"
-msgstr ""
+msgstr "נכשל"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:171
 msgid "Manage Download"
@@ -656,17 +656,15 @@ msgstr "העדפת תסדיר כתוביות זה בזמן ההורדה"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:156
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
-#, fuzzy
 msgid "Preferred Frame Rate"
-msgstr "תסדיר כתוביות מועדף"
+msgstr "קצב תמוניות מועדף"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:157
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
-#, fuzzy
 msgid ""
 "Prefer this frame rate when parsing video formats to show available to "
 "download"
-msgstr "העדפת מפענח זה בעת טעינת סוגי וידאו זמינים להורדה"
+msgstr "העדפת קצב התמוניות הזה בעת פיענוח סוגי וידאו להצגה שזמינים להורדה"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:168
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:172
@@ -784,14 +782,14 @@ msgstr "ממיר"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:346
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
 msgid "Translate Metadata and Chapters"
-msgstr ""
+msgstr "תרגום נתוני על ומקטעים"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:347
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
 msgid ""
 "Automatically translate embedded metadata and chapters to the app's language "
 "on supported sites and media"
-msgstr ""
+msgstr "לתרגם את נתוני העל והמקטעים אוטומטית לשפת היישומון באתרים ומדיה נתמכים"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
@@ -1355,9 +1353,9 @@ msgid "New yt-dlp update available: {0}"
 msgstr "עדכון חדש ל-yt-dlp זמין: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:188
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "New Deno update available: {0}"
-msgstr "עדכון חדש ל-{0} זמין: {1}"
+msgstr "יש עדכון חדש ל־Deno‏: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:198
 msgid "No update available"
@@ -1376,14 +1374,13 @@ msgid "An error occurred while clearing queued downloads"
 msgstr "שגיאה בניקוי ההורדות הממתינות בתור"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:261
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Deno {0} installed successfully"
-msgstr "yt-dlp {0} הותקן בהצלחה"
+msgstr "Deno {0} הותקן בהצלחה"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:265
-#, fuzzy
 msgid "Unable to download and install the Deno update"
-msgstr "לא ניתן להוריד ולהתקין את העדכון"
+msgstr "לא ניתן להוריד ולהתקין את העדכון ל־Deno"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:295
 msgid "An error occurred while pausing the download"
@@ -1485,7 +1482,7 @@ msgstr "Whale"
 #: Nickvision.Parabolic.Shared/Models/Format.cs:260
 #, csharp-format
 msgid "{0} FPS"
-msgstr ""
+msgstr "{0} תמוניות לשנייה"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
 msgid "Never"
@@ -1877,7 +1874,7 @@ msgstr "קובצי Cookie מקובץ חיצוני"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
 msgid "Upload a txt cookies file from unlisted browsers"
-msgstr ""
+msgstr "העלאת קובץ עוגיות טקסט מדפדפנים שלא מופיעים"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
 msgid "Max Connections Per Server"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-05 20:56-0500\n"
-"PO-Revision-Date: 2026-02-18 02:32+0000\n"
+"PO-Revision-Date: 2026-03-07 08:55+0000\n"
 "Last-Translator: Pavel Miniutka <pavel.miniutka@gmail.com>\n"
 "Language-Team: Belarusian <https://hosted.weblate.org/projects/nickvision-"
 "tube-converter/app/be/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
@@ -516,7 +516,7 @@ msgstr "Завершаныя"
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:160
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 msgid "Failed"
-msgstr ""
+msgstr "Няўдалыя"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:171
 msgid "Manage Download"
@@ -669,19 +669,17 @@ msgstr "Аддаваць перавагу гэтаму фармату субці
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:156
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
-#, fuzzy
 msgid "Preferred Frame Rate"
-msgstr "Прыярытэтны фармат субцітраў"
+msgstr "Прыярытэтная частата кадраў"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:157
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
-#, fuzzy
 msgid ""
 "Prefer this frame rate when parsing video formats to show available to "
 "download"
 msgstr ""
-"Аддаваць перавагу гэтаму кодэку пры аналізе даступных для спампоўвання "
-"відэафарматаў"
+"Аддаваць перавагу гэтай частаце кадраў пры аналізе даступных для "
+"спампоўвання відэафарматаў"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:168
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:172
@@ -800,7 +798,7 @@ msgstr "Канвертар"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:346
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
 msgid "Translate Metadata and Chapters"
-msgstr ""
+msgstr "Перакладаць метаданыя і раздзелы"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:347
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
@@ -808,6 +806,8 @@ msgid ""
 "Automatically translate embedded metadata and chapters to the app's language "
 "on supported sites and media"
 msgstr ""
+"Аўтаматычна перакладаць убудаваныя метаданыя і раздзелы на мову праграмы "
+"сайтах і медыя, якія падтрымліваюцца"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
@@ -1383,9 +1383,9 @@ msgid "New yt-dlp update available: {0}"
 msgstr "Даступна абнаўленне yt-dlp: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:188
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "New Deno update available: {0}"
-msgstr "Даступна абнаўленне {0}: {1}"
+msgstr "Даступна абнаўленне Deno: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:198
 msgid "No update available"
@@ -1404,14 +1404,13 @@ msgid "An error occurred while clearing queued downloads"
 msgstr "Падчас ачысткі чаргі спампоўванняў адбылася памылка"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:261
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Deno {0} installed successfully"
-msgstr "yt-dlp {0} паспяхова ўсталявана"
+msgstr "Deno {0} паспяхова ўсталявана"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:265
-#, fuzzy
 msgid "Unable to download and install the Deno update"
-msgstr "Не ўдалося спампаваць і ўсталяваць абнаўленне"
+msgstr "Не ўдалося спампаваць і ўсталяваць абнаўленне Deno"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:295
 msgid "An error occurred while pausing the download"
@@ -1513,7 +1512,7 @@ msgstr "Whale"
 #: Nickvision.Parabolic.Shared/Models/Format.cs:260
 #, csharp-format
 msgid "{0} FPS"
-msgstr ""
+msgstr "{0} FPS"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
 msgid "Never"
@@ -1910,6 +1909,7 @@ msgstr "Cookie з файла"
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
 msgid "Upload a txt cookies file from unlisted browsers"
 msgstr ""
+"Загрузіць файл cookie ў фармаце txt з браўзераў, якія не ўключаны ў спіс"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
 msgid "Max Connections Per Server"
