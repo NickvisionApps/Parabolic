@@ -126,7 +126,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while adding playlist downloads");
+            _logger.LogError($"An error occurred while adding playlist downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while adding playlist downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -183,7 +183,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while adding the single download");
+            _logger.LogError($"An error occurred while adding the single download: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while adding the single download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -285,7 +285,7 @@ public class AddDownloadDialogController
         {
             if (e is not YtdlpException)
             {
-                _logger.LogError(e, $"An error occurred while discovering media: {url}");
+                _logger.LogError($"An error occurred while discovering media ({url}): {e}");
             }
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while discovering media"), NotificationSeverity.Error)
             {
