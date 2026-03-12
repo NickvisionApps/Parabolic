@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-05 20:56-0500\n"
-"PO-Revision-Date: 2026-02-18 12:26+0000\n"
+"PO-Revision-Date: 2026-03-07 08:55+0000\n"
 "Last-Translator: bovirus <roberto.boriotti@canon.it>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/it/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
@@ -518,7 +518,7 @@ msgstr "Completati"
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:160
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 msgid "Failed"
-msgstr ""
+msgstr "Non riuscito"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:171
 msgid "Manage Download"
@@ -670,19 +670,17 @@ msgstr "Durante il download preferisci questo formato file"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:156
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:74
-#, fuzzy
 msgid "Preferred Frame Rate"
-msgstr "Formato sottotitoli preferito"
+msgstr "Frequenza fotogrammi preferita"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:157
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:75
-#, fuzzy
 msgid ""
 "Prefer this frame rate when parsing video formats to show available to "
 "download"
 msgstr ""
-"Quando si analizzano i formati video da visualizzare per il download "
-"preferisci questo codec"
+"Durante l'analisi dei formati video da visualizzare disponibili per il "
+"download preferisci questa frequenza fotogrammi"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:168
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:172
@@ -802,7 +800,7 @@ msgstr "Convertitore"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:346
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
 msgid "Translate Metadata and Chapters"
-msgstr ""
+msgstr "Traduci metadati e capitoli"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:347
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
@@ -810,6 +808,8 @@ msgid ""
 "Automatically translate embedded metadata and chapters to the app's language "
 "on supported sites and media"
 msgstr ""
+"Nei siti e media supportati traduci automaticamente metadati e capitoli "
+"incorporati nella lingua dell'app"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
@@ -1169,9 +1169,8 @@ msgid ""
 msgstr "Ci sono dei download in corso. Vuoi interrompere i download ed uscire?"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:271
-#, fuzzy
 msgid "View"
-msgstr "Visualizza registro"
+msgstr "Visualizza"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:281
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:96
@@ -1389,9 +1388,9 @@ msgid "New yt-dlp update available: {0}"
 msgstr "Disponibile aggiornamento yt-dlp: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:188
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "New Deno update available: {0}"
-msgstr "Disponibile aggiornamento di {0}: {1}"
+msgstr "Disponibile aggiornamento Deno {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:198
 msgid "No update available"
@@ -1410,14 +1409,13 @@ msgid "An error occurred while clearing queued downloads"
 msgstr "Errore durante la rimozione dei download in coda"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:261
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Deno {0} installed successfully"
-msgstr "yt-dlp {0} installato correttamente"
+msgstr "Deno {0} installato correttamente"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:265
-#, fuzzy
 msgid "Unable to download and install the Deno update"
-msgstr "Impossibile scaricare ed installare l'aggiornamento"
+msgstr "Impossibile scaricare ed installare aggiornamento Deno"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:295
 msgid "An error occurred while pausing the download"
@@ -1519,7 +1517,7 @@ msgstr "Whale"
 #: Nickvision.Parabolic.Shared/Models/Format.cs:260
 #, csharp-format
 msgid "{0} FPS"
-msgstr ""
+msgstr "{0} FPS"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:98
 msgid "Never"
@@ -1916,7 +1914,7 @@ msgstr "Cookie da file"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:92
 msgid "Upload a txt cookies file from unlisted browsers"
-msgstr ""
+msgstr "Carica un file testo cookie da browser non elencati"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:103
 msgid "Max Connections Per Server"
