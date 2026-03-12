@@ -33,6 +33,7 @@ public static class HostApplicationBuilderExtensions
                 - Improved handling of long file names, they will now be truncated if too long
                 - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
                 - Updated yt-dlp
+                - Fixed batch file loading on Linux and macOS
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
                 IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
