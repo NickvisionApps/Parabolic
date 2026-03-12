@@ -126,27 +126,23 @@ public class Media
                 }
                 Formats.Add(format);
             }
-            bool matchesPreferredVideoCodec(Format f) => !f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec;
-            bool matchesPreferredAudioCodec(Format f) => !f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec;
             if (Formats.Count == 0 && skippedFormats.Count > 0)
             {
-                var preferredCodecFormats = skippedFormats.Where(f => matchesPreferredVideoCodec(f) && matchesPreferredAudioCodec(f)).ToList();
+                var preferredCodecFormats = skippedFormats.Where(f => (!f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec) && (!f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec)).ToList();
                 Formats.AddRange(preferredCodecFormats.Count > 0 ? preferredCodecFormats : skippedFormats);
             }
             else if (!Formats.HasFormats(MediaType.Video) && skippedFormats.HasFormats(MediaType.Video))
             {
-                var preferredCodecVideoFormats = skippedFormats.Where(f => f.Type == MediaType.Video && matchesPreferredVideoCodec(f)).ToList();
-                var videoFormatsToAdd = preferredCodecVideoFormats.Count > 0 ? preferredCodecVideoFormats : skippedFormats.Where(f => f.Type == MediaType.Video).ToList();
-                foreach (var format in videoFormatsToAdd)
+                var preferredCodecVideoFormats = skippedFormats.Where(f => f.Type == MediaType.Video && (!f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec)).ToList();
+                foreach (var format in preferredCodecVideoFormats.Count > 0 ? preferredCodecVideoFormats : skippedFormats.Where(f => f.Type == MediaType.Video).ToList())
                 {
                     Formats.Add(format);
                 }
             }
             else if (!Formats.HasFormats(MediaType.Audio) && skippedFormats.HasFormats(MediaType.Audio))
             {
-                var preferredCodecAudioFormats = skippedFormats.Where(f => f.Type == MediaType.Audio && matchesPreferredAudioCodec(f)).ToList();
-                var audioFormatsToAdd = preferredCodecAudioFormats.Count > 0 ? preferredCodecAudioFormats : skippedFormats.Where(f => f.Type == MediaType.Audio).ToList();
-                foreach (var format in audioFormatsToAdd)
+                var preferredCodecAudioFormats = skippedFormats.Where(f => f.Type == MediaType.Audio && (!f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec)).ToList();
+                foreach (var format in preferredCodecAudioFormats.Count > 0 ? preferredCodecAudioFormats : skippedFormats.Where(f => f.Type == MediaType.Audio).ToList())
                 {
                     Formats.Add(format);
                 }
