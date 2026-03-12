@@ -554,8 +554,7 @@ public partial class Download : IDisposable
         if (Options.TimeFrame is not null)
         {
             arguments.Add("--download-sections");
-            arguments.Add($"*{Options.TimeFrame.ToString()}");
-            arguments.Add("--force-keyframes-at-cuts");
+            arguments.Add($"*{Options.TimeFrame.StartString}-{Options.TimeFrame.EndString}");
         }
         arguments.AddRange(downloader.YtdlpDownloadArgs.SplitCommandLine());
         DownloadArgumentsCache[hash] = arguments;
