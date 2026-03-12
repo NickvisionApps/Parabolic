@@ -29,10 +29,10 @@ public static class HostApplicationBuilderExtensions
                 - Added failed filter to downloads view
                 - Improved selection of playlist video formats when resolutions are specified
                 - Improved selection of playlist audio formats on Windows when bitrates are specified
-                - Fixed an issue where the preferred video codec was ignored when a preferred frame rate was also set
                 - Improved cropping of audio thumbnails
                 - Improved handling of long file names, they will now be truncated if too long
                 - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
+                - Fixed an issue where the preferred video codec was ignored when a preferred frame rate was also set
                 - Updated yt-dlp
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
