@@ -213,10 +213,6 @@ public class DiscoveryService : IDiscoveryService
     private async Task<List<BatchFileEntry>> ParseBatchFileAsync(string batchFilePath, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation($"Parsing batch file: {batchFilePath}");
-        if (!Path.IsPathRooted(batchFilePath) && Path.DirectorySeparatorChar == '/')
-        {
-            batchFilePath = $"/{batchFilePath}";
-        }
         if (!File.Exists(batchFilePath) || Path.GetExtension(batchFilePath).ToLower() != ".txt")
         {
             return [];
