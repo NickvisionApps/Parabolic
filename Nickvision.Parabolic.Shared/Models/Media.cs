@@ -126,20 +126,27 @@ public class Media
                 }
                 Formats.Add(format);
             }
+            bool matchesPreferredVideoCodec(Format f) => !f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec;
+            bool matchesPreferredAudioCodec(Format f) => !f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec;
             if (Formats.Count == 0 && skippedFormats.Count > 0)
             {
-                Formats.AddRange(skippedFormats);
+                var preferredCodecFormats = skippedFormats.Where(f => matchesPreferredVideoCodec(f) && matchesPreferredAudioCodec(f)).ToList();
+                Formats.AddRange(preferredCodecFormats.Count > 0 ? preferredCodecFormats : skippedFormats);
             }
             else if (!Formats.HasFormats(MediaType.Video) && skippedFormats.HasFormats(MediaType.Video))
             {
-                foreach (var format in skippedFormats.Where(f => f.Type == MediaType.Video))
+                var preferredCodecVideoFormats = skippedFormats.Where(f => f.Type == MediaType.Video && matchesPreferredVideoCodec(f)).ToList();
+                var videoFormatsToAdd = preferredCodecVideoFormats.Count > 0 ? preferredCodecVideoFormats : skippedFormats.Where(f => f.Type == MediaType.Video).ToList();
+                foreach (var format in videoFormatsToAdd)
                 {
                     Formats.Add(format);
                 }
             }
             else if (!Formats.HasFormats(MediaType.Audio) && skippedFormats.HasFormats(MediaType.Audio))
             {
-                foreach (var format in skippedFormats.Where(f => f.Type == MediaType.Audio))
+                var preferredCodecAudioFormats = skippedFormats.Where(f => f.Type == MediaType.Audio && matchesPreferredAudioCodec(f)).ToList();
+                var audioFormatsToAdd = preferredCodecAudioFormats.Count > 0 ? preferredCodecAudioFormats : skippedFormats.Where(f => f.Type == MediaType.Audio).ToList();
+                foreach (var format in audioFormatsToAdd)
                 {
                     Formats.Add(format);
                 }
