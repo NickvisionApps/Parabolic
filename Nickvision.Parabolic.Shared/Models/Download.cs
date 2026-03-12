@@ -554,7 +554,7 @@ public partial class Download : IDisposable
         if (Options.TimeFrame is not null)
         {
             arguments.Add("--download-sections");
-            arguments.Add($"*{Options.TimeFrame.StartString}-{Options.TimeFrame.EndString}");
+            arguments.Add($"*{Options.TimeFrame}");
         }
         arguments.AddRange(downloader.YtdlpDownloadArgs.SplitCommandLine());
         DownloadArgumentsCache[hash] = arguments;
