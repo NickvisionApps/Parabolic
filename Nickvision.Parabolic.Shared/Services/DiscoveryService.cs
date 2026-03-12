@@ -63,7 +63,7 @@ public class DiscoveryService : IDiscoveryService
             }
         }
         cancellationToken.ThrowIfCancellationRequested();
-        return new DiscoveryResult(new Uri($"file://{path}"), Path.GetFileNameWithoutExtension(path), entryInfos);
+        return new DiscoveryResult(new Uri(path), Path.GetFileNameWithoutExtension(path), entryInfos);
     }
 
     public Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential = null, CancellationToken cancellationToken = default) => GetForUrlAsync(url, credential, string.Empty, string.Empty, cancellationToken);
