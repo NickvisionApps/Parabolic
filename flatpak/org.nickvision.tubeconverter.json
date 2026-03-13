@@ -59,24 +59,24 @@
             ]
         },
         {
-            "name": "ffmpeg",
+            "name": "curl-impersonate",
             "buildsystem": "simple",
             "build-commands": [
-                "mv bin/* /app/bin/"
+                "mv * /app/bin/"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linux64-gpl.tar.xz",
-                    "sha256": "65c4c74227080f6e400bab1b4d6fc450f5f9c13b8bb88d2d5ca6ac696e353ab5",
+                    "url": "https://github.com/lexiforest/curl-impersonate/releases/download/v1.5.1/curl-impersonate-v1.5.1.x86_64-linux-gnu.tar.gz",
+                    "sha256": "bde19dc6cf323792d81c13bb44e32ae8b13340aa91c1725e8bfba09bef20be50",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linuxarm64-gpl.tar.xz",
-                    "sha256": "4aabfbaeb03a151411b80d267a6f827c951d202a84454c350ef460cbe5fb10fd",
+                    "url": "https://github.com/lexiforest/curl-impersonate/releases/download/v1.5.1/curl-impersonate-v1.5.1.aarch64-linux-gnu.tar.gz",
+                    "sha256": "6ca67ebece7f7eb09bb0eac51b6754fc04deb1728faf73b9d51d646a3b883d1c",
                     "only-arches": [
                         "aarch64"
                     ]
@@ -106,6 +106,31 @@
                         "aarch64"
                     ]
                 }   
+            ]
+        },
+        {
+            "name": "ffmpeg",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mv bin/* /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linux64-gpl.tar.xz",
+                    "sha256": "65c4c74227080f6e400bab1b4d6fc450f5f9c13b8bb88d2d5ca6ac696e353ab5",
+                    "only-arches": [
+                        "x86_64"
+                    ]
+                },
+                {
+                    "type": "archive",
+                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linuxarm64-gpl.tar.xz",
+                    "sha256": "4aabfbaeb03a151411b80d267a6f827c951d202a84454c350ef460cbe5fb10fd",
+                    "only-arches": [
+                        "aarch64"
+                    ]
+                }
             ]
         },
         {
