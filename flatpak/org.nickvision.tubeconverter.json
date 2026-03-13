@@ -62,7 +62,7 @@
             "name": "curl-impersonate",
             "buildsystem": "simple",
             "build-commands": [
-                "mv * /app/bin/"
+                "install -Dm755 curl* /app/bin/"
             ],
             "sources": [
                 {
@@ -87,7 +87,7 @@
             "name": "deno",
             "buildsystem": "simple",
             "build-commands": [
-                "mv * /app/bin/"
+                "install -Dm755 deno /app/bin/deno"
             ],
             "sources": [
                 {
@@ -112,7 +112,7 @@
             "name": "ffmpeg",
             "buildsystem": "simple",
             "build-commands": [
-                "mv bin/* /app/bin/"
+                "install -Dm755 bin/* /app/bin/"
             ],
             "sources": [
                 {
