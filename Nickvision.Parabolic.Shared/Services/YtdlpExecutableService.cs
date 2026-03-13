@@ -31,11 +31,11 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     {
         if (OperatingSystem.IsLinux())
         {
-            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.02.21");
+            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.03.13");
         }
         else
         {
-            _bundledVersion = new AppVersion("2026.03.03");
+            _bundledVersion = new AppVersion("2026.03.13");
         }
         if (OperatingSystem.IsWindows())
         {
