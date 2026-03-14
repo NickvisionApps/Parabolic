@@ -82,7 +82,7 @@ public class DownloadRow : Gtk.ListBoxRow
     }
 
     public async Task TriggerAddedStateAsync(DownloadAddedEventArgs args)
-    {        
+    {
         _id = args.Id;
         _path = args.Path;
         try
