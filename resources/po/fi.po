@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-05 20:56-0500\n"
-"PO-Revision-Date: 2026-03-12 01:09+0000\n"
+"PO-Revision-Date: 2026-03-14 19:47+0000\n"
 "Last-Translator: Noobz4Ever <pnsupermoderator@hotmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/fi/>\n"
@@ -387,7 +387,7 @@ msgstr "Vanhin"
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:36
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
 msgid "Save Length"
-msgstr "Tallenna pituus"
+msgstr "Historian tallennusaika"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:47
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:54
@@ -554,13 +554,12 @@ msgstr "Sovellus tulee käynnistää uudelleen muutoksen toteuttamiseksi"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:37
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:42
-#, fuzzy
 msgid "Receive Preview Updates"
-msgstr "Vastaanota sovelluksen beetapäivityksiä"
+msgstr "Vastaanota sovelluksen beta-päivityksiä"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:38
 msgid "Update dependencies, such as yt-dlp, to beta versions"
-msgstr "Päivitä riippuvuuksia, kuten yt-dlp, beta-versioihin"
+msgstr "Päivitä riippuvuudet, kuten yt-dlp, beta-versioihin"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:47
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:46
@@ -575,12 +574,12 @@ msgstr "Estä tietokonetta menemästä valmiustilaan kun lataukset ovat käynnis
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:57
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:50
 msgid "Download History Length"
-msgstr "Menneiden latausten säilytyksen kattavuus"
+msgstr "Lataushistorian säilytysaika"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:58
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:51
 msgid "The amount of time to keep past downloads in the app's history"
-msgstr "Säilytä aiempia latauksia tämän ajan sovelluksen historiassa"
+msgstr "Kuinka pitkään sovellus säilyttää lataushistorian tiedot"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:68
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:82
@@ -623,7 +622,6 @@ msgstr "Sisällytä automaattitekstitykset"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:117
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:62
-#, fuzzy
 msgid ""
 "Show auto-generated subtitles to download in addition to available subtitles"
 msgstr ""
@@ -640,7 +638,7 @@ msgstr "Haluttu pakkauksenhallinta videoille"
 msgid ""
 "Prefer this codec when parsing video formats to show available to download"
 msgstr ""
-"Suosittele tätä koodekkia, kun selaat videoformaatteja, jotka näkyvät "
+"Suosittele tätä koodekkia, kun selaat videoformaatteja jotka näkyvät "
 "ladattavissa"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:136
@@ -653,8 +651,7 @@ msgstr "Haluttu äänikodekki"
 msgid ""
 "Prefer this codec when parsing audio formats to show available to download"
 msgstr ""
-"Suosittele tätä koodekkia, kun selaat äänimuotoja, jotta voit näyttää "
-"ladattavan"
+"Suosittele tätä koodekkia, kun selaat äänimuotoja jotka näkyvät ladattavissa"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:146
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:71
@@ -1229,7 +1226,7 @@ msgid ""
 "irreversible"
 msgstr ""
 "Haluatko varmasti poistaa tämän jälkikäsittelijän parametrin? Poistoa ei voi "
-"perua."
+"perua"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:52
 msgid "Use manual credential"
@@ -1250,13 +1247,12 @@ msgid "An error occurred while adding playlist downloads"
 msgstr "Virhe soittolistan latauksia lisättäessä"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:187
-#, fuzzy
 msgid "An error occurred while adding the single download"
 msgstr "Virhe yksittäistä latausta lisättäessä"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:204
 msgid "No media was found at the provided URL"
-msgstr "Annetusta URL-osoitteesta ei löytynyt mediaa."
+msgstr "Annetusta URL-osoitteesta ei löytynyt mediaa"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:235
 #: Nickvision.Parabolic.Shared/Models/Format.cs:343
@@ -1328,37 +1324,34 @@ msgstr "OGG (Ääni)"
 
 #: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:290
 msgid "An error occurred while discovering media"
-msgstr "Virhe mediaa haettaessa."
+msgstr "Virhe mediaa haettaessa"
 
 #: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:34
-#, fuzzy
 msgid "A credential with that name already exists"
-msgstr "Tunnistetieto tällä nimellä on jo olemassa."
+msgstr "Tunnistetieto tällä nimellä on jo olemassa"
 
 #: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:38
-#, fuzzy
 msgid "The name of the credential cannot be empty"
-msgstr "Tunnistetiedoissa nimeä ei voi jättää tyhjäksi."
+msgstr "Tunnistetiedoissa nimeä ei voi jättää tyhjäksi"
 
 #: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:42
 #: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:72
 #, fuzzy
 msgid "Either the credential username or password must be set"
-msgstr "Käyttäjänimeä ja salasanaa ei voi jättää tyhjäksi."
+msgstr "Käyttäjänimeä ja salasanaa ei voi jättää tyhjäksi"
 
 #: Nickvision.Parabolic.Shared/Controllers/KeyringViewController.cs:68
 #, fuzzy
 msgid "A credential with that name does not exist"
-msgstr "Argumentti tällä nimellä on jo olemassa."
+msgstr "Tällaisia tunnistetietoja ei ole olemassa"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:60
 msgid "Parabolic"
 msgstr "Parabolic"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:61
-#, fuzzy
 msgid "Download web video and audio."
-msgstr "Lataa videoita ja ääntä verkosta"
+msgstr "Lataa videoita ja ääntä verkosta."
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:62
 msgid "Matrix Chat"
@@ -1426,12 +1419,10 @@ msgid "An error occurred while pausing the download"
 msgstr "Virhe tapahtui, kun lataus keskeytettiin"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:313
-#, fuzzy
 msgid "An error occurred while recovering downloads"
 msgstr "Latausten palauttamisessa tapahtui virhe"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:330
-#, fuzzy
 msgid "An error occurred while resuming the download"
 msgstr "Lataamisen jatkamisessa tapahtui virhe"
 
@@ -1441,17 +1432,14 @@ msgid "An error occurred while retrying failed downloads"
 msgstr "Epäonnistuneiden latausten uudelleenyrityksessä tapahtui virhe"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:365
-#, fuzzy
 msgid "An error occurred while retrying the download"
 msgstr "Lataamisen uudelleenyrityksessä tapahtui virhe"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:383
-#, fuzzy
 msgid "An error occurred while stopping all downloads"
 msgstr "Kaikkien latausten lopettamisessa tapahtui virhe"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:400
-#, fuzzy
 msgid "An error occurred while stopping the download"
 msgstr "Lataamisen pysäyttämisessä tapahtui virhe"
 
@@ -1596,14 +1584,12 @@ msgstr "Argumentin nimeä ei voi jättää tyhjäksi"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:378
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:412
-#, fuzzy
 msgid "The arguments of the argument cannot be empty"
-msgstr "Tunnistetiedoissa nimeä ei voi jättää tyhjäksi."
+msgstr "Tunnistetiedoissa nimeä ei voi jättää tyhjäksi"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:404
-#, fuzzy
 msgid "An argument with that name does not exist"
-msgstr "Argumentti tällä nimellä on jo olemassa."
+msgstr "Argumentti tällä nimellä on jo olemassa"
 
 #: Nickvision.Parabolic.Shared/Models/Download.cs:101
 msgid "The file already exists and overwriting is disabled."
@@ -1647,7 +1633,7 @@ msgstr "Tietoja - {0}"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:26
 msgid "Changelog"
-msgstr "Muutoskirjaukset"
+msgstr "Muutosloki"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:27
 msgid "Debugging"
@@ -1737,7 +1723,6 @@ msgid "Warning"
 msgstr "Varoitus"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:82
-#, fuzzy
 msgid ""
 "Parabolic will download media based off of previously configured options and "
 "sensible defaults. Options including save folder, format, and subtitle "
@@ -1749,15 +1734,14 @@ msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:95
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:120
-#, fuzzy
 msgid ""
 "Generic types do not support embedding thumbnails and subtitles. If "
 "necessary, please select a specific type that is known to support embedding "
 "to prevent separate files from being written."
 msgstr ""
 "Yleiset tiedostotyypit eivät tue pikkukuvien ja tekstitysten upottamista. "
-"Valitse tietty tiedostotyyppi, joka tukee upottamista estääksesi erillisten "
-"kuva -ja tekstitystiedostojen kirjoittamisen levylle."
+"Valitse tiedostotyyppi, joka tukee upottamista estääksesi erillisten kuva- "
+"ja tekstitystiedostojen kirjoittamisen levylle."
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:98
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:131
@@ -1857,7 +1841,6 @@ msgid "Settings"
 msgstr "Asetukset"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:109
-#, fuzzy
 msgid "Credential Required"
 msgstr "Kirjautumistiedot vaaditaan"
 
@@ -1873,9 +1856,8 @@ msgstr ""
 "Tunnistetiedot vaaditaan, jotta voit jatkaa ”{0}” -tiedoston lataamista."
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:43
-#, fuzzy
 msgid "Update Parabolic and dependencies, such as yt-dlp, to beta versions"
-msgstr "Päivitä Parabolic ja riippuvuukset, kuten yt-dlp, beta-versioihin"
+msgstr "Päivitä Parabolic ja riippuvuudet, kuten yt-dlp, beta-versioihin"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:44
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:48
@@ -1941,13 +1923,14 @@ msgid "Max Connections Per Server"
 msgstr "Yhteyksien enimmäismäärä palvelinta kohden"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:104
+#, fuzzy
 msgid "Corresponds to -x option"
-msgstr ""
+msgstr "Ilmoita ylin arvo"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:105
 #, fuzzy
 msgid "Minimum Split Size (MiB)"
-msgstr "Puolituksen vähimmäiskoko (-k)"
+msgstr "Puolituksen vähimmäiskoko (MiB)"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:106
 msgid "Corresponds to -k option"
@@ -1974,7 +1957,6 @@ msgid "Post-Processor Arguments"
 msgstr "Jälkikäsittely käynnissä"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:150
-#, fuzzy
 msgid "Post-Processor"
 msgstr "Jälkikäsittelijä"
 
