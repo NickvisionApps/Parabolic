@@ -32,6 +32,7 @@ public static class HostApplicationBuilderExtensions
                 - Improved cropping of audio thumbnails
                 - Improved handling of long file names, they will now be truncated if too long
                 - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
+                - Fixed an issue where batch files were unusable on Linux and macOS
                 - Updated yt-dlp
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),

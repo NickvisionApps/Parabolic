@@ -197,7 +197,7 @@ public class AddDownloadDialogController
     {
         try
         {
-            var res = url.ToString().StartsWith("file://") ? await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(8), credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
+            var res = url.IsFile ? await _discoveryService.GetForBatchFileAsync(url.LocalPath, credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
             if (res.Media.Count == 0)
             {
                 _logger.LogError($"No media was found: {url}");

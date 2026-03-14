@@ -337,7 +337,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var file = await picker.PickSingleFileAsync();
         if (file is not null)
         {
-            TxtUrl.Text = new Uri($"file://{file.Path}").ToString();
+            TxtUrl.Text = new Uri(file.Path).ToString();
         }
     }
 
