@@ -81,10 +81,17 @@ jobs:
         run: |
           $publishDir = "${{ env.PROJECT_NAME }}\bin\${{ matrix.variant.arch }}\Release\net10.0-windows10.0.19041.0\win-${{ matrix.variant.arch }}\publish"
           $portableDir = "${{ github.workspace }}\portable"
+          $innoDir = "${{ github.workspace }}\inno"
           New-Item -ItemType Directory -Force -Path "$portableDir\Release" | Out-Null
           Copy-Item -Path "$publishDir\*" -Destination "$portableDir\Release" -Recurse
           $batContent = "@echo off`r`n`"%~dp0Release\${{ env.PROJECT_NAME }}.exe`" --portable"
           Set-Content -Path "$portableDir\${{ env.SHORT_NAME }}.bat" -Value $batContent -NoNewline
+          move $innoDir\yt-dlp.exe $portableDir\Release\yt-dlp.exe
+          move $innoDir\aria2c.exe $portableDir\Release\aria2c.exe
+          move $innoDir\ffmpeg.exe $portableDir\Release\ffmpeg.exe
+          move $innoDir\ffprobe.exe $portableDir\Release\ffprobe.exe
+          move $innoDir\ffplay.exe $portableDir\Release\ffplay.exe
+          move $innoDir\deno.exe $portableDir\Release\deno.exe
       - uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/inno/${{ env.INSTALLER_NAME }}.exe
