@@ -759,7 +759,7 @@ public partial class Download : IDisposable
                 ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
             }
         }
-        catch(Exception ex)
+        catch
         {
             ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
         }
