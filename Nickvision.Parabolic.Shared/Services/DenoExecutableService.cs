@@ -7,6 +7,7 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -29,11 +30,11 @@ public class DenoExecutableService : IDenoExecutableService
     {
         if (OperatingSystem.IsLinux())
         {
-            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2.7.4");
+            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2.7.5");
         }
         else
         {
-            _bundledVersion = new AppVersion("2.7.4");
+            _bundledVersion = new AppVersion("2.7.5");
         }
         if (OperatingSystem.IsWindows())
         {
@@ -53,11 +54,11 @@ public class DenoExecutableService : IDenoExecutableService
         }
     }
 
-    public DenoExecutableService(ILogger<DenoExecutableService> logger, IJsonFileService jsonFileService, IHttpClientFactory httpClientFactory)
+    public DenoExecutableService(ILogger<DenoExecutableService> logger, ILogger<UpdaterService> updaterLogger, IJsonFileService jsonFileService, IHttpClientFactory httpClientFactory)
     {
         _logger = logger;
         _jsonFileService = jsonFileService;
-        _stableUpdaterService = new UpdaterService("denoland", "deno", httpClientFactory.CreateClient());
+        _stableUpdaterService = new UpdaterService(updaterLogger, "denoland", "deno", httpClientFactory.CreateClient());
         _latestStableVersion = null;
     }
 
@@ -94,18 +95,21 @@ public class DenoExecutableService : IDenoExecutableService
 
     public async Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null)
     {
-        var path = OperatingSystem.IsWindows() ? Path.Combine(UserDirectories.LocalData, "deno.exe") : Path.Combine(UserDirectories.LocalData, "deno");
+        var path = Path.Combine(UserDirectories.LocalData, "deno.zip");
         var res = await _stableUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
         if (res)
         {
+            var executablePath = OperatingSystem.IsWindows() ? Path.Combine(UserDirectories.LocalData, "deno.exe") : Path.Combine(UserDirectories.LocalData, "deno");
             var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
             config.InstalledDenoAppVersion = version;
+            await ZipFile.ExtractToDirectoryAsync(path, UserDirectories.LocalData);
             await _jsonFileService.SaveAsync(config, Configuration.Key);
+            File.Delete(path);
             if (!OperatingSystem.IsWindows())
             {
                 using var process = new Process()
                 {
-                    StartInfo = new ProcessStartInfo("chmod", ["0755", path])
+                    StartInfo = new ProcessStartInfo("chmod", ["0755", executablePath])
                     {
                         UseShellExecute = false,
                         CreateNoWindow = true,

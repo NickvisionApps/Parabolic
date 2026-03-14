@@ -277,7 +277,7 @@ public class AddDownloadDialog : Adw.Dialog
             var res = await fileDialog.OpenAsync(_parent);
             if (res is not null)
             {
-                _urlRow!.Text_ = new Uri($"file://{res.GetPath()}").ToString();
+                _urlRow!.Text_ = new Uri(res.GetPath()!).ToString();
             }
         }
         catch { }

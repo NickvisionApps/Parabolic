@@ -128,18 +128,21 @@ public class Media
             }
             if (Formats.Count == 0 && skippedFormats.Count > 0)
             {
-                Formats.AddRange(skippedFormats);
+                var preferredCodecFormats = skippedFormats.Where(f => (!f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec) && (!f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec)).ToList();
+                Formats.AddRange(preferredCodecFormats.Count > 0 ? preferredCodecFormats : skippedFormats);
             }
             else if (!Formats.HasFormats(MediaType.Video) && skippedFormats.HasFormats(MediaType.Video))
             {
-                foreach (var format in skippedFormats.Where(f => f.Type == MediaType.Video))
+                var preferredCodecVideoFormats = skippedFormats.Where(f => f.Type == MediaType.Video && (!f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec)).ToList();
+                foreach (var format in preferredCodecVideoFormats.Count > 0 ? preferredCodecVideoFormats : skippedFormats.Where(f => f.Type == MediaType.Video).ToList())
                 {
                     Formats.Add(format);
                 }
             }
             else if (!Formats.HasFormats(MediaType.Audio) && skippedFormats.HasFormats(MediaType.Audio))
             {
-                foreach (var format in skippedFormats.Where(f => f.Type == MediaType.Audio))
+                var preferredCodecAudioFormats = skippedFormats.Where(f => f.Type == MediaType.Audio && (!f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec)).ToList();
+                foreach (var format in preferredCodecAudioFormats.Count > 0 ? preferredCodecAudioFormats : skippedFormats.Where(f => f.Type == MediaType.Audio).ToList())
                 {
                     Formats.Add(format);
                 }

@@ -353,7 +353,7 @@ public partial class Download : IDisposable
             if (downloader.CropAudioThumbnails && Options.FileType.IsAudio)
             {
                 arguments.Add("--exec");
-                arguments.Add($"before_dl:{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"} -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath)s.tmp.jpg");
+                arguments.Add($"before_dl:\"{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"}\" -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath)s.tmp.jpg");
                 arguments.Add("--exec");
                 arguments.Add("before_dl:rm %(thumbnails.-1.filepath)q");
                 arguments.Add("--exec");
@@ -694,9 +694,9 @@ public partial class Download : IDisposable
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id,
                         e.Data.AsMemory(),
-                        (fields[2] != "NA" ? double.Parse(fields[2]) : 0.0) / (fields[3] != "NA" ? double.Parse(fields[3]) : (fields[4] != "NA" ? double.Parse(fields[4]) : 1.0)),
-                        fields[5] != "NA" ? double.Parse(fields[5]) : 0.0,
-                        fields[6] == "NA" || fields[6] == "Unknown" ? -1 : int.Parse(fields[6])));
+                        (fields[2] != "NA" ? double.Parse(fields[2], NumberStyles.Any, CultureInfo.InvariantCulture) : 0.0) / (fields[3] != "NA" ? double.Parse(fields[3], NumberStyles.Any, CultureInfo.InvariantCulture) : (fields[4] != "NA" ? double.Parse(fields[4], NumberStyles.Any, CultureInfo.InvariantCulture) : 1.0)),
+                        fields[5] != "NA" ? double.Parse(fields[5], NumberStyles.Any, CultureInfo.InvariantCulture) : 0.0,
+                        fields[6] == "NA" || fields[6] == "Unknown" ? -1 : Convert.ToInt32(double.Parse(fields[6], NumberStyles.Any, CultureInfo.InvariantCulture))));
                 }
             }
             else if (e.Data.StartsWith("[#", StringComparison.Ordinal))

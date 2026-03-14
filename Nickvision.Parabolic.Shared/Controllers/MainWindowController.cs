@@ -184,8 +184,8 @@ public class MainWindowController
         }
         else if (_latestDenoVersion > _denoExecutableService.BundledVersion && _latestDenoVersion > config.InstalledDenoAppVersion)
         {
-            _logger.LogInformation($"New Deno update available: {_latestDenoVersion}");
-            _notificationService.Send(new AppNotification(_translationService._("New Deno update available: {0}", _latestDenoVersion.ToString()), NotificationSeverity.Success)
+            _logger.LogInformation($"New deno update available: {_latestDenoVersion}");
+            _notificationService.Send(new AppNotification(_translationService._("New deno update available: {0}", _latestDenoVersion.ToString()), NotificationSeverity.Success)
             {
                 Action = "update-deno"
             });
@@ -208,7 +208,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while clearing completed downloads");
+            _logger.LogError($"An error occurred while clearing completed downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while clearing completed downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -226,7 +226,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while clearing recoverable downloads");
+            _logger.LogError($"An error occurred while clearing recoverable downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while clearing recoverable downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -243,7 +243,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while clearing queued downloads");
+            _logger.LogError($"An error occurred while clearing queued downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while clearing queued downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -291,7 +291,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, $"An error occurred while pausing download ({id}).");
+            _logger.LogError($"An error occurred while pausing download ({id}): {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while pausing the download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -309,7 +309,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while recovering downloads.");
+            _logger.LogError($"An error occurred while recovering downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while recovering downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -326,7 +326,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, $"An error occurred while resuming download ({id}).");
+            _logger.LogError($"An error occurred while resuming download ({id}): {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while resuming the download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -344,7 +344,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while retrying failed downloads.");
+            _logger.LogError($"An error occurred while retrying failed downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while retrying failed downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -361,7 +361,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, $"An error occurred while retrying download ({id}).");
+            _logger.LogError($"An error occurred while retrying download ({id}): {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while retrying the download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -379,7 +379,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while stopping all downloads.");
+            _logger.LogError($"An error occurred while stopping all downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while stopping all downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -396,7 +396,7 @@ public class MainWindowController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, $"An error occurred while stopping download ({id}).");
+            _logger.LogError($"An error occurred while stopping download ({id}): {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while stopping the download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -408,7 +408,7 @@ public class MainWindowController
 
     public async Task WindowsUpdateAsync(IProgress<DownloadProgress> progress)
     {
-        var res = await _updaterService.WindowsUpdate(_latestAppVersion, progress);
+        var res = await _updaterService.WindowsApplicationUpdateAsync(_latestAppVersion, progress);
         if (!res)
         {
             _notificationService.Send(new AppNotification(_translationService._("Unable to download and install the update"), NotificationSeverity.Error));

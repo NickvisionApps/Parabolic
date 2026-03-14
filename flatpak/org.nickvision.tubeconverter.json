@@ -59,24 +59,26 @@
             ]
         },
         {
-            "name": "ffmpeg",
+            "name": "curl-impersonate",
             "buildsystem": "simple",
             "build-commands": [
-                "mv bin/* /app/bin/"
+                "install -Dm755 curl* /app/bin/"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linux64-gpl.tar.xz",
-                    "sha256": "65c4c74227080f6e400bab1b4d6fc450f5f9c13b8bb88d2d5ca6ac696e353ab5",
+                    "url": "https://github.com/lexiforest/curl-impersonate/releases/download/v1.5.1/curl-impersonate-v1.5.1.x86_64-linux-gnu.tar.gz",
+                    "sha256": "bde19dc6cf323792d81c13bb44e32ae8b13340aa91c1725e8bfba09bef20be50",
+                    "strip-components": 0,
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2026-03-05-14-56/ffmpeg-N-123175-gcebe0b577e-linuxarm64-gpl.tar.xz",
-                    "sha256": "4aabfbaeb03a151411b80d267a6f827c951d202a84454c350ef460cbe5fb10fd",
+                    "url": "https://github.com/lexiforest/curl-impersonate/releases/download/v1.5.1/curl-impersonate-v1.5.1.aarch64-linux-gnu.tar.gz",
+                    "sha256": "6ca67ebece7f7eb09bb0eac51b6754fc04deb1728faf73b9d51d646a3b883d1c",
+                    "strip-components": 0,
                     "only-arches": [
                         "aarch64"
                     ]
@@ -87,25 +89,50 @@
             "name": "deno",
             "buildsystem": "simple",
             "build-commands": [
-                "mv * /app/bin/"
+                "install -Dm755 deno /app/bin/deno"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.7.4/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "aef56590931e785af10bdab2077a2a01344b620c78b7086b88ebca73962ef25d",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.5/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "fd0a9e6cf085acb861b67577a13bfd0b1829e1c6d6a6dcfd35bcb8f05c973a47",
                     "only-arches": [
                         "x86_64"
                     ]
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.7.4/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "d2b99d1c072cab6ec8ececda1a1bd5889a9ea5217fafd9a9a9f5b0e56ef5e9cd",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.5/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "69259408777465378ad78ea97c3ec6722704a93caabdb8d272b36d93d8025101",
                     "only-arches": [
                         "aarch64"
                     ]
                 }   
+            ]
+        },
+        {
+            "name": "ffmpeg",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 bin/* /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-03-14-14-32/ffmpeg-n8.0.1-76-gfa4ee7ab3c-linux64-gpl-8.0.tar.xz",
+                    "sha256": "9bbbaa8d3b17b78a69a1e8d40e311a042019a0a923695703cc4c5471b3d90053",
+                    "only-arches": [
+                        "x86_64"
+                    ]
+                },
+                {
+                    "type": "archive",
+                    "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-03-14-14-32/ffmpeg-n8.0.1-76-gfa4ee7ab3c-linuxarm64-gpl-8.0.tar.xz",
+                    "sha256": "43ff4c73ee5b0dc40cd359511c7a51ec8f2637be67110c5a299abcf033aaf6c0",
+                    "only-arches": [
+                        "aarch64"
+                    ]
+                }
             ]
         },
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -53,19 +54,19 @@ public static class StringExtensions
             var index = -1;
             if ((index = s.IndexOf("GiB")) != -1)
             {
-                return double.Parse(s.Substring(0, index)) * Math.Pow(1024, 3);
+                return double.Parse(s.Substring(0, index), NumberStyles.Any, CultureInfo.InvariantCulture) * Math.Pow(1024, 3);
             }
             else if ((index = s.IndexOf("MiB")) != -1)
             {
-                return double.Parse(s.Substring(0, index)) * Math.Pow(1024, 2);
+                return double.Parse(s.Substring(0, index), NumberStyles.Any, CultureInfo.InvariantCulture) * Math.Pow(1024, 2);
             }
             else if ((index = s.IndexOf("KiB")) != -1)
             {
-                return double.Parse(s.Substring(0, index)) * 1024;
+                return double.Parse(s.Substring(0, index), NumberStyles.Any, CultureInfo.InvariantCulture) * 1024;
             }
             else if ((index = s.IndexOf("B")) != -1)
             {
-                return double.Parse(s.Substring(0, index));
+                return double.Parse(s.Substring(0, index), NumberStyles.Any, CultureInfo.InvariantCulture);
             }
             return 0.0;
         }

@@ -126,7 +126,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while adding playlist downloads");
+            _logger.LogError($"An error occurred while adding playlist downloads: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while adding playlist downloads"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -183,7 +183,7 @@ public class AddDownloadDialogController
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "An error occurred while adding the single download");
+            _logger.LogError($"An error occurred while adding the single download: {e}");
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while adding the single download"), NotificationSeverity.Error)
             {
                 Action = "error",
@@ -197,7 +197,7 @@ public class AddDownloadDialogController
     {
         try
         {
-            var res = url.ToString().StartsWith("file://") ? await _discoveryService.GetForBatchFileAsync(url.ToString().Substring(8), credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
+            var res = url.IsFile ? await _discoveryService.GetForBatchFileAsync(url.LocalPath, credential, cancellationToken) : await _discoveryService.GetForUrlAsync(url, credential, cancellationToken);
             if (res.Media.Count == 0)
             {
                 _logger.LogError($"No media was found: {url}");
@@ -285,7 +285,7 @@ public class AddDownloadDialogController
         {
             if (e is not YtdlpException)
             {
-                _logger.LogError(e, $"An error occurred while discovering media: {url}");
+                _logger.LogError($"An error occurred while discovering media ({url}): {e}");
             }
             _notificationService.Send(new AppNotification(_translationService._("An error occurred while discovering media"), NotificationSeverity.Error)
             {

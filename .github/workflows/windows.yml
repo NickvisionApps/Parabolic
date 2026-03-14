@@ -61,19 +61,19 @@ jobs:
         shell: pwsh
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          Invoke-WebRequest https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/10.0.2/windowsdesktop-runtime-10.0.2-win-${{ matrix.variant.arch }}.exe -OutFile dotnet.exe
+          Invoke-WebRequest https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/10.0.5/windowsdesktop-runtime-10.0.5-win-${{ matrix.variant.arch }}.exe -OutFile dotnet.exe
           Invoke-WebRequest https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-${{ matrix.variant.arch }}.exe -OutFile windowsappruntimeinstall.exe
-          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2026.03.03/yt-dlp${{ matrix.variant.ytdlp }}.exe -OutFile yt-dlp.exe
+          Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2026.03.13/yt-dlp${{ matrix.variant.ytdlp }}.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/Elypha/aria2-mod/releases/download/aria2c-1.37.0-b4fd7cb-20251126/aria2c-windows-x86_64-wintls.zip -OutFile aria2.zip
-          Invoke-WebRequest https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl.zip -OutFile ffmpeg.zip
+          Invoke-WebRequest https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0.zip -OutFile ffmpeg.zip
           Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.7.4/deno-${{ matrix.variant.deno }}-pc-windows-msvc.zip -OutFile deno.zip
           Expand-Archive -Force 'aria2.zip'
           Expand-Archive -Force 'ffmpeg.zip'
           Expand-Archive -Force 'deno.zip'
           move aria2\aria2c.exe aria2c.exe
-          move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffmpeg.exe ffmpeg.exe
-          move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffprobe.exe ffprobe.exe
-          move ffmpeg\ffmpeg-master-latest-${{ matrix.variant.ffmpeg }}-gpl\bin\ffplay.exe ffplay.exe
+          move ffmpeg\ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0\bin\ffmpeg.exe ffmpeg.exe
+          move ffmpeg\ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0\bin\ffprobe.exe ffprobe.exe
+          move ffmpeg\ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0\bin\ffplay.exe ffplay.exe
           move deno\deno.exe deno.exe
           iscc setup.iss
       - name: "Portable"
@@ -81,10 +81,17 @@ jobs:
         run: |
           $publishDir = "${{ env.PROJECT_NAME }}\bin\${{ matrix.variant.arch }}\Release\net10.0-windows10.0.19041.0\win-${{ matrix.variant.arch }}\publish"
           $portableDir = "${{ github.workspace }}\portable"
+          $innoDir = "${{ github.workspace }}\inno"
           New-Item -ItemType Directory -Force -Path "$portableDir\Release" | Out-Null
           Copy-Item -Path "$publishDir\*" -Destination "$portableDir\Release" -Recurse
           $batContent = "@echo off`r`n`"%~dp0Release\${{ env.PROJECT_NAME }}.exe`" --portable"
           Set-Content -Path "$portableDir\${{ env.SHORT_NAME }}.bat" -Value $batContent -NoNewline
+          move $innoDir\yt-dlp.exe $portableDir\Release\yt-dlp.exe
+          move $innoDir\aria2c.exe $portableDir\Release\aria2c.exe
+          move $innoDir\ffmpeg.exe $portableDir\Release\ffmpeg.exe
+          move $innoDir\ffprobe.exe $portableDir\Release\ffprobe.exe
+          move $innoDir\ffplay.exe $portableDir\Release\ffplay.exe
+          move $innoDir\deno.exe $portableDir\Release\deno.exe
       - uses: actions/upload-artifact@v4
         with:
           path: ${{ github.workspace }}/inno/${{ env.INSTALLER_NAME }}.exe
