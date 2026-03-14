@@ -32,6 +32,7 @@ public static class HostApplicationBuilderExtensions
                 - Improved cropping of audio thumbnails
                 - Improved handling of long file names, they will now be truncated if too long
                 - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
+                - Fixed an issue where download progress did not show correctly
                 - Fixed an issue where the preferred video codec was ignored when a preferred frame rate was also set
                 - Fixed an issue where batch files were unusable on Linux and macOS
                 - Fixed an issue where time frame downloads would not complete on Windows
