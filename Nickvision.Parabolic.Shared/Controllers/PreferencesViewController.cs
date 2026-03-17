@@ -228,6 +228,13 @@ public class PreferencesViewController
         set => _configuration.IncludeMediaIdInTitle = value;
     }
 
+    public bool IncludeSuperResolutions
+    {
+        get => _configuration.IncludeSuperResolutions;
+
+        set => _configuration.IncludeSuperResolutions = value;
+    }
+
     public bool LimitCharacters
     {
         get => _configuration.LimitCharacters;

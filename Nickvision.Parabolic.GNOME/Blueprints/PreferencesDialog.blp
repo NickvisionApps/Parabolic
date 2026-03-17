@@ -122,6 +122,16 @@ Adw.PreferencesDialog root {
         }
       }
 
+      Adw.SwitchRow includeSuperResolutionsRow {
+        title: _("Include Super Resolution Formats");
+        subtitle: _("Show super (AI-scaled) resolution formats to download in addition to regular formats");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "magic-wand-symbolic";
+        }
+      }
+
       Adw.ComboRow preferredVideoCodecRow {
         title: _("Preferred Video Codec");
         subtitle: _("Prefer this codec when parsing video formats to show available to download");

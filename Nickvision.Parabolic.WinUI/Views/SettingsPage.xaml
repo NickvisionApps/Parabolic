@@ -139,6 +139,14 @@
 
                             <ToggleSwitch x:Name="TglIncludeAutoSubtitles" Toggled="Tgl_Toggled"/>
                         </community:SettingsCard>
+                        
+                        <community:SettingsCard x:Name="RowIncludeSuperResolutions">
+                            <community:SettingsCard.HeaderIcon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF7EE;"/>
+                            </community:SettingsCard.HeaderIcon>
+
+                            <ToggleSwitch x:Name="TglIncludeSuperResolutions" Toggled="Tgl_Toggled"/>
+                        </community:SettingsCard>
 
                         <community:SettingsCard x:Name="RowPreferredVideoCodec">
                             <community:SettingsCard.HeaderIcon>
