@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-14 17:31-0400\n"
+"POT-Creation-Date: 2026-03-16 20:15-0400\n"
 "PO-Revision-Date: 2026-02-06 14:36+0000\n"
 "Last-Translator: Brage Fuglseth <brage.fuglseth@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -129,7 +129,7 @@ msgid "File Name"
 msgstr "Filnavn"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:171
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:394
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:396
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:90
 msgid "Revert to Title"
 msgstr "Tilbakestill til tittel"
@@ -143,8 +143,8 @@ msgstr "Lagringsmappe"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:185
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:365
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:461
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:508
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:463
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:510
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:92
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:117
 msgid "Select Save Folder"
@@ -274,13 +274,13 @@ msgid "Arguments are configurable in Preferences"
 msgstr "Kan tilpasses i egenskapene"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:285
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:19
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:110
 msgid "Start Time"
 msgstr "Starttid"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:289
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:31
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:20
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:111
 msgid "End Time"
 msgstr "Sluttid"
@@ -1034,11 +1034,19 @@ msgid "TXT Files (*.txt)"
 msgstr "Tekstfiler (.txt)"
 
 #: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:345
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:433
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:435
 msgid "No Subtitles Available"
 msgstr "Ingen undertekster tilgjengelig"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:417
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:377
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:391
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:277
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:432
+#, fuzzy, csharp-format
+msgid "Total Duration: {0}"
+msgstr "Total hastighet: {0}"
+
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:419
 msgid "Properties"
 msgstr ""
 
@@ -2708,9 +2716,6 @@ msgstr "Behandler"
 
 #~ msgid "Downloading required dependencies..."
 #~ msgstr "Laster ned påkrevde avhengigheter …"
-
-#~ msgid "Total Speed: {0}"
-#~ msgstr "Total hastighet: {0}"
 
 #~ msgid "Stop All Downloads (Ctrl+Shift+C)"
 #~ msgstr "Stopp alle nedlastinger (Ctrl+Shift+C)"

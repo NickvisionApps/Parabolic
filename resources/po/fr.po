@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-14 17:31-0400\n"
+"POT-Creation-Date: 2026-03-16 20:15-0400\n"
 "PO-Revision-Date: 2026-03-16 23:43+0000\n"
 "Last-Translator: Jeremy Frison <jeremyfrison@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -126,7 +126,7 @@ msgid "File Name"
 msgstr "Nom du fichier"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:171
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:394
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:396
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:90
 msgid "Revert to Title"
 msgstr "Revenir au titre"
@@ -140,8 +140,8 @@ msgstr "Dossier d’enregistrement"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:185
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:365
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:461
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:508
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:463
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:510
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:92
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:117
 msgid "Select Save Folder"
@@ -265,13 +265,13 @@ msgstr ""
 "Les arguments de ligne de commande sont modifiables dans les préférences"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:285
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:19
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:110
 msgid "Start Time"
 msgstr "Point de départ"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:289
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:31
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:20
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:111
 msgid "End Time"
 msgstr "Fin"
@@ -1020,11 +1020,19 @@ msgid "TXT Files (*.txt)"
 msgstr "Fichiers TXT (*.txt)"
 
 #: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:345
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:433
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:435
 msgid "No Subtitles Available"
 msgstr "Aucun sous-titre disponible"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:417
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:377
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:391
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:277
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:432
+#, fuzzy, csharp-format
+msgid "Total Duration: {0}"
+msgstr "Vitesse totale : {0}"
+
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:419
 msgid "Properties"
 msgstr "Propriétés"
 
@@ -1454,7 +1462,8 @@ msgstr ""
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:365
 msgid "An error occurred while retrying the download"
-msgstr "Une erreur est survenue lors de la nouvelle tentative de téléchargement"
+msgstr ""
+"Une erreur est survenue lors de la nouvelle tentative de téléchargement"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:383
 msgid "An error occurred while stopping all downloads"
@@ -2941,7 +2950,9 @@ msgstr "Post-processeur"
 #~ msgstr "Téléchargements restants : {0}"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-#~ msgstr "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;Converter;convertisseur;"
+#~ msgstr ""
+#~ "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;Tube;"
+#~ "Converter;convertisseur;"
 
 #~ msgid "— A basic yt-dlp frontend"
 #~ msgstr "— Une interface basique pour yt-dlp"
@@ -3163,9 +3174,6 @@ msgstr "Post-processeur"
 
 #~ msgid "Retry Failed Downloads (Ctrl+Shift+R)"
 #~ msgstr "Relancer les téléchargements échoués (Ctrl+Maj+R)"
-
-#~ msgid "Total Speed: {0}"
-#~ msgstr "Vitesse totale : {0}"
 
 #~ msgid "Clear Queued Downloads (Ctrl+Delete)"
 #~ msgstr "Effacer les téléchargements en attente (Ctrl+Suppr)"

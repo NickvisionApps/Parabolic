@@ -374,6 +374,7 @@ public class AddDownloadDialog : Adw.Dialog
             _playlistViewStack!.GetPage(_playlistItemsPage!).BadgeNumber = (uint)_discoveryContext.Items.Count;
             _playlistReverseOrderRow!.Active = _controller.PreviousDownloadOptions.ReverseDownloadOrder;
             _playlistNumberTitlesRow!.Active = _controller.PreviousDownloadOptions.NumberTitles;
+            _playlistItemsGroup!.Description = _translationService._("Total Duration: {0}", _discoveryContext.TotalDuration);
             _playlistSearchSubtitlesButton!.Active = false;
             _playlistSubtitlesSearchEntry!.Text_ = string.Empty;
             foreach (var item in _discoveryContext.Items)
@@ -387,6 +388,7 @@ public class AddDownloadDialog : Adw.Dialog
                 chk.Valign = Gtk.Align.Center;
                 chk.AddCssClass("selection-mode");
                 chk.Active = item.ShouldSelect;
+                chk.OnToggled += (_, _) => _playlistItemsGroup!.Description = _translationService._("Total Duration: {0}", _discoveryContext!.Items.Where((x, i) => _playlistItemsCheckButtons[i].Active).Select(m => m.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration));
                 row.AddPrefix(chk);
                 var revertBtn = Gtk.Button.New();
                 revertBtn.Valign = Gtk.Align.Center;

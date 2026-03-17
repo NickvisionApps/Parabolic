@@ -1,35 +1,26 @@
 ﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
+using System;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
 public class MediaSelectionItem : SelectionItem<int>
 {
-    private static string? _startTimeHeader;
-    private static string? _endTimeHeader;
+    private TimeFrame _timeFrame;
 
-    public string? StartTimeHeader => _startTimeHeader;
-    public string? EndTimeHeader => _endTimeHeader;
+    public string StartTimeHeader { get; }
+    public string EndTimeHeader { get; }
 
-    static MediaSelectionItem()
-    {
-        _startTimeHeader = null;
-        _endTimeHeader = null;
-    }
+    public TimeSpan Duration => _timeFrame.Duration;
 
     public MediaSelectionItem(int index, Media media, ITranslationService translator) : base(index, media.Title, true)
     {
+        _timeFrame = media.TimeFrame;
+        StartTimeHeader = translator._("Start Time");
+        EndTimeHeader = translator._("End Time");
         Filename = media.Title;
-        StartTime = media.TimeFrame.StartString;
-        EndTime = media.TimeFrame.EndString;
-        if (_startTimeHeader is null)
-        {
-            _startTimeHeader = translator._("Start Time");
-        }
-        if (_endTimeHeader is null)
-        {
-            _endTimeHeader = translator._("End Time");
-        }
+        StartTime = _timeFrame.StartString;
+        EndTime = _timeFrame.EndString;
     }
 
     public string Filename

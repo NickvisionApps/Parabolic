@@ -27,6 +27,7 @@ public static class HostApplicationBuilderExtensions
                 - Added the ability to update deno from within the app
                 - Added thumbnail image preview to add download dialog and downloads view
                 - Added failed filter to downloads view
+                - Added total time label to playlist items view
                 - Improved selection of playlist video formats when resolutions are specified
                 - Improved selection of playlist audio formats on Windows when bitrates are specified
                 - Improved cropping of audio thumbnails

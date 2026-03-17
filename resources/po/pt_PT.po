@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-14 17:31-0400\n"
+"POT-Creation-Date: 2026-03-16 20:15-0400\n"
 "PO-Revision-Date: 2026-03-16 23:43+0000\n"
 "Last-Translator: Ricardo Simões <xmcorporation@gmail.com>\n"
 "Language-Team: Portuguese (Portugal) <https://hosted.weblate.org/projects/"
@@ -127,7 +127,7 @@ msgid "File Name"
 msgstr "Nome do Ficheiro"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:171
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:394
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:396
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:90
 msgid "Revert to Title"
 msgstr "Reverter para Título"
@@ -141,8 +141,8 @@ msgstr "Pasta de Destino"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:185
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:365
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:461
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:508
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:463
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:510
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:92
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:117
 msgid "Select Save Folder"
@@ -266,13 +266,13 @@ msgid "Arguments are configurable in Preferences"
 msgstr "(Configurável nas preferências)"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:285
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:27
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:19
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:110
 msgid "Start Time"
 msgstr "Início"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:289
-#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:31
+#: Nickvision.Parabolic.Shared/Models/MediaSelectionItem.cs:20
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:111
 msgid "End Time"
 msgstr "Fim"
@@ -1040,11 +1040,19 @@ msgid "TXT Files (*.txt)"
 msgstr "Ficheiros TXT (*.txt)"
 
 #: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:345
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:433
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:435
 msgid "No Subtitles Available"
 msgstr "Sem Legendas Disponíveis"
 
-#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:417
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:377
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:391
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:277
+#: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:432
+#, csharp-format
+msgid "Total Duration: {0}"
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Views/AddDownloadDialog.cs:419
 msgid "Properties"
 msgstr "Propriedades"
 
@@ -1974,7 +1982,8 @@ msgstr "Corresponde a opção -k"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:109
 msgid "Extra arguments to pass to yt-dlp when discovering media"
-msgstr "Argumentos extra para passar ao yt-dlp quando estiver a descobrir mídia"
+msgstr ""
+"Argumentos extra para passar ao yt-dlp quando estiver a descobrir mídia"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:110
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:113

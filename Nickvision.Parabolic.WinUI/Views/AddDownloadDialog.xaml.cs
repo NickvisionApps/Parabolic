@@ -274,6 +274,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbPlaylistSuggestedVideoResolution.SelectSelectionItem();
             CmbPlaylistSuggestedAudioBitrate.ItemsSource = _discoveryContext.AudioBitrates;
             CmbPlaylistSuggestedAudioBitrate.SelectSelectionItem();
+            LblPlaylistItemsTime.Text = _translationService._("Total Duration: {0}", _discoveryContext.TotalDuration);
             TglPlaylistReverseDownloadOrder.IsOn = _controller.PreviousDownloadOptions.ReverseDownloadOrder;
             TglPlaylistNumberTitles.IsOn = _controller.PreviousDownloadOptions.NumberTitles;
             ListPlaylistItems.ItemsSource = _discoveryContext.Items;
@@ -427,6 +428,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
             items[index].Filename = items[index].Label;
         }
     }
+
+    private void ListPlaylistItems_SelectionChanged(object? sender, SelectionChangedEventArgs e) => LblPlaylistItemsTime.Text = _translationService._("Total Duration: {0}", ListPlaylistItems.SelectedItems.Cast<MediaSelectionItem>().Select(m => m.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration));
 
     private void BtnPlaylistSelectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 
