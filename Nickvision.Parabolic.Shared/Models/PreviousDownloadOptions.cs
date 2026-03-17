@@ -12,7 +12,8 @@ public class PreviousDownloadOptions
     private static readonly JsonSerializerOptions _options;
     public static readonly string Key;
 
-    public bool DownloadImmediately { get; set; }
+    public bool DownloadImmediatelyAsVideo { get; set; }
+    public bool DownloadImmediatelyAsAudio { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType FullFileType { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
@@ -40,7 +41,8 @@ public class PreviousDownloadOptions
 
     public PreviousDownloadOptions()
     {
-        DownloadImmediately = false;
+        DownloadImmediatelyAsVideo = false;
+        DownloadImmediatelyAsAudio = false;
         SaveFolder = UserDirectories.Downloads;
         FullFileType = MediaFileType.MP4;
         AudioOnlyFileType = MediaFileType.MP3;

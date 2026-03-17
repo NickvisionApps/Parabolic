@@ -245,7 +245,7 @@ public class AddDownloadDialogController
                 context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(_translationService), !matched || PreviousDownloadOptions.VideoResolution == VideoResolution.Best));
             }
             var hasVideo = res.Media.Any(m => m.Type == MediaType.Video);
-            var previousFileType = hasVideo ? PreviousDownloadOptions.FullFileType : PreviousDownloadOptions.AudioOnlyFileType;
+            var previousFileType = (!hasVideo || PreviousDownloadOptions.DownloadImmediatelyAsAudio) ? PreviousDownloadOptions.AudioOnlyFileType : PreviousDownloadOptions.FullFileType;
             context.FileTypes.EnsureCapacity(hasVideo ? 13 : 7);
             if (hasVideo)
             {
@@ -298,7 +298,7 @@ public class AddDownloadDialogController
 
     public bool GetShouldShowDownloadImmediatelyTeach()
     {
-        if (!PreviousDownloadOptions.DownloadImmediately && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.DownloadImmediately))
+        if (!PreviousDownloadOptions.DownloadImmediatelyAsVideo && !PreviousDownloadOptions.DownloadImmediatelyAsAudio && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.DownloadImmediately))
         {
             _shownTeachTypeFlag |= AddDownloadTeachType.DownloadImmediately;
             return true;
