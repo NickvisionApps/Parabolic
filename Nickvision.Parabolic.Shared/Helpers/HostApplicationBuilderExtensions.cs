@@ -37,6 +37,7 @@ public static class HostApplicationBuilderExtensions
                 - Fixed an issue where download progress did not show correctly
                 - Fixed an issue where the preferred video codec was ignored when a preferred frame rate was also set
                 - Fixed an issue where batch files were unusable on Linux and macOS
+                - Fixed an issue where uploading a cookies file did not work on Windows
                 - Fixed an issue where time frame downloads would not complete on Windows
                 - Updated yt-dlp
                 """,
