@@ -24,6 +24,7 @@ public static class HostApplicationBuilderExtensions
                 - Added Windows portable version of Parabolic
                 - Added the ability to toggle super resolution formats in Parabolic's settings
                 - Added the ability to specify a preferred frame rate for video downloads in Parabolic's settings
+                - Added the ability to toggle immediate audio or video downloads separately
                 - Added the ability to automatically translate embedded metadata and chapters to the app's language on supported sites. This can be turned off in Converter settings
                 - Added the ability to update deno from within the app
                 - Added thumbnail image preview to add download dialog and downloads view
