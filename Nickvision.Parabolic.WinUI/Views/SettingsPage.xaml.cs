@@ -309,6 +309,7 @@ public sealed partial class SettingsPage : Page
         if (file is not null)
         {
             LblCookiesFile.Text = file.Path;
+            await ApplyChangesAsync();
         }
     }
 
