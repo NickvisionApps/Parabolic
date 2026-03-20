@@ -60,7 +60,11 @@ public sealed partial class MainWindow : Window
         // Window size constraints
         _hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
         _subclassProc = WindowSubclassProc;
-        SetWindowSubclass(_hWnd, _subclassProc, 0, 0);
+        if (!SetWindowSubclass(_hWnd, _subclassProc, 0, 0))
+        {
+            var error = Marshal.GetLastWin32Error();
+            System.Diagnostics.Debug.WriteLine($"[MainWindow] Failed to install window subclass. Error code: {error}");
+        }
         // Config
         MainGrid.RequestedTheme = _controller.Theme switch
         {
@@ -220,7 +224,11 @@ public sealed partial class MainWindow : Window
             return;
         }
         _controller.WindowGeometry = this.Geometry;
-        RemoveWindowSubclass(_hWnd, _subclassProc, 0);
+        if (!RemoveWindowSubclass(_hWnd, _subclassProc, 0))
+        {
+            var error = Marshal.GetLastWin32Error();
+            System.Diagnostics.Debug.WriteLine($"[MainWindow] Failed to remove window subclass. Error code: {error}");
+        }
         _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
     }
 
