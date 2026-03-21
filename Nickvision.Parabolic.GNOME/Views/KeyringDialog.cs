@@ -6,6 +6,7 @@ using Nickvision.Parabolic.Shared.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -39,6 +40,7 @@ public class KeyringDialog : Adw.PreferencesDialog
 
     }
 
+    [DynamicDependency(DynamicallyAccessedMemberTypes.NonPublicFields, typeof(KeyringDialog))]
     public KeyringDialog(KeyringViewController controller, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
     {
         _controller = controller;

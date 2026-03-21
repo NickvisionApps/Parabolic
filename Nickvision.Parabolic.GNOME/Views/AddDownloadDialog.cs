@@ -7,6 +7,7 @@ using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -153,6 +154,7 @@ public class AddDownloadDialog : Adw.Dialog
 
     }
 
+    [DynamicDependency(DynamicallyAccessedMemberTypes.NonPublicFields, typeof(AddDownloadDialog))]
     private AddDownloadDialog(AddDownloadDialogController controller, ITranslationService translationService, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.DialogHandle(builder.GetPointer("root"), false))
     {
         _controller = controller;

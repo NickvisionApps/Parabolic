@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
     xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:helpers="using:Nickvision.Desktop.WinUI.Helpers"
     xmlns:community="using:CommunityToolkit.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -65,7 +66,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE793;"/> 
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbTheme" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbTheme" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
 
                         <community:SettingsCard x:Name="RowTranslationLanguage">
@@ -73,7 +80,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF2B7;"/>
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbTranslationLanguage" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbTranslationLanguage" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
 
                         <community:SettingsCard x:Name="RowPreviewUpdates">
@@ -97,7 +110,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbHistoryLength" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbHistoryLength" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
                     </StackPanel>
 
@@ -153,7 +172,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE714;"/>
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbPreferredVideoCodec" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbPreferredVideoCodec" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
 
                         <community:SettingsCard x:Name="RowPreferredAudioCodec">
@@ -161,7 +186,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8D6;"/>
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbPreferredAudioCodec" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbPreferredAudioCodec" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
 
                         <community:SettingsCard x:Name="RowPreferredSubtitleFormat">
@@ -169,7 +200,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1F;"/>
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbPreferredSubtitleFormat" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbPreferredSubtitleFormat" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
 
                         <community:SettingsCard x:Name="RowPreferredFrameRate">
@@ -177,7 +214,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE722;"/>
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbPreferredFrameRate" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbPreferredFrameRate" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
                     </StackPanel>
 
@@ -256,7 +299,13 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE774;"/>
                             </community:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbCookiesBrowser" DisplayMemberPath="Label" SelectionChanged="Cmb_SelectionChanged"/>
+                            <ComboBox x:Name="CmbCookiesBrowser" SelectionChanged="Cmb_SelectionChanged">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                        <TextBlock Text="{x:Bind Label}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </community:SettingsCard>
 
                         <TextBlock x:Name="LblAria" Margin="0,12,0,0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
@@ -427,9 +476,21 @@
             <StackPanel Orientation="Vertical" Spacing="12">
                 <TextBox x:Name="TxtPostprocessingArgumentName"/>
 
-                <ComboBox x:Name="CmbPostprocessingArgumentPostProcessor" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                <ComboBox x:Name="CmbPostprocessingArgumentPostProcessor" HorizontalAlignment="Stretch">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                            <TextBlock Text="{x:Bind Label}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
-                <ComboBox x:Name="CmbPostprocessingArgumentExecutable" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                <ComboBox x:Name="CmbPostprocessingArgumentExecutable" HorizontalAlignment="Stretch">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                            <TextBlock Text="{x:Bind Label}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
                 <TextBox x:Name="TxtPostprocessingArgumentArgs"/>
             </StackPanel>

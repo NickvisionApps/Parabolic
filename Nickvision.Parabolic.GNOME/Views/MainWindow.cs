@@ -13,6 +13,7 @@ using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace Nickvision.Parabolic.GNOME.Views;
@@ -53,6 +54,7 @@ public class MainWindow : Adw.ApplicationWindow
 
     }
 
+    [DynamicDependency(DynamicallyAccessedMemberTypes.NonPublicFields, typeof(MainWindow))]
     private MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
     {
         var application = serviceProvider.GetRequiredService<Adw.Application>();

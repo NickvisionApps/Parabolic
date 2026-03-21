@@ -71,7 +71,7 @@ public class DiscoveryService : IDiscoveryService
     private async Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation($"Discovering media for {url}...");
-        var downloaderOptions = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
         var arguments = new List<string>(23)
         {

@@ -21,9 +21,7 @@ public class Configuration
     public string TranslationLanguage { get; set; }
     [JsonConverter(typeof(NullToDefaultObjectConverter<WindowGeometry>))]
     public WindowGeometry WindowGeometry { get; set; }
-    [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledYtdlpAppVersion { get; set; }
-    [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledDenoAppVersion { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool ShowDislcaimerOnStartup { get; set; }
