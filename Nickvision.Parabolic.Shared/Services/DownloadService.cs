@@ -114,7 +114,7 @@ public class DownloadService : IDisposable, IDownloadService
             }
             if (_downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
             {
-                _logger.LogInformation($"Starting download ({download.Id})...");
+                _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
                 _downloading.Add(download.Id, download);
                 DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
                 downloadsToStart.Add(download);

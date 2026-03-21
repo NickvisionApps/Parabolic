@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using Nickvision.Desktop.Application;
+using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,18 @@ public static class ComboBoxExtensions
             if (comboBox.ItemsSource is IReadOnlyList<SelectionItem<Format>> items)
             {
                 var selected = items.FirstOrDefault(item => item.Value.Id == id);
+                if (selected is null)
+                {
+                    comboBox.SelectedIndex = 0;
+                }
+                else
+                {
+                    comboBox.SelectedItem = selected;
+                }
+            }
+            else if (comboBox.ItemsSource is IReadOnlyList<BindableSelectionItem> bindableItems)
+            {
+                var selected = bindableItems.FirstOrDefault(item => item.ToSelectionItem<Format>()!.Value.Id == id);
                 if (selected is null)
                 {
                     comboBox.SelectedIndex = 0;
