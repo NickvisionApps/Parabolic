@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
     xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
+    xmlns:helpers="using:Nickvision.Desktop.WinUI.Helpers"
     xmlns:community="using:CommunityToolkit.WinUI.Controls"
     xmlns:converters="using:Nickvision.Desktop.WinUI.Converters"
+    xmlns:parabolic="using:Nickvision.Parabolic.WinUI.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
@@ -33,7 +35,13 @@
                     <ToggleSwitch x:Name="TglUseAuthentication"/>
 
                     <StackPanel Orientation="Vertical" Spacing="6" Visibility="{x:Bind TglUseAuthentication.IsOn, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
-                        <ComboBox x:Name="CmbCredential" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbCredential_SelectionChanged"/>
+                        <ComboBox x:Name="CmbCredential" HorizontalAlignment="Stretch" SelectionChanged="CmbCredential_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                    <TextBlock Text="{x:Bind Label}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
 
                         <TextBox x:Name="TxtUsername" Visibility="Collapsed"/>
 
@@ -127,13 +135,31 @@
                                     </Button.Content>
                                 </Button>
 
-                                <ComboBox x:Name="CmbSingleFileType" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbSingleFileType_SelectionChanged"/>
+                                <ComboBox x:Name="CmbSingleFileType" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" SelectionChanged="CmbSingleFileType_SelectionChanged">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 
                                 <TeachingTip x:Name="TeachSingleFileType" PreferredPlacement="Bottom" Target="{x:Bind CmbSingleFileType}"/>
 
-                                <ComboBox x:Name="CmbSingleVideoFormat" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                                <ComboBox x:Name="CmbSingleVideoFormat" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 
-                                <ComboBox x:Name="CmbSingleAudioFormat" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                                <ComboBox x:Name="CmbSingleAudioFormat" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </Grid>
 
                             <nickvision:ViewStack x:Name="ViewStackSingleSubtitles" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -174,8 +200,13 @@
 
                                         <AutoSuggestBox x:Name="TxtSingleSubtitlesSearch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" QueryIcon="Find" TextChanged="TxtSingleSubtitlesSearch_TextChanged"/>
 
-                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged"
-                                                  DisplayMemberPath="Label" SelectionMode="Multiple"/>
+                                        <ListView x:Name="ListSingleSubtitles" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged" SelectionMode="Multiple">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                                    <TextBlock Text="{x:Bind Label}"/>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
                                     </Grid>
                                 </nickvision:ViewStack.Pages>
                             </nickvision:ViewStack>
@@ -187,7 +218,13 @@
 
                                 <ToggleSwitch x:Name="TglSingleExcludeFromHistory"/>
 
-                                <ComboBox x:Name="CmbSinglePostProcessorArgument" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                                <ComboBox x:Name="CmbSinglePostProcessorArgument" HorizontalAlignment="Stretch">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 
                                 <TextBox x:Name="TxtSingleStartTime"/>
 
@@ -268,13 +305,31 @@
                                     </Button.Content>
                                 </Button>
 
-                                <ComboBox x:Name="CmbPlaylistFileType" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label" SelectionChanged="CmbPlaylistFileType_SelectionChanged"/>
+                                <ComboBox x:Name="CmbPlaylistFileType" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" SelectionChanged="CmbPlaylistFileType_SelectionChanged">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 
                                 <TeachingTip x:Name="TeachPlaylistFileType" PreferredPlacement="Bottom" Target="{x:Bind CmbSingleFileType}"/>
 
-                                <ComboBox x:Name="CmbPlaylistSuggestedVideoResolution" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                                <ComboBox x:Name="CmbPlaylistSuggestedVideoResolution" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
 
-                                <ComboBox x:Name="CmbPlaylistSuggestedAudioBitrate" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                                <ComboBox x:Name="CmbPlaylistSuggestedAudioBitrate" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </Grid>
 
                             <Grid RowSpacing="12" ColumnSpacing="6" MinWidth="400">
@@ -321,7 +376,7 @@
 
                                 <ListView x:Name="ListPlaylistItems" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" SelectionMode="Multiple" SelectionChanged="ListPlaylistItems_SelectionChanged">
                                     <ListView.ItemTemplate>
-                                        <DataTemplate>
+                                        <DataTemplate x:DataType="parabolic:BindableMediaSelectionItem">
                                             <Grid ColumnSpacing="6">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
@@ -329,9 +384,9 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <TextBox Grid.Column="0" Text="{Binding Filename, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBox Grid.Column="0" Text="{x:Bind Filename, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                                                <Button Grid.Column="1" Click="BtnPlaylistRevertFilename_Click" Tag="{Binding Value, Mode=OneTime}">
+                                                <Button Grid.Column="1" Click="BtnPlaylistRevertFilename_Click" Tag="{x:Bind Value}">
                                                     <Button.Content>
                                                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A7;" FontSize="18"/>
                                                     </Button.Content>
@@ -345,9 +400,9 @@
                                                     <Button.Flyout>
                                                         <Flyout Placement="Bottom">
                                                             <StackPanel Orientation="Vertical" Spacing="12" HorizontalAlignment="Stretch">
-                                                                <TextBox Header="{Binding StartTimeHeader, Mode=OneTime}" PlaceholderText="{Binding StartTime, Mode=OneTime}" Text="{Binding StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                <TextBox Header="{x:Bind StartTimeHeader}" PlaceholderText="{x:Bind StartTime}" Text="{x:Bind StartTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                                                                <TextBox Header="{Binding EndTimeHeader, Mode=OneTime}" PlaceholderText="{Binding EndTime, Mode=OneTime}" Text="{Binding EndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                                <TextBox Header="{x:Bind EndTimeHeader}" PlaceholderText="{x:Bind EndTime}" Text="{x:Bind EndTime, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                                             </StackPanel>
                                                         </Flyout>
                                                     </Button.Flyout>
@@ -399,8 +454,13 @@
 
                                         <AutoSuggestBox x:Name="TxtPlaylistSubtitlesSearch" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" QueryIcon="Find" TextChanged="TxtPlaylistSubtitlesSearch_TextChanged"/>
 
-                                        <ListView x:Name="ListPlaylistSubtitles" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged"
-                                                  DisplayMemberPath="Label" SelectionMode="Multiple"/>
+                                        <ListView x:Name="ListPlaylistSubtitles" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ListSubtitles_SelectionChanged" SelectionMode="Multiple">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                                    <TextBlock Text="{x:Bind Label}"/>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
                                     </Grid>
                                 </nickvision:ViewStack.Pages>
                             </nickvision:ViewStack>
@@ -414,7 +474,13 @@
 
                                 <ToggleSwitch x:Name="TglPlaylistExcludeFromHistory"/>
 
-                                <ComboBox x:Name="CmbPlaylistPostProcessorArgument" HorizontalAlignment="Stretch" DisplayMemberPath="Label"/>
+                                <ComboBox x:Name="CmbPlaylistPostProcessorArgument" HorizontalAlignment="Stretch">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate x:DataType="helpers:BindableSelectionItem">
+                                            <TextBlock Text="{x:Bind Label}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
                             </StackPanel>
                         </nickvision:ViewStack.Pages>
                     </nickvision:ViewStack>

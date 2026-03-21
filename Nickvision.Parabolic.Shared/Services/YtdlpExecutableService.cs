@@ -3,6 +3,7 @@ using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.System;
+using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Diagnostics;
@@ -31,11 +32,11 @@ public class YtdlpExecutableService : IYtdlpExecutableService
     {
         if (OperatingSystem.IsLinux())
         {
-            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.03.13");
+            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.03.17");
         }
         else
         {
-            _bundledVersion = new AppVersion("2026.03.13");
+            _bundledVersion = new AppVersion("2026.03.17");
         }
         if (OperatingSystem.IsWindows())
         {
@@ -74,7 +75,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
                 return field;
             }
             _logger.LogInformation("Searching for yt-dlp executable...");
-            var config = _jsonFileService.Load<Configuration>(Configuration.Key);
+            var config = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
             if (config.InstalledYtdlpAppVersion > _bundledVersion)
             {
                 var local = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Local);
@@ -87,7 +88,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
                 else
                 {
                     config.InstalledYtdlpAppVersion = new AppVersion("0.0.0");
-                    _jsonFileService.Save(config, Configuration.Key);
+                    _jsonFileService.Save(config, ApplicationJsonContext.Default.Configuration, Configuration.Key);
                 }
             }
             field = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Global);
@@ -102,9 +103,9 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         var res = version.BaseVersion.Revision > 0 ? await _previewUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress) : await _stableUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
         if (res)
         {
-            var config = await _jsonFileService.LoadAsync<Configuration>(Configuration.Key);
+            var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
             config.InstalledYtdlpAppVersion = version;
-            await _jsonFileService.SaveAsync(config, Configuration.Key);
+            await _jsonFileService.SaveAsync(config, ApplicationJsonContext.Default.Configuration, Configuration.Key);
             if (!OperatingSystem.IsWindows())
             {
                 using var process = new Process()

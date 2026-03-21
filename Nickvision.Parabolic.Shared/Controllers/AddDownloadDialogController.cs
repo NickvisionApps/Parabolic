@@ -46,7 +46,7 @@ public class AddDownloadDialogController
         _thumbnailService = thumbnailService;
         _translationService = translationService;
         _discoveryContextMap = new Dictionary<int, DiscoveryContext>();
-        PreviousDownloadOptions = _jsonFileService.Load<PreviousDownloadOptions>(PreviousDownloadOptions.Key);
+        PreviousDownloadOptions = _jsonFileService.Load(ApplicationJsonContext.Default.PreviousDownloadOptions, PreviousDownloadOptions.Key);
         AvailableCredentials = new List<SelectionItem<Credential?>>(_keyringService.Credentials.Count() + 1)
         {
             new SelectionItem<Credential?>(null, _translationService._("Use manual credential"), true)
@@ -55,7 +55,7 @@ public class AddDownloadDialogController
         {
             (AvailableCredentials as IList)!.Add(new SelectionItem<Credential?>(credential, credential.Name, false));
         }
-        var postprocessingArguments = _jsonFileService.Load<Configuration>(Configuration.Key).PostprocessingArguments;
+        var postprocessingArguments = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key).PostprocessingArguments;
         AvailablePostProcessorArguments = new List<SelectionItem<PostProcessorArgument?>>(postprocessingArguments.Count + 1);
         foreach (var argument in postprocessingArguments)
         {
@@ -66,7 +66,7 @@ public class AddDownloadDialogController
 
     public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
     {
-        var downloader = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var downloader = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
         var m3uFile = new M3UFile(context.Title, context.Media.Any(x => !string.IsNullOrEmpty(x.SuggestedSaveFolder)) ? PathType.Absolute : PathType.Relative);
         var options = new List<DownloadOptions>(items.Count());
         var titleNumber = 1;
@@ -98,6 +98,7 @@ public class AddDownloadDialogController
         if (context.Media.Any(m => m.Type == MediaType.Video))
         {
             PreviousDownloadOptions.FullFileType = selectedFileType.Value;
+            PreviousDownloadOptions.VideoOnlyFileType = selectedFileType.Value;
         }
         else
         {
@@ -115,7 +116,7 @@ public class AddDownloadDialogController
             PreviousDownloadOptions.PostProcessorArgumentName = selectedPostProcessorArgument.Value.Name;
         }
         PreviousDownloadOptions.SubtitleLanguages = selectedSubtitleLanguages.Select(x => x.Value).ToArray();
-        await _jsonFileService.SaveAsync(PreviousDownloadOptions, PreviousDownloadOptions.Key);
+        await _jsonFileService.SaveAsync(PreviousDownloadOptions, ApplicationJsonContext.Default.PreviousDownloadOptions, PreviousDownloadOptions.Key);
         try
         {
             await _downloadService.AddAsync(options, excludeFromHistory);
@@ -138,7 +139,7 @@ public class AddDownloadDialogController
 
     public async Task AddSingleDownloadAsync(DiscoveryContext context, string saveFilename, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<Format> selectedVideoFormat, SelectionItem<Format> selectedAudioFormat, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument, string startTime, string endTime)
     {
-        var downloader = (await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)).DownloaderOptions;
+        var downloader = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
         var media = context.Media[0];
         var options = new DownloadOptions(media.Url)
         {
@@ -159,6 +160,7 @@ public class AddDownloadDialogController
         if (media.Type == MediaType.Video)
         {
             PreviousDownloadOptions.FullFileType = options.FileType;
+            PreviousDownloadOptions.VideoOnlyFileType = options.FileType;
         }
         else
         {
@@ -176,7 +178,7 @@ public class AddDownloadDialogController
         PreviousDownloadOptions.ExportDescription = options.ExportDescription;
         PreviousDownloadOptions.PostProcessorArgumentName = options.PostProcessorArgument?.Name ?? PreviousDownloadOptions.PostProcessorArgumentName;
         PreviousDownloadOptions.SubtitleLanguages = options.SubtitleLanguages;
-        await _jsonFileService.SaveAsync(PreviousDownloadOptions, PreviousDownloadOptions.Key);
+        await _jsonFileService.SaveAsync(PreviousDownloadOptions, ApplicationJsonContext.Default.PreviousDownloadOptions, PreviousDownloadOptions.Key);
         try
         {
             await _downloadService.AddAsync(options, excludeFromHistory);
@@ -245,7 +247,7 @@ public class AddDownloadDialogController
                 context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(_translationService), !matched || PreviousDownloadOptions.VideoResolution == VideoResolution.Best));
             }
             var hasVideo = res.Media.Any(m => m.Type == MediaType.Video);
-            var previousFileType = (!hasVideo || PreviousDownloadOptions.DownloadImmediatelyAsAudio) ? PreviousDownloadOptions.AudioOnlyFileType : PreviousDownloadOptions.FullFileType;
+            var previousFileType = (!hasVideo || PreviousDownloadOptions.DownloadImmediatelyAsAudio) ? PreviousDownloadOptions.AudioOnlyFileType : PreviousDownloadOptions.VideoOnlyFileType;
             context.FileTypes.EnsureCapacity(hasVideo ? 13 : 7);
             if (hasVideo)
             {
@@ -308,7 +310,7 @@ public class AddDownloadDialogController
 
     public bool GetShouldShowFileTypeTeach(DiscoveryContext context, SelectionItem<MediaFileType> selectedFileType)
     {
-        var previousFileType = context.Media.Any(m => m.Type == MediaType.Video) ? PreviousDownloadOptions.FullFileType : PreviousDownloadOptions.AudioOnlyFileType;
+        var previousFileType = context.Media.Any(m => m.Type == MediaType.Video) ? PreviousDownloadOptions.VideoOnlyFileType : PreviousDownloadOptions.AudioOnlyFileType;
         if (!previousFileType.IsGeneric && selectedFileType.Value.IsGeneric && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.FileType))
         {
             _shownTeachTypeFlag |= AddDownloadTeachType.FileType;

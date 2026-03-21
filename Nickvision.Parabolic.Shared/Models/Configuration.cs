@@ -1,5 +1,6 @@
 ﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Converters;
+using Nickvision.Parabolic.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -9,8 +10,6 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class Configuration
 {
-    private static readonly JsonSerializerOptions _options;
-
     public static readonly string Key;
 
     [JsonConverter(typeof(NullToDefaultValueConverter<Theme>))]
@@ -21,9 +20,7 @@ public class Configuration
     public string TranslationLanguage { get; set; }
     [JsonConverter(typeof(NullToDefaultObjectConverter<WindowGeometry>))]
     public WindowGeometry WindowGeometry { get; set; }
-    [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledYtdlpAppVersion { get; set; }
-    [JsonConverter(typeof(NullToDefaultObjectConverter<AppVersion>))]
     public AppVersion InstalledDenoAppVersion { get; set; }
     [JsonConverter(typeof(NullToTrueBoolConverter))]
     public bool ShowDislcaimerOnStartup { get; set; }
@@ -83,10 +80,6 @@ public class Configuration
 
     static Configuration()
     {
-        _options = new JsonSerializerOptions
-        {
-            WriteIndented = true
-        };
         Key = "config";
     }
 
@@ -199,5 +192,5 @@ public class Configuration
         set;
     }
 
-    public override string ToString() => JsonSerializer.Serialize(this, _options);
+    public override string ToString() => JsonSerializer.Serialize(this, ApplicationJsonContext.Default.Configuration);
 }

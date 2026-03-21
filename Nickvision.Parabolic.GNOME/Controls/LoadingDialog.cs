@@ -1,4 +1,5 @@
 ﻿using Nickvision.Desktop.GNOME.Helpers;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Nickvision.Parabolic.GNOME.Controls;
 
@@ -11,6 +12,7 @@ public class LoadingDialog : Adw.Dialog
 
     }
 
+    [DynamicDependency(DynamicallyAccessedMemberTypes.NonPublicFields, typeof(LoadingDialog))]
     private LoadingDialog(Gtk.Builder builder) : base(new Adw.Internal.DialogHandle(builder.GetPointer("root"), false))
     {
         _builder = builder;
