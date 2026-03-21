@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Controllers;
+using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.Linq;
 
@@ -47,7 +48,7 @@ public sealed partial class KeyringPage : Page
     private void Page_Loaded(object sender, RoutedEventArgs e)
     {
         TxtSearch.Text = string.Empty;
-        ListCredentials.ItemsSource = _controller.Credentials;
+        ListCredentials.ItemsSource = _controller.Credentials.ToBindableCredentialSelectionItems();
         ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
     }
 
@@ -149,13 +150,13 @@ public sealed partial class KeyringPage : Page
         {
             if (string.IsNullOrEmpty(sender.Text))
             {
-                ListCredentials.ItemsSource = _controller.Credentials;
+                ListCredentials.ItemsSource = _controller.Credentials.ToBindableCredentialSelectionItems();
                 ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
             }
             else
             {
                 var filtered = _controller.Credentials.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower()) || x.Value.Username.ToLower().Contains(sender.Text.ToLower()) || x.Value.Url.ToString().ToLower().Contains(sender.Text.ToLower()));
-                ListCredentials.ItemsSource = filtered;
+                ListCredentials.ItemsSource = filtered.ToBindableCredentialSelectionItems();
                 ViewStack.SelectedIndex = filtered.Any() ? (int)Pages.Keyring : (int)Pages.NoneSearch;
             }
         }

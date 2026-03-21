@@ -17,7 +17,6 @@ namespace Nickvision.Parabolic.Shared.Services;
 public class DiscoveryService : IDiscoveryService
 {
     private static readonly char BatchFileDelimiter;
-    private static readonly JsonSerializerOptions JsonOptions;
 
     private readonly ILogger<DiscoveryService> _logger;
     private readonly IDenoExecutableService _denoExecutableService;
@@ -29,10 +28,6 @@ public class DiscoveryService : IDiscoveryService
     static DiscoveryService()
     {
         BatchFileDelimiter = '|';
-        JsonOptions = new JsonSerializerOptions()
-        {
-            WriteIndented = true,
-        };
     }
 
     public DiscoveryService(ILogger<DiscoveryService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, IThumbnailService thumbnailService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
@@ -206,7 +201,7 @@ public class DiscoveryService : IDiscoveryService
         {
             _thumbnailService.MapMedia(media);
         }
-        _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, JsonOptions)}");
+        _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, ApplicationJsonContext.Default.JsonElement)}");
         return result;
     }
 

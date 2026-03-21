@@ -5,6 +5,7 @@
     xmlns:local="using:Nickvision.Parabolic.WinUI.Views"
     xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
     xmlns:community="using:CommunityToolkit.WinUI.Controls"
+    xmlns:parabolic="using:Nickvision.Parabolic.WinUI.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Loaded="Page_Loaded">
@@ -73,16 +74,16 @@
                         </ListView.Transitions>
 
                         <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <community:SettingsCard Margin="0,0,0,6" Header="{Binding Label, Mode=OneWay}" Description="{Binding Value.Url, Mode=OneWay}">
+                            <DataTemplate x:DataType="parabolic:BindableCredentialSelectionItem">
+                                <community:SettingsCard Margin="0,0,0,6" Header="{x:Bind Label, Mode=OneWay}" Description="{x:Bind Value.Url, Mode=OneWay}">
                                     <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <Button Click="Edit" Tag="{Binding Value, Mode=OneWay}">
+                                        <Button Click="Edit" Tag="{x:Bind Value, Mode=OneWay}">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE70F;" FontSize="18"/>
                                             </Button.Content>
                                         </Button>
 
-                                        <Button Click="Remove" Tag="{Binding Value, Mode=OneWay}">
+                                        <Button Click="Remove" Tag="{x:Bind Value, Mode=OneWay}">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74D;" FontSize="18"/>
                                             </Button.Content>

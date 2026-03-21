@@ -1,5 +1,6 @@
 ﻿using Nickvision.Desktop.Converters;
 using Nickvision.Desktop.Filesystem;
+using Nickvision.Parabolic.Shared.Helpers;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -9,7 +10,6 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class PreviousDownloadOptions
 {
-    private static readonly JsonSerializerOptions _options;
     public static readonly string Key;
 
     public bool DownloadImmediately { get; set; }
@@ -31,10 +31,6 @@ public class PreviousDownloadOptions
 
     static PreviousDownloadOptions()
     {
-        _options = new JsonSerializerOptions
-        {
-            WriteIndented = true
-        };
         Key = "previous";
     }
 
@@ -94,5 +90,5 @@ public class PreviousDownloadOptions
         set => field = value;
     }
 
-    public override string ToString() => JsonSerializer.Serialize(this, _options);
+    public override string ToString() => JsonSerializer.Serialize(this, ApplicationJsonContext.Default.PreviousDownloadOptions);
 }

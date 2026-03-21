@@ -6,6 +6,7 @@
     xmlns:nickvision="using:Nickvision.Desktop.WinUI.Controls"
     xmlns:helpers="using:Nickvision.Desktop.WinUI.Helpers"
     xmlns:community="using:CommunityToolkit.WinUI.Controls"
+    xmlns:parabolic="using:Nickvision.Parabolic.WinUI.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Loaded="Page_Loaded">
@@ -446,20 +447,20 @@
                             </Button>
 
                             <community:SettingsExpander.ItemTemplate>
-                                <DataTemplate>
-                                    <community:SettingsCard Header="{Binding Name, Mode=OneWay}" Description="{Binding Args, Mode=OneWay}">
+                                <DataTemplate x:DataType="parabolic:BindablePostProcessorArgument">
+                                    <community:SettingsCard Header="{x:Bind Name, Mode=OneWay}" Description="{x:Bind Args, Mode=OneWay}">
                                         <community:SettingsCard.HeaderIcon>
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
                                         </community:SettingsCard.HeaderIcon>
 
                                         <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <Button Tag="{Binding Name, Mode=OneWay}" Click="EditPostprocessingArgument">
+                                            <Button Tag="{x:Bind Name, Mode=OneWay}" Click="EditPostprocessingArgument">
                                                 <Button.Content>
                                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE70F;" FontSize="18"/>
                                                 </Button.Content>
                                             </Button>
 
-                                            <Button Tag="{Binding Name, Mode=OneWay}" Click="DeletePostprocessingArgument">
+                                            <Button Tag="{x:Bind Name, Mode=OneWay}" Click="DeletePostprocessingArgument">
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;" FontSize="18"/>
                                             </Button>
                                         </StackPanel>

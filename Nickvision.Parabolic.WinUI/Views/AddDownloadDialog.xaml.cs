@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Windows.Storage.Pickers;
-using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.WinUI.Helpers;
@@ -311,7 +310,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     );
 
     private Task DownloadPlaylistAsync() => _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
-        ListPlaylistItems.SelectedItems.Cast<MediaSelectionItem>(),
+        ListPlaylistItems.SelectedItems.Cast<BindableMediaSelectionItem>().Select(x => x.SelectionItem),
         TxtPlaylistSaveFolder.Text,
         (CmbPlaylistFileType.SelectedItem as BindableSelectionItem)!.ToSelectionItem<MediaFileType>()!,
         (CmbPlaylistSuggestedVideoResolution.SelectedItem as BindableSelectionItem)!.ToSelectionItem<VideoResolution>()!,
@@ -429,7 +428,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void ListPlaylistItems_SelectionChanged(object? sender, SelectionChangedEventArgs e) => LblPlaylistItemsTime.Text = _translationService._("Total Duration: {0}", ListPlaylistItems.SelectedItems.Cast<MediaSelectionItem>().Select(m => m.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration));
+    private void ListPlaylistItems_SelectionChanged(object? sender, SelectionChangedEventArgs e) => LblPlaylistItemsTime.Text = _translationService._("Total Duration: {0}", ListPlaylistItems.SelectedItems.Cast<BindableMediaSelectionItem>().Select(m => m.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration));
 
     private void BtnPlaylistSelectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 

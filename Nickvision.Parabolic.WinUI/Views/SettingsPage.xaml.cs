@@ -6,6 +6,7 @@ using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.IO;
 using System.Linq;
@@ -192,7 +193,7 @@ public sealed partial class SettingsPage : Page
         TglEmbedChapters.IsOn = _controller.EmbedChapters;
         TglEmbedSubtitles.IsOn = _controller.EmbedSubtitles;
         NumFfmpegThreads.Value = _controller.PostprocessingThreads;
-        RowPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments;
+        RowPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments.Select(a => new BindablePostProcessorArgument(a)).ToList();
         CmbPostprocessingArgumentPostProcessor.ItemsSource = _controller.PostProcessors.ToBindableSelectonItems();
         CmbPostprocessingArgumentExecutable.ItemsSource = _controller.Executables.ToBindableSelectonItems();
         _constructing = false;
