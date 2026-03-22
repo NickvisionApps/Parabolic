@@ -2,11 +2,11 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.Storage.Pickers;
-using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.WinUI.Helpers;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.IO;
 using System.Linq;
@@ -35,10 +35,10 @@ public sealed partial class SettingsPage : Page
         SelectorDownloader.Text = _translationService._("Downloader");
         SelectorConverter.Text = _translationService._("Converter");
         RowTheme.Header = _translationService._("Theme");
-        CmbTheme.ItemsSource = _controller.Themes;
+        CmbTheme.ItemsSource = _controller.Themes.ToBindableSelectonItems();
         RowTranslationLanguage.Header = _translationService._("Translation Language");
         RowTranslationLanguage.Description = _translationService._("An application restart is required for a change to take effect");
-        CmbTranslationLanguage.ItemsSource = _controller.AvailableTranslationLanguages;
+        CmbTranslationLanguage.ItemsSource = _controller.AvailableTranslationLanguages.ToBindableSelectonItems();
         RowPreviewUpdates.Header = _translationService._("Receive Preview Updates");
         RowPreviewUpdates.Description = _translationService._("Update Parabolic and dependencies, such as yt-dlp, to beta versions");
         TglPreviewUpdates.OnContent = _translationService._("On");
@@ -49,7 +49,7 @@ public sealed partial class SettingsPage : Page
         TglPreventSuspend.OffContent = _translationService._("Off");
         RowHistoryLength.Header = _translationService._("Download History Length");
         RowHistoryLength.Description = _translationService._("The amount of time to keep past downloads in the app's history");
-        CmbHistoryLength.ItemsSource = _controller.HistoryLengths;
+        CmbHistoryLength.ItemsSource = _controller.HistoryLengths.ToBindableSelectonItems();
         RowActiveDownloads.Header = _translationService._("Max Number of Active Downloads");
         RowOverwriteFiles.Header = _translationService._("Overwrite Existing Files");
         TglOverwriteFiles.OnContent = _translationService._("On");
@@ -62,18 +62,22 @@ public sealed partial class SettingsPage : Page
         RowIncludeAutoSubtitles.Description = _translationService._("Show auto-generated subtitles to download in addition to available subtitles");
         TglIncludeAutoSubtitles.OnContent = _translationService._("On");
         TglIncludeAutoSubtitles.OffContent = _translationService._("Off");
+        RowIncludeSuperResolutions.Header = _translationService._("Include Super Resolution Formats");
+        RowIncludeSuperResolutions.Description = _translationService._("Show super (AI-scaled) resolution formats to download in addition to regular formats");
+        TglIncludeSuperResolutions.OnContent = _translationService._("On");
+        TglIncludeSuperResolutions.OffContent = _translationService._("Off");
         RowPreferredVideoCodec.Header = _translationService._("Preferred Video Codec");
         RowPreferredVideoCodec.Description = _translationService._("Prefer this codec when parsing video formats to show available to download");
-        CmbPreferredVideoCodec.ItemsSource = _controller.VideoCodecs;
+        CmbPreferredVideoCodec.ItemsSource = _controller.VideoCodecs.ToBindableSelectonItems();
         RowPreferredAudioCodec.Header = _translationService._("Preferred Audio Codec");
         RowPreferredAudioCodec.Description = _translationService._("Prefer this codec when parsing audio formats to show available to download");
-        CmbPreferredAudioCodec.ItemsSource = _controller.AudioCodecs;
+        CmbPreferredAudioCodec.ItemsSource = _controller.AudioCodecs.ToBindableSelectonItems();
         RowPreferredSubtitleFormat.Header = _translationService._("Preferred Subtitle Format");
         RowPreferredSubtitleFormat.Description = _translationService._("Prefer this subtitle file format when downloading");
-        CmbPreferredSubtitleFormat.ItemsSource = _controller.SubtitleFormats;
+        CmbPreferredSubtitleFormat.ItemsSource = _controller.SubtitleFormats.ToBindableSelectonItems();
         RowPreferredFrameRate.Header = _translationService._("Preferred Frame Rate");
         RowPreferredFrameRate.Description = _translationService._("Prefer this frame rate when parsing video formats to show available to download");
-        CmbPreferredFrameRate.ItemsSource = _controller.FrameRates;
+        CmbPreferredFrameRate.ItemsSource = _controller.FrameRates.ToBindableSelectonItems();
         RowUsePartFiles.Header = _translationService._("Use Part Files");
         RowUsePartFiles.Description = _translationService._("Download media in separate .part files instead of directly into the output file");
         TglUsePartFiles.OnContent = _translationService._("On");
@@ -94,7 +98,7 @@ public sealed partial class SettingsPage : Page
         ToolTipService.SetToolTip(BtnClearCookiesFile, _translationService._("Clear Cookies File"));
         ToolTipService.SetToolTip(BtnSelectCookiesFile, _translationService._("Select Cookies File"));
         RowCookiesBrowser.Header = _translationService._("Cookies from Browser");
-        CmbCookiesBrowser.ItemsSource = _controller.Browsers;
+        CmbCookiesBrowser.ItemsSource = _controller.Browsers.ToBindableSelectonItems();
         LblAria.Text = _translationService._("aria2c");
         RowUseAria.Header = _translationService._("Use aria2c");
         RowUseAria.Description = _translationService._("An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader");
@@ -164,6 +168,7 @@ public sealed partial class SettingsPage : Page
         TglOverwriteFiles.IsOn = _controller.OverwriteExistingFiles;
         TglIncludeMediaId.IsOn = _controller.IncludeMediaIdInTitle;
         TglIncludeAutoSubtitles.IsOn = _controller.IncludeAutoGeneratedSubtitles;
+        TglIncludeSuperResolutions.IsOn = _controller.IncludeSuperResolutions;
         CmbPreferredVideoCodec.SelectSelectionItem();
         CmbPreferredAudioCodec.SelectSelectionItem();
         CmbPreferredSubtitleFormat.SelectSelectionItem();
@@ -188,9 +193,9 @@ public sealed partial class SettingsPage : Page
         TglEmbedChapters.IsOn = _controller.EmbedChapters;
         TglEmbedSubtitles.IsOn = _controller.EmbedSubtitles;
         NumFfmpegThreads.Value = _controller.PostprocessingThreads;
-        RowPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments;
-        CmbPostprocessingArgumentPostProcessor.ItemsSource = _controller.PostProcessors;
-        CmbPostprocessingArgumentExecutable.ItemsSource = _controller.Executables;
+        RowPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments.Select(a => new BindablePostProcessorArgument(a)).ToList();
+        CmbPostprocessingArgumentPostProcessor.ItemsSource = _controller.PostProcessors.ToBindableSelectonItems();
+        CmbPostprocessingArgumentExecutable.ItemsSource = _controller.Executables.ToBindableSelectonItems();
         _constructing = false;
     }
 
@@ -210,8 +215,8 @@ public sealed partial class SettingsPage : Page
             if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
             {
                 error = await _controller.AddPostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,
-                    (CmbPostprocessingArgumentPostProcessor.SelectedItem as SelectionItem<PostProcessor>)!,
-                    (CmbPostprocessingArgumentExecutable.SelectedItem as SelectionItem<Executable>)!,
+                    (CmbPostprocessingArgumentPostProcessor.SelectedItem as BindableSelectionItem)!.ToSelectionItem<PostProcessor>()!,
+                    (CmbPostprocessingArgumentExecutable.SelectedItem as BindableSelectionItem)!.ToSelectionItem<Executable>()!,
                     TxtPostprocessingArgumentArgs.Text);
                 if (error is not null)
                 {
@@ -273,8 +278,8 @@ public sealed partial class SettingsPage : Page
             if ((await DlgPostprocessingArgument.ShowAsync()) == ContentDialogResult.Primary)
             {
                 error = await _controller.UpdatePostprocessingArgumentAsync(TxtPostprocessingArgumentName.Text,
-                    (CmbPostprocessingArgumentPostProcessor.SelectedItem as SelectionItem<PostProcessor>)!,
-                    (CmbPostprocessingArgumentExecutable.SelectedItem as SelectionItem<Executable>)!,
+                    (CmbPostprocessingArgumentPostProcessor.SelectedItem as BindableSelectionItem)!.ToSelectionItem<PostProcessor>()!,
+                    (CmbPostprocessingArgumentExecutable.SelectedItem as BindableSelectionItem)!.ToSelectionItem<Executable>()!,
                     TxtPostprocessingArgumentArgs.Text);
                 if (error is not null)
                 {
@@ -304,6 +309,7 @@ public sealed partial class SettingsPage : Page
         if (file is not null)
         {
             LblCookiesFile.Text = file.Path;
+            await ApplyChangesAsync();
         }
     }
 
@@ -327,25 +333,26 @@ public sealed partial class SettingsPage : Page
         {
             return;
         }
-        _controller.Theme = (CmbTheme.SelectedItem as SelectionItem<Theme>)!;
-        _controller.TranslationLanguage = (CmbTranslationLanguage.SelectedItem as SelectionItem<string>)!;
+        _controller.Theme = (CmbTheme.SelectedItem as BindableSelectionItem)!.ToSelectionItem<Theme>()!;
+        _controller.TranslationLanguage = (CmbTranslationLanguage.SelectedItem as BindableSelectionItem)!.ToSelectionItem<string>()!;
         _controller.AllowPreviewUpdates = TglPreviewUpdates.IsOn;
         _controller.PreventSuspend = TglPreventSuspend.IsOn;
-        _controller.HistoryLength = (CmbHistoryLength.SelectedItem as SelectionItem<HistoryLength>)!;
+        _controller.HistoryLength = (CmbHistoryLength.SelectedItem as BindableSelectionItem)!.ToSelectionItem<HistoryLength>()!;
         _controller.MaxNumberOfActiveDownloads = (int)NumActiveDownloads.Value;
         _controller.OverwriteExistingFiles = TglOverwriteFiles.IsOn;
         _controller.IncludeMediaIdInTitle = TglIncludeMediaId.IsOn;
         _controller.IncludeAutoGeneratedSubtitles = TglIncludeAutoSubtitles.IsOn;
-        _controller.PreferredVideoCodec = (CmbPreferredVideoCodec.SelectedItem as SelectionItem<VideoCodec>)!;
-        _controller.PreferredAudioCodec = (CmbPreferredAudioCodec.SelectedItem as SelectionItem<AudioCodec>)!;
-        _controller.PreferredSubtitleFormat = (CmbPreferredSubtitleFormat.SelectedItem as SelectionItem<SubtitleFormat>)!;
-        _controller.PreferredFrameRate = (CmbPreferredFrameRate.SelectedItem as SelectionItem<FrameRate>)!;
+        _controller.IncludeSuperResolutions = TglIncludeSuperResolutions.IsOn;
+        _controller.PreferredVideoCodec = (CmbPreferredVideoCodec.SelectedItem as BindableSelectionItem)!.ToSelectionItem<VideoCodec>()!;
+        _controller.PreferredAudioCodec = (CmbPreferredAudioCodec.SelectedItem as BindableSelectionItem)!.ToSelectionItem<AudioCodec>()!;
+        _controller.PreferredSubtitleFormat = (CmbPreferredSubtitleFormat.SelectedItem as BindableSelectionItem)!.ToSelectionItem<SubtitleFormat>()!;
+        _controller.PreferredFrameRate = (CmbPreferredFrameRate.SelectedItem as BindableSelectionItem)!.ToSelectionItem<FrameRate>()!;
         _controller.UsePartFiles = TglUsePartFiles.IsOn;
         _controller.YouTubeSponsorBlock = TglUseSponsorBlock.IsOn;
         _controller.SpeedLimit = TglLimitSpeed.IsOn ? (int)NumSpeedLimit.Value : null;
         _controller.ProxyUrl = TxtProxyUrl.Text;
         _controller.CookiesPath = File.Exists(LblCookiesFile.Text) ? LblCookiesFile.Text : string.Empty;
-        _controller.CookiesBrowser = (CmbCookiesBrowser.SelectedItem as SelectionItem<Browser>)!;
+        _controller.CookiesBrowser = (CmbCookiesBrowser.SelectedItem as BindableSelectionItem)!.ToSelectionItem<Browser>()!;
         _controller.UseAria = TglUseAria.IsOn;
         _controller.AriaMaxConnectionsPerServer = (int)NumMaxConnectionsPerServer.Value;
         _controller.AriaMinSplitSize = (int)NumMinimumSplitSize.Value;

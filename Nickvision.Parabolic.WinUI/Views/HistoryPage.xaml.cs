@@ -1,9 +1,9 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ public sealed partial class HistoryPage : Page
 
     private readonly HistoryViewController _controller;
     private readonly ITranslationService _translationService;
-    private IReadOnlyList<SelectionItem<HistoricDownload>> _historicDownloads;
+    private List<BindableHistoricDownloadSelectionItem> _historicDownloads;
 
     public HistoryPage(HistoryViewController controller, ITranslationService translationService)
     {
@@ -142,7 +142,7 @@ public sealed partial class HistoryPage : Page
     {
         ViewStack.SelectedIndex = (int)Pages.Loading;
         TxtSearch.Text = string.Empty;
-        _historicDownloads = await _controller.GetAllAsync();
+        _historicDownloads = (await _controller.GetAllAsync()).ToBindableHistoricDownloadSelectionItems();
         ListDownloads.ItemsSource = _historicDownloads;
         ViewStack.SelectedIndex = _historicDownloads.Count == 0 ? (int)Pages.None : (int)Pages.History;
     }

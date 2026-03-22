@@ -5,6 +5,7 @@ using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Desktop.System;
+using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -52,7 +53,7 @@ public class MainWindowController
         _latestAppVersion = appInfo.Version!;
         _latestYtdlpVersion = _ytdlpExecutableService!.BundledVersion;
         _latestDenoVersion = _denoExecutableService!.BundledVersion;
-        _translationService.Language = _jsonFileService.Load<Configuration>(Configuration.Key).TranslationLanguage;
+        _translationService.Language = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key).TranslationLanguage;
         _logger.LogInformation($"Received command-line arguments: [{string.Join(", ", argumentsService.Data)}]");
         // Events
         _jsonFileService.Saved += JsonFileService_Saved;
@@ -75,39 +76,39 @@ public class MainWindowController
 
     public bool ShowDisclaimerOnStartup
     {
-        get => _jsonFileService.Load<Configuration>(Configuration.Key).ShowDislcaimerOnStartup;
+        get => _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key).ShowDislcaimerOnStartup;
 
         set
         {
-            var config = _jsonFileService.Load<Configuration>(Configuration.Key);
+            var config = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
             config.ShowDislcaimerOnStartup = value;
-            _jsonFileService.Save(config, Configuration.Key);
+            _jsonFileService.Save(config, ApplicationJsonContext.Default.Configuration, Configuration.Key);
         }
     }
 
-    public Theme Theme => _jsonFileService.Load<Configuration>(Configuration.Key).Theme;
+    public Theme Theme => _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key).Theme;
 
     public WindowGeometry WindowGeometry
     {
-        get => _jsonFileService.Load<Configuration>(Configuration.Key).WindowGeometry;
+        get => _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key).WindowGeometry;
 
         set
         {
-            var config = _jsonFileService.Load<Configuration>(Configuration.Key);
+            var config = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
             config.WindowGeometry = value;
-            _jsonFileService.Save(config, Configuration.Key);
+            _jsonFileService.Save(config, ApplicationJsonContext.Default.Configuration, Configuration.Key);
         }
     }
 
     public bool ShowDislcaimerOnStartup
     {
-        get => _jsonFileService.Load<Configuration>(Configuration.Key).ShowDislcaimerOnStartup;
+        get => _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key).ShowDislcaimerOnStartup;
 
         set
         {
-            var config = _jsonFileService.Load<Configuration>(Configuration.Key);
+            var config = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
             config.ShowDislcaimerOnStartup = value;
-            _jsonFileService.Save(config, Configuration.Key);
+            _jsonFileService.Save(config, ApplicationJsonContext.Default.Configuration, Configuration.Key);
         }
     }
 
@@ -134,7 +135,7 @@ public class MainWindowController
     public async Task CheckForUpdatesAsync(bool showNotificationForNoUpdates)
     {
         _logger.LogInformation("Checking for updates...");
-        var config = _jsonFileService.Load<Configuration>(Configuration.Key);
+        var config = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
         var stableAppVersion = await _updaterService.GetLatestStableVersionAsync();
         var stableYtdlpVersion = await _ytdlpExecutableService.GetLatestStableVersionAsync();
         var stableDenoVersion = await _denoExecutableService.GetLatestStableVersionAsync();
@@ -278,8 +279,8 @@ public class MainWindowController
         extraInformation += $"\ndeno: {(denoVersion is not null ? denoVersion.ToString() : "not found")}";
         extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";
         extraInformation += $"\naria2: {(!string.IsNullOrEmpty(ariaVersion) ? ariaVersion.Substring(ariaVersion.IndexOf("aria2 version") + 14, ariaVersion.IndexOf('\n') - 14) : "not found")}";
-        extraInformation += $"\n\n{await _jsonFileService.LoadAsync<Configuration>(Configuration.Key)}";
-        extraInformation += $"\n\n{await _jsonFileService.LoadAsync<PreviousDownloadOptions>(PreviousDownloadOptions.Key)}";
+        extraInformation += $"\n\n{await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)}";
+        extraInformation += $"\n\n{await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.PreviousDownloadOptions, PreviousDownloadOptions.Key)}";
         return Desktop.System.Environment.GetDebugInformation(_appInfo, extraInformation);
     }
 

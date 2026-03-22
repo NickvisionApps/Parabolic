@@ -1,6 +1,7 @@
 ﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
+using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
@@ -36,7 +37,7 @@ public class PreferencesViewController
         _historyService = historyService;
         _jsonFileService = jsonFileService;
         _translationService = translationService;
-        _configuration = _jsonFileService.Load<Configuration>(Configuration.Key);
+        _configuration = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
         var selectedHistoryLength = _historyService.Length;
         AudioCodecs = new List<SelectionItem<AudioCodec>>()
         {
@@ -226,6 +227,13 @@ public class PreferencesViewController
         get => _configuration.IncludeMediaIdInTitle;
 
         set => _configuration.IncludeMediaIdInTitle = value;
+    }
+
+    public bool IncludeSuperResolutions
+    {
+        get => _configuration.IncludeSuperResolutions;
+
+        set => _configuration.IncludeSuperResolutions = value;
     }
 
     public bool LimitCharacters
@@ -418,5 +426,5 @@ public class PreferencesViewController
         return null;
     }
 
-    public Task SaveConfigurationAsync() => _jsonFileService.SaveAsync(_configuration, Configuration.Key);
+    public Task SaveConfigurationAsync() => _jsonFileService.SaveAsync(_configuration, ApplicationJsonContext.Default.Configuration, Configuration.Key);
 }

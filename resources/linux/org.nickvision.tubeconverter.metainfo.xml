@@ -60,15 +60,19 @@
     <display_length compare="ge">360</display_length>
   </requires>
   <releases>
-    <release version="2026.3.0-beta2" date="2026-03-14">
+    <release version="2026.3.0-beta3" date="2026-03-21">
       <description translate="no">
         <p>- Added macOS app for the GNOME version of Parabolic</p>
         <p>- Added Windows portable version of Parabolic</p>
-        <p>- Added the ability to specify a preferred frame rate for video downloads in the Parabolic's settings</p>
+        <p>- Added the ability to toggle super resolution formats in Parabolic's settings</p>
+        <p>- Added the ability to specify a preferred frame rate for video downloads in Parabolic's settings</p>
+        <p>- Added the ability to toggle immediate audio or video downloads separately</p>
         <p>- Added the ability to automatically translate embedded metadata and chapters to the app's language on supported sites. This can be turned off in Converter settings</p>
         <p>- Added the ability to update deno from within the app</p>
         <p>- Added thumbnail image preview to add download dialog and downloads view</p>
         <p>- Added failed filter to downloads view</p>
+        <p>- Added total duration label to playlist items view</p>
+        <p>- Improved Parabolic's startup time by using NativeAOT compilation</p>
         <p>- Improved selection of playlist video formats when resolutions are specified</p>
         <p>- Improved selection of playlist audio formats on Windows when bitrates are specified</p>
         <p>- Improved cropping of audio thumbnails</p>
@@ -76,7 +80,10 @@
         <p>- Removed unsupported cookie browsers on Windows. Manual txt files should be used instead</p>
         <p>- Fixed an issue where download progress did not show correctly</p>
         <p>- Fixed an issue where the preferred video codec was ignored when a preferred frame rate was also set</p>
+        <p>- Fixed an issue where the exported M3U playlist file would contain duplicate entries</p>
+        <p>- Fixed an issue where credentials would not save on Linux</p>
         <p>- Fixed an issue where batch files were unusable on Linux and macOS</p>
+        <p>- Fixed an issue where uploading a cookies file did not work on Windows</p>
         <p>- Fixed an issue where time frame downloads would not complete on Windows</p>
         <p>- Updated yt-dlp</p>
       </description>
