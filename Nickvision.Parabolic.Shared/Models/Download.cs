@@ -277,8 +277,6 @@ public partial class Download : IDisposable
             {
                 formatSort += ',';
             }
-            // Prefer codecs that are natively supported by the target container to avoid slow re-encoding.
-            // WEBM supports VP9/AV01/VP8; MOV and AVI work best with H264/H265.
             formatSort += Options.FileType switch
             {
                 MediaFileType.WEBM => "+vcodec:vp9",
