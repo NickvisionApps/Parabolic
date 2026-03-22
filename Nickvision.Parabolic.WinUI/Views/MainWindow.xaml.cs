@@ -19,13 +19,19 @@ using Nickvision.Parabolic.WinUI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Windows.Graphics;
 using Windows.System;
 
 namespace Nickvision.Parabolic.WinUI.Views;
 
 public sealed partial class MainWindow : Window
 {
+    private const int WM_GETMINMAXINFO = 0x0024;
+    private const int MinWindowWidth = 600;
+    private const int MinWindowHeight = 400;
+
     private enum Pages
     {
         Home = 0,
@@ -39,6 +45,8 @@ public sealed partial class MainWindow : Window
     private readonly ITranslationService _translationService;
     private readonly Dictionary<int, DownloadRow> _downloadRows;
     private RoutedEventHandler? _notificationClickHandler;
+    private readonly nint _hWnd;
+    private readonly SUBCLASSPROC _subclassProc;
 
     public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService)
     {
@@ -49,6 +57,14 @@ public sealed partial class MainWindow : Window
         _translationService = translationService;
         _downloadRows = new Dictionary<int, DownloadRow>();
         _notificationClickHandler = null;
+        // Window size constraints
+        _hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+        _subclassProc = WindowSubclassProc;
+        if (!SetWindowSubclass(_hWnd, _subclassProc, 0, 0))
+        {
+            var error = Marshal.GetLastWin32Error();
+            System.Diagnostics.Debug.WriteLine($"[MainWindow] Failed to install window subclass. Error code: {error}");
+        }
         // Config
         MainGrid.RequestedTheme = _controller.Theme switch
         {
@@ -57,6 +73,7 @@ public sealed partial class MainWindow : Window
             _ => ElementTheme.Default
         };
         this.Geometry = _controller.WindowGeometry;
+        EnsureMinimumWindowSize();
         // TitleBar
         AppWindow.SetIcon(_appInfo.Version!.IsPreview ? "./Assets/org.nickvision.tubeconverter-devel.ico" : "./Assets/org.nickvision.tubeconverter.ico");
         ExtendsContentIntoTitleBar = true;
@@ -207,8 +224,75 @@ public sealed partial class MainWindow : Window
             return;
         }
         _controller.WindowGeometry = this.Geometry;
+        if (!RemoveWindowSubclass(_hWnd, _subclassProc, 0))
+        {
+            var error = Marshal.GetLastWin32Error();
+            System.Diagnostics.Debug.WriteLine($"[MainWindow] Failed to remove window subclass. Error code: {error}");
+        }
         _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
     }
+
+    private void EnsureMinimumWindowSize()
+    {
+        var dpi = GetDpiForWindow(_hWnd);
+        var scale = dpi / 96.0;
+        var minWidth = (int)(MinWindowWidth * scale);
+        var minHeight = (int)(MinWindowHeight * scale);
+        var size = AppWindow.Size;
+        if (size.Width < minWidth || size.Height < minHeight)
+        {
+            AppWindow.Resize(new SizeInt32(
+                Math.Max(size.Width, minWidth),
+                Math.Max(size.Height, minHeight)));
+        }
+    }
+
+    private nint WindowSubclassProc(nint hWnd, uint uMsg, nint wParam, nint lParam, nint uIdSubclass, nint dwRefData)
+    {
+        if (uMsg == WM_GETMINMAXINFO)
+        {
+            DefSubclassProc(hWnd, uMsg, wParam, lParam);
+            var dpi = GetDpiForWindow(hWnd);
+            var scale = dpi / 96.0;
+            var minMaxInfo = Marshal.PtrToStructure<MINMAXINFO>(lParam);
+            minMaxInfo.ptMinTrackSize.X = (int)(MinWindowWidth * scale);
+            minMaxInfo.ptMinTrackSize.Y = (int)(MinWindowHeight * scale);
+            Marshal.StructureToPtr(minMaxInfo, lParam, false);
+            return 0;
+        }
+        return DefSubclassProc(hWnd, uMsg, wParam, lParam);
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct POINT
+    {
+        public int X;
+        public int Y;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct MINMAXINFO
+    {
+        public POINT ptReserved;
+        public POINT ptMaxSize;
+        public POINT ptMaxPosition;
+        public POINT ptMinTrackSize;
+        public POINT ptMaxTrackSize;
+    }
+
+    private delegate nint SUBCLASSPROC(nint hWnd, uint uMsg, nint wParam, nint lParam, nint uIdSubclass, nint dwRefData);
+
+    [DllImport("comctl32.dll", SetLastError = true)]
+    private static extern bool SetWindowSubclass(nint hWnd, SUBCLASSPROC pfnSubclass, nint uIdSubclass, nint dwRefData);
+
+    [DllImport("comctl32.dll", SetLastError = true)]
+    private static extern bool RemoveWindowSubclass(nint hWnd, SUBCLASSPROC pfnSubclass, nint uIdSubclass);
+
+    [DllImport("comctl32.dll", SetLastError = true)]
+    private static extern nint DefSubclassProc(nint hWnd, uint uMsg, nint wParam, nint lParam);
+
+    [DllImport("user32.dll")]
+    private static extern uint GetDpiForWindow(nint hWnd);
 
     private void TitleBar_PaneToggleRequested(TitleBar sender, object e)
     {
