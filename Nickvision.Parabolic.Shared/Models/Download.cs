@@ -464,7 +464,7 @@ public partial class Download : IDisposable
                 _ => $"bestvideo*[height={Options.VideoResolution.Height}]/bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
             };
         }
-        var avoidOpus = Options.FileType != MediaFileType.WEBM && downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube");
+        var avoidOpus = OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") && downloader.PreferredAudioCodec == AudioCodec.Any && Options.FileType != MediaFileType.WEBM;
         if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
         {
             if (!string.IsNullOrEmpty(formatString))
