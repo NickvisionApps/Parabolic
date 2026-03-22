@@ -357,6 +357,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         if (TglDownloadImmediatelyAsVideo.IsOn)
         {
             TglDownloadImmediatelyAsAudio.IsOn = false;
+            TeachDownloadImmediately.Target = TglDownloadImmediatelyAsVideo;
             TeachDownloadImmediately.IsOpen = _controller.GetShouldShowDownloadImmediatelyTeach();
         }
     }
@@ -366,6 +367,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         if (TglDownloadImmediatelyAsAudio.IsOn)
         {
             TglDownloadImmediatelyAsVideo.IsOn = false;
+            TeachDownloadImmediately.Target = TglDownloadImmediatelyAsAudio;
             TeachDownloadImmediately.IsOpen = _controller.GetShouldShowDownloadImmediatelyTeach();
         }
     }
