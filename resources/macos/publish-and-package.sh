@@ -255,7 +255,7 @@ done < <(otool -L "$APP_BUNDLE/Contents/MacOS/$PROJECT" | tail -n +2)
 # Fix library dependencies for bundled media tool executables so they resolve their
 # dylib references at runtime regardless of the Homebrew prefix on the host system.
 info "Fixing bundled media tool library dependencies..."
-for TOOL in ffmpeg ffprobe ffplay aria2c; do
+for TOOL in ffmpeg ffprobe ffplay aria2c deno; do
     fix_tool_deps "$APP_BUNDLE/Contents/MacOS/$TOOL"
 done
 success "Fixed bundled media tool library dependencies."
@@ -353,7 +353,7 @@ find "$APP_BUNDLE/Contents/MacOS" \( -name "*.dylib" -o -name "*.so" \) | while 
     codesign --force --sign - "$lib" 2>/dev/null || true
 done
 # Re-sign media tool executables after install_name_tool has modified their rpaths/deps
-for TOOL in ffmpeg ffprobe ffplay aria2c; do
+for TOOL in ffmpeg ffprobe ffplay aria2c deno; do
     if [[ -f "$APP_BUNDLE/Contents/MacOS/$TOOL" ]]; then
         codesign --force --sign - "$APP_BUNDLE/Contents/MacOS/$TOOL" 2>/dev/null || true
     fi
