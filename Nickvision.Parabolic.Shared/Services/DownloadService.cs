@@ -76,7 +76,7 @@ public class DownloadService : IDisposable, IDownloadService
         }
         if (_downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
         {
-            _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloadOptions)}");
+            _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
             download.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
@@ -360,7 +360,7 @@ public class DownloadService : IDisposable, IDownloadService
             var firstDownload = _queued.First().Value;
             _downloading.Add(firstDownload.Id, firstDownload);
             _queued.Remove(firstDownload.Id);
-            _logger.LogInformation($"Starting download from queue ({firstDownload.Id}): {JsonSerializer.Serialize(firstDownload.Options, ApplicationJsonContext.Default.DownloadOptions)}");
+            _logger.LogInformation($"Starting download from queue ({firstDownload.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
             DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
             firstDownload.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
         }
