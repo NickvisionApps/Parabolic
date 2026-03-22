@@ -43,6 +43,7 @@ public static class HostApplicationBuilderExtensions
                 - Fixed an issue where batch files were unusable on Linux and macOS
                 - Fixed an issue where uploading a cookies file did not work on Windows
                 - Fixed an issue where time frame downloads would not complete on Windows
+                - Fixed an issue where certain video formats would process infinitely on Windows
                 - Updated yt-dlp
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
