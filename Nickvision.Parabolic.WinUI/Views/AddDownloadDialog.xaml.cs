@@ -212,6 +212,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             credential = (CmbCredential.SelectedItem as BindableSelectionItem)!.ToSelectionItem<Credential?>()!.Value;
         }
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo = TglDownloadImmediatelyAsVideo.IsOn;
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio = TglDownloadImmediatelyAsAudio.IsOn;
         _discoveryContext = await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken);
         if (_discoveryContext is null)
         {
@@ -229,8 +231,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CloseButtonText = _translationService._("Cancel");
         SecondaryButtonText = null;
         DefaultButton = ContentDialogButton.Primary;
-        _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo = TglDownloadImmediatelyAsVideo.IsOn;
-        _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio = TglDownloadImmediatelyAsAudio.IsOn;
         if (_discoveryContext.Items.Count == 1)
         {
             ViewStack.SelectedIndex = (int)Pages.Single;

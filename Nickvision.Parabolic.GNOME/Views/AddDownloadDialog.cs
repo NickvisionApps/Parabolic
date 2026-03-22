@@ -330,6 +330,8 @@ public class AddDownloadDialog : Adw.Dialog
         {
             credential = _controller.AvailableCredentials[(int)_authenticationCredentialRow!.Selected].Value;
         }
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo = _downloadImmediatelyAsVideoRow!.Active;
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio = _downloadImmediatelyAsAudioRow!.Active;
         _discoveryContext = await _controller.DiscoverAsync(new Uri(_urlRow!.Text_!), credential, _cancellationTokenSource.Token);
         _cancellationTokenSource.Dispose();
         _cancellationTokenSource = null;
@@ -339,8 +341,6 @@ public class AddDownloadDialog : Adw.Dialog
             return;
         }
         ContentHeight = 550;
-        _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo = _downloadImmediatelyAsVideoRow!.Active;
-        _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio = _downloadImmediatelyAsAudioRow!.Active;
         if (_discoveryContext.Items.Count == 1)
         {
             ContentWidth = 550;
