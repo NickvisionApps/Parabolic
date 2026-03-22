@@ -48,9 +48,11 @@
                         <PasswordBox x:Name="TxtPassword" Visibility="Collapsed"/>
                     </StackPanel>
 
-                    <ToggleSwitch x:Name="TglDownloadImmediately" Toggled="TglDownloadImmediately_Toggled"/>
+                    <ToggleSwitch x:Name="TglDownloadImmediatelyAsVideo" Toggled="TglDownloadImmediatelyAsVideo_Toggled"/>
 
-                    <TeachingTip x:Name="TeachDownloadImmediately" PreferredPlacement="Bottom" Target="{x:Bind TglDownloadImmediately}"/>
+                    <ToggleSwitch x:Name="TglDownloadImmediatelyAsAudio" Toggled="TglDownloadImmediatelyAsAudio_Toggled"/>
+
+                    <TeachingTip x:Name="TeachDownloadImmediately" PreferredPlacement="Bottom" Target="{x:Bind TglDownloadImmediatelyAsVideo}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical" Spacing="24" Margin="0,24,0,0">

@@ -12,9 +12,12 @@ public class PreviousDownloadOptions
 {
     public static readonly string Key;
 
-    public bool DownloadImmediately { get; set; }
+    public bool DownloadImmediatelyAsVideo { get; set; }
+    public bool DownloadImmediatelyAsAudio { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType FullFileType { get; set; }
+    [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
+    public MediaFileType VideoOnlyFileType { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType AudioOnlyFileType { get; set; }
     public Dictionary<MediaFileType, string> VideoFormatIds { get; set; }
@@ -36,9 +39,11 @@ public class PreviousDownloadOptions
 
     public PreviousDownloadOptions()
     {
-        DownloadImmediately = false;
+        DownloadImmediatelyAsVideo = false;
+        DownloadImmediatelyAsAudio = false;
         SaveFolder = UserDirectories.Downloads;
         FullFileType = MediaFileType.MP4;
+        VideoOnlyFileType = MediaFileType.MP4;
         AudioOnlyFileType = MediaFileType.MP3;
         VideoFormatIds = new Dictionary<MediaFileType, string>()
         {

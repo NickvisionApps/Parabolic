@@ -98,6 +98,14 @@ public class AddDownloadDialogController
         if (context.Media.Any(m => m.Type == MediaType.Video))
         {
             PreviousDownloadOptions.FullFileType = selectedFileType.Value;
+            if(selectedFileType.Value.IsVideo)
+            {
+                PreviousDownloadOptions.VideoOnlyFileType = selectedFileType.Value;
+            }
+            else if(selectedFileType.Value.IsAudio)
+            {
+                PreviousDownloadOptions.AudioOnlyFileType = selectedFileType.Value;
+            }
         }
         else
         {
@@ -159,6 +167,14 @@ public class AddDownloadDialogController
         if (media.Type == MediaType.Video)
         {
             PreviousDownloadOptions.FullFileType = options.FileType;
+            if (selectedFileType.Value.IsVideo)
+            {
+                PreviousDownloadOptions.VideoOnlyFileType = selectedFileType.Value;
+            }
+            else if (selectedFileType.Value.IsAudio)
+            {
+                PreviousDownloadOptions.AudioOnlyFileType = selectedFileType.Value;
+            }
         }
         else
         {
@@ -245,7 +261,7 @@ public class AddDownloadDialogController
                 context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(_translationService), !matched || PreviousDownloadOptions.VideoResolution == VideoResolution.Best));
             }
             var hasVideo = res.Media.Any(m => m.Type == MediaType.Video);
-            var previousFileType = hasVideo ? PreviousDownloadOptions.FullFileType : PreviousDownloadOptions.AudioOnlyFileType;
+            var previousFileType = (!hasVideo || PreviousDownloadOptions.DownloadImmediatelyAsAudio) ? PreviousDownloadOptions.AudioOnlyFileType : (PreviousDownloadOptions.DownloadImmediatelyAsVideo ? PreviousDownloadOptions.VideoOnlyFileType : PreviousDownloadOptions.FullFileType);
             context.FileTypes.EnsureCapacity(hasVideo ? 13 : 7);
             if (hasVideo)
             {
@@ -298,7 +314,7 @@ public class AddDownloadDialogController
 
     public bool GetShouldShowDownloadImmediatelyTeach()
     {
-        if (!PreviousDownloadOptions.DownloadImmediately && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.DownloadImmediately))
+        if (!PreviousDownloadOptions.DownloadImmediatelyAsVideo && !PreviousDownloadOptions.DownloadImmediatelyAsAudio && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.DownloadImmediately))
         {
             _shownTeachTypeFlag |= AddDownloadTeachType.DownloadImmediately;
             return true;

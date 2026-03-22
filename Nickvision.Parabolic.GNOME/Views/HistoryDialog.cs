@@ -123,6 +123,7 @@ public class HistoryDialog : Adw.PreferencesDialog
             deleteButton.AddCssClass("flat");
             deleteButton.OnClicked += async (_, _) => await RemoveAsync(historicDowload.Value.Url);
             var row = Adw.ActionRow.New();
+            row.UseMarkup = false;
             row.Title = historicDowload.Label;
             row.Subtitle = historicDowload.Value.Url.ToString();
             row.TooltipText = _translationService._("Downloaded On: {0}", $"{historicDowload.Value.DownloadedOn}");

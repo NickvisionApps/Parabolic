@@ -38,8 +38,10 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.EntryRow? _authenticationUsernameRow;
     [Gtk.Connect("authenticationPasswordRow")]
     private Adw.PasswordEntryRow? _authenticationPasswordRow;
-    [Gtk.Connect("downloadImmediatelyRow")]
-    private Adw.SwitchRow? _downloadImmediatelyRow;
+    [Gtk.Connect("downloadImmediatelyAsVideoRow")]
+    private Adw.SwitchRow? _downloadImmediatelyAsVideoRow;
+    [Gtk.Connect("downloadImmediatelyAsAudioRow")]
+    private Adw.SwitchRow? _downloadImmediatelyAsAudioRow;
     [Gtk.Connect("discoverUrlButton")]
     private Gtk.Button? _discoverUrlButton;
     [Gtk.Connect("singleViewStack")]
@@ -169,11 +171,15 @@ public class AddDownloadDialog : Adw.Dialog
         _builder.Connect(this);
         // Load
         _authenticationCredentialRow!.SetModel(_controller.AvailableCredentials);
+        _downloadImmediatelyAsVideoRow!.Active = _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo;
+        _downloadImmediatelyAsAudioRow!.Active = _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio;
         // Events
         OnClosed += Dialog_OnClosed;
         _urlRow!.OnChanged += UrlRow_OnChanged;
         _selectBatchFileRow!.OnActivated += SelectBathFileRow_OnActivated;
         _authenticationCredentialRow!.OnNotify += AuthenticationCredentialRow_OnNotify;
+        _downloadImmediatelyAsVideoRow!.OnNotify += DownloadImmediatelyAsVideoRow_OnNotify;
+        _downloadImmediatelyAsAudioRow!.OnNotify += DownloadImmediatelyAsAudioRow_OnNotify;
         _discoverUrlButton!.OnClicked += DiscoverUrlButton_OnClicked;
         _singleViewStack!.OnNotify += SingleViewStack_OnNotify;
         _singleRevertToTitleButton!.OnClicked += SingleRevertToTitleButton_OnClicked;
@@ -295,6 +301,22 @@ public class AddDownloadDialog : Adw.Dialog
         }
     }
 
+    private void DownloadImmediatelyAsVideoRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
+    {
+        if (e.Pspec.GetName() == "active" && _downloadImmediatelyAsVideoRow!.Active)
+        {
+            _downloadImmediatelyAsAudioRow!.Active = false;
+        }
+    }
+
+    private void DownloadImmediatelyAsAudioRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
+    {
+        if (e.Pspec.GetName() == "active" && _downloadImmediatelyAsAudioRow!.Active)
+        {
+            _downloadImmediatelyAsVideoRow!.Active = false;
+        }
+    }
+
     private async void DiscoverUrlButton_OnClicked(Gtk.Button sender, EventArgs e)
     {
         _cancellationTokenSource = new CancellationTokenSource();
@@ -308,6 +330,8 @@ public class AddDownloadDialog : Adw.Dialog
         {
             credential = _controller.AvailableCredentials[(int)_authenticationCredentialRow!.Selected].Value;
         }
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo = _downloadImmediatelyAsVideoRow!.Active;
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio = _downloadImmediatelyAsAudioRow!.Active;
         _discoveryContext = await _controller.DiscoverAsync(new Uri(_urlRow!.Text_!), credential, _cancellationTokenSource.Token);
         _cancellationTokenSource.Dispose();
         _cancellationTokenSource = null;
@@ -317,7 +341,6 @@ public class AddDownloadDialog : Adw.Dialog
             return;
         }
         ContentHeight = 550;
-        _controller.PreviousDownloadOptions.DownloadImmediately = _downloadImmediatelyRow!.Active;
         if (_discoveryContext.Items.Count == 1)
         {
             ContentWidth = 550;
@@ -353,7 +376,7 @@ public class AddDownloadDialog : Adw.Dialog
             _singlePostProcessorArgumentRow!.SetModel(_controller.AvailablePostProcessorArguments);
             _singleStartTimeRow!.Text_ = _discoveryContext.Items[0].StartTime;
             _singleEndTimeRow!.Text_ = _discoveryContext.Items[0].EndTime;
-            if (_downloadImmediatelyRow.Active)
+            if (_downloadImmediatelyAsVideoRow!.Active || _downloadImmediatelyAsAudioRow!.Active)
             {
                 await DownloadSingleAsync();
             }
@@ -442,7 +465,7 @@ public class AddDownloadDialog : Adw.Dialog
             _playlistSplitChaptersRow!.Active = _controller.PreviousDownloadOptions.SplitChapters;
             _playlistExportDescriptionRow!.Active = _controller.PreviousDownloadOptions.ExportDescription;
             _playlistPostProcessorArgumentRow!.SetModel(_controller.AvailablePostProcessorArguments);
-            if (_downloadImmediatelyRow.Active)
+            if (_downloadImmediatelyAsVideoRow!.Active || _downloadImmediatelyAsAudioRow!.Active)
             {
                 await DownloadPlaylistAsync();
             }

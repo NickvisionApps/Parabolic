@@ -75,8 +75,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtUsername.PlaceholderText = _translationService._("Enter username here");
         TxtPassword.Header = _translationService._("Password");
         TxtPassword.PlaceholderText = _translationService._("Enter password here");
-        TglDownloadImmediately.OnContent = _translationService._("Download Immediately");
-        TglDownloadImmediately.OffContent = _translationService._("Download Immediately");
+        TglDownloadImmediatelyAsVideo.OnContent = _translationService._("Download Immediately as Video");
+        TglDownloadImmediatelyAsVideo.OffContent = _translationService._("Download Immediately as Video");
+        TglDownloadImmediatelyAsAudio.OnContent = _translationService._("Download Immediately as Audio");
+        TglDownloadImmediatelyAsAudio.OffContent = _translationService._("Download Immediately as Audio");
         TeachDownloadImmediately.Title = _translationService._("Warning");
         TeachDownloadImmediately.Subtitle = _translationService._("Parabolic will download media based off of previously configured options and sensible defaults. Options including save folder, format, and subtitle selection will not be shown.");
         LblLoading.Text = _translationService._("This may take some time...");
@@ -147,7 +149,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
     public async new Task<ContentDialogResult> ShowAsync()
     {
         ViewStack.SelectedIndex = (int)Pages.Discover;
-        TglDownloadImmediately.IsOn = _controller.PreviousDownloadOptions.DownloadImmediately;
+        TglDownloadImmediatelyAsVideo.IsOn = _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo;
+        TglDownloadImmediatelyAsAudio.IsOn = _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio;
         if (string.IsNullOrEmpty(TxtUrl.Text))
         {
             if (Clipboard.GetContent().Contains(StandardDataFormats.Text))
@@ -209,6 +212,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             credential = (CmbCredential.SelectedItem as BindableSelectionItem)!.ToSelectionItem<Credential?>()!.Value;
         }
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo = TglDownloadImmediatelyAsVideo.IsOn;
+        _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio = TglDownloadImmediatelyAsAudio.IsOn;
         _discoveryContext = await _controller.DiscoverAsync(new Uri(TxtUrl.Text), credential, cancellationToken);
         if (_discoveryContext is null)
         {
@@ -226,7 +231,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CloseButtonText = _translationService._("Cancel");
         SecondaryButtonText = null;
         DefaultButton = ContentDialogButton.Primary;
-        _controller.PreviousDownloadOptions.DownloadImmediately = TglDownloadImmediately.IsOn;
         if (_discoveryContext.Items.Count == 1)
         {
             ViewStack.SelectedIndex = (int)Pages.Single;
@@ -252,7 +256,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtSingleStartTime.Text = _discoveryContext.Items[0].StartTime;
             TxtSingleEndTime.PlaceholderText = _discoveryContext.Items[0].EndTime;
             TxtSingleEndTime.Text = _discoveryContext.Items[0].EndTime;
-            if (TglDownloadImmediately.IsOn)
+            if (TglDownloadImmediatelyAsVideo.IsOn || TglDownloadImmediatelyAsAudio.IsOn)
             {
                 await DownloadSingleAsync();
                 Hide();
@@ -286,7 +290,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TglPlaylistExportDescription.IsOn = _controller.PreviousDownloadOptions.ExportDescription;
             CmbPlaylistPostProcessorArgument.ItemsSource = _controller.AvailablePostProcessorArguments.ToBindableSelectonItems();
             CmbPlaylistPostProcessorArgument.SelectSelectionItem();
-            if (TglDownloadImmediately.IsOn)
+            if (TglDownloadImmediatelyAsVideo.IsOn || TglDownloadImmediatelyAsAudio.IsOn)
             {
                 await DownloadPlaylistAsync();
                 Hide();
@@ -348,7 +352,23 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtPassword.Visibility = visibility;
     }
 
-    private void TglDownloadImmediately_Toggled(object? sender, RoutedEventArgs e) => TeachDownloadImmediately.IsOpen = _controller.GetShouldShowDownloadImmediatelyTeach();
+    private void TglDownloadImmediatelyAsVideo_Toggled(object? sender, RoutedEventArgs e)
+    {
+        if (TglDownloadImmediatelyAsVideo.IsOn)
+        {
+            TglDownloadImmediatelyAsAudio.IsOn = false;
+            TeachDownloadImmediately.IsOpen = _controller.GetShouldShowDownloadImmediatelyTeach();
+        }
+    }
+
+    private void TglDownloadImmediatelyAsAudio_Toggled(object? sender, RoutedEventArgs e)
+    {
+        if (TglDownloadImmediatelyAsAudio.IsOn)
+        {
+            TglDownloadImmediatelyAsVideo.IsOn = false;
+            TeachDownloadImmediately.IsOpen = _controller.GetShouldShowDownloadImmediatelyTeach();
+        }
+    }
 
     private void NavViewSingle_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)
     {
