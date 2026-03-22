@@ -116,23 +116,23 @@
 
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="parabolic:BindableHistoricDownloadSelectionItem">
-                                <community:SettingsCard Margin="0,0,0,6" Header="{Binding Label, Mode=OneWay}" Description="{Binding Value.Url, Mode=OneWay}">
+                                <community:SettingsCard Margin="0,0,0,6" Header="{x:Bind Label, Mode=OneWay}" Description="{x:Bind Value.Url, Mode=OneWay}">
                                     <StackPanel Orientation="Horizontal" Spacing="6">
-                                        <TextBlock Margin="0,0,6,0" VerticalAlignment="Center" Foreground="Gray" Text="{Binding Value.DownloadedOn, Mode=OneWay}"/>
+                                        <TextBlock Margin="0,0,6,0" VerticalAlignment="Center" Foreground="Gray" Text="{x:Bind Value.DownloadedOn, Mode=OneWay}"/>
 
-                                        <Button Click="DownloadAgain" Tag="{Binding Value.Url, Mode=OneWay}">
+                                        <Button Click="DownloadAgain" Tag="{x:Bind Value.Url, Mode=OneWay}">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE896;" FontSize="18"/>
                                             </Button.Content>
                                         </Button>
 
-                                        <Button Click="Play" Tag="{Binding Value.Path, Mode=OneWay}" IsEnabled="{Binding Value.ExistsOnDisk, Mode=OneWay}">
+                                        <Button Click="Play" Tag="{x:Bind Value.Path, Mode=OneWay}" IsEnabled="{x:Bind Value.ExistsOnDisk, Mode=OneWay}">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE768;" FontSize="18"/>
                                             </Button.Content>
                                         </Button>
 
-                                        <Button Click="Remove" Tag="{Binding Value.Url, Mode=OneWay}">
+                                        <Button Click="Remove" Tag="{x:Bind Value.Url, Mode=OneWay}">
                                             <Button.Content>
                                                 <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE894;" FontSize="18"/>
                                             </Button.Content>
