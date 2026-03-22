@@ -98,11 +98,11 @@ public class AddDownloadDialogController
         if (context.Media.Any(m => m.Type == MediaType.Video))
         {
             PreviousDownloadOptions.FullFileType = selectedFileType.Value;
-            if(selectedFileType.Value.IsVideo)
+            if (selectedFileType.Value.IsVideo)
             {
                 PreviousDownloadOptions.VideoOnlyFileType = selectedFileType.Value;
             }
-            else if(selectedFileType.Value.IsAudio)
+            else if (selectedFileType.Value.IsAudio)
             {
                 PreviousDownloadOptions.AudioOnlyFileType = selectedFileType.Value;
             }

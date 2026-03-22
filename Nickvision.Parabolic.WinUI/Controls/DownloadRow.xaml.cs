@@ -185,7 +185,14 @@ public sealed partial class DownloadRow : UserControl
         ViewStackButtons.SelectedIndex = (int)ButtonsPage.Error;
     }
 
-    private void OpenFolder(object sender, RoutedEventArgs e) => Process.Start(new ProcessStartInfo { FileName = Path.GetDirectoryName(_path)!, UseShellExecute = true })?.Dispose();
+    private void OpenFolder(object sender, RoutedEventArgs e)
+    {
+        using var _ = Process.Start(new ProcessStartInfo()
+        {
+            FileName = Path.GetDirectoryName(_path)!,
+            UseShellExecute = true
+        });
+    }
 
     private void PauseResume(object sender, RoutedEventArgs e)
     {
@@ -199,7 +206,14 @@ public sealed partial class DownloadRow : UserControl
         }
     }
 
-    private void Play(object sender, RoutedEventArgs e) => Process.Start(new ProcessStartInfo { FileName = _path, UseShellExecute = true })?.Dispose();
+    private void Play(object sender, RoutedEventArgs e)
+    {
+        using var _ = Process.Start(new ProcessStartInfo()
+        {
+            FileName = _path,
+            UseShellExecute = true
+        });
+    }
 
     private void Retry(object sender, RoutedEventArgs e) => RetryRequested?.Invoke(this, _id);
 
