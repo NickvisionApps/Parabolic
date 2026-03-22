@@ -92,8 +92,8 @@ public class AddDownloadDialogController
                 PostProcessorArgument = selectedPostProcessorArgument.Value,
                 TimeFrame = TimeFrame.TryParse(item.StartTime, item.EndTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
             });
-            m3uFile.Add(options);
         }
+        m3uFile.Add(options);
         PreviousDownloadOptions.SaveFolder = saveFolder;
         if (context.Media.Any(m => m.Type == MediaType.Video))
         {
