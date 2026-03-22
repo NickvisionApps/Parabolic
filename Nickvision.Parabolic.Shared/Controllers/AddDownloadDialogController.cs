@@ -324,7 +324,7 @@ public class AddDownloadDialogController
 
     public bool GetShouldShowFileTypeTeach(DiscoveryContext context, SelectionItem<MediaFileType> selectedFileType)
     {
-        var previousFileType = context.Media.Any(m => m.Type == MediaType.Video) ? PreviousDownloadOptions.VideoOnlyFileType : PreviousDownloadOptions.AudioOnlyFileType;
+        var previousFileType = context.Media.Any(m => m.Type == MediaType.Video) ? PreviousDownloadOptions.FullFileType : PreviousDownloadOptions.AudioOnlyFileType;
         if (!previousFileType.IsGeneric && selectedFileType.Value.IsGeneric && !_shownTeachTypeFlag.HasFlag(AddDownloadTeachType.FileType))
         {
             _shownTeachTypeFlag |= AddDownloadTeachType.FileType;
