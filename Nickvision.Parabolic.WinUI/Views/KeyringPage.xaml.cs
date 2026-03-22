@@ -1,10 +1,13 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 
 namespace Nickvision.Parabolic.WinUI.Views;
@@ -20,12 +23,15 @@ public sealed partial class KeyringPage : Page
 
     private readonly KeyringViewController _controller;
     private readonly ITranslationService _translationService;
+    private readonly ObservableCollection<BindableCredentialSelectionItem> _bindableCredentials;
 
     public KeyringPage(KeyringViewController controller, ITranslationService translationService)
     {
         InitializeComponent();
         _controller = controller;
         _translationService = translationService;
+        _bindableCredentials = _controller.Credentials.ToBindableCredentialSelectionItems();
+        _controller.Credentials.CollectionChanged += OnCredentialsCollectionChanged;
         LblKeyring.Text = _translationService._("Keyring");
         LblAdd.Text = _translationService._("Add");
         TxtSearch.PlaceholderText = _translationService._("Search...");
@@ -48,8 +54,46 @@ public sealed partial class KeyringPage : Page
     private void Page_Loaded(object sender, RoutedEventArgs e)
     {
         TxtSearch.Text = string.Empty;
-        ListCredentials.ItemsSource = _controller.Credentials.ToBindableCredentialSelectionItems();
+        ListCredentials.ItemsSource = _bindableCredentials;
         ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+    }
+
+    private void Page_Unloaded(object sender, RoutedEventArgs e)
+    {
+        _controller.Credentials.CollectionChanged -= OnCredentialsCollectionChanged;
+    }
+
+    private void OnCredentialsCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        switch (e.Action)
+        {
+            case NotifyCollectionChangedAction.Add when e.NewItems is not null:
+                foreach (SelectionItem<Credential> item in e.NewItems)
+                {
+                    _bindableCredentials.Add(new BindableCredentialSelectionItem(item));
+                }
+                break;
+            case NotifyCollectionChangedAction.Remove when e.OldItems is not null:
+                foreach (SelectionItem<Credential> item in e.OldItems)
+                {
+                    var bindable = _bindableCredentials.FirstOrDefault(b => b.Value == item.Value);
+                    if (bindable is not null)
+                    {
+                        _bindableCredentials.Remove(bindable);
+                    }
+                }
+                break;
+            case NotifyCollectionChangedAction.Replace when e.NewItems is not null && e.NewStartingIndex >= 0 && e.NewStartingIndex < _bindableCredentials.Count:
+                _bindableCredentials[e.NewStartingIndex] = new BindableCredentialSelectionItem((SelectionItem<Credential>)e.NewItems[0]!);
+                break;
+            default:
+                _bindableCredentials.Clear();
+                foreach (var item in _controller.Credentials)
+                {
+                    _bindableCredentials.Add(new BindableCredentialSelectionItem(item));
+                }
+                break;
+        }
     }
 
     private async void Add(object sender, RoutedEventArgs e)
@@ -150,7 +194,7 @@ public sealed partial class KeyringPage : Page
         {
             if (string.IsNullOrEmpty(sender.Text))
             {
-                ListCredentials.ItemsSource = _controller.Credentials.ToBindableCredentialSelectionItems();
+                ListCredentials.ItemsSource = _bindableCredentials;
                 ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
             }
             else
