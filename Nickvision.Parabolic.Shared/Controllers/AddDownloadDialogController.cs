@@ -98,7 +98,14 @@ public class AddDownloadDialogController
         if (context.Media.Any(m => m.Type == MediaType.Video))
         {
             PreviousDownloadOptions.FullFileType = selectedFileType.Value;
-            PreviousDownloadOptions.VideoOnlyFileType = selectedFileType.Value;
+            if(selectedFileType.Value.IsVideo)
+            {
+                PreviousDownloadOptions.VideoOnlyFileType = selectedFileType.Value;
+            }
+            else if(selectedFileType.Value.IsAudio)
+            {
+                PreviousDownloadOptions.AudioOnlyFileType = selectedFileType.Value;
+            }
         }
         else
         {
@@ -160,7 +167,14 @@ public class AddDownloadDialogController
         if (media.Type == MediaType.Video)
         {
             PreviousDownloadOptions.FullFileType = options.FileType;
-            PreviousDownloadOptions.VideoOnlyFileType = options.FileType;
+            if (selectedFileType.Value.IsVideo)
+            {
+                PreviousDownloadOptions.VideoOnlyFileType = selectedFileType.Value;
+            }
+            else if (selectedFileType.Value.IsAudio)
+            {
+                PreviousDownloadOptions.AudioOnlyFileType = selectedFileType.Value;
+            }
         }
         else
         {
@@ -247,7 +261,7 @@ public class AddDownloadDialogController
                 context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(_translationService), !matched || PreviousDownloadOptions.VideoResolution == VideoResolution.Best));
             }
             var hasVideo = res.Media.Any(m => m.Type == MediaType.Video);
-            var previousFileType = (!hasVideo || PreviousDownloadOptions.DownloadImmediatelyAsAudio) ? PreviousDownloadOptions.AudioOnlyFileType : PreviousDownloadOptions.VideoOnlyFileType;
+            var previousFileType = (!hasVideo || PreviousDownloadOptions.DownloadImmediatelyAsAudio) ? PreviousDownloadOptions.AudioOnlyFileType : (PreviousDownloadOptions.DownloadImmediatelyAsVideo ? PreviousDownloadOptions.VideoOnlyFileType : PreviousDownloadOptions.FullFileType);
             context.FileTypes.EnsureCapacity(hasVideo ? 13 : 7);
             if (hasVideo)
             {
