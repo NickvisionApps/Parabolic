@@ -271,6 +271,20 @@ public partial class Download : IDisposable
             };
 
         }
+        if (Options.FileType.ShouldRecode && downloader.PreferredVideoCodec == VideoCodec.Any)
+        {
+            if (!string.IsNullOrEmpty(formatSort))
+            {
+                formatSort += ',';
+            }
+            // Prefer codecs that are natively supported by the target container to avoid slow re-encoding.
+            // WEBM supports VP9/AV01/VP8; MOV and AVI work best with H264/H265.
+            formatSort += Options.FileType switch
+            {
+                MediaFileType.WEBM => "+vcodec:vp9",
+                _ => "+vcodec:h264"
+            };
+        }
         if (!string.IsNullOrEmpty(formatSort))
         {
             arguments.Add("--format-sort");
@@ -452,6 +466,9 @@ public partial class Download : IDisposable
                 _ => $"bestvideo*[height={Options.VideoResolution.Height}]/bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
             };
         }
+        // On Windows, YouTube opus streams can have compatibility issues; avoid them unless the output
+        // format is WEBM (where opus is the native audio codec and should be preferred).
+        var avoidOpus = Options.FileType != MediaFileType.WEBM && downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube");
         if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
         {
             if (!string.IsNullOrEmpty(formatString))
@@ -468,7 +485,7 @@ public partial class Download : IDisposable
             }
             formatString += Options.AudioFormat switch
             {
-                var f when f == Format.BestAudio => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
+                var f when f == Format.BestAudio => avoidOpus ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var f when f == Format.WorstAudio => "worstaudio",
                 _ => Options.AudioFormat.Id
             };
@@ -481,9 +498,9 @@ public partial class Download : IDisposable
             }
             formatString += Options.AudioBitrate.Value switch
             {
-                var b when b == double.MaxValue => downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "bestaudio[acodec!=opus]" : "bestaudio",
+                var b when b == double.MaxValue => avoidOpus ? "bestaudio[acodec!=opus]" : "bestaudio",
                 var b when b == -1.0 => "worstaudio",
-                _ => $"bestaudio[abr={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={Options.AudioBitrate.Value}]{(downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") ? "[acodec!=opus]" : string.Empty)}/bestaudio"
+                _ => $"bestaudio[abr={Options.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={Options.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio"
             };
         }
         if (!string.IsNullOrEmpty(formatString))
