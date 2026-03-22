@@ -10,6 +10,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.Graphics.Imaging;
+using Windows.Storage;
+using Windows.System;
 
 namespace Nickvision.Parabolic.WinUI.Controls;
 
@@ -185,13 +187,20 @@ public sealed partial class DownloadRow : UserControl
         ViewStackButtons.SelectedIndex = (int)ButtonsPage.Error;
     }
 
-    private void OpenFolder(object sender, RoutedEventArgs e)
+    private async void OpenFolder(object sender, RoutedEventArgs e)
     {
-        using var _ = Process.Start(new ProcessStartInfo()
+        try
         {
-            FileName = Path.GetDirectoryName(_path)!,
-            UseShellExecute = true
-        });
+            using var _ = Process.Start(new ProcessStartInfo()
+            {
+                FileName = Path.GetDirectoryName(_path)!,
+                UseShellExecute = true
+            });
+        }
+        catch
+        {
+            await Launcher.LaunchFolderAsync(await StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(_path)!));
+        }
     }
 
     private void PauseResume(object sender, RoutedEventArgs e)
@@ -206,13 +215,20 @@ public sealed partial class DownloadRow : UserControl
         }
     }
 
-    private void Play(object sender, RoutedEventArgs e)
+    private async void Play(object sender, RoutedEventArgs e)
     {
-        using var _ = Process.Start(new ProcessStartInfo()
+        try
         {
-            FileName = _path,
-            UseShellExecute = true
-        });
+            using var _ = Process.Start(new ProcessStartInfo()
+            {
+                FileName = _path,
+                UseShellExecute = true
+            });
+        }
+        catch
+        {
+            await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(_path));
+        }
     }
 
     private void Retry(object sender, RoutedEventArgs e) => RetryRequested?.Invoke(this, _id);
