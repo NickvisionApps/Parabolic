@@ -464,8 +464,6 @@ public partial class Download : IDisposable
                 _ => $"bestvideo*[height={Options.VideoResolution.Height}]/bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
             };
         }
-        // On Windows, YouTube opus streams can have compatibility issues; avoid them unless the output
-        // format is WEBM (where opus is the native audio codec and should be preferred).
         var avoidOpus = Options.FileType != MediaFileType.WEBM && downloader.PreferredAudioCodec == AudioCodec.Any && OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube");
         if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
         {
