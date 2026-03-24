@@ -147,6 +147,7 @@ if [[ -n "$DENO_PATH" && -f "$DENO_PATH" ]]; then
 else
     warn "deno not found"
 fi
+success "Bundled dependencies."
 
 # Bundle GTK4 and libadwaita
 info "Bundling GTK4 and libadwaita..."
@@ -191,6 +192,44 @@ for LIB_NAME in "libgtk-4.1.dylib" "libadwaita-1.0.dylib"; do
     fi
 done
 
+# Fixes dynamic library references in a standalone executable by rewriting any absolute
+# Homebrew-style paths to @rpath and bundling the referenced libraries into Frameworks.
+# This ensures that executables like ffmpeg/ffprobe work on all Macs regardless of whether
+# Homebrew lives in /usr/local (Intel) or /opt/homebrew (Apple Silicon).
+fix_tool_deps() {
+    local tool_path="$1"
+    local tool_name
+    tool_name="$(basename "$tool_path")"
+    [[ -f "$tool_path" ]] || return
+    # Add rpath so the tool finds its bundled Frameworks directory at runtime
+    install_name_tool -add_rpath "@executable_path/../Frameworks" "$tool_path" 2>/dev/null || true
+    while IFS= read -r dep_line; do
+        local dep_path dep_name actual_path
+        dep_path="$(echo "$dep_line" | awk '{print $1}')"
+        dep_name="$(basename "$dep_path")"
+        # Match any absolute Homebrew-style library path (/usr/local or /opt/homebrew)
+        if [[ "$dep_path" == /usr/local/* || "$dep_path" == /opt/homebrew/* ]]; then
+            # Rewrite the hardcoded path to a relocatable @rpath reference
+            install_name_tool -change "$dep_path" "@rpath/$dep_name" "$tool_path" 2>/dev/null || true
+            # Resolve the actual library on this system and bundle it
+            actual_path=""
+            if [[ -f "$dep_path" ]]; then
+                actual_path="$dep_path"
+            elif [[ -f "$BREW_PREFIX/lib/$dep_name" ]]; then
+                actual_path="$BREW_PREFIX/lib/$dep_name"
+            else
+                actual_path="$(find "$BREW_PREFIX" -name "$dep_name" -type f 2>/dev/null | head -n1)"
+            fi
+            if [[ -n "$actual_path" && -f "$actual_path" ]]; then
+                bundle_dylib "$actual_path"
+            else
+                warn "[$tool_name] Could not find library to bundle: $dep_name"
+            fi
+        fi
+    done < <(otool -L "$tool_path" | tail -n +2)
+    success "Fixed $tool_name library dependencies."
+}
+
 # Fix any Homebrew references in .NET-published native libs and add Frameworks rpath
 find "$APP_BUNDLE/Contents/MacOS" \( -name "*.dylib" -o -name "*.so" \) | while read -r lib; do
     install_name_tool -add_rpath "@loader_path/../Frameworks" "$lib" 2>/dev/null || true
@@ -212,6 +251,14 @@ while IFS= read -r dep_line; do
         install_name_tool -change "$dep_path" "@rpath/$dep_name" "$APP_BUNDLE/Contents/MacOS/$PROJECT" 2>/dev/null || true
     fi
 done < <(otool -L "$APP_BUNDLE/Contents/MacOS/$PROJECT" | tail -n +2)
+
+# Fix library dependencies for bundled media tool executables so they resolve their
+# dylib references at runtime regardless of the Homebrew prefix on the host system.
+info "Fixing bundled media tool library dependencies..."
+for TOOL in ffmpeg ffprobe ffplay aria2c deno; do
+    fix_tool_deps "$APP_BUNDLE/Contents/MacOS/$TOOL"
+done
+success "Fixed bundled media tool library dependencies."
 
 # Bundle GLib schemas required by GTK4 and libadwaita
 info "Bundling GLib schemas..."
@@ -304,6 +351,12 @@ find "$FRAMEWORKS_DIR" \( -name "*.dylib" -o -name "*.so" \) | while read -r lib
 done
 find "$APP_BUNDLE/Contents/MacOS" \( -name "*.dylib" -o -name "*.so" \) | while read -r lib; do
     codesign --force --sign - "$lib" 2>/dev/null || true
+done
+# Re-sign media tool executables after install_name_tool has modified their rpaths/deps
+for TOOL in ffmpeg ffprobe ffplay aria2c deno; do
+    if [[ -f "$APP_BUNDLE/Contents/MacOS/$TOOL" ]]; then
+        codesign --force --sign - "$APP_BUNDLE/Contents/MacOS/$TOOL" 2>/dev/null || true
+    fi
 done
 codesign --force --sign - "$APP_BUNDLE/Contents/MacOS/$REAL_BINARY"
 success "Ad-hoc signed bundled libraries and executables."

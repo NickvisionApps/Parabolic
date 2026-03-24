@@ -38,7 +38,7 @@ LanguageDetectionMethod=uilanguage
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 
-WizardStyle=modern
+WizardStyle=modern dynamic windows11
 WizardResizable=yes
 WizardSizePercent=120,130
 
@@ -79,8 +79,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "dotnet.exe"; DestDir: "{app}"; Flags: deleteafterinstall
-Source: "windowsappruntimeinstall.exe"; DestDir: "{app}"; Flags: deleteafterinstall 
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
@@ -101,6 +99,4 @@ Root: HKCR; Subkey: "{#MyAppShortNameLower}\DefaultIcon"; ValueType: "string"; V
 Root: HKCR; Subkey: "{#MyAppShortNameLower}\shell\open\command"; ValueType: "string"; ValueData: """{app}\Release\{#MyAppExeName}"" ""%1"""
 
 [Run]
-Filename: "{app}\dotnet.exe"; Parameters: "/install /quiet /norestart"
-Filename: "{app}\windowsappruntimeinstall.exe"; Parameters: "--quiet --force"
 Filename: "{app}\Release\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent unchecked

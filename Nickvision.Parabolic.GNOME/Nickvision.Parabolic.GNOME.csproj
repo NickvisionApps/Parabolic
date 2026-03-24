@@ -10,11 +10,12 @@
 		<OutputType>Exe</OutputType>
 		<Platforms>AnyCPU;ARM64;x64</Platforms>
 		<Version>2026.3.0</Version>
+		<PublishAot>true</PublishAot>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="GirCore.Adw-1" Version="0.7.0" />
-		<PackageReference Include="Nickvision.Desktop.GNOME" Version="2026.3.2" />
+		<PackageReference Include="Nickvision.Desktop.GNOME" Version="2026.3.6" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Nickvision.Parabolic.Shared\Nickvision.Parabolic.Shared.csproj" />

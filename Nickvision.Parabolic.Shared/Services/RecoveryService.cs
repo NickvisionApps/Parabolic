@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
+using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
@@ -59,7 +60,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         using var command = _connection.CreateCommand();
         command.CommandText = "INSERT INTO recovery (id, options, credentialRequired) VALUES ($id, $options, $credentialRequired)";
         command.Parameters.AddWithValue("$id", download.Id);
-        command.Parameters.AddWithValue("$options", JsonSerializer.Serialize(download.Options));
+        command.Parameters.AddWithValue("$options", JsonSerializer.Serialize(download.Options, ApplicationJsonContext.Default.DownloadOptions));
         command.Parameters.AddWithValue("$credentialRequired", download.CredentialRequired ? 1 : 0);
         var res = await command.ExecuteNonQueryAsync() > 0;
         if (res)
@@ -83,7 +84,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
             using var command = _connection.CreateCommand();
             command.CommandText = "INSERT INTO recovery (id, options, credentialRequired) VALUES ($id, $options, $credentialRequired)";
             command.Parameters.AddWithValue("$id", download.Id);
-            command.Parameters.AddWithValue("$options", JsonSerializer.Serialize(download.Options));
+            command.Parameters.AddWithValue("$options", JsonSerializer.Serialize(download.Options, ApplicationJsonContext.Default.DownloadOptions));
             command.Parameters.AddWithValue("$credentialRequired", download.CredentialRequired);
             if (await command.ExecuteNonQueryAsync() <= 0)
             {
@@ -138,7 +139,7 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         while (await reader.ReadAsync())
         {
             var id = reader.GetInt32(0);
-            var options = JsonSerializer.Deserialize<DownloadOptions>(reader.GetString(1))!;
+            var options = JsonSerializer.Deserialize(reader.GetString(1), ApplicationJsonContext.Default.DownloadOptions)!;
             var credentialRequired = reader.GetInt32(2) == 1;
             _logger.LogInformation($"Fetched recoverable download ({id}): {options.Url}");
             downloads.Add(new RecoverableDownload(id, options, credentialRequired));

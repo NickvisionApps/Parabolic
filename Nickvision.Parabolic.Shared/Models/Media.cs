@@ -109,6 +109,10 @@ public class Media
                 {
                     continue;
                 }
+                else if (!options.IncludeSuperResolutions && format.Id.EndsWith("-sr", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    continue;
+                }
                 if (format.Type == MediaType.Video)
                 {
                     hasVideoFormats = true;

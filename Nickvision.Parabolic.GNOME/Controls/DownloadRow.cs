@@ -4,6 +4,7 @@ using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Models;
 using Nickvision.Parabolic.Shared.Services;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -61,6 +62,7 @@ public class DownloadRow : Gtk.ListBoxRow
 
     }
 
+    [DynamicDependency(DynamicallyAccessedMemberTypes.NonPublicFields, typeof(DownloadRow))]
     private DownloadRow(IThumbnailService thumbnailService, ITranslationService translator, Gtk.Window parent, Gtk.Builder builder) : base(new Gtk.Internal.ListBoxRowHandle(builder.GetPointer("root"), false))
     {
         _thumbnailService = thumbnailService;

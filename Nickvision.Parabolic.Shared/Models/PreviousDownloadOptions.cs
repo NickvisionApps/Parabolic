@@ -1,5 +1,6 @@
 ﻿using Nickvision.Desktop.Converters;
 using Nickvision.Desktop.Filesystem;
+using Nickvision.Parabolic.Shared.Helpers;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -9,12 +10,14 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class PreviousDownloadOptions
 {
-    private static readonly JsonSerializerOptions _options;
     public static readonly string Key;
 
-    public bool DownloadImmediately { get; set; }
+    public bool DownloadImmediatelyAsVideo { get; set; }
+    public bool DownloadImmediatelyAsAudio { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType FullFileType { get; set; }
+    [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
+    public MediaFileType VideoOnlyFileType { get; set; }
     [JsonConverter(typeof(NullToDefaultValueConverter<MediaFileType>))]
     public MediaFileType AudioOnlyFileType { get; set; }
     public Dictionary<MediaFileType, string> VideoFormatIds { get; set; }
@@ -31,18 +34,16 @@ public class PreviousDownloadOptions
 
     static PreviousDownloadOptions()
     {
-        _options = new JsonSerializerOptions
-        {
-            WriteIndented = true
-        };
         Key = "previous";
     }
 
     public PreviousDownloadOptions()
     {
-        DownloadImmediately = false;
+        DownloadImmediatelyAsVideo = false;
+        DownloadImmediatelyAsAudio = false;
         SaveFolder = UserDirectories.Downloads;
         FullFileType = MediaFileType.MP4;
+        VideoOnlyFileType = MediaFileType.MP4;
         AudioOnlyFileType = MediaFileType.MP3;
         VideoFormatIds = new Dictionary<MediaFileType, string>()
         {
@@ -94,5 +95,5 @@ public class PreviousDownloadOptions
         set => field = value;
     }
 
-    public override string ToString() => JsonSerializer.Serialize(this, _options);
+    public override string ToString() => JsonSerializer.Serialize(this, ApplicationJsonContext.Default.PreviousDownloadOptions);
 }

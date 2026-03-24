@@ -5,6 +5,7 @@ using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.Shared.Controllers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Views;
@@ -32,6 +33,7 @@ public class HistoryDialog : Adw.PreferencesDialog
 
     }
 
+    [DynamicDependency(DynamicallyAccessedMemberTypes.NonPublicFields, typeof(HistoryDialog))]
     public HistoryDialog(IServiceProvider serviceProvider, HistoryViewController controller, ITranslationService translationService, Gtk.Window parent, Gtk.Builder builder) : base(new Adw.Internal.PreferencesDialogHandle(builder.GetPointer("root"), false))
     {
         _serviceProvider = serviceProvider;
@@ -121,6 +123,7 @@ public class HistoryDialog : Adw.PreferencesDialog
             deleteButton.AddCssClass("flat");
             deleteButton.OnClicked += async (_, _) => await RemoveAsync(historicDowload.Value.Url);
             var row = Adw.ActionRow.New();
+            row.UseMarkup = false;
             row.Title = historicDowload.Label;
             row.Subtitle = historicDowload.Value.Url.ToString();
             row.TooltipText = _translationService._("Downloaded On: {0}", $"{historicDowload.Value.DownloadedOn}");

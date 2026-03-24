@@ -1,14 +1,13 @@
 ﻿using Nickvision.Parabolic.Shared.Helpers;
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
-public class PostProcessorArgument : IComparable<PostProcessorArgument>, IEquatable<PostProcessorArgument>
+public class PostProcessorArgument : IComparable<PostProcessorArgument>, IEquatable<PostProcessorArgument>, INotifyPropertyChanged
 {
-    public string Name { get; set; }
-    public PostProcessor PostProcessor { get; set; }
-    public Executable Executable { get; set; }
-    public string Args { get; set; }
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public PostProcessorArgument(string name, PostProcessor postProcessor, Executable executable, string args)
     {
@@ -16,6 +15,49 @@ public class PostProcessorArgument : IComparable<PostProcessorArgument>, IEquata
         PostProcessor = postProcessor;
         Executable = executable;
         Args = args;
+    }
+
+    public string Name
+    {
+        get => field;
+
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+    public PostProcessor PostProcessor
+    {
+        get => field;
+
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public Executable Executable
+    {
+        get => field;
+
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string Args
+    {
+        get => field;
+
+        set
+        {
+            field = value;
+            OnPropertyChanged();
+        }
     }
 
     public int CompareTo(PostProcessorArgument? other) => other is null ? 1 : Name.CompareTo(other.Name);
@@ -65,4 +107,6 @@ public class PostProcessorArgument : IComparable<PostProcessorArgument>, IEquata
     public static bool operator ==(PostProcessorArgument left, PostProcessorArgument right) => left.Equals(right);
 
     public static bool operator !=(PostProcessorArgument left, PostProcessorArgument right) => !left.Equals(right);
+
+    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

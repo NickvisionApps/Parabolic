@@ -76,8 +76,13 @@ Adw.Dialog root {
               }
             }
 
-            Adw.SwitchRow downloadImmediatelyRow {
-              title: _("Download Immediately");
+            Adw.SwitchRow downloadImmediatelyAsVideoRow {
+              title: _("Download Immediately as Video");
+              subtitle: _("Media will be downloaded based off of previously configured options and sensible defaults. Options will not be shown");
+            }
+
+            Adw.SwitchRow downloadImmediatelyAsAudioRow {
+              title: _("Download Immediately as Audio");
               subtitle: _("Media will be downloaded based off of previously configured options and sensible defaults. Options will not be shown");
             }
           }

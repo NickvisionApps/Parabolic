@@ -1,11 +1,12 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.Shared.Models;
+using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -25,7 +26,7 @@ public sealed partial class HistoryPage : Page
 
     private readonly HistoryViewController _controller;
     private readonly ITranslationService _translationService;
-    private IReadOnlyList<SelectionItem<HistoricDownload>> _historicDownloads;
+    private List<BindableHistoricDownloadSelectionItem> _historicDownloads;
 
     public HistoryPage(HistoryViewController controller, ITranslationService translationService)
     {
@@ -95,7 +96,22 @@ public sealed partial class HistoryPage : Page
 
     private void DownloadAgain(object? sender, RoutedEventArgs e) => _controller.RequestDownload(((sender as Button)!.Tag as Uri)!);
 
-    private async void Play(object? sender, RoutedEventArgs e) => await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(((sender as Button)!.Tag as string)!));
+    private async void Play(object? sender, RoutedEventArgs e)
+    {
+        var path = ((sender as Button)!.Tag as string)!;
+        try
+        {
+            using var _ = Process.Start(new ProcessStartInfo()
+            {
+                FileName = path,
+                UseShellExecute = true
+            });
+        }
+        catch
+        {
+            await Launcher.LaunchFileAsync(await StorageFile.GetFileFromPathAsync(path));
+        }
+    }
 
     private async void Remove(object? sender, RoutedEventArgs e)
     {
@@ -142,7 +158,7 @@ public sealed partial class HistoryPage : Page
     {
         ViewStack.SelectedIndex = (int)Pages.Loading;
         TxtSearch.Text = string.Empty;
-        _historicDownloads = await _controller.GetAllAsync();
+        _historicDownloads = (await _controller.GetAllAsync()).ToBindableHistoricDownloadSelectionItems();
         ListDownloads.ItemsSource = _historicDownloads;
         ViewStack.SelectedIndex = _historicDownloads.Count == 0 ? (int)Pages.None : (int)Pages.History;
     }
