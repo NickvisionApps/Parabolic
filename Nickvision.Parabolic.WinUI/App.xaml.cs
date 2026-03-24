@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
+using Microsoft.Windows.AppNotifications;
 using Nickvision.Parabolic.WinUI.Views;
 using System;
 
@@ -14,6 +15,13 @@ public partial class App : Application
     {
         InitializeComponent();
         _serviceProvider = serviceProvider;
+        AppNotificationManager.Default.NotificationInvoked += App_NotificationInvoked;
+        AppNotificationManager.Default.Register();
+        AppDomain.CurrentDomain.ProcessExit += async (_, _) =>
+        {
+            await AppNotificationManager.Default.RemoveAllAsync();
+            AppNotificationManager.Default.UnregisterAll();
+        };
     }
 
     protected override void OnLaunched(LaunchActivatedEventArgs args)
@@ -23,5 +31,10 @@ public partial class App : Application
             _window = _serviceProvider.GetRequiredService<MainWindow>();
         }
         _window.Activate();
+    }
+
+    private void App_NotificationInvoked(AppNotificationManager sender, AppNotificationActivatedEventArgs args)
+    {
+
     }
 }

@@ -49,15 +49,14 @@ public class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect("listDownloads")]
     private Gtk.ListBox? _listDownloads;
 
-    public MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, IGtkBuilderFactory builderFactory) : this(serviceProvider, controller, appInfo, eventsService, translationService, builderFactory.Create("MainWindow"))
+    public MainWindow(IServiceProvider serviceProvider, Adw.Application application, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, IGtkBuilderFactory builderFactory) : this(serviceProvider, application, controller, appInfo, eventsService, translationService, builderFactory.Create("MainWindow"))
     {
 
     }
 
     [DynamicDependency(DynamicallyAccessedMemberTypes.NonPublicFields, typeof(MainWindow))]
-    private MainWindow(IServiceProvider serviceProvider, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
+    private MainWindow(IServiceProvider serviceProvider, Adw.Application application, MainWindowController controller, AppInfo appInfo, IEventsService eventsService, ITranslationService translationService, Gtk.Builder builder) : base(new Adw.Internal.ApplicationWindowHandle(builder.GetPointer("root"), false))
     {
-        var application = serviceProvider.GetRequiredService<Adw.Application>();
         _serviceProvider = serviceProvider;
         _controller = controller;
         _appInfo = appInfo;
