@@ -38,7 +38,7 @@ LanguageDetectionMethod=uilanguage
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 
-WizardStyle=modern
+WizardStyle=modern dynamic windows11
 WizardResizable=yes
 WizardSizePercent=120,130
 
