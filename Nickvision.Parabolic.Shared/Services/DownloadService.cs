@@ -16,12 +16,11 @@ namespace Nickvision.Parabolic.Shared.Services;
 public class DownloadService : IDisposable, IDownloadService
 {
     private readonly ILogger<DownloadService> _logger;
-    private readonly IDenoExecutableService _denoExecutableService;
+    private readonly IHistoryService _historyService;
     private readonly IJsonFileService _jsonFileService;
+    private readonly IRecoveryService _recoveryService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpService;
-    private readonly IHistoryService _historyService;
-    private readonly IRecoveryService _recoveryService;
     private readonly Dictionary<int, Download> _downloading;
     private readonly Dictionary<int, Download> _queued;
     private readonly Dictionary<int, Download> _completed;
@@ -38,15 +37,14 @@ public class DownloadService : IDisposable, IDownloadService
     public int QueuedCount => _queued.Count;
     public int CompletedCount => _completed.Count;
 
-    public DownloadService(ILogger<DownloadService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService)
+    public DownloadService(ILogger<DownloadService> logger, IHistoryService historyService, IJsonFileService jsonFileService, IRecoveryService recoveryService, ITranslationService translationService, IYtdlpExecutableService ytdlpService)
     {
         _logger = logger;
-        _denoExecutableService = denoExecutableService;
+        _historyService = historyService;
         _jsonFileService = jsonFileService;
+        _recoveryService = recoveryService;
         _translationService = translationService;
         _ytdlpService = ytdlpService;
-        _historyService = historyService;
-        _recoveryService = recoveryService;
         _downloading = new Dictionary<int, Download>();
         _queued = new Dictionary<int, Download>();
         _completed = new Dictionary<int, Download>();
@@ -59,9 +57,8 @@ public class DownloadService : IDisposable, IDownloadService
 
     public async Task AddAsync(DownloadOptions options, bool excludeFromHistory)
     {
-        var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var downloaderOptions = config.DownloaderOptions;
-        var download = new Download(options, _denoExecutableService, _translationService);
+        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
+        var download = new Download(_jsonFileService, _translationService, _ytdlpService, options);
         _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(options, ApplicationJsonContext.Default.DownloadOptions)}");
         download.Completed += Download_Completed;
         download.ProgressChanged += Download_ProgressChanged;
@@ -79,7 +76,7 @@ public class DownloadService : IDisposable, IDownloadService
             _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
-            download.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
+            await download.StartAsync();
         }
         else
         {
@@ -91,15 +88,14 @@ public class DownloadService : IDisposable, IDownloadService
 
     public async Task AddAsync(IReadOnlyList<DownloadOptions> options, bool excludeFromHistory)
     {
-        var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var downloaderOptions = config.DownloaderOptions;
+        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
         var ytdlpExecutablePath = _ytdlpService.ExecutablePath ?? "yt-dlp";
         var recoverableDownloads = new List<RecoverableDownload>();
         var historicDownloads = new List<HistoricDownload>();
         var downloadsToStart = new List<Download>();
         foreach (var option in options)
         {
-            var download = new Download(option, _denoExecutableService, _translationService);
+            var download = new Download(_jsonFileService, _translationService, _ytdlpService, option);
             _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(option, ApplicationJsonContext.Default.DownloadOptions)}");
             download.Completed += Download_Completed;
             download.ProgressChanged += Download_ProgressChanged;
@@ -130,7 +126,7 @@ public class DownloadService : IDisposable, IDownloadService
         await _historyService.AddAsync(historicDownloads);
         foreach (var download in downloadsToStart)
         {
-            download.Start(ytdlpExecutablePath, downloaderOptions, config.TranslationLanguage);
+            await download.StartAsync();
         }
     }
 
@@ -333,8 +329,7 @@ public class DownloadService : IDisposable, IDownloadService
 
     private async void Download_Completed(object? sender, DownloadCompletedEventArgs e)
     {
-        var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var downloaderOptions = config.DownloaderOptions;
+        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
         if (!_downloading.TryGetValue(e.Id, out var download) || download.Status == DownloadStatus.Stopped)
         {
             return;
@@ -362,7 +357,7 @@ public class DownloadService : IDisposable, IDownloadService
             _queued.Remove(firstDownload.Id);
             _logger.LogInformation($"Starting download from queue ({firstDownload.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
             DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
-            firstDownload.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
+            await firstDownload.StartAsync();
         }
     }
 

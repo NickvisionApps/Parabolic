@@ -6,7 +6,6 @@ using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -19,7 +18,6 @@ public class DiscoveryService : IDiscoveryService
     private static readonly char BatchFileDelimiter;
 
     private readonly ILogger<DiscoveryService> _logger;
-    private readonly IDenoExecutableService _denoExecutableService;
     private readonly IJsonFileService _jsonFileService;
     private readonly IThumbnailService _thumbnailService;
     private readonly ITranslationService _translationService;
@@ -30,10 +28,9 @@ public class DiscoveryService : IDiscoveryService
         BatchFileDelimiter = '|';
     }
 
-    public DiscoveryService(ILogger<DiscoveryService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, IThumbnailService thumbnailService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
+    public DiscoveryService(ILogger<DiscoveryService> logger, IJsonFileService jsonFileService, IThumbnailService thumbnailService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _logger = logger;
-        _denoExecutableService = denoExecutableService;
         _jsonFileService = jsonFileService;
         _thumbnailService = thumbnailService;
         _translationService = translationService;
@@ -66,89 +63,7 @@ public class DiscoveryService : IDiscoveryService
     private async Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation($"Discovering media for {url}...");
-        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
-        var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
-        var arguments = new List<string>(23)
-        {
-            url.ToString(),
-            "--ignore-config",
-            "--dump-single-json",
-            "--skip-download",
-            "--ignore-errors",
-            "--no-warnings",
-            "--ffmpeg-location",
-            Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg",
-            "--js-runtimes",
-            $"deno:{_denoExecutableService.ExecutablePath ?? "deno"}",
-            "--paths",
-            $"temp:{UserDirectories.Cache}"
-        };
-        if (Directory.Exists(pluginsDir))
-        {
-            arguments.Add("--plugin-dir");
-            arguments.Add(pluginsDir);
-        }
-        if (downloaderOptions.LimitCharacters)
-        {
-            arguments.Add("--windows-filenames");
-        }
-        if (!string.IsNullOrEmpty(downloaderOptions.ProxyUrl))
-        {
-            _logger.LogInformation("Using proxy...");
-            arguments.Add("--proxy");
-            arguments.Add(downloaderOptions.ProxyUrl);
-        }
-        if (credential is not null)
-        {
-            if (!string.IsNullOrEmpty(credential.Username) && !string.IsNullOrEmpty(credential.Password))
-            {
-                _logger.LogInformation("Using credential...");
-                arguments.Add("--username");
-                arguments.Add(credential.Username);
-                arguments.Add("--password");
-                arguments.Add(credential.Password);
-            }
-            else if (!string.IsNullOrEmpty(credential.Password))
-            {
-                _logger.LogInformation("Using video password...");
-                arguments.Add("--video-password");
-                arguments.Add(credential.Password);
-            }
-        }
-        if (downloaderOptions.CookiesBrowser != Browser.None)
-        {
-            _logger.LogInformation($"Using cookies from browser: {downloaderOptions.CookiesBrowser}");
-            arguments.Add("--cookies-from-browser");
-            arguments.Add(downloaderOptions.CookiesBrowser switch
-            {
-                Browser.Brave => "brave",
-                Browser.Chrome => "chrome",
-                Browser.Chromium => "chromium",
-                Browser.Edge => "edge",
-                Browser.Firefox => "firefox",
-                Browser.Opera => "opera",
-                Browser.Vivaldi => "vivaldi",
-                Browser.Whale => "whale",
-                _ => string.Empty
-            });
-        }
-        else if (File.Exists(downloaderOptions.CookiesPath))
-        {
-            _logger.LogInformation($"Using cookies file...");
-            arguments.Add("--cookies");
-            arguments.Add(downloaderOptions.CookiesPath);
-        }
-        arguments.AddRange(downloaderOptions.YtdlpDiscoveryArgs.SplitCommandLine());
-        using var process = new Process()
-        {
-            StartInfo = new ProcessStartInfo(_ytdlpExecutableService.ExecutablePath ?? "yt-dlp", arguments)
-            {
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            }
-        };
+        using var process = await _ytdlpExecutableService.CreateDiscoveryProcessAsync(url, credential);
         process.Start();
         var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
         var errorTask = process.StandardError.ReadToEndAsync(cancellationToken);
@@ -194,8 +109,7 @@ public class DiscoveryService : IDiscoveryService
         }
         if (result is null)
         {
-            result = new DiscoveryResult(json.RootElement, _translationService, downloaderOptions, url, suggestedSaveFolder, suggestedFilename);
-
+            result = new DiscoveryResult(json.RootElement, _translationService, (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions, url, suggestedSaveFolder, suggestedFilename);
         }
         foreach (var media in result.Media)
         {

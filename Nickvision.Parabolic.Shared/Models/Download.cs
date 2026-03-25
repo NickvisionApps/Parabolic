@@ -1,11 +1,11 @@
 ﻿using ATL;
+using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Services;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -17,12 +17,11 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public partial class Download : IDisposable
 {
-    private static readonly string[] PartialDownloadFilePatterns;
-    private static readonly Dictionary<int, IReadOnlyList<string>> DownloadArgumentsCache;
     private static int _nextId;
 
-    private IDenoExecutableService _denoExecutableService;
-    private ITranslationService? _translationService;
+    private readonly IJsonFileService _jsonFileService;
+    private readonly ITranslationService _translationService;
+    private readonly IYtdlpExecutableService _ytdlpExecutableService;
     private readonly StringBuilder _logBuilder;
     private bool _removeSourceData;
     private Process? _process;
@@ -39,15 +38,14 @@ public partial class Download : IDisposable
 
     static Download()
     {
-        PartialDownloadFilePatterns = ["*.part*", "*.vtt", "*.srt", "*.ass", "*.lrc"];
-        DownloadArgumentsCache = new Dictionary<int, IReadOnlyList<string>>();
         _nextId = 0;
     }
 
-    public Download(DownloadOptions options, IDenoExecutableService denoExecutableService, ITranslationService? translationService)
+    public Download(IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService, DownloadOptions options)
     {
-        _denoExecutableService = denoExecutableService;
+        _jsonFileService = jsonFileService;
         _translationService = translationService;
+        _ytdlpExecutableService = ytdlpExecutableService;
         _logBuilder = new StringBuilder();
         _removeSourceData = false;
         _process = null;
@@ -90,13 +88,14 @@ public partial class Download : IDisposable
         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NaN, 0.0, 0));
     }
 
-    public void Start(string ytdlpExecutablePath, DownloaderOptions downloader, string appLanguage)
+    public async Task StartAsync()
     {
         if (Status == DownloadStatus.Running || Status == DownloadStatus.Paused)
         {
             return;
         }
-        if (File.Exists(FilePath) && !downloader.OverwriteExistingFiles)
+        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
+        if (File.Exists(FilePath) && !downloaderOptions.OverwriteExistingFiles)
         {
             var log = _translationService?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
             _logBuilder.AppendLine(log);
@@ -105,18 +104,8 @@ public partial class Download : IDisposable
             Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, log.AsMemory(), false));
             return;
         }
-        _removeSourceData = downloader.RemoveSourceData;
-        _process = new Process()
-        {
-            EnableRaisingEvents = true,
-            StartInfo = new ProcessStartInfo(ytdlpExecutablePath, GetDownloadArguments(downloader, appLanguage))
-            {
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true
-            }
-        };
+        _removeSourceData = downloaderOptions.RemoveSourceData;
+        _process = await _ytdlpExecutableService.CreateDownloadProcessAsync(Options);
         Status = DownloadStatus.Running;
         _process.Exited += Process_Exited;
         _process.OutputDataReceived += Process_OutputDataReceived;
@@ -149,456 +138,6 @@ public partial class Download : IDisposable
             _process?.Kill(true);
             _process?.WaitForExit();
         }
-    }
-
-    private IReadOnlyList<string> GetDownloadArguments(DownloaderOptions downloader, string appLanguage)
-    {
-        var hash = HashCode.Combine(downloader, Options);
-        if (DownloadArgumentsCache.TryGetValue(hash, out var cache))
-        {
-            return cache;
-        }
-        Directory.CreateDirectory(Options.SaveFolder);
-        var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
-        var arguments = new List<string>(128)
-        {
-            Options.Url.ToString(),
-            "--ignore-config",
-            "--verbose",
-            "--no-warnings",
-            "--progress",
-            "--newline",
-            "--progress-template",
-            "[Parabolic] Progress;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s;%(progress.eta)s",
-            "--progress-delta",
-            ".75",
-            "-t",
-            "sleep",
-            "--no-mtime",
-            "--no-embed-info-json",
-            "--ffmpeg-location",
-            Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg",
-            "--js-runtimes",
-            $"deno:{_denoExecutableService.ExecutablePath ?? "deno"}",
-            "--paths",
-            Options.SaveFolder,
-            "--paths",
-            $"temp:{Options.SaveFolder}",
-            "--output",
-            $"{Options.SaveFilename}.%(ext)s",
-            "--output",
-            $"chapter:%(section_number)03d - {Options.SaveFilename}.%(ext)s",
-            "--print",
-            "after_move:filepath"
-        };
-        if (Options.Url.Host.Contains("instagram") && Options.PlaylistPosition != -1)
-        {
-            arguments.Add("--playlist-items");
-            arguments.Add($"{Options.PlaylistPosition}");
-        }
-        if (Directory.Exists(pluginsDir))
-        {
-            arguments.Add("--plugin-dir");
-            arguments.Add(pluginsDir);
-            if (downloader.PreferredSubtitleFormat == SubtitleFormat.SRT)
-            {
-                arguments.Add("--use-postprocessor");
-                arguments.Add("srt_fix");
-            }
-        }
-        if (downloader.OverwriteExistingFiles && !HasPartialDownloadFiles())
-        {
-            arguments.Add("--force-overwrites");
-        }
-        else
-        {
-            arguments.Add("--no-overwrites");
-        }
-        if (downloader.LimitCharacters)
-        {
-            arguments.Add("--windows-filenames");
-        }
-        var formatSort = Options.TimeFrame is not null ? "proto:https" : string.Empty;
-        if (downloader.PreferredVideoCodec != VideoCodec.Any)
-        {
-            if (!string.IsNullOrEmpty(formatSort))
-            {
-                formatSort += ',';
-            }
-            formatSort += "+vcodec:";
-            formatSort += downloader.PreferredVideoCodec switch
-            {
-                VideoCodec.VP9 => "vp9",
-                VideoCodec.AV01 => "av01",
-                VideoCodec.H264 => "h264",
-                VideoCodec.H265 => "h265",
-                _ => string.Empty
-            };
-            formatSort += ",res";
-        }
-        if (downloader.PreferredAudioCodec != AudioCodec.Any)
-        {
-            if (!string.IsNullOrEmpty(formatSort))
-            {
-                formatSort += ',';
-            }
-            formatSort += "+acodec:";
-            formatSort += downloader.PreferredAudioCodec switch
-            {
-                AudioCodec.FLAC => "flac",
-                AudioCodec.WAV => "wav",
-                AudioCodec.OPUS => "opus",
-                AudioCodec.AAC => "aac",
-                AudioCodec.MP4A => "mp4a",
-                AudioCodec.MP3 => "mp3",
-                _ => string.Empty
-            };
-            formatSort += ",quality";
-        }
-        if (downloader.PreferredFrameRate != FrameRate.Any)
-        {
-            if (!string.IsNullOrEmpty(formatSort))
-            {
-                formatSort += ',';
-            }
-            formatSort += "+fps:";
-            formatSort += downloader.PreferredFrameRate switch
-            {
-                FrameRate.Fps24 => "24",
-                FrameRate.Fps30 => "30",
-                FrameRate.Fps60 => "60",
-                _ => string.Empty
-            };
-
-        }
-        if (Options.FileType.ShouldRecode && downloader.PreferredVideoCodec == VideoCodec.Any)
-        {
-            if (!string.IsNullOrEmpty(formatSort))
-            {
-                formatSort += ',';
-            }
-            formatSort += Options.FileType switch
-            {
-                MediaFileType.WEBM => "+vcodec:vp9",
-                _ => "+vcodec:h264"
-            };
-        }
-        if (!string.IsNullOrEmpty(formatSort))
-        {
-            arguments.Add("--format-sort");
-            arguments.Add(formatSort);
-        }
-        if (!downloader.UsePartFiles)
-        {
-            arguments.Add("--no-part");
-        }
-        if (downloader.YouTubeSponsorBlock)
-        {
-            arguments.Add("--sponsorblock-remove");
-            arguments.Add("default");
-        }
-        if (downloader.SpeedLimit.HasValue && Options.TimeFrame is null)
-        {
-            arguments.Add("--limit-rate");
-            arguments.Add($"{downloader.SpeedLimit.Value}K");
-        }
-        if (!string.IsNullOrEmpty(downloader.ProxyUrl))
-        {
-            arguments.Add("--proxy");
-            arguments.Add(downloader.ProxyUrl);
-        }
-        if (downloader.CookiesBrowser != Browser.None)
-        {
-            arguments.Add("--cookies-from-browser");
-            arguments.Add(downloader.CookiesBrowser switch
-            {
-                Browser.Brave => "brave",
-                Browser.Chrome => "chrome",
-                Browser.Chromium => "chromium",
-                Browser.Edge => "edge",
-                Browser.Firefox => "firefox",
-                Browser.Opera => "opera",
-                Browser.Vivaldi => "vivaldi",
-                Browser.Whale => "whale",
-                _ => string.Empty
-            });
-        }
-        else if (File.Exists(downloader.CookiesPath))
-        {
-            arguments.Add("--cookies");
-            arguments.Add(downloader.CookiesPath);
-        }
-        if (downloader.TranslateMetadataAndChapters)
-        {
-            if (appLanguage.IsSupportedYouTubeLanguage)
-            {
-                arguments.Add("--extractor-args");
-                arguments.Add($"youtube:lang={appLanguage}");
-            }
-            else if (CultureInfo.CurrentCulture.Name.IsSupportedYouTubeLanguage)
-            {
-                arguments.Add("--extractor-args");
-                arguments.Add($"youtube:lang={CultureInfo.CurrentCulture.Name}");
-            }
-        }
-        if (downloader.EmbedMetadata)
-        {
-            arguments.Add("--embed-metadata");
-            if (Options.PlaylistPosition != -1)
-            {
-                arguments.Add("--postprocessor-args");
-                arguments.Add($"Metadata+ffmpeg:-metadata track={Options.PlaylistPosition}");
-            }
-        }
-        if (downloader.EmbedThumbnails)
-        {
-            if (Options.FileType.SupportsThumbnails)
-            {
-                arguments.Add("--embed-thumbnail");
-            }
-            else
-            {
-                arguments.Add("--write-thumbnail");
-            }
-            arguments.Add("--convert-thumbnails");
-            arguments.Add("jpg");
-            if (downloader.CropAudioThumbnails && Options.FileType.IsAudio)
-            {
-                arguments.Add("--exec");
-                arguments.Add($"before_dl:\"{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"}\" -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" \"%(thumbnails.-1.filepath)s.tmp.jpg\"");
-                if (OperatingSystem.IsWindows())
-                {
-                    arguments.Add("--exec");
-                    arguments.Add("before_dl:del %(thumbnails.-1.filepath)q");
-                    arguments.Add("--exec");
-                    arguments.Add("before_dl:move \"%(thumbnails.-1.filepath)s.tmp.jpg\" %(thumbnails.-1.filepath)q");
-                }
-                else
-                {
-                    arguments.Add("--exec");
-                    arguments.Add("before_dl:rm %(thumbnails.-1.filepath)q");
-                    arguments.Add("--exec");
-                    arguments.Add("before_dl:mv \"%(thumbnails.-1.filepath)s.tmp.jpg\" %(thumbnails.-1.filepath)q");
-                }
-            }
-        }
-        if (downloader.EmbedChapters)
-        {
-            arguments.Add("--embed-chapters");
-        }
-        if (downloader.UseAria)
-        {
-            arguments.Add("--downloader");
-            arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");
-            arguments.Add("--downloader-args");
-            arguments.Add($"aria2c:--summary-interval={(OperatingSystem.IsWindows() ? "0" : "1")} --enable-color=false -x {downloader.AriaMaxConnectionsPerServer} -k {downloader.AriaMinSplitSize}M");
-            arguments.Add("--concurrent-fragments");
-            arguments.Add("8");
-        }
-        if (Options.Credential is not null)
-        {
-            if (!string.IsNullOrEmpty(Options.Credential.Username) && !string.IsNullOrEmpty(Options.Credential.Password))
-            {
-                arguments.Add("--username");
-                arguments.Add(Options.Credential.Username);
-                arguments.Add("--password");
-                arguments.Add(Options.Credential.Password);
-            }
-            else if (!string.IsNullOrEmpty(Options.Credential.Password))
-            {
-                arguments.Add("--video-password");
-                arguments.Add(Options.Credential.Password);
-            }
-        }
-        if (Options.FileType.IsAudio)
-        {
-            arguments.Add("--extract-audio");
-            arguments.Add("--audio-quality");
-            arguments.Add("0");
-            if (!Options.FileType.IsGeneric)
-            {
-                arguments.Add("--audio-format");
-                if (Options.FileType == MediaFileType.OGG)
-                {
-                    arguments.Add("vorbis");
-                }
-                else
-                {
-                    arguments.Add(Options.FileType.ToString().ToLower());
-                }
-            }
-        }
-        else if (Options.FileType.IsVideo && !Options.FileType.IsGeneric)
-        {
-            arguments.Add("--remux-video");
-            arguments.Add(Options.FileType.ToString().ToLower());
-            if (Options.FileType.ShouldRecode)
-            {
-                arguments.Add("--recode-video");
-                arguments.Add(Options.FileType.ToString().ToLower());
-            }
-        }
-        var formatString = string.Empty;
-        if (Options.VideoFormat is not null && Options.VideoFormat != Format.NoneVideo)
-        {
-            if (!Options.FileType.IsAudio)
-            {
-                formatString += Options.VideoFormat switch
-                {
-                    var f when f == Format.BestVideo => "bestvideo*",
-                    var f when f == Format.WorstVideo => "worstvideo*",
-                    _ => Options.VideoFormat.Id
-                };
-            }
-            else if (Options.VideoFormat.ContainsAudio && (Options.AudioFormat is null || Options.AudioFormat == Format.NoneAudio))
-            {
-                formatString += Options.VideoFormat.Id;
-            }
-        }
-        else if (Options.VideoResolution is not null && !Options.FileType.IsAudio)
-        {
-            formatString += Options.VideoResolution switch
-            {
-                var v when v == VideoResolution.Best => "bestvideo*",
-                var v when v == VideoResolution.Worst => "worstvideo*",
-                _ => $"bestvideo*[height={Options.VideoResolution.Height}]/bestvideo*[height<={Options.VideoResolution.Height}]/bestvideo*"
-            };
-        }
-        var avoidOpus = OperatingSystem.IsWindows() && Options.Url.Host.Contains("youtube") && downloader.PreferredAudioCodec == AudioCodec.Any && Options.FileType != MediaFileType.WEBM;
-        if (Options.AudioFormat is not null && Options.AudioFormat != Format.NoneAudio)
-        {
-            if (!string.IsNullOrEmpty(formatString))
-            {
-                formatString += "+";
-            }
-            else if (Options.FileType.IsVideo)
-            {
-                formatString += Options.AudioFormat switch
-                {
-                    var f when f == Format.WorstAudio => "worstvideo*+",
-                    _ => "bestvideo*+",
-                };
-            }
-            formatString += Options.AudioFormat switch
-            {
-                var f when f == Format.BestAudio => avoidOpus ? "bestaudio[acodec!=opus]" : "bestaudio",
-                var f when f == Format.WorstAudio => "worstaudio",
-                _ => Options.AudioFormat.Id
-            };
-        }
-        else if (Options.AudioBitrate.HasValue)
-        {
-            if (!string.IsNullOrEmpty(formatString))
-            {
-                formatString += "+";
-            }
-            formatString += Options.AudioBitrate.Value switch
-            {
-                var b when b == double.MaxValue => avoidOpus ? "bestaudio[acodec!=opus]" : "bestaudio",
-                var b when b == -1.0 => "worstaudio",
-                _ => $"bestaudio[abr={Options.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={Options.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio"
-            };
-        }
-        if (!string.IsNullOrEmpty(formatString))
-        {
-            arguments.Add("--format");
-            arguments.Add(formatString);
-        }
-        if (Options.SubtitleLanguages.Count > 0)
-        {
-            var languages = string.Empty;
-            foreach (var language in Options.SubtitleLanguages)
-            {
-                languages += $"{language.Language},";
-            }
-            languages += "-live_chat";
-            arguments.Add("--sub-langs");
-            arguments.Add(languages);
-            if (Options.Url.Host.Contains("youtube"))
-            {
-                arguments.Add("--sleep-subtitles");
-                arguments.Add("30");
-            }
-            arguments.Add("--write-subs");
-            if (downloader.IncludeAutoGeneratedSubtitles)
-            {
-                arguments.Add("--write-auto-subs");
-            }
-            arguments.Add("--sub-format");
-            arguments.Add(downloader.PreferredSubtitleFormat switch
-            {
-                SubtitleFormat.SRT => "srt/best",
-                SubtitleFormat.ASS => "ass/best",
-                SubtitleFormat.LRC => "lrc/best",
-                _ => "vtt/best"
-            });
-            arguments.Add("--convert-subs");
-            arguments.Add(downloader.PreferredSubtitleFormat switch
-            {
-                SubtitleFormat.SRT => "srt",
-                SubtitleFormat.ASS => "ass",
-                SubtitleFormat.LRC => "lrc",
-                _ => "vtt"
-            });
-            if (downloader.EmbedSubtitles && Options.FileType.GetSupportsSubtitleFormat(downloader.PreferredSubtitleFormat))
-            {
-                arguments.Add("--embed-subs");
-                arguments.Add("--compat-options");
-                arguments.Add("no-keep-subs");
-            }
-        }
-        if (Options.SplitChapters)
-        {
-            arguments.Add("--split-chapters");
-            arguments.Add("--postprocessor-args");
-            arguments.Add($"SplitChapters:-map_metadata 0 -map_chapters -1{(Options.FileType == MediaFileType.FLAC ? " -c:a flac" : string.Empty)}");
-        }
-        if (Options.ExportDescription)
-        {
-            arguments.Add("--write-description");
-        }
-        if (Options.PostProcessorArgument is not null)
-        {
-            arguments.Add("--postprocessor-args");
-            if (Options.PostProcessorArgument.Executable == Executable.FFmpeg && Options.PostProcessorArgument.PostProcessor == PostProcessor.None)
-            {
-                arguments.Add($"{Options.PostProcessorArgument.ToString()} -threads {downloader.PostprocessingThreads}");
-            }
-            else
-            {
-                arguments.Add(Options.PostProcessorArgument.ToString());
-            }
-        }
-        else
-        {
-            arguments.Add("--postprocessor-args");
-            arguments.Add($"ffmpeg:-threads {downloader.PostprocessingThreads}");
-        }
-        if (Options.TimeFrame is not null)
-        {
-            arguments.Add("--download-sections");
-            arguments.Add($"*{Options.TimeFrame.ToString()}");
-            arguments.Add("--force-keyframes-at-cuts");
-        }
-        arguments.AddRange(downloader.YtdlpDownloadArgs.SplitCommandLine());
-        DownloadArgumentsCache[hash] = arguments;
-        return arguments;
-    }
-
-    private bool HasPartialDownloadFiles()
-    {
-        if (!Directory.Exists(Options.SaveFolder))
-        {
-            return false;
-        }
-        foreach (var pattern in PartialDownloadFilePatterns)
-        {
-            if (Directory.EnumerateFiles(Options.SaveFolder, $"{Options.SaveFilename}{pattern}").Any())
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     private async void Process_Exited(object? sender, EventArgs e)
