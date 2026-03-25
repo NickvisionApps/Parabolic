@@ -193,7 +193,7 @@ public sealed partial class SettingsPage : Page
         TglEmbedChapters.IsOn = _controller.EmbedChapters;
         TglEmbedSubtitles.IsOn = _controller.EmbedSubtitles;
         NumFfmpegThreads.Value = _controller.PostprocessingThreads;
-        RowPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments.Select(a => new BindablePostProcessorArgument(a)).ToList();
+        RowPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments.ToBindablePostProcessorArguments();
         CmbPostprocessingArgumentPostProcessor.ItemsSource = _controller.PostProcessors.ToBindableSelectonItems();
         CmbPostprocessingArgumentExecutable.ItemsSource = _controller.Executables.ToBindableSelectonItems();
         _constructing = false;

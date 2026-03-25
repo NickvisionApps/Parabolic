@@ -69,4 +69,49 @@ public static class SelectionItemListExtensions
     {
         public List<BindableHistoricDownloadSelectionItem> ToBindableHistoricDownloadSelectionItems() => items.Select(i => new BindableHistoricDownloadSelectionItem(i)).ToList();
     }
+
+    extension(ObservableCollection<PostProcessorArgument> items)
+    {
+        public ObservableCollection<BindablePostProcessorArgument> ToBindablePostProcessorArguments()
+        {
+            var collection = new ObservableCollection<BindablePostProcessorArgument>(items.Select(i => new BindablePostProcessorArgument(i)));
+            items.CollectionChanged += (_, e) =>
+            {
+                if (collection is null)
+                {
+                    return;
+                }
+                switch (e.Action)
+                {
+                    case NotifyCollectionChangedAction.Add when e.NewItems is not null:
+                        foreach (PostProcessorArgument item in e.NewItems)
+                        {
+                            collection.Add(new BindablePostProcessorArgument(item));
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Remove when e.OldItems is not null:
+                        foreach (PostProcessorArgument item in e.OldItems)
+                        {
+                            var bindable = collection.FirstOrDefault(b => b.Name == item.Name);
+                            if (bindable is not null)
+                            {
+                                collection.Remove(bindable);
+                            }
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Replace when e.NewItems is not null && e.NewStartingIndex >= 0 && e.NewStartingIndex < collection.Count:
+                        collection[e.NewStartingIndex] = new BindablePostProcessorArgument((PostProcessorArgument)e.NewItems[0]!);
+                        break;
+                    default:
+                        collection.Clear();
+                        foreach (var item in items)
+                        {
+                            collection.Add(new BindablePostProcessorArgument(item));
+                        }
+                        break;
+                }
+            };
+            return collection;
+        }
+    }
 }
