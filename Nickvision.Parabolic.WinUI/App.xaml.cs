@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.AppNotifications;
 using Nickvision.Parabolic.WinUI.Views;
@@ -21,6 +22,10 @@ public partial class App : Application
         {
             await AppNotificationManager.Default.RemoveAllAsync();
             AppNotificationManager.Default.UnregisterAll();
+        };
+        UnhandledException += (_, e) =>
+        {
+            _serviceProvider.GetRequiredService<ILogger<App>>().LogError(e.Exception, $"An unhandled exception occurred: {e.Message}");
         };
     }
 
