@@ -31,11 +31,11 @@ public class DenoExecutableService : IDenoExecutableService
     {
         if (OperatingSystem.IsLinux())
         {
-            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2.7.7");
+            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2.7.11");
         }
         else
         {
-            _bundledVersion = new AppVersion("2.7.7");
+            _bundledVersion = new AppVersion("2.7.11");
         }
         if (OperatingSystem.IsWindows())
         {
