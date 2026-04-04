@@ -129,6 +129,7 @@ public class HistoryService : IHistoryService
         var downloads = new List<HistoricDownload>();
         var toRemove = new List<Uri>();
         var length = Length;
+        await EnsureTableAsync();
         using var command = await _databaseService.SelectAllFromTableAsync(TableName);
         using var reader = await command.ExecuteReaderAsync();
         while (await reader.ReadAsync())
@@ -210,6 +211,7 @@ public class HistoryService : IHistoryService
     {
         _logger.LogInformation($"Updating historic download ({download.Url})...");
         download.DownloadedOn = DateTime.Now;
+        await EnsureTableAsync();
         var res = await _databaseService.UpdateInTableAsync(TableName, "url", download.Url.ToString(), new Dictionary<string, object>()
         {
             { "title", download.Title },

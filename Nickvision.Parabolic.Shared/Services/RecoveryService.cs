@@ -126,6 +126,7 @@ public class RecoveryService : IRecoveryService
     public async Task<bool> RemoveAsync(RecoverableDownload download)
     {
         _logger.LogInformation($"Removing recoverable download ({download.Id}): {download.Options.Url}");
+        await EnsureTableAsync();
         var res = await _databaseService.DeleteFromTableAsync(TableName, "id", download.Id);
         if (res)
         {
@@ -141,6 +142,7 @@ public class RecoveryService : IRecoveryService
     public async Task<bool> RemoveAsync(int id)
     {
         _logger.LogInformation($"Removing recoverable download ({id})...");
+        await EnsureTableAsync();
         var res = await _databaseService.DeleteFromTableAsync(TableName, "id", id);
         if (res)
         {
@@ -156,6 +158,7 @@ public class RecoveryService : IRecoveryService
     public async Task<bool> RemoveAsync(IReadOnlyList<int> ids)
     {
         _logger.LogInformation($"Removing {ids.Count} recoverable download(s)...");
+        await EnsureTableAsync();
         using var transaction = await _databaseService.CreateTransationAsync();
         foreach (var id in ids)
         {

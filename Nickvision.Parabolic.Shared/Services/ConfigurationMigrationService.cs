@@ -33,7 +33,7 @@ public class ConfigurationMigrationService : IHostedService
             _logger.LogInformation($"Migrated {res} properties from configuration file ({configPath}).");
             File.Delete(configPath);
         }
-        var prevPath = Path.Combine(_directory, "prev.json");
+        var prevPath = Path.Combine(_directory, "previous.json");
         if (File.Exists(prevPath))
         {
             _logger.LogInformation($"Migrating configuration file ({prevPath})...");
