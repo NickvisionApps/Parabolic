@@ -1,4 +1,4 @@
-﻿using Nickvision.Desktop.Filesystem;
+﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.Shared.Events;
 using System;
@@ -8,6 +8,8 @@ namespace Nickvision.Parabolic.Shared.Services;
 public interface IEventsService
 {
     event EventHandler<AppNotificationSentEventArgs>? AppNotificationSent;
+    event EventHandler<ConfigurationSavedEventArgs>? ConfigurationSaved;
+    event EventHandler<PasswordRequiredEventArgs>? DatabasePasswordRequired;
     event EventHandler<DownloadAddedEventArgs> DownloadAdded;
     event EventHandler<DownloadCompletedEventArgs> DownloadCompleted;
     event EventHandler<DownloadCredentialRequiredEventArgs> DownloadCredentialRequired;
@@ -16,7 +18,6 @@ public interface IEventsService
     event EventHandler<DownloadEventArgs> DownloadRetired;
     event EventHandler<DownloadEventArgs> DownloadStartedFromQueue;
     event EventHandler<DownloadEventArgs> DownloadStopped;
-    event EventHandler<JsonFileSavedEventArgs>? JsonFileSaved;
 
     void InvokeDownloadRequested(Uri url);
 }

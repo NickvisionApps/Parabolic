@@ -67,6 +67,7 @@ public static class HostApplicationBuilderExtensions
             builder.Services.AddTransient<KeyringViewController>();
             builder.Services.AddSingleton<MainWindowController>();
             builder.Services.AddTransient<PreferencesViewController>();
+            builder.Services.AddHostedService<ConfigurationMigrationService>();
             return builder;
         }
     }

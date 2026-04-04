@@ -18,91 +18,52 @@ using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
 
-public class YtdlpExecutableService : IYtdlpExecutableService
+public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecutableService
 {
-    private static readonly AppVersion _bundledVersion;
-    private static readonly string _assetName;
+    private static readonly AppVersion YtdlpBundledVersion;
+    private static readonly string YtdlpAssetName;
     private static readonly string[] PartialDownloadFilePatterns;
 
-    private readonly ILogger<YtdlpExecutableService> _logger;
+    private readonly IConfigurationService _configurationService;
     private readonly IDenoExecutableService _denoExecutableService;
-    private readonly IJsonFileService _jsonFileService;
-    private readonly IUpdaterService _stableUpdaterService;
     private readonly IUpdaterService _previewUpdaterService;
     private AppVersion? _latestPreviewVersion;
-    private AppVersion? _latestStableVersion;
-
-    public AppVersion BundledVersion => _bundledVersion;
 
     static YtdlpExecutableService()
     {
         if (OperatingSystem.IsLinux())
         {
-            _bundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.03.17");
+            YtdlpBundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2026.03.17");
         }
         else
         {
-            _bundledVersion = new AppVersion("2026.03.17");
+            YtdlpBundledVersion = new AppVersion("2026.03.17");
         }
         if (OperatingSystem.IsWindows())
         {
-            _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_arm64.exe" : "yt-dlp.exe";
+            YtdlpAssetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_arm64.exe" : "yt-dlp.exe";
         }
         else if (OperatingSystem.IsLinux())
         {
-            _assetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_linux_aarch64" : "yt-dlp_linux";
+            YtdlpAssetName = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "yt-dlp_linux_aarch64" : "yt-dlp_linux";
         }
         else if (OperatingSystem.IsMacOS())
         {
-            _assetName = "yt-dlp_macos";
+            YtdlpAssetName = "yt-dlp_macos";
         }
         else
         {
-            _assetName = "yt-dlp";
+            YtdlpAssetName = "yt-dlp";
         }
         PartialDownloadFilePatterns = ["*.part*", "*.vtt", "*.srt", "*.ass", "*.lrc"];
     }
 
-    public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, ILogger<UpdaterService> updaterLogger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, IHttpClientFactory httpClientFactory)
+    public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, ILogger<UpdaterService> updaterLogger, IConfigurationService configurationService, IDenoExecutableService denoExecutableService, IHttpClientFactory httpClientFactory) : base(logger, "yt-dlp", YtdlpBundledVersion, YtdlpAssetName, configurationService, new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp", httpClientFactory.CreateClient()))
     {
-        _logger = logger;
+        _configurationService = configurationService;
         _denoExecutableService = denoExecutableService;
-        _jsonFileService = jsonFileService;
-        _stableUpdaterService = new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp", httpClientFactory.CreateClient());
         _previewUpdaterService = new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp-nightly-builds", httpClientFactory.CreateClient());
         _latestPreviewVersion = null;
-        _latestStableVersion = null;
-    }
-
-    public string? ExecutablePath
-    {
-        get
-        {
-            if (!string.IsNullOrEmpty(field))
-            {
-                return field;
-            }
-            _logger.LogInformation("Searching for yt-dlp executable...");
-            var config = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-            if (config.InstalledYtdlpAppVersion > _bundledVersion)
-            {
-                var local = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Local);
-                if (!string.IsNullOrEmpty(local) && File.Exists(local))
-                {
-                    _logger.LogInformation($"Found updated yt-dlp executable: {local}");
-                    field = local;
-                    return field;
-                }
-                else
-                {
-                    config.InstalledYtdlpAppVersion = new AppVersion("0.0.0");
-                    _jsonFileService.Save(config, ApplicationJsonContext.Default.Configuration, Configuration.Key);
-                }
-            }
-            field = Desktop.System.Environment.FindDependency("yt-dlp", DependencySearchOption.Global);
-            _logger.LogInformation($"Found bundled yt-dlp executable: {field}");
-            return field;
-        }
     }
 
     public async Task<Process> CreateDiscoveryProcessAsync(Uri url, Credential? credential)
@@ -632,15 +593,14 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         };
     }
 
-    public async Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null)
+    public override async Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null)
     {
         var path = OperatingSystem.IsWindows() ? Path.Combine(UserDirectories.LocalData, "yt-dlp.exe") : Path.Combine(UserDirectories.LocalData, "yt-dlp");
-        var res = version.BaseVersion.Revision > 0 ? await _previewUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress) : await _stableUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
+        var res = version.BaseVersion.Revision > 0 ? await _previewUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress) : await _updaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
         if (res)
         {
-            var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-            config.InstalledYtdlpAppVersion = version;
-            await _jsonFileService.SaveAsync(config, ApplicationJsonContext.Default.Configuration, Configuration.Key);
+            var configKey = $"installed_{_executableName}_appversion";
+            await _configurationService.SetAsync(configKey, version, ApplicationJsonContext.Default.AppVersion);
             if (!OperatingSystem.IsWindows())
             {
                 using var process = new Process()
@@ -659,29 +619,7 @@ public class YtdlpExecutableService : IYtdlpExecutableService
         return res;
     }
 
-    public async Task<AppVersion?> GetExecutableVersionAsync()
-    {
-        using var process = new Process()
-        {
-            StartInfo = new ProcessStartInfo(ExecutablePath ?? string.Empty, "--version")
-            {
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-            }
-        };
-        process.Start();
-        var outputTask = process.StandardOutput.ReadToEndAsync();
-        await process.WaitForExitAsync();
-        var output = await outputTask;
-        if (process.ExitCode == 0 && AppVersion.TryParse(output.Trim(), out var version))
-        {
-            return version;
-        }
-        return null;
-    }
-
-    public async Task<AppVersion?> GetLatestPreviewVersionAsync()
+    public override async Task<AppVersion?> GetLatestPreviewVersionAsync()
     {
         if (_latestPreviewVersion is null)
         {
@@ -689,16 +627,6 @@ public class YtdlpExecutableService : IYtdlpExecutableService
             _latestPreviewVersion = await _previewUpdaterService.GetLatestStableVersionAsync();
         }
         return _latestPreviewVersion;
-    }
-
-    public async Task<AppVersion?> GetLatestStableVersionAsync()
-    {
-        if (_latestStableVersion is null)
-        {
-            var _ = ExecutablePath;
-            return await _stableUpdaterService.GetLatestStableVersionAsync();
-        }
-        return _latestStableVersion;
     }
 
     private bool HasPartialDownloadFiles(string saveFolder, string saveFilename)
