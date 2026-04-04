@@ -447,7 +447,7 @@
                             <ListView x:Name="ListPostProcessorArguments" SelectionMode="None">
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="parabolic:BindablePostProcessorArgument">
-                                        <community:SettingsCard Margin="-12,0,-12,0" Header="{x:Bind Name, Mode=OneWay}" Description="{x:Bind Args, Mode=OneWay}">
+                                        <community:SettingsCard Margin="-16,6,-12,0" Header="{x:Bind Name, Mode=OneWay}" Description="{x:Bind Args, Mode=OneWay}">
                                             <community:SettingsCard.HeaderIcon>
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE90F;"/>
                                             </community:SettingsCard.HeaderIcon>
