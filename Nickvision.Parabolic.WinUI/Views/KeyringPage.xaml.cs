@@ -6,8 +6,6 @@ using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.WinUI.Views;
 
