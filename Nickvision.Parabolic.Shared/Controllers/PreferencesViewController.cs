@@ -2,7 +2,6 @@
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
-using Nickvision.Parabolic.Shared.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,10 +13,8 @@ namespace Nickvision.Parabolic.Shared.Controllers;
 
 public class PreferencesViewController
 {
-    private readonly IHistoryService _historyService;
-    private readonly IJsonFileService _jsonFileService;
+    private readonly IConfigurationService _configurationService;
     private readonly ITranslationService _translationService;
-    private readonly Configuration _configuration;
 
     public IReadOnlyList<SelectionItem<AudioCodec>> AudioCodecs { get; }
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages { get; }
@@ -31,48 +28,46 @@ public class PreferencesViewController
     public IReadOnlyList<SelectionItem<Theme>> Themes { get; }
     public IReadOnlyList<SelectionItem<VideoCodec>> VideoCodecs { get; }
 
-    public PreferencesViewController(IHistoryService historyService, IJsonFileService jsonFileService, ITranslationService translationService)
+    public PreferencesViewController(IConfigurationService configurationService, ITranslationService translationService)
     {
-        _historyService = historyService;
-        _jsonFileService = jsonFileService;
+        _configurationService = configurationService;
         _translationService = translationService;
-        _configuration = _jsonFileService.Load(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var selectedHistoryLength = _historyService.Length;
+        var selectedHistoryLength = _configurationService.HistoryLength;
         AudioCodecs = new List<SelectionItem<AudioCodec>>()
         {
-            new SelectionItem<AudioCodec>(AudioCodec.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.Any),
-            new SelectionItem<AudioCodec>(AudioCodec.FLAC, _translationService._("FLAC (ALAC)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.FLAC),
-            new SelectionItem<AudioCodec>(AudioCodec.WAV, _translationService._("WAV (AIFF)"), _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.WAV),
-            new SelectionItem<AudioCodec>(AudioCodec.OPUS, "OPUS", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.OPUS),
-            new SelectionItem<AudioCodec>(AudioCodec.AAC, "AAC", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.AAC),
-            new SelectionItem<AudioCodec>(AudioCodec.MP4A, "MP4A", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.MP4A),
-            new SelectionItem<AudioCodec>(AudioCodec.MP3, "MP3", _configuration.DownloaderOptions.PreferredAudioCodec == AudioCodec.MP3)
+            new SelectionItem<AudioCodec>(AudioCodec.Any, _translationService._("Any"), _configurationService.PreferredAudioCodec == AudioCodec.Any),
+            new SelectionItem<AudioCodec>(AudioCodec.FLAC, _translationService._("FLAC (ALAC)"), _configurationService.PreferredAudioCodec == AudioCodec.FLAC),
+            new SelectionItem<AudioCodec>(AudioCodec.WAV, _translationService._("WAV (AIFF)"), _configurationService.PreferredAudioCodec == AudioCodec.WAV),
+            new SelectionItem<AudioCodec>(AudioCodec.OPUS, "OPUS", _configurationService.PreferredAudioCodec == AudioCodec.OPUS),
+            new SelectionItem<AudioCodec>(AudioCodec.AAC, "AAC", _configurationService.PreferredAudioCodec == AudioCodec.AAC),
+            new SelectionItem<AudioCodec>(AudioCodec.MP4A, "MP4A", _configurationService.PreferredAudioCodec == AudioCodec.MP4A),
+            new SelectionItem<AudioCodec>(AudioCodec.MP3, "MP3", _configurationService.PreferredAudioCodec == AudioCodec.MP3)
         };
         AvailableTranslationLanguages = new List<SelectionItem<string>>()
         {
-            new SelectionItem<string>(string.Empty, _translationService._("System"), string.IsNullOrEmpty(_configuration.TranslationLanguage)),
-            new SelectionItem<string>("C", "en_US", _configuration.TranslationLanguage == "C")
+            new SelectionItem<string>(string.Empty, _translationService._("System"), string.IsNullOrEmpty(_configurationService.TranslationLanguage)),
+            new SelectionItem<string>("C", "en_US", _configurationService.TranslationLanguage == "C")
         };
         var languages = _translationService.AvailableLanguages.ToList();
         languages.Sort();
         foreach (var language in languages)
         {
-            (AvailableTranslationLanguages as IList)!.Add(new SelectionItem<string>(language, language, _configuration.TranslationLanguage == language));
+            (AvailableTranslationLanguages as IList)!.Add(new SelectionItem<string>(language, language, _configurationService.TranslationLanguage == language));
         }
         Browsers = new List<SelectionItem<Browser>>(OperatingSystem.IsWindows() ? 2 : 9)
         {
-            new SelectionItem<Browser>(Browser.None, _translationService._("None"), _configuration.DownloaderOptions.CookiesBrowser == Browser.None),
-            new SelectionItem<Browser>(Browser.Firefox, _translationService._("Firefox"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Firefox)
+            new SelectionItem<Browser>(Browser.None, _translationService._("None"), _configurationService.CookiesBrowser == Browser.None),
+            new SelectionItem<Browser>(Browser.Firefox, _translationService._("Firefox"), _configurationService.CookiesBrowser == Browser.Firefox)
         };
         if (!OperatingSystem.IsWindows())
         {
-            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Brave, _translationService._("Brave"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Brave));
-            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chrome, _translationService._("Chrome"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chrome));
-            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chromium, _translationService._("Chromium"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Chromium));
-            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Edge, _translationService._("Edge"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Edge));
-            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Opera, _translationService._("Opera"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Opera));
-            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Vivaldi, _translationService._("Vivaldi"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Vivaldi));
-            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Whale, _translationService._("Whale"), _configuration.DownloaderOptions.CookiesBrowser == Browser.Whale));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Brave, _translationService._("Brave"), _configurationService.CookiesBrowser == Browser.Brave));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chrome, _translationService._("Chrome"), _configurationService.CookiesBrowser == Browser.Chrome));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Chromium, _translationService._("Chromium"), _configurationService.CookiesBrowser == Browser.Chromium));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Edge, _translationService._("Edge"), _configurationService.CookiesBrowser == Browser.Edge));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Opera, _translationService._("Opera"), _configurationService.CookiesBrowser == Browser.Opera));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Vivaldi, _translationService._("Vivaldi"), _configurationService.CookiesBrowser == Browser.Vivaldi));
+            (Browsers as IList)!.Add(new SelectionItem<Browser>(Browser.Whale, _translationService._("Whale"), _configurationService.CookiesBrowser == Browser.Whale));
         }
         Executables = new List<SelectionItem<Executable>>()
         {
@@ -88,10 +83,10 @@ public class PreferencesViewController
         }
         FrameRates = new List<SelectionItem<FrameRate>>()
         {
-            new SelectionItem<FrameRate>(FrameRate.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Any),
-            new SelectionItem<FrameRate>(FrameRate.Fps24, _translationService._("{0} FPS", 24), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps24),
-            new SelectionItem<FrameRate>(FrameRate.Fps30, _translationService._("{0} FPS", 30), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps30),
-            new SelectionItem<FrameRate>(FrameRate.Fps60, _translationService._("{0} FPS", 60), _configuration.DownloaderOptions.PreferredFrameRate == FrameRate.Fps60)
+            new SelectionItem<FrameRate>(FrameRate.Any, _translationService._("Any"), _configurationService.PreferredFrameRate == FrameRate.Any),
+            new SelectionItem<FrameRate>(FrameRate.Fps24, _translationService._("{0} FPS", 24), _configurationService.PreferredFrameRate == FrameRate.Fps24),
+            new SelectionItem<FrameRate>(FrameRate.Fps30, _translationService._("{0} FPS", 30), _configurationService.PreferredFrameRate == FrameRate.Fps30),
+            new SelectionItem<FrameRate>(FrameRate.Fps60, _translationService._("{0} FPS", 60), _configurationService.PreferredFrameRate == FrameRate.Fps60)
         };
         HistoryLengths = new List<SelectionItem<HistoryLength>>()
         {
@@ -116,263 +111,256 @@ public class PreferencesViewController
             }
             (PostProcessors as IList)!.Add(new SelectionItem<PostProcessor>(processor, processor.ToString(), false));
         }
-        PostprocessingArguments = new ObservableCollection<PostProcessorArgument>(_configuration.PostprocessingArguments);
+        PostprocessingArguments = new ObservableCollection<PostProcessorArgument>(_configurationService.PostprocessingArguments);
         SubtitleFormats = new List<SelectionItem<SubtitleFormat>>()
         {
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.Any),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.VTT, "VTT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.VTT),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.SRT, "SRT", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.SRT),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.ASS, "ASS", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.ASS),
-            new SelectionItem<SubtitleFormat>(SubtitleFormat.LRC, "LRC", _configuration.DownloaderOptions.PreferredSubtitleFormat == SubtitleFormat.LRC)
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.Any, _translationService._("Any"), _configurationService.PreferredSubtitleFormat == SubtitleFormat.Any),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.VTT, "VTT", _configurationService.PreferredSubtitleFormat == SubtitleFormat.VTT),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.SRT, "SRT", _configurationService.PreferredSubtitleFormat == SubtitleFormat.SRT),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.ASS, "ASS", _configurationService.PreferredSubtitleFormat == SubtitleFormat.ASS),
+            new SelectionItem<SubtitleFormat>(SubtitleFormat.LRC, "LRC", _configurationService.PreferredSubtitleFormat == SubtitleFormat.LRC)
         };
         Themes = new List<SelectionItem<Theme>>()
         {
-            new SelectionItem<Theme>(Models.Theme.Light, _translationService._p("Theme", "Light"), _configuration.Theme == Models.Theme.Light),
-            new SelectionItem<Theme>(Models.Theme.Dark, _translationService._p("Theme", "Dark"), _configuration.Theme == Models.Theme.Dark),
-            new SelectionItem<Theme>(Models.Theme.System, _translationService._p("Theme", "System"), _configuration.Theme == Models.Theme.System),
+            new SelectionItem<Theme>(Models.Theme.Light, _translationService._p("Theme", "Light"), _configurationService.Theme == Models.Theme.Light),
+            new SelectionItem<Theme>(Models.Theme.Dark, _translationService._p("Theme", "Dark"), _configurationService.Theme == Models.Theme.Dark),
+            new SelectionItem<Theme>(Models.Theme.System, _translationService._p("Theme", "System"), _configurationService.Theme == Models.Theme.System),
         };
         VideoCodecs = new List<SelectionItem<VideoCodec>>()
         {
-            new SelectionItem<VideoCodec>(VideoCodec.Any, _translationService._("Any"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.Any),
-            new SelectionItem<VideoCodec>(VideoCodec.VP9, "VP9", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.VP9),
-            new SelectionItem<VideoCodec>(VideoCodec.AV01, "AV1", _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.AV01),
-            new SelectionItem<VideoCodec>(VideoCodec.H264, _translationService._("H.264 (AVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H264),
-            new SelectionItem<VideoCodec>(VideoCodec.H265, _translationService._("H.265 (HEVC)"), _configuration.DownloaderOptions.PreferredVideoCodec == VideoCodec.H265)
+            new SelectionItem<VideoCodec>(VideoCodec.Any, _translationService._("Any"), _configurationService.PreferredVideoCodec == VideoCodec.Any),
+            new SelectionItem<VideoCodec>(VideoCodec.VP9, "VP9", _configurationService.PreferredVideoCodec == VideoCodec.VP9),
+            new SelectionItem<VideoCodec>(VideoCodec.AV01, "AV1", _configurationService.PreferredVideoCodec == VideoCodec.AV01),
+            new SelectionItem<VideoCodec>(VideoCodec.H264, _translationService._("H.264 (AVC)"), _configurationService.PreferredVideoCodec == VideoCodec.H264),
+            new SelectionItem<VideoCodec>(VideoCodec.H265, _translationService._("H.265 (HEVC)"), _configurationService.PreferredVideoCodec == VideoCodec.H265)
         };
     }
 
     public bool AllowPreviewUpdates
     {
-        get => _configuration.AllowPreviewUpdates;
+        get => _configurationService.AllowPreviewUpdates;
 
-        set => _configuration.AllowPreviewUpdates = value;
+        set => _configurationService.AllowPreviewUpdates = value;
     }
 
     public int AriaMaxConnectionsPerServer
     {
-        get => _configuration.AriaMaxConnectionsPerServer;
+        get => _configurationService.AriaMaxConnectionsPerServer;
 
-        set => _configuration.AriaMaxConnectionsPerServer = value;
+        set => _configurationService.AriaMaxConnectionsPerServer = value;
     }
 
     public int AriaMinSplitSize
     {
-        get => _configuration.AriaMinSplitSize;
+        get => _configurationService.AriaMinSplitSize;
 
-        set => _configuration.AriaMinSplitSize = value;
+        set => _configurationService.AriaMinSplitSize = value;
     }
 
     public bool CropAudioThumbnails
     {
-        get => _configuration.CropAudioThumbnails;
+        get => _configurationService.CropAudioThumbnails;
 
-        set => _configuration.CropAudioThumbnails = value;
+        set => _configurationService.CropAudioThumbnails = value;
     }
 
     public SelectionItem<Browser> CookiesBrowser
     {
-        set => _configuration.CookiesBrowser = value.Value;
+        set => _configurationService.CookiesBrowser = value.Value;
     }
 
     public string CookiesPath
     {
-        get => _configuration.CookiesPath;
+        get => _configurationService.CookiesPath;
 
-        set => _configuration.CookiesPath = value;
+        set => _configurationService.CookiesPath = value;
     }
 
     public bool EmbedChapters
     {
-        get => _configuration.EmbedChapters;
+        get => _configurationService.EmbedChapters;
 
-        set => _configuration.EmbedChapters = value;
+        set => _configurationService.EmbedChapters = value;
     }
 
     public bool EmbedMetadata
     {
-        get => _configuration.EmbedMetadata;
+        get => _configurationService.EmbedMetadata;
 
-        set => _configuration.EmbedMetadata = value;
+        set => _configurationService.EmbedMetadata = value;
     }
 
     public bool EmbedSubtitles
     {
-        get => _configuration.EmbedSubtitles;
+        get => _configurationService.EmbedSubtitles;
 
-        set => _configuration.EmbedSubtitles = value;
+        set => _configurationService.EmbedSubtitles = value;
     }
 
     public bool EmbedThumbnails
     {
-        get => _configuration.EmbedThumbnails;
+        get => _configurationService.EmbedThumbnails;
 
-        set => _configuration.EmbedThumbnails = value;
+        set => _configurationService.EmbedThumbnails = value;
     }
 
     public SelectionItem<HistoryLength> HistoryLength
     {
-        set => _historyService.Length = value.Value;
+        set => _configurationService.HistoryLength = value.Value;
     }
 
     public bool IncludeAutoGeneratedSubtitles
     {
-        get => _configuration.IncludeAutoGeneratedSubtitles;
+        get => _configurationService.IncludeAutoGeneratedSubtitles;
 
-        set => _configuration.IncludeAutoGeneratedSubtitles = value;
+        set => _configurationService.IncludeAutoGeneratedSubtitles = value;
     }
 
     public bool IncludeMediaIdInTitle
     {
-        get => _configuration.IncludeMediaIdInTitle;
+        get => _configurationService.IncludeMediaIdInTitle;
 
-        set => _configuration.IncludeMediaIdInTitle = value;
+        set => _configurationService.IncludeMediaIdInTitle = value;
     }
 
     public bool IncludeSuperResolutions
     {
-        get => _configuration.IncludeSuperResolutions;
+        get => _configurationService.IncludeSuperResolutions;
 
-        set => _configuration.IncludeSuperResolutions = value;
+        set => _configurationService.IncludeSuperResolutions = value;
     }
 
     public bool LimitCharacters
     {
-        get => _configuration.LimitCharacters;
+        get => _configurationService.LimitCharacters;
 
-        set => _configuration.LimitCharacters = value;
+        set => _configurationService.LimitCharacters = value;
     }
 
     public int MaxNumberOfActiveDownloads
     {
-        get => _configuration.MaxNumberOfActiveDownloads;
+        get => _configurationService.MaxNumberOfActiveDownloads;
 
-        set => _configuration.MaxNumberOfActiveDownloads = value;
+        set => _configurationService.MaxNumberOfActiveDownloads = value;
     }
 
     public bool OverwriteExistingFiles
     {
-        get => _configuration.OverwriteExistingFiles;
+        get => _configurationService.OverwriteExistingFiles;
 
-        set => _configuration.OverwriteExistingFiles = value;
+        set => _configurationService.OverwriteExistingFiles = value;
     }
 
     public int PostprocessingThreads
     {
-        get => _configuration.PostprocessingThreads;
+        get => _configurationService.PostprocessingThreads;
 
-        set => _configuration.PostprocessingThreads = value;
+        set => _configurationService.PostprocessingThreads = value;
     }
 
     public SelectionItem<AudioCodec> PreferredAudioCodec
     {
-        set => _configuration.PreferredAudioCodec = value.Value;
+        set => _configurationService.PreferredAudioCodec = value.Value;
     }
 
     public SelectionItem<FrameRate> PreferredFrameRate
     {
-        set => _configuration.PreferredFrameRate = value.Value;
+        set => _configurationService.PreferredFrameRate = value.Value;
     }
 
     public SelectionItem<SubtitleFormat> PreferredSubtitleFormat
     {
-        set => _configuration.PreferredSubtitleFormat = value.Value;
+        set => _configurationService.PreferredSubtitleFormat = value.Value;
     }
 
     public SelectionItem<VideoCodec> PreferredVideoCodec
     {
-        set => _configuration.PreferredVideoCodec = value.Value;
+        set => _configurationService.PreferredVideoCodec = value.Value;
     }
 
     public bool PreventSuspend
     {
-        get => _configuration.PreventSuspend;
+        get => _configurationService.PreventSuspend;
 
-        set => _configuration.PreventSuspend = value;
+        set => _configurationService.PreventSuspend = value;
     }
 
     public string ProxyUrl
     {
-        get => _configuration.ProxyUrl;
+        get => _configurationService.ProxyUrl;
 
-        set => _configuration.ProxyUrl = value;
+        set => _configurationService.ProxyUrl = value;
     }
 
     public bool RemoveSourceData
     {
-        get => _configuration.RemoveSourceData;
+        get => _configurationService.RemoveSourceData;
 
-        set => _configuration.RemoveSourceData = value;
-    }
-
-    public bool ShowDislcaimerOnStartup
-    {
-        get => _configuration.ShowDislcaimerOnStartup;
-
-        set => _configuration.ShowDislcaimerOnStartup = value;
+        set => _configurationService.RemoveSourceData = value;
     }
 
     public int? SpeedLimit
     {
-        get => _configuration.SpeedLimit;
+        get => _configurationService.SpeedLimit;
 
-        set => _configuration.SpeedLimit = value;
+        set => _configurationService.SpeedLimit = value;
     }
 
     public SelectionItem<Theme> Theme
     {
-        set => _configuration.Theme = value.Value;
+        set => _configurationService.Theme = value.Value;
     }
 
     public bool TranslateMetadataAndChapters
     {
-        get => _configuration.TranslateMetadataAndChapters;
+        get => _configurationService.TranslateMetadataAndChapters;
 
-        set => _configuration.TranslateMetadataAndChapters = value;
+        set => _configurationService.TranslateMetadataAndChapters = value;
     }
 
     public SelectionItem<string> TranslationLanguage
     {
-        set => _configuration.TranslationLanguage = value.Value;
+        set => _configurationService.TranslationLanguage = value.Value;
     }
 
     public bool UseAria
     {
-        get => _configuration.UseAria;
+        get => _configurationService.UseAria;
 
-        set => _configuration.UseAria = value;
+        set => _configurationService.UseAria = value;
     }
 
     public bool UsePartFiles
     {
-        get => _configuration.UsePartFiles;
+        get => _configurationService.UsePartFiles;
 
-        set => _configuration.UsePartFiles = value;
+        set => _configurationService.UsePartFiles = value;
     }
 
     public bool YouTubeSponsorBlock
     {
-        get => _configuration.YouTubeSponsorBlock;
+        get => _configurationService.YouTubeSponsorBlock;
 
-        set => _configuration.YouTubeSponsorBlock = value;
+        set => _configurationService.YouTubeSponsorBlock = value;
     }
 
     public string YtdlpDiscoveryArgs
     {
-        get => _configuration.YtdlpDiscoveryArgs;
+        get => _configurationService.YtdlpDiscoveryArgs;
 
-        set => _configuration.YtdlpDiscoveryArgs = value;
+        set => _configurationService.YtdlpDiscoveryArgs = value;
     }
 
     public string YtdlpDownloadArgs
     {
-        get => _configuration.YtdlpDownloadArgs;
+        get => _configurationService.YtdlpDownloadArgs;
 
-        set => _configuration.YtdlpDownloadArgs = value;
+        set => _configurationService.YtdlpDownloadArgs = value;
     }
 
     public async Task<string?> AddPostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
     {
-        if (_configuration.PostprocessingArguments.Any(arg => arg.Name == name))
+        if (_configurationService.PostprocessingArguments.Any(arg => arg.Name == name))
         {
             return _translationService._("An argument with that name already exists");
         }
@@ -386,26 +374,26 @@ public class PreferencesViewController
         }
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments.Add(argument);
-        _configuration.PostprocessingArguments.Add(argument);
+        _configurationService.PostprocessingArguments.Add(argument);
         await SaveConfigurationAsync();
         return null;
     }
 
     public async Task DeletePostprocessingArgumentAsync(string name)
     {
-        var argument = _configuration.PostprocessingArguments.FirstOrDefault(arg => arg.Name == name);
+        var argument = _configurationService.PostprocessingArguments.FirstOrDefault(arg => arg.Name == name);
         if (argument is null)
         {
             return;
         }
         PostprocessingArguments.Remove(argument);
-        _configuration.PostprocessingArguments.Remove(argument);
+        _configurationService.PostprocessingArguments.Remove(argument);
         await SaveConfigurationAsync();
     }
 
     public async Task<string?> UpdatePostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
     {
-        var index = _configuration.PostprocessingArguments.FindIndex(arg => arg.Name == name);
+        var index = _configurationService.PostprocessingArguments.FindIndex(arg => arg.Name == name);
         if (index == -1)
         {
             return _translationService._("An argument with that name does not exist");
@@ -420,10 +408,10 @@ public class PreferencesViewController
         }
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments[index] = argument;
-        _configuration.PostprocessingArguments[index] = argument;
+        _configurationService.PostprocessingArguments[index] = argument;
         await SaveConfigurationAsync();
         return null;
     }
 
-    public Task SaveConfigurationAsync() => _jsonFileService.SaveAsync(_configuration, ApplicationJsonContext.Default.Configuration, Configuration.Key);
+    public Task SaveConfigurationAsync() => _configurationService.SaveAsync();
 }

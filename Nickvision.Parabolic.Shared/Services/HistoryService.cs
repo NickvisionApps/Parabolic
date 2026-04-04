@@ -23,7 +23,7 @@ public class HistoryService : IHistoryService
         TableName = "history";
     }
 
-    public HistoryService(ILogger<HistoryService> logger, IConfigurationService configurationService, IDatabaseService databaseService, AppInfo appInfo)
+    public HistoryService(ILogger<HistoryService> logger, IConfigurationService configurationService, IDatabaseService databaseService)
     {
         _logger = logger;
         _configurationService = configurationService;

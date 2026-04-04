@@ -10,7 +10,6 @@ namespace Nickvision.Parabolic.Shared.Helpers;
 [JsonSerializable(typeof(AppVersion))]
 [JsonSerializable(typeof(Dictionary<MediaFileType, string>))]
 [JsonSerializable(typeof(DownloadOptions))]
-[JsonSerializable(typeof(DownloaderOptions))]
 [JsonSerializable(typeof(JsonElement))]
 [JsonSerializable(typeof(List<PostProcessorArgument>))]
 [JsonSerializable(typeof(List<SubtitleLanguage>))]

@@ -1,5 +1,4 @@
-﻿using Nickvision.Parabolic.Shared.Helpers;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -77,21 +76,48 @@ public class PostProcessorArgument : IComparable<PostProcessorArgument>, IEquata
 
     public override string ToString()
     {
+        var ytdlpExecutable = Executable switch
+        {
+            Executable.AtomicParsley => "AtomicParsley",
+            Executable.FFmpeg => "ffmpeg",
+            Executable.FFprobe => "ffprobe",
+            _ => string.Empty
+        };
+        var ytdlpPostProcessor = PostProcessor switch
+        {
+            PostProcessor.Merger => "Merger",
+            PostProcessor.ModifyChapters => "ModifyChapters",
+            PostProcessor.SplitChapters => "SplitChapters",
+            PostProcessor.ExtractAudio => "ExtractAudio",
+            PostProcessor.VideoRemuxer => "VideoRemuxer",
+            PostProcessor.VideoConverter => "VideoConverter",
+            PostProcessor.Metadata => "Metadata",
+            PostProcessor.EmbedSubtitle => "EmbedSubtitle",
+            PostProcessor.EmbedThumbnail => "EmbedThumbnail",
+            PostProcessor.SubtitlesConverter => "SubtitlesConverter",
+            PostProcessor.ThumbnailsConverter => "ThumbnailsConverter",
+            PostProcessor.FixupStretched => "FixupStretched",
+            PostProcessor.FixupM4a => "FixupM4a",
+            PostProcessor.FixupM3u8 => "FixupM3u8",
+            PostProcessor.FixupTimestamp => "FixupTimestamp",
+            PostProcessor.FixupDuration => "FixupDuration",
+            _ => string.Empty
+        };
         if (PostProcessor == PostProcessor.None && Executable == Executable.None)
         {
             return Args;
         }
         else if (PostProcessor != PostProcessor.None && Executable != Executable.None)
         {
-            return $"{PostProcessor.ToYtdlpString()}+{Executable.ToYtdlpString()}:{Args}";
+            return $"{ytdlpPostProcessor}+{ytdlpExecutable}:{Args}";
         }
         else if (PostProcessor != PostProcessor.None)
         {
-            return $"{PostProcessor.ToYtdlpString()}:{Args}";
+            return $"{ytdlpPostProcessor}:{Args}";
         }
         else if (Executable != Executable.None)
         {
-            return $"{Executable.ToYtdlpString()}:{Args}";
+            return $"{ytdlpExecutable}:{Args}";
         }
         return string.Empty;
     }
