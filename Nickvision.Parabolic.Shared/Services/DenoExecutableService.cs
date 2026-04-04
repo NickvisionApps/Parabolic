@@ -42,7 +42,7 @@ public class DenoExecutableService : DependencyExecutableService, IDenoExecutabl
         }
     }
 
-    public DenoExecutableService(ILogger<DenoExecutableService> logger, ILogger<UpdaterService> updaterLogger, IConfigurationService configurationService, IHttpClientFactory httpClientFactory): base(logger, "deno", DenoBundledVersion, DenoAssetName, configurationService, new UpdaterService(updaterLogger, "denoland", "deno", httpClientFactory.CreateClient()))
+    public DenoExecutableService(ILogger<DenoExecutableService> logger, ILogger<UpdaterService> updaterLogger, IConfigurationService configurationService, IHttpClientFactory httpClientFactory) : base(logger, "deno", DenoBundledVersion, DenoAssetName, configurationService, new UpdaterService(updaterLogger, "denoland", "deno", httpClientFactory.CreateClient()))
     {
 
     }

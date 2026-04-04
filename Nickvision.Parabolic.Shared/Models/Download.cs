@@ -1,5 +1,5 @@
 ﻿using ATL;
-using Nickvision.Desktop.Filesystem;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Events;
@@ -19,7 +19,7 @@ public partial class Download : IDisposable
 {
     private static int _nextId;
 
-    private readonly IJsonFileService _jsonFileService;
+    private readonly IConfigurationService _configurationService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpExecutableService;
     private readonly StringBuilder _logBuilder;
@@ -41,9 +41,9 @@ public partial class Download : IDisposable
         _nextId = 0;
     }
 
-    public Download(IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService, DownloadOptions options)
+    public Download(IConfigurationService configurationService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService, DownloadOptions options)
     {
-        _jsonFileService = jsonFileService;
+        _configurationService = configurationService;
         _translationService = translationService;
         _ytdlpExecutableService = ytdlpExecutableService;
         _logBuilder = new StringBuilder();
@@ -88,14 +88,13 @@ public partial class Download : IDisposable
         ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, ReadOnlyMemory<char>.Empty, double.NaN, 0.0, 0));
     }
 
-    public async Task StartAsync()
+    public void Start()
     {
         if (Status == DownloadStatus.Running || Status == DownloadStatus.Paused)
         {
             return;
         }
-        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
-        if (File.Exists(FilePath) && !downloaderOptions.OverwriteExistingFiles)
+        if (File.Exists(FilePath) && !_configurationService.OverwriteExistingFiles)
         {
             var log = _translationService?._("The file already exists and overwriting is disabled.") ?? "The file already exists and overwriting is disabled.";
             _logBuilder.AppendLine(log);
@@ -104,8 +103,8 @@ public partial class Download : IDisposable
             Completed?.Invoke(this, new DownloadCompletedEventArgs(Id, Status, FilePath, log.AsMemory(), false));
             return;
         }
-        _removeSourceData = downloaderOptions.RemoveSourceData;
-        _process = await _ytdlpExecutableService.CreateDownloadProcessAsync(Options);
+        _removeSourceData = _configurationService.RemoveSourceData;
+        _process = _ytdlpExecutableService.GetDownloadProcess(Options);
         Status = DownloadStatus.Running;
         _process.Exited += Process_Exited;
         _process.OutputDataReceived += Process_OutputDataReceived;

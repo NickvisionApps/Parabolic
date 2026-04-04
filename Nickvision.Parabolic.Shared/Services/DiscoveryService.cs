@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
@@ -18,7 +19,7 @@ public class DiscoveryService : IDiscoveryService
     private static readonly char BatchFileDelimiter;
 
     private readonly ILogger<DiscoveryService> _logger;
-    private readonly IJsonFileService _jsonFileService;
+    private readonly IConfigurationService _configurationService;
     private readonly IThumbnailService _thumbnailService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpExecutableService;
@@ -28,10 +29,10 @@ public class DiscoveryService : IDiscoveryService
         BatchFileDelimiter = '|';
     }
 
-    public DiscoveryService(ILogger<DiscoveryService> logger, IJsonFileService jsonFileService, IThumbnailService thumbnailService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
+    public DiscoveryService(ILogger<DiscoveryService> logger, IConfigurationService configurationService, IThumbnailService thumbnailService, ITranslationService translationService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _logger = logger;
-        _jsonFileService = jsonFileService;
+        _configurationService = configurationService;
         _thumbnailService = thumbnailService;
         _translationService = translationService;
         _ytdlpExecutableService = ytdlpExecutableService;
@@ -63,24 +64,18 @@ public class DiscoveryService : IDiscoveryService
     private async Task<DiscoveryResult> GetForUrlAsync(Uri url, Credential? credential, string suggestedSaveFolder, string suggestedFilename, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation($"Discovering media for {url}...");
-        using var process = await _ytdlpExecutableService.CreateDiscoveryProcessAsync(url, credential);
-        process.Start();
-        var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
-        var errorTask = process.StandardError.ReadToEndAsync(cancellationToken);
-        await process.WaitForExitAsync(cancellationToken);
-        var output = await outputTask;
-        var error = await errorTask;
-        if (process.ExitCode != 0 && (string.IsNullOrEmpty(output) || output[0] != '{'))
+        var processResult = await _ytdlpExecutableService.ExecuteAsync(_ytdlpExecutableService.GetDiscoveryProcessArguments(url, credential), cancellationToken);
+        if (processResult.ExitCode != 0 && (string.IsNullOrEmpty(processResult.Output) || processResult.Output[0] != '{'))
         {
-            _logger.LogError($"Failed to discover media for {url}: {error.TrimEnd()}");
-            throw new YtdlpException(error);
+            _logger.LogError($"Failed to discover media for {url}: {processResult.Error.TrimEnd()}");
+            throw new YtdlpException(processResult.Error);
         }
         cancellationToken.ThrowIfCancellationRequested();
-        using var json = JsonDocument.Parse(output);
+        using var json = JsonDocument.Parse(processResult.Output);
         if (json.RootElement.ValueKind != JsonValueKind.Object)
         {
-            _logger.LogError($"Unexpected output format from yt-dlp for {url}: {output.TrimEnd()}");
-            throw new YtdlpException($"Unexpected output format from yt-dlp: {output}");
+            _logger.LogError($"Unexpected output format from yt-dlp for {url}: {processResult.Output.TrimEnd()}");
+            throw new YtdlpException($"Unexpected output format from yt-dlp: {processResult.Output}");
         }
         DiscoveryResult? result = null;
         if (json!.RootElement.TryGetProperty("entries", out var entriesProperty) && entriesProperty.GetArrayLength() > 0)
@@ -109,7 +104,7 @@ public class DiscoveryService : IDiscoveryService
         }
         if (result is null)
         {
-            result = new DiscoveryResult(json.RootElement, _translationService, (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions, url, suggestedSaveFolder, suggestedFilename);
+            result = new DiscoveryResult(json.RootElement, _configurationService, _translationService, url, suggestedSaveFolder, suggestedFilename);
         }
         foreach (var media in result.Media)
         {

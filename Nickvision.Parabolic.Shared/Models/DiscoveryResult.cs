@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Globalization;
+﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -31,7 +32,7 @@ public class DiscoveryResult
         Media = new List<Media>();
     }
 
-    public DiscoveryResult(JsonElement ytdlp, ITranslationService translator, DownloaderOptions downloaderOptions, Uri url, string suggestedSaveFolder, string suggestedSaveFilename) : this(url, suggestedSaveFolder, suggestedSaveFilename)
+    public DiscoveryResult(JsonElement ytdlp, IConfigurationService configurationService, ITranslationService translator, Uri url, string suggestedSaveFolder, string suggestedSaveFilename) : this(url, suggestedSaveFolder, suggestedSaveFilename)
     {
         if (ytdlp.TryGetProperty("title", out var titleProperty) && titleProperty.ValueKind != JsonValueKind.Null)
         {
@@ -45,12 +46,12 @@ public class DiscoveryResult
                 {
                     continue;
                 }
-                Media.Add(new Media(mediaObject, translator, downloaderOptions, suggestedSaveFolder, string.Empty));
+                Media.Add(new Media(mediaObject, configurationService, translator, suggestedSaveFolder, string.Empty));
             }
         }
         else
         {
-            Media.Add(new Media(ytdlp, translator, downloaderOptions, suggestedSaveFolder, suggestedSaveFilename));
+            Media.Add(new Media(ytdlp, configurationService, translator, suggestedSaveFolder, suggestedSaveFilename));
         }
     }
 

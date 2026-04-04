@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Globalization;
+﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Helpers;
 using System;
@@ -33,7 +34,7 @@ public class Media
         SuggestedSaveFolder = suggestedSaveFolder;
     }
 
-    public Media(JsonElement ytdlp, ITranslationService translator, DownloaderOptions options, string suggestedSaveFolder, string suggestedSaveFilename) : this(suggestedSaveFolder, suggestedSaveFilename)
+    public Media(JsonElement ytdlp, IConfigurationService configurationService, ITranslationService translator, string suggestedSaveFolder, string suggestedSaveFilename) : this(suggestedSaveFolder, suggestedSaveFilename)
     {
         if (ytdlp.TryGetProperty("playlist_index", out var playlistIndexProperty) && playlistIndexProperty.ValueKind != JsonValueKind.Null)
         {
@@ -77,7 +78,7 @@ public class Media
         {
             Title = titleProperty.GetString() ?? "Media";
         }
-        if (options.IncludeMediaIdInTitle && ytdlp.TryGetProperty("display_id", out var displayIdProperty) && displayIdProperty.ValueKind != JsonValueKind.Null)
+        if (configurationService.IncludeMediaIdInTitle && ytdlp.TryGetProperty("display_id", out var displayIdProperty) && displayIdProperty.ValueKind != JsonValueKind.Null)
         {
             var displayId = displayIdProperty.GetString() ?? string.Empty;
             if (!string.IsNullOrEmpty(displayId))
@@ -85,7 +86,7 @@ public class Media
                 Title += $" [{displayId}]";
             }
         }
-        Title = Title.SanitizeForFilename(options.LimitCharacters);
+        Title = Title.SanitizeForFilename(configurationService.LimitCharacters);
         if (ytdlp.TryGetProperty("duration", out var durationProperty) && durationProperty.ValueKind != JsonValueKind.Null)
         {
             if (durationProperty.TryGetDouble(out var durationDouble))
@@ -109,7 +110,7 @@ public class Media
                 {
                     continue;
                 }
-                else if (!options.IncludeSuperResolutions && format.Id.EndsWith("-sr", StringComparison.InvariantCultureIgnoreCase))
+                else if (!configurationService.IncludeSuperResolutions && format.Id.EndsWith("-sr", StringComparison.InvariantCultureIgnoreCase))
                 {
                     continue;
                 }
@@ -121,9 +122,9 @@ public class Media
                 {
                     hasAudioFormats = true;
                 }
-                if ((format.VideoCodec.HasValue && options.PreferredVideoCodec != VideoCodec.Any && format.VideoCodec.Value != options.PreferredVideoCodec) ||
-                    (format.AudioCodec.HasValue && options.PreferredAudioCodec != AudioCodec.Any && format.AudioCodec.Value != options.PreferredAudioCodec) ||
-                    (format.FrameRate.HasValue && options.PreferredFrameRate != FrameRate.Any && format.FrameRate.Value != options.PreferredFrameRate))
+                if ((format.VideoCodec.HasValue && configurationService.PreferredVideoCodec != VideoCodec.Any && format.VideoCodec.Value != configurationService.PreferredVideoCodec) ||
+                    (format.AudioCodec.HasValue && configurationService.PreferredAudioCodec != AudioCodec.Any && format.AudioCodec.Value != configurationService.PreferredAudioCodec) ||
+                    (format.FrameRate.HasValue && configurationService.PreferredFrameRate != FrameRate.Any && format.FrameRate.Value != configurationService.PreferredFrameRate))
                 {
                     skippedFormats.Add(format);
                     continue;
@@ -132,12 +133,12 @@ public class Media
             }
             if (Formats.Count == 0 && skippedFormats.Count > 0)
             {
-                var preferredCodecFormats = skippedFormats.Where(f => (!f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec) && (!f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec)).ToList();
+                var preferredCodecFormats = skippedFormats.Where(f => (!f.VideoCodec.HasValue || configurationService.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == configurationService.PreferredVideoCodec) && (!f.AudioCodec.HasValue || configurationService.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == configurationService.PreferredAudioCodec)).ToList();
                 Formats.AddRange(preferredCodecFormats.Count > 0 ? preferredCodecFormats : skippedFormats);
             }
             else if (!Formats.HasFormats(MediaType.Video) && skippedFormats.HasFormats(MediaType.Video))
             {
-                var preferredCodecVideoFormats = skippedFormats.Where(f => f.Type == MediaType.Video && (!f.VideoCodec.HasValue || options.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == options.PreferredVideoCodec)).ToList();
+                var preferredCodecVideoFormats = skippedFormats.Where(f => f.Type == MediaType.Video && (!f.VideoCodec.HasValue || configurationService.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == configurationService.PreferredVideoCodec)).ToList();
                 foreach (var format in preferredCodecVideoFormats.Count > 0 ? preferredCodecVideoFormats : skippedFormats.Where(f => f.Type == MediaType.Video).ToList())
                 {
                     Formats.Add(format);
@@ -145,7 +146,7 @@ public class Media
             }
             else if (!Formats.HasFormats(MediaType.Audio) && skippedFormats.HasFormats(MediaType.Audio))
             {
-                var preferredCodecAudioFormats = skippedFormats.Where(f => f.Type == MediaType.Audio && (!f.AudioCodec.HasValue || options.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == options.PreferredAudioCodec)).ToList();
+                var preferredCodecAudioFormats = skippedFormats.Where(f => f.Type == MediaType.Audio && (!f.AudioCodec.HasValue || configurationService.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == configurationService.PreferredAudioCodec)).ToList();
                 foreach (var format in preferredCodecAudioFormats.Count > 0 ? preferredCodecAudioFormats : skippedFormats.Where(f => f.Type == MediaType.Audio).ToList())
                 {
                     Formats.Add(format);
@@ -153,7 +154,7 @@ public class Media
             }
             Formats.Sort();
         }
-        if (options.IncludeAutoGeneratedSubtitles && ytdlp.TryGetProperty("automatic_captions", out var autoCaptionsProperty) && autoCaptionsProperty.ValueKind != JsonValueKind.Null)
+        if (configurationService.IncludeAutoGeneratedSubtitles && ytdlp.TryGetProperty("automatic_captions", out var autoCaptionsProperty) && autoCaptionsProperty.ValueKind != JsonValueKind.Null)
         {
             foreach (var captionPair in autoCaptionsProperty.EnumerateObject())
             {

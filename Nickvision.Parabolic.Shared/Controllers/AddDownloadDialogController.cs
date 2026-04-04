@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Nickvision.Desktop.Application;
-using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.Notifications;

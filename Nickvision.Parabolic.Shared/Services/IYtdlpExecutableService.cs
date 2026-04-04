@@ -2,13 +2,13 @@
 using Nickvision.Desktop.System;
 using Nickvision.Parabolic.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
 
 public interface IYtdlpExecutableService : IDependencyExecutableService
 {
-    Task<Process> CreateDiscoveryProcessAsync(Uri url, Credential? credential);
-    Task<Process> CreateDownloadProcessAsync(DownloadOptions downloadOptions);
+    IReadOnlyList<string> GetDiscoveryProcessArguments(Uri url, Credential? credential);
+    Process GetDownloadProcess(DownloadOptions downloadOptions);
 }

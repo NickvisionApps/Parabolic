@@ -62,7 +62,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         _previewUpdaterService = new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp-nightly-builds", httpClientFactory.CreateClient());
     }
 
-    public async Task<Process> CreateDiscoveryProcessAsync(Uri url, Credential? credential)
+    public IReadOnlyList<string> GetDiscoveryProcessArguments(Uri url, Credential? credential)
     {
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
         var arguments = new List<string>(23)
@@ -136,19 +136,10 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             arguments.Add(_configurationService.CookiesPath);
         }
         arguments.AddRange(_configurationService.YtdlpDiscoveryArgs.SplitCommandLine());
-        return new Process()
-        {
-            StartInfo = new ProcessStartInfo(ExecutablePath ?? "yt-dlp", arguments)
-            {
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            }
-        };
+        return arguments;
     }
 
-    public async Task<Process> CreateDownloadProcessAsync(DownloadOptions downloadOptions)
+    public Process GetDownloadProcess(DownloadOptions downloadOptions)
     {
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
         Directory.CreateDirectory(downloadOptions.SaveFolder);

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
@@ -76,7 +75,7 @@ public class DownloadService : IDisposable, IDownloadService
             _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
-            await download.StartAsync();
+            download.Start();
         }
         else
         {
@@ -126,7 +125,7 @@ public class DownloadService : IDisposable, IDownloadService
         await _historyService.AddAsync(historicDownloads);
         foreach (var download in downloadsToStart)
         {
-            await download.StartAsync();
+            download.Start();
         }
     }
 
@@ -357,7 +356,7 @@ public class DownloadService : IDisposable, IDownloadService
             _queued.Remove(firstDownload.Id);
             _logger.LogInformation($"Starting download from queue ({firstDownload.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
             DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
-            await firstDownload.StartAsync();
+            firstDownload.Start();
         }
     }
 
