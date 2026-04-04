@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-04 10:55-0400\n"
+"POT-Creation-Date: 2026-04-04 18:13-0400\n"
 "PO-Revision-Date: 2026-02-06 14:38+0000\n"
 "Last-Translator: lexerotk <lexerotk@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -22,7 +22,8 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:63
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:103
 msgid "Add Download"
 msgstr "İndirme Ekle"
 
@@ -64,6 +65,7 @@ msgstr "Kullanıcı adı"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:75
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:55
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:317
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:76
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
 msgid "Password"
@@ -378,7 +380,6 @@ msgstr "Günlüğü Panoya Kopyala"
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:89
 msgid "History"
 msgstr "Geçmiş"
 
@@ -409,7 +410,6 @@ msgstr "Tümünü Temizle"
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:94
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Keyring"
 msgstr "Anahtarlık"
 
@@ -424,16 +424,15 @@ msgstr "Kimlik Bilgileri"
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:298
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:103
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:149
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:209
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:148
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:212
 msgid "Add"
 msgstr "Ekle"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:43
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:472
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:152
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:151
 msgid "Name"
 msgstr "Ad"
 
@@ -462,22 +461,18 @@ msgid "About Parabolic"
 msgstr "Parabolic Hakkında"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:17
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:109
 msgid "Stop All Remaining"
 msgstr "Kalanları Durdur"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:18
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:110
 msgid "Retry All Failed"
 msgstr "Tüm Başarısızları Yeniden Dene"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:111
 msgid "Clear All Queued"
 msgstr "Tüm Kuyruğu Temizle"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:23
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:112
 msgid "Clear All Completed"
 msgstr "Tüm Tamamlananları Temizle"
 
@@ -490,18 +485,17 @@ msgid "Updater"
 msgstr "Güncelleyici"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:108
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 msgid "Download Media"
 msgstr "Ortam İndirici"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:109
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "İndirmeye başlamak için video, ses ya da oynatma listesi URLʼsi ekleyin"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:140
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
 msgid "All"
 msgstr "Tümü"
 
@@ -509,24 +503,20 @@ msgstr "Tümü"
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:206
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:81
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:175
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:105
 msgid "Running"
 msgstr "Çalışıyor"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:150
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:107
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:75
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:106
 msgid "Queued"
 msgstr "Kuyrukta"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:155
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:107
 msgid "Completed"
 msgstr "Tamamlandı"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:160
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:108
 msgid "Failed"
 msgstr ""
 
@@ -535,12 +525,10 @@ msgid "Manage Download"
 msgstr "İndirilenleri Yönet"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:195
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:113
 msgid "No Downloads"
 msgstr "İndirme Yok"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:196
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:114
 msgid "There are no downloads of this type"
 msgstr "Bu tür için indirme yok"
 
@@ -595,8 +583,6 @@ msgid "The amount of time to keep past downloads in the app's history"
 msgstr "Uygulama geçmişinde geçmiş indirmelerin saklama süresi"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:68
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:34
 msgid "Downloads"
 msgstr "İndirilenler"
@@ -912,7 +898,6 @@ msgid "Postprocessing Arguments"
 msgstr "Son İşleme Argümanları"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:441
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:148
 msgid "Arguments will be shown for selection in the add download dialog"
 msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
 
@@ -921,7 +906,7 @@ msgid "Add Postprocessing Argument"
 msgstr "Son İşlem Argümanı Ekle"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:457
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:150
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:149
 msgid "Argument"
 msgstr "Argüman"
 
@@ -930,12 +915,12 @@ msgid "Post Processor"
 msgstr "Son İşleme"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:480
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:155
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:154
 msgid "Executable"
 msgstr "Çalıştırılabilir"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:484
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:156
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:155
 msgid "Args"
 msgstr "Args"
 
@@ -978,14 +963,14 @@ msgstr "Bilinmeyen"
 
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:139
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:139
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:300
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:302
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:326
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:109
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:76
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:111
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:294
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:225
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:288
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:264
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:291
 msgid "Error"
 msgstr "Hata"
 
@@ -1074,8 +1059,8 @@ msgstr "Temizle"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:173
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:231
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:119
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:151
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:122
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:150
 msgid "Cancel"
 msgstr "İptal"
 
@@ -1106,6 +1091,7 @@ msgstr "Geçmiş Yok"
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:158
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:226
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:352
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -1119,8 +1105,8 @@ msgstr "Kimlik Bilgileri Yok"
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:78
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:113
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:227
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:290
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:230
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:293
 msgid "OK"
 msgstr "Tamam"
 
@@ -1137,18 +1123,18 @@ msgstr ""
 "Bu kimlik bilgisini silmek istediğinizden emin misiniz? Bu işlem geri "
 "alınamaz"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:197
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:132
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:199
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:136
 msgid "Don't show this message again"
 msgstr "Bu iletiyi tekrar gösterme"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:198
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:136
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:200
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:140
 msgid "Legal Copyright Disclaimer"
 msgstr "Yasal Telif Hakkı Feragatnamesi"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:198
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:145
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:200
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:149
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -1158,18 +1144,18 @@ msgstr ""
 "Parabolic yazarları, bu uygulamanın yasaları ihlal edecek şekilde "
 "kullanılmasını onaylamaz ve yasa dışı kullanımdan sorumlu değildir."
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:199
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:151
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:201
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:155
 msgid "I understand"
 msgstr "Anladım"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:211
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:166
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:213
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:170
 msgid "Recover Downloads?"
 msgstr "İndirmeler Kurtarılsın Mı?"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:211
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:167
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:213
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:171
 msgid ""
 "There are downloads available to recover from when Parabolic crashed. Would "
 "you like to download them again?"
@@ -1177,73 +1163,96 @@ msgstr ""
 "Parabolic çökmesinden kurtarılabilecek indirmeler var. Bunları tekrar "
 "indirmek ister misiniz?"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:212
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:243
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:214
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:245
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:84
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:131
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:168
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:200
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:251
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:172
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:204
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:254
 msgid "Yes"
 msgstr "Evet"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:213
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:244
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:215
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:246
 #: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:85
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:132
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:169
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:201
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:252
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:173
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:205
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:255
 msgid "No"
 msgstr "Hayır"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:242
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:199
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:244
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:203
 msgid ""
 "There are downloads still in progress. Would you like to stop them and exit?"
 msgstr "Devam eden indirmeler var. Durdurup çıkmak ister misiniz?"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:272
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:274
 msgid "View"
 msgstr "Görünüm"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:282
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:284
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:98
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:270
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:276
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:282
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:272
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:240
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:246
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:252
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:275
 msgid "Update"
 msgstr "Güncelle"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:287
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:406
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:476
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:289
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:435
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:451
 #, csharp-format
 msgid "Downloading update: {0}%"
 msgstr "Güncelleme indiriliyor: %{0}"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:297
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:288
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:299
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:258
 msgid "Details"
 msgstr "Ayrıntılar"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:302
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:304
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:23
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:305
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:275
 msgid "Close"
 msgstr "Kapat"
 
-#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:438
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:320
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:326
+#, fuzzy
+msgid "Password Required"
+msgstr "Parola"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:320
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:320
+msgid ""
+"This app stores data in an encrypted database. As the system credential "
+"manager (secret service) is not available, please provide a password to use "
+"to encrypt the database.\n"
+"\n"
+"If you've already provided a password, please provide it again to unlock the "
+"database."
+msgstr ""
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:321
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:121
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:328
+msgid "Submit"
+msgstr "Gönder"
+
+#: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:467
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
 msgid "GitHub Repo"
 msgstr "GitHub Deposu"
 
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:151
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:288
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:97
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:181
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:240
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:180
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:243
 msgid "No file selected"
 msgstr "Dosya seçilmedi"
 
@@ -1252,12 +1261,12 @@ msgid "No Arguments"
 msgstr "Argüman Yok"
 
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:358
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:249
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:252
 msgid "Delete Argument?"
 msgstr "Argüman Silinsin mi?"
 
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:358
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:250
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:253
 msgid ""
 "Are you sure you want to delete this post-processor argument? This action is "
 "irreversible"
@@ -1269,15 +1278,15 @@ msgstr ""
 msgid "An error occurred while adding playlist downloads"
 msgstr "Çalma listesi indirmeleri eklenirken hata oluştu"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:203
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:207
 msgid "An error occurred while adding the single download"
 msgstr "İndirme eklenirken hata oluştu"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:220
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:224
 msgid "No media was found at the provided URL"
 msgstr "Verilen URLʼde ortam bulunamadı"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:251
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:255
 #: Nickvision.Parabolic.Shared/Models/Format.cs:343
 #: Nickvision.Parabolic.Shared/Models/Format.cs:344
 #: Nickvision.Parabolic.Shared/Models/VideoResolution.cs:37
@@ -1285,7 +1294,7 @@ msgstr "Verilen URLʼde ortam bulunamadı"
 msgid "Worst"
 msgstr "En Kötü"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:252
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:256
 #: Nickvision.Parabolic.Shared/Models/Format.cs:341
 #: Nickvision.Parabolic.Shared/Models/Format.cs:342
 #: Nickvision.Parabolic.Shared/Models/VideoResolution.cs:33
@@ -1293,67 +1302,67 @@ msgstr "En Kötü"
 msgid "Best"
 msgstr "En İyi"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:268
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:272
 msgid "Video (Generic)"
 msgstr "Video (Standart)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:269
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:273
 msgid "MP4 (Video)"
 msgstr "MP4 (Video)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:270
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:274
 msgid "WEBM (Video)"
 msgstr "WEBM (Video)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:271
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:275
 msgid "MKV (Video)"
 msgstr "MKV (Video)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:272
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:276
 msgid "MOV (Video)"
 msgstr "MOV (Video)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:273
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:277
 msgid "AVI (Video)"
 msgstr "AVI (Video)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:275
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:279
 msgid "Audio (Generic)"
 msgstr "Ses (Genel)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:276
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:280
 msgid "MP3 (Audio)"
 msgstr "MP3 (Ses)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:277
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:281
 msgid "M4A (Audio)"
 msgstr "M4A (Ses)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:278
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:282
 msgid "OPUS (Audio)"
 msgstr "OPUS (Ses)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:279
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:283
 msgid "FLAC (Audio)"
 msgstr "FLAC (Ses)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:280
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:284
 msgid "WAV (Audio)"
 msgstr "WAV (Ses)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:281
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:285
 msgid "OGG (Audio)"
 msgstr "OGG (se)"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:306
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:310
 msgid "An error occurred while discovering media"
 msgstr "Ortam keşfedilirken hata oluştu"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:319
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:323
 msgid "Use manual credential"
 msgstr "El ile kimlik bilgisi kullan"
 
-#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:336
+#: Nickvision.Parabolic.Shared/Controllers/AddDownloadDialogController.cs:340
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:59
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:74
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:104
@@ -1662,8 +1671,8 @@ msgid "{0} (Auto-generated)"
 msgstr "{0} (kendiliğinden oluşturuldu)"
 
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:22
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:487
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:463
 #, csharp-format
 msgid "About {0}"
 msgstr "{0} Hakkında"
@@ -1742,14 +1751,14 @@ msgstr "Ortam URLʼsini buraya girin"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:75
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:116
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:119
 msgid "Enter username here"
 msgstr "Kullanıcı adını buraya girin"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:77
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:341
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:120
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:311
 msgid "Enter password here"
 msgstr "Parolayı buraya girin"
 
@@ -1836,7 +1845,7 @@ msgid "There are no credentials found with the current filters"
 msgstr "Geçerli süzgeçlerle hiçbir kimlik bilgisi bulunamadı"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:153
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:152
 msgid "Enter name here"
 msgstr "Adı buraya girin"
 
@@ -1844,64 +1853,50 @@ msgstr "Adı buraya girin"
 msgid "Enter url here"
 msgstr "URLʼyi buraya girin"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:86
-msgid "Preview"
-msgstr "Ön İzle"
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
+msgid "File"
+msgstr "Dosya"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:87
-msgid "Home"
-msgstr "Ev"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:91
-msgid "Updating"
-msgstr "Güncelleniyor"
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:90
+msgid "Exit"
+msgstr "Çık"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "Help"
 msgstr "Yardım"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:93
-msgid "Check for Updates"
-msgstr "Güncellemeleri Denetle"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:95
-msgid "Report a Bug"
-msgstr "Hata Raporla"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
-msgid "Discussions"
-msgstr "Tartışmalar"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:32
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:115
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:94
+msgid "Check for Updates"
+msgstr "Güncellemeleri Denetle"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:96
+msgid "Report a Bug"
+msgstr "Hata Raporla"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:97
+msgid "Discussions"
+msgstr "Tartışmalar"
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:99
+#, csharp-format
+msgid "You are running a preview version of {0}"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:100
+msgid "Thank you for testing the upcoming features and changes! ❤️"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:118
 msgid "Credential Required"
 msgstr "Kimlik Bilgisi Gerekli"
 
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:118
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:358
-msgid "Submit"
-msgstr "Gönder"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:350
-msgid ""
-"This app stores data in an encrypted database. As the system credential "
-"manager (secret service) is not available, please provide a password to use "
-"to encrypt the database.\n"
-"\n"
-"If you've already provided a password, please provide it again to unlock the "
-"database."
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:356
-#, fuzzy
-msgid "Password Required"
-msgstr "Parola"
-
-#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:396
+#: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:371
 #, csharp-format
 msgid "A credential is required to continue the download of \"{0}\"."
 msgstr "\"{0}\" indirilmesini sürdürmek için kimlik bilgileri gerekli."
@@ -1992,7 +1987,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:114
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:117
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:157
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:156
 msgid "Enter args here"
 msgstr "Buraya argümanları gir"
 
@@ -2004,9 +1999,18 @@ msgstr ""
 msgid "Post-Processor Arguments"
 msgstr "Son İşlemci Argümanları"
 
-#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:154
+#: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:153
 msgid "Post-Processor"
 msgstr "Son İşleme"
+
+#~ msgid "Home"
+#~ msgstr "Ev"
+
+#~ msgid "Updating"
+#~ msgstr "Güncelleniyor"
+
+#~ msgid "Preview"
+#~ msgstr "Ön İzle"
 
 #, fuzzy
 #~ msgid "Download Immediately"
@@ -2053,12 +2057,6 @@ msgstr "Son İşleme"
 #, fuzzy
 #~ msgid "There are no downloads added"
 #~ msgstr "Tüm indirmeler bittiğinde"
-
-#~ msgid "File"
-#~ msgstr "Dosya"
-
-#~ msgid "Exit"
-#~ msgstr "Çık"
 
 #, fuzzy
 #~ msgid "Add a download to get started"

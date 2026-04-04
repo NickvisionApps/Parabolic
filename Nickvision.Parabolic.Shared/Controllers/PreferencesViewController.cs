@@ -374,7 +374,7 @@ public class PreferencesViewController
         }
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments.Add(argument);
-        _configurationService.PostprocessingArguments.Add(argument);
+        _configurationService.PostprocessingArguments = PostprocessingArguments.ToList();
         await SaveConfigurationAsync();
         return null;
     }
@@ -387,7 +387,7 @@ public class PreferencesViewController
             return;
         }
         PostprocessingArguments.Remove(argument);
-        _configurationService.PostprocessingArguments.Remove(argument);
+        _configurationService.PostprocessingArguments = PostprocessingArguments.ToList();
         await SaveConfigurationAsync();
     }
 
@@ -408,7 +408,7 @@ public class PreferencesViewController
         }
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments[index] = argument;
-        _configurationService.PostprocessingArguments[index] = argument;
+        _configurationService.PostprocessingArguments = PostprocessingArguments.ToList();
         await SaveConfigurationAsync();
         return null;
     }

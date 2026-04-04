@@ -29,11 +29,11 @@ public sealed partial class SettingsPage : Page
         _translationService = translationService;
         _constructing = true;
         // Translations
-        LblSettings.Text = _translationService._("Settings");
-        SelectorUI.Text = _translationService._("User Interface");
-        SelectorDownloads.Text = _translationService._("Downloads");
-        SelectorDownloader.Text = _translationService._("Downloader");
-        SelectorConverter.Text = _translationService._("Converter");
+        NavigationView.PaneTitle = _translationService._("Settings");
+        NavUserInterface.Content = _translationService._("User Interface");
+        NavDownloads.Content = _translationService._("Downloads");
+        NavDownloader.Content = _translationService._("Downloader");
+        NavConverter.Content = _translationService._("Converter");
         RowTheme.Header = _translationService._("Theme");
         CmbTheme.ItemsSource = _controller.Themes.ToBindableSelectonItems();
         RowTranslationLanguage.Header = _translationService._("Translation Language");
@@ -144,8 +144,7 @@ public sealed partial class SettingsPage : Page
         RowFfmpegThreads.Header = _translationService._("FFmpeg Threads");
         RowFfmpegThreads.Description = _translationService._("Limit the number of threads used by ffmpeg");
         NumFfmpegThreads.Maximum = Environment.ProcessorCount;
-        RowPostProcessorArguments.Header = _translationService._("Post-Processor Arguments");
-        RowPostProcessorArguments.Description = _translationService._("Arguments will be shown for selection in the add download dialog");
+        LblPostProcessorArgments.Text = _translationService._("Post-Processor Arguments");
         LblAddPostProcessorArgument.Text = _translationService._("Add");
         DlgPostprocessingArgument.Title = _translationService._("Argument");
         DlgPostprocessingArgument.CloseButtonText = _translationService._("Cancel");
@@ -193,11 +192,15 @@ public sealed partial class SettingsPage : Page
         TglEmbedChapters.IsOn = _controller.EmbedChapters;
         TglEmbedSubtitles.IsOn = _controller.EmbedSubtitles;
         NumFfmpegThreads.Value = _controller.PostprocessingThreads;
-        RowPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments.ToBindablePostProcessorArguments();
+        ListPostProcessorArguments.ItemsSource = _controller.PostprocessingArguments.ToBindablePostProcessorArguments();
         CmbPostprocessingArgumentPostProcessor.ItemsSource = _controller.PostProcessors.ToBindableSelectonItems();
         CmbPostprocessingArgumentExecutable.ItemsSource = _controller.Executables.ToBindableSelectonItems();
         _constructing = false;
     }
+
+    private async void Page_Unloaded(object sender, RoutedEventArgs args) => await _controller.SaveConfigurationAsync();
+
+    private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args) => ViewStack.SelectedIndex = int.Parse(((NavigationView.SelectedItem as NavigationViewItem)!.Tag as string)!);
 
     private async void AddPostprocessingArgument(object? sender, RoutedEventArgs e)
     {
@@ -319,7 +322,14 @@ public sealed partial class SettingsPage : Page
         ViewStack.SelectedIndex = index == -1 ? 0 : index;
     }
 
-    private async void Cmb_SelectionChanged(object? sender, SelectionChangedEventArgs e) => await ApplyChangesAsync();
+    private async void Cmb_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        await ApplyChangesAsync();
+        if (sender?.Equals(CmbTheme) ?? false)
+        {
+            await _controller.SaveConfigurationAsync();
+        }
+    }
 
     private async void Num_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args) => await ApplyChangesAsync();
 
@@ -366,6 +376,5 @@ public sealed partial class SettingsPage : Page
         _controller.EmbedChapters = TglEmbedChapters.IsOn;
         _controller.EmbedSubtitles = TglEmbedSubtitles.IsOn;
         _controller.PostprocessingThreads = (int)NumFfmpegThreads.Value;
-        await _controller.SaveConfigurationAsync();
     }
 }

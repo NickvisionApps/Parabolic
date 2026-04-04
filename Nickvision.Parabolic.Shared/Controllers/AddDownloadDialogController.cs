@@ -182,11 +182,15 @@ public class AddDownloadDialogController
         }
         if (media.Formats.HasFormats(MediaType.Video))
         {
-            _configurationService.PreviousVideoFormatIds[options.FileType] = options.VideoFormat?.Id ?? _configurationService.PreviousVideoFormatIds[options.FileType];
+            var previous = _configurationService.PreviousVideoFormatIds;
+            previous[options.FileType] = options.VideoFormat?.Id ?? _configurationService.PreviousVideoFormatIds[options.FileType];
+            _configurationService.PreviousVideoFormatIds = previous;
         }
         if (media.Formats.HasFormats(MediaType.Audio))
         {
-            _configurationService.PreviousAudioFormatIds[options.FileType] = options.AudioFormat?.Id ?? _configurationService.PreviousAudioFormatIds[options.FileType];
+            var previous = _configurationService.PreviousAudioFormatIds;
+            previous[options.FileType] = options.AudioFormat?.Id ?? _configurationService.PreviousAudioFormatIds[options.FileType];
+            _configurationService.PreviousAudioFormatIds = previous;
         }
         _configurationService.PreviousSplitChapters = options.SplitChapters;
         _configurationService.PreviousExportDescription = options.ExportDescription;

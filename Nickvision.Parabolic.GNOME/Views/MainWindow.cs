@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -84,9 +85,10 @@ public class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += Window_OnCloseRequest;
         eventsService.AppNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
-            Controller_AppNotificationSent(sender, e);
+            App_AppNotificationSent(sender, e);
             return false;
         });
+        eventsService.DatabasePasswordRequired += App_DatabasePasswordRequired;
         eventsService.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadAdded(sender, e);
@@ -263,7 +265,7 @@ public class MainWindow : Adw.ApplicationWindow
         return false;
     }
 
-    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
+    private void App_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Notification.Message);
         if (e.Notification.Action == "update")
@@ -306,6 +308,33 @@ public class MainWindow : Adw.ApplicationWindow
             };
         }
         _toastOverlay!.AddToast(toast);
+    }
+
+    private async void App_DatabasePasswordRequired(object? sender, PasswordRequiredEventArgs e)
+    {
+        var password = string.Empty;
+        var passwordEntryRow = Adw.PasswordEntryRow.New();
+        passwordEntryRow.Title = _translationService._("Password");
+        var preferencesGroup = Adw.PreferencesGroup.New();
+        preferencesGroup.Add(passwordEntryRow);
+        var dialog = Adw.MessageDialog.New(this, _translationService._("Password Required"), _translationService._("This app stores data in an encrypted database. As the system credential manager (secret service) is not available, please provide a password to use to encrypt the database.\n\nIf you've already provided a password, please provide it again to unlock the database."));
+        dialog.AddResponse("submit", _translationService._("Submit"));
+        dialog.SetResponseAppearance("submit", Adw.ResponseAppearance.Suggested);
+        dialog.SetDefaultResponse("submit");
+        dialog.SetCloseResponse("submit");
+        dialog.SetExtraChild(preferencesGroup);
+        dialog.OnResponse += (_, args) =>
+        {
+            if (args.Response == "submit")
+            {
+                password = passwordEntryRow.Text_ ?? string.Empty;
+            }
+        };
+        while (string.IsNullOrEmpty(password))
+        {
+            dialog.Present();
+            await Task.Delay(100);
+        }
     }
 
     private async void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
