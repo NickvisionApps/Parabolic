@@ -1,7 +1,9 @@
 ﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Filesystem;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
@@ -128,11 +130,164 @@ public static class IConfigurationServiceExtensions
             set => configurationService.Set("PostprocessingThreads", value);
         }
 
+        public double PreviousAudioBitrate
+        {
+            get => configurationService.Get("AudioBitrate", double.MaxValue);
+
+            set => configurationService.Set("AudioBitrate", value);
+        }
+
+        public Dictionary<MediaFileType, string> PreviousAudioFormatIds
+        {
+            get => configurationService.Get("AudioFormatIds", new()
+            {
+                { MediaFileType.Video, Format.BestAudio.Id },
+                { MediaFileType.MP4, Format.BestAudio.Id },
+                { MediaFileType.MKV, Format.BestAudio.Id },
+                { MediaFileType.WEBM, Format.BestAudio.Id },
+                { MediaFileType.MOV, Format.BestAudio.Id },
+                { MediaFileType.AVI, Format.BestAudio.Id },
+                { MediaFileType.Audio, Format.BestAudio.Id },
+                { MediaFileType.MP3, Format.BestAudio.Id },
+                { MediaFileType.M4A, Format.BestAudio.Id },
+                { MediaFileType.OPUS, Format.BestAudio.Id },
+                { MediaFileType.FLAC, Format.BestAudio.Id },
+                { MediaFileType.WAV, Format.BestAudio.Id },
+                { MediaFileType.OGG, Format.BestAudio.Id },
+            }, ApplicationJsonContext.Default.DictionaryMediaFileTypeString);
+
+            set => configurationService.Set("AudioFormatIds", value, ApplicationJsonContext.Default.DictionaryMediaFileTypeString);
+        }
+
+        public MediaFileType PreviousAudioOnlyFileType
+        {
+            get => (MediaFileType)configurationService.Get("AudioOnlyFileType", (int)MediaFileType.MP3);
+
+            set => configurationService.Set("AudioOnlyFileType", (int)value);
+        }
+
+        public bool PreviousDownloadImmediatelyAsAudio
+        {
+            get => configurationService.Get("DownloadImmediatelyAsAudio", false);
+
+            set => configurationService.Set("DownloadImmediatelyAsAudio", value);
+        }
+
+        public bool PreviousDownloadImmediatelyAsVideo
+        {
+            get => configurationService.Get("DownloadImmediatelyAsVideo", false);
+
+            set => configurationService.Set("DownloadImmediatelyAsVideo", value);
+        }
+
+        public bool PreviousExportDescription
+        {
+            get => configurationService.Get("ExportDescription", false);
+
+            set => configurationService.Set("ExportDescription", value);
+        }
+
+        public bool PreviousExportM3U
+        {
+            get => configurationService.Get("ExportM3U", false);
+
+            set => configurationService.Set("ExportM3U", value);
+        }
+
+        public MediaFileType PreviousFullFileType
+        {
+            get => (MediaFileType)configurationService.Get("FullFileType", (int)MediaFileType.MP4);
+
+            set => configurationService.Set("FullFileType", (int)value);
+        }
+
+        public bool PreviousNumberTitles
+        {
+            get => configurationService.Get("NumberTitles", false);
+
+            set => configurationService.Set("NumberTitles", value);
+        }
+
+        public string PreviousPostProcessorArgumentName
+        {
+            get => configurationService.Get("PostProcessorArgumentName", string.Empty);
+
+            set => configurationService.Set("PostProcessorArgumentName", value);
+        }
+
+        public bool PreviousReverseDownloadOrder
+        {
+            get => configurationService.Get("ReverseDownloadOrder", false);
+
+            set => configurationService.Set("ReverseDownloadOrder", value);
+        }
+
+        public string PreviousSaveFolder
+        {
+            get
+            {
+                var saveFolder = configurationService.Get("SaveFolder", UserDirectories.Downloads);
+                return !Directory.Exists(saveFolder) ? UserDirectories.Downloads : saveFolder;
+            }
+
+            set => configurationService.Set("SaveFolder", value);
+        }
+
+        public bool PreviousSplitChapters
+        {
+            get => configurationService.Get("SplitChapters", false);
+
+            set => configurationService.Set("SplitChapters", value);
+        }
+
+        public IReadOnlyList<SubtitleLanguage> PreviousSubtitleLanguages
+        {
+            get => configurationService.Get("SubtitleLanguages", [], ApplicationJsonContext.Default.ListSubtitleLanguage);
+
+            set => configurationService.Set("SubtitleLanguages", value, ApplicationJsonContext.Default.ListSubtitleLanguage);
+        }
+
+        public Dictionary<MediaFileType, string> PreviousVideoFormatIds
+        {
+            get => configurationService.Get("VideoFormatIds", new()
+            {
+                { MediaFileType.Video, Format.BestVideo.Id },
+                { MediaFileType.MP4, Format.BestVideo.Id },
+                { MediaFileType.MKV, Format.BestVideo.Id },
+                { MediaFileType.WEBM, Format.BestVideo.Id },
+                { MediaFileType.MOV, Format.BestVideo.Id },
+                { MediaFileType.AVI, Format.BestVideo.Id },
+                { MediaFileType.Audio, Format.NoneVideo.Id },
+                { MediaFileType.MP3, Format.NoneVideo.Id },
+                { MediaFileType.M4A, Format.NoneVideo.Id },
+                { MediaFileType.OPUS, Format.NoneVideo.Id },
+                { MediaFileType.FLAC, Format.NoneVideo.Id },
+                { MediaFileType.WAV, Format.NoneVideo.Id },
+                { MediaFileType.OGG, Format.NoneVideo.Id },
+            }, ApplicationJsonContext.Default.DictionaryMediaFileTypeString);
+
+            set => configurationService.Set("VideoFormatIds", value, ApplicationJsonContext.Default.DictionaryMediaFileTypeString);
+        }
+
+        public MediaFileType PreviousVideoOnlyFileType
+        {
+            get => (MediaFileType)configurationService.Get("VideoOnlyFileType", (int)MediaFileType.MP4);
+
+            set => configurationService.Set("VideoOnlyFileType", (int)value);
+        }
+
+        public VideoResolution PreviousVideoResolution
+        {
+            get => configurationService.Get("VideoResolution", VideoResolution.Best, ApplicationJsonContext.Default.VideoResolution);
+
+            set => configurationService.Set("VideoResolution", value, ApplicationJsonContext.Default.VideoResolution);
+        }
+
         public List<PostProcessorArgument> PostprocessingArguments
         {
-            get => configurationService.Get("PostprocessingArguments", new List<PostProcessorArgument>());
+            get => configurationService.Get("PostprocessingArguments", [], ApplicationJsonContext.Default.ListPostProcessorArgument);
 
-            set => configurationService.Set("PostprocessingArguments", value);
+            set => configurationService.Set("PostprocessingArguments", value, ApplicationJsonContext.Default.ListPostProcessorArgument);
         }
 
         public AudioCodec PreferredAudioCodec

@@ -24,10 +24,8 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
     private static readonly string YtdlpAssetName;
     private static readonly string[] PartialDownloadFilePatterns;
 
-    private readonly IConfigurationService _configurationService;
     private readonly IDenoExecutableService _denoExecutableService;
     private readonly IUpdaterService _previewUpdaterService;
-    private AppVersion? _latestPreviewVersion;
 
     static YtdlpExecutableService()
     {
@@ -60,15 +58,12 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
 
     public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, ILogger<UpdaterService> updaterLogger, IConfigurationService configurationService, IDenoExecutableService denoExecutableService, IHttpClientFactory httpClientFactory) : base(logger, "yt-dlp", YtdlpBundledVersion, YtdlpAssetName, configurationService, new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp", httpClientFactory.CreateClient()))
     {
-        _configurationService = configurationService;
         _denoExecutableService = denoExecutableService;
         _previewUpdaterService = new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp-nightly-builds", httpClientFactory.CreateClient());
-        _latestPreviewVersion = null;
     }
 
     public async Task<Process> CreateDiscoveryProcessAsync(Uri url, Credential? credential)
     {
-        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
         var arguments = new List<string>(23)
         {
@@ -90,15 +85,15 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             arguments.Add("--plugin-dir");
             arguments.Add(pluginsDir);
         }
-        if (downloaderOptions.LimitCharacters)
+        if (_configurationService.LimitCharacters)
         {
             arguments.Add("--windows-filenames");
         }
-        if (!string.IsNullOrEmpty(downloaderOptions.ProxyUrl))
+        if (!string.IsNullOrEmpty(_configurationService.ProxyUrl))
         {
             _logger.LogInformation("Using proxy...");
             arguments.Add("--proxy");
-            arguments.Add(downloaderOptions.ProxyUrl);
+            arguments.Add(_configurationService.ProxyUrl);
         }
         if (credential is not null)
         {
@@ -117,11 +112,11 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 arguments.Add(credential.Password);
             }
         }
-        if (downloaderOptions.CookiesBrowser != Browser.None)
+        if (_configurationService.CookiesBrowser != Browser.None)
         {
-            _logger.LogInformation($"Using cookies from browser: {downloaderOptions.CookiesBrowser}");
+            _logger.LogInformation($"Using cookies from browser: {_configurationService.CookiesBrowser}");
             arguments.Add("--cookies-from-browser");
-            arguments.Add(downloaderOptions.CookiesBrowser switch
+            arguments.Add(_configurationService.CookiesBrowser switch
             {
                 Browser.Brave => "brave",
                 Browser.Chrome => "chrome",
@@ -134,13 +129,13 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 _ => string.Empty
             });
         }
-        else if (File.Exists(downloaderOptions.CookiesPath))
+        else if (File.Exists(_configurationService.CookiesPath))
         {
             _logger.LogInformation($"Using cookies file...");
             arguments.Add("--cookies");
-            arguments.Add(downloaderOptions.CookiesPath);
+            arguments.Add(_configurationService.CookiesPath);
         }
-        arguments.AddRange(downloaderOptions.YtdlpDiscoveryArgs.SplitCommandLine());
+        arguments.AddRange(_configurationService.YtdlpDiscoveryArgs.SplitCommandLine());
         return new Process()
         {
             StartInfo = new ProcessStartInfo(ExecutablePath ?? "yt-dlp", arguments)
@@ -155,8 +150,6 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
 
     public async Task<Process> CreateDownloadProcessAsync(DownloadOptions downloadOptions)
     {
-        var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var downloaderOptions = config.DownloaderOptions;
         var pluginsDir = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "plugins");
         Directory.CreateDirectory(downloadOptions.SaveFolder);
         var arguments = new List<string>(128)
@@ -199,13 +192,13 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         {
             arguments.Add("--plugin-dir");
             arguments.Add(pluginsDir);
-            if (downloaderOptions.PreferredSubtitleFormat == SubtitleFormat.SRT)
+            if (_configurationService.PreferredSubtitleFormat == SubtitleFormat.SRT)
             {
                 arguments.Add("--use-postprocessor");
                 arguments.Add("srt_fix");
             }
         }
-        if (downloaderOptions.OverwriteExistingFiles && !HasPartialDownloadFiles(downloadOptions.SaveFolder, downloadOptions.SaveFilename))
+        if (_configurationService.OverwriteExistingFiles && !HasPartialDownloadFiles(downloadOptions.SaveFolder, downloadOptions.SaveFilename))
         {
             arguments.Add("--force-overwrites");
         }
@@ -213,19 +206,19 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         {
             arguments.Add("--no-overwrites");
         }
-        if (downloaderOptions.LimitCharacters)
+        if (_configurationService.LimitCharacters)
         {
             arguments.Add("--windows-filenames");
         }
         var formatSort = downloadOptions.TimeFrame is not null ? "proto:https" : string.Empty;
-        if (downloaderOptions.PreferredVideoCodec != VideoCodec.Any)
+        if (_configurationService.PreferredVideoCodec != VideoCodec.Any)
         {
             if (!string.IsNullOrEmpty(formatSort))
             {
                 formatSort += ',';
             }
             formatSort += "+vcodec:";
-            formatSort += downloaderOptions.PreferredVideoCodec switch
+            formatSort += _configurationService.PreferredVideoCodec switch
             {
                 VideoCodec.VP9 => "vp9",
                 VideoCodec.AV01 => "av01",
@@ -235,14 +228,14 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             };
             formatSort += ",res";
         }
-        if (downloaderOptions.PreferredAudioCodec != AudioCodec.Any)
+        if (_configurationService.PreferredAudioCodec != AudioCodec.Any)
         {
             if (!string.IsNullOrEmpty(formatSort))
             {
                 formatSort += ',';
             }
             formatSort += "+acodec:";
-            formatSort += downloaderOptions.PreferredAudioCodec switch
+            formatSort += _configurationService.PreferredAudioCodec switch
             {
                 AudioCodec.FLAC => "flac",
                 AudioCodec.WAV => "wav",
@@ -254,14 +247,14 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             };
             formatSort += ",quality";
         }
-        if (downloaderOptions.PreferredFrameRate != FrameRate.Any)
+        if (_configurationService.PreferredFrameRate != FrameRate.Any)
         {
             if (!string.IsNullOrEmpty(formatSort))
             {
                 formatSort += ',';
             }
             formatSort += "+fps:";
-            formatSort += downloaderOptions.PreferredFrameRate switch
+            formatSort += _configurationService.PreferredFrameRate switch
             {
                 FrameRate.Fps24 => "24",
                 FrameRate.Fps30 => "30",
@@ -270,7 +263,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             };
 
         }
-        if (downloadOptions.FileType.ShouldRecode && downloaderOptions.PreferredVideoCodec == VideoCodec.Any)
+        if (downloadOptions.FileType.ShouldRecode && _configurationService.PreferredVideoCodec == VideoCodec.Any)
         {
             if (!string.IsNullOrEmpty(formatSort))
             {
@@ -287,29 +280,29 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             arguments.Add("--format-sort");
             arguments.Add(formatSort);
         }
-        if (!downloaderOptions.UsePartFiles)
+        if (!_configurationService.UsePartFiles)
         {
             arguments.Add("--no-part");
         }
-        if (downloaderOptions.YouTubeSponsorBlock)
+        if (_configurationService.YouTubeSponsorBlock)
         {
             arguments.Add("--sponsorblock-remove");
             arguments.Add("default");
         }
-        if (downloaderOptions.SpeedLimit.HasValue && downloadOptions.TimeFrame is null)
+        if (_configurationService.SpeedLimit.HasValue && downloadOptions.TimeFrame is null)
         {
             arguments.Add("--limit-rate");
-            arguments.Add($"{downloaderOptions.SpeedLimit.Value}K");
+            arguments.Add($"{_configurationService.SpeedLimit!.Value}K");
         }
-        if (!string.IsNullOrEmpty(downloaderOptions.ProxyUrl))
+        if (!string.IsNullOrEmpty(_configurationService.ProxyUrl))
         {
             arguments.Add("--proxy");
-            arguments.Add(downloaderOptions.ProxyUrl);
+            arguments.Add(_configurationService.ProxyUrl);
         }
-        if (downloaderOptions.CookiesBrowser != Browser.None)
+        if (_configurationService.CookiesBrowser != Browser.None)
         {
             arguments.Add("--cookies-from-browser");
-            arguments.Add(downloaderOptions.CookiesBrowser switch
+            arguments.Add(_configurationService.CookiesBrowser switch
             {
                 Browser.Brave => "brave",
                 Browser.Chrome => "chrome",
@@ -322,17 +315,17 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 _ => string.Empty
             });
         }
-        else if (File.Exists(downloaderOptions.CookiesPath))
+        else if (File.Exists(_configurationService.CookiesPath))
         {
             arguments.Add("--cookies");
-            arguments.Add(downloaderOptions.CookiesPath);
+            arguments.Add(_configurationService.CookiesPath);
         }
-        if (downloaderOptions.TranslateMetadataAndChapters)
+        if (_configurationService.TranslateMetadataAndChapters)
         {
-            if (config.TranslationLanguage.IsSupportedYouTubeLanguage)
+            if (_configurationService.TranslationLanguage.IsSupportedYouTubeLanguage)
             {
                 arguments.Add("--extractor-args");
-                arguments.Add($"youtube:lang={config.TranslationLanguage}");
+                arguments.Add($"youtube:lang={_configurationService.TranslationLanguage}");
             }
             else if (CultureInfo.CurrentCulture.Name.IsSupportedYouTubeLanguage)
             {
@@ -340,7 +333,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 arguments.Add($"youtube:lang={CultureInfo.CurrentCulture.Name}");
             }
         }
-        if (downloaderOptions.EmbedMetadata)
+        if (_configurationService.EmbedMetadata)
         {
             arguments.Add("--embed-metadata");
             if (downloadOptions.PlaylistPosition != -1)
@@ -349,7 +342,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 arguments.Add($"Metadata+ffmpeg:-metadata track={downloadOptions.PlaylistPosition}");
             }
         }
-        if (downloaderOptions.EmbedThumbnails)
+        if (_configurationService.EmbedThumbnails)
         {
             if (downloadOptions.FileType.SupportsThumbnails)
             {
@@ -361,7 +354,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             }
             arguments.Add("--convert-thumbnails");
             arguments.Add("jpg");
-            if (downloaderOptions.CropAudioThumbnails && downloadOptions.FileType.IsAudio)
+            if (_configurationService.CropAudioThumbnails && downloadOptions.FileType.IsAudio)
             {
                 arguments.Add("--exec");
                 arguments.Add($"before_dl:\"{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"}\" -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" \"%(thumbnails.-1.filepath)s.tmp.jpg\"");
@@ -381,16 +374,16 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 }
             }
         }
-        if (downloaderOptions.EmbedChapters)
+        if (_configurationService.EmbedChapters)
         {
             arguments.Add("--embed-chapters");
         }
-        if (downloaderOptions.UseAria)
+        if (_configurationService.UseAria)
         {
             arguments.Add("--downloader");
             arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");
             arguments.Add("--downloader-args");
-            arguments.Add($"aria2c:--summary-interval={(OperatingSystem.IsWindows() ? "0" : "1")} --enable-color=false -x {downloaderOptions.AriaMaxConnectionsPerServer} -k {downloaderOptions.AriaMinSplitSize}M");
+            arguments.Add($"aria2c:--summary-interval={(OperatingSystem.IsWindows() ? "0" : "1")} --enable-color=false -x {_configurationService.AriaMaxConnectionsPerServer} -k {_configurationService.AriaMinSplitSize}M");
             arguments.Add("--concurrent-fragments");
             arguments.Add("8");
         }
@@ -463,7 +456,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 _ => $"bestvideo*[height={downloadOptions.VideoResolution.Height}]/bestvideo*[height<={downloadOptions.VideoResolution.Height}]/bestvideo*"
             };
         }
-        var avoidOpus = OperatingSystem.IsWindows() && downloadOptions.Url.Host.Contains("youtube") && downloaderOptions.PreferredAudioCodec == AudioCodec.Any && downloadOptions.FileType != MediaFileType.WEBM;
+        var avoidOpus = OperatingSystem.IsWindows() && downloadOptions.Url.Host.Contains("youtube") && _configurationService.PreferredAudioCodec == AudioCodec.Any && downloadOptions.FileType != MediaFileType.WEBM;
         if (downloadOptions.AudioFormat is not null && downloadOptions.AudioFormat != Format.NoneAudio)
         {
             if (!string.IsNullOrEmpty(formatString))
@@ -519,12 +512,12 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 arguments.Add("30");
             }
             arguments.Add("--write-subs");
-            if (downloaderOptions.IncludeAutoGeneratedSubtitles)
+            if (_configurationService.IncludeAutoGeneratedSubtitles)
             {
                 arguments.Add("--write-auto-subs");
             }
             arguments.Add("--sub-format");
-            arguments.Add(downloaderOptions.PreferredSubtitleFormat switch
+            arguments.Add(_configurationService.PreferredSubtitleFormat switch
             {
                 SubtitleFormat.SRT => "srt/best",
                 SubtitleFormat.ASS => "ass/best",
@@ -532,14 +525,14 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 _ => "vtt/best"
             });
             arguments.Add("--convert-subs");
-            arguments.Add(downloaderOptions.PreferredSubtitleFormat switch
+            arguments.Add(_configurationService.PreferredSubtitleFormat switch
             {
                 SubtitleFormat.SRT => "srt",
                 SubtitleFormat.ASS => "ass",
                 SubtitleFormat.LRC => "lrc",
                 _ => "vtt"
             });
-            if (downloaderOptions.EmbedSubtitles && downloadOptions.FileType.GetSupportsSubtitleFormat(downloaderOptions.PreferredSubtitleFormat))
+            if (_configurationService.EmbedSubtitles && downloadOptions.FileType.GetSupportsSubtitleFormat(_configurationService.PreferredSubtitleFormat))
             {
                 arguments.Add("--embed-subs");
                 arguments.Add("--compat-options");
@@ -561,7 +554,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             arguments.Add("--postprocessor-args");
             if (downloadOptions.PostProcessorArgument.Executable == Executable.FFmpeg && downloadOptions.PostProcessorArgument.PostProcessor == PostProcessor.None)
             {
-                arguments.Add($"{downloadOptions.PostProcessorArgument.ToString()} -threads {downloaderOptions.PostprocessingThreads}");
+                arguments.Add($"{downloadOptions.PostProcessorArgument.ToString()} -threads {_configurationService.PostprocessingThreads}");
             }
             else
             {
@@ -571,7 +564,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         else
         {
             arguments.Add("--postprocessor-args");
-            arguments.Add($"ffmpeg:-threads {downloaderOptions.PostprocessingThreads}");
+            arguments.Add($"ffmpeg:-threads {_configurationService.PostprocessingThreads}");
         }
         if (downloadOptions.TimeFrame is not null)
         {
@@ -579,7 +572,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             arguments.Add($"*{downloadOptions.TimeFrame.ToString()}");
             arguments.Add("--force-keyframes-at-cuts");
         }
-        arguments.AddRange(downloaderOptions.YtdlpDownloadArgs.SplitCommandLine());
+        arguments.AddRange(_configurationService.YtdlpDownloadArgs.SplitCommandLine());
         return new Process()
         {
             EnableRaisingEvents = true,
