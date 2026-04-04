@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
@@ -15,8 +16,8 @@ namespace Nickvision.Parabolic.Shared.Services;
 public class DownloadService : IDisposable, IDownloadService
 {
     private readonly ILogger<DownloadService> _logger;
+    private readonly IConfigurationService _configurationService;
     private readonly IHistoryService _historyService;
-    private readonly IJsonFileService _jsonFileService;
     private readonly IRecoveryService _recoveryService;
     private readonly ITranslationService _translationService;
     private readonly IYtdlpExecutableService _ytdlpService;
@@ -36,11 +37,11 @@ public class DownloadService : IDisposable, IDownloadService
     public int QueuedCount => _queued.Count;
     public int CompletedCount => _completed.Count;
 
-    public DownloadService(ILogger<DownloadService> logger, IHistoryService historyService, IJsonFileService jsonFileService, IRecoveryService recoveryService, ITranslationService translationService, IYtdlpExecutableService ytdlpService)
+    public DownloadService(ILogger<DownloadService> logger, IConfigurationService configurationService, IHistoryService historyService, IRecoveryService recoveryService, ITranslationService translationService, IYtdlpExecutableService ytdlpService)
     {
         _logger = logger;
+        _configurationService = configurationService;
         _historyService = historyService;
-        _jsonFileService = jsonFileService;
         _recoveryService = recoveryService;
         _translationService = translationService;
         _ytdlpService = ytdlpService;
@@ -56,8 +57,7 @@ public class DownloadService : IDisposable, IDownloadService
 
     public async Task AddAsync(DownloadOptions options, bool excludeFromHistory)
     {
-        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
-        var download = new Download(_jsonFileService, _translationService, _ytdlpService, options);
+        var download = new Download(_configurationService, _translationService, _ytdlpService, options);
         _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(options, ApplicationJsonContext.Default.DownloadOptions)}");
         download.Completed += Download_Completed;
         download.ProgressChanged += Download_ProgressChanged;
@@ -70,9 +70,9 @@ public class DownloadService : IDisposable, IDownloadService
                 Path = download.FilePath
             });
         }
-        if (_downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
+        if (_downloading.Count < _configurationService.MaxNumberOfActiveDownloads)
         {
-            _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
+            _logger.LogInformation($"Starting download ({download.Id}).");
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
             download.Start();
@@ -87,14 +87,12 @@ public class DownloadService : IDisposable, IDownloadService
 
     public async Task AddAsync(IReadOnlyList<DownloadOptions> options, bool excludeFromHistory)
     {
-        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
-        var ytdlpExecutablePath = _ytdlpService.ExecutablePath ?? "yt-dlp";
         var recoverableDownloads = new List<RecoverableDownload>();
         var historicDownloads = new List<HistoricDownload>();
         var downloadsToStart = new List<Download>();
         foreach (var option in options)
         {
-            var download = new Download(_jsonFileService, _translationService, _ytdlpService, option);
+            var download = new Download(_configurationService, _translationService, _ytdlpService, option);
             _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(option, ApplicationJsonContext.Default.DownloadOptions)}");
             download.Completed += Download_Completed;
             download.ProgressChanged += Download_ProgressChanged;
@@ -107,9 +105,9 @@ public class DownloadService : IDisposable, IDownloadService
                     Path = download.FilePath
                 });
             }
-            if (_downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
+            if (_downloading.Count < _configurationService.MaxNumberOfActiveDownloads)
             {
-                _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
+                _logger.LogInformation($"Starting download ({download.Id}).");
                 _downloading.Add(download.Id, download);
                 DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
                 downloadsToStart.Add(download);
@@ -328,7 +326,6 @@ public class DownloadService : IDisposable, IDownloadService
 
     private async void Download_Completed(object? sender, DownloadCompletedEventArgs e)
     {
-        var downloaderOptions = (await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key)).DownloaderOptions;
         if (!_downloading.TryGetValue(e.Id, out var download) || download.Status == DownloadStatus.Stopped)
         {
             return;
@@ -349,12 +346,12 @@ public class DownloadService : IDisposable, IDownloadService
             _logger.LogInformation($"Download stopped ({e.Id}): {download.Log}");
         }
         DownloadCompleted?.Invoke(this, e);
-        if (_queued.Count > 0 && _downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
+        if (_queued.Count > 0 && _downloading.Count < _configurationService.MaxNumberOfActiveDownloads)
         {
             var firstDownload = _queued.First().Value;
             _downloading.Add(firstDownload.Id, firstDownload);
             _queued.Remove(firstDownload.Id);
-            _logger.LogInformation($"Starting download from queue ({firstDownload.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
+            _logger.LogInformation($"Starting download from queue ({firstDownload.Id}).");
             DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
             firstDownload.Start();
         }

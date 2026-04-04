@@ -9,6 +9,7 @@ namespace Nickvision.Parabolic.Shared.Helpers;
 [JsonSourceGenerationOptions(DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull, WriteIndented = true)]
 [JsonSerializable(typeof(AppVersion))]
 [JsonSerializable(typeof(Dictionary<MediaFileType, string>))]
+[JsonSerializable(typeof(Dictionary<string, string>))]
 [JsonSerializable(typeof(DownloadOptions))]
 [JsonSerializable(typeof(JsonElement))]
 [JsonSerializable(typeof(List<PostProcessorArgument>))]

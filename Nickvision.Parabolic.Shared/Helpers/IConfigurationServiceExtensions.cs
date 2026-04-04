@@ -4,6 +4,9 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
@@ -258,7 +261,7 @@ public static class IConfigurationServiceExtensions
         {
             get => configurationService.Get("SubtitleLanguages", [], ApplicationJsonContext.Default.ListSubtitleLanguage);
 
-            set => configurationService.Set("SubtitleLanguages", value, ApplicationJsonContext.Default.ListSubtitleLanguage);
+            set => configurationService.Set("SubtitleLanguages", value.ToList(), ApplicationJsonContext.Default.ListSubtitleLanguage);
         }
 
         public Dictionary<MediaFileType, string> PreviousVideoFormatIds
@@ -440,5 +443,7 @@ public static class IConfigurationServiceExtensions
 
             set => configurationService.Set("YtdlpDownloadArgs", value);
         }
+
+        public async Task<string> ToStringAsync() => JsonSerializer.Serialize(await configurationService.GetAllRawAsync(), ApplicationJsonContext.Default.DictionaryStringString);
     }
 }

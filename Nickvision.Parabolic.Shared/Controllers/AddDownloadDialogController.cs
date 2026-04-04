@@ -106,7 +106,7 @@ public class AddDownloadDialogController
             await _downloadService.AddAsync(options, excludeFromHistory);
             if (exportM3U)
             {
-                await m3uFile.WriteAsync(Path.Combine(saveFolder, context.Title.SanitizeForFilename(downloader.LimitCharacters), $"{context.Title.SanitizeForFilename(downloader.LimitCharacters)}.m3u"));
+                await m3uFile.WriteAsync(Path.Combine(saveFolder, context.Title.SanitizeForFilename(_configurationService.LimitCharacters), $"{context.Title.SanitizeForFilename(_configurationService.LimitCharacters)}.m3u"));
             }
         }
         catch (Exception e)

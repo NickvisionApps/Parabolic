@@ -91,7 +91,8 @@ public class RecoveryService : IRecoveryService
     public async Task<bool> ClearAsync()
     {
         _logger.LogInformation("Clearing all recoverable downloads...");
-        var res = await _databaseService.DropTableAsync(TableName);
+        await EnsureTableAsync();
+        var res = await _databaseService.ClearTableAsync(TableName);
         if (res)
         {
             _logger.LogInformation("Cleared all recoverable downloads.");

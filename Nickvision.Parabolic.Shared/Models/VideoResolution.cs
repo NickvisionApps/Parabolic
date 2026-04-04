@@ -17,6 +17,11 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
         Worst = new VideoResolution(-1, -1);
     }
 
+    public VideoResolution() : this(int.MaxValue, int.MaxValue)
+    {
+
+    }
+
     public VideoResolution(int width, int height)
     {
         Width = width;
