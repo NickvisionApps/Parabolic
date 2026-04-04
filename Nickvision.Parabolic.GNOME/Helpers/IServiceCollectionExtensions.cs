@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Nickvision.Parabolic.GNOME.Controls;
 using Nickvision.Parabolic.GNOME.Views;
+
 namespace Nickvision.Parabolic.GNOME.Helpers;
 
 public static class IServiceCollectionExtensions

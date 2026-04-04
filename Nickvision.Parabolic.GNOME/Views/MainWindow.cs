@@ -119,7 +119,7 @@ public class MainWindow : Adw.ApplicationWindow
         });
         eventsService.DownloadRequested += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
-            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(e.Url, this);
+            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(e.Url, this).GetAwaiter().GetResult();
             return false;
         });
         _downloadsToggleGroup!.OnNotify += DownloadToggleGroup_OnNotify;
@@ -229,7 +229,7 @@ public class MainWindow : Adw.ApplicationWindow
         }
         if (_controller.UrlFromArgs is not null)
         {
-            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(_controller.UrlFromArgs, this);
+            await _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(_controller.UrlFromArgs, this);
         }
         await updatesTask;
         _shown = true;
@@ -453,7 +453,7 @@ public class MainWindow : Adw.ApplicationWindow
 
     private async void AddDownload(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(this);
 
-    private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<KeyringDialog>().Present(this);
+    private async void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<KeyringDialog>().Present(this);
 
     private async void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<HistoryDialog>().Present(this);
 

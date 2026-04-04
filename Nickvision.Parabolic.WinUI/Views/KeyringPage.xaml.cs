@@ -6,6 +6,8 @@ using Nickvision.Parabolic.Shared.Controllers;
 using Nickvision.Parabolic.WinUI.Helpers;
 using System;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.WinUI.Views;
 
@@ -45,11 +47,12 @@ public sealed partial class KeyringPage : Page
         TxtCredentialPassword.PlaceholderText = _translationService._("Enter password here");
     }
 
-    private void Page_Loaded(object sender, RoutedEventArgs e)
+    private async void Page_Loaded(object sender, RoutedEventArgs e)
     {
+        var credentials = await _controller.GetAllAsync();
         TxtSearch.Text = string.Empty;
-        ListCredentials.ItemsSource = _controller.Credentials.ToBindableCredentialSelectionItems();
-        ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+        ListCredentials.ItemsSource = credentials.ToBindableCredentialSelectionItems();
+        ViewStack.SelectedIndex = credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
     }
 
     private async void Add(object sender, RoutedEventArgs e)
@@ -83,7 +86,7 @@ public sealed partial class KeyringPage : Page
                 }
             }
         } while (error is not null);
-        ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+        ViewStack.SelectedIndex = (await _controller.GetAllAsync()).Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
     }
 
     private async void Edit(object sender, RoutedEventArgs e)
@@ -136,13 +139,14 @@ public sealed partial class KeyringPage : Page
         if ((await confirmDialog.ShowAsync()) == ContentDialogResult.Primary)
         {
             await _controller.RemoveAsync(selected);
-            ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+            ViewStack.SelectedIndex = (await _controller.GetAllAsync()).Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
         }
     }
 
-    private void TxtSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    private async void TxtSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
     {
-        if (_controller.Credentials.Count == 0)
+        var credentials = await _controller.GetAllAsync();
+        if (credentials.Count == 0)
         {
             return;
         }
@@ -150,12 +154,12 @@ public sealed partial class KeyringPage : Page
         {
             if (string.IsNullOrEmpty(sender.Text))
             {
-                ListCredentials.ItemsSource = _controller.Credentials.ToBindableCredentialSelectionItems();
-                ViewStack.SelectedIndex = _controller.Credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
+                ListCredentials.ItemsSource = credentials.ToBindableCredentialSelectionItems();
+                ViewStack.SelectedIndex = credentials.Count == 0 ? (int)Pages.None : (int)Pages.Keyring;
             }
             else
             {
-                var filtered = _controller.Credentials.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower()) || x.Value.Username.ToLower().Contains(sender.Text.ToLower()) || x.Value.Url.ToString().ToLower().Contains(sender.Text.ToLower()));
+                var filtered = credentials.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower()) || x.Value.Username.ToLower().Contains(sender.Text.ToLower()) || x.Value.Url.ToString().ToLower().Contains(sender.Text.ToLower()));
                 ListCredentials.ItemsSource = filtered.ToBindableCredentialSelectionItems();
                 ViewStack.SelectedIndex = filtered.Any() ? (int)Pages.Keyring : (int)Pages.NoneSearch;
             }

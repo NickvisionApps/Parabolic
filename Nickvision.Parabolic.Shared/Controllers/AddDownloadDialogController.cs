@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Keyring;
 using Nickvision.Desktop.Notifications;
@@ -29,6 +30,22 @@ public class AddDownloadDialogController
     private readonly ITranslationService _translationService;
     private readonly Dictionary<int, DiscoveryContext> _discoveryContextMap;
 
+    public double PreviousAudioBitrate => _configurationService.PreviousAudioBitrate;
+    public Dictionary<MediaFileType, string> PreviousAudioFormatIds => _configurationService.PreviousAudioFormatIds;
+    public MediaFileType PreviousAudioOnlyFileType => _configurationService.PreviousAudioOnlyFileType;
+    public bool PreviousExportDescription => _configurationService.PreviousExportDescription;
+    public bool PreviousExportM3U => _configurationService.PreviousExportM3U;
+    public MediaFileType PreviousFullFileType => _configurationService.PreviousFullFileType;
+    public bool PreviousNumberTitles => _configurationService.PreviousNumberTitles;
+    public string PreviousPostProcessorArgumentName => _configurationService.PreviousPostProcessorArgumentName;
+    public bool PreviousReverseDownloadOrder => _configurationService.PreviousReverseDownloadOrder;
+    public string PreviousSaveFolder => _configurationService.PreviousSaveFolder;
+    public bool PreviousSplitChapters => _configurationService.PreviousSplitChapters;
+    public IReadOnlyList<SubtitleLanguage> PreviousSubtitleLanguages => _configurationService.PreviousSubtitleLanguages;
+    public Dictionary<MediaFileType, string> PreviousVideoFormatIds => _configurationService.PreviousVideoFormatIds;
+    public MediaFileType PreviousVideoOnlyFileType => _configurationService.PreviousVideoOnlyFileType;
+    public VideoResolution PreviousVideoResolution => _configurationService.PreviousVideoResolution;
+
     public AddDownloadDialogController(ILogger<AddDownloadDialogController> logger, IConfigurationService configurationService, IDiscoveryService discoveryService, IDownloadService downloadService, IKeyringService keyringService, INotificationService notificationService, IThumbnailService thumbnailService, ITranslationService translationService)
     {
         _logger = logger;
@@ -40,6 +57,21 @@ public class AddDownloadDialogController
         _thumbnailService = thumbnailService;
         _translationService = translationService;
         _discoveryContextMap = new Dictionary<int, DiscoveryContext>();
+    }
+
+
+    public bool PreviousDownloadImmediatelyAsAudio
+    {
+        get => _configurationService.PreviousDownloadImmediatelyAsAudio;
+
+        set => _configurationService.PreviousDownloadImmediatelyAsAudio = value;
+    }
+
+    public bool PreviousDownloadImmediatelyAsVideo
+    {
+        get => _configurationService.PreviousDownloadImmediatelyAsVideo;
+
+        set => _configurationService.PreviousDownloadImmediatelyAsVideo = value;
     }
 
     public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)

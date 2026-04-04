@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -49,22 +50,27 @@ public class KeyringDialog : Adw.PreferencesDialog
         _credentialRows = new List<Adw.ActionRow>();
         _credentialEditMode = EditMode.None;
         _builder.Connect(this);
-        // Load
-        Credentials_CollectionChanged(null, null);
         // Events
-        _controller.Credentials.CollectionChanged += Credentials_CollectionChanged;
         _addButton!.OnClicked += AddButton_OnClicked;
         _editConfirmCredentialButton!.OnClicked += EditConfirmCredentialButton_OnClicked;
     }
 
-    private void Credentials_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    public new async Task Present(Gtk.Widget? parent)
+    {
+        base.Present(parent);
+        Credentials_CollectionChanged(null, null);
+        (await _controller.GetAllAsync()).CollectionChanged += Credentials_CollectionChanged;
+    }
+
+    private async void Credentials_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
     {
         foreach (var row in _credentialRows)
         {
             _credentialsGroup!.Remove(row);
         }
         _credentialRows.Clear();
-        foreach (var credential in _controller.Credentials)
+        var credentials = await _controller.GetAllAsync();
+        foreach (var credential in credentials)
         {
             var editButton = Gtk.Button.NewFromIconName("document-edit-symbolic");
             editButton.Valign = Gtk.Align.Center;
@@ -85,7 +91,7 @@ public class KeyringDialog : Adw.PreferencesDialog
             _credentialRows.Add(row);
             _credentialsGroup!.Add(row);
         }
-        if (_controller.Credentials.Count == 0)
+        if (credentials.Count == 0)
         {
             var row = Adw.ActionRow.New();
             row.Title = _translationService._("No Credentials");

@@ -49,6 +49,12 @@ public sealed partial class MainWindow : Window
         _downloadRows = new Dictionary<int, DownloadRow>();
         _notificationClickHandler = null;
         // Config
+        AppWindow.TitleBar.PreferredTheme = _controller.Theme switch
+        {
+            Theme.Light => TitleBarTheme.Light,
+            Theme.Dark => TitleBarTheme.Dark,
+            _ => TitleBarTheme.UseDefaultAppMode
+        };
         MainGrid.RequestedTheme = _controller.Theme switch
         {
             Theme.Light => ElementTheme.Light,
@@ -63,7 +69,9 @@ public sealed partial class MainWindow : Window
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
         // Events
         AppWindow.Closing += Window_Closing;
-        eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
+        eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => App_AppNotificationSent(sender, e));
+        eventsService.ConfigurationSaved += App_ConfigurationSaved;
+        eventsService.DatabasePasswordRequired += App_DatabasePasswordRequired;
         eventsService.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
         eventsService.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
         eventsService.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
@@ -72,7 +80,6 @@ public sealed partial class MainWindow : Window
         eventsService.DownloadStartedFromQueue += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStartedFromQueue(sender, e));
         eventsService.DownloadRetired += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadRetired(sender, e));
         eventsService.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
-        eventsService.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
         AppWindow.Title = _appInfo.ShortName;
         TitleBar.Title = _appInfo.ShortName;
@@ -118,7 +125,7 @@ public sealed partial class MainWindow : Window
         DownloadsFilter.SelectedIndex = 0;
         MenuCheckForUpdates.IsEnabled = false;
         var updatesTask = _controller.CheckForUpdatesAsync(false);
-        if (_controller.ShowDislcaimerOnStartup)
+        if (_controller.ShowDisclaimerOnStartup)
         {
             var checkBox = new CheckBox()
             {
@@ -149,7 +156,7 @@ public sealed partial class MainWindow : Window
             await disclaimerDialog.ShowAsync();
             if (checkBox.IsChecked ?? false)
             {
-                _controller.ShowDislcaimerOnStartup = false;
+                _controller.ShowDisclaimerOnStartup = false;
             }
         }
         if (_controller.RecoverableDownloadsCount > 0)
@@ -243,7 +250,7 @@ public sealed partial class MainWindow : Window
 
     private void NavItem_Tapped(object sender, TappedRoutedEventArgs e) => FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
 
-    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
+    private void App_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         if (_notificationClickHandler is not null)
         {
@@ -306,6 +313,59 @@ public sealed partial class MainWindow : Window
         }
         BtnInfoBar.Visibility = _notificationClickHandler is not null ? Visibility.Visible : Visibility.Collapsed;
         InfoBar.IsOpen = true;
+    }
+
+    private void App_ConfigurationSaved(object? sender, ConfigurationSavedEventArgs args)
+    {
+        if (args.ChangedPropertyName == "Theme")
+        {
+            AppWindow.TitleBar.PreferredTheme = _controller.Theme switch
+            {
+                Theme.Light => TitleBarTheme.Light,
+                Theme.Dark => TitleBarTheme.Dark,
+                _ => TitleBarTheme.UseDefaultAppMode
+            };
+            MainGrid.RequestedTheme = _controller.Theme switch
+            {
+                Theme.Light => ElementTheme.Light,
+                Theme.Dark => ElementTheme.Dark,
+                _ => ElementTheme.Default
+            };
+        }
+    }
+
+    private async void App_DatabasePasswordRequired(object? sender, PasswordRequiredEventArgs args)
+    {
+        var passwordBox = new PasswordBox()
+        {
+            PlaceholderText = _translationService._("Enter password here")
+        };
+        var stackPanel = new StackPanel()
+        {
+            Orientation = Orientation.Vertical,
+            Spacing = 12
+        };
+        stackPanel.Children.Add(new TextBlock()
+        {
+            Text = _translationService._("This app stores data in an encrypted database. As the system credential manager (secret service) is not available, please provide a password to use to encrypt the database.\n\nIf you've already provided a password, please provide it again to unlock the database."),
+            TextWrapping = TextWrapping.WrapWholeWords
+        });
+        stackPanel.Children.Add(passwordBox);
+        var contentDialog = new ContentDialog()
+        {
+            Title = _translationService._("Password Required"),
+            Content = stackPanel,
+            PrimaryButtonText = _translationService._("Submit"),
+            DefaultButton = ContentDialogButton.Primary
+        };
+        while (string.IsNullOrEmpty(args.Password))
+        {
+            var res = await contentDialog.ShowAsync();
+            if (res == ContentDialogResult.Primary)
+            {
+                args.Password = passwordBox.Password;
+            }
+        }
     }
 
 
@@ -378,19 +438,6 @@ public sealed partial class MainWindow : Window
         {
             _downloadRows.Remove(e.Id);
             UpdateDownloadsList();
-        }
-    }
-
-    private void Controller_JsonFileSaved(object? sender, JsonFileSavedEventArgs e)
-    {
-        if (e.Name == Configuration.Key)
-        {
-            MainGrid.RequestedTheme = (e.Data as Configuration)!.Theme switch
-            {
-                Theme.Light => ElementTheme.Light,
-                Theme.Dark => ElementTheme.Dark,
-                _ => ElementTheme.Default
-            };
         }
     }
 
