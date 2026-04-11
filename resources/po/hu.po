@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Parabolic 2026.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 13:01-0400\n"
-"PO-Revision-Date: 2026-02-15 18:12+0000\n"
+"PO-Revision-Date: 2026-04-09 17:09+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
 "tube-converter/app/hu/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
@@ -72,9 +72,8 @@ msgstr "Jelszó"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:80
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:78
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:79
-#, fuzzy
 msgid "Download Immediately as Video"
-msgstr "Azonnali letöltés elemzést követően"
+msgstr "Azonnali letöltés elemzést követően (csak videó)"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:81
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:86
@@ -87,9 +86,8 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:85
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:81
-#, fuzzy
 msgid "Download Immediately as Audio"
-msgstr "Azonnali letöltés elemzést követően"
+msgstr "Azonnali letöltés elemzést követően (csak hang)"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:94
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:171
@@ -526,7 +524,7 @@ msgstr "Befejezett"
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:160
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 msgid "Failed"
-msgstr ""
+msgstr "Hiba"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:171
 msgid "Manage Download"
@@ -644,16 +642,16 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:126
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
 msgid "Include Super Resolution Formats"
-msgstr ""
+msgstr "Felskálázott változatok letöltése"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:66
-#, fuzzy
 msgid ""
 "Show super (AI-scaled) resolution formats to download in addition to regular "
 "formats"
 msgstr ""
-"A videóhoz elérhető automatikusan létrehozott feliratok letöltésre kerülnek"
+"A mesterséges intelligencia segítségével felskálázott változatok "
+"letöltésének engedélyezése"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:136
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:69
@@ -689,17 +687,17 @@ msgstr "Ebben a formátumban kerülnek letöltésre a feliratok"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:166
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:78
-#, fuzzy
 msgid "Preferred Frame Rate"
-msgstr "Előnyben részesített feliratformátum"
+msgstr "Előnyben részesített képsebesség"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:167
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
-#, fuzzy
 msgid ""
 "Prefer this frame rate when parsing video formats to show available to "
 "download"
-msgstr "Ezt a kódolót fogja használni az alkalmazás a videó feldolgozásához"
+msgstr ""
+"Ezt a képsebességet fogja előnyben részesíteni az alkalmazás a videó "
+"letöltésekor"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:178
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:182
@@ -804,13 +802,12 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:329
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:112
 msgid "yt-dlp Discovery Arguments"
-msgstr ""
+msgstr "yt-dlp elemzési paraméterek"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:338
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:115
-#, fuzzy
 msgid "yt-dlp Download Arguments"
-msgstr "Letöltés ismét"
+msgstr "yt-dlp letöltési paraméterek"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:349
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:353
@@ -821,7 +818,7 @@ msgstr "Feldolgozás"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
 msgid "Translate Metadata and Chapters"
-msgstr ""
+msgstr "Metaadatok lefordítása"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:357
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
@@ -829,6 +826,7 @@ msgid ""
 "Automatically translate embedded metadata and chapters to the app's language "
 "on supported sites and media"
 msgstr ""
+"Metaadatok és fejezetcímek automatikus lefordítása a felhasználó nyelvére"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:366
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
@@ -1008,7 +1006,7 @@ msgstr "Feldolgozás"
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:147
 #, csharp-format
 msgid "Sleeping for {0}"
-msgstr ""
+msgstr "{0} várakozás"
 
 #: Nickvision.Parabolic.GNOME/Controls/DownloadRow.cs:181
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:153
@@ -1408,9 +1406,9 @@ msgid "New yt-dlp update available: {0}"
 msgstr "Elérhető yt-dlp frissítés: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:189
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "New deno update available: {0}"
-msgstr "Elérhető {0} frissítés: {1}"
+msgstr "Elérhető deno frissítés: {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:199
 msgid "No update available"
@@ -1429,14 +1427,13 @@ msgid "An error occurred while clearing queued downloads"
 msgstr "Hiba történt a sorban álló letöltések törlése során"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:262
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Deno {0} installed successfully"
-msgstr "yt-dlp {0} telepítése befejeződött"
+msgstr "Deno {0} telepítése befejeződött"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:266
-#, fuzzy
 msgid "Unable to download and install the Deno update"
-msgstr "Frissítés letöltése és telepítése sikertelen"
+msgstr "Deno frissítés letöltése és telepítése sikertelen"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:296
 msgid "An error occurred while pausing the download"
@@ -1538,7 +1535,7 @@ msgstr "Whale"
 #: Nickvision.Parabolic.Shared/Models/Format.cs:260
 #, csharp-format
 msgid "{0} FPS"
-msgstr ""
+msgstr "{0} FPS"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:99
 msgid "Never"
