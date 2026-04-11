@@ -431,7 +431,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock x:Name="LblPostProcessorArgments" Grid.Column="0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+                                <TextBlock x:Name="LblPostProcessorArgments" Grid.Column="0" VerticalAlignment="Center" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
 
                                 <Button x:Name="BtnAddPostProcessorArgument" Grid.Column="1" Click="AddPostprocessingArgument">
                                     <Button.Content>

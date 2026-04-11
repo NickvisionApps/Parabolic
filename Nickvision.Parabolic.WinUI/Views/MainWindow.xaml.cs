@@ -89,8 +89,9 @@ public sealed partial class MainWindow : Window
         MenuAddDownload.Text = _translationService._("Add Download");
         MenuExit.Text = _translationService._("Exit");
         MenuEdit.Title = _translationService._("Edit");
-        MenuHelp.Title = _translationService._("Help");
         MenuSettings.Text = _translationService._("Settings");
+        MenuDownloads.Title = _translationService._("Downloads");
+        MenuHelp.Title = _translationService._("Help");
         MenuCheckForUpdates.Text = _translationService._("Check for Updates");
         MenuGitHubRepo.Text = _translationService._("GitHub Repo");
         MenuReportABug.Text = _translationService._("Report a Bug");

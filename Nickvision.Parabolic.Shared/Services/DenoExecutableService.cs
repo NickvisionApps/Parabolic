@@ -18,11 +18,11 @@ public class DenoExecutableService : DependencyExecutableService, IDenoExecutabl
     {
         if (OperatingSystem.IsLinux())
         {
-            DenoBundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2.7.11");
+            DenoBundledVersion = new AppVersion(Desktop.System.Environment.DeploymentMode == DeploymentMode.Local ? "0.0.0" : "2.7.12");
         }
         else
         {
-            DenoBundledVersion = new AppVersion("2.7.11");
+            DenoBundledVersion = new AppVersion("2.7.12");
         }
         if (OperatingSystem.IsWindows())
         {

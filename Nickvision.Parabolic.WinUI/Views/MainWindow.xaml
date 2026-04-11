@@ -72,6 +72,10 @@
                             </MenuFlyoutItem>
                         </MenuBarItem>
 
+                        <MenuBarItem x:Name="MenuDownloads">
+                            
+                        </MenuBarItem>
+
                         <MenuBarItem x:Name="MenuHelp">
                             <MenuFlyoutItem x:Name="MenuCheckForUpdates" Click="CheckForUpdates">
                                 <MenuFlyoutItem.Icon>
@@ -181,9 +185,9 @@
                         </HyperlinkButton>
                     </StackPanel>
 
-                    <Grid>
-                        
-                    </Grid>
+                    <NavigationView>
+
+                    </NavigationView>
 
                     <Frame x:Name="FrameCustom"/>
                 </nickvision:ViewStack.Pages>
