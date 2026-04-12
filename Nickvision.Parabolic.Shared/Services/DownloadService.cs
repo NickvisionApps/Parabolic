@@ -36,6 +36,7 @@ public class DownloadService : IDisposable, IDownloadService
     public int DownloadingCount => _downloading.Count;
     public int QueuedCount => _queued.Count;
     public int CompletedCount => _completed.Count;
+    public int FailedCount => _completed.Count(pair => pair.Value.Status == DownloadStatus.Error);
 
     public DownloadService(ILogger<DownloadService> logger, IConfigurationService configurationService, IHistoryService historyService, IRecoveryService recoveryService, ITranslationService translationService, IYtdlpExecutableService ytdlpService)
     {

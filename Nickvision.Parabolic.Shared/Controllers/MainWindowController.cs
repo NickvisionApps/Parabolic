@@ -72,7 +72,16 @@ public class MainWindowController
 
     public bool CanShutdown => _downloadService.RemainingCount == 0;
 
+    public int CompletedDownloadsCount => _downloadService.CompletedCount;
+
+    public int FailedDownloadsCount => _downloadService.FailedCount;
+
+    public int QueuedDownloadsCount => _downloadService.QueuedCount;
+
     public int RemainingDownloadsCount => _downloadService.RemainingCount;
+
+    public int RunningDownloadsCount => _downloadService.DownloadingCount;
+
 
     public bool ShowDisclaimerOnStartup
     {

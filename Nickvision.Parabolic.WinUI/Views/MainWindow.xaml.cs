@@ -3,9 +3,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media.Imaging;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Network;
@@ -91,6 +88,10 @@ public sealed partial class MainWindow : Window
         MenuEdit.Title = _translationService._("Edit");
         MenuSettings.Text = _translationService._("Settings");
         MenuDownloads.Title = _translationService._("Downloads");
+        MenuStopAllRemaining.Text = _translationService._("Stop All Remaining");
+        MenuRetryAllFailed.Text = _translationService._("Retry All Failed");
+        MenuClearAllQueued.Text = _translationService._("Clear All Queued");
+        MenuClearAllCompleted.Text = _translationService._("Clear All Completed");
         MenuHelp.Title = _translationService._("Help");
         MenuCheckForUpdates.Text = _translationService._("Check for Updates");
         MenuGitHubRepo.Text = _translationService._("GitHub Repo");
@@ -103,19 +104,19 @@ public sealed partial class MainWindow : Window
         LblHomeDescription.Text = _translationService._("Add a video, audio, or playlist URL to start downloading");
         LblAddDownload.Text = _translationService._("Add Download");
         LblSettings.Text = _translationService._("Settings");
-        //LblDownloads.Text = _translationService._("Downloads");
-        //LblDownloadsAddDownload.Text = _translationService._("Add");
-        //FilterAll.Content = _translationService._("All");
-        //FilterRunning.Content = _translationService._("Running");
-        //FilterQueued.Content = _translationService._("Queued");
-        //FilterCompleted.Content = _translationService._("Completed");
-        //FilterFailed.Content = _translationService._("Failed");
-        //BtnStopAllRemaining.Label = _translationService._("Stop All Remaining");
-        //BtnRetryAllFailed.Label = _translationService._("Retry All Failed");
-        //BtnClearAllQueued.Label = _translationService._("Clear All Queued");
-        //BtnClearAllCompleted.Label = _translationService._("Clear All Completed");
-        //StatusNoneDownloads.Title = _translationService._("No Downloads");
-        //StatusNoneDownloads.Description = _translationService._("There are no downloads of this type");
+        BtnStopAllRemaining.Label = _translationService._("Stop All Remaining");
+        BtnRetryAllFailed.Label = _translationService._("Retry All Failed");
+        BtnClearAllQueued.Label = _translationService._("Clear All Queued");
+        BtnClearAllCompleted.Label = _translationService._("Clear All Completed");
+        LblDownloadsAddDownload.Text = _translationService._("Add");
+        NavDownloadsAll.Content = _translationService._("All");
+        NavDownloadsRunning.Content = _translationService._("Running");
+        NavDownloadsQueued.Content = _translationService._("Queued");
+        NavDownloadsCompleted.Content = _translationService._("Completed");
+        NavDownloadsFailed.Content = _translationService._("Failed");
+        StatusNoneDownloads.Title = _translationService._("No Downloads");
+        StatusNoneDownloads.Description = _translationService._("There are no downloads of this type");
+        LblNoneAddDownload.Text = _translationService._("Add Download");
         DlgCredential.Title = _translationService._("Credential Required");
         TxtCredentialUsername.PlaceholderText = _translationService._("Enter username here");
         TxtCredentialPassword.PlaceholderText = _translationService._("Enter password here");
@@ -126,8 +127,7 @@ public sealed partial class MainWindow : Window
     private async void Window_Loaded(object? sender, RoutedEventArgs e)
     {
         ViewStack.SelectedIndex = (int)Pages.Home;
-        //ViewStackDownloads.SelectedIndex = 0;
-        //DownloadsFilter.SelectedIndex = 0;
+        ViewStackDownloads.SelectedIndex = 0;
         MenuCheckForUpdates.IsEnabled = false;
         var updatesTask = _controller.CheckForUpdatesAsync(false);
         if (_controller.ShowDisclaimerOnStartup)
@@ -355,7 +355,7 @@ public sealed partial class MainWindow : Window
         await row.TriggerAddedStateAsync(e);
         _downloadRows[e.Id] = row;
         UpdateDownloadsList();
-        //NavItemDownloads.IsSelected = true;
+        ViewStack.SelectedIndex = (int)Pages.Downloads;
     }
 
     private void Controller_DownloadCompleted(object? sender, DownloadCompletedEventArgs e)
@@ -417,8 +417,6 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void DownloadsFilter_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateDownloadsList();
-
     private void DownloadRow_PauseRequested(object? sender, int id)
     {
         if (_controller.PauseDownload(id) && _downloadRows.TryGetValue(id, out var row))
@@ -438,6 +436,8 @@ public sealed partial class MainWindow : Window
     private async void DownloadRow_RetryRequested(object? sender, int id) => await _controller.RetryDownloadAsync(id);
 
     private async void DownloadRow_StopRequested(object? sender, int id) => await _controller.StopDownloadAsync(id);
+
+    private void NavViewDownloads_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args) => UpdateDownloadsList();
 
     private void UpdateProgress_Changed(object? sender, DownloadProgress e)
     {
@@ -580,16 +580,24 @@ public sealed partial class MainWindow : Window
 
     private void UpdateDownloadsList()
     {
-        //DownloadsList.ItemsSource = _downloadRows.Values.Where(row => DownloadsFilter.SelectedIndex switch
-        //{
-        //    1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
-        //    2 => row.Status == DownloadStatus.Queued,
-        //    3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
-        //    4 => row.Status == DownloadStatus.Error,
-        //    _ => true
-        //}).Reverse().ToList();
-        //ViewStackDownloads.SelectedIndex = (DownloadsList.ItemsSource as IEnumerable<DownloadRow>)!.Count() > 0 ? 1 : 0;
-        //BadgeDownloads.Value = _controller.RemainingDownloadsCount;
-        //BadgeDownloads.Visibility = _controller.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        ListDownloads.ItemsSource = _downloadRows.Values.Where(row => (((NavViewDownloads.SelectedItem as NavigationViewItem)?.Tag as string) ?? string.Empty) switch
+        {
+            "1" => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
+            "2" => row.Status == DownloadStatus.Queued,
+            "3" => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+            "4" => row.Status == DownloadStatus.Error,
+            _ => true
+        }).Reverse().ToList();
+        ViewStackDownloads.SelectedIndex = (ListDownloads.ItemsSource as IEnumerable<DownloadRow>)!.Count() > 0 ? 1 : 0;
+        InfoBadgeDownloadsAll.Value = _controller.RemainingDownloadsCount;
+        InfoBadgeDownloadsAll.Visibility = _controller.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsRunning.Value = _controller.RunningDownloadsCount;
+        InfoBadgeDownloadsRunning.Visibility = _controller.RunningDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsQueued.Value = _controller.QueuedDownloadsCount;
+        InfoBadgeDownloadsQueued.Visibility = _controller.QueuedDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsCompleted.Value = _controller.CompletedDownloadsCount;
+        InfoBadgeDownloadsCompleted.Visibility = _controller.CompletedDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsFailed.Value = _controller.FailedDownloadsCount;
+        InfoBadgeDownloadsFailed.Visibility = _controller.FailedDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 }
