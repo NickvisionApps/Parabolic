@@ -66,7 +66,6 @@ public class RecoveryService : IRecoveryService
     {
         _logger.LogInformation($"Adding {downloads.Count} recoverable download(s)...");
         await EnsureTableAsync();
-        using var transaction = await _databaseService.CreateTransationAsync();
         foreach (var download in downloads)
         {
             _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
@@ -77,14 +76,13 @@ public class RecoveryService : IRecoveryService
                 { "credentialRequired", download.CredentialRequired ? 1 : 0 }
             }))
             {
-                _logger.LogError($"Failed to add recoverable download ({download.Id}). Rolling back...");
-                await transaction.RollbackAsync();
+                _logger.LogError($"Failed to add recoverable download ({download.Id}).");
                 return false;
             }
             _logger.LogInformation($"Added recoverable download ({download.Id}).");
         }
-        await transaction.CommitAsync();
         _logger.LogInformation($"Added {downloads.Count} recoverable download(s).");
+        await _configurationService.SaveAsync();
         return true;
     }
 
@@ -159,18 +157,16 @@ public class RecoveryService : IRecoveryService
     {
         _logger.LogInformation($"Removing {ids.Count} recoverable download(s)...");
         await EnsureTableAsync();
-        using var transaction = await _databaseService.CreateTransationAsync();
         foreach (var id in ids)
         {
             if (!await _databaseService.DeleteFromTableAsync(TableName, "id", id))
             {
-                _logger.LogError($"Failed to remove recoverable download ({id}). Rolling back...");
-                await transaction.RollbackAsync();
+                _logger.LogError($"Failed to remove recoverable download ({id}).");
                 return false;
             }
             _logger.LogInformation($"Removed recoverable download ({id}).");
         }
-        await transaction.CommitAsync();
+        await _configurationService.SaveAsync();
         _logger.LogInformation($"Removed {ids.Count} recoverable download(s).");
         return true;
     }

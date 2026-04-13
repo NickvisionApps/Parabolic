@@ -83,7 +83,6 @@ public class HistoryService : IHistoryService
             return true;
         }
         await EnsureTableAsync();
-        using var transaction = await _databaseService.CreateTransationAsync();
         foreach (var download in downloads)
         {
             _logger.LogInformation($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
@@ -96,14 +95,13 @@ public class HistoryService : IHistoryService
                 { "downloadedOn", download.DownloadedOn.ToString("o") }
             }))
             {
-                _logger.LogError($"Failed to add historic download ({download.Url}). Rolling back...");
-                await transaction.RollbackAsync();
+                _logger.LogError($"Failed to add historic download ({download.Url}).");
                 return false;
             }
             _logger.LogInformation($"Added historic download ({download.Url}).");
         }
-        await transaction.CommitAsync();
         _logger.LogInformation($"Added {downloads.Count} historic download(s).");
+        await _configurationService.SaveAsync();
         return true;
     }
 
@@ -155,12 +153,11 @@ public class HistoryService : IHistoryService
         }
         if (toRemove.Count > 0)
         {
-            using var transaction = await _databaseService.CreateTransationAsync();
             foreach (var url in toRemove)
             {
                 await _databaseService.DeleteFromTableAsync(TableName, "url", url.ToString());
             }
-            await transaction.CommitAsync();
+            await _configurationService.SaveAsync();
             _logger.LogInformation($"Removed {toRemove.Count} old historic download(s).");
         }
         if (SortNewest)
