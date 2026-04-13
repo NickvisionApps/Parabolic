@@ -61,6 +61,16 @@
                         </MenuBarItem>
 
                         <MenuBarItem x:Name="MenuEdit">
+                            <MenuFlyoutItem x:Name="MenuKeyring" Click="Keyring">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="K" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+
                             <MenuFlyoutItem x:Name="MenuSettings" Click="Settings">
                                 <MenuFlyoutItem.KeyboardAccelerators>
                                     <KeyboardAccelerator Key="I" Modifiers="Control"/>
@@ -68,6 +78,18 @@
 
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE713;"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuBarItem>
+
+                        <MenuBarItem x:Name="MenuView">
+                            <MenuFlyoutItem x:Name="MenuHistory" Click="History">
+                                <MenuFlyoutItem.KeyboardAccelerators>
+                                    <KeyboardAccelerator Key="H" Modifiers="Control"/>
+                                </MenuFlyoutItem.KeyboardAccelerators>
+
+                                <MenuFlyoutItem.Icon>
+                                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                         </MenuBarItem>
@@ -202,6 +224,16 @@
                                     <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
 
                                     <TextBlock x:Name="LblAddDownload"/>
+                                </StackPanel>
+                            </HyperlinkButton.Content>
+                        </HyperlinkButton>
+
+                        <HyperlinkButton Click="Keyring">
+                            <HyperlinkButton.Content>
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
+
+                                    <TextBlock x:Name="LblKeyring"/>
                                 </StackPanel>
                             </HyperlinkButton.Content>
                         </HyperlinkButton>

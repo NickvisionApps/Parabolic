@@ -86,7 +86,10 @@ public sealed partial class MainWindow : Window
         MenuAddDownload.Text = _translationService._("Add Download");
         MenuExit.Text = _translationService._("Exit");
         MenuEdit.Title = _translationService._("Edit");
+        MenuKeyring.Text = _translationService._("Keyring");
         MenuSettings.Text = _translationService._("Settings");
+        MenuView.Title = _translationService._("View");
+        MenuHistory.Text = _translationService._("History");
         MenuDownloads.Title = _translationService._("Downloads");
         MenuStopAllRemaining.Text = _translationService._("Stop All Remaining");
         MenuRetryAllFailed.Text = _translationService._("Retry All Failed");
@@ -103,6 +106,7 @@ public sealed partial class MainWindow : Window
         LblHomeTitle.Text = _translationService._("Download Media");
         LblHomeDescription.Text = _translationService._("Add a video, audio, or playlist URL to start downloading");
         LblAddDownload.Text = _translationService._("Add Download");
+        LblKeyring.Text = _translationService._("Keyring");
         LblSettings.Text = _translationService._("Settings");
         BtnStopAllRemaining.Label = _translationService._("Stop All Remaining");
         BtnRetryAllFailed.Label = _translationService._("Retry All Failed");
@@ -356,6 +360,7 @@ public sealed partial class MainWindow : Window
         _downloadRows[e.Id] = row;
         UpdateDownloadsList();
         ViewStack.SelectedIndex = (int)Pages.Downloads;
+        TitleBar.IsBackButtonVisible = false;
     }
 
     private void Controller_DownloadCompleted(object? sender, DownloadCompletedEventArgs e)
@@ -482,6 +487,11 @@ public sealed partial class MainWindow : Window
 
     private void Exit(object sender, RoutedEventArgs args) => Window_Closing(AppWindow, null);
 
+    private void Keyring(object sender, RoutedEventArgs args)
+    {
+
+    }
+
     private void Settings(object sender, RoutedEventArgs args)
     {
         TitleBar.IsBackButtonVisible = true;
@@ -489,6 +499,14 @@ public sealed partial class MainWindow : Window
         var settings = _serviceProvider.GetRequiredService<SettingsPage>();
         settings.WindowId = AppWindow.Id;
         FrameCustom.Content = settings;
+    }
+
+    private async void History(object sender, RoutedEventArgs args)
+    {
+        var historyDialog = _serviceProvider.GetRequiredService<HistoryDialog>();
+        historyDialog.RequestedTheme = MainGrid.ActualTheme;
+        historyDialog.XamlRoot = MainGrid.XamlRoot;
+        await historyDialog.ShowAsync();
     }
 
     private async void CheckForUpdates(object? sender, RoutedEventArgs e)
