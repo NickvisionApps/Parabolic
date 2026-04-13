@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-12 13:00-0400\n"
+"POT-Creation-Date: 2026-04-12 21:42-0400\n"
 "PO-Revision-Date: 2026-02-06 14:36+0000\n"
 "Last-Translator: duckienome <xvchattw@duck.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -392,7 +392,7 @@ msgstr "کلپ بورڈ پر کاپی کریں"
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:38
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "History"
 msgstr "تاریخ"
@@ -402,22 +402,21 @@ msgid "Sort By"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:23
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:43
 msgid "Newest"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:28
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:44
 msgid "Oldest"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:36
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
 msgid "Save Length"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:47
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:55
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:42
 #, fuzzy
 msgid "Clear All"
 msgstr "صاف کریں"
@@ -1090,13 +1089,13 @@ msgid "Properties"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:81
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:82
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:59
 #, fuzzy
 msgid "Clear All History?"
 msgstr "تاریخ کو صاف کریں"
 
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:81
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:83
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:60
 msgid ""
 "Are you sure you want to clear all download history? This action is "
 "irreversible"
@@ -1137,8 +1136,8 @@ msgid "Downloaded On: {0}"
 msgstr "ڈاؤن لوڈینگ ہو رہی ہے"
 
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:140
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:58
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:60
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:46
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:48
 #, fuzzy
 msgid "No History"
 msgstr "تاریخ"
@@ -1218,7 +1217,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:214
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:245
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:84
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:61
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:131
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:177
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
@@ -1228,7 +1227,7 @@ msgstr "ہاں"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:215
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:246
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:85
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:62
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:132
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:178
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:210
@@ -1273,6 +1272,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:304
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:23
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:39
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:280
 msgid "Close"
 msgstr "بند کریں"
@@ -1878,28 +1878,29 @@ msgstr ""
 msgid "Configure Download"
 msgstr "ڈاؤن لوڈ شدہ"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:38
-msgid "Sort"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:40
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #, fuzzy
 msgid "Search..."
 msgstr "تلاش کریں۔۔۔"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:41
+msgid "Sort"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:45
 msgid "Please wait..."
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:47
 #, fuzzy
 msgid "There are no downloads in your history"
 msgstr "جب تمام ڈاؤن لوڈز ختم ہوجائیں"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:49
+#, fuzzy
 msgid "There are no downloads found with the current filters"
-msgstr ""
+msgstr "جب تمام ڈاؤن لوڈز ختم ہوجائیں"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
@@ -2082,6 +2083,10 @@ msgstr "عمل کر رہے ہیں ..."
 msgid "Post-Processor"
 msgstr "عمل کر رہے ہیں ..."
 
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "تلاش کریں۔۔۔"
+
 #~ msgid "Home"
 #~ msgstr "ھوم"
 
@@ -2092,10 +2097,6 @@ msgstr "عمل کر رہے ہیں ..."
 #, fuzzy
 #~ msgid "Download Immediately"
 #~ msgstr "فورا ڈائون لوڈ کریں"
-
-#, fuzzy
-#~ msgid "Search"
-#~ msgstr "تلاش کریں۔۔۔"
 
 #, fuzzy
 #~ msgid "close"

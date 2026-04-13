@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-12 13:00-0400\n"
+"POT-Creation-Date: 2026-04-12 21:42-0400\n"
 "PO-Revision-Date: 2026-02-06 14:34+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -389,7 +389,7 @@ msgstr "Копиране на журнала в буфера за обмен"
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:41
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:6
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:38
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:92
 msgid "History"
 msgstr "История"
@@ -399,22 +399,21 @@ msgid "Sort By"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:23
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:43
 msgid "Newest"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:28
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:44
 msgid "Oldest"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:36
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:41
 msgid "Save Length"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Blueprints/HistoryDialog.blp:47
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:55
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:42
 #, fuzzy
 msgid "Clear All"
 msgstr "Изчистване"
@@ -1094,13 +1093,13 @@ msgid "Properties"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:81
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:82
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:59
 #, fuzzy
 msgid "Clear All History?"
 msgstr "Изчистване на историята"
 
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:81
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:83
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:60
 #, fuzzy
 msgid ""
 "Are you sure you want to clear all download history? This action is "
@@ -1142,8 +1141,8 @@ msgid "Downloaded On: {0}"
 msgstr "Изтегляне"
 
 #: Nickvision.Parabolic.GNOME/Views/HistoryDialog.cs:140
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:58
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:60
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:46
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:48
 #, fuzzy
 msgid "No History"
 msgstr "История"
@@ -1225,7 +1224,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:214
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:245
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:84
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:61
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:131
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:177
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
@@ -1235,7 +1234,7 @@ msgstr "Да"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:215
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:246
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:85
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:62
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:132
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:178
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:210
@@ -1281,6 +1280,7 @@ msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:304
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:23
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:39
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:280
 msgid "Close"
 msgstr "Затваряне"
@@ -1896,28 +1896,29 @@ msgstr ""
 msgid "Configure Download"
 msgstr "Изтегляния"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:38
-msgid "Sort"
-msgstr ""
-
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:56
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:40
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
 #, fuzzy
 msgid "Search..."
 msgstr "Търсене в историята"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:57
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:41
+msgid "Sort"
+msgstr ""
+
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:45
 msgid "Please wait..."
 msgstr "Моля изчакайте..."
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:59
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:47
 #, fuzzy
 msgid "There are no downloads in your history"
 msgstr "Когато всички изтегляния приключат"
 
-#: Nickvision.Parabolic.WinUI/Views/HistoryPage.xaml.cs:61
+#: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:49
+#, fuzzy
 msgid "There are no downloads found with the current filters"
-msgstr ""
+msgstr "Когато всички изтегляния приключат"
 
 #: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
 #, fuzzy
@@ -2096,6 +2097,10 @@ msgstr "Нишки за постобработка"
 msgid "Post-Processor"
 msgstr "Обработване"
 
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Търсене в историята"
+
 #~ msgid "Home"
 #~ msgstr "Начало"
 
@@ -2106,10 +2111,6 @@ msgstr "Обработване"
 #, fuzzy
 #~ msgid "Download Immediately"
 #~ msgstr "Изтегляне на медия"
-
-#, fuzzy
-#~ msgid "Search"
-#~ msgstr "Търсене в историята"
 
 #~ msgid "Audio Description"
 #~ msgstr "Описание на аудиото"
