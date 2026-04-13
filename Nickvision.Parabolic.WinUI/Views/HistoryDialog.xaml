@@ -11,7 +11,7 @@
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
     DefaultButton="Primary" Loaded="Dialog_Loaded">
     
-    <Grid ColumnSpacing="12">
+    <Grid ColumnSpacing="24">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,43 +20,27 @@
 
         <AutoSuggestBox x:Name="SearchBox" Grid.Row="0" QueryIcon="Find" TextChanged="SearchBox_TextChanged"/>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+		<CommandBar Grid.Row="1" DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed">
+            <AppBarButton x:Name="BtnSort">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE8CB;"/>
+                </AppBarButton.Icon>
 
-            <Button x:Name="BtnClearAll" Grid.Column="0" Click="ClearAll">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal" Spacing="6">
-                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                <AppBarButton.Flyout>
+                    <MenuFlyout Placement="Bottom">
+                        <RadioMenuFlyoutItem x:Name="TglSortNewest" GroupName="Sort" Click="TglSort_Click"/>
 
-                        <TextBlock x:Name="LblClearAll"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
+                        <RadioMenuFlyoutItem x:Name="TglSortOldest" GroupName="Sort" Click="TglSort_Click"/>
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
 
-            <CommandBar Grid.Column="2" DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed">
-                <AppBarButton x:Name="BtnSort">
-                    <AppBarButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE8CB;"/>
-
-                            <TextBlock x:Name="LblSort"/>
-                        </StackPanel>
-                    </AppBarButton.Content>
-
-                    <AppBarButton.Flyout>
-                        <MenuFlyout Placement="Bottom">
-                            <RadioMenuFlyoutItem x:Name="TglSortNewest" GroupName="Sort" Click="TglSort_Click"/>
-
-                            <RadioMenuFlyoutItem x:Name="TglSortOldest" GroupName="Sort" Click="TglSort_Click"/>
-                        </MenuFlyout>
-                    </AppBarButton.Flyout>
-                </AppBarButton>
-            </CommandBar>
-        </Grid>
+            <AppBarButton x:Name="BtnClearAll" Click="ClearAll">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
 
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <nickvision:ViewStack x:Name="ViewStack">
@@ -67,9 +51,9 @@
                         <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" Foreground="Gray"/>
                     </StackPanel>
 
-                    <nickvision:StatusPage x:Name="StatusNone" Margin="0,24,0,0" Glyph="&#xE81C;" IsCompact="True"/>
+                    <nickvision:StatusPage x:Name="StatusNone" Margin="0,24,0,24" Glyph="&#xE81C;" IsCompact="True"/>
 
-                    <nickvision:StatusPage x:Name="StatusNoneSearch" Margin="0,24,0,0" Glyph="&#xE721;" IsCompact="True"/>
+                    <nickvision:StatusPage x:Name="StatusNoneSearch" Margin="0,24,0,24" Glyph="&#xE721;" IsCompact="True"/>
 
                     <ListView x:Name="ListDownloads" SelectionMode="None">
                         <ListView.ItemTemplate>

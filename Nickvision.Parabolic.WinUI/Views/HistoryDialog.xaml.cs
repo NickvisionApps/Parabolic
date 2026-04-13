@@ -38,8 +38,8 @@ public sealed partial class HistoryDialog : ContentDialog
         Title = _translationService._("History");
         PrimaryButtonText = _translationService._("Close");
         SearchBox.PlaceholderText = _translationService._("Search...");
-        LblSort.Text = _translationService._("Sort");
-        LblClearAll.Text = _translationService._("Clear All");
+        BtnSort.Label = _translationService._("Sort");
+        BtnClearAll.Label = _translationService._("Clear All");
         TglSortNewest.Text = _translationService._("Newest");
         TglSortOldest.Text = _translationService._("Oldest");
         LblLoading.Text = _translationService._("Please wait...");
@@ -103,7 +103,7 @@ public sealed partial class HistoryDialog : ContentDialog
             }
             else
             {
-                var filtered = _historicDownloads.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower()));
+                var filtered = _historicDownloads.Where(x => x.Label.ToLower().Contains(sender.Text.ToLower())).ToList();
                 ListDownloads.ItemsSource = filtered;
                 ViewStack.SelectedIndex = filtered.Any() ? (int)Pages.History : (int)Pages.NoneSearch;
             }
