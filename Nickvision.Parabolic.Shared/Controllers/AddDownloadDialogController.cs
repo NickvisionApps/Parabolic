@@ -66,18 +66,49 @@ public class AddDownloadDialogController
         set => _configurationService.PreviousDownloadImmediatelyAsVideo = value;
     }
 
-    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IEnumerable<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
+    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IReadOnlyList<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
     {
-        var m3uFile = new M3UFile(context.Title, context.Media.Any(x => !string.IsNullOrEmpty(x.SuggestedSaveFolder)) ? PathType.Absolute : PathType.Relative);
-        var options = new List<DownloadOptions>(items.Count());
-        var titleNumber = 1;
-        foreach (var item in reverseDownloadOrder ? items.Reverse() : items)
+        var hasSuggestedSaveFolder = false;
+        var hasVideo = false;
+        foreach (var media in context.Media)
         {
+            if (!string.IsNullOrEmpty(media.SuggestedSaveFolder))
+            {
+                hasSuggestedSaveFolder = true;
+            }
+            if (media.Type == MediaType.Video)
+            {
+                hasVideo = true;
+            }
+            if(hasSuggestedSaveFolder && hasVideo)
+            {
+                break;
+            }
+        }
+        var m3uFile = new M3UFile(context.Title, hasSuggestedSaveFolder ? PathType.Absolute : PathType.Relative);
+        var selectedSubtitles = new List<SubtitleLanguage>();
+        foreach (var selectedSubtitleLanguage in selectedSubtitleLanguages)
+        {
+            selectedSubtitles.Add(selectedSubtitleLanguage.Value);
+        }
+        var options = new List<DownloadOptions>(items.Count);
+        var titleNumber = 1;
+        for (var i = reverseDownloadOrder ? items.Count - 1 : 0; reverseDownloadOrder ? i >= 0 : i < items.Count; i += reverseDownloadOrder ? -1 : 1)
+        {
+            var item = items[i];
             if (item.Value < 0 || item.Value >= context.Media.Count)
             {
-                continue;
+                return;
             }
             var media = context.Media[item.Value];
+            var filteredSubtitles = new List<SubtitleLanguage>(selectedSubtitles.Count);
+            foreach (var selectedSubtitle in selectedSubtitles)
+            {
+                if (media.Subtitles.Contains(selectedSubtitle))
+                {
+                    filteredSubtitles.Add(selectedSubtitle);
+                }
+            }
             options.Add(new DownloadOptions(media.Url)
             {
                 Credential = context.Credential,
@@ -87,7 +118,7 @@ public class AddDownloadDialogController
                 PlaylistPosition = media.PlaylistPosition,
                 VideoResolution = selectedVideoResoltuion.Value,
                 AudioBitrate = selectedAudioBitrate.Value,
-                SubtitleLanguages = selectedSubtitleLanguages.Select(x => x.Value).Where(x => media.Subtitles.Contains(x)).ToArray(),
+                SubtitleLanguages = filteredSubtitles,
                 SplitChapters = splitChapters,
                 ExportDescription = exportDescription,
                 PostProcessorArgument = selectedPostProcessorArgument.Value,
@@ -96,7 +127,7 @@ public class AddDownloadDialogController
         }
         m3uFile.Add(options);
         _configurationService.PreviousSaveFolder = saveFolder;
-        if (context.Media.Any(m => m.Type == MediaType.Video))
+        if (hasVideo)
         {
             _configurationService.PreviousFullFileType = selectedFileType.Value;
             if (selectedFileType.Value.IsVideo)
@@ -123,7 +154,7 @@ public class AddDownloadDialogController
         {
             _configurationService.PreviousPostProcessorArgumentName = selectedPostProcessorArgument.Value.Name;
         }
-        _configurationService.PreviousSubtitleLanguages = selectedSubtitleLanguages.Select(x => x.Value).ToArray();
+        _configurationService.PreviousSubtitleLanguages = selectedSubtitles;
         await _configurationService.SaveAsync();
         try
         {
@@ -148,6 +179,11 @@ public class AddDownloadDialogController
     public async Task AddSingleDownloadAsync(DiscoveryContext context, string saveFilename, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<Format> selectedVideoFormat, SelectionItem<Format> selectedAudioFormat, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument, string startTime, string endTime)
     {
         var media = context.Media[0];
+        var subtitleLanguages = new List<SubtitleLanguage>();
+        foreach (var selectedSubtitleLanguage in selectedSubtitleLanguages)
+        {
+            subtitleLanguages.Add(selectedSubtitleLanguage.Value);
+        }
         var options = new DownloadOptions(media.Url)
         {
             Credential = context.Credential,
@@ -157,7 +193,7 @@ public class AddDownloadDialogController
             PlaylistPosition = media.PlaylistPosition,
             VideoFormat = selectedVideoFormat.Value,
             AudioFormat = selectedAudioFormat.Value,
-            SubtitleLanguages = selectedSubtitleLanguages.Select(x => x.Value).ToArray(),
+            SubtitleLanguages = subtitleLanguages,
             SplitChapters = splitChapters,
             ExportDescription = exportDescription,
             PostProcessorArgument = selectedPostProcessorArgument.Value,
@@ -246,25 +282,51 @@ public class AddDownloadDialogController
             else
             {
                 var matched = false;
-                foreach (var bitrate in res.Media.SelectMany(m => m.Formats).Where(f => f.Bitrate.HasValue).Select(f => f.Bitrate!.Value).Distinct())
+                var bitrates = new HashSet<double>();
+                var resolutions = new HashSet<VideoResolution>();
+                foreach (var media in res.Media)
                 {
-                    context.AudioBitrates.Add(new SelectionItem<double>(bitrate, $"{bitrate}k", _configurationService.PreviousAudioBitrate == bitrate));
-                    matched |= _configurationService.PreviousAudioBitrate == bitrate;
+                    foreach (var format in media.Formats)
+                    {
+                        if (format.Bitrate.HasValue)
+                        {
+                            bitrates.Add(format.Bitrate.Value);
+                        }
+                        if (format.VideoResolution is not null)
+                        {
+                            resolutions.Add(format.VideoResolution);
+                        }
+                    }
+                }
+                foreach (var bitrate in bitrates)
+                {
+                    var shouldSelect = _configurationService.PreviousAudioBitrate == bitrate;
+                    context.AudioBitrates.Add(new SelectionItem<double>(bitrate, $"{bitrate}k", shouldSelect));
+                    matched |= shouldSelect;
                 }
                 context.AudioBitrates.Sort((a, b) => a.Value.CompareTo(b.Value));
                 context.AudioBitrates.Insert(0, new SelectionItem<double>(-1.0, _translationService._("Worst"), _configurationService.PreviousAudioBitrate == -1.0));
                 context.AudioBitrates.Insert(0, new SelectionItem<double>(double.MaxValue, _translationService._("Best"), !matched || _configurationService.PreviousAudioBitrate == double.MaxValue));
                 matched = false;
-                foreach (var resolution in res.Media.SelectMany(m => m.Formats).Where(f => f.VideoResolution is not null).Select(f => f.VideoResolution!).Distinct())
+                foreach (var resolution in resolutions)
                 {
-                    context.VideoResolutions.Add(new SelectionItem<VideoResolution>(resolution, resolution.ToString(_translationService), _configurationService.PreviousVideoResolution == resolution));
-                    matched |= _configurationService.PreviousVideoResolution == resolution;
+                    var shouldSelect = _configurationService.PreviousVideoResolution == resolution;
+                    context.VideoResolutions.Add(new SelectionItem<VideoResolution>(resolution, resolution.ToString(_translationService), shouldSelect));
+                    matched |= shouldSelect;
                 }
                 context.VideoResolutions.Sort((a, b) => a.Value.CompareTo(b.Value));
                 context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Worst, VideoResolution.Worst.ToString(_translationService), _configurationService.PreviousVideoResolution == VideoResolution.Worst));
                 context.VideoResolutions.Insert(0, new SelectionItem<VideoResolution>(VideoResolution.Best, VideoResolution.Best.ToString(_translationService), !matched || _configurationService.PreviousVideoResolution == VideoResolution.Best));
             }
-            var hasVideo = res.Media.Any(m => m.Type == MediaType.Video);
+            var hasVideo = false;
+            foreach (var media in res.Media)
+            {
+                if (media.Type == MediaType.Video)
+                {
+                    hasVideo = true;
+                    break;
+                }
+            }
             var previousFileType = (!hasVideo || _configurationService.PreviousDownloadImmediatelyAsAudio) ? _configurationService.PreviousAudioOnlyFileType : (_configurationService.PreviousDownloadImmediatelyAsVideo ? _configurationService.PreviousVideoOnlyFileType : _configurationService.PreviousFullFileType);
             context.FileTypes.EnsureCapacity(hasVideo ? 13 : 7);
             if (hasVideo)
@@ -283,7 +345,15 @@ public class AddDownloadDialogController
             context.FileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.FLAC, _translationService._("FLAC (Audio)"), previousFileType == MediaFileType.FLAC));
             context.FileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.WAV, _translationService._("WAV (Audio)"), previousFileType == MediaFileType.WAV));
             context.FileTypes.Add(new SelectionItem<MediaFileType>(MediaFileType.OGG, _translationService._("OGG (Audio)"), previousFileType == MediaFileType.OGG));
-            foreach (var subtitle in res.Media.SelectMany(m => m.Subtitles).Distinct())
+            var subtitles = new HashSet<SubtitleLanguage>();
+            foreach (var media in res.Media)
+            {
+                foreach (var subtitle in media.Subtitles)
+                {
+                    subtitles.Add(subtitle);
+                }
+            }
+            foreach (var subtitle in subtitles)
             {
                 context.SubtitleLanguages.Add(new SelectionItem<SubtitleLanguage>(subtitle, subtitle.ToString(_translationService), _configurationService.PreviousSubtitleLanguages.Contains(subtitle)));
             }
@@ -318,11 +388,12 @@ public class AddDownloadDialogController
 
     public async Task<IReadOnlyList<SelectionItem<Credential?>>> GetAvailableCredentialsAsync()
     {
-        var res = new List<SelectionItem<Credential?>>((_keyringService.GetAllCredentialAsync().GetAwaiter().GetResult()).Count() + 1)
+        var credentials = await _keyringService.GetAllCredentialAsync();
+        var res = new List<SelectionItem<Credential?>>(credentials.Count + 1)
         {
             new SelectionItem<Credential?>(null, _translationService._("Use manual credential"), true)
         };
-        foreach (var credential in await _keyringService.GetAllCredentialAsync())
+        foreach (var credential in credentials)
         {
             res.Add(new SelectionItem<Credential?>(credential, credential.Name, false));
         }
@@ -331,13 +402,15 @@ public class AddDownloadDialogController
 
     public IReadOnlyList<SelectionItem<PostProcessorArgument?>> GetAvailablePostProcessorArguments()
     {
-        var postprocessingArguments = _configurationService.PostprocessingArguments;
-        var res = new List<SelectionItem<PostProcessorArgument?>>(postprocessingArguments.Count + 1);
-        foreach (var argument in postprocessingArguments)
+        var res = new List<SelectionItem<PostProcessorArgument?>>(_configurationService.PostprocessingArguments.Count + 1);
+        var hasSelected = false;
+        foreach (var argument in _configurationService.PostprocessingArguments)
         {
-            res.Add(new SelectionItem<PostProcessorArgument?>(argument, argument.Name, _configurationService.PreviousPostProcessorArgumentName == argument.Name));
+            var shouldSelect = _configurationService.PreviousPostProcessorArgumentName == argument.Name;
+            hasSelected |= shouldSelect;
+            res.Add(new SelectionItem<PostProcessorArgument?>(argument, argument.Name, shouldSelect));
         }
-        res.Insert(0, new SelectionItem<PostProcessorArgument?>(null, _translationService._("None"), !res.Any(x => x.ShouldSelect)));
+        res.Insert(0, new SelectionItem<PostProcessorArgument?>(null, _translationService._("None"), !hasSelected));
         return res;
     }
 

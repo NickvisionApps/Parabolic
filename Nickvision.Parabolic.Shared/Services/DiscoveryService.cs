@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
@@ -110,14 +110,14 @@ public class DiscoveryService : IDiscoveryService
         {
             _thumbnailService.MapMedia(media);
         }
-        _logger.LogInformation($"Discovered media for {url}: {JsonSerializer.Serialize(json.RootElement, ApplicationJsonContext.Default.JsonElement)}");
+        _logger.LogInformation($"Discovered media for {url}: {result.Media.Count} item(s)");
         return result;
     }
 
     private async Task<List<BatchFileEntry>> ParseBatchFileAsync(string batchFilePath, CancellationToken cancellationToken = default)
     {
         _logger.LogInformation($"Parsing batch file: {batchFilePath}");
-        if (!File.Exists(batchFilePath) || Path.GetExtension(batchFilePath).ToLower() != ".txt")
+        if (!File.Exists(batchFilePath) || !Path.GetExtension(batchFilePath).Equals(".txt", StringComparison.OrdinalIgnoreCase))
         {
             return [];
         }
@@ -125,31 +125,34 @@ public class DiscoveryService : IDiscoveryService
         await foreach (var line in File.ReadLinesAsync(batchFilePath))
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var fields = line.Split(BatchFileDelimiter);
-            if (fields.Length < 1 || fields.Length > 3)
+            var firstDelimiterIndex = line.IndexOf(BatchFileDelimiter);
+            var secondDelimiterIndex = firstDelimiterIndex == -1 ? -1 : line.IndexOf(BatchFileDelimiter, firstDelimiterIndex + 1);
+            var thirdDelimiterIndex = secondDelimiterIndex == -1 ? -1 : line.IndexOf(BatchFileDelimiter, secondDelimiterIndex + 1);
+            if (thirdDelimiterIndex != -1)
             {
                 continue;
             }
-            if (!Uri.TryCreate(fields[0].Trim().Trim('"').Trim(), UriKind.Absolute, out var url))
+            var urlField = firstDelimiterIndex == -1 ? line : line[..firstDelimiterIndex];
+            if (!Uri.TryCreate(urlField.Clean(), UriKind.Absolute, out var url))
             {
                 continue;
             }
             var entry = new BatchFileEntry(url);
-            if (fields.Length >= 2)
+            if (firstDelimiterIndex != -1)
             {
-                var saveFolder = fields[1].Trim().Trim('"').Trim();
+                var saveFolder = (secondDelimiterIndex == -1 ? line[(firstDelimiterIndex + 1)..] : line[(firstDelimiterIndex + 1)..secondDelimiterIndex]).Clean();
                 if (saveFolder.StartsWith("~", StringComparison.Ordinal))
                 {
-                    saveFolder = saveFolder.Replace("~", UserDirectories.Home);
+                    saveFolder = UserDirectories.Home + saveFolder[1..];
                 }
                 if (Path.IsPathRooted(saveFolder))
                 {
                     entry.SuggestedSaveFolder = saveFolder;
                 }
             }
-            if (fields.Length == 3)
+            if (secondDelimiterIndex != -1)
             {
-                var filename = fields[2].Trim().Trim('"').Trim();
+                var filename = line[(secondDelimiterIndex + 1)..].Clean();
                 if (!string.IsNullOrEmpty(filename))
                 {
                     entry.SuggestedFilename = filename;

@@ -7,7 +7,6 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -36,7 +35,6 @@ public class DownloadService : IDisposable, IDownloadService
     public int DownloadingCount => _downloading.Count;
     public int QueuedCount => _queued.Count;
     public int CompletedCount => _completed.Count;
-    public int FailedCount => _completed.Count(pair => pair.Value.Status == DownloadStatus.Error);
 
     public DownloadService(ILogger<DownloadService> logger, IConfigurationService configurationService, IHistoryService historyService, IRecoveryService recoveryService, ITranslationService translationService, IYtdlpExecutableService ytdlpService)
     {
@@ -54,6 +52,22 @@ public class DownloadService : IDisposable, IDownloadService
     ~DownloadService()
     {
         Dispose(false);
+    }
+
+    public int FailedCount
+    {
+        get
+        {
+            var failed = 0;
+            foreach (var pair in _completed)
+            {
+                if (pair.Value.Status == DownloadStatus.Error)
+                {
+                    failed++;
+                }
+            }
+            return failed;
+        }
     }
 
     public async Task AddAsync(DownloadOptions options, bool excludeFromHistory)
@@ -194,7 +208,12 @@ public class DownloadService : IDisposable, IDownloadService
             }
         }
         await _recoveryService.ClearAsync();
-        await AddAsync(downloads.Select(x => x.Options).ToList(), false);
+        var options = new List<DownloadOptions>(downloads.Count);
+        foreach (var recoverableDownload in downloads)
+        {
+            options.Add(recoverableDownload.Options);
+        }
+        await AddAsync(options, false);
     }
 
     public bool Resume(int id)
@@ -232,15 +251,24 @@ public class DownloadService : IDisposable, IDownloadService
     {
         _logger.LogInformation($"Retrying failed downloads...");
         var retryDownloadOptions = new List<DownloadOptions>();
-        foreach (var pair in _completed.Where(pair => pair.Value.Status == DownloadStatus.Error).ToList())
+        var ids = new List<int>();
+        foreach (var pair in _completed)
         {
-            retryDownloadOptions.Add(pair.Value.Options);
-            DownloadRetired?.Invoke(this, new DownloadEventArgs(pair.Key));
-            pair.Value.Completed -= Download_Completed;
-            pair.Value.ProgressChanged -= Download_ProgressChanged;
-            pair.Value.Dispose();
-            _completed.Remove(pair.Key);
-            _logger.LogInformation($"Retried download ({pair.Key}).");
+            if (pair.Value.Status == DownloadStatus.Error)
+            {
+                ids.Add(pair.Key);
+            }
+        }
+        foreach (var id in ids)
+        {
+            var download = _completed[id];
+            retryDownloadOptions.Add(download.Options);
+            DownloadRetired?.Invoke(this, new DownloadEventArgs(id));
+            download.Completed -= Download_Completed;
+            download.ProgressChanged -= Download_ProgressChanged;
+            download.Dispose();
+            _completed.Remove(id);
+            _logger.LogInformation($"Retried download ({id}).");
         }
         _logger.LogInformation($"Retried {retryDownloadOptions.Count} failed download(s).");
         await AddAsync(retryDownloadOptions, true);
@@ -271,7 +299,15 @@ public class DownloadService : IDisposable, IDownloadService
     public async Task StopAllAsync()
     {
         _logger.LogInformation($"Stopping all downloads...");
-        var ids = new List<int>(_downloading.Keys.Concat(_queued.Keys));
+        var ids = new List<int>(_downloading.Count + _queued.Count);
+        foreach (var id in _downloading.Keys)
+        {
+            ids.Add(id);
+        }
+        foreach (var id in _queued.Keys)
+        {
+            ids.Add(id);
+        }
         foreach (var pair in _downloading)
         {
             pair.Value.Stop();
@@ -295,7 +331,6 @@ public class DownloadService : IDisposable, IDownloadService
         _downloading.Clear();
         _queued.Clear();
         await _recoveryService.RemoveAsync(ids);
-
         _logger.LogInformation($"Stopped {ids.Count} download(s).");
     }
 
@@ -349,12 +384,16 @@ public class DownloadService : IDisposable, IDownloadService
         DownloadCompleted?.Invoke(this, e);
         if (_queued.Count > 0 && _downloading.Count < _configurationService.MaxNumberOfActiveDownloads)
         {
-            var firstDownload = _queued.First().Value;
-            _downloading.Add(firstDownload.Id, firstDownload);
-            _queued.Remove(firstDownload.Id);
-            _logger.LogInformation($"Starting download from queue ({firstDownload.Id}).");
-            DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
-            firstDownload.Start();
+            using var queuedEnumerator = _queued.GetEnumerator();
+            if (queuedEnumerator.MoveNext())
+            {
+                var firstDownload = queuedEnumerator.Current.Value;
+                _downloading.Add(firstDownload.Id, firstDownload);
+                _queued.Remove(firstDownload.Id);
+                _logger.LogInformation($"Starting download from queue ({firstDownload.Id}).");
+                DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
+                firstDownload.Start();
+            }
         }
     }
 

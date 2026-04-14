@@ -65,6 +65,10 @@ public class RecoveryService : IRecoveryService
     public async Task<bool> AddAsync(IReadOnlyList<RecoverableDownload> downloads)
     {
         _logger.LogInformation($"Adding {downloads.Count} recoverable download(s)...");
+        if (downloads.Count == 0)
+        {
+            return true;
+        }
         await EnsureTableAsync();
         foreach (var download in downloads)
         {

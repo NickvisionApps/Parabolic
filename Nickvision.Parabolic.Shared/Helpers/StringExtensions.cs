@@ -71,6 +71,8 @@ public static class StringExtensions
             return 0.0;
         }
 
+        public string Clean() => s.Trim().Trim('"').Trim();
+
         public string SanitizeForFilename(bool includeWindowsCharacters)
         {
             var chars = Path.GetInvalidFileNameChars().ToHashSet();
@@ -131,6 +133,29 @@ public static class StringExtensions
                 return s.Substring(1, s.Length - 2);
             }
             return s;
+        }
+
+        public bool TryParseAriaProgressLine(out double progress, out double speed, out int eta)
+        {
+            progress = double.NaN;
+            speed = 0.0;
+            eta = 0;
+            var fields = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            if (fields.Length != 5)
+            {
+                return false;
+            }
+            var sizeSeparatorIndex = fields[1].IndexOf('/');
+            if (sizeSeparatorIndex <= 0 || sizeSeparatorIndex == fields[1].Length - 1)
+            {
+                return false;
+            }
+            var downloaded = fields[1][..sizeSeparatorIndex];
+            var total = fields[1][(sizeSeparatorIndex + 1)..];
+            progress = downloaded.AriaSizeToBytes() / total.AriaSizeToBytes();
+            speed = fields[3].Length > 3 ? fields[3][3..].AriaSizeToBytes() : 0.0;
+            eta = fields[4].Length > 5 ? fields[4][4..^1].AriaEtaToSeconds() : 0;
+            return true;
         }
     }
 }

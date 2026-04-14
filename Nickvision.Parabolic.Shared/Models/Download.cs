@@ -9,7 +9,6 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -147,15 +146,23 @@ public partial class Download : IDisposable
         }
         if (Status == DownloadStatus.Success)
         {
-            var lines = Log.Split('\n');
             try
             {
-                var finalPath = lines[^1].Trim('\r');
-                if (!File.Exists(finalPath))
+                var finalPath = string.Empty;
+                var log = _logBuilder.ToString();
+                var endIndex = log.Length;
+                for (var i = 0; i < 2 && endIndex > 0; i++)
                 {
-                    finalPath = lines[^2].Trim('\r');
+                    var startIndex = log.LastIndexOf('\n', endIndex - 1);
+                    var line = (startIndex == -1 ? log[..endIndex] : log[(startIndex + 1)..endIndex]).Trim('\r');
+                    if (!string.IsNullOrWhiteSpace(line))
+                    {
+                        finalPath = line;
+                        break;
+                    }
+                    endIndex = startIndex == -1 ? 0 : startIndex;
                 }
-                if (File.Exists(finalPath))
+                if (!string.IsNullOrEmpty(finalPath) && File.Exists(finalPath))
                 {
                     FilePath = finalPath;
                     if (_removeSourceData)
@@ -242,7 +249,7 @@ public partial class Download : IDisposable
         {
             if (e.Data.StartsWith("[Parabolic] Progress", StringComparison.Ordinal))
             {
-                var fields = e.Data.Split(';', StringSplitOptions.RemoveEmptyEntries);
+                var fields = e.Data.Split(';');
                 if (fields.Length != 7 || fields[1] == "NA")
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
@@ -265,38 +272,32 @@ public partial class Download : IDisposable
                 var line = e.Data;
                 if (OperatingSystem.IsWindows())
                 {
-                    foreach (var l in e.Data.Split('\r', StringSplitOptions.RemoveEmptyEntries).Reverse())
+                    var index = line.LastIndexOf('\r');
+                    while (index >= 0)
                     {
-                        var f = l.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                        if (f.Length == 5 && f[1].Split('/').Length == 2)
+                        var candidate = line[(index + 1)..];
+                        if (candidate.TryParseAriaProgressLine(out var progress, out var speed, out var eta))
                         {
-                            line = l;
-                            break;
+                            ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), progress, speed, eta));
+                            return;
                         }
+                        line = line[..index];
+                        index = line.LastIndexOf('\r');
                     }
                 }
-                var fields = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                if (fields.Length != 5)
+                if (!line.TryParseAriaProgressLine(out var finalProgress, out var finalSpeed, out var finalEta))
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
                     return;
                 }
-                var sizes = fields[1].Split('/');
-                if (sizes.Length != 2)
-                {
-                    ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NaN, 0.0, 0));
-                    return;
-                }
-                ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id,
-                    e.Data.AsMemory(),
-                    sizes[0].AriaSizeToBytes() / sizes[1].AriaSizeToBytes(),
-                    fields[3].Substring(3).AriaSizeToBytes(),
-                    fields[4].Substring(4, fields[4].Length - 4 - 1).AriaEtaToSeconds()));
+                ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), finalProgress, finalSpeed, finalEta));
             }
             else if (e.Data.StartsWith("[download] Sleeping", StringComparison.Ordinal))
             {
-                var fields = e.Data.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                if (fields.Length < 3 || !double.TryParse(fields[2], out var seconds))
+                var seconds = 0.0;
+                var sleepingPrefixLength = "[download] Sleeping ".Length;
+                var secondsEnd = e.Data.IndexOf(" second", sleepingPrefixLength, StringComparison.Ordinal);
+                if (secondsEnd == -1 || !double.TryParse(e.Data.Substring(sleepingPrefixLength, secondsEnd - sleepingPrefixLength), NumberStyles.Any, CultureInfo.InvariantCulture, out seconds))
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressChangedEventArgs(Id, e.Data.AsMemory(), double.NegativeInfinity, 0.0, 0));
                 }

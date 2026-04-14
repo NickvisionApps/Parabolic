@@ -4,7 +4,6 @@ using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
@@ -162,7 +161,7 @@ public class HistoryService : IHistoryService
         }
         if (SortNewest)
         {
-            downloads = downloads.OrderDescending().ToList();
+            downloads.Sort((a, b) => b.CompareTo(a));
         }
         else
         {

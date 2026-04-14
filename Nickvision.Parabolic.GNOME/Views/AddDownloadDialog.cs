@@ -245,8 +245,16 @@ public class AddDownloadDialog : Adw.Dialog
 
     private async Task DownloadPlaylistAsync()
     {
+        var selectedPlaylistItems = new List<MediaSelectionItem>();
+        for (var i = 0; i < _discoveryContext!.Items.Count; i++)
+        {
+            if (_playlistItemsCheckButtons[i].Active)
+            {
+                selectedPlaylistItems.Add(_discoveryContext.Items[i]);
+            }
+        }
         await _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
-            _discoveryContext!.Items.Where((x, i) => _playlistItemsCheckButtons[i].Active),
+            selectedPlaylistItems,
             _playlistSaveFolderRow!.Subtitle ?? string.Empty,
             _discoveryContext!.FileTypes[(int)_playlistFileTypeRow!.Selected],
             _discoveryContext!.VideoResolutions[(int)_playlistVideoResolutionRow!.Selected],
@@ -414,7 +422,18 @@ public class AddDownloadDialog : Adw.Dialog
                 chk.Valign = Gtk.Align.Center;
                 chk.AddCssClass("selection-mode");
                 chk.Active = item.ShouldSelect;
-                chk.OnToggled += (_, _) => _playlistItemsGroup!.Description = _translationService._("Total Duration: {0}", _discoveryContext!.Items.Where((x, i) => _playlistItemsCheckButtons[i].Active).Select(m => m.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration));
+                chk.OnToggled += (_, _) =>
+                {
+                    var totalDuration = TimeSpan.Zero;
+                    for (var i = 0; i < _playlistItemsCheckButtons.Count; i++)
+                    {
+                        if (_playlistItemsCheckButtons[i].Active)
+                        {
+                            totalDuration += _discoveryContext!.Items[i].Duration;
+                        }
+                    }
+                    _playlistItemsGroup!.Description = _translationService._("Total Duration: {0}", totalDuration);
+                };
                 row.AddPrefix(chk);
                 var revertBtn = Gtk.Button.New();
                 revertBtn.Valign = Gtk.Align.Center;
@@ -518,8 +537,8 @@ public class AddDownloadDialog : Adw.Dialog
         {
             return;
         }
-        var searchText = _singleSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
-        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)), false);
+        var searchText = _singleSubtitlesSearchEntry!.Text_?.Trim() ?? string.Empty;
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.Contains(searchText, StringComparison.OrdinalIgnoreCase)), false);
     }
 
     private void PlaylistViewStack_OnNotify(GObject.Object sender, NotifySignalArgs e)
@@ -551,8 +570,8 @@ public class AddDownloadDialog : Adw.Dialog
         {
             return;
         }
-        var searchText = _playlistSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
-        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)), true);
+        var searchText = _playlistSubtitlesSearchEntry!.Text_?.Trim() ?? string.Empty;
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.Contains(searchText, StringComparison.OrdinalIgnoreCase)), true);
     }
 
     private void SetSubtitles(IEnumerable<SelectionItem<SubtitleLanguage>> subtitles, bool isPlaylist)

@@ -313,21 +313,28 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtSingleEndTime.Text
     );
 
-    private Task DownloadPlaylistAsync() => _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
-        ListPlaylistItems.SelectedItems.Cast<BindableMediaSelectionItem>().Select(x => x.SelectionItem),
-        TxtPlaylistSaveFolder.Text,
-        (CmbPlaylistFileType.SelectedItem as BindableSelectionItem)!.ToSelectionItem<MediaFileType>()!,
-        (CmbPlaylistSuggestedVideoResolution.SelectedItem as BindableSelectionItem)!.ToSelectionItem<VideoResolution>()!,
-        (CmbPlaylistSuggestedAudioBitrate.SelectedItem as BindableSelectionItem)!.ToSelectionItem<double>()!,
-        TglPlaylistReverseDownloadOrder.IsOn,
-        TglPlaylistNumberTitles.IsOn,
-        _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
-        TglPlaylistExportM3U.IsOn,
-        TglPlaylistSplitChapters.IsOn,
-        TglPlaylistExportDescription.IsOn,
-        TglPlaylistExcludeFromHistory.IsOn,
-        (CmbPlaylistPostProcessorArgument.SelectedItem as BindableSelectionItem)!.ToSelectionItem<PostProcessorArgument?>()!
-    );
+    private async Task DownloadPlaylistAsync()
+    {
+        var selectedPlaylistItems = new List<MediaSelectionItem>();
+        foreach(var item in ListPlaylistItems.SelectedItems)
+        {
+            selectedPlaylistItems.Add((item as BindableMediaSelectionItem)!.SelectionItem);
+        }
+        await _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
+            selectedPlaylistItems,
+            TxtPlaylistSaveFolder.Text,
+            (CmbPlaylistFileType.SelectedItem as BindableSelectionItem)!.ToSelectionItem<MediaFileType>()!,
+            (CmbPlaylistSuggestedVideoResolution.SelectedItem as BindableSelectionItem)!.ToSelectionItem<VideoResolution>()!,
+            (CmbPlaylistSuggestedAudioBitrate.SelectedItem as BindableSelectionItem)!.ToSelectionItem<double>()!,
+            TglPlaylistReverseDownloadOrder.IsOn,
+            TglPlaylistNumberTitles.IsOn,
+            _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
+            TglPlaylistExportM3U.IsOn,
+            TglPlaylistSplitChapters.IsOn,
+            TglPlaylistExportDescription.IsOn,
+            TglPlaylistExcludeFromHistory.IsOn,
+            (CmbPlaylistPostProcessorArgument.SelectedItem as BindableSelectionItem)!.ToSelectionItem<PostProcessorArgument?>()!);
+    }
 
     private void TxtUrl_TextChanged(object? sender, TextChangedEventArgs e) => IsPrimaryButtonEnabled = !TxtUrl.Text.StartsWith("//") && Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var _);
 
@@ -450,7 +457,15 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void ListPlaylistItems_SelectionChanged(object? sender, SelectionChangedEventArgs e) => LblPlaylistItemsTime.Text = _translationService._("Total Duration: {0}", ListPlaylistItems.SelectedItems.Cast<BindableMediaSelectionItem>().Select(m => m.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration));
+    private void ListPlaylistItems_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        var totalDuration = TimeSpan.Zero;
+        foreach (var selectedItem in ListPlaylistItems.SelectedItems)
+        {
+            totalDuration += ((BindableMediaSelectionItem)selectedItem).Duration;
+        }
+        LblPlaylistItemsTime.Text = _translationService._("Total Duration: {0}", totalDuration);
+    }
 
     private void BtnPlaylistSelectAllSubtitles_Click(object? sender, RoutedEventArgs e) => ListPlaylistSubtitles.SelectAll();
 
@@ -462,9 +477,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             return;
         }
-        var searchText = TxtSingleSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        var searchText = TxtSingleSubtitlesSearch.Text.Trim();
         _isUpdatingSubtitleSelection = true;
-        ListSingleSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages.ToBindableSelectonItems() : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)).ToBindableSelectonItems();
+        ListSingleSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages.ToBindableSelectonItems() : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToBindableSelectonItems();
         ListSingleSubtitles.SelectSelectionItems();
         _isUpdatingSubtitleSelection = false;
     }
@@ -475,9 +490,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             return;
         }
-        var searchText = TxtPlaylistSubtitlesSearch.Text.Trim().ToLower() ?? string.Empty;
+        var searchText = TxtPlaylistSubtitlesSearch.Text.Trim();
         _isUpdatingSubtitleSelection = true;
-        ListPlaylistSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages.ToBindableSelectonItems() : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)).ToBindableSelectonItems();
+        ListPlaylistSubtitles.ItemsSource = string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages.ToBindableSelectonItems() : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToBindableSelectonItems();
         ListPlaylistSubtitles.SelectSelectionItems();
         _isUpdatingSubtitleSelection = false;
     }

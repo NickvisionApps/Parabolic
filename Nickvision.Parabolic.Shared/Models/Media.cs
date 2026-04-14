@@ -1,10 +1,9 @@
-﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Helpers;
 using Nickvision.Parabolic.Shared.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 
 namespace Nickvision.Parabolic.Shared.Models;
@@ -133,23 +132,100 @@ public class Media
             }
             if (Formats.Count == 0 && skippedFormats.Count > 0)
             {
-                var preferredCodecFormats = skippedFormats.Where(f => (!f.VideoCodec.HasValue || configurationService.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == configurationService.PreferredVideoCodec) && (!f.AudioCodec.HasValue || configurationService.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == configurationService.PreferredAudioCodec)).ToList();
+                var preferredCodecFormats = new List<Format>(skippedFormats.Count);
+                foreach (var skippedFormat in skippedFormats)
+                {
+                    if ((!skippedFormat.VideoCodec.HasValue || configurationService.PreferredVideoCodec == VideoCodec.Any || skippedFormat.VideoCodec.Value == configurationService.PreferredVideoCodec) &&
+                        (!skippedFormat.AudioCodec.HasValue || configurationService.PreferredAudioCodec == AudioCodec.Any || skippedFormat.AudioCodec.Value == configurationService.PreferredAudioCodec))
+                    {
+                        preferredCodecFormats.Add(skippedFormat);
+                    }
+                }
                 Formats.AddRange(preferredCodecFormats.Count > 0 ? preferredCodecFormats : skippedFormats);
             }
-            else if (!Formats.HasFormats(MediaType.Video) && skippedFormats.HasFormats(MediaType.Video))
+            else
             {
-                var preferredCodecVideoFormats = skippedFormats.Where(f => f.Type == MediaType.Video && (!f.VideoCodec.HasValue || configurationService.PreferredVideoCodec == VideoCodec.Any || f.VideoCodec.Value == configurationService.PreferredVideoCodec)).ToList();
-                foreach (var format in preferredCodecVideoFormats.Count > 0 ? preferredCodecVideoFormats : skippedFormats.Where(f => f.Type == MediaType.Video).ToList())
+                var hasSelectedVideoFormat = false;
+                var hasSelectedAudioFormat = false;
+                var hasSkippedVideoFormat = false;
+                var hasSkippedAudioFormat = false;
+                foreach (var selectedFormat in Formats)
                 {
-                    Formats.Add(format);
+                    if (selectedFormat == Format.NoneVideo || selectedFormat == Format.NoneAudio)
+                    {
+                        continue;
+                    }
+                    if (selectedFormat.Type == MediaType.Video)
+                    {
+                        hasSelectedVideoFormat = true;
+                    }
+                    else if (selectedFormat.Type == MediaType.Audio)
+                    {
+                        hasSelectedAudioFormat = true;
+                    }
                 }
-            }
-            else if (!Formats.HasFormats(MediaType.Audio) && skippedFormats.HasFormats(MediaType.Audio))
-            {
-                var preferredCodecAudioFormats = skippedFormats.Where(f => f.Type == MediaType.Audio && (!f.AudioCodec.HasValue || configurationService.PreferredAudioCodec == AudioCodec.Any || f.AudioCodec.Value == configurationService.PreferredAudioCodec)).ToList();
-                foreach (var format in preferredCodecAudioFormats.Count > 0 ? preferredCodecAudioFormats : skippedFormats.Where(f => f.Type == MediaType.Audio).ToList())
+                foreach (var skippedFormat in skippedFormats)
                 {
-                    Formats.Add(format);
+                    if (skippedFormat.Type == MediaType.Video)
+                    {
+                        hasSkippedVideoFormat = true;
+                    }
+                    else if (skippedFormat.Type == MediaType.Audio)
+                    {
+                        hasSkippedAudioFormat = true;
+                    }
+                }
+                if (!hasSelectedVideoFormat && hasSkippedVideoFormat)
+                {
+                    var preferredCodecVideoFormats = new List<Format>();
+                    foreach (var skippedFormat in skippedFormats)
+                    {
+                        if (skippedFormat.Type == MediaType.Video &&
+                            (!skippedFormat.VideoCodec.HasValue || configurationService.PreferredVideoCodec == VideoCodec.Any || skippedFormat.VideoCodec.Value == configurationService.PreferredVideoCodec))
+                        {
+                            preferredCodecVideoFormats.Add(skippedFormat);
+                        }
+                    }
+                    if (preferredCodecVideoFormats.Count > 0)
+                    {
+                        Formats.AddRange(preferredCodecVideoFormats);
+                    }
+                    else
+                    {
+                        foreach (var skippedFormat in skippedFormats)
+                        {
+                            if (skippedFormat.Type == MediaType.Video)
+                            {
+                                Formats.Add(skippedFormat);
+                            }
+                        }
+                    }
+                }
+                else if (!hasSelectedAudioFormat && hasSkippedAudioFormat)
+                {
+                    var preferredCodecAudioFormats = new List<Format>();
+                    foreach (var skippedFormat in skippedFormats)
+                    {
+                        if (skippedFormat.Type == MediaType.Audio &&
+                            (!skippedFormat.AudioCodec.HasValue || configurationService.PreferredAudioCodec == AudioCodec.Any || skippedFormat.AudioCodec.Value == configurationService.PreferredAudioCodec))
+                        {
+                            preferredCodecAudioFormats.Add(skippedFormat);
+                        }
+                    }
+                    if (preferredCodecAudioFormats.Count > 0)
+                    {
+                        Formats.AddRange(preferredCodecAudioFormats);
+                    }
+                    else
+                    {
+                        foreach (var skippedFormat in skippedFormats)
+                        {
+                            if (skippedFormat.Type == MediaType.Audio)
+                            {
+                                Formats.Add(skippedFormat);
+                            }
+                        }
+                    }
                 }
             }
             Formats.Sort();

@@ -15,7 +15,6 @@ using Nickvision.Parabolic.Shared.Services;
 using Nickvision.Parabolic.WinUI.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.System;
 
@@ -598,15 +597,25 @@ public sealed partial class MainWindow : Window
 
     private void UpdateDownloadsList()
     {
-        ListDownloads.ItemsSource = _downloadRows.Values.Where(row => (((NavViewDownloads.SelectedItem as NavigationViewItem)?.Tag as string) ?? string.Empty) switch
+        var selectedTag = ((NavViewDownloads.SelectedItem as NavigationViewItem)?.Tag as string) ?? string.Empty;
+        var rows = new List<DownloadRow>(_downloadRows.Count);
+        foreach (var row in _downloadRows.Values)
         {
-            "1" => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
-            "2" => row.Status == DownloadStatus.Queued,
-            "3" => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
-            "4" => row.Status == DownloadStatus.Error,
-            _ => true
-        }).Reverse().ToList();
-        ViewStackDownloads.SelectedIndex = (ListDownloads.ItemsSource as IEnumerable<DownloadRow>)!.Count() > 0 ? 1 : 0;
+            if (selectedTag switch
+            {
+                "1" => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
+                "2" => row.Status == DownloadStatus.Queued,
+                "3" => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+                "4" => row.Status == DownloadStatus.Error,
+                _ => true
+            })
+            {
+                rows.Add(row);
+            }
+        }
+        rows.Reverse();
+        ListDownloads.ItemsSource = rows;
+        ViewStackDownloads.SelectedIndex = rows.Count > 0 ? 1 : 0;
         InfoBadgeDownloadsAll.Value = _controller.RemainingDownloadsCount;
         InfoBadgeDownloadsAll.Visibility = _controller.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
         InfoBadgeDownloadsRunning.Value = _controller.RunningDownloadsCount;

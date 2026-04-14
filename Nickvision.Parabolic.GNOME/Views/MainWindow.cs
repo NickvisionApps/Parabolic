@@ -510,19 +510,27 @@ public class MainWindow : Adw.ApplicationWindow
 
     private void UpdateDownloadsList()
     {
-        var downloads = _downloadRows.Values.Where(row => _downloadsToggleGroup!.Active switch
+        var downloads = new List<DownloadRow>(_downloadRows.Count);
+        foreach (var row in _downloadRows.Values)
         {
-            1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
-            2 => row.Status == DownloadStatus.Queued,
-            3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
-            4 => row.Status == DownloadStatus.Error,
-            _ => true
-        }).Reverse();
+            if (_downloadsToggleGroup!.Active switch
+            {
+                1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
+                2 => row.Status == DownloadStatus.Queued,
+                3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+                4 => row.Status == DownloadStatus.Error,
+                _ => true
+            })
+            {
+                downloads.Add(row);
+            }
+        }
+        downloads.Reverse();
         _listDownloads!.RemoveAll();
         foreach (var row in downloads)
         {
             _listDownloads!.Append(row);
         }
-        _viewStackDownloads!.VisibleChildName = downloads.Any() ? "Has" : "None";
+        _viewStackDownloads!.VisibleChildName = downloads.Count > 0 ? "Has" : "None";
     }
 }
