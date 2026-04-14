@@ -3,10 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Input;
 using Nickvision.Desktop.Application;
-using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Desktop.Network;
 using Nickvision.Desktop.Notifications;
@@ -18,7 +15,6 @@ using Nickvision.Parabolic.Shared.Services;
 using Nickvision.Parabolic.WinUI.Controls;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Windows.System;
 
@@ -50,6 +46,12 @@ public sealed partial class MainWindow : Window
         _downloadRows = new Dictionary<int, DownloadRow>();
         _notificationClickHandler = null;
         // Config
+        AppWindow.TitleBar.PreferredTheme = _controller.Theme switch
+        {
+            Theme.Light => TitleBarTheme.Light,
+            Theme.Dark => TitleBarTheme.Dark,
+            _ => TitleBarTheme.UseDefaultAppMode
+        };
         MainGrid.RequestedTheme = _controller.Theme switch
         {
             Theme.Light => ElementTheme.Light,
@@ -62,9 +64,12 @@ public sealed partial class MainWindow : Window
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(TitleBar);
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+        BtnPreview.Visibility = _appInfo.Version.IsPreview ? Visibility.Visible : Visibility.Collapsed;
         // Events
         AppWindow.Closing += Window_Closing;
-        eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_AppNotificationSent(sender, e));
+        eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => App_AppNotificationSent(sender, e));
+        eventsService.ConfigurationSaved += App_ConfigurationSaved;
+        eventsService.DatabasePasswordRequired += App_DatabasePasswordRequired;
         eventsService.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
         eventsService.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
         eventsService.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
@@ -73,39 +78,48 @@ public sealed partial class MainWindow : Window
         eventsService.DownloadStartedFromQueue += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStartedFromQueue(sender, e));
         eventsService.DownloadRetired += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadRetired(sender, e));
         eventsService.DownloadRequested += async (s, args) => await AddDownloadAsync(args.Url);
-        eventsService.JsonFileSaved += Controller_JsonFileSaved;
         // Translations
         AppWindow.Title = _appInfo.ShortName;
-        TitleBar.Title = _appInfo.ShortName;
-        TitleBar.Subtitle = _appInfo.Version!.IsPreview ? _translationService._("Preview") : string.Empty;
-        NavItemHome.Content = _translationService._("Home");
-        NavItemDownloads.Content = _translationService._("Downloads");
-        NavItemHistory.Content = _translationService._("History");
-        NavItemKeyring.Content = _translationService._("Keyring");
-        NavItemUpdates.Content = _translationService._("Updating");
-        NavItemHelp.Content = _translationService._("Help");
+        LblTitle.Text = _appInfo.ShortName;
+        MenuFile.Title = _translationService._("File");
+        MenuAddDownload.Text = _translationService._("Add Download");
+        MenuExit.Text = _translationService._("Exit");
+        MenuEdit.Title = _translationService._("Edit");
+        MenuKeyring.Text = _translationService._("Keyring");
+        MenuSettings.Text = _translationService._("Settings");
+        MenuView.Title = _translationService._("View");
+        MenuHistory.Text = _translationService._("History");
+        MenuDownloads.Title = _translationService._("Downloads");
+        MenuStopAllRemaining.Text = _translationService._("Stop All Remaining");
+        MenuRetryAllFailed.Text = _translationService._("Retry All Failed");
+        MenuClearAllQueued.Text = _translationService._("Clear All Queued");
+        MenuClearAllCompleted.Text = _translationService._("Clear All Completed");
+        MenuHelp.Title = _translationService._("Help");
         MenuCheckForUpdates.Text = _translationService._("Check for Updates");
         MenuGitHubRepo.Text = _translationService._("GitHub Repo");
         MenuReportABug.Text = _translationService._("Report a Bug");
         MenuDiscussions.Text = _translationService._("Discussions");
         MenuAbout.Text = _translationService._("About {0}", _appInfo.ShortName!);
-        NavItemSettings.Content = _translationService._("Settings");
-        StatusHome.Title = _translationService._("Download Media");
-        StatusHome.Description = _translationService._("Add a video, audio, or playlist URL to start downloading");
-        LblHomeAddDownload.Text = _translationService._("Add Download");
-        LblDownloads.Text = _translationService._("Downloads");
-        LblDownloadsAddDownload.Text = _translationService._("Add");
-        FilterAll.Content = _translationService._("All");
-        FilterRunning.Content = _translationService._("Running");
-        FilterQueued.Content = _translationService._("Queued");
-        FilterCompleted.Content = _translationService._("Completed");
-        FilterFailed.Content = _translationService._("Failed");
+        ToolTipService.SetToolTip(BtnPreview, _translationService._("You are running a preview version of {0}", _appInfo.ShortName!));
+        LblPreview.Text = _translationService._("Thank you for testing the upcoming features and changes! ❤️");
+        LblHomeTitle.Text = _translationService._("Download Media");
+        LblHomeDescription.Text = _translationService._("Add a video, audio, or playlist URL to start downloading");
+        LblAddDownload.Text = _translationService._("Add Download");
+        LblKeyring.Text = _translationService._("Keyring");
+        LblSettings.Text = _translationService._("Settings");
         BtnStopAllRemaining.Label = _translationService._("Stop All Remaining");
         BtnRetryAllFailed.Label = _translationService._("Retry All Failed");
         BtnClearAllQueued.Label = _translationService._("Clear All Queued");
         BtnClearAllCompleted.Label = _translationService._("Clear All Completed");
+        LblDownloadsAddDownload.Text = _translationService._("Add");
+        NavDownloadsAll.Content = _translationService._("All");
+        NavDownloadsRunning.Content = _translationService._("Running");
+        NavDownloadsQueued.Content = _translationService._("Queued");
+        NavDownloadsCompleted.Content = _translationService._("Completed");
+        NavDownloadsFailed.Content = _translationService._("Failed");
         StatusNoneDownloads.Title = _translationService._("No Downloads");
         StatusNoneDownloads.Description = _translationService._("There are no downloads of this type");
+        LblNoneAddDownload.Text = _translationService._("Add Download");
         DlgCredential.Title = _translationService._("Credential Required");
         TxtCredentialUsername.PlaceholderText = _translationService._("Enter username here");
         TxtCredentialPassword.PlaceholderText = _translationService._("Enter password here");
@@ -115,11 +129,11 @@ public sealed partial class MainWindow : Window
 
     private async void Window_Loaded(object? sender, RoutedEventArgs e)
     {
+        ViewStack.SelectedIndex = (int)Pages.Home;
         ViewStackDownloads.SelectedIndex = 0;
-        DownloadsFilter.SelectedIndex = 0;
         MenuCheckForUpdates.IsEnabled = false;
         var updatesTask = _controller.CheckForUpdatesAsync(false);
-        if (_controller.ShowDislcaimerOnStartup)
+        if (_controller.ShowDisclaimerOnStartup)
         {
             var checkBox = new CheckBox()
             {
@@ -150,7 +164,7 @@ public sealed partial class MainWindow : Window
             await disclaimerDialog.ShowAsync();
             if (checkBox.IsChecked ?? false)
             {
-                _controller.ShowDislcaimerOnStartup = false;
+                _controller.ShowDisclaimerOnStartup = false;
             }
         }
         if (_controller.RecoverableDownloadsCount > 0)
@@ -186,7 +200,7 @@ public sealed partial class MainWindow : Window
     {
         if (!_controller.CanShutdown)
         {
-            e.Cancel = true;
+            e?.Cancel = true;
             var confirmDialog = new ContentDialog()
             {
                 Title = _appInfo.ShortName,
@@ -210,41 +224,7 @@ public sealed partial class MainWindow : Window
         _serviceProvider.GetRequiredService<IHostApplicationLifetime>().StopApplication();
     }
 
-    private void TitleBar_PaneToggleRequested(TitleBar sender, object e)
-    {
-        NavView.IsPaneOpen = !NavView.IsPaneOpen;
-    }
-
-    private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs e)
-    {
-        if (e.SelectedItem is NavigationViewItem item)
-        {
-            var tag = item.Tag as string;
-            FrameCustom.Content = tag switch
-            {
-                "History" => _serviceProvider.GetRequiredService<HistoryPage>(),
-                "Keyring" => _serviceProvider.GetRequiredService<KeyringPage>(),
-                "Settings" => _serviceProvider.GetRequiredService<SettingsPage>(),
-                _ => null
-            };
-            if (tag == "Settings")
-            {
-                (FrameCustom.Content as SettingsPage)!.WindowId = AppWindow.Id;
-            }
-            ViewStack.SelectedIndex = tag switch
-            {
-                "Downloads" => (int)Pages.Downloads,
-                "History" => (int)Pages.Custom,
-                "Keyring" => (int)Pages.Custom,
-                "Settings" => (int)Pages.Custom,
-                _ => (int)Pages.Home
-            };
-        }
-    }
-
-    private void NavItem_Tapped(object sender, TappedRoutedEventArgs e) => FlyoutBase.ShowAttachedFlyout(sender as FrameworkElement);
-
-    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
+    private void App_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         if (_notificationClickHandler is not null)
         {
@@ -309,6 +289,64 @@ public sealed partial class MainWindow : Window
         InfoBar.IsOpen = true;
     }
 
+    private void App_ConfigurationSaved(object? sender, ConfigurationSavedEventArgs args)
+    {
+        if (args.ChangedPropertyName == "Theme")
+        {
+            AppWindow.TitleBar.PreferredTheme = _controller.Theme switch
+            {
+                Theme.Light => TitleBarTheme.Light,
+                Theme.Dark => TitleBarTheme.Dark,
+                _ => TitleBarTheme.UseDefaultAppMode
+            };
+            MainGrid.RequestedTheme = _controller.Theme switch
+            {
+                Theme.Light => ElementTheme.Light,
+                Theme.Dark => ElementTheme.Dark,
+                _ => ElementTheme.Default
+            };
+        }
+    }
+
+    private async void App_DatabasePasswordRequired(object? sender, PasswordRequiredEventArgs args)
+    {
+        var passwordBox = new PasswordBox()
+        {
+            PlaceholderText = _translationService._("Enter password here")
+        };
+        var stackPanel = new StackPanel()
+        {
+            Orientation = Orientation.Vertical,
+            Spacing = 12
+        };
+        stackPanel.Children.Add(new TextBlock()
+        {
+            Text = _translationService._("This app stores data in an encrypted database. As the system credential manager (secret service) is not available, please provide a password to use to encrypt the database.\n\nIf you've already provided a password, please provide it again to unlock the database."),
+            TextWrapping = TextWrapping.WrapWholeWords
+        });
+        stackPanel.Children.Add(passwordBox);
+        var contentDialog = new ContentDialog()
+        {
+            Title = _translationService._("Password Required"),
+            Content = stackPanel,
+            PrimaryButtonText = _translationService._("Submit"),
+            DefaultButton = ContentDialogButton.Primary
+        };
+        while (string.IsNullOrEmpty(args.Password))
+        {
+            var res = await contentDialog.ShowAsync();
+            if (res == ContentDialogResult.Primary)
+            {
+                args.Password = passwordBox.Password;
+            }
+        }
+    }
+
+    private void TitleBar_BackRequested(TitleBar sender, object args)
+    {
+        TitleBar.IsBackButtonVisible = false;
+        ViewStack.SelectedIndex = ViewStack.PreviousSelectedIndex;
+    }
 
     private async void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
     {
@@ -320,7 +358,8 @@ public sealed partial class MainWindow : Window
         await row.TriggerAddedStateAsync(e);
         _downloadRows[e.Id] = row;
         UpdateDownloadsList();
-        NavItemDownloads.IsSelected = true;
+        ViewStack.SelectedIndex = (int)Pages.Downloads;
+        TitleBar.IsBackButtonVisible = false;
     }
 
     private void Controller_DownloadCompleted(object? sender, DownloadCompletedEventArgs e)
@@ -382,21 +421,6 @@ public sealed partial class MainWindow : Window
         }
     }
 
-    private void Controller_JsonFileSaved(object? sender, JsonFileSavedEventArgs e)
-    {
-        if (e.Name == Configuration.Key)
-        {
-            MainGrid.RequestedTheme = (e.Data as Configuration)!.Theme switch
-            {
-                Theme.Light => ElementTheme.Light,
-                Theme.Dark => ElementTheme.Dark,
-                _ => ElementTheme.Default
-            };
-        }
-    }
-
-    private void DownloadsFilter_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateDownloadsList();
-
     private void DownloadRow_PauseRequested(object? sender, int id)
     {
         if (_controller.PauseDownload(id) && _downloadRows.TryGetValue(id, out var row))
@@ -417,20 +441,23 @@ public sealed partial class MainWindow : Window
 
     private async void DownloadRow_StopRequested(object? sender, int id) => await _controller.StopDownloadAsync(id);
 
+    private void NavViewDownloads_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args) => UpdateDownloadsList();
+
     private void UpdateProgress_Changed(object? sender, DownloadProgress e)
     {
         DispatcherQueue.TryEnqueue(() =>
         {
             if (e.Completed)
             {
-                FlyoutProgress.Hide();
-                NavItemUpdates.Visibility = Visibility.Collapsed;
+                FlyoutUpdateProgress.Hide();
+                BtnUpdateProgress.Visibility = Visibility.Collapsed;
                 return;
             }
             var message = _translationService._("Downloading update: {0}%", Math.Round(e.Percentage * 100));
-            NavItemUpdates.Visibility = Visibility.Visible;
-            StsProgress.Description = message;
-            BarProgress.Value = e.Percentage * 100;
+            BtnUpdateProgress.Visibility = Visibility.Visible;
+            ToolTipService.SetToolTip(BtnUpdateProgress, message);
+            RingUpdateProcess.Value = e.Percentage * 100;
+            LblUpdateProgress.Text = message;
         });
     }
 
@@ -456,6 +483,33 @@ public sealed partial class MainWindow : Window
     }
 
     private async void AddDownload(object? sender, RoutedEventArgs e) => await AddDownloadAsync(null);
+
+    private void Exit(object sender, RoutedEventArgs args) => Window_Closing(AppWindow, null);
+
+    private async void Keyring(object sender, RoutedEventArgs args)
+    {
+        var keyringDialog = _serviceProvider.GetRequiredService<KeyringDialog>();
+        keyringDialog.RequestedTheme = MainGrid.ActualTheme;
+        keyringDialog.XamlRoot = MainGrid.XamlRoot;
+        await keyringDialog.ShowAsync();
+    }
+
+    private void Settings(object sender, RoutedEventArgs args)
+    {
+        TitleBar.IsBackButtonVisible = true;
+        ViewStack.SelectedIndex = (int)Pages.Custom;
+        var settings = _serviceProvider.GetRequiredService<SettingsPage>();
+        settings.WindowId = AppWindow.Id;
+        FrameCustom.Content = settings;
+    }
+
+    private async void History(object sender, RoutedEventArgs args)
+    {
+        var historyDialog = _serviceProvider.GetRequiredService<HistoryDialog>();
+        historyDialog.RequestedTheme = MainGrid.ActualTheme;
+        historyDialog.XamlRoot = MainGrid.XamlRoot;
+        await historyDialog.ShowAsync();
+    }
 
     private async void CheckForUpdates(object? sender, RoutedEventArgs e)
     {
@@ -546,16 +600,34 @@ public sealed partial class MainWindow : Window
 
     private void UpdateDownloadsList()
     {
-        DownloadsList.ItemsSource = _downloadRows.Values.Where(row => DownloadsFilter.SelectedIndex switch
+        var selectedTag = ((NavViewDownloads.SelectedItem as NavigationViewItem)?.Tag as string) ?? string.Empty;
+        var rows = new List<DownloadRow>(_downloadRows.Count);
+        foreach (var row in _downloadRows.Values)
         {
-            1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
-            2 => row.Status == DownloadStatus.Queued,
-            3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
-            4 => row.Status == DownloadStatus.Error,
-            _ => true
-        }).Reverse().ToList();
-        ViewStackDownloads.SelectedIndex = (DownloadsList.ItemsSource as IEnumerable<DownloadRow>)!.Count() > 0 ? 1 : 0;
-        BadgeDownloads.Value = _controller.RemainingDownloadsCount;
-        BadgeDownloads.Visibility = _controller.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+            if (selectedTag switch
+            {
+                "1" => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
+                "2" => row.Status == DownloadStatus.Queued,
+                "3" => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+                "4" => row.Status == DownloadStatus.Error,
+                _ => true
+            })
+            {
+                rows.Add(row);
+            }
+        }
+        rows.Reverse();
+        ListDownloads.ItemsSource = rows;
+        ViewStackDownloads.SelectedIndex = rows.Count > 0 ? 1 : 0;
+        InfoBadgeDownloadsAll.Value = _controller.RemainingDownloadsCount;
+        InfoBadgeDownloadsAll.Visibility = _controller.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsRunning.Value = _controller.RunningDownloadsCount;
+        InfoBadgeDownloadsRunning.Visibility = _controller.RunningDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsQueued.Value = _controller.QueuedDownloadsCount;
+        InfoBadgeDownloadsQueued.Visibility = _controller.QueuedDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsCompleted.Value = _controller.CompletedDownloadsCount;
+        InfoBadgeDownloadsCompleted.Visibility = _controller.CompletedDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+        InfoBadgeDownloadsFailed.Value = _controller.FailedDownloadsCount;
+        InfoBadgeDownloadsFailed.Visibility = _controller.FailedDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 }

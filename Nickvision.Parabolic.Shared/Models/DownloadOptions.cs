@@ -69,10 +69,6 @@ public class DownloadOptions
         }
     }
 
-    public override int GetHashCode() => HashCode.Combine(
-        HashCode.Combine(Url, Credential, FileType, PlaylistPosition, VideoFormat, AudioFormat, SaveFolder, SaveFilename),
-        SubtitleLanguages, SplitChapters, ExportDescription, PostProcessorArgument, TimeFrame, VideoResolution, AudioBitrate);
-
     private void EnsurePathSize()
     {
         if (_isEnsuringPath || string.IsNullOrEmpty(SaveFolder) || string.IsNullOrEmpty(SaveFilename))

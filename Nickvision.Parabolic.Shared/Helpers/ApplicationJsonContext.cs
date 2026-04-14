@@ -1,15 +1,21 @@
-﻿using Nickvision.Parabolic.Shared.Models;
+﻿using Nickvision.Desktop.Application;
+using Nickvision.Parabolic.Shared.Models;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
 [JsonSourceGenerationOptions(DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull, WriteIndented = true)]
-[JsonSerializable(typeof(Configuration))]
+[JsonSerializable(typeof(AppVersion))]
+[JsonSerializable(typeof(Dictionary<MediaFileType, string>))]
+[JsonSerializable(typeof(Dictionary<string, string>))]
 [JsonSerializable(typeof(DownloadOptions))]
-[JsonSerializable(typeof(DownloaderOptions))]
 [JsonSerializable(typeof(JsonElement))]
-[JsonSerializable(typeof(PreviousDownloadOptions))]
+[JsonSerializable(typeof(List<PostProcessorArgument>))]
+[JsonSerializable(typeof(List<SubtitleLanguage>))]
+[JsonSerializable(typeof(VideoResolution))]
+[JsonSerializable(typeof(WindowGeometry))]
 public partial class ApplicationJsonContext : JsonSerializerContext
 {
 

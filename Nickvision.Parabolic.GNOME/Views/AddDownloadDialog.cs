@@ -170,9 +170,8 @@ public class AddDownloadDialog : Adw.Dialog
         _playlistItemsCheckButtons = new List<Gtk.CheckButton>();
         _builder.Connect(this);
         // Load
-        _authenticationCredentialRow!.SetModel(_controller.AvailableCredentials);
-        _downloadImmediatelyAsVideoRow!.Active = _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo;
-        _downloadImmediatelyAsAudioRow!.Active = _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio;
+        _downloadImmediatelyAsVideoRow!.Active = _controller.PreviousDownloadImmediatelyAsVideo;
+        _downloadImmediatelyAsAudioRow!.Active = _controller.PreviousDownloadImmediatelyAsAudio;
         // Events
         OnClosed += Dialog_OnClosed;
         _urlRow!.OnChanged += UrlRow_OnChanged;
@@ -201,15 +200,17 @@ public class AddDownloadDialog : Adw.Dialog
         _playlistDownloadButton!.OnClicked += async (sender, e) => await DownloadPlaylistAsync();
     }
 
-    public void Present(Uri url, Gtk.Widget? parent)
+    public async Task Present(Uri url, Gtk.Widget? parent)
     {
         base.Present(parent);
+        _authenticationCredentialRow!.SetModel(await _controller.GetAvailableCredentialsAsync());
         _urlRow!.Text_ = url.ToString();
     }
 
     public new async Task Present(Gtk.Widget? parent)
     {
         base.Present(parent);
+        _authenticationCredentialRow!.SetModel(await _controller.GetAvailableCredentialsAsync());
         if (string.IsNullOrEmpty(_urlRow!.Text_))
         {
             try
@@ -236,7 +237,7 @@ public class AddDownloadDialog : Adw.Dialog
             _singleSplitChaptersRow!.Active,
             _singleExportDescriptionRow!.Active,
             _singleExcludeFromHistoryRow!.Active,
-            _controller.AvailablePostProcessorArguments[(int)_singlePostProcessorArgumentRow!.Selected],
+            _controller.GetAvailablePostProcessorArguments()[(int)_singlePostProcessorArgumentRow!.Selected],
             _singleStartTimeRow!.Text_ ?? string.Empty,
             _singleEndTimeRow!.Text_ ?? string.Empty);
         Close();
@@ -244,8 +245,16 @@ public class AddDownloadDialog : Adw.Dialog
 
     private async Task DownloadPlaylistAsync()
     {
+        var selectedPlaylistItems = new List<MediaSelectionItem>();
+        for (var i = 0; i < _discoveryContext!.Items.Count; i++)
+        {
+            if (_playlistItemsCheckButtons[i].Active)
+            {
+                selectedPlaylistItems.Add(_discoveryContext.Items[i]);
+            }
+        }
         await _controller.AddPlaylistDownloadsAsync(_discoveryContext!,
-            _discoveryContext!.Items.Where((x, i) => _playlistItemsCheckButtons[i].Active),
+            selectedPlaylistItems,
             _playlistSaveFolderRow!.Subtitle ?? string.Empty,
             _discoveryContext!.FileTypes[(int)_playlistFileTypeRow!.Selected],
             _discoveryContext!.VideoResolutions[(int)_playlistVideoResolutionRow!.Selected],
@@ -257,7 +266,7 @@ public class AddDownloadDialog : Adw.Dialog
             _playlistSplitChaptersRow!.Active,
             _playlistExportM3URow!.Active,
             _playlistExcludeFromHistoryRow!.Active,
-            _controller.AvailablePostProcessorArguments[(int)_playlistPostProcessorArgumentRow!.Selected]);
+            _controller.GetAvailablePostProcessorArguments()[(int)_playlistPostProcessorArgumentRow!.Selected]);
         Close();
     }
 
@@ -291,11 +300,11 @@ public class AddDownloadDialog : Adw.Dialog
         catch { }
     }
 
-    private void AuthenticationCredentialRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
+    private async void AuthenticationCredentialRow_OnNotify(GObject.Object sender, NotifySignalArgs e)
     {
         if (e.Pspec.GetName() == "selected-item")
         {
-            var visible = _controller.AvailableCredentials[(int)_authenticationCredentialRow!.Selected].Value is null;
+            var visible = (await _controller.GetAvailableCredentialsAsync())[(int)_authenticationCredentialRow!.Selected].Value is null;
             _authenticationUsernameRow!.Visible = visible;
             _authenticationPasswordRow!.Visible = visible;
         }
@@ -328,10 +337,10 @@ public class AddDownloadDialog : Adw.Dialog
         }
         else
         {
-            credential = _controller.AvailableCredentials[(int)_authenticationCredentialRow!.Selected].Value;
+            credential = (await _controller.GetAvailableCredentialsAsync())[(int)_authenticationCredentialRow!.Selected].Value;
         }
-        _controller.PreviousDownloadOptions.DownloadImmediatelyAsVideo = _downloadImmediatelyAsVideoRow!.Active;
-        _controller.PreviousDownloadOptions.DownloadImmediatelyAsAudio = _downloadImmediatelyAsAudioRow!.Active;
+        _controller.PreviousDownloadImmediatelyAsVideo = _downloadImmediatelyAsVideoRow!.Active;
+        _controller.PreviousDownloadImmediatelyAsAudio = _downloadImmediatelyAsAudioRow!.Active;
         _discoveryContext = await _controller.DiscoverAsync(new Uri(_urlRow!.Text_!), credential, _cancellationTokenSource.Token);
         _cancellationTokenSource.Dispose();
         _cancellationTokenSource = null;
@@ -353,7 +362,7 @@ public class AddDownloadDialog : Adw.Dialog
             }
             catch { }
             _singleSaveFilenameRow!.Text_ = _discoveryContext.Items[0].Label;
-            _singleSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
+            _singleSaveFolderRow!.Subtitle = _controller.PreviousSaveFolder;
             _singleVideoFormatRow!.SetModel(_discoveryContext.VideoFormats, false);
             _singleAudioFormatRow!.SetModel(_discoveryContext.AudioFormats, false);
             _singleFileTypeRow!.SetModel(_discoveryContext.FileTypes);
@@ -371,9 +380,9 @@ public class AddDownloadDialog : Adw.Dialog
                 _singleSubtitlesGroup!.Add(row);
             }
             SetSubtitles(_discoveryContext.SubtitleLanguages, false);
-            _singleSplitChaptersRow!.Active = _controller.PreviousDownloadOptions.SplitChapters;
-            _singleExportDescriptionRow!.Active = _controller.PreviousDownloadOptions.ExportDescription;
-            _singlePostProcessorArgumentRow!.SetModel(_controller.AvailablePostProcessorArguments);
+            _singleSplitChaptersRow!.Active = _controller.PreviousSplitChapters;
+            _singleExportDescriptionRow!.Active = _controller.PreviousExportDescription;
+            _singlePostProcessorArgumentRow!.SetModel(_controller.GetAvailablePostProcessorArguments());
             _singleStartTimeRow!.Text_ = _discoveryContext.Items[0].StartTime;
             _singleEndTimeRow!.Text_ = _discoveryContext.Items[0].EndTime;
             if (_downloadImmediatelyAsVideoRow!.Active || _downloadImmediatelyAsAudioRow!.Active)
@@ -392,13 +401,13 @@ public class AddDownloadDialog : Adw.Dialog
                 _playlistThumbnailImage!.Paintable = Gdk.Texture.NewFromBytes(GLib.Bytes.NewStatic(await _controller.GetThumbnailImageBytesAsync(_discoveryContext)));
             }
             catch { }
-            _playlistSaveFolderRow!.Subtitle = _controller.PreviousDownloadOptions.SaveFolder;
+            _playlistSaveFolderRow!.Subtitle = _controller.PreviousSaveFolder;
             _playlistFileTypeRow!.SetModel(_discoveryContext.FileTypes);
             _playlistVideoResolutionRow!.SetModel(_discoveryContext.VideoResolutions);
             _playlistAudioBitrateRow!.SetModel(_discoveryContext.AudioBitrates);
             _playlistViewStack!.GetPage(_playlistItemsPage!).BadgeNumber = (uint)_discoveryContext.Items.Count;
-            _playlistReverseOrderRow!.Active = _controller.PreviousDownloadOptions.ReverseDownloadOrder;
-            _playlistNumberTitlesRow!.Active = _controller.PreviousDownloadOptions.NumberTitles;
+            _playlistReverseOrderRow!.Active = _controller.PreviousReverseDownloadOrder;
+            _playlistNumberTitlesRow!.Active = _controller.PreviousNumberTitles;
             _playlistItemsGroup!.Description = _translationService._("Total Duration: {0}", _discoveryContext.TotalDuration);
             _playlistSearchSubtitlesButton!.Active = false;
             _playlistSubtitlesSearchEntry!.Text_ = string.Empty;
@@ -413,7 +422,18 @@ public class AddDownloadDialog : Adw.Dialog
                 chk.Valign = Gtk.Align.Center;
                 chk.AddCssClass("selection-mode");
                 chk.Active = item.ShouldSelect;
-                chk.OnToggled += (_, _) => _playlistItemsGroup!.Description = _translationService._("Total Duration: {0}", _discoveryContext!.Items.Where((x, i) => _playlistItemsCheckButtons[i].Active).Select(m => m.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration));
+                chk.OnToggled += (_, _) =>
+                {
+                    var totalDuration = TimeSpan.Zero;
+                    for (var i = 0; i < _playlistItemsCheckButtons.Count; i++)
+                    {
+                        if (_playlistItemsCheckButtons[i].Active)
+                        {
+                            totalDuration += _discoveryContext!.Items[i].Duration;
+                        }
+                    }
+                    _playlistItemsGroup!.Description = _translationService._("Total Duration: {0}", totalDuration);
+                };
                 row.AddPrefix(chk);
                 var revertBtn = Gtk.Button.New();
                 revertBtn.Valign = Gtk.Align.Center;
@@ -461,10 +481,10 @@ public class AddDownloadDialog : Adw.Dialog
                 _playlistSubtitlesGroup!.Add(row);
             }
             SetSubtitles(_discoveryContext.SubtitleLanguages, true);
-            _playlistExportM3URow!.Active = _controller.PreviousDownloadOptions.ExportM3U;
-            _playlistSplitChaptersRow!.Active = _controller.PreviousDownloadOptions.SplitChapters;
-            _playlistExportDescriptionRow!.Active = _controller.PreviousDownloadOptions.ExportDescription;
-            _playlistPostProcessorArgumentRow!.SetModel(_controller.AvailablePostProcessorArguments);
+            _playlistExportM3URow!.Active = _controller.PreviousExportM3U;
+            _playlistSplitChaptersRow!.Active = _controller.PreviousSplitChapters;
+            _playlistExportDescriptionRow!.Active = _controller.PreviousExportDescription;
+            _playlistPostProcessorArgumentRow!.SetModel(_controller.GetAvailablePostProcessorArguments());
             if (_downloadImmediatelyAsVideoRow!.Active || _downloadImmediatelyAsAudioRow!.Active)
             {
                 await DownloadPlaylistAsync();
@@ -502,8 +522,8 @@ public class AddDownloadDialog : Adw.Dialog
         if (e.Pspec.GetName() == "selected-item")
         {
             var selectedFileType = _discoveryContext!.FileTypes[(int)_singleFileTypeRow!.Selected];
-            var foundVideoFormat = _discoveryContext.VideoFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousDownloadOptions.VideoFormatIds[selectedFileType.Value]);
-            var foundAudioFormat = _discoveryContext.AudioFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousDownloadOptions.AudioFormatIds[selectedFileType.Value]);
+            var foundVideoFormat = _discoveryContext.VideoFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousVideoFormatIds[selectedFileType.Value]);
+            var foundAudioFormat = _discoveryContext.AudioFormats.FirstOrDefault(x => x.Value.Id == _controller.PreviousAudioFormatIds[selectedFileType.Value]);
             var foundVideoFormatIndex = foundVideoFormat is null ? -1 : _discoveryContext.VideoFormats.IndexOf(foundVideoFormat);
             var foundAudioFormatIndex = foundAudioFormat is null ? -1 : _discoveryContext.AudioFormats.IndexOf(foundAudioFormat);
             _singleVideoFormatRow!.Selected = foundVideoFormatIndex == -1 ? 0 : (uint)foundVideoFormatIndex;
@@ -517,8 +537,8 @@ public class AddDownloadDialog : Adw.Dialog
         {
             return;
         }
-        var searchText = _singleSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
-        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)), false);
+        var searchText = _singleSubtitlesSearchEntry!.Text_?.Trim() ?? string.Empty;
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.Contains(searchText, StringComparison.OrdinalIgnoreCase)), false);
     }
 
     private void PlaylistViewStack_OnNotify(GObject.Object sender, NotifySignalArgs e)
@@ -550,8 +570,8 @@ public class AddDownloadDialog : Adw.Dialog
         {
             return;
         }
-        var searchText = _playlistSubtitlesSearchEntry!.Text_?.Trim().ToLower() ?? string.Empty;
-        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.ToLower().Contains(searchText)), true);
+        var searchText = _playlistSubtitlesSearchEntry!.Text_?.Trim() ?? string.Empty;
+        SetSubtitles(string.IsNullOrEmpty(searchText) ? _discoveryContext.SubtitleLanguages : _discoveryContext.SubtitleLanguages.Where(x => x.Value.Language.Contains(searchText, StringComparison.OrdinalIgnoreCase)), true);
     }
 
     private void SetSubtitles(IEnumerable<SelectionItem<SubtitleLanguage>> subtitles, bool isPlaylist)

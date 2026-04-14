@@ -1,8 +1,7 @@
-﻿using Nickvision.Desktop.Application;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Keyring;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -20,8 +19,7 @@ public class DiscoveryContext
     public List<SelectionItem<SubtitleLanguage>> SubtitleLanguages { get; }
     public List<SelectionItem<Format>> VideoFormats { get; }
     public List<SelectionItem<VideoResolution>> VideoResolutions { get; }
-
-    public TimeSpan TotalDuration => Media.Select(m => m.TimeFrame.Duration).Aggregate(TimeSpan.Zero, (total, duration) => total + duration);
+    public TimeSpan TotalDuration { get; }
 
     public DiscoveryContext(int id, Uri url, string title, Credential? credential, IReadOnlyList<Media> media)
     {
@@ -37,5 +35,10 @@ public class DiscoveryContext
         SubtitleLanguages = new List<SelectionItem<SubtitleLanguage>>();
         VideoFormats = new List<SelectionItem<Format>>();
         VideoResolutions = new List<SelectionItem<VideoResolution>>();
+        TotalDuration = TimeSpan.Zero;
+        foreach (var item in media)
+        {
+            TotalDuration += item.TimeFrame.Duration;
+        }
     }
 }

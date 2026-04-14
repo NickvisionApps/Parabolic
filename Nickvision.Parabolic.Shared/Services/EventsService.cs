@@ -1,4 +1,4 @@
-﻿using Nickvision.Desktop.Filesystem;
+﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Notifications;
 using Nickvision.Parabolic.Shared.Events;
 using System;
@@ -7,18 +7,18 @@ namespace Nickvision.Parabolic.Shared.Services;
 
 public class EventsService : IEventsService
 {
+    private readonly IConfigurationService _configurationService;
+    private readonly IDatabaseService _databaseService;
     private readonly IDownloadService _downloadService;
-    private readonly IHistoryService _historyService;
-    private readonly IJsonFileService _jsonFileService;
     private readonly INotificationService _notificationService;
 
     public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
 
-    public EventsService(IDownloadService downloadService, IHistoryService historyService, IJsonFileService jsonFileService, INotificationService notificationService)
+    public EventsService(IConfigurationService configurationService, IDatabaseService databaseService, IDownloadService downloadService, INotificationService notificationService)
     {
+        _configurationService = configurationService;
+        _databaseService = databaseService;
         _downloadService = downloadService;
-        _historyService = historyService;
-        _jsonFileService = jsonFileService;
         _notificationService = notificationService;
     }
 
@@ -27,6 +27,20 @@ public class EventsService : IEventsService
         add => _notificationService.AppNotificationSent += value;
 
         remove => _notificationService.AppNotificationSent -= value;
+    }
+
+    public event EventHandler<ConfigurationSavedEventArgs>? ConfigurationSaved
+    {
+        add => _configurationService.Saved += value;
+
+        remove => _configurationService.Saved -= value;
+    }
+
+    public event EventHandler<PasswordRequiredEventArgs>? DatabasePasswordRequired
+    {
+        add => _databaseService.PasswordRequired += value;
+
+        remove => _databaseService.PasswordRequired -= value;
     }
 
     public event EventHandler<DownloadAddedEventArgs> DownloadAdded
@@ -76,13 +90,6 @@ public class EventsService : IEventsService
         add => _downloadService.DownloadStopped += value;
 
         remove => _downloadService.DownloadStopped -= value;
-    }
-
-    public event EventHandler<JsonFileSavedEventArgs>? JsonFileSaved
-    {
-        add => _jsonFileService.Saved += value;
-
-        remove => _jsonFileService.Saved -= value;
     }
 
     public void InvokeDownloadRequested(Uri url) => DownloadRequested?.Invoke(this, new DownloadRequestedEventArgs(url));

@@ -51,9 +51,17 @@ jobs:
         shell: pwsh
         run: echo "${{ steps.msys2.outputs.msys2-location }}\${{ matrix.variant.subsys }}\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: "Restore"
-        run: dotnet restore ${{ env.PROJECT_NAME }} --runtime win-${{ matrix.variant.arch }} /p:PublishReadyToRun=true
+        run: |
+          $vsInstallPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationPath
+          Import-Module "$vsInstallPath\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+          Enter-VsDevShell -VsInstallPath $vsInstallPath -SkipAutomaticLocation
+          dotnet restore ${{ env.PROJECT_NAME }} --runtime win-${{ matrix.variant.arch }} /p:PublishReadyToRun=true
       - name: "Publish"
-        run: dotnet publish ${{ env.PROJECT_NAME }} -c Release --no-restore --runtime win-${{ matrix.variant.arch }} /p:Platform=${{ matrix.variant.arch }}
+        run: |
+          $vsInstallPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -property installationPath
+          Import-Module "$vsInstallPath\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+          Enter-VsDevShell -VsInstallPath $vsInstallPath -SkipAutomaticLocation
+          dotnet publish ${{ env.PROJECT_NAME }} -c Release --no-restore --runtime win-${{ matrix.variant.arch }} /p:Platform=${{ matrix.variant.arch }}
       - name: "Installer"
         working-directory: ${{github.workspace}}/inno
         env:
@@ -63,15 +71,15 @@ jobs:
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2026.03.17/yt-dlp${{ matrix.variant.ytdlp }}.exe -OutFile yt-dlp.exe
           Invoke-WebRequest https://github.com/Elypha/aria2-mod/releases/download/aria2c-1.37.0-b4fd7cb-20251126/aria2c-windows-x86_64-wintls.zip -OutFile aria2.zip
-          Invoke-WebRequest https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0.zip -OutFile ffmpeg.zip
-          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.7.7/deno-${{ matrix.variant.deno }}-pc-windows-msvc.zip -OutFile deno.zip
+          Invoke-WebRequest https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-${{ matrix.variant.ffmpeg }}-gpl-8.1.zip -OutFile ffmpeg.zip
+          Invoke-WebRequest https://github.com/denoland/deno/releases/download/v2.7.12/deno-${{ matrix.variant.deno }}-pc-windows-msvc.zip -OutFile deno.zip
           Expand-Archive -Force 'aria2.zip'
           Expand-Archive -Force 'ffmpeg.zip'
           Expand-Archive -Force 'deno.zip'
           move aria2\aria2c.exe aria2c.exe
-          move ffmpeg\ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0\bin\ffmpeg.exe ffmpeg.exe
-          move ffmpeg\ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0\bin\ffprobe.exe ffprobe.exe
-          move ffmpeg\ffmpeg-n8.0-latest-${{ matrix.variant.ffmpeg }}-gpl-8.0\bin\ffplay.exe ffplay.exe
+          move ffmpeg\ffmpeg-n8.1-latest-${{ matrix.variant.ffmpeg }}-gpl-8.1\bin\ffmpeg.exe ffmpeg.exe
+          move ffmpeg\ffmpeg-n8.1-latest-${{ matrix.variant.ffmpeg }}-gpl-8.1\bin\ffprobe.exe ffprobe.exe
+          move ffmpeg\ffmpeg-n8.1-latest-${{ matrix.variant.ffmpeg }}-gpl-8.1\bin\ffplay.exe ffplay.exe
           move deno\deno.exe deno.exe
           iscc setup.iss
       - name: "Portable"

@@ -1,54 +1,41 @@
-﻿using Microsoft.Data.Sqlite;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Nickvision.Desktop.Application;
-using Nickvision.Desktop.Filesystem;
 using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Services;
 
-public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
+public class RecoveryService : IRecoveryService
 {
-    private readonly ILogger<RecoveryService> _logger;
-    private readonly string _path;
-    private SqliteConnection _connection;
+    private static readonly string TableName;
 
-    public RecoveryService(ILogger<RecoveryService> logger, AppInfo appInfo)
+    private readonly ILogger<RecoveryService> _logger;
+    private readonly IConfigurationService _configurationService;
+    private readonly IDatabaseService _databaseService;
+    private bool _tableEnsured;
+
+    static RecoveryService()
     {
-        _logger = logger;
-        _path = Path.Combine(appInfo.IsPortable ? Desktop.System.Environment.ExecutingDirectory : Path.Combine(UserDirectories.Config, appInfo.Name), "recovery.db");
-        _logger.LogInformation($"Loading recovery database: {_path}");
-        Directory.CreateDirectory(Path.GetDirectoryName(_path)!);
-        _connection = new SqliteConnection(new SqliteConnectionStringBuilder($"Data Source='{_path}'")
-        {
-            Mode = SqliteOpenMode.ReadWriteCreate,
-            Pooling = false
-        }.ToString());
-        _connection.Open();
-        _logger.LogInformation("Ensuring recovery table exists...");
-        using var recoveryTableCommand = _connection.CreateCommand();
-        recoveryTableCommand.CommandText = "CREATE TABLE IF NOT EXISTS recovery (id INTEGER PRIMARY KEY, options TEXT, credentialRequired INTEGER)";
-        recoveryTableCommand.ExecuteNonQuery();
-        _logger.LogInformation("Recovery database loaded.");
+        TableName = "recovery_queue";
     }
 
-    ~RecoveryService()
+    public RecoveryService(ILogger<RecoveryService> logger, IConfigurationService configurationService, IDatabaseService databaseService)
     {
-        Dispose(false);
+        _logger = logger;
+        _configurationService = configurationService;
+        _databaseService = databaseService;
+        _tableEnsured = false;
     }
 
     public int Count
     {
         get
         {
-            using var command = _connection.CreateCommand();
-            command.CommandText = "SELECT COUNT(*) FROM recovery";
-            var count = Convert.ToInt32(command.ExecuteScalar());
+            EnsureTable();
+            var count = _databaseService.CountInTable(TableName);
             _logger.LogInformation($"{count} recoverable downloads found.");
             return count;
         }
@@ -57,12 +44,13 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
     public async Task<bool> AddAsync(RecoverableDownload download)
     {
         _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
-        using var command = _connection.CreateCommand();
-        command.CommandText = "INSERT INTO recovery (id, options, credentialRequired) VALUES ($id, $options, $credentialRequired)";
-        command.Parameters.AddWithValue("$id", download.Id);
-        command.Parameters.AddWithValue("$options", JsonSerializer.Serialize(download.Options, ApplicationJsonContext.Default.DownloadOptions));
-        command.Parameters.AddWithValue("$credentialRequired", download.CredentialRequired ? 1 : 0);
-        var res = await command.ExecuteNonQueryAsync() > 0;
+        await EnsureTableAsync();
+        var res = await _databaseService.InsertIntoTableAsync(TableName, new Dictionary<string, object>()
+        {
+            { "id", download.Id },
+            { "options", JsonSerializer.Serialize(download.Options, ApplicationJsonContext.Default.DownloadOptions) },
+            { "credentialRequired", download.CredentialRequired ? 1 : 0 }
+        });
         if (res)
         {
             _logger.LogInformation($"Added recoverable download ({download.Id}).");
@@ -77,34 +65,37 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
     public async Task<bool> AddAsync(IReadOnlyList<RecoverableDownload> downloads)
     {
         _logger.LogInformation($"Adding {downloads.Count} recoverable download(s)...");
-        using var transaction = await _connection.BeginTransactionAsync();
+        if (downloads.Count == 0)
+        {
+            return true;
+        }
+        await EnsureTableAsync();
+        using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var download in downloads)
         {
             _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
-            using var command = _connection.CreateCommand();
-            command.CommandText = "INSERT INTO recovery (id, options, credentialRequired) VALUES ($id, $options, $credentialRequired)";
-            command.Parameters.AddWithValue("$id", download.Id);
-            command.Parameters.AddWithValue("$options", JsonSerializer.Serialize(download.Options, ApplicationJsonContext.Default.DownloadOptions));
-            command.Parameters.AddWithValue("$credentialRequired", download.CredentialRequired);
-            if (await command.ExecuteNonQueryAsync() <= 0)
+            if (!await _databaseService.InsertIntoTableAsync(TableName, new Dictionary<string, object>()
             {
-                _logger.LogError($"Failed to add recoverable download ({download.Id}). Rolling back...");
-                await transaction.RollbackAsync();
+                { "id", download.Id },
+                { "options", JsonSerializer.Serialize(download.Options, ApplicationJsonContext.Default.DownloadOptions) },
+                { "credentialRequired", download.CredentialRequired ? 1 : 0 }
+            }))
+            {
+                _logger.LogError($"Failed to add recoverable download ({download.Id}).");
                 return false;
             }
             _logger.LogInformation($"Added recoverable download ({download.Id}).");
         }
-        await transaction.CommitAsync();
         _logger.LogInformation($"Added {downloads.Count} recoverable download(s).");
+        await transaction.CommitAsync();
         return true;
     }
 
     public async Task<bool> ClearAsync()
     {
         _logger.LogInformation("Clearing all recoverable downloads...");
-        using var command = _connection.CreateCommand();
-        command.CommandText = "DELETE FROM recovery";
-        var res = await command.ExecuteNonQueryAsync() >= 0;
+        await EnsureTableAsync();
+        var res = await _databaseService.ClearTableAsync(TableName);
         if (res)
         {
             _logger.LogInformation("Cleared all recoverable downloads.");
@@ -116,25 +107,12 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         return res;
     }
 
-    public async ValueTask DisposeAsync()
-    {
-        await DisposeAsyncCore().ConfigureAwait(false);
-        Dispose(false);
-        GC.SuppressFinalize(this);
-    }
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
     public async Task<IReadOnlyList<RecoverableDownload>> GetAllAsync()
     {
         _logger.LogInformation("Fetching all recoverable downloads...");
         var downloads = new List<RecoverableDownload>();
-        using var command = _connection.CreateCommand();
-        command.CommandText = "SELECT id, options, credentialRequired FROM recovery";
+        await EnsureTableAsync();
+        using var command = await _databaseService.SelectAllFromTableAsync(TableName);
         using var reader = await command.ExecuteReaderAsync();
         while (await reader.ReadAsync())
         {
@@ -151,10 +129,8 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
     public async Task<bool> RemoveAsync(RecoverableDownload download)
     {
         _logger.LogInformation($"Removing recoverable download ({download.Id}): {download.Options.Url}");
-        using var command = _connection.CreateCommand();
-        command.CommandText = "DELETE FROM recovery WHERE id = $id";
-        command.Parameters.AddWithValue("$id", download.Id);
-        var res = await command.ExecuteNonQueryAsync() > 0;
+        await EnsureTableAsync();
+        var res = await _databaseService.DeleteFromTableAsync(TableName, "id", download.Id);
         if (res)
         {
             _logger.LogInformation($"Removed recoverable download ({download.Id}).");
@@ -169,10 +145,8 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
     public async Task<bool> RemoveAsync(int id)
     {
         _logger.LogInformation($"Removing recoverable download ({id})...");
-        using var command = _connection.CreateCommand();
-        command.CommandText = "DELETE FROM recovery WHERE id = $id";
-        command.Parameters.AddWithValue("$id", id);
-        var res = await command.ExecuteNonQueryAsync() > 0;
+        await EnsureTableAsync();
+        var res = await _databaseService.DeleteFromTableAsync(TableName, "id", id);
         if (res)
         {
             _logger.LogInformation($"Removed recoverable download ({id}).");
@@ -187,16 +161,13 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
     public async Task<bool> RemoveAsync(IReadOnlyList<int> ids)
     {
         _logger.LogInformation($"Removing {ids.Count} recoverable download(s)...");
-        using var transaction = await _connection.BeginTransactionAsync();
+        await EnsureTableAsync();
+        using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var id in ids)
         {
-            using var command = _connection.CreateCommand();
-            command.CommandText = "DELETE FROM recovery WHERE id = $id";
-            command.Parameters.AddWithValue("$id", id);
-            if (await command.ExecuteNonQueryAsync() <= 0)
+            if (!await _databaseService.DeleteFromTableAsync(TableName, "id", id))
             {
-                _logger.LogError($"Failed to remove recoverable download ({id}). Rolling back...");
-                await transaction.RollbackAsync();
+                _logger.LogError($"Failed to remove recoverable download ({id}).");
                 return false;
             }
             _logger.LogInformation($"Removed recoverable download ({id}).");
@@ -206,19 +177,23 @@ public class RecoveryService : IAsyncDisposable, IDisposable, IRecoveryService
         return true;
     }
 
-    protected virtual async ValueTask DisposeAsyncCore()
+    private void EnsureTable()
     {
-        await _connection.CloseAsync().ConfigureAwait(false);
-        await _connection.DisposeAsync().ConfigureAwait(false);
-    }
-
-    private void Dispose(bool disposing)
-    {
-        if (!disposing)
+        if (_tableEnsured)
         {
             return;
         }
-        _connection.Close();
-        _connection.Dispose();
+        _databaseService.EnsureTableExists(TableName, "id INTEGER PRIMARY KEY, options TEXT, credentialRequired INTEGER");
+        _tableEnsured = true;
+    }
+
+    private async Task EnsureTableAsync()
+    {
+        if (_tableEnsured)
+        {
+            return;
+        }
+        await _databaseService.EnsureTableExistsAsync(TableName, "id INTEGER PRIMARY KEY, options TEXT, credentialRequired INTEGER");
+        _tableEnsured = true;
     }
 }

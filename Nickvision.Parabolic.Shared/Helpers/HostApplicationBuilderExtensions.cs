@@ -18,7 +18,7 @@ public static class HostApplicationBuilderExtensions
         {
             var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
             {
-                Version = new AppVersion("2026.3.0-beta3"),
+                Version = new AppVersion("2026.4.0-rc1"),
                 Changelog = """
                 - Added macOS app for the GNOME version of Parabolic
                 - Added Windows portable version of Parabolic
@@ -67,6 +67,7 @@ public static class HostApplicationBuilderExtensions
             builder.Services.AddTransient<KeyringViewController>();
             builder.Services.AddSingleton<MainWindowController>();
             builder.Services.AddTransient<PreferencesViewController>();
+            builder.Services.AddHostedService<ConfigurationMigrationService>();
             return builder;
         }
     }

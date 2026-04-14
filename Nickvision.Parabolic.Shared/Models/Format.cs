@@ -1,5 +1,6 @@
 ﻿using Nickvision.Desktop.Globalization;
 using System;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -7,8 +8,6 @@ namespace Nickvision.Parabolic.Shared.Models;
 
 public class Format : IComparable<Format>, IEquatable<Format>
 {
-    private static readonly string Separator;
-
     public static Format BestVideo { get; }
     public static Format BestAudio { get; }
     public static Format WorstVideo { get; }
@@ -33,7 +32,6 @@ public class Format : IComparable<Format>, IEquatable<Format>
 
     static Format()
     {
-        Separator = " | ";
         BestVideo = new Format("BEST_VIDEO", "BEST", MediaType.Video);
         BestAudio = new Format("BEST_AUDIO", "BEST", MediaType.Audio);
         WorstVideo = new Format("WORST_VIDEO", "WORST", MediaType.Video);
@@ -225,45 +223,58 @@ public class Format : IComparable<Format>, IEquatable<Format>
 
     public string ToString(ITranslationService? translator)
     {
-        var result = string.Empty;
+        var result = new StringBuilder();
+        void AppendSection(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return;
+            }
+            if (result.Length > 0)
+            {
+                result.Append(" | ");
+            }
+            result.Append(value);
+        }
         if (Type == MediaType.Video)
         {
             if (VideoResolution is not null)
             {
-                result += $"{Separator}{VideoResolution.ToString(translator)}";
+                AppendSection(VideoResolution.ToString(translator));
             }
             if (!string.IsNullOrEmpty(AudioLanguage))
             {
-                result += $"{Separator}{AudioLanguage}";
+                var language = AudioLanguage;
                 if (HasAudioDescription)
                 {
-                    result += $" ({translator?._("Audio Description") ?? "Audio Description"})";
+                    language += $" ({translator?._("Audio Description") ?? "Audio Description"})";
                 }
+                AppendSection(language);
             }
             if (VideoCodec.HasValue)
             {
-                result += $"{Separator}{VideoCodec.Value switch
+                AppendSection(VideoCodec.Value switch
                 {
                     Models.VideoCodec.VP9 => "VP9",
                     Models.VideoCodec.AV01 => "AV1",
                     Models.VideoCodec.H264 => "H.264",
                     Models.VideoCodec.H265 => "H.265",
                     _ => string.Empty
-                }}";
+                });
             }
             if (FrameRate.HasValue)
             {
-                result += $"{Separator}{FrameRate.Value switch
+                AppendSection(FrameRate.Value switch
                 {
                     Models.FrameRate.Fps24 => translator?._("{0} FPS", 24) ?? "24 FPS",
                     Models.FrameRate.Fps30 => translator?._("{0} FPS", 30) ?? "30 FPS",
                     Models.FrameRate.Fps60 => translator?._("{0} FPS", 60) ?? "60 FPS",
                     _ => string.Empty
-                }}";
+                });
             }
             if (AudioCodec.HasValue)
             {
-                result += $"{Separator}{AudioCodec.Value switch
+                AppendSection(AudioCodec.Value switch
                 {
                     Models.AudioCodec.FLAC => "FLAC",
                     Models.AudioCodec.WAV => "WAV",
@@ -272,30 +283,31 @@ public class Format : IComparable<Format>, IEquatable<Format>
                     Models.AudioCodec.MP4A => "MP4A",
                     Models.AudioCodec.MP3 => "MP3",
                     _ => string.Empty
-                }}";
+                });
             }
             if (Bitrate.HasValue)
             {
-                result += $"{Separator}{Bitrate.Value}k";
+                AppendSection($"{Bitrate.Value}k");
             }
         }
         else if (Type == MediaType.Audio)
         {
             if (Bitrate.HasValue)
             {
-                result += $"{Separator}{Bitrate.Value}k";
+                AppendSection($"{Bitrate.Value}k");
             }
             if (!string.IsNullOrEmpty(AudioLanguage))
             {
-                result += $"{Separator}{AudioLanguage}";
+                var language = AudioLanguage;
                 if (HasAudioDescription)
                 {
-                    result += $" ({translator?._("Audio Description") ?? "Audio Description"})";
+                    language += $" ({translator?._("Audio Description") ?? "Audio Description"})";
                 }
+                AppendSection(language);
             }
             if (AudioCodec.HasValue)
             {
-                result += $"{Separator}{AudioCodec.Value switch
+                AppendSection(AudioCodec.Value switch
                 {
                     Models.AudioCodec.FLAC => "FLAC",
                     Models.AudioCodec.WAV => "WAV",
@@ -304,39 +316,38 @@ public class Format : IComparable<Format>, IEquatable<Format>
                     Models.AudioCodec.MP4A => "MP4A",
                     Models.AudioCodec.MP3 => "MP3",
                     _ => string.Empty
-                }}";
+                });
             }
         }
         else if (Type == MediaType.Image)
         {
             if (VideoResolution is not null)
             {
-                result += $"{Separator}{VideoResolution.ToString(translator)}";
+                AppendSection(VideoResolution.ToString(translator));
             }
         }
         if (Bytes > 0)
         {
-            var pow2 = Math.Pow(1024, 2);
-            var pow3 = Math.Pow(1024, 3);
-            result += Separator;
-            if (Bytes > pow3)
+            const double gib = 1024d * 1024d * 1024d;
+            const double mib = 1024d * 1024d;
+            if (Bytes > gib)
             {
-                result += translator?._("{0:0.00} GiB", Bytes / pow3) ?? string.Format("{0:0.00} GiB", Bytes / pow3);
+                AppendSection(translator?._("{0:0.00} GiB", Bytes / gib) ?? string.Format("{0:0.00} GiB", Bytes / gib));
             }
-            else if (Bytes > pow2)
+            else if (Bytes > mib)
             {
-                result += translator?._("{0:0.00} MiB", Bytes / pow2) ?? string.Format("{0:0.00} MiB", Bytes / pow2);
+                AppendSection(translator?._("{0:0.00} MiB", Bytes / mib) ?? string.Format("{0:0.00} MiB", Bytes / mib));
             }
             else if (Bytes > 1024)
             {
-                result += translator?._("{0:0.00} KiB", Bytes / 1024.0) ?? string.Format("{0:0.00} KiB", Bytes / 1024.0);
+                AppendSection(translator?._("{0:0.00} KiB", Bytes / 1024.0) ?? string.Format("{0:0.00} KiB", Bytes / 1024.0));
             }
             else
             {
-                result += translator?._("{0:0.00} B", Bytes) ?? string.Format("{0:0.00} B", Bytes);
+                AppendSection(translator?._("{0:0.00} B", Bytes) ?? string.Format("{0:0.00} B", Bytes));
             }
         }
-        result += $" ({Id switch
+        var idLabel = Id switch
         {
             "BEST_VIDEO" => translator?._("Best") ?? "Best",
             "BEST_AUDIO" => translator?._("Best") ?? "Best",
@@ -345,20 +356,15 @@ public class Format : IComparable<Format>, IEquatable<Format>
             "NONE_VIDEO" => translator?._("None") ?? "None",
             "NONE_AUDIO" => translator?._("None") ?? "None",
             _ => Id
-        }})";
-        if (result[1] == '|')
+        };
+        if (result.Length == 0)
         {
-            return result.Substring(3);
+            return idLabel;
         }
-        else if (result[0] == ' ')
-        {
-            if (result[1] == '(' && result[^1] == ')')
-            {
-                return result.Substring(2, result.Length - 3);
-            }
-            return result.Substring(1);
-        }
-        return result;
+        result.Append(" (");
+        result.Append(idLabel);
+        result.Append(')');
+        return result.ToString();
     }
 
     public static bool operator >(Format left, Format right) => left.CompareTo(right) > 0;

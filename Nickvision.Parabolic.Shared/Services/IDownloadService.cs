@@ -19,6 +19,7 @@ public interface IDownloadService
     int DownloadingCount { get; }
     int QueuedCount { get; }
     int CompletedCount { get; }
+    int FailedCount { get; }
 
     int RemainingCount => DownloadingCount + QueuedCount;
 

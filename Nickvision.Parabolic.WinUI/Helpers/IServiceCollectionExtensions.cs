@@ -11,8 +11,8 @@ public static class IServiceCollectionExtensions
         public IServiceCollection AddControls()
         {
             collection.AddTransient<AddDownloadDialog>();
-            collection.AddTransient<HistoryPage>();
-            collection.AddTransient<KeyringPage>();
+            collection.AddTransient<HistoryDialog>();
+            collection.AddTransient<KeyringDialog>();
             collection.AddSingleton<MainWindow>();
             collection.AddTransient<SettingsPage>();
             collection.AddSingleton<AboutDialog>();

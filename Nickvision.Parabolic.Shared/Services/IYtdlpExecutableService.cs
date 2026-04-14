@@ -1,17 +1,14 @@
-﻿using Nickvision.Desktop.Application;
-using Nickvision.Desktop.Network;
+﻿using Nickvision.Desktop.Keyring;
+using Nickvision.Desktop.System;
+using Nickvision.Parabolic.Shared.Models;
 using System;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Nickvision.Parabolic.Shared.Services;
 
-public interface IYtdlpExecutableService
+public interface IYtdlpExecutableService : IDependencyExecutableService
 {
-    AppVersion BundledVersion { get; }
-    string? ExecutablePath { get; }
-
-    Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null);
-    Task<AppVersion?> GetExecutableVersionAsync();
-    Task<AppVersion?> GetLatestPreviewVersionAsync();
-    Task<AppVersion?> GetLatestStableVersionAsync();
+    IReadOnlyList<string> GetDiscoveryProcessArguments(Uri url, Credential? credential);
+    Process GetDownloadProcess(DownloadOptions downloadOptions);
 }

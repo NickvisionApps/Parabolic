@@ -13,23 +13,18 @@ public class KeyringViewController
 {
     private readonly IKeyringService _keyringService;
     private readonly ITranslationService _translationService;
-
-    public ObservableCollection<SelectionItem<Credential>> Credentials { get; }
+    private readonly ObservableCollection<SelectionItem<Credential>> _credentials;
 
     public KeyringViewController(IKeyringService keyringService, ITranslationService translationService)
     {
         _keyringService = keyringService;
         _translationService = translationService;
-        Credentials = new ObservableCollection<SelectionItem<Credential>>();
-        foreach (var credential in _keyringService.Credentials)
-        {
-            Credentials.Add(new SelectionItem<Credential>(credential, credential.Name, false));
-        }
+        _credentials = new ObservableCollection<SelectionItem<Credential>>();
     }
 
     public async Task<string?> AddAsync(string name, string url, string username, string password)
     {
-        if (_keyringService.Credentials.Any(cred => cred.Name == name))
+        if ((await GetAllAsync()).Any(cred => cred.Value.Name == name))
         {
             return _translationService._("A credential with that name already exists");
         }
@@ -43,26 +38,38 @@ public class KeyringViewController
         }
         Uri.TryCreate(url, UriKind.Absolute, out var uri);
         var credential = new Credential(name, username, password, uri ?? Uri.Empty);
-        Credentials.Add(new SelectionItem<Credential>(credential, credential.Name, false));
+        _credentials.Add(new SelectionItem<Credential>(credential, credential.Name, false));
         await _keyringService.AddCredentialAsync(credential);
         return null;
     }
 
+    public async Task<ObservableCollection<SelectionItem<Credential>>> GetAllAsync()
+    {
+        if (_credentials.Count == 0)
+        {
+            foreach (var credential in await _keyringService.GetAllCredentialAsync())
+            {
+                _credentials.Add(new SelectionItem<Credential>(credential, credential.Name, false));
+            }
+        }
+        return _credentials;
+    }
+
     public async Task RemoveAsync(SelectionItem<Credential> credential)
     {
-        Credentials.Remove(credential);
-        await _keyringService.RemoveCredentialAsync(credential.Value);
+        _credentials.Remove(credential);
+        await _keyringService.DeleteCredentialAsync(credential.Value);
     }
 
     public async Task RemoveAsync(Credential credential)
     {
-        Credentials.Remove(Credentials.First(x => x.Value == credential));
-        await _keyringService.RemoveCredentialAsync(credential);
+        _credentials.Remove(_credentials.First(x => x.Value == credential));
+        await _keyringService.DeleteCredentialAsync(credential);
     }
 
     public async Task<string?> UpdateAsync(string name, string url, string username, string password)
     {
-        var credential = _keyringService.Credentials.FirstOrDefault(cred => cred.Name == name);
+        var credential = _credentials.FirstOrDefault(cred => cred.Value.Name == name)?.Value;
         if (credential is null)
         {
             return _translationService._("A credential with that name does not exist");
@@ -75,7 +82,7 @@ public class KeyringViewController
         credential.Url = uri ?? Uri.Empty;
         credential.Username = username;
         credential.Password = password;
-        Credentials[Credentials.IndexOf(Credentials.First(c => c.Value.Name == name))] = new SelectionItem<Credential>(credential, credential.Name, false);
+        _credentials[_credentials.IndexOf(_credentials.First(c => c.Value.Name == name))] = new SelectionItem<Credential>(credential, credential.Name, false);
         await _keyringService.UpdateCredentialAsync(credential);
         return null;
     }

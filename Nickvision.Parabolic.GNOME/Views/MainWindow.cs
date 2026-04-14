@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.GNOME.Views;
 
@@ -84,9 +85,10 @@ public class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += Window_OnCloseRequest;
         eventsService.AppNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
-            Controller_AppNotificationSent(sender, e);
+            App_AppNotificationSent(sender, e);
             return false;
         });
+        eventsService.DatabasePasswordRequired += App_DatabasePasswordRequired;
         eventsService.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadAdded(sender, e);
@@ -119,7 +121,7 @@ public class MainWindow : Adw.ApplicationWindow
         });
         eventsService.DownloadRequested += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
-            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(e.Url, this);
+            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(e.Url, this).GetAwaiter().GetResult();
             return false;
         });
         _downloadsToggleGroup!.OnNotify += DownloadToggleGroup_OnNotify;
@@ -229,7 +231,7 @@ public class MainWindow : Adw.ApplicationWindow
         }
         if (_controller.UrlFromArgs is not null)
         {
-            _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(_controller.UrlFromArgs, this);
+            await _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(_controller.UrlFromArgs, this);
         }
         await updatesTask;
         _shown = true;
@@ -263,7 +265,7 @@ public class MainWindow : Adw.ApplicationWindow
         return false;
     }
 
-    private void Controller_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
+    private void App_AppNotificationSent(object? sender, AppNotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Notification.Message);
         if (e.Notification.Action == "update")
@@ -306,6 +308,33 @@ public class MainWindow : Adw.ApplicationWindow
             };
         }
         _toastOverlay!.AddToast(toast);
+    }
+
+    private async void App_DatabasePasswordRequired(object? sender, PasswordRequiredEventArgs e)
+    {
+        var password = string.Empty;
+        var passwordEntryRow = Adw.PasswordEntryRow.New();
+        passwordEntryRow.Title = _translationService._("Password");
+        var preferencesGroup = Adw.PreferencesGroup.New();
+        preferencesGroup.Add(passwordEntryRow);
+        var dialog = Adw.MessageDialog.New(this, _translationService._("Password Required"), _translationService._("This app stores data in an encrypted database. As the system credential manager (secret service) is not available, please provide a password to use to encrypt the database.\n\nIf you've already provided a password, please provide it again to unlock the database."));
+        dialog.AddResponse("submit", _translationService._("Submit"));
+        dialog.SetResponseAppearance("submit", Adw.ResponseAppearance.Suggested);
+        dialog.SetDefaultResponse("submit");
+        dialog.SetCloseResponse("submit");
+        dialog.SetExtraChild(preferencesGroup);
+        dialog.OnResponse += (_, args) =>
+        {
+            if (args.Response == "submit")
+            {
+                password = passwordEntryRow.Text_ ?? string.Empty;
+            }
+        };
+        while (string.IsNullOrEmpty(password))
+        {
+            dialog.Present();
+            await Task.Delay(100);
+        }
     }
 
     private async void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)
@@ -453,7 +482,7 @@ public class MainWindow : Adw.ApplicationWindow
 
     private async void AddDownload(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<AddDownloadDialog>().Present(this);
 
-    private void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => _serviceProvider.GetRequiredService<KeyringDialog>().Present(this);
+    private async void Keyring(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<KeyringDialog>().Present(this);
 
     private async void History(Gio.SimpleAction sender, Gio.SimpleAction.ActivateSignalArgs e) => await _serviceProvider.GetRequiredService<HistoryDialog>().Present(this);
 
@@ -481,19 +510,27 @@ public class MainWindow : Adw.ApplicationWindow
 
     private void UpdateDownloadsList()
     {
-        var downloads = _downloadRows.Values.Where(row => _downloadsToggleGroup!.Active switch
+        var downloads = new List<DownloadRow>(_downloadRows.Count);
+        foreach (var row in _downloadRows.Values)
         {
-            1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
-            2 => row.Status == DownloadStatus.Queued,
-            3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
-            4 => row.Status == DownloadStatus.Error,
-            _ => true
-        }).Reverse();
+            if (_downloadsToggleGroup!.Active switch
+            {
+                1 => row.Status == DownloadStatus.Running || row.Status == DownloadStatus.Paused,
+                2 => row.Status == DownloadStatus.Queued,
+                3 => row.Status == DownloadStatus.Success || row.Status == DownloadStatus.Error || row.Status == DownloadStatus.Stopped,
+                4 => row.Status == DownloadStatus.Error,
+                _ => true
+            })
+            {
+                downloads.Add(row);
+            }
+        }
+        downloads.Reverse();
         _listDownloads!.RemoveAll();
         foreach (var row in downloads)
         {
             _listDownloads!.Append(row);
         }
-        _viewStackDownloads!.VisibleChildName = downloads.Any() ? "Has" : "None";
+        _viewStackDownloads!.VisibleChildName = downloads.Count > 0 ? "Has" : "None";
     }
 }

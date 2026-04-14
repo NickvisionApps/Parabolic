@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Nickvision.Desktop.Filesystem;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Events;
 using Nickvision.Parabolic.Shared.Helpers;
@@ -7,7 +7,6 @@ using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -16,12 +15,11 @@ namespace Nickvision.Parabolic.Shared.Services;
 public class DownloadService : IDisposable, IDownloadService
 {
     private readonly ILogger<DownloadService> _logger;
-    private readonly IDenoExecutableService _denoExecutableService;
-    private readonly IJsonFileService _jsonFileService;
-    private readonly ITranslationService _translationService;
-    private readonly IYtdlpExecutableService _ytdlpService;
+    private readonly IConfigurationService _configurationService;
     private readonly IHistoryService _historyService;
     private readonly IRecoveryService _recoveryService;
+    private readonly ITranslationService _translationService;
+    private readonly IYtdlpExecutableService _ytdlpService;
     private readonly Dictionary<int, Download> _downloading;
     private readonly Dictionary<int, Download> _queued;
     private readonly Dictionary<int, Download> _completed;
@@ -38,15 +36,14 @@ public class DownloadService : IDisposable, IDownloadService
     public int QueuedCount => _queued.Count;
     public int CompletedCount => _completed.Count;
 
-    public DownloadService(ILogger<DownloadService> logger, IDenoExecutableService denoExecutableService, IJsonFileService jsonFileService, ITranslationService translationService, IYtdlpExecutableService ytdlpService, IHistoryService historyService, IRecoveryService recoveryService)
+    public DownloadService(ILogger<DownloadService> logger, IConfigurationService configurationService, IHistoryService historyService, IRecoveryService recoveryService, ITranslationService translationService, IYtdlpExecutableService ytdlpService)
     {
         _logger = logger;
-        _denoExecutableService = denoExecutableService;
-        _jsonFileService = jsonFileService;
-        _translationService = translationService;
-        _ytdlpService = ytdlpService;
+        _configurationService = configurationService;
         _historyService = historyService;
         _recoveryService = recoveryService;
+        _translationService = translationService;
+        _ytdlpService = ytdlpService;
         _downloading = new Dictionary<int, Download>();
         _queued = new Dictionary<int, Download>();
         _completed = new Dictionary<int, Download>();
@@ -57,11 +54,25 @@ public class DownloadService : IDisposable, IDownloadService
         Dispose(false);
     }
 
+    public int FailedCount
+    {
+        get
+        {
+            var failed = 0;
+            foreach (var pair in _completed)
+            {
+                if (pair.Value.Status == DownloadStatus.Error)
+                {
+                    failed++;
+                }
+            }
+            return failed;
+        }
+    }
+
     public async Task AddAsync(DownloadOptions options, bool excludeFromHistory)
     {
-        var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var downloaderOptions = config.DownloaderOptions;
-        var download = new Download(options, _denoExecutableService, _translationService);
+        var download = new Download(_configurationService, _translationService, _ytdlpService, options);
         _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(options, ApplicationJsonContext.Default.DownloadOptions)}");
         download.Completed += Download_Completed;
         download.ProgressChanged += Download_ProgressChanged;
@@ -74,12 +85,12 @@ public class DownloadService : IDisposable, IDownloadService
                 Path = download.FilePath
             });
         }
-        if (_downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
+        if (_downloading.Count < _configurationService.MaxNumberOfActiveDownloads)
         {
-            _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
+            _logger.LogInformation($"Starting download ({download.Id}).");
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
-            download.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
+            download.Start();
         }
         else
         {
@@ -91,15 +102,12 @@ public class DownloadService : IDisposable, IDownloadService
 
     public async Task AddAsync(IReadOnlyList<DownloadOptions> options, bool excludeFromHistory)
     {
-        var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var downloaderOptions = config.DownloaderOptions;
-        var ytdlpExecutablePath = _ytdlpService.ExecutablePath ?? "yt-dlp";
         var recoverableDownloads = new List<RecoverableDownload>();
         var historicDownloads = new List<HistoricDownload>();
         var downloadsToStart = new List<Download>();
         foreach (var option in options)
         {
-            var download = new Download(option, _denoExecutableService, _translationService);
+            var download = new Download(_configurationService, _translationService, _ytdlpService, option);
             _logger.LogInformation($"Adding download ({download.Id}): {JsonSerializer.Serialize(option, ApplicationJsonContext.Default.DownloadOptions)}");
             download.Completed += Download_Completed;
             download.ProgressChanged += Download_ProgressChanged;
@@ -112,9 +120,9 @@ public class DownloadService : IDisposable, IDownloadService
                     Path = download.FilePath
                 });
             }
-            if (_downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
+            if (_downloading.Count < _configurationService.MaxNumberOfActiveDownloads)
             {
-                _logger.LogInformation($"Starting download ({download.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
+                _logger.LogInformation($"Starting download ({download.Id}).");
                 _downloading.Add(download.Id, download);
                 DownloadAdded?.Invoke(this, new DownloadAddedEventArgs(download.Id, download.FilePath, download.Options.Url, DownloadStatus.Running));
                 downloadsToStart.Add(download);
@@ -130,7 +138,7 @@ public class DownloadService : IDisposable, IDownloadService
         await _historyService.AddAsync(historicDownloads);
         foreach (var download in downloadsToStart)
         {
-            download.Start(ytdlpExecutablePath, downloaderOptions, config.TranslationLanguage);
+            download.Start();
         }
     }
 
@@ -200,7 +208,12 @@ public class DownloadService : IDisposable, IDownloadService
             }
         }
         await _recoveryService.ClearAsync();
-        await AddAsync(downloads.Select(x => x.Options).ToList(), false);
+        var options = new List<DownloadOptions>(downloads.Count);
+        foreach (var recoverableDownload in downloads)
+        {
+            options.Add(recoverableDownload.Options);
+        }
+        await AddAsync(options, false);
     }
 
     public bool Resume(int id)
@@ -238,15 +251,24 @@ public class DownloadService : IDisposable, IDownloadService
     {
         _logger.LogInformation($"Retrying failed downloads...");
         var retryDownloadOptions = new List<DownloadOptions>();
-        foreach (var pair in _completed.Where(pair => pair.Value.Status == DownloadStatus.Error).ToList())
+        var ids = new List<int>();
+        foreach (var pair in _completed)
         {
-            retryDownloadOptions.Add(pair.Value.Options);
-            DownloadRetired?.Invoke(this, new DownloadEventArgs(pair.Key));
-            pair.Value.Completed -= Download_Completed;
-            pair.Value.ProgressChanged -= Download_ProgressChanged;
-            pair.Value.Dispose();
-            _completed.Remove(pair.Key);
-            _logger.LogInformation($"Retried download ({pair.Key}).");
+            if (pair.Value.Status == DownloadStatus.Error)
+            {
+                ids.Add(pair.Key);
+            }
+        }
+        foreach (var id in ids)
+        {
+            var download = _completed[id];
+            retryDownloadOptions.Add(download.Options);
+            DownloadRetired?.Invoke(this, new DownloadEventArgs(id));
+            download.Completed -= Download_Completed;
+            download.ProgressChanged -= Download_ProgressChanged;
+            download.Dispose();
+            _completed.Remove(id);
+            _logger.LogInformation($"Retried download ({id}).");
         }
         _logger.LogInformation($"Retried {retryDownloadOptions.Count} failed download(s).");
         await AddAsync(retryDownloadOptions, true);
@@ -277,7 +299,15 @@ public class DownloadService : IDisposable, IDownloadService
     public async Task StopAllAsync()
     {
         _logger.LogInformation($"Stopping all downloads...");
-        var ids = new List<int>(_downloading.Keys.Concat(_queued.Keys));
+        var ids = new List<int>(_downloading.Count + _queued.Count);
+        foreach (var id in _downloading.Keys)
+        {
+            ids.Add(id);
+        }
+        foreach (var id in _queued.Keys)
+        {
+            ids.Add(id);
+        }
         foreach (var pair in _downloading)
         {
             pair.Value.Stop();
@@ -301,7 +331,6 @@ public class DownloadService : IDisposable, IDownloadService
         _downloading.Clear();
         _queued.Clear();
         await _recoveryService.RemoveAsync(ids);
-
         _logger.LogInformation($"Stopped {ids.Count} download(s).");
     }
 
@@ -333,8 +362,6 @@ public class DownloadService : IDisposable, IDownloadService
 
     private async void Download_Completed(object? sender, DownloadCompletedEventArgs e)
     {
-        var config = await _jsonFileService.LoadAsync(ApplicationJsonContext.Default.Configuration, Configuration.Key);
-        var downloaderOptions = config.DownloaderOptions;
         if (!_downloading.TryGetValue(e.Id, out var download) || download.Status == DownloadStatus.Stopped)
         {
             return;
@@ -355,14 +382,18 @@ public class DownloadService : IDisposable, IDownloadService
             _logger.LogInformation($"Download stopped ({e.Id}): {download.Log}");
         }
         DownloadCompleted?.Invoke(this, e);
-        if (_queued.Count > 0 && _downloading.Count < downloaderOptions.MaxNumberOfActiveDownloads)
+        if (_queued.Count > 0 && _downloading.Count < _configurationService.MaxNumberOfActiveDownloads)
         {
-            var firstDownload = _queued.First().Value;
-            _downloading.Add(firstDownload.Id, firstDownload);
-            _queued.Remove(firstDownload.Id);
-            _logger.LogInformation($"Starting download from queue ({firstDownload.Id}): {JsonSerializer.Serialize(downloaderOptions, ApplicationJsonContext.Default.DownloaderOptions)}");
-            DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
-            firstDownload.Start(_ytdlpService.ExecutablePath ?? "yt-dlp", downloaderOptions, config.TranslationLanguage);
+            using var queuedEnumerator = _queued.GetEnumerator();
+            if (queuedEnumerator.MoveNext())
+            {
+                var firstDownload = queuedEnumerator.Current.Value;
+                _downloading.Add(firstDownload.Id, firstDownload);
+                _queued.Remove(firstDownload.Id);
+                _logger.LogInformation($"Starting download from queue ({firstDownload.Id}).");
+                DownloadStartedFromQueue?.Invoke(this, new DownloadEventArgs(firstDownload.Id));
+                firstDownload.Start();
+            }
         }
     }
 
