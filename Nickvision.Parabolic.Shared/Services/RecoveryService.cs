@@ -70,6 +70,7 @@ public class RecoveryService : IRecoveryService
             return true;
         }
         await EnsureTableAsync();
+        using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var download in downloads)
         {
             _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
@@ -86,7 +87,7 @@ public class RecoveryService : IRecoveryService
             _logger.LogInformation($"Added recoverable download ({download.Id}).");
         }
         _logger.LogInformation($"Added {downloads.Count} recoverable download(s).");
-        await _configurationService.SaveAsync();
+        await transaction.CommitAsync();
         return true;
     }
 
@@ -161,6 +162,7 @@ public class RecoveryService : IRecoveryService
     {
         _logger.LogInformation($"Removing {ids.Count} recoverable download(s)...");
         await EnsureTableAsync();
+        using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var id in ids)
         {
             if (!await _databaseService.DeleteFromTableAsync(TableName, "id", id))
@@ -170,7 +172,7 @@ public class RecoveryService : IRecoveryService
             }
             _logger.LogInformation($"Removed recoverable download ({id}).");
         }
-        await _configurationService.SaveAsync();
+        await transaction.CommitAsync();
         _logger.LogInformation($"Removed {ids.Count} recoverable download(s).");
         return true;
     }

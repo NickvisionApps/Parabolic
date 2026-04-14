@@ -1,4 +1,5 @@
-﻿using Nickvision.Desktop.Application;
+﻿using Microsoft.Data.Sqlite;
+using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
 using Nickvision.Parabolic.Shared.Helpers;
 using Nickvision.Parabolic.Shared.Models;
@@ -11,10 +12,11 @@ using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Controllers;
 
-public class PreferencesViewController
+public class PreferencesViewController : IDisposable
 {
     private readonly IConfigurationService _configurationService;
     private readonly ITranslationService _translationService;
+    private readonly SqliteTransaction _transaction;
 
     public IReadOnlyList<SelectionItem<AudioCodec>> AudioCodecs { get; }
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages { get; }
@@ -32,6 +34,7 @@ public class PreferencesViewController
     {
         _configurationService = configurationService;
         _translationService = translationService;
+        _transaction = _configurationService.CreateTransaction();
         var selectedHistoryLength = _configurationService.HistoryLength;
         AudioCodecs = new List<SelectionItem<AudioCodec>>()
         {
@@ -134,6 +137,11 @@ public class PreferencesViewController
             new SelectionItem<VideoCodec>(VideoCodec.H264, _translationService._("H.264 (AVC)"), _configurationService.PreferredVideoCodec == VideoCodec.H264),
             new SelectionItem<VideoCodec>(VideoCodec.H265, _translationService._("H.265 (HEVC)"), _configurationService.PreferredVideoCodec == VideoCodec.H265)
         };
+    }
+
+    ~PreferencesViewController()
+    {
+        Dispose(false);
     }
 
     public bool AllowPreviewUpdates
@@ -391,6 +399,12 @@ public class PreferencesViewController
         await SaveConfigurationAsync();
     }
 
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
     public async Task<string?> UpdatePostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
     {
         var index = _configurationService.PostprocessingArguments.FindIndex(arg => arg.Name == name);
@@ -413,5 +427,14 @@ public class PreferencesViewController
         return null;
     }
 
-    public Task SaveConfigurationAsync() => _configurationService.SaveAsync();
+    public Task SaveConfigurationAsync() => _transaction.CommitAsync();
+
+    private void Dispose(bool disposing)
+    {
+        if (!disposing)
+        {
+            return;
+        }
+        _transaction.Dispose();
+    }
 }

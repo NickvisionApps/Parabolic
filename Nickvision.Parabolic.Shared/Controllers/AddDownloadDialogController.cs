@@ -125,6 +125,7 @@ public class AddDownloadDialogController
                 TimeFrame = TimeFrame.TryParse(item.StartTime, item.EndTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
             });
         }
+        using var transaction = await _configurationService.CreateTransactionAsync();
         m3uFile.Add(options);
         _configurationService.PreviousSaveFolder = saveFolder;
         if (hasVideo)
@@ -155,7 +156,7 @@ public class AddDownloadDialogController
             _configurationService.PreviousPostProcessorArgumentName = selectedPostProcessorArgument.Value.Name;
         }
         _configurationService.PreviousSubtitleLanguages = selectedSubtitles;
-        await _configurationService.SaveAsync();
+        await transaction.CommitAsync();
         try
         {
             await _downloadService.AddAsync(options, excludeFromHistory);
@@ -199,6 +200,7 @@ public class AddDownloadDialogController
             PostProcessorArgument = selectedPostProcessorArgument.Value,
             TimeFrame = TimeFrame.TryParse(startTime, endTime, media.TimeFrame.Duration, out var timeFrame) && timeFrame != media.TimeFrame ? timeFrame : null
         };
+        using var transaction = await _configurationService.CreateTransactionAsync();
         _configurationService.PreviousSaveFolder = options.SaveFolder;
         if (media.Type == MediaType.Video)
         {
@@ -232,7 +234,7 @@ public class AddDownloadDialogController
         _configurationService.PreviousExportDescription = options.ExportDescription;
         _configurationService.PreviousPostProcessorArgumentName = options.PostProcessorArgument?.Name ?? _configurationService.PreviousPostProcessorArgumentName;
         _configurationService.PreviousSubtitleLanguages = options.SubtitleLanguages;
-        await _configurationService.SaveAsync();
+        await transaction.CommitAsync();
         try
         {
             await _downloadService.AddAsync(options, excludeFromHistory);

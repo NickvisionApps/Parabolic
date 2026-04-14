@@ -82,6 +82,7 @@ public class HistoryService : IHistoryService
             return true;
         }
         await EnsureTableAsync();
+        using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var download in downloads)
         {
             _logger.LogInformation($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
@@ -100,7 +101,7 @@ public class HistoryService : IHistoryService
             _logger.LogInformation($"Added historic download ({download.Url}).");
         }
         _logger.LogInformation($"Added {downloads.Count} historic download(s).");
-        await _configurationService.SaveAsync();
+        await transaction.CommitAsync();
         return true;
     }
 
@@ -152,11 +153,12 @@ public class HistoryService : IHistoryService
         }
         if (toRemove.Count > 0)
         {
+            using var transaction = await _databaseService.CreateTransactionAsync();
             foreach (var url in toRemove)
             {
                 await _databaseService.DeleteFromTableAsync(TableName, "url", url.ToString());
             }
-            await _configurationService.SaveAsync();
+            await transaction.CommitAsync();
             _logger.LogInformation($"Removed {toRemove.Count} old historic download(s).");
         }
         if (SortNewest)

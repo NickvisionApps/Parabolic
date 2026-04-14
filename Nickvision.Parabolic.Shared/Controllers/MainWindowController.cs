@@ -87,11 +87,7 @@ public class MainWindowController
     {
         get => _configurationService.ShowDisclaimerOnStartup;
 
-        set
-        {
-            _configurationService.ShowDisclaimerOnStartup = value;
-            _configurationService.Save();
-        }
+        set => _configurationService.ShowDisclaimerOnStartup = value;
     }
 
     public Theme Theme => _configurationService.Theme;
@@ -100,11 +96,7 @@ public class MainWindowController
     {
         get => _configurationService.WindowGeometry;
 
-        set
-        {
-            _configurationService.WindowGeometry = value;
-            _configurationService.Save();
-        }
+        set => _configurationService.WindowGeometry = value;
     }
 
     public Uri? UrlFromArgs

@@ -37,9 +37,9 @@ public static class IConfigurationServiceExtensions
 
         public Browser CookiesBrowser
         {
-            get => (Browser)configurationService.Get("CookiesBrowser", (int)Browser.None);
+            get => configurationService.Get("CookiesBrowser", Browser.None);
 
-            set => configurationService.Set("CookiesBrowser", (int)value);
+            set => configurationService.Set("CookiesBrowser", value);
         }
 
         public string CookiesPath
@@ -86,9 +86,9 @@ public static class IConfigurationServiceExtensions
 
         public HistoryLength HistoryLength
         {
-            get => (HistoryLength)configurationService.Get("HistoryLength", (int)HistoryLength.OneWeek);
+            get => configurationService.Get("HistoryLength", HistoryLength.OneWeek);
 
-            set => configurationService.Set("HistoryLength", (int)value);
+            set => configurationService.Set("HistoryLength", value);
         }
 
         public bool HistorySortNewest
@@ -178,9 +178,9 @@ public static class IConfigurationServiceExtensions
 
         public MediaFileType PreviousAudioOnlyFileType
         {
-            get => (MediaFileType)configurationService.Get("AudioOnlyFileType", (int)MediaFileType.MP3);
+            get => configurationService.Get("AudioOnlyFileType", MediaFileType.MP3);
 
-            set => configurationService.Set("AudioOnlyFileType", (int)value);
+            set => configurationService.Set("AudioOnlyFileType", value);
         }
 
         public bool PreviousDownloadImmediatelyAsAudio
@@ -213,9 +213,9 @@ public static class IConfigurationServiceExtensions
 
         public MediaFileType PreviousFullFileType
         {
-            get => (MediaFileType)configurationService.Get("FullFileType", (int)MediaFileType.MP4);
+            get => configurationService.Get("FullFileType", MediaFileType.MP4);
 
-            set => configurationService.Set("FullFileType", (int)value);
+            set => configurationService.Set("FullFileType", value);
         }
 
         public bool PreviousNumberTitles
@@ -288,9 +288,9 @@ public static class IConfigurationServiceExtensions
 
         public MediaFileType PreviousVideoOnlyFileType
         {
-            get => (MediaFileType)configurationService.Get("VideoOnlyFileType", (int)MediaFileType.MP4);
+            get => configurationService.Get("VideoOnlyFileType", MediaFileType.MP4);
 
-            set => configurationService.Set("VideoOnlyFileType", (int)value);
+            set => configurationService.Set("VideoOnlyFileType", value);
         }
 
         public VideoResolution PreviousVideoResolution
@@ -309,30 +309,30 @@ public static class IConfigurationServiceExtensions
 
         public AudioCodec PreferredAudioCodec
         {
-            get => (AudioCodec)configurationService.Get("PreferredAudioCodec", (int)AudioCodec.Any);
+            get => configurationService.Get("PreferredAudioCodec", AudioCodec.Any);
 
-            set => configurationService.Set("PreferredAudioCodec", (int)value);
+            set => configurationService.Set("PreferredAudioCodec", value);
         }
 
         public FrameRate PreferredFrameRate
         {
-            get => (FrameRate)configurationService.Get("PreferredFrameRate", (int)FrameRate.Any);
+            get => configurationService.Get("PreferredFrameRate", FrameRate.Any);
 
-            set => configurationService.Set("PreferredFrameRate", (int)value);
+            set => configurationService.Set("PreferredFrameRate", value);
         }
 
         public SubtitleFormat PreferredSubtitleFormat
         {
-            get => (SubtitleFormat)configurationService.Get("PreferredSubtitleFormat", (int)SubtitleFormat.Any);
+            get => configurationService.Get("PreferredSubtitleFormat", SubtitleFormat.Any);
 
-            set => configurationService.Set("PreferredSubtitleFormat", (int)value);
+            set => configurationService.Set("PreferredSubtitleFormat", value);
         }
 
         public VideoCodec PreferredVideoCodec
         {
-            get => (VideoCodec)configurationService.Get("PreferredVideoCodec", (int)VideoCodec.Any);
+            get => configurationService.Get("PreferredVideoCodec", VideoCodec.Any);
 
-            set => configurationService.Set("PreferredVideoCodec", (int)value);
+            set => configurationService.Set("PreferredVideoCodec", value);
         }
 
         public bool PreventSuspend
@@ -383,9 +383,9 @@ public static class IConfigurationServiceExtensions
 
         public Theme Theme
         {
-            get => (Theme)configurationService.Get("Theme", 2);
+            get => configurationService.Get("Theme", Theme.System);
 
-            set => configurationService.Set("Theme", (int)value);
+            set => configurationService.Set("Theme", value);
         }
 
         public bool TranslateMetadataAndChapters
