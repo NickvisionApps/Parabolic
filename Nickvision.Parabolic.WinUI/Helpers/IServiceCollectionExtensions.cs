@@ -12,7 +12,7 @@ public static class IServiceCollectionExtensions
         {
             collection.AddTransient<AddDownloadDialog>();
             collection.AddTransient<HistoryDialog>();
-            collection.AddTransient<KeyringPage>();
+            collection.AddTransient<KeyringDialog>();
             collection.AddSingleton<MainWindow>();
             collection.AddTransient<SettingsPage>();
             collection.AddSingleton<AboutDialog>();

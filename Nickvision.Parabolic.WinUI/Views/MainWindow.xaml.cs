@@ -486,9 +486,12 @@ public sealed partial class MainWindow : Window
 
     private void Exit(object sender, RoutedEventArgs args) => Window_Closing(AppWindow, null);
 
-    private void Keyring(object sender, RoutedEventArgs args)
+    private async void Keyring(object sender, RoutedEventArgs args)
     {
-
+        var keyringDialog = _serviceProvider.GetRequiredService<KeyringDialog>();
+        keyringDialog.RequestedTheme = MainGrid.ActualTheme;
+        keyringDialog.XamlRoot = MainGrid.XamlRoot;
+        await keyringDialog.ShowAsync();
     }
 
     private void Settings(object sender, RoutedEventArgs args)

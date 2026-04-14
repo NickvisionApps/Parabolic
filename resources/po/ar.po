@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-13 20:45-0400\n"
+"POT-Creation-Date: 2026-04-13 21:01-0400\n"
 "PO-Revision-Date: 2026-04-05 14:09+0000\n"
 "Last-Translator: jonnysemon <jonnysemon@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -54,14 +54,14 @@ msgstr "استخدم الاستيثاق"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:67
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:28
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:73
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:67
 msgid "Credential"
 msgstr "بيانات إعتماد"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:71
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:51
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:74
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:87
 msgid "Username"
 msgstr "اسم المستخدم"
 
@@ -69,7 +69,7 @@ msgstr "اسم المستخدم"
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:55
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:317
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:76
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:92
 msgid "Password"
 msgstr "كلمة السر"
 
@@ -402,7 +402,7 @@ msgstr "مسح الكل"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:94
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:48
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:108
 msgid "Keyring"
@@ -417,8 +417,8 @@ msgstr "بيانات الاعتماد"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:447
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:111
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:298
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:51
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:68
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:114
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:148
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:212
@@ -427,13 +427,13 @@ msgstr "أضف"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:43
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:472
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:76
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:151
 msgid "Name"
 msgstr "الاسم"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:47
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:82
 msgid "URL"
 msgstr "الرابط"
 
@@ -956,8 +956,7 @@ msgstr "غير معروف"
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:302
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:326
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:109
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:76
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:111
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:121
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:268
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:291
@@ -1046,7 +1045,7 @@ msgstr "محو"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:65
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:173
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:231
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:69
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:150
 msgid "Cancel"
@@ -1084,27 +1083,26 @@ msgid "Edit"
 msgstr "تعديل"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:97
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:52
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:54
 msgid "No Credentials"
 msgstr "لا يوجد بيانات اعتماد"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:140
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:78
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:113
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:123
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:230
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:293
 msgid "OK"
 msgstr "حسنًا"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:164
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:129
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:144
 msgid "Delete Credential?"
 msgstr "حذف بيانات الاعتماد؟"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:164
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:130
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:145
 msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr "هل ترغب في حذف بيانات الاعتماد هذه؟ لا يمكن التراجع عن هذا الإجراء"
@@ -1151,7 +1149,7 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:214
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:245
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:61
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:146
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:176
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:208
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:254
@@ -1161,7 +1159,7 @@ msgstr "نعم"
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:215
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:246
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:62
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:147
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:177
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:255
@@ -1180,7 +1178,7 @@ msgid "View"
 msgstr "عرض"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:284
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:68
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:244
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:250
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:256
@@ -1203,6 +1201,7 @@ msgstr "التفاصيل"
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:304
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:23
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:49
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:279
 msgid "Close"
 msgstr "أغلق"
@@ -1738,13 +1737,13 @@ msgid "Enter media url here"
 msgstr "أدخل رابط الوسائط هنا"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:75
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:88
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:124
 msgid "Enter username here"
 msgstr "أدخل اسم المستخدم هنا"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:77
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:93
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:125
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:315
 msgid "Enter password here"
@@ -1800,7 +1799,7 @@ msgid "Configure Download"
 msgstr "عدِّل التنزيل"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:40
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:50
 msgid "Search..."
 msgstr "ابحث..."
 
@@ -1820,20 +1819,20 @@ msgstr "لا توجد تنزيلات في سجلك"
 msgid "There are no downloads found with the current filters"
 msgstr "لم يعُثر على تنزيلات تطابق المُرشِحات الحالية"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:53
 msgid "There are no credentials in your keyring"
 msgstr "لا توجد بيانات الاعتماد في حلقة المفاتيح خاصتك"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:55
 msgid "There are no credentials found with the current filters"
 msgstr "لم يُعثر على بيانات اعتماد تطابق المُرشِحات الحالية"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:77
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:152
 msgid "Enter name here"
 msgstr "أدخل الاسم هنا"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:83
 msgid "Enter url here"
 msgstr "أدخل الرابط هنا"
 

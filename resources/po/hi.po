@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-13 20:45-0400\n"
+"POT-Creation-Date: 2026-04-13 21:01-0400\n"
 "PO-Revision-Date: 2026-02-06 14:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -56,7 +56,7 @@ msgstr "प्रमाणित करें"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:67
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:28
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:73
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:36
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:67
 #, fuzzy
 msgid "Credential"
 msgstr "कोई क्रेडेंशियल नहीं"
@@ -64,7 +64,7 @@ msgstr "कोई क्रेडेंशियल नहीं"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:71
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:51
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:74
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:42
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:87
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
@@ -72,7 +72,7 @@ msgstr "उपयोगकर्ता नाम"
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:55
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:317
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:76
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:44
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:92
 msgid "Password"
 msgstr "पासवर्ड"
 
@@ -425,7 +425,7 @@ msgstr "साफ़ करें"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:8
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:94
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:29
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:48
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:88
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:108
 msgid "Keyring"
@@ -441,8 +441,8 @@ msgstr "कोई क्रेडेंशियल नहीं"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:447
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:111
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:298
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:30
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:63
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:51
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:68
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:114
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:148
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:212
@@ -451,13 +451,13 @@ msgstr "जोड़ें"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:43
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:472
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:38
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:76
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:151
 msgid "Name"
 msgstr "नाम"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/KeyringDialog.blp:47
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:40
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:82
 msgid "URL"
 msgstr "URL"
 
@@ -1028,8 +1028,7 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:302
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:326
 #: Nickvision.Parabolic.WinUI/Controls/DownloadRow.xaml.cs:109
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:76
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:111
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:121
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:268
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:228
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:291
@@ -1122,7 +1121,7 @@ msgstr "साफ़ करें"
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:65
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:173
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:231
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:37
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:69
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:150
 msgid "Cancel"
@@ -1161,28 +1160,27 @@ msgid "Edit"
 msgstr ""
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:97
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:32
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:34
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:52
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:54
 #, fuzzy
 msgid "No Credentials"
 msgstr "कोई क्रेडेंशियल नहीं"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:140
 #: Nickvision.Parabolic.GNOME/Views/PreferencesDialog.cs:327
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:78
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:113
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:123
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:230
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:293
 msgid "OK"
 msgstr "ठीक है"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:164
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:129
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:144
 msgid "Delete Credential?"
 msgstr "क्रेडेंशियल मिटाएं?"
 
 #: Nickvision.Parabolic.GNOME/Views/KeyringDialog.cs:164
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:130
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:145
 msgid ""
 "Are you sure you want to delete this credential? This action is irreversible"
 msgstr ""
@@ -1227,7 +1225,7 @@ msgstr "यह क्रिया अपरिवर्तनीय है। �
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:214
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:245
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:61
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:131
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:146
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:176
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:208
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:254
@@ -1237,7 +1235,7 @@ msgstr "हां"
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:215
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:246
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:62
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:132
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:147
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:177
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:209
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:255
@@ -1258,7 +1256,7 @@ msgid "View"
 msgstr "लॉग देखें"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:284
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:98
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:68
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:244
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:250
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:256
@@ -1281,6 +1279,7 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:304
 #: Nickvision.Parabolic.WinUI/Controls/AboutDialog.xaml.cs:23
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:49
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:279
 msgid "Close"
 msgstr "बंद करे"
@@ -1847,14 +1846,14 @@ msgid "Enter media url here"
 msgstr "यहां मीडिया URL दर्ज करें"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:75
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:43
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:88
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:124
 #, fuzzy
 msgid "Enter username here"
 msgstr "यहां उपयोगकर्ता नाम दर्ज करें"
 
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:77
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:45
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:93
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:125
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:315
 msgid "Enter password here"
@@ -1908,7 +1907,7 @@ msgid "Configure Download"
 msgstr "डाउनलोड"
 
 #: Nickvision.Parabolic.WinUI/Views/HistoryDialog.xaml.cs:40
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:31
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:50
 #, fuzzy
 msgid "Search..."
 msgstr "इतिहास खोजें"
@@ -1931,22 +1930,22 @@ msgstr "जब सभी डाउनलोड समाप्त हो जा�
 msgid "There are no downloads found with the current filters"
 msgstr "जब सभी डाउनलोड समाप्त हो जाएं"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:33
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:53
 #, fuzzy
 msgid "There are no credentials in your keyring"
 msgstr "जब सभी डाउनलोड समाप्त हो जाएं"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:35
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:55
 msgid "There are no credentials found with the current filters"
 msgstr ""
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:39
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:77
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:152
 #, fuzzy
 msgid "Enter name here"
 msgstr "यहां उपयोगकर्ता नाम दर्ज करें"
 
-#: Nickvision.Parabolic.WinUI/Views/KeyringPage.xaml.cs:41
+#: Nickvision.Parabolic.WinUI/Views/KeyringDialog.xaml.cs:83
 #, fuzzy
 msgid "Enter url here"
 msgstr "यहां मीडिया URL दर्ज करें"
