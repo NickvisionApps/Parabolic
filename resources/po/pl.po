@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-13 21:47-0400\n"
-"PO-Revision-Date: 2026-04-05 14:09+0000\n"
+"PO-Revision-Date: 2026-04-17 08:09+0000\n"
 "Last-Translator: Michał Dominik <fancy0duck@duck.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
@@ -1234,9 +1234,8 @@ msgstr "Zamknij"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:320
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:330
-#, fuzzy
 msgid "Password Required"
-msgstr "Hasło"
+msgstr "Wymagane hasło"
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:320
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:324
@@ -1248,6 +1247,12 @@ msgid ""
 "If you've already provided a password, please provide it again to unlock the "
 "database."
 msgstr ""
+"Ta aplikacja przechowuje dane w zaszyfrowanej bazie danych. Ponieważ "
+"systemowy menedżer danych logowania (secret service) jest niedostępny, "
+"proszę podać hasło, które ma zostać użyte do zaszyfrowania bazy danych.\n"
+"\n"
+"Jeśli hasło zostało już ustawione, proszę wprowadzić je ponownie, aby "
+"odblokować bazę danych."
 
 #: Nickvision.Parabolic.GNOME/Views/MainWindow.cs:321
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:126
@@ -1500,9 +1505,9 @@ msgid "An error occurred while stopping the download"
 msgstr "Wystąpił błąd podczas zatrzymywania pobierania"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:400
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Starting {0} installer..."
-msgstr "Rozpoczynanie pobierania..."
+msgstr "Uruchamianie instalatora {0}..."
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:404
 msgid "Unable to download and install the update"
@@ -1900,11 +1905,11 @@ msgstr "Dyskusje"
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:103
 #, csharp-format
 msgid "You are running a preview version of {0}"
-msgstr ""
+msgstr "Korzystasz z wersji rozwojowej {0}"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:104
 msgid "Thank you for testing the upcoming features and changes! ❤️"
-msgstr ""
+msgstr "Dziękujemy za przetestowanie nadchodzących funkcji i zmian! ❤️"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:123
 msgid "Credential Required"
