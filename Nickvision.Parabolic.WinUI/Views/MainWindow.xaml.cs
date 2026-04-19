@@ -69,7 +69,6 @@ public sealed partial class MainWindow : Window
         AppWindow.Closing += Window_Closing;
         eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => App_AppNotificationSent(sender, e));
         eventsService.ConfigurationSaved += App_ConfigurationSaved;
-        eventsService.DatabasePasswordRequired += App_DatabasePasswordRequired;
         eventsService.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
         eventsService.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
         eventsService.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
@@ -305,40 +304,6 @@ public sealed partial class MainWindow : Window
                 Theme.Dark => ElementTheme.Dark,
                 _ => ElementTheme.Default
             };
-        }
-    }
-
-    private async void App_DatabasePasswordRequired(object? sender, PasswordRequiredEventArgs args)
-    {
-        var passwordBox = new PasswordBox()
-        {
-            PlaceholderText = _translationService._("Enter password here")
-        };
-        var stackPanel = new StackPanel()
-        {
-            Orientation = Orientation.Vertical,
-            Spacing = 12
-        };
-        stackPanel.Children.Add(new TextBlock()
-        {
-            Text = _translationService._("This app stores data in an encrypted database. As the system credential manager (secret service) is not available, please provide a password to use to encrypt the database.\n\nIf you've already provided a password, please provide it again to unlock the database."),
-            TextWrapping = TextWrapping.WrapWholeWords
-        });
-        stackPanel.Children.Add(passwordBox);
-        var contentDialog = new ContentDialog()
-        {
-            Title = _translationService._("Password Required"),
-            Content = stackPanel,
-            PrimaryButtonText = _translationService._("Submit"),
-            DefaultButton = ContentDialogButton.Primary
-        };
-        while (string.IsNullOrEmpty(args.Password))
-        {
-            var res = await contentDialog.ShowAsync();
-            if (res == ContentDialogResult.Primary)
-            {
-                args.Password = passwordBox.Password;
-            }
         }
     }
 
