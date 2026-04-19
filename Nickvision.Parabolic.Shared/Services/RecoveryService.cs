@@ -36,14 +36,14 @@ public class RecoveryService : IRecoveryService
         {
             EnsureTable();
             var count = _databaseService.CountInTable(TableName);
-            _logger.LogInformation($"{count} recoverable downloads found.");
+            _logger.LogDebug($"{count} recoverable downloads found.");
             return count;
         }
     }
 
     public async Task<bool> AddAsync(RecoverableDownload download)
     {
-        _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
+        _logger.LogDebug($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
         await EnsureTableAsync();
         var res = await _databaseService.InsertIntoTableAsync(TableName, new Dictionary<string, object>()
         {
@@ -53,7 +53,7 @@ public class RecoveryService : IRecoveryService
         });
         if (res)
         {
-            _logger.LogInformation($"Added recoverable download ({download.Id}).");
+            _logger.LogDebug($"Added recoverable download ({download.Id}).");
         }
         else
         {
@@ -64,7 +64,7 @@ public class RecoveryService : IRecoveryService
 
     public async Task<bool> AddAsync(IReadOnlyList<RecoverableDownload> downloads)
     {
-        _logger.LogInformation($"Adding {downloads.Count} recoverable download(s)...");
+        _logger.LogDebug($"Adding {downloads.Count} recoverable download(s)...");
         if (downloads.Count == 0)
         {
             return true;
@@ -73,7 +73,7 @@ public class RecoveryService : IRecoveryService
         using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var download in downloads)
         {
-            _logger.LogInformation($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
+            _logger.LogDebug($"Adding recoverable download ({download.Id}): {download.Options.Url} {(download.CredentialRequired ? "*" : string.Empty)}");
             if (!await _databaseService.InsertIntoTableAsync(TableName, new Dictionary<string, object>()
             {
                 { "id", download.Id },
@@ -84,21 +84,21 @@ public class RecoveryService : IRecoveryService
                 _logger.LogError($"Failed to add recoverable download ({download.Id}).");
                 return false;
             }
-            _logger.LogInformation($"Added recoverable download ({download.Id}).");
+            _logger.LogDebug($"Added recoverable download ({download.Id}).");
         }
-        _logger.LogInformation($"Added {downloads.Count} recoverable download(s).");
+        _logger.LogDebug($"Added {downloads.Count} recoverable download(s).");
         await transaction.CommitAsync();
         return true;
     }
 
     public async Task<bool> ClearAsync()
     {
-        _logger.LogInformation("Clearing all recoverable downloads...");
+        _logger.LogDebug("Clearing all recoverable downloads...");
         await EnsureTableAsync();
         var res = await _databaseService.ClearTableAsync(TableName);
         if (res)
         {
-            _logger.LogInformation("Cleared all recoverable downloads.");
+            _logger.LogDebug("Cleared all recoverable downloads.");
         }
         else
         {
@@ -109,7 +109,7 @@ public class RecoveryService : IRecoveryService
 
     public async Task<IReadOnlyList<RecoverableDownload>> GetAllAsync()
     {
-        _logger.LogInformation("Fetching all recoverable downloads...");
+        _logger.LogDebug("Fetching all recoverable downloads...");
         var downloads = new List<RecoverableDownload>();
         await EnsureTableAsync();
         using var command = await _databaseService.SelectAllFromTableAsync(TableName);
@@ -118,21 +118,21 @@ public class RecoveryService : IRecoveryService
         {
             var id = reader.GetInt32(0);
             var options = JsonSerializer.Deserialize(reader.GetString(1), ApplicationJsonContext.Default.DownloadOptions)!;
-            _logger.LogInformation($"Fetched recoverable download ({id}): {options.Url}");
+            _logger.LogDebug($"Fetched recoverable download ({id}): {options.Url}");
             downloads.Add(new RecoverableDownload(id, options));
         }
-        _logger.LogInformation($"Fetched {downloads.Count} recoverable download(s).");
+        _logger.LogDebug($"Fetched {downloads.Count} recoverable download(s).");
         return downloads;
     }
 
     public async Task<bool> RemoveAsync(RecoverableDownload download)
     {
-        _logger.LogInformation($"Removing recoverable download ({download.Id}): {download.Options.Url}");
+        _logger.LogDebug($"Removing recoverable download ({download.Id}): {download.Options.Url}");
         await EnsureTableAsync();
         var res = await _databaseService.DeleteFromTableAsync(TableName, "id", download.Id);
         if (res)
         {
-            _logger.LogInformation($"Removed recoverable download ({download.Id}).");
+            _logger.LogDebug($"Removed recoverable download ({download.Id}).");
         }
         else
         {
@@ -143,12 +143,12 @@ public class RecoveryService : IRecoveryService
 
     public async Task<bool> RemoveAsync(int id)
     {
-        _logger.LogInformation($"Removing recoverable download ({id})...");
+        _logger.LogDebug($"Removing recoverable download ({id})...");
         await EnsureTableAsync();
         var res = await _databaseService.DeleteFromTableAsync(TableName, "id", id);
         if (res)
         {
-            _logger.LogInformation($"Removed recoverable download ({id}).");
+            _logger.LogDebug($"Removed recoverable download ({id}).");
         }
         else
         {
@@ -159,7 +159,7 @@ public class RecoveryService : IRecoveryService
 
     public async Task<bool> RemoveAsync(IReadOnlyList<int> ids)
     {
-        _logger.LogInformation($"Removing {ids.Count} recoverable download(s)...");
+        _logger.LogDebug($"Removing {ids.Count} recoverable download(s)...");
         await EnsureTableAsync();
         using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var id in ids)
@@ -169,10 +169,10 @@ public class RecoveryService : IRecoveryService
                 _logger.LogError($"Failed to remove recoverable download ({id}).");
                 return false;
             }
-            _logger.LogInformation($"Removed recoverable download ({id}).");
+            _logger.LogDebug($"Removed recoverable download ({id}).");
         }
         await transaction.CommitAsync();
-        _logger.LogInformation($"Removed {ids.Count} recoverable download(s).");
+        _logger.LogDebug($"Removed {ids.Count} recoverable download(s).");
         return true;
     }
 

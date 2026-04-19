@@ -46,7 +46,7 @@ public class HistoryService : IHistoryService
 
     public async Task<bool> AddAsync(HistoricDownload download)
     {
-        _logger.LogInformation($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
+        _logger.LogDebug($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
         if (Length == HistoryLength.Never)
         {
             _logger.LogWarning("History length is set to Never. Skipping add.");
@@ -63,7 +63,7 @@ public class HistoryService : IHistoryService
         });
         if (res)
         {
-            _logger.LogInformation($"Added historic download ({download.Url}).");
+            _logger.LogDebug($"Added historic download ({download.Url}).");
 
         }
         else
@@ -75,7 +75,7 @@ public class HistoryService : IHistoryService
 
     public async Task<bool> AddAsync(IReadOnlyList<HistoricDownload> downloads)
     {
-        _logger.LogInformation($"Adding {downloads.Count} historic download(s)...");
+        _logger.LogDebug($"Adding {downloads.Count} historic download(s)...");
         if (Length == HistoryLength.Never)
         {
             _logger.LogWarning("History length is set to Never. Skipping add.");
@@ -85,7 +85,7 @@ public class HistoryService : IHistoryService
         using var transaction = await _databaseService.CreateTransactionAsync();
         foreach (var download in downloads)
         {
-            _logger.LogInformation($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
+            _logger.LogDebug($"Adding historic download ({download.Url}): {download.Title} @ {download.Path}");
             download.DownloadedOn = DateTime.Now;
             if (!await _databaseService.ReplaceIntoTableAsync(TableName, new Dictionary<string, object>()
             {
@@ -98,21 +98,21 @@ public class HistoryService : IHistoryService
                 _logger.LogError($"Failed to add historic download ({download.Url}).");
                 return false;
             }
-            _logger.LogInformation($"Added historic download ({download.Url}).");
+            _logger.LogDebug($"Added historic download ({download.Url}).");
         }
-        _logger.LogInformation($"Added {downloads.Count} historic download(s).");
+        _logger.LogDebug($"Added {downloads.Count} historic download(s).");
         await transaction.CommitAsync();
         return true;
     }
 
     public async Task<bool> ClearAsync()
     {
-        _logger.LogInformation("Clearing all historic downloads...");
+        _logger.LogDebug("Clearing all historic downloads...");
         await EnsureTableAsync();
         var res = await _databaseService.ClearTableAsync(TableName);
         if (res)
         {
-            _logger.LogInformation("Cleared all historic downloads.");
+            _logger.LogDebug("Cleared all historic downloads.");
         }
         else
         {
@@ -123,7 +123,7 @@ public class HistoryService : IHistoryService
 
     public async Task<IReadOnlyList<HistoricDownload>> GetAllAsync()
     {
-        _logger.LogInformation("Fetching all historic downloads...");
+        _logger.LogDebug("Fetching all historic downloads...");
         var downloads = new List<HistoricDownload>();
         var toRemove = new List<Uri>();
         var length = Length;
@@ -148,7 +148,7 @@ public class HistoryService : IHistoryService
                     continue;
                 }
             }
-            _logger.LogInformation($"Fetched historic download ({download.Url}).");
+            _logger.LogDebug($"Fetched historic download ({download.Url}).");
             downloads.Add(download);
         }
         if (toRemove.Count > 0)
@@ -159,7 +159,7 @@ public class HistoryService : IHistoryService
                 await _databaseService.DeleteFromTableAsync(TableName, "url", url.ToString());
             }
             await transaction.CommitAsync();
-            _logger.LogInformation($"Removed {toRemove.Count} old historic download(s).");
+            _logger.LogDebug($"Removed {toRemove.Count} old historic download(s).");
         }
         if (SortNewest)
         {
@@ -169,18 +169,18 @@ public class HistoryService : IHistoryService
         {
             downloads.Sort();
         }
-        _logger.LogInformation($"Fetched {downloads.Count} historic download(s).");
+        _logger.LogDebug($"Fetched {downloads.Count} historic download(s).");
         return downloads;
     }
 
     public async Task<bool> RemoveAsync(HistoricDownload download)
     {
-        _logger.LogInformation($"Removing historic download ({download.Url})...");
+        _logger.LogDebug($"Removing historic download ({download.Url})...");
         await EnsureTableAsync();
         var res = await _databaseService.DeleteFromTableAsync(TableName, "url", download.Url.ToString());
         if (res)
         {
-            _logger.LogInformation($"Removed historic download ({download.Url}).");
+            _logger.LogDebug($"Removed historic download ({download.Url}).");
         }
         else
         {
@@ -191,12 +191,12 @@ public class HistoryService : IHistoryService
 
     public async Task<bool> RemoveAsync(Uri url)
     {
-        _logger.LogInformation($"Removing historic download ({url})...");
+        _logger.LogDebug($"Removing historic download ({url})...");
         await EnsureTableAsync();
         var res = await _databaseService.DeleteFromTableAsync(TableName, "url", url.ToString());
         if (res)
         {
-            _logger.LogInformation($"Removed historic download ({url}).");
+            _logger.LogDebug($"Removed historic download ({url}).");
         }
         else
         {
@@ -207,7 +207,7 @@ public class HistoryService : IHistoryService
 
     public async Task<bool> UpdateAsync(HistoricDownload download)
     {
-        _logger.LogInformation($"Updating historic download ({download.Url})...");
+        _logger.LogDebug($"Updating historic download ({download.Url})...");
         download.DownloadedOn = DateTime.Now;
         await EnsureTableAsync();
         var res = await _databaseService.UpdateInTableAsync(TableName, "url", download.Url.ToString(), new Dictionary<string, object>()
@@ -218,7 +218,7 @@ public class HistoryService : IHistoryService
         });
         if (res)
         {
-            _logger.LogInformation($"Updated historic download ({download.Url}).");
+            _logger.LogDebug($"Updated historic download ({download.Url}).");
         }
         else
         {

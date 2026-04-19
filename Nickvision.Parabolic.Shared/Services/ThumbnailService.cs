@@ -22,7 +22,7 @@ public class ThumbnailService : IThumbnailService
         _httpClient = httpClientFactory.CreateClient();
         _cache = [];
         _mediaMap = [];
-        _logger.LogInformation("Loading default thumbnail into cache...");
+        _logger.LogDebug("Loading default thumbnail into cache...");
         using var stream = typeof(ThumbnailService).Assembly.GetManifestResourceStream("Nickvision.Parabolic.Shared.Resources.default_thumbnail.jpg");
         if (stream is null)
         {
@@ -33,15 +33,15 @@ public class ThumbnailService : IThumbnailService
         using var memoryStream = new MemoryStream();
         stream.CopyTo(memoryStream);
         _cache[Uri.Empty] = memoryStream.ToArray();
-        _logger.LogInformation("Loaded default thumbnail into cache.");
+        _logger.LogDebug("Loaded default thumbnail into cache.");
     }
 
     public async Task<byte[]> GetImageBytesAsync(Uri url)
     {
-        _logger.LogInformation($"Getting image bytes for url: {url}");
+        _logger.LogDebug($"Getting image bytes for url: {url}");
         if (_cache.TryGetValue(url, out var bytes))
         {
-            _logger.LogInformation($"Found image bytes for url ({url}) in cache.");
+            _logger.LogDebug($"Found image bytes for url ({url}) in cache.");
             return bytes;
         }
         await DownloadImageBytesAsync(url);
@@ -50,10 +50,10 @@ public class ThumbnailService : IThumbnailService
 
     public async Task<MemoryStream> GetImageStreamAsync(Uri url)
     {
-        _logger.LogInformation($"Getting image stream for url: {url}");
+        _logger.LogDebug($"Getting image stream for url: {url}");
         if (_cache.TryGetValue(url, out var bytes))
         {
-            _logger.LogInformation($"Found image stream for url ({url}) in cache.");
+            _logger.LogDebug($"Found image stream for url ({url}) in cache.");
             return new MemoryStream(bytes);
         }
         await DownloadImageBytesAsync(url);
@@ -74,7 +74,7 @@ public class ThumbnailService : IThumbnailService
         else
         {
             _mediaMap[media.Url] = media.ThumbnailUrl;
-            _logger.LogInformation($"Mapped media url ({media.Url}) to thumbnail url ({media.ThumbnailUrl}).");
+            _logger.LogDebug($"Mapped media url ({media.Url}) to thumbnail url ({media.ThumbnailUrl}).");
         }
     }
 
@@ -84,7 +84,7 @@ public class ThumbnailService : IThumbnailService
         {
             return;
         }
-        _logger.LogInformation($"Downloading image bytes for url: {url}");
+        _logger.LogDebug($"Downloading image bytes for url: {url}");
         var bytes = await _httpClient.GetByteArrayAsync(_mediaMap.TryGetValue(url, out var mappedUrl) ? mappedUrl : url);
         if (bytes.Length == 0)
         {
@@ -92,14 +92,14 @@ public class ThumbnailService : IThumbnailService
         }
         else
         {
-            _logger.LogInformation($"Downloaded image bytes for url ({url}).");
+            _logger.LogDebug($"Downloaded image bytes for url ({url}).");
         }
         _cache[url] = bytes.Length == 0 ? _cache[Uri.Empty] : bytes;
         if (mappedUrl is not null)
         {
             _cache[mappedUrl] = bytes.Length == 0 ? _cache[Uri.Empty] : bytes;
             _mediaMap.Remove(url);
-            _logger.LogInformation($"Removed media url ({url}) from media map.");
+            _logger.LogDebug($"Removed media url ({url}) from media map.");
         }
     }
 }
