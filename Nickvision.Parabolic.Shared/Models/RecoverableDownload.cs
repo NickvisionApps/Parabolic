@@ -14,13 +14,5 @@ public class RecoverableDownload
         Id = id;
         Options = options.DeepCopy(ApplicationJsonContext.Default.DownloadOptions);
         CredentialRequired = Options.Credential is not null;
-        Options.Credential = null;
-    }
-
-    public RecoverableDownload(int id, DownloadOptions options, bool credentialRequired)
-    {
-        Id = id;
-        Options = options;
-        CredentialRequired = credentialRequired;
     }
 }

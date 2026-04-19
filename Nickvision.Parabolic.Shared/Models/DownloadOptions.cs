@@ -3,7 +3,6 @@ using Nickvision.Desktop.Keyring;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json.Serialization;
 
 namespace Nickvision.Parabolic.Shared.Models;
 
@@ -13,7 +12,6 @@ public class DownloadOptions
     private bool _isEnsuringPath;
 
     public Uri Url { get; set; }
-    [JsonIgnore]
     public Credential? Credential { get; set; }
     public MediaFileType FileType { get; set; }
     public int PlaylistPosition { get; set; }

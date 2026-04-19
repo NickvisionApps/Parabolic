@@ -26,7 +26,6 @@ public class DownloadService : IDisposable, IDownloadService
 
     public event EventHandler<DownloadAddedEventArgs>? DownloadAdded;
     public event EventHandler<DownloadCompletedEventArgs>? DownloadCompleted;
-    public event EventHandler<DownloadCredentialRequiredEventArgs>? DownloadCredentialRequired;
     public event EventHandler<DownloadProgressChangedEventArgs>? DownloadProgressChanged;
     public event EventHandler<DownloadEventArgs>? DownloadRetired;
     public event EventHandler<DownloadEventArgs>? DownloadStartedFromQueue;
@@ -194,19 +193,6 @@ public class DownloadService : IDisposable, IDownloadService
     public async Task RecoverAllAsync()
     {
         var downloads = await _recoveryService.GetAllAsync();
-        foreach (var recoverableDownload in downloads)
-        {
-            if (recoverableDownload.CredentialRequired)
-            {
-                var args = new DownloadCredentialRequiredEventArgs(recoverableDownload.Options.SaveFilename, recoverableDownload.Options.Url);
-                DownloadCredentialRequired?.Invoke(this, args);
-                if (string.IsNullOrEmpty(args.Credential.Username) && string.IsNullOrEmpty(args.Credential.Password))
-                {
-                    continue;
-                }
-                recoverableDownload.Options.Credential = args.Credential;
-            }
-        }
         await _recoveryService.ClearAsync();
         var options = new List<DownloadOptions>(downloads.Count);
         foreach (var recoverableDownload in downloads)

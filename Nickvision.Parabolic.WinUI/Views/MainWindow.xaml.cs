@@ -70,7 +70,6 @@ public sealed partial class MainWindow : Window
         eventsService.AppNotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => App_AppNotificationSent(sender, e));
         eventsService.ConfigurationSaved += App_ConfigurationSaved;
         eventsService.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadAdded(sender, e));
-        eventsService.DownloadCredentialRequired += Controller_DownloadCredentialRequired;
         eventsService.DownloadProgressChanged += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadProgressChanged(sender, e));
         eventsService.DownloadCompleted += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadCompleted(sender, e));
         eventsService.DownloadStopped += (sender, e) => DispatcherQueue.TryEnqueue(() => Controller_DownloadStopped(sender, e));
@@ -333,21 +332,6 @@ public sealed partial class MainWindow : Window
         {
             row.TriggerCompletedState(e);
             UpdateDownloadsList();
-        }
-    }
-
-    private async void Controller_DownloadCredentialRequired(object? sender, DownloadCredentialRequiredEventArgs e)
-    {
-        LblCredentialRequired.Text = _translationService._("A credential is required to continue the download of \"{0}\".", e.Credential.Name);
-        TxtCredentialUrl.Text = e.Credential.Url.ToString();
-        TxtCredentialUsername.Text = string.Empty;
-        TxtCredentialPassword.Password = string.Empty;
-        DlgCredential.XamlRoot = MainGrid.XamlRoot;
-        DlgCredential.RequestedTheme = MainGrid.ActualTheme;
-        if ((await DlgCredential.ShowAsync()) == ContentDialogResult.Primary)
-        {
-            e.Credential.Username = TxtCredentialUsername.Text;
-            e.Credential.Password = TxtCredentialPassword.Password;
         }
     }
 

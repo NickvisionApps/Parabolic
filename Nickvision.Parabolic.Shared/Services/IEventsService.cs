@@ -11,7 +11,6 @@ public interface IEventsService
     event EventHandler<ConfigurationSavedEventArgs>? ConfigurationSaved;
     event EventHandler<DownloadAddedEventArgs> DownloadAdded;
     event EventHandler<DownloadCompletedEventArgs> DownloadCompleted;
-    event EventHandler<DownloadCredentialRequiredEventArgs> DownloadCredentialRequired;
     event EventHandler<DownloadProgressChangedEventArgs> DownloadProgressChanged;
     event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
     event EventHandler<DownloadEventArgs> DownloadRetired;

@@ -10,7 +10,6 @@ public interface IDownloadService
 {
     event EventHandler<DownloadAddedEventArgs>? DownloadAdded;
     event EventHandler<DownloadCompletedEventArgs>? DownloadCompleted;
-    event EventHandler<DownloadCredentialRequiredEventArgs>? DownloadCredentialRequired;
     event EventHandler<DownloadProgressChangedEventArgs>? DownloadProgressChanged;
     event EventHandler<DownloadEventArgs>? DownloadRetired;
     event EventHandler<DownloadEventArgs>? DownloadStartedFromQueue;

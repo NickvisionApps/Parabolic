@@ -48,13 +48,6 @@ public class EventsService : IEventsService
         remove => _downloadService.DownloadCompleted -= value;
     }
 
-    public event EventHandler<DownloadCredentialRequiredEventArgs> DownloadCredentialRequired
-    {
-        add => _downloadService.DownloadCredentialRequired += value;
-
-        remove => _downloadService.DownloadCredentialRequired -= value;
-    }
-
     public event EventHandler<DownloadProgressChangedEventArgs> DownloadProgressChanged
     {
         add => _downloadService.DownloadProgressChanged += value;

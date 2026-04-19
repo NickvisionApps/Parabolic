@@ -118,9 +118,8 @@ public class RecoveryService : IRecoveryService
         {
             var id = reader.GetInt32(0);
             var options = JsonSerializer.Deserialize(reader.GetString(1), ApplicationJsonContext.Default.DownloadOptions)!;
-            var credentialRequired = reader.GetInt32(2) == 1;
             _logger.LogInformation($"Fetched recoverable download ({id}): {options.Url}");
-            downloads.Add(new RecoverableDownload(id, options, credentialRequired));
+            downloads.Add(new RecoverableDownload(id, options));
         }
         _logger.LogInformation($"Fetched {downloads.Count} recoverable download(s).");
         return downloads;
