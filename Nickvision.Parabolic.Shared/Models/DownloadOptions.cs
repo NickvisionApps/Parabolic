@@ -62,8 +62,15 @@ public class DownloadOptions
 
         set
         {
-            field = value.Length <= 255 - _maxDotExtensionLength ? value : value.Substring(0, 255 - _maxDotExtensionLength);
-            EnsurePathSize();
+            if (value.Contains('%'))
+            {
+                field = value;
+            }
+            else
+            {
+                field = value.Length <= 255 - _maxDotExtensionLength ? value : value.Substring(0, 255 - _maxDotExtensionLength);
+                EnsurePathSize();
+            }
         }
     }
 

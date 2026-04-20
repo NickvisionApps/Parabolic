@@ -162,9 +162,9 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             "--paths",
             $"temp:{downloadOptions.SaveFolder}",
             "--output",
-            $"{downloadOptions.SaveFilename}.%(ext)s",
+            downloadOptions.SaveFilename.Contains('%') ? downloadOptions.SaveFilename : $"{downloadOptions.SaveFilename}.%(ext)s",
             "--output",
-            $"chapter:%(section_number)03d - {downloadOptions.SaveFilename}.%(ext)s",
+            downloadOptions.SaveFilename.Contains('%') ? $"chapter:%(section_number)03d - {downloadOptions.SaveFilename}" : $"chapter:%(section_number)03d - {downloadOptions.SaveFilename}.%(ext)s",
             "--print",
             "after_move:filepath"
         };

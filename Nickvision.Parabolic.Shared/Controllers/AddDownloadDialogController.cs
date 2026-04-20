@@ -188,7 +188,7 @@ public class AddDownloadDialogController
         var options = new DownloadOptions(media.Url)
         {
             Credential = context.Credential,
-            SaveFilename = string.IsNullOrEmpty(saveFilename) ? media.Title : saveFilename.SanitizeForFilename(_configurationService.LimitCharacters),
+            SaveFilename = string.IsNullOrEmpty(saveFilename) ? media.Title : (saveFilename.Contains('%') ? saveFilename : saveFilename.SanitizeForFilename(_configurationService.LimitCharacters)),
             SaveFolder = saveFolder,
             FileType = selectedFileType.Value,
             PlaylistPosition = media.PlaylistPosition,
