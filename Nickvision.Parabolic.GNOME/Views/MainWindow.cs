@@ -88,7 +88,6 @@ public class MainWindow : Adw.ApplicationWindow
             App_AppNotificationSent(sender, e);
             return false;
         });
-        eventsService.DatabasePasswordRequired += App_DatabasePasswordRequired;
         eventsService.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
         {
             Controller_DownloadAdded(sender, e);
@@ -129,17 +128,17 @@ public class MainWindow : Adw.ApplicationWindow
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
         AddAction(actQuit);
-        application.SetAccelsForAction("win.quit", ["<Ctrl>q"]);
+        application.SetAccelsForAction("win.quit", ["<Primary>q"]);
         // Preferences action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
         AddAction(actPreferences);
-        application.SetAccelsForAction("win.preferences", ["<Ctrl>period"]);
+        application.SetAccelsForAction("win.preferences", ["<Primary>period"]);
         // Keyboard shortcuts action
         var actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
         actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
         AddAction(actKeyboardShortcuts);
-        application.SetAccelsForAction("win.keyboardShortcuts", ["<Ctrl>question"]);
+        application.SetAccelsForAction("win.keyboardShortcuts", ["<Primary>question"]);
         // About action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
@@ -149,27 +148,27 @@ public class MainWindow : Adw.ApplicationWindow
         var actAddDownload = Gio.SimpleAction.New("addDownload", null);
         actAddDownload.OnActivate += AddDownload;
         AddAction(actAddDownload);
-        application.SetAccelsForAction("win.addDownload", ["<Ctrl>n"]);
+        application.SetAccelsForAction("win.addDownload", ["<Primary>n"]);
         // Keyring action
         var actKeyring = Gio.SimpleAction.New("keyring", null);
         actKeyring.OnActivate += Keyring;
         AddAction(actKeyring);
-        application.SetAccelsForAction("win.keyring", ["<Ctrl>k"]);
+        application.SetAccelsForAction("win.keyring", ["<Primary>k"]);
         // History action
         var actHistory = Gio.SimpleAction.New("history", null);
         actHistory.OnActivate += History;
         AddAction(actHistory);
-        application.SetAccelsForAction("win.history", ["<Ctrl>h"]);
+        application.SetAccelsForAction("win.history", ["<Primary>h"]);
         // Stop all remaining action
         var actStopAllRemaining = Gio.SimpleAction.New("stopAllRemaining", null);
         actStopAllRemaining.OnActivate += StopAllRemaining;
         AddAction(actStopAllRemaining);
-        application.SetAccelsForAction("win.stopAllRemaining", ["<Ctrl><Shift>s"]);
+        application.SetAccelsForAction("win.stopAllRemaining", ["<Primary><Shift>s"]);
         // Retry all failed action
         var actRetryAllFailed = Gio.SimpleAction.New("retryAllFailed", null);
         actRetryAllFailed.OnActivate += RetryAllFailed;
         AddAction(actRetryAllFailed);
-        application.SetAccelsForAction("win.retryAllFailed", ["<Ctrl><Shift>r"]);
+        application.SetAccelsForAction("win.retryAllFailed", ["<Primary><Shift>r"]);
         // Clear all queued action
         var actClearAllQueued = Gio.SimpleAction.New("clearAllQueued", null);
         actClearAllQueued.OnActivate += ClearAllQueued;
@@ -308,33 +307,6 @@ public class MainWindow : Adw.ApplicationWindow
             };
         }
         _toastOverlay!.AddToast(toast);
-    }
-
-    private async void App_DatabasePasswordRequired(object? sender, PasswordRequiredEventArgs e)
-    {
-        var password = string.Empty;
-        var passwordEntryRow = Adw.PasswordEntryRow.New();
-        passwordEntryRow.Title = _translationService._("Password");
-        var preferencesGroup = Adw.PreferencesGroup.New();
-        preferencesGroup.Add(passwordEntryRow);
-        var dialog = Adw.MessageDialog.New(this, _translationService._("Password Required"), _translationService._("This app stores data in an encrypted database. As the system credential manager (secret service) is not available, please provide a password to use to encrypt the database.\n\nIf you've already provided a password, please provide it again to unlock the database."));
-        dialog.AddResponse("submit", _translationService._("Submit"));
-        dialog.SetResponseAppearance("submit", Adw.ResponseAppearance.Suggested);
-        dialog.SetDefaultResponse("submit");
-        dialog.SetCloseResponse("submit");
-        dialog.SetExtraChild(preferencesGroup);
-        dialog.OnResponse += (_, args) =>
-        {
-            if (args.Response == "submit")
-            {
-                password = passwordEntryRow.Text_ ?? string.Empty;
-            }
-        };
-        while (string.IsNullOrEmpty(password))
-        {
-            dialog.Present();
-            await Task.Delay(100);
-        }
     }
 
     private async void Controller_DownloadAdded(object? sender, DownloadAddedEventArgs e)

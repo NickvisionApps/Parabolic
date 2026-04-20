@@ -25,7 +25,6 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
     private static readonly string[] PartialDownloadFilePatterns;
 
     private readonly IDenoExecutableService _denoExecutableService;
-    private readonly IUpdaterService _previewUpdaterService;
 
     static YtdlpExecutableService()
     {
@@ -56,10 +55,10 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         PartialDownloadFilePatterns = ["*.part*", "*.vtt", "*.srt", "*.ass", "*.lrc"];
     }
 
-    public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, ILogger<UpdaterService> updaterLogger, IConfigurationService configurationService, IDenoExecutableService denoExecutableService, IHttpClientFactory httpClientFactory) : base(logger, "yt-dlp", YtdlpBundledVersion, YtdlpAssetName, configurationService, new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp", httpClientFactory.CreateClient()))
+    public YtdlpExecutableService(ILogger<YtdlpExecutableService> logger, ILogger<UpdaterService> updaterLogger, IConfigurationService configurationService, IDenoExecutableService denoExecutableService, IHttpClientFactory httpClientFactory)
+        : base(logger, "yt-dlp", YtdlpBundledVersion, YtdlpAssetName, configurationService, new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp", httpClientFactory.CreateClient()), new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp-nightly-builds", httpClientFactory.CreateClient()))
     {
         _denoExecutableService = denoExecutableService;
-        _previewUpdaterService = new UpdaterService(updaterLogger, "yt-dlp", "yt-dlp-nightly-builds", httpClientFactory.CreateClient());
     }
 
     public IReadOnlyList<string> GetDiscoveryProcessArguments(Uri url, Credential? credential)
@@ -91,7 +90,6 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         if (!string.IsNullOrEmpty(_configurationService.ProxyUrl))
         {
-            _logger.LogInformation("Using proxy...");
             arguments.Add("--proxy");
             arguments.Add(_configurationService.ProxyUrl);
         }
@@ -99,7 +97,6 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         {
             if (!string.IsNullOrEmpty(credential.Username) && !string.IsNullOrEmpty(credential.Password))
             {
-                _logger.LogInformation("Using credential...");
                 arguments.Add("--username");
                 arguments.Add(credential.Username);
                 arguments.Add("--password");
@@ -107,14 +104,12 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             }
             else if (!string.IsNullOrEmpty(credential.Password))
             {
-                _logger.LogInformation("Using video password...");
                 arguments.Add("--video-password");
                 arguments.Add(credential.Password);
             }
         }
         if (_configurationService.CookiesBrowser != Browser.None)
         {
-            _logger.LogInformation($"Using cookies from browser: {_configurationService.CookiesBrowser}");
             arguments.Add("--cookies-from-browser");
             arguments.Add(_configurationService.CookiesBrowser switch
             {
@@ -131,7 +126,6 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         else if (File.Exists(_configurationService.CookiesPath))
         {
-            _logger.LogInformation($"Using cookies file...");
             arguments.Add("--cookies");
             arguments.Add(_configurationService.CookiesPath);
         }
@@ -601,16 +595,6 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             }
         }
         return res;
-    }
-
-    public override async Task<AppVersion?> GetLatestPreviewVersionAsync()
-    {
-        if (_latestPreviewVersion is null)
-        {
-            var _ = ExecutablePath;
-            _latestPreviewVersion = await _previewUpdaterService.GetLatestStableVersionAsync();
-        }
-        return _latestPreviewVersion;
     }
 
     private bool HasPartialDownloadFiles(string saveFolder, string saveFilename)

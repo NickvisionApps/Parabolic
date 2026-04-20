@@ -8,16 +8,14 @@ namespace Nickvision.Parabolic.Shared.Services;
 public class EventsService : IEventsService
 {
     private readonly IConfigurationService _configurationService;
-    private readonly IDatabaseService _databaseService;
     private readonly IDownloadService _downloadService;
     private readonly INotificationService _notificationService;
 
     public event EventHandler<DownloadRequestedEventArgs>? DownloadRequested;
 
-    public EventsService(IConfigurationService configurationService, IDatabaseService databaseService, IDownloadService downloadService, INotificationService notificationService)
+    public EventsService(IConfigurationService configurationService, IDownloadService downloadService, INotificationService notificationService)
     {
         _configurationService = configurationService;
-        _databaseService = databaseService;
         _downloadService = downloadService;
         _notificationService = notificationService;
     }
@@ -36,13 +34,6 @@ public class EventsService : IEventsService
         remove => _configurationService.Saved -= value;
     }
 
-    public event EventHandler<PasswordRequiredEventArgs>? DatabasePasswordRequired
-    {
-        add => _databaseService.PasswordRequired += value;
-
-        remove => _databaseService.PasswordRequired -= value;
-    }
-
     public event EventHandler<DownloadAddedEventArgs> DownloadAdded
     {
         add => _downloadService.DownloadAdded += value;
@@ -55,13 +46,6 @@ public class EventsService : IEventsService
         add => _downloadService.DownloadCompleted += value;
 
         remove => _downloadService.DownloadCompleted -= value;
-    }
-
-    public event EventHandler<DownloadCredentialRequiredEventArgs> DownloadCredentialRequired
-    {
-        add => _downloadService.DownloadCredentialRequired += value;
-
-        remove => _downloadService.DownloadCredentialRequired -= value;
     }
 
     public event EventHandler<DownloadProgressChangedEventArgs> DownloadProgressChanged
