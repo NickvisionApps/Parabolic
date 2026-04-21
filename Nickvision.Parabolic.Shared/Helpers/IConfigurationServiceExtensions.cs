@@ -3,19 +3,16 @@ using Nickvision.Desktop.Filesystem;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
-using System.Text.RegularExpressions;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
-public static partial class IConfigurationServiceExtensions
+public static class IConfigurationServiceExtensions
 {
-    [GeneratedRegex(@"\\u([0-9a-fA-F]{4})|\\r\\n|\\r|\\n")]
-    private static partial Regex JsonEscapeRegex();
-
     extension(IConfigurationService configurationService)
     {
         public bool AllowPreviewUpdates
@@ -450,21 +447,13 @@ public static partial class IConfigurationServiceExtensions
 
         public async Task<string> ToStringAsync()
         {
-            var res = JsonSerializer.Serialize(await configurationService.GetAllRawAsync(), ApplicationJsonContext.Default.DictionaryStringString);
-            return JsonEscapeRegex().Replace(res, m =>
+            var res = await configurationService.GetAllRawAsync();
+            var builder = new StringBuilder();
+            foreach (var pair in res.ToImmutableSortedDictionary())
             {
-                if (m.Groups[1].Success)
-                {
-                    return ((char)Convert.ToInt32(m.Groups[1].Value, 16)).ToString();
-                }
-                return m.Value switch
-                {
-                    @"\r\n" => "\n",
-                    @"\r" => "\r",
-                    @"\n" => "\n",
-                    _ => m.Value
-                };
-            });
+                builder.AppendLine($"{pair.Key} = {(string.IsNullOrEmpty(pair.Value) ? "\"\"" : pair.Value)}");
+            }
+            return builder.ToString();
         }
     }
 }
