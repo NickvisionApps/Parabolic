@@ -16,7 +16,7 @@ public class PreferencesViewController : IDisposable
 {
     private readonly IConfigurationService _configurationService;
     private readonly ITranslationService _translationService;
-    private readonly SqliteTransaction _transaction;
+    private SqliteTransaction? _transaction;
 
     public IReadOnlyList<SelectionItem<AudioCodec>> AudioCodecs { get; }
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages { get; }
@@ -427,7 +427,15 @@ public class PreferencesViewController : IDisposable
         return null;
     }
 
-    public Task SaveConfigurationAsync() => _transaction.CommitAsync();
+    public async Task SaveConfigurationAsync()
+    {
+        if(_transaction is not null)
+        {
+            await _transaction.CommitAsync();
+            await _transaction.DisposeAsync();
+            _transaction = null;
+        }
+    }
 
     private void Dispose(bool disposing)
     {
@@ -435,6 +443,6 @@ public class PreferencesViewController : IDisposable
         {
             return;
         }
-        _transaction.Dispose();
+        _transaction?.Dispose();
     }
 }
