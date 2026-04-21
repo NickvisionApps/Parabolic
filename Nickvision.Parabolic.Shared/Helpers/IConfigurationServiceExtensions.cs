@@ -6,12 +6,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
 
-public static class IConfigurationServiceExtensions
+public static partial class IConfigurationServiceExtensions
 {
+    [GeneratedRegex(@"\\u([0-9a-fA-F]{4})|\\r\\n|\\r|\\n")]
+    private static partial Regex JsonEscapeRegex();
+
     extension(IConfigurationService configurationService)
     {
         public bool AllowPreviewUpdates
@@ -444,6 +448,23 @@ public static class IConfigurationServiceExtensions
             set => configurationService.Set("YtdlpDownloadArgs", value);
         }
 
-        public async Task<string> ToStringAsync() => JsonSerializer.Serialize(await configurationService.GetAllRawAsync(), ApplicationJsonContext.Default.DictionaryStringString);
+        public async Task<string> ToStringAsync()
+        {
+            var res = JsonSerializer.Serialize(await configurationService.GetAllRawAsync(), ApplicationJsonContext.Default.DictionaryStringString);
+            return JsonEscapeRegex().Replace(res, m =>
+            {
+                if (m.Groups[1].Success)
+                {
+                    return ((char)Convert.ToInt32(m.Groups[1].Value, 16)).ToString();
+                }
+                return m.Value switch
+                {
+                    @"\r\n" => "\n",
+                    @"\r" => "\r",
+                    @"\n" => "\n",
+                    _ => m.Value
+                };
+            });
+        }
     }
 }
