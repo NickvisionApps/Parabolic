@@ -34,8 +34,6 @@ public class MainWindowController
     private AppVersion _latestYtdlpVersion;
     private AppVersion _latestDenoVersion;
 
-    public int RecoverableDownloadsCount => _recoveryService.Count;
-
     public MainWindowController(ILogger<MainWindowController> logger, AppInfo appInfo, IArgumentsService argumentsService, IConfigurationService configurationService, IDenoExecutableService denoExecutableService, IDownloadService downloadService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _logger = logger;
@@ -51,8 +49,8 @@ public class MainWindowController
         _updaterService = updaterService;
         _ytdlpExecutableService = ytdlpExecutableService;
         _latestAppVersion = appInfo.Version!;
-        _latestYtdlpVersion = _ytdlpExecutableService!.BundledVersion;
-        _latestDenoVersion = _denoExecutableService!.BundledVersion;
+        _latestYtdlpVersion = _ytdlpExecutableService.BundledVersion;
+        _latestDenoVersion = _denoExecutableService.BundledVersion;
         _translationService.Language = _configurationService.TranslationLanguage;
         _logger.LogInformation($"Received command-line arguments: [{string.Join(", ", argumentsService.Data)}]");
         // Events
@@ -78,10 +76,11 @@ public class MainWindowController
 
     public int QueuedDownloadsCount => _downloadService.QueuedCount;
 
+    public int RecoverableDownloadsCount => _recoveryService.Count;
+
     public int RemainingDownloadsCount => _downloadService.RemainingCount;
 
     public int RunningDownloadsCount => _downloadService.DownloadingCount;
-
 
     public bool ShowDisclaimerOnStartup
     {
