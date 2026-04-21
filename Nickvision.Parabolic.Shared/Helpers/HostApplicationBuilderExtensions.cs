@@ -20,31 +20,8 @@ public static class HostApplicationBuilderExtensions
             {
                 Version = new AppVersion("2026.4.1-beta"),
                 Changelog = """
-                - Added macOS app for the GNOME version of Parabolic
-                - Added Windows portable version of Parabolic
-                - Added the ability to toggle super resolution formats in Parabolic's settings
-                - Added the ability to specify a preferred frame rate for video downloads in Parabolic's settings
-                - Added the ability to toggle immediate audio or video downloads separately
-                - Added the ability to automatically translate embedded metadata and chapters to the app's language on supported sites. This can be turned off in Converter settings
-                - Added the ability to update deno from within the app
-                - Added thumbnail image preview to add download dialog and downloads view
-                - Added failed filter to downloads view
-                - Added total duration label to playlist items view
-                - Improved Parabolic's startup time by using NativeAOT compilation
-                - Improved selection of playlist video formats when resolutions are specified
-                - Improved selection of playlist audio formats on Windows when bitrates are specified
-                - Improved cropping of audio thumbnails
-                - Improved handling of long file names, they will now be truncated if too long
-                - Removed unsupported cookie browsers on Windows. Manual txt files should be used instead
-                - Fixed an issue where download progress did not show correctly
-                - Fixed an issue where the preferred video codec was ignored when a preferred frame rate was also set
-                - Fixed an issue where the exported M3U playlist file would contain duplicate entries
-                - Fixed an issue where credentials would not save on Linux
-                - Fixed an issue where batch files were unusable on Linux and macOS
-                - Fixed an issue where uploading a cookies file did not work on Windows
-                - Fixed an issue where time frame downloads would not complete on Windows
-                - Fixed an issue where certain video formats would process infinitely on Windows
-                - Updated yt-dlp
+                - Fixed an issue where some settings would not save correctly
+                - Fixed an issue where Parabolic would not start on KDE desktops
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
                 IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
