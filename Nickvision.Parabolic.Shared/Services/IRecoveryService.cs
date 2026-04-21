@@ -11,7 +11,7 @@ public interface IRecoveryService
     Task<bool> AddAsync(RecoverableDownload download);
     Task<bool> AddAsync(IReadOnlyList<RecoverableDownload> downloads);
     Task<bool> ClearAsync();
-    public Task<IReadOnlyList<RecoverableDownload>> GetAllAsync();
+    Task<IReadOnlyList<RecoverableDownload>> GetAllAsync();
     Task<bool> RemoveAsync(RecoverableDownload download);
     Task<bool> RemoveAsync(int id);
     Task<bool> RemoveAsync(IReadOnlyList<int> ids);

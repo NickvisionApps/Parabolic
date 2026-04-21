@@ -4,7 +4,7 @@
 #define MyAppName            "Nickvision Parabolic"
 #define MyAppShortName       "Parabolic"
 #define MyAppShortNameLower  "parabolic"
-#define MyAppVersion         "2026.4.0"
+#define MyAppVersion         "2026.4.1"
 #define MyAppPublisher       "Nickvision"
 #define MyAppURL             "https://nickvision.org"
 #define MyAppExeName         "Nickvision.Parabolic.WinUI.exe"

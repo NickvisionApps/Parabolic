@@ -309,8 +309,8 @@
                         <MenuFlyoutSeparator Grid.Row="1" HorizontalAlignment="Stretch"/>
 
                         <NavigationView x:Name="NavViewDownloads" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                        IsPaneToggleButtonVisible="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" PaneDisplayMode="Left"
-                                        SelectionChanged="NavViewDownloads_SelectionChanged">
+                                        IsPaneToggleButtonVisible="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False"
+                                        PaneDisplayMode="Left" OpenPaneLength="240" SelectionChanged="NavViewDownloads_SelectionChanged">
                             <NavigationView.Resources>
                                 <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
                                 <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>

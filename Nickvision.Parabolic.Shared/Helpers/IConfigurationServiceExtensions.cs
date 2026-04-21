@@ -3,9 +3,10 @@ using Nickvision.Desktop.Filesystem;
 using Nickvision.Parabolic.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Helpers;
@@ -444,6 +445,15 @@ public static class IConfigurationServiceExtensions
             set => configurationService.Set("YtdlpDownloadArgs", value);
         }
 
-        public async Task<string> ToStringAsync() => JsonSerializer.Serialize(await configurationService.GetAllRawAsync(), ApplicationJsonContext.Default.DictionaryStringString);
+        public async Task<string> ToStringAsync()
+        {
+            var res = await configurationService.GetAllRawAsync();
+            var builder = new StringBuilder();
+            foreach (var pair in res.ToImmutableSortedDictionary())
+            {
+                builder.AppendLine($"{pair.Key} = {(string.IsNullOrEmpty(pair.Value) ? "\"\"" : pair.Value)}");
+            }
+            return builder.ToString();
+        }
     }
 }

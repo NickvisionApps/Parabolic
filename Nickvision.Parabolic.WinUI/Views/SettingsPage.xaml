@@ -14,7 +14,7 @@
     <Grid>
         <NavigationView x:Name="NavigationView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                         IsPaneToggleButtonVisible="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False"
-                        PaneDisplayMode="Left" SelectionChanged="NavigationView_SelectionChanged">
+                        PaneDisplayMode="Left" OpenPaneLength="240" SelectionChanged="NavigationView_SelectionChanged">
             <NavigationView.Resources>
                 <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
                 <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
