@@ -22,6 +22,7 @@ public class MainWindowController
     private readonly AppInfo _appInfo;
     private readonly IArgumentsService _argumentsService;
     private readonly IConfigurationService _configurationService;
+    private readonly IDatabaseService _databaseService;
     private readonly IDenoExecutableService _denoExecutableService;
     private readonly IDownloadService _downloadService;
     private readonly INotificationService _notificationService;
@@ -34,12 +35,13 @@ public class MainWindowController
     private AppVersion _latestYtdlpVersion;
     private AppVersion _latestDenoVersion;
 
-    public MainWindowController(ILogger<MainWindowController> logger, AppInfo appInfo, IArgumentsService argumentsService, IConfigurationService configurationService, IDenoExecutableService denoExecutableService, IDownloadService downloadService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
+    public MainWindowController(ILogger<MainWindowController> logger, AppInfo appInfo, IArgumentsService argumentsService, IConfigurationService configurationService, IDatabaseService databaseService, IDenoExecutableService denoExecutableService, IDownloadService downloadService, INotificationService notificationService, IPowerService powerService, IRecoveryService recoveryService, ITranslationService translationService, IUpdaterService updaterService, IYtdlpExecutableService ytdlpExecutableService)
     {
         _logger = logger;
         _appInfo = appInfo;
         _argumentsService = argumentsService;
         _configurationService = configurationService;
+        _databaseService = databaseService;
         _denoExecutableService = denoExecutableService;
         _downloadService = downloadService;
         _notificationService = notificationService;
@@ -259,7 +261,7 @@ public class MainWindowController
         var ffmpegVersion = await ExecuteAsync("ffmpeg", "-version");
         var ariaVersion = await ExecuteAsync("aria2c", "--version");
         extraInformation += string.IsNullOrEmpty(extraInformation) ? string.Empty : "\n";
-        extraInformation += $"Log path: {(_appInfo.IsPortable ? "app.log" : Path.Combine(UserDirectories.LocalData, _appInfo.Name, "app.log"))}";
+        extraInformation += $"Database encrypted: {_databaseService.IsEncrypted}\nLog path: {(_appInfo.IsPortable ? "app.log" : Path.Combine(UserDirectories.LocalData, _appInfo.Name, "app.log"))}";
         extraInformation += $"\n\nyt-dlp: {(ytdlpVersion is not null ? ytdlpVersion.ToString() : "not found")}";
         extraInformation += $"\ndeno: {(denoVersion is not null ? denoVersion.ToString() : "not found")}";
         extraInformation += $"\nffmpeg: {(!string.IsNullOrEmpty(ffmpegVersion) ? ffmpegVersion.Substring(ffmpegVersion.IndexOf("ffmpeg version") + 15, ffmpegVersion.IndexOf("Copyright") - 15) : "not found")}";

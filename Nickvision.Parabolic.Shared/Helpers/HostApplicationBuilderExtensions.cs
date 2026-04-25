@@ -18,7 +18,7 @@ public static class HostApplicationBuilderExtensions
         {
             var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
             {
-                Version = new AppVersion("2026.4.1-beta1"),
+                Version = new AppVersion("2026.4.1-beta2"),
                 Changelog = """
                 - Fixed an issue where some settings would not save correctly
                 - Fixed an issue where Parabolic would not start on KDE desktops
