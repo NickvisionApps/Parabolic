@@ -316,7 +316,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private async Task DownloadPlaylistAsync()
     {
         var selectedPlaylistItems = new List<MediaSelectionItem>();
-        foreach(var item in ListPlaylistItems.SelectedItems)
+        foreach (var item in ListPlaylistItems.SelectedItems)
         {
             selectedPlaylistItems.Add((item as BindableMediaSelectionItem)!.SelectionItem);
         }

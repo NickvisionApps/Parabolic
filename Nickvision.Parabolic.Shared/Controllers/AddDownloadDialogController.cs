@@ -80,7 +80,7 @@ public class AddDownloadDialogController
             {
                 hasVideo = true;
             }
-            if(hasSuggestedSaveFolder && hasVideo)
+            if (hasSuggestedSaveFolder && hasVideo)
             {
                 break;
             }
