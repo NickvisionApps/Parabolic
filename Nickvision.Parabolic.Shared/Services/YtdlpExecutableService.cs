@@ -569,7 +569,10 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         {
             arguments.Add("--download-sections");
             arguments.Add($"*{downloadOptions.TimeFrame.ToString()}");
-            arguments.Add("--force-keyframes-at-cuts");
+            if (downloadOptions.VideoFormat?.Protocol == "https" || downloadOptions.AudioFormat?.Protocol == "https")
+            {
+                arguments.Add("--force-keyframes-at-cuts");
+            }
         }
         arguments.AddRange(_configurationService.YtdlpDownloadArgs.SplitCommandLine());
         return new Process()
