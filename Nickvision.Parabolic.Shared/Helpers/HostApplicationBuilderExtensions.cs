@@ -18,19 +18,9 @@ public static class HostApplicationBuilderExtensions
         {
             var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
             {
-                Version = new AppVersion("2026.4.1"),
+                Version = new AppVersion("2026.5.0-beta1"),
                 Changelog = """
-                - Fixed an issue where some settings would not save correctly
-                - Fixed an issue where playlist downloads with a resolution limit had no audio
-                - Fixed an issue where portrait/vertical videos in playlists downloaded at incorrect resolutions
-                - Fixed an issue where downloads from sites with muxed-only streams would fail
-                - Fixed an issue where downloading a time frame clip from a long video produced an incomplete result
-                - Fixed an issue where downloading a time frame clip from a long video could hang indefinitely with aria2c enabled
-                - Fixed an issue where X/Twitter quoted downloads could produce the same video twice
-                - Fixed an issue where deno was unable to be updated in-app on Linux
-                - Fixed an issue where browser cookies could not be found when running via Flatpak on Linux
-                - Fixed an issue where Parabolic would not start on KDE desktops
-                - Fixed an issue where Parabolic did not open links from browser extension on Windows
+                - 
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
                 IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
