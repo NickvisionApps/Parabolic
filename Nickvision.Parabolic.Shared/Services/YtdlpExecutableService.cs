@@ -111,18 +111,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         if (_configurationService.CookiesBrowser != Browser.None)
         {
             arguments.Add("--cookies-from-browser");
-            arguments.Add(_configurationService.CookiesBrowser switch
-            {
-                Browser.Brave => "brave",
-                Browser.Chrome => "chrome",
-                Browser.Chromium => "chromium",
-                Browser.Edge => "edge",
-                Browser.Firefox => "firefox",
-                Browser.Opera => "opera",
-                Browser.Vivaldi => "vivaldi",
-                Browser.Whale => "whale",
-                _ => string.Empty
-            });
+            arguments.Add(CookiesFromBrowserArgument);
         }
         else if (File.Exists(_configurationService.CookiesPath))
         {
@@ -287,18 +276,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         if (_configurationService.CookiesBrowser != Browser.None)
         {
             arguments.Add("--cookies-from-browser");
-            arguments.Add(_configurationService.CookiesBrowser switch
-            {
-                Browser.Brave => "brave",
-                Browser.Chrome => "chrome",
-                Browser.Chromium => "chromium",
-                Browser.Edge => "edge",
-                Browser.Firefox => "firefox",
-                Browser.Opera => "opera",
-                Browser.Vivaldi => "vivaldi",
-                Browser.Whale => "whale",
-                _ => string.Empty
-            });
+            arguments.Add(CookiesFromBrowserArgument);
         }
         else if (File.Exists(_configurationService.CookiesPath))
         {
@@ -591,7 +569,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
     public override async Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null)
     {
         var path = OperatingSystem.IsWindows() ? Path.Combine(UserDirectories.LocalData, "yt-dlp.exe") : Path.Combine(UserDirectories.LocalData, "yt-dlp");
-        var res = version.BaseVersion.Revision > 0 ? await _previewUpdaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress) : await _updaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
+        var res = version.BaseVersion.Revision > 0 ? await _previewUpdaterService!.DownloadReleaseAssetAsync(version, path, _assetName, true, progress) : await _updaterService.DownloadReleaseAssetAsync(version, path, _assetName, true, progress);
         if (res)
         {
             var configKey = $"installed_{_executableName}_appversion";
@@ -612,6 +590,59 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             }
         }
         return res;
+    }
+
+    private string CookiesFromBrowserArgument
+    {
+        get
+        {
+            var browser = _configurationService.CookiesBrowser switch
+            {
+                Browser.Brave => "brave",
+                Browser.Chrome => "chrome",
+                Browser.Chromium => "chromium",
+                Browser.Edge => "edge",
+                Browser.Firefox => "firefox",
+                Browser.Opera => "opera",
+                Browser.Vivaldi => "vivaldi",
+                Browser.Whale => "whale",
+                _ => string.Empty
+            };
+            if (Desktop.System.Environment.DeploymentMode == DeploymentMode.Flatpak)
+            {
+                var home = System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
+                var path = string.Empty;
+                if (_configurationService.CookiesBrowser == Browser.Firefox)
+                {
+                    var candidates = new[]
+                    {
+                        Path.Combine(home, ".mozilla", "firefox"),
+                        Path.Combine(home, ".config", "mozilla", "firefox"),
+                        Path.Combine(home, "snap", "firefox", "common", ".mozilla", "firefox")
+                    };
+                    path = candidates.FirstOrDefault(Directory.Exists) ?? candidates[0];
+                }
+                else
+                {
+                    path = _configurationService.CookiesBrowser switch
+                    {
+                        Browser.Brave => Path.Combine(home, ".config", "BraveSoftware", "Brave-Browser"),
+                        Browser.Chrome => Path.Combine(home, ".config", "google-chrome"),
+                        Browser.Chromium => Path.Combine(home, ".config", "chromium"),
+                        Browser.Edge => Path.Combine(home, ".config", "microsoft-edge"),
+                        Browser.Opera => Path.Combine(home, ".config", "opera"),
+                        Browser.Vivaldi => Path.Combine(home, ".config", "vivaldi"),
+                        Browser.Whale => Path.Combine(home, ".config", "naver-whale"),
+                        _ => string.Empty
+                    };
+                }
+                if (!string.IsNullOrEmpty(path))
+                {
+                    browser += $":{path}";
+                }
+            }
+            return browser;
+        }
     }
 
     private bool HasPartialDownloadFiles(string saveFolder, string saveFilename)
