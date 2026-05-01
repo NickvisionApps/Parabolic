@@ -341,7 +341,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         {
             arguments.Add("--embed-chapters");
         }
-        if (_configurationService.UseAria)
+        if (_configurationService.UseAria && downloadOptions.TimeFrame is null)
         {
             arguments.Add("--downloader");
             arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");

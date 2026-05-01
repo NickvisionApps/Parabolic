@@ -25,6 +25,7 @@ public static class HostApplicationBuilderExtensions
                 - Fixed an issue where portrait/vertical videos in playlists downloaded at incorrect resolutions
                 - Fixed an issue where downloads from sites with muxed-only streams would fail
                 - Fixed an issue where downloading a time frame clip from a long video produced an incomplete result
+                - Fixed an issue where downloading a time frame clip from a long video could hang indefinitely with aria2c enabled
                 - Fixed an issue where X/Twitter quoted downloads could produce the same video twice
                 - Fixed an issue where deno was unable to be updated in-app on Linux
                 - Fixed an issue where browser cookies could not be found when running via Flatpak on Linux
