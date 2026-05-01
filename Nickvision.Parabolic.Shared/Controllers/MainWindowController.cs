@@ -104,7 +104,7 @@ public class MainWindowController
     {
         get
         {
-            for (var i = 1; i < _argumentsService.Data.Count; i++)
+            for (var i = 0; i < _argumentsService.Data.Count; i++)
             {
                 var urlText = _argumentsService.Data[i].Trim();
                 if (urlText.StartsWith("parabolic://", StringComparison.Ordinal))

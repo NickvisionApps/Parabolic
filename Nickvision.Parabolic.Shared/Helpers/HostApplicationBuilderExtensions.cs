@@ -18,10 +18,11 @@ public static class HostApplicationBuilderExtensions
         {
             var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
             {
-                Version = new AppVersion("2026.4.1-beta2"),
+                Version = new AppVersion("2026.4.1"),
                 Changelog = """
                 - Fixed an issue where some settings would not save correctly
                 - Fixed an issue where Parabolic would not start on KDE desktops
+                - Fixed an issue where Parabolic did not open links from browser extension on Windows
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
                 IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
