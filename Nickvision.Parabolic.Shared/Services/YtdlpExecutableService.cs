@@ -415,7 +415,9 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 arguments.Add(downloadOptions.FileType.ToString().ToLower());
             }
         }
+        var avoidOpus = OperatingSystem.IsWindows() && downloadOptions.Url.Host.Contains("youtube") && _configurationService.PreferredAudioCodec == AudioCodec.Any && downloadOptions.FileType != MediaFileType.WEBM;
         var formatString = string.Empty;
+        var audioHandled = false;
         if (downloadOptions.VideoFormat is not null && downloadOptions.VideoFormat != Format.NoneVideo)
         {
             if (!downloadOptions.FileType.IsAudio)
@@ -434,47 +436,81 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         else if (downloadOptions.VideoResolution is not null && !downloadOptions.FileType.IsAudio)
         {
-            formatString += downloadOptions.VideoResolution switch
+            var audioSelector = string.Empty;
+            if (downloadOptions.AudioFormat is not null && downloadOptions.AudioFormat != Format.NoneAudio)
             {
-                var v when v == VideoResolution.Best => "bestvideo*",
-                var v when v == VideoResolution.Worst => "worstvideo*",
-                _ => $"bestvideo*[height={downloadOptions.VideoResolution.Height}]/bestvideo*[height<={downloadOptions.VideoResolution.Height}]/bestvideo*"
-            };
-        }
-        var avoidOpus = OperatingSystem.IsWindows() && downloadOptions.Url.Host.Contains("youtube") && _configurationService.PreferredAudioCodec == AudioCodec.Any && downloadOptions.FileType != MediaFileType.WEBM;
-        if (downloadOptions.AudioFormat is not null && downloadOptions.AudioFormat != Format.NoneAudio)
-        {
-            if (!string.IsNullOrEmpty(formatString))
-            {
-                formatString += "+";
-            }
-            else if (downloadOptions.FileType.IsVideo)
-            {
-                formatString += downloadOptions.AudioFormat switch
+                audioSelector = downloadOptions.AudioFormat switch
                 {
-                    var f when f == Format.WorstAudio => "worstvideo*+",
-                    _ => "bestvideo*+",
+                    var f when f == Format.BestAudio => avoidOpus ? "(bestaudio[acodec!=opus]/bestaudio)" : "bestaudio",
+                    var f when f == Format.WorstAudio => "worstaudio",
+                    _ => downloadOptions.AudioFormat.Id
                 };
             }
-            formatString += downloadOptions.AudioFormat switch
+            else if (downloadOptions.AudioBitrate.HasValue)
             {
-                var f when f == Format.BestAudio => avoidOpus ? "bestaudio[acodec!=opus]" : "bestaudio",
-                var f when f == Format.WorstAudio => "worstaudio",
-                _ => downloadOptions.AudioFormat.Id
-            };
-        }
-        else if (downloadOptions.AudioBitrate.HasValue)
-        {
-            if (!string.IsNullOrEmpty(formatString))
-            {
-                formatString += "+";
+                audioSelector = downloadOptions.AudioBitrate.Value switch
+                {
+                    var b when b == double.MaxValue => avoidOpus ? "(bestaudio[acodec!=opus]/bestaudio)" : "bestaudio",
+                    var b when b == -1.0 => "worstaudio",
+                    _ => $"(bestaudio[abr={downloadOptions.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={downloadOptions.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio)"
+                };
             }
-            formatString += downloadOptions.AudioBitrate.Value switch
+            if (!string.IsNullOrEmpty(audioSelector))
             {
-                var b when b == double.MaxValue => avoidOpus ? "bestaudio[acodec!=opus]" : "bestaudio",
-                var b when b == -1.0 => "worstaudio",
-                _ => $"bestaudio[abr={downloadOptions.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={downloadOptions.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio"
-            };
+                formatString += downloadOptions.VideoResolution switch
+                {
+                    var v when v == VideoResolution.Best => $"bestvideo*+{audioSelector}",
+                    var v when v == VideoResolution.Worst => $"worstvideo*+{audioSelector}",
+                    _ => $"bestvideo*[height={downloadOptions.VideoResolution.Height}]+{audioSelector}/bestvideo*[height<={downloadOptions.VideoResolution.Height}]+{audioSelector}/bestvideo*+{audioSelector}"
+                };
+                audioHandled = true;
+            }
+            else
+            {
+                formatString += downloadOptions.VideoResolution switch
+                {
+                    var v when v == VideoResolution.Best => "bestvideo*",
+                    var v when v == VideoResolution.Worst => "worstvideo*",
+                    _ => $"bestvideo*[height={downloadOptions.VideoResolution.Height}]/bestvideo*[height<={downloadOptions.VideoResolution.Height}]/bestvideo*"
+                };
+            }
+        }
+        if (!audioHandled)
+        {
+            if (downloadOptions.AudioFormat is not null && downloadOptions.AudioFormat != Format.NoneAudio)
+            {
+                if (!string.IsNullOrEmpty(formatString))
+                {
+                    formatString += "+";
+                }
+                else if (downloadOptions.FileType.IsVideo)
+                {
+                    formatString += downloadOptions.AudioFormat switch
+                    {
+                        var f when f == Format.WorstAudio => "worstvideo*+",
+                        _ => "bestvideo*+",
+                    };
+                }
+                formatString += downloadOptions.AudioFormat switch
+                {
+                    var f when f == Format.BestAudio => avoidOpus ? "(bestaudio[acodec!=opus]/bestaudio)" : "bestaudio",
+                    var f when f == Format.WorstAudio => "worstaudio",
+                    _ => downloadOptions.AudioFormat.Id
+                };
+            }
+            else if (downloadOptions.AudioBitrate.HasValue)
+            {
+                if (!string.IsNullOrEmpty(formatString))
+                {
+                    formatString += "+";
+                }
+                formatString += downloadOptions.AudioBitrate.Value switch
+                {
+                    var b when b == double.MaxValue => avoidOpus ? "(bestaudio[acodec!=opus]/bestaudio)" : "bestaudio",
+                    var b when b == -1.0 => "worstaudio",
+                    _ => $"bestaudio[abr={downloadOptions.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio[abr<={downloadOptions.AudioBitrate.Value}]{(avoidOpus ? "[acodec!=opus]" : string.Empty)}/bestaudio"
+                };
+            }
         }
         if (!string.IsNullOrEmpty(formatString))
         {
