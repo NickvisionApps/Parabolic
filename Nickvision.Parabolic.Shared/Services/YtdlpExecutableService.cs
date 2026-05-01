@@ -168,7 +168,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             "--print",
             "after_move:filepath"
         };
-        if ((downloadOptions.Url.Host.Contains("instagram") || downloadOptions.Url.Host.Contains("x.com") || downloadOptions.Url.Host.Contains("twitter.com")) && downloadOptions.PlaylistPosition != -1)
+        if (downloadOptions.RequiresPlaylistItems && downloadOptions.PlaylistPosition != -1)
         {
             arguments.Add("--playlist-items");
             arguments.Add($"{downloadOptions.PlaylistPosition}");

@@ -1,5 +1,6 @@
 ﻿using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Globalization;
+using Nickvision.Desktop.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -47,6 +48,22 @@ public class DiscoveryResult
                     continue;
                 }
                 Media.Add(new Media(mediaObject, configurationService, translator, suggestedSaveFolder, string.Empty));
+            }
+            var urlCounts = new Dictionary<string, int>(Media.Count);
+            foreach (var m in Media)
+            {
+                if (m.PlaylistPosition != -1 && !m.Url.IsEmpty)
+                {
+                    var key = m.Url.ToString();
+                    urlCounts[key] = urlCounts.GetValueOrDefault(key, 0) + 1;
+                }
+            }
+            foreach (var m in Media)
+            {
+                if (m.PlaylistPosition != -1 && !m.Url.IsEmpty && urlCounts.GetValueOrDefault(m.Url.ToString(), 0) > 1)
+                {
+                    m.RequiresPlaylistItems = true;
+                }
             }
         }
         else

@@ -13,6 +13,7 @@ public class Media
     public Uri Url { get; }
     public string Title { get; }
     public int PlaylistPosition { get; }
+    public bool RequiresPlaylistItems { get; set; }
     public MediaType Type { get; }
     public TimeFrame TimeFrame { get; }
     public List<Format> Formats { get; }
@@ -25,6 +26,7 @@ public class Media
         Url = Uri.Empty;
         Title = suggestedSaveFilename;
         PlaylistPosition = -1;
+        RequiresPlaylistItems = false;
         Type = MediaType.Video;
         TimeFrame = new TimeFrame(TimeSpan.Zero, TimeSpan.Zero);
         Formats = new List<Format>();

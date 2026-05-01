@@ -15,6 +15,7 @@ public class DownloadOptions
     public Credential? Credential { get; set; }
     public MediaFileType FileType { get; set; }
     public int PlaylistPosition { get; set; }
+    public bool RequiresPlaylistItems { get; set; }
     public Format? VideoFormat { get; set; }
     public Format? AudioFormat { get; set; }
     public IReadOnlyList<SubtitleLanguage> SubtitleLanguages { get; set; }
@@ -34,6 +35,7 @@ public class DownloadOptions
         SaveFolder = string.Empty;
         FileType = MediaFileType.MP4;
         PlaylistPosition = -1;
+        RequiresPlaylistItems = false;
         VideoFormat = null;
         AudioFormat = null;
         SubtitleLanguages = new List<SubtitleLanguage>();
