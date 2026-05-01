@@ -291,6 +291,21 @@ public class MainWindow : Adw.ApplicationWindow
                 progress.ProgressChanged -= UpdateProgress_Changed;
             };
         }
+        else if (e.Notification.Action == "update-deno")
+        {
+            toast.Timeout = 0;
+            toast.ButtonLabel = _translationService._("Update");
+            toast.OnButtonClicked += async (_, _) =>
+            {
+                _updateButton!.Visible = true;
+                _updatePopover!.Popup();
+                _updateProgressLabel!.Label_ = _translationService._("Downloading update: {0}%", 0);
+                var progress = new Progress<DownloadProgress>();
+                progress.ProgressChanged += UpdateProgress_Changed;
+                await _controller.DenoUpdateAsync(progress);
+                progress.ProgressChanged -= UpdateProgress_Changed;
+            };
+        }
         else if (e.Notification.Action == "error" && !string.IsNullOrEmpty(e.Notification.ActionParam))
         {
             toast.Timeout = 0;

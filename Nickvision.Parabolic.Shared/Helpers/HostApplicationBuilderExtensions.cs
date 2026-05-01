@@ -21,6 +21,7 @@ public static class HostApplicationBuilderExtensions
                 Version = new AppVersion("2026.4.1"),
                 Changelog = """
                 - Fixed an issue where some settings would not save correctly
+                - Fixed an issue where deno was unable to be updated in-app on Linux
                 - Fixed an issue where Parabolic would not start on KDE desktops
                 - Fixed an issue where Parabolic did not open links from browser extension on Windows
                 """,
