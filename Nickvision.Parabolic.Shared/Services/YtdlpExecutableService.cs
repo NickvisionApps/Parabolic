@@ -483,6 +483,15 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         if (!string.IsNullOrEmpty(formatString))
         {
+            if (formatString.Contains('+'))
+            {
+                var lastSlashIndex = formatString.LastIndexOf('/');
+                var lastFallback = lastSlashIndex >= 0 ? formatString[(lastSlashIndex + 1)..] : formatString;
+                if (lastFallback.Contains('+'))
+                {
+                    formatString += formatString.StartsWith("worst", StringComparison.Ordinal) ? "/worst" : "/best";
+                }
+            }
             arguments.Add("--format");
             arguments.Add(formatString);
         }

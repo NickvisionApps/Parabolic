@@ -23,6 +23,7 @@ public static class HostApplicationBuilderExtensions
                 - Fixed an issue where some settings would not save correctly
                 - Fixed an issue where playlist downloads with a resolution limit had no audio
                 - Fixed an issue where portrait/vertical videos in playlists downloaded at incorrect resolutions
+                - Fixed an issue where downloads from sites with muxed-only streams would fail
                 - Fixed an issue where deno was unable to be updated in-app on Linux
                 - Fixed an issue where Parabolic would not start on KDE desktops
                 - Fixed an issue where Parabolic did not open links from browser extension on Windows
