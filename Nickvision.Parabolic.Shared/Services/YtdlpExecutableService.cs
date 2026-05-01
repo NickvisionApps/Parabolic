@@ -461,7 +461,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             {
                 var v when v == VideoResolution.Best => $"bestvideo*{audio}",
                 var v when v == VideoResolution.Worst => $"worstvideo*{audio}",
-                _ => $"bestvideo*[height={downloadOptions.VideoResolution.Height}]{audio}/bestvideo*[height<={downloadOptions.VideoResolution.Height}]{audio}/bestvideo*{audio}"
+                _ => $"bestvideo*[height={downloadOptions.VideoResolution.Height}]{audio}/bestvideo*[width={downloadOptions.VideoResolution.Height}]{audio}/bestvideo*[height<={downloadOptions.VideoResolution.Height}]{audio}/bestvideo*[width<={downloadOptions.VideoResolution.Height}]{audio}/bestvideo*{audio}"
             };
             audioHandled = !string.IsNullOrEmpty(audioSelector);
         }

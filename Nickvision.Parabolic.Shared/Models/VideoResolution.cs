@@ -24,8 +24,8 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
 
     public VideoResolution(int width, int height)
     {
-        Width = width;
-        Height = height;
+        Width = Math.Max(width, height);
+        Height = Math.Min(width, height);
     }
 
     public static VideoResolution? Parse(string value, ITranslationService translator)
