@@ -168,9 +168,7 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 |:---:|:---:|
 | ![Options Page](extension/resources/Options.png) | ![Right Click Menu](extension/resources/ChromiumContextMenu.png) |
 
-| Screen Recording |
-|:---:|
-| <video src="extension/resources/chrome.mp4" autoplay loop muted playsinline controls width="100%"></video> |
+https://github.com/user-attachments/assets/9bd47723-8623-4e47-8e69-d21ac68bdef8
 
 </details>
 
@@ -183,9 +181,7 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 |:---:|:---:|
 | ![Options Page](extension/resources/Options.png) | ![Right Click Menu](extension/resources/FirefoxContextMenu.png) |
 
-| Screen Recording |
-|:---:|
-| <video src="extension/resources/firefox.mp4" autoplay loop muted playsinline controls width="100%"></video> |
+https://github.com/user-attachments/assets/866cc587-e9c9-4cc0-bb81-e628e9fc2373
 
 </details>
 
