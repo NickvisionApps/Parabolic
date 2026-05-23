@@ -21,6 +21,7 @@ public static class HostApplicationBuilderExtensions
                 Version = new AppVersion("2026.5.0-beta1"),
                 Changelog = """
                 - Fixed an issue where the macOS configuration directory was incorrect
+                - Fixed an issue where None post processor argument would not be saved
                 - Updated bundled deno
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
