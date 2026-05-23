@@ -20,7 +20,7 @@ public static class HostApplicationBuilderExtensions
             {
                 Version = new AppVersion("2026.5.0-beta1"),
                 Changelog = """
-                - 
+                - Fixed an issue where the macOS configuration directory was incorrect
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
                 IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
