@@ -164,9 +164,11 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 
 <br>
 
-<video width="800" height="600" controls>
-  <source src="extension/resources/chrome.mp4" type="video/mp4">
-</video>
+| Options Page | Right Click Menu |
+|:---:|:---:|
+| ![Options Page](extension/resources/Options.png) | ![Right Click Menu](extension/resources/ChromiumContextMenu.png) |
+
+https://github.com/user-attachments/assets/9bd47723-8623-4e47-8e69-d21ac68bdef8
 
 </details>
 
@@ -175,9 +177,11 @@ We'd love your contribution! See [**CONTRIBUTING.md**](CONTRIBUTING.md) for deta
 
 <br>
 
-<video width="800" height="600" controls>
-  <source src="extension/resources/firefox.mp4" type="video/mp4">
-</video>
+| Options Page | Right Click Menu |
+|:---:|:---:|
+| ![Options Page](extension/resources/Options.png) | ![Right Click Menu](extension/resources/FirefoxContextMenu.png) |
+
+https://github.com/user-attachments/assets/866cc587-e9c9-4cc0-bb81-e628e9fc2373
 
 </details>
 
