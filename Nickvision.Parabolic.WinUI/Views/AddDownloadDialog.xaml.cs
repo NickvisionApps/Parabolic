@@ -393,14 +393,23 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private async void BtnSingleSelectSaveFolder_Click(object? sender, RoutedEventArgs e)
     {
-        var picker = new FolderPicker(WindowId!.Value)
+        BtnSingleSelectSaveFolder.IsEnabled = false;
+        try
         {
-            SuggestedStartLocation = PickerLocationId.Downloads
-        };
-        var folder = await picker.PickSingleFolderAsync();
-        if (folder is not null)
+            var picker = new FolderPicker(WindowId!.Value)
+            {
+                SuggestedStartLocation = PickerLocationId.Downloads
+            };
+            await Task.Yield();
+            var folder = await picker.PickSingleFolderAsync();
+            if (folder is not null)
+            {
+                TxtSingleSaveFolder.Text = folder.Path;
+            }
+        }
+        finally
         {
-            TxtSingleSaveFolder.Text = folder.Path;
+            BtnSingleSelectSaveFolder.IsEnabled = true;
         }
     }
 
@@ -429,14 +438,23 @@ public sealed partial class AddDownloadDialog : ContentDialog
 
     private async void BtnPlaylistSelectSaveFolder_Click(object? sender, RoutedEventArgs e)
     {
-        var picker = new FolderPicker(WindowId!.Value)
+        BtnPlaylistSelectSaveFolder.IsEnabled = false;
+        try
         {
-            SuggestedStartLocation = PickerLocationId.Downloads
-        };
-        var folder = await picker.PickSingleFolderAsync();
-        if (folder is not null)
+            var picker = new FolderPicker(WindowId!.Value)
+            {
+                SuggestedStartLocation = PickerLocationId.Downloads
+            };
+            await Task.Yield();
+            var folder = await picker.PickSingleFolderAsync();
+            if (folder is not null)
+            {
+                TxtPlaylistSaveFolder.Text = folder.Path;
+            }
+        }
+        finally
         {
-            TxtPlaylistSaveFolder.Text = folder.Path;
+            BtnPlaylistSelectSaveFolder.IsEnabled = true;
         }
     }
 

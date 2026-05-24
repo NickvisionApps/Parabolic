@@ -152,10 +152,7 @@ public class AddDownloadDialogController
         _configurationService.PreviousNumberTitles = numberTitles;
         _configurationService.PreviousSplitChapters = splitChapters;
         _configurationService.PreviousExportDescription = exportDescription;
-        if (selectedPostProcessorArgument.Value is not null)
-        {
-            _configurationService.PreviousPostProcessorArgumentName = selectedPostProcessorArgument.Value.Name;
-        }
+        _configurationService.PreviousPostProcessorArgumentName = selectedPostProcessorArgument.Value?.Name ?? string.Empty;
         _configurationService.PreviousSubtitleLanguages = selectedSubtitles;
         await transaction.CommitAsync();
         try
@@ -234,7 +231,7 @@ public class AddDownloadDialogController
         }
         _configurationService.PreviousSplitChapters = options.SplitChapters;
         _configurationService.PreviousExportDescription = options.ExportDescription;
-        _configurationService.PreviousPostProcessorArgumentName = options.PostProcessorArgument?.Name ?? _configurationService.PreviousPostProcessorArgumentName;
+        _configurationService.PreviousPostProcessorArgumentName = options.PostProcessorArgument?.Name ?? string.Empty;
         _configurationService.PreviousSubtitleLanguages = options.SubtitleLanguages;
         await transaction.CommitAsync();
         try

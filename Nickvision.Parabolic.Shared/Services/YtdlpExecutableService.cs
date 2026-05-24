@@ -178,13 +178,13 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         else
         {
-            arguments.Add("--no-overwrites");
+            arguments.Add("--no-force-overwrites");
         }
         if (_configurationService.LimitCharacters)
         {
             arguments.Add("--windows-filenames");
         }
-        var formatSort = downloadOptions.TimeFrame is not null ? "proto:https" : string.Empty;
+        var formatSort = string.Empty;
         if (_configurationService.PreferredVideoCodec != VideoCodec.Any)
         {
             if (!string.IsNullOrEmpty(formatSort))
@@ -263,7 +263,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             arguments.Add("--sponsorblock-remove");
             arguments.Add("default");
         }
-        if (_configurationService.SpeedLimit.HasValue && downloadOptions.TimeFrame is null)
+        if (_configurationService.SpeedLimit.HasValue)
         {
             arguments.Add("--limit-rate");
             arguments.Add($"{_configurationService.SpeedLimit!.Value}K");
@@ -341,7 +341,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         {
             arguments.Add("--embed-chapters");
         }
-        if (_configurationService.UseAria && downloadOptions.TimeFrame is null)
+        if (_configurationService.UseAria)
         {
             arguments.Add("--downloader");
             arguments.Add(Desktop.System.Environment.FindDependency("aria2c") ?? "aria2c");
@@ -545,12 +545,8 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         if (downloadOptions.TimeFrame is not null)
         {
-            arguments.Add("--download-sections");
-            arguments.Add($"*{downloadOptions.TimeFrame.ToString()}");
-            if (downloadOptions.VideoFormat?.Protocol == "https" || downloadOptions.AudioFormat?.Protocol == "https")
-            {
-                arguments.Add("--force-keyframes-at-cuts");
-            }
+            arguments.Add("--postprocessor-args");
+            arguments.Add($"Merger+ffmpeg_i:-ss {downloadOptions.TimeFrame.Start} -t {downloadOptions.TimeFrame.Duration}");
         }
         arguments.AddRange(_configurationService.YtdlpDownloadArgs.SplitCommandLine());
         return new Process()

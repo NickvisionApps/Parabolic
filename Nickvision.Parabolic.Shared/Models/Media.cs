@@ -45,7 +45,8 @@ public class Media
         {
             if (ytdlp.TryGetProperty("url", out var urlProperty) && urlProperty.ValueKind != JsonValueKind.Null)
             {
-                if (Uri.TryCreate(urlProperty.GetString() ?? string.Empty, UriKind.Absolute, out var uri))
+                var rawUrl = urlProperty.GetString() ?? string.Empty;
+                if (Uri.TryCreate(rawUrl, UriKind.Absolute, out var uri) && !rawUrl.Contains(".m3u8") && !rawUrl.Contains(".mpd") && !rawUrl.Contains(".f4m") && !rawUrl.Contains(".ism"))
                 {
                     Url = uri;
                 }

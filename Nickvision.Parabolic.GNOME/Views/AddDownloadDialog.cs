@@ -371,7 +371,6 @@ public class AddDownloadDialog : Adw.Dialog
             if (_discoveryContext.SubtitleLanguages.Count > 0)
             {
                 _singleViewStack!.GetPage(_singleSubtitlesBox!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
-                _singleSubtitlesSearchBar!.SetKeyCaptureWidget(_singleViewStack);
             }
             else
             {
@@ -472,7 +471,6 @@ public class AddDownloadDialog : Adw.Dialog
             if (_discoveryContext.SubtitleLanguages.Count > 0)
             {
                 _playlistViewStack!.GetPage(_playlistSubtitlesBox!).BadgeNumber = (uint)_discoveryContext.SubtitleLanguages.Count;
-                _playlistSubtitlesSearchBar!.SetKeyCaptureWidget(_playlistViewStack);
             }
             else
             {
@@ -496,7 +494,12 @@ public class AddDownloadDialog : Adw.Dialog
     {
         if (e.Pspec.GetName() == "visible-child")
         {
-            _singleSearchSubtitlesButton!.Visible = _singleViewStack!.VisibleChild == _singleSubtitlesBox;
+            var isSubtitlesVisible = _singleViewStack!.VisibleChild == _singleSubtitlesBox;
+            _singleSearchSubtitlesButton!.Visible = isSubtitlesVisible;
+            if (isSubtitlesVisible && _discoveryContext?.SubtitleLanguages.Count > 0)
+            {
+                _singleSubtitlesSearchBar!.SetKeyCaptureWidget(_singleViewStack);
+            }
         }
     }
 
@@ -545,7 +548,12 @@ public class AddDownloadDialog : Adw.Dialog
     {
         if (e.Pspec.GetName() == "visible-child")
         {
-            _playlistSearchSubtitlesButton!.Visible = _playlistViewStack!.VisibleChild == _playlistSubtitlesBox;
+            var isSubtitlesVisible = _playlistViewStack!.VisibleChild == _playlistSubtitlesBox;
+            _playlistSearchSubtitlesButton!.Visible = isSubtitlesVisible;
+            if (isSubtitlesVisible && _discoveryContext?.SubtitleLanguages.Count > 0)
+            {
+                _playlistSubtitlesSearchBar!.SetKeyCaptureWidget(_playlistViewStack);
+            }
         }
     }
 

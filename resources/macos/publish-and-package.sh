@@ -99,12 +99,13 @@ fi
 
 # Bundle dependencies
 info "Bundling dependencies..."
+BREW_PREFIX="$(brew --prefix)"
 YT_DLP_PATH="./yt-dlp"
-ARIA2C_PATH="$(which aria2c 2>/dev/null || true)"
-FFMPEG_PATH="$(which ffmpeg 2>/dev/null || true)"
-FFPROBE_PATH="$(which ffprobe 2>/dev/null || true)"
-FFPLAY_PATH="$(which ffplay 2>/dev/null || true)"
-DENO_PATH="$(which deno 2>/dev/null || true)"
+ARIA2C_PATH="$BREW_PREFIX/bin/aria2c"
+FFMPEG_PATH="$BREW_PREFIX/bin/ffmpeg"
+FFPROBE_PATH="$BREW_PREFIX/bin/ffprobe"
+FFPLAY_PATH="$BREW_PREFIX/bin/ffplay"
+DENO_PATH="$BREW_PREFIX/bin/deno"
 if [[ -f "$YT_DLP_PATH" ]]; then
     cp "$YT_DLP_PATH" "$APP_BUNDLE/Contents/MacOS/yt-dlp"
     chmod +x "$APP_BUNDLE/Contents/MacOS/yt-dlp"
@@ -112,46 +113,45 @@ if [[ -f "$YT_DLP_PATH" ]]; then
 else
     warn "yt-dlp not found at $YT_DLP_PATH"
 fi
-if [[ -n "$ARIA2C_PATH" && -f "$ARIA2C_PATH" ]]; then
+if [[ -f "$ARIA2C_PATH" ]]; then
     cp "$ARIA2C_PATH" "$APP_BUNDLE/Contents/MacOS/aria2c"
     chmod +x "$APP_BUNDLE/Contents/MacOS/aria2c"
     success "Bundled aria2c."
 else
-    warn "aria2c not found"
+    warn "aria2c not found at $ARIA2C_PATH"
 fi
-if [[ -n "$FFMPEG_PATH" && -f "$FFMPEG_PATH" ]]; then
+if [[ -f "$FFMPEG_PATH" ]]; then
     cp "$FFMPEG_PATH" "$APP_BUNDLE/Contents/MacOS/ffmpeg"
     chmod +x "$APP_BUNDLE/Contents/MacOS/ffmpeg"
     success "Bundled ffmpeg."
 else
-    warn "ffmpeg not found"
+    warn "ffmpeg not found at $FFMPEG_PATH"
 fi
-if [[ -n "$FFPROBE_PATH" && -f "$FFPROBE_PATH" ]]; then
+if [[ -f "$FFPROBE_PATH" ]]; then
     cp "$FFPROBE_PATH" "$APP_BUNDLE/Contents/MacOS/ffprobe"
     chmod +x "$APP_BUNDLE/Contents/MacOS/ffprobe"
     success "Bundled ffprobe."
 else
-    warn "ffprobe not found"
+    warn "ffprobe not found at $FFPROBE_PATH"
 fi
-if [[ -n "$FFPLAY_PATH" && -f "$FFPLAY_PATH" ]]; then
+if [[ -f "$FFPLAY_PATH" ]]; then
     cp "$FFPLAY_PATH" "$APP_BUNDLE/Contents/MacOS/ffplay"
     chmod +x "$APP_BUNDLE/Contents/MacOS/ffplay"
     success "Bundled ffplay."
 else
-    warn "ffplay not found"
+    warn "ffplay not found at $FFPLAY_PATH"
 fi
-if [[ -n "$DENO_PATH" && -f "$DENO_PATH" ]]; then
+if [[ -f "$DENO_PATH" ]]; then
     cp "$DENO_PATH" "$APP_BUNDLE/Contents/MacOS/deno"
     chmod +x "$APP_BUNDLE/Contents/MacOS/deno"
     success "Bundled deno."
 else
-    warn "deno not found"
+    warn "deno not found at $DENO_PATH"
 fi
 success "Bundled dependencies."
 
 # Bundle GTK4 and libadwaita
 info "Bundling GTK4 and libadwaita..."
-BREW_PREFIX="$(brew --prefix)"
 FRAMEWORKS_DIR="$APP_BUNDLE/Contents/Frameworks"
 BUNDLE_RESOURCES_DIR="$APP_BUNDLE/Contents/Resources"
 mkdir -p "$FRAMEWORKS_DIR"

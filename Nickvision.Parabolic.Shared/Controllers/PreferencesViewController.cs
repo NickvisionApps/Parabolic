@@ -12,11 +12,10 @@ using System.Threading.Tasks;
 
 namespace Nickvision.Parabolic.Shared.Controllers;
 
-public class PreferencesViewController : IDisposable
+public class PreferencesViewController
 {
     private readonly IConfigurationService _configurationService;
     private readonly ITranslationService _translationService;
-    private SqliteTransaction? _transaction;
 
     public IReadOnlyList<SelectionItem<AudioCodec>> AudioCodecs { get; }
     public IReadOnlyList<SelectionItem<string>> AvailableTranslationLanguages { get; }
@@ -34,7 +33,6 @@ public class PreferencesViewController : IDisposable
     {
         _configurationService = configurationService;
         _translationService = translationService;
-        _transaction = _configurationService.CreateTransaction();
         var selectedHistoryLength = _configurationService.HistoryLength;
         AudioCodecs = new List<SelectionItem<AudioCodec>>()
         {
@@ -137,11 +135,6 @@ public class PreferencesViewController : IDisposable
             new SelectionItem<VideoCodec>(VideoCodec.H264, _translationService._("H.264 (AVC)"), _configurationService.PreferredVideoCodec == VideoCodec.H264),
             new SelectionItem<VideoCodec>(VideoCodec.H265, _translationService._("H.265 (HEVC)"), _configurationService.PreferredVideoCodec == VideoCodec.H265)
         };
-    }
-
-    ~PreferencesViewController()
-    {
-        Dispose(false);
     }
 
     public bool AllowPreviewUpdates
@@ -383,7 +376,6 @@ public class PreferencesViewController : IDisposable
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments.Add(argument);
         _configurationService.PostprocessingArguments = PostprocessingArguments.ToList();
-        await SaveConfigurationAsync();
         return null;
     }
 
@@ -396,13 +388,6 @@ public class PreferencesViewController : IDisposable
         }
         PostprocessingArguments.Remove(argument);
         _configurationService.PostprocessingArguments = PostprocessingArguments.ToList();
-        await SaveConfigurationAsync();
-    }
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
     }
 
     public async Task<string?> UpdatePostprocessingArgumentAsync(string name, SelectionItem<PostProcessor> selectedPostProcessor, SelectionItem<Executable> selectedExecutable, string arguments)
@@ -423,26 +408,6 @@ public class PreferencesViewController : IDisposable
         var argument = new PostProcessorArgument(name, selectedPostProcessor.Value, selectedExecutable.Value, arguments);
         PostprocessingArguments[index] = argument;
         _configurationService.PostprocessingArguments = PostprocessingArguments.ToList();
-        await SaveConfigurationAsync();
         return null;
-    }
-
-    public async Task SaveConfigurationAsync()
-    {
-        if (_transaction is not null)
-        {
-            await _transaction.CommitAsync();
-            await _transaction.DisposeAsync();
-            _transaction = null;
-        }
-    }
-
-    private void Dispose(bool disposing)
-    {
-        if (!disposing)
-        {
-            return;
-        }
-        _transaction?.Dispose();
     }
 }

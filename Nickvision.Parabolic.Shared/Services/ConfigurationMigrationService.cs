@@ -4,6 +4,7 @@ using Nickvision.Desktop.Application;
 using Nickvision.Desktop.Filesystem;
 using Nickvision.Desktop.System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,18 +14,29 @@ public class ConfigurationMigrationService : IHostedService
 {
     private readonly ILogger<ConfigurationMigrationService> _logger;
     private readonly IConfigurationService _configurationService;
+    private readonly AppInfo _appInfo;
     private readonly string _directory;
 
     public ConfigurationMigrationService(ILogger<ConfigurationMigrationService> logger, AppInfo appInfo, IConfigurationService configurationService)
     {
         _logger = logger;
         _configurationService = configurationService;
-        _directory = appInfo.IsPortable ? Environment.ExecutingDirectory : Path.Combine(UserDirectories.Config, appInfo.Name);
+        _appInfo = appInfo;
+        _directory = appInfo.IsPortable ? Environment.ExecutingDirectory : Path.Combine(UserDirectories.Config, _appInfo.Name);
     }
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         _logger.LogInformation("Starting configuration migration...");
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            var oldPath = Path.Combine(UserDirectories.Home, "Library", "ApplicationSupport", _appInfo.Name);
+            if (Directory.Exists(oldPath))
+            {
+                Directory.Move(oldPath, _directory);
+                Directory.Delete(oldPath, true);
+            }
+        }
         var configPath = Path.Combine(_directory, "config.json");
         if (File.Exists(configPath))
         {

@@ -18,19 +18,17 @@ public static class HostApplicationBuilderExtensions
         {
             var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
             {
-                Version = new AppVersion("2026.4.1"),
+                Version = new AppVersion("2026.5.0"),
                 Changelog = """
-                - Fixed an issue where some settings would not save correctly
-                - Fixed an issue where playlist downloads with a resolution limit had no audio
-                - Fixed an issue where portrait/vertical videos in playlists downloaded at incorrect resolutions
-                - Fixed an issue where downloads from sites with muxed-only streams would fail
-                - Fixed an issue where downloading a time frame clip from a long video produced an incomplete result
-                - Fixed an issue where downloading a time frame clip from a long video could hang indefinitely with aria2c enabled
-                - Fixed an issue where X/Twitter quoted downloads could produce the same video twice
-                - Fixed an issue where deno was unable to be updated in-app on Linux
-                - Fixed an issue where browser cookies could not be found when running via Flatpak on Linux
-                - Fixed an issue where Parabolic would not start on KDE desktops
-                - Fixed an issue where Parabolic did not open links from browser extension on Windows
+                - Improved time frame downloads to cut with ffmpeg instead of using yt-dlp's broken --download-sections option
+                - Fixed an issue where some playlists throw a requested format not available error
+                - Fixed an issue where the macOS configuration directory was incorrect
+                - Fixed an issue where None post processor argument would not be saved
+                - Fixed an issue where format strings were not translated correctly
+                - Fixed an issue where the application would not start on KDE
+                - Fixed an issue where the application would not start if the database file was invalid
+                - Fixed an issue where dependencies were missing from the macOS bundle
+                - Updated bundled deno
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
                 IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new"),
