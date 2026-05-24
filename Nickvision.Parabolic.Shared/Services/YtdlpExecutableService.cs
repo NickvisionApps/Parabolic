@@ -178,7 +178,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         else
         {
-            arguments.Add("--no-overwrites");
+            arguments.Add("--no-force-overwrites");
         }
         if (_configurationService.LimitCharacters)
         {
