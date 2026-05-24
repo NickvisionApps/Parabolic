@@ -24,6 +24,7 @@ public static class HostApplicationBuilderExtensions
                 - Fixed an issue where None post processor argument would not be saved
                 - Fixed an issue where format strings were not translated correctly
                 - Fixed an issue where the application would not start if the database file was invalid
+                - Fixed an issue where dependencies were missing from the macOS bundle
                 - Updated bundled deno
                 """,
                 SourceRepository = new Uri("https://github.com/NickvisionApps/Parabolic"),
