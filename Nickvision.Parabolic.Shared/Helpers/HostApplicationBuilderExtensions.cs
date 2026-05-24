@@ -21,6 +21,7 @@ public static class HostApplicationBuilderExtensions
                 Version = new AppVersion("2026.5.0-beta1"),
                 Changelog = """
                 - Improved time frame downloads to cut with ffmpeg instead of using yt-dlp's broken --download-sections option
+                - Fixed an issue where some playlists throw a requested format not available error
                 - Fixed an issue where the macOS configuration directory was incorrect
                 - Fixed an issue where None post processor argument would not be saved
                 - Fixed an issue where format strings were not translated correctly
