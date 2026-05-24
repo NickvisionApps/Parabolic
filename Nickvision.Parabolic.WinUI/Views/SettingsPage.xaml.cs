@@ -198,8 +198,6 @@ public sealed partial class SettingsPage : Page
         _constructing = false;
     }
 
-    private async void Page_Unloaded(object sender, RoutedEventArgs args) => await _controller.SaveConfigurationAsync();
-
     private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args) => ViewStack.SelectedIndex = int.Parse(((NavigationView.SelectedItem as NavigationViewItem)!.Tag as string)!);
 
     private async void AddPostprocessingArgument(object? sender, RoutedEventArgs e)
@@ -322,14 +320,7 @@ public sealed partial class SettingsPage : Page
         ViewStack.SelectedIndex = index == -1 ? 0 : index;
     }
 
-    private async void Cmb_SelectionChanged(object? sender, SelectionChangedEventArgs e)
-    {
-        await ApplyChangesAsync();
-        if (sender?.Equals(CmbTheme) ?? false)
-        {
-            await _controller.SaveConfigurationAsync();
-        }
-    }
+    private async void Cmb_SelectionChanged(object? sender, SelectionChangedEventArgs e) => await ApplyChangesAsync();
 
     private async void Num_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args) => await ApplyChangesAsync();
 

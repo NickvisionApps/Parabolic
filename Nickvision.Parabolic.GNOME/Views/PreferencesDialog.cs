@@ -209,7 +209,6 @@ public class PreferencesDialog : Adw.PreferencesDialog
         _controller.EmbedChapters = _embedChaptersRow!.Active;
         _controller.EmbedSubtitles = _embedSubtitlesRow!.Active;
         _controller.PostprocessingThreads = (int)_postprocessingThreadsRow!.Value;
-        await _controller.SaveConfigurationAsync();
     }
 
     private void PostprocessingArugments_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
