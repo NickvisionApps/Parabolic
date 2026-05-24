@@ -18,7 +18,7 @@ public static class HostApplicationBuilderExtensions
         {
             var appInfo = new AppInfo("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic")
             {
-                Version = new AppVersion("2026.5.0-beta1"),
+                Version = new AppVersion("2026.5.0"),
                 Changelog = """
                 - Improved time frame downloads to cut with ffmpeg instead of using yt-dlp's broken --download-sections option
                 - Fixed an issue where some playlists throw a requested format not available error
