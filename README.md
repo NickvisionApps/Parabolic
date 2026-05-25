@@ -90,7 +90,7 @@ Download the latest version from **Releases**
 
 [![get-the-addon](extension/resources/firefox.png)](https://addons.mozilla.org/en-US/firefox/addon/parabolic/)
 
-**Chrome:** See [extension folder](https://github.com/NickvisionApps/Parabolic/tree/dotnet/extension) for manual installation instructions
+**Chrome:** See [extension folder](https://github.com/NickvisionApps/Parabolic/tree/main/extension) for manual installation instructions
 
 </td>
 </tr>
