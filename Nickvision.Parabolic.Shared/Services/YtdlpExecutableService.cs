@@ -326,14 +326,14 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                     arguments.Add("--exec");
                     arguments.Add("before_dl:del %(thumbnails.-1.filepath)q");
                     arguments.Add("--exec");
-                    arguments.Add("before_dl:move \"%(thumbnails.-1.filepath)s.tmp.jpg\" %(thumbnails.-1.filepath)q");
+                    arguments.Add("before_dl:move %(thumbnails.-1.filepath)q.tmp.jpg %(thumbnails.-1.filepath)q");
                 }
                 else
                 {
                     arguments.Add("--exec");
                     arguments.Add("before_dl:rm %(thumbnails.-1.filepath)q");
                     arguments.Add("--exec");
-                    arguments.Add("before_dl:mv \"%(thumbnails.-1.filepath)s.tmp.jpg\" %(thumbnails.-1.filepath)q");
+                    arguments.Add("before_dl:mv %(thumbnails.-1.filepath)q.tmp.jpg %(thumbnails.-1.filepath)q");
                 }
             }
         }
