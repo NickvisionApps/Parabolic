@@ -1,0 +1,319 @@
+name: Build AppImage
+
+# =============================================================================
+#  AppImage build workflow for Nickvision Parabolic (x86_64 only)
+# =============================================================================
+#  Builds a portable, size-optimized AppImage of Parabolic for any Linux
+#  distribution with glibc >= 2.35 (Ubuntu 22.04+, Debian 12+, Fedora 36+, Arch).
+#
+#  Update chain:
+#    1. .github/workflows/sync-upstream.yml runs daily (cron) — merges
+#       nickvisionapps/parabolic:main into your fork's main
+#    2. The merge push triggers THIS workflow (via `on: push: branches: [main]`)
+#    3. This workflow builds the new AppImage and uploads it as an artifact
+#    4. On tag push (v*.*.*), the AppImage is also attached to a GitHub Release
+#    5. Bundled inside the AppImage is parabolic-updater.sh — a Yad-based
+#       in-app updater that checks GitHub Releases for new versions
+#
+#  Size-reduction knobs (configured in env: block below):
+#    BUNDLE_DENO=1                   # bundle deno (DEFAULT — yt-dlp requires it for JS extractors)
+#    STRIP_BINARIES=1                # strip debug symbols from bundled ELF binaries (~30 MB savings)
+#    REMOVE_PDB=1                    # delete .pdb / .dbg / .xml files from .NET publish dir (~10 MB savings)
+#    SKIP_FFPLAY=1                   # don't bundle ffplay (Parabolic only needs ffmpeg + ffprobe, ~10 MB savings)
+#    SHRINK_ICU=0                    # off by default — removing ICU breaks non-English locale formatting
+#    FFMPEG_SOURCE=johnvansickle     # use stable ffmpeg 7.0 (~40 MB) instead of BtbN master-latest (~140 MB)
+#
+#  Expected output size with all defaults: ~171 MB (deno bundled by default)
+#
+#  Triggers:
+#    - push to main/master in packaging/appimage/ or this workflow file
+#    - manual dispatch (with optional parabolic_ref input)
+#    - tag push matching v*.*.* (creates a GitHub Release with the AppImage attached)
+# =============================================================================
+
+on:
+  workflow_dispatch:
+    inputs:
+      parabolic_ref:
+        description: "Parabolic git ref to build (branch / tag / SHA)"
+        required: false
+        default: "main"
+        type: string
+      bundle_deno:
+        description: "Bundle deno (~92 MB)? Default: true — yt-dlp requires it for JS-based extractors"
+        required: false
+        default: true
+        type: boolean
+      ffmpeg_source:
+        description: "ffmpeg source — johnvansickle (~40 MB, stable) or btbn (~140 MB, dev build)"
+        required: false
+        default: "johnvansickle"
+        type: choice
+        options:
+          - johnvansickle
+          - btbn
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "packaging/appimage/**"
+      - ".github/workflows/appimage.yml"
+    tags:
+      - "v*.*.*"
+      - "appimage-*"
+  pull_request:
+    paths:
+      - "packaging/appimage/**"
+      - ".github/workflows/appimage.yml"
+
+# Cancel superseded runs on the same PR/branch
+concurrency:
+  group: appimage-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write  # needed for softprops/action-gh-release to upload AppImage to Release
+
+# -----------------------------------------------------------------------------
+#  Build configuration
+# -----------------------------------------------------------------------------
+env:
+  ARCH: x86_64
+  DOTNET_RID: linux-x64
+  PARABOLIC_REF: ${{ inputs.parabolic_ref || 'main' }}
+  # GitHub owner/repo where releases will be published — baked into the bundled
+  # parabolic-updater.sh so it knows where to check for updates.
+  # `${{ github.repository_owner }}` resolves to YOUR username (the fork owner),
+  # so the AppImage will check YOUR fork's releases for updates.
+  GITHUB_OWNER: ${{ github.repository_owner }}
+  GITHUB_REPO: parabolic
+  # Size-reduction knobs (default = smallest AppImage that still has all features
+  # Parabolic + yt-dlp need; deno IS bundled because yt-dlp requires it for JS extractors).
+  # Expected size: ~171 MB.
+  BUNDLE_DENO: ${{ inputs.bundle_deno == false && '0' || '1' }}
+  STRIP_BINARIES: "1"
+  REMOVE_PDB: "1"
+  SKIP_FFPLAY: "1"
+  SHRINK_ICU: "0"
+  # ffmpeg source — "johnvansickle" (default, ~40 MB total, stable release)
+  # or "btbn" (~140 MB, master-latest dev build with extra filters).
+  FFMPEG_SOURCE: ${{ inputs.ffmpeg_source || 'johnvansickle' }}
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_NOLOGO: "1"
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "1"
+
+jobs:
+  build-appimage:
+    name: Build x86_64 AppImage
+    runs-on: ubuntu-22.04  # glibc 2.35 — maximises host compatibility
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up build dependencies (apt)
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y \
+            build-essential \
+            autoconf automake autotools-dev libtool pkg-config \
+            meson ninja-build \
+            gettext \
+            libglib2.0-dev-bin libglib2.0-dev \
+            libgtk-4-dev libadwaita-1-dev \
+            libgdk-pixbuf-2.0-dev libgdk-pixbuf2.0-0 libgdk-pixbuf2.0-bin \
+            libgirepository1.0-dev python3-gi \
+            desktop-file-utils \
+            libssl-dev libc-ares-dev libxml2-dev zlib1g-dev \
+            libsqlite3-dev \
+            libgraphene-1.0-dev libepoxy-dev \
+            libwayland-dev libxkbcommon-dev libxkbcommon-x11-dev \
+            libpango1.0-dev libpangocairo-1.0-dev libcairo2-dev \
+            libfribidi-dev libharfbuzz-dev libfreetype6-dev libfontconfig1-dev \
+            libpixman-1-dev libffi-dev libpcre2-dev \
+            binutils file \
+            git curl wget unzip tar
+
+      - name: Install blueprint-compiler (build from source if not packaged)
+        run: |
+          # Ubuntu 22.04's blueprint-compiler is too old, build from latest release.
+          # Needs python3-gi + libgirepository1.0-dev (installed in apt step above) because
+          # blueprint-compiler is a Python tool that imports `gi` (PyGObject) at runtime.
+          if ! command -v blueprint-compiler >/dev/null 2>&1 || ! blueprint-compiler --version | grep -qE '0\.(1[0-9]|[2-9][0-9])\.'; then
+            echo "Building blueprint-compiler from source..."
+            git clone --depth 1 --branch 0.10.0 https://gitlab.gnome.org/GNOME/blueprint-compiler.git /tmp/bpc
+            (cd /tmp/bpc && meson setup build --prefix=/usr && ninja -C build && sudo ninja -C build install)
+          fi
+          blueprint-compiler --version
+
+      - name: Set up .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+          dotnet-quality: "ga"
+
+      - name: Cache bundled dependencies (yt-dlp, ffmpeg, deno, curl-impersonate, aria2)
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: packaging/appimage/build/deps
+          key: appimage-deps-x86_64-${{ hashFiles('packaging/appimage/build-appimage.sh') }}-${{ github.run_id }}
+          restore-keys: |
+            appimage-deps-x86_64-
+            appimage-deps-
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-x86_64-${{ hashFiles('**/*.csproj') }}
+          restore-keys: nuget-x86_64-
+
+      - name: Print build configuration
+        run: |
+          echo "=== Build configuration ==="
+          echo "  ARCH:           $ARCH"
+          echo "  DOTNET_RID:     $DOTNET_RID"
+          echo "  PARABOLIC_REF:  $PARABOLIC_REF"
+          echo "  FFMPEG_SOURCE:  $FFMPEG_SOURCE  (johnvansickle = ~40 MB, btbn = ~140 MB)"
+          echo "  BUNDLE_DENO:    $BUNDLE_DENO  (1 = bundle deno; yt-dlp requires it for JS extractors)"
+          echo "  STRIP_BINARIES: $STRIP_BINARIES"
+          echo "  REMOVE_PDB:     $REMOVE_PDB"
+          echo "  SKIP_FFPLAY:    $SKIP_FFPLAY"
+          echo "  SHRINK_ICU:     $SHRINK_ICU  (0 = keep ICU, safe)"
+          echo ""
+          echo "  Expected size:  ~171 MB (deno + johnvansickle ffmpeg) or ~271 MB (deno + btbn ffmpeg)"
+
+      - name: Run build script
+        working-directory: packaging/appimage
+        run: |
+          chmod +x build-appimage.sh AppRun
+          ./build-appimage.sh "$ARCH"
+
+      - name: Discover produced AppImage
+        id: discover
+        working-directory: packaging/appimage
+        run: |
+          set -e
+          APPIMG="$(ls -1 Parabolic-*.AppImage 2>/dev/null | head -n1)"
+          if [ -z "$APPIMG" ]; then
+            echo "::error::No AppImage produced"
+            exit 1
+          fi
+          chmod +x "$APPIMG"
+          SIZE_BYTES=$(stat -c%s "$APPIMG")
+          SIZE_MB=$((SIZE_BYTES / 1024 / 1024))
+          echo "path=packaging/appimage/${APPIMG}" >> "$GITHUB_OUTPUT"
+          echo "name=${APPIMG}" >> "$GITHUB_OUTPUT"
+          echo "size=${SIZE_MB} MB" >> "$GITHUB_OUTPUT"
+          echo "size_bytes=${SIZE_BYTES}" >> "$GITHUB_OUTPUT"
+          echo ""
+          echo "=== AppImage produced: $APPIMG ($SIZE_MB MB) ==="
+
+      - name: Smoke-test the AppImage (extract only — FUSE is unavailable in runners)
+        working-directory: packaging/appimage
+        run: |
+          APPIMG_NAME="${{ steps.discover.outputs.name }}"
+          echo "== Extracting AppImage contents for sanity check =="
+          chmod +x "$APPIMG_NAME"
+          ./"$APPIMG_NAME" --appimage-extract 2>/dev/null || true
+          echo "== Check that the .NET binary is in place =="
+          test -x squashfs-root/usr/lib/org.nickvision.tubeconverter/Nickvision.Parabolic.GNOME
+          echo "== Check that the bundled deps are in place =="
+          for f in yt-dlp ffmpeg ffprobe aria2c; do
+            test -e "squashfs-root/usr/lib/org.nickvision.tubeconverter/$f" && echo "  ✔ $f" || echo "  ✘ MISSING: $f"
+          done
+          echo "== Check deno (REQUIRED by yt-dlp — should be present by default) =="
+          if [[ "$BUNDLE_DENO" == "1" ]]; then
+            test -e "squashfs-root/usr/lib/org.nickvision.tubeconverter/deno" && echo "  ✔ deno bundled — yt-dlp JS extractors will work" || echo "  ✘ MISSING: deno (yt-dlp JS extractors will FAIL)"
+          else
+            test ! -e "squashfs-root/usr/lib/org.nickvision.tubeconverter/deno" && echo "  ✔ deno skipped (BUNDLE_DENO=0)" || echo "  ⚠ deno present despite BUNDLE_DENO=0"
+            echo "  ⚠ WARNING: deno is required by yt-dlp for JS-based extractors (Bilibili, Niconico, some YouTube age-restricted videos, etc.)"
+          fi
+          echo "== Check ffplay (should be absent if SKIP_FFPLAY=1) =="
+          if [[ "$SKIP_FFPLAY" == "1" ]]; then
+            test ! -e "squashfs-root/usr/lib/org.nickvision.tubeconverter/ffplay" && echo "  ✔ ffplay skipped (SKIP_FFPLAY=1)" || echo "  ⚠ ffplay present despite SKIP_FFPLAY=1"
+          fi
+          echo "== Check GTK4 + libadwaita bundled =="
+          test -e squashfs-root/usr/lib/libgtk-4.so.1 && echo "  ✔ libgtk-4.so.1" || echo "  ✘ MISSING: libgtk-4.so.1"
+          test -e squashfs-root/usr/lib/libadwaita-1.so.0 && echo "  ✔ libadwaita-1.so.0" || echo "  ✘ MISSING: libadwaita-1.so.0"
+          echo "== Check auto-updater installed (Yad-based) =="
+          test -x squashfs-root/usr/bin/parabolic-updater && echo "  ✔ parabolic-updater installed" || echo "  ✘ MISSING: parabolic-updater"
+          test -f squashfs-root/usr/share/parabolic-version.txt && echo "  ✔ version file present: $(cat squashfs-root/usr/share/parabolic-version.txt)" || echo "  ✘ MISSING: parabolic-version.txt"
+          # Verify the GitHub owner was correctly substituted into the updater
+          OWNER_IN_SCRIPT=$(grep '^PARABOLIC_UPDATE_OWNER=' squashfs-root/usr/bin/parabolic-updater | cut -d'"' -f2)
+          [ "$OWNER_IN_SCRIPT" = "$GITHUB_OWNER" ] && echo "  ✔ updater checks github.com/$GITHUB_OWNER/parabolic/releases" || echo "  ⚠ updater owner mismatch: expected '$GITHUB_OWNER', got '$OWNER_IN_SCRIPT'"
+          echo "== Check no .pdb / .dbg / .xml debug files (if REMOVE_PDB=1) =="
+          if [[ "$REMOVE_PDB" == "1" ]]; then
+            DBG_COUNT=$(find squashfs-root/usr/lib/org.nickvision.tubeconverter -maxdepth 1 \( -name "*.pdb" -o -name "*.dbg" -o -name "*.xml" \) | wc -l)
+            [ "$DBG_COUNT" = "0" ] && echo "  ✔ no debug files" || echo "  ⚠ $DBG_COUNT debug files present"
+          fi
+          rm -rf squashfs-root
+
+      - name: Upload AppImage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.discover.outputs.name }}
+          path: ${{ steps.discover.outputs.path }}
+          if-no-files-found: error
+          compression-level: 0  # AppImages are already compressed
+          retention-days: 30
+
+      - name: Generate SHA256 checksum
+        working-directory: packaging/appimage
+        run: |
+          APPIMG_NAME="${{ steps.discover.outputs.name }}"
+          sha256sum "$APPIMG_NAME" > "${APPIMG_NAME}.sha256"
+          echo "Checksum:"
+          cat "${APPIMG_NAME}.sha256"
+
+      - name: Upload checksum artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.discover.outputs.name }}.sha256
+          path: packaging/appimage/${{ steps.discover.outputs.name }}.sha256
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Attach AppImage to GitHub Release (on tag push)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ steps.discover.outputs.path }}
+            ${{ steps.discover.outputs.path }}.sha256
+          name: ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          body: |
+            ## Parabolic AppImage (${{ steps.discover.outputs.size }})
+
+            **SHA256 checksum** — see the attached `.sha256` file.
+
+            ### Size-reduction knobs used
+            - `FFMPEG_SOURCE=${{ env.FFMPEG_SOURCE }}` (johnvansickle = ~40 MB, btbn = ~140 MB)
+            - `BUNDLE_DENO=${{ env.BUNDLE_DENO }}` (1 = deno bundled — **required by yt-dlp** for JS-based extractors)
+            - `STRIP_BINARIES=${{ env.STRIP_BINARIES }}` (1 = strip ELF binaries)
+            - `REMOVE_PDB=${{ env.REMOVE_PDB }}` (1 = remove .pdb/.dbg/.xml debug files)
+            - `SKIP_FFPLAY=${{ env.SKIP_FFPLAY }}` (1 = skip ffplay — Parabolic doesn't use it)
+            - `SHRINK_ICU=${{ env.SHRINK_ICU }}` (0 = keep ICU, safe for non-English locales)
+
+            ### About deno
+            deno is bundled by default because **yt-dlp requires it** for sites that need
+            JavaScript rendering (e.g., Bilibili, Niconico, some YouTube age-restricted videos,
+            and various other platforms). If you're sure you only download from sites that
+            don't need JS extractors, you can re-run the workflow with `bundle_deno=false`
+            to get a ~92 MB smaller AppImage.
+
+            ### How to switch ffmpeg source
+            - **johnvansickle** (default, stable, ~40 MB): use the dropdown in the workflow dispatch UI.
+            - **btbn** (master-latest, ~140 MB): use the dropdown — only needed for bleeding-edge ffmpeg filters.
+
+            ### Installation
+            ```bash
+            chmod +x ${{ steps.discover.outputs.name }}
+            ./${{ steps.discover.outputs.name }}
+            ```
