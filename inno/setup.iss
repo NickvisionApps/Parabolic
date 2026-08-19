@@ -27,7 +27,7 @@ VersionInfoDescription={#MyAppName} installer
 VersionInfoProductName={#MyAppName}
 VersionInfoVersion={#MyAppVersion}
 
-UninstallDisplayName={#MyAppName} {#MyAppVersion}
+UninstallDisplayName={#MyAppName}
 UninstallDisplayIcon={app}\Release\{#MyAppExeName}
 AppPublisher={#MyAppPublisher}
 
