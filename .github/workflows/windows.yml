@@ -90,7 +90,7 @@ jobs:
           $innoDir = "${{ github.workspace }}\inno"
           New-Item -ItemType Directory -Force -Path "$portableDir\Release" | Out-Null
           Copy-Item -Path "$publishDir\*" -Destination "$portableDir\Release" -Recurse
-          $batContent = "@echo off`r`n`"%~dp0Release\${{ env.PROJECT_NAME }}.exe`" --portable"
+          $batContent = "@start `"env.SHORT_NAME`" `"%~dp0Release\${{ env.PROJECT_NAME }}.exe`" --portable"
           Set-Content -Path "$portableDir\${{ env.SHORT_NAME }}.bat" -Value $batContent -NoNewline
           move $innoDir\yt-dlp.exe $portableDir\Release\yt-dlp.exe
           move $innoDir\aria2c.exe $portableDir\Release\aria2c.exe
