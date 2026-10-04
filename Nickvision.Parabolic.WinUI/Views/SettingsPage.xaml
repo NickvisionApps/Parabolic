@@ -95,7 +95,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF1AD;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglPreviewUpdates" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglPreviewUpdates" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowPreventSuspend">
@@ -108,7 +108,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7E8;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglPreventSuspend" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglPreventSuspend" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowHistoryLength">
@@ -141,7 +141,7 @@
                                 <community:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE945;"/>
                                 </community:SettingsCard.HeaderIcon>
-                                <ToggleSwitch x:Name="TglFastDownload" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglFastDownload" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowActiveDownloads">
@@ -162,7 +162,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8E5;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglOverwriteFiles" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglOverwriteFiles" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowIncludeMediaId">
@@ -175,7 +175,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8AC;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglIncludeMediaId" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglIncludeMediaId" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowIncludeAutoSubtitles">
@@ -188,7 +188,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglIncludeAutoSubtitles" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglIncludeAutoSubtitles" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowIncludeSuperResolutions">
@@ -201,7 +201,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF7EE;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglIncludeSuperResolutions" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglIncludeSuperResolutions" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowPreferredVideoCodec">
@@ -278,7 +278,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglUsePartFiles" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglUsePartFiles" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowUseSponsorBlock">
@@ -291,7 +291,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE789;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglUseSponsorBlock" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglUseSponsorBlock" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowLimitSpeed">
@@ -304,7 +304,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBD3;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglLimitSpeed" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglLimitSpeed" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowSpeedLimit" IsEnabled="{x:Bind TglLimitSpeed.IsOn, Mode=OneWay}">
@@ -372,7 +372,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE756;"/>
                                 </community:SettingsExpander.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglUseAria" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglUseAria" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
 
                                 <community:SettingsExpander.Items>
                                     <community:SettingsCard x:Name="RowMaxConnectionsPerServer" IsEnabled="{x:Bind TglUseAria.IsOn, Mode=OneWay}">
@@ -429,7 +429,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF2B7;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglTranslateMetadataAndChapters" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglTranslateMetadataAndChapters" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsExpander x:Name="RowEmbedMetadata">
@@ -442,7 +442,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8EC;"/>
                                 </community:SettingsExpander.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglEmbedMetadata" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglEmbedMetadata" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
 
                                 <community:SettingsExpander.Items>
                                     <community:SettingsCard x:Name="RowRemoveSourceData" IsEnabled="{x:Bind TglEmbedMetadata.IsOn, Mode=OneWay}">
@@ -455,7 +455,7 @@
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE74D;"/>
                                         </community:SettingsCard.HeaderIcon>
 
-                                        <ToggleSwitch x:Name="TglRemoveSourceData" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                        <ToggleSwitch x:Name="TglRemoveSourceData" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                                     </community:SettingsCard>
                                 </community:SettingsExpander.Items>
                             </community:SettingsExpander>
@@ -470,7 +470,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B9;"/>
                                 </community:SettingsExpander.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglEmbedThumbnails" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglEmbedThumbnails" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
 
                                 <community:SettingsExpander.Items>
                                     <community:SettingsCard x:Name="RowCropAudioThumbnails" IsEnabled="{x:Bind TglEmbedThumbnails.IsOn, Mode=OneWay}">
@@ -483,7 +483,7 @@
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7A8;"/>
                                         </community:SettingsCard.HeaderIcon>
 
-                                        <ToggleSwitch x:Name="TglCropAudioThumbnails" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                        <ToggleSwitch x:Name="TglCropAudioThumbnails" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                                     </community:SettingsCard>
                                 </community:SettingsExpander.Items>
                             </community:SettingsExpander>
@@ -498,7 +498,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF168;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglEmbedChapters" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglEmbedChapters" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowEmbedSubtitles">
@@ -511,7 +511,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
                                 </community:SettingsCard.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglEmbedSubtitles" FlowDirection="LeftToRight" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
+                                <ToggleSwitch x:Name="TglEmbedSubtitles" FlowDirection="{Binding FlowDirection, ElementName=PageRoot}" MinWidth="0" OnContent="" OffContent="" Toggled="Tgl_Toggled"/>
                             </community:SettingsCard>
 
                             <community:SettingsCard x:Name="RowFfmpegThreads">
