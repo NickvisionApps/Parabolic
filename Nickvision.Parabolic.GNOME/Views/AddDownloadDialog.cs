@@ -120,6 +120,8 @@ public class AddDownloadDialog : Adw.Dialog
     private Adw.SwitchRow? _playlistReverseOrderRow;
     [Gtk.Connect("playlistNumberTitlesRow")]
     private Adw.SwitchRow? _playlistNumberTitlesRow;
+    [Gtk.Connect("playlistNumberingStartRow")]
+    private Adw.SpinRow? _playlistNumberingStartRow;
     [Gtk.Connect("playlistItemsGroup")]
     private Adw.PreferencesGroup? _playlistItemsGroup;
     [Gtk.Connect("playlistSubtitlesBox")]
@@ -261,6 +263,7 @@ public class AddDownloadDialog : Adw.Dialog
             _discoveryContext!.AudioBitrates[(int)_playlistAudioBitrateRow!.Selected],
             _playlistReverseOrderRow!.Active,
             _playlistNumberTitlesRow!.Active,
+            (int)_playlistNumberingStartRow!.Value,
             _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
             _playlistExportM3URow!.Active,
             _playlistSplitChaptersRow!.Active,

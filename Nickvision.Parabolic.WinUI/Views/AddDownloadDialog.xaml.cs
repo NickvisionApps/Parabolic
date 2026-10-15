@@ -125,6 +125,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TglPlaylistReverseDownloadOrder.OffContent = _translationService._("Reverse Download Order");
         TglPlaylistNumberTitles.OnContent = _translationService._("Number Titles");
         TglPlaylistNumberTitles.OffContent = _translationService._("Number Titles");
+        NumPlaylistNumberingStart.Header = _translationService._("Start Numbering From");
         TeachPlaylistNumberTitles.Title = _translationService._("Warning");
         TeachPlaylistNumberTitles.Subtitle = _translationService._("Numbering will be applied to titles of selected items in succession on download.");
         StatusPlaylistSubtitles.Title = _translationService._("No Subtitles");
@@ -328,6 +329,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             (CmbPlaylistSuggestedAudioBitrate.SelectedItem as BindableSelectionItem)!.ToSelectionItem<double>()!,
             TglPlaylistReverseDownloadOrder.IsOn,
             TglPlaylistNumberTitles.IsOn,
+            (int)NumPlaylistNumberingStart.Value,
             _discoveryContext!.SubtitleLanguages.Where(x => x.ShouldSelect),
             TglPlaylistExportM3U.IsOn,
             TglPlaylistSplitChapters.IsOn,
@@ -463,6 +465,15 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private void BtnPlaylistSelectAllItems_Click(object? sender, RoutedEventArgs e) => ListPlaylistItems.SelectAll();
 
     private void BtnPlaylistDeselectAllItems_Click(object? sender, RoutedEventArgs e) => ListPlaylistItems.DeselectAll();
+
+    private void NumPlaylistNumberingStart_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+    {
+        var value = double.IsFinite(args.NewValue) ? Math.Clamp(Math.Floor(args.NewValue), 1, int.MaxValue) : 1;
+        if (sender.Value != value)
+        {
+            sender.Value = value;
+        }
+    }
 
     private void TglPlaylistNumberTitles_Toggled(object? sender, RoutedEventArgs e) => TeachPlaylistNumberTitles.IsOpen = _controller.GetShouldShowNumberTitlesTeach();
 

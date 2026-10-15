@@ -406,6 +406,20 @@ Adw.Dialog root {
                   title: _("Number Titles");
                   subtitle: _("Numbering will be applied to titles of selected items in succession on download");
                 }
+
+                Adw.SpinRow playlistNumberingStartRow {
+                  title: _("Start Numbering From");
+                  sensitive: bind playlistNumberTitlesRow.active;
+                  numeric: true;
+                  digits: 0;
+                  adjustment: Gtk.Adjustment {
+                    lower: 1;
+                    upper: 2147483647;
+                    value: 1;
+                    step-increment: 1;
+                    page-increment: 10;
+                  };
+                }
               }
 
               Adw.PreferencesGroup playlistItemsGroup { 

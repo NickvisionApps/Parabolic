@@ -66,7 +66,7 @@ public class AddDownloadDialogController
         set => _configurationService.PreviousDownloadImmediatelyAsVideo = value;
     }
 
-    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IReadOnlyList<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
+    public async Task AddPlaylistDownloadsAsync(DiscoveryContext context, IReadOnlyList<MediaSelectionItem> items, string saveFolder, SelectionItem<MediaFileType> selectedFileType, SelectionItem<VideoResolution> selectedVideoResoltuion, SelectionItem<double> selectedAudioBitrate, bool reverseDownloadOrder, bool numberTitles, int numberingStart, IEnumerable<SelectionItem<SubtitleLanguage>> selectedSubtitleLanguages, bool exportM3U, bool splitChapters, bool exportDescription, bool excludeFromHistory, SelectionItem<PostProcessorArgument?> selectedPostProcessorArgument)
     {
         var hasSuggestedSaveFolder = false;
         var hasVideo = false;
@@ -92,7 +92,7 @@ public class AddDownloadDialogController
             selectedSubtitles.Add(selectedSubtitleLanguage.Value);
         }
         var options = new List<DownloadOptions>(items.Count);
-        var titleNumber = 1;
+        long titleNumber = Math.Max(1, numberingStart);
         for (var i = reverseDownloadOrder ? items.Count - 1 : 0; reverseDownloadOrder ? i >= 0 : i < items.Count; i += reverseDownloadOrder ? -1 : 1)
         {
             var item = items[i];
