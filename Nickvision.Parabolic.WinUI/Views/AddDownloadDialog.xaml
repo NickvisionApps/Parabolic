@@ -370,7 +370,10 @@
 
                                 <ToggleSwitch x:Name="TglPlaylistReverseDownloadOrder" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
 
-                                <ToggleSwitch x:Name="TglPlaylistNumberTitles" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Toggled="TglPlaylistNumberTitles_Toggled"/>
+                                <ToggleSwitch x:Name="TglPlaylistNumberTitles" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Toggled="TglPlaylistNumberTitles_Toggled"/>
+
+                                <NumberBox x:Name="NumPlaylistNumberingStart" Grid.Row="3" Grid.Column="1" Minimum="1" Maximum="2147483647" Value="1"
+                                           SpinButtonPlacementMode="Inline" IsEnabled="{Binding IsOn, ElementName=TglPlaylistNumberTitles}" ValueChanged="NumPlaylistNumberingStart_ValueChanged"/>
 
                                 <TeachingTip x:Name="TeachPlaylistNumberTitles" PreferredPlacement="Bottom" Target="{x:Bind TglPlaylistNumberTitles}"/>
 
