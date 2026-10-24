@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 4.3)
+project(org.nickvision.tubeconverter)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(DEFINED ENV{VCPKG_ROOT})
+    file(TO_CMAKE_PATH $ENV{VCPKG_ROOT} VCPKG_ROOT)
+    if(EXISTS "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+        set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake")
+        set(USING_VCPKG ON)
+    endif()
+endif()
+
+if (POLICY CMP0141)
+    cmake_policy(SET CMP0141 NEW)
+    set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
+endif()
+
+project("org.nickvision.tubeconverter" LANGUAGES CXX VERSION 2026.10.0 DESCRIPTION "Download web video and audio.")
+set(SHORT_NAME "parabolic")
+set(DISPLAY_NAME "Parabolic")
+include(GNUInstallDirs)
+
+add_subdirectory("lib${SHORT_NAME}")
+if(WIN32)
+    add_subdirectory("${PROJECT_NAME}.windows")
+elseif(APPLE)
+    add_subdirectory("${PROJECT_NAME}.mac")
+else()
+    add_subdirectory("${PROJECT_NAME}.linux")
+endif()
