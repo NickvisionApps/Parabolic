@@ -5,6 +5,7 @@ add_executable("lib${SHORT_NAME}_tests"
     "environment.cpp"
     "hash.cpp"
     "string_manip.cpp"
+    "subtitle.cpp"
     "translator.cpp"
     "updater.cpp")
 find_package(GTest CONFIG REQUIRED)

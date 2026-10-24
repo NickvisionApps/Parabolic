@@ -4,6 +4,9 @@
 #include <mutex>
 #include <string>
 #include <nlohmann/json.hpp>
+#include "frame_rate.h"
+#include "media.h"
+#include "subtitle.h"
 
 namespace parabolic
 {
@@ -26,7 +29,7 @@ namespace parabolic
         void set_allow_preview_updates(bool value);
         [[nodiscard]] std::string translation_language() const;
         void set_translation_language(const std::string& value);
-        std::string str() const;
+        [[nodiscard]] std::string str() const;
 
     private:
         void save() const;
