@@ -4,11 +4,13 @@ endif()
 
 add_library("lib${SHORT_NAME}"
     "include/application_state.h"
+    "include/browser.h"
     "include/codec.h"
     "include/configuration.h"
     "include/environment.h"
     "include/frame_rate.h"
     "include/hash.h"
+    "include/history.h"
     "include/media.h"
     "include/product_info.h"
     "include/resolution.h"
