@@ -16,10 +16,10 @@ namespace parabolic::subtitle
         Lrc,
     };
 
-    class Language
+    class Subtitle
     {
     public:
-        Language(std::string language, bool is_auto_generated);
+        Subtitle(std::string language, bool is_auto_generated);
 
         [[nodiscard]] const std::string& language() const;
 
@@ -27,20 +27,20 @@ namespace parabolic::subtitle
 
         [[nodiscard]] std::string str(const translator::Translator& translator) const;
 
-        std::strong_ordering operator<=>(const Language& rhs) const;
+        std::strong_ordering operator<=>(const Subtitle& rhs) const;
 
-        bool operator==(const Language& rhs) const;
+        bool operator==(const Subtitle& rhs) const;
 
-        friend void from_json(const nlohmann::json& json, Language& language);
+        friend void from_json(const nlohmann::json& json, Subtitle& language);
 
-        friend void to_json(nlohmann::json& json, const Language& language);
+        friend void to_json(nlohmann::json& json, const Subtitle& language);
 
     private:
         std::string m_language;
         bool m_is_auto_generated;
     };
 
-    inline void from_json(const nlohmann::json& json, Language& language)
+    inline void from_json(const nlohmann::json& json, Subtitle& language)
     {
         if (json.contains("language") && json["language"].is_string())
         {
@@ -60,7 +60,7 @@ namespace parabolic::subtitle
         }
     }
 
-    inline void to_json(nlohmann::json& json, const Language& language)
+    inline void to_json(nlohmann::json& json, const Subtitle& language)
     {
         json = nlohmann::json{
             { "language", language.m_language },
