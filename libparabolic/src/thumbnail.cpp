@@ -1,13 +1,7 @@
 #include "thumbnail.h"
-#include <algorithm>
-#include <array>
 #include <cpr/cpr.h>
-#include <cstddef>
 #include <cstdint>
-#include <iterator>
 #include <mutex>
-#include <ranges>
-#include <span>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -26,33 +20,31 @@ namespace parabolic::thumbnail
         return m_url;
     }
 
-    const std::vector<std::byte>& Thumbnail::bytes() const
+    const std::vector<std::uint8_t>& Thumbnail::bytes() const
     {
         static std::mutex s_mutex;
-        static std::unordered_map<std::string, std::vector<std::byte>> s_cache{
+        static std::unordered_map<std::string, std::vector<std::uint8_t>> s_cache{
             {
                     std::string{},
-                    std::ranges::to<std::vector<std::byte>>(std::as_bytes(std::span<const unsigned char>{
-                            std::to_array<unsigned char>({
+                    std::vector<std::uint8_t>{
 #embed "default_thumbnail.jpg"
-                            }),
-                    })),
+                    },
             },
         };
         std::unique_lock lock{ s_mutex };
-        std::unordered_map<std::string, std::vector<std::byte>>::iterator cached{ s_cache.find(m_url) };
+        std::unordered_map<std::string, std::vector<std::uint8_t>>::iterator cached{ s_cache.find(m_url) };
         if (cached != s_cache.end())
         {
             return cached->second;
         }
         lock.unlock();
-        std::vector<std::byte> downloaded;
+        std::vector<std::uint8_t> downloaded;
         cpr::Response response{
             cpr::Get(cpr::Url{ m_url }, cpr::UserAgent{ "NickvisionParabolic" }, cpr::ConnectTimeout{ 15000 },
                      cpr::Timeout{ 30000 },
                      cpr::WriteCallback{ [&downloaded](std::string_view data, std::intptr_t) -> bool
         {
-            std::ranges::copy(std::as_bytes(std::span{ data }), std::back_inserter(downloaded));
+            downloaded.insert(downloaded.end(), data.begin(), data.end());
             return true;
         } }),
         };
