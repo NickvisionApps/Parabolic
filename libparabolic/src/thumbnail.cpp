@@ -27,7 +27,7 @@ namespace parabolic::thumbnail
             {
                     std::string{},
                     std::vector<std::uint8_t>{
-#embed "default_thumbnail.jpg"
+#include "default_thumbnail.inc"
                     },
             },
         };

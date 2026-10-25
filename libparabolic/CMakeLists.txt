@@ -39,11 +39,14 @@ set_target_properties("lib${SHORT_NAME}" PROPERTIES VERSION "${PROJECT_VERSION}"
 if (MSVC)
     target_compile_options("lib${SHORT_NAME}" PRIVATE /W4)
 else ()
-    target_compile_options("lib${SHORT_NAME}" PRIVATE -Wall -Wextra -Wpedantic "--embed-dir=${CMAKE_CURRENT_SOURCE_DIR}/../resources")
-    if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        target_compile_options("lib${SHORT_NAME}" PRIVATE -Wno-c23-extensions)
-    endif ()
+    target_compile_options("lib${SHORT_NAME}" PRIVATE -Wall -Wextra -Wpedantic)
 endif ()
+
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../resources/default_thumbnail.jpg")
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/../resources/default_thumbnail.jpg" DEFAULT_THUMBNAIL_HEX HEX)
+string(REGEX REPLACE "([0-9a-f][0-9a-f])" "0x\\1," DEFAULT_THUMBNAIL_BYTES "${DEFAULT_THUMBNAIL_HEX}")
+file(CONFIGURE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/generated/default_thumbnail.inc" CONTENT "@DEFAULT_THUMBNAIL_BYTES@\n" @ONLY)
+target_include_directories("lib${SHORT_NAME}" PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
 
 find_package(cpr REQUIRED)
 find_package(Intl REQUIRED)
