@@ -2,7 +2,12 @@
 #include <curl/curl.h>
 #include <semver.hpp>
 
-namespace parabolic
+using namespace parabolic::configuration;
+using namespace parabolic::product_info;
+using namespace parabolic::translator;
+using namespace parabolic::updater;
+
+namespace parabolic::application_state
 {
     ApplicationState::ApplicationState()
     {

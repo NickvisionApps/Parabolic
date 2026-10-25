@@ -7,7 +7,7 @@
 #include "media.h"
 #include "subtitle.h"
 
-namespace parabolic
+namespace parabolic::configuration
 {
     enum class Theme : std::uint8_t
     {

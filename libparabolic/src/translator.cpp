@@ -22,7 +22,7 @@ namespace
     }
 }
 
-namespace parabolic
+namespace parabolic::translator
 {
     Translator::Translator(const std::string& app_short_name, std::filesystem::path locale_dir)
         : m_domain_name{ string_manip::lower(app_short_name) },

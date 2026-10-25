@@ -7,7 +7,7 @@
 #include <string>
 #include "translator.h"
 
-namespace parabolic
+namespace parabolic::media
 {
     enum class AudioCodec
     {
@@ -68,10 +68,10 @@ namespace parabolic
         VideoResolution(int width, int height);
         static VideoResolution& best();
         static VideoResolution& worst();
-        [[nodiscard]] static std::optional<VideoResolution> parse(const std::string& value, const Translator& translator);
+        [[nodiscard]] static std::optional<VideoResolution> parse(const std::string& value, const translator::Translator& translator);
         [[nodiscard]] int width() const;
         [[nodiscard]] int height() const;
-        [[nodiscard]] std::string str(const Translator& translator) const;
+        [[nodiscard]] std::string str(const translator::Translator& translator) const;
         std::strong_ordering operator<=>(const VideoResolution& rhs) const;
         bool operator==(const VideoResolution& rhs) const;
         friend void from_json(const nlohmann::json& json, VideoResolution& resolution);

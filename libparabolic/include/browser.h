@@ -1,6 +1,6 @@
 #pragma once
 
-namespace parabolic
+namespace parabolic::browser
 {
     enum class Browser
     {

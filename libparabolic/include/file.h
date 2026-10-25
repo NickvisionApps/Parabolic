@@ -1,8 +1,8 @@
 #pragma once
 
-namespace parabolic
+namespace parabolic::file
 {
-    enum class FileType
+    enum class Type
     {
         VideoGeneric,
         MP4,

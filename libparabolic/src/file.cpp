@@ -1,6 +1,6 @@
 #include "file.h"
 
-namespace parabolic
+namespace parabolic::file
 {
 
 }

@@ -5,7 +5,9 @@
 #include <limits>
 #include "string_manip.h"
 
-namespace parabolic
+using namespace parabolic::translator;
+
+namespace parabolic::media
 {
     TimeFrame::TimeFrame(std::chrono::seconds start, std::chrono::seconds end)
         : m_start{ start },

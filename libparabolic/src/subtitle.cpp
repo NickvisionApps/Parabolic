@@ -1,25 +1,27 @@
 #include "subtitle.h"
 #include <format>
 
-namespace parabolic
+using namespace parabolic::translator;
+
+namespace parabolic::subtitle
 {
-    SubtitleLanguage::SubtitleLanguage(std::string language, bool is_auto_generated)
+    Language::Language(std::string language, bool is_auto_generated)
         : m_language{ std::move(language) },
         m_is_auto_generated{ is_auto_generated }
     {
     }
 
-    const std::string& SubtitleLanguage::language() const
+    const std::string& Language::language() const
     {
         return m_language;
     }
 
-    bool SubtitleLanguage::is_auto_generated() const
+    bool Language::is_auto_generated() const
     {
         return m_is_auto_generated;
     }
 
-    std::string SubtitleLanguage::str(const Translator& translator) const
+    std::string Language::str(const Translator& translator) const
     {
         if (m_is_auto_generated)
         {
@@ -28,7 +30,7 @@ namespace parabolic
         return m_language;
     }
 
-    std::strong_ordering SubtitleLanguage::operator<=>(const SubtitleLanguage& rhs) const
+    std::strong_ordering Language::operator<=>(const Language& rhs) const
     {
         if (m_is_auto_generated != rhs.m_is_auto_generated)
         {
@@ -37,7 +39,7 @@ namespace parabolic
         return m_language <=> rhs.m_language;
     }
 
-    bool SubtitleLanguage::operator==(const SubtitleLanguage& rhs) const
+    bool Language::operator==(const Language& rhs) const
     {
         return m_language == rhs.m_language;
     }

@@ -6,7 +6,7 @@
 #include "product_info.h"
 #include "updater.h"
 
-namespace parabolic
+namespace parabolic::application_state
 {
     class ApplicationState
     {
@@ -16,17 +16,17 @@ namespace parabolic
         ApplicationState(ApplicationState&&) = delete;
         ~ApplicationState();
         [[nodiscard]] static ApplicationState& instance();
-        [[nodiscard]] Configuration& configuration() const;
-        [[nodiscard]] Translator& translator() const;
-        [[nodiscard]] ProductInfo& product_info() const;
-        [[nodiscard]] Updater& updater() const;
+        [[nodiscard]] configuration::Configuration& configuration() const;
+        [[nodiscard]] translator::Translator& translator() const;
+        [[nodiscard]] product_info::ProductInfo& product_info() const;
+        [[nodiscard]] updater::Updater& updater() const;
         ApplicationState& operator=(const ApplicationState&) = delete;
         ApplicationState& operator=(ApplicationState&&) = delete;
 
     private:
-        std::unique_ptr<Configuration> m_configuration;
-        std::unique_ptr<Translator> m_translator;
-        std::unique_ptr<ProductInfo> m_product_info;
-        std::unique_ptr<Updater> m_updater;
+        std::unique_ptr<configuration::Configuration> m_configuration;
+        std::unique_ptr<translator::Translator> m_translator;
+        std::unique_ptr<product_info::ProductInfo> m_product_info;
+        std::unique_ptr<updater::Updater> m_updater;
     };
 }

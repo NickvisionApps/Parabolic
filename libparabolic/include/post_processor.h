@@ -4,9 +4,9 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-namespace parabolic
+namespace parabolic::post_processor
 {
-    enum class PostProcessorStep
+    enum class Step
     {
         None,
         Merger,
@@ -27,7 +27,7 @@ namespace parabolic
         FixupDuration
     };
 
-    enum class PostProcessorExecutable
+    enum class Executable
     {
         None,
         AtomicParsley,
@@ -35,32 +35,32 @@ namespace parabolic
         FFprobe
     };
 
-    class PostProcessorArgument
+    class Argument
     {
     public:
-        PostProcessorArgument(std::string name, PostProcessorStep step, PostProcessorExecutable executable, std::string args);
+        Argument(std::string name, Step step, Executable executable, std::string args);
         [[nodiscard]] const std::string& name() const;
         void set_name(std::string value);
-        [[nodiscard]] PostProcessorStep step() const;
-        void set_step(PostProcessorStep value);
-        [[nodiscard]] PostProcessorExecutable executable() const;
-        void set_executable(PostProcessorExecutable value);
+        [[nodiscard]] Step step() const;
+        void set_step(Step value);
+        [[nodiscard]] Executable executable() const;
+        void set_executable(Executable value);
         [[nodiscard]] const std::string& args() const;
         void set_args(std::string value);
         [[nodiscard]] std::string str() const;
-        std::strong_ordering operator<=>(const PostProcessorArgument& rhs) const;
-        bool operator==(const PostProcessorArgument& rhs) const;
-        friend void from_json(const nlohmann::json& json, PostProcessorArgument& argument);
-        friend void to_json(nlohmann::json& json, const PostProcessorArgument& argument);
+        std::strong_ordering operator<=>(const Argument& rhs) const;
+        bool operator==(const Argument& rhs) const;
+        friend void from_json(const nlohmann::json& json, Argument& argument);
+        friend void to_json(nlohmann::json& json, const Argument& argument);
 
     private:
         std::string m_name;
-        PostProcessorStep m_step;
-        PostProcessorExecutable m_executable;
+        Step m_step;
+        Executable m_executable;
         std::string m_args;
     };
 
-    inline void from_json(const nlohmann::json& json, PostProcessorArgument& argument)
+    inline void from_json(const nlohmann::json& json, Argument& argument)
     {
         if (json.contains("name") && json["name"].is_string())
         {
@@ -72,27 +72,27 @@ namespace parabolic
         }
         if (json.contains("step") && json["step"].is_number_integer())
         {
-            argument.m_step = static_cast<PostProcessorStep>(json.at("step").get<int>());
+            argument.m_step = static_cast<Step>(json.at("step").get<int>());
         }
         else if (json.contains("Step") && json["Step"].is_number_integer())
         {
-            argument.m_step = static_cast<PostProcessorStep>(json.at("Step").get<int>());
+            argument.m_step = static_cast<Step>(json.at("Step").get<int>());
         }
         else if (json.contains("postProcessor") && json["postProcessor"].is_number_integer())
         {
-            argument.m_step = static_cast<PostProcessorStep>(json.at("postProcessor").get<int>());
+            argument.m_step = static_cast<Step>(json.at("postProcessor").get<int>());
         }
         else if (json.contains("PostProcessor") && json["PostProcessor"].is_number_integer())
         {
-            argument.m_step = static_cast<PostProcessorStep>(json.at("PostProcessor").get<int>());
+            argument.m_step = static_cast<Step>(json.at("PostProcessor").get<int>());
         }
         if (json.contains("executable") && json["executable"].is_number_integer())
         {
-            argument.m_executable = static_cast<PostProcessorExecutable>(json.at("executable").get<int>());
+            argument.m_executable = static_cast<Executable>(json.at("executable").get<int>());
         }
         else if (json.contains("Executable") && json["Executable"].is_number_integer())
         {
-            argument.m_executable = static_cast<PostProcessorExecutable>(json.at("Executable").get<int>());
+            argument.m_executable = static_cast<Executable>(json.at("Executable").get<int>());
         }
         if (json.contains("args") && json["args"].is_string())
         {
@@ -104,7 +104,7 @@ namespace parabolic
         }
     }
 
-    inline void to_json(nlohmann::json& json, const PostProcessorArgument& argument)
+    inline void to_json(nlohmann::json& json, const Argument& argument)
     {
         json = nlohmann::json{
             {"name", argument.m_name},

@@ -5,9 +5,9 @@
 #include <string>
 #include "translator.h"
 
-namespace parabolic
+namespace parabolic::subtitle
 {
-    enum class SubtitleFormat
+    enum class Format
     {
         Any,
         VTT,
@@ -16,24 +16,24 @@ namespace parabolic
         LRC
     };
 
-    class SubtitleLanguage
+    class Language
     {
     public:
-        SubtitleLanguage(std::string language, bool is_auto_generated);
+        Language(std::string language, bool is_auto_generated);
         [[nodiscard]] const std::string& language() const;
         [[nodiscard]] bool is_auto_generated() const;
-        [[nodiscard]] std::string str(const Translator& translator) const;
-        std::strong_ordering operator<=>(const SubtitleLanguage& rhs) const;
-        bool operator==(const SubtitleLanguage& rhs) const;
-        friend void from_json(const nlohmann::json& json, SubtitleLanguage& language);
-        friend void to_json(nlohmann::json& json, const SubtitleLanguage& language);
+        [[nodiscard]] std::string str(const translator::Translator& translator) const;
+        std::strong_ordering operator<=>(const Language& rhs) const;
+        bool operator==(const Language& rhs) const;
+        friend void from_json(const nlohmann::json& json, Language& language);
+        friend void to_json(nlohmann::json& json, const Language& language);
 
     private:
         std::string m_language;
         bool m_is_auto_generated;
     };
 
-    inline void from_json(const nlohmann::json& json, SubtitleLanguage& language)
+    inline void from_json(const nlohmann::json& json, Language& language)
     {
         if (json.contains("language") && json["language"].is_string())
         {
@@ -53,7 +53,7 @@ namespace parabolic
         }
     }
 
-    inline void to_json(nlohmann::json& json, const SubtitleLanguage& language)
+    inline void to_json(nlohmann::json& json, const Language& language)
     {
         json = nlohmann::json{
             {"language", language.m_language},

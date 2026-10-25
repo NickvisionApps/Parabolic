@@ -8,7 +8,9 @@
 #include "string_manip.h"
 #endif
 
-namespace parabolic
+using namespace parabolic::translator;
+
+namespace parabolic::configuration
 {
     Configuration::Configuration(const std::string& app_name)
 #ifdef _WIN32

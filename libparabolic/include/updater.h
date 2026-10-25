@@ -6,14 +6,14 @@
 #include <semver.hpp>
 #include <string>
 
-namespace parabolic
+namespace parabolic::updater
 {
-    using UpdateDownloadProgressCallback = std::function<void(std::uint64_t, std::uint64_t)>;
+    using DownloadProgressCallback = std::function<void(std::uint64_t, std::uint64_t)>;
 
-    class UpdateInfo
+    class Info
     {
     public:
-        UpdateInfo();
+        Info();
         [[nodiscard]] const semver::version<>& version() const;
         void set_version(const semver::version<>& version);
         [[nodiscard]] bool is_prerelease() const;
@@ -42,8 +42,8 @@ namespace parabolic
         Updater(std::string repo_owner, std::string repo_name, semver::version<> current_version, const std::string& target_asset_name);
         [[nodiscard]] bool allow_preview_updates() const;
         void set_allow_preview_updates(bool allow_preview_updates);
-        [[nodiscard]] std::optional<UpdateInfo> check_for_updates() const;
-        [[nodiscard]] std::optional<std::filesystem::path> download_update(const UpdateInfo& info, const UpdateDownloadProgressCallback& progress) const;
+        [[nodiscard]] std::optional<Info> check_for_updates() const;
+        [[nodiscard]] std::optional<std::filesystem::path> download_update(const Info& info, const DownloadProgressCallback& progress) const;
 
     private:
         std::string m_repo_owner;

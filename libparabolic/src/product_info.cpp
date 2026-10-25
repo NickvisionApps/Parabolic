@@ -1,7 +1,7 @@
 #include "product_info.h"
 #include <format>
 
-namespace parabolic
+namespace parabolic::product_info
 {
     const std::string& ProductInfo::id()
     {

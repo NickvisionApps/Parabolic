@@ -2,9 +2,9 @@
 #include <format>
 #include <utility>
 
-namespace parabolic
+namespace parabolic::post_processor
 {
-    PostProcessorArgument::PostProcessorArgument(std::string name, PostProcessorStep step, PostProcessorExecutable executable, std::string args)
+    Argument::Argument(std::string name, Step step, Executable executable, std::string args)
         : m_name{ std::move(name) },
         m_step{ step },
         m_executable{ executable },
@@ -12,58 +12,58 @@ namespace parabolic
     {
     }
 
-    const std::string& PostProcessorArgument::name() const
+    const std::string& Argument::name() const
     {
         return m_name;
     }
 
-    void PostProcessorArgument::set_name(std::string value)
+    void Argument::set_name(std::string value)
     {
         m_name = std::move(value);
     }
 
-    PostProcessorStep PostProcessorArgument::step() const
+    Step Argument::step() const
     {
         return m_step;
     }
 
-    void PostProcessorArgument::set_step(PostProcessorStep value)
+    void Argument::set_step(Step value)
     {
         m_step = value;
     }
 
-    PostProcessorExecutable PostProcessorArgument::executable() const
+    Executable Argument::executable() const
     {
         return m_executable;
     }
 
-    void PostProcessorArgument::set_executable(PostProcessorExecutable value)
+    void Argument::set_executable(Executable value)
     {
         m_executable = value;
     }
 
-    const std::string& PostProcessorArgument::args() const
+    const std::string& Argument::args() const
     {
         return m_args;
     }
 
-    void PostProcessorArgument::set_args(std::string value)
+    void Argument::set_args(std::string value)
     {
         m_args = std::move(value);
     }
 
-    std::string PostProcessorArgument::str() const
+    std::string Argument::str() const
     {
         std::string executable;
         switch (m_executable)
         {
-        case PostProcessorExecutable::AtomicParsley:
+        case Executable::AtomicParsley:
             executable = "AtomicParsley";
             break;
-        case PostProcessorExecutable::FFmpeg:
+        case Executable::FFmpeg:
             executable = "ffmpeg";
             break;
-        case PostProcessorExecutable::FFprobe:
+        case Executable::FFprobe:
             executable = "ffprobe";
             break;
         default:
@@ -72,78 +72,78 @@ namespace parabolic
         std::string step;
         switch (m_step)
         {
-        case PostProcessorStep::Merger:
+        case Step::Merger:
             step = "Merger";
             break;
-        case PostProcessorStep::ModifyChapters:
+        case Step::ModifyChapters:
             step = "ModifyChapters";
             break;
-        case PostProcessorStep::SplitChapters:
+        case Step::SplitChapters:
             step = "SplitChapters";
             break;
-        case PostProcessorStep::ExtractAudio:
+        case Step::ExtractAudio:
             step = "ExtractAudio";
             break;
-        case PostProcessorStep::VideoRemuxer:
+        case Step::VideoRemuxer:
             step = "VideoRemuxer";
             break;
-        case PostProcessorStep::VideoConverter:
+        case Step::VideoConverter:
             step = "VideoConverter";
             break;
-        case PostProcessorStep::Metadata:
+        case Step::Metadata:
             step = "Metadata";
             break;
-        case PostProcessorStep::EmbedSubtitle:
+        case Step::EmbedSubtitle:
             step = "EmbedSubtitle";
             break;
-        case PostProcessorStep::EmbedThumbnail:
+        case Step::EmbedThumbnail:
             step = "EmbedThumbnail";
             break;
-        case PostProcessorStep::SubtitlesConverter:
+        case Step::SubtitlesConverter:
             step = "SubtitlesConverter";
             break;
-        case PostProcessorStep::ThumbnailsConverter:
+        case Step::ThumbnailsConverter:
             step = "ThumbnailsConverter";
             break;
-        case PostProcessorStep::FixupStretched:
+        case Step::FixupStretched:
             step = "FixupStretched";
             break;
-        case PostProcessorStep::FixupM4a:
+        case Step::FixupM4a:
             step = "FixupM4a";
             break;
-        case PostProcessorStep::FixupM3u8:
+        case Step::FixupM3u8:
             step = "FixupM3u8";
             break;
-        case PostProcessorStep::FixupTimestamp:
+        case Step::FixupTimestamp:
             step = "FixupTimestamp";
             break;
-        case PostProcessorStep::FixupDuration:
+        case Step::FixupDuration:
             step = "FixupDuration";
             break;
         default:
             break;
         }
-        if (m_step == PostProcessorStep::None && m_executable == PostProcessorExecutable::None)
+        if (m_step == Step::None && m_executable == Executable::None)
         {
             return m_args;
         }
-        if (m_step != PostProcessorStep::None && m_executable != PostProcessorExecutable::None)
+        if (m_step != Step::None && m_executable != Executable::None)
         {
             return std::format("{}+{}:{}", step, executable, m_args);
         }
-        if (m_step != PostProcessorStep::None)
+        if (m_step != Step::None)
         {
             return std::format("{}:{}", step, m_args);
         }
         return std::format("{}:{}", executable, m_args);
     }
 
-    std::strong_ordering PostProcessorArgument::operator<=>(const PostProcessorArgument& rhs) const
+    std::strong_ordering Argument::operator<=>(const Argument& rhs) const
     {
         return m_name <=> rhs.m_name;
     }
 
-    bool PostProcessorArgument::operator==(const PostProcessorArgument& rhs) const
+    bool Argument::operator==(const Argument& rhs) const
     {
         return m_name == rhs.m_name && m_step == rhs.m_step && m_executable == rhs.m_executable && m_args == rhs.m_args;
     }

@@ -10,71 +10,71 @@
 
 #define USER_AGENT "NickvisionParabolic-Updater"
 
-namespace parabolic
+namespace parabolic::updater
 {
-    UpdateInfo::UpdateInfo()
+    Info::Info()
         : m_version{ 0, 0, 0 },
         m_is_prerelease{ false }
     {
 
     }
 
-    const semver::version<>& UpdateInfo::version() const
+    const semver::version<>& Info::version() const
     {
         return m_version;
     }
 
-    void UpdateInfo::set_version(const semver::version<>& version)
+    void Info::set_version(const semver::version<>& version)
     {
         m_version = version;
     }
 
-    bool UpdateInfo::is_prerelease() const
+    bool Info::is_prerelease() const
     {
         return m_is_prerelease;
     }
 
-    void UpdateInfo::set_is_prerelease(bool is_prerelease)
+    void Info::set_is_prerelease(bool is_prerelease)
     {
         m_is_prerelease = is_prerelease;
     }
 
-    const std::string& UpdateInfo::changelog() const
+    const std::string& Info::changelog() const
     {
         return m_changelog;
     }
 
-    void UpdateInfo::set_changelog(const std::string& changelog)
+    void Info::set_changelog(const std::string& changelog)
     {
         m_changelog = changelog;
     }
 
-    const std::string& UpdateInfo::asset_name() const
+    const std::string& Info::asset_name() const
     {
         return m_asset_name;
     }
 
-    void UpdateInfo::set_asset_name(const std::string& asset_name)
+    void Info::set_asset_name(const std::string& asset_name)
     {
         m_asset_name = asset_name;
     }
 
-    const std::string& UpdateInfo::asset_url() const
+    const std::string& Info::asset_url() const
     {
         return m_asset_url;
     }
 
-    void UpdateInfo::set_asset_url(const std::string& asset_url)
+    void Info::set_asset_url(const std::string& asset_url)
     {
         m_asset_url = asset_url;
     }
 
-    const std::string& UpdateInfo::asset_digest() const
+    const std::string& Info::asset_digest() const
     {
         return m_asset_digest;
     }
 
-    void UpdateInfo::set_asset_digest(const std::string& asset_digest)
+    void Info::set_asset_digest(const std::string& asset_digest)
     {
         m_asset_digest = asset_digest;
     }
@@ -99,7 +99,7 @@ namespace parabolic
         m_allow_preview_updates = allow_preview_updates;
     }
 
-    std::optional<UpdateInfo> Updater::check_for_updates() const
+    std::optional<Info> Updater::check_for_updates() const
     {
         nlohmann::json releases = nlohmann::json::array();
         std::filesystem::path cache_file{ std::filesystem::path{sago::getCacheDir()} / m_repo_owner / m_repo_name / "releases.json" };
@@ -189,7 +189,7 @@ namespace parabolic
                 {
                     continue;
                 }
-                UpdateInfo info;
+                Info info;
                 info.set_version(version);
                 info.set_is_prerelease(prerelease);
                 info.set_changelog(release.contains("body") && release["body"].is_string() ? release["body"].get<std::string>() : "");
@@ -202,7 +202,7 @@ namespace parabolic
         return std::nullopt;
     }
 
-    std::optional<std::filesystem::path> Updater::download_update(const UpdateInfo& info, const UpdateDownloadProgressCallback& progress) const
+    std::optional<std::filesystem::path> Updater::download_update(const Info& info, const DownloadProgressCallback& progress) const
     {
         if (info.asset_url().empty() || info.asset_digest().empty() || info.asset_name().empty())
         {

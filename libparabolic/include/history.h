@@ -3,9 +3,9 @@
 #include <chrono>
 #include <string>
 
-namespace parabolic
+namespace parabolic::history
 {
-    enum class HistoryLength
+    enum class Length
     {
         Never = 0,
         OneDay = 1,
@@ -17,10 +17,10 @@ namespace parabolic
         Forever = -1
     };
 
-    class HistoricDownload
+    class Entry
     {
     public:
-        HistoricDownload(std::string url);
+        Entry(std::string url);
         [[nodiscard]] const std::string& url() const;
         [[nodiscard]] const std::string& title() const;
         void set_title(const std::string& title);
@@ -28,8 +28,8 @@ namespace parabolic
         void set_path(const std::string& path);
         [[nodiscard]] const std::chrono::system_clock::time_point& downloaded_on() const;
         void set_downloaded_on(const std::chrono::system_clock::time_point& downloaded_on);
-        std::strong_ordering operator<=>(const HistoricDownload& rhs) const;
-        bool operator==(const HistoricDownload& rhs) const;
+        std::strong_ordering operator<=>(const Entry& rhs) const;
+        bool operator==(const Entry& rhs) const;
 
     private:
         std::string m_url;

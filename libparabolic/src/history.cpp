@@ -1,54 +1,54 @@
 #include "history.h"
 
-namespace parabolic
+namespace parabolic::history
 {
-    HistoricDownload::HistoricDownload(std::string url)
+    Entry::Entry(std::string url)
         : m_url{ std::move(url) },
         m_downloaded_on{ std::chrono::system_clock::now() }
     {
     }
 
-    const std::string& HistoricDownload::url() const
+    const std::string& Entry::url() const
     {
         return m_url;
     }
 
-    const std::string& HistoricDownload::title() const
+    const std::string& Entry::title() const
     {
         return m_title;
     }
 
-    void HistoricDownload::set_title(const std::string& title)
+    void Entry::set_title(const std::string& title)
     {
         m_title = title;
     }
 
-    const std::string& HistoricDownload::path() const
+    const std::string& Entry::path() const
     {
         return m_path;
     }
 
-    void HistoricDownload::set_path(const std::string& path)
+    void Entry::set_path(const std::string& path)
     {
         m_path = path;
     }
 
-    const std::chrono::system_clock::time_point& HistoricDownload::downloaded_on() const
+    const std::chrono::system_clock::time_point& Entry::downloaded_on() const
     {
         return m_downloaded_on;
     }
 
-    void HistoricDownload::set_downloaded_on(const std::chrono::system_clock::time_point& downloaded_on)
+    void Entry::set_downloaded_on(const std::chrono::system_clock::time_point& downloaded_on)
     {
         m_downloaded_on = downloaded_on;
     }
 
-    std::strong_ordering HistoricDownload::operator<=>(const HistoricDownload& rhs) const
+    std::strong_ordering Entry::operator<=>(const Entry& rhs) const
     {
         return m_downloaded_on <=> rhs.m_downloaded_on;
     }
 
-    bool HistoricDownload::operator==(const HistoricDownload& rhs) const
+    bool Entry::operator==(const Entry& rhs) const
     {
         return m_url == rhs.m_url;
     }

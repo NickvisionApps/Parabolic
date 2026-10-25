@@ -3,7 +3,7 @@
 #include <string>
 #include <semver.hpp>
 
-namespace parabolic
+namespace parabolic::product_info
 {
     class ProductInfo
     {
