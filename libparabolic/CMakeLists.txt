@@ -39,7 +39,10 @@ set_target_properties("lib${SHORT_NAME}" PROPERTIES VERSION "${PROJECT_VERSION}"
 if (MSVC)
     target_compile_options("lib${SHORT_NAME}" PRIVATE /W4)
 else ()
-    target_compile_options("lib${SHORT_NAME}" PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options("lib${SHORT_NAME}" PRIVATE -Wall -Wextra -Wpedantic "--embed-dir=${CMAKE_CURRENT_SOURCE_DIR}/../resources")
+    if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        target_compile_options("lib${SHORT_NAME}" PRIVATE -Wno-c23-extensions)
+    endif ()
 endif ()
 
 find_package(cpr REQUIRED)
