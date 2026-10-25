@@ -1,9 +1,28 @@
 #include "ytdlp.h"
+#include <stdexcept>
 #include <string>
 #include <unordered_set>
 
+namespace
+{
+    std::string strip_error_prefix(const std::string& message)
+    {
+        static std::string prefix{ "ERROR: " };
+        if (message.starts_with(prefix))
+        {
+            return message.substr(prefix.size());
+        }
+        return message;
+    }
+}
+
 namespace parabolic::ytdlp
 {
+    YtdlpException::YtdlpException(const std::string& message)
+        : std::runtime_error{ strip_error_prefix(message) }
+    {
+    }
+
     bool is_youtube_supported_language(const std::string& language)
     {
         static std::unordered_set<std::string> supported{

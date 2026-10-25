@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 
-namespace parabolic
+namespace parabolic::m3u
 {
     class M3uFile
     {

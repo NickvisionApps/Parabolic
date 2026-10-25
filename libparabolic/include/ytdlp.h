@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <stdexcept>
 #include <string>
 
 namespace parabolic::ytdlp
@@ -16,6 +17,12 @@ namespace parabolic::ytdlp
         Opera,
         Vivaldi,
         Whale,
+    };
+
+    class YtdlpException : public std::runtime_error
+    {
+    public:
+        YtdlpException(const std::string& message);
     };
 
     bool is_youtube_supported_language(const std::string& language);
