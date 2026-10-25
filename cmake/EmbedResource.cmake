@@ -1,0 +1,8 @@
+function(embed_resource TARGET RESOURCE_FILE)
+    get_filename_component(RESOURCE_NAME "${RESOURCE_FILE}" NAME_WE)
+    set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${RESOURCE_FILE}")
+    file(READ "${RESOURCE_FILE}" RESOURCE_HEX HEX)
+    string(REGEX REPLACE "([0-9a-f][0-9a-f])" "0x\\1," RESOURCE_BYTES "${RESOURCE_HEX}")
+    file(CONFIGURE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/generated/${RESOURCE_NAME}.inc" CONTENT "@RESOURCE_BYTES@\n" @ONLY)
+    target_include_directories("${TARGET}" PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/generated")
+endfunction()

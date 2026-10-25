@@ -21,6 +21,7 @@ endif()
 project("org.nickvision.tubeconverter" LANGUAGES CXX VERSION 2026.10.0 DESCRIPTION "Download web video and audio.")
 set(SHORT_NAME "parabolic")
 set(DISPLAY_NAME "Parabolic")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(GNUInstallDirs)
 
 option(ENABLE_CLANG_TIDY "Run clang-tidy during compilation" ON)
