@@ -1,11 +1,12 @@
 #pragma once
 
 #include <chrono>
+#include <cstdint>
 #include <string>
 
 namespace parabolic::history
 {
-    enum class Length
+    enum class Length : std::int16_t
     {
         Never = 0,
         OneDay = 1,
@@ -14,7 +15,7 @@ namespace parabolic::history
         ThreeMonths = 90,
         SixMonths = 180,
         OneYear = 365,
-        Forever = -1
+        Forever = -1,
     };
 
     class Entry
@@ -35,6 +36,6 @@ namespace parabolic::history
         std::string m_url;
         std::string m_title;
         std::string m_path;
-        std::chrono::system_clock::time_point m_downloaded_on;
+        std::chrono::system_clock::time_point m_downloaded_on{ std::chrono::system_clock::now() };
     };
 }

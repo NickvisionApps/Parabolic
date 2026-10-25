@@ -1,12 +1,13 @@
 #pragma once
 
 #include <compare>
+#include <cstdint>
 #include <nlohmann/json.hpp>
 #include <string>
 
 namespace parabolic::post_processor
 {
-    enum class Step
+    enum class Step : std::uint8_t
     {
         None,
         Merger,
@@ -24,15 +25,15 @@ namespace parabolic::post_processor
         FixupM4a,
         FixupM3u8,
         FixupTimestamp,
-        FixupDuration
+        FixupDuration,
     };
 
-    enum class Executable
+    enum class Executable : std::uint8_t
     {
         None,
         AtomicParsley,
         FFmpeg,
-        FFprobe
+        FFprobe,
     };
 
     class Argument
@@ -106,9 +107,11 @@ namespace parabolic::post_processor
 
     inline void to_json(nlohmann::json& json, const Argument& argument)
     {
-        json = nlohmann::json{ { "name", argument.m_name },
-                               { "step", static_cast<int>(argument.m_step) },
-                               { "executable", static_cast<int>(argument.m_executable) },
-                               { "args", argument.m_args } };
+        json = nlohmann::json{
+            { "name", argument.m_name },
+            { "step", static_cast<int>(argument.m_step) },
+            { "executable", static_cast<int>(argument.m_executable) },
+            { "args", argument.m_args },
+        };
     }
 }

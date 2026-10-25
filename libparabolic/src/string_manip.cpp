@@ -8,9 +8,9 @@
 #include <windows.h>
 #endif
 
-namespace parabolic
+namespace parabolic::string_manip
 {
-    std::string string_manip::lower(const std::string& str)
+    std::string lower(const std::string& str)
     {
         std::string result{ str };
         std::ranges::transform(result, result.begin(), [](unsigned char c)
@@ -20,7 +20,7 @@ namespace parabolic
         return result;
     }
 
-    std::string string_manip::trim(const std::string& str)
+    std::string trim(const std::string& str)
     {
         if (str.empty())
         {
@@ -40,7 +40,7 @@ namespace parabolic
         return result;
     }
 
-    std::string string_manip::str(const std::wstring& wstr)
+    std::string str(const std::wstring& wstr)
     {
 #ifdef _WIN32
         int size{ WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), -1, nullptr, 0, nullptr, nullptr) };
@@ -66,7 +66,7 @@ namespace parabolic
 #endif
     }
 
-    std::wstring string_manip::wstr(const std::string& str)
+    std::wstring wstr(const std::string& str)
     {
 #ifdef _WIN32
         int size{ MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, nullptr, 0) };

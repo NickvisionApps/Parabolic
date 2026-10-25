@@ -1,57 +1,57 @@
 #include "file.h"
 #include "string_manip.h"
 
-namespace parabolic
+namespace parabolic::file
 {
-    std::string file::dot_extension(Type type)
+    std::string dot_extension(Type type)
     {
         switch (type)
         {
-        case Type::MP4:
+        case Type::Mp4:
             return ".mp4";
-        case Type::WEBM:
+        case Type::Webm:
             return ".webm";
-        case Type::MKV:
+        case Type::Mkv:
             return ".mkv";
-        case Type::MOV:
+        case Type::Mov:
             return ".mov";
-        case Type::AVI:
+        case Type::Avi:
             return ".avi";
-        case Type::MP3:
+        case Type::Mp3:
             return ".mp3";
-        case Type::M4A:
+        case Type::M4a:
             return ".m4a";
-        case Type::OPUS:
+        case Type::Opus:
             return ".opus";
-        case Type::FLAC:
+        case Type::Flac:
             return ".flac";
-        case Type::WAV:
+        case Type::Wav:
             return ".wav";
-        case Type::OGG:
+        case Type::Ogg:
             return ".ogg";
         default:
             return "";
         }
     }
 
-    bool file::is_audio(Type type)
+    bool is_audio(Type type)
     {
         switch (type)
         {
         case Type::AudioGeneric:
-        case Type::MP3:
-        case Type::M4A:
-        case Type::OPUS:
-        case Type::FLAC:
-        case Type::WAV:
-        case Type::OGG:
+        case Type::Mp3:
+        case Type::M4a:
+        case Type::Opus:
+        case Type::Flac:
+        case Type::Wav:
+        case Type::Ogg:
             return true;
         default:
             return false;
         }
     }
 
-    bool file::is_generic(Type type)
+    bool is_generic(Type type)
     {
         switch (type)
         {
@@ -63,65 +63,65 @@ namespace parabolic
         }
     }
 
-    bool file::is_video(Type type)
+    bool is_video(Type type)
     {
         switch (type)
         {
         case Type::VideoGeneric:
-        case Type::MP4:
-        case Type::WEBM:
-        case Type::MKV:
-        case Type::MOV:
-        case Type::AVI:
+        case Type::Mp4:
+        case Type::Webm:
+        case Type::Mkv:
+        case Type::Mov:
+        case Type::Avi:
             return true;
         default:
             return false;
         }
     }
 
-    bool file::should_recode(Type type)
+    bool should_recode(Type type)
     {
         switch (type)
         {
-        case Type::WEBM:
-        case Type::MOV:
-        case Type::AVI:
+        case Type::Webm:
+        case Type::Mov:
+        case Type::Avi:
             return true;
         default:
             return false;
         }
     }
 
-    bool file::supports_subtitle(Type type, subtitle::Format format)
+    bool supports_subtitle(Type type, subtitle::Format format)
     {
         switch (format)
         {
         case subtitle::Format::Any:
-        case subtitle::Format::VTT:
-            return is_video(type) && type != Type::AVI;
-        case subtitle::Format::SRT:
-            return is_video(type) && type != Type::WEBM && type != Type::AVI;
-        case subtitle::Format::ASS:
-            return is_video(type) && type != Type::MKV;
-        case subtitle::Format::LRC:
+        case subtitle::Format::Vtt:
+            return is_video(type) && type != Type::Avi;
+        case subtitle::Format::Srt:
+            return is_video(type) && type != Type::Webm && type != Type::Avi;
+        case subtitle::Format::Ass:
+            return is_video(type) && type != Type::Mkv;
+        case subtitle::Format::Lrc:
             return is_audio(type);
         default:
             return false;
         }
     }
 
-    bool file::supports_thumbnails(Type type)
+    bool supports_thumbnails(Type type)
     {
         switch (type)
         {
-        case Type::MP4:
-        case Type::MKV:
-        case Type::MOV:
-        case Type::MP3:
-        case Type::M4A:
-        case Type::OPUS:
-        case Type::FLAC:
-        case Type::OGG:
+        case Type::Mp4:
+        case Type::Mkv:
+        case Type::Mov:
+        case Type::Mp3:
+        case Type::M4a:
+        case Type::Opus:
+        case Type::Flac:
+        case Type::Ogg:
             return true;
         default:
             return false;

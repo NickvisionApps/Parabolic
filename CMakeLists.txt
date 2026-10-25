@@ -23,8 +23,9 @@ set(SHORT_NAME "parabolic")
 set(DISPLAY_NAME "Parabolic")
 include(GNUInstallDirs)
 
+option(ENABLE_CLANG_TIDY "Run clang-tidy during compilation" ON)
 find_program(CLANG_TIDY_EXECUTABLE NAMES clang-tidy)
-if(CLANG_TIDY_EXECUTABLE)
+if(ENABLE_CLANG_TIDY AND CLANG_TIDY_EXECUTABLE)
     set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXECUTABLE}")
 endif()
 

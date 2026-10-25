@@ -30,12 +30,6 @@ namespace parabolic::media
         return std::format("{:%H:%M:%S} - {:%H:%M:%S}", m_start, m_end);
     }
 
-    VideoResolution::VideoResolution()
-        : m_width{ std::numeric_limits<int>::max() },
-          m_height{ std::numeric_limits<int>::max() }
-    {
-    }
-
     VideoResolution::VideoResolution(int width, int height)
         : m_width{ std::max(width, height) },
           m_height{ std::min(width, height) }

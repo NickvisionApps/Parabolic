@@ -31,7 +31,7 @@ namespace parabolic::application_state
         m_updater = std::make_unique<Updater>(m_product_info->repo_owner(), m_product_info->repo_name(),
                                               m_product_info->version(), "NickvisionParabolicSetup-x64.exe");
 #endif
-#elif defined(__APPLE__)
+#elifdef __APPLE__
 #ifdef __aarch64__
         m_updater = std::make_unique<Updater>(m_product_info->repo_owner(), m_product_info->repo_name(),
                                               m_product_info->version(), "NickvisionParabolic-arm64.dmg");
@@ -39,7 +39,7 @@ namespace parabolic::application_state
         m_updater = std::make_unique<Updater>(m_product_info->repo_owner(), m_product_info->repo_name(),
                                               m_product_info->version(), "NickvisionParabolic-x64.dmg");
 #endif
-#elif defined(__linux__)
+#elifdef __linux__
 #ifdef __aarch64__
         m_updater = std::make_unique<Updater>(m_product_info->repo_owner(), m_product_info->repo_name(),
                                               m_product_info->version(), "NickvisionParabolic-arm64.AppImage");

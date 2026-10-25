@@ -2,6 +2,8 @@
 
 #include <chrono>
 #include <compare>
+#include <cstdint>
+#include <limits>
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <string>
@@ -9,39 +11,39 @@
 
 namespace parabolic::media
 {
-    enum class AudioCodec
+    enum class AudioCodec : std::uint8_t
     {
         Any,
-        FLAC,
-        WAV,
-        OPUS,
-        AAC,
-        MP4A,
-        MP3
+        Flac,
+        Wav,
+        Opus,
+        Aac,
+        Mp4a,
+        Mp3,
     };
 
-    enum class FrameRate
+    enum class FrameRate : std::uint8_t
     {
         Any,
         Fps24,
         Fps30,
-        Fps60
+        Fps60,
     };
 
-    enum class MediaType
+    enum class MediaType : std::uint8_t
     {
         Video,
         Audio,
         Image,
-        Unknown
+        Unknown,
     };
 
-    enum class VideoCodec
+    enum class VideoCodec : std::uint8_t
     {
         Any,
         H265,
-        VP9,
-        AV01,
+        Vp9,
+        Av01,
         H264,
     };
 
@@ -64,7 +66,7 @@ namespace parabolic::media
     class VideoResolution
     {
     public:
-        VideoResolution();
+        VideoResolution() = default;
         VideoResolution(int width, int height);
         static VideoResolution& best();
         static VideoResolution& worst();
@@ -79,8 +81,8 @@ namespace parabolic::media
         friend void to_json(nlohmann::json& json, const VideoResolution& resolution);
 
     private:
-        int m_width;
-        int m_height;
+        int m_width{ std::numeric_limits<int>::max() };
+        int m_height{ std::numeric_limits<int>::max() };
     };
 
     inline void from_json(const nlohmann::json& json, TimeFrame& timeFrame)

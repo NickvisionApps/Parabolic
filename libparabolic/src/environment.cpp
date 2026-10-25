@@ -12,7 +12,7 @@
 #ifdef _WIN32
 #include <shellapi.h>
 #include <windows.h>
-#elif defined(__APPLE__)
+#elifdef __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
 #include <crt_externs.h>
 #include <mach-o/dyld.h>
@@ -32,9 +32,9 @@ namespace
     }
 }
 
-namespace parabolic
+namespace parabolic::environment
 {
-    const std::vector<std::string>& environment::arguments()
+    const std::vector<std::string>& arguments()
     {
         static std::vector<std::string> args;
         if (args.empty())
@@ -50,7 +50,7 @@ namespace parabolic
                 }
                 LocalFree(argv);
             }
-#elif defined(__APPLE__)
+#elifdef __APPLE__
             int argc{ *_NSGetArgc() };
             char** argv{ *_NSGetArgv() };
             args.reserve(argc);
@@ -58,7 +58,7 @@ namespace parabolic
             {
                 args.emplace_back(argv[i]);
             }
-#elif defined(__linux__)
+#elifdef __linux__
             std::ifstream file("/proc/self/cmdline", std::ios::binary);
             std::string arg;
             while (std::getline(file, arg, '\0'))
@@ -70,13 +70,13 @@ namespace parabolic
         return args;
     }
 
-    environment::DeploymentMode environment::deployment_mode()
+    DeploymentMode deployment_mode()
     {
 #ifdef _WIN32
         return DeploymentMode::Local;
-#elif defined(__APPLE__)
+#elifdef __APPLE__
         return DeploymentMode::Local;
-#elif defined(__linux__)
+#elifdef __linux__
         if (std::filesystem::exists("/.flatpak-info"))
         {
             return DeploymentMode::Flatpak;
@@ -102,7 +102,7 @@ namespace parabolic
 #endif
     }
 
-    const std::filesystem::path& environment::find_dependency(std::string_view name, DependencySearchOption option)
+    const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option)
     {
         static std::unordered_map<std::string, std::filesystem::path> dependencies;
         std::filesystem::path dep{ name };
@@ -135,12 +135,12 @@ namespace parabolic
         return result;
     }
 
-    std::filesystem::path environment::executable_directory()
+    std::filesystem::path executable_directory()
     {
         return executable_path().parent_path();
     }
 
-    std::filesystem::path environment::executable_path()
+    std::filesystem::path executable_path()
     {
 #ifdef _WIN32
         std::array<wchar_t, MAX_PATH> path{};
@@ -150,7 +150,7 @@ namespace parabolic
             return std::filesystem::path{ std::wstring(path.data(), len) };
         }
         return {};
-#elif defined(__APPLE__)
+#elifdef __APPLE__
         std::array<char, PATH_MAX + 1> path{};
         uint32_t size{ static_cast<uint32_t>(path.size()) };
         if (_NSGetExecutablePath(path.data(), &size) == 0)
@@ -158,19 +158,19 @@ namespace parabolic
             return std::filesystem::canonical(path.data());
         }
         return {};
-#elif defined(__linux__)
+#elifdef __linux__
         return std::filesystem::canonical("/proc/self/exe");
 #else
         return {};
 #endif
     }
 
-    bool environment::is_portable()
+    bool is_portable()
     {
         return std::ranges::find(arguments(), "--portable") != arguments().end();
     }
 
-    std::string environment::locale()
+    std::string locale()
     {
 #ifdef _WIN32
         LCID lcid{ GetThreadLocale() };
@@ -180,7 +180,7 @@ namespace parabolic
             return string_manip::str(std::wstring(name.data()));
         }
         return {};
-#elif defined(__APPLE__)
+#elifdef __APPLE__
         std::string result;
         CFLocaleRef locale{ CFLocaleCopyCurrent() };
         if (locale)
@@ -209,7 +209,7 @@ namespace parabolic
 #endif
     }
 
-    std::vector<std::filesystem::path> environment::path()
+    std::vector<std::filesystem::path> path()
     {
         std::string env{ variable("PATH") };
         if (!env.empty())
@@ -223,7 +223,7 @@ namespace parabolic
         return {};
     }
 
-    void environment::set_variable(const std::string& name, const std::string& value)
+    void set_variable(const std::string& name, const std::string& value)
     {
 #ifdef _WIN32
         std::wstring wname{ string_manip::wstr(name) };
@@ -234,7 +234,7 @@ namespace parabolic
 #endif
     }
 
-    std::string environment::variable(const std::string& name)
+    std::string variable(const std::string& name)
     {
 #ifdef _WIN32
         std::wstring wname{ string_manip::wstr(name) };

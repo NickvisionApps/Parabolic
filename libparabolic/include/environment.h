@@ -11,7 +11,7 @@ namespace parabolic::environment
         Global,
         App,
         System,
-        Local
+        Local,
     };
 
     enum class DeploymentMode : std::uint8_t

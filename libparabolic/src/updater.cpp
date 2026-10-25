@@ -12,12 +12,6 @@
 
 namespace parabolic::updater
 {
-    Info::Info()
-        : m_version{ 0, 0, 0 },
-          m_is_prerelease{ false }
-    {
-    }
-
     const semver::version<>& Info::version() const
     {
         return m_version;
@@ -83,8 +77,7 @@ namespace parabolic::updater
         : m_repo_owner{ std::move(repo_owner) },
           m_repo_name{ std::move(repo_name) },
           m_current_version{ std::move(current_version) },
-          m_target_asset_name{ string_manip::lower(target_asset_name) },
-          m_allow_preview_updates{ false }
+          m_target_asset_name{ string_manip::lower(target_asset_name) }
     {
     }
 
@@ -101,8 +94,9 @@ namespace parabolic::updater
     std::optional<Info> Updater::check_for_updates() const
     {
         nlohmann::json releases = nlohmann::json::array();
-        std::filesystem::path cache_file{ std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
-                                          "releases.json" };
+        std::filesystem::path cache_file{
+            std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name / "releases.json",
+        };
         if (std::filesystem::exists(cache_file))
         {
             if (std::filesystem::last_write_time(cache_file) + std::chrono::hours(12) <=
@@ -126,12 +120,17 @@ namespace parabolic::updater
         if (releases.empty())
         {
             cpr::Response response{
-                cpr::Get(cpr::Url{ std::format("https://api.github.com/repos/{}/{}/releases?per_page=5", m_repo_owner,
-                                               m_repo_name) },
-                         cpr::UserAgent{ USER_AGENT },
-                         cpr::Header{ { "Accept", "application/vnd.github+json" },
-                                      { "X-GitHub-Api-Version", "2022-11-28" } },
-                         cpr::ConnectTimeout{ 15000 }, cpr::Timeout{ 30000 })
+                cpr::Get(
+                        cpr::Url{
+                                std::format("https://api.github.com/repos/{}/{}/releases?per_page=5", m_repo_owner,
+                                            m_repo_name),
+                        },
+                        cpr::UserAgent{ USER_AGENT },
+                        cpr::Header{
+                                { "Accept", "application/vnd.github+json" },
+                                { "X-GitHub-Api-Version", "2022-11-28" },
+                        },
+                        cpr::ConnectTimeout{ 15000 }, cpr::Timeout{ 30000 }),
             };
             if (response.error || response.status_code != 200)
             {
@@ -188,9 +187,11 @@ namespace parabolic::updater
                 {
                     continue;
                 }
-                std::string digest{ string_manip::lower(asset.contains("digest") && asset["digest"].is_string()
-                                                                ? asset["digest"].get<std::string>()
-                                                                : "") };
+                std::string digest{
+                    string_manip::lower(asset.contains("digest") && asset["digest"].is_string()
+                                                ? asset["digest"].get<std::string>()
+                                                : ""),
+                };
                 if (digest.empty())
                 {
                     continue;
@@ -217,8 +218,10 @@ namespace parabolic::updater
         {
             return std::nullopt;
         }
-        std::filesystem::path destination{ std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
-                                           std::filesystem::path(info.asset_name()).filename() };
+        std::filesystem::path destination{
+            std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
+                    std::filesystem::path(info.asset_name()).filename(),
+        };
         std::filesystem::create_directories(destination.parent_path());
         std::ofstream out{ destination, std::ios::binary | std::ios::trunc };
         if (!out)
@@ -237,7 +240,7 @@ namespace parabolic::updater
                 progress(static_cast<std::uint64_t>(now), static_cast<std::uint64_t>(total));
             }
             return true;
-        } })
+        } }),
         };
         out.close();
         if (!response.error && response.status_code == 200)

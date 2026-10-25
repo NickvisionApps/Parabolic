@@ -1,25 +1,26 @@
 #pragma once
 
+#include <cstdint>
 #include <string>
 #include "subtitle.h"
 
 namespace parabolic::file
 {
-    enum class Type
+    enum class Type : std::uint8_t
     {
         VideoGeneric,
-        MP4,
-        WEBM,
-        MKV,
-        MOV,
-        AVI,
+        Mp4,
+        Webm,
+        Mkv,
+        Mov,
+        Avi,
         AudioGeneric,
-        MP3,
-        M4A,
-        OPUS,
-        FLAC,
-        WAV,
-        OGG
+        Mp3,
+        M4a,
+        Opus,
+        Flac,
+        Wav,
+        Ogg,
     };
 
     std::string dot_extension(Type type);

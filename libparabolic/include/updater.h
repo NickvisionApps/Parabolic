@@ -13,7 +13,7 @@ namespace parabolic::updater
     class Info
     {
     public:
-        Info();
+        Info() = default;
         [[nodiscard]] const semver::version<>& version() const;
         void set_version(const semver::version<>& version);
         [[nodiscard]] bool is_prerelease() const;
@@ -28,8 +28,8 @@ namespace parabolic::updater
         void set_asset_digest(const std::string& asset_digest);
 
     private:
-        semver::version<> m_version;
-        bool m_is_prerelease;
+        semver::version<> m_version{ 0, 0, 0 };
+        bool m_is_prerelease{ false };
         std::string m_changelog;
         std::string m_asset_name;
         std::string m_asset_url;
@@ -52,6 +52,6 @@ namespace parabolic::updater
         std::string m_repo_name;
         semver::version<> m_current_version;
         std::string m_target_asset_name;
-        bool m_allow_preview_updates;
+        bool m_allow_preview_updates{ false };
     };
 }

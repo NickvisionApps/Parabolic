@@ -1,8 +1,10 @@
 #pragma once
 
+#include <cstdint>
+
 namespace parabolic::browser
 {
-    enum class Browser
+    enum class Browser : std::uint8_t
     {
         None,
         Brave,

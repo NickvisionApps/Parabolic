@@ -11,13 +11,15 @@ namespace parabolic::string_manip
             std::is_constructible_v<T, std::string> && std::is_convertible_v<std::string, T>;
 
     [[nodiscard]] std::string lower(const std::string& str);
+
     [[nodiscard]] std::string trim(const std::string& str);
+
     [[nodiscard]] std::string str(const std::wstring& wstr);
+
     [[nodiscard]] std::wstring wstr(const std::string& str);
 
     template<ImplicitlyConstructableString T = std::string>
-    [[nodiscard]] std::vector<T> split(const std::string& s, const std::string& delimiter,
-                                       bool include_empty = true) noexcept
+    [[nodiscard]] std::vector<T> split(const std::string& s, const std::string& delimiter, bool include_empty = true)
     {
         std::vector<T> splits;
         size_t last{ 0 };
@@ -38,6 +40,7 @@ namespace parabolic::string_manip
         }
         return splits;
     }
+
     template<ImplicitlyConstructableString T = std::string>
     [[nodiscard]] std::vector<T> split(const std::string& s, char delimiter, bool include_empty = true) noexcept
     {

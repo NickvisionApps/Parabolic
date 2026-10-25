@@ -18,13 +18,11 @@ namespace parabolic::configuration
                                              : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) /
                                                        app_name / "config.json" },
 #else
-        : m_path{ environment::is_portable()
-                          ? environment::executable_directory() / "config.json"
-                          : std::filesystem::path(sago::getConfigHome()) / app_name / "config.json" },
+        : m_path{
+              environment::is_portable() ? environment::executable_directory() / "config.json"
+                                         : std::filesystem::path(sago::getConfigHome()) / app_name / "config.json",
+          },
 #endif
-          m_theme{ Theme::System },
-          m_automatically_check_for_updates{ true },
-          m_allow_preview_updates{ false },
           m_translation_language{ Translator::follow_system_language() }
     {
         try

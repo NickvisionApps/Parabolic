@@ -13,7 +13,7 @@ namespace parabolic::configuration
     {
         Light,
         Dark,
-        System
+        System,
     };
 
     class Configuration
@@ -34,9 +34,9 @@ namespace parabolic::configuration
         void save() const;
         mutable std::mutex m_mutex;
         std::filesystem::path m_path;
-        Theme m_theme;
-        bool m_automatically_check_for_updates;
-        bool m_allow_preview_updates;
+        Theme m_theme{ Theme::System };
+        bool m_automatically_check_for_updates{ true };
+        bool m_allow_preview_updates{ false };
         std::string m_translation_language;
         friend void from_json(const nlohmann::json& json, Configuration& config);
         friend void to_json(nlohmann::json& json, const Configuration& config);
@@ -80,9 +80,11 @@ namespace parabolic::configuration
 
     inline void to_json(nlohmann::json& json, const Configuration& config)
     {
-        json = nlohmann::json{ { "theme", static_cast<int>(config.m_theme) },
-                               { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
-                               { "allowPreviewUpdates", config.m_allow_preview_updates },
-                               { "translationLanguage", config.m_translation_language } };
+        json = nlohmann::json{
+            { "theme", static_cast<int>(config.m_theme) },
+            { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
+            { "allowPreviewUpdates", config.m_allow_preview_updates },
+            { "translationLanguage", config.m_translation_language },
+        };
     }
 }
