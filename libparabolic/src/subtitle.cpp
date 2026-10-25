@@ -1,6 +1,7 @@
 #include "subtitle.h"
 #include <compare>
 #include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <string>
 #include <utility>
 #include "translator.h"

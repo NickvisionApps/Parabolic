@@ -2,6 +2,7 @@
 #include <compare>
 #include <format>
 #include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <string>
 #include <utility>
 
