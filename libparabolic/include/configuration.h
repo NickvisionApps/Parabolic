@@ -2,8 +2,8 @@
 
 #include <filesystem>
 #include <mutex>
-#include <string>
 #include <nlohmann/json.hpp>
+#include <string>
 #include "media.h"
 #include "subtitle.h"
 
@@ -80,11 +80,9 @@ namespace parabolic::configuration
 
     inline void to_json(nlohmann::json& json, const Configuration& config)
     {
-        json = nlohmann::json{
-            {"theme", static_cast<int>(config.m_theme)},
-            {"automaticallyCheckForUpdates", config.m_automatically_check_for_updates},
-            {"allowPreviewUpdates", config.m_allow_preview_updates},
-            {"translationLanguage", config.m_translation_language}
-        };
+        json = nlohmann::json{ { "theme", static_cast<int>(config.m_theme) },
+                               { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
+                               { "allowPreviewUpdates", config.m_allow_preview_updates },
+                               { "translationLanguage", config.m_translation_language } };
     }
 }

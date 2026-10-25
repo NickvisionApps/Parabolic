@@ -10,8 +10,8 @@
 #include <unordered_map>
 #include "string_manip.h"
 #ifdef _WIN32
-#include <windows.h>
 #include <shellapi.h>
+#include <windows.h>
 #elif defined(__APPLE__)
 #include <CoreFoundation/CoreFoundation.h>
 #include <crt_externs.h>
@@ -34,14 +34,14 @@ namespace
 
 namespace parabolic
 {
-    const std::vector<std::string> &environment::arguments()
+    const std::vector<std::string>& environment::arguments()
     {
         static std::vector<std::string> args;
         if (args.empty())
         {
 #ifdef _WIN32
             int argc{ 0 };
-            if (LPWSTR* argv{ CommandLineToArgvW(GetCommandLineW(), &argc) })
+            if (LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc))
             {
                 args.reserve(argc);
                 for (int i = 0; i < argc; ++i)
@@ -120,7 +120,7 @@ namespace parabolic
         }
         if (result.empty() && (option == DependencySearchOption::Global || option == DependencySearchOption::System))
         {
-            for (const std::filesystem::path& dir : path())
+            for (const std::filesystem::path& dir: path())
             {
                 if (search_in(dep, result, dir))
                 {

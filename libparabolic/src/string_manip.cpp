@@ -27,10 +27,12 @@ namespace parabolic
             return str;
         }
         std::string result{ str };
-        result.erase(std::ranges::find_if(std::views::reverse(result),[](unsigned char ch)
+        result.erase(std::ranges::find_if(std::views::reverse(result),
+                                          [](unsigned char ch)
         {
             return !(ch == ' ' || (ch >= '\t' && ch <= '\r'));
-        }).base(), result.end());
+        }).base(),
+                     result.end());
         result.erase(result.begin(), std::ranges::find_if(result, [](unsigned char ch)
         {
             return !(ch == ' ' || (ch >= '\t' && ch <= '\r'));

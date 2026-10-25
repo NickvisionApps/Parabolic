@@ -48,6 +48,10 @@ MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 1
 PointerAlignment: Left
 Cpp11BracedListStyle: false
+FixNamespaceComments: false
+PackConstructorInitializers: Never
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 4
 NamespaceIndentation: All
 SpaceAfterCStyleCast: true
 SpaceAfterTemplateKeyword: false
@@ -58,4 +62,7 @@ SpacesInConditionalStatement: false
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
 TabWidth: 4
+AllowShortLambdasOnASingleLine: None
+LambdaBodyIndentation: OuterScope
+PenaltyBreakBeforeFirstCallParameter: 1000
 ...

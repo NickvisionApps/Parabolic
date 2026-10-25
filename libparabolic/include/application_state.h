@@ -2,8 +2,8 @@
 
 #include <memory>
 #include "configuration.h"
-#include "translator.h"
 #include "product_info.h"
+#include "translator.h"
 #include "updater.h"
 
 namespace parabolic::application_state

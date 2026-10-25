@@ -6,9 +6,9 @@ namespace parabolic::post_processor
 {
     Argument::Argument(std::string name, Step step, Executable executable, std::string args)
         : m_name{ std::move(name) },
-        m_step{ step },
-        m_executable{ executable },
-        m_args{ std::move(args) }
+          m_step{ step },
+          m_executable{ executable },
+          m_args{ std::move(args) }
     {
     }
 

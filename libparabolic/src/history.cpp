@@ -4,7 +4,7 @@ namespace parabolic::history
 {
     Entry::Entry(std::string url)
         : m_url{ std::move(url) },
-        m_downloaded_on{ std::chrono::system_clock::now() }
+          m_downloaded_on{ std::chrono::system_clock::now() }
     {
     }
 

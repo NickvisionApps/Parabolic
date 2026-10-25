@@ -7,7 +7,7 @@ namespace parabolic::subtitle
 {
     Language::Language(std::string language, bool is_auto_generated)
         : m_language{ std::move(language) },
-        m_is_auto_generated{ is_auto_generated }
+          m_is_auto_generated{ is_auto_generated }
     {
     }
 

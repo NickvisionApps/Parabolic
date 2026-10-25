@@ -68,7 +68,8 @@ namespace parabolic::media
         VideoResolution(int width, int height);
         static VideoResolution& best();
         static VideoResolution& worst();
-        [[nodiscard]] static std::optional<VideoResolution> parse(const std::string& value, const translator::Translator& translator);
+        [[nodiscard]] static std::optional<VideoResolution> parse(const std::string& value,
+                                                                  const translator::Translator& translator);
         [[nodiscard]] int width() const;
         [[nodiscard]] int height() const;
         [[nodiscard]] std::string str(const translator::Translator& translator) const;
@@ -82,7 +83,7 @@ namespace parabolic::media
         int m_height;
     };
 
-    inline void from_json(const nlohmann::json &json, TimeFrame &timeFrame)
+    inline void from_json(const nlohmann::json& json, TimeFrame& timeFrame)
     {
         if (json.contains("start") && json["start"].is_number_integer())
         {
@@ -124,17 +125,11 @@ namespace parabolic::media
 
     inline void to_json(nlohmann::json& json, const TimeFrame& timeFrame)
     {
-        json = nlohmann::json{
-            {"start", timeFrame.m_start.count()},
-            {"end", timeFrame.m_end.count()}
-        };
+        json = nlohmann::json{ { "start", timeFrame.m_start.count() }, { "end", timeFrame.m_end.count() } };
     }
 
     inline void to_json(nlohmann::json& json, const VideoResolution& resolution)
     {
-        json = nlohmann::json{
-            {"width", resolution.m_width},
-            {"height", resolution.m_height}
-        };
+        json = nlohmann::json{ { "width", resolution.m_width }, { "height", resolution.m_height } };
     }
 }

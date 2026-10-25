@@ -23,6 +23,11 @@ set(SHORT_NAME "parabolic")
 set(DISPLAY_NAME "Parabolic")
 include(GNUInstallDirs)
 
+find_program(CLANG_TIDY_EXECUTABLE NAMES clang-tidy)
+if(CLANG_TIDY_EXECUTABLE)
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXECUTABLE}")
+endif()
+
 add_subdirectory("lib${SHORT_NAME}")
 if(WIN32)
     add_subdirectory("${PROJECT_NAME}.windows")
@@ -30,4 +35,21 @@ elseif(APPLE)
     add_subdirectory("${PROJECT_NAME}.mac")
 else()
     add_subdirectory("${PROJECT_NAME}.linux")
+endif()
+
+find_program(CLANG_FORMAT_EXECUTABLE NAMES clang-format)
+if(CLANG_FORMAT_EXECUTABLE)
+    file(GLOB_RECURSE FORMAT_SOURCES CONFIGURE_DEPENDS
+        "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.h"
+        "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.cpp"
+        "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.*/*.h"
+        "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.*/*.cpp")
+    add_custom_target(format ALL COMMAND "${CLANG_FORMAT_EXECUTABLE}" -i ${FORMAT_SOURCES} COMMENT "Running clang-format")
+    get_property(FORMAT_DIRECTORIES DIRECTORY "${CMAKE_SOURCE_DIR}" PROPERTY SUBDIRECTORIES)
+    foreach(FORMAT_DIRECTORY IN LISTS FORMAT_DIRECTORIES)
+        get_property(FORMAT_DEPENDENTS DIRECTORY "${FORMAT_DIRECTORY}" PROPERTY BUILDSYSTEM_TARGETS)
+        foreach(FORMAT_DEPENDENT IN LISTS FORMAT_DEPENDENTS)
+            add_dependencies("${FORMAT_DEPENDENT}" format)
+        endforeach()
+    endforeach()
 endif()

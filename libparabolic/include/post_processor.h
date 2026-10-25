@@ -106,11 +106,9 @@ namespace parabolic::post_processor
 
     inline void to_json(nlohmann::json& json, const Argument& argument)
     {
-        json = nlohmann::json{
-            {"name", argument.m_name},
-            {"step", static_cast<int>(argument.m_step)},
-            {"executable", static_cast<int>(argument.m_executable)},
-            {"args", argument.m_args}
-        };
+        json = nlohmann::json{ { "name", argument.m_name },
+                               { "step", static_cast<int>(argument.m_step) },
+                               { "executable", static_cast<int>(argument.m_executable) },
+                               { "args", argument.m_args } };
     }
 }

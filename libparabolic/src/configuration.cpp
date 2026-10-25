@@ -14,14 +14,18 @@ namespace parabolic::configuration
 {
     Configuration::Configuration(const std::string& app_name)
 #ifdef _WIN32
-        : m_path{ environment::is_portable() ? environment::executable_directory() / "config.json" : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) / app_name / "config.json" },
+        : m_path{ environment::is_portable() ? environment::executable_directory() / "config.json"
+                                             : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) /
+                                                       app_name / "config.json" },
 #else
-        : m_path{ environment::is_portable() ? environment::executable_directory() / "config.json" : std::filesystem::path(sago::getConfigHome()) / app_name / "config.json" },
+        : m_path{ environment::is_portable()
+                          ? environment::executable_directory() / "config.json"
+                          : std::filesystem::path(sago::getConfigHome()) / app_name / "config.json" },
 #endif
-        m_theme{ Theme::System },
-        m_automatically_check_for_updates{ true },
-        m_allow_preview_updates{ false },
-        m_translation_language{ Translator::follow_system_language() }
+          m_theme{ Theme::System },
+          m_automatically_check_for_updates{ true },
+          m_allow_preview_updates{ false },
+          m_translation_language{ Translator::follow_system_language() }
     {
         try
         {
@@ -51,7 +55,7 @@ namespace parabolic::configuration
         std::scoped_lock lock{ m_mutex };
         if (value == m_theme)
         {
-           return;
+            return;
         }
         m_theme = value;
         save();
@@ -104,7 +108,8 @@ namespace parabolic::configuration
     void Configuration::set_translation_language(const std::string& value)
     {
         std::scoped_lock lock{ m_mutex };
-        if (value == m_translation_language || (m_translation_language == Translator::follow_system_language() && value.empty()))
+        if (value == m_translation_language ||
+            (m_translation_language == Translator::follow_system_language() && value.empty()))
         {
             return;
         }

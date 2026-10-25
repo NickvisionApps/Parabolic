@@ -1,8 +1,8 @@
 #include "updater.h"
 #include <chrono>
+#include <cpr/cpr.h>
 #include <format>
 #include <fstream>
-#include <cpr/cpr.h>
 #include <nlohmann/json.hpp>
 #include <sago/platform_folders.h>
 #include "hash.h"
@@ -14,9 +14,8 @@ namespace parabolic::updater
 {
     Info::Info()
         : m_version{ 0, 0, 0 },
-        m_is_prerelease{ false }
+          m_is_prerelease{ false }
     {
-
     }
 
     const semver::version<>& Info::version() const
@@ -79,14 +78,14 @@ namespace parabolic::updater
         m_asset_digest = asset_digest;
     }
 
-    Updater::Updater(std::string repo_owner, std::string repo_name, semver::version<> current_version, const std::string& target_asset_name)
+    Updater::Updater(std::string repo_owner, std::string repo_name, semver::version<> current_version,
+                     const std::string& target_asset_name)
         : m_repo_owner{ std::move(repo_owner) },
-        m_repo_name{ std::move(repo_name) },
-        m_current_version{ std::move(current_version) },
-        m_target_asset_name{ string_manip::lower(target_asset_name) },
-        m_allow_preview_updates{ false }
+          m_repo_name{ std::move(repo_name) },
+          m_current_version{ std::move(current_version) },
+          m_target_asset_name{ string_manip::lower(target_asset_name) },
+          m_allow_preview_updates{ false }
     {
-
     }
 
     bool Updater::allow_preview_updates() const
@@ -102,10 +101,12 @@ namespace parabolic::updater
     std::optional<Info> Updater::check_for_updates() const
     {
         nlohmann::json releases = nlohmann::json::array();
-        std::filesystem::path cache_file{ std::filesystem::path{sago::getCacheDir()} / m_repo_owner / m_repo_name / "releases.json" };
+        std::filesystem::path cache_file{ std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
+                                          "releases.json" };
         if (std::filesystem::exists(cache_file))
         {
-            if (std::filesystem::last_write_time(cache_file) + std::chrono::hours(12) <= std::filesystem::file_time_type::clock::now())
+            if (std::filesystem::last_write_time(cache_file) + std::chrono::hours(12) <=
+                std::filesystem::file_time_type::clock::now())
             {
                 std::filesystem::remove(cache_file);
             }
@@ -124,11 +125,14 @@ namespace parabolic::updater
         }
         if (releases.empty())
         {
-            cpr::Response response{ cpr::Get(cpr::Url{ std::format("https://api.github.com/repos/{}/{}/releases?per_page=5", m_repo_owner, m_repo_name) },
-                cpr::UserAgent{ USER_AGENT },
-                cpr::Header{ { "Accept", "application/vnd.github+json" }, { "X-GitHub-Api-Version", "2022-11-28" } },
-                cpr::ConnectTimeout{ 15000 },
-                cpr::Timeout{ 30000 }) };
+            cpr::Response response{
+                cpr::Get(cpr::Url{ std::format("https://api.github.com/repos/{}/{}/releases?per_page=5", m_repo_owner,
+                                               m_repo_name) },
+                         cpr::UserAgent{ USER_AGENT },
+                         cpr::Header{ { "Accept", "application/vnd.github+json" },
+                                      { "X-GitHub-Api-Version", "2022-11-28" } },
+                         cpr::ConnectTimeout{ 15000 }, cpr::Timeout{ 30000 })
+            };
             if (response.error || response.status_code != 200)
             {
                 return std::nullopt;
@@ -145,7 +149,7 @@ namespace parabolic::updater
                 out << releases.dump();
             }
         }
-        for (const nlohmann::json& release : releases)
+        for (const nlohmann::json& release: releases)
         {
             if (!release.is_object() || release.value("draft", false))
             {
@@ -178,13 +182,15 @@ namespace parabolic::updater
             {
                 continue;
             }
-            for (const nlohmann::json& asset : release["assets"])
+            for (const nlohmann::json& asset: release["assets"])
             {
                 if (!asset.is_object() || string_manip::lower(asset.value("name", "")) != m_target_asset_name)
                 {
                     continue;
                 }
-                std::string digest{ string_manip::lower(asset.contains("digest") && asset["digest"].is_string() ? asset["digest"].get<std::string>() : "") };
+                std::string digest{ string_manip::lower(asset.contains("digest") && asset["digest"].is_string()
+                                                                ? asset["digest"].get<std::string>()
+                                                                : "") };
                 if (digest.empty())
                 {
                     continue;
@@ -192,7 +198,9 @@ namespace parabolic::updater
                 Info info;
                 info.set_version(version);
                 info.set_is_prerelease(prerelease);
-                info.set_changelog(release.contains("body") && release["body"].is_string() ? release["body"].get<std::string>() : "");
+                info.set_changelog(release.contains("body") && release["body"].is_string()
+                                           ? release["body"].get<std::string>()
+                                           : "");
                 info.set_asset_name(asset.value("name", ""));
                 info.set_asset_url(asset.value("browser_download_url", ""));
                 info.set_asset_digest(digest.starts_with("sha256:") ? digest.substr(7) : digest);
@@ -202,32 +210,35 @@ namespace parabolic::updater
         return std::nullopt;
     }
 
-    std::optional<std::filesystem::path> Updater::download_update(const Info& info, const DownloadProgressCallback& progress) const
+    std::optional<std::filesystem::path> Updater::download_update(const Info& info,
+                                                                  const DownloadProgressCallback& progress) const
     {
         if (info.asset_url().empty() || info.asset_digest().empty() || info.asset_name().empty())
         {
             return std::nullopt;
         }
-        std::filesystem::path destination{ std::filesystem::path{sago::getCacheDir()} / m_repo_owner / m_repo_name / std::filesystem::path(info.asset_name()).filename() };
+        std::filesystem::path destination{ std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
+                                           std::filesystem::path(info.asset_name()).filename() };
         std::filesystem::create_directories(destination.parent_path());
         std::ofstream out{ destination, std::ios::binary | std::ios::trunc };
         if (!out)
         {
             return std::nullopt;
         }
-        cpr::Response response{ cpr::Download(out,
-            cpr::Url{ info.asset_url() },
-            cpr::UserAgent{ USER_AGENT },
-            cpr::Header{ { "Accept", "application/octet-stream" } },
-            cpr::ConnectTimeout{ 15000 },
-            cpr::ProgressCallback{ [&progress](cpr::cpr_pf_arg_t total, cpr::cpr_pf_arg_t now, cpr::cpr_pf_arg_t, cpr::cpr_pf_arg_t, std::intptr_t) -> bool
+        cpr::Response response{
+            cpr::Download(out, cpr::Url{ info.asset_url() }, cpr::UserAgent{ USER_AGENT },
+                          cpr::Header{ { "Accept", "application/octet-stream" } }, cpr::ConnectTimeout{ 15000 },
+                          cpr::ProgressCallback{ [&progress](cpr::cpr_pf_arg_t total, cpr::cpr_pf_arg_t now,
+                                                             cpr::cpr_pf_arg_t, cpr::cpr_pf_arg_t,
+                                                             std::intptr_t) -> bool
+        {
+            if (progress)
             {
-                if (progress)
-                {
-                    progress(static_cast<std::uint64_t>(now), static_cast<std::uint64_t>(total));
-                }
-                return true;
-            } }) };
+                progress(static_cast<std::uint64_t>(now), static_cast<std::uint64_t>(total));
+            }
+            return true;
+        } })
+        };
         out.close();
         if (!response.error && response.status_code == 200)
         {

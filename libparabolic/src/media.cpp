@@ -11,7 +11,7 @@ namespace parabolic::media
 {
     TimeFrame::TimeFrame(std::chrono::seconds start, std::chrono::seconds end)
         : m_start{ start },
-        m_end{ end }
+          m_end{ end }
     {
     }
 
@@ -32,13 +32,13 @@ namespace parabolic::media
 
     VideoResolution::VideoResolution()
         : m_width{ std::numeric_limits<int>::max() },
-        m_height{ std::numeric_limits<int>::max() }
+          m_height{ std::numeric_limits<int>::max() }
     {
     }
 
     VideoResolution::VideoResolution(int width, int height)
         : m_width{ std::max(width, height) },
-        m_height{ std::min(width, height) }
+          m_height{ std::min(width, height) }
     {
     }
 

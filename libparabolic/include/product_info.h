@@ -1,7 +1,7 @@
 #pragma once
 
-#include <string>
 #include <semver.hpp>
+#include <string>
 
 namespace parabolic::product_info
 {
@@ -42,6 +42,5 @@ namespace parabolic::product_info
         std::string m_issues_url;
         std::string m_discussions_url;
     };
-
 
 }
