@@ -14,6 +14,6 @@ namespace parabolic::browser
         Firefox,
         Opera,
         Vivaldi,
-        Whale
+        Whale,
     };
 }
