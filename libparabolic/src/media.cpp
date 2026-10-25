@@ -1,11 +1,33 @@
 #include "media.h"
 
 #include <algorithm>
+#include <format>
 #include <limits>
 #include "string_manip.h"
 
 namespace parabolic
 {
+    TimeFrame::TimeFrame(std::chrono::seconds start, std::chrono::seconds end)
+        : m_start{ start },
+        m_end{ end }
+    {
+    }
+
+    std::chrono::seconds TimeFrame::start() const
+    {
+        return m_start;
+    }
+
+    std::chrono::seconds TimeFrame::end() const
+    {
+        return m_end;
+    }
+
+    std::string TimeFrame::str() const
+    {
+        return std::format("{:%H:%M:%S} - {:%H:%M:%S}", m_start, m_end);
+    }
+
     VideoResolution::VideoResolution()
         : m_width{ std::numeric_limits<int>::max() },
         m_height{ std::numeric_limits<int>::max() }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <chrono>
 #include <compare>
 #include <nlohmann/json.hpp>
 #include <optional>
@@ -44,6 +45,22 @@ namespace parabolic
         H264,
     };
 
+    class TimeFrame
+    {
+    public:
+        TimeFrame(std::chrono::seconds start, std::chrono::seconds end);
+        [[nodiscard]] std::chrono::seconds start() const;
+        [[nodiscard]] std::chrono::seconds end() const;
+        [[nodiscard]] std::string str() const;
+        std::strong_ordering operator<=>(const TimeFrame& rhs) const = default;
+        friend void from_json(const nlohmann::json& json, TimeFrame& timeFrame);
+        friend void to_json(nlohmann::json& json, const TimeFrame& timeFrame);
+
+    private:
+        std::chrono::seconds m_start;
+        std::chrono::seconds m_end;
+    };
+
     class VideoResolution
     {
     public:
@@ -65,6 +82,26 @@ namespace parabolic
         int m_height;
     };
 
+    inline void from_json(const nlohmann::json &json, TimeFrame &timeFrame)
+    {
+        if (json.contains("start") && json["start"].is_number_integer())
+        {
+            timeFrame.m_start = std::chrono::seconds(json.at("start").get<int>());
+        }
+        else if (json.contains("Start") && json["Start"].is_number_integer())
+        {
+            timeFrame.m_start = std::chrono::seconds(json.at("Start").get<int>());
+        }
+        if (json.contains("end") && json["end"].is_number_integer())
+        {
+            timeFrame.m_end = std::chrono::seconds(json.at("end").get<int>());
+        }
+        else if (json.contains("End") && json["End"].is_number_integer())
+        {
+            timeFrame.m_end = std::chrono::seconds(json.at("End").get<int>());
+        }
+    }
+
     inline void from_json(const nlohmann::json& json, VideoResolution& resolution)
     {
         if (json.contains("width") && json["width"].is_number_integer())
@@ -83,6 +120,14 @@ namespace parabolic
         {
             resolution.m_height = json.at("Height").get<int>();
         }
+    }
+
+    inline void to_json(nlohmann::json& json, const TimeFrame& timeFrame)
+    {
+        json = nlohmann::json{
+            {"start", timeFrame.m_start.count()},
+            {"end", timeFrame.m_end.count()}
+        };
     }
 
     inline void to_json(nlohmann::json& json, const VideoResolution& resolution)
