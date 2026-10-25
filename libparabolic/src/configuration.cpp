@@ -20,14 +20,14 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
-#include "browser.h"
 #include "environment.h"
 #include "file.h"
 #include "history.h"
 #include "media.h"
-#include "post_processor.h"
+#include "postprocessing.h"
 #include "subtitle.h"
-#include "translator.h"
+#include "translation.h"
+#include "ytdlp.h"
 #ifdef _WIN32
 #include "string_manip.h"
 #endif
@@ -282,12 +282,12 @@ namespace parabolic::configuration
         m_embed_thumbnails = value;
     }
 
-    const std::vector<post_processor::Argument>& PostprocessingOptions::postprocessing_arguments() const
+    const std::vector<postprocessing::Argument>& PostprocessingOptions::postprocessing_arguments() const
     {
         return m_postprocessing_arguments;
     }
 
-    void PostprocessingOptions::set_postprocessing_arguments(const std::vector<post_processor::Argument>& value)
+    void PostprocessingOptions::set_postprocessing_arguments(const std::vector<postprocessing::Argument>& value)
     {
         m_postprocessing_arguments = value;
     }
@@ -606,12 +606,12 @@ namespace parabolic::configuration
         m_y = value;
     }
 
-    browser::Browser YtdlpOptions::cookies_browser() const
+    ytdlp::Browser YtdlpOptions::cookies_browser() const
     {
         return m_cookies_browser;
     }
 
-    void YtdlpOptions::set_cookies_browser(browser::Browser value)
+    void YtdlpOptions::set_cookies_browser(ytdlp::Browser value)
     {
         m_cookies_browser = value;
     }
@@ -697,7 +697,7 @@ namespace parabolic::configuration
                                          : std::filesystem::path(sago::getConfigHome()) / app_name / "config.json",
           },
 #endif
-          m_translation_language{ translator::Translator::follow_system_language() }
+          m_translation_language{ translation::Translator::follow_system_language() }
     {
 #ifdef _WIN32
         m_limit_characters = true;
@@ -915,7 +915,7 @@ namespace parabolic::configuration
         std::scoped_lock lock{ m_mutex };
         if (m_translation_language.empty())
         {
-            return translator::Translator::follow_system_language();
+            return translation::Translator::follow_system_language();
         }
         return m_translation_language;
     }
@@ -924,13 +924,13 @@ namespace parabolic::configuration
     {
         std::scoped_lock lock{ m_mutex };
         if (value == m_translation_language ||
-            (m_translation_language == translator::Translator::follow_system_language() && value.empty()))
+            (m_translation_language == translation::Translator::follow_system_language() && value.empty()))
         {
             return;
         }
         if (value.empty())
         {
-            m_translation_language = translator::Translator::follow_system_language();
+            m_translation_language = translation::Translator::follow_system_language();
         }
         else
         {
@@ -1047,7 +1047,7 @@ namespace parabolic::configuration
             options.m_postprocessing_arguments.clear();
             for (const auto& item: json["postprocessingArguments"])
             {
-                post_processor::Argument argument{ "", post_processor::Step::None, post_processor::Executable::None,
+                postprocessing::Argument argument{ "", postprocessing::Step::None, postprocessing::Executable::None,
                                                    "" };
                 from_json(item, argument);
                 options.m_postprocessing_arguments.push_back(argument);
@@ -1129,7 +1129,7 @@ namespace parabolic::configuration
 
     void from_json(const nlohmann::json& json, YtdlpOptions& options)
     {
-        read_value(json, "cookiesBrowser", options.m_cookies_browser, browser::Browser::None, browser::Browser::Whale);
+        read_value(json, "cookiesBrowser", options.m_cookies_browser, ytdlp::Browser::None, ytdlp::Browser::Whale);
         read_value(json, "cookiesPath", options.m_cookies_path);
         read_value(json, "proxyUrl", options.m_proxy_url);
         if (json.contains("speedLimit"))

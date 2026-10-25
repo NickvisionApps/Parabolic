@@ -1,4 +1,4 @@
-#include "translator.h"
+#include "translation.h"
 #include <algorithm>
 #include <clocale>
 #include <filesystem>
@@ -28,7 +28,7 @@ namespace
     }
 }
 
-namespace parabolic::translator
+namespace parabolic::translation
 {
     Translator::Translator(std::string_view app_short_name, std::filesystem::path locale_dir)
         : m_domain_name{ string_manip::lower(app_short_name) },

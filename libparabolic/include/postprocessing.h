@@ -5,7 +5,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 
-namespace parabolic::post_processor
+namespace parabolic::postprocessing
 {
     enum class Step : std::uint8_t
     {

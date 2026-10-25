@@ -1,4 +1,4 @@
-#include "updater.h"
+#include "updates.h"
 #include <chrono>
 #include <cpr/cpr.h>
 #include <cstdint>
@@ -18,7 +18,7 @@
 
 #define USER_AGENT "NickvisionParabolic-Updater"
 
-namespace parabolic::updater
+namespace parabolic::updates
 {
     const semver::version<>& Info::version() const
     {

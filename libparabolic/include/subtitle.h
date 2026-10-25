@@ -3,7 +3,7 @@
 #include <compare>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
-#include "translator.h"
+#include "translation.h"
 
 namespace parabolic::subtitle
 {
@@ -25,7 +25,7 @@ namespace parabolic::subtitle
 
         [[nodiscard]] bool is_auto_generated() const;
 
-        [[nodiscard]] std::string str(const translator::Translator& translator) const;
+        [[nodiscard]] std::string str(const translation::Translator& translator) const;
 
         std::strong_ordering operator<=>(const Subtitle& rhs) const;
 

@@ -6,7 +6,7 @@
 #include <semver.hpp>
 #include <string>
 
-namespace parabolic::updater
+namespace parabolic::updates
 {
     using DownloadProgressCallback = std::function<void(std::uint64_t, std::uint64_t)>;
 

@@ -1,4 +1,4 @@
-#include "post_processor.h"
+#include "postprocessing.h"
 #include <compare>
 #include <format>
 #include <nlohmann/json.hpp>
@@ -6,7 +6,7 @@
 #include <string>
 #include <utility>
 
-namespace parabolic::post_processor
+namespace parabolic::postprocessing
 {
     Argument::Argument(std::string name, Step step, Executable executable, std::string args)
         : m_name{ std::move(name) },

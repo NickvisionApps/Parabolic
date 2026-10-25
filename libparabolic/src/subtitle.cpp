@@ -4,7 +4,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 #include <utility>
-#include "translator.h"
+#include "translation.h"
 
 namespace parabolic::subtitle
 {
@@ -24,7 +24,7 @@ namespace parabolic::subtitle
         return m_is_auto_generated;
     }
 
-    std::string Subtitle::str(const translator::Translator& translator) const
+    std::string Subtitle::str(const translation::Translator& translator) const
     {
         if (m_is_auto_generated)
         {

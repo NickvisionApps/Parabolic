@@ -8,7 +8,7 @@
 #include <vector>
 #include "string_manip.h"
 
-namespace parabolic::translator
+namespace parabolic::translation
 {
     class Translator
     {

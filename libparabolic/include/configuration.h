@@ -10,12 +10,12 @@
 #include <string>
 #include <string_view>
 #include <vector>
-#include "browser.h"
 #include "file.h"
 #include "history.h"
 #include "media.h"
-#include "post_processor.h"
+#include "postprocessing.h"
 #include "subtitle.h"
+#include "ytdlp.h"
 
 namespace parabolic::configuration
 {
@@ -103,8 +103,8 @@ namespace parabolic::configuration
         void set_embed_subtitles(bool value);
         [[nodiscard]] bool embed_thumbnails() const;
         void set_embed_thumbnails(bool value);
-        [[nodiscard]] const std::vector<post_processor::Argument>& postprocessing_arguments() const;
-        void set_postprocessing_arguments(const std::vector<post_processor::Argument>& value);
+        [[nodiscard]] const std::vector<postprocessing::Argument>& postprocessing_arguments() const;
+        void set_postprocessing_arguments(const std::vector<postprocessing::Argument>& value);
         [[nodiscard]] int postprocessing_threads() const;
         void set_postprocessing_threads(int value);
         [[nodiscard]] bool remove_source_data() const;
@@ -121,7 +121,7 @@ namespace parabolic::configuration
         bool m_embed_metadata{ true };
         bool m_embed_subtitles{ true };
         bool m_embed_thumbnails{ true };
-        std::vector<post_processor::Argument> m_postprocessing_arguments;
+        std::vector<postprocessing::Argument> m_postprocessing_arguments;
         int m_postprocessing_threads;
         bool m_remove_source_data{ false };
         bool m_translate_metadata_and_chapters{ true };
@@ -220,8 +220,8 @@ namespace parabolic::configuration
     class YtdlpOptions
     {
     public:
-        [[nodiscard]] browser::Browser cookies_browser() const;
-        void set_cookies_browser(browser::Browser value);
+        [[nodiscard]] ytdlp::Browser cookies_browser() const;
+        void set_cookies_browser(ytdlp::Browser value);
         [[nodiscard]] const std::string& cookies_path() const;
         void set_cookies_path(const std::string& value);
         [[nodiscard]] const std::string& proxy_url() const;
@@ -241,7 +241,7 @@ namespace parabolic::configuration
         friend void to_json(nlohmann::json& json, const YtdlpOptions& options);
 
     private:
-        browser::Browser m_cookies_browser{ browser::Browser::None };
+        ytdlp::Browser m_cookies_browser{ ytdlp::Browser::None };
         std::string m_cookies_path;
         std::string m_proxy_url;
         std::optional<int> m_speed_limit;

@@ -13,7 +13,7 @@
 #include <utility>
 #include <vector>
 #include "string_manip.h"
-#include "translator.h"
+#include "translation.h"
 
 namespace
 {
@@ -147,7 +147,7 @@ namespace parabolic::media
         return m_frame_rate;
     }
 
-    std::string Format::str(const translator::Translator& translator) const
+    std::string Format::str(const translation::Translator& translator) const
     {
         std::string result;
         if (m_type == Type::Video)
@@ -454,7 +454,7 @@ namespace parabolic::media
         return m_height;
     }
 
-    std::string VideoResolution::str(const translator::Translator& translator) const
+    std::string VideoResolution::str(const translation::Translator& translator) const
     {
         if (m_width == std::numeric_limits<int>::max() && m_height == std::numeric_limits<int>::max())
         {

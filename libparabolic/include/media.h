@@ -10,7 +10,7 @@
 #include <string>
 #include <string_view>
 #include "string_manip.h"
-#include "translator.h"
+#include "translation.h"
 
 namespace parabolic::media
 {
@@ -88,7 +88,7 @@ namespace parabolic::media
         [[nodiscard]] static std::optional<VideoResolution> parse(std::string_view value);
         [[nodiscard]] int width() const;
         [[nodiscard]] int height() const;
-        [[nodiscard]] std::string str(const translator::Translator& translator) const;
+        [[nodiscard]] std::string str(const translation::Translator& translator) const;
         std::strong_ordering operator<=>(const VideoResolution& rhs) const;
         bool operator==(const VideoResolution& rhs) const;
         friend void from_json(const nlohmann::json& json, VideoResolution& resolution);
@@ -121,7 +121,7 @@ namespace parabolic::media
         [[nodiscard]] std::optional<AudioCodec> audio_codec() const;
         [[nodiscard]] std::optional<VideoResolution> video_resolution() const;
         [[nodiscard]] std::optional<FrameRate> frame_rate() const;
-        [[nodiscard]] std::string str(const translator::Translator& translator) const;
+        [[nodiscard]] std::string str(const translation::Translator& translator) const;
         std::strong_ordering operator<=>(const Format& rhs) const;
         bool operator==(const Format& rhs) const;
         friend void from_json(const nlohmann::json& json, Format& format);
