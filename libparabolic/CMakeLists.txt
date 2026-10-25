@@ -9,6 +9,7 @@ add_library("lib${SHORT_NAME}"
     "include/file.h"
     "include/hash.h"
     "include/history.h"
+    "include/m3u.h"
     "include/media.h"
     "include/postprocessing.h"
     "include/string_manip.h"
@@ -23,6 +24,7 @@ add_library("lib${SHORT_NAME}"
     "src/file.cpp"
     "src/hash.cpp"
     "src/history.cpp"
+    "src/m3u.cpp"
     "src/media.cpp"
     "src/postprocessing.cpp"
     "src/string_manip.cpp"
@@ -45,7 +47,8 @@ find_package(nlohmann_json REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(platform_folders REQUIRED)
 find_package(semver CONFIG REQUIRED)
-target_link_libraries("lib${SHORT_NAME}" PUBLIC cpr::cpr Intl::Intl nlohmann_json::nlohmann_json OpenSSL::SSL OpenSSL::Crypto sago::platform_folders semver::semver)
+find_package(SQLiteCpp REQUIRED)
+target_link_libraries("lib${SHORT_NAME}" PUBLIC cpr::cpr Intl::Intl nlohmann_json::nlohmann_json OpenSSL::SSL OpenSSL::Crypto sago::platform_folders semver::semver SQLiteCpp)
 if (APPLE)
     target_link_libraries("lib${SHORT_NAME}" PUBLIC "-framework CoreFoundation")
 endif ()

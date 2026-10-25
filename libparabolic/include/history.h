@@ -1,8 +1,12 @@
 #pragma once
 
+#include <SQLiteCpp/SQLiteCpp.h>
 #include <chrono>
 #include <cstdint>
+#include <filesystem>
 #include <string>
+#include <string_view>
+#include <vector>
 
 namespace parabolic::history
 {
@@ -37,5 +41,25 @@ namespace parabolic::history
         std::string m_title;
         std::string m_path;
         std::chrono::system_clock::time_point m_downloaded_on{ std::chrono::system_clock::now() };
+    };
+
+    class Manager
+    {
+    public:
+        Manager(std::string_view app_name);
+        [[nodiscard]] Length length() const;
+        void set_length(Length length);
+        [[nodiscard]] bool sort_newest() const;
+        void set_sort_newest(bool sort_newest);
+        [[nodiscard]] bool add_or_update(const Entry& entry);
+        [[nodiscard]] bool add_or_update(const std::vector<Entry>& entries);
+        [[nodiscard]] bool clear();
+        [[nodiscard]] std::vector<Entry> entries();
+        [[nodiscard]] bool remove(const std::string& url);
+
+    private:
+        SQLite::Database m_database;
+        Length m_length{ Length::OneWeek };
+        bool m_sort_newest{ true };
     };
 }
