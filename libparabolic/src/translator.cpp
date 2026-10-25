@@ -32,18 +32,22 @@ namespace parabolic::translator
 {
     Translator::Translator(std::string_view app_short_name, std::filesystem::path locale_dir)
         : m_domain_name{ string_manip::lower(app_short_name) },
-          m_locale_dir{ !locale_dir.empty() ? std::move(locale_dir) : environment::executable_directory() },
+          m_locale_dir{ !locale_dir.empty() ? std::move(locale_dir) : environment::executable_directory() / "locale" },
           m_available_languages{ "en_US" },
           m_language{ "en_US" }
     {
-        for (const std::filesystem::directory_entry& entry: std::filesystem::directory_iterator(m_locale_dir))
+        if (std::filesystem::is_directory(m_locale_dir))
         {
-            if (entry.is_directory() && std::filesystem::exists(entry.path() / "LC_MESSAGES" / (m_domain_name + ".mo")))
+            for (const std::filesystem::directory_entry& entry: std::filesystem::directory_iterator(m_locale_dir))
             {
-                std::string name{ entry.path().filename().string() };
-                if (std::ranges::find(m_available_languages, name) == m_available_languages.end())
+                if (entry.is_directory() &&
+                    std::filesystem::exists(entry.path() / "LC_MESSAGES" / (m_domain_name + ".mo")))
                 {
-                    m_available_languages.push_back(std::move(name));
+                    std::string name{ entry.path().filename().string() };
+                    if (std::ranges::find(m_available_languages, name) == m_available_languages.end())
+                    {
+                        m_available_languages.push_back(std::move(name));
+                    }
                 }
             }
         }

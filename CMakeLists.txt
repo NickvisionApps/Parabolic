@@ -39,6 +39,9 @@ else()
     add_subdirectory("${PROJECT_NAME}.linux")
 endif()
 
+include(Translations)
+generate_translations(SHORT_NAME "${SHORT_NAME}")
+
 find_program(CLANG_FORMAT_EXECUTABLE NAMES clang-format)
 if(CLANG_FORMAT_EXECUTABLE)
     file(GLOB_RECURSE FORMAT_SOURCES CONFIGURE_DEPENDS
