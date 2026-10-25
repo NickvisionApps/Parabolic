@@ -3,11 +3,13 @@
 #include <chrono>
 #include <compare>
 #include <cstdint>
+#include <format>
 #include <limits>
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <string>
 #include <string_view>
+#include "string_manip.h"
 #include "translator.h"
 
 namespace parabolic::media
@@ -100,6 +102,7 @@ namespace parabolic::media
     class Format
     {
     public:
+        Format() = default;
         Format(std::string id, std::string protocol, Type type);
         [[nodiscard]] static Format& best_video();
         [[nodiscard]] static Format& best_audio();
@@ -118,6 +121,9 @@ namespace parabolic::media
         [[nodiscard]] std::optional<AudioCodec> audio_codec() const;
         [[nodiscard]] std::optional<VideoResolution> video_resolution() const;
         [[nodiscard]] std::optional<FrameRate> frame_rate() const;
+        [[nodiscard]] std::string str(const translator::Translator& translator) const;
+        std::strong_ordering operator<=>(const Format& rhs) const;
+        bool operator==(const Format& rhs) const;
         friend void from_json(const nlohmann::json& json, Format& format);
         friend void to_json(nlohmann::json& json, const Format& format);
 
@@ -126,7 +132,7 @@ namespace parabolic::media
         std::string m_protocol;
         std::string m_extension;
         unsigned long m_bytes{ 0 };
-        Type m_type;
+        Type m_type{ Type::Unknown };
         std::optional<double> m_bitrate;
         std::optional<AudioLanguage> m_audio_language;
         std::optional<VideoCodec> m_video_codec;
@@ -137,6 +143,114 @@ namespace parabolic::media
 
     inline void from_json(const nlohmann::json& json, Format& format)
     {
+        if (json.contains("format_id") && json["format_id"].is_string())
+        {
+            format.m_id = json.at("format_id").get<std::string>();
+        }
+        if (json.contains("protocol") && json["protocol"].is_string())
+        {
+            format.m_protocol = json.at("protocol").get<std::string>();
+        }
+        if (json.contains("ext") && json["ext"].is_string())
+        {
+            format.m_extension = json.at("ext").get<std::string>();
+        }
+        if (json.contains("filesize") && json["filesize"].is_number_unsigned())
+        {
+            format.m_bytes = json.at("filesize").get<unsigned long>();
+        }
+        if (json.contains("tbr") && json["tbr"].is_number())
+        {
+            format.m_bitrate = json.at("tbr").get<double>();
+        }
+        std::string note;
+        std::string resolution;
+        if (json.contains("format_note") && json["format_note"].is_string())
+        {
+            note = json.at("format_note").get<std::string>();
+        }
+        if (json.contains("resolution") && json["resolution"].is_string())
+        {
+            resolution = json.at("resolution").get<std::string>();
+        }
+        if (resolution == "audio only")
+        {
+            format.m_type = Type::Audio;
+        }
+        else
+        {
+            format.m_type = note == "storyboard" ? Type::Image : Type::Video;
+            format.m_video_resolution = VideoResolution::parse(resolution);
+        }
+        if (json.contains("language") && json["language"].is_string() && !json["language"].get<std::string>().empty())
+        {
+            format.m_audio_language = { json.at("language").get<std::string>(),
+                                        string_manip::lower(format.m_id).contains("audiodesc") };
+        }
+        if (json.contains("vcodec") && json["vcodec"].is_string())
+        {
+            std::string vcodec{ string_manip::lower(json.at("vcodec").get<std::string>()) };
+            if (vcodec.contains("vp09") || vcodec.contains("vp9"))
+            {
+                format.m_video_codec = VideoCodec::Vp9;
+            }
+            else if (vcodec.contains("av01"))
+            {
+                format.m_video_codec = VideoCodec::Av01;
+            }
+            else if (vcodec.contains("avc1") || vcodec.contains("h264"))
+            {
+                format.m_video_codec = VideoCodec::H264;
+            }
+            else if (vcodec.contains("hevc") || vcodec.contains("h265"))
+            {
+                format.m_video_codec = VideoCodec::H265;
+            }
+        }
+        if (json.contains("acodec") && json["acodec"].is_string())
+        {
+            std::string acodec{ string_manip::lower(json.at("acodec").get<std::string>()) };
+            if (acodec.contains("flac") || acodec.contains("alac"))
+            {
+                format.m_audio_codec = AudioCodec::Flac;
+            }
+            else if (acodec.contains("wav") || acodec.contains("aiff"))
+            {
+                format.m_audio_codec = AudioCodec::Wav;
+            }
+            else if (acodec.contains("opus"))
+            {
+                format.m_audio_codec = AudioCodec::Opus;
+            }
+            else if (acodec.contains("aac"))
+            {
+                format.m_audio_codec = AudioCodec::Aac;
+            }
+            else if (acodec.contains("mp4a"))
+            {
+                format.m_audio_codec = AudioCodec::Mp4a;
+            }
+            else if (acodec.contains("mp3"))
+            {
+                format.m_audio_codec = AudioCodec::Mp3;
+            }
+        }
+        if (json.contains("fps") && json["fps"].is_number())
+        {
+            double fps{ json.at("fps").get<double>() };
+            if (fps == 24.0)
+            {
+                format.m_frame_rate = FrameRate::Fps24;
+            }
+            else if (fps == 30.0)
+            {
+                format.m_frame_rate = FrameRate::Fps30;
+            }
+            else if (fps == 60.0)
+            {
+                format.m_frame_rate = FrameRate::Fps60;
+            }
+        }
     }
 
     inline void from_json(const nlohmann::json& json, TimeFrame& time_frame)
@@ -181,6 +295,96 @@ namespace parabolic::media
 
     inline void to_json(nlohmann::json& json, const Format& format)
     {
+        json = nlohmann::json{
+            { "format_id", format.m_id },
+            { "protocol", format.m_protocol },
+            { "ext", format.m_extension },
+            { "filesize", format.m_bytes },
+            { "format_note", format.m_type == Type::Image ? "storyboard" : "" },
+            { "resolution", "" },
+            { "vcodec", "none" },
+            { "acodec", "none" },
+        };
+        if (format.m_type == Type::Audio)
+        {
+            json["resolution"] = "audio only";
+        }
+        else if (format.m_video_resolution)
+        {
+            json["resolution"] =
+                    std::format("{}x{}", format.m_video_resolution->width(), format.m_video_resolution->height());
+        }
+        if (format.m_bitrate)
+        {
+            json["tbr"] = *format.m_bitrate;
+        }
+        if (format.m_audio_language)
+        {
+            json["language"] = format.m_audio_language->language();
+        }
+        if (format.m_video_codec)
+        {
+            switch (*format.m_video_codec)
+            {
+            case VideoCodec::Vp9:
+                json["vcodec"] = "vp09";
+                break;
+            case VideoCodec::Av01:
+                json["vcodec"] = "av01";
+                break;
+            case VideoCodec::H264:
+                json["vcodec"] = "avc1";
+                break;
+            case VideoCodec::H265:
+                json["vcodec"] = "hevc";
+                break;
+            default:
+                break;
+            }
+        }
+        if (format.m_audio_codec)
+        {
+            switch (*format.m_audio_codec)
+            {
+            case AudioCodec::Flac:
+                json["acodec"] = "flac";
+                break;
+            case AudioCodec::Wav:
+                json["acodec"] = "wav";
+                break;
+            case AudioCodec::Opus:
+                json["acodec"] = "opus";
+                break;
+            case AudioCodec::Aac:
+                json["acodec"] = "aac";
+                break;
+            case AudioCodec::Mp4a:
+                json["acodec"] = "mp4a";
+                break;
+            case AudioCodec::Mp3:
+                json["acodec"] = "mp3";
+                break;
+            default:
+                break;
+            }
+        }
+        if (format.m_frame_rate)
+        {
+            switch (*format.m_frame_rate)
+            {
+            case FrameRate::Fps24:
+                json["fps"] = 24.0;
+                break;
+            case FrameRate::Fps30:
+                json["fps"] = 30.0;
+                break;
+            case FrameRate::Fps60:
+                json["fps"] = 60.0;
+                break;
+            default:
+                break;
+            }
+        }
     }
 
     inline void to_json(nlohmann::json& json, const TimeFrame& time_frame)
