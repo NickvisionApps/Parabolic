@@ -12,7 +12,7 @@ using namespace parabolic::translator;
 
 namespace parabolic::configuration
 {
-    Configuration::Configuration(const std::string& app_name)
+    Configuration::Configuration(std::string_view app_name)
 #ifdef _WIN32
         : m_path{ environment::is_portable() ? environment::executable_directory() / "config.json"
                                              : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) /

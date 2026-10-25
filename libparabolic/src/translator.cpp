@@ -24,7 +24,7 @@ namespace
 
 namespace parabolic::translator
 {
-    Translator::Translator(const std::string& app_short_name, std::filesystem::path locale_dir)
+    Translator::Translator(std::string_view app_short_name, std::filesystem::path locale_dir)
         : m_domain_name{ string_manip::lower(app_short_name) },
           m_locale_dir{ !locale_dir.empty() ? std::move(locale_dir) : environment::executable_directory() },
           m_available_languages{ "en_US" },

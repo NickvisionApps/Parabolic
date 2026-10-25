@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 #include <type_traits>
 #include <vector>
 
@@ -10,16 +11,16 @@ namespace parabolic::string_manip
     concept ImplicitlyConstructableString =
             std::is_constructible_v<T, std::string> && std::is_convertible_v<std::string, T>;
 
-    [[nodiscard]] std::string lower(const std::string& str);
+    [[nodiscard]] std::string lower(std::string_view str);
 
-    [[nodiscard]] std::string trim(const std::string& str);
+    [[nodiscard]] std::string trim(std::string_view str);
 
     [[nodiscard]] std::string str(const std::wstring& wstr);
 
     [[nodiscard]] std::wstring wstr(const std::string& str);
 
     template<ImplicitlyConstructableString T = std::string>
-    [[nodiscard]] std::vector<T> split(const std::string& s, const std::string& delimiter, bool include_empty = true)
+    [[nodiscard]] std::vector<T> split(std::string_view s, std::string_view delimiter, bool include_empty = true)
     {
         std::vector<T> splits;
         size_t last{ 0 };
@@ -42,8 +43,8 @@ namespace parabolic::string_manip
     }
 
     template<ImplicitlyConstructableString T = std::string>
-    [[nodiscard]] std::vector<T> split(const std::string& s, char delimiter, bool include_empty = true)
+    [[nodiscard]] std::vector<T> split(std::string_view s, char delimiter, bool include_empty = true)
     {
-        return split<T>(s, std::string(1, delimiter), include_empty);
+        return split<T>(s, std::string_view{ &delimiter, 1 }, include_empty);
     }
 }

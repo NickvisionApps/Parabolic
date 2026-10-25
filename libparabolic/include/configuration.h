@@ -4,6 +4,7 @@
 #include <mutex>
 #include <nlohmann/json.hpp>
 #include <string>
+#include <string_view>
 #include "media.h"
 #include "subtitle.h"
 
@@ -19,7 +20,7 @@ namespace parabolic::configuration
     class Configuration
     {
     public:
-        Configuration(const std::string& app_name);
+        Configuration(std::string_view app_name);
         [[nodiscard]] Theme theme() const;
         void set_theme(Theme value);
         [[nodiscard]] bool automatically_check_for_updates() const;

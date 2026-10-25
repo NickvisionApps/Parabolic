@@ -4,6 +4,7 @@
 #include <format>
 #include <mutex>
 #include <string>
+#include <string_view>
 #include <vector>
 #include "string_manip.h"
 
@@ -12,7 +13,7 @@ namespace parabolic::translator
     class Translator
     {
     public:
-        Translator(const std::string& app_short_name, std::filesystem::path locale_dir = {});
+        Translator(std::string_view app_short_name, std::filesystem::path locale_dir = {});
         [[nodiscard]] static const std::string& follow_system_language();
         [[nodiscard]] const std::vector<std::string>& available_languages() const;
         [[nodiscard]] std::string language() const;

@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 #include <optional>
 #include <string>
+#include <string_view>
 #include "translator.h"
 
 namespace parabolic::media
@@ -70,7 +71,7 @@ namespace parabolic::media
         VideoResolution(int width, int height);
         static VideoResolution& best();
         static VideoResolution& worst();
-        [[nodiscard]] static std::optional<VideoResolution> parse(const std::string& value,
+        [[nodiscard]] static std::optional<VideoResolution> parse(std::string_view value,
                                                                   const translator::Translator& translator);
         [[nodiscard]] int width() const;
         [[nodiscard]] int height() const;

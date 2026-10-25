@@ -10,7 +10,7 @@
 
 namespace parabolic::string_manip
 {
-    std::string lower(const std::string& str)
+    std::string lower(std::string_view str)
     {
         std::string result{ str };
         std::ranges::transform(result, result.begin(), [](unsigned char c)
@@ -20,11 +20,11 @@ namespace parabolic::string_manip
         return result;
     }
 
-    std::string trim(const std::string& str)
+    std::string trim(std::string_view str)
     {
         if (str.empty())
         {
-            return str;
+            return {};
         }
         std::string result{ str };
         result.erase(std::ranges::find_if(std::views::reverse(result),

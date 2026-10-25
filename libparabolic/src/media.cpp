@@ -48,7 +48,7 @@ namespace parabolic::media
         return worst;
     }
 
-    std::optional<VideoResolution> VideoResolution::parse(const std::string& value, const Translator& translator)
+    std::optional<VideoResolution> VideoResolution::parse(std::string_view value, const Translator& translator)
     {
         if (value == "Best" || value == translator._("Best"))
         {
