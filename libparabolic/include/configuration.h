@@ -149,8 +149,8 @@ namespace parabolic::configuration
         void set_full_file_type(file::Type value);
         [[nodiscard]] bool number_titles() const;
         void set_number_titles(bool value);
-        [[nodiscard]] const std::string& post_processor_argument_name() const;
-        void set_post_processor_argument_name(const std::string& value);
+        [[nodiscard]] const std::vector<std::string>& postprocessing_argument_names() const;
+        void set_postprocessing_argument_names(const std::vector<std::string>& value);
         [[nodiscard]] bool reverse_download_order() const;
         void set_reverse_download_order(bool value);
         [[nodiscard]] std::filesystem::path save_folder() const;
@@ -179,7 +179,7 @@ namespace parabolic::configuration
         bool m_export_m3u{ false };
         file::Type m_full_file_type{ file::Type::Mp4 };
         bool m_number_titles{ false };
-        std::string m_post_processor_argument_name;
+        std::vector<std::string> m_postprocessing_argument_names;
         bool m_reverse_download_order{ false };
         std::filesystem::path m_save_folder;
         bool m_split_chapters{ false };

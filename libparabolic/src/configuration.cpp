@@ -41,7 +41,7 @@ namespace
         pascal[0] = static_cast<char>(std::toupper(static_cast<unsigned char>(pascal[0])));
         for (const std::string& name: { std::string{ key }, pascal })
         {
-            const auto it = json.find(name);
+            const nlohmann::json::const_iterator it{ json.find(name) };
             if (it == json.end())
             {
                 continue;
@@ -99,7 +99,7 @@ namespace
     {
         if constexpr (std::is_enum_v<T>)
         {
-            int raw = static_cast<int>(member);
+            int raw{ static_cast<int>(member) };
             read_value(json, key, raw);
             if (raw >= static_cast<int>(lo) && raw <= static_cast<int>(hi))
             {
@@ -108,7 +108,7 @@ namespace
         }
         else
         {
-            T value = member;
+            T value{ member };
             read_value(json, key, value);
             member = std::clamp(value, lo, hi);
         }
@@ -451,14 +451,14 @@ namespace parabolic::configuration
         m_number_titles = value;
     }
 
-    const std::string& PreviousDownloadOptions::post_processor_argument_name() const
+    const std::vector<std::string>& PreviousDownloadOptions::postprocessing_argument_names() const
     {
-        return m_post_processor_argument_name;
+        return m_postprocessing_argument_names;
     }
 
-    void PreviousDownloadOptions::set_post_processor_argument_name(const std::string& value)
+    void PreviousDownloadOptions::set_postprocessing_argument_names(const std::vector<std::string>& value)
     {
-        m_post_processor_argument_name = value;
+        m_postprocessing_argument_names = value;
     }
 
     bool PreviousDownloadOptions::reverse_download_order() const
@@ -1015,7 +1015,7 @@ namespace parabolic::configuration
 
     void from_json(const nlohmann::json& json, HistoryOptions& options)
     {
-        int length = static_cast<int>(options.m_length);
+        int length{ static_cast<int>(options.m_length) };
         read_value(json, "historyLength", length);
         switch (length)
         {
@@ -1045,7 +1045,7 @@ namespace parabolic::configuration
         if (json.contains("postprocessingArguments") && json["postprocessingArguments"].is_array())
         {
             options.m_postprocessing_arguments.clear();
-            for (const auto& item: json["postprocessingArguments"])
+            for (const nlohmann::json& item: json["postprocessingArguments"])
             {
                 postprocessing::Argument argument{ "", postprocessing::Step::None, postprocessing::Executable::None,
                                                    "" };
@@ -1064,14 +1064,15 @@ namespace parabolic::configuration
         read_value(json, "audioBitrate", options.m_audio_bitrate);
         if (json.contains("audioFormatIds") && json["audioFormatIds"].is_object())
         {
-            for (const auto& item: json["audioFormatIds"].items())
+            for (const std::pair<const std::string, nlohmann::json>& pair:
+                 json["audioFormatIds"].get<std::map<std::string, nlohmann::json>>())
             {
                 int type{};
-                if (item.value().is_string() &&
-                    std::from_chars(item.key().data(), item.key().data() + item.key().size(), type).ec == std::errc{} &&
+                if (pair.second.is_string() &&
+                    std::from_chars(pair.first.data(), pair.first.data() + pair.first.size(), type).ec == std::errc{} &&
                     type >= static_cast<int>(file::Type::VideoGeneric) && type <= static_cast<int>(file::Type::Ogg))
                 {
-                    options.m_audio_format_ids[static_cast<file::Type>(type)] = item.value().get<std::string>();
+                    options.m_audio_format_ids[static_cast<file::Type>(type)] = pair.second.get<std::string>();
                 }
             }
         }
@@ -1083,14 +1084,24 @@ namespace parabolic::configuration
         read_value(json, "exportM3U", options.m_export_m3u);
         read_value(json, "fullFileType", options.m_full_file_type, file::Type::VideoGeneric, file::Type::Ogg);
         read_value(json, "numberTitles", options.m_number_titles);
-        read_value(json, "postProcessorArgumentName", options.m_post_processor_argument_name);
+        if (json.contains("postprocessingArgumentNames") && json["postprocessingArgumentNames"].is_array())
+        {
+            options.m_postprocessing_argument_names.clear();
+            for (const nlohmann::json& item: json["postprocessingArgumentNames"])
+            {
+                if (item.is_string())
+                {
+                    options.m_postprocessing_argument_names.push_back(item.get<std::string>());
+                }
+            }
+        }
         read_value(json, "reverseDownloadOrder", options.m_reverse_download_order);
         read_value(json, "saveFolder", options.m_save_folder);
         read_value(json, "splitChapters", options.m_split_chapters);
         if (json.contains("subtitleLanguages") && json["subtitleLanguages"].is_array())
         {
             options.m_subtitle_languages.clear();
-            for (const auto& item: json["subtitleLanguages"])
+            for (const nlohmann::json& item: json["subtitleLanguages"])
             {
                 subtitle::Subtitle subtitle{ "", false };
                 from_json(item, subtitle);
@@ -1099,14 +1110,15 @@ namespace parabolic::configuration
         }
         if (json.contains("videoFormatIds") && json["videoFormatIds"].is_object())
         {
-            for (const auto& item: json["videoFormatIds"].items())
+            for (const std::pair<const std::string, nlohmann::json>& pair:
+                 json["videoFormatIds"].get<std::map<std::string, nlohmann::json>>())
             {
                 int type{};
-                if (item.value().is_string() &&
-                    std::from_chars(item.key().data(), item.key().data() + item.key().size(), type).ec == std::errc{} &&
+                if (pair.second.is_string() &&
+                    std::from_chars(pair.first.data(), pair.first.data() + pair.first.size(), type).ec == std::errc{} &&
                     type >= static_cast<int>(file::Type::VideoGeneric) && type <= static_cast<int>(file::Type::Ogg))
                 {
-                    options.m_video_format_ids[static_cast<file::Type>(type)] = item.value().get<std::string>();
+                    options.m_video_format_ids[static_cast<file::Type>(type)] = pair.second.get<std::string>();
                 }
             }
         }
@@ -1214,7 +1226,7 @@ namespace parabolic::configuration
             { "removeSourceData", options.m_remove_source_data },
             { "translateMetadataAndChapters", options.m_translate_metadata_and_chapters },
         };
-        for (const auto& item: options.m_postprocessing_arguments)
+        for (const postprocessing::Argument& item: options.m_postprocessing_arguments)
         {
             json["postprocessingArguments"].push_back(item);
         }
@@ -1232,7 +1244,7 @@ namespace parabolic::configuration
             { "exportM3U", options.m_export_m3u },
             { "fullFileType", static_cast<int>(options.m_full_file_type) },
             { "numberTitles", options.m_number_titles },
-            { "postProcessorArgumentName", options.m_post_processor_argument_name },
+            { "postprocessingArgumentNames", options.m_postprocessing_argument_names },
             { "reverseDownloadOrder", options.m_reverse_download_order },
             { "saveFolder", options.m_save_folder.string() },
             { "splitChapters", options.m_split_chapters },
@@ -1245,7 +1257,7 @@ namespace parabolic::configuration
         {
             json["audioFormatIds"][std::to_string(static_cast<int>(pair.first))] = pair.second;
         }
-        for (const auto& item: options.m_subtitle_languages)
+        for (const subtitle::Subtitle& item: options.m_subtitle_languages)
         {
             json["subtitleLanguages"].push_back(item);
         }
