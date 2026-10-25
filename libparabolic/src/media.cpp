@@ -15,8 +15,6 @@
 #include "string_manip.h"
 #include "translator.h"
 
-using namespace parabolic::translator;
-
 namespace
 {
     void append_format_section(std::string& result, const std::string& value)
@@ -149,7 +147,7 @@ namespace parabolic::media
         return m_frame_rate;
     }
 
-    std::string Format::str(const Translator& translator) const
+    std::string Format::str(const translator::Translator& translator) const
     {
         std::string result;
         if (m_type == Type::Video)
@@ -456,7 +454,7 @@ namespace parabolic::media
         return m_height;
     }
 
-    std::string VideoResolution::str(const Translator& translator) const
+    std::string VideoResolution::str(const translator::Translator& translator) const
     {
         if (m_width == std::numeric_limits<int>::max() && m_height == std::numeric_limits<int>::max())
         {

@@ -6,8 +6,6 @@
 #include <utility>
 #include "translator.h"
 
-using namespace parabolic::translator;
-
 namespace parabolic::subtitle
 {
     Subtitle::Subtitle(std::string language, bool is_auto_generated)
@@ -26,7 +24,7 @@ namespace parabolic::subtitle
         return m_is_auto_generated;
     }
 
-    std::string Subtitle::str(const Translator& translator) const
+    std::string Subtitle::str(const translator::Translator& translator) const
     {
         if (m_is_auto_generated)
         {
