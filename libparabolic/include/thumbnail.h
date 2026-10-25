@@ -11,7 +11,7 @@ namespace parabolic::thumbnail
     public:
         Thumbnail(std::string url);
         [[nodiscard]] const std::string& url() const;
-        [[nodiscard]] const std::vector<std::byte>& fetch_bytes() const;
+        [[nodiscard]] const std::vector<std::byte>& bytes() const;
 
     private:
         std::string m_url;
