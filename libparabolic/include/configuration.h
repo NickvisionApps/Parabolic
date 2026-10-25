@@ -4,7 +4,6 @@
 #include <mutex>
 #include <string>
 #include <nlohmann/json.hpp>
-#include "frame_rate.h"
 #include "media.h"
 #include "subtitle.h"
 

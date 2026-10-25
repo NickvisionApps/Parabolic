@@ -1,4 +1,5 @@
-#include "video_resolution.h"
+#include "media.h"
+
 #include <algorithm>
 #include <limits>
 #include "string_manip.h"
