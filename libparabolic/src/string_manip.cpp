@@ -3,6 +3,8 @@
 #include <cctype>
 #include <cwchar>
 #include <ranges>
+#include <string>
+#include <string_view>
 #include <utility>
 #ifdef _WIN32
 #include <windows.h>

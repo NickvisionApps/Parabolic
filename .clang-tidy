@@ -10,6 +10,7 @@ Checks: >
   cppcoreguidelines-prefer-member-initializer,
   cppcoreguidelines-special-member-functions,
   cppcoreguidelines-virtual-class-destructor,
+  misc-include-cleaner,
   modernize-*,
   -modernize-use-trailing-return-type,
   performance-*,
@@ -20,6 +21,7 @@ Checks: >
 WarningsAsErrors: ''
 HeaderFilterRegex: '.*/(libparabolic|org\.nickvision\.tubeconverter\.[a-z]+)/.*'
 CheckOptions:
+  misc-include-cleaner.IgnoreHeaders: 'CoreFoundation/.*;cpr/.*'
   readability-identifier-naming.NamespaceCase: lower_case
   readability-identifier-naming.ClassCase: CamelCase
   readability-identifier-naming.StructCase: CamelCase

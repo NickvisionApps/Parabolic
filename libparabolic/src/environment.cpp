@@ -1,21 +1,31 @@
 #include "environment.h"
 #include <algorithm>
 #include <array>
-#include <climits>
 #include <cstdint>
-#include <cstdlib>
-#include <fstream>
-#include <locale>
+#include <filesystem>
 #include <sago/platform_folders.h>
+#include <string>
+#include <string_view>
 #include <unordered_map>
+#include <utility>
+#include <vector>
 #include "string_manip.h"
 #ifdef _WIN32
 #include <shellapi.h>
 #include <windows.h>
-#elifdef __APPLE__
-#include <CoreFoundation/CoreFoundation.h>
+#else
+#include <cstdlib>
+#ifdef __APPLE__
+#include <CoreFoundation/CFBase.h>
+#include <CoreFoundation/CFLocale.h>
+#include <CoreFoundation/CFString.h>
 #include <crt_externs.h>
 #include <mach-o/dyld.h>
+#include <sys/syslimits.h>
+#else
+#include <fstream>
+#include <locale>
+#endif
 #endif
 
 namespace

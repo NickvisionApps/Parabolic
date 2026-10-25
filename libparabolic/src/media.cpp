@@ -1,9 +1,16 @@
 #include "media.h"
 
 #include <algorithm>
+#include <chrono>
+#include <compare>
 #include <format>
 #include <limits>
+#include <optional>
+#include <string>
+#include <string_view>
+#include <vector>
 #include "string_manip.h"
+#include "translator.h"
 
 using namespace parabolic::translator;
 

@@ -1,8 +1,13 @@
 #include "configuration.h"
+#include <exception>
+#include <filesystem>
 #include <fstream>
+#include <ios>
+#include <mutex>
+#include <nlohmann/json_fwd.hpp>
 #include <sago/platform_folders.h>
+#include <string_view>
 #include "environment.h"
-#include "product_info.h"
 #include "translator.h"
 #ifdef _WIN32
 #include "string_manip.h"

@@ -1,10 +1,18 @@
 #include "updater.h"
 #include <chrono>
 #include <cpr/cpr.h>
+#include <cstdint>
+#include <filesystem>
 #include <format>
 #include <fstream>
+#include <ios>
 #include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
+#include <optional>
 #include <sago/platform_folders.h>
+#include <semver.hpp>
+#include <string>
+#include <utility>
 #include "hash.h"
 #include "string_manip.h"
 

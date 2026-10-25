@@ -1,9 +1,13 @@
 #include "hash.h"
 #include <array>
+#include <filesystem>
 #include <format>
 #include <fstream>
+#include <ios>
 #include <memory>
 #include <openssl/evp.h>
+#include <string>
+#include <string_view>
 
 namespace
 {

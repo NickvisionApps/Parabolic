@@ -1,4 +1,8 @@
 #include "history.h"
+#include <chrono>
+#include <compare>
+#include <string>
+#include <utility>
 
 namespace parabolic::history
 {

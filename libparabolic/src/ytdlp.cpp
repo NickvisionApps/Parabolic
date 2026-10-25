@@ -1,4 +1,5 @@
 #include "ytdlp.h"
+#include <string>
 #include <unordered_set>
 
 namespace parabolic::ytdlp

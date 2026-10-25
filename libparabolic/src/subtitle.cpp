@@ -1,4 +1,8 @@
 #include "subtitle.h"
+#include <compare>
+#include <string>
+#include <utility>
+#include "translator.h"
 
 using namespace parabolic::translator;
 

@@ -1,5 +1,7 @@
 #include "post_processor.h"
+#include <compare>
 #include <format>
+#include <string>
 #include <utility>
 
 namespace parabolic::post_processor

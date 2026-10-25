@@ -1,5 +1,6 @@
 #include "file.h"
-#include "string_manip.h"
+#include <string_view>
+#include "subtitle.h"
 
 namespace parabolic::file
 {

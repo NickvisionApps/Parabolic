@@ -1,6 +1,11 @@
 #include "application_state.h"
 #include <curl/curl.h>
+#include <memory>
 #include <semver.hpp>
+#include "configuration.h"
+#include "product_info.h"
+#include "translator.h"
+#include "updater.h"
 
 using namespace parabolic::configuration;
 using namespace parabolic::product_info;

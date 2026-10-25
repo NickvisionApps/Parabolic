@@ -1,5 +1,7 @@
 #include "product_info.h"
 #include <format>
+#include <semver.hpp>
+#include <string>
 
 namespace parabolic::product_info
 {

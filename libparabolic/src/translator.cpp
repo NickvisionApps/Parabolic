@@ -1,7 +1,13 @@
 #include "translator.h"
 #include <algorithm>
+#include <clocale>
+#include <filesystem>
 #include <libintl.h>
+#include <mutex>
+#include <string>
+#include <string_view>
 #include <utility>
+#include <vector>
 #include "environment.h"
 #include "string_manip.h"
 
