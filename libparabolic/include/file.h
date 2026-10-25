@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdint>
-#include <string>
+#include <string_view>
 #include "subtitle.h"
 
 namespace parabolic::file
@@ -23,7 +23,7 @@ namespace parabolic::file
         Ogg,
     };
 
-    std::string dot_extension(Type type);
+    std::string_view dot_extension(Type type);
 
     bool is_audio(Type type);
 

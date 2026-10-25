@@ -37,8 +37,9 @@ namespace parabolic::configuration
                 }
             }
         }
-        catch (...)
+        catch (const std::exception&)
         {
+            return;
         }
     }
 
@@ -141,8 +142,9 @@ namespace parabolic::configuration
                 file << json.dump();
             }
         }
-        catch (...)
+        catch (const std::exception&)
         {
+            return;
         }
     }
 }

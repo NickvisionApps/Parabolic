@@ -42,7 +42,7 @@ namespace parabolic::string_manip
     }
 
     template<ImplicitlyConstructableString T = std::string>
-    [[nodiscard]] std::vector<T> split(const std::string& s, char delimiter, bool include_empty = true) noexcept
+    [[nodiscard]] std::vector<T> split(const std::string& s, char delimiter, bool include_empty = true)
     {
         return split<T>(s, std::string(1, delimiter), include_empty);
     }

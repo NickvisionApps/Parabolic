@@ -3,7 +3,7 @@
 
 namespace parabolic::file
 {
-    std::string dot_extension(Type type)
+    std::string_view dot_extension(Type type)
     {
         switch (type)
         {

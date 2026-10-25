@@ -55,8 +55,8 @@ namespace parabolic::media
         [[nodiscard]] std::chrono::seconds end() const;
         [[nodiscard]] std::string str() const;
         std::strong_ordering operator<=>(const TimeFrame& rhs) const = default;
-        friend void from_json(const nlohmann::json& json, TimeFrame& timeFrame);
-        friend void to_json(nlohmann::json& json, const TimeFrame& timeFrame);
+        friend void from_json(const nlohmann::json& json, TimeFrame& time_frame);
+        friend void to_json(nlohmann::json& json, const TimeFrame& time_frame);
 
     private:
         std::chrono::seconds m_start;
@@ -85,23 +85,23 @@ namespace parabolic::media
         int m_height{ std::numeric_limits<int>::max() };
     };
 
-    inline void from_json(const nlohmann::json& json, TimeFrame& timeFrame)
+    inline void from_json(const nlohmann::json& json, TimeFrame& time_frame)
     {
         if (json.contains("start") && json["start"].is_number_integer())
         {
-            timeFrame.m_start = std::chrono::seconds(json.at("start").get<int>());
+            time_frame.m_start = std::chrono::seconds(json.at("start").get<int>());
         }
         else if (json.contains("Start") && json["Start"].is_number_integer())
         {
-            timeFrame.m_start = std::chrono::seconds(json.at("Start").get<int>());
+            time_frame.m_start = std::chrono::seconds(json.at("Start").get<int>());
         }
         if (json.contains("end") && json["end"].is_number_integer())
         {
-            timeFrame.m_end = std::chrono::seconds(json.at("end").get<int>());
+            time_frame.m_end = std::chrono::seconds(json.at("end").get<int>());
         }
         else if (json.contains("End") && json["End"].is_number_integer())
         {
-            timeFrame.m_end = std::chrono::seconds(json.at("End").get<int>());
+            time_frame.m_end = std::chrono::seconds(json.at("End").get<int>());
         }
     }
 
@@ -125,9 +125,9 @@ namespace parabolic::media
         }
     }
 
-    inline void to_json(nlohmann::json& json, const TimeFrame& timeFrame)
+    inline void to_json(nlohmann::json& json, const TimeFrame& time_frame)
     {
-        json = nlohmann::json{ { "start", timeFrame.m_start.count() }, { "end", timeFrame.m_end.count() } };
+        json = nlohmann::json{ { "start", time_frame.m_start.count() }, { "end", time_frame.m_end.count() } };
     }
 
     inline void to_json(nlohmann::json& json, const VideoResolution& resolution)

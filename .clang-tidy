@@ -5,6 +5,7 @@ Checks: >
   -bugprone-easily-swappable-parameters,
   clang-analyzer-*,
   concurrency-*,
+  -concurrency-mt-unsafe,
   cppcoreguidelines-init-variables,
   cppcoreguidelines-prefer-member-initializer,
   cppcoreguidelines-special-member-functions,
@@ -13,6 +14,7 @@ Checks: >
   -modernize-use-trailing-return-type,
   performance-*,
   readability-*,
+  -readability-function-cognitive-complexity,
   -readability-identifier-length,
   -readability-magic-numbers
 WarningsAsErrors: ''
@@ -30,6 +32,7 @@ CheckOptions:
   readability-identifier-naming.MethodCase: lower_case
   readability-identifier-naming.VariableCase: lower_case
   readability-identifier-naming.ParameterCase: lower_case
+  readability-identifier-naming.MethodIgnoredRegexp: '^(_|_n|_p|_pn|w_)$'
   readability-identifier-naming.PrivateMemberCase: lower_case
   readability-identifier-naming.PrivateMemberPrefix: m_
   readability-identifier-naming.GlobalConstantCase: UPPER_CASE

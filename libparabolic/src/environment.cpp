@@ -183,13 +183,13 @@ namespace parabolic::environment
 #elifdef __APPLE__
         std::string result;
         CFLocaleRef locale{ CFLocaleCopyCurrent() };
-        if (locale)
+        if (locale != nullptr)
         {
             CFStringRef identifier{ CFLocaleGetIdentifier(locale) };
-            if (identifier)
+            if (identifier != nullptr)
             {
                 std::array<char, 128> buffer{};
-                if (CFStringGetCString(identifier, buffer.data(), buffer.size(), kCFStringEncodingUTF8))
+                if (CFStringGetCString(identifier, buffer.data(), buffer.size(), kCFStringEncodingUTF8) != 0)
                 {
                     result = buffer.data();
                 }
@@ -259,7 +259,7 @@ namespace parabolic::environment
         return string_manip::str(wvalue);
 #else
         const char* env{ getenv(name.c_str()) };
-        return env ? std::string{ env } : std::string{};
+        return env != nullptr ? std::string{ env } : std::string{};
 #endif
     }
 }

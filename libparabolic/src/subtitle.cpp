@@ -34,7 +34,7 @@ namespace parabolic::subtitle
     {
         if (m_is_auto_generated != rhs.m_is_auto_generated)
         {
-            return m_is_auto_generated <=> rhs.m_is_auto_generated;
+            return static_cast<int>(m_is_auto_generated) <=> static_cast<int>(rhs.m_is_auto_generated);
         }
         return m_language <=> rhs.m_language;
     }

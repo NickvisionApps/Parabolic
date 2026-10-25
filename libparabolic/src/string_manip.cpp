@@ -30,12 +30,12 @@ namespace parabolic::string_manip
         result.erase(std::ranges::find_if(std::views::reverse(result),
                                           [](unsigned char ch)
         {
-            return !(ch == ' ' || (ch >= '\t' && ch <= '\r'));
+            return ch != ' ' && (ch < '\t' || ch > '\r');
         }).base(),
                      result.end());
         result.erase(result.begin(), std::ranges::find_if(result, [](unsigned char ch)
         {
-            return !(ch == ' ' || (ch >= '\t' && ch <= '\r'));
+            return ch != ' ' && (ch < '\t' || ch > '\r');
         }));
         return result;
     }
@@ -55,7 +55,7 @@ namespace parabolic::string_manip
         std::mbstate_t state{};
         const wchar_t* ptr{ wstr.data() };
         std::size_t len{ std::wcsrtombs(nullptr, &ptr, 0, &state) };
-        if (len == static_cast<std::size_t>(-1))
+        if (std::cmp_equal(len, -1))
         {
             return {};
         }
@@ -81,7 +81,7 @@ namespace parabolic::string_manip
         std::mbstate_t state{};
         const char* ptr{ str.c_str() };
         std::size_t len{ std::mbsrtowcs(nullptr, &ptr, 0, &state) };
-        if (len == static_cast<std::size_t>(-1))
+        if (std::cmp_equal(len, -1))
         {
             return {};
         }

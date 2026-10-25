@@ -89,19 +89,16 @@ namespace parabolic::translator
         {
             resolved = normalize_language(std::string(language));
         }
-        if (resolved != "en_US")
+        if (resolved != "en_US" && std::ranges::find(m_available_languages, resolved) == m_available_languages.end())
         {
-            if (std::ranges::find(m_available_languages, resolved) == m_available_languages.end())
+            std::string base{ resolved.substr(0, resolved.find('_')) };
+            if (base != resolved && std::ranges::find(m_available_languages, base) != m_available_languages.end())
             {
-                std::string base{ resolved.substr(0, resolved.find('_')) };
-                if (base != resolved && std::ranges::find(m_available_languages, base) != m_available_languages.end())
-                {
-                    resolved = base;
-                }
-                else
-                {
-                    resolved = "en_US";
-                }
+                resolved = base;
+            }
+            else
+            {
+                resolved = "en_US";
             }
         }
         std::scoped_lock lock{ m_mutex };
@@ -151,6 +148,10 @@ namespace parabolic::translator
         }
         std::string ctx{ std::string{ context } + "\004" + msgid };
         const char* result{ ::dcngettext(m_domain_name.c_str(), ctx.c_str(), msgid_plural, n, LC_MESSAGES) };
-        return result == ctx.c_str() || result == msgid_plural ? (n == 1 ? msgid : msgid_plural) : result;
+        if (result == ctx.c_str() || result == msgid_plural)
+        {
+            return n == 1 ? msgid : msgid_plural;
+        }
+        return result;
     }
 }
