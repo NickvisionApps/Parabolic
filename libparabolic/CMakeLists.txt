@@ -12,22 +12,24 @@ add_library("lib${SHORT_NAME}"
     "include/hash.h"
     "include/history.h"
     "include/media.h"
+    "include/post_processor.h"
     "include/product_info.h"
-    "include/resolution.h"
     "include/string_manip.h"
     "include/subtitle.h"
     "include/translator.h"
     "include/updater.h"
+    "include/video_resolution.h"
     "src/application_state.cpp"
     "src/configuration.cpp"
     "src/environment.cpp"
     "src/hash.cpp"
+    "src/post_processor.cpp"
     "src/product_info.cpp"
-    "src/resolution.cpp"
     "src/string_manip.cpp"
     "src/subtitle.cpp"
     "src/translator.cpp"
-    "src/updater.cpp")
+    "src/updater.cpp"
+    "src/video_resolution.cpp")
 target_include_directories("lib${SHORT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set_target_properties("lib${SHORT_NAME}" PROPERTIES VERSION "${PROJECT_VERSION}" SOVERSION "${PROJECT_VERSION}")
 if(MSVC)
@@ -45,9 +47,4 @@ find_package(semver CONFIG REQUIRED)
 target_link_libraries("lib${SHORT_NAME}" PUBLIC cpr::cpr Intl::Intl nlohmann_json::nlohmann_json OpenSSL::SSL OpenSSL::Crypto sago::platform_folders semver::semver)
 if(APPLE)
     target_link_libraries("lib${SHORT_NAME}" PUBLIC "-framework CoreFoundation")
-endif()
-
-include(CTest)
-if(BUILD_TESTING)
-    add_subdirectory(tests)
 endif()

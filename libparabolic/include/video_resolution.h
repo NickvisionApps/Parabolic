@@ -2,6 +2,7 @@
 
 #include <compare>
 #include <nlohmann/json.hpp>
+#include <optional>
 #include <string>
 #include "translator.h"
 
@@ -14,9 +15,9 @@ namespace parabolic
         VideoResolution(int width, int height);
         static VideoResolution& best();
         static VideoResolution& worst();
+        [[nodiscard]] static std::optional<VideoResolution> parse(const std::string& value, const Translator& translator);
         [[nodiscard]] int width() const;
         [[nodiscard]] int height() const;
-        [[nodiscard]] std::string str() const;
         [[nodiscard]] std::string str(const Translator& translator) const;
         std::strong_ordering operator<=>(const VideoResolution& rhs) const;
         bool operator==(const VideoResolution& rhs) const;

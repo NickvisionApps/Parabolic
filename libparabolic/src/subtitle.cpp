@@ -19,15 +19,6 @@ namespace parabolic
         return m_is_auto_generated;
     }
 
-    std::string SubtitleLanguage::str() const
-    {
-        if (m_is_auto_generated)
-        {
-            return std::format("{} (Auto-generated)", m_language);
-        }
-        return m_language;
-    }
-
     std::string SubtitleLanguage::str(const Translator& translator) const
     {
         if (m_is_auto_generated)

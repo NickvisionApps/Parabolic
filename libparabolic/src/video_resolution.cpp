@@ -1,6 +1,7 @@
-#include "resolution.h"
+#include "video_resolution.h"
 #include <algorithm>
 #include <limits>
+#include "string_manip.h"
 
 namespace parabolic
 {
@@ -28,6 +29,31 @@ namespace parabolic
         return worst;
     }
 
+    std::optional<VideoResolution> VideoResolution::parse(const std::string& value, const Translator& translator)
+    {
+        if (value == "Best" || value == translator._("Best"))
+        {
+            return best();
+        }
+        if (value == "Worst" || value == translator._("Worst"))
+        {
+            return worst();
+        }
+        std::vector<std::string> parts{ string_manip::split(value, 'x') };
+        if (parts.size() != 2)
+        {
+            return std::nullopt;
+        }
+        try
+        {
+            return VideoResolution{ std::stoi(parts[0]), std::stoi(parts[1]) };
+        }
+        catch (...)
+        {
+            return std::nullopt;
+        }
+    }
+
     int VideoResolution::width() const
     {
         return m_width;
@@ -36,19 +62,6 @@ namespace parabolic
     int VideoResolution::height() const
     {
         return m_height;
-    }
-
-    std::string VideoResolution::str() const
-    {
-        if (m_width == std::numeric_limits<int>::max() && m_height == std::numeric_limits<int>::max())
-        {
-            return "Best";
-        }
-        if (m_width == -1 && m_height == -1)
-        {
-            return "Worst";
-        }
-        return std::format("{}x{}", m_width, m_height);
     }
 
     std::string VideoResolution::str(const Translator& translator) const

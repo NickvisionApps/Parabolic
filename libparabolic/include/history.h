@@ -12,5 +12,5 @@ namespace parabolic
         SixMonths = 180,
         OneYear = 365,
         Forever = -1
-    }
+    };
 }

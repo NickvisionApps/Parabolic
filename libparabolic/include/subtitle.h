@@ -22,7 +22,6 @@ namespace parabolic
         SubtitleLanguage(std::string language, bool is_auto_generated);
         [[nodiscard]] const std::string& language() const;
         [[nodiscard]] bool is_auto_generated() const;
-        [[nodiscard]] std::string str() const;
         [[nodiscard]] std::string str(const Translator& translator) const;
         std::strong_ordering operator<=>(const SubtitleLanguage& rhs) const;
         bool operator==(const SubtitleLanguage& rhs) const;
