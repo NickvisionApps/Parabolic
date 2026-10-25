@@ -1,5 +1,4 @@
 #include "subtitle.h"
-#include <format>
 
 using namespace parabolic::translator;
 
