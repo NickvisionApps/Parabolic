@@ -20,19 +20,12 @@ namespace parabolic::subtitle
     {
     public:
         Subtitle(std::string language, bool is_auto_generated);
-
         [[nodiscard]] const std::string& language() const;
-
         [[nodiscard]] bool is_auto_generated() const;
-
         [[nodiscard]] std::string str(const translation::Translator& translator) const;
-
         std::strong_ordering operator<=>(const Subtitle& rhs) const;
-
         bool operator==(const Subtitle& rhs) const;
-
         friend void from_json(const nlohmann::json& json, Subtitle& language);
-
         friend void to_json(nlohmann::json& json, const Subtitle& language);
 
     private:

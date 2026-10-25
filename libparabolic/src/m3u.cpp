@@ -6,7 +6,7 @@
 #include <utility>
 #include "string_manip.h"
 
-namespace parabolic
+namespace parabolic::m3u
 {
     M3uFile::M3uFile(std::string title, bool use_relative_paths)
         : m_title{ std::move(title) },
