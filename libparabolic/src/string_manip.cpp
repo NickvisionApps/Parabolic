@@ -22,6 +22,21 @@ namespace parabolic::string_manip
         return result;
     }
 
+    std::string sanitize_for_filename(std::string_view str, bool include_windows_characters)
+    {
+        std::string result{ str };
+#ifdef _WIN32
+        include_windows_characters = true;
+#endif
+        std::ranges::replace_if(result, [include_windows_characters](char c)
+        {
+            return c == '\0' || c == '/' ||
+                   (include_windows_characters &&
+                    (static_cast<unsigned char>(c) < 32 || std::string_view{ "<>:\"\\|?*" }.contains(c)));
+        }, '_');
+        return result;
+    }
+
     std::string trim(std::string_view str)
     {
         if (str.empty())

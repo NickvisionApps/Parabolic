@@ -20,6 +20,7 @@ add_library("lib${SHORT_NAME}"
     "include/thumbnail.h"
     "include/translation.h"
     "include/updates.h"
+    "include/url.h"
     "include/video.h"
     "include/ytdlp.h"
     "src/application.cpp"
@@ -38,6 +39,7 @@ add_library("lib${SHORT_NAME}"
     "src/thumbnail.cpp"
     "src/translation.cpp"
     "src/updates.cpp"
+    "src/url.cpp"
     "src/video.cpp"
     "src/ytdlp.cpp")
 target_include_directories("lib${SHORT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
@@ -51,13 +53,14 @@ else ()
 endif ()
 
 find_package(cpr REQUIRED)
+find_package(CURL REQUIRED)
 find_package(Intl REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(platform_folders REQUIRED)
 find_package(semver CONFIG REQUIRED)
 find_package(SQLiteCpp REQUIRED)
-target_link_libraries("lib${SHORT_NAME}" PUBLIC cpr::cpr Intl::Intl nlohmann_json::nlohmann_json OpenSSL::SSL OpenSSL::Crypto sago::platform_folders semver::semver SQLiteCpp)
+target_link_libraries("lib${SHORT_NAME}" PUBLIC cpr::cpr CURL::libcurl Intl::Intl nlohmann_json::nlohmann_json OpenSSL::SSL OpenSSL::Crypto sago::platform_folders semver::semver SQLiteCpp)
 if (WIN32)
     target_link_libraries("lib${SHORT_NAME}" PUBLIC Advapi32)
 elseif (APPLE)

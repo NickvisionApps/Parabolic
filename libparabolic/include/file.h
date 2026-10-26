@@ -52,19 +52,13 @@ namespace parabolic::file
         std::chrono::seconds m_end;
     };
 
-    std::string_view dot_extension(Type type);
-
-    bool is_audio(Type type);
-
-    bool is_generic(Type type);
-
-    bool is_video(Type type);
-
-    bool should_recode(Type type);
-
-    bool supports_subtitle(Type type, subtitle::Format format);
-
-    bool supports_thumbnails(Type type);
+    [[nodiscard]] std::string_view dot_extension(Type type);
+    [[nodiscard]] bool is_audio(Type type);
+    [[nodiscard]] bool is_generic(Type type);
+    [[nodiscard]] bool is_video(Type type);
+    [[nodiscard]] bool should_recode(Type type);
+    [[nodiscard]] bool supports_subtitle(Type type, subtitle::Format format);
+    [[nodiscard]] bool supports_thumbnails(Type type);
 }
 
 #endif
