@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FILE_H
+#define FILE_H
 
 #include <cstdint>
 #include <string_view>
@@ -37,3 +38,5 @@ namespace parabolic::file
 
     bool supports_thumbnails(Type type);
 }
+
+#endif

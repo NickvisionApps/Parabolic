@@ -1,4 +1,5 @@
-#pragma once
+#ifndef KEYRING_H
+#define KEYRING_H
 
 #include <mutex>
 #include <nlohmann/json.hpp>
@@ -45,3 +46,5 @@ namespace parabolic::keyring
         std::string m_app_id;
     };
 }
+
+#endif

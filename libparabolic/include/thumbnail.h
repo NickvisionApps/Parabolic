@@ -1,4 +1,5 @@
-#pragma once
+#ifndef THUMBNAIL_H
+#define THUMBNAIL_H
 
 #include <cstdint>
 #include <string>
@@ -17,3 +18,5 @@ namespace parabolic::thumbnail
         std::string m_url;
     };
 }
+
+#endif

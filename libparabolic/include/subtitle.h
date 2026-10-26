@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SUBTITLE_H
+#define SUBTITLE_H
 
 #include <compare>
 #include <nlohmann/json_fwd.hpp>
@@ -33,3 +34,5 @@ namespace parabolic::subtitle
         bool m_is_auto_generated;
     };
 }
+
+#endif

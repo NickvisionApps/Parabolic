@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UPDATES_H
+#define UPDATES_H
 
 #include <filesystem>
 #include <functional>
@@ -55,3 +56,5 @@ namespace parabolic::updates
         bool m_allow_preview_updates{ false };
     };
 }
+
+#endif

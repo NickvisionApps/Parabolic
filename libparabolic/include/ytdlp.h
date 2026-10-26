@@ -1,4 +1,5 @@
-#pragma once
+#ifndef YTDLP_H
+#define YTDLP_H
 
 #include <cstdint>
 #include <stdexcept>
@@ -27,3 +28,5 @@ namespace parabolic::ytdlp
 
     bool is_youtube_supported_language(const std::string& language);
 }
+
+#endif

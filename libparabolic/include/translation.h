@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TRANSLATION_H
+#define TRANSLATION_H
 
 #include <filesystem>
 #include <format>
@@ -76,3 +77,5 @@ namespace parabolic::translation
         std::string m_language;
     };
 }
+
+#endif

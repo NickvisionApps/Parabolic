@@ -1,4 +1,5 @@
-#pragma once
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
 #include <memory>
 #include <semver.hpp>
@@ -75,3 +76,5 @@ namespace parabolic::application
         std::unique_ptr<keyring::Store> m_keyring;
     };
 }
+
+#endif

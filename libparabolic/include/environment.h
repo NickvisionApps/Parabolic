@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENVIRONMENT_H
+#define ENVIRONMENT_H
 
 #include <filesystem>
 #include <string>
@@ -34,3 +35,5 @@ namespace parabolic::environment
     void set_variable(const std::string& name, const std::string& value);
     [[nodiscard]] std::string variable(const std::string& name);
 }
+
+#endif

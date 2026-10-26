@@ -1,4 +1,5 @@
-#pragma once
+#ifndef M3U_H
+#define M3U_H
 
 #include <filesystem>
 #include <sstream>
@@ -19,3 +20,5 @@ namespace parabolic::m3u
         std::stringstream m_stream;
     };
 }
+
+#endif

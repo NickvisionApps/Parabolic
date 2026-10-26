@@ -1,4 +1,5 @@
-#pragma once
+#ifndef STRING_MANIP_H
+#define STRING_MANIP_H
 
 #include <string>
 #include <string_view>
@@ -48,3 +49,5 @@ namespace parabolic::string_manip
         return split<T>(s, std::string_view{ &delimiter, 1 }, include_empty);
     }
 }
+
+#endif

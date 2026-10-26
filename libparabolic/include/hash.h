@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HASH_H
+#define HASH_H
 
 #include <filesystem>
 #include <string>
@@ -11,3 +12,5 @@ namespace parabolic::hash
     std::string sha512_from_file(const std::filesystem::path& file_path);
     std::string sha512_from_string(std::string_view data);
 }
+
+#endif

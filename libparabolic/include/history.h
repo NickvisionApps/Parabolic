@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HISTORY_H
+#define HISTORY_H
 
 #include <SQLiteCpp/SQLiteCpp.h>
 #include <chrono>
@@ -63,3 +64,5 @@ namespace parabolic::history
         bool m_sort_newest{ true };
     };
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef POSTPROCESSING_H
+#define POSTPROCESSING_H
 
 #include <compare>
 #include <cstdint>
@@ -61,3 +62,5 @@ namespace parabolic::postprocessing
         std::string m_args;
     };
 }
+
+#endif

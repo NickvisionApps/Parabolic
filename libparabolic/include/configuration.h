@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONFIGURATION_H
+#define CONFIGURATION_H
 
 #include <cstdint>
 #include <filesystem>
@@ -318,3 +319,5 @@ namespace parabolic::configuration
         YtdlpOptions m_ytdlp_options;
     };
 }
+
+#endif

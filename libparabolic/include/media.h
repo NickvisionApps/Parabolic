@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MEDIA_H
+#define MEDIA_H
 
 #include <chrono>
 #include <compare>
@@ -141,3 +142,5 @@ namespace parabolic::media
         std::optional<FrameRate> m_frame_rate;
     };
 }
+
+#endif
