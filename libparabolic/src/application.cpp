@@ -6,6 +6,7 @@
 #include <string>
 #include "configuration.h"
 #include "history.h"
+#include "keyring.h"
 #include "translation.h"
 #include "updates.h"
 
@@ -136,7 +137,8 @@ namespace parabolic::application
         m_product->set_changelog("- Initial Release");
         m_configuration = std::make_unique<Configuration>(m_product->name());
         m_translator = std::make_unique<Translator>(m_product->short_name());
-        m_history = std::make_unique<history::Manager>(m_product->name());
+        m_history = std::make_unique<history::Store>(m_product->name());
+        m_keyring = std::make_unique<keyring::Store>(m_product->id());
 #ifdef _WIN32
 #ifdef _M_ARM64
         m_updater = std::make_unique<Updater>(m_product->repo_owner(), m_product->repo_name(), m_product->version(),
@@ -171,6 +173,7 @@ namespace parabolic::application
         m_translator.reset();
         m_updater.reset();
         m_history.reset();
+        m_keyring.reset();
         curl_global_cleanup();
     }
 
@@ -207,10 +210,15 @@ namespace parabolic::application
         return *m_updater;
     }
 
-    history::Manager& State::history() const
+    history::Store& State::history() const
     {
         m_history->set_length(m_configuration->history_options().length());
         m_history->set_sort_newest(m_configuration->history_options().sort_newest());
         return *m_history;
+    }
+
+    keyring::Store& State::keyring() const
+    {
+        return *m_keyring;
     }
 }

@@ -1,7 +1,10 @@
 #pragma once
 
+#include <mutex>
 #include <nlohmann/json.hpp>
 #include <string>
+#include <string_view>
+#include <vector>
 
 namespace parabolic::keyring
 {
@@ -26,5 +29,19 @@ namespace parabolic::keyring
         std::string m_url;
         std::string m_username;
         std::string m_password;
+    };
+
+    class Store
+    {
+    public:
+        Store(std::string_view app_id);
+        [[nodiscard]] bool add(const Credential& credential);
+        [[nodiscard]] std::vector<Credential> get_all() const;
+        [[nodiscard]] bool remove(const std::string& name);
+        [[nodiscard]] bool update(const Credential& credential);
+
+    private:
+        mutable std::mutex m_mutex;
+        std::string m_app_id;
     };
 }

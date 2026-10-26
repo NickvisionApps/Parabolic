@@ -69,7 +69,7 @@ namespace parabolic::history
         return m_url == rhs.m_url;
     }
 
-    Manager::Manager(std::string_view app_name)
+    Store::Store(std::string_view app_name)
 #ifdef _WIN32
         : m_database{ environment::is_portable() ? environment::executable_directory() / "history.db"
                                                  : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) /
@@ -86,27 +86,27 @@ namespace parabolic::history
                         " (url TEXT PRIMARY KEY, title TEXT, path TEXT, downloaded_on INTEGER)");
     }
 
-    Length Manager::length() const
+    Length Store::length() const
     {
         return m_length;
     }
 
-    void Manager::set_length(Length length)
+    void Store::set_length(Length length)
     {
         m_length = length;
     }
 
-    bool Manager::sort_newest() const
+    bool Store::sort_newest() const
     {
         return m_sort_newest;
     }
 
-    void Manager::set_sort_newest(bool sort_newest)
+    void Store::set_sort_newest(bool sort_newest)
     {
         m_sort_newest = sort_newest;
     }
 
-    bool Manager::add_or_update(const Entry& entry)
+    bool Store::add_or_update(const Entry& entry)
     {
         if (m_length == Length::Never)
         {
@@ -122,7 +122,7 @@ namespace parabolic::history
         return query.exec() > 0;
     }
 
-    bool Manager::add_or_update(const std::vector<Entry>& entries)
+    bool Store::add_or_update(const std::vector<Entry>& entries)
     {
         SQLite::Transaction transaction{ m_database };
         bool success{ true };
@@ -141,13 +141,13 @@ namespace parabolic::history
         return success;
     }
 
-    bool Manager::clear()
+    bool Store::clear()
     {
         SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME };
         return query.exec() > 0;
     }
 
-    std::vector<Entry> Manager::entries()
+    std::vector<Entry> Store::get_all()
     {
         std::vector<Entry> result;
         std::vector<std::string> marked;
@@ -198,7 +198,7 @@ namespace parabolic::history
         return result;
     }
 
-    bool Manager::remove(const std::string& url)
+    bool Store::remove(const std::string& url)
     {
         SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME " WHERE url = ?" };
         query.bind(1, url);

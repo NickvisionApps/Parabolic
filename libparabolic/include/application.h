@@ -5,6 +5,7 @@
 #include <string>
 #include "configuration.h"
 #include "history.h"
+#include "keyring.h"
 #include "translation.h"
 #include "updates.h"
 
@@ -60,7 +61,8 @@ namespace parabolic::application
         [[nodiscard]] const Product& product() const;
         [[nodiscard]] const translation::Translator& translator() const;
         [[nodiscard]] const updates::Updater& updater() const;
-        [[nodiscard]] history::Manager& history() const;
+        [[nodiscard]] history::Store& history() const;
+        [[nodiscard]] keyring::Store& keyring() const;
         State& operator=(const State&) = delete;
         State& operator=(State&&) = delete;
 
@@ -69,6 +71,7 @@ namespace parabolic::application
         std::unique_ptr<Product> m_product;
         std::unique_ptr<translation::Translator> m_translator;
         std::unique_ptr<updates::Updater> m_updater;
-        std::unique_ptr<history::Manager> m_history;
+        std::unique_ptr<history::Store> m_history;
+        std::unique_ptr<keyring::Store> m_keyring;
     };
 }

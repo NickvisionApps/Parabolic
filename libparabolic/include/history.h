@@ -43,10 +43,10 @@ namespace parabolic::history
         std::chrono::system_clock::time_point m_downloaded_on{ std::chrono::system_clock::now() };
     };
 
-    class Manager
+    class Store
     {
     public:
-        Manager(std::string_view app_name);
+        Store(std::string_view app_name);
         [[nodiscard]] Length length() const;
         void set_length(Length length);
         [[nodiscard]] bool sort_newest() const;
@@ -54,7 +54,7 @@ namespace parabolic::history
         [[nodiscard]] bool add_or_update(const Entry& entry);
         [[nodiscard]] bool add_or_update(const std::vector<Entry>& entries);
         [[nodiscard]] bool clear();
-        [[nodiscard]] std::vector<Entry> entries();
+        [[nodiscard]] std::vector<Entry> get_all();
         [[nodiscard]] bool remove(const std::string& url);
 
     private:
