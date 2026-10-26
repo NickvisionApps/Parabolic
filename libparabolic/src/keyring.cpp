@@ -13,11 +13,30 @@
 #elifdef __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
 #include <Security/Security.h>
-#else
+#elifdef __linux__
 #include <libsecret/secret.h>
 #endif
 
-#if !defined(_WIN32) && !defined(__APPLE__)
+#ifdef __APPLE__
+namespace
+{
+    std::string str(CFStringRef value)
+    {
+        if (value == nullptr)
+        {
+            return {};
+        }
+        CFIndex size{ CFStringGetMaximumSizeForEncoding(CFStringGetLength(value), kCFStringEncodingUTF8) + 1 };
+        std::string result(static_cast<std::size_t>(size), '\0');
+        if (CFStringGetCString(value, result.data(), size, kCFStringEncodingUTF8) == 0U)
+        {
+            return {};
+        }
+        result.resize(result.find('\0'));
+        return result;
+    }
+}
+#elifdef __linux__
 static const SecretSchema KEYRING_SCHEMA{ "org.nickvision.keyring",
                                           SECRET_SCHEMA_NONE,
                                           { { "application", SECRET_SCHEMA_ATTRIBUTE_STRING },
@@ -183,21 +202,6 @@ namespace parabolic::keyring
             CredFree(items);
         }
 #elifdef __APPLE__
-        auto to_string{ [](CFStringRef value)
-        {
-            if (!value)
-            {
-                return std::string{};
-            }
-            CFIndex size{ CFStringGetMaximumSizeForEncoding(CFStringGetLength(value), kCFStringEncodingUTF8) + 1 };
-            std::string result(static_cast<std::size_t>(size), '\0');
-            if (!CFStringGetCString(value, result.data(), size, kCFStringEncodingUTF8))
-            {
-                return std::string{};
-            }
-            result.resize(std::char_traits<char>::length(result.c_str()));
-            return result;
-        } };
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFMutableDictionaryRef query{ CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
                                                                 &kCFTypeDictionaryValueCallBacks) };
@@ -231,16 +235,16 @@ namespace parabolic::keyring
                     continue;
                 }
                 CFDataRef password_data{ static_cast<CFDataRef>(data_result) };
-                credentials
-                        .emplace_back(to_string(name_ref),
-                                      to_string(static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrComment))),
-                                      username_data != nullptr
-                                              ? std::string{ reinterpret_cast<const char*>(
-                                                                     CFDataGetBytePtr(username_data)),
-                                                             static_cast<std::size_t>(CFDataGetLength(username_data)) }
-                                              : std::string{},
-                                      std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(password_data)),
-                                                   static_cast<std::size_t>(CFDataGetLength(password_data)) });
+                credentials.emplace_back(str(name_ref),
+                                         str(static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrComment))),
+                                         username_data != nullptr
+                                                 ? std::string{ reinterpret_cast<const char*>(
+                                                                        CFDataGetBytePtr(username_data)),
+                                                                static_cast<std::size_t>(
+                                                                        CFDataGetLength(username_data)) }
+                                                 : std::string{},
+                                         std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(password_data)),
+                                                      static_cast<std::size_t>(CFDataGetLength(password_data)) });
                 CFRelease(data_result);
             }
             CFRelease(result);
