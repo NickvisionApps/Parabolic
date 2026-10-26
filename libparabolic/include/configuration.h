@@ -59,8 +59,8 @@ namespace parabolic::configuration
         void set_preferred_audio_codec(audio::Codec value);
         [[nodiscard]] video::FrameRate preferred_frame_rate() const;
         void set_preferred_frame_rate(video::FrameRate value);
-        [[nodiscard]] subtitle::Format preferred_subtitle_format() const;
-        void set_preferred_subtitle_format(subtitle::Format value);
+        [[nodiscard]] subtitle::Type preferred_subtitle_format() const;
+        void set_preferred_subtitle_format(subtitle::Type value);
         [[nodiscard]] video::Codec preferred_video_codec() const;
         void set_preferred_video_codec(video::Codec value);
         bool operator==(const FormatOptions& rhs) const = default;
@@ -72,7 +72,7 @@ namespace parabolic::configuration
         bool m_include_super_resolutions{ true };
         audio::Codec m_preferred_audio_codec{ audio::Codec::Any };
         video::FrameRate m_preferred_frame_rate{ video::FrameRate::Any };
-        subtitle::Format m_preferred_subtitle_format{ subtitle::Format::Any };
+        subtitle::Type m_preferred_subtitle_format{ subtitle::Type::Any };
         video::Codec m_preferred_video_codec{ video::Codec::Any };
     };
 
@@ -160,8 +160,8 @@ namespace parabolic::configuration
         void set_save_folder(const std::filesystem::path& value);
         [[nodiscard]] bool split_chapters() const;
         void set_split_chapters(bool value);
-        [[nodiscard]] const std::vector<subtitle::Subtitle>& subtitle_languages() const;
-        void set_subtitle_languages(const std::vector<subtitle::Subtitle>& value);
+        [[nodiscard]] const std::vector<subtitle::Language>& subtitle_languages() const;
+        void set_subtitle_languages(const std::vector<subtitle::Language>& value);
         [[nodiscard]] const std::map<file::Type, std::string>& video_format_ids() const;
         void set_video_format_ids(const std::map<file::Type, std::string>& value);
         [[nodiscard]] file::Type video_only_file_type() const;
@@ -186,7 +186,7 @@ namespace parabolic::configuration
         bool m_reverse_download_order{ false };
         std::filesystem::path m_save_folder;
         bool m_split_chapters{ false };
-        std::vector<subtitle::Subtitle> m_subtitle_languages;
+        std::vector<subtitle::Language> m_subtitle_languages;
         std::map<file::Type, std::string> m_video_format_ids;
         file::Type m_video_only_file_type{ file::Type::Mp4 };
         video::Resolution m_video_resolution{ video::Resolution::best() };

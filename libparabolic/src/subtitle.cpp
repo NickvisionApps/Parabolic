@@ -8,23 +8,23 @@
 
 namespace parabolic::subtitle
 {
-    Subtitle::Subtitle(std::string language, bool is_auto_generated)
+    Language::Language(std::string language, bool is_auto_generated)
         : m_language{ std::move(language) },
           m_is_auto_generated{ is_auto_generated }
     {
     }
 
-    const std::string& Subtitle::language() const
+    const std::string& Language::language() const
     {
         return m_language;
     }
 
-    bool Subtitle::is_auto_generated() const
+    bool Language::is_auto_generated() const
     {
         return m_is_auto_generated;
     }
 
-    std::string Subtitle::str(const translation::Translator& translator) const
+    std::string Language::str(const translation::Translator& translator) const
     {
         if (m_is_auto_generated)
         {
@@ -33,7 +33,7 @@ namespace parabolic::subtitle
         return m_language;
     }
 
-    std::strong_ordering Subtitle::operator<=>(const Subtitle& rhs) const
+    std::strong_ordering Language::operator<=>(const Language& rhs) const
     {
         if (m_is_auto_generated != rhs.m_is_auto_generated)
         {
@@ -42,12 +42,12 @@ namespace parabolic::subtitle
         return m_language <=> rhs.m_language;
     }
 
-    bool Subtitle::operator==(const Subtitle& rhs) const
+    bool Language::operator==(const Language& rhs) const
     {
         return m_language == rhs.m_language;
     }
 
-    void from_json(const nlohmann::json& json, Subtitle& language)
+    void from_json(const nlohmann::json& json, Language& language)
     {
         if (json.contains("language") && json["language"].is_string())
         {
@@ -67,7 +67,7 @@ namespace parabolic::subtitle
         }
     }
 
-    void to_json(nlohmann::json& json, const Subtitle& language)
+    void to_json(nlohmann::json& json, const Language& language)
     {
         json = nlohmann::json{
             { "language", language.m_language },

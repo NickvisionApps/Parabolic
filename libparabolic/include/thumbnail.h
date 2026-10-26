@@ -7,10 +7,10 @@
 
 namespace parabolic::thumbnail
 {
-    class Thumbnail
+    class Image
     {
     public:
-        Thumbnail(std::string url);
+        Image(std::string url);
         [[nodiscard]] const std::string& url() const;
         [[nodiscard]] const std::vector<std::uint8_t>& bytes() const;
 

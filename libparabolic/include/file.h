@@ -57,7 +57,7 @@ namespace parabolic::file
     [[nodiscard]] bool is_generic(Type type);
     [[nodiscard]] bool is_video(Type type);
     [[nodiscard]] bool should_recode(Type type);
-    [[nodiscard]] bool supports_subtitle(Type type, subtitle::Format format);
+    [[nodiscard]] bool supports_subtitle(Type type, subtitle::Type subtitle_type);
     [[nodiscard]] bool supports_thumbnails(Type type);
 }
 

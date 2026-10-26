@@ -8,7 +8,7 @@
 
 namespace parabolic::subtitle
 {
-    enum class Format : std::uint8_t
+    enum class Type : std::uint8_t
     {
         Any,
         Vtt,
@@ -17,17 +17,17 @@ namespace parabolic::subtitle
         Lrc,
     };
 
-    class Subtitle
+    class Language
     {
     public:
-        Subtitle(std::string language, bool is_auto_generated);
+        Language(std::string language, bool is_auto_generated);
         [[nodiscard]] const std::string& language() const;
         [[nodiscard]] bool is_auto_generated() const;
         [[nodiscard]] std::string str(const translation::Translator& translator) const;
-        std::strong_ordering operator<=>(const Subtitle& rhs) const;
-        bool operator==(const Subtitle& rhs) const;
-        friend void from_json(const nlohmann::json& json, Subtitle& language);
-        friend void to_json(nlohmann::json& json, const Subtitle& language);
+        std::strong_ordering operator<=>(const Language& rhs) const;
+        bool operator==(const Language& rhs) const;
+        friend void from_json(const nlohmann::json& json, Language& language);
+        friend void to_json(nlohmann::json& json, const Language& language);
 
     private:
         std::string m_language;

@@ -189,12 +189,12 @@ namespace parabolic::configuration
         m_preferred_frame_rate = value;
     }
 
-    subtitle::Format FormatOptions::preferred_subtitle_format() const
+    subtitle::Type FormatOptions::preferred_subtitle_format() const
     {
         return m_preferred_subtitle_format;
     }
 
-    void FormatOptions::set_preferred_subtitle_format(subtitle::Format value)
+    void FormatOptions::set_preferred_subtitle_format(subtitle::Type value)
     {
         m_preferred_subtitle_format = value;
     }
@@ -502,12 +502,12 @@ namespace parabolic::configuration
         m_split_chapters = value;
     }
 
-    const std::vector<subtitle::Subtitle>& PreviousDownloadOptions::subtitle_languages() const
+    const std::vector<subtitle::Language>& PreviousDownloadOptions::subtitle_languages() const
     {
         return m_subtitle_languages;
     }
 
-    void PreviousDownloadOptions::set_subtitle_languages(const std::vector<subtitle::Subtitle>& value)
+    void PreviousDownloadOptions::set_subtitle_languages(const std::vector<subtitle::Language>& value)
     {
         m_subtitle_languages = value;
     }
@@ -1008,8 +1008,8 @@ namespace parabolic::configuration
         read_value(json, "preferredAudioCodec", options.m_preferred_audio_codec, audio::Codec::Any, audio::Codec::Mp3);
         read_value(json, "preferredFrameRate", options.m_preferred_frame_rate, video::FrameRate::Any,
                    video::FrameRate::Fps60);
-        read_value(json, "preferredSubtitleFormat", options.m_preferred_subtitle_format, subtitle::Format::Any,
-                   subtitle::Format::Lrc);
+        read_value(json, "preferredSubtitleFormat", options.m_preferred_subtitle_format, subtitle::Type::Any,
+                   subtitle::Type::Lrc);
         read_value(json, "preferredVideoCodec", options.m_preferred_video_codec, video::Codec::Any, video::Codec::H264);
     }
 
@@ -1103,7 +1103,7 @@ namespace parabolic::configuration
             options.m_subtitle_languages.clear();
             for (const nlohmann::json& item: json["subtitleLanguages"])
             {
-                subtitle::Subtitle subtitle{ "", false };
+                subtitle::Language subtitle{ "", false };
                 from_json(item, subtitle);
                 options.m_subtitle_languages.push_back(subtitle);
             }
@@ -1257,7 +1257,7 @@ namespace parabolic::configuration
         {
             json["audioFormatIds"][std::to_string(static_cast<int>(pair.first))] = pair.second;
         }
-        for (const subtitle::Subtitle& item: options.m_subtitle_languages)
+        for (const subtitle::Language& item: options.m_subtitle_languages)
         {
             json["subtitleLanguages"].push_back(item);
         }

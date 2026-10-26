@@ -119,18 +119,18 @@ namespace parabolic::file
         }
     }
 
-    bool supports_subtitle(Type type, subtitle::Format format)
+    bool supports_subtitle(Type type, subtitle::Type subtitle_type)
     {
-        switch (format)
+        switch (subtitle_type)
         {
-        case subtitle::Format::Any:
-        case subtitle::Format::Vtt:
+        case subtitle::Type::Any:
+        case subtitle::Type::Vtt:
             return is_video(type) && type != Type::Avi;
-        case subtitle::Format::Srt:
+        case subtitle::Type::Srt:
             return is_video(type) && type != Type::Webm && type != Type::Avi;
-        case subtitle::Format::Ass:
+        case subtitle::Type::Ass:
             return is_video(type) && type != Type::Mkv;
-        case subtitle::Format::Lrc:
+        case subtitle::Type::Lrc:
             return is_audio(type);
         default:
             return false;

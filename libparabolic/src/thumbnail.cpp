@@ -10,17 +10,17 @@
 
 namespace parabolic::thumbnail
 {
-    Thumbnail::Thumbnail(std::string url)
+    Image::Image(std::string url)
         : m_url{ std::move(url) }
     {
     }
 
-    const std::string& Thumbnail::url() const
+    const std::string& Image::url() const
     {
         return m_url;
     }
 
-    const std::vector<std::uint8_t>& Thumbnail::bytes() const
+    const std::vector<std::uint8_t>& Image::bytes() const
     {
         static std::mutex s_mutex;
         static std::unordered_map<std::string, std::vector<std::uint8_t>> s_cache{
