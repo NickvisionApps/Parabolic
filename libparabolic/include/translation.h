@@ -14,7 +14,7 @@ namespace parabolic::translation
     class Translator
     {
     public:
-        Translator(std::string_view app_short_name, std::filesystem::path locale_dir = {});
+        Translator(const std::string& app_short_name, std::filesystem::path locale_dir = {});
         [[nodiscard]] static const std::string& follow_system_language();
         [[nodiscard]] const std::vector<std::string>& available_languages() const;
         [[nodiscard]] std::string language() const;

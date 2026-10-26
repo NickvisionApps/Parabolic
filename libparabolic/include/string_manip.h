@@ -12,9 +12,9 @@ namespace parabolic::string_manip
     concept ImplicitlyConstructableString =
             std::is_constructible_v<T, std::string> && std::is_convertible_v<std::string, T>;
 
-    [[nodiscard]] std::string lower(std::string_view str);
-    [[nodiscard]] std::string sanitize_for_filename(std::string_view str, bool include_windows_characters);
-    [[nodiscard]] std::string trim(std::string_view str);
+    [[nodiscard]] std::string lower(std::string str);
+    [[nodiscard]] std::string sanitize_for_filename(std::string str, bool include_windows_characters);
+    [[nodiscard]] std::string trim(std::string str);
     [[nodiscard]] std::string str(const std::wstring& wstr);
     [[nodiscard]] std::wstring wstr(const std::string& str);
 
