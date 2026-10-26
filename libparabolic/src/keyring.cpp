@@ -12,6 +12,7 @@
 #include "string_manip.h"
 #elifdef __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
+#include <MacTypes.h>
 #include <Security/Security.h>
 #elifdef __linux__
 #include <libsecret/secret.h>
@@ -131,12 +132,17 @@ namespace parabolic::keyring
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, credential.name().c_str(), kCFStringEncodingUTF8) };
         CFStringRef url_ref{ CFStringCreateWithCString(nullptr, credential.url().c_str(), kCFStringEncodingUTF8) };
-        CFDataRef username_data{ CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.username().data()),
-                                              static_cast<CFIndex>(credential.username().size())) };
-        CFDataRef password_data{ CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.password().data()),
-                                              static_cast<CFIndex>(credential.password().size())) };
-        CFMutableDictionaryRef query{ CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
-                                                                &kCFTypeDictionaryValueCallBacks) };
+        CFDataRef username_data{
+            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.username().data()),
+                         static_cast<CFIndex>(credential.username().size())),
+        };
+        CFDataRef password_data{
+            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.password().data()),
+                         static_cast<CFIndex>(credential.password().size())),
+        };
+        CFMutableDictionaryRef query{
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+        };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
         CFDictionaryAddValue(query, kSecAttrAccount, name_ref);
@@ -203,8 +209,9 @@ namespace parabolic::keyring
         }
 #elifdef __APPLE__
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
-        CFMutableDictionaryRef query{ CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
-                                                                &kCFTypeDictionaryValueCallBacks) };
+        CFMutableDictionaryRef query{
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+        };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
         CFDictionaryAddValue(query, kSecMatchLimit, kSecMatchLimitAll);
@@ -220,8 +227,10 @@ namespace parabolic::keyring
                 CFDictionaryRef item{ static_cast<CFDictionaryRef>(CFArrayGetValueAtIndex(items, i)) };
                 CFStringRef name_ref{ static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrAccount)) };
                 CFDataRef username_data{ static_cast<CFDataRef>(CFDictionaryGetValue(item, kSecAttrGeneric)) };
-                CFMutableDictionaryRef data_query{ CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
-                                                                             &kCFTypeDictionaryValueCallBacks) };
+                CFMutableDictionaryRef data_query{
+                    CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
+                                              &kCFTypeDictionaryValueCallBacks),
+                };
                 CFDictionaryAddValue(data_query, kSecClass, kSecClassGenericPassword);
                 CFDictionaryAddValue(data_query, kSecAttrService, service_ref);
                 CFDictionaryAddValue(data_query, kSecAttrAccount, name_ref);
@@ -301,8 +310,9 @@ namespace parabolic::keyring
 #elifdef __APPLE__
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, name.c_str(), kCFStringEncodingUTF8) };
-        CFMutableDictionaryRef query{ CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
-                                                                &kCFTypeDictionaryValueCallBacks) };
+        CFMutableDictionaryRef query{
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+        };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
         CFDictionaryAddValue(query, kSecAttrAccount, name_ref);
@@ -354,17 +364,23 @@ namespace parabolic::keyring
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, credential.name().c_str(), kCFStringEncodingUTF8) };
         CFStringRef url_ref{ CFStringCreateWithCString(nullptr, credential.url().c_str(), kCFStringEncodingUTF8) };
-        CFDataRef username_data{ CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.username().data()),
-                                              static_cast<CFIndex>(credential.username().size())) };
-        CFDataRef password_data{ CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.password().data()),
-                                              static_cast<CFIndex>(credential.password().size())) };
-        CFMutableDictionaryRef query{ CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
-                                                                &kCFTypeDictionaryValueCallBacks) };
+        CFDataRef username_data{
+            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.username().data()),
+                         static_cast<CFIndex>(credential.username().size())),
+        };
+        CFDataRef password_data{
+            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.password().data()),
+                         static_cast<CFIndex>(credential.password().size())),
+        };
+        CFMutableDictionaryRef query{
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+        };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
         CFDictionaryAddValue(query, kSecAttrAccount, name_ref);
-        CFMutableDictionaryRef attributes{ CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
-                                                                     &kCFTypeDictionaryValueCallBacks) };
+        CFMutableDictionaryRef attributes{
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+        };
         CFDictionaryAddValue(attributes, kSecAttrComment, url_ref);
         CFDictionaryAddValue(attributes, kSecAttrGeneric, username_data);
         CFDictionaryAddValue(attributes, kSecValueData, password_data);
