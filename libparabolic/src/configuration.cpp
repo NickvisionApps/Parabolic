@@ -20,13 +20,15 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
+#include "audio.h"
+#include "cookies.h"
 #include "environment.h"
 #include "file.h"
 #include "history.h"
-#include "media.h"
 #include "postprocessing.h"
 #include "subtitle.h"
 #include "translation.h"
+#include "video.h"
 #include "ytdlp.h"
 #ifdef _WIN32
 #include "string_manip.h"
@@ -167,22 +169,22 @@ namespace parabolic::configuration
         m_include_super_resolutions = value;
     }
 
-    media::AudioCodec FormatOptions::preferred_audio_codec() const
+    audio::Codec FormatOptions::preferred_audio_codec() const
     {
         return m_preferred_audio_codec;
     }
 
-    void FormatOptions::set_preferred_audio_codec(media::AudioCodec value)
+    void FormatOptions::set_preferred_audio_codec(audio::Codec value)
     {
         m_preferred_audio_codec = value;
     }
 
-    media::FrameRate FormatOptions::preferred_frame_rate() const
+    video::FrameRate FormatOptions::preferred_frame_rate() const
     {
         return m_preferred_frame_rate;
     }
 
-    void FormatOptions::set_preferred_frame_rate(media::FrameRate value)
+    void FormatOptions::set_preferred_frame_rate(video::FrameRate value)
     {
         m_preferred_frame_rate = value;
     }
@@ -197,12 +199,12 @@ namespace parabolic::configuration
         m_preferred_subtitle_format = value;
     }
 
-    media::VideoCodec FormatOptions::preferred_video_codec() const
+    video::Codec FormatOptions::preferred_video_codec() const
     {
         return m_preferred_video_codec;
     }
 
-    void FormatOptions::set_preferred_video_codec(media::VideoCodec value)
+    void FormatOptions::set_preferred_video_codec(video::Codec value)
     {
         m_preferred_video_codec = value;
     }
@@ -324,19 +326,19 @@ namespace parabolic::configuration
 
     PreviousDownloadOptions::PreviousDownloadOptions()
         : m_audio_format_ids{
-              { file::Type::VideoGeneric, media::Format::best_audio().id() },
-              { file::Type::Mp4, media::Format::best_audio().id() },
-              { file::Type::Mkv, media::Format::best_audio().id() },
-              { file::Type::Webm, media::Format::best_audio().id() },
-              { file::Type::Mov, media::Format::best_audio().id() },
-              { file::Type::Avi, media::Format::best_audio().id() },
-              { file::Type::AudioGeneric, media::Format::best_audio().id() },
-              { file::Type::Mp3, media::Format::best_audio().id() },
-              { file::Type::M4a, media::Format::best_audio().id() },
-              { file::Type::Opus, media::Format::best_audio().id() },
-              { file::Type::Flac, media::Format::best_audio().id() },
-              { file::Type::Wav, media::Format::best_audio().id() },
-              { file::Type::Ogg, media::Format::best_audio().id() },
+              { file::Type::VideoGeneric, ytdlp::Format::best_audio().id() },
+              { file::Type::Mp4, ytdlp::Format::best_audio().id() },
+              { file::Type::Mkv, ytdlp::Format::best_audio().id() },
+              { file::Type::Webm, ytdlp::Format::best_audio().id() },
+              { file::Type::Mov, ytdlp::Format::best_audio().id() },
+              { file::Type::Avi, ytdlp::Format::best_audio().id() },
+              { file::Type::AudioGeneric, ytdlp::Format::best_audio().id() },
+              { file::Type::Mp3, ytdlp::Format::best_audio().id() },
+              { file::Type::M4a, ytdlp::Format::best_audio().id() },
+              { file::Type::Opus, ytdlp::Format::best_audio().id() },
+              { file::Type::Flac, ytdlp::Format::best_audio().id() },
+              { file::Type::Wav, ytdlp::Format::best_audio().id() },
+              { file::Type::Ogg, ytdlp::Format::best_audio().id() },
           },
 #ifdef _WIN32
           m_save_folder{ std::filesystem::path(string_manip::wstr(sago::getDownloadFolder())) },
@@ -344,19 +346,19 @@ namespace parabolic::configuration
           m_save_folder{ sago::getDownloadFolder() },
 #endif
           m_video_format_ids{
-              { file::Type::VideoGeneric, media::Format::best_video().id() },
-              { file::Type::Mp4, media::Format::best_video().id() },
-              { file::Type::Mkv, media::Format::best_video().id() },
-              { file::Type::Webm, media::Format::best_video().id() },
-              { file::Type::Mov, media::Format::best_video().id() },
-              { file::Type::Avi, media::Format::best_video().id() },
-              { file::Type::AudioGeneric, media::Format::none_video().id() },
-              { file::Type::Mp3, media::Format::none_video().id() },
-              { file::Type::M4a, media::Format::none_video().id() },
-              { file::Type::Opus, media::Format::none_video().id() },
-              { file::Type::Flac, media::Format::none_video().id() },
-              { file::Type::Wav, media::Format::none_video().id() },
-              { file::Type::Ogg, media::Format::none_video().id() },
+              { file::Type::VideoGeneric, ytdlp::Format::best_video().id() },
+              { file::Type::Mp4, ytdlp::Format::best_video().id() },
+              { file::Type::Mkv, ytdlp::Format::best_video().id() },
+              { file::Type::Webm, ytdlp::Format::best_video().id() },
+              { file::Type::Mov, ytdlp::Format::best_video().id() },
+              { file::Type::Avi, ytdlp::Format::best_video().id() },
+              { file::Type::AudioGeneric, ytdlp::Format::none_video().id() },
+              { file::Type::Mp3, ytdlp::Format::none_video().id() },
+              { file::Type::M4a, ytdlp::Format::none_video().id() },
+              { file::Type::Opus, ytdlp::Format::none_video().id() },
+              { file::Type::Flac, ytdlp::Format::none_video().id() },
+              { file::Type::Wav, ytdlp::Format::none_video().id() },
+              { file::Type::Ogg, ytdlp::Format::none_video().id() },
           }
     {
     }
@@ -530,12 +532,12 @@ namespace parabolic::configuration
         m_video_only_file_type = value;
     }
 
-    const media::VideoResolution& PreviousDownloadOptions::video_resolution() const
+    const video::Resolution& PreviousDownloadOptions::video_resolution() const
     {
         return m_video_resolution;
     }
 
-    void PreviousDownloadOptions::set_video_resolution(const media::VideoResolution& value)
+    void PreviousDownloadOptions::set_video_resolution(const video::Resolution& value)
     {
         m_video_resolution = value;
     }
@@ -606,12 +608,12 @@ namespace parabolic::configuration
         m_y = value;
     }
 
-    ytdlp::Browser YtdlpOptions::cookies_browser() const
+    cookies::Browser YtdlpOptions::cookies_browser() const
     {
         return m_cookies_browser;
     }
 
-    void YtdlpOptions::set_cookies_browser(ytdlp::Browser value)
+    void YtdlpOptions::set_cookies_browser(cookies::Browser value)
     {
         m_cookies_browser = value;
     }
@@ -1003,14 +1005,12 @@ namespace parabolic::configuration
     {
         read_value(json, "includeAutoGeneratedSubtitles", options.m_include_auto_generated_subtitles);
         read_value(json, "includeSuperResolutions", options.m_include_super_resolutions);
-        read_value(json, "preferredAudioCodec", options.m_preferred_audio_codec, media::AudioCodec::Any,
-                   media::AudioCodec::Mp3);
-        read_value(json, "preferredFrameRate", options.m_preferred_frame_rate, media::FrameRate::Any,
-                   media::FrameRate::Fps60);
+        read_value(json, "preferredAudioCodec", options.m_preferred_audio_codec, audio::Codec::Any, audio::Codec::Mp3);
+        read_value(json, "preferredFrameRate", options.m_preferred_frame_rate, video::FrameRate::Any,
+                   video::FrameRate::Fps60);
         read_value(json, "preferredSubtitleFormat", options.m_preferred_subtitle_format, subtitle::Format::Any,
                    subtitle::Format::Lrc);
-        read_value(json, "preferredVideoCodec", options.m_preferred_video_codec, media::VideoCodec::Any,
-                   media::VideoCodec::H264);
+        read_value(json, "preferredVideoCodec", options.m_preferred_video_codec, video::Codec::Any, video::Codec::H264);
     }
 
     void from_json(const nlohmann::json& json, HistoryOptions& options)
@@ -1126,7 +1126,7 @@ namespace parabolic::configuration
                    file::Type::Ogg);
         if (json.contains("videoResolution") && json["videoResolution"].is_object())
         {
-            options.m_video_resolution = json["videoResolution"].get<media::VideoResolution>();
+            options.m_video_resolution = json["videoResolution"].get<video::Resolution>();
         }
     }
 
@@ -1141,7 +1141,7 @@ namespace parabolic::configuration
 
     void from_json(const nlohmann::json& json, YtdlpOptions& options)
     {
-        read_value(json, "cookiesBrowser", options.m_cookies_browser, ytdlp::Browser::None, ytdlp::Browser::Whale);
+        read_value(json, "cookiesBrowser", options.m_cookies_browser, cookies::Browser::None, cookies::Browser::Whale);
         read_value(json, "cookiesPath", options.m_cookies_path);
         read_value(json, "proxyUrl", options.m_proxy_url);
         if (json.contains("speedLimit"))

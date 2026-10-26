@@ -11,11 +11,13 @@
 #include <string>
 #include <string_view>
 #include <vector>
+#include "audio.h"
+#include "cookies.h"
 #include "file.h"
 #include "history.h"
-#include "media.h"
 #include "postprocessing.h"
 #include "subtitle.h"
+#include "video.h"
 #include "ytdlp.h"
 
 namespace parabolic::configuration
@@ -53,14 +55,14 @@ namespace parabolic::configuration
         void set_include_auto_generated_subtitles(bool value);
         [[nodiscard]] bool include_super_resolutions() const;
         void set_include_super_resolutions(bool value);
-        [[nodiscard]] media::AudioCodec preferred_audio_codec() const;
-        void set_preferred_audio_codec(media::AudioCodec value);
-        [[nodiscard]] media::FrameRate preferred_frame_rate() const;
-        void set_preferred_frame_rate(media::FrameRate value);
+        [[nodiscard]] audio::Codec preferred_audio_codec() const;
+        void set_preferred_audio_codec(audio::Codec value);
+        [[nodiscard]] video::FrameRate preferred_frame_rate() const;
+        void set_preferred_frame_rate(video::FrameRate value);
         [[nodiscard]] subtitle::Format preferred_subtitle_format() const;
         void set_preferred_subtitle_format(subtitle::Format value);
-        [[nodiscard]] media::VideoCodec preferred_video_codec() const;
-        void set_preferred_video_codec(media::VideoCodec value);
+        [[nodiscard]] video::Codec preferred_video_codec() const;
+        void set_preferred_video_codec(video::Codec value);
         bool operator==(const FormatOptions& rhs) const = default;
         friend void from_json(const nlohmann::json& json, FormatOptions& options);
         friend void to_json(nlohmann::json& json, const FormatOptions& options);
@@ -68,10 +70,10 @@ namespace parabolic::configuration
     private:
         bool m_include_auto_generated_subtitles{ true };
         bool m_include_super_resolutions{ true };
-        media::AudioCodec m_preferred_audio_codec{ media::AudioCodec::Any };
-        media::FrameRate m_preferred_frame_rate{ media::FrameRate::Any };
+        audio::Codec m_preferred_audio_codec{ audio::Codec::Any };
+        video::FrameRate m_preferred_frame_rate{ video::FrameRate::Any };
         subtitle::Format m_preferred_subtitle_format{ subtitle::Format::Any };
-        media::VideoCodec m_preferred_video_codec{ media::VideoCodec::Any };
+        video::Codec m_preferred_video_codec{ video::Codec::Any };
     };
 
     class HistoryOptions
@@ -164,8 +166,8 @@ namespace parabolic::configuration
         void set_video_format_ids(const std::map<file::Type, std::string>& value);
         [[nodiscard]] file::Type video_only_file_type() const;
         void set_video_only_file_type(file::Type value);
-        [[nodiscard]] const media::VideoResolution& video_resolution() const;
-        void set_video_resolution(const media::VideoResolution& value);
+        [[nodiscard]] const video::Resolution& video_resolution() const;
+        void set_video_resolution(const video::Resolution& value);
         bool operator==(const PreviousDownloadOptions& rhs) const = default;
         friend void from_json(const nlohmann::json& json, PreviousDownloadOptions& options);
         friend void to_json(nlohmann::json& json, const PreviousDownloadOptions& options);
@@ -187,7 +189,7 @@ namespace parabolic::configuration
         std::vector<subtitle::Subtitle> m_subtitle_languages;
         std::map<file::Type, std::string> m_video_format_ids;
         file::Type m_video_only_file_type{ file::Type::Mp4 };
-        media::VideoResolution m_video_resolution{ media::VideoResolution::best() };
+        video::Resolution m_video_resolution{ video::Resolution::best() };
     };
 
     class WindowGeometry
@@ -221,8 +223,8 @@ namespace parabolic::configuration
     class YtdlpOptions
     {
     public:
-        [[nodiscard]] ytdlp::Browser cookies_browser() const;
-        void set_cookies_browser(ytdlp::Browser value);
+        [[nodiscard]] cookies::Browser cookies_browser() const;
+        void set_cookies_browser(cookies::Browser value);
         [[nodiscard]] const std::string& cookies_path() const;
         void set_cookies_path(const std::string& value);
         [[nodiscard]] const std::string& proxy_url() const;
@@ -242,7 +244,7 @@ namespace parabolic::configuration
         friend void to_json(nlohmann::json& json, const YtdlpOptions& options);
 
     private:
-        ytdlp::Browser m_cookies_browser{ ytdlp::Browser::None };
+        cookies::Browser m_cookies_browser{ cookies::Browser::None };
         std::string m_cookies_path;
         std::string m_proxy_url;
         std::optional<int> m_speed_limit;

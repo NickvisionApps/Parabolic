@@ -1,9 +1,35 @@
 #include "file.h"
+#include <chrono>
+#include <format>
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
+#include <string>
 #include <string_view>
 #include "subtitle.h"
 
 namespace parabolic::file
 {
+    TimeFrame::TimeFrame(std::chrono::seconds start, std::chrono::seconds end)
+        : m_start{ start },
+          m_end{ end }
+    {
+    }
+
+    std::chrono::seconds TimeFrame::start() const
+    {
+        return m_start;
+    }
+
+    std::chrono::seconds TimeFrame::end() const
+    {
+        return m_end;
+    }
+
+    std::string TimeFrame::str() const
+    {
+        return std::format("{:%H:%M:%S} - {:%H:%M:%S}", m_start, m_end);
+    }
+
     std::string_view dot_extension(Type type)
     {
         switch (type)
@@ -127,5 +153,30 @@ namespace parabolic::file
         default:
             return false;
         }
+    }
+
+    void from_json(const nlohmann::json& json, TimeFrame& time_frame)
+    {
+        if (json.contains("start") && json["start"].is_number_integer())
+        {
+            time_frame.m_start = std::chrono::seconds(json.at("start").get<int>());
+        }
+        else if (json.contains("Start") && json["Start"].is_number_integer())
+        {
+            time_frame.m_start = std::chrono::seconds(json.at("Start").get<int>());
+        }
+        if (json.contains("end") && json["end"].is_number_integer())
+        {
+            time_frame.m_end = std::chrono::seconds(json.at("end").get<int>());
+        }
+        else if (json.contains("End") && json["End"].is_number_integer())
+        {
+            time_frame.m_end = std::chrono::seconds(json.at("End").get<int>());
+        }
+    }
+
+    void to_json(nlohmann::json& json, const TimeFrame& time_frame)
+    {
+        json = nlohmann::json{ { "start", time_frame.m_start.count() }, { "end", time_frame.m_end.count() } };
     }
 }
