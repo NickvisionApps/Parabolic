@@ -84,6 +84,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             arguments.Add("--plugin-dir");
             arguments.Add(pluginsDir);
         }
+        AddFacebookBrowserArguments(arguments);
         if (_configurationService.LimitCharacters)
         {
             arguments.Add("--windows-filenames");
@@ -172,6 +173,7 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 arguments.Add("srt_fix");
             }
         }
+        AddFacebookBrowserArguments(arguments);
         if (_configurationService.OverwriteExistingFiles && !HasPartialDownloadFiles(downloadOptions.SaveFolder, downloadOptions.SaveFilename))
         {
             arguments.Add("--force-overwrites");
@@ -560,6 +562,20 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 RedirectStandardError = true
             }
         };
+    }
+
+    private static void AddFacebookBrowserArguments(List<string> arguments)
+    {
+        if (!OperatingSystem.IsMacOS())
+        {
+            return;
+        }
+        var reader = Path.Combine(Desktop.System.Environment.ExecutingDirectory, "facebook-page-reader");
+        if (File.Exists(reader))
+        {
+            arguments.Add("--extractor-args");
+            arguments.Add($"facebookbrowser:page_reader={reader}");
+        }
     }
 
     public override async Task<bool> DownloadUpdateAsync(AppVersion version, IProgress<DownloadProgress>? progress = null)
