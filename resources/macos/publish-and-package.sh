@@ -76,6 +76,19 @@ sed -i '' "s|@APP_NAME@|$APP_NAME|g" "$APP_BUNDLE/Contents/Info.plist"
 sed -i '' "s|@OUTPUT_NAME@|$PROJECT|g" "$APP_BUNDLE/Contents/Info.plist"
 success "Created Info.plist."
 
+# Build the short-lived WebKit reader used by the Facebook extractor plugin.
+info "Building Facebook page reader..."
+case "$RUNTIME" in
+    osx-arm64) READER_ARCH="arm64" ;;
+    osx-x64) READER_ARCH="x86_64" ;;
+    *) error "Unsupported macOS runtime for Facebook page reader: $RUNTIME" ;;
+esac
+xcrun swiftc -O -target "${READER_ARCH}-apple-macosx14.0" \
+    -framework AppKit -framework WebKit \
+    FacebookPageReader.swift -o "$APP_BUNDLE/Contents/MacOS/facebook-page-reader"
+chmod +x "$APP_BUNDLE/Contents/MacOS/facebook-page-reader"
+success "Built Facebook page reader."
+
 # Set app icon
 info "Setting app icon..."
 if [[ -f "../${APP_ID}.png" ]]; then
@@ -359,6 +372,7 @@ for TOOL in ffmpeg ffprobe ffplay aria2c deno; do
     fi
 done
 codesign --force --sign - "$APP_BUNDLE/Contents/MacOS/$REAL_BINARY"
+codesign --force --sign - "$APP_BUNDLE/Contents/MacOS/facebook-page-reader"
 success "Ad-hoc signed bundled libraries and executables."
 
 # Restore pwd

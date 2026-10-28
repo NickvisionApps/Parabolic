@@ -1,0 +1,27 @@
+name: Facebook browser extractor tests
+
+on:
+  pull_request:
+    paths:
+      - "resources/yt-dlp-plugins/facebook_browser/**"
+      - "tests/test_facebook_browser.py"
+      - ".github/workflows/facebook-browser.yml"
+  push:
+    paths:
+      - "resources/yt-dlp-plugins/facebook_browser/**"
+      - "tests/test_facebook_browser.py"
+      - ".github/workflows/facebook-browser.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  regression-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python -m pip install yt-dlp
+      - run: python -m unittest discover -s tests -p 'test_facebook_browser.py' -v
