@@ -1,12 +1,84 @@
 #include "discovery.h"
+#include <filesystem>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
+#include <optional>
+#include <ranges>
+#include <string>
+#include <vector>
 #include "audio.h"
+#include "batch.h"
+#include "keyring.h"
 #include "subtitle.h"
 #include "video.h"
 
 namespace parabolic::discovery
 {
+    const std::string& Entry::url() const
+    {
+        return m_url;
+    }
+
+    const std::string& Entry::title() const
+    {
+        return m_title;
+    }
+
+    int Entry::playlist_index() const
+    {
+        return m_playlist_index;
+    }
+
+    bool Entry::requires_playlist_items_option() const
+    {
+        return m_requires_playlist_items_option;
+    }
+
+    void Entry::set_requires_playlist_items_option(bool value)
+    {
+        m_requires_playlist_items_option = value;
+    }
+
+    file::Kind Entry::kind() const
+    {
+        return m_kind;
+    }
+
+    const file::TimeFrame& Entry::time_frame() const
+    {
+        return m_time_frame;
+    }
+
+    const std::vector<file::Format>& Entry::formats() const
+    {
+        return m_formats;
+    }
+
+    const std::vector<subtitle::Language>& Entry::subtitle_languages() const
+    {
+        return m_subtitle_languages;
+    }
+
+    const std::string& Entry::thumbnail_url() const
+    {
+        return m_thumbnail_url;
+    }
+
+    const std::string& Entry::suggested_save_folder() const
+    {
+        return m_suggested_save_folder;
+    }
+
+    std::strong_ordering Entry::operator<=>(const Entry& rhs) const
+    {
+        return m_title <=> rhs.m_title;
+    }
+
+    bool Entry::operator==(const Entry& rhs) const
+    {
+        return m_url == rhs.m_url;
+    }
+
     bool Options::include_media_id_in_title() const
     {
         return m_include_media_id_in_title;
@@ -82,9 +154,141 @@ namespace parabolic::discovery
         return m_options;
     }
 
+    Result::Result()
+    {
+        static unsigned int next_id{ 1 };
+        m_id = next_id++;
+    }
+
+    Result::Result(std::string url, std::string title, const std::vector<Result>& results)
+        : m_url{ std::move(url) },
+          m_title{ std::move(title) }
+    {
+        for (const Result& result: results)
+        {
+            m_has_suggested_save_folder |= result.m_has_suggested_save_folder;
+            m_entries.reserve(m_entries.size() + result.m_entries.size());
+            m_entries.insert_range(m_entries.end(), result.m_entries);
+        }
+    }
+
+    unsigned int Result::id() const
+    {
+        return m_id;
+    }
+
+    const std::string& Result::url() const
+    {
+        return m_url;
+    }
+
+    const std::string& Result::title() const
+    {
+        return m_title;
+    }
+
+    bool Result::has_suggested_save_folder() const
+    {
+        return m_has_suggested_save_folder;
+    }
+
+    const std::vector<Entry>& Result::entries() const
+    {
+        return m_entries;
+    }
+
+    bool Result::is_playlist() const
+    {
+        return m_entries.size() > 1;
+    }
+
+    bool Result::empty() const
+    {
+        return m_entries.empty();
+    }
+
+    size_t Result::size() const
+    {
+        return m_entries.size();
+    }
+
+    std::vector<Entry>::const_iterator Result::begin() const
+    {
+        return m_entries.begin();
+    }
+
+    std::vector<Entry>::const_iterator Result::end() const
+    {
+        return m_entries.end();
+    }
+
+    std::vector<Entry>::const_reverse_iterator Result::rbegin() const
+    {
+        return m_entries.rbegin();
+    }
+
+    std::vector<Entry>::const_reverse_iterator Result::rend() const
+    {
+        return m_entries.rend();
+    }
+
+    std::vector<Entry>::const_iterator Result::cbegin() const
+    {
+        return m_entries.cbegin();
+    }
+
+    std::vector<Entry>::const_iterator Result::cend() const
+    {
+        return m_entries.cend();
+    }
+
+    std::vector<Entry>::const_reverse_iterator Result::crbegin() const
+    {
+        return m_entries.crbegin();
+    }
+
+    std::vector<Entry>::const_reverse_iterator Result::crend() const
+    {
+        return m_entries.crend();
+    }
+
+    void Result::sort()
+    {
+        std::ranges::sort(m_entries);
+    }
+
+    const Entry& Result::operator[](size_t index) const
+    {
+        return m_entries[index];
+    }
+
     void Manager::set_options(const Options& options)
     {
         m_options = options;
+    }
+
+    Result Manager::discover_file(const std::filesystem::path& path,
+                                              const std::optional<keyring::Credential>& credential) const
+    {
+        std::vector<Result> results;
+        for (const batch::Item& item: batch::read_file(path))
+        {
+            results.push_back(discover(item.url(), item.suggested_save_folder(), item.suggested_filename(), credential));
+        }
+        return { path, path.stem().string(), results };
+    }
+
+    Result Manager::discover_url(const std::string& url,
+                                             const std::optional<keyring::Credential>& credential) const
+    {
+        return discover(url, {}, {}, credential);
+    }
+
+    Result Manager::discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
+                                         const std::string& suggested_filename,
+                                         const std::optional<keyring::Credential>& credential) const
+    {
+        return { url, suggested_filename, {} };
     }
 
     void from_json(const nlohmann::json& json, Options& options)
