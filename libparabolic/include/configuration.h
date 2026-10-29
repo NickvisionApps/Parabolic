@@ -17,6 +17,8 @@
 #include "history.h"
 #include "postprocessing.h"
 #include "subtitle.h"
+#include "translation.h"
+#include "updates.h"
 #include "video.h"
 
 namespace parabolic::configuration
@@ -122,8 +124,6 @@ namespace parabolic::configuration
     {
     public:
         Configuration(std::string_view app_name);
-        [[nodiscard]] bool allow_preview_updates() const;
-        void set_allow_preview_updates(bool value);
         [[nodiscard]] aria2::Options aria2_options() const;
         void set_aria2_options(const aria2::Options& value);
         [[nodiscard]] bool automatically_check_for_updates() const;
@@ -154,8 +154,10 @@ namespace parabolic::configuration
         void set_subtitle_options(const subtitle::Options& value);
         [[nodiscard]] Theme theme() const;
         void set_theme(Theme value);
-        [[nodiscard]] std::string translation_language() const;
-        void set_translation_language(const std::string& value);
+        [[nodiscard]] translation::Options translation_options() const;
+        void set_translation_options(const translation::Options& value);
+        [[nodiscard]] updates::Options updates_options() const;
+        void set_updates_options(const updates::Options& value);
         [[nodiscard]] WindowGeometry window_geometry() const;
         void set_window_geometry(const WindowGeometry& value);
         [[nodiscard]] std::string str() const;
@@ -165,7 +167,6 @@ namespace parabolic::configuration
     private:
         void save() const;
         mutable std::mutex m_mutex;
-        bool m_allow_preview_updates{ false };
         aria2::Options m_aria2_options;
         bool m_automatically_check_for_updates{ true };
         discovery::Options m_discovery_options;
@@ -182,7 +183,8 @@ namespace parabolic::configuration
         bool m_show_disclaimer_on_startup{ true };
         subtitle::Options m_subtitle_options;
         Theme m_theme{ Theme::System };
-        std::string m_translation_language;
+        translation::Options m_translation_options;
+        updates::Options m_updates_options;
         WindowGeometry m_window_geometry;
     };
 }

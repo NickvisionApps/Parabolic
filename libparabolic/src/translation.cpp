@@ -4,8 +4,9 @@
 #include <filesystem>
 #include <libintl.h>
 #include <mutex>
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <string>
-#include <string_view>
 #include <unordered_set>
 #include <utility>
 #include <vector>
@@ -31,6 +32,21 @@ namespace
 
 namespace parabolic::translation
 {
+    Options::Options()
+        : m_language{ FOLLOW_SYSTEM_LANGUAGE }
+    {
+    }
+
+    const std::string& Options::language() const
+    {
+        return m_language;
+    }
+
+    void Options::set_language(const std::string& value)
+    {
+        m_language = !value.empty() ? value : FOLLOW_SYSTEM_LANGUAGE;
+    }
+
     Translator::Translator(const std::string& app_short_name, std::filesystem::path locale_dir)
         : m_domain_name{ string_manip::lower(app_short_name) },
           m_locale_dir{ !locale_dir.empty() ? std::move(locale_dir) : environment::executable_directory() / "locale" },
@@ -80,10 +96,16 @@ namespace parabolic::translation
         return m_language;
     }
 
-    std::string Translator::set_language(std::string_view language)
+    const Options& Translator::options() const
     {
+        return m_options;
+    }
+
+    void Translator::set_options(const Options& options)
+    {
+        const std::string& language{ options.language() };
         std::string resolved;
-        if (language.empty() || language == FOLLOW_SYSTEM_LANGUAGE)
+        if (language == FOLLOW_SYSTEM_LANGUAGE)
         {
             resolved = normalize_language(environment::locale());
             for (const char* name: { "LC_ALL", "LC_MESSAGES", "LANG" })
@@ -98,7 +120,7 @@ namespace parabolic::translation
         }
         else
         {
-            resolved = normalize_language(std::string(language));
+            resolved = normalize_language(language);
         }
         if (resolved != "en_US" && std::ranges::find(m_available_languages, resolved) == m_available_languages.end())
         {
@@ -114,8 +136,8 @@ namespace parabolic::translation
         }
         std::scoped_lock lock{ m_mutex };
         environment::set_variable("LANGUAGE", resolved);
-        m_language = resolved;
-        return m_language;
+        m_options = options;
+        m_language = std::move(resolved);
     }
 
     const char* Translator::_(const char* msgid) const
@@ -178,5 +200,24 @@ namespace parabolic::translation
             "te",    "th", "tr",    "uk",    "ur",    "uz", "vi",     "zh-CN", "zh-HK",   "zh-TW", "zu",
         };
         return supported.contains(language);
+    }
+
+    void from_json(const nlohmann::json& json, Options& options)
+    {
+        if (json.contains("translationLanguage") && json["translationLanguage"].is_string())
+        {
+            options.set_language(json.at("translationLanguage").get<std::string>());
+        }
+        else if (json.contains("TranslationLanguage") && json["TranslationLanguage"].is_string())
+        {
+            options.set_language(json.at("TranslationLanguage").get<std::string>());
+        }
+    }
+
+    void to_json(nlohmann::json& json, const Options& options)
+    {
+        json = nlohmann::json{
+            { "translationLanguage", options.m_language },
+        };
     }
 }

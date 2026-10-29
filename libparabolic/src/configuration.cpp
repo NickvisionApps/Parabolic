@@ -26,6 +26,7 @@
 #include "postprocessing.h"
 #include "subtitle.h"
 #include "translation.h"
+#include "updates.h"
 #include "video.h"
 #ifdef _WIN32
 #include "string_manip.h"
@@ -321,14 +322,13 @@ namespace parabolic::configuration
 #ifdef _WIN32
         : m_path{ environment::is_portable() ? environment::executable_directory() / "config.json"
                                              : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) /
-                                                       app_name / "config.json" },
+                                                       app_name / "config.json" }
 #else
         : m_path{
               environment::is_portable() ? environment::executable_directory() / "config.json"
                                          : std::filesystem::path(sago::getConfigHome()) / app_name / "config.json",
-          },
+          }
 #endif
-          m_translation_language{ translation::Translator::follow_system_language() }
     {
 #ifdef _WIN32
         m_limit_characters = true;
@@ -373,23 +373,6 @@ namespace parabolic::configuration
         {
             return;
         }
-    }
-
-    bool Configuration::allow_preview_updates() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_allow_preview_updates;
-    }
-
-    void Configuration::set_allow_preview_updates(bool value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_allow_preview_updates == value)
-        {
-            return;
-        }
-        m_allow_preview_updates = value;
-        save();
     }
 
     aria2::Options Configuration::aria2_options() const
@@ -647,32 +630,37 @@ namespace parabolic::configuration
         save();
     }
 
-    std::string Configuration::translation_language() const
+    translation::Options Configuration::translation_options() const
     {
         std::scoped_lock lock{ m_mutex };
-        if (m_translation_language.empty())
-        {
-            return translation::Translator::follow_system_language();
-        }
-        return m_translation_language;
+        return m_translation_options;
     }
 
-    void Configuration::set_translation_language(const std::string& value)
+    void Configuration::set_translation_options(const translation::Options& value)
     {
         std::scoped_lock lock{ m_mutex };
-        if (value == m_translation_language ||
-            (m_translation_language == translation::Translator::follow_system_language() && value.empty()))
+        if (m_translation_options == value)
         {
             return;
         }
-        if (value.empty())
+        m_translation_options = value;
+        save();
+    }
+
+    updates::Options Configuration::updates_options() const
+    {
+        std::scoped_lock lock{ m_mutex };
+        return m_updates_options;
+    }
+
+    void Configuration::set_updates_options(const updates::Options& value)
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (m_updates_options == value)
         {
-            m_translation_language = translation::Translator::follow_system_language();
+            return;
         }
-        else
-        {
-            m_translation_language = value;
-        }
+        m_updates_options = value;
         save();
     }
 
@@ -702,14 +690,6 @@ namespace parabolic::configuration
 
     void from_json(const nlohmann::json& json, Configuration& config)
     {
-        if (json.contains("allowPreviewUpdates") && json["allowPreviewUpdates"].is_boolean())
-        {
-            config.m_allow_preview_updates = json.at("allowPreviewUpdates").get<bool>();
-        }
-        else if (json.contains("AllowPreviewUpdates") && json["AllowPreviewUpdates"].is_boolean())
-        {
-            config.m_allow_preview_updates = json.at("AllowPreviewUpdates").get<bool>();
-        }
         if (json.contains("automaticallyCheckForUpdates") && json["automaticallyCheckForUpdates"].is_boolean())
         {
             config.m_automatically_check_for_updates = json.at("automaticallyCheckForUpdates").get<bool>();
@@ -784,14 +764,6 @@ namespace parabolic::configuration
                 config.m_theme = static_cast<Theme>(value);
             }
         }
-        if (json.contains("translationLanguage") && json["translationLanguage"].is_string())
-        {
-            config.m_translation_language = json.at("translationLanguage").get<std::string>();
-        }
-        else if (json.contains("TranslationLanguage") && json["TranslationLanguage"].is_string())
-        {
-            config.m_translation_language = json.at("TranslationLanguage").get<std::string>();
-        }
         if (json.contains("windowGeometry") && json["windowGeometry"].is_object())
         {
             config.m_window_geometry = json["windowGeometry"].get<WindowGeometry>();
@@ -803,6 +775,8 @@ namespace parabolic::configuration
         from_json(json, config.m_postprocessing_options);
         from_json(json, config.m_previous_download_options);
         from_json(json, config.m_subtitle_options);
+        from_json(json, config.m_translation_options);
+        from_json(json, config.m_updates_options);
     }
 
     void from_json(const nlohmann::json& json, PreviousDownloadOptions& options)
@@ -1029,7 +1003,6 @@ namespace parabolic::configuration
     void to_json(nlohmann::json& json, const Configuration& config)
     {
         json = nlohmann::json{
-            { "allowPreviewUpdates", config.m_allow_preview_updates },
             { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
             { "includeMediaIdInTitle", config.m_include_media_id_in_title },
             { "limitCharacters", config.m_limit_characters },
@@ -1038,7 +1011,6 @@ namespace parabolic::configuration
             { "preventSuspend", config.m_prevent_suspend },
             { "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup },
             { "theme", static_cast<int>(config.m_theme) },
-            { "translationLanguage", config.m_translation_language },
             { "windowGeometry", config.m_window_geometry },
         };
         json.update(nlohmann::json(config.m_aria2_options));
@@ -1048,6 +1020,8 @@ namespace parabolic::configuration
         json.update(nlohmann::json(config.m_postprocessing_options));
         json.update(nlohmann::json(config.m_previous_download_options));
         json.update(nlohmann::json(config.m_subtitle_options));
+        json.update(nlohmann::json(config.m_translation_options));
+        json.update(nlohmann::json(config.m_updates_options));
     }
 
     void to_json(nlohmann::json& json, const PreviousDownloadOptions& options)

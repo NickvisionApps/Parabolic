@@ -80,6 +80,16 @@ namespace parabolic::updates
         m_asset_digest = asset_digest;
     }
 
+    bool Options::allow_preview_updates() const
+    {
+        return m_allow_preview_updates;
+    }
+
+    void Options::set_allow_preview_updates(bool value)
+    {
+        m_allow_preview_updates = value;
+    }
+
     Updater::Updater(std::string repo_owner, std::string repo_name, semver::version<> current_version,
                      const std::string& target_asset_name)
         : m_repo_owner{ std::move(repo_owner) },
@@ -87,16 +97,6 @@ namespace parabolic::updates
           m_current_version{ std::move(current_version) },
           m_target_asset_name{ string_manip::lower(target_asset_name) }
     {
-    }
-
-    bool Updater::allow_preview_updates() const
-    {
-        return m_allow_preview_updates;
-    }
-
-    void Updater::set_allow_preview_updates(bool allow_preview_updates)
-    {
-        m_allow_preview_updates = allow_preview_updates;
     }
 
     std::optional<Info> Updater::check_for_updates() const
@@ -163,7 +163,7 @@ namespace parabolic::updates
                 continue;
             }
             bool prerelease{ release.value("prerelease", false) };
-            if (!m_allow_preview_updates && prerelease)
+            if (!m_options.allow_preview_updates() && prerelease)
             {
                 continue;
             }
@@ -260,5 +260,34 @@ namespace parabolic::updates
         }
         std::filesystem::remove(destination);
         return std::nullopt;
+    }
+
+    const Options& Updater::options() const
+    {
+        return m_options;
+    }
+
+    void Updater::set_options(const Options& options)
+    {
+        m_options = options;
+    }
+
+    void from_json(const nlohmann::json& json, Options& options)
+    {
+        if (json.contains("allowPreviewUpdates") && json["allowPreviewUpdates"].is_boolean())
+        {
+            options.m_allow_preview_updates = json.at("allowPreviewUpdates").get<bool>();
+        }
+        else if (json.contains("AllowPreviewUpdates") && json["AllowPreviewUpdates"].is_boolean())
+        {
+            options.m_allow_preview_updates = json.at("AllowPreviewUpdates").get<bool>();
+        }
+    }
+
+    void to_json(nlohmann::json& json, const Options& options)
+    {
+        json = nlohmann::json{
+            { "allowPreviewUpdates", options.m_allow_preview_updates },
+        };
     }
 }

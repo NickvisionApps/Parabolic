@@ -215,18 +215,19 @@ namespace parabolic::application
 
     const Translator& State::translator() const
     {
-        std::string config_language{ m_configuration->translation_language() };
-        std::string resolved_language{ m_translator->set_language(config_language) };
-        if (config_language != Translator::follow_system_language())
+        translation::Options options{ m_configuration->translation_options() };
+        m_translator->set_options(options);
+        if (options.language() != Translator::follow_system_language())
         {
-            m_configuration->set_translation_language(resolved_language);
+            options.set_language(m_translator->language());
+            m_configuration->set_translation_options(options);
         }
         return *m_translator;
     }
 
     const Updater& State::updater() const
     {
-        m_updater->set_allow_preview_updates(m_configuration->allow_preview_updates());
+        m_updater->set_options(m_configuration->updates_options());
         return *m_updater;
     }
 }

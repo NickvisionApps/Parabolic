@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <functional>
+#include <nlohmann/json_fwd.hpp>
 #include <optional>
 #include <semver.hpp>
 #include <string>
@@ -37,23 +38,36 @@ namespace parabolic::updates
         std::string m_asset_digest;
     };
 
+    class Options
+    {
+    public:
+        [[nodiscard]] bool allow_preview_updates() const;
+        void set_allow_preview_updates(bool value);
+        bool operator==(const Options& rhs) const = default;
+        friend void from_json(const nlohmann::json& json, Options& options);
+        friend void to_json(nlohmann::json& json, const Options& options);
+
+    private:
+        bool m_allow_preview_updates{ false };
+    };
+
     class Updater
     {
     public:
         Updater(std::string repo_owner, std::string repo_name, semver::version<> current_version,
                 const std::string& target_asset_name);
-        [[nodiscard]] bool allow_preview_updates() const;
-        void set_allow_preview_updates(bool allow_preview_updates);
         [[nodiscard]] std::optional<Info> check_for_updates() const;
         [[nodiscard]] std::optional<std::filesystem::path>
         download_update(const Info& info, const DownloadProgressCallback& progress) const;
+        [[nodiscard]] const Options& options() const;
+        void set_options(const Options& options);
 
     private:
         std::string m_repo_owner;
         std::string m_repo_name;
         semver::version<> m_current_version;
         std::string m_target_asset_name;
-        bool m_allow_preview_updates{ false };
+        Options m_options;
     };
 }
 
