@@ -11,9 +11,9 @@
 #include <string_view>
 #include <vector>
 #include "aria2.h"
+#include "discovery.h"
 #include "extractor.h"
 #include "file.h"
-#include "format.h"
 #include "history.h"
 #include "postprocessing.h"
 #include "subtitle.h"
@@ -128,10 +128,10 @@ namespace parabolic::configuration
         void set_aria2_options(const aria2::Options& value);
         [[nodiscard]] bool automatically_check_for_updates() const;
         void set_automatically_check_for_updates(bool value);
+        [[nodiscard]] discovery::Options discovery_options() const;
+        void set_discovery_options(const discovery::Options& value);
         [[nodiscard]] extractor::Options extractor_options() const;
         void set_extractor_options(const extractor::Options& value);
-        [[nodiscard]] format::Options format_options() const;
-        void set_format_options(const format::Options& value);
         [[nodiscard]] history::Options history_options() const;
         void set_history_options(const history::Options& value);
         [[nodiscard]] bool include_media_id_in_title() const;
@@ -168,8 +168,8 @@ namespace parabolic::configuration
         bool m_allow_preview_updates{ false };
         aria2::Options m_aria2_options;
         bool m_automatically_check_for_updates{ true };
+        discovery::Options m_discovery_options;
         extractor::Options m_extractor_options;
-        format::Options m_format_options;
         history::Options m_history_options;
         bool m_include_media_id_in_title{ true };
         bool m_limit_characters{ false };

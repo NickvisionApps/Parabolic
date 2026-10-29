@@ -16,9 +16,14 @@
 #include <system_error>
 #include <utility>
 #include <vector>
+#include "aria2.h"
+#include "discovery.h"
 #include "environment.h"
+#include "extractor.h"
 #include "file.h"
 #include "format.h"
+#include "history.h"
+#include "postprocessing.h"
 #include "subtitle.h"
 #include "translation.h"
 #include "video.h"
@@ -421,6 +426,23 @@ namespace parabolic::configuration
         save();
     }
 
+    discovery::Options Configuration::discovery_options() const
+    {
+        std::scoped_lock lock{ m_mutex };
+        return m_discovery_options;
+    }
+
+    void Configuration::set_discovery_options(const discovery::Options& value)
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (m_discovery_options == value)
+        {
+            return;
+        }
+        m_discovery_options = value;
+        save();
+    }
+
     extractor::Options Configuration::extractor_options() const
     {
         std::scoped_lock lock{ m_mutex };
@@ -435,23 +457,6 @@ namespace parabolic::configuration
             return;
         }
         m_extractor_options = value;
-        save();
-    }
-
-    format::Options Configuration::format_options() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_format_options;
-    }
-
-    void Configuration::set_format_options(const format::Options& value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_format_options == value)
-        {
-            return;
-        }
-        m_format_options = value;
         save();
     }
 
@@ -792,8 +797,8 @@ namespace parabolic::configuration
             config.m_window_geometry = json["windowGeometry"].get<WindowGeometry>();
         }
         from_json(json, config.m_aria2_options);
+        from_json(json, config.m_discovery_options);
         from_json(json, config.m_extractor_options);
-        from_json(json, config.m_format_options);
         from_json(json, config.m_history_options);
         from_json(json, config.m_postprocessing_options);
         from_json(json, config.m_previous_download_options);
@@ -1037,8 +1042,8 @@ namespace parabolic::configuration
             { "windowGeometry", config.m_window_geometry },
         };
         json.update(nlohmann::json(config.m_aria2_options));
+        json.update(nlohmann::json(config.m_discovery_options));
         json.update(nlohmann::json(config.m_extractor_options));
-        json.update(nlohmann::json(config.m_format_options));
         json.update(nlohmann::json(config.m_history_options));
         json.update(nlohmann::json(config.m_postprocessing_options));
         json.update(nlohmann::json(config.m_previous_download_options));
