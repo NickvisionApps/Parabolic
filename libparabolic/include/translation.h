@@ -76,6 +76,8 @@ namespace parabolic::translation
         std::vector<std::string> m_available_languages;
         std::string m_language;
     };
+
+    [[nodiscard]] bool is_youtube_supported_language(const std::string& language);
 }
 
 #endif

@@ -212,8 +212,7 @@ namespace parabolic::application
 
     history::Store& State::history() const
     {
-        m_history->set_length(m_configuration->history_options().length());
-        m_history->set_sort_newest(m_configuration->history_options().sort_newest());
+        m_history->set_options(m_configuration->history_options());
         return *m_history;
     }
 

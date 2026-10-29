@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
+#include <vector>
 
 namespace parabolic::postprocessing
 {
@@ -60,6 +61,41 @@ namespace parabolic::postprocessing
         Step m_step;
         Executable m_executable;
         std::string m_args;
+    };
+
+    class Options
+    {
+    public:
+        Options();
+        [[nodiscard]] const std::vector<Argument>& arguments() const;
+        void set_arguments(const std::vector<Argument>& value);
+        [[nodiscard]] bool crop_audio_thumbnails() const;
+        void set_crop_audio_thumbnails(bool value);
+        [[nodiscard]] bool embed_chapters() const;
+        void set_embed_chapters(bool value);
+        [[nodiscard]] bool embed_metadata() const;
+        void set_embed_metadata(bool value);
+        [[nodiscard]] bool embed_subtitles() const;
+        void set_embed_subtitles(bool value);
+        [[nodiscard]] bool embed_thumbnails() const;
+        void set_embed_thumbnails(bool value);
+        [[nodiscard]] bool remove_source_data() const;
+        void set_remove_source_data(bool value);
+        [[nodiscard]] int threads() const;
+        void set_threads(int value);
+        bool operator==(const Options& rhs) const = default;
+        friend void from_json(const nlohmann::json& json, Options& options);
+        friend void to_json(nlohmann::json& json, const Options& options);
+
+    private:
+        std::vector<Argument> m_arguments;
+        bool m_crop_audio_thumbnails{ false };
+        bool m_embed_chapters{ false };
+        bool m_embed_metadata{ true };
+        bool m_embed_subtitles{ true };
+        bool m_embed_thumbnails{ true };
+        bool m_remove_source_data{ false };
+        int m_threads;
     };
 }
 

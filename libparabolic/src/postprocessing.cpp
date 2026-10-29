@@ -1,9 +1,11 @@
 #include "postprocessing.h"
+#include <algorithm>
 #include <compare>
 #include <format>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
+#include <thread>
 #include <utility>
 
 namespace parabolic::postprocessing
@@ -152,6 +154,91 @@ namespace parabolic::postprocessing
         return m_name == rhs.m_name && m_step == rhs.m_step && m_executable == rhs.m_executable && m_args == rhs.m_args;
     }
 
+    Options::Options()
+        : m_threads{ static_cast<int>(std::max(1U, std::thread::hardware_concurrency())) }
+    {
+    }
+
+    const std::vector<Argument>& Options::arguments() const
+    {
+        return m_arguments;
+    }
+
+    void Options::set_arguments(const std::vector<Argument>& value)
+    {
+        m_arguments = value;
+    }
+
+    bool Options::crop_audio_thumbnails() const
+    {
+        return m_crop_audio_thumbnails;
+    }
+
+    void Options::set_crop_audio_thumbnails(bool value)
+    {
+        m_crop_audio_thumbnails = value;
+    }
+
+    bool Options::embed_chapters() const
+    {
+        return m_embed_chapters;
+    }
+
+    void Options::set_embed_chapters(bool value)
+    {
+        m_embed_chapters = value;
+    }
+
+    bool Options::embed_metadata() const
+    {
+        return m_embed_metadata;
+    }
+
+    void Options::set_embed_metadata(bool value)
+    {
+        m_embed_metadata = value;
+    }
+
+    bool Options::embed_subtitles() const
+    {
+        return m_embed_subtitles;
+    }
+
+    void Options::set_embed_subtitles(bool value)
+    {
+        m_embed_subtitles = value;
+    }
+
+    bool Options::embed_thumbnails() const
+    {
+        return m_embed_thumbnails;
+    }
+
+    void Options::set_embed_thumbnails(bool value)
+    {
+        m_embed_thumbnails = value;
+    }
+
+    bool Options::remove_source_data() const
+    {
+        return m_remove_source_data;
+    }
+
+    void Options::set_remove_source_data(bool value)
+    {
+        m_remove_source_data = value;
+    }
+
+    int Options::threads() const
+    {
+        return m_threads;
+    }
+
+    void Options::set_threads(int value)
+    {
+        m_threads = value;
+    }
+
     void from_json(const nlohmann::json& json, Argument& argument)
     {
         if (json.contains("name") && json["name"].is_string())
@@ -196,6 +283,78 @@ namespace parabolic::postprocessing
         }
     }
 
+    void from_json(const nlohmann::json& json, Options& options)
+    {
+        if (json.contains("cropAudioThumbnails") && json["cropAudioThumbnails"].is_boolean())
+        {
+            options.m_crop_audio_thumbnails = json.at("cropAudioThumbnails").get<bool>();
+        }
+        else if (json.contains("CropAudioThumbnails") && json["CropAudioThumbnails"].is_boolean())
+        {
+            options.m_crop_audio_thumbnails = json.at("CropAudioThumbnails").get<bool>();
+        }
+        if (json.contains("embedChapters") && json["embedChapters"].is_boolean())
+        {
+            options.m_embed_chapters = json.at("embedChapters").get<bool>();
+        }
+        else if (json.contains("EmbedChapters") && json["EmbedChapters"].is_boolean())
+        {
+            options.m_embed_chapters = json.at("EmbedChapters").get<bool>();
+        }
+        if (json.contains("embedMetadata") && json["embedMetadata"].is_boolean())
+        {
+            options.m_embed_metadata = json.at("embedMetadata").get<bool>();
+        }
+        else if (json.contains("EmbedMetadata") && json["EmbedMetadata"].is_boolean())
+        {
+            options.m_embed_metadata = json.at("EmbedMetadata").get<bool>();
+        }
+        if (json.contains("embedSubtitles") && json["embedSubtitles"].is_boolean())
+        {
+            options.m_embed_subtitles = json.at("embedSubtitles").get<bool>();
+        }
+        else if (json.contains("EmbedSubtitles") && json["EmbedSubtitles"].is_boolean())
+        {
+            options.m_embed_subtitles = json.at("EmbedSubtitles").get<bool>();
+        }
+        if (json.contains("embedThumbnails") && json["embedThumbnails"].is_boolean())
+        {
+            options.m_embed_thumbnails = json.at("embedThumbnails").get<bool>();
+        }
+        else if (json.contains("EmbedThumbnails") && json["EmbedThumbnails"].is_boolean())
+        {
+            options.m_embed_thumbnails = json.at("EmbedThumbnails").get<bool>();
+        }
+        if (json.contains("postprocessingArguments") && json["postprocessingArguments"].is_array())
+        {
+            options.m_arguments.clear();
+            for (const nlohmann::json& item: json["postprocessingArguments"])
+            {
+                Argument argument{ "", Step::None, Executable::None, "" };
+                from_json(item, argument);
+                options.m_arguments.push_back(argument);
+            }
+        }
+        if (json.contains("postprocessingThreads") && json["postprocessingThreads"].is_number_integer())
+        {
+            options.m_threads = std::clamp(json.at("postprocessingThreads").get<int>(), 1,
+                                           static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
+        }
+        else if (json.contains("PostprocessingThreads") && json["PostprocessingThreads"].is_number_integer())
+        {
+            options.m_threads = std::clamp(json.at("PostprocessingThreads").get<int>(), 1,
+                                           static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
+        }
+        if (json.contains("removeSourceData") && json["removeSourceData"].is_boolean())
+        {
+            options.m_remove_source_data = json.at("removeSourceData").get<bool>();
+        }
+        else if (json.contains("RemoveSourceData") && json["RemoveSourceData"].is_boolean())
+        {
+            options.m_remove_source_data = json.at("RemoveSourceData").get<bool>();
+        }
+    }
+
     void to_json(nlohmann::json& json, const Argument& argument)
     {
         json = nlohmann::json{
@@ -204,5 +363,23 @@ namespace parabolic::postprocessing
             { "executable", static_cast<int>(argument.m_executable) },
             { "args", argument.m_args },
         };
+    }
+
+    void to_json(nlohmann::json& json, const Options& options)
+    {
+        json = nlohmann::json{
+            { "cropAudioThumbnails", options.m_crop_audio_thumbnails },
+            { "embedChapters", options.m_embed_chapters },
+            { "embedMetadata", options.m_embed_metadata },
+            { "embedSubtitles", options.m_embed_subtitles },
+            { "embedThumbnails", options.m_embed_thumbnails },
+            { "postprocessingArguments", nlohmann::json::array() },
+            { "postprocessingThreads", options.m_threads },
+            { "removeSourceData", options.m_remove_source_data },
+        };
+        for (const Argument& item: options.m_arguments)
+        {
+            json["postprocessingArguments"].push_back(item);
+        }
     }
 }

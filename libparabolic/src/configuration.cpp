@@ -1,6 +1,5 @@
 #include "configuration.h"
 #include <algorithm>
-#include <cctype>
 #include <charconv>
 #include <exception>
 #include <filesystem>
@@ -11,334 +10,39 @@
 #include <mutex>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
-#include <optional>
 #include <sago/platform_folders.h>
 #include <string>
 #include <string_view>
 #include <system_error>
-#include <thread>
-#include <type_traits>
 #include <utility>
 #include <vector>
-#include "audio.h"
-#include "cookies.h"
 #include "environment.h"
 #include "file.h"
-#include "history.h"
-#include "postprocessing.h"
+#include "format.h"
 #include "subtitle.h"
 #include "translation.h"
 #include "video.h"
-#include "ytdlp.h"
 #ifdef _WIN32
 #include "string_manip.h"
 #endif
 
-namespace
-{
-    template<typename T>
-    void read_value(const nlohmann::json& json, std::string_view key, T& member)
-    {
-        std::string pascal{ key };
-        pascal[0] = static_cast<char>(std::toupper(static_cast<unsigned char>(pascal[0])));
-        for (const std::string& name: { std::string{ key }, pascal })
-        {
-            const nlohmann::json::const_iterator it{ json.find(name) };
-            if (it == json.end())
-            {
-                continue;
-            }
-            if constexpr (std::is_same_v<T, bool>)
-            {
-                if (it->is_boolean())
-                {
-                    member = it->get<bool>();
-                    return;
-                }
-            }
-            else if constexpr (std::is_enum_v<T>)
-            {
-                if (it->is_number_integer())
-                {
-                    member = static_cast<T>(it->get<int>());
-                    return;
-                }
-            }
-            else if constexpr (std::is_integral_v<T>)
-            {
-                if (it->is_number_integer())
-                {
-                    member = it->get<T>();
-                    return;
-                }
-            }
-            else if constexpr (std::is_floating_point_v<T>)
-            {
-                if (it->is_number())
-                {
-                    member = it->get<T>();
-                    return;
-                }
-            }
-            else if constexpr (std::is_same_v<T, std::filesystem::path>)
-            {
-                if (it->is_string())
-                {
-                    member = std::filesystem::path{ it->get<std::string>() };
-                    return;
-                }
-            }
-            else if (it->is_string())
-            {
-                member = it->get<std::string>();
-                return;
-            }
-        }
-    }
-
-    template<typename T>
-    void read_value(const nlohmann::json& json, std::string_view key, T& member, T lo, T hi)
-    {
-        if constexpr (std::is_enum_v<T>)
-        {
-            int raw{ static_cast<int>(member) };
-            read_value(json, key, raw);
-            if (raw >= static_cast<int>(lo) && raw <= static_cast<int>(hi))
-            {
-                member = static_cast<T>(raw);
-            }
-        }
-        else
-        {
-            T value{ member };
-            read_value(json, key, value);
-            member = std::clamp(value, lo, hi);
-        }
-    }
-}
-
 namespace parabolic::configuration
 {
-    int Aria2Options::max_connections_per_server() const
-    {
-        return m_max_connections_per_server;
-    }
-
-    void Aria2Options::set_max_connections_per_server(int value)
-    {
-        m_max_connections_per_server = value;
-    }
-
-    int Aria2Options::min_split_size() const
-    {
-        return m_min_split_size;
-    }
-
-    void Aria2Options::set_min_split_size(int value)
-    {
-        m_min_split_size = value;
-    }
-
-    bool Aria2Options::use_aria() const
-    {
-        return m_use_aria;
-    }
-
-    void Aria2Options::set_use_aria(bool value)
-    {
-        m_use_aria = value;
-    }
-
-    bool FormatOptions::include_auto_generated_subtitles() const
-    {
-        return m_include_auto_generated_subtitles;
-    }
-
-    void FormatOptions::set_include_auto_generated_subtitles(bool value)
-    {
-        m_include_auto_generated_subtitles = value;
-    }
-
-    bool FormatOptions::include_super_resolutions() const
-    {
-        return m_include_super_resolutions;
-    }
-
-    void FormatOptions::set_include_super_resolutions(bool value)
-    {
-        m_include_super_resolutions = value;
-    }
-
-    audio::Codec FormatOptions::preferred_audio_codec() const
-    {
-        return m_preferred_audio_codec;
-    }
-
-    void FormatOptions::set_preferred_audio_codec(audio::Codec value)
-    {
-        m_preferred_audio_codec = value;
-    }
-
-    video::FrameRate FormatOptions::preferred_frame_rate() const
-    {
-        return m_preferred_frame_rate;
-    }
-
-    void FormatOptions::set_preferred_frame_rate(video::FrameRate value)
-    {
-        m_preferred_frame_rate = value;
-    }
-
-    subtitle::Type FormatOptions::preferred_subtitle_format() const
-    {
-        return m_preferred_subtitle_format;
-    }
-
-    void FormatOptions::set_preferred_subtitle_format(subtitle::Type value)
-    {
-        m_preferred_subtitle_format = value;
-    }
-
-    video::Codec FormatOptions::preferred_video_codec() const
-    {
-        return m_preferred_video_codec;
-    }
-
-    void FormatOptions::set_preferred_video_codec(video::Codec value)
-    {
-        m_preferred_video_codec = value;
-    }
-
-    history::Length HistoryOptions::length() const
-    {
-        return m_length;
-    }
-
-    void HistoryOptions::set_length(history::Length value)
-    {
-        m_length = value;
-    }
-
-    bool HistoryOptions::sort_newest() const
-    {
-        return m_sort_newest;
-    }
-
-    void HistoryOptions::set_sort_newest(bool value)
-    {
-        m_sort_newest = value;
-    }
-
-    PostprocessingOptions::PostprocessingOptions()
-        : m_postprocessing_threads{ static_cast<int>(std::thread::hardware_concurrency()) }
-    {
-    }
-
-    bool PostprocessingOptions::crop_audio_thumbnails() const
-    {
-        return m_crop_audio_thumbnails;
-    }
-
-    void PostprocessingOptions::set_crop_audio_thumbnails(bool value)
-    {
-        m_crop_audio_thumbnails = value;
-    }
-
-    bool PostprocessingOptions::embed_chapters() const
-    {
-        return m_embed_chapters;
-    }
-
-    void PostprocessingOptions::set_embed_chapters(bool value)
-    {
-        m_embed_chapters = value;
-    }
-
-    bool PostprocessingOptions::embed_metadata() const
-    {
-        return m_embed_metadata;
-    }
-
-    void PostprocessingOptions::set_embed_metadata(bool value)
-    {
-        m_embed_metadata = value;
-    }
-
-    bool PostprocessingOptions::embed_subtitles() const
-    {
-        return m_embed_subtitles;
-    }
-
-    void PostprocessingOptions::set_embed_subtitles(bool value)
-    {
-        m_embed_subtitles = value;
-    }
-
-    bool PostprocessingOptions::embed_thumbnails() const
-    {
-        return m_embed_thumbnails;
-    }
-
-    void PostprocessingOptions::set_embed_thumbnails(bool value)
-    {
-        m_embed_thumbnails = value;
-    }
-
-    const std::vector<postprocessing::Argument>& PostprocessingOptions::postprocessing_arguments() const
-    {
-        return m_postprocessing_arguments;
-    }
-
-    void PostprocessingOptions::set_postprocessing_arguments(const std::vector<postprocessing::Argument>& value)
-    {
-        m_postprocessing_arguments = value;
-    }
-
-    int PostprocessingOptions::postprocessing_threads() const
-    {
-        return m_postprocessing_threads;
-    }
-
-    void PostprocessingOptions::set_postprocessing_threads(int value)
-    {
-        m_postprocessing_threads = value;
-    }
-
-    bool PostprocessingOptions::remove_source_data() const
-    {
-        return m_remove_source_data;
-    }
-
-    void PostprocessingOptions::set_remove_source_data(bool value)
-    {
-        m_remove_source_data = value;
-    }
-
-    bool PostprocessingOptions::translate_metadata_and_chapters() const
-    {
-        return m_translate_metadata_and_chapters;
-    }
-
-    void PostprocessingOptions::set_translate_metadata_and_chapters(bool value)
-    {
-        m_translate_metadata_and_chapters = value;
-    }
-
     PreviousDownloadOptions::PreviousDownloadOptions()
         : m_audio_format_ids{
-              { file::Type::VideoGeneric, ytdlp::Format::best_audio().id() },
-              { file::Type::Mp4, ytdlp::Format::best_audio().id() },
-              { file::Type::Mkv, ytdlp::Format::best_audio().id() },
-              { file::Type::Webm, ytdlp::Format::best_audio().id() },
-              { file::Type::Mov, ytdlp::Format::best_audio().id() },
-              { file::Type::Avi, ytdlp::Format::best_audio().id() },
-              { file::Type::AudioGeneric, ytdlp::Format::best_audio().id() },
-              { file::Type::Mp3, ytdlp::Format::best_audio().id() },
-              { file::Type::M4a, ytdlp::Format::best_audio().id() },
-              { file::Type::Opus, ytdlp::Format::best_audio().id() },
-              { file::Type::Flac, ytdlp::Format::best_audio().id() },
-              { file::Type::Wav, ytdlp::Format::best_audio().id() },
-              { file::Type::Ogg, ytdlp::Format::best_audio().id() },
+              { file::Type::VideoGeneric, format::Format::best_audio().id() },
+              { file::Type::Mp4, format::Format::best_audio().id() },
+              { file::Type::Mkv, format::Format::best_audio().id() },
+              { file::Type::Webm, format::Format::best_audio().id() },
+              { file::Type::Mov, format::Format::best_audio().id() },
+              { file::Type::Avi, format::Format::best_audio().id() },
+              { file::Type::AudioGeneric, format::Format::best_audio().id() },
+              { file::Type::Mp3, format::Format::best_audio().id() },
+              { file::Type::M4a, format::Format::best_audio().id() },
+              { file::Type::Opus, format::Format::best_audio().id() },
+              { file::Type::Flac, format::Format::best_audio().id() },
+              { file::Type::Wav, format::Format::best_audio().id() },
+              { file::Type::Ogg, format::Format::best_audio().id() },
           },
 #ifdef _WIN32
           m_save_folder{ std::filesystem::path(string_manip::wstr(sago::getDownloadFolder())) },
@@ -346,19 +50,19 @@ namespace parabolic::configuration
           m_save_folder{ sago::getDownloadFolder() },
 #endif
           m_video_format_ids{
-              { file::Type::VideoGeneric, ytdlp::Format::best_video().id() },
-              { file::Type::Mp4, ytdlp::Format::best_video().id() },
-              { file::Type::Mkv, ytdlp::Format::best_video().id() },
-              { file::Type::Webm, ytdlp::Format::best_video().id() },
-              { file::Type::Mov, ytdlp::Format::best_video().id() },
-              { file::Type::Avi, ytdlp::Format::best_video().id() },
-              { file::Type::AudioGeneric, ytdlp::Format::none_video().id() },
-              { file::Type::Mp3, ytdlp::Format::none_video().id() },
-              { file::Type::M4a, ytdlp::Format::none_video().id() },
-              { file::Type::Opus, ytdlp::Format::none_video().id() },
-              { file::Type::Flac, ytdlp::Format::none_video().id() },
-              { file::Type::Wav, ytdlp::Format::none_video().id() },
-              { file::Type::Ogg, ytdlp::Format::none_video().id() },
+              { file::Type::VideoGeneric, format::Format::best_video().id() },
+              { file::Type::Mp4, format::Format::best_video().id() },
+              { file::Type::Mkv, format::Format::best_video().id() },
+              { file::Type::Webm, format::Format::best_video().id() },
+              { file::Type::Mov, format::Format::best_video().id() },
+              { file::Type::Avi, format::Format::best_video().id() },
+              { file::Type::AudioGeneric, format::Format::none_video().id() },
+              { file::Type::Mp3, format::Format::none_video().id() },
+              { file::Type::M4a, format::Format::none_video().id() },
+              { file::Type::Opus, format::Format::none_video().id() },
+              { file::Type::Flac, format::Format::none_video().id() },
+              { file::Type::Wav, format::Format::none_video().id() },
+              { file::Type::Ogg, format::Format::none_video().id() },
           }
     {
     }
@@ -608,86 +312,6 @@ namespace parabolic::configuration
         m_y = value;
     }
 
-    cookies::Browser YtdlpOptions::cookies_browser() const
-    {
-        return m_cookies_browser;
-    }
-
-    void YtdlpOptions::set_cookies_browser(cookies::Browser value)
-    {
-        m_cookies_browser = value;
-    }
-
-    const std::string& YtdlpOptions::cookies_path() const
-    {
-        return m_cookies_path;
-    }
-
-    void YtdlpOptions::set_cookies_path(const std::string& value)
-    {
-        m_cookies_path = value;
-    }
-
-    const std::string& YtdlpOptions::proxy_url() const
-    {
-        return m_proxy_url;
-    }
-
-    void YtdlpOptions::set_proxy_url(const std::string& value)
-    {
-        m_proxy_url = value;
-    }
-
-    std::optional<int> YtdlpOptions::speed_limit() const
-    {
-        return m_speed_limit;
-    }
-
-    void YtdlpOptions::set_speed_limit(std::optional<int> value)
-    {
-        m_speed_limit = value;
-    }
-
-    bool YtdlpOptions::use_part_files() const
-    {
-        return m_use_part_files;
-    }
-
-    void YtdlpOptions::set_use_part_files(bool value)
-    {
-        m_use_part_files = value;
-    }
-
-    bool YtdlpOptions::youtube_sponsor_block() const
-    {
-        return m_youtube_sponsor_block;
-    }
-
-    void YtdlpOptions::set_youtube_sponsor_block(bool value)
-    {
-        m_youtube_sponsor_block = value;
-    }
-
-    const std::string& YtdlpOptions::ytdlp_discovery_args() const
-    {
-        return m_ytdlp_discovery_args;
-    }
-
-    void YtdlpOptions::set_ytdlp_discovery_args(const std::string& value)
-    {
-        m_ytdlp_discovery_args = value;
-    }
-
-    const std::string& YtdlpOptions::ytdlp_download_args() const
-    {
-        return m_ytdlp_download_args;
-    }
-
-    void YtdlpOptions::set_ytdlp_download_args(const std::string& value)
-    {
-        m_ytdlp_download_args = value;
-    }
-
     Configuration::Configuration(std::string_view app_name)
 #ifdef _WIN32
         : m_path{ environment::is_portable() ? environment::executable_directory() / "config.json"
@@ -746,18 +370,6 @@ namespace parabolic::configuration
         }
     }
 
-    template<typename T>
-    void Configuration::update_value(T& member, const T& value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (member == value)
-        {
-            return;
-        }
-        member = value;
-        save();
-    }
-
     bool Configuration::allow_preview_updates() const
     {
         std::scoped_lock lock{ m_mutex };
@@ -766,18 +378,30 @@ namespace parabolic::configuration
 
     void Configuration::set_allow_preview_updates(bool value)
     {
-        update_value(m_allow_preview_updates, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_allow_preview_updates == value)
+        {
+            return;
+        }
+        m_allow_preview_updates = value;
+        save();
     }
 
-    Aria2Options Configuration::aria2_options() const
+    aria2::Options Configuration::aria2_options() const
     {
         std::scoped_lock lock{ m_mutex };
         return m_aria2_options;
     }
 
-    void Configuration::set_aria2_options(const Aria2Options& value)
+    void Configuration::set_aria2_options(const aria2::Options& value)
     {
-        update_value(m_aria2_options, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_aria2_options == value)
+        {
+            return;
+        }
+        m_aria2_options = value;
+        save();
     }
 
     bool Configuration::automatically_check_for_updates() const
@@ -788,29 +412,64 @@ namespace parabolic::configuration
 
     void Configuration::set_automatically_check_for_updates(bool value)
     {
-        update_value(m_automatically_check_for_updates, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_automatically_check_for_updates == value)
+        {
+            return;
+        }
+        m_automatically_check_for_updates = value;
+        save();
     }
 
-    FormatOptions Configuration::format_options() const
+    extractor::Options Configuration::extractor_options() const
+    {
+        std::scoped_lock lock{ m_mutex };
+        return m_extractor_options;
+    }
+
+    void Configuration::set_extractor_options(const extractor::Options& value)
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (m_extractor_options == value)
+        {
+            return;
+        }
+        m_extractor_options = value;
+        save();
+    }
+
+    format::Options Configuration::format_options() const
     {
         std::scoped_lock lock{ m_mutex };
         return m_format_options;
     }
 
-    void Configuration::set_format_options(const FormatOptions& value)
+    void Configuration::set_format_options(const format::Options& value)
     {
-        update_value(m_format_options, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_format_options == value)
+        {
+            return;
+        }
+        m_format_options = value;
+        save();
     }
 
-    HistoryOptions Configuration::history_options() const
+    history::Options Configuration::history_options() const
     {
         std::scoped_lock lock{ m_mutex };
         return m_history_options;
     }
 
-    void Configuration::set_history_options(const HistoryOptions& value)
+    void Configuration::set_history_options(const history::Options& value)
     {
-        update_value(m_history_options, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_history_options == value)
+        {
+            return;
+        }
+        m_history_options = value;
+        save();
     }
 
     bool Configuration::include_media_id_in_title() const
@@ -821,7 +480,13 @@ namespace parabolic::configuration
 
     void Configuration::set_include_media_id_in_title(bool value)
     {
-        update_value(m_include_media_id_in_title, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_include_media_id_in_title == value)
+        {
+            return;
+        }
+        m_include_media_id_in_title = value;
+        save();
     }
 
     bool Configuration::limit_characters() const
@@ -832,7 +497,13 @@ namespace parabolic::configuration
 
     void Configuration::set_limit_characters(bool value)
     {
-        update_value(m_limit_characters, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_limit_characters == value)
+        {
+            return;
+        }
+        m_limit_characters = value;
+        save();
     }
 
     int Configuration::max_number_of_active_downloads() const
@@ -843,7 +514,13 @@ namespace parabolic::configuration
 
     void Configuration::set_max_number_of_active_downloads(int value)
     {
-        update_value(m_max_number_of_active_downloads, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_max_number_of_active_downloads == value)
+        {
+            return;
+        }
+        m_max_number_of_active_downloads = value;
+        save();
     }
 
     bool Configuration::overwrite_existing_files() const
@@ -854,18 +531,30 @@ namespace parabolic::configuration
 
     void Configuration::set_overwrite_existing_files(bool value)
     {
-        update_value(m_overwrite_existing_files, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_overwrite_existing_files == value)
+        {
+            return;
+        }
+        m_overwrite_existing_files = value;
+        save();
     }
 
-    PostprocessingOptions Configuration::postprocessing_options() const
+    postprocessing::Options Configuration::postprocessing_options() const
     {
         std::scoped_lock lock{ m_mutex };
         return m_postprocessing_options;
     }
 
-    void Configuration::set_postprocessing_options(const PostprocessingOptions& value)
+    void Configuration::set_postprocessing_options(const postprocessing::Options& value)
     {
-        update_value(m_postprocessing_options, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_postprocessing_options == value)
+        {
+            return;
+        }
+        m_postprocessing_options = value;
+        save();
     }
 
     bool Configuration::prevent_suspend() const
@@ -876,7 +565,13 @@ namespace parabolic::configuration
 
     void Configuration::set_prevent_suspend(bool value)
     {
-        update_value(m_prevent_suspend, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_prevent_suspend == value)
+        {
+            return;
+        }
+        m_prevent_suspend = value;
+        save();
     }
 
     PreviousDownloadOptions Configuration::previous_download_options() const
@@ -887,7 +582,13 @@ namespace parabolic::configuration
 
     void Configuration::set_previous_download_options(const PreviousDownloadOptions& value)
     {
-        update_value(m_previous_download_options, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_previous_download_options == value)
+        {
+            return;
+        }
+        m_previous_download_options = value;
+        save();
     }
 
     bool Configuration::show_disclaimer_on_startup() const
@@ -898,7 +599,30 @@ namespace parabolic::configuration
 
     void Configuration::set_show_disclaimer_on_startup(bool value)
     {
-        update_value(m_show_disclaimer_on_startup, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_show_disclaimer_on_startup == value)
+        {
+            return;
+        }
+        m_show_disclaimer_on_startup = value;
+        save();
+    }
+
+    subtitle::Options Configuration::subtitle_options() const
+    {
+        std::scoped_lock lock{ m_mutex };
+        return m_subtitle_options;
+    }
+
+    void Configuration::set_subtitle_options(const subtitle::Options& value)
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (m_subtitle_options == value)
+        {
+            return;
+        }
+        m_subtitle_options = value;
+        save();
     }
 
     Theme Configuration::theme() const
@@ -909,7 +633,13 @@ namespace parabolic::configuration
 
     void Configuration::set_theme(Theme value)
     {
-        update_value(m_theme, value);
+        std::scoped_lock lock{ m_mutex };
+        if (m_theme == value)
+        {
+            return;
+        }
+        m_theme = value;
+        save();
     }
 
     std::string Configuration::translation_language() const
@@ -949,18 +679,13 @@ namespace parabolic::configuration
 
     void Configuration::set_window_geometry(const WindowGeometry& value)
     {
-        update_value(m_window_geometry, value);
-    }
-
-    YtdlpOptions Configuration::ytdlp_options() const
-    {
         std::scoped_lock lock{ m_mutex };
-        return m_ytdlp_options;
-    }
-
-    void Configuration::set_ytdlp_options(const YtdlpOptions& value)
-    {
-        update_value(m_ytdlp_options, value);
+        if (m_window_geometry == value)
+        {
+            return;
+        }
+        m_window_geometry = value;
+        save();
     }
 
     std::string Configuration::str() const
@@ -970,98 +695,121 @@ namespace parabolic::configuration
         return json.dump(4);
     }
 
-    void from_json(const nlohmann::json& json, Aria2Options& options)
-    {
-        read_value(json, "ariaMaxConnectionsPerServer", options.m_max_connections_per_server, 1, 16);
-        read_value(json, "ariaMinSplitSize", options.m_min_split_size, 1, 1024);
-        read_value(json, "useAria", options.m_use_aria);
-    }
-
     void from_json(const nlohmann::json& json, Configuration& config)
     {
-        read_value(json, "allowPreviewUpdates", config.m_allow_preview_updates);
-        read_value(json, "automaticallyCheckForUpdates", config.m_automatically_check_for_updates);
-        read_value(json, "includeMediaIdInTitle", config.m_include_media_id_in_title);
-        read_value(json, "limitCharacters", config.m_limit_characters);
-        read_value(json, "maxNumberOfActiveDownloads", config.m_max_number_of_active_downloads, 1, 10);
-        read_value(json, "overwriteExistingFiles", config.m_overwrite_existing_files);
-        read_value(json, "preventSuspend", config.m_prevent_suspend);
-        read_value(json, "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup);
-        read_value(json, "theme", config.m_theme, Theme::Light, Theme::System);
-        read_value(json, "translationLanguage", config.m_translation_language);
+        if (json.contains("allowPreviewUpdates") && json["allowPreviewUpdates"].is_boolean())
+        {
+            config.m_allow_preview_updates = json.at("allowPreviewUpdates").get<bool>();
+        }
+        else if (json.contains("AllowPreviewUpdates") && json["AllowPreviewUpdates"].is_boolean())
+        {
+            config.m_allow_preview_updates = json.at("AllowPreviewUpdates").get<bool>();
+        }
+        if (json.contains("automaticallyCheckForUpdates") && json["automaticallyCheckForUpdates"].is_boolean())
+        {
+            config.m_automatically_check_for_updates = json.at("automaticallyCheckForUpdates").get<bool>();
+        }
+        else if (json.contains("AutomaticallyCheckForUpdates") && json["AutomaticallyCheckForUpdates"].is_boolean())
+        {
+            config.m_automatically_check_for_updates = json.at("AutomaticallyCheckForUpdates").get<bool>();
+        }
+        if (json.contains("includeMediaIdInTitle") && json["includeMediaIdInTitle"].is_boolean())
+        {
+            config.m_include_media_id_in_title = json.at("includeMediaIdInTitle").get<bool>();
+        }
+        else if (json.contains("IncludeMediaIdInTitle") && json["IncludeMediaIdInTitle"].is_boolean())
+        {
+            config.m_include_media_id_in_title = json.at("IncludeMediaIdInTitle").get<bool>();
+        }
+        if (json.contains("limitCharacters") && json["limitCharacters"].is_boolean())
+        {
+            config.m_limit_characters = json.at("limitCharacters").get<bool>();
+        }
+        else if (json.contains("LimitCharacters") && json["LimitCharacters"].is_boolean())
+        {
+            config.m_limit_characters = json.at("LimitCharacters").get<bool>();
+        }
+        if (json.contains("maxNumberOfActiveDownloads") && json["maxNumberOfActiveDownloads"].is_number_integer())
+        {
+            config.m_max_number_of_active_downloads =
+                    std::clamp(json.at("maxNumberOfActiveDownloads").get<int>(), 1, 10);
+        }
+        else if (json.contains("MaxNumberOfActiveDownloads") && json["MaxNumberOfActiveDownloads"].is_number_integer())
+        {
+            config.m_max_number_of_active_downloads =
+                    std::clamp(json.at("MaxNumberOfActiveDownloads").get<int>(), 1, 10);
+        }
+        if (json.contains("overwriteExistingFiles") && json["overwriteExistingFiles"].is_boolean())
+        {
+            config.m_overwrite_existing_files = json.at("overwriteExistingFiles").get<bool>();
+        }
+        else if (json.contains("OverwriteExistingFiles") && json["OverwriteExistingFiles"].is_boolean())
+        {
+            config.m_overwrite_existing_files = json.at("OverwriteExistingFiles").get<bool>();
+        }
+        if (json.contains("preventSuspend") && json["preventSuspend"].is_boolean())
+        {
+            config.m_prevent_suspend = json.at("preventSuspend").get<bool>();
+        }
+        else if (json.contains("PreventSuspend") && json["PreventSuspend"].is_boolean())
+        {
+            config.m_prevent_suspend = json.at("PreventSuspend").get<bool>();
+        }
+        if (json.contains("showDisclaimerOnStartup") && json["showDisclaimerOnStartup"].is_boolean())
+        {
+            config.m_show_disclaimer_on_startup = json.at("showDisclaimerOnStartup").get<bool>();
+        }
+        else if (json.contains("ShowDisclaimerOnStartup") && json["ShowDisclaimerOnStartup"].is_boolean())
+        {
+            config.m_show_disclaimer_on_startup = json.at("ShowDisclaimerOnStartup").get<bool>();
+        }
+        if (json.contains("theme") && json["theme"].is_number_integer())
+        {
+            int value{ json.at("theme").get<int>() };
+            if (value >= static_cast<int>(Theme::Light) && value <= static_cast<int>(Theme::System))
+            {
+                config.m_theme = static_cast<Theme>(value);
+            }
+        }
+        else if (json.contains("Theme") && json["Theme"].is_number_integer())
+        {
+            int value{ json.at("Theme").get<int>() };
+            if (value >= static_cast<int>(Theme::Light) && value <= static_cast<int>(Theme::System))
+            {
+                config.m_theme = static_cast<Theme>(value);
+            }
+        }
+        if (json.contains("translationLanguage") && json["translationLanguage"].is_string())
+        {
+            config.m_translation_language = json.at("translationLanguage").get<std::string>();
+        }
+        else if (json.contains("TranslationLanguage") && json["TranslationLanguage"].is_string())
+        {
+            config.m_translation_language = json.at("TranslationLanguage").get<std::string>();
+        }
         if (json.contains("windowGeometry") && json["windowGeometry"].is_object())
         {
             config.m_window_geometry = json["windowGeometry"].get<WindowGeometry>();
         }
         from_json(json, config.m_aria2_options);
+        from_json(json, config.m_extractor_options);
         from_json(json, config.m_format_options);
         from_json(json, config.m_history_options);
         from_json(json, config.m_postprocessing_options);
         from_json(json, config.m_previous_download_options);
-        from_json(json, config.m_ytdlp_options);
-    }
-
-    void from_json(const nlohmann::json& json, FormatOptions& options)
-    {
-        read_value(json, "includeAutoGeneratedSubtitles", options.m_include_auto_generated_subtitles);
-        read_value(json, "includeSuperResolutions", options.m_include_super_resolutions);
-        read_value(json, "preferredAudioCodec", options.m_preferred_audio_codec, audio::Codec::Any, audio::Codec::Mp3);
-        read_value(json, "preferredFrameRate", options.m_preferred_frame_rate, video::FrameRate::Any,
-                   video::FrameRate::Fps60);
-        read_value(json, "preferredSubtitleFormat", options.m_preferred_subtitle_format, subtitle::Type::Any,
-                   subtitle::Type::Lrc);
-        read_value(json, "preferredVideoCodec", options.m_preferred_video_codec, video::Codec::Any, video::Codec::H264);
-    }
-
-    void from_json(const nlohmann::json& json, HistoryOptions& options)
-    {
-        int length{ static_cast<int>(options.m_length) };
-        read_value(json, "historyLength", length);
-        switch (length)
-        {
-        case static_cast<int>(history::Length::Never):
-        case static_cast<int>(history::Length::OneDay):
-        case static_cast<int>(history::Length::OneWeek):
-        case static_cast<int>(history::Length::OneMonth):
-        case static_cast<int>(history::Length::ThreeMonths):
-        case static_cast<int>(history::Length::SixMonths):
-        case static_cast<int>(history::Length::OneYear):
-        case static_cast<int>(history::Length::Forever):
-            options.m_length = static_cast<history::Length>(length);
-            break;
-        default:
-            break;
-        }
-        read_value(json, "historySortNewestFirst", options.m_sort_newest);
-    }
-
-    void from_json(const nlohmann::json& json, PostprocessingOptions& options)
-    {
-        read_value(json, "cropAudioThumbnails", options.m_crop_audio_thumbnails);
-        read_value(json, "embedChapters", options.m_embed_chapters);
-        read_value(json, "embedMetadata", options.m_embed_metadata);
-        read_value(json, "embedSubtitles", options.m_embed_subtitles);
-        read_value(json, "embedThumbnails", options.m_embed_thumbnails);
-        if (json.contains("postprocessingArguments") && json["postprocessingArguments"].is_array())
-        {
-            options.m_postprocessing_arguments.clear();
-            for (const nlohmann::json& item: json["postprocessingArguments"])
-            {
-                postprocessing::Argument argument{ "", postprocessing::Step::None, postprocessing::Executable::None,
-                                                   "" };
-                from_json(item, argument);
-                options.m_postprocessing_arguments.push_back(argument);
-            }
-        }
-        read_value(json, "postprocessingThreads", options.m_postprocessing_threads, 1,
-                   static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
-        read_value(json, "removeSourceData", options.m_remove_source_data);
-        read_value(json, "translateMetadataAndChapters", options.m_translate_metadata_and_chapters);
+        from_json(json, config.m_subtitle_options);
     }
 
     void from_json(const nlohmann::json& json, PreviousDownloadOptions& options)
     {
-        read_value(json, "audioBitrate", options.m_audio_bitrate);
+        if (json.contains("audioBitrate") && json["audioBitrate"].is_number())
+        {
+            options.m_audio_bitrate = json.at("audioBitrate").get<double>();
+        }
+        else if (json.contains("AudioBitrate") && json["AudioBitrate"].is_number())
+        {
+            options.m_audio_bitrate = json.at("AudioBitrate").get<double>();
+        }
         if (json.contains("audioFormatIds") && json["audioFormatIds"].is_object())
         {
             for (const std::pair<const std::string, nlohmann::json>& pair:
@@ -1076,14 +824,78 @@ namespace parabolic::configuration
                 }
             }
         }
-        read_value(json, "audioOnlyFileType", options.m_audio_only_file_type, file::Type::VideoGeneric,
-                   file::Type::Ogg);
-        read_value(json, "downloadImmediatelyAsAudio", options.m_download_immediately_as_audio);
-        read_value(json, "downloadImmediatelyAsVideo", options.m_download_immediately_as_video);
-        read_value(json, "exportDescription", options.m_export_description);
-        read_value(json, "exportM3U", options.m_export_m3u);
-        read_value(json, "fullFileType", options.m_full_file_type, file::Type::VideoGeneric, file::Type::Ogg);
-        read_value(json, "numberTitles", options.m_number_titles);
+        if (json.contains("audioOnlyFileType") && json["audioOnlyFileType"].is_number_integer())
+        {
+            int value{ json.at("audioOnlyFileType").get<int>() };
+            if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
+            {
+                options.m_audio_only_file_type = static_cast<file::Type>(value);
+            }
+        }
+        else if (json.contains("AudioOnlyFileType") && json["AudioOnlyFileType"].is_number_integer())
+        {
+            int value{ json.at("AudioOnlyFileType").get<int>() };
+            if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
+            {
+                options.m_audio_only_file_type = static_cast<file::Type>(value);
+            }
+        }
+        if (json.contains("downloadImmediatelyAsAudio") && json["downloadImmediatelyAsAudio"].is_boolean())
+        {
+            options.m_download_immediately_as_audio = json.at("downloadImmediatelyAsAudio").get<bool>();
+        }
+        else if (json.contains("DownloadImmediatelyAsAudio") && json["DownloadImmediatelyAsAudio"].is_boolean())
+        {
+            options.m_download_immediately_as_audio = json.at("DownloadImmediatelyAsAudio").get<bool>();
+        }
+        if (json.contains("downloadImmediatelyAsVideo") && json["downloadImmediatelyAsVideo"].is_boolean())
+        {
+            options.m_download_immediately_as_video = json.at("downloadImmediatelyAsVideo").get<bool>();
+        }
+        else if (json.contains("DownloadImmediatelyAsVideo") && json["DownloadImmediatelyAsVideo"].is_boolean())
+        {
+            options.m_download_immediately_as_video = json.at("DownloadImmediatelyAsVideo").get<bool>();
+        }
+        if (json.contains("exportDescription") && json["exportDescription"].is_boolean())
+        {
+            options.m_export_description = json.at("exportDescription").get<bool>();
+        }
+        else if (json.contains("ExportDescription") && json["ExportDescription"].is_boolean())
+        {
+            options.m_export_description = json.at("ExportDescription").get<bool>();
+        }
+        if (json.contains("exportM3U") && json["exportM3U"].is_boolean())
+        {
+            options.m_export_m3u = json.at("exportM3U").get<bool>();
+        }
+        else if (json.contains("ExportM3U") && json["ExportM3U"].is_boolean())
+        {
+            options.m_export_m3u = json.at("ExportM3U").get<bool>();
+        }
+        if (json.contains("fullFileType") && json["fullFileType"].is_number_integer())
+        {
+            int value{ json.at("fullFileType").get<int>() };
+            if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
+            {
+                options.m_full_file_type = static_cast<file::Type>(value);
+            }
+        }
+        else if (json.contains("FullFileType") && json["FullFileType"].is_number_integer())
+        {
+            int value{ json.at("FullFileType").get<int>() };
+            if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
+            {
+                options.m_full_file_type = static_cast<file::Type>(value);
+            }
+        }
+        if (json.contains("numberTitles") && json["numberTitles"].is_boolean())
+        {
+            options.m_number_titles = json.at("numberTitles").get<bool>();
+        }
+        else if (json.contains("NumberTitles") && json["NumberTitles"].is_boolean())
+        {
+            options.m_number_titles = json.at("NumberTitles").get<bool>();
+        }
         if (json.contains("postprocessingArgumentNames") && json["postprocessingArgumentNames"].is_array())
         {
             options.m_postprocessing_argument_names.clear();
@@ -1095,9 +907,30 @@ namespace parabolic::configuration
                 }
             }
         }
-        read_value(json, "reverseDownloadOrder", options.m_reverse_download_order);
-        read_value(json, "saveFolder", options.m_save_folder);
-        read_value(json, "splitChapters", options.m_split_chapters);
+        if (json.contains("reverseDownloadOrder") && json["reverseDownloadOrder"].is_boolean())
+        {
+            options.m_reverse_download_order = json.at("reverseDownloadOrder").get<bool>();
+        }
+        else if (json.contains("ReverseDownloadOrder") && json["ReverseDownloadOrder"].is_boolean())
+        {
+            options.m_reverse_download_order = json.at("ReverseDownloadOrder").get<bool>();
+        }
+        if (json.contains("saveFolder") && json["saveFolder"].is_string())
+        {
+            options.m_save_folder = std::filesystem::path{ json.at("saveFolder").get<std::string>() };
+        }
+        else if (json.contains("SaveFolder") && json["SaveFolder"].is_string())
+        {
+            options.m_save_folder = std::filesystem::path{ json.at("SaveFolder").get<std::string>() };
+        }
+        if (json.contains("splitChapters") && json["splitChapters"].is_boolean())
+        {
+            options.m_split_chapters = json.at("splitChapters").get<bool>();
+        }
+        else if (json.contains("SplitChapters") && json["SplitChapters"].is_boolean())
+        {
+            options.m_split_chapters = json.at("SplitChapters").get<bool>();
+        }
         if (json.contains("subtitleLanguages") && json["subtitleLanguages"].is_array())
         {
             options.m_subtitle_languages.clear();
@@ -1122,8 +955,22 @@ namespace parabolic::configuration
                 }
             }
         }
-        read_value(json, "videoOnlyFileType", options.m_video_only_file_type, file::Type::VideoGeneric,
-                   file::Type::Ogg);
+        if (json.contains("videoOnlyFileType") && json["videoOnlyFileType"].is_number_integer())
+        {
+            int value{ json.at("videoOnlyFileType").get<int>() };
+            if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
+            {
+                options.m_video_only_file_type = static_cast<file::Type>(value);
+            }
+        }
+        else if (json.contains("VideoOnlyFileType") && json["VideoOnlyFileType"].is_number_integer())
+        {
+            int value{ json.at("VideoOnlyFileType").get<int>() };
+            if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
+            {
+                options.m_video_only_file_type = static_cast<file::Type>(value);
+            }
+        }
         if (json.contains("videoResolution") && json["videoResolution"].is_object())
         {
             options.m_video_resolution = json["videoResolution"].get<video::Resolution>();
@@ -1132,42 +979,46 @@ namespace parabolic::configuration
 
     void from_json(const nlohmann::json& json, WindowGeometry& geometry)
     {
-        read_value(json, "height", geometry.m_height, 1, std::numeric_limits<int>::max());
-        read_value(json, "isMaximized", geometry.m_is_maximized);
-        read_value(json, "width", geometry.m_width, 1, std::numeric_limits<int>::max());
-        read_value(json, "x", geometry.m_x);
-        read_value(json, "y", geometry.m_y);
-    }
-
-    void from_json(const nlohmann::json& json, YtdlpOptions& options)
-    {
-        read_value(json, "cookiesBrowser", options.m_cookies_browser, cookies::Browser::None, cookies::Browser::Whale);
-        read_value(json, "cookiesPath", options.m_cookies_path);
-        read_value(json, "proxyUrl", options.m_proxy_url);
-        if (json.contains("speedLimit"))
+        if (json.contains("height") && json["height"].is_number_integer())
         {
-            if (json["speedLimit"].is_number_integer())
-            {
-                options.m_speed_limit = std::clamp(json["speedLimit"].get<int>(), 512, 10240);
-            }
-            else if (json["speedLimit"].is_null())
-            {
-                options.m_speed_limit = std::nullopt;
-            }
+            geometry.m_height = std::clamp(json.at("height").get<int>(), 1, std::numeric_limits<int>::max());
         }
-        read_value(json, "usePartFiles", options.m_use_part_files);
-        read_value(json, "youTubeSponsorBlock", options.m_youtube_sponsor_block);
-        read_value(json, "ytdlpDiscoveryArgs", options.m_ytdlp_discovery_args);
-        read_value(json, "ytdlpDownloadArgs", options.m_ytdlp_download_args);
-    }
-
-    void to_json(nlohmann::json& json, const Aria2Options& options)
-    {
-        json = nlohmann::json{
-            { "ariaMaxConnectionsPerServer", options.m_max_connections_per_server },
-            { "ariaMinSplitSize", options.m_min_split_size },
-            { "useAria", options.m_use_aria },
-        };
+        else if (json.contains("Height") && json["Height"].is_number_integer())
+        {
+            geometry.m_height = std::clamp(json.at("Height").get<int>(), 1, std::numeric_limits<int>::max());
+        }
+        if (json.contains("isMaximized") && json["isMaximized"].is_boolean())
+        {
+            geometry.m_is_maximized = json.at("isMaximized").get<bool>();
+        }
+        else if (json.contains("IsMaximized") && json["IsMaximized"].is_boolean())
+        {
+            geometry.m_is_maximized = json.at("IsMaximized").get<bool>();
+        }
+        if (json.contains("width") && json["width"].is_number_integer())
+        {
+            geometry.m_width = std::clamp(json.at("width").get<int>(), 1, std::numeric_limits<int>::max());
+        }
+        else if (json.contains("Width") && json["Width"].is_number_integer())
+        {
+            geometry.m_width = std::clamp(json.at("Width").get<int>(), 1, std::numeric_limits<int>::max());
+        }
+        if (json.contains("x") && json["x"].is_number_integer())
+        {
+            geometry.m_x = json.at("x").get<int>();
+        }
+        else if (json.contains("X") && json["X"].is_number_integer())
+        {
+            geometry.m_x = json.at("X").get<int>();
+        }
+        if (json.contains("y") && json["y"].is_number_integer())
+        {
+            geometry.m_y = json.at("y").get<int>();
+        }
+        else if (json.contains("Y") && json["Y"].is_number_integer())
+        {
+            geometry.m_y = json.at("Y").get<int>();
+        }
     }
 
     void to_json(nlohmann::json& json, const Configuration& config)
@@ -1186,50 +1037,12 @@ namespace parabolic::configuration
             { "windowGeometry", config.m_window_geometry },
         };
         json.update(nlohmann::json(config.m_aria2_options));
+        json.update(nlohmann::json(config.m_extractor_options));
         json.update(nlohmann::json(config.m_format_options));
         json.update(nlohmann::json(config.m_history_options));
         json.update(nlohmann::json(config.m_postprocessing_options));
         json.update(nlohmann::json(config.m_previous_download_options));
-        json.update(nlohmann::json(config.m_ytdlp_options));
-    }
-
-    void to_json(nlohmann::json& json, const FormatOptions& options)
-    {
-        json = nlohmann::json{
-            { "includeAutoGeneratedSubtitles", options.m_include_auto_generated_subtitles },
-            { "includeSuperResolutions", options.m_include_super_resolutions },
-            { "preferredAudioCodec", static_cast<int>(options.m_preferred_audio_codec) },
-            { "preferredFrameRate", static_cast<int>(options.m_preferred_frame_rate) },
-            { "preferredSubtitleFormat", static_cast<int>(options.m_preferred_subtitle_format) },
-            { "preferredVideoCodec", static_cast<int>(options.m_preferred_video_codec) },
-        };
-    }
-
-    void to_json(nlohmann::json& json, const HistoryOptions& options)
-    {
-        json = nlohmann::json{
-            { "historyLength", static_cast<int>(options.m_length) },
-            { "historySortNewestFirst", options.m_sort_newest },
-        };
-    }
-
-    void to_json(nlohmann::json& json, const PostprocessingOptions& options)
-    {
-        json = nlohmann::json{
-            { "cropAudioThumbnails", options.m_crop_audio_thumbnails },
-            { "embedChapters", options.m_embed_chapters },
-            { "embedMetadata", options.m_embed_metadata },
-            { "embedSubtitles", options.m_embed_subtitles },
-            { "embedThumbnails", options.m_embed_thumbnails },
-            { "postprocessingArguments", nlohmann::json::array() },
-            { "postprocessingThreads", options.m_postprocessing_threads },
-            { "removeSourceData", options.m_remove_source_data },
-            { "translateMetadataAndChapters", options.m_translate_metadata_and_chapters },
-        };
-        for (const postprocessing::Argument& item: options.m_postprocessing_arguments)
-        {
-            json["postprocessingArguments"].push_back(item);
-        }
+        json.update(nlohmann::json(config.m_subtitle_options));
     }
 
     void to_json(nlohmann::json& json, const PreviousDownloadOptions& options)
@@ -1273,24 +1086,6 @@ namespace parabolic::configuration
             { "height", geometry.m_height }, { "isMaximized", geometry.m_is_maximized },
             { "width", geometry.m_width },   { "x", geometry.m_x },
             { "y", geometry.m_y },
-        };
-    }
-
-    void to_json(nlohmann::json& json, const YtdlpOptions& options)
-    {
-        json = nlohmann::json{
-            { "cookiesBrowser", static_cast<int>(options.m_cookies_browser) },
-            { "cookiesPath", options.m_cookies_path },
-            { "proxyUrl", options.m_proxy_url },
-            {
-                    "speedLimit",
-                    options.m_speed_limit.has_value() ? nlohmann::json(options.m_speed_limit.value())
-                                                      : nlohmann::json(nullptr),
-            },
-            { "usePartFiles", options.m_use_part_files },
-            { "youTubeSponsorBlock", options.m_youtube_sponsor_block },
-            { "ytdlpDiscoveryArgs", options.m_ytdlp_discovery_args },
-            { "ytdlpDownloadArgs", options.m_ytdlp_download_args },
         };
     }
 }

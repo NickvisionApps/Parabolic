@@ -5,6 +5,7 @@
 #include <chrono>
 #include <cstdint>
 #include <filesystem>
+#include <nlohmann/json_fwd.hpp>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -44,24 +45,37 @@ namespace parabolic::history
         std::chrono::system_clock::time_point m_downloaded_on{ std::chrono::system_clock::now() };
     };
 
+    class Options
+    {
+    public:
+        [[nodiscard]] Length length() const;
+        void set_length(Length value);
+        [[nodiscard]] bool sort_newest() const;
+        void set_sort_newest(bool value);
+        bool operator==(const Options& rhs) const = default;
+        friend void from_json(const nlohmann::json& json, Options& options);
+        friend void to_json(nlohmann::json& json, const Options& options);
+
+    private:
+        Length m_length{ Length::OneWeek };
+        bool m_sort_newest{ true };
+    };
+
     class Store
     {
     public:
         Store(std::string_view app_name);
-        [[nodiscard]] Length length() const;
-        void set_length(Length length);
-        [[nodiscard]] bool sort_newest() const;
-        void set_sort_newest(bool sort_newest);
         [[nodiscard]] bool add_or_update(const Entry& entry);
         [[nodiscard]] bool add_or_update(const std::vector<Entry>& entries);
         [[nodiscard]] bool clear();
         [[nodiscard]] std::vector<Entry> get_all();
+        [[nodiscard]] const Options& options() const;
         [[nodiscard]] bool remove(const std::string& url);
+        void set_options(const Options& options);
 
     private:
         SQLite::Database m_database;
-        Length m_length{ Length::OneWeek };
-        bool m_sort_newest{ true };
+        Options m_options;
     };
 }
 

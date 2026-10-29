@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 21:09-0400\n"
+"POT-Creation-Date: 2026-10-25 22:01-0400\n"
 "PO-Revision-Date: 2026-02-19 13:09+0000\n"
 "Last-Translator: Sudhev <sudhevkunnathu2k16@gmail.com>\n"
 "Language-Team: Malayalam <https://hosted.weblate.org/projects/nickvision-"
@@ -19,58 +19,58 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.16.1-dev\n"
 
-#: libparabolic/src/subtitle.cpp:31
+#: libparabolic/src/format.cpp:156 libparabolic/src/format.cpp:239
+#, fuzzy
+msgid "Audio Description"
+msgstr "വിവരണം ഫയലിലേക്ക് എക്സ്പോർട്ട് ചെയ്യുക"
+
+#: libparabolic/src/format.cpp:185 libparabolic/src/format.cpp:188
+#: libparabolic/src/format.cpp:191
 #, c++-format
-msgid "{} (Auto-generated)"
+msgid "{} FPS"
 msgstr ""
 
-#: libparabolic/src/video.cpp:73 libparabolic/src/ytdlp.cpp:305
+#: libparabolic/src/format.cpp:281
+#, c++-format
+msgid "{:.2f} GiB"
+msgstr ""
+
+#: libparabolic/src/format.cpp:285
+#, c++-format
+msgid "{:.2f} MiB"
+msgstr ""
+
+#: libparabolic/src/format.cpp:289
+#, c++-format
+msgid "{:.2f} KiB"
+msgstr ""
+
+#: libparabolic/src/format.cpp:293
+#, c++-format
+msgid "{:.2f} B"
+msgstr ""
+
+#: libparabolic/src/format.cpp:299 libparabolic/src/video.cpp:73
 msgid "Best"
 msgstr ""
 
-#: libparabolic/src/video.cpp:77 libparabolic/src/ytdlp.cpp:309
+#: libparabolic/src/format.cpp:303 libparabolic/src/video.cpp:77
 msgid "Worst"
+msgstr ""
+
+#: libparabolic/src/format.cpp:307
+msgid "None"
+msgstr ""
+
+#: libparabolic/src/subtitle.cpp:31
+#, c++-format
+msgid "{} (Auto-generated)"
 msgstr ""
 
 #: libparabolic/src/video.cpp:79
 #, c++-format
 msgctxt "Resolution"
 msgid "{}x{}"
-msgstr ""
-
-#: libparabolic/src/ytdlp.cpp:162 libparabolic/src/ytdlp.cpp:245
-#, fuzzy
-msgid "Audio Description"
-msgstr "വിവരണം ഫയലിലേക്ക് എക്സ്പോർട്ട് ചെയ്യുക"
-
-#: libparabolic/src/ytdlp.cpp:191 libparabolic/src/ytdlp.cpp:194
-#: libparabolic/src/ytdlp.cpp:197
-#, c++-format
-msgid "{} FPS"
-msgstr ""
-
-#: libparabolic/src/ytdlp.cpp:287
-#, c++-format
-msgid "{:.2f} GiB"
-msgstr ""
-
-#: libparabolic/src/ytdlp.cpp:291
-#, c++-format
-msgid "{:.2f} MiB"
-msgstr ""
-
-#: libparabolic/src/ytdlp.cpp:295
-#, c++-format
-msgid "{:.2f} KiB"
-msgstr ""
-
-#: libparabolic/src/ytdlp.cpp:299
-#, c++-format
-msgid "{:.2f} B"
-msgstr ""
-
-#: libparabolic/src/ytdlp.cpp:313
-msgid "None"
 msgstr ""
 
 #~ msgid "Add Download"

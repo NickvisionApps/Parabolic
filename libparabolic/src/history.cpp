@@ -5,6 +5,8 @@
 #include <chrono>
 #include <compare>
 #include <functional>
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <sago/platform_folders.h>
 #include <string>
 #include <string_view>
@@ -69,6 +71,26 @@ namespace parabolic::history
         return m_url == rhs.m_url;
     }
 
+    Length Options::length() const
+    {
+        return m_length;
+    }
+
+    void Options::set_length(Length value)
+    {
+        m_length = value;
+    }
+
+    bool Options::sort_newest() const
+    {
+        return m_sort_newest;
+    }
+
+    void Options::set_sort_newest(bool value)
+    {
+        m_sort_newest = value;
+    }
+
     Store::Store(std::string_view app_name)
 #ifdef _WIN32
         : m_database{ environment::is_portable() ? environment::executable_directory() / "history.db"
@@ -86,29 +108,9 @@ namespace parabolic::history
                         " (url TEXT PRIMARY KEY, title TEXT, path TEXT, downloaded_on INTEGER)");
     }
 
-    Length Store::length() const
-    {
-        return m_length;
-    }
-
-    void Store::set_length(Length length)
-    {
-        m_length = length;
-    }
-
-    bool Store::sort_newest() const
-    {
-        return m_sort_newest;
-    }
-
-    void Store::set_sort_newest(bool sort_newest)
-    {
-        m_sort_newest = sort_newest;
-    }
-
     bool Store::add_or_update(const Entry& entry)
     {
-        if (m_length == Length::Never)
+        if (m_options.length() == Length::Never)
         {
             return true;
         }
@@ -159,11 +161,11 @@ namespace parabolic::history
             entry.set_path(query.getColumn(2).getString());
             entry.set_downloaded_on(
                     std::chrono::system_clock::time_point{ std::chrono::seconds{ query.getColumn(3).getInt64() } });
-            if (m_length != Length::Forever &&
+            if (m_options.length() != Length::Forever &&
                 std::chrono::duration_cast<std::chrono::hours>(std::chrono::system_clock::now() - entry.downloaded_on())
                                         .count() /
                                 24 >
-                        static_cast<int>(m_length))
+                        static_cast<int>(m_options.length()))
             {
                 marked.push_back(entry.url());
                 continue;
@@ -187,7 +189,7 @@ namespace parabolic::history
                 transaction.commit();
             }
         }
-        if (m_sort_newest)
+        if (m_options.sort_newest())
         {
             std::ranges::sort(result, std::ranges::greater{});
         }
@@ -198,10 +200,78 @@ namespace parabolic::history
         return result;
     }
 
+    const Options& Store::options() const
+    {
+        return m_options;
+    }
+
     bool Store::remove(const std::string& url)
     {
         SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME " WHERE url = ?" };
         query.bind(1, url);
         return query.exec() > 0;
+    }
+
+    void Store::set_options(const Options& options)
+    {
+        m_options = options;
+    }
+
+    void from_json(const nlohmann::json& json, Options& options)
+    {
+        if (json.contains("historyLength") && json["historyLength"].is_number_integer())
+        {
+            int length{ json.at("historyLength").get<int>() };
+            switch (length)
+            {
+            case static_cast<int>(Length::Never):
+            case static_cast<int>(Length::OneDay):
+            case static_cast<int>(Length::OneWeek):
+            case static_cast<int>(Length::OneMonth):
+            case static_cast<int>(Length::ThreeMonths):
+            case static_cast<int>(Length::SixMonths):
+            case static_cast<int>(Length::OneYear):
+            case static_cast<int>(Length::Forever):
+                options.m_length = static_cast<Length>(length);
+                break;
+            default:
+                break;
+            }
+        }
+        else if (json.contains("HistoryLength") && json["HistoryLength"].is_number_integer())
+        {
+            int length{ json.at("HistoryLength").get<int>() };
+            switch (length)
+            {
+            case static_cast<int>(Length::Never):
+            case static_cast<int>(Length::OneDay):
+            case static_cast<int>(Length::OneWeek):
+            case static_cast<int>(Length::OneMonth):
+            case static_cast<int>(Length::ThreeMonths):
+            case static_cast<int>(Length::SixMonths):
+            case static_cast<int>(Length::OneYear):
+            case static_cast<int>(Length::Forever):
+                options.m_length = static_cast<Length>(length);
+                break;
+            default:
+                break;
+            }
+        }
+        if (json.contains("historySortNewestFirst") && json["historySortNewestFirst"].is_boolean())
+        {
+            options.m_sort_newest = json.at("historySortNewestFirst").get<bool>();
+        }
+        else if (json.contains("HistorySortNewestFirst") && json["HistorySortNewestFirst"].is_boolean())
+        {
+            options.m_sort_newest = json.at("HistorySortNewestFirst").get<bool>();
+        }
+    }
+
+    void to_json(nlohmann::json& json, const Options& options)
+    {
+        json = nlohmann::json{
+            { "historyLength", static_cast<int>(options.m_length) },
+            { "historySortNewestFirst", options.m_sort_newest },
+        };
     }
 }
