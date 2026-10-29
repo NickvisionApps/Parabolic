@@ -32,6 +32,17 @@ namespace parabolic::discovery
         subtitle::Type m_preferred_subtitle_format{ subtitle::Type::Any };
         video::Codec m_preferred_video_codec{ video::Codec::Any };
     };
+
+    class Manager
+    {
+    public:
+        Manager() = default;
+        [[nodiscard]] const Options& options() const;
+        void set_options(const Options& options);
+
+    private:
+        Options m_options;
+    };
 }
 
 #endif

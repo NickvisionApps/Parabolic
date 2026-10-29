@@ -7,10 +7,10 @@
 
 namespace parabolic::batch
 {
-    class Entry
+    class Item
     {
     public:
-        Entry(std::string url);
+        Item(std::string url);
         [[nodiscard]] const std::string& url() const;
         [[nodiscard]] const std::filesystem::path& suggested_save_folder() const;
         void set_suggested_save_folder(const std::filesystem::path& folder);
@@ -23,7 +23,7 @@ namespace parabolic::batch
         std::string m_suggested_filename;
     };
 
-    std::vector<Entry> read_file(const std::filesystem::path& path);
+    std::vector<Item> read_file(const std::filesystem::path& path);
 }
 
 #endif

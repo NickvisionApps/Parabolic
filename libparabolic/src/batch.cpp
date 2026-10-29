@@ -14,37 +14,37 @@
 
 namespace parabolic::batch
 {
-    Entry::Entry(std::string url)
+    Item::Item(std::string url)
         : m_url{ std::move(url) }
     {
     }
 
-    const std::string& Entry::url() const
+    const std::string& Item::url() const
     {
         return m_url;
     }
 
-    const std::filesystem::path& Entry::suggested_save_folder() const
+    const std::filesystem::path& Item::suggested_save_folder() const
     {
         return m_suggested_save_folder;
     }
 
-    void Entry::set_suggested_save_folder(const std::filesystem::path& folder)
+    void Item::set_suggested_save_folder(const std::filesystem::path& folder)
     {
         m_suggested_save_folder = folder;
     }
 
-    const std::string& Entry::suggested_filename() const
+    const std::string& Item::suggested_filename() const
     {
         return m_suggested_filename;
     }
 
-    void Entry::set_suggested_filename(const std::string& filename)
+    void Item::set_suggested_filename(const std::string& filename)
     {
         m_suggested_filename = filename;
     }
 
-    std::vector<Entry> read_file(const std::filesystem::path& path)
+    std::vector<Item> read_file(const std::filesystem::path& path)
     {
         if (!std::filesystem::exists(path) || string_manip::lower(path.extension().string()) != ".txt")
         {
@@ -52,7 +52,7 @@ namespace parabolic::batch
         }
         std::ifstream file{ path };
         std::string line;
-        std::vector<Entry> entries;
+        std::vector<Item> items;
         while (std::getline(file, line))
         {
             std::vector<std::string> fields{ string_manip::split(line, '|') };
@@ -65,7 +65,7 @@ namespace parabolic::batch
             {
                 continue;
             }
-            Entry entry{ url };
+            Item item{ url };
             if (fields.size() > 1)
             {
                 std::string save_folder{ string_manip::trim(fields[1]) };
@@ -79,7 +79,7 @@ namespace parabolic::batch
                 }
                 if (std::filesystem::path{ save_folder }.has_root_path())
                 {
-                    entry.set_suggested_save_folder(save_folder);
+                    item.set_suggested_save_folder(save_folder);
                 }
             }
             if (fields.size() > 2)
@@ -87,11 +87,11 @@ namespace parabolic::batch
                 std::string filename{ string_manip::trim(fields[2]) };
                 if (!filename.empty())
                 {
-                    entry.set_suggested_filename(filename);
+                    item.set_suggested_filename(filename);
                 }
             }
-            entries.push_back(std::move(entry));
+            items.push_back(std::move(item));
         }
-        return entries;
+        return items;
     }
 }

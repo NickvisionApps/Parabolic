@@ -7,7 +7,6 @@
 #include <string>
 #include "audio.h"
 #include "file.h"
-#include "subtitle.h"
 #include "translation.h"
 #include "video.h"
 

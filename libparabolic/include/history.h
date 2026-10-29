@@ -24,10 +24,10 @@ namespace parabolic::history
         Forever = -1,
     };
 
-    class Entry
+    class Record
     {
     public:
-        Entry(std::string url);
+        Record(std::string url);
         [[nodiscard]] const std::string& url() const;
         [[nodiscard]] const std::string& title() const;
         void set_title(const std::string& title);
@@ -35,8 +35,8 @@ namespace parabolic::history
         void set_path(const std::string& path);
         [[nodiscard]] const std::chrono::system_clock::time_point& downloaded_on() const;
         void set_downloaded_on(const std::chrono::system_clock::time_point& downloaded_on);
-        std::strong_ordering operator<=>(const Entry& rhs) const;
-        bool operator==(const Entry& rhs) const;
+        std::strong_ordering operator<=>(const Record& rhs) const;
+        bool operator==(const Record& rhs) const;
 
     private:
         std::string m_url;
@@ -65,10 +65,10 @@ namespace parabolic::history
     {
     public:
         Store(std::string_view app_name);
-        [[nodiscard]] bool add_or_update(const Entry& entry);
-        [[nodiscard]] bool add_or_update(const std::vector<Entry>& entries);
+        [[nodiscard]] bool add_or_update(const Record& record);
+        [[nodiscard]] bool add_or_update(const std::vector<Record>& records);
         [[nodiscard]] bool clear();
-        [[nodiscard]] std::vector<Entry> get_all();
+        [[nodiscard]] std::vector<Record> get_all();
         [[nodiscard]] const Options& options() const;
         [[nodiscard]] bool remove(const std::string& url);
         void set_options(const Options& options);

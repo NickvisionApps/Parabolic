@@ -57,6 +57,16 @@ namespace parabolic::discovery
         m_preferred_video_codec = value;
     }
 
+    const Options& Manager::options() const
+    {
+        return m_options;
+    }
+
+    void Manager::set_options(const Options& options)
+    {
+        m_options = options;
+    }
+
     void from_json(const nlohmann::json& json, Options& options)
     {
         if (json.contains("includeSuperResolutions") && json["includeSuperResolutions"].is_boolean())

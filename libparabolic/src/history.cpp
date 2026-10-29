@@ -21,52 +21,52 @@
 
 namespace parabolic::history
 {
-    Entry::Entry(std::string url)
+    Record::Record(std::string url)
         : m_url{ std::move(url) }
     {
     }
 
-    const std::string& Entry::url() const
+    const std::string& Record::url() const
     {
         return m_url;
     }
 
-    const std::string& Entry::title() const
+    const std::string& Record::title() const
     {
         return m_title;
     }
 
-    void Entry::set_title(const std::string& title)
+    void Record::set_title(const std::string& title)
     {
         m_title = title;
     }
 
-    const std::string& Entry::path() const
+    const std::string& Record::path() const
     {
         return m_path;
     }
 
-    void Entry::set_path(const std::string& path)
+    void Record::set_path(const std::string& path)
     {
         m_path = path;
     }
 
-    const std::chrono::system_clock::time_point& Entry::downloaded_on() const
+    const std::chrono::system_clock::time_point& Record::downloaded_on() const
     {
         return m_downloaded_on;
     }
 
-    void Entry::set_downloaded_on(const std::chrono::system_clock::time_point& downloaded_on)
+    void Record::set_downloaded_on(const std::chrono::system_clock::time_point& downloaded_on)
     {
         m_downloaded_on = downloaded_on;
     }
 
-    std::strong_ordering Entry::operator<=>(const Entry& rhs) const
+    std::strong_ordering Record::operator<=>(const Record& rhs) const
     {
         return m_downloaded_on <=> rhs.m_downloaded_on;
     }
 
-    bool Entry::operator==(const Entry& rhs) const
+    bool Record::operator==(const Record& rhs) const
     {
         return m_url == rhs.m_url;
     }
@@ -108,7 +108,7 @@ namespace parabolic::history
                         " (url TEXT PRIMARY KEY, title TEXT, path TEXT, downloaded_on INTEGER)");
     }
 
-    bool Store::add_or_update(const Entry& entry)
+    bool Store::add_or_update(const Record& record)
     {
         if (m_options.length() == Length::Never)
         {
@@ -116,21 +116,21 @@ namespace parabolic::history
         }
         SQLite::Statement query{ m_database, "INSERT OR REPLACE INTO " TABLE_NAME
                                              " (url, title, path, downloaded_on) VALUES (?, ?, ?, ?)" };
-        query.bind(1, entry.url());
-        query.bind(2, entry.title());
-        query.bind(3, entry.path());
+        query.bind(1, record.url());
+        query.bind(2, record.title());
+        query.bind(3, record.path());
         query.bind(4,
-                   std::chrono::duration_cast<std::chrono::seconds>(entry.downloaded_on().time_since_epoch()).count());
+                   std::chrono::duration_cast<std::chrono::seconds>(record.downloaded_on().time_since_epoch()).count());
         return query.exec() > 0;
     }
 
-    bool Store::add_or_update(const std::vector<Entry>& entries)
+    bool Store::add_or_update(const std::vector<Record>& records)
     {
         SQLite::Transaction transaction{ m_database };
         bool success{ true };
-        for (const Entry& entry: entries)
+        for (const Record& record: records)
         {
-            success &= add_or_update(entry);
+            success &= add_or_update(record);
         }
         if (!success)
         {
@@ -149,28 +149,29 @@ namespace parabolic::history
         return query.exec() > 0;
     }
 
-    std::vector<Entry> Store::get_all()
+    std::vector<Record> Store::get_all()
     {
-        std::vector<Entry> result;
+        std::vector<Record> result;
         std::vector<std::string> marked;
         SQLite::Statement query{ m_database, "SELECT url, title, path, downloaded_on FROM " TABLE_NAME };
         while (query.executeStep())
         {
-            Entry entry{ query.getColumn(0).getString() };
-            entry.set_title(query.getColumn(1).getString());
-            entry.set_path(query.getColumn(2).getString());
-            entry.set_downloaded_on(
+            Record record{ query.getColumn(0).getString() };
+            record.set_title(query.getColumn(1).getString());
+            record.set_path(query.getColumn(2).getString());
+            record.set_downloaded_on(
                     std::chrono::system_clock::time_point{ std::chrono::seconds{ query.getColumn(3).getInt64() } });
             if (m_options.length() != Length::Forever &&
-                std::chrono::duration_cast<std::chrono::hours>(std::chrono::system_clock::now() - entry.downloaded_on())
+                std::chrono::duration_cast<std::chrono::hours>(std::chrono::system_clock::now() -
+                                                               record.downloaded_on())
                                         .count() /
                                 24 >
                         static_cast<int>(m_options.length()))
             {
-                marked.push_back(entry.url());
+                marked.push_back(record.url());
                 continue;
             }
-            result.push_back(entry);
+            result.push_back(record);
         }
         if (!marked.empty())
         {
