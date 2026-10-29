@@ -18,6 +18,7 @@
 #include <vector>
 #include "aria2.h"
 #include "discovery.h"
+#include "download.h"
 #include "environment.h"
 #include "extractor.h"
 #include "file.h"
@@ -26,7 +27,7 @@
 #include "postprocessing.h"
 #include "subtitle.h"
 #include "translation.h"
-#include "updates.h"
+#include "update.h"
 #include "video.h"
 #ifdef _WIN32
 #include "string_manip.h"
@@ -330,9 +331,6 @@ namespace parabolic::configuration
           }
 #endif
     {
-#ifdef _WIN32
-        m_limit_characters = true;
-#endif
         try
         {
             std::ifstream file{ m_path };
@@ -426,6 +424,23 @@ namespace parabolic::configuration
         save();
     }
 
+    download::Options Configuration::download_options() const
+    {
+        std::scoped_lock lock{ m_mutex };
+        return m_download_options;
+    }
+
+    void Configuration::set_download_options(const download::Options& value)
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (m_download_options == value)
+        {
+            return;
+        }
+        m_download_options = value;
+        save();
+    }
+
     extractor::Options Configuration::extractor_options() const
     {
         std::scoped_lock lock{ m_mutex };
@@ -460,74 +475,6 @@ namespace parabolic::configuration
         save();
     }
 
-    bool Configuration::include_media_id_in_title() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_include_media_id_in_title;
-    }
-
-    void Configuration::set_include_media_id_in_title(bool value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_include_media_id_in_title == value)
-        {
-            return;
-        }
-        m_include_media_id_in_title = value;
-        save();
-    }
-
-    bool Configuration::limit_characters() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_limit_characters;
-    }
-
-    void Configuration::set_limit_characters(bool value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_limit_characters == value)
-        {
-            return;
-        }
-        m_limit_characters = value;
-        save();
-    }
-
-    int Configuration::max_number_of_active_downloads() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_max_number_of_active_downloads;
-    }
-
-    void Configuration::set_max_number_of_active_downloads(int value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_max_number_of_active_downloads == value)
-        {
-            return;
-        }
-        m_max_number_of_active_downloads = value;
-        save();
-    }
-
-    bool Configuration::overwrite_existing_files() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_overwrite_existing_files;
-    }
-
-    void Configuration::set_overwrite_existing_files(bool value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_overwrite_existing_files == value)
-        {
-            return;
-        }
-        m_overwrite_existing_files = value;
-        save();
-    }
-
     postprocessing::Options Configuration::postprocessing_options() const
     {
         std::scoped_lock lock{ m_mutex };
@@ -542,23 +489,6 @@ namespace parabolic::configuration
             return;
         }
         m_postprocessing_options = value;
-        save();
-    }
-
-    bool Configuration::prevent_suspend() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_prevent_suspend;
-    }
-
-    void Configuration::set_prevent_suspend(bool value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_prevent_suspend == value)
-        {
-            return;
-        }
-        m_prevent_suspend = value;
         save();
     }
 
@@ -647,20 +577,20 @@ namespace parabolic::configuration
         save();
     }
 
-    updates::Options Configuration::updates_options() const
+    update::Options Configuration::update_options() const
     {
         std::scoped_lock lock{ m_mutex };
-        return m_updates_options;
+        return m_update_options;
     }
 
-    void Configuration::set_updates_options(const updates::Options& value)
+    void Configuration::set_update_options(const update::Options& value)
     {
         std::scoped_lock lock{ m_mutex };
-        if (m_updates_options == value)
+        if (m_update_options == value)
         {
             return;
         }
-        m_updates_options = value;
+        m_update_options = value;
         save();
     }
 
@@ -698,48 +628,6 @@ namespace parabolic::configuration
         {
             config.m_automatically_check_for_updates = json.at("AutomaticallyCheckForUpdates").get<bool>();
         }
-        if (json.contains("includeMediaIdInTitle") && json["includeMediaIdInTitle"].is_boolean())
-        {
-            config.m_include_media_id_in_title = json.at("includeMediaIdInTitle").get<bool>();
-        }
-        else if (json.contains("IncludeMediaIdInTitle") && json["IncludeMediaIdInTitle"].is_boolean())
-        {
-            config.m_include_media_id_in_title = json.at("IncludeMediaIdInTitle").get<bool>();
-        }
-        if (json.contains("limitCharacters") && json["limitCharacters"].is_boolean())
-        {
-            config.m_limit_characters = json.at("limitCharacters").get<bool>();
-        }
-        else if (json.contains("LimitCharacters") && json["LimitCharacters"].is_boolean())
-        {
-            config.m_limit_characters = json.at("LimitCharacters").get<bool>();
-        }
-        if (json.contains("maxNumberOfActiveDownloads") && json["maxNumberOfActiveDownloads"].is_number_integer())
-        {
-            config.m_max_number_of_active_downloads =
-                    std::clamp(json.at("maxNumberOfActiveDownloads").get<int>(), 1, 10);
-        }
-        else if (json.contains("MaxNumberOfActiveDownloads") && json["MaxNumberOfActiveDownloads"].is_number_integer())
-        {
-            config.m_max_number_of_active_downloads =
-                    std::clamp(json.at("MaxNumberOfActiveDownloads").get<int>(), 1, 10);
-        }
-        if (json.contains("overwriteExistingFiles") && json["overwriteExistingFiles"].is_boolean())
-        {
-            config.m_overwrite_existing_files = json.at("overwriteExistingFiles").get<bool>();
-        }
-        else if (json.contains("OverwriteExistingFiles") && json["OverwriteExistingFiles"].is_boolean())
-        {
-            config.m_overwrite_existing_files = json.at("OverwriteExistingFiles").get<bool>();
-        }
-        if (json.contains("preventSuspend") && json["preventSuspend"].is_boolean())
-        {
-            config.m_prevent_suspend = json.at("preventSuspend").get<bool>();
-        }
-        else if (json.contains("PreventSuspend") && json["PreventSuspend"].is_boolean())
-        {
-            config.m_prevent_suspend = json.at("PreventSuspend").get<bool>();
-        }
         if (json.contains("showDisclaimerOnStartup") && json["showDisclaimerOnStartup"].is_boolean())
         {
             config.m_show_disclaimer_on_startup = json.at("showDisclaimerOnStartup").get<bool>();
@@ -770,13 +658,14 @@ namespace parabolic::configuration
         }
         from_json(json, config.m_aria2_options);
         from_json(json, config.m_discovery_options);
+        from_json(json, config.m_download_options);
         from_json(json, config.m_extractor_options);
         from_json(json, config.m_history_options);
         from_json(json, config.m_postprocessing_options);
         from_json(json, config.m_previous_download_options);
         from_json(json, config.m_subtitle_options);
         from_json(json, config.m_translation_options);
-        from_json(json, config.m_updates_options);
+        from_json(json, config.m_update_options);
     }
 
     void from_json(const nlohmann::json& json, PreviousDownloadOptions& options)
@@ -1004,24 +893,20 @@ namespace parabolic::configuration
     {
         json = nlohmann::json{
             { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
-            { "includeMediaIdInTitle", config.m_include_media_id_in_title },
-            { "limitCharacters", config.m_limit_characters },
-            { "maxNumberOfActiveDownloads", config.m_max_number_of_active_downloads },
-            { "overwriteExistingFiles", config.m_overwrite_existing_files },
-            { "preventSuspend", config.m_prevent_suspend },
             { "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup },
             { "theme", static_cast<int>(config.m_theme) },
             { "windowGeometry", config.m_window_geometry },
         };
         json.update(nlohmann::json(config.m_aria2_options));
         json.update(nlohmann::json(config.m_discovery_options));
+        json.update(nlohmann::json(config.m_download_options));
         json.update(nlohmann::json(config.m_extractor_options));
         json.update(nlohmann::json(config.m_history_options));
         json.update(nlohmann::json(config.m_postprocessing_options));
         json.update(nlohmann::json(config.m_previous_download_options));
         json.update(nlohmann::json(config.m_subtitle_options));
         json.update(nlohmann::json(config.m_translation_options));
-        json.update(nlohmann::json(config.m_updates_options));
+        json.update(nlohmann::json(config.m_update_options));
     }
 
     void to_json(nlohmann::json& json, const PreviousDownloadOptions& options)

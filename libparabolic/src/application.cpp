@@ -6,14 +6,15 @@
 #include <string>
 #include "configuration.h"
 #include "discovery.h"
+#include "download.h"
 #include "history.h"
 #include "keyring.h"
 #include "translation.h"
-#include "updates.h"
+#include "update.h"
 
 using namespace parabolic::configuration;
 using namespace parabolic::translation;
-using namespace parabolic::updates;
+using namespace parabolic::update;
 
 namespace parabolic::application
 {
@@ -139,6 +140,7 @@ namespace parabolic::application
         m_configuration = std::make_unique<Configuration>(m_product->name());
         m_translator = std::make_unique<Translator>(m_product->short_name());
         m_discovery = std::make_unique<discovery::Manager>();
+        m_downloads = std::make_unique<download::Manager>();
         m_history = std::make_unique<history::Store>(m_product->name());
         m_keyring = std::make_unique<keyring::Store>(m_product->id());
 #ifdef _WIN32
@@ -172,6 +174,7 @@ namespace parabolic::application
     {
         m_configuration.reset();
         m_discovery.reset();
+        m_downloads.reset();
         m_history.reset();
         m_keyring.reset();
         m_product.reset();
@@ -195,6 +198,12 @@ namespace parabolic::application
     {
         m_discovery->set_options(m_configuration->discovery_options());
         return *m_discovery;
+    }
+
+    download::Manager& State::downloads() const
+    {
+        m_downloads->set_options(m_configuration->download_options());
+        return *m_downloads;
     }
 
     history::Store& State::history() const
@@ -227,7 +236,7 @@ namespace parabolic::application
 
     const Updater& State::updater() const
     {
-        m_updater->set_options(m_configuration->updates_options());
+        m_updater->set_options(m_configuration->update_options());
         return *m_updater;
     }
 }

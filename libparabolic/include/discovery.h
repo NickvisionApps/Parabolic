@@ -11,8 +11,12 @@ namespace parabolic::discovery
     class Options
     {
     public:
+        [[nodiscard]] bool include_media_id_in_title() const;
+        void set_include_media_id_in_title(bool value);
         [[nodiscard]] bool include_super_resolutions() const;
         void set_include_super_resolutions(bool value);
+        [[nodiscard]] bool limit_characters() const;
+        void set_limit_characters(bool value);
         [[nodiscard]] audio::Codec preferred_audio_codec() const;
         void set_preferred_audio_codec(audio::Codec value);
         [[nodiscard]] video::FrameRate preferred_frame_rate() const;
@@ -26,7 +30,13 @@ namespace parabolic::discovery
         friend void to_json(nlohmann::json& json, const Options& options);
 
     private:
+        bool m_include_media_id_in_title{ true };
         bool m_include_super_resolutions{ true };
+#ifdef _WIN32
+        bool m_limit_characters{ true };
+#else
+        bool m_limit_characters{ false };
+#endif
         audio::Codec m_preferred_audio_codec{ audio::Codec::Any };
         video::FrameRate m_preferred_frame_rate{ video::FrameRate::Any };
         subtitle::Type m_preferred_subtitle_format{ subtitle::Type::Any };

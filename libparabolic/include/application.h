@@ -6,10 +6,11 @@
 #include <string>
 #include "configuration.h"
 #include "discovery.h"
+#include "download.h"
 #include "history.h"
 #include "keyring.h"
 #include "translation.h"
-#include "updates.h"
+#include "update.h"
 
 namespace parabolic::application
 {
@@ -61,22 +62,24 @@ namespace parabolic::application
         [[nodiscard]] static State& instance();
         [[nodiscard]] configuration::Configuration& configuration() const;
         [[nodiscard]] discovery::Manager& discovery() const;
+        [[nodiscard]] download::Manager& downloads() const;
         [[nodiscard]] history::Store& history() const;
         [[nodiscard]] keyring::Store& keyring() const;
         [[nodiscard]] const Product& product() const;
         [[nodiscard]] const translation::Translator& translator() const;
-        [[nodiscard]] const updates::Updater& updater() const;
+        [[nodiscard]] const update::Updater& updater() const;
         State& operator=(const State&) = delete;
         State& operator=(State&&) = delete;
 
     private:
         std::unique_ptr<configuration::Configuration> m_configuration;
         std::unique_ptr<discovery::Manager> m_discovery;
+        std::unique_ptr<download::Manager> m_downloads;
         std::unique_ptr<history::Store> m_history;
         std::unique_ptr<keyring::Store> m_keyring;
         std::unique_ptr<Product> m_product;
         std::unique_ptr<translation::Translator> m_translator;
-        std::unique_ptr<updates::Updater> m_updater;
+        std::unique_ptr<update::Updater> m_updater;
     };
 }
 

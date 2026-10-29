@@ -7,6 +7,16 @@
 
 namespace parabolic::discovery
 {
+    bool Options::include_media_id_in_title() const
+    {
+        return m_include_media_id_in_title;
+    }
+
+    void Options::set_include_media_id_in_title(bool value)
+    {
+        m_include_media_id_in_title = value;
+    }
+
     bool Options::include_super_resolutions() const
     {
         return m_include_super_resolutions;
@@ -15,6 +25,16 @@ namespace parabolic::discovery
     void Options::set_include_super_resolutions(bool value)
     {
         m_include_super_resolutions = value;
+    }
+
+    bool Options::limit_characters() const
+    {
+        return m_limit_characters;
+    }
+
+    void Options::set_limit_characters(bool value)
+    {
+        m_limit_characters = value;
     }
 
     audio::Codec Options::preferred_audio_codec() const
@@ -69,6 +89,14 @@ namespace parabolic::discovery
 
     void from_json(const nlohmann::json& json, Options& options)
     {
+        if (json.contains("includeMediaIdInTitle") && json["includeMediaIdInTitle"].is_boolean())
+        {
+            options.m_include_media_id_in_title = json.at("includeMediaIdInTitle").get<bool>();
+        }
+        else if (json.contains("IncludeMediaIdInTitle") && json["IncludeMediaIdInTitle"].is_boolean())
+        {
+            options.m_include_media_id_in_title = json.at("IncludeMediaIdInTitle").get<bool>();
+        }
         if (json.contains("includeSuperResolutions") && json["includeSuperResolutions"].is_boolean())
         {
             options.m_include_super_resolutions = json.at("includeSuperResolutions").get<bool>();
@@ -76,6 +104,14 @@ namespace parabolic::discovery
         else if (json.contains("IncludeSuperResolutions") && json["IncludeSuperResolutions"].is_boolean())
         {
             options.m_include_super_resolutions = json.at("IncludeSuperResolutions").get<bool>();
+        }
+        if (json.contains("limitCharacters") && json["limitCharacters"].is_boolean())
+        {
+            options.m_limit_characters = json.at("limitCharacters").get<bool>();
+        }
+        else if (json.contains("LimitCharacters") && json["LimitCharacters"].is_boolean())
+        {
+            options.m_limit_characters = json.at("LimitCharacters").get<bool>();
         }
         if (json.contains("preferredAudioCodec") && json["preferredAudioCodec"].is_number_integer())
         {
@@ -146,7 +182,9 @@ namespace parabolic::discovery
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
+            { "includeMediaIdInTitle", options.m_include_media_id_in_title },
             { "includeSuperResolutions", options.m_include_super_resolutions },
+            { "limitCharacters", options.m_limit_characters },
             { "preferredAudioCodec", static_cast<int>(options.m_preferred_audio_codec) },
             { "preferredFrameRate", static_cast<int>(options.m_preferred_frame_rate) },
             { "preferredSubtitleFormat", static_cast<int>(options.m_preferred_subtitle_format) },

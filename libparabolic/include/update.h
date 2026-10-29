@@ -1,5 +1,5 @@
-#ifndef UPDATES_H
-#define UPDATES_H
+#ifndef UPDATE_H
+#define UPDATE_H
 
 #include <filesystem>
 #include <functional>
@@ -8,7 +8,7 @@
 #include <semver.hpp>
 #include <string>
 
-namespace parabolic::updates
+namespace parabolic::update
 {
     using DownloadProgressCallback = std::function<void(std::uint64_t, std::uint64_t)>;
 

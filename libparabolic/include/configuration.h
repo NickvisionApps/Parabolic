@@ -12,13 +12,14 @@
 #include <vector>
 #include "aria2.h"
 #include "discovery.h"
+#include "download.h"
 #include "extractor.h"
 #include "file.h"
 #include "history.h"
 #include "postprocessing.h"
 #include "subtitle.h"
 #include "translation.h"
-#include "updates.h"
+#include "update.h"
 #include "video.h"
 
 namespace parabolic::configuration
@@ -130,22 +131,14 @@ namespace parabolic::configuration
         void set_automatically_check_for_updates(bool value);
         [[nodiscard]] discovery::Options discovery_options() const;
         void set_discovery_options(const discovery::Options& value);
+        [[nodiscard]] download::Options download_options() const;
+        void set_download_options(const download::Options& value);
         [[nodiscard]] extractor::Options extractor_options() const;
         void set_extractor_options(const extractor::Options& value);
         [[nodiscard]] history::Options history_options() const;
         void set_history_options(const history::Options& value);
-        [[nodiscard]] bool include_media_id_in_title() const;
-        void set_include_media_id_in_title(bool value);
-        [[nodiscard]] bool limit_characters() const;
-        void set_limit_characters(bool value);
-        [[nodiscard]] int max_number_of_active_downloads() const;
-        void set_max_number_of_active_downloads(int value);
-        [[nodiscard]] bool overwrite_existing_files() const;
-        void set_overwrite_existing_files(bool value);
         [[nodiscard]] postprocessing::Options postprocessing_options() const;
         void set_postprocessing_options(const postprocessing::Options& value);
-        [[nodiscard]] bool prevent_suspend() const;
-        void set_prevent_suspend(bool value);
         [[nodiscard]] PreviousDownloadOptions previous_download_options() const;
         void set_previous_download_options(const PreviousDownloadOptions& value);
         [[nodiscard]] bool show_disclaimer_on_startup() const;
@@ -156,8 +149,8 @@ namespace parabolic::configuration
         void set_theme(Theme value);
         [[nodiscard]] translation::Options translation_options() const;
         void set_translation_options(const translation::Options& value);
-        [[nodiscard]] updates::Options updates_options() const;
-        void set_updates_options(const updates::Options& value);
+        [[nodiscard]] update::Options update_options() const;
+        void set_update_options(const update::Options& value);
         [[nodiscard]] WindowGeometry window_geometry() const;
         void set_window_geometry(const WindowGeometry& value);
         [[nodiscard]] std::string str() const;
@@ -170,21 +163,17 @@ namespace parabolic::configuration
         aria2::Options m_aria2_options;
         bool m_automatically_check_for_updates{ true };
         discovery::Options m_discovery_options;
+        download::Options m_download_options;
         extractor::Options m_extractor_options;
         history::Options m_history_options;
-        bool m_include_media_id_in_title{ true };
-        bool m_limit_characters{ false };
-        int m_max_number_of_active_downloads{ 5 };
-        bool m_overwrite_existing_files{ true };
         std::filesystem::path m_path;
         postprocessing::Options m_postprocessing_options;
-        bool m_prevent_suspend{ false };
         PreviousDownloadOptions m_previous_download_options;
         bool m_show_disclaimer_on_startup{ true };
         subtitle::Options m_subtitle_options;
         Theme m_theme{ Theme::System };
         translation::Options m_translation_options;
-        updates::Options m_updates_options;
+        update::Options m_update_options;
         WindowGeometry m_window_geometry;
     };
 }
