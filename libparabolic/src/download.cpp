@@ -267,11 +267,6 @@ namespace parabolic::download
         m_video_resolution = value;
     }
 
-    const Options& Manager::options() const
-    {
-        return m_options;
-    }
-
     void Manager::set_options(const Options& options)
     {
         m_options = options;

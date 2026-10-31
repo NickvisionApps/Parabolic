@@ -2,6 +2,7 @@
 #define ARIA2_H
 
 #include <nlohmann/json_fwd.hpp>
+#include <string>
 
 namespace parabolic::aria2
 {
@@ -23,6 +24,8 @@ namespace parabolic::aria2
         int m_min_split_size{ 20 };
         bool m_use_aria{ false };
     };
+
+    [[nodiscard]] std::string executable_path();
 }
 
 #endif

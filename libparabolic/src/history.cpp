@@ -201,11 +201,6 @@ namespace parabolic::history
         return result;
     }
 
-    const Options& Store::options() const
-    {
-        return m_options;
-    }
-
     bool Store::remove(const std::string& url)
     {
         SQLite::Statement query{ m_database, "DELETE FROM " TABLE_NAME " WHERE url = ?" };

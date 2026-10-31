@@ -2,6 +2,7 @@
 #define COOKIES_H
 
 #include <cstdint>
+#include <string>
 
 namespace parabolic::cookies
 {
@@ -17,6 +18,8 @@ namespace parabolic::cookies
         Vivaldi,
         Whale,
     };
+
+    [[nodiscard]] std::string to_argument_str(Browser browser);
 }
 
 #endif

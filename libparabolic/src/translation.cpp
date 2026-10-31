@@ -60,7 +60,11 @@ namespace parabolic::translation
                 if (entry.is_directory() &&
                     std::filesystem::exists(entry.path() / "LC_MESSAGES" / (m_domain_name + ".mo")))
                 {
+#ifdef _WIN32
+                    std::string name{ string_manip::str(entry.path().filename().wstring()) };
+#else
                     std::string name{ entry.path().filename().string() };
+#endif
                     if (std::ranges::find(m_available_languages, name) == m_available_languages.end())
                     {
                         m_available_languages.push_back(std::move(name));
@@ -94,11 +98,6 @@ namespace parabolic::translation
     {
         std::scoped_lock lock{ m_mutex };
         return m_language;
-    }
-
-    const Options& Translator::options() const
-    {
-        return m_options;
     }
 
     void Translator::set_options(const Options& options)

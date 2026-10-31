@@ -196,7 +196,7 @@ namespace parabolic::application
 
     discovery::Manager& State::discovery() const
     {
-        m_discovery->set_options(m_configuration->discovery_options());
+        m_discovery->set_options(m_configuration->discovery_options(), m_configuration->extractor_options());
         return *m_discovery;
     }
 

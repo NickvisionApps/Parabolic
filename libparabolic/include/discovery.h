@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "audio.h"
+#include "extractor.h"
 #include "file.h"
 #include "keyring.h"
 #include "subtitle.h"
@@ -125,8 +126,7 @@ namespace parabolic::discovery
     {
     public:
         Manager() = default;
-        [[nodiscard]] const Options& options() const;
-        void set_options(const Options& options);
+        void set_options(const Options& discovery_options, const extractor::Options& extractor_options);
         [[nodiscard]] Result discover_file(const std::filesystem::path& path,
                                            const std::optional<keyring::Credential>& credential = std::nullopt) const;
         [[nodiscard]] Result discover_url(const std::string& url,
@@ -136,7 +136,8 @@ namespace parabolic::discovery
         [[nodiscard]] Result discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
                                       const std::string& suggested_filename,
                                       const std::optional<keyring::Credential>& credential) const;
-        Options m_options;
+        Options m_discovery_options;
+        extractor::Options m_extractor_options;
     };
 }
 

@@ -1,7 +1,13 @@
 #include "aria2.h"
 #include <algorithm>
+#include <filesystem>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
+#include <string>
+#include "environment.h"
+#ifdef _WIN32
+#include "string_manip.h"
+#endif
 
 namespace parabolic::aria2
 {
@@ -33,6 +39,22 @@ namespace parabolic::aria2
     void Options::set_use_aria(bool value)
     {
         m_use_aria = value;
+    }
+
+    std::string executable_path()
+    {
+        const std::filesystem::path& global_path{
+            environment::find_dependency("aria2c", environment::DependencySearchOption::Global),
+        };
+        if (std::filesystem::exists(global_path))
+        {
+#ifdef _WIN32
+            return string_manip::str(global_path.wstring());
+#else
+            return global_path.string();
+#endif
+        }
+        return "aria2c";
     }
 
     void from_json(const nlohmann::json& json, Options& options)

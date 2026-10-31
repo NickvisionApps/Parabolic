@@ -32,7 +32,6 @@ namespace parabolic::translation
         [[nodiscard]] static const std::string& follow_system_language();
         [[nodiscard]] const std::vector<std::string>& available_languages() const;
         [[nodiscard]] std::string language() const;
-        [[nodiscard]] const Options& options() const;
         void set_options(const Options& options);
         [[nodiscard]] const char* _(const char* msgid) const;
         [[nodiscard]] const char* _n(const char* msgid, const char* msgid_plural, unsigned long n) const;

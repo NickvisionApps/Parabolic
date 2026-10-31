@@ -3,23 +3,30 @@
 #include <chrono>
 #include <compare>
 #include <cstddef>
+#include <expected>
 #include <filesystem>
 #include <format>
 #include <map>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
+#include <sago/platform_folders.h>
 #include <string>
 #include <utility>
 #include <vector>
 #include "audio.h"
 #include "batch.h"
+#include "cookies.h"
+#include "deno.h"
+#include "extractor.h"
+#include "ffmpeg.h"
 #include "file.h"
 #include "keyring.h"
 #include "string_manip.h"
 #include "subtitle.h"
 #include "url.h"
 #include "video.h"
+#include "ytdlp.h"
 
 namespace
 {
@@ -548,14 +555,10 @@ namespace parabolic::discovery
         return m_entries[index];
     }
 
-    const Options& Manager::options() const
+    void Manager::set_options(const Options& discovery_options, const extractor::Options& extractor_options)
     {
-        return m_options;
-    }
-
-    void Manager::set_options(const Options& options)
-    {
-        m_options = options;
+        m_discovery_options = discovery_options;
+        m_extractor_options = extractor_options;
     }
 
     Result Manager::discover_file(const std::filesystem::path& path,
@@ -579,7 +582,63 @@ namespace parabolic::discovery
                              const std::string& suggested_filename,
                              const std::optional<keyring::Credential>& credential) const
     {
-        return { url, suggested_filename, {} };
+        std::vector<std::string> args{
+            url,
+            "--ignore-config",
+            "--dump-single-json",
+            "--skip-download",
+            "--ignore-errors",
+            "--no-warnings",
+            "--ffmpeg-location",
+            parabolic::ffmpeg::executable_path(),
+            "--js-runtimes",
+            std::format("deno:{}", parabolic::deno::executable_path()),
+            "--paths",
+            std::format("temp:{}", sago::getCacheDir()),
+        };
+        args.reserve(23);
+        std::string plugins{ parabolic::ytdlp::plugins_path() };
+        if (std::filesystem::exists(plugins))
+        {
+            args.emplace_back("--plugin-dir");
+            args.push_back(plugins);
+        }
+        if (m_discovery_options.limit_characters())
+        {
+            args.emplace_back("--windows-filenames");
+        }
+        if (!m_extractor_options.proxy_url().empty())
+        {
+            args.emplace_back("--proxy");
+            args.push_back(m_extractor_options.proxy_url());
+        }
+        if (credential)
+        {
+            if (!credential->username().empty() && !credential->password().empty())
+            {
+                args.emplace_back("--username");
+                args.push_back(credential->username());
+                args.emplace_back("--password");
+                args.push_back(credential->password());
+            }
+            else if (!credential->password().empty())
+            {
+                args.emplace_back("--video-password");
+                args.push_back(credential->password());
+            }
+        }
+        if (m_extractor_options.cookies_browser() != cookies::Browser::None)
+        {
+            args.emplace_back("--cookies-from-browser");
+            args.push_back(cookies::to_argument_str(m_extractor_options.cookies_browser()));
+        }
+        else if (std::filesystem::exists(m_extractor_options.cookies_path()))
+        {
+            args.emplace_back("--cookies");
+            args.push_back(m_extractor_options.cookies_path());
+        }
+        std::expected<std::string, std::string> result{ ytdlp::execute(args) };
+        return { url, {}, {} };
     }
 
     void from_json(const nlohmann::json& json, Options& options)

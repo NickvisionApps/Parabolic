@@ -69,7 +69,6 @@ namespace parabolic::history
         [[nodiscard]] bool add_or_update(const std::vector<Record>& records);
         [[nodiscard]] bool clear();
         [[nodiscard]] std::vector<Record> get_all();
-        [[nodiscard]] const Options& options() const;
         [[nodiscard]] bool remove(const std::string& url);
         void set_options(const Options& options);
 

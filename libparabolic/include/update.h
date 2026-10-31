@@ -59,7 +59,6 @@ namespace parabolic::update
         [[nodiscard]] std::optional<Info> check_for_updates() const;
         [[nodiscard]] std::optional<std::filesystem::path>
         download_update(const Info& info, const DownloadProgressCallback& progress) const;
-        [[nodiscard]] const Options& options() const;
         void set_options(const Options& options);
 
     private:

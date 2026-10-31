@@ -262,11 +262,6 @@ namespace parabolic::update
         return std::nullopt;
     }
 
-    const Options& Updater::options() const
-    {
-        return m_options;
-    }
-
     void Updater::set_options(const Options& options)
     {
         m_options = options;

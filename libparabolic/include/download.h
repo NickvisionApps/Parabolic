@@ -98,7 +98,6 @@ namespace parabolic::download
     {
     public:
         Manager() = default;
-        [[nodiscard]] const Options& options() const;
         void set_options(const Options& options);
 
     private:
