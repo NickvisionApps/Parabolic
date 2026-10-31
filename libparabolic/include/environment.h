@@ -4,12 +4,16 @@
 #include <cstdint>
 #include <expected>
 #include <filesystem>
+#include <reproc++/drain.hpp>
 #include <reproc++/reproc.hpp>
 #include <string>
 #include <string_view>
 #include <system_error>
 #include <utility>
 #include <vector>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 namespace parabolic::environment
 {
@@ -33,23 +37,30 @@ namespace parabolic::environment
     class Process
     {
     public:
-        [[nodiscard]] static std::expected<Process, std::error_code> start(const std::vector<std::string>& command, const reproc::options& options);
+        [[nodiscard]] static std::expected<Process, std::error_code> start(const std::vector<std::string>& command,
+                                                                           const reproc::options& options);
         Process(const Process&) = delete;
         Process(Process&& other) noexcept;
         ~Process();
-        Process& operator=(const Process&) = delete;
-        Process& operator=(Process&& other) noexcept;
-        [[nodiscard]] reproc::process& get();
         void kill();
-        void terminate();
         [[nodiscard]] std::pair<int, std::error_code> wait();
+        Process& operator=(const Process&) = delete;
+        Process& operator=(Process&&) = delete;
+
+        template<typename Out, typename Err>
+        [[nodiscard]] std::error_code drain(Out&& out, Err&& err)
+        {
+            return reproc::drain(m_process, std::forward<Out>(out), std::forward<Err>(err));
+        }
 
     private:
-        Process();
-        void destroy();
+        Process() = default;
         reproc::process m_process;
-        std::intptr_t m_handle;
-        bool m_reaped;
+#ifdef _WIN32
+        HANDLE m_job{ nullptr };
+#else
+        int m_pid{ 0 };
+#endif
     };
 
     const std::vector<std::string>& arguments();

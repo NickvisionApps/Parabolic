@@ -51,7 +51,8 @@ namespace
 
 namespace parabolic::environment
 {
-    std::expected<Process, std::error_code> Process::start(const std::vector<std::string>& command, const reproc::options& options)
+    std::expected<Process, std::error_code> Process::start(const std::vector<std::string>& command,
+                                                           const reproc::options& options)
     {
         Process process;
 #ifdef _WIN32
@@ -66,13 +67,14 @@ namespace parabolic::environment
             JOBOBJECT_EXTENDED_LIMIT_INFORMATION info{};
             info.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
             SetInformationJobObject(job, JobObjectExtendedLimitInformation, &info, sizeof(info));
-            HANDLE handle{ OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, FALSE, static_cast<DWORD>(process.m_process.pid().first)) };
+            HANDLE handle{ OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, FALSE,
+                                       static_cast<DWORD>(process.m_process.pid().first)) };
             if (handle)
             {
                 AssignProcessToJobObject(job, handle);
                 CloseHandle(handle);
             }
-            process.m_handle = reinterpret_cast<std::intptr_t>(job);
+            process.m_job = job;
         }
 #else
         std::vector<char*> argv;
@@ -95,66 +97,54 @@ namespace parabolic::environment
             execvp(argv[0], argv.data());
             _exit(127);
         }
-        process.m_handle = process.m_process.pid().first;
+        process.m_pid = process.m_process.pid().first;
 #endif
         return process;
     }
 
     Process::Process(Process&& other) noexcept
         : m_process{ std::move(other.m_process) },
-        m_handle{ std::exchange(other.m_handle, 0) },
-        m_reaped{ std::exchange(other.m_reaped, true) }
+#ifdef _WIN32
+          m_job{ std::exchange(other.m_job, nullptr) }
+#else
+          m_pid{ std::exchange(other.m_pid, 0) }
+#endif
     {
-
     }
 
     Process::~Process()
     {
-        destroy();
-    }
-
-    Process& Process::operator=(Process&& other) noexcept
-    {
-        if (this != &other)
+#ifdef _WIN32
+        if (m_job)
         {
-            destroy();
-            m_process = std::move(other.m_process);
-            m_handle = std::exchange(other.m_handle, 0);
-            m_reaped = std::exchange(other.m_reaped, true);
+            CloseHandle(m_job);
         }
-        return *this;
-    }
-
-    reproc::process& Process::get()
-    {
-        return m_process;
+        else
+        {
+            std::ignore = m_process.kill();
+        }
+#else
+        if (m_pid > 0)
+        {
+            kill();
+            std::ignore = m_process.wait(reproc::infinite);
+        }
+#endif
     }
 
     void Process::kill()
     {
 #ifdef _WIN32
-        if (m_handle != 0)
+        if (m_job)
         {
-            TerminateJobObject(reinterpret_cast<HANDLE>(m_handle), 1);
+            TerminateJobObject(m_job, 1);
             return;
         }
         std::ignore = m_process.kill();
 #else
-        if (m_handle <= 0 || ::kill(-static_cast<pid_t>(m_handle), SIGKILL) != 0)
+        if (m_pid <= 0 || ::kill(-m_pid, SIGKILL) != 0)
         {
             std::ignore = m_process.kill();
-        }
-#endif
-    }
-
-    void Process::terminate()
-    {
-#ifdef _WIN32
-        kill();
-#else
-        if (m_handle <= 0 || ::kill(-static_cast<pid_t>(m_handle), SIGTERM) != 0)
-        {
-            std::ignore = m_process.terminate();
         }
 #endif
     }
@@ -162,36 +152,13 @@ namespace parabolic::environment
     std::pair<int, std::error_code> Process::wait()
     {
         std::pair<int, std::error_code> status{ m_process.wait(reproc::infinite) };
+#ifndef _WIN32
         if (!status.second)
         {
-            m_reaped = true;
-        }
-        return status;
-    }
-
-    Process::Process()
-        : m_handle{ 0 },
-        m_reaped{ false }
-    {
-
-    }
-
-    void Process::destroy()
-    {
-#ifdef _WIN32
-        if (m_handle != 0)
-        {
-            CloseHandle(reinterpret_cast<HANDLE>(m_handle));
-            m_handle = 0;
-        }
-#else
-        if (!m_reaped && m_handle > 0)
-        {
-            kill();
-            std::ignore = m_process.wait(reproc::infinite);
+            m_pid = 0;
         }
 #endif
-        m_reaped = true;
+        return status;
     }
 
     const std::vector<std::string>& arguments()

@@ -8,8 +8,8 @@
 #include <reproc++/reproc.hpp>
 #include <stop_token>
 #include <string>
+#include <string_view>
 #include <system_error>
-#include <tuple>
 #include <utility>
 #include <vector>
 #include "environment.h"
@@ -58,27 +58,28 @@ namespace parabolic::ytdlp
         command.append_range(args);
         reproc::options options;
         options.redirect.in.type = reproc::redirect::discard;
-        reproc::process process;
-        std::error_code ec{ process.start(command, options) };
-        if (ec)
+        std::expected<environment::Process, std::error_code> started{ environment::Process::start(command, options) };
+        if (!started)
         {
-            return std::unexpected{ ec.message() };
+            return std::unexpected{ started.error().message() };
         }
+        environment::Process& process{ *started };
         std::string output;
         std::string error;
         std::string pending;
+        std::error_code ec;
         {
-            std::stop_callback terminate_on_stop{ stop_token, [&process]
+            std::stop_callback kill_on_stop{ stop_token, [&process]
             {
-                std::ignore = process.terminate();
+                process.kill();
             } };
-            ec = reproc::drain(process,
-                               [&output, &pending, &output_callback](reproc::stream, const uint8_t* buffer, size_t size)
+            ec = process.drain([&output, &pending, &output_callback](reproc::stream, const uint8_t* buffer, size_t size)
             {
-                output.append(reinterpret_cast<const char*>(buffer), size);
+                std::string_view chunk{ reinterpret_cast<const char*>(buffer), size };
+                output.append(chunk);
                 if (output_callback)
                 {
-                    pending.append(reinterpret_cast<const char*>(buffer), size);
+                    pending.append(chunk);
                     size_t newline{ pending.find('\n') };
                     while (newline != std::string::npos)
                     {
@@ -97,17 +98,15 @@ namespace parabolic::ytdlp
         }
         if (ec)
         {
-            std::ignore = process.kill();
             return std::unexpected{ ec.message() };
         }
         if (output_callback && !pending.empty())
         {
             output_callback(pending);
         }
-        std::pair<int, std::error_code> status{ process.wait(reproc::infinite) };
+        std::pair<int, std::error_code> status{ process.wait() };
         if (status.second)
         {
-            std::ignore = process.kill();
             return std::unexpected{ status.second.message() };
         }
         if (stop_token.stop_requested())
