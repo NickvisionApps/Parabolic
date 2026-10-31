@@ -78,6 +78,7 @@ namespace parabolic::environment
         }
 #else
         std::vector<char*> argv;
+        argv.reserve(command.size() + 1);
         for (const std::string& arg : command)
         {
             argv.push_back(const_cast<char*>(arg.c_str()));
