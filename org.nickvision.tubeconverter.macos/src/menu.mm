@@ -6,6 +6,7 @@
 - (void)setup
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
+    NSApplication* app{ [NSApplication sharedApplication] };
     NSMenu* main_menu{ [[NSMenu alloc] initWithTitle:@"MainMenu"] };
     NSMenuItem* app_menu_item{ [[NSMenuItem alloc] init] };
     [main_menu addItem:app_menu_item];
@@ -32,9 +33,84 @@
     }
     settings_item.target = self;
     [app_menu addItem:[NSMenuItem separatorItem]];
+    NSMenuItem* services_item
+    {
+        [app_menu addItemWithTitle:@(translator._("Services")) action:nil keyEquivalent:@""]
+    };
+    NSMenu* services_menu
+    {
+        [[NSMenu alloc] initWithTitle:@(translator._("Services"))]
+    };
+    services_item.submenu = services_menu;
+    app.servicesMenu = services_menu;
+    [app_menu addItem:[NSMenuItem separatorItem]];
+    [app_menu addItemWithTitle:@(translator._("Hide Parabolic")) action:@selector(hide:) keyEquivalent:@"h"];
+    NSMenuItem* hide_others_item
+    {
+        [app_menu addItemWithTitle:@(translator._("Hide Others"))
+                            action:@selector(hideOtherApplications:)
+                     keyEquivalent:@"h"]
+    };
+    hide_others_item.keyEquivalentModifierMask = NSEventModifierFlagCommand | NSEventModifierFlagOption;
+    [app_menu addItemWithTitle:@(translator._("Show All")) action:@selector(unhideAllApplications:) keyEquivalent:@""];
+    [app_menu addItem:[NSMenuItem separatorItem]];
     [app_menu addItemWithTitle:@(translator._("Quit Parabolic")) action:@selector(terminate:) keyEquivalent:@"q"];
     app_menu_item.submenu = app_menu;
-    NSApplication* app{ [NSApplication sharedApplication] };
+    NSMenuItem* edit_menu_item{ [[NSMenuItem alloc] init] };
+    [main_menu addItem:edit_menu_item];
+    NSMenu* edit_menu
+    {
+        [[NSMenu alloc] initWithTitle:@(translator._("Edit"))]
+    };
+    [edit_menu addItemWithTitle:@(translator._("Undo")) action:@selector(undo:) keyEquivalent:@"z"];
+    NSMenuItem* redo_item
+    {
+        [edit_menu addItemWithTitle:@(translator._("Redo")) action:@selector(redo:) keyEquivalent:@"Z"]
+    };
+    redo_item.keyEquivalentModifierMask = NSEventModifierFlagCommand | NSEventModifierFlagShift;
+    [edit_menu addItem:[NSMenuItem separatorItem]];
+    [edit_menu addItemWithTitle:@(translator._("Cut")) action:@selector(cut:) keyEquivalent:@"x"];
+    [edit_menu addItemWithTitle:@(translator._("Copy")) action:@selector(copy:) keyEquivalent:@"c"];
+    [edit_menu addItemWithTitle:@(translator._("Paste")) action:@selector(paste:) keyEquivalent:@"v"];
+    [edit_menu addItemWithTitle:@(translator._("Delete")) action:@selector(delete:) keyEquivalent:@""];
+    [edit_menu addItemWithTitle:@(translator._("Select All")) action:@selector(selectAll:) keyEquivalent:@"a"];
+    edit_menu_item.submenu = edit_menu;
+    NSMenuItem* view_menu_item{ [[NSMenuItem alloc] init] };
+    [main_menu addItem:view_menu_item];
+    NSMenu* view_menu
+    {
+        [[NSMenu alloc] initWithTitle:@(translator._("View"))]
+    };
+    NSMenuItem* full_screen_item
+    {
+        [view_menu addItemWithTitle:@(translator._("Enter Full Screen"))
+                             action:@selector(toggleFullScreen:)
+                      keyEquivalent:@"f"]
+    };
+    full_screen_item.keyEquivalentModifierMask = NSEventModifierFlagCommand | NSEventModifierFlagControl;
+    view_menu_item.submenu = view_menu;
+    NSMenuItem* window_menu_item{ [[NSMenuItem alloc] init] };
+    [main_menu addItem:window_menu_item];
+    NSMenu* window_menu
+    {
+        [[NSMenu alloc] initWithTitle:@(translator._("Window"))]
+    };
+    [window_menu addItemWithTitle:@(translator._("Minimize")) action:@selector(performMiniaturize:) keyEquivalent:@"m"];
+    [window_menu addItemWithTitle:@(translator._("Zoom")) action:@selector(performZoom:) keyEquivalent:@""];
+    [window_menu addItem:[NSMenuItem separatorItem]];
+    [window_menu addItemWithTitle:@(translator._("Bring All to Front"))
+                           action:@selector(arrangeInFront:)
+                    keyEquivalent:@""];
+    window_menu_item.submenu = window_menu;
+    app.windowsMenu = window_menu;
+    NSMenuItem* help_menu_item{ [[NSMenuItem alloc] init] };
+    [main_menu addItem:help_menu_item];
+    NSMenu* help_menu
+    {
+        [[NSMenu alloc] initWithTitle:@(translator._("Help"))]
+    };
+    help_menu_item.submenu = help_menu;
+    app.helpMenu = help_menu;
     app.mainMenu = main_menu;
 }
 
