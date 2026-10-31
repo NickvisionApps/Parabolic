@@ -12,9 +12,6 @@ add_executable("${PROJECT_NAME}.mac"
     "src/main.mm")
 set_target_properties("${PROJECT_NAME}.mac" PROPERTIES
     OUTPUT_NAME "${DISPLAY_NAME}"
-    VERSION "${PROJECT_VERSION}"
-    SOVERSION "${PROJECT_VERSION}"
-    LINKER_LANGUAGE OBJCXX
     XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC YES
     XCODE_ATTRIBUTE_CLANG_ENABLE_MODULES YES
     XCODE_ATTRIBUTE_CODE_SIGN_STYLE "Manual"
@@ -27,5 +24,5 @@ find_library(FOUNDATION_FRAMEWORK Foundation REQUIRED)
 find_library(COCOA_FRAMEWORK Cocoa REQUIRED)
 target_link_libraries("${PROJECT_NAME}.mac" PRIVATE "lib${SHORT_NAME}" ${FOUNDATION_FRAMEWORK} ${COCOA_FRAMEWORK})
 
-include(AppIcon)
+include(MacHelpers)
 generate_app_icon("${PROJECT_NAME}.mac" "${CMAKE_SOURCE_DIR}/resources/${PROJECT_NAME}.png")
