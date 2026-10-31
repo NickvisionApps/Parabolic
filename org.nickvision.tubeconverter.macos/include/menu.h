@@ -1,5 +1,5 @@
 #import <Cocoa/Cocoa.h>
 
-@interface MainMenuController : NSObject
+@interface MainMenuController : NSResponder
 - (void)setup;
 @end

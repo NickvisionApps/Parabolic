@@ -7,6 +7,7 @@
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSApplication* app{ [NSApplication sharedApplication] };
+    app.nextResponder = self;
     NSMenu* main_menu{ [[NSMenu alloc] initWithTitle:@"MainMenu"] };
     NSMenuItem* app_menu_item{ [[NSMenuItem alloc] init] };
     [main_menu addItem:app_menu_item];
@@ -14,13 +15,9 @@
     [app_menu addItemWithTitle:@(translator._("About Parabolic"))
                         action:@selector(orderFrontStandardAboutPanel:)
                  keyEquivalent:@""];
-    NSMenuItem* update_item
-    {
-        [app_menu addItemWithTitle:@(translator._("Check for Updates…"))
-                            action:@selector(checkForUpdates:)
-                     keyEquivalent:@""]
-    };
-    update_item.target = self;
+    [app_menu addItemWithTitle:@(translator._("Check for Updates…"))
+                        action:@selector(checkForUpdates:)
+                 keyEquivalent:@""];
     [app_menu addItem:[NSMenuItem separatorItem]];
     NSMenuItem* settings_item
     {
@@ -31,7 +28,6 @@
     {
         settings_item.preferredImageVisibility = NSMenuItemImageVisibilityVisible;
     }
-    settings_item.target = self;
     [app_menu addItem:[NSMenuItem separatorItem]];
     NSMenuItem* services_item
     {
@@ -56,6 +52,13 @@
     [app_menu addItem:[NSMenuItem separatorItem]];
     [app_menu addItemWithTitle:@(translator._("Quit Parabolic")) action:@selector(terminate:) keyEquivalent:@"q"];
     app_menu_item.submenu = app_menu;
+    NSMenuItem* file_menu_item{ [[NSMenuItem alloc] init] };
+    [main_menu addItem:file_menu_item];
+    NSMenu* file_menu
+    {
+        [[NSMenu alloc] initWithTitle:@(translator._("File"))]
+    };
+    file_menu_item.submenu = file_menu;
     NSMenuItem* edit_menu_item{ [[NSMenuItem alloc] init] };
     [main_menu addItem:edit_menu_item];
     NSMenu* edit_menu
