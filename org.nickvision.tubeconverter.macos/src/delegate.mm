@@ -3,16 +3,18 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+- (void)applicationDidFinishLaunching:(NSNotification*)notification
+{
     self.mainMenuController = [[MainMenuController alloc] init];
     [self.mainMenuController setup];
 }
 
-- (void)applicationWillTerminate:(NSNotification *)notification {
-
+- (void)applicationWillTerminate:(NSNotification*)notification
+{
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender
+{
     return NO;
 }
 

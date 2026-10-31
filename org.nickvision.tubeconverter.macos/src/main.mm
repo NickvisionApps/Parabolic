@@ -3,7 +3,8 @@
 
 int main()
 {
-    @autoreleasepool {
+    @autoreleasepool
+    {
         NSApplication* app{ [NSApplication sharedApplication] };
         app.activationPolicy = NSApplicationActivationPolicyRegular;
         AppDelegate* delegate{ [[AppDelegate alloc] init] };
