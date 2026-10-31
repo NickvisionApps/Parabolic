@@ -2,10 +2,14 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include <expected>
 #include <filesystem>
+#include <reproc++/reproc.hpp>
 #include <sago/platform_folders.h>
 #include <string>
 #include <string_view>
+#include <system_error>
+#include <tuple>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -14,7 +18,9 @@
 #include <shellapi.h>
 #include <windows.h>
 #else
+#include <csignal>
 #include <cstdlib>
+#include <unistd.h>
 #ifdef __APPLE__
 #include <CoreFoundation/CFBase.h>
 #include <CoreFoundation/CFLocale.h>
@@ -25,6 +31,7 @@
 #else
 #include <fstream>
 #include <locale>
+#include <sys/prctl.h>
 #endif
 #endif
 
@@ -44,6 +51,149 @@ namespace
 
 namespace parabolic::environment
 {
+    std::expected<Process, std::error_code> Process::start(const std::vector<std::string>& command, const reproc::options& options)
+    {
+        Process process;
+#ifdef _WIN32
+        std::error_code ec{ process.m_process.start(command, options) };
+        if (ec)
+        {
+            return std::unexpected{ ec };
+        }
+        HANDLE job{ CreateJobObjectW(nullptr, nullptr) };
+        if (job)
+        {
+            JOBOBJECT_EXTENDED_LIMIT_INFORMATION info{};
+            info.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
+            SetInformationJobObject(job, JobObjectExtendedLimitInformation, &info, sizeof(info));
+            HANDLE handle{ OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, FALSE, static_cast<DWORD>(process.m_process.pid().first)) };
+            if (handle)
+            {
+                AssignProcessToJobObject(job, handle);
+                CloseHandle(handle);
+            }
+            process.m_handle = reinterpret_cast<std::intptr_t>(job);
+        }
+#else
+        std::vector<char*> argv;
+        for (const std::string& arg : command)
+        {
+            argv.push_back(const_cast<char*>(arg.c_str()));
+        }
+        argv.push_back(nullptr);
+        std::pair<bool, std::error_code> forked{ process.m_process.fork(options) };
+        if (forked.second)
+        {
+            return std::unexpected{ forked.second };
+        }
+        if (forked.first)
+        {
+            setpgid(0, 0);
+#ifdef __linux__
+            prctl(PR_SET_PDEATHSIG, SIGKILL);
+#endif
+            execvp(argv[0], argv.data());
+            _exit(127);
+        }
+        process.m_handle = process.m_process.pid().first;
+#endif
+        return process;
+    }
+
+    Process::Process(Process&& other) noexcept
+        : m_process{ std::move(other.m_process) },
+        m_handle{ std::exchange(other.m_handle, 0) },
+        m_reaped{ std::exchange(other.m_reaped, true) }
+    {
+
+    }
+
+    Process::~Process()
+    {
+        destroy();
+    }
+
+    Process& Process::operator=(Process&& other) noexcept
+    {
+        if (this != &other)
+        {
+            destroy();
+            m_process = std::move(other.m_process);
+            m_handle = std::exchange(other.m_handle, 0);
+            m_reaped = std::exchange(other.m_reaped, true);
+        }
+        return *this;
+    }
+
+    reproc::process& Process::get()
+    {
+        return m_process;
+    }
+
+    void Process::kill()
+    {
+#ifdef _WIN32
+        if (m_handle != 0)
+        {
+            TerminateJobObject(reinterpret_cast<HANDLE>(m_handle), 1);
+            return;
+        }
+        std::ignore = m_process.kill();
+#else
+        if (m_handle <= 0 || ::kill(-static_cast<pid_t>(m_handle), SIGKILL) != 0)
+        {
+            std::ignore = m_process.kill();
+        }
+#endif
+    }
+
+    void Process::terminate()
+    {
+#ifdef _WIN32
+        kill();
+#else
+        if (m_handle <= 0 || ::kill(-static_cast<pid_t>(m_handle), SIGTERM) != 0)
+        {
+            std::ignore = m_process.terminate();
+        }
+#endif
+    }
+
+    std::pair<int, std::error_code> Process::wait()
+    {
+        std::pair<int, std::error_code> status{ m_process.wait(reproc::infinite) };
+        if (!status.second)
+        {
+            m_reaped = true;
+        }
+        return status;
+    }
+
+    Process::Process()
+        : m_handle{ 0 },
+        m_reaped{ false }
+    {
+
+    }
+
+    void Process::destroy()
+    {
+#ifdef _WIN32
+        if (m_handle != 0)
+        {
+            CloseHandle(reinterpret_cast<HANDLE>(m_handle));
+            m_handle = 0;
+        }
+#else
+        if (!m_reaped && m_handle > 0)
+        {
+            kill();
+            std::ignore = m_process.wait(reproc::infinite);
+        }
+#endif
+        m_reaped = true;
+    }
+
     const std::vector<std::string>& arguments()
     {
         static std::vector<std::string> args;

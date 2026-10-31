@@ -15,6 +15,7 @@
 #include "file.h"
 #include "keyring.h"
 #include "subtitle.h"
+#include "thumbnail.h"
 #include "video.h"
 
 namespace parabolic::discovery
@@ -75,7 +76,7 @@ namespace parabolic::discovery
         [[nodiscard]] const file::TimeFrame& time_frame() const;
         [[nodiscard]] const std::vector<file::Format>& formats() const;
         [[nodiscard]] const std::vector<subtitle::Language>& subtitle_languages() const;
-        [[nodiscard]] const std::string& thumbnail_url() const;
+        [[nodiscard]] thumbnail::Image thumbnail() const;
         [[nodiscard]] const std::filesystem::path& suggested_save_folder() const;
         [[nodiscard]] std::strong_ordering operator<=>(const Entry& rhs) const;
         [[nodiscard]] bool operator==(const Entry& rhs) const;

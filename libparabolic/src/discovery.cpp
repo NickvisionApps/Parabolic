@@ -26,6 +26,7 @@
 #include "keyring.h"
 #include "string_manip.h"
 #include "subtitle.h"
+#include "thumbnail.h"
 #include "url.h"
 #include "video.h"
 #include "ytdlp.h"
@@ -439,9 +440,9 @@ namespace parabolic::discovery
         return m_subtitle_languages;
     }
 
-    const std::string& Entry::thumbnail_url() const
+    thumbnail::Image Entry::thumbnail() const
     {
-        return m_thumbnail_url;
+        return { m_thumbnail_url };
     }
 
     const std::filesystem::path& Entry::suggested_save_folder() const
