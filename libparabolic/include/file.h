@@ -66,7 +66,6 @@ namespace parabolic::file
         std::strong_ordering operator<=>(const Format& rhs) const;
         bool operator==(const Format& rhs) const;
         friend void from_json(const nlohmann::json& json, Format& format);
-        friend void to_json(nlohmann::json& json, const Format& format);
 
     private:
         std::string m_id;
@@ -92,7 +91,6 @@ namespace parabolic::file
         [[nodiscard]] std::string str() const;
         std::strong_ordering operator<=>(const TimeFrame& rhs) const = default;
         friend void from_json(const nlohmann::json& json, TimeFrame& time_frame);
-        friend void to_json(nlohmann::json& json, const TimeFrame& time_frame);
 
     private:
         std::chrono::seconds m_start{ 0 };

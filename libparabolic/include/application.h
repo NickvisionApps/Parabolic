@@ -55,7 +55,6 @@ namespace parabolic::application
     class State
     {
     public:
-        State();
         State(const State&) = delete;
         State(State&&) = delete;
         ~State();
@@ -72,6 +71,7 @@ namespace parabolic::application
         State& operator=(State&&) = delete;
 
     private:
+        State();
         std::unique_ptr<configuration::Configuration> m_configuration;
         std::unique_ptr<discovery::Manager> m_discovery;
         std::unique_ptr<download::Manager> m_downloads;

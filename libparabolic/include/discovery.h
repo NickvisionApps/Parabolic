@@ -80,7 +80,6 @@ namespace parabolic::discovery
         [[nodiscard]] const std::filesystem::path& suggested_save_folder() const;
         [[nodiscard]] std::strong_ordering operator<=>(const Entry& rhs) const;
         [[nodiscard]] bool operator==(const Entry& rhs) const;
-        friend void to_json(nlohmann::json& json, const Entry& entry);
 
     private:
         std::string m_url;
