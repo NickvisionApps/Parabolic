@@ -55,7 +55,7 @@ namespace parabolic::translation
     {
         if (std::filesystem::is_directory(m_locale_dir))
         {
-            for (const std::filesystem::directory_entry& entry: std::filesystem::directory_iterator(m_locale_dir))
+            for (const std::filesystem::directory_entry& entry : std::filesystem::directory_iterator(m_locale_dir))
             {
                 if (entry.is_directory() &&
                     std::filesystem::exists(entry.path() / "LC_MESSAGES" / (m_domain_name + ".mo")))
@@ -108,7 +108,7 @@ namespace parabolic::translation
         if (language == FOLLOW_SYSTEM_LANGUAGE)
         {
             resolved = normalize_language(environment::locale());
-            for (const char* name: { "LC_ALL", "LC_MESSAGES", "LANG" })
+            for (const char* name : { "LC_ALL", "LC_MESSAGES", "LANG" })
             {
                 std::string env{ environment::variable(name) };
                 if (!env.empty())

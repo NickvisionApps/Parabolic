@@ -11,7 +11,6 @@
 #include <sago/platform_folders.h>
 #include <string>
 #include <string_view>
-#include <system_error>
 #include "aria2.h"
 #include "discovery.h"
 #include "download.h"
@@ -19,7 +18,6 @@
 #include "extractor.h"
 #include "history.h"
 #include "postprocessing.h"
-#include "subtitle.h"
 #include "translation.h"
 #include "update.h"
 #ifdef _WIN32
@@ -301,23 +299,6 @@ namespace parabolic::configuration
         save();
     }
 
-    subtitle::Options Configuration::subtitle_options() const
-    {
-        std::scoped_lock lock{ m_mutex };
-        return m_subtitle_options;
-    }
-
-    void Configuration::set_subtitle_options(const subtitle::Options& value)
-    {
-        std::scoped_lock lock{ m_mutex };
-        if (m_subtitle_options == value)
-        {
-            return;
-        }
-        m_subtitle_options = value;
-        save();
-    }
-
     Theme Configuration::theme() const
     {
         std::scoped_lock lock{ m_mutex };
@@ -438,7 +419,6 @@ namespace parabolic::configuration
         from_json(json, config.m_history_options);
         from_json(json, config.m_postprocessing_options);
         from_json(json, config.m_previous_download_options);
-        from_json(json, config.m_subtitle_options);
         from_json(json, config.m_translation_options);
         from_json(json, config.m_update_options);
     }
@@ -502,7 +482,6 @@ namespace parabolic::configuration
         json.update(nlohmann::json(config.m_history_options));
         json.update(nlohmann::json(config.m_postprocessing_options));
         json.update(nlohmann::json(config.m_previous_download_options));
-        json.update(nlohmann::json(config.m_subtitle_options));
         json.update(nlohmann::json(config.m_translation_options));
         json.update(nlohmann::json(config.m_update_options));
     }

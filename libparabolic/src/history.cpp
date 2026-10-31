@@ -128,7 +128,7 @@ namespace parabolic::history
     {
         SQLite::Transaction transaction{ m_database };
         bool success{ true };
-        for (const Record& record: records)
+        for (const Record& record : records)
         {
             success &= add_or_update(record);
         }
@@ -177,7 +177,7 @@ namespace parabolic::history
         {
             SQLite::Transaction transaction{ m_database };
             bool success{ true };
-            for (const std::string& url: marked)
+            for (const std::string& url : marked)
             {
                 success &= remove(url);
             }

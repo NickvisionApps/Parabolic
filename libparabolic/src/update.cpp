@@ -156,7 +156,7 @@ namespace parabolic::update
                 out << releases.dump();
             }
         }
-        for (const nlohmann::json& release: releases)
+        for (const nlohmann::json& release : releases)
         {
             if (!release.is_object() || release.value("draft", false))
             {
@@ -189,7 +189,7 @@ namespace parabolic::update
             {
                 continue;
             }
-            for (const nlohmann::json& asset: release["assets"])
+            for (const nlohmann::json& asset : release["assets"])
             {
                 if (!asset.is_object() || string_manip::lower(asset.value("name", "")) != m_target_asset_name)
                 {

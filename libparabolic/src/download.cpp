@@ -319,7 +319,7 @@ namespace parabolic::download
         }
         if (json.contains("audioFormatIds") && json["audioFormatIds"].is_object())
         {
-            for (const std::pair<const std::string, nlohmann::json>& pair:
+            for (const std::pair<const std::string, nlohmann::json>& pair :
                  json["audioFormatIds"].get<std::map<std::string, nlohmann::json>>())
             {
                 int type{};
@@ -406,7 +406,7 @@ namespace parabolic::download
         if (json.contains("postprocessingArgumentNames") && json["postprocessingArgumentNames"].is_array())
         {
             options.m_postprocessing_argument_names.clear();
-            for (const nlohmann::json& item: json["postprocessingArgumentNames"])
+            for (const nlohmann::json& item : json["postprocessingArgumentNames"])
             {
                 if (item.is_string())
                 {
@@ -441,7 +441,7 @@ namespace parabolic::download
         if (json.contains("subtitleLanguages") && json["subtitleLanguages"].is_array())
         {
             options.m_subtitle_languages.clear();
-            for (const nlohmann::json& item: json["subtitleLanguages"])
+            for (const nlohmann::json& item : json["subtitleLanguages"])
             {
                 subtitle::Language subtitle{ "", false };
                 from_json(item, subtitle);
@@ -450,7 +450,7 @@ namespace parabolic::download
         }
         if (json.contains("videoFormatIds") && json["videoFormatIds"].is_object())
         {
-            for (const std::pair<const std::string, nlohmann::json>& pair:
+            for (const std::pair<const std::string, nlohmann::json>& pair :
                  json["videoFormatIds"].get<std::map<std::string, nlohmann::json>>())
             {
                 int type{};
@@ -514,15 +514,15 @@ namespace parabolic::download
             { "videoOnlyFileType", static_cast<int>(options.m_video_only_file_type) },
             { "videoResolution", options.m_video_resolution },
         };
-        for (const std::pair<const file::Type, std::string>& pair: options.m_audio_format_ids)
+        for (const std::pair<const file::Type, std::string>& pair : options.m_audio_format_ids)
         {
             json["audioFormatIds"][std::to_string(static_cast<int>(pair.first))] = pair.second;
         }
-        for (const subtitle::Language& item: options.m_subtitle_languages)
+        for (const subtitle::Language& item : options.m_subtitle_languages)
         {
             json["subtitleLanguages"].push_back(item);
         }
-        for (const std::pair<const file::Type, std::string>& pair: options.m_video_format_ids)
+        for (const std::pair<const file::Type, std::string>& pair : options.m_video_format_ids)
         {
             json["videoFormatIds"][std::to_string(static_cast<int>(pair.first))] = pair.second;
         }

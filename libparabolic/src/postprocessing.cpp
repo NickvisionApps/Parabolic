@@ -329,7 +329,7 @@ namespace parabolic::postprocessing
         if (json.contains("postprocessingArguments") && json["postprocessingArguments"].is_array())
         {
             options.m_arguments.clear();
-            for (const nlohmann::json& item: json["postprocessingArguments"])
+            for (const nlohmann::json& item : json["postprocessingArguments"])
             {
                 Argument argument{ "", Step::None, Executable::None, "" };
                 from_json(item, argument);
@@ -378,7 +378,7 @@ namespace parabolic::postprocessing
             { "postprocessingThreads", options.m_threads },
             { "removeSourceData", options.m_remove_source_data },
         };
-        for (const Argument& item: options.m_arguments)
+        for (const Argument& item : options.m_arguments)
         {
             json["postprocessingArguments"].push_back(item);
         }

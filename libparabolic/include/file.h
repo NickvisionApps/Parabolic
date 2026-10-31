@@ -95,8 +95,8 @@ namespace parabolic::file
         friend void to_json(nlohmann::json& json, const TimeFrame& time_frame);
 
     private:
-        std::chrono::seconds m_start;
-        std::chrono::seconds m_end;
+        std::chrono::seconds m_start{ 0 };
+        std::chrono::seconds m_end{ 0 };
     };
 
     [[nodiscard]] std::string_view dot_extension(Type type);

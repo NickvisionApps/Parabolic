@@ -13,7 +13,6 @@
 #include "extractor.h"
 #include "history.h"
 #include "postprocessing.h"
-#include "subtitle.h"
 #include "translation.h"
 #include "update.h"
 
@@ -76,8 +75,6 @@ namespace parabolic::configuration
         void set_previous_download_options(const download::PreviousDownloadOptions& value);
         [[nodiscard]] bool show_disclaimer_on_startup() const;
         void set_show_disclaimer_on_startup(bool value);
-        [[nodiscard]] subtitle::Options subtitle_options() const;
-        void set_subtitle_options(const subtitle::Options& value);
         [[nodiscard]] Theme theme() const;
         void set_theme(Theme value);
         [[nodiscard]] translation::Options translation_options() const;
@@ -103,7 +100,6 @@ namespace parabolic::configuration
         postprocessing::Options m_postprocessing_options;
         download::PreviousDownloadOptions m_previous_download_options;
         bool m_show_disclaimer_on_startup{ true };
-        subtitle::Options m_subtitle_options;
         Theme m_theme{ Theme::System };
         translation::Options m_translation_options;
         update::Options m_update_options;

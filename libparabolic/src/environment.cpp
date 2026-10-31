@@ -130,7 +130,7 @@ namespace parabolic::environment
         }
         if (result.empty() && (option == DependencySearchOption::Global || option == DependencySearchOption::System))
         {
-            for (const std::filesystem::path& dir: path())
+            for (const std::filesystem::path& dir : path())
             {
                 if (search_in(dep, result, dir))
                 {
