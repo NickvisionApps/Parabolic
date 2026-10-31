@@ -3,6 +3,7 @@
 
 #include <compare>
 #include <cstddef>
+#include <expected>
 #include <filesystem>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
@@ -36,6 +37,8 @@ namespace parabolic::discovery
         void set_preferred_subtitle_format(subtitle::Type value);
         [[nodiscard]] video::Codec preferred_video_codec() const;
         void set_preferred_video_codec(video::Codec value);
+        [[nodiscard]] const std::string& ytdlp_arguments() const;
+        void set_ytdlp_arguments(const std::string& value);
         bool operator==(const Options& rhs) const = default;
         friend void from_json(const nlohmann::json& json, Options& options);
         friend void to_json(nlohmann::json& json, const Options& options);
@@ -53,6 +56,7 @@ namespace parabolic::discovery
         video::FrameRate m_preferred_frame_rate{ video::FrameRate::Any };
         subtitle::Type m_preferred_subtitle_format{ subtitle::Type::Any };
         video::Codec m_preferred_video_codec{ video::Codec::Any };
+        std::string m_ytdlp_arguments;
     };
 
     class Entry
@@ -127,13 +131,13 @@ namespace parabolic::discovery
     public:
         Manager() = default;
         void set_options(const Options& discovery_options, const extractor::Options& extractor_options);
-        [[nodiscard]] Result discover_file(const std::filesystem::path& path,
+        [[nodiscard]] std::expected<Result, std::string> discover_file(const std::filesystem::path& path,
                                            const std::optional<keyring::Credential>& credential = std::nullopt) const;
-        [[nodiscard]] Result discover_url(const std::string& url,
+        [[nodiscard]] std::expected<Result, std::string> discover_url(const std::string& url,
                                           const std::optional<keyring::Credential>& credential = std::nullopt) const;
 
     private:
-        [[nodiscard]] Result discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
+        [[nodiscard]] std::expected<Result, std::string> discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
                                       const std::string& suggested_filename,
                                       const std::optional<keyring::Credential>& credential) const;
         Options m_discovery_options;

@@ -22,6 +22,8 @@ namespace parabolic::download
         void set_overwrite_existing_files(bool value);
         [[nodiscard]] bool prevent_suspend() const;
         void set_prevent_suspend(bool value);
+        [[nodiscard]] const std::string& ytdlp_arguments() const;
+        void set_ytdlp_arguments(const std::string& value);
         bool operator==(const Options& rhs) const = default;
         friend void from_json(const nlohmann::json& json, Options& options);
         friend void to_json(nlohmann::json& json, const Options& options);
@@ -30,6 +32,7 @@ namespace parabolic::download
         int m_max_number_of_active_downloads{ 5 };
         bool m_overwrite_existing_files{ true };
         bool m_prevent_suspend{ false };
+        std::string m_ytdlp_arguments;
     };
 
     class PreviousDownloadOptions

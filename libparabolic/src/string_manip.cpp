@@ -6,12 +6,52 @@
 #include <string>
 #include <string_view>
 #include <utility>
+#include <vector>
 #ifdef _WIN32
 #include <windows.h>
 #endif
 
 namespace parabolic::string_manip
 {
+    std::vector<std::string> command_line_split(const std::string& str)
+    {
+        if (str.empty())
+        {
+            return {};
+        }
+        std::vector<std::string> args;
+        std::string current;
+        bool in_quotes{ false };
+        bool has_token{ false };
+        for (char c : str)
+        {
+            if (c == '"')
+            {
+                in_quotes = !in_quotes;
+                has_token = true;
+            }
+            else if (!in_quotes && (c == ' ' || (c >= '\t' && c <= '\r')))
+            {
+                if (has_token)
+                {
+                    args.push_back(std::move(current));
+                    current.clear();
+                    has_token = false;
+                }
+            }
+            else
+            {
+                current += c;
+                has_token = true;
+            }
+        }
+        if (has_token)
+        {
+            args.push_back(std::move(current));
+        }
+        return args;
+    }
+
     std::string lower(std::string str)
     {
         std::ranges::transform(str, str.begin(), [](unsigned char c)
@@ -32,25 +72,6 @@ namespace parabolic::string_manip
                    (include_windows_characters &&
                     (static_cast<unsigned char>(c) < 32 || std::string_view{ "<>:\"\\|?*" }.contains(c)));
         }, '_');
-        return str;
-    }
-
-    std::string trim(std::string str)
-    {
-        if (str.empty())
-        {
-            return {};
-        }
-        str.erase(std::ranges::find_if(std::views::reverse(str),
-                                       [](unsigned char ch)
-        {
-            return ch != ' ' && (ch < '\t' || ch > '\r');
-        }).base(),
-                  str.end());
-        str.erase(str.begin(), std::ranges::find_if(str, [](unsigned char ch)
-        {
-            return ch != ' ' && (ch < '\t' || ch > '\r');
-        }));
         return str;
     }
 
@@ -78,6 +99,25 @@ namespace parabolic::string_manip
         std::wcsrtombs(result.data(), &ptr, len, &state);
         return result;
 #endif
+    }
+
+    std::string trim(std::string str)
+    {
+        if (str.empty())
+        {
+            return {};
+        }
+        str.erase(std::ranges::find_if(std::views::reverse(str),
+                                       [](unsigned char ch)
+        {
+            return ch != ' ' && (ch < '\t' || ch > '\r');
+        }).base(),
+                  str.end());
+        str.erase(str.begin(), std::ranges::find_if(str, [](unsigned char ch)
+        {
+            return ch != ' ' && (ch < '\t' || ch > '\r');
+        }));
+        return str;
     }
 
     std::wstring wstr(const std::string& str)

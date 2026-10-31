@@ -12,15 +12,24 @@ namespace parabolic::string_manip
     concept ImplicitlyConstructableString =
             std::is_constructible_v<T, std::string> && std::is_convertible_v<std::string, T>;
 
+    [[nodiscard]] std::vector<std::string> command_line_split(const std::string& str);
     [[nodiscard]] std::string lower(std::string str);
     [[nodiscard]] std::string sanitize_for_filename(std::string str, bool include_windows_characters);
-    [[nodiscard]] std::string trim(std::string str);
     [[nodiscard]] std::string str(const std::wstring& wstr);
+    [[nodiscard]] std::string trim(std::string str);
     [[nodiscard]] std::wstring wstr(const std::string& str);
 
     template<ImplicitlyConstructableString T = std::string>
     [[nodiscard]] std::vector<T> split(std::string_view s, std::string_view delimiter, bool include_empty = true)
     {
+        if (s.empty())
+        {
+            return include_empty ? std::vector<T>{ T{} } : std::vector<T>{};
+        }
+        if (delimiter.empty())
+        {
+            return { T{ s } };
+        }
         std::vector<T> splits;
         size_t last{ 0 };
         size_t next{ 0 };

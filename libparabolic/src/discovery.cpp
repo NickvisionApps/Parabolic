@@ -129,6 +129,16 @@ namespace parabolic::discovery
         m_preferred_video_codec = value;
     }
 
+    const std::string& Options::ytdlp_arguments() const
+    {
+        return m_ytdlp_arguments;
+    }
+
+    void Options::set_ytdlp_arguments(const std::string& value)
+    {
+        m_ytdlp_arguments = value;
+    }
+
     Entry::Entry(const nlohmann::json& json, const Options& options, std::string suggested_save_folder,
                  std::string suggested_filename)
         : m_title{ std::move(suggested_filename) },
@@ -561,7 +571,7 @@ namespace parabolic::discovery
         m_extractor_options = extractor_options;
     }
 
-    Result Manager::discover_file(const std::filesystem::path& path,
+    std::expected<Result, std::string> Manager::discover_file(const std::filesystem::path& path,
                                   const std::optional<keyring::Credential>& credential) const
     {
         std::vector<Result> results;
@@ -573,12 +583,12 @@ namespace parabolic::discovery
         return { path, path.stem().string(), results };
     }
 
-    Result Manager::discover_url(const std::string& url, const std::optional<keyring::Credential>& credential) const
+    std::expected<Result, std::string> Manager::discover_url(const std::string& url, const std::optional<keyring::Credential>& credential) const
     {
         return discover(url, {}, {}, credential);
     }
 
-    Result Manager::discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
+    std::expected<Result, std::string> Manager::discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
                              const std::string& suggested_filename,
                              const std::optional<keyring::Credential>& credential) const
     {
@@ -637,8 +647,17 @@ namespace parabolic::discovery
             args.emplace_back("--cookies");
             args.push_back(m_extractor_options.cookies_path());
         }
+        args.append_range(string_manip::command_line_split(m_discovery_options.ytdlp_arguments()));
         std::expected<std::string, std::string> result{ ytdlp::execute(args) };
-        return { url, {}, {} };
+        if (!result)
+        {
+            return std::unexpected{ result.error() };
+        }
+        nlohmann::json json = nlohmann::json::parse(result.value(), nullptr, false, true);
+        if (!json.is_object())
+        {
+            return std::unexpected{ "Failed to parse JSON from yt-dlp." };
+        }
     }
 
     void from_json(const nlohmann::json& json, Options& options)
@@ -739,6 +758,14 @@ namespace parabolic::discovery
                 options.m_preferred_video_codec = static_cast<video::Codec>(value);
             }
         }
+        if (json.contains("ytdlpDiscoveryArgs") && json["ytdlpDiscoveryArgs"].is_string())
+        {
+            options.m_ytdlp_arguments = json.at("ytdlpDiscoveryArgs").get<std::string>();
+        }
+        else if (json.contains("YtdlpDiscoveryArgs") && json["YtdlpDiscoveryArgs"].is_string())
+        {
+            options.m_ytdlp_arguments = json.at("YtdlpDiscoveryArgs").get<std::string>();
+        }
     }
 
     void to_json(nlohmann::json& json, const Options& options)
@@ -752,6 +779,7 @@ namespace parabolic::discovery
             { "preferredFrameRate", static_cast<int>(options.m_preferred_frame_rate) },
             { "preferredSubtitleFormat", static_cast<int>(options.m_preferred_subtitle_format) },
             { "preferredVideoCodec", static_cast<int>(options.m_preferred_video_codec) },
+            { "ytdlpDiscoveryArgs", options.m_ytdlp_arguments },
         };
     }
 

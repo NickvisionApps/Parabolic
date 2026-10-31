@@ -49,6 +49,16 @@ namespace parabolic::download
         m_prevent_suspend = value;
     }
 
+    const std::string& Options::ytdlp_arguments() const
+    {
+        return m_ytdlp_arguments;
+    }
+
+    void Options::set_ytdlp_arguments(const std::string& value)
+    {
+        m_ytdlp_arguments = value;
+    }
+
     PreviousDownloadOptions::PreviousDownloadOptions()
         : m_audio_format_ids{
               { file::Type::VideoGeneric, file::Format::best_audio().id() },
@@ -300,6 +310,14 @@ namespace parabolic::download
         {
             options.m_prevent_suspend = json.at("PreventSuspend").get<bool>();
         }
+        if (json.contains("ytdlpDownloadArgs") && json["ytdlpDownloadArgs"].is_string())
+        {
+            options.m_ytdlp_arguments = json.at("ytdlpDownloadArgs").get<std::string>();
+        }
+        else if (json.contains("YtdlpDownloadArgs") && json["YtdlpDownloadArgs"].is_string())
+        {
+            options.m_ytdlp_arguments = json.at("YtdlpDownloadArgs").get<std::string>();
+        }
     }
 
     void from_json(const nlohmann::json& json, PreviousDownloadOptions& options)
@@ -485,6 +503,7 @@ namespace parabolic::download
             { "maxNumberOfActiveDownloads", options.m_max_number_of_active_downloads },
             { "overwriteExistingFiles", options.m_overwrite_existing_files },
             { "preventSuspend", options.m_prevent_suspend },
+            { "ytdlpDownloadArgs", options.m_ytdlp_arguments },
         };
     }
 

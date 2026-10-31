@@ -24,9 +24,9 @@ namespace parabolic::postprocessing
         return m_name;
     }
 
-    void Argument::set_name(std::string value)
+    void Argument::set_name(const std::string& value)
     {
-        m_name = std::move(value);
+        m_name = value;
     }
 
     Step Argument::step() const
@@ -54,9 +54,9 @@ namespace parabolic::postprocessing
         return m_args;
     }
 
-    void Argument::set_args(std::string value)
+    void Argument::set_args(const std::string& value)
     {
-        m_args = std::move(value);
+        m_args = value;
     }
 
     std::string Argument::str() const

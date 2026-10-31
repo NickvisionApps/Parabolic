@@ -43,13 +43,13 @@ namespace parabolic::postprocessing
     public:
         Argument(std::string name, Step step, Executable executable, std::string args);
         [[nodiscard]] const std::string& name() const;
-        void set_name(std::string value);
+        void set_name(const std::string& value);
         [[nodiscard]] Step step() const;
         void set_step(Step value);
         [[nodiscard]] Executable executable() const;
         void set_executable(Executable value);
         [[nodiscard]] const std::string& args() const;
-        void set_args(std::string value);
+        void set_args(const std::string& value);
         [[nodiscard]] std::string str() const;
         std::strong_ordering operator<=>(const Argument& rhs) const;
         bool operator==(const Argument& rhs) const;
