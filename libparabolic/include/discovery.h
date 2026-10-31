@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
+#include <stop_token>
 #include <string>
 #include <vector>
 #include "audio.h"
@@ -135,14 +136,18 @@ namespace parabolic::discovery
         void set_options(const Options& discovery_options, const extractor::Options& extractor_options);
         [[nodiscard]] std::expected<Result, std::string>
         discover_file(const std::filesystem::path& path,
-                      const std::optional<keyring::Credential>& credential = std::nullopt) const;
+                      const std::optional<keyring::Credential>& credential = std::nullopt,
+                      const std::stop_token& stop_token = {}) const;
         [[nodiscard]] std::expected<Result, std::string>
-        discover_url(const std::string& url, const std::optional<keyring::Credential>& credential = std::nullopt) const;
+        discover_url(const std::string& url, const std::optional<keyring::Credential>& credential = std::nullopt,
+                     const std::stop_token& stop_token = {}) const;
 
     private:
-        [[nodiscard]] std::expected<Result, std::string>
-        discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
-                 const std::string& suggested_filename, const std::optional<keyring::Credential>& credential) const;
+        [[nodiscard]] std::expected<Result, std::string> discover(const std::string& url,
+                                                                  const std::filesystem::path& suggested_save_folder,
+                                                                  const std::string& suggested_filename,
+                                                                  const std::optional<keyring::Credential>& credential,
+                                                                  const std::stop_token& stop_token) const;
         Options m_discovery_options;
         extractor::Options m_extractor_options;
     };

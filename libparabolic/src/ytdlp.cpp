@@ -6,9 +6,10 @@
 #include <functional>
 #include <reproc++/drain.hpp>
 #include <reproc++/reproc.hpp>
+#include <stop_token>
 #include <string>
-#include <string_view>
 #include <system_error>
+#include <tuple>
 #include <utility>
 #include <vector>
 #include "environment.h"
@@ -46,12 +47,19 @@ namespace parabolic::ytdlp
     }
 
     std::expected<std::string, std::string> execute(const std::vector<std::string>& args,
-                                                    const std::function<void(const std::string&)>& output_callback)
+                                                    const std::function<void(const std::string&)>& output_callback,
+                                                    const std::stop_token& stop_token)
     {
+        if (stop_token.stop_requested())
+        {
+            return std::unexpected{ "Operation cancelled." };
+        }
         std::vector<std::string> command{ executable_path() };
         command.append_range(args);
+        reproc::options options;
+        options.redirect.in.type = reproc::redirect::discard;
         reproc::process process;
-        std::error_code ec{ process.start(command) };
+        std::error_code ec{ process.start(command, options) };
         if (ec)
         {
             return std::unexpected{ ec.message() };
@@ -59,47 +67,52 @@ namespace parabolic::ytdlp
         std::string output;
         std::string error;
         std::string pending;
-        ec = reproc::drain(process,
-                           [&output, &pending, &output_callback](reproc::stream, const uint8_t* buffer, size_t size)
         {
-            std::string_view chunk{ reinterpret_cast<const char*>(buffer), size };
-            output.append(chunk);
-            if (output_callback)
+            std::stop_callback terminate_on_stop{ stop_token, [&process]
             {
-                pending.append(chunk);
-                size_t newline{ pending.find('\n') };
-                while (newline != std::string::npos)
+                std::ignore = process.terminate();
+            } };
+            ec = reproc::drain(process,
+                               [&output, &pending, &output_callback](reproc::stream, const uint8_t* buffer, size_t size)
+            {
+                output.append(reinterpret_cast<const char*>(buffer), size);
+                if (output_callback)
                 {
-                    std::string line{ pending.substr(0, newline) };
-                    pending.erase(0, newline + 1);
-                    if (!line.empty() && line.back() == '\r')
+                    pending.append(reinterpret_cast<const char*>(buffer), size);
+                    size_t newline{ pending.find('\n') };
+                    while (newline != std::string::npos)
                     {
-                        line.pop_back();
+                        std::string line{ pending.substr(0, newline) };
+                        pending.erase(0, newline + 1);
+                        if (!line.empty() && line.back() == '\r')
+                        {
+                            line.pop_back();
+                        }
+                        output_callback(line);
+                        newline = pending.find('\n');
                     }
-                    output_callback(line);
-                    newline = pending.find('\n');
                 }
-            }
-            return std::error_code{};
-        }, reproc::sink::string(error));
-        if (!ec && output_callback && !pending.empty())
-        {
-            output_callback(pending);
+                return std::error_code{};
+            }, reproc::sink::string(error));
         }
         if (ec)
         {
-            std::string original_msg{ ec.message() };
-            ec = process.kill();
-            if (ec)
-            {
-                return std::unexpected{ ec.message() };
-            }
-            return std::unexpected{ original_msg };
+            std::ignore = process.kill();
+            return std::unexpected{ ec.message() };
+        }
+        if (output_callback && !pending.empty())
+        {
+            output_callback(pending);
         }
         std::pair<int, std::error_code> status{ process.wait(reproc::infinite) };
         if (status.second)
         {
+            std::ignore = process.kill();
             return std::unexpected{ status.second.message() };
+        }
+        if (stop_token.stop_requested())
+        {
+            return std::unexpected{ "Operation cancelled." };
         }
         if (status.first != 0)
         {

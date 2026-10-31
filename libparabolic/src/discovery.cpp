@@ -11,6 +11,7 @@
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
 #include <sago/platform_folders.h>
+#include <stop_token>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -614,16 +615,20 @@ namespace parabolic::discovery
         m_extractor_options = extractor_options;
     }
 
-    std::expected<Result, std::string>
-    Manager::discover_file(const std::filesystem::path& path,
-                           const std::optional<keyring::Credential>& credential) const
+    std::expected<Result, std::string> Manager::discover_file(const std::filesystem::path& path,
+                                                              const std::optional<keyring::Credential>& credential,
+                                                              const std::stop_token& stop_token) const
     {
         std::vector<Result> results;
         std::string error{ "No URLs found in the batch file." };
         for (const batch::Item& item : batch::read_file(path))
         {
+            if (stop_token.stop_requested())
+            {
+                return std::unexpected{ "Operation cancelled." };
+            }
             std::expected<Result, std::string> result{
-                discover(item.url(), item.suggested_save_folder(), item.suggested_filename(), credential),
+                discover(item.url(), item.suggested_save_folder(), item.suggested_filename(), credential, stop_token),
             };
             if (!result)
             {
@@ -644,15 +649,17 @@ namespace parabolic::discovery
     }
 
     std::expected<Result, std::string> Manager::discover_url(const std::string& url,
-                                                             const std::optional<keyring::Credential>& credential) const
+                                                             const std::optional<keyring::Credential>& credential,
+                                                             const std::stop_token& stop_token) const
     {
-        return discover(url, "", "", credential);
+        return discover(url, "", "", credential, stop_token);
     }
 
     std::expected<Result, std::string> Manager::discover(const std::string& url,
                                                          const std::filesystem::path& suggested_save_folder,
                                                          const std::string& suggested_filename,
-                                                         const std::optional<keyring::Credential>& credential) const
+                                                         const std::optional<keyring::Credential>& credential,
+                                                         const std::stop_token& stop_token) const
     {
         std::vector<std::string> args{
             url,
@@ -709,7 +716,7 @@ namespace parabolic::discovery
             args.push_back(m_extractor_options.cookies_path());
         }
         args.append_range(string_manip::command_line_split(m_discovery_options.ytdlp_arguments()));
-        std::expected<std::string, std::string> result{ ytdlp::execute(args) };
+        std::expected<std::string, std::string> result{ ytdlp::execute(args, {}, stop_token) };
         if (!result)
         {
             return std::unexpected{ result.error() };
@@ -735,7 +742,7 @@ namespace parabolic::discovery
                 {
                     std::expected<Result, std::string> tab{
                         discover(entry.at("url").get<std::string>(), suggested_save_folder, suggested_filename,
-                                 credential),
+                                 credential, stop_token),
                     };
                     if (!tab)
                     {
