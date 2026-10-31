@@ -619,6 +619,7 @@ namespace parabolic::discovery
                            const std::optional<keyring::Credential>& credential) const
     {
         std::vector<Result> results;
+        std::string error{ "No URLs found in the batch file." };
         for (const batch::Item& item : batch::read_file(path))
         {
             std::expected<Result, std::string> result{
@@ -626,9 +627,14 @@ namespace parabolic::discovery
             };
             if (!result)
             {
-                return std::unexpected{ result.error() };
+                error = result.error();
+                continue;
             }
             results.push_back(std::move(result.value()));
+        }
+        if (results.empty())
+        {
+            return std::unexpected{ error };
         }
 #ifdef _WIN32
         return Result{ string_manip::str(path.wstring()), string_manip::str(path.stem().wstring()), results };
@@ -662,7 +668,6 @@ namespace parabolic::discovery
             "--paths",
             std::format("temp:{}", sago::getCacheDir()),
         };
-        args.reserve(23);
         std::string plugins{ parabolic::ytdlp::plugins_path() };
         if (std::filesystem::exists(plugins))
         {
@@ -709,7 +714,12 @@ namespace parabolic::discovery
         {
             return std::unexpected{ result.error() };
         }
-        nlohmann::json json = nlohmann::json::parse(result.value(), nullptr, false, true);
+        std::string output{ string_manip::trim(std::move(result.value())) };
+        if (!output.starts_with('{'))
+        {
+            return std::unexpected{ "yt-dlp did not return a valid JSON." };
+        }
+        nlohmann::json json = nlohmann::json::parse(output, nullptr, false, true);
         if (!json.is_object())
         {
             return std::unexpected{ "Failed to parse JSON from yt-dlp." };
