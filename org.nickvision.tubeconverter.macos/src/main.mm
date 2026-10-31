@@ -5,9 +5,9 @@ int main()
 {
     @autoreleasepool {
         NSApplication* app{ [NSApplication sharedApplication] };
-        [app setActivationPolicy:NSApplicationActivationPolicyRegular];
+        app.activationPolicy = NSApplicationActivationPolicyRegular;
         AppDelegate* delegate{ [[AppDelegate alloc] init] };
-        [app setDelegate:delegate];
+        app.delegate = delegate;
         [app run];
     }
 }
