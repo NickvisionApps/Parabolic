@@ -5,6 +5,7 @@
 #include <cstddef>
 #include <filesystem>
 #include <format>
+#include <map>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
@@ -315,20 +316,22 @@ namespace parabolic::discovery
         if (options.include_auto_generated_subtitles() && json.contains("automatic_captions") &&
             json["automatic_captions"].is_object())
         {
-            for (const auto& pair : json["automatic_captions"].items())
+            for (const std::pair<const std::string, nlohmann::json>& pair :
+                 json["automatic_captions"].get<std::map<std::string, nlohmann::json>>())
             {
-                m_subtitle_languages.emplace_back(pair.key(), true);
+                m_subtitle_languages.emplace_back(pair.first, true);
             }
         }
         if (json.contains("subtitles") && json["subtitles"].is_object())
         {
-            for (const auto& pair : json["subtitles"].items())
+            for (const std::pair<const std::string, nlohmann::json>& pair :
+                 json["subtitles"].get<std::map<std::string, nlohmann::json>>())
             {
-                if (pair.key() == "live_chat")
+                if (pair.first == "live_chat")
                 {
                     continue;
                 }
-                m_subtitle_languages.emplace_back(pair.key(), false);
+                m_subtitle_languages.emplace_back(pair.first, false);
             }
         }
         std::ranges::sort(m_subtitle_languages);
