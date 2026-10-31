@@ -63,7 +63,7 @@ namespace parabolic::discovery
     {
     public:
         Entry() = default;
-        Entry(const nlohmann::json& json, const Options& options, std::string suggested_save_folder,
+        Entry(const nlohmann::json& json, const Options& options, std::filesystem::path suggested_save_folder,
               std::string suggested_filename);
         [[nodiscard]] const std::string& url() const;
         [[nodiscard]] const std::string& title() const;
@@ -75,7 +75,7 @@ namespace parabolic::discovery
         [[nodiscard]] const std::vector<file::Format>& formats() const;
         [[nodiscard]] const std::vector<subtitle::Language>& subtitle_languages() const;
         [[nodiscard]] const std::string& thumbnail_url() const;
-        [[nodiscard]] const std::string& suggested_save_folder() const;
+        [[nodiscard]] const std::filesystem::path& suggested_save_folder() const;
         [[nodiscard]] std::strong_ordering operator<=>(const Entry& rhs) const;
         [[nodiscard]] bool operator==(const Entry& rhs) const;
         friend void to_json(nlohmann::json& json, const Entry& entry);
@@ -90,13 +90,15 @@ namespace parabolic::discovery
         std::vector<file::Format> m_formats;
         std::vector<subtitle::Language> m_subtitle_languages;
         std::string m_thumbnail_url;
-        std::string m_suggested_save_folder;
+        std::filesystem::path m_suggested_save_folder;
     };
 
     class Result
     {
     public:
-        Result();
+        Result(std::string url, std::string title);
+        Result(const nlohmann::json& json, const Options& options, std::string url,
+               std::filesystem::path suggested_save_folder, std::string suggested_filename);
         Result(std::string url, std::string title, const std::vector<Result>& results);
         [[nodiscard]] unsigned int id() const;
         [[nodiscard]] const std::string& url() const;
@@ -131,15 +133,16 @@ namespace parabolic::discovery
     public:
         Manager() = default;
         void set_options(const Options& discovery_options, const extractor::Options& extractor_options);
-        [[nodiscard]] std::expected<Result, std::string> discover_file(const std::filesystem::path& path,
-                                           const std::optional<keyring::Credential>& credential = std::nullopt) const;
-        [[nodiscard]] std::expected<Result, std::string> discover_url(const std::string& url,
-                                          const std::optional<keyring::Credential>& credential = std::nullopt) const;
+        [[nodiscard]] std::expected<Result, std::string>
+        discover_file(const std::filesystem::path& path,
+                      const std::optional<keyring::Credential>& credential = std::nullopt) const;
+        [[nodiscard]] std::expected<Result, std::string>
+        discover_url(const std::string& url, const std::optional<keyring::Credential>& credential = std::nullopt) const;
 
     private:
-        [[nodiscard]] std::expected<Result, std::string> discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
-                                      const std::string& suggested_filename,
-                                      const std::optional<keyring::Credential>& credential) const;
+        [[nodiscard]] std::expected<Result, std::string>
+        discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
+                 const std::string& suggested_filename, const std::optional<keyring::Credential>& credential) const;
         Options m_discovery_options;
         extractor::Options m_extractor_options;
     };

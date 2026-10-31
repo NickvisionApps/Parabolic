@@ -12,6 +12,7 @@
 #include <optional>
 #include <sago/platform_folders.h>
 #include <string>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 #include "audio.h"
@@ -139,7 +140,7 @@ namespace parabolic::discovery
         m_ytdlp_arguments = value;
     }
 
-    Entry::Entry(const nlohmann::json& json, const Options& options, std::string suggested_save_folder,
+    Entry::Entry(const nlohmann::json& json, const Options& options, std::filesystem::path suggested_save_folder,
                  std::string suggested_filename)
         : m_title{ std::move(suggested_filename) },
           m_suggested_save_folder{ std::move(suggested_save_folder) }
@@ -442,7 +443,7 @@ namespace parabolic::discovery
         return m_thumbnail_url;
     }
 
-    const std::string& Entry::suggested_save_folder() const
+    const std::filesystem::path& Entry::suggested_save_folder() const
     {
         return m_suggested_save_folder;
     }
@@ -457,15 +458,57 @@ namespace parabolic::discovery
         return m_url == rhs.m_url;
     }
 
-    Result::Result()
+    Result::Result(std::string url, std::string title)
+        : m_url{ std::move(url) },
+          m_title{ std::move(title) }
     {
         static unsigned int next_id{ 1 };
         m_id = next_id++;
     }
 
+    Result::Result(const nlohmann::json& json, const Options& options, std::string url,
+                   std::filesystem::path suggested_save_folder, std::string suggested_filename)
+        : Result{ std::move(url), std::move(suggested_filename) }
+    {
+        m_has_suggested_save_folder = !suggested_save_folder.empty();
+        if (json.contains("title") && json["title"].is_string())
+        {
+            m_title = json.at("title").get<std::string>();
+        }
+        if (json.contains("entries") && json["entries"].is_array() && !json["entries"].empty())
+        {
+            for (const nlohmann::json& entry : json["entries"])
+            {
+                if (entry.is_object())
+                {
+                    m_entries.emplace_back(entry, options, suggested_save_folder, "");
+                }
+            }
+            std::unordered_map<std::string, int> url_counts;
+            url_counts.reserve(m_entries.size());
+            for (const Entry& entry : m_entries)
+            {
+                if (entry.playlist_index() != -1 && !entry.url().empty())
+                {
+                    ++url_counts[entry.url()];
+                }
+            }
+            for (Entry& entry : m_entries)
+            {
+                if (entry.playlist_index() != -1 && !entry.url().empty() && url_counts[entry.url()] > 1)
+                {
+                    entry.set_requires_playlist_items_option(true);
+                }
+            }
+        }
+        else
+        {
+            m_entries.emplace_back(json, options, suggested_save_folder, suggested_filename);
+        }
+    }
+
     Result::Result(std::string url, std::string title, const std::vector<Result>& results)
-        : m_url{ std::move(url) },
-          m_title{ std::move(title) }
+        : Result{ std::move(url), std::move(title) }
     {
         for (const Result& result : results)
         {
@@ -571,26 +614,39 @@ namespace parabolic::discovery
         m_extractor_options = extractor_options;
     }
 
-    std::expected<Result, std::string> Manager::discover_file(const std::filesystem::path& path,
-                                  const std::optional<keyring::Credential>& credential) const
+    std::expected<Result, std::string>
+    Manager::discover_file(const std::filesystem::path& path,
+                           const std::optional<keyring::Credential>& credential) const
     {
         std::vector<Result> results;
         for (const batch::Item& item : batch::read_file(path))
         {
-            results.push_back(
-                    discover(item.url(), item.suggested_save_folder(), item.suggested_filename(), credential));
+            std::expected<Result, std::string> result{
+                discover(item.url(), item.suggested_save_folder(), item.suggested_filename(), credential),
+            };
+            if (!result)
+            {
+                return std::unexpected{ result.error() };
+            }
+            results.push_back(std::move(result.value()));
         }
-        return { path, path.stem().string(), results };
+#ifdef _WIN32
+        return Result{ string_manip::str(path.wstring()), string_manip::str(path.stem().wstring()), results };
+#else
+        return Result{ path.string(), path.stem().string(), results };
+#endif
     }
 
-    std::expected<Result, std::string> Manager::discover_url(const std::string& url, const std::optional<keyring::Credential>& credential) const
+    std::expected<Result, std::string> Manager::discover_url(const std::string& url,
+                                                             const std::optional<keyring::Credential>& credential) const
     {
-        return discover(url, {}, {}, credential);
+        return discover(url, "", "", credential);
     }
 
-    std::expected<Result, std::string> Manager::discover(const std::string& url, const std::filesystem::path& suggested_save_folder,
-                             const std::string& suggested_filename,
-                             const std::optional<keyring::Credential>& credential) const
+    std::expected<Result, std::string> Manager::discover(const std::string& url,
+                                                         const std::filesystem::path& suggested_save_folder,
+                                                         const std::string& suggested_filename,
+                                                         const std::optional<keyring::Credential>& credential) const
     {
         std::vector<std::string> args{
             url,
@@ -658,6 +714,32 @@ namespace parabolic::discovery
         {
             return std::unexpected{ "Failed to parse JSON from yt-dlp." };
         }
+        if (json.contains("entries") && json["entries"].is_array() && !json["entries"].empty())
+        {
+            std::vector<Result> results;
+            for (const nlohmann::json& entry : json["entries"])
+            {
+                if (entry.is_object() && entry.contains("ie_key") && entry["ie_key"].is_string() &&
+                    entry.at("ie_key").get<std::string>() == "YoutubeTab" && entry.contains("url") &&
+                    entry["url"].is_string())
+                {
+                    std::expected<Result, std::string> tab{
+                        discover(entry.at("url").get<std::string>(), suggested_save_folder, suggested_filename,
+                                 credential),
+                    };
+                    if (!tab)
+                    {
+                        return std::unexpected{ tab.error() };
+                    }
+                    results.push_back(std::move(tab.value()));
+                }
+            }
+            if (!results.empty() && json.contains("title") && json["title"].is_string())
+            {
+                return Result{ url, json.at("title").get<std::string>(), results };
+            }
+        }
+        return Result{ json, m_discovery_options, url, suggested_save_folder, suggested_filename };
     }
 
     void from_json(const nlohmann::json& json, Options& options)
@@ -807,7 +889,11 @@ namespace parabolic::discovery
         }
         if (!entry.m_suggested_save_folder.empty())
         {
-            json["suggestedSaveFolder"] = entry.m_suggested_save_folder;
+#ifdef _WIN32
+            json["suggestedSaveFolder"] = string_manip::str(entry.m_suggested_save_folder.wstring());
+#else
+            json["suggestedSaveFolder"] = entry.m_suggested_save_folder.string();
+#endif
         }
         for (const file::Format& format : entry.m_formats)
         {
