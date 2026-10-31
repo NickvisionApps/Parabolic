@@ -10,8 +10,10 @@ configure_file("${CMAKE_SOURCE_DIR}/resources/macos/Info.plist.in" "${CMAKE_CURR
 
 add_executable("${PROJECT_NAME}.macos"
     "include/delegate.h"
+    "include/menu.h"
+    "src/delegate.mm"
     "src/main.mm"
-    "src/delegate.mm")
+    "src/menu.mm")
 set_target_properties("${PROJECT_NAME}.macos" PROPERTIES
     OUTPUT_NAME "${DISPLAY_NAME}"
     XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC YES

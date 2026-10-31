@@ -4,6 +4,7 @@ Checks: >
   bugprone-*,
   -bugprone-easily-swappable-parameters,
   clang-analyzer-*,
+  -clang-analyzer-optin.osx.cocoa.localizability.NonLocalizedStringChecker,
   concurrency-*,
   -concurrency-mt-unsafe,
   cppcoreguidelines-init-variables,

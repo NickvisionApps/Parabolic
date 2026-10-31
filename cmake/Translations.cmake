@@ -23,7 +23,8 @@ function(generate_translations)
         "${ARG_ROOT_DIRECTORY}/lib${ARG_SHORT_NAME}/*.h"
         "${ARG_ROOT_DIRECTORY}/lib${ARG_SHORT_NAME}/*.cpp"
         "${ARG_ROOT_DIRECTORY}/${PROJECT_NAME}.*/*.h"
-        "${ARG_ROOT_DIRECTORY}/${PROJECT_NAME}.*/*.cpp")
+        "${ARG_ROOT_DIRECTORY}/${PROJECT_NAME}.*/*.cpp"
+        "${ARG_ROOT_DIRECTORY}/${PROJECT_NAME}.*/*.mm")
     list(SORT ABSOLUTE_SOURCES)
     set(RELATIVE_SOURCES "")
     foreach(ABSOLUTE_SOURCE IN LISTS ABSOLUTE_SOURCES)
