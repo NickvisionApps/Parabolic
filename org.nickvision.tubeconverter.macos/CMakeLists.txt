@@ -20,7 +20,7 @@ set_target_properties("${PROJECT_NAME}.macos" PROPERTIES
     XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY "-"
     MACOSX_BUNDLE TRUE
     MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_BINARY_DIR}/Info.plist")
-target_compile_options("${PROJECT_NAME}.macos" PRIVATE -Wall -Wextra -Wpedantic -Wno-elaborated-enum-base)
+target_compile_options("${PROJECT_NAME}.macos" PRIVATE -Wall -Wextra -Wpedantic -Wno-elaborated-enum-base -fobjc-arc)
 target_include_directories("${PROJECT_NAME}.macos" PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 find_library(FOUNDATION_FRAMEWORK Foundation REQUIRED)
