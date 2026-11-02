@@ -3,6 +3,16 @@
 
 @implementation MainMenuController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self != nil)
+    {
+        self.settingsDialogController = [[SettingsDialogController alloc] init];
+    }
+    return self;
+}
+
 - (void)setup
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
@@ -21,7 +31,7 @@
     [app_menu addItem:[NSMenuItem separatorItem]];
     NSMenuItem* settings_item
     {
-        [app_menu addItemWithTitle:@(translator._("Settings…")) action:@selector(settings:) keyEquivalent:@","]
+        [app_menu addItemWithTitle:@(translator._("Settings…")) action:@selector(settings:) keyEquivalent:@","],
     };
     settings_item.image = [NSImage imageWithSystemSymbolName:@"gear" accessibilityDescription:nil];
     if (@available(macOS 27.0, *))
@@ -31,11 +41,11 @@
     [app_menu addItem:[NSMenuItem separatorItem]];
     NSMenuItem* services_item
     {
-        [app_menu addItemWithTitle:@(translator._("Services")) action:nil keyEquivalent:@""]
+        [app_menu addItemWithTitle:@(translator._("Services")) action:nil keyEquivalent:@""],
     };
     NSMenu* services_menu
     {
-        [[NSMenu alloc] initWithTitle:@(translator._("Services"))]
+        [[NSMenu alloc] initWithTitle:@(translator._("Services"))],
     };
     services_item.submenu = services_menu;
     app.servicesMenu = services_menu;
@@ -45,7 +55,7 @@
     {
         [app_menu addItemWithTitle:@(translator._("Hide Others"))
                             action:@selector(hideOtherApplications:)
-                     keyEquivalent:@"h"]
+                     keyEquivalent:@"h"],
     };
     hide_others_item.keyEquivalentModifierMask = NSEventModifierFlagCommand | NSEventModifierFlagOption;
     [app_menu addItemWithTitle:@(translator._("Show All")) action:@selector(unhideAllApplications:) keyEquivalent:@""];
@@ -56,19 +66,19 @@
     [main_menu addItem:file_menu_item];
     NSMenu* file_menu
     {
-        [[NSMenu alloc] initWithTitle:@(translator._("File"))]
+        [[NSMenu alloc] initWithTitle:@(translator._("File"))],
     };
     file_menu_item.submenu = file_menu;
     NSMenuItem* edit_menu_item{ [[NSMenuItem alloc] init] };
     [main_menu addItem:edit_menu_item];
     NSMenu* edit_menu
     {
-        [[NSMenu alloc] initWithTitle:@(translator._("Edit"))]
+        [[NSMenu alloc] initWithTitle:@(translator._("Edit"))],
     };
     [edit_menu addItemWithTitle:@(translator._("Undo")) action:@selector(undo:) keyEquivalent:@"z"];
     NSMenuItem* redo_item
     {
-        [edit_menu addItemWithTitle:@(translator._("Redo")) action:@selector(redo:) keyEquivalent:@"Z"]
+        [edit_menu addItemWithTitle:@(translator._("Redo")) action:@selector(redo:) keyEquivalent:@"Z"],
     };
     redo_item.keyEquivalentModifierMask = NSEventModifierFlagCommand | NSEventModifierFlagShift;
     [edit_menu addItem:[NSMenuItem separatorItem]];
@@ -82,13 +92,13 @@
     [main_menu addItem:view_menu_item];
     NSMenu* view_menu
     {
-        [[NSMenu alloc] initWithTitle:@(translator._("View"))]
+        [[NSMenu alloc] initWithTitle:@(translator._("View"))],
     };
     NSMenuItem* full_screen_item
     {
         [view_menu addItemWithTitle:@(translator._("Enter Full Screen"))
                              action:@selector(toggleFullScreen:)
-                      keyEquivalent:@"f"]
+                      keyEquivalent:@"f"],
     };
     full_screen_item.keyEquivalentModifierMask = NSEventModifierFlagCommand | NSEventModifierFlagControl;
     view_menu_item.submenu = view_menu;
@@ -110,8 +120,15 @@
     [main_menu addItem:help_menu_item];
     NSMenu* help_menu
     {
-        [[NSMenu alloc] initWithTitle:@(translator._("Help"))]
+        [[NSMenu alloc] initWithTitle:@(translator._("Help"))],
     };
+    [help_menu addItemWithTitle:@(translator._("What's New?")) action:@selector(whatsNew:) keyEquivalent:@""];
+    [help_menu addItem:[NSMenuItem separatorItem]];
+    [help_menu addItemWithTitle:@(translator._("GitHub Repository…"))
+                         action:@selector(gitHubRepository:)
+                  keyEquivalent:@""];
+    [help_menu addItemWithTitle:@(translator._("Report an Issue…")) action:@selector(reportAnIssue:) keyEquivalent:@""];
+    [help_menu addItemWithTitle:@(translator._("Discussions…")) action:@selector(discussions:) keyEquivalent:@""];
     help_menu_item.submenu = help_menu;
     app.helpMenu = help_menu;
     app.mainMenu = main_menu;
@@ -126,12 +143,38 @@
     [alert runModal];
 }
 
+- (void)discussions:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@(parabolic::application::State::instance()
+                                                                          .product()
+                                                                          .discussions_url()
+                                                                          .c_str())]];
+}
+
+- (void)gitHubRepository:(id)sender
+{
+    [[NSWorkspace sharedWorkspace]
+            openURL:[NSURL URLWithString:@(parabolic::application::State::instance().product().repo_url().c_str())]];
+}
+
+- (void)reportAnIssue:(id)sender
+{
+    [[NSWorkspace sharedWorkspace]
+            openURL:[NSURL URLWithString:@(parabolic::application::State::instance().product().issues_url().c_str())]];
+}
+
 - (void)settings:(id)sender
 {
+    [self.settingsDialogController show];
+}
+
+- (void)whatsNew:(id)sender
+{
+    const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSAlert* alert{ [[NSAlert alloc] init] };
-    alert.messageText = @"Settings";
-    alert.informativeText = @"This feature is not yet implemented.";
-    [alert addButtonWithTitle:@"OK"];
+    alert.messageText = @(translator._("What's New?"));
+    alert.informativeText = @(parabolic::application::State::instance().product().changelog().c_str());
+    [alert addButtonWithTitle:@(translator._("OK"))];
     [alert runModal];
 }
 
