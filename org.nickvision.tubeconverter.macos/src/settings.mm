@@ -152,7 +152,7 @@
         [languagePopUpButton.topAnchor constraintEqualToAnchor:themePopUpButton.bottomAnchor constant:12],
         [languageSubtitleLabel.leadingAnchor constraintEqualToAnchor:languagePopUpButton.leadingAnchor],
         [languageSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [languageSubtitleLabel.topAnchor constraintEqualToAnchor:languagePopUpButton.bottomAnchor constant:4],
+        [languageSubtitleLabel.topAnchor constraintEqualToAnchor:languagePopUpButton.bottomAnchor constant:6],
         [autoUpdateCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [autoUpdateCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [autoUpdateCheckbox.topAnchor constraintEqualToAnchor:languageSubtitleLabel.bottomAnchor constant:16],
@@ -165,7 +165,7 @@
         [allowPreviewUpdatesSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                   constant:-20],
         [allowPreviewUpdatesSubtitleLabel.topAnchor constraintEqualToAnchor:allowPreviewUpdatesCheckbox.bottomAnchor
-                                                                   constant:4],
+                                                                   constant:6],
         [allowPreviewUpdatesSubtitleLabel.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
 }
@@ -687,7 +687,7 @@
         [includeMediaIdInTitleSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                     constant:-20],
         [includeMediaIdInTitleSubtitleLabel.topAnchor constraintEqualToAnchor:includeMediaIdInTitleCheckbox.bottomAnchor
-                                                                     constant:4],
+                                                                     constant:6],
         [includeSuperResolutionsCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [includeSuperResolutionsCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                  constant:-20],
@@ -700,7 +700,7 @@
                                                                                       constant:-20],
         [includeSuperResolutionsSubtitleLabel.topAnchor
                 constraintEqualToAnchor:includeSuperResolutionsCheckbox.bottomAnchor
-                               constant:4],
+                               constant:6],
         [limitCharactersCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [limitCharactersCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                          constant:-20],
@@ -710,7 +710,7 @@
         [limitCharactersSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                               constant:-20],
         [limitCharactersSubtitleLabel.topAnchor constraintEqualToAnchor:limitCharactersCheckbox.bottomAnchor
-                                                               constant:4],
+                                                               constant:6],
         [preferredAudioCodecLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredAudioCodecLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                             constant:20],
@@ -727,7 +727,7 @@
         [preferredAudioCodecSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                   constant:-20],
         [preferredAudioCodecSubtitleLabel.topAnchor constraintEqualToAnchor:preferredAudioCodecPopUpButton.bottomAnchor
-                                                                   constant:4],
+                                                                   constant:6],
         [preferredVideoCodecLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredVideoCodecLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                             constant:20],
@@ -744,7 +744,7 @@
         [preferredVideoCodecSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                   constant:-20],
         [preferredVideoCodecSubtitleLabel.topAnchor constraintEqualToAnchor:preferredVideoCodecPopUpButton.bottomAnchor
-                                                                   constant:4],
+                                                                   constant:6],
         [preferredSubtitleFormatLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredSubtitleFormatLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                                 constant:20],
@@ -763,7 +763,7 @@
                                                                                       constant:-20],
         [preferredSubtitleFormatSubtitleLabel.topAnchor
                 constraintEqualToAnchor:preferredSubtitleFormatPopUpButton.bottomAnchor
-                               constant:4],
+                               constant:6],
         [preferredFrameRateLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredFrameRateLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                            constant:20],
@@ -781,7 +781,7 @@
         [preferredFrameRateSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                  constant:-20],
         [preferredFrameRateSubtitleLabel.topAnchor constraintEqualToAnchor:preferredFrameRatePopUpButton.bottomAnchor
-                                                                  constant:4],
+                                                                  constant:6],
         [ytdlpArgumentsLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [ytdlpArgumentsLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [ytdlpArgumentsTextField.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
@@ -1064,7 +1064,7 @@
         [usePartFilesSubtitleLabel.leadingAnchor constraintEqualToAnchor:usePartFilesCheckbox.leadingAnchor],
         [usePartFilesSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                            constant:-20],
-        [usePartFilesSubtitleLabel.topAnchor constraintEqualToAnchor:usePartFilesCheckbox.bottomAnchor constant:4],
+        [usePartFilesSubtitleLabel.topAnchor constraintEqualToAnchor:usePartFilesCheckbox.bottomAnchor constant:6],
         [youtubeSponsorBlockCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [youtubeSponsorBlockCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                              constant:-20],
@@ -1075,7 +1075,7 @@
         [youtubeSponsorBlockSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                   constant:-20],
         [youtubeSponsorBlockSubtitleLabel.topAnchor constraintEqualToAnchor:youtubeSponsorBlockCheckbox.bottomAnchor
-                                                                   constant:4],
+                                                                   constant:6],
         [translateMetadataAndChaptersCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [translateMetadataAndChaptersCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                       constant:-20],
@@ -1089,7 +1089,7 @@
                                          constant:-20],
         [translateMetadataAndChaptersSubtitleLabel.topAnchor
                 constraintEqualToAnchor:translateMetadataAndChaptersCheckbox.bottomAnchor
-                               constant:4],
+                               constant:6],
         [limitSpeedCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [limitSpeedCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [limitSpeedCheckbox.topAnchor constraintEqualToAnchor:translateMetadataAndChaptersSubtitleLabel.bottomAnchor
