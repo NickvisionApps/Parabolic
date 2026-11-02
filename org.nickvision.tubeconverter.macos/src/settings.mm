@@ -41,9 +41,9 @@
     [self.view addSubview:themePopUpButton];
     [NSLayoutConstraint activateConstraints:@[
         [self.view.widthAnchor constraintEqualToConstant:400],
-        [themeLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-6],
+        [themeLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [themeLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
-        [themePopUpButton.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:6],
+        [themePopUpButton.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [themePopUpButton.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [themePopUpButton.widthAnchor constraintGreaterThanOrEqualToConstant:100],
         [themeLabel.firstBaselineAnchor constraintEqualToAnchor:themePopUpButton.firstBaselineAnchor],
