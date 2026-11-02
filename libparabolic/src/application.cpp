@@ -12,10 +12,6 @@
 #include "translation.h"
 #include "update.h"
 
-using namespace parabolic::configuration;
-using namespace parabolic::translation;
-using namespace parabolic::update;
-
 namespace parabolic::application
 {
     const std::string& Product::id() const
@@ -137,35 +133,35 @@ namespace parabolic::application
         m_product->set_description("Download web video and audio");
         m_product->set_version(semver::from_string("2026.10.0-next"));
         m_product->set_changelog("- Initial Release");
-        m_configuration = std::make_unique<Configuration>(m_product->name());
-        m_translator = std::make_unique<Translator>(m_product->short_name());
+        m_configuration = std::make_unique<configuration::Configuration>(m_product->name());
+        m_translator = std::make_unique<translation::Translator>(m_product->short_name());
         m_discovery = std::make_unique<discovery::Manager>();
         m_downloads = std::make_unique<download::Manager>();
         m_history = std::make_unique<history::Store>(m_product->name());
         m_keyring = std::make_unique<keyring::Store>(m_product->id());
 #ifdef _WIN32
 #ifdef _M_ARM64
-        m_updater = std::make_unique<Updater>(m_product->repo_owner(), m_product->repo_name(), m_product->version(),
-                                              "NickvisionParabolicSetup-arm64.exe");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
+                                                      m_product->version(), "NickvisionParabolicSetup-arm64.exe");
 #else
-        m_updater = std::make_unique<Updater>(m_product->repo_owner(), m_product->repo_name(), m_product->version(),
-                                              "NickvisionParabolicSetup-x64.exe");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
+                                                      m_product->version(), "NickvisionParabolicSetup-x64.exe");
 #endif
 #elifdef __APPLE__
 #ifdef __aarch64__
-        m_updater = std::make_unique<Updater>(m_product->repo_owner(), m_product->repo_name(), m_product->version(),
-                                              "NickvisionParabolic-arm64.dmg");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
+                                                      m_product->version(), "NickvisionParabolic-arm64.dmg");
 #else
-        m_updater = std::make_unique<Updater>(m_product->repo_owner(), m_product->repo_name(), m_product->version(),
-                                              "NickvisionParabolic-x64.dmg");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
+                                                      m_product->version(), "NickvisionParabolic-x64.dmg");
 #endif
 #elifdef __linux__
 #ifdef __aarch64__
-        m_updater = std::make_unique<Updater>(m_product->repo_owner(), m_product->repo_name(), m_product->version(),
-                                              "NickvisionParabolic-arm64.AppImage");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
+                                                      m_product->version(), "NickvisionParabolic-arm64.AppImage");
 #else
-        m_updater = std::make_unique<Updater>(m_product->repo_owner(), m_product->repo_name(), m_product->version(),
-                                              "NickvisionParabolic-x64.AppImage");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
+                                                      m_product->version(), "NickvisionParabolic-x64.AppImage");
 #endif
 #endif
     }
@@ -189,7 +185,7 @@ namespace parabolic::application
         return instance;
     }
 
-    Configuration& State::configuration() const
+    configuration::Configuration& State::configuration() const
     {
         return *m_configuration;
     }
@@ -222,11 +218,11 @@ namespace parabolic::application
         return *m_product;
     }
 
-    const Translator& State::translator() const
+    const translation::Translator& State::translator() const
     {
         translation::Options options{ m_configuration->translation_options() };
         m_translator->set_options(options);
-        if (options.language() != Translator::follow_system_language())
+        if (options.language() != translation::Translator::follow_system_language())
         {
             options.set_language(m_translator->language());
             m_configuration->set_translation_options(options);
@@ -234,7 +230,7 @@ namespace parabolic::application
         return *m_translator;
     }
 
-    const Updater& State::updater() const
+    const update::Updater& State::updater() const
     {
         m_updater->set_options(m_configuration->update_options());
         return *m_updater;
