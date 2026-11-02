@@ -477,7 +477,7 @@
             discoveryOptions.include_media_id_in_title() ? NSControlStateValueOn : NSControlStateValueOff;
     NSTextField* includeMediaIdInTitleSubtitleLabel
     {
-        [NSTextField wrappingLabelWithString:@(translator._("Add the media's id to its default title."))]
+        [NSTextField wrappingLabelWithString:@(translator._("Add the media entry's yt-dlp id to its default title."))]
     };
     includeMediaIdInTitleSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     includeMediaIdInTitleSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
