@@ -1,5 +1,6 @@
 #import "settings.h"
 #include "application.h"
+#include "aria2.h"
 #include "configuration.h"
 #include "cookies.h"
 #include "download.h"
@@ -14,6 +15,7 @@
 #define K_DISCOVERY_TAB_ID @"SettingsTabDiscovery"
 #define K_EXTRACTOR_TAB_ID @"SettingsTabExtractor"
 #define K_POSTPROCESSING_TAB_ID @"SettingsTabPostprocessing"
+#define K_ARIA2_TAB_ID @"SettingsTabAria2"
 
 @implementation GeneralViewController
 
@@ -1254,6 +1256,23 @@
 
 @end
 
+@implementation Aria2ViewController
+
+- (void)loadView
+{
+    self.view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 700, 150)];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
+    parabolic::aria2::Options aria2Options{ configuration.aria2_options() };
+    self.title = @(parabolic::application::State::instance().translator()._p("Settings", "aria2"));
+}
+
+@end
+
 @interface SettingsDialogController ()
 @property(nonatomic, strong) NSArray<NSToolbarItemIdentifier>* tabIdentifiers;
 @property(nonatomic, strong) NSViewController* generalViewController;
@@ -1262,6 +1281,7 @@
 @property(nonatomic, strong) NSViewController* discoveryViewController;
 @property(nonatomic, strong) NSViewController* extractorViewController;
 @property(nonatomic, strong) NSViewController* postprocessingViewController;
+@property(nonatomic, strong) NSViewController* aria2ViewController;
 @end
 
 @implementation SettingsDialogController
@@ -1284,6 +1304,7 @@
             K_DISCOVERY_TAB_ID,
             K_EXTRACTOR_TAB_ID,
             K_POSTPROCESSING_TAB_ID,
+            K_ARIA2_TAB_ID,
         ];
         self.generalViewController = [[GeneralViewController alloc] init];
         self.historyViewController = [[HistoryViewController alloc] init];
@@ -1291,6 +1312,7 @@
         self.discoveryViewController = [[DiscoveryViewController alloc] init];
         self.extractorViewController = [[ExtractorViewController alloc] init];
         self.postprocessingViewController = [[PostprocessingViewController alloc] init];
+        self.aria2ViewController = [[Aria2ViewController alloc] init];
         NSToolbar* toolbar{ [[NSToolbar alloc] initWithIdentifier:@"SettingsToolbar"] };
         toolbar.delegate = self;
         toolbar.allowsUserCustomization = NO;
@@ -1370,6 +1392,12 @@
         item.paletteLabel = @(translator._p("Settings", "Postprocessing"));
         item.image = [NSImage imageWithSystemSymbolName:@"wrench.and.screwdriver" accessibilityDescription:item.label];
     }
+    else if ([itemIdentifier isEqualToString:K_ARIA2_TAB_ID])
+    {
+        item.label = @(translator._p("Settings", "aria2"));
+        item.paletteLabel = @(translator._p("Settings", "aria2"));
+        item.image = [NSImage imageWithSystemSymbolName:@"apple.terminal.on.rectangle" accessibilityDescription:item.label];
+    }
     item.target = self;
     item.action = @selector(toolbarItemClicked:);
     return item;
@@ -1400,6 +1428,10 @@
     else if ([sender.itemIdentifier isEqualToString:K_POSTPROCESSING_TAB_ID])
     {
         self.window.contentViewController = self.postprocessingViewController;
+    }
+    else if ([sender.itemIdentifier isEqualToString:K_ARIA2_TAB_ID])
+    {
+        self.window.contentViewController = self.aria2ViewController;
     }
     self.window.toolbar.selectedItemIdentifier = sender.itemIdentifier;
 }

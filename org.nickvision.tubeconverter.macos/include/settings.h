@@ -18,6 +18,9 @@
 @interface PostprocessingViewController : NSViewController
 @end
 
+@interface Aria2ViewController : NSViewController
+@end
+
 @interface SettingsDialogController : NSWindowController <NSToolbarDelegate, NSWindowDelegate>
 - (void)show;
 @end
