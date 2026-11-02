@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 21:02-0500\n"
+"POT-Creation-Date: 2026-11-01 21:45-0500\n"
 "PO-Revision-Date: 2026-04-22 06:09+0000\n"
 "Last-Translator: Galaxy Hazard <tplinkusers@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -60,6 +60,7 @@ msgid "Worst"
 msgstr "最差"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1002
 msgid "None"
 msgstr "无"
 
@@ -202,92 +203,416 @@ msgstr "讨论"
 msgid "OK"
 msgstr "OK"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:27
-#: org.nickvision.tubeconverter.macos/src/settings.mm:346
-#: org.nickvision.tubeconverter.macos/src/settings.mm:347
+#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1339
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1340
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "常规"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
 msgid "Theme"
 msgstr "主题"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:37
+#: org.nickvision.tubeconverter.macos/src/settings.mm:41
 msgctxt "Theme"
 msgid "Light"
 msgstr "亮色"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings.mm:42
 msgctxt "Theme"
 msgid "Dark"
 msgstr "暗色"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings.mm:43
 msgctxt "Theme"
 msgid "System"
 msgstr "跟随系统"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
 msgid "Translation Language"
 msgstr "界面语言"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#: org.nickvision.tubeconverter.macos/src/settings.mm:61
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "跟随系统"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings.mm:96
+#, fuzzy
+msgid "An application restart is required for a change to take effect."
+msgstr "设置需要重新启动应用程序才能生效"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:104
 msgid "Automatically Check for Updates"
 msgstr "自动检查更新"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:101
+#: org.nickvision.tubeconverter.macos/src/settings.mm:113
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "接收预览版更新通知"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:195
-#: org.nickvision.tubeconverter.macos/src/settings.mm:352
-#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:124
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "将 yt-dlp 等依赖项更新到 beta 版本"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:230
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1345
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1346
 #, fuzzy
 msgctxt "Settings"
 msgid "History"
 msgstr "历史"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:210
-#: org.nickvision.tubeconverter.macos/src/settings.mm:358
-#: org.nickvision.tubeconverter.macos/src/settings.mm:359
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "下载中"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:240
+#, fuzzy
+msgid "Never"
+msgstr "从不"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:241
+msgid "1 Day"
+msgstr "1天"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:242
+msgid "1 Week"
+msgstr "1周"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+msgid "1 Month"
+msgstr "1个月"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:244
+msgid "3 Months"
+msgstr "3个月"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:245
+msgid "6 Months"
+msgstr "6个月"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:246
+msgid "1 Year"
+msgstr "1年"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:247
+msgid "Forever"
+msgstr "永久"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:307
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1351
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1352
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "下载"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:225
-#: org.nickvision.tubeconverter.macos/src/settings.mm:364
-#: org.nickvision.tubeconverter.macos/src/settings.mm:365
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "同时下载的最大数量"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:336
+msgid "Overwrite Existing Files"
+msgstr "覆盖现有文件"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:345
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "yt-dlp 下载参数"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:459
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1357
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1358
 #, fuzzy
 msgctxt "Settings"
 msgid "Discovery"
 msgstr "发现"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:240
-#: org.nickvision.tubeconverter.macos/src/settings.mm:370
-#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#: org.nickvision.tubeconverter.macos/src/settings.mm:462
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "包括自动生成的字幕"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:471
+msgid "Include Media Id in Title"
+msgstr "标题中包含媒体文件ID"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:480
+#, fuzzy
+msgid "Add the media's id to its default title."
+msgstr "将媒体 ID 添加到其默认标题中"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:487
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "包含超高分辨率格式"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:496
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:504
+msgid "Limit Filename Characters"
+msgstr "限制文件名字符"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:513
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "将文件名中的字符限制为仅 Windows 支持的字符"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+msgid "Preferred Audio Codec"
+msgstr "首选音频编解码器"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:528
+#: org.nickvision.tubeconverter.macos/src/settings.mm:560
+#: org.nickvision.tubeconverter.macos/src/settings.mm:590
+#: org.nickvision.tubeconverter.macos/src/settings.mm:620
+msgid "Any"
+msgstr "全部"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:529
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:530
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:531
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:532
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:533
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:534
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:545
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr "优先展示此编解码器的可下载音频格式"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+msgid "Preferred Video Codec"
+msgstr "首选视频编解码器"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:561
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:562
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:563
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:564
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:575
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr "优先展示此编解码器的可下载视频格式"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+msgid "Preferred Subtitle Format"
+msgstr "首选字幕格式"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:591
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:592
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:593
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:594
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:606
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "下载时优先选择此字幕格式"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+msgid "Preferred Frame Rate"
+msgstr "首选帧率"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:621
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:622
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:623
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:634
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr "解析时优先显示此帧率的视频下载选项"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "yt-dlp 解析参数"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:892
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1364
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:255
-#: org.nickvision.tubeconverter.macos/src/settings.mm:376
-#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:895
+msgid "Use Part Files"
+msgstr "使用 .part 文件"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:904
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr "将媒体文件下载到单独的 .part 文件中，而不是直接下载到输出文件中"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:912
+msgid "Use SponsorBlock for YouTube"
+msgstr "为 YouTube 使用 SponsorBlock"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:921
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "尝试从视频中移除赞助内容"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:928
+msgid "Translate Metadata and Chapters"
+msgstr "翻译元数据和章节信息"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:937
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr "在支持的网站和媒体上，将嵌入的元数据和章节信息翻译成程序展示的语言"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:946
+msgid "Limit Download Speed"
+msgstr "限制下载速度"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+msgid "Speed Limit (KiB/s)"
+msgstr "速度限制 (KiB/s)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+msgid "Proxy URL"
+msgstr "代理 URL"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "使用浏览器的Cookies"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1003
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1004
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1005
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1006
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1007
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1008
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1009
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1010
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
+msgid "Cookies File"
+msgstr "Cookies 文件"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1033
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1038
+msgid "Clear"
+msgstr "清除"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1252
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1369
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1370
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -567,12 +892,6 @@ msgstr "处理中..."
 #~ msgid "User Interface"
 #~ msgstr "界面"
 
-#~ msgid "An application restart is required for a change to take effect"
-#~ msgstr "设置需要重新启动应用程序才能生效"
-
-#~ msgid "Update dependencies, such as yt-dlp, to beta versions"
-#~ msgstr "将 yt-dlp 等依赖项更新到 beta 版本"
-
 #~ msgid "Prevent Suspend"
 #~ msgstr "防止挂起"
 
@@ -589,102 +908,24 @@ msgstr "处理中..."
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "最大同时下载量"
 
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "覆盖现有文件"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "限制文件名字符"
-
-#~ msgid "Restrict characters in filenames to those supported only by Windows"
-#~ msgstr "将文件名中的字符限制为仅 Windows 支持的字符"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "标题中包含媒体文件ID"
-
-#~ msgid "Add the media's id to its default title"
-#~ msgstr "将媒体 ID 添加到其默认标题中"
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "包括自动生成的字幕"
-
 #~ msgid ""
 #~ "Show auto-generated subtitles to download in addition to available "
 #~ "subtitles"
 #~ msgstr "展示自动生成的字幕以供下载"
-
-#~ msgid "Include Super Resolution Formats"
-#~ msgstr "包含超高分辨率格式"
 
 #~ msgid ""
 #~ "Show super (AI-scaled) resolution formats to download in addition to "
 #~ "regular formats"
 #~ msgstr "展示AI 生成的超高分辨率格式以供下载"
 
-#~ msgid "Preferred Video Codec"
-#~ msgstr "首选视频编解码器"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing video formats to show available to download"
-#~ msgstr "优先展示此编解码器的可下载视频格式"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "首选音频编解码器"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing audio formats to show available to download"
-#~ msgstr "优先展示此编解码器的可下载音频格式"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "首选字幕格式"
-
-#~ msgid "Prefer this subtitle file format when downloading"
-#~ msgstr "下载时优先选择此字幕格式"
-
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "首选帧率"
-
-#~ msgid ""
-#~ "Prefer this frame rate when parsing video formats to show available to "
-#~ "download"
-#~ msgstr "解析时优先显示此帧率的视频下载选项"
-
 #~ msgid "Downloader"
 #~ msgstr "下载器"
-
-#~ msgid "Use Part Files"
-#~ msgstr "使用 .part 文件"
-
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file"
-#~ msgstr "将媒体文件下载到单独的 .part 文件中，而不是直接下载到输出文件中"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "为 YouTube 使用 SponsorBlock"
-
-#~ msgid "Try to remove sponsored segments from videos"
-#~ msgstr "尝试从视频中移除赞助内容"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "限制下载速度"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "速度限制 (KiB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "代理 URL"
-
-#~ msgid "Cookies File"
-#~ msgstr "Cookies 文件"
 
 #~ msgid "Select Cookies File"
 #~ msgstr "选择 Cookies 文件"
 
 #~ msgid "Clear Cookies File"
 #~ msgstr "清除 Cookie 文件"
-
-#~ msgid "Cookies from Browser"
-#~ msgstr "使用浏览器的Cookies"
 
 #~ msgid "aria2c"
 #~ msgstr "aria2"
@@ -709,22 +950,8 @@ msgstr "处理中..."
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "要拆分文件的最小大小 (以MiB为单位)."
 
-#~ msgid "yt-dlp Discovery Arguments"
-#~ msgstr "yt-dlp 解析参数"
-
-#~ msgid "yt-dlp Download Arguments"
-#~ msgstr "yt-dlp 下载参数"
-
 #~ msgid "Converter"
 #~ msgstr "转换器"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "翻译元数据和章节信息"
-
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters to the app's "
-#~ "language on supported sites and media"
-#~ msgstr "在支持的网站和媒体上，将嵌入的元数据和章节信息翻译成程序展示的语言"
 
 #~ msgid "Embed Metadata"
 #~ msgstr "嵌入元数据"
@@ -865,9 +1092,6 @@ msgstr "处理中..."
 #~ "Are you sure you want to clear all download history? This action is "
 #~ "irreversible"
 #~ msgstr "确认清除所有下载历史记录？此操作不可逆"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
 
 #~ msgid "Cancel"
 #~ msgstr "取消"
@@ -1110,66 +1334,11 @@ msgstr "处理中..."
 #~ msgid "Unable to download and install the yt-dlp update"
 #~ msgstr "无法下载并安装更新"
 
-#~ msgid "Any"
-#~ msgstr "全部"
-
 #~ msgid "FLAC (ALAC)"
 #~ msgstr "FLAC (ALAC)"
 
 #~ msgid "WAV (AIFF)"
 #~ msgstr "WAV (AIFF)"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#, fuzzy
-#~ msgid "Never"
-#~ msgstr "从不"
-
-#~ msgid "1 Day"
-#~ msgstr "1天"
-
-#~ msgid "1 Week"
-#~ msgstr "1周"
-
-#~ msgid "1 Month"
-#~ msgstr "1个月"
-
-#~ msgid "3 Months"
-#~ msgstr "3个月"
-
-#~ msgid "6 Months"
-#~ msgstr "6个月"
-
-#~ msgid "1 Year"
-#~ msgstr "1年"
-
-#~ msgid "Forever"
-#~ msgstr "永久"
-
-#~ msgid "H.264 (AVC)"
-#~ msgstr "H.264 (AVC)"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
@@ -1362,9 +1531,6 @@ msgstr "处理中..."
 
 #~ msgid "Off"
 #~ msgstr "关闭"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "同时下载的最大数量"
 
 #~ msgid "Speed Limit"
 #~ msgstr "速度限制"
@@ -1723,10 +1889,6 @@ msgstr "处理中..."
 #, fuzzy
 #~ msgid "Past Downloads"
 #~ msgstr "下载"
-
-#, fuzzy
-#~ msgid "No Download History"
-#~ msgstr "下载中"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "下载完成"

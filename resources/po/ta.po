@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 21:02-0500\n"
+"POT-Creation-Date: 2026-11-01 21:45-0500\n"
 "PO-Revision-Date: 2026-02-06 14:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,7 @@ msgid "Worst"
 msgstr "மோசமான"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1002
 msgid "None"
 msgstr "எதுவுமில்லை"
 
@@ -199,93 +200,426 @@ msgstr "விவாதங்கள்"
 msgid "OK"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:27
-#: org.nickvision.tubeconverter.macos/src/settings.mm:346
-#: org.nickvision.tubeconverter.macos/src/settings.mm:347
+#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1339
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1340
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "பொது"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
 msgid "Theme"
 msgstr "கருப்பொருள்"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:37
+#: org.nickvision.tubeconverter.macos/src/settings.mm:41
 msgctxt "Theme"
 msgid "Light"
 msgstr "ஒளி"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings.mm:42
 msgctxt "Theme"
 msgid "Dark"
 msgstr "இருள்"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings.mm:43
 msgctxt "Theme"
 msgid "System"
 msgstr "அமைப்பு"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
 #, fuzzy
 msgid "Translation Language"
 msgstr "ஒலி மொழி"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#: org.nickvision.tubeconverter.macos/src/settings.mm:61
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "மண்டலம்"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings.mm:96
+msgid "An application restart is required for a change to take effect."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:104
 msgid "Automatically Check for Updates"
 msgstr "புதுப்பிப்புகளை தானாக சரிபார்க்கவும்"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:101
+#: org.nickvision.tubeconverter.macos/src/settings.mm:113
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "புதுப்பிப்புகளை சரிபார்க்கவும்"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:195
-#: org.nickvision.tubeconverter.macos/src/settings.mm:352
-#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:124
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:230
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1345
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1346
 #, fuzzy
 msgctxt "Settings"
 msgid "History"
 msgstr "வரலாறு"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:210
-#: org.nickvision.tubeconverter.macos/src/settings.mm:358
-#: org.nickvision.tubeconverter.macos/src/settings.mm:359
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "வரலாற்று நீளத்தைப் பதிவிறக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:240
+msgid "Never"
+msgstr "ஒருபோதும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:241
+#, fuzzy
+msgid "1 Day"
+msgstr "ஒரு நாள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:242
+#, fuzzy
+msgid "1 Week"
+msgstr "ஒரு வாரம்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#, fuzzy
+msgid "1 Month"
+msgstr "ஒரு மாதம்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:244
+#, fuzzy
+msgid "3 Months"
+msgstr "ஒரு மாதம்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:245
+#, fuzzy
+msgid "6 Months"
+msgstr "ஒரு மாதம்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:246
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:247
+msgid "Forever"
+msgstr "என்றென்றும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:307
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1351
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1352
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "பதிவிறக்கங்கள்"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:225
-#: org.nickvision.tubeconverter.macos/src/settings.mm:364
-#: org.nickvision.tubeconverter.macos/src/settings.mm:365
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "இயங்கும் பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:336
+msgid "Overwrite Existing Files"
+msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:345
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "மீண்டும் பதிவிறக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:459
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1357
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1358
 #, fuzzy
 msgctxt "Settings"
 msgid "Discovery"
 msgstr "மறுப்பு"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:240
-#: org.nickvision.tubeconverter.macos/src/settings.mm:370
-#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#: org.nickvision.tubeconverter.macos/src/settings.mm:462
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "தானாக உருவாக்கிய வசன வரிகள் சேர்க்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:471
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "தலைப்பில் மீடியா ஐடியைச் சேர்க்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:480
+#, fuzzy
+msgid "Add the media's id to its default title."
+msgstr "பரபோலிக் அதன் இயல்புநிலை தலைப்பில் ஊடகத்தின் ஐடியை உள்ளடக்கும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:487
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:496
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:504
+msgid "Limit Filename Characters"
+msgstr "கோப்பு பெயர் எழுத்துக்களைக் கட்டுப்படுத்துங்கள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:513
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"பரபோலிக் கோப்பு பெயர்களில் உள்ள எழுத்துக்களை விண்டோசால் மட்டுமே ஆதரிக்கப்படுபவர்களுக்கு "
+"கட்டுப்படுத்தும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+msgid "Preferred Audio Codec"
+msgstr "விருப்பமான ஆடியோ கோடெக்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:528
+#: org.nickvision.tubeconverter.macos/src/settings.mm:560
+#: org.nickvision.tubeconverter.macos/src/settings.mm:590
+#: org.nickvision.tubeconverter.macos/src/settings.mm:620
+msgid "Any"
+msgstr "ஏதேனும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:529
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:530
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:531
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:532
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:533
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:534
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:545
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+"பதிவிறக்கம் செய்ய ஊடக வடிவங்களை பாகுபடுத்தும்போது ஆடியோ கோடெக் பரவளைய விரும்ப வேண்டும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+msgid "Preferred Video Codec"
+msgstr "விருப்பமான வீடியோ கோடெக்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:561
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:562
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:563
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:564
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (பக்கவாதம்)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:575
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+"வீடியோ கோடெக் பரபோலிக் பதிவிறக்கம் செய்ய ஊடக வடிவங்களை பாகுபடுத்தும்போது விரும்ப "
+"வேண்டும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+msgid "Preferred Subtitle Format"
+msgstr "விருப்பமான வசன வடிவமைப்பு"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:591
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:592
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:593
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:594
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:606
+msgid "Prefer this subtitle file format for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+#, fuzzy
+msgid "Preferred Frame Rate"
+msgstr "விருப்பமான வசன வடிவமைப்பு"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:621
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:622
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:623
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:634
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+"வீடியோ கோடெக் பரபோலிக் பதிவிறக்கம் செய்ய ஊடக வடிவங்களை பாகுபடுத்தும்போது விரும்ப "
+"வேண்டும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "பிந்தைய செயலி உரையாடல்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:892
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1364
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:255
-#: org.nickvision.tubeconverter.macos/src/settings.mm:376
-#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:895
+msgid "Use Part Files"
+msgstr "பகுதி கோப்புகளைப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:904
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr "பரபோலிக் வெளியீட்டு கோப்பில் நேரடியாக பதிலாக ஊடகங்களை தனித்தனியாக பதிவிறக்கும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:912
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:921
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+"யூடியூப் வீடியோக்களிலிருந்து ஒப்புரவாளர் செய்யப்பட்ட பிரிவுகளை அகற்ற பரபோலிக் "
+"முயற்சிக்கும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:928
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:937
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:946
+msgid "Limit Download Speed"
+msgstr "பதிவிறக்க வேகத்தை கட்டுப்படுத்துங்கள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+msgid "Speed Limit (KiB/s)"
+msgstr "வேக வரம்பு (KIB/s)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+msgid "Proxy URL"
+msgstr "ப்ராக்ஸி URL"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "உலாவியில் இருந்து குக்கீகள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1003
+msgid "Brave"
+msgstr "தைரியமான"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1004
+msgid "Chrome"
+msgstr "குரோம்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1005
+msgid "Chromium"
+msgstr "நீலிரும்பு, குருமம்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1006
+msgid "Edge"
+msgstr "விளிம்பு"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1007
+msgid "Firefox"
+msgstr "பயர்பாக்ச்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1008
+msgid "Opera"
+msgstr "ஓபரா"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1009
+msgid "Vivaldi"
+msgstr "விவால்டி"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1010
+msgid "Whale"
+msgstr "திமிங்கலம்"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
+#, fuzzy
+msgid "Cookies File"
+msgstr "குக்கீகள் கோப்பு"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1033
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1038
+#, fuzzy
+msgid "Clear"
+msgstr "தெளிவாக்கு"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1252
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1369
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1370
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -565,29 +899,6 @@ msgstr "போச்ட்ரோசெசிங்"
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "இயங்கும் பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
 
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "கோப்பு பெயர் எழுத்துக்களைக் கட்டுப்படுத்துங்கள்"
-
-#, fuzzy
-#~ msgid "Restrict characters in filenames to those supported only by Windows"
-#~ msgstr ""
-#~ "பரபோலிக் கோப்பு பெயர்களில் உள்ள எழுத்துக்களை விண்டோசால் மட்டுமே ஆதரிக்கப்படுபவர்களுக்கு "
-#~ "கட்டுப்படுத்தும்."
-
-#, fuzzy
-#~ msgid "Include Media Id in Title"
-#~ msgstr "தலைப்பில் மீடியா ஐடியைச் சேர்க்கவும்"
-
-#, fuzzy
-#~ msgid "Add the media's id to its default title"
-#~ msgstr "பரபோலிக் அதன் இயல்புநிலை தலைப்பில் ஊடகத்தின் ஐடியை உள்ளடக்கும்."
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "தானாக உருவாக்கிய வசன வரிகள் சேர்க்கவும்"
-
 #, fuzzy
 #~ msgid ""
 #~ "Show auto-generated subtitles to download in addition to available "
@@ -604,62 +915,14 @@ msgstr "போச்ட்ரோசெசிங்"
 #~ "கிடைக்கக்கூடிய வசனங்களுக்கு கூடுதலாக பதிவிறக்கம் செய்ய பரபோலிக் தானாக உருவாக்கிய "
 #~ "வசன வரிகள் வழங்கும்."
 
-#~ msgid "Preferred Video Codec"
-#~ msgstr "விருப்பமான வீடியோ கோடெக்"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "விருப்பமான ஆடியோ கோடெக்"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "விருப்பமான வசன வடிவமைப்பு"
-
-#, fuzzy
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "விருப்பமான வசன வடிவமைப்பு"
-
 #~ msgid "Downloader"
 #~ msgstr "பதிவிறக்குபவர்"
-
-#~ msgid "Use Part Files"
-#~ msgstr "பகுதி கோப்புகளைப் பயன்படுத்தவும்"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file"
-#~ msgstr ""
-#~ "பரபோலிக் வெளியீட்டு கோப்பில் நேரடியாக பதிலாக ஊடகங்களை தனித்தனியாக பதிவிறக்கும்."
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos"
-#~ msgstr ""
-#~ "யூடியூப் வீடியோக்களிலிருந்து ஒப்புரவாளர் செய்யப்பட்ட பிரிவுகளை அகற்ற பரபோலிக் "
-#~ "முயற்சிக்கும்."
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "பதிவிறக்க வேகத்தை கட்டுப்படுத்துங்கள்"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "வேக வரம்பு (KIB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "ப்ராக்ஸி URL"
-
-#, fuzzy
-#~ msgid "Cookies File"
-#~ msgstr "குக்கீகள் கோப்பு"
 
 #~ msgid "Select Cookies File"
 #~ msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
 
 #~ msgid "Clear Cookies File"
 #~ msgstr "குக்கீகள் கோப்பை அழிக்கவும்"
-
-#~ msgid "Cookies from Browser"
-#~ msgstr "உலாவியில் இருந்து குக்கீகள்"
 
 #~ msgid "aria2c"
 #~ msgstr "ARIA2C"
@@ -678,14 +941,6 @@ msgstr "போச்ட்ரோசெசிங்"
 #, fuzzy
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."
-
-#, fuzzy
-#~ msgid "yt-dlp Discovery Arguments"
-#~ msgstr "பிந்தைய செயலி உரையாடல்"
-
-#, fuzzy
-#~ msgid "yt-dlp Download Arguments"
-#~ msgstr "மீண்டும் பதிவிறக்கவும்"
 
 #~ msgid "Converter"
 #~ msgstr "மாற்றி"
@@ -829,10 +1084,6 @@ msgstr "போச்ட்ரோசெசிங்"
 #~ "Are you sure you want to clear all download history? This action is "
 #~ "irreversible"
 #~ msgstr "இந்த நற்சான்றிதழை நீக்க விரும்புகிறீர்களா?"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "தெளிவாக்கு"
 
 #~ msgid "Download Again"
 #~ msgstr "மீண்டும் பதிவிறக்கவும்"
@@ -1025,67 +1276,11 @@ msgstr "போச்ட்ரோசெசிங்"
 #~ msgid "Unable to download and install the yt-dlp update"
 #~ msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
 
-#~ msgid "Any"
-#~ msgstr "ஏதேனும்"
-
 #~ msgid "FLAC (ALAC)"
 #~ msgstr "Flac (alac)"
 
 #~ msgid "WAV (AIFF)"
 #~ msgstr "WAV (AIFF)"
-
-#~ msgid "Firefox"
-#~ msgstr "பயர்பாக்ச்"
-
-#~ msgid "Brave"
-#~ msgstr "தைரியமான"
-
-#~ msgid "Chrome"
-#~ msgstr "குரோம்"
-
-#~ msgid "Chromium"
-#~ msgstr "நீலிரும்பு, குருமம்"
-
-#~ msgid "Edge"
-#~ msgstr "விளிம்பு"
-
-#~ msgid "Opera"
-#~ msgstr "ஓபரா"
-
-#~ msgid "Vivaldi"
-#~ msgstr "விவால்டி"
-
-#~ msgid "Whale"
-#~ msgstr "திமிங்கலம்"
-
-#~ msgid "Never"
-#~ msgstr "ஒருபோதும்"
-
-#, fuzzy
-#~ msgid "1 Day"
-#~ msgstr "ஒரு நாள்"
-
-#, fuzzy
-#~ msgid "1 Week"
-#~ msgstr "ஒரு வாரம்"
-
-#, fuzzy
-#~ msgid "1 Month"
-#~ msgstr "ஒரு மாதம்"
-
-#, fuzzy
-#~ msgid "3 Months"
-#~ msgstr "ஒரு மாதம்"
-
-#, fuzzy
-#~ msgid "6 Months"
-#~ msgstr "ஒரு மாதம்"
-
-#~ msgid "Forever"
-#~ msgstr "என்றென்றும்"
-
-#~ msgid "H.264 (AVC)"
-#~ msgstr "H.264 (பக்கவாதம்)"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
@@ -1242,10 +1437,6 @@ msgstr "போச்ட்ரோசெசிங்"
 #, fuzzy
 #~ msgid "On"
 #~ msgstr "கோப்பைத் திறக்கவும்"
-
-#, fuzzy
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "இயங்கும் பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
 
 #~ msgid "Speed Limit"
 #~ msgstr "வேக வரம்பு"
@@ -1675,20 +1866,6 @@ msgstr "போச்ட்ரோசெசிங்"
 #~ msgstr "பரபோலிக் அதன் இயல்புநிலை தலைப்பில் ஒரு ஊடகத்தின் ஐடியை உள்ளடக்கும்."
 
 #~ msgid ""
-#~ "The video codec Parabolic should prefer when parsing media formats to "
-#~ "download."
-#~ msgstr ""
-#~ "வீடியோ கோடெக் பரபோலிக் பதிவிறக்கம் செய்ய ஊடக வடிவங்களை பாகுபடுத்தும்போது விரும்ப "
-#~ "வேண்டும்."
-
-#~ msgid ""
-#~ "The audio codec Parabolic should prefer when parsing media formats to "
-#~ "download."
-#~ msgstr ""
-#~ "பதிவிறக்கம் செய்ய ஊடக வடிவங்களை பாகுபடுத்தும்போது ஆடியோ கோடெக் பரவளைய விரும்ப "
-#~ "வேண்டும்."
-
-#~ msgid ""
 #~ "The file format Parabolic should ensure all subtitles are downloaded as."
 #~ msgstr ""
 #~ "கோப்பு வடிவம் பரபோலிக் அனைத்து வசன வரிகளும் பதிவிறக்கம் செய்யப்படுவதை உறுதி செய்ய "
@@ -1791,10 +1968,6 @@ msgstr "போச்ட்ரோசெசிங்"
 
 #~ msgid "Past Downloads"
 #~ msgstr "கடந்த பதிவிறக்கங்கள்"
-
-#, fuzzy
-#~ msgid "No Download History"
-#~ msgstr "வரலாற்று நீளத்தைப் பதிவிறக்கவும்"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "பதிவிறக்கங்கள் முடிந்தது"

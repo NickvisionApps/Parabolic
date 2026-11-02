@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 21:02-0500\n"
+"POT-Creation-Date: 2026-11-01 21:45-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,7 @@ msgid "Worst"
 msgstr "Najhorší"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1002
 msgid "None"
 msgstr "Žiadny"
 
@@ -199,92 +200,427 @@ msgstr "Diskusie"
 msgid "OK"
 msgstr "OK"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:27
-#: org.nickvision.tubeconverter.macos/src/settings.mm:346
-#: org.nickvision.tubeconverter.macos/src/settings.mm:347
+#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1339
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1340
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Všeobecné"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
 msgid "Theme"
 msgstr "Motív"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:37
+#: org.nickvision.tubeconverter.macos/src/settings.mm:41
 msgctxt "Theme"
 msgid "Light"
 msgstr "Svetlý"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings.mm:42
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Tmavý"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings.mm:43
 msgctxt "Theme"
 msgid "System"
 msgstr "Systémový"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
 msgid "Translation Language"
 msgstr "Jazyk prekladu"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#: org.nickvision.tubeconverter.macos/src/settings.mm:61
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "Systémový"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings.mm:96
+#, fuzzy
+msgid "An application restart is required for a change to take effect."
+msgstr "Vyžaduje reštart aplikácie aby sa zmena prejavila"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:104
 msgid "Automatically Check for Updates"
 msgstr "Automatická kontrola aktualizácií"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:101
+#: org.nickvision.tubeconverter.macos/src/settings.mm:113
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "Prijímať aktualizácie beta verzie"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:195
-#: org.nickvision.tubeconverter.macos/src/settings.mm:352
-#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:124
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Aktualizovať závislosti, ako napríklad yt-dlp, na beta verzie"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:230
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1345
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1346
 #, fuzzy
 msgctxt "Settings"
 msgid "History"
 msgstr "História"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:210
-#: org.nickvision.tubeconverter.macos/src/settings.mm:358
-#: org.nickvision.tubeconverter.macos/src/settings.mm:359
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Žiadna história sťahovania"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:240
+msgid "Never"
+msgstr "Nikdy"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:241
+msgid "1 Day"
+msgstr "1 deň"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:242
+msgid "1 Week"
+msgstr "1 týždeň"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+msgid "1 Month"
+msgstr "1 mesiac"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:244
+msgid "3 Months"
+msgstr "3 mesiace"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:245
+msgid "6 Months"
+msgstr "6 mesiacov"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:246
+msgid "1 Year"
+msgstr "1 rok"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:247
+msgid "Forever"
+msgstr "Navždy"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:307
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1351
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1352
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "Stiahnutia"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:225
-#: org.nickvision.tubeconverter.macos/src/settings.mm:364
-#: org.nickvision.tubeconverter.macos/src/settings.mm:365
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Maximálny počet aktívnych sťahovaní"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:336
+msgid "Overwrite Existing Files"
+msgstr "Prepísať existujúce súbory"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:345
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "Argumenty sťahovania yt-dlp"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:459
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1357
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1358
 #, fuzzy
 msgctxt "Settings"
 msgid "Discovery"
 msgstr "Nájsť"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:240
-#: org.nickvision.tubeconverter.macos/src/settings.mm:370
-#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#: org.nickvision.tubeconverter.macos/src/settings.mm:462
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Zahrnúť automaticky generované titulky"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:471
+msgid "Include Media Id in Title"
+msgstr "Zahrnúť ID média do názvu"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:480
+#, fuzzy
+msgid "Add the media's id to its default title."
+msgstr "Pridať ID média k jeho predvolenému názvu"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:487
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Zahrnúť formáty s vysokým rozlíšením"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:496
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:504
+msgid "Limit Filename Characters"
+msgstr "Obmedziť znaky názvu súboru"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:513
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Obmedziť znaky v názvoch súborov na tie, ktoré sú podporované iba systémom "
+"Windows"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+msgid "Preferred Audio Codec"
+msgstr "Uprednostňovaný audio kodek"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:528
+#: org.nickvision.tubeconverter.macos/src/settings.mm:560
+#: org.nickvision.tubeconverter.macos/src/settings.mm:590
+#: org.nickvision.tubeconverter.macos/src/settings.mm:620
+msgid "Any"
+msgstr "Akýkoľvek"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:529
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:530
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:531
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:532
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:533
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:534
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:545
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+"Uprednostniť tento kodek pri analýze audio formátov na zobrazenie dostupných "
+"na stiahnutie"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+msgid "Preferred Video Codec"
+msgstr "Uprednostňovaný video kodek"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:561
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:562
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:563
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:564
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:575
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+"Uprednostniť tento kodek pri analýze video formátov na zobrazenie dostupných "
+"na stiahnutie"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+msgid "Preferred Subtitle Format"
+msgstr "Uprednostňovaný formát tituliek"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:591
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:592
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:593
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:594
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:606
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "Uprednostniť tento formát titulkov pri sťahovaní"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+msgid "Preferred Frame Rate"
+msgstr "Uprednostňovaná snímková frekvencia"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:621
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:622
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:623
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:634
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+"Pri analýze formátov videa uprednostniť túto snímkovú frekvenciu, aby sa "
+"zobrazili dostupné na stiahnutie"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "Argumenty vyhľadávania yt-dlp"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:892
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1364
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:255
-#: org.nickvision.tubeconverter.macos/src/settings.mm:376
-#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:895
+msgid "Use Part Files"
+msgstr "Použiť čiastkové súbory"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:904
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Stiahnuť médiá do samostatných .part súborov namiesto priameho uloženia do "
+"výstupného súboru"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:912
+msgid "Use SponsorBlock for YouTube"
+msgstr "Použiť SponsorBlock pre YouTube"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:921
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Pokúsiť sa odstrániť sponzorované segmenty z videí"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:928
+msgid "Translate Metadata and Chapters"
+msgstr "Preložiť metadáta a kapitoly"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:937
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Automaticky preložiť vložené metadáta a kapitoly do jazyka aplikácie na "
+"podporovaných stránkach a médiách"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:946
+msgid "Limit Download Speed"
+msgstr "Obmedziť rýchlosť sťahovania"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+msgid "Speed Limit (KiB/s)"
+msgstr "Obmedzenie rýchlosti (KiB/s)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+msgid "Proxy URL"
+msgstr "URL adresa proxy servera"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "Súbor cookie z prehliadača"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1003
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1004
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1005
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1006
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1007
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1008
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1009
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1010
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
+msgid "Cookies File"
+msgstr "Súbor s cookie"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1033
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1038
+msgid "Clear"
+msgstr "Vyčistiť"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1252
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1369
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1370
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -563,12 +899,6 @@ msgstr "Následné spracovanie"
 #~ msgid "User Interface"
 #~ msgstr "Používateľské rozhranie"
 
-#~ msgid "An application restart is required for a change to take effect"
-#~ msgstr "Vyžaduje reštart aplikácie aby sa zmena prejavila"
-
-#~ msgid "Update dependencies, such as yt-dlp, to beta versions"
-#~ msgstr "Aktualizovať závislosti, ako napríklad yt-dlp, na beta verzie"
-
 #~ msgid "Prevent Suspend"
 #~ msgstr "Zabrániť uspaniu"
 
@@ -584,35 +914,12 @@ msgstr "Následné spracovanie"
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Maximálny počet prebiehajúcich sťahovaní"
 
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Prepísať existujúce súbory"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Obmedziť znaky názvu súboru"
-
-#~ msgid "Restrict characters in filenames to those supported only by Windows"
-#~ msgstr ""
-#~ "Obmedziť znaky v názvoch súborov na tie, ktoré sú podporované iba "
-#~ "systémom Windows"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Zahrnúť ID média do názvu"
-
-#~ msgid "Add the media's id to its default title"
-#~ msgstr "Pridať ID média k jeho predvolenému názvu"
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "Zahrnúť automaticky generované titulky"
-
 #~ msgid ""
 #~ "Show auto-generated subtitles to download in addition to available "
 #~ "subtitles"
 #~ msgstr ""
 #~ "Zobraziť automaticky vygenerované titulky na stiahnutie spolu s "
 #~ "dostupnými titulkami"
-
-#~ msgid "Include Super Resolution Formats"
-#~ msgstr "Zahrnúť formáty s vysokým rozlíšením"
 
 #~ msgid ""
 #~ "Show super (AI-scaled) resolution formats to download in addition to "
@@ -621,79 +928,14 @@ msgstr "Následné spracovanie"
 #~ "Zobraziť na stiahnutie aj formáty s vysokým rozlíšením (škálované umelou "
 #~ "inteligenciou) okrem bežných formátov"
 
-#~ msgid "Preferred Video Codec"
-#~ msgstr "Uprednostňovaný video kodek"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing video formats to show available to download"
-#~ msgstr ""
-#~ "Uprednostniť tento kodek pri analýze video formátov na zobrazenie "
-#~ "dostupných na stiahnutie"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "Uprednostňovaný audio kodek"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing audio formats to show available to download"
-#~ msgstr ""
-#~ "Uprednostniť tento kodek pri analýze audio formátov na zobrazenie "
-#~ "dostupných na stiahnutie"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "Uprednostňovaný formát tituliek"
-
-#~ msgid "Prefer this subtitle file format when downloading"
-#~ msgstr "Uprednostniť tento formát titulkov pri sťahovaní"
-
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "Uprednostňovaná snímková frekvencia"
-
-#~ msgid ""
-#~ "Prefer this frame rate when parsing video formats to show available to "
-#~ "download"
-#~ msgstr ""
-#~ "Pri analýze formátov videa uprednostniť túto snímkovú frekvenciu, aby sa "
-#~ "zobrazili dostupné na stiahnutie"
-
 #~ msgid "Downloader"
 #~ msgstr "Sťahovač"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Použiť čiastkové súbory"
-
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file"
-#~ msgstr ""
-#~ "Stiahnuť médiá do samostatných .part súborov namiesto priameho uloženia "
-#~ "do výstupného súboru"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Použiť SponsorBlock pre YouTube"
-
-#~ msgid "Try to remove sponsored segments from videos"
-#~ msgstr "Pokúsiť sa odstrániť sponzorované segmenty z videí"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Obmedziť rýchlosť sťahovania"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Obmedzenie rýchlosti (KiB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "URL adresa proxy servera"
-
-#~ msgid "Cookies File"
-#~ msgstr "Súbor s cookie"
 
 #~ msgid "Select Cookies File"
 #~ msgstr "Vybrať súbor Cookie"
 
 #~ msgid "Clear Cookies File"
 #~ msgstr "Vyčistiť súbor Cookie"
-
-#~ msgid "Cookies from Browser"
-#~ msgstr "Súbor cookie z prehliadača"
 
 #~ msgid "aria2c"
 #~ msgstr "aria2c"
@@ -720,24 +962,8 @@ msgstr "Následné spracovanie"
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "Špecifikujte ďalšie argumenty, ktoré sa majú odovzdať yt-dlp"
 
-#~ msgid "yt-dlp Discovery Arguments"
-#~ msgstr "Argumenty vyhľadávania yt-dlp"
-
-#~ msgid "yt-dlp Download Arguments"
-#~ msgstr "Argumenty sťahovania yt-dlp"
-
 #~ msgid "Converter"
 #~ msgstr "Konvertor"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Preložiť metadáta a kapitoly"
-
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters to the app's "
-#~ "language on supported sites and media"
-#~ msgstr ""
-#~ "Automaticky preložiť vložené metadáta a kapitoly do jazyka aplikácie na "
-#~ "podporovaných stránkach a médiách"
 
 #~ msgid "Embed Metadata"
 #~ msgstr "Vložiť metaúdaje"
@@ -878,9 +1104,6 @@ msgstr "Následné spracovanie"
 #~ msgstr ""
 #~ "Naozaj chcete vyčistiť celú históriu stiahnutých súborov? Táto akcia je "
 #~ "nevratná"
-
-#~ msgid "Clear"
-#~ msgstr "Vyčistiť"
 
 #~ msgid "Cancel"
 #~ msgstr "Zrušiť"
@@ -1126,65 +1349,11 @@ msgstr "Následné spracovanie"
 #~ msgid "Unable to download and install the yt-dlp update"
 #~ msgstr "Nie je možné stiahnuť a nainštalovať aktualizáciu yt-dlp"
 
-#~ msgid "Any"
-#~ msgstr "Akýkoľvek"
-
 #~ msgid "FLAC (ALAC)"
 #~ msgstr "FLAC (ALAC)"
 
 #~ msgid "WAV (AIFF)"
 #~ msgstr "WAV (AIFF)"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Never"
-#~ msgstr "Nikdy"
-
-#~ msgid "1 Day"
-#~ msgstr "1 deň"
-
-#~ msgid "1 Week"
-#~ msgstr "1 týždeň"
-
-#~ msgid "1 Month"
-#~ msgstr "1 mesiac"
-
-#~ msgid "3 Months"
-#~ msgstr "3 mesiace"
-
-#~ msgid "6 Months"
-#~ msgstr "6 mesiacov"
-
-#~ msgid "1 Year"
-#~ msgstr "1 rok"
-
-#~ msgid "Forever"
-#~ msgstr "Navždy"
-
-#~ msgid "H.264 (AVC)"
-#~ msgstr "H.264 (AVC)"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
@@ -1386,9 +1555,6 @@ msgstr "Následné spracovanie"
 
 #~ msgid "Off"
 #~ msgstr "Vypnuté"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "Maximálny počet aktívnych sťahovaní"
 
 #~ msgid "Speed Limit"
 #~ msgstr "Obmedzenie rýchlosti"
@@ -2024,9 +2190,6 @@ msgstr "Následné spracovanie"
 
 #~ msgid "Past Downloads"
 #~ msgstr "Minulé sťahovania"
-
-#~ msgid "No Download History"
-#~ msgstr "Žiadna história sťahovania"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "Sťahovania dokončené"

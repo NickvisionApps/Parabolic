@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 21:02-0500\n"
+"POT-Creation-Date: 2026-11-01 21:45-0500\n"
 "PO-Revision-Date: 2026-02-06 14:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,7 @@ msgid "Worst"
 msgstr "চলনশই"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1002
 #, fuzzy
 msgid "None"
 msgstr "কোনোটিই নয়"
@@ -203,93 +204,403 @@ msgstr "আলোচনা"
 msgid "OK"
 msgstr "ঠিক আছে"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:27
-#: org.nickvision.tubeconverter.macos/src/settings.mm:346
-#: org.nickvision.tubeconverter.macos/src/settings.mm:347
+#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1339
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1340
 msgctxt "Settings"
 msgid "General"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
 msgid "Theme"
 msgstr "রঙের ধরণ"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:37
+#: org.nickvision.tubeconverter.macos/src/settings.mm:41
 #, fuzzy
 msgctxt "Theme"
 msgid "Light"
 msgstr "শুভ্র"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings.mm:42
 #, fuzzy
 msgctxt "Theme"
 msgid "Dark"
 msgstr "গাঢ়"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings.mm:43
 #, fuzzy
 msgctxt "Theme"
 msgid "System"
 msgstr "সিস্টেমের"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
 #, fuzzy
 msgid "Translation Language"
 msgstr "শব্দের ভাষা"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#: org.nickvision.tubeconverter.macos/src/settings.mm:61
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "সিস্টেমের"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings.mm:96
+msgid "An application restart is required for a change to take effect."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:104
 msgid "Automatically Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:101
+#: org.nickvision.tubeconverter.macos/src/settings.mm:113
 msgid "Allow Preview Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:195
-#: org.nickvision.tubeconverter.macos/src/settings.mm:352
-#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:124
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:230
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1345
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1346
 #, fuzzy
 msgctxt "Settings"
 msgid "History"
 msgstr "অধঃগৃহীত হচ্ছে"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:210
-#: org.nickvision.tubeconverter.macos/src/settings.mm:358
-#: org.nickvision.tubeconverter.macos/src/settings.mm:359
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "অধঃগৃহীত হচ্ছে"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:240
+msgid "Never"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:241
+msgid "1 Day"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:242
+msgid "1 Week"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+msgid "1 Month"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:244
+msgid "3 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:245
+msgid "6 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:246
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:247
+msgid "Forever"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:307
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1351
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1352
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "অধঃগ্রহণাদি"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:225
-#: org.nickvision.tubeconverter.macos/src/settings.mm:364
-#: org.nickvision.tubeconverter.macos/src/settings.mm:365
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "অধঃগ্রহণাদি থামান ও বন্ধ করুন?"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:336
+msgid "Overwrite Existing Files"
+msgstr "পূর্বস্থিত তথ্যের পুনর্লিখন"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:345
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "অধঃগৃহীত হচ্ছে"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:459
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1357
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1358
 msgctxt "Settings"
 msgid "Discovery"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:240
-#: org.nickvision.tubeconverter.macos/src/settings.mm:370
-#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#: org.nickvision.tubeconverter.macos/src/settings.mm:462
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "উপশীর্ষকের অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:471
+msgid "Include Media Id in Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:480
+msgid "Add the media's id to its default title."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:487
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:496
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:504
+msgid "Limit Filename Characters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:513
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+msgid "Preferred Audio Codec"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:528
+#: org.nickvision.tubeconverter.macos/src/settings.mm:560
+#: org.nickvision.tubeconverter.macos/src/settings.mm:590
+#: org.nickvision.tubeconverter.macos/src/settings.mm:620
+msgid "Any"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:529
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:530
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:531
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:532
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:533
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:534
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:545
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+msgid "Preferred Video Codec"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:561
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:562
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:563
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:564
+msgid "H.264"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:575
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+msgid "Preferred Subtitle Format"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:591
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:592
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:593
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:594
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:606
+msgid "Prefer this subtitle file format for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+msgid "Preferred Frame Rate"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:621
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:622
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:623
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:634
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "ক্রিয়ান্বয়ন..।"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:892
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1364
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:255
-#: org.nickvision.tubeconverter.macos/src/settings.mm:376
-#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:895
+msgid "Use Part Files"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:904
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:912
+msgid "Use SponsorBlock for YouTube"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:921
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:928
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:937
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:946
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+msgid "Speed Limit (KiB/s)"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+msgid "Proxy URL"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "কুকিসের তথ্যপথ বেছে নিন"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1003
+msgid "Brave"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1004
+msgid "Chrome"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1005
+msgid "Chromium"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1006
+msgid "Edge"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1007
+msgid "Firefox"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1008
+msgid "Opera"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1009
+msgid "Vivaldi"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1010
+msgid "Whale"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
+#, fuzzy
+msgid "Cookies File"
+msgstr "কুকিসের তথ্যপথ বেছে নিন"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1033
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1038
+#, fuzzy
+msgid "Clear"
+msgstr "অধঃগ্রহণ থামান"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1252
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1369
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1370
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -508,10 +819,6 @@ msgstr "ক্রিয়ান্বয়ন..।"
 #~ msgstr "ব্যবহারকারীর দৃষ্টিতে"
 
 #, fuzzy
-#~ msgid "Download History Length"
-#~ msgstr "অধঃগৃহীত হচ্ছে"
-
-#, fuzzy
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr "অধঃগ্রহণ সমাপ্ত"
 
@@ -519,24 +826,9 @@ msgstr "ক্রিয়ান্বয়ন..।"
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "অধঃগ্রহণাদি থামান ও বন্ধ করুন?"
 
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "পূর্বস্থিত তথ্যের পুনর্লিখন"
-
-#, fuzzy
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "উপশীর্ষকের অধঃগ্রহণ"
-
 #, fuzzy
 #~ msgid "Downloader"
 #~ msgstr "অধঃগ্রহণ"
-
-#, fuzzy
-#~ msgid "Limit Download Speed"
-#~ msgstr "অধঃগ্রহণ"
-
-#, fuzzy
-#~ msgid "Cookies File"
-#~ msgstr "কুকিসের তথ্যপথ বেছে নিন"
 
 #~ msgid "Select Cookies File"
 #~ msgstr "কুকিসের তথ্যপথ বেছে নিন"
@@ -544,14 +836,6 @@ msgstr "ক্রিয়ান্বয়ন..।"
 #, fuzzy
 #~ msgid "Clear Cookies File"
 #~ msgstr "কুকিসের তথ্যপথ বেছে নিন"
-
-#, fuzzy
-#~ msgid "yt-dlp Discovery Arguments"
-#~ msgstr "ক্রিয়ান্বয়ন..।"
-
-#, fuzzy
-#~ msgid "yt-dlp Download Arguments"
-#~ msgstr "অধঃগৃহীত হচ্ছে"
 
 #~ msgid "Converter"
 #~ msgstr "পরিবর্তক"
@@ -630,10 +914,6 @@ msgstr "ক্রিয়ান্বয়ন..।"
 #, fuzzy
 #~ msgid "No Subtitles Available"
 #~ msgstr "শব্দের ভাষা"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "অধঃগ্রহণ থামান"
 
 #~ msgid "Cancel"
 #~ msgstr "বাতিল"
@@ -851,14 +1131,6 @@ msgstr "ক্রিয়ান্বয়ন..।"
 #, fuzzy
 #~ msgid "On"
 #~ msgstr "উদঘাটন"
-
-#, fuzzy
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "অধঃগ্রহণাদি থামান ও বন্ধ করুন?"
-
-#, fuzzy
-#~ msgid "Cookies from File"
-#~ msgstr "কুকিসের তথ্যপথ বেছে নিন"
 
 #, fuzzy
 #~ msgid "Enter args here"

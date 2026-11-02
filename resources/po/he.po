@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 21:02-0500\n"
+"POT-Creation-Date: 2026-11-01 21:45-0500\n"
 "PO-Revision-Date: 2026-05-03 08:09+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,7 @@ msgid "Worst"
 msgstr "הנמוכה ביותר"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1002
 msgid "None"
 msgstr "ללא"
 
@@ -200,92 +201,417 @@ msgstr "פורום דיונים"
 msgid "OK"
 msgstr "אישור"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:27
-#: org.nickvision.tubeconverter.macos/src/settings.mm:346
-#: org.nickvision.tubeconverter.macos/src/settings.mm:347
+#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1339
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1340
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "כללי"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
 msgid "Theme"
 msgstr "ערכת נושא"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:37
+#: org.nickvision.tubeconverter.macos/src/settings.mm:41
 msgctxt "Theme"
 msgid "Light"
 msgstr "בהיר"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings.mm:42
 msgctxt "Theme"
 msgid "Dark"
 msgstr "כהה"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings.mm:43
 msgctxt "Theme"
 msgid "System"
 msgstr "מערכת"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
 msgid "Translation Language"
 msgstr "שפת תרגום"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#: org.nickvision.tubeconverter.macos/src/settings.mm:61
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "מערכת"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings.mm:96
+#, fuzzy
+msgid "An application restart is required for a change to take effect."
+msgstr "נדרשת הפעלה מחדש של היישום כדי שהשינויים ייכנסו לתוקף"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:104
 msgid "Automatically Check for Updates"
 msgstr "בדיקת עדכונים אוטומטית"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:101
+#: org.nickvision.tubeconverter.macos/src/settings.mm:113
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "קבל עדכוני גרסאות beta"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:195
-#: org.nickvision.tubeconverter.macos/src/settings.mm:352
-#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:124
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "עדכן תלויות, כגון yt-dlp, לגרסאות בטא"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:230
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1345
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1346
 #, fuzzy
 msgctxt "Settings"
 msgid "History"
 msgstr "היסטוריה"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:210
-#: org.nickvision.tubeconverter.macos/src/settings.mm:358
-#: org.nickvision.tubeconverter.macos/src/settings.mm:359
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "זמן היסטוריית הורדות"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:240
+msgid "Never"
+msgstr "אף פעם"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:241
+msgid "1 Day"
+msgstr "יום אחד"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:242
+msgid "1 Week"
+msgstr "שבוע אחד"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+msgid "1 Month"
+msgstr "חודש אחד"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:244
+msgid "3 Months"
+msgstr "3 חודשים"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:245
+msgid "6 Months"
+msgstr "6 חודשים"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:246
+msgid "1 Year"
+msgstr "שנה אחת"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:247
+msgid "Forever"
+msgstr "לתמיד"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:307
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1351
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1352
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "הורדות"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:225
-#: org.nickvision.tubeconverter.macos/src/settings.mm:364
-#: org.nickvision.tubeconverter.macos/src/settings.mm:365
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "מספר מרבי של הורדות במקביל"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:336
+msgid "Overwrite Existing Files"
+msgstr "דרוס קבצים קיימים"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:345
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "פרמטרים להורדה ב-yt-dlp"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:459
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1357
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1358
 #, fuzzy
 msgctxt "Settings"
 msgid "Discovery"
 msgstr "טעינה"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:240
-#: org.nickvision.tubeconverter.macos/src/settings.mm:370
-#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#: org.nickvision.tubeconverter.macos/src/settings.mm:462
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "כלול כתוביות אוטומטיות"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:471
+msgid "Include Media Id in Title"
+msgstr "הוספת מזהה וידאו לכותרת"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:480
+#, fuzzy
+msgid "Add the media's id to its default title."
+msgstr "הוספת הקידוד הייחודי של הסרטון לשם הקובץ"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:487
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "לכלול תסדירי רזולוציות על"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:496
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:504
+msgid "Limit Filename Characters"
+msgstr "הגבל תווים בשם קובץ"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:513
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "הגבל את התווים בשמות הקבצים רק לתווים הנתמכים ב־Windows"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+msgid "Preferred Audio Codec"
+msgstr "מפענח שמע מועדף"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:528
+#: org.nickvision.tubeconverter.macos/src/settings.mm:560
+#: org.nickvision.tubeconverter.macos/src/settings.mm:590
+#: org.nickvision.tubeconverter.macos/src/settings.mm:620
+msgid "Any"
+msgstr "כלשהו"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:529
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:530
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:531
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:532
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:533
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:534
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:545
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr "העדפת מפענח זה בעת פיענוח סוגי שמע כדי להציג את הזמינות להורדה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+msgid "Preferred Video Codec"
+msgstr "מקודד וידאו מועדף"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:561
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:562
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:563
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:564
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:575
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr "העדפת מפענח זה בעת טעינת סוגי וידאו זמינים להורדה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+msgid "Preferred Subtitle Format"
+msgstr "תסדיר כתוביות מועדף"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:591
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:592
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:593
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:594
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:606
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "העדפת תסדיר כתוביות זה בזמן ההורדה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+msgid "Preferred Frame Rate"
+msgstr "קצב תמוניות מועדף"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:621
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} תמוניות לשנייה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:622
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} תמוניות לשנייה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:623
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} תמוניות לשנייה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:634
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr "העדפת קצב התמוניות הזה בעת פיענוח סוגי וידאו להצגה שזמינים להורדה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "פרמטרים לטעינה של yt-dlp"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:892
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1364
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:255
-#: org.nickvision.tubeconverter.macos/src/settings.mm:376
-#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:895
+msgid "Use Part Files"
+msgstr "שימוש בקובצי חלקים (‎.part)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:904
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"להוריד את המדיה כקבצים חלקיים זמניים (‎.part) נפרדים במקום לכתוב ישירות לקובץ "
+"הפלט"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:912
+msgid "Use SponsorBlock for YouTube"
+msgstr "להשתמש ב־SponsorBlock עבור YouTube"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:921
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "ניסיון להסרת קטעי פרסומות וחסויות מהסרטונים"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:928
+msgid "Translate Metadata and Chapters"
+msgstr "תרגום נתוני על ומקטעים"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:937
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr "לתרגם את נתוני העל והמקטעים אוטומטית לשפת היישומון באתרים ומדיה נתמכים"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:946
+msgid "Limit Download Speed"
+msgstr "הגבלת מהירות ההורדה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+msgid "Speed Limit (KiB/s)"
+msgstr "מגבלת מהירות (KiB/s)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+msgid "Proxy URL"
+msgstr "כתובת שרת Proxy"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "קובצי Cookie מהדפדפן"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1003
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1004
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1005
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1006
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1007
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1008
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1009
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1010
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
+msgid "Cookies File"
+msgstr "קובץ קובצי Cookie"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1033
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1038
+msgid "Clear"
+msgstr "נקה"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1252
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1369
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1370
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -567,12 +893,6 @@ msgstr "בתהליך"
 #~ msgid "User Interface"
 #~ msgstr "ממשק משתמש"
 
-#~ msgid "An application restart is required for a change to take effect"
-#~ msgstr "נדרשת הפעלה מחדש של היישום כדי שהשינויים ייכנסו לתוקף"
-
-#~ msgid "Update dependencies, such as yt-dlp, to beta versions"
-#~ msgstr "עדכן תלויות, כגון yt-dlp, לגרסאות בטא"
-
 #~ msgid "Prevent Suspend"
 #~ msgstr "מניעת מצב שינה"
 
@@ -588,31 +908,10 @@ msgstr "בתהליך"
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "מספר מרבי של הורדות פעילות במקביל"
 
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "דרוס קבצים קיימים"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "הגבל תווים בשם קובץ"
-
-#~ msgid "Restrict characters in filenames to those supported only by Windows"
-#~ msgstr "הגבל את התווים בשמות הקבצים רק לתווים הנתמכים ב־Windows"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "הוספת מזהה וידאו לכותרת"
-
-#~ msgid "Add the media's id to its default title"
-#~ msgstr "הוספת הקידוד הייחודי של הסרטון לשם הקובץ"
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "כלול כתוביות אוטומטיות"
-
 #~ msgid ""
 #~ "Show auto-generated subtitles to download in addition to available "
 #~ "subtitles"
 #~ msgstr "הצג כתוביות שנוצרו אוטומטית בנוסף לכתוביות הקיימות"
-
-#~ msgid "Include Super Resolution Formats"
-#~ msgstr "לכלול תסדירי רזולוציות על"
 
 #~ msgid ""
 #~ "Show super (AI-scaled) resolution formats to download in addition to "
@@ -621,73 +920,14 @@ msgstr "בתהליך"
 #~ "להציג רזולוציות על (קנה מידה מתואם עם בינה מלאכותית) להורדה בנוסף "
 #~ "לתסדירים הרגילים"
 
-#~ msgid "Preferred Video Codec"
-#~ msgstr "מקודד וידאו מועדף"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing video formats to show available to download"
-#~ msgstr "העדפת מפענח זה בעת טעינת סוגי וידאו זמינים להורדה"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "מפענח שמע מועדף"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing audio formats to show available to download"
-#~ msgstr "העדפת מפענח זה בעת פיענוח סוגי שמע כדי להציג את הזמינות להורדה"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "תסדיר כתוביות מועדף"
-
-#~ msgid "Prefer this subtitle file format when downloading"
-#~ msgstr "העדפת תסדיר כתוביות זה בזמן ההורדה"
-
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "קצב תמוניות מועדף"
-
-#~ msgid ""
-#~ "Prefer this frame rate when parsing video formats to show available to "
-#~ "download"
-#~ msgstr "העדפת קצב התמוניות הזה בעת פיענוח סוגי וידאו להצגה שזמינים להורדה"
-
 #~ msgid "Downloader"
 #~ msgstr "מוריד"
-
-#~ msgid "Use Part Files"
-#~ msgstr "שימוש בקובצי חלקים (‎.part)"
-
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file"
-#~ msgstr ""
-#~ "להוריד את המדיה כקבצים חלקיים זמניים (‎.part) נפרדים במקום לכתוב ישירות "
-#~ "לקובץ הפלט"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "להשתמש ב־SponsorBlock עבור YouTube"
-
-#~ msgid "Try to remove sponsored segments from videos"
-#~ msgstr "ניסיון להסרת קטעי פרסומות וחסויות מהסרטונים"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "הגבלת מהירות ההורדה"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "מגבלת מהירות (KiB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "כתובת שרת Proxy"
-
-#~ msgid "Cookies File"
-#~ msgstr "קובץ קובצי Cookie"
 
 #~ msgid "Select Cookies File"
 #~ msgstr "בחירת קובץ קובצי Cookie"
 
 #~ msgid "Clear Cookies File"
 #~ msgstr "נקה קובץ קובצי Cookie"
-
-#~ msgid "Cookies from Browser"
-#~ msgstr "קובצי Cookie מהדפדפן"
 
 #~ msgid "aria2c"
 #~ msgstr "aria2c"
@@ -712,23 +952,8 @@ msgstr "בתהליך"
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "ציון פרמטרים נוספים להעברה ל־yt-dlp"
 
-#~ msgid "yt-dlp Discovery Arguments"
-#~ msgstr "פרמטרים לטעינה של yt-dlp"
-
-#~ msgid "yt-dlp Download Arguments"
-#~ msgstr "פרמטרים להורדה ב-yt-dlp"
-
 #~ msgid "Converter"
 #~ msgstr "ממיר"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "תרגום נתוני על ומקטעים"
-
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters to the app's "
-#~ "language on supported sites and media"
-#~ msgstr ""
-#~ "לתרגם את נתוני העל והמקטעים אוטומטית לשפת היישומון באתרים ומדיה נתמכים"
 
 #~ msgid "Embed Metadata"
 #~ msgstr "הטמעת מטא-דאטה"
@@ -864,9 +1089,6 @@ msgstr "בתהליך"
 #~ msgstr ""
 #~ "האם אתה בטוח שברצונך לנקות את כל היסטוריית ההורדות? פעולה זו הינה בלתי "
 #~ "הפיכה"
-
-#~ msgid "Clear"
-#~ msgstr "נקה"
 
 #~ msgid "Cancel"
 #~ msgstr "ביטול"
@@ -1108,65 +1330,11 @@ msgstr "בתהליך"
 #~ msgid "Unable to download and install the yt-dlp update"
 #~ msgstr "לא ניתן להוריד ולהתקין את עדכון yt-dlp"
 
-#~ msgid "Any"
-#~ msgstr "כלשהו"
-
 #~ msgid "FLAC (ALAC)"
 #~ msgstr "FLAC (ALAC)"
 
 #~ msgid "WAV (AIFF)"
 #~ msgstr "WAV (AIFF)"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Never"
-#~ msgstr "אף פעם"
-
-#~ msgid "1 Day"
-#~ msgstr "יום אחד"
-
-#~ msgid "1 Week"
-#~ msgstr "שבוע אחד"
-
-#~ msgid "1 Month"
-#~ msgstr "חודש אחד"
-
-#~ msgid "3 Months"
-#~ msgstr "3 חודשים"
-
-#~ msgid "6 Months"
-#~ msgstr "6 חודשים"
-
-#~ msgid "1 Year"
-#~ msgstr "שנה אחת"
-
-#~ msgid "Forever"
-#~ msgstr "לתמיד"
-
-#~ msgid "H.264 (AVC)"
-#~ msgstr "H.264 (AVC)"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
@@ -1363,9 +1531,6 @@ msgstr "בתהליך"
 
 #~ msgid "Off"
 #~ msgstr "כבוי"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "מספר מרבי של הורדות במקביל"
 
 #~ msgid "Speed Limit"
 #~ msgstr "הגבלת מהירות"
@@ -1868,10 +2033,6 @@ msgstr "בתהליך"
 
 #~ msgid "Past Downloads"
 #~ msgstr "הורדות קודמות"
-
-#, fuzzy
-#~ msgid "No Download History"
-#~ msgstr "זמן היסטוריית הורדות"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "הסתיימות הורדות"

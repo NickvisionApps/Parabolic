@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2026.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 21:02-0500\n"
+"POT-Creation-Date: 2026-11-01 21:45-0500\n"
 "PO-Revision-Date: 2026-04-09 17:09+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -59,6 +59,7 @@ msgid "Worst"
 msgstr "Legalacsonyabb"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1002
 msgid "None"
 msgstr "Nincs"
 
@@ -201,95 +202,427 @@ msgstr "Kibeszélés"
 msgid "OK"
 msgstr "Rendben"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:27
-#: org.nickvision.tubeconverter.macos/src/settings.mm:346
-#: org.nickvision.tubeconverter.macos/src/settings.mm:347
+#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1339
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1340
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Általános"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
 msgid "Theme"
 msgstr "Téma"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:34
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:37
+#: org.nickvision.tubeconverter.macos/src/settings.mm:41
 #, fuzzy
 msgctxt "Theme"
 msgid "Light"
 msgstr "Világos"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings.mm:42
 #, fuzzy
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Sötét"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings.mm:43
 msgctxt "Theme"
 msgid "System"
 msgstr "Rendszer"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#: org.nickvision.tubeconverter.macos/src/settings.mm:53
 msgid "Translation Language"
 msgstr "Nyelv"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#: org.nickvision.tubeconverter.macos/src/settings.mm:61
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "Rendszer"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings.mm:96
+#, fuzzy
+msgid "An application restart is required for a change to take effect."
+msgstr "A beállítás érvénybe lépéséhez az alkalmazás újraindítása szükséges"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:104
 #, fuzzy
 msgid "Automatically Check for Updates"
 msgstr "Frissítések keresése"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:101
+#: org.nickvision.tubeconverter.macos/src/settings.mm:113
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "Előzetes kiadások fogadása"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:195
-#: org.nickvision.tubeconverter.macos/src/settings.mm:352
-#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#: org.nickvision.tubeconverter.macos/src/settings.mm:124
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Előzetes kiadások fogadása és függőségek letöltése"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:230
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1345
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1346
 #, fuzzy
 msgctxt "Settings"
 msgid "History"
 msgstr "Előzmények"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:210
-#: org.nickvision.tubeconverter.macos/src/settings.mm:358
-#: org.nickvision.tubeconverter.macos/src/settings.mm:359
+#: org.nickvision.tubeconverter.macos/src/settings.mm:233
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Letöltési előzmények tárolása"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:240
+msgid "Never"
+msgstr "Soha"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:241
+msgid "1 Day"
+msgstr "Egy napig"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:242
+msgid "1 Week"
+msgstr "Egy hétig"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+msgid "1 Month"
+msgstr "Egy hónapig"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:244
+msgid "3 Months"
+msgstr "Három hónapig"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:245
+msgid "6 Months"
+msgstr "Hat hónapig"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:246
+msgid "1 Year"
+msgstr "Egy évig"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:247
+msgid "Forever"
+msgstr "Korlátlan"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:307
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1351
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1352
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "Letöltések"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:225
-#: org.nickvision.tubeconverter.macos/src/settings.mm:364
-#: org.nickvision.tubeconverter.macos/src/settings.mm:365
+#: org.nickvision.tubeconverter.macos/src/settings.mm:310
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Párhuzamos letöltések száma"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:336
+msgid "Overwrite Existing Files"
+msgstr "Azonos nevű fájlok felülírása"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:345
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:353
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "yt-dlp letöltési paraméterek"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:459
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1357
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1358
 #, fuzzy
 msgctxt "Settings"
 msgid "Discovery"
 msgstr "Elemzés"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:240
-#: org.nickvision.tubeconverter.macos/src/settings.mm:370
-#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#: org.nickvision.tubeconverter.macos/src/settings.mm:462
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Automatikusan létrehozott feliratok letöltése"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:471
+msgid "Include Media Id in Title"
+msgstr "Videó azonosítójának hozzáadása a fájlnévhez"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:480
+#, fuzzy
+msgid "Add the media's id to its default title."
+msgstr "A videó egyedi azonosítója szerepelni fog a fájlnévben"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:487
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Felskálázott változatok letöltése"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:496
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:504
+msgid "Limit Filename Characters"
+msgstr "Nem támogatott karakterek konvertálása"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:513
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
+"fogja a Windows számára"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:521
+msgid "Preferred Audio Codec"
+msgstr "Előnyben részesített hangkódoló"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:528
+#: org.nickvision.tubeconverter.macos/src/settings.mm:560
+#: org.nickvision.tubeconverter.macos/src/settings.mm:590
+#: org.nickvision.tubeconverter.macos/src/settings.mm:620
+msgid "Any"
+msgstr "Bármelyik"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:529
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:530
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:531
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:532
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:533
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:534
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:545
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr "Ezt a kódolót fogja használni az alkalmazás a hang feldolgozásához"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:553
+msgid "Preferred Video Codec"
+msgstr "Előnyben részesített videókódoló"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:561
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:562
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:563
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:564
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:575
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr "Ezt a kódolót fogja használni az alkalmazás a videó feldolgozásához"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:583
+msgid "Preferred Subtitle Format"
+msgstr "Előnyben részesített feliratformátum"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:591
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:592
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:593
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:594
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:606
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "Ebben a formátumban kerülnek letöltésre a feliratok"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:613
+msgid "Preferred Frame Rate"
+msgstr "Előnyben részesített képsebesség"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:621
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:622
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:623
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:634
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+"Ezt a képsebességet fogja előnyben részesíteni az alkalmazás a videó "
+"letöltésekor"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:642
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "yt-dlp elemzési paraméterek"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:892
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1364
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:255
-#: org.nickvision.tubeconverter.macos/src/settings.mm:376
-#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:895
+msgid "Use Part Files"
+msgstr "Befejezetlen letöltések"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:904
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Még befejezetlen letöltések tárolása átmeneti .part fájlokban a letöltés "
+"befejeztéig"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:912
+msgid "Use SponsorBlock for YouTube"
+msgstr "Beágyazott hirdetések eltávolítása YouTube videókból"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:921
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+"Az alkalmazás megpróbálja eltávolítani a videóban esetlegesen megjelenő "
+"hirdetéseket SponsorBlock használatával"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:928
+msgid "Translate Metadata and Chapters"
+msgstr "Metaadatok lefordítása"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:937
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Metaadatok és fejezetcímek automatikus lefordítása a felhasználó nyelvére"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:946
+msgid "Limit Download Speed"
+msgstr "Letöltési sebesség korlátozása"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:955
+msgid "Speed Limit (KiB/s)"
+msgstr "Sávszélesség korlátozása (kiB/mp)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:984
+msgid "Proxy URL"
+msgstr "Proxy-átjáró címe"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:995
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "Sütik betöltése böngészőből"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1003
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1004
+msgid "Chrome"
+msgstr "Google Chrome"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1005
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1006
+msgid "Edge"
+msgstr "Microsoft Edge"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1007
+msgid "Firefox"
+msgstr "Mozilla Firefox"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1008
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1009
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1010
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1021
+msgid "Cookies File"
+msgstr "Sütik használata fájlból"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1033
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1038
+msgid "Clear"
+msgstr "Törlés"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1252
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1369
+#: org.nickvision.tubeconverter.macos/src/settings.mm:1370
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -561,12 +894,6 @@ msgstr "Feldolgozás"
 #~ msgid "User Interface"
 #~ msgstr "Általános"
 
-#~ msgid "An application restart is required for a change to take effect"
-#~ msgstr "A beállítás érvénybe lépéséhez az alkalmazás újraindítása szükséges"
-
-#~ msgid "Update dependencies, such as yt-dlp, to beta versions"
-#~ msgstr "Előzetes kiadások fogadása és függőségek letöltése"
-
 #~ msgid "Prevent Suspend"
 #~ msgstr "Készenlét/felfüggesztés tiltása"
 
@@ -575,34 +902,11 @@ msgstr "Feldolgozás"
 #~ "A beállítás megakadályozza a rendszer leállítását és így a letöltések "
 #~ "megszakítását is"
 
-#~ msgid "Download History Length"
-#~ msgstr "Letöltési előzmények tárolása"
-
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr "Ennyi ideig fogja listázni az alkalmazás a korábbi letöltéseket"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Párhuzamos letöltések száma"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Azonos nevű fájlok felülírása"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Nem támogatott karakterek konvertálása"
-
-#~ msgid "Restrict characters in filenames to those supported only by Windows"
-#~ msgstr ""
-#~ "A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
-#~ "fogja a Windows számára"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Videó azonosítójának hozzáadása a fájlnévhez"
-
-#~ msgid "Add the media's id to its default title"
-#~ msgstr "A videó egyedi azonosítója szerepelni fog a fájlnévben"
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "Automatikusan létrehozott feliratok letöltése"
 
 #~ msgid ""
 #~ "Show auto-generated subtitles to download in addition to available "
@@ -611,9 +915,6 @@ msgstr "Feldolgozás"
 #~ "A videóhoz elérhető automatikusan létrehozott feliratok letöltésre "
 #~ "kerülnek"
 
-#~ msgid "Include Super Resolution Formats"
-#~ msgstr "Felskálázott változatok letöltése"
-
 #~ msgid ""
 #~ "Show super (AI-scaled) resolution formats to download in addition to "
 #~ "regular formats"
@@ -621,77 +922,14 @@ msgstr "Feldolgozás"
 #~ "A mesterséges intelligencia segítségével felskálázott változatok "
 #~ "letöltésének engedélyezése"
 
-#~ msgid "Preferred Video Codec"
-#~ msgstr "Előnyben részesített videókódoló"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing video formats to show available to download"
-#~ msgstr "Ezt a kódolót fogja használni az alkalmazás a videó feldolgozásához"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "Előnyben részesített hangkódoló"
-
-#~ msgid ""
-#~ "Prefer this codec when parsing audio formats to show available to download"
-#~ msgstr "Ezt a kódolót fogja használni az alkalmazás a hang feldolgozásához"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "Előnyben részesített feliratformátum"
-
-#~ msgid "Prefer this subtitle file format when downloading"
-#~ msgstr "Ebben a formátumban kerülnek letöltésre a feliratok"
-
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "Előnyben részesített képsebesség"
-
-#~ msgid ""
-#~ "Prefer this frame rate when parsing video formats to show available to "
-#~ "download"
-#~ msgstr ""
-#~ "Ezt a képsebességet fogja előnyben részesíteni az alkalmazás a videó "
-#~ "letöltésekor"
-
 #~ msgid "Downloader"
 #~ msgstr "Letöltés"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Befejezetlen letöltések"
-
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file"
-#~ msgstr ""
-#~ "Még befejezetlen letöltések tárolása átmeneti .part fájlokban a letöltés "
-#~ "befejeztéig"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Beágyazott hirdetések eltávolítása YouTube videókból"
-
-#~ msgid "Try to remove sponsored segments from videos"
-#~ msgstr ""
-#~ "Az alkalmazás megpróbálja eltávolítani a videóban esetlegesen megjelenő "
-#~ "hirdetéseket SponsorBlock használatával"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Letöltési sebesség korlátozása"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Sávszélesség korlátozása (kiB/mp)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "Proxy-átjáró címe"
-
-#~ msgid "Cookies File"
-#~ msgstr "Sütik használata fájlból"
 
 #~ msgid "Select Cookies File"
 #~ msgstr "Sütiket tartalmazó fájl kiválasztása"
 
 #~ msgid "Clear Cookies File"
 #~ msgstr "Eltávolítás"
-
-#~ msgid "Cookies from Browser"
-#~ msgstr "Sütik betöltése böngészőből"
 
 #~ msgid "aria2c"
 #~ msgstr "aria2c"
@@ -715,23 +953,8 @@ msgstr "Feldolgozás"
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Meghatározza a darabok méretét. Értéke MiB-ban értendő"
 
-#~ msgid "yt-dlp Discovery Arguments"
-#~ msgstr "yt-dlp elemzési paraméterek"
-
-#~ msgid "yt-dlp Download Arguments"
-#~ msgstr "yt-dlp letöltési paraméterek"
-
 #~ msgid "Converter"
 #~ msgstr "Feldolgozás"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Metaadatok lefordítása"
-
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters to the app's "
-#~ "language on supported sites and media"
-#~ msgstr ""
-#~ "Metaadatok és fejezetcímek automatikus lefordítása a felhasználó nyelvére"
 
 #~ msgid "Embed Metadata"
 #~ msgstr "Címke/adatok beágyazása"
@@ -851,9 +1074,6 @@ msgstr "Feldolgozás"
 #~ "Are you sure you want to clear all download history? This action is "
 #~ "irreversible"
 #~ msgstr "Biztosan törölni szeretné a letöltési előzményeket?"
-
-#~ msgid "Clear"
-#~ msgstr "Törlés"
 
 #~ msgid "Cancel"
 #~ msgstr "Mégse"
@@ -1085,65 +1305,11 @@ msgstr "Feldolgozás"
 #~ msgid "Unable to download and install the yt-dlp update"
 #~ msgstr "yt-dlp frissítés letöltése sikertelen"
 
-#~ msgid "Any"
-#~ msgstr "Bármelyik"
-
 #~ msgid "FLAC (ALAC)"
 #~ msgstr "FLAC (hang)"
 
 #~ msgid "WAV (AIFF)"
 #~ msgstr "WAV (hang)"
-
-#~ msgid "Firefox"
-#~ msgstr "Mozilla Firefox"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Google Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Microsoft Edge"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Never"
-#~ msgstr "Soha"
-
-#~ msgid "1 Day"
-#~ msgstr "Egy napig"
-
-#~ msgid "1 Week"
-#~ msgstr "Egy hétig"
-
-#~ msgid "1 Month"
-#~ msgstr "Egy hónapig"
-
-#~ msgid "3 Months"
-#~ msgstr "Három hónapig"
-
-#~ msgid "6 Months"
-#~ msgstr "Hat hónapig"
-
-#~ msgid "1 Year"
-#~ msgstr "Egy évig"
-
-#~ msgid "Forever"
-#~ msgstr "Korlátlan"
-
-#~ msgid "H.264 (AVC)"
-#~ msgstr "H.264 (AVC)"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
@@ -1306,9 +1472,6 @@ msgstr "Feldolgozás"
 
 #~ msgid "Off"
 #~ msgstr "Ki"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "Párhuzamos letöltések száma"
 
 #~ msgid "Speed Limit"
 #~ msgstr "Sávszélesség korlátozása"

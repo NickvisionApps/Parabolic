@@ -91,6 +91,14 @@
     }
     languagePopUpButton.target = self;
     languagePopUpButton.action = @selector(languageChanged:);
+    NSTextField* languageSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("An application restart is required for a change to take "
+                                                            "effect."))]
+    };
+    languageSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    languageSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    languageSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* autoUpdateCheckbox
     {
         [NSButton checkboxWithTitle:@(translator._("Automatically Check for Updates"))
@@ -109,12 +117,23 @@
     allowPreviewUpdatesCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
     allowPreviewUpdatesCheckbox.state =
             configuration.update_options().allow_preview_updates() ? NSControlStateValueOn : NSControlStateValueOff;
+    NSTextField* allowPreviewUpdatesSubtitleLabel
+    {
+        [NSTextField
+                wrappingLabelWithString:@(translator._(
+                                                "Update the app and dependencies, such as yt-dlp, to beta versions."))]
+    };
+    allowPreviewUpdatesSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    allowPreviewUpdatesSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    allowPreviewUpdatesSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     [self.view addSubview:themeLabel];
     [self.view addSubview:themePopUpButton];
     [self.view addSubview:languageLabel];
     [self.view addSubview:languagePopUpButton];
+    [self.view addSubview:languageSubtitleLabel];
     [self.view addSubview:autoUpdateCheckbox];
     [self.view addSubview:allowPreviewUpdatesCheckbox];
+    [self.view addSubview:allowPreviewUpdatesSubtitleLabel];
     [NSLayoutConstraint activateConstraints:@[
         [self.view.widthAnchor constraintEqualToConstant:700],
         [themeLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
@@ -131,14 +150,23 @@
         [languagePopUpButton.widthAnchor constraintGreaterThanOrEqualToConstant:100],
         [languageLabel.firstBaselineAnchor constraintEqualToAnchor:languagePopUpButton.firstBaselineAnchor],
         [languagePopUpButton.topAnchor constraintEqualToAnchor:themePopUpButton.bottomAnchor constant:12],
+        [languageSubtitleLabel.leadingAnchor constraintEqualToAnchor:languagePopUpButton.leadingAnchor],
+        [languageSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
+        [languageSubtitleLabel.topAnchor constraintEqualToAnchor:languagePopUpButton.bottomAnchor constant:4],
         [autoUpdateCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [autoUpdateCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [autoUpdateCheckbox.topAnchor constraintEqualToAnchor:languagePopUpButton.bottomAnchor constant:16],
+        [autoUpdateCheckbox.topAnchor constraintEqualToAnchor:languageSubtitleLabel.bottomAnchor constant:16],
         [allowPreviewUpdatesCheckbox.leadingAnchor constraintEqualToAnchor:autoUpdateCheckbox.leadingAnchor],
         [allowPreviewUpdatesCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                              constant:-20],
         [allowPreviewUpdatesCheckbox.topAnchor constraintEqualToAnchor:autoUpdateCheckbox.bottomAnchor constant:8],
-        [allowPreviewUpdatesCheckbox.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
+        [allowPreviewUpdatesSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:allowPreviewUpdatesCheckbox.leadingAnchor],
+        [allowPreviewUpdatesSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                                  constant:-20],
+        [allowPreviewUpdatesSubtitleLabel.topAnchor constraintEqualToAnchor:allowPreviewUpdatesCheckbox.bottomAnchor
+                                                                   constant:4],
+        [allowPreviewUpdatesSubtitleLabel.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
 }
 
@@ -202,7 +230,7 @@
     self.title = @(translator._p("Settings", "History"));
     NSTextField* historyLengthLabel
     {
-        [NSTextField labelWithString:@(translator._("{}:", translator._("Keep History For")).c_str())],
+        [NSTextField labelWithString:@(translator._("{}:", translator._("Keep Download History For")).c_str())],
     };
     historyLengthLabel.translatesAutoresizingMaskIntoConstraints = NO;
     historyLengthLabel.alignment = NSTextAlignmentRight;
@@ -431,7 +459,7 @@
     self.title = @(translator._p("Settings", "Discovery"));
     NSButton* includeAutoGeneratedSubtitlesCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Include Auto-Generated Subtitles"))
+        [NSButton checkboxWithTitle:@(translator._("Show Auto-Generated Subtitles"))
                              target:self
                              action:@selector(includeAutoGeneratedSubtitlesChanged:)]
     };
@@ -447,9 +475,16 @@
     includeMediaIdInTitleCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
     includeMediaIdInTitleCheckbox.state =
             discoveryOptions.include_media_id_in_title() ? NSControlStateValueOn : NSControlStateValueOff;
+    NSTextField* includeMediaIdInTitleSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("Add the media's id to its default title."))]
+    };
+    includeMediaIdInTitleSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    includeMediaIdInTitleSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    includeMediaIdInTitleSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* includeSuperResolutionsCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Include Super Resolution Formats"))
+        [NSButton checkboxWithTitle:@(translator._("Show Super Resolution Formats"))
                              target:self
                              action:@selector(includeSuperResolutionsChanged:)]
     };
@@ -459,7 +494,7 @@
     NSTextField* includeSuperResolutionsSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Super resolutions are resolutions that have been enhanced "
-                                                            "with artificial intelligence"))]
+                                                            "with artificial intelligence."))]
     };
     includeSuperResolutionsSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     includeSuperResolutionsSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
@@ -476,7 +511,7 @@
     NSTextField* limitCharactersSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Restrict filename characters to those supported only by "
-                                                            "Windows"))]
+                                                            "Windows."))]
     };
     limitCharactersSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     limitCharactersSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
@@ -505,6 +540,14 @@
     [preferredAudioCodecPopUpButton selectItemWithTag:static_cast<NSInteger>(discoveryOptions.preferred_audio_codec())];
     preferredAudioCodecPopUpButton.target = self;
     preferredAudioCodecPopUpButton.action = @selector(preferredAudioCodecChanged:);
+    NSTextField* preferredAudioCodecSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("Prefer this codec when parsing audio formats to show "
+                                                            "for download."))]
+    };
+    preferredAudioCodecSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    preferredAudioCodecSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    preferredAudioCodecSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSTextField* preferredVideoCodecLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Preferred Video Codec")).c_str())],
@@ -527,6 +570,14 @@
     [preferredVideoCodecPopUpButton selectItemWithTag:static_cast<NSInteger>(discoveryOptions.preferred_video_codec())];
     preferredVideoCodecPopUpButton.target = self;
     preferredVideoCodecPopUpButton.action = @selector(preferredVideoCodecChanged:);
+    NSTextField* preferredVideoCodecSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("Prefer this codec when parsing video formats to show "
+                                                            "for download."))]
+    };
+    preferredVideoCodecSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    preferredVideoCodecSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    preferredVideoCodecSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSTextField* preferredSubtitleFormatLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Preferred Subtitle Format")).c_str())],
@@ -550,6 +601,13 @@
             selectItemWithTag:static_cast<NSInteger>(discoveryOptions.preferred_subtitle_format())];
     preferredSubtitleFormatPopUpButton.target = self;
     preferredSubtitleFormatPopUpButton.action = @selector(preferredSubtitleFormatChanged:);
+    NSTextField* preferredSubtitleFormatSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("Prefer this subtitle file format for download."))]
+    };
+    preferredSubtitleFormatSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    preferredSubtitleFormatSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    preferredSubtitleFormatSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSTextField* preferredFrameRateLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Preferred Frame Rate")).c_str())],
@@ -571,6 +629,14 @@
     [preferredFrameRatePopUpButton selectItemWithTag:static_cast<NSInteger>(discoveryOptions.preferred_frame_rate())];
     preferredFrameRatePopUpButton.target = self;
     preferredFrameRatePopUpButton.action = @selector(preferredFrameRateChanged:);
+    NSTextField* preferredFrameRateSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("Prefer this frame rate when parsing video formats to show "
+                                                            "for download."))]
+    };
+    preferredFrameRateSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    preferredFrameRateSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    preferredFrameRateSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSTextField* ytdlpArgumentsLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Extra yt-dlp Discovery Arguments")).c_str())],
@@ -584,18 +650,23 @@
     ytdlpArgumentsTextField.action = @selector(ytdlpArgumentsChanged:);
     [self.view addSubview:includeAutoGeneratedSubtitlesCheckbox];
     [self.view addSubview:includeMediaIdInTitleCheckbox];
+    [self.view addSubview:includeMediaIdInTitleSubtitleLabel];
     [self.view addSubview:includeSuperResolutionsCheckbox];
     [self.view addSubview:includeSuperResolutionsSubtitleLabel];
     [self.view addSubview:limitCharactersCheckbox];
     [self.view addSubview:limitCharactersSubtitleLabel];
     [self.view addSubview:preferredAudioCodecLabel];
     [self.view addSubview:preferredAudioCodecPopUpButton];
+    [self.view addSubview:preferredAudioCodecSubtitleLabel];
     [self.view addSubview:preferredVideoCodecLabel];
     [self.view addSubview:preferredVideoCodecPopUpButton];
+    [self.view addSubview:preferredVideoCodecSubtitleLabel];
     [self.view addSubview:preferredSubtitleFormatLabel];
     [self.view addSubview:preferredSubtitleFormatPopUpButton];
+    [self.view addSubview:preferredSubtitleFormatSubtitleLabel];
     [self.view addSubview:preferredFrameRateLabel];
     [self.view addSubview:preferredFrameRatePopUpButton];
+    [self.view addSubview:preferredFrameRateSubtitleLabel];
     [self.view addSubview:ytdlpArgumentsLabel];
     [self.view addSubview:ytdlpArgumentsTextField];
     [NSLayoutConstraint activateConstraints:@[
@@ -611,18 +682,25 @@
         [includeMediaIdInTitleCheckbox.topAnchor
                 constraintEqualToAnchor:includeAutoGeneratedSubtitlesCheckbox.bottomAnchor
                                constant:8],
+        [includeMediaIdInTitleSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:includeMediaIdInTitleCheckbox.leadingAnchor],
+        [includeMediaIdInTitleSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                                    constant:-20],
+        [includeMediaIdInTitleSubtitleLabel.topAnchor constraintEqualToAnchor:includeMediaIdInTitleCheckbox.bottomAnchor
+                                                                     constant:4],
         [includeSuperResolutionsCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [includeSuperResolutionsCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                  constant:-20],
-        [includeSuperResolutionsCheckbox.topAnchor constraintEqualToAnchor:includeMediaIdInTitleCheckbox.bottomAnchor
-                                                                  constant:8],
+        [includeSuperResolutionsCheckbox.topAnchor
+                constraintEqualToAnchor:includeMediaIdInTitleSubtitleLabel.bottomAnchor
+                               constant:8],
         [includeSuperResolutionsSubtitleLabel.leadingAnchor
                 constraintEqualToAnchor:includeSuperResolutionsCheckbox.leadingAnchor],
         [includeSuperResolutionsSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                       constant:-20],
         [includeSuperResolutionsSubtitleLabel.topAnchor
                 constraintEqualToAnchor:includeSuperResolutionsCheckbox.bottomAnchor
-                               constant:2],
+                               constant:4],
         [limitCharactersCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [limitCharactersCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                          constant:-20],
@@ -632,7 +710,7 @@
         [limitCharactersSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                               constant:-20],
         [limitCharactersSubtitleLabel.topAnchor constraintEqualToAnchor:limitCharactersCheckbox.bottomAnchor
-                                                               constant:2],
+                                                               constant:4],
         [preferredAudioCodecLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredAudioCodecLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                             constant:20],
@@ -644,6 +722,12 @@
                 constraintEqualToAnchor:preferredAudioCodecPopUpButton.firstBaselineAnchor],
         [preferredAudioCodecPopUpButton.topAnchor constraintEqualToAnchor:limitCharactersSubtitleLabel.bottomAnchor
                                                                  constant:16],
+        [preferredAudioCodecSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:preferredAudioCodecPopUpButton.leadingAnchor],
+        [preferredAudioCodecSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                                  constant:-20],
+        [preferredAudioCodecSubtitleLabel.topAnchor constraintEqualToAnchor:preferredAudioCodecPopUpButton.bottomAnchor
+                                                                   constant:4],
         [preferredVideoCodecLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredVideoCodecLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                             constant:20],
@@ -653,8 +737,14 @@
         [preferredVideoCodecPopUpButton.widthAnchor constraintGreaterThanOrEqualToConstant:100],
         [preferredVideoCodecLabel.firstBaselineAnchor
                 constraintEqualToAnchor:preferredVideoCodecPopUpButton.firstBaselineAnchor],
-        [preferredVideoCodecPopUpButton.topAnchor constraintEqualToAnchor:preferredAudioCodecPopUpButton.bottomAnchor
+        [preferredVideoCodecPopUpButton.topAnchor constraintEqualToAnchor:preferredAudioCodecSubtitleLabel.bottomAnchor
                                                                  constant:12],
+        [preferredVideoCodecSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:preferredVideoCodecPopUpButton.leadingAnchor],
+        [preferredVideoCodecSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                                  constant:-20],
+        [preferredVideoCodecSubtitleLabel.topAnchor constraintEqualToAnchor:preferredVideoCodecPopUpButton.bottomAnchor
+                                                                   constant:4],
         [preferredSubtitleFormatLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredSubtitleFormatLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                                 constant:20],
@@ -665,8 +755,15 @@
         [preferredSubtitleFormatLabel.firstBaselineAnchor
                 constraintEqualToAnchor:preferredSubtitleFormatPopUpButton.firstBaselineAnchor],
         [preferredSubtitleFormatPopUpButton.topAnchor
-                constraintEqualToAnchor:preferredVideoCodecPopUpButton.bottomAnchor
+                constraintEqualToAnchor:preferredVideoCodecSubtitleLabel.bottomAnchor
                                constant:12],
+        [preferredSubtitleFormatSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:preferredSubtitleFormatPopUpButton.leadingAnchor],
+        [preferredSubtitleFormatSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                                      constant:-20],
+        [preferredSubtitleFormatSubtitleLabel.topAnchor
+                constraintEqualToAnchor:preferredSubtitleFormatPopUpButton.bottomAnchor
+                               constant:4],
         [preferredFrameRateLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [preferredFrameRateLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                            constant:20],
@@ -676,14 +773,21 @@
         [preferredFrameRatePopUpButton.widthAnchor constraintGreaterThanOrEqualToConstant:100],
         [preferredFrameRateLabel.firstBaselineAnchor
                 constraintEqualToAnchor:preferredFrameRatePopUpButton.firstBaselineAnchor],
-        [preferredFrameRatePopUpButton.topAnchor constraintEqualToAnchor:preferredSubtitleFormatPopUpButton.bottomAnchor
-                                                                constant:12],
+        [preferredFrameRatePopUpButton.topAnchor
+                constraintEqualToAnchor:preferredSubtitleFormatSubtitleLabel.bottomAnchor
+                               constant:12],
+        [preferredFrameRateSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:preferredFrameRatePopUpButton.leadingAnchor],
+        [preferredFrameRateSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                                 constant:-20],
+        [preferredFrameRateSubtitleLabel.topAnchor constraintEqualToAnchor:preferredFrameRatePopUpButton.bottomAnchor
+                                                                  constant:4],
         [ytdlpArgumentsLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [ytdlpArgumentsLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [ytdlpArgumentsTextField.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [ytdlpArgumentsTextField.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
         [ytdlpArgumentsLabel.firstBaselineAnchor constraintEqualToAnchor:ytdlpArgumentsTextField.firstBaselineAnchor],
-        [ytdlpArgumentsTextField.topAnchor constraintEqualToAnchor:preferredFrameRatePopUpButton.bottomAnchor
+        [ytdlpArgumentsTextField.topAnchor constraintEqualToAnchor:preferredFrameRateSubtitleLabel.bottomAnchor
                                                           constant:16],
         [ytdlpArgumentsTextField.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
@@ -794,6 +898,15 @@
     };
     usePartFilesCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
     usePartFilesCheckbox.state = extractorOptions.use_part_files() ? NSControlStateValueOn : NSControlStateValueOff;
+    NSTextField* usePartFilesSubtitleLabel
+    {
+        [NSTextField
+                wrappingLabelWithString:@(translator._("Download media in separate .part files instead of directly "
+                                                       "into the output file."))]
+    };
+    usePartFilesSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    usePartFilesSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    usePartFilesSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* youtubeSponsorBlockCheckbox
     {
         [NSButton checkboxWithTitle:@(translator._("Use SponsorBlock for YouTube"))
@@ -803,6 +916,13 @@
     youtubeSponsorBlockCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
     youtubeSponsorBlockCheckbox.state =
             extractorOptions.youtube_sponsor_block() ? NSControlStateValueOn : NSControlStateValueOff;
+    NSTextField* youtubeSponsorBlockSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("Try to remove sponsored segments from videos."))]
+    };
+    youtubeSponsorBlockSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    youtubeSponsorBlockSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    youtubeSponsorBlockSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* translateMetadataAndChaptersCheckbox
     {
         [NSButton checkboxWithTitle:@(translator._("Translate Metadata and Chapters"))
@@ -812,6 +932,15 @@
     translateMetadataAndChaptersCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
     translateMetadataAndChaptersCheckbox.state =
             extractorOptions.translate_metadata_and_chapters() ? NSControlStateValueOn : NSControlStateValueOff;
+    NSTextField* translateMetadataAndChaptersSubtitleLabel
+    {
+        [NSTextField wrappingLabelWithString:@(translator._("Automatically translate embedded metadata and chapters "
+                                                            "using the app's set language on supported sites and "
+                                                            "media."))]
+    };
+    translateMetadataAndChaptersSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    translateMetadataAndChaptersSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
+    translateMetadataAndChaptersSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* limitSpeedCheckbox
     {
         [NSButton checkboxWithTitle:@(translator._("Limit Download Speed"))
@@ -901,7 +1030,7 @@
     self.cookiesFileTextField = cookiesFileTextField;
     NSButton* browseCookiesFileButton
     {
-        [NSButton buttonWithTitle:@(translator._("Browse")) target:self action:@selector(browseCookiesFile:)]
+        [NSButton buttonWithTitle:@(translator._("Browse…")) target:self action:@selector(browseCookiesFile:)]
     };
     browseCookiesFileButton.translatesAutoresizingMaskIntoConstraints = NO;
     NSButton* clearCookiesFileButton
@@ -910,8 +1039,11 @@
     };
     clearCookiesFileButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:usePartFilesCheckbox];
+    [self.view addSubview:usePartFilesSubtitleLabel];
     [self.view addSubview:youtubeSponsorBlockCheckbox];
+    [self.view addSubview:youtubeSponsorBlockSubtitleLabel];
     [self.view addSubview:translateMetadataAndChaptersCheckbox];
+    [self.view addSubview:translateMetadataAndChaptersSubtitleLabel];
     [self.view addSubview:limitSpeedCheckbox];
     [self.view addSubview:speedLimitLabel];
     [self.view addSubview:speedLimitTextField];
@@ -929,18 +1061,38 @@
         [usePartFilesCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [usePartFilesCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [usePartFilesCheckbox.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
+        [usePartFilesSubtitleLabel.leadingAnchor constraintEqualToAnchor:usePartFilesCheckbox.leadingAnchor],
+        [usePartFilesSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                           constant:-20],
+        [usePartFilesSubtitleLabel.topAnchor constraintEqualToAnchor:usePartFilesCheckbox.bottomAnchor constant:4],
         [youtubeSponsorBlockCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [youtubeSponsorBlockCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                              constant:-20],
-        [youtubeSponsorBlockCheckbox.topAnchor constraintEqualToAnchor:usePartFilesCheckbox.bottomAnchor constant:8],
+        [youtubeSponsorBlockCheckbox.topAnchor constraintEqualToAnchor:usePartFilesSubtitleLabel.bottomAnchor
+                                                              constant:8],
+        [youtubeSponsorBlockSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:youtubeSponsorBlockCheckbox.leadingAnchor],
+        [youtubeSponsorBlockSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                                                                  constant:-20],
+        [youtubeSponsorBlockSubtitleLabel.topAnchor constraintEqualToAnchor:youtubeSponsorBlockCheckbox.bottomAnchor
+                                                                   constant:4],
         [translateMetadataAndChaptersCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [translateMetadataAndChaptersCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                       constant:-20],
-        [translateMetadataAndChaptersCheckbox.topAnchor constraintEqualToAnchor:youtubeSponsorBlockCheckbox.bottomAnchor
-                                                                       constant:8],
+        [translateMetadataAndChaptersCheckbox.topAnchor
+                constraintEqualToAnchor:youtubeSponsorBlockSubtitleLabel.bottomAnchor
+                               constant:8],
+        [translateMetadataAndChaptersSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:translateMetadataAndChaptersCheckbox.leadingAnchor],
+        [translateMetadataAndChaptersSubtitleLabel.trailingAnchor
+                constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
+                                         constant:-20],
+        [translateMetadataAndChaptersSubtitleLabel.topAnchor
+                constraintEqualToAnchor:translateMetadataAndChaptersCheckbox.bottomAnchor
+                               constant:4],
         [limitSpeedCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [limitSpeedCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [limitSpeedCheckbox.topAnchor constraintEqualToAnchor:translateMetadataAndChaptersCheckbox.bottomAnchor
+        [limitSpeedCheckbox.topAnchor constraintEqualToAnchor:translateMetadataAndChaptersSubtitleLabel.bottomAnchor
                                                      constant:16],
         [speedLimitLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [speedLimitLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
