@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: jonnysemon <jonnysemon@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -200,38 +200,96 @@ msgstr "النقاشات"
 msgid "OK"
 msgstr "حسنًا"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "عام"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "السمة"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 msgctxt "Theme"
 msgid "Light"
 msgstr "فاتح"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 msgctxt "Theme"
 msgid "Dark"
 msgstr "داكن"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "النظام"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "لغة الترجمة"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#, fuzzy
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr "لغات الترجمة (غير صالح)"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+msgid "Automatically Check for Updates"
+msgstr "التحقق من التحديثات تلقائيًا"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "استقبل التحديثات التجريبية"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "السجل"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "التنزيلات"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "استكشف"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "جاري المعالجة"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -249,9 +307,6 @@ msgstr "النظام"
 
 #~ msgid "Add Download"
 #~ msgstr "أضف تنزيل"
-
-#~ msgid "Discover"
-#~ msgstr "استكشف"
 
 #~ msgid "Media URL"
 #~ msgstr "رابط الوسائط"
@@ -415,9 +470,6 @@ msgstr "النظام"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "انسخ السجل للحافظة"
 
-#~ msgid "History"
-#~ msgstr "السجل"
-
 #~ msgid "Sort By"
 #~ msgstr "فرز حسب"
 
@@ -508,14 +560,8 @@ msgstr "النظام"
 #~ msgid "User Interface"
 #~ msgstr "واجهة المستخدم"
 
-#~ msgid "Translation Language"
-#~ msgstr "لغة الترجمة"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "إعادة تشغيل التطبيق مطلوبة لتطبيق التغيير"
-
-#~ msgid "Receive Preview Updates"
-#~ msgstr "استقبل التحديثات التجريبية"
 
 #~ msgid "Update dependencies, such as yt-dlp, to beta versions"
 #~ msgstr "تحديث الاعتمادات، مثل (yt-dlp)، إلى إصداراتها التجريبية"
@@ -531,9 +577,6 @@ msgstr "النظام"
 
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr "مدة الاحتفاظ بالتنزيلات السابقة في سجل التطبيق"
-
-#~ msgid "Downloads"
-#~ msgstr "التنزيلات"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "اقصي عدد للتنزيلات الجارية"
@@ -1718,10 +1761,6 @@ msgstr "النظام"
 #~ msgstr "نُسخ معلومات تصحيح العلل إلى الحافظة"
 
 #, fuzzy
-#~ msgid "Postprocessing"
-#~ msgstr "جاري المعالجة"
-
-#, fuzzy
 #~ msgid "Arguments"
 #~ msgstr "بيانات اعتماد جديدة"
 
@@ -1791,9 +1830,6 @@ msgstr "النظام"
 
 #~ msgid "Artists"
 #~ msgstr "الرسامين"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "التحقق من التحديثات تلقائيًا"
 
 #~ msgid "Copy Command to Clipboard"
 #~ msgstr "انسخ الأمر للحافظة"
@@ -2205,10 +2241,6 @@ msgstr "النظام"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "وقت البدء (غير صالح)"
-
-#, fuzzy
-#~ msgid "Subtitle Languages"
-#~ msgstr "لغات الترجمة (غير صالح)"
 
 #~ msgid "Subtitle Languages (Comma-Separated)"
 #~ msgstr "لغات الترجمة (مفصولة بفاصلة)"

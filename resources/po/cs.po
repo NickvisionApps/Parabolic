@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-02-14 14:09+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -199,38 +199,96 @@ msgstr "Diskuze"
 msgid "OK"
 msgstr "OK"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Obecné"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Motiv"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 msgctxt "Theme"
 msgid "Light"
 msgstr "Světlý"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Tmavý"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "Systémový"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "Jazyk překladu"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#, fuzzy
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr "Jazyky titulků"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+msgid "Automatically Check for Updates"
+msgstr "Automaticky kontrolovat aktualizace"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Získávat předběžné aktualizace"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Historie"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Stahování"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Objevit"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Zpracování"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -248,9 +306,6 @@ msgstr "Systémový"
 
 #~ msgid "Add Download"
 #~ msgstr "Přidat stahování"
-
-#~ msgid "Discover"
-#~ msgstr "Objevit"
 
 #~ msgid "Media URL"
 #~ msgstr "URL média"
@@ -420,9 +475,6 @@ msgstr "Systémový"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Kopírovat protokol do schránky"
 
-#~ msgid "History"
-#~ msgstr "Historie"
-
 #~ msgid "Sort By"
 #~ msgstr "Seřadit podle"
 
@@ -511,14 +563,8 @@ msgstr "Systémový"
 #~ msgid "User Interface"
 #~ msgstr "Uživatelské rozhraní"
 
-#~ msgid "Translation Language"
-#~ msgstr "Jazyk překladu"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "Pro provedení změn je vyžadován restart aplikace"
-
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Získávat předběžné aktualizace"
 
 #~ msgid "Update dependencies, such as yt-dlp, to beta versions"
 #~ msgstr "Aktualizovat závislosti, například yt-dlp, na beta verze"
@@ -535,9 +581,6 @@ msgstr "Systémový"
 
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr "Jak dlouho uchovat stažené položky v historii aplikace"
-
-#~ msgid "Downloads"
-#~ msgstr "Stahování"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Maximální počet běžících stahování"
@@ -1434,9 +1477,6 @@ msgstr "Systémový"
 #~ msgid "Manage"
 #~ msgstr "Správa"
 
-#~ msgid "Postprocessing"
-#~ msgstr "Zpracování"
-
 #, fuzzy
 #~ msgid "Add Argument"
 #~ msgstr "Upravit argument"
@@ -1797,9 +1837,6 @@ msgstr "Systémový"
 
 #~ msgid "Artists"
 #~ msgstr "Umělci"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Automaticky kontrolovat aktualizace"
 
 #~ msgid "Copy Command to Clipboard"
 #~ msgstr "Kopírovat příkaz do schránky"
@@ -2249,9 +2286,6 @@ msgstr "Systémový"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Čas začátku (neplatný)"
-
-#~ msgid "Subtitle Languages"
-#~ msgstr "Jazyky titulků"
 
 #~ msgid "Subtitle Languages (Comma-Separated)"
 #~ msgstr "Jazyky titulků (oddělené čárkou)"

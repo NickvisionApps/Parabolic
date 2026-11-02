@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-02-06 14:33+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -200,38 +200,97 @@ msgstr "Debats"
 msgid "OK"
 msgstr "D'ACORD"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Generals"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Tema"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 msgctxt "Theme"
 msgid "Light"
 msgstr "Clar"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Fosc"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "Del sistema"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+#, fuzzy
+msgid "Translation Language"
+msgstr "Llengua de l’àudio"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#, fuzzy
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr "Llengües dels subtítols"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+msgid "Automatically Check for Updates"
+msgstr "Comprova automàticament les actualitzacions"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Comprova les actualitzacions"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Historial"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Baixades"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Avís legal"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Processant"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -249,10 +308,6 @@ msgstr "Del sistema"
 
 #~ msgid "Add Download"
 #~ msgstr "Afegeix baixada"
-
-#, fuzzy
-#~ msgid "Discover"
-#~ msgstr "Avís legal"
 
 #~ msgid "Media URL"
 #~ msgstr "URL dels mitjans"
@@ -399,9 +454,6 @@ msgstr "Del sistema"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Copia el registre al porta-retalls"
 
-#~ msgid "History"
-#~ msgstr "Historial"
-
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "Neteja"
@@ -491,16 +543,8 @@ msgstr "Del sistema"
 #~ msgstr "Interfície d’usuari"
 
 #, fuzzy
-#~ msgid "Translation Language"
-#~ msgstr "Llengua de l’àudio"
-
-#, fuzzy
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "Es requereix un reinici de l'aplicació per canviar el tema."
-
-#, fuzzy
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Comprova les actualitzacions"
 
 #, fuzzy
 #~ msgid "Prevent Suspend"
@@ -512,9 +556,6 @@ msgstr "Del sistema"
 #, fuzzy
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr "Quan acabin totes les baixades"
-
-#~ msgid "Downloads"
-#~ msgstr "Baixades"
 
 #, fuzzy
 #~ msgid "Max Number of Running Downloads"
@@ -1255,10 +1296,6 @@ msgstr "Del sistema"
 #~ msgstr "El nom de credencial no pot ser buit."
 
 #, fuzzy
-#~ msgid "Postprocessing"
-#~ msgstr "Processant"
-
-#, fuzzy
 #~ msgid "Add Argument"
 #~ msgstr "Nova Credencial"
 
@@ -1524,9 +1561,6 @@ msgstr "Del sistema"
 #~ msgstr ""
 #~ "L'actualització s'està descarregant en el rerefons i arrencarà una vegada "
 #~ "acabi"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Comprova automàticament les actualitzacions"
 
 #~ msgid "Copy Command to Clipboard"
 #~ msgstr "Copia l’ordre al porta-retalls"
@@ -1933,9 +1967,6 @@ msgstr "Del sistema"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Temps d'inici (no vàlid)"
-
-#~ msgid "Subtitle Languages"
-#~ msgstr "Llengües dels subtítols"
 
 #~ msgid "Subtitle Languages (Comma-Separated)"
 #~ msgstr "Llengües dels subtítols (separades per comes)"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-05-07 20:41+0000\n"
 "Last-Translator: \"Louis B.\" <louisberns22@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -199,38 +199,96 @@ msgstr "Diskussionen"
 msgid "OK"
 msgstr "OK"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Allgemein"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Thema"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 msgctxt "Theme"
 msgid "Light"
 msgstr "Hell"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Dunkel"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "System"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "Übersetzungssprache"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#, fuzzy
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr "Untertitelsprachen"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+msgid "Automatically Check for Updates"
+msgstr "Automatisch auf Aktualisierungen prüfen"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Vorschau-Updates erhalten"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Verlauf"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Downloads"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Entdecken"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Nachbearbeitung"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -248,9 +306,6 @@ msgstr "System"
 
 #~ msgid "Add Download"
 #~ msgstr "Download hinzufügen"
-
-#~ msgid "Discover"
-#~ msgstr "Entdecken"
 
 #~ msgid "Media URL"
 #~ msgstr "Medien-URL"
@@ -420,9 +475,6 @@ msgstr "System"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Protokoll in die Zwischenablage kopieren"
 
-#~ msgid "History"
-#~ msgstr "Verlauf"
-
 #~ msgid "Sort By"
 #~ msgstr "Sortiere nach"
 
@@ -515,16 +567,10 @@ msgstr "System"
 #~ msgid "User Interface"
 #~ msgstr "Benutzeroberfläche"
 
-#~ msgid "Translation Language"
-#~ msgstr "Übersetzungssprache"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr ""
 #~ "Ein Neustart der Anwendung ist erforderlich, damit die Änderung wirksam "
 #~ "wird"
-
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Vorschau-Updates erhalten"
 
 #~ msgid "Update dependencies, such as yt-dlp, to beta versions"
 #~ msgstr "Aktualisieren Sie Abhängigkeiten wie yt-dlp auf Beta-Versionen"
@@ -543,9 +589,6 @@ msgstr "System"
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr ""
 #~ "Die Zeitspanne, in der frühere Downloads im Verlauf gespeichert werden"
-
-#~ msgid "Downloads"
-#~ msgstr "Downloads"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Maximale Anzahl aktiver Downloads"
@@ -1777,9 +1820,6 @@ msgstr "System"
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Debug-Informationen in die Zwischenablage kopiert"
 
-#~ msgid "Postprocessing"
-#~ msgstr "Nachbearbeitung"
-
 #~ msgid "Arguments"
 #~ msgstr "Argumente"
 
@@ -1826,9 +1866,6 @@ msgstr "System"
 
 #~ msgid "Back"
 #~ msgstr "Zurück"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Automatisch auf Aktualisierungen prüfen"
 
 #~ msgid "Copy Command to Clipboard"
 #~ msgstr "Befehl in die Zwischenablage kopieren"
@@ -2240,9 +2277,6 @@ msgstr "System"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Startzeit (Ungültig)"
-
-#~ msgid "Subtitle Languages"
-#~ msgstr "Untertitelsprachen"
 
 #~ msgid "Subtitle Languages (Comma-Separated)"
 #~ msgstr "Untertitelsprachen (durch Kommas getrennt)"

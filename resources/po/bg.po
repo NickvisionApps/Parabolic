@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-05-12 20:11+0000\n"
 "Last-Translator: SabriAdasholu <sabri85@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -201,38 +201,96 @@ msgstr "Дискусии"
 msgid "OK"
 msgstr "Добре"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Общи"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Тема"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 msgctxt "Theme"
 msgid "Light"
 msgstr "Светла"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Тъмна"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "Система"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "Превод Език"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#, fuzzy
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr "Език на субтитрите"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+msgid "Automatically Check for Updates"
+msgstr "Автоматично проверяване за обновления"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Проверка за обновления"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "История"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Изтегляния"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Открий"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Обработване"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -250,9 +308,6 @@ msgstr "Система"
 
 #~ msgid "Add Download"
 #~ msgstr "Добавяне на ново изтегляне"
-
-#~ msgid "Discover"
-#~ msgstr "Открий"
 
 #~ msgid "Media URL"
 #~ msgstr "Медия адрес"
@@ -407,9 +462,6 @@ msgstr "Система"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Копиране на журнала в буфера за обмен"
 
-#~ msgid "History"
-#~ msgstr "История"
-
 #~ msgid "Sort By"
 #~ msgstr "Сортирай по"
 
@@ -507,15 +559,8 @@ msgstr "Система"
 #~ msgid "User Interface"
 #~ msgstr "Потребителски интерфейс"
 
-#~ msgid "Translation Language"
-#~ msgstr "Превод Език"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "Необходимо е да рестартирате програмата влезнат в сила промените"
-
-#, fuzzy
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Проверка за обновления"
 
 #, fuzzy
 #~ msgid "Prevent Suspend"
@@ -532,9 +577,6 @@ msgstr "Система"
 #~ msgstr ""
 #~ "Нужното време за да се запази последното изтегляне в историята на "
 #~ "приложението"
-
-#~ msgid "Downloads"
-#~ msgstr "Изтегляния"
 
 #, fuzzy
 #~ msgid "Max Number of Running Downloads"
@@ -1297,10 +1339,6 @@ msgstr "Система"
 #~ msgstr "Данните за идентификация не може да бъдат празни."
 
 #, fuzzy
-#~ msgid "Postprocessing"
-#~ msgstr "Обработване"
-
-#, fuzzy
 #~ msgid "Add Argument"
 #~ msgstr "Нови данни"
 
@@ -1564,9 +1602,6 @@ msgstr "Система"
 #~ "finishes"
 #~ msgstr ""
 #~ "Обновлението се изтегля във фона и ще се стартира, след като приключи"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Автоматично проверяване за обновления"
 
 #~ msgid "Copy Command to Clipboard"
 #~ msgstr "Копиране на командата в буфера за обмен"
@@ -1956,9 +1991,6 @@ msgstr "Система"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Начало (неправилно)"
-
-#~ msgid "Subtitle Languages"
-#~ msgstr "Език на субтитрите"
 
 #~ msgid "Subtitle Languages (Comma-Separated)"
 #~ msgstr "Език на субтитрите (разделени със запетая)"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-02-24 04:40+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -201,40 +201,98 @@ msgstr "Талқылаулар"
 msgid "OK"
 msgstr "ОК"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Жалпы"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Тема"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 #, fuzzy
 msgctxt "Theme"
 msgid "Light"
 msgstr "Ашық"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 #, fuzzy
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Күңгірт"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "Жүйелік"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "Аударма тілі"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+#, fuzzy
+msgid "Automatically Check for Updates"
+msgstr "Жаңартуларды тексеру"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Алдын ала қарау жаңартуларын алу"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Тарих"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Жүктемелер"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Шолу"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Өңдеу"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -246,9 +304,6 @@ msgstr "Жүйелік"
 
 #~ msgid "Add Download"
 #~ msgstr "Жүктеп алуды қосу"
-
-#~ msgid "Discover"
-#~ msgstr "Шолу"
 
 #~ msgid "Media URL"
 #~ msgstr "Медиа URL-адресі"
@@ -417,9 +472,6 @@ msgstr "Жүйелік"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Журналды алмасу буферіне көшіру"
 
-#~ msgid "History"
-#~ msgstr "Тарих"
-
 #~ msgid "Sort By"
 #~ msgstr "Сұрыптау реті"
 
@@ -509,14 +561,8 @@ msgstr "Жүйелік"
 #~ msgid "User Interface"
 #~ msgstr "Пайдаланушы интерфейсі"
 
-#~ msgid "Translation Language"
-#~ msgstr "Аударма тілі"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "Өзгерістер күшіне енуі үшін қолданбаны қайта іске қосу қажет"
-
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Алдын ала қарау жаңартуларын алу"
 
 #~ msgid "Update dependencies, such as yt-dlp, to beta versions"
 #~ msgstr "yt-dlp сияқты тәуелділіктерді бета-нұсқаларға дейін жаңарту"
@@ -533,9 +579,6 @@ msgstr "Жүйелік"
 
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr "Алдыңғы жүктемелерді қолданба тарихында сақтау уақыты"
-
-#~ msgid "Downloads"
-#~ msgstr "Жүктемелер"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Орындалып жатқан жүктемелердің максималды саны"
@@ -784,9 +827,6 @@ msgstr "Жүйелік"
 
 #~ msgid "Resume"
 #~ msgstr "Жалғастыру"
-
-#~ msgid "Processing"
-#~ msgstr "Өңдеу"
 
 #, csharp-format
 #~ msgid "Sleeping for {0}"

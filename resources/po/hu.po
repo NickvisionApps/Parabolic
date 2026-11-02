@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2026.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-04-09 17:09+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -201,40 +201,98 @@ msgstr "Kibeszélés"
 msgid "OK"
 msgstr "Rendben"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Általános"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Téma"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 #, fuzzy
 msgctxt "Theme"
 msgid "Light"
 msgstr "Világos"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 #, fuzzy
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Sötét"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "Rendszer"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "Nyelv"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+#, fuzzy
+msgid "Automatically Check for Updates"
+msgstr "Frissítések keresése"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Előzetes kiadások fogadása"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Előzmények"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Letöltések"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Elemzés"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Feldolgozás"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -246,9 +304,6 @@ msgstr "Rendszer"
 
 #~ msgid "Add Download"
 #~ msgstr "Hozzáadás"
-
-#~ msgid "Discover"
-#~ msgstr "Elemzés"
 
 #~ msgid "Media URL"
 #~ msgstr "Hivatkozás"
@@ -415,9 +470,6 @@ msgstr "Rendszer"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Napló másolása"
 
-#~ msgid "History"
-#~ msgstr "Előzmények"
-
 #~ msgid "Sort By"
 #~ msgstr "Rendezés"
 
@@ -508,14 +560,8 @@ msgstr "Rendszer"
 #~ msgid "User Interface"
 #~ msgstr "Általános"
 
-#~ msgid "Translation Language"
-#~ msgstr "Nyelv"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "A beállítás érvénybe lépéséhez az alkalmazás újraindítása szükséges"
-
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Előzetes kiadások fogadása"
 
 #~ msgid "Update dependencies, such as yt-dlp, to beta versions"
 #~ msgstr "Előzetes kiadások fogadása és függőségek letöltése"
@@ -533,9 +579,6 @@ msgstr "Rendszer"
 
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr "Ennyi ideig fogja listázni az alkalmazás a korábbi letöltéseket"
-
-#~ msgid "Downloads"
-#~ msgstr "Letöltések"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Párhuzamos letöltések száma"
@@ -779,9 +822,6 @@ msgstr "Rendszer"
 
 #~ msgid "Resume"
 #~ msgstr "Folytatás"
-
-#~ msgid "Processing"
-#~ msgstr "Feldolgozás"
 
 #, csharp-format
 #~ msgid "Sleeping for {0}"

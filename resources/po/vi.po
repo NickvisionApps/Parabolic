@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-05-03 08:09+0000\n"
 "Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -199,38 +199,96 @@ msgstr "Thảo luận"
 msgid "OK"
 msgstr "Đồng ý"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Chung"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Chủ đề"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 msgctxt "Theme"
 msgid "Light"
 msgstr "Sáng"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Tối"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "Hệ thống"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "Ngôn ngữ dịch thuật"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+#, fuzzy
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr "Ngôn ngữ của phụ đề"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+msgid "Automatically Check for Updates"
+msgstr "Tự động kiểm tra bản cập nhật"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Nhận cập nhật xem trước"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Lịch sử"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Tải xuống"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Khám phá"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Xử lý hậu kỳ"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -248,9 +306,6 @@ msgstr "Hệ thống"
 
 #~ msgid "Add Download"
 #~ msgstr "Thêm lượt tải"
-
-#~ msgid "Discover"
-#~ msgstr "Khám phá"
 
 #~ msgid "Media URL"
 #~ msgstr "URL của phương tiện"
@@ -417,9 +472,6 @@ msgstr "Hệ thống"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Chép nhật ký vào bộ nhớ tạm"
 
-#~ msgid "History"
-#~ msgstr "Lịch sử"
-
 #~ msgid "Sort By"
 #~ msgstr "Sắp xếp theo"
 
@@ -511,14 +563,8 @@ msgstr "Hệ thống"
 #~ msgid "User Interface"
 #~ msgstr "Giao diện người dùng"
 
-#~ msgid "Translation Language"
-#~ msgstr "Ngôn ngữ dịch thuật"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "Cần khởi động lại ứng dụng để thay đổi có hiệu lực"
-
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Nhận cập nhật xem trước"
 
 #~ msgid "Update dependencies, such as yt-dlp, to beta versions"
 #~ msgstr "Cập nhật các phụ thuộc, chẳng hạn như yt-dlp, lên phiên bản beta"
@@ -535,9 +581,6 @@ msgstr "Hệ thống"
 #~ msgid "The amount of time to keep past downloads in the app's history"
 #~ msgstr ""
 #~ "Khoảng thời gian lưu giữ các tải xuống trước đó trong lịch sử của ứng dụng"
-
-#~ msgid "Downloads"
-#~ msgstr "Tải xuống"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Số lượng tải xuống chạy tối đa"
@@ -1459,9 +1502,6 @@ msgstr "Hệ thống"
 #~ msgid "Manage"
 #~ msgstr "Quản lý"
 
-#~ msgid "Postprocessing"
-#~ msgstr "Xử lý hậu kỳ"
-
 #, fuzzy
 #~ msgid "Add Argument"
 #~ msgstr "Chỉnh sửa đối số"
@@ -1785,9 +1825,6 @@ msgstr "Hệ thống"
 #~ "The update is downloading in the background and will start once it "
 #~ "finishes"
 #~ msgstr "Bản cập nhật đang tải trong nền, và sẽ bắt đầu khi tải xong"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Tự động kiểm tra bản cập nhật"
 
 #~ msgid "Copy Command to Clipboard"
 #~ msgstr "Chép lệnh vào clipboard"
@@ -2141,9 +2178,6 @@ msgstr "Hệ thống"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Thời điểm bắt đầu (không hợp lệ)"
-
-#~ msgid "Subtitle Languages"
-#~ msgstr "Ngôn ngữ của phụ đề"
 
 #~ msgid "Subtitle Languages (Comma-Separated)"
 #~ msgstr "Ngôn ngữ của phụ đề (cách nhau bởi dấu phẩy)"

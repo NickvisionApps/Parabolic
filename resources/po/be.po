@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 20:27-0500\n"
+"POT-Creation-Date: 2026-11-01 20:50-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: Pavel Miniutka <pavel.miniutka@gmail.com>\n"
 "Language-Team: Belarusian <https://hosted.weblate.org/projects/nickvision-"
@@ -200,38 +200,95 @@ msgstr "Абмеркаванні"
 msgid "OK"
 msgstr "ОК"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:19
-#: org.nickvision.tubeconverter.macos/src/settings.mm:139
-#: org.nickvision.tubeconverter.macos/src/settings.mm:140
-#: org.nickvision.tubeconverter.macos/src/settings.mm:142
+#: org.nickvision.tubeconverter.macos/src/settings.mm:27
+#: org.nickvision.tubeconverter.macos/src/settings.mm:349
+#: org.nickvision.tubeconverter.macos/src/settings.mm:350
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Агульныя"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
 msgid "Theme"
 msgstr "Тэма"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:22
+#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:29
+#: org.nickvision.tubeconverter.macos/src/settings.mm:37
 msgctxt "Theme"
 msgid "Light"
 msgstr "Светлая"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings.mm:38
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Цёмная"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings.mm:39
 msgctxt "Theme"
 msgid "System"
 msgstr "Сістэмная"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:49
+msgid "Translation Language"
+msgstr "Мова"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:57
+msgctxt "Translation Language"
+msgid "Follow System Language"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:94
+msgid "Automatically Check for Updates"
+msgstr "Аўтаматычна правяраць наяўнасць абнаўленняў"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Атрымліваць перадпрагляд абнаўленняў"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:198
+#: org.nickvision.tubeconverter.macos/src/settings.mm:356
+#: org.nickvision.tubeconverter.macos/src/settings.mm:357
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Гісторыя"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:213
+#: org.nickvision.tubeconverter.macos/src/settings.mm:363
+#: org.nickvision.tubeconverter.macos/src/settings.mm:364
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Спампоўванні"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:228
+#: org.nickvision.tubeconverter.macos/src/settings.mm:370
+#: org.nickvision.tubeconverter.macos/src/settings.mm:371
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Выявіць"
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:243
+#: org.nickvision.tubeconverter.macos/src/settings.mm:377
+#: org.nickvision.tubeconverter.macos/src/settings.mm:378
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings.mm:258
+#: org.nickvision.tubeconverter.macos/src/settings.mm:384
+#: org.nickvision.tubeconverter.macos/src/settings.mm:385
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Постапрацоўка"
 
 #, fuzzy
 #~ msgid "System Default"
@@ -249,9 +306,6 @@ msgstr "Сістэмная"
 
 #~ msgid "Add Download"
 #~ msgstr "Новая спампоўка"
-
-#~ msgid "Discover"
-#~ msgstr "Выявіць"
 
 #~ msgid "Media URL"
 #~ msgstr "URL-адрас медыя"
@@ -418,9 +472,6 @@ msgstr "Сістэмная"
 #~ msgid "Copy Log to Clipboard"
 #~ msgstr "Скапіраваць журнал у буфер абмену"
 
-#~ msgid "History"
-#~ msgstr "Гісторыя"
-
 #~ msgid "Sort By"
 #~ msgstr "Сартаваць па"
 
@@ -512,14 +563,8 @@ msgstr "Сістэмная"
 #~ msgid "User Interface"
 #~ msgstr "Інтэрфейс"
 
-#~ msgid "Translation Language"
-#~ msgstr "Мова"
-
 #~ msgid "An application restart is required for a change to take effect"
 #~ msgstr "Каб змены ўступілі ў сілу, патрабуецца перазапуск праграмы"
-
-#~ msgid "Receive Preview Updates"
-#~ msgstr "Атрымліваць перадпрагляд абнаўленняў"
 
 #~ msgid "Update dependencies, such as yt-dlp, to beta versions"
 #~ msgstr "Абнаўляць залежнасці, такія як yt-dlp, да бэта-версій"
@@ -537,9 +582,6 @@ msgstr "Сістэмная"
 #~ msgstr ""
 #~ "Час, на працягу якога мінулыя спампоўванні будуць захоўвацца ў гісторыі "
 #~ "праграмы"
-
-#~ msgid "Downloads"
-#~ msgstr "Спампоўванні"
 
 #~ msgid "Max Number of Running Downloads"
 #~ msgstr "Максімальная колькасць запушчаных спампоўванняў"
@@ -1750,9 +1792,6 @@ msgstr "Сістэмная"
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Адладачная інфармацыя скапіравана ў буфер абмену"
 
-#~ msgid "Postprocessing"
-#~ msgstr "Постапрацоўка"
-
 #~ msgid "Arguments"
 #~ msgstr "Аргументы"
 
@@ -1824,9 +1863,6 @@ msgstr "Сістэмная"
 
 #~ msgid "Artists"
 #~ msgstr "Мастакі"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Аўтаматычна правяраць наяўнасць абнаўленняў"
 
 #~ msgid "Copy Command to Clipboard"
 #~ msgstr "Скапіраваць каманду ў буфер абмену"
