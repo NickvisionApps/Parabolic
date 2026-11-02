@@ -8,45 +8,47 @@
 
 - (void)loadView
 {
-    self.view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 500, 300)];
+    self.view = [[NSView alloc] initWithFrame:NSZeroRect];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     self.title = @(translator._p("Settings", "General"));
-    NSTextField* themeLabel
+    NSTextField* theme_label
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Theme")).c_str())]
     };
-    themeLabel.alignment = NSTextAlignmentRight;
-    NSPopUpButton* themePopUpButton{ [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO] };
-    [themePopUpButton addItemsWithTitles:@[
-        @(translator._p("Theme", "Light")), @(translator._p("Theme", "Dark")), @(translator._p("Theme", "System"))
+    theme_label.translatesAutoresizingMaskIntoConstraints = NO;
+    theme_label.alignment = NSTextAlignmentRight;
+    NSPopUpButton* theme_pop_up_button{ [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO] };
+    theme_pop_up_button.translatesAutoresizingMaskIntoConstraints = NO;
+    [theme_pop_up_button addItemsWithTitles:@[
+        @(translator._p("Theme", "Light")),
+        @(translator._p("Theme", "Dark")),
+        @(translator._p("Theme", "System")),
     ]];
-    [[themePopUpButton itemAtIndex:0] setTag:static_cast<NSInteger>(parabolic::configuration::Theme e::Light)];
-    [[themePopUpButton itemAtIndex:1] setTag:static_cast<NSInteger>(parabolic::configuration::Theme::Dark)];
-    [[themePopUpButton itemAtIndex:2] setTag:static_cast<NSInteger>(parabolic::configuration::Theme::System)];
-    parabolic::configuration::Theme currentTheme{ parabolic::application::State::instance().configuration().theme() };
-    [themePopUpButton selectItemWithTag:static_cast<NSInteger>(currentTheme)];
-    themePopUpButton.target = self;
-    themePopUpButton.action = @selector(themeChanged:);
-    NSGridView* grid
-    {
-        [NSGridView gridViewWithViews:@[ @[ themeLabel, themePopUpButton ] ]]
-    };
-    grid.translatesAutoresizingMaskIntoConstraints = NO;
-    grid.rowSpacing = 12;
-    grid.columnSpacing = 8;
-    [grid columnAtIndex:0].xPlacement = NSGridCellPlacementTrailing;
-    [grid columnAtIndex:1].xPlacement = NSGridCellPlacementLeading;
-    [grid cellAtColumnIndex:0 rowIndex:0].yPlacement = NSGridCellPlacementCenter;
-    [grid cellAtColumnIndex:1 rowIndex:0].yPlacement = NSGridCellPlacementCenter;
-    [self.view addSubview:grid];
+    [[theme_pop_up_button itemAtIndex:0] setTag:static_cast<NSInteger>(parabolic::configuration::Theme::Light)];
+    [[theme_pop_up_button itemAtIndex:1] setTag:static_cast<NSInteger>(parabolic::configuration::Theme::Dark)];
+    [[theme_pop_up_button itemAtIndex:2] setTag:static_cast<NSInteger>(parabolic::configuration::Theme::System)];
+    parabolic::configuration::Theme current_theme{ parabolic::application::State::instance().configuration().theme() };
+    [theme_pop_up_button selectItemWithTag:static_cast<NSInteger>(current_theme)];
+    theme_pop_up_button.target = self;
+    theme_pop_up_button.action = @selector(themeChanged:);
+    [self.view addSubview:theme_label];
+    [self.view addSubview:theme_pop_up_button];
     [NSLayoutConstraint activateConstraints:@[
-        [grid.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-        [grid.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20]
+        [self.view.widthAnchor constraintEqualToConstant:400],
+        [theme_label.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-6],
+        [theme_label.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
+        [theme_pop_up_button.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:6],
+        [theme_pop_up_button.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
+        [theme_pop_up_button.widthAnchor constraintGreaterThanOrEqualToConstant:100],
+        [theme_label.firstBaselineAnchor constraintEqualToAnchor:theme_pop_up_button.firstBaselineAnchor],
+        [theme_pop_up_button.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
+        [theme_pop_up_button.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20]
     ]];
 }
 
@@ -80,7 +82,7 @@
 - (instancetype)init
 {
     NSWindow* window = [[NSWindow alloc]
-            initWithContentRect:NSMakeRect(0, 0, 500, 300)
+            initWithContentRect:NSZeroRect
                       styleMask:(NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable)
                         backing:NSBackingStoreBuffered
                           defer:YES];
@@ -93,12 +95,12 @@
         toolbar.delegate = self;
         toolbar.allowsUserCustomization = NO;
         toolbar.displayMode = NSToolbarDisplayModeIconAndLabel;
+        toolbar.selectedItemIdentifier = K_GENERAL_TAB_ID;
         window.delegate = self;
         window.toolbar = toolbar;
         window.toolbarStyle = NSWindowToolbarStylePreference;
-        window.contentView = self.generalViewController.view;
-        window.title = self.generalViewController.title;
-        window.toolbar.selectedItemIdentifier = K_GENERAL_TAB_ID;
+        window.contentViewController = self.generalViewController;
+        [window bind:NSTitleBinding toObject:window withKeyPath:@"contentViewController.title" options:nil];
         [window center];
     }
     return self;
@@ -127,12 +129,12 @@
 }
 
 - (NSToolbarItem*)toolbar:(NSToolbar*)toolbar
-            itemForItemIdentifier:(NSToolbarItemIdentifier)itemIdentifier
+            itemForItemIdentifier:(NSToolbarItemIdentifier)item_identifier
         willBeInsertedIntoToolbar:(BOOL)flag
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
-    NSToolbarItem* item{ [[NSToolbarItem alloc] initWithItemIdentifier:itemIdentifier] };
-    if ([itemIdentifier isEqualToString:K_GENERAL_TAB_ID])
+    NSToolbarItem* item{ [[NSToolbarItem alloc] initWithItemIdentifier:item_identifier] };
+    if ([item_identifier isEqualToString:K_GENERAL_TAB_ID])
     {
         item.label = @(translator._p("Settings", "General"));
         item.paletteLabel = @(translator._p("Settings", "General"));
@@ -146,11 +148,9 @@
 
 - (void)toolbarItemClicked:(NSToolbarItem*)sender
 {
-    const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     if ([sender.itemIdentifier isEqualToString:K_GENERAL_TAB_ID])
     {
-        self.window.contentView = self.generalViewController.view;
-        self.window.title = self.generalViewController.title;
+        self.window.contentViewController = self.generalViewController;
     }
     self.window.toolbar.selectedItemIdentifier = sender.itemIdentifier;
 }
