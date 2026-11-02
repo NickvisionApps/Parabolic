@@ -54,9 +54,7 @@
     languagePopUpButton.translatesAutoresizingMaskIntoConstraints = NO;
     NSMenuItem* followSystemLanguageItem
     {
-        [[NSMenuItem alloc] initWithTitle:@(translator._p("Translation Language", "Follow System Language"))
-                                   action:nil
-                            keyEquivalent:@""]
+        [[NSMenuItem alloc] initWithTitle:@(translator._p("Language", "System")) action:nil keyEquivalent:@""]
     };
     followSystemLanguageItem.representedObject =
             @(parabolic::translation::Translator::follow_system_language().c_str());
@@ -132,8 +130,7 @@
         [autoUpdateCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [autoUpdateCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [autoUpdateCheckbox.topAnchor constraintEqualToAnchor:languagePopUpButton.bottomAnchor constant:16],
-        [allowPreviewUpdatesCheckbox.leadingAnchor constraintEqualToAnchor:autoUpdateCheckbox.leadingAnchor
-                                                                  constant:18],
+        [allowPreviewUpdatesCheckbox.leadingAnchor constraintEqualToAnchor:autoUpdateCheckbox.leadingAnchor],
         [allowPreviewUpdatesCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                              constant:-20],
         [allowPreviewUpdatesCheckbox.topAnchor constraintEqualToAnchor:autoUpdateCheckbox.bottomAnchor constant:8],
@@ -306,7 +303,6 @@
         window.toolbar = toolbar;
         window.toolbarStyle = NSWindowToolbarStylePreference;
         window.contentViewController = self.generalViewController;
-        window.minSize = NSMakeSize(300, 120);
         [window bind:NSTitleBinding toObject:window withKeyPath:@"contentViewController.title" options:nil];
     }
     return self;
@@ -341,51 +337,41 @@
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSToolbarItem* item{ [[NSToolbarItem alloc] initWithItemIdentifier:itemIdentifier] };
-    NSImageSymbolConfiguration* symbolConfiguration{ [NSImageSymbolConfiguration
-            configurationWithPointSize:18
-                                weight:NSFontWeightRegular
-                                 scale:NSImageSymbolScaleMedium] };
     if ([itemIdentifier isEqualToString:K_GENERAL_TAB_ID])
     {
         item.label = @(translator._p("Settings", "General"));
         item.paletteLabel = @(translator._p("Settings", "General"));
-        item.image = [[NSImage imageWithSystemSymbolName:@"gearshape"
-                                accessibilityDescription:item.label] imageWithSymbolConfiguration:symbolConfiguration];
+        item.image = [NSImage imageWithSystemSymbolName:@"gearshape" accessibilityDescription:item.label];
     }
     else if ([itemIdentifier isEqualToString:K_HISTORY_TAB_ID])
     {
         item.label = @(translator._p("Settings", "History"));
         item.paletteLabel = @(translator._p("Settings", "History"));
-        item.image = [[NSImage imageWithSystemSymbolName:@"clock.arrow.circlepath"
-                                accessibilityDescription:item.label] imageWithSymbolConfiguration:symbolConfiguration];
+        item.image = [NSImage imageWithSystemSymbolName:@"clock.arrow.circlepath" accessibilityDescription:item.label];
     }
     else if ([itemIdentifier isEqualToString:K_DOWNLOADS_TAB_ID])
     {
         item.label = @(translator._p("Settings", "Downloads"));
         item.paletteLabel = @(translator._p("Settings", "Downloads"));
-        item.image = [[NSImage imageWithSystemSymbolName:@"square.and.arrow.down"
-                                accessibilityDescription:item.label] imageWithSymbolConfiguration:symbolConfiguration];
+        item.image = [NSImage imageWithSystemSymbolName:@"arrow.down.circle" accessibilityDescription:item.label];
     }
     else if ([itemIdentifier isEqualToString:K_DISCOVERY_TAB_ID])
     {
         item.label = @(translator._p("Settings", "Discovery"));
         item.paletteLabel = @(translator._p("Settings", "Discovery"));
-        item.image = [[NSImage imageWithSystemSymbolName:@"magnifyingglass"
-                                accessibilityDescription:item.label] imageWithSymbolConfiguration:symbolConfiguration];
+        item.image = [NSImage imageWithSystemSymbolName:@"globe" accessibilityDescription:item.label];
     }
     else if ([itemIdentifier isEqualToString:K_EXTRACTOR_TAB_ID])
     {
         item.label = @(translator._p("Settings", "Extractor"));
         item.paletteLabel = @(translator._p("Settings", "Extractor"));
-        item.image = [[NSImage imageWithSystemSymbolName:@"globe"
-                                accessibilityDescription:item.label] imageWithSymbolConfiguration:symbolConfiguration];
+        item.image = [NSImage imageWithSystemSymbolName:@"film.stack" accessibilityDescription:item.label];
     }
     else if ([itemIdentifier isEqualToString:K_POSTPROCESSING_TAB_ID])
     {
         item.label = @(translator._p("Settings", "Postprocessing"));
         item.paletteLabel = @(translator._p("Settings", "Postprocessing"));
-        item.image = [[NSImage imageWithSystemSymbolName:@"film.stack"
-                                accessibilityDescription:item.label] imageWithSymbolConfiguration:symbolConfiguration];
+        item.image = [NSImage imageWithSystemSymbolName:@"wrench.and.screwdriver" accessibilityDescription:item.label];
     }
     item.target = self;
     item.action = @selector(toolbarItemClicked:);
