@@ -379,18 +379,18 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
                 }
                 else
                 {
-                    arguments.Add(downloadOptions.FileType.ToString().ToLower());
+                    arguments.Add(downloadOptions.FileType.ToString().ToLowerInvariant());
                 }
             }
         }
         else if (downloadOptions.FileType.IsVideo && !downloadOptions.FileType.IsGeneric)
         {
             arguments.Add("--remux-video");
-            arguments.Add(downloadOptions.FileType.ToString().ToLower());
+            arguments.Add(downloadOptions.FileType.ToString().ToLowerInvariant());
             if (downloadOptions.FileType.ShouldRecode)
             {
                 arguments.Add("--recode-video");
-                arguments.Add(downloadOptions.FileType.ToString().ToLower());
+                arguments.Add(downloadOptions.FileType.ToString().ToLowerInvariant());
             }
         }
         var formatString = string.Empty;
