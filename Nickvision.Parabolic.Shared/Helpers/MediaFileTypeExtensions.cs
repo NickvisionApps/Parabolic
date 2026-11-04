@@ -10,7 +10,7 @@ public static class MediaFileTypeExtensions
         {
             MediaFileType.Audio => string.Empty,
             MediaFileType.Video => string.Empty,
-            _ => $".{type.ToString().ToLower()}"
+            _ => $".{type.ToString().ToLowerInvariant()}"
         };
 
         public bool IsGeneric => type == MediaFileType.Audio || type == MediaFileType.Video;
