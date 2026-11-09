@@ -62,11 +62,19 @@
     nameTextField.stringValue = self.initialName;
     nameTextField.delegate = self;
     self.nameTextField = nameTextField;
-    NSTextField* nameErrorLabel{ [NSTextField labelWithString:@" "] };
-    nameErrorLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    NSTextField* nameErrorLabel{ [NSTextField labelWithString:@""] };
     nameErrorLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
     nameErrorLabel.textColor = NSColor.systemRedColor;
+    nameErrorLabel.hidden = YES;
     self.nameErrorLabel = nameErrorLabel;
+    NSStackView* nameStackView
+    {
+        [NSStackView stackViewWithViews:@[ nameTextField, nameErrorLabel ]],
+    };
+    nameStackView.translatesAutoresizingMaskIntoConstraints = NO;
+    nameStackView.orientation = NSUserInterfaceLayoutOrientationVertical;
+    nameStackView.alignment = NSLayoutAttributeLeading;
+    nameStackView.spacing = 4;
     NSTextField* stepLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Post Processor")).c_str())],
@@ -146,8 +154,7 @@
     saveButton.keyEquivalent = @"\r";
     self.saveButton = saveButton;
     [self.view addSubview:nameLabel];
-    [self.view addSubview:nameTextField];
-    [self.view addSubview:nameErrorLabel];
+    [self.view addSubview:nameStackView];
     [self.view addSubview:stepLabel];
     [self.view addSubview:stepPopUpButton];
     [self.view addSubview:executableLabel];
@@ -160,19 +167,17 @@
         [self.view.widthAnchor constraintEqualToConstant:480],
         [nameLabel.trailingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:130],
         [nameLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
-        [nameTextField.leadingAnchor constraintEqualToAnchor:nameLabel.trailingAnchor constant:8],
-        [nameTextField.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+        [nameStackView.leadingAnchor constraintEqualToAnchor:nameLabel.trailingAnchor constant:8],
+        [nameStackView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
+        [nameStackView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
+        [nameTextField.widthAnchor constraintEqualToAnchor:nameStackView.widthAnchor],
         [nameLabel.firstBaselineAnchor constraintEqualToAnchor:nameTextField.firstBaselineAnchor],
-        [nameTextField.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
-        [nameErrorLabel.leadingAnchor constraintEqualToAnchor:nameTextField.leadingAnchor],
-        [nameErrorLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [nameErrorLabel.topAnchor constraintEqualToAnchor:nameTextField.bottomAnchor constant:4],
         [stepLabel.trailingAnchor constraintEqualToAnchor:nameLabel.trailingAnchor],
         [stepLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [stepPopUpButton.leadingAnchor constraintEqualToAnchor:nameTextField.leadingAnchor],
         [stepPopUpButton.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [stepLabel.firstBaselineAnchor constraintEqualToAnchor:stepPopUpButton.firstBaselineAnchor],
-        [stepPopUpButton.topAnchor constraintEqualToAnchor:nameErrorLabel.bottomAnchor constant:8],
+        [stepPopUpButton.topAnchor constraintEqualToAnchor:nameStackView.bottomAnchor constant:12],
         [executableLabel.trailingAnchor constraintEqualToAnchor:nameLabel.trailingAnchor],
         [executableLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [executablePopUpButton.leadingAnchor constraintEqualToAnchor:nameTextField.leadingAnchor],
@@ -232,8 +237,8 @@
         }
     }
     self.saveButton.enabled = name.length > 0 && !isDuplicate;
-    self.nameErrorLabel.stringValue =
-            isDuplicate ? @(translator._("An argument with this name already exists.")) : @" ";
+    self.nameErrorLabel.stringValue = @(translator._("An argument with this name already exists."));
+    self.nameErrorLabel.hidden = !isDuplicate;
 }
 
 @end

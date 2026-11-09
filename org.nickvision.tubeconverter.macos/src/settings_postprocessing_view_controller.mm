@@ -29,6 +29,7 @@
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::postprocessing::Options postprocessingOptions{ configuration.postprocessing_options() };
     self.title = @(translator._p("Settings", "Postprocessing"));
+    const CGFloat nestedIndent{ 20 };
     NSButton* embedMetadataCheckbox
     {
         [NSButton checkboxWithTitle:@(translator._("Embed Metadata"))
@@ -177,11 +178,13 @@
         [embedMetadataCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [embedMetadataCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [embedMetadataCheckbox.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
-        [removeSourceDataCheckbox.leadingAnchor constraintEqualToAnchor:embedMetadataCheckbox.leadingAnchor],
+        [removeSourceDataCheckbox.leadingAnchor constraintEqualToAnchor:embedMetadataCheckbox.leadingAnchor
+                                                               constant:nestedIndent],
         [removeSourceDataCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                           constant:-20],
         [removeSourceDataCheckbox.topAnchor constraintEqualToAnchor:embedMetadataCheckbox.bottomAnchor constant:8],
-        [removeSourceDataSubtitleLabel.leadingAnchor constraintEqualToAnchor:removeSourceDataCheckbox.leadingAnchor],
+        [removeSourceDataSubtitleLabel.leadingAnchor constraintEqualToAnchor:removeSourceDataCheckbox.leadingAnchor
+                                                                    constant:nestedIndent],
         [removeSourceDataSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                constant:-20],
         [removeSourceDataSubtitleLabel.topAnchor constraintEqualToAnchor:removeSourceDataCheckbox.bottomAnchor
@@ -196,12 +199,15 @@
                                                                               constant:-20],
         [embedThumbnailsSubtitleLabel.topAnchor constraintEqualToAnchor:embedThumbnailsCheckbox.bottomAnchor
                                                                constant:6],
-        [cropAudioThumbnailsCheckbox.leadingAnchor constraintEqualToAnchor:embedThumbnailsCheckbox.leadingAnchor],
+        [cropAudioThumbnailsCheckbox.leadingAnchor constraintEqualToAnchor:embedThumbnailsCheckbox.leadingAnchor
+                                                                  constant:nestedIndent],
         [cropAudioThumbnailsCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                              constant:-20],
         [cropAudioThumbnailsCheckbox.topAnchor constraintEqualToAnchor:embedThumbnailsSubtitleLabel.bottomAnchor
                                                               constant:8],
-        [cropAudioThumbnailsSubtitleLabel.leadingAnchor constraintEqualToAnchor:cropAudioThumbnailsCheckbox.leadingAnchor],
+        [cropAudioThumbnailsSubtitleLabel.leadingAnchor
+                constraintEqualToAnchor:cropAudioThumbnailsCheckbox.leadingAnchor
+                               constant:nestedIndent],
         [cropAudioThumbnailsSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor
                                                                                   constant:-20],
         [cropAudioThumbnailsSubtitleLabel.topAnchor constraintEqualToAnchor:cropAudioThumbnailsCheckbox.bottomAnchor

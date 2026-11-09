@@ -13,8 +13,7 @@
 }
 
 @property(nonatomic, strong) NSTableView* argumentsTableView;
-@property(nonatomic, strong) NSButton* editArgumentButton;
-@property(nonatomic, strong) NSButton* removeArgumentButton;
+@property(nonatomic, strong) NSSegmentedControl* argumentsSegmentedControl;
 @property(nonatomic, strong) NSArray<NSString*>* stepTitles;
 @property(nonatomic, strong) NSArray<NSString*>* executableTitles;
 
@@ -99,25 +98,36 @@
     argumentsScrollView.hasVerticalScroller = YES;
     argumentsScrollView.borderType = NSBezelBorder;
     argumentsScrollView.documentView = argumentsTableView;
-    NSButton* addArgumentButton
+    NSSegmentedControl* argumentsSegmentedControl
     {
-        [NSButton buttonWithTitle:@(translator._("Add")) target:self action:@selector(addArgument:)],
+        [NSSegmentedControl segmentedControlWithLabels:@[ @"", @"" ]
+                                          trackingMode:NSSegmentSwitchTrackingMomentary
+                                                target:self
+                                                action:@selector(argumentsSegmentClicked:)],
     };
-    addArgumentButton.translatesAutoresizingMaskIntoConstraints = NO;
-    NSButton* editArgumentButton
+    argumentsSegmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
+    [argumentsSegmentedControl setImage:[NSImage imageWithSystemSymbolName:@"plus"
+                                                  accessibilityDescription:@(translator._("Add"))]
+                             forSegment:0];
+    [argumentsSegmentedControl setImage:[NSImage imageWithSystemSymbolName:@"minus"
+                                                  accessibilityDescription:@(translator._("Remove"))]
+                             forSegment:1];
+    [argumentsSegmentedControl setWidth:32 forSegment:0];
+    [argumentsSegmentedControl setWidth:32 forSegment:1];
+    [argumentsSegmentedControl setEnabled:NO forSegment:1];
+    self.argumentsSegmentedControl = argumentsSegmentedControl;
+    NSMenu* argumentsMenu{ [[NSMenu alloc] init] };
+    NSMenuItem* editMenuItem
     {
-        [NSButton buttonWithTitle:@(translator._("Edit…")) target:self action:@selector(editArgument:)],
+        [argumentsMenu addItemWithTitle:@(translator._("Edit…")) action:@selector(editArgument:) keyEquivalent:@""]
     };
-    editArgumentButton.translatesAutoresizingMaskIntoConstraints = NO;
-    editArgumentButton.enabled = NO;
-    self.editArgumentButton = editArgumentButton;
-    NSButton* removeArgumentButton
+    editMenuItem.target = self;
+    NSMenuItem* removeMenuItem
     {
-        [NSButton buttonWithTitle:@(translator._("Remove")) target:self action:@selector(removeArgument:)],
+        [argumentsMenu addItemWithTitle:@(translator._("Remove")) action:@selector(removeArgument:) keyEquivalent:@""]
     };
-    removeArgumentButton.translatesAutoresizingMaskIntoConstraints = NO;
-    removeArgumentButton.enabled = NO;
-    self.removeArgumentButton = removeArgumentButton;
+    removeMenuItem.target = self;
+    argumentsTableView.menu = argumentsMenu;
     NSButton* doneButton
     {
         [NSButton buttonWithTitle:@(translator._("Done")) target:self action:@selector(done:)],
@@ -126,9 +136,7 @@
     doneButton.keyEquivalent = @"\r";
     [self.view addSubview:descriptionLabel];
     [self.view addSubview:argumentsScrollView];
-    [self.view addSubview:addArgumentButton];
-    [self.view addSubview:editArgumentButton];
-    [self.view addSubview:removeArgumentButton];
+    [self.view addSubview:argumentsSegmentedControl];
     [self.view addSubview:doneButton];
     [NSLayoutConstraint activateConstraints:@[
         [self.view.widthAnchor constraintEqualToConstant:560],
@@ -139,15 +147,11 @@
         [argumentsScrollView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
         [argumentsScrollView.topAnchor constraintEqualToAnchor:descriptionLabel.bottomAnchor constant:12],
         [argumentsScrollView.heightAnchor constraintEqualToConstant:220],
-        [addArgumentButton.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
-        [addArgumentButton.topAnchor constraintEqualToAnchor:argumentsScrollView.bottomAnchor constant:12],
-        [editArgumentButton.leadingAnchor constraintEqualToAnchor:addArgumentButton.trailingAnchor constant:8],
-        [editArgumentButton.centerYAnchor constraintEqualToAnchor:addArgumentButton.centerYAnchor],
-        [removeArgumentButton.leadingAnchor constraintEqualToAnchor:editArgumentButton.trailingAnchor constant:8],
-        [removeArgumentButton.centerYAnchor constraintEqualToAnchor:addArgumentButton.centerYAnchor],
+        [argumentsSegmentedControl.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:20],
+        [argumentsSegmentedControl.topAnchor constraintEqualToAnchor:argumentsScrollView.bottomAnchor constant:12],
         [doneButton.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [doneButton.centerYAnchor constraintEqualToAnchor:addArgumentButton.centerYAnchor],
-        [addArgumentButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
+        [doneButton.centerYAnchor constraintEqualToAnchor:argumentsSegmentedControl.centerYAnchor],
+        [argumentsSegmentedControl.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
 }
 
@@ -156,7 +160,19 @@
     [self.presentingViewController dismissViewController:self];
 }
 
-- (void)addArgument:(NSButton*)sender
+- (void)argumentsSegmentClicked:(NSSegmentedControl*)sender
+{
+    if (sender.selectedSegment == 0)
+    {
+        [self addArgument:sender];
+    }
+    else
+    {
+        [self removeArgument:sender];
+    }
+}
+
+- (void)addArgument:(id)sender
 {
     [self presentArgumentEditorForRow:-1];
 }
@@ -164,7 +180,9 @@
 - (void)editArgument:(id)sender
 {
     NSInteger row{
-        sender == self.argumentsTableView ? self.argumentsTableView.clickedRow : self.argumentsTableView.selectedRow,
+        sender == self.argumentsTableView || [sender isKindOfClass:[NSMenuItem class]]
+                ? self.argumentsTableView.clickedRow
+                : self.argumentsTableView.selectedRow,
     };
     if (row >= 0 && std::cmp_less(row, _arguments.size()))
     {
@@ -172,9 +190,12 @@
     }
 }
 
-- (void)removeArgument:(NSButton*)sender
+- (void)removeArgument:(id)sender
 {
-    NSInteger row{ self.argumentsTableView.selectedRow };
+    NSInteger row{
+        [sender isKindOfClass:[NSMenuItem class]] ? self.argumentsTableView.clickedRow
+                                                  : self.argumentsTableView.selectedRow,
+    };
     if (row < 0 || std::cmp_greater_equal(row, _arguments.size()))
     {
         return;
@@ -243,6 +264,11 @@
                          options.set_arguments(self->_arguments);
                          configuration.set_postprocessing_options(options);
                          [self.argumentsTableView reloadData];
+                         [self.argumentsTableView
+                                     selectRowIndexes:[NSIndexSet
+                                                              indexSetWithIndex:row < 0 ? self->_arguments.size() - 1
+                                                                                        : static_cast<NSUInteger>(row)]
+                                 byExtendingSelection:NO];
                        }];
     editor.title = @(row < 0 ? translator._("Add Argument") : translator._("Edit Argument"));
     [self presentViewControllerAsSheet:editor];
@@ -255,29 +281,38 @@
 
 - (NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row
 {
-    NSTextField* cell{ [tableView makeViewWithIdentifier:tableColumn.identifier owner:self] };
+    NSTableCellView* cell{ [tableView makeViewWithIdentifier:tableColumn.identifier owner:self] };
     if (cell == nil)
     {
-        cell = [NSTextField labelWithString:@""];
+        cell = [[NSTableCellView alloc] initWithFrame:NSZeroRect];
         cell.identifier = tableColumn.identifier;
-        cell.lineBreakMode = NSLineBreakByTruncatingTail;
+        NSTextField* textField{ [NSTextField labelWithString:@""] };
+        textField.translatesAutoresizingMaskIntoConstraints = NO;
+        textField.lineBreakMode = NSLineBreakByTruncatingTail;
+        [cell addSubview:textField];
+        cell.textField = textField;
+        [NSLayoutConstraint activateConstraints:@[
+            [textField.leadingAnchor constraintEqualToAnchor:cell.leadingAnchor constant:4],
+            [textField.trailingAnchor constraintEqualToAnchor:cell.trailingAnchor constant:-4],
+            [textField.centerYAnchor constraintEqualToAnchor:cell.centerYAnchor],
+        ]];
     }
     const parabolic::postprocessing::Argument& argument{ _arguments[static_cast<size_t>(row)] };
     if ([tableColumn.identifier isEqualToString:@"name"])
     {
-        cell.stringValue = @(argument.name().c_str());
+        cell.textField.stringValue = @(argument.name().c_str());
     }
     else if ([tableColumn.identifier isEqualToString:@"step"])
     {
-        cell.stringValue = self.stepTitles[static_cast<NSUInteger>(argument.step())];
+        cell.textField.stringValue = self.stepTitles[static_cast<NSUInteger>(argument.step())];
     }
     else if ([tableColumn.identifier isEqualToString:@"executable"])
     {
-        cell.stringValue = self.executableTitles[static_cast<NSUInteger>(argument.executable())];
+        cell.textField.stringValue = self.executableTitles[static_cast<NSUInteger>(argument.executable())];
     }
     else
     {
-        cell.stringValue = @(argument.args().c_str());
+        cell.textField.stringValue = @(argument.args().c_str());
     }
     return cell;
 }
@@ -285,7 +320,11 @@
 - (void)tableViewSelectionDidChange:(NSNotification*)notification
 {
     BOOL hasSelection{ self.argumentsTableView.selectedRow >= 0 };
-    self.editArgumentButton.enabled = hasSelection;
-    self.removeArgumentButton.enabled = hasSelection;
+    [self.argumentsSegmentedControl setEnabled:hasSelection forSegment:1];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem*)menuItem
+{
+    return self.argumentsTableView.clickedRow >= 0;
 }
 @end
