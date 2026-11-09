@@ -1,4 +1,4 @@
-#import "settings_dialog_controller.h"
+#import "settings_window_controller.h"
 #include "application.h"
 #import "settings_aria2_view_controller.h"
 #import "settings_discovery_view_controller.h"
@@ -10,7 +10,7 @@
 #import "settings_tab_view_controller.h"
 #include "translation.h"
 
-@implementation SettingsDialogController
+@implementation SettingsWindowController
 
 - (instancetype)init
 {

@@ -1,9 +1,9 @@
 #import <Cocoa/Cocoa.h>
 
-@class MainMenuController;
 @class MainWindowController;
+@class SettingsWindowController;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
-@property(nonatomic, strong) MainMenuController* mainMenuController;
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSMenuItemValidation>
 @property(nonatomic, strong) MainWindowController* mainWindowController;
+@property(nonatomic, strong) SettingsWindowController* settingsWindowController;
 @end
