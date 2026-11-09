@@ -356,7 +356,10 @@
     panel.allowsMultipleSelection = NO;
     if ([panel runModal] == NSModalResponseOK)
     {
-        NSString* path{ panel.URL.path ?: @"" };
+        NSString* path
+        {
+            @(panel.URL.fileSystemRepresentation),
+        };
         self.cookiesFileTextField.stringValue = path;
         parabolic::configuration::Configuration& configuration{
             parabolic::application::State::instance().configuration(),

@@ -61,9 +61,11 @@
             @(language.c_str()),
         };
         NSString* displayName{ [currentLocale localizedStringForLocaleIdentifier:identifier] };
-        NSMenuItem* languageItem{ [[NSMenuItem alloc] initWithTitle:displayName.length > 0 ? displayName : identifier
-                                                             action:nil
-                                                      keyEquivalent:@""], };
+        NSMenuItem* languageItem{
+            [[NSMenuItem alloc] initWithTitle:displayName.length > 0 ? displayName : identifier
+                                       action:nil
+                                keyEquivalent:@""],
+        };
         languageItem.representedObject = identifier;
         [languagePopUpButton.menu addItem:languageItem];
     }

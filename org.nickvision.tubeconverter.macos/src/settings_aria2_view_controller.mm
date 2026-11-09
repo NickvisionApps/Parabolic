@@ -167,7 +167,8 @@
 
 - (void)learnMoreAboutAria2:(NSButton*)sender
 {
-    if (NSURL* url{ [NSURL URLWithString:@"https://aria2.github.io"] }; url != nil)
+    NSURL* url{ [NSURL URLWithString:@"https://aria2.github.io"] };
+    if (url != nil)
     {
         [[NSWorkspace sharedWorkspace] openURL:url];
     }

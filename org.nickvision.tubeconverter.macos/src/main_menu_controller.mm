@@ -145,10 +145,11 @@
 
 - (void)discussions:(id)sender
 {
-    if (NSURL* url{
-                [NSURL URLWithString:@(parabolic::application::State::instance().product().discussions_url().c_str())],
-        };
-        url != nil)
+    NSURL* url
+    {
+        [NSURL URLWithString:@(parabolic::application::State::instance().product().discussions_url().c_str())],
+    };
+    if (url != nil)
     {
         [[NSWorkspace sharedWorkspace] openURL:url];
     }
@@ -156,10 +157,11 @@
 
 - (void)gitHubRepository:(id)sender
 {
-    if (NSURL* url{
-                [NSURL URLWithString:@(parabolic::application::State::instance().product().repo_url().c_str())],
-        };
-        url != nil)
+    NSURL* url
+    {
+        [NSURL URLWithString:@(parabolic::application::State::instance().product().repo_url().c_str())],
+    };
+    if (url != nil)
     {
         [[NSWorkspace sharedWorkspace] openURL:url];
     }
@@ -167,10 +169,11 @@
 
 - (void)reportAnIssue:(id)sender
 {
-    if (NSURL* url{
-                [NSURL URLWithString:@(parabolic::application::State::instance().product().issues_url().c_str())],
-        };
-        url != nil)
+    NSURL* url
+    {
+        [NSURL URLWithString:@(parabolic::application::State::instance().product().issues_url().c_str())],
+    };
+    if (url != nil)
     {
         [[NSWorkspace sharedWorkspace] openURL:url];
     }
