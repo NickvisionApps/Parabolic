@@ -431,45 +431,45 @@ namespace parabolic::keyring
     {
         if (json.contains("name") && json["name"].is_string())
         {
-            credential.m_name = json.at("name").get<std::string>();
+            credential.set_name(json.at("name").get<std::string>());
         }
         else if (json.contains("Name") && json["Name"].is_string())
         {
-            credential.m_name = json.at("Name").get<std::string>();
+            credential.set_name(json.at("Name").get<std::string>());
         }
         if (json.contains("url") && json["url"].is_string())
         {
-            credential.m_url = json.at("url").get<std::string>();
+            credential.set_url(json.at("url").get<std::string>());
         }
         else if (json.contains("Url") && json["Url"].is_string())
         {
-            credential.m_url = json.at("Url").get<std::string>();
+            credential.set_url(json.at("Url").get<std::string>());
         }
         if (json.contains("username") && json["username"].is_string())
         {
-            credential.m_username = json.at("username").get<std::string>();
+            credential.set_username(json.at("username").get<std::string>());
         }
         else if (json.contains("Username") && json["Username"].is_string())
         {
-            credential.m_username = json.at("Username").get<std::string>();
+            credential.set_username(json.at("Username").get<std::string>());
         }
         if (json.contains("password") && json["password"].is_string())
         {
-            credential.m_password = json.at("password").get<std::string>();
+            credential.set_password(json.at("password").get<std::string>());
         }
         else if (json.contains("Password") && json["Password"].is_string())
         {
-            credential.m_password = json.at("Password").get<std::string>();
+            credential.set_password(json.at("Password").get<std::string>());
         }
     }
 
     void to_json(nlohmann::json& json, const Credential& credential)
     {
         json = nlohmann::json{
-            { "name", credential.m_name },
-            { "url", credential.m_url },
-            { "username", credential.m_username },
-            { "password", credential.m_password },
+            { "name", credential.name() },
+            { "url", credential.url() },
+            { "username", credential.username() },
+            { "password", credential.password() },
         };
     }
 }

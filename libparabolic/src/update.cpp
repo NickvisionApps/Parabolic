@@ -271,18 +271,18 @@ namespace parabolic::update
     {
         if (json.contains("allowPreviewUpdates") && json["allowPreviewUpdates"].is_boolean())
         {
-            options.m_allow_preview_updates = json.at("allowPreviewUpdates").get<bool>();
+            options.set_allow_preview_updates(json.at("allowPreviewUpdates").get<bool>());
         }
         else if (json.contains("AllowPreviewUpdates") && json["AllowPreviewUpdates"].is_boolean())
         {
-            options.m_allow_preview_updates = json.at("AllowPreviewUpdates").get<bool>();
+            options.set_allow_preview_updates(json.at("AllowPreviewUpdates").get<bool>());
         }
     }
 
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
-            { "allowPreviewUpdates", options.m_allow_preview_updates },
+            { "allowPreviewUpdates", options.allow_preview_updates() },
         };
     }
 }

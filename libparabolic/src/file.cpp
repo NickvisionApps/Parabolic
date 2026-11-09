@@ -374,9 +374,19 @@ namespace parabolic::file
         return m_start;
     }
 
+    void TimeFrame::set_start(std::chrono::seconds value)
+    {
+        m_start = value;
+    }
+
     std::chrono::seconds TimeFrame::end() const
     {
         return m_end;
+    }
+
+    void TimeFrame::set_end(std::chrono::seconds value)
+    {
+        m_end = value;
     }
 
     std::string TimeFrame::str() const
@@ -625,19 +635,19 @@ namespace parabolic::file
     {
         if (json.contains("start") && json["start"].is_number_integer())
         {
-            time_frame.m_start = std::chrono::seconds(json.at("start").get<int>());
+            time_frame.set_start(std::chrono::seconds(json.at("start").get<int>()));
         }
         else if (json.contains("Start") && json["Start"].is_number_integer())
         {
-            time_frame.m_start = std::chrono::seconds(json.at("Start").get<int>());
+            time_frame.set_start(std::chrono::seconds(json.at("Start").get<int>()));
         }
         if (json.contains("end") && json["end"].is_number_integer())
         {
-            time_frame.m_end = std::chrono::seconds(json.at("end").get<int>());
+            time_frame.set_end(std::chrono::seconds(json.at("end").get<int>()));
         }
         else if (json.contains("End") && json["End"].is_number_integer())
         {
-            time_frame.m_end = std::chrono::seconds(json.at("End").get<int>());
+            time_frame.set_end(std::chrono::seconds(json.at("End").get<int>()));
         }
     }
 }

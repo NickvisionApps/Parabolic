@@ -228,7 +228,7 @@ namespace parabolic::history
             case static_cast<int>(Length::SixMonths):
             case static_cast<int>(Length::OneYear):
             case static_cast<int>(Length::Forever):
-                options.m_length = static_cast<Length>(length);
+                options.set_length(static_cast<Length>(length));
                 break;
             default:
                 break;
@@ -247,7 +247,7 @@ namespace parabolic::history
             case static_cast<int>(Length::SixMonths):
             case static_cast<int>(Length::OneYear):
             case static_cast<int>(Length::Forever):
-                options.m_length = static_cast<Length>(length);
+                options.set_length(static_cast<Length>(length));
                 break;
             default:
                 break;
@@ -255,19 +255,19 @@ namespace parabolic::history
         }
         if (json.contains("historySortNewestFirst") && json["historySortNewestFirst"].is_boolean())
         {
-            options.m_sort_newest = json.at("historySortNewestFirst").get<bool>();
+            options.set_sort_newest(json.at("historySortNewestFirst").get<bool>());
         }
         else if (json.contains("HistorySortNewestFirst") && json["HistorySortNewestFirst"].is_boolean())
         {
-            options.m_sort_newest = json.at("HistorySortNewestFirst").get<bool>();
+            options.set_sort_newest(json.at("HistorySortNewestFirst").get<bool>());
         }
     }
 
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
-            { "historyLength", static_cast<int>(options.m_length) },
-            { "historySortNewestFirst", options.m_sort_newest },
+            { "historyLength", static_cast<int>(options.length()) },
+            { "historySortNewestFirst", options.sort_newest() },
         };
     }
 }

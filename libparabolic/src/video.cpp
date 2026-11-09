@@ -95,26 +95,29 @@ namespace parabolic::video
 
     void from_json(const nlohmann::json& json, Resolution& resolution)
     {
+        int width{ resolution.width() };
+        int height{ resolution.height() };
         if (json.contains("width") && json["width"].is_number_integer())
         {
-            resolution.m_width = json.at("width").get<int>();
+            width = json.at("width").get<int>();
         }
         else if (json.contains("Width") && json["Width"].is_number_integer())
         {
-            resolution.m_width = json.at("Width").get<int>();
+            width = json.at("Width").get<int>();
         }
         if (json.contains("height") && json["height"].is_number_integer())
         {
-            resolution.m_height = json.at("height").get<int>();
+            height = json.at("height").get<int>();
         }
         else if (json.contains("Height") && json["Height"].is_number_integer())
         {
-            resolution.m_height = json.at("Height").get<int>();
+            height = json.at("Height").get<int>();
         }
+        resolution = Resolution{ width, height };
     }
 
     void to_json(nlohmann::json& json, const Resolution& resolution)
     {
-        json = nlohmann::json{ { "width", resolution.m_width }, { "height", resolution.m_height } };
+        json = nlohmann::json{ { "width", resolution.width() }, { "height", resolution.height() } };
     }
 }

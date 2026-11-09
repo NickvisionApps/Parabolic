@@ -78,20 +78,20 @@ namespace parabolic::aria2
         }
         if (json.contains("useAria") && json["useAria"].is_boolean())
         {
-            options.m_use_aria = json.at("useAria").get<bool>();
+            options.set_use_aria(json.at("useAria").get<bool>());
         }
         else if (json.contains("UseAria") && json["UseAria"].is_boolean())
         {
-            options.m_use_aria = json.at("UseAria").get<bool>();
+            options.set_use_aria(json.at("UseAria").get<bool>());
         }
     }
 
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
-            { "ariaMaxConnectionsPerServer", options.m_max_connections_per_server },
-            { "ariaMinSplitSize", options.m_min_split_size },
-            { "useAria", options.m_use_aria },
+            { "ariaMaxConnectionsPerServer", options.max_connections_per_server() },
+            { "ariaMinSplitSize", options.min_split_size() },
+            { "useAria", options.use_aria() },
         };
     }
 }

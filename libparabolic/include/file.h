@@ -87,7 +87,9 @@ namespace parabolic::file
         TimeFrame() = default;
         TimeFrame(std::chrono::seconds start, std::chrono::seconds end);
         [[nodiscard]] std::chrono::seconds start() const;
+        void set_start(std::chrono::seconds value);
         [[nodiscard]] std::chrono::seconds end() const;
+        void set_end(std::chrono::seconds value);
         [[nodiscard]] std::string str() const;
         std::strong_ordering operator<=>(const TimeFrame& rhs) const = default;
         friend void from_json(const nlohmann::json& json, TimeFrame& time_frame);

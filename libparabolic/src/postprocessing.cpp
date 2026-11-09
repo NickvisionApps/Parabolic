@@ -244,43 +244,43 @@ namespace parabolic::postprocessing
     {
         if (json.contains("name") && json["name"].is_string())
         {
-            argument.m_name = json.at("name").get<std::string>();
+            argument.set_name(json.at("name").get<std::string>());
         }
         else if (json.contains("Name") && json["Name"].is_string())
         {
-            argument.m_name = json.at("Name").get<std::string>();
+            argument.set_name(json.at("Name").get<std::string>());
         }
         if (json.contains("step") && json["step"].is_number_integer())
         {
-            argument.m_step = static_cast<Step>(json.at("step").get<int>());
+            argument.set_step(static_cast<Step>(json.at("step").get<int>()));
         }
         else if (json.contains("Step") && json["Step"].is_number_integer())
         {
-            argument.m_step = static_cast<Step>(json.at("Step").get<int>());
+            argument.set_step(static_cast<Step>(json.at("Step").get<int>()));
         }
         else if (json.contains("postProcessor") && json["postProcessor"].is_number_integer())
         {
-            argument.m_step = static_cast<Step>(json.at("postProcessor").get<int>());
+            argument.set_step(static_cast<Step>(json.at("postProcessor").get<int>()));
         }
         else if (json.contains("PostProcessor") && json["PostProcessor"].is_number_integer())
         {
-            argument.m_step = static_cast<Step>(json.at("PostProcessor").get<int>());
+            argument.set_step(static_cast<Step>(json.at("PostProcessor").get<int>()));
         }
         if (json.contains("executable") && json["executable"].is_number_integer())
         {
-            argument.m_executable = static_cast<Executable>(json.at("executable").get<int>());
+            argument.set_executable(static_cast<Executable>(json.at("executable").get<int>()));
         }
         else if (json.contains("Executable") && json["Executable"].is_number_integer())
         {
-            argument.m_executable = static_cast<Executable>(json.at("Executable").get<int>());
+            argument.set_executable(static_cast<Executable>(json.at("Executable").get<int>()));
         }
         if (json.contains("args") && json["args"].is_string())
         {
-            argument.m_args = json.at("args").get<std::string>();
+            argument.set_args(json.at("args").get<std::string>());
         }
         else if (json.contains("Args") && json["Args"].is_string())
         {
-            argument.m_args = json.at("Args").get<std::string>();
+            argument.set_args(json.at("Args").get<std::string>());
         }
     }
 
@@ -288,53 +288,54 @@ namespace parabolic::postprocessing
     {
         if (json.contains("cropAudioThumbnails") && json["cropAudioThumbnails"].is_boolean())
         {
-            options.m_crop_audio_thumbnails = json.at("cropAudioThumbnails").get<bool>();
+            options.set_crop_audio_thumbnails(json.at("cropAudioThumbnails").get<bool>());
         }
         else if (json.contains("CropAudioThumbnails") && json["CropAudioThumbnails"].is_boolean())
         {
-            options.m_crop_audio_thumbnails = json.at("CropAudioThumbnails").get<bool>();
+            options.set_crop_audio_thumbnails(json.at("CropAudioThumbnails").get<bool>());
         }
         if (json.contains("embedChapters") && json["embedChapters"].is_boolean())
         {
-            options.m_embed_chapters = json.at("embedChapters").get<bool>();
+            options.set_embed_chapters(json.at("embedChapters").get<bool>());
         }
         else if (json.contains("EmbedChapters") && json["EmbedChapters"].is_boolean())
         {
-            options.m_embed_chapters = json.at("EmbedChapters").get<bool>();
+            options.set_embed_chapters(json.at("EmbedChapters").get<bool>());
         }
         if (json.contains("embedMetadata") && json["embedMetadata"].is_boolean())
         {
-            options.m_embed_metadata = json.at("embedMetadata").get<bool>();
+            options.set_embed_metadata(json.at("embedMetadata").get<bool>());
         }
         else if (json.contains("EmbedMetadata") && json["EmbedMetadata"].is_boolean())
         {
-            options.m_embed_metadata = json.at("EmbedMetadata").get<bool>();
+            options.set_embed_metadata(json.at("EmbedMetadata").get<bool>());
         }
         if (json.contains("embedSubtitles") && json["embedSubtitles"].is_boolean())
         {
-            options.m_embed_subtitles = json.at("embedSubtitles").get<bool>();
+            options.set_embed_subtitles(json.at("embedSubtitles").get<bool>());
         }
         else if (json.contains("EmbedSubtitles") && json["EmbedSubtitles"].is_boolean())
         {
-            options.m_embed_subtitles = json.at("EmbedSubtitles").get<bool>();
+            options.set_embed_subtitles(json.at("EmbedSubtitles").get<bool>());
         }
         if (json.contains("embedThumbnails") && json["embedThumbnails"].is_boolean())
         {
-            options.m_embed_thumbnails = json.at("embedThumbnails").get<bool>();
+            options.set_embed_thumbnails(json.at("embedThumbnails").get<bool>());
         }
         else if (json.contains("EmbedThumbnails") && json["EmbedThumbnails"].is_boolean())
         {
-            options.m_embed_thumbnails = json.at("EmbedThumbnails").get<bool>();
+            options.set_embed_thumbnails(json.at("EmbedThumbnails").get<bool>());
         }
         if (json.contains("postprocessingArguments") && json["postprocessingArguments"].is_array())
         {
-            options.m_arguments.clear();
+            std::vector<Argument> arguments;
             for (const nlohmann::json& item : json["postprocessingArguments"])
             {
                 Argument argument{ "", Step::None, Executable::None, "" };
                 from_json(item, argument);
-                options.m_arguments.push_back(argument);
+                arguments.push_back(argument);
             }
+            options.set_arguments(arguments);
         }
         if (json.contains("postprocessingThreads") && json["postprocessingThreads"].is_number_integer())
         {
@@ -346,37 +347,37 @@ namespace parabolic::postprocessing
         }
         if (json.contains("removeSourceData") && json["removeSourceData"].is_boolean())
         {
-            options.m_remove_source_data = json.at("removeSourceData").get<bool>();
+            options.set_remove_source_data(json.at("removeSourceData").get<bool>());
         }
         else if (json.contains("RemoveSourceData") && json["RemoveSourceData"].is_boolean())
         {
-            options.m_remove_source_data = json.at("RemoveSourceData").get<bool>();
+            options.set_remove_source_data(json.at("RemoveSourceData").get<bool>());
         }
     }
 
     void to_json(nlohmann::json& json, const Argument& argument)
     {
         json = nlohmann::json{
-            { "name", argument.m_name },
-            { "step", static_cast<int>(argument.m_step) },
-            { "executable", static_cast<int>(argument.m_executable) },
-            { "args", argument.m_args },
+            { "name", argument.name() },
+            { "step", static_cast<int>(argument.step()) },
+            { "executable", static_cast<int>(argument.executable()) },
+            { "args", argument.args() },
         };
     }
 
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
-            { "cropAudioThumbnails", options.m_crop_audio_thumbnails },
-            { "embedChapters", options.m_embed_chapters },
-            { "embedMetadata", options.m_embed_metadata },
-            { "embedSubtitles", options.m_embed_subtitles },
-            { "embedThumbnails", options.m_embed_thumbnails },
+            { "cropAudioThumbnails", options.crop_audio_thumbnails() },
+            { "embedChapters", options.embed_chapters() },
+            { "embedMetadata", options.embed_metadata() },
+            { "embedSubtitles", options.embed_subtitles() },
+            { "embedThumbnails", options.embed_thumbnails() },
             { "postprocessingArguments", nlohmann::json::array() },
-            { "postprocessingThreads", options.m_threads },
-            { "removeSourceData", options.m_remove_source_data },
+            { "postprocessingThreads", options.threads() },
+            { "removeSourceData", options.remove_source_data() },
         };
-        for (const Argument& item : options.m_arguments)
+        for (const Argument& item : options.arguments())
         {
             json["postprocessingArguments"].push_back(item);
         }

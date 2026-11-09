@@ -294,27 +294,27 @@ namespace parabolic::download
         }
         if (json.contains("overwriteExistingFiles") && json["overwriteExistingFiles"].is_boolean())
         {
-            options.m_overwrite_existing_files = json.at("overwriteExistingFiles").get<bool>();
+            options.set_overwrite_existing_files(json.at("overwriteExistingFiles").get<bool>());
         }
         else if (json.contains("OverwriteExistingFiles") && json["OverwriteExistingFiles"].is_boolean())
         {
-            options.m_overwrite_existing_files = json.at("OverwriteExistingFiles").get<bool>();
+            options.set_overwrite_existing_files(json.at("OverwriteExistingFiles").get<bool>());
         }
         if (json.contains("preventSuspend") && json["preventSuspend"].is_boolean())
         {
-            options.m_prevent_suspend = json.at("preventSuspend").get<bool>();
+            options.set_prevent_suspend(json.at("preventSuspend").get<bool>());
         }
         else if (json.contains("PreventSuspend") && json["PreventSuspend"].is_boolean())
         {
-            options.m_prevent_suspend = json.at("PreventSuspend").get<bool>();
+            options.set_prevent_suspend(json.at("PreventSuspend").get<bool>());
         }
         if (json.contains("ytdlpDownloadArgs") && json["ytdlpDownloadArgs"].is_string())
         {
-            options.m_ytdlp_arguments = json.at("ytdlpDownloadArgs").get<std::string>();
+            options.set_ytdlp_arguments(json.at("ytdlpDownloadArgs").get<std::string>());
         }
         else if (json.contains("YtdlpDownloadArgs") && json["YtdlpDownloadArgs"].is_string())
         {
-            options.m_ytdlp_arguments = json.at("YtdlpDownloadArgs").get<std::string>();
+            options.set_ytdlp_arguments(json.at("YtdlpDownloadArgs").get<std::string>());
         }
     }
 
@@ -322,14 +322,15 @@ namespace parabolic::download
     {
         if (json.contains("audioBitrate") && json["audioBitrate"].is_number())
         {
-            options.m_audio_bitrate = json.at("audioBitrate").get<double>();
+            options.set_audio_bitrate(json.at("audioBitrate").get<double>());
         }
         else if (json.contains("AudioBitrate") && json["AudioBitrate"].is_number())
         {
-            options.m_audio_bitrate = json.at("AudioBitrate").get<double>();
+            options.set_audio_bitrate(json.at("AudioBitrate").get<double>());
         }
         if (json.contains("audioFormatIds") && json["audioFormatIds"].is_object())
         {
+            std::map<file::Type, std::string> format_ids{ options.audio_format_ids() };
             for (const std::pair<const std::string, nlohmann::json>& pair :
                  json["audioFormatIds"].get<std::map<std::string, nlohmann::json>>())
             {
@@ -338,16 +339,17 @@ namespace parabolic::download
                     std::from_chars(pair.first.data(), pair.first.data() + pair.first.size(), type).ec == std::errc{} &&
                     type >= static_cast<int>(file::Type::VideoGeneric) && type <= static_cast<int>(file::Type::Ogg))
                 {
-                    options.m_audio_format_ids[static_cast<file::Type>(type)] = pair.second.get<std::string>();
+                    format_ids[static_cast<file::Type>(type)] = pair.second.get<std::string>();
                 }
             }
+            options.set_audio_format_ids(format_ids);
         }
         if (json.contains("audioOnlyFileType") && json["audioOnlyFileType"].is_number_integer())
         {
             int value{ json.at("audioOnlyFileType").get<int>() };
             if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
             {
-                options.m_audio_only_file_type = static_cast<file::Type>(value);
+                options.set_audio_only_file_type(static_cast<file::Type>(value));
             }
         }
         else if (json.contains("AudioOnlyFileType") && json["AudioOnlyFileType"].is_number_integer())
@@ -355,47 +357,47 @@ namespace parabolic::download
             int value{ json.at("AudioOnlyFileType").get<int>() };
             if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
             {
-                options.m_audio_only_file_type = static_cast<file::Type>(value);
+                options.set_audio_only_file_type(static_cast<file::Type>(value));
             }
         }
         if (json.contains("downloadImmediatelyAsAudio") && json["downloadImmediatelyAsAudio"].is_boolean())
         {
-            options.m_download_immediately_as_audio = json.at("downloadImmediatelyAsAudio").get<bool>();
+            options.set_download_immediately_as_audio(json.at("downloadImmediatelyAsAudio").get<bool>());
         }
         else if (json.contains("DownloadImmediatelyAsAudio") && json["DownloadImmediatelyAsAudio"].is_boolean())
         {
-            options.m_download_immediately_as_audio = json.at("DownloadImmediatelyAsAudio").get<bool>();
+            options.set_download_immediately_as_audio(json.at("DownloadImmediatelyAsAudio").get<bool>());
         }
         if (json.contains("downloadImmediatelyAsVideo") && json["downloadImmediatelyAsVideo"].is_boolean())
         {
-            options.m_download_immediately_as_video = json.at("downloadImmediatelyAsVideo").get<bool>();
+            options.set_download_immediately_as_video(json.at("downloadImmediatelyAsVideo").get<bool>());
         }
         else if (json.contains("DownloadImmediatelyAsVideo") && json["DownloadImmediatelyAsVideo"].is_boolean())
         {
-            options.m_download_immediately_as_video = json.at("DownloadImmediatelyAsVideo").get<bool>();
+            options.set_download_immediately_as_video(json.at("DownloadImmediatelyAsVideo").get<bool>());
         }
         if (json.contains("exportDescription") && json["exportDescription"].is_boolean())
         {
-            options.m_export_description = json.at("exportDescription").get<bool>();
+            options.set_export_description(json.at("exportDescription").get<bool>());
         }
         else if (json.contains("ExportDescription") && json["ExportDescription"].is_boolean())
         {
-            options.m_export_description = json.at("ExportDescription").get<bool>();
+            options.set_export_description(json.at("ExportDescription").get<bool>());
         }
         if (json.contains("exportM3U") && json["exportM3U"].is_boolean())
         {
-            options.m_export_m3u = json.at("exportM3U").get<bool>();
+            options.set_export_m3u(json.at("exportM3U").get<bool>());
         }
         else if (json.contains("ExportM3U") && json["ExportM3U"].is_boolean())
         {
-            options.m_export_m3u = json.at("ExportM3U").get<bool>();
+            options.set_export_m3u(json.at("ExportM3U").get<bool>());
         }
         if (json.contains("fullFileType") && json["fullFileType"].is_number_integer())
         {
             int value{ json.at("fullFileType").get<int>() };
             if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
             {
-                options.m_full_file_type = static_cast<file::Type>(value);
+                options.set_full_file_type(static_cast<file::Type>(value));
             }
         }
         else if (json.contains("FullFileType") && json["FullFileType"].is_number_integer())
@@ -403,64 +405,67 @@ namespace parabolic::download
             int value{ json.at("FullFileType").get<int>() };
             if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
             {
-                options.m_full_file_type = static_cast<file::Type>(value);
+                options.set_full_file_type(static_cast<file::Type>(value));
             }
         }
         if (json.contains("numberTitles") && json["numberTitles"].is_boolean())
         {
-            options.m_number_titles = json.at("numberTitles").get<bool>();
+            options.set_number_titles(json.at("numberTitles").get<bool>());
         }
         else if (json.contains("NumberTitles") && json["NumberTitles"].is_boolean())
         {
-            options.m_number_titles = json.at("NumberTitles").get<bool>();
+            options.set_number_titles(json.at("NumberTitles").get<bool>());
         }
         if (json.contains("postprocessingArgumentNames") && json["postprocessingArgumentNames"].is_array())
         {
-            options.m_postprocessing_argument_names.clear();
+            std::vector<std::string> names;
             for (const nlohmann::json& item : json["postprocessingArgumentNames"])
             {
                 if (item.is_string())
                 {
-                    options.m_postprocessing_argument_names.push_back(item.get<std::string>());
+                    names.push_back(item.get<std::string>());
                 }
             }
+            options.set_postprocessing_argument_names(names);
         }
         if (json.contains("reverseDownloadOrder") && json["reverseDownloadOrder"].is_boolean())
         {
-            options.m_reverse_download_order = json.at("reverseDownloadOrder").get<bool>();
+            options.set_reverse_download_order(json.at("reverseDownloadOrder").get<bool>());
         }
         else if (json.contains("ReverseDownloadOrder") && json["ReverseDownloadOrder"].is_boolean())
         {
-            options.m_reverse_download_order = json.at("ReverseDownloadOrder").get<bool>();
+            options.set_reverse_download_order(json.at("ReverseDownloadOrder").get<bool>());
         }
         if (json.contains("saveFolder") && json["saveFolder"].is_string())
         {
-            options.m_save_folder = std::filesystem::path{ json.at("saveFolder").get<std::string>() };
+            options.set_save_folder(std::filesystem::path{ json.at("saveFolder").get<std::string>() });
         }
         else if (json.contains("SaveFolder") && json["SaveFolder"].is_string())
         {
-            options.m_save_folder = std::filesystem::path{ json.at("SaveFolder").get<std::string>() };
+            options.set_save_folder(std::filesystem::path{ json.at("SaveFolder").get<std::string>() });
         }
         if (json.contains("splitChapters") && json["splitChapters"].is_boolean())
         {
-            options.m_split_chapters = json.at("splitChapters").get<bool>();
+            options.set_split_chapters(json.at("splitChapters").get<bool>());
         }
         else if (json.contains("SplitChapters") && json["SplitChapters"].is_boolean())
         {
-            options.m_split_chapters = json.at("SplitChapters").get<bool>();
+            options.set_split_chapters(json.at("SplitChapters").get<bool>());
         }
         if (json.contains("subtitleLanguages") && json["subtitleLanguages"].is_array())
         {
-            options.m_subtitle_languages.clear();
+            std::vector<subtitle::Language> languages;
             for (const nlohmann::json& item : json["subtitleLanguages"])
             {
                 subtitle::Language subtitle{ "", false };
                 from_json(item, subtitle);
-                options.m_subtitle_languages.push_back(subtitle);
+                languages.push_back(subtitle);
             }
+            options.set_subtitle_languages(languages);
         }
         if (json.contains("videoFormatIds") && json["videoFormatIds"].is_object())
         {
+            std::map<file::Type, std::string> format_ids{ options.video_format_ids() };
             for (const std::pair<const std::string, nlohmann::json>& pair :
                  json["videoFormatIds"].get<std::map<std::string, nlohmann::json>>())
             {
@@ -469,16 +474,17 @@ namespace parabolic::download
                     std::from_chars(pair.first.data(), pair.first.data() + pair.first.size(), type).ec == std::errc{} &&
                     type >= static_cast<int>(file::Type::VideoGeneric) && type <= static_cast<int>(file::Type::Ogg))
                 {
-                    options.m_video_format_ids[static_cast<file::Type>(type)] = pair.second.get<std::string>();
+                    format_ids[static_cast<file::Type>(type)] = pair.second.get<std::string>();
                 }
             }
+            options.set_video_format_ids(format_ids);
         }
         if (json.contains("videoOnlyFileType") && json["videoOnlyFileType"].is_number_integer())
         {
             int value{ json.at("videoOnlyFileType").get<int>() };
             if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
             {
-                options.m_video_only_file_type = static_cast<file::Type>(value);
+                options.set_video_only_file_type(static_cast<file::Type>(value));
             }
         }
         else if (json.contains("VideoOnlyFileType") && json["VideoOnlyFileType"].is_number_integer())
@@ -486,55 +492,55 @@ namespace parabolic::download
             int value{ json.at("VideoOnlyFileType").get<int>() };
             if (value >= static_cast<int>(file::Type::VideoGeneric) && value <= static_cast<int>(file::Type::Ogg))
             {
-                options.m_video_only_file_type = static_cast<file::Type>(value);
+                options.set_video_only_file_type(static_cast<file::Type>(value));
             }
         }
         if (json.contains("videoResolution") && json["videoResolution"].is_object())
         {
-            options.m_video_resolution = json["videoResolution"].get<video::Resolution>();
+            options.set_video_resolution(json["videoResolution"].get<video::Resolution>());
         }
     }
 
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
-            { "maxNumberOfActiveDownloads", options.m_max_number_of_active_downloads },
-            { "overwriteExistingFiles", options.m_overwrite_existing_files },
-            { "preventSuspend", options.m_prevent_suspend },
-            { "ytdlpDownloadArgs", options.m_ytdlp_arguments },
+            { "maxNumberOfActiveDownloads", options.max_number_of_active_downloads() },
+            { "overwriteExistingFiles", options.overwrite_existing_files() },
+            { "preventSuspend", options.prevent_suspend() },
+            { "ytdlpDownloadArgs", options.ytdlp_arguments() },
         };
     }
 
     void to_json(nlohmann::json& json, const PreviousDownloadOptions& options)
     {
         json = nlohmann::json{
-            { "audioBitrate", options.m_audio_bitrate },
+            { "audioBitrate", options.audio_bitrate() },
             { "audioFormatIds", nlohmann::json::object() },
-            { "audioOnlyFileType", static_cast<int>(options.m_audio_only_file_type) },
-            { "downloadImmediatelyAsAudio", options.m_download_immediately_as_audio },
-            { "downloadImmediatelyAsVideo", options.m_download_immediately_as_video },
-            { "exportDescription", options.m_export_description },
-            { "exportM3U", options.m_export_m3u },
-            { "fullFileType", static_cast<int>(options.m_full_file_type) },
-            { "numberTitles", options.m_number_titles },
-            { "postprocessingArgumentNames", options.m_postprocessing_argument_names },
-            { "reverseDownloadOrder", options.m_reverse_download_order },
-            { "saveFolder", options.m_save_folder.string() },
-            { "splitChapters", options.m_split_chapters },
+            { "audioOnlyFileType", static_cast<int>(options.audio_only_file_type()) },
+            { "downloadImmediatelyAsAudio", options.download_immediately_as_audio() },
+            { "downloadImmediatelyAsVideo", options.download_immediately_as_video() },
+            { "exportDescription", options.export_description() },
+            { "exportM3U", options.export_m3u() },
+            { "fullFileType", static_cast<int>(options.full_file_type()) },
+            { "numberTitles", options.number_titles() },
+            { "postprocessingArgumentNames", options.postprocessing_argument_names() },
+            { "reverseDownloadOrder", options.reverse_download_order() },
+            { "saveFolder", options.save_folder().string() },
+            { "splitChapters", options.split_chapters() },
             { "subtitleLanguages", nlohmann::json::array() },
             { "videoFormatIds", nlohmann::json::object() },
-            { "videoOnlyFileType", static_cast<int>(options.m_video_only_file_type) },
-            { "videoResolution", options.m_video_resolution },
+            { "videoOnlyFileType", static_cast<int>(options.video_only_file_type()) },
+            { "videoResolution", options.video_resolution() },
         };
-        for (const std::pair<const file::Type, std::string>& pair : options.m_audio_format_ids)
+        for (const std::pair<const file::Type, std::string>& pair : options.audio_format_ids())
         {
             json["audioFormatIds"][std::to_string(static_cast<int>(pair.first))] = pair.second;
         }
-        for (const subtitle::Language& item : options.m_subtitle_languages)
+        for (const subtitle::Language& item : options.subtitle_languages())
         {
             json["subtitleLanguages"].push_back(item);
         }
-        for (const std::pair<const file::Type, std::string>& pair : options.m_video_format_ids)
+        for (const std::pair<const file::Type, std::string>& pair : options.video_format_ids())
         {
             json["videoFormatIds"][std::to_string(static_cast<int>(pair.first))] = pair.second;
         }

@@ -85,7 +85,7 @@ namespace parabolic::extractor
             int value{ json.at("cookiesBrowser").get<int>() };
             if (value >= static_cast<int>(cookies::Browser::None) && value <= static_cast<int>(cookies::Browser::Whale))
             {
-                options.m_cookies_browser = static_cast<cookies::Browser>(value);
+                options.set_cookies_browser(static_cast<cookies::Browser>(value));
             }
         }
         else if (json.contains("CookiesBrowser") && json["CookiesBrowser"].is_number_integer())
@@ -93,24 +93,24 @@ namespace parabolic::extractor
             int value{ json.at("CookiesBrowser").get<int>() };
             if (value >= static_cast<int>(cookies::Browser::None) && value <= static_cast<int>(cookies::Browser::Whale))
             {
-                options.m_cookies_browser = static_cast<cookies::Browser>(value);
+                options.set_cookies_browser(static_cast<cookies::Browser>(value));
             }
         }
         if (json.contains("cookiesPath") && json["cookiesPath"].is_string())
         {
-            options.m_cookies_path = json.at("cookiesPath").get<std::string>();
+            options.set_cookies_path(json.at("cookiesPath").get<std::string>());
         }
         else if (json.contains("CookiesPath") && json["CookiesPath"].is_string())
         {
-            options.m_cookies_path = json.at("CookiesPath").get<std::string>();
+            options.set_cookies_path(json.at("CookiesPath").get<std::string>());
         }
         if (json.contains("proxyUrl") && json["proxyUrl"].is_string())
         {
-            options.m_proxy_url = json.at("proxyUrl").get<std::string>();
+            options.set_proxy_url(json.at("proxyUrl").get<std::string>());
         }
         else if (json.contains("ProxyUrl") && json["ProxyUrl"].is_string())
         {
-            options.m_proxy_url = json.at("ProxyUrl").get<std::string>();
+            options.set_proxy_url(json.at("ProxyUrl").get<std::string>());
         }
         if (json.contains("speedLimit"))
         {
@@ -125,44 +125,44 @@ namespace parabolic::extractor
         }
         if (json.contains("translateMetadataAndChapters") && json["translateMetadataAndChapters"].is_boolean())
         {
-            options.m_translate_metadata_and_chapters = json.at("translateMetadataAndChapters").get<bool>();
+            options.set_translate_metadata_and_chapters(json.at("translateMetadataAndChapters").get<bool>());
         }
         else if (json.contains("TranslateMetadataAndChapters") && json["TranslateMetadataAndChapters"].is_boolean())
         {
-            options.m_translate_metadata_and_chapters = json.at("TranslateMetadataAndChapters").get<bool>();
+            options.set_translate_metadata_and_chapters(json.at("TranslateMetadataAndChapters").get<bool>());
         }
         if (json.contains("usePartFiles") && json["usePartFiles"].is_boolean())
         {
-            options.m_use_part_files = json.at("usePartFiles").get<bool>();
+            options.set_use_part_files(json.at("usePartFiles").get<bool>());
         }
         else if (json.contains("UsePartFiles") && json["UsePartFiles"].is_boolean())
         {
-            options.m_use_part_files = json.at("UsePartFiles").get<bool>();
+            options.set_use_part_files(json.at("UsePartFiles").get<bool>());
         }
         if (json.contains("youTubeSponsorBlock") && json["youTubeSponsorBlock"].is_boolean())
         {
-            options.m_youtube_sponsor_block = json.at("youTubeSponsorBlock").get<bool>();
+            options.set_youtube_sponsor_block(json.at("youTubeSponsorBlock").get<bool>());
         }
         else if (json.contains("YouTubeSponsorBlock") && json["YouTubeSponsorBlock"].is_boolean())
         {
-            options.m_youtube_sponsor_block = json.at("YouTubeSponsorBlock").get<bool>();
+            options.set_youtube_sponsor_block(json.at("YouTubeSponsorBlock").get<bool>());
         }
     }
 
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
-            { "cookiesBrowser", static_cast<int>(options.m_cookies_browser) },
-            { "cookiesPath", options.m_cookies_path },
-            { "proxyUrl", options.m_proxy_url },
+            { "cookiesBrowser", static_cast<int>(options.cookies_browser()) },
+            { "cookiesPath", options.cookies_path() },
+            { "proxyUrl", options.proxy_url() },
             {
                     "speedLimit",
-                    options.m_speed_limit.has_value() ? nlohmann::json(options.m_speed_limit.value())
+                    options.speed_limit().has_value() ? nlohmann::json(options.speed_limit().value())
                                                       : nlohmann::json(nullptr),
             },
-            { "translateMetadataAndChapters", options.m_translate_metadata_and_chapters },
-            { "usePartFiles", options.m_use_part_files },
-            { "youTubeSponsorBlock", options.m_youtube_sponsor_block },
+            { "translateMetadataAndChapters", options.translate_metadata_and_chapters() },
+            { "usePartFiles", options.use_part_files() },
+            { "youTubeSponsorBlock", options.youtube_sponsor_block() },
         };
     }
 }

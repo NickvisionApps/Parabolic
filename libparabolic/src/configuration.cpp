@@ -435,11 +435,11 @@ namespace parabolic::configuration
         }
         if (json.contains("isMaximized") && json["isMaximized"].is_boolean())
         {
-            geometry.m_is_maximized = json.at("isMaximized").get<bool>();
+            geometry.set_is_maximized(json.at("isMaximized").get<bool>());
         }
         else if (json.contains("IsMaximized") && json["IsMaximized"].is_boolean())
         {
-            geometry.m_is_maximized = json.at("IsMaximized").get<bool>();
+            geometry.set_is_maximized(json.at("IsMaximized").get<bool>());
         }
         if (json.contains("width") && json["width"].is_number_integer())
         {
@@ -451,19 +451,19 @@ namespace parabolic::configuration
         }
         if (json.contains("x") && json["x"].is_number_integer())
         {
-            geometry.m_x = json.at("x").get<int>();
+            geometry.set_x(json.at("x").get<int>());
         }
         else if (json.contains("X") && json["X"].is_number_integer())
         {
-            geometry.m_x = json.at("X").get<int>();
+            geometry.set_x(json.at("X").get<int>());
         }
         if (json.contains("y") && json["y"].is_number_integer())
         {
-            geometry.m_y = json.at("y").get<int>();
+            geometry.set_y(json.at("y").get<int>());
         }
         else if (json.contains("Y") && json["Y"].is_number_integer())
         {
-            geometry.m_y = json.at("Y").get<int>();
+            geometry.set_y(json.at("Y").get<int>());
         }
     }
 
@@ -489,9 +489,9 @@ namespace parabolic::configuration
     void to_json(nlohmann::json& json, const WindowGeometry& geometry)
     {
         json = nlohmann::json{
-            { "height", geometry.m_height }, { "isMaximized", geometry.m_is_maximized },
-            { "width", geometry.m_width },   { "x", geometry.m_x },
-            { "y", geometry.m_y },
+            { "height", geometry.height() }, { "isMaximized", geometry.is_maximized() },
+            { "width", geometry.width() },   { "x", geometry.x() },
+            { "y", geometry.y() },
         };
     }
 }

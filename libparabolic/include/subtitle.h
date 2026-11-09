@@ -21,8 +21,10 @@ namespace parabolic::subtitle
     {
     public:
         Language(std::string language, bool is_auto_generated);
-        [[nodiscard]] const std::string& language() const;
         [[nodiscard]] bool is_auto_generated() const;
+        void set_is_auto_generated(bool value);
+        [[nodiscard]] const std::string& language() const;
+        void set_language(const std::string& value);
         [[nodiscard]] std::string str(const translation::Translator& translator) const;
         std::strong_ordering operator<=>(const Language& rhs) const;
         bool operator==(const Language& rhs) const;

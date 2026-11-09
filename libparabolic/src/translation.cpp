@@ -216,7 +216,7 @@ namespace parabolic::translation
     void to_json(nlohmann::json& json, const Options& options)
     {
         json = nlohmann::json{
-            { "translationLanguage", options.m_language },
+            { "translationLanguage", options.language() },
         };
     }
 }
