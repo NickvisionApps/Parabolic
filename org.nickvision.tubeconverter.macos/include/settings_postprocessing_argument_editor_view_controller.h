@@ -1,6 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-@interface SettingsPostprocessingArgumentEditorViewController : NSViewController
+@interface SettingsPostprocessingArgumentEditorViewController : NSViewController <NSTextFieldDelegate>
 - (instancetype)initWithName:(NSString*)name
                         step:(NSInteger)step
                   executable:(NSInteger)executable

@@ -38,5 +38,17 @@
 @property(nonatomic) BOOL useAria;
 @property(nonatomic) BOOL usePartFiles;
 @property(nonatomic) BOOL youtubeSponsorBlock;
+- (void)addArgumentWithName:(NSString*)name step:(NSInteger)step executable:(NSInteger)executable args:(NSString*)args;
+- (NSString*)argumentArgsAtIndex:(NSUInteger)index;
+- (NSUInteger)argumentCount;
+- (NSInteger)argumentExecutableAtIndex:(NSUInteger)index;
+- (NSString*)argumentNameAtIndex:(NSUInteger)index;
+- (NSInteger)argumentStepAtIndex:(NSUInteger)index;
+- (void)removeArgumentAtIndex:(NSUInteger)index;
+- (void)replaceArgumentAtIndex:(NSUInteger)index
+                      withName:(NSString*)name
+                          step:(NSInteger)step
+                    executable:(NSInteger)executable
+                          args:(NSString*)args;
 + (SettingsModel*)sharedModel;
 @end

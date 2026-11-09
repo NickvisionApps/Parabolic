@@ -1,9 +1,11 @@
 #import "settings_model.h"
 #include <algorithm>
+#include <cstddef>
 #include <optional>
 #include <string>
 #include <thread>
 #include <utility>
+#include <vector>
 #include "application.h"
 #include "aria2.h"
 #include "audio.h"
@@ -569,6 +571,87 @@
     parabolic::extractor::Options options{ configuration.extractor_options() };
     options.set_youtube_sponsor_block(youtubeSponsorBlock);
     configuration.set_extractor_options(options);
+}
+
+- (void)addArgumentWithName:(NSString*)name step:(NSInteger)step executable:(NSInteger)executable args:(NSString*)args
+{
+    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
+    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
+    std::vector<parabolic::postprocessing::Argument> arguments{ options.arguments() };
+    arguments.emplace_back(name.UTF8String, static_cast<parabolic::postprocessing::Step>(step),
+                           static_cast<parabolic::postprocessing::Executable>(executable), args.UTF8String);
+    options.set_arguments(arguments);
+    configuration.set_postprocessing_options(options);
+}
+
+- (NSString*)argumentArgsAtIndex:(NSUInteger)index
+{
+    return @(parabolic::application::State::instance()
+                     .configuration()
+                     .postprocessing_options()
+                     .arguments()[index]
+                     .args()
+                     .c_str());
+}
+
+- (NSUInteger)argumentCount
+{
+    return parabolic::application::State::instance().configuration().postprocessing_options().arguments().size();
+}
+
+- (NSInteger)argumentExecutableAtIndex:(NSUInteger)index
+{
+    return static_cast<NSInteger>(parabolic::application::State::instance()
+                                          .configuration()
+                                          .postprocessing_options()
+                                          .arguments()[index]
+                                          .executable());
+}
+
+- (NSString*)argumentNameAtIndex:(NSUInteger)index
+{
+    return @(parabolic::application::State::instance()
+                     .configuration()
+                     .postprocessing_options()
+                     .arguments()[index]
+                     .name()
+                     .c_str());
+}
+
+- (NSInteger)argumentStepAtIndex:(NSUInteger)index
+{
+    return static_cast<NSInteger>(parabolic::application::State::instance()
+                                          .configuration()
+                                          .postprocessing_options()
+                                          .arguments()[index]
+                                          .step());
+}
+
+- (void)removeArgumentAtIndex:(NSUInteger)index
+{
+    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
+    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
+    std::vector<parabolic::postprocessing::Argument> arguments{ options.arguments() };
+    arguments.erase(arguments.begin() + static_cast<std::ptrdiff_t>(index));
+    options.set_arguments(arguments);
+    configuration.set_postprocessing_options(options);
+}
+
+- (void)replaceArgumentAtIndex:(NSUInteger)index
+                      withName:(NSString*)name
+                          step:(NSInteger)step
+                    executable:(NSInteger)executable
+                          args:(NSString*)args
+{
+    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
+    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
+    std::vector<parabolic::postprocessing::Argument> arguments{ options.arguments() };
+    arguments[index].set_name(name.UTF8String);
+    arguments[index].set_step(static_cast<parabolic::postprocessing::Step>(step));
+    arguments[index].set_executable(static_cast<parabolic::postprocessing::Executable>(executable));
+    arguments[index].set_args(args.UTF8String);
+    options.set_arguments(arguments);
+    configuration.set_postprocessing_options(options);
 }
 
 - (BOOL)validateMaxActiveDownloads:(id*)ioValue error:(NSError**)outError

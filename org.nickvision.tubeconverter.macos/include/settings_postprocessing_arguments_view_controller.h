@@ -1,4 +1,4 @@
 #import <Cocoa/Cocoa.h>
 
-@interface SettingsPostprocessingArgumentsViewController : NSViewController
+@interface SettingsPostprocessingArgumentsViewController : NSViewController <NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate>
 @end

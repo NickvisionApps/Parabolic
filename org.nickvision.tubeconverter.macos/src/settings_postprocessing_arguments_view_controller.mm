@@ -1,18 +1,12 @@
 #import "settings_postprocessing_arguments_view_controller.h"
 #include <algorithm>
-#include <cstddef>
 #include <utility>
-#include <vector>
 #include "application.h"
-#include "configuration.h"
-#include "postprocessing.h"
+#import "settings_model.h"
 #import "settings_postprocessing_argument_editor_view_controller.h"
 #include "translation.h"
 
-@interface SettingsPostprocessingArgumentsViewController () <NSMenuItemValidation, NSTableViewDataSource,
-                                                             NSTableViewDelegate> {
-    std::vector<parabolic::postprocessing::Argument> _arguments;
-}
+@interface SettingsPostprocessingArgumentsViewController ()
 
 @property(nonatomic, strong) NSTableView* argumentsTableView;
 @property(nonatomic, strong) NSSegmentedControl* argumentsSegmentedControl;
@@ -33,7 +27,6 @@
 {
     [super viewDidLoad];
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     self.title = @(translator._("Arguments"));
     self.stepTitles = @[
         @(translator._("None")),
@@ -60,7 +53,6 @@
         @(translator._("FFmpeg")),
         @(translator._("FFprobe")),
     ];
-    _arguments = configuration.postprocessing_options().arguments();
     NSTextField* descriptionLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Arguments will be shown for selection in the download "
@@ -197,7 +189,7 @@
 - (void)editArgument:(id)sender
 {
     NSInteger row{ [self rowForSender:sender] };
-    if (row >= 0 && std::cmp_less(row, _arguments.size()))
+    if (row >= 0 && std::cmp_less(row, [[SettingsModel sharedModel] argumentCount]))
     {
         [self presentArgumentEditorForRow:row];
     }
@@ -205,22 +197,19 @@
 
 - (void)removeArgument:(id)sender
 {
+    SettingsModel* model{ [SettingsModel sharedModel] };
     NSInteger row{ [self rowForSender:sender] };
-    if (row < 0 || std::cmp_greater_equal(row, _arguments.size()))
+    if (row < 0 || std::cmp_greater_equal(row, [model argumentCount]))
     {
         return;
     }
-    _arguments.erase(_arguments.begin() + row);
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_arguments(_arguments);
-    configuration.set_postprocessing_options(options);
+    [model removeArgumentAtIndex:static_cast<NSUInteger>(row)];
     [self.argumentsTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:static_cast<NSUInteger>(row)]
                                    withAnimation:NSTableViewAnimationEffectFade];
-    if (!_arguments.empty())
+    if ([model argumentCount] > 0)
     {
         [self.argumentsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:std::min(static_cast<NSUInteger>(row),
-                                                                                         _arguments.size() - 1)]
+                                                                                         [model argumentCount] - 1)]
                              byExtendingSelection:NO];
     }
 }
@@ -233,12 +222,13 @@
 - (void)presentArgumentEditorForRow:(NSInteger)row
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
+    SettingsModel* model{ [SettingsModel sharedModel] };
     NSMutableArray<NSString*>* existingNames{ [NSMutableArray array] };
-    for (size_t i{ 0 }; i < _arguments.size(); i++)
+    for (NSUInteger i{ 0 }; i < [model argumentCount]; i++)
     {
         if (std::cmp_not_equal(i, row))
         {
-            [existingNames addObject:@(_arguments[i].name().c_str())];
+            [existingNames addObject:[model argumentNameAtIndex:i]];
         }
     }
     NSString* name{ @"" };
@@ -247,11 +237,10 @@
     NSString* args{ @"" };
     if (row >= 0)
     {
-        const parabolic::postprocessing::Argument& argument{ _arguments[static_cast<size_t>(row)] };
-        name = @(argument.name().c_str());
-        step = static_cast<NSInteger>(argument.step());
-        executable = static_cast<NSInteger>(argument.executable());
-        args = @(argument.args().c_str());
+        name = [model argumentNameAtIndex:static_cast<NSUInteger>(row)];
+        step = [model argumentStepAtIndex:static_cast<NSUInteger>(row)];
+        executable = [model argumentExecutableAtIndex:static_cast<NSUInteger>(row)];
+        args = [model argumentArgsAtIndex:static_cast<NSUInteger>(row)];
     }
     SettingsPostprocessingArgumentEditorViewController* editor = [[SettingsPostprocessingArgumentEditorViewController
             alloc]
@@ -261,34 +250,23 @@
                      args:args
             existingNames:existingNames
                completion:^(NSString* newName, NSInteger newStep, NSInteger newExecutable, NSString* newArgs) {
-                 if (row >= 0 && std::cmp_greater_equal(row, self->_arguments.size()))
+                 if (row >= 0 && std::cmp_greater_equal(row, [model argumentCount]))
                  {
                      return;
                  }
                  if (row < 0)
                  {
-                     self->_arguments.emplace_back(newName.UTF8String,
-                                                   static_cast<parabolic::postprocessing::Step>(newStep),
-                                                   static_cast<parabolic::postprocessing::Executable>(newExecutable),
-                                                   newArgs.UTF8String);
+                     [model addArgumentWithName:newName step:newStep executable:newExecutable args:newArgs];
                  }
                  else
                  {
-                     parabolic::postprocessing::Argument& argument{
-                         self->_arguments[static_cast<size_t>(row)],
-                     };
-                     argument.set_name(newName.UTF8String);
-                     argument.set_step(static_cast<parabolic::postprocessing::Step>(newStep));
-                     argument.set_executable(static_cast<parabolic::postprocessing::Executable>(newExecutable));
-                     argument.set_args(newArgs.UTF8String);
+                     [model replaceArgumentAtIndex:static_cast<NSUInteger>(row)
+                                          withName:newName
+                                              step:newStep
+                                        executable:newExecutable
+                                              args:newArgs];
                  }
-                 parabolic::configuration::Configuration& configuration{
-                     parabolic::application::State::instance().configuration(),
-                 };
-                 parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-                 options.set_arguments(self->_arguments);
-                 configuration.set_postprocessing_options(options);
-                 NSUInteger selectedIndex{ row < 0 ? self->_arguments.size() - 1 : static_cast<NSUInteger>(row) };
+                 NSUInteger selectedIndex{ row < 0 ? [model argumentCount] - 1 : static_cast<NSUInteger>(row) };
                  if (row < 0)
                  {
                      [self.argumentsTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:selectedIndex]
@@ -315,7 +293,7 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)tableView
 {
-    return static_cast<NSInteger>(_arguments.size());
+    return static_cast<NSInteger>([[SettingsModel sharedModel] argumentCount]);
 }
 
 - (NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row
@@ -336,27 +314,28 @@
             [textField.centerYAnchor constraintEqualToAnchor:cell.centerYAnchor],
         ]];
     }
-    const parabolic::postprocessing::Argument& argument{ _arguments[static_cast<size_t>(row)] };
+    SettingsModel* model{ [SettingsModel sharedModel] };
     NSString* value{ @"" };
     if ([tableColumn.identifier isEqualToString:@"name"])
     {
-        value = @(argument.name().c_str());
+        value = [model argumentNameAtIndex:static_cast<NSUInteger>(row)];
     }
     else if ([tableColumn.identifier isEqualToString:@"step"])
     {
-        value = std::cmp_less(static_cast<NSUInteger>(argument.step()), self.stepTitles.count)
-                        ? self.stepTitles[static_cast<NSUInteger>(argument.step())]
-                        : @"";
+        NSInteger step{ [model argumentStepAtIndex:static_cast<NSUInteger>(row)] };
+        value = step >= 0 && std::cmp_less(step, self.stepTitles.count) ? self.stepTitles[static_cast<NSUInteger>(step)]
+                                                                        : @"";
     }
     else if ([tableColumn.identifier isEqualToString:@"executable"])
     {
-        value = std::cmp_less(static_cast<NSUInteger>(argument.executable()), self.executableTitles.count)
-                        ? self.executableTitles[static_cast<NSUInteger>(argument.executable())]
+        NSInteger executable{ [model argumentExecutableAtIndex:static_cast<NSUInteger>(row)] };
+        value = executable >= 0 && std::cmp_less(executable, self.executableTitles.count)
+                        ? self.executableTitles[static_cast<NSUInteger>(executable)]
                         : @"";
     }
     else
     {
-        value = @(argument.args().c_str());
+        value = [model argumentArgsAtIndex:static_cast<NSUInteger>(row)];
     }
     cell.textField.stringValue = value;
     return cell;

@@ -2,7 +2,7 @@
 #include "application.h"
 #include "translation.h"
 
-@interface SettingsPostprocessingArgumentEditorViewController () <NSTextFieldDelegate>
+@interface SettingsPostprocessingArgumentEditorViewController ()
 
 @property(nonatomic, copy) NSString* initialName;
 @property(nonatomic, assign) NSInteger initialStep;
