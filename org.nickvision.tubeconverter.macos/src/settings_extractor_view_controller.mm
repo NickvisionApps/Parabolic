@@ -270,15 +270,6 @@
     ]];
 }
 
-- (void)viewDidLayout
-{
-    [super viewDidLayout];
-    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
-    {
-        self.preferredContentSize = self.view.fittingSize;
-    }
-}
-
 - (void)usePartFilesChanged:(NSButton*)sender
 {
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };

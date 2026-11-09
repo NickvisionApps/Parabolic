@@ -63,15 +63,6 @@
     ]];
 }
 
-- (void)viewDidLayout
-{
-    [super viewDidLayout];
-    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
-    {
-        self.preferredContentSize = self.view.fittingSize;
-    }
-}
-
 - (void)historyLengthChanged:(NSPopUpButton*)sender
 {
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };

@@ -162,15 +162,6 @@
     ]];
 }
 
-- (void)viewDidLayout
-{
-    [super viewDidLayout];
-    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
-    {
-        self.preferredContentSize = self.view.fittingSize;
-    }
-}
-
 - (void)themeChanged:(NSPopUpButton*)sender
 {
     parabolic::configuration::Theme theme{ static_cast<parabolic::configuration::Theme>(sender.selectedItem.tag) };

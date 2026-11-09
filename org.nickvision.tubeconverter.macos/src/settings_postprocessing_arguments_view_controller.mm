@@ -9,7 +9,8 @@
 #import "settings_postprocessing_argument_editor_view_controller.h"
 #include "translation.h"
 
-@interface SettingsPostprocessingArgumentsViewController () <NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate> {
+@interface SettingsPostprocessingArgumentsViewController () <NSMenuItemValidation, NSTableViewDataSource,
+                                                             NSTableViewDelegate> {
     std::vector<parabolic::postprocessing::Argument> _arguments;
 }
 
@@ -267,10 +268,9 @@
                  if (row < 0)
                  {
                      self->_arguments.emplace_back(newName.UTF8String,
-                                                         static_cast<parabolic::postprocessing::Step>(newStep),
-                                                         static_cast<parabolic::postprocessing::Executable>(
-                                                                 newExecutable),
-                                                         newArgs.UTF8String);
+                                                   static_cast<parabolic::postprocessing::Step>(newStep),
+                                                   static_cast<parabolic::postprocessing::Executable>(newExecutable),
+                                                   newArgs.UTF8String);
                  }
                  else
                  {
@@ -292,7 +292,7 @@
                  if (row < 0)
                  {
                      [self.argumentsTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:selectedIndex]
-                                                          withAnimation:NSTableViewAnimationSlideDown];
+                                                    withAnimation:NSTableViewAnimationSlideDown];
                  }
                  else
                  {
@@ -306,7 +306,7 @@
                                                                                                  .numberOfColumns))]];
                  }
                  [self.argumentsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedIndex]
-                                            byExtendingSelection:NO];
+                                      byExtendingSelection:NO];
                  [self.argumentsTableView scrollRowToVisible:static_cast<NSInteger>(selectedIndex)];
                }];
     editor.title = @(row < 0 ? translator._("Add Argument") : translator._("Edit Argument"));

@@ -119,15 +119,6 @@
     ]];
 }
 
-- (void)viewDidLayout
-{
-    [super viewDidLayout];
-    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
-    {
-        self.preferredContentSize = self.view.fittingSize;
-    }
-}
-
 - (void)maxActiveDownloadsTextFieldChanged:(NSTextField*)sender
 {
     if (sender.stringValue.length == 0 || sender.integerValue < 1 || sender.integerValue > 10)

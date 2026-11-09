@@ -2,9 +2,15 @@
 
 @implementation SettingsTabViewController
 
-- (void)tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem
+- (void)viewWillAppear
 {
-    [super tabView:tabView didSelectTabViewItem:tabViewItem];
+    [super viewWillAppear];
+    [self resizeWindowForTabViewItem:self.tabViewItems[static_cast<NSUInteger>(self.selectedTabViewItemIndex)]
+                             animate:NO];
+}
+
+- (void)resizeWindowForTabViewItem:(NSTabViewItem*)tabViewItem animate:(BOOL)animate
+{
     NSWindow* window{ self.view.window };
     if (window == nil)
     {
@@ -19,7 +25,13 @@
     };
     frame.origin.y += frame.size.height - height;
     frame.size.height = height;
-    [window setFrame:frame display:YES animate:YES];
+    [window setFrame:frame display:YES animate:animate];
+}
+
+- (void)tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem
+{
+    [super tabView:tabView didSelectTabViewItem:tabViewItem];
+    [self resizeWindowForTabViewItem:tabViewItem animate:YES];
 }
 
 @end

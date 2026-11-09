@@ -154,15 +154,6 @@
     ]];
 }
 
-- (void)viewDidLayout
-{
-    [super viewDidLayout];
-    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
-    {
-        self.preferredContentSize = self.view.fittingSize;
-    }
-}
-
 - (void)useAriaChanged:(NSButton*)sender
 {
     BOOL enabled{ sender.state == NSControlStateValueOn };
