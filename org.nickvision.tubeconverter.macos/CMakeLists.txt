@@ -9,13 +9,27 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "26.0" CACHE STRING "Minimum macOS deployment ve
 configure_file("${CMAKE_SOURCE_DIR}/resources/macos/Info.plist.in" "${CMAKE_CURRENT_BINARY_DIR}/Info.plist" @ONLY)
 
 add_executable("${PROJECT_NAME}.macos"
-    "include/delegate.h"
-    "include/menu.h"
-    "include/settings.h"
-    "src/delegate.mm"
+    "include/app_delegate.h"
+    "include/main_menu_controller.h"
+    "include/settings_aria2_view_controller.h"
+    "include/settings_dialog_controller.h"
+    "include/settings_discovery_view_controller.h"
+    "include/settings_downloads_view_controller.h"
+    "include/settings_extractor_view_controller.h"
+    "include/settings_general_view_controller.h"
+    "include/settings_history_view_controller.h"
+    "include/settings_postprocessing_view_controller.h"
+    "src/app_delegate.mm"
     "src/main.mm"
-    "src/menu.mm"
-    "src/settings.mm")
+    "src/main_menu_controller.mm"
+    "src/settings_aria2_view_controller.mm"
+    "src/settings_dialog_controller.mm"
+    "src/settings_discovery_view_controller.mm"
+    "src/settings_downloads_view_controller.mm"
+    "src/settings_extractor_view_controller.mm"
+    "src/settings_general_view_controller.mm"
+    "src/settings_history_view_controller.mm"
+    "src/settings_postprocessing_view_controller.mm")
 set_target_properties("${PROJECT_NAME}.macos" PROPERTIES
     OUTPUT_NAME "${DISPLAY_NAME}"
     XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC YES

@@ -1,4 +1,4 @@
-#import "delegate.h"
+#import "app_delegate.h"
 #include "application.h"
 #include "configuration.h"
 

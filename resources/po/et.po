@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 22:05-0500\n"
+"POT-Creation-Date: 2026-11-08 21:32-0500\n"
 "PO-Revision-Date: 2026-04-24 15:09+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,7 +58,7 @@ msgid "Worst"
 msgstr "Kõige kehvem"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1004
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
 msgid "None"
 msgstr "Määratlemata"
 
@@ -73,570 +73,147 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:25
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:25
 msgid "About Parabolic"
 msgstr "Rakenduse teave: Parabolic"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:28
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:28
 #, fuzzy
 msgid "Check for Updates…"
 msgstr "Kontrolli uuendusi"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:34
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:34
 #, fuzzy
 msgid "Settings…"
 msgstr "Seadistused"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:44
-#: org.nickvision.tubeconverter.macos/src/menu.mm:48
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:44
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:48
 msgid "Services"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:53
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:53
 #, fuzzy
 msgid "Hide Parabolic"
 msgstr "Rakenduse teave: Parabolic"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:56
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:56
 msgid "Hide Others"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:61
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:61
 #, fuzzy
 msgid "Show All"
 msgstr "Näita logi"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:63
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:63
 #, fuzzy
 msgid "Quit Parabolic"
 msgstr "Rakenduse teave: Parabolic"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:69
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:69
 msgid "File"
 msgstr "Fail"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:76
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:76
 msgid "Edit"
 msgstr "Muuda"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:78
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:78
 msgid "Undo"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:81
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:81
 msgid "Redo"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:85
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:85
 msgid "Cut"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:86
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:86
 msgid "Copy"
 msgstr "Kopeeri"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:87
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:87
 msgid "Paste"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:88
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:88
 msgid "Delete"
 msgstr "Kustuta"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:89
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:89
 msgid "Select All"
 msgstr "Vali kõik"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:95
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:95
 msgid "View"
 msgstr "Vaata"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:99
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:99
 #, fuzzy
 msgid "Enter Full Screen"
 msgstr "Sisesta võrguaadress siia"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:109
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:109
 msgid "Window"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:111
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:111
 msgid "Minimize"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:112
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:112
 msgid "Zoom"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:114
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:114
 msgid "Bring All to Front"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:123
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:123
 msgid "Help"
 msgstr "Abiteave"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:125
-#: org.nickvision.tubeconverter.macos/src/menu.mm:175
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:175
 msgid "What's New?"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:127
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:127
 #, fuzzy
 msgid "GitHub Repository…"
 msgstr "Lähtekoodi hoidla GitHubis"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:130
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:130
 #, fuzzy
 msgid "Report an Issue…"
 msgstr "Teata vigadest"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:131
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:131
 #, fuzzy
 msgid "Discussions…"
 msgstr "Arutelud"
 
-#: org.nickvision.tubeconverter.macos/src/menu.mm:177
+#: org.nickvision.tubeconverter.macos/src/main_menu_controller.mm:177
 msgid "OK"
 msgstr "Sobib"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:33
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1548
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1549
-#, fuzzy
-msgctxt "Settings"
-msgid "General"
-msgstr "Üldist"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:36
-msgid "Theme"
-msgstr "Kujundus"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:36
-#: org.nickvision.tubeconverter.macos/src/settings.mm:55
-#: org.nickvision.tubeconverter.macos/src/settings.mm:235
-#: org.nickvision.tubeconverter.macos/src/settings.mm:312
-#: org.nickvision.tubeconverter.macos/src/settings.mm:355
-#: org.nickvision.tubeconverter.macos/src/settings.mm:523
-#: org.nickvision.tubeconverter.macos/src/settings.mm:555
-#: org.nickvision.tubeconverter.macos/src/settings.mm:585
-#: org.nickvision.tubeconverter.macos/src/settings.mm:615
-#: org.nickvision.tubeconverter.macos/src/settings.mm:644
-#: org.nickvision.tubeconverter.macos/src/settings.mm:957
-#: org.nickvision.tubeconverter.macos/src/settings.mm:986
-#: org.nickvision.tubeconverter.macos/src/settings.mm:997
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1023
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1313
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1341
-#, c++-format
-msgid "{}:"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:43
-msgctxt "Theme"
-msgid "Light"
-msgstr "Hele kujundus"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:44
-msgctxt "Theme"
-msgid "Dark"
-msgstr "Tume kujundus"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:45
-msgctxt "Theme"
-msgid "System"
-msgstr "Süsteemi kujundus"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:55
-msgid "Translation Language"
-msgstr "Tõlke keel"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:63
-#, fuzzy
-msgctxt "Language"
-msgid "System"
-msgstr "Süsteemi kujundus"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:98
-#, fuzzy
-msgid "An application restart is required for a change to take effect."
-msgstr "Nende muutuste kasutuselevõtmiseks palun käivita rakendus uuesti"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:106
-msgid "Automatically Check for Updates"
-msgstr "Kontrolli uuendusi automaatselt"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:115
-#, fuzzy
-msgid "Allow Preview Updates"
-msgstr "Uuenda beetaversioone"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:126
-#, fuzzy
-msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-msgstr "Uuenda sõltuvused, nt yt-dlp, beetaversioonideks"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:232
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1554
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1555
-#, fuzzy
-msgctxt "Settings"
-msgid "History"
-msgstr "Ajalugu"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:235
-#, fuzzy
-msgid "Keep Download History For"
-msgstr "Allalaadimisete ajalugu on tühi"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:242
-msgid "Never"
-msgstr "Mitte kunagi"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:243
-msgid "1 Day"
-msgstr "Üks päev"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:244
-msgid "1 Week"
-msgstr "Üks nädal"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:245
-msgid "1 Month"
-msgstr "Üks kuu"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:246
-msgid "3 Months"
-msgstr "Kolm kuud"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:247
-msgid "6 Months"
-msgstr "Kuus kuud"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:248
-msgid "1 Year"
-msgstr "Üks aasta"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:249
-msgid "Forever"
-msgstr "Igavesti"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:309
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1560
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1561
-#, fuzzy
-msgctxt "Settings"
-msgid "Downloads"
-msgstr "Allalaadimised"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:312
-#, fuzzy
-msgid "Maximum Active Downloads"
-msgstr "Töösolevate allalaadimisete suurim lubatud arv"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:338
-msgid "Overwrite Existing Files"
-msgstr "Kirjuta olemasolevad failid üle"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:347
-msgid "Prevent Sleep During Downloads"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:355
-#, fuzzy
-msgid "Extra yt-dlp Download Arguments"
-msgstr "yt-dlp allalaadimise argumendid"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:461
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1566
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1567
-#, fuzzy
-msgctxt "Settings"
-msgid "Discovery"
-msgstr "Otsi ja avasta"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:464
-#, fuzzy
-msgid "Show Auto-Generated Subtitles"
-msgstr "Kaasa automaatselt loodud subtiitrid"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:473
-msgid "Include Media Id in Title"
-msgstr "Lisa meedia tunnus pealkirja"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:482
-#, fuzzy
-msgid "Add the media entry's yt-dlp id to its default title."
-msgstr "Lisa vaikimisi pealkirja meediumi tunnus"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:489
-#, fuzzy
-msgid "Show Super Resolution Formats"
-msgstr "Kaasa superresolutsiooniga vormingud"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:498
-msgid ""
-"Super resolutions are resolutions that have been enhanced with artificial "
-"intelligence."
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:506
-msgid "Limit Filename Characters"
-msgstr "Piira failinimedes kasutatavaid tähemärke"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:515
-#, fuzzy
-msgid "Restrict filename characters to those supported only by Windows."
-msgstr "Kasuta vaid sellised tähemärke, mida Windows oskab lugeda"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:523
-msgid "Preferred Audio Codec"
-msgstr "Eelistatud helikoodek"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:530
-#: org.nickvision.tubeconverter.macos/src/settings.mm:562
-#: org.nickvision.tubeconverter.macos/src/settings.mm:592
-#: org.nickvision.tubeconverter.macos/src/settings.mm:622
-msgid "Any"
-msgstr "Ükspuha missugune"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:531
-msgid "FLAC"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:532
-msgid "WAV"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:533
-msgid "Opus"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:534
-msgid "AAC"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:535
-msgid "MP4A"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:536
-msgid "MP3"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:547
-#, fuzzy
-msgid "Prefer this codec when parsing audio formats to show for download."
-msgstr ""
-"Helivormingute töötlemisel ja allalaaditavate kuvamisel eelista seda koodekit"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:555
-msgid "Preferred Video Codec"
-msgstr "Eelistatud videokoodek"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:563
-msgid "H.265"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:564
-msgid "VP9"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:565
-msgid "AV1"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:566
-#, fuzzy
-msgid "H.264"
-msgstr "H.264 (AVC)"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:577
-#, fuzzy
-msgid "Prefer this codec when parsing video formats to show for download."
-msgstr ""
-"Videovormingute töötlemisel ja allalaaditavate kuvamisel eelista seda "
-"koodekit"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:585
-msgid "Preferred Subtitle Format"
-msgstr "Eelistatud subtiitrivorming"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:593
-msgid "VTT"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:594
-msgid "SRT"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:595
-msgid "ASS"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:596
-msgid "LRC"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:608
-#, fuzzy
-msgid "Prefer this subtitle file format for download."
-msgstr "Allalaadimisel eelista seda subtiitrite vormingut"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:615
-msgid "Preferred Frame Rate"
-msgstr "Eelistatud kaadrisageus"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:623
-#, fuzzy
-msgid "24 FPS"
-msgstr "{0} FPS"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:624
-#, fuzzy
-msgid "30 FPS"
-msgstr "{0} FPS"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:625
-#, fuzzy
-msgid "60 FPS"
-msgstr "{0} FPS"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:636
-#, fuzzy
-msgid "Prefer this frame rate when parsing video formats to show for download."
-msgstr ""
-"Allalaaditavate videovormingute loendi töötlemisel eelista seda "
-"kaadrisagedust"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:644
-#, fuzzy
-msgid "Extra yt-dlp Discovery Arguments"
-msgstr "yt-dlp tuvastamise argumendid"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:894
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1572
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1573
-msgctxt "Settings"
-msgid "Extractor"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:897
-msgid "Use Part Files"
-msgstr "Kasuta osalisi faile"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:906
-#, fuzzy
-msgid ""
-"Download media in separate .part files instead of directly into the output "
-"file."
-msgstr "Ühe väljundfaili asemel laadi sisu eraldi .part failidesse"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:914
-msgid "Use SponsorBlock for YouTube"
-msgstr "Kasuta YouTube'i jaoks SponsorBlockki"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:923
-#, fuzzy
-msgid "Try to remove sponsored segments from videos."
-msgstr "Ürita videotest eemaldada sponsoreeritud lõigud"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:930
-msgid "Translate Metadata and Chapters"
-msgstr "Tõlgi metateave ja peatükid"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:939
-#, fuzzy
-msgid ""
-"Automatically translate embedded metadata and chapters using the app's set "
-"language on supported sites and media."
-msgstr ""
-"Toetatud meediumi ja saitide puhul tõlgi lõimitud metateave ja peatükkide "
-"andmed rakenduse keelde"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:948
-msgid "Limit Download Speed"
-msgstr "Piira allalaadimise kiirust"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:957
-msgid "Speed Limit (KiB/s)"
-msgstr "Kiiruspiirang allalaadimisel (KiB/s)"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:986
-msgid "Proxy URL"
-msgstr "Proksiserveri aadress"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:997
-#, fuzzy
-msgid "Cookies Browser"
-msgstr "Brauseri küpsised"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1005
-msgid "Brave"
-msgstr "Brave"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1006
-msgid "Chrome"
-msgstr "Chrome"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1007
-msgid "Chromium"
-msgstr "Chromium"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1008
-msgid "Edge"
-msgstr "Edge"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1009
-msgid "Firefox"
-msgstr "Firefox"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1010
-msgid "Opera"
-msgstr "Opera"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1011
-msgid "Vivaldi"
-msgstr "Vivaldi"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1012
-msgid "Whale"
-msgstr "Whale"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1023
-msgid "Cookies File"
-msgstr "Küpsiste fail"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1035
-msgid "Browse…"
-msgstr ""
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1040
-msgid "Clear"
-msgstr "Tühjenda"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1254
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1578
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1579
-#, fuzzy
-msgctxt "Settings"
-msgid "Postprocessing"
-msgstr "Järeltöötlemisel"
-
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1282
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1584
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1585
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:30
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:142
 #, fuzzy
 msgctxt "Settings"
 msgid "aria2"
 msgstr "aria2c"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1285
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:33
 #, fuzzy
 msgid "Use aria2"
 msgstr "Kasuta aria2c teenust"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1291
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -645,18 +222,441 @@ msgstr ""
 "yt-dlp oma allalaadija asemel võib mõnedes piirkonnas alternatiivne "
 "allalaadija toimida kiiremini"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1305
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1313
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Serverikohaste ühenduste ülempiir"
 
-#: org.nickvision.tubeconverter.macos/src/settings.mm:1341
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:178
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:207
+#: org.nickvision.tubeconverter.macos/src/settings_downloads_view_controller.mm:31
+#: org.nickvision.tubeconverter.macos/src/settings_downloads_view_controller.mm:74
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:123
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:134
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:160
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
 msgid "Minimum Split Size (MiB)"
 msgstr "Mahu alampiir failide jagamisel (MiB)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:106
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:21
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Üldist"
+
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:111
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:20
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Ajalugu"
+
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:117
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:118
+#: org.nickvision.tubeconverter.macos/src/settings_downloads_view_controller.mm:28
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Allalaadimised"
+
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:123
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:124
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:24
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Otsi ja avasta"
+
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:129
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:130
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:31
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
+#: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Järeltöötlemisel"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:27
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Kaasa automaatselt loodud subtiitrid"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:36
+msgid "Include Media Id in Title"
+msgstr "Lisa meedia tunnus pealkirja"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:45
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "Lisa vaikimisi pealkirja meediumi tunnus"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:52
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Kaasa superresolutsiooniga vormingud"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:61
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:69
+msgid "Limit Filename Characters"
+msgstr "Piira failinimedes kasutatavaid tähemärke"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:78
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "Kasuta vaid sellised tähemärke, mida Windows oskab lugeda"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
+msgid "Preferred Audio Codec"
+msgstr "Eelistatud helikoodek"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:155
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:185
+msgid "Any"
+msgstr "Ükspuha missugune"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:94
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:95
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:96
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:97
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:98
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:99
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:110
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+"Helivormingute töötlemisel ja allalaaditavate kuvamisel eelista seda koodekit"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
+msgid "Preferred Video Codec"
+msgstr "Eelistatud videokoodek"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:126
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:127
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:128
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:129
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:140
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+"Videovormingute töötlemisel ja allalaaditavate kuvamisel eelista seda "
+"koodekit"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
+msgid "Preferred Subtitle Format"
+msgstr "Eelistatud subtiitrivorming"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:156
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:157
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:158
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:159
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:171
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "Allalaadimisel eelista seda subtiitrite vormingut"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:178
+msgid "Preferred Frame Rate"
+msgstr "Eelistatud kaadrisageus"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:186
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:187
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:188
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:199
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+"Allalaaditavate videovormingute loendi töötlemisel eelista seda "
+"kaadrisagedust"
+
+#: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:207
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "yt-dlp tuvastamise argumendid"
+
+#: org.nickvision.tubeconverter.macos/src/settings_downloads_view_controller.mm:31
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Töösolevate allalaadimisete suurim lubatud arv"
+
+#: org.nickvision.tubeconverter.macos/src/settings_downloads_view_controller.mm:57
+msgid "Overwrite Existing Files"
+msgstr "Kirjuta olemasolevad failid üle"
+
+#: org.nickvision.tubeconverter.macos/src/settings_downloads_view_controller.mm:66
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_downloads_view_controller.mm:74
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "yt-dlp allalaadimise argumendid"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:34
+msgid "Use Part Files"
+msgstr "Kasuta osalisi faile"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:43
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr "Ühe väljundfaili asemel laadi sisu eraldi .part failidesse"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:51
+msgid "Use SponsorBlock for YouTube"
+msgstr "Kasuta YouTube'i jaoks SponsorBlockki"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:60
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Ürita videotest eemaldada sponsoreeritud lõigud"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:67
+msgid "Translate Metadata and Chapters"
+msgstr "Tõlgi metateave ja peatükid"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:76
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Toetatud meediumi ja saitide puhul tõlgi lõimitud metateave ja peatükkide "
+"andmed rakenduse keelde"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:85
+msgid "Limit Download Speed"
+msgstr "Piira allalaadimise kiirust"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:94
+msgid "Speed Limit (KiB/s)"
+msgstr "Kiiruspiirang allalaadimisel (KiB/s)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:123
+msgid "Proxy URL"
+msgstr "Proksiserveri aadress"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:134
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "Brauseri küpsised"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:142
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:143
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:144
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:145
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:146
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:147
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:148
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:149
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:160
+msgid "Cookies File"
+msgstr "Küpsiste fail"
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:172
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:177
+msgid "Clear"
+msgstr "Tühjenda"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
+msgid "Theme"
+msgstr "Kujundus"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:31
+msgctxt "Theme"
+msgid "Light"
+msgstr "Hele kujundus"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:32
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Tume kujundus"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:33
+msgctxt "Theme"
+msgid "System"
+msgstr "Süsteemi kujundus"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
+msgid "Translation Language"
+msgstr "Tõlke keel"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:51
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Süsteemi kujundus"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:86
+#, fuzzy
+msgid "An application restart is required for a change to take effect."
+msgstr "Nende muutuste kasutuselevõtmiseks palun käivita rakendus uuesti"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:94
+msgid "Automatically Check for Updates"
+msgstr "Kontrolli uuendusi automaatselt"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:103
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Uuenda beetaversioone"
+
+#: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:114
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Uuenda sõltuvused, nt yt-dlp, beetaversioonideks"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Allalaadimisete ajalugu on tühi"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:30
+msgid "Never"
+msgstr "Mitte kunagi"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:31
+msgid "1 Day"
+msgstr "Üks päev"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:32
+msgid "1 Week"
+msgstr "Üks nädal"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:33
+msgid "1 Month"
+msgstr "Üks kuu"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:34
+msgid "3 Months"
+msgstr "Kolm kuud"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:35
+msgid "6 Months"
+msgstr "Kuus kuud"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:36
+msgid "1 Year"
+msgstr "Üks aasta"
+
+#: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:37
+msgid "Forever"
+msgstr "Igavesti"
 
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Miinimumsuurus, millega arvestame failide jagamaisel (in MiB)"

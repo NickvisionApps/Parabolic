@@ -1,5 +1,5 @@
 #import <Cocoa/Cocoa.h>
-#import "menu.h"
+#import "main_menu_controller.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property(strong) MainMenuController* mainMenuController;

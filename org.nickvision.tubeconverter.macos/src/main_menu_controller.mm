@@ -1,4 +1,4 @@
-#import "menu.h"
+#import "main_menu_controller.h"
 #include "application.h"
 
 @implementation MainMenuController
@@ -106,7 +106,7 @@
     [main_menu addItem:window_menu_item];
     NSMenu* window_menu
     {
-        [[NSMenu alloc] initWithTitle:@(translator._("Window"))]
+        [[NSMenu alloc] initWithTitle:@(translator._("Window"))],
     };
     [window_menu addItemWithTitle:@(translator._("Minimize")) action:@selector(performMiniaturize:) keyEquivalent:@"m"];
     [window_menu addItemWithTitle:@(translator._("Zoom")) action:@selector(performZoom:) keyEquivalent:@""];
@@ -145,22 +145,35 @@
 
 - (void)discussions:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@(parabolic::application::State::instance()
-                                                                          .product()
-                                                                          .discussions_url()
-                                                                          .c_str())]];
+    if (NSURL* url{
+                [NSURL URLWithString:@(parabolic::application::State::instance().product().discussions_url().c_str())],
+        };
+        url != nil)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:url];
+    }
 }
 
 - (void)gitHubRepository:(id)sender
 {
-    [[NSWorkspace sharedWorkspace]
-            openURL:[NSURL URLWithString:@(parabolic::application::State::instance().product().repo_url().c_str())]];
+    if (NSURL* url{
+                [NSURL URLWithString:@(parabolic::application::State::instance().product().repo_url().c_str())],
+        };
+        url != nil)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:url];
+    }
 }
 
 - (void)reportAnIssue:(id)sender
 {
-    [[NSWorkspace sharedWorkspace]
-            openURL:[NSURL URLWithString:@(parabolic::application::State::instance().product().issues_url().c_str())]];
+    if (NSURL* url{
+                [NSURL URLWithString:@(parabolic::application::State::instance().product().issues_url().c_str())],
+        };
+        url != nil)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:url];
+    }
 }
 
 - (void)settings:(id)sender

@@ -1,5 +1,5 @@
 #import <Cocoa/Cocoa.h>
-#import "delegate.h"
+#import "app_delegate.h"
 
 int main()
 {
