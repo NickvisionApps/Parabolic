@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-02-06 14:33+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,10 @@ msgstr "Pitjor"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "Cap"
 
@@ -214,23 +218,23 @@ msgstr "aria2"
 msgid "Use aria2"
 msgstr "Utilitza l’aria2"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Connexions màximes per servidor (-x)"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -245,11 +249,16 @@ msgstr "Connexions màximes per servidor (-x)"
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #, fuzzy
 msgid "Minimum Split Size (MiB)"
 msgstr "Mida mínima de la partició (-k)"
@@ -295,7 +304,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -650,6 +659,253 @@ msgstr ""
 msgid "Forever"
 msgstr "Indefinit"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "Nom"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+#, fuzzy
+msgid "Post Processor"
+msgstr "Processant"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Incrusta capítols"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Parteix el vídeo en capítols"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Vídeo (genèric)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "Convertidor"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "Incrusta metadades"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Incrusta subtítols"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Incrusta miniatures"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Subtítols"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Convertidor"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+#, fuzzy
+msgid "Executable"
+msgstr "Activar"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Fils de postprocessament"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr "Desa"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "Afegeix"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Ja existeix una credencial amb aquest nom."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+#, fuzzy
+msgid "Arguments"
+msgstr "Nova Credencial"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "Edita"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "Nova Credencial"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Edit Argument"
+msgstr "Nova Credencial"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "Incrusta metadades"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "Eliminar dades de font"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Si s’activa, el Parabolic netejarà els camps de metadades que continguin "
+"informació identificatòria de la baixada."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "Incrusta miniatures"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Si el tipus de fitxer no suporta la incrustació, la miniatura s'escriurà a "
+"un fitxer d'imatge independent."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "Retalla les miniatures d’àudio"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+"Si està activat, Parabolic retallarà les miniatures d'arxius d'àudio a "
+"quadrats."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "Incrusta capítols"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "Incrusta subtítols"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Si es desactiva o si no s'admet la incrustació, els subtítols es guardaran "
+"descarregats a un fitxer separat."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+#, fuzzy
+msgid "FFmpeg Threads"
+msgstr "Fils de postprocessament"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+msgid "Limit the number of threads used by ffmpeg."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Nova Credencial"
+
 #, fuzzy
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "La mida mínima en la qual es parteix un fitxer (dins MiB)."
@@ -741,9 +997,6 @@ msgstr "Indefinit"
 #~ msgid "Audio Format"
 #~ msgstr "Format d'àudio"
 
-#~ msgid "Subtitles"
-#~ msgstr "Subtítols"
-
 #, fuzzy
 #~ msgid "Search subtitles"
 #~ msgstr "Subtítols"
@@ -830,12 +1083,6 @@ msgstr "Indefinit"
 
 #~ msgid "Credentials"
 #~ msgstr "Credencials"
-
-#~ msgid "Add"
-#~ msgstr "Afegeix"
-
-#~ msgid "Name"
-#~ msgstr "Nom"
 
 #~ msgid "URL"
 #~ msgstr "URL"
@@ -941,59 +1188,6 @@ msgstr "Indefinit"
 #~ msgid "Minimum Split Size (-k)"
 #~ msgstr "Mida mínima de la partició (-k)"
 
-#~ msgid "Converter"
-#~ msgstr "Convertidor"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Incrusta metadades"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Eliminar dades de font"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "Si s’activa, el Parabolic netejarà els camps de metadades que continguin "
-#~ "informació identificatòria de la baixada."
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Incrusta miniatures"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Si el tipus de fitxer no suporta la incrustació, la miniatura s'escriurà "
-#~ "a un fitxer d'imatge independent."
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Retalla les miniatures d’àudio"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr ""
-#~ "Si està activat, Parabolic retallarà les miniatures d'arxius d'àudio a "
-#~ "quadrats."
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Incrusta capítols"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Incrusta subtítols"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Si es desactiva o si no s'admet la incrustació, els subtítols es "
-#~ "guardaran descarregats a un fitxer separat."
-
-#, fuzzy
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Fils de postprocessament"
-
 #, fuzzy
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "Fils de postprocessament"
@@ -1005,14 +1199,6 @@ msgstr "Indefinit"
 #, fuzzy
 #~ msgid "Argument"
 #~ msgstr "Nova Credencial"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "Processant"
-
-#, fuzzy
-#~ msgid "Executable"
-#~ msgstr "Activar"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1070,9 +1256,6 @@ msgstr "Indefinit"
 #~ "Are you sure you want to clear all download history? This action is "
 #~ "irreversible"
 #~ msgstr "Segur que voleu suprimir aquesta credencial?"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancel·lar"
 
 #~ msgid "Download Again"
 #~ msgstr "Baixa novament"
@@ -1137,10 +1320,6 @@ msgstr "Indefinit"
 #~ msgstr "No s’ha seleccionat cap fitxer"
 
 #, fuzzy
-#~ msgid "No Arguments"
-#~ msgstr "Nova Credencial"
-
-#, fuzzy
 #~ msgid "Delete Argument?"
 #~ msgstr "Nova Credencial"
 
@@ -1149,9 +1328,6 @@ msgstr "Indefinit"
 #~ "Are you sure you want to delete this post-processor argument? This action "
 #~ "is irreversible"
 #~ msgstr "Segur que voleu suprimir aquesta credencial?"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "Vídeo (genèric)"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4 (vídeo)"
@@ -1275,10 +1451,6 @@ msgstr "Indefinit"
 #, fuzzy
 #~ msgid "WAV (AIFF)"
 #~ msgstr "WAV (àudio)"
-
-#, fuzzy
-#~ msgid "An argument with that name already exists"
-#~ msgstr "Ja existeix una credencial amb aquest nom."
 
 #, fuzzy
 #~ msgid "The name of the argument cannot be empty"
@@ -1502,20 +1674,8 @@ msgstr "Indefinit"
 #~ msgstr "Quan acabin totes les baixades"
 
 #, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "Nova Credencial"
-
-#, fuzzy
 #~ msgid "The name cannot be empty."
 #~ msgstr "El nom de credencial no pot ser buit."
-
-#, fuzzy
-#~ msgid "Add Argument"
-#~ msgstr "Nova Credencial"
-
-#, fuzzy
-#~ msgid "Edit Argument"
-#~ msgstr "Nova Credencial"
 
 #, fuzzy
 #~ msgid "Delete Argument"
@@ -1685,9 +1845,6 @@ msgstr "Indefinit"
 #~ msgid "Media"
 #~ msgstr "URL dels mitjans"
 
-#~ msgid "Split Video by Chapters"
-#~ msgstr "Parteix el vídeo en capítols"
-
 #, fuzzy
 #~ msgid "Use manual credentials"
 #~ msgstr "Utilitza credencials manuals"
@@ -1722,9 +1879,6 @@ msgstr "Indefinit"
 
 #~ msgid "Edit Credential"
 #~ msgstr "Edita la credencial"
-
-#~ msgid "Save"
-#~ msgstr "Desa"
 
 #, fuzzy
 #~ msgid "Delete Credential"

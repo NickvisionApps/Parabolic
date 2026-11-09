@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2026.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-04-09 17:09+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -60,6 +60,10 @@ msgstr "Legalacsonyabb"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "Nincs"
 
@@ -215,7 +219,7 @@ msgstr "aria2c"
 msgid "Use aria2"
 msgstr "aria2 letöltéskezelő"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -223,17 +227,17 @@ msgid ""
 msgstr ""
 "Egy alternatív letöltő, amely egyes esetekben gyorsabb lehet, mint a yt-dlp"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Párhuzamos kapcsolatok száma a kiszolgálóval"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -248,11 +252,16 @@ msgstr "Párhuzamos kapcsolatok száma a kiszolgálóval"
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 msgid "Minimum Split Size (MiB)"
 msgstr "Tartalmak darabolása (MiB)"
 
@@ -297,7 +306,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -664,6 +673,247 @@ msgstr "Egy évig"
 msgid "Forever"
 msgstr "Korlátlan"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "Megnevezés"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+#, fuzzy
+msgid "Post Processor"
+msgstr "Utófeldolgozási paraméter"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Fejezetek, időbélyegek beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Fejezetekre darabolás"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Forrás szerint"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "Feldolgozás"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "Címke/adatok beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Feliratok beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Borítókép beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Feliratok"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Feldolgozás"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+msgid "Executable"
+msgstr "Futtatandó"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "FFmpeg futtatási szálak"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr "Paraméterek"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "Mégse"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Ez a bejelentkezés már tárolva van"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+msgid "Arguments"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "Szerkesztés"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+msgid "Add Argument"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+msgid "Edit Argument"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "Címke/adatok beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "Metaadatok törlése"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott "
+"adatokat a letöltött fájlokból"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "Borítókép beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Amennyiben a fájlformátum ezt nem támogatja, úgy a borítókép külön fájlként "
+"kerül letöltésre"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "Borítókép igazítása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+"Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
+"lehet hasznos"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "Fejezetek, időbélyegek beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "Feliratok beágyazása"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+msgid "FFmpeg Threads"
+msgstr "FFmpeg futtatási szálak"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "FFmpeg által használható futtatási szálak száma"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+msgid "Manage Arguments…"
+msgstr ""
+
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Meghatározza a darabok méretét. Értéke MiB-ban értendő"
 
@@ -750,9 +1000,6 @@ msgstr "Korlátlan"
 #~ msgid "Audio Format"
 #~ msgstr "Hangminőség és formátum"
 
-#~ msgid "Subtitles"
-#~ msgstr "Feliratok"
-
 #, fuzzy
 #~ msgid "Search subtitles"
 #~ msgstr "Feliratok"
@@ -769,17 +1016,11 @@ msgstr "Korlátlan"
 #~ msgid "Options"
 #~ msgstr "Beállítások"
 
-#~ msgid "Split into Files by Chapters"
-#~ msgstr "Fejezetekre darabolás"
-
 #~ msgid "Export Description to File"
 #~ msgstr "Hangos leírás mentése fájlba"
 
 #~ msgid "Exclude from History"
 #~ msgstr "Kizárás az előzményekből"
-
-#~ msgid "Post Processor Argument"
-#~ msgstr "Utófeldolgozási paraméter"
 
 #~ msgid "Start Time"
 #~ msgstr "Részlet kezdete"
@@ -863,12 +1104,6 @@ msgstr "Korlátlan"
 
 #~ msgid "Credentials"
 #~ msgstr "Bejelentkezés"
-
-#~ msgid "Add"
-#~ msgstr "Hozzáadás"
-
-#~ msgid "Name"
-#~ msgstr "Megnevezés"
 
 #~ msgid "URL"
 #~ msgstr "Hivatkozás"
@@ -976,63 +1211,6 @@ msgstr "Korlátlan"
 #~ msgid "Minimum Split Size (-k)"
 #~ msgstr "Tartalmak darabolása (-k)"
 
-#~ msgid "Converter"
-#~ msgstr "Feldolgozás"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Címke/adatok beágyazása"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Metaadatok törlése"
-
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas "
-#~ "beágyazott adatokat a letöltött fájlokból"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Borítókép beágyazása"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Amennyiben a fájlformátum ezt nem támogatja, úgy a borítókép külön "
-#~ "fájlként kerül letöltésre"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Borítókép igazítása"
-
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr ""
-#~ "Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
-#~ "lehet hasznos"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Fejezetek, időbélyegek beágyazása"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Feliratok beágyazása"
-
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek "
-#~ "letöltve"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "FFmpeg futtatási szálak"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "FFmpeg által használható futtatási szálak száma"
-
-#~ msgid "Executable"
-#~ msgstr "Futtatandó"
-
-#~ msgid "Args"
-#~ msgstr "Paraméterek"
-
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
 #~ msgstr "Alkalmazás"
@@ -1097,9 +1275,6 @@ msgstr "Korlátlan"
 #~ "Are you sure you want to clear all download history? This action is "
 #~ "irreversible"
 #~ msgstr "Biztosan törölni szeretné a letöltési előzményeket?"
-
-#~ msgid "Cancel"
-#~ msgstr "Mégse"
 
 #~ msgid "Download Again"
 #~ msgstr "Letöltés ismét"
@@ -1187,9 +1362,6 @@ msgstr "Korlátlan"
 #~ msgid "No media was found at the provided URL"
 #~ msgstr "Nem található média"
 
-#~ msgid "Video (Generic)"
-#~ msgstr "Forrás szerint"
-
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4 (videó)"
 
@@ -1231,9 +1403,6 @@ msgstr "Korlátlan"
 
 #~ msgid "Use manual credential"
 #~ msgstr "Bejelentkezés másként"
-
-#~ msgid "A credential with that name already exists"
-#~ msgstr "Ez a bejelentkezés már tárolva van"
 
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "A bejelentkezési adat megnevezése nem lehet üres"

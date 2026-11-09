@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-02-06 14:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,10 @@ msgstr "চলনশই"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 #, fuzzy
 msgid "None"
 msgstr "কোনোটিই নয়"
@@ -215,22 +219,22 @@ msgstr ""
 msgid "Use aria2"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 msgid "Maximum Connections Per Server"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -245,11 +249,16 @@ msgstr ""
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 msgid "Minimum Split Size (MiB)"
 msgstr ""
 
@@ -292,7 +301,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -637,6 +646,241 @@ msgstr ""
 msgid "Forever"
 msgstr ""
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "নাম"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+#, fuzzy
+msgid "Post Processor"
+msgstr "ক্রিয়ান্বয়ন..।"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+msgid "Video Remuxer"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "পরিবর্তক"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "পরাতথ্যের যুক্তি"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "পরিবর্তক"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "পরিবর্তক"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+msgid "Executable"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "ক্রিয়ান্বয়ন..।"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "বাতিল"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "যোগ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+msgid "An argument with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+#, fuzzy
+msgid "Arguments"
+msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+msgid "Edit…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Edit Argument"
+msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "পরাতথ্যের যুক্তি"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+#, fuzzy
+msgid "Crop Audio Thumbnails"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+#, fuzzy
+msgid "Embed Chapters"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+#, fuzzy
+msgid "Embed Subtitles"
+msgstr "অধঃগ্রহণ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+#, fuzzy
+msgid "FFmpeg Threads"
+msgstr "ক্রিয়ান্বয়ন..।"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+msgid "Limit the number of threads used by ffmpeg."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
+
 #, fuzzy
 #~ msgid "System Default"
 #~ msgstr "পূর্বোক্ত"
@@ -784,12 +1028,6 @@ msgstr ""
 #~ msgid "Credentials"
 #~ msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
 
-#~ msgid "Add"
-#~ msgstr "যোগ"
-
-#~ msgid "Name"
-#~ msgstr "নাম"
-
 #, fuzzy
 #~ msgid "Loading"
 #~ msgstr "অধঃগৃহীত হচ্ছে"
@@ -871,29 +1109,6 @@ msgstr ""
 #~ msgid "Converter"
 #~ msgstr "পরিবর্তক"
 
-#~ msgid "Embed Metadata"
-#~ msgstr "পরাতথ্যের যুক্তি"
-
-#, fuzzy
-#~ msgid "Embed Thumbnails"
-#~ msgstr "অধঃগ্রহণ"
-
-#, fuzzy
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "অধঃগ্রহণ"
-
-#, fuzzy
-#~ msgid "Embed Chapters"
-#~ msgstr "অধঃগ্রহণ"
-
-#, fuzzy
-#~ msgid "Embed Subtitles"
-#~ msgstr "অধঃগ্রহণ"
-
-#, fuzzy
-#~ msgid "FFmpeg Threads"
-#~ msgstr "ক্রিয়ান্বয়ন..।"
-
 #, fuzzy
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "ক্রিয়ান্বয়ন..।"
@@ -905,10 +1120,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Argument"
 #~ msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "ক্রিয়ান্বয়ন..।"
 
 #~ msgid "Quit"
 #~ msgstr "নিস্ক্রমণ"
@@ -945,9 +1156,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No Subtitles Available"
 #~ msgstr "শব্দের ভাষা"
-
-#~ msgid "Cancel"
-#~ msgstr "বাতিল"
 
 #, fuzzy
 #~ msgid "Download Again"
@@ -997,10 +1205,6 @@ msgstr ""
 
 #~ msgid "Close"
 #~ msgstr "বন্ধ"
-
-#, fuzzy
-#~ msgid "No Arguments"
-#~ msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
 
 #, fuzzy
 #~ msgid "Delete Argument?"
@@ -1207,20 +1411,8 @@ msgstr ""
 #~ msgstr "প্রারম্ভ করার জন্য অধঃগ্রহণে নিন।"
 
 #, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
-
-#, fuzzy
 #~ msgid "The name cannot be empty."
 #~ msgstr "তথ্যগুলি সঠিক কিনা যাচাই করে নিন।"
-
-#, fuzzy
-#~ msgid "Add Argument"
-#~ msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
-
-#, fuzzy
-#~ msgid "Edit Argument"
-#~ msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
 
 #, fuzzy
 #~ msgid "Delete Argument"
@@ -1601,10 +1793,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "About Tube Converter"
-#~ msgstr "পরিবর্তক"
-
-#, fuzzy
-#~ msgid "Tube Converter"
 #~ msgstr "পরিবর্তক"
 
 #~ msgid "Get video and audio from the web"

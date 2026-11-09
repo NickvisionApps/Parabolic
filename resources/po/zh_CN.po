@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-04-22 06:09+0000\n"
 "Last-Translator: Galaxy Hazard <tplinkusers@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -61,6 +61,10 @@ msgstr "最差"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "无"
 
@@ -216,24 +220,24 @@ msgstr "aria2"
 msgid "Use aria2"
 msgstr "使用 aria2c"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader."
 msgstr "在某些地区，其他下载器的速度可能比 yt-dlp 的原生下载器更快"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "每台服务器的最大连接数 (-x)"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -248,11 +252,16 @@ msgstr "每台服务器的最大连接数 (-x)"
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #, fuzzy
 msgid "Minimum Split Size (MiB)"
 msgstr "最小拆分大小 (-k)"
@@ -298,7 +307,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -654,6 +663,245 @@ msgstr "1年"
 msgid "Forever"
 msgstr "永久"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "名称"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+#, fuzzy
+msgid "Post Processor"
+msgstr "处理中..."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "嵌入章节"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "拆分章节"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "视频（通用）"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "转换器"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "嵌入元数据"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "嵌入字幕"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "嵌入封面图"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "字幕"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "转换器"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+#, fuzzy
+msgid "Executable"
+msgstr "启用"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "FFmpeg 线程数"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr "参数"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "取消"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "添加"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "已存在同名的参数"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+#, fuzzy
+msgid "Arguments"
+msgstr "没有凭据"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "编辑"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "没有凭据"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Edit Argument"
+msgstr "没有凭据"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "嵌入元数据"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "删除源数据"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "清除包含媒体源的 URL 和其他标识信息的元数据字段"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "嵌入封面图"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr "如果文件格式不支持嵌入，下载的封面图将保存到单独的文件中"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "裁剪音频缩略图"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "如果启用, Parabolic 将自动打开音频下载的裁剪缩略图高级选项"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "嵌入章节"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "嵌入字幕"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr "对于无法嵌入或不支持嵌入的情况, 下载的字幕将保存到单独的文件中"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+msgid "FFmpeg Threads"
+msgstr "FFmpeg 线程数"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "限制 ffmpeg 使用的线程数"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "没有凭据"
+
 #, fuzzy
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "要拆分文件的最小大小 (以MiB为单位)."
@@ -749,9 +997,6 @@ msgstr "永久"
 
 #~ msgid "Audio Format"
 #~ msgstr "音频格式"
-
-#~ msgid "Subtitles"
-#~ msgstr "字幕"
 
 #~ msgid "Search subtitles"
 #~ msgstr "搜索字幕"
@@ -862,12 +1107,6 @@ msgstr "永久"
 #~ msgid "Credentials"
 #~ msgstr "凭证"
 
-#~ msgid "Add"
-#~ msgstr "添加"
-
-#~ msgid "Name"
-#~ msgstr "名称"
-
 #~ msgid "URL"
 #~ msgstr "URL"
 
@@ -975,51 +1214,6 @@ msgstr "永久"
 #~ msgid "Minimum Split Size (-k)"
 #~ msgstr "最小拆分大小 (-k)"
 
-#~ msgid "Converter"
-#~ msgstr "转换器"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "嵌入元数据"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "删除源数据"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr "清除包含媒体源的 URL 和其他标识信息的元数据字段"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "嵌入封面图"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr "如果文件格式不支持嵌入，下载的封面图将保存到单独的文件中"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "裁剪音频缩略图"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr "如果启用, Parabolic 将自动打开音频下载的裁剪缩略图高级选项"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "嵌入章节"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "嵌入字幕"
-
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr "对于无法嵌入或不支持嵌入的情况, 下载的字幕将保存到单独的文件中"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "FFmpeg 线程数"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "限制 ffmpeg 使用的线程数"
-
 #, fuzzy
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "处理中..."
@@ -1031,17 +1225,6 @@ msgstr "永久"
 #, fuzzy
 #~ msgid "Argument"
 #~ msgstr "没有凭据"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "处理中..."
-
-#, fuzzy
-#~ msgid "Executable"
-#~ msgstr "启用"
-
-#~ msgid "Args"
-#~ msgstr "参数"
 
 #, fuzzy
 #~ msgctxt "Shortcut"
@@ -1117,9 +1300,6 @@ msgstr "永久"
 #~ "Are you sure you want to clear all download history? This action is "
 #~ "irreversible"
 #~ msgstr "确认清除所有下载历史记录？此操作不可逆"
-
-#~ msgid "Cancel"
-#~ msgstr "取消"
 
 #~ msgid "Download Again"
 #~ msgstr "重新下载"
@@ -1197,10 +1377,6 @@ msgstr "永久"
 #~ msgid "No file selected"
 #~ msgstr "未选择任何文件"
 
-#, fuzzy
-#~ msgid "No Arguments"
-#~ msgstr "没有凭据"
-
 #~ msgid "Delete Argument?"
 #~ msgstr "删除凭据？"
 
@@ -1212,9 +1388,6 @@ msgstr "永久"
 
 #~ msgid "No media was found at the provided URL"
 #~ msgstr "提供的网址中未找到媒体文件"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "视频（通用）"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4（视频）"
@@ -1367,9 +1540,6 @@ msgstr "永久"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
-
-#~ msgid "An argument with that name already exists"
-#~ msgstr "已存在同名的参数"
 
 #~ msgid "The name of the argument cannot be empty"
 #~ msgstr "参数名称不能为空"
@@ -1757,10 +1927,6 @@ msgstr "永久"
 #~ msgstr "媒体 URL"
 
 #, fuzzy
-#~ msgid "Split Video by Chapters"
-#~ msgstr "拆分章节"
-
-#, fuzzy
 #~ msgid "Use manual credentials"
 #~ msgstr "使用手动凭据"
 
@@ -1796,20 +1962,12 @@ msgstr "永久"
 #~ msgstr "下载日志已复制到剪贴板."
 
 #, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "没有凭据"
-
-#, fuzzy
 #~ msgid "New Argument"
 #~ msgstr "没有凭据"
 
 #, fuzzy
 #~ msgid "The argument args cannot be empty."
 #~ msgstr "请确认凭据正确无误"
-
-#, fuzzy
-#~ msgid "Edit Argument"
-#~ msgstr "没有凭据"
 
 #, fuzzy
 #~ msgid "Delete Argument"

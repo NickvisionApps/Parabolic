@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-02-24 04:40+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -60,6 +60,10 @@ msgstr "Ең нашар"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "Ешқандай"
 
@@ -215,7 +219,7 @@ msgstr "aria2c"
 msgid "Use aria2"
 msgstr "aria2c қолдану"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -224,17 +228,17 @@ msgstr ""
 "Кейбір аймақтарда yt-dlp-нің стандартты жүктеушісіне қарағанда жылдамырақ "
 "болуы мүмкін балама жүктеуші"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Серверге шаққандағы максималды қосылымдар саны"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -249,11 +253,16 @@ msgstr "Серверге шаққандағы максималды қосылы�
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 msgid "Minimum Split Size (MiB)"
 msgstr "Минималды бөлу өлшемі (МиБ)"
 
@@ -298,7 +307,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -658,6 +667,248 @@ msgstr "1 жыл"
 msgid "Forever"
 msgstr "Мәңгі"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "Аты"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+msgid "Post Processor"
+msgstr "Пост-өңдеуші"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Бөлімдерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Бөлімдер бойынша файлдарға бөлу"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Видео (жалпы)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "Түрлендіргіш"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "Метадеректерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Субтитрлерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Эскиздерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Субтитрлер"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Түрлендіргіш"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+msgid "Executable"
+msgstr "Орындалатын файл"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "FFmpeg ағындары"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr "Аргументтер"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "Бас тарту"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "Қосу"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Мұндай атаулы аргумент бұрыннан бар"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+#, fuzzy
+msgid "Arguments"
+msgstr "Аргумент"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "Аргументтер жүктеуді қосу сұхбат терезесінде таңдау үшін көрсетіледі"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "Түзету"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "Аргумент"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Edit Argument"
+msgstr "Аргумент"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "Метадеректерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "Бастапқы деректерді өшіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Жүктеу туралы сәйкестендіру ақпараты бар метадеректер өрістерін тазалау"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "Эскиздерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Егер файл түрі кірістіруді қолдамаса, эскиз бөлек сурет файлына жазылады"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "Аудио эскиздерін қию"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Аудио файлдардың эскиздерін шаршы етіп қию"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "Бөлімдерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "Субтитрлерді кірістіру"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Егер сөндірулі болса немесе кірістіру қолданылмаса, жүктелген субтитрлер "
+"бөлек файлдарда сақталады"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+msgid "FFmpeg Threads"
+msgstr "FFmpeg ағындары"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "ffmpeg қолданатын ағындар санын шектеу"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Аргументтер жоқ"
+
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Файлды бөлудің минималды өлшемі (МиБ)"
 
@@ -744,9 +995,6 @@ msgstr "Мәңгі"
 #~ msgid "Audio Format"
 #~ msgstr "Аудио пішімі"
 
-#~ msgid "Subtitles"
-#~ msgstr "Субтитрлер"
-
 #~ msgid "Search subtitles"
 #~ msgstr "Субтитрлерді іздеу"
 
@@ -761,9 +1009,6 @@ msgstr "Мәңгі"
 
 #~ msgid "Options"
 #~ msgstr "Опциялар"
-
-#~ msgid "Split into Files by Chapters"
-#~ msgstr "Бөлімдер бойынша файлдарға бөлу"
 
 #~ msgid "Export Description to File"
 #~ msgstr "Сипаттаманы файлға экспорттау"
@@ -859,12 +1104,6 @@ msgstr "Мәңгі"
 
 #~ msgid "Credentials"
 #~ msgstr "Тіркелгі мәліметтері"
-
-#~ msgid "Add"
-#~ msgstr "Қосу"
-
-#~ msgid "Name"
-#~ msgstr "Аты"
 
 #~ msgid "URL"
 #~ msgstr "URL"
@@ -974,74 +1213,11 @@ msgstr "Мәңгі"
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "yt-dlp-ге берілетін қосымша аргументтерді көрсетіңіз"
 
-#~ msgid "Converter"
-#~ msgstr "Түрлендіргіш"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Метадеректерді кірістіру"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Бастапқы деректерді өшіру"
-
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "Жүктеу туралы сәйкестендіру ақпараты бар метадеректер өрістерін тазалау"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Эскиздерді кірістіру"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Егер файл түрі кірістіруді қолдамаса, эскиз бөлек сурет файлына жазылады"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Аудио эскиздерін қию"
-
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr "Аудио файлдардың эскиздерін шаршы етіп қию"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Бөлімдерді кірістіру"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Субтитрлерді кірістіру"
-
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Егер сөндірулі болса немесе кірістіру қолданылмаса, жүктелген субтитрлер "
-#~ "бөлек файлдарда сақталады"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "FFmpeg ағындары"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "ffmpeg қолданатын ағындар санын шектеу"
-
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "Пост-өңдеу аргументтері"
 
-#~ msgid "Arguments will be shown for selection in the add download dialog"
-#~ msgstr ""
-#~ "Аргументтер жүктеуді қосу сұхбат терезесінде таңдау үшін көрсетіледі"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Пост-өңдеу аргументін қосу"
-
-#~ msgid "Argument"
-#~ msgstr "Аргумент"
-
-#~ msgid "Post Processor"
-#~ msgstr "Пост-өңдеуші"
-
-#~ msgid "Executable"
-#~ msgstr "Орындалатын файл"
-
-#~ msgid "Args"
-#~ msgstr "Аргументтер"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1109,9 +1285,6 @@ msgstr "Мәңгі"
 #~ msgstr ""
 #~ "Барлық жүктемелер тарихын тазалағыңыз келетініне сенімдісіз бе? Бұл "
 #~ "әрекетті болдырмау мүмкін емес"
-
-#~ msgid "Cancel"
-#~ msgstr "Бас тарту"
 
 #~ msgid "Download Again"
 #~ msgstr "Қайта жүктеп алу"
@@ -1191,9 +1364,6 @@ msgstr "Мәңгі"
 #~ msgid "No file selected"
 #~ msgstr "Файл таңдалмады"
 
-#~ msgid "No Arguments"
-#~ msgstr "Аргументтер жоқ"
-
 #~ msgid "Delete Argument?"
 #~ msgstr "Аргументті өшіру керек пе?"
 
@@ -1212,9 +1382,6 @@ msgstr "Мәңгі"
 
 #~ msgid "No media was found at the provided URL"
 #~ msgstr "Көрсетілген URL-адрестен медиа табылмады"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "Видео (жалпы)"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4 (видео)"
@@ -1364,9 +1531,6 @@ msgstr "Мәңгі"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
-
-#~ msgid "An argument with that name already exists"
-#~ msgstr "Мұндай атаулы аргумент бұрыннан бар"
 
 #~ msgid "The name of the argument cannot be empty"
 #~ msgstr "Аргументтің аты бос болмауы керек"

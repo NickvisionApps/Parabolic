@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-02-06 14:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,10 @@ msgstr "மோசமான"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "எதுவுமில்லை"
 
@@ -213,23 +217,23 @@ msgstr "ARIA2C"
 msgid "Use aria2"
 msgstr "ARIA2C ஐப் பயன்படுத்தவும்"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -244,11 +248,16 @@ msgstr "ஒரு சேவையகத்திற்கு அதிகபட�
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #, fuzzy
 msgid "Minimum Split Size (MiB)"
 msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
@@ -294,7 +303,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -660,6 +669,246 @@ msgstr ""
 msgid "Forever"
 msgstr "என்றென்றும்"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "பெயர்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+#, fuzzy
+msgid "Post Processor"
+msgstr "இடுகை செயலி"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "அத்தியாயங்களால் வீடியோவைப் பிரிக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "வீடியோ (பொதுவான)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "குழாய் மாற்றி"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "குழாய் மாற்றி"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "குழாய் மாற்றி"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+msgid "Executable"
+msgstr "இயங்கக்கூடிய"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Ffmpeg நூல்கள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr "ஆர்க்ச்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr "சேமி"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "சேர்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "இந்த பெயருடன் ஒரு உரையாடல் ஏற்கனவே உள்ளது."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+msgid "Arguments"
+msgstr "வாதங்கள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "பதிவிறக்க உரையாடலில் தேர்வு செய்வதற்கான இந்த வாதங்களை பரபோலிக் காண்பிக்கும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "தொகு"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "வாதத்தைத் திருத்து"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+msgid "Edit Argument"
+msgstr "வாதத்தைத் திருத்து"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "மூலத் தரவை அகற்று"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "பதிவிறக்கத் தகவல்களை அடையாளம் காணும் மேனிலை தரவு புலங்களை பரபோலிக் அழிக்கும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"கோப்பு வகை உட்பொதிப்பதை ஆதரிக்கவில்லை என்றால், சிறுபடம் ஒரு தனி படக் கோப்பில் எழுதப்படும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "பரபோலிக் ஆடியோ கோப்புகளின் சிறு உருவங்களை சதுரங்களுக்கு பயிர் செய்யும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"முடக்கப்பட்டிருந்தால் அல்லது உட்பொதித்தல் ஆதரிக்கப்படாவிட்டால், பதிவிறக்கம் செய்யப்பட்ட வசனங்கள் "
+"தனித்தனி கோப்புகளுக்கு சேமிக்கப்படும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+msgid "FFmpeg Threads"
+msgstr "Ffmpeg நூல்கள்"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "பரபோலிக் FFMPEG ஆல் பயன்படுத்தப்படும் நூல்களின் எண்ணிக்கையை கட்டுப்படுத்தும்."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "வாதங்கள் இல்லை"
+
 #, fuzzy
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."
@@ -843,12 +1092,6 @@ msgstr "என்றென்றும்"
 #~ msgid "Credentials"
 #~ msgstr "நற்சான்றிதழ்கள்"
 
-#~ msgid "Add"
-#~ msgstr "சேர்"
-
-#~ msgid "Name"
-#~ msgstr "பெயர்"
-
 #~ msgid "URL"
 #~ msgstr "முகவரி"
 
@@ -974,78 +1217,14 @@ msgstr "என்றென்றும்"
 #~ msgid "Converter"
 #~ msgstr "மாற்றி"
 
-#~ msgid "Embed Metadata"
-#~ msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "மூலத் தரவை அகற்று"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "பதிவிறக்கத் தகவல்களை அடையாளம் காணும் மேனிலை தரவு புலங்களை பரபோலிக் அழிக்கும்."
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "கோப்பு வகை உட்பொதிப்பதை ஆதரிக்கவில்லை என்றால், சிறுபடம் ஒரு தனி படக் கோப்பில் "
-#~ "எழுதப்படும்."
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr "பரபோலிக் ஆடியோ கோப்புகளின் சிறு உருவங்களை சதுரங்களுக்கு பயிர் செய்யும்."
-
-#~ msgid "Embed Chapters"
-#~ msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "முடக்கப்பட்டிருந்தால் அல்லது உட்பொதித்தல் ஆதரிக்கப்படாவிட்டால், பதிவிறக்கம் செய்யப்பட்ட "
-#~ "வசனங்கள் தனித்தனி கோப்புகளுக்கு சேமிக்கப்படும்."
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Ffmpeg நூல்கள்"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "பரபோலிக் FFMPEG ஆல் பயன்படுத்தப்படும் நூல்களின் எண்ணிக்கையை கட்டுப்படுத்தும்."
-
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "போச்ட்ரோசெசிங் வாதங்கள்"
-
-#, fuzzy
-#~ msgid "Arguments will be shown for selection in the add download dialog"
-#~ msgstr "பதிவிறக்க உரையாடலில் தேர்வு செய்வதற்கான இந்த வாதங்களை பரபோலிக் காண்பிக்கும்."
 
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "போச்ட்ரோசெசிங் வாதத்தை சேர்க்கவும்"
 
 #~ msgid "Argument"
 #~ msgstr "உரையாடல்"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "இடுகை செயலி"
-
-#~ msgid "Executable"
-#~ msgstr "இயங்கக்கூடிய"
-
-#~ msgid "Args"
-#~ msgstr "ஆர்க்ச்"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1177,9 +1356,6 @@ msgstr "என்றென்றும்"
 #~ msgid "No file selected"
 #~ msgstr "எந்த கோப்பும் தேர்ந்தெடுக்கப்படவில்லை"
 
-#~ msgid "No Arguments"
-#~ msgstr "வாதங்கள் இல்லை"
-
 #~ msgid "Delete Argument?"
 #~ msgstr "வாதத்தை நீக்கவா?"
 
@@ -1188,9 +1364,6 @@ msgstr "என்றென்றும்"
 #~ "Are you sure you want to delete this post-processor argument? This action "
 #~ "is irreversible"
 #~ msgstr "இந்த நற்சான்றிதழை நீக்க விரும்புகிறீர்களா?"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "வீடியோ (பொதுவான)"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "Mp4 (வீடியோ)"
@@ -1313,10 +1486,6 @@ msgstr "என்றென்றும்"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
-
-#, fuzzy
-#~ msgid "An argument with that name already exists"
-#~ msgstr "இந்த பெயருடன் ஒரு உரையாடல் ஏற்கனவே உள்ளது."
 
 #, fuzzy
 #~ msgid "The name of the argument cannot be empty"
@@ -1543,19 +1712,9 @@ msgstr "என்றென்றும்"
 #~ msgid "Add a download to get started"
 #~ msgstr "தொடங்குவதற்கு நற்சான்றிதழைச் சேர்க்கவும்"
 
-#~ msgid "Arguments"
-#~ msgstr "வாதங்கள்"
-
 #, fuzzy
 #~ msgid "The name cannot be empty."
 #~ msgstr "வாதத்தின் பெயர் காலியாக இருக்க முடியாது."
-
-#, fuzzy
-#~ msgid "Add Argument"
-#~ msgstr "வாதத்தைத் திருத்து"
-
-#~ msgid "Edit Argument"
-#~ msgstr "வாதத்தைத் திருத்து"
 
 #~ msgid "Delete Argument"
 #~ msgstr "வாதத்தை நீக்கு"
@@ -1760,9 +1919,6 @@ msgstr "என்றென்றும்"
 #~ msgid "Media"
 #~ msgstr "ஊடகம்"
 
-#~ msgid "Split Video by Chapters"
-#~ msgstr "அத்தியாயங்களால் வீடியோவைப் பிரிக்கவும்"
-
 #, fuzzy
 #~ msgid "Use manual credentials"
 #~ msgstr "கைமுறை நற்சான்றிதழைப் பயன்படுத்தவும்"
@@ -1798,9 +1954,6 @@ msgstr "என்றென்றும்"
 
 #~ msgid "Edit Credential"
 #~ msgstr "நற்சான்றிதழைத் திருத்தவும்"
-
-#~ msgid "Save"
-#~ msgstr "சேமி"
 
 #~ msgid "Delete Credential"
 #~ msgstr "நற்சான்றிதழ் நீக்கு"
@@ -2445,9 +2598,6 @@ msgstr "என்றென்றும்"
 
 #~ msgid "About Tube Converter"
 #~ msgstr "குழாய் மாற்றி பற்றி"
-
-#~ msgid "Tube Converter"
-#~ msgstr "குழாய் மாற்றி"
 
 #~ msgid "Get video and audio from the web"
 #~ msgstr "எளிதாகப் பயன்படுத்தக்கூடிய காணொளி பதிவிறக்கி"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-05-12 20:11+0000\n"
 "Last-Translator: SabriAdasholu <sabri85@gmail.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -59,6 +59,10 @@ msgstr "Най-лошо"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "Без"
 
@@ -215,23 +219,23 @@ msgstr "aria2"
 msgid "Use aria2"
 msgstr "Използване на aria2"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Максимум връзки на сървър (-x)"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -246,11 +250,16 @@ msgstr "Максимум връзки на сървър (-x)"
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #, fuzzy
 msgid "Minimum Split Size (MiB)"
 msgstr "Минималният размер на разделите (-k)"
@@ -296,7 +305,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -658,6 +667,253 @@ msgstr ""
 msgid "Forever"
 msgstr "Завинаги"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "Име"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+msgid "Post Processor"
+msgstr "Обработване"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Вграждане на глави"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Разделяне на видеото по главите"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Видео (Общ)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "Преобразувател"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "Вграждане на метаданни"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Вграждане на субтитри"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Вграждане на миниатюра"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Субтитри"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Преобразувател"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+#, fuzzy
+msgid "Executable"
+msgstr "Активиране"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Нишки за постобработка"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "Отказване"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr "Запазване"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "Добавяне"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Данни за идентификация с това име вече съществуват."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+#, fuzzy
+msgid "Arguments"
+msgstr "Нови данни"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "Редактиране"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "Нови данни"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Edit Argument"
+msgstr "Нови данни"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "Вграждане на метаданни"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "Премахване на данните от източника"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Когато е включено, „Parabolic“ ще изчисти полетата с метаданни, съдържащи "
+"идентифицираща информация за изтеглянето."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "Вграждане на миниатюра"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Ако видът на файла не поддържа вграждане, миниатюрата ще бъде записана в "
+"отделен файл с изображение."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "Изрязване на миниатюрата на песента"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+"Когато е включено, „Parabolic“ ще изрязва миниатюрите за песните в квадратен "
+"формат."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "Вграждане на глави"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "Вграждане на субтитри"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Ако е изключено или вграждането не се поддържа, изтеглените субтитри ще "
+"бъдат запазени в отделен файл."
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+#, fuzzy
+msgid "FFmpeg Threads"
+msgstr "Нишки за постобработка"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Лимит на броят на процесите използвани от ffmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Нови данни"
+
 #, fuzzy
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Минималният размер, с който се разделя даден файл (в МБ)."
@@ -754,9 +1010,6 @@ msgstr "Завинаги"
 
 #~ msgid "Audio Format"
 #~ msgstr "Аудио формат"
-
-#~ msgid "Subtitles"
-#~ msgstr "Субтитри"
 
 #, fuzzy
 #~ msgid "Search subtitles"
@@ -858,12 +1111,6 @@ msgstr "Завинаги"
 
 #~ msgid "Credentials"
 #~ msgstr "Пълномощия"
-
-#~ msgid "Add"
-#~ msgstr "Добавяне"
-
-#~ msgid "Name"
-#~ msgstr "Име"
 
 #~ msgid "URL"
 #~ msgstr "Адрес"
@@ -976,61 +1223,6 @@ msgstr "Завинаги"
 #~ msgid "Minimum Split Size (-k)"
 #~ msgstr "Минималният размер на разделите (-k)"
 
-#~ msgid "Converter"
-#~ msgstr "Преобразувател"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Вграждане на метаданни"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Премахване на данните от източника"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "Когато е включено, „Parabolic“ ще изчисти полетата с метаданни, съдържащи "
-#~ "идентифицираща информация за изтеглянето."
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Вграждане на миниатюра"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Ако видът на файла не поддържа вграждане, миниатюрата ще бъде записана в "
-#~ "отделен файл с изображение."
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Изрязване на миниатюрата на песента"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr ""
-#~ "Когато е включено, „Parabolic“ ще изрязва миниатюрите за песните в "
-#~ "квадратен формат."
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Вграждане на глави"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Вграждане на субтитри"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Ако е изключено или вграждането не се поддържа, изтеглените субтитри ще "
-#~ "бъдат запазени в отделен файл."
-
-#, fuzzy
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Нишки за постобработка"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "Лимит на броят на процесите използвани от ffmpeg"
-
 #, fuzzy
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "Нишки за постобработка"
@@ -1038,17 +1230,6 @@ msgstr "Завинаги"
 #, fuzzy
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Нишки за постобработка"
-
-#, fuzzy
-#~ msgid "Argument"
-#~ msgstr "Нови данни"
-
-#~ msgid "Post Processor"
-#~ msgstr "Обработване"
-
-#, fuzzy
-#~ msgid "Executable"
-#~ msgstr "Активиране"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1106,9 +1287,6 @@ msgstr "Завинаги"
 #~ "Are you sure you want to clear all download history? This action is "
 #~ "irreversible"
 #~ msgstr "Сигурни ли сте, че искате да изтриете тези данни за идентификация?"
-
-#~ msgid "Cancel"
-#~ msgstr "Отказване"
 
 #~ msgid "Download Again"
 #~ msgstr "Изтегляне отново"
@@ -1177,10 +1355,6 @@ msgstr "Завинаги"
 #~ msgstr "Няма избран файл"
 
 #, fuzzy
-#~ msgid "No Arguments"
-#~ msgstr "Нови данни"
-
-#, fuzzy
 #~ msgid "Delete Argument?"
 #~ msgstr "Нови данни"
 
@@ -1189,9 +1363,6 @@ msgstr "Завинаги"
 #~ "Are you sure you want to delete this post-processor argument? This action "
 #~ "is irreversible"
 #~ msgstr "Сигурни ли сте, че искате да изтриете тези данни за идентификация?"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "Видео (Общ)"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4 (Видео)"
@@ -1313,10 +1484,6 @@ msgstr "Завинаги"
 #, fuzzy
 #~ msgid "WAV (AIFF)"
 #~ msgstr "WAV (Аудио)"
-
-#, fuzzy
-#~ msgid "An argument with that name already exists"
-#~ msgstr "Данни за идентификация с това име вече съществуват."
 
 #, fuzzy
 #~ msgid "The name of the argument cannot be empty"
@@ -1548,14 +1715,6 @@ msgstr "Завинаги"
 #~ msgstr "Данните за идентификация не може да бъдат празни."
 
 #, fuzzy
-#~ msgid "Add Argument"
-#~ msgstr "Нови данни"
-
-#, fuzzy
-#~ msgid "Edit Argument"
-#~ msgstr "Нови данни"
-
-#, fuzzy
 #~ msgid "Delete Argument"
 #~ msgstr "Нови данни"
 
@@ -1721,9 +1880,6 @@ msgstr "Завинаги"
 #~ msgid "Media"
 #~ msgstr "Медия адрес"
 
-#~ msgid "Split Video by Chapters"
-#~ msgstr "Разделяне на видеото по главите"
-
 #, fuzzy
 #~ msgid "Use manual credentials"
 #~ msgstr "Данни на ръка"
@@ -1760,9 +1916,6 @@ msgstr "Завинаги"
 
 #~ msgid "Edit Credential"
 #~ msgstr "Редактиране на данните"
-
-#~ msgid "Save"
-#~ msgstr "Запазване"
 
 #, fuzzy
 #~ msgid "Delete Credential"

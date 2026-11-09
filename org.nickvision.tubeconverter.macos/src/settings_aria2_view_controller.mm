@@ -34,28 +34,34 @@
     };
     useAriaCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
     useAriaCheckbox.state = aria2Options.use_aria() ? NSControlStateValueOn : NSControlStateValueOff;
-    NSTextField* useAriaSubtitleLabel
+    NSMutableAttributedString* useAriaSubtitle
     {
-        [NSTextField wrappingLabelWithString:@(translator._("An alternative downloader that may be faster in some "
-                                                            "regions compared to yt-dlp's native downloader."))],
+        [[NSMutableAttributedString alloc]
+                initWithString:@(translator._(
+                                       "An alternative downloader that may be faster in some regions compared to "
+                                       "yt-dlp's native downloader."))
+                    attributes:@{
+                        NSFontAttributeName : [NSFont systemFontOfSize:NSFont.smallSystemFontSize],
+                        NSForegroundColorAttributeName : NSColor.secondaryLabelColor,
+                    }],
     };
+    [useAriaSubtitle appendAttributedString:[[NSAttributedString alloc]
+                                                    initWithString:@" "
+                                                        attributes:@{
+                                                            NSFontAttributeName : [NSFont
+                                                                    systemFontOfSize:NSFont.smallSystemFontSize],
+                                                        }]];
+    [useAriaSubtitle appendAttributedString:[[NSAttributedString alloc]
+                                                    initWithString:@(translator._("Learn More…"))
+                                                        attributes:@{
+                                                            NSFontAttributeName : [NSFont
+                                                                    systemFontOfSize:NSFont.smallSystemFontSize],
+                                                            NSLinkAttributeName : @"https://aria2.github.io",
+                                                        }]];
+    NSTextField* useAriaSubtitleLabel{ [NSTextField wrappingLabelWithString:@""] };
     useAriaSubtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    useAriaSubtitleLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
-    useAriaSubtitleLabel.textColor = NSColor.secondaryLabelColor;
-    NSButton* learnMoreButton
-    {
-        [NSButton buttonWithTitle:@"" target:self action:@selector(learnMoreAboutAria2:)],
-    };
-    learnMoreButton.translatesAutoresizingMaskIntoConstraints = NO;
-    learnMoreButton.bordered = NO;
-    learnMoreButton.alignment = NSTextAlignmentLeft;
-    learnMoreButton.attributedTitle = [[NSAttributedString alloc]
-            initWithString:@(translator._("Learn More…"))
-                attributes:@{
-                    NSForegroundColorAttributeName : NSColor.linkColor,
-                    NSFontAttributeName : [NSFont systemFontOfSize:NSFont.smallSystemFontSize],
-                    NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle),
-                }];
+    useAriaSubtitleLabel.allowsEditingTextAttributes = YES;
+    useAriaSubtitleLabel.attributedStringValue = useAriaSubtitle;
     NSTextField* maxConnectionsLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Maximum Connections Per Server")).c_str())],
@@ -114,7 +120,6 @@
     self.minSplitSizeStepper = minSplitSizeStepper;
     [self.view addSubview:useAriaCheckbox];
     [self.view addSubview:useAriaSubtitleLabel];
-    [self.view addSubview:learnMoreButton];
     [self.view addSubview:maxConnectionsLabel];
     [self.view addSubview:maxConnectionsTextField];
     [self.view addSubview:maxConnectionsStepper];
@@ -129,9 +134,6 @@
         [useAriaSubtitleLabel.leadingAnchor constraintEqualToAnchor:useAriaCheckbox.leadingAnchor],
         [useAriaSubtitleLabel.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [useAriaSubtitleLabel.topAnchor constraintEqualToAnchor:useAriaCheckbox.bottomAnchor constant:6],
-        [learnMoreButton.leadingAnchor constraintEqualToAnchor:useAriaCheckbox.leadingAnchor],
-        [learnMoreButton.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
-        [learnMoreButton.topAnchor constraintEqualToAnchor:useAriaSubtitleLabel.bottomAnchor constant:2],
         [maxConnectionsLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [maxConnectionsLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [maxConnectionsTextField.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
@@ -139,7 +141,7 @@
         [maxConnectionsLabel.firstBaselineAnchor constraintEqualToAnchor:maxConnectionsTextField.firstBaselineAnchor],
         [maxConnectionsStepper.leadingAnchor constraintEqualToAnchor:maxConnectionsTextField.trailingAnchor constant:4],
         [maxConnectionsStepper.centerYAnchor constraintEqualToAnchor:maxConnectionsTextField.centerYAnchor],
-        [maxConnectionsTextField.topAnchor constraintEqualToAnchor:learnMoreButton.bottomAnchor constant:16],
+        [maxConnectionsTextField.topAnchor constraintEqualToAnchor:useAriaSubtitleLabel.bottomAnchor constant:16],
         [minSplitSizeLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [minSplitSizeLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [minSplitSizeTextField.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
@@ -163,15 +165,6 @@
     parabolic::aria2::Options options{ configuration.aria2_options() };
     options.set_use_aria(enabled);
     configuration.set_aria2_options(options);
-}
-
-- (void)learnMoreAboutAria2:(NSButton*)sender
-{
-    NSURL* url{ [NSURL URLWithString:@"https://aria2.github.io"] };
-    if (url != nil)
-    {
-        [[NSWorkspace sharedWorkspace] openURL:url];
-    }
 }
 
 - (void)maxConnectionsTextFieldChanged:(NSTextField*)sender

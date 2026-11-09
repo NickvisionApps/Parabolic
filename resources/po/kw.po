@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-04-29 09:09+0000\n"
 "Last-Translator: Flynn <cirilla@tuta.io>\n"
 "Language-Team: Cornish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -65,6 +65,10 @@ msgstr "Gwettha"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "Vyth"
 
@@ -220,7 +224,7 @@ msgstr "aria2c"
 msgid "Use aria2"
 msgstr "Gul devnydh a aria2c"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -229,17 +233,17 @@ msgstr ""
 "Iskargell aral may re bos uskissa yn powyow nebes yn kehevelyans dhe'n "
 "iskarger yt-dlp"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Junyansow Moyha Dre Servell"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -254,11 +258,16 @@ msgstr "Junyansow Moyha Dre Servell"
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 msgid "Minimum Split Size (MiB)"
 msgstr "Braster Fols Lyha (MiB)"
 
@@ -303,7 +312,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -669,6 +678,246 @@ msgstr "1 Bledhen"
 msgid "Forever"
 msgstr "A-vynitha"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "Hanow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+msgid "Post Processor"
+msgstr "Dyghtyer Wosa"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Synsi Chapters"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Folsa Gwydhyow gans Chapters"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Gwydhyow (Ollgemmyn)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "Treylyell"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "Synsi Metadata"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Synsi Istitlow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Synsi Avenyow Byghan"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Istitelow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Treylyell"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+msgid "Executable"
+msgstr "Eksekutadow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Neusennow FFmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr "Oberadowyow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "Hedhi"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr "Sawya"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "Addya"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Yma oberadow gans an hanow na seulabrys"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+msgid "Arguments"
+msgstr "Oberadowyow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "Oberadowyow yw diskwedhys rag dewis y'n fenester \"Addya iskarg\""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "Dyllo"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "Dyllo Oberadow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+msgid "Edit Argument"
+msgstr "Dyllo Oberadow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "Synsi Metadata"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "Dilea Data Devedhyans"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "Dilea metadata may kontaynya kudhlow iskarg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "Synsi Avenyow Byghan"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Mars an eghen restren na skoodhya ow synsi, an aven byghan a wra sawys dhe "
+"restren aven dibarow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "Desedha Braster a Avenyow Byghan rag Restrennow Son"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Desedha avenyow byghan a restrennow son dhe pedrogow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "Synsi Chapters"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "Synsi Istitlow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"A marow po a ow synsi na skoodhys, istitelow iskargys a wra sawya dhe "
+"restrennow dibarow"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+msgid "FFmpeg Threads"
+msgstr "Neusennow FFmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Finwetha an niver a neusennow devnydhys gans ffmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Oberadowyow Vyth"
+
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "An braster lyha dhe folsa restren (yn MiB)"
 
@@ -761,9 +1010,6 @@ msgstr "A-vynitha"
 
 #~ msgid "Audio Format"
 #~ msgstr "Furvas Son"
-
-#~ msgid "Subtitles"
-#~ msgstr "Istitelow"
 
 #~ msgid "Search subtitles"
 #~ msgstr "Hwilas istitelow"
@@ -878,12 +1124,6 @@ msgstr "A-vynitha"
 #~ msgid "Credentials"
 #~ msgstr "Manylyon Usyer"
 
-#~ msgid "Add"
-#~ msgstr "Addya"
-
-#~ msgid "Name"
-#~ msgstr "Hanow"
-
 #~ msgid "URL"
 #~ msgstr "URL"
 
@@ -990,73 +1230,14 @@ msgstr "A-vynitha"
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "Ragnotya oberadowyow moy rag passya dhe yt-dlp"
 
-#~ msgid "Converter"
-#~ msgstr "Treylyell"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Synsi Metadata"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Dilea Data Devedhyans"
-
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr "Dilea metadata may kontaynya kudhlow iskarg"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Synsi Avenyow Byghan"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Mars an eghen restren na skoodhya ow synsi, an aven byghan a wra sawys "
-#~ "dhe restren aven dibarow"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Desedha Braster a Avenyow Byghan rag Restrennow Son"
-
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr "Desedha avenyow byghan a restrennow son dhe pedrogow"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Synsi Chapters"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Synsi Istitlow"
-
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "A marow po a ow synsi na skoodhys, istitelow iskargys a wra sawya dhe "
-#~ "restrennow dibarow"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Neusennow FFmpeg"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "Finwetha an niver a neusennow devnydhys gans ffmpeg"
-
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "Oberadowyow Dyghtya Wosa"
-
-#~ msgid "Arguments will be shown for selection in the add download dialog"
-#~ msgstr "Oberadowyow yw diskwedhys rag dewis y'n fenester \"Addya iskarg\""
 
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Addya Oberadow Dyghtyer Wosa"
 
 #~ msgid "Argument"
 #~ msgstr "Oberadow"
-
-#~ msgid "Post Processor"
-#~ msgstr "Dyghtyer Wosa"
-
-#~ msgid "Executable"
-#~ msgstr "Eksekutadow"
-
-#~ msgid "Args"
-#~ msgstr "Oberadowyow"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1126,9 +1307,6 @@ msgstr "A-vynitha"
 #~ "irreversible"
 #~ msgstr ""
 #~ "Os ta sur ty mynnes dilea oll istori iskarg? An gwrians ma yw andileadow"
-
-#~ msgid "Cancel"
-#~ msgstr "Hedhi"
 
 #~ msgid "Download Again"
 #~ msgstr "Iskarga Arta"
@@ -1206,9 +1384,6 @@ msgstr "A-vynitha"
 #~ msgid "No file selected"
 #~ msgstr "Restren dewisys vyth"
 
-#~ msgid "No Arguments"
-#~ msgstr "Oberadowyow Vyth"
-
 #~ msgid "Delete Argument?"
 #~ msgstr "Dilea Oberadow?"
 
@@ -1225,9 +1400,6 @@ msgstr "A-vynitha"
 
 #~ msgid "No media was found at the provided URL"
 #~ msgstr "Media kavas vyth y'n gorgevren provys"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "Gwydhyow (Ollgemmyn)"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4 (Gwydhyow)"
@@ -1375,9 +1547,6 @@ msgstr "A-vynitha"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
-
-#~ msgid "An argument with that name already exists"
-#~ msgstr "Yma oberadow gans an hanow na seulabrys"
 
 #~ msgid "The name of the argument cannot be empty"
 #~ msgstr "Hanow oberadow a res"
@@ -1862,9 +2031,6 @@ msgstr "A-vynitha"
 #~ msgid "Media"
 #~ msgstr "Media"
 
-#~ msgid "Split Video by Chapters"
-#~ msgstr "Folsa Gwydhyow gans Chapters"
-
 #~ msgid "Use manual credentials"
 #~ msgstr "Devnydhya manylyon usyer dre dhorn"
 
@@ -1894,9 +2060,6 @@ msgstr "A-vynitha"
 
 #~ msgid "Edit Credential"
 #~ msgstr "Dyllo Manylyon Usyer"
-
-#~ msgid "Save"
-#~ msgstr "Sawya"
 
 #~ msgid "Delete Credential"
 #~ msgstr "Dilea Manylyon Usyer"
@@ -1931,17 +2094,11 @@ msgstr "A-vynitha"
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Kudhlow prevessyans kopys dhe astell glypp"
 
-#~ msgid "Arguments"
-#~ msgstr "Oberadowyow"
-
 #~ msgid "New Argument"
 #~ msgstr "Oberadow Nowydh"
 
 #~ msgid "The argument args cannot be empty."
 #~ msgstr "Oberadowyow oberadow a res."
-
-#~ msgid "Edit Argument"
-#~ msgstr "Dyllo Oberadow"
 
 #~ msgid "Delete Argument"
 #~ msgstr "Dilea Oberadow"

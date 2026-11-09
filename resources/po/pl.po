@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-04-17 08:09+0000\n"
 "Last-Translator: Michał Dominik <fancy0duck@duck.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -60,6 +60,10 @@ msgstr "Najgorszy"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "Brak"
 
@@ -214,7 +218,7 @@ msgstr "aria2c"
 msgid "Use aria2"
 msgstr "Używaj aria2c"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -223,17 +227,17 @@ msgstr ""
 "Alternatywny program do pobierania, który w niektórych regionach może "
 "działać szybciej niż natywny yt-dlp"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Maksymalna ilość połączeń na serwer"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -248,11 +252,16 @@ msgstr "Maksymalna ilość połączeń na serwer"
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 msgid "Minimum Split Size (MiB)"
 msgstr "Minimalny rozmiar podziału (MiB)"
 
@@ -297,7 +306,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -664,6 +673,247 @@ msgstr "1 rok"
 msgid "Forever"
 msgstr "Na zawsze"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "Nazwa"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+msgid "Post Processor"
+msgstr "Postprocesor"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Osadzaj rozdziały"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Podziel wideo według rozdziałów"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Wideo (ogólne)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "Osadzaj metadane"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Osadzaj napisy"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Osadzaj miniatury"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+msgid "Executable"
+msgstr "Plik wykonywalny"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Wątki FFmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr "Argumenty"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr "Zapisz"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "Dodaj"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Argument o tej nazwie już istnieje"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+msgid "Arguments"
+msgstr "Argumenty"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "Argumenty będą dostępne do wyboru w oknie Dodaj pobieranie"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "Edytuj"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "Edytuj argument"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+msgid "Edit Argument"
+msgstr "Edytuj argument"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "Osadzaj metadane"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "Usuń dane źródłowe"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Usuń metadane zawierające dane, które mogą posłużyć do identyfikacji pobrania"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "Osadzaj miniatury"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Jeśli typ pliku nie obsługuje osadzania, miniatura zostanie zapisana w "
+"osobnym pliku graficznym"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "Przycinaj miniatury plików audio"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Przycinaj miniatury plików audio do kwadratów"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "Osadzaj rozdziały"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "Osadzaj napisy"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Jeśli opcja jest wyłączona lub osadzenie jest niedostępne, pobrane napisy "
+"zostaną zapisane do osobnego pliku"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+msgid "FFmpeg Threads"
+msgstr "Wątki FFmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Ogranicz liczbę wątków używanych przez ffmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Brak argumentów"
+
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Minimalny rozmiar pliku do podziału (w MiB)"
 
@@ -875,12 +1125,6 @@ msgstr "Na zawsze"
 #~ msgid "Credentials"
 #~ msgstr "Dane logowania"
 
-#~ msgid "Add"
-#~ msgstr "Dodaj"
-
-#~ msgid "Name"
-#~ msgstr "Nazwa"
-
 #~ msgid "URL"
 #~ msgstr "Adres URL"
 
@@ -995,72 +1239,14 @@ msgstr "Na zawsze"
 #~ msgid "Converter"
 #~ msgstr "Konwersja"
 
-#~ msgid "Embed Metadata"
-#~ msgstr "Osadzaj metadane"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Usuń dane źródłowe"
-
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr ""
-#~ "Usuń metadane zawierające dane, które mogą posłużyć do identyfikacji "
-#~ "pobrania"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Osadzaj miniatury"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Jeśli typ pliku nie obsługuje osadzania, miniatura zostanie zapisana w "
-#~ "osobnym pliku graficznym"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Przycinaj miniatury plików audio"
-
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr "Przycinaj miniatury plików audio do kwadratów"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Osadzaj rozdziały"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Osadzaj napisy"
-
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Jeśli opcja jest wyłączona lub osadzenie jest niedostępne, pobrane napisy "
-#~ "zostaną zapisane do osobnego pliku"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Wątki FFmpeg"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "Ogranicz liczbę wątków używanych przez ffmpeg"
-
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "Argumenty przetwarzania końcowego"
-
-#~ msgid "Arguments will be shown for selection in the add download dialog"
-#~ msgstr "Argumenty będą dostępne do wyboru w oknie Dodaj pobieranie"
 
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Dodaj argument przetwarzania końcowego"
 
 #~ msgid "Argument"
 #~ msgstr "Argument"
-
-#~ msgid "Post Processor"
-#~ msgstr "Postprocesor"
-
-#~ msgid "Executable"
-#~ msgstr "Plik wykonywalny"
-
-#~ msgid "Args"
-#~ msgstr "Argumenty"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1135,9 +1321,6 @@ msgstr "Na zawsze"
 #~ msgstr ""
 #~ "Czy na pewno chcesz wyczyścić całą historię pobierania? Ta czynność jest "
 #~ "nieodwracalna"
-
-#~ msgid "Cancel"
-#~ msgstr "Anuluj"
 
 #~ msgid "Download Again"
 #~ msgstr "Pobierz ponownie"
@@ -1217,9 +1400,6 @@ msgstr "Na zawsze"
 #~ msgid "No file selected"
 #~ msgstr "Nie wybrano pliku"
 
-#~ msgid "No Arguments"
-#~ msgstr "Brak argumentów"
-
 #~ msgid "Delete Argument?"
 #~ msgstr "Usunąć argument?"
 
@@ -1238,9 +1418,6 @@ msgstr "Na zawsze"
 
 #~ msgid "No media was found at the provided URL"
 #~ msgstr "Nie znaleziono żadnych mediów pod podanym adresem URL"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "Wideo (ogólne)"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4 (wideo)"
@@ -1391,9 +1568,6 @@ msgstr "Na zawsze"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
-
-#~ msgid "An argument with that name already exists"
-#~ msgstr "Argument o tej nazwie już istnieje"
 
 #~ msgid "The name of the argument cannot be empty"
 #~ msgstr "Nazwa argumentu nie może być pusta"
@@ -1703,22 +1877,12 @@ msgstr "Na zawsze"
 #~ msgid "Add a download to get started"
 #~ msgstr "Dodaj nazwę użytkownika aby rozpocząć."
 
-#~ msgid "Arguments"
-#~ msgstr "Argumenty"
-
 #, fuzzy
 #~ msgid "The name cannot be empty."
 #~ msgstr "Nazwa argumentu nie może być pusta."
 
 #~ msgid "Manage"
 #~ msgstr "Zarządzaj"
-
-#, fuzzy
-#~ msgid "Add Argument"
-#~ msgstr "Edytuj argument"
-
-#~ msgid "Edit Argument"
-#~ msgstr "Edytuj argument"
 
 #~ msgid "Delete Argument"
 #~ msgstr "Usuń argument"
@@ -1946,9 +2110,6 @@ msgstr "Na zawsze"
 #~ msgid "Media"
 #~ msgstr "Media"
 
-#~ msgid "Split Video by Chapters"
-#~ msgstr "Podziel wideo według rozdziałów"
-
 #~ msgid "Use manual credentials"
 #~ msgstr "Wprowadź ręcznie dane logowania"
 
@@ -1981,9 +2142,6 @@ msgstr "Na zawsze"
 
 #~ msgid "Edit Credential"
 #~ msgstr "Edytuj dane logowania"
-
-#~ msgid "Save"
-#~ msgstr "Zapisz"
 
 #~ msgid "Delete Credential"
 #~ msgstr "Usuń dane logowania"
@@ -2603,9 +2761,6 @@ msgstr "Na zawsze"
 
 #~ msgid "About Tube Converter"
 #~ msgstr "O programie"
-
-#~ msgid "Tube Converter"
-#~ msgstr "Tube Converter"
 
 #~ msgid "Get video and audio from the web"
 #~ msgstr "Pobierz audio i wideo z Internetu"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 21:38-0500\n"
+"POT-Creation-Date: 2026-11-08 21:54-0500\n"
 "PO-Revision-Date: 2026-05-03 08:09+0000\n"
 "Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -59,6 +59,10 @@ msgstr "Thấp nhất"
 
 #: libparabolic/src/file.cpp:298
 #: org.nickvision.tubeconverter.macos/src/settings_extractor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:79
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:112
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:38
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:57
 msgid "None"
 msgstr "Không"
 
@@ -213,7 +217,7 @@ msgstr "aria2c"
 msgid "Use aria2"
 msgstr "Sử dụng aria2c"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:39
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:40
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -222,17 +226,17 @@ msgstr ""
 "Trình tải xuống thay thế có thể nhanh hơn ở một số khu vực so với trình tải "
 "xuống gốc của yt-dlp"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:53
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:54
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Số kết nối tối đa mỗi máy chủ"
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:61
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:66
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:86
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:118
 #: org.nickvision.tubeconverter.macos/src/settings_discovery_view_controller.mm:148
@@ -247,11 +251,16 @@ msgstr "Số kết nối tối đa mỗi máy chủ"
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:24
 #: org.nickvision.tubeconverter.macos/src/settings_general_view_controller.mm:43
 #: org.nickvision.tubeconverter.macos/src/settings_history_view_controller.mm:23
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_aria2_view_controller.mm:94
 msgid "Minimum Split Size (MiB)"
 msgstr "Kích thước tách tối thiểu (MiB)"
 
@@ -296,7 +305,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:135
 #: org.nickvision.tubeconverter.macos/src/settings_dialog_controller.mm:136
-#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:15
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:31
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
@@ -661,6 +670,246 @@ msgstr "1 năm"
 msgid "Forever"
 msgstr "Mãi mãi"
 
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:56
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:80
+msgid "Name"
+msgstr "Tên"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:72
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:81
+msgid "Post Processor"
+msgstr "Bộ xử lý hậu kỳ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:80
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:39
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:81
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:40
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Nhúng chương"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:82
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:41
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Chia video theo chương"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:83
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:42
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:84
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:43
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Video (Chung)"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:85
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:44
+#, fuzzy
+msgid "Video Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:86
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:45
+#, fuzzy
+msgid "Metadata"
+msgstr "Nhúng metadata"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:87
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:46
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Nhúng phụ đề"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:88
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:47
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Nhúng hình thu nhỏ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:89
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:48
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:90
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:49
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:91
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:50
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:92
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:51
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:93
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:52
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:94
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:53
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:95
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:54
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:105
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:82
+msgid "Executable"
+msgstr "Có thể thực thi"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:113
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:58
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:114
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:59
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Luồng FFmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:115
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:60
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:125
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:83
+msgid "Args"
+msgstr "Đối số"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:135
+msgid "Cancel"
+msgstr "Hủy"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+msgid "Save"
+msgstr "Lưu"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:141
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:104
+msgid "Add"
+msgstr "Thêm"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_argument_editor_view_controller.mm:236
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Đã tồn tại một đối số có tên này"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:36
+msgid "Arguments"
+msgstr "Đối số"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:65
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "Các đối số sẽ được hiển thị để lựa chọn trong hộp thoại thêm tải xuống"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:109
+#, fuzzy
+msgid "Edit…"
+msgstr "Chỉnh sửa"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:116
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:123
+msgid "Done"
+msgstr ""
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+#, fuzzy
+msgid "Add Argument"
+msgstr "Chỉnh sửa đối số"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_arguments_view_controller.mm:247
+msgid "Edit Argument"
+msgstr "Chỉnh sửa đối số"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:35
+msgid "Embed Metadata"
+msgstr "Nhúng metadata"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:44
+msgid "Remove Source Data"
+msgstr "Xóa dữ liệu nguồn"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:55
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "Xóa các trường siêu dữ liệu chứa thông tin tải xuống nhận dạng"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:63
+msgid "Embed Thumbnails"
+msgstr "Nhúng hình thu nhỏ"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:72
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Nếu loại tệp không hỗ trợ nhúng thì hình thu nhỏ sẽ được ghi vào file ảnh "
+"riêng"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:80
+msgid "Crop Audio Thumbnails"
+msgstr "Cắt hình thu nhỏ âm thanh"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:91
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Cắt hình thu nhỏ của tệp âm thanh thành hình vuông"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:98
+msgid "Embed Chapters"
+msgstr "Nhúng chương"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:107
+msgid "Embed Subtitles"
+msgstr "Nhúng phụ đề"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:116
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Nếu bị tắt hoặc nếu tính năng nhúng không được hỗ trợ, phụ đề đã tải xuống "
+"sẽ được lưu vào các tệp riêng biệt"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:125
+msgid "FFmpeg Threads"
+msgstr "Luồng FFmpeg"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:151
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Giới hạn số luồng được ffmpeg sử dụng"
+
+#: org.nickvision.tubeconverter.macos/src/settings_postprocessing_view_controller.mm:158
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Không có đối số"
+
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Kích thước tối thiểu để chia một tệp (tính bằng MiB)"
 
@@ -872,12 +1121,6 @@ msgstr "Mãi mãi"
 #~ msgid "Credentials"
 #~ msgstr "Thông tin xác thực"
 
-#~ msgid "Add"
-#~ msgstr "Thêm"
-
-#~ msgid "Name"
-#~ msgstr "Tên"
-
 #~ msgid "URL"
 #~ msgstr "URL"
 
@@ -991,70 +1234,13 @@ msgstr "Mãi mãi"
 #~ msgid "Converter"
 #~ msgstr "Bộ chuyển đổi"
 
-#~ msgid "Embed Metadata"
-#~ msgstr "Nhúng metadata"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Xóa dữ liệu nguồn"
-
-#~ msgid "Clear metadata fields containing identifying download information"
-#~ msgstr "Xóa các trường siêu dữ liệu chứa thông tin tải xuống nhận dạng"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Nhúng hình thu nhỏ"
-
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file"
-#~ msgstr ""
-#~ "Nếu loại tệp không hỗ trợ nhúng thì hình thu nhỏ sẽ được ghi vào file ảnh "
-#~ "riêng"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Cắt hình thu nhỏ âm thanh"
-
-#~ msgid "Crop thumbnails of audio files to squares"
-#~ msgstr "Cắt hình thu nhỏ của tệp âm thanh thành hình vuông"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Nhúng chương"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Nhúng phụ đề"
-
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files"
-#~ msgstr ""
-#~ "Nếu bị tắt hoặc nếu tính năng nhúng không được hỗ trợ, phụ đề đã tải "
-#~ "xuống sẽ được lưu vào các tệp riêng biệt"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Luồng FFmpeg"
-
-#~ msgid "Limit the number of threads used by ffmpeg"
-#~ msgstr "Giới hạn số luồng được ffmpeg sử dụng"
-
 #~ msgid "Postprocessing Arguments"
 #~ msgstr "Đối số xử lý hậu kỳ"
-
-#~ msgid "Arguments will be shown for selection in the add download dialog"
-#~ msgstr ""
-#~ "Các đối số sẽ được hiển thị để lựa chọn trong hộp thoại thêm tải xuống"
 
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Thêm đối số xử lý hậu kỳ"
 
 #~ msgid "Argument"
-#~ msgstr "Đối số"
-
-#~ msgid "Post Processor"
-#~ msgstr "Bộ xử lý hậu kỳ"
-
-#~ msgid "Executable"
-#~ msgstr "Có thể thực thi"
-
-#~ msgid "Args"
 #~ msgstr "Đối số"
 
 #~ msgctxt "Shortcut"
@@ -1130,9 +1316,6 @@ msgstr "Mãi mãi"
 #~ msgstr ""
 #~ "Bạn có chắc chắn muốn xóa toàn bộ lịch sử tải xuống không? Hành động này "
 #~ "không thể hoàn tác"
-
-#~ msgid "Cancel"
-#~ msgstr "Hủy"
 
 #~ msgid "Download Again"
 #~ msgstr "Tải lại"
@@ -1213,9 +1396,6 @@ msgstr "Mãi mãi"
 #~ msgid "No file selected"
 #~ msgstr "Không có tệp nào được chọn"
 
-#~ msgid "No Arguments"
-#~ msgstr "Không có đối số"
-
 #~ msgid "Delete Argument?"
 #~ msgstr "Xóa đối số?"
 
@@ -1234,9 +1414,6 @@ msgstr "Mãi mãi"
 
 #~ msgid "No media was found at the provided URL"
 #~ msgstr "Không tìm thấy phương tiện tại URL đã cung cấp"
-
-#~ msgid "Video (Generic)"
-#~ msgstr "Video (Chung)"
 
 #~ msgid "MP4 (Video)"
 #~ msgstr "MP4 (Video)"
@@ -1384,9 +1561,6 @@ msgstr "Mãi mãi"
 
 #~ msgid "H.265 (HEVC)"
 #~ msgstr "H.265 (HEVC)"
-
-#~ msgid "An argument with that name already exists"
-#~ msgstr "Đã tồn tại một đối số có tên này"
 
 #~ msgid "The name of the argument cannot be empty"
 #~ msgstr "Tên của đối số không được để trống"
@@ -1677,22 +1851,12 @@ msgstr "Mãi mãi"
 #~ msgid "Add a download to get started"
 #~ msgstr "Thêm một tài khoản để bắt đầu."
 
-#~ msgid "Arguments"
-#~ msgstr "Đối số"
-
 #, fuzzy
 #~ msgid "The name cannot be empty."
 #~ msgstr "Tên đối số không được để trống."
 
 #~ msgid "Manage"
 #~ msgstr "Quản lý"
-
-#, fuzzy
-#~ msgid "Add Argument"
-#~ msgstr "Chỉnh sửa đối số"
-
-#~ msgid "Edit Argument"
-#~ msgstr "Chỉnh sửa đối số"
 
 #~ msgid "Delete Argument"
 #~ msgstr "Xóa đối số"
@@ -1912,9 +2076,6 @@ msgstr "Mãi mãi"
 #~ msgid "Media"
 #~ msgstr "Phương tiện"
 
-#~ msgid "Split Video by Chapters"
-#~ msgstr "Chia video theo chương"
-
 #~ msgid "Use manual credentials"
 #~ msgstr "Sử dụng thông tin xác thực thủ công"
 
@@ -1948,9 +2109,6 @@ msgstr "Mãi mãi"
 
 #~ msgid "Edit Credential"
 #~ msgstr "Chỉnh sửa thông tin xác thực"
-
-#~ msgid "Save"
-#~ msgstr "Lưu"
 
 #~ msgid "Delete Credential"
 #~ msgstr "Xóa thông tin xác thực"
@@ -2518,9 +2676,6 @@ msgstr "Mãi mãi"
 
 #~ msgid "About Tube Converter"
 #~ msgstr "Về Tube Converter"
-
-#~ msgid "Tube Converter"
-#~ msgstr "Tube Converter"
 
 #~ msgid "Get video and audio from the web"
 #~ msgstr "Tải xuống nhưng video mà bạn yêu thích"
