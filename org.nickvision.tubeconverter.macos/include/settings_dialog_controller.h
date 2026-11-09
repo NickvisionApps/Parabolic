@@ -1,5 +1,5 @@
 #import <Cocoa/Cocoa.h>
 
-@interface SettingsDialogController : NSWindowController <NSToolbarDelegate, NSWindowDelegate>
+@interface SettingsDialogController : NSWindowController
 - (void)show;
 @end

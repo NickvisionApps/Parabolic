@@ -19,12 +19,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::extractor::Options extractorOptions{ configuration.extractor_options() };
@@ -98,8 +98,8 @@
     NSInteger speedLimitValue{ extractorOptions.speed_limit().value_or(1024) };
     NSNumberFormatter* speedLimitFormatter{ [[NSNumberFormatter alloc] init] };
     speedLimitFormatter.numberStyle = NSNumberFormatterNoStyle;
-    speedLimitFormatter.minimum = @1;
-    speedLimitFormatter.maximum = @1048576;
+    speedLimitFormatter.minimum = @512;
+    speedLimitFormatter.maximum = @10240;
     NSTextField* speedLimitTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     speedLimitTextField.translatesAutoresizingMaskIntoConstraints = NO;
     speedLimitTextField.formatter = speedLimitFormatter;
@@ -110,9 +110,9 @@
     self.speedLimitTextField = speedLimitTextField;
     NSStepper* speedLimitStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     speedLimitStepper.translatesAutoresizingMaskIntoConstraints = NO;
-    speedLimitStepper.minValue = 1;
-    speedLimitStepper.maxValue = 1048576;
-    speedLimitStepper.increment = 128;
+    speedLimitStepper.minValue = 512;
+    speedLimitStepper.maxValue = 10240;
+    speedLimitStepper.increment = 256;
     speedLimitStepper.integerValue = speedLimitValue;
     speedLimitStepper.enabled = extractorOptions.speed_limit().has_value();
     speedLimitStepper.target = self;
@@ -196,7 +196,7 @@
     [self.view addSubview:browseCookiesFileButton];
     [self.view addSubview:clearCookiesFileButton];
     [NSLayoutConstraint activateConstraints:@[
-        [self.view.widthAnchor constraintEqualToConstant:700],
+        [self.view.widthAnchor constraintEqualToConstant:600],
         [usePartFilesCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [usePartFilesCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [usePartFilesCheckbox.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
@@ -270,6 +270,15 @@
     ]];
 }
 
+- (void)viewDidLayout
+{
+    [super viewDidLayout];
+    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
+    {
+        self.preferredContentSize = self.view.fittingSize;
+    }
+}
+
 - (void)usePartFilesChanged:(NSButton*)sender
 {
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
@@ -308,6 +317,11 @@
 
 - (void)speedLimitTextFieldChanged:(NSTextField*)sender
 {
+    if (sender.stringValue.length == 0 || sender.integerValue < 512 || sender.integerValue > 10240)
+    {
+        sender.integerValue = self.speedLimitStepper.integerValue;
+        return;
+    }
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::extractor::Options options{ configuration.extractor_options() };
     options.set_speed_limit(static_cast<int>(sender.integerValue));
@@ -354,20 +368,29 @@
     panel.canChooseFiles = YES;
     panel.canChooseDirectories = NO;
     panel.allowsMultipleSelection = NO;
-    if ([panel runModal] == NSModalResponseOK)
+    NSWindow* window{ self.view.window };
+    if (window == nil)
     {
-        NSString* path
-        {
-            @(panel.URL.fileSystemRepresentation),
-        };
-        self.cookiesFileTextField.stringValue = path;
-        parabolic::configuration::Configuration& configuration{
-            parabolic::application::State::instance().configuration(),
-        };
-        parabolic::extractor::Options options{ configuration.extractor_options() };
-        options.set_cookies_path(path.UTF8String);
-        configuration.set_extractor_options(options);
+        return;
     }
+    [panel beginSheetModalForWindow:window
+                  completionHandler:^(NSModalResponse response) {
+                    if (response != NSModalResponseOK)
+                    {
+                        return;
+                    }
+                    NSString* path
+                    {
+                        @(panel.URL.fileSystemRepresentation),
+                    };
+                    self.cookiesFileTextField.stringValue = path;
+                    parabolic::configuration::Configuration& configuration{
+                        parabolic::application::State::instance().configuration(),
+                    };
+                    parabolic::extractor::Options options{ configuration.extractor_options() };
+                    options.set_cookies_path(path.UTF8String);
+                    configuration.set_extractor_options(options);
+                  }];
 }
 
 - (void)clearCookiesFile:(NSButton*)sender

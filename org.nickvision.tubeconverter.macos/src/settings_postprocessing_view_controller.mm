@@ -1,4 +1,7 @@
 #import "settings_postprocessing_view_controller.h"
+#include <algorithm>
+#include <thread>
+#include <utility>
 #include "application.h"
 #include "configuration.h"
 #include "postprocessing.h"
@@ -19,12 +22,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::postprocessing::Options postprocessingOptions{ configuration.postprocessing_options() };
@@ -128,7 +131,7 @@
     NSNumberFormatter* threadsFormatter{ [[NSNumberFormatter alloc] init] };
     threadsFormatter.numberStyle = NSNumberFormatterNoStyle;
     threadsFormatter.minimum = @1;
-    threadsFormatter.maximum = @64;
+    threadsFormatter.maximum = @(std::max(1U, std::thread::hardware_concurrency()));
     NSTextField* threadsTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     threadsTextField.translatesAutoresizingMaskIntoConstraints = NO;
     threadsTextField.formatter = threadsFormatter;
@@ -139,7 +142,7 @@
     NSStepper* threadsStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     threadsStepper.translatesAutoresizingMaskIntoConstraints = NO;
     threadsStepper.minValue = 1;
-    threadsStepper.maxValue = 64;
+    threadsStepper.maxValue = std::max(1U, std::thread::hardware_concurrency());
     threadsStepper.increment = 1;
     threadsStepper.integerValue = postprocessingOptions.threads();
     threadsStepper.target = self;
@@ -173,7 +176,7 @@
     [self.view addSubview:threadsSubtitleLabel];
     [self.view addSubview:manageArgumentsButton];
     [NSLayoutConstraint activateConstraints:@[
-        [self.view.widthAnchor constraintEqualToConstant:700],
+        [self.view.widthAnchor constraintEqualToConstant:600],
         [embedMetadataCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [embedMetadataCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [embedMetadataCheckbox.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
@@ -239,6 +242,15 @@
     ]];
 }
 
+- (void)viewDidLayout
+{
+    [super viewDidLayout];
+    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
+    {
+        self.preferredContentSize = self.view.fittingSize;
+    }
+}
+
 - (void)embedMetadataChanged:(NSButton*)sender
 {
     BOOL enabled{ sender.state == NSControlStateValueOn };
@@ -293,6 +305,12 @@
 
 - (void)threadsTextFieldChanged:(NSTextField*)sender
 {
+    if (sender.stringValue.length == 0 || sender.integerValue < 1 ||
+        std::cmp_greater(sender.integerValue, std::max(1U, std::thread::hardware_concurrency())))
+    {
+        sender.integerValue = self.threadsStepper.integerValue;
+        return;
+    }
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
     options.set_threads(static_cast<int>(sender.integerValue));

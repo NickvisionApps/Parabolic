@@ -10,12 +10,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     self.title = @(translator._p("Settings", "General"));
@@ -127,7 +127,7 @@
     [self.view addSubview:allowPreviewUpdatesCheckbox];
     [self.view addSubview:allowPreviewUpdatesSubtitleLabel];
     [NSLayoutConstraint activateConstraints:@[
-        [self.view.widthAnchor constraintEqualToConstant:700],
+        [self.view.widthAnchor constraintEqualToConstant:600],
         [themeLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [themeLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [themePopUpButton.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
@@ -160,6 +160,15 @@
                                                                    constant:6],
         [allowPreviewUpdatesSubtitleLabel.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
+}
+
+- (void)viewDidLayout
+{
+    [super viewDidLayout];
+    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
+    {
+        self.preferredContentSize = self.view.fittingSize;
+    }
 }
 
 - (void)themeChanged:(NSPopUpButton*)sender

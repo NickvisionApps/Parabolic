@@ -1,7 +1,8 @@
 #import <Cocoa/Cocoa.h>
-#import "settings_dialog_controller.h"
 
-@interface MainMenuController : NSResponder
-@property(strong) SettingsDialogController* settingsDialogController;
+@class SettingsDialogController;
+
+@interface MainMenuController : NSObject <NSMenuItemValidation>
+@property(nonatomic, strong) SettingsDialogController* settingsDialogController;
 - (void)setup;
 @end

@@ -16,12 +16,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::download::Options downloadOptions{ configuration.download_options() };
@@ -35,7 +35,7 @@
     NSNumberFormatter* maxActiveDownloadsFormatter{ [[NSNumberFormatter alloc] init] };
     maxActiveDownloadsFormatter.numberStyle = NSNumberFormatterNoStyle;
     maxActiveDownloadsFormatter.minimum = @1;
-    maxActiveDownloadsFormatter.maximum = @50;
+    maxActiveDownloadsFormatter.maximum = @10;
     NSTextField* maxActiveDownloadsTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     maxActiveDownloadsTextField.translatesAutoresizingMaskIntoConstraints = NO;
     maxActiveDownloadsTextField.formatter = maxActiveDownloadsFormatter;
@@ -46,7 +46,7 @@
     NSStepper* maxActiveDownloadsStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     maxActiveDownloadsStepper.translatesAutoresizingMaskIntoConstraints = NO;
     maxActiveDownloadsStepper.minValue = 1;
-    maxActiveDownloadsStepper.maxValue = 50;
+    maxActiveDownloadsStepper.maxValue = 10;
     maxActiveDownloadsStepper.increment = 1;
     maxActiveDownloadsStepper.integerValue = downloadOptions.max_number_of_active_downloads();
     maxActiveDownloadsStepper.target = self;
@@ -88,7 +88,7 @@
     [self.view addSubview:ytdlpArgumentsLabel];
     [self.view addSubview:ytdlpArgumentsTextField];
     [NSLayoutConstraint activateConstraints:@[
-        [self.view.widthAnchor constraintEqualToConstant:700],
+        [self.view.widthAnchor constraintEqualToConstant:600],
         [maxActiveDownloadsLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [maxActiveDownloadsLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor
                                                                            constant:20],
@@ -119,8 +119,22 @@
     ]];
 }
 
+- (void)viewDidLayout
+{
+    [super viewDidLayout];
+    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
+    {
+        self.preferredContentSize = self.view.fittingSize;
+    }
+}
+
 - (void)maxActiveDownloadsTextFieldChanged:(NSTextField*)sender
 {
+    if (sender.stringValue.length == 0 || sender.integerValue < 1 || sender.integerValue > 10)
+    {
+        sender.integerValue = self.maxActiveDownloadsStepper.integerValue;
+        return;
+    }
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::download::Options options{ configuration.download_options() };
     options.set_max_number_of_active_downloads(static_cast<int>(sender.integerValue));

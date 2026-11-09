@@ -9,12 +9,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     self.title = @(translator._p("Settings", "History"));
@@ -50,7 +50,7 @@
     [self.view addSubview:historyLengthLabel];
     [self.view addSubview:historyLengthPopUpButton];
     [NSLayoutConstraint activateConstraints:@[
-        [self.view.widthAnchor constraintEqualToConstant:700],
+        [self.view.widthAnchor constraintEqualToConstant:600],
         [historyLengthLabel.trailingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:-4],
         [historyLengthLabel.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:20],
         [historyLengthPopUpButton.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
@@ -61,6 +61,15 @@
         [historyLengthPopUpButton.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
         [historyLengthPopUpButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
+}
+
+- (void)viewDidLayout
+{
+    [super viewDidLayout];
+    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
+    {
+        self.preferredContentSize = self.view.fittingSize;
+    }
 }
 
 - (void)historyLengthChanged:(NSPopUpButton*)sender

@@ -1,38 +1,31 @@
 #import "main_menu_controller.h"
 #include "application.h"
+#import "settings_dialog_controller.h"
 
 @implementation MainMenuController
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self != nil)
-    {
-        self.settingsDialogController = [[SettingsDialogController alloc] init];
-    }
-    return self;
-}
 
 - (void)setup
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSApplication* app{ [NSApplication sharedApplication] };
-    app.nextResponder = self;
     NSMenu* main_menu{ [[NSMenu alloc] initWithTitle:@"MainMenu"] };
     NSMenuItem* app_menu_item{ [[NSMenuItem alloc] init] };
     [main_menu addItem:app_menu_item];
     NSMenu* app_menu{ [[NSMenu alloc] initWithTitle:@"App"] };
     [app_menu addItemWithTitle:@(translator._("About Parabolic"))
                         action:@selector(orderFrontStandardAboutPanel:)
-                 keyEquivalent:@""];
+                 keyEquivalent:@""]
+            .target = app;
     [app_menu addItemWithTitle:@(translator._("Check for Updates…"))
                         action:@selector(checkForUpdates:)
-                 keyEquivalent:@""];
+                 keyEquivalent:@""]
+            .target = self;
     [app_menu addItem:[NSMenuItem separatorItem]];
     NSMenuItem* settings_item
     {
-        [app_menu addItemWithTitle:@(translator._("Settings…")) action:@selector(settings:) keyEquivalent:@","],
+        [app_menu addItemWithTitle:@(translator._("Settings…")) action:@selector(showSettings:) keyEquivalent:@","],
     };
+    settings_item.target = self;
     settings_item.image = [NSImage imageWithSystemSymbolName:@"gear" accessibilityDescription:nil];
     if (@available(macOS 27.0, *))
     {
@@ -68,6 +61,7 @@
     {
         [[NSMenu alloc] initWithTitle:@(translator._("File"))],
     };
+    [file_menu addItemWithTitle:@(translator._("Close Window")) action:@selector(performClose:) keyEquivalent:@"w"];
     file_menu_item.submenu = file_menu;
     NSMenuItem* edit_menu_item{ [[NSMenuItem alloc] init] };
     [main_menu addItem:edit_menu_item];
@@ -100,6 +94,7 @@
                              action:@selector(toggleFullScreen:)
                       keyEquivalent:@"f"],
     };
+    full_screen_item.target = self;
     full_screen_item.keyEquivalentModifierMask = NSEventModifierFlagCommand | NSEventModifierFlagControl;
     view_menu_item.submenu = view_menu;
     NSMenuItem* window_menu_item{ [[NSMenuItem alloc] init] };
@@ -110,6 +105,7 @@
     };
     [window_menu addItemWithTitle:@(translator._("Minimize")) action:@selector(performMiniaturize:) keyEquivalent:@"m"];
     [window_menu addItemWithTitle:@(translator._("Zoom")) action:@selector(performZoom:) keyEquivalent:@""];
+    [window_menu addItemWithTitle:@(translator._("Close")) action:@selector(performClose:) keyEquivalent:@""];
     [window_menu addItem:[NSMenuItem separatorItem]];
     [window_menu addItemWithTitle:@(translator._("Bring All to Front"))
                            action:@selector(arrangeInFront:)
@@ -122,13 +118,17 @@
     {
         [[NSMenu alloc] initWithTitle:@(translator._("Help"))],
     };
-    [help_menu addItemWithTitle:@(translator._("What's New?")) action:@selector(whatsNew:) keyEquivalent:@""];
+    [help_menu addItemWithTitle:@(translator._("What's New?")) action:@selector(showWhatsNew:) keyEquivalent:@""]
+            .target = self;
     [help_menu addItem:[NSMenuItem separatorItem]];
     [help_menu addItemWithTitle:@(translator._("GitHub Repository…"))
-                         action:@selector(gitHubRepository:)
-                  keyEquivalent:@""];
-    [help_menu addItemWithTitle:@(translator._("Report an Issue…")) action:@selector(reportAnIssue:) keyEquivalent:@""];
-    [help_menu addItemWithTitle:@(translator._("Discussions…")) action:@selector(discussions:) keyEquivalent:@""];
+                         action:@selector(openGitHubRepository:)
+                  keyEquivalent:@""]
+            .target = self;
+    [help_menu addItemWithTitle:@(translator._("Report an Issue…")) action:@selector(reportIssue:) keyEquivalent:@""]
+            .target = self;
+    [help_menu addItemWithTitle:@(translator._("Discussions…")) action:@selector(openDiscussions:) keyEquivalent:@""]
+            .target = self;
     help_menu_item.submenu = help_menu;
     app.helpMenu = help_menu;
     app.mainMenu = main_menu;
@@ -136,14 +136,15 @@
 
 - (void)checkForUpdates:(id)sender
 {
+    const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSAlert* alert{ [[NSAlert alloc] init] };
-    alert.messageText = @"Check for Updates";
-    alert.informativeText = @"This feature is not yet implemented.";
-    [alert addButtonWithTitle:@"OK"];
+    alert.messageText = @(translator._("Check for Updates"));
+    alert.informativeText = @(translator._("This feature is not yet implemented."));
+    [alert addButtonWithTitle:@(translator._("OK"))];
     [alert runModal];
 }
 
-- (void)discussions:(id)sender
+- (void)openDiscussions:(id)sender
 {
     NSURL* url
     {
@@ -155,7 +156,7 @@
     }
 }
 
-- (void)gitHubRepository:(id)sender
+- (void)openGitHubRepository:(id)sender
 {
     NSURL* url
     {
@@ -167,7 +168,7 @@
     }
 }
 
-- (void)reportAnIssue:(id)sender
+- (void)reportIssue:(id)sender
 {
     NSURL* url
     {
@@ -179,12 +180,13 @@
     }
 }
 
-- (void)settings:(id)sender
+- (void)showSettings:(id)sender
 {
+    self.settingsDialogController = [[SettingsDialogController alloc] init];
     [self.settingsDialogController show];
 }
 
-- (void)whatsNew:(id)sender
+- (void)showWhatsNew:(id)sender
 {
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSAlert* alert{ [[NSAlert alloc] init] };
@@ -192,6 +194,25 @@
     alert.informativeText = @(parabolic::application::State::instance().product().changelog().c_str());
     [alert addButtonWithTitle:@(translator._("OK"))];
     [alert runModal];
+}
+
+- (void)toggleFullScreen:(id)sender
+{
+    [NSApp.keyWindow toggleFullScreen:nil];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem*)menuItem
+{
+    if (menuItem.action == @selector(toggleFullScreen:))
+    {
+        const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
+        NSWindow* key_window{ NSApp.keyWindow };
+        menuItem.title = (key_window.styleMask & NSWindowStyleMaskFullScreen) != 0
+                                 ? @(translator._("Exit Full Screen"))
+                                 : @(translator._("Enter Full Screen"));
+        return key_window != nil && (key_window.collectionBehavior & NSWindowCollectionBehaviorFullScreenNone) == 0;
+    }
+    return YES;
 }
 
 @end

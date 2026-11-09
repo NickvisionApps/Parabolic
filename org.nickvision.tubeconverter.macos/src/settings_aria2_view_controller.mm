@@ -18,12 +18,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::aria2::Options aria2Options{ configuration.aria2_options() };
@@ -127,7 +127,7 @@
     [self.view addSubview:minSplitSizeTextField];
     [self.view addSubview:minSplitSizeStepper];
     [NSLayoutConstraint activateConstraints:@[
-        [self.view.widthAnchor constraintEqualToConstant:700],
+        [self.view.widthAnchor constraintEqualToConstant:600],
         [useAriaCheckbox.leadingAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:4],
         [useAriaCheckbox.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-20],
         [useAriaCheckbox.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
@@ -154,6 +154,15 @@
     ]];
 }
 
+- (void)viewDidLayout
+{
+    [super viewDidLayout];
+    if (!NSEqualSizes(self.preferredContentSize, self.view.fittingSize))
+    {
+        self.preferredContentSize = self.view.fittingSize;
+    }
+}
+
 - (void)useAriaChanged:(NSButton*)sender
 {
     BOOL enabled{ sender.state == NSControlStateValueOn };
@@ -169,6 +178,11 @@
 
 - (void)maxConnectionsTextFieldChanged:(NSTextField*)sender
 {
+    if (sender.stringValue.length == 0 || sender.integerValue < 1 || sender.integerValue > 16)
+    {
+        sender.integerValue = self.maxConnectionsStepper.integerValue;
+        return;
+    }
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::aria2::Options options{ configuration.aria2_options() };
     options.set_max_connections_per_server(static_cast<int>(sender.integerValue));
@@ -187,6 +201,11 @@
 
 - (void)minSplitSizeTextFieldChanged:(NSTextField*)sender
 {
+    if (sender.stringValue.length == 0 || sender.integerValue < 1 || sender.integerValue > 1024)
+    {
+        sender.integerValue = self.minSplitSizeStepper.integerValue;
+        return;
+    }
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     parabolic::aria2::Options options{ configuration.aria2_options() };
     options.set_min_split_size(static_cast<int>(sender.integerValue));

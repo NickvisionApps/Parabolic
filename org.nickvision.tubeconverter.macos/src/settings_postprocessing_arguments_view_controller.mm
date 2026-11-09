@@ -1,4 +1,5 @@
 #import "settings_postprocessing_arguments_view_controller.h"
+#include <algorithm>
 #include <cstddef>
 #include <utility>
 #include <vector>
@@ -8,7 +9,7 @@
 #import "settings_postprocessing_argument_editor_view_controller.h"
 #include "translation.h"
 
-@interface SettingsPostprocessingArgumentsViewController () <NSTableViewDataSource, NSTableViewDelegate> {
+@interface SettingsPostprocessingArgumentsViewController () <NSMenuItemValidation, NSTableViewDataSource, NSTableViewDelegate> {
     std::vector<parabolic::postprocessing::Argument> _arguments;
 }
 
@@ -24,12 +25,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     self.title = @(translator._("Arguments"));
@@ -73,7 +74,8 @@
     argumentsTableView.usesAlternatingRowBackgroundColors = YES;
     argumentsTableView.allowsMultipleSelection = NO;
     argumentsTableView.allowsEmptySelection = YES;
-    argumentsTableView.columnAutoresizingStyle = NSTableViewUniformColumnAutoresizingStyle;
+    argumentsTableView.columnAutoresizingStyle = NSTableViewLastColumnOnlyAutoresizingStyle;
+    [argumentsTableView setAccessibilityLabel:@(translator._("Arguments"))];
     NSArray<NSString*>* columnIdentifiers = @[ @"name", @"step", @"executable", @"args" ];
     NSArray<NSString*>* columnTitles = @[
         @(translator._("Name")),
@@ -81,13 +83,16 @@
         @(translator._("Executable")),
         @(translator._("Args")),
     ];
+    NSArray<NSNumber*>* columnWidths = @[ @100, @130, @100, @135 ];
     for (NSUInteger i{ 0 }; i < columnIdentifiers.count; i++)
     {
         NSTableColumn* column{ [[NSTableColumn alloc] initWithIdentifier:columnIdentifiers[i]] };
         column.title = columnTitles[i];
         column.minWidth = 60;
-        column.width = 130;
-        column.resizingMask = NSTableColumnUserResizingMask | NSTableColumnAutoresizingMask;
+        column.width = columnWidths[i].doubleValue;
+        column.resizingMask = i == columnIdentifiers.count - 1
+                                      ? NSTableColumnUserResizingMask | NSTableColumnAutoresizingMask
+                                      : NSTableColumnUserResizingMask;
         [argumentsTableView addTableColumn:column];
     }
     argumentsTableView.target = self;
@@ -112,6 +117,8 @@
     [argumentsSegmentedControl setImage:[NSImage imageWithSystemSymbolName:@"minus"
                                                   accessibilityDescription:@(translator._("Remove"))]
                              forSegment:1];
+    [argumentsSegmentedControl setToolTip:@(translator._("Add")) forSegment:0];
+    [argumentsSegmentedControl setToolTip:@(translator._("Remove")) forSegment:1];
     [argumentsSegmentedControl setWidth:32 forSegment:0];
     [argumentsSegmentedControl setWidth:32 forSegment:1];
     [argumentsSegmentedControl setEnabled:NO forSegment:1];
@@ -119,12 +126,13 @@
     NSMenu* argumentsMenu{ [[NSMenu alloc] init] };
     NSMenuItem* editMenuItem
     {
-        [argumentsMenu addItemWithTitle:@(translator._("Edit…")) action:@selector(editArgument:) keyEquivalent:@""]
+        [argumentsMenu addItemWithTitle:@(translator._("Edit…")) action:@selector(editArgument:) keyEquivalent:@""],
     };
     editMenuItem.target = self;
+    [argumentsMenu addItem:[NSMenuItem separatorItem]];
     NSMenuItem* removeMenuItem
     {
-        [argumentsMenu addItemWithTitle:@(translator._("Remove")) action:@selector(removeArgument:) keyEquivalent:@""]
+        [argumentsMenu addItemWithTitle:@(translator._("Remove")) action:@selector(removeArgument:) keyEquivalent:@""],
     };
     removeMenuItem.target = self;
     argumentsTableView.menu = argumentsMenu;
@@ -177,13 +185,17 @@
     [self presentArgumentEditorForRow:-1];
 }
 
+- (NSInteger)rowForSender:(id)sender
+{
+    return (sender == self.argumentsTableView || [sender isKindOfClass:[NSMenuItem class]]) &&
+                           self.argumentsTableView.clickedRow >= 0
+                   ? self.argumentsTableView.clickedRow
+                   : self.argumentsTableView.selectedRow;
+}
+
 - (void)editArgument:(id)sender
 {
-    NSInteger row{
-        sender == self.argumentsTableView || [sender isKindOfClass:[NSMenuItem class]]
-                ? self.argumentsTableView.clickedRow
-                : self.argumentsTableView.selectedRow,
-    };
+    NSInteger row{ [self rowForSender:sender] };
     if (row >= 0 && std::cmp_less(row, _arguments.size()))
     {
         [self presentArgumentEditorForRow:row];
@@ -192,10 +204,7 @@
 
 - (void)removeArgument:(id)sender
 {
-    NSInteger row{
-        [sender isKindOfClass:[NSMenuItem class]] ? self.argumentsTableView.clickedRow
-                                                  : self.argumentsTableView.selectedRow,
-    };
+    NSInteger row{ [self rowForSender:sender] };
     if (row < 0 || std::cmp_greater_equal(row, _arguments.size()))
     {
         return;
@@ -205,7 +214,19 @@
     parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
     options.set_arguments(_arguments);
     configuration.set_postprocessing_options(options);
-    [self.argumentsTableView reloadData];
+    [self.argumentsTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:static_cast<NSUInteger>(row)]
+                                   withAnimation:NSTableViewAnimationEffectFade];
+    if (!_arguments.empty())
+    {
+        [self.argumentsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:std::min(static_cast<NSUInteger>(row),
+                                                                                         _arguments.size() - 1)]
+                             byExtendingSelection:NO];
+    }
+}
+
+- (void)deleteBackward:(id)sender
+{
+    [self removeArgument:sender];
 }
 
 - (void)presentArgumentEditorForRow:(NSInteger)row
@@ -231,45 +252,63 @@
         executable = static_cast<NSInteger>(argument.executable());
         args = @(argument.args().c_str());
     }
-    SettingsPostprocessingArgumentEditorViewController* editor =
-            [[SettingsPostprocessingArgumentEditorViewController alloc]
-                     initWithName:name
-                             step:step
-                       executable:executable
-                             args:args
-                    existingNames:existingNames
-                       completion:^(NSString* newName, NSInteger newStep, NSInteger newExecutable, NSString* newArgs) {
-                         if (row < 0)
-                         {
-                             self->_arguments.emplace_back(newName.UTF8String,
-                                                           static_cast<parabolic::postprocessing::Step>(newStep),
-                                                           static_cast<parabolic::postprocessing::Executable>(
-                                                                   newExecutable),
-                                                           newArgs.UTF8String);
-                         }
-                         else
-                         {
-                             parabolic::postprocessing::Argument& argument{
-                                 self->_arguments[static_cast<size_t>(row)],
-                             };
-                             argument.set_name(newName.UTF8String);
-                             argument.set_step(static_cast<parabolic::postprocessing::Step>(newStep));
-                             argument.set_executable(static_cast<parabolic::postprocessing::Executable>(newExecutable));
-                             argument.set_args(newArgs.UTF8String);
-                         }
-                         parabolic::configuration::Configuration& configuration{
-                             parabolic::application::State::instance().configuration(),
-                         };
-                         parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-                         options.set_arguments(self->_arguments);
-                         configuration.set_postprocessing_options(options);
-                         [self.argumentsTableView reloadData];
-                         [self.argumentsTableView
-                                     selectRowIndexes:[NSIndexSet
-                                                              indexSetWithIndex:row < 0 ? self->_arguments.size() - 1
-                                                                                        : static_cast<NSUInteger>(row)]
-                                 byExtendingSelection:NO];
-                       }];
+    SettingsPostprocessingArgumentEditorViewController* editor = [[SettingsPostprocessingArgumentEditorViewController
+            alloc]
+             initWithName:name
+                     step:step
+               executable:executable
+                     args:args
+            existingNames:existingNames
+               completion:^(NSString* newName, NSInteger newStep, NSInteger newExecutable, NSString* newArgs) {
+                 if (row >= 0 && std::cmp_greater_equal(row, self->_arguments.size()))
+                 {
+                     return;
+                 }
+                 if (row < 0)
+                 {
+                     self->_arguments.emplace_back(newName.UTF8String,
+                                                         static_cast<parabolic::postprocessing::Step>(newStep),
+                                                         static_cast<parabolic::postprocessing::Executable>(
+                                                                 newExecutable),
+                                                         newArgs.UTF8String);
+                 }
+                 else
+                 {
+                     parabolic::postprocessing::Argument& argument{
+                         self->_arguments[static_cast<size_t>(row)],
+                     };
+                     argument.set_name(newName.UTF8String);
+                     argument.set_step(static_cast<parabolic::postprocessing::Step>(newStep));
+                     argument.set_executable(static_cast<parabolic::postprocessing::Executable>(newExecutable));
+                     argument.set_args(newArgs.UTF8String);
+                 }
+                 parabolic::configuration::Configuration& configuration{
+                     parabolic::application::State::instance().configuration(),
+                 };
+                 parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
+                 options.set_arguments(self->_arguments);
+                 configuration.set_postprocessing_options(options);
+                 NSUInteger selectedIndex{ row < 0 ? self->_arguments.size() - 1 : static_cast<NSUInteger>(row) };
+                 if (row < 0)
+                 {
+                     [self.argumentsTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:selectedIndex]
+                                                          withAnimation:NSTableViewAnimationSlideDown];
+                 }
+                 else
+                 {
+                     [self.argumentsTableView
+                             reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:selectedIndex]
+                                       columnIndexes:[NSIndexSet
+                                                             indexSetWithIndexesInRange:
+                                                                     NSMakeRange(0,
+                                                                                 static_cast<NSUInteger>(
+                                                                                         self.argumentsTableView
+                                                                                                 .numberOfColumns))]];
+                 }
+                 [self.argumentsTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedIndex]
+                                            byExtendingSelection:NO];
+                 [self.argumentsTableView scrollRowToVisible:static_cast<NSInteger>(selectedIndex)];
+               }];
     editor.title = @(row < 0 ? translator._("Add Argument") : translator._("Edit Argument"));
     [self presentViewControllerAsSheet:editor];
 }
@@ -298,22 +337,28 @@
         ]];
     }
     const parabolic::postprocessing::Argument& argument{ _arguments[static_cast<size_t>(row)] };
+    NSString* value{ @"" };
     if ([tableColumn.identifier isEqualToString:@"name"])
     {
-        cell.textField.stringValue = @(argument.name().c_str());
+        value = @(argument.name().c_str());
     }
     else if ([tableColumn.identifier isEqualToString:@"step"])
     {
-        cell.textField.stringValue = self.stepTitles[static_cast<NSUInteger>(argument.step())];
+        value = std::cmp_less(static_cast<NSUInteger>(argument.step()), self.stepTitles.count)
+                        ? self.stepTitles[static_cast<NSUInteger>(argument.step())]
+                        : @"";
     }
     else if ([tableColumn.identifier isEqualToString:@"executable"])
     {
-        cell.textField.stringValue = self.executableTitles[static_cast<NSUInteger>(argument.executable())];
+        value = std::cmp_less(static_cast<NSUInteger>(argument.executable()), self.executableTitles.count)
+                        ? self.executableTitles[static_cast<NSUInteger>(argument.executable())]
+                        : @"";
     }
     else
     {
-        cell.textField.stringValue = @(argument.args().c_str());
+        value = @(argument.args().c_str());
     }
+    cell.textField.stringValue = value;
     return cell;
 }
 
@@ -327,4 +372,5 @@
 {
     return self.argumentsTableView.clickedRow >= 0;
 }
+
 @end

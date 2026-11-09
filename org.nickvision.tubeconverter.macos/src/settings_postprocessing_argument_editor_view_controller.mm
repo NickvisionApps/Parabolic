@@ -44,12 +44,12 @@
 - (void)loadView
 {
     self.view = [[NSView alloc] initWithFrame:NSZeroRect];
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSTextField* nameLabel
     {
@@ -65,6 +65,7 @@
     NSTextField* nameErrorLabel{ [NSTextField labelWithString:@""] };
     nameErrorLabel.font = [NSFont systemFontOfSize:NSFont.smallSystemFontSize];
     nameErrorLabel.textColor = NSColor.systemRedColor;
+    nameErrorLabel.stringValue = @(translator._("An argument with this name already exists."));
     nameErrorLabel.hidden = YES;
     self.nameErrorLabel = nameErrorLabel;
     NSStackView* nameStackView
@@ -106,7 +107,10 @@
     {
         [[stepPopUpButton itemAtIndex:i] setTag:i];
     }
-    [stepPopUpButton selectItemWithTag:self.initialStep];
+    if (![stepPopUpButton selectItemWithTag:self.initialStep])
+    {
+        [stepPopUpButton selectItemAtIndex:0];
+    }
     self.stepPopUpButton = stepPopUpButton;
     NSTextField* executableLabel
     {
@@ -126,7 +130,10 @@
     {
         [[executablePopUpButton itemAtIndex:i] setTag:i];
     }
-    [executablePopUpButton selectItemWithTag:self.initialExecutable];
+    if (![executablePopUpButton selectItemWithTag:self.initialExecutable])
+    {
+        [executablePopUpButton selectItemAtIndex:0];
+    }
     self.executablePopUpButton = executablePopUpButton;
     NSTextField* argsLabel
     {
@@ -200,10 +207,10 @@
                                                              object:nameTextField]];
 }
 
-- (void)viewDidAppear
+- (void)viewWillAppear
 {
-    [super viewDidAppear];
-    [self.view.window makeFirstResponder:self.nameTextField];
+    [super viewWillAppear];
+    self.view.window.initialFirstResponder = self.nameTextField;
 }
 
 - (void)cancel:(NSButton*)sender
@@ -213,16 +220,20 @@
 
 - (void)save:(NSButton*)sender
 {
-    self.completion([self.nameTextField.stringValue
-                            stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet],
-                    self.stepPopUpButton.selectedItem.tag, self.executablePopUpButton.selectedItem.tag,
-                    self.argsTextField.stringValue);
+    if (self.completion != nil)
+    {
+        self.completion([self.nameTextField.stringValue
+                                stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet],
+                        self.stepPopUpButton.selectedItem.tag, self.executablePopUpButton.selectedItem.tag,
+                        [self.argsTextField.stringValue
+                                stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet]);
+        self.completion = nil;
+    }
     [self.presentingViewController dismissViewController:self];
 }
 
 - (void)controlTextDidChange:(NSNotification*)notification
 {
-    const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
     NSString* name{
         [self.nameTextField.stringValue
                 stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet],
@@ -237,7 +248,6 @@
         }
     }
     self.saveButton.enabled = name.length > 0 && !isDuplicate;
-    self.nameErrorLabel.stringValue = @(translator._("An argument with this name already exists."));
     self.nameErrorLabel.hidden = !isDuplicate;
 }
 
