@@ -45,7 +45,7 @@ namespace parabolic::extractor
 
     void Options::set_speed_limit(std::optional<int> value)
     {
-        m_speed_limit = value;
+        m_speed_limit = value.has_value() ? std::optional<int>{ std::clamp(value.value(), 512, 10240) } : std::nullopt;
     }
 
     bool Options::translate_metadata_and_chapters() const
@@ -116,11 +116,11 @@ namespace parabolic::extractor
         {
             if (json["speedLimit"].is_number_integer())
             {
-                options.m_speed_limit = std::clamp(json["speedLimit"].get<int>(), 512, 10240);
+                options.set_speed_limit(json["speedLimit"].get<int>());
             }
             else if (json["speedLimit"].is_null())
             {
-                options.m_speed_limit = std::nullopt;
+                options.set_speed_limit(std::nullopt);
             }
         }
         if (json.contains("translateMetadataAndChapters") && json["translateMetadataAndChapters"].is_boolean())

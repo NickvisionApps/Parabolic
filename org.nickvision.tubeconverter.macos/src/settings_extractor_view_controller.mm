@@ -1,18 +1,7 @@
 #import "settings_extractor_view_controller.h"
-#include <optional>
 #include "application.h"
-#include "configuration.h"
-#include "cookies.h"
-#include "extractor.h"
+#import "settings_model.h"
 #include "translation.h"
-
-@interface SettingsExtractorViewController ()
-
-@property(nonatomic, strong) NSTextField* speedLimitTextField;
-@property(nonatomic, strong) NSStepper* speedLimitStepper;
-@property(nonatomic, strong) NSTextField* cookiesFileTextField;
-
-@end
 
 @implementation SettingsExtractorViewController
 
@@ -26,17 +15,14 @@
 {
     [super viewDidLoad];
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options extractorOptions{ configuration.extractor_options() };
+    SettingsModel* model{ [SettingsModel sharedModel] };
     self.title = @(translator._p("Settings", "Extractor"));
     NSButton* usePartFilesCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Use Part Files"))
-                             target:self
-                             action:@selector(usePartFilesChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Use Part Files")) target:nil action:nil],
     };
     usePartFilesCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    usePartFilesCheckbox.state = extractorOptions.use_part_files() ? NSControlStateValueOn : NSControlStateValueOff;
+    [usePartFilesCheckbox bind:NSValueBinding toObject:model withKeyPath:@"usePartFiles" options:nil];
     NSTextField* usePartFilesSubtitleLabel
     {
         [NSTextField
@@ -48,13 +34,10 @@
     usePartFilesSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* youtubeSponsorBlockCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Use SponsorBlock for YouTube"))
-                             target:self
-                             action:@selector(youtubeSponsorBlockChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Use SponsorBlock for YouTube")) target:nil action:nil],
     };
     youtubeSponsorBlockCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    youtubeSponsorBlockCheckbox.state =
-            extractorOptions.youtube_sponsor_block() ? NSControlStateValueOn : NSControlStateValueOff;
+    [youtubeSponsorBlockCheckbox bind:NSValueBinding toObject:model withKeyPath:@"youtubeSponsorBlock" options:nil];
     NSTextField* youtubeSponsorBlockSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Try to remove sponsored segments from videos."))],
@@ -64,13 +47,13 @@
     youtubeSponsorBlockSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* translateMetadataAndChaptersCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Translate Metadata and Chapters"))
-                             target:self
-                             action:@selector(translateMetadataAndChaptersChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Translate Metadata and Chapters")) target:nil action:nil],
     };
     translateMetadataAndChaptersCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    translateMetadataAndChaptersCheckbox.state =
-            extractorOptions.translate_metadata_and_chapters() ? NSControlStateValueOn : NSControlStateValueOff;
+    [translateMetadataAndChaptersCheckbox bind:NSValueBinding
+                                      toObject:model
+                                   withKeyPath:@"translateMetadataAndChapters"
+                                       options:nil];
     NSTextField* translateMetadataAndChaptersSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Automatically translate embedded metadata and chapters "
@@ -82,20 +65,16 @@
     translateMetadataAndChaptersSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* limitSpeedCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Limit Download Speed"))
-                             target:self
-                             action:@selector(limitSpeedChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Limit Download Speed")) target:nil action:nil],
     };
     limitSpeedCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    limitSpeedCheckbox.state =
-            extractorOptions.speed_limit().has_value() ? NSControlStateValueOn : NSControlStateValueOff;
+    [limitSpeedCheckbox bind:NSValueBinding toObject:model withKeyPath:@"limitSpeed" options:nil];
     NSTextField* speedLimitLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Speed Limit (KiB/s)")).c_str())],
     };
     speedLimitLabel.translatesAutoresizingMaskIntoConstraints = NO;
     speedLimitLabel.alignment = NSTextAlignmentRight;
-    NSInteger speedLimitValue{ extractorOptions.speed_limit().value_or(1024) };
     NSNumberFormatter* speedLimitFormatter{ [[NSNumberFormatter alloc] init] };
     speedLimitFormatter.numberStyle = NSNumberFormatterNoStyle;
     speedLimitFormatter.minimum = @512;
@@ -103,21 +82,15 @@
     NSTextField* speedLimitTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     speedLimitTextField.translatesAutoresizingMaskIntoConstraints = NO;
     speedLimitTextField.formatter = speedLimitFormatter;
-    speedLimitTextField.integerValue = speedLimitValue;
-    speedLimitTextField.enabled = extractorOptions.speed_limit().has_value();
-    speedLimitTextField.target = self;
-    speedLimitTextField.action = @selector(speedLimitTextFieldChanged:);
-    self.speedLimitTextField = speedLimitTextField;
+    [speedLimitTextField bind:NSValueBinding toObject:model withKeyPath:@"speedLimit" options:nil];
+    [speedLimitTextField bind:NSEnabledBinding toObject:model withKeyPath:@"limitSpeed" options:nil];
     NSStepper* speedLimitStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     speedLimitStepper.translatesAutoresizingMaskIntoConstraints = NO;
     speedLimitStepper.minValue = 512;
     speedLimitStepper.maxValue = 10240;
     speedLimitStepper.increment = 256;
-    speedLimitStepper.integerValue = speedLimitValue;
-    speedLimitStepper.enabled = extractorOptions.speed_limit().has_value();
-    speedLimitStepper.target = self;
-    speedLimitStepper.action = @selector(speedLimitStepperChanged:);
-    self.speedLimitStepper = speedLimitStepper;
+    [speedLimitStepper bind:NSValueBinding toObject:model withKeyPath:@"speedLimit" options:nil];
+    [speedLimitStepper bind:NSEnabledBinding toObject:model withKeyPath:@"limitSpeed" options:nil];
     NSTextField* proxyUrlLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Proxy URL")).c_str())],
@@ -126,9 +99,7 @@
     proxyUrlLabel.alignment = NSTextAlignmentRight;
     NSTextField* proxyUrlTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     proxyUrlTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    proxyUrlTextField.stringValue = @(extractorOptions.proxy_url().c_str());
-    proxyUrlTextField.target = self;
-    proxyUrlTextField.action = @selector(proxyUrlChanged:);
+    [proxyUrlTextField bind:NSValueBinding toObject:model withKeyPath:@"proxyUrl" options:nil];
     NSTextField* cookiesBrowserLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Cookies Browser")).c_str())],
@@ -152,9 +123,7 @@
     {
         [[cookiesBrowserPopUpButton itemAtIndex:i] setTag:i];
     }
-    [cookiesBrowserPopUpButton selectItemWithTag:static_cast<NSInteger>(extractorOptions.cookies_browser())];
-    cookiesBrowserPopUpButton.target = self;
-    cookiesBrowserPopUpButton.action = @selector(cookiesBrowserChanged:);
+    [cookiesBrowserPopUpButton bind:NSSelectedTagBinding toObject:model withKeyPath:@"cookiesBrowser" options:nil];
     NSTextField* cookiesFileLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Cookies File")).c_str())],
@@ -163,10 +132,7 @@
     cookiesFileLabel.alignment = NSTextAlignmentRight;
     NSTextField* cookiesFileTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     cookiesFileTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    cookiesFileTextField.stringValue = @(extractorOptions.cookies_path().c_str());
-    cookiesFileTextField.target = self;
-    cookiesFileTextField.action = @selector(cookiesFileTextFieldChanged:);
-    self.cookiesFileTextField = cookiesFileTextField;
+    [cookiesFileTextField bind:NSValueBinding toObject:model withKeyPath:@"cookiesPath" options:nil];
     NSButton* browseCookiesFileButton
     {
         [NSButton buttonWithTitle:@(translator._("Browse…")) target:self action:@selector(browseCookiesFile:)],
@@ -270,89 +236,6 @@
     ]];
 }
 
-- (void)usePartFilesChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_use_part_files(sender.state == NSControlStateValueOn);
-    configuration.set_extractor_options(options);
-}
-
-- (void)youtubeSponsorBlockChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_youtube_sponsor_block(sender.state == NSControlStateValueOn);
-    configuration.set_extractor_options(options);
-}
-
-- (void)translateMetadataAndChaptersChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_translate_metadata_and_chapters(sender.state == NSControlStateValueOn);
-    configuration.set_extractor_options(options);
-}
-
-- (void)limitSpeedChanged:(NSButton*)sender
-{
-    BOOL enabled{ sender.state == NSControlStateValueOn };
-    self.speedLimitTextField.enabled = enabled;
-    self.speedLimitStepper.enabled = enabled;
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_speed_limit(enabled ? std::optional<int>{ static_cast<int>(self.speedLimitTextField.integerValue) }
-                                    : std::nullopt);
-    configuration.set_extractor_options(options);
-}
-
-- (void)speedLimitTextFieldChanged:(NSTextField*)sender
-{
-    if (sender.stringValue.length == 0 || sender.integerValue < 512 || sender.integerValue > 10240)
-    {
-        sender.integerValue = self.speedLimitStepper.integerValue;
-        return;
-    }
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_speed_limit(static_cast<int>(sender.integerValue));
-    configuration.set_extractor_options(options);
-    self.speedLimitStepper.integerValue = sender.integerValue;
-}
-
-- (void)speedLimitStepperChanged:(NSStepper*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_speed_limit(static_cast<int>(sender.integerValue));
-    configuration.set_extractor_options(options);
-    self.speedLimitTextField.integerValue = sender.integerValue;
-}
-
-- (void)proxyUrlChanged:(NSTextField*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_proxy_url(sender.stringValue.UTF8String);
-    configuration.set_extractor_options(options);
-}
-
-- (void)cookiesBrowserChanged:(NSPopUpButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_cookies_browser(static_cast<parabolic::cookies::Browser>(sender.selectedItem.tag));
-    configuration.set_extractor_options(options);
-}
-
-- (void)cookiesFileTextFieldChanged:(NSTextField*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_cookies_path(sender.stringValue.UTF8String);
-    configuration.set_extractor_options(options);
-}
-
 - (void)browseCookiesFile:(NSButton*)sender
 {
     NSOpenPanel* panel{ [NSOpenPanel openPanel] };
@@ -370,27 +253,13 @@
                     {
                         return;
                     }
-                    NSString* path
-                    {
-                        @(panel.URL.fileSystemRepresentation),
-                    };
-                    self.cookiesFileTextField.stringValue = path;
-                    parabolic::configuration::Configuration& configuration{
-                        parabolic::application::State::instance().configuration(),
-                    };
-                    parabolic::extractor::Options options{ configuration.extractor_options() };
-                    options.set_cookies_path(path.UTF8String);
-                    configuration.set_extractor_options(options);
+                    [SettingsModel sharedModel].cookiesPath = @(panel.URL.fileSystemRepresentation);
                   }];
 }
 
 - (void)clearCookiesFile:(NSButton*)sender
 {
-    self.cookiesFileTextField.stringValue = @"";
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::extractor::Options options{ configuration.extractor_options() };
-    options.set_cookies_path("");
-    configuration.set_extractor_options(options);
+    [SettingsModel sharedModel].cookiesPath = @"";
 }
 
 @end

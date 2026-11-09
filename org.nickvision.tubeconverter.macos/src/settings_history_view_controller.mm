@@ -1,7 +1,7 @@
 #import "settings_history_view_controller.h"
 #include "application.h"
-#include "configuration.h"
 #include "history.h"
+#import "settings_model.h"
 #include "translation.h"
 
 @implementation SettingsHistoryViewController
@@ -16,7 +16,6 @@
 {
     [super viewDidLoad];
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
     self.title = @(translator._p("Settings", "History"));
     NSTextField* historyLengthLabel
     {
@@ -44,9 +43,10 @@
     [[historyLengthPopUpButton itemAtIndex:5] setTag:static_cast<NSInteger>(parabolic::history::Length::SixMonths)];
     [[historyLengthPopUpButton itemAtIndex:6] setTag:static_cast<NSInteger>(parabolic::history::Length::OneYear)];
     [[historyLengthPopUpButton itemAtIndex:7] setTag:static_cast<NSInteger>(parabolic::history::Length::Forever)];
-    [historyLengthPopUpButton selectItemWithTag:static_cast<NSInteger>(configuration.history_options().length())];
-    historyLengthPopUpButton.target = self;
-    historyLengthPopUpButton.action = @selector(historyLengthChanged:);
+    [historyLengthPopUpButton bind:NSSelectedTagBinding
+                          toObject:[SettingsModel sharedModel]
+                       withKeyPath:@"historyLength"
+                           options:nil];
     [self.view addSubview:historyLengthLabel];
     [self.view addSubview:historyLengthPopUpButton];
     [NSLayoutConstraint activateConstraints:@[
@@ -61,14 +61,6 @@
         [historyLengthPopUpButton.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:20],
         [historyLengthPopUpButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
-}
-
-- (void)historyLengthChanged:(NSPopUpButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::history::Options options{ configuration.history_options() };
-    options.set_length(static_cast<parabolic::history::Length>(sender.selectedItem.tag));
-    configuration.set_history_options(options);
 }
 
 @end

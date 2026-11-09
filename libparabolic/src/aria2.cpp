@@ -18,7 +18,7 @@ namespace parabolic::aria2
 
     void Options::set_max_connections_per_server(int value)
     {
-        m_max_connections_per_server = value;
+        m_max_connections_per_server = std::clamp(value, 1, 16);
     }
 
     int Options::min_split_size() const
@@ -28,7 +28,7 @@ namespace parabolic::aria2
 
     void Options::set_min_split_size(int value)
     {
-        m_min_split_size = value;
+        m_min_split_size = std::clamp(value, 1, 1024);
     }
 
     bool Options::use_aria() const
@@ -61,20 +61,20 @@ namespace parabolic::aria2
     {
         if (json.contains("ariaMaxConnectionsPerServer") && json["ariaMaxConnectionsPerServer"].is_number_integer())
         {
-            options.m_max_connections_per_server = std::clamp(json.at("ariaMaxConnectionsPerServer").get<int>(), 1, 16);
+            options.set_max_connections_per_server(json.at("ariaMaxConnectionsPerServer").get<int>());
         }
         else if (json.contains("AriaMaxConnectionsPerServer") &&
                  json["AriaMaxConnectionsPerServer"].is_number_integer())
         {
-            options.m_max_connections_per_server = std::clamp(json.at("AriaMaxConnectionsPerServer").get<int>(), 1, 16);
+            options.set_max_connections_per_server(json.at("AriaMaxConnectionsPerServer").get<int>());
         }
         if (json.contains("ariaMinSplitSize") && json["ariaMinSplitSize"].is_number_integer())
         {
-            options.m_min_split_size = std::clamp(json.at("ariaMinSplitSize").get<int>(), 1, 1024);
+            options.set_min_split_size(json.at("ariaMinSplitSize").get<int>());
         }
         else if (json.contains("AriaMinSplitSize") && json["AriaMinSplitSize"].is_number_integer())
         {
-            options.m_min_split_size = std::clamp(json.at("AriaMinSplitSize").get<int>(), 1, 1024);
+            options.set_min_split_size(json.at("AriaMinSplitSize").get<int>());
         }
         if (json.contains("useAria") && json["useAria"].is_boolean())
         {

@@ -1,17 +1,7 @@
 #import "settings_aria2_view_controller.h"
 #include "application.h"
-#include "aria2.h"
-#include "configuration.h"
+#import "settings_model.h"
 #include "translation.h"
-
-@interface SettingsAria2ViewController ()
-
-@property(nonatomic, strong) NSTextField* maxConnectionsTextField;
-@property(nonatomic, strong) NSStepper* maxConnectionsStepper;
-@property(nonatomic, strong) NSTextField* minSplitSizeTextField;
-@property(nonatomic, strong) NSStepper* minSplitSizeStepper;
-
-@end
 
 @implementation SettingsAria2ViewController
 
@@ -25,15 +15,14 @@
 {
     [super viewDidLoad];
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::aria2::Options aria2Options{ configuration.aria2_options() };
+    SettingsModel* model{ [SettingsModel sharedModel] };
     self.title = @(translator._p("Settings", "aria2"));
     NSButton* useAriaCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Use aria2")) target:self action:@selector(useAriaChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Use aria2")) target:nil action:nil],
     };
     useAriaCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    useAriaCheckbox.state = aria2Options.use_aria() ? NSControlStateValueOn : NSControlStateValueOff;
+    [useAriaCheckbox bind:NSValueBinding toObject:model withKeyPath:@"useAria" options:nil];
     NSMutableAttributedString* useAriaSubtitle
     {
         [[NSMutableAttributedString alloc]
@@ -75,21 +64,15 @@
     NSTextField* maxConnectionsTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     maxConnectionsTextField.translatesAutoresizingMaskIntoConstraints = NO;
     maxConnectionsTextField.formatter = maxConnectionsFormatter;
-    maxConnectionsTextField.integerValue = aria2Options.max_connections_per_server();
-    maxConnectionsTextField.enabled = aria2Options.use_aria();
-    maxConnectionsTextField.target = self;
-    maxConnectionsTextField.action = @selector(maxConnectionsTextFieldChanged:);
-    self.maxConnectionsTextField = maxConnectionsTextField;
+    [maxConnectionsTextField bind:NSValueBinding toObject:model withKeyPath:@"maxConnectionsPerServer" options:nil];
+    [maxConnectionsTextField bind:NSEnabledBinding toObject:model withKeyPath:@"useAria" options:nil];
     NSStepper* maxConnectionsStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     maxConnectionsStepper.translatesAutoresizingMaskIntoConstraints = NO;
     maxConnectionsStepper.minValue = 1;
     maxConnectionsStepper.maxValue = 16;
     maxConnectionsStepper.increment = 1;
-    maxConnectionsStepper.integerValue = aria2Options.max_connections_per_server();
-    maxConnectionsStepper.enabled = aria2Options.use_aria();
-    maxConnectionsStepper.target = self;
-    maxConnectionsStepper.action = @selector(maxConnectionsStepperChanged:);
-    self.maxConnectionsStepper = maxConnectionsStepper;
+    [maxConnectionsStepper bind:NSValueBinding toObject:model withKeyPath:@"maxConnectionsPerServer" options:nil];
+    [maxConnectionsStepper bind:NSEnabledBinding toObject:model withKeyPath:@"useAria" options:nil];
     NSTextField* minSplitSizeLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Minimum Split Size (MiB)")).c_str())],
@@ -103,21 +86,15 @@
     NSTextField* minSplitSizeTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     minSplitSizeTextField.translatesAutoresizingMaskIntoConstraints = NO;
     minSplitSizeTextField.formatter = minSplitSizeFormatter;
-    minSplitSizeTextField.integerValue = aria2Options.min_split_size();
-    minSplitSizeTextField.enabled = aria2Options.use_aria();
-    minSplitSizeTextField.target = self;
-    minSplitSizeTextField.action = @selector(minSplitSizeTextFieldChanged:);
-    self.minSplitSizeTextField = minSplitSizeTextField;
+    [minSplitSizeTextField bind:NSValueBinding toObject:model withKeyPath:@"minSplitSize" options:nil];
+    [minSplitSizeTextField bind:NSEnabledBinding toObject:model withKeyPath:@"useAria" options:nil];
     NSStepper* minSplitSizeStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     minSplitSizeStepper.translatesAutoresizingMaskIntoConstraints = NO;
     minSplitSizeStepper.minValue = 1;
     minSplitSizeStepper.maxValue = 1024;
     minSplitSizeStepper.increment = 1;
-    minSplitSizeStepper.integerValue = aria2Options.min_split_size();
-    minSplitSizeStepper.enabled = aria2Options.use_aria();
-    minSplitSizeStepper.target = self;
-    minSplitSizeStepper.action = @selector(minSplitSizeStepperChanged:);
-    self.minSplitSizeStepper = minSplitSizeStepper;
+    [minSplitSizeStepper bind:NSValueBinding toObject:model withKeyPath:@"minSplitSize" options:nil];
+    [minSplitSizeStepper bind:NSEnabledBinding toObject:model withKeyPath:@"useAria" options:nil];
     [self.view addSubview:useAriaCheckbox];
     [self.view addSubview:useAriaSubtitleLabel];
     [self.view addSubview:maxConnectionsLabel];
@@ -152,65 +129,6 @@
         [minSplitSizeTextField.topAnchor constraintEqualToAnchor:maxConnectionsTextField.bottomAnchor constant:12],
         [minSplitSizeTextField.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
-}
-
-- (void)useAriaChanged:(NSButton*)sender
-{
-    BOOL enabled{ sender.state == NSControlStateValueOn };
-    self.maxConnectionsTextField.enabled = enabled;
-    self.maxConnectionsStepper.enabled = enabled;
-    self.minSplitSizeTextField.enabled = enabled;
-    self.minSplitSizeStepper.enabled = enabled;
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::aria2::Options options{ configuration.aria2_options() };
-    options.set_use_aria(enabled);
-    configuration.set_aria2_options(options);
-}
-
-- (void)maxConnectionsTextFieldChanged:(NSTextField*)sender
-{
-    if (sender.stringValue.length == 0 || sender.integerValue < 1 || sender.integerValue > 16)
-    {
-        sender.integerValue = self.maxConnectionsStepper.integerValue;
-        return;
-    }
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::aria2::Options options{ configuration.aria2_options() };
-    options.set_max_connections_per_server(static_cast<int>(sender.integerValue));
-    configuration.set_aria2_options(options);
-    self.maxConnectionsStepper.integerValue = sender.integerValue;
-}
-
-- (void)maxConnectionsStepperChanged:(NSStepper*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::aria2::Options options{ configuration.aria2_options() };
-    options.set_max_connections_per_server(static_cast<int>(sender.integerValue));
-    configuration.set_aria2_options(options);
-    self.maxConnectionsTextField.integerValue = sender.integerValue;
-}
-
-- (void)minSplitSizeTextFieldChanged:(NSTextField*)sender
-{
-    if (sender.stringValue.length == 0 || sender.integerValue < 1 || sender.integerValue > 1024)
-    {
-        sender.integerValue = self.minSplitSizeStepper.integerValue;
-        return;
-    }
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::aria2::Options options{ configuration.aria2_options() };
-    options.set_min_split_size(static_cast<int>(sender.integerValue));
-    configuration.set_aria2_options(options);
-    self.minSplitSizeStepper.integerValue = sender.integerValue;
-}
-
-- (void)minSplitSizeStepperChanged:(NSStepper*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::aria2::Options options{ configuration.aria2_options() };
-    options.set_min_split_size(static_cast<int>(sender.integerValue));
-    configuration.set_aria2_options(options);
-    self.minSplitSizeTextField.integerValue = sender.integerValue;
 }
 
 @end

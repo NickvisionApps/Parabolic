@@ -237,7 +237,7 @@ namespace parabolic::postprocessing
 
     void Options::set_threads(int value)
     {
-        m_threads = value;
+        m_threads = std::clamp(value, 1, static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
     }
 
     void from_json(const nlohmann::json& json, Argument& argument)
@@ -338,13 +338,11 @@ namespace parabolic::postprocessing
         }
         if (json.contains("postprocessingThreads") && json["postprocessingThreads"].is_number_integer())
         {
-            options.m_threads = std::clamp(json.at("postprocessingThreads").get<int>(), 1,
-                                           static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
+            options.set_threads(json.at("postprocessingThreads").get<int>());
         }
         else if (json.contains("PostprocessingThreads") && json["PostprocessingThreads"].is_number_integer())
         {
-            options.m_threads = std::clamp(json.at("PostprocessingThreads").get<int>(), 1,
-                                           static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
+            options.set_threads(json.at("PostprocessingThreads").get<int>());
         }
         if (json.contains("removeSourceData") && json["removeSourceData"].is_boolean())
         {

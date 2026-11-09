@@ -49,7 +49,7 @@ namespace parabolic::configuration
 
     void WindowGeometry::set_height(int value)
     {
-        m_height = value;
+        m_height = std::clamp(value, 1, std::numeric_limits<int>::max());
     }
 
     bool WindowGeometry::is_maximized() const
@@ -69,7 +69,7 @@ namespace parabolic::configuration
 
     void WindowGeometry::set_width(int value)
     {
-        m_width = value;
+        m_width = std::clamp(value, 1, std::numeric_limits<int>::max());
     }
 
     int WindowGeometry::x() const
@@ -427,11 +427,11 @@ namespace parabolic::configuration
     {
         if (json.contains("height") && json["height"].is_number_integer())
         {
-            geometry.m_height = std::clamp(json.at("height").get<int>(), 1, std::numeric_limits<int>::max());
+            geometry.set_height(json.at("height").get<int>());
         }
         else if (json.contains("Height") && json["Height"].is_number_integer())
         {
-            geometry.m_height = std::clamp(json.at("Height").get<int>(), 1, std::numeric_limits<int>::max());
+            geometry.set_height(json.at("Height").get<int>());
         }
         if (json.contains("isMaximized") && json["isMaximized"].is_boolean())
         {
@@ -443,11 +443,11 @@ namespace parabolic::configuration
         }
         if (json.contains("width") && json["width"].is_number_integer())
         {
-            geometry.m_width = std::clamp(json.at("width").get<int>(), 1, std::numeric_limits<int>::max());
+            geometry.set_width(json.at("width").get<int>());
         }
         else if (json.contains("Width") && json["Width"].is_number_integer())
         {
-            geometry.m_width = std::clamp(json.at("Width").get<int>(), 1, std::numeric_limits<int>::max());
+            geometry.set_width(json.at("Width").get<int>());
         }
         if (json.contains("x") && json["x"].is_number_integer())
         {

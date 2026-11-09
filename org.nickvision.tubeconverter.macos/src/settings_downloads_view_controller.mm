@@ -1,15 +1,7 @@
 #import "settings_downloads_view_controller.h"
 #include "application.h"
-#include "configuration.h"
-#include "download.h"
+#import "settings_model.h"
 #include "translation.h"
-
-@interface SettingsDownloadsViewController ()
-
-@property(nonatomic, strong) NSTextField* maxActiveDownloadsTextField;
-@property(nonatomic, strong) NSStepper* maxActiveDownloadsStepper;
-
-@end
 
 @implementation SettingsDownloadsViewController
 
@@ -23,8 +15,7 @@
 {
     [super viewDidLoad];
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::download::Options downloadOptions{ configuration.download_options() };
+    SettingsModel* model{ [SettingsModel sharedModel] };
     self.title = @(translator._p("Settings", "Downloads"));
     NSTextField* maxActiveDownloadsLabel
     {
@@ -39,36 +30,28 @@
     NSTextField* maxActiveDownloadsTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     maxActiveDownloadsTextField.translatesAutoresizingMaskIntoConstraints = NO;
     maxActiveDownloadsTextField.formatter = maxActiveDownloadsFormatter;
-    maxActiveDownloadsTextField.integerValue = downloadOptions.max_number_of_active_downloads();
-    maxActiveDownloadsTextField.target = self;
-    maxActiveDownloadsTextField.action = @selector(maxActiveDownloadsTextFieldChanged:);
-    self.maxActiveDownloadsTextField = maxActiveDownloadsTextField;
+    [maxActiveDownloadsTextField bind:NSValueBinding toObject:model withKeyPath:@"maxActiveDownloads" options:nil];
     NSStepper* maxActiveDownloadsStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     maxActiveDownloadsStepper.translatesAutoresizingMaskIntoConstraints = NO;
     maxActiveDownloadsStepper.minValue = 1;
     maxActiveDownloadsStepper.maxValue = 10;
     maxActiveDownloadsStepper.increment = 1;
-    maxActiveDownloadsStepper.integerValue = downloadOptions.max_number_of_active_downloads();
-    maxActiveDownloadsStepper.target = self;
-    maxActiveDownloadsStepper.action = @selector(maxActiveDownloadsStepperChanged:);
-    self.maxActiveDownloadsStepper = maxActiveDownloadsStepper;
+    [maxActiveDownloadsStepper bind:NSValueBinding toObject:model withKeyPath:@"maxActiveDownloads" options:nil];
     NSButton* overwriteExistingFilesCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Overwrite Existing Files"))
-                             target:self
-                             action:@selector(overwriteExistingFilesChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Overwrite Existing Files")) target:nil action:nil],
     };
     overwriteExistingFilesCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    overwriteExistingFilesCheckbox.state =
-            downloadOptions.overwrite_existing_files() ? NSControlStateValueOn : NSControlStateValueOff;
+    [overwriteExistingFilesCheckbox bind:NSValueBinding
+                                toObject:model
+                             withKeyPath:@"overwriteExistingFiles"
+                                 options:nil];
     NSButton* preventSuspendCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Prevent Sleep During Downloads"))
-                             target:self
-                             action:@selector(preventSuspendChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Prevent Sleep During Downloads")) target:nil action:nil],
     };
     preventSuspendCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    preventSuspendCheckbox.state = downloadOptions.prevent_suspend() ? NSControlStateValueOn : NSControlStateValueOff;
+    [preventSuspendCheckbox bind:NSValueBinding toObject:model withKeyPath:@"preventSuspend" options:nil];
     NSTextField* ytdlpArgumentsLabel
     {
         [NSTextField labelWithString:@(translator._("{}:", translator._("Extra yt-dlp Download Arguments")).c_str())],
@@ -77,9 +60,7 @@
     ytdlpArgumentsLabel.alignment = NSTextAlignmentRight;
     NSTextField* ytdlpArgumentsTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     ytdlpArgumentsTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    ytdlpArgumentsTextField.stringValue = @(downloadOptions.ytdlp_arguments().c_str());
-    ytdlpArgumentsTextField.target = self;
-    ytdlpArgumentsTextField.action = @selector(ytdlpArgumentsChanged:);
+    [ytdlpArgumentsTextField bind:NSValueBinding toObject:model withKeyPath:@"downloadYtdlpArguments" options:nil];
     [self.view addSubview:maxActiveDownloadsLabel];
     [self.view addSubview:maxActiveDownloadsTextField];
     [self.view addSubview:maxActiveDownloadsStepper];
@@ -117,53 +98,6 @@
         [ytdlpArgumentsTextField.topAnchor constraintEqualToAnchor:preventSuspendCheckbox.bottomAnchor constant:16],
         [ytdlpArgumentsTextField.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-20],
     ]];
-}
-
-- (void)maxActiveDownloadsTextFieldChanged:(NSTextField*)sender
-{
-    if (sender.stringValue.length == 0 || sender.integerValue < 1 || sender.integerValue > 10)
-    {
-        sender.integerValue = self.maxActiveDownloadsStepper.integerValue;
-        return;
-    }
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::download::Options options{ configuration.download_options() };
-    options.set_max_number_of_active_downloads(static_cast<int>(sender.integerValue));
-    configuration.set_download_options(options);
-    self.maxActiveDownloadsStepper.integerValue = sender.integerValue;
-}
-
-- (void)maxActiveDownloadsStepperChanged:(NSStepper*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::download::Options options{ configuration.download_options() };
-    options.set_max_number_of_active_downloads(static_cast<int>(sender.integerValue));
-    configuration.set_download_options(options);
-    self.maxActiveDownloadsTextField.integerValue = sender.integerValue;
-}
-
-- (void)overwriteExistingFilesChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::download::Options options{ configuration.download_options() };
-    options.set_overwrite_existing_files(sender.state == NSControlStateValueOn);
-    configuration.set_download_options(options);
-}
-
-- (void)preventSuspendChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::download::Options options{ configuration.download_options() };
-    options.set_prevent_suspend(sender.state == NSControlStateValueOn);
-    configuration.set_download_options(options);
-}
-
-- (void)ytdlpArgumentsChanged:(NSTextField*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::download::Options options{ configuration.download_options() };
-    options.set_ytdlp_arguments(sender.stringValue.UTF8String);
-    configuration.set_download_options(options);
 }
 
 @end

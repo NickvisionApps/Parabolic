@@ -1,21 +1,10 @@
 #import "settings_postprocessing_view_controller.h"
 #include <algorithm>
 #include <thread>
-#include <utility>
 #include "application.h"
-#include "configuration.h"
-#include "postprocessing.h"
+#import "settings_model.h"
 #import "settings_postprocessing_arguments_view_controller.h"
 #include "translation.h"
-
-@interface SettingsPostprocessingViewController ()
-
-@property(nonatomic, strong) NSButton* removeSourceDataCheckbox;
-@property(nonatomic, strong) NSButton* cropAudioThumbnailsCheckbox;
-@property(nonatomic, strong) NSTextField* threadsTextField;
-@property(nonatomic, strong) NSStepper* threadsStepper;
-
-@end
 
 @implementation SettingsPostprocessingViewController
 
@@ -29,29 +18,21 @@
 {
     [super viewDidLoad];
     const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options postprocessingOptions{ configuration.postprocessing_options() };
+    SettingsModel* model{ [SettingsModel sharedModel] };
     self.title = @(translator._p("Settings", "Postprocessing"));
     NSButton* embedMetadataCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Embed Metadata"))
-                             target:self
-                             action:@selector(embedMetadataChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Embed Metadata")) target:nil action:nil],
     };
     embedMetadataCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    embedMetadataCheckbox.state =
-            postprocessingOptions.embed_metadata() ? NSControlStateValueOn : NSControlStateValueOff;
+    [embedMetadataCheckbox bind:NSValueBinding toObject:model withKeyPath:@"embedMetadata" options:nil];
     NSButton* removeSourceDataCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Remove Source Data"))
-                             target:self
-                             action:@selector(removeSourceDataChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Remove Source Data")) target:nil action:nil],
     };
     removeSourceDataCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    removeSourceDataCheckbox.state =
-            postprocessingOptions.remove_source_data() ? NSControlStateValueOn : NSControlStateValueOff;
-    removeSourceDataCheckbox.enabled = postprocessingOptions.embed_metadata();
-    self.removeSourceDataCheckbox = removeSourceDataCheckbox;
+    [removeSourceDataCheckbox bind:NSValueBinding toObject:model withKeyPath:@"removeSourceData" options:nil];
+    [removeSourceDataCheckbox bind:NSEnabledBinding toObject:model withKeyPath:@"embedMetadata" options:nil];
     NSTextField* removeSourceDataSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Clear metadata fields containing identifying download "
@@ -62,13 +43,10 @@
     removeSourceDataSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* embedThumbnailsCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Embed Thumbnails"))
-                             target:self
-                             action:@selector(embedThumbnailsChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Embed Thumbnails")) target:nil action:nil],
     };
     embedThumbnailsCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    embedThumbnailsCheckbox.state =
-            postprocessingOptions.embed_thumbnails() ? NSControlStateValueOn : NSControlStateValueOff;
+    [embedThumbnailsCheckbox bind:NSValueBinding toObject:model withKeyPath:@"embedThumbnails" options:nil];
     NSTextField* embedThumbnailsSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("If the file type does not support embedding, the "
@@ -79,15 +57,11 @@
     embedThumbnailsSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* cropAudioThumbnailsCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Crop Audio Thumbnails"))
-                             target:self
-                             action:@selector(cropAudioThumbnailsChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Crop Audio Thumbnails")) target:nil action:nil],
     };
     cropAudioThumbnailsCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    cropAudioThumbnailsCheckbox.state =
-            postprocessingOptions.crop_audio_thumbnails() ? NSControlStateValueOn : NSControlStateValueOff;
-    cropAudioThumbnailsCheckbox.enabled = postprocessingOptions.embed_thumbnails();
-    self.cropAudioThumbnailsCheckbox = cropAudioThumbnailsCheckbox;
+    [cropAudioThumbnailsCheckbox bind:NSValueBinding toObject:model withKeyPath:@"cropAudioThumbnails" options:nil];
+    [cropAudioThumbnailsCheckbox bind:NSEnabledBinding toObject:model withKeyPath:@"embedThumbnails" options:nil];
     NSTextField* cropAudioThumbnailsSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Crop thumbnails of audio files to squares."))],
@@ -97,22 +71,16 @@
     cropAudioThumbnailsSubtitleLabel.textColor = NSColor.secondaryLabelColor;
     NSButton* embedChaptersCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Embed Chapters"))
-                             target:self
-                             action:@selector(embedChaptersChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Embed Chapters")) target:nil action:nil],
     };
     embedChaptersCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    embedChaptersCheckbox.state =
-            postprocessingOptions.embed_chapters() ? NSControlStateValueOn : NSControlStateValueOff;
+    [embedChaptersCheckbox bind:NSValueBinding toObject:model withKeyPath:@"embedChapters" options:nil];
     NSButton* embedSubtitlesCheckbox
     {
-        [NSButton checkboxWithTitle:@(translator._("Embed Subtitles"))
-                             target:self
-                             action:@selector(embedSubtitlesChanged:)],
+        [NSButton checkboxWithTitle:@(translator._("Embed Subtitles")) target:nil action:nil],
     };
     embedSubtitlesCheckbox.translatesAutoresizingMaskIntoConstraints = NO;
-    embedSubtitlesCheckbox.state =
-            postprocessingOptions.embed_subtitles() ? NSControlStateValueOn : NSControlStateValueOff;
+    [embedSubtitlesCheckbox bind:NSValueBinding toObject:model withKeyPath:@"embedSubtitles" options:nil];
     NSTextField* embedSubtitlesSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("If disabled or if embedding is not supported, "
@@ -135,19 +103,13 @@
     NSTextField* threadsTextField{ [[NSTextField alloc] initWithFrame:NSZeroRect] };
     threadsTextField.translatesAutoresizingMaskIntoConstraints = NO;
     threadsTextField.formatter = threadsFormatter;
-    threadsTextField.integerValue = postprocessingOptions.threads();
-    threadsTextField.target = self;
-    threadsTextField.action = @selector(threadsTextFieldChanged:);
-    self.threadsTextField = threadsTextField;
+    [threadsTextField bind:NSValueBinding toObject:model withKeyPath:@"postprocessingThreads" options:nil];
     NSStepper* threadsStepper{ [[NSStepper alloc] initWithFrame:NSZeroRect] };
     threadsStepper.translatesAutoresizingMaskIntoConstraints = NO;
     threadsStepper.minValue = 1;
     threadsStepper.maxValue = std::max(1U, std::thread::hardware_concurrency());
     threadsStepper.increment = 1;
-    threadsStepper.integerValue = postprocessingOptions.threads();
-    threadsStepper.target = self;
-    threadsStepper.action = @selector(threadsStepperChanged:);
-    self.threadsStepper = threadsStepper;
+    [threadsStepper bind:NSValueBinding toObject:model withKeyPath:@"postprocessingThreads" options:nil];
     NSTextField* threadsSubtitleLabel
     {
         [NSTextField wrappingLabelWithString:@(translator._("Limit the number of threads used by ffmpeg."))],
@@ -242,85 +204,9 @@
     ]];
 }
 
-- (void)embedMetadataChanged:(NSButton*)sender
-{
-    BOOL enabled{ sender.state == NSControlStateValueOn };
-    self.removeSourceDataCheckbox.enabled = enabled;
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_embed_metadata(enabled);
-    configuration.set_postprocessing_options(options);
-}
-
-- (void)removeSourceDataChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_remove_source_data(sender.state == NSControlStateValueOn);
-    configuration.set_postprocessing_options(options);
-}
-
-- (void)embedThumbnailsChanged:(NSButton*)sender
-{
-    BOOL enabled{ sender.state == NSControlStateValueOn };
-    self.cropAudioThumbnailsCheckbox.enabled = enabled;
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_embed_thumbnails(enabled);
-    configuration.set_postprocessing_options(options);
-}
-
-- (void)cropAudioThumbnailsChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_crop_audio_thumbnails(sender.state == NSControlStateValueOn);
-    configuration.set_postprocessing_options(options);
-}
-
-- (void)embedChaptersChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_embed_chapters(sender.state == NSControlStateValueOn);
-    configuration.set_postprocessing_options(options);
-}
-
-- (void)embedSubtitlesChanged:(NSButton*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_embed_subtitles(sender.state == NSControlStateValueOn);
-    configuration.set_postprocessing_options(options);
-}
-
-- (void)threadsTextFieldChanged:(NSTextField*)sender
-{
-    if (sender.stringValue.length == 0 || sender.integerValue < 1 ||
-        std::cmp_greater(sender.integerValue, std::max(1U, std::thread::hardware_concurrency())))
-    {
-        sender.integerValue = self.threadsStepper.integerValue;
-        return;
-    }
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_threads(static_cast<int>(sender.integerValue));
-    configuration.set_postprocessing_options(options);
-    self.threadsStepper.integerValue = sender.integerValue;
-}
-
 - (void)manageArguments:(NSButton*)sender
 {
     [self presentViewControllerAsSheet:[[SettingsPostprocessingArgumentsViewController alloc] init]];
-}
-
-- (void)threadsStepperChanged:(NSStepper*)sender
-{
-    parabolic::configuration::Configuration& configuration{ parabolic::application::State::instance().configuration() };
-    parabolic::postprocessing::Options options{ configuration.postprocessing_options() };
-    options.set_threads(static_cast<int>(sender.integerValue));
-    configuration.set_postprocessing_options(options);
-    self.threadsTextField.integerValue = sender.integerValue;
 }
 
 @end

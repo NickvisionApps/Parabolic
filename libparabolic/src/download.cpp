@@ -26,7 +26,7 @@ namespace parabolic::download
 
     void Options::set_max_number_of_active_downloads(int value)
     {
-        m_max_number_of_active_downloads = value;
+        m_max_number_of_active_downloads = std::clamp(value, 1, 10);
     }
 
     bool Options::overwrite_existing_files() const
@@ -286,13 +286,11 @@ namespace parabolic::download
     {
         if (json.contains("maxNumberOfActiveDownloads") && json["maxNumberOfActiveDownloads"].is_number_integer())
         {
-            options.m_max_number_of_active_downloads =
-                    std::clamp(json.at("maxNumberOfActiveDownloads").get<int>(), 1, 10);
+            options.set_max_number_of_active_downloads(json.at("maxNumberOfActiveDownloads").get<int>());
         }
         else if (json.contains("MaxNumberOfActiveDownloads") && json["MaxNumberOfActiveDownloads"].is_number_integer())
         {
-            options.m_max_number_of_active_downloads =
-                    std::clamp(json.at("MaxNumberOfActiveDownloads").get<int>(), 1, 10);
+            options.set_max_number_of_active_downloads(json.at("MaxNumberOfActiveDownloads").get<int>());
         }
         if (json.contains("overwriteExistingFiles") && json["overwriteExistingFiles"].is_boolean())
         {
