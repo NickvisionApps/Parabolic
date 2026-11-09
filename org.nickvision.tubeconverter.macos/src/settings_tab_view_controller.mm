@@ -1,10 +1,12 @@
 #import "settings_tab_view_controller.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation SettingsTabViewController
 
 - (void)viewWillAppear
 {
     [super viewWillAppear];
+    self.transitionOptions = NSViewControllerTransitionNone;
     [self resizeWindowForTabViewItem:self.tabViewItems[static_cast<NSUInteger>(self.selectedTabViewItemIndex)]
                              animate:NO];
 }
@@ -25,7 +27,17 @@
     };
     frame.origin.y += frame.size.height - height;
     frame.size.height = height;
-    [window setFrame:frame display:YES animate:animate];
+    if (!animate)
+    {
+        [window setFrame:frame display:YES];
+        return;
+    }
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext* context) {
+      context.duration = 0.25;
+      context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+      context.allowsImplicitAnimation = YES;
+      [[window animator] setFrame:frame display:YES];
+    }];
 }
 
 - (void)tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem

@@ -51,7 +51,8 @@ target_include_directories("${PROJECT_NAME}.macos" PRIVATE "${CMAKE_CURRENT_SOUR
 
 find_library(FOUNDATION_FRAMEWORK Foundation REQUIRED)
 find_library(COCOA_FRAMEWORK Cocoa REQUIRED)
-target_link_libraries("${PROJECT_NAME}.macos" PRIVATE "lib${SHORT_NAME}" ${FOUNDATION_FRAMEWORK} ${COCOA_FRAMEWORK})
+find_library(QUARTZCORE_FRAMEWORK QuartzCore REQUIRED)
+target_link_libraries("${PROJECT_NAME}.macos" PRIVATE "lib${SHORT_NAME}" ${FOUNDATION_FRAMEWORK} ${COCOA_FRAMEWORK} ${QUARTZCORE_FRAMEWORK})
 
 include(MacosHelpers)
 generate_app_icon("${PROJECT_NAME}.macos" "${CMAKE_SOURCE_DIR}/resources/${PROJECT_NAME}.png")
