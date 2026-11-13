@@ -204,15 +204,15 @@ fun MainWindow(onClose: () -> Unit) {
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
             Row(Modifier.align(Alignment.Start).padding(start = 8.dp)) {
                 Tooltip({ Text(Controller.tr("Add Download")) }) {
-                    IconButton({}, Modifier.size(28.dp)) { _ ->
-                        Icon(AllIconsKeys.General.Add, Controller.tr("Add Download"), Modifier.size(18.dp))
+                    IconButton({}, Modifier.size(30.dp)) { _ ->
+                        Icon(AllIconsKeys.General.Add, Controller.tr("Add Download"), Modifier.size(20.dp))
                     }
                 }
             }
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
                 Tooltip({ Text(Controller.tr("Settings")) }) {
-                    IconButton({ settingsOpen = true }, Modifier.size(28.dp)) { _ ->
-                        Icon(AllIconsKeys.General.Settings, Controller.tr("Settings"), Modifier.size(18.dp))
+                    IconButton({ settingsOpen = true }, Modifier.size(30.dp)) { _ ->
+                        Icon(AllIconsKeys.General.Settings, Controller.tr("Settings"), Modifier.size(20.dp))
                     }
                 }
             }
@@ -235,7 +235,7 @@ fun MainWindow(onClose: () -> Unit) {
                             Icon(
                                 entry.icon,
                                 entry.label(),
-                                Modifier.size(21.dp),
+                                Modifier.size(20.dp),
                                 tint = if (blue) Color.White else Color.Unspecified,
                             )
                         }
