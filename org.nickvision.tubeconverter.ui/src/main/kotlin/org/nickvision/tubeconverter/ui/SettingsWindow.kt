@@ -20,7 +20,7 @@ fun SettingsWindow(onClose: () -> Unit) {
     DecoratedWindow(
         onCloseRequest = onClose,
         state = rememberWindowState(size = DpSize(720.dp, 520.dp), position = WindowPosition(Alignment.Center)),
-        title = "Settings",
+        title = Controller.tr("Settings"),
     ) {
         MatchWindowBackground(window)
         TitleBar(Modifier.newFullscreenControls()) {}

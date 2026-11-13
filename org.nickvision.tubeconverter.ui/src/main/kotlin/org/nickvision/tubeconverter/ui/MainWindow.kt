@@ -73,23 +73,23 @@ private fun Modifier.frameBackground(top: Dp = 0.dp): Modifier {
 }
 
 private enum class Page(val label: String, val icon: IconKey) {
-    Download("Download", AllIconsKeys.Actions.Download),
-    Keyring("Keyring", AllIconsKeys.Ide.Readonly),
-    History("History", AllIconsKeys.General.History),
+    Downloads(Controller.tr("Downloads"), AllIconsKeys.Actions.Download),
+    Keyring(Controller.tr("Keyring"), AllIconsKeys.Ide.Readonly),
+    History(Controller.tr("History"), AllIconsKeys.General.History),
 }
 
 @Composable
 fun MainWindow(onClose: () -> Unit) {
     var settingsOpen by remember { mutableStateOf(false) }
-    var page by remember { mutableStateOf(Page.Download) }
+    var page by remember { mutableStateOf(Page.Downloads) }
 
     DecoratedWindow(onCloseRequest = onClose, title = "Parabolic", enabled = !settingsOpen) {
         MatchWindowBackground(window, frameColor())
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
-                Tooltip({ Text("Settings") }) {
+                Tooltip({ Text(Controller.tr("Settings")) }) {
                     IconButton({ settingsOpen = true }, Modifier.size(28.dp)) { _ ->
-                        Icon(AllIconsKeys.General.Settings, "Settings", Modifier.size(18.dp))
+                        Icon(AllIconsKeys.General.Settings, Controller.tr("Settings"), Modifier.size(18.dp))
                     }
                 }
             }
@@ -125,7 +125,7 @@ fun MainWindow(onClose: () -> Unit) {
                     .background(JewelTheme.globalColors.panelBackground),
             ) {
                 when (page) {
-                    Page.Download -> DownloadPage()
+                    Page.Downloads -> DownloadsPage()
                     Page.Keyring -> KeyringPage()
                     Page.History -> HistoryPage()
                 }

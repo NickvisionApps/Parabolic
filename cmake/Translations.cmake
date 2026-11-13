@@ -57,7 +57,7 @@ function(generate_translations)
         list(APPEND TRANSLATION_COMMANDS
             COMMAND "${XGETTEXT_EXECUTABLE}"
                 --from-code=utf-8
-                --language=Java
+                --language=C++
                 --join-existing
                 --output=${POT_FILE}
                 --keyword=tr
