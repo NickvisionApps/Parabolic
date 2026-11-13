@@ -31,8 +31,8 @@ object Controller {
         FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_LONG),
     )
 
-    fun init(localeDir: String) {
-        Arena.ofConfined().use { arena -> initHandle.invoke(arena.allocateFrom(localeDir)) }
+    fun init(resourceDir: String) {
+        Arena.ofConfined().use { arena -> initHandle.invoke(arena.allocateFrom(resourceDir)) }
     }
 
     fun tr(msgid: String): String = Arena.ofConfined().use { arena ->

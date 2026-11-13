@@ -12,7 +12,6 @@
 #include <string_view>
 #include <utility>
 #include <vector>
-#include "environment.h"
 #ifdef _WIN32
 #include "string_manip.h"
 #endif
@@ -93,14 +92,10 @@ namespace parabolic::history
 
     Store::Store(std::string_view app_name)
 #ifdef _WIN32
-        : m_database{ environment::is_portable() ? environment::executable_directory() / "history.db"
-                                                 : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) /
-                                                           app_name / "history.db",
+        : m_database{ std::filesystem::path(string_manip::wstr(sago::getConfigHome())) / app_name / "history.db",
                       SQLite::OPEN_READWRITE + SQLite::OPEN_CREATE }
 #else
-        : m_database{ environment::is_portable()
-                              ? environment::executable_directory() / "history.db"
-                              : std::filesystem::path(sago::getConfigHome()) / app_name / "history.db",
+        : m_database{ std::filesystem::path(sago::getConfigHome()) / app_name / "history.db",
                       SQLite::OPEN_READWRITE + SQLite::OPEN_CREATE }
 #endif
     {

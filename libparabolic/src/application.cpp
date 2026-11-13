@@ -5,9 +5,11 @@
 #include <memory>
 #include <semver.hpp>
 #include <string>
+#include <system_error>
 #include "configuration.h"
 #include "discovery.h"
 #include "download.h"
+#include "environment.h"
 #include "history.h"
 #include "keyring.h"
 #include "translation.h"
@@ -122,8 +124,14 @@ namespace parabolic::application
         return m_discussions_url;
     }
 
-    State::State()
+    State::State(const std::filesystem::path& resource_directory)
+        : m_resource_directory{ environment::executable_directory() }
     {
+        std::error_code ec;
+        if (!resource_directory.empty() && std::filesystem::is_directory(resource_directory, ec))
+        {
+            m_resource_directory = resource_directory;
+        }
         curl_global_init(CURL_GLOBAL_ALL);
         m_product = std::make_unique<Product>();
         m_product->set_id("org.nickvision.tubeconverter");
@@ -135,8 +143,9 @@ namespace parabolic::application
         m_product->set_version(semver::from_string("2026.10.0-next"));
         m_product->set_changelog("- Initial Release");
         m_configuration = std::make_unique<configuration::Configuration>(m_product->name());
-        m_translator = std::make_unique<translation::Translator>(m_product->short_name());
-        m_discovery = std::make_unique<discovery::Manager>();
+        m_translator =
+                std::make_unique<translation::Translator>(m_product->short_name(), m_resource_directory / "locale");
+        m_discovery = std::make_unique<discovery::Manager>(m_resource_directory);
         m_downloads = std::make_unique<download::Manager>();
         m_history = std::make_unique<history::Store>(m_product->name());
         m_keyring = std::make_unique<keyring::Store>(m_product->id());
@@ -178,12 +187,6 @@ namespace parabolic::application
         m_translator.reset();
         m_updater.reset();
         curl_global_cleanup();
-    }
-
-    State& State::instance()
-    {
-        static State instance;
-        return instance;
     }
 
     configuration::Configuration& State::configuration() const
@@ -235,10 +238,5 @@ namespace parabolic::application
     {
         m_updater->set_options(m_configuration->update_options());
         return *m_updater;
-    }
-
-    void State::change_locale_directory(const std::filesystem::path& path)
-    {
-        instance().m_translator = std::make_unique<translation::Translator>(instance().m_product->short_name(), path);
     }
 }

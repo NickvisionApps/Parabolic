@@ -56,10 +56,10 @@ namespace parabolic::application
     class State
     {
     public:
+        State(const std::filesystem::path& resource_directory = {});
         State(const State&) = delete;
         State(State&&) = delete;
         ~State();
-        [[nodiscard]] static State& instance();
         [[nodiscard]] configuration::Configuration& configuration() const;
         [[nodiscard]] discovery::Manager& discovery() const;
         [[nodiscard]] download::Manager& downloads() const;
@@ -68,12 +68,11 @@ namespace parabolic::application
         [[nodiscard]] const Product& product() const;
         [[nodiscard]] const translation::Translator& translator() const;
         [[nodiscard]] const update::Updater& updater() const;
-        static void change_locale_directory(const std::filesystem::path& path);
         State& operator=(const State&) = delete;
         State& operator=(State&&) = delete;
 
     private:
-        State();
+        std::filesystem::path m_resource_directory;
         std::unique_ptr<configuration::Configuration> m_configuration;
         std::unique_ptr<discovery::Manager> m_discovery;
         std::unique_ptr<download::Manager> m_downloads;

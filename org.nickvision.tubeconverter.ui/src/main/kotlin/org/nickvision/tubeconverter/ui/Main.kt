@@ -16,10 +16,9 @@ import org.jetbrains.jewel.intui.window.styling.lightWithLightHeader
 import org.jetbrains.jewel.ui.ComponentStyling
 import org.jetbrains.jewel.window.styling.TitleBarColors
 import org.jetbrains.jewel.window.styling.TitleBarStyle
-import java.io.File
 
 fun main() {
-    Controller.init(File(checkNotNull(System.getProperty("compose.application.resources.dir")), "locale").path)
+    Controller.init(checkNotNull(System.getProperty("compose.application.resources.dir")))
     application(exitProcessOnExit = false) {
         val dark = isSystemInDarkTheme()
         val textStyle = JewelTheme.createDefaultTextStyle()

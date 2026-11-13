@@ -19,10 +19,10 @@
 
 namespace parabolic::ytdlp
 {
-    std::string executable_path()
+    std::string executable_path(const std::filesystem::path& resource_directory)
     {
         const std::filesystem::path& global_path{
-            environment::find_dependency("yt-dlp", environment::DependencySearchOption::Local),
+            environment::find_dependency("yt-dlp", environment::DependencySearchOption::Local, resource_directory),
         };
         if (std::filesystem::exists(global_path))
         {
@@ -33,7 +33,7 @@ namespace parabolic::ytdlp
 #endif
         }
         const std::filesystem::path& local_path{
-            environment::find_dependency("yt-dlp", environment::DependencySearchOption::Global),
+            environment::find_dependency("yt-dlp", environment::DependencySearchOption::Global, resource_directory),
         };
         if (std::filesystem::exists(local_path))
         {
@@ -46,7 +46,8 @@ namespace parabolic::ytdlp
         return "yt-dlp";
     }
 
-    std::expected<std::string, std::string> execute(const std::vector<std::string>& args,
+    std::expected<std::string, std::string> execute(const std::filesystem::path& resource_directory,
+                                                    const std::vector<std::string>& args,
                                                     const std::function<void(const std::string&)>& output_callback,
                                                     const std::stop_token& stop_token)
     {
@@ -54,7 +55,7 @@ namespace parabolic::ytdlp
         {
             return std::unexpected{ "Operation cancelled." };
         }
-        std::vector<std::string> command{ executable_path() };
+        std::vector<std::string> command{ executable_path(resource_directory) };
         command.append_range(args);
         reproc::options options;
         options.redirect.in.type = reproc::redirect::discard;
@@ -120,9 +121,9 @@ namespace parabolic::ytdlp
         return output;
     }
 
-    std::string plugins_path()
+    std::string plugins_path(const std::filesystem::path& resource_directory)
     {
-        std::filesystem::path plugins{ environment::executable_directory() / "plugins" };
+        std::filesystem::path plugins{ resource_directory / "plugins" };
         if (std::filesystem::exists(plugins))
         {
 #ifdef _WIN32

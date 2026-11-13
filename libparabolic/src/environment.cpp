@@ -230,11 +230,13 @@ namespace parabolic::environment
 #endif
     }
 
-    const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option)
+    const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option,
+                                                 const std::filesystem::path& resource_directory)
     {
         static std::unordered_map<std::string, std::filesystem::path> dependencies;
         std::filesystem::path dep{ name };
-        std::string key{ dep.string() + "|" + std::to_string(static_cast<int>(option)) };
+        std::string key{ dep.string() + "|" + std::to_string(static_cast<int>(option)) + "|" +
+                         resource_directory.string() };
         auto it{ dependencies.find(key) };
         if (it != dependencies.end() && std::filesystem::exists(it->second))
         {
@@ -244,7 +246,7 @@ namespace parabolic::environment
         std::filesystem::path& result{ dependencies[key] };
         if (option == DependencySearchOption::Global || option == DependencySearchOption::App)
         {
-            search_in(dep, result, executable_directory());
+            search_in(dep, result, resource_directory);
         }
         if (result.empty() && (option == DependencySearchOption::Global || option == DependencySearchOption::System))
         {
@@ -291,11 +293,6 @@ namespace parabolic::environment
 #else
         return {};
 #endif
-    }
-
-    bool is_portable()
-    {
-        return std::ranges::find(arguments(), "--portable") != arguments().end();
     }
 
     std::string locale()

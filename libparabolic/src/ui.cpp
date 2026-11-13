@@ -4,18 +4,21 @@
 #include <cstdlib>
 #include <cstring>
 #include <filesystem>
+#include <memory>
 #include <string>
 #include "application.h"
 
 namespace
 {
+    std::unique_ptr<parabolic::application::State> state;
+
     char* duplicate(const char* value)
     {
         if (value == nullptr)
         {
             return nullptr;
         }
-        std::size_t size{ std::strlen(value) + 1 };
+        const std::size_t size{ std::strlen(value) + 1 };
         char* result{ static_cast<char*>(std::malloc(size)) };
         if (result != nullptr)
         {
@@ -30,14 +33,15 @@ void controller_free_string(char* value)
     std::free(value);
 }
 
-void controller_init(const char* locale_dir)
+void controller_init(const char* resource_dir)
 {
-    if (locale_dir == nullptr)
+    std::filesystem::path path;
+    if (resource_dir != nullptr)
     {
-        return;
+        path = std::filesystem::path{ std::u8string{ reinterpret_cast<const char8_t*>(resource_dir) } };
     }
-    parabolic::application::State::change_locale_directory(
-            std::filesystem::path{ std::u8string{ reinterpret_cast<const char8_t*>(locale_dir) } });
+    state.reset();
+    state = std::make_unique<parabolic::application::State>(path);
 }
 
 char* controller_tr(const char* msgid)
@@ -46,9 +50,13 @@ char* controller_tr(const char* msgid)
     {
         return nullptr;
     }
+    if (state == nullptr)
+    {
+        return duplicate(msgid);
+    }
     try
     {
-        return duplicate(parabolic::application::State::instance().translator()._(msgid));
+        return duplicate(state->translator()._(msgid));
     }
     catch (...)
     {
@@ -62,10 +70,13 @@ char* controller_trn(const char* msgid, const char* msgid_plural, std::uint64_t 
     {
         return nullptr;
     }
+    if (state == nullptr)
+    {
+        return duplicate(n == 1 ? msgid : msgid_plural);
+    }
     try
     {
-        return duplicate(parabolic::application::State::instance().translator()._n(msgid, msgid_plural,
-                                                                                   static_cast<unsigned long>(n)));
+        return duplicate(state->translator()._n(msgid, msgid_plural, static_cast<unsigned long>(n)));
     }
     catch (...)
     {
@@ -79,9 +90,13 @@ char* controller_trp(const char* context, const char* msgid)
     {
         return nullptr;
     }
+    if (state == nullptr)
+    {
+        return duplicate(msgid);
+    }
     try
     {
-        return duplicate(parabolic::application::State::instance().translator()._p(context, msgid));
+        return duplicate(state->translator()._p(context, msgid));
     }
     catch (...)
     {
@@ -95,10 +110,13 @@ char* controller_trpn(const char* context, const char* msgid, const char* msgid_
     {
         return nullptr;
     }
+    if (state == nullptr)
+    {
+        return duplicate(n == 1 ? msgid : msgid_plural);
+    }
     try
     {
-        return duplicate(parabolic::application::State::instance().translator()._pn(context, msgid, msgid_plural,
-                                                                                    static_cast<unsigned long>(n)));
+        return duplicate(state->translator()._pn(context, msgid, msgid_plural, static_cast<unsigned long>(n)));
     }
     catch (...)
     {

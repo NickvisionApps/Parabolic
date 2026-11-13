@@ -14,7 +14,6 @@
 #include "aria2.h"
 #include "discovery.h"
 #include "download.h"
-#include "environment.h"
 #include "extractor.h"
 #include "history.h"
 #include "postprocessing.h"
@@ -94,14 +93,9 @@ namespace parabolic::configuration
 
     Configuration::Configuration(std::string_view app_name)
 #ifdef _WIN32
-        : m_path{ environment::is_portable() ? environment::executable_directory() / "config.json"
-                                             : std::filesystem::path(string_manip::wstr(sago::getConfigHome())) /
-                                                       app_name / "config.json" }
+        : m_path{ std::filesystem::path(string_manip::wstr(sago::getConfigHome())) / app_name / "config.json" }
 #else
-        : m_path{
-              environment::is_portable() ? environment::executable_directory() / "config.json"
-                                         : std::filesystem::path(sago::getConfigHome()) / app_name / "config.json",
-          }
+        : m_path{ std::filesystem::path(sago::getConfigHome()) / app_name / "config.json" }
 #endif
     {
         try
