@@ -32,6 +32,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyShortcut
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -67,6 +69,7 @@ import javax.swing.RootPaneContainer
 private val GlowCenterX = 140.dp
 private val GlowRadius = 720.dp
 private val TitleBarBorder = 1.dp
+private val IsMac = System.getProperty("os.name").startsWith("Mac")
 
 @Composable
 private fun Modifier.frameBackground(top: Dp = 0.dp): Modifier {
@@ -148,13 +151,22 @@ fun MainWindow(onClose: () -> Unit) {
         }
         MenuBar {
             Menu(Controller.tr("File")) {
-                if (!System.getProperty("os.name").startsWith("Mac")) {
+                Item(
+                    Controller.tr("Add Download"),
+                    shortcut = KeyShortcut(Key.N, ctrl = !IsMac, meta = IsMac),
+                    onClick = {},
+                )
+                if (!IsMac) {
                     Item(Controller.tr("Exit"), onClick = close)
                 }
             }
             Menu(Controller.tr("Edit")) {
-                if (!System.getProperty("os.name").startsWith("Mac")) {
-                    Item(Controller.tr("Settings"), onClick = { settingsOpen = true })
+                if (!IsMac) {
+                    Item(
+                        Controller.tr("Settings"),
+                        shortcut = KeyShortcut(Key.Comma, ctrl = true),
+                        onClick = { settingsOpen = true },
+                    )
                 }
             }
             Menu(Controller.tr("View")) {
@@ -190,6 +202,13 @@ fun MainWindow(onClose: () -> Unit) {
         }
         MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("grad-g1-amber-bg"))
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
+            Row(Modifier.align(Alignment.Start).padding(start = 8.dp)) {
+                Tooltip({ Text(Controller.tr("Add Download")) }) {
+                    IconButton({}, Modifier.size(28.dp)) { _ ->
+                        Icon(AllIconsKeys.General.Add, Controller.tr("Add Download"), Modifier.size(18.dp))
+                    }
+                }
+            }
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
                 Tooltip({ Text(Controller.tr("Settings")) }) {
                     IconButton({ settingsOpen = true }, Modifier.size(28.dp)) { _ ->

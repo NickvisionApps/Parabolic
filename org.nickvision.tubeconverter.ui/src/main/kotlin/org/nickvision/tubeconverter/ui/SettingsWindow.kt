@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -1001,10 +1002,10 @@ fun SettingsWindow(onClose: () -> Unit) {
                             visible.forEach { entry ->
                                 SimpleListItem(
                                     selected = current == entry,
-                                    modifier = Modifier.fillMaxWidth().clickable { section = entry },
+                                    modifier = Modifier.fillMaxWidth().height(32.dp).clickable { section = entry },
                                 ) {
-                                    Row(verticalAlignment = Alignment.CenterVertically) {
-                                        Icon(entry.icon, null, Modifier.size(16.dp))
+                                    Row(Modifier.fillMaxHeight(), verticalAlignment = Alignment.CenterVertically) {
+                                        Icon(entry.icon, null, Modifier.size(18.dp))
                                         Spacer(Modifier.width(6.dp))
                                         Text(highlight(entry.title(), query))
                                     }
