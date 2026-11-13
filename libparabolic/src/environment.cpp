@@ -1,5 +1,4 @@
 #include "environment.h"
-#include <algorithm>
 #include <array>
 #include <cstdint>
 #include <expected>
@@ -235,8 +234,9 @@ namespace parabolic::environment
     {
         static std::unordered_map<std::string, std::filesystem::path> dependencies;
         std::filesystem::path dep{ name };
-        std::string key{ dep.string() + "|" + std::to_string(static_cast<int>(option)) + "|" +
-                         resource_directory.string() };
+        std::string key{
+            dep.string() + "|" + std::to_string(static_cast<int>(option)) + "|" + resource_directory.string(),
+        };
         auto it{ dependencies.find(key) };
         if (it != dependencies.end() && std::filesystem::exists(it->second))
         {

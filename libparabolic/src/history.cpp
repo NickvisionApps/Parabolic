@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <chrono>
 #include <compare>
+#include <filesystem>
 #include <functional>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>

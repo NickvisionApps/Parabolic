@@ -132,7 +132,7 @@ namespace parabolic::discovery
     class Manager
     {
     public:
-        Manager(const std::filesystem::path& resource_directory);
+        Manager(std::filesystem::path resource_directory);
         void set_options(const Options& discovery_options, const extractor::Options& extractor_options);
         [[nodiscard]] std::expected<Result, std::string>
         discover_file(const std::filesystem::path& path,

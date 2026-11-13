@@ -610,8 +610,8 @@ namespace parabolic::discovery
         return m_entries[index];
     }
 
-    Manager::Manager(const std::filesystem::path& resource_directory)
-        : m_resource_directory{ resource_directory }
+    Manager::Manager(std::filesystem::path resource_directory)
+        : m_resource_directory{ std::move(resource_directory) }
     {
     }
 
