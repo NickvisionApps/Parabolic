@@ -39,6 +39,7 @@ import org.jetbrains.jewel.ui.component.Text
 import org.jetbrains.jewel.ui.component.Tooltip
 import org.jetbrains.jewel.ui.icon.IconKey
 import org.jetbrains.jewel.ui.icons.AllIconsKeys
+import org.jetbrains.jewel.ui.theme.colorPalette
 import org.jetbrains.jewel.window.DecoratedWindow
 import org.jetbrains.jewel.window.TitleBar
 import org.jetbrains.jewel.window.defaultTitleBarStyle
@@ -46,18 +47,14 @@ import org.jetbrains.jewel.window.newFullscreenControls
 import java.awt.Window
 import javax.swing.RootPaneContainer
 
-private val ProjectColor = Color(0xFFC94F4F)
 private val GlowCenterX = 140.dp
 private val GlowRadius = 720.dp
 private val TitleBarBorder = 1.dp
 
 @Composable
-private fun frameColor() = if (JewelTheme.isDark) Color(0xFF1E1F22) else Color(0xFFEBECF0)
-
-@Composable
 private fun Modifier.frameBackground(top: Dp = 0.dp): Modifier {
-    val frame = frameColor()
-    val glow = ProjectColor.copy(alpha = if (JewelTheme.isDark) 0.28f else 0.22f)
+    val frame = JewelTheme.colorPalette.rawMap.getValue("grad-g1-amber-bg")
+    val glow = JewelTheme.colorPalette.rawMap.getValue("grad-g1-amber-a2")
     return drawBehind {
         val area = size.copy(height = size.height + TitleBarBorder.toPx())
         drawRect(frame, size = area)
@@ -84,7 +81,7 @@ fun MainWindow(onClose: () -> Unit) {
     var page by remember { mutableStateOf(Page.Downloads) }
 
     DecoratedWindow(onCloseRequest = onClose, title = "Parabolic", enabled = !settingsOpen) {
-        MatchWindowBackground(window, frameColor())
+        MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("grad-g1-amber-bg"))
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
                 Tooltip({ Text(Controller.tr("Settings")) }) {
@@ -120,9 +117,9 @@ fun MainWindow(onClose: () -> Unit) {
                 }
             }
             Box(
-                Modifier.fillMaxSize().padding(end = 6.dp, bottom = 6.dp)
+                Modifier.fillMaxSize().padding(end = 4.dp, bottom = 4.dp)
                     .clip(RoundedCornerShape(10.dp))
-                    .background(JewelTheme.globalColors.panelBackground),
+                    .background(JewelTheme.colorPalette.rawMap.getValue("tool-window-bg")),
             ) {
                 when (page) {
                     Page.Downloads -> DownloadsPage()
@@ -139,7 +136,7 @@ fun MainWindow(onClose: () -> Unit) {
 }
 
 @Composable
-fun MatchWindowBackground(window: Window, color: Color = JewelTheme.globalColors.panelBackground) {
+fun MatchWindowBackground(window: Window, color: Color) {
     LaunchedEffect(window, color) {
         val awtColor = java.awt.Color(color.toArgb())
         window.background = awtColor
