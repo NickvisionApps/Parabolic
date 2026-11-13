@@ -1,6 +1,7 @@
 package org.nickvision.tubeconverter.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.application
 import org.jetbrains.jewel.foundation.theme.JewelTheme
@@ -17,10 +18,17 @@ import org.jetbrains.jewel.ui.ComponentStyling
 import org.jetbrains.jewel.window.styling.TitleBarColors
 import org.jetbrains.jewel.window.styling.TitleBarStyle
 
+val themeState = mutableIntStateOf(2)
+
 fun main() {
     Controller.init(checkNotNull(System.getProperty("compose.application.resources.dir")))
+    themeState.intValue = Controller.getConfiguration().theme
     application(exitProcessOnExit = false) {
-        val dark = isSystemInDarkTheme()
+        val dark = when (themeState.intValue) {
+            0 -> false
+            1 -> true
+            else -> isSystemInDarkTheme()
+        }
         val textStyle = JewelTheme.createDefaultTextStyle()
         val editorStyle = JewelTheme.createEditorTextStyle()
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 21:19-0500\n"
+"POT-Creation-Date: 2026-11-12 21:52-0500\n"
 "PO-Revision-Date: 2026-05-12 20:11+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,9 @@ msgid "Worst"
 msgstr "Txarrena"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:170
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:409
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
 msgid "None"
 msgstr "Bat ere ez"
 
@@ -89,10 +92,640 @@ msgstr "Historia"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:90
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:92
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:23
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:192
 #, fuzzy
 msgid "Settings"
 msgstr "Ezarpenak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:59
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Orokorra"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:60
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Deskargak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:61
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Bilatu"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:62
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:63
+#, fuzzy
+msgctxt "Settings"
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:64
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Historia"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:65
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Prozesatzen"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:66
+#, fuzzy
+msgid "Arguments"
+msgstr "Argumentua"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:69
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:167
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Sistema"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:171
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:172
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Kapsulatu kapituluak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:173
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Zatitu fitxategietan kapituluka"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:174
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:175
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Bideoa (generikoa)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:176
+#, fuzzy
+msgid "Video Converter"
+msgstr "Bihurtzailea"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:177
+#, fuzzy
+msgid "Metadata"
+msgstr "Kapsulatu metadatuak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:178
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Kapsulatu azpitituluak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:179
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Kapsulatu koadro txikiak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:180
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Azpitituluak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:181
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Bihurtzailea"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:182
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:183
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:184
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:185
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:186
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:222
+msgid "Theme"
+msgstr "Gaia"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:224
+#, fuzzy
+msgctxt "Theme"
+msgid "Light"
+msgstr "Argia"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:225
+#, fuzzy
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Iluna"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:226
+msgctxt "Theme"
+msgid "System"
+msgstr "Sistema"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:235
+msgid "Translation Language"
+msgstr "Itzulpen-hizkuntza"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:244
+#, fuzzy
+msgid "Automatically Check for Updates"
+msgstr "Begiratu eguneratzerik dagoen"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:249
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Jaso aurrebista-eguneratzeak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:252
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Eguneratu mendekotasunak, adibidez yt-dlp, beta bertsioetara"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:258
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Deskarga aktiboen gehieneko kopurua"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:264
+msgid "Overwrite Existing Files"
+msgstr "Gainidatzi lehendik dauden fitxategiak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:269
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:274
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "yt-dlp deskarga-argumentuak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:282
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Sartu automatikoki sortutako azpitituluak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:287
+msgid "Include Media Id in Title"
+msgstr "Sartu multimediaren IDa tituluan"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:290
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "Gehitu multimediaren IDa bere titulu lehenetsira"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:293
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Sartu bereizmen handiko formatuak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:297
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:301
+msgid "Limit Filename Characters"
+msgstr "Mugatu fitxategi-izenaren karaktere kopurua"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:304
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Mugatu fitxategi-izenen karaktereak Windows sistemak onartzen dituenetara"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:307
+msgid "Preferred Audio Codec"
+msgstr "Hobetsitako audio-kodeka"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:309
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:324
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:337
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:350
+msgid "Any"
+msgstr "Edozein"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:310
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:311
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:312
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:313
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:314
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:315
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:319
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+"Hobetsi kodek hau audio-formatuak deskargarako eskuragarri daudela "
+"analizatzean"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:322
+msgid "Preferred Video Codec"
+msgstr "Hobetsitako bideo-kodeka"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:325
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:326
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:327
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:328
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:332
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+"Hobetsi kodek hau bideo-formatuak deskargarako eskuragarri daudela "
+"analizatzean"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:335
+msgid "Preferred Subtitle Format"
+msgstr "Hobetsitako azpititulu-formatua"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:338
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:339
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:340
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:341
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:345
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "Hobetsi azpitituluen fitxategi-formatu hau deskargatzean"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:348
+msgid "Preferred Frame Rate"
+msgstr "Hobetsitako fotograma-tasa"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:351
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:352
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:353
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:357
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+"Hobetsi fotograma-tasa hau bideo-formatuak deskargarako eskuragarri daudela "
+"analizatzean"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:360
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "yt-dlp aurkitze-argumentuak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:368
+msgid "Use Part Files"
+msgstr "Erabili zati-fitxategiak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:372
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Deskargatu multimedia .part fitxategi bereizietan, zuzenean irteerako "
+"fitxategi gisa deskargatu ordez"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:376
+msgid "Use SponsorBlock for YouTube"
+msgstr "Erabili SponsorBlock Youtuberako"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:379
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Saiatu iragarkien segmentuek kentzen bideoetatik"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:382
+msgid "Translate Metadata and Chapters"
+msgstr "Itzuli metadatuak eta kapituluak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:386
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Automatikoki itzuli kapsulatutako metadatuak eta kapituluak aplikazioaren "
+"hizkuntzara, onartutako webgune eta multimediatan"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:390
+msgid "Limit Download Speed"
+msgstr "Mugatu deskarga-abiadura"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:395
+msgid "Speed Limit (KiB/s)"
+msgstr "Deskarga-abiadura (KiB/s)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:402
+msgid "Proxy URL"
+msgstr "Proxyaren URLa"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:407
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "Nabigatzaileko cookie-ak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:410
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:411
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:412
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:413
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:414
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:415
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:416
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:417
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:426
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:434
+msgid "Cookies File"
+msgstr "Cookie-n fitxategia"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:441
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:447
+msgid "Clear"
+msgstr "Garbitu"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:454
+#, fuzzy
+msgid "Use aria2"
+msgstr "Erabili aria2c"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:458
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Zenbait eskualdetan jatorrizko yt-dlp deskargatzailea baino azkarragoa izan "
+"daitekeen ordezko deskargatzaile bat"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:463
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Gehieneko konexio kopurua zerbitzariko"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+msgid "Minimum Split Size (MiB)"
+msgstr "Gutxieneko zatitze-tamaina (MiB)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:478
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Deskarga-historiaren luzera"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:480
+msgid "Never"
+msgstr "Inoiz ez"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:481
+msgid "1 Day"
+msgstr "Egun 1"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:482
+msgid "1 Week"
+msgstr "Aste 1"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:483
+msgid "1 Month"
+msgstr "Hilabete 1"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:484
+msgid "3 Months"
+msgstr "2 hilabete"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+msgid "6 Months"
+msgstr "6 hilabete"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:486
+msgid "1 Year"
+msgstr "Urte 1"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:487
+msgid "Forever"
+msgstr "Beti"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:496
+msgid "Embed Metadata"
+msgstr "Kapsulatu metadatuak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:501
+msgid "Remove Source Data"
+msgstr "Kendu iturburu-datuak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:504
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "Garbitu deskarga-informazioa identifikatzen dituzten metadatu-eremuak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:507
+msgid "Embed Thumbnails"
+msgstr "Kapsulatu koadro txikiak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:511
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Fitxategi motak ez badu kapsulatzea onartzen, koadro txikia aparteko irudi-"
+"fitxategi batean idatziko da"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:515
+msgid "Crop Audio Thumbnails"
+msgstr "Moztu audioaren koadro txikiak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:518
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Moztu audio-fitxategien koadro txikiak lauki gisa"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:521
+msgid "Embed Chapters"
+msgstr "Kapsulatu kapituluak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:526
+msgid "Embed Subtitles"
+msgstr "Kapsulatu azpitituluak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:530
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Desgaituta badago edo kapsulatzea onartzen ez bada, deskargatutako "
+"azpitituluak aparteko fitxategietan gordeko dira"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:534
+msgid "FFmpeg Threads"
+msgstr "FFmpeg hariak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:538
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Mugatu ffmpeg aplikazioak darabilen hari kopurua"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:541
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Argumenturik ez"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:548
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+"Deskarga gehitzeko elkarrizketa-koadroan argumentuak erakutsiko dira "
+"hautatzeko"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:571
+msgid "Add"
+msgstr "Gehitu"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:585
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:605
+msgid "Name"
+msgstr "Izena"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:616
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Badago lehendik izen hori duen argumentu bat"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:619
+msgid "Post Processor"
+msgstr "Postprozesatzailea"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:625
+msgid "Executable"
+msgstr "Exekutagarria"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:628
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
+#, fuzzy
+msgid "FFmpeg"
+msgstr "FFmpeg hariak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:636
+msgid "Args"
+msgstr "Arg"
+
+#, fuzzy
+#~ msgid "An application restart is required for a change to take effect."
+#~ msgstr "Aplikazioa berrabiarazi behar da aldaketa indarrean sar dadin"
 
 #~ msgid "About Parabolic"
 #~ msgstr "Parabolic aplikazioari buruz"
@@ -161,345 +794,8 @@ msgstr "Ezarpenak"
 #~ msgid "Parabolic"
 #~ msgstr "Parabolic aplikazioari buruz"
 
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "Erabili aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Zenbait eskualdetan jatorrizko yt-dlp deskargatzailea baino azkarragoa "
-#~ "izan daitekeen ordezko deskargatzaile bat"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Gehieneko konexio kopurua zerbitzariko"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "Gutxieneko zatitze-tamaina (MiB)"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Bilatu"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Sartu automatikoki sortutako azpitituluak"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Sartu multimediaren IDa tituluan"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "Gehitu multimediaren IDa bere titulu lehenetsira"
-
-#, fuzzy
-#~ msgid "Show Super Resolution Formats"
-#~ msgstr "Sartu bereizmen handiko formatuak"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Mugatu fitxategi-izenaren karaktere kopurua"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Mugatu fitxategi-izenen karaktereak Windows sistemak onartzen dituenetara"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "Hobetsitako audio-kodeka"
-
-#~ msgid "Any"
-#~ msgstr "Edozein"
-
-#, fuzzy
-#~ msgid "Prefer this codec when parsing audio formats to show for download."
-#~ msgstr ""
-#~ "Hobetsi kodek hau audio-formatuak deskargarako eskuragarri daudela "
-#~ "analizatzean"
-
-#~ msgid "Preferred Video Codec"
-#~ msgstr "Hobetsitako bideo-kodeka"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Prefer this codec when parsing video formats to show for download."
-#~ msgstr ""
-#~ "Hobetsi kodek hau bideo-formatuak deskargarako eskuragarri daudela "
-#~ "analizatzean"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "Hobetsitako azpititulu-formatua"
-
-#, fuzzy
-#~ msgid "Prefer this subtitle file format for download."
-#~ msgstr "Hobetsi azpitituluen fitxategi-formatu hau deskargatzean"
-
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "Hobetsitako fotograma-tasa"
-
-#, fuzzy
-#~ msgid "24 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "30 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "60 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid ""
-#~ "Prefer this frame rate when parsing video formats to show for download."
-#~ msgstr ""
-#~ "Hobetsi fotograma-tasa hau bideo-formatuak deskargarako eskuragarri "
-#~ "daudela analizatzean"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Discovery Arguments"
-#~ msgstr "yt-dlp aurkitze-argumentuak"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Deskarga aktiboen gehieneko kopurua"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Gainidatzi lehendik dauden fitxategiak"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Download Arguments"
-#~ msgstr "yt-dlp deskarga-argumentuak"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Erabili zati-fitxategiak"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Deskargatu multimedia .part fitxategi bereizietan, zuzenean irteerako "
-#~ "fitxategi gisa deskargatu ordez"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Erabili SponsorBlock Youtuberako"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Saiatu iragarkien segmentuek kentzen bideoetatik"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Itzuli metadatuak eta kapituluak"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters using the app's "
-#~ "set language on supported sites and media."
-#~ msgstr ""
-#~ "Automatikoki itzuli kapsulatutako metadatuak eta kapituluak aplikazioaren "
-#~ "hizkuntzara, onartutako webgune eta multimediatan"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Mugatu deskarga-abiadura"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Deskarga-abiadura (KiB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "Proxyaren URLa"
-
-#, fuzzy
-#~ msgid "Cookies Browser"
-#~ msgstr "Nabigatzaileko cookie-ak"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Cookie-n fitxategia"
-
-#~ msgid "Clear"
-#~ msgstr "Garbitu"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Orokorra"
-
-#~ msgid "Theme"
-#~ msgstr "Gaia"
-
-#, fuzzy
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Argia"
-
-#, fuzzy
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Iluna"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Sistema"
-
-#~ msgid "Translation Language"
-#~ msgstr "Itzulpen-hizkuntza"
-
-#, fuzzy
-#~ msgid "An application restart is required for a change to take effect."
-#~ msgstr "Aplikazioa berrabiarazi behar da aldaketa indarrean sar dadin"
-
-#, fuzzy
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Begiratu eguneratzerik dagoen"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Jaso aurrebista-eguneratzeak"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "Eguneratu mendekotasunak, adibidez yt-dlp, beta bertsioetara"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "Deskarga-historiaren luzera"
-
-#~ msgid "Never"
-#~ msgstr "Inoiz ez"
-
-#~ msgid "1 Day"
-#~ msgstr "Egun 1"
-
-#~ msgid "1 Week"
-#~ msgstr "Aste 1"
-
-#~ msgid "1 Month"
-#~ msgstr "Hilabete 1"
-
-#~ msgid "3 Months"
-#~ msgstr "2 hilabete"
-
-#~ msgid "6 Months"
-#~ msgstr "6 hilabete"
-
-#~ msgid "1 Year"
-#~ msgstr "Urte 1"
-
-#~ msgid "Forever"
-#~ msgstr "Beti"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Sistema"
-
-#~ msgid "Name"
-#~ msgstr "Izena"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Badago lehendik izen hori duen argumentu bat"
-
-#~ msgid "Post Processor"
-#~ msgstr "Postprozesatzailea"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Kapsulatu kapituluak"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Zatitu fitxategietan kapituluka"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Bideoa (generikoa)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Bihurtzailea"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Kapsulatu metadatuak"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Kapsulatu azpitituluak"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Kapsulatu koadro txikiak"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Azpitituluak"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Bihurtzailea"
-
-#~ msgid "Executable"
-#~ msgstr "Exekutagarria"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "FFmpeg hariak"
-
-#~ msgid "Args"
-#~ msgstr "Arg"
-
 #~ msgid "Cancel"
 #~ msgstr "Utzi"
-
-#~ msgid "Add"
-#~ msgstr "Gehitu"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "Argumentua"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr ""
-#~ "Deskarga gehitzeko elkarrizketa-koadroan argumentuak erakutsiko dira "
-#~ "hautatzeko"
 
 #, fuzzy
 #~ msgid "Edit…"
@@ -512,65 +808,6 @@ msgstr "Ezarpenak"
 #, fuzzy
 #~ msgid "Edit Argument"
 #~ msgstr "Argumentua"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Prozesatzen"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Kapsulatu metadatuak"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Kendu iturburu-datuak"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr ""
-#~ "Garbitu deskarga-informazioa identifikatzen dituzten metadatu-eremuak"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Kapsulatu koadro txikiak"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Fitxategi motak ez badu kapsulatzea onartzen, koadro txikia aparteko "
-#~ "irudi-fitxategi batean idatziko da"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Moztu audioaren koadro txikiak"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Moztu audio-fitxategien koadro txikiak lauki gisa"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Kapsulatu kapituluak"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Kapsulatu azpitituluak"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Desgaituta badago edo kapsulatzea onartzen ez bada, deskargatutako "
-#~ "azpitituluak aparteko fitxategietan gordeko dira"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "FFmpeg hariak"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "Mugatu ffmpeg aplikazioak darabilen hari kopurua"
-
-#, fuzzy
-#~ msgid "Manage Arguments…"
-#~ msgstr "Argumenturik ez"
 
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Fitxategi bat zatitzean izango den gutxieneko tamaina (MiBetan)"

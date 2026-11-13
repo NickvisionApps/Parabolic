@@ -72,10 +72,10 @@ private fun Modifier.frameBackground(top: Dp = 0.dp): Modifier {
     }
 }
 
-private enum class Page(val label: String, val icon: IconKey) {
-    Downloads(Controller.tr("Downloads"), AllIconsKeys.Actions.Download),
-    Keyring(Controller.tr("Keyring"), AllIconsKeys.Ide.Readonly),
-    History(Controller.tr("History"), AllIconsKeys.General.History),
+private enum class Page(val label: () -> String, val icon: IconKey) {
+    Downloads({ Controller.tr("Downloads") }, AllIconsKeys.Actions.Download),
+    Keyring({ Controller.tr("Keyring") }, AllIconsKeys.Ide.Readonly),
+    History({ Controller.tr("History") }, AllIconsKeys.General.History),
 }
 
 @Composable
@@ -105,13 +105,13 @@ fun MainWindow(onClose: () -> Unit) {
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Page.entries.forEach { entry ->
-                    Tooltip({ Text(entry.label) }) {
+                    Tooltip({ Text(entry.label()) }) {
                         SelectableIconButton(page == entry, { page = entry }, Modifier.size(34.dp)) { _ ->
                             val blue = page == entry && !JewelTheme.isDark &&
                                 LocalWindowInfo.current.isWindowFocused
                             Icon(
                                 entry.icon,
-                                entry.label,
+                                entry.label(),
                                 Modifier.size(21.dp),
                                 tint = if (blue) Color.White else Color.Unspecified,
                             )

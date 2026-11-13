@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 21:19-0500\n"
+"POT-Creation-Date: 2026-11-12 21:52-0500\n"
 "PO-Revision-Date: 2026-02-06 14:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr "सबसे खराब"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:170
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:409
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
 msgid "None"
 msgstr ""
 
@@ -88,10 +91,623 @@ msgstr "इतिहास"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:90
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:92
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:23
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:192
 #, fuzzy
 msgid "Settings"
 msgstr "सेटिंग्स"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:59
+msgctxt "Settings"
+msgid "General"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:60
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "डाउनलोड"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:61
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "अस्वीकरण"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:62
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:63
+#, fuzzy
+msgctxt "Settings"
+msgid "aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:64
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "इतिहास"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:65
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:66
+#, fuzzy
+msgid "Arguments"
+msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:69
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:167
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "सिस्टम"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:171
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:172
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "अध्याय सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:173
+#, fuzzy
+msgid "Split Chapters"
+msgstr "अध्याय विभाजित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:174
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:175
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:176
+#, fuzzy
+msgid "Video Converter"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:177
+#, fuzzy
+msgid "Metadata"
+msgstr "मेटाडेटा सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:178
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:179
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:180
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:181
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:182
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:183
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:184
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:185
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:186
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:222
+msgid "Theme"
+msgstr "थीम"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:224
+msgctxt "Theme"
+msgid "Light"
+msgstr "हल्की"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:225
+msgctxt "Theme"
+msgid "Dark"
+msgstr "गहरी"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:226
+msgctxt "Theme"
+msgid "System"
+msgstr "सिस्टम"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:235
+#, fuzzy
+msgid "Translation Language"
+msgstr "ऑडियो भाषा"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:244
+msgid "Automatically Check for Updates"
+msgstr "अपडेट के लिए स्वचालित रूप से जांचे"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:249
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "अपडेट के लिए जांचें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:252
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:258
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "सक्रिय डाउनलोड की अधिकतम संख्या"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:264
+msgid "Overwrite Existing Files"
+msgstr "मौजूदा फाइलें अधिलेखित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:269
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:274
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "पुनः डाउनलोड करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:282
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:287
+msgid "Include Media Id in Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:290
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:293
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:297
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:301
+msgid "Limit Filename Characters"
+msgstr "फाइलनाम वर्ण सीमित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:304
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "फाइल नामों में वर्णों को केवल विंडोज़ द्वारा समर्थित वर्णों तक सीमित करता है।"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:307
+#, fuzzy
+msgid "Preferred Audio Codec"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:309
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:324
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:337
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:350
+msgid "Any"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:310
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:311
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:312
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:313
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:314
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:315
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:319
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:322
+#, fuzzy
+msgid "Preferred Video Codec"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:325
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:326
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:327
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:328
+msgid "H.264"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:332
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:335
+#, fuzzy
+msgid "Preferred Subtitle Format"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:338
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:339
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:340
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:341
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:345
+msgid "Prefer this subtitle file format for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:348
+#, fuzzy
+msgid "Preferred Frame Rate"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:351
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:352
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:353
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:357
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:360
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:368
+#, fuzzy
+msgid "Use Part Files"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:372
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:376
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:379
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:382
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:386
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:390
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "मीडिया डाउनलोड करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:395
+#, fuzzy
+msgid "Speed Limit (KiB/s)"
+msgstr "गति सीमा"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:402
+msgid "Proxy URL"
+msgstr "प्रॉक्सी URL"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:407
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "कुकीज़ फाइल"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:410
+msgid "Brave"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:411
+#, fuzzy
+msgid "Chrome"
+msgstr "Chrome/Edge"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:412
+#, fuzzy
+msgid "Chromium"
+msgstr "Chrome/Edge"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:413
+msgid "Edge"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:414
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:415
+msgid "Opera"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:416
+msgid "Vivaldi"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:417
+msgid "Whale"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:426
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:434
+#, fuzzy
+msgid "Cookies File"
+msgstr "कुकीज़ फाइल"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:441
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:447
+#, fuzzy
+msgid "Clear"
+msgstr "साफ़ करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:454
+#, fuzzy
+msgid "Use aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:458
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:463
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "प्रति सर्वर अधिकतम कनेक्शन (-x)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "न्यूनतम विभाजन आकार (-k)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:478
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "डाउनलोड हो रहा है"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:480
+#, fuzzy
+msgid "Never"
+msgstr "कभी नहीं"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:481
+msgid "1 Day"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:482
+msgid "1 Week"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:483
+msgid "1 Month"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:484
+msgid "3 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+msgid "6 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:486
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:487
+#, fuzzy
+msgid "Forever"
+msgstr "कभी नहीं"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:496
+msgid "Embed Metadata"
+msgstr "मेटाडेटा सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:501
+msgid "Remove Source Data"
+msgstr "स्रोत डेटा हटाएं"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:504
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा क्षेत्र साफ़ करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:507
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:511
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए उपशीर्षक "
+"को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:515
+msgid "Crop Audio Thumbnails"
+msgstr "ऑडियो थंबनेल काटें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:518
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+"यदि सक्षम किया गया है, तो पैराबोलिक स्वचालित रूप से ऑडियो डाउनलोड के लिए क्रॉप थंबनेल "
+"उन्नत विकल्प चालू कर देगा"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:521
+msgid "Embed Chapters"
+msgstr "अध्याय सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:526
+msgid "Embed Subtitles"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:530
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए उपशीर्षक "
+"को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:534
+#, fuzzy
+msgid "FFmpeg Threads"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:538
+msgid "Limit the number of threads used by ffmpeg."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:541
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:548
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:571
+msgid "Add"
+msgstr "जोड़ें"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:585
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:605
+msgid "Name"
+msgstr "नाम"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:616
+msgid "An argument with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:619
+#, fuzzy
+msgid "Post Processor"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:625
+#, fuzzy
+msgid "Executable"
+msgstr "सक्षम"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:628
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
+#, fuzzy
+msgid "FFmpeg"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:636
+msgid "Args"
+msgstr ""
+
+#, fuzzy
+#~ msgid "An application restart is required for a change to take effect."
+#~ msgstr "थीम बदलने के लिए अनुप्रयोग को पुनरारंभ करना आवश्यक है।"
 
 #~ msgid "About Parabolic"
 #~ msgstr "पैराबोलिक के बारे में"
@@ -164,214 +780,8 @@ msgstr "सेटिंग्स"
 #~ msgid "Parabolic"
 #~ msgstr "पैराबोलिक के बारे में"
 
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "aria2"
-#~ msgstr "aria2 का प्रयोग करें"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "aria2 का प्रयोग करें"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "प्रति सर्वर अधिकतम कनेक्शन (-x)"
-
-#, fuzzy
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "न्यूनतम विभाजन आकार (-k)"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "अस्वीकरण"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "फाइलनाम वर्ण सीमित करें"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr "फाइल नामों में वर्णों को केवल विंडोज़ द्वारा समर्थित वर्णों तक सीमित करता है।"
-
-#, fuzzy
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
-
-#, fuzzy
-#~ msgid "Preferred Video Codec"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
-
-#, fuzzy
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
-
-#, fuzzy
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Discovery Arguments"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "सक्रिय डाउनलोड की अधिकतम संख्या"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "मौजूदा फाइलें अधिलेखित करें"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Download Arguments"
-#~ msgstr "पुनः डाउनलोड करें"
-
-#, fuzzy
-#~ msgid "Use Part Files"
-#~ msgstr "aria2 का प्रयोग करें"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
-
-#, fuzzy
-#~ msgid "Limit Download Speed"
-#~ msgstr "मीडिया डाउनलोड करें"
-
-#, fuzzy
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "गति सीमा"
-
-#~ msgid "Proxy URL"
-#~ msgstr "प्रॉक्सी URL"
-
-#, fuzzy
-#~ msgid "Cookies Browser"
-#~ msgstr "कुकीज़ फाइल"
-
-#, fuzzy
-#~ msgid "Chrome"
-#~ msgstr "Chrome/Edge"
-
-#, fuzzy
-#~ msgid "Chromium"
-#~ msgstr "Chrome/Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#, fuzzy
-#~ msgid "Cookies File"
-#~ msgstr "कुकीज़ फाइल"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "साफ़ करें"
-
-#~ msgid "Theme"
-#~ msgstr "थीम"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "हल्की"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "गहरी"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "सिस्टम"
-
-#, fuzzy
-#~ msgid "Translation Language"
-#~ msgstr "ऑडियो भाषा"
-
-#, fuzzy
-#~ msgid "An application restart is required for a change to take effect."
-#~ msgstr "थीम बदलने के लिए अनुप्रयोग को पुनरारंभ करना आवश्यक है।"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "अपडेट के लिए स्वचालित रूप से जांचे"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "अपडेट के लिए जांचें"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "डाउनलोड हो रहा है"
-
-#, fuzzy
-#~ msgid "Never"
-#~ msgstr "कभी नहीं"
-
-#, fuzzy
-#~ msgid "Forever"
-#~ msgstr "कभी नहीं"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "सिस्टम"
-
-#~ msgid "Name"
-#~ msgstr "नाम"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "अध्याय सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "अध्याय विभाजित करें"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "परिवर्तक"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "मेटाडेटा सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "परिवर्तक"
-
-#, fuzzy
-#~ msgid "Executable"
-#~ msgstr "सक्षम"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "प्रसंस्करण…"
-
 #~ msgid "Cancel"
 #~ msgstr "रद्द करें"
-
-#~ msgid "Add"
-#~ msgstr "जोड़ें"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
 
 #, fuzzy
 #~ msgid "Add Argument"
@@ -379,56 +789,6 @@ msgstr "सेटिंग्स"
 
 #, fuzzy
 #~ msgid "Edit Argument"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "प्रसंस्करण…"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "मेटाडेटा सन्निहित करें"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "स्रोत डेटा हटाएं"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा क्षेत्र साफ़ करें"
-
-#, fuzzy
-#~ msgid "Embed Thumbnails"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "ऑडियो थंबनेल काटें"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr ""
-#~ "यदि सक्षम किया गया है, तो पैराबोलिक स्वचालित रूप से ऑडियो डाउनलोड के लिए क्रॉप "
-#~ "थंबनेल उन्नत विकल्प चालू कर देगा"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "अध्याय सन्निहित करें"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए "
-#~ "उपशीर्षक को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
-
-#, fuzzy
-#~ msgid "FFmpeg Threads"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Manage Arguments…"
 #~ msgstr "कोई क्रेडेंशियल नहीं"
 
 #, fuzzy

@@ -226,7 +226,8 @@ namespace parabolic::application
     {
         translation::Options options{ m_configuration->translation_options() };
         m_translator->set_options(options);
-        if (options.language() != translation::Translator::follow_system_language())
+        if (options.language() != translation::Translator::follow_system_language() &&
+            options.language() != m_translator->language())
         {
             options.set_language(m_translator->language());
             m_configuration->set_translation_options(options);

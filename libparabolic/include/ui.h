@@ -12,6 +12,7 @@
 extern "C"
 {
     CONTROLLER_API void controller_free_string(char* value);
+    CONTROLLER_API char* controller_get_available_languages();
     CONTROLLER_API char* controller_get_configuration();
     CONTROLLER_API void controller_init(const char* resource_dir);
     CONTROLLER_API void controller_set_configuration(const char* value);

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 21:19-0500\n"
+"POT-Creation-Date: 2026-11-12 21:52-0500\n"
 "PO-Revision-Date: 2026-04-18 23:38+0000\n"
 "Last-Translator: Bai <bai@baturax.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr "En Kötü"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:170
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:409
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
 msgid "None"
 msgstr "Hiçbiri"
 
@@ -88,10 +91,630 @@ msgstr "Geçmiş"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:90
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:92
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:23
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:192
 #, fuzzy
 msgid "Settings"
 msgstr "Ayarlar"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:59
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Genel"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:60
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "İndirilenler"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:61
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Keşfet"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:62
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:63
+#, fuzzy
+msgctxt "Settings"
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:64
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Geçmiş"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:65
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Son işlem"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:66
+msgid "Arguments"
+msgstr "Argümanlar"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:69
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:167
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Sistem"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:171
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:172
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Bölümleri Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:173
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Videoyu Bölümlere Ayır"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:174
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:175
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Video (Standart)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:176
+#, fuzzy
+msgid "Video Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:177
+#, fuzzy
+msgid "Metadata"
+msgstr "Üst Verileri Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:178
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Alt Yazıları Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:179
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Küçük Resimleri Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:180
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:181
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:182
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:183
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:184
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:185
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:186
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:222
+msgid "Theme"
+msgstr "Tema"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:224
+msgctxt "Theme"
+msgid "Light"
+msgstr "Açık"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:225
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Koyu"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:226
+msgctxt "Theme"
+msgid "System"
+msgstr "Sistem"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:235
+msgid "Translation Language"
+msgstr "Çeviri Dili"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:244
+msgid "Automatically Check for Updates"
+msgstr "Güncellemeleri Kendiliğinden Denetle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:249
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Ön İzleme Güncellemelerini Al"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:252
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "yt-dlp gibi bağımlılıkları beta sürümlerine güncelle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:258
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Etkin İndirme Sayısının En Yüksek Değeri"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:264
+msgid "Overwrite Existing Files"
+msgstr "Varolan Dosyaların Üzerine Yaz"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:269
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:274
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "Tekrar İndir"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:282
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Kendiliğinden Oluşturulan Alt Yazıları Dahil Et"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:287
+msgid "Include Media Id in Title"
+msgstr "Ortam Kimliğini Başlığına Ekle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:290
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "Ortamın kimliğini öntanımlı başlığına ekle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:293
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Süper Çözünürlük Formatlarını Ekle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:297
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:301
+msgid "Limit Filename Characters"
+msgstr "Dosya Adı Karakterlerini Sınırla"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:304
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Dosya adlarındaki karakterleri yalnızca Windows tarafından desteklenenlerle "
+"sınırla"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:307
+msgid "Preferred Audio Codec"
+msgstr "Yeğlenen Ses Kodu Çözücü"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:309
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:324
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:337
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:350
+msgid "Any"
+msgstr "Herhangi"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:310
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:311
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:312
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:313
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:314
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:315
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:319
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+"Ses biçimlerinin ayrıştırırken, indirilebilir olarak göstermek için bu kod "
+"çözücüyü yeğle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:322
+msgid "Preferred Video Codec"
+msgstr "Yeğlenen Kod Çözücü"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:325
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:326
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:327
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:328
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:332
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+"Video biçimlerini ayrıştırırken, indirilebilir olarak göstermek için bu kod "
+"çözücüyü yeğle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:335
+msgid "Preferred Subtitle Format"
+msgstr "Yeğlenen Alt Yazı Biçimi"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:338
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:339
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:340
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:341
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:345
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "İndirirken bu alt yazı dosya biçimini yeğle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:348
+msgid "Preferred Frame Rate"
+msgstr "Tercih Edilen Kare Hızı"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:351
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:352
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:353
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:357
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+"Video biçimlerini ayrıştırırken, indirilebilir olarak göstermek için bu kod "
+"çözücüyü yeğle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:360
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "Son İşlemci Argümanları"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:368
+msgid "Use Part Files"
+msgstr "Parça Dosyalarını Kullan"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:372
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Ortam dosyalarını doğrudan çıktı dosyasına değil, ayrı .part dosyalarına "
+"indir"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:376
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTube için SponsorBlock kullan"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:379
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Videolardan sponsorlu bölümleri kaldırmaya çalış"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:382
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:386
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:390
+msgid "Limit Download Speed"
+msgstr "İndirme Hızını Sınırla"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:395
+msgid "Speed Limit (KiB/s)"
+msgstr "Hız Sınırı (KiB/s)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:402
+msgid "Proxy URL"
+msgstr "Proxy URLʼsi"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:407
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "Tarayıcıdan Çerezler"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:410
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:411
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:412
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:413
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:414
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:415
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:416
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:417
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:426
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:434
+msgid "Cookies File"
+msgstr "Çerez Dosyası"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:441
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:447
+msgid "Clear"
+msgstr "Temizle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:454
+#, fuzzy
+msgid "Use aria2"
+msgstr "aria2c kullan"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:458
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Bazı bölgelerde yt-dlpʼnin yerel indiricisine göre daha hızlı olabilen "
+"alternatif indirici"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:463
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Sunucu Başına En Çok Bağlantı"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+msgid "Minimum Split Size (MiB)"
+msgstr "En Düşük Bölme Boyutu (MiB)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:478
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "İndirme Geçmişi Uzunluğu"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:480
+msgid "Never"
+msgstr "Asla"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:481
+msgid "1 Day"
+msgstr "1 Gün"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:482
+msgid "1 Week"
+msgstr "1 Hafta"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:483
+msgid "1 Month"
+msgstr "1 Ay"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:484
+msgid "3 Months"
+msgstr "3 Ay"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+msgid "6 Months"
+msgstr "6 Ay"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:486
+msgid "1 Year"
+msgstr "1 Yıl"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:487
+msgid "Forever"
+msgstr "Sürekli"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:496
+msgid "Embed Metadata"
+msgstr "Üst Verileri Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:501
+msgid "Remove Source Data"
+msgstr "Kaynak Verileri Kaldır"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:504
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "İndirme bilgilerini içeren üst veri alanlarını temizle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:507
+msgid "Embed Thumbnails"
+msgstr "Küçük Resimleri Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:511
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Dosya türü gömme özelliğini desteklemiyorsa, küçük resim ayrı görüntü "
+"dosyasına yazılır"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:515
+msgid "Crop Audio Thumbnails"
+msgstr "Ses Küçük Resimlerini Kırp"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:518
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Ses dosyalarının küçük resimlerini kare şeklinde kırp"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:521
+msgid "Embed Chapters"
+msgstr "Bölümleri Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:526
+msgid "Embed Subtitles"
+msgstr "Alt Yazıları Göm"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:530
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Devre dışı bırakılırsa ya da gömme desteklenmiyorsa, indirilen alt yazılar "
+"ayrı dosyalara kaydedilir"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:534
+msgid "FFmpeg Threads"
+msgstr "FFmpeg İş Parçacıkları"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:538
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "ffmpeg tarafından kullanılan iş parçacığı sayısını sınırla"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:541
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Argüman Yok"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:548
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:571
+msgid "Add"
+msgstr "Ekle"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:585
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:605
+msgid "Name"
+msgstr "Ad"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:616
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Bu adla bir argüman zaten var"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:619
+msgid "Post Processor"
+msgstr "Son İşleme"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:625
+msgid "Executable"
+msgstr "Çalıştırılabilir"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:628
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
+#, fuzzy
+msgid "FFmpeg"
+msgstr "FFmpeg İş Parçacıkları"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:636
+msgid "Args"
+msgstr "Args"
+
+#, fuzzy
+#~ msgid "An application restart is required for a change to take effect."
+#~ msgstr ""
+#~ "Değişikliğin etkili olması için uygulamanın yeniden başlatılması gerekir"
 
 #~ msgid "About Parabolic"
 #~ msgstr "Parabolic Hakkında"
@@ -164,321 +787,11 @@ msgstr "Ayarlar"
 #~ msgid "Parabolic"
 #~ msgstr "Parabolic Hakkında"
 
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "aria2c kullan"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Bazı bölgelerde yt-dlpʼnin yerel indiricisine göre daha hızlı olabilen "
-#~ "alternatif indirici"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Sunucu Başına En Çok Bağlantı"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "En Düşük Bölme Boyutu (MiB)"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Keşfet"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Kendiliğinden Oluşturulan Alt Yazıları Dahil Et"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Ortam Kimliğini Başlığına Ekle"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "Ortamın kimliğini öntanımlı başlığına ekle"
-
-#, fuzzy
-#~ msgid "Show Super Resolution Formats"
-#~ msgstr "Süper Çözünürlük Formatlarını Ekle"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Dosya Adı Karakterlerini Sınırla"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Dosya adlarındaki karakterleri yalnızca Windows tarafından "
-#~ "desteklenenlerle sınırla"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "Yeğlenen Ses Kodu Çözücü"
-
-#~ msgid "Any"
-#~ msgstr "Herhangi"
-
-#, fuzzy
-#~ msgid "Prefer this codec when parsing audio formats to show for download."
-#~ msgstr ""
-#~ "Ses biçimlerinin ayrıştırırken, indirilebilir olarak göstermek için bu "
-#~ "kod çözücüyü yeğle"
-
-#~ msgid "Preferred Video Codec"
-#~ msgstr "Yeğlenen Kod Çözücü"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Prefer this codec when parsing video formats to show for download."
-#~ msgstr ""
-#~ "Video biçimlerini ayrıştırırken, indirilebilir olarak göstermek için bu "
-#~ "kod çözücüyü yeğle"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "Yeğlenen Alt Yazı Biçimi"
-
-#, fuzzy
-#~ msgid "Prefer this subtitle file format for download."
-#~ msgstr "İndirirken bu alt yazı dosya biçimini yeğle"
-
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "Tercih Edilen Kare Hızı"
-
-#, fuzzy
-#~ msgid ""
-#~ "Prefer this frame rate when parsing video formats to show for download."
-#~ msgstr ""
-#~ "Video biçimlerini ayrıştırırken, indirilebilir olarak göstermek için bu "
-#~ "kod çözücüyü yeğle"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Discovery Arguments"
-#~ msgstr "Son İşlemci Argümanları"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Etkin İndirme Sayısının En Yüksek Değeri"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Varolan Dosyaların Üzerine Yaz"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Download Arguments"
-#~ msgstr "Tekrar İndir"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Parça Dosyalarını Kullan"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Ortam dosyalarını doğrudan çıktı dosyasına değil, ayrı .part dosyalarına "
-#~ "indir"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "YouTube için SponsorBlock kullan"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Videolardan sponsorlu bölümleri kaldırmaya çalış"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "İndirme Hızını Sınırla"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Hız Sınırı (KiB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "Proxy URLʼsi"
-
-#, fuzzy
-#~ msgid "Cookies Browser"
-#~ msgstr "Tarayıcıdan Çerezler"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Çerez Dosyası"
-
-#~ msgid "Clear"
-#~ msgstr "Temizle"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Genel"
-
-#~ msgid "Theme"
-#~ msgstr "Tema"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Açık"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Koyu"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#~ msgid "Translation Language"
-#~ msgstr "Çeviri Dili"
-
-#, fuzzy
-#~ msgid "An application restart is required for a change to take effect."
-#~ msgstr ""
-#~ "Değişikliğin etkili olması için uygulamanın yeniden başlatılması gerekir"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Güncellemeleri Kendiliğinden Denetle"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Ön İzleme Güncellemelerini Al"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "yt-dlp gibi bağımlılıkları beta sürümlerine güncelle"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "İndirme Geçmişi Uzunluğu"
-
-#~ msgid "Never"
-#~ msgstr "Asla"
-
-#~ msgid "1 Day"
-#~ msgstr "1 Gün"
-
-#~ msgid "1 Week"
-#~ msgstr "1 Hafta"
-
-#~ msgid "1 Month"
-#~ msgstr "1 Ay"
-
-#~ msgid "3 Months"
-#~ msgstr "3 Ay"
-
-#~ msgid "6 Months"
-#~ msgstr "6 Ay"
-
-#~ msgid "1 Year"
-#~ msgstr "1 Yıl"
-
-#~ msgid "Forever"
-#~ msgstr "Sürekli"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#~ msgid "Name"
-#~ msgstr "Ad"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Bu adla bir argüman zaten var"
-
-#~ msgid "Post Processor"
-#~ msgstr "Son İşleme"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Bölümleri Göm"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Videoyu Bölümlere Ayır"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Video (Standart)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Üst Verileri Göm"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Alt Yazıları Göm"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Küçük Resimleri Göm"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Tube Converter"
-
-#~ msgid "Executable"
-#~ msgstr "Çalıştırılabilir"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "FFmpeg İş Parçacıkları"
-
-#~ msgid "Args"
-#~ msgstr "Args"
-
 #~ msgid "Cancel"
 #~ msgstr "İptal"
 
 #~ msgid "Save"
 #~ msgstr "Kaydet"
-
-#~ msgid "Add"
-#~ msgstr "Ekle"
-
-#~ msgid "Arguments"
-#~ msgstr "Argümanlar"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
 
 #, fuzzy
 #~ msgid "Edit…"
@@ -490,64 +803,6 @@ msgstr "Ayarlar"
 
 #~ msgid "Edit Argument"
 #~ msgstr "Argümanı Düzenle"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Son işlem"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Üst Verileri Göm"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Kaynak Verileri Kaldır"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "İndirme bilgilerini içeren üst veri alanlarını temizle"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Küçük Resimleri Göm"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Dosya türü gömme özelliğini desteklemiyorsa, küçük resim ayrı görüntü "
-#~ "dosyasına yazılır"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Ses Küçük Resimlerini Kırp"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Ses dosyalarının küçük resimlerini kare şeklinde kırp"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Bölümleri Göm"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Alt Yazıları Göm"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Devre dışı bırakılırsa ya da gömme desteklenmiyorsa, indirilen alt "
-#~ "yazılar ayrı dosyalara kaydedilir"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "FFmpeg İş Parçacıkları"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "ffmpeg tarafından kullanılan iş parçacığı sayısını sınırla"
-
-#, fuzzy
-#~ msgid "Manage Arguments…"
-#~ msgstr "Argüman Yok"
 
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Bir dosyanın bölüneceği asgari boyut (MiB cinsinden)"

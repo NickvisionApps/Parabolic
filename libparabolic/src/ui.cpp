@@ -35,6 +35,23 @@ void controller_free_string(char* value)
     std::free(value);
 }
 
+char* controller_get_available_languages()
+{
+    if (state == nullptr)
+    {
+        return nullptr;
+    }
+    try
+    {
+        nlohmann::json json = state->translator().available_languages();
+        return duplicate(json.dump().c_str());
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+
 char* controller_get_configuration()
 {
     if (state == nullptr)

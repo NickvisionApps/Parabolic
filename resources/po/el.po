@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 21:19-0500\n"
+"POT-Creation-Date: 2026-11-12 21:52-0500\n"
 "PO-Revision-Date: 2026-03-23 11:10+0000\n"
 "Last-Translator: Thanasis <thanasakis11mail@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,9 @@ msgid "Worst"
 msgstr "Χειρότερη"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:170
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:409
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
 msgid "None"
 msgstr "Κανένα"
 
@@ -89,10 +92,642 @@ msgstr "Ιστορικό"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:90
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:92
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:23
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:192
 #, fuzzy
 msgid "Settings"
 msgstr "Ρυθμίσεις"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:59
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Γενικά"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:60
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Λήψεις"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:61
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Ανακαλύψτε"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:62
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:63
+#, fuzzy
+msgctxt "Settings"
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:64
+#, fuzzy
+msgctxt "Settings"
+msgid "History"
+msgstr "Ιστορικό"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:65
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Γίνεται Επεξεργασία"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:66
+#, fuzzy
+msgid "Arguments"
+msgstr "Παράμετρος"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:69
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:167
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Σύστημα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:171
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:172
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Ενσωμάτωση Κεφαλαίων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:173
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Διαχωρισμός σε Αρχεία ανά Κεφάλαιο"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:174
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:175
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Βίντεο (Γενικό)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:176
+#, fuzzy
+msgid "Video Converter"
+msgstr "Πρόγραμμα Μετατροπής"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:177
+#, fuzzy
+msgid "Metadata"
+msgstr "Ενσωμάτωση Μεταδεδομένων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:178
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Ενσωμάτωση Υποτίτλων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:179
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Ενσωμάτωση Μικρογραφιών"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:180
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Υπότιτλοι"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:181
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Πρόγραμμα Μετατροπής"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:182
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:183
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:184
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:185
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:186
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:222
+msgid "Theme"
+msgstr "Θέμα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:224
+#, fuzzy
+msgctxt "Theme"
+msgid "Light"
+msgstr "Φωτεινό"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:225
+#, fuzzy
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Σκοτεινό"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:226
+msgctxt "Theme"
+msgid "System"
+msgstr "Σύστημα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:235
+msgid "Translation Language"
+msgstr "Γλώσσα Μετάφρασης"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:244
+#, fuzzy
+msgid "Automatically Check for Updates"
+msgstr "Έλεγχος για Ενημερώσεις"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:249
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Λήψη Ενημερώσεων Προεπισκόπησης"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:252
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Ενημέρωση εξαρτήσεων, όπως το yt-dlp, σε εκδόσεις beta"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:258
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Μέγιστος Αριθμός Ενεργών Λήψεων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:264
+msgid "Overwrite Existing Files"
+msgstr "Αντικατάσταση Υπαρχόντων Αρχείων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:269
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:274
+#, fuzzy
+msgid "Extra yt-dlp Download Arguments"
+msgstr "Παράμετροι Λήψης yt-dlp"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:282
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Συμπερίληψη Αυτόματα-Δημιουργημένων Υποτίτλων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:287
+msgid "Include Media Id in Title"
+msgstr "Να συμπεριληφθεί ο Κωδικός Αναγνώρισης Μέσου στον Τίτλο"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:290
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr ""
+"Προσθήκη του κωδικού αναγνώρισης του μέσου στον προεπιλεγμένο τίτλο του"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:293
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:297
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:301
+msgid "Limit Filename Characters"
+msgstr "Περιορισμός Χαρακτήρων στο Όνομα Αρχείου"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:304
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Περιορισμός των χαρακτήρων στα ονόματα αρχείων μόνο σε εκείνους που "
+"υποστηρίζονται από τα Windows"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:307
+msgid "Preferred Audio Codec"
+msgstr "Προτιμώμενος Κωδικοποιητής Ήχου"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:309
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:324
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:337
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:350
+msgid "Any"
+msgstr "Οποιαδήποτε"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:310
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:311
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:312
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:313
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:314
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:315
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:319
+#, fuzzy
+msgid "Prefer this codec when parsing audio formats to show for download."
+msgstr ""
+"Προτίμηση αυτού του κωδικοποιητή κατά την ανάλυση των μορφών ήχου που "
+"εμφανίζονται ως διαθέσιμες για λήψη"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:322
+msgid "Preferred Video Codec"
+msgstr "Προτιμώμενος Κωδικοποιητής Βίντεο"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:325
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:326
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:327
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:328
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:332
+#, fuzzy
+msgid "Prefer this codec when parsing video formats to show for download."
+msgstr ""
+"Προτίμηση αυτού του κωδικοποιητή κατά την ανάλυση των μορφών βίντεο που "
+"εμφανίζονται ως διαθέσιμες για λήψη"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:335
+msgid "Preferred Subtitle Format"
+msgstr "Προτιμώμενη Μορφή Υποτίτλων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:338
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:339
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:340
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:341
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:345
+#, fuzzy
+msgid "Prefer this subtitle file format for download."
+msgstr "Προτίμηση αυτής της μορφή αρχείου υποτίτλων κατά τη λήψη"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:348
+msgid "Preferred Frame Rate"
+msgstr "Προτιμώμενος Ρυθμός Καρέ"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:351
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:352
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:353
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:357
+#, fuzzy
+msgid "Prefer this frame rate when parsing video formats to show for download."
+msgstr ""
+"Προτίμηση αυτού του ρυθμό καρέ κατά την ανάλυση των μορφών βίντεο που "
+"εμφανίζονται ως διαθέσιμες για λήψη"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:360
+#, fuzzy
+msgid "Extra yt-dlp Discovery Arguments"
+msgstr "Παράμετροι Ανακάλυψης yt-dlp"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:368
+msgid "Use Part Files"
+msgstr "Χρήση Αρχείων Part"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:372
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Λήψη πολυμέσων σε ξεχωριστά αρχεία .part αντί απευθείας στο αρχείο εξόδου"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:376
+msgid "Use SponsorBlock for YouTube"
+msgstr "Χρήση του SponsorBlock for YouTube"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:379
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Προσπαθεί να αφαιρέσει τα διαφημιστικά τμήματα από τα βίντεο"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:382
+msgid "Translate Metadata and Chapters"
+msgstr "Μετάφραση Μεταδεδομένων και Κεφαλαίων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:386
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Αυτόματη μετάφραση των ενσωματωμένων μεταδεδομένων και των κεφαλαίων στη "
+"γλώσσα της εφαρμογής σε υποστηριζόμενους ιστότοπους και πολυμέσα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:390
+msgid "Limit Download Speed"
+msgstr "Περιορισμός Ταχύτητας Λήψης"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:395
+msgid "Speed Limit (KiB/s)"
+msgstr "Όριο Ταχύτητας (KiB/s)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:402
+msgid "Proxy URL"
+msgstr "Διεύθυνση URL διακομιστή μεσολάβησης"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:407
+#, fuzzy
+msgid "Cookies Browser"
+msgstr "Cookie από Πρόγραμμα Περιήγησης"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:410
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:411
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:412
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:413
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:414
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:415
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:416
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:417
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:426
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:434
+msgid "Cookies File"
+msgstr "Αρχείο Cookie"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:441
+msgid "Browse…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:447
+msgid "Clear"
+msgstr "Εκκαθάριση"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:454
+#, fuzzy
+msgid "Use aria2"
+msgstr "Χρήση aria2c"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:458
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Ένα εναλλακτικό πρόγραμμα λήψης που ενδέχεται να είναι ταχύτερο σε ορισμένες "
+"περιοχές σε σύγκριση με το ενσωματωμένο πρόγραμμα λήψης του yt-dlp"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:463
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Μέγιστος Αριθμός Συνδέσεων Ανά Διακομιστή"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+msgid "Minimum Split Size (MiB)"
+msgstr "Ελάχιστο Μέγεθος Διαμέρισης (MiB)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:478
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Μήκος Ιστορικού Λήψεων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:480
+msgid "Never"
+msgstr "Ποτέ"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:481
+msgid "1 Day"
+msgstr "1 Μέρα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:482
+msgid "1 Week"
+msgstr "1 Εβδομάδα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:483
+msgid "1 Month"
+msgstr "1 Μήνας"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:484
+msgid "3 Months"
+msgstr "3 Μήνες"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+msgid "6 Months"
+msgstr "6 Μήνες"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:486
+msgid "1 Year"
+msgstr "1 Χρόνος"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:487
+msgid "Forever"
+msgstr "Για Πάντα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:496
+msgid "Embed Metadata"
+msgstr "Ενσωμάτωση Μεταδεδομένων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:501
+msgid "Remove Source Data"
+msgstr "Αφαίρεση Δεδομένων Πηγής"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:504
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Εκκαθάριση πεδίων μεταδεδομένων που περιέχουν πληροφορίες ταυτοποίησης "
+"σχετικά με τη λήψη"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:507
+msgid "Embed Thumbnails"
+msgstr "Ενσωμάτωση Μικρογραφιών"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:511
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Εάν ο τύπος αρχείου δεν υποστηρίζει ενσωμάτωση, η μικρογραφία θα αποθηκευτεί "
+"σε ξεχωριστό αρχείο εικόνας"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:515
+msgid "Crop Audio Thumbnails"
+msgstr "Περικοπή Μικρογραφιών Ήχου"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:518
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Περικοπή των μικρογραφιών των αρχείων ήχου σε τετράγωνα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:521
+msgid "Embed Chapters"
+msgstr "Ενσωμάτωση Κεφαλαίων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:526
+msgid "Embed Subtitles"
+msgstr "Ενσωμάτωση Υποτίτλων"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:530
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Σε περίπτωση απενεργοποίησης ή αν η ενσωμάτωση δεν υποστηρίζεται, οι "
+"υπότιτλοι που έχουν ληφθεί θα αποθηκευτούν σε ξεχωριστά αρχεία"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:534
+msgid "FFmpeg Threads"
+msgstr "Νήματα FFmpeg"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:538
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Περιορισμός του αριθμού των νημάτων που χρησιμοποιεί το ffmpeg"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:541
+#, fuzzy
+msgid "Manage Arguments…"
+msgstr "Δεν Υπάρχουν Παράμετροι"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:548
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+"Οι παράμετροι θα εμφανίζονται προς επιλογή στο παράθυρο διαλόγου προσθήκης "
+"λήψης"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:571
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:585
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:605
+msgid "Name"
+msgstr "Όνομα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:616
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Υπάρχει ήδη μία παράμετρος με αυτό το όνομα"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:619
+msgid "Post Processor"
+msgstr "Πρόγραμμα Μεταεπεξεργασίας"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:625
+msgid "Executable"
+msgstr "Εκτελέσιμο Αρχείο"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:628
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Νήματα FFmpeg"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:636
+msgid "Args"
+msgstr "Παρ/τροι"
+
+#, fuzzy
+#~ msgid "An application restart is required for a change to take effect."
+#~ msgstr "Για να εφαρμοστεί η αλλαγή, απαιτείται επανεκκίνηση της εφαρμογής"
 
 #~ msgid "About Parabolic"
 #~ msgstr "Πληροφορίες για το Parabolic"
@@ -162,343 +797,8 @@ msgstr "Ρυθμίσεις"
 #~ msgid "Parabolic"
 #~ msgstr "Πληροφορίες για το Parabolic"
 
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "Χρήση aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Ένα εναλλακτικό πρόγραμμα λήψης που ενδέχεται να είναι ταχύτερο σε "
-#~ "ορισμένες περιοχές σε σύγκριση με το ενσωματωμένο πρόγραμμα λήψης του yt-"
-#~ "dlp"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Μέγιστος Αριθμός Συνδέσεων Ανά Διακομιστή"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "Ελάχιστο Μέγεθος Διαμέρισης (MiB)"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Ανακαλύψτε"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Συμπερίληψη Αυτόματα-Δημιουργημένων Υποτίτλων"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Να συμπεριληφθεί ο Κωδικός Αναγνώρισης Μέσου στον Τίτλο"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr ""
-#~ "Προσθήκη του κωδικού αναγνώρισης του μέσου στον προεπιλεγμένο τίτλο του"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Περιορισμός Χαρακτήρων στο Όνομα Αρχείου"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Περιορισμός των χαρακτήρων στα ονόματα αρχείων μόνο σε εκείνους που "
-#~ "υποστηρίζονται από τα Windows"
-
-#~ msgid "Preferred Audio Codec"
-#~ msgstr "Προτιμώμενος Κωδικοποιητής Ήχου"
-
-#~ msgid "Any"
-#~ msgstr "Οποιαδήποτε"
-
-#, fuzzy
-#~ msgid "Prefer this codec when parsing audio formats to show for download."
-#~ msgstr ""
-#~ "Προτίμηση αυτού του κωδικοποιητή κατά την ανάλυση των μορφών ήχου που "
-#~ "εμφανίζονται ως διαθέσιμες για λήψη"
-
-#~ msgid "Preferred Video Codec"
-#~ msgstr "Προτιμώμενος Κωδικοποιητής Βίντεο"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Prefer this codec when parsing video formats to show for download."
-#~ msgstr ""
-#~ "Προτίμηση αυτού του κωδικοποιητή κατά την ανάλυση των μορφών βίντεο που "
-#~ "εμφανίζονται ως διαθέσιμες για λήψη"
-
-#~ msgid "Preferred Subtitle Format"
-#~ msgstr "Προτιμώμενη Μορφή Υποτίτλων"
-
-#, fuzzy
-#~ msgid "Prefer this subtitle file format for download."
-#~ msgstr "Προτίμηση αυτής της μορφή αρχείου υποτίτλων κατά τη λήψη"
-
-#~ msgid "Preferred Frame Rate"
-#~ msgstr "Προτιμώμενος Ρυθμός Καρέ"
-
-#, fuzzy
-#~ msgid "24 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "30 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "60 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid ""
-#~ "Prefer this frame rate when parsing video formats to show for download."
-#~ msgstr ""
-#~ "Προτίμηση αυτού του ρυθμό καρέ κατά την ανάλυση των μορφών βίντεο που "
-#~ "εμφανίζονται ως διαθέσιμες για λήψη"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Discovery Arguments"
-#~ msgstr "Παράμετροι Ανακάλυψης yt-dlp"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Μέγιστος Αριθμός Ενεργών Λήψεων"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Αντικατάσταση Υπαρχόντων Αρχείων"
-
-#, fuzzy
-#~ msgid "Extra yt-dlp Download Arguments"
-#~ msgstr "Παράμετροι Λήψης yt-dlp"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Χρήση Αρχείων Part"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Λήψη πολυμέσων σε ξεχωριστά αρχεία .part αντί απευθείας στο αρχείο εξόδου"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Χρήση του SponsorBlock for YouTube"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Προσπαθεί να αφαιρέσει τα διαφημιστικά τμήματα από τα βίντεο"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Μετάφραση Μεταδεδομένων και Κεφαλαίων"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters using the app's "
-#~ "set language on supported sites and media."
-#~ msgstr ""
-#~ "Αυτόματη μετάφραση των ενσωματωμένων μεταδεδομένων και των κεφαλαίων στη "
-#~ "γλώσσα της εφαρμογής σε υποστηριζόμενους ιστότοπους και πολυμέσα"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Περιορισμός Ταχύτητας Λήψης"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Όριο Ταχύτητας (KiB/s)"
-
-#~ msgid "Proxy URL"
-#~ msgstr "Διεύθυνση URL διακομιστή μεσολάβησης"
-
-#, fuzzy
-#~ msgid "Cookies Browser"
-#~ msgstr "Cookie από Πρόγραμμα Περιήγησης"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Αρχείο Cookie"
-
-#~ msgid "Clear"
-#~ msgstr "Εκκαθάριση"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Γενικά"
-
-#~ msgid "Theme"
-#~ msgstr "Θέμα"
-
-#, fuzzy
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Φωτεινό"
-
-#, fuzzy
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Σκοτεινό"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Σύστημα"
-
-#~ msgid "Translation Language"
-#~ msgstr "Γλώσσα Μετάφρασης"
-
-#, fuzzy
-#~ msgid "An application restart is required for a change to take effect."
-#~ msgstr "Για να εφαρμοστεί η αλλαγή, απαιτείται επανεκκίνηση της εφαρμογής"
-
-#, fuzzy
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Έλεγχος για Ενημερώσεις"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Λήψη Ενημερώσεων Προεπισκόπησης"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "Ενημέρωση εξαρτήσεων, όπως το yt-dlp, σε εκδόσεις beta"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "Μήκος Ιστορικού Λήψεων"
-
-#~ msgid "Never"
-#~ msgstr "Ποτέ"
-
-#~ msgid "1 Day"
-#~ msgstr "1 Μέρα"
-
-#~ msgid "1 Week"
-#~ msgstr "1 Εβδομάδα"
-
-#~ msgid "1 Month"
-#~ msgstr "1 Μήνας"
-
-#~ msgid "3 Months"
-#~ msgstr "3 Μήνες"
-
-#~ msgid "6 Months"
-#~ msgstr "6 Μήνες"
-
-#~ msgid "1 Year"
-#~ msgstr "1 Χρόνος"
-
-#~ msgid "Forever"
-#~ msgstr "Για Πάντα"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Σύστημα"
-
-#~ msgid "Name"
-#~ msgstr "Όνομα"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Υπάρχει ήδη μία παράμετρος με αυτό το όνομα"
-
-#~ msgid "Post Processor"
-#~ msgstr "Πρόγραμμα Μεταεπεξεργασίας"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Ενσωμάτωση Κεφαλαίων"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Διαχωρισμός σε Αρχεία ανά Κεφάλαιο"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Βίντεο (Γενικό)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Πρόγραμμα Μετατροπής"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Ενσωμάτωση Μεταδεδομένων"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Ενσωμάτωση Υποτίτλων"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Ενσωμάτωση Μικρογραφιών"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Υπότιτλοι"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Πρόγραμμα Μετατροπής"
-
-#~ msgid "Executable"
-#~ msgstr "Εκτελέσιμο Αρχείο"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "Νήματα FFmpeg"
-
-#~ msgid "Args"
-#~ msgstr "Παρ/τροι"
-
 #~ msgid "Cancel"
 #~ msgstr "Ακύρωση"
-
-#~ msgid "Add"
-#~ msgstr "Προσθήκη"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "Παράμετρος"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr ""
-#~ "Οι παράμετροι θα εμφανίζονται προς επιλογή στο παράθυρο διαλόγου "
-#~ "προσθήκης λήψης"
 
 #, fuzzy
 #~ msgid "Edit…"
@@ -511,66 +811,6 @@ msgstr "Ρυθμίσεις"
 #, fuzzy
 #~ msgid "Edit Argument"
 #~ msgstr "Παράμετρος"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Γίνεται Επεξεργασία"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Ενσωμάτωση Μεταδεδομένων"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Αφαίρεση Δεδομένων Πηγής"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr ""
-#~ "Εκκαθάριση πεδίων μεταδεδομένων που περιέχουν πληροφορίες ταυτοποίησης "
-#~ "σχετικά με τη λήψη"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Ενσωμάτωση Μικρογραφιών"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Εάν ο τύπος αρχείου δεν υποστηρίζει ενσωμάτωση, η μικρογραφία θα "
-#~ "αποθηκευτεί σε ξεχωριστό αρχείο εικόνας"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Περικοπή Μικρογραφιών Ήχου"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Περικοπή των μικρογραφιών των αρχείων ήχου σε τετράγωνα"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Ενσωμάτωση Κεφαλαίων"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Ενσωμάτωση Υποτίτλων"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Σε περίπτωση απενεργοποίησης ή αν η ενσωμάτωση δεν υποστηρίζεται, οι "
-#~ "υπότιτλοι που έχουν ληφθεί θα αποθηκευτούν σε ξεχωριστά αρχεία"
-
-#~ msgid "FFmpeg Threads"
-#~ msgstr "Νήματα FFmpeg"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "Περιορισμός του αριθμού των νημάτων που χρησιμοποιεί το ffmpeg"
-
-#, fuzzy
-#~ msgid "Manage Arguments…"
-#~ msgstr "Δεν Υπάρχουν Παράμετροι"
 
 #~ msgid "The minimum size of which to split a file (in MiB)"
 #~ msgstr "Το ελάχιστο μέγεθος για τον διαχωρισμό ενός αρχείου (σε MiB)"

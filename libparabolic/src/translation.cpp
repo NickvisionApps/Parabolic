@@ -15,6 +15,8 @@
 
 #define FOLLOW_SYSTEM_LANGUAGE "C"
 
+extern "C" int _nl_msg_cat_cntr;
+
 namespace
 {
     std::string normalize_language(std::string language)
@@ -135,6 +137,10 @@ namespace parabolic::translation
         }
         std::scoped_lock lock{ m_mutex };
         environment::set_variable("LANGUAGE", resolved);
+        if (resolved != m_language)
+        {
+            ++_nl_msg_cat_cntr;
+        }
         m_options = options;
         m_language = std::move(resolved);
     }

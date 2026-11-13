@@ -3,6 +3,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 plugins {
     kotlin("jvm") version "2.3.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.3.21"
+    kotlin("plugin.serialization") version "2.3.21"
     id("org.jetbrains.compose") version "1.12.1"
     id("com.diffplug.spotless") version "8.11.0"
 }
@@ -17,6 +18,12 @@ kotlin {
         languageVersion = JavaLanguageVersion.of(25)
         vendor = JvmVendorSpec.JETBRAINS
     }
+}
+
+tasks.matching { it.name == "createDistributable" }.configureEach {
+    inputs.files(fileTree(layout.buildDirectory.dir("app-resources")))
+        .withPropertyName("nativeAppResources")
+        .withPathSensitivity(PathSensitivity.RELATIVE)
 }
 
 spotless {
@@ -37,6 +44,7 @@ dependencies {
     implementation("org.jetbrains.jewel:jewel-int-ui-standalone:$jewel")
     implementation("org.jetbrains.jewel:jewel-int-ui-decorated-window:$jewel")
     implementation("com.jetbrains.intellij.platform:icons:$ijp")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.13.0")
 }
 
 compose.desktop {
