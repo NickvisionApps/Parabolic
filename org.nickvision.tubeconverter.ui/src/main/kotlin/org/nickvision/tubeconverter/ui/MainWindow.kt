@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -57,6 +58,7 @@ import org.jetbrains.jewel.ui.component.Tooltip
 import org.jetbrains.jewel.ui.icon.IconKey
 import org.jetbrains.jewel.ui.icons.AllIconsKeys
 import org.jetbrains.jewel.ui.theme.colorPalette
+import org.jetbrains.jewel.ui.typography
 import org.jetbrains.jewel.window.DecoratedWindow
 import org.jetbrains.jewel.window.TitleBar
 import org.jetbrains.jewel.window.defaultTitleBarStyle
@@ -218,40 +220,48 @@ fun MainWindow(onClose: () -> Unit) {
             }
         }
 
-        Row(
+        Column(
             Modifier.fillMaxSize()
                 .frameBackground(top = JewelTheme.defaultTitleBarStyle.metrics.height + TitleBarBorder),
         ) {
-            Column(
-                Modifier.fillMaxHeight().width(46.dp).padding(vertical = 6.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Page.entries.forEach { entry ->
-                    Tooltip({ Text(entry.label()) }) {
-                        SelectableIconButton(page == entry, { page = entry }, Modifier.size(34.dp)) { _ ->
-                            val blue = page == entry && !JewelTheme.isDark &&
-                                LocalWindowInfo.current.isWindowFocused
-                            Icon(
-                                entry.icon,
-                                entry.label(),
-                                Modifier.size(20.dp),
-                                tint = if (blue) Color.White else Color.Unspecified,
-                            )
+            Row(Modifier.weight(1f).fillMaxWidth()) {
+                Column(
+                    Modifier.fillMaxHeight().width(46.dp).padding(vertical = 6.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Page.entries.forEach { entry ->
+                        Tooltip({ Text(entry.label()) }) {
+                            SelectableIconButton(page == entry, { page = entry }, Modifier.size(34.dp)) { _ ->
+                                val blue = page == entry && !JewelTheme.isDark &&
+                                    LocalWindowInfo.current.isWindowFocused
+                                Icon(
+                                    entry.icon,
+                                    entry.label(),
+                                    Modifier.size(21.dp),
+                                    tint = if (blue) Color.White else Color.Unspecified,
+                                )
+                            }
                         }
                     }
                 }
-            }
-            Box(
-                Modifier.fillMaxSize().padding(end = 4.dp, bottom = 4.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(JewelTheme.colorPalette.rawMap.getValue("tool-window-bg")),
-            ) {
-                when (page) {
-                    Page.Downloads -> DownloadsPage()
-                    Page.Keyring -> KeyringPage()
-                    Page.History -> HistoryPage()
+                Box(
+                    Modifier.fillMaxSize().padding(end = 4.dp, bottom = 4.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(JewelTheme.colorPalette.rawMap.getValue("tool-window-bg")),
+                ) {
+                    when (page) {
+                        Page.Downloads -> DownloadsPage()
+                        Page.Keyring -> KeyringPage()
+                        Page.History -> HistoryPage()
+                    }
                 }
+            }
+            Row(
+                Modifier.fillMaxWidth().height(30.dp).padding(start = 12.dp, end = 12.dp, bottom = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(Controller.tr("Ready"), style = JewelTheme.typography.medium)
             }
         }
 
