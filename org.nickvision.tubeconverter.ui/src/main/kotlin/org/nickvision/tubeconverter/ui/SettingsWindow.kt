@@ -156,12 +156,17 @@ fun SettingsWindow(onClose: () -> Unit) {
         configuration = transform(configuration)
         Controller.setConfiguration(configuration)
     }
-    val languages = remember {
-        Controller.getAvailableLanguages()
+    val availableLanguages = remember { Controller.getAvailableLanguages() }
+    val displayLocale = when (configuration.translationLanguage) {
+        "C" -> Locale.getDefault()
+        else -> Locale.forLanguageTag(configuration.translationLanguage.replace('_', '-'))
+    }
+    val languages = remember(displayLocale) {
+        availableLanguages
             .map { id ->
-                id to Locale.forLanguageTag(id.replace('_', '-')).getDisplayName(Locale.getDefault()).ifBlank { id }
+                id to Locale.forLanguageTag(id.replace('_', '-')).getDisplayName(displayLocale).ifBlank { id }
             }
-            .sortedWith(compareBy(Collator.getInstance()) { it.second })
+            .sortedWith(compareBy(Collator.getInstance(displayLocale)) { it.second })
     }
     val languageIds = listOf("C") + languages.map { it.first }
     val languageNames = listOf(Controller.trp("Language", "System")) + languages.map { it.second }

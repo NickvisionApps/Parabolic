@@ -7,6 +7,7 @@
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
+#include <string_view>
 #include <unordered_set>
 #include <utility>
 #include <vector>
@@ -76,6 +77,16 @@ namespace parabolic::translation
         }
         std::ranges::sort(m_available_languages);
         std::setlocale(LC_ALL, "");
+#ifndef _WIN32
+        std::string_view messages{ std::setlocale(LC_MESSAGES, nullptr) };
+        if (messages.empty() || messages == "POSIX" || messages.starts_with('C'))
+        {
+            if (std::setlocale(LC_MESSAGES, "en_US.UTF-8") == nullptr)
+            {
+                std::setlocale(LC_MESSAGES, "C.UTF-8");
+            }
+        }
+#endif
 #ifdef _WIN32
         wbindtextdomain(m_domain_name.c_str(), m_locale_dir.c_str());
 #else
