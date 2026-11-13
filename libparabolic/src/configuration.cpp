@@ -368,6 +368,29 @@ namespace parabolic::configuration
         return json.dump(4);
     }
 
+    void Configuration::set(const Configuration& other)
+    {
+        if (this == &other)
+        {
+            return;
+        }
+        std::scoped_lock lock{ m_mutex, other.m_mutex };
+        m_aria2_options = other.m_aria2_options;
+        m_automatically_check_for_updates = other.m_automatically_check_for_updates;
+        m_discovery_options = other.m_discovery_options;
+        m_download_options = other.m_download_options;
+        m_extractor_options = other.m_extractor_options;
+        m_history_options = other.m_history_options;
+        m_postprocessing_options = other.m_postprocessing_options;
+        m_previous_download_options = other.m_previous_download_options;
+        m_show_disclaimer_on_startup = other.m_show_disclaimer_on_startup;
+        m_theme = other.m_theme;
+        m_translation_options = other.m_translation_options;
+        m_update_options = other.m_update_options;
+        m_window_geometry = other.m_window_geometry;
+        save();
+    }
+
     void from_json(const nlohmann::json& json, Configuration& config)
     {
         if (json.contains("automaticallyCheckForUpdates") && json["automaticallyCheckForUpdates"].is_boolean())

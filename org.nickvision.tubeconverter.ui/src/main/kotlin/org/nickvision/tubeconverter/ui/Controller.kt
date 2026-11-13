@@ -22,7 +22,9 @@ object Controller {
         Arena.global(),
     )
     private val freeStringHandle = bind("controller_free_string", FunctionDescriptor.ofVoid(ADDRESS))
+    private val getConfigurationHandle = bind("controller_get_configuration", FunctionDescriptor.of(ADDRESS))
     private val initHandle = bind("controller_init", FunctionDescriptor.ofVoid(ADDRESS))
+    private val setConfigurationHandle = bind("controller_set_configuration", FunctionDescriptor.ofVoid(ADDRESS))
     private val trHandle = bind("controller_tr", FunctionDescriptor.of(ADDRESS, ADDRESS))
     private val trnHandle = bind("controller_trn", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG))
     private val trpHandle = bind("controller_trp", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS))
@@ -31,23 +33,29 @@ object Controller {
         FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_LONG),
     )
 
+    fun getConfiguration(): String = checkNotNull(take(getConfigurationHandle.invoke() as MemorySegment)) {
+        "Controller is not initialized"
+    }
+
     fun init(resourceDir: String) {
         Arena.ofConfined().use { arena -> initHandle.invoke(arena.allocateFrom(resourceDir)) }
     }
 
+    fun setConfiguration(json: String) {
+        Arena.ofConfined().use { arena -> setConfigurationHandle.invoke(arena.allocateFrom(json)) }
+    }
+
     fun tr(msgid: String): String = Arena.ofConfined().use { arena ->
-        take(trHandle.invoke(arena.allocateFrom(msgid)) as MemorySegment, msgid)
+        take(trHandle.invoke(arena.allocateFrom(msgid)) as MemorySegment) ?: msgid
     }
 
     fun trn(msgid: String, msgidPlural: String, n: Long): String = Arena.ofConfined().use { arena ->
-        take(
-            trnHandle.invoke(arena.allocateFrom(msgid), arena.allocateFrom(msgidPlural), n) as MemorySegment,
-            if (n == 1L) msgid else msgidPlural,
-        )
+        take(trnHandle.invoke(arena.allocateFrom(msgid), arena.allocateFrom(msgidPlural), n) as MemorySegment)
+            ?: if (n == 1L) msgid else msgidPlural
     }
 
     fun trp(context: String, msgid: String): String = Arena.ofConfined().use { arena ->
-        take(trpHandle.invoke(arena.allocateFrom(context), arena.allocateFrom(msgid)) as MemorySegment, msgid)
+        take(trpHandle.invoke(arena.allocateFrom(context), arena.allocateFrom(msgid)) as MemorySegment) ?: msgid
     }
 
     fun trpn(context: String, msgid: String, msgidPlural: String, n: Long): String = Arena.ofConfined().use { arena ->
@@ -58,16 +66,15 @@ object Controller {
                 arena.allocateFrom(msgidPlural),
                 n,
             ) as MemorySegment,
-            if (n == 1L) msgid else msgidPlural,
-        )
+        ) ?: if (n == 1L) msgid else msgidPlural
     }
 
     private fun bind(name: String, descriptor: FunctionDescriptor): MethodHandle =
         linker.downcallHandle(library.find(name).orElseThrow { UnsatisfiedLinkError(name) }, descriptor)
 
-    private fun take(pointer: MemorySegment, fallback: String): String {
+    private fun take(pointer: MemorySegment): String? {
         if (pointer == MemorySegment.NULL) {
-            return fallback
+            return null
         }
         try {
             return pointer.reinterpret(Long.MAX_VALUE).getString(0)

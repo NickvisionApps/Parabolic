@@ -83,6 +83,7 @@ namespace parabolic::configuration
         void set_update_options(const update::Options& value);
         [[nodiscard]] WindowGeometry window_geometry() const;
         void set_window_geometry(const WindowGeometry& value);
+        void set(const Configuration& other);
         [[nodiscard]] std::string str() const;
         friend void from_json(const nlohmann::json& json, Configuration& config);
         friend void to_json(nlohmann::json& json, const Configuration& config);

@@ -5,8 +5,10 @@
 #include <cstring>
 #include <filesystem>
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <string>
 #include "application.h"
+#include "configuration.h"
 
 namespace
 {
@@ -33,6 +35,22 @@ void controller_free_string(char* value)
     std::free(value);
 }
 
+char* controller_get_configuration()
+{
+    if (state == nullptr)
+    {
+        return nullptr;
+    }
+    try
+    {
+        return duplicate(state->configuration().str().c_str());
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+
 void controller_init(const char* resource_dir)
 {
     std::filesystem::path path;
@@ -42,6 +60,29 @@ void controller_init(const char* resource_dir)
     }
     state.reset();
     state = std::make_unique<parabolic::application::State>(path);
+}
+
+void controller_set_configuration(const char* value)
+{
+    if (state == nullptr || value == nullptr)
+    {
+        return;
+    }
+    try
+    {
+        nlohmann::json json = nlohmann::json::parse(value, nullptr, false, true);
+        if (json.is_discarded() || !json.is_object())
+        {
+            return;
+        }
+        parabolic::configuration::Configuration configuration{ state->product().name() };
+        from_json(json, configuration);
+        state->configuration().set(configuration);
+    }
+    catch (...)
+    {
+        return;
+    }
 }
 
 char* controller_tr(const char* msgid)
