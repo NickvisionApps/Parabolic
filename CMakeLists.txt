@@ -18,9 +18,6 @@ if (POLICY CMP0141)
 endif()
 
 project("org.nickvision.tubeconverter" LANGUAGES CXX VERSION 2026.10.0 DESCRIPTION "Download web video and audio.")
-if(APPLE)
-    enable_language(OBJCXX)
-endif()
 set(SHORT_NAME "parabolic")
 set(DISPLAY_NAME "Parabolic")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
@@ -30,19 +27,10 @@ option(ENABLE_CLANG_TIDY "Run clang-tidy during compilation" ON)
 find_program(CLANG_TIDY_EXECUTABLE NAMES clang-tidy)
 if(ENABLE_CLANG_TIDY AND CLANG_TIDY_EXECUTABLE)
     set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXECUTABLE}")
-    if(APPLE)
-        set(CMAKE_OBJCXX_CLANG_TIDY "${CLANG_TIDY_EXECUTABLE}")
-    endif()
 endif()
 
 add_subdirectory("lib${SHORT_NAME}")
-if(WIN32)
-    add_subdirectory("${PROJECT_NAME}.windows")
-elseif(APPLE)
-    add_subdirectory("${PROJECT_NAME}.macos")
-else()
-    add_subdirectory("${PROJECT_NAME}.linux")
-endif()
+add_subdirectory("${PROJECT_NAME}.ui")
 
 include(Translations)
 generate_translations(SHORT_NAME "${SHORT_NAME}")
@@ -58,10 +46,7 @@ find_program(CLANG_FORMAT_EXECUTABLE NAMES clang-format)
 if(CLANG_FORMAT_EXECUTABLE)
     file(GLOB_RECURSE FORMAT_SOURCES CONFIGURE_DEPENDS
         "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.h"
-        "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.cpp"
-        "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.*/*.h"
-        "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.*/*.cpp"
-        "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.*/*.mm")
+        "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.cpp")
     add_custom_target(format ALL COMMAND "${CLANG_FORMAT_EXECUTABLE}" -i ${FORMAT_SOURCES} COMMENT "Running clang-format")
     get_property(FORMAT_DIRECTORIES DIRECTORY "${CMAKE_SOURCE_DIR}" PROPERTY SUBDIRECTORIES)
     foreach(FORMAT_DIRECTORY IN LISTS FORMAT_DIRECTORIES)

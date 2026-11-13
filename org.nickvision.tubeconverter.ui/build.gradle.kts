@@ -1,0 +1,44 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
+plugins {
+    kotlin("jvm") version "2.3.21"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.3.21"
+    id("org.jetbrains.compose") version "1.12.1"
+}
+
+val ijp = "263.7307.200"
+val jewel = "0.42.0-$ijp"
+
+providers.gradleProperty("uiBuildDir").orNull?.let { layout.buildDirectory = file(it) }
+
+kotlin {
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+        vendor = JvmVendorSpec.JETBRAINS
+    }
+}
+
+dependencies {
+    implementation(compose.desktop.currentOs) {
+        exclude(group = "org.jetbrains.compose.material")
+    }
+    implementation("org.jetbrains.jewel:jewel-int-ui-standalone:$jewel")
+    implementation("org.jetbrains.jewel:jewel-int-ui-decorated-window:$jewel")
+    implementation("com.jetbrains.intellij.platform:icons:$ijp")
+}
+
+compose.desktop {
+    application {
+        mainClass = "org.nickvision.tubeconverter.ui.MainKt"
+        javaHome = javaToolchains.launcherFor(java.toolchain).get()
+            .metadata.installationPath.asFile.absolutePath
+        jvmArgs += listOf("-Dskiko.rendering.macos.waitForPreviousFrameVsyncOnRedrawImmediately=false")
+
+        nativeDistributions {
+            includeAllModules = true
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "Parabolic"
+            packageVersion = "1.0.0"
+        }
+    }
+}

@@ -1,0 +1,128 @@
+@file:OptIn(ExperimentalFoundationApi::class)
+
+package org.nickvision.tubeconverter.ui
+
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import org.jetbrains.jewel.foundation.theme.JewelTheme
+import org.jetbrains.jewel.ui.component.Icon
+import org.jetbrains.jewel.ui.component.IconButton
+import org.jetbrains.jewel.ui.component.SelectableIconButton
+import org.jetbrains.jewel.ui.component.Text
+import org.jetbrains.jewel.ui.component.Tooltip
+import org.jetbrains.jewel.ui.icons.AllIconsKeys
+import org.jetbrains.jewel.window.DecoratedWindow
+import org.jetbrains.jewel.window.TitleBar
+import org.jetbrains.jewel.window.defaultTitleBarStyle
+import org.jetbrains.jewel.window.newFullscreenControls
+import java.awt.Window
+import javax.swing.RootPaneContainer
+
+private val ProjectColor = Color(0xFFC94F4F)
+private val GlowCenterX = 140.dp
+private val GlowRadius = 720.dp
+private val TitleBarBorder = 1.dp
+
+@Composable
+private fun frameColor() = if (JewelTheme.isDark) Color(0xFF1E1F22) else Color(0xFFEBECF0)
+
+@Composable
+private fun Modifier.frameBackground(top: Dp = 0.dp): Modifier {
+    val frame = frameColor()
+    val glow = ProjectColor.copy(alpha = if (JewelTheme.isDark) 0.28f else 0.22f)
+    return drawBehind {
+        val area = size.copy(height = size.height + TitleBarBorder.toPx())
+        drawRect(frame, size = area)
+        drawRect(Brush.radialGradient(listOf(glow, Color.Transparent), Offset(GlowCenterX.toPx(), -top.toPx()), GlowRadius.toPx()), size = area)
+    }
+}
+
+private object Icons {
+    val Settings = AllIconsKeys.General.Settings
+    val Home = AllIconsKeys.Nodes.HomeFolder
+}
+
+private enum class Page { Home }
+
+@Composable
+fun MainWindow(onClose: () -> Unit) {
+    var settingsOpen by remember { mutableStateOf(false) }
+    var page by remember { mutableStateOf(Page.Home) }
+
+    DecoratedWindow(onCloseRequest = onClose, title = "Parabolic") {
+        MatchWindowBackground(window, frameColor())
+        TitleBar(Modifier.newFullscreenControls().frameBackground()) {
+            Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
+                Tooltip({ Text("Settings") }) {
+                    IconButton({ settingsOpen = true }, Modifier.size(28.dp)) { _ ->
+                        Icon(Icons.Settings, "Settings", Modifier.size(18.dp))
+                    }
+                }
+            }
+        }
+
+        Row(Modifier.fillMaxSize().frameBackground(top = JewelTheme.defaultTitleBarStyle.metrics.height + TitleBarBorder)) {
+            Column(
+                Modifier.fillMaxHeight().width(46.dp).padding(vertical = 6.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                Tooltip({ Text("Home") }) {
+                    SelectableIconButton(page == Page.Home, { page = Page.Home }, Modifier.size(34.dp)) { _ ->
+                        val blue = page == Page.Home && !JewelTheme.isDark && LocalWindowInfo.current.isWindowFocused
+                        Icon(Icons.Home, "Home", Modifier.size(21.dp), tint = if (blue) Color.White else Color.Unspecified)
+                    }
+                }
+            }
+            Box(
+                Modifier.fillMaxSize().padding(end = 6.dp, bottom = 6.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(JewelTheme.globalColors.panelBackground),
+            ) {
+                when (page) {
+                    Page.Home -> HomePage()
+                }
+            }
+        }
+
+        if (settingsOpen) {
+            SettingsDialog(onClose = { settingsOpen = false })
+        }
+    }
+}
+
+@Composable
+fun MatchWindowBackground(window: Window, color: Color = JewelTheme.globalColors.panelBackground) {
+    LaunchedEffect(window, color) {
+        val awtColor = java.awt.Color(color.toArgb())
+        window.background = awtColor
+        (window as? RootPaneContainer)?.contentPane?.background = awtColor
+    }
+}
