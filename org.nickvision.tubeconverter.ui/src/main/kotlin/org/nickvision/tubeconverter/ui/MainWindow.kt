@@ -1,15 +1,18 @@
 @file:OptIn(ExperimentalFoundationApi::class)
+@file:Suppress("ktlint:standard:max-line-length")
 
 package org.nickvision.tubeconverter.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -29,9 +32,15 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.WindowPosition
+import androidx.compose.ui.window.rememberWindowState
 import org.jetbrains.jewel.foundation.theme.JewelTheme
+import org.jetbrains.jewel.ui.component.Checkbox
+import org.jetbrains.jewel.ui.component.DefaultButton
 import org.jetbrains.jewel.ui.component.Icon
 import org.jetbrains.jewel.ui.component.IconButton
 import org.jetbrains.jewel.ui.component.SelectableIconButton
@@ -79,8 +88,9 @@ private enum class Page(val label: () -> String, val icon: IconKey) {
 fun MainWindow(onClose: () -> Unit) {
     var settingsOpen by remember { mutableStateOf(false) }
     var page by remember { mutableStateOf(Page.Downloads) }
+    var disclaimerOpen by remember { mutableStateOf(Controller.getConfiguration().showDisclaimerOnStartup) }
 
-    DecoratedWindow(onCloseRequest = onClose, title = "Parabolic", enabled = !settingsOpen) {
+    DecoratedWindow(onCloseRequest = onClose, title = "Parabolic", enabled = !settingsOpen && !disclaimerOpen) {
         MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("grad-g1-amber-bg"))
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
@@ -125,6 +135,50 @@ fun MainWindow(onClose: () -> Unit) {
                     Page.Downloads -> DownloadsPage()
                     Page.Keyring -> KeyringPage()
                     Page.History -> HistoryPage()
+                }
+            }
+        }
+
+        if (disclaimerOpen) {
+            var dontShowAgain by remember { mutableStateOf(false) }
+            val dismiss = {
+                if (dontShowAgain) {
+                    Controller.setConfiguration(Controller.getConfiguration().copy(showDisclaimerOnStartup = false))
+                }
+                disclaimerOpen = false
+            }
+            DecoratedWindow(
+                onCloseRequest = dismiss,
+                state = rememberWindowState(size = DpSize(480.dp, 280.dp), position = WindowPosition(Alignment.Center)),
+                title = Controller.tr("Legal Copyright Disclaimer"),
+                resizable = false,
+            ) {
+                MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))
+                TitleBar(Modifier.newFullscreenControls()) {}
+                Column(
+                    Modifier.fillMaxSize().padding(20.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    Text(Controller.tr("Legal Copyright Disclaimer"), fontWeight = FontWeight.Bold)
+                    Text(
+                        Controller.tr(
+                            "Videos on YouTube and other sites may be subject to DMCA protection. The authors of Parabolic do not endorse, and are not responsible for, the use of this application in means that will violate these laws.",
+                        ),
+                        Modifier.weight(1f),
+                    )
+                    Row(
+                        Modifier.clickable { dontShowAgain = !dontShowAgain },
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        Checkbox(dontShowAgain, { dontShowAgain = it })
+                        Text(Controller.tr("Don't show this message again"))
+                    }
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                        DefaultButton(dismiss) {
+                            Text(Controller.tr("I understand"))
+                        }
+                    }
                 }
             }
         }
