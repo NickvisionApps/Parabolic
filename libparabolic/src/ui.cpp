@@ -68,6 +68,54 @@ char* controller_get_configuration()
     }
 }
 
+char* controller_get_discussions_url()
+{
+    if (state == nullptr)
+    {
+        return nullptr;
+    }
+    try
+    {
+        return duplicate(state->product().discussions_url().c_str());
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+
+char* controller_get_issues_url()
+{
+    if (state == nullptr)
+    {
+        return nullptr;
+    }
+    try
+    {
+        return duplicate(state->product().issues_url().c_str());
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+
+char* controller_get_repo_url()
+{
+    if (state == nullptr)
+    {
+        return nullptr;
+    }
+    try
+    {
+        return duplicate(state->product().repo_url().c_str());
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+
 void controller_init(const char* resource_dir)
 {
     std::filesystem::path path;

@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.MenuBar
 import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.rememberWindowState
@@ -58,7 +59,9 @@ import org.jetbrains.jewel.window.DecoratedWindow
 import org.jetbrains.jewel.window.TitleBar
 import org.jetbrains.jewel.window.defaultTitleBarStyle
 import org.jetbrains.jewel.window.newFullscreenControls
+import java.awt.Desktop
 import java.awt.Window
+import java.net.URI
 import javax.swing.RootPaneContainer
 
 private val GlowCenterX = 140.dp
@@ -103,10 +106,9 @@ fun MainWindow(onClose: () -> Unit) {
     )
     val saveGeometry = {
         val configuration = Controller.getConfiguration()
-        val maximized = windowState.placement == WindowPlacement.Maximized
         Controller.setConfiguration(
             configuration.copy(
-                windowGeometry = if (maximized) {
+                windowGeometry = if (windowState.placement != WindowPlacement.Floating) {
                     configuration.windowGeometry.copy(isMaximized = true)
                 } else {
                     WindowGeometry(
@@ -127,16 +129,65 @@ fun MainWindow(onClose: () -> Unit) {
             .collect { saveGeometry() }
     }
 
+    val close = {
+        saveGeometry()
+        onClose()
+    }
+
     DecoratedWindow(
-        onCloseRequest = {
-            saveGeometry()
-            onClose()
-        },
+        onCloseRequest = close,
         state = windowState,
         title = "Parabolic",
         enabled = !settingsOpen && !disclaimerOpen,
     ) {
         LaunchedEffect(Unit) { disclaimerOpen = Controller.getConfiguration().showDisclaimerOnStartup }
+        LaunchedEffect(Unit) {
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.APP_PREFERENCES)) {
+                Desktop.getDesktop().setPreferencesHandler { settingsOpen = true }
+            }
+        }
+        MenuBar {
+            Menu(Controller.tr("File")) {
+                if (!System.getProperty("os.name").startsWith("Mac")) {
+                    Item(Controller.tr("Exit"), onClick = close)
+                }
+            }
+            Menu(Controller.tr("Edit")) {
+                if (!System.getProperty("os.name").startsWith("Mac")) {
+                    Item(Controller.tr("Settings"), onClick = { settingsOpen = true })
+                }
+            }
+            Menu(Controller.tr("View")) {
+                Menu(Controller.tr("Theme")) {
+                    listOf(
+                        Controller.trp("Theme", "Light"),
+                        Controller.trp("Theme", "Dark"),
+                        Controller.trp("Theme", "System"),
+                    ).forEachIndexed { index, label ->
+                        RadioButtonItem(label, selected = themeState.intValue == index, onClick = {
+                            themeState.intValue = index
+                            Controller.setConfiguration(Controller.getConfiguration().copy(theme = index))
+                        })
+                    }
+                }
+            }
+            Menu(Controller.tr("Help")) {
+                Item(Controller.tr("Check for Updates"), onClick = {})
+                Separator()
+                Item(
+                    Controller.tr("Report a Bug"),
+                    onClick = { Desktop.getDesktop().browse(URI(Controller.getIssuesUrl())) },
+                )
+                Item(
+                    Controller.tr("GitHub Repository"),
+                    onClick = { Desktop.getDesktop().browse(URI(Controller.getRepoUrl())) },
+                )
+                Item(
+                    Controller.tr("Discussions"),
+                    onClick = { Desktop.getDesktop().browse(URI(Controller.getDiscussionsUrl())) },
+                )
+            }
+        }
         MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("grad-g1-amber-bg"))
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {

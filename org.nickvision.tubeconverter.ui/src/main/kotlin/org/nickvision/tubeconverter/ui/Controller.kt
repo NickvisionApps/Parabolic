@@ -32,6 +32,9 @@ object Controller {
     private val freeStringHandle = bind("controller_free_string", FunctionDescriptor.ofVoid(ADDRESS))
     private val getAvailableLanguagesHandle = bind("controller_get_available_languages", FunctionDescriptor.of(ADDRESS))
     private val getConfigurationHandle = bind("controller_get_configuration", FunctionDescriptor.of(ADDRESS))
+    private val getDiscussionsUrlHandle = bind("controller_get_discussions_url", FunctionDescriptor.of(ADDRESS))
+    private val getIssuesUrlHandle = bind("controller_get_issues_url", FunctionDescriptor.of(ADDRESS))
+    private val getRepoUrlHandle = bind("controller_get_repo_url", FunctionDescriptor.of(ADDRESS))
     private val initHandle = bind("controller_init", FunctionDescriptor.ofVoid(ADDRESS))
     private val setConfigurationHandle = bind("controller_set_configuration", FunctionDescriptor.ofVoid(ADDRESS))
     private val trHandle = bind("controller_tr", FunctionDescriptor.of(ADDRESS, ADDRESS))
@@ -53,6 +56,18 @@ object Controller {
             "Controller is not initialized"
         },
     )
+
+    fun getDiscussionsUrl(): String = checkNotNull(take(getDiscussionsUrlHandle.invoke() as MemorySegment)) {
+        "Controller is not initialized"
+    }
+
+    fun getIssuesUrl(): String = checkNotNull(take(getIssuesUrlHandle.invoke() as MemorySegment)) {
+        "Controller is not initialized"
+    }
+
+    fun getRepoUrl(): String = checkNotNull(take(getRepoUrlHandle.invoke() as MemorySegment)) {
+        "Controller is not initialized"
+    }
 
     fun init(resourceDir: String) {
         Arena.ofConfined().use { arena -> initHandle.invoke(arena.allocateFrom(resourceDir)) }
