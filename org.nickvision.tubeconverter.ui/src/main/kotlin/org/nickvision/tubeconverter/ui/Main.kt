@@ -30,11 +30,21 @@ fun main() = application(exitProcessOnExit = false) {
         },
         styling = ComponentStyling.default().decoratedWindow(
             titleBarStyle = if (dark) {
-                TitleBarStyle.dark(colors = TitleBarColors.dark(backgroundColor = Color.Transparent, inactiveBackground = Color.Transparent, borderColor = Color.Transparent))
+                TitleBarStyle.dark(
+                    colors = TitleBarColors.dark(
+                        backgroundColor = Color.Transparent,
+                        inactiveBackground = Color.Transparent,
+                        borderColor = Color.Transparent,
+                    ),
+                )
             } else {
                 val clear = Color.White.copy(alpha = 0f)
                 TitleBarStyle.lightWithLightHeader(
-                    colors = TitleBarColors.lightWithLightHeader(backgroundColor = clear, inactiveBackground = clear, borderColor = clear),
+                    colors = TitleBarColors.lightWithLightHeader(
+                        backgroundColor = clear,
+                        inactiveBackground = clear,
+                        borderColor = clear,
+                    ),
                 )
             },
         ),

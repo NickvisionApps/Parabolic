@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "2.3.21"
     id("org.jetbrains.kotlin.plugin.compose") version "2.3.21"
     id("org.jetbrains.compose") version "1.12.1"
+    id("com.diffplug.spotless") version "8.11.0"
 }
 
 val ijp = "263.7307.200"
@@ -15,6 +16,17 @@ kotlin {
     jvmToolchain {
         languageVersion = JavaLanguageVersion.of(25)
         vendor = JvmVendorSpec.JETBRAINS
+    }
+}
+
+spotless {
+    kotlin {
+        target("src/**/*.kt")
+        ktlint("1.8.0")
+    }
+    kotlinGradle {
+        target("*.kts")
+        ktlint("1.8.0")
     }
 }
 

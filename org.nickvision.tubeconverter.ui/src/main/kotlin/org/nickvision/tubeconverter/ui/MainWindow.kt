@@ -37,6 +37,7 @@ import org.jetbrains.jewel.ui.component.IconButton
 import org.jetbrains.jewel.ui.component.SelectableIconButton
 import org.jetbrains.jewel.ui.component.Text
 import org.jetbrains.jewel.ui.component.Tooltip
+import org.jetbrains.jewel.ui.icon.IconKey
 import org.jetbrains.jewel.ui.icons.AllIconsKeys
 import org.jetbrains.jewel.window.DecoratedWindow
 import org.jetbrains.jewel.window.TitleBar
@@ -60,44 +61,61 @@ private fun Modifier.frameBackground(top: Dp = 0.dp): Modifier {
     return drawBehind {
         val area = size.copy(height = size.height + TitleBarBorder.toPx())
         drawRect(frame, size = area)
-        drawRect(Brush.radialGradient(listOf(glow, Color.Transparent), Offset(GlowCenterX.toPx(), -top.toPx()), GlowRadius.toPx()), size = area)
+        drawRect(
+            Brush.radialGradient(
+                listOf(glow, Color.Transparent),
+                Offset(GlowCenterX.toPx(), -top.toPx()),
+                GlowRadius.toPx(),
+            ),
+            size = area,
+        )
     }
 }
 
-private object Icons {
-    val Settings = AllIconsKeys.General.Settings
-    val Home = AllIconsKeys.Nodes.HomeFolder
+private enum class Page(val label: String, val icon: IconKey) {
+    Download("Download", AllIconsKeys.Actions.Download),
+    Keyring("Keyring", AllIconsKeys.Ide.Readonly),
+    History("History", AllIconsKeys.General.History),
 }
-
-private enum class Page { Home }
 
 @Composable
 fun MainWindow(onClose: () -> Unit) {
     var settingsOpen by remember { mutableStateOf(false) }
-    var page by remember { mutableStateOf(Page.Home) }
+    var page by remember { mutableStateOf(Page.Download) }
 
-    DecoratedWindow(onCloseRequest = onClose, title = "Parabolic") {
+    DecoratedWindow(onCloseRequest = onClose, title = "Parabolic", enabled = !settingsOpen) {
         MatchWindowBackground(window, frameColor())
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
                 Tooltip({ Text("Settings") }) {
                     IconButton({ settingsOpen = true }, Modifier.size(28.dp)) { _ ->
-                        Icon(Icons.Settings, "Settings", Modifier.size(18.dp))
+                        Icon(AllIconsKeys.General.Settings, "Settings", Modifier.size(18.dp))
                     }
                 }
             }
         }
 
-        Row(Modifier.fillMaxSize().frameBackground(top = JewelTheme.defaultTitleBarStyle.metrics.height + TitleBarBorder)) {
+        Row(
+            Modifier.fillMaxSize()
+                .frameBackground(top = JewelTheme.defaultTitleBarStyle.metrics.height + TitleBarBorder),
+        ) {
             Column(
                 Modifier.fillMaxHeight().width(46.dp).padding(vertical = 6.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
-                Tooltip({ Text("Home") }) {
-                    SelectableIconButton(page == Page.Home, { page = Page.Home }, Modifier.size(34.dp)) { _ ->
-                        val blue = page == Page.Home && !JewelTheme.isDark && LocalWindowInfo.current.isWindowFocused
-                        Icon(Icons.Home, "Home", Modifier.size(21.dp), tint = if (blue) Color.White else Color.Unspecified)
+                Page.entries.forEach { entry ->
+                    Tooltip({ Text(entry.label) }) {
+                        SelectableIconButton(page == entry, { page = entry }, Modifier.size(34.dp)) { _ ->
+                            val blue = page == entry && !JewelTheme.isDark &&
+                                LocalWindowInfo.current.isWindowFocused
+                            Icon(
+                                entry.icon,
+                                entry.label,
+                                Modifier.size(21.dp),
+                                tint = if (blue) Color.White else Color.Unspecified,
+                            )
+                        }
                     }
                 }
             }
@@ -107,13 +125,15 @@ fun MainWindow(onClose: () -> Unit) {
                     .background(JewelTheme.globalColors.panelBackground),
             ) {
                 when (page) {
-                    Page.Home -> HomePage()
+                    Page.Download -> DownloadPage()
+                    Page.Keyring -> KeyringPage()
+                    Page.History -> HistoryPage()
                 }
             }
         }
 
         if (settingsOpen) {
-            SettingsDialog(onClose = { settingsOpen = false })
+            SettingsWindow(onClose = { settingsOpen = false })
         }
     }
 }
