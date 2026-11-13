@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalFoundationApi::class)
+@file:OptIn(ExperimentalFoundationApi::class, FlowPreview::class)
 @file:Suppress("ktlint:standard:max-line-length")
 
 package org.nickvision.tubeconverter.ui
@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,8 +37,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.rememberWindowState
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.drop
 import org.jetbrains.jewel.foundation.theme.JewelTheme
 import org.jetbrains.jewel.ui.component.Checkbox
 import org.jetbrains.jewel.ui.component.DefaultButton
@@ -88,9 +93,50 @@ private enum class Page(val label: () -> String, val icon: IconKey) {
 fun MainWindow(onClose: () -> Unit) {
     var settingsOpen by remember { mutableStateOf(false) }
     var page by remember { mutableStateOf(Page.Downloads) }
-    var disclaimerOpen by remember { mutableStateOf(Controller.getConfiguration().showDisclaimerOnStartup) }
+    var disclaimerOpen by remember { mutableStateOf(false) }
 
-    DecoratedWindow(onCloseRequest = onClose, title = "Parabolic", enabled = !settingsOpen && !disclaimerOpen) {
+    val geometry = remember { Controller.getConfiguration().windowGeometry }
+    val windowState = rememberWindowState(
+        size = DpSize(geometry.width.dp, geometry.height.dp),
+        position = WindowPosition(geometry.x.dp, geometry.y.dp),
+        placement = if (geometry.isMaximized) WindowPlacement.Maximized else WindowPlacement.Floating,
+    )
+    val saveGeometry = {
+        val configuration = Controller.getConfiguration()
+        val maximized = windowState.placement == WindowPlacement.Maximized
+        Controller.setConfiguration(
+            configuration.copy(
+                windowGeometry = if (maximized) {
+                    configuration.windowGeometry.copy(isMaximized = true)
+                } else {
+                    WindowGeometry(
+                        height = windowState.size.height.value.toInt(),
+                        isMaximized = false,
+                        width = windowState.size.width.value.toInt(),
+                        x = windowState.position.x.value.toInt(),
+                        y = windowState.position.y.value.toInt(),
+                    )
+                },
+            ),
+        )
+    }
+    LaunchedEffect(windowState) {
+        snapshotFlow { Triple(windowState.size, windowState.position, windowState.placement) }
+            .drop(1)
+            .debounce(500)
+            .collect { saveGeometry() }
+    }
+
+    DecoratedWindow(
+        onCloseRequest = {
+            saveGeometry()
+            onClose()
+        },
+        state = windowState,
+        title = "Parabolic",
+        enabled = !settingsOpen && !disclaimerOpen,
+    ) {
+        LaunchedEffect(Unit) { disclaimerOpen = Controller.getConfiguration().showDisclaimerOnStartup }
         MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("grad-g1-amber-bg"))
         TitleBar(Modifier.newFullscreenControls().frameBackground()) {
             Row(Modifier.align(Alignment.End).padding(end = 8.dp)) {
@@ -152,6 +198,7 @@ fun MainWindow(onClose: () -> Unit) {
                 state = rememberWindowState(size = DpSize(480.dp, 280.dp), position = WindowPosition(Alignment.Center)),
                 title = Controller.tr("Legal Copyright Disclaimer"),
                 resizable = false,
+                alwaysOnTop = true,
             ) {
                 MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))
                 LaunchedEffect(window) { window.toFront() }
