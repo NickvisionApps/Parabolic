@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -45,7 +44,6 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.WindowPosition
@@ -73,6 +71,7 @@ import org.jetbrains.jewel.ui.component.rememberSplitLayoutState
 import org.jetbrains.jewel.ui.icon.IconKey
 import org.jetbrains.jewel.ui.icons.AllIconsKeys
 import org.jetbrains.jewel.ui.theme.colorPalette
+import org.jetbrains.jewel.ui.theme.textFieldStyle
 import org.jetbrains.jewel.ui.typography
 import org.jetbrains.jewel.window.DecoratedWindow
 import org.jetbrains.jewel.window.TitleBar
@@ -83,18 +82,17 @@ import java.text.Collator
 import java.util.Locale
 import java.util.concurrent.atomic.AtomicInteger
 
-private enum class Section(val title: () -> String, val icon: IconKey, val parent: Section? = null) {
+private enum class Section(val title: () -> String, val icon: IconKey) {
     General({ Controller.trp("Settings", "General") }, AllIconsKeys.General.Settings),
-    Downloads({ Controller.trp("Settings", "Downloads") }, AllIconsKeys.Actions.Download),
     Discovery({ Controller.trp("Settings", "Discovery") }, AllIconsKeys.Actions.Find),
+    Downloads({ Controller.trp("Settings", "Downloads") }, AllIconsKeys.Actions.Download),
     Extractor({ Controller.trp("Settings", "Extractor") }, AllIconsKeys.Nodes.Plugin),
-    Aria2({ Controller.trp("Settings", "aria2") }, AllIconsKeys.Nodes.Console),
-    History({ Controller.trp("Settings", "History") }, AllIconsKeys.General.History),
     Postprocessing({ Controller.trp("Settings", "Postprocessing") }, AllIconsKeys.Actions.Compile),
-    Arguments({ Controller.tr("Arguments") }, AllIconsKeys.Actions.ListFiles, Postprocessing),
 }
 
 private sealed class Setting(val label: String, val description: String?, val enabled: Boolean) {
+    class Header(label: String, description: String? = null) : Setting(label, description, true)
+
     class Check(
         label: String,
         val checked: Boolean,
@@ -159,6 +157,15 @@ private fun SettingRow(setting: Setting, query: String, modifier: Modifier = Mod
     val textColor = if (setting.enabled) Color.Unspecified else JewelTheme.globalColors.text.disabled
     Column(modifier, verticalArrangement = Arrangement.spacedBy(2.dp)) {
         when (setting) {
+            is Setting.Header -> Row(
+                Modifier.fillMaxWidth().padding(top = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(highlight(setting.label, query))
+                Divider(Orientation.Horizontal, Modifier.weight(1f))
+            }
+
             is Setting.Check -> Row(
                 Modifier.clickable(enabled = setting.enabled) { setting.onChange(!setting.checked) },
                 verticalAlignment = Alignment.CenterVertically,
@@ -311,7 +318,9 @@ private fun ArgumentsTable(label: AnnotatedString, value: String, onChange: (Str
         )
     }
     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Text(label)
+        if (label.isNotEmpty()) {
+            Text(label)
+        }
         Column(Modifier.fillMaxWidth().weight(1f).border(1.dp, JewelTheme.globalColors.borders.normal)) {
             Row(Modifier.fillMaxWidth().padding(4.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 IconButton(
@@ -400,7 +409,6 @@ fun SettingsWindow(onClose: () -> Unit) {
     var section by remember { mutableStateOf(Section.General) }
     var selectedArguments by remember { mutableStateOf(emptySet<Int>()) }
     var anchorArgument by remember { mutableIntStateOf(-1) }
-    var expanded by remember { mutableStateOf(setOf(Section.Postprocessing)) }
     var tableVersion by remember { mutableIntStateOf(0) }
     val update = { transform: (Configuration) -> Configuration ->
         configuration = transform(configuration)
@@ -435,6 +443,7 @@ fun SettingsWindow(onClose: () -> Unit) {
     ) {
         val pages: Map<Section, List<Setting>> = mapOf(
             Section.General to listOf(
+                Setting.Header(Controller.tr("User Interface")),
                 Setting.Combo(
                     Controller.tr("Theme"),
                     listOf(
@@ -457,6 +466,7 @@ fun SettingsWindow(onClose: () -> Unit) {
                         Controller.refreshLanguage()
                     },
                 ),
+                Setting.Header(Controller.tr("Updates")),
                 Setting.Check(
                     Controller.tr("Automatically Check for Updates"),
                     configuration.automaticallyCheckForUpdates,
@@ -468,8 +478,25 @@ fun SettingsWindow(onClose: () -> Unit) {
                     { checked -> update { it.copy(allowPreviewUpdates = checked) } },
                     Controller.tr("Update the app and dependencies, such as yt-dlp, to beta versions."),
                 ),
+                Setting.Header(Controller.tr("History")),
+                Setting.Combo(
+                    Controller.tr("Keep Download History For"),
+                    listOf(
+                        Controller.tr("Never"),
+                        Controller.tr("1 Day"),
+                        Controller.tr("1 Week"),
+                        Controller.tr("1 Month"),
+                        Controller.tr("3 Months"),
+                        Controller.tr("6 Months"),
+                        Controller.tr("1 Year"),
+                        Controller.tr("Forever"),
+                    ),
+                    historyLengths.indexOf(configuration.historyLength).coerceAtLeast(0),
+                    { index -> update { it.copy(historyLength = historyLengths[index]) } },
+                ),
             ),
             Section.Downloads to listOf(
+                Setting.Header(Controller.tr("Process")),
                 Setting.Numeric(
                     Controller.tr("Maximum Active Downloads"),
                     configuration.maxNumberOfActiveDownloads,
@@ -486,23 +513,60 @@ fun SettingsWindow(onClose: () -> Unit) {
                     configuration.preventSuspend,
                     { checked -> update { it.copy(preventSuspend = checked) } },
                 ),
-                Setting.Custom(Controller.tr("Extra yt-dlp Download Arguments"), labeled = true, fill = true) { label ->
+                Setting.Header(
+                    Controller.tr("aria2"),
+                    Controller.tr(
+                        "An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader.",
+                    ),
+                ),
+                Setting.Check(
+                    Controller.tr("Use aria2"),
+                    configuration.useAria,
+                    { checked -> update { it.copy(useAria = checked) } },
+                ),
+                Setting.Custom(Controller.tr("Learn More…")) { label ->
+                    ExternalLink(label.text, "https://aria2.github.io")
+                },
+                Setting.Numeric(
+                    Controller.tr("Maximum Connections Per Server"),
+                    configuration.ariaMaxConnectionsPerServer,
+                    1..16,
+                    { value -> update { it.copy(ariaMaxConnectionsPerServer = value) } },
+                    enabled = configuration.useAria,
+                ),
+                Setting.Numeric(
+                    Controller.tr("Minimum Split Size (MiB)"),
+                    configuration.ariaMinSplitSize,
+                    1..1024,
+                    { value -> update { it.copy(ariaMinSplitSize = value) } },
+                    enabled = configuration.useAria,
+                ),
+                Setting.Header(
+                    Controller.tr("Arguments"),
+                    Controller.tr("These arguments will be appended to yt-dlp during the download phase."),
+                ),
+                Setting.Custom(
+                    "",
+                    fill = true,
+                ) { label ->
                     ArgumentsTable(label, configuration.ytdlpDownloadArgs) { value ->
                         update { it.copy(ytdlpDownloadArgs = value) }
                     }
                 },
             ),
             Section.Discovery to listOf(
-                Setting.Check(
-                    Controller.tr("Show Auto-Generated Subtitles"),
-                    configuration.includeAutoGeneratedSubtitles,
-                    { checked -> update { it.copy(includeAutoGeneratedSubtitles = checked) } },
-                ),
+                Setting.Header(Controller.tr("Process")),
                 Setting.Check(
                     Controller.tr("Include Media Id in Title"),
                     configuration.includeMediaIdInTitle,
                     { checked -> update { it.copy(includeMediaIdInTitle = checked) } },
                     Controller.tr("Add the media entry's yt-dlp id to its default title."),
+                ),
+                Setting.Check(
+                    Controller.tr("Limit Filename Characters"),
+                    configuration.limitCharacters,
+                    { checked -> update { it.copy(limitCharacters = checked) } },
+                    Controller.tr("Restrict filename characters to those supported only by Windows."),
                 ),
                 Setting.Check(
                     Controller.tr("Show Super Resolution Formats"),
@@ -513,13 +577,16 @@ fun SettingsWindow(onClose: () -> Unit) {
                     ),
                 ),
                 Setting.Check(
-                    Controller.tr("Limit Filename Characters"),
-                    configuration.limitCharacters,
-                    { checked -> update { it.copy(limitCharacters = checked) } },
-                    Controller.tr("Restrict filename characters to those supported only by Windows."),
+                    Controller.tr("Show Auto-Generated Subtitles"),
+                    configuration.includeAutoGeneratedSubtitles,
+                    { checked -> update { it.copy(includeAutoGeneratedSubtitles = checked) } },
+                ),
+                Setting.Header(
+                    Controller.tr("Preferences"),
+                    Controller.tr("Prefer these codecs and options when showing formats for download."),
                 ),
                 Setting.Combo(
-                    Controller.tr("Preferred Audio Codec"),
+                    Controller.tr("Audio Codec"),
                     listOf(
                         Controller.tr("Any"),
                         Controller.tr("FLAC"),
@@ -531,10 +598,9 @@ fun SettingsWindow(onClose: () -> Unit) {
                     ),
                     configuration.preferredAudioCodec,
                     { index -> update { it.copy(preferredAudioCodec = index) } },
-                    Controller.tr("Prefer this codec when parsing audio formats to show for download."),
                 ),
                 Setting.Combo(
-                    Controller.tr("Preferred Video Codec"),
+                    Controller.tr("Video Codec"),
                     listOf(
                         Controller.tr("Any"),
                         Controller.tr("H.265"),
@@ -544,10 +610,9 @@ fun SettingsWindow(onClose: () -> Unit) {
                     ),
                     configuration.preferredVideoCodec,
                     { index -> update { it.copy(preferredVideoCodec = index) } },
-                    Controller.tr("Prefer this codec when parsing video formats to show for download."),
                 ),
                 Setting.Combo(
-                    Controller.tr("Preferred Subtitle Format"),
+                    Controller.tr("Subtitle Format"),
                     listOf(
                         Controller.tr("Any"),
                         Controller.tr("VTT"),
@@ -557,10 +622,9 @@ fun SettingsWindow(onClose: () -> Unit) {
                     ),
                     configuration.preferredSubtitleFormat,
                     { index -> update { it.copy(preferredSubtitleFormat = index) } },
-                    Controller.tr("Prefer this subtitle file format for download."),
                 ),
                 Setting.Combo(
-                    Controller.tr("Preferred Frame Rate"),
+                    Controller.tr("Frame Rate"),
                     listOf(
                         Controller.tr("Any"),
                         Controller.tr("24 FPS"),
@@ -569,11 +633,13 @@ fun SettingsWindow(onClose: () -> Unit) {
                     ),
                     configuration.preferredFrameRate,
                     { index -> update { it.copy(preferredFrameRate = index) } },
-                    Controller.tr("Prefer this frame rate when parsing video formats to show for download."),
+                ),
+                Setting.Header(
+                    Controller.tr("Arguments"),
+                    Controller.tr("These arguments will be appended to yt-dlp during the discovery phase."),
                 ),
                 Setting.Custom(
-                    Controller.tr("Extra yt-dlp Discovery Arguments"),
-                    labeled = true,
+                    "",
                     fill = true,
                 ) { label ->
                     ArgumentsTable(label, configuration.ytdlpDiscoveryArgs) { value ->
@@ -582,6 +648,7 @@ fun SettingsWindow(onClose: () -> Unit) {
                 },
             ),
             Section.Extractor to listOf(
+                Setting.Header(Controller.tr("Process")),
                 Setting.Check(
                     Controller.tr("Use Part Files"),
                     configuration.usePartFiles,
@@ -589,7 +656,7 @@ fun SettingsWindow(onClose: () -> Unit) {
                     Controller.tr("Download media in separate .part files instead of directly into the output file."),
                 ),
                 Setting.Check(
-                    Controller.tr("Use SponsorBlock for YouTube"),
+                    Controller.tr("Enable SponsorBlock for YouTube"),
                     configuration.youTubeSponsorBlock,
                     { checked -> update { it.copy(youTubeSponsorBlock = checked) } },
                     Controller.tr("Try to remove sponsored segments from videos."),
@@ -602,6 +669,7 @@ fun SettingsWindow(onClose: () -> Unit) {
                         "Automatically translate embedded metadata and chapters using the app's set language on supported sites and media.",
                     ),
                 ),
+                Setting.Header(Controller.tr("Speed")),
                 Setting.Check(
                     Controller.tr("Limit Download Speed"),
                     configuration.speedLimit != null,
@@ -614,13 +682,15 @@ fun SettingsWindow(onClose: () -> Unit) {
                     { value -> update { it.copy(speedLimit = value) } },
                     enabled = configuration.speedLimit != null,
                 ),
+                Setting.Header(Controller.tr("Proxy")),
                 Setting.Field(
-                    Controller.tr("Proxy URL"),
+                    Controller.tr("URL"),
                     configuration.proxyUrl,
                     { text -> update { it.copy(proxyUrl = text) } },
                 ),
+                Setting.Header(Controller.tr("Cookies")),
                 Setting.Combo(
-                    Controller.tr("Cookies Browser"),
+                    Controller.tr("Browser"),
                     listOf(
                         Controller.tr("None"),
                         Controller.tr("Brave"),
@@ -635,7 +705,7 @@ fun SettingsWindow(onClose: () -> Unit) {
                     configuration.cookiesBrowser,
                     { index -> update { it.copy(cookiesBrowser = index) } },
                 ),
-                Setting.Custom(Controller.tr("Cookies File"), labeled = true) { label ->
+                Setting.Custom(Controller.tr("File"), labeled = true) { label ->
                     Row(
                         Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
@@ -668,51 +738,8 @@ fun SettingsWindow(onClose: () -> Unit) {
                     }
                 },
             ),
-            Section.Aria2 to listOf(
-                Setting.Check(
-                    Controller.tr("Use aria2"),
-                    configuration.useAria,
-                    { checked -> update { it.copy(useAria = checked) } },
-                    Controller.tr(
-                        "An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader.",
-                    ),
-                ),
-                Setting.Custom(Controller.tr("Learn More…")) { label ->
-                    ExternalLink(label.text, "https://aria2.github.io")
-                },
-                Setting.Numeric(
-                    Controller.tr("Maximum Connections Per Server"),
-                    configuration.ariaMaxConnectionsPerServer,
-                    1..16,
-                    { value -> update { it.copy(ariaMaxConnectionsPerServer = value) } },
-                    enabled = configuration.useAria,
-                ),
-                Setting.Numeric(
-                    Controller.tr("Minimum Split Size (MiB)"),
-                    configuration.ariaMinSplitSize,
-                    1..1024,
-                    { value -> update { it.copy(ariaMinSplitSize = value) } },
-                    enabled = configuration.useAria,
-                ),
-            ),
-            Section.History to listOf(
-                Setting.Combo(
-                    Controller.tr("Keep Download History For"),
-                    listOf(
-                        Controller.tr("Never"),
-                        Controller.tr("1 Day"),
-                        Controller.tr("1 Week"),
-                        Controller.tr("1 Month"),
-                        Controller.tr("3 Months"),
-                        Controller.tr("6 Months"),
-                        Controller.tr("1 Year"),
-                        Controller.tr("Forever"),
-                    ),
-                    historyLengths.indexOf(configuration.historyLength).coerceAtLeast(0),
-                    { index -> update { it.copy(historyLength = historyLengths[index]) } },
-                ),
-            ),
             Section.Postprocessing to listOf(
+                Setting.Header(Controller.tr("Metadata")),
                 Setting.Check(
                     Controller.tr("Embed Metadata"),
                     configuration.embedMetadata,
@@ -725,6 +752,7 @@ fun SettingsWindow(onClose: () -> Unit) {
                     Controller.tr("Clear metadata fields containing identifying download information."),
                     enabled = configuration.embedMetadata,
                 ),
+                Setting.Header(Controller.tr("Thumbnails")),
                 Setting.Check(
                     Controller.tr("Embed Thumbnails"),
                     configuration.embedThumbnails,
@@ -740,11 +768,13 @@ fun SettingsWindow(onClose: () -> Unit) {
                     Controller.tr("Crop thumbnails of audio files to squares."),
                     enabled = configuration.embedThumbnails,
                 ),
+                Setting.Header(Controller.tr("Chapters")),
                 Setting.Check(
                     Controller.tr("Embed Chapters"),
                     configuration.embedChapters,
                     { checked -> update { it.copy(embedChapters = checked) } },
                 ),
+                Setting.Header(Controller.tr("Subtitles")),
                 Setting.Check(
                     Controller.tr("Embed Subtitles"),
                     configuration.embedSubtitles,
@@ -753,18 +783,20 @@ fun SettingsWindow(onClose: () -> Unit) {
                         "If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.",
                     ),
                 ),
+                Setting.Header(Controller.tr("FFmpeg")),
                 Setting.Numeric(
-                    Controller.tr("FFmpeg Threads"),
+                    Controller.tr("Threads"),
                     configuration.postprocessingThreads,
                     1..Runtime.getRuntime().availableProcessors(),
                     { value -> update { it.copy(postprocessingThreads = value) } },
                     description = Controller.tr("Limit the number of threads used by ffmpeg."),
                 ),
-            ),
-            Section.Arguments to listOf(
+                Setting.Header(
+                    Controller.tr("Arguments"),
+                    Controller.tr("Arguments will be shown for selection in the download discovery dialog."),
+                ),
                 Setting.Custom(
                     "",
-                    Controller.tr("Arguments will be shown for selection in the download discovery dialog."),
                     fill = true,
                 ) {
                     val windowInfo = LocalWindowInfo.current
@@ -859,7 +891,10 @@ fun SettingsWindow(onClose: () -> Unit) {
                                         LaunchedEffect(nameState) {
                                             snapshotFlow { nameState.text.toString() }.drop(1).collect { text ->
                                                 nameTaken = latest.withIndex()
-                                                    .any { (position, item) -> position != index && item.name == text }
+                                                    .any { (position, item) ->
+                                                        position != index &&
+                                                            item.name == text
+                                                    }
                                                 if (!nameTaken && text.isNotBlank()) {
                                                     edit(index) { it.copy(name = text) }
                                                 }
@@ -937,48 +972,18 @@ fun SettingsWindow(onClose: () -> Unit) {
                 pages.getValue(entry).any { it.matches(query) }
         }
         val current = if (section in visible) section else visible.firstOrNull()
-        val rows = Section.entries.filter { it.parent == null }.flatMap { root ->
-            val children = Section.entries.filter { it.parent == root && it in visible }
-            when {
-                root !in visible && children.isEmpty() -> emptyList()
-                query.isNotEmpty() || root in expanded -> listOf(root) + children
-                else -> listOf(root)
-            }
-        }
 
         MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))
         TitleBar(Modifier.newFullscreenControls()) {}
 
-        val pageContent: @Composable ColumnScope.(Dp?) -> Unit = { tableHeight ->
-            if (current == null) {
-                Text(Controller.tr("Nothing found"))
-            } else {
-                Text(current.title(), fontWeight = FontWeight.Bold)
-                key(current) {
-                    pages.getValue(current).forEachIndexed { index, setting ->
-                        key(index) {
-                            SettingRow(
-                                setting,
-                                query,
-                                if (setting is Setting.Custom && setting.fill) {
-                                    if (tableHeight == null) Modifier.weight(1f) else Modifier.height(tableHeight)
-                                } else {
-                                    Modifier
-                                },
-                            )
-                        }
-                    }
-                }
-            }
-        }
-
         HorizontalSplitLayout(
             first = {
-                Column(Modifier.fillMaxSize().padding(8.dp)) {
+                Column(Modifier.fillMaxSize()) {
                     SearchTextField(
                         search,
                         Modifier.fillMaxWidth()
-                            .padding(bottom = 6.dp)
+                            .padding(start = 8.dp, top = 8.dp, end = 8.dp, bottom = 6.dp)
+                            .height(JewelTheme.textFieldStyle.metrics.minSize.height)
                             .background(
                                 JewelTheme.colorPalette.rawMap.getValue("tool-window-bg"),
                                 RoundedCornerShape(6.dp),
@@ -992,29 +997,12 @@ fun SettingsWindow(onClose: () -> Unit) {
                     )
                     VerticallyScrollableContainer(Modifier.fillMaxSize()) {
                         Column(Modifier.fillMaxWidth()) {
-                            rows.forEach { entry ->
+                            visible.forEach { entry ->
                                 SimpleListItem(
                                     selected = current == entry,
                                     modifier = Modifier.fillMaxWidth().clickable { section = entry },
                                 ) {
                                     Row(verticalAlignment = Alignment.CenterVertically) {
-                                        Spacer(Modifier.width(if (entry.parent != null) 16.dp else 0.dp))
-                                        if (Section.entries.any { it.parent == entry }) {
-                                            Icon(
-                                                if (query.isNotEmpty() || entry in expanded) {
-                                                    AllIconsKeys.General.ChevronDown
-                                                } else {
-                                                    AllIconsKeys.General.ChevronRight
-                                                },
-                                                null,
-                                                Modifier.size(16.dp).clickable {
-                                                    expanded =
-                                                        if (entry in expanded) expanded - entry else expanded + entry
-                                                },
-                                            )
-                                        } else {
-                                            Spacer(Modifier.width(16.dp))
-                                        }
                                         Icon(entry.icon, null, Modifier.size(16.dp))
                                         Spacer(Modifier.width(6.dp))
                                         Text(highlight(entry.title(), query))
@@ -1027,20 +1015,49 @@ fun SettingsWindow(onClose: () -> Unit) {
             },
             second = {
                 BoxWithConstraints(Modifier.fillMaxSize()) {
-                    if (current == Section.Arguments) {
+                    VerticallyScrollableContainer(Modifier.fillMaxSize()) {
                         Column(
-                            Modifier.fillMaxSize().padding(16.dp),
+                            Modifier.fillMaxWidth().padding(16.dp),
                             verticalArrangement = Arrangement.spacedBy(10.dp),
                         ) {
-                            pageContent(null)
-                        }
-                    } else {
-                        VerticallyScrollableContainer(Modifier.fillMaxSize()) {
-                            Column(
-                                Modifier.fillMaxWidth().padding(16.dp),
-                                verticalArrangement = Arrangement.spacedBy(10.dp),
-                            ) {
-                                pageContent((this@BoxWithConstraints.maxHeight * 0.45f).coerceAtLeast(220.dp))
+                            if (current == null) {
+                                Text(Controller.tr("Nothing found"))
+                            } else {
+                                Text(current.title(), fontWeight = FontWeight.Bold)
+                                key(current) {
+                                    pages.getValue(current).forEachIndexed { index, setting ->
+                                        key(index) {
+                                            SettingRow(
+                                                setting,
+                                                query,
+                                                Modifier
+                                                    .then(
+                                                        if (setting is Setting.Custom && setting.fill) {
+                                                            Modifier.height(
+                                                                (this@BoxWithConstraints.maxHeight * 0.45f).coerceAtLeast(
+                                                                    220.dp,
+                                                                ),
+                                                            )
+                                                        } else {
+                                                            Modifier
+                                                        },
+                                                    )
+                                                    .padding(
+                                                        start = if (
+                                                            setting !is Setting.Header &&
+                                                            pages.getValue(current).take(index).any {
+                                                                it is Setting.Header
+                                                            }
+                                                        ) {
+                                                            16.dp
+                                                        } else {
+                                                            0.dp
+                                                        },
+                                                    ),
+                                            )
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

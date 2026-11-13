@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2026.2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 23:50-0500\n"
+"POT-Creation-Date: 2026-11-13 00:04-0500\n"
 "PO-Revision-Date: 2026-04-09 17:09+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -59,9 +59,9 @@ msgid "Worst"
 msgstr "Legalacsonyabb"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:625
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:772
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:791
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:695
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:804
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:823
 msgid "None"
 msgstr "Nincs"
 
@@ -86,22 +86,29 @@ msgid "Keyring"
 msgstr "Jelszókezelő"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:75
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:481
 #, fuzzy
 msgid "History"
 msgstr "Előzmények"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:87
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:89
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:434
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:442
 #, fuzzy
 msgid "Settings"
 msgstr "Beállítások"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:87
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:86
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Általános"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:87
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Elemzés"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:88
 #, fuzzy
@@ -110,286 +117,343 @@ msgid "Downloads"
 msgstr "Letöltések"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:89
-#, fuzzy
-msgctxt "Settings"
-msgid "Discovery"
-msgstr "Elemzés"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:90
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:91
-#, fuzzy
-msgctxt "Settings"
-msgid "aria2"
-msgstr "aria2c"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:92
-#, fuzzy
-msgctxt "Settings"
-msgid "History"
-msgstr "Előzmények"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:93
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:90
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
 msgstr "Feldolgozás"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:94
-msgid "Arguments"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:141
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:139
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:326
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:821
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:335
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:853
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:337
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:837
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:346
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:869
 msgid "Remove"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:342
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:848
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:351
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:880
 msgid "Argument"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:439
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:446
+msgid "User Interface"
+msgstr "Általános"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:448
 msgid "Theme"
 msgstr "Téma"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:441
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:450
 #, fuzzy
 msgctxt "Theme"
 msgid "Light"
 msgstr "Világos"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:442
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:451
 #, fuzzy
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Sötét"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:443
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:452
 msgctxt "Theme"
 msgid "System"
 msgstr "Rendszer"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:452
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
 msgid "Translation Language"
 msgstr "Nyelv"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:453
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:462
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "Rendszer"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+#, fuzzy
+msgid "Updates"
+msgstr "Frissítés"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:471
 #, fuzzy
 msgid "Automatically Check for Updates"
 msgstr "Frissítések keresése"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:466
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:476
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "Előzetes kiadások fogadása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:479
 #, fuzzy
 msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
 msgstr "Előzetes kiadások fogadása és függőségek letöltése"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:474
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:483
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Letöltési előzmények tárolása"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+msgid "Never"
+msgstr "Soha"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:486
+msgid "1 Day"
+msgstr "Egy napig"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:487
+msgid "1 Week"
+msgstr "Egy hétig"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:488
+msgid "1 Month"
+msgstr "Egy hónapig"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:489
+msgid "3 Months"
+msgstr "Három hónapig"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:490
+msgid "6 Months"
+msgstr "Hat hónapig"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:491
+msgid "1 Year"
+msgstr "Egy évig"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:492
+msgid "Forever"
+msgstr "Korlátlan"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:499
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:558
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:651
+#, fuzzy
+msgid "Process"
+msgstr "Utófeldolgozási paraméter"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:501
 #, fuzzy
 msgid "Maximum Active Downloads"
 msgstr "Párhuzamos letöltések száma"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:480
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:507
 msgid "Overwrite Existing Files"
 msgstr "Azonos nevű fájlok felülírása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:512
 msgid "Prevent Sleep During Downloads"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:489
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:517
 #, fuzzy
-msgid "Extra yt-dlp Download Arguments"
-msgstr "yt-dlp letöltési paraméterek"
+msgid "aria2"
+msgstr "aria2c"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:497
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:519
 #, fuzzy
-msgid "Show Auto-Generated Subtitles"
-msgstr "Automatikusan létrehozott feliratok letöltése"
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Egy alternatív letöltő, amely egyes esetekben gyorsabb lehet, mint a yt-dlp"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:502
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:523
+#, fuzzy
+msgid "Use aria2"
+msgstr "aria2 letöltéskezelő"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:527
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:531
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Párhuzamos kapcsolatok száma a kiszolgálóval"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:538
+msgid "Minimum Split Size (MiB)"
+msgstr "Tartalmak darabolása (MiB)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:545
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:638
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:795
+msgid "Arguments"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:546
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:560
 msgid "Include Media Id in Title"
 msgstr "Videó azonosítójának hozzáadása a fájlnévhez"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:505
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:563
 #, fuzzy
 msgid "Add the media entry's yt-dlp id to its default title."
 msgstr "A videó egyedi azonosítója szerepelni fog a fájlnévben"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:508
-#, fuzzy
-msgid "Show Super Resolution Formats"
-msgstr "Felskálázott változatok letöltése"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:512
-msgid ""
-"Super resolutions are resolutions that have been enhanced with artificial "
-"intelligence."
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:516
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:566
 msgid "Limit Filename Characters"
 msgstr "Nem támogatott karakterek konvertálása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:519
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:569
 #, fuzzy
 msgid "Restrict filename characters to those supported only by Windows."
 msgstr ""
 "A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
 "fogja a Windows számára"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:522
-msgid "Preferred Audio Codec"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:572
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Felskálázott változatok letöltése"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:576
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:580
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Automatikusan létrehozott feliratok letöltése"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:585
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:586
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr "Ezt a kódolót fogja használni az alkalmazás a hang feldolgozásához"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:589
+#, fuzzy
+msgid "Audio Codec"
 msgstr "Előnyben részesített hangkódoló"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:524
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:539
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:552
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:565
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:591
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:605
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:617
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
 msgid "Any"
 msgstr "Bármelyik"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:525
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:592
 msgid "FLAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:526
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:593
 msgid "WAV"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:527
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:594
 msgid "Opus"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:528
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:595
 msgid "AAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:529
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:596
 msgid "MP4A"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:530
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:597
 msgid "MP3"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:534
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:603
 #, fuzzy
-msgid "Prefer this codec when parsing audio formats to show for download."
-msgstr "Ezt a kódolót fogja használni az alkalmazás a hang feldolgozásához"
+msgid "Video Codec"
+msgstr "Feldolgozás"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:537
-msgid "Preferred Video Codec"
-msgstr "Előnyben részesített videókódoló"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:540
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:606
 #, fuzzy
 msgid "H.265"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:541
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:607
 msgid "VP9"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:542
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:608
 msgid "AV1"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:543
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:609
 #, fuzzy
 msgid "H.264"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:547
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:615
 #, fuzzy
-msgid "Prefer this codec when parsing video formats to show for download."
-msgstr "Ezt a kódolót fogja használni az alkalmazás a videó feldolgozásához"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:550
-msgid "Preferred Subtitle Format"
+msgid "Subtitle Format"
 msgstr "Előnyben részesített feliratformátum"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:553
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:618
 msgid "VTT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:554
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:619
 msgid "SRT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:555
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:620
 msgid "ASS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:556
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:621
 msgid "LRC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:560
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
 #, fuzzy
-msgid "Prefer this subtitle file format for download."
-msgstr "Ebben a formátumban kerülnek letöltésre a feliratok"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:563
-msgid "Preferred Frame Rate"
+msgid "Frame Rate"
 msgstr "Előnyben részesített képsebesség"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:566
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
 #, fuzzy
 msgid "24 FPS"
 msgstr "{0} FPS"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:567
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:631
 #, fuzzy
 msgid "30 FPS"
 msgstr "{0} FPS"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:568
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:632
 #, fuzzy
 msgid "60 FPS"
 msgstr "{0} FPS"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:572
-#, fuzzy
-msgid "Prefer this frame rate when parsing video formats to show for download."
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:639
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
 msgstr ""
-"Ezt a képsebességet fogja előnyben részesíteni az alkalmazás a videó "
-"letöltésekor"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:575
-#, fuzzy
-msgid "Extra yt-dlp Discovery Arguments"
-msgstr "yt-dlp elemzési paraméterek"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:586
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:653
 msgid "Use Part Files"
 msgstr "Befejezetlen letöltések"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:589
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:656
 #, fuzzy
 msgid ""
 "Download media in separate .part files instead of directly into the output "
@@ -398,22 +462,23 @@ msgstr ""
 "Még befejezetlen letöltések tárolása átmeneti .part fájlokban a letöltés "
 "befejeztéig"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:592
-msgid "Use SponsorBlock for YouTube"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:659
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
 msgstr "Beágyazott hirdetések eltávolítása YouTube videókból"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:595
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:662
 #, fuzzy
 msgid "Try to remove sponsored segments from videos."
 msgstr ""
 "Az alkalmazás megpróbálja eltávolítani a videóban esetlegesen megjelenő "
 "hirdetéseket SponsorBlock használatával"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:598
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:665
 msgid "Translate Metadata and Chapters"
 msgstr "Metaadatok lefordítása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:602
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:669
 #, fuzzy
 msgid ""
 "Automatically translate embedded metadata and chapters using the app's set "
@@ -421,151 +486,118 @@ msgid ""
 msgstr ""
 "Metaadatok és fejezetcímek automatikus lefordítása a felhasználó nyelvére"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:606
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:672
+#, fuzzy
+msgid "Speed"
+msgstr "Sávszélesség korlátozása"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:674
 msgid "Limit Download Speed"
 msgstr "Letöltési sebesség korlátozása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:611
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:679
 msgid "Speed Limit (KiB/s)"
 msgstr "Sávszélesség korlátozása (kiB/mp)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:618
-msgid "Proxy URL"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:685
+#, fuzzy
+msgid "Proxy"
 msgstr "Proxy-átjáró címe"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:623
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:687
+msgid "URL"
+msgstr "Hivatkozás"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:691
 #, fuzzy
-msgid "Cookies Browser"
+msgid "Cookies"
+msgstr "Sütik használata fájlból"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:693
+#, fuzzy
+msgid "Browser"
 msgstr "Sütik betöltése böngészőből"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:626
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:696
 msgid "Brave"
 msgstr "Brave"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:697
 msgid "Chrome"
 msgstr "Google Chrome"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:628
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:698
 msgid "Chromium"
 msgstr "Chromium"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:699
 msgid "Edge"
 msgstr "Microsoft Edge"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:700
 msgid "Firefox"
 msgstr "Mozilla Firefox"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:631
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:701
 msgid "Opera"
 msgstr "Opera"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:632
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:702
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:633
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:703
 msgid "Whale"
 msgstr "Whale"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:638
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:653
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:708
+#, fuzzy
+msgid "File"
+msgstr "Fájlnév"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:723
 msgid "Cookies File"
 msgstr "Sütik használata fájlból"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:660
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:730
 msgid "Browse…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:666
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:736
 msgid "Clear"
 msgstr "Törlés"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:673
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:742
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:811
 #, fuzzy
-msgid "Use aria2"
-msgstr "aria2 letöltéskezelő"
+msgid "Metadata"
+msgstr "Címke/adatok beágyazása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:677
-#, fuzzy
-msgid ""
-"An alternative downloader that may be faster in some regions compared to yt-"
-"dlp's native downloader."
-msgstr ""
-"Egy alternatív letöltő, amely egyes esetekben gyorsabb lehet, mint a yt-dlp"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:680
-msgid "Learn More…"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:684
-#, fuzzy
-msgid "Maximum Connections Per Server"
-msgstr "Párhuzamos kapcsolatok száma a kiszolgálóval"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:691
-msgid "Minimum Split Size (MiB)"
-msgstr "Tartalmak darabolása (MiB)"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:700
-#, fuzzy
-msgid "Keep Download History For"
-msgstr "Letöltési előzmények tárolása"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:702
-msgid "Never"
-msgstr "Soha"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:703
-msgid "1 Day"
-msgstr "Egy napig"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:704
-msgid "1 Week"
-msgstr "Egy hétig"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:705
-msgid "1 Month"
-msgstr "Egy hónapig"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:706
-msgid "3 Months"
-msgstr "Három hónapig"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:707
-msgid "6 Months"
-msgstr "Hat hónapig"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:708
-msgid "1 Year"
-msgstr "Egy évig"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:709
-msgid "Forever"
-msgstr "Korlátlan"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:717
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:744
 msgid "Embed Metadata"
 msgstr "Címke/adatok beágyazása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:722
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:749
 msgid "Remove Source Data"
 msgstr "Metaadatok törlése"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:725
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:752
 #, fuzzy
 msgid "Clear metadata fields containing identifying download information."
 msgstr ""
 "Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott "
 "adatokat a letöltött fájlokból"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:729
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:755
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Borítókép beágyazása"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:757
 msgid "Embed Thumbnails"
 msgstr "Borítókép beágyazása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:733
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:761
 #, fuzzy
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
@@ -574,26 +606,36 @@ msgstr ""
 "Amennyiben a fájlformátum ezt nem támogatja, úgy a borítókép külön fájlként "
 "kerül letöltésre"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:737
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:765
 msgid "Crop Audio Thumbnails"
 msgstr "Borítókép igazítása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:740
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:768
 #, fuzzy
 msgid "Crop thumbnails of audio files to squares."
 msgstr ""
 "Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
 "lehet hasznos"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:744
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:771
+#, fuzzy
+msgid "Chapters"
+msgstr "Fejezetek, időbélyegek beágyazása"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:773
 msgid "Embed Chapters"
 msgstr "Fejezetek, időbélyegek beágyazása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:749
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:777
+#, fuzzy
+msgid "Subtitles"
+msgstr "Nincsenek feliratok"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:779
 msgid "Embed Subtitles"
 msgstr "Feliratok beágyazása"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:753
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:783
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
@@ -601,136 +643,157 @@ msgid ""
 msgstr ""
 "Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:757
-msgid "FFmpeg Threads"
-msgstr "FFmpeg futtatási szálak"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:761
-#, fuzzy
-msgid "Limit the number of threads used by ffmpeg."
-msgstr "FFmpeg által használható futtatási szálak száma"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:767
-msgid "Arguments will be shown for selection in the download discovery dialog."
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:773
-msgid "Merger"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:774
-#, fuzzy
-msgid "Modify Chapters"
-msgstr "Fejezetek, időbélyegek beágyazása"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:775
-#, fuzzy
-msgid "Split Chapters"
-msgstr "Fejezetekre darabolás"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:776
-msgid "Extract Audio"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:777
-#, fuzzy
-msgid "Video Remuxer"
-msgstr "Forrás szerint"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:778
-#, fuzzy
-msgid "Video Converter"
-msgstr "Feldolgozás"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:779
-#, fuzzy
-msgid "Metadata"
-msgstr "Címke/adatok beágyazása"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:780
-#, fuzzy
-msgid "Embed Subtitle"
-msgstr "Feliratok beágyazása"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:781
-#, fuzzy
-msgid "Embed Thumbnail"
-msgstr "Borítókép beágyazása"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:782
-#, fuzzy
-msgid "Subtitles Converter"
-msgstr "Feliratok"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:783
-#, fuzzy
-msgid "Thumbnails Converter"
-msgstr "Feldolgozás"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:784
-msgid "Fixup Stretched"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:785
-msgid "Fixup M4a"
-msgstr ""
-
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:786
-msgid "Fixup M3u8"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:787
-msgid "Fixup Timestamp"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:788
-msgid "Fixup Duration"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:792
-msgid "AtomicParsley"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:793
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:825
 #, fuzzy
 msgid "FFmpeg"
 msgstr "FFmpeg futtatási szálak"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:794
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:788
+#, fuzzy
+msgid "Threads"
+msgstr "FFmpeg futtatási szálak"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:792
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "FFmpeg által használható futtatási szálak száma"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:796
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:805
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:806
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Fejezetek, időbélyegek beágyazása"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:807
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Fejezetekre darabolás"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:808
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:809
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Forrás szerint"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:810
+#, fuzzy
+msgid "Video Converter"
+msgstr "Feldolgozás"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:812
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Feliratok beágyazása"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:813
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Borítókép beágyazása"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:814
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Feliratok"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:815
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Feldolgozás"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:816
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:817
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:818
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:819
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:820
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:824
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:826
 msgid "FFprobe"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:845
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:877
 msgid "Name"
 msgstr "Megnevezés"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:846
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:878
 #, fuzzy
 msgid "Post Processor"
 msgstr "Utófeldolgozási paraméter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:847
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:879
 msgid "Executable"
 msgstr "Futtatandó"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:954
-msgid "Nothing found"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:991
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:996
 #, fuzzy
 msgid "Search"
 msgstr "Keresés..."
 
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:1024
+msgid "Nothing found"
+msgstr ""
+
 #, fuzzy
-#~ msgid "Updates"
-#~ msgstr "Frissítés"
+#~ msgctxt "Settings"
+#~ msgid "History"
+#~ msgstr "Előzmények"
+
+#, fuzzy
+#~ msgid "Extra yt-dlp Download Arguments"
+#~ msgstr "yt-dlp letöltési paraméterek"
+
+#~ msgid "Preferred Video Codec"
+#~ msgstr "Előnyben részesített videókódoló"
+
+#, fuzzy
+#~ msgid "Prefer this codec when parsing video formats to show for download."
+#~ msgstr "Ezt a kódolót fogja használni az alkalmazás a videó feldolgozásához"
+
+#, fuzzy
+#~ msgid "Prefer this subtitle file format for download."
+#~ msgstr "Ebben a formátumban kerülnek letöltésre a feliratok"
+
+#, fuzzy
+#~ msgid ""
+#~ "Prefer this frame rate when parsing video formats to show for download."
+#~ msgstr ""
+#~ "Ezt a képsebességet fogja előnyben részesíteni az alkalmazás a videó "
+#~ "letöltésekor"
+
+#, fuzzy
+#~ msgid "Extra yt-dlp Discovery Arguments"
+#~ msgstr "yt-dlp elemzési paraméterek"
 
 #~ msgid "Advanced"
 #~ msgstr "Haladó beállítások"
-
-#~ msgid "Preferences"
-#~ msgstr "Beállítások"
 
 #, fuzzy
 #~ msgid "An argument with this name already exists."
@@ -757,10 +820,6 @@ msgstr "Keresés..."
 #, fuzzy
 #~ msgid "Quit Parabolic"
 #~ msgstr "Névjegy"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Fájlnév"
 
 #~ msgid "Edit"
 #~ msgstr "Szerkesztés"
@@ -1004,9 +1063,6 @@ msgstr "Keresés..."
 #~ msgid "Credentials"
 #~ msgstr "Bejelentkezés"
 
-#~ msgid "URL"
-#~ msgstr "Hivatkozás"
-
 #~ msgid "Loading"
 #~ msgstr "Betöltés"
 
@@ -1060,9 +1116,6 @@ msgstr "Keresés..."
 
 #~ msgid "There are no downloads of this type"
 #~ msgstr "Nincsenek a feltételnek megfelelő letöltések"
-
-#~ msgid "User Interface"
-#~ msgstr "Általános"
 
 #~ msgid "Prevent Suspend"
 #~ msgstr "Készenlét/felfüggesztés tiltása"
@@ -1500,9 +1553,6 @@ msgstr "Keresés..."
 #~ "feliratok beágyazásához válasszon olyan formátumot, ami támogatja ezt! "
 #~ "Ellenkező esetben ezek az elemek külön fájlként kerülnek letöltésre."
 
-#~ msgid "No Subtitles"
-#~ msgstr "Nincsenek feliratok"
-
 #~ msgid "No subtitles were found for this media."
 #~ msgstr "A videóhoz nincsenek elérhető feliratok."
 
@@ -1554,9 +1604,6 @@ msgstr "Keresés..."
 
 #~ msgid "Off"
 #~ msgstr "Ki"
-
-#~ msgid "Speed Limit"
-#~ msgstr "Sávszélesség korlátozása"
 
 #~ msgid "Enter proxy url here"
 #~ msgstr "Proxy-átjáró megadása"

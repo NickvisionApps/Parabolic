@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 23:50-0500\n"
+"POT-Creation-Date: 2026-11-13 00:04-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: jonnysemon <jonnysemon@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,9 +59,9 @@ msgid "Worst"
 msgstr "الأسوأ"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:625
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:772
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:791
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:695
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:804
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:823
 msgid "None"
 msgstr "لا شيء"
 
@@ -86,22 +86,29 @@ msgid "Keyring"
 msgstr "حلقة المفاتيح"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:75
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:481
 #, fuzzy
 msgid "History"
 msgstr "السجل"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:87
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:89
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:434
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:442
 #, fuzzy
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:87
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:86
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "عام"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:87
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "استكشف"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:88
 #, fuzzy
@@ -110,280 +117,338 @@ msgid "Downloads"
 msgstr "التنزيلات"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:89
-#, fuzzy
-msgctxt "Settings"
-msgid "Discovery"
-msgstr "استكشف"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:90
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:91
-#, fuzzy
-msgctxt "Settings"
-msgid "aria2"
-msgstr "aria2c"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:92
-#, fuzzy
-msgctxt "Settings"
-msgid "History"
-msgstr "السجل"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:93
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:90
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
 msgstr "جاري المعالجة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:94
-#, fuzzy
-msgid "Arguments"
-msgstr "بيانات اعتماد جديدة"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:141
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:139
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:326
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:821
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:335
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:853
 msgid "Add"
 msgstr "أضف"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:337
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:837
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:346
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:869
 msgid "Remove"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:342
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:848
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:351
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:880
 msgid "Argument"
 msgstr "المعطي"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:439
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:446
+msgid "User Interface"
+msgstr "واجهة المستخدم"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:448
 msgid "Theme"
 msgstr "السمة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:441
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:450
 msgctxt "Theme"
 msgid "Light"
 msgstr "فاتح"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:442
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:451
 msgctxt "Theme"
 msgid "Dark"
 msgstr "داكن"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:443
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:452
 msgctxt "Theme"
 msgid "System"
 msgstr "النظام"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:452
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
 msgid "Translation Language"
 msgstr "لغة الترجمة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:453
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:462
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "النظام"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:461
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+msgid "Updates"
+msgstr "التحديثات"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:471
 msgid "Automatically Check for Updates"
 msgstr "التحقق من التحديثات تلقائيًا"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:466
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:476
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "استقبل التحديثات التجريبية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:469
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:479
 #, fuzzy
 msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
 msgstr "تحديث الاعتمادات، مثل (yt-dlp)، إلى إصداراتها التجريبية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:474
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:483
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "سجل التحميل فارغ"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+msgid "Never"
+msgstr "أبدًا"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:486
+msgid "1 Day"
+msgstr "يوم واحد"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:487
+msgid "1 Week"
+msgstr "أسبوع واحد"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:488
+msgid "1 Month"
+msgstr "شهر واحد"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:489
+msgid "3 Months"
+msgstr "٣ أشهر"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:490
+msgid "6 Months"
+msgstr "٦ أشهر"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:491
+msgid "1 Year"
+msgstr "سنة واحدة"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:492
+msgid "Forever"
+msgstr "للأبد"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:499
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:558
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:651
+#, fuzzy
+msgid "Process"
+msgstr "جارٍ المعالجة"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:501
 #, fuzzy
 msgid "Maximum Active Downloads"
 msgstr "أقصى عدد للتنزيلات النشطة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:480
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:507
 msgid "Overwrite Existing Files"
 msgstr "أُكتُب فوق الملفات الموجودة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:512
 msgid "Prevent Sleep During Downloads"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:489
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:517
 #, fuzzy
-msgid "Extra yt-dlp Download Arguments"
-msgstr "معطيات التنزيل لـyt-dlp"
+msgid "aria2"
+msgstr "aria2c"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:497
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:519
 #, fuzzy
-msgid "Show Auto-Generated Subtitles"
-msgstr "ضمّ الترجمات التلقائية"
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr "مُنزّل بديل قد يكون أسرع في بعض المناطق مقارنة بالمُنزّل الأصلي لـyt-dlp"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:502
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:523
+#, fuzzy
+msgid "Use aria2"
+msgstr "إستخدم aria2c"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:527
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:531
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "أقصى عدد إتصالات لكل خادم"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:538
+msgid "Minimum Split Size (MiB)"
+msgstr "أصغر حجم تقسيمات (م.بايت)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:545
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:638
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:795
+#, fuzzy
+msgid "Arguments"
+msgstr "بيانات اعتماد جديدة"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:546
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr "ستظهر المعطيات للإختيار في مربع حوار إضافة التنزيل"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:560
 msgid "Include Media Id in Title"
 msgstr "ضمّن معرّف الوسائط في العنوان"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:505
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:563
 #, fuzzy
 msgid "Add the media entry's yt-dlp id to its default title."
 msgstr "إضافة عنوان المعرّف الخاص بالوسائط إلى عنوانها الافتراضي"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:508
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:566
+msgid "Limit Filename Characters"
+msgstr "الحد من أحرف اسم الملف"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:569
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "تقييد عدد الأحرف في أسماء الملفات إلى ما يدعمه ويندوز فقط"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:572
 #, fuzzy
 msgid "Show Super Resolution Formats"
 msgstr "ضمّن تنسيقات الدقة الفائقة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:512
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:576
 msgid ""
 "Super resolutions are resolutions that have been enhanced with artificial "
 "intelligence."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:516
-msgid "Limit Filename Characters"
-msgstr "الحد من أحرف اسم الملف"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:519
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:580
 #, fuzzy
-msgid "Restrict filename characters to those supported only by Windows."
-msgstr "تقييد عدد الأحرف في أسماء الملفات إلى ما يدعمه ويندوز فقط"
+msgid "Show Auto-Generated Subtitles"
+msgstr "ضمّ الترجمات التلقائية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:522
-msgid "Preferred Audio Codec"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:585
+msgid "Preferences"
+msgstr "التفضيلات"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:586
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr "فضّل هذا الترميز عند تحليل تنسيق الصوت لعرض ما هو متاح للتنزيل"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:589
+#, fuzzy
+msgid "Audio Codec"
 msgstr "ترميز الصوت المفضل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:524
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:539
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:552
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:565
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:591
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:605
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:617
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
 msgid "Any"
 msgstr "أي"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:525
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:592
 msgid "FLAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:526
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:593
 msgid "WAV"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:527
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:594
 msgid "Opus"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:528
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:595
 msgid "AAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:529
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:596
 msgid "MP4A"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:530
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:597
 msgid "MP3"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:534
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:603
 #, fuzzy
-msgid "Prefer this codec when parsing audio formats to show for download."
-msgstr "فضّل هذا الترميز عند تحليل تنسيق الصوت لعرض ما هو متاح للتنزيل"
+msgid "Video Codec"
+msgstr "محول المقاطع"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:537
-msgid "Preferred Video Codec"
-msgstr "ترميز الفيديو المفضل"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:540
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:606
 #, fuzzy
 msgid "H.265"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:541
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:607
 msgid "VP9"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:542
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:608
 msgid "AV1"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:543
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:609
 #, fuzzy
 msgid "H.264"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:547
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:615
 #, fuzzy
-msgid "Prefer this codec when parsing video formats to show for download."
-msgstr "فضّل هذا الترميز عند تحليل تنسيق الفيديو لعرض ما هو متاح للتنزيل"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:550
-msgid "Preferred Subtitle Format"
+msgid "Subtitle Format"
 msgstr "تنسيق الترجمة المفضل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:553
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:618
 msgid "VTT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:554
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:619
 msgid "SRT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:555
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:620
 msgid "ASS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:556
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:621
 msgid "LRC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:560
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
 #, fuzzy
-msgid "Prefer this subtitle file format for download."
-msgstr "فضّل هذا التنسيق لملفات الترجمة عند التنزيل"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:563
-msgid "Preferred Frame Rate"
+msgid "Frame Rate"
 msgstr "معدل الإطارات المُفضَّل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:566
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
 #, fuzzy
 msgid "24 FPS"
 msgstr "{0} إطار في الثانية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:567
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:631
 #, fuzzy
 msgid "30 FPS"
 msgstr "{0} إطار في الثانية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:568
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:632
 #, fuzzy
 msgid "60 FPS"
 msgstr "{0} إطار في الثانية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:572
-#, fuzzy
-msgid "Prefer this frame rate when parsing video formats to show for download."
-msgstr "فضّل معدل الإطارات هذا عند تحليل تنسيق الفيديو لعرض ما هو متاح للتنزيل"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:639
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:575
-#, fuzzy
-msgid "Extra yt-dlp Discovery Arguments"
-msgstr "معطيات الاستكشاف لـyt-dlp"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:586
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:653
 msgid "Use Part Files"
 msgstr "استخدم ملف الدفعات"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:589
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:656
 #, fuzzy
 msgid ""
 "Download media in separate .part files instead of directly into the output "
@@ -391,20 +456,21 @@ msgid ""
 msgstr ""
 "ستُنزّل الوسائط في ملفات part. منفصلة بدلًا من تنزيلها مباشرة في ملف الإخراج"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:592
-msgid "Use SponsorBlock for YouTube"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:659
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
 msgstr "استخدم إضافة 'SponsorBlock' لليوتيوب"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:595
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:662
 #, fuzzy
 msgid "Try to remove sponsored segments from videos."
 msgstr "محاولة إزالة الجزئيات الإعلانية من الفيديوهات"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:598
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:665
 msgid "Translate Metadata and Chapters"
 msgstr "ترجمة المعلومات التوضيحية والفصول"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:602
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:669
 #, fuzzy
 msgid ""
 "Automatically translate embedded metadata and chapters using the app's set "
@@ -413,307 +479,304 @@ msgstr ""
 "ترجمة المعلومات الوصفية والفصول المتضمنة أليًا إلى لغة التطبيق الحالية على "
 "المواقع والوسائط المدعومة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:606
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:672
+#, fuzzy
+msgid "Speed"
+msgstr "حد السرعة"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:674
 msgid "Limit Download Speed"
 msgstr "تقييد سرعة التنزيل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:611
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:679
 msgid "Speed Limit (KiB/s)"
 msgstr "حدّ السرعة (كيبيبايت/ث)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:618
-msgid "Proxy URL"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:685
+#, fuzzy
+msgid "Proxy"
 msgstr "رابط الوكيل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:623
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:687
+msgid "URL"
+msgstr "الرابط"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:691
 #, fuzzy
-msgid "Cookies Browser"
+msgid "Cookies"
+msgstr "ملف الكعكات"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:693
+#, fuzzy
+msgid "Browser"
 msgstr "الكعكات من المتصفح"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:626
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:696
 msgid "Brave"
 msgstr "بريف"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:697
 msgid "Chrome"
 msgstr "كروم"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:628
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:698
 msgid "Chromium"
 msgstr "كروميوم"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:699
 msgid "Edge"
 msgstr "إيدج"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:700
 msgid "Firefox"
 msgstr "فايرفوكس"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:631
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:701
 msgid "Opera"
 msgstr "أوبرا"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:632
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:702
 msgid "Vivaldi"
 msgstr "فيفالدي"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:633
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:703
 msgid "Whale"
 msgstr "وَيل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:638
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:653
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:708
+msgid "File"
+msgstr "ملف"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:723
 msgid "Cookies File"
 msgstr "ملف الكعكات"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:660
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:730
 msgid "Browse…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:666
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:736
 msgid "Clear"
 msgstr "محو"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:673
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:742
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:811
 #, fuzzy
-msgid "Use aria2"
-msgstr "إستخدم aria2c"
+msgid "Metadata"
+msgstr "دمج البيانات الوصفية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:677
-#, fuzzy
-msgid ""
-"An alternative downloader that may be faster in some regions compared to yt-"
-"dlp's native downloader."
-msgstr "مُنزّل بديل قد يكون أسرع في بعض المناطق مقارنة بالمُنزّل الأصلي لـyt-dlp"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:680
-msgid "Learn More…"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:684
-#, fuzzy
-msgid "Maximum Connections Per Server"
-msgstr "أقصى عدد إتصالات لكل خادم"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:691
-msgid "Minimum Split Size (MiB)"
-msgstr "أصغر حجم تقسيمات (م.بايت)"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:700
-#, fuzzy
-msgid "Keep Download History For"
-msgstr "سجل التحميل فارغ"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:702
-msgid "Never"
-msgstr "أبدًا"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:703
-msgid "1 Day"
-msgstr "يوم واحد"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:704
-msgid "1 Week"
-msgstr "أسبوع واحد"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:705
-msgid "1 Month"
-msgstr "شهر واحد"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:706
-msgid "3 Months"
-msgstr "٣ أشهر"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:707
-msgid "6 Months"
-msgstr "٦ أشهر"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:708
-msgid "1 Year"
-msgstr "سنة واحدة"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:709
-msgid "Forever"
-msgstr "للأبد"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:717
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:744
 msgid "Embed Metadata"
 msgstr "دمج البيانات الوصفية"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:722
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:749
 msgid "Remove Source Data"
 msgstr "إزالة بيانات المصدر"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:725
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:752
 #, fuzzy
 msgid "Clear metadata fields containing identifying download information."
 msgstr "محو خانات البيانات الوصفية التي تحتوي على معلومات معرِّفة للتنزيل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:729
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:755
+#, fuzzy
+msgid "Thumbnails"
+msgstr "دمج المصغرات"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:757
 msgid "Embed Thumbnails"
 msgstr "دمج المصغرات"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:733
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:761
 #, fuzzy
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
 "to a separate image file."
 msgstr "إن لم يدعم نوع الملف الدمج، ستُكتب المصغرة كملف صورة منفصل"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:737
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:765
 msgid "Crop Audio Thumbnails"
 msgstr "قص مصغرات الصوتيات"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:740
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:768
 #, fuzzy
 msgid "Crop thumbnails of audio files to squares."
 msgstr "قص مصغرات الصوتيات إلى صور مربعة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:744
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:771
+#, fuzzy
+msgid "Chapters"
+msgstr "دمج الفصول"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:773
 msgid "Embed Chapters"
 msgstr "دمج الفصول"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:749
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:777
+msgid "Subtitles"
+msgstr "الترجمات"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:779
 msgid "Embed Subtitles"
 msgstr "دمج الترجمات"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:753
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:783
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
 "saved to separate files."
 msgstr "إن عُطّل الدمج أو لم يُدعم، ستُحفظ الترجمات المُحمّلة كملفات مستقلة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:757
-msgid "FFmpeg Threads"
-msgstr "سلاسل عمليات FFmpeg"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:761
-#, fuzzy
-msgid "Limit the number of threads used by ffmpeg."
-msgstr "تقييد عدد المسارات المستخدمة بواسطة ffmpeg"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:767
-#, fuzzy
-msgid "Arguments will be shown for selection in the download discovery dialog."
-msgstr "ستظهر المعطيات للإختيار في مربع حوار إضافة التنزيل"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:773
-msgid "Merger"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:774
-#, fuzzy
-msgid "Modify Chapters"
-msgstr "دمج الفصول"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:775
-#, fuzzy
-msgid "Split Chapters"
-msgstr "تقسيم الفيديو حسب الفصول"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:776
-msgid "Extract Audio"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:777
-#, fuzzy
-msgid "Video Remuxer"
-msgstr "فيديو (عام)"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:778
-#, fuzzy
-msgid "Video Converter"
-msgstr "محول المقاطع"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:779
-#, fuzzy
-msgid "Metadata"
-msgstr "دمج البيانات الوصفية"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:780
-#, fuzzy
-msgid "Embed Subtitle"
-msgstr "دمج الترجمات"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:781
-#, fuzzy
-msgid "Embed Thumbnail"
-msgstr "دمج المصغرات"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:782
-#, fuzzy
-msgid "Subtitles Converter"
-msgstr "محول المقاطع"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:783
-#, fuzzy
-msgid "Thumbnails Converter"
-msgstr "محول المقاطع"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:784
-msgid "Fixup Stretched"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:785
-msgid "Fixup M4a"
-msgstr ""
-
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:786
-msgid "Fixup M3u8"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:787
-msgid "Fixup Timestamp"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:788
-msgid "Fixup Duration"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:792
-msgid "AtomicParsley"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:793
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:825
 #, fuzzy
 msgid "FFmpeg"
 msgstr "سلاسل عمليات FFmpeg"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:794
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:788
+#, fuzzy
+msgid "Threads"
+msgstr "سلاسل عمليات FFmpeg"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:792
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "تقييد عدد المسارات المستخدمة بواسطة ffmpeg"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:796
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "ستظهر المعطيات للإختيار في مربع حوار إضافة التنزيل"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:805
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:806
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "دمج الفصول"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:807
+#, fuzzy
+msgid "Split Chapters"
+msgstr "تقسيم الفيديو حسب الفصول"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:808
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:809
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "فيديو (عام)"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:810
+#, fuzzy
+msgid "Video Converter"
+msgstr "محول المقاطع"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:812
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "دمج الترجمات"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:813
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "دمج المصغرات"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:814
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "محول المقاطع"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:815
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "محول المقاطع"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:816
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:817
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:818
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:819
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:820
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:824
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:826
 msgid "FFprobe"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:845
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:877
 msgid "Name"
 msgstr "الاسم"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:846
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:878
 msgid "Post Processor"
 msgstr "بعد المعالجة"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:847
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:879
 msgid "Executable"
 msgstr "المُنفِّذ"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:954
-msgid "Nothing found"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:991
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:996
 #, fuzzy
 msgid "Search"
 msgstr "ابحث..."
 
-#~ msgid "Updates"
-#~ msgstr "التحديثات"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:1024
+msgid "Nothing found"
+msgstr ""
+
+#, fuzzy
+#~ msgctxt "Settings"
+#~ msgid "History"
+#~ msgstr "السجل"
+
+#, fuzzy
+#~ msgid "Extra yt-dlp Download Arguments"
+#~ msgstr "معطيات التنزيل لـyt-dlp"
+
+#~ msgid "Preferred Video Codec"
+#~ msgstr "ترميز الفيديو المفضل"
+
+#, fuzzy
+#~ msgid "Prefer this codec when parsing video formats to show for download."
+#~ msgstr "فضّل هذا الترميز عند تحليل تنسيق الفيديو لعرض ما هو متاح للتنزيل"
+
+#, fuzzy
+#~ msgid "Prefer this subtitle file format for download."
+#~ msgstr "فضّل هذا التنسيق لملفات الترجمة عند التنزيل"
+
+#, fuzzy
+#~ msgid ""
+#~ "Prefer this frame rate when parsing video formats to show for download."
+#~ msgstr ""
+#~ "فضّل معدل الإطارات هذا عند تحليل تنسيق الفيديو لعرض ما هو متاح للتنزيل"
+
+#, fuzzy
+#~ msgid "Extra yt-dlp Discovery Arguments"
+#~ msgstr "معطيات الاستكشاف لـyt-dlp"
 
 #~ msgid "Advanced"
 #~ msgstr "متقدِّمة"
-
-#~ msgid "Preferences"
-#~ msgstr "التفضيلات"
 
 #, fuzzy
 #~ msgid "Manage Arguments…"
@@ -748,9 +811,6 @@ msgstr "ابحث..."
 #, fuzzy
 #~ msgid "Quit Parabolic"
 #~ msgstr "حول بارابولِك"
-
-#~ msgid "File"
-#~ msgstr "ملف"
 
 #~ msgid "Edit"
 #~ msgstr "تعديل"
@@ -917,9 +977,6 @@ msgstr "ابحث..."
 #~ msgid "Audio Format"
 #~ msgstr "صيغة الصوت"
 
-#~ msgid "Subtitles"
-#~ msgstr "الترجمات"
-
 #~ msgid "Search subtitles"
 #~ msgstr "ابحث في الترجمات"
 
@@ -1024,9 +1081,6 @@ msgstr "ابحث..."
 #~ msgid "Credentials"
 #~ msgstr "بيانات الاعتماد"
 
-#~ msgid "URL"
-#~ msgstr "الرابط"
-
 #~ msgid "Loading"
 #~ msgstr "جارٍ التحميل"
 
@@ -1080,9 +1134,6 @@ msgstr "ابحث..."
 
 #~ msgid "There are no downloads of this type"
 #~ msgstr "لم يُعثر على تنزيلات لهذا النوع"
-
-#~ msgid "User Interface"
-#~ msgstr "واجهة المستخدم"
 
 #~ msgid "Prevent Suspend"
 #~ msgstr "منع التعليق"
@@ -1174,9 +1225,6 @@ msgstr "ابحث..."
 
 #~ msgid "Resume"
 #~ msgstr "إستئناف"
-
-#~ msgid "Processing"
-#~ msgstr "جارٍ المعالجة"
 
 #, csharp-format
 #~ msgid "Sleeping for {0}"
@@ -1639,9 +1687,6 @@ msgstr "ابحث..."
 
 #~ msgid "Off"
 #~ msgstr "معطّل"
-
-#~ msgid "Speed Limit"
-#~ msgstr "حد السرعة"
 
 #~ msgid "Enter proxy url here"
 #~ msgstr "أدخل رابط خادم الوكيل هنا"
