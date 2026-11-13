@@ -3,17 +3,23 @@
 package org.nickvision.tubeconverter.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -21,13 +27,24 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.isCtrlPressed
+import androidx.compose.ui.input.pointer.isMetaPressed
+import androidx.compose.ui.input.pointer.isShiftPressed
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.WindowPosition
@@ -35,15 +52,25 @@ import androidx.compose.ui.window.rememberWindowState
 import kotlinx.coroutines.flow.drop
 import org.jetbrains.jewel.foundation.theme.JewelTheme
 import org.jetbrains.jewel.ui.Orientation
-import org.jetbrains.jewel.ui.component.CheckboxRow
+import org.jetbrains.jewel.ui.Outline
+import org.jetbrains.jewel.ui.component.Checkbox
 import org.jetbrains.jewel.ui.component.Divider
 import org.jetbrains.jewel.ui.component.ExternalLink
+import org.jetbrains.jewel.ui.component.HorizontalSplitLayout
+import org.jetbrains.jewel.ui.component.Icon
+import org.jetbrains.jewel.ui.component.IconButton
 import org.jetbrains.jewel.ui.component.InfoText
 import org.jetbrains.jewel.ui.component.ListComboBox
 import org.jetbrains.jewel.ui.component.OutlinedButton
+import org.jetbrains.jewel.ui.component.SearchTextField
 import org.jetbrains.jewel.ui.component.SimpleListItem
 import org.jetbrains.jewel.ui.component.Text
 import org.jetbrains.jewel.ui.component.TextField
+import org.jetbrains.jewel.ui.component.VerticallyScrollableContainer
+import org.jetbrains.jewel.ui.component.rememberSearchTextFieldState
+import org.jetbrains.jewel.ui.component.rememberSplitLayoutState
+import org.jetbrains.jewel.ui.icon.IconKey
+import org.jetbrains.jewel.ui.icons.AllIconsKeys
 import org.jetbrains.jewel.ui.theme.colorPalette
 import org.jetbrains.jewel.ui.typography
 import org.jetbrains.jewel.window.DecoratedWindow
@@ -53,27 +80,331 @@ import java.awt.FileDialog
 import java.io.File
 import java.text.Collator
 import java.util.Locale
+import java.util.concurrent.atomic.AtomicInteger
 
-private enum class Section(val title: () -> String) {
-    General({ Controller.trp("Settings", "General") }),
-    Downloads({ Controller.trp("Settings", "Downloads") }),
-    Discovery({ Controller.trp("Settings", "Discovery") }),
-    Extractor({ Controller.trp("Settings", "Extractor") }),
-    Aria2({ Controller.trp("Settings", "aria2") }),
-    History({ Controller.trp("Settings", "History") }),
-    Postprocessing({ Controller.trp("Settings", "Postprocessing") }),
-    Arguments({ Controller.tr("Arguments") }),
+private enum class Section(val title: () -> String, val icon: IconKey, val parent: Section? = null) {
+    General({ Controller.trp("Settings", "General") }, AllIconsKeys.General.Settings),
+    Downloads({ Controller.trp("Settings", "Downloads") }, AllIconsKeys.Actions.Download),
+    Discovery({ Controller.trp("Settings", "Discovery") }, AllIconsKeys.Actions.Find),
+    Extractor({ Controller.trp("Settings", "Extractor") }, AllIconsKeys.Nodes.Plugin),
+    Aria2({ Controller.trp("Settings", "aria2") }, AllIconsKeys.Nodes.Console),
+    History({ Controller.trp("Settings", "History") }, AllIconsKeys.General.History),
+    Postprocessing({ Controller.trp("Settings", "Postprocessing") }, AllIconsKeys.Actions.Compile),
+    Arguments({ Controller.tr("Arguments") }, AllIconsKeys.Actions.ListFiles, Postprocessing),
+}
+
+private sealed class Setting(val label: String, val description: String?, val enabled: Boolean) {
+    class Header(label: String) : Setting(label, null, true)
+
+    class Check(
+        label: String,
+        val checked: Boolean,
+        val onChange: (Boolean) -> Unit,
+        description: String? = null,
+        enabled: Boolean = true,
+    ) : Setting(label, description, enabled)
+
+    class Combo(
+        label: String,
+        val items: List<String>,
+        val selected: Int,
+        val onChange: (Int) -> Unit,
+        description: String? = null,
+        enabled: Boolean = true,
+    ) : Setting(label, description, enabled)
+
+    class Numeric(
+        label: String,
+        val value: Int,
+        val range: IntRange,
+        val onChange: (Int) -> Unit,
+        enabled: Boolean = true,
+        description: String? = null,
+    ) : Setting(label, description, enabled)
+
+    class Field(
+        label: String,
+        val value: String,
+        val onChange: (String) -> Unit,
+        description: String? = null,
+        enabled: Boolean = true,
+    ) : Setting(label, description, enabled)
+
+    class Custom(
+        label: String,
+        description: String? = null,
+        val labeled: Boolean = false,
+        val fill: Boolean = false,
+        val content: @Composable (AnnotatedString) -> Unit = {},
+    ) : Setting(label, description, true)
 }
 
 private fun labeled(label: String) = Controller.tr("{}:").replace("{}", label)
+
+private fun Setting.matches(query: String) =
+    label.contains(query, ignoreCase = true) || description?.contains(query, ignoreCase = true) == true
+
+private fun highlight(text: String, query: String): AnnotatedString = buildAnnotatedString {
+    append(text)
+    if (query.isNotEmpty()) {
+        var start = text.indexOf(query, ignoreCase = true)
+        while (start >= 0) {
+            addStyle(SpanStyle(background = Color(0x80FFC83D)), start, start + query.length)
+            start = text.indexOf(query, start + query.length, ignoreCase = true)
+        }
+    }
+}
+
+@Composable
+private fun SettingRow(setting: Setting, query: String, modifier: Modifier = Modifier) {
+    val textColor = if (setting.enabled) Color.Unspecified else JewelTheme.globalColors.text.disabled
+    Column(modifier, verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        when (setting) {
+            is Setting.Header -> Row(
+                Modifier.fillMaxWidth().padding(top = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(highlight(setting.label, query))
+                Divider(Orientation.Horizontal, Modifier.weight(1f))
+            }
+
+            is Setting.Check -> Row(
+                Modifier.clickable(enabled = setting.enabled) { setting.onChange(!setting.checked) },
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                Checkbox(setting.checked, setting.onChange, enabled = setting.enabled)
+                Text(highlight(setting.label, query), color = textColor)
+            }
+
+            is Setting.Combo -> Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(highlight(labeled(setting.label), query), color = textColor)
+                ListComboBox(
+                    setting.items,
+                    setting.selected,
+                    setting.onChange,
+                    Modifier.width(220.dp),
+                    enabled = setting.enabled,
+                )
+            }
+
+            is Setting.Numeric -> {
+                val state = rememberTextFieldState(setting.value.toString())
+                LaunchedEffect(state) {
+                    snapshotFlow { state.text.toString() }.drop(1).collect { text ->
+                        text.toIntOrNull()?.let { setting.onChange(it.coerceIn(setting.range)) }
+                    }
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(highlight(labeled(setting.label), query), color = textColor)
+                    TextField(state, Modifier.width(100.dp), enabled = setting.enabled)
+                }
+            }
+
+            is Setting.Field -> {
+                val state = rememberTextFieldState(setting.value)
+                LaunchedEffect(state) {
+                    snapshotFlow { state.text.toString() }.drop(1).collect { setting.onChange(it) }
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(highlight(labeled(setting.label), query), color = textColor)
+                    TextField(state, Modifier.width(320.dp), enabled = setting.enabled)
+                }
+            }
+
+            is Setting.Custom -> Box(if (setting.fill) Modifier.weight(1f).fillMaxWidth() else Modifier) {
+                setting.content(highlight(if (setting.labeled) labeled(setting.label) else setting.label, query))
+            }
+        }
+        setting.description?.let {
+            InfoText(
+                highlight(it, query),
+                Modifier.padding(start = if (setting is Setting.Check) 24.dp else 0.dp),
+                color = with(JewelTheme.globalColors.text) { if (setting.enabled) info else disabled },
+                style = JewelTheme.typography.small,
+            )
+        }
+    }
+}
+
+private fun select(
+    selection: Set<Int>,
+    anchor: Int,
+    target: Int,
+    keys: List<Int>,
+    ctrl: Boolean,
+    shift: Boolean,
+): Set<Int> = when {
+    ctrl -> if (target in selection) selection - target else selection + target
+
+    shift && anchor in keys -> {
+        val from = keys.indexOf(anchor)
+        val to = keys.indexOf(target)
+        keys.slice(minOf(from, to)..maxOf(from, to)).toSet()
+    }
+
+    else -> setOf(target)
+}
+
+private class ArgumentRow(val id: Int, text: String) {
+    var text by mutableStateOf(text)
+}
+
+@Composable
+private fun ArgumentsTable(label: AnnotatedString, value: String, onChange: (String) -> Unit) {
+    val ids = remember { AtomicInteger() }
+    val rows = remember {
+        mutableStateListOf<ArgumentRow>().apply {
+            val current = StringBuilder()
+            var inQuotes = false
+            var hasToken = false
+            for (c in value) {
+                when {
+                    c == '"' -> {
+                        inQuotes = !inQuotes
+                        hasToken = true
+                    }
+
+                    !inQuotes && c.isWhitespace() -> if (hasToken) {
+                        add(ArgumentRow(ids.getAndIncrement(), current.toString()))
+                        current.clear()
+                        hasToken = false
+                    }
+
+                    else -> {
+                        current.append(c)
+                        hasToken = true
+                    }
+                }
+            }
+            if (hasToken) {
+                add(ArgumentRow(ids.getAndIncrement(), current.toString()))
+            }
+        }
+    }
+    var selection by remember { mutableStateOf(emptySet<Int>()) }
+    var anchor by remember { mutableIntStateOf(-1) }
+    val windowInfo = LocalWindowInfo.current
+    val commit = {
+        onChange(
+            rows.map { it.text }
+                .filter { it.isNotBlank() }
+                .joinToString(" ") { if (it.any(Char::isWhitespace)) "\"$it\"" else it },
+        )
+    }
+    Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Text(label)
+        Column(Modifier.fillMaxWidth().weight(1f).border(1.dp, JewelTheme.globalColors.borders.normal)) {
+            Row(Modifier.fillMaxWidth().padding(4.dp), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                IconButton(
+                    {
+                        val row = ArgumentRow(ids.getAndIncrement(), "")
+                        rows.add(row)
+                        selection = setOf(row.id)
+                        anchor = row.id
+                    },
+                    Modifier.size(24.dp),
+                ) { _ ->
+                    Icon(AllIconsKeys.General.Add, Controller.tr("Add"), Modifier.size(16.dp))
+                }
+                IconButton(
+                    {
+                        rows.removeAll { it.id in selection }
+                        selection = emptySet()
+                        commit()
+                    },
+                    Modifier.size(24.dp),
+                    enabled = rows.any { it.id in selection },
+                ) { _ ->
+                    Icon(AllIconsKeys.General.Remove, Controller.tr("Remove"), Modifier.size(16.dp))
+                }
+            }
+            Divider(Orientation.Horizontal, Modifier.fillMaxWidth())
+            Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp)) {
+                Text(Controller.tr("Argument"))
+            }
+            Divider(Orientation.Horizontal, Modifier.fillMaxWidth())
+            Column(Modifier.fillMaxWidth().weight(1f).verticalScroll(rememberScrollState())) {
+                rows.forEach { row ->
+                    key(row.id) {
+                        val state = rememberTextFieldState(row.text)
+                        LaunchedEffect(state) {
+                            snapshotFlow { state.text.toString() }.drop(1).collect { text ->
+                                row.text = text
+                                commit()
+                            }
+                        }
+                        Row(
+                            Modifier.fillMaxWidth()
+                                .background(
+                                    if (row.id in selection) {
+                                        JewelTheme.colorPalette.rawMap.getValue("layer-1-bg")
+                                    } else {
+                                        Color.Transparent
+                                    },
+                                )
+                                .clickable {
+                                    val modifiers = windowInfo.keyboardModifiers
+                                    selection = select(
+                                        selection,
+                                        anchor,
+                                        row.id,
+                                        rows.map { it.id },
+                                        modifiers.isCtrlPressed || modifiers.isMetaPressed,
+                                        modifiers.isShiftPressed,
+                                    )
+                                    if (!modifiers.isShiftPressed) {
+                                        anchor = row.id
+                                    }
+                                }
+                                .padding(horizontal = 8.dp, vertical = 2.dp),
+                        ) {
+                            TextField(
+                                state,
+                                Modifier.fillMaxWidth().onFocusChanged {
+                                    if (it.hasFocus && row.id !in selection) {
+                                        selection = setOf(row.id)
+                                        anchor = row.id
+                                    }
+                                },
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @Composable
 fun SettingsWindow(onClose: () -> Unit) {
     var configuration by remember { mutableStateOf(Controller.getConfiguration()) }
     var section by remember { mutableStateOf(Section.General) }
+    var selectedArguments by remember { mutableStateOf(emptySet<Int>()) }
+    var anchorArgument by remember { mutableIntStateOf(-1) }
+    var expanded by remember { mutableStateOf(setOf(Section.Postprocessing)) }
+    var tableVersion by remember { mutableIntStateOf(0) }
     val update = { transform: (Configuration) -> Configuration ->
         configuration = transform(configuration)
         Controller.setConfiguration(configuration)
+    }
+    val edit = { index: Int, change: (PostprocessingArgument) -> PostprocessingArgument ->
+        update { current ->
+            current.copy(
+                postprocessingArguments = current.postprocessingArguments
+                    .mapIndexed { position, item -> if (position == index) change(item) else item },
+            )
+        }
     }
     val displayLocale = when (configuration.translationLanguage) {
         "C" -> Locale.getDefault()
@@ -94,705 +425,627 @@ fun SettingsWindow(onClose: () -> Unit) {
         state = rememberWindowState(size = DpSize(860.dp, 600.dp), position = WindowPosition(Alignment.Center)),
         title = Controller.tr("Settings"),
     ) {
-        MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))
-        TitleBar(Modifier.newFullscreenControls()) {}
-
-        Row(Modifier.fillMaxSize().background(JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))) {
-            Column(
-                Modifier.fillMaxHeight().width(190.dp).padding(8.dp),
-                verticalArrangement = Arrangement.spacedBy(2.dp),
-            ) {
-                Section.entries.forEach { entry ->
-                    SimpleListItem(
-                        entry.title(),
-                        section == entry,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = if (entry == Section.Arguments) 16.dp else 0.dp)
-                            .clickable { section = entry },
+        val pages: Map<Section, List<Setting>> = mapOf(
+            Section.General to listOf(
+                Setting.Combo(
+                    Controller.tr("Theme"),
+                    listOf(
+                        Controller.trp("Theme", "Light"),
+                        Controller.trp("Theme", "Dark"),
+                        Controller.trp("Theme", "System"),
+                    ),
+                    configuration.theme,
+                    { index ->
+                        themeState.intValue = index
+                        update { it.copy(theme = index) }
+                    },
+                ),
+                Setting.Combo(
+                    Controller.tr("Translation Language"),
+                    listOf(Controller.trp("Language", "System")) + languages.map { it.second },
+                    languageIds.indexOf(configuration.translationLanguage).coerceAtLeast(0),
+                    { index ->
+                        update { it.copy(translationLanguage = languageIds[index]) }
+                        Controller.refreshLanguage()
+                    },
+                ),
+                Setting.Header(Controller.tr("Updates")),
+                Setting.Check(
+                    Controller.tr("Automatically Check for Updates"),
+                    configuration.automaticallyCheckForUpdates,
+                    { checked -> update { it.copy(automaticallyCheckForUpdates = checked) } },
+                ),
+                Setting.Check(
+                    Controller.tr("Allow Preview Updates"),
+                    configuration.allowPreviewUpdates,
+                    { checked -> update { it.copy(allowPreviewUpdates = checked) } },
+                    Controller.tr("Update the app and dependencies, such as yt-dlp, to beta versions."),
+                ),
+            ),
+            Section.Downloads to listOf(
+                Setting.Numeric(
+                    Controller.tr("Maximum Active Downloads"),
+                    configuration.maxNumberOfActiveDownloads,
+                    1..10,
+                    { value -> update { it.copy(maxNumberOfActiveDownloads = value) } },
+                ),
+                Setting.Check(
+                    Controller.tr("Overwrite Existing Files"),
+                    configuration.overwriteExistingFiles,
+                    { checked -> update { it.copy(overwriteExistingFiles = checked) } },
+                ),
+                Setting.Check(
+                    Controller.tr("Prevent Sleep During Downloads"),
+                    configuration.preventSuspend,
+                    { checked -> update { it.copy(preventSuspend = checked) } },
+                ),
+                Setting.Header(Controller.tr("Advanced")),
+                Setting.Custom(Controller.tr("Extra yt-dlp Download Arguments"), labeled = true, fill = true) { label ->
+                    ArgumentsTable(label, configuration.ytdlpDownloadArgs) { value ->
+                        update { it.copy(ytdlpDownloadArgs = value) }
+                    }
+                },
+            ),
+            Section.Discovery to listOf(
+                Setting.Check(
+                    Controller.tr("Show Auto-Generated Subtitles"),
+                    configuration.includeAutoGeneratedSubtitles,
+                    { checked -> update { it.copy(includeAutoGeneratedSubtitles = checked) } },
+                ),
+                Setting.Check(
+                    Controller.tr("Include Media Id in Title"),
+                    configuration.includeMediaIdInTitle,
+                    { checked -> update { it.copy(includeMediaIdInTitle = checked) } },
+                    Controller.tr("Add the media entry's yt-dlp id to its default title."),
+                ),
+                Setting.Check(
+                    Controller.tr("Show Super Resolution Formats"),
+                    configuration.includeSuperResolutions,
+                    { checked -> update { it.copy(includeSuperResolutions = checked) } },
+                    Controller.tr(
+                        "Super resolutions are resolutions that have been enhanced with artificial intelligence.",
+                    ),
+                ),
+                Setting.Check(
+                    Controller.tr("Limit Filename Characters"),
+                    configuration.limitCharacters,
+                    { checked -> update { it.copy(limitCharacters = checked) } },
+                    Controller.tr("Restrict filename characters to those supported only by Windows."),
+                ),
+                Setting.Header(Controller.tr("Preferences")),
+                Setting.Combo(
+                    Controller.tr("Preferred Audio Codec"),
+                    listOf(
+                        Controller.tr("Any"),
+                        Controller.tr("FLAC"),
+                        Controller.tr("WAV"),
+                        Controller.tr("Opus"),
+                        Controller.tr("AAC"),
+                        Controller.tr("MP4A"),
+                        Controller.tr("MP3"),
+                    ),
+                    configuration.preferredAudioCodec,
+                    { index -> update { it.copy(preferredAudioCodec = index) } },
+                    Controller.tr("Prefer this codec when parsing audio formats to show for download."),
+                ),
+                Setting.Combo(
+                    Controller.tr("Preferred Video Codec"),
+                    listOf(
+                        Controller.tr("Any"),
+                        Controller.tr("H.265"),
+                        Controller.tr("VP9"),
+                        Controller.tr("AV1"),
+                        Controller.tr("H.264"),
+                    ),
+                    configuration.preferredVideoCodec,
+                    { index -> update { it.copy(preferredVideoCodec = index) } },
+                    Controller.tr("Prefer this codec when parsing video formats to show for download."),
+                ),
+                Setting.Combo(
+                    Controller.tr("Preferred Subtitle Format"),
+                    listOf(
+                        Controller.tr("Any"),
+                        Controller.tr("VTT"),
+                        Controller.tr("SRT"),
+                        Controller.tr("ASS"),
+                        Controller.tr("LRC"),
+                    ),
+                    configuration.preferredSubtitleFormat,
+                    { index -> update { it.copy(preferredSubtitleFormat = index) } },
+                    Controller.tr("Prefer this subtitle file format for download."),
+                ),
+                Setting.Combo(
+                    Controller.tr("Preferred Frame Rate"),
+                    listOf(
+                        Controller.tr("Any"),
+                        Controller.tr("24 FPS"),
+                        Controller.tr("30 FPS"),
+                        Controller.tr("60 FPS"),
+                    ),
+                    configuration.preferredFrameRate,
+                    { index -> update { it.copy(preferredFrameRate = index) } },
+                    Controller.tr("Prefer this frame rate when parsing video formats to show for download."),
+                ),
+                Setting.Header(Controller.tr("Advanced")),
+                Setting.Custom(
+                    Controller.tr("Extra yt-dlp Discovery Arguments"),
+                    labeled = true,
+                    fill = true,
+                ) { label ->
+                    ArgumentsTable(label, configuration.ytdlpDiscoveryArgs) { value ->
+                        update { it.copy(ytdlpDiscoveryArgs = value) }
+                    }
+                },
+            ),
+            Section.Extractor to listOf(
+                Setting.Check(
+                    Controller.tr("Use Part Files"),
+                    configuration.usePartFiles,
+                    { checked -> update { it.copy(usePartFiles = checked) } },
+                    Controller.tr("Download media in separate .part files instead of directly into the output file."),
+                ),
+                Setting.Check(
+                    Controller.tr("Use SponsorBlock for YouTube"),
+                    configuration.youTubeSponsorBlock,
+                    { checked -> update { it.copy(youTubeSponsorBlock = checked) } },
+                    Controller.tr("Try to remove sponsored segments from videos."),
+                ),
+                Setting.Check(
+                    Controller.tr("Translate Metadata and Chapters"),
+                    configuration.translateMetadataAndChapters,
+                    { checked -> update { it.copy(translateMetadataAndChapters = checked) } },
+                    Controller.tr(
+                        "Automatically translate embedded metadata and chapters using the app's set language on supported sites and media.",
+                    ),
+                ),
+                Setting.Check(
+                    Controller.tr("Limit Download Speed"),
+                    configuration.speedLimit != null,
+                    { checked -> update { it.copy(speedLimit = if (checked) 1024 else null) } },
+                ),
+                Setting.Numeric(
+                    Controller.tr("Speed Limit (KiB/s)"),
+                    configuration.speedLimit ?: 1024,
+                    512..10240,
+                    { value -> update { it.copy(speedLimit = value) } },
+                    enabled = configuration.speedLimit != null,
+                ),
+                Setting.Field(
+                    Controller.tr("Proxy URL"),
+                    configuration.proxyUrl,
+                    { text -> update { it.copy(proxyUrl = text) } },
+                ),
+                Setting.Combo(
+                    Controller.tr("Cookies Browser"),
+                    listOf(
+                        Controller.tr("None"),
+                        Controller.tr("Brave"),
+                        Controller.tr("Chrome"),
+                        Controller.tr("Chromium"),
+                        Controller.tr("Edge"),
+                        Controller.tr("Firefox"),
+                        Controller.tr("Opera"),
+                        Controller.tr("Vivaldi"),
+                        Controller.tr("Whale"),
+                    ),
+                    configuration.cookiesBrowser,
+                    { index -> update { it.copy(cookiesBrowser = index) } },
+                ),
+                Setting.Custom(Controller.tr("Cookies File"), labeled = true) { label ->
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Text(label)
+                        key(configuration.cookiesPath) {
+                            TextField(
+                                rememberTextFieldState(configuration.cookiesPath),
+                                Modifier.weight(1f),
+                                readOnly = true,
+                            )
+                        }
+                        OutlinedButton({
+                            val dialog = FileDialog(window, Controller.tr("Cookies File"), FileDialog.LOAD)
+                            dialog.isVisible = true
+                            val file = dialog.file
+                            if (file != null) {
+                                update { it.copy(cookiesPath = File(dialog.directory, file).path) }
+                            }
+                        }) {
+                            Text(Controller.tr("Browse…"))
+                        }
+                        OutlinedButton(
+                            { update { it.copy(cookiesPath = "") } },
+                            enabled = configuration.cookiesPath.isNotEmpty(),
+                        ) {
+                            Text(Controller.tr("Clear"))
+                        }
+                    }
+                },
+            ),
+            Section.Aria2 to listOf(
+                Setting.Check(
+                    Controller.tr("Use aria2"),
+                    configuration.useAria,
+                    { checked -> update { it.copy(useAria = checked) } },
+                    Controller.tr(
+                        "An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader.",
+                    ),
+                ),
+                Setting.Custom(Controller.tr("Learn More…")) { label ->
+                    ExternalLink(label.text, "https://aria2.github.io")
+                },
+                Setting.Numeric(
+                    Controller.tr("Maximum Connections Per Server"),
+                    configuration.ariaMaxConnectionsPerServer,
+                    1..16,
+                    { value -> update { it.copy(ariaMaxConnectionsPerServer = value) } },
+                    enabled = configuration.useAria,
+                ),
+                Setting.Numeric(
+                    Controller.tr("Minimum Split Size (MiB)"),
+                    configuration.ariaMinSplitSize,
+                    1..1024,
+                    { value -> update { it.copy(ariaMinSplitSize = value) } },
+                    enabled = configuration.useAria,
+                ),
+            ),
+            Section.History to listOf(
+                Setting.Combo(
+                    Controller.tr("Keep Download History For"),
+                    listOf(
+                        Controller.tr("Never"),
+                        Controller.tr("1 Day"),
+                        Controller.tr("1 Week"),
+                        Controller.tr("1 Month"),
+                        Controller.tr("3 Months"),
+                        Controller.tr("6 Months"),
+                        Controller.tr("1 Year"),
+                        Controller.tr("Forever"),
+                    ),
+                    historyLengths.indexOf(configuration.historyLength).coerceAtLeast(0),
+                    { index -> update { it.copy(historyLength = historyLengths[index]) } },
+                ),
+            ),
+            Section.Postprocessing to listOf(
+                Setting.Check(
+                    Controller.tr("Embed Metadata"),
+                    configuration.embedMetadata,
+                    { checked -> update { it.copy(embedMetadata = checked) } },
+                ),
+                Setting.Check(
+                    Controller.tr("Remove Source Data"),
+                    configuration.removeSourceData,
+                    { checked -> update { it.copy(removeSourceData = checked) } },
+                    Controller.tr("Clear metadata fields containing identifying download information."),
+                    enabled = configuration.embedMetadata,
+                ),
+                Setting.Check(
+                    Controller.tr("Embed Thumbnails"),
+                    configuration.embedThumbnails,
+                    { checked -> update { it.copy(embedThumbnails = checked) } },
+                    Controller.tr(
+                        "If the file type does not support embedding, the thumbnail will be written to a separate image file.",
+                    ),
+                ),
+                Setting.Check(
+                    Controller.tr("Crop Audio Thumbnails"),
+                    configuration.cropAudioThumbnails,
+                    { checked -> update { it.copy(cropAudioThumbnails = checked) } },
+                    Controller.tr("Crop thumbnails of audio files to squares."),
+                    enabled = configuration.embedThumbnails,
+                ),
+                Setting.Check(
+                    Controller.tr("Embed Chapters"),
+                    configuration.embedChapters,
+                    { checked -> update { it.copy(embedChapters = checked) } },
+                ),
+                Setting.Check(
+                    Controller.tr("Embed Subtitles"),
+                    configuration.embedSubtitles,
+                    { checked -> update { it.copy(embedSubtitles = checked) } },
+                    Controller.tr(
+                        "If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.",
+                    ),
+                ),
+                Setting.Numeric(
+                    Controller.tr("FFmpeg Threads"),
+                    configuration.postprocessingThreads,
+                    1..Runtime.getRuntime().availableProcessors(),
+                    { value -> update { it.copy(postprocessingThreads = value) } },
+                    description = Controller.tr("Limit the number of threads used by ffmpeg."),
+                ),
+            ),
+            Section.Arguments to listOf(
+                Setting.Custom(
+                    "",
+                    Controller.tr("Arguments will be shown for selection in the download discovery dialog."),
+                    fill = true,
+                ) {
+                    val windowInfo = LocalWindowInfo.current
+                    val steps = listOf(
+                        Controller.tr("None"),
+                        Controller.tr("Merger"),
+                        Controller.tr("Modify Chapters"),
+                        Controller.tr("Split Chapters"),
+                        Controller.tr("Extract Audio"),
+                        Controller.tr("Video Remuxer"),
+                        Controller.tr("Video Converter"),
+                        Controller.tr("Metadata"),
+                        Controller.tr("Embed Subtitle"),
+                        Controller.tr("Embed Thumbnail"),
+                        Controller.tr("Subtitles Converter"),
+                        Controller.tr("Thumbnails Converter"),
+                        Controller.tr("Fixup Stretched"),
+                        Controller.tr("Fixup M4a"),
+                        Controller.tr("Fixup M3u8"),
+                        Controller.tr("Fixup Timestamp"),
+                        Controller.tr("Fixup Duration"),
                     )
-                }
-            }
-            Divider(Orientation.Vertical, Modifier.fillMaxHeight())
-            Column(
-                Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
-                Text(section.title(), style = JewelTheme.typography.h3TextStyle)
-                when (section) {
-                    Section.General -> {
+                    val executables = listOf(
+                        Controller.tr("None"),
+                        Controller.tr("AtomicParsley"),
+                        Controller.tr("FFmpeg"),
+                        Controller.tr("FFprobe"),
+                    )
+                    Column(Modifier.fillMaxSize().border(1.dp, JewelTheme.globalColors.borders.normal)) {
                         Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            Modifier.fillMaxWidth().padding(4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(4.dp),
                         ) {
-                            Text(labeled(Controller.tr("Theme")))
-                            ListComboBox(
-                                listOf(
-                                    Controller.trp("Theme", "Light"),
-                                    Controller.trp("Theme", "Dark"),
-                                    Controller.trp("Theme", "System"),
-                                ),
-                                configuration.theme,
-                                { index ->
-                                    themeState.intValue = index
-                                    update { it.copy(theme = index) }
-                                },
-                                Modifier.width(220.dp),
-                            )
-                        }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Translation Language")))
-                            ListComboBox(
-                                listOf(Controller.trp("Language", "System")) + languages.map { it.second },
-                                languageIds.indexOf(configuration.translationLanguage).coerceAtLeast(0),
-                                { index ->
-                                    update { it.copy(translationLanguage = languageIds[index]) }
-                                    Controller.refreshLanguage()
-                                },
-                                Modifier.width(220.dp),
-                            )
-                        }
-                        CheckboxRow(
-                            Controller.tr("Automatically Check for Updates"),
-                            configuration.automaticallyCheckForUpdates,
-                            { checked -> update { it.copy(automaticallyCheckForUpdates = checked) } },
-                        )
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Allow Preview Updates"),
-                                configuration.allowPreviewUpdates,
-                                { checked -> update { it.copy(allowPreviewUpdates = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr("Update the app and dependencies, such as yt-dlp, to beta versions."),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                    }
-
-                    Section.Downloads -> {
-                        val maxActiveDownloads =
-                            rememberTextFieldState(configuration.maxNumberOfActiveDownloads.toString())
-                        val downloadArguments = rememberTextFieldState(configuration.ytdlpDownloadArgs)
-                        LaunchedEffect(maxActiveDownloads) {
-                            snapshotFlow { maxActiveDownloads.text.toString() }.drop(1).collect { text ->
-                                text.toIntOrNull()?.let { value ->
-                                    update { it.copy(maxNumberOfActiveDownloads = value.coerceIn(1..10)) }
-                                }
-                            }
-                        }
-                        LaunchedEffect(downloadArguments) {
-                            snapshotFlow { downloadArguments.text.toString() }.drop(1).collect { text ->
-                                update { it.copy(ytdlpDownloadArgs = text) }
-                            }
-                        }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Maximum Active Downloads")))
-                            TextField(maxActiveDownloads, Modifier.width(100.dp))
-                        }
-                        CheckboxRow(
-                            Controller.tr("Overwrite Existing Files"),
-                            configuration.overwriteExistingFiles,
-                            { checked -> update { it.copy(overwriteExistingFiles = checked) } },
-                        )
-                        CheckboxRow(
-                            Controller.tr("Prevent Sleep During Downloads"),
-                            configuration.preventSuspend,
-                            { checked -> update { it.copy(preventSuspend = checked) } },
-                        )
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Extra yt-dlp Download Arguments")))
-                            TextField(downloadArguments, Modifier.width(320.dp))
-                        }
-                    }
-
-                    Section.Discovery -> {
-                        val discoveryArguments = rememberTextFieldState(configuration.ytdlpDiscoveryArgs)
-                        LaunchedEffect(discoveryArguments) {
-                            snapshotFlow { discoveryArguments.text.toString() }.drop(1).collect { text ->
-                                update { it.copy(ytdlpDiscoveryArgs = text) }
-                            }
-                        }
-                        CheckboxRow(
-                            Controller.tr("Show Auto-Generated Subtitles"),
-                            configuration.includeAutoGeneratedSubtitles,
-                            { checked -> update { it.copy(includeAutoGeneratedSubtitles = checked) } },
-                        )
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Include Media Id in Title"),
-                                configuration.includeMediaIdInTitle,
-                                { checked -> update { it.copy(includeMediaIdInTitle = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr("Add the media entry's yt-dlp id to its default title."),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Show Super Resolution Formats"),
-                                configuration.includeSuperResolutions,
-                                { checked -> update { it.copy(includeSuperResolutions = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr(
-                                    "Super resolutions are resolutions that have been enhanced with artificial intelligence.",
-                                ),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Limit Filename Characters"),
-                                configuration.limitCharacters,
-                                { checked -> update { it.copy(limitCharacters = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr("Restrict filename characters to those supported only by Windows."),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            ) {
-                                Text(labeled(Controller.tr("Preferred Audio Codec")))
-                                ListComboBox(
-                                    listOf(
-                                        Controller.tr("Any"),
-                                        Controller.tr("FLAC"),
-                                        Controller.tr("WAV"),
-                                        Controller.tr("Opus"),
-                                        Controller.tr("AAC"),
-                                        Controller.tr("MP4A"),
-                                        Controller.tr("MP3"),
-                                    ),
-                                    configuration.preferredAudioCodec,
-                                    { index -> update { it.copy(preferredAudioCodec = index) } },
-                                    Modifier.width(220.dp),
-                                )
-                            }
-                            InfoText(
-                                Controller.tr("Prefer this codec when parsing audio formats to show for download."),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            ) {
-                                Text(labeled(Controller.tr("Preferred Video Codec")))
-                                ListComboBox(
-                                    listOf(
-                                        Controller.tr("Any"),
-                                        Controller.tr("H.265"),
-                                        Controller.tr("VP9"),
-                                        Controller.tr("AV1"),
-                                        Controller.tr("H.264"),
-                                    ),
-                                    configuration.preferredVideoCodec,
-                                    { index -> update { it.copy(preferredVideoCodec = index) } },
-                                    Modifier.width(220.dp),
-                                )
-                            }
-                            InfoText(
-                                Controller.tr("Prefer this codec when parsing video formats to show for download."),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            ) {
-                                Text(labeled(Controller.tr("Preferred Subtitle Format")))
-                                ListComboBox(
-                                    listOf(
-                                        Controller.tr("Any"),
-                                        Controller.tr("VTT"),
-                                        Controller.tr("SRT"),
-                                        Controller.tr("ASS"),
-                                        Controller.tr("LRC"),
-                                    ),
-                                    configuration.preferredSubtitleFormat,
-                                    { index -> update { it.copy(preferredSubtitleFormat = index) } },
-                                    Modifier.width(220.dp),
-                                )
-                            }
-                            InfoText(Controller.tr("Prefer this subtitle file format for download."))
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            ) {
-                                Text(labeled(Controller.tr("Preferred Frame Rate")))
-                                ListComboBox(
-                                    listOf(
-                                        Controller.tr("Any"),
-                                        Controller.tr("24 FPS"),
-                                        Controller.tr("30 FPS"),
-                                        Controller.tr("60 FPS"),
-                                    ),
-                                    configuration.preferredFrameRate,
-                                    { index -> update { it.copy(preferredFrameRate = index) } },
-                                    Modifier.width(220.dp),
-                                )
-                            }
-                            InfoText(
-                                Controller.tr(
-                                    "Prefer this frame rate when parsing video formats to show for download.",
-                                ),
-                            )
-                        }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Extra yt-dlp Discovery Arguments")))
-                            TextField(discoveryArguments, Modifier.width(320.dp))
-                        }
-                    }
-
-                    Section.Extractor -> {
-                        val speedLimit = rememberTextFieldState((configuration.speedLimit ?: 1024).toString())
-                        val proxyUrl = rememberTextFieldState(configuration.proxyUrl)
-                        LaunchedEffect(speedLimit) {
-                            snapshotFlow { speedLimit.text.toString() }.drop(1).collect { text ->
-                                text.toIntOrNull()?.let { value ->
-                                    update { it.copy(speedLimit = value.coerceIn(512..10240)) }
-                                }
-                            }
-                        }
-                        LaunchedEffect(proxyUrl) {
-                            snapshotFlow { proxyUrl.text.toString() }.drop(1).collect { text ->
-                                update { it.copy(proxyUrl = text) }
-                            }
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Use Part Files"),
-                                configuration.usePartFiles,
-                                { checked -> update { it.copy(usePartFiles = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr(
-                                    "Download media in separate .part files instead of directly into the output file.",
-                                ),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Use SponsorBlock for YouTube"),
-                                configuration.youTubeSponsorBlock,
-                                { checked -> update { it.copy(youTubeSponsorBlock = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr("Try to remove sponsored segments from videos."),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Translate Metadata and Chapters"),
-                                configuration.translateMetadataAndChapters,
-                                { checked -> update { it.copy(translateMetadataAndChapters = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr(
-                                    "Automatically translate embedded metadata and chapters using the app's set language on supported sites and media.",
-                                ),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        CheckboxRow(
-                            Controller.tr("Limit Download Speed"),
-                            configuration.speedLimit != null,
-                            { checked -> update { it.copy(speedLimit = if (checked) 1024 else null) } },
-                        )
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Speed Limit (KiB/s)")))
-                            TextField(speedLimit, Modifier.width(100.dp), enabled = configuration.speedLimit != null)
-                        }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Proxy URL")))
-                            TextField(proxyUrl, Modifier.width(320.dp))
-                        }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Cookies Browser")))
-                            ListComboBox(
-                                listOf(
-                                    Controller.tr("None"),
-                                    Controller.tr("Brave"),
-                                    Controller.tr("Chrome"),
-                                    Controller.tr("Chromium"),
-                                    Controller.tr("Edge"),
-                                    Controller.tr("Firefox"),
-                                    Controller.tr("Opera"),
-                                    Controller.tr("Vivaldi"),
-                                    Controller.tr("Whale"),
-                                ),
-                                configuration.cookiesBrowser,
-                                { index -> update { it.copy(cookiesBrowser = index) } },
-                                Modifier.width(220.dp),
-                            )
-                        }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Cookies File")))
-                            Text(
-                                configuration.cookiesPath,
-                                Modifier.width(240.dp),
-                                overflow = TextOverflow.Ellipsis,
-                                maxLines = 1,
-                            )
-                            OutlinedButton({
-                                val dialog = FileDialog(window, Controller.tr("Cookies File"), FileDialog.LOAD)
-                                dialog.isVisible = true
-                                val file = dialog.file
-                                if (file != null) {
-                                    update { it.copy(cookiesPath = File(dialog.directory, file).path) }
-                                }
-                            }) {
-                                Text(Controller.tr("Browse…"))
-                            }
-                            OutlinedButton(
-                                { update { it.copy(cookiesPath = "") } },
-                                enabled = configuration.cookiesPath.isNotEmpty(),
-                            ) {
-                                Text(Controller.tr("Clear"))
-                            }
-                        }
-                    }
-
-                    Section.Aria2 -> {
-                        val maxConnections =
-                            rememberTextFieldState(configuration.ariaMaxConnectionsPerServer.toString())
-                        val minSplitSize = rememberTextFieldState(configuration.ariaMinSplitSize.toString())
-                        LaunchedEffect(maxConnections) {
-                            snapshotFlow { maxConnections.text.toString() }.drop(1).collect { text ->
-                                text.toIntOrNull()?.let { value ->
-                                    update { it.copy(ariaMaxConnectionsPerServer = value.coerceIn(1..16)) }
-                                }
-                            }
-                        }
-                        LaunchedEffect(minSplitSize) {
-                            snapshotFlow { minSplitSize.text.toString() }.drop(1).collect { text ->
-                                text.toIntOrNull()?.let { value ->
-                                    update { it.copy(ariaMinSplitSize = value.coerceIn(1..1024)) }
-                                }
-                            }
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Use aria2"),
-                                configuration.useAria,
-                                { checked -> update { it.copy(useAria = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr(
-                                    "An alternative downloader that may be faster in some regions compared to yt-dlp's native downloader.",
-                                ),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        ExternalLink(Controller.tr("Learn More…"), "https://aria2.github.io")
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Maximum Connections Per Server")))
-                            TextField(maxConnections, Modifier.width(100.dp))
-                        }
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Minimum Split Size (MiB)")))
-                            TextField(minSplitSize, Modifier.width(100.dp))
-                        }
-                    }
-
-                    Section.History -> {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        ) {
-                            Text(labeled(Controller.tr("Keep Download History For")))
-                            ListComboBox(
-                                listOf(
-                                    Controller.tr("Never"),
-                                    Controller.tr("1 Day"),
-                                    Controller.tr("1 Week"),
-                                    Controller.tr("1 Month"),
-                                    Controller.tr("3 Months"),
-                                    Controller.tr("6 Months"),
-                                    Controller.tr("1 Year"),
-                                    Controller.tr("Forever"),
-                                ),
-                                historyLengths.indexOf(configuration.historyLength).coerceAtLeast(0),
-                                { index -> update { it.copy(historyLength = historyLengths[index]) } },
-                                Modifier.width(220.dp),
-                            )
-                        }
-                    }
-
-                    Section.Postprocessing -> {
-                        val threads = rememberTextFieldState(configuration.postprocessingThreads.toString())
-                        LaunchedEffect(threads) {
-                            snapshotFlow { threads.text.toString() }.drop(1).collect { text ->
-                                text.toIntOrNull()?.let { value ->
-                                    update {
-                                        it.copy(
-                                            postprocessingThreads = value.coerceIn(
-                                                1..Runtime.getRuntime().availableProcessors(),
-                                            ),
+                            IconButton(
+                                {
+                                    update { current ->
+                                        current.copy(
+                                            postprocessingArguments = current.postprocessingArguments +
+                                                PostprocessingArgument(
+                                                    generateSequence(1) { it + 1 }
+                                                        .map { it.toString() }
+                                                        .first { name ->
+                                                            current.postprocessingArguments.none { it.name == name }
+                                                        },
+                                                ),
                                         )
                                     }
-                                }
+                                    selectedArguments = setOf(configuration.postprocessingArguments.lastIndex)
+                                    anchorArgument = configuration.postprocessingArguments.lastIndex
+                                    tableVersion++
+                                },
+                                Modifier.size(24.dp),
+                            ) { _ ->
+                                Icon(AllIconsKeys.General.Add, Controller.tr("Add"), Modifier.size(16.dp))
                             }
-                        }
-                        CheckboxRow(
-                            Controller.tr("Embed Metadata"),
-                            configuration.embedMetadata,
-                            { checked -> update { it.copy(embedMetadata = checked) } },
-                        )
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Remove Source Data"),
-                                configuration.removeSourceData,
-                                { checked -> update { it.copy(removeSourceData = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr("Clear metadata fields containing identifying download information."),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Embed Thumbnails"),
-                                configuration.embedThumbnails,
-                                { checked -> update { it.copy(embedThumbnails = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr(
-                                    "If the file type does not support embedding, the thumbnail will be written to a separate image file.",
-                                ),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Crop Audio Thumbnails"),
-                                configuration.cropAudioThumbnails,
-                                { checked -> update { it.copy(cropAudioThumbnails = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr("Crop thumbnails of audio files to squares."),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        CheckboxRow(
-                            Controller.tr("Embed Chapters"),
-                            configuration.embedChapters,
-                            { checked -> update { it.copy(embedChapters = checked) } },
-                        )
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            CheckboxRow(
-                                Controller.tr("Embed Subtitles"),
-                                configuration.embedSubtitles,
-                                { checked -> update { it.copy(embedSubtitles = checked) } },
-                            )
-                            InfoText(
-                                Controller.tr(
-                                    "If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files.",
-                                ),
-                                Modifier.padding(start = 24.dp),
-                            )
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            ) {
-                                Text(labeled(Controller.tr("FFmpeg Threads")))
-                                TextField(threads, Modifier.width(100.dp))
-                            }
-                            InfoText(Controller.tr("Limit the number of threads used by ffmpeg."))
-                        }
-                        OutlinedButton({ section = Section.Arguments }) {
-                            Text(Controller.tr("Manage Arguments…"))
-                        }
-                    }
-
-                    Section.Arguments -> {
-                        var selected by remember { mutableIntStateOf(-1) }
-                        InfoText(
-                            Controller.tr("Arguments will be shown for selection in the download discovery dialog."),
-                        )
-                        Column(Modifier.fillMaxWidth().height(160.dp).verticalScroll(rememberScrollState())) {
-                            configuration.postprocessingArguments.forEachIndexed { index, argument ->
-                                SimpleListItem(
-                                    argument.name,
-                                    selected == index,
-                                    modifier = Modifier.fillMaxWidth().clickable { selected = index },
-                                )
-                            }
-                        }
-                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            OutlinedButton({
-                                update { current ->
-                                    current.copy(
-                                        postprocessingArguments = current.postprocessingArguments +
-                                            PostprocessingArgument(
-                                                generateSequence(1) { it + 1 }
-                                                    .map { it.toString() }
-                                                    .first { name ->
-                                                        current.postprocessingArguments.none { it.name == name }
-                                                    },
-                                            ),
-                                    )
-                                }
-                                selected = configuration.postprocessingArguments.lastIndex
-                            }) {
-                                Text(Controller.tr("Add"))
-                            }
-                            OutlinedButton(
+                            IconButton(
                                 {
                                     update {
                                         it.copy(
                                             postprocessingArguments = it.postprocessingArguments
-                                                .filterIndexed { index, _ -> index != selected },
+                                                .filterIndexed { index, _ -> index !in selectedArguments },
                                         )
                                     }
-                                    selected = -1
+                                    selectedArguments = emptySet()
+                                    tableVersion++
                                 },
-                                enabled = selected in configuration.postprocessingArguments.indices,
-                            ) {
-                                Text(Controller.tr("Remove"))
+                                Modifier.size(24.dp),
+                                enabled = selectedArguments.isNotEmpty(),
+                            ) { _ ->
+                                Icon(AllIconsKeys.General.Remove, Controller.tr("Remove"), Modifier.size(16.dp))
                             }
                         }
-                        if (selected in configuration.postprocessingArguments.indices) {
-                            key(selected) {
-                                var nameTaken by remember { mutableStateOf(false) }
-                                val argument = configuration.postprocessingArguments[selected]
-                                val argumentName = rememberTextFieldState(argument.name)
-                                val argumentArgs = rememberTextFieldState(argument.args)
-                                val edit = { change: (PostprocessingArgument) -> PostprocessingArgument ->
-                                    update { current ->
-                                        current.copy(
-                                            postprocessingArguments = current.postprocessingArguments
-                                                .mapIndexed { index, item ->
-                                                    if (index == selected) change(item) else item
-                                                },
-                                        )
-                                    }
-                                }
-                                LaunchedEffect(argumentName) {
-                                    snapshotFlow { argumentName.text.toString() }.drop(1).collect { text ->
-                                        nameTaken = configuration.postprocessingArguments.withIndex()
-                                            .any { (index, item) -> index != selected && item.name == text }
-                                        if (!nameTaken && text.isNotBlank()) {
-                                            edit { it.copy(name = text) }
+                        Divider(Orientation.Horizontal, Modifier.fillMaxWidth())
+                        Row(
+                            Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            Text(Controller.tr("Name"), Modifier.weight(1.2f))
+                            Text(Controller.tr("Post Processor"), Modifier.weight(1.4f))
+                            Text(Controller.tr("Executable"), Modifier.weight(1f))
+                            Text(Controller.tr("Argument"), Modifier.weight(2f))
+                        }
+                        Divider(Orientation.Horizontal, Modifier.fillMaxWidth())
+                        Column(Modifier.fillMaxWidth().weight(1f).verticalScroll(rememberScrollState())) {
+                            key(tableVersion) {
+                                configuration.postprocessingArguments.forEachIndexed { index, argument ->
+                                    key(index) {
+                                        val nameState = rememberTextFieldState(argument.name)
+                                        val argsState = rememberTextFieldState(argument.args)
+                                        var nameTaken by remember { mutableStateOf(false) }
+                                        LaunchedEffect(nameState) {
+                                            snapshotFlow { nameState.text.toString() }.drop(1).collect { text ->
+                                                nameTaken = configuration.postprocessingArguments.withIndex()
+                                                    .any { (position, item) -> position != index && item.name == text }
+                                                if (!nameTaken && text.isNotBlank()) {
+                                                    edit(index) { it.copy(name = text) }
+                                                }
+                                            }
+                                        }
+                                        LaunchedEffect(argsState) {
+                                            snapshotFlow { argsState.text.toString() }.drop(1).collect { text ->
+                                                edit(index) { it.copy(args = text) }
+                                            }
+                                        }
+                                        Row(
+                                            Modifier.fillMaxWidth()
+                                                .background(
+                                                    if (index in selectedArguments) {
+                                                        JewelTheme.colorPalette.rawMap.getValue("layer-1-bg")
+                                                    } else {
+                                                        Color.Transparent
+                                                    },
+                                                )
+                                                .onFocusChanged {
+                                                    if (it.hasFocus && index !in selectedArguments) {
+                                                        selectedArguments = setOf(index)
+                                                        anchorArgument = index
+                                                    }
+                                                }
+                                                .clickable {
+                                                    val modifiers = windowInfo.keyboardModifiers
+                                                    selectedArguments = select(
+                                                        selectedArguments,
+                                                        anchorArgument,
+                                                        index,
+                                                        configuration.postprocessingArguments.indices.toList(),
+                                                        modifiers.isCtrlPressed || modifiers.isMetaPressed,
+                                                        modifiers.isShiftPressed,
+                                                    )
+                                                    if (!modifiers.isShiftPressed) {
+                                                        anchorArgument = index
+                                                    }
+                                                }
+                                                .padding(horizontal = 8.dp, vertical = 2.dp),
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                        ) {
+                                            TextField(
+                                                nameState,
+                                                Modifier.weight(1.2f),
+                                                outline = if (nameTaken) Outline.Error else Outline.None,
+                                            )
+                                            ListComboBox(
+                                                steps,
+                                                argument.step,
+                                                { value -> edit(index) { it.copy(step = value) } },
+                                                Modifier.weight(1.4f),
+                                            )
+                                            ListComboBox(
+                                                executables,
+                                                argument.executable,
+                                                { value -> edit(index) { it.copy(executable = value) } },
+                                                Modifier.weight(1f),
+                                            )
+                                            TextField(argsState, Modifier.weight(2f))
                                         }
                                     }
                                 }
-                                LaunchedEffect(argumentArgs) {
-                                    snapshotFlow { argumentArgs.text.toString() }.drop(1).collect { text ->
-                                        edit { it.copy(args = text) }
-                                    }
-                                }
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                ) {
-                                    Text(labeled(Controller.tr("Name")))
-                                    TextField(argumentName, Modifier.width(320.dp))
-                                }
-                                if (nameTaken) {
-                                    InfoText(Controller.tr("An argument with this name already exists."))
-                                }
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                ) {
-                                    Text(labeled(Controller.tr("Post Processor")))
-                                    ListComboBox(
-                                        listOf(
-                                            Controller.tr("None"),
-                                            Controller.tr("Merger"),
-                                            Controller.tr("Modify Chapters"),
-                                            Controller.tr("Split Chapters"),
-                                            Controller.tr("Extract Audio"),
-                                            Controller.tr("Video Remuxer"),
-                                            Controller.tr("Video Converter"),
-                                            Controller.tr("Metadata"),
-                                            Controller.tr("Embed Subtitle"),
-                                            Controller.tr("Embed Thumbnail"),
-                                            Controller.tr("Subtitles Converter"),
-                                            Controller.tr("Thumbnails Converter"),
-                                            Controller.tr("Fixup Stretched"),
-                                            Controller.tr("Fixup M4a"),
-                                            Controller.tr("Fixup M3u8"),
-                                            Controller.tr("Fixup Timestamp"),
-                                            Controller.tr("Fixup Duration"),
-                                        ),
-                                        argument.step,
-                                        { index -> edit { it.copy(step = index) } },
-                                        Modifier.width(220.dp),
-                                    )
-                                }
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                ) {
-                                    Text(labeled(Controller.tr("Executable")))
-                                    ListComboBox(
-                                        listOf(
-                                            Controller.tr("None"),
-                                            Controller.tr("AtomicParsley"),
-                                            Controller.tr("FFmpeg"),
-                                            Controller.tr("FFprobe"),
-                                        ),
-                                        argument.executable,
-                                        { index -> edit { it.copy(executable = index) } },
-                                        Modifier.width(220.dp),
-                                    )
-                                }
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                ) {
-                                    Text(labeled(Controller.tr("Args")))
-                                    TextField(argumentArgs, Modifier.width(320.dp))
-                                }
                             }
+                        }
+                    }
+                },
+            ),
+        )
+        val search = rememberSearchTextFieldState()
+        val query = search.searchText.trim()
+        val visible = Section.entries.filter { entry ->
+            query.isEmpty() || entry.title().contains(query, ignoreCase = true) ||
+                pages.getValue(entry).any { it.matches(query) }
+        }
+        val current = if (section in visible) section else visible.firstOrNull()
+        val rows = Section.entries.filter { it.parent == null }.flatMap { root ->
+            val children = Section.entries.filter { it.parent == root && it in visible }
+            when {
+                root !in visible && children.isEmpty() -> emptyList()
+                query.isNotEmpty() || root in expanded -> listOf(root) + children
+                else -> listOf(root)
+            }
+        }
+
+        MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))
+        TitleBar(Modifier.newFullscreenControls()) {}
+
+        val pageContent: @Composable ColumnScope.(Dp?) -> Unit = { tableHeight ->
+            if (current == null) {
+                Text(Controller.tr("Nothing found"))
+            } else {
+                Text(current.title(), fontWeight = FontWeight.Bold)
+                key(current) {
+                    pages.getValue(current).forEachIndexed { index, setting ->
+                        key(index) {
+                            SettingRow(
+                                setting,
+                                query,
+                                if (setting is Setting.Custom && setting.fill) {
+                                    if (tableHeight == null) Modifier.weight(1f) else Modifier.height(tableHeight)
+                                } else {
+                                    Modifier
+                                },
+                            )
                         }
                     }
                 }
             }
         }
+
+        HorizontalSplitLayout(
+            first = {
+                Column(Modifier.fillMaxSize().padding(8.dp)) {
+                    SearchTextField(
+                        search,
+                        Modifier.fillMaxWidth()
+                            .padding(bottom = 6.dp)
+                            .height(32.dp)
+                            .background(
+                                JewelTheme.colorPalette.rawMap.getValue("tool-window-bg"),
+                                RoundedCornerShape(6.dp),
+                            )
+                            .border(
+                                1.dp,
+                                JewelTheme.colorPalette.rawMap.getValue("main-window-border"),
+                                RoundedCornerShape(6.dp),
+                            ),
+                        placeholder = { Text(Controller.tr("Search")) },
+                    )
+                    VerticallyScrollableContainer(Modifier.fillMaxSize()) {
+                        Column(Modifier.fillMaxWidth()) {
+                            rows.forEach { entry ->
+                                SimpleListItem(
+                                    selected = current == entry,
+                                    modifier = Modifier.fillMaxWidth().clickable { section = entry },
+                                ) {
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Spacer(Modifier.width(if (entry.parent != null) 16.dp else 0.dp))
+                                        if (Section.entries.any { it.parent == entry }) {
+                                            Icon(
+                                                if (query.isNotEmpty() || entry in expanded) {
+                                                    AllIconsKeys.General.ChevronDown
+                                                } else {
+                                                    AllIconsKeys.General.ChevronRight
+                                                },
+                                                null,
+                                                Modifier.size(16.dp).clickable {
+                                                    expanded =
+                                                        if (entry in expanded) expanded - entry else expanded + entry
+                                                },
+                                            )
+                                        } else {
+                                            Spacer(Modifier.width(16.dp))
+                                        }
+                                        Icon(entry.icon, null, Modifier.size(16.dp))
+                                        Spacer(Modifier.width(6.dp))
+                                        Text(highlight(entry.title(), query))
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            second = {
+                BoxWithConstraints(Modifier.fillMaxSize()) {
+                    if (current == Section.Arguments) {
+                        Column(
+                            Modifier.fillMaxSize().padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(10.dp),
+                        ) {
+                            pageContent(null)
+                        }
+                    } else {
+                        VerticallyScrollableContainer(Modifier.fillMaxSize()) {
+                            Column(
+                                Modifier.fillMaxWidth().padding(16.dp),
+                                verticalArrangement = Arrangement.spacedBy(10.dp),
+                            ) {
+                                pageContent((this@BoxWithConstraints.maxHeight * 0.45f).coerceAtLeast(220.dp))
+                            }
+                        }
+                    }
+                }
+            },
+            modifier = Modifier.fillMaxSize().background(JewelTheme.colorPalette.rawMap.getValue("dialog-bg")),
+            firstPaneMinWidth = 170.dp,
+            secondPaneMinWidth = 420.dp,
+            state = rememberSplitLayoutState(0.26f),
+        )
     }
 }

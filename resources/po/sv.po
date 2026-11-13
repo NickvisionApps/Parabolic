@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 22:45-0500\n"
+"POT-Creation-Date: 2026-11-12 23:30-0500\n"
 "PO-Revision-Date: 2026-02-06 14:32+0000\n"
 "Last-Translator: micke <micke@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,9 +58,9 @@ msgid "Worst"
 msgstr "Sämst"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:445
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:744
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:774
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:621
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:768
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:787
 msgid "None"
 msgstr "Ingen"
 
@@ -91,450 +91,481 @@ msgstr "Historik"
 
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:87
 #: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/MainWindow.kt:89
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:95
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:426
 #, fuzzy
 msgid "Settings"
 msgstr "Inställningar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:58
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:86
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "Allmän"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:59
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:87
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "Nedladdningar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:60
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:88
 #, fuzzy
 msgctxt "Settings"
 msgid "Discovery"
 msgstr "Ansvarsfriskrivning"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:61
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:89
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:62
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:90
 #, fuzzy
 msgctxt "Settings"
 msgid "aria2"
 msgstr "aria2"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:63
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:91
 #, fuzzy
 msgctxt "Settings"
 msgid "History"
 msgstr "Historik"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:64
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:92
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"
 msgstr "Bearbetar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:65
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:93
 #, fuzzy
 msgid "Arguments"
 msgstr "Nya inloggningsuppgifter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:68
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:142
 #, c++-format
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:128
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:318
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:817
+msgid "Add"
+msgstr "Lägg till"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:329
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:833
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:334
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:844
+#, fuzzy
+msgid "Argument"
+msgstr "Nya inloggningsuppgifter"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:431
 msgid "Theme"
 msgstr "Tema"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:131
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:433
 msgctxt "Theme"
 msgid "Light"
 msgstr "Ljus"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:132
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:434
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Mörk"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:133
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:435
 msgctxt "Theme"
 msgid "System"
 msgstr "System"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:147
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:444
 #, fuzzy
 msgid "Translation Language"
 msgstr "Ljudspråk"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:149
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:445
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "System"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:159
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:452
+#, fuzzy
+msgid "Updates"
+msgstr "Uppdatera"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:454
 msgid "Automatically Check for Updates"
 msgstr "Sök automatiskt efter uppdateringar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:165
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:459
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "Sök efter uppdateringar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:170
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:462
 msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:196
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:467
 #, fuzzy
 msgid "Maximum Active Downloads"
 msgstr "Max antal aktiva nedladdningar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:200
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:473
 msgid "Overwrite Existing Files"
 msgstr "Skriv över existerande filer"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:205
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:478
 msgid "Prevent Sleep During Downloads"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:213
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:482
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:569
+#, fuzzy
+msgid "Advanced"
+msgstr "Avancerade inställningar"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:483
 #, fuzzy
 msgid "Extra yt-dlp Download Arguments"
 msgstr "Ladda ner igen"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:226
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:491
 #, fuzzy
 msgid "Show Auto-Generated Subtitles"
 msgstr "Inkludera automatiskt genererade undertexter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:232
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:496
 #, fuzzy
 msgid "Include Media Id in Title"
 msgstr "Inkludera media-ID i titeln efter validering"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:237
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:499
 msgid "Add the media entry's yt-dlp id to its default title."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:243
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:502
 msgid "Show Super Resolution Formats"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:249
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:506
 msgid ""
 "Super resolutions are resolutions that have been enhanced with artificial "
 "intelligence."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:256
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:510
 msgid "Limit Filename Characters"
 msgstr "Begränsa tecken för filnamn"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:261
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:513
 #, fuzzy
 msgid "Restrict filename characters to those supported only by Windows."
 msgstr "Begränsar tecken i filnamn till endast de som stöds av Windows."
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:270
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:515
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:517
 #, fuzzy
 msgid "Preferred Audio Codec"
 msgstr "Föredragen videocodec"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:273
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:298
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:321
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:342
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:519
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:534
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:547
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:560
 msgid "Any"
 msgstr "Någon"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:274
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:520
 msgid "FLAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:275
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:521
 msgid "WAV"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:276
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:522
 msgid "Opus"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:277
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:523
 msgid "AAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:278
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:524
 msgid "MP4A"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:279
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:525
 msgid "MP3"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:287
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:529
 msgid "Prefer this codec when parsing audio formats to show for download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:295
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:532
 msgid "Preferred Video Codec"
 msgstr "Föredragen videocodec"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:299
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:535
 msgid "H.265"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:300
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:536
 msgid "VP9"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:301
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:537
 msgid "AV1"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:302
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:538
 msgid "H.264"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:310
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:542
 msgid "Prefer this codec when parsing video formats to show for download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:318
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:545
 msgid "Preferred Subtitle Format"
 msgstr "Föredraget textningsformat"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:322
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:548
 msgid "VTT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:323
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:549
 msgid "SRT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:324
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:550
 msgid "ASS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:325
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:551
 msgid "LRC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:332
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:555
 msgid "Prefer this subtitle file format for download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:339
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:558
 #, fuzzy
 msgid "Preferred Frame Rate"
 msgstr "Föredraget textningsformat"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:343
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:561
 msgid "24 FPS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:344
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:562
 msgid "30 FPS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:345
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:563
 msgid "60 FPS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:354
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:567
 msgid "Prefer this frame rate when parsing video formats to show for download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:362
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:571
 #, fuzzy
 msgid "Extra yt-dlp Discovery Arguments"
 msgstr "Efterbearbetning av trådar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:384
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:582
 #, fuzzy
 msgid "Use Part Files"
 msgstr "Använd batchfil"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:390
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:585
 msgid ""
 "Download media in separate .part files instead of directly into the output "
 "file."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:397
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:588
 msgid "Use SponsorBlock for YouTube"
 msgstr "Använd SponsorBlock för YouTube"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:402
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:591
 msgid "Try to remove sponsored segments from videos."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:408
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:594
 msgid "Translate Metadata and Chapters"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:414
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:598
 msgid ""
 "Automatically translate embedded metadata and chapters using the app's set "
 "language on supported sites and media."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:420
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:602
 msgid "Limit Download Speed"
 msgstr "Begränsa nedladdningshastigheten"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:428
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:607
 msgid "Speed Limit (KiB/s)"
 msgstr "Hastighetsgräns (KiB/s)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:435
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:614
 msgid "Proxy URL"
 msgstr "Proxy URL"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:442
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:619
 #, fuzzy
 msgid "Cookies Browser"
 msgstr "Cookies från webbläsaren"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:446
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:622
 msgid "Brave"
 msgstr "Brave"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:447
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:623
 msgid "Chrome"
 msgstr "Chrome"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:448
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:624
 msgid "Chromium"
 msgstr "Chromium"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:449
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:625
 msgid "Edge"
 msgstr "Edge"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:450
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:626
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:451
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:627
 msgid "Opera"
 msgstr "Opera"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:452
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:628
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:453
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:629
 msgid "Whale"
 msgstr "Whale"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:464
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:472
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:634
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:649
 #, fuzzy
 msgid "Cookies File"
 msgstr "Cookies-fil"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:479
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:656
 msgid "Browse…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:485
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:662
 #, fuzzy
 msgid "Clear"
 msgstr "Rensa"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:510
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:669
 #, fuzzy
 msgid "Use aria2"
 msgstr "Använd aria2"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:516
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:673
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
 "dlp's native downloader."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:521
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:676
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:526
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:680
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "Max anslutningar per server (-x)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:533
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:687
 #, fuzzy
 msgid "Minimum Split Size (MiB)"
 msgstr "Minsta splitstorlek (-k)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:543
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:696
 #, fuzzy
 msgid "Keep Download History For"
 msgstr "Längd på nedladdningshistoriken"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:546
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:698
 msgid "Never"
 msgstr "Aldrig"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:547
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:699
 #, fuzzy
 msgid "1 Day"
 msgstr "En dag"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:548
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:700
 #, fuzzy
 msgid "1 Week"
 msgstr "En vecka"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:549
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:701
 #, fuzzy
 msgid "1 Month"
 msgstr "En månad"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:550
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:702
 #, fuzzy
 msgid "3 Months"
 msgstr "En månad"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:551
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:703
 #, fuzzy
 msgid "6 Months"
 msgstr "En månad"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:552
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:704
 msgid "1 Year"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:553
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:705
 msgid "Forever"
 msgstr "För alltid"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:578
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:713
 msgid "Embed Metadata"
 msgstr "Bädda in metadata"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:584
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:718
 msgid "Remove Source Data"
 msgstr "Ta bort källinformation"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:589
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:721
 #, fuzzy
 msgid "Clear metadata fields containing identifying download information."
 msgstr ""
 "Om aktiverat kommer Parabolic att rensa metadatafält som innehåller "
 "identifierande nedladdningsinformation."
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:595
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:725
 msgid "Embed Thumbnails"
 msgstr "Bädda in tumnaglar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:601
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:729
 #, fuzzy
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
@@ -543,26 +574,26 @@ msgstr ""
 "Om filtypen inte stöder inbäddning skrivs miniatyrbilden till en separat "
 "bildfil."
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:608
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:733
 msgid "Crop Audio Thumbnails"
 msgstr "Beskär ljudminiatyrbilder"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:613
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:736
 #, fuzzy
 msgid "Crop thumbnails of audio files to squares."
 msgstr ""
 "Om aktiverat kommer Parabolic att beskära miniatyrbilderna av ljudfiler till "
 "rutor."
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:618
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:740
 msgid "Embed Chapters"
 msgstr "Bädda in kapitel"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:624
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:745
 msgid "Embed Subtitles"
 msgstr "Bädda in undertexter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:630
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:749
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
@@ -571,140 +602,135 @@ msgstr ""
 "Om det är inaktiverad eller om inbäddning inte stöds, kommer nedladdade "
 "undertexter att sparas i en separat fil."
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:640
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:753
 #, fuzzy
 msgid "FFmpeg Threads"
 msgstr "FFmpeg Argument"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:643
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:757
 msgid "Limit the number of threads used by ffmpeg."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:646
-#, fuzzy
-msgid "Manage Arguments…"
-msgstr "Nya inloggningsuppgifter"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:653
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:763
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:680
-msgid "Add"
-msgstr "Lägg till"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:694
-msgid "Remove"
-msgstr ""
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:731
-msgid "Name"
-msgstr "Namn"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:735
-#, fuzzy
-msgid "An argument with this name already exists."
-msgstr "Inloggningsuppgifter med detta namn finns redan."
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:741
-#, fuzzy
-msgid "Post Processor"
-msgstr "Bearbetar"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:745
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:769
 msgid "Merger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:746
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:770
 #, fuzzy
 msgid "Modify Chapters"
 msgstr "Bädda in kapitel"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:747
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:771
 #, fuzzy
 msgid "Split Chapters"
 msgstr "Dela video efter kapitel"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:748
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:772
 msgid "Extract Audio"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:749
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:773
 #, fuzzy
 msgid "Video Remuxer"
 msgstr "Video (Generisk)"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:750
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:774
 #, fuzzy
 msgid "Video Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:751
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:775
 #, fuzzy
 msgid "Metadata"
 msgstr "Bädda in metadata"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:752
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:776
 #, fuzzy
 msgid "Embed Subtitle"
 msgstr "Bädda in undertexter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:753
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:777
 #, fuzzy
 msgid "Embed Thumbnail"
 msgstr "Bädda in tumnaglar"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:754
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:778
 #, fuzzy
 msgid "Subtitles Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:755
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:779
 #, fuzzy
 msgid "Thumbnails Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:756
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:780
 msgid "Fixup Stretched"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:757
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:781
 msgid "Fixup M4a"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:758
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:782
 msgid "Fixup M3u8"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:759
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:783
 msgid "Fixup Timestamp"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:760
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:784
 msgid "Fixup Duration"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:771
-#, fuzzy
-msgid "Executable"
-msgstr "Aktiverad"
-
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:775
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:788
 msgid "AtomicParsley"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:776
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:789
 #, fuzzy
 msgid "FFmpeg"
 msgstr "FFmpeg Argument"
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:777
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:790
 msgid "FFprobe"
 msgstr ""
 
-#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:788
-msgid "Args"
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:841
+msgid "Name"
+msgstr "Namn"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:842
+#, fuzzy
+msgid "Post Processor"
+msgstr "Bearbetar"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:843
+#, fuzzy
+msgid "Executable"
+msgstr "Aktiverad"
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:949
+msgid "Nothing found"
 msgstr ""
+
+#: org.nickvision.tubeconverter.ui/src/main/kotlin/org/nickvision/tubeconverter/ui/SettingsWindow.kt:987
+#, fuzzy
+msgid "Search"
+msgstr "Sök..."
+
+#, fuzzy
+#~ msgid "Manage Arguments…"
+#~ msgstr "Nya inloggningsuppgifter"
+
+#, fuzzy
+#~ msgid "An argument with this name already exists."
+#~ msgstr "Inloggningsuppgifter med detta namn finns redan."
 
 #, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
@@ -905,10 +931,6 @@ msgstr ""
 #~ msgstr "Avmarkera alla"
 
 #, fuzzy
-#~ msgid "Advanced"
-#~ msgstr "Avancerade inställningar"
-
-#, fuzzy
 #~ msgid "Options"
 #~ msgstr "Avancerade inställningar"
 
@@ -983,9 +1005,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Loading"
 #~ msgstr "Laddar ned"
-
-#~ msgid "Preferences"
-#~ msgstr "Inställningar"
 
 #~ msgid "Keyboard Shortcuts"
 #~ msgstr "Tangentbordsgenvägar"
@@ -1091,10 +1110,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Efterbearbetning av trådar"
-
-#, fuzzy
-#~ msgid "Argument"
-#~ msgstr "Nya inloggningsuppgifter"
 
 #~ msgctxt "Shortcut"
 #~ msgid "Application"
@@ -1525,10 +1540,6 @@ msgstr ""
 #~ msgid "Password Required"
 #~ msgstr "Lösenord"
 
-#, fuzzy
-#~ msgid "Search"
-#~ msgstr "Sök..."
-
 #~ msgid "Home"
 #~ msgstr "Hem"
 
@@ -1649,10 +1660,6 @@ msgstr ""
 
 #~ msgid "Add Credential"
 #~ msgstr "Lägg till inloggningsuppgifter"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "Uppdatera"
 
 #, fuzzy
 #~ msgid "Update Available"
