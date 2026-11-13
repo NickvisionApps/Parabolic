@@ -16,39 +16,43 @@ import org.jetbrains.jewel.intui.window.styling.lightWithLightHeader
 import org.jetbrains.jewel.ui.ComponentStyling
 import org.jetbrains.jewel.window.styling.TitleBarColors
 import org.jetbrains.jewel.window.styling.TitleBarStyle
+import java.io.File
 
-fun main() = application(exitProcessOnExit = false) {
-    val dark = isSystemInDarkTheme()
-    val textStyle = JewelTheme.createDefaultTextStyle()
-    val editorStyle = JewelTheme.createEditorTextStyle()
+fun main() {
+    Controller.init(File(checkNotNull(System.getProperty("compose.application.resources.dir")), "locale").path)
+    application(exitProcessOnExit = false) {
+        val dark = isSystemInDarkTheme()
+        val textStyle = JewelTheme.createDefaultTextStyle()
+        val editorStyle = JewelTheme.createEditorTextStyle()
 
-    IntUiTheme(
-        theme = if (dark) {
-            JewelTheme.darkThemeDefinition(defaultTextStyle = textStyle, editorTextStyle = editorStyle)
-        } else {
-            JewelTheme.lightThemeDefinition(defaultTextStyle = textStyle, editorTextStyle = editorStyle)
-        },
-        styling = ComponentStyling.default().decoratedWindow(
-            titleBarStyle = if (dark) {
-                TitleBarStyle.dark(
-                    colors = TitleBarColors.dark(
-                        backgroundColor = Color.Transparent,
-                        inactiveBackground = Color.Transparent,
-                        borderColor = Color.Transparent,
-                    ),
-                )
+        IntUiTheme(
+            theme = if (dark) {
+                JewelTheme.darkThemeDefinition(defaultTextStyle = textStyle, editorTextStyle = editorStyle)
             } else {
-                val clear = Color.White.copy(alpha = 0f)
-                TitleBarStyle.lightWithLightHeader(
-                    colors = TitleBarColors.lightWithLightHeader(
-                        backgroundColor = clear,
-                        inactiveBackground = clear,
-                        borderColor = clear,
-                    ),
-                )
+                JewelTheme.lightThemeDefinition(defaultTextStyle = textStyle, editorTextStyle = editorStyle)
             },
-        ),
-    ) {
-        MainWindow(onClose = ::exitApplication)
+            styling = ComponentStyling.default().decoratedWindow(
+                titleBarStyle = if (dark) {
+                    TitleBarStyle.dark(
+                        colors = TitleBarColors.dark(
+                            backgroundColor = Color.Transparent,
+                            inactiveBackground = Color.Transparent,
+                            borderColor = Color.Transparent,
+                        ),
+                    )
+                } else {
+                    val clear = Color.White.copy(alpha = 0f)
+                    TitleBarStyle.lightWithLightHeader(
+                        colors = TitleBarColors.lightWithLightHeader(
+                            backgroundColor = clear,
+                            inactiveBackground = clear,
+                            borderColor = clear,
+                        ),
+                    )
+                },
+            ),
+        ) {
+            MainWindow(onClose = ::exitApplication)
+        }
     }
 }

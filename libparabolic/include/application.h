@@ -1,6 +1,7 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include <filesystem>
 #include <memory>
 #include <semver.hpp>
 #include <string>
@@ -67,6 +68,7 @@ namespace parabolic::application
         [[nodiscard]] const Product& product() const;
         [[nodiscard]] const translation::Translator& translator() const;
         [[nodiscard]] const update::Updater& updater() const;
+        static void change_locale_directory(const std::filesystem::path& path);
         State& operator=(const State&) = delete;
         State& operator=(State&&) = delete;
 

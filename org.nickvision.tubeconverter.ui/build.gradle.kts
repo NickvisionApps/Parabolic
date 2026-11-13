@@ -44,9 +44,13 @@ compose.desktop {
         mainClass = "org.nickvision.tubeconverter.ui.MainKt"
         javaHome = javaToolchains.launcherFor(java.toolchain).get()
             .metadata.installationPath.asFile.absolutePath
-        jvmArgs += listOf("-Dskiko.rendering.macos.waitForPreviousFrameVsyncOnRedrawImmediately=false")
+        jvmArgs += listOf(
+            "--enable-native-access=ALL-UNNAMED",
+            "-Dskiko.rendering.macos.waitForPreviousFrameVsyncOnRedrawImmediately=false",
+        )
 
         nativeDistributions {
+            appResourcesRootDir = layout.buildDirectory.dir("app-resources")
             includeAllModules = true
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Parabolic"

@@ -2,7 +2,7 @@ if (WIN32)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif ()
 
-add_library("lib${SHORT_NAME}"
+add_library("lib${SHORT_NAME}" SHARED
     "include/application.h"
     "include/aria2.h"
     "include/audio.h"
@@ -25,6 +25,7 @@ add_library("lib${SHORT_NAME}"
     "include/subtitle.h"
     "include/thumbnail.h"
     "include/translation.h"
+    "include/ui.h"
     "include/update.h"
     "include/url.h"
     "include/video.h"
@@ -51,6 +52,7 @@ add_library("lib${SHORT_NAME}"
     "src/subtitle.cpp"
     "src/thumbnail.cpp"
     "src/translation.cpp"
+    "src/ui.cpp"
     "src/update.cpp"
     "src/url.cpp"
     "src/video.cpp"

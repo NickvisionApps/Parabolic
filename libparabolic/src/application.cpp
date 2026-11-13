@@ -1,5 +1,6 @@
 #include "application.h"
 #include <curl/curl.h>
+#include <filesystem>
 #include <format>
 #include <memory>
 #include <semver.hpp>
@@ -234,5 +235,10 @@ namespace parabolic::application
     {
         m_updater->set_options(m_configuration->update_options());
         return *m_updater;
+    }
+
+    void State::change_locale_directory(const std::filesystem::path& path)
+    {
+        instance().m_translator = std::make_unique<translation::Translator>(instance().m_product->short_name(), path);
     }
 }
