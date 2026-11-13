@@ -154,6 +154,7 @@ fun MainWindow(onClose: () -> Unit) {
                 resizable = false,
             ) {
                 MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))
+                LaunchedEffect(window) { window.toFront() }
                 TitleBar(Modifier.newFullscreenControls()) {}
                 Column(
                     Modifier.fillMaxSize().padding(20.dp),

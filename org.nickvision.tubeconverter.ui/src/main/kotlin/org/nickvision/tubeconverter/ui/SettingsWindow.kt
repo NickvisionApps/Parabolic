@@ -973,6 +973,7 @@ fun SettingsWindow(onClose: () -> Unit) {
         }
         val current = if (section in visible) section else visible.firstOrNull()
 
+        LaunchedEffect(window) { window.toFront() }
         MatchWindowBackground(window, JewelTheme.colorPalette.rawMap.getValue("dialog-bg"))
         TitleBar(Modifier.newFullscreenControls()) {}
 
