@@ -30,6 +30,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -94,8 +95,6 @@ private enum class Section(val title: () -> String, val icon: IconKey, val paren
 }
 
 private sealed class Setting(val label: String, val description: String?, val enabled: Boolean) {
-    class Header(label: String) : Setting(label, null, true)
-
     class Check(
         label: String,
         val checked: Boolean,
@@ -160,15 +159,6 @@ private fun SettingRow(setting: Setting, query: String, modifier: Modifier = Mod
     val textColor = if (setting.enabled) Color.Unspecified else JewelTheme.globalColors.text.disabled
     Column(modifier, verticalArrangement = Arrangement.spacedBy(2.dp)) {
         when (setting) {
-            is Setting.Header -> Row(
-                Modifier.fillMaxWidth().padding(top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                Text(highlight(setting.label, query))
-                Divider(Orientation.Horizontal, Modifier.weight(1f))
-            }
-
             is Setting.Check -> Row(
                 Modifier.clickable(enabled = setting.enabled) { setting.onChange(!setting.checked) },
                 verticalAlignment = Alignment.CenterVertically,
@@ -204,7 +194,25 @@ private fun SettingRow(setting: Setting, query: String, modifier: Modifier = Mod
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(highlight(labeled(setting.label), query), color = textColor)
-                    TextField(state, Modifier.width(100.dp), enabled = setting.enabled)
+                    TextField(
+                        state,
+                        Modifier.width(100.dp).onFocusChanged {
+                            if (!it.isFocused) {
+                                val clamped = (state.text.toString().toIntOrNull() ?: setting.value)
+                                    .coerceIn(setting.range)
+                                    .toString()
+                                state.edit { replace(0, length, clamped) }
+                            }
+                        },
+                        enabled = setting.enabled,
+                        inputTransformation = {
+                            if (!asCharSequence().all(Char::isDigit) ||
+                                length > setting.range.last.toString().length
+                            ) {
+                                revertAllChanges()
+                            }
+                        },
+                    )
                 }
             }
 
@@ -229,7 +237,7 @@ private fun SettingRow(setting: Setting, query: String, modifier: Modifier = Mod
         setting.description?.let {
             InfoText(
                 highlight(it, query),
-                Modifier.padding(start = if (setting is Setting.Check) 24.dp else 0.dp),
+                Modifier.padding(start = if (setting is Setting.Check) 28.dp else 0.dp),
                 color = with(JewelTheme.globalColors.text) { if (setting.enabled) info else disabled },
                 style = JewelTheme.typography.small,
             )
@@ -449,7 +457,6 @@ fun SettingsWindow(onClose: () -> Unit) {
                         Controller.refreshLanguage()
                     },
                 ),
-                Setting.Header(Controller.tr("Updates")),
                 Setting.Check(
                     Controller.tr("Automatically Check for Updates"),
                     configuration.automaticallyCheckForUpdates,
@@ -479,7 +486,6 @@ fun SettingsWindow(onClose: () -> Unit) {
                     configuration.preventSuspend,
                     { checked -> update { it.copy(preventSuspend = checked) } },
                 ),
-                Setting.Header(Controller.tr("Advanced")),
                 Setting.Custom(Controller.tr("Extra yt-dlp Download Arguments"), labeled = true, fill = true) { label ->
                     ArgumentsTable(label, configuration.ytdlpDownloadArgs) { value ->
                         update { it.copy(ytdlpDownloadArgs = value) }
@@ -512,7 +518,6 @@ fun SettingsWindow(onClose: () -> Unit) {
                     { checked -> update { it.copy(limitCharacters = checked) } },
                     Controller.tr("Restrict filename characters to those supported only by Windows."),
                 ),
-                Setting.Header(Controller.tr("Preferences")),
                 Setting.Combo(
                     Controller.tr("Preferred Audio Codec"),
                     listOf(
@@ -566,7 +571,6 @@ fun SettingsWindow(onClose: () -> Unit) {
                     { index -> update { it.copy(preferredFrameRate = index) } },
                     Controller.tr("Prefer this frame rate when parsing video formats to show for download."),
                 ),
-                Setting.Header(Controller.tr("Advanced")),
                 Setting.Custom(
                     Controller.tr("Extra yt-dlp Discovery Arguments"),
                     labeled = true,
@@ -808,8 +812,8 @@ fun SettingsWindow(onClose: () -> Unit) {
                                                 ),
                                         )
                                     }
-                                    selectedArguments = setOf(configuration.postprocessingArguments.lastIndex)
-                                    anchorArgument = configuration.postprocessingArguments.lastIndex
+                                    selectedArguments = setOf(configuration.postprocessingArguments.size)
+                                    anchorArgument = configuration.postprocessingArguments.size
                                     tableVersion++
                                 },
                                 Modifier.size(24.dp),
@@ -851,9 +855,10 @@ fun SettingsWindow(onClose: () -> Unit) {
                                         val nameState = rememberTextFieldState(argument.name)
                                         val argsState = rememberTextFieldState(argument.args)
                                         var nameTaken by remember { mutableStateOf(false) }
+                                        val latest by rememberUpdatedState(configuration.postprocessingArguments)
                                         LaunchedEffect(nameState) {
                                             snapshotFlow { nameState.text.toString() }.drop(1).collect { text ->
-                                                nameTaken = configuration.postprocessingArguments.withIndex()
+                                                nameTaken = latest.withIndex()
                                                     .any { (position, item) -> position != index && item.name == text }
                                                 if (!nameTaken && text.isNotBlank()) {
                                                     edit(index) { it.copy(name = text) }
@@ -974,7 +979,6 @@ fun SettingsWindow(onClose: () -> Unit) {
                         search,
                         Modifier.fillMaxWidth()
                             .padding(bottom = 6.dp)
-                            .height(32.dp)
                             .background(
                                 JewelTheme.colorPalette.rawMap.getValue("tool-window-bg"),
                                 RoundedCornerShape(6.dp),
