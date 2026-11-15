@@ -320,20 +320,20 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
             if (_configurationService.CropAudioThumbnails && downloadOptions.FileType.IsAudio)
             {
                 arguments.Add("--exec");
-                arguments.Add($"before_dl:\"{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"}\" -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath)q.tmp.jpg");
+                arguments.Add($"before_dl:\"{Desktop.System.Environment.FindDependency("ffmpeg") ?? "ffmpeg"}\" -y -i %(thumbnails.-1.filepath)q -vf crop=\"'if(gt(ih,iw),iw,ih)':'if(gt(iw,ih),ih,iw)'\" %(thumbnails.-1.filepath&{{}}.tmp.jpg|)q");
                 if (OperatingSystem.IsWindows())
                 {
                     arguments.Add("--exec");
                     arguments.Add("before_dl:del %(thumbnails.-1.filepath)q");
                     arguments.Add("--exec");
-                    arguments.Add("before_dl:move %(thumbnails.-1.filepath)q.tmp.jpg %(thumbnails.-1.filepath)q");
+                    arguments.Add("before_dl:move %(thumbnails.-1.filepath&{}.tmp.jpg|)q %(thumbnails.-1.filepath)q");
                 }
                 else
                 {
                     arguments.Add("--exec");
                     arguments.Add("before_dl:rm %(thumbnails.-1.filepath)q");
                     arguments.Add("--exec");
-                    arguments.Add("before_dl:mv %(thumbnails.-1.filepath)q.tmp.jpg %(thumbnails.-1.filepath)q");
+                    arguments.Add("before_dl:mv %(thumbnails.-1.filepath&{}.tmp.jpg|)q %(thumbnails.-1.filepath)q");
                 }
             }
         }
