@@ -473,9 +473,12 @@ void TitleBar::paintEvent(QPaintEvent*) {
   const auto& theme = _impl->theme();
   const auto& renderer = *_impl->renderer;
 
-  // Background.
+  // Background. It starts after the leading area, or after the window controls when the content is displayed over the
+  // leading area, so that the content hides what is under the title bar.
+  const auto backgroundLeft =
+    _impl->contentAfterLeading ? _impl->leadingWidth : std::min(_impl->leadingWidth, _impl->contentArea().left());
   painter.save();
-  painter.setClipRect(QRect(_impl->leadingWidth, 0, std::max(0, width() - _impl->leadingWidth), height()));
+  painter.setClipRect(QRect(backgroundLeft, 0, std::max(0, width() - backgroundLeft), height()));
   renderer.paintBackground(painter, rect(), theme, _impl->active, _impl->maximized);
   painter.restore();
 
