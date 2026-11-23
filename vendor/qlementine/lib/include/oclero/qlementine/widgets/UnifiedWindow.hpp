@@ -6,6 +6,7 @@
 #include <oclero/qlementine/qlementine_export.h>
 #include <oclero/qlementine/widgets/TitleBar.hpp>
 
+#include <QStatusBar>
 #include <QWidget>
 
 #include <memory>
@@ -26,6 +27,11 @@ public:
   /// The window takes ownership of the new widget and releases the previous one without deleting it.
   QWidget* centralWidget() const;
   void setCentralWidget(QWidget* widget);
+
+  /// A status bar displayed below the central widget, next to the leading widget.
+  /// The window takes ownership of the new status bar and releases the previous one without deleting it.
+  QStatusBar* statusBar() const;
+  void setStatusBar(QStatusBar* statusBar);
 
   /// A widget, such as a sidebar, displayed at the left of the window over the full height, including the title bar
   /// area. Its width is its size hint, limited by its minimum and maximum widths, and at
