@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-23 23:33-0400\n"
-"PO-Revision-Date: 2026-02-27 16:32+0000\n"
-"Last-Translator: sotohi <c6h4ohcooc6h5@gmail.com>\n"
+"PO-Revision-Date: 2026-07-05 18:10+0000\n"
+"Last-Translator: Arita Hayato <bb38126002@ms.nagasaki-u.ac.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:27
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:112
@@ -74,9 +74,8 @@ msgstr "パスワード"
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:80
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:78
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:79
-#, fuzzy
 msgid "Download Immediately as Video"
-msgstr "今すぐダウンロード"
+msgstr "動画形式で今すぐダウンロード"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:81
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:86
@@ -90,9 +89,8 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:85
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:80
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:81
-#, fuzzy
 msgid "Download Immediately as Audio"
-msgstr "今すぐダウンロード"
+msgstr "音楽形式で今すぐダウンロード"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/AddDownloadDialog.blp:94
 #: Nickvision.Parabolic.WinUI/Views/AddDownloadDialog.xaml.cs:171
@@ -530,7 +528,7 @@ msgstr "完了済"
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:160
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:117
 msgid "Failed"
-msgstr ""
+msgstr "失敗"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/MainWindow.blp:171
 msgid "Manage Download"
@@ -643,7 +641,7 @@ msgstr ""
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:126
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:65
 msgid "Include Super Resolution Formats"
-msgstr ""
+msgstr "超解像度を含める"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:127
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:66
@@ -690,9 +688,8 @@ msgstr "ダウンロード時にこの字幕ファイルフォーマットを優
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:166
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:78
-#, fuzzy
 msgid "Preferred Frame Rate"
-msgstr "優先する字幕のフォーマット"
+msgstr "優先するフレームレート"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:167
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:79
@@ -820,7 +817,7 @@ msgstr "コンバーター"
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:356
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:118
 msgid "Translate Metadata and Chapters"
-msgstr ""
+msgstr "メタデータとチャプターを翻訳する"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:357
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:119
@@ -828,6 +825,8 @@ msgid ""
 "Automatically translate embedded metadata and chapters to the app's language "
 "on supported sites and media"
 msgstr ""
+"サポートされているサイトやメディアで、埋め込まれたメタデータとチャプターを"
+"アプリの言語に自動的に翻訳します"
 
 #: Nickvision.Parabolic.GNOME/Blueprints/PreferencesDialog.blp:366
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:122
@@ -1405,9 +1404,9 @@ msgid "New yt-dlp update available: {0}"
 msgstr "yt-dlpの新しいアップデートが利用可能：{0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:176
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "New deno update available: {0}"
-msgstr "新しい {0} アップデートが利用可能：{1}"
+msgstr "新しいdenoアップデートが利用可能：{0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:186
 msgid "No update available"
@@ -1426,14 +1425,13 @@ msgid "An error occurred while clearing queued downloads"
 msgstr "待機中のダウンロードの消去中にエラーが発生しました"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:249
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Deno {0} installed successfully"
-msgstr "yt-dlp {0} が正常にインストールされました"
+msgstr "Deno{0} が正常にインストールされました"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:253
-#, fuzzy
 msgid "Unable to download and install the Deno update"
-msgstr "アップデートをダウンロードおよびインストールできませんでした"
+msgstr "denoアップデートをダウンロード、インストールできませんでした"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:282
 msgid "An error occurred while pausing the download"
@@ -1464,9 +1462,9 @@ msgid "An error occurred while stopping the download"
 msgstr "ダウンロードの停止中にエラーが発生しました"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:401
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "Starting {0} installer..."
-msgstr "ダウンロードを開始しています..."
+msgstr "インストーラーを起動しています... : {0}"
 
 #: Nickvision.Parabolic.Shared/Controllers/MainWindowController.cs:405
 msgid "Unable to download and install the update"
@@ -1540,7 +1538,7 @@ msgstr "Whale"
 #: Nickvision.Parabolic.Shared/Models/Format.cs:271
 #, csharp-format
 msgid "{0} FPS"
-msgstr ""
+msgstr "{0}FPS"
 
 #: Nickvision.Parabolic.Shared/Controllers/PreferencesViewController.cs:94
 msgid "Never"
@@ -1866,11 +1864,11 @@ msgstr "ディスカッション"
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:101
 #, csharp-format
 msgid "You are running a preview version of {0}"
-msgstr ""
+msgstr "あなたはプレビュー版の{0}を実行しています"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:102
 msgid "Thank you for testing the upcoming features and changes! ❤️"
-msgstr ""
+msgstr "今後リリース予定の機能や変更点をテストしていただき、ありがとうございます！❤️"
 
 #: Nickvision.Parabolic.WinUI/Views/MainWindow.xaml.cs:121
 msgid "Credential Required"
@@ -1942,7 +1940,7 @@ msgstr "ファイルからCookieを取得"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:96
 msgid "Upload a txt cookies file from unlisted browsers"
-msgstr ""
+msgstr "リストにないブラウザからtxt形式のcookieファイルをアップロードしてください"
 
 #: Nickvision.Parabolic.WinUI/Views/SettingsPage.xaml.cs:107
 msgid "Max Connections Per Server"
