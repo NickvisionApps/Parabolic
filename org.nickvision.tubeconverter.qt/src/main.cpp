@@ -1,7 +1,9 @@
 #include <QApplication>
+#include <QIcon>
 #include <QObject>
 #include <QStyleHints>
 #include <Qt>
+#include <oclero/qlementine/Common.hpp>
 #include <oclero/qlementine/icons/QlementineIcons.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
 #include <oclero/qlementine/style/Theme.hpp>
@@ -20,7 +22,10 @@ int main(int argc, char* argv[])
     QApplication::setOrganizationDomain("nickvision.org");
     QApplication::setDesktopFileName("org.nickvision.tubeconverter");
     oclero::qlementine::icons::initializeIconTheme();
+    QIcon::setThemeName("qlementine");
     oclero::qlementine::QlementineStyle* style{ new oclero::qlementine::QlementineStyle{ &application } };
+    style->setAutoIconColor(oclero::qlementine::AutoIconColor::TextColor);
+    style->setIconPathGetter(oclero::qlementine::icons::fromFreeDesktop);
     oclero::qlementine::ThemeManager* theme_manager{ new oclero::qlementine::ThemeManager{ style } };
     QApplication::setStyle(style);
     QObject::connect(style, &oclero::qlementine::QlementineStyle::themeChanged, style, [style]()
@@ -35,6 +40,7 @@ int main(int argc, char* argv[])
     theme_manager->loadDirectory(":/qlementine/resources/themes");
     theme_manager->setCurrentTheme(QApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark"
                                                                                                       : "Light");
+    theme_manager->setUseSystemAccentColor(true);
     parabolic::qt::views::MainWindow window;
     window.show();
     return QApplication::exec();
