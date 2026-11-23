@@ -74,10 +74,6 @@ public:
   static void setAutoIconColor(QWidget* widget, AutoIconColor autoIconColor);
   static AutoIconColor autoIconColor(const QWidget* widget);
 
-  /// Whether the border of a widget that draws one (such as a QStatusBar) is visible. Visible by default.
-  static void setBorderVisible(QWidget* widget, bool visible);
-  static bool borderVisible(const QWidget* widget);
-
   QPixmap getColorizedPixmap(
     const QPixmap& input, AutoIconColor autoIconColor, const QColor& fgcolor, const QColor& textColor) const;
 

@@ -48,10 +48,6 @@ public:
   QStatusBar* statusBar() const;
   void setStatusBar(QStatusBar* statusBar);
 
-  /// Whether the border at the top of the status bar is drawn. Hidden by default.
-  bool statusBarBorderVisible() const;
-  void setStatusBarBorderVisible(bool visible);
-
   /// A widget, such as a sidebar, displayed at the left of the window over the full height, including the title bar
   /// area. Its width is its size hint, limited by its minimum and maximum widths, and at
   /// least wide enough to contain the window controls displayed on the left. The title bar is displayed over it

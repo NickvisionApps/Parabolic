@@ -267,18 +267,6 @@ void NavigationSidebar::setExpandedWidth(int newWidth) {
   }
 }
 
-bool NavigationSidebar::borderVisible() const {
-  return _borderVisible;
-}
-
-void NavigationSidebar::setBorderVisible(bool visible) {
-  if (visible != _borderVisible) {
-    _borderVisible = visible;
-    update();
-    Q_EMIT borderVisibleChanged();
-  }
-}
-
 QWidget* NavigationSidebar::headerWidget() const {
   return _headerWidget;
 }
@@ -637,16 +625,7 @@ int NavigationSidebar::getItemMinimumHeight() const {
 }
 
 void NavigationSidebar::drawBackground(QPainter& p) const {
-  const auto* qlementineStyle = qobject_cast<const QlementineStyle*>(style());
-  const auto borderWidth = qlementineStyle ? qlementineStyle->theme().borderWidth : 1;
-  const auto& borderColor = qlementineStyle ? qlementineStyle->theme().borderColor : palette().color(QPalette::Mid);
-
-  // The border is on the side of the content.
   p.fillRect(rect(), AbstractItemListWidget::getBgColor());
-  if (_borderVisible) {
-    const auto top = contentsMargins().top();
-    p.fillRect(QRect{ width() - borderWidth, top, borderWidth, height() - top }, borderColor);
-  }
 }
 
 void NavigationSidebar::drawItemBackground(QPainter& p, const Item& item) const {

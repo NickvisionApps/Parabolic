@@ -37,6 +37,8 @@ struct CaptionButtonLayout {
 /// A title bar that is part of the window content (client-side decoration or extended content view).
 /// It hosts an optional content widget (menu bar, search field...), draws the caption buttons when the
 /// platform doesn't provide them, and tells the window which parts of it can be used to drag the window.
+class UnifiedWindow;
+
 class QLEMENTINE_EXPORT TitleBar : public QWidget {
   Q_OBJECT
 
@@ -88,10 +90,6 @@ public:
   bool contentAfterLeading() const;
   void setContentAfterLeading(bool after);
 
-  /// Whether the border at the bottom of the title bar is drawn. Visible by default.
-  bool borderVisible() const;
-  void setBorderVisible(bool visible);
-
   /// Marks a widget placed in the title bar as interactive (true) or as a part of the draggable area (false).
   /// By default, the content widget container, plain QWidget/QFrame containers and display-only widgets (QLabel,
   /// QProgressBar, QLCDNumber, IconWidget, StatusBadgeWidget, NotificationBadge) are draggable and every other
@@ -139,6 +137,13 @@ protected:
   void leaveEvent(QEvent* evt) override;
 
 private:
+  friend class UnifiedWindow;
+
+  /// The border at the bottom of the title bar. A UnifiedWindow hides it when its central widget is inset, as it has
+  /// its own border.
+  bool borderVisible() const;
+  void setBorderVisible(bool visible);
+
   struct Impl;
   std::unique_ptr<Impl> _impl;
 };

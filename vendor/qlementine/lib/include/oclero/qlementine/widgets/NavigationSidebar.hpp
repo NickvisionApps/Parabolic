@@ -22,7 +22,6 @@ class QLEMENTINE_EXPORT NavigationSidebar : public NavigationBar {
 
   Q_PROPERTY(bool compact READ compact WRITE setCompact NOTIFY compactChanged)
   Q_PROPERTY(int expandedWidth READ expandedWidth WRITE setExpandedWidth NOTIFY expandedWidthChanged)
-  Q_PROPERTY(bool borderVisible READ borderVisible WRITE setBorderVisible NOTIFY borderVisibleChanged)
 
 public:
   explicit NavigationSidebar(QWidget* parent = nullptr);
@@ -50,11 +49,6 @@ public:
   int expandedWidth() const;
   Q_SLOT void setExpandedWidth(int width);
 
-  /// Whether the border on the side of the content is drawn. Hidden by default. It starts under the top contents margin, so it stops at
-  /// the title bar when the sidebar is the leading widget of a UnifiedWindow.
-  bool borderVisible() const;
-  Q_SLOT void setBorderVisible(bool visible);
-
   QWidget* headerWidget() const;
   void setHeaderWidget(QWidget* widget);
 
@@ -64,7 +58,6 @@ public:
 Q_SIGNALS:
   void compactChanged();
   void expandedWidthChanged();
-  void borderVisibleChanged();
   void headerWidgetChanged();
   void footerWidgetChanged();
   void itemExpandedChanged(int index);
@@ -120,7 +113,6 @@ private:
   double _expansionProgress{ 0. };
   QScrollBar* _scrollBar{ nullptr };
   int _expandedWidth{ 0 };
-  bool _borderVisible{ false };
   int _scrollOffset{ 0 };
   QRect _viewportRect;
   QPointer<QWidget> _headerWidget;
