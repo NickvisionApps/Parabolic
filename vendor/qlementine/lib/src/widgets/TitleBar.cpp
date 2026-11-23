@@ -473,10 +473,12 @@ void TitleBar::paintEvent(QPaintEvent*) {
   const auto& theme = _impl->theme();
   const auto& renderer = *_impl->renderer;
 
-  // Background. It starts after the leading area, or after the window controls when the content is displayed over the
-  // leading area, so that the content hides what is under the title bar.
-  const auto backgroundLeft =
-    _impl->contentAfterLeading ? _impl->leadingWidth : std::min(_impl->leadingWidth, _impl->contentArea().left());
+  // Background. It starts after the leading area, or at the left edge when the content is displayed over the leading
+  // area, so that the whole row has the same background. A toolbar paints its own background, so the area under the
+  // window controls keeps the leading area background in that case.
+  const auto backgroundLeft = _impl->contentAfterLeading || qobject_cast<QToolBar*>(_impl->contentWidget.data())
+                                ? _impl->leadingWidth
+                                : 0;
   painter.save();
   painter.setClipRect(QRect(backgroundLeft, 0, std::max(0, width() - backgroundLeft), height()));
   renderer.paintBackground(painter, rect(), theme, _impl->active, _impl->maximized);

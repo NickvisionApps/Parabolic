@@ -75,7 +75,8 @@ public:
   /// Width of the area on the left that is covered by a widget placed under the title bar, such as a sidebar that
   /// extends up to the top of the window (see UnifiedWindow::setLeadingWidget()). The title bar doesn't paint its
   /// background there and its content starts after it, unless contentAfterLeading() is false: the background then
-  /// starts after the window controls and covers the leading area behind the content. Caption buttons and the drag area
+  /// covers the leading area too, so the whole row has the same background,
+  /// except with a QToolBar, which paints its own background. Caption buttons and the drag area
   /// still apply over it.
   int leadingWidth() const;
   void setLeadingWidth(int width);
