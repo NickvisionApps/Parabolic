@@ -1,0 +1,17 @@
+project("qlementine" LANGUAGES CXX VERSION 1.5.2.0 DESCRIPTION "Modern QStyle for desktop Qt applications.")
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_CXX_CLANG_TIDY "")
+set(CMAKE_SKIP_INSTALL_RULES ON)
+set(BUILD_SHARED_LIBS OFF)
+set(QLEMENTINE_BUILD_STATIC OFF)
+
+if(APPLE)
+    enable_language(OBJCXX)
+endif()
+
+add_subdirectory(lib EXCLUDE_FROM_ALL)
