@@ -28,7 +28,8 @@ public:
   QWidget* centralWidget() const;
   void setCentralWidget(QWidget* widget);
 
-  /// A status bar displayed below the central widget, next to the leading widget.
+  /// A status bar displayed at the bottom of the window, across its whole width, below the central widget and the
+  /// leading widget. The leading widget stops above it.
   /// The window takes ownership of the new status bar and releases the previous one without deleting it.
   QStatusBar* statusBar() const;
   void setStatusBar(QStatusBar* statusBar);

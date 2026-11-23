@@ -58,7 +58,6 @@ struct UnifiedWindow::Impl {
   TitleBar* titleBar{ nullptr };
   QVBoxLayout* layout{ nullptr };
   QHBoxLayout* body{ nullptr };
-  QVBoxLayout* column{ nullptr };
   QSpacerItem* leadingSpacer{ nullptr };
   QPointer<QWidget> centralWidget;
   QPointer<QStatusBar> statusBar;
@@ -84,7 +83,8 @@ struct UnifiedWindow::Impl {
       }
       width = std::max(width, controlsWidth);
       leadingWidget->setContentsMargins(0, titleBar->sizeHint().height(), 0, 0);
-      leadingWidget->setGeometry(0, 0, width, window.height());
+      const auto statusBarHeight = statusBar && statusBar->isVisibleTo(&window) ? statusBar->sizeHint().height() : 0;
+      leadingWidget->setGeometry(0, 0, width, window.height() - statusBarHeight);
     }
     if (width != leadingWidth) {
       leadingWidth = width;
@@ -109,10 +109,6 @@ UnifiedWindow::UnifiedWindow(QWidget* parent)
   _impl->body->setSpacing(0);
   _impl->leadingSpacer = new QSpacerItem(0, 0, QSizePolicy::Fixed, QSizePolicy::Minimum);
   _impl->body->addSpacerItem(_impl->leadingSpacer);
-  _impl->column = new QVBoxLayout();
-  _impl->column->setContentsMargins(0, 0, 0, 0);
-  _impl->column->setSpacing(0);
-  _impl->body->addLayout(_impl->column, 1);
   _impl->layout->addLayout(_impl->body, 1);
 
   // Native window configuration, before anything is shown.
@@ -164,14 +160,14 @@ void UnifiedWindow::setCentralWidget(QWidget* widget) {
   }
 
   if (_impl->centralWidget) {
-    _impl->column->removeWidget(_impl->centralWidget.data());
+    _impl->body->removeWidget(_impl->centralWidget.data());
     _impl->centralWidget->hide();
     _impl->centralWidget->setParent(nullptr);
   }
 
   _impl->centralWidget = widget;
   if (widget) {
-    _impl->column->insertWidget(0, widget, 1);
+    _impl->body->addWidget(widget, 1);
     _impl->overlay->raise();
   }
 }
@@ -186,17 +182,18 @@ void UnifiedWindow::setStatusBar(QStatusBar* statusBar) {
   }
 
   if (_impl->statusBar) {
-    _impl->column->removeWidget(_impl->statusBar.data());
+    _impl->layout->removeWidget(_impl->statusBar.data());
     _impl->statusBar->hide();
     _impl->statusBar->setParent(nullptr);
   }
 
   _impl->statusBar = statusBar;
   if (statusBar) {
-    _impl->column->addWidget(statusBar);
+    _impl->layout->addWidget(statusBar);
     statusBar->show();
     _impl->overlay->raise();
   }
+  _impl->updateLeading(*this);
 }
 
 QWidget* UnifiedWindow::leadingWidget() const {

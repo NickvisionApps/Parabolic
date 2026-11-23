@@ -798,6 +798,11 @@ void QlementineStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption* opt
         const auto& rect = optToolBar->rect;
         p->fillRect(rect, bgColor);
 
+        // Inside a title bar, the title bar is responsible for its own borders.
+        if (isInTitleBar(w)) {
+          return;
+        }
+
         const auto lineW = _impl->theme.borderWidth;
         const auto& lineColor = toolBarBorderColor();
         p->setPen(QPen(lineColor, lineW, Qt::SolidLine, Qt::FlatCap));
