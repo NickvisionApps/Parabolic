@@ -644,7 +644,8 @@ void NavigationSidebar::drawBackground(QPainter& p) const {
   // The border is on the side of the content.
   p.fillRect(rect(), AbstractItemListWidget::getBgColor());
   if (_borderVisible) {
-    p.fillRect(QRect{ width() - borderWidth, 0, borderWidth, height() }, borderColor);
+    const auto top = contentsMargins().top();
+    p.fillRect(QRect{ width() - borderWidth, top, borderWidth, height() - top }, borderColor);
   }
 }
 

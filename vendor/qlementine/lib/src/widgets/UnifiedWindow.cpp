@@ -11,6 +11,7 @@
 #include <QHBoxLayout>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPen>
 #include <QPointer>
 #include <QSpacerItem>
 #include <QVBoxLayout>
@@ -54,6 +55,120 @@ protected:
 private:
   WindowBackend& _backend;
 };
+
+// Transparent-for-mouse overlay that draws the window background in the corners of the central widget, to round them,
+// and a border along its sides. Only the inset sides are drawn: the other ones blend into the window.
+class ContentCorners : public QWidget {
+public:
+  explicit ContentCorners(QWidget* parent)
+    : QWidget(parent) {
+    setAttribute(Qt::WA_TransparentForMouseEvents, true);
+    setAttribute(Qt::WA_NoSystemBackground, true);
+  }
+
+  void setShape(int radius, Qt::Edges insetEdges) {
+    if (radius != _radius || insetEdges != _insetEdges) {
+      _radius = radius;
+      _insetEdges = insetEdges;
+      update();
+    }
+  }
+
+protected:
+  void paintEvent(QPaintEvent*) override {
+    const auto radius = static_cast<qreal>(_radius);
+    const auto top = _insetEdges.testFlag(Qt::TopEdge);
+    const auto left = _insetEdges.testFlag(Qt::LeftEdge);
+    const auto right = _insetEdges.testFlag(Qt::RightEdge);
+    const auto bottom = _insetEdges.testFlag(Qt::BottomEdge);
+
+    // A corner is rounded when both of its sides are inset.
+    const auto topLeft = top && left ? radius : 0.;
+    const auto topRight = top && right ? radius : 0.;
+    const auto bottomLeft = bottom && left ? radius : 0.;
+    const auto bottomRight = bottom && right ? radius : 0.;
+
+    const auto full = QRectF(rect());
+    auto shape = QPainterPath{};
+    shape.moveTo(full.left() + topLeft, full.top());
+    shape.lineTo(full.right() - topRight, full.top());
+    if (topRight > 0.) {
+      shape.arcTo(QRectF(full.right() - 2 * topRight, full.top(), 2 * topRight, 2 * topRight), 90, -90);
+    }
+    shape.lineTo(full.right(), full.bottom() - bottomRight);
+    if (bottomRight > 0.) {
+      shape.arcTo(
+        QRectF(full.right() - 2 * bottomRight, full.bottom() - 2 * bottomRight, 2 * bottomRight, 2 * bottomRight), 0,
+        -90);
+    }
+    shape.lineTo(full.left() + bottomLeft, full.bottom());
+    if (bottomLeft > 0.) {
+      shape.arcTo(QRectF(full.left(), full.bottom() - 2 * bottomLeft, 2 * bottomLeft, 2 * bottomLeft), 270, -90);
+    }
+    shape.lineTo(full.left(), full.top() + topLeft);
+    if (topLeft > 0.) {
+      shape.arcTo(QRectF(full.left(), full.top(), 2 * topLeft, 2 * topLeft), 180, -90);
+    }
+    shape.closeSubpath();
+    auto corners = QPainterPath{};
+    corners.addRect(full);
+    corners = corners.subtracted(shape);
+
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.fillPath(corners, parentWidget()->palette().window());
+
+    const auto* qlementineStyle = qobject_cast<const QlementineStyle*>(style());
+    const auto borderWidth = qlementineStyle ? qlementineStyle->theme().borderWidth : 1;
+    const auto borderColor = qlementineStyle ? qlementineStyle->theme().borderColor : palette().color(QPalette::Mid);
+    const auto halfWidth = borderWidth / 2.;
+    const auto inner = full.adjusted(halfWidth, halfWidth, -halfWidth, -halfWidth);
+    const auto tl = std::max(0., topLeft - halfWidth);
+    const auto tr = std::max(0., topRight - halfWidth);
+    const auto bl = std::max(0., bottomLeft - halfWidth);
+    const auto br = std::max(0., bottomRight - halfWidth);
+    auto outline = QPainterPath{};
+    if (top) {
+      outline.moveTo(inner.left() + tl, inner.top());
+      outline.lineTo(inner.right() - tr, inner.top());
+    }
+    if (right) {
+      outline.moveTo(inner.right(), inner.top() + tr);
+      outline.lineTo(inner.right(), inner.bottom() - br);
+    }
+    if (bottom) {
+      outline.moveTo(inner.right() - br, inner.bottom());
+      outline.lineTo(inner.left() + bl, inner.bottom());
+    }
+    if (left) {
+      outline.moveTo(inner.left(), inner.bottom() - bl);
+      outline.lineTo(inner.left(), inner.top() + tl);
+    }
+    if (tl > 0.) {
+      outline.moveTo(inner.left(), inner.top() + tl);
+      outline.arcTo(QRectF(inner.left(), inner.top(), 2 * tl, 2 * tl), 180, -90);
+    }
+    if (tr > 0.) {
+      outline.moveTo(inner.right() - tr, inner.top());
+      outline.arcTo(QRectF(inner.right() - 2 * tr, inner.top(), 2 * tr, 2 * tr), 90, -90);
+    }
+    if (br > 0.) {
+      outline.moveTo(inner.right(), inner.bottom() - br);
+      outline.arcTo(QRectF(inner.right() - 2 * br, inner.bottom() - 2 * br, 2 * br, 2 * br), 0, -90);
+    }
+    if (bl > 0.) {
+      outline.moveTo(inner.left() + bl, inner.bottom());
+      outline.arcTo(QRectF(inner.left(), inner.bottom() - 2 * bl, 2 * bl, 2 * bl), 270, -90);
+    }
+    painter.setBrush(Qt::NoBrush);
+    painter.setPen(QPen(borderColor, borderWidth, Qt::SolidLine, Qt::FlatCap));
+    painter.drawPath(outline);
+  }
+
+private:
+  int _radius{ 0 };
+  Qt::Edges _insetEdges;
+};
 } // namespace
 
 struct UnifiedWindow::Impl {
@@ -66,9 +181,33 @@ struct UnifiedWindow::Impl {
   bool statusBarBorderVisible{ true };
   QPointer<QWidget> leadingWidget;
   int leadingWidth{ 0 };
+  int contentCornerRadius{ 12 };
+  Qt::Edges contentInsetEdges{ Qt::TopEdge | Qt::LeftEdge };
+  ContentCorners* corners{ nullptr };
   FrameOverlay* overlay{ nullptr };
   std::unique_ptr<WindowBackend> backend;
   bool shown{ false };
+
+  void updateCorners() {
+    if (!corners) {
+      return;
+    }
+    if (!centralWidget || contentCornerRadius <= 0) {
+      corners->hide();
+      return;
+    }
+    auto edges = contentInsetEdges;
+    if (statusBar && statusBar->isVisible()) {
+      edges |= Qt::BottomEdge;
+    }
+    corners->setShape(contentCornerRadius, edges);
+    corners->setGeometry(centralWidget->geometry());
+    corners->show();
+    corners->raise();
+    if (overlay) {
+      overlay->raise();
+    }
+  }
 
   void updateLeading(const QWidget& window) {
     auto width = 0;
@@ -117,6 +256,8 @@ UnifiedWindow::UnifiedWindow(QWidget* parent)
   // Native window configuration, before anything is shown.
   _impl->backend = createWindowBackend(*this);
   _impl->backend->prepareWindow();
+  _impl->corners = new ContentCorners(this);
+  _impl->corners->hide();
   _impl->overlay = new FrameOverlay(this, *_impl->backend);
   _impl->overlay->hide();
 
@@ -173,6 +314,7 @@ void UnifiedWindow::setCentralWidget(QWidget* widget) {
     _impl->body->addWidget(widget, 1);
     _impl->overlay->raise();
   }
+  _impl->updateCorners();
 }
 
 QStatusBar* UnifiedWindow::statusBar() const {
@@ -198,6 +340,7 @@ void UnifiedWindow::setStatusBar(QStatusBar* statusBar) {
     _impl->overlay->raise();
   }
   _impl->updateLeading(*this);
+  _impl->updateCorners();
 }
 
 bool UnifiedWindow::statusBarBorderVisible() const {
@@ -208,6 +351,29 @@ void UnifiedWindow::setStatusBarBorderVisible(bool visible) {
   if (visible != _impl->statusBarBorderVisible) {
     _impl->statusBarBorderVisible = visible;
     QlementineStyle::setBorderVisible(_impl->statusBar.data(), visible);
+  }
+}
+
+int UnifiedWindow::contentCornerRadius() const {
+  return _impl->contentCornerRadius;
+}
+
+void UnifiedWindow::setContentCornerRadius(int radius) {
+  radius = std::max(0, radius);
+  if (radius != _impl->contentCornerRadius) {
+    _impl->contentCornerRadius = radius;
+    _impl->updateCorners();
+  }
+}
+
+Qt::Edges UnifiedWindow::contentInsetEdges() const {
+  return _impl->contentInsetEdges;
+}
+
+void UnifiedWindow::setContentInsetEdges(Qt::Edges edges) {
+  if (edges != _impl->contentInsetEdges) {
+    _impl->contentInsetEdges = edges;
+    _impl->updateCorners();
   }
 }
 
@@ -243,6 +409,11 @@ bool UnifiedWindow::event(QEvent* evt) {
       case QEvent::Resize:
       case QEvent::LayoutRequest:
         _impl->updateLeading(*this);
+        _impl->updateCorners();
+        break;
+      case QEvent::PaletteChange:
+      case QEvent::StyleChange:
+        _impl->corners->update();
         break;
       case QEvent::WindowTitleChange:
         _impl->titleBar->setTitle(windowTitle());

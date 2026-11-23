@@ -50,7 +50,8 @@ public:
   int expandedWidth() const;
   Q_SLOT void setExpandedWidth(int width);
 
-  /// Whether the border on the side of the content is drawn.
+  /// Whether the border on the side of the content is drawn. It starts under the top contents margin, so it stops at
+  /// the title bar when the sidebar is the leading widget of a UnifiedWindow.
   bool borderVisible() const;
   Q_SLOT void setBorderVisible(bool visible);
 

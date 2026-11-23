@@ -28,6 +28,18 @@ public:
   QWidget* centralWidget() const;
   void setCentralWidget(QWidget* widget);
 
+  /// Radius of the rounded corners of the central widget, in pixels. The corners are drawn with the background of the
+  /// window, so they are visible next to the title bar, the leading widget and the status bar. 0 keeps them square.
+  int contentCornerRadius() const;
+  void setContentCornerRadius(int radius);
+
+  /// Sides of the central widget that are inset in the window: they have a border, and a corner is rounded when both of
+  /// its sides are inset. A side that is not inset blends into the window, without border. The default is the top
+  /// side, under the title bar, and the left side, next to the leading widget. The bottom side is also inset when a
+  /// status bar is displayed below the central widget.
+  Qt::Edges contentInsetEdges() const;
+  void setContentInsetEdges(Qt::Edges edges);
+
   /// A status bar displayed at the bottom of the window, across its whole width, below the central widget and the
   /// leading widget. The leading widget stops above it.
   /// The window takes ownership of the new status bar and releases the previous one without deleting it.
