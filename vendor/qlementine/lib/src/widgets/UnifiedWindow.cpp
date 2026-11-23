@@ -3,6 +3,8 @@
 
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
 
+#include <oclero/qlementine/style/QlementineStyle.hpp>
+
 #include "utils/window/WindowBackend.hpp"
 
 #include <QEvent>
@@ -61,6 +63,7 @@ struct UnifiedWindow::Impl {
   QSpacerItem* leadingSpacer{ nullptr };
   QPointer<QWidget> centralWidget;
   QPointer<QStatusBar> statusBar;
+  bool statusBarBorderVisible{ true };
   QPointer<QWidget> leadingWidget;
   int leadingWidth{ 0 };
   FrameOverlay* overlay{ nullptr };
@@ -190,10 +193,22 @@ void UnifiedWindow::setStatusBar(QStatusBar* statusBar) {
   _impl->statusBar = statusBar;
   if (statusBar) {
     _impl->layout->addWidget(statusBar);
+    QlementineStyle::setBorderVisible(statusBar, _impl->statusBarBorderVisible);
     statusBar->show();
     _impl->overlay->raise();
   }
   _impl->updateLeading(*this);
+}
+
+bool UnifiedWindow::statusBarBorderVisible() const {
+  return _impl->statusBarBorderVisible;
+}
+
+void UnifiedWindow::setStatusBarBorderVisible(bool visible) {
+  if (visible != _impl->statusBarBorderVisible) {
+    _impl->statusBarBorderVisible = visible;
+    QlementineStyle::setBorderVisible(_impl->statusBar.data(), visible);
+  }
 }
 
 QWidget* UnifiedWindow::leadingWidget() const {

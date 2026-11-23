@@ -110,6 +110,7 @@ constexpr auto Property_AutoIconColor = "autoIconColor";
 
 // Used to determine the status of a widget.
 constexpr auto Property_Status = "status";
+constexpr auto Property_BorderVisible = "borderVisible";
 
 
 struct QlementineStyleImpl {
@@ -530,6 +531,21 @@ AutoIconColor QlementineStyle::autoIconColor(const QWidget* widget) {
     return autoIconColor(widget->parentWidget());
   }
   return property.value<AutoIconColor>();
+}
+
+void QlementineStyle::setBorderVisible(QWidget* widget, bool visible) {
+  if (widget) {
+    widget->setProperty(Property_BorderVisible, visible);
+    widget->update();
+  }
+}
+
+bool QlementineStyle::borderVisible(const QWidget* widget) {
+  if (!widget) {
+    return true;
+  }
+  const auto property = widget->property(Property_BorderVisible);
+  return property.isValid() ? property.toBool() : true;
 }
 
 QPixmap QlementineStyle::getColorizedPixmap(
@@ -1238,8 +1254,10 @@ void QlementineStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption* opt
       const auto borderW = _impl->theme.borderWidth;
       p->fillRect(opt->rect, bgColor);
 
-      const auto lineRect = QRect(opt->rect.x(), opt->rect.y(), opt->rect.width(), borderW);
-      p->fillRect(lineRect, borderColor);
+      if (borderVisible(w)) {
+        const auto lineRect = QRect(opt->rect.x(), opt->rect.y(), opt->rect.width(), borderW);
+        p->fillRect(lineRect, borderColor);
+      }
     }
       return;
     case PE_IndicatorTabClose:
