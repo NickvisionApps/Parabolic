@@ -23,7 +23,7 @@ namespace ui
 
         HomePage() = default;
 
-        void setupUi(parabolic::qt::views::HomePage* home_page)
+        void setup_ui(parabolic::qt::views::HomePage* home_page)
         {
             const parabolic::translation::Translator& translator{
                 parabolic::application::State::instance().translator(),
@@ -56,7 +56,7 @@ namespace parabolic::qt::views
         : QWidget{ parent },
           m_ui{ new ui::HomePage() }
     {
-        m_ui->setupUi(this);
+        m_ui->setup_ui(this);
     }
 
     HomePage::~HomePage()
