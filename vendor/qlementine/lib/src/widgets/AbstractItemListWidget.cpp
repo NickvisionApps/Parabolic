@@ -137,7 +137,7 @@ int AbstractItemListWidget::insertItem(Item newItem) {
   Q_EMIT itemCountChanged();
   Q_EMIT currentIndexChanged();
 
-  const auto [bgColor, fgColor, badgeBgColor, badgeFgColor] = getItemBgAndFgColor(itemCount(), MouseState::Normal);
+  const auto [bgColor, fgColor, badgeBgColor, badgeFgColor] = getItemBgAndFgColor(itemCount() - 1, MouseState::Normal);
   bgColorAnimation->setDuration(animDuration);
   bgColorAnimation->setStartValue(QVariant::fromValue<QColor>(bgColor));
   bgColorAnimation->setEndValue(QVariant::fromValue<QColor>(bgColor));

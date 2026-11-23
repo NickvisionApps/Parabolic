@@ -23,7 +23,7 @@ namespace ui
                 parabolic::application::State::instance().translator(),
             };
             m_navigation_view = new oclero::qlementine::NavigationView{ main_window };
-            m_navigation_view->addPage(new parabolic::qt::views::HomePage{ m_navigation_view }, translator._("Home"),
+            m_navigation_view->addPage(new parabolic::qt::views::HomePage(m_navigation_view), translator._("Home"),
                                        oclero::qlementine::appStyle()->makeThemedIcon(
                                                oclero::qlementine::icons::iconPath(
                                                        oclero::qlementine::icons::Icons16::Navigation_Home)));
