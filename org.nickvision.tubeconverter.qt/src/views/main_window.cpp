@@ -1,11 +1,13 @@
 #include "views/main_window.h"
 #include <QAction>
+#include <QObject>
 #include <QSizePolicy>
 #include <QToolBar>
 #include <QWidget>
 #include <Qt>
 #include <oclero/qlementine/icons/Icons16.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <oclero/qlementine/widgets/NavigationSidebar.hpp>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
 #include "application.h"
@@ -19,6 +21,7 @@ namespace ui
     public:
         oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
         QToolBar* m_toolbar{ nullptr };
+        QAction* m_toggle_navigation{ nullptr };
         QAction* m_add_download{ nullptr };
 
         MainWindow() = default;
@@ -38,15 +41,37 @@ namespace ui
             m_toolbar->setFloatable(false);
             m_toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
             m_toolbar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+            m_toggle_navigation = m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(
+                                                               oclero::qlementine::icons::iconPath(
+                                                                       oclero::qlementine::icons::Icons16::
+                                                                               Navigation_UiPanelLeftCollapse)),
+                                                       translator._("Collapse Navigation"));
+            m_toggle_navigation->setToolTip(translator._("Collapse Navigation"));
             m_add_download = m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(
                                                           oclero::qlementine::icons::iconPath(
                                                                   oclero::qlementine::icons::Icons16::Action_Plus)),
                                                   translator._("Add Download"));
             m_add_download->setToolTip(translator._("Add Download"));
+            main_window->titleBar()->setContentAfterLeading(false);
             main_window->titleBar()->setContentWidget(m_toolbar);
+            main_window->setContentCornerRadius(12);
             main_window->resize(1100, 720);
             main_window->setCentralWidget(m_navigation_view);
             m_navigation_view->sidebar()->setBorderVisible(false);
+            QObject::connect(m_toggle_navigation, &QAction::triggered, m_navigation_view->sidebar(),
+                             &oclero::qlementine::NavigationSidebar::toggleCompact);
+            QObject::connect(m_navigation_view->sidebar(), &oclero::qlementine::NavigationSidebar::compactChanged,
+                             m_toggle_navigation, [this, &translator]()
+            {
+                m_toggle_navigation->setIcon(
+                        oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                m_navigation_view->sidebar()->compact()
+                                        ? oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftExpand
+                                        : oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
+                m_toggle_navigation->setToolTip(m_navigation_view->sidebar()->compact()
+                                                        ? translator._("Expand Navigation")
+                                                        : translator._("Collapse Navigation"));
+            });
             main_window->setLeadingWidget(m_navigation_view->sidebar());
         }
     };

@@ -26,6 +26,7 @@ int main(int argc, char* argv[])
     oclero::qlementine::QlementineStyle* style{ new oclero::qlementine::QlementineStyle{ &application } };
     style->setAutoIconColor(oclero::qlementine::AutoIconColor::TextColor);
     style->setIconPathGetter(oclero::qlementine::icons::fromFreeDesktop);
+    style->setToolTipMatchesTheme(true);
     oclero::qlementine::ThemeManager* theme_manager{ new oclero::qlementine::ThemeManager{ style } };
     QApplication::setStyle(style);
     QObject::connect(style, &oclero::qlementine::QlementineStyle::themeChanged, style, [style]()
