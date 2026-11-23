@@ -3,7 +3,10 @@
 
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
 
-namespace ui { class MainWindow; }
+namespace ui
+{
+    class MainWindow;
+}
 
 namespace parabolic::qt::views
 {

@@ -46,7 +46,10 @@ find_program(CLANG_FORMAT_EXECUTABLE NAMES clang-format)
 if(CLANG_FORMAT_EXECUTABLE)
     file(GLOB_RECURSE FORMAT_SOURCES CONFIGURE_DEPENDS
         "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.h"
-        "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.cpp")
+        "${CMAKE_SOURCE_DIR}/lib${SHORT_NAME}/*.cpp"
+        "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.qt/*.h"
+        "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}.qt/*.cpp")
     add_custom_target(format ALL COMMAND "${CLANG_FORMAT_EXECUTABLE}" -i ${FORMAT_SOURCES} COMMENT "Running clang-format")
     add_dependencies("lib${SHORT_NAME}" format)
+    add_dependencies("${PROJECT_NAME}.qt" format)
 endif()
