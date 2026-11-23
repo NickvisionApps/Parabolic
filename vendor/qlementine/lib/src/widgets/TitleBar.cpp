@@ -187,6 +187,7 @@ TitleBar::TitleBar(QWidget* parent)
       }
     } else if (watched == _impl->container && type == QEvent::LayoutRequest) {
       _impl->updateLayout();
+      updateGeometry();
     }
   });
   _impl->container->installEventFilter(_impl->eventFilter.get());
@@ -229,6 +230,7 @@ void TitleBar::setContentWidget(QWidget* widget) {
     _impl->container->layout()->addWidget(widget);
   }
   _impl->updateLayout();
+  updateGeometry();
 }
 
 TitleBarStyle TitleBar::titleBarStyle() const {
@@ -382,7 +384,10 @@ QRect TitleBar::captionButtonRect(CaptionButton button) const {
   const auto& renderer = *_impl->renderer;
   const auto margins = renderer.captionButtonMargins();
   const auto spacing = renderer.captionButtonSpacing();
-  const auto buttonSize = renderer.captionButtonSize(button, _impl->theme());
+  auto buttonSize = renderer.captionButtonSize(button, _impl->theme());
+  if (buttonSize.height() >= renderer.barHeight(_impl->theme())) {
+    buttonSize.setHeight(height() - margins.top() - margins.bottom());
+  }
 
   for (const auto isLeft : { true, false }) {
     const auto& buttons = isLeft ? _impl->buttonLayout.left : _impl->buttonLayout.right;
@@ -418,7 +423,11 @@ void TitleBar::setPressedCaptionButton(std::optional<CaptionButton> button) {
 }
 
 QSize TitleBar::minimumSizeHint() const {
-  return QSize(_impl->leftInset + _impl->rightInset + _impl->buttonsWidth(), _impl->renderer->barHeight(_impl->theme()));
+  auto height = _impl->renderer->barHeight(_impl->theme());
+  if (qobject_cast<QToolBar*>(_impl->contentWidget.data())) {
+    height = std::max(height, _impl->contentWidget->sizeHint().height());
+  }
+  return QSize(_impl->leftInset + _impl->rightInset + _impl->buttonsWidth(), height);
 }
 
 QSize TitleBar::sizeHint() const {
