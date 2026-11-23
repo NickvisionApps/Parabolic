@@ -78,6 +78,13 @@ public:
   int leadingWidth() const;
   void setLeadingWidth(int width);
 
+  /// Whether the content widget starts after the leading area (true, the default) or right after the window controls
+  /// on the left (traffic lights, or caption buttons displayed on the left), over the leading area (false). Use false
+  /// to place a toolbar next to the window controls. The content always stays clear of the window controls on both
+  /// sides, on every platform.
+  bool contentAfterLeading() const;
+  void setContentAfterLeading(bool after);
+
   /// Marks a widget placed in the title bar as interactive (true) or as a part of the draggable area (false).
   /// By default, the content widget container, plain QWidget/QFrame containers and display-only widgets (QLabel,
   /// QProgressBar, QLCDNumber, IconWidget, StatusBadgeWidget, NotificationBadge) are draggable and every other

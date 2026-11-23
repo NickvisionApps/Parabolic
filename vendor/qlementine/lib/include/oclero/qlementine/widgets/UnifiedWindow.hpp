@@ -29,7 +29,8 @@ public:
   void setCentralWidget(QWidget* widget);
 
   /// Radius of the rounded corners of the central widget, in pixels. The corners are drawn with the background of the
-  /// window, so they are visible next to the title bar, the leading widget and the status bar. 0 keeps them square.
+  /// window, so they are visible next to the title bar, the leading widget and the status bar. The default is 0:
+  /// the corners are square and the central widget has no border. Use a radius to inset the central widget.
   int contentCornerRadius() const;
   void setContentCornerRadius(int radius);
 

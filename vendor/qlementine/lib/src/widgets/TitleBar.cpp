@@ -78,7 +78,7 @@ struct TitleBar::Impl {
   }
 
   QRect contentArea() const {
-    auto left = std::max(leftInset, leadingWidth);
+    auto left = contentAfterLeading ? std::max(leftInset, leadingWidth) : leftInset;
     auto right = owner.width() - rightInset;
     const auto gap = theme().spacing;
     for (const auto button : buttonLayout.left) {
@@ -158,6 +158,7 @@ struct TitleBar::Impl {
   int leftInset{ 0 };
   int rightInset{ 0 };
   int leadingWidth{ 0 };
+  bool contentAfterLeading{ true };
   std::optional<CaptionButton> hoveredButton;
   std::optional<CaptionButton> pressedButton;
   std::optional<QPoint> dragStartPos;
@@ -295,6 +296,18 @@ void TitleBar::setSystemInsets(int left, int right) {
 
 int TitleBar::leadingWidth() const {
   return _impl->leadingWidth;
+}
+
+bool TitleBar::contentAfterLeading() const {
+  return _impl->contentAfterLeading;
+}
+
+void TitleBar::setContentAfterLeading(bool after) {
+  if (after != _impl->contentAfterLeading) {
+    _impl->contentAfterLeading = after;
+    _impl->updateLayout();
+    update();
+  }
 }
 
 void TitleBar::setLeadingWidth(int width) {

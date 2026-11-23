@@ -181,7 +181,7 @@ struct UnifiedWindow::Impl {
   bool statusBarBorderVisible{ true };
   QPointer<QWidget> leadingWidget;
   int leadingWidth{ 0 };
-  int contentCornerRadius{ 12 };
+  int contentCornerRadius{ 0 };
   Qt::Edges contentInsetEdges{ Qt::TopEdge | Qt::LeftEdge };
   ContentCorners* corners{ nullptr };
   FrameOverlay* overlay{ nullptr };
