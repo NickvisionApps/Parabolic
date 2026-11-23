@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     theme_manager->setCurrentTheme(QApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark"
                                                                                                       : "Light");
     theme_manager->setUseSystemAccentColor(true);
-    parabolic::qt::views::MainWindow window;
+    parabolic::qt::views::MainWindow window{ theme_manager };
     window.show();
     return QApplication::exec();
 }

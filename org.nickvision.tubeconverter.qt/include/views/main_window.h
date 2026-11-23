@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <oclero/qlementine/style/ThemeManager.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
 
 namespace ui
@@ -13,7 +14,7 @@ namespace parabolic::qt::views
     class MainWindow : public oclero::qlementine::UnifiedWindow
     {
     public:
-        MainWindow(QWidget* parent = nullptr);
+        MainWindow(oclero::qlementine::ThemeManager* theme_manager, QWidget* parent = nullptr);
         ~MainWindow() override;
         MainWindow(const MainWindow&) = delete;
         MainWindow(MainWindow&&) = delete;

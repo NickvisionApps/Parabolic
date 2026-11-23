@@ -245,7 +245,7 @@ UnifiedWindow::UnifiedWindow(QWidget* parent)
   _impl->layout->setContentsMargins(0, 0, 0, 0);
   _impl->layout->setSpacing(0);
   _impl->titleBar = new TitleBar(this);
-  _impl->titleBar->setContentAfterLeading(true);
+  _impl->titleBar->setContentAfterLeading(false);
   _impl->layout->addWidget(_impl->titleBar);
   _impl->body = new QHBoxLayout();
   _impl->body->setContentsMargins(0, 0, 0, 0);
