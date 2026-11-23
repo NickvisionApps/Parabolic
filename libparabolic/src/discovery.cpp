@@ -610,11 +610,6 @@ namespace parabolic::discovery
         return m_entries[index];
     }
 
-    Manager::Manager(std::filesystem::path resource_directory)
-        : m_resource_directory{ std::move(resource_directory) }
-    {
-    }
-
     void Manager::set_options(const Options& discovery_options, const extractor::Options& extractor_options)
     {
         m_discovery_options = discovery_options;
@@ -675,13 +670,13 @@ namespace parabolic::discovery
             "--ignore-errors",
             "--no-warnings",
             "--ffmpeg-location",
-            parabolic::ffmpeg::executable_path(m_resource_directory),
+            parabolic::ffmpeg::executable_path(),
             "--js-runtimes",
-            std::format("deno:{}", parabolic::deno::executable_path(m_resource_directory)),
+            std::format("deno:{}", parabolic::deno::executable_path()),
             "--paths",
             std::format("temp:{}", sago::getCacheDir()),
         };
-        std::string plugins{ parabolic::ytdlp::plugins_path(m_resource_directory) };
+        std::string plugins{ parabolic::ytdlp::plugins_path() };
         if (std::filesystem::exists(plugins))
         {
             args.emplace_back("--plugin-dir");
@@ -722,7 +717,7 @@ namespace parabolic::discovery
             args.push_back(m_extractor_options.cookies_path());
         }
         args.append_range(string_manip::command_line_split(m_discovery_options.ytdlp_arguments()));
-        std::expected<std::string, std::string> result{ ytdlp::execute(m_resource_directory, args, {}, stop_token) };
+        std::expected<std::string, std::string> result{ ytdlp::execute(args, {}, stop_token) };
         if (!result)
         {
             return std::unexpected{ result.error() };

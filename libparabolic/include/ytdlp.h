@@ -2,7 +2,6 @@
 #define YTDLP_H
 
 #include <expected>
-#include <filesystem>
 #include <functional>
 #include <stop_token>
 #include <string>
@@ -10,12 +9,11 @@
 
 namespace parabolic::ytdlp
 {
-    [[nodiscard]] std::string executable_path(const std::filesystem::path& resource_directory);
+    [[nodiscard]] std::string executable_path();
     [[nodiscard]] std::expected<std::string, std::string>
-    execute(const std::filesystem::path& resource_directory, const std::vector<std::string>& args,
-            const std::function<void(const std::string&)>& output_callback = {},
+    execute(const std::vector<std::string>& args, const std::function<void(const std::string&)>& output_callback = {},
             const std::stop_token& stop_token = {});
-    [[nodiscard]] std::string plugins_path(const std::filesystem::path& resource_directory);
+    [[nodiscard]] std::string plugins_path();
 }
 
 #endif

@@ -1,5 +1,5 @@
 function(generate_translations)
-    cmake_parse_arguments(ARG "" "TARGET;SHORT_NAME;ROOT_DIRECTORY;OUTPUT_DIRECTORY" "" ${ARGN})
+    cmake_parse_arguments(ARG "" "TARGET;SHORT_NAME;ROOT_DIRECTORY;OUTPUT_DIRECTORY" "SOURCE_DIRECTORIES" ${ARGN})
     if (NOT ARG_SHORT_NAME)
         message(FATAL_ERROR "generate_translations: SHORT_NAME is required")
     endif()
@@ -19,22 +19,21 @@ function(generate_translations)
         message(FATAL_ERROR "generate_translations: ${LINGUAS_FILE} not found")
     endif()
     set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${LINGUAS_FILE}")
-    file(GLOB_RECURSE ABSOLUTE_SOURCES CONFIGURE_DEPENDS
-        "${ARG_ROOT_DIRECTORY}/lib${ARG_SHORT_NAME}/*.h"
-        "${ARG_ROOT_DIRECTORY}/lib${ARG_SHORT_NAME}/*.cpp")
+    if (NOT ARG_SOURCE_DIRECTORIES)
+        set(ARG_SOURCE_DIRECTORIES "lib${ARG_SHORT_NAME}")
+    endif()
+    set(SOURCE_GLOBS "")
+    foreach(SOURCE_DIRECTORY IN LISTS ARG_SOURCE_DIRECTORIES)
+        list(APPEND SOURCE_GLOBS
+            "${ARG_ROOT_DIRECTORY}/${SOURCE_DIRECTORY}/*.h"
+            "${ARG_ROOT_DIRECTORY}/${SOURCE_DIRECTORY}/*.cpp")
+    endforeach()
+    file(GLOB_RECURSE ABSOLUTE_SOURCES CONFIGURE_DEPENDS ${SOURCE_GLOBS})
     list(SORT ABSOLUTE_SOURCES)
     set(RELATIVE_SOURCES "")
     foreach(ABSOLUTE_SOURCE IN LISTS ABSOLUTE_SOURCES)
         file(RELATIVE_PATH RELATIVE_SOURCE "${ARG_ROOT_DIRECTORY}" "${ABSOLUTE_SOURCE}")
         list(APPEND RELATIVE_SOURCES "${RELATIVE_SOURCE}")
-    endforeach()
-    file(GLOB_RECURSE ABSOLUTE_KOTLIN_SOURCES CONFIGURE_DEPENDS
-        "${ARG_ROOT_DIRECTORY}/${PROJECT_NAME}.*/src/*.kt")
-    list(SORT ABSOLUTE_KOTLIN_SOURCES)
-    set(RELATIVE_KOTLIN_SOURCES "")
-    foreach(ABSOLUTE_KOTLIN_SOURCE IN LISTS ABSOLUTE_KOTLIN_SOURCES)
-        file(RELATIVE_PATH RELATIVE_KOTLIN_SOURCE "${ARG_ROOT_DIRECTORY}" "${ABSOLUTE_KOTLIN_SOURCE}")
-        list(APPEND RELATIVE_KOTLIN_SOURCES "${RELATIVE_KOTLIN_SOURCE}")
     endforeach()
     file(STRINGS "${LINGUAS_FILE}" LINGUAS_LINES)
     set(TRANSLATION_COMMANDS
@@ -53,20 +52,6 @@ function(generate_translations)
             --keyword=w_pn:1c,2,3
             --width=80
             ${RELATIVE_SOURCES})
-    if (RELATIVE_KOTLIN_SOURCES)
-        list(APPEND TRANSLATION_COMMANDS
-            COMMAND "${XGETTEXT_EXECUTABLE}"
-                --from-code=utf-8
-                --language=C++
-                --join-existing
-                --output=${POT_FILE}
-                --keyword=tr
-                --keyword=trn:1,2
-                --keyword=trp:1c,2
-                --keyword=trpn:1c,2,3
-                --width=80
-                ${RELATIVE_KOTLIN_SOURCES})
-    endif()
     set(PO_FILES "")
     foreach(LINGUAS_LINE IN LISTS LINGUAS_LINES)
         string(STRIP "${LINGUAS_LINE}" LANGUAGE)
@@ -87,7 +72,7 @@ function(generate_translations)
         WORKING_DIRECTORY "${ARG_ROOT_DIRECTORY}"
         ${TRANSLATION_COMMANDS}
         COMMAND "${CMAKE_COMMAND}" -E touch "${STAMP_FILE}"
-        DEPENDS ${ABSOLUTE_SOURCES} ${ABSOLUTE_KOTLIN_SOURCES} "${LINGUAS_FILE}" ${PO_FILES}
+        DEPENDS ${ABSOLUTE_SOURCES} "${LINGUAS_FILE}" ${PO_FILES}
         VERBATIM)
     add_custom_target("${ARG_SHORT_NAME}_translations" ALL DEPENDS "${STAMP_FILE}")
     if (ARG_TARGET)

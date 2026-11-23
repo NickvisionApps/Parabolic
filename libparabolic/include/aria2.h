@@ -1,7 +1,6 @@
 #ifndef ARIA2_H
 #define ARIA2_H
 
-#include <filesystem>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 
@@ -26,7 +25,7 @@ namespace parabolic::aria2
         bool m_use_aria{ false };
     };
 
-    [[nodiscard]] std::string executable_path(const std::filesystem::path& resource_directory);
+    [[nodiscard]] std::string executable_path();
 }
 
 #endif

@@ -41,10 +41,10 @@ namespace parabolic::aria2
         m_use_aria = value;
     }
 
-    std::string executable_path(const std::filesystem::path& resource_directory)
+    std::string executable_path()
     {
         const std::filesystem::path& global_path{
-            environment::find_dependency("aria2c", environment::DependencySearchOption::Global, resource_directory),
+            environment::find_dependency("aria2c", environment::DependencySearchOption::Global),
         };
         if (std::filesystem::exists(global_path))
         {

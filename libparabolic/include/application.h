@@ -1,7 +1,6 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include <filesystem>
 #include <memory>
 #include <semver.hpp>
 #include <string>
@@ -56,10 +55,10 @@ namespace parabolic::application
     class State
     {
     public:
-        State(const std::filesystem::path& resource_directory = {});
         State(const State&) = delete;
         State(State&&) = delete;
         ~State();
+        [[nodiscard]] static State& instance();
         [[nodiscard]] configuration::Configuration& configuration() const;
         [[nodiscard]] discovery::Manager& discovery() const;
         [[nodiscard]] download::Manager& downloads() const;
@@ -72,7 +71,7 @@ namespace parabolic::application
         State& operator=(State&&) = delete;
 
     private:
-        std::filesystem::path m_resource_directory;
+        State();
         std::unique_ptr<configuration::Configuration> m_configuration;
         std::unique_ptr<discovery::Manager> m_discovery;
         std::unique_ptr<download::Manager> m_downloads;

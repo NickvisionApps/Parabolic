@@ -65,8 +65,7 @@ namespace parabolic::environment
 
     const std::vector<std::string>& arguments();
     [[nodiscard]] DeploymentMode deployment_mode();
-    [[nodiscard]] const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option,
-                                                               const std::filesystem::path& resource_directory);
+    [[nodiscard]] const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option);
     [[nodiscard]] std::filesystem::path executable_directory();
     [[nodiscard]] std::filesystem::path executable_path();
     [[nodiscard]] std::string locale();

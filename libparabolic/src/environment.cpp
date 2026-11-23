@@ -229,14 +229,11 @@ namespace parabolic::environment
 #endif
     }
 
-    const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option,
-                                                 const std::filesystem::path& resource_directory)
+    const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option)
     {
         static std::unordered_map<std::string, std::filesystem::path> dependencies;
         std::filesystem::path dep{ name };
-        std::string key{
-            dep.string() + "|" + std::to_string(static_cast<int>(option)) + "|" + resource_directory.string(),
-        };
+        std::string key{ dep.string() + "|" + std::to_string(static_cast<int>(option)) };
         auto it{ dependencies.find(key) };
         if (it != dependencies.end() && std::filesystem::exists(it->second))
         {
@@ -246,7 +243,7 @@ namespace parabolic::environment
         std::filesystem::path& result{ dependencies[key] };
         if (option == DependencySearchOption::Global || option == DependencySearchOption::App)
         {
-            search_in(dep, result, resource_directory);
+            search_in(dep, result, executable_directory());
         }
         if (result.empty() && (option == DependencySearchOption::Global || option == DependencySearchOption::System))
         {
