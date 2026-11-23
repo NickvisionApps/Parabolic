@@ -65,12 +65,12 @@ namespace ui
             m_toolbar->addWidget(m_toolbar_spacer);
             m_toggle_theme = m_toolbar->addAction(QIcon{}, QString{});
             update_toggle_theme();
-            QObject::connect(m_toggle_theme, &QAction::triggered, m_toggle_theme, [this]()
+            QObject::connect(m_toggle_theme, &QAction::triggered, m_toggle_theme, [this]
             {
                 m_theme_manager->setCurrentTheme(m_theme_manager->currentTheme() == "Light" ? "Legacy Dark" : "Light");
             });
             QObject::connect(m_theme_manager, &oclero::qlementine::ThemeManager::currentThemeChanged, m_toggle_theme,
-                             [this]()
+                             [this]
             {
                 update_toggle_theme();
             });
@@ -78,11 +78,10 @@ namespace ui
             main_window->setContentCornerRadius(12);
             main_window->resize(1100, 720);
             main_window->setCentralWidget(m_navigation_view);
-            m_navigation_view->sidebar()->setBorderVisible(false);
             QObject::connect(m_toggle_navigation, &QAction::triggered, m_navigation_view->sidebar(),
                              &oclero::qlementine::NavigationSidebar::toggleCompact);
             QObject::connect(m_navigation_view->sidebar(), &oclero::qlementine::NavigationSidebar::compactChanged,
-                             m_toggle_navigation, [this, &translator]()
+                             m_toggle_navigation, [this, &translator]
             {
                 m_toggle_navigation->setIcon(
                         oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(

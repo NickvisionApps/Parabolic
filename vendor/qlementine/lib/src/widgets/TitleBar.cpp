@@ -159,6 +159,7 @@ struct TitleBar::Impl {
   int rightInset{ 0 };
   int leadingWidth{ 0 };
   bool contentAfterLeading{ true };
+  bool borderVisible{ true };
   std::optional<CaptionButton> hoveredButton;
   std::optional<CaptionButton> pressedButton;
   std::optional<QPoint> dragStartPos;
@@ -306,6 +307,17 @@ void TitleBar::setContentAfterLeading(bool after) {
   if (after != _impl->contentAfterLeading) {
     _impl->contentAfterLeading = after;
     _impl->updateLayout();
+    update();
+  }
+}
+
+bool TitleBar::borderVisible() const {
+  return _impl->borderVisible;
+}
+
+void TitleBar::setBorderVisible(bool visible) {
+  if (visible != _impl->borderVisible) {
+    _impl->borderVisible = visible;
     update();
   }
 }
@@ -481,7 +493,9 @@ void TitleBar::paintEvent(QPaintEvent*) {
                                 : 0;
   painter.save();
   painter.setClipRect(QRect(backgroundLeft, 0, std::max(0, width() - backgroundLeft), height()));
-  renderer.paintBackground(painter, rect(), theme, _impl->active, _impl->maximized);
+  // The renderers draw the border in the last rows: they are moved outside of the widget to hide it.
+  const auto backgroundRect = _impl->borderVisible ? rect() : rect().adjusted(0, 0, 0, std::max(1, theme.borderWidth));
+  renderer.paintBackground(painter, backgroundRect, theme, _impl->active, _impl->maximized);
   painter.restore();
 
   // Title, in the space left by the content widget.

@@ -88,6 +88,10 @@ public:
   bool contentAfterLeading() const;
   void setContentAfterLeading(bool after);
 
+  /// Whether the border at the bottom of the title bar is drawn. Visible by default.
+  bool borderVisible() const;
+  void setBorderVisible(bool visible);
+
   /// Marks a widget placed in the title bar as interactive (true) or as a part of the draggable area (false).
   /// By default, the content widget container, plain QWidget/QFrame containers and display-only widgets (QLabel,
   /// QProgressBar, QLCDNumber, IconWidget, StatusBadgeWidget, NotificationBadge) are draggable and every other

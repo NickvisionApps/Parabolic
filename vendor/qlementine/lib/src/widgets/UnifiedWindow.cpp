@@ -178,7 +178,7 @@ struct UnifiedWindow::Impl {
   QSpacerItem* leadingSpacer{ nullptr };
   QPointer<QWidget> centralWidget;
   QPointer<QStatusBar> statusBar;
-  bool statusBarBorderVisible{ true };
+  bool statusBarBorderVisible{ false };
   QPointer<QWidget> leadingWidget;
   int leadingWidth{ 0 };
   int contentCornerRadius{ 0 };
@@ -363,6 +363,7 @@ void UnifiedWindow::setContentCornerRadius(int radius) {
   radius = std::max(0, radius);
   if (radius != _impl->contentCornerRadius) {
     _impl->contentCornerRadius = radius;
+    _impl->titleBar->setBorderVisible(radius <= 0);
     _impl->updateCorners();
   }
 }

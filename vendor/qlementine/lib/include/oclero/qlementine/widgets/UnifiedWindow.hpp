@@ -31,6 +31,7 @@ public:
   /// Radius of the rounded corners of the central widget, in pixels. The corners are drawn with the background of the
   /// window, so they are visible next to the title bar, the leading widget and the status bar. The default is 0:
   /// the corners are square and the central widget has no border. Use a radius to inset the central widget.
+  /// An inset central widget has its own border, so the border of the title bar is hidden then.
   int contentCornerRadius() const;
   void setContentCornerRadius(int radius);
 
@@ -47,7 +48,7 @@ public:
   QStatusBar* statusBar() const;
   void setStatusBar(QStatusBar* statusBar);
 
-  /// Whether the border at the top of the status bar is drawn. Visible by default.
+  /// Whether the border at the top of the status bar is drawn. Hidden by default.
   bool statusBarBorderVisible() const;
   void setStatusBarBorderVisible(bool visible);
 

@@ -50,7 +50,7 @@ public:
   int expandedWidth() const;
   Q_SLOT void setExpandedWidth(int width);
 
-  /// Whether the border on the side of the content is drawn. It starts under the top contents margin, so it stops at
+  /// Whether the border on the side of the content is drawn. Hidden by default. It starts under the top contents margin, so it stops at
   /// the title bar when the sidebar is the leading widget of a UnifiedWindow.
   bool borderVisible() const;
   Q_SLOT void setBorderVisible(bool visible);
@@ -120,7 +120,7 @@ private:
   double _expansionProgress{ 0. };
   QScrollBar* _scrollBar{ nullptr };
   int _expandedWidth{ 0 };
-  bool _borderVisible{ true };
+  bool _borderVisible{ false };
   int _scrollOffset{ 0 };
   QRect _viewportRect;
   QPointer<QWidget> _headerWidget;
