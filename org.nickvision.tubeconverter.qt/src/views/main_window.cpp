@@ -26,6 +26,16 @@ namespace parabolic::qt::views
         m_navigation_view->addPage(m_home_page, translator._("Home"),
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Home)));
+
+        m_navigation_view->addPage(new QWidget(m_navigation_view), translator._("History"),
+                                   oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                           oclero::qlementine::icons::Icons16::Misc_Clock)));
+        m_navigation_view->addPage(new QWidget(m_navigation_view), translator._("Keyring"),
+                                   oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                           oclero::qlementine::icons::Icons16::Misc_Password)));
+        m_navigation_view->addPage(new QWidget(m_navigation_view), translator._("Downloads"),
+                                   oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                           oclero::qlementine::icons::Icons16::Action_Download)));
         m_toolbar->setMovable(false);
         m_toolbar->setFloatable(false);
         m_toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
@@ -56,6 +66,7 @@ namespace parabolic::qt::views
     {
         const translation::Translator& translator{ application::State::instance().translator() };
         bool is_collapsed{ m_navigation_view->sidebar()->compact() };
+        application::State::instance().configuration().set_collapse_sidebar(!is_collapsed);
         m_navigation_view->sidebar()->toggleCompact();
         m_act_toggle_sidebar->setIcon(
                 oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
@@ -63,6 +74,5 @@ namespace parabolic::qt::views
                                      : oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
         m_act_toggle_sidebar->setToolTip(is_collapsed ? translator._("Expand Navigation")
                                                       : translator._("Collapse Navigation"));
-        application::State::instance().configuration().set_collapse_sidebar(!is_collapsed);
     }
 }
