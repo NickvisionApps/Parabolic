@@ -1,14 +1,13 @@
 #include <QApplication>
 #include <QIcon>
-#include <QObject>
 #include <QStyleHints>
 #include <Qt>
-#include <oclero/qlementine/Common.hpp>
 #include <oclero/qlementine/icons/QlementineIcons.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/Theme.hpp>
 #include <oclero/qlementine/style/ThemeManager.hpp>
+#include <oclero/qlementine/utils/ImageUtils.hpp>
 #include "application.h"
+#include "configuration.h"
 #include "views/main_window.h"
 
 int main(int argc, char* argv[])
@@ -27,13 +26,24 @@ int main(int argc, char* argv[])
     style->setAutoIconColor(oclero::qlementine::AutoIconColor::TextColor);
     style->setIconPathGetter(oclero::qlementine::icons::fromFreeDesktop);
     style->setToolTipMatchesTheme(true);
-    oclero::qlementine::ThemeManager* theme_manager{ new oclero::qlementine::ThemeManager{ style } };
     QApplication::setStyle(style);
+    oclero::qlementine::ThemeManager* theme_manager{ new oclero::qlementine::ThemeManager{ style } };
     theme_manager->loadDirectory(":/qlementine/resources/themes");
-    theme_manager->setCurrentTheme(QApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark"
-                                                                                                      : "Light");
+    switch (parabolic::application::State::instance().configuration().theme())
+    {
+    case parabolic::configuration::Theme::Light:
+        theme_manager->setCurrentTheme("Light");
+        break;
+    case parabolic::configuration::Theme::Dark:
+        theme_manager->setCurrentTheme("Legacy Dark");
+        break;
+    default:
+        theme_manager->setCurrentTheme(
+                QApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark" : "Light");
+        break;
+    }
     theme_manager->setUseSystemAccentColor(true);
-    parabolic::qt::views::MainWindow window{ theme_manager };
+    parabolic::qt::views::MainWindow window;
     window.show();
     return QApplication::exec();
 }

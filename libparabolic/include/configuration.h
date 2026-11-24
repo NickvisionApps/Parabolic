@@ -61,6 +61,8 @@ namespace parabolic::configuration
         void set_aria2_options(const aria2::Options& value);
         [[nodiscard]] bool automatically_check_for_updates() const;
         void set_automatically_check_for_updates(bool value);
+        [[nodiscard]] bool collapse_sidebar() const;
+        void set_collapse_sidebar(bool value);
         [[nodiscard]] discovery::Options discovery_options() const;
         void set_discovery_options(const discovery::Options& value);
         [[nodiscard]] download::Options download_options() const;
@@ -93,6 +95,7 @@ namespace parabolic::configuration
         mutable std::mutex m_mutex;
         aria2::Options m_aria2_options;
         bool m_automatically_check_for_updates{ true };
+        bool m_collapse_sidebar{ false };
         discovery::Options m_discovery_options;
         download::Options m_download_options;
         extractor::Options m_extractor_options;

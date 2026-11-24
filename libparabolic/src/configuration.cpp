@@ -174,6 +174,23 @@ namespace parabolic::configuration
         save();
     }
 
+    bool Configuration::collapse_sidebar() const
+    {
+        std::scoped_lock lock{ m_mutex };
+        return m_collapse_sidebar;
+    }
+
+    void Configuration::set_collapse_sidebar(bool value)
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (m_collapse_sidebar == value)
+        {
+            return;
+        }
+        m_collapse_sidebar = value;
+        save();
+    }
+
     discovery::Options Configuration::discovery_options() const
     {
         std::scoped_lock lock{ m_mutex };
@@ -401,6 +418,14 @@ namespace parabolic::configuration
         {
             config.m_automatically_check_for_updates = json.at("AutomaticallyCheckForUpdates").get<bool>();
         }
+        if (json.contains("collapseSidebar") && json["collapseSidebar"].is_boolean())
+        {
+            config.m_collapse_sidebar = json.at("collapseSidebar").get<bool>();
+        }
+        else if (json.contains("CollapseSidebar") && json["CollapseSidebar"].is_boolean())
+        {
+            config.m_collapse_sidebar = json.at("CollapseSidebar").get<bool>();
+        }
         if (json.contains("showDisclaimerOnStartup") && json["showDisclaimerOnStartup"].is_boolean())
         {
             config.m_show_disclaimer_on_startup = json.at("showDisclaimerOnStartup").get<bool>();
@@ -488,6 +513,7 @@ namespace parabolic::configuration
     {
         json = nlohmann::json{
             { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
+            { "collapseSidebar", config.m_collapse_sidebar },
             { "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup },
             { "theme", static_cast<int>(config.m_theme) },
             { "windowGeometry", config.m_window_geometry },
