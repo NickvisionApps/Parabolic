@@ -224,8 +224,10 @@ struct UnifiedWindow::Impl {
       }
       width = std::max(width, controlsWidth);
       leadingWidget->setContentsMargins(0, titleBar->sizeHint().height(), 0, 0);
+      // The window can have margins around its frame (such as the shadow on Linux): the leading widget stays inside.
+      const auto frame = window.contentsRect();
       const auto statusBarHeight = statusBar && statusBar->isVisibleTo(&window) ? statusBar->sizeHint().height() : 0;
-      leadingWidget->setGeometry(0, 0, width, window.height() - statusBarHeight);
+      leadingWidget->setGeometry(frame.x(), frame.y(), width, frame.height() - statusBarHeight);
     }
     if (width != leadingWidth) {
       leadingWidth = width;
