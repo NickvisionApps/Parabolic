@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
+#include "home_page.h"
 
 namespace parabolic::qt::views
 {
@@ -25,6 +26,7 @@ namespace parabolic::qt::views
         QToolBar* m_toolbar{ nullptr };
         QAction* m_act_toggle_sidebar{ nullptr };
         QAction* m_act_add_download{ nullptr };
+        HomePage* m_home_page{ nullptr };
     };
 }
 

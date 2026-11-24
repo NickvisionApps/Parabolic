@@ -1,13 +1,7 @@
 #ifndef HOMEPAGE_H
 #define HOMEPAGE_H
 
-#include <QPaintEvent>
 #include <QWidget>
-
-namespace ui
-{
-    class HomePage;
-}
 
 namespace parabolic::qt::views
 {
@@ -15,17 +9,11 @@ namespace parabolic::qt::views
     {
     public:
         HomePage(QWidget* parent = nullptr);
-        ~HomePage() override;
+        ~HomePage() override = default;
         HomePage(const HomePage&) = delete;
         HomePage(HomePage&&) = delete;
         HomePage& operator=(const HomePage&) = delete;
         HomePage& operator=(HomePage&&) = delete;
-
-    protected:
-        void paintEvent(QPaintEvent* event) override;
-
-    private:
-        ui::HomePage* m_ui{ nullptr };
     };
 }
 

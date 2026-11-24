@@ -19,10 +19,11 @@ namespace parabolic::qt::views
     MainWindow::MainWindow(QWidget* parent)
         : UnifiedWindow{ parent },
           m_navigation_view{ new oclero::qlementine::NavigationView(this) },
-          m_toolbar{ new QToolBar(titleBar()) }
+          m_toolbar{ new QToolBar(titleBar()) },
+          m_home_page{ new HomePage(m_navigation_view) }
     {
         const translation::Translator& translator{ application::State::instance().translator() };
-        m_navigation_view->addPage(new HomePage(m_navigation_view), translator._("Home"),
+        m_navigation_view->addPage(m_home_page, translator._("Home"),
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Home)));
         m_toolbar->setMovable(false);
