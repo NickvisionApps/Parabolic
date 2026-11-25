@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 23:13-0500\n"
+"POT-Creation-Date: 2026-11-24 23:29-0500\n"
 "PO-Revision-Date: 2026-05-03 08:09+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -73,55 +73,97 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:29
+#: org.nickvision.tubeconverter.qt/src/main.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:28
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "אודות Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:34
+#: org.nickvision.tubeconverter.qt/src/main.cpp:56
+msgid "Don't show this message again"
+msgstr "אל תציג הודעה זו שוב"
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:58
+#: org.nickvision.tubeconverter.qt/src/main.cpp:59
+msgid "Legal Copyright Disclaimer"
+msgstr "הבהרה משפטית בנושא זכויות יוצרים"
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:61
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+"סרטונים ב-YouTube ובאתרים אחרים עשויים להיות מוגנים בזכויות יוצרים. יוצרי "
+"Parabolic אינם מעודדים ואינם אחראים לשימוש ביישום זה לצורך הפרת חוקים אלו."
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:66
+msgid "I understand"
+msgstr "הבנתי"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:33
 msgid "Home"
 msgstr "בית"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:29
 #, fuzzy
 msgid "Downloads"
 msgstr "הורדות"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:39
 #, fuzzy
 msgid "History"
 msgstr "היסטוריה"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
 msgid "Keyring"
 msgstr "מנהל אישורים"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:54
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
 msgid "Collapse Sidebar"
 msgstr ""
 
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:60
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
 msgid "Add Download"
 msgstr "הוסף הורדה"
 
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:67
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:68
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:69
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:13
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:20
 #, fuzzy
 msgid "Settings"
 msgstr "הגדרות"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:121
 msgid "Expand Sidebar"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:23
+#, fuzzy
+msgid "General"
+msgstr "כללי"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:26
+#, fuzzy
+msgid "Discovery"
+msgstr "טעינה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:32
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:35
+#, fuzzy
+msgid "Postprocessing"
+msgstr "בתהליך"
 
 #~ msgid "Download Media"
 #~ msgstr "הורדת מדיה"
@@ -175,42 +217,10 @@ msgstr ""
 #~ msgid "Discussions"
 #~ msgstr "פורום דיונים"
 
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "הבהרה משפטית בנושא זכויות יוצרים"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "סרטונים ב-YouTube ובאתרים אחרים עשויים להיות מוגנים בזכויות יוצרים. יוצרי "
-#~ "Parabolic אינם מעודדים ואינם אחראים לשימוש ביישום זה לצורך הפרת חוקים אלו."
-
-#~ msgid "Don't show this message again"
-#~ msgstr "אל תציג הודעה זו שוב"
-
-#~ msgid "I understand"
-#~ msgstr "הבנתי"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "כללי"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "טעינה"
-
 #, fuzzy
 #~ msgctxt "Settings"
 #~ msgid "Downloads"
 #~ msgstr "הורדות"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "בתהליך"
 
 #~ msgid "Add"
 #~ msgstr "הוסף"

@@ -1,5 +1,8 @@
+#include <QAbstractButton>
 #include <QApplication>
+#include <QCheckBox>
 #include <QIcon>
+#include <QMessageBox>
 #include <QStyleHints>
 #include <Qt>
 #include <oclero/qlementine/icons/QlementineIcons.hpp>
@@ -8,6 +11,7 @@
 #include <oclero/qlementine/utils/ImageUtils.hpp>
 #include "application.h"
 #include "configuration.h"
+#include "translation.h"
 #include "views/main_window.h"
 
 int main(int argc, char* argv[])
@@ -45,5 +49,24 @@ int main(int argc, char* argv[])
     theme_manager->setUseSystemAccentColor(true);
     parabolic::qt::views::MainWindow window;
     window.show();
+    if (parabolic::application::State::instance().configuration().show_disclaimer_on_startup())
+    {
+        const parabolic::translation::Translator& translator{ parabolic::application::State::instance().translator() };
+        QMessageBox disclaimer{ &window };
+        QCheckBox* chk_show{ new QCheckBox(translator._("Don't show this message again"), &disclaimer) };
+        disclaimer.setIcon(QMessageBox::Information);
+        disclaimer.setWindowTitle(translator._("Legal Copyright Disclaimer"));
+        disclaimer.setText(translator._("Legal Copyright Disclaimer"));
+        disclaimer.setInformativeText(
+                translator._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of "
+                             "Parabolic do not endorse, and are not responsible for, the use of this application in "
+                             "means that will violate these laws."));
+        disclaimer.setCheckBox(chk_show);
+        disclaimer.setStandardButtons(QMessageBox::Ok);
+        disclaimer.button(QMessageBox::Ok)->setText(translator._("I understand"));
+        disclaimer.exec();
+        parabolic::application::State::instance().configuration().set_show_disclaimer_on_startup(
+                !chk_show->isChecked());
+    }
     return QApplication::exec();
 }

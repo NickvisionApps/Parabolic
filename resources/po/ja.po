@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 23:13-0500\n"
+"POT-Creation-Date: 2026-11-24 23:29-0500\n"
 "PO-Revision-Date: 2026-02-27 16:32+0000\n"
 "Last-Translator: sotohi <c6h4ohcooc6h5@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -72,55 +72,98 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:29
+#: org.nickvision.tubeconverter.qt/src/main.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:28
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "Parabolic について"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:34
+#: org.nickvision.tubeconverter.qt/src/main.cpp:56
+msgid "Don't show this message again"
+msgstr "二度とこのメッセージを表示しない"
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:58
+#: org.nickvision.tubeconverter.qt/src/main.cpp:59
+msgid "Legal Copyright Disclaimer"
+msgstr "著作権に関する法的免責事項"
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:61
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+"YouTube やその他のサイト上の動画は、DMCAによる保護の対象となる場合がありま"
+"す。Parabolic はこれらの法律に違反する形での本アプリケーションの使用を推奨せ"
+"ず、またその使用について一切の責任を負いません。"
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:66
+msgid "I understand"
+msgstr "理解しました"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:33
 msgid "Home"
 msgstr "ホーム"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:29
 #, fuzzy
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:39
 #, fuzzy
 msgid "History"
 msgstr "履歴"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
 msgid "Keyring"
 msgstr "キーリング"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:54
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
 msgid "Collapse Sidebar"
 msgstr ""
 
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:60
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
 msgid "Add Download"
 msgstr "ダウンロードを追加"
 
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:67
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:68
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:69
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:13
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:20
 #, fuzzy
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:121
 msgid "Expand Sidebar"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:23
+#, fuzzy
+msgid "General"
+msgstr "一般"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:26
+#, fuzzy
+msgid "Discovery"
+msgstr "探索"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:32
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:35
+#, fuzzy
+msgid "Postprocessing"
+msgstr "進行中"
 
 #~ msgid "Download Media"
 #~ msgstr "メディアをダウンロード"
@@ -174,43 +217,10 @@ msgstr ""
 #~ msgid "Discussions"
 #~ msgstr "ディスカッション"
 
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "著作権に関する法的免責事項"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "YouTube やその他のサイト上の動画は、DMCAによる保護の対象となる場合がありま"
-#~ "す。Parabolic はこれらの法律に違反する形での本アプリケーションの使用を推奨"
-#~ "せず、またその使用について一切の責任を負いません。"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "二度とこのメッセージを表示しない"
-
-#~ msgid "I understand"
-#~ msgstr "理解しました"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "一般"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "探索"
-
 #, fuzzy
 #~ msgctxt "Settings"
 #~ msgid "Downloads"
 #~ msgstr "ダウンロード"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "進行中"
 
 #~ msgid "Add"
 #~ msgstr "追加"

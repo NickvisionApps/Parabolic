@@ -2,6 +2,8 @@
 #include <QAction>
 #include <QCloseEvent>
 #include <QIcon>
+#include <QKeySequence>
+#include <QShortcut>
 #include <QSizePolicy>
 #include <QToolBar>
 #include <QWidget>
@@ -66,6 +68,7 @@ namespace parabolic::qt::views
                                              oclero::qlementine::icons::Icons16::Navigation_Settings)),
                                      translator._("Settings"));
         m_act_settings->setToolTip(translator._("Settings"));
+        connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QWidget::close);
         connect(m_act_add_download, &QAction::triggered, this, &MainWindow::add_download);
         connect(m_act_settings, &QAction::triggered, this, &MainWindow::settings);
         connect(m_act_toggle_sidebar, &QAction::triggered, this, &MainWindow::toggle_sidebar);

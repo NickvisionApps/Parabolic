@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 23:13-0500\n"
+"POT-Creation-Date: 2026-11-24 23:29-0500\n"
 "PO-Revision-Date: 2026-04-24 15:09+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -72,55 +72,98 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:29
+#: org.nickvision.tubeconverter.qt/src/main.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:28
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "Rakenduse teave: Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:34
+#: org.nickvision.tubeconverter.qt/src/main.cpp:56
+msgid "Don't show this message again"
+msgstr "Ära näita seda sõnumit uuesti"
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:58
+#: org.nickvision.tubeconverter.qt/src/main.cpp:59
+msgid "Legal Copyright Disclaimer"
+msgstr "Autoriõigustega seotud lahtiütlus vastutusest"
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:61
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+"YouTube'i ja muude saitide videod võivad olla kaitstud DMCA alusel. "
+"Parabolicu autorid ei soosi seda, ega ole vastutavad, kui seda rakendust "
+"kasutatakse nende seaduste rikkumisel."
+
+#: org.nickvision.tubeconverter.qt/src/main.cpp:66
+msgid "I understand"
+msgstr "Ma saan sellest aru"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:33
 msgid "Home"
 msgstr "Avavaade"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:29
 #, fuzzy
 msgid "Downloads"
 msgstr "Allalaadimised"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:39
 #, fuzzy
 msgid "History"
 msgstr "Ajalugu"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
 msgid "Keyring"
 msgstr "Võtmerõngas"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:54
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
 msgid "Collapse Sidebar"
 msgstr ""
 
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:60
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
 msgid "Add Download"
 msgstr "Lisa allalaadimine"
 
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:67
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:68
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:69
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:13
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:20
 #, fuzzy
 msgid "Settings"
 msgstr "Seadistused"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:121
 msgid "Expand Sidebar"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:23
+#, fuzzy
+msgid "General"
+msgstr "Üldist"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:26
+#, fuzzy
+msgid "Discovery"
+msgstr "Otsi ja avasta"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:32
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:35
+#, fuzzy
+msgid "Postprocessing"
+msgstr "Järeltöötlemisel"
 
 #~ msgid "Download Media"
 #~ msgstr "Laadi alla meediat"
@@ -176,43 +219,10 @@ msgstr ""
 #~ msgid "Discussions"
 #~ msgstr "Arutelud"
 
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "Autoriõigustega seotud lahtiütlus vastutusest"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "YouTube'i ja muude saitide videod võivad olla kaitstud DMCA alusel. "
-#~ "Parabolicu autorid ei soosi seda, ega ole vastutavad, kui seda rakendust "
-#~ "kasutatakse nende seaduste rikkumisel."
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Ära näita seda sõnumit uuesti"
-
-#~ msgid "I understand"
-#~ msgstr "Ma saan sellest aru"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Üldist"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Otsi ja avasta"
-
 #, fuzzy
 #~ msgctxt "Settings"
 #~ msgid "Downloads"
 #~ msgstr "Allalaadimised"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Järeltöötlemisel"
 
 #~ msgid "Add"
 #~ msgstr "Lisa"

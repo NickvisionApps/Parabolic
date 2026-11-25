@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <oclero/qlementine/widgets/NavigationView.hpp>
 
 namespace parabolic::qt::views
 {
@@ -15,6 +16,9 @@ namespace parabolic::qt::views
         SettingsDialog(SettingsDialog&&) = delete;
         SettingsDialog& operator=(const SettingsDialog&) = delete;
         SettingsDialog& operator=(SettingsDialog&&) = delete;
+
+    private:
+        oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
     };
 }
 
