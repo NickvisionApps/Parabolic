@@ -19,9 +19,7 @@
 #include "audio.h"
 #include "batch.h"
 #include "cookies.h"
-#include "deno.h"
 #include "extractor.h"
-#include "ffmpeg.h"
 #include "file.h"
 #include "keyring.h"
 #include "string_manip.h"
@@ -662,67 +660,37 @@ namespace parabolic::discovery
                                                          const std::optional<keyring::Credential>& credential,
                                                          const std::stop_token& stop_token) const
     {
-        std::vector<std::string> args{
-            url,
-            "--ignore-config",
-            "--dump-single-json",
-            "--skip-download",
-            "--ignore-errors",
-            "--no-warnings",
-            "--ffmpeg-location",
-            parabolic::ffmpeg::executable_path(),
-            "--js-runtimes",
-            std::format("deno:{}", parabolic::deno::executable_path()),
-            "--paths",
-            std::format("temp:{}", sago::getCacheDir()),
-        };
-        std::string plugins{ parabolic::ytdlp::plugins_path() };
-        if (std::filesystem::exists(plugins))
-        {
-            args.emplace_back("--plugin-dir");
-            args.push_back(plugins);
-        }
+        ytdlp::Options options{ url, {}, stop_token };
+        options.add_argument("--dump-single-json");
+        options.add_argument("--skip-download");
+        options.add_argument("--ignore-errors");
+        options.add_credential(credential);
         if (m_discovery_options.limit_characters())
         {
-            args.emplace_back("--windows-filenames");
+            options.add_argument("--windows-filenames");
         }
         if (!m_extractor_options.proxy_url().empty())
         {
-            args.emplace_back("--proxy");
-            args.push_back(m_extractor_options.proxy_url());
-        }
-        if (credential)
-        {
-            if (!credential->username().empty() && !credential->password().empty())
-            {
-                args.emplace_back("--username");
-                args.push_back(credential->username());
-                args.emplace_back("--password");
-                args.push_back(credential->password());
-            }
-            else if (!credential->password().empty())
-            {
-                args.emplace_back("--video-password");
-                args.push_back(credential->password());
-            }
+            options.add_argument("--proxy");
+            options.add_argument(m_extractor_options.proxy_url());
         }
         if (m_extractor_options.cookies_browser() != cookies::Browser::None)
         {
-            args.emplace_back("--cookies-from-browser");
-            args.push_back(cookies::to_argument_str(m_extractor_options.cookies_browser()));
+            options.add_argument("--cookies-from-browser");
+            options.add_argument(cookies::to_argument_str(m_extractor_options.cookies_browser()));
         }
         else if (std::filesystem::exists(m_extractor_options.cookies_path()))
         {
-            args.emplace_back("--cookies");
-            args.push_back(m_extractor_options.cookies_path());
+            options.add_argument("--cookies");
+            options.add_argument(m_extractor_options.cookies_path());
         }
-        args.append_range(string_manip::command_line_split(m_discovery_options.ytdlp_arguments()));
-        std::expected<std::string, std::string> result{ ytdlp::execute(args, {}, stop_token) };
+        options.add_arguments(string_manip::command_line_split(m_discovery_options.ytdlp_arguments()));
+        std::expected<std::string, std::string> result{ ytdlp::execute(options) };
         if (!result)
         {
             return std::unexpected{ result.error() };
         }
-        std::string output{ string_manip::trim(std::move(result.value())) };
+        std::string output{ string_manip::trim(std::move(*result)) };
         if (!output.starts_with('{'))
         {
             return std::unexpected{ "yt-dlp did not return a valid JSON." };
