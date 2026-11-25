@@ -10,7 +10,6 @@
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
-#include <sago/platform_folders.h>
 #include <stop_token>
 #include <string>
 #include <unordered_map>

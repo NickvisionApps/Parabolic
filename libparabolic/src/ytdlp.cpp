@@ -4,7 +4,7 @@
 #include <expected>
 #include <filesystem>
 #include <format>
-#include <functional>
+#include <optional>
 #include <reproc++/drain.hpp>
 #include <reproc++/reproc.hpp>
 #include <sago/platform_folders.h>
@@ -17,14 +17,17 @@
 #include "deno.h"
 #include "environment.h"
 #include "ffmpeg.h"
+#include "keyring.h"
+#ifdef _WIN32
 #include "string_manip.h"
+#endif
 
 namespace parabolic::ytdlp
 {
     Options::Options(const std::string& url, ProcessOutputCallback output_callback, std::stop_token stop_token)
         : m_arguments{ 12 },
-        m_output_callback{ std::move(output_callback) },
-        m_stop_token{ std::move(stop_token) }
+          m_output_callback{ std::move(output_callback) },
+          m_stop_token{ std::move(stop_token) }
     {
         std::filesystem::path plugins{ environment::executable_directory() / "plugins" };
         m_arguments.push_back(executable_path());
@@ -53,7 +56,7 @@ namespace parabolic::ytdlp
         return m_arguments;
     }
 
-    const Options::ProcessOutputCallback& Options::output_callback() const
+    const ProcessOutputCallback& Options::output_callback() const
     {
         return m_output_callback;
     }
@@ -70,7 +73,7 @@ namespace parabolic::ytdlp
 
     void Options::add_arguments(const std::vector<std::string>& arguments)
     {
-        m_arguments.add_range(arguments);
+        m_arguments.append_range(arguments);
     }
 
     void Options::add_credential(const std::optional<keyring::Credential>& credential)
@@ -127,7 +130,9 @@ namespace parabolic::ytdlp
         }
         reproc::options proc_options;
         proc_options.redirect.in.type = reproc::redirect::discard;
-        std::expected<environment::Process, std::error_code> started{ environment::Process::start(options.arguments(), proc_options) };
+        std::expected<environment::Process, std::error_code> started{
+            environment::Process::start(options.arguments(), proc_options),
+        };
         if (!started)
         {
             return std::unexpected{ started.error().message() };
