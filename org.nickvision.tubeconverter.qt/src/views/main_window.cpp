@@ -15,6 +15,7 @@
 #include "configuration.h"
 #include "translation.h"
 #include "views/home_page.h"
+#include "views/settings_dialog.h"
 
 namespace parabolic::qt::views
 {
@@ -23,11 +24,12 @@ namespace parabolic::qt::views
           m_navigation_view{ new oclero::qlementine::NavigationView(this) },
           m_toolbar{ new QToolBar(titleBar()) }
     {
-        titleBar()->setContentWidget(m_toolbar);
-        setContentCornerRadius(12);
+        const translation::Translator& translator{ application::State::instance().translator() };
+        setWindowTitle(translator._p("AppName", "Parabolic"));
         setCentralWidget(m_navigation_view);
         setLeadingWidget(m_navigation_view->sidebar());
-        const translation::Translator& translator{ application::State::instance().translator() };
+        setContentCornerRadius(12);
+        titleBar()->setContentWidget(m_toolbar);
         m_navigation_view->addPage(new HomePage(m_navigation_view), translator._("Home"),
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Home)));
@@ -100,8 +102,10 @@ namespace parabolic::qt::views
     {
     }
 
-    void MainWindow::settings() const
+    void MainWindow::settings()
     {
+        SettingsDialog dialog{ this };
+        dialog.exec();
     }
 
     void MainWindow::toggle_sidebar() const

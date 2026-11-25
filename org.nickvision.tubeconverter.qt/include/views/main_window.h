@@ -25,7 +25,7 @@ namespace parabolic::qt::views
 
     private:
         void add_download() const;
-        void settings() const;
+        void settings();
         void toggle_sidebar() const;
         oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
         QToolBar* m_toolbar{ nullptr };
