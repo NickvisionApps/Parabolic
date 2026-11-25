@@ -83,18 +83,11 @@ namespace parabolic::qt::views
     void MainWindow::closeEvent(QCloseEvent* event)
     {
         configuration::Configuration& configuration{ application::State::instance().configuration() };
-        if (windowState() & Qt::WindowMaximized)
+        if (isMaximized())
         {
-            if (!configuration.window_geometry().is_maximized())
-            {
-                configuration.set_window_geometry(
-                        { configuration.window_geometry().width(), configuration.window_geometry().height(), true,
-                          configuration.window_geometry().x(), configuration.window_geometry().y() });
-            }
-            else
-            {
-                configuration.set_window_geometry({ 800, 600, true, 10, 10 });
-            }
+            configuration.set_window_geometry(
+                    { configuration.window_geometry().width(), configuration.window_geometry().height(), true,
+                      configuration.window_geometry().x(), configuration.window_geometry().y() });
         }
         else
         {
