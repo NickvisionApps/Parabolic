@@ -2,11 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QAction>
+#include <QCloseEvent>
 #include <QToolBar>
 #include <QWidget>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
-#include "home_page.h"
 
 namespace parabolic::qt::views
 {
@@ -20,13 +20,18 @@ namespace parabolic::qt::views
         MainWindow& operator=(const MainWindow&) = delete;
         MainWindow& operator=(MainWindow&&) = delete;
 
+    protected:
+        void closeEvent(QCloseEvent* event) override;
+
     private:
+        void add_download() const;
+        void settings() const;
         void toggle_sidebar() const;
         oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
         QToolBar* m_toolbar{ nullptr };
-        QAction* m_act_toggle_sidebar{ nullptr };
         QAction* m_act_add_download{ nullptr };
-        HomePage* m_home_page{ nullptr };
+        QAction* m_act_settings{ nullptr };
+        QAction* m_act_toggle_sidebar{ nullptr };
     };
 }
 

@@ -41,7 +41,8 @@ namespace parabolic::configuration
         void set_x(int value);
         [[nodiscard]] int y() const;
         void set_y(int value);
-        bool operator==(const WindowGeometry& rhs) const = default;
+        bool operator==(const WindowGeometry& rhs) const;
+        bool operator!=(const WindowGeometry& rhs) const;
         friend void from_json(const nlohmann::json& json, WindowGeometry& geometry);
         friend void to_json(nlohmann::json& json, const WindowGeometry& geometry);
 

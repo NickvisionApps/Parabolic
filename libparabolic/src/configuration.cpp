@@ -91,6 +91,24 @@ namespace parabolic::configuration
         m_y = value;
     }
 
+    bool WindowGeometry::operator==(const WindowGeometry& rhs) const
+    {
+        if (m_is_maximized != rhs.m_is_maximized)
+        {
+            return false;
+        }
+        if (m_is_maximized)
+        {
+            return true;
+        }
+        return m_width == rhs.m_width && m_height == rhs.m_height && m_x == rhs.m_x && m_y == rhs.m_y;
+    }
+
+    bool WindowGeometry::operator!=(const WindowGeometry& rhs) const
+    {
+        return !operator==(rhs);
+    }
+
     Configuration::Configuration(std::string_view app_name)
 #ifdef _WIN32
         : m_path{ std::filesystem::path(string_manip::wstr(sago::getConfigHome())) / app_name / "config.json" }
