@@ -9,6 +9,8 @@ namespace Nickvision.Parabolic.Shared.Models;
 public class DownloadOptions
 {
     private const int _maxDotExtensionLength = 15;
+    // File systems limit names to 255 bytes; leave room for yt-dlp's ".f<format id>.<ext>.part" names
+    private const int _maxFilenameBytes = 200;
     private bool _isEnsuringPath;
 
     public Uri Url { get; set; }
@@ -64,9 +66,25 @@ public class DownloadOptions
 
         set
         {
-            field = value.Length <= 255 - _maxDotExtensionLength ? value : value.Substring(0, 255 - _maxDotExtensionLength);
+            field = TrimToUtf8Bytes(value, _maxFilenameBytes);
             EnsurePathSize();
         }
+    }
+
+    private static string TrimToUtf8Bytes(string value, int maxBytes)
+    {
+        var bytes = 0;
+        var length = 0;
+        foreach (var rune in value.EnumerateRunes())
+        {
+            bytes += rune.Utf8SequenceLength;
+            if (bytes > maxBytes)
+            {
+                break;
+            }
+            length += rune.Utf16SequenceLength;
+        }
+        return value.Substring(0, length);
     }
 
     private void EnsurePathSize()
