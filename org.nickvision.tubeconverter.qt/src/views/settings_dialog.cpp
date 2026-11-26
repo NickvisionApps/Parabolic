@@ -14,7 +14,6 @@
 #include <QLineEdit>
 #include <QList>
 #include <QListWidget>
-#include <QLocale>
 #include <QMessageBox>
 #include <QObject>
 #include <QPalette>
@@ -31,7 +30,9 @@
 #include <QWidget>
 #include <Qt>
 #include <algorithm>
+#include <array>
 #include <cstddef>
+#include <cstdint>
 #include <oclero/qlementine/Common.hpp>
 #include <oclero/qlementine/icons/Icons16.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
@@ -42,6 +43,9 @@
 #include <optional>
 #include <string>
 #include <thread>
+#include <unicode/uloc.h>
+#include <unicode/umachine.h>
+#include <unicode/utypes.h>
 #include <utility>
 #include <vector>
 #include "app.h"
@@ -266,33 +270,11 @@ namespace parabolic::qt::views
         m_grp_history = add_group(page_layout(), history_layout);
         m_cmb_history_length = add_combo(history_layout, m_lbl_history_length);
         page_layout()->addStretch();
-        std::vector<std::pair<QString, std::string>> languages;
-        for (const std::string& language : translator.available_languages())
-        {
-            QString name{ QLocale(QString::fromStdString(language)).nativeLanguageName() };
-            if (name.isEmpty())
-            {
-                name = QString::fromStdString(language);
-            }
-            else if (language.contains('_'))
-            {
-                name += QString::fromStdString(" (" + language + ")");
-            }
-            languages.emplace_back(name, language);
-        }
-        std::ranges::sort(languages,
-                          [](const std::pair<QString, std::string>& a, const std::pair<QString, std::string>& b)
-        {
-            return a.first.localeAwareCompare(b.first) < 0;
-        });
-        m_cmb_language->addItem({});
-        for (const std::pair<QString, std::string>& language : languages)
-        {
-            m_cmb_language->addItem(language.first);
-            m_languages.push_back(language.second);
-        }
+        m_languages = translator.available_languages();
+        m_cmb_language->addItems(QList<QString>(static_cast<qsizetype>(m_languages.size()) + 1));
         translate();
-        const auto language_it{ std::ranges::find(m_languages, configuration.translation_options().language()) };
+        const std::vector<std::string>::iterator language_it{ std::ranges::find(
+                m_languages, configuration.translation_options().language()) };
         m_cmb_theme->setCurrentIndex(static_cast<int>(configuration.theme()));
         m_cmb_language->setCurrentIndex(
                 language_it == m_languages.end() ? 0 : static_cast<int>(language_it - m_languages.begin()) + 1);
@@ -426,6 +408,38 @@ namespace parabolic::qt::views
                                });
         m_lbl_language->setText(labeled(translator._("Translation Language")));
         m_cmb_language->setItemText(0, translator._p("Language", "System"));
+        std::string selected_language{
+            m_cmb_language->currentIndex() > 0
+                    ? m_languages[static_cast<std::size_t>(m_cmb_language->currentIndex()) - 1]
+                    : std::string{}
+        };
+        std::vector<std::pair<QString, std::string>> languages;
+        languages.reserve(m_languages.size());
+        for (const std::string& language : m_languages)
+        {
+            std::array<UChar, 128> name{};
+            UErrorCode status{ U_ZERO_ERROR };
+            int32_t length{ uloc_getDisplayName(language.c_str(), translator.language().c_str(), name.data(),
+                                                static_cast<int32_t>(name.size()), &status) };
+            languages.emplace_back(U_SUCCESS(status) && length > 0 ? QString::fromUtf16(name.data(), length)
+                                                                   : QString::fromStdString(language),
+                                   language);
+        }
+        std::ranges::sort(languages,
+                          [](const std::pair<QString, std::string>& a, const std::pair<QString, std::string>& b)
+        {
+            return a.first.localeAwareCompare(b.first) < 0;
+        });
+        const QSignalBlocker language_blocker{ m_cmb_language };
+        for (std::size_t i{ 0 }; i < languages.size(); i++)
+        {
+            m_languages[i] = languages[i].second;
+            m_cmb_language->setItemText(static_cast<int>(i) + 1, languages[i].first);
+        }
+        const std::vector<std::string>::iterator selected_it{ std::ranges::find(m_languages, selected_language) };
+        m_cmb_language->setCurrentIndex(selected_it == m_languages.end() || selected_language.empty()
+                                                ? 0
+                                                : static_cast<int>(selected_it - m_languages.begin()) + 1);
         m_grp_updates->setTitle(translator._("Updates"));
         m_chk_automatic_updates->setText(translator._("Automatically Check for Updates"));
         m_chk_preview_updates->setText(translator._("Allow Preview Updates"));

@@ -25,7 +25,7 @@ else ()
 endif ()
 
 if (APPLE)
-    set(MACOSX_BUNDLE_EXECUTABLE_NAME "${DISPLAY_NAME}")
+    set(MACOSX_BUNDLE_EXECUTABLE_NAME "${SHORT_NAME}")
     set(MACOSX_BUNDLE_BUNDLE_NAME "${DISPLAY_NAME}")
     set(MACOSX_BUNDLE_GUI_IDENTIFIER "${PROJECT_NAME}")
     set(MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}")
@@ -39,7 +39,8 @@ if (APPLE)
     generate_app_icon("${PROJECT_NAME}.qt" "${CMAKE_SOURCE_DIR}/resources/${PROJECT_NAME}.png")
 endif ()
 
-target_link_libraries("${PROJECT_NAME}.qt" PRIVATE "lib${SHORT_NAME}" qlementine qlementine-icons)
+find_package(ICU REQUIRED COMPONENTS uc)
+target_link_libraries("${PROJECT_NAME}.qt" PRIVATE "lib${SHORT_NAME}" ICU::uc qlementine qlementine-icons)
 
 add_dependencies("${PROJECT_NAME}.qt" "${SHORT_NAME}_translations")
 add_custom_command(TARGET "${PROJECT_NAME}.qt" POST_BUILD
