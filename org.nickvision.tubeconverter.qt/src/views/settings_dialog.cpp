@@ -273,8 +273,9 @@ namespace parabolic::qt::views
         m_languages = translator.available_languages();
         m_cmb_language->addItems(QList<QString>(static_cast<qsizetype>(m_languages.size()) + 1));
         translate();
-        const std::vector<std::string>::iterator language_it{ std::ranges::find(
-                m_languages, configuration.translation_options().language()) };
+        const std::vector<std::string>::iterator language_it{
+            std::ranges::find(m_languages, configuration.translation_options().language())
+        };
         m_cmb_theme->setCurrentIndex(static_cast<int>(configuration.theme()));
         m_cmb_language->setCurrentIndex(
                 language_it == m_languages.end() ? 0 : static_cast<int>(language_it - m_languages.begin()) + 1);
