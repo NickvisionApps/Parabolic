@@ -1168,7 +1168,7 @@ namespace parabolic::qt::views
           m_navigation_view{ new oclero::qlementine::NavigationView(this) }
     {
         setModal(true);
-        setFixedSize(700, 500);
+        setMinimumSize(700, 500);
         QVBoxLayout* layout{ new QVBoxLayout(this) };
         layout->setContentsMargins(0, 0, 0, 0);
         layout->addWidget(m_navigation_view);
