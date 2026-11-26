@@ -6204,8 +6204,8 @@ QColor QlementineStyle::groupBoxBackgroundColor(MouseState const mouse) const {
   if (mouse == MouseState::Disabled) {
     return _impl->theme.backgroundColorMainTransparent;
   } else {
-    return getColorSourceOver(_impl->theme.backgroundColorMain2,
-      colorWithAlphaF(_impl->theme.backgroundColorMain3, _impl->theme.backgroundColorMain3.alphaF() * .75));
+    const auto darkBackground = _impl->theme.backgroundColorMain2.lightnessF() < 0.5;
+    return colorWithAlphaF(_impl->theme.secondaryColor, darkBackground ? 0.06 : 0.04);
   }
 }
 
