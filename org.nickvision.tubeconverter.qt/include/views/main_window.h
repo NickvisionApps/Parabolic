@@ -12,6 +12,8 @@ namespace parabolic::qt::views
 {
     class MainWindow : public oclero::qlementine::UnifiedWindow
     {
+        Q_OBJECT
+
     public:
         MainWindow(QWidget* parent = nullptr);
         ~MainWindow() override = default;
@@ -23,10 +25,13 @@ namespace parabolic::qt::views
     protected:
         void closeEvent(QCloseEvent* event) override;
 
-    private:
+    private Q_SLOTS:
         void add_download() const;
         void settings();
         void toggle_sidebar() const;
+        void translate();
+
+    private:
         oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
         QToolBar* m_toolbar{ nullptr };
         QAction* m_act_add_download{ nullptr };

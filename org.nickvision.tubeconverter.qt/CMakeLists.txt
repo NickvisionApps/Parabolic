@@ -1,9 +1,13 @@
 qt_standard_project_setup()
 
 qt_add_executable("${PROJECT_NAME}.qt" WIN32 MACOSX_BUNDLE
+    "include/app.h"
+    "include/helpers/translation_notifier.h"
     "include/views/home_page.h"
     "include/views/main_window.h"
     "include/views/settings_dialog.h"
+    "src/app.cpp"
+    "src/helpers/translation_notifier.cpp"
     "src/main.cpp"
     "src/views/home_page.cpp"
     "src/views/main_window.cpp"

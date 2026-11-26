@@ -7,6 +7,8 @@ namespace parabolic::qt::views
 {
     class HomePage : public QWidget
     {
+        Q_OBJECT
+
     public:
         HomePage(QWidget* parent = nullptr);
         ~HomePage() override = default;
@@ -14,6 +16,9 @@ namespace parabolic::qt::views
         HomePage(HomePage&&) = delete;
         HomePage& operator=(const HomePage&) = delete;
         HomePage& operator=(HomePage&&) = delete;
+
+    private Q_SLOTS:
+        void translate();
     };
 }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 23:29-0500\n"
+"POT-Creation-Date: 2026-11-26 11:38-0500\n"
 "PO-Revision-Date: 2026-03-23 11:10+0000\n"
 "Last-Translator: Thanasis <thanasakis11mail@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,9 @@ msgid "Worst"
 msgstr "Χειρότερη"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:184
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:467
 msgid "None"
 msgstr "Κανένα"
 
@@ -73,23 +76,23 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:23
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:28
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:134
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "Πληροφορίες για το Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:56
+#: org.nickvision.tubeconverter.qt/src/app.cpp:79
 msgid "Don't show this message again"
 msgstr "Να μην εμφανιστεί ξανά αυτό το μήνυμα"
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:58
-#: org.nickvision.tubeconverter.qt/src/main.cpp:59
+#: org.nickvision.tubeconverter.qt/src/app.cpp:81
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
 msgid "Legal Copyright Disclaimer"
 msgstr "Νομική Δήλωση Αποποίησης Ευθύνης Σχετικά Με Τα Πνευματικά Δικαιώματα"
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:61
+#: org.nickvision.tubeconverter.qt/src/app.cpp:84
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
@@ -100,70 +103,737 @@ msgstr ""
 "χρήση αυτής της εφαρμογής με τρόπους που παραβιάζουν τους νόμους αυτούς και "
 "δεν φέρουν καμία ευθύνη για κάτι τέτοιο."
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:66
+#: org.nickvision.tubeconverter.qt/src/app.cpp:89
 msgid "I understand"
 msgstr "Κατάλαβα"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:140
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:141
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:135
 msgid "Home"
 msgstr "Αρχική Σελίδα"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:36
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:136
 #, fuzzy
 msgid "Downloads"
 msgstr "Λήψεις"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:137
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:296
 #, fuzzy
 msgid "History"
 msgstr "Ιστορικό"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:138
 msgid "Keyring"
 msgstr "Μπρελόκ"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
-msgid "Collapse Sidebar"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:59
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:143
 msgid "Add Download"
 msgstr "Προσθήκη Λήψης"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:67
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:68
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:20
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:145
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
 #, fuzzy
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:121
-msgid "Expand Sidebar"
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:124
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:161
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:162
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:182
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:189
+#, c++-format
+msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:160
 #, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Παράμετροι Μεταεπεξεργασίας"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:161
+msgid "Name"
+msgstr "Όνομα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:162
+msgid "Post Processor"
+msgstr "Πρόγραμμα Μεταεπεξεργασίας"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:165
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:166
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Ενσωμάτωση Κεφαλαίων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:167
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Διαχωρισμός σε Αρχεία ανά Κεφάλαιο"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:168
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:169
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Βίντεο (Γενικό)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:170
+#, fuzzy
+msgid "Video Converter"
+msgstr "Πρόγραμμα Μετατροπής"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:171
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+#, fuzzy
+msgid "Metadata"
+msgstr "Ενσωμάτωση Μεταδεδομένων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:172
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Ενσωμάτωση Υποτίτλων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:173
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Ενσωμάτωση Μικρογραφιών"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:174
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Υπότιτλοι"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:175
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Πρόγραμμα Μετατροπής"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:176
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:177
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:178
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:179
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:180
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:182
+msgid "Executable"
+msgstr "Εκτελέσιμο Αρχείο"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:185
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Νήματα FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:187
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:189
+#, fuzzy
+msgid "Argument"
+msgstr "Παράμετρος"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:282
+msgid "User Interface"
+msgstr "Διεπαφή Χρήστη"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:283
+msgid "Theme"
+msgstr "Θέμα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:285
+#, fuzzy
+msgctxt "Theme"
+msgid "Light"
+msgstr "Φωτεινό"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Σκοτεινό"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:287
+msgctxt "Theme"
+msgid "System"
+msgstr "Σύστημα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:289
+msgid "Translation Language"
+msgstr "Γλώσσα Μετάφρασης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:290
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Σύστημα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:291
+#, fuzzy
+msgid "Updates"
+msgstr "Ενημέρωση"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:292
+#, fuzzy
+msgid "Automatically Check for Updates"
+msgstr "Έλεγχος για Ενημερώσεις"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:293
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Λήψη Ενημερώσεων Προεπισκόπησης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:295
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Ενημέρωση εξαρτήσεων, όπως το yt-dlp, σε εκδόσεις beta"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:297
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Μήκος Ιστορικού Λήψεων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:299
+msgid "Never"
+msgstr "Ποτέ"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:300
+msgid "1 Day"
+msgstr "1 Μέρα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:301
+msgid "1 Week"
+msgstr "1 Εβδομάδα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:302
+msgid "1 Month"
+msgstr "1 Μήνας"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:303
+msgid "3 Months"
+msgstr "3 Μήνες"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:304
+msgid "6 Months"
+msgstr "6 Μήνες"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:305
+msgid "1 Year"
+msgstr "1 Χρόνος"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:306
+msgid "Forever"
+msgstr "Για Πάντα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:332
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:403
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:450
+#, fuzzy
+msgid "Process"
+msgstr "Πρόγραμμα Μεταεπεξεργασίας"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:333
+msgid "Include Media Id in Title"
+msgstr "Να συμπεριληφθεί ο Κωδικός Αναγνώρισης Μέσου στον Τίτλο"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:334
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr ""
+"Προσθήκη του κωδικού αναγνώρισης του μέσου στον προεπιλεγμένο τίτλο του"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:335
+msgid "Limit Filename Characters"
+msgstr "Περιορισμός Χαρακτήρων στο Όνομα Αρχείου"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:337
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Περιορισμός των χαρακτήρων στα ονόματα αρχείων μόνο σε εκείνους που "
+"υποστηρίζονται από τα Windows"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:338
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:340
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:341
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Συμπερίληψη Αυτόματα-Δημιουργημένων Υποτίτλων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:342
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:343
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+"Προτίμηση αυτού του κωδικοποιητή κατά την ανάλυση των μορφών ήχου που "
+"εμφανίζονται ως διαθέσιμες για λήψη"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:344
+#, fuzzy
+msgid "Audio Codec"
+msgstr "Προτιμώμενος Κωδικοποιητής Ήχου"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:346
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:356
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:364
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:372
+msgid "Any"
+msgstr "Οποιαδήποτε"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:347
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:348
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:349
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:350
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:351
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:352
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:354
+#, fuzzy
+msgid "Video Codec"
+msgstr "Πρόγραμμα Μετατροπής"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:358
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:359
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:360
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:362
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "Προτιμώμενη Μορφή Υποτίτλων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:365
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:366
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:367
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:370
+#, fuzzy
+msgid "Frame Rate"
+msgstr "Προτιμώμενος Ρυθμός Καρέ"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:373
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:374
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:375
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:377
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:414
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+#, fuzzy
+msgid "Arguments"
+msgstr "Παράμετρος"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:379
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr ""
+"Οι παράμετροι θα εμφανίζονται προς επιλογή στο παράθυρο διαλόγου προσθήκης "
+"λήψης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:404
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Μέγιστος Αριθμός Ενεργών Λήψεων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:405
+msgid "Overwrite Existing Files"
+msgstr "Αντικατάσταση Υπαρχόντων Αρχείων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:406
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:407
+#, fuzzy
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:408
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Ένα εναλλακτικό πρόγραμμα λήψης που ενδέχεται να είναι ταχύτερο σε ορισμένες "
+"περιοχές σε σύγκριση με το ενσωματωμένο πρόγραμμα λήψης του yt-dlp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:410
+#, fuzzy
+msgid "Use aria2"
+msgstr "Χρήση aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:411
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:412
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Μέγιστος Αριθμός Συνδέσεων Ανά Διακομιστή"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:413
+msgid "Minimum Split Size (MiB)"
+msgstr "Ελάχιστο Μέγεθος Διαμέρισης (MiB)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:415
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr ""
+"Οι παράμετροι θα εμφανίζονται προς επιλογή στο παράθυρο διαλόγου προσθήκης "
+"λήψης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:422
+msgid "Cookies File"
+msgstr "Αρχείο Cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:451
+msgid "Use Part Files"
+msgstr "Χρήση Αρχείων Part"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:453
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Λήψη πολυμέσων σε ξεχωριστά αρχεία .part αντί απευθείας στο αρχείο εξόδου"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:454
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "Χρήση του SponsorBlock for YouTube"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:455
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Προσπαθεί να αφαιρέσει τα διαφημιστικά τμήματα από τα βίντεο"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:456
+msgid "Translate Metadata and Chapters"
+msgstr "Μετάφραση Μεταδεδομένων και Κεφαλαίων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:457
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Αυτόματη μετάφραση των ενσωματωμένων μεταδεδομένων και των κεφαλαίων στη "
+"γλώσσα της εφαρμογής σε υποστηριζόμενους ιστότοπους και πολυμέσα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:459
+#, fuzzy
+msgid "Speed"
+msgstr "Όριο Ταχύτητας"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:460
+msgid "Limit Download Speed"
+msgstr "Περιορισμός Ταχύτητας Λήψης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:461
+msgid "Speed Limit (KiB/s)"
+msgstr "Όριο Ταχύτητας (KiB/s)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:462
+#, fuzzy
+msgid "Proxy"
+msgstr "Διεύθυνση URL διακομιστή μεσολάβησης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:463
+msgid "URL"
+msgstr "Διεύθυνση URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:464
+#, fuzzy
+msgid "Cookies"
+msgstr "Αρχείο Cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:465
+#, fuzzy
+msgid "Browser"
+msgstr "Cookie από Πρόγραμμα Περιήγησης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:468
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:469
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:470
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:471
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:472
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:473
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:474
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:477
+#, fuzzy
+msgid "File"
+msgstr "Όνομα Αρχείου"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:478
+#, fuzzy
+msgid "Browse…"
+msgstr "Cookie από Πρόγραμμα Περιήγησης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:479
+msgid "Clear"
+msgstr "Εκκαθάριση"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+#, fuzzy
+msgid "Remove Argument"
+msgstr "Διαγραφή Παραμέτρου;"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "Embed Metadata"
+msgstr "Ενσωμάτωση Μεταδεδομένων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+msgid "Remove Source Data"
+msgstr "Αφαίρεση Δεδομένων Πηγής"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Εκκαθάριση πεδίων μεταδεδομένων που περιέχουν πληροφορίες ταυτοποίησης "
+"σχετικά με τη λήψη"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:574
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Ενσωμάτωση Μικρογραφιών"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:575
+msgid "Embed Thumbnails"
+msgstr "Ενσωμάτωση Μικρογραφιών"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Εάν ο τύπος αρχείου δεν υποστηρίζει ενσωμάτωση, η μικρογραφία θα αποθηκευτεί "
+"σε ξεχωριστό αρχείο εικόνας"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+msgid "Crop Audio Thumbnails"
+msgstr "Περικοπή Μικρογραφιών Ήχου"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:579
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Περικοπή των μικρογραφιών των αρχείων ήχου σε τετράγωνα"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:580
+#, fuzzy
+msgid "Chapters"
+msgstr "Ενσωμάτωση Κεφαλαίων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Embed Chapters"
+msgstr "Ενσωμάτωση Κεφαλαίων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:582
+#, fuzzy
+msgid "Subtitles"
+msgstr "Δεν Υπάρχουν Υπότιτλοι"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+msgid "Embed Subtitles"
+msgstr "Ενσωμάτωση Υποτίτλων"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:585
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Σε περίπτωση απενεργοποίησης ή αν η ενσωμάτωση δεν υποστηρίζεται, οι "
+"υπότιτλοι που έχουν ληφθεί θα αποθηκευτούν σε ξεχωριστά αρχεία"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#, fuzzy
+msgid "Threads"
+msgstr "Νήματα FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Περιορισμός του αριθμού των νημάτων που χρησιμοποιεί το ffmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+"Οι παράμετροι θα εμφανίζονται προς επιλογή στο παράθυρο διαλόγου προσθήκης "
+"λήψης"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:593
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#, fuzzy
+msgctxt "Settings"
 msgid "General"
 msgstr "Γενικά"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:602
 #, fuzzy
+msgctxt "Settings"
 msgid "Discovery"
 msgstr "Ανακαλύψτε"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Λήψεις"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
 #, fuzzy
+msgctxt "Settings"
 msgid "Postprocessing"
 msgstr "Γίνεται Επεξεργασία"
 
@@ -175,32 +845,8 @@ msgstr "Γίνεται Επεξεργασία"
 #~ "Προσθέστε μια διεύθυνση URL βίντεο, αρχείου ήχου ή λίστας αναπαραγωγής "
 #~ "για να ξεκινήσει η λήψη"
 
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "Όνομα Αρχείου"
-
-#~ msgid "Edit"
-#~ msgstr "Επεξεργασία"
-
 #~ msgid "View"
 #~ msgstr "Προβολή"
-
-#~ msgid "Theme"
-#~ msgstr "Θέμα"
-
-#, fuzzy
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Φωτεινό"
-
-#, fuzzy
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Σκοτεινό"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Σύστημα"
 
 #~ msgid "Help"
 #~ msgstr "Βοήθεια"
@@ -220,392 +866,6 @@ msgstr "Γίνεται Επεξεργασία"
 #, fuzzy
 #~ msgid "Discussions"
 #~ msgstr "Συζητήσεις"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "Λήψεις"
-
-#~ msgid "Add"
-#~ msgstr "Προσθήκη"
-
-#, fuzzy
-#~ msgid "Argument"
-#~ msgstr "Παράμετρος"
-
-#~ msgid "User Interface"
-#~ msgstr "Διεπαφή Χρήστη"
-
-#~ msgid "Translation Language"
-#~ msgstr "Γλώσσα Μετάφρασης"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Σύστημα"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "Ενημέρωση"
-
-#, fuzzy
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Έλεγχος για Ενημερώσεις"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Λήψη Ενημερώσεων Προεπισκόπησης"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "Ενημέρωση εξαρτήσεων, όπως το yt-dlp, σε εκδόσεις beta"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "Μήκος Ιστορικού Λήψεων"
-
-#~ msgid "Never"
-#~ msgstr "Ποτέ"
-
-#~ msgid "1 Day"
-#~ msgstr "1 Μέρα"
-
-#~ msgid "1 Week"
-#~ msgstr "1 Εβδομάδα"
-
-#~ msgid "1 Month"
-#~ msgstr "1 Μήνας"
-
-#~ msgid "3 Months"
-#~ msgstr "3 Μήνες"
-
-#~ msgid "6 Months"
-#~ msgstr "6 Μήνες"
-
-#~ msgid "1 Year"
-#~ msgstr "1 Χρόνος"
-
-#~ msgid "Forever"
-#~ msgstr "Για Πάντα"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "Πρόγραμμα Μεταεπεξεργασίας"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Μέγιστος Αριθμός Ενεργών Λήψεων"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Αντικατάσταση Υπαρχόντων Αρχείων"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Ένα εναλλακτικό πρόγραμμα λήψης που ενδέχεται να είναι ταχύτερο σε "
-#~ "ορισμένες περιοχές σε σύγκριση με το ενσωματωμένο πρόγραμμα λήψης του yt-"
-#~ "dlp"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "Χρήση aria2c"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Μέγιστος Αριθμός Συνδέσεων Ανά Διακομιστή"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "Ελάχιστο Μέγεθος Διαμέρισης (MiB)"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "Παράμετρος"
-
-#, fuzzy
-#~ msgid ""
-#~ "These arguments will be appended to yt-dlp during the download phase."
-#~ msgstr ""
-#~ "Οι παράμετροι θα εμφανίζονται προς επιλογή στο παράθυρο διαλόγου "
-#~ "προσθήκης λήψης"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Να συμπεριληφθεί ο Κωδικός Αναγνώρισης Μέσου στον Τίτλο"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr ""
-#~ "Προσθήκη του κωδικού αναγνώρισης του μέσου στον προεπιλεγμένο τίτλο του"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Περιορισμός Χαρακτήρων στο Όνομα Αρχείου"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Περιορισμός των χαρακτήρων στα ονόματα αρχείων μόνο σε εκείνους που "
-#~ "υποστηρίζονται από τα Windows"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Συμπερίληψη Αυτόματα-Δημιουργημένων Υποτίτλων"
-
-#~ msgid "Preferences"
-#~ msgstr "Προτιμήσεις"
-
-#, fuzzy
-#~ msgid "Prefer these codecs and options when showing formats for download."
-#~ msgstr ""
-#~ "Προτίμηση αυτού του κωδικοποιητή κατά την ανάλυση των μορφών ήχου που "
-#~ "εμφανίζονται ως διαθέσιμες για λήψη"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "Προτιμώμενος Κωδικοποιητής Ήχου"
-
-#~ msgid "Any"
-#~ msgstr "Οποιαδήποτε"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "Πρόγραμμα Μετατροπής"
-
-#, fuzzy
-#~ msgid "H.265"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "Προτιμώμενη Μορφή Υποτίτλων"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "Προτιμώμενος Ρυθμός Καρέ"
-
-#, fuzzy
-#~ msgid "24 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "30 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "60 FPS"
-#~ msgstr "{0} FPS"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Χρήση Αρχείων Part"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Λήψη πολυμέσων σε ξεχωριστά αρχεία .part αντί απευθείας στο αρχείο εξόδου"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "Χρήση του SponsorBlock for YouTube"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Προσπαθεί να αφαιρέσει τα διαφημιστικά τμήματα από τα βίντεο"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Μετάφραση Μεταδεδομένων και Κεφαλαίων"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters using the app's "
-#~ "set language on supported sites and media."
-#~ msgstr ""
-#~ "Αυτόματη μετάφραση των ενσωματωμένων μεταδεδομένων και των κεφαλαίων στη "
-#~ "γλώσσα της εφαρμογής σε υποστηριζόμενους ιστότοπους και πολυμέσα"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "Όριο Ταχύτητας"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Περιορισμός Ταχύτητας Λήψης"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Όριο Ταχύτητας (KiB/s)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "Διεύθυνση URL διακομιστή μεσολάβησης"
-
-#~ msgid "URL"
-#~ msgstr "Διεύθυνση URL"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "Αρχείο Cookie"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "Cookie από Πρόγραμμα Περιήγησης"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Αρχείο Cookie"
-
-#~ msgid "Clear"
-#~ msgstr "Εκκαθάριση"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Ενσωμάτωση Μεταδεδομένων"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Ενσωμάτωση Μεταδεδομένων"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Αφαίρεση Δεδομένων Πηγής"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr ""
-#~ "Εκκαθάριση πεδίων μεταδεδομένων που περιέχουν πληροφορίες ταυτοποίησης "
-#~ "σχετικά με τη λήψη"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "Ενσωμάτωση Μικρογραφιών"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Ενσωμάτωση Μικρογραφιών"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Εάν ο τύπος αρχείου δεν υποστηρίζει ενσωμάτωση, η μικρογραφία θα "
-#~ "αποθηκευτεί σε ξεχωριστό αρχείο εικόνας"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Περικοπή Μικρογραφιών Ήχου"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Περικοπή των μικρογραφιών των αρχείων ήχου σε τετράγωνα"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "Ενσωμάτωση Κεφαλαίων"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Ενσωμάτωση Κεφαλαίων"
-
-#, fuzzy
-#~ msgid "Subtitles"
-#~ msgstr "Δεν Υπάρχουν Υπότιτλοι"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Ενσωμάτωση Υποτίτλων"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Σε περίπτωση απενεργοποίησης ή αν η ενσωμάτωση δεν υποστηρίζεται, οι "
-#~ "υπότιτλοι που έχουν ληφθεί θα αποθηκευτούν σε ξεχωριστά αρχεία"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "Νήματα FFmpeg"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "Νήματα FFmpeg"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "Περιορισμός του αριθμού των νημάτων που χρησιμοποιεί το ffmpeg"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr ""
-#~ "Οι παράμετροι θα εμφανίζονται προς επιλογή στο παράθυρο διαλόγου "
-#~ "προσθήκης λήψης"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Ενσωμάτωση Κεφαλαίων"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Διαχωρισμός σε Αρχεία ανά Κεφάλαιο"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Βίντεο (Γενικό)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Πρόγραμμα Μετατροπής"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Ενσωμάτωση Υποτίτλων"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Ενσωμάτωση Μικρογραφιών"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Υπότιτλοι"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Πρόγραμμα Μετατροπής"
-
-#~ msgid "Name"
-#~ msgstr "Όνομα"
-
-#~ msgid "Post Processor"
-#~ msgstr "Πρόγραμμα Μεταεπεξεργασίας"
-
-#~ msgid "Executable"
-#~ msgstr "Εκτελέσιμο Αρχείο"
 
 #, fuzzy
 #~ msgid "Search"
@@ -998,9 +1258,6 @@ msgstr "Γίνεται Επεξεργασία"
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "Καθορίστε επιπλέον παραμέτρους που θα μεταβιβαστούν στο yt-dlp"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "Παράμετροι Μεταεπεξεργασίας"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Προσθήκη Παραμέτρου Μεταεπεξεργασίας"
 
@@ -1126,9 +1383,6 @@ msgstr "Γίνεται Επεξεργασία"
 
 #~ msgid "No file selected"
 #~ msgstr "Δεν έχει επιλεγεί αρχείο"
-
-#~ msgid "Delete Argument?"
-#~ msgstr "Διαγραφή Παραμέτρου;"
 
 #~ msgid ""
 #~ "Are you sure you want to delete this post-processor argument? This action "

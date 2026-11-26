@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-24 23:29-0500\n"
+"POT-Creation-Date: 2026-11-26 11:38-0500\n"
 "PO-Revision-Date: 2026-02-06 14:36+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr ""
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:184
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:467
 msgid "None"
 msgstr ""
 
@@ -72,92 +75,733 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:23
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:28
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:134
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:56
+#: org.nickvision.tubeconverter.qt/src/app.cpp:79
 msgid "Don't show this message again"
 msgstr "این پیام را دیگر نشان ندهید"
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:58
-#: org.nickvision.tubeconverter.qt/src/main.cpp:59
+#: org.nickvision.tubeconverter.qt/src/app.cpp:81
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
 msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:61
+#: org.nickvision.tubeconverter.qt/src/app.cpp:84
 msgid ""
 "Videos on YouTube and other sites may be subject to DMCA protection. The "
 "authors of Parabolic do not endorse, and are not responsible for, the use of "
 "this application in means that will violate these laws."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:66
+#: org.nickvision.tubeconverter.qt/src/app.cpp:89
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:140
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:141
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:135
 msgid "Home"
 msgstr "خانه"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:36
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:136
 #, fuzzy
 msgid "Downloads"
 msgstr "بارگیری"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:137
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:296
 #, fuzzy
 msgid "History"
 msgstr "تاریخچه"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:138
 #, fuzzy
 msgid "Keyring"
 msgstr "کلید را غیرفعال می کنید؟"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:139
 msgid "Toggle Sidebar"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:55
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:122
-msgid "Collapse Sidebar"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:59
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:143
 msgid "Add Download"
 msgstr "اضافه کردن دانلود"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:67
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:68
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:20
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:144
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:145
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
 msgid "Settings"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:121
-msgid "Expand Sidebar"
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:124
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:161
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:162
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:182
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:189
+#, c++-format
+msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:160
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "در حال پردازش..."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:161
+msgid "Name"
+msgstr "نام"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:162
+#, fuzzy
+msgid "Post Processor"
+msgstr "در حال پردازش..."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:165
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:166
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "جاسازی فصل ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:167
+#, fuzzy
+msgid "Split Chapters"
+msgstr "جاسازی فصل ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:168
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:169
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "مبدل"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:170
+#, fuzzy
+msgid "Video Converter"
+msgstr "مبدل"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:171
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+#, fuzzy
+msgid "Metadata"
+msgstr "تعبیه فراداده"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:172
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:173
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:174
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:175
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "مبدل"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:176
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:177
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:178
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:179
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:180
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:182
+msgid "Executable"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:185
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "FFmpeg"
+msgstr "در حال پردازش..."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:187
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:189
+#, fuzzy
+msgid "Argument"
+msgstr "اعتبارنامه حذف شود؟"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:282
+msgid "User Interface"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:283
+msgid "Theme"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:285
+msgctxt "Theme"
+msgid "Light"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+msgctxt "Theme"
+msgid "Dark"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:287
+#, fuzzy
+msgctxt "Theme"
+msgid "System"
+msgstr "تنظیم مجدد به حالت پیش فرض"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:289
+#, fuzzy
+msgid "Translation Language"
+msgstr "زبان صوتی"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:290
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "تنظیم مجدد به حالت پیش فرض"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:291
+msgid "Updates"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:292
+msgid "Automatically Check for Updates"
+msgstr "به‌روزرسانی‌ها را به‌طور خودکار بررسی کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:293
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "به روز رسانی ها را بررسی کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:295
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:297
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "در حال بارگیری"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:299
+msgid "Never"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:300
+msgid "1 Day"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:301
+msgid "1 Week"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:302
+msgid "1 Month"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:303
+msgid "3 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:304
+msgid "6 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:305
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:306
+msgid "Forever"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:332
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:403
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:450
+#, fuzzy
+msgid "Process"
+msgstr "در حال پردازش..."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:333
+msgid "Include Media Id in Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:334
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:335
+msgid "Limit Filename Characters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:337
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:338
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:340
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:341
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "بارگیری زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:342
+msgid "Preferences"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:343
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:344
+#, fuzzy
+msgid "Audio Codec"
+msgstr "کدک AV1 را ترجیح دهید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:346
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:356
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:364
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:372
+msgid "Any"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:347
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:348
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:349
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:350
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:351
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:352
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:354
+#, fuzzy
+msgid "Video Codec"
+msgstr "مبدل"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:358
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:359
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:360
+msgid "H.264"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:362
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "کدک AV1 را ترجیح دهید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:365
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:366
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:367
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:370
+#, fuzzy
+msgid "Frame Rate"
+msgstr "کدک AV1 را ترجیح دهید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:373
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:374
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:375
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:377
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:414
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+#, fuzzy
+msgid "Arguments"
+msgstr "اعتبارنامه حذف شود؟"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:379
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:404
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "حداکثر تعداد دانلودهای فعال"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:405
+msgid "Overwrite Existing Files"
+msgstr "بازنویسی فایل های موجود"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:406
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:407
+#, fuzzy
+msgid "aria2"
+msgstr "از aria2 استفاده کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:408
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:410
+#, fuzzy
+msgid "Use aria2"
+msgstr "از aria2 استفاده کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:411
+msgid "Learn More…"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:412
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "حداکثر اتصال در هر سرور (-x)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:413
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "حداقل اندازه تقسیم (-k)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:415
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:422
+#, fuzzy
+msgid "Cookies File"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:451
+#, fuzzy
+msgid "Use Part Files"
+msgstr "از aria2 استفاده کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:453
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:454
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "از SponsorBlock برای YouTube استفاده کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:455
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:456
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:457
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:459
+#, fuzzy
+msgid "Speed"
+msgstr "محدودیت سرعت"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:460
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "بارگیری رسانه"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:461
+#, fuzzy
+msgid "Speed Limit (KiB/s)"
+msgstr "محدودیت سرعت"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:462
+#, fuzzy
+msgid "Proxy"
+msgstr "URL پروکسی"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:463
+msgid "URL"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:464
+#, fuzzy
+msgid "Cookies"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:465
+#, fuzzy
+msgid "Browser"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:468
+msgid "Brave"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:469
+#, fuzzy
+msgid "Chrome"
+msgstr "کروم/ادج"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:470
+#, fuzzy
+msgid "Chromium"
+msgstr "کروم/ادج"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:471
+msgid "Edge"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:472
+msgid "Firefox"
+msgstr "فایرفاکس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:473
+msgid "Opera"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:474
+msgid "Vivaldi"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:475
+msgid "Whale"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:477
+#, fuzzy
+msgid "File"
+msgstr "نام فایل"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:478
+#, fuzzy
+msgid "Browse…"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:479
+#, fuzzy
+msgid "Clear"
+msgstr "پاک کردن"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+#, fuzzy
+msgid "Remove Argument"
+msgstr "اعتبارنامه حذف شود؟"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "Embed Metadata"
+msgstr "تعبیه فراداده"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+msgid "Remove Source Data"
+msgstr "اطلاعات منبع را حذف کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "فیلدهای فراداده حاوی URL و سایر اطلاعات شناسایی منبع رسانه را پاک کنید"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:574
+#, fuzzy
+msgid "Thumbnails"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:575
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"اگر غیرفعال باشد یا اگر جاسازی ناموفق باشد، زیرنویس‌های دانلود شده در یک فایل "
+"جداگانه ذخیره می‌شوند"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Crop Audio Thumbnails"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:579
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:580
+#, fuzzy
+msgid "Chapters"
+msgstr "جاسازی فصل ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "Embed Chapters"
+msgstr "جاسازی فصل ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:582
+#, fuzzy
+msgid "Subtitles"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+msgid "Embed Subtitles"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:585
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"اگر غیرفعال باشد یا اگر جاسازی ناموفق باشد، زیرنویس‌های دانلود شده در یک فایل "
+"جداگانه ذخیره می‌شوند"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#, fuzzy
+msgid "Threads"
+msgstr "در حال پردازش..."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+msgid "Limit the number of threads used by ffmpeg."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+msgid "Add"
+msgstr "افزودن"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:593
+msgid "Edit"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+msgctxt "Settings"
 msgid "General"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:602
 #, fuzzy
+msgctxt "Settings"
 msgid "Discovery"
 msgstr "سلب مسئولیت"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "بارگیری"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
 #, fuzzy
+msgctxt "Settings"
 msgid "Postprocessing"
 msgstr "در حال پردازش..."
 
@@ -166,15 +810,6 @@ msgstr "در حال پردازش..."
 
 #~ msgid "Add a video, audio, or playlist URL to start downloading"
 #~ msgstr "برای شروع دانلود، یک URL ویدیو، صدا یا فهرست پخش اضافه کنید"
-
-#, fuzzy
-#~ msgid "File"
-#~ msgstr "نام فایل"
-
-#, fuzzy
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "تنظیم مجدد به حالت پیش فرض"
 
 #~ msgid "Help"
 #~ msgstr "کمک"
@@ -194,245 +829,6 @@ msgstr "در حال پردازش..."
 #, fuzzy
 #~ msgid "Discussions"
 #~ msgstr "بحث ها"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "بارگیری"
-
-#~ msgid "Add"
-#~ msgstr "افزودن"
-
-#, fuzzy
-#~ msgid "Argument"
-#~ msgstr "اعتبارنامه حذف شود؟"
-
-#, fuzzy
-#~ msgid "Translation Language"
-#~ msgstr "زبان صوتی"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "تنظیم مجدد به حالت پیش فرض"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "به‌روزرسانی‌ها را به‌طور خودکار بررسی کنید"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "به روز رسانی ها را بررسی کنید"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "در حال بارگیری"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "در حال پردازش..."
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "حداکثر تعداد دانلودهای فعال"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "بازنویسی فایل های موجود"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "از aria2 استفاده کنید"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "از aria2 استفاده کنید"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "حداکثر اتصال در هر سرور (-x)"
-
-#, fuzzy
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "حداقل اندازه تقسیم (-k)"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "اعتبارنامه حذف شود؟"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "بارگیری زیرنویس"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "کدک AV1 را ترجیح دهید"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "مبدل"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "کدک AV1 را ترجیح دهید"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "کدک AV1 را ترجیح دهید"
-
-#, fuzzy
-#~ msgid "Use Part Files"
-#~ msgstr "از aria2 استفاده کنید"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "از SponsorBlock برای YouTube استفاده کنید"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "محدودیت سرعت"
-
-#, fuzzy
-#~ msgid "Limit Download Speed"
-#~ msgstr "بارگیری رسانه"
-
-#, fuzzy
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "محدودیت سرعت"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "URL پروکسی"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "فایل کوکی ها"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "فایل کوکی ها"
-
-#, fuzzy
-#~ msgid "Chrome"
-#~ msgstr "کروم/ادج"
-
-#, fuzzy
-#~ msgid "Chromium"
-#~ msgstr "کروم/ادج"
-
-#~ msgid "Firefox"
-#~ msgstr "فایرفاکس"
-
-#, fuzzy
-#~ msgid "Cookies File"
-#~ msgstr "فایل کوکی ها"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "پاک کردن"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "تعبیه فراداده"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "تعبیه فراداده"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "اطلاعات منبع را حذف کنید"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr ""
-#~ "فیلدهای فراداده حاوی URL و سایر اطلاعات شناسایی منبع رسانه را پاک کنید"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "تعبیه زیرنویس"
-
-#, fuzzy
-#~ msgid "Embed Thumbnails"
-#~ msgstr "تعبیه زیرنویس"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "اگر غیرفعال باشد یا اگر جاسازی ناموفق باشد، زیرنویس‌های دانلود شده در یک "
-#~ "فایل جداگانه ذخیره می‌شوند"
-
-#, fuzzy
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "تعبیه زیرنویس"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "جاسازی فصل ها"
-
-#, fuzzy
-#~ msgid "Embed Chapters"
-#~ msgstr "جاسازی فصل ها"
-
-#, fuzzy
-#~ msgid "Subtitles"
-#~ msgstr "تعبیه زیرنویس"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "تعبیه زیرنویس"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "اگر غیرفعال باشد یا اگر جاسازی ناموفق باشد، زیرنویس‌های دانلود شده در یک "
-#~ "فایل جداگانه ذخیره می‌شوند"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "در حال پردازش..."
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "در حال پردازش..."
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "جاسازی فصل ها"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "جاسازی فصل ها"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "مبدل"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "مبدل"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "تعبیه زیرنویس"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "تعبیه زیرنویس"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "تعبیه زیرنویس"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "مبدل"
-
-#~ msgid "Name"
-#~ msgstr "نام"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "در حال پردازش..."
 
 #, fuzzy
 #~ msgid "Exit Full Screen"
@@ -680,10 +1076,6 @@ msgstr "در حال پردازش..."
 #, fuzzy
 #~ msgid "Minimum Split Size (-k)"
 #~ msgstr "حداقل اندازه تقسیم (-k)"
-
-#, fuzzy
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "در حال پردازش..."
 
 #, fuzzy
 #~ msgid "Add Postprocessing Argument"
@@ -1014,10 +1406,6 @@ msgstr "در حال پردازش..."
 #, fuzzy
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "گزارش بارگیری در کلیپ بورد کپی شد."
-
-#, fuzzy
-#~ msgid "New Argument"
-#~ msgstr "اعتبارنامه حذف شود؟"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "بارگیری با خطا تمام شد"
