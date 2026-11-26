@@ -25,35 +25,6 @@
 
 namespace parabolic::qt::views
 {
-    class SettingsPage : public QScrollArea
-    {
-        Q_OBJECT
-
-    public:
-        SettingsPage(QWidget* parent = nullptr);
-        ~SettingsPage() override = default;
-        SettingsPage(const SettingsPage&) = delete;
-        SettingsPage(SettingsPage&&) = delete;
-        SettingsPage& operator=(const SettingsPage&) = delete;
-        SettingsPage& operator=(SettingsPage&&) = delete;
-
-    protected:
-        [[nodiscard]] static QCheckBox* add_check(QVBoxLayout* layout);
-        [[nodiscard]] static QCheckBox* add_check(QVBoxLayout* layout, oclero::qlementine::Label*& description);
-        [[nodiscard]] static QComboBox* add_combo(QVBoxLayout* layout, oclero::qlementine::Label*& label);
-        [[nodiscard]] static QGroupBox* add_group(QVBoxLayout* page, QVBoxLayout*& layout);
-        [[nodiscard]] static oclero::qlementine::Label* add_label(QVBoxLayout* layout,
-                                                                  oclero::qlementine::TextRole role);
-        [[nodiscard]] static QSpinBox* add_spin(QVBoxLayout* layout, oclero::qlementine::Label*& label, int minimum,
-                                                int maximum);
-        [[nodiscard]] static QString labeled(const char* text);
-        static void set_items(QComboBox* combo, const QList<QString>& items);
-        [[nodiscard]] QVBoxLayout* page_layout() const;
-
-    private:
-        QVBoxLayout* m_layout{ nullptr };
-    };
-
     class PostprocessingArgumentDialog : public QDialog
     {
         Q_OBJECT
@@ -83,7 +54,7 @@ namespace parabolic::qt::views
         QDialogButtonBox* m_buttons{ nullptr };
     };
 
-    class SettingsGeneralPage : public SettingsPage
+    class SettingsGeneralPage : public QScrollArea
     {
         Q_OBJECT
 
@@ -115,7 +86,7 @@ namespace parabolic::qt::views
         QComboBox* m_cmb_history_length{ nullptr };
     };
 
-    class SettingsDiscoveryPage : public SettingsPage
+    class SettingsDiscoveryPage : public QScrollArea
     {
         Q_OBJECT
 
@@ -153,7 +124,7 @@ namespace parabolic::qt::views
         QLineEdit* m_edt_arguments{ nullptr };
     };
 
-    class SettingsDownloadsPage : public SettingsPage
+    class SettingsDownloadsPage : public QScrollArea
     {
         Q_OBJECT
 
@@ -166,6 +137,7 @@ namespace parabolic::qt::views
         SettingsDownloadsPage& operator=(SettingsDownloadsPage&&) = delete;
 
     private:
+        Q_SLOT void learn_more();
         Q_SLOT void save();
         Q_SLOT void translate();
         QGroupBox* m_grp_process{ nullptr };
@@ -186,7 +158,7 @@ namespace parabolic::qt::views
         QLineEdit* m_edt_arguments{ nullptr };
     };
 
-    class SettingsExtractorPage : public SettingsPage
+    class SettingsExtractorPage : public QScrollArea
     {
         Q_OBJECT
 
@@ -225,7 +197,7 @@ namespace parabolic::qt::views
         QPushButton* m_btn_cookies_clear{ nullptr };
     };
 
-    class SettingsPostprocessingPage : public SettingsPage
+    class SettingsPostprocessingPage : public QScrollArea
     {
         Q_OBJECT
 

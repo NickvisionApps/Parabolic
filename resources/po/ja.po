@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-26 12:09-0500\n"
+"POT-Creation-Date: 2026-11-26 12:55-0500\n"
 "PO-Revision-Date: 2026-02-27 16:32+0000\n"
 "Last-Translator: sotohi <c6h4ohcooc6h5@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,9 +58,9 @@ msgid "Worst"
 msgstr "最低"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:219
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:239
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:797
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:126
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:905
 msgid "None"
 msgstr "なし"
 
@@ -125,7 +125,7 @@ msgid "Downloads"
 msgstr "ダウンロード"
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:136
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:449
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:397
 #, fuzzy
 msgid "History"
 msgstr "履歴"
@@ -145,396 +145,410 @@ msgstr "ダウンロードを追加"
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:143
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:144
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1056
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1209
 #, fuzzy
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:142
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:217
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:237
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:244
-#, c++-format
-msgid "{}:"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:215
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:119
 #, fuzzy
 msgid "Postprocessing Argument"
 msgstr "ポストプロセスの引数"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:216
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:120
 msgid "Name"
 msgstr "名前"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:217
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:121
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:145
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:351
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:361
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:399
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:556
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:582
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:732
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:741
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:743
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:896
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:898
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:900
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:916
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1156
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:121
 msgid "Post Processor"
 msgstr "ポストプロセッサ"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:220
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:127
 msgid "Merger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:221
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:128
 #, fuzzy
 msgid "Modify Chapters"
 msgstr "チャプター(章)を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:222
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:129
 #, fuzzy
 msgid "Split Chapters"
 msgstr "動画をチャプター(章)で分ける"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:223
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:130
 msgid "Extract Audio"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:224
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:131
 #, fuzzy
 msgid "Video Remuxer"
 msgstr "動画 (一般)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:132
 #, fuzzy
 msgid "Video Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:226
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:985
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:133
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1138
 #, fuzzy
 msgid "Metadata"
 msgstr "メタデータを埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:134
 #, fuzzy
 msgid "Embed Subtitle"
 msgstr "字幕を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:228
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:135
 #, fuzzy
 msgid "Embed Thumbnail"
 msgstr "字幕を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:229
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:136
 #, fuzzy
 msgid "Subtitles Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:230
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:137
 #, fuzzy
 msgid "Thumbnails Converter"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:231
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:138
 msgid "Fixup Stretched"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:139
 msgid "Fixup M4a"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:233
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:140
 msgid "Fixup M3u8"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:141
 msgid "Fixup Timestamp"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:235
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:142
 msgid "Fixup Duration"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:145
 msgid "Executable"
 msgstr "実行可能"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:240
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:151
 msgid "AtomicParsley"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1002
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:152
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1155
 #, fuzzy
 msgid "FFmpeg"
 msgstr "FFmpeg のスレッド"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:242
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:153
 msgid "FFprobe"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:156
 msgid "Argument"
 msgstr "引数"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:403
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:350
 msgid "User Interface"
 msgstr "ユーザーインターフェース"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:404
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:351
 msgid "Theme"
 msgstr "テーマ"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:406
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:356
 msgctxt "Theme"
 msgid "Light"
 msgstr "ライト"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:407
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:357
 msgctxt "Theme"
 msgid "Dark"
 msgstr "ダーク"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:408
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:358
 msgctxt "Theme"
 msgid "System"
 msgstr "システムに従う"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:410
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:361
 msgid "Translation Language"
 msgstr "翻訳言語"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:411
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:362
 #, fuzzy
 msgctxt "Language"
 msgid "System"
 msgstr "システムに従う"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:444
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:392
 #, fuzzy
 msgid "Updates"
 msgstr "アップデート"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:445
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:393
 msgid "Automatically Check for Updates"
 msgstr "アップデートを自動的にチェックする"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:446
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:394
 #, fuzzy
 msgid "Allow Preview Updates"
 msgstr "プレビュー版の更新を受け取る"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:448
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:396
 #, fuzzy
 msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
 msgstr "yt-dlp などの依存関係をベータ版に更新"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:450
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:399
 #, fuzzy
 msgid "Keep Download History For"
 msgstr "ダウンロード履歴の保存量"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:452
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:404
 msgid "Never"
 msgstr "通知しない"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:453
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:405
 msgid "1 Day"
 msgstr "1日"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:454
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:406
 msgid "1 Week"
 msgstr "1週間"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:455
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:407
 msgid "1 Month"
 msgstr "1ヶ月"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:456
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:408
 msgid "3 Months"
 msgstr "3ヶ月"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:457
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:409
 msgid "6 Months"
 msgstr "6ヶ月"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:458
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:410
 msgid "1 Year"
 msgstr "1年"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:459
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:411
 msgid "Forever"
 msgstr "ずっと"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:533
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:665
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:780
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:730
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:885
 #, fuzzy
 msgid "Process"
 msgstr "進行中"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
 msgid "Include Media Id in Title"
 msgstr "メディアIDをタイトルに含める"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
 #, fuzzy
 msgid "Add the media entry's yt-dlp id to its default title."
 msgstr "デフォルトのタイトルにメディアIDを付加"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
 msgid "Limit Filename Characters"
 msgstr "ファイル名の文字を制限"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:549
 #, fuzzy
 msgid "Restrict filename characters to those supported only by Windows."
 msgstr "ファイル名の文字を Windows がサポートする文字のみに制限する"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
 msgid "Show Super Resolution Formats"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
 msgid ""
 "Super resolutions are resolutions that have been enhanced with artificial "
 "intelligence."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:542
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:553
 #, fuzzy
 msgid "Show Auto-Generated Subtitles"
 msgstr "自動生成された字幕を含める"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
 msgid "Preferences"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
 #, fuzzy
 msgid "Prefer these codecs and options when showing formats for download."
 msgstr ""
 "ダウンロード可能な音声フォーマットとしてこのコーデックを優先して表示する"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:556
 #, fuzzy
 msgid "Audio Codec"
 msgstr "優先される音声コーデック"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:575
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
 msgid "Any"
 msgstr "すべて"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
 msgid "FLAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:549
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
 msgid "WAV"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:564
 msgid "Opus"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
 msgid "AAC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:566
 msgid "MP4A"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:553
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
 msgid "MP3"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
 #, fuzzy
 msgid "Video Codec"
 msgstr "Tube Converter"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
 #, fuzzy
 msgid "H.265"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:577
 msgid "VP9"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
 msgid "AV1"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:579
 #, fuzzy
 msgid "H.264"
 msgstr "H.264 (AVC)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:582
 #, fuzzy
 msgid "Subtitle Format"
 msgstr "優先する字幕のフォーマット"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:566
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
 msgid "VTT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
 msgid "SRT"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
 msgid "ASS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
 msgid "LRC"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
 #, fuzzy
 msgid "Frame Rate"
 msgstr "優先する字幕のフォーマット"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:574
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
 msgid "24 FPS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:575
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
 msgid "30 FPS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:602
 msgid "60 FPS"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:676
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1005
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:744
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1158
 #, fuzzy
 msgid "Arguments"
 msgstr "新しい認証情報"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:580
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
 #, fuzzy
 msgid "These arguments will be appended to yt-dlp during the discovery phase."
 msgstr "引数はダウンロード追加ダイアログで選択できます"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:666
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:732
 #, fuzzy
 msgid "Maximum Active Downloads"
 msgstr "最大同時ダウンロード数"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:667
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:733
 msgid "Overwrite Existing Files"
 msgstr "存在するファイルを上書きする"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:668
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:734
 msgid "Prevent Sleep During Downloads"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:669
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:735
 #, fuzzy
 msgid "aria2"
 msgstr "aria2c"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:670
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:736
 #, fuzzy
 msgid ""
 "An alternative downloader that may be faster in some regions compared to yt-"
@@ -543,38 +557,38 @@ msgstr ""
 "代替ダウンローダー（地域によっては yt-dlp 標準のダウンローダより高速な場合が"
 "あります）"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:672
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:738
 #, fuzzy
 msgid "Use aria2"
 msgstr "aria2c を使用"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:673
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:739
 msgid "Learn More…"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:674
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:741
 #, fuzzy
 msgid "Maximum Connections Per Server"
 msgstr "サーバーごとの最大接続数"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:675
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:743
 msgid "Minimum Split Size (MiB)"
 msgstr "最小分割サイズ (MiB)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:677
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:745
 #, fuzzy
 msgid "These arguments will be appended to yt-dlp during the download phase."
 msgstr "引数はダウンロード追加ダイアログで選択できます"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:752
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:856
 msgid "Cookies File"
 msgstr "Cookieファイル"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:781
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:886
 msgid "Use Part Files"
 msgstr "分割ファイルを使う"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:783
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:888
 #, fuzzy
 msgid ""
 "Download media in separate .part files instead of directly into the output "
@@ -582,136 +596,136 @@ msgid ""
 msgstr ""
 "メディアを出力ファイルに直接書き出さず、 .part ファイルに分割してダウンロード"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:784
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:889
 #, fuzzy
 msgid "Enable SponsorBlock for YouTube"
 msgstr "YouTube のダウンロードで SponsorBlock を使用"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:785
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:890
 #, fuzzy
 msgid "Try to remove sponsored segments from videos."
 msgstr "動画に含まれる広告区間の除去を試行"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:786
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:891
 msgid "Translate Metadata and Chapters"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:787
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:892
 msgid ""
 "Automatically translate embedded metadata and chapters using the app's set "
 "language on supported sites and media."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:789
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:894
 #, fuzzy
 msgid "Speed"
 msgstr "速度制限"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:790
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:895
 msgid "Limit Download Speed"
 msgstr "ダウンロード速度を制限"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:791
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:896
 msgid "Speed Limit (KiB/s)"
 msgstr "スピード制限 (KiB/毎秒)"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:792
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:897
 #, fuzzy
 msgid "Proxy"
 msgstr "プロキシ URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:793
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:898
 msgid "URL"
 msgstr "URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:794
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:899
 #, fuzzy
 msgid "Cookies"
 msgstr "Cookieファイル"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:795
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:900
 #, fuzzy
 msgid "Browser"
 msgstr "ブラウザのクッキー"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:798
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:906
 msgid "Brave"
 msgstr "Brave"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:799
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:907
 msgid "Chrome"
 msgstr "Chrome"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:800
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:908
 msgid "Chromium"
 msgstr "Chromium"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:801
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:909
 msgid "Edge"
 msgstr "Edge"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:802
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:910
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:803
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:911
 msgid "Opera"
 msgstr "Opera"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:804
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:912
 msgid "Vivaldi"
 msgstr "Vivaldi"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:805
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:913
 msgid "Whale"
 msgstr "Whale"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:807
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:916
 msgid "File"
 msgstr "ファイル"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:808
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:917
 #, fuzzy
 msgid "Browse…"
 msgstr "ブラウザのクッキー"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:809
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:918
 msgid "Clear"
 msgstr "クリア"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:952
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1103
 #, fuzzy
 msgid "Remove Argument"
 msgstr "新しい認証情報"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:954
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1105
 #, fuzzy, c++-format
 msgid "Are you sure you want to remove \"{}\"?"
 msgstr "本当にこの認証情報を削除しますか？"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:986
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1139
 msgid "Embed Metadata"
 msgstr "メタデータを埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:987
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1140
 msgid "Remove Source Data"
 msgstr "ダウンロード元のデータを削除"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:989
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1142
 #, fuzzy
 msgid "Clear metadata fields containing identifying download information."
 msgstr "ダウンロード情報を示すようなメタデータを削除します"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:990
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1143
 #, fuzzy
 msgid "Thumbnails"
 msgstr "字幕を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:991
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1144
 msgid "Embed Thumbnails"
 msgstr "字幕を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:992
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1145
 #, fuzzy
 msgid ""
 "If the file type does not support embedding, the thumbnail will be written "
@@ -720,33 +734,33 @@ msgstr ""
 "ファイル形式が埋め込みに対応していない場合は、サムネイルは独立した画像ファイ"
 "ルとして保存されます"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:994
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1147
 msgid "Crop Audio Thumbnails"
 msgstr "オーディオサムネイルを整形"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:995
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1148
 #, fuzzy
 msgid "Crop thumbnails of audio files to squares."
 msgstr "オーディオファイルのサムネイルを正方形にトリミングします"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:996
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1149
 #, fuzzy
 msgid "Chapters"
 msgstr "チャプター(章)を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:997
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1150
 msgid "Embed Chapters"
 msgstr "チャプター(章)を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:998
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1151
 msgid "Subtitles"
 msgstr "字幕"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:999
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1152
 msgid "Embed Subtitles"
 msgstr "字幕を埋め込む"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1001
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1154
 #, fuzzy
 msgid ""
 "If disabled or if embedding is not supported, downloaded subtitles will be "
@@ -755,57 +769,57 @@ msgstr ""
 "無効化されていたり、埋め込みが非対応の場合は、ダウンロードされた字幕は独立し"
 "たファイルに保存されます"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1003
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1156
 #, fuzzy
 msgid "Threads"
 msgstr "FFmpeg のスレッド"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1004
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1157
 #, fuzzy
 msgid "Limit the number of threads used by ffmpeg."
 msgstr "ffmpge のスレッド数を制限"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1007
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1160
 #, fuzzy
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "引数はダウンロード追加ダイアログで選択できます"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1008
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1161
 msgid "Add"
 msgstr "追加"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1009
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1162
 msgid "Edit"
 msgstr "編集"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1010
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1163
 msgid "Remove"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1057
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1210
 #, fuzzy
 msgctxt "Settings"
 msgid "General"
 msgstr "一般"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1058
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1211
 #, fuzzy
 msgctxt "Settings"
 msgid "Discovery"
 msgstr "探索"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1059
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1212
 #, fuzzy
 msgctxt "Settings"
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1060
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1213
 msgctxt "Settings"
 msgid "Extractor"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1061
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:1214
 #, fuzzy
 msgctxt "Settings"
 msgid "Postprocessing"

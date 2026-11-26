@@ -1,6 +1,7 @@
 #include "views/settings_dialog.h"
 #include <QApplication>
 #include <QCheckBox>
+#include <QCollator>
 #include <QComboBox>
 #include <QDesktopServices>
 #include <QDialog>
@@ -67,95 +68,6 @@
 
 namespace parabolic::qt::views
 {
-    SettingsPage::SettingsPage(QWidget* parent)
-        : QScrollArea{ parent },
-          m_layout{ new QVBoxLayout() }
-    {
-        QWidget* content{ new QWidget() };
-        m_layout->setContentsMargins(24, 20, 24, 20);
-        m_layout->setSpacing(12);
-        content->setLayout(m_layout);
-        setFrameShape(QFrame::NoFrame);
-        setWidgetResizable(true);
-        setWidget(content);
-        content->setBackgroundRole(QPalette::Base);
-    }
-
-    QCheckBox* SettingsPage::add_check(QVBoxLayout* layout)
-    {
-        QCheckBox* check{ new QCheckBox(layout->parentWidget()) };
-        layout->addWidget(check);
-        return check;
-    }
-
-    QCheckBox* SettingsPage::add_check(QVBoxLayout* layout, oclero::qlementine::Label*& description)
-    {
-        QCheckBox* check{ add_check(layout) };
-        description = add_label(layout, oclero::qlementine::TextRole::Caption);
-        description->setContentsMargins(24, 0, 0, 0);
-        return check;
-    }
-
-    QComboBox* SettingsPage::add_combo(QVBoxLayout* layout, oclero::qlementine::Label*& label)
-    {
-        label = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, layout->parentWidget());
-        QComboBox* combo{ new QComboBox(layout->parentWidget()) };
-        QHBoxLayout* row{ new QHBoxLayout() };
-        row->addWidget(label);
-        row->addWidget(combo);
-        row->addStretch();
-        layout->addLayout(row);
-        return combo;
-    }
-
-    QGroupBox* SettingsPage::add_group(QVBoxLayout* page, QVBoxLayout*& layout)
-    {
-        QGroupBox* group{ new QGroupBox(page->parentWidget()) };
-        layout = new QVBoxLayout(group);
-        page->addWidget(group);
-        return group;
-    }
-
-    oclero::qlementine::Label* SettingsPage::add_label(QVBoxLayout* layout, oclero::qlementine::TextRole role)
-    {
-        oclero::qlementine::Label* label{ new oclero::qlementine::Label({}, role, layout->parentWidget()) };
-        label->setWordWrap(true);
-        layout->addWidget(label);
-        return label;
-    }
-
-    QSpinBox* SettingsPage::add_spin(QVBoxLayout* layout, oclero::qlementine::Label*& label, int minimum, int maximum)
-    {
-        label = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, layout->parentWidget());
-        QSpinBox* spin{ new QSpinBox(layout->parentWidget()) };
-        spin->setRange(minimum, maximum);
-        QHBoxLayout* row{ new QHBoxLayout() };
-        row->addWidget(label);
-        row->addWidget(spin);
-        row->addStretch();
-        layout->addLayout(row);
-        return spin;
-    }
-
-    QString SettingsPage::labeled(const char* text)
-    {
-        return QString::fromStdString(application::State::instance().translator()._("{}:", text));
-    }
-
-    QVBoxLayout* SettingsPage::page_layout() const
-    {
-        return m_layout;
-    }
-
-    void SettingsPage::set_items(QComboBox* combo, const QList<QString>& items)
-    {
-        const QSignalBlocker blocker{ combo };
-        int index{ combo->currentIndex() };
-        combo->clear();
-        combo->addItems(items);
-        combo->setCurrentIndex(std::max(index, 0));
-    }
-
     PostprocessingArgumentDialog::PostprocessingArgumentDialog(const postprocessing::Argument& argument,
                                                                const std::vector<std::string>& taken_names,
                                                                QWidget* parent)
@@ -204,43 +116,43 @@ namespace parabolic::qt::views
     void PostprocessingArgumentDialog::translate()
     {
         const translation::Translator& translator{ application::State::instance().translator() };
-        const auto set_items = [](QComboBox* combo, const QList<QString>& items)
-        {
-            const QSignalBlocker blocker{ combo };
-            int index{ combo->currentIndex() };
-            combo->clear();
-            combo->addItems(items);
-            combo->setCurrentIndex(std::max(index, 0));
-        };
         setWindowTitle(translator._("Postprocessing Argument"));
         m_lbl_name->setText(QString::fromStdString(translator._("{}:", translator._("Name"))));
         m_lbl_step->setText(QString::fromStdString(translator._("{}:", translator._("Post Processor"))));
-        set_items(m_cmb_step, {
-                                      translator._("None"),
-                                      translator._("Merger"),
-                                      translator._("Modify Chapters"),
-                                      translator._("Split Chapters"),
-                                      translator._("Extract Audio"),
-                                      translator._("Video Remuxer"),
-                                      translator._("Video Converter"),
-                                      translator._("Metadata"),
-                                      translator._("Embed Subtitle"),
-                                      translator._("Embed Thumbnail"),
-                                      translator._("Subtitles Converter"),
-                                      translator._("Thumbnails Converter"),
-                                      translator._("Fixup Stretched"),
-                                      translator._("Fixup M4a"),
-                                      translator._("Fixup M3u8"),
-                                      translator._("Fixup Timestamp"),
-                                      translator._("Fixup Duration"),
-                              });
+        QSignalBlocker step_blocker{ m_cmb_step };
+        int step_index{ m_cmb_step->currentIndex() };
+        m_cmb_step->clear();
+        m_cmb_step->addItems({
+                translator._("None"),
+                translator._("Merger"),
+                translator._("Modify Chapters"),
+                translator._("Split Chapters"),
+                translator._("Extract Audio"),
+                translator._("Video Remuxer"),
+                translator._("Video Converter"),
+                translator._("Metadata"),
+                translator._("Embed Subtitle"),
+                translator._("Embed Thumbnail"),
+                translator._("Subtitles Converter"),
+                translator._("Thumbnails Converter"),
+                translator._("Fixup Stretched"),
+                translator._("Fixup M4a"),
+                translator._("Fixup M3u8"),
+                translator._("Fixup Timestamp"),
+                translator._("Fixup Duration"),
+        });
+        m_cmb_step->setCurrentIndex(std::max(step_index, 0));
         m_lbl_executable->setText(QString::fromStdString(translator._("{}:", translator._("Executable"))));
-        set_items(m_cmb_executable, {
-                                            translator._("None"),
-                                            translator._("AtomicParsley"),
-                                            translator._("FFmpeg"),
-                                            translator._("FFprobe"),
-                                    });
+        QSignalBlocker executable_blocker{ m_cmb_executable };
+        int executable_index{ m_cmb_executable->currentIndex() };
+        m_cmb_executable->clear();
+        m_cmb_executable->addItems({
+                translator._("None"),
+                translator._("AtomicParsley"),
+                translator._("FFmpeg"),
+                translator._("FFprobe"),
+        });
+        m_cmb_executable->setCurrentIndex(std::max(executable_index, 0));
         m_lbl_arguments->setText(QString::fromStdString(translator._("{}:", translator._("Argument"))));
     }
 
@@ -252,28 +164,63 @@ namespace parabolic::qt::views
     }
 
     SettingsGeneralPage::SettingsGeneralPage(QWidget* parent)
-        : SettingsPage{ parent }
+        : QScrollArea{ parent }
     {
+        QWidget* content{ new QWidget() };
+        QVBoxLayout* layout{ new QVBoxLayout(content) };
+        layout->setContentsMargins(24, 20, 24, 20);
+        layout->setSpacing(12);
+        setFrameShape(QFrame::NoFrame);
+        setWidgetResizable(true);
+        setWidget(content);
+        content->setBackgroundRole(QPalette::Base);
         const translation::Translator& translator{ application::State::instance().translator() };
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        QVBoxLayout* user_interface_layout{ nullptr };
-        m_grp_user_interface = add_group(page_layout(), user_interface_layout);
-        m_cmb_theme = add_combo(user_interface_layout, m_lbl_theme);
-        m_cmb_language = add_combo(user_interface_layout, m_lbl_language);
-        QVBoxLayout* updates_layout{ nullptr };
-        m_grp_updates = add_group(page_layout(), updates_layout);
-        m_chk_automatic_updates = add_check(updates_layout);
-        m_chk_preview_updates = add_check(updates_layout, m_dsc_preview_updates);
-        QVBoxLayout* history_layout{ nullptr };
-        m_grp_history = add_group(page_layout(), history_layout);
-        m_cmb_history_length = add_combo(history_layout, m_lbl_history_length);
-        page_layout()->addStretch();
+        m_grp_user_interface = new QGroupBox(content);
+        QVBoxLayout* user_interface_layout{ new QVBoxLayout(m_grp_user_interface) };
+        layout->addWidget(m_grp_user_interface);
+        m_lbl_theme = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_user_interface);
+        m_cmb_theme = new QComboBox(m_grp_user_interface);
+        QHBoxLayout* theme_row{ new QHBoxLayout() };
+        theme_row->addWidget(m_lbl_theme);
+        theme_row->addWidget(m_cmb_theme);
+        theme_row->addStretch();
+        user_interface_layout->addLayout(theme_row);
+        m_lbl_language = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_user_interface);
+        m_cmb_language = new QComboBox(m_grp_user_interface);
+        QHBoxLayout* language_row{ new QHBoxLayout() };
+        language_row->addWidget(m_lbl_language);
+        language_row->addWidget(m_cmb_language);
+        language_row->addStretch();
+        user_interface_layout->addLayout(language_row);
+        m_grp_updates = new QGroupBox(content);
+        QVBoxLayout* updates_layout{ new QVBoxLayout(m_grp_updates) };
+        layout->addWidget(m_grp_updates);
+        m_chk_automatic_updates = new QCheckBox(m_grp_updates);
+        updates_layout->addWidget(m_chk_automatic_updates);
+        m_chk_preview_updates = new QCheckBox(m_grp_updates);
+        updates_layout->addWidget(m_chk_preview_updates);
+        m_dsc_preview_updates = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_updates);
+        m_dsc_preview_updates->setWordWrap(true);
+        m_dsc_preview_updates->setContentsMargins(24, 0, 0, 0);
+        updates_layout->addWidget(m_dsc_preview_updates);
+        m_grp_history = new QGroupBox(content);
+        QVBoxLayout* history_layout{ new QVBoxLayout(m_grp_history) };
+        layout->addWidget(m_grp_history);
+        m_lbl_history_length = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_history);
+        m_cmb_history_length = new QComboBox(m_grp_history);
+        QHBoxLayout* history_length_row{ new QHBoxLayout() };
+        history_length_row->addWidget(m_lbl_history_length);
+        history_length_row->addWidget(m_cmb_history_length);
+        history_length_row->addStretch();
+        history_layout->addLayout(history_length_row);
+        layout->addStretch();
         m_languages = translator.available_languages();
         m_cmb_language->addItems(QList<QString>(static_cast<qsizetype>(m_languages.size()) + 1));
         translate();
-        const std::vector<std::string>::iterator language_it{
+        std::vector<std::string>::iterator language_it{
             std::ranges::find(m_languages, configuration.translation_options().language())
         };
         m_cmb_theme->setCurrentIndex(static_cast<int>(configuration.theme()));
@@ -401,13 +348,17 @@ namespace parabolic::qt::views
     {
         const translation::Translator& translator{ application::State::instance().translator() };
         m_grp_user_interface->setTitle(translator._("User Interface"));
-        m_lbl_theme->setText(labeled(translator._("Theme")));
-        set_items(m_cmb_theme, {
-                                       translator._p("Theme", "Light"),
-                                       translator._p("Theme", "Dark"),
-                                       translator._p("Theme", "System"),
-                               });
-        m_lbl_language->setText(labeled(translator._("Translation Language")));
+        m_lbl_theme->setText(QString::fromStdString(translator._("{}:", translator._("Theme"))));
+        QSignalBlocker theme_blocker{ m_cmb_theme };
+        int theme_index{ m_cmb_theme->currentIndex() };
+        m_cmb_theme->clear();
+        m_cmb_theme->addItems({
+                translator._p("Theme", "Light"),
+                translator._p("Theme", "Dark"),
+                translator._p("Theme", "System"),
+        });
+        m_cmb_theme->setCurrentIndex(std::max(theme_index, 0));
+        m_lbl_language->setText(QString::fromStdString(translator._("{}:", translator._("Translation Language"))));
         m_cmb_language->setItemText(0, translator._p("Language", "System"));
         std::string selected_language{
             m_cmb_language->currentIndex() > 0
@@ -426,18 +377,15 @@ namespace parabolic::qt::views
                                                                    : QString::fromStdString(language),
                                    language);
         }
-        std::ranges::sort(languages,
-                          [](const std::pair<QString, std::string>& a, const std::pair<QString, std::string>& b)
-        {
-            return a.first.localeAwareCompare(b.first) < 0;
-        });
-        const QSignalBlocker language_blocker{ m_cmb_language };
+        QCollator collator;
+        std::ranges::sort(languages, collator, &std::pair<QString, std::string>::first);
+        QSignalBlocker language_blocker{ m_cmb_language };
         for (std::size_t i{ 0 }; i < languages.size(); i++)
         {
             m_languages[i] = languages[i].second;
             m_cmb_language->setItemText(static_cast<int>(i) + 1, languages[i].first);
         }
-        const std::vector<std::string>::iterator selected_it{ std::ranges::find(m_languages, selected_language) };
+        std::vector<std::string>::iterator selected_it{ std::ranges::find(m_languages, selected_language) };
         m_cmb_language->setCurrentIndex(selected_it == m_languages.end() || selected_language.empty()
                                                 ? 0
                                                 : static_cast<int>(selected_it - m_languages.begin()) + 1);
@@ -447,46 +395,109 @@ namespace parabolic::qt::views
         m_dsc_preview_updates->setText(
                 translator._("Update the app and dependencies, such as yt-dlp, to beta versions."));
         m_grp_history->setTitle(translator._("History"));
-        m_lbl_history_length->setText(labeled(translator._("Keep Download History For")));
-        set_items(m_cmb_history_length, {
-                                                translator._("Never"),
-                                                translator._("1 Day"),
-                                                translator._("1 Week"),
-                                                translator._("1 Month"),
-                                                translator._("3 Months"),
-                                                translator._("6 Months"),
-                                                translator._("1 Year"),
-                                                translator._("Forever"),
-                                        });
+        m_lbl_history_length->setText(
+                QString::fromStdString(translator._("{}:", translator._("Keep Download History For"))));
+        QSignalBlocker history_length_blocker{ m_cmb_history_length };
+        int history_length_index{ m_cmb_history_length->currentIndex() };
+        m_cmb_history_length->clear();
+        m_cmb_history_length->addItems({
+                translator._("Never"),
+                translator._("1 Day"),
+                translator._("1 Week"),
+                translator._("1 Month"),
+                translator._("3 Months"),
+                translator._("6 Months"),
+                translator._("1 Year"),
+                translator._("Forever"),
+        });
+        m_cmb_history_length->setCurrentIndex(std::max(history_length_index, 0));
     }
 
     SettingsDiscoveryPage::SettingsDiscoveryPage(QWidget* parent)
-        : SettingsPage{ parent }
+        : QScrollArea{ parent }
     {
+        QWidget* content{ new QWidget() };
+        QVBoxLayout* layout{ new QVBoxLayout(content) };
+        layout->setContentsMargins(24, 20, 24, 20);
+        layout->setSpacing(12);
+        setFrameShape(QFrame::NoFrame);
+        setWidgetResizable(true);
+        setWidget(content);
+        content->setBackgroundRole(QPalette::Base);
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        QVBoxLayout* process_layout{ nullptr };
-        m_grp_process = add_group(page_layout(), process_layout);
-        m_chk_media_id = add_check(process_layout, m_dsc_media_id);
-        m_chk_limit_characters = add_check(process_layout, m_dsc_limit_characters);
-        m_chk_super_resolutions = add_check(process_layout, m_dsc_super_resolutions);
-        m_chk_auto_generated_subtitles = add_check(process_layout);
-        QVBoxLayout* preferences_layout{ nullptr };
-        m_grp_preferences = add_group(page_layout(), preferences_layout);
-        m_dsc_preferences = add_label(preferences_layout, oclero::qlementine::TextRole::Caption);
-        m_cmb_audio_codec = add_combo(preferences_layout, m_lbl_audio_codec);
-        m_cmb_video_codec = add_combo(preferences_layout, m_lbl_video_codec);
-        m_cmb_subtitle_format = add_combo(preferences_layout, m_lbl_subtitle_format);
-        m_cmb_frame_rate = add_combo(preferences_layout, m_lbl_frame_rate);
-        QVBoxLayout* arguments_layout{ nullptr };
-        m_grp_arguments = add_group(page_layout(), arguments_layout);
-        m_dsc_arguments = add_label(arguments_layout, oclero::qlementine::TextRole::Caption);
-        m_edt_arguments = new QLineEdit(arguments_layout->parentWidget());
+        m_grp_process = new QGroupBox(content);
+        QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
+        layout->addWidget(m_grp_process);
+        m_chk_media_id = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_media_id);
+        m_dsc_media_id = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_dsc_media_id->setWordWrap(true);
+        m_dsc_media_id->setContentsMargins(24, 0, 0, 0);
+        process_layout->addWidget(m_dsc_media_id);
+        m_chk_limit_characters = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_limit_characters);
+        m_dsc_limit_characters =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_dsc_limit_characters->setWordWrap(true);
+        m_dsc_limit_characters->setContentsMargins(24, 0, 0, 0);
+        process_layout->addWidget(m_dsc_limit_characters);
+        m_chk_super_resolutions = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_super_resolutions);
+        m_dsc_super_resolutions =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_dsc_super_resolutions->setWordWrap(true);
+        m_dsc_super_resolutions->setContentsMargins(24, 0, 0, 0);
+        process_layout->addWidget(m_dsc_super_resolutions);
+        m_chk_auto_generated_subtitles = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_auto_generated_subtitles);
+        m_grp_preferences = new QGroupBox(content);
+        QVBoxLayout* preferences_layout{ new QVBoxLayout(m_grp_preferences) };
+        layout->addWidget(m_grp_preferences);
+        m_dsc_preferences = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_preferences);
+        m_dsc_preferences->setWordWrap(true);
+        preferences_layout->addWidget(m_dsc_preferences);
+        m_lbl_audio_codec = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
+        m_cmb_audio_codec = new QComboBox(m_grp_preferences);
+        QHBoxLayout* audio_codec_row{ new QHBoxLayout() };
+        audio_codec_row->addWidget(m_lbl_audio_codec);
+        audio_codec_row->addWidget(m_cmb_audio_codec);
+        audio_codec_row->addStretch();
+        preferences_layout->addLayout(audio_codec_row);
+        m_lbl_video_codec = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
+        m_cmb_video_codec = new QComboBox(m_grp_preferences);
+        QHBoxLayout* video_codec_row{ new QHBoxLayout() };
+        video_codec_row->addWidget(m_lbl_video_codec);
+        video_codec_row->addWidget(m_cmb_video_codec);
+        video_codec_row->addStretch();
+        preferences_layout->addLayout(video_codec_row);
+        m_lbl_subtitle_format =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
+        m_cmb_subtitle_format = new QComboBox(m_grp_preferences);
+        QHBoxLayout* subtitle_format_row{ new QHBoxLayout() };
+        subtitle_format_row->addWidget(m_lbl_subtitle_format);
+        subtitle_format_row->addWidget(m_cmb_subtitle_format);
+        subtitle_format_row->addStretch();
+        preferences_layout->addLayout(subtitle_format_row);
+        m_lbl_frame_rate = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
+        m_cmb_frame_rate = new QComboBox(m_grp_preferences);
+        QHBoxLayout* frame_rate_row{ new QHBoxLayout() };
+        frame_rate_row->addWidget(m_lbl_frame_rate);
+        frame_rate_row->addWidget(m_cmb_frame_rate);
+        frame_rate_row->addStretch();
+        preferences_layout->addLayout(frame_rate_row);
+        m_grp_arguments = new QGroupBox(content);
+        QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
+        layout->addWidget(m_grp_arguments);
+        m_dsc_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_arguments);
+        m_dsc_arguments->setWordWrap(true);
+        arguments_layout->addWidget(m_dsc_arguments);
+        m_edt_arguments = new QLineEdit(m_grp_arguments);
         arguments_layout->addWidget(m_edt_arguments);
-        page_layout()->addStretch();
+        layout->addStretch();
         translate();
-        const discovery::Options options{ configuration.discovery_options() };
+        discovery::Options options{ configuration.discovery_options() };
         m_chk_media_id->setChecked(options.include_media_id_in_title());
         m_chk_limit_characters->setChecked(options.limit_characters());
         m_chk_super_resolutions->setChecked(options.include_super_resolutions());
@@ -542,76 +553,131 @@ namespace parabolic::qt::views
         m_chk_auto_generated_subtitles->setText(translator._("Show Auto-Generated Subtitles"));
         m_grp_preferences->setTitle(translator._("Preferences"));
         m_dsc_preferences->setText(translator._("Prefer these codecs and options when showing formats for download."));
-        m_lbl_audio_codec->setText(labeled(translator._("Audio Codec")));
-        set_items(m_cmb_audio_codec, {
-                                             translator._("Any"),
-                                             translator._("FLAC"),
-                                             translator._("WAV"),
-                                             translator._("Opus"),
-                                             translator._("AAC"),
-                                             translator._("MP4A"),
-                                             translator._("MP3"),
-                                     });
-        m_lbl_video_codec->setText(labeled(translator._("Video Codec")));
-        set_items(m_cmb_video_codec, {
-                                             translator._("Any"),
-                                             translator._("H.265"),
-                                             translator._("VP9"),
-                                             translator._("AV1"),
-                                             translator._("H.264"),
-                                     });
-        m_lbl_subtitle_format->setText(labeled(translator._("Subtitle Format")));
-        set_items(m_cmb_subtitle_format, {
-                                                 translator._("Any"),
-                                                 translator._("VTT"),
-                                                 translator._("SRT"),
-                                                 translator._("ASS"),
-                                                 translator._("LRC"),
-                                         });
-        m_lbl_frame_rate->setText(labeled(translator._("Frame Rate")));
-        set_items(m_cmb_frame_rate, {
-                                            translator._("Any"),
-                                            translator._("24 FPS"),
-                                            translator._("30 FPS"),
-                                            translator._("60 FPS"),
-                                    });
+        m_lbl_audio_codec->setText(QString::fromStdString(translator._("{}:", translator._("Audio Codec"))));
+        QSignalBlocker audio_codec_blocker{ m_cmb_audio_codec };
+        int audio_codec_index{ m_cmb_audio_codec->currentIndex() };
+        m_cmb_audio_codec->clear();
+        m_cmb_audio_codec->addItems({
+                translator._("Any"),
+                translator._("FLAC"),
+                translator._("WAV"),
+                translator._("Opus"),
+                translator._("AAC"),
+                translator._("MP4A"),
+                translator._("MP3"),
+        });
+        m_cmb_audio_codec->setCurrentIndex(std::max(audio_codec_index, 0));
+        m_lbl_video_codec->setText(QString::fromStdString(translator._("{}:", translator._("Video Codec"))));
+        QSignalBlocker video_codec_blocker{ m_cmb_video_codec };
+        int video_codec_index{ m_cmb_video_codec->currentIndex() };
+        m_cmb_video_codec->clear();
+        m_cmb_video_codec->addItems({
+                translator._("Any"),
+                translator._("H.265"),
+                translator._("VP9"),
+                translator._("AV1"),
+                translator._("H.264"),
+        });
+        m_cmb_video_codec->setCurrentIndex(std::max(video_codec_index, 0));
+        m_lbl_subtitle_format->setText(QString::fromStdString(translator._("{}:", translator._("Subtitle Format"))));
+        QSignalBlocker subtitle_format_blocker{ m_cmb_subtitle_format };
+        int subtitle_format_index{ m_cmb_subtitle_format->currentIndex() };
+        m_cmb_subtitle_format->clear();
+        m_cmb_subtitle_format->addItems({
+                translator._("Any"),
+                translator._("VTT"),
+                translator._("SRT"),
+                translator._("ASS"),
+                translator._("LRC"),
+        });
+        m_cmb_subtitle_format->setCurrentIndex(std::max(subtitle_format_index, 0));
+        m_lbl_frame_rate->setText(QString::fromStdString(translator._("{}:", translator._("Frame Rate"))));
+        QSignalBlocker frame_rate_blocker{ m_cmb_frame_rate };
+        int frame_rate_index{ m_cmb_frame_rate->currentIndex() };
+        m_cmb_frame_rate->clear();
+        m_cmb_frame_rate->addItems({
+                translator._("Any"),
+                translator._("24 FPS"),
+                translator._("30 FPS"),
+                translator._("60 FPS"),
+        });
+        m_cmb_frame_rate->setCurrentIndex(std::max(frame_rate_index, 0));
         m_grp_arguments->setTitle(translator._("Arguments"));
         m_dsc_arguments->setText(
                 translator._("These arguments will be appended to yt-dlp during the discovery phase."));
     }
 
     SettingsDownloadsPage::SettingsDownloadsPage(QWidget* parent)
-        : SettingsPage{ parent }
+        : QScrollArea{ parent }
     {
+        QWidget* content{ new QWidget() };
+        QVBoxLayout* layout{ new QVBoxLayout(content) };
+        layout->setContentsMargins(24, 20, 24, 20);
+        layout->setSpacing(12);
+        setFrameShape(QFrame::NoFrame);
+        setWidgetResizable(true);
+        setWidget(content);
+        content->setBackgroundRole(QPalette::Base);
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        QVBoxLayout* process_layout{ nullptr };
-        m_grp_process = add_group(page_layout(), process_layout);
-        m_spn_max_downloads = add_spin(process_layout, m_lbl_max_downloads, 1, 10);
-        m_chk_overwrite_existing_files = add_check(process_layout);
-        m_chk_prevent_suspend = add_check(process_layout);
-        QVBoxLayout* aria_layout{ nullptr };
-        m_grp_aria = add_group(page_layout(), aria_layout);
-        m_dsc_aria = add_label(aria_layout, oclero::qlementine::TextRole::Caption);
-        m_chk_use_aria = add_check(aria_layout);
-        m_btn_learn_more = new QPushButton(aria_layout->parentWidget());
+        m_grp_process = new QGroupBox(content);
+        QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
+        layout->addWidget(m_grp_process);
+        m_lbl_max_downloads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_process);
+        m_spn_max_downloads = new QSpinBox(m_grp_process);
+        m_spn_max_downloads->setRange(1, 10);
+        QHBoxLayout* max_downloads_row{ new QHBoxLayout() };
+        max_downloads_row->addWidget(m_lbl_max_downloads);
+        max_downloads_row->addWidget(m_spn_max_downloads);
+        max_downloads_row->addStretch();
+        process_layout->addLayout(max_downloads_row);
+        m_chk_overwrite_existing_files = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_overwrite_existing_files);
+        m_chk_prevent_suspend = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_prevent_suspend);
+        m_grp_aria = new QGroupBox(content);
+        QVBoxLayout* aria_layout{ new QVBoxLayout(m_grp_aria) };
+        layout->addWidget(m_grp_aria);
+        m_dsc_aria = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_aria);
+        m_dsc_aria->setWordWrap(true);
+        aria_layout->addWidget(m_dsc_aria);
+        m_chk_use_aria = new QCheckBox(m_grp_aria);
+        aria_layout->addWidget(m_chk_use_aria);
+        m_btn_learn_more = new QPushButton(m_grp_aria);
         m_btn_learn_more->setFlat(true);
         QHBoxLayout* learn_more_row{ new QHBoxLayout() };
         learn_more_row->addWidget(m_btn_learn_more);
         learn_more_row->addStretch();
         aria_layout->addLayout(learn_more_row);
-        m_spn_aria_connections = add_spin(aria_layout, m_lbl_aria_connections, 1, 16);
-        m_spn_aria_split_size = add_spin(aria_layout, m_lbl_aria_split_size, 1, 1024);
-        QVBoxLayout* arguments_layout{ nullptr };
-        m_grp_arguments = add_group(page_layout(), arguments_layout);
-        m_dsc_arguments = add_label(arguments_layout, oclero::qlementine::TextRole::Caption);
-        m_edt_arguments = new QLineEdit(arguments_layout->parentWidget());
+        m_lbl_aria_connections = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_aria);
+        m_spn_aria_connections = new QSpinBox(m_grp_aria);
+        m_spn_aria_connections->setRange(1, 16);
+        QHBoxLayout* aria_connections_row{ new QHBoxLayout() };
+        aria_connections_row->addWidget(m_lbl_aria_connections);
+        aria_connections_row->addWidget(m_spn_aria_connections);
+        aria_connections_row->addStretch();
+        aria_layout->addLayout(aria_connections_row);
+        m_lbl_aria_split_size = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_aria);
+        m_spn_aria_split_size = new QSpinBox(m_grp_aria);
+        m_spn_aria_split_size->setRange(1, 1024);
+        QHBoxLayout* aria_split_size_row{ new QHBoxLayout() };
+        aria_split_size_row->addWidget(m_lbl_aria_split_size);
+        aria_split_size_row->addWidget(m_spn_aria_split_size);
+        aria_split_size_row->addStretch();
+        aria_layout->addLayout(aria_split_size_row);
+        m_grp_arguments = new QGroupBox(content);
+        QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
+        layout->addWidget(m_grp_arguments);
+        m_dsc_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_arguments);
+        m_dsc_arguments->setWordWrap(true);
+        arguments_layout->addWidget(m_dsc_arguments);
+        m_edt_arguments = new QLineEdit(m_grp_arguments);
         arguments_layout->addWidget(m_edt_arguments);
-        page_layout()->addStretch();
+        layout->addStretch();
         translate();
-        const download::Options download_options{ configuration.download_options() };
-        const aria2::Options aria2_options{ configuration.aria2_options() };
+        download::Options download_options{ configuration.download_options() };
+        aria2::Options aria2_options{ configuration.aria2_options() };
         m_spn_max_downloads->setValue(download_options.max_number_of_active_downloads());
         m_chk_overwrite_existing_files->setChecked(download_options.overwrite_existing_files());
         m_chk_prevent_suspend->setChecked(download_options.prevent_suspend());
@@ -626,23 +692,22 @@ namespace parabolic::qt::views
         connect(m_spn_max_downloads, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
         connect(m_chk_overwrite_existing_files, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
         connect(m_chk_prevent_suspend, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
-        connect(m_chk_use_aria, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_spn_aria_connections->setEnabled(checked);
-            m_spn_aria_split_size->setEnabled(checked);
-        });
         connect(m_chk_use_aria, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
-        connect(m_btn_learn_more, &QPushButton::clicked, this, []
-        {
-            QDesktopServices::openUrl(QUrl("https://aria2.github.io"));
-        });
+        connect(m_btn_learn_more, &QPushButton::clicked, this, &SettingsDownloadsPage::learn_more);
         connect(m_spn_aria_connections, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
         connect(m_spn_aria_split_size, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
         connect(m_edt_arguments, &QLineEdit::textChanged, this, &SettingsDownloadsPage::save);
     }
 
+    void SettingsDownloadsPage::learn_more()
+    {
+        QDesktopServices::openUrl(QUrl("https://aria2.github.io"));
+    }
+
     void SettingsDownloadsPage::save()
     {
+        m_spn_aria_connections->setEnabled(m_chk_use_aria->isChecked());
+        m_spn_aria_split_size->setEnabled(m_chk_use_aria->isChecked());
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
@@ -663,7 +728,8 @@ namespace parabolic::qt::views
     {
         const translation::Translator& translator{ application::State::instance().translator() };
         m_grp_process->setTitle(translator._("Process"));
-        m_lbl_max_downloads->setText(labeled(translator._("Maximum Active Downloads")));
+        m_lbl_max_downloads->setText(
+                QString::fromStdString(translator._("{}:", translator._("Maximum Active Downloads"))));
         m_chk_overwrite_existing_files->setText(translator._("Overwrite Existing Files"));
         m_chk_prevent_suspend->setText(translator._("Prevent Sleep During Downloads"));
         m_grp_aria->setTitle(translator._("aria2"));
@@ -671,54 +737,96 @@ namespace parabolic::qt::views
                                          "yt-dlp's native downloader."));
         m_chk_use_aria->setText(translator._("Use aria2"));
         m_btn_learn_more->setText(translator._("Learn More…"));
-        m_lbl_aria_connections->setText(labeled(translator._("Maximum Connections Per Server")));
-        m_lbl_aria_split_size->setText(labeled(translator._("Minimum Split Size (MiB)")));
+        m_lbl_aria_connections->setText(
+                QString::fromStdString(translator._("{}:", translator._("Maximum Connections Per Server"))));
+        m_lbl_aria_split_size->setText(
+                QString::fromStdString(translator._("{}:", translator._("Minimum Split Size (MiB)"))));
         m_grp_arguments->setTitle(translator._("Arguments"));
         m_dsc_arguments->setText(translator._("These arguments will be appended to yt-dlp during the download phase."));
     }
 
     SettingsExtractorPage::SettingsExtractorPage(QWidget* parent)
-        : SettingsPage{ parent }
+        : QScrollArea{ parent }
     {
+        QWidget* content{ new QWidget() };
+        QVBoxLayout* layout{ new QVBoxLayout(content) };
+        layout->setContentsMargins(24, 20, 24, 20);
+        layout->setSpacing(12);
+        setFrameShape(QFrame::NoFrame);
+        setWidgetResizable(true);
+        setWidget(content);
+        content->setBackgroundRole(QPalette::Base);
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        QVBoxLayout* process_layout{ nullptr };
-        m_grp_process = add_group(page_layout(), process_layout);
-        m_chk_part_files = add_check(process_layout, m_dsc_part_files);
-        m_chk_sponsor_block = add_check(process_layout, m_dsc_sponsor_block);
-        m_chk_translate_metadata = add_check(process_layout, m_dsc_translate_metadata);
-        QVBoxLayout* speed_layout{ nullptr };
-        m_grp_speed = add_group(page_layout(), speed_layout);
-        m_chk_speed_limit = add_check(speed_layout);
-        m_spn_speed_limit = add_spin(speed_layout, m_lbl_speed_limit, 512, 10240);
-        QVBoxLayout* proxy_layout{ nullptr };
-        m_grp_proxy = add_group(page_layout(), proxy_layout);
-        m_lbl_proxy_url =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, proxy_layout->parentWidget());
-        m_edt_proxy_url = new QLineEdit(proxy_layout->parentWidget());
+        m_grp_process = new QGroupBox(content);
+        QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
+        layout->addWidget(m_grp_process);
+        m_chk_part_files = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_part_files);
+        m_dsc_part_files = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_dsc_part_files->setWordWrap(true);
+        m_dsc_part_files->setContentsMargins(24, 0, 0, 0);
+        process_layout->addWidget(m_dsc_part_files);
+        m_chk_sponsor_block = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_sponsor_block);
+        m_dsc_sponsor_block = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_dsc_sponsor_block->setWordWrap(true);
+        m_dsc_sponsor_block->setContentsMargins(24, 0, 0, 0);
+        process_layout->addWidget(m_dsc_sponsor_block);
+        m_chk_translate_metadata = new QCheckBox(m_grp_process);
+        process_layout->addWidget(m_chk_translate_metadata);
+        m_dsc_translate_metadata =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_dsc_translate_metadata->setWordWrap(true);
+        m_dsc_translate_metadata->setContentsMargins(24, 0, 0, 0);
+        process_layout->addWidget(m_dsc_translate_metadata);
+        m_grp_speed = new QGroupBox(content);
+        QVBoxLayout* speed_layout{ new QVBoxLayout(m_grp_speed) };
+        layout->addWidget(m_grp_speed);
+        m_chk_speed_limit = new QCheckBox(m_grp_speed);
+        speed_layout->addWidget(m_chk_speed_limit);
+        m_lbl_speed_limit = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_speed);
+        m_spn_speed_limit = new QSpinBox(m_grp_speed);
+        m_spn_speed_limit->setRange(512, 10240);
+        QHBoxLayout* speed_limit_row{ new QHBoxLayout() };
+        speed_limit_row->addWidget(m_lbl_speed_limit);
+        speed_limit_row->addWidget(m_spn_speed_limit);
+        speed_limit_row->addStretch();
+        speed_layout->addLayout(speed_limit_row);
+        m_grp_proxy = new QGroupBox(content);
+        QVBoxLayout* proxy_layout{ new QVBoxLayout(m_grp_proxy) };
+        layout->addWidget(m_grp_proxy);
+        m_lbl_proxy_url = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_proxy);
+        m_edt_proxy_url = new QLineEdit(m_grp_proxy);
         QHBoxLayout* proxy_row{ new QHBoxLayout() };
         proxy_row->addWidget(m_lbl_proxy_url);
         proxy_row->addWidget(m_edt_proxy_url, 1);
         proxy_layout->addLayout(proxy_row);
-        QVBoxLayout* cookies_layout{ nullptr };
-        m_grp_cookies = add_group(page_layout(), cookies_layout);
-        m_cmb_cookies_browser = add_combo(cookies_layout, m_lbl_cookies_browser);
-        m_lbl_cookies_file = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default,
-                                                           cookies_layout->parentWidget());
-        m_edt_cookies_path = new QLineEdit(cookies_layout->parentWidget());
+        m_grp_cookies = new QGroupBox(content);
+        QVBoxLayout* cookies_layout{ new QVBoxLayout(m_grp_cookies) };
+        layout->addWidget(m_grp_cookies);
+        m_lbl_cookies_browser = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_cookies);
+        m_cmb_cookies_browser = new QComboBox(m_grp_cookies);
+        QHBoxLayout* cookies_browser_row{ new QHBoxLayout() };
+        cookies_browser_row->addWidget(m_lbl_cookies_browser);
+        cookies_browser_row->addWidget(m_cmb_cookies_browser);
+        cookies_browser_row->addStretch();
+        cookies_layout->addLayout(cookies_browser_row);
+        m_lbl_cookies_file = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_cookies);
+        m_edt_cookies_path = new QLineEdit(m_grp_cookies);
         m_edt_cookies_path->setReadOnly(true);
-        m_btn_cookies_browse = new QPushButton(cookies_layout->parentWidget());
-        m_btn_cookies_clear = new QPushButton(cookies_layout->parentWidget());
+        m_btn_cookies_browse = new QPushButton(m_grp_cookies);
+        m_btn_cookies_clear = new QPushButton(m_grp_cookies);
         QHBoxLayout* cookies_row{ new QHBoxLayout() };
         cookies_row->addWidget(m_lbl_cookies_file);
         cookies_row->addWidget(m_edt_cookies_path, 1);
         cookies_row->addWidget(m_btn_cookies_browse);
         cookies_row->addWidget(m_btn_cookies_clear);
         cookies_layout->addLayout(cookies_row);
-        page_layout()->addStretch();
+        layout->addStretch();
         translate();
-        const extractor::Options options{ configuration.extractor_options() };
+        extractor::Options options{ configuration.extractor_options() };
         m_chk_part_files->setChecked(options.use_part_files());
         m_chk_sponsor_block->setChecked(options.youtube_sponsor_block());
         m_chk_translate_metadata->setChecked(options.translate_metadata_and_chapters());
@@ -733,10 +841,6 @@ namespace parabolic::qt::views
         connect(m_chk_part_files, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
         connect(m_chk_sponsor_block, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
         connect(m_chk_translate_metadata, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
-        connect(m_chk_speed_limit, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_spn_speed_limit->setEnabled(checked);
-        });
         connect(m_chk_speed_limit, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
         connect(m_spn_speed_limit, &QSpinBox::valueChanged, this, &SettingsExtractorPage::save);
         connect(m_edt_proxy_url, &QLineEdit::textChanged, this, &SettingsExtractorPage::save);
@@ -759,6 +863,7 @@ namespace parabolic::qt::views
 
     void SettingsExtractorPage::save()
     {
+        m_spn_speed_limit->setEnabled(m_chk_speed_limit->isChecked());
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
@@ -788,62 +893,116 @@ namespace parabolic::qt::views
                                                        "the app's set language on supported sites and media."));
         m_grp_speed->setTitle(translator._("Speed"));
         m_chk_speed_limit->setText(translator._("Limit Download Speed"));
-        m_lbl_speed_limit->setText(labeled(translator._("Speed Limit (KiB/s)")));
+        m_lbl_speed_limit->setText(QString::fromStdString(translator._("{}:", translator._("Speed Limit (KiB/s)"))));
         m_grp_proxy->setTitle(translator._("Proxy"));
-        m_lbl_proxy_url->setText(labeled(translator._("URL")));
+        m_lbl_proxy_url->setText(QString::fromStdString(translator._("{}:", translator._("URL"))));
         m_grp_cookies->setTitle(translator._("Cookies"));
-        m_lbl_cookies_browser->setText(labeled(translator._("Browser")));
-        set_items(m_cmb_cookies_browser, {
-                                                 translator._("None"),
-                                                 translator._("Brave"),
-                                                 translator._("Chrome"),
-                                                 translator._("Chromium"),
-                                                 translator._("Edge"),
-                                                 translator._("Firefox"),
-                                                 translator._("Opera"),
-                                                 translator._("Vivaldi"),
-                                                 translator._("Whale"),
-                                         });
-        m_lbl_cookies_file->setText(labeled(translator._("File")));
+        m_lbl_cookies_browser->setText(QString::fromStdString(translator._("{}:", translator._("Browser"))));
+        QSignalBlocker cookies_browser_blocker{ m_cmb_cookies_browser };
+        int cookies_browser_index{ m_cmb_cookies_browser->currentIndex() };
+        m_cmb_cookies_browser->clear();
+        m_cmb_cookies_browser->addItems({
+                translator._("None"),
+                translator._("Brave"),
+                translator._("Chrome"),
+                translator._("Chromium"),
+                translator._("Edge"),
+                translator._("Firefox"),
+                translator._("Opera"),
+                translator._("Vivaldi"),
+                translator._("Whale"),
+        });
+        m_cmb_cookies_browser->setCurrentIndex(std::max(cookies_browser_index, 0));
+        m_lbl_cookies_file->setText(QString::fromStdString(translator._("{}:", translator._("File"))));
         m_btn_cookies_browse->setText(translator._("Browse…"));
         m_btn_cookies_clear->setText(translator._("Clear"));
     }
 
     SettingsPostprocessingPage::SettingsPostprocessingPage(QWidget* parent)
-        : SettingsPage{ parent }
+        : QScrollArea{ parent }
     {
+        QWidget* content{ new QWidget() };
+        QVBoxLayout* layout{ new QVBoxLayout(content) };
+        layout->setContentsMargins(24, 20, 24, 20);
+        layout->setSpacing(12);
+        setFrameShape(QFrame::NoFrame);
+        setWidgetResizable(true);
+        setWidget(content);
+        content->setBackgroundRole(QPalette::Base);
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        QVBoxLayout* metadata_layout{ nullptr };
-        m_grp_metadata = add_group(page_layout(), metadata_layout);
-        m_chk_embed_metadata = add_check(metadata_layout);
-        m_chk_remove_source_data = add_check(metadata_layout, m_dsc_remove_source_data);
-        QVBoxLayout* thumbnails_layout{ nullptr };
-        m_grp_thumbnails = add_group(page_layout(), thumbnails_layout);
-        m_chk_embed_thumbnails = add_check(thumbnails_layout, m_dsc_embed_thumbnails);
-        m_chk_crop_audio_thumbnails = add_check(thumbnails_layout, m_dsc_crop_audio_thumbnails);
-        QVBoxLayout* chapters_layout{ nullptr };
-        m_grp_chapters = add_group(page_layout(), chapters_layout);
-        m_chk_embed_chapters = add_check(chapters_layout);
-        QVBoxLayout* subtitles_layout{ nullptr };
-        m_grp_subtitles = add_group(page_layout(), subtitles_layout);
-        m_chk_embed_subtitles = add_check(subtitles_layout, m_dsc_embed_subtitles);
-        QVBoxLayout* ffmpeg_layout{ nullptr };
-        m_grp_ffmpeg = add_group(page_layout(), ffmpeg_layout);
-        m_spn_threads = add_spin(ffmpeg_layout, m_lbl_threads, 1,
-                                 static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
-        m_dsc_threads = add_label(ffmpeg_layout, oclero::qlementine::TextRole::Caption);
-        QVBoxLayout* arguments_layout{ nullptr };
-        m_grp_arguments = add_group(page_layout(), arguments_layout);
-        m_dsc_arguments = add_label(arguments_layout, oclero::qlementine::TextRole::Caption);
-        m_btn_add = new QToolButton(arguments_layout->parentWidget());
+        m_grp_metadata = new QGroupBox(content);
+        QVBoxLayout* metadata_layout{ new QVBoxLayout(m_grp_metadata) };
+        layout->addWidget(m_grp_metadata);
+        m_chk_embed_metadata = new QCheckBox(m_grp_metadata);
+        metadata_layout->addWidget(m_chk_embed_metadata);
+        m_chk_remove_source_data = new QCheckBox(m_grp_metadata);
+        metadata_layout->addWidget(m_chk_remove_source_data);
+        m_dsc_remove_source_data =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_metadata);
+        m_dsc_remove_source_data->setWordWrap(true);
+        m_dsc_remove_source_data->setContentsMargins(24, 0, 0, 0);
+        metadata_layout->addWidget(m_dsc_remove_source_data);
+        m_grp_thumbnails = new QGroupBox(content);
+        QVBoxLayout* thumbnails_layout{ new QVBoxLayout(m_grp_thumbnails) };
+        layout->addWidget(m_grp_thumbnails);
+        m_chk_embed_thumbnails = new QCheckBox(m_grp_thumbnails);
+        thumbnails_layout->addWidget(m_chk_embed_thumbnails);
+        m_dsc_embed_thumbnails =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_thumbnails);
+        m_dsc_embed_thumbnails->setWordWrap(true);
+        m_dsc_embed_thumbnails->setContentsMargins(24, 0, 0, 0);
+        thumbnails_layout->addWidget(m_dsc_embed_thumbnails);
+        m_chk_crop_audio_thumbnails = new QCheckBox(m_grp_thumbnails);
+        thumbnails_layout->addWidget(m_chk_crop_audio_thumbnails);
+        m_dsc_crop_audio_thumbnails =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_thumbnails);
+        m_dsc_crop_audio_thumbnails->setWordWrap(true);
+        m_dsc_crop_audio_thumbnails->setContentsMargins(24, 0, 0, 0);
+        thumbnails_layout->addWidget(m_dsc_crop_audio_thumbnails);
+        m_grp_chapters = new QGroupBox(content);
+        QVBoxLayout* chapters_layout{ new QVBoxLayout(m_grp_chapters) };
+        layout->addWidget(m_grp_chapters);
+        m_chk_embed_chapters = new QCheckBox(m_grp_chapters);
+        chapters_layout->addWidget(m_chk_embed_chapters);
+        m_grp_subtitles = new QGroupBox(content);
+        QVBoxLayout* subtitles_layout{ new QVBoxLayout(m_grp_subtitles) };
+        layout->addWidget(m_grp_subtitles);
+        m_chk_embed_subtitles = new QCheckBox(m_grp_subtitles);
+        subtitles_layout->addWidget(m_chk_embed_subtitles);
+        m_dsc_embed_subtitles =
+                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_subtitles);
+        m_dsc_embed_subtitles->setWordWrap(true);
+        m_dsc_embed_subtitles->setContentsMargins(24, 0, 0, 0);
+        subtitles_layout->addWidget(m_dsc_embed_subtitles);
+        m_grp_ffmpeg = new QGroupBox(content);
+        QVBoxLayout* ffmpeg_layout{ new QVBoxLayout(m_grp_ffmpeg) };
+        layout->addWidget(m_grp_ffmpeg);
+        m_lbl_threads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_ffmpeg);
+        m_spn_threads = new QSpinBox(m_grp_ffmpeg);
+        m_spn_threads->setRange(1, static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
+        QHBoxLayout* threads_row{ new QHBoxLayout() };
+        threads_row->addWidget(m_lbl_threads);
+        threads_row->addWidget(m_spn_threads);
+        threads_row->addStretch();
+        ffmpeg_layout->addLayout(threads_row);
+        m_dsc_threads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_ffmpeg);
+        m_dsc_threads->setWordWrap(true);
+        ffmpeg_layout->addWidget(m_dsc_threads);
+        m_grp_arguments = new QGroupBox(content);
+        QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
+        layout->addWidget(m_grp_arguments);
+        m_dsc_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_arguments);
+        m_dsc_arguments->setWordWrap(true);
+        arguments_layout->addWidget(m_dsc_arguments);
+        m_btn_add = new QToolButton(m_grp_arguments);
         m_btn_add->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
-        m_btn_edit = new QToolButton(arguments_layout->parentWidget());
+        m_btn_edit = new QToolButton(m_grp_arguments);
         m_btn_edit->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Pen)));
-        m_btn_remove = new QToolButton(arguments_layout->parentWidget());
+        m_btn_remove = new QToolButton(m_grp_arguments);
         m_btn_remove->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Minus)));
         QHBoxLayout* buttons{ new QHBoxLayout() };
@@ -852,12 +1011,12 @@ namespace parabolic::qt::views
         buttons->addWidget(m_btn_remove);
         buttons->addStretch();
         arguments_layout->addLayout(buttons);
-        m_lst_arguments = new QListWidget(arguments_layout->parentWidget());
+        m_lst_arguments = new QListWidget(m_grp_arguments);
         m_lst_arguments->setMinimumHeight(120);
         arguments_layout->addWidget(m_lst_arguments);
-        page_layout()->addStretch();
+        layout->addStretch();
         translate();
-        const postprocessing::Options options{ configuration.postprocessing_options() };
+        postprocessing::Options options{ configuration.postprocessing_options() };
         m_chk_embed_metadata->setChecked(options.embed_metadata());
         m_chk_remove_source_data->setChecked(options.remove_source_data());
         m_chk_remove_source_data->setEnabled(options.embed_metadata());
@@ -874,16 +1033,8 @@ namespace parabolic::qt::views
         }
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed, this, &SettingsPostprocessingPage::translate);
-        connect(m_chk_embed_metadata, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_chk_remove_source_data->setEnabled(checked);
-        });
         connect(m_chk_embed_metadata, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
         connect(m_chk_remove_source_data, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
-        connect(m_chk_embed_thumbnails, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_chk_crop_audio_thumbnails->setEnabled(checked);
-        });
         connect(m_chk_embed_thumbnails, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
         connect(m_chk_crop_audio_thumbnails, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
         connect(m_chk_embed_chapters, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
@@ -964,6 +1115,8 @@ namespace parabolic::qt::views
 
     void SettingsPostprocessingPage::save()
     {
+        m_chk_crop_audio_thumbnails->setEnabled(m_chk_embed_thumbnails->isChecked());
+        m_chk_remove_source_data->setEnabled(m_chk_embed_metadata->isChecked());
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
@@ -1000,7 +1153,7 @@ namespace parabolic::qt::views
         m_dsc_embed_subtitles->setText(translator._(
                 "If disabled or if embedding is not supported, downloaded subtitles will be saved to separate files."));
         m_grp_ffmpeg->setTitle(translator._("FFmpeg"));
-        m_lbl_threads->setText(labeled(translator._("Threads")));
+        m_lbl_threads->setText(QString::fromStdString(translator._("{}:", translator._("Threads"))));
         m_dsc_threads->setText(translator._("Limit the number of threads used by ffmpeg."));
         m_grp_arguments->setTitle(translator._("Arguments"));
         m_dsc_arguments->setText(
