@@ -13,7 +13,6 @@
 #include <Qt>
 #include <oclero/qlementine/icons/Icons16.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/ThemeManager.hpp>
 #include <oclero/qlementine/widgets/NavigationSidebar.hpp>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
