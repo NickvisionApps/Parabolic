@@ -759,11 +759,15 @@ void NavigationSidebar::drawItemForeground(QPainter& p, const Item& item) const 
   // Text, elided and faded out in compact mode.
   if (!item.text.isEmpty() && textRight > textLeft) {
     const auto textRect = QRect{ textLeft, rect.y(), textRight - textLeft, rect.height() };
+    auto textFont = labelFont();
+    if (index == currentIndex()) {
+      textFont.setWeight(QFont::DemiBold);
+    }
     p.setOpacity(rowOpacity * expandedOpacity);
-    p.setFont(labelFont());
+    p.setFont(textFont);
     p.setPen(itemFgColor);
     p.drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft | Qt::TextSingleLine,
-      QFontMetrics(labelFont(), this).elidedText(item.text, Qt::ElideRight, textRect.width(), Qt::TextSingleLine));
+      QFontMetrics(textFont, this).elidedText(item.text, Qt::ElideRight, textRect.width(), Qt::TextSingleLine));
   }
 
   p.restore();
