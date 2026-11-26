@@ -17,8 +17,8 @@ namespace parabolic::qt::views
         HomePage& operator=(const HomePage&) = delete;
         HomePage& operator=(HomePage&&) = delete;
 
-    private Q_SLOTS:
-        void translate();
+    private:
+        Q_SLOT void translate();
     };
 }
 

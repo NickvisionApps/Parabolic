@@ -25,13 +25,11 @@ namespace parabolic::qt::views
     protected:
         void closeEvent(QCloseEvent* event) override;
 
-    private Q_SLOTS:
-        void add_download() const;
-        void settings();
-        void toggle_sidebar() const;
-        void translate();
-
     private:
+        Q_SLOT void add_download() const;
+        Q_SLOT void settings();
+        Q_SLOT void toggle_sidebar() const;
+        Q_SLOT void translate();
         oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
         QToolBar* m_toolbar{ nullptr };
         QAction* m_act_add_download{ nullptr };

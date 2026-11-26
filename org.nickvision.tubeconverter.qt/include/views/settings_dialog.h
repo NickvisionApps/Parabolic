@@ -54,25 +54,23 @@ namespace parabolic::qt::views
         QVBoxLayout* m_layout{ nullptr };
     };
 
-    class ArgumentDialog : public QDialog
+    class PostprocessingArgumentDialog : public QDialog
     {
         Q_OBJECT
 
     public:
-        ArgumentDialog(const postprocessing::Argument& argument, const std::vector<std::string>& taken_names,
-                       QWidget* parent = nullptr);
-        ~ArgumentDialog() override = default;
-        ArgumentDialog(const ArgumentDialog&) = delete;
-        ArgumentDialog(ArgumentDialog&&) = delete;
-        ArgumentDialog& operator=(const ArgumentDialog&) = delete;
-        ArgumentDialog& operator=(ArgumentDialog&&) = delete;
+        PostprocessingArgumentDialog(const postprocessing::Argument& argument,
+                                     const std::vector<std::string>& taken_names, QWidget* parent = nullptr);
+        ~PostprocessingArgumentDialog() override = default;
+        PostprocessingArgumentDialog(const PostprocessingArgumentDialog&) = delete;
+        PostprocessingArgumentDialog(PostprocessingArgumentDialog&&) = delete;
+        PostprocessingArgumentDialog& operator=(const PostprocessingArgumentDialog&) = delete;
+        PostprocessingArgumentDialog& operator=(PostprocessingArgumentDialog&&) = delete;
         [[nodiscard]] postprocessing::Argument argument() const;
 
-    private Q_SLOTS:
-        void translate();
-        void validate();
-
     private:
+        Q_SLOT void translate();
+        Q_SLOT void validate();
         std::vector<std::string> m_taken_names;
         oclero::qlementine::Label* m_lbl_name{ nullptr };
         QLineEdit* m_edt_name{ nullptr };
@@ -97,13 +95,11 @@ namespace parabolic::qt::views
         SettingsGeneralPage& operator=(const SettingsGeneralPage&) = delete;
         SettingsGeneralPage& operator=(SettingsGeneralPage&&) = delete;
 
-    private Q_SLOTS:
-        void change_language();
-        void change_theme();
-        void save();
-        void translate();
-
     private:
+        Q_SLOT void change_language();
+        Q_SLOT void change_theme();
+        Q_SLOT void save();
+        Q_SLOT void translate();
         std::vector<std::string> m_languages;
         QGroupBox* m_grp_user_interface{ nullptr };
         oclero::qlementine::Label* m_lbl_theme{ nullptr };
@@ -131,11 +127,9 @@ namespace parabolic::qt::views
         SettingsDiscoveryPage& operator=(const SettingsDiscoveryPage&) = delete;
         SettingsDiscoveryPage& operator=(SettingsDiscoveryPage&&) = delete;
 
-    private Q_SLOTS:
-        void save();
-        void translate();
-
     private:
+        Q_SLOT void save();
+        Q_SLOT void translate();
         QGroupBox* m_grp_process{ nullptr };
         QCheckBox* m_chk_media_id{ nullptr };
         oclero::qlementine::Label* m_dsc_media_id{ nullptr };
@@ -171,11 +165,9 @@ namespace parabolic::qt::views
         SettingsDownloadsPage& operator=(const SettingsDownloadsPage&) = delete;
         SettingsDownloadsPage& operator=(SettingsDownloadsPage&&) = delete;
 
-    private Q_SLOTS:
-        void save();
-        void translate();
-
     private:
+        Q_SLOT void save();
+        Q_SLOT void translate();
         QGroupBox* m_grp_process{ nullptr };
         oclero::qlementine::Label* m_lbl_max_downloads{ nullptr };
         QSpinBox* m_spn_max_downloads{ nullptr };
@@ -206,12 +198,10 @@ namespace parabolic::qt::views
         SettingsExtractorPage& operator=(const SettingsExtractorPage&) = delete;
         SettingsExtractorPage& operator=(SettingsExtractorPage&&) = delete;
 
-    private Q_SLOTS:
-        void browse_cookies_file();
-        void save();
-        void translate();
-
     private:
+        Q_SLOT void browse_cookies_file();
+        Q_SLOT void save();
+        Q_SLOT void translate();
         QGroupBox* m_grp_process{ nullptr };
         QCheckBox* m_chk_part_files{ nullptr };
         oclero::qlementine::Label* m_dsc_part_files{ nullptr };
@@ -247,14 +237,12 @@ namespace parabolic::qt::views
         SettingsPostprocessingPage& operator=(const SettingsPostprocessingPage&) = delete;
         SettingsPostprocessingPage& operator=(SettingsPostprocessingPage&&) = delete;
 
-    private Q_SLOTS:
-        void add_argument();
-        void edit_argument();
-        void remove_argument();
-        void save();
-        void translate();
-
     private:
+        Q_SLOT void add_argument();
+        Q_SLOT void edit_argument();
+        Q_SLOT void remove_argument();
+        Q_SLOT void save();
+        Q_SLOT void translate();
         std::vector<postprocessing::Argument> m_arguments;
         QGroupBox* m_grp_metadata{ nullptr };
         QCheckBox* m_chk_embed_metadata{ nullptr };
@@ -294,10 +282,8 @@ namespace parabolic::qt::views
         SettingsDialog& operator=(const SettingsDialog&) = delete;
         SettingsDialog& operator=(SettingsDialog&&) = delete;
 
-    private Q_SLOTS:
-        void translate();
-
     private:
+        Q_SLOT void translate();
         oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
     };
 }

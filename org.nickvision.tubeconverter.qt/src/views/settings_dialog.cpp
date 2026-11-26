@@ -152,8 +152,9 @@ namespace parabolic::qt::views
         combo->setCurrentIndex(std::max(index, 0));
     }
 
-    ArgumentDialog::ArgumentDialog(const postprocessing::Argument& argument,
-                                   const std::vector<std::string>& taken_names, QWidget* parent)
+    PostprocessingArgumentDialog::PostprocessingArgumentDialog(const postprocessing::Argument& argument,
+                                                               const std::vector<std::string>& taken_names,
+                                                               QWidget* parent)
         : QDialog{ parent },
           m_taken_names{ taken_names },
           m_lbl_name{ new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, this) },
@@ -181,14 +182,14 @@ namespace parabolic::qt::views
         m_edt_arguments->setText(QString::fromStdString(argument.args()));
         validate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &ArgumentDialog::translate);
+                &helpers::TranslationNotifier::translation_changed, this, &PostprocessingArgumentDialog::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QDialog::reject);
-        connect(m_edt_name, &QLineEdit::textChanged, this, &ArgumentDialog::validate);
+        connect(m_edt_name, &QLineEdit::textChanged, this, &PostprocessingArgumentDialog::validate);
         connect(m_buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
         connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     }
 
-    postprocessing::Argument ArgumentDialog::argument() const
+    postprocessing::Argument PostprocessingArgumentDialog::argument() const
     {
         return { m_edt_name->text().trimmed().toStdString(),
                  static_cast<postprocessing::Step>(m_cmb_step->currentIndex()),
@@ -196,21 +197,7 @@ namespace parabolic::qt::views
                  m_edt_arguments->text().toStdString() };
     }
 
-        ArgumentDialog::translate();
-        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &ArgumentDialog::translate);
-        m_edt_name->setText(QString::fromStdString(argument.name()));
-        m_cmb_step->setCurrentIndex(static_cast<int>(argument.step()));
-        m_cmb_executable->setCurrentIndex(static_cast<int>(argument.executable()));
-        m_edt_arguments->setText(QString::fromStdString(argument.args()));
-        validate();
-        connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QDialog::reject);
-        connect(m_edt_name, &QLineEdit::textChanged, this, &ArgumentDialog::validate);
-        connect(m_buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
-        connect(m_buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
-    }
-
-    void ArgumentDialog::translate()
+    void PostprocessingArgumentDialog::translate()
     {
         const translation::Translator& translator{ application::State::instance().translator() };
         const auto set_items = [](QComboBox* combo, const QList<QString>& items)
@@ -253,7 +240,7 @@ namespace parabolic::qt::views
         m_lbl_arguments->setText(QString::fromStdString(translator._("{}:", translator._("Argument"))));
     }
 
-    void ArgumentDialog::validate()
+    void PostprocessingArgumentDialog::validate()
     {
         std::string name{ m_edt_name->text().trimmed().toStdString() };
         m_buttons->button(QDialogButtonBox::Ok)
@@ -339,8 +326,7 @@ namespace parabolic::qt::views
             break;
         }
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsGeneralPage::translate);
+                &helpers::TranslationNotifier::translation_changed, this, &SettingsGeneralPage::translate);
         connect(m_cmb_theme, &QComboBox::currentIndexChanged, this, &SettingsGeneralPage::change_theme);
         connect(m_cmb_language, &QComboBox::currentIndexChanged, this, &SettingsGeneralPage::change_language);
         connect(m_chk_automatic_updates, &QCheckBox::toggled, this, &SettingsGeneralPage::save);
@@ -428,50 +414,6 @@ namespace parabolic::qt::views
         configuration.set_history_options(history_options);
     }
 
-        SettingsGeneralPage::translate();
-        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsGeneralPage::translate);
-        const auto language_it{ std::ranges::find(m_languages, configuration.translation_options().language()) };
-        m_cmb_theme->setCurrentIndex(static_cast<int>(configuration.theme()));
-        m_cmb_language->setCurrentIndex(
-                language_it == m_languages.end() ? 0 : static_cast<int>(language_it - m_languages.begin()) + 1);
-        m_chk_automatic_updates->setChecked(configuration.automatically_check_for_updates());
-        m_chk_preview_updates->setChecked(configuration.update_options().allow_preview_updates());
-        switch (configuration.history_options().length())
-        {
-        case history::Length::Never:
-            m_cmb_history_length->setCurrentIndex(0);
-            break;
-        case history::Length::OneDay:
-            m_cmb_history_length->setCurrentIndex(1);
-            break;
-        case history::Length::OneWeek:
-            m_cmb_history_length->setCurrentIndex(2);
-            break;
-        case history::Length::OneMonth:
-            m_cmb_history_length->setCurrentIndex(3);
-            break;
-        case history::Length::ThreeMonths:
-            m_cmb_history_length->setCurrentIndex(4);
-            break;
-        case history::Length::SixMonths:
-            m_cmb_history_length->setCurrentIndex(5);
-            break;
-        case history::Length::OneYear:
-            m_cmb_history_length->setCurrentIndex(6);
-            break;
-        case history::Length::Forever:
-            m_cmb_history_length->setCurrentIndex(7);
-            break;
-        }
-        connect(m_cmb_theme, &QComboBox::currentIndexChanged, this, &SettingsGeneralPage::change_theme);
-        connect(m_cmb_language, &QComboBox::currentIndexChanged, this, &SettingsGeneralPage::change_language);
-        connect(m_chk_automatic_updates, &QCheckBox::toggled, this, &SettingsGeneralPage::save);
-        connect(m_chk_preview_updates, &QCheckBox::toggled, this, &SettingsGeneralPage::save);
-        connect(m_cmb_history_length, &QComboBox::currentIndexChanged, this, &SettingsGeneralPage::save);
-    }
-
     void SettingsGeneralPage::translate()
     {
         const translation::Translator& translator{ application::State::instance().translator() };
@@ -540,8 +482,7 @@ namespace parabolic::qt::views
         m_cmb_frame_rate->setCurrentIndex(static_cast<int>(options.preferred_frame_rate()));
         m_edt_arguments->setText(QString::fromStdString(options.ytdlp_arguments()));
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsDiscoveryPage::translate);
+                &helpers::TranslationNotifier::translation_changed, this, &SettingsDiscoveryPage::translate);
         connect(m_chk_media_id, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
         connect(m_chk_limit_characters, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
         connect(m_chk_super_resolutions, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
@@ -565,36 +506,10 @@ namespace parabolic::qt::views
         options.set_include_auto_generated_subtitles(m_chk_auto_generated_subtitles->isChecked());
         options.set_preferred_audio_codec(static_cast<audio::Codec>(m_cmb_audio_codec->currentIndex()));
         options.set_preferred_video_codec(static_cast<video::Codec>(m_cmb_video_codec->currentIndex()));
-        options.set_preferred_subtitle_format(
-                static_cast<subtitle::Type>(m_cmb_subtitle_format->currentIndex()));
+        options.set_preferred_subtitle_format(static_cast<subtitle::Type>(m_cmb_subtitle_format->currentIndex()));
         options.set_preferred_frame_rate(static_cast<video::FrameRate>(m_cmb_frame_rate->currentIndex()));
         options.set_ytdlp_arguments(m_edt_arguments->text().toStdString());
         configuration.set_discovery_options(options);
-    }
-
-        SettingsDiscoveryPage::translate();
-        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsDiscoveryPage::translate);
-        const discovery::Options options{ configuration.discovery_options() };
-        m_chk_media_id->setChecked(options.include_media_id_in_title());
-        m_chk_limit_characters->setChecked(options.limit_characters());
-        m_chk_super_resolutions->setChecked(options.include_super_resolutions());
-        m_chk_auto_generated_subtitles->setChecked(options.include_auto_generated_subtitles());
-        m_cmb_audio_codec->setCurrentIndex(static_cast<int>(options.preferred_audio_codec()));
-        m_cmb_video_codec->setCurrentIndex(static_cast<int>(options.preferred_video_codec()));
-        m_cmb_subtitle_format->setCurrentIndex(static_cast<int>(options.preferred_subtitle_format()));
-        m_cmb_frame_rate->setCurrentIndex(static_cast<int>(options.preferred_frame_rate()));
-        m_edt_arguments->setText(QString::fromStdString(options.ytdlp_arguments()));
-        connect(m_chk_media_id, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
-        connect(m_chk_limit_characters, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
-        connect(m_chk_super_resolutions, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
-        connect(m_chk_auto_generated_subtitles, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
-        connect(m_cmb_audio_codec, &QComboBox::currentIndexChanged, this, &SettingsDiscoveryPage::save);
-        connect(m_cmb_video_codec, &QComboBox::currentIndexChanged, this, &SettingsDiscoveryPage::save);
-        connect(m_cmb_subtitle_format, &QComboBox::currentIndexChanged, this, &SettingsDiscoveryPage::save);
-        connect(m_cmb_frame_rate, &QComboBox::currentIndexChanged, this, &SettingsDiscoveryPage::save);
-        connect(m_edt_arguments, &QLineEdit::textChanged, this, &SettingsDiscoveryPage::save);
     }
 
     void SettingsDiscoveryPage::translate()
@@ -692,8 +607,7 @@ namespace parabolic::qt::views
         m_spn_aria_split_size->setEnabled(aria2_options.use_aria());
         m_edt_arguments->setText(QString::fromStdString(download_options.ytdlp_arguments()));
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsDownloadsPage::translate);
+                &helpers::TranslationNotifier::translation_changed, this, &SettingsDownloadsPage::translate);
         connect(m_spn_max_downloads, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
         connect(m_chk_overwrite_existing_files, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
         connect(m_chk_prevent_suspend, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
@@ -728,39 +642,6 @@ namespace parabolic::qt::views
         aria2_options.set_max_connections_per_server(m_spn_aria_connections->value());
         aria2_options.set_min_split_size(m_spn_aria_split_size->value());
         configuration.set_aria2_options(aria2_options);
-    }
-
-        SettingsDownloadsPage::translate();
-        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsDownloadsPage::translate);
-        const download::Options download_options{ configuration.download_options() };
-        const aria2::Options aria2_options{ configuration.aria2_options() };
-        m_spn_max_downloads->setValue(download_options.max_number_of_active_downloads());
-        m_chk_overwrite_existing_files->setChecked(download_options.overwrite_existing_files());
-        m_chk_prevent_suspend->setChecked(download_options.prevent_suspend());
-        m_chk_use_aria->setChecked(aria2_options.use_aria());
-        m_spn_aria_connections->setValue(aria2_options.max_connections_per_server());
-        m_spn_aria_connections->setEnabled(aria2_options.use_aria());
-        m_spn_aria_split_size->setValue(aria2_options.min_split_size());
-        m_spn_aria_split_size->setEnabled(aria2_options.use_aria());
-        m_edt_arguments->setText(QString::fromStdString(download_options.ytdlp_arguments()));
-        connect(m_spn_max_downloads, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
-        connect(m_chk_overwrite_existing_files, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
-        connect(m_chk_prevent_suspend, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
-        connect(m_chk_use_aria, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_spn_aria_connections->setEnabled(checked);
-            m_spn_aria_split_size->setEnabled(checked);
-        });
-        connect(m_chk_use_aria, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
-        connect(m_btn_learn_more, &QPushButton::clicked, this, []
-        {
-            QDesktopServices::openUrl(QUrl("https://aria2.github.io"));
-        });
-        connect(m_spn_aria_connections, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
-        connect(m_spn_aria_split_size, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
-        connect(m_edt_arguments, &QLineEdit::textChanged, this, &SettingsDownloadsPage::save);
     }
 
     void SettingsDownloadsPage::translate()
@@ -833,8 +714,7 @@ namespace parabolic::qt::views
         m_cmb_cookies_browser->setCurrentIndex(static_cast<int>(options.cookies_browser()));
         m_edt_cookies_path->setText(QString::fromStdString(options.cookies_path()));
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsExtractorPage::translate);
+                &helpers::TranslationNotifier::translation_changed, this, &SettingsExtractorPage::translate);
         connect(m_chk_part_files, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
         connect(m_chk_sponsor_block, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
         connect(m_chk_translate_metadata, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
@@ -854,8 +734,7 @@ namespace parabolic::qt::views
     void SettingsExtractorPage::browse_cookies_file()
     {
         QString path{
-            QFileDialog::getOpenFileName(this,
-                                         application::State::instance().translator()._("Cookies File")),
+            QFileDialog::getOpenFileName(this, application::State::instance().translator()._("Cookies File")),
         };
         if (!path.isEmpty())
         {
@@ -878,36 +757,6 @@ namespace parabolic::qt::views
         options.set_cookies_browser(static_cast<cookies::Browser>(m_cmb_cookies_browser->currentIndex()));
         options.set_cookies_path(m_edt_cookies_path->text().toStdString());
         configuration.set_extractor_options(options);
-    }
-
-        SettingsExtractorPage::translate();
-        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsExtractorPage::translate);
-        const extractor::Options options{ configuration.extractor_options() };
-        m_chk_part_files->setChecked(options.use_part_files());
-        m_chk_sponsor_block->setChecked(options.youtube_sponsor_block());
-        m_chk_translate_metadata->setChecked(options.translate_metadata_and_chapters());
-        m_chk_speed_limit->setChecked(options.speed_limit().has_value());
-        m_spn_speed_limit->setValue(options.speed_limit().value_or(1024));
-        m_spn_speed_limit->setEnabled(options.speed_limit().has_value());
-        m_edt_proxy_url->setText(QString::fromStdString(options.proxy_url()));
-        m_cmb_cookies_browser->setCurrentIndex(static_cast<int>(options.cookies_browser()));
-        m_edt_cookies_path->setText(QString::fromStdString(options.cookies_path()));
-        connect(m_chk_part_files, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
-        connect(m_chk_sponsor_block, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
-        connect(m_chk_translate_metadata, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
-        connect(m_chk_speed_limit, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_spn_speed_limit->setEnabled(checked);
-        });
-        connect(m_chk_speed_limit, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
-        connect(m_spn_speed_limit, &QSpinBox::valueChanged, this, &SettingsExtractorPage::save);
-        connect(m_edt_proxy_url, &QLineEdit::textChanged, this, &SettingsExtractorPage::save);
-        connect(m_cmb_cookies_browser, &QComboBox::currentIndexChanged, this, &SettingsExtractorPage::save);
-        connect(m_edt_cookies_path, &QLineEdit::textChanged, this, &SettingsExtractorPage::save);
-        connect(m_btn_cookies_browse, &QPushButton::clicked, this, &SettingsExtractorPage::browse_cookies_file);
-        connect(m_btn_cookies_clear, &QPushButton::clicked, m_edt_cookies_path, &QLineEdit::clear);
     }
 
     void SettingsExtractorPage::translate()
@@ -1009,8 +858,7 @@ namespace parabolic::qt::views
             m_lst_arguments->addItem(QString::fromStdString(argument.name()));
         }
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsPostprocessingPage::translate);
+                &helpers::TranslationNotifier::translation_changed, this, &SettingsPostprocessingPage::translate);
         connect(m_chk_embed_metadata, &QCheckBox::toggled, this, [this](bool checked)
         {
             m_chk_remove_source_data->setEnabled(checked);
@@ -1040,9 +888,9 @@ namespace parabolic::qt::views
         {
             names.push_back(argument.name());
         }
-        ArgumentDialog dialog{
-            { "", postprocessing::Step::None, postprocessing::Executable::None, "" }, names, this
-        };
+        PostprocessingArgumentDialog dialog{ { "", postprocessing::Step::None, postprocessing::Executable::None, "" },
+                                             names,
+                                             this };
         if (dialog.exec() != QDialog::Accepted)
         {
             return;
@@ -1068,7 +916,7 @@ namespace parabolic::qt::views
                 names.push_back(m_arguments[i].name());
             }
         }
-        ArgumentDialog dialog{ m_arguments[static_cast<std::size_t>(row)], names, this };
+        PostprocessingArgumentDialog dialog{ m_arguments[static_cast<std::size_t>(row)], names, this };
         if (dialog.exec() != QDialog::Accepted)
         {
             return;
@@ -1114,46 +962,6 @@ namespace parabolic::qt::views
         options.set_threads(m_spn_threads->value());
         options.set_arguments(m_arguments);
         configuration.set_postprocessing_options(options);
-    }
-
-        SettingsPostprocessingPage::translate();
-        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this,
-                &SettingsPostprocessingPage::translate);
-        const postprocessing::Options options{ configuration.postprocessing_options() };
-        m_chk_embed_metadata->setChecked(options.embed_metadata());
-        m_chk_remove_source_data->setChecked(options.remove_source_data());
-        m_chk_remove_source_data->setEnabled(options.embed_metadata());
-        m_chk_embed_thumbnails->setChecked(options.embed_thumbnails());
-        m_chk_crop_audio_thumbnails->setChecked(options.crop_audio_thumbnails());
-        m_chk_crop_audio_thumbnails->setEnabled(options.embed_thumbnails());
-        m_chk_embed_chapters->setChecked(options.embed_chapters());
-        m_chk_embed_subtitles->setChecked(options.embed_subtitles());
-        m_spn_threads->setValue(options.threads());
-        m_arguments = options.arguments();
-        for (const postprocessing::Argument& argument : m_arguments)
-        {
-            m_lst_arguments->addItem(QString::fromStdString(argument.name()));
-        }
-        connect(m_chk_embed_metadata, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_chk_remove_source_data->setEnabled(checked);
-        });
-        connect(m_chk_embed_metadata, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
-        connect(m_chk_remove_source_data, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
-        connect(m_chk_embed_thumbnails, &QCheckBox::toggled, this, [this](bool checked)
-        {
-            m_chk_crop_audio_thumbnails->setEnabled(checked);
-        });
-        connect(m_chk_embed_thumbnails, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
-        connect(m_chk_crop_audio_thumbnails, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
-        connect(m_chk_embed_chapters, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
-        connect(m_chk_embed_subtitles, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
-        connect(m_spn_threads, &QSpinBox::valueChanged, this, &SettingsPostprocessingPage::save);
-        connect(m_btn_add, &QToolButton::clicked, this, &SettingsPostprocessingPage::add_argument);
-        connect(m_btn_edit, &QToolButton::clicked, this, &SettingsPostprocessingPage::edit_argument);
-        connect(m_btn_remove, &QToolButton::clicked, this, &SettingsPostprocessingPage::remove_argument);
-        connect(m_lst_arguments, &QListWidget::itemDoubleClicked, this, &SettingsPostprocessingPage::edit_argument);
     }
 
     void SettingsPostprocessingPage::translate()
@@ -1222,12 +1030,6 @@ namespace parabolic::qt::views
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Action_Build)));
         translate();
-        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &SettingsDialog::translate);
-        connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QDialog::reject);
-    }
-
-        SettingsDialog::translate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed, this, &SettingsDialog::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QDialog::reject);
