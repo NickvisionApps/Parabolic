@@ -5,7 +5,6 @@
 #include <QComboBox>
 #include <QDialog>
 #include <QDialogButtonBox>
-#include <QGroupBox>
 #include <QLineEdit>
 #include <QList>
 #include <QListWidget>
@@ -17,6 +16,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 #include <oclero/qlementine/Common.hpp>
+#include <oclero/qlementine/widgets/GroupBox.hpp>
 #include <oclero/qlementine/widgets/Label.hpp>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <string>
@@ -72,16 +72,16 @@ namespace parabolic::qt::views
         Q_SLOT void save();
         Q_SLOT void translate();
         std::vector<std::string> m_languages;
-        QGroupBox* m_grp_user_interface{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_user_interface{ nullptr };
         oclero::qlementine::Label* m_lbl_theme{ nullptr };
         QComboBox* m_cmb_theme{ nullptr };
         oclero::qlementine::Label* m_lbl_language{ nullptr };
         QComboBox* m_cmb_language{ nullptr };
-        QGroupBox* m_grp_updates{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_updates{ nullptr };
         QCheckBox* m_chk_automatic_updates{ nullptr };
         QCheckBox* m_chk_preview_updates{ nullptr };
         oclero::qlementine::Label* m_dsc_preview_updates{ nullptr };
-        QGroupBox* m_grp_history{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_history{ nullptr };
         oclero::qlementine::Label* m_lbl_history_length{ nullptr };
         QComboBox* m_cmb_history_length{ nullptr };
     };
@@ -101,7 +101,7 @@ namespace parabolic::qt::views
     private:
         Q_SLOT void save();
         Q_SLOT void translate();
-        QGroupBox* m_grp_process{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_process{ nullptr };
         QCheckBox* m_chk_media_id{ nullptr };
         oclero::qlementine::Label* m_dsc_media_id{ nullptr };
         QCheckBox* m_chk_limit_characters{ nullptr };
@@ -109,8 +109,7 @@ namespace parabolic::qt::views
         QCheckBox* m_chk_super_resolutions{ nullptr };
         oclero::qlementine::Label* m_dsc_super_resolutions{ nullptr };
         QCheckBox* m_chk_auto_generated_subtitles{ nullptr };
-        QGroupBox* m_grp_preferences{ nullptr };
-        oclero::qlementine::Label* m_dsc_preferences{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_preferences{ nullptr };
         oclero::qlementine::Label* m_lbl_audio_codec{ nullptr };
         QComboBox* m_cmb_audio_codec{ nullptr };
         oclero::qlementine::Label* m_lbl_video_codec{ nullptr };
@@ -119,8 +118,7 @@ namespace parabolic::qt::views
         QComboBox* m_cmb_subtitle_format{ nullptr };
         oclero::qlementine::Label* m_lbl_frame_rate{ nullptr };
         QComboBox* m_cmb_frame_rate{ nullptr };
-        QGroupBox* m_grp_arguments{ nullptr };
-        oclero::qlementine::Label* m_dsc_arguments{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_arguments{ nullptr };
         QLineEdit* m_edt_arguments{ nullptr };
     };
 
@@ -140,21 +138,19 @@ namespace parabolic::qt::views
         Q_SLOT void learn_more();
         Q_SLOT void save();
         Q_SLOT void translate();
-        QGroupBox* m_grp_process{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_process{ nullptr };
         oclero::qlementine::Label* m_lbl_max_downloads{ nullptr };
         QSpinBox* m_spn_max_downloads{ nullptr };
         QCheckBox* m_chk_overwrite_existing_files{ nullptr };
         QCheckBox* m_chk_prevent_suspend{ nullptr };
-        QGroupBox* m_grp_aria{ nullptr };
-        oclero::qlementine::Label* m_dsc_aria{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_aria{ nullptr };
         QCheckBox* m_chk_use_aria{ nullptr };
         QPushButton* m_btn_learn_more{ nullptr };
         oclero::qlementine::Label* m_lbl_aria_connections{ nullptr };
         QSpinBox* m_spn_aria_connections{ nullptr };
         oclero::qlementine::Label* m_lbl_aria_split_size{ nullptr };
         QSpinBox* m_spn_aria_split_size{ nullptr };
-        QGroupBox* m_grp_arguments{ nullptr };
-        oclero::qlementine::Label* m_dsc_arguments{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_arguments{ nullptr };
         QLineEdit* m_edt_arguments{ nullptr };
     };
 
@@ -174,21 +170,21 @@ namespace parabolic::qt::views
         Q_SLOT void browse_cookies_file();
         Q_SLOT void save();
         Q_SLOT void translate();
-        QGroupBox* m_grp_process{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_process{ nullptr };
         QCheckBox* m_chk_part_files{ nullptr };
         oclero::qlementine::Label* m_dsc_part_files{ nullptr };
         QCheckBox* m_chk_sponsor_block{ nullptr };
         oclero::qlementine::Label* m_dsc_sponsor_block{ nullptr };
         QCheckBox* m_chk_translate_metadata{ nullptr };
         oclero::qlementine::Label* m_dsc_translate_metadata{ nullptr };
-        QGroupBox* m_grp_speed{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_speed{ nullptr };
         QCheckBox* m_chk_speed_limit{ nullptr };
         oclero::qlementine::Label* m_lbl_speed_limit{ nullptr };
         QSpinBox* m_spn_speed_limit{ nullptr };
-        QGroupBox* m_grp_proxy{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_proxy{ nullptr };
         oclero::qlementine::Label* m_lbl_proxy_url{ nullptr };
         QLineEdit* m_edt_proxy_url{ nullptr };
-        QGroupBox* m_grp_cookies{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_cookies{ nullptr };
         oclero::qlementine::Label* m_lbl_cookies_browser{ nullptr };
         QComboBox* m_cmb_cookies_browser{ nullptr };
         oclero::qlementine::Label* m_lbl_cookies_file{ nullptr };
@@ -216,26 +212,25 @@ namespace parabolic::qt::views
         Q_SLOT void save();
         Q_SLOT void translate();
         std::vector<postprocessing::Argument> m_arguments;
-        QGroupBox* m_grp_metadata{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_metadata{ nullptr };
         QCheckBox* m_chk_embed_metadata{ nullptr };
         QCheckBox* m_chk_remove_source_data{ nullptr };
         oclero::qlementine::Label* m_dsc_remove_source_data{ nullptr };
-        QGroupBox* m_grp_thumbnails{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_thumbnails{ nullptr };
         QCheckBox* m_chk_embed_thumbnails{ nullptr };
         oclero::qlementine::Label* m_dsc_embed_thumbnails{ nullptr };
         QCheckBox* m_chk_crop_audio_thumbnails{ nullptr };
         oclero::qlementine::Label* m_dsc_crop_audio_thumbnails{ nullptr };
-        QGroupBox* m_grp_chapters{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_chapters{ nullptr };
         QCheckBox* m_chk_embed_chapters{ nullptr };
-        QGroupBox* m_grp_subtitles{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_subtitles{ nullptr };
         QCheckBox* m_chk_embed_subtitles{ nullptr };
         oclero::qlementine::Label* m_dsc_embed_subtitles{ nullptr };
-        QGroupBox* m_grp_ffmpeg{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_ffmpeg{ nullptr };
         oclero::qlementine::Label* m_lbl_threads{ nullptr };
         QSpinBox* m_spn_threads{ nullptr };
         oclero::qlementine::Label* m_dsc_threads{ nullptr };
-        QGroupBox* m_grp_arguments{ nullptr };
-        oclero::qlementine::Label* m_dsc_arguments{ nullptr };
+        oclero::qlementine::GroupBox* m_grp_arguments{ nullptr };
         QToolButton* m_btn_add{ nullptr };
         QToolButton* m_btn_edit{ nullptr };
         QToolButton* m_btn_remove{ nullptr };

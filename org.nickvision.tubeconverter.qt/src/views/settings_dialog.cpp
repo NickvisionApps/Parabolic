@@ -9,7 +9,6 @@
 #include <QFileDialog>
 #include <QFormLayout>
 #include <QFrame>
-#include <QGroupBox>
 #include <QHBoxLayout>
 #include <QKeySequence>
 #include <QLineEdit>
@@ -38,6 +37,7 @@
 #include <oclero/qlementine/icons/Icons16.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
 #include <oclero/qlementine/style/ThemeManager.hpp>
+#include <oclero/qlementine/widgets/GroupBox.hpp>
 #include <oclero/qlementine/widgets/Label.hpp>
 #include <oclero/qlementine/widgets/NavigationSidebar.hpp>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
@@ -178,7 +178,7 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_user_interface = new QGroupBox(content);
+        m_grp_user_interface = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* user_interface_layout{ new QVBoxLayout(m_grp_user_interface) };
         layout->addWidget(m_grp_user_interface);
         m_lbl_theme = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_user_interface);
@@ -195,7 +195,7 @@ namespace parabolic::qt::views
         language_row->addWidget(m_cmb_language);
         language_row->addStretch();
         user_interface_layout->addLayout(language_row);
-        m_grp_updates = new QGroupBox(content);
+        m_grp_updates = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* updates_layout{ new QVBoxLayout(m_grp_updates) };
         layout->addWidget(m_grp_updates);
         m_chk_automatic_updates = new QCheckBox(m_grp_updates);
@@ -206,7 +206,7 @@ namespace parabolic::qt::views
         m_dsc_preview_updates->setWordWrap(true);
         m_dsc_preview_updates->setContentsMargins(24, 0, 0, 0);
         updates_layout->addWidget(m_dsc_preview_updates);
-        m_grp_history = new QGroupBox(content);
+        m_grp_history = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* history_layout{ new QVBoxLayout(m_grp_history) };
         layout->addWidget(m_grp_history);
         m_lbl_history_length = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_history);
@@ -427,7 +427,7 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_process = new QGroupBox(content);
+        m_grp_process = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
         m_chk_media_id = new QCheckBox(m_grp_process);
@@ -452,12 +452,9 @@ namespace parabolic::qt::views
         process_layout->addWidget(m_dsc_super_resolutions);
         m_chk_auto_generated_subtitles = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_auto_generated_subtitles);
-        m_grp_preferences = new QGroupBox(content);
+        m_grp_preferences = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* preferences_layout{ new QVBoxLayout(m_grp_preferences) };
         layout->addWidget(m_grp_preferences);
-        m_dsc_preferences = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_preferences);
-        m_dsc_preferences->setWordWrap(true);
-        preferences_layout->addWidget(m_dsc_preferences);
         m_lbl_audio_codec = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
         m_cmb_audio_codec = new QComboBox(m_grp_preferences);
         QHBoxLayout* audio_codec_row{ new QHBoxLayout() };
@@ -487,12 +484,9 @@ namespace parabolic::qt::views
         frame_rate_row->addWidget(m_cmb_frame_rate);
         frame_rate_row->addStretch();
         preferences_layout->addLayout(frame_rate_row);
-        m_grp_arguments = new QGroupBox(content);
+        m_grp_arguments = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
         layout->addWidget(m_grp_arguments);
-        m_dsc_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_arguments);
-        m_dsc_arguments->setWordWrap(true);
-        arguments_layout->addWidget(m_dsc_arguments);
         m_edt_arguments = new QLineEdit(m_grp_arguments);
         arguments_layout->addWidget(m_edt_arguments);
         layout->addStretch();
@@ -552,7 +546,8 @@ namespace parabolic::qt::views
                 "Super resolutions are resolutions that have been enhanced with artificial intelligence."));
         m_chk_auto_generated_subtitles->setText(translator._("Show Auto-Generated Subtitles"));
         m_grp_preferences->setTitle(translator._("Preferences"));
-        m_dsc_preferences->setText(translator._("Prefer these codecs and options when showing formats for download."));
+        m_grp_preferences->setDescription(
+                translator._("Prefer these codecs and options when showing formats for download."));
         m_lbl_audio_codec->setText(QString::fromStdString(translator._("{}:", translator._("Audio Codec"))));
         QSignalBlocker audio_codec_blocker{ m_cmb_audio_codec };
         int audio_codec_index{ m_cmb_audio_codec->currentIndex() };
@@ -603,7 +598,7 @@ namespace parabolic::qt::views
         });
         m_cmb_frame_rate->setCurrentIndex(std::max(frame_rate_index, 0));
         m_grp_arguments->setTitle(translator._("Arguments"));
-        m_dsc_arguments->setText(
+        m_grp_arguments->setDescription(
                 translator._("These arguments will be appended to yt-dlp during the discovery phase."));
     }
 
@@ -621,7 +616,7 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_process = new QGroupBox(content);
+        m_grp_process = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
         m_lbl_max_downloads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_process);
@@ -636,12 +631,9 @@ namespace parabolic::qt::views
         process_layout->addWidget(m_chk_overwrite_existing_files);
         m_chk_prevent_suspend = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_prevent_suspend);
-        m_grp_aria = new QGroupBox(content);
+        m_grp_aria = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* aria_layout{ new QVBoxLayout(m_grp_aria) };
         layout->addWidget(m_grp_aria);
-        m_dsc_aria = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_aria);
-        m_dsc_aria->setWordWrap(true);
-        aria_layout->addWidget(m_dsc_aria);
         m_chk_use_aria = new QCheckBox(m_grp_aria);
         aria_layout->addWidget(m_chk_use_aria);
         m_btn_learn_more = new QPushButton(m_grp_aria);
@@ -666,12 +658,9 @@ namespace parabolic::qt::views
         aria_split_size_row->addWidget(m_spn_aria_split_size);
         aria_split_size_row->addStretch();
         aria_layout->addLayout(aria_split_size_row);
-        m_grp_arguments = new QGroupBox(content);
+        m_grp_arguments = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
         layout->addWidget(m_grp_arguments);
-        m_dsc_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_arguments);
-        m_dsc_arguments->setWordWrap(true);
-        arguments_layout->addWidget(m_dsc_arguments);
         m_edt_arguments = new QLineEdit(m_grp_arguments);
         arguments_layout->addWidget(m_edt_arguments);
         layout->addStretch();
@@ -733,8 +722,9 @@ namespace parabolic::qt::views
         m_chk_overwrite_existing_files->setText(translator._("Overwrite Existing Files"));
         m_chk_prevent_suspend->setText(translator._("Prevent Sleep During Downloads"));
         m_grp_aria->setTitle(translator._("aria2"));
-        m_dsc_aria->setText(translator._("An alternative downloader that may be faster in some regions compared to "
-                                         "yt-dlp's native downloader."));
+        m_grp_aria->setDescription(
+                translator._("An alternative downloader that may be faster in some regions compared to "
+                             "yt-dlp's native downloader."));
         m_chk_use_aria->setText(translator._("Use aria2"));
         m_btn_learn_more->setText(translator._("Learn More…"));
         m_lbl_aria_connections->setText(
@@ -742,7 +732,8 @@ namespace parabolic::qt::views
         m_lbl_aria_split_size->setText(
                 QString::fromStdString(translator._("{}:", translator._("Minimum Split Size (MiB)"))));
         m_grp_arguments->setTitle(translator._("Arguments"));
-        m_dsc_arguments->setText(translator._("These arguments will be appended to yt-dlp during the download phase."));
+        m_grp_arguments->setDescription(
+                translator._("These arguments will be appended to yt-dlp during the download phase."));
     }
 
     SettingsExtractorPage::SettingsExtractorPage(QWidget* parent)
@@ -759,7 +750,7 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_process = new QGroupBox(content);
+        m_grp_process = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
         m_chk_part_files = new QCheckBox(m_grp_process);
@@ -781,7 +772,7 @@ namespace parabolic::qt::views
         m_dsc_translate_metadata->setWordWrap(true);
         m_dsc_translate_metadata->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_dsc_translate_metadata);
-        m_grp_speed = new QGroupBox(content);
+        m_grp_speed = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* speed_layout{ new QVBoxLayout(m_grp_speed) };
         layout->addWidget(m_grp_speed);
         m_chk_speed_limit = new QCheckBox(m_grp_speed);
@@ -794,7 +785,7 @@ namespace parabolic::qt::views
         speed_limit_row->addWidget(m_spn_speed_limit);
         speed_limit_row->addStretch();
         speed_layout->addLayout(speed_limit_row);
-        m_grp_proxy = new QGroupBox(content);
+        m_grp_proxy = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* proxy_layout{ new QVBoxLayout(m_grp_proxy) };
         layout->addWidget(m_grp_proxy);
         m_lbl_proxy_url = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_proxy);
@@ -803,7 +794,7 @@ namespace parabolic::qt::views
         proxy_row->addWidget(m_lbl_proxy_url);
         proxy_row->addWidget(m_edt_proxy_url, 1);
         proxy_layout->addLayout(proxy_row);
-        m_grp_cookies = new QGroupBox(content);
+        m_grp_cookies = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* cookies_layout{ new QVBoxLayout(m_grp_cookies) };
         layout->addWidget(m_grp_cookies);
         m_lbl_cookies_browser = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_cookies);
@@ -932,7 +923,7 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_metadata = new QGroupBox(content);
+        m_grp_metadata = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* metadata_layout{ new QVBoxLayout(m_grp_metadata) };
         layout->addWidget(m_grp_metadata);
         m_chk_embed_metadata = new QCheckBox(m_grp_metadata);
@@ -944,7 +935,7 @@ namespace parabolic::qt::views
         m_dsc_remove_source_data->setWordWrap(true);
         m_dsc_remove_source_data->setContentsMargins(24, 0, 0, 0);
         metadata_layout->addWidget(m_dsc_remove_source_data);
-        m_grp_thumbnails = new QGroupBox(content);
+        m_grp_thumbnails = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* thumbnails_layout{ new QVBoxLayout(m_grp_thumbnails) };
         layout->addWidget(m_grp_thumbnails);
         m_chk_embed_thumbnails = new QCheckBox(m_grp_thumbnails);
@@ -961,12 +952,12 @@ namespace parabolic::qt::views
         m_dsc_crop_audio_thumbnails->setWordWrap(true);
         m_dsc_crop_audio_thumbnails->setContentsMargins(24, 0, 0, 0);
         thumbnails_layout->addWidget(m_dsc_crop_audio_thumbnails);
-        m_grp_chapters = new QGroupBox(content);
+        m_grp_chapters = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* chapters_layout{ new QVBoxLayout(m_grp_chapters) };
         layout->addWidget(m_grp_chapters);
         m_chk_embed_chapters = new QCheckBox(m_grp_chapters);
         chapters_layout->addWidget(m_chk_embed_chapters);
-        m_grp_subtitles = new QGroupBox(content);
+        m_grp_subtitles = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* subtitles_layout{ new QVBoxLayout(m_grp_subtitles) };
         layout->addWidget(m_grp_subtitles);
         m_chk_embed_subtitles = new QCheckBox(m_grp_subtitles);
@@ -976,7 +967,7 @@ namespace parabolic::qt::views
         m_dsc_embed_subtitles->setWordWrap(true);
         m_dsc_embed_subtitles->setContentsMargins(24, 0, 0, 0);
         subtitles_layout->addWidget(m_dsc_embed_subtitles);
-        m_grp_ffmpeg = new QGroupBox(content);
+        m_grp_ffmpeg = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* ffmpeg_layout{ new QVBoxLayout(m_grp_ffmpeg) };
         layout->addWidget(m_grp_ffmpeg);
         m_lbl_threads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_ffmpeg);
@@ -990,12 +981,9 @@ namespace parabolic::qt::views
         m_dsc_threads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_ffmpeg);
         m_dsc_threads->setWordWrap(true);
         ffmpeg_layout->addWidget(m_dsc_threads);
-        m_grp_arguments = new QGroupBox(content);
+        m_grp_arguments = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
         layout->addWidget(m_grp_arguments);
-        m_dsc_arguments = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_arguments);
-        m_dsc_arguments->setWordWrap(true);
-        arguments_layout->addWidget(m_dsc_arguments);
         m_btn_add = new QToolButton(m_grp_arguments);
         m_btn_add->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
@@ -1156,7 +1144,7 @@ namespace parabolic::qt::views
         m_lbl_threads->setText(QString::fromStdString(translator._("{}:", translator._("Threads"))));
         m_dsc_threads->setText(translator._("Limit the number of threads used by ffmpeg."));
         m_grp_arguments->setTitle(translator._("Arguments"));
-        m_dsc_arguments->setText(
+        m_grp_arguments->setDescription(
                 translator._("Arguments will be shown for selection in the download discovery dialog."));
         m_btn_add->setToolTip(translator._("Add"));
         m_btn_edit->setToolTip(translator._("Edit"));

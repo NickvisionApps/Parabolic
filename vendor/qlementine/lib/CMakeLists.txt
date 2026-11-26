@@ -52,6 +52,7 @@ set(SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/CommandLinkButton.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/Expander.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/FlowLayout.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/GroupBox.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/IconWidget.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/Label.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/LineEdit.cpp
@@ -124,6 +125,7 @@ set(HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/CommandLinkButton.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/Expander.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/FlowLayout.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/GroupBox.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/IconWidget.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/Label.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/LineEdit.hpp

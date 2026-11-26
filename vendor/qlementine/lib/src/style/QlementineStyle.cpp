@@ -22,6 +22,7 @@
 #include <oclero/qlementine/widgets/Switch.hpp>
 #include <oclero/qlementine/widgets/TitleBar.hpp>
 #include <oclero/qlementine/widgets/LineEdit.hpp>
+#include <oclero/qlementine/widgets/GroupBox.hpp>
 #include <oclero/qlementine/widgets/ColorButton.hpp>
 #include <oclero/qlementine/widgets/PlainTextEdit.hpp>
 
@@ -3980,6 +3981,9 @@ QRect QlementineStyle::subControlRect(
         const auto& checkBoxSize = hasCheckbox ? _impl->theme.iconSize : QSize{ 0, 0 };
         const auto titleH = hasTitle || hasCheckbox ? std::max(labelH, checkBoxSize.height()) : 0;
         const auto leftPadding = hasTitle || hasCheckbox ? _impl->theme.spacing : 0;
+        const auto* qlementineGroupBox = qobject_cast<const GroupBox*>(w);
+        const auto descriptionH = qlementineGroupBox ? qlementineGroupBox->descriptionHeight(rect.width()) : 0;
+        const auto descriptionExtra = descriptionH > 0 ? descriptionH + _impl->theme.spacing / 2 : 0;
 
         switch (sc) {
             // TODO handle other kinds of Qt::Alignment like right-aligned or centered.
@@ -4003,18 +4007,18 @@ QRect QlementineStyle::subControlRect(
           case SC_GroupBoxContents:
             /*if (groupBoxOpt->subControls.testFlag(SC_GroupBoxContents))*/ {
               const auto x = rect.x() + leftPadding;
-              const auto y = rect.y() + titleH + titleBottomSpacing;
+              const auto y = rect.y() + titleH + descriptionExtra + titleBottomSpacing;
               const auto width = rect.width() - leftPadding;
-              const auto height = rect.height() - titleH - titleBottomSpacing;
+              const auto height = rect.height() - titleH - descriptionExtra - titleBottomSpacing;
               return QRect{ x, y, width, height };
             }
             //return {};
           case SC_GroupBoxFrame:
             /*if (groupBoxOpt->subControls.testFlag(SC_GroupBoxFrame))*/ {
               const auto x = rect.x() + leftPadding;
-              const auto y = rect.y() + titleH + titleBottomSpacing;
+              const auto y = rect.y() + titleH + descriptionExtra + titleBottomSpacing;
               const auto width = rect.width() - leftPadding;
-              const auto height = rect.height() - titleH - titleBottomSpacing;
+              const auto height = rect.height() - titleH - descriptionExtra - titleBottomSpacing;
               return QRect{ x, y, width, height };
             }
             //return {};
