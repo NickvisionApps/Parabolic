@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-04-15 07:09+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr "Najhorší"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "Žiadny"
 
@@ -72,522 +75,1012 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "O aplikácii Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "Stiahnuť médium"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "Túto správu už nezobrazovať"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
+msgstr "Právne upozornenie o autorských právach"
+
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
 msgstr ""
-"Pridajte URL adresu videa, zvuku alebo zoznamu skladieb a začnite sťahovať"
+"Videá na YouTube a iných platformách môžu podliehať ochrane DMCA. Autori "
+"aplikácie Parabolic nevyjadrujú súhlas s používaním tejto aplikácie "
+"spôsobom, ktorý by mohol porušovať zákony a nenesú zodpovednosť za akékoľvek "
+"nelegálne používanie."
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "Domov"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr "Rozumiem"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "Heslo"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "Heslo"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "Poverenie"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "Názov"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "URL adresa"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "Možnosti"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "Meno používateľa"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "Heslo"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "Poverenie s týmto názvom už existuje"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "Zadaná url adresa nie je platná."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "Vyžaduje sa heslo"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Argumenty následného spracovania"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+msgid "Post Processor"
+msgstr "Postprocesor"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Vložiť kapitoly"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Rozdeliť video podľa kapitol"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Video (všeobecné)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "Konvertor"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "Vložiť metaúdaje"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Vložiť titulky"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Vložiť miniatúry"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Titulky"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Konvertor"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+msgid "Executable"
+msgstr "Spustiteľný"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Vlákna FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+msgid "Argument"
+msgstr "Argument"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Argument s týmto názvom už existuje"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr "Verzia {}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+msgid "Start"
+msgstr "Začať"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "Pridať stiahnutie"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "Zväzok kľúčov"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "Pomoc"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub repozitár"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "Nahlásiť chybu"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "Diskusie"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "História"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "Chyba"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, fuzzy, c++-format
+msgid "System keyring error: {}"
+msgstr "Spánok po dobu {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Žiadne poverenia"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Ste si istý, že chcete odstrániť tento argument?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "Pridať, odstrániť a upraviť poverenia na overovanie webových lokalít"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "Pridať"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "Upraviť"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "O aplikácii Parabolic"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "Domov"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "Stiahnutia"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+msgid "Updates"
+msgstr "Aktualizácie"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "O {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "Nastavenia"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+msgid "Cookies File"
+msgstr "Súbor s cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "TXT súbory (*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "Nový argument"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Všeobecné"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Nájsť"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Stiahnutia"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Následné spracovanie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "Používateľské rozhranie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "Motív"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "Svetlý"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Tmavý"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "Systémový"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+msgid "Translation Language"
+msgstr "Jazyk prekladu"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Systémový"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+msgid "Automatically Check for Updates"
+msgstr "Automatická kontrola aktualizácií"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Prijímať aktualizácie beta verzie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Aktualizovať závislosti, ako napríklad yt-dlp, na beta verzie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Žiadna história sťahovania"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "Nikdy"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+msgid "1 Day"
+msgstr "1 deň"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+msgid "1 Week"
+msgstr "1 týždeň"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+msgid "1 Month"
+msgstr "1 mesiac"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+msgid "3 Months"
+msgstr "3 mesiace"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+msgid "6 Months"
+msgstr "6 mesiacov"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr "1 rok"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "Navždy"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "Spracováva sa"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+msgid "Include Media Id in Title"
+msgstr "Zahrnúť ID média do názvu"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "Pridať ID média k jeho predvolenému názvu"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "Obmedziť znaky názvu súboru"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Obmedziť znaky v názvoch súborov na tie, ktoré sú podporované iba systémom "
+"Windows"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Zahrnúť formáty s vysokým rozlíšením"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Zahrnúť automaticky generované titulky"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "Nastavenia"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+"Uprednostniť tento kodek pri analýze audio formátov na zobrazenie dostupných "
+"na stiahnutie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "Uprednostňovaný audio kodek"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "Akýkoľvek"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "Konvertor"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "Uprednostňovaný formát tituliek"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "Uprednostňovaná snímková frekvencia"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+msgid "Advanced"
+msgstr "Pokročilé"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+msgid "Arguments"
+msgstr "Argumenty"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Maximálny počet aktívnych sťahovaní"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "Prepísať existujúce súbory"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Voliteľný nástroj na sťahovanie, ktorý môže v určitých oblastiach pracovať "
+"efektívnejšie než predvolený yt-dlp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "Použiť aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Maximálny počet pripojení na server"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+msgid "Minimum Split Size (MiB)"
+msgstr "Minimálna veľkosť rozdelenia (MiB)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "Use Part Files"
+msgstr "Použiť čiastkové súbory"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Stiahnuť médiá do samostatných .part súborov namiesto priameho uloženia do "
+"výstupného súboru"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "Použiť SponsorBlock pre YouTube"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Pokúsiť sa odstrániť sponzorované segmenty z videí"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr "Preložiť metadáta a kapitoly"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Automaticky preložiť vložené metadáta a kapitoly do jazyka aplikácie na "
+"podporovaných stránkach a médiách"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "Obmedzenie rýchlosti"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "Obmedziť rýchlosť sťahovania"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "Obmedzenie rýchlosti (KiB/s)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "URL adresa proxy servera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "Súbor s cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "Súbor cookie z prehliadača"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+msgid "File"
+msgstr "Súbor"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "Súbor cookie z prehliadača"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+msgid "Clear"
+msgstr "Vyčistiť"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "Vložiť metaúdaje"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "Odstrániť zdrojové údaje"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "Vymazať polia metadát obsahujúce identifikačné informácie o sťahovaní"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Vložiť miniatúry"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "Vložiť miniatúry"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Ak formát súboru nepodporuje vloženie, miniatúra sa uloží do samostatného "
+"obrázkového súboru"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "Orezať miniatúry zvuku"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Oreže miniatúry zvukových súborov do štvorcového tvaru"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "Vložiť kapitoly"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "Vložiť kapitoly"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+#, fuzzy
+msgid "Subtitles"
+msgstr "Žiadne titulky"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "Vložiť titulky"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Uloží titulky do samostatných súborov, ak je funkcia vypnutá alebo vloženie "
+"nepodporované"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "Vlákna FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Obmedziť počet vlákien používaných ffmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "Stiahnutia"
-
-#~ msgid "Keyring"
-#~ msgstr "Zväzok kľúčov"
+#~ msgid "Unable to add the credential."
+#~ msgstr "Odstrániť poverenie"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "História"
+#~ msgid "Unable to read the credential."
+#~ msgstr "Odstrániť poverenie"
 
-#~ msgid "File"
-#~ msgstr "Súbor"
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "Použiť manuálne poverenie"
+
+#~ msgid "Credentials"
+#~ msgstr "Poverenia"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "Použiť čiastkové súbory"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "Súbor cookie z prehliadača"
+
+#~ msgid "Download Media"
+#~ msgstr "Stiahnuť médium"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr ""
+#~ "Pridajte URL adresu videa, zvuku alebo zoznamu skladieb a začnite sťahovať"
 
 #~ msgid "Exit"
 #~ msgstr "Ukončiť"
 
-#~ msgid "Edit"
-#~ msgstr "Upraviť"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "Nastavenia"
-
 #~ msgid "View"
 #~ msgstr "Zobraziť"
-
-#~ msgid "Theme"
-#~ msgstr "Motív"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Svetlý"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Tmavý"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Systémový"
-
-#~ msgid "Help"
-#~ msgstr "Pomoc"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "Skontrolovať aktualizácie"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "Nahlásiť chybu"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub repozitár"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "Diskusie"
-
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "Právne upozornenie o autorských právach"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "Videá na YouTube a iných platformách môžu podliehať ochrane DMCA. Autori "
-#~ "aplikácie Parabolic nevyjadrujú súhlas s používaním tejto aplikácie "
-#~ "spôsobom, ktorý by mohol porušovať zákony a nenesú zodpovednosť za "
-#~ "akékoľvek nelegálne používanie."
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Túto správu už nezobrazovať"
-
-#~ msgid "I understand"
-#~ msgstr "Rozumiem"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Všeobecné"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Nájsť"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "Stiahnutia"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Následné spracovanie"
-
-#~ msgid "Add"
-#~ msgstr "Pridať"
-
-#~ msgid "Argument"
-#~ msgstr "Argument"
-
-#~ msgid "User Interface"
-#~ msgstr "Používateľské rozhranie"
-
-#~ msgid "Translation Language"
-#~ msgstr "Jazyk prekladu"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Systémový"
-
-#~ msgid "Updates"
-#~ msgstr "Aktualizácie"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Automatická kontrola aktualizácií"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Prijímať aktualizácie beta verzie"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "Aktualizovať závislosti, ako napríklad yt-dlp, na beta verzie"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "Žiadna história sťahovania"
-
-#~ msgid "Never"
-#~ msgstr "Nikdy"
-
-#~ msgid "1 Day"
-#~ msgstr "1 deň"
-
-#~ msgid "1 Week"
-#~ msgstr "1 týždeň"
-
-#~ msgid "1 Month"
-#~ msgstr "1 mesiac"
-
-#~ msgid "3 Months"
-#~ msgstr "3 mesiace"
-
-#~ msgid "6 Months"
-#~ msgstr "6 mesiacov"
-
-#~ msgid "1 Year"
-#~ msgstr "1 rok"
-
-#~ msgid "Forever"
-#~ msgstr "Navždy"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "Spracováva sa"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Maximálny počet aktívnych sťahovaní"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Prepísať existujúce súbory"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Voliteľný nástroj na sťahovanie, ktorý môže v určitých oblastiach "
-#~ "pracovať efektívnejšie než predvolený yt-dlp"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "Použiť aria2c"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Maximálny počet pripojení na server"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "Minimálna veľkosť rozdelenia (MiB)"
-
-#~ msgid "Arguments"
-#~ msgstr "Argumenty"
-
-#, fuzzy
-#~ msgid ""
-#~ "These arguments will be appended to yt-dlp during the download phase."
-#~ msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Zahrnúť ID média do názvu"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "Pridať ID média k jeho predvolenému názvu"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Obmedziť znaky názvu súboru"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Obmedziť znaky v názvoch súborov na tie, ktoré sú podporované iba "
-#~ "systémom Windows"
-
-#, fuzzy
-#~ msgid "Show Super Resolution Formats"
-#~ msgstr "Zahrnúť formáty s vysokým rozlíšením"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Zahrnúť automaticky generované titulky"
-
-#~ msgid "Preferences"
-#~ msgstr "Nastavenia"
-
-#, fuzzy
-#~ msgid "Prefer these codecs and options when showing formats for download."
-#~ msgstr ""
-#~ "Uprednostniť tento kodek pri analýze audio formátov na zobrazenie "
-#~ "dostupných na stiahnutie"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "Uprednostňovaný audio kodek"
-
-#~ msgid "Any"
-#~ msgstr "Akýkoľvek"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "Konvertor"
-
-#, fuzzy
-#~ msgid "H.265"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "Uprednostňovaný formát tituliek"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "Uprednostňovaná snímková frekvencia"
-
-#, fuzzy
-#~ msgid "24 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "30 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "60 FPS"
-#~ msgstr "{0} FPS"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Použiť čiastkové súbory"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Stiahnuť médiá do samostatných .part súborov namiesto priameho uloženia "
-#~ "do výstupného súboru"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "Použiť SponsorBlock pre YouTube"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Pokúsiť sa odstrániť sponzorované segmenty z videí"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Preložiť metadáta a kapitoly"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters using the app's "
-#~ "set language on supported sites and media."
-#~ msgstr ""
-#~ "Automaticky preložiť vložené metadáta a kapitoly do jazyka aplikácie na "
-#~ "podporovaných stránkach a médiách"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "Obmedzenie rýchlosti"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Obmedziť rýchlosť sťahovania"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Obmedzenie rýchlosti (KiB/s)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "URL adresa proxy servera"
-
-#~ msgid "URL"
-#~ msgstr "URL adresa"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "Súbor s cookie"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "Súbor cookie z prehliadača"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Súbor s cookie"
-
-#~ msgid "Clear"
-#~ msgstr "Vyčistiť"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Vložiť metaúdaje"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Vložiť metaúdaje"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Odstrániť zdrojové údaje"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr ""
-#~ "Vymazať polia metadát obsahujúce identifikačné informácie o sťahovaní"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "Vložiť miniatúry"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Vložiť miniatúry"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Ak formát súboru nepodporuje vloženie, miniatúra sa uloží do samostatného "
-#~ "obrázkového súboru"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Orezať miniatúry zvuku"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Oreže miniatúry zvukových súborov do štvorcového tvaru"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "Vložiť kapitoly"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Vložiť kapitoly"
-
-#, fuzzy
-#~ msgid "Subtitles"
-#~ msgstr "Žiadne titulky"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Vložiť titulky"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Uloží titulky do samostatných súborov, ak je funkcia vypnutá alebo "
-#~ "vloženie nepodporované"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "Vlákna FFmpeg"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "Vlákna FFmpeg"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "Obmedziť počet vlákien používaných ffmpeg"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr "Zobrazí argumenty na výber v dialógovom okne pridať stiahnutie"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Vložiť kapitoly"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Rozdeliť video podľa kapitol"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Video (všeobecné)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Konvertor"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Vložiť titulky"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Vložiť miniatúry"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Titulky"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Konvertor"
-
-#~ msgid "Name"
-#~ msgstr "Názov"
-
-#~ msgid "Post Processor"
-#~ msgstr "Postprocesor"
-
-#~ msgid "Executable"
-#~ msgstr "Spustiteľný"
 
 #, fuzzy
 #~ msgid "Search"
@@ -634,16 +1127,9 @@ msgstr ""
 #~ msgid "Extra yt-dlp Discovery Arguments"
 #~ msgstr "Argumenty vyhľadávania yt-dlp"
 
-#~ msgid "Advanced"
-#~ msgstr "Pokročilé"
-
 #, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "Žiadne argumenty"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Argument s týmto názvom už existuje"
 
 #~ msgid "Args"
 #~ msgstr "Argumenty"
@@ -651,9 +1137,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "Vyžaduje reštart aplikácie aby sa zmena prejavila"
-
-#~ msgid "About Parabolic"
-#~ msgstr "O aplikácii Parabolic"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -729,15 +1212,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Použiť overenie"
 
-#~ msgid "Credential"
-#~ msgstr "Poverenie"
-
-#~ msgid "Username"
-#~ msgstr "Meno používateľa"
-
-#~ msgid "Password"
-#~ msgstr "Heslo"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Stiahnuť okamžite ako video"
 
@@ -798,9 +1272,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Zrušiť výber všetkých"
-
-#~ msgid "Options"
-#~ msgstr "Možnosti"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Rozdeliť na súbory podľa kapitol"
@@ -893,9 +1364,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Vyčistiť všetko"
-
-#~ msgid "Credentials"
-#~ msgstr "Poverenia"
 
 #~ msgid "Loading"
 #~ msgstr "Načítanie"
@@ -992,9 +1460,6 @@ msgstr ""
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "Špecifikujte ďalšie argumenty, ktoré sa majú odovzdať yt-dlp"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "Argumenty následného spracovania"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Pridať argument postprocesingu"
 
@@ -1023,9 +1488,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Neznáme"
 
-#~ msgid "Error"
-#~ msgstr "Chyba"
-
 #~ msgid "Success"
 #~ msgstr "Úspech"
 
@@ -1036,18 +1498,11 @@ msgstr ""
 #~ msgstr "Pokračovať"
 
 #, csharp-format
-#~ msgid "Sleeping for {0}"
-#~ msgstr "Spánok po dobu {0}"
-
-#, csharp-format
 #~ msgid "{0}% Complete • {1} • {2} Remaining"
 #~ msgstr "{0}% dokončené • {1} • {2} zostáva"
 
 #~ msgid "Stopped"
 #~ msgstr "Zastavené"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "TXT súbory (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "Titulky nie sú k dispozícii"
@@ -1078,9 +1533,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Žiadna história"
-
-#~ msgid "No Credentials"
-#~ msgstr "Žiadne poverenia"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Odstrániť poverenie?"
@@ -1182,12 +1634,6 @@ msgstr ""
 
 #~ msgid "An error occurred while discovering media"
 #~ msgstr "Pri vyhľadávaní médií došlo k chybe"
-
-#~ msgid "Use manual credential"
-#~ msgstr "Použiť manuálne poverenie"
-
-#~ msgid "A credential with that name already exists"
-#~ msgstr "Poverenie s týmto názvom už existuje"
 
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "Názov poverenia nemôže byť prázdny"
@@ -1321,10 +1767,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "{0:0.00} B"
 #~ msgstr "{0:0.00} B"
-
-#, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "O {0}"
 
 #~ msgid "Changelog"
 #~ msgstr "Zoznam zmien"
@@ -1515,9 +1957,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "A credential is required to continue the download of \"{0}\"."
 #~ msgstr "Na pokračovanie sťahovania súboru „{0}“ je potrebné poverenie."
-
-#~ msgid "Password Required"
-#~ msgstr "Vyžaduje sa heslo"
 
 #~ msgid ""
 #~ "This app stores data in an encrypted database. As the system credential "
@@ -1801,9 +2240,6 @@ msgstr ""
 #~ msgid "Update completed successfully"
 #~ msgstr "Aktualizácia bola úspešne dokončená"
 
-#~ msgid "Are you sure you want to delete this argument?"
-#~ msgstr "Ste si istý, že chcete odstrániť tento argument?"
-
 #~ msgid "Args (Empty)"
 #~ msgstr "Args (Prázdny)"
 
@@ -1837,20 +2273,11 @@ msgstr ""
 #~ msgid "The credential name cannot be empty."
 #~ msgstr "Názov poverenia nemôže byť prázdny."
 
-#~ msgid "The provided url is invalid."
-#~ msgstr "Zadaná url adresa nie je platná."
-
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "Pri pridávaní poverenia do zväzku kľúčov došlo k neznámej chybe."
 
 #~ msgid "Edit Credential"
 #~ msgstr "Upraviť poverenie"
-
-#~ msgid "Delete Credential"
-#~ msgstr "Odstrániť poverenie"
-
-#~ msgid "Start"
-#~ msgstr "Začať"
 
 #~ msgid "Documentation"
 #~ msgstr "Dokumentácia"
@@ -1870,17 +2297,11 @@ msgstr ""
 #~ msgid "Check for pre-release (beta) versions of {}"
 #~ msgstr "Skontroluje predbežné (beta) vydania aplikácie {}"
 
-#~ msgid "Version {}"
-#~ msgstr "Verzia {}"
-
 #~ msgid "The installer will start once the download is complete"
 #~ msgstr "Po dokončení sťahovania sa automaticky spustí inštalácia"
 
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Informácie o ladení skopírované do schránky"
-
-#~ msgid "New Argument"
-#~ msgstr "Nový argument"
 
 #, fuzzy
 #~ msgid ""
@@ -1991,11 +2412,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Stiahnuť okamžite"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Pridať, odstrániť a upraviť poverenia na overovanie webových lokalít"
 
 #, fuzzy
 #~ msgid "Revert File Name"

@@ -78,7 +78,6 @@ protected: // Inherited via AbstractItemListWidget
   bool canSelectItem(int index) const override;
 
 protected: // Inherited via NavigationBar
-  const QColor& getItemFgColor(MouseState mouse, bool selected, const Theme& theme) const override;
   const QColor& getItemBadgeBgColor(MouseState mouse, bool selected, const Theme& theme) const override;
   const QColor& getItemBadgeFgColor(MouseState mouse, bool selected, const Theme& theme) const override;
   QMargins getItemPadding() const override;

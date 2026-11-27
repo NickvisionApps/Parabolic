@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-04-24 15:10+0000\n"
 "Last-Translator: Max Chen <ckyb63@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr "最糟"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "無"
 
@@ -72,428 +75,991 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "關於 Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "下載媒體"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "不要再顯示這個訊息"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "新增影片、音訊或播放清單的 URL 開始下載"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "首頁"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "密碼"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "密碼"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "名稱"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "選項"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "使用者名稱"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "密碼"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "此名稱的身份驗證資訊已經存在"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "提供的 URL 無效"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "密碼"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "後製參數"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#, fuzzy
+msgid "Post Processor"
+msgstr "處理中"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "嵌入章節"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "依據章節切割影片"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "影片(一般)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "轉換器"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "嵌入後設資料"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "嵌入字幕"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "嵌入縮圖"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "字幕"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "轉換器"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+msgid "Executable"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "後製使用的核心數"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#, fuzzy
+msgid "Argument"
+msgstr "新的身份驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "此名稱的身份驗證資訊已經存在"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+#, fuzzy
+msgid "Start"
+msgstr "開始"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "新增下載項目"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "金鑰環"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "說明"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub 儲存庫"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "回報錯誤(Bug)"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "討論區"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "歷史記錄"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "錯誤"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, c++-format
+msgid "System keyring error: {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "沒有身份驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "新增、刪除和修改身分驗證資訊來驗證網站"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "增加"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "編輯"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "關於 Parabolic"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "首頁"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "下載"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#, fuzzy
+msgid "Updates"
+msgstr "更新"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "關於"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "設定"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+msgid "Cookies File"
+msgstr "Cookies 檔案"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "TXT 檔案 (*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "新的身份驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "一般"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "發現"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "下載"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "處理中"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "使用者介面"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "主題"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "亮色"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "暗色"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "跟隨系統"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#, fuzzy
+msgid "Translation Language"
+msgstr "翻譯語言"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "跟隨系統"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+msgid "Automatically Check for Updates"
+msgstr "自動檢查更新"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "檢查更新"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "無下載紀錄"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "永不"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+#, fuzzy
+msgid "1 Day"
+msgstr "一天"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+#, fuzzy
+msgid "1 Week"
+msgstr "一個星期"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+#, fuzzy
+msgid "1 Month"
+msgstr "一個月"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#, fuzzy
+msgid "3 Months"
+msgstr "一個月"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+#, fuzzy
+msgid "6 Months"
+msgstr "一個月"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "永久"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "處理中"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "在驗證後將媒體 Id 加入標題"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "限制檔案名稱字元"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "限制只能使用支援 Windows 的檔案字元"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "包含自動生成字幕"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "偏好的影片編碼"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "任意"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "轉換器"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+msgid "H.264"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "偏好的字幕格式"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "偏好的字幕格式"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+msgid "Advanced"
+msgstr "進階選項"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+#, fuzzy
+msgid "Arguments"
+msgstr "新的身份驗證資訊"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "最大同時下載數"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "取代現有檔案"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "使用 aria2"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "每個伺服器最大連線數 (-x)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "分割最小值 (-k)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+#, fuzzy
+msgid "Use Part Files"
+msgstr "使用 Batch 檔案"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr "下載媒體時，先以獨立的 .part 分段檔案儲存，而非直接寫入輸出檔案"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "YouTube 使用 SponsorBlock"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "速度限制"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "限制下載速度"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "速度限制 (KiB/s)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "代理 URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "Cookies 檔案"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "瀏覽器的 Cookies"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+msgid "File"
+msgstr "檔案"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "瀏覽器的 Cookies"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+msgid "Clear"
+msgstr "清除"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "嵌入後設資料"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "移除來源資訊"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "嵌入縮圖"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "嵌入縮圖"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr "如果檔案類型不支援嵌入，縮圖將會另存成圖檔"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "剪裁音訊縮圖"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "嵌入章節"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "嵌入章節"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+#, fuzzy
+msgid "Subtitles"
+msgstr "字幕"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "嵌入字幕"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr "如果關閉或不支援嵌入，已下載的字幕會另存新檔"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "後製使用的核心數"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+msgid "Limit the number of threads used by ffmpeg."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "下載"
-
-#~ msgid "Keyring"
-#~ msgstr "金鑰環"
+#~ msgid "Unable to add the credential."
+#~ msgstr "刪除身份驗證資訊"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "歷史記錄"
+#~ msgid "Unable to read the credential."
+#~ msgstr "刪除身份驗證資訊"
 
-#~ msgid "File"
-#~ msgstr "檔案"
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "使用手動身份驗證"
+
+#~ msgid "Credentials"
+#~ msgstr "身份驗證"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "使用 Batch 檔案"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "瀏覽器的 Cookies"
+
+#~ msgid "Download Media"
+#~ msgstr "下載媒體"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr "新增影片、音訊或播放清單的 URL 開始下載"
 
 #~ msgid "Exit"
 #~ msgstr "退出"
 
-#~ msgid "Edit"
-#~ msgstr "編輯"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "設定"
-
 #~ msgid "View"
 #~ msgstr "檢視"
-
-#~ msgid "Theme"
-#~ msgstr "主題"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "亮色"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "暗色"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "跟隨系統"
-
-#~ msgid "Help"
-#~ msgstr "說明"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "檢查更新"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "回報錯誤(Bug)"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub 儲存庫"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "討論區"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "不要再顯示這個訊息"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "一般"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "發現"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "下載"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "處理中"
-
-#~ msgid "Add"
-#~ msgstr "增加"
-
-#, fuzzy
-#~ msgid "Argument"
-#~ msgstr "新的身份驗證資訊"
-
-#~ msgid "User Interface"
-#~ msgstr "使用者介面"
-
-#, fuzzy
-#~ msgid "Translation Language"
-#~ msgstr "翻譯語言"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "跟隨系統"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "更新"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "自動檢查更新"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "檢查更新"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "無下載紀錄"
-
-#~ msgid "Never"
-#~ msgstr "永不"
-
-#, fuzzy
-#~ msgid "1 Day"
-#~ msgstr "一天"
-
-#, fuzzy
-#~ msgid "1 Week"
-#~ msgstr "一個星期"
-
-#, fuzzy
-#~ msgid "1 Month"
-#~ msgstr "一個月"
-
-#, fuzzy
-#~ msgid "3 Months"
-#~ msgstr "一個月"
-
-#, fuzzy
-#~ msgid "6 Months"
-#~ msgstr "一個月"
-
-#~ msgid "Forever"
-#~ msgstr "永久"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "處理中"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "最大同時下載數"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "取代現有檔案"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "使用 aria2"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "每個伺服器最大連線數 (-x)"
-
-#, fuzzy
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "分割最小值 (-k)"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "新的身份驗證資訊"
-
-#, fuzzy
-#~ msgid "Include Media Id in Title"
-#~ msgstr "在驗證後將媒體 Id 加入標題"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "限制檔案名稱字元"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr "限制只能使用支援 Windows 的檔案字元"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "包含自動生成字幕"
-
-#~ msgid "Preferences"
-#~ msgstr "偏好設定"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "偏好的影片編碼"
-
-#~ msgid "Any"
-#~ msgstr "任意"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "轉換器"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "偏好的字幕格式"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "偏好的字幕格式"
-
-#, fuzzy
-#~ msgid "Use Part Files"
-#~ msgstr "使用 Batch 檔案"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr "下載媒體時，先以獨立的 .part 分段檔案儲存，而非直接寫入輸出檔案"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "YouTube 使用 SponsorBlock"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "速度限制"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "限制下載速度"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "速度限制 (KiB/s)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "代理 URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "Cookies 檔案"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "瀏覽器的 Cookies"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Cookies 檔案"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "嵌入後設資料"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "嵌入後設資料"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "移除來源資訊"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "啟用後 Parabolic 將會清除來源 URL 和其他可辨識來源資訊的後設資料。"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "嵌入縮圖"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "嵌入縮圖"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr "如果檔案類型不支援嵌入，縮圖將會另存成圖檔"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "剪裁音訊縮圖"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "啟用後 Parabolic 將會剪裁音訊檔案的縮圖成正方形大小。"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "嵌入章節"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "嵌入章節"
-
-#, fuzzy
-#~ msgid "Subtitles"
-#~ msgstr "字幕"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "嵌入字幕"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr "如果關閉或不支援嵌入，已下載的字幕會另存新檔"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "後製使用的核心數"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "後製使用的核心數"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "嵌入章節"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "依據章節切割影片"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "影片(一般)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "轉換器"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "嵌入字幕"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "嵌入縮圖"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "字幕"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "轉換器"
-
-#~ msgid "Name"
-#~ msgstr "名稱"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "處理中"
 
 #, fuzzy
 #~ msgid "Exit Full Screen"
@@ -519,23 +1085,13 @@ msgstr ""
 #~ msgid "Extra yt-dlp Discovery Arguments"
 #~ msgstr "後製使用的核心數"
 
-#~ msgid "Advanced"
-#~ msgstr "進階選項"
-
 #, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "新的身份驗證資訊"
 
 #, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "此名稱的身份驗證資訊已經存在"
-
-#, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "需要重啟應用程式已完成便跟"
-
-#~ msgid "About Parabolic"
-#~ msgstr "關於 Parabolic"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -607,15 +1163,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "使用驗證"
 
-#~ msgid "Credential"
-#~ msgstr "驗證資訊"
-
-#~ msgid "Username"
-#~ msgstr "使用者名稱"
-
-#~ msgid "Password"
-#~ msgstr "密碼"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "立刻下載成影片"
 
@@ -667,9 +1214,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "全部不選"
-
-#~ msgid "Options"
-#~ msgstr "選項"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "依照章節分割影片"
@@ -745,9 +1289,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "清除所有"
-
-#~ msgid "Credentials"
-#~ msgstr "身份驗證"
 
 #~ msgid "Loading"
 #~ msgstr "載入中"
@@ -827,9 +1368,6 @@ msgstr ""
 #~ msgid "Minimum Split Size (-k)"
 #~ msgstr "分割最小值 (-k)"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "後製參數"
-
 #, fuzzy
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "後製使用的核心數"
@@ -863,17 +1401,11 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "未知"
 
-#~ msgid "Error"
-#~ msgstr "錯誤"
-
 #~ msgid "Success"
 #~ msgstr "成功"
 
 #~ msgid "Stopped"
 #~ msgstr "已停止"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "TXT 檔案 (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "沒有可提供的字幕"
@@ -898,9 +1430,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "歷史記錄"
-
-#~ msgid "No Credentials"
-#~ msgstr "沒有身份驗證資訊"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "刪除身份驗證？"
@@ -983,13 +1512,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "OGG (Audio)"
 #~ msgstr "OPUS (音訊)"
-
-#~ msgid "Use manual credential"
-#~ msgstr "使用手動身份驗證"
-
-#, fuzzy
-#~ msgid "A credential with that name already exists"
-#~ msgstr "此名稱的身份驗證資訊已經存在"
 
 #, fuzzy
 #~ msgid "The name of the credential cannot be empty"
@@ -1093,10 +1615,6 @@ msgstr ""
 #, fuzzy, csharp-format
 #~ msgid "{0:0.00} KiB"
 #~ msgstr "{:.2f} KiB"
-
-#, fuzzy, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "關於"
 
 #~ msgid "Changelog"
 #~ msgstr "更新記錄"
@@ -1218,10 +1736,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Post-Processor"
 #~ msgstr "處理中"
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "密碼"
 
 #, fuzzy
 #~ msgid "Updating"
@@ -1431,21 +1945,11 @@ msgstr ""
 #~ msgid "New Credential"
 #~ msgstr "新的身份驗證資訊"
 
-#~ msgid "The provided url is invalid."
-#~ msgstr "提供的 URL 無效"
-
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "新增身份驗證資訊至金鑰環時發生不明錯誤"
 
 #~ msgid "Edit Credential"
 #~ msgstr "編輯身份驗證資訊"
-
-#~ msgid "Delete Credential"
-#~ msgstr "刪除身份驗證資訊"
-
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "開始"
 
 #~ msgid "Documentation"
 #~ msgstr "說明文件"
@@ -1453,10 +1957,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Downloading the update"
 #~ msgstr "下載中"
-
-#, fuzzy
-#~ msgid "New Argument"
-#~ msgstr "新的身份驗證資訊"
 
 #, fuzzy
 #~ msgid "The argument args cannot be empty."
@@ -1543,9 +2043,6 @@ msgstr ""
 
 #~ msgid "Enter end time here"
 #~ msgstr "在這裡輸入結束時間"
-
-#~ msgid "Add, delete, and modify credentials for validating websites"
-#~ msgstr "新增、刪除和修改身分驗證資訊來驗證網站"
 
 #, fuzzy
 #~ msgid "Add a credential to get started"

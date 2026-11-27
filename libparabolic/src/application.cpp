@@ -131,8 +131,10 @@ namespace parabolic::application
         m_product->set_repo_owner("NickvisionApps");
         m_product->set_repo_name("Parabolic");
         m_product->set_description("Download web video and audio");
-        m_product->set_version(semver::from_string("2026.10.0-next"));
-        m_product->set_changelog("- Initial Release");
+        m_product->set_version(semver::from_string("2026.11.0-next"));
+        m_product->set_changelog(R"(- Rewrote Parabolic from C# to C++ and Qt6
+- Improved the storage of credentials directly to the system's keyring
+- Fixed an issue where cropping audio thumbnails failed)");
         m_configuration = std::make_unique<configuration::Configuration>(m_product->name());
         m_translator = std::make_unique<translation::Translator>(m_product->short_name());
         m_discovery = std::make_unique<discovery::Manager>();
@@ -141,27 +143,39 @@ namespace parabolic::application
         m_keyring = std::make_unique<keyring::Store>(m_product->id());
 #ifdef _WIN32
 #ifdef _M_ARM64
-        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
-                                                      m_product->version(), "NickvisionParabolicSetup-arm64.exe");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(),
+                                                      m_product->repo_name(),
+                                                      m_product->version(),
+                                                      "NickvisionParabolicSetup-arm64.exe");
 #else
-        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
-                                                      m_product->version(), "NickvisionParabolicSetup-x64.exe");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(),
+                                                      m_product->repo_name(),
+                                                      m_product->version(),
+                                                      "NickvisionParabolicSetup-x64.exe");
 #endif
 #elifdef __APPLE__
 #ifdef __aarch64__
-        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
-                                                      m_product->version(), "NickvisionParabolic-arm64.dmg");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(),
+                                                      m_product->repo_name(),
+                                                      m_product->version(),
+                                                      "NickvisionParabolic-arm64.dmg");
 #else
-        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
-                                                      m_product->version(), "NickvisionParabolic-x64.dmg");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(),
+                                                      m_product->repo_name(),
+                                                      m_product->version(),
+                                                      "NickvisionParabolic-x64.dmg");
 #endif
 #elifdef __linux__
 #ifdef __aarch64__
-        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
-                                                      m_product->version(), "NickvisionParabolic-arm64.AppImage");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(),
+                                                      m_product->repo_name(),
+                                                      m_product->version(),
+                                                      "NickvisionParabolic-arm64.AppImage");
 #else
-        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(), m_product->repo_name(),
-                                                      m_product->version(), "NickvisionParabolic-x64.AppImage");
+        m_updater = std::make_unique<update::Updater>(m_product->repo_owner(),
+                                                      m_product->repo_name(),
+                                                      m_product->version(),
+                                                      "NickvisionParabolic-x64.AppImage");
 #endif
 #endif
     }

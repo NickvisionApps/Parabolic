@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-02-06 14:35+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr "सबसे खराब"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr ""
 
@@ -72,393 +75,1001 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "पैराबोलिक के बारे में"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "मीडिया डाउनलोड करें"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "यह संदेश दोबारा न दिखाएं"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "डाउनलोड करना शुरू करने के लिए एक वीडियो, ऑडियो या प्लेलिस्ट URL जोड़ें"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "गृह"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "पासवर्ड"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "पासवर्ड"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+#, fuzzy
+msgid "Credential"
+msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "नाम"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "उन्नत विकल्प"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "उपयोगकर्ता नाम"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+msgid "A credential with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "मीडिया URL (अमान्य)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "पासवर्ड"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#, fuzzy
+msgid "Post Processor"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "अध्याय सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "अध्याय विभाजित करें"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "मेटाडेटा सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#, fuzzy
+msgid "Executable"
+msgstr "सक्षम"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#, fuzzy
+msgid "Argument"
+msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+msgid "An argument with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+#, fuzzy
+msgid "Start"
+msgstr "सेटिंग्स"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "डाउनलोड जोड़ें"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "कीरिंग"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "सहायता"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "गिटहब रेपो"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "खराबी की जानकारी दें"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "विचार विमर्श"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "इतिहास"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "त्रुटि"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, c++-format
+msgid "System keyring error: {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "जोड़ें"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "पैराबोलिक के बारे में"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "गृह"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "डाउनलोड"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#, fuzzy
+msgid "Updates"
+msgstr "अपडेट"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "परिचय"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Cookies File"
+msgstr "कुकीज़ फाइल"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+msgctxt "Settings"
+msgid "General"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "अस्वीकरण"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "डाउनलोड"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "प्रयोक्ता इंटरफ़ेस"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "थीम"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "हल्की"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "गहरी"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "सिस्टम"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#, fuzzy
+msgid "Translation Language"
+msgstr "ऑडियो भाषा"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "सिस्टम"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+msgid "Automatically Check for Updates"
+msgstr "अपडेट के लिए स्वचालित रूप से जांचे"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "अपडेट के लिए जांचें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "डाउनलोड हो रहा है"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+#, fuzzy
+msgid "Never"
+msgstr "कभी नहीं"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+msgid "1 Day"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+msgid "1 Week"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+msgid "1 Month"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+msgid "3 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+msgid "6 Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+#, fuzzy
+msgid "Forever"
+msgstr "कभी नहीं"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+msgid "Include Media Id in Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "फाइलनाम वर्ण सीमित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "फाइल नामों में वर्णों को केवल विंडोज़ द्वारा समर्थित वर्णों तक सीमित करता है।"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "प्राथमिकताएं"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+msgid "H.264"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+#, fuzzy
+msgid "Advanced"
+msgstr "उन्नत विकल्प"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+#, fuzzy
+msgid "Arguments"
+msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "सक्रिय डाउनलोड की अधिकतम संख्या"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "मौजूदा फाइलें अधिलेखित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "प्रति सर्वर अधिकतम कनेक्शन (-x)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "न्यूनतम विभाजन आकार (-k)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+#, fuzzy
+msgid "Use Part Files"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "गति सीमा"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "मीडिया डाउनलोड करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#, fuzzy
+msgid "Speed Limit (KiB/s)"
+msgstr "गति सीमा"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "प्रॉक्सी URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "कुकीज़ फाइल"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "कुकीज़ फाइल"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+#, fuzzy
+msgid "Chrome"
+msgstr "Chrome/Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+#, fuzzy
+msgid "Chromium"
+msgstr "Chrome/Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#, fuzzy
+msgid "File"
+msgstr "फाइल नाम"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "कुकीज़ फाइल"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+#, fuzzy
+msgid "Clear"
+msgstr "साफ़ करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "मेटाडेटा सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "स्रोत डेटा हटाएं"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा क्षेत्र साफ़ करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+#, fuzzy
+msgid "Embed Thumbnails"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए उपशीर्षक "
+"को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "ऑडियो थंबनेल काटें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+"यदि सक्षम किया गया है, तो पैराबोलिक स्वचालित रूप से ऑडियो डाउनलोड के लिए क्रॉप थंबनेल "
+"उन्नत विकल्प चालू कर देगा"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "अध्याय सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "अध्याय सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+#, fuzzy
+msgid "Subtitles"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "उपशीर्षक सन्निहित करें"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए उपशीर्षक "
+"को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "प्रसंस्करण…"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+msgid "Limit the number of threads used by ffmpeg."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "डाउनलोड"
-
-#~ msgid "Keyring"
-#~ msgstr "कीरिंग"
+#~ msgid "Unable to add the credential."
+#~ msgstr "क्रेडेंशियल मिटाएं?"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "इतिहास"
+#~ msgid "Unable to read the credential."
+#~ msgstr "क्रेडेंशियल मिटाएं?"
 
 #, fuzzy
-#~ msgid "File"
-#~ msgstr "फाइल नाम"
+#~ msgid "Unable to update the credential."
+#~ msgstr "कीरिंग अक्षम करने में असमर्थ।"
+
+#, fuzzy
+#~ msgid "Unable to remove the credential."
+#~ msgstr "कीरिंग रीसेट करने में असमर्थ।"
+
+#, fuzzy
+#~ msgid "Credentials"
+#~ msgstr "कोई क्रेडेंशियल नहीं"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "कुकीज़ फाइल"
+
+#~ msgid "Download Media"
+#~ msgstr "मीडिया डाउनलोड करें"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr "डाउनलोड करना शुरू करने के लिए एक वीडियो, ऑडियो या प्लेलिस्ट URL जोड़ें"
 
 #~ msgid "Exit"
 #~ msgstr "बाहर निकलें"
 
 #, fuzzy
-#~ msgid "Settings"
-#~ msgstr "सेटिंग्स"
-
-#, fuzzy
 #~ msgid "View"
 #~ msgstr "लॉग देखें"
-
-#~ msgid "Theme"
-#~ msgstr "थीम"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "हल्की"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "गहरी"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "सिस्टम"
-
-#~ msgid "Help"
-#~ msgstr "सहायता"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "अपडेट के लिए जांचें"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "खराबी की जानकारी दें"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "गिटहब रेपो"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "विचार विमर्श"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "यह संदेश दोबारा न दिखाएं"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "अस्वीकरण"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "डाउनलोड"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "प्रसंस्करण…"
-
-#~ msgid "Add"
-#~ msgstr "जोड़ें"
-
-#, fuzzy
-#~ msgid "Argument"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
-
-#~ msgid "User Interface"
-#~ msgstr "प्रयोक्ता इंटरफ़ेस"
-
-#, fuzzy
-#~ msgid "Translation Language"
-#~ msgstr "ऑडियो भाषा"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "सिस्टम"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "अपडेट"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "अपडेट के लिए स्वचालित रूप से जांचे"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "अपडेट के लिए जांचें"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "डाउनलोड हो रहा है"
-
-#, fuzzy
-#~ msgid "Never"
-#~ msgstr "कभी नहीं"
-
-#, fuzzy
-#~ msgid "Forever"
-#~ msgstr "कभी नहीं"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "सक्रिय डाउनलोड की अधिकतम संख्या"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "मौजूदा फाइलें अधिलेखित करें"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2 का प्रयोग करें"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "aria2 का प्रयोग करें"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "प्रति सर्वर अधिकतम कनेक्शन (-x)"
-
-#, fuzzy
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "न्यूनतम विभाजन आकार (-k)"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "फाइलनाम वर्ण सीमित करें"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr "फाइल नामों में वर्णों को केवल विंडोज़ द्वारा समर्थित वर्णों तक सीमित करता है।"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
-
-#~ msgid "Preferences"
-#~ msgstr "प्राथमिकताएं"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "परिवर्तक"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
-
-#, fuzzy
-#~ msgid "Use Part Files"
-#~ msgstr "aria2 का प्रयोग करें"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "गति सीमा"
-
-#, fuzzy
-#~ msgid "Limit Download Speed"
-#~ msgstr "मीडिया डाउनलोड करें"
-
-#, fuzzy
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "गति सीमा"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "प्रॉक्सी URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "कुकीज़ फाइल"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "कुकीज़ फाइल"
-
-#, fuzzy
-#~ msgid "Chrome"
-#~ msgstr "Chrome/Edge"
-
-#, fuzzy
-#~ msgid "Chromium"
-#~ msgstr "Chrome/Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#, fuzzy
-#~ msgid "Cookies File"
-#~ msgstr "कुकीज़ फाइल"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "साफ़ करें"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "मेटाडेटा सन्निहित करें"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "मेटाडेटा सन्निहित करें"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "स्रोत डेटा हटाएं"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा क्षेत्र साफ़ करें"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Embed Thumbnails"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए "
-#~ "उपशीर्षक को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "ऑडियो थंबनेल काटें"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr ""
-#~ "यदि सक्षम किया गया है, तो पैराबोलिक स्वचालित रूप से ऑडियो डाउनलोड के लिए क्रॉप "
-#~ "थंबनेल उन्नत विकल्प चालू कर देगा"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "अध्याय सन्निहित करें"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "अध्याय सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Subtitles"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए "
-#~ "उपशीर्षक को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "अध्याय सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "अध्याय विभाजित करें"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "परिवर्तक"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "परिवर्तक"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "उपशीर्षक सन्निहित करें"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "परिवर्तक"
-
-#~ msgid "Name"
-#~ msgstr "नाम"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Executable"
-#~ msgstr "सक्षम"
 
 #, fuzzy
 #~ msgid "Search"
@@ -490,19 +1101,12 @@ msgstr ""
 #~ msgstr "प्रसंस्करण…"
 
 #, fuzzy
-#~ msgid "Advanced"
-#~ msgstr "उन्नत विकल्प"
-
-#, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "कोई क्रेडेंशियल नहीं"
 
 #, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "थीम बदलने के लिए अनुप्रयोग को पुनरारंभ करना आवश्यक है।"
-
-#~ msgid "About Parabolic"
-#~ msgstr "पैराबोलिक के बारे में"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -581,16 +1185,6 @@ msgstr ""
 #~ msgstr "प्रमाणित करें"
 
 #, fuzzy
-#~ msgid "Credential"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
-
-#~ msgid "Username"
-#~ msgstr "उपयोगकर्ता नाम"
-
-#~ msgid "Password"
-#~ msgstr "पासवर्ड"
-
-#, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "मीडिया डाउनलोड करें"
 
@@ -631,10 +1225,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "सभी अचयनित करें"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "उन्नत विकल्प"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -695,10 +1285,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "साफ़ करें"
-
-#, fuzzy
-#~ msgid "Credentials"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -786,10 +1372,6 @@ msgstr ""
 #~ msgstr "न्यूनतम विभाजन आकार (-k)"
 
 #, fuzzy
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "प्रसंस्करण…"
 
@@ -821,9 +1403,6 @@ msgstr ""
 #~ msgid "Starting"
 #~ msgstr "सेटिंग्स"
 
-#~ msgid "Error"
-#~ msgstr "त्रुटि"
-
 #~ msgid "Success"
 #~ msgstr "सफलता"
 
@@ -848,10 +1427,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "इतिहास"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "क्रेडेंशियल मिटाएं?"
@@ -1025,10 +1600,6 @@ msgstr ""
 #~ msgid "{0:0.00} KiB"
 #~ msgstr "{0:f1} KiB/s"
 
-#, fuzzy, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "परिचय"
-
 #, fuzzy
 #~ msgid "Changelog"
 #~ msgstr "चेंजलॉग"
@@ -1154,10 +1725,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Post-Processor"
 #~ msgstr "प्रसंस्करण…"
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "पासवर्ड"
 
 #, fuzzy
 #~ msgid "Updating"
@@ -1324,14 +1891,6 @@ msgstr ""
 #~ msgid "Edit Credential"
 #~ msgstr "कोई क्रेडेंशियल नहीं"
 
-#, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "क्रेडेंशियल मिटाएं?"
-
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "सेटिंग्स"
-
 #~ msgid "Documentation"
 #~ msgstr "दस्तावेज़ीकरण"
 
@@ -1342,10 +1901,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "डाउनलोड लॉग को क्लिपबोर्ड पर कॉपी किया गया था।"
-
-#, fuzzy
-#~ msgid "New Argument"
-#~ msgstr "कोई क्रेडेंशियल नहीं"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "डाउनलोड त्रुटि के साथ समाप्त हुआ"
@@ -1642,9 +2197,6 @@ msgstr ""
 #~ "मीडिया को संभवतः ग़लत तरीके से काटा जा सकता है।\n"
 #~ "यदि यह विकल्प सक्षम है तो डाउनलोडर के रूप में aria2 का उपयोग अक्षम हो जाएगा।"
 
-#~ msgid "Media URL (Invalid)"
-#~ msgstr "मीडिया URL (अमान्य)"
-
 #~ msgid ""
 #~ "Minimize to the system tray instead of quitting the application when the "
 #~ "window is closed."
@@ -1734,12 +2286,6 @@ msgstr ""
 #~ "This action is irreversible."
 #~ msgstr ""
 #~ "इससे पिछली कीरिंग हट जाएगी और सभी पासवर्ड हट जाएंगे। यह क्रिया अपरिवर्तनीय है।"
-
-#~ msgid "Unable to disable keyring."
-#~ msgstr "कीरिंग अक्षम करने में असमर्थ।"
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "कीरिंग रीसेट करने में असमर्थ।"
 
 #~ msgid "Undo Title Editing"
 #~ msgstr "शीर्षक संपादन पूर्ववत करें"

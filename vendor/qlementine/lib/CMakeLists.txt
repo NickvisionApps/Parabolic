@@ -52,6 +52,7 @@ set(SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/CommandLinkButton.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/Expander.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/FlowLayout.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/GroupBox.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/IconWidget.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/Label.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/LineEdit.cpp
@@ -63,6 +64,7 @@ set(SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/NavigationView.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/NotificationBadge.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/PageDots.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/PillButton.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/PlainTextEdit.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/Popover.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/PopoverButton.cpp
@@ -124,6 +126,7 @@ set(HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/CommandLinkButton.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/Expander.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/FlowLayout.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/GroupBox.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/IconWidget.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/Label.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/LineEdit.hpp
@@ -135,6 +138,7 @@ set(HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/NavigationView.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/NotificationBadge.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/PageDots.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/PillButton.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/PlainTextEdit.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/Popover.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/qlementine/widgets/PopoverButton.hpp

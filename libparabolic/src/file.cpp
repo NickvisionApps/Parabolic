@@ -315,10 +315,9 @@ namespace parabolic::file
         {
             resolution_compare = std::strong_ordering::greater;
         }
-        std::strong_ordering language_compare{
-            string_manip::lower(m_audio_language ? m_audio_language->language() : "") <=>
-                    string_manip::lower(rhs.m_audio_language ? rhs.m_audio_language->language() : ""),
-        };
+        std::strong_ordering language_compare{ string_manip::lower(m_audio_language ? m_audio_language->language() : "") <=>
+                                               string_manip::lower(rhs.m_audio_language ? rhs.m_audio_language->language()
+                                                                                        : "") };
         std::strong_ordering bitrate_compare{ std::strong_ordering::equal };
         if (m_bitrate && rhs.m_bitrate)
         {

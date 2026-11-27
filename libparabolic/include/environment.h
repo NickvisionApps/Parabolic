@@ -68,6 +68,7 @@ namespace parabolic::environment
     [[nodiscard]] const std::filesystem::path& find_dependency(std::string_view name, DependencySearchOption option);
     [[nodiscard]] std::filesystem::path executable_directory();
     [[nodiscard]] std::filesystem::path executable_path();
+    [[nodiscard]] std::string last_system_error();
     [[nodiscard]] std::string locale();
     [[nodiscard]] std::vector<std::filesystem::path> path();
     void set_variable(const std::string& name, const std::string& value);

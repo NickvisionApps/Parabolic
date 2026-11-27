@@ -1,5 +1,6 @@
 #include "environment.h"
 #include <array>
+#include <cerrno>
 #include <cstdint>
 #include <expected>
 #include <filesystem>
@@ -66,8 +67,9 @@ namespace parabolic::environment
             JOBOBJECT_EXTENDED_LIMIT_INFORMATION info{};
             info.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
             SetInformationJobObject(job, JobObjectExtendedLimitInformation, &info, sizeof(info));
-            HANDLE handle{ OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, FALSE,
-                                       static_cast<DWORD>(process.m_process.pid().first)) };
+            HANDLE handle{
+                OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, FALSE, static_cast<DWORD>(process.m_process.pid().first))
+            };
             if (handle)
             {
                 AssignProcessToJobObject(job, handle);
@@ -289,6 +291,15 @@ namespace parabolic::environment
         return std::filesystem::canonical("/proc/self/exe");
 #else
         return {};
+#endif
+    }
+
+    std::string last_system_error()
+    {
+#ifdef _WIN32
+        return std::system_category().message(static_cast<int>(GetLastError()));
+#else
+        return std::system_category().message(errno);
 #endif
     }
 

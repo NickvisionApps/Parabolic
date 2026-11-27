@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-04-20 23:20+0000\n"
 "Last-Translator: Indie Gozal <83010300+diego-gz@users.noreply.github.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -59,6 +59,9 @@ msgid "Worst"
 msgstr "Terburuk"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "Tidak Ada"
 
@@ -73,519 +76,1010 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "Tentang Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "Unduh Media"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "Jangan tunjukkan pesan ini lagi"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
+msgstr "Disclaimer Legal Hak Cipta"
+
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
 msgstr ""
-"Tambahkan sebuah URL video, audio, atau daftar putar untuk mulai mendownload"
+"Video dalam YouTube dan situs lainnya dapat tunduk pada perlindungan DMCA. "
+"Pencipta Parabolic tidak membenarkan, serta tidak bertanggung jawab atas "
+"penggunaan aplikasi ini untuk tujuan yang melanggar hukum tersebut."
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "Beranda"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr "Saya mengerti"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "Kata Sandi Baru"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "Kata Sandi Baru"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "Kredensial"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "Nama"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "Pengaturan"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "Nama pengguna"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "Kata sandi"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "Kredensial dengan nama tersebut sudah ada"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "URL Media (tidak sah)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "Kata Sandi Diperlukan"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Argumen Postprocessing"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+msgid "Post Processor"
+msgstr "Post Processor"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Semat Chapter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Bagi menjadi Beberapa File berdasarkan Bab"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Video (Umum)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "Tube Konverter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "Sematkan Metadata"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Semat Subtitel"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Thumbnail Tersemat"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Tube Konverter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Tube Konverter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+msgid "Executable"
+msgstr "Executable"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Tentukan argumen tambahan untuk diteruskan kepada yt-dlp"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+msgid "Argument"
+msgstr "Argumen"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Argumen dengan nama tersebut sudah ada"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, fuzzy, c++-format
+msgid "Version {}"
+msgstr "Versi: {0}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+#, fuzzy
+msgid "Start"
+msgstr "Pengaturan"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "Tambah Unduhan"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "Keyring"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "Bantuan"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "Repo GitHub"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "Laporkan Masalah"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "Diskusi"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "Riwayat"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "Kesalahan"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, fuzzy, c++-format
+msgid "System keyring error: {}"
+msgstr "Tidur selama {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Tidak Ada Kredensial"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "Tambah"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "Ubah"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "Tentang Parabolic"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "Beranda"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "Unduhan"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#, fuzzy
+msgid "Updates"
+msgstr "Pembaruan"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "Tentang {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+msgid "Cookies File"
+msgstr "File Cookies"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "File TXT (*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "Tidak ada kredensial"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Umum"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Cari"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Unduhan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Memproses..."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "Tampilan Pengguna"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "Tema"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "Terang"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Gelap"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "Sistem"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+msgid "Translation Language"
+msgstr "Bahasa Terjemahan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Sistem"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+#, fuzzy
+msgid "Automatically Check for Updates"
+msgstr "Periksa Pembaruan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Terima Update Lebih Awal"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Perbarui dependensi, seperti yt-dlp, ke versi beta"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Durasi Riwayat Unduhan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "Tidak pernah"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+msgid "1 Day"
+msgstr "1 Hari"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+msgid "1 Week"
+msgstr "1 Minggu"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+msgid "1 Month"
+msgstr "1 Bulan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+msgid "3 Months"
+msgstr "3 Bulan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+msgid "6 Months"
+msgstr "6 Bulan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr "1 Tahun"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "Selamanya"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "Memproses"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+msgid "Include Media Id in Title"
+msgstr "Sertakan Id Media dalam Judul"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "Tambahkan id media dalam judul default"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "Batasi Karakter Nama File"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "Batasi karakter nama file ke karakter yang didukung oleh Windows"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Sertakan Format Resolusi Super"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Sertakan Subtitel Otomatis"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "Preferensi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+"Utamakan codec ini saat memuat daftar format audio yang tersedia untuk "
+"diunduh"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "Codec Audio Utama"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "Semua"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "Tube Konverter"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "Format Subtitel yang Diutamakan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "Frame Rate Utama"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FPS"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+msgid "Advanced"
+msgstr "Lanjutan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+#, fuzzy
+msgid "Arguments"
+msgstr "Tidak ada kredensial"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr "Argumen akan ditampilkan sebagai pilihan di dialog tambah unduhan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Jumlah Maksimal Unduhan Aktif"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "Timpa File yang Sudah Ada"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Sebuah pengunduh alternatif yang mungkin lebih cepat di wilayah tertentu "
+"dibandingkan dengan pengunduh bawaan yt-dlp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "Gunakan aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Koneksi Maksimal Per Server"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+msgid "Minimum Split Size (MiB)"
+msgstr "Ukuran Pembagian Minimum (MiB)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr "Argumen akan ditampilkan sebagai pilihan di dialog tambah unduhan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "Use Part Files"
+msgstr "Gunakan File Part"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr "Unduh media dalam file .part terpisah, bukan langsung ke file output"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "Gunakan SponsorBlock untuk YouTube"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Coba untuk menghapus segmen bersponsor dari video"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr "Terjemahkan Metadata dan Bab"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Otomatis terjemahkan metadata dan bab tersemat sesuai dengan bahasa aplikasi "
+"ini pada situs dan media yang didukung"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "Batas Kecepatan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "Batas Kecepatan Unduhan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "Batas Kecepatan (KiB/s)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "URL Proxy"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "File Cookies"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "Cookies dari Browser"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+msgid "File"
+msgstr "File"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "Cookies dari Browser"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+msgid "Clear"
+msgstr "Bersihkan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "Sematkan Metadata"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "Hapus Data Sumber"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "Bersihkan kolom metadata dengan informasi identitas pengunduhan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Thumbnail Tersemat"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "Thumbnail Tersemat"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Jika tipe file tidak mendukung penyematan, thumbnail akan disimpan menjadi "
+"sebuah file gambar terpisah"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "Potong Thumbnail Audio"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Potong thumbnail file audio menjadi persegi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "Semat Chapter"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "Semat Chapter"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Subtitles"
+msgstr "Subtitel"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "Semat Subtitel"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Apabila dinonaktifkan atau penyematan tidak didukung, subtitel terunduh akan "
+"disimpan sebagai file terpisah"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "Tentukan argumen tambahan untuk diteruskan kepada yt-dlp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Batasi jumlah thread yang digunakan oleh ffmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "Argumen akan ditampilkan sebagai pilihan di dialog tambah unduhan"
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "Unduhan"
-
-#~ msgid "Keyring"
-#~ msgstr "Keyring"
+#~ msgid "Unable to add the credential."
+#~ msgstr "Hapus Kredensial?"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "Riwayat"
+#~ msgid "Unable to read the credential."
+#~ msgstr "Hapus Kredensial?"
 
-#~ msgid "File"
-#~ msgstr "File"
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "Nonaktifkan Keyring?"
+
+#~ msgid "Credentials"
+#~ msgstr "Kredensial"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "Gunakan File Part"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "Cookies dari Browser"
+
+#~ msgid "Download Media"
+#~ msgstr "Unduh Media"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr ""
+#~ "Tambahkan sebuah URL video, audio, atau daftar putar untuk mulai "
+#~ "mendownload"
 
 #~ msgid "Exit"
 #~ msgstr "Keluar"
 
-#~ msgid "Edit"
-#~ msgstr "Ubah"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "Pengaturan"
-
 #~ msgid "View"
 #~ msgstr "Lihat"
-
-#~ msgid "Theme"
-#~ msgstr "Tema"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Terang"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Gelap"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#~ msgid "Help"
-#~ msgstr "Bantuan"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "Periksa Pembaruan"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "Laporkan Masalah"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "Repo GitHub"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "Diskusi"
-
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "Disclaimer Legal Hak Cipta"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "Video dalam YouTube dan situs lainnya dapat tunduk pada perlindungan "
-#~ "DMCA. Pencipta Parabolic tidak membenarkan, serta tidak bertanggung jawab "
-#~ "atas penggunaan aplikasi ini untuk tujuan yang melanggar hukum tersebut."
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Jangan tunjukkan pesan ini lagi"
-
-#~ msgid "I understand"
-#~ msgstr "Saya mengerti"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Umum"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Cari"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "Unduhan"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Memproses..."
-
-#~ msgid "Add"
-#~ msgstr "Tambah"
-
-#~ msgid "Argument"
-#~ msgstr "Argumen"
-
-#~ msgid "User Interface"
-#~ msgstr "Tampilan Pengguna"
-
-#~ msgid "Translation Language"
-#~ msgstr "Bahasa Terjemahan"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "Pembaruan"
-
-#, fuzzy
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Periksa Pembaruan"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Terima Update Lebih Awal"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "Perbarui dependensi, seperti yt-dlp, ke versi beta"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "Durasi Riwayat Unduhan"
-
-#~ msgid "Never"
-#~ msgstr "Tidak pernah"
-
-#~ msgid "1 Day"
-#~ msgstr "1 Hari"
-
-#~ msgid "1 Week"
-#~ msgstr "1 Minggu"
-
-#~ msgid "1 Month"
-#~ msgstr "1 Bulan"
-
-#~ msgid "3 Months"
-#~ msgstr "3 Bulan"
-
-#~ msgid "6 Months"
-#~ msgstr "6 Bulan"
-
-#~ msgid "1 Year"
-#~ msgstr "1 Tahun"
-
-#~ msgid "Forever"
-#~ msgstr "Selamanya"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "Memproses"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Jumlah Maksimal Unduhan Aktif"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Timpa File yang Sudah Ada"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Sebuah pengunduh alternatif yang mungkin lebih cepat di wilayah tertentu "
-#~ "dibandingkan dengan pengunduh bawaan yt-dlp"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "Gunakan aria2c"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Koneksi Maksimal Per Server"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "Ukuran Pembagian Minimum (MiB)"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "Tidak ada kredensial"
-
-#, fuzzy
-#~ msgid ""
-#~ "These arguments will be appended to yt-dlp during the download phase."
-#~ msgstr "Argumen akan ditampilkan sebagai pilihan di dialog tambah unduhan"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Sertakan Id Media dalam Judul"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "Tambahkan id media dalam judul default"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Batasi Karakter Nama File"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr "Batasi karakter nama file ke karakter yang didukung oleh Windows"
-
-#, fuzzy
-#~ msgid "Show Super Resolution Formats"
-#~ msgstr "Sertakan Format Resolusi Super"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Sertakan Subtitel Otomatis"
-
-#~ msgid "Preferences"
-#~ msgstr "Preferensi"
-
-#, fuzzy
-#~ msgid "Prefer these codecs and options when showing formats for download."
-#~ msgstr ""
-#~ "Utamakan codec ini saat memuat daftar format audio yang tersedia untuk "
-#~ "diunduh"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "Codec Audio Utama"
-
-#~ msgid "Any"
-#~ msgstr "Semua"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "Tube Konverter"
-
-#, fuzzy
-#~ msgid "H.265"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "Format Subtitel yang Diutamakan"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "Frame Rate Utama"
-
-#, fuzzy
-#~ msgid "24 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "30 FPS"
-#~ msgstr "{0} FPS"
-
-#, fuzzy
-#~ msgid "60 FPS"
-#~ msgstr "{0} FPS"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Gunakan File Part"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Unduh media dalam file .part terpisah, bukan langsung ke file output"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "Gunakan SponsorBlock untuk YouTube"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Coba untuk menghapus segmen bersponsor dari video"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Terjemahkan Metadata dan Bab"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters using the app's "
-#~ "set language on supported sites and media."
-#~ msgstr ""
-#~ "Otomatis terjemahkan metadata dan bab tersemat sesuai dengan bahasa "
-#~ "aplikasi ini pada situs dan media yang didukung"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "Batas Kecepatan"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Batas Kecepatan Unduhan"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Batas Kecepatan (KiB/s)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "URL Proxy"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "File Cookies"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "Cookies dari Browser"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "File Cookies"
-
-#~ msgid "Clear"
-#~ msgstr "Bersihkan"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Sematkan Metadata"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Sematkan Metadata"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Hapus Data Sumber"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "Bersihkan kolom metadata dengan informasi identitas pengunduhan"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "Thumbnail Tersemat"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Thumbnail Tersemat"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Jika tipe file tidak mendukung penyematan, thumbnail akan disimpan "
-#~ "menjadi sebuah file gambar terpisah"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Potong Thumbnail Audio"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Potong thumbnail file audio menjadi persegi"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "Semat Chapter"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Semat Chapter"
-
-#~ msgid "Subtitles"
-#~ msgstr "Subtitel"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Semat Subtitel"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Apabila dinonaktifkan atau penyematan tidak didukung, subtitel terunduh "
-#~ "akan disimpan sebagai file terpisah"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "Tentukan argumen tambahan untuk diteruskan kepada yt-dlp"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "Tentukan argumen tambahan untuk diteruskan kepada yt-dlp"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "Batasi jumlah thread yang digunakan oleh ffmpeg"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr "Argumen akan ditampilkan sebagai pilihan di dialog tambah unduhan"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Semat Chapter"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Bagi menjadi Beberapa File berdasarkan Bab"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Video (Umum)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Tube Konverter"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Semat Subtitel"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Thumbnail Tersemat"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Tube Konverter"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Tube Konverter"
-
-#~ msgid "Name"
-#~ msgstr "Nama"
-
-#~ msgid "Post Processor"
-#~ msgstr "Post Processor"
-
-#~ msgid "Executable"
-#~ msgstr "Executable"
 
 #, fuzzy
 #~ msgid "Search"
@@ -632,16 +1126,9 @@ msgstr ""
 #~ msgid "Extra yt-dlp Discovery Arguments"
 #~ msgstr "Argumen Pencarian yt-dlp"
 
-#~ msgid "Advanced"
-#~ msgstr "Lanjutan"
-
 #, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "Tidak Ada Argumen"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Argumen dengan nama tersebut sudah ada"
 
 #~ msgid "Args"
 #~ msgstr "Args"
@@ -649,9 +1136,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "Aplikasi perlu dimulai ulang agar perubahan dapat diterapkan"
-
-#~ msgid "About Parabolic"
-#~ msgstr "Tentang Parabolic"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -724,15 +1208,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Gunakan Autentikasi"
 
-#~ msgid "Credential"
-#~ msgstr "Kredensial"
-
-#~ msgid "Username"
-#~ msgstr "Nama pengguna"
-
-#~ msgid "Password"
-#~ msgstr "Kata sandi"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Langsung Unduh sebagai Video"
 
@@ -793,9 +1268,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Batalkan Semua Pilihan"
-
-#~ msgid "Options"
-#~ msgstr "Pengaturan"
 
 #~ msgid "Export Description to File"
 #~ msgstr "Ekspor Deskripsi menjadi File"
@@ -885,9 +1357,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Hapus Semua"
-
-#~ msgid "Credentials"
-#~ msgstr "Kredensial"
 
 #~ msgid "Loading"
 #~ msgstr "Memuat"
@@ -983,9 +1452,6 @@ msgstr ""
 #~ msgid "Converter"
 #~ msgstr "Konverter"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "Argumen Postprocessing"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Tambah Argumen Pascapemrosesan"
 
@@ -1014,9 +1480,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Tidak Diketahui"
 
-#~ msgid "Error"
-#~ msgstr "Kesalahan"
-
 #~ msgid "Success"
 #~ msgstr "Sukses"
 
@@ -1027,18 +1490,11 @@ msgstr ""
 #~ msgstr "Lanjutkan"
 
 #, csharp-format
-#~ msgid "Sleeping for {0}"
-#~ msgstr "Tidur selama {0}"
-
-#, csharp-format
 #~ msgid "{0}% Complete • {1} • {2} Remaining"
 #~ msgstr "{0}% Selesai • {1} • {2} Tersisa"
 
 #~ msgid "Stopped"
 #~ msgstr "Dihentikan"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "File TXT (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "Tidak Ada File Subtitel yang Tersedia"
@@ -1069,9 +1525,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Belum Ada Riwayat"
-
-#~ msgid "No Credentials"
-#~ msgstr "Tidak Ada Kredensial"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Hapus Kredensial?"
@@ -1176,9 +1629,6 @@ msgstr ""
 
 #~ msgid "Use manual credential"
 #~ msgstr "Gunakan kredensial manual"
-
-#~ msgid "A credential with that name already exists"
-#~ msgstr "Kredensial dengan nama tersebut sudah ada"
 
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "Nama dari kredensial tidak boleh kosong"
@@ -1313,10 +1763,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "{0:0.00} B"
 #~ msgstr "{0:0.00} B"
-
-#, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "Tentang {0}"
 
 #~ msgid "Changelog"
 #~ msgstr "Daftar Perubahan"
@@ -1508,9 +1954,6 @@ msgstr ""
 #~ msgid "A credential is required to continue the download of \"{0}\"."
 #~ msgstr "Kredensial diperlukan untuk melanjutkan pengunduhan \"{0}\"."
 
-#~ msgid "Password Required"
-#~ msgstr "Kata Sandi Diperlukan"
-
 #~ msgid "Preview"
 #~ msgstr "Pratinjau"
 
@@ -1666,28 +2109,12 @@ msgstr ""
 #~ msgstr "Tambah Kredensial"
 
 #, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "Hapus Kredensial?"
-
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "Pengaturan"
-
-#, fuzzy
 #~ msgid "Documentation"
 #~ msgstr "Otentikasi"
 
 #, fuzzy
-#~ msgid "Version {}"
-#~ msgstr "Versi: {0}"
-
-#, fuzzy
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Log unduhan disalin ke papan klip."
-
-#, fuzzy
-#~ msgid "New Argument"
-#~ msgstr "Tidak ada kredensial"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "Unduh Selesai Dengan Error"
@@ -1902,9 +2329,6 @@ msgstr ""
 #~ msgid "Maximum Quality"
 #~ msgstr "Kualitas Maksimum"
 
-#~ msgid "Media URL (Invalid)"
-#~ msgstr "URL Media (tidak sah)"
-
 #, fuzzy
 #~ msgid "No Completed Downloads"
 #~ msgstr "Tutup dan Hentikan Unduhan?"
@@ -1960,10 +2384,6 @@ msgstr ""
 #~ msgid "Subtitle Languages (Invalid)"
 #~ msgstr "Folder Penyimpanan (tidak sah)"
 
-#, fuzzy
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Nonaktifkan Keyring?"
-
 #~ msgid "Undo Title Editing"
 #~ msgstr "Urungkan menyunting judul"
 
@@ -2016,13 +2436,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Tidak dapat mengunduh dependensi. Silahkan mulai ulang aplikasi dan coba "
 #~ "lagi."
-
-#, fuzzy
-#~ msgid "Set Password"
-#~ msgstr "Kata Sandi Baru"
-
-#~ msgid "New Password"
-#~ msgstr "Kata Sandi Baru"
 
 #~ msgid "Confirm Password"
 #~ msgstr "Konfirmasi Kata sandi"

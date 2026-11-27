@@ -1,129 +1,255 @@
 #include "views/main_window.h"
 #include <QAction>
+#include <QApplication>
+#include <QCloseEvent>
 #include <QIcon>
+#include <QKeySequence>
+#include <QMenu>
+#include <QMenuBar>
 #include <QObject>
+#include <QShortcut>
 #include <QSizePolicy>
 #include <QString>
+#include <QTextDocument>
 #include <QToolBar>
 #include <QWidget>
 #include <Qt>
 #include <oclero/qlementine/icons/Icons16.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/ThemeManager.hpp>
+#include <oclero/qlementine/widgets/AboutDialog.hpp>
 #include <oclero/qlementine/widgets/NavigationSidebar.hpp>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
+#include "app.h"
 #include "application.h"
+#include "configuration.h"
+#include "helpers/translation_notifier.h"
+#include "pages/downloads_page.h"
+#include "pages/home_page.h"
+#include "pages/tagger_page.h"
+#include "pages/updates_page.h"
 #include "translation.h"
-#include "views/home_page.h"
-
-namespace ui
-{
-    class MainWindow
-    {
-    public:
-        oclero::qlementine::NavigationView* m_navigation_view{ nullptr };
-        QToolBar* m_toolbar{ nullptr };
-        QAction* m_toggle_navigation{ nullptr };
-        QAction* m_add_download{ nullptr };
-        QWidget* m_toolbar_spacer{ nullptr };
-        QAction* m_toggle_theme{ nullptr };
-
-        MainWindow(oclero::qlementine::ThemeManager* theme_manager)
-            : m_theme_manager{ theme_manager }
-        {
-        }
-
-        void setup_ui(parabolic::qt::views::MainWindow* main_window)
-        {
-            const parabolic::translation::Translator& translator{
-                parabolic::application::State::instance().translator(),
-            };
-            m_navigation_view = new oclero::qlementine::NavigationView{ main_window };
-            m_navigation_view->addPage(new parabolic::qt::views::HomePage(m_navigation_view), translator._("Home"),
-                                       oclero::qlementine::appStyle()->makeThemedIcon(
-                                               oclero::qlementine::icons::iconPath(
-                                                       oclero::qlementine::icons::Icons16::Navigation_Home)));
-            m_toolbar = new QToolBar{ main_window->titleBar() };
-            m_toolbar->setMovable(false);
-            m_toolbar->setFloatable(false);
-            m_toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
-            m_toolbar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-            m_toggle_navigation = m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(
-                                                               oclero::qlementine::icons::iconPath(
-                                                                       oclero::qlementine::icons::Icons16::
-                                                                               Navigation_UiPanelLeftCollapse)),
-                                                       translator._("Collapse Navigation"));
-            m_toggle_navigation->setToolTip(translator._("Collapse Navigation"));
-            m_add_download = m_toolbar->addAction(oclero::qlementine::appStyle()->makeThemedIcon(
-                                                          oclero::qlementine::icons::iconPath(
-                                                                  oclero::qlementine::icons::Icons16::Action_Plus)),
-                                                  translator._("Add Download"));
-            m_add_download->setToolTip(translator._("Add Download"));
-            m_toolbar_spacer = new QWidget{ m_toolbar };
-            m_toolbar_spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-            m_toolbar->addWidget(m_toolbar_spacer);
-            m_toggle_theme = m_toolbar->addAction(QIcon{}, QString{});
-            update_toggle_theme();
-            QObject::connect(m_toggle_theme, &QAction::triggered, m_toggle_theme, [this]
-            {
-                m_theme_manager->setCurrentTheme(m_theme_manager->currentTheme() == "Light" ? "Legacy Dark" : "Light");
-            });
-            QObject::connect(m_theme_manager, &oclero::qlementine::ThemeManager::currentThemeChanged, m_toggle_theme,
-                             [this]
-            {
-                update_toggle_theme();
-            });
-            main_window->titleBar()->setContentWidget(m_toolbar);
-            main_window->setContentCornerRadius(12);
-            main_window->resize(1100, 720);
-            main_window->setCentralWidget(m_navigation_view);
-            QObject::connect(m_toggle_navigation, &QAction::triggered, m_navigation_view->sidebar(),
-                             &oclero::qlementine::NavigationSidebar::toggleCompact);
-            QObject::connect(m_navigation_view->sidebar(), &oclero::qlementine::NavigationSidebar::compactChanged,
-                             m_toggle_navigation, [this, &translator]
-            {
-                m_toggle_navigation->setIcon(
-                        oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                                m_navigation_view->sidebar()->compact()
-                                        ? oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftExpand
-                                        : oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
-                m_toggle_navigation->setToolTip(m_navigation_view->sidebar()->compact()
-                                                        ? translator._("Expand Navigation")
-                                                        : translator._("Collapse Navigation"));
-            });
-            main_window->setLeadingWidget(m_navigation_view->sidebar());
-        }
-
-    private:
-        oclero::qlementine::ThemeManager* m_theme_manager{ nullptr };
-
-        void update_toggle_theme()
-        {
-            const parabolic::translation::Translator& translator{
-                parabolic::application::State::instance().translator(),
-            };
-            m_toggle_theme->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                    m_theme_manager->currentTheme() != "Light" ? oclero::qlementine::icons::Icons16::Misc_Sun
-                                                               : oclero::qlementine::icons::Icons16::Misc_Moon)));
-            m_toggle_theme->setText(m_theme_manager->currentTheme() != "Light" ? translator._("Switch to Light Theme")
-                                                                               : translator._("Switch to Dark Theme"));
-            m_toggle_theme->setToolTip(m_toggle_theme->text());
-        }
-    };
-}
+#include "ui_main_window.h"
+#include "views/history_dialog.h"
+#include "views/keyring_dialog.h"
+#include "views/settings_dialog.h"
 
 namespace parabolic::qt::views
 {
-    MainWindow::MainWindow(oclero::qlementine::ThemeManager* theme_manager, QWidget* parent)
+    MainWindow::MainWindow(QWidget* parent)
         : UnifiedWindow{ parent },
-          m_ui{ new ui::MainWindow(theme_manager) }
+          m_ui{ new Ui::MainWindow() }
     {
-        m_ui->setup_ui(this);
+        m_ui->setupUi(this);
+        m_ui->container->setWindowFlags(Qt::Widget);
+        m_ui->txt_changelog->document()->setDocumentMargin(0);
+        m_ui->txt_changelog->document()->setIndentWidth(16);
+        setCentralWidget(m_ui->container);
+        setLeadingWidget(m_ui->navigation_view->sidebar());
+        setContentCornerRadius(12);
+        titleBar()->setContentWidget(m_ui->toolbar);
+        pages::HomePage* home_page{ new pages::HomePage(m_ui->navigation_view) };
+        m_ui->navigation_view->addPage(home_page,
+                                       {},
+                                       oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                               oclero::qlementine::icons::Icons16::Navigation_Home)));
+        m_ui->navigation_view->addPage(new pages::DownloadsPage(m_ui->navigation_view),
+                                       {},
+                                       oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                               oclero::qlementine::icons::Icons16::Action_Download)));
+        m_ui->navigation_view->addPage(new pages::TaggerPage(m_ui->navigation_view),
+                                       {},
+                                       oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                               oclero::qlementine::icons::Icons16::Misc_Tag)));
+        m_ui->navigation_view->addBottomPage(new pages::UpdatesPage(m_ui->navigation_view),
+                                             {},
+                                             oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                     oclero::qlementine::icons::Icons16::Action_Update)));
+        m_ui->act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
+        m_ui->act_add_download->setVisible(false);
+        m_ui->act_add_download->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Document_New)));
+        m_ui->act_history->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Clock)));
+        m_ui->act_keyring->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Password)));
+        m_ui->act_settings->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Navigation_Settings)));
+        QWidget* spacer{ new QWidget(m_ui->toolbar) };
+        spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        m_ui->toolbar->insertWidget(m_ui->act_history, spacer);
+#ifdef __APPLE__
+        m_ui->act_history->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Y));
+#else
+        m_ui->act_history->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_H));
+#endif
+#ifdef __APPLE__
+        QMenu* app_menu{ (new QMenuBar(nullptr))->addMenu(QString()) };
+        app_menu->addAction(m_ui->act_about);
+        app_menu->addAction(m_ui->act_settings);
+#endif
+        translate();
+        connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &MainWindow::translate);
+        connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QWidget::close);
+        connect(home_page, &pages::HomePage::add_download_requested, this, &MainWindow::add_download);
+        connect(home_page, &pages::HomePage::keyring_requested, this, &MainWindow::keyring);
+        connect(home_page, &pages::HomePage::tag_music_library_requested, this, &MainWindow::tag_music_library);
+        connect(home_page, &pages::HomePage::whats_new_requested, this, &MainWindow::whats_new);
+        connect(m_ui->navigation_view,
+                &oclero::qlementine::NavigationView::currentIndexChanged,
+                this,
+                &MainWindow::page_changed);
+        connect(m_ui->act_about, &QAction::triggered, this, &MainWindow::about);
+        connect(m_ui->act_add_download, &QAction::triggered, this, &MainWindow::add_download);
+        connect(m_ui->act_history, &QAction::triggered, this, &MainWindow::history);
+        connect(m_ui->act_keyring, &QAction::triggered, this, &MainWindow::keyring);
+        connect(m_ui->act_settings, &QAction::triggered, this, &MainWindow::settings);
+        connect(m_ui->act_toggle_sidebar, &QAction::triggered, this, &MainWindow::toggle_sidebar);
+        const configuration::Configuration& configuration{ application::State::instance().configuration() };
+        resize(configuration.window_geometry().width(), configuration.window_geometry().height());
+        move(configuration.window_geometry().x(), configuration.window_geometry().y());
+        if (configuration.window_geometry().is_maximized())
+        {
+            setWindowState(windowState() | Qt::WindowMaximized);
+        }
+        if (configuration.collapse_sidebar())
+        {
+            m_ui->navigation_view->sidebar()->toggleCompact();
+        }
     }
 
     MainWindow::~MainWindow()
     {
         delete m_ui;
+    }
+
+    void MainWindow::closeEvent(QCloseEvent* event)
+    {
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
+        if (isMaximized())
+        {
+            configuration.set_window_geometry({ configuration.window_geometry().width(),
+                                                configuration.window_geometry().height(),
+                                                true,
+                                                configuration.window_geometry().x(),
+                                                configuration.window_geometry().y() });
+        }
+        else
+        {
+            configuration.set_window_geometry({ width(), height(), false, x(), y() });
+        }
+        event->accept();
+    }
+
+    void MainWindow::about()
+    {
+        const translation::Translator& translator{ application::State::instance().translator() };
+        const application::Product& product{ application::State::instance().product() };
+        oclero::qlementine::AboutDialog dialog{ this };
+        dialog.setWindowTitle(translator._p("AppName", "About Paraboloc"));
+        dialog.setIcon(QIcon(":/org.nickvision.tubeconverter.svg"));
+        dialog.setApplicationName(QString::fromStdString(product.short_name()));
+        dialog.setApplicationVersion(QString::fromStdString(product.version().to_string()));
+        dialog.setDescription(QString::fromStdString(product.description()));
+        dialog.setWebsiteUrl(QString::fromStdString(product.repo_url()));
+        dialog.setLicense("MIT");
+        dialog.setCopyright("© 2026 Nickvision");
+        dialog.addSocialMediaLink(translator._("Issues"),
+                                  QString::fromStdString(product.issues_url()),
+                                  oclero::qlementine::appStyle()->makeThemedIcon(
+                                          oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Debug)));
+        dialog.addSocialMediaLink(translator._("Discussions"),
+                                  QString::fromStdString(product.discussions_url()),
+                                  oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                          oclero::qlementine::icons::Icons16::Brand_Github)));
+        dialog.exec();
+    }
+
+    void MainWindow::add_download() const
+    {
+        m_ui->navigation_view->setCurrentIndex(1);
+    }
+
+    void MainWindow::history()
+    {
+        HistoryDialog dialog{ this };
+        dialog.exec();
+    }
+
+    void MainWindow::keyring()
+    {
+        KeyringDialog dialog{ this };
+        dialog.exec();
+    }
+
+    void MainWindow::page_changed()
+    {
+        m_ui->act_add_download->setVisible(m_ui->navigation_view->currentIndex() == 1);
+    }
+
+    void MainWindow::settings()
+    {
+        SettingsDialog dialog{ this };
+        dialog.exec();
+    }
+
+    void MainWindow::tag_music_library() const
+    {
+        m_ui->navigation_view->setCurrentIndex(2);
+    }
+
+    void MainWindow::toggle_sidebar() const
+    {
+        const translation::Translator& translator{ application::State::instance().translator() };
+        bool is_collapsed{ m_ui->navigation_view->sidebar()->compact() };
+        application::State::instance().configuration().set_collapse_sidebar(!is_collapsed);
+        m_ui->navigation_view->sidebar()->toggleCompact();
+        m_ui->act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                is_collapsed ? oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftExpand
+                             : oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
+        m_ui->act_toggle_sidebar->setToolTip(is_collapsed ? translator._("Expand Sidebar") : translator._("Collapse Sidebar"));
+    }
+
+    void MainWindow::translate()
+    {
+        const translation::Translator& translator{ application::State::instance().translator() };
+        const application::Product& product{ application::State::instance().product() };
+        setWindowTitle(translator._p("AppName", "Parabolic"));
+        m_ui->dock_whats_new->setWindowTitle(translator._("What's New?"));
+        m_ui->txt_changelog->setMarkdown(QString::fromStdString(product.changelog()));
+        m_ui->navigation_view->sidebar()->setItemText(0, translator._("Home"));
+        m_ui->navigation_view->sidebar()->setItemText(1, translator._("Downloads"));
+        m_ui->navigation_view->sidebar()->setItemText(2, translator._("Tagger"));
+        m_ui->navigation_view->sidebar()->setItemText(3, translator._("Updates"));
+        m_ui->act_toggle_sidebar->setText(translator._("Toggle Sidebar"));
+        m_ui->act_toggle_sidebar->setToolTip(m_ui->navigation_view->sidebar()->compact() ? translator._("Expand Sidebar")
+                                                                                         : translator._("Collapse Sidebar"));
+        m_ui->act_about->setText(translator._("About"));
+        m_ui->act_add_download->setText(translator._("Add Download"));
+        m_ui->act_add_download->setToolTip(translator._("Add Download"));
+        m_ui->act_history->setText(translator._("History"));
+        m_ui->act_history->setToolTip(QString::fromStdString(
+                translator._("{} ({})",
+                             translator._("History"),
+                             m_ui->act_history->shortcut().toString(QKeySequence::NativeText).toStdString())));
+        m_ui->act_keyring->setText(translator._("Keyring"));
+        m_ui->act_keyring->setToolTip(QString::fromStdString(
+                translator._("{} ({})",
+                             translator._("Keyring"),
+                             m_ui->act_keyring->shortcut().toString(QKeySequence::NativeText).toStdString())));
+        m_ui->act_settings->setText(translator._("Settings"));
+        m_ui->act_settings->setToolTip(QString::fromStdString(
+                translator._("{} ({})",
+                             translator._("Settings"),
+                             m_ui->act_settings->shortcut().toString(QKeySequence::NativeText).toStdString())));
+    }
+
+    void MainWindow::whats_new()
+    {
+        m_ui->dock_whats_new->setVisible(!m_ui->dock_whats_new->isVisible());
     }
 }

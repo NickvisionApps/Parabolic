@@ -21,7 +21,6 @@
 
 namespace oclero::qlementine {
 constexpr auto chevronPenWidth = 1.01;
-constexpr auto indicatorFillOpacity = 0.16f;
 constexpr auto wheelNotchDelta = 120;
 constexpr auto wheelNotchRows = 3;
 
@@ -573,13 +572,6 @@ bool NavigationSidebar::canSelectItem(int index) const {
   return index >= 0 && index < itemCount() && items()[index].kind == ItemKind::Entry;
 }
 
-const QColor& NavigationSidebar::getItemFgColor(MouseState mouse, bool selected, const Theme& theme) const {
-  if (!selected) {
-    return NavigationBar::getItemFgColor(mouse, selected, theme);
-  }
-  return mouse == MouseState::Disabled ? theme.primaryColorDisabled : theme.primaryColor;
-}
-
 const QColor& NavigationSidebar::getItemBadgeBgColor(MouseState mouse, bool selected, const Theme& theme) const {
   if (!selected) {
     return NavigationBar::getItemBadgeBgColor(mouse, selected, theme);
@@ -710,7 +702,10 @@ void NavigationSidebar::drawItemForeground(QPainter& p, const Item& item) const 
   if (hasIcon) {
     iconRect = QRect{ QPoint{ contentX, rect.y() + (rect.height() - iconSize.height()) / 2 }, iconSize };
     const auto pixmap = item.icon.pixmap(iconSize.height(), QIcon::Normal, QIcon::Off);
-    p.drawPixmap(iconRect, colorizePixmap(pixmap, itemFgColor));
+    const auto iconColor = qlementineStyle ? (item.enabled ? qlementineStyle->theme().primaryColor
+                                                           : qlementineStyle->theme().primaryColorDisabled)
+                                           : itemFgColor;
+    p.drawPixmap(iconRect, colorizePixmap(pixmap, iconColor));
     textLeft += iconSize.width() + itemSpacing;
   }
 
@@ -764,11 +759,15 @@ void NavigationSidebar::drawItemForeground(QPainter& p, const Item& item) const 
   // Text, elided and faded out in compact mode.
   if (!item.text.isEmpty() && textRight > textLeft) {
     const auto textRect = QRect{ textLeft, rect.y(), textRight - textLeft, rect.height() };
+    auto textFont = labelFont();
+    if (index == currentIndex()) {
+      textFont.setWeight(QFont::DemiBold);
+    }
     p.setOpacity(rowOpacity * expandedOpacity);
-    p.setFont(labelFont());
+    p.setFont(textFont);
     p.setPen(itemFgColor);
     p.drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft | Qt::TextSingleLine,
-      QFontMetrics(labelFont(), this).elidedText(item.text, Qt::ElideRight, textRect.width(), Qt::TextSingleLine));
+      QFontMetrics(textFont, this).elidedText(item.text, Qt::ElideRight, textRect.width(), Qt::TextSingleLine));
   }
 
   p.restore();
@@ -782,23 +781,9 @@ void NavigationSidebar::drawCurrentItemIndicator(QPainter& p) const {
 
   const auto* qlementineStyle = qobject_cast<const QlementineStyle*>(style());
   const auto radius = getItemRadius();
-  const auto barW = (qlementineStyle ? qlementineStyle->theme().borderWidth : 1) * 3;
-  const auto barH = currentItemRect.height() / 2;
-  const auto barColor = getCurrentItemIndicatorColor();
-  auto fillColor = barColor;
-  fillColor.setAlphaF(indicatorFillOpacity);
-
-  // Tinted background.
   p.setPen(Qt::NoPen);
-  p.setBrush(fillColor);
+  p.setBrush(qlementineStyle ? qlementineStyle->theme().backgroundColorMain4 : palette().color(QPalette::Midlight));
   p.drawRoundedRect(currentItemRect, radius, radius);
-
-  // Accent bar on the left.
-  p.setBrush(barColor);
-  p.drawRoundedRect(QRectF{ static_cast<qreal>(currentItemRect.x() + barW),
-                      currentItemRect.y() + (currentItemRect.height() - barH) / 2., static_cast<qreal>(barW),
-                      static_cast<qreal>(barH) },
-    barW / 2., barW / 2.);
 }
 
 QFont NavigationSidebar::labelFont() const {

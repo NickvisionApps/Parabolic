@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-04-18 23:38+0000\n"
 "Last-Translator: Bai <bai@baturax.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr "En Kötü"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "Hiçbiri"
 
@@ -72,496 +75,1009 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "Parabolic Hakkında"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "Ortam İndirici"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "Bu iletiyi tekrar gösterme"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
+msgstr "Yasal Telif Hakkı Feragatnamesi"
+
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
 msgstr ""
-"İndirmeye başlamak için video, ses ya da oynatma listesi URLʼsi ekleyin"
+"YouTube ve diğer sitelerdeki videolar DMCA korumasına tabi olabilir. "
+"Parabolic yazarları, bu uygulamanın yasaları ihlal edecek şekilde "
+"kullanılmasını onaylamaz ve yasa dışı kullanımdan sorumlu değildir."
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "Ev"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr "Anladım"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "Parola Ayarla"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "Yeni Parola"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "Kimlik Bilgileri"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "Ad"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "Seçenekler"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "Parola"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "Bu adla bir kimlik bilgisi zaten var"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "Sağlanan url geçersiz."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "Parola"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Son İşleme Argümanları"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+msgid "Post Processor"
+msgstr "Son İşleme"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Bölümleri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Videoyu Bölümlere Ayır"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Video (Standart)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "Üst Verileri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Alt Yazıları Göm"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Küçük Resimleri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+msgid "Executable"
+msgstr "Çalıştırılabilir"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "FFmpeg İş Parçacıkları"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+msgid "Argument"
+msgstr "Argüman"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Bu adla bir argüman zaten var"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr "Sürüm {0}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+msgid "Start"
+msgstr "Başlat"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "İndirme Ekle"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "Anahtarlık"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "Yardım"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub Deposu"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "Hata Raporla"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "Tartışmalar"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "Geçmiş"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "Hata"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, fuzzy, c++-format
+msgid "System keyring error: {}"
+msgstr "{0} saat uyku"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Kimlik Bilgileri Yok"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Bu argümanı silmek istediğinizden emin misiniz?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Medya web siteleri için kimlik bilgilerinizi oluşturun, kaydedin ve yönetin."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "Ekle"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "Düzenle"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "Parabolic Hakkında"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "Ev"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "İndirilenler"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+msgid "Updates"
+msgstr "Güncellemeler"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "{0} Hakkında"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+msgid "Cookies File"
+msgstr "Çerez Dosyası"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "TXT Dosyaları (*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "Yeni Argüman"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Genel"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Keşfet"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "İndirilenler"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Son işlem"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "Kullanıcı Arayüzü"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "Tema"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "Açık"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Koyu"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "Sistem"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+msgid "Translation Language"
+msgstr "Çeviri Dili"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Sistem"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+msgid "Automatically Check for Updates"
+msgstr "Güncellemeleri Kendiliğinden Denetle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Ön İzleme Güncellemelerini Al"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "yt-dlp gibi bağımlılıkları beta sürümlerine güncelle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "İndirme Geçmişi Uzunluğu"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "Asla"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+msgid "1 Day"
+msgstr "1 Gün"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+msgid "1 Week"
+msgstr "1 Hafta"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+msgid "1 Month"
+msgstr "1 Ay"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+msgid "3 Months"
+msgstr "3 Ay"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+msgid "6 Months"
+msgstr "6 Ay"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr "1 Yıl"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "Sürekli"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "İşleniyor"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+msgid "Include Media Id in Title"
+msgstr "Ortam Kimliğini Başlığına Ekle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "Ortamın kimliğini öntanımlı başlığına ekle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "Dosya Adı Karakterlerini Sınırla"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Dosya adlarındaki karakterleri yalnızca Windows tarafından desteklenenlerle "
+"sınırla"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "Süper Çözünürlük Formatlarını Ekle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Kendiliğinden Oluşturulan Alt Yazıları Dahil Et"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "Tercihler"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+"Ses biçimlerinin ayrıştırırken, indirilebilir olarak göstermek için bu kod "
+"çözücüyü yeğle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "Yeğlenen Ses Kodu Çözücü"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "Herhangi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "Yeğlenen Alt Yazı Biçimi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "Tercih Edilen Kare Hızı"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+msgid "Arguments"
+msgstr "Argümanlar"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Etkin İndirme Sayısının En Yüksek Değeri"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "Varolan Dosyaların Üzerine Yaz"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Bazı bölgelerde yt-dlpʼnin yerel indiricisine göre daha hızlı olabilen "
+"alternatif indirici"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "aria2c kullan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Sunucu Başına En Çok Bağlantı"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+msgid "Minimum Split Size (MiB)"
+msgstr "En Düşük Bölme Boyutu (MiB)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "Use Part Files"
+msgstr "Parça Dosyalarını Kullan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Ortam dosyalarını doğrudan çıktı dosyasına değil, ayrı .part dosyalarına "
+"indir"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "YouTube için SponsorBlock kullan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Videolardan sponsorlu bölümleri kaldırmaya çalış"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "Hız Sınırı"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "İndirme Hızını Sınırla"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "Hız Sınırı (KiB/s)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "Proxy URLʼsi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "Çerez Dosyası"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "Tarayıcıdan Çerezler"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+msgid "File"
+msgstr "Dosya"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "Tarayıcıdan Çerezler"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+msgid "Clear"
+msgstr "Temizle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "Üst Verileri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "Kaynak Verileri Kaldır"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "İndirme bilgilerini içeren üst veri alanlarını temizle"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Küçük Resimleri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "Küçük Resimleri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Dosya türü gömme özelliğini desteklemiyorsa, küçük resim ayrı görüntü "
+"dosyasına yazılır"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "Ses Küçük Resimlerini Kırp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Ses dosyalarının küçük resimlerini kare şeklinde kırp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "Bölümleri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "Bölümleri Göm"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Subtitles"
+msgstr "Alt Yazılar"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "Alt Yazıları Göm"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Devre dışı bırakılırsa ya da gömme desteklenmiyorsa, indirilen alt yazılar "
+"ayrı dosyalara kaydedilir"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "FFmpeg İş Parçacıkları"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "ffmpeg tarafından kullanılan iş parçacığı sayısını sınırla"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "İndirilenler"
-
-#~ msgid "Keyring"
-#~ msgstr "Anahtarlık"
+#~ msgid "Unable to add the credential."
+#~ msgstr "Kimlik Bilgilerini Sil"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "Geçmiş"
+#~ msgid "Unable to read the credential."
+#~ msgstr "Kimlik Bilgilerini Sil"
 
-#~ msgid "File"
-#~ msgstr "Dosya"
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "Anahtarlık devre dışı bırakılamadı."
+
+#, fuzzy
+#~ msgid "Unable to remove the credential."
+#~ msgstr "Anahtarlık sıfırlanamadı."
+
+#~ msgid "Credentials"
+#~ msgstr "Kimlik Bilgileri"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "Parça Dosyalarını Kullan"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "Tarayıcıdan Çerezler"
+
+#~ msgid "Download Media"
+#~ msgstr "Ortam İndirici"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr ""
+#~ "İndirmeye başlamak için video, ses ya da oynatma listesi URLʼsi ekleyin"
 
 #~ msgid "Exit"
 #~ msgstr "Çık"
 
-#~ msgid "Edit"
-#~ msgstr "Düzenle"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "Ayarlar"
-
 #~ msgid "View"
 #~ msgstr "Görünüm"
-
-#~ msgid "Theme"
-#~ msgstr "Tema"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Açık"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Koyu"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#~ msgid "Help"
-#~ msgstr "Yardım"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "Güncellemeleri Denetle"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "Hata Raporla"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub Deposu"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "Tartışmalar"
-
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "Yasal Telif Hakkı Feragatnamesi"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "YouTube ve diğer sitelerdeki videolar DMCA korumasına tabi olabilir. "
-#~ "Parabolic yazarları, bu uygulamanın yasaları ihlal edecek şekilde "
-#~ "kullanılmasını onaylamaz ve yasa dışı kullanımdan sorumlu değildir."
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Bu iletiyi tekrar gösterme"
-
-#~ msgid "I understand"
-#~ msgstr "Anladım"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Genel"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Keşfet"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "İndirilenler"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Son işlem"
-
-#~ msgid "Add"
-#~ msgstr "Ekle"
-
-#~ msgid "Argument"
-#~ msgstr "Argüman"
-
-#~ msgid "User Interface"
-#~ msgstr "Kullanıcı Arayüzü"
-
-#~ msgid "Translation Language"
-#~ msgstr "Çeviri Dili"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Sistem"
-
-#~ msgid "Updates"
-#~ msgstr "Güncellemeler"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Güncellemeleri Kendiliğinden Denetle"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Ön İzleme Güncellemelerini Al"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "yt-dlp gibi bağımlılıkları beta sürümlerine güncelle"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "İndirme Geçmişi Uzunluğu"
-
-#~ msgid "Never"
-#~ msgstr "Asla"
-
-#~ msgid "1 Day"
-#~ msgstr "1 Gün"
-
-#~ msgid "1 Week"
-#~ msgstr "1 Hafta"
-
-#~ msgid "1 Month"
-#~ msgstr "1 Ay"
-
-#~ msgid "3 Months"
-#~ msgstr "3 Ay"
-
-#~ msgid "6 Months"
-#~ msgstr "6 Ay"
-
-#~ msgid "1 Year"
-#~ msgstr "1 Yıl"
-
-#~ msgid "Forever"
-#~ msgstr "Sürekli"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "İşleniyor"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Etkin İndirme Sayısının En Yüksek Değeri"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Varolan Dosyaların Üzerine Yaz"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Bazı bölgelerde yt-dlpʼnin yerel indiricisine göre daha hızlı olabilen "
-#~ "alternatif indirici"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "aria2c kullan"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Sunucu Başına En Çok Bağlantı"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "En Düşük Bölme Boyutu (MiB)"
-
-#~ msgid "Arguments"
-#~ msgstr "Argümanlar"
-
-#, fuzzy
-#~ msgid ""
-#~ "These arguments will be appended to yt-dlp during the download phase."
-#~ msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Ortam Kimliğini Başlığına Ekle"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "Ortamın kimliğini öntanımlı başlığına ekle"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Dosya Adı Karakterlerini Sınırla"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Dosya adlarındaki karakterleri yalnızca Windows tarafından "
-#~ "desteklenenlerle sınırla"
-
-#, fuzzy
-#~ msgid "Show Super Resolution Formats"
-#~ msgstr "Süper Çözünürlük Formatlarını Ekle"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Kendiliğinden Oluşturulan Alt Yazıları Dahil Et"
-
-#~ msgid "Preferences"
-#~ msgstr "Tercihler"
-
-#, fuzzy
-#~ msgid "Prefer these codecs and options when showing formats for download."
-#~ msgstr ""
-#~ "Ses biçimlerinin ayrıştırırken, indirilebilir olarak göstermek için bu "
-#~ "kod çözücüyü yeğle"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "Yeğlenen Ses Kodu Çözücü"
-
-#~ msgid "Any"
-#~ msgstr "Herhangi"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "H.265"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "Yeğlenen Alt Yazı Biçimi"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "Tercih Edilen Kare Hızı"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Parça Dosyalarını Kullan"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Ortam dosyalarını doğrudan çıktı dosyasına değil, ayrı .part dosyalarına "
-#~ "indir"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "YouTube için SponsorBlock kullan"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Videolardan sponsorlu bölümleri kaldırmaya çalış"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "Hız Sınırı"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "İndirme Hızını Sınırla"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Hız Sınırı (KiB/s)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "Proxy URLʼsi"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "Çerez Dosyası"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "Tarayıcıdan Çerezler"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Çerez Dosyası"
-
-#~ msgid "Clear"
-#~ msgstr "Temizle"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Üst Verileri Göm"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Üst Verileri Göm"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Kaynak Verileri Kaldır"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "İndirme bilgilerini içeren üst veri alanlarını temizle"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "Küçük Resimleri Göm"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Küçük Resimleri Göm"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Dosya türü gömme özelliğini desteklemiyorsa, küçük resim ayrı görüntü "
-#~ "dosyasına yazılır"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Ses Küçük Resimlerini Kırp"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Ses dosyalarının küçük resimlerini kare şeklinde kırp"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "Bölümleri Göm"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Bölümleri Göm"
-
-#~ msgid "Subtitles"
-#~ msgstr "Alt Yazılar"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Alt Yazıları Göm"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Devre dışı bırakılırsa ya da gömme desteklenmiyorsa, indirilen alt "
-#~ "yazılar ayrı dosyalara kaydedilir"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "FFmpeg İş Parçacıkları"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "FFmpeg İş Parçacıkları"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "ffmpeg tarafından kullanılan iş parçacığı sayısını sınırla"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr "İndirme Ekle iletişim kutusunda seçim için argümanlar gösterilir"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Bölümleri Göm"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Videoyu Bölümlere Ayır"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Video (Standart)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Alt Yazıları Göm"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Küçük Resimleri Göm"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Tube Converter"
-
-#~ msgid "Name"
-#~ msgstr "Ad"
-
-#~ msgid "Post Processor"
-#~ msgstr "Son İşleme"
-
-#~ msgid "Executable"
-#~ msgstr "Çalıştırılabilir"
 
 #, fuzzy
 #~ msgid "Search"
@@ -608,16 +1124,9 @@ msgstr ""
 #~ msgid "Extra yt-dlp Discovery Arguments"
 #~ msgstr "Son İşlemci Argümanları"
 
-#~ msgid "Advanced"
-#~ msgstr "Gelişmiş"
-
 #, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "Argüman Yok"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Bu adla bir argüman zaten var"
 
 #~ msgid "Args"
 #~ msgstr "Args"
@@ -626,9 +1135,6 @@ msgstr ""
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr ""
 #~ "Değişikliğin etkili olması için uygulamanın yeniden başlatılması gerekir"
-
-#~ msgid "About Parabolic"
-#~ msgstr "Parabolic Hakkında"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -706,15 +1212,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Kimlik Doğrulama Kullan"
 
-#~ msgid "Credential"
-#~ msgstr "Kimlik Bilgileri"
-
-#~ msgid "Username"
-#~ msgstr "Kullanıcı adı"
-
-#~ msgid "Password"
-#~ msgstr "Parola"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Hemen Video olarak İndir"
 
@@ -778,9 +1275,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Tüm Seçimi Kaldır"
-
-#~ msgid "Options"
-#~ msgstr "Seçenekler"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Bölümlere Göre Dosyalara Böl"
@@ -871,9 +1365,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "Tümünü Temizle"
-
-#~ msgid "Credentials"
-#~ msgstr "Kimlik Bilgileri"
 
 #~ msgid "Loading"
 #~ msgstr "Yükleniyor"
@@ -971,9 +1462,6 @@ msgstr ""
 #~ msgid "Converter"
 #~ msgstr "Dönüştürücü"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "Son İşleme Argümanları"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Son İşlem Argümanı Ekle"
 
@@ -1002,9 +1490,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Bilinmeyen"
 
-#~ msgid "Error"
-#~ msgstr "Hata"
-
 #~ msgid "Success"
 #~ msgstr "Başarılı"
 
@@ -1015,18 +1500,11 @@ msgstr ""
 #~ msgstr "Sürdür"
 
 #, csharp-format
-#~ msgid "Sleeping for {0}"
-#~ msgstr "{0} saat uyku"
-
-#, csharp-format
 #~ msgid "{0}% Complete • {1} • {2} Remaining"
 #~ msgstr "%{0} Tamamlandı • {1} / {2} Kalan"
 
 #~ msgid "Stopped"
 #~ msgstr "Durduruldu"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "TXT Dosyaları (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "Alt Yazı Yok"
@@ -1057,9 +1535,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Geçmiş Yok"
-
-#~ msgid "No Credentials"
-#~ msgstr "Kimlik Bilgileri Yok"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Kimlik Bilgileri Silinsin mi?"
@@ -1165,9 +1640,6 @@ msgstr ""
 
 #~ msgid "Use manual credential"
 #~ msgstr "El ile kimlik bilgisi kullan"
-
-#~ msgid "A credential with that name already exists"
-#~ msgstr "Bu adla bir kimlik bilgisi zaten var"
 
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "Kimlik bilgilerinin adı boş olamaz"
@@ -1302,10 +1774,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "{0:0.00} B"
 #~ msgstr "{0:0.00} B"
-
-#, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "{0} Hakkında"
 
 #~ msgid "Changelog"
 #~ msgstr "Değişiklik günlüğü"
@@ -1480,10 +1948,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "A credential is required to continue the download of \"{0}\"."
 #~ msgstr "\"{0}\" indirilmesini sürdürmek için kimlik bilgileri gerekli."
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "Parola"
 
 #~ msgid "Updating"
 #~ msgstr "Güncelleniyor"
@@ -1748,9 +2212,6 @@ msgstr ""
 #~ msgid "Update completed successfully"
 #~ msgstr "Güncelleme tamamlandı"
 
-#~ msgid "Are you sure you want to delete this argument?"
-#~ msgstr "Bu argümanı silmek istediğinizden emin misiniz?"
-
 #~ msgid "Args (Empty)"
 #~ msgstr "Args (Boş)"
 
@@ -1784,20 +2245,11 @@ msgstr ""
 #~ msgid "The credential name cannot be empty."
 #~ msgstr "Kimlik bilgileri adı boş olamaz."
 
-#~ msgid "The provided url is invalid."
-#~ msgstr "Sağlanan url geçersiz."
-
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "Kimlik bilgisini anahtarlığa eklerken bilinmeyen hata oluştu."
 
 #~ msgid "Edit Credential"
 #~ msgstr "Kimlik Bilgilerini Düzenle"
-
-#~ msgid "Delete Credential"
-#~ msgstr "Kimlik Bilgilerini Sil"
-
-#~ msgid "Start"
-#~ msgstr "Başlat"
 
 #~ msgid "Documentation"
 #~ msgstr "Belgelendirme"
@@ -1815,17 +2267,11 @@ msgstr ""
 #~ msgid "Check for pre-release (beta) versions of {}"
 #~ msgstr "{} ön sürümlerini (beta sürümlerini) denetle"
 
-#~ msgid "Version {}"
-#~ msgstr "Sürüm {0}"
-
 #~ msgid "The installer will start once the download is complete"
 #~ msgstr "İndirme tamamlandığında kurucu başlayacak"
 
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Hata ayıklama bilgileri panoya kopyalandı"
-
-#~ msgid "New Argument"
-#~ msgstr "Yeni Argüman"
 
 #, fuzzy
 #~ msgid ""
@@ -1877,12 +2323,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Ortam İndirici"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Medya web siteleri için kimlik bilgilerinizi oluşturun, kaydedin ve "
-#~ "yönetin."
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2278,12 +2718,6 @@ msgstr ""
 #~ "Bu, tüm şifreleri kaldırarak önceki anahtarlığı silecektir. Bu işlem geri "
 #~ "alınamaz."
 
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Anahtarlık devre dışı bırakılamadı."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Anahtarlık sıfırlanamadı."
-
 #~ msgid "Undo Title Editing"
 #~ msgstr "Başlık Düzenlemesini Geri Al"
 
@@ -2388,12 +2822,6 @@ msgstr ""
 
 #~ msgid "Remove data about media source"
 #~ msgstr "Ortam kaynağı hakkındaki verileri kaldır"
-
-#~ msgid "Set Password"
-#~ msgstr "Parola Ayarla"
-
-#~ msgid "New Password"
-#~ msgstr "Yeni Parola"
 
 #~ msgid "Confirm Password"
 #~ msgstr "Parolayı Onayla"

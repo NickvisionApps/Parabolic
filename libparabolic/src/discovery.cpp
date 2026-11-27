@@ -10,7 +10,6 @@
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
-#include <sago/platform_folders.h>
 #include <stop_token>
 #include <string>
 #include <unordered_map>
@@ -19,9 +18,7 @@
 #include "audio.h"
 #include "batch.h"
 #include "cookies.h"
-#include "deno.h"
 #include "extractor.h"
-#include "ffmpeg.h"
 #include "file.h"
 #include "keyring.h"
 #include "string_manip.h"
@@ -40,8 +37,7 @@ namespace
 
     bool is_preferred(const parabolic::file::Format& format, parabolic::video::FrameRate preferred)
     {
-        return !format.frame_rate() || preferred == parabolic::video::FrameRate::Any ||
-               *format.frame_rate() == preferred;
+        return !format.frame_rate() || preferred == parabolic::video::FrameRate::Any || *format.frame_rate() == preferred;
     }
 
     bool is_preferred(const parabolic::file::Format& format, parabolic::video::Codec preferred)
@@ -142,7 +138,9 @@ namespace parabolic::discovery
         m_ytdlp_arguments = value;
     }
 
-    Entry::Entry(const nlohmann::json& json, const Options& options, std::filesystem::path suggested_save_folder,
+    Entry::Entry(const nlohmann::json& json,
+                 const Options& options,
+                 std::filesystem::path suggested_save_folder,
                  std::string suggested_filename)
         : m_title{ std::move(suggested_filename) },
           m_suggested_save_folder{ std::move(suggested_save_folder) }
@@ -163,8 +161,8 @@ namespace parabolic::discovery
         }
         if (m_playlist_index != -1)
         {
-            if (!url_value.empty() && url::is_valid(url_value) && !url_value.contains(".m3u8") &&
-                !url_value.contains(".mpd") && !url_value.contains(".f4m") && !url_value.contains(".ism"))
+            if (!url_value.empty() && url::is_valid(url_value) && !url_value.contains(".m3u8") && !url_value.contains(".mpd") &&
+                !url_value.contains(".f4m") && !url_value.contains(".ism"))
             {
                 m_url = url_value;
             }
@@ -367,29 +365,21 @@ namespace parabolic::discovery
         if (has_video_formats && has_audio_formats)
         {
             m_kind = file::Kind::Video;
-            built_in_formats = {
-                file::Format::none_audio(),  file::Format::none_video(), file::Format::best_video(),
-                file::Format::worst_video(), file::Format::best_audio(), file::Format::worst_audio(),
-            };
+            built_in_formats = { file::Format::none_audio(),  file::Format::none_video(), file::Format::best_video(),
+                                 file::Format::worst_video(), file::Format::best_audio(), file::Format::worst_audio() };
         }
         else if (has_audio_formats)
         {
             m_kind = file::Kind::Audio;
             built_in_formats = {
-                file::Format::none_audio(),
-                file::Format::none_video(),
-                file::Format::best_audio(),
-                file::Format::worst_audio(),
+                file::Format::none_audio(), file::Format::none_video(), file::Format::best_audio(), file::Format::worst_audio()
             };
         }
         else
         {
             m_kind = file::Kind::Video;
             built_in_formats = {
-                file::Format::none_audio(),
-                file::Format::none_video(),
-                file::Format::best_video(),
-                file::Format::worst_video(),
+                file::Format::none_audio(), file::Format::none_video(), file::Format::best_video(), file::Format::worst_video()
             };
         }
         m_formats.append_range(built_in_formats);
@@ -468,8 +458,11 @@ namespace parabolic::discovery
         m_id = next_id++;
     }
 
-    Result::Result(const nlohmann::json& json, const Options& options, std::string url,
-                   std::filesystem::path suggested_save_folder, std::string suggested_filename)
+    Result::Result(const nlohmann::json& json,
+                   const Options& options,
+                   std::string url,
+                   std::filesystem::path suggested_save_folder,
+                   std::string suggested_filename)
         : Result{ std::move(url), std::move(suggested_filename) }
     {
         m_has_suggested_save_folder = !suggested_save_folder.empty();
@@ -629,7 +622,7 @@ namespace parabolic::discovery
                 return std::unexpected{ "Operation cancelled." };
             }
             std::expected<Result, std::string> result{
-                discover(item.url(), item.suggested_save_folder(), item.suggested_filename(), credential, stop_token),
+                discover(item.url(), item.suggested_save_folder(), item.suggested_filename(), credential, stop_token)
             };
             if (!result)
             {
@@ -662,67 +655,37 @@ namespace parabolic::discovery
                                                          const std::optional<keyring::Credential>& credential,
                                                          const std::stop_token& stop_token) const
     {
-        std::vector<std::string> args{
-            url,
-            "--ignore-config",
-            "--dump-single-json",
-            "--skip-download",
-            "--ignore-errors",
-            "--no-warnings",
-            "--ffmpeg-location",
-            parabolic::ffmpeg::executable_path(),
-            "--js-runtimes",
-            std::format("deno:{}", parabolic::deno::executable_path()),
-            "--paths",
-            std::format("temp:{}", sago::getCacheDir()),
-        };
-        std::string plugins{ parabolic::ytdlp::plugins_path() };
-        if (std::filesystem::exists(plugins))
-        {
-            args.emplace_back("--plugin-dir");
-            args.push_back(plugins);
-        }
+        ytdlp::Options options{ url, {}, stop_token };
+        options.add_argument("--dump-single-json");
+        options.add_argument("--skip-download");
+        options.add_argument("--ignore-errors");
+        options.add_credential(credential);
         if (m_discovery_options.limit_characters())
         {
-            args.emplace_back("--windows-filenames");
+            options.add_argument("--windows-filenames");
         }
         if (!m_extractor_options.proxy_url().empty())
         {
-            args.emplace_back("--proxy");
-            args.push_back(m_extractor_options.proxy_url());
-        }
-        if (credential)
-        {
-            if (!credential->username().empty() && !credential->password().empty())
-            {
-                args.emplace_back("--username");
-                args.push_back(credential->username());
-                args.emplace_back("--password");
-                args.push_back(credential->password());
-            }
-            else if (!credential->password().empty())
-            {
-                args.emplace_back("--video-password");
-                args.push_back(credential->password());
-            }
+            options.add_argument("--proxy");
+            options.add_argument(m_extractor_options.proxy_url());
         }
         if (m_extractor_options.cookies_browser() != cookies::Browser::None)
         {
-            args.emplace_back("--cookies-from-browser");
-            args.push_back(cookies::to_argument_str(m_extractor_options.cookies_browser()));
+            options.add_argument("--cookies-from-browser");
+            options.add_argument(cookies::to_argument_str(m_extractor_options.cookies_browser()));
         }
         else if (std::filesystem::exists(m_extractor_options.cookies_path()))
         {
-            args.emplace_back("--cookies");
-            args.push_back(m_extractor_options.cookies_path());
+            options.add_argument("--cookies");
+            options.add_argument(m_extractor_options.cookies_path());
         }
-        args.append_range(string_manip::command_line_split(m_discovery_options.ytdlp_arguments()));
-        std::expected<std::string, std::string> result{ ytdlp::execute(args, {}, stop_token) };
+        options.add_arguments(string_manip::command_line_split(m_discovery_options.ytdlp_arguments()));
+        std::expected<std::string, std::string> result{ ytdlp::execute(options) };
         if (!result)
         {
             return std::unexpected{ result.error() };
         }
-        std::string output{ string_manip::trim(std::move(result.value())) };
+        std::string output{ string_manip::trim(std::move(*result)) };
         if (!output.starts_with('{'))
         {
             return std::unexpected{ "yt-dlp did not return a valid JSON." };
@@ -738,13 +701,13 @@ namespace parabolic::discovery
             for (const nlohmann::json& entry : json["entries"])
             {
                 if (entry.is_object() && entry.contains("ie_key") && entry["ie_key"].is_string() &&
-                    entry.at("ie_key").get<std::string>() == "YoutubeTab" && entry.contains("url") &&
-                    entry["url"].is_string())
+                    entry.at("ie_key").get<std::string>() == "YoutubeTab" && entry.contains("url") && entry["url"].is_string())
                 {
-                    std::expected<Result, std::string> tab{
-                        discover(entry.at("url").get<std::string>(), suggested_save_folder, suggested_filename,
-                                 credential, stop_token),
-                    };
+                    std::expected<Result, std::string> tab{ discover(entry.at("url").get<std::string>(),
+                                                                     suggested_save_folder,
+                                                                     suggested_filename,
+                                                                     credential,
+                                                                     stop_token) };
                     if (!tab)
                     {
                         return std::unexpected{ tab.error() };
@@ -870,16 +833,14 @@ namespace parabolic::discovery
 
     void to_json(nlohmann::json& json, const Options& options)
     {
-        json = nlohmann::json{
-            { "includeAutoGeneratedSubtitles", options.include_auto_generated_subtitles() },
-            { "includeMediaIdInTitle", options.include_media_id_in_title() },
-            { "includeSuperResolutions", options.include_super_resolutions() },
-            { "limitCharacters", options.limit_characters() },
-            { "preferredAudioCodec", static_cast<int>(options.preferred_audio_codec()) },
-            { "preferredFrameRate", static_cast<int>(options.preferred_frame_rate()) },
-            { "preferredSubtitleFormat", static_cast<int>(options.preferred_subtitle_format()) },
-            { "preferredVideoCodec", static_cast<int>(options.preferred_video_codec()) },
-            { "ytdlpDiscoveryArgs", options.ytdlp_arguments() },
-        };
+        json = nlohmann::json{ { "includeAutoGeneratedSubtitles", options.include_auto_generated_subtitles() },
+                               { "includeMediaIdInTitle", options.include_media_id_in_title() },
+                               { "includeSuperResolutions", options.include_super_resolutions() },
+                               { "limitCharacters", options.limit_characters() },
+                               { "preferredAudioCodec", static_cast<int>(options.preferred_audio_codec()) },
+                               { "preferredFrameRate", static_cast<int>(options.preferred_frame_rate()) },
+                               { "preferredSubtitleFormat", static_cast<int>(options.preferred_subtitle_format()) },
+                               { "preferredVideoCodec", static_cast<int>(options.preferred_video_codec()) },
+                               { "ytdlpDiscoveryArgs", options.ytdlp_arguments() } };
     }
 }

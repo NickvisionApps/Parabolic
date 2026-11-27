@@ -151,18 +151,14 @@ namespace parabolic::extractor
 
     void to_json(nlohmann::json& json, const Options& options)
     {
-        json = nlohmann::json{
-            { "cookiesBrowser", static_cast<int>(options.cookies_browser()) },
-            { "cookiesPath", options.cookies_path() },
-            { "proxyUrl", options.proxy_url() },
-            {
-                    "speedLimit",
-                    options.speed_limit().has_value() ? nlohmann::json(options.speed_limit().value())
-                                                      : nlohmann::json(nullptr),
-            },
-            { "translateMetadataAndChapters", options.translate_metadata_and_chapters() },
-            { "usePartFiles", options.use_part_files() },
-            { "youTubeSponsorBlock", options.youtube_sponsor_block() },
-        };
+        json = nlohmann::json{ { "cookiesBrowser", static_cast<int>(options.cookies_browser()) },
+                               { "cookiesPath", options.cookies_path() },
+                               { "proxyUrl", options.proxy_url() },
+                               { "speedLimit",
+                                 options.speed_limit().has_value() ? nlohmann::json(options.speed_limit().value())
+                                                                   : nlohmann::json(nullptr) },
+                               { "translateMetadataAndChapters", options.translate_metadata_and_chapters() },
+                               { "usePartFiles", options.use_part_files() },
+                               { "youTubeSponsorBlock", options.youtube_sponsor_block() } };
     }
 }

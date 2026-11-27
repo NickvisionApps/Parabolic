@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-05-03 08:09+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,6 +59,9 @@ msgid "Worst"
 msgstr "הנמוכה ביותר"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "ללא"
 
@@ -73,509 +76,1004 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "אודות Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "הורדת מדיה"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "אל תציג הודעה זו שוב"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "הוסף כתובת של וידאו, שמע או רשימת השמעה כדי להתחיל להוריד"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
+msgstr "הבהרה משפטית בנושא זכויות יוצרים"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "בית"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+"סרטונים ב-YouTube ובאתרים אחרים עשויים להיות מוגנים בזכויות יוצרים. יוצרי "
+"Parabolic אינם מעודדים ואינם אחראים לשימוש ביישום זה לצורך הפרת חוקים אלו."
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr "הבנתי"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "הגדרת ססמה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "ססמה חדשה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "פרטי גישה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "שם"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "כתובת אתר"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "אפשרויות"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "שם משתמש"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "סיסמה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "כבר קיימים פרטי התחברות בשם זה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "הכתובת שסופקה אינה תקינה."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "סיסמה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "פרמטרים לעיבוד סופי"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+msgid "Post Processor"
+msgstr "מעבד סופי"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "הטמעת פרקים"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "פיצול סרט לפי פרקים"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "וידאו (כללי)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "ממיר"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "הטמעת מטא-דאטה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "הטמעת כתוביות"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "הטמעת תמונות ממוזערות"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "כתוביות"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "ממיר"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+msgid "Executable"
+msgstr "קובץ הרצה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "תהליכי FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+msgid "Argument"
+msgstr "פרמטר"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "כבר קיים פרמטר בשם זה"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+#, fuzzy
+msgid "Start"
+msgstr "מתחיל"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "הוסף הורדה"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "מנהל אישורים"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "עזרה"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "מאגר GitHub"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "דיווח על באג"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "פורום דיונים"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "היסטוריה"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "שגיאה"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, fuzzy, c++-format
+msgid "System keyring error: {}"
+msgstr "ממתין למשך {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "אין פרטי התחברות"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "האם אכן ברצונך למחוק אישור זה?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "יצירה, שמירה וניהול האישורים שלך עבור אתרי מדיה."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "הוסף"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "עריכה"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "אודות Parabolic"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "בית"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "הורדות"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#, fuzzy
+msgid "Updates"
+msgstr "עדכון"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "אודות {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "הגדרות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+msgid "Cookies File"
+msgstr "קובץ קובצי Cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "קובצי טקסט (‎*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "פרטי זיהוי"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "כללי"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "טעינה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "הורדות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "בתהליך"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "ממשק משתמש"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "ערכת נושא"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "בהיר"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "כהה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "מערכת"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+msgid "Translation Language"
+msgstr "שפת תרגום"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "מערכת"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+msgid "Automatically Check for Updates"
+msgstr "בדיקת עדכונים אוטומטית"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "קבל עדכוני גרסאות beta"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "עדכן תלויות, כגון yt-dlp, לגרסאות בטא"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "זמן היסטוריית הורדות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "אף פעם"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+msgid "1 Day"
+msgstr "יום אחד"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+msgid "1 Week"
+msgstr "שבוע אחד"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+msgid "1 Month"
+msgstr "חודש אחד"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+msgid "3 Months"
+msgstr "3 חודשים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+msgid "6 Months"
+msgstr "6 חודשים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr "שנה אחת"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "לתמיד"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "מעבד"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+msgid "Include Media Id in Title"
+msgstr "הוספת מזהה וידאו לכותרת"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "הוספת הקידוד הייחודי של הסרטון לשם הקובץ"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "הגבל תווים בשם קובץ"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "הגבל את התווים בשמות הקבצים רק לתווים הנתמכים ב־Windows"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+#, fuzzy
+msgid "Show Super Resolution Formats"
+msgstr "לכלול תסדירי רזולוציות על"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "כלול כתוביות אוטומטיות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "העדפות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr "העדפת מפענח זה בעת פיענוח סוגי שמע כדי להציג את הזמינות להורדה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "מפענח שמע מועדף"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "כלשהו"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "ממיר"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "תסדיר כתוביות מועדף"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "קצב תמוניות מועדף"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} תמוניות לשנייה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} תמוניות לשנייה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} תמוניות לשנייה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+msgid "Advanced"
+msgstr "מתקדם"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+#, fuzzy
+msgid "Arguments"
+msgstr "פרטי זיהוי"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr "הפרמטרים יוצגו לבחירה בחלונית הוספת ההורדה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "מספר מרבי של הורדות במקביל"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "דרוס קבצים קיימים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr "מוריד חלופי שעשוי להיות מהיר יותר מהמוריד המובנה של yt-dlp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "שימוש ב־aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "חיבורים מקסימליים לשרת"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+msgid "Minimum Split Size (MiB)"
+msgstr "גודל פיצול מינימלי (ב-MiB)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr "הפרמטרים יוצגו לבחירה בחלונית הוספת ההורדה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "Use Part Files"
+msgstr "שימוש בקובצי חלקים (‎.part)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"להוריד את המדיה כקבצים חלקיים זמניים (‎.part) נפרדים במקום לכתוב ישירות לקובץ "
+"הפלט"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "להשתמש ב־SponsorBlock עבור YouTube"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "ניסיון להסרת קטעי פרסומות וחסויות מהסרטונים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr "תרגום נתוני על ומקטעים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr "לתרגם את נתוני העל והמקטעים אוטומטית לשפת היישומון באתרים ומדיה נתמכים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "הגבלת מהירות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "הגבלת מהירות ההורדה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "מגבלת מהירות (KiB/s)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "כתובת שרת Proxy"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "קובץ קובצי Cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "קובצי Cookie מהדפדפן"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+msgid "File"
+msgstr "קובץ"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "קובצי Cookie מהדפדפן"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+msgid "Clear"
+msgstr "נקה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "הטמעת מטא-דאטה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "הסרת נתוני מקור"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "ניקוי שדות מטא-דאטה המכילים מידע מזהה על מקור ההורדה"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "הטמעת תמונות ממוזערות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "הטמעת תמונות ממוזערות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr "אם סוג הקובץ לא תומך בהטמעה, התמונה תישמר כקובץ נפרד"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "חיתוך תמונות ממוזערות של שמע"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "חיתוך תמונות ממוזערות של קובצי שמע לריבוע"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "הטמעת פרקים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "הטמעת פרקים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+#, fuzzy
+msgid "Subtitles"
+msgstr "אין כתוביות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "הטמעת כתוביות"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr "אם האפשרות כבויה או לא נתמכת, הכתוביות יישמרו כקבצים נפרדים"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "תהליכי FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "הגבלת מספר התהליכים (threads) שבהם משתמש ffmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "הפרמטרים יוצגו לבחירה בחלונית הוספת ההורדה"
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "הורדות"
-
-#~ msgid "Keyring"
-#~ msgstr "מנהל אישורים"
+#~ msgid "Unable to add the credential."
+#~ msgstr "למחוק אישורים?"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "היסטוריה"
+#~ msgid "Unable to read the credential."
+#~ msgstr "למחוק אישורים?"
 
-#~ msgid "File"
-#~ msgstr "קובץ"
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "לא ניתן למחוק את קבוצת המפתחות."
+
+#, fuzzy
+#~ msgid "Unable to remove the credential."
+#~ msgstr "לא ניתן לאפס את קבוצת המפתחות."
+
+#~ msgid "Credentials"
+#~ msgstr "פרטי גישה"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "שימוש בקובצי חלקים (‎.part)"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "קובצי Cookie מהדפדפן"
+
+#~ msgid "Download Media"
+#~ msgstr "הורדת מדיה"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr "הוסף כתובת של וידאו, שמע או רשימת השמעה כדי להתחיל להוריד"
 
 #~ msgid "Exit"
 #~ msgstr "יציאה"
 
-#~ msgid "Edit"
-#~ msgstr "עריכה"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "הגדרות"
-
 #~ msgid "View"
 #~ msgstr "תצוגה"
-
-#~ msgid "Theme"
-#~ msgstr "ערכת נושא"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "בהיר"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "כהה"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "מערכת"
-
-#~ msgid "Help"
-#~ msgstr "עזרה"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "בדוק עדכונים"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "דיווח על באג"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "מאגר GitHub"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "פורום דיונים"
-
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "הבהרה משפטית בנושא זכויות יוצרים"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "סרטונים ב-YouTube ובאתרים אחרים עשויים להיות מוגנים בזכויות יוצרים. יוצרי "
-#~ "Parabolic אינם מעודדים ואינם אחראים לשימוש ביישום זה לצורך הפרת חוקים אלו."
-
-#~ msgid "Don't show this message again"
-#~ msgstr "אל תציג הודעה זו שוב"
-
-#~ msgid "I understand"
-#~ msgstr "הבנתי"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "כללי"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "טעינה"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "הורדות"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "בתהליך"
-
-#~ msgid "Add"
-#~ msgstr "הוסף"
-
-#~ msgid "Argument"
-#~ msgstr "פרמטר"
-
-#~ msgid "User Interface"
-#~ msgstr "ממשק משתמש"
-
-#~ msgid "Translation Language"
-#~ msgstr "שפת תרגום"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "מערכת"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "עדכון"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "בדיקת עדכונים אוטומטית"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "קבל עדכוני גרסאות beta"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "עדכן תלויות, כגון yt-dlp, לגרסאות בטא"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "זמן היסטוריית הורדות"
-
-#~ msgid "Never"
-#~ msgstr "אף פעם"
-
-#~ msgid "1 Day"
-#~ msgstr "יום אחד"
-
-#~ msgid "1 Week"
-#~ msgstr "שבוע אחד"
-
-#~ msgid "1 Month"
-#~ msgstr "חודש אחד"
-
-#~ msgid "3 Months"
-#~ msgstr "3 חודשים"
-
-#~ msgid "6 Months"
-#~ msgstr "6 חודשים"
-
-#~ msgid "1 Year"
-#~ msgstr "שנה אחת"
-
-#~ msgid "Forever"
-#~ msgstr "לתמיד"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "מעבד"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "מספר מרבי של הורדות במקביל"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "דרוס קבצים קיימים"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr "מוריד חלופי שעשוי להיות מהיר יותר מהמוריד המובנה של yt-dlp"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "שימוש ב־aria2c"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "חיבורים מקסימליים לשרת"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "גודל פיצול מינימלי (ב-MiB)"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "פרטי זיהוי"
-
-#, fuzzy
-#~ msgid ""
-#~ "These arguments will be appended to yt-dlp during the download phase."
-#~ msgstr "הפרמטרים יוצגו לבחירה בחלונית הוספת ההורדה"
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "הוספת מזהה וידאו לכותרת"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "הוספת הקידוד הייחודי של הסרטון לשם הקובץ"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "הגבל תווים בשם קובץ"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr "הגבל את התווים בשמות הקבצים רק לתווים הנתמכים ב־Windows"
-
-#, fuzzy
-#~ msgid "Show Super Resolution Formats"
-#~ msgstr "לכלול תסדירי רזולוציות על"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "כלול כתוביות אוטומטיות"
-
-#~ msgid "Preferences"
-#~ msgstr "העדפות"
-
-#, fuzzy
-#~ msgid "Prefer these codecs and options when showing formats for download."
-#~ msgstr "העדפת מפענח זה בעת פיענוח סוגי שמע כדי להציג את הזמינות להורדה"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "מפענח שמע מועדף"
-
-#~ msgid "Any"
-#~ msgstr "כלשהו"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "ממיר"
-
-#, fuzzy
-#~ msgid "H.265"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "תסדיר כתוביות מועדף"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "קצב תמוניות מועדף"
-
-#, fuzzy
-#~ msgid "24 FPS"
-#~ msgstr "{0} תמוניות לשנייה"
-
-#, fuzzy
-#~ msgid "30 FPS"
-#~ msgstr "{0} תמוניות לשנייה"
-
-#, fuzzy
-#~ msgid "60 FPS"
-#~ msgstr "{0} תמוניות לשנייה"
-
-#~ msgid "Use Part Files"
-#~ msgstr "שימוש בקובצי חלקים (‎.part)"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "להוריד את המדיה כקבצים חלקיים זמניים (‎.part) נפרדים במקום לכתוב ישירות "
-#~ "לקובץ הפלט"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "להשתמש ב־SponsorBlock עבור YouTube"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "ניסיון להסרת קטעי פרסומות וחסויות מהסרטונים"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "תרגום נתוני על ומקטעים"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters using the app's "
-#~ "set language on supported sites and media."
-#~ msgstr ""
-#~ "לתרגם את נתוני העל והמקטעים אוטומטית לשפת היישומון באתרים ומדיה נתמכים"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "הגבלת מהירות"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "הגבלת מהירות ההורדה"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "מגבלת מהירות (KiB/s)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "כתובת שרת Proxy"
-
-#~ msgid "URL"
-#~ msgstr "כתובת אתר"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "קובץ קובצי Cookie"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "קובצי Cookie מהדפדפן"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "קובץ קובצי Cookie"
-
-#~ msgid "Clear"
-#~ msgstr "נקה"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "הטמעת מטא-דאטה"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "הטמעת מטא-דאטה"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "הסרת נתוני מקור"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "ניקוי שדות מטא-דאטה המכילים מידע מזהה על מקור ההורדה"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "הטמעת תמונות ממוזערות"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "הטמעת תמונות ממוזערות"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr "אם סוג הקובץ לא תומך בהטמעה, התמונה תישמר כקובץ נפרד"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "חיתוך תמונות ממוזערות של שמע"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "חיתוך תמונות ממוזערות של קובצי שמע לריבוע"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "הטמעת פרקים"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "הטמעת פרקים"
-
-#, fuzzy
-#~ msgid "Subtitles"
-#~ msgstr "אין כתוביות"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "הטמעת כתוביות"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr "אם האפשרות כבויה או לא נתמכת, הכתוביות יישמרו כקבצים נפרדים"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "תהליכי FFmpeg"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "תהליכי FFmpeg"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "הגבלת מספר התהליכים (threads) שבהם משתמש ffmpeg"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr "הפרמטרים יוצגו לבחירה בחלונית הוספת ההורדה"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "הטמעת פרקים"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "פיצול סרט לפי פרקים"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "וידאו (כללי)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "ממיר"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "הטמעת כתוביות"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "הטמעת תמונות ממוזערות"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "כתוביות"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "ממיר"
-
-#~ msgid "Name"
-#~ msgstr "שם"
-
-#~ msgid "Post Processor"
-#~ msgstr "מעבד סופי"
-
-#~ msgid "Executable"
-#~ msgstr "קובץ הרצה"
 
 #, fuzzy
 #~ msgid "Search"
@@ -618,16 +1116,9 @@ msgstr ""
 #~ msgid "Extra yt-dlp Discovery Arguments"
 #~ msgstr "פרמטרים לטעינה של yt-dlp"
 
-#~ msgid "Advanced"
-#~ msgstr "מתקדם"
-
 #, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "אין פרמטרים"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "כבר קיים פרמטר בשם זה"
 
 #~ msgid "Args"
 #~ msgstr "פרמטרים"
@@ -635,9 +1126,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "נדרשת הפעלה מחדש של היישום כדי שהשינויים ייכנסו לתוקף"
-
-#~ msgid "About Parabolic"
-#~ msgstr "אודות Parabolic"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -715,15 +1203,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "השתמש באימות"
 
-#~ msgid "Credential"
-#~ msgstr "פרטי גישה"
-
-#~ msgid "Username"
-#~ msgstr "שם משתמש"
-
-#~ msgid "Password"
-#~ msgstr "סיסמה"
-
 #~ msgid "Download Immediately as Video"
 #~ msgstr "הורדה מיידית של וידאו"
 
@@ -784,9 +1263,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "ביטול הבחירה"
-
-#~ msgid "Options"
-#~ msgstr "אפשרויות"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "פצל לקבצים לפי פרקים"
@@ -876,9 +1352,6 @@ msgstr ""
 
 #~ msgid "Clear All"
 #~ msgstr "נקה הכול"
-
-#~ msgid "Credentials"
-#~ msgstr "פרטי גישה"
 
 #~ msgid "Loading"
 #~ msgstr "בטעינה"
@@ -973,9 +1446,6 @@ msgstr ""
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "ציון פרמטרים נוספים להעברה ל־yt-dlp"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "פרמטרים לעיבוד סופי"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "הוספת פרמטר לעיבוד סופי"
 
@@ -1004,9 +1474,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "לא ידוע"
 
-#~ msgid "Error"
-#~ msgstr "שגיאה"
-
 #~ msgid "Success"
 #~ msgstr "הצלחה"
 
@@ -1017,18 +1484,11 @@ msgstr ""
 #~ msgstr "המשך"
 
 #, csharp-format
-#~ msgid "Sleeping for {0}"
-#~ msgstr "ממתין למשך {0}"
-
-#, csharp-format
 #~ msgid "{0}% Complete • {1} • {2} Remaining"
 #~ msgstr "{0}% הושלמו • {1} • {2} נותרו"
 
 #~ msgid "Stopped"
 #~ msgstr "נעצר"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "קובצי טקסט (‎*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "אין כתוביות זמינות"
@@ -1059,9 +1519,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "אין היסטוריה"
-
-#~ msgid "No Credentials"
-#~ msgstr "אין פרטי התחברות"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "למחוק את פרטי הגישה?"
@@ -1164,9 +1621,6 @@ msgstr ""
 
 #~ msgid "Use manual credential"
 #~ msgstr "הזנה ידנית של פרטי התחברות"
-
-#~ msgid "A credential with that name already exists"
-#~ msgstr "כבר קיימים פרטי התחברות בשם זה"
 
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "שם פרטי ההתחברות לא יכול להיות ריק"
@@ -1300,10 +1754,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "{0:0.00} B"
 #~ msgstr "{0:0.00} B"
-
-#, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "אודות {0}"
 
 #~ msgid "Changelog"
 #~ msgstr "יומן שינויים"
@@ -1487,10 +1937,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "A credential is required to continue the download of \"{0}\"."
 #~ msgstr "יש למלא פרטי גישה כדי להמשיך להוריד את „{0}”."
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "סיסמה"
 
 #~ msgid "Updating"
 #~ msgstr "מעדכן"
@@ -1733,10 +2179,6 @@ msgstr ""
 #~ msgstr "ניקוי הושלם"
 
 #, fuzzy
-#~ msgid "Are you sure you want to delete this argument?"
-#~ msgstr "האם אכן ברצונך למחוק אישור זה?"
-
-#, fuzzy
 #~ msgid "Args (Empty)"
 #~ msgstr "שם (ריק)"
 
@@ -1772,23 +2214,12 @@ msgstr ""
 #~ msgid "The credential name cannot be empty."
 #~ msgstr "שם האישור לא יכול להיות ריק."
 
-#~ msgid "The provided url is invalid."
-#~ msgstr "הכתובת שסופקה אינה תקינה."
-
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "אירעה שגיאה לא ידועה בעת הוספת האישור לקבוצת המפתחות."
 
 #, fuzzy
 #~ msgid "Edit Credential"
 #~ msgstr "הוספת אישור"
-
-#, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "למחוק אישורים?"
-
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "מתחיל"
 
 #~ msgid "Documentation"
 #~ msgstr "תיעוד"
@@ -1800,10 +2231,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "יומן ההורדה הועתק ללוח הגזירים."
-
-#, fuzzy
-#~ msgid "New Argument"
-#~ msgstr "פרטי זיהוי"
 
 #, fuzzy
 #~ msgid ""
@@ -1839,10 +2266,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "הורדת מדיה"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr "יצירה, שמירה וניהול האישורים שלך עבור אתרי מדיה."
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2219,12 +2642,6 @@ msgstr ""
 #~ "זה יוביל למחיקת כל קבוצות המפתחות הקודמות על כל הססמאות שבהן. פעולה זו "
 #~ "בלתי הפיכה."
 
-#~ msgid "Unable to disable keyring."
-#~ msgstr "לא ניתן למחוק את קבוצת המפתחות."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "לא ניתן לאפס את קבוצת המפתחות."
-
 #~ msgid "Undo Title Editing"
 #~ msgstr "ביטול עריכת הכותרת"
 
@@ -2319,12 +2736,6 @@ msgstr ""
 
 #~ msgid "Unable to setup dependencies. Please restart the app and try again."
 #~ msgstr "לא ניתן להגדיר תלויות. יש להפעיל מחדש את היישום ולנסות שוב."
-
-#~ msgid "Set Password"
-#~ msgstr "הגדרת ססמה"
-
-#~ msgid "New Password"
-#~ msgstr "ססמה חדשה"
 
 #~ msgid "Confirm Password"
 #~ msgstr "אימות ססמה"

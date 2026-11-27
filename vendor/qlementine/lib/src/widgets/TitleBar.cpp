@@ -46,6 +46,15 @@ public:
 private:
   std::function<void(QObject*, QEvent*)> _callback;
 };
+
+// Widgets that don't handle the mouse: plain containers and display-only widgets.
+bool isDisplayOnly(const QWidget* widget) {
+  const auto* metaObject = widget->metaObject();
+  return metaObject == &QWidget::staticMetaObject || metaObject == &QFrame::staticMetaObject
+         || qobject_cast<const QLabel*>(widget) || qobject_cast<const QProgressBar*>(widget)
+         || qobject_cast<const QLCDNumber*>(widget) || qobject_cast<const IconWidget*>(widget)
+         || qobject_cast<const StatusBadgeWidget*>(widget) || qobject_cast<const NotificationBadge*>(widget);
+}
 } // namespace
 
 struct TitleBar::Impl {
@@ -369,7 +378,8 @@ bool TitleBar::isDragArea(const QPoint& pos) const {
         return child == menuBar && menuBar->actionAt(menuBar->mapFrom(this, pos)) == nullptr;
       }
       if (const auto* toolBar = qobject_cast<const QToolBar*>(widget)) {
-        return child == toolBar && toolBar->actionAt(toolBar->mapFrom(this, pos)) == nullptr;
+        // Display-only widgets, such as a spacer, are draggable like the empty space.
+        return child == toolBar ? toolBar->actionAt(toolBar->mapFrom(this, pos)) == nullptr : isDisplayOnly(child);
       }
       if (const auto* itemList = qobject_cast<const AbstractItemListWidget*>(widget)) {
         return child == itemList && itemList->itemAtPos(itemList->mapFrom(this, pos)) == -1;
@@ -378,14 +388,7 @@ bool TitleBar::isDragArea(const QPoint& pos) const {
 
     // Display-only widgets and plain containers don't handle the mouse, the interactive widgets inside a container
     // are returned by childAt().
-    if (child == nullptr) {
-      return true;
-    }
-    const auto* metaObject = child->metaObject();
-    return metaObject == &QWidget::staticMetaObject || metaObject == &QFrame::staticMetaObject
-           || qobject_cast<const QLabel*>(child) || qobject_cast<const QProgressBar*>(child)
-           || qobject_cast<const QLCDNumber*>(child) || qobject_cast<const IconWidget*>(child)
-           || qobject_cast<const StatusBadgeWidget*>(child) || qobject_cast<const NotificationBadge*>(child);
+    return child == nullptr || isDisplayOnly(child);
   }
 
   return true;

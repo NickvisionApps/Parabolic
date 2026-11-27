@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-02-06 14:33+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -59,6 +59,9 @@ msgid "Worst"
 msgstr "Найгірше"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "Немає"
 
@@ -73,437 +76,1007 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "Про Parabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "Завантажити медіа"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "Більше не показувати це повідомлення"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr ""
-"Додайте URL-адресу відео, аудіо або списку відтворення, щоб почати "
-"завантаження"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "Головна"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "Встановити пароль"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "Новий пароль"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "Облікові дані"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "Ім'я"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "Розширені налаштування"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "Пароль"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "Облікові дані з таким ім'ям вже існують."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "Наданий URL є недійсним."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "Пароль"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Потоки постобробки"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#, fuzzy
+msgid "Post Processor"
+msgstr "Обробка"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Вставити розділи"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Розділити відео за розділами"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Відео (Загальне)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "Вставити метадані"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Вбудовані субтитри"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Вбудовані ескізи"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#, fuzzy
+msgid "Executable"
+msgstr "Ввімкнути"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Аргументи FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#, fuzzy
+msgid "Argument"
+msgstr "Нові облікові дані"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Облікові дані з таким ім'ям вже існують."
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, fuzzy, c++-format
+msgid "Version {}"
+msgstr "Версія: {0}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+#, fuzzy
+msgid "Start"
+msgstr "Початок"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "Додати завантаження"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "Зв'язка ключів"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "Допомога"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "Репозиторій GitHub"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "Повідомити про помилку"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "Обговорення"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "Історія"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "Помилка"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, c++-format
+msgid "System keyring error: {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Облікові дані"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "Ви впевнені, що хочете видалити ці облікові дані?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+"Створюйте, зберігайте та керуйте своїми обліковими даними для медіа-сайтів."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "Додати"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "Редагувати"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "Про Parabolic"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "Головна"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "Завантаження"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#, fuzzy
+msgid "Updates"
+msgstr "Оновити"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "Про додаток"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "Налаштування"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Cookies File"
+msgstr "Файл cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "TXT файли (*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "Нові облікові дані"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Загальний"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Відмова від відповідальності"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Завантаження"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Обробка"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "Інтерфейс користувача"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "Стиль"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "Світла"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Темна"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "Системна"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#, fuzzy
+msgid "Translation Language"
+msgstr "Мова аудіо"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "Системна"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+msgid "Automatically Check for Updates"
+msgstr "Автоматично перевіряти оновлення"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Перевірити наявність оновлень"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Довжина історії завантажень"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "Ніколи"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+#, fuzzy
+msgid "1 Day"
+msgstr "Один день"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+#, fuzzy
+msgid "1 Week"
+msgstr "Один тиждень"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+#, fuzzy
+msgid "1 Month"
+msgstr "Один місяць"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#, fuzzy
+msgid "3 Months"
+msgstr "Один місяць"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+#, fuzzy
+msgid "6 Months"
+msgstr "Один місяць"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "Назавжди"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "Обробка"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "Включити Media ID у заголовок після перевірки"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "Обмежити символи у іменах файлів"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr "Обмежує символи в іменах файлів лише тими, що підтримуються Windows."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Включати автоматично сгенеровані субтитри"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "Переважний відеокодек"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "Будь-який"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+msgid "H.265"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+msgid "H.264"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "Бажаний формат субтитрів"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "Бажаний формат субтитрів"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+#, fuzzy
+msgid "Advanced"
+msgstr "Розширені налаштування"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+#, fuzzy
+msgid "Arguments"
+msgstr "Нові облікові дані"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Максимальна кількість активних завантажень"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "Перезаписати наявні файли"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "Використовувати aria2"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Максимальна кількість з'єднань на сервер (-x)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "Мінімальний розмір розділення (-k)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+#, fuzzy
+msgid "Use Part Files"
+msgstr "Використовувати пакетний файл"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "Використовувати SponsorBlock для YouTube"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "Обмеження швидкості"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "Обмежити швидкість завантаження"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "Обмеження швидкості (КіБ/с)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "Проксі URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "Файл cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "Файли cookie з браузера"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+msgid "File"
+msgstr "Файл"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "Файли cookie з браузера"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+#, fuzzy
+msgid "Clear"
+msgstr "Чисто"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "Вставити метадані"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "Вилучити вихідні дані"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr ""
+"Якщо увімкнено, Parabolic очистить поля метаданих, що містять інформацію, "
+"яка ідентифікує завантаження."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Вбудовані ескізи"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "Вбудовані ескізи"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Якщо тип файлу не підтримує вбудовування, ескіз буде збережено окремим "
+"зображенням."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "Обрізати мініатюри аудіо"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr ""
+"Якщо увімкнено, Parabolic обрізає ескізи аудіофайлів до квадратної форми."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "Вставити розділи"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "Вставити розділи"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Subtitles"
+msgstr "Субтитри"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "Вбудовані субтитри"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"Якщо вимкнено або вбудовування не підтримується, завантажені субтитри "
+"зберігатимуться окремим файлом."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "Аргументи FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+msgid "Limit the number of threads used by ffmpeg."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr ""
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "Завантаження"
-
-#~ msgid "Keyring"
-#~ msgstr "Зв'язка ключів"
+#~ msgid "Unable to add the credential."
+#~ msgstr "Видалити облікові дані?"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "Історія"
+#~ msgid "Unable to read the credential."
+#~ msgstr "Видалити облікові дані?"
 
-#~ msgid "File"
-#~ msgstr "Файл"
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "Неможливо вимкнути keyring."
+
+#, fuzzy
+#~ msgid "Unable to remove the credential."
+#~ msgstr "Не вдалося скинути keyring."
+
+#~ msgid "Credentials"
+#~ msgstr "Облікові дані"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "Використовувати пакетний файл"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "Файли cookie з браузера"
+
+#~ msgid "Download Media"
+#~ msgstr "Завантажити медіа"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr ""
+#~ "Додайте URL-адресу відео, аудіо або списку відтворення, щоб почати "
+#~ "завантаження"
 
 #~ msgid "Exit"
 #~ msgstr "Вийти"
 
-#~ msgid "Edit"
-#~ msgstr "Редагувати"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "Налаштування"
-
 #~ msgid "View"
 #~ msgstr "Переглянути"
-
-#~ msgid "Theme"
-#~ msgstr "Стиль"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Світла"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Темна"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "Системна"
-
-#~ msgid "Help"
-#~ msgstr "Допомога"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "Перевірити наявність оновлень"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "Повідомити про помилку"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "Репозиторій GitHub"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "Обговорення"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Більше не показувати це повідомлення"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Загальний"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Відмова від відповідальності"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "Завантаження"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Обробка"
-
-#~ msgid "Add"
-#~ msgstr "Додати"
-
-#, fuzzy
-#~ msgid "Argument"
-#~ msgstr "Нові облікові дані"
-
-#~ msgid "User Interface"
-#~ msgstr "Інтерфейс користувача"
-
-#, fuzzy
-#~ msgid "Translation Language"
-#~ msgstr "Мова аудіо"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "Системна"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "Оновити"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Автоматично перевіряти оновлення"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Перевірити наявність оновлень"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "Довжина історії завантажень"
-
-#~ msgid "Never"
-#~ msgstr "Ніколи"
-
-#, fuzzy
-#~ msgid "1 Day"
-#~ msgstr "Один день"
-
-#, fuzzy
-#~ msgid "1 Week"
-#~ msgstr "Один тиждень"
-
-#, fuzzy
-#~ msgid "1 Month"
-#~ msgstr "Один місяць"
-
-#, fuzzy
-#~ msgid "3 Months"
-#~ msgstr "Один місяць"
-
-#, fuzzy
-#~ msgid "6 Months"
-#~ msgstr "Один місяць"
-
-#~ msgid "Forever"
-#~ msgstr "Назавжди"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "Обробка"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Максимальна кількість активних завантажень"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Перезаписати наявні файли"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "Використовувати aria2"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Максимальна кількість з'єднань на сервер (-x)"
-
-#, fuzzy
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "Мінімальний розмір розділення (-k)"
-
-#, fuzzy
-#~ msgid "Arguments"
-#~ msgstr "Нові облікові дані"
-
-#, fuzzy
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Включити Media ID у заголовок після перевірки"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Обмежити символи у іменах файлів"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Обмежує символи в іменах файлів лише тими, що підтримуються Windows."
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Включати автоматично сгенеровані субтитри"
-
-#~ msgid "Preferences"
-#~ msgstr "Налаштування"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "Переважний відеокодек"
-
-#~ msgid "Any"
-#~ msgstr "Будь-який"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "Бажаний формат субтитрів"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "Бажаний формат субтитрів"
-
-#, fuzzy
-#~ msgid "Use Part Files"
-#~ msgstr "Використовувати пакетний файл"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "Використовувати SponsorBlock для YouTube"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "Обмеження швидкості"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Обмежити швидкість завантаження"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Обмеження швидкості (КіБ/с)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "Проксі URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "Файл cookie"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "Файли cookie з браузера"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#, fuzzy
-#~ msgid "Cookies File"
-#~ msgstr "Файл cookie"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "Чисто"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Вставити метадані"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Вставити метадані"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Вилучити вихідні дані"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr ""
-#~ "Якщо увімкнено, Parabolic очистить поля метаданих, що містять інформацію, "
-#~ "яка ідентифікує завантаження."
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "Вбудовані ескізи"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Вбудовані ескізи"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Якщо тип файлу не підтримує вбудовування, ескіз буде збережено окремим "
-#~ "зображенням."
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Обрізати мініатюри аудіо"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr ""
-#~ "Якщо увімкнено, Parabolic обрізає ескізи аудіофайлів до квадратної форми."
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "Вставити розділи"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Вставити розділи"
-
-#~ msgid "Subtitles"
-#~ msgstr "Субтитри"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Вбудовані субтитри"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "Якщо вимкнено або вбудовування не підтримується, завантажені субтитри "
-#~ "зберігатимуться окремим файлом."
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "Аргументи FFmpeg"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "Аргументи FFmpeg"
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Вставити розділи"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Розділити відео за розділами"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Відео (Загальне)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Вбудовані субтитри"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Вбудовані ескізи"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Tube Converter"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Tube Converter"
-
-#~ msgid "Name"
-#~ msgstr "Ім'я"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "Обробка"
-
-#, fuzzy
-#~ msgid "Executable"
-#~ msgstr "Ввімкнути"
 
 #, fuzzy
 #~ msgid "Search"
@@ -534,23 +1107,12 @@ msgstr ""
 #~ msgstr "Потоки постобробки"
 
 #, fuzzy
-#~ msgid "Advanced"
-#~ msgstr "Розширені налаштування"
-
-#, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "Нові облікові дані"
 
 #, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Облікові дані з таким ім'ям вже існують."
-
-#, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "Треба перезавантажити додаток, щоб змінити стиль."
-
-#~ msgid "About Parabolic"
-#~ msgstr "Про Parabolic"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -631,15 +1193,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Автентифікація"
 
-#~ msgid "Credential"
-#~ msgstr "Облікові дані"
-
-#~ msgid "Username"
-#~ msgstr "Ім'я користувача"
-
-#~ msgid "Password"
-#~ msgstr "Пароль"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Завантажити медіа"
@@ -696,10 +1249,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Зняти всі виділення"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "Розширені налаштування"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -762,9 +1311,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "Чисто"
-
-#~ msgid "Credentials"
-#~ msgstr "Облікові дані"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -857,10 +1403,6 @@ msgstr ""
 #~ msgstr "Конвертер"
 
 #, fuzzy
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "Потоки постобробки"
-
-#, fuzzy
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Потоки постобробки"
 
@@ -893,17 +1435,11 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Невідомо"
 
-#~ msgid "Error"
-#~ msgstr "Помилка"
-
 #~ msgid "Success"
 #~ msgstr "Успіх"
 
 #~ msgid "Stopped"
 #~ msgstr "Зупинено"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "TXT файли (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "Субтитри недоступні"
@@ -932,10 +1468,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "Історія"
-
-#, fuzzy
-#~ msgid "No Credentials"
-#~ msgstr "Облікові дані"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Видалити облікові дані?"
@@ -1027,10 +1559,6 @@ msgstr ""
 
 #~ msgid "Use manual credential"
 #~ msgstr "Використання облікових даних вручну"
-
-#, fuzzy
-#~ msgid "A credential with that name already exists"
-#~ msgstr "Облікові дані з таким ім'ям вже існують."
 
 #, fuzzy
 #~ msgid "The name of the credential cannot be empty"
@@ -1142,10 +1670,6 @@ msgstr ""
 #, fuzzy, csharp-format
 #~ msgid "{0:0.00} KiB"
 #~ msgstr "{:.2f} КіБ/с"
-
-#, fuzzy, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "Про додаток"
 
 #, fuzzy
 #~ msgid "Changelog"
@@ -1279,10 +1803,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Post-Processor"
 #~ msgstr "Обробка"
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "Пароль"
 
 #, fuzzy
 #~ msgid "Updating"
@@ -1474,10 +1994,6 @@ msgstr ""
 #~ msgstr "Не вдалося завантажити та встановити оновлення"
 
 #, fuzzy
-#~ msgid "Are you sure you want to delete this argument?"
-#~ msgstr "Ви впевнені, що хочете видалити ці облікові дані?"
-
-#, fuzzy
 #~ msgid "Args (Empty)"
 #~ msgstr "Ім'я (Порожньо)"
 
@@ -1515,22 +2031,11 @@ msgstr ""
 #~ msgid "The credential name cannot be empty."
 #~ msgstr "Ім'я облікових даних не може бути порожнім."
 
-#~ msgid "The provided url is invalid."
-#~ msgstr "Наданий URL є недійсним."
-
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "Сталася невідома помилка при додаванні облікових даних до Keyring."
 
 #~ msgid "Edit Credential"
 #~ msgstr "Редагувати облікові дані"
-
-#, fuzzy
-#~ msgid "Delete Credential"
-#~ msgstr "Видалити облікові дані?"
-
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "Початок"
 
 #~ msgid "Documentation"
 #~ msgstr "Документація"
@@ -1540,16 +2045,8 @@ msgstr ""
 #~ msgstr "Завантаження"
 
 #, fuzzy
-#~ msgid "Version {}"
-#~ msgstr "Версія: {0}"
-
-#, fuzzy
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Журнал завантажень скопійовано до буфера обміну."
-
-#, fuzzy
-#~ msgid "New Argument"
-#~ msgstr "Нові облікові дані"
 
 #, fuzzy
 #~ msgid ""
@@ -1592,12 +2089,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "Завантажити медіа"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr ""
-#~ "Створюйте, зберігайте та керуйте своїми обліковими даними для медіа-"
-#~ "сайтів."
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2007,12 +2498,6 @@ msgstr ""
 #~ "Це видалить попередній keyring, видаливши всі паролі з ним. Ця дія "
 #~ "незворотна."
 
-#~ msgid "Unable to disable keyring."
-#~ msgstr "Неможливо вимкнути keyring."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "Не вдалося скинути keyring."
-
 #~ msgid "Undo Title Editing"
 #~ msgstr "Скасувати редагування назви"
 
@@ -2113,12 +2598,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Не вдалося налаштувати залежності. Будь ласка, перезапустіть застосунок "
 #~ "та спробуйте ще раз."
-
-#~ msgid "Set Password"
-#~ msgstr "Встановити пароль"
-
-#~ msgid "New Password"
-#~ msgstr "Новий пароль"
 
 #~ msgid "Confirm Password"
 #~ msgstr "Підтвердити пароль"

@@ -357,26 +357,22 @@ namespace parabolic::postprocessing
 
     void to_json(nlohmann::json& json, const Argument& argument)
     {
-        json = nlohmann::json{
-            { "name", argument.name() },
-            { "step", static_cast<int>(argument.step()) },
-            { "executable", static_cast<int>(argument.executable()) },
-            { "args", argument.args() },
-        };
+        json = nlohmann::json{ { "name", argument.name() },
+                               { "step", static_cast<int>(argument.step()) },
+                               { "executable", static_cast<int>(argument.executable()) },
+                               { "args", argument.args() } };
     }
 
     void to_json(nlohmann::json& json, const Options& options)
     {
-        json = nlohmann::json{
-            { "cropAudioThumbnails", options.crop_audio_thumbnails() },
-            { "embedChapters", options.embed_chapters() },
-            { "embedMetadata", options.embed_metadata() },
-            { "embedSubtitles", options.embed_subtitles() },
-            { "embedThumbnails", options.embed_thumbnails() },
-            { "postprocessingArguments", nlohmann::json::array() },
-            { "postprocessingThreads", options.threads() },
-            { "removeSourceData", options.remove_source_data() },
-        };
+        json = nlohmann::json{ { "cropAudioThumbnails", options.crop_audio_thumbnails() },
+                               { "embedChapters", options.embed_chapters() },
+                               { "embedMetadata", options.embed_metadata() },
+                               { "embedSubtitles", options.embed_subtitles() },
+                               { "embedThumbnails", options.embed_thumbnails() },
+                               { "postprocessingArguments", nlohmann::json::array() },
+                               { "postprocessingThreads", options.threads() },
+                               { "removeSourceData", options.remove_source_data() } };
         for (const Argument& item : options.arguments())
         {
             json["postprocessingArguments"].push_back(item);

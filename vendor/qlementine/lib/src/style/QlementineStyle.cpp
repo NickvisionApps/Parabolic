@@ -22,6 +22,7 @@
 #include <oclero/qlementine/widgets/Switch.hpp>
 #include <oclero/qlementine/widgets/TitleBar.hpp>
 #include <oclero/qlementine/widgets/LineEdit.hpp>
+#include <oclero/qlementine/widgets/GroupBox.hpp>
 #include <oclero/qlementine/widgets/ColorButton.hpp>
 #include <oclero/qlementine/widgets/PlainTextEdit.hpp>
 
@@ -193,6 +194,9 @@ struct QlementineStyleImpl {
       switch (standardPixmap) {
         case QlementineStyle::SP_LineEditClearButton:
           updateUncheckableButtonIconPixmap(icon, size, owner, makeClearButtonPixmap);
+          break;
+        case QlementineStyle::SP_TitleBarCloseButton:
+          updateUncheckableButtonIconPixmap(icon, size, owner, makeCloseButtonPixmap);
           break;
         case QlementineStyle::SP_ToolBarVerticalExtensionButton:
         case QlementineStyle::SP_ToolBarHorizontalExtensionButton:
@@ -991,8 +995,14 @@ void QlementineStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption* opt
         }
       }
       return;
-    case PE_IndicatorDockWidgetResizeHandle:
-      break;
+    case PE_IndicatorDockWidgetResizeHandle: {
+      const auto& rect = opt->rect;
+      const auto isVertical = rect.width() < rect.height();
+      const auto lineRect = isVertical ? QRect(rect.left() + rect.width() / 2, rect.top(), 1, rect.height())
+                                       : QRect(rect.left(), rect.top() + rect.height() / 2, rect.width(), 1);
+      p->fillRect(lineRect, _impl->theme.borderColor);
+    }
+      return;
     case PE_IndicatorHeaderArrow:
       if (const auto* optHeader = qstyleoption_cast<const QStyleOptionHeader*>(opt)) {
         const auto indicatorType = optHeader->sortIndicator;
@@ -2216,8 +2226,23 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
       return;
     // case CE_RubberBand:
     //   break;
-    // case CE_DockWidgetTitle:
-    //   break;
+    case CE_DockWidgetTitle:
+      if (const auto* optDock = qstyleoption_cast<const QStyleOptionDockWidget*>(opt)) {
+        if (!optDock->verticalTitleBar) {
+          const auto& theme = _impl->theme;
+          const auto& rect = opt->rect;
+          p->fillRect(rect, theme.backgroundColorMain2);
+          p->fillRect(QRect(rect.left(), rect.bottom(), rect.width(), 1), theme.borderColor);
+
+          const auto textRect = subElementRect(SE_DockWidgetTitleBarText, opt, w);
+          p->setFont(theme.fontBold);
+          p->setPen(opt->palette.color(QPalette::WindowText));
+          const auto title = QFontMetrics(theme.fontBold).elidedText(optDock->title, Qt::ElideRight, textRect.width());
+          p->drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft, title);
+          return;
+        }
+      }
+      break;
     // case CE_ScrollBarAddLine:
     //   // TODO
     //   break;
@@ -2850,10 +2875,42 @@ QRect QlementineStyle::subElementRect(SubElement se, const QStyleOption* opt, co
     case SE_FrameContents:
       break;
     case SE_DockWidgetCloseButton:
-      break;
     case SE_DockWidgetFloatButton:
-      break;
     case SE_DockWidgetTitleBarText:
+      if (const auto* optDock = qstyleoption_cast<const QStyleOptionDockWidget*>(opt)) {
+        if (!optDock->verticalTitleBar) {
+          const auto& rect = opt->rect;
+          const auto margin = _impl->theme.spacing / 2;
+          const auto buttonExtent =
+            pixelMetric(PM_SmallIconSize, opt, w) + pixelMetric(PM_DockWidgetTitleBarButtonMargin, opt, w) * 2;
+          const auto buttonY = rect.top() + (rect.height() - buttonExtent) / 2;
+          auto right = rect.right() + 1 - margin;
+
+          auto closeRect = QRect();
+          if (optDock->closable) {
+            right -= buttonExtent;
+            closeRect = QRect(right, buttonY, buttonExtent, buttonExtent);
+          }
+
+          auto floatRect = QRect();
+          if (optDock->floatable) {
+            right -= buttonExtent;
+            floatRect = QRect(right, buttonY, buttonExtent, buttonExtent);
+          }
+
+          const auto titleMargin = _impl->theme.spacing;
+          const auto textRect = QRect(rect.left() + titleMargin, rect.top(),
+            std::max(0, right - rect.left() - titleMargin - margin), rect.height());
+          switch (se) {
+            case SE_DockWidgetCloseButton:
+              return visualRect(opt->direction, rect, closeRect);
+            case SE_DockWidgetFloatButton:
+              return visualRect(opt->direction, rect, floatRect);
+            default:
+              return visualRect(opt->direction, rect, textRect);
+          }
+        }
+      }
       break;
     case SE_DockWidgetIcon:
       break;
@@ -3980,6 +4037,9 @@ QRect QlementineStyle::subControlRect(
         const auto& checkBoxSize = hasCheckbox ? _impl->theme.iconSize : QSize{ 0, 0 };
         const auto titleH = hasTitle || hasCheckbox ? std::max(labelH, checkBoxSize.height()) : 0;
         const auto leftPadding = hasTitle || hasCheckbox ? _impl->theme.spacing : 0;
+        const auto* qlementineGroupBox = qobject_cast<const GroupBox*>(w);
+        const auto descriptionH = qlementineGroupBox ? qlementineGroupBox->descriptionHeight(rect.width()) : 0;
+        const auto descriptionExtra = descriptionH > 0 ? descriptionH + _impl->theme.spacing / 2 : 0;
 
         switch (sc) {
             // TODO handle other kinds of Qt::Alignment like right-aligned or centered.
@@ -4003,18 +4063,18 @@ QRect QlementineStyle::subControlRect(
           case SC_GroupBoxContents:
             /*if (groupBoxOpt->subControls.testFlag(SC_GroupBoxContents))*/ {
               const auto x = rect.x() + leftPadding;
-              const auto y = rect.y() + titleH + titleBottomSpacing;
+              const auto y = rect.y() + titleH + descriptionExtra + titleBottomSpacing;
               const auto width = rect.width() - leftPadding;
-              const auto height = rect.height() - titleH - titleBottomSpacing;
+              const auto height = rect.height() - titleH - descriptionExtra - titleBottomSpacing;
               return QRect{ x, y, width, height };
             }
             //return {};
           case SC_GroupBoxFrame:
             /*if (groupBoxOpt->subControls.testFlag(SC_GroupBoxFrame))*/ {
               const auto x = rect.x() + leftPadding;
-              const auto y = rect.y() + titleH + titleBottomSpacing;
+              const auto y = rect.y() + titleH + descriptionExtra + titleBottomSpacing;
               const auto width = rect.width() - leftPadding;
-              const auto height = rect.height() - titleH - titleBottomSpacing;
+              const auto height = rect.height() - titleH - descriptionExtra - titleBottomSpacing;
               return QRect{ x, y, width, height };
             }
             //return {};
@@ -4570,7 +4630,7 @@ int QlementineStyle::pixelMetric(PixelMetric m, const QStyleOption* opt, const Q
 
     // DockWidgets.
     case PM_DockWidgetSeparatorExtent:
-      break;
+      return 1;
     case PM_DockWidgetHandleExtent:
       break;
     case PM_DockWidgetFrameWidth:
@@ -4718,9 +4778,9 @@ int QlementineStyle::pixelMetric(PixelMetric m, const QStyleOption* opt, const Q
 
     // Dock.
     case PM_DockWidgetTitleMargin:
-      break;
+      return _impl->theme.spacing * 2;
     case PM_DockWidgetTitleBarButtonMargin:
-      break;
+      return _impl->theme.spacing / 2;
 
     // Layout.
     case PM_LayoutLeftMargin:;
@@ -5096,6 +5156,7 @@ QIcon QlementineStyle::standardIcon(StandardPixmap sp, const QStyleOption* opt, 
     case SP_ArrowLeft:
     case SP_ArrowRight:
     case SP_LineEditClearButton:
+    case SP_TitleBarCloseButton:
       return _impl->getStandardIcon(sp, _impl->theme.iconSize);
     default:
       break;
@@ -6204,8 +6265,8 @@ QColor QlementineStyle::groupBoxBackgroundColor(MouseState const mouse) const {
   if (mouse == MouseState::Disabled) {
     return _impl->theme.backgroundColorMainTransparent;
   } else {
-    return getColorSourceOver(_impl->theme.backgroundColorMain2,
-      colorWithAlphaF(_impl->theme.backgroundColorMain3, _impl->theme.backgroundColorMain3.alphaF() * .75));
+    const auto darkBackground = _impl->theme.backgroundColorMain2.lightnessF() < 0.5;
+    return colorWithAlphaF(_impl->theme.secondaryColor, darkBackground ? 0.06 : 0.04);
   }
 }
 

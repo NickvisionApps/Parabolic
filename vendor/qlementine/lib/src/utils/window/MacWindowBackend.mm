@@ -16,6 +16,9 @@
 
 namespace oclero::qlementine {
 namespace {
+// Horizontal offset of the traffic lights, in points, from their default position.
+constexpr CGFloat trafficLightsOffsetX = 4;
+
 class MacWindowBackend final
   : public QObject
   , public WindowBackend {
@@ -149,16 +152,28 @@ private:
         if (!NSEqualRects(titlebarView.frame, container.bounds)) {
           titlebarView.frame = container.bounds;
         }
-        for (NSButton* button in @[
-               closeButton,
-               [window standardWindowButton:NSWindowMiniaturizeButton],
-               zoomButton,
-             ]) {
+        NSArray<NSButton*>* buttons = @[
+          closeButton,
+          [window standardWindowButton:NSWindowMiniaturizeButton],
+          zoomButton,
+        ];
+        for (NSUInteger i = 0; i < buttons.count; ++i) {
+          NSButton* button = buttons[i];
+          if (!button || button.superview != titlebarView) {
+            continue;
+          }
+
+          // The default x position is read once, so that the offset is not added again at every layout.
+          if (!_buttonOriginsKnown) {
+            _buttonOriginsX[i] = button.frame.origin.x;
+          }
+          const CGFloat buttonX = _buttonOriginsX[i] + trafficLightsOffsetX;
           const CGFloat buttonY = (titleBarHeight - button.frame.size.height) / 2;
-          if (button && button.superview == titlebarView && std::abs(button.frame.origin.y - buttonY) > 0.01) {
-            [button setFrameOrigin:NSMakePoint(button.frame.origin.x, buttonY)];
+          if (std::abs(button.frame.origin.x - buttonX) > 0.01 || std::abs(button.frame.origin.y - buttonY) > 0.01) {
+            [button setFrameOrigin:NSMakePoint(buttonX, buttonY)];
           }
         }
+        _buttonOriginsKnown = true;
       }
 
       // Space reserved for the traffic lights, read from the actual button position.
@@ -184,6 +199,8 @@ private:
   NSMutableArray* _observers;
   NSWindow* __weak _nsWindow = nil;
   int _leftInset = -1;
+  CGFloat _buttonOriginsX[3] = { 0, 0, 0 };
+  bool _buttonOriginsKnown = false;
 };
 } // namespace
 

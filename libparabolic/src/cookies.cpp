@@ -48,11 +48,9 @@ namespace parabolic::cookies
             std::filesystem::path path;
             if (browser == Browser::Firefox)
             {
-                std::vector<std::filesystem::path> candidates{
-                    home / ".mozilla" / "firefox",
-                    home / ".config" / "mozilla" / "firefox",
-                    home / "snap" / "firefox" / "common" / ".mozilla" / "firefox",
-                };
+                std::vector<std::filesystem::path> candidates{ home / ".mozilla" / "firefox",
+                                                               home / ".config" / "mozilla" / "firefox",
+                                                               home / "snap" / "firefox" / "common" / ".mozilla" / "firefox" };
                 path = candidates[0];
                 for (const std::filesystem::path& candidate : candidates)
                 {

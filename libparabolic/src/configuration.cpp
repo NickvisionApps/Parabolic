@@ -91,6 +91,24 @@ namespace parabolic::configuration
         m_y = value;
     }
 
+    bool WindowGeometry::operator==(const WindowGeometry& rhs) const
+    {
+        if (m_is_maximized != rhs.m_is_maximized)
+        {
+            return false;
+        }
+        if (m_is_maximized)
+        {
+            return true;
+        }
+        return m_width == rhs.m_width && m_height == rhs.m_height && m_x == rhs.m_x && m_y == rhs.m_y;
+    }
+
+    bool WindowGeometry::operator!=(const WindowGeometry& rhs) const
+    {
+        return !operator==(rhs);
+    }
+
     Configuration::Configuration(std::string_view app_name)
 #ifdef _WIN32
         : m_path{ std::filesystem::path(string_manip::wstr(sago::getConfigHome())) / app_name / "config.json" }
@@ -171,6 +189,23 @@ namespace parabolic::configuration
             return;
         }
         m_automatically_check_for_updates = value;
+        save();
+    }
+
+    bool Configuration::collapse_sidebar() const
+    {
+        std::scoped_lock lock{ m_mutex };
+        return m_collapse_sidebar;
+    }
+
+    void Configuration::set_collapse_sidebar(bool value)
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (m_collapse_sidebar == value)
+        {
+            return;
+        }
+        m_collapse_sidebar = value;
         save();
     }
 
@@ -401,6 +436,14 @@ namespace parabolic::configuration
         {
             config.m_automatically_check_for_updates = json.at("AutomaticallyCheckForUpdates").get<bool>();
         }
+        if (json.contains("collapseSidebar") && json["collapseSidebar"].is_boolean())
+        {
+            config.m_collapse_sidebar = json.at("collapseSidebar").get<bool>();
+        }
+        else if (json.contains("CollapseSidebar") && json["CollapseSidebar"].is_boolean())
+        {
+            config.m_collapse_sidebar = json.at("CollapseSidebar").get<bool>();
+        }
         if (json.contains("showDisclaimerOnStartup") && json["showDisclaimerOnStartup"].is_boolean())
         {
             config.m_show_disclaimer_on_startup = json.at("showDisclaimerOnStartup").get<bool>();
@@ -486,12 +529,11 @@ namespace parabolic::configuration
 
     void to_json(nlohmann::json& json, const Configuration& config)
     {
-        json = nlohmann::json{
-            { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
-            { "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup },
-            { "theme", static_cast<int>(config.m_theme) },
-            { "windowGeometry", config.m_window_geometry },
-        };
+        json = nlohmann::json{ { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
+                               { "collapseSidebar", config.m_collapse_sidebar },
+                               { "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup },
+                               { "theme", static_cast<int>(config.m_theme) },
+                               { "windowGeometry", config.m_window_geometry } };
         json.update(nlohmann::json(config.m_aria2_options));
         json.update(nlohmann::json(config.m_discovery_options));
         json.update(nlohmann::json(config.m_download_options));
@@ -505,10 +547,10 @@ namespace parabolic::configuration
 
     void to_json(nlohmann::json& json, const WindowGeometry& geometry)
     {
-        json = nlohmann::json{
-            { "height", geometry.height() }, { "isMaximized", geometry.is_maximized() },
-            { "width", geometry.width() },   { "x", geometry.x() },
-            { "y", geometry.y() },
-        };
+        json = nlohmann::json{ { "height", geometry.height() },
+                               { "isMaximized", geometry.is_maximized() },
+                               { "width", geometry.width() },
+                               { "x", geometry.x() },
+                               { "y", geometry.y() } };
     }
 }

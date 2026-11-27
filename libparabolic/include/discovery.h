@@ -65,7 +65,9 @@ namespace parabolic::discovery
     {
     public:
         Entry() = default;
-        Entry(const nlohmann::json& json, const Options& options, std::filesystem::path suggested_save_folder,
+        Entry(const nlohmann::json& json,
+              const Options& options,
+              std::filesystem::path suggested_save_folder,
               std::string suggested_filename);
         [[nodiscard]] const std::string& url() const;
         [[nodiscard]] const std::string& title() const;
@@ -98,8 +100,11 @@ namespace parabolic::discovery
     {
     public:
         Result(std::string url, std::string title);
-        Result(const nlohmann::json& json, const Options& options, std::string url,
-               std::filesystem::path suggested_save_folder, std::string suggested_filename);
+        Result(const nlohmann::json& json,
+               const Options& options,
+               std::string url,
+               std::filesystem::path suggested_save_folder,
+               std::string suggested_filename);
         Result(std::string url, std::string title, const std::vector<Result>& results);
         [[nodiscard]] unsigned int id() const;
         [[nodiscard]] const std::string& url() const;
@@ -139,7 +144,8 @@ namespace parabolic::discovery
                       const std::optional<keyring::Credential>& credential = std::nullopt,
                       const std::stop_token& stop_token = {}) const;
         [[nodiscard]] std::expected<Result, std::string>
-        discover_url(const std::string& url, const std::optional<keyring::Credential>& credential = std::nullopt,
+        discover_url(const std::string& url,
+                     const std::optional<keyring::Credential>& credential = std::nullopt,
                      const std::stop_token& stop_token = {}) const;
 
     private:

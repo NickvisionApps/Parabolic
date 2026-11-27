@@ -27,13 +27,15 @@ Checks: >
   readability-*,
   -readability-function-cognitive-complexity,
   -readability-identifier-length,
-  -readability-magic-numbers
+  -readability-magic-numbers,
+  -readability-trailing-comma
 FormatStyle: file
 WarningsAsErrors: ''
 HeaderFilterRegex: '.*/(libparabolic|org\.nickvision\.tubeconverter\.[a-z]+)/.*'
 CheckOptions:
   misc-include-cleaner.IgnoreHeaders: '(.*/)?CoreFoundation(\.framework)?/.*;(.*/)?Security(\.framework)?/.*;cpr/.*;(.*/)?curl/.*;(.*/)?SQLiteCpp/.*;nlohmann/.*;(.*/)?semver\.hpp'
   readability-identifier-naming.NamespaceCase: lower_case
+  readability-identifier-naming.NamespaceIgnoredRegexp: ^Ui$
   readability-identifier-naming.ClassCase: CamelCase
   readability-identifier-naming.StructCase: CamelCase
   readability-identifier-naming.EnumCase: CamelCase

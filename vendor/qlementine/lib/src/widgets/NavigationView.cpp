@@ -3,22 +3,52 @@
 
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 
+#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <oclero/qlementine/widgets/UnifiedWindow.hpp>
+
+#include <QEvent>
 #include <QHBoxLayout>
+#include <QPainter>
 #include <QPointer>
 
 #include <algorithm>
 
 namespace oclero::qlementine {
+namespace {
+class SeparatorLine : public QWidget {
+public:
+  explicit SeparatorLine(QWidget* parent)
+    : QWidget(parent) {
+    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
+  }
+
+  QSize sizeHint() const override {
+    const auto* qlementineStyle = qobject_cast<const QlementineStyle*>(style());
+    return QSize{ qlementineStyle ? qlementineStyle->theme().borderWidth : 1, 0 };
+  }
+
+protected:
+  void paintEvent(QPaintEvent*) override {
+    const auto* qlementineStyle = qobject_cast<const QlementineStyle*>(style());
+    QPainter p(this);
+    p.fillRect(rect(), qlementineStyle ? qlementineStyle->theme().borderColor : palette().color(QPalette::Mid));
+  }
+};
+} // namespace
+
 NavigationView::NavigationView(QWidget* parent)
   : QWidget(parent)
   , _sidebar(new NavigationSidebar(this))
+  , _separator(new SeparatorLine(this))
   , _stackedWidget(new QStackedWidget(this)) {
   // Layout.
   auto* layout = new QHBoxLayout(this);
   layout->setContentsMargins(0, 0, 0, 0);
   layout->setSpacing(0);
   layout->addWidget(_sidebar);
+  layout->addWidget(_separator);
   layout->addWidget(_stackedWidget, 1);
+  _sidebar->installEventFilter(this);
 
   // Show the page of the selected item. Items without a page keep the current one.
   QObject::connect(_sidebar, &AbstractItemListWidget::currentIndexChanged, this, [this]() {
@@ -98,6 +128,22 @@ void NavigationView::resizeEvent(QResizeEvent* e) {
   if (_autoCompactWidth > 0) {
     _sidebar->setCompact(availableWidth() < _autoCompactWidth);
   }
+}
+
+void NavigationView::showEvent(QShowEvent* e) {
+  QWidget::showEvent(e);
+  updateSeparatorVisibility();
+}
+
+bool NavigationView::eventFilter(QObject* watched, QEvent* e) {
+  if (watched == _sidebar && e->type() == QEvent::ParentChange) {
+    updateSeparatorVisibility();
+  }
+  return QWidget::eventFilter(watched, e);
+}
+
+void NavigationView::updateSeparatorVisibility() {
+  _separator->setVisible(_sidebar->parentWidget() == this && !qobject_cast<UnifiedWindow*>(window()));
 }
 
 int NavigationView::availableWidth() const {

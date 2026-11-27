@@ -10,9 +10,8 @@ namespace parabolic::deno
 {
     std::string executable_path()
     {
-        const std::filesystem::path& global_path{
-            environment::find_dependency("deno", environment::DependencySearchOption::Local),
-        };
+        const std::filesystem::path& global_path{ environment::find_dependency("deno",
+                                                                               environment::DependencySearchOption::Local) };
         if (std::filesystem::exists(global_path))
         {
 #ifdef _WIN32
@@ -21,9 +20,8 @@ namespace parabolic::deno
             return global_path.string();
 #endif
         }
-        const std::filesystem::path& local_path{
-            environment::find_dependency("deno", environment::DependencySearchOption::Global),
-        };
+        const std::filesystem::path& local_path{ environment::find_dependency("deno",
+                                                                              environment::DependencySearchOption::Global) };
         if (std::filesystem::exists(local_path))
         {
 #ifdef _WIN32

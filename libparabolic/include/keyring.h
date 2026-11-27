@@ -1,6 +1,7 @@
 #ifndef KEYRING_H
 #define KEYRING_H
 
+#include <expected>
 #include <mutex>
 #include <nlohmann/json.hpp>
 #include <string>
@@ -36,10 +37,11 @@ namespace parabolic::keyring
     {
     public:
         Store(std::string_view app_id);
-        [[nodiscard]] bool add(const Credential& credential);
+        [[nodiscard]] std::expected<void, std::string> add(const Credential& credential);
+        [[nodiscard]] std::expected<Credential, std::string> get(const std::string& name) const;
         [[nodiscard]] std::vector<Credential> get_all() const;
-        [[nodiscard]] bool remove(const std::string& name);
-        [[nodiscard]] bool update(const Credential& credential);
+        [[nodiscard]] std::expected<void, std::string> remove(const std::string& name);
+        [[nodiscard]] std::expected<void, std::string> update(const Credential& credential);
 
     private:
         mutable std::mutex m_mutex;

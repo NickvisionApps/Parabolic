@@ -15,6 +15,8 @@ namespace oclero::qlementine {
 /// Use sidebar() to add sections and separators, set the header and footer, or toggle the compact mode.
 /// The sidebar can be moved out of the view, for instance with UnifiedWindow::setLeadingWidget(), to extend it up to
 /// the top of the window.
+/// A separator is drawn between the sidebar and the pages, unless the view is in a UnifiedWindow, or the sidebar was
+/// moved out of the view.
 class QLEMENTINE_EXPORT NavigationView : public QWidget {
   Q_OBJECT
 
@@ -50,13 +52,17 @@ Q_SIGNALS:
 
 protected:
   void resizeEvent(QResizeEvent* e) override;
+  void showEvent(QShowEvent* e) override;
+  bool eventFilter(QObject* watched, QEvent* e) override;
 
 private:
   QVariant makePageData(QWidget* page);
   int availableWidth() const;
+  void updateSeparatorVisibility();
 
 private:
   NavigationSidebar* _sidebar{ nullptr };
+  QWidget* _separator{ nullptr };
   QStackedWidget* _stackedWidget{ nullptr };
   int _autoCompactWidth{ 0 };
 };

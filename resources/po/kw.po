@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-04-29 09:09+0000\n"
 "Last-Translator: Flynn <cirilla@tuta.io>\n"
 "Language-Team: Cornish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -64,6 +64,9 @@ msgid "Worst"
 msgstr "Gwettha"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "Vyth"
 
@@ -78,517 +81,1010 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "A-dro dhe Barabolic"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "Iskarga Media"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "Na diskwedhes an messach arta"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "Addya URL gwydhyow, son, po rol media rag dalleth owth iskarga"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
+msgstr "Hepkorrans Gwirbryntyans"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "Tre"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+"Gwydhyowyow may bos a-woles dhe difresyans DMCA. An awtours a Parabolic na "
+"keynskrifa, ha na bos omgemeryansek rag, an devnydh a'n app ma a usyoryon "
+"gorthmos an laghys ma."
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr "My a gonvedh"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "Ger-tremena"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "Ger-tremena"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "Manylyon Usyer"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "Hanow"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "Dewisyow"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "Hanow Usyer"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "Ger-tremena"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "Yma manylyon usyer gans an hanow na seulabrys"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "An URL provys yw anewn."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "Ger-tremena"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Oberadowyow Dyghtya Wosa"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+msgid "Post Processor"
+msgstr "Dyghtyer Wosa"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Synsi Chapters"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Folsa Gwydhyow gans Chapters"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Gwydhyow (Ollgemmyn)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "Treylyell"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "Synsi Metadata"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Synsi Istitlow"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Synsi Avenyow Byghan"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Istitelow"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Treylyell"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+msgid "Executable"
+msgstr "Eksekutadow"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Neusennow FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+msgid "Argument"
+msgstr "Oberadow"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Yma oberadow gans an hanow na seulabrys"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, c++-format
+msgid "Version {}"
+msgstr "Versyon {}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+msgid "Start"
+msgstr "Dalleth"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "Addya Iskarg"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
 msgstr ""
 
-#, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "Iskargow"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "Kylgh Alhwedh"
 
-#~ msgid "Keyring"
-#~ msgstr "Kylgh Alhwedh"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "Gweres"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "Derivas Kudyn"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "Omgussulyansow"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "Istori"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "Error"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, fuzzy, c++-format
+msgid "System keyring error: {}"
+msgstr "Ow koska rag {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "Manylyon Usyer Vyth"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "Addya"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "Dyllo"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "A-dro dhe Barabolic"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "Tre"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "Iskargow"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#, fuzzy
+msgid "Updates"
+msgstr "Nowedhi"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "A-dro {0}"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "Settyansow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+msgid "Cookies File"
+msgstr "Restren Cookies"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "Restrennow TXT (*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "Oberadow Nowydh"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "Ollgemmyn"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "Trovya"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "Iskargow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "Dyghtya Wosa"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "Ynterfas"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "Thema"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "Gwynn"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "Du"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "System"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+msgid "Translation Language"
+msgstr "Yeth Treylyans"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "System"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+#, fuzzy
+msgid "Automatically Check for Updates"
+msgstr "Checkya rag Nowedhyansow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "Degemeres Nowydhyansow Ragwolok"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+#, fuzzy
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr "Nowedhi medhelweyth serghek, kepar ha yt-dlp, dhe verysons beta"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "Hys Istori Iskargow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "Bynner"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+msgid "1 Day"
+msgstr "1 Dydh"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+msgid "1 Week"
+msgstr "1 Seythen"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+msgid "1 Month"
+msgstr "1 Mis"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+msgid "3 Months"
+msgstr "3 Misyow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+msgid "6 Months"
+msgstr "6 Misyow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr "1 Bledhen"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "A-vynitha"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "Owth Argerdhes"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+msgid "Include Media Id in Title"
+msgstr "Synsi ID Media yn Titel"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "Addya an ID media dhe'n titel defowt"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "Finwetha Lytherennow yn Henwyn Restren"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"Fronna lytherennow yn henwyn restren dhe'n res na skoodhys gans Windows"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "Synsi Istitelow yn Awtomatek"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "Settyansow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+"Preferya an codec ma pan redyaow furvasow son dhe diskwedhes kavadow rag "
+"iskarga"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "Codec Son Dewisek"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "Neb"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "Treylyell"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (AVC)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "Codec Istitel Dewisek"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "Kevradh Fram Dewisek"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "24 FPS"
+msgstr "{0} FDE"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "30 FPS"
+msgstr "{0} FDE"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+#, fuzzy
+msgid "60 FPS"
+msgstr "{0} FDE"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+msgid "Advanced"
+msgstr "Avonsys"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+msgid "Arguments"
+msgstr "Oberadowyow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr "Oberadowyow yw diskwedhys rag dewis y'n fenester \"Addya iskarg\""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "Niver Moyha a Iskargow Byw"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "Aslea Restrennow a‑lemmyn"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+#, fuzzy
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+"Iskargell aral may re bos uskissa yn powyow nebes yn kehevelyans dhe'n "
+"iskarger yt-dlp"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "Gul devnydh a aria2c"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "Junyansow Moyha Dre Servell"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+msgid "Minimum Split Size (MiB)"
+msgstr "Braster Fols Lyha (MiB)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr "Oberadowyow yw diskwedhys rag dewis y'n fenester \"Addya iskarg\""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "Use Part Files"
+msgstr "Devnydhya Restrennow Darn"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr ""
+"Iskarga media yn restrennow .part dibarow yn-dar distowgh yn an restren "
+"eskorrans"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "Devnydhya SponsorBlock rag YouTube"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr "Assaya remova treghow arghasieth a-dhia gwydhyowyow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr "Treylya Metadata ha Chapters"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+#, fuzzy
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+"Treylya yn awtomatek metadata synsys ha chapters dhe'n yeth app war wiasvaow "
+"ha media skoodhys"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "Finweth Tooth"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "Finwetha Tooth Iskarg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "Finweth Tooth (KiB/e)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "URL Proxy"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "Restren Cookies"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "Cookies a-dhia Peurell"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "Brave"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "Chrome"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "Chromium"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "Edge"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "Opera"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "Vivaldi"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "Whale"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#, fuzzy
+msgid "File"
+msgstr "Hanow Restren"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "Cookies a-dhia Peurell"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+msgid "Clear"
+msgstr "Dilea"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "Synsi Metadata"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "Dilea Data Devedhyans"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "Dilea metadata may kontaynya kudhlow iskarg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "Synsi Avenyow Byghan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "Synsi Avenyow Byghan"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"Mars an eghen restren na skoodhya ow synsi, an aven byghan a wra sawys dhe "
+"restren aven dibarow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "Desedha Braster a Avenyow Byghan rag Restrennow Son"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "Desedha avenyow byghan a restrennow son dhe pedrogow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "Synsi Chapters"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "Synsi Chapters"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+#, fuzzy
+msgid "Subtitles"
+msgstr "Istitlow Vyth"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "Synsi Istitlow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"A marow po a ow synsi na skoodhys, istitelow iskargys a wra sawya dhe "
+"restrennow dibarow"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "Neusennow FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "Finwetha an niver a neusennow devnydhys gans ffmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "Oberadowyow yw diskwedhys rag dewis y'n fenester \"Addya iskarg\""
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "Istori"
+#~ msgid "Unable to add the credential."
+#~ msgstr "Dilea Manylyon Usyer"
 
 #, fuzzy
-#~ msgid "File"
-#~ msgstr "Hanow Restren"
+#~ msgid "Unable to read the credential."
+#~ msgstr "Dilea Manylyon Usyer"
+
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "Devnydhya manylyon usyer dre dhorn"
+
+#~ msgid "Credentials"
+#~ msgstr "Manylyon Usyer"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "Devnydhya Restrennow Darn"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "Cookies a-dhia Peurell"
+
+#~ msgid "Download Media"
+#~ msgstr "Iskarga Media"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr "Addya URL gwydhyow, son, po rol media rag dalleth owth iskarga"
 
 #~ msgid "Exit"
 #~ msgstr "Kwytya"
 
-#~ msgid "Edit"
-#~ msgstr "Dyllo"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "Settyansow"
-
 #~ msgid "View"
 #~ msgstr "Gweles"
-
-#~ msgid "Theme"
-#~ msgstr "Thema"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "Gwynn"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "Du"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "System"
-
-#~ msgid "Help"
-#~ msgstr "Gweres"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "Checkya rag Nowedhyansow"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "Derivas Kudyn"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "Omgussulyansow"
-
-#~ msgid "Legal Copyright Disclaimer"
-#~ msgstr "Hepkorrans Gwirbryntyans"
-
-#~ msgid ""
-#~ "Videos on YouTube and other sites may be subject to DMCA protection. The "
-#~ "authors of Parabolic do not endorse, and are not responsible for, the use "
-#~ "of this application in means that will violate these laws."
-#~ msgstr ""
-#~ "Gwydhyowyow may bos a-woles dhe difresyans DMCA. An awtours a Parabolic "
-#~ "na keynskrifa, ha na bos omgemeryansek rag, an devnydh a'n app ma a "
-#~ "usyoryon gorthmos an laghys ma."
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Na diskwedhes an messach arta"
-
-#~ msgid "I understand"
-#~ msgstr "My a gonvedh"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "Ollgemmyn"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "Trovya"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "Iskargow"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "Dyghtya Wosa"
-
-#~ msgid "Add"
-#~ msgstr "Addya"
-
-#~ msgid "Argument"
-#~ msgstr "Oberadow"
-
-#~ msgid "User Interface"
-#~ msgstr "Ynterfas"
-
-#~ msgid "Translation Language"
-#~ msgstr "Yeth Treylyans"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "System"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "Nowedhi"
-
-#, fuzzy
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "Checkya rag Nowedhyansow"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "Degemeres Nowydhyansow Ragwolok"
-
-#, fuzzy
-#~ msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
-#~ msgstr "Nowedhi medhelweyth serghek, kepar ha yt-dlp, dhe verysons beta"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "Hys Istori Iskargow"
-
-#~ msgid "Never"
-#~ msgstr "Bynner"
-
-#~ msgid "1 Day"
-#~ msgstr "1 Dydh"
-
-#~ msgid "1 Week"
-#~ msgstr "1 Seythen"
-
-#~ msgid "1 Month"
-#~ msgstr "1 Mis"
-
-#~ msgid "3 Months"
-#~ msgstr "3 Misyow"
-
-#~ msgid "6 Months"
-#~ msgstr "6 Misyow"
-
-#~ msgid "1 Year"
-#~ msgstr "1 Bledhen"
-
-#~ msgid "Forever"
-#~ msgstr "A-vynitha"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "Owth Argerdhes"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "Niver Moyha a Iskargow Byw"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Aslea Restrennow a‑lemmyn"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "aria2c"
-
-#, fuzzy
-#~ msgid ""
-#~ "An alternative downloader that may be faster in some regions compared to "
-#~ "yt-dlp's native downloader."
-#~ msgstr ""
-#~ "Iskargell aral may re bos uskissa yn powyow nebes yn kehevelyans dhe'n "
-#~ "iskarger yt-dlp"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "Gul devnydh a aria2c"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "Junyansow Moyha Dre Servell"
-
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "Braster Fols Lyha (MiB)"
-
-#~ msgid "Arguments"
-#~ msgstr "Oberadowyow"
-
-#, fuzzy
-#~ msgid ""
-#~ "These arguments will be appended to yt-dlp during the download phase."
-#~ msgstr "Oberadowyow yw diskwedhys rag dewis y'n fenester \"Addya iskarg\""
-
-#~ msgid "Include Media Id in Title"
-#~ msgstr "Synsi ID Media yn Titel"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "Addya an ID media dhe'n titel defowt"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Finwetha Lytherennow yn Henwyn Restren"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "Fronna lytherennow yn henwyn restren dhe'n res na skoodhys gans Windows"
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "Synsi Istitelow yn Awtomatek"
-
-#~ msgid "Preferences"
-#~ msgstr "Settyansow"
-
-#, fuzzy
-#~ msgid "Prefer these codecs and options when showing formats for download."
-#~ msgstr ""
-#~ "Preferya an codec ma pan redyaow furvasow son dhe diskwedhes kavadow rag "
-#~ "iskarga"
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "Codec Son Dewisek"
-
-#~ msgid "Any"
-#~ msgstr "Neb"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "Treylyell"
-
-#, fuzzy
-#~ msgid "H.265"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (AVC)"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "Codec Istitel Dewisek"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "Kevradh Fram Dewisek"
-
-#, fuzzy
-#~ msgid "24 FPS"
-#~ msgstr "{0} FDE"
-
-#, fuzzy
-#~ msgid "30 FPS"
-#~ msgstr "{0} FDE"
-
-#, fuzzy
-#~ msgid "60 FPS"
-#~ msgstr "{0} FDE"
-
-#~ msgid "Use Part Files"
-#~ msgstr "Devnydhya Restrennow Darn"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "Iskarga media yn restrennow .part dibarow yn-dar distowgh yn an restren "
-#~ "eskorrans"
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "Devnydhya SponsorBlock rag YouTube"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr "Assaya remova treghow arghasieth a-dhia gwydhyowyow"
-
-#~ msgid "Translate Metadata and Chapters"
-#~ msgstr "Treylya Metadata ha Chapters"
-
-#, fuzzy
-#~ msgid ""
-#~ "Automatically translate embedded metadata and chapters using the app's "
-#~ "set language on supported sites and media."
-#~ msgstr ""
-#~ "Treylya yn awtomatek metadata synsys ha chapters dhe'n yeth app war "
-#~ "wiasvaow ha media skoodhys"
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "Finweth Tooth"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "Finwetha Tooth Iskarg"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "Finweth Tooth (KiB/e)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "URL Proxy"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "Restren Cookies"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "Cookies a-dhia Peurell"
-
-#~ msgid "Brave"
-#~ msgstr "Brave"
-
-#~ msgid "Chrome"
-#~ msgstr "Chrome"
-
-#~ msgid "Chromium"
-#~ msgstr "Chromium"
-
-#~ msgid "Edge"
-#~ msgstr "Edge"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "Opera"
-#~ msgstr "Opera"
-
-#~ msgid "Vivaldi"
-#~ msgstr "Vivaldi"
-
-#~ msgid "Whale"
-#~ msgstr "Whale"
-
-#~ msgid "Cookies File"
-#~ msgstr "Restren Cookies"
-
-#~ msgid "Clear"
-#~ msgstr "Dilea"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "Synsi Metadata"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Synsi Metadata"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Dilea Data Devedhyans"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr "Dilea metadata may kontaynya kudhlow iskarg"
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "Synsi Avenyow Byghan"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "Synsi Avenyow Byghan"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "Mars an eghen restren na skoodhya ow synsi, an aven byghan a wra sawys "
-#~ "dhe restren aven dibarow"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Desedha Braster a Avenyow Byghan rag Restrennow Son"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "Desedha avenyow byghan a restrennow son dhe pedrogow"
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "Synsi Chapters"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "Synsi Chapters"
-
-#, fuzzy
-#~ msgid "Subtitles"
-#~ msgstr "Istitlow Vyth"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Synsi Istitlow"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "A marow po a ow synsi na skoodhys, istitelow iskargys a wra sawya dhe "
-#~ "restrennow dibarow"
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "Neusennow FFmpeg"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "Neusennow FFmpeg"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "Finwetha an niver a neusennow devnydhys gans ffmpeg"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr "Oberadowyow yw diskwedhys rag dewis y'n fenester \"Addya iskarg\""
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "Synsi Chapters"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "Folsa Gwydhyow gans Chapters"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "Gwydhyow (Ollgemmyn)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "Treylyell"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "Synsi Istitlow"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "Synsi Avenyow Byghan"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "Istitelow"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "Treylyell"
-
-#~ msgid "Name"
-#~ msgstr "Hanow"
-
-#~ msgid "Post Processor"
-#~ msgstr "Dyghtyer Wosa"
-
-#~ msgid "Executable"
-#~ msgstr "Eksekutadow"
 
 #, fuzzy
 #~ msgid "Search"
@@ -635,16 +1131,9 @@ msgstr ""
 #~ msgid "Extra yt-dlp Discovery Arguments"
 #~ msgstr "Oberadowyow Trovyans yt-dlp"
 
-#~ msgid "Advanced"
-#~ msgstr "Avonsys"
-
 #, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "Oberadowyow Vyth"
-
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Yma oberadow gans an hanow na seulabrys"
 
 #~ msgid "Args"
 #~ msgstr "Oberadowyow"
@@ -652,9 +1141,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "Dastalleth app a res rag chanj dhe weytha"
-
-#~ msgid "About Parabolic"
-#~ msgstr "A-dro dhe Barabolic"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -727,15 +1213,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "Devnydhya Omgelmyans"
 
-#~ msgid "Credential"
-#~ msgstr "Manylyon Usyer"
-
-#~ msgid "Username"
-#~ msgstr "Hanow Usyer"
-
-#~ msgid "Password"
-#~ msgstr "Ger-tremena"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "Iskarga a-dhesempis"
@@ -799,9 +1276,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "Andhewis Oll"
-
-#~ msgid "Options"
-#~ msgstr "Dewisyow"
 
 #~ msgid "Split into Files by Chapters"
 #~ msgstr "Folsa yn Restrennow gans Chapters"
@@ -895,9 +1369,6 @@ msgstr ""
 #~ msgid "Clear All"
 #~ msgstr "Hedhi Oll"
 
-#~ msgid "Credentials"
-#~ msgstr "Manylyon Usyer"
-
 #~ msgid "Loading"
 #~ msgstr "Ow Karga"
 
@@ -989,9 +1460,6 @@ msgstr ""
 #~ msgid "Specify extra arguments to pass to yt-dlp"
 #~ msgstr "Ragnotya oberadowyow moy rag passya dhe yt-dlp"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "Oberadowyow Dyghtya Wosa"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "Addya Oberadow Dyghtyer Wosa"
 
@@ -1020,9 +1488,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "Ankoth"
 
-#~ msgid "Error"
-#~ msgstr "Error"
-
 #~ msgid "Success"
 #~ msgstr "Sewena"
 
@@ -1033,18 +1498,11 @@ msgstr ""
 #~ msgstr "Daskemeres"
 
 #, csharp-format
-#~ msgid "Sleeping for {0}"
-#~ msgstr "Ow koska rag {0}"
-
-#, csharp-format
 #~ msgid "{0}% Complete • {1} • {2} Remaining"
 #~ msgstr "{0}% Dien • {1} • {2} Remenant"
 
 #~ msgid "Stopped"
 #~ msgstr "Hedhys"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "Restrennow TXT (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "Istitelow Kavadow Vyth"
@@ -1070,9 +1528,6 @@ msgstr ""
 
 #~ msgid "No History"
 #~ msgstr "Istori Vyth"
-
-#~ msgid "No Credentials"
-#~ msgstr "Manylyon Usyer Vyth"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "Dilea Manylyon Usyer?"
@@ -1168,12 +1623,6 @@ msgstr ""
 
 #~ msgid "An error occurred while discovering media"
 #~ msgstr "Error dres ow trovya media"
-
-#~ msgid "Use manual credential"
-#~ msgstr "Devnydhya manylyon usyer dre dhorn"
-
-#~ msgid "A credential with that name already exists"
-#~ msgstr "Yma manylyon usyer gans an hanow na seulabrys"
 
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "Hanow manylyon usyer a res"
@@ -1307,10 +1756,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "{0:0.00} B"
 #~ msgstr "{0:0.00} B"
-
-#, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "A-dro {0}"
 
 #~ msgid "Changelog"
 #~ msgstr "Rol a Chanjyow"
@@ -1493,10 +1938,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "A credential is required to continue the download of \"{0}\"."
 #~ msgstr "Manylyon usyer a res rag pesya an iskarg a \"{0}\"."
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "Ger-tremena"
 
 #~ msgid "Updating"
 #~ msgstr "Ow Nowedhi"
@@ -1763,9 +2204,6 @@ msgstr ""
 #~ msgid "New Credential"
 #~ msgstr "Manylyon Usyer Nowydh"
 
-#~ msgid "The provided url is invalid."
-#~ msgstr "An URL provys yw anewn."
-
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr ""
 #~ "Yma unn error ankoth dres owth addya an manylyon usyer dhe'n kelgh "
@@ -1773,12 +2211,6 @@ msgstr ""
 
 #~ msgid "Edit Credential"
 #~ msgstr "Dyllo Manylyon Usyer"
-
-#~ msgid "Delete Credential"
-#~ msgstr "Dilea Manylyon Usyer"
-
-#~ msgid "Start"
-#~ msgstr "Dalleth"
 
 #~ msgid "Documentation"
 #~ msgstr "Kowethlyver"
@@ -1798,17 +2230,11 @@ msgstr ""
 #~ msgid "Check for pre-release (beta) versions of {}"
 #~ msgstr "Checkya dhe versyons arbrovel a {}"
 
-#~ msgid "Version {}"
-#~ msgstr "Versyon {}"
-
 #~ msgid "The installer will start once the download is complete"
 #~ msgstr "An ynstallyans dalleth wosa an iskarg yw leun"
 
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "Kudhlow prevessyans kopys dhe astell glypp"
-
-#~ msgid "New Argument"
-#~ msgstr "Oberadow Nowydh"
 
 #~ msgid "The argument args cannot be empty."
 #~ msgstr "Oberadowyow oberadow a res."

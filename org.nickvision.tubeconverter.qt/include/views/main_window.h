@@ -1,10 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <oclero/qlementine/style/ThemeManager.hpp>
+#include <QCloseEvent>
+#include <QWidget>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
 
-namespace ui
+namespace Ui
 {
     class MainWindow;
 }
@@ -13,16 +14,31 @@ namespace parabolic::qt::views
 {
     class MainWindow : public oclero::qlementine::UnifiedWindow
     {
+        Q_OBJECT
+
     public:
-        MainWindow(oclero::qlementine::ThemeManager* theme_manager, QWidget* parent = nullptr);
+        MainWindow(QWidget* parent = nullptr);
         ~MainWindow() override;
         MainWindow(const MainWindow&) = delete;
         MainWindow(MainWindow&&) = delete;
         MainWindow& operator=(const MainWindow&) = delete;
         MainWindow& operator=(MainWindow&&) = delete;
 
+    protected:
+        void closeEvent(QCloseEvent* event) override;
+
     private:
-        ui::MainWindow* m_ui{ nullptr };
+        Q_SLOT void about();
+        Q_SLOT void add_download() const;
+        Q_SLOT void history();
+        Q_SLOT void keyring();
+        Q_SLOT void page_changed();
+        Q_SLOT void settings();
+        Q_SLOT void tag_music_library() const;
+        Q_SLOT void toggle_sidebar() const;
+        Q_SLOT void translate();
+        Q_SLOT void whats_new();
+        Ui::MainWindow* m_ui{ nullptr };
     };
 }
 

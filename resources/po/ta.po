@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 23:42-0500\n"
+"POT-Creation-Date: 2026-11-27 15:45-0500\n"
 "PO-Revision-Date: 2026-02-06 14:37+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,6 +58,9 @@ msgid "Worst"
 msgstr "மோசமான"
 
 #: libparabolic/src/file.cpp:298
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:621
 msgid "None"
 msgstr "எதுவுமில்லை"
 
@@ -72,475 +75,1011 @@ msgctxt "Resolution"
 msgid "{}x{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/main.cpp:20
+#: org.nickvision.tubeconverter.qt/src/app.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:221
 #, fuzzy
 msgctxt "AppName"
 msgid "Parabolic"
 msgstr "பரபோலிக் பற்றி"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:34
-msgid "Download Media"
-msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:80
+msgid "Don't show this message again"
+msgstr "இந்த செய்தியை மீண்டும் காட்ட வேண்டாம்"
 
-#: org.nickvision.tubeconverter.qt/src/views/home_page.cpp:38
-msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:43
-msgid "Home"
-msgstr "வீடு"
-
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:57
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:93
-msgid "Collapse Navigation"
+#: org.nickvision.tubeconverter.qt/src/app.cpp:82
+#: org.nickvision.tubeconverter.qt/src/app.cpp:83
+msgid "Legal Copyright Disclaimer"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:62
+#: org.nickvision.tubeconverter.qt/src/app.cpp:85
+msgid ""
+"Videos on YouTube and other sites may be subject to DMCA protection. The "
+"authors of Parabolic do not endorse, and are not responsible for, the use of "
+"this application in means that will violate these laws."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/app.cpp:90
+msgid "I understand"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "கடவுச்சொல்லை அமைக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "புதிய கடவுச்சொல்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
+msgid "Credential"
+msgstr "நற்சான்றிதழ்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Name"
+msgstr "பெயர்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
+msgid "URL"
+msgstr "முகவரி"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
+#, fuzzy
+msgid "Optional"
+msgstr "மேம்பட்ட விருப்பங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
+msgid "Username"
+msgstr "பயனர் பெயர்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "இந்த பெயருடன் ஒரு நற்சான்றிதழ் ஏற்கனவே உள்ளது."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "வழங்கப்பட்ட முகவரி தவறானது."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "கடவுச்சொல்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "போச்ட்ரோசெசிங் வாதங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#, fuzzy
+msgid "Post Processor"
+msgstr "இடுகை செயலி"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#, fuzzy
+msgid "Split Chapters"
+msgstr "அத்தியாயங்களால் வீடியோவைப் பிரிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "வீடியோ (பொதுவான)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Video Converter"
+msgstr "குழாய் மாற்றி"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:636
+#, fuzzy
+msgid "Metadata"
+msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "குழாய் மாற்றி"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "குழாய் மாற்றி"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+msgid "Executable"
+msgstr "இயங்கக்கூடிய"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:653
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Ffmpeg நூல்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
+msgid "Argument"
+msgstr "உரையாடல்"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "இந்த பெயருடன் ஒரு உரையாடல் ஏற்கனவே உள்ளது."
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:84
+#, fuzzy, c++-format
+msgid "Version {}"
+msgstr "பதிப்பு: {0}"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:86
+#, fuzzy
+msgid "Start"
+msgstr "தொடங்குகிறது"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:87
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:232
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:233
 msgid "Add Download"
 msgstr "பதிவிறக்கத்தைச் சேர்க்கவும்"
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:92
-msgid "Expand Navigation"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:88
+msgid "Create a new video or audio download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:109
-msgid "Switch to Light Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:89
+msgid "Tag Music Library"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:110
-msgid "Switch to Dark Theme"
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:90
+msgid "Open a music library for tagging."
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:91
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:239
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:242
+msgid "Keyring"
+msgstr "சாவி வளையம்"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:92
+msgid "Manage credentials for your websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:222
+msgid "What's New?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:94
+msgid "Help"
+msgstr "உதவி"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:95
+#, fuzzy
+msgid "GitHub Repository"
+msgstr "GitHub களஞ்சியம்"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:96
+msgid "Browse the source code."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:97
+#, fuzzy
+msgid "Report an Issue"
+msgstr "ஒரு பிழையைப் புகாரளிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:98
+msgid "File a bug or feature request."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:165
+#, fuzzy
+msgid "Discussions"
+msgstr "விவாதங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/pages/home_page.cpp:100
+msgid "Chat with the developer community."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:234
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:237
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:530
+#, fuzzy
+msgid "History"
+msgstr "வரலாறு"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
+msgid "Error"
+msgstr "பிழை"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, c++-format
+msgid "System keyring error: {}"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
+#, fuzzy
+msgid "Remove Credential"
+msgstr "நற்சான்றிதழ்கள் இல்லை"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
+#, fuzzy, c++-format
+msgid "Are you sure you want to remove \"{}\"?"
+msgstr "இந்த வாதத்தை நீக்க விரும்புகிறீர்களா?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
+#, fuzzy
+msgid ""
+"Add, delete, and modify credentials for validating websites. These will show "
+"in the add download dialog for selection."
+msgstr "வலைத்தளங்களை சரிபார்க்க நற்சான்றிதழ்களைச் சேர்க்கவும், நீக்கவும், மாற்றவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
+msgid "Add"
+msgstr "சேர்"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
+msgid "Edit"
+msgstr "தொகு"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
+msgid "Remove"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:153
+#, fuzzy
+msgctxt "AppName"
+msgid "About Paraboloc"
+msgstr "பரபோலிக் பற்றி"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:161
+msgid "Issues"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:229
+msgid "Expand Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:230
+msgid "Collapse Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:224
+msgid "Home"
+msgstr "வீடு"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:225
+#, fuzzy
+msgid "Downloads"
+msgstr "பதிவிறக்கங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:226
+msgid "Tagger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:526
+#, fuzzy
+msgid "Updates"
+msgstr "புதுப்பிப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:228
+msgid "Toggle Sidebar"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:231
+#, fuzzy
+msgid "About"
+msgstr "பற்றி"
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:236
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:246
+#, c++-format
+msgid "{} ({})"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:247
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
+#, fuzzy
+msgid "Settings"
+msgstr "அமைப்புகள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Cookies File"
+msgstr "குக்கீகள் கோப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:286
+#, fuzzy
+msgid "Text Files (*.txt)"
+msgstr "Txt கோப்புகள் (*.txt)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:368
+#, fuzzy
+msgid "Remove Argument"
+msgstr "புதிய உரையாடல்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:487
+#, fuzzy
+msgctxt "Settings"
+msgid "General"
+msgstr "பொது"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:488
+#, fuzzy
+msgctxt "Settings"
+msgid "Discovery"
+msgstr "மறுப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:489
+#, fuzzy
+msgctxt "Settings"
+msgid "Downloads"
+msgstr "பதிவிறக்கங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:490
+msgctxt "Settings"
+msgid "Extractor"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:491
+#, fuzzy
+msgctxt "Settings"
+msgid "Postprocessing"
+msgstr "போச்ட்ரோசெசிங்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:492
+msgid "User Interface"
+msgstr "பயனர் இடைமுகம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:493
+msgid "Theme"
+msgstr "கருப்பொருள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Light"
+msgstr "ஒளி"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "Dark"
+msgstr "இருள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:496
+msgctxt "Theme"
+msgid "System"
+msgstr "அமைப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:498
+#, fuzzy
+msgid "Translation Language"
+msgstr "ஒலி மொழி"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:499
+#, fuzzy
+msgctxt "Language"
+msgid "System"
+msgstr "மண்டலம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:527
+msgid "Automatically Check for Updates"
+msgstr "புதுப்பிப்புகளை தானாக சரிபார்க்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:528
+#, fuzzy
+msgid "Allow Preview Updates"
+msgstr "புதுப்பிப்புகளை சரிபார்க்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:529
+msgid "Update the app and dependencies, such as yt-dlp, to beta versions."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:532
+#, fuzzy
+msgid "Keep Download History For"
+msgstr "வரலாற்று நீளத்தைப் பதிவிறக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:534
+msgid "Never"
+msgstr "ஒருபோதும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:535
+#, fuzzy
+msgid "1 Day"
+msgstr "ஒரு நாள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:536
+#, fuzzy
+msgid "1 Week"
+msgstr "ஒரு வாரம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:537
+#, fuzzy
+msgid "1 Month"
+msgstr "ஒரு மாதம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:538
+#, fuzzy
+msgid "3 Months"
+msgstr "ஒரு மாதம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:539
+#, fuzzy
+msgid "6 Months"
+msgstr "ஒரு மாதம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:540
+msgid "1 Year"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:541
+msgid "Forever"
+msgstr "என்றென்றும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:543
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:587
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:604
+#, fuzzy
+msgid "Process"
+msgstr "செயலாக்கம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:544
+#, fuzzy
+msgid "Include Media Id in Title"
+msgstr "தலைப்பில் மீடியா ஐடியைச் சேர்க்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:545
+#, fuzzy
+msgid "Add the media entry's yt-dlp id to its default title."
+msgstr "பரபோலிக் அதன் இயல்புநிலை தலைப்பில் ஊடகத்தின் ஐடியை உள்ளடக்கும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:546
+msgid "Limit Filename Characters"
+msgstr "கோப்பு பெயர் எழுத்துக்களைக் கட்டுப்படுத்துங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:547
+#, fuzzy
+msgid "Restrict filename characters to those supported only by Windows."
+msgstr ""
+"பரபோலிக் கோப்பு பெயர்களில் உள்ள எழுத்துக்களை விண்டோசால் மட்டுமே ஆதரிக்கப்படுபவர்களுக்கு "
+"கட்டுப்படுத்தும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:548
+msgid "Show Super Resolution Formats"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:550
+msgid ""
+"Super resolutions are resolutions that have been enhanced with artificial "
+"intelligence."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:551
+#, fuzzy
+msgid "Show Auto-Generated Subtitles"
+msgstr "தானாக உருவாக்கிய வசன வரிகள் சேர்க்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:552
+msgid "Preferences"
+msgstr "விருப்பங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:554
+#, fuzzy
+msgid "Prefer these codecs and options when showing formats for download."
+msgstr ""
+"பதிவிறக்கம் செய்ய ஊடக வடிவங்களை பாகுபடுத்தும்போது ஆடியோ கோடெக் பரவளைய விரும்ப வேண்டும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:555
+#, fuzzy
+msgid "Audio Codec"
+msgstr "விருப்பமான ஆடியோ கோடெக்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:557
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:567
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "Any"
+msgstr "ஏதேனும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:558
+msgid "FLAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:559
+msgid "WAV"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:560
+msgid "Opus"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:561
+msgid "AAC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:562
+msgid "MP4A"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:563
+msgid "MP3"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:565
+#, fuzzy
+msgid "Video Codec"
+msgstr "குழாய் மாற்றி"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:568
+#, fuzzy
+msgid "H.265"
+msgstr "H.264 (பக்கவாதம்)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:569
+msgid "VP9"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:570
+msgid "AV1"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:571
+#, fuzzy
+msgid "H.264"
+msgstr "H.264 (பக்கவாதம்)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:573
+#, fuzzy
+msgid "Subtitle Format"
+msgstr "விருப்பமான வசன வடிவமைப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "VTT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "SRT"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "ASS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:576
+msgid "LRC"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:578
+#, fuzzy
+msgid "Frame Rate"
+msgstr "விருப்பமான வசன வடிவமைப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "24 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "30 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:581
+msgid "60 FPS"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:583
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:600
+msgid "Advanced"
+msgstr "மேம்பட்ட"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:584
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:601
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:656
+msgid "Arguments"
+msgstr "வாதங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:586
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the discovery phase."
+msgstr "பதிவிறக்க உரையாடலில் தேர்வு செய்வதற்கான இந்த வாதங்களை பரபோலிக் காண்பிக்கும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:588
+#, fuzzy
+msgid "Maximum Active Downloads"
+msgstr "இயங்கும் பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:589
+msgid "Overwrite Existing Files"
+msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:590
+msgid "Prevent Sleep During Downloads"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:591
+#, fuzzy
+msgid "aria2"
+msgstr "ARIA2C"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:592
+msgid ""
+"An alternative downloader that may be faster in some regions compared to yt-"
+"dlp's native downloader."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:594
+#, fuzzy
+msgid "Use aria2"
+msgstr "ARIA2C ஐப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:595
+msgid "Learn More"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:597
+#, fuzzy
+msgid "Maximum Connections Per Server"
+msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:599
+#, fuzzy
+msgid "Minimum Split Size (MiB)"
+msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:603
+#, fuzzy
+msgid "These arguments will be appended to yt-dlp during the download phase."
+msgstr "பதிவிறக்க உரையாடலில் தேர்வு செய்வதற்கான இந்த வாதங்களை பரபோலிக் காண்பிக்கும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
+msgid "Use Part Files"
+msgstr "பகுதி கோப்புகளைப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:607
+#, fuzzy
+msgid ""
+"Download media in separate .part files instead of directly into the output "
+"file."
+msgstr "பரபோலிக் வெளியீட்டு கோப்பில் நேரடியாக பதிலாக ஊடகங்களை தனித்தனியாக பதிவிறக்கும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:608
+#, fuzzy
+msgid "Enable SponsorBlock for YouTube"
+msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
+#, fuzzy
+msgid "Try to remove sponsored segments from videos."
+msgstr ""
+"யூடியூப் வீடியோக்களிலிருந்து ஒப்புரவாளர் செய்யப்பட்ட பிரிவுகளை அகற்ற பரபோலிக் "
+"முயற்சிக்கும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:610
+msgid "Translate Metadata and Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:611
+msgid ""
+"Automatically translate embedded metadata and chapters using the app's set "
+"language on supported sites and media."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:613
+#, fuzzy
+msgid "Speed"
+msgstr "வேக வரம்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:614
+msgid "Limit Download Speed"
+msgstr "பதிவிறக்க வேகத்தை கட்டுப்படுத்துங்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:615
+msgid "Speed Limit (KiB/s)"
+msgstr "வேக வரம்பு (KIB/s)"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:616
+#, fuzzy
+msgid "Proxy"
+msgstr "ப்ராக்ஸி URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:618
+#, fuzzy
+msgid "Cookies"
+msgstr "குக்கீகள் கோப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:619
+#, fuzzy
+msgid "Browser"
+msgstr "உலாவியில் இருந்து குக்கீகள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:622
+msgid "Brave"
+msgstr "தைரியமான"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:623
+msgid "Chrome"
+msgstr "குரோம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
+msgid "Chromium"
+msgstr "நீலிரும்பு, குருமம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:625
+msgid "Edge"
+msgstr "விளிம்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:626
+msgid "Firefox"
+msgstr "பயர்பாக்ச்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:627
+msgid "Opera"
+msgstr "ஓபரா"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:628
+msgid "Vivaldi"
+msgstr "விவால்டி"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:629
+msgid "Whale"
+msgstr "திமிங்கலம்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:632
+msgid ""
+"Selecting a browser other than \"None\" will use it instead of the cookies "
+"file."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:633
+msgid "File"
+msgstr "கோப்பு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:634
+#, fuzzy
+msgid "Browse"
+msgstr "உலாவியில் இருந்து குக்கீகள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:635
+#, fuzzy
+msgid "Clear"
+msgstr "தெளிவாக்கு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:637
+msgid "Embed Metadata"
+msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:638
+msgid "Remove Source Data"
+msgstr "மூலத் தரவை அகற்று"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:640
+#, fuzzy
+msgid "Clear metadata fields containing identifying download information."
+msgstr "பதிவிறக்கத் தகவல்களை அடையாளம் காணும் மேனிலை தரவு புலங்களை பரபோலிக் அழிக்கும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
+#, fuzzy
+msgid "Thumbnails"
+msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:642
+msgid "Embed Thumbnails"
+msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:643
+#, fuzzy
+msgid ""
+"If the file type does not support embedding, the thumbnail will be written "
+"to a separate image file."
+msgstr ""
+"கோப்பு வகை உட்பொதிப்பதை ஆதரிக்கவில்லை என்றால், சிறுபடம் ஒரு தனி படக் கோப்பில் எழுதப்படும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:645
+msgid "Crop Audio Thumbnails"
+msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:646
+#, fuzzy
+msgid "Crop thumbnails of audio files to squares."
+msgstr "பரபோலிக் ஆடியோ கோப்புகளின் சிறு உருவங்களை சதுரங்களுக்கு பயிர் செய்யும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:647
+#, fuzzy
+msgid "Chapters"
+msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:648
+msgid "Embed Chapters"
+msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:649
+msgid "Subtitles"
+msgstr "வசன வரிகள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:650
+msgid "Embed Subtitles"
+msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:652
+#, fuzzy
+msgid ""
+"If disabled or if embedding is not supported, downloaded subtitles will be "
+"saved to separate files."
+msgstr ""
+"முடக்கப்பட்டிருந்தால் அல்லது உட்பொதித்தல் ஆதரிக்கப்படாவிட்டால், பதிவிறக்கம் செய்யப்பட்ட வசனங்கள் "
+"தனித்தனி கோப்புகளுக்கு சேமிக்கப்படும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:654
+#, fuzzy
+msgid "Threads"
+msgstr "Ffmpeg நூல்கள்"
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:655
+#, fuzzy
+msgid "Limit the number of threads used by ffmpeg."
+msgstr "பரபோலிக் FFMPEG ஆல் பயன்படுத்தப்படும் நூல்களின் எண்ணிக்கையை கட்டுப்படுத்தும்."
+
+#: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:658
+#, fuzzy
+msgid "Arguments will be shown for selection in the download discovery dialog."
+msgstr "பதிவிறக்க உரையாடலில் தேர்வு செய்வதற்கான இந்த வாதங்களை பரபோலிக் காண்பிக்கும்."
 
 #, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "பதிவிறக்கங்கள்"
-
-#~ msgid "Keyring"
-#~ msgstr "சாவி வளையம்"
+#~ msgid "Unable to add the credential."
+#~ msgstr "நற்சான்றிதழ் நீக்கு"
 
 #, fuzzy
-#~ msgid "History"
-#~ msgstr "வரலாறு"
+#~ msgid "Unable to read the credential."
+#~ msgstr "நற்சான்றிதழ் நீக்கு"
 
-#~ msgid "File"
-#~ msgstr "கோப்பு"
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "சாவி வலயத்தை முடக்க முடியவில்லை."
+
+#, fuzzy
+#~ msgid "Unable to remove the credential."
+#~ msgstr "சாவி வலயத்தை மீட்டமைக்க முடியவில்லை."
+
+#~ msgid "Credentials"
+#~ msgstr "நற்சான்றிதழ்கள்"
+
+#, fuzzy
+#~ msgid "Text Files"
+#~ msgstr "பகுதி கோப்புகளைப் பயன்படுத்தவும்"
+
+#, fuzzy
+#~ msgid "Browse…"
+#~ msgstr "உலாவியில் இருந்து குக்கீகள்"
+
+#~ msgid "Download Media"
+#~ msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
+
+#~ msgid "Add a video, audio, or playlist URL to start downloading"
+#~ msgstr ""
+#~ "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
 
 #~ msgid "Exit"
 #~ msgstr "வெளியேறு"
 
-#~ msgid "Edit"
-#~ msgstr "தொகு"
-
-#, fuzzy
-#~ msgid "Settings"
-#~ msgstr "அமைப்புகள்"
-
 #~ msgid "View"
 #~ msgstr "பார்வை"
-
-#~ msgid "Theme"
-#~ msgstr "கருப்பொருள்"
-
-#~ msgctxt "Theme"
-#~ msgid "Light"
-#~ msgstr "ஒளி"
-
-#~ msgctxt "Theme"
-#~ msgid "Dark"
-#~ msgstr "இருள்"
-
-#~ msgctxt "Theme"
-#~ msgid "System"
-#~ msgstr "அமைப்பு"
-
-#~ msgid "Help"
-#~ msgstr "உதவி"
 
 #, fuzzy
 #~ msgid "Check for Updates"
 #~ msgstr "புதுப்பிப்புகளை சரிபார்க்கவும்"
-
-#, fuzzy
-#~ msgid "Report a Bug"
-#~ msgstr "ஒரு பிழையைப் புகாரளிக்கவும்"
-
-#, fuzzy
-#~ msgid "GitHub Repository"
-#~ msgstr "GitHub களஞ்சியம்"
-
-#, fuzzy
-#~ msgid "Discussions"
-#~ msgstr "விவாதங்கள்"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "இந்த செய்தியை மீண்டும் காட்ட வேண்டாம்"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "பொது"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Discovery"
-#~ msgstr "மறுப்பு"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Downloads"
-#~ msgstr "பதிவிறக்கங்கள்"
-
-#, fuzzy
-#~ msgctxt "Settings"
-#~ msgid "Postprocessing"
-#~ msgstr "போச்ட்ரோசெசிங்"
-
-#~ msgid "Add"
-#~ msgstr "சேர்"
-
-#~ msgid "Argument"
-#~ msgstr "உரையாடல்"
-
-#~ msgid "User Interface"
-#~ msgstr "பயனர் இடைமுகம்"
-
-#, fuzzy
-#~ msgid "Translation Language"
-#~ msgstr "ஒலி மொழி"
-
-#, fuzzy
-#~ msgctxt "Language"
-#~ msgid "System"
-#~ msgstr "மண்டலம்"
-
-#, fuzzy
-#~ msgid "Updates"
-#~ msgstr "புதுப்பிப்பு"
-
-#~ msgid "Automatically Check for Updates"
-#~ msgstr "புதுப்பிப்புகளை தானாக சரிபார்க்கவும்"
-
-#, fuzzy
-#~ msgid "Allow Preview Updates"
-#~ msgstr "புதுப்பிப்புகளை சரிபார்க்கவும்"
-
-#, fuzzy
-#~ msgid "Keep Download History For"
-#~ msgstr "வரலாற்று நீளத்தைப் பதிவிறக்கவும்"
-
-#~ msgid "Never"
-#~ msgstr "ஒருபோதும்"
-
-#, fuzzy
-#~ msgid "1 Day"
-#~ msgstr "ஒரு நாள்"
-
-#, fuzzy
-#~ msgid "1 Week"
-#~ msgstr "ஒரு வாரம்"
-
-#, fuzzy
-#~ msgid "1 Month"
-#~ msgstr "ஒரு மாதம்"
-
-#, fuzzy
-#~ msgid "3 Months"
-#~ msgstr "ஒரு மாதம்"
-
-#, fuzzy
-#~ msgid "6 Months"
-#~ msgstr "ஒரு மாதம்"
-
-#~ msgid "Forever"
-#~ msgstr "என்றென்றும்"
-
-#, fuzzy
-#~ msgid "Process"
-#~ msgstr "செயலாக்கம்"
-
-#, fuzzy
-#~ msgid "Maximum Active Downloads"
-#~ msgstr "இயங்கும் பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
-
-#, fuzzy
-#~ msgid "aria2"
-#~ msgstr "ARIA2C"
-
-#, fuzzy
-#~ msgid "Use aria2"
-#~ msgstr "ARIA2C ஐப் பயன்படுத்தவும்"
-
-#, fuzzy
-#~ msgid "Maximum Connections Per Server"
-#~ msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
-
-#, fuzzy
-#~ msgid "Minimum Split Size (MiB)"
-#~ msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
-
-#~ msgid "Arguments"
-#~ msgstr "வாதங்கள்"
-
-#, fuzzy
-#~ msgid ""
-#~ "These arguments will be appended to yt-dlp during the download phase."
-#~ msgstr "பதிவிறக்க உரையாடலில் தேர்வு செய்வதற்கான இந்த வாதங்களை பரபோலிக் காண்பிக்கும்."
-
-#, fuzzy
-#~ msgid "Include Media Id in Title"
-#~ msgstr "தலைப்பில் மீடியா ஐடியைச் சேர்க்கவும்"
-
-#, fuzzy
-#~ msgid "Add the media entry's yt-dlp id to its default title."
-#~ msgstr "பரபோலிக் அதன் இயல்புநிலை தலைப்பில் ஊடகத்தின் ஐடியை உள்ளடக்கும்."
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "கோப்பு பெயர் எழுத்துக்களைக் கட்டுப்படுத்துங்கள்"
-
-#, fuzzy
-#~ msgid "Restrict filename characters to those supported only by Windows."
-#~ msgstr ""
-#~ "பரபோலிக் கோப்பு பெயர்களில் உள்ள எழுத்துக்களை விண்டோசால் மட்டுமே ஆதரிக்கப்படுபவர்களுக்கு "
-#~ "கட்டுப்படுத்தும்."
-
-#, fuzzy
-#~ msgid "Show Auto-Generated Subtitles"
-#~ msgstr "தானாக உருவாக்கிய வசன வரிகள் சேர்க்கவும்"
-
-#~ msgid "Preferences"
-#~ msgstr "விருப்பங்கள்"
-
-#, fuzzy
-#~ msgid "Prefer these codecs and options when showing formats for download."
-#~ msgstr ""
-#~ "பதிவிறக்கம் செய்ய ஊடக வடிவங்களை பாகுபடுத்தும்போது ஆடியோ கோடெக் பரவளைய விரும்ப "
-#~ "வேண்டும்."
-
-#, fuzzy
-#~ msgid "Audio Codec"
-#~ msgstr "விருப்பமான ஆடியோ கோடெக்"
-
-#~ msgid "Any"
-#~ msgstr "ஏதேனும்"
-
-#, fuzzy
-#~ msgid "Video Codec"
-#~ msgstr "குழாய் மாற்றி"
-
-#, fuzzy
-#~ msgid "H.265"
-#~ msgstr "H.264 (பக்கவாதம்)"
-
-#, fuzzy
-#~ msgid "H.264"
-#~ msgstr "H.264 (பக்கவாதம்)"
-
-#, fuzzy
-#~ msgid "Subtitle Format"
-#~ msgstr "விருப்பமான வசன வடிவமைப்பு"
-
-#, fuzzy
-#~ msgid "Frame Rate"
-#~ msgstr "விருப்பமான வசன வடிவமைப்பு"
-
-#~ msgid "Use Part Files"
-#~ msgstr "பகுதி கோப்புகளைப் பயன்படுத்தவும்"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download media in separate .part files instead of directly into the "
-#~ "output file."
-#~ msgstr ""
-#~ "பரபோலிக் வெளியீட்டு கோப்பில் நேரடியாக பதிலாக ஊடகங்களை தனித்தனியாக பதிவிறக்கும்."
-
-#, fuzzy
-#~ msgid "Enable SponsorBlock for YouTube"
-#~ msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
-
-#, fuzzy
-#~ msgid "Try to remove sponsored segments from videos."
-#~ msgstr ""
-#~ "யூடியூப் வீடியோக்களிலிருந்து ஒப்புரவாளர் செய்யப்பட்ட பிரிவுகளை அகற்ற பரபோலிக் "
-#~ "முயற்சிக்கும்."
-
-#, fuzzy
-#~ msgid "Speed"
-#~ msgstr "வேக வரம்பு"
-
-#~ msgid "Limit Download Speed"
-#~ msgstr "பதிவிறக்க வேகத்தை கட்டுப்படுத்துங்கள்"
-
-#~ msgid "Speed Limit (KiB/s)"
-#~ msgstr "வேக வரம்பு (KIB/s)"
-
-#, fuzzy
-#~ msgid "Proxy"
-#~ msgstr "ப்ராக்ஸி URL"
-
-#~ msgid "URL"
-#~ msgstr "முகவரி"
-
-#, fuzzy
-#~ msgid "Cookies"
-#~ msgstr "குக்கீகள் கோப்பு"
-
-#, fuzzy
-#~ msgid "Browser"
-#~ msgstr "உலாவியில் இருந்து குக்கீகள்"
-
-#~ msgid "Brave"
-#~ msgstr "தைரியமான"
-
-#~ msgid "Chrome"
-#~ msgstr "குரோம்"
-
-#~ msgid "Chromium"
-#~ msgstr "நீலிரும்பு, குருமம்"
-
-#~ msgid "Edge"
-#~ msgstr "விளிம்பு"
-
-#~ msgid "Firefox"
-#~ msgstr "பயர்பாக்ச்"
-
-#~ msgid "Opera"
-#~ msgstr "ஓபரா"
-
-#~ msgid "Vivaldi"
-#~ msgstr "விவால்டி"
-
-#~ msgid "Whale"
-#~ msgstr "திமிங்கலம்"
-
-#, fuzzy
-#~ msgid "Cookies File"
-#~ msgstr "குக்கீகள் கோப்பு"
-
-#, fuzzy
-#~ msgid "Clear"
-#~ msgstr "தெளிவாக்கு"
-
-#, fuzzy
-#~ msgid "Metadata"
-#~ msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "மூலத் தரவை அகற்று"
-
-#, fuzzy
-#~ msgid "Clear metadata fields containing identifying download information."
-#~ msgstr ""
-#~ "பதிவிறக்கத் தகவல்களை அடையாளம் காணும் மேனிலை தரவு புலங்களை பரபோலிக் அழிக்கும்."
-
-#, fuzzy
-#~ msgid "Thumbnails"
-#~ msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
-
-#~ msgid "Embed Thumbnails"
-#~ msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
-
-#, fuzzy
-#~ msgid ""
-#~ "If the file type does not support embedding, the thumbnail will be "
-#~ "written to a separate image file."
-#~ msgstr ""
-#~ "கோப்பு வகை உட்பொதிப்பதை ஆதரிக்கவில்லை என்றால், சிறுபடம் ஒரு தனி படக் கோப்பில் "
-#~ "எழுதப்படும்."
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
-
-#, fuzzy
-#~ msgid "Crop thumbnails of audio files to squares."
-#~ msgstr "பரபோலிக் ஆடியோ கோப்புகளின் சிறு உருவங்களை சதுரங்களுக்கு பயிர் செய்யும்."
-
-#, fuzzy
-#~ msgid "Chapters"
-#~ msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
-
-#~ msgid "Embed Chapters"
-#~ msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
-
-#~ msgid "Subtitles"
-#~ msgstr "வசன வரிகள்"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
-
-#, fuzzy
-#~ msgid ""
-#~ "If disabled or if embedding is not supported, downloaded subtitles will "
-#~ "be saved to separate files."
-#~ msgstr ""
-#~ "முடக்கப்பட்டிருந்தால் அல்லது உட்பொதித்தல் ஆதரிக்கப்படாவிட்டால், பதிவிறக்கம் செய்யப்பட்ட "
-#~ "வசனங்கள் தனித்தனி கோப்புகளுக்கு சேமிக்கப்படும்."
-
-#, fuzzy
-#~ msgid "FFmpeg"
-#~ msgstr "Ffmpeg நூல்கள்"
-
-#, fuzzy
-#~ msgid "Threads"
-#~ msgstr "Ffmpeg நூல்கள்"
-
-#, fuzzy
-#~ msgid "Limit the number of threads used by ffmpeg."
-#~ msgstr "பரபோலிக் FFMPEG ஆல் பயன்படுத்தப்படும் நூல்களின் எண்ணிக்கையை கட்டுப்படுத்தும்."
-
-#, fuzzy
-#~ msgid ""
-#~ "Arguments will be shown for selection in the download discovery dialog."
-#~ msgstr "பதிவிறக்க உரையாடலில் தேர்வு செய்வதற்கான இந்த வாதங்களை பரபோலிக் காண்பிக்கும்."
-
-#, fuzzy
-#~ msgid "Modify Chapters"
-#~ msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
-
-#, fuzzy
-#~ msgid "Split Chapters"
-#~ msgstr "அத்தியாயங்களால் வீடியோவைப் பிரிக்கவும்"
-
-#, fuzzy
-#~ msgid "Video Remuxer"
-#~ msgstr "வீடியோ (பொதுவான)"
-
-#, fuzzy
-#~ msgid "Video Converter"
-#~ msgstr "குழாய் மாற்றி"
-
-#, fuzzy
-#~ msgid "Embed Subtitle"
-#~ msgstr "உட்பொதிக்கப்பட்ட வசன வரிகள்"
-
-#, fuzzy
-#~ msgid "Embed Thumbnail"
-#~ msgstr "சிறு உருவங்களை உட்பொதிக்கவும்"
-
-#, fuzzy
-#~ msgid "Subtitles Converter"
-#~ msgstr "குழாய் மாற்றி"
-
-#, fuzzy
-#~ msgid "Thumbnails Converter"
-#~ msgstr "குழாய் மாற்றி"
-
-#~ msgid "Name"
-#~ msgstr "பெயர்"
-
-#, fuzzy
-#~ msgid "Post Processor"
-#~ msgstr "இடுகை செயலி"
-
-#~ msgid "Executable"
-#~ msgstr "இயங்கக்கூடிய"
 
 #, fuzzy
 #~ msgid "Search"
@@ -589,22 +1128,12 @@ msgstr ""
 #~ msgid "Extra yt-dlp Discovery Arguments"
 #~ msgstr "பிந்தைய செயலி உரையாடல்"
 
-#~ msgid "Advanced"
-#~ msgstr "மேம்பட்ட"
-
 #, fuzzy
 #~ msgid "Manage Arguments…"
 #~ msgstr "வாதங்கள் இல்லை"
 
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "இந்த பெயருடன் ஒரு உரையாடல் ஏற்கனவே உள்ளது."
-
 #~ msgid "Args"
 #~ msgstr "ஆர்க்ச்"
-
-#~ msgid "About Parabolic"
-#~ msgstr "பரபோலிக் பற்றி"
 
 #, fuzzy
 #~ msgid "Check for Updates…"
@@ -676,15 +1205,6 @@ msgstr ""
 #~ msgid "Use Authentication"
 #~ msgstr "ஏற்பு"
 
-#~ msgid "Credential"
-#~ msgstr "நற்சான்றிதழ்"
-
-#~ msgid "Username"
-#~ msgstr "பயனர் பெயர்"
-
-#~ msgid "Password"
-#~ msgstr "கடவுச்சொல்"
-
 #, fuzzy
 #~ msgid "Download Immediately as Video"
 #~ msgstr "உடனடியாக பதிவிறக்கவும்"
@@ -744,10 +1264,6 @@ msgstr ""
 
 #~ msgid "Deselect All"
 #~ msgstr "அனைத்து தெரிவுகளையும் நிராகரி"
-
-#, fuzzy
-#~ msgid "Options"
-#~ msgstr "மேம்பட்ட விருப்பங்கள்"
 
 #, fuzzy
 #~ msgid "Split into Files by Chapters"
@@ -815,9 +1331,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Clear All"
 #~ msgstr "தெளிவாக்கு"
-
-#~ msgid "Credentials"
-#~ msgstr "நற்சான்றிதழ்கள்"
 
 #, fuzzy
 #~ msgid "Loading"
@@ -928,9 +1441,6 @@ msgstr ""
 #~ msgid "Converter"
 #~ msgstr "மாற்றி"
 
-#~ msgid "Postprocessing Arguments"
-#~ msgstr "போச்ட்ரோசெசிங் வாதங்கள்"
-
 #~ msgid "Add Postprocessing Argument"
 #~ msgstr "போச்ட்ரோசெசிங் வாதத்தை சேர்க்கவும்"
 
@@ -963,9 +1473,6 @@ msgstr ""
 #~ msgid "Unknown"
 #~ msgstr "தெரியவில்லை"
 
-#~ msgid "Error"
-#~ msgstr "பிழை"
-
 #~ msgid "Success"
 #~ msgstr "வெற்றி"
 
@@ -981,9 +1488,6 @@ msgstr ""
 
 #~ msgid "Stopped"
 #~ msgstr "நிறுத்தப்பட்டது"
-
-#~ msgid "TXT Files (*.txt)"
-#~ msgstr "Txt கோப்புகள் (*.txt)"
 
 #~ msgid "No Subtitles Available"
 #~ msgstr "வசன வரிகள் எதுவும் கிடைக்கவில்லை"
@@ -1008,9 +1512,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No History"
 #~ msgstr "வரலாறு"
-
-#~ msgid "No Credentials"
-#~ msgstr "நற்சான்றிதழ்கள் இல்லை"
 
 #~ msgid "Delete Credential?"
 #~ msgstr "நற்சான்றிதழை நீக்கவா?"
@@ -1103,10 +1604,6 @@ msgstr ""
 
 #~ msgid "Use manual credential"
 #~ msgstr "கைமுறை நற்சான்றிதழைப் பயன்படுத்தவும்"
-
-#, fuzzy
-#~ msgid "A credential with that name already exists"
-#~ msgstr "இந்த பெயருடன் ஒரு நற்சான்றிதழ் ஏற்கனவே உள்ளது."
 
 #, fuzzy
 #~ msgid "The name of the credential cannot be empty"
@@ -1216,10 +1713,6 @@ msgstr ""
 #, fuzzy, csharp-format
 #~ msgid "{0:0.00} KiB"
 #~ msgstr "{:.2f} என்பது"
-
-#, fuzzy, csharp-format
-#~ msgid "About {0}"
-#~ msgstr "பற்றி"
 
 #~ msgid "Changelog"
 #~ msgstr "மாற்றபதிவு"
@@ -1350,10 +1843,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Post-Processor"
 #~ msgstr "இடுகை செயலி"
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "கடவுச்சொல்"
 
 #, fuzzy
 #~ msgid "Updating"
@@ -1589,9 +2078,6 @@ msgstr ""
 #~ msgid "{} version {} is available to download and install"
 #~ msgstr "புதுப்பிப்பைப் பதிவிறக்கி நிறுவ முடியவில்லை"
 
-#~ msgid "Are you sure you want to delete this argument?"
-#~ msgstr "இந்த வாதத்தை நீக்க விரும்புகிறீர்களா?"
-
 #~ msgid "Args (Empty)"
 #~ msgstr "ஆர்க்ச் (காலியாக)"
 
@@ -1628,21 +2114,11 @@ msgstr ""
 #~ msgid "The credential name cannot be empty."
 #~ msgstr "நற்சான்றிதழ் பெயர் காலியாக இருக்க முடியாது."
 
-#~ msgid "The provided url is invalid."
-#~ msgstr "வழங்கப்பட்ட முகவரி தவறானது."
-
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "கெய்ரிங்கிற்கு நற்சான்றிதழைச் சேர்ப்பது தெரியாத பிழை இருந்தது."
 
 #~ msgid "Edit Credential"
 #~ msgstr "நற்சான்றிதழைத் திருத்தவும்"
-
-#~ msgid "Delete Credential"
-#~ msgstr "நற்சான்றிதழ் நீக்கு"
-
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "தொடங்குகிறது"
 
 #~ msgid "Documentation"
 #~ msgstr "ஆவணப்படுத்துதல்"
@@ -1652,15 +2128,8 @@ msgstr ""
 #~ msgstr "பதிவிறக்குகிறது"
 
 #, fuzzy
-#~ msgid "Version {}"
-#~ msgstr "பதிப்பு: {0}"
-
-#, fuzzy
 #~ msgid "Debug information copied to clipboard"
 #~ msgstr "பதிவிறக்கப் பதிவு கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது."
-
-#~ msgid "New Argument"
-#~ msgstr "புதிய உரையாடல்"
 
 #, fuzzy
 #~ msgid ""
@@ -1748,10 +2217,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Download some media to see it here"
 #~ msgstr "உடனடியாக பதிவிறக்கவும்"
-
-#, fuzzy
-#~ msgid "Add, delete and modify credentials for validating websites"
-#~ msgstr "வலைத்தளங்களை சரிபார்க்க நற்சான்றிதழ்களைச் சேர்க்கவும், நீக்கவும், மாற்றவும்"
 
 #, fuzzy
 #~ msgid "Revert File Name"
@@ -2114,12 +2579,6 @@ msgstr ""
 #~ "இது அனைத்து கடவுச்சொற்களையும் அகற்றும் முந்தைய சாவி வலயத்தை நீக்கும். இந்த நடவடிக்கை "
 #~ "மீள முடியாதது."
 
-#~ msgid "Unable to disable keyring."
-#~ msgstr "சாவி வலயத்தை முடக்க முடியவில்லை."
-
-#~ msgid "Unable to reset keyring."
-#~ msgstr "சாவி வலயத்தை மீட்டமைக்க முடியவில்லை."
-
 #~ msgid "Undo Title Editing"
 #~ msgstr "தலைப்பு திருத்தத்தை செயல்தவிர்க்கவும்"
 
@@ -2213,12 +2672,6 @@ msgstr ""
 
 #~ msgid "Remove data about media source"
 #~ msgstr "ஊடக மூலத்தை பற்றிய தரவை அகற்று"
-
-#~ msgid "Set Password"
-#~ msgstr "கடவுச்சொல்லை அமைக்கவும்"
-
-#~ msgid "New Password"
-#~ msgstr "புதிய கடவுச்சொல்"
 
 #~ msgid "Confirm Password"
 #~ msgstr "கடவுச்சொல்லை உறுதிப்படுத்தவும்"

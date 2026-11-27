@@ -503,35 +503,31 @@ namespace parabolic::download
 
     void to_json(nlohmann::json& json, const Options& options)
     {
-        json = nlohmann::json{
-            { "maxNumberOfActiveDownloads", options.max_number_of_active_downloads() },
-            { "overwriteExistingFiles", options.overwrite_existing_files() },
-            { "preventSuspend", options.prevent_suspend() },
-            { "ytdlpDownloadArgs", options.ytdlp_arguments() },
-        };
+        json = nlohmann::json{ { "maxNumberOfActiveDownloads", options.max_number_of_active_downloads() },
+                               { "overwriteExistingFiles", options.overwrite_existing_files() },
+                               { "preventSuspend", options.prevent_suspend() },
+                               { "ytdlpDownloadArgs", options.ytdlp_arguments() } };
     }
 
     void to_json(nlohmann::json& json, const PreviousDownloadOptions& options)
     {
-        json = nlohmann::json{
-            { "audioBitrate", options.audio_bitrate() },
-            { "audioFormatIds", nlohmann::json::object() },
-            { "audioOnlyFileType", static_cast<int>(options.audio_only_file_type()) },
-            { "downloadImmediatelyAsAudio", options.download_immediately_as_audio() },
-            { "downloadImmediatelyAsVideo", options.download_immediately_as_video() },
-            { "exportDescription", options.export_description() },
-            { "exportM3U", options.export_m3u() },
-            { "fullFileType", static_cast<int>(options.full_file_type()) },
-            { "numberTitles", options.number_titles() },
-            { "postprocessingArgumentNames", options.postprocessing_argument_names() },
-            { "reverseDownloadOrder", options.reverse_download_order() },
-            { "saveFolder", options.save_folder().string() },
-            { "splitChapters", options.split_chapters() },
-            { "subtitleLanguages", nlohmann::json::array() },
-            { "videoFormatIds", nlohmann::json::object() },
-            { "videoOnlyFileType", static_cast<int>(options.video_only_file_type()) },
-            { "videoResolution", options.video_resolution() },
-        };
+        json = nlohmann::json{ { "audioBitrate", options.audio_bitrate() },
+                               { "audioFormatIds", nlohmann::json::object() },
+                               { "audioOnlyFileType", static_cast<int>(options.audio_only_file_type()) },
+                               { "downloadImmediatelyAsAudio", options.download_immediately_as_audio() },
+                               { "downloadImmediatelyAsVideo", options.download_immediately_as_video() },
+                               { "exportDescription", options.export_description() },
+                               { "exportM3U", options.export_m3u() },
+                               { "fullFileType", static_cast<int>(options.full_file_type()) },
+                               { "numberTitles", options.number_titles() },
+                               { "postprocessingArgumentNames", options.postprocessing_argument_names() },
+                               { "reverseDownloadOrder", options.reverse_download_order() },
+                               { "saveFolder", options.save_folder().string() },
+                               { "splitChapters", options.split_chapters() },
+                               { "subtitleLanguages", nlohmann::json::array() },
+                               { "videoFormatIds", nlohmann::json::object() },
+                               { "videoOnlyFileType", static_cast<int>(options.video_only_file_type()) },
+                               { "videoResolution", options.video_resolution() } };
         for (const std::pair<const file::Type, std::string>& pair : options.audio_format_ids())
         {
             json["audioFormatIds"][std::to_string(static_cast<int>(pair.first))] = pair.second;
