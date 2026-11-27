@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PostprocessingArgumentDialog</class>
+ <widget class="QDialog" name="PostprocessingArgumentDialog">
+  <property name="minimumSize">
+   <size>
+    <width>440</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QFormLayout" name="form_layout">
+   <item row="0" column="0">
+    <widget class="oclero::qlementine::Label" name="lbl_name"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="txt_name"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="oclero::qlementine::Label" name="lbl_step"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QComboBox" name="cmb_step"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="oclero::qlementine::Label" name="lbl_executable"/>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="cmb_executable"/>
+   </item>
+   <item row="3" column="0">
+    <widget class="oclero::qlementine::Label" name="lbl_arguments"/>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="txt_arguments"/>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttons">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>oclero::qlementine::Label</class>
+   <extends>QWidget</extends>
+   <header location="global">oclero/qlementine/widgets/Label.hpp</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttons</sender>
+   <signal>accepted()</signal>
+   <receiver>PostprocessingArgumentDialog</receiver>
+   <slot>accept()</slot>
+  </connection>
+  <connection>
+   <sender>buttons</sender>
+   <signal>rejected()</signal>
+   <receiver>PostprocessingArgumentDialog</receiver>
+   <slot>reject()</slot>
+  </connection>
+ </connections>
+</ui>

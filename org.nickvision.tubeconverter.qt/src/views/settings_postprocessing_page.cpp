@@ -28,10 +28,10 @@
 #include "app.h"
 #include "application.h"
 #include "configuration.h"
+#include "controls/postprocessing_argument_dialog.h"
 #include "helpers/translation_notifier.h"
 #include "postprocessing.h"
 #include "translation.h"
-#include "views/postprocessing_argument_dialog.h"
 
 namespace parabolic::qt::views
 {
@@ -165,9 +165,9 @@ namespace parabolic::qt::views
         {
             names.push_back(argument.name());
         }
-        PostprocessingArgumentDialog dialog{ { "", postprocessing::Step::None, postprocessing::Executable::None, "" },
-                                             names,
-                                             this };
+        controls::PostprocessingArgumentDialog dialog{ { "", postprocessing::Step::None, postprocessing::Executable::None, "" },
+                                                       names,
+                                                       this };
         if (dialog.exec() != QDialog::Accepted)
         {
             return;
@@ -194,7 +194,7 @@ namespace parabolic::qt::views
                 names.push_back(m_arguments[i].name());
             }
         }
-        PostprocessingArgumentDialog dialog{ m_arguments[static_cast<std::size_t>(row)], names, this };
+        controls::PostprocessingArgumentDialog dialog{ m_arguments[static_cast<std::size_t>(row)], names, this };
         if (dialog.exec() != QDialog::Accepted)
         {
             return;

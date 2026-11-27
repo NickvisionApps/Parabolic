@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 13:26-0500\n"
+"POT-Creation-Date: 2026-11-27 13:28-0500\n"
 "PO-Revision-Date: 2026-04-17 08:09+0000\n"
 "Last-Translator: Michał Dominik <fancy0duck@duck.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -59,8 +59,8 @@ msgid "Worst"
 msgstr "Najgorszy"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:87
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
 #: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:192
 msgid "None"
 msgstr "Brak"
@@ -105,6 +105,140 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/app.cpp:90
 msgid "I understand"
 msgstr "Rozumiem"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#, fuzzy
+msgid "Postprocessing Argument"
+msgstr "Argumenty przetwarzania końcowego"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+msgid "Name"
+msgstr "Nazwa"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:167
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:147
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:157
+#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:159
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:188
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:190
+#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:204
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:216
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:221
+#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:254
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:266
+#, c++-format
+msgid "{}:"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
+msgid "Post Processor"
+msgstr "Postprocesor"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+msgid "Merger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#, fuzzy
+msgid "Modify Chapters"
+msgstr "Osadzaj rozdziały"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:75
+#, fuzzy
+msgid "Split Chapters"
+msgstr "Podziel wideo według rozdziałów"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+msgid "Extract Audio"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+#, fuzzy
+msgid "Video Remuxer"
+msgstr "Wideo (ogólne)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#, fuzzy
+msgid "Video Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:249
+#, fuzzy
+msgid "Metadata"
+msgstr "Osadzaj metadane"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Osadzaj napisy"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#, fuzzy
+msgid "Embed Thumbnail"
+msgstr "Osadzaj miniatury"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#, fuzzy
+msgid "Subtitles Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#, fuzzy
+msgid "Thumbnails Converter"
+msgstr "Tube Converter"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+msgid "Fixup Stretched"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+msgid "Fixup M4a"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+msgid "Fixup M3u8"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+msgid "Fixup Timestamp"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+msgid "Fixup Duration"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+msgid "Executable"
+msgstr "Plik wykonywalny"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+msgid "AtomicParsley"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:265
+#, fuzzy
+msgid "FFmpeg"
+msgstr "Wątki FFmpeg"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+msgid "FFprobe"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:95
+msgid "Argument"
+msgstr "Argument"
 
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:126
 #, fuzzy
@@ -170,140 +304,6 @@ msgstr "Dodaj pobieranie"
 #, fuzzy
 msgid "Settings"
 msgstr "Ustawienia"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:83
-#, fuzzy
-msgid "Postprocessing Argument"
-msgstr "Argumenty przetwarzania końcowego"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:84
-msgid "Name"
-msgstr "Nazwa"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:85
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:105
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:110
-#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:167
-#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:180
-#: org.nickvision.tubeconverter.qt/src/views/settings_discovery_page.cpp:186
-#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:147
-#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:156
-#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:157
-#: org.nickvision.tubeconverter.qt/src/views/settings_downloads_page.cpp:159
-#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:186
-#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:188
-#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:190
-#: org.nickvision.tubeconverter.qt/src/views/settings_extractor_page.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:216
-#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:221
-#: org.nickvision.tubeconverter.qt/src/views/settings_general_page.cpp:254
-#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:266
-#, c++-format
-msgid "{}:"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:85
-msgid "Post Processor"
-msgstr "Postprocesor"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:88
-msgid "Merger"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:89
-#, fuzzy
-msgid "Modify Chapters"
-msgstr "Osadzaj rozdziały"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:90
-#, fuzzy
-msgid "Split Chapters"
-msgstr "Podziel wideo według rozdziałów"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:91
-msgid "Extract Audio"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:92
-#, fuzzy
-msgid "Video Remuxer"
-msgstr "Wideo (ogólne)"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:93
-#, fuzzy
-msgid "Video Converter"
-msgstr "Tube Converter"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:94
-#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:249
-#, fuzzy
-msgid "Metadata"
-msgstr "Osadzaj metadane"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:95
-#, fuzzy
-msgid "Embed Subtitle"
-msgstr "Osadzaj napisy"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:96
-#, fuzzy
-msgid "Embed Thumbnail"
-msgstr "Osadzaj miniatury"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:97
-#, fuzzy
-msgid "Subtitles Converter"
-msgstr "Tube Converter"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:98
-#, fuzzy
-msgid "Thumbnails Converter"
-msgstr "Tube Converter"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:99
-msgid "Fixup Stretched"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:100
-msgid "Fixup M4a"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:101
-msgid "Fixup M3u8"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:102
-msgid "Fixup Timestamp"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:103
-msgid "Fixup Duration"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:105
-msgid "Executable"
-msgstr "Plik wykonywalny"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:108
-msgid "AtomicParsley"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:108
-#: org.nickvision.tubeconverter.qt/src/views/settings_postprocessing_page.cpp:265
-#, fuzzy
-msgid "FFmpeg"
-msgstr "Wątki FFmpeg"
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:108
-msgid "FFprobe"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/postprocessing_argument_dialog.cpp:110
-msgid "Argument"
-msgstr "Argument"
 
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:67
 #, fuzzy
