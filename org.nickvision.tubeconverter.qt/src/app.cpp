@@ -28,6 +28,9 @@ namespace parabolic::qt
         setOrganizationName("Nickvision");
         setOrganizationDomain("nickvision.org");
         setDesktopFileName("org.nickvision.tubeconverter");
+#ifndef __APPLE__
+        setWindowIcon(QIcon(":/org.nickvision.tubeconverter.svg"));
+#endif
         oclero::qlementine::icons::initializeIconTheme();
         QIcon::setThemeName("qlementine");
         oclero::qlementine::QlementineStyle* style{ new oclero::qlementine::QlementineStyle{ this } };

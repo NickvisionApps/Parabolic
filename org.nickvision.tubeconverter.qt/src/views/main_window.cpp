@@ -4,6 +4,7 @@
 #include <QCloseEvent>
 #include <QIcon>
 #include <QKeySequence>
+#include <QMenu>
 #include <QMenuBar>
 #include <QObject>
 #include <QShortcut>
@@ -14,6 +15,7 @@
 #include <Qt>
 #include <oclero/qlementine/icons/Icons16.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <oclero/qlementine/widgets/AboutDialog.hpp>
 #include <oclero/qlementine/widgets/NavigationSidebar.hpp>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
 #include <oclero/qlementine/widgets/UnifiedWindow.hpp>
@@ -30,7 +32,8 @@ namespace parabolic::qt::views
     MainWindow::MainWindow(QWidget* parent)
         : UnifiedWindow{ parent },
           m_navigation_view{ new oclero::qlementine::NavigationView(this) },
-          m_toolbar{ new QToolBar(titleBar()) }
+          m_toolbar{ new QToolBar(titleBar()) },
+          m_act_about{ new QAction(this) }
     {
         setCentralWidget(m_navigation_view);
         setLeadingWidget(m_navigation_view->sidebar());
@@ -52,6 +55,8 @@ namespace parabolic::qt::views
                                          {},
                                          oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                                  oclero::qlementine::icons::Icons16::Misc_Password)));
+        m_act_about->setShortcut(QKeySequence(Qt::Key_F1));
+        m_act_about->setMenuRole(QAction::AboutRole);
         m_toolbar->setMovable(false);
         m_toolbar->setFloatable(false);
         m_toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
@@ -74,7 +79,9 @@ namespace parabolic::qt::views
         m_act_settings->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Comma));
         m_act_settings->setMenuRole(QAction::PreferencesRole);
 #ifdef __APPLE__
-        (new QMenuBar(nullptr))->addMenu(QString())->addAction(m_act_settings);
+        QMenu* app_menu{ (new QMenuBar(nullptr))->addMenu(QString()) };
+        app_menu->addAction(m_act_about);
+        app_menu->addAction(m_act_settings);
 #endif
         translate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
@@ -82,6 +89,7 @@ namespace parabolic::qt::views
                 this,
                 &MainWindow::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QWidget::close);
+        connect(m_act_about, &QAction::triggered, this, &MainWindow::about);
         connect(m_act_add_download, &QAction::triggered, this, &MainWindow::add_download);
         connect(m_act_settings, &QAction::triggered, this, &MainWindow::settings);
         connect(m_act_toggle_sidebar, &QAction::triggered, this, &MainWindow::toggle_sidebar);
@@ -114,6 +122,30 @@ namespace parabolic::qt::views
             configuration.set_window_geometry({ width(), height(), false, x(), y() });
         }
         event->accept();
+    }
+
+    void MainWindow::about()
+    {
+        const translation::Translator& translator{ application::State::instance().translator() };
+        const application::Product& product{ application::State::instance().product() };
+        oclero::qlementine::AboutDialog dialog{ this };
+        dialog.setWindowTitle(translator._p("AppName", "About Paraboloc"));
+        dialog.setIcon(QIcon(":/org.nickvision.tubeconverter.svg"));
+        dialog.setApplicationName(QString::fromStdString(product.short_name()));
+        dialog.setApplicationVersion(QString::fromStdString(product.version().to_string()));
+        dialog.setDescription(QString::fromStdString(product.description()));
+        dialog.setWebsiteUrl(QString::fromStdString(product.repo_url()));
+        dialog.setLicense("MIT");
+        dialog.setCopyright("© 2026 Nickvision");
+        dialog.addSocialMediaLink(translator._("Issues"),
+                                  QString::fromStdString(product.issues_url()),
+                                  oclero::qlementine::appStyle()->makeThemedIcon(
+                                          oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Debug)));
+        dialog.addSocialMediaLink(translator._("Discussions"),
+                                  QString::fromStdString(product.discussions_url()),
+                                  oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                          oclero::qlementine::icons::Icons16::Brand_Github)));
+        dialog.exec();
     }
 
     void MainWindow::add_download() const
@@ -149,6 +181,7 @@ namespace parabolic::qt::views
         m_act_toggle_sidebar->setText(translator._("Toggle Sidebar"));
         m_act_toggle_sidebar->setToolTip(m_navigation_view->sidebar()->compact() ? translator._("Expand Sidebar")
                                                                                  : translator._("Collapse Sidebar"));
+        m_act_about->setText(translator._("About"));
         m_act_add_download->setText(translator._("Add Download"));
         m_act_add_download->setToolTip(translator._("Add Download"));
         m_act_settings->setText(translator._("Settings"));
