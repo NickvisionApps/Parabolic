@@ -6,16 +6,12 @@
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QLineEdit>
-#include <QList>
 #include <QListWidget>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QSpinBox>
-#include <QString>
 #include <QToolButton>
-#include <QVBoxLayout>
 #include <QWidget>
-#include <oclero/qlementine/Common.hpp>
 #include <oclero/qlementine/widgets/GroupBox.hpp>
 #include <oclero/qlementine/widgets/Label.hpp>
 #include <oclero/qlementine/widgets/NavigationView.hpp>
@@ -145,7 +141,7 @@ namespace parabolic::qt::views
         QCheckBox* m_chk_prevent_suspend{ nullptr };
         oclero::qlementine::GroupBox* m_grp_aria{ nullptr };
         QCheckBox* m_chk_use_aria{ nullptr };
-        QPushButton* m_btn_learn_more{ nullptr };
+        QToolButton* m_btn_learn_more{ nullptr };
         oclero::qlementine::Label* m_lbl_aria_connections{ nullptr };
         QSpinBox* m_spn_aria_connections{ nullptr };
         oclero::qlementine::Label* m_lbl_aria_split_size{ nullptr };

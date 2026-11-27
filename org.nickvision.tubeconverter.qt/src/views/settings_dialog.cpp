@@ -29,6 +29,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 #include <Qt>
+#include <QtCore/qtypes.h>
 #include <algorithm>
 #include <array>
 #include <cstddef>
@@ -164,7 +165,16 @@ namespace parabolic::qt::views
     }
 
     SettingsGeneralPage::SettingsGeneralPage(QWidget* parent)
-        : QScrollArea{ parent }
+        : QScrollArea{ parent },
+          m_languages{ application::State::instance().translator().available_languages() },
+          m_grp_user_interface{ new oclero::qlementine::GroupBox(this) },
+          m_cmb_theme{ new QComboBox(m_grp_user_interface) },
+          m_cmb_language{ new QComboBox(m_grp_user_interface) },
+          m_grp_updates{ new oclero::qlementine::GroupBox(this) },
+          m_chk_automatic_updates{ new QCheckBox(m_grp_updates) },
+          m_chk_preview_updates{ new QCheckBox(m_grp_updates) },
+          m_grp_history{ new oclero::qlementine::GroupBox(this) },
+          m_cmb_history_length{ new QComboBox(m_grp_history) }
     {
         QWidget* content{ new QWidget() };
         QVBoxLayout* layout{ new QVBoxLayout(content) };
@@ -174,54 +184,34 @@ namespace parabolic::qt::views
         setWidgetResizable(true);
         setWidget(content);
         content->setBackgroundRole(QPalette::Base);
-        const translation::Translator& translator{ application::State::instance().translator() };
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_user_interface = new oclero::qlementine::GroupBox(content);
-        QVBoxLayout* user_interface_layout{ new QVBoxLayout(m_grp_user_interface) };
+        QFormLayout* user_interface_layout{ new QFormLayout(m_grp_user_interface) };
+        user_interface_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
         layout->addWidget(m_grp_user_interface);
         m_lbl_theme = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_user_interface);
-        m_cmb_theme = new QComboBox(m_grp_user_interface);
-        QHBoxLayout* theme_row{ new QHBoxLayout() };
-        theme_row->addWidget(m_lbl_theme);
-        theme_row->addWidget(m_cmb_theme);
-        theme_row->addStretch();
-        user_interface_layout->addLayout(theme_row);
+        user_interface_layout->addRow(m_lbl_theme, m_cmb_theme);
         m_lbl_language = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_user_interface);
-        m_cmb_language = new QComboBox(m_grp_user_interface);
-        QHBoxLayout* language_row{ new QHBoxLayout() };
-        language_row->addWidget(m_lbl_language);
-        language_row->addWidget(m_cmb_language);
-        language_row->addStretch();
-        user_interface_layout->addLayout(language_row);
-        m_grp_updates = new oclero::qlementine::GroupBox(content);
+        user_interface_layout->addRow(m_lbl_language, m_cmb_language);
         QVBoxLayout* updates_layout{ new QVBoxLayout(m_grp_updates) };
         layout->addWidget(m_grp_updates);
-        m_chk_automatic_updates = new QCheckBox(m_grp_updates);
         updates_layout->addWidget(m_chk_automatic_updates);
-        m_chk_preview_updates = new QCheckBox(m_grp_updates);
         updates_layout->addWidget(m_chk_preview_updates);
         m_dsc_preview_updates = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_updates);
         m_dsc_preview_updates->setWordWrap(true);
         m_dsc_preview_updates->setContentsMargins(24, 0, 0, 0);
         updates_layout->addWidget(m_dsc_preview_updates);
-        m_grp_history = new oclero::qlementine::GroupBox(content);
-        QVBoxLayout* history_layout{ new QVBoxLayout(m_grp_history) };
+        QFormLayout* history_layout{ new QFormLayout(m_grp_history) };
+        history_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
         layout->addWidget(m_grp_history);
         m_lbl_history_length = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_history);
-        m_cmb_history_length = new QComboBox(m_grp_history);
-        QHBoxLayout* history_length_row{ new QHBoxLayout() };
-        history_length_row->addWidget(m_lbl_history_length);
-        history_length_row->addWidget(m_cmb_history_length);
-        history_length_row->addStretch();
-        history_layout->addLayout(history_length_row);
+        history_layout->addRow(m_lbl_history_length, m_cmb_history_length);
         layout->addStretch();
-        m_languages = translator.available_languages();
         m_cmb_language->addItems(QList<QString>(static_cast<qsizetype>(m_languages.size()) + 1));
         translate();
         std::vector<std::string>::iterator language_it{
-            std::ranges::find(m_languages, configuration.translation_options().language())
+            std::ranges::find(m_languages, configuration.translation_options().language()),
         };
         m_cmb_theme->setCurrentIndex(static_cast<int>(configuration.theme()));
         m_cmb_language->setCurrentIndex(
@@ -363,7 +353,7 @@ namespace parabolic::qt::views
         std::string selected_language{
             m_cmb_language->currentIndex() > 0
                     ? m_languages[static_cast<std::size_t>(m_cmb_language->currentIndex()) - 1]
-                    : std::string{}
+                    : std::string{},
         };
         std::vector<std::pair<QString, std::string>> languages;
         languages.reserve(m_languages.size());
@@ -371,10 +361,12 @@ namespace parabolic::qt::views
         {
             std::array<UChar, 128> name{};
             UErrorCode status{ U_ZERO_ERROR };
-            int32_t length{ uloc_getDisplayName(language.c_str(), translator.language().c_str(), name.data(),
-                                                static_cast<int32_t>(name.size()), &status) };
-            languages.emplace_back(U_SUCCESS(status) && length > 0 ? QString::fromUtf16(name.data(), length)
-                                                                   : QString::fromStdString(language),
+            int32_t length{
+                uloc_getDisplayName(language.c_str(), translator.language().c_str(), name.data(),
+                                    static_cast<int32_t>(name.size()), &status),
+            };
+            languages.emplace_back(U_SUCCESS(status) != 0 && length > 0 ? QString::fromUtf16(name.data(), length)
+                                                                        : QString::fromStdString(language),
                                    language);
         }
         QCollator collator;
@@ -414,7 +406,19 @@ namespace parabolic::qt::views
     }
 
     SettingsDiscoveryPage::SettingsDiscoveryPage(QWidget* parent)
-        : QScrollArea{ parent }
+        : QScrollArea{ parent },
+          m_grp_process{ new oclero::qlementine::GroupBox(this) },
+          m_chk_media_id{ new QCheckBox(m_grp_process) },
+          m_chk_limit_characters{ new QCheckBox(m_grp_process) },
+          m_chk_super_resolutions{ new QCheckBox(m_grp_process) },
+          m_chk_auto_generated_subtitles{ new QCheckBox(m_grp_process) },
+          m_grp_preferences{ new oclero::qlementine::GroupBox(this) },
+          m_cmb_audio_codec{ new QComboBox(m_grp_preferences) },
+          m_cmb_video_codec{ new QComboBox(m_grp_preferences) },
+          m_cmb_subtitle_format{ new QComboBox(m_grp_preferences) },
+          m_cmb_frame_rate{ new QComboBox(m_grp_preferences) },
+          m_grp_arguments{ new oclero::qlementine::GroupBox(this) },
+          m_edt_arguments{ new QLineEdit(m_grp_arguments) }
     {
         QWidget* content{ new QWidget() };
         QVBoxLayout* layout{ new QVBoxLayout(content) };
@@ -427,67 +431,40 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_process = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
-        m_chk_media_id = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_media_id);
         m_dsc_media_id = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_dsc_media_id->setWordWrap(true);
         m_dsc_media_id->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_dsc_media_id);
-        m_chk_limit_characters = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_limit_characters);
         m_dsc_limit_characters =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_dsc_limit_characters->setWordWrap(true);
         m_dsc_limit_characters->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_dsc_limit_characters);
-        m_chk_super_resolutions = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_super_resolutions);
         m_dsc_super_resolutions =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_dsc_super_resolutions->setWordWrap(true);
         m_dsc_super_resolutions->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_dsc_super_resolutions);
-        m_chk_auto_generated_subtitles = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_auto_generated_subtitles);
-        m_grp_preferences = new oclero::qlementine::GroupBox(content);
-        QVBoxLayout* preferences_layout{ new QVBoxLayout(m_grp_preferences) };
+        QFormLayout* preferences_layout{ new QFormLayout(m_grp_preferences) };
+        preferences_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
         layout->addWidget(m_grp_preferences);
         m_lbl_audio_codec = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
-        m_cmb_audio_codec = new QComboBox(m_grp_preferences);
-        QHBoxLayout* audio_codec_row{ new QHBoxLayout() };
-        audio_codec_row->addWidget(m_lbl_audio_codec);
-        audio_codec_row->addWidget(m_cmb_audio_codec);
-        audio_codec_row->addStretch();
-        preferences_layout->addLayout(audio_codec_row);
+        preferences_layout->addRow(m_lbl_audio_codec, m_cmb_audio_codec);
         m_lbl_video_codec = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
-        m_cmb_video_codec = new QComboBox(m_grp_preferences);
-        QHBoxLayout* video_codec_row{ new QHBoxLayout() };
-        video_codec_row->addWidget(m_lbl_video_codec);
-        video_codec_row->addWidget(m_cmb_video_codec);
-        video_codec_row->addStretch();
-        preferences_layout->addLayout(video_codec_row);
+        preferences_layout->addRow(m_lbl_video_codec, m_cmb_video_codec);
         m_lbl_subtitle_format =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
-        m_cmb_subtitle_format = new QComboBox(m_grp_preferences);
-        QHBoxLayout* subtitle_format_row{ new QHBoxLayout() };
-        subtitle_format_row->addWidget(m_lbl_subtitle_format);
-        subtitle_format_row->addWidget(m_cmb_subtitle_format);
-        subtitle_format_row->addStretch();
-        preferences_layout->addLayout(subtitle_format_row);
+        preferences_layout->addRow(m_lbl_subtitle_format, m_cmb_subtitle_format);
         m_lbl_frame_rate = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
-        m_cmb_frame_rate = new QComboBox(m_grp_preferences);
-        QHBoxLayout* frame_rate_row{ new QHBoxLayout() };
-        frame_rate_row->addWidget(m_lbl_frame_rate);
-        frame_rate_row->addWidget(m_cmb_frame_rate);
-        frame_rate_row->addStretch();
-        preferences_layout->addLayout(frame_rate_row);
-        m_grp_arguments = new oclero::qlementine::GroupBox(content);
+        preferences_layout->addRow(m_lbl_frame_rate, m_cmb_frame_rate);
         QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
         layout->addWidget(m_grp_arguments);
-        m_edt_arguments = new QLineEdit(m_grp_arguments);
         arguments_layout->addWidget(m_edt_arguments);
         layout->addStretch();
         translate();
@@ -603,7 +580,18 @@ namespace parabolic::qt::views
     }
 
     SettingsDownloadsPage::SettingsDownloadsPage(QWidget* parent)
-        : QScrollArea{ parent }
+        : QScrollArea{ parent },
+          m_grp_process{ new oclero::qlementine::GroupBox(this) },
+          m_spn_max_downloads{ new QSpinBox(m_grp_process) },
+          m_chk_overwrite_existing_files{ new QCheckBox(m_grp_process) },
+          m_chk_prevent_suspend{ new QCheckBox(m_grp_process) },
+          m_grp_aria{ new oclero::qlementine::GroupBox(this) },
+          m_chk_use_aria{ new QCheckBox(m_grp_aria) },
+          m_btn_learn_more{ new QToolButton(m_grp_aria) },
+          m_spn_aria_connections{ new QSpinBox(m_grp_aria) },
+          m_spn_aria_split_size{ new QSpinBox(m_grp_aria) },
+          m_grp_arguments{ new oclero::qlementine::GroupBox(this) },
+          m_edt_arguments{ new QLineEdit(m_grp_arguments) }
     {
         QWidget* content{ new QWidget() };
         QVBoxLayout* layout{ new QVBoxLayout(content) };
@@ -616,52 +604,37 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_process = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
         m_lbl_max_downloads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_process);
-        m_spn_max_downloads = new QSpinBox(m_grp_process);
         m_spn_max_downloads->setRange(1, 10);
         QHBoxLayout* max_downloads_row{ new QHBoxLayout() };
         max_downloads_row->addWidget(m_lbl_max_downloads);
         max_downloads_row->addWidget(m_spn_max_downloads);
         max_downloads_row->addStretch();
         process_layout->addLayout(max_downloads_row);
-        m_chk_overwrite_existing_files = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_overwrite_existing_files);
-        m_chk_prevent_suspend = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_prevent_suspend);
-        m_grp_aria = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* aria_layout{ new QVBoxLayout(m_grp_aria) };
         layout->addWidget(m_grp_aria);
-        m_chk_use_aria = new QCheckBox(m_grp_aria);
-        aria_layout->addWidget(m_chk_use_aria);
-        m_btn_learn_more = new QPushButton(m_grp_aria);
-        m_btn_learn_more->setFlat(true);
-        QHBoxLayout* learn_more_row{ new QHBoxLayout() };
-        learn_more_row->addWidget(m_btn_learn_more);
-        learn_more_row->addStretch();
-        aria_layout->addLayout(learn_more_row);
+        m_btn_learn_more->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Info)));
+        QHBoxLayout* use_aria_row{ new QHBoxLayout() };
+        use_aria_row->addWidget(m_chk_use_aria);
+        use_aria_row->addWidget(m_btn_learn_more);
+        use_aria_row->addStretch();
+        aria_layout->addLayout(use_aria_row);
+        QFormLayout* aria_form_layout{ new QFormLayout() };
+        aria_form_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
+        aria_layout->addLayout(aria_form_layout);
         m_lbl_aria_connections = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_aria);
-        m_spn_aria_connections = new QSpinBox(m_grp_aria);
         m_spn_aria_connections->setRange(1, 16);
-        QHBoxLayout* aria_connections_row{ new QHBoxLayout() };
-        aria_connections_row->addWidget(m_lbl_aria_connections);
-        aria_connections_row->addWidget(m_spn_aria_connections);
-        aria_connections_row->addStretch();
-        aria_layout->addLayout(aria_connections_row);
+        aria_form_layout->addRow(m_lbl_aria_connections, m_spn_aria_connections);
         m_lbl_aria_split_size = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_aria);
-        m_spn_aria_split_size = new QSpinBox(m_grp_aria);
         m_spn_aria_split_size->setRange(1, 1024);
-        QHBoxLayout* aria_split_size_row{ new QHBoxLayout() };
-        aria_split_size_row->addWidget(m_lbl_aria_split_size);
-        aria_split_size_row->addWidget(m_spn_aria_split_size);
-        aria_split_size_row->addStretch();
-        aria_layout->addLayout(aria_split_size_row);
-        m_grp_arguments = new oclero::qlementine::GroupBox(content);
+        aria_form_layout->addRow(m_lbl_aria_split_size, m_spn_aria_split_size);
         QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
         layout->addWidget(m_grp_arguments);
-        m_edt_arguments = new QLineEdit(m_grp_arguments);
         arguments_layout->addWidget(m_edt_arguments);
         layout->addStretch();
         translate();
@@ -682,7 +655,7 @@ namespace parabolic::qt::views
         connect(m_chk_overwrite_existing_files, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
         connect(m_chk_prevent_suspend, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
         connect(m_chk_use_aria, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
-        connect(m_btn_learn_more, &QPushButton::clicked, this, &SettingsDownloadsPage::learn_more);
+        connect(m_btn_learn_more, &QToolButton::clicked, this, &SettingsDownloadsPage::learn_more);
         connect(m_spn_aria_connections, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
         connect(m_spn_aria_split_size, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
         connect(m_edt_arguments, &QLineEdit::textChanged, this, &SettingsDownloadsPage::save);
@@ -726,7 +699,7 @@ namespace parabolic::qt::views
                 translator._("An alternative downloader that may be faster in some regions compared to "
                              "yt-dlp's native downloader."));
         m_chk_use_aria->setText(translator._("Use aria2"));
-        m_btn_learn_more->setText(translator._("Learn More…"));
+        m_btn_learn_more->setToolTip(translator._("Learn More"));
         m_lbl_aria_connections->setText(
                 QString::fromStdString(translator._("{}:", translator._("Maximum Connections Per Server"))));
         m_lbl_aria_split_size->setText(
@@ -737,7 +710,21 @@ namespace parabolic::qt::views
     }
 
     SettingsExtractorPage::SettingsExtractorPage(QWidget* parent)
-        : QScrollArea{ parent }
+        : QScrollArea{ parent },
+          m_grp_process{ new oclero::qlementine::GroupBox(this) },
+          m_chk_part_files{ new QCheckBox(m_grp_process) },
+          m_chk_sponsor_block{ new QCheckBox(m_grp_process) },
+          m_chk_translate_metadata{ new QCheckBox(m_grp_process) },
+          m_grp_speed{ new oclero::qlementine::GroupBox(this) },
+          m_chk_speed_limit{ new QCheckBox(m_grp_speed) },
+          m_spn_speed_limit{ new QSpinBox(m_grp_speed) },
+          m_grp_proxy{ new oclero::qlementine::GroupBox(this) },
+          m_edt_proxy_url{ new QLineEdit(m_grp_proxy) },
+          m_grp_cookies{ new oclero::qlementine::GroupBox(this) },
+          m_cmb_cookies_browser{ new QComboBox(m_grp_cookies) },
+          m_edt_cookies_path{ new QLineEdit(m_grp_cookies) },
+          m_btn_cookies_browse{ new QPushButton(m_grp_cookies) },
+          m_btn_cookies_clear{ new QPushButton(m_grp_cookies) }
     {
         QWidget* content{ new QWidget() };
         QVBoxLayout* layout{ new QVBoxLayout(content) };
@@ -750,71 +737,51 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_process = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
-        m_chk_part_files = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_part_files);
         m_dsc_part_files = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_dsc_part_files->setWordWrap(true);
         m_dsc_part_files->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_dsc_part_files);
-        m_chk_sponsor_block = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_sponsor_block);
         m_dsc_sponsor_block = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_dsc_sponsor_block->setWordWrap(true);
         m_dsc_sponsor_block->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_dsc_sponsor_block);
-        m_chk_translate_metadata = new QCheckBox(m_grp_process);
         process_layout->addWidget(m_chk_translate_metadata);
         m_dsc_translate_metadata =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_dsc_translate_metadata->setWordWrap(true);
         m_dsc_translate_metadata->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_dsc_translate_metadata);
-        m_grp_speed = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* speed_layout{ new QVBoxLayout(m_grp_speed) };
         layout->addWidget(m_grp_speed);
-        m_chk_speed_limit = new QCheckBox(m_grp_speed);
         speed_layout->addWidget(m_chk_speed_limit);
         m_lbl_speed_limit = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_speed);
-        m_spn_speed_limit = new QSpinBox(m_grp_speed);
         m_spn_speed_limit->setRange(512, 10240);
         QHBoxLayout* speed_limit_row{ new QHBoxLayout() };
         speed_limit_row->addWidget(m_lbl_speed_limit);
         speed_limit_row->addWidget(m_spn_speed_limit);
         speed_limit_row->addStretch();
         speed_layout->addLayout(speed_limit_row);
-        m_grp_proxy = new oclero::qlementine::GroupBox(content);
-        QVBoxLayout* proxy_layout{ new QVBoxLayout(m_grp_proxy) };
+        QFormLayout* proxy_layout{ new QFormLayout(m_grp_proxy) };
+        proxy_layout->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
         layout->addWidget(m_grp_proxy);
         m_lbl_proxy_url = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_proxy);
-        m_edt_proxy_url = new QLineEdit(m_grp_proxy);
-        QHBoxLayout* proxy_row{ new QHBoxLayout() };
-        proxy_row->addWidget(m_lbl_proxy_url);
-        proxy_row->addWidget(m_edt_proxy_url, 1);
-        proxy_layout->addLayout(proxy_row);
-        m_grp_cookies = new oclero::qlementine::GroupBox(content);
-        QVBoxLayout* cookies_layout{ new QVBoxLayout(m_grp_cookies) };
+        proxy_layout->addRow(m_lbl_proxy_url, m_edt_proxy_url);
+        QFormLayout* cookies_layout{ new QFormLayout(m_grp_cookies) };
+        cookies_layout->setFieldGrowthPolicy(QFormLayout::ExpandingFieldsGrow);
         layout->addWidget(m_grp_cookies);
         m_lbl_cookies_browser = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_cookies);
-        m_cmb_cookies_browser = new QComboBox(m_grp_cookies);
-        QHBoxLayout* cookies_browser_row{ new QHBoxLayout() };
-        cookies_browser_row->addWidget(m_lbl_cookies_browser);
-        cookies_browser_row->addWidget(m_cmb_cookies_browser);
-        cookies_browser_row->addStretch();
-        cookies_layout->addLayout(cookies_browser_row);
+        cookies_layout->addRow(m_lbl_cookies_browser, m_cmb_cookies_browser);
         m_lbl_cookies_file = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_cookies);
-        m_edt_cookies_path = new QLineEdit(m_grp_cookies);
         m_edt_cookies_path->setReadOnly(true);
-        m_btn_cookies_browse = new QPushButton(m_grp_cookies);
-        m_btn_cookies_clear = new QPushButton(m_grp_cookies);
-        QHBoxLayout* cookies_row{ new QHBoxLayout() };
-        cookies_row->addWidget(m_lbl_cookies_file);
-        cookies_row->addWidget(m_edt_cookies_path, 1);
-        cookies_row->addWidget(m_btn_cookies_browse);
-        cookies_row->addWidget(m_btn_cookies_clear);
-        cookies_layout->addLayout(cookies_row);
+        QHBoxLayout* cookies_file_row{ new QHBoxLayout() };
+        cookies_file_row->addWidget(m_edt_cookies_path, 1);
+        cookies_file_row->addWidget(m_btn_cookies_browse);
+        cookies_file_row->addWidget(m_btn_cookies_clear);
+        cookies_layout->addRow(m_lbl_cookies_file, cookies_file_row);
         layout->addStretch();
         translate();
         extractor::Options options{ configuration.extractor_options() };
@@ -910,7 +877,24 @@ namespace parabolic::qt::views
     }
 
     SettingsPostprocessingPage::SettingsPostprocessingPage(QWidget* parent)
-        : QScrollArea{ parent }
+        : QScrollArea{ parent },
+          m_grp_metadata{ new oclero::qlementine::GroupBox(this) },
+          m_chk_embed_metadata{ new QCheckBox(m_grp_metadata) },
+          m_chk_remove_source_data{ new QCheckBox(m_grp_metadata) },
+          m_grp_thumbnails{ new oclero::qlementine::GroupBox(this) },
+          m_chk_embed_thumbnails{ new QCheckBox(m_grp_thumbnails) },
+          m_chk_crop_audio_thumbnails{ new QCheckBox(m_grp_thumbnails) },
+          m_grp_chapters{ new oclero::qlementine::GroupBox(this) },
+          m_chk_embed_chapters{ new QCheckBox(m_grp_chapters) },
+          m_grp_subtitles{ new oclero::qlementine::GroupBox(this) },
+          m_chk_embed_subtitles{ new QCheckBox(m_grp_subtitles) },
+          m_grp_ffmpeg{ new oclero::qlementine::GroupBox(this) },
+          m_spn_threads{ new QSpinBox(m_grp_ffmpeg) },
+          m_grp_arguments{ new oclero::qlementine::GroupBox(this) },
+          m_btn_add{ new QToolButton(m_grp_arguments) },
+          m_btn_edit{ new QToolButton(m_grp_arguments) },
+          m_btn_remove{ new QToolButton(m_grp_arguments) },
+          m_lst_arguments{ new QListWidget(m_grp_arguments) }
     {
         QWidget* content{ new QWidget() };
         QVBoxLayout* layout{ new QVBoxLayout(content) };
@@ -923,55 +907,43 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{
             application::State::instance().configuration(),
         };
-        m_grp_metadata = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* metadata_layout{ new QVBoxLayout(m_grp_metadata) };
         layout->addWidget(m_grp_metadata);
-        m_chk_embed_metadata = new QCheckBox(m_grp_metadata);
         metadata_layout->addWidget(m_chk_embed_metadata);
-        m_chk_remove_source_data = new QCheckBox(m_grp_metadata);
         metadata_layout->addWidget(m_chk_remove_source_data);
         m_dsc_remove_source_data =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_metadata);
         m_dsc_remove_source_data->setWordWrap(true);
         m_dsc_remove_source_data->setContentsMargins(24, 0, 0, 0);
         metadata_layout->addWidget(m_dsc_remove_source_data);
-        m_grp_thumbnails = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* thumbnails_layout{ new QVBoxLayout(m_grp_thumbnails) };
         layout->addWidget(m_grp_thumbnails);
-        m_chk_embed_thumbnails = new QCheckBox(m_grp_thumbnails);
         thumbnails_layout->addWidget(m_chk_embed_thumbnails);
         m_dsc_embed_thumbnails =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_thumbnails);
         m_dsc_embed_thumbnails->setWordWrap(true);
         m_dsc_embed_thumbnails->setContentsMargins(24, 0, 0, 0);
         thumbnails_layout->addWidget(m_dsc_embed_thumbnails);
-        m_chk_crop_audio_thumbnails = new QCheckBox(m_grp_thumbnails);
         thumbnails_layout->addWidget(m_chk_crop_audio_thumbnails);
         m_dsc_crop_audio_thumbnails =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_thumbnails);
         m_dsc_crop_audio_thumbnails->setWordWrap(true);
         m_dsc_crop_audio_thumbnails->setContentsMargins(24, 0, 0, 0);
         thumbnails_layout->addWidget(m_dsc_crop_audio_thumbnails);
-        m_grp_chapters = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* chapters_layout{ new QVBoxLayout(m_grp_chapters) };
         layout->addWidget(m_grp_chapters);
-        m_chk_embed_chapters = new QCheckBox(m_grp_chapters);
         chapters_layout->addWidget(m_chk_embed_chapters);
-        m_grp_subtitles = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* subtitles_layout{ new QVBoxLayout(m_grp_subtitles) };
         layout->addWidget(m_grp_subtitles);
-        m_chk_embed_subtitles = new QCheckBox(m_grp_subtitles);
         subtitles_layout->addWidget(m_chk_embed_subtitles);
         m_dsc_embed_subtitles =
                 new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_subtitles);
         m_dsc_embed_subtitles->setWordWrap(true);
         m_dsc_embed_subtitles->setContentsMargins(24, 0, 0, 0);
         subtitles_layout->addWidget(m_dsc_embed_subtitles);
-        m_grp_ffmpeg = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* ffmpeg_layout{ new QVBoxLayout(m_grp_ffmpeg) };
         layout->addWidget(m_grp_ffmpeg);
         m_lbl_threads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_ffmpeg);
-        m_spn_threads = new QSpinBox(m_grp_ffmpeg);
         m_spn_threads->setRange(1, static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
         QHBoxLayout* threads_row{ new QHBoxLayout() };
         threads_row->addWidget(m_lbl_threads);
@@ -981,16 +953,12 @@ namespace parabolic::qt::views
         m_dsc_threads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_ffmpeg);
         m_dsc_threads->setWordWrap(true);
         ffmpeg_layout->addWidget(m_dsc_threads);
-        m_grp_arguments = new oclero::qlementine::GroupBox(content);
         QVBoxLayout* arguments_layout{ new QVBoxLayout(m_grp_arguments) };
         layout->addWidget(m_grp_arguments);
-        m_btn_add = new QToolButton(m_grp_arguments);
         m_btn_add->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
-        m_btn_edit = new QToolButton(m_grp_arguments);
         m_btn_edit->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Pen)));
-        m_btn_remove = new QToolButton(m_grp_arguments);
         m_btn_remove->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Minus)));
         QHBoxLayout* buttons{ new QHBoxLayout() };
@@ -999,7 +967,6 @@ namespace parabolic::qt::views
         buttons->addWidget(m_btn_remove);
         buttons->addStretch();
         arguments_layout->addLayout(buttons);
-        m_lst_arguments = new QListWidget(m_grp_arguments);
         m_lst_arguments->setMinimumHeight(120);
         arguments_layout->addWidget(m_lst_arguments);
         layout->addStretch();
@@ -1049,8 +1016,9 @@ namespace parabolic::qt::views
         {
             return;
         }
-        m_arguments.push_back(dialog.argument());
-        m_lst_arguments->addItem(QString::fromStdString(dialog.argument().name()));
+        postprocessing::Argument argument{ dialog.argument() };
+        m_arguments.push_back(argument);
+        m_lst_arguments->addItem(QString::fromStdString(argument.name()));
         m_lst_arguments->setCurrentRow(m_lst_arguments->count() - 1);
         save();
     }
@@ -1075,8 +1043,9 @@ namespace parabolic::qt::views
         {
             return;
         }
-        m_arguments[static_cast<std::size_t>(row)] = dialog.argument();
-        m_lst_arguments->item(row)->setText(QString::fromStdString(dialog.argument().name()));
+        postprocessing::Argument argument{ dialog.argument() };
+        m_arguments[static_cast<std::size_t>(row)] = argument;
+        m_lst_arguments->item(row)->setText(QString::fromStdString(argument.name()));
         save();
     }
 
@@ -1161,28 +1130,19 @@ namespace parabolic::qt::views
         layout->setContentsMargins(0, 0, 0, 0);
         layout->addWidget(m_navigation_view);
         m_navigation_view->sidebar()->setExpandedWidth(180);
-        SettingsGeneralPage* general_page{
-            new SettingsGeneralPage(m_navigation_view),
-        };
-        SettingsDiscoveryPage* discovery_page{ new SettingsDiscoveryPage(m_navigation_view) };
-        SettingsDownloadsPage* downloads_page{ new SettingsDownloadsPage(m_navigation_view) };
-        SettingsExtractorPage* extractor_page{ new SettingsExtractorPage(m_navigation_view) };
-        SettingsPostprocessingPage* postprocessing_page{
-            new SettingsPostprocessingPage(m_navigation_view),
-        };
-        m_navigation_view->addPage(general_page, {},
+        m_navigation_view->addPage(new SettingsGeneralPage(m_navigation_view), {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Settings)));
-        m_navigation_view->addPage(discovery_page, {},
+        m_navigation_view->addPage(new SettingsDiscoveryPage(m_navigation_view), {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Search)));
-        m_navigation_view->addPage(downloads_page, {},
+        m_navigation_view->addPage(new SettingsDownloadsPage(m_navigation_view), {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Action_Download)));
-        m_navigation_view->addPage(extractor_page, {},
+        m_navigation_view->addPage(new SettingsExtractorPage(m_navigation_view), {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::File_Plugin)));
-        m_navigation_view->addPage(postprocessing_page, {},
+        m_navigation_view->addPage(new SettingsPostprocessingPage(m_navigation_view), {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Action_Build)));
         translate();
