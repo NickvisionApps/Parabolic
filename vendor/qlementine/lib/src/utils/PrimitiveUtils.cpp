@@ -1560,6 +1560,31 @@ QPixmap makeClearButtonPixmap(QSize const& size, QColor const& fgColor) {
   return pixmap;
 }
 
+QPixmap makeCloseButtonPixmap(QSize const& size, QColor const& fgColor) {
+  const auto w = size.width();
+  const auto h = size.width();
+  constexpr auto intendedSize = 16.;
+
+  const auto p1 = QPointF{ (3.5 / intendedSize) * w, (3.5 / intendedSize) * h };
+  const auto p2 = QPointF{ (12.5 / intendedSize) * w, (12.5 / intendedSize) * h };
+
+  const auto p3 = QPointF{ (3.5 / intendedSize) * w, (12.5 / intendedSize) * h };
+  const auto p4 = QPointF{ (12.5 / intendedSize) * w, (3.5 / intendedSize) * h };
+
+  const auto penWidth = (1.6 / intendedSize) * h;
+  QPixmap pixmap{ size };
+  pixmap.fill(Qt::transparent);
+  QPainter p{ &pixmap };
+  p.setRenderHint(QPainter::Antialiasing, true);
+
+  p.setBrush(Qt::NoBrush);
+  p.setPen(QPen{ fgColor, penWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin });
+  p.drawLine(p1, p2);
+  p.drawLine(p3, p4);
+
+  return pixmap;
+}
+
 QPixmap makeCheckPixmap(QSize const& size, QColor const& color) {
   const QRect checkRect{ 0, 0, size.width(), size.height() };
 

@@ -232,6 +232,9 @@ QLEMENTINE_EXPORT void updateCheckIcon(QIcon& icon, QSize const& size, Qlementin
 /// Generates a pixmap for a specific state of QLineEdit's clear button.
 QLEMENTINE_EXPORT QPixmap makeClearButtonPixmap(QSize const& size, QColor const& color);
 
+/// Generates a pixmap that contains a close cross.
+QLEMENTINE_EXPORT QPixmap makeCloseButtonPixmap(QSize const& size, QColor const& color);
+
 /// Generates a pixmap that contains a check mark.
 QLEMENTINE_EXPORT QPixmap makeCheckPixmap(QSize const& size, QColor const& color);
 
