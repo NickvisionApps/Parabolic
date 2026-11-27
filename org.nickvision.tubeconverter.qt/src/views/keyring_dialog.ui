@@ -13,16 +13,6 @@
   </property>
   <layout class="QVBoxLayout" name="layout">
    <item>
-    <widget class="oclero::qlementine::Label" name="lbl_description">
-     <property name="role">
-      <enum>oclero::qlementine::TextRole::Caption</enum>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
     <layout class="QHBoxLayout" name="buttons_layout">
      <item>
       <widget class="QToolButton" name="btn_add"/>
@@ -34,17 +24,14 @@
       <widget class="QToolButton" name="btn_remove"/>
      </item>
      <item>
-      <spacer name="buttons_spacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+      <widget class="oclero::qlementine::Label" name="lbl_description">
+       <property name="role">
+        <enum>oclero::qlementine::TextRole::Caption</enum>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
-      </spacer>
+      </widget>
      </item>
     </layout>
    </item>

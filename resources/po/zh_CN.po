@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:12-0500\n"
+"POT-Creation-Date: 2026-11-27 14:24-0500\n"
 "PO-Revision-Date: 2026-04-22 06:09+0000\n"
 "Last-Translator: Galaxy Hazard <tplinkusers@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -60,8 +60,8 @@ msgid "Worst"
 msgstr "最差"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
 msgid "None"
 msgstr "无"
@@ -106,24 +106,34 @@ msgstr ""
 msgid "I understand"
 msgstr "已知晓"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "密码"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "密码"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
 msgid "Credential"
 msgstr "凭据"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "名称"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:95
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:481
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:520
@@ -145,134 +155,159 @@ msgstr "名称"
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
 msgid "URL"
 msgstr "URL"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
 #, fuzzy
 msgid "Optional"
 msgstr "选项"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Username"
 msgstr "用户名"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
 msgid "Password"
 msgstr "密码"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "此名称的凭据已存在"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "媒体URL (无效)"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "密码"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
 #, fuzzy
 msgid "Postprocessing Argument"
 msgstr "处理中..."
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
 #, fuzzy
 msgid "Post Processor"
 msgstr "处理中..."
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
 msgid "Merger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
 #, fuzzy
 msgid "Modify Chapters"
 msgstr "嵌入章节"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:75
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
 #, fuzzy
 msgid "Split Chapters"
 msgstr "拆分章节"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
 msgid "Extract Audio"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
 #, fuzzy
 msgid "Video Remuxer"
 msgstr "视频（通用）"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
 #, fuzzy
 msgid "Video Converter"
 msgstr "转换器"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
 #, fuzzy
 msgid "Metadata"
 msgstr "嵌入元数据"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
 #, fuzzy
 msgid "Embed Subtitle"
 msgstr "嵌入字幕"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
 #, fuzzy
 msgid "Embed Thumbnail"
 msgstr "嵌入封面图"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
 #, fuzzy
 msgid "Subtitles Converter"
 msgstr "字幕"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
 #, fuzzy
 msgid "Thumbnails Converter"
 msgstr "转换器"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
 msgid "Fixup Stretched"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
 msgid "Fixup M4a"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
 msgid "Fixup M3u8"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
 msgid "Fixup Timestamp"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
 msgid "Fixup Duration"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
 #, fuzzy
 msgid "Executable"
 msgstr "启用"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 msgid "AtomicParsley"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
 #, fuzzy
 msgid "FFmpeg"
 msgstr "FFmpeg 线程数"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 msgid "FFprobe"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:95
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
 #, fuzzy
 msgid "Argument"
 msgstr "没有凭据"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "已存在同名的参数"
 
 #: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:206
@@ -1027,10 +1062,6 @@ msgstr ""
 #~ msgid "Manage Arguments…"
 #~ msgstr "没有凭据"
 
-#, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "已存在同名的参数"
-
 #~ msgid "Args"
 #~ msgstr "参数"
 
@@ -1529,9 +1560,6 @@ msgstr ""
 #~ msgid "Use manual credential"
 #~ msgstr "使用手动凭据"
 
-#~ msgid "A credential with that name already exists"
-#~ msgstr "此名称的凭据已存在"
-
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "凭据名称不能为空"
 
@@ -1838,10 +1866,6 @@ msgstr ""
 
 #~ msgid "Post-Processor"
 #~ msgstr "后处理"
-
-#, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "密码"
 
 #, fuzzy
 #~ msgid "Updating"
@@ -2327,9 +2351,6 @@ msgstr ""
 #~ msgstr ""
 #~ "媒体剪辑可能不准确.\n"
 #~ "如果启用此选项, 则会禁用aria2作为下载程序的使用."
-
-#~ msgid "Media URL (Invalid)"
-#~ msgstr "媒体URL (无效)"
 
 #~ msgid ""
 #~ "Minimize to the system tray instead of quitting the application when the "

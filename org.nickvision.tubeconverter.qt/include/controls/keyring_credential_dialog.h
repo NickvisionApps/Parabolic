@@ -30,6 +30,7 @@ namespace parabolic::qt::controls
         [[nodiscard]] keyring::Credential credential() const;
 
     private:
+        Q_SLOT void toggle_password(bool checked);
         Q_SLOT void translate();
         Q_SLOT void validate();
         std::vector<std::string> m_taken_names;

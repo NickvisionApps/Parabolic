@@ -5,12 +5,14 @@
 #include <QKeySequence>
 #include <QLineEdit>
 #include <QObject>
+#include <QPalette>
 #include <QPushButton>
 #include <QShortcut>
 #include <QSignalBlocker>
 #include <QString>
 #include <QWidget>
 #include <algorithm>
+#include <oclero/qlementine/style/QlementineStyle.hpp>
 #include <string>
 #include <vector>
 #include "app.h"
@@ -30,13 +32,15 @@ namespace parabolic::qt::controls
           m_ui{ new Ui::PostprocessingArgumentDialog() }
     {
         m_ui->setupUi(this);
+        QPalette error_palette{ m_ui->lbl_error->palette() };
+        error_palette.setColor(QPalette::WindowText, oclero::qlementine::appStyle()->theme().statusColorError);
+        m_ui->lbl_error->setPalette(error_palette);
         translate();
         m_ui->txt_name->setText(QString::fromStdString(argument.name()));
         m_ui->cmb_step->setCurrentIndex(static_cast<int>(argument.step()));
         m_ui->cmb_executable->setCurrentIndex(static_cast<int>(argument.executable()));
         m_ui->txt_arguments->setText(QString::fromStdString(argument.args()));
-        m_ui->buttons->button(QDialogButtonBox::Ok)
-                ->setEnabled(!argument.name().empty() && !std::ranges::contains(m_taken_names, argument.name()));
+        validate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
                 &helpers::TranslationNotifier::translation_changed,
                 this,
@@ -93,11 +97,30 @@ namespace parabolic::qt::controls
                 { translator._("None"), translator._("AtomicParsley"), translator._("FFmpeg"), translator._("FFprobe") });
         m_ui->cmb_executable->setCurrentIndex(std::max(executable_index, 0));
         m_ui->lbl_arguments->setText(QString::fromStdString(translator._("{}:", translator._("Argument"))));
+        validate();
     }
 
     void PostprocessingArgumentDialog::validate()
     {
+        const translation::Translator& translator{ application::State::instance().translator() };
         std::string name{ m_ui->txt_name->text().trimmed().toStdString() };
-        m_ui->buttons->button(QDialogButtonBox::Ok)->setEnabled(!name.empty() && !std::ranges::contains(m_taken_names, name));
+        bool is_taken{ std::ranges::contains(m_taken_names, name) };
+        QString error;
+        if (name.empty() && m_ui->txt_name->isModified())
+        {
+            error = translator._("A name is required.");
+        }
+        else if (is_taken)
+        {
+            error = translator._("An argument with this name already exists.");
+        }
+        bool was_visible{ m_ui->lbl_error->isVisibleTo(this) };
+        m_ui->lbl_error->setText(error);
+        m_ui->lbl_error->setVisible(!error.isEmpty());
+        if (was_visible != !error.isEmpty())
+        {
+            adjustSize();
+        }
+        m_ui->buttons->button(QDialogButtonBox::Ok)->setEnabled(!name.empty() && !is_taken);
     }
 }

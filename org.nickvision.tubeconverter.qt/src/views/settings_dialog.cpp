@@ -104,11 +104,11 @@ namespace parabolic::qt::views
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Clear)));
         m_ui->spn_threads->setRange(1, static_cast<int>(std::max(1U, std::thread::hardware_concurrency())));
         m_ui->btn_add->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Document_New)));
         m_ui->btn_edit->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Pen)));
         m_ui->btn_remove->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Minus)));
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Trash)));
         translate();
         std::vector<std::string>::iterator language_it{ std::ranges::find(m_languages,
                                                                           configuration.translation_options().language()) };

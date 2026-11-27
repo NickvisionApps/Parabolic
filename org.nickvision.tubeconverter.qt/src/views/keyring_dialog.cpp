@@ -31,11 +31,11 @@ namespace parabolic::qt::views
     {
         m_ui->setupUi(this);
         m_ui->btn_add->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Plus)));
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Document_New)));
         m_ui->btn_edit->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
                 oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Misc_Pen)));
         m_ui->btn_remove->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(
-                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Minus)));
+                oclero::qlementine::icons::iconPath(oclero::qlementine::icons::Icons16::Action_Trash)));
         translate();
         reload();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),

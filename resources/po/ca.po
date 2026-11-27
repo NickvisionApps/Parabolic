@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:12-0500\n"
+"POT-Creation-Date: 2026-11-27 14:24-0500\n"
 "PO-Revision-Date: 2026-02-06 14:33+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -58,8 +58,8 @@ msgid "Worst"
 msgstr "Pitjor"
 
 #: libparabolic/src/file.cpp:298
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:609
 msgid "None"
 msgstr "Cap"
@@ -102,24 +102,34 @@ msgstr ""
 msgid "I understand"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:66
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Hide Password"
+msgstr "Contrasenya"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:81
+#, fuzzy
+msgid "Show Password"
+msgstr "Contrasenya"
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:87
 msgid "Credential"
 msgstr "Credencial"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Name"
 msgstr "Nom"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:67
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:69
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:95
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:481
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:486
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:520
@@ -141,134 +151,159 @@ msgstr "Nom"
 msgid "{}:"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:605
 msgid "URL"
 msgstr "URL"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:69
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:71
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:92
 #, fuzzy
 msgid "Optional"
 msgstr "Opcions avançades"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
 #: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:153
 msgid "Username"
 msgstr "Nom d’usuari"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:72
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:93
 msgid "Password"
 msgstr "Contrasenya"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:108
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:111
+msgid "A name is required."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:112
+#, fuzzy
+msgid "A credential with this name already exists."
+msgstr "Ja existeix una credencial amb aquest nom."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:116
+#, fuzzy
+msgid "The URL is not valid."
+msgstr "L’URL proporcionat no és vàlid."
+
+#: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:120
+#, fuzzy
+msgid "A password is required."
+msgstr "Contrasenya"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:72
 #, fuzzy
 msgid "Postprocessing Argument"
 msgstr "Fils de postprocessament"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
 #, fuzzy
 msgid "Post Processor"
 msgstr "Processant"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
 msgid "Merger"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
 #, fuzzy
 msgid "Modify Chapters"
 msgstr "Incrusta capítols"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:75
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
 #, fuzzy
 msgid "Split Chapters"
 msgstr "Parteix el vídeo en capítols"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
 msgid "Extract Audio"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:77
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
 #, fuzzy
 msgid "Video Remuxer"
 msgstr "Vídeo (genèric)"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:78
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
 #, fuzzy
 msgid "Video Converter"
 msgstr "Convertidor"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:79
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:624
 #, fuzzy
 msgid "Metadata"
 msgstr "Incrusta metadades"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
 #, fuzzy
 msgid "Embed Subtitle"
 msgstr "Incrusta subtítols"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
 #, fuzzy
 msgid "Embed Thumbnail"
 msgstr "Incrusta miniatures"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
 #, fuzzy
 msgid "Subtitles Converter"
 msgstr "Subtítols"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:83
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
 #, fuzzy
 msgid "Thumbnails Converter"
 msgstr "Convertidor"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:84
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
 msgid "Fixup Stretched"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:85
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:89
 msgid "Fixup M4a"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:86
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
 msgid "Fixup M3u8"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:87
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:91
 msgid "Fixup Timestamp"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:88
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:92
 msgid "Fixup Duration"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:94
 #, fuzzy
 msgid "Executable"
 msgstr "Activar"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 msgid "AtomicParsley"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:641
 #, fuzzy
 msgid "FFmpeg"
 msgstr "Fils de postprocessament"
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:97
 msgid "FFprobe"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:95
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:99
 #, fuzzy
 msgid "Argument"
 msgstr "Nova Credencial"
+
+#: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:115
+#, fuzzy
+msgid "An argument with this name already exists."
+msgstr "Ja existeix una credencial amb aquest nom."
 
 #: org.nickvision.tubeconverter.qt/src/views/history_dialog.cpp:37
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:206
@@ -1020,10 +1055,6 @@ msgstr ""
 #~ msgstr "Nova Credencial"
 
 #, fuzzy
-#~ msgid "An argument with this name already exists."
-#~ msgstr "Ja existeix una credencial amb aquest nom."
-
-#, fuzzy
 #~ msgid "An application restart is required for a change to take effect."
 #~ msgstr "Es requereix un reinici de l'aplicació per canviar el tema."
 
@@ -1467,10 +1498,6 @@ msgstr ""
 #~ msgstr "Utilitza credencials manuals"
 
 #, fuzzy
-#~ msgid "A credential with that name already exists"
-#~ msgstr "Ja existeix una credencial amb aquest nom."
-
-#, fuzzy
 #~ msgid "The name of the credential cannot be empty"
 #~ msgstr "El nom de credencial no pot ser buit."
 
@@ -1711,10 +1738,6 @@ msgstr ""
 #~ msgstr "Processant"
 
 #, fuzzy
-#~ msgid "Password Required"
-#~ msgstr "Contrasenya"
-
-#, fuzzy
 #~ msgid "Updating"
 #~ msgstr "Actualitzar"
 
@@ -1938,9 +1961,6 @@ msgstr ""
 
 #~ msgid "The credential name cannot be empty."
 #~ msgstr "El nom de credencial no pot ser buit."
-
-#~ msgid "The provided url is invalid."
-#~ msgstr "L’URL proporcionat no és vàlid."
 
 #~ msgid "There was an unknown error adding the credential to the keyring."
 #~ msgstr "S’ha produït un error desconegut en afegir la credencial al clauer."
