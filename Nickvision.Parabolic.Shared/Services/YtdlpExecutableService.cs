@@ -545,8 +545,20 @@ public class YtdlpExecutableService : DependencyExecutableService, IYtdlpExecuta
         }
         if (downloadOptions.TimeFrame is not null)
         {
-            arguments.Add("--postprocessor-args");
-            arguments.Add($"Merger+ffmpeg_i:-ss {downloadOptions.TimeFrame.Start} -t {downloadOptions.TimeFrame.Duration}");
+            if (downloadOptions.FileType.IsAudio)
+            {
+                // Audio never runs Merger, and ExtractAudio skips files already in the target format,
+                // so cut with a stream copy that always runs
+                arguments.Add("--use-postprocessor");
+                arguments.Add("FFmpegCopyStream:when=post_process");
+                arguments.Add("--postprocessor-args");
+                arguments.Add($"CopyStream:-threads {_configurationService.PostprocessingThreads} -ss {downloadOptions.TimeFrame.Start} -t {downloadOptions.TimeFrame.Duration}");
+            }
+            else
+            {
+                arguments.Add("--postprocessor-args");
+                arguments.Add($"Merger+ffmpeg_i:-ss {downloadOptions.TimeFrame.Start} -t {downloadOptions.TimeFrame.Duration}");
+            }
         }
         arguments.AddRange(_configurationService.YtdlpDownloadArgs.SplitCommandLine());
         return new Process()
