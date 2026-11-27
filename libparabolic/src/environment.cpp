@@ -1,5 +1,6 @@
 #include "environment.h"
 #include <array>
+#include <cerrno>
 #include <cstdint>
 #include <expected>
 #include <filesystem>
@@ -290,6 +291,15 @@ namespace parabolic::environment
         return std::filesystem::canonical("/proc/self/exe");
 #else
         return {};
+#endif
+    }
+
+    std::string last_system_error()
+    {
+#ifdef _WIN32
+        return std::system_category().message(static_cast<int>(GetLastError()));
+#else
+        return std::system_category().message(errno);
 #endif
     }
 

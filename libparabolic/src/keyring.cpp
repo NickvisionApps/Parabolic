@@ -1,11 +1,14 @@
 #include "keyring.h"
 #include <cstddef>
+#include <expected>
 #include <mutex>
 #include <nlohmann/json_fwd.hpp>
+#include <optional>
 #include <string>
 #include <string_view>
 #include <utility>
 #include <vector>
+#include "environment.h"
 #ifdef _WIN32
 #include <wincred.h>
 #include <windows.h>
@@ -102,12 +105,12 @@ namespace parabolic::keyring
     {
     }
 
-    bool Store::add(const Credential& credential)
+    std::expected<void, std::string> Store::add(const Credential& credential)
     {
         std::scoped_lock lock{ m_mutex };
         if (credential.name().empty())
         {
-            return false;
+            return std::unexpected<std::string>("The credential name cannot be empty.");
         }
 #ifdef _WIN32
         std::wstring target{ string_manip::wstr(m_app_id + "/" + credential.name()) };
@@ -115,7 +118,7 @@ namespace parabolic::keyring
         if (CredReadW(target.c_str(), CRED_TYPE_GENERIC, 0, &existing) != FALSE)
         {
             CredFree(existing);
-            return false;
+            return std::unexpected<std::string>("A credential with this name already exists.");
         }
         std::wstring url{ string_manip::wstr(credential.url()) };
         std::wstring username{ string_manip::wstr(credential.username()) };
@@ -127,7 +130,11 @@ namespace parabolic::keyring
                           .CredentialBlob = reinterpret_cast<LPBYTE>(password.data()),
                           .Persist = CRED_PERSIST_LOCAL_MACHINE,
                           .UserName = username.data() };
-        return CredWriteW(&cred, 0) != FALSE;
+        if (CredWriteW(&cred, 0) == FALSE)
+        {
+            return std::unexpected(environment::last_system_error());
+        }
+        return {};
 #elifdef __APPLE__
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, credential.name().c_str(), kCFStringEncodingUTF8) };
@@ -155,7 +162,21 @@ namespace parabolic::keyring
         CFRelease(url_ref);
         CFRelease(name_ref);
         CFRelease(service_ref);
-        return status == errSecSuccess;
+        if (status == errSecDuplicateItem)
+        {
+            return std::unexpected<std::string>("A credential with this name already exists.");
+        }
+        if (status != errSecSuccess)
+        {
+            CFStringRef message_ref{ SecCopyErrorMessageString(status, nullptr) };
+            std::string message{ str(message_ref) };
+            if (message_ref != nullptr)
+            {
+                CFRelease(message_ref);
+            }
+            return std::unexpected(message);
+        }
+        return {};
 #else
         GError* error{ nullptr };
         char* existing{ secret_password_lookup_sync(&KEYRING_SCHEMA,
@@ -168,13 +189,14 @@ namespace parabolic::keyring
                                                     nullptr) };
         if (error)
         {
+            std::string message{ error->message };
             g_error_free(error);
-            return false;
+            return std::unexpected(message);
         }
         if (existing)
         {
             secret_password_free(existing);
-            return false;
+            return std::unexpected<std::string>("A credential with this name already exists.");
         }
         secret_password_store_sync(&KEYRING_SCHEMA,
                                    SECRET_COLLECTION_DEFAULT,
@@ -193,10 +215,122 @@ namespace parabolic::keyring
                                    nullptr);
         if (error)
         {
+            std::string message{ error->message };
             g_error_free(error);
-            return false;
+            return std::unexpected(message);
         }
-        return true;
+        return {};
+#endif
+    }
+
+    std::expected<Credential, std::string> Store::get(const std::string& name) const
+    {
+        std::scoped_lock lock{ m_mutex };
+        if (name.empty())
+        {
+            return std::unexpected<std::string>("The credential name cannot be empty.");
+        }
+#ifdef _WIN32
+        CREDENTIALW* item{ nullptr };
+        if (CredReadW(string_manip::wstr(m_app_id + "/" + name).c_str(), CRED_TYPE_GENERIC, 0, &item) == FALSE)
+        {
+            return std::unexpected(environment::last_system_error());
+        }
+        std::wstring password{ reinterpret_cast<const wchar_t*>(item->CredentialBlob),
+                               item->CredentialBlobSize / sizeof(wchar_t) };
+        Credential credential{ name,
+                               item->Comment ? string_manip::str(item->Comment) : std::string{},
+                               item->UserName ? string_manip::str(item->UserName) : std::string{},
+                               string_manip::str(password) };
+        CredFree(item);
+        return credential;
+#elifdef __APPLE__
+        CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
+        CFStringRef name_ref{ CFStringCreateWithCString(nullptr, name.c_str(), kCFStringEncodingUTF8) };
+        CFMutableDictionaryRef query{
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
+        };
+        CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
+        CFDictionaryAddValue(query, kSecAttrService, service_ref);
+        CFDictionaryAddValue(query, kSecAttrAccount, name_ref);
+        CFDictionaryAddValue(query, kSecMatchLimit, kSecMatchLimitOne);
+        CFDictionaryAddValue(query, kSecReturnAttributes, kCFBooleanTrue);
+        CFDictionaryAddValue(query, kSecReturnData, kCFBooleanTrue);
+        CFTypeRef result{ nullptr };
+        OSStatus status{ SecItemCopyMatching(query, &result) };
+        CFRelease(query);
+        CFRelease(name_ref);
+        CFRelease(service_ref);
+        if (status != errSecSuccess)
+        {
+            CFStringRef message_ref{ SecCopyErrorMessageString(status, nullptr) };
+            std::string message{ str(message_ref) };
+            if (message_ref != nullptr)
+            {
+                CFRelease(message_ref);
+            }
+            return std::unexpected(message);
+        }
+        if (result == nullptr)
+        {
+            return std::unexpected<std::string>("The credential could not be found.");
+        }
+        CFDictionaryRef item{ static_cast<CFDictionaryRef>(result) };
+        CFDataRef username_data{ static_cast<CFDataRef>(CFDictionaryGetValue(item, kSecAttrGeneric)) };
+        CFDataRef password_data{ static_cast<CFDataRef>(CFDictionaryGetValue(item, kSecValueData)) };
+        Credential credential{ name,
+                               str(static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrComment))),
+                               username_data != nullptr
+                                       ? std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(username_data)),
+                                                      static_cast<std::size_t>(CFDataGetLength(username_data)) }
+                                       : std::string{},
+                               password_data != nullptr
+                                       ? std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(password_data)),
+                                                      static_cast<std::size_t>(CFDataGetLength(password_data)) }
+                                       : std::string{} };
+        CFRelease(result);
+        return credential;
+#else
+        GHashTable* attributes{ g_hash_table_new(g_str_hash, g_str_equal) };
+        g_hash_table_insert(attributes, const_cast<char*>("application"), const_cast<char*>(m_app_id.c_str()));
+        g_hash_table_insert(attributes, const_cast<char*>("name"), const_cast<char*>(name.c_str()));
+        GError* error{ nullptr };
+        GList* items{ secret_service_search_sync(nullptr,
+                                                 &KEYRING_SCHEMA,
+                                                 attributes,
+                                                 static_cast<SecretSearchFlags>(SECRET_SEARCH_UNLOCK |
+                                                                                SECRET_SEARCH_LOAD_SECRETS),
+                                                 nullptr,
+                                                 &error) };
+        g_hash_table_unref(attributes);
+        if (error)
+        {
+            std::string message{ error->message };
+            g_error_free(error);
+            return std::unexpected(message);
+        }
+        if (!items)
+        {
+            return std::unexpected<std::string>("The credential could not be found.");
+        }
+        std::optional<Credential> credential;
+        if (items)
+        {
+            SecretItem* item{ static_cast<SecretItem*>(items->data) };
+            GHashTable* item_attributes{ secret_item_get_attributes(item) };
+            SecretValue* value{ secret_item_get_secret(item) };
+            const char* url{ static_cast<const char*>(g_hash_table_lookup(item_attributes, "url")) };
+            const char* username{ static_cast<const char*>(g_hash_table_lookup(item_attributes, "username")) };
+            const char* password{ value ? secret_value_get_text(value) : nullptr };
+            credential = Credential{ name, url ? url : "", username ? username : "", password ? password : "" };
+            if (value)
+            {
+                secret_value_unref(value);
+            }
+            g_hash_table_unref(item_attributes);
+        }
+        g_list_free_full(items, g_object_unref);
+        return *credential;
 #endif
     }
 
@@ -212,13 +346,11 @@ namespace parabolic::keyring
             for (DWORD i{ 0 }; i < count; i++)
             {
                 std::wstring_view target{ items[i]->TargetName };
-                std::wstring password{ reinterpret_cast<const wchar_t*>(items[i]->CredentialBlob),
-                                       items[i]->CredentialBlobSize / sizeof(wchar_t) };
                 credentials.emplace_back(string_manip::str(
                                                  std::wstring{ target.substr(string_manip::wstr(m_app_id).size() + 1) }),
                                          items[i]->Comment ? string_manip::str(items[i]->Comment) : std::string{},
                                          items[i]->UserName ? string_manip::str(items[i]->UserName) : std::string{},
-                                         string_manip::str(password));
+                                         std::string{});
             }
             CredFree(items);
         }
@@ -242,31 +374,13 @@ namespace parabolic::keyring
                 CFDictionaryRef item{ static_cast<CFDictionaryRef>(CFArrayGetValueAtIndex(items, i)) };
                 CFStringRef name_ref{ static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrAccount)) };
                 CFDataRef username_data{ static_cast<CFDataRef>(CFDictionaryGetValue(item, kSecAttrGeneric)) };
-                CFMutableDictionaryRef data_query{
-                    CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
-                };
-                CFDictionaryAddValue(data_query, kSecClass, kSecClassGenericPassword);
-                CFDictionaryAddValue(data_query, kSecAttrService, service_ref);
-                CFDictionaryAddValue(data_query, kSecAttrAccount, name_ref);
-                CFDictionaryAddValue(data_query, kSecMatchLimit, kSecMatchLimitOne);
-                CFDictionaryAddValue(data_query, kSecReturnData, kCFBooleanTrue);
-                CFTypeRef data_result{ nullptr };
-                OSStatus data_status{ SecItemCopyMatching(data_query, &data_result) };
-                CFRelease(data_query);
-                if (data_status != errSecSuccess || data_result == nullptr)
-                {
-                    continue;
-                }
-                CFDataRef password_data{ static_cast<CFDataRef>(data_result) };
                 credentials.emplace_back(str(name_ref),
                                          str(static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrComment))),
                                          username_data != nullptr
                                                  ? std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(username_data)),
                                                                 static_cast<std::size_t>(CFDataGetLength(username_data)) }
                                                  : std::string{},
-                                         std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(password_data)),
-                                                      static_cast<std::size_t>(CFDataGetLength(password_data)) });
-                CFRelease(data_result);
+                                         std::string{});
             }
             CFRelease(result);
         }
@@ -278,8 +392,7 @@ namespace parabolic::keyring
         GList* items{ secret_service_search_sync(nullptr,
                                                  &KEYRING_SCHEMA,
                                                  attributes,
-                                                 static_cast<SecretSearchFlags>(SECRET_SEARCH_ALL | SECRET_SEARCH_UNLOCK |
-                                                                                SECRET_SEARCH_LOAD_SECRETS),
+                                                 static_cast<SecretSearchFlags>(SECRET_SEARCH_ALL | SECRET_SEARCH_UNLOCK),
                                                  nullptr,
                                                  &error) };
         g_hash_table_unref(attributes);
@@ -293,16 +406,10 @@ namespace parabolic::keyring
             {
                 SecretItem* item{ static_cast<SecretItem*>(i->data) };
                 GHashTable* item_attributes{ secret_item_get_attributes(item) };
-                SecretValue* value{ secret_item_get_secret(item) };
                 const char* name{ static_cast<const char*>(g_hash_table_lookup(item_attributes, "name")) };
                 const char* url{ static_cast<const char*>(g_hash_table_lookup(item_attributes, "url")) };
                 const char* username{ static_cast<const char*>(g_hash_table_lookup(item_attributes, "username")) };
-                const char* password{ value ? secret_value_get_text(value) : nullptr };
-                credentials.emplace_back(name ? name : "", url ? url : "", username ? username : "", password ? password : "");
-                if (value)
-                {
-                    secret_value_unref(value);
-                }
+                credentials.emplace_back(name ? name : "", url ? url : "", username ? username : "", std::string{});
                 g_hash_table_unref(item_attributes);
             }
             g_list_free_full(items, g_object_unref);
@@ -311,15 +418,19 @@ namespace parabolic::keyring
         return credentials;
     }
 
-    bool Store::remove(const std::string& name)
+    std::expected<void, std::string> Store::remove(const std::string& name)
     {
         std::scoped_lock lock{ m_mutex };
         if (name.empty())
         {
-            return false;
+            return std::unexpected<std::string>("The credential name cannot be empty.");
         }
 #ifdef _WIN32
-        return CredDeleteW(string_manip::wstr(m_app_id + "/" + name).c_str(), CRED_TYPE_GENERIC, 0) != FALSE;
+        if (CredDeleteW(string_manip::wstr(m_app_id + "/" + name).c_str(), CRED_TYPE_GENERIC, 0) == FALSE)
+        {
+            return std::unexpected(environment::last_system_error());
+        }
+        return {};
 #elifdef __APPLE__
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, name.c_str(), kCFStringEncodingUTF8) };
@@ -333,7 +444,17 @@ namespace parabolic::keyring
         CFRelease(query);
         CFRelease(name_ref);
         CFRelease(service_ref);
-        return status == errSecSuccess;
+        if (status != errSecSuccess)
+        {
+            CFStringRef message_ref{ SecCopyErrorMessageString(status, nullptr) };
+            std::string message{ str(message_ref) };
+            if (message_ref != nullptr)
+            {
+                CFRelease(message_ref);
+            }
+            return std::unexpected(message);
+        }
+        return {};
 #else
         GError* error{ nullptr };
         bool removed{ secret_password_clear_sync(&KEYRING_SCHEMA,
@@ -346,26 +467,31 @@ namespace parabolic::keyring
                                                  nullptr) != FALSE };
         if (error)
         {
+            std::string message{ error->message };
             g_error_free(error);
-            return false;
+            return std::unexpected(message);
         }
-        return removed;
+        if (!removed)
+        {
+            return std::unexpected<std::string>("The credential could not be found.");
+        }
+        return {};
 #endif
     }
 
-    bool Store::update(const Credential& credential)
+    std::expected<void, std::string> Store::update(const Credential& credential)
     {
         std::scoped_lock lock{ m_mutex };
         if (credential.name().empty())
         {
-            return false;
+            return std::unexpected<std::string>("The credential name cannot be empty.");
         }
 #ifdef _WIN32
         std::wstring target{ string_manip::wstr(m_app_id + "/" + credential.name()) };
         CREDENTIALW* existing{ nullptr };
         if (CredReadW(target.c_str(), CRED_TYPE_GENERIC, 0, &existing) == FALSE)
         {
-            return false;
+            return std::unexpected(environment::last_system_error());
         }
         CredFree(existing);
         std::wstring url{ string_manip::wstr(credential.url()) };
@@ -378,7 +504,11 @@ namespace parabolic::keyring
                           .CredentialBlob = reinterpret_cast<LPBYTE>(password.data()),
                           .Persist = CRED_PERSIST_LOCAL_MACHINE,
                           .UserName = username.data() };
-        return CredWriteW(&cred, 0) != FALSE;
+        if (CredWriteW(&cred, 0) == FALSE)
+        {
+            return std::unexpected(environment::last_system_error());
+        }
+        return {};
 #elifdef __APPLE__
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, credential.name().c_str(), kCFStringEncodingUTF8) };
@@ -409,7 +539,17 @@ namespace parabolic::keyring
         CFRelease(url_ref);
         CFRelease(name_ref);
         CFRelease(service_ref);
-        return status == errSecSuccess;
+        if (status != errSecSuccess)
+        {
+            CFStringRef message_ref{ SecCopyErrorMessageString(status, nullptr) };
+            std::string message{ str(message_ref) };
+            if (message_ref != nullptr)
+            {
+                CFRelease(message_ref);
+            }
+            return std::unexpected(message);
+        }
+        return {};
 #else
         GError* error{ nullptr };
         char* existing{ secret_password_lookup_sync(&KEYRING_SCHEMA,
@@ -422,12 +562,13 @@ namespace parabolic::keyring
                                                     nullptr) };
         if (error)
         {
+            std::string message{ error->message };
             g_error_free(error);
-            return false;
+            return std::unexpected(message);
         }
         if (!existing)
         {
-            return false;
+            return std::unexpected<std::string>("The credential could not be found.");
         }
         secret_password_free(existing);
         secret_password_clear_sync(&KEYRING_SCHEMA,
@@ -440,8 +581,9 @@ namespace parabolic::keyring
                                    nullptr);
         if (error)
         {
+            std::string message{ error->message };
             g_error_free(error);
-            return false;
+            return std::unexpected(message);
         }
         secret_password_store_sync(&KEYRING_SCHEMA,
                                    SECRET_COLLECTION_DEFAULT,
@@ -460,10 +602,11 @@ namespace parabolic::keyring
                                    nullptr);
         if (error)
         {
+            std::string message{ error->message };
             g_error_free(error);
-            return false;
+            return std::unexpected(message);
         }
-        return true;
+        return {};
 #endif
     }
 

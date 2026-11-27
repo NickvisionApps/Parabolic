@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-27 14:29-0500\n"
+"POT-Creation-Date: 2026-11-27 14:43-0500\n"
 "PO-Revision-Date: 2026-02-27 16:32+0000\n"
 "Last-Translator: sotohi <c6h4ohcooc6h5@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -121,7 +121,7 @@ msgstr "認証情報"
 
 #: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:88
 #: org.nickvision.tubeconverter.qt/src/controls/postprocessing_argument_dialog.cpp:73
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
 msgid "Name"
 msgstr "名前"
 
@@ -155,7 +155,7 @@ msgid "{}:"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:89
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:617
 msgid "URL"
 msgstr "URL"
@@ -167,7 +167,7 @@ msgid "Optional"
 msgstr "オプション"
 
 #: org.nickvision.tubeconverter.qt/src/controls/keyring_credential_dialog.cpp:91
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:183
 msgid "Username"
 msgstr "ユーザー名"
 
@@ -313,62 +313,56 @@ msgstr "同名の引数が既に存在します"
 msgid "History"
 msgstr "履歴"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:77
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:104
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:165
 msgid "Error"
 msgstr "エラー"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:77
-#, fuzzy
-msgid "Unable to add the credential."
-msgstr "認証情報を削除しますか？"
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:107
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:166
+#, fuzzy, c++-format
+msgid "System keyring error: {}"
+msgstr "{0} スリープ"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:104
-#, fuzzy
-msgid "Unable to update the credential."
-msgstr "キーリングを無効化できません。"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:155
 #, fuzzy
 msgid "Remove Credential"
 msgstr "資格情報なし"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:140
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:369
 #, fuzzy, c++-format
 msgid "Are you sure you want to remove \"{}\"?"
 msgstr "本当にこの認証情報を削除しますか？"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:147
-#, fuzzy
-msgid "Unable to remove the credential."
-msgstr "キーリングをリセットできません。"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:156
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:175
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:211
 #: org.nickvision.tubeconverter.qt/src/views/main_window.cpp:214
 msgid "Keyring"
 msgstr "キーリング"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:158
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:177
 #, fuzzy
 msgid ""
 "Add, delete, and modify credentials for validating websites. These will show "
 "in the add download dialog for selection."
 msgstr "メディアサイトの資格情報を作成・保存・管理できます。"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:160
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:179
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:659
 msgid "Add"
 msgstr "追加"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:161
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:180
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:660
 msgid "Edit"
 msgstr "編集"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:162
+#: org.nickvision.tubeconverter.qt/src/views/keyring_dialog.cpp:181
 #: org.nickvision.tubeconverter.qt/src/views/settings_dialog.cpp:661
 msgid "Remove"
 msgstr ""
@@ -978,6 +972,22 @@ msgstr "ffmpge のスレッド数を制限"
 msgid "Arguments will be shown for selection in the download discovery dialog."
 msgstr "引数はダウンロード追加ダイアログで選択できます"
 
+#, fuzzy
+#~ msgid "Unable to add the credential."
+#~ msgstr "認証情報を削除しますか？"
+
+#, fuzzy
+#~ msgid "Unable to read the credential."
+#~ msgstr "認証情報を削除しますか？"
+
+#, fuzzy
+#~ msgid "Unable to update the credential."
+#~ msgstr "キーリングを無効化できません。"
+
+#, fuzzy
+#~ msgid "Unable to remove the credential."
+#~ msgstr "キーリングをリセットできません。"
+
 #~ msgid "Credentials"
 #~ msgstr "認証情報"
 
@@ -1432,10 +1442,6 @@ msgstr "引数はダウンロード追加ダイアログで選択できます"
 
 #~ msgid "Resume"
 #~ msgstr "再開"
-
-#, csharp-format
-#~ msgid "Sleeping for {0}"
-#~ msgstr "{0} スリープ"
 
 #, csharp-format
 #~ msgid "{0}% Complete • {1} • {2} Remaining"

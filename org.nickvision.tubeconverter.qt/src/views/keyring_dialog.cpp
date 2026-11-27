@@ -11,6 +11,7 @@
 #include <QTableWidgetItem>
 #include <QWidget>
 #include <cstddef>
+#include <expected>
 #include <oclero/qlementine/icons/Icons16.hpp>
 #include <oclero/qlementine/style/QlementineStyle.hpp>
 #include <string>
@@ -72,9 +73,12 @@ namespace parabolic::qt::views
         {
             return;
         }
-        if (!application::State::instance().keyring().add(dialog.credential()))
+        std::expected<void, std::string> result{ application::State::instance().keyring().add(dialog.credential()) };
+        if (!result)
         {
-            QMessageBox::critical(this, translator._("Error"), translator._("Unable to add the credential."));
+            QMessageBox::critical(this,
+                                  translator._("Error"),
+                                  QString::fromStdString(translator._("System keyring error: {}", result.error())));
             return;
         }
         reload();
@@ -94,14 +98,26 @@ namespace parabolic::qt::views
             return;
         }
         const translation::Translator& translator{ application::State::instance().translator() };
-        controls::KeyringCredentialDialog dialog{ m_credentials[static_cast<std::size_t>(row)], {}, this };
+        std::expected<keyring::Credential, std::string> credential{ application::State::instance().keyring().get(
+                m_credentials[static_cast<std::size_t>(row)].name()) };
+        if (!credential)
+        {
+            QMessageBox::critical(this,
+                                  translator._("Error"),
+                                  QString::fromStdString(translator._("System keyring error: {}", credential.error())));
+            return;
+        }
+        controls::KeyringCredentialDialog dialog{ *credential, {}, this };
         if (dialog.exec() != QDialog::Accepted)
         {
             return;
         }
-        if (!application::State::instance().keyring().update(dialog.credential()))
+        std::expected<void, std::string> result{ application::State::instance().keyring().update(dialog.credential()) };
+        if (!result)
         {
-            QMessageBox::critical(this, translator._("Error"), translator._("Unable to update the credential."));
+            QMessageBox::critical(this,
+                                  translator._("Error"),
+                                  QString::fromStdString(translator._("System keyring error: {}", result.error())));
             return;
         }
         reload();
@@ -142,9 +158,12 @@ namespace parabolic::qt::views
         {
             return;
         }
-        if (!application::State::instance().keyring().remove(credential.name()))
+        std::expected<void, std::string> result{ application::State::instance().keyring().remove(credential.name()) };
+        if (!result)
         {
-            QMessageBox::critical(this, translator._("Error"), translator._("Unable to remove the credential."));
+            QMessageBox::critical(this,
+                                  translator._("Error"),
+                                  QString::fromStdString(translator._("System keyring error: {}", result.error())));
             return;
         }
         reload();
