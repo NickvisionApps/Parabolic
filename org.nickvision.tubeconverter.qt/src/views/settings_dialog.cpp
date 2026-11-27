@@ -144,11 +144,6 @@ namespace parabolic::qt::views
             m_ui->cmb_history_length->setCurrentIndex(7);
             break;
         }
-        connect(m_ui->cmb_theme, &QComboBox::currentIndexChanged, this, &SettingsDialog::change_theme);
-        connect(m_ui->cmb_language, &QComboBox::currentIndexChanged, this, &SettingsDialog::change_language);
-        connect(m_ui->chk_automatic_updates, &QCheckBox::toggled, this, &SettingsDialog::save_general);
-        connect(m_ui->chk_preview_updates, &QCheckBox::toggled, this, &SettingsDialog::save_general);
-        connect(m_ui->cmb_history_length, &QComboBox::currentIndexChanged, this, &SettingsDialog::save_general);
         discovery::Options discovery_options{ configuration.discovery_options() };
         m_ui->chk_media_id->setChecked(discovery_options.include_media_id_in_title());
         m_ui->chk_limit_characters->setChecked(discovery_options.limit_characters());
@@ -159,15 +154,6 @@ namespace parabolic::qt::views
         m_ui->cmb_subtitle_format->setCurrentIndex(static_cast<int>(discovery_options.preferred_subtitle_format()));
         m_ui->cmb_frame_rate->setCurrentIndex(static_cast<int>(discovery_options.preferred_frame_rate()));
         m_ui->txt_discovery_arguments->setText(QString::fromStdString(discovery_options.ytdlp_arguments()));
-        connect(m_ui->chk_media_id, &QCheckBox::toggled, this, &SettingsDialog::save_discovery);
-        connect(m_ui->chk_limit_characters, &QCheckBox::toggled, this, &SettingsDialog::save_discovery);
-        connect(m_ui->chk_super_resolutions, &QCheckBox::toggled, this, &SettingsDialog::save_discovery);
-        connect(m_ui->chk_auto_generated_subtitles, &QCheckBox::toggled, this, &SettingsDialog::save_discovery);
-        connect(m_ui->cmb_audio_codec, &QComboBox::currentIndexChanged, this, &SettingsDialog::save_discovery);
-        connect(m_ui->cmb_video_codec, &QComboBox::currentIndexChanged, this, &SettingsDialog::save_discovery);
-        connect(m_ui->cmb_subtitle_format, &QComboBox::currentIndexChanged, this, &SettingsDialog::save_discovery);
-        connect(m_ui->cmb_frame_rate, &QComboBox::currentIndexChanged, this, &SettingsDialog::save_discovery);
-        connect(m_ui->txt_discovery_arguments, &QLineEdit::textChanged, this, &SettingsDialog::save_discovery);
         download::Options download_options{ configuration.download_options() };
         aria2::Options aria2_options{ configuration.aria2_options() };
         m_ui->spn_max_downloads->setValue(download_options.max_number_of_active_downloads());
@@ -179,14 +165,6 @@ namespace parabolic::qt::views
         m_ui->spn_aria_split_size->setValue(aria2_options.min_split_size());
         m_ui->spn_aria_split_size->setEnabled(aria2_options.use_aria());
         m_ui->txt_downloads_arguments->setText(QString::fromStdString(download_options.ytdlp_arguments()));
-        connect(m_ui->spn_max_downloads, &QSpinBox::valueChanged, this, &SettingsDialog::save_downloads);
-        connect(m_ui->chk_overwrite_existing_files, &QCheckBox::toggled, this, &SettingsDialog::save_downloads);
-        connect(m_ui->chk_prevent_suspend, &QCheckBox::toggled, this, &SettingsDialog::save_downloads);
-        connect(m_ui->chk_use_aria, &QCheckBox::toggled, this, &SettingsDialog::save_downloads);
-        connect(m_ui->btn_learn_more, &QToolButton::clicked, this, &SettingsDialog::learn_more);
-        connect(m_ui->spn_aria_connections, &QSpinBox::valueChanged, this, &SettingsDialog::save_downloads);
-        connect(m_ui->spn_aria_split_size, &QSpinBox::valueChanged, this, &SettingsDialog::save_downloads);
-        connect(m_ui->txt_downloads_arguments, &QLineEdit::textChanged, this, &SettingsDialog::save_downloads);
         extractor::Options extractor_options{ configuration.extractor_options() };
         m_ui->chk_part_files->setChecked(extractor_options.use_part_files());
         m_ui->chk_sponsor_block->setChecked(extractor_options.youtube_sponsor_block());
@@ -197,16 +175,6 @@ namespace parabolic::qt::views
         m_ui->txt_proxy_url->setText(QString::fromStdString(extractor_options.proxy_url()));
         m_ui->cmb_cookies_browser->setCurrentIndex(static_cast<int>(extractor_options.cookies_browser()));
         m_ui->txt_cookies_path->setText(QString::fromStdString(extractor_options.cookies_path()));
-        connect(m_ui->chk_part_files, &QCheckBox::toggled, this, &SettingsDialog::save_extractor);
-        connect(m_ui->chk_sponsor_block, &QCheckBox::toggled, this, &SettingsDialog::save_extractor);
-        connect(m_ui->chk_translate_metadata, &QCheckBox::toggled, this, &SettingsDialog::save_extractor);
-        connect(m_ui->chk_speed_limit, &QCheckBox::toggled, this, &SettingsDialog::save_extractor);
-        connect(m_ui->spn_speed_limit, &QSpinBox::valueChanged, this, &SettingsDialog::save_extractor);
-        connect(m_ui->txt_proxy_url, &QLineEdit::textChanged, this, &SettingsDialog::save_extractor);
-        connect(m_ui->cmb_cookies_browser, &QComboBox::currentIndexChanged, this, &SettingsDialog::save_extractor);
-        connect(m_ui->txt_cookies_path, &QLineEdit::textChanged, this, &SettingsDialog::save_extractor);
-        connect(m_ui->btn_cookies_browse, &QPushButton::clicked, this, &SettingsDialog::browse_cookies_file);
-        connect(m_ui->btn_cookies_clear, &QPushButton::clicked, m_ui->txt_cookies_path, &QLineEdit::clear);
         postprocessing::Options postprocessing_options{ configuration.postprocessing_options() };
         m_ui->chk_embed_metadata->setChecked(postprocessing_options.embed_metadata());
         m_ui->chk_remove_source_data->setChecked(postprocessing_options.remove_source_data());
@@ -222,13 +190,45 @@ namespace parabolic::qt::views
         {
             m_ui->lst_arguments->addItem(QString::fromStdString(argument.name()));
         }
-        connect(m_ui->chk_embed_metadata, &QCheckBox::toggled, this, &SettingsDialog::save_postprocessing);
-        connect(m_ui->chk_remove_source_data, &QCheckBox::toggled, this, &SettingsDialog::save_postprocessing);
-        connect(m_ui->chk_embed_thumbnails, &QCheckBox::toggled, this, &SettingsDialog::save_postprocessing);
-        connect(m_ui->chk_crop_audio_thumbnails, &QCheckBox::toggled, this, &SettingsDialog::save_postprocessing);
-        connect(m_ui->chk_embed_chapters, &QCheckBox::toggled, this, &SettingsDialog::save_postprocessing);
-        connect(m_ui->chk_embed_subtitles, &QCheckBox::toggled, this, &SettingsDialog::save_postprocessing);
-        connect(m_ui->spn_threads, &QSpinBox::valueChanged, this, &SettingsDialog::save_postprocessing);
+        connect(m_ui->cmb_theme, &QComboBox::currentIndexChanged, this, &SettingsDialog::change_theme);
+        connect(m_ui->cmb_language, &QComboBox::currentIndexChanged, this, &SettingsDialog::change_language);
+        connect(m_ui->chk_automatic_updates, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_preview_updates, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->cmb_history_length, &QComboBox::currentIndexChanged, this, &SettingsDialog::save);
+        connect(m_ui->chk_media_id, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_limit_characters, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_super_resolutions, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_auto_generated_subtitles, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->cmb_audio_codec, &QComboBox::currentIndexChanged, this, &SettingsDialog::save);
+        connect(m_ui->cmb_video_codec, &QComboBox::currentIndexChanged, this, &SettingsDialog::save);
+        connect(m_ui->cmb_subtitle_format, &QComboBox::currentIndexChanged, this, &SettingsDialog::save);
+        connect(m_ui->cmb_frame_rate, &QComboBox::currentIndexChanged, this, &SettingsDialog::save);
+        connect(m_ui->txt_discovery_arguments, &QLineEdit::textChanged, this, &SettingsDialog::save);
+        connect(m_ui->spn_max_downloads, &QSpinBox::valueChanged, this, &SettingsDialog::save);
+        connect(m_ui->chk_overwrite_existing_files, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_prevent_suspend, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_use_aria, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->btn_learn_more, &QToolButton::clicked, this, &SettingsDialog::learn_more);
+        connect(m_ui->spn_aria_connections, &QSpinBox::valueChanged, this, &SettingsDialog::save);
+        connect(m_ui->spn_aria_split_size, &QSpinBox::valueChanged, this, &SettingsDialog::save);
+        connect(m_ui->txt_downloads_arguments, &QLineEdit::textChanged, this, &SettingsDialog::save);
+        connect(m_ui->chk_part_files, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_sponsor_block, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_translate_metadata, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_speed_limit, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->spn_speed_limit, &QSpinBox::valueChanged, this, &SettingsDialog::save);
+        connect(m_ui->txt_proxy_url, &QLineEdit::textChanged, this, &SettingsDialog::save);
+        connect(m_ui->cmb_cookies_browser, &QComboBox::currentIndexChanged, this, &SettingsDialog::save);
+        connect(m_ui->txt_cookies_path, &QLineEdit::textChanged, this, &SettingsDialog::save);
+        connect(m_ui->btn_cookies_browse, &QPushButton::clicked, this, &SettingsDialog::browse_cookies_file);
+        connect(m_ui->btn_cookies_clear, &QPushButton::clicked, m_ui->txt_cookies_path, &QLineEdit::clear);
+        connect(m_ui->chk_embed_metadata, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_remove_source_data, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_embed_thumbnails, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_crop_audio_thumbnails, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_embed_chapters, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->chk_embed_subtitles, &QCheckBox::toggled, this, &SettingsDialog::save);
+        connect(m_ui->spn_threads, &QSpinBox::valueChanged, this, &SettingsDialog::save);
         connect(m_ui->btn_add, &QToolButton::clicked, this, &SettingsDialog::add_argument);
         connect(m_ui->btn_edit, &QToolButton::clicked, this, &SettingsDialog::edit_argument);
         connect(m_ui->btn_remove, &QToolButton::clicked, this, &SettingsDialog::remove_argument);
@@ -264,7 +264,7 @@ namespace parabolic::qt::views
         m_arguments.push_back(argument);
         m_ui->lst_arguments->addItem(QString::fromStdString(argument.name()));
         m_ui->lst_arguments->setCurrentRow(m_ui->lst_arguments->count() - 1);
-        save_postprocessing();
+        save();
     }
 
     void SettingsDialog::browse_cookies_file()
@@ -336,7 +336,7 @@ namespace parabolic::qt::views
         postprocessing::Argument argument{ dialog.argument() };
         m_arguments[static_cast<std::size_t>(row)] = argument;
         m_ui->lst_arguments->item(row)->setText(QString::fromStdString(argument.name()));
-        save_postprocessing();
+        save();
     }
 
     void SettingsDialog::learn_more()
@@ -362,61 +362,16 @@ namespace parabolic::qt::views
         }
         m_arguments.erase(m_arguments.begin() + row);
         delete m_ui->lst_arguments->takeItem(row);
-        save_postprocessing();
+        save();
     }
 
-    void SettingsDialog::save_discovery()
-    {
-        configuration::Configuration& configuration{ application::State::instance().configuration() };
-        discovery::Options options{ configuration.discovery_options() };
-        options.set_include_media_id_in_title(m_ui->chk_media_id->isChecked());
-        options.set_limit_characters(m_ui->chk_limit_characters->isChecked());
-        options.set_include_super_resolutions(m_ui->chk_super_resolutions->isChecked());
-        options.set_include_auto_generated_subtitles(m_ui->chk_auto_generated_subtitles->isChecked());
-        options.set_preferred_audio_codec(static_cast<audio::Codec>(m_ui->cmb_audio_codec->currentIndex()));
-        options.set_preferred_video_codec(static_cast<video::Codec>(m_ui->cmb_video_codec->currentIndex()));
-        options.set_preferred_subtitle_format(static_cast<subtitle::Type>(m_ui->cmb_subtitle_format->currentIndex()));
-        options.set_preferred_frame_rate(static_cast<video::FrameRate>(m_ui->cmb_frame_rate->currentIndex()));
-        options.set_ytdlp_arguments(m_ui->txt_discovery_arguments->text().toStdString());
-        configuration.set_discovery_options(options);
-    }
-
-    void SettingsDialog::save_downloads()
+    void SettingsDialog::save()
     {
         m_ui->spn_aria_connections->setEnabled(m_ui->chk_use_aria->isChecked());
         m_ui->spn_aria_split_size->setEnabled(m_ui->chk_use_aria->isChecked());
-        configuration::Configuration& configuration{ application::State::instance().configuration() };
-        download::Options download_options{ configuration.download_options() };
-        download_options.set_max_number_of_active_downloads(m_ui->spn_max_downloads->value());
-        download_options.set_overwrite_existing_files(m_ui->chk_overwrite_existing_files->isChecked());
-        download_options.set_prevent_suspend(m_ui->chk_prevent_suspend->isChecked());
-        download_options.set_ytdlp_arguments(m_ui->txt_downloads_arguments->text().toStdString());
-        configuration.set_download_options(download_options);
-        aria2::Options aria2_options{ configuration.aria2_options() };
-        aria2_options.set_use_aria(m_ui->chk_use_aria->isChecked());
-        aria2_options.set_max_connections_per_server(m_ui->spn_aria_connections->value());
-        aria2_options.set_min_split_size(m_ui->spn_aria_split_size->value());
-        configuration.set_aria2_options(aria2_options);
-    }
-
-    void SettingsDialog::save_extractor()
-    {
         m_ui->spn_speed_limit->setEnabled(m_ui->chk_speed_limit->isChecked());
-        configuration::Configuration& configuration{ application::State::instance().configuration() };
-        extractor::Options options{ configuration.extractor_options() };
-        options.set_use_part_files(m_ui->chk_part_files->isChecked());
-        options.set_youtube_sponsor_block(m_ui->chk_sponsor_block->isChecked());
-        options.set_translate_metadata_and_chapters(m_ui->chk_translate_metadata->isChecked());
-        options.set_speed_limit(m_ui->chk_speed_limit->isChecked() ? std::optional<int>{ m_ui->spn_speed_limit->value() }
-                                                                   : std::nullopt);
-        options.set_proxy_url(m_ui->txt_proxy_url->text().toStdString());
-        options.set_cookies_browser(static_cast<cookies::Browser>(m_ui->cmb_cookies_browser->currentIndex()));
-        options.set_cookies_path(m_ui->txt_cookies_path->text().toStdString());
-        configuration.set_extractor_options(options);
-    }
-
-    void SettingsDialog::save_general()
-    {
+        m_ui->chk_crop_audio_thumbnails->setEnabled(m_ui->chk_embed_thumbnails->isChecked());
+        m_ui->chk_remove_source_data->setEnabled(m_ui->chk_embed_metadata->isChecked());
         configuration::Configuration& configuration{ application::State::instance().configuration() };
         configuration.set_automatically_check_for_updates(m_ui->chk_automatic_updates->isChecked());
         update::Options update_options{ configuration.update_options() };
@@ -451,23 +406,48 @@ namespace parabolic::qt::views
             break;
         }
         configuration.set_history_options(history_options);
-    }
-
-    void SettingsDialog::save_postprocessing()
-    {
-        m_ui->chk_crop_audio_thumbnails->setEnabled(m_ui->chk_embed_thumbnails->isChecked());
-        m_ui->chk_remove_source_data->setEnabled(m_ui->chk_embed_metadata->isChecked());
-        configuration::Configuration& configuration{ application::State::instance().configuration() };
-        postprocessing::Options options{ configuration.postprocessing_options() };
-        options.set_embed_metadata(m_ui->chk_embed_metadata->isChecked());
-        options.set_remove_source_data(m_ui->chk_remove_source_data->isChecked());
-        options.set_embed_thumbnails(m_ui->chk_embed_thumbnails->isChecked());
-        options.set_crop_audio_thumbnails(m_ui->chk_crop_audio_thumbnails->isChecked());
-        options.set_embed_chapters(m_ui->chk_embed_chapters->isChecked());
-        options.set_embed_subtitles(m_ui->chk_embed_subtitles->isChecked());
-        options.set_threads(m_ui->spn_threads->value());
-        options.set_arguments(m_arguments);
-        configuration.set_postprocessing_options(options);
+        discovery::Options discovery_options{ configuration.discovery_options() };
+        discovery_options.set_include_media_id_in_title(m_ui->chk_media_id->isChecked());
+        discovery_options.set_limit_characters(m_ui->chk_limit_characters->isChecked());
+        discovery_options.set_include_super_resolutions(m_ui->chk_super_resolutions->isChecked());
+        discovery_options.set_include_auto_generated_subtitles(m_ui->chk_auto_generated_subtitles->isChecked());
+        discovery_options.set_preferred_audio_codec(static_cast<audio::Codec>(m_ui->cmb_audio_codec->currentIndex()));
+        discovery_options.set_preferred_video_codec(static_cast<video::Codec>(m_ui->cmb_video_codec->currentIndex()));
+        discovery_options.set_preferred_subtitle_format(static_cast<subtitle::Type>(m_ui->cmb_subtitle_format->currentIndex()));
+        discovery_options.set_preferred_frame_rate(static_cast<video::FrameRate>(m_ui->cmb_frame_rate->currentIndex()));
+        discovery_options.set_ytdlp_arguments(m_ui->txt_discovery_arguments->text().toStdString());
+        configuration.set_discovery_options(discovery_options);
+        download::Options download_options{ configuration.download_options() };
+        download_options.set_max_number_of_active_downloads(m_ui->spn_max_downloads->value());
+        download_options.set_overwrite_existing_files(m_ui->chk_overwrite_existing_files->isChecked());
+        download_options.set_prevent_suspend(m_ui->chk_prevent_suspend->isChecked());
+        download_options.set_ytdlp_arguments(m_ui->txt_downloads_arguments->text().toStdString());
+        configuration.set_download_options(download_options);
+        aria2::Options aria2_options{ configuration.aria2_options() };
+        aria2_options.set_use_aria(m_ui->chk_use_aria->isChecked());
+        aria2_options.set_max_connections_per_server(m_ui->spn_aria_connections->value());
+        aria2_options.set_min_split_size(m_ui->spn_aria_split_size->value());
+        configuration.set_aria2_options(aria2_options);
+        extractor::Options extractor_options{ configuration.extractor_options() };
+        extractor_options.set_use_part_files(m_ui->chk_part_files->isChecked());
+        extractor_options.set_youtube_sponsor_block(m_ui->chk_sponsor_block->isChecked());
+        extractor_options.set_translate_metadata_and_chapters(m_ui->chk_translate_metadata->isChecked());
+        extractor_options.set_speed_limit(
+                m_ui->chk_speed_limit->isChecked() ? std::optional<int>{ m_ui->spn_speed_limit->value() } : std::nullopt);
+        extractor_options.set_proxy_url(m_ui->txt_proxy_url->text().toStdString());
+        extractor_options.set_cookies_browser(static_cast<cookies::Browser>(m_ui->cmb_cookies_browser->currentIndex()));
+        extractor_options.set_cookies_path(m_ui->txt_cookies_path->text().toStdString());
+        configuration.set_extractor_options(extractor_options);
+        postprocessing::Options postprocessing_options{ configuration.postprocessing_options() };
+        postprocessing_options.set_embed_metadata(m_ui->chk_embed_metadata->isChecked());
+        postprocessing_options.set_remove_source_data(m_ui->chk_remove_source_data->isChecked());
+        postprocessing_options.set_embed_thumbnails(m_ui->chk_embed_thumbnails->isChecked());
+        postprocessing_options.set_crop_audio_thumbnails(m_ui->chk_crop_audio_thumbnails->isChecked());
+        postprocessing_options.set_embed_chapters(m_ui->chk_embed_chapters->isChecked());
+        postprocessing_options.set_embed_subtitles(m_ui->chk_embed_subtitles->isChecked());
+        postprocessing_options.set_threads(m_ui->spn_threads->value());
+        postprocessing_options.set_arguments(m_arguments);
+        configuration.set_postprocessing_options(postprocessing_options);
     }
 
     void SettingsDialog::translate()

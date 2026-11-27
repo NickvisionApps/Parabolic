@@ -34,11 +34,7 @@ namespace parabolic::qt::views
         Q_SLOT void edit_argument();
         Q_SLOT void learn_more();
         Q_SLOT void remove_argument();
-        Q_SLOT void save_discovery();
-        Q_SLOT void save_downloads();
-        Q_SLOT void save_extractor();
-        Q_SLOT void save_general();
-        Q_SLOT void save_postprocessing();
+        Q_SLOT void save();
         Q_SLOT void translate();
         std::vector<std::string> m_languages;
         std::vector<postprocessing::Argument> m_arguments;
