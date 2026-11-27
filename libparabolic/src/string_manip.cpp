@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cctype>
 #include <cwchar>
+#include <limits>
 #include <ranges>
 #include <string>
 #include <string_view>
@@ -95,7 +96,7 @@ namespace parabolic::string_manip
         std::mbstate_t state{};
         const wchar_t* ptr{ wstr.data() };
         std::size_t len{ std::wcsrtombs(nullptr, &ptr, 0, &state) };
-        if (std::cmp_equal(len, -1))
+        if (len == std::numeric_limits<std::size_t>::max())
         {
             return {};
         }
@@ -143,7 +144,7 @@ namespace parabolic::string_manip
         std::mbstate_t state{};
         const char* ptr{ str.c_str() };
         std::size_t len{ std::mbsrtowcs(nullptr, &ptr, 0, &state) };
-        if (std::cmp_equal(len, -1))
+        if (len == std::numeric_limits<std::size_t>::max())
         {
             return {};
         }
