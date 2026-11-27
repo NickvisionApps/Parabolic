@@ -35,20 +35,22 @@ namespace parabolic::qt::views
         setLeadingWidget(m_navigation_view->sidebar());
         setContentCornerRadius(12);
         titleBar()->setContentWidget(m_toolbar);
-        m_navigation_view->addPage(new HomePage(m_navigation_view), {},
+        m_navigation_view->addPage(new HomePage(m_navigation_view),
+                                   {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Home)));
-        m_navigation_view->addPage(new QWidget(m_navigation_view), {},
+        m_navigation_view->addPage(new QWidget(m_navigation_view),
+                                   {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Action_Download)));
-        m_navigation_view->addBottomPage(new QWidget(m_navigation_view), {},
-                                         oclero::qlementine::appStyle()->makeThemedIcon(
-                                                 oclero::qlementine::icons::iconPath(
-                                                         oclero::qlementine::icons::Icons16::Misc_Clock)));
-        m_navigation_view->addBottomPage(new QWidget(m_navigation_view), {},
-                                         oclero::qlementine::appStyle()->makeThemedIcon(
-                                                 oclero::qlementine::icons::iconPath(
-                                                         oclero::qlementine::icons::Icons16::Misc_Password)));
+        m_navigation_view->addBottomPage(new QWidget(m_navigation_view),
+                                         {},
+                                         oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                 oclero::qlementine::icons::Icons16::Misc_Clock)));
+        m_navigation_view->addBottomPage(new QWidget(m_navigation_view),
+                                         {},
+                                         oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                                                 oclero::qlementine::icons::Icons16::Misc_Password)));
         m_toolbar->setMovable(false);
         m_toolbar->setFloatable(false);
         m_toolbar->setToolButtonStyle(Qt::ToolButtonIconOnly);
@@ -69,7 +71,9 @@ namespace parabolic::qt::views
                                              oclero::qlementine::icons::Icons16::Navigation_Settings)),
                                      {});
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &MainWindow::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &MainWindow::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QWidget::close);
         connect(m_act_add_download, &QAction::triggered, this, &MainWindow::add_download);
         connect(m_act_settings, &QAction::triggered, this, &MainWindow::settings);
@@ -92,9 +96,11 @@ namespace parabolic::qt::views
         configuration::Configuration& configuration{ application::State::instance().configuration() };
         if (isMaximized())
         {
-            configuration.set_window_geometry(
-                    { configuration.window_geometry().width(), configuration.window_geometry().height(), true,
-                      configuration.window_geometry().x(), configuration.window_geometry().y() });
+            configuration.set_window_geometry({ configuration.window_geometry().width(),
+                                                configuration.window_geometry().height(),
+                                                true,
+                                                configuration.window_geometry().x(),
+                                                configuration.window_geometry().y() });
         }
         else
         {
@@ -119,12 +125,10 @@ namespace parabolic::qt::views
         bool is_collapsed{ m_navigation_view->sidebar()->compact() };
         application::State::instance().configuration().set_collapse_sidebar(!is_collapsed);
         m_navigation_view->sidebar()->toggleCompact();
-        m_act_toggle_sidebar->setIcon(
-                oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
-                        is_collapsed ? oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftExpand
-                                     : oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
-        m_act_toggle_sidebar->setToolTip(is_collapsed ? translator._("Expand Sidebar")
-                                                      : translator._("Collapse Sidebar"));
+        m_act_toggle_sidebar->setIcon(oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
+                is_collapsed ? oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftExpand
+                             : oclero::qlementine::icons::Icons16::Navigation_UiPanelLeftCollapse)));
+        m_act_toggle_sidebar->setToolTip(is_collapsed ? translator._("Expand Sidebar") : translator._("Collapse Sidebar"));
     }
 
     void MainWindow::translate()

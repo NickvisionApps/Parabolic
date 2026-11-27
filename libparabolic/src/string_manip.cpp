@@ -54,10 +54,12 @@ namespace parabolic::string_manip
 
     std::string lower(std::string str)
     {
-        std::ranges::transform(str, str.begin(), [](unsigned char c)
-        {
-            return c >= 'A' && c <= 'Z' ? static_cast<char>(c + ('a' - 'A')) : static_cast<char>(c);
-        });
+        std::ranges::transform(str,
+                               str.begin(),
+                               [](unsigned char c)
+                               {
+                                   return c >= 'A' && c <= 'Z' ? static_cast<char>(c + ('a' - 'A')) : static_cast<char>(c);
+                               });
         return str;
     }
 
@@ -66,12 +68,15 @@ namespace parabolic::string_manip
 #ifdef _WIN32
         include_windows_characters = true;
 #endif
-        std::ranges::replace_if(str, [include_windows_characters](char c)
-        {
-            return c == '\0' || c == '/' ||
-                   (include_windows_characters &&
-                    (static_cast<unsigned char>(c) < 32 || std::string_view{ "<>:\"\\|?*" }.contains(c)));
-        }, '_');
+        std::ranges::replace_if(
+                str,
+                [include_windows_characters](char c)
+                {
+                    return c == '\0' || c == '/' ||
+                           (include_windows_characters &&
+                            (static_cast<unsigned char>(c) < 32 || std::string_view{ "<>:\"\\|?*" }.contains(c)));
+                },
+                '_');
         return str;
     }
 
@@ -109,14 +114,17 @@ namespace parabolic::string_manip
         }
         str.erase(std::ranges::find_if(std::views::reverse(str),
                                        [](unsigned char ch)
-        {
-            return ch != ' ' && (ch < '\t' || ch > '\r');
-        }).base(),
+                                       {
+                                           return ch != ' ' && (ch < '\t' || ch > '\r');
+                                       })
+                          .base(),
                   str.end());
-        str.erase(str.begin(), std::ranges::find_if(str, [](unsigned char ch)
-        {
-            return ch != ' ' && (ch < '\t' || ch > '\r');
-        }));
+        str.erase(str.begin(),
+                  std::ranges::find_if(str,
+                                       [](unsigned char ch)
+                                       {
+                                           return ch != ' ' && (ch < '\t' || ch > '\r');
+                                       }));
         return str;
     }
 

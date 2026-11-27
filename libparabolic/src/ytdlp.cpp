@@ -97,9 +97,8 @@ namespace parabolic::ytdlp
 
     std::string executable_path()
     {
-        const std::filesystem::path& global_path{
-            environment::find_dependency("yt-dlp", environment::DependencySearchOption::Local),
-        };
+        const std::filesystem::path& global_path{ environment::find_dependency("yt-dlp",
+                                                                               environment::DependencySearchOption::Local) };
         if (std::filesystem::exists(global_path))
         {
 #ifdef _WIN32
@@ -108,9 +107,8 @@ namespace parabolic::ytdlp
             return global_path.string();
 #endif
         }
-        const std::filesystem::path& local_path{
-            environment::find_dependency("yt-dlp", environment::DependencySearchOption::Global),
-        };
+        const std::filesystem::path& local_path{ environment::find_dependency("yt-dlp",
+                                                                              environment::DependencySearchOption::Global) };
         if (std::filesystem::exists(local_path))
         {
 #ifdef _WIN32
@@ -130,9 +128,8 @@ namespace parabolic::ytdlp
         }
         reproc::options proc_options;
         proc_options.redirect.in.type = reproc::redirect::discard;
-        std::expected<environment::Process, std::error_code> started{
-            environment::Process::start(options.arguments(), proc_options),
-        };
+        std::expected<environment::Process, std::error_code> started{ environment::Process::start(options.arguments(),
+                                                                                                  proc_options) };
         if (!started)
         {
             return std::unexpected{ started.error().message() };
@@ -143,32 +140,35 @@ namespace parabolic::ytdlp
         std::string pending;
         std::error_code ec;
         {
-            std::stop_callback kill_on_stop{ options.stop_token(), [&process]
-            {
-                process.kill();
-            } };
-            ec = process.drain([&options, &output, &pending](reproc::stream, const uint8_t* buffer, size_t size)
-            {
-                std::string_view chunk{ reinterpret_cast<const char*>(buffer), size };
-                output.append(chunk);
-                if (options.output_callback())
-                {
-                    pending.append(chunk);
-                    size_t newline{ pending.find('\n') };
-                    while (newline != std::string::npos)
+            std::stop_callback kill_on_stop{ options.stop_token(),
+                                             [&process]
+                                             {
+                                                 process.kill();
+                                             } };
+            ec = process.drain(
+                    [&options, &output, &pending](reproc::stream, const uint8_t* buffer, size_t size)
                     {
-                        std::string line{ pending.substr(0, newline) };
-                        pending.erase(0, newline + 1);
-                        if (!line.empty() && line.back() == '\r')
+                        std::string_view chunk{ reinterpret_cast<const char*>(buffer), size };
+                        output.append(chunk);
+                        if (options.output_callback())
                         {
-                            line.pop_back();
+                            pending.append(chunk);
+                            size_t newline{ pending.find('\n') };
+                            while (newline != std::string::npos)
+                            {
+                                std::string line{ pending.substr(0, newline) };
+                                pending.erase(0, newline + 1);
+                                if (!line.empty() && line.back() == '\r')
+                                {
+                                    line.pop_back();
+                                }
+                                options.output_callback()(line);
+                                newline = pending.find('\n');
+                            }
                         }
-                        options.output_callback()(line);
-                        newline = pending.find('\n');
-                    }
-                }
-                return std::error_code{};
-            }, reproc::sink::string(error));
+                        return std::error_code{};
+                    },
+                    reproc::sink::string(error));
         }
         if (ec)
         {

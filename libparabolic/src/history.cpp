@@ -110,13 +110,13 @@ namespace parabolic::history
         {
             return true;
         }
-        SQLite::Statement query{ m_database, "INSERT OR REPLACE INTO " TABLE_NAME
-                                             " (url, title, path, downloaded_on) VALUES (?, ?, ?, ?)" };
+        SQLite::Statement query{ m_database,
+                                 "INSERT OR REPLACE INTO " TABLE_NAME
+                                 " (url, title, path, downloaded_on) VALUES (?, ?, ?, ?)" };
         query.bind(1, record.url());
         query.bind(2, record.title());
         query.bind(3, record.path());
-        query.bind(4,
-                   std::chrono::duration_cast<std::chrono::seconds>(record.downloaded_on().time_since_epoch()).count());
+        query.bind(4, std::chrono::duration_cast<std::chrono::seconds>(record.downloaded_on().time_since_epoch()).count());
         return query.exec() > 0;
     }
 
@@ -158,8 +158,7 @@ namespace parabolic::history
             record.set_downloaded_on(
                     std::chrono::system_clock::time_point{ std::chrono::seconds{ query.getColumn(3).getInt64() } });
             if (m_options.length() != Length::Forever &&
-                std::chrono::duration_cast<std::chrono::hours>(std::chrono::system_clock::now() -
-                                                               record.downloaded_on())
+                std::chrono::duration_cast<std::chrono::hours>(std::chrono::system_clock::now() - record.downloaded_on())
                                         .count() /
                                 24 >
                         static_cast<int>(m_options.length()))
@@ -261,9 +260,7 @@ namespace parabolic::history
 
     void to_json(nlohmann::json& json, const Options& options)
     {
-        json = nlohmann::json{
-            { "historyLength", static_cast<int>(options.length()) },
-            { "historySortNewestFirst", options.sort_newest() },
-        };
+        json = nlohmann::json{ { "historyLength", static_cast<int>(options.length()) },
+                               { "historySortNewestFirst", options.sort_newest() } };
     }
 }

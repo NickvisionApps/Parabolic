@@ -49,8 +49,7 @@ namespace parabolic::qt
             break;
         default:
             styleHints()->unsetColorScheme();
-            m_theme_manager->setCurrentTheme(styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark"
-                                                                                                  : "Light");
+            m_theme_manager->setCurrentTheme(styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark" : "Light");
             break;
         }
         m_theme_manager->setUseSystemAccentColor(true);
@@ -80,10 +79,10 @@ namespace parabolic::qt
             disclaimer.setIcon(QMessageBox::Information);
             disclaimer.setWindowTitle(translator._("Legal Copyright Disclaimer"));
             disclaimer.setText(translator._("Legal Copyright Disclaimer"));
-            disclaimer.setInformativeText(translator._(
-                    "Videos on YouTube and other sites may be subject to DMCA protection. The authors of "
-                    "Parabolic do not endorse, and are not responsible for, the use of this application in "
-                    "means that will violate these laws."));
+            disclaimer.setInformativeText(
+                    translator._("Videos on YouTube and other sites may be subject to DMCA protection. The authors of "
+                                 "Parabolic do not endorse, and are not responsible for, the use of this application in "
+                                 "means that will violate these laws."));
             disclaimer.setCheckBox(chk_show);
             disclaimer.setStandardButtons(QMessageBox::Ok);
             disclaimer.button(QMessageBox::Ok)->setText(translator._("I understand"));

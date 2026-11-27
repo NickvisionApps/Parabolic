@@ -66,8 +66,9 @@ namespace parabolic::environment
             JOBOBJECT_EXTENDED_LIMIT_INFORMATION info{};
             info.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
             SetInformationJobObject(job, JobObjectExtendedLimitInformation, &info, sizeof(info));
-            HANDLE handle{ OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, FALSE,
-                                       static_cast<DWORD>(process.m_process.pid().first)) };
+            HANDLE handle{
+                OpenProcess(PROCESS_SET_QUOTA | PROCESS_TERMINATE, FALSE, static_cast<DWORD>(process.m_process.pid().first))
+            };
             if (handle)
             {
                 AssignProcessToJobObject(job, handle);

@@ -10,9 +10,8 @@ namespace parabolic::ffmpeg
 {
     std::string executable_path()
     {
-        const std::filesystem::path& global_path{
-            environment::find_dependency("ffmpeg", environment::DependencySearchOption::Global),
-        };
+        const std::filesystem::path& global_path{ environment::find_dependency("ffmpeg",
+                                                                               environment::DependencySearchOption::Global) };
         if (std::filesystem::exists(global_path))
         {
 #ifdef _WIN32

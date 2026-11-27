@@ -9,8 +9,7 @@
 namespace parabolic::string_manip
 {
     template<typename T>
-    concept ImplicitlyConstructableString =
-            std::is_constructible_v<T, std::string> && std::is_convertible_v<std::string, T>;
+    concept ImplicitlyConstructableString = std::is_constructible_v<T, std::string> && std::is_convertible_v<std::string, T>;
 
     [[nodiscard]] std::vector<std::string> command_line_split(const std::string& str);
     [[nodiscard]] std::string lower(std::string str);

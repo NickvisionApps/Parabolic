@@ -99,7 +99,9 @@ namespace parabolic::qt::views
         m_txt_arguments->setText(QString::fromStdString(argument.args()));
         validate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &PostprocessingArgumentDialog::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &PostprocessingArgumentDialog::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QDialog::reject);
         connect(m_txt_name, &QLineEdit::textChanged, this, &PostprocessingArgumentDialog::validate);
         connect(m_buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
@@ -123,36 +125,30 @@ namespace parabolic::qt::views
         QSignalBlocker step_blocker{ m_cmb_step };
         int step_index{ m_cmb_step->currentIndex() };
         m_cmb_step->clear();
-        m_cmb_step->addItems({
-                translator._("None"),
-                translator._("Merger"),
-                translator._("Modify Chapters"),
-                translator._("Split Chapters"),
-                translator._("Extract Audio"),
-                translator._("Video Remuxer"),
-                translator._("Video Converter"),
-                translator._("Metadata"),
-                translator._("Embed Subtitle"),
-                translator._("Embed Thumbnail"),
-                translator._("Subtitles Converter"),
-                translator._("Thumbnails Converter"),
-                translator._("Fixup Stretched"),
-                translator._("Fixup M4a"),
-                translator._("Fixup M3u8"),
-                translator._("Fixup Timestamp"),
-                translator._("Fixup Duration"),
-        });
+        m_cmb_step->addItems({ translator._("None"),
+                               translator._("Merger"),
+                               translator._("Modify Chapters"),
+                               translator._("Split Chapters"),
+                               translator._("Extract Audio"),
+                               translator._("Video Remuxer"),
+                               translator._("Video Converter"),
+                               translator._("Metadata"),
+                               translator._("Embed Subtitle"),
+                               translator._("Embed Thumbnail"),
+                               translator._("Subtitles Converter"),
+                               translator._("Thumbnails Converter"),
+                               translator._("Fixup Stretched"),
+                               translator._("Fixup M4a"),
+                               translator._("Fixup M3u8"),
+                               translator._("Fixup Timestamp"),
+                               translator._("Fixup Duration") });
         m_cmb_step->setCurrentIndex(std::max(step_index, 0));
         m_lbl_executable->setText(QString::fromStdString(translator._("{}:", translator._("Executable"))));
         QSignalBlocker executable_blocker{ m_cmb_executable };
         int executable_index{ m_cmb_executable->currentIndex() };
         m_cmb_executable->clear();
-        m_cmb_executable->addItems({
-                translator._("None"),
-                translator._("AtomicParsley"),
-                translator._("FFmpeg"),
-                translator._("FFprobe"),
-        });
+        m_cmb_executable->addItems(
+                { translator._("None"), translator._("AtomicParsley"), translator._("FFmpeg"), translator._("FFprobe") });
         m_cmb_executable->setCurrentIndex(std::max(executable_index, 0));
         m_lbl_arguments->setText(QString::fromStdString(translator._("{}:", translator._("Argument"))));
     }
@@ -160,8 +156,7 @@ namespace parabolic::qt::views
     void PostprocessingArgumentDialog::validate()
     {
         std::string name{ m_txt_name->text().trimmed().toStdString() };
-        m_buttons->button(QDialogButtonBox::Ok)
-                ->setEnabled(!name.empty() && !std::ranges::contains(m_taken_names, name));
+        m_buttons->button(QDialogButtonBox::Ok)->setEnabled(!name.empty() && !std::ranges::contains(m_taken_names, name));
     }
 
     SettingsGeneralPage::SettingsGeneralPage(QWidget* parent)
@@ -184,9 +179,7 @@ namespace parabolic::qt::views
         setWidgetResizable(true);
         setWidget(content);
         content->setBackgroundRole(QPalette::Base);
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         QFormLayout* user_interface_layout{ new QFormLayout(m_grp_user_interface) };
         user_interface_layout->setFieldGrowthPolicy(QFormLayout::FieldsStayAtSizeHint);
         layout->addWidget(m_grp_user_interface);
@@ -210,9 +203,8 @@ namespace parabolic::qt::views
         layout->addStretch();
         m_cmb_language->addItems(QList<QString>(static_cast<qsizetype>(m_languages.size()) + 1));
         translate();
-        std::vector<std::string>::iterator language_it{
-            std::ranges::find(m_languages, configuration.translation_options().language()),
-        };
+        std::vector<std::string>::iterator language_it{ std::ranges::find(m_languages,
+                                                                          configuration.translation_options().language()) };
         m_cmb_theme->setCurrentIndex(static_cast<int>(configuration.theme()));
         m_cmb_language->setCurrentIndex(
                 language_it == m_languages.end() ? 0 : static_cast<int>(language_it - m_languages.begin()) + 1);
@@ -246,7 +238,9 @@ namespace parabolic::qt::views
             break;
         }
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &SettingsGeneralPage::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &SettingsGeneralPage::translate);
         connect(m_cmb_theme, &QComboBox::currentIndexChanged, this, &SettingsGeneralPage::change_theme);
         connect(m_cmb_language, &QComboBox::currentIndexChanged, this, &SettingsGeneralPage::change_language);
         connect(m_chk_automatic_updates, &QCheckBox::toggled, this, &SettingsGeneralPage::save);
@@ -256,9 +250,7 @@ namespace parabolic::qt::views
 
     void SettingsGeneralPage::change_language()
     {
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         translation::Options options{ configuration.translation_options() };
         options.set_language(m_cmb_language->currentIndex() == 0
                                      ? translation::Translator::follow_system_language()
@@ -269,12 +261,8 @@ namespace parabolic::qt::views
 
     void SettingsGeneralPage::change_theme()
     {
-        oclero::qlementine::ThemeManager* theme_manager{
-            qobject_cast<App*>(QApplication::instance())->theme_manager(),
-        };
-        configuration::Theme theme{
-            static_cast<configuration::Theme>(m_cmb_theme->currentIndex()),
-        };
+        oclero::qlementine::ThemeManager* theme_manager{ qobject_cast<App*>(QApplication::instance())->theme_manager() };
+        configuration::Theme theme{ static_cast<configuration::Theme>(m_cmb_theme->currentIndex()) };
         application::State::instance().configuration().set_theme(theme);
         switch (theme)
         {
@@ -288,17 +276,15 @@ namespace parabolic::qt::views
             break;
         default:
             QApplication::styleHints()->unsetColorScheme();
-            theme_manager->setCurrentTheme(
-                    QApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark" : "Light");
+            theme_manager->setCurrentTheme(QApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ? "Legacy Dark"
+                                                                                                              : "Light");
             break;
         }
     }
 
     void SettingsGeneralPage::save()
     {
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         configuration.set_automatically_check_for_updates(m_chk_automatic_updates->isChecked());
         update::Options update_options{ configuration.update_options() };
         update_options.set_allow_preview_updates(m_chk_preview_updates->isChecked());
@@ -342,29 +328,25 @@ namespace parabolic::qt::views
         QSignalBlocker theme_blocker{ m_cmb_theme };
         int theme_index{ m_cmb_theme->currentIndex() };
         m_cmb_theme->clear();
-        m_cmb_theme->addItems({
-                translator._p("Theme", "Light"),
-                translator._p("Theme", "Dark"),
-                translator._p("Theme", "System"),
-        });
+        m_cmb_theme->addItems(
+                { translator._p("Theme", "Light"), translator._p("Theme", "Dark"), translator._p("Theme", "System") });
         m_cmb_theme->setCurrentIndex(std::max(theme_index, 0));
         m_lbl_language->setText(QString::fromStdString(translator._("{}:", translator._("Translation Language"))));
         m_cmb_language->setItemText(0, translator._p("Language", "System"));
-        std::string selected_language{
-            m_cmb_language->currentIndex() > 0
-                    ? m_languages[static_cast<std::size_t>(m_cmb_language->currentIndex()) - 1]
-                    : std::string{},
-        };
+        std::string selected_language{ m_cmb_language->currentIndex() > 0
+                                               ? m_languages[static_cast<std::size_t>(m_cmb_language->currentIndex()) - 1]
+                                               : std::string{} };
         std::vector<std::pair<QString, std::string>> languages;
         languages.reserve(m_languages.size());
         for (const std::string& language : m_languages)
         {
             std::array<UChar, 128> name{};
             UErrorCode status{ U_ZERO_ERROR };
-            int32_t length{
-                uloc_getDisplayName(language.c_str(), translator.language().c_str(), name.data(),
-                                    static_cast<int32_t>(name.size()), &status),
-            };
+            int32_t length{ uloc_getDisplayName(language.c_str(),
+                                                translator.language().c_str(),
+                                                name.data(),
+                                                static_cast<int32_t>(name.size()),
+                                                &status) };
             languages.emplace_back(U_SUCCESS(status) != 0 && length > 0 ? QString::fromUtf16(name.data(), length)
                                                                         : QString::fromStdString(language),
                                    language);
@@ -384,24 +366,20 @@ namespace parabolic::qt::views
         m_grp_updates->setTitle(translator._("Updates"));
         m_chk_automatic_updates->setText(translator._("Automatically Check for Updates"));
         m_chk_preview_updates->setText(translator._("Allow Preview Updates"));
-        m_lbl_preview_updates->setText(
-                translator._("Update the app and dependencies, such as yt-dlp, to beta versions."));
+        m_lbl_preview_updates->setText(translator._("Update the app and dependencies, such as yt-dlp, to beta versions."));
         m_grp_history->setTitle(translator._("History"));
-        m_lbl_history_length->setText(
-                QString::fromStdString(translator._("{}:", translator._("Keep Download History For"))));
+        m_lbl_history_length->setText(QString::fromStdString(translator._("{}:", translator._("Keep Download History For"))));
         QSignalBlocker history_length_blocker{ m_cmb_history_length };
         int history_length_index{ m_cmb_history_length->currentIndex() };
         m_cmb_history_length->clear();
-        m_cmb_history_length->addItems({
-                translator._("Never"),
-                translator._("1 Day"),
-                translator._("1 Week"),
-                translator._("1 Month"),
-                translator._("3 Months"),
-                translator._("6 Months"),
-                translator._("1 Year"),
-                translator._("Forever"),
-        });
+        m_cmb_history_length->addItems({ translator._("Never"),
+                                         translator._("1 Day"),
+                                         translator._("1 Week"),
+                                         translator._("1 Month"),
+                                         translator._("3 Months"),
+                                         translator._("6 Months"),
+                                         translator._("1 Year"),
+                                         translator._("Forever") });
         m_cmb_history_length->setCurrentIndex(std::max(history_length_index, 0));
     }
 
@@ -428,9 +406,7 @@ namespace parabolic::qt::views
         setWidgetResizable(true);
         setWidget(content);
         content->setBackgroundRole(QPalette::Base);
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
         process_layout->addWidget(m_chk_media_id);
@@ -439,14 +415,12 @@ namespace parabolic::qt::views
         m_lbl_media_id->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_lbl_media_id);
         process_layout->addWidget(m_chk_limit_characters);
-        m_lbl_limit_characters =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_lbl_limit_characters = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_lbl_limit_characters->setWordWrap(true);
         m_lbl_limit_characters->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_lbl_limit_characters);
         process_layout->addWidget(m_chk_super_resolutions);
-        m_lbl_super_resolutions =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_lbl_super_resolutions = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_lbl_super_resolutions->setWordWrap(true);
         m_lbl_super_resolutions->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_lbl_super_resolutions);
@@ -458,8 +432,7 @@ namespace parabolic::qt::views
         preferences_layout->addRow(m_lbl_audio_codec, m_cmb_audio_codec);
         m_lbl_video_codec = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
         preferences_layout->addRow(m_lbl_video_codec, m_cmb_video_codec);
-        m_lbl_subtitle_format =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
+        m_lbl_subtitle_format = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
         preferences_layout->addRow(m_lbl_subtitle_format, m_cmb_subtitle_format);
         m_lbl_frame_rate = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_preferences);
         preferences_layout->addRow(m_lbl_frame_rate, m_cmb_frame_rate);
@@ -479,7 +452,9 @@ namespace parabolic::qt::views
         m_cmb_frame_rate->setCurrentIndex(static_cast<int>(options.preferred_frame_rate()));
         m_txt_arguments->setText(QString::fromStdString(options.ytdlp_arguments()));
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &SettingsDiscoveryPage::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &SettingsDiscoveryPage::translate);
         connect(m_chk_media_id, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
         connect(m_chk_limit_characters, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
         connect(m_chk_super_resolutions, &QCheckBox::toggled, this, &SettingsDiscoveryPage::save);
@@ -493,9 +468,7 @@ namespace parabolic::qt::views
 
     void SettingsDiscoveryPage::save()
     {
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         discovery::Options options{ configuration.discovery_options() };
         options.set_include_media_id_in_title(m_chk_media_id->isChecked());
         options.set_limit_characters(m_chk_limit_characters->isChecked());
@@ -516,67 +489,51 @@ namespace parabolic::qt::views
         m_chk_media_id->setText(translator._("Include Media Id in Title"));
         m_lbl_media_id->setText(translator._("Add the media entry's yt-dlp id to its default title."));
         m_chk_limit_characters->setText(translator._("Limit Filename Characters"));
-        m_lbl_limit_characters->setText(
-                translator._("Restrict filename characters to those supported only by Windows."));
+        m_lbl_limit_characters->setText(translator._("Restrict filename characters to those supported only by Windows."));
         m_chk_super_resolutions->setText(translator._("Show Super Resolution Formats"));
-        m_lbl_super_resolutions->setText(translator._(
-                "Super resolutions are resolutions that have been enhanced with artificial intelligence."));
+        m_lbl_super_resolutions->setText(
+                translator._("Super resolutions are resolutions that have been enhanced with artificial intelligence."));
         m_chk_auto_generated_subtitles->setText(translator._("Show Auto-Generated Subtitles"));
         m_grp_preferences->setTitle(translator._("Preferences"));
-        m_grp_preferences->setDescription(
-                translator._("Prefer these codecs and options when showing formats for download."));
+        m_grp_preferences->setDescription(translator._("Prefer these codecs and options when showing formats for download."));
         m_lbl_audio_codec->setText(QString::fromStdString(translator._("{}:", translator._("Audio Codec"))));
         QSignalBlocker audio_codec_blocker{ m_cmb_audio_codec };
         int audio_codec_index{ m_cmb_audio_codec->currentIndex() };
         m_cmb_audio_codec->clear();
-        m_cmb_audio_codec->addItems({
-                translator._("Any"),
-                translator._("FLAC"),
-                translator._("WAV"),
-                translator._("Opus"),
-                translator._("AAC"),
-                translator._("MP4A"),
-                translator._("MP3"),
-        });
+        m_cmb_audio_codec->addItems({ translator._("Any"),
+                                      translator._("FLAC"),
+                                      translator._("WAV"),
+                                      translator._("Opus"),
+                                      translator._("AAC"),
+                                      translator._("MP4A"),
+                                      translator._("MP3") });
         m_cmb_audio_codec->setCurrentIndex(std::max(audio_codec_index, 0));
         m_lbl_video_codec->setText(QString::fromStdString(translator._("{}:", translator._("Video Codec"))));
         QSignalBlocker video_codec_blocker{ m_cmb_video_codec };
         int video_codec_index{ m_cmb_video_codec->currentIndex() };
         m_cmb_video_codec->clear();
-        m_cmb_video_codec->addItems({
-                translator._("Any"),
-                translator._("H.265"),
-                translator._("VP9"),
-                translator._("AV1"),
-                translator._("H.264"),
-        });
+        m_cmb_video_codec->addItems({ translator._("Any"),
+                                      translator._("H.265"),
+                                      translator._("VP9"),
+                                      translator._("AV1"),
+                                      translator._("H.264") });
         m_cmb_video_codec->setCurrentIndex(std::max(video_codec_index, 0));
         m_lbl_subtitle_format->setText(QString::fromStdString(translator._("{}:", translator._("Subtitle Format"))));
         QSignalBlocker subtitle_format_blocker{ m_cmb_subtitle_format };
         int subtitle_format_index{ m_cmb_subtitle_format->currentIndex() };
         m_cmb_subtitle_format->clear();
-        m_cmb_subtitle_format->addItems({
-                translator._("Any"),
-                translator._("VTT"),
-                translator._("SRT"),
-                translator._("ASS"),
-                translator._("LRC"),
-        });
+        m_cmb_subtitle_format->addItems(
+                { translator._("Any"), translator._("VTT"), translator._("SRT"), translator._("ASS"), translator._("LRC") });
         m_cmb_subtitle_format->setCurrentIndex(std::max(subtitle_format_index, 0));
         m_lbl_frame_rate->setText(QString::fromStdString(translator._("{}:", translator._("Frame Rate"))));
         QSignalBlocker frame_rate_blocker{ m_cmb_frame_rate };
         int frame_rate_index{ m_cmb_frame_rate->currentIndex() };
         m_cmb_frame_rate->clear();
-        m_cmb_frame_rate->addItems({
-                translator._("Any"),
-                translator._("24 FPS"),
-                translator._("30 FPS"),
-                translator._("60 FPS"),
-        });
+        m_cmb_frame_rate->addItems(
+                { translator._("Any"), translator._("24 FPS"), translator._("30 FPS"), translator._("60 FPS") });
         m_cmb_frame_rate->setCurrentIndex(std::max(frame_rate_index, 0));
         m_grp_arguments->setTitle(translator._("Arguments"));
-        m_grp_arguments->setDescription(
-                translator._("These arguments will be appended to yt-dlp during the discovery phase."));
+        m_grp_arguments->setDescription(translator._("These arguments will be appended to yt-dlp during the discovery phase."));
     }
 
     SettingsDownloadsPage::SettingsDownloadsPage(QWidget* parent)
@@ -601,9 +558,7 @@ namespace parabolic::qt::views
         setWidgetResizable(true);
         setWidget(content);
         content->setBackgroundRole(QPalette::Base);
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
         m_lbl_max_downloads = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Default, m_grp_process);
@@ -650,7 +605,9 @@ namespace parabolic::qt::views
         m_spn_aria_split_size->setEnabled(aria2_options.use_aria());
         m_txt_arguments->setText(QString::fromStdString(download_options.ytdlp_arguments()));
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &SettingsDownloadsPage::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &SettingsDownloadsPage::translate);
         connect(m_spn_max_downloads, &QSpinBox::valueChanged, this, &SettingsDownloadsPage::save);
         connect(m_chk_overwrite_existing_files, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
         connect(m_chk_prevent_suspend, &QCheckBox::toggled, this, &SettingsDownloadsPage::save);
@@ -670,9 +627,7 @@ namespace parabolic::qt::views
     {
         m_spn_aria_connections->setEnabled(m_chk_use_aria->isChecked());
         m_spn_aria_split_size->setEnabled(m_chk_use_aria->isChecked());
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         download::Options download_options{ configuration.download_options() };
         download_options.set_max_number_of_active_downloads(m_spn_max_downloads->value());
         download_options.set_overwrite_existing_files(m_chk_overwrite_existing_files->isChecked());
@@ -690,23 +645,19 @@ namespace parabolic::qt::views
     {
         const translation::Translator& translator{ application::State::instance().translator() };
         m_grp_process->setTitle(translator._("Process"));
-        m_lbl_max_downloads->setText(
-                QString::fromStdString(translator._("{}:", translator._("Maximum Active Downloads"))));
+        m_lbl_max_downloads->setText(QString::fromStdString(translator._("{}:", translator._("Maximum Active Downloads"))));
         m_chk_overwrite_existing_files->setText(translator._("Overwrite Existing Files"));
         m_chk_prevent_suspend->setText(translator._("Prevent Sleep During Downloads"));
         m_grp_aria->setTitle(translator._("aria2"));
-        m_grp_aria->setDescription(
-                translator._("An alternative downloader that may be faster in some regions compared to "
-                             "yt-dlp's native downloader."));
+        m_grp_aria->setDescription(translator._("An alternative downloader that may be faster in some regions compared to "
+                                                "yt-dlp's native downloader."));
         m_chk_use_aria->setText(translator._("Use aria2"));
         m_btn_learn_more->setToolTip(translator._("Learn More"));
         m_lbl_aria_connections->setText(
                 QString::fromStdString(translator._("{}:", translator._("Maximum Connections Per Server"))));
-        m_lbl_aria_split_size->setText(
-                QString::fromStdString(translator._("{}:", translator._("Minimum Split Size (MiB)"))));
+        m_lbl_aria_split_size->setText(QString::fromStdString(translator._("{}:", translator._("Minimum Split Size (MiB)"))));
         m_grp_arguments->setTitle(translator._("Arguments"));
-        m_grp_arguments->setDescription(
-                translator._("These arguments will be appended to yt-dlp during the download phase."));
+        m_grp_arguments->setDescription(translator._("These arguments will be appended to yt-dlp during the download phase."));
     }
 
     SettingsExtractorPage::SettingsExtractorPage(QWidget* parent)
@@ -734,9 +685,7 @@ namespace parabolic::qt::views
         setWidgetResizable(true);
         setWidget(content);
         content->setBackgroundRole(QPalette::Base);
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         QVBoxLayout* process_layout{ new QVBoxLayout(m_grp_process) };
         layout->addWidget(m_grp_process);
         process_layout->addWidget(m_chk_part_files);
@@ -750,8 +699,7 @@ namespace parabolic::qt::views
         m_lbl_sponsor_block->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_lbl_sponsor_block);
         process_layout->addWidget(m_chk_translate_metadata);
-        m_lbl_translate_metadata =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
+        m_lbl_translate_metadata = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_process);
         m_lbl_translate_metadata->setWordWrap(true);
         m_lbl_translate_metadata->setContentsMargins(24, 0, 0, 0);
         process_layout->addWidget(m_lbl_translate_metadata);
@@ -795,7 +743,9 @@ namespace parabolic::qt::views
         m_cmb_cookies_browser->setCurrentIndex(static_cast<int>(options.cookies_browser()));
         m_txt_cookies_path->setText(QString::fromStdString(options.cookies_path()));
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &SettingsExtractorPage::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &SettingsExtractorPage::translate);
         connect(m_chk_part_files, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
         connect(m_chk_sponsor_block, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
         connect(m_chk_translate_metadata, &QCheckBox::toggled, this, &SettingsExtractorPage::save);
@@ -810,9 +760,7 @@ namespace parabolic::qt::views
 
     void SettingsExtractorPage::browse_cookies_file()
     {
-        QString path{
-            QFileDialog::getOpenFileName(this, application::State::instance().translator()._("Cookies File")),
-        };
+        QString path{ QFileDialog::getOpenFileName(this, application::State::instance().translator()._("Cookies File")) };
         if (!path.isEmpty())
         {
             m_txt_cookies_path->setText(path);
@@ -822,9 +770,7 @@ namespace parabolic::qt::views
     void SettingsExtractorPage::save()
     {
         m_spn_speed_limit->setEnabled(m_chk_speed_limit->isChecked());
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         extractor::Options options{ configuration.extractor_options() };
         options.set_use_part_files(m_chk_part_files->isChecked());
         options.set_youtube_sponsor_block(m_chk_sponsor_block->isChecked());
@@ -859,17 +805,15 @@ namespace parabolic::qt::views
         QSignalBlocker cookies_browser_blocker{ m_cmb_cookies_browser };
         int cookies_browser_index{ m_cmb_cookies_browser->currentIndex() };
         m_cmb_cookies_browser->clear();
-        m_cmb_cookies_browser->addItems({
-                translator._("None"),
-                translator._("Brave"),
-                translator._("Chrome"),
-                translator._("Chromium"),
-                translator._("Edge"),
-                translator._("Firefox"),
-                translator._("Opera"),
-                translator._("Vivaldi"),
-                translator._("Whale"),
-        });
+        m_cmb_cookies_browser->addItems({ translator._("None"),
+                                          translator._("Brave"),
+                                          translator._("Chrome"),
+                                          translator._("Chromium"),
+                                          translator._("Edge"),
+                                          translator._("Firefox"),
+                                          translator._("Opera"),
+                                          translator._("Vivaldi"),
+                                          translator._("Whale") });
         m_cmb_cookies_browser->setCurrentIndex(std::max(cookies_browser_index, 0));
         m_lbl_cookies_file->setText(QString::fromStdString(translator._("{}:", translator._("File"))));
         m_btn_cookies_browse->setText(translator._("Browse…"));
@@ -904,23 +848,19 @@ namespace parabolic::qt::views
         setWidgetResizable(true);
         setWidget(content);
         content->setBackgroundRole(QPalette::Base);
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         QVBoxLayout* metadata_layout{ new QVBoxLayout(m_grp_metadata) };
         layout->addWidget(m_grp_metadata);
         metadata_layout->addWidget(m_chk_embed_metadata);
         metadata_layout->addWidget(m_chk_remove_source_data);
-        m_lbl_remove_source_data =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_metadata);
+        m_lbl_remove_source_data = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_metadata);
         m_lbl_remove_source_data->setWordWrap(true);
         m_lbl_remove_source_data->setContentsMargins(24, 0, 0, 0);
         metadata_layout->addWidget(m_lbl_remove_source_data);
         QVBoxLayout* thumbnails_layout{ new QVBoxLayout(m_grp_thumbnails) };
         layout->addWidget(m_grp_thumbnails);
         thumbnails_layout->addWidget(m_chk_embed_thumbnails);
-        m_lbl_embed_thumbnails =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_thumbnails);
+        m_lbl_embed_thumbnails = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_thumbnails);
         m_lbl_embed_thumbnails->setWordWrap(true);
         m_lbl_embed_thumbnails->setContentsMargins(24, 0, 0, 0);
         thumbnails_layout->addWidget(m_lbl_embed_thumbnails);
@@ -936,8 +876,7 @@ namespace parabolic::qt::views
         QVBoxLayout* subtitles_layout{ new QVBoxLayout(m_grp_subtitles) };
         layout->addWidget(m_grp_subtitles);
         subtitles_layout->addWidget(m_chk_embed_subtitles);
-        m_lbl_embed_subtitles =
-                new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_subtitles);
+        m_lbl_embed_subtitles = new oclero::qlementine::Label({}, oclero::qlementine::TextRole::Caption, m_grp_subtitles);
         m_lbl_embed_subtitles->setWordWrap(true);
         m_lbl_embed_subtitles->setContentsMargins(24, 0, 0, 0);
         subtitles_layout->addWidget(m_lbl_embed_subtitles);
@@ -987,7 +926,9 @@ namespace parabolic::qt::views
             m_lst_arguments->addItem(QString::fromStdString(argument.name()));
         }
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &SettingsPostprocessingPage::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &SettingsPostprocessingPage::translate);
         connect(m_chk_embed_metadata, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
         connect(m_chk_remove_source_data, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
         connect(m_chk_embed_thumbnails, &QCheckBox::toggled, this, &SettingsPostprocessingPage::save);
@@ -1057,10 +998,10 @@ namespace parabolic::qt::views
             return;
         }
         const translation::Translator& translator{ application::State::instance().translator() };
-        if (QMessageBox::question(this, translator._("Remove Argument"),
-                                  QString::fromStdString(
-                                          translator._("Are you sure you want to remove \"{}\"?",
-                                                       m_arguments[static_cast<std::size_t>(row)].name()))) !=
+        if (QMessageBox::question(this,
+                                  translator._("Remove Argument"),
+                                  QString::fromStdString(translator._("Are you sure you want to remove \"{}\"?",
+                                                                      m_arguments[static_cast<std::size_t>(row)].name()))) !=
             QMessageBox::Yes)
         {
             return;
@@ -1074,9 +1015,7 @@ namespace parabolic::qt::views
     {
         m_chk_crop_audio_thumbnails->setEnabled(m_chk_embed_thumbnails->isChecked());
         m_chk_remove_source_data->setEnabled(m_chk_embed_metadata->isChecked());
-        configuration::Configuration& configuration{
-            application::State::instance().configuration(),
-        };
+        configuration::Configuration& configuration{ application::State::instance().configuration() };
         postprocessing::Options options{ configuration.postprocessing_options() };
         options.set_embed_metadata(m_chk_embed_metadata->isChecked());
         options.set_remove_source_data(m_chk_remove_source_data->isChecked());
@@ -1095,8 +1034,7 @@ namespace parabolic::qt::views
         m_grp_metadata->setTitle(translator._("Metadata"));
         m_chk_embed_metadata->setText(translator._("Embed Metadata"));
         m_chk_remove_source_data->setText(translator._("Remove Source Data"));
-        m_lbl_remove_source_data->setText(
-                translator._("Clear metadata fields containing identifying download information."));
+        m_lbl_remove_source_data->setText(translator._("Clear metadata fields containing identifying download information."));
         m_grp_thumbnails->setTitle(translator._("Thumbnails"));
         m_chk_embed_thumbnails->setText(translator._("Embed Thumbnails"));
         m_lbl_embed_thumbnails->setText(translator._("If the file type does not support embedding, the thumbnail will "
@@ -1130,24 +1068,31 @@ namespace parabolic::qt::views
         layout->setContentsMargins(0, 0, 0, 0);
         layout->addWidget(m_navigation_view);
         m_navigation_view->sidebar()->setExpandedWidth(180);
-        m_navigation_view->addPage(new SettingsGeneralPage(m_navigation_view), {},
+        m_navigation_view->addPage(new SettingsGeneralPage(m_navigation_view),
+                                   {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Settings)));
-        m_navigation_view->addPage(new SettingsDiscoveryPage(m_navigation_view), {},
+        m_navigation_view->addPage(new SettingsDiscoveryPage(m_navigation_view),
+                                   {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Navigation_Search)));
-        m_navigation_view->addPage(new SettingsDownloadsPage(m_navigation_view), {},
+        m_navigation_view->addPage(new SettingsDownloadsPage(m_navigation_view),
+                                   {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Action_Download)));
-        m_navigation_view->addPage(new SettingsExtractorPage(m_navigation_view), {},
+        m_navigation_view->addPage(new SettingsExtractorPage(m_navigation_view),
+                                   {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::File_Plugin)));
-        m_navigation_view->addPage(new SettingsPostprocessingPage(m_navigation_view), {},
+        m_navigation_view->addPage(new SettingsPostprocessingPage(m_navigation_view),
+                                   {},
                                    oclero::qlementine::appStyle()->makeThemedIcon(oclero::qlementine::icons::iconPath(
                                            oclero::qlementine::icons::Icons16::Action_Build)));
         translate();
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &SettingsDialog::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &SettingsDialog::translate);
         connect(new QShortcut(QKeySequence::Close, this), &QShortcut::activated, this, &QDialog::reject);
     }
 

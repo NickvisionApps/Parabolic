@@ -90,7 +90,9 @@ namespace parabolic::update
         m_allow_preview_updates = value;
     }
 
-    Updater::Updater(std::string repo_owner, std::string repo_name, semver::version<> current_version,
+    Updater::Updater(std::string repo_owner,
+                     std::string repo_name,
+                     semver::version<> current_version,
                      const std::string& target_asset_name)
         : m_repo_owner{ std::move(repo_owner) },
           m_repo_name{ std::move(repo_name) },
@@ -102,9 +104,8 @@ namespace parabolic::update
     std::optional<Info> Updater::check_for_updates() const
     {
         nlohmann::json releases = nlohmann::json::array();
-        std::filesystem::path cache_file{
-            std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name / "releases.json",
-        };
+        std::filesystem::path cache_file{ std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
+                                          "releases.json" };
         if (std::filesystem::exists(cache_file))
         {
             if (std::filesystem::last_write_time(cache_file) + std::chrono::hours(12) <=
@@ -127,19 +128,14 @@ namespace parabolic::update
         }
         if (releases.empty())
         {
-            cpr::Response response{
-                cpr::Get(
-                        cpr::Url{
-                                std::format("https://api.github.com/repos/{}/{}/releases?per_page=5", m_repo_owner,
-                                            m_repo_name),
-                        },
-                        cpr::UserAgent{ USER_AGENT },
-                        cpr::Header{
-                                { "Accept", "application/vnd.github+json" },
-                                { "X-GitHub-Api-Version", "2022-11-28" },
-                        },
-                        cpr::ConnectTimeout{ 15000 }, cpr::Timeout{ 30000 }),
-            };
+            cpr::Response response{ cpr::Get(cpr::Url{ std::format("https://api.github.com/repos/{}/{}/releases?per_page=5",
+                                                                   m_repo_owner,
+                                                                   m_repo_name) },
+                                             cpr::UserAgent{ USER_AGENT },
+                                             cpr::Header{ { "Accept", "application/vnd.github+json" },
+                                                          { "X-GitHub-Api-Version", "2022-11-28" } },
+                                             cpr::ConnectTimeout{ 15000 },
+                                             cpr::Timeout{ 30000 }) };
             if (response.error || response.status_code != 200)
             {
                 return std::nullopt;
@@ -195,11 +191,8 @@ namespace parabolic::update
                 {
                     continue;
                 }
-                std::string digest{
-                    string_manip::lower(asset.contains("digest") && asset["digest"].is_string()
-                                                ? asset["digest"].get<std::string>()
-                                                : ""),
-                };
+                std::string digest{ string_manip::lower(
+                        asset.contains("digest") && asset["digest"].is_string() ? asset["digest"].get<std::string>() : "") };
                 if (digest.empty())
                 {
                     continue;
@@ -207,9 +200,8 @@ namespace parabolic::update
                 Info info;
                 info.set_version(version);
                 info.set_is_prerelease(prerelease);
-                info.set_changelog(release.contains("body") && release["body"].is_string()
-                                           ? release["body"].get<std::string>()
-                                           : "");
+                info.set_changelog(release.contains("body") && release["body"].is_string() ? release["body"].get<std::string>()
+                                                                                           : "");
                 info.set_asset_name(asset.value("name", ""));
                 info.set_asset_url(asset.value("browser_download_url", ""));
                 info.set_asset_digest(digest.starts_with("sha256:") ? digest.substr(7) : digest);
@@ -226,30 +218,32 @@ namespace parabolic::update
         {
             return std::nullopt;
         }
-        std::filesystem::path destination{
-            std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
-                    std::filesystem::path(info.asset_name()).filename(),
-        };
+        std::filesystem::path destination{ std::filesystem::path{ sago::getCacheDir() } / m_repo_owner / m_repo_name /
+                                           std::filesystem::path(info.asset_name()).filename() };
         std::filesystem::create_directories(destination.parent_path());
         std::ofstream out{ destination, std::ios::binary | std::ios::trunc };
         if (!out)
         {
             return std::nullopt;
         }
-        cpr::Response response{
-            cpr::Download(out, cpr::Url{ info.asset_url() }, cpr::UserAgent{ USER_AGENT },
-                          cpr::Header{ { "Accept", "application/octet-stream" } }, cpr::ConnectTimeout{ 15000 },
-                          cpr::ProgressCallback{ [&progress](cpr::cpr_pf_arg_t total, cpr::cpr_pf_arg_t now,
-                                                             cpr::cpr_pf_arg_t, cpr::cpr_pf_arg_t,
-                                                             std::intptr_t) -> bool
-        {
-            if (progress)
-            {
-                progress(static_cast<std::uint64_t>(now), static_cast<std::uint64_t>(total));
-            }
-            return true;
-        } }),
-        };
+        cpr::Response response{ cpr::Download(out,
+                                              cpr::Url{ info.asset_url() },
+                                              cpr::UserAgent{ USER_AGENT },
+                                              cpr::Header{ { "Accept", "application/octet-stream" } },
+                                              cpr::ConnectTimeout{ 15000 },
+                                              cpr::ProgressCallback{ [&progress](cpr::cpr_pf_arg_t total,
+                                                                                 cpr::cpr_pf_arg_t now,
+                                                                                 cpr::cpr_pf_arg_t,
+                                                                                 cpr::cpr_pf_arg_t,
+                                                                                 std::intptr_t) -> bool
+                                                                     {
+                                                                         if (progress)
+                                                                         {
+                                                                             progress(static_cast<std::uint64_t>(now),
+                                                                                      static_cast<std::uint64_t>(total));
+                                                                         }
+                                                                         return true;
+                                                                     } }) };
         out.close();
         if (!response.error && response.status_code == 200)
         {
@@ -281,8 +275,6 @@ namespace parabolic::update
 
     void to_json(nlohmann::json& json, const Options& options)
     {
-        json = nlohmann::json{
-            { "allowPreviewUpdates", options.allow_preview_updates() },
-        };
+        json = nlohmann::json{ { "allowPreviewUpdates", options.allow_preview_updates() } };
     }
 }

@@ -529,13 +529,11 @@ namespace parabolic::configuration
 
     void to_json(nlohmann::json& json, const Configuration& config)
     {
-        json = nlohmann::json{
-            { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
-            { "collapseSidebar", config.m_collapse_sidebar },
-            { "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup },
-            { "theme", static_cast<int>(config.m_theme) },
-            { "windowGeometry", config.m_window_geometry },
-        };
+        json = nlohmann::json{ { "automaticallyCheckForUpdates", config.m_automatically_check_for_updates },
+                               { "collapseSidebar", config.m_collapse_sidebar },
+                               { "showDisclaimerOnStartup", config.m_show_disclaimer_on_startup },
+                               { "theme", static_cast<int>(config.m_theme) },
+                               { "windowGeometry", config.m_window_geometry } };
         json.update(nlohmann::json(config.m_aria2_options));
         json.update(nlohmann::json(config.m_discovery_options));
         json.update(nlohmann::json(config.m_download_options));
@@ -549,10 +547,10 @@ namespace parabolic::configuration
 
     void to_json(nlohmann::json& json, const WindowGeometry& geometry)
     {
-        json = nlohmann::json{
-            { "height", geometry.height() }, { "isMaximized", geometry.is_maximized() },
-            { "width", geometry.width() },   { "x", geometry.x() },
-            { "y", geometry.y() },
-        };
+        json = nlohmann::json{ { "height", geometry.height() },
+                               { "isMaximized", geometry.is_maximized() },
+                               { "width", geometry.width() },
+                               { "x", geometry.x() },
+                               { "y", geometry.y() } };
     }
 }

@@ -14,7 +14,9 @@ namespace parabolic::qt::views
         setAutoFillBackground(true);
         setBackgroundRole(QPalette::Base);
         connect(qobject_cast<App*>(QApplication::instance())->translation_notifier(),
-                &helpers::TranslationNotifier::translation_changed, this, &HomePage::translate);
+                &helpers::TranslationNotifier::translation_changed,
+                this,
+                &HomePage::translate);
     }
 
     void HomePage::translate()

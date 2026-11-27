@@ -132,16 +132,14 @@ namespace parabolic::keyring
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, credential.name().c_str(), kCFStringEncodingUTF8) };
         CFStringRef url_ref{ CFStringCreateWithCString(nullptr, credential.url().c_str(), kCFStringEncodingUTF8) };
-        CFDataRef username_data{
-            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.username().data()),
-                         static_cast<CFIndex>(credential.username().size())),
-        };
-        CFDataRef password_data{
-            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.password().data()),
-                         static_cast<CFIndex>(credential.password().size())),
-        };
+        CFDataRef username_data{ CFDataCreate(nullptr,
+                                              reinterpret_cast<const UInt8*>(credential.username().data()),
+                                              static_cast<CFIndex>(credential.username().size())) };
+        CFDataRef password_data{ CFDataCreate(nullptr,
+                                              reinterpret_cast<const UInt8*>(credential.password().data()),
+                                              static_cast<CFIndex>(credential.password().size())) };
         CFMutableDictionaryRef query{
-            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
         };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
@@ -160,8 +158,14 @@ namespace parabolic::keyring
         return status == errSecSuccess;
 #else
         GError* error{ nullptr };
-        char* existing{ secret_password_lookup_sync(&KEYRING_SCHEMA, nullptr, &error, "application", m_app_id.c_str(),
-                                                    "name", credential.name().c_str(), nullptr) };
+        char* existing{ secret_password_lookup_sync(&KEYRING_SCHEMA,
+                                                    nullptr,
+                                                    &error,
+                                                    "application",
+                                                    m_app_id.c_str(),
+                                                    "name",
+                                                    credential.name().c_str(),
+                                                    nullptr) };
         if (error)
         {
             g_error_free(error);
@@ -172,10 +176,21 @@ namespace parabolic::keyring
             secret_password_free(existing);
             return false;
         }
-        secret_password_store_sync(&KEYRING_SCHEMA, SECRET_COLLECTION_DEFAULT, credential.name().c_str(),
-                                   credential.password().c_str(), nullptr, &error, "application", m_app_id.c_str(),
-                                   "name", credential.name().c_str(), "url", credential.url().c_str(), "username",
-                                   credential.username().c_str(), nullptr);
+        secret_password_store_sync(&KEYRING_SCHEMA,
+                                   SECRET_COLLECTION_DEFAULT,
+                                   credential.name().c_str(),
+                                   credential.password().c_str(),
+                                   nullptr,
+                                   &error,
+                                   "application",
+                                   m_app_id.c_str(),
+                                   "name",
+                                   credential.name().c_str(),
+                                   "url",
+                                   credential.url().c_str(),
+                                   "username",
+                                   credential.username().c_str(),
+                                   nullptr);
         if (error)
         {
             g_error_free(error);
@@ -199,8 +214,8 @@ namespace parabolic::keyring
                 std::wstring_view target{ items[i]->TargetName };
                 std::wstring password{ reinterpret_cast<const wchar_t*>(items[i]->CredentialBlob),
                                        items[i]->CredentialBlobSize / sizeof(wchar_t) };
-                credentials.emplace_back(string_manip::str(std::wstring{
-                                                 target.substr(string_manip::wstr(m_app_id).size() + 1) }),
+                credentials.emplace_back(string_manip::str(
+                                                 std::wstring{ target.substr(string_manip::wstr(m_app_id).size() + 1) }),
                                          items[i]->Comment ? string_manip::str(items[i]->Comment) : std::string{},
                                          items[i]->UserName ? string_manip::str(items[i]->UserName) : std::string{},
                                          string_manip::str(password));
@@ -210,7 +225,7 @@ namespace parabolic::keyring
 #elifdef __APPLE__
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFMutableDictionaryRef query{
-            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
         };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
@@ -228,8 +243,7 @@ namespace parabolic::keyring
                 CFStringRef name_ref{ static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrAccount)) };
                 CFDataRef username_data{ static_cast<CFDataRef>(CFDictionaryGetValue(item, kSecAttrGeneric)) };
                 CFMutableDictionaryRef data_query{
-                    CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks,
-                                              &kCFTypeDictionaryValueCallBacks),
+                    CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
                 };
                 CFDictionaryAddValue(data_query, kSecClass, kSecClassGenericPassword);
                 CFDictionaryAddValue(data_query, kSecAttrService, service_ref);
@@ -247,10 +261,8 @@ namespace parabolic::keyring
                 credentials.emplace_back(str(name_ref),
                                          str(static_cast<CFStringRef>(CFDictionaryGetValue(item, kSecAttrComment))),
                                          username_data != nullptr
-                                                 ? std::string{ reinterpret_cast<const char*>(
-                                                                        CFDataGetBytePtr(username_data)),
-                                                                static_cast<std::size_t>(
-                                                                        CFDataGetLength(username_data)) }
+                                                 ? std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(username_data)),
+                                                                static_cast<std::size_t>(CFDataGetLength(username_data)) }
                                                  : std::string{},
                                          std::string{ reinterpret_cast<const char*>(CFDataGetBytePtr(password_data)),
                                                       static_cast<std::size_t>(CFDataGetLength(password_data)) });
@@ -263,11 +275,13 @@ namespace parabolic::keyring
         GHashTable* attributes{ g_hash_table_new(g_str_hash, g_str_equal) };
         g_hash_table_insert(attributes, const_cast<char*>("application"), const_cast<char*>(m_app_id.c_str()));
         GError* error{ nullptr };
-        GList* items{ secret_service_search_sync(nullptr, &KEYRING_SCHEMA, attributes,
-                                                 static_cast<SecretSearchFlags>(SECRET_SEARCH_ALL |
-                                                                                SECRET_SEARCH_UNLOCK |
+        GList* items{ secret_service_search_sync(nullptr,
+                                                 &KEYRING_SCHEMA,
+                                                 attributes,
+                                                 static_cast<SecretSearchFlags>(SECRET_SEARCH_ALL | SECRET_SEARCH_UNLOCK |
                                                                                 SECRET_SEARCH_LOAD_SECRETS),
-                                                 nullptr, &error) };
+                                                 nullptr,
+                                                 &error) };
         g_hash_table_unref(attributes);
         if (error)
         {
@@ -284,8 +298,7 @@ namespace parabolic::keyring
                 const char* url{ static_cast<const char*>(g_hash_table_lookup(item_attributes, "url")) };
                 const char* username{ static_cast<const char*>(g_hash_table_lookup(item_attributes, "username")) };
                 const char* password{ value ? secret_value_get_text(value) : nullptr };
-                credentials.emplace_back(name ? name : "", url ? url : "", username ? username : "",
-                                         password ? password : "");
+                credentials.emplace_back(name ? name : "", url ? url : "", username ? username : "", password ? password : "");
                 if (value)
                 {
                     secret_value_unref(value);
@@ -311,7 +324,7 @@ namespace parabolic::keyring
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, name.c_str(), kCFStringEncodingUTF8) };
         CFMutableDictionaryRef query{
-            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
         };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
@@ -323,8 +336,14 @@ namespace parabolic::keyring
         return status == errSecSuccess;
 #else
         GError* error{ nullptr };
-        bool removed{ secret_password_clear_sync(&KEYRING_SCHEMA, nullptr, &error, "application", m_app_id.c_str(),
-                                                 "name", name.c_str(), nullptr) != FALSE };
+        bool removed{ secret_password_clear_sync(&KEYRING_SCHEMA,
+                                                 nullptr,
+                                                 &error,
+                                                 "application",
+                                                 m_app_id.c_str(),
+                                                 "name",
+                                                 name.c_str(),
+                                                 nullptr) != FALSE };
         if (error)
         {
             g_error_free(error);
@@ -364,22 +383,20 @@ namespace parabolic::keyring
         CFStringRef service_ref{ CFStringCreateWithCString(nullptr, m_app_id.c_str(), kCFStringEncodingUTF8) };
         CFStringRef name_ref{ CFStringCreateWithCString(nullptr, credential.name().c_str(), kCFStringEncodingUTF8) };
         CFStringRef url_ref{ CFStringCreateWithCString(nullptr, credential.url().c_str(), kCFStringEncodingUTF8) };
-        CFDataRef username_data{
-            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.username().data()),
-                         static_cast<CFIndex>(credential.username().size())),
-        };
-        CFDataRef password_data{
-            CFDataCreate(nullptr, reinterpret_cast<const UInt8*>(credential.password().data()),
-                         static_cast<CFIndex>(credential.password().size())),
-        };
+        CFDataRef username_data{ CFDataCreate(nullptr,
+                                              reinterpret_cast<const UInt8*>(credential.username().data()),
+                                              static_cast<CFIndex>(credential.username().size())) };
+        CFDataRef password_data{ CFDataCreate(nullptr,
+                                              reinterpret_cast<const UInt8*>(credential.password().data()),
+                                              static_cast<CFIndex>(credential.password().size())) };
         CFMutableDictionaryRef query{
-            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
         };
         CFDictionaryAddValue(query, kSecClass, kSecClassGenericPassword);
         CFDictionaryAddValue(query, kSecAttrService, service_ref);
         CFDictionaryAddValue(query, kSecAttrAccount, name_ref);
         CFMutableDictionaryRef attributes{
-            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks),
+            CFDictionaryCreateMutable(nullptr, 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks)
         };
         CFDictionaryAddValue(attributes, kSecAttrComment, url_ref);
         CFDictionaryAddValue(attributes, kSecAttrGeneric, username_data);
@@ -395,8 +412,14 @@ namespace parabolic::keyring
         return status == errSecSuccess;
 #else
         GError* error{ nullptr };
-        char* existing{ secret_password_lookup_sync(&KEYRING_SCHEMA, nullptr, &error, "application", m_app_id.c_str(),
-                                                    "name", credential.name().c_str(), nullptr) };
+        char* existing{ secret_password_lookup_sync(&KEYRING_SCHEMA,
+                                                    nullptr,
+                                                    &error,
+                                                    "application",
+                                                    m_app_id.c_str(),
+                                                    "name",
+                                                    credential.name().c_str(),
+                                                    nullptr) };
         if (error)
         {
             g_error_free(error);
@@ -407,17 +430,34 @@ namespace parabolic::keyring
             return false;
         }
         secret_password_free(existing);
-        secret_password_clear_sync(&KEYRING_SCHEMA, nullptr, &error, "application", m_app_id.c_str(), "name",
-                                   credential.name().c_str(), nullptr);
+        secret_password_clear_sync(&KEYRING_SCHEMA,
+                                   nullptr,
+                                   &error,
+                                   "application",
+                                   m_app_id.c_str(),
+                                   "name",
+                                   credential.name().c_str(),
+                                   nullptr);
         if (error)
         {
             g_error_free(error);
             return false;
         }
-        secret_password_store_sync(&KEYRING_SCHEMA, SECRET_COLLECTION_DEFAULT, credential.name().c_str(),
-                                   credential.password().c_str(), nullptr, &error, "application", m_app_id.c_str(),
-                                   "name", credential.name().c_str(), "url", credential.url().c_str(), "username",
-                                   credential.username().c_str(), nullptr);
+        secret_password_store_sync(&KEYRING_SCHEMA,
+                                   SECRET_COLLECTION_DEFAULT,
+                                   credential.name().c_str(),
+                                   credential.password().c_str(),
+                                   nullptr,
+                                   &error,
+                                   "application",
+                                   m_app_id.c_str(),
+                                   "name",
+                                   credential.name().c_str(),
+                                   "url",
+                                   credential.url().c_str(),
+                                   "username",
+                                   credential.username().c_str(),
+                                   nullptr);
         if (error)
         {
             g_error_free(error);
@@ -465,11 +505,9 @@ namespace parabolic::keyring
 
     void to_json(nlohmann::json& json, const Credential& credential)
     {
-        json = nlohmann::json{
-            { "name", credential.name() },
-            { "url", credential.url() },
-            { "username", credential.username() },
-            { "password", credential.password() },
-        };
+        json = nlohmann::json{ { "name", credential.name() },
+                               { "url", credential.url() },
+                               { "username", credential.username() },
+                               { "password", credential.password() } };
     }
 }

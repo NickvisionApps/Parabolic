@@ -11,6 +11,8 @@ AllowShortFunctionsOnASingleLine: None
 AllowShortIfStatementsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: false
 AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: false
+BinPackParameters: false
 BraceWrapping: 
   AfterCaseLabel: false
   AfterClass: true
@@ -30,7 +32,7 @@ BraceWrapping:
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
 BreakBeforeBraces: Custom
-ColumnLimit: 120
+ColumnLimit: 128
 ContinuationIndentWidth: 8
 IncludeCategories: 
   - Regex: '^<.*'
@@ -66,6 +68,6 @@ SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
 TabWidth: 4
 AllowShortLambdasOnASingleLine: None
-LambdaBodyIndentation: OuterScope
+LambdaBodyIndentation: Signature
 PenaltyBreakBeforeFirstCallParameter: 1000
 ...

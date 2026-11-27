@@ -27,7 +27,8 @@ namespace parabolic::qt::views
 
     public:
         PostprocessingArgumentDialog(const postprocessing::Argument& argument,
-                                     const std::vector<std::string>& taken_names, QWidget* parent = nullptr);
+                                     const std::vector<std::string>& taken_names,
+                                     QWidget* parent = nullptr);
         ~PostprocessingArgumentDialog() override = default;
         PostprocessingArgumentDialog(const PostprocessingArgumentDialog&) = delete;
         PostprocessingArgumentDialog(PostprocessingArgumentDialog&&) = delete;

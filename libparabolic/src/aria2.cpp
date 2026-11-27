@@ -43,9 +43,8 @@ namespace parabolic::aria2
 
     std::string executable_path()
     {
-        const std::filesystem::path& global_path{
-            environment::find_dependency("aria2c", environment::DependencySearchOption::Global),
-        };
+        const std::filesystem::path& global_path{ environment::find_dependency("aria2c",
+                                                                               environment::DependencySearchOption::Global) };
         if (std::filesystem::exists(global_path))
         {
 #ifdef _WIN32
@@ -63,8 +62,7 @@ namespace parabolic::aria2
         {
             options.set_max_connections_per_server(json.at("ariaMaxConnectionsPerServer").get<int>());
         }
-        else if (json.contains("AriaMaxConnectionsPerServer") &&
-                 json["AriaMaxConnectionsPerServer"].is_number_integer())
+        else if (json.contains("AriaMaxConnectionsPerServer") && json["AriaMaxConnectionsPerServer"].is_number_integer())
         {
             options.set_max_connections_per_server(json.at("AriaMaxConnectionsPerServer").get<int>());
         }
@@ -88,10 +86,8 @@ namespace parabolic::aria2
 
     void to_json(nlohmann::json& json, const Options& options)
     {
-        json = nlohmann::json{
-            { "ariaMaxConnectionsPerServer", options.max_connections_per_server() },
-            { "ariaMinSplitSize", options.min_split_size() },
-            { "useAria", options.use_aria() },
-        };
+        json = nlohmann::json{ { "ariaMaxConnectionsPerServer", options.max_connections_per_server() },
+                               { "ariaMinSplitSize", options.min_split_size() },
+                               { "useAria", options.use_aria() } };
     }
 }
